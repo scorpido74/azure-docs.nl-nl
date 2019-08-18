@@ -56,7 +56,7 @@ De volgende eigenschappen worden ondersteund voor gekoppelde webtabelgegevens:
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Web** |Ja |
 | url | URL naar de webbron |Ja |
-| authenticationType | Toegestane waarde is: **Anoniem**. |Ja |
+| authenticationType | Toegestane waarde is: **Anonymous**. |Ja |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
 **Voorbeeld:**
