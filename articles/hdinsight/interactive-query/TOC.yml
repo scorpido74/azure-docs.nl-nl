@@ -193,6 +193,8 @@
       items:
         - name: Apache Tez-toepassing loopt vast
           href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Apache Ambari Tez-weergave wordt langzaam geladen
+          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Query-prestaties van Apache Hive LLAP
           href: ./interactive-query-troubleshoot-query-performance.md
         - name: Trage reducer
@@ -203,24 +205,14 @@
           href: ./interactive-query-troubleshoot-permission-error-create-table.md
         - name: De limiet voor GC-overhead is overschreden
           href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
-        - name: Apache Ambari Tez-weergave wordt langzaam geladen
-          href: ./interactive-query-troubleshoot-tez-view-slow.md
         - name: Foutbericht niet weergegeven in Apache Hive-weergave
           href: ./interactive-query-troubleshoot-error-message-hive-view.md
         - name: Apache Hive-weergave niet toegankelijk
           href: ./interactive-query-troubleshoot-inaccessible-hive-view.md
         - name: ZooKeeperHiveClientException - HiveServer2-configuraties
           href: ./interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
-        - name: Query-prestaties van Apache Hive LLAP
-          href: ./interactive-query-troubleshoot-query-performance.md
         - name: Problemen met een traag of niet werkend HDInsight-cluster oplossen
           href: ../hdinsight-troubleshoot-failed-cluster.md
-        - name: Problemen met Apache Hadoop HDFS oplossen
-          href: ../hdinsight-troubleshoot-hdfs.md
-        - name: Problemen met Apache HIVE oplossen
-          href: ../hdinsight-troubleshoot-hive.md
-        - name: Problemen met Apache Hadoop YARN oplossen
-          href: ../hdinsight-troubleshoot-yarn.md
         - name: Problemen met Apache Hadoop HDFS oplossen
           href: ../hdinsight-troubleshoot-hdfs.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
         - name: Problemen met Apache HIVE oplossen

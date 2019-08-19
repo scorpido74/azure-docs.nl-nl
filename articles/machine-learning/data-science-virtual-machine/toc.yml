@@ -6,8 +6,6 @@
   items:
     - name: Wat is de Data Science VM?
       href: overview.md
-    - name: Wat is de Deep Learning VM?
-      href: deep-learning-dsvm-overview.md
     - name: Wat is de Geo AI Data Science VM?
       href: geo-ai-dsvm-overview.md
 - name: Snelstartgidsen
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: Concepten
   items:
-    - name: DSVM ontdekken
-      href: dsvm-tools-overview.md
     - name: Deep Learning en AI-frameworks
       href: dsvm-deep-learning-ai-frameworks.md
     - name: Programmeertalen
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: Een Linux-DSVM gebruiken
       href: linux-dsvm-walkthrough.md
-    - name: Een Deep Learning VM gebruiken
-      href: use-deep-learning-dsvm.md
     - name: Een Geo AI-DSVM gebruiken
       href: use-geo-ai-dsvm.md
     - name: Automatisch geschaalde DSVM-pool maken
