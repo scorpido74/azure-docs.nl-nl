@@ -333,7 +333,7 @@ Wanneer u gegevens uit Sales Force kopieert, worden de volgende toewijzingen geb
 | Text Area |String |
 | Text Area (Long) |String |
 | Text Area (Rich) |String |
-| Text (Encrypted) |Reeks |
+| Text (Encrypted) |String |
 | URL |String |
 
 ## <a name="next-steps"></a>Volgende stappen
