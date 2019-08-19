@@ -25,7 +25,7 @@
       href: concept-authentication-methods.md
     - name: Verificatie zonder wachtwoord
       href: concept-authentication-passwordless.md
-    - name: Gecombineerde registratie
+    - name: Registratie van beveiligingsgegevens
       href: concept-registration-mfa-sspr-combined.md
     - name: Wachtwoord opnieuw instellen
       items:
@@ -103,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Gecombineerde registratie
+    - name: Registratie van beveiligingsinformatie
       items:
         - name: Gecombineerde registratie inschakelen
           href: howto-registration-mfa-sspr-combined.md

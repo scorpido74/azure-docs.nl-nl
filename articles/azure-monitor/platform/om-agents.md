@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663724"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543044"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager verbinden met Azure Monitor
 
@@ -65,12 +65,12 @@ Controleer de volgende vereisten voordat u begint.
 >[!NOTE]
 >Recente wijzigingen aan Azure-Api's kunnen voor komen dat klanten de integratie tussen hun beheer groep en Azure Monitor voor de eerste keer configureren. Voor klanten die hun beheer groep al hebben geïntegreerd met de service, heeft dit geen invloed op de gebruikers, tenzij u uw bestaande verbinding opnieuw moet configureren.  
 >Er is een nieuwe management pack uitgebracht voor de volgende versies van Operations Manager:
->  
->* Voor System Center Operations Manager 1801, moet u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57173) downloaden  
->* Voor System Center 2016-Operations Manager downloadt u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57172)  
->* Voor System Center Operations Manager 2012 R2 moet u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57171) downloaden  
->
->Deze management pack update is niet van toepassing op System Center Operations Manager 1807. Dit is een update versie van versie 1801 en geen volledige build van het product.   
+> - Voor System Center Operations Manager 2019 wordt management pack meegeleverd met de Operations Manager-build.
+>- Operations Manager 1801 management pack is ook van toepassing op Operations Manager 1807.
+>- Voor System Center Operations Manager 1801, moet u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57173)downloaden.
+>- Voor System Center 2016-Operations Manager moet u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57172)downloaden.  
+>- Voor System Center Operations Manager 2012 R2 kunt u de management pack [hier](https://www.microsoft.com/download/details.aspx?id=57171)downloaden.  
+
 
 ### <a name="network"></a>Netwerk
 

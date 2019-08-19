@@ -67,6 +67,8 @@
       href: overview-hosting-plans.md
     - name: OS-functionaliteit
       href: operating-system-functionality.md
+    - name: Aanbevolen best practices voor implementatie
+      href: deploy-best-practices.md
     - name: Beveiliging
       items:
         - name: Aanbevelingen
@@ -217,6 +219,8 @@
       href: /azure/templates/microsoft.web/allversions
 - name: Resources
   items:
+    - name: App Service-blog
+      href: 'https://aka.ms/appserviceblog'
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/
     - name: Azure-roadmap

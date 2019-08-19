@@ -1,6 +1,6 @@
 ---
 title: Aan de slag met het leveren van inhoud op aanvraag met behulp van REST | Microsoft Docs
-description: Deze zelfstudie leert u de stappen van de implementatie van een on demand levering van inhoud-toepassing met Azure Media Services met behulp van REST-API.
+description: In deze zelf studie wordt u begeleid bij het implementeren van een on-demand toepassing voor content levering met Azure Media Services met behulp van REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 76eae5fa049ed1fbf7195277613867aca63c1082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867621"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69014871"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Aan de slag met het leveren van inhoud op aanvraag met behulp van REST  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-In deze snelstartgids leidt u door de stappen van de implementatie van een video on demand (VoD) contentlevering-toepassing met behulp van Azure Media Services (AMS) REST-API's.
+In deze Quick Start leert u de stappen voor het implementeren van een VoD-inhoud (video-on-demand) met behulp van Azure Media Services (AMS) REST Api's.
 
-In deze zelfstudie maakt u kennis met de algemene werkstroom voor Media Services en de meest algemene programmeerobjecten en -taken die zijn vereist voor het ontwikkelen van Media Services. Na het voltooien van de zelfstudie bent u streamen of progressief downloaden van een voorbeeldbestand van de media die u geüpload, gecodeerd en gedownload.
+In deze zelfstudie maakt u kennis met de algemene werkstroom voor Media Services en de meest algemene programmeerobjecten en -taken die zijn vereist voor het ontwikkelen van Media Services. Na het volt ooien van de zelf studie kunt u een voor beeld-media bestand dat u hebt geüpload, gecodeerd en gedownload streamen of progressief downloaden.
 
 In de volgende afbeelding ziet u een aantal van de meest gebruikte objecten bij het ontwikkelen van VoD-toepassingen in het Media Services OData-model.
 
@@ -37,33 +37,33 @@ Klik op de afbeelding om deze in volledig formaat weer te geven.
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>Vereisten
-De volgende vereisten zijn vereist om te beginnen met het ontwikkelen met Media Services met REST-API's.
+De volgende vereisten zijn vereist om te beginnen met het ontwikkelen met Media Services met REST-Api's.
 
 * Een Azure-account. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 * Een Media Services-account. Zie [Een Media Services-account maken](media-services-portal-create-account.md) voor meer informatie over het maken van een Media Services-account.
-* Inzicht in hoe u voor het ontwikkelen met Media Services REST API. Zie voor meer informatie, [Media Services REST API-overzicht](media-services-rest-how-to-use.md).
-* Een toepassing van uw keuze die HTTP-aanvragen en antwoorden kan verzenden. Deze zelfstudie wordt gebruikgemaakt van [Fiddler](https://www.telerik.com/download/fiddler).
+* Meer informatie over hoe u kunt ontwikkelen met Media Services REST API. Zie [Media Services rest API overview](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
+* Een toepassing van uw keuze waarmee HTTP-aanvragen en-antwoorden kunnen worden verzonden. In deze zelf studie wordt gebruikgemaakt van [Fiddler](https://www.telerik.com/download/fiddler).
 
-De volgende taken worden weergegeven in deze Quick Start.
+In deze Quick Start worden de volgende taken weer gegeven.
 
 1. Streaming-eindpunt starten (vanuit Azure Portal).
-2. Verbinding maken met het Media Services-account met REST-API.
-3. Een nieuwe asset maken en een video uploaden met REST-API.
-4. Het bronbestand coderen in een set adaptive bitrate MP4-bestanden met REST-API.
-5. De asset publiceren en streamen en progressief downloaden ophalen URL's met REST-API.
+2. Maak verbinding met het Media Services-account met REST API.
+3. Een nieuwe Asset maken en een video bestand uploaden met REST API.
+4. Het bron bestand coderen in een set Adaptive bitrate MP4-bestanden met REST API.
+5. Publiceer de Asset en ontvang Url's voor streaming en progressieve down loads met REST API.
 6. Uw inhoud afspelen.
 
 >[!NOTE]
->Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen / toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om te blijven aanwezig gedurende een lange periode (niet-uploadbeleidsregels). Raadpleeg [dit artikel](media-services-dotnet-manage-entities.md#limit-access-policies) voor meer informatie.
+>Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). Gebruik dezelfde beleids-ID als u altijd dezelfde dagen/toegangs machtigingen gebruikt, bijvoorbeeld beleids regels voor Locators die zijn bedoeld om gedurende een lange periode te blijven (niet-upload beleid). Raadpleeg [dit artikel](media-services-dotnet-manage-entities.md#limit-access-policies) voor meer informatie.
 
-Zie voor meer informatie over de AMS-REST-entiteiten die worden gebruikt in dit artikel [Azure Media Services REST API-verwijzing](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Zie ook [Azure Media Services-concepten](media-services-concepts.md).
+Zie [Azure Media Services rest API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)(Engelstalig) voor meer informatie over AMS rest-entiteiten die in dit artikel worden gebruikt. Zie ook [Azure Media Services-concepten](media-services-concepts.md).
 
 >[!NOTE]
->Bij het openen van entiteiten in Media Services, moet u specifieke header-velden en waarden instellen in uw HTTP-aanvragen. Zie voor meer informatie, [instellen voor het ontwikkelen van Media Services REST API](media-services-rest-how-to-use.md).
+>Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Streaming-eindpunten starten met behulp van Azure Portal
 
-Als u werkt met Azure Media Services, wordt een van de meest voorkomende scenario's video via adaptive bitratestreaming geleverd. Media Services biedt dynamische pakketten waarmee u uw Adaptive Bitrate MP4-inhoud 'just in time' kunt leveren in de streaming-indelingen die door Media Services worden ondersteund (MPEG DASH, HLS, Smooth Streaming), zonder dat u vooraf verpakte versies van elk van deze streaming-indelingen hoeft op te slaan.
+Bij het werken met Azure Media Services is een van de meest voorkomende scenario's voor het leveren van video via Adaptive Bitrate Streaming. Media Services biedt dynamische pakketten waarmee u uw Adaptive Bitrate MP4-inhoud 'just in time' kunt leveren in de streaming-indelingen die door Media Services worden ondersteund (MPEG DASH, HLS, Smooth Streaming), zonder dat u vooraf verpakte versies van elk van deze streaming-indelingen hoeft op te slaan.
 
 >[!NOTE]
 >Wanneer uw AMS-account is gemaakt, wordt er een **standaardstreaming-eindpunt** met de status **Gestopt** toegevoegd aan uw account. Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** hebben.
@@ -79,26 +79,26 @@ U start het streaming-eindpunt als volgt:
 4. Klik op het pictogram Start.
 5. Klik op de knop Opslaan om uw wijzigingen op te slaan.
 
-## <a id="connect"></a>Verbinding maken met het Media Services-account met REST-API
+## <a id="connect"></a>Verbinding maken met het Media Services-account met REST API
 
-Zie voor meer informatie over het verbinding maken met de AMS-API [toegang tot de API van Azure Media Services met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md). 
+Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
 
-## <a id="upload"></a>Een nieuwe asset maken en uploaden van een videobestand met REST-API
+## <a id="upload"></a>Een nieuwe Asset maken en een video bestand uploaden met REST API
 
-In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) een asset. De **Asset** entiteit kan bevatten, video, audio, afbeeldingen, verzamelingen van miniaturen, tekst tekstsporen en ondertitelingsbestanden bestanden (en de metagegevens over deze bestanden.)  Zodra de bestanden in de asset zijn geüpload, wordt uw inhoud veilig opgeslagen in de cloud voor verdere verwerking en streaming.
+In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) een asset. De **Asset** -entiteit kan video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden (en de meta gegevens over deze bestanden) bevatten.  Zodra de bestanden in de Asset zijn geüpload, wordt uw inhoud veilig opgeslagen in de Cloud voor verdere verwerking en streaming.
 
-Een van de waarden die u opgeven moet bij het maken van een asset is opties voor het maken. De **opties** eigenschap is een opsommingswaarde die de versleutelingsopties dat een Asset kan worden gemaakt met beschrijft. Een geldige waarde is een van de waarden uit de onderstaande lijst, niet een combinatie van waarden uit deze lijst:
+Een van de waarden die u moet opgeven bij het maken van een Asset, is opties voor het maken van activa. De eigenschap **Options** is een opsommings waarde die de versleutelings opties beschrijft waarmee een activum kan worden gemaakt. Een geldige waarde is een van de waarden uit de onderstaande lijst, niet een combi natie van waarden uit deze lijst:
 
-* **Geen** = **0** -geen versleuteling wordt gebruikt. Wanneer u deze optie wordt uw inhoud is niet beveiligd tijdens de overdracht of in rust in de opslag.
+* Geen = **0** : er wordt geen versleuteling gebruikt. Wanneer u deze optie gebruikt, wordt uw inhoud niet door Voer of op rest in de opslag beveiligd.
     Als u een MP4-bestand wilt leveren via progressief downloaden, gebruikt u deze optie.
-* **StorageEncrypted** = **1** - versleutelt uw niet-versleutelde inhoud lokaal via AES-256-bits codering en vervolgens geüpload naar Azure Storage waar deze zijn opgeslagen in rust versleuteld. De versleuteling van assets die zijn beveiligd met Storage Encryption, wordt automatisch ongedaan gemaakt en de assets worden automatisch in een versleuteld bestandssysteem geplaatst voordat ze worden gecodeerd. Eventueel kunnen ze opnieuw worden versleuteld voordat ze opnieuw worden geüpload als een nieuwe uitvoerasset. Storage Encryption wordt voornamelijk gebruikt om uw invoerbestanden met media van hoge kwaliteit die zijn opgeslagen op de schijf, te beveiligen met een sterke versleuteling.
-* **CommonEncryptionProtected** = **2** -Gebruik deze optie als u inhoud uploadt die al is versleuteld en beveiligd met Common Encryption of PlayReady DRM (bijvoorbeeld Smooth Streaming beveiligd met PlayReady DRM).
-* **EnvelopeEncryptionProtected** = **4** : Gebruik deze optie als u met AES versleutelde HLS uploadt. De bestanden zijn moeten gecodeerd en versleuteld door Transform Manager.
+* StorageEncrypted = **1** : Hiermee versleutelt u uw ongecodeerde inhoud lokaal met AES-256-bits versleuteling en uploadt u deze naar Azure Storage waar deze wordt opgeslagen op rest. De versleuteling van assets die zijn beveiligd met Storage Encryption, wordt automatisch ongedaan gemaakt en de assets worden automatisch in een versleuteld bestandssysteem geplaatst voordat ze worden gecodeerd. Eventueel kunnen ze opnieuw worden versleuteld voordat ze opnieuw worden geüpload als een nieuwe uitvoerasset. Storage Encryption wordt voornamelijk gebruikt om uw invoerbestanden met media van hoge kwaliteit die zijn opgeslagen op de schijf, te beveiligen met een sterke versleuteling.
+* CommonEncryptionProtected = **2** : gebruik deze optie als u inhoud uploadt die al is versleuteld en beveiligd met common Encryption of playready DRM (bijvoorbeeld Smooth streaming beveiligd met PlayReady DRM).
+* EnvelopeEncryptionProtected = **4** : gebruik deze optie als u HLS versleuteld uploadt met AES. De bestanden moeten zijn gecodeerd en versleuteld door trans formatie Manager.
 
-### <a name="create-an-asset"></a>Maak een asset
-Een asset is een container voor meerdere typen of sets van objecten in Media Services, waaronder video, audio, afbeeldingen, verzamelingen van miniaturen, tekstsporen en ondertitelingsbestanden bestanden. In de REST-API vereist het maken van een Asset POST-aanvraag verzenden naar Media Services en alle informatie over uw asset plaatsen in de aanvraagtekst.
+### <a name="create-an-asset"></a>Een Asset maken
+Een Asset is een container voor meerdere typen of verzamelingen van objecten in Media Services, zoals video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden. In de REST API vereist het maken van een Asset POST-aanvraag verzenden naar Media Services en het plaatsen van eigenschaps informatie over uw asset in de hoofd tekst van de aanvraag.
 
-Het volgende voorbeeld ziet hoe u een asset te maken.
+In het volgende voor beeld ziet u hoe u een Asset maakt.
 
 **HTTP-aanvraag**
 
@@ -150,9 +150,9 @@ Als dit lukt, wordt het volgende geretourneerd:
     }
 
 ### <a name="create-an-assetfile"></a>Een AssetFile maken
-De [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entiteit vertegenwoordigt een video of audio-bestand dat is opgeslagen in een blob-container. Een assetbestand is altijd gekoppeld aan een asset en een asset kan een of meer AssetFiles bevatten. De Media Services Encoder-taak mislukt als een object van het bestand asset niet gekoppeld aan een digitaal bestand in een blob-container is.
+De entiteit [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) vertegenwoordigt een video-of audio bestand dat is opgeslagen in een BLOB-container. Een activum bestand is altijd gekoppeld aan een Asset en een Asset kan een of meer AssetFiles bevatten. De Media Services encoder-taak mislukt als een object van een activa bestand niet is gekoppeld aan een digitaal bestand in een BLOB-container.
 
-Nadat u uw digitale media-bestand naar een blob-container uploaden, gebruikt u de **samenvoegen** HTTP-aanvraag voor het bijwerken van de AssetFile met informatie over uw media-bestand (zoals later in het onderwerp).
+Nadat u uw digitale media bestand naar een BLOB-container hebt geüpload, gebruikt u de HTTP-aanvraag voor **samen voegen** om de AssetFile bij te werken met informatie over uw media bestand (zoals verderop in het onderwerp wordt weer gegeven).
 
 **HTTP-aanvraag**
 
@@ -211,10 +211,10 @@ Nadat u uw digitale media-bestand naar een blob-container uploaden, gebruikt u d
     }
 
 
-### <a name="creating-the-accesspolicy-with-write-permission"></a>Het maken van de AccessPolicy met de machtiging schrijven
-Voordat u bestanden uploadt naar blob storage, stel het beleid rechten voor het schrijven naar een asset. Om dit te doen, PLAATST u een HTTP-aanvraag naar de entiteit AccessPolicies set. Een waarde DurationInMinutes bij het maken van definiëren of ontvangt u 500 Interne Server het foutbericht terug in het antwoord. Zie voor meer informatie over AccessPolicies [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+### <a name="creating-the-accesspolicy-with-write-permission"></a>De AccessPolicy maken met schrijf machtiging
+Voordat u bestanden naar Blob Storage uploadt, stelt u de rechten voor het toegangs beleid in voor het schrijven naar een Asset. Hiertoe plaatst u een HTTP-aanvraag naar de AccessPolicies-entiteitset. Definieer een DurationInMinutes-waarde bij het maken of ontvang een fout bericht 500 interne server als reactie. Zie [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)voor meer informatie over AccessPolicies.
 
-Het volgende voorbeeld laat zien hoe een AccessPolicy maken:
+In het volgende voor beeld ziet u hoe u een AccessPolicy maakt:
 
 **HTTP-aanvraag**
 
@@ -259,9 +259,9 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>De Upload-URL ophalen
+### <a name="get-the-upload-url"></a>De upload-URL ophalen
 
-Voor het ontvangen van de werkelijke upload-URL, een SAS-Locator te maken. Locators definieert de begin- en type van het verbindingseindpunt voor clients die toegang tot bestanden in een Asset. U kunt meerdere Locator entiteiten voor een bepaalde AccessPolicy en Asset paar voor het afhandelen van aanvragen van andere clients en moet maken. Elk van deze Locators de StartTime-waarde plus de DurationInMinutes-waarde van de AccessPolicy gebruikt om te bepalen hoe lang die een URL kan worden gebruikt. Zie voor meer informatie, [Locator](https://docs.microsoft.com/rest/api/media/operations/locator).
+Als u de daad werkelijke upload-URL wilt ontvangen, maakt u een SAS-Locator. Locators definiëren de begin tijd en het type van het verbindings eindpunt voor clients die toegang willen krijgen tot bestanden in een Asset. U kunt meerdere Locator-entiteiten maken voor een bepaald AccessPolicy en activa paar voor het afhandelen van verschillende client aanvragen en-behoeften. Elk van deze locators gebruikt de waarde StartTime plus de DurationInMinutes-waarde van de AccessPolicy om te bepalen hoe lang een URL kan worden gebruikt. Zie [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)voor meer informatie.
 
 Een SAS-URL heeft de volgende indeling:
 
@@ -269,11 +269,11 @@ Een SAS-URL heeft de volgende indeling:
 
 Hierbij geldt het volgende:
 
-* U kunt geen meer dan vijf unieke Locators die zijn gekoppeld aan een opgegeven activum in één keer. 
-* Als u nodig hebt onmiddellijk uw bestanden uploaden, moet u de waarde StartTime ingesteld op vijf minuten vóór de huidige tijd. Dit is omdat er mogelijk klok scheeftrekken tussen uw client-computer en Media Services. De waarde StartTime moet ook de volgende datum/tijd-indeling zijn: JJJJ-MM-ddTHH (bijvoorbeeld: "2014-05-23T17:53:50Z ').    
-* Mogelijk zijn er een tweede 30-40 vertraging nadat een Locator is gemaakt op wanneer deze beschikbaar voor gebruik. Dit probleem is van toepassing op beide [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en oorsprong Locators.
+* U kunt niet meer dan vijf unieke Locators tegelijk koppelen aan een bepaalde Asset. 
+* Als u uw bestanden onmiddellijk moet uploaden, moet u de waarde voor StartTime instellen op vijf minuten voor de huidige tijd. Dit komt omdat er mogelijk een klok verschil tussen uw client computer en Media Services. De waarde voor StartTime moet ook de volgende datum notatie hebben: JJJJ-MM-DDTUU: mm: ssZ (bijvoorbeeld "2014-05-23T17:53:50Z").    
+* Er kan een vertraging van 30-40 seconden optreden nadat een Locator is gemaakt op het moment dat deze beschikbaar is voor gebruik. Dit probleem is van toepassing op zowel [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) als Origin Locators.
 
-Het volgende voorbeeld ziet hoe u een SAS-URL-Locator maakt zoals gedefinieerd door de eigenschap Type in de hoofdtekst van de aanvraag ("1" voor een SAS-locator) en "2" voor een On-Demand origin-locator. De **pad** geretourneerd van de eigenschap bevat de URL die u gebruiken moet om uw bestand te uploaden.
+In het volgende voor beeld ziet u hoe u een SAS URL-Locator maakt, zoals gedefinieerd door de eigenschap type in de aanvraag tekst ("1" voor een SAS-Locator en "2" voor een bron-Locator op aanvraag). De geretourneerde eigenschap **Path** bevat de URL die u moet gebruiken om het bestand te uploaden.
 
 **HTTP-aanvraag**
 
@@ -328,18 +328,18 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
        "Name":null
     }
 
-### <a name="upload-a-file-into-a-blob-storage-container"></a>Een bestand uploaden naar een blob storage-container
-Zodra u hebt de AccessPolicy en Locator ingesteld, wordt het werkelijke bestand geüpload naar een Azure blob storage-container met behulp van de Azure Storage REST-API's. U moet de bestanden uploaden als blok-blobs. Pagina-blobs worden niet ondersteund door Azure Media Services.  
+### <a name="upload-a-file-into-a-blob-storage-container"></a>Een bestand uploaden naar een BLOB storage-container
+Zodra u de AccessPolicy en de Locator hebt ingesteld, wordt het daad werkelijke bestand geüpload naar een Azure Blob Storage-container met behulp van de Azure Storage REST-Api's. U moet de bestanden uploaden als blok-blobs. Pagina-blobs worden niet ondersteund door Azure Media Services.  
 
 > [!NOTE]
-> U moet de bestandsnaam voor het bestand dat u wilt uploaden naar de Locator toevoegen **pad** waarde die is ontvangen in de vorige sectie. Bijvoorbeeld `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> U moet de bestands naam van het bestand dat u wilt uploaden, toevoegen aan de waarde van het **pad** naar de locatie die in de vorige sectie is ontvangen. Bijvoorbeeld `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
-Zie voor meer informatie over het werken met Azure storage-blobs [REST API voor Blob Service](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Zie [BLOB Service rest API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)voor meer informatie over het werken met Azure Storage-blobs.
 
 ### <a name="update-the-assetfile"></a>De AssetFile bijwerken
-Nu dat u het bestand hebt geüpload, moet u de informatie FileAsset grootte (en andere) bijwerken. Bijvoorbeeld:
+Nu u het bestand hebt geüpload, werkt u de FileAsset-grootte (en andere) bij. Bijvoorbeeld:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -405,18 +405,18 @@ Als dit lukt, wordt het volgende geretourneerd:
     HTTP/1.1 204 No Content
     ...
 
-## <a id="encode"></a>Het bronbestand coderen in een set adaptive bitrate MP4-bestanden
+## <a id="encode"></a>Het bron bestand coderen in een set Adaptive bitrate MP4-bestanden
 
-Na het opnemen van de die activa in Media Services, media kunnen worden gecodeerd, transmuxed, van een watermerk enzovoort, voordat deze aan clients wordt geleverd. Deze activiteiten worden gepland en uitgevoerd op meerdere achtergrondrolinstanties om hoge prestaties en een hoge beschikbaarheid te garanderen. Deze activiteiten worden taken genoemd en elke taak bestaat uit atomische taken die daadwerkelijk werken op het assetbestand (Zie voor meer informatie, [taak](https://docs.microsoft.com/rest/api/media/operations/job), [taak](https://docs.microsoft.com/rest/api/media/operations/task) beschrijvingen).
+Nadat u activa in Media Services hebt opgenomen, kunnen media worden gecodeerd, transmuxed, met een water merk, enzovoort voordat deze aan clients worden geleverd. Deze activiteiten worden gepland en uitgevoerd op meerdere achtergrondrolinstanties om hoge prestaties en een hoge beschikbaarheid te garanderen. Deze activiteiten worden taken genoemd en elke taak bestaat uit atomische taken die het werkelijke werk doen aan het activa bestand (Zie [taak](https://docs.microsoft.com/rest/api/media/operations/job)beschrijvingen) voor meer informatie [](https://docs.microsoft.com/rest/api/media/operations/task) .
 
-Zoals eerder al is aangegeven, bij het werken met Azure Media Services is een van de meest voorkomende scenario's adaptive bitrate streaming geleverd aan uw clients. Met Media Services kunt u een dynamisch pakket maken met een van de volgende indelingen voor MP4-bestanden met een adaptieve bitsnelheid: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+Zoals eerder is vermeld, wordt bij het werken met Azure Media Services een van de meest voorkomende scenario's Adaptive Bitrate Streaming aan de clients geleverd. Met Media Services kunt u een dynamisch pakket maken met een van de volgende indelingen voor MP4-bestanden met een adaptieve bitsnelheid: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
 
-De volgende sectie ziet hoe u een taak met een coderingstaak te maken. De taak bevat voor het transcoderen het tussentijdse bestand in een set met behulp van adaptieve bitrate MP4s **Media Encoder Standard**. De sectie wordt ook uitgelegd hoe u voor het bewaken van de taak voortgang verwerken. Wanneer de taak voltooid is, wordt u mogelijk zijn om locators die nodig zijn om toegang te krijgen tot uw bedrijfsmiddelen te maken.
+In de volgende sectie ziet u hoe u een taak maakt die één coderings taak bevat. De taak geeft aan dat het mezzanine-bestand moet worden transcoderen naar een set adaptieve bitrate mp4's met behulp van **Media Encoder Standard**. In deze sectie wordt ook uitgelegd hoe u de voortgang van de taak verwerking kunt controleren. Wanneer de taak is voltooid, kunt u Locators maken die nodig zijn om toegang te krijgen tot uw activa.
 
-### <a name="get-a-media-processor"></a>Een Mediaprocessor ophalen
-In Media Services is een Mediaprocessor een component die verantwoordelijk is voor een specifieke verwerkingstaak, zoals codering, Indelingsconversie, versleutelen of ontsleutelen media-inhoud. Voor de coderingstaak wordt weergegeven in deze zelfstudie, gaan we de Media Encoder Standard gebruikt.
+### <a name="get-a-media-processor"></a>Een media processor ophalen
+In Media Services is een media processor een onderdeel dat een specifieke verwerkings taak verwerkt, zoals code ring, indelings conversie, versleuteling of ontsleuteling van media-inhoud. Voor de coderings taak die in deze zelf studie wordt weer gegeven, gaan we de Media Encoder Standard gebruiken.
 
-De volgende code aanvragen van het coderingsprogramma-id.
+Met de volgende code wordt de id van het coderings programma aangevraagd.
 
 **HTTP-aanvraag**
 
@@ -460,9 +460,9 @@ De volgende code aanvragen van het coderingsprogramma-id.
     }
 
 ### <a name="create-a-job"></a>Een taak maken
-Elke taak kan een of meer taken, afhankelijk van het type van de verwerking die u wilt bereiken hebben. U kunt via de REST-API, taken en hun verwante taken maken op twee manieren: Taken kunnen worden gedefinieerd inline via de navigatie-eigenschap van de taken op taak entiteiten of batchverwerking van OData. Batchverwerking maakt gebruik van de Media Services SDK. Voor de leesbaarheid van de codevoorbeelden in dit artikel zijn taken echter gedefinieerde inline. Zie voor informatie over batchverwerking, [Open Data Protocol (OData) batchverwerking](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Elke taak kan een of meer taken bevatten, afhankelijk van het type verwerking dat u wilt uitvoeren. Via de REST API kunt u op een van de volgende twee manieren taken en de bijbehorende taken maken: Taken kunnen inline worden gedefinieerd via de taak navigatie-eigenschap op taak entiteiten of via OData batch-verwerking. De Media Services SDK gebruikt batch verwerking. Voor de Lees baarheid van de code voorbeelden in dit artikel, worden de taken echter in line gedefinieerd. Zie voor meer informatie over batch verwerking [Open Data Protocol (OData) batch processing (Engelstalig)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Het volgende voorbeeld ziet u het maken en een taak met een die taak instellen op het coderen van een video op een specifieke oplossingsstatus en de kwaliteit te plaatsen. De volgende sectie van de documentatie bevat de lijst met alle de [taak voorinstellingen](https://msdn.microsoft.com/library/mt269960) ondersteund door de processor Media Encoder Standard.  
+In het volgende voor beeld ziet u hoe u een taak maakt en post met één Taakset voor het coderen van een video met een specifieke resolutie en kwaliteit. De volgende documentatie sectie bevat de lijst met alle [taak voorinstellingen](https://msdn.microsoft.com/library/mt269960) die door de Media Encoder Standard-processor worden ondersteund.  
 
 **HTTP-aanvraag**
 
@@ -558,35 +558,35 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
     }
 
 
-Er zijn een paar dingen die belangrijk te weten als u een taak doet:
+Er zijn enkele belang rijke dingen die u moet weten in elke taak aanvraag:
 
-* Eigenschappen van TaskBody moeten letterlijke XML gebruiken om te definiëren van het aantal invoer of uitvoer van de activa die worden gebruikt door de taak. Taak dit artikel bevat de definitie van de XML-Schema voor het XML-bestand.
-* In het definitie TaskBody elke interne waarde voor de `<inputAsset>` en `<outputAsset>` JobInputAsset(value) of JobOutputAsset(value) moet worden ingesteld.
-* Een taak kan meerdere uitvoerassets hebben. Een JobOutputAsset(x) kan alleen één keer worden gebruikt als uitvoer van een taak in een taak.
-* U kunt JobInputAsset of JobOutputAsset opgeven als een invoeractivum van een taak.
-* Taken moeten een cyclus voor besturingselementen geen cyclus.
-* De waardeparameter die u aan JobInputAsset of JobOutputAsset doorgeeft vertegenwoordigt de indexwaarde voor een Asset. De werkelijke activa zijn gedefinieerd in de eigenschappen van de navigatie InputMediaAssets en OutputMediaAssets op de definitie van de taak entiteit.
+* TaskBody-eigenschappen moeten letterlijke XML gebruiken om het aantal invoer-of uitvoer activa te definiëren dat door de taak wordt gebruikt. Het taak artikel bevat de XML-schema definitie voor de XML.
+* In de TaskBody-definitie moet elke interne waarde `<inputAsset>` voor `<outputAsset>` en worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
+* Een taak kan meerdere uitvoer assets hebben. Een JobOutputAsset (x) kan slechts één keer worden gebruikt als uitvoer van een taak in een taak.
+* U kunt JobInputAsset of JobOutputAsset als invoer element van een taak opgeven.
+* Taken mogen geen cyclus vormen.
+* De waarde-para meter die u doorgeeft aan JobInputAsset of JobOutputAsset vertegenwoordigt de index waarde voor een Asset. De werkelijke activa worden gedefinieerd in de navigatie-eigenschappen InputMediaAssets en OutputMediaAssets van de definitie van de taak entiteit.
 
 > [!NOTE]
-> Omdat Media Services is gebouwd op OData v3-processors, de afzonderlijke elementen in InputMediaAssets en OutputMediaAssets navigatie-eigenschap verzamelingen wordt verwezen door een ' __metadata: uri ' naam / waarde-paar.
+> Omdat Media Services is gebouwd op OData v3, wordt verwezen naar de afzonderlijke assets in InputMediaAssets-en OutputMediaAssets-navigatie-eigenschappen verzamelingen via een combi natie van naam en waarde ' __metadata: URI '.
 >
 >
 
-* InputMediaAssets toegewezen aan een of meer elementen die u hebt gemaakt in Media Services. OutputMediaAssets worden gemaakt door het systeem. Ze bevatten geen verwijzing naar een bestaande asset.
-* OutputMediaAssets kan de naam met behulp van het kenmerk assetName. Als dit kenmerk niet aanwezig zijn is, is de naam van de OutputMediaAsset ongeacht de binnenste tekstwaarde van de `<outputAsset>` -element is met een achtervoegsel van de waarde van de taak, of de taak-Id-waarde (in het geval waarbij de eigenschap Name is niet gedefinieerd). Bijvoorbeeld, als u een waarde instellen voor assetName naar "Voorbeeld", zou klikt u vervolgens de eigenschap OutputMediaAsset Name worden ingesteld op "Voorbeeld". Als u een waarde voor assetName niet is ingesteld, maar de naam van de taak naar nieuwe "taak" hebt ingesteld, zou klikt u vervolgens de naam van de OutputMediaAsset wel '_NewJob JobOutputAsset (waarde)'.
+* InputMediaAssets wordt toegewezen aan een of meer assets die u hebt gemaakt in Media Services. OutputMediaAssets worden gemaakt door het systeem. Ze verwijzen niet naar een bestaande Asset.
+* OutputMediaAssets kan worden benoemd met het kenmerk activanaam. Als dit kenmerk niet aanwezig is, is de naam van de OutputMediaAsset gelijk aan de interne tekst waarde van het `<outputAsset>` element, met een achtervoegsel van de waarde van de taak naam, of de waarde van de taak-id (in het geval waar de eigenschap naam niet is gedefinieerd). Als u bijvoorbeeld een waarde instelt voor ' voor beeld ', wordt de eigenschap OutputMediaAsset name ingesteld op ' voor beeld '. Als u echter geen waarde hebt ingesteld voor de OutputMediaAsset, maar de taak naam had ingesteld op ' NewJob ', zou de naam van de eigenschap ' JobOutputAsset (waarde) _NewJob ' zijn.
 
-    Het volgende voorbeeld laat zien hoe het kenmerk assetName instellen:
+    In het volgende voor beeld ziet u hoe u het kenmerk assets instelt:
 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"
-* Om in te schakelen taak koppeling:
+* Taak koppeling inschakelen:
 
-  * Een taak moet ten minste twee taken hebben
-  * Er moet ten minste één taak waarvan invoer is de uitvoer van een andere taak in de taak.
+  * Een taak moet ten minste twee taken bevatten
+  * Er moet ten minste één taak zijn waarvan de invoer van een andere taak in de taak wordt uitgevoerd.
 
-Zie voor meer informatie, [het maken van een taak codering met Media Services REST API](media-services-rest-encode-asset.md).
+Zie een coderings [taak maken met de Media Services rest API](media-services-rest-encode-asset.md)voor meer informatie.
 
-### <a name="monitor-processing-progress"></a>Monitor voortgang verwerken
-U kunt de taakstatus ophalen met behulp van de eigenschap State zoals wordt weergegeven in het volgende voorbeeld:
+### <a name="monitor-processing-progress"></a>Voortgang van verwerking bewaken
+U kunt de taak status ophalen met behulp van de eigenschap State, zoals wordt weer gegeven in het volgende voor beeld:
 
 **HTTP-aanvraag**
 
@@ -621,9 +621,9 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
 
 
 ### <a name="cancel-a-job"></a>Een taak annuleren
-Media Services kunt u de taken die worden uitgevoerd via de functie CancelJob annuleren. Deze aanroep retourneert een foutcode 400 als u probeert te annuleren van een taak wanneer de status wordt geannuleerd, annuleren, fout of voltooid.
+Met Media Services kunt u actieve taken annuleren met de functie CancelJob. Deze aanroep retourneert een 400-fout code als u probeert een taak te annuleren wanneer de status wordt geannuleerd, geannuleerd, fout of voltooid.
 
-Het volgende voorbeeld ziet hoe u aan te roepen CancelJob.
+In het volgende voor beeld ziet u hoe u CancelJob aanroept.
 
 **HTTP-aanvraag**
 
@@ -637,15 +637,15 @@ Het volgende voorbeeld ziet hoe u aan te roepen CancelJob.
     Host: wamsbayclus001rest-hs.net
 
 
-Als dit lukt, wordt een 204 antwoordcode wordt geretourneerd bij geen berichttekst.
+Als dit lukt, wordt een 204-respons code geretourneerd zonder hoofd tekst van het bericht.
 
 > [!NOTE]
-> U moet coderen met een URL van de taak-id (normaal gesproken nb:jid:UUID: deze functie) als deze wordt doorgegeven als parameter aan CancelJob.
+> U moet een URL opgeven voor de taak-id (normaal NB: JID: UUID: eenwaarde) wanneer u deze als een para meter aan CancelJob door gegeven.
 >
 >
 
-### <a name="get-the-output-asset"></a>Ophalen van de uitvoerasset
-De volgende code laat zien hoe u aan te vragen van de uitvoerasset id.
+### <a name="get-the-output-asset"></a>Het uitvoer activum ophalen
+De volgende code laat zien hoe u de id van de uitvoer activum kunt aanvragen.
 
 **HTTP-aanvraag**
 
@@ -692,11 +692,11 @@ De volgende code laat zien hoe u aan te vragen van de uitvoerasset id.
        ]
     }
 
-## <a id="publish_get_urls"></a>De asset publiceren en te streamen en progressief downloaden ophalen URL's met REST-API
+## <a id="publish_get_urls"></a>De Asset publiceren en Url's voor streamen en progressief downloaden ophalen met REST API
 
 Als u een asset wilt streamen of downloaden, moet u deze eerste publiceren door een locator te maken. Locators bieden toegang tot bestanden in de asset. Media Services ondersteunt twee typen locators: OnDemandOrigin-locators, voor het streamen van media (bijvoorbeeld MPEG DASH, HLS, of Smooth Streaming) en SAS-locators (Shared Access Signature), voor het downloaden van media-bestanden. 
 
-Zodra u de locators hebt gemaakt, kunt u de URL's die worden gebruikt om te streamen of te downloaden van uw bestanden kunt bouwen.
+Wanneer u de Locators hebt gemaakt, kunt u de Url's maken die worden gebruikt om uw bestanden te streamen of te downloaden.
 
 >[!NOTE]
 >Wanneer uw AMS-account is gemaakt, wordt er een **standaardstreaming-eindpunt** met de status **Gestopt** toegevoegd aan uw account. Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** hebben.
@@ -717,16 +717,16 @@ Een SAS-URL die wordt gebruikt om bestanden te downloaden, heeft de volgende ind
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-Deze sectie beschrijft hoe u de volgende taken uitvoeren die nodig zijn voor uw activa 'publiceren'.  
+In deze sectie ziet u hoe u de volgende taken kunt uitvoeren die nodig zijn om uw assets te publiceren.  
 
-* Het maken van de AccessPolicy met leesmachtiging
-* Het maken van een SAS-URL voor het downloaden van inhoud
-* Het maken van een oorsprong-URL voor het streamen van inhoud
+* De AccessPolicy maken met de machtiging lezen
+* Een SAS-URL maken voor het downloaden van inhoud
+* Een oorsprong-URL maken voor streaming-inhoud
 
-### <a name="creating-the-accesspolicy-with-read-permission"></a>Het maken van de AccessPolicy met leesmachtiging
-Voordat u het downloaden of een media-inhoud streamen, eerst een AccessPolicy met lees-en schrijfmachtigingen definiëren en maken van de juiste Locator-entiteit die geeft het type van een leveringsmechanisme die u wilt inschakelen voor uw clients. Zie voor meer informatie over de beschikbare eigenschappen [AccessPolicy entiteitseigenschappen](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
+### <a name="creating-the-accesspolicy-with-read-permission"></a>De AccessPolicy maken met de machtiging lezen
+Voordat u media-inhoud downloadt of streaming, definieert u eerst een AccessPolicy met lees machtigingen en maakt u de juiste Locator-entiteit die het type leverings mechanisme specificeert dat u wilt inschakelen voor uw clients. Zie [AccessPolicy entity Properties](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties)(Engelstalig) voor meer informatie over de beschik bare eigenschappen.
 
-Het volgende voorbeeld ziet hoe u kunt de AccessPolicy voor lees-en schrijfmachtigingen voor een bepaalde Asset opgeven.
+In het volgende voor beeld ziet u hoe u de AccessPolicy opgeeft voor lees machtigingen voor een bepaalde Asset.
 
     POST https://wamsbayclus001rest-hs.net/API/AccessPolicies HTTP/1.1
     Content-Type: application/json
@@ -741,15 +741,15 @@ Het volgende voorbeeld ziet hoe u kunt de AccessPolicy voor lees-en schrijfmacht
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-Als dit lukt, wordt een 201 succescode geretourneerd met een beschrijving van de AccessPolicy-entiteit die u hebt gemaakt. Vervolgens gebruikt u de AccessPolicy Id samen met de Asset-Id van de asset die het bestand dat u afleveren (zoals een uitvoerasset wilt) voor het maken van de entiteit Locator bevat.
+Als de bewerking is geslaagd, wordt een 201-succes code geretourneerd die de AccessPolicy-entiteit die u hebt gemaakt beschrijft. Vervolgens gebruikt u de AccessPolicy-id samen met de Asset-id van de Asset die het bestand bevat dat u wilt leveren (zoals een uitvoer activum) om de Locator-entiteit te maken.
 
 > [!NOTE]
-> Deze basiswerkstroom is hetzelfde als het uploaden van een bestand bij het opnemen van een Asset (zoals eerder in dit onderwerp is beschreven). Ook, zoals het uploaden van bestanden, als u (of uw clients) moeten onmiddellijk toegang krijgen tot uw bestanden, stelt de waarde StartTime tot vijf minuten vóór de huidige tijd. Deze actie is nodig omdat er mogelijk klok scheeftrekken tussen de client en Media Services. De waarde StartTime moet zich in de volgende datum/tijd-indeling: JJJJ-MM-ddTHH (bijvoorbeeld: "2014-05-23T17:53:50Z ').
+> Deze basis werk stroom is hetzelfde als het uploaden van een bestand bij het opnemen van een asset (zoals eerder in dit onderwerp is besproken). Net als bij het uploaden van bestanden moet u, als u (of uw clients), direct toegang hebben tot uw bestanden, de waarde voor StartTime instellen op vijf minuten voor de huidige tijd. Deze actie is nodig omdat er mogelijk een klok verschil tussen de client en Media Services is. De waarde voor StartTime moet de volgende datum notatie hebben: JJJJ-MM-DDTUU: mm: ssZ (bijvoorbeeld "2014-05-23T17:53:50Z").
 >
 >
 
-### <a name="creating-a-sas-url-for-downloading-content"></a>Het maken van een SAS-URL voor het downloaden van inhoud
-De volgende code toont hoe u een URL die kan worden gebruikt voor het downloaden van een media-bestand hebt gemaakt en eerder hebt geüpload. De AccessPolicy leesmachtigingen machtigingen zijn ingesteld en het pad Locator verwijst naar een SAS-URL voor downloaden.
+### <a name="creating-a-sas-url-for-downloading-content"></a>Een SAS-URL maken voor het downloaden van inhoud
+De volgende code laat zien hoe u een URL krijgt die kan worden gebruikt voor het downloaden van een media bestand dat eerder is gemaakt en geüpload. De AccessPolicy heeft lees machtigingen ingesteld en het pad naar de locatie verwijst naar een SAS-download-URL.
 
     POST https://wamsbayclus001rest-hs.net/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -806,22 +806,22 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
        }
     }
 
-De geretourneerde **pad** eigenschap bevat de SAS-URL.
+De eigenschap van het geretourneerde **pad** bevat de SAS-URL.
 
 > [!NOTE]
-> Als u opslag versleuteld inhoud downloaden, moet u handmatig ontsleutelen voordat deze, of de opslag ontsleuteling MediaProcessor gebruiken in een taak voor de verwerking van verwerkte bestanden naar een OutputAsset in de uitvoer en downloaden van deze Asset. Zie voor meer informatie over de verwerking, het maken van een taak codering met Media Services REST API. Bovendien kan niet Locators voor SAS-URL worden bijgewerkt nadat ze zijn gemaakt. Bijvoorbeeld, dat u de dezelfde Locator met een bijgewerkte StartTime-waarde opnieuw kan niet gebruiken. Dit is vanwege de manier waarop de die SAS-URL's worden gemaakt. Als u toegang hebben tot een asset gedownload wilt nadat een Locator is verlopen, moet u een nieuw bestand met een nieuwe StartTime maken.
+> Als u versleutelde inhoud hebt gedownload, moet u deze hand matig ontsleutelen voordat u deze kunt weer geven. u kunt ook de MediaProcessor in een verwerkings taak gebruiken voor het uitvoeren van verwerkte bestanden in de Clear to a OutputAsset en vervolgens downloaden van die Asset. Zie voor meer informatie over het verwerken van een coderings taak maken met de Media Services REST API. Ook kunnen SAS URL-Locators niet worden bijgewerkt nadat ze zijn gemaakt. U kunt bijvoorbeeld niet dezelfde Locator met een bijgewerkte waarde voor StartTime opnieuw gebruiken. Dit komt door de manier waarop SAS-Url's worden gemaakt. Als u toegang wilt krijgen tot een Asset om te downloaden nadat een Locator is verlopen, moet u een nieuwe actief maken met een nieuwe StartTime.
 >
 >
 
 ### <a name="download-files"></a>Bestanden downloaden
-Zodra u hebt de AccessPolicy en Locator ingesteld, kunt u bestanden met behulp van de Azure Storage REST-API's kunt downloaden.  
+Zodra u de AccessPolicy en de Locator hebt ingesteld, kunt u bestanden downloaden met behulp van de Azure Storage REST-Api's.  
 
 > [!NOTE]
-> U moet de bestandsnaam voor het bestand dat u wenst te downloaden naar de Locator toevoegen **pad** waarde die is ontvangen in de vorige sectie. Bijvoorbeeld: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> U moet de bestands naam van het bestand dat u wilt downloaden, toevoegen aan de waarde van het **pad** naar de locatie die in de vorige sectie is ontvangen. Bijvoorbeeld: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 
-Zie voor meer informatie over het werken met Azure storage-blobs [REST API voor Blob Service](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Zie [BLOB Service rest API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)voor meer informatie over het werken met Azure Storage-blobs.
 
-Als gevolg van de coderingstaak die u eerder (codering in adaptieve MP4-set) hebt uitgevoerd, hebt u meerdere MP4-bestanden die u kunt progressief downloaden. Bijvoorbeeld:    
+Als gevolg van de coderings taak die u eerder hebt uitgevoerd (encoding to Adaptive MP4 set), hebt u meerdere MP4-bestanden die u geleidelijk kunt downloaden. Bijvoorbeeld:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -839,8 +839,8 @@ Als gevolg van de coderingstaak die u eerder (codering in adaptieve MP4-set) heb
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
-### <a name="creating-a-streaming-url-for-streaming-content"></a>Het maken van een streaming-URL voor het streamen van inhoud
-De volgende code toont hoe u een streaming-URL-Locator maakt:
+### <a name="creating-a-streaming-url-for-streaming-content"></a>Een streaming-URL maken voor het streamen van inhoud
+De volgende code laat zien hoe u een streaming-URL-Locator maakt:
 
     POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -897,23 +897,23 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
        }
     }
 
-Als u wilt een oorsprong Smooth Streaming-URL in een streaming MediaPlayer streamen, moet u het pad naar de eigenschap met de naam van de Smooth Streaming manifestbestand, gevolgd door ' / manifest ' toevoegen.
+Als u een URL voor Smooth Streaming oorsprong wilt streamen in een Streaming Media Player, moet u de eigenschap pad toevoegen met de naam van het Smooth Streaming manifest bestand, gevolgd door '/manifest '.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest
 
-Om te streamen HLS, toevoegen (format = m3u8-aapl) nadat de '/ manifest'.
+Om HLS, Append (Format = M3U8-AAPL) toe te voegen na de "/manifest".
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-Om te streamen MPEG DASH, toevoegen (format = mpd-time-csf) nadat de '/ manifest'.
+Als u MPEG DASH wilt streamen, voegt u (Format = mpd-time-KVP) na de '/manifest ' toe.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
 ## <a id="play"></a>Uw inhoud afspelen
-Gebruik [Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) om uw video te streamen.
+Gebruik [Azure Media Services Player](https://aka.ms/azuremediaplayer) om uw video te streamen.
 
-Als u wilt testen progressief downloaden, plakt u een URL in een browser (bijvoorbeeld Internet Explorer, Chrome, Safari).
+Plak een URL in een browser (bijvoorbeeld Internet Explorer, Chrome, Safari) om progressieve down load te testen.
 
 ## <a name="next-steps-media-services-learning-paths"></a>Volgende stappen Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

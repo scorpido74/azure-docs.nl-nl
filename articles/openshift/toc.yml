@@ -27,6 +27,8 @@
           href: howto-aad-app-configuration.md
     - name: Een zelfstandige Prometheus implementeren in een Azure Red Hat OpenShift-cluster
       href: howto-deploy-prometheus.md
+    - name: Projecten beheren in een Azure Red Hat OpenShift-cluster
+      href: howto-manage-projects.md
 - name: Naslaginformatie
   items:
     - name: CLI voor Azure Red Hat OpenShift

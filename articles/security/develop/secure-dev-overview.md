@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4df8ff8abfeb7a6ba96ec3344407e95e0a9a3b3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728725"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934868"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Best practices voor veilige ontwikkeling op Azure
 Deze reeks artikelen bevat beveiligings activiteiten en-besturings elementen waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. De fasen van de micro soft Security Development Lifecycle (SDL) en beveiligings vragen en concepten die u tijdens elke fase van de levens cyclus kunt overwegen, worden behandeld. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u in elke fase van de levens cyclus kunt gebruiken om een veiligere toepassing te ontwerpen, ontwikkelen en implementeren.
@@ -69,7 +69,7 @@ Gebruik de volgende bronnen voor meer informatie over het ontwikkelen van beveil
 
 [Naar links pushen, zoals een chef,](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) een reeks online artikelen die verschillende soorten toepassings beveiligings activiteiten bevat die ontwikkel aars moeten volt ooien om veiligere code te maken.
 
-[Micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/) : het micro soft Identity-platform is een evolutie van de Azure AD Identity-service en het ontwikkelaars platform. Het is een volledig uitgeruste platform dat bestaat uit een verificatie service, open source-bibliotheken, registratie en configuratie van toepassingen, volledige documentatie van ontwikkel aars, code voorbeelden en andere inhoud voor ontwikkel aars. Het micro soft-identiteits platform ondersteunt industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect.
+[Micro soft Identity platform](../../active-directory/develop/index.yml) : het micro soft Identity-platform is een evolutie van de Azure AD Identity-service en het ontwikkelaars platform. Het is een volledig uitgeruste platform dat bestaat uit een verificatie service, open source-bibliotheken, registratie en configuratie van toepassingen, volledige documentatie van ontwikkel aars, code voorbeelden en andere inhoud voor ontwikkel aars. Het micro soft-identiteits platform ondersteunt industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect.
 
 [Aanbevolen beveiligings procedures voor Azure-oplossingen](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) : een verzameling aanbevolen procedures voor beveiliging bij het ontwerpen, implementeren en beheren van cloud oplossingen met behulp van Azure. Dit artikel is bedoeld als een resource voor IT-professionals. Dit kan ontwerpers, architecten, ontwikkel aars en testers zijn die beveiligde Azure-oplossingen bouwen en implementeren.
 

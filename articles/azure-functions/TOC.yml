@@ -53,11 +53,9 @@
   items:
     - name: Functions met Logic Apps
       href: functions-twitter-email.md
-    - name: Een serverloze API maken
-      href: functions-create-serverless-api.md
     - name: Python-functies ontwikkelen met VS Code
       href: tutorial-vs-code-serverless-python.md
-    - name: Een OpenAPI-definitie maken
+    - name: OpenAPI-definitie voor serverloze API's
       href: functions-openapi-definition.md
     - name: Verbinding maken met een virtueel netwerk
       href: functions-create-vnet.md
@@ -236,12 +234,10 @@
           href: functions-api-definition-getting-started.md
         - name: Exporteren naar PowerApps en Microsoft Flow
           href: app-service-export-api-to-powerapps-and-flow.md
-        - name: Een functie van PowerApps aanroepen
-          href: functions-powerapps-scenario.md
-        - name: Een functie van Microsoft Flow aanroepen
-          href: functions-flow-scenario.md
         - name: Een beheerde identiteit gebruiken
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Eindpunt van HTTP-functie aanpassen
+          href: functions-create-serverless-api.md
     - name: Problemen oplossen
       items:
         - name: Problemen met opslag oplossen

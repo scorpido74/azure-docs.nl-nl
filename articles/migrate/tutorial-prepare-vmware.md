@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 16c0354466d5c2a1207873a1e83e209da9339705
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679143"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509994"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-Vm's voorbereiden voor evaluatie en migratie naar Azure
 
@@ -123,7 +123,7 @@ Zorg ervoor dat de proxy alle CNAME-records die zijn ontvangen, verhelpt tijdens
 
 Voordat u het Azure Migrate apparaat instelt en de evaluatie begint in de volgende zelf studie, moet u de implementatie van het apparaat voorbereiden.
 
-1. Controleer [de vereisten voor](migrate-support-matrix-vmware.md#assessment-appliance-requirements) het instellen van het Azure migrate apparaat in VMware.
+1. [Controleer](migrate-support-matrix-vmware.md#assessment-appliance-requirements) de vereisten voor het instellen van het Azure migrate apparaat in VMware.
 2. [Bekijk](migrate-support-matrix-vmware.md#assessment-url-access-requirements) de Azure-url's die het apparaat nodig heeft om toegang te krijgen.
 3. Bekijk de gegevens die door het apparaat worden verzameld tijdens de detectie en evaluatie.
 4. [Noteer](migrate-support-matrix-vmware.md#assessment-port-requirements) de toegangs vereisten voor poorten voor het apparaat.
@@ -137,7 +137,7 @@ Bekijk de vereisten voor de migratie van virtuele VMware-machines in agents.
 1. [Controleren](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) VMware-Server vereisten voor migratie zonder agent.
 2. Stel een account in voor toegang tot de vCenter Server met de [vereiste machtigingen](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions) voor de migratie zonder agent.
 3. [Let](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) op de vereisten voor VMware-vm's die u wilt migreren naar Azure met migratie zonder agent.
-4. [Controleer](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) de vereisten voor apparaten voor migratie zonder agent.]
+4. [Controleer](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) de vereisten voor apparaten voor migratie zonder agent.
 5. Opmerking toegang tot de toestel- [URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) en toegangs vereisten voor [poorten](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) voor migratie zonder agent.
 
 

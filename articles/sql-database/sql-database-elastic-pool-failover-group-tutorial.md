@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5dd241fed757669cf8bccd96a1de948e8d73a021
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568744"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033259"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Zelfstudie: Een Azure SQL Database elastische pool toevoegen aan een failovergroep
 
@@ -76,11 +76,11 @@ In deze stap maakt u een failovergroep [](sql-database-auto-failover-group.md) t
 1. Selecteer **SQL-servers** en kies de server die u hebt gemaakt in sectie 1.
 1. Selecteer **failover-groepen** in het deel venster **instellingen** en selecteer vervolgens **groep toevoegen** om een nieuwe failovergroep te maken. 
 
-    ![Nieuwe failovergroep toevoegen](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Nieuwe failovergroep toevoegen](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
 1. Voer op de pagina **failover-groep** de volgende waarden in of Selecteer deze en selecteer vervolgens **maken**:
     - **Naam**van failovergroep: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`. 
-    - **Secundaire server**: Selecteer de optie voor het configureren van de *vereiste instellingen* en kies vervolgens **een nieuwe server maken**. U kunt ook een al bestaande server kiezen als de secundaire server. Nadat u de volgende waarden hebt ingevoerd, selecteert u **selecteren**. 
+    - **Secundaire server**: Selecteer de optie voor het configureren van de *vereiste instellingen* en kies vervolgens **een nieuwe server maken**. U kunt ook een al bestaande server kiezen als de secundaire server. Nadat u de volgende waarden voor de nieuwe secundaire server hebt ingevoerd, selecteert u **selecteren**. 
         - **Servernaam**: Typ een unieke naam voor de secundaire server, zoals `mysqlsecondary`. 
         - **Aanmeldgegevens van serverbeheerder**: Voert`azureuser`
         - **Wachtwoord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
@@ -91,9 +91,9 @@ In deze stap maakt u een failovergroep [](sql-database-auto-failover-group.md) t
     
        ![Een secundaire server maken voor de failovergroep](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
 
-1. Zodra een secundaire server is geselecteerd, worden de **data bases in de groeps** optie ontgrendeld. Selecteer deze optie om **data bases te selecteren die u wilt toevoegen** en selecteer vervolgens de elastische pool die u hebt gemaakt in sectie 2. Er wordt een waarschuwing weer gegeven waarin u wordt gevraagd om een elastische pool te maken op de secundaire server. Selecteer de waarschuwing en selecteer **OK** om de elastische pool te maken op de secundaire server. 
+1. Selecteer **data bases in de groep** en selecteer vervolgens de elastische pool die u hebt gemaakt in sectie 2. Er wordt een waarschuwing weer gegeven waarin u wordt gevraagd om een elastische pool te maken op de secundaire server. Selecteer de waarschuwing en selecteer **OK** om de elastische pool te maken op de secundaire server. 
         
-    ![SQL-data base toevoegen aan failovergroep](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![Elastische pool toevoegen aan failovergroep](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
 1. Selecteer **selecteren** om de instellingen voor de elastische groep toe te passen op de failovergroep en selecteer vervolgens **maken** om uw failovergroep te maken. Door de elastische pool toe te voegen aan de groep failover, wordt het proces voor geo-replicatie automatisch gestart. 
 

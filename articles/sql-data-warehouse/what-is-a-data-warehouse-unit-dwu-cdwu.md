@@ -1,6 +1,6 @@
 ---
-title: Data Warehouse Units (dwu's, cDWUs) in Azure SQL Data Warehouse | Microsoft Docs
-description: Aanbevelingen over het kiezen van het ideale aantal datawarehouse units (dwu's, cDWUs) om te optimaliseren prijs en prestaties en het wijzigen van het aantal eenheden.
+title: Data warehouse units (Dwu's, cDWUs) in Azure SQL Data Warehouse | Microsoft Docs
+description: Aanbevelingen voor het kiezen van het ideale aantal data warehouse-eenheden (Dwu's, cDWUs) voor het optimaliseren van prijs en prestaties en het wijzigen van het aantal eenheden.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -11,42 +11,42 @@ ms.date: 05/30/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: d20a600951a0fe586e981adf12127072df1b744c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66428010"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036049"
 ---
-# <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse Units (dwu's) en compute Data Warehouse Units (cDWUs)
+# <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data warehouse units (Dwu's) en Compute data warehouse units (cDWUs)
 
-Aanbevelingen over het kiezen van het ideale aantal datawarehouse units (dwu's, cDWUs) om te optimaliseren prijs en prestaties en het wijzigen van het aantal eenheden.
+Aanbevelingen voor het kiezen van het ideale aantal data warehouse-eenheden (Dwu's, cDWUs) voor het optimaliseren van prijs en prestaties en het wijzigen van het aantal eenheden.
 
-## <a name="what-are-data-warehouse-units"></a>Wat zijn Data Warehouse Units
+## <a name="what-are-data-warehouse-units"></a>Wat zijn data warehouse-eenheden?
 
-Azure SQL Data Warehouse CPU, geheugen en i/o-worden gebundeld in eenheden van de schaal van compute Data Warehouse Units (dwu's) genoemd. Een DWU vertegenwoordigt een abstract, genormaliseerde meting van rekenresources en prestaties. Een wijziging in uw serviceniveau verandert het aantal dwu's die beschikbaar zijn voor het systeem, dat op zijn beurt past u de prestaties en de kosten van uw systeem.
+Azure SQL Data Warehouse CPU, geheugen en i/o zijn gebundeld in eenheden van Compute Scale met de naam data warehouse units (Dwu's). Een DWU vertegenwoordigt een abstracte, genormaliseerde meting van reken bronnen en prestaties. Een wijziging in uw service niveau wijzigt het aantal Dwu's dat beschikbaar is voor het systeem, waardoor de prestaties en de kosten van uw systeem worden aangepast.
 
-Voor betere prestaties, kunt u het aantal datawarehouse-eenheden te verhogen. Voor minder prestaties verkleinen dwu's. Kosten voor opslag en Computing worden apart in rekening gebracht, zodat de datawarehouse-eenheden wijzigen heeft geen invloed op kosten voor opslag.
+Voor betere prestaties kunt u het aantal data warehouse-eenheden verhogen. Voor minder prestaties vermindert u de Data Warehouse-eenheden. Opslag-en reken kosten worden afzonderlijk gefactureerd, zodat het wijzigen van de Data Warehouse-eenheden geen invloed heeft op de opslag kosten.
 
-Prestaties voor datawarehouse-eenheden is gebaseerd op deze datawarehouse-workload metrieken:
+De prestaties voor Data Warehouse-eenheden zijn gebaseerd op de metrische gegevens van de werk belasting van deze data warehouse:
 
-- Hoe snel een standaarddatawarehousequery kunt scannen van een groot aantal rijen en voert u een complexe aggregatie. Deze bewerking is een i/o en CPU-intensief.
-- Het datawarehouse hoe snel gegevens uit Azure Storage-Blobs of Azure Data Lake opnemen kan. Deze bewerking is de netwerk- en CPU-intensief.
-- Hoe snel de [ `CREATE TABLE AS SELECT` ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-opdracht kan een tabel kopiëren. Met deze bewerking omvat het lezen van gegevens uit de opslag, verdelen over de knooppunten van het apparaat en wegschrijven naar opslag opnieuw. Deze bewerking is CPU en i/o-intensieve netwerk.
+- Hoe snel een Standard data warehousing-query een groot aantal rijen kan scannen en vervolgens een complexe aggregatie kan uitvoeren. Deze bewerking is I/O en CPU-intensief.
+- Hoe snel het Data Warehouse gegevens kan opnemen uit Azure Storage blobs of Azure Data Lake. Deze bewerking is netwerk-en CPU-intensief.
+- Hoe snel de [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL-opdracht een tabel kan kopiëren. Deze bewerking omvat het lezen van gegevens uit de opslag, het distribueren ervan over de knoop punten van het apparaat en het opnieuw schrijven naar de opslag. Deze bewerking is CPU, i/o en netwerk intensief.
 
-Steeds meer dwu's:
+Dwu's verhogen:
 
-- Prestaties van het systeem voor scans en aggregaties CTAS instructies lineair wordt gewijzigd
-- Vergroot het aantal lezers en schrijvers voor PolyBase load bewerkingen
-- Verhoogt de maximum aantal gelijktijdige query's en gelijktijdigheidssleuven in beslag.
+- Lineaire wijzigingen in de prestaties van het systeem voor scans, aggregaties en CTAS-instructies
+- Verhoogt het aantal lezers en schrijvers voor poly base-laad bewerkingen
+- Hiermee wordt het maximum aantal gelijktijdige query's en gelijktijdigheids sleuven verhoogd.
 
-## <a name="service-level-objective"></a>Serviceniveaudoelstelling
+## <a name="service-level-objective"></a>Serviceniveau doelstelling
 
-De Service Level Objective (SLO) is de schaalbaarheid-instelling die de kosten en prestaties van uw datawarehouse bepaalt. Het niveau van de service voor Gen2 worden gemeten in compute datawarehouse-eenheden (cDWU), bijvoorbeeld DW2000c. Gen1 serviceniveaus worden gemeten in dwu's, bijvoorbeeld DW2000.
+De serviceniveau doelstelling (SLO) is de schaal baarheid-instelling waarmee de kosten en het prestatie niveau van uw data warehouse worden bepaald. De service niveaus voor Gen2 worden gemeten in reken Data Warehouse-eenheden (cDWU), bijvoorbeeld DW2000c. Gen1-service niveaus worden gemeten in Dwu's, bijvoorbeeld DW2000.
   > [!NOTE]
-  > Azure SQL Data Warehouse Gen2 onlangs extra mogelijkheden voor ter ondersteuning van rekenlagen slechts 100 cDWU toegevoegd. Bestaande datawarehouses momenteel op Gen1 waarvoor de laagste compute lagen kunnen nu upgraden naar Gen2 in de regio's die momenteel beschikbaar voor zonder extra kosten zijn.  Als uw regio wordt nog niet ondersteund, kunt u nog steeds bijwerken naar een ondersteunde regio. Zie voor meer informatie, [upgraden naar Gen2](upgrade-to-latest-generation.md).
+  > Azure SQL Data Warehouse Gen2 onlangs extra schaal mogelijkheden toegevoegd ter ondersteuning van reken lagen van 100 cDWU. Bestaande data warehouses op gen1 waarvoor de lagere reken lagen zijn vereist, kunnen nu worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn voor geen extra kosten.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [upgrade naar Gen2](upgrade-to-latest-generation.md)voor meer informatie.
 
-In T-SQL bepaalt de instelling SERVICE_OBJECTIVE het serviceniveau en de prestatielaag voor uw datawarehouse.
+In T-SQL bepaalt de SERVICE_OBJECTIVE-instelling het service niveau en de prestatie-laag voor uw data warehouse.
 
 ```sql
 --Gen1
@@ -58,56 +58,56 @@ WITH
 
 --Gen2
 CREATE DATABASE myComputeSQLDW
-WITH
-(    SERVICE_OBJECTIVE = 'DW1000c'
+(Edition = 'Datawarehouse'
+ ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="performance-tiers-and-data-warehouse-units"></a>Prestatielagen en datawarehouse Units
+## <a name="performance-tiers-and-data-warehouse-units"></a>Prestatie lagen en Data Warehouse-eenheden
 
-Elke prestatielaag maakt gebruik van een iets andere maateenheid voor de datawarehouse-eenheden. Dit verschil wordt op de factuur weergegeven als de eenheid van de schaal direct wordt omgezet in facturering.
+Elke prestatie tier maakt gebruik van een iets andere maat eenheid voor de Data Warehouse-eenheden. Dit verschil wordt op de factuur weer gegeven wanneer de eenheid van de schaal rechtstreeks wordt omgezet in de facturering.
 
-- Gen1 datawarehouses worden gemeten in Data Warehouse Units (dwu's).
-- Gen2 data warehouses worden gemeten in compute Data Warehouse Units (cDWUs).
+- Gen1-data warehouses worden gemeten in data warehouse units (Dwu's).
+- Gen2-data warehouses worden gemeten in reken data warehouse units (cDWUs).
 
-Dwu's zowel cDWUs ondersteuning voor vergroten/verkleinen compute omhoog of omlaag en onderbreken compute wanneer u niet nodig hebt voor het gebruik van het datawarehouse. Deze bewerkingen zijn alle op aanvraag. Gen2 maakt gebruik van een lokale schijf op basis van cache op de rekenknooppunten om prestaties te verbeteren. Als u het systeem onderbreken of schalen, de cache ongeldig is gemaakt en dus een periode van het opwarmen van cache is vereist voordat de optimale prestaties wordt bereikt.  
+Zowel Dwu's als cDWUs ondersteunen het schalen van de computer naar boven of beneden en het onderbreken van de reken kracht wanneer u het Data Warehouse niet hoeft te gebruiken. Deze bewerkingen zijn allemaal op aanvraag. Gen2 maakt gebruik van een lokale schijf cache op de reken knooppunten om de prestaties te verbeteren. Wanneer u het systeem schaalt of onderbreekt, wordt de cache ongeldig en wordt er een periode voor het opwarmen van de cache vereist voordat optimale prestaties worden gerealiseerd.  
 
-Als u de datawarehouse-eenheden verhoogt, zijn u Lineair computerbronnen te vergroten. Gen2 biedt de beste prestaties van query's en de hoogste schaal. Gen2 systemen maken ook de meeste gebruik van de cache.
+Naarmate u Data Warehouse-eenheden verg root, zijn er lineaire toenemende computer bronnen. Gen2 biedt de beste query prestaties en hoogste schaal. Gen2-systemen maken het gebruik van de cache ook optimaal.
 
 ### <a name="capacity-limits"></a>Capaciteitslimieten
 
-Elke SQL-server (bijvoorbeeld myserver.database.windows.net) heeft een [Database Transaction Unit (DTU)](../sql-database/sql-database-what-is-a-dtu.md) quotum waarmee een bepaald aantal dwu's. Zie voor meer informatie de [Capaciteitslimieten management workload](sql-data-warehouse-service-capacity-limits.md#workload-management).
+Elke SQL-Server (bijvoorbeeld myserver.database.windows.net) heeft een [DTU-quotum (data base Trans Action Unit)](../sql-database/sql-database-what-is-a-dtu.md) waarmee een specifiek aantal data warehouse-eenheden kan worden toegestaan. Zie capaciteits limieten voor [werk belasting beheer](sql-data-warehouse-service-capacity-limits.md#workload-management)voor meer informatie.
 
-## <a name="how-many-data-warehouse-units-do-i-need"></a>Het aantal dwu's heb ik nodig
+## <a name="how-many-data-warehouse-units-do-i-need"></a>Hoeveel data warehouse-eenheden heb ik nodig?
 
-Het ideale aantal dwu's afhankelijk is al te veel van de werkbelasting en de hoeveelheid gegevens die u hebt geladen in het systeem.
+Het ideale aantal data warehouse-eenheden hangt zeer veel af van uw werk belasting en de hoeveelheid gegevens die u in het systeem hebt geladen.
 
 Stappen voor het vinden van de beste DWU voor uw workload:
 
-1. Beginnen met een kleinere DWU te selecteren.
-2. Prestaties van uw toepassing controleren als u laden van gegevens in het systeem testen, het aantal dwu's geselecteerd ten opzichte van de prestaties die u ziet dat uw probleem.
-3. Identificeer eventuele bijkomende vereisten voor periodieke perioden van piekactiviteit. Werkbelastingen met aanzienlijke piekt en holten in de activiteit mogelijk moeten regelmatig worden geschaald.
+1. Begin door een kleiner DWU te selecteren.
+2. Bewaak de prestaties van uw toepassing tijdens het testen van gegevens die in het systeem worden geladen, waarbij het aantal geselecteerde Dwu's wordt onderzocht vergeleken met de prestaties die u ziet.
+3. Identificeer eventuele aanvullende vereisten voor periodieke Peri Oden van piek activiteit. Werk belastingen die aanzienlijke pieken en troughs in activiteiten tonen, moeten mogelijk regel matig worden geschaald.
 
-SQL Data Warehouse is een scale-out-systeem die grote hoeveelheden reken- en aanzienlijke hoeveelheden gegevens kunt inrichten. Als u wilt zien van de werkelijke capaciteit voor schalen, met name bij een groter aantal dwu's, wordt u aangeraden de gegevensset te schalen wanneer u schaalt om ervoor te zorgen dat er voldoende gegevens om de CPU's. Voor het testen van schaal, wordt u aangeraden ten minste 1 TB.
+SQL Data Warehouse is een scale-out systeem waarmee u grote hoeveel heden reken-en query gegevens kunt inrichten. Als u de echte mogelijkheden voor schalen wilt zien, met name bij grotere Dwu's, kunt u het beste de gegevensset schalen terwijl u schaalt om ervoor te zorgen dat u voldoende gegevens hebt om de Cpu's te kunnen invoeren. Voor schaal tests kunt u het beste ten minste 1 TB gebruiken.
 
 > [!NOTE]
 >
-> Prestaties van query's alleen wordt aangepast met meer parallellisering als het werk kan worden gesplitst tussen rekenknooppunten. Als u vindt dat schalen is niet gewijzigd, de prestaties van uw, moet u mogelijk om af te stemmen uw tabelontwerp en/of uw query's. Zie voor het afstemmen van query's richtlijnen, [query's van gebruikers beheren](sql-data-warehouse-overview-manage-user-queries.md).
+> Query prestaties worden alleen verhoogd met meer parallel Lise ring als het werk kan worden gesplitst tussen reken knooppunten. Als u merkt dat het schalen van de prestaties niet verandert, moet u mogelijk uw tabel ontwerp en/of uw query's afstemmen. Zie [Manage User query's](sql-data-warehouse-overview-manage-user-queries.md)(Engelstalig) voor meer informatie over het afstemmen van query's.
 
 ## <a name="permissions"></a>Machtigingen
 
-De machtigingen die worden beschreven in de datawarehouse-eenheden wijzigen vereist [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql).
+Voor het wijzigen van de Data Warehouse-eenheden zijn de machtigingen vereist die worden beschreven in [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql).
 
-Ingebouwde rollen voor Azure-resources, zoals ' SQL DB Contributor ' en Inzender voor SQL Server kunnen DWU-instellingen wijzigen.
+Ingebouwde rollen voor Azure-resources, zoals Inzender voor SQL-data bases en SQL Server Inzender, kunnen DWU-instellingen wijzigen.
 
-## <a name="view-current-dwu-settings"></a>De huidige DWU-instellingen weergeven
+## <a name="view-current-dwu-settings"></a>Huidige DWU-instellingen weer geven
 
-De huidige DWU-instelling weergeven:
+De huidige DWU-instelling weer geven:
 
-1. Open SQL Server-Objectverkenner in Visual Studio.
-2. Verbinding maken met de hoofddatabase die zijn gekoppeld aan de logische SQL Database-server.
-3. Selecteer in de dynamische Beheerweergave sys.database_service_objectives. Hier volgt een voorbeeld:
+1. Open SQL Server-objectverkenner in Visual Studio.
+2. Verbinding maken met de hoofd database die aan de logische SQL Database-Server is gekoppeld.
+3. Selecteer in de weer gave voor dynamische beheer van sys. database_service_objectives. Hier volgt een voorbeeld:
 
 ```sql
 SELECT  db.name [Database]
@@ -118,15 +118,15 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 ;
 ```
 
-## <a name="change-data-warehouse-units"></a>Dwu's wijzigen
+## <a name="change-data-warehouse-units"></a>Data Warehouse-eenheden wijzigen
 
 ### <a name="azure-portal"></a>Azure Portal
 
 Dwu's of cDWUs wijzigen:
 
-1. Open de [Azure-portal](https://portal.azure.com), opent u uw database en klik op **schaal**.
+1. Open de [Azure Portal](https://portal.azure.com), open uw data base en klik op **schalen**.
 
-2. Onder **schaal**, verplaats de schuifregelaar naar links of rechts om de DWU-instelling te wijzigen.
+2. Verplaats onder **schalen**de schuif regelaar naar links of rechts om de instelling DWU te wijzigen.
 
 3. Klik op **Opslaan**. Er wordt een bevestigingsbericht weergegeven. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
 
@@ -134,22 +134,22 @@ Dwu's of cDWUs wijzigen:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-De dwu's of cDWUs wilt wijzigen, gebruikt u de [Set AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell-cmdlet. Het volgende voorbeeld wordt de serviceniveaudoelstelling naar DW1000 voor de database MySQLDW die wordt gehost op de server MijnServer.
+Gebruik de Power shell [-cmdlet Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) om de Dwu's of cDWUs te wijzigen. In het volgende voor beeld wordt de serviceniveau doelstelling ingesteld op DW1000 voor de data base-MySQLDW die wordt gehost op server mijnserver.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
 
-Zie voor meer informatie, [PowerShell-cmdlets voor SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md)
+Zie [Power shell-cmdlets voor SQL Data Warehouse](sql-data-warehouse-reference-powershell-cmdlets.md) voor meer informatie.
 
 ### <a name="t-sql"></a>T-SQL
 
-Met T-SQL kunt u de huidige DWU of cDWU-instellingen weergeven, de instellingen wijzigen en de voortgang controleren.
+Met T-SQL kunt u de huidige instellingen voor DWU of cDWU weer geven, de instellingen wijzigen en de voortgang controleren.
 
-De dwu's of cDWUs wijzigen:
+De Dwu's of cDWUs wijzigen:
 
-1. Verbinding maken met de hoofddatabase die zijn gekoppeld aan de logische SQL Database-server.
-2. Gebruik de [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL-instructie. Het volgende voorbeeld wordt de serviceniveaudoelstelling naar DW1000 voor de database MySQLDW.
+1. Maak verbinding met de hoofd database die aan uw logische SQL Database-Server is gekoppeld.
+2. Gebruik de instructie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql) TSQL. In het volgende voor beeld wordt de serviceniveau doelstelling ingesteld op DW1000 voor de data base-MySQLDW.
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -159,7 +159,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ### <a name="rest-apis"></a>REST-API’s
 
-U kunt de dwu's wijzigen met de [maken of bijwerken Database](/rest/api/sql/databases/createorupdate) REST-API. Het volgende voorbeeld wordt de serviceniveaudoelstelling naar DW1000 voor de database MySQLDW, die wordt gehost op de server MijnServer. De server zich in een Azure-resourcegroep met de naam ResourceGroup1.
+Als u de Dwu's wilt wijzigen, gebruikt u de REST API [Data Base maken of bijwerken](/rest/api/sql/databases/createorupdate) . In het volgende voor beeld wordt de serviceniveau doelstelling ingesteld op DW1000 voor de data base-MySQLDW, die wordt gehost op server mijnserver. De server bevindt zich in een Azure-resource groep met de naam ResourceGroup1.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -172,20 +172,20 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Zie voor meer voorbeelden van de REST-API, [REST-API's voor SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md).
+Zie [rest-api's voor SQL Data Warehouse](sql-data-warehouse-manage-compute-rest-api.md)voor meer rest API voor beelden.
 
-## <a name="check-status-of-dwu-changes"></a>Controleer de status van DWU-wijzigingen
+## <a name="check-status-of-dwu-changes"></a>Status van DWU-wijzigingen controleren
 
-DWU-wijzigingen kunnen enkele minuten duren. Als u automatisch schalen, kunt u overwegen logica om ervoor te zorgen dat bepaalde bewerkingen zijn voltooid voordat u doorgaat met een andere actie.
+Het volt ooien van DWU-wijzigingen kan enkele minuten duren. Als u automatisch schaalt, kunt u overwegen logica te implementeren om ervoor te zorgen dat bepaalde bewerkingen zijn voltooid voordat u doorgaat met een andere actie.
 
-De status van de database via verschillende eindpunten te controleren, kunt u automation correct te implementeren. De portal biedt-mailmelding bij voltooiing van een bewerking en de huidige status van databases, maar is niet toegestaan voor het controleren van programmatische van status.
+Door de database status via verschillende eind punten te controleren, kunt u Automation goed implementeren. De portal biedt een melding na voltooiing van een bewerking en de huidige status van de data bases, maar staat geen programmatische controle van de status toe.
 
-U kunt de status van de database voor scale-out-bewerkingen met de Azure-portal niet controleren.
+U kunt de status van de data base niet controleren op scale-out-bewerkingen met de Azure Portal.
 
-Om te controleren of de status van DWU-wijzigingen:
+De status van DWU-wijzigingen controleren:
 
-1. Verbinding maken met de hoofddatabase die zijn gekoppeld aan de logische SQL Database-server.
-2. De volgende query uit om te controleren of de status van de database verzenden.
+1. Maak verbinding met de hoofd database die aan uw logische SQL Database-Server is gekoppeld.
+2. Verzend de volgende query om de status van de data base te controleren.
 
 ```sql
 SELECT    *
@@ -193,7 +193,7 @@ FROM      sys.databases
 ;
 ```
 
-1. Verzenden van de volgende query uit om te controleren of de status van bewerking
+1. Verzend de volgende query om de status van de bewerking te controleren
 
 ```sql
 SELECT    *
@@ -203,15 +203,15 @@ AND       major_resource_id = 'MySQLDW'
 ;
 ```
 
-Deze DMV retourneert informatie over de verschillende beheerbewerkingen in uw SQL Data Warehouse, zoals de bewerking en de status van de bewerking die een IN_PROGRESS of COMPLETED.
+Deze DMV retourneert informatie over verschillende beheer bewerkingen op uw SQL Data Warehouse, zoals de bewerking en de status van de bewerking, ofwel IN_PROGRESS of voltooid.
 
-## <a name="the-scaling-workflow"></a>De werkstroom vergroten/verkleinen
+## <a name="the-scaling-workflow"></a>De werk stroom voor schalen
 
-Wanneer u een schaalbewerking start, beëindigt het systeem eerst alle geopende sessies, het terugdraaien van een open transacties om te controleren of een consistente status. Voor bewerkingen voor schalen, schalen is alleen sprake wanneer deze transactionele ongedaan maken is voltooid.  
+Wanneer u een schaal bewerking start, beëindigt het systeem eerst alle geopende sessies. alle geopende trans acties worden teruggedraaid om een consistente status te garanderen. Schaal bewerkingen worden alleen uitgevoerd nadat de transactionele terugdraai actie is voltooid.  
 
-- Voor de werking van een scale-up, het systeem losgekoppeld van alle rekenknooppunten, levert de extra rekenknooppunten en vervolgens doelschijf aan de storage-laag.
-- Voor een bewerking omlaag schalen, het systeem alle rekenknooppunten losgekoppeld en doelschijf vervolgens alleen de benodigde knooppunten aan de storage-laag.
+- Voor een schaal bewerking koppelt het systeem alle reken knooppunten, worden de extra reken knooppunten ingericht en vervolgens opnieuw gekoppeld aan de opslaglaag.
+- Voor een schaal bewerking koppelt het systeem alle reken knooppunten los en koppelt vervolgens alleen de benodigde knoop punten aan de opslaglaag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het beheren van prestaties, [resourceklassen voor het beheer van de werkbelasting](resource-classes-for-workload-management.md) en [limieten voor geheugen en gelijktijdigheid](memory-and-concurrency-limits.md).
+Zie [resource klassen voor workload Management](resource-classes-for-workload-management.md) en [geheugen-en gelijktijdigheids limieten](memory-and-concurrency-limits.md)voor meer informatie over het beheren van prestaties.

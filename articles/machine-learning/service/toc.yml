@@ -213,29 +213,29 @@
         - name: Waar en hoe u implementeert
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Notebook-VM's
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: Azure Kubernetes Service
+        - name: Implementeren naar Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: Inferentie van GPU
+        - name: Implementeren voor GPU-interferentie
           href: how-to-deploy-inferencing-gpus.md
-        - name: Inferentie van FPGA's
-          href: how-to-deploy-fpga-web-service.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Azure App Service
+        - name: Implementeren naar Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Aangepaste Docker-afbeelding
+        - name: Implementeren naar Azure Container Instances
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: Implementeren op Notebook-VM's
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: Aangepaste Docker-afbeelding gebruiken
           href: how-to-deploy-custom-docker-image.md
         - name: Bestaande modellen implementeren
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: Problemen oplossen en fouten opsporen
+        - name: Implementeren naar IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: Implementeren voor interferentie van FPGA's
+          href: how-to-deploy-fpga-web-service.md
+        - name: Problemen met implementaties opsporen en oplossen
           href: how-to-troubleshoot-deployment.md
     - name: Webservices gebruiken
       items:

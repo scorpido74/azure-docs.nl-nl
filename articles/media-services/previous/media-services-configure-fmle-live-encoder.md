@@ -1,6 +1,6 @@
 ---
-title: FMLE-coderingsprogramma voor het verzenden van een single-bitrate live stream configureren | Microsoft Docs
-description: In dit onderwerp laat zien hoe het configureren van het coderingsprogramma Flash Media Live Encoder (FMLE) voor het verzenden van een single-bitrate stream aan AMS-kanalen die zijn ingeschakeld voor live codering.
+title: Het FMLE-coderings programma configureren voor het verzenden van een live stream met één bitsnelheid | Microsoft Docs
+description: In dit onderwerp wordt beschreven hoe u de encoder van Flash Media Live Encoder (FMLE) configureert om een enkele bitrate stroom te verzenden naar AMS-kanalen die zijn ingeschakeld voor Live encoding.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: cenkdin;anilmur
+ms.openlocfilehash: 09d9bdffefe9204e9f58b8f07af5b21228269f6c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465934"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016760"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>FMLE-coderingsprogramma gebruiken voor het verzenden van een single-bitrate live stream 
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Het FMLE-coderings programma gebruiken om een live stream met één bitsnelheid te verzenden 
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -29,11 +30,11 @@ ms.locfileid: "61465934"
 >
 >
 
-In dit artikel laat zien hoe het configureren van de [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) encoder (FMLE) voor het verzenden van een single-bitrate stream aan AMS kanalen die zijn ingeschakeld voor live codering. Zie [Werken met kanalen waarmee Live Encoding kan worden uitgevoerd met Azure Media Services](media-services-manage-live-encoder-enabled-channels.md) voor meer informatie.
+In dit artikel wordt beschreven hoe u de encoder van [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) configureert om een enkele bitrate stroom te verzenden naar AMS-kanalen die zijn ingeschakeld voor Live encoding. Zie [Werken met kanalen waarmee Live Encoding kan worden uitgevoerd met Azure Media Services](media-services-manage-live-encoder-enabled-channels.md) voor meer informatie.
 
 In deze zelfstudie laat zien hoe Azure Media Services (AMS) beheren met Azure Media Services Explorer (AMSE)-hulpprogramma. Dit hulpprogramma wordt alleen uitgevoerd op Windows-PC. Als u van Mac- of Linux gebruikmaakt, de Azure portal gebruiken voor het maken van [kanalen](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) en [programma's](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-Deze zelfstudie wordt beschreven met behulp van AAC. FMLE ondersteunt niet echter AAC standaard. U moet een invoegtoepassing voor de AAC-codering zoals invoegtoepassing van MainConcept kopen: [AAC-invoegtoepassing](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+In deze zelf studie wordt beschreven hoe u AAC gebruikt. FMLE biedt echter geen ondersteuning voor AAC. U moet een invoeg toepassing voor AAC-code ring aanschaffen, bijvoorbeeld van MainConcept: [AAC-invoeg toepassing](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Vereisten
 * [Een Azure Media Services-account maken](media-services-portal-create-account.md)
@@ -67,69 +68,69 @@ Deze zelfstudie wordt beschreven met behulp van AAC. FMLE ondersteunt niet echte
 Terwijl het kanaal wordt gestart, kunt u [configureren van het coderingsprogramma](media-services-configure-fmle-live-encoder.md).
 
 > [!IMPORTANT]
-> Houd er rekening mee dat de facturering begint zodra kanaal krijgt de status gereed. Zie voor meer informatie, [van kanaal Staten](media-services-manage-live-encoder-enabled-channels.md#states).
+> Houd er rekening mee dat de facturering begint zodra de status van het kanaal gereed is. Zie voor meer informatie, [van kanaal Staten](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a id=configure_fmle_rtmp></a>FMLE-coderingsprogramma configureren
+## <a id=configure_fmle_rtmp></a>De coderings programma FMLE configureren
 In deze zelfstudie worden de volgende uitvoerinstellingen gebruikt. De rest van deze sectie worden de configuratiestappen in meer detail beschreven.
 
 **Video**:
 
-* Codec: H.264
-* Profiel: Hoog (niveau 4.0)
-* Bitrate: 5000 kbps
-* Sleutelframes: 2 seconden (60 seconden)
-* Framesnelheid: 30
+* Videocodec H.264
+* Uplinkpoortprofiel Hoog (niveau 4,0)
+* Bitsnelheid 5000 kbps
+* Keyframe: 2 seconden (60 seconden)
+* Frame frequentie: 30
 
 **Audio**:
 
-* Codec: AAC (LC)
-* Bitrate: 192 kbps
-* Samplefrequentie: 44.1 kHz
+* Videocodec AAC (LC)
+* Bitsnelheid 192 kbps
+* Sample frequentie: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Configuratiestappen
-1. Navigeer naar de Flash Media Live Encoder van (FMLE) interface op de machine die wordt gebruikt.
+1. Navigeer naar de FMLE-interface (Flash Media Live Encoder) op de computer die wordt gebruikt.
 
-    De interface is een startpagina van instellingen. Noteer de volgende instellingen om te beginnen met streamen met FMLE aanbevolen.
+    De interface is één hoofd pagina met instellingen. Let op de volgende aanbevolen instellingen om aan de slag te gaan met streaming met FMLE.
 
-   * Indeling: Framesnelheid H.264: 30.00
-   * Invoergrootte: 1280 x 720
-   * Bitsnelheid: 5000 kbps (kan worden aangepast op basis van de beperkingen op het netwerk)  
+   * Indeling: H. 264-frame frequentie: 30,00
+   * Invoer grootte: 1280 x 720
+   * Bitsnelheid: 5000 kbps (kan worden aangepast op basis van beperkingen van het netwerk)  
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
-     Wanneer met behulp van bronnen geïnterlinieerde, kunt u de optie 'Zonder interliniëring' is ingeschakeld
-2. Selecteer de moersleutelpictogram naast indeling, moeten de volgende aanvullende instellingen:
+     Wanneer u geïnterlinieerde bronnen gebruikt, moet u de optie ' interliniëring ongedaan maken ' selecteren
+2. Selecteer het moersleutel-pictogram naast indeling. deze aanvullende instellingen zijn:
 
-   * Profiel: Hoofdvenster
+   * Uplinkpoortprofiel Algemeen
    * Niveau: 4.0
-   * Frequentie van sleutelframes: 2 seconden
+   * Frequentie van keyframe: 2 seconden
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
-3. Stel de volgende belangrijke audio instelling:
+3. Stel de volgende belang rijke audio-instelling in:
 
    * Indeling: AAC
-   * Samplefrequentie: 44100 Hz
-   * Bitrate: 192 Kbps
+   * Sample frequentie: 44100 Hz
+   * Bitsnelheid 192 Kbps
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
-4. Het kanaal Get invoer van URL om te kunnen toewijzen aan van de FMLE **RTMP-eindpunt**.
+4. Haal de invoer-URL van het kanaal op om deze toe te wijzen aan het **RTMP-eind punt**van de FMLE.
 
     Ga terug naar het AMSE-hulpprogramma en de voltooiingsstatus kanaal controleren. Zodra de status is gewijzigd van **vanaf** naar **met**, krijgt u de invoer-URL.
 
     Wanneer het kanaal wordt uitgevoerd, met de rechtermuisknop op de naam van het kanaal, navigeer naar de plaats de muisaanwijzer **invoer-URL kopiëren naar Klembord** en selecteer vervolgens **primaire invoer-URL**.  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
-5. Plak deze informatie in de **FMS URL** veld van de sectie uitvoer en de naam van een stream toewijzen.
+5. Plak deze informatie in het veld **FMS URL** van de sectie output en wijs een stroom naam toe.
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
 
-    Herhaal deze stappen met het secundaire invoer-URL voor extra redundantie.
+    Voor extra redundantie herhaalt u deze stappen met de secundaire invoer-URL.
 6. Selecteer **Verbinden**.
 
 > [!IMPORTANT]
-> Voordat u klikt op **Connect**, u **moet** ervoor te zorgen dat het kanaal gereed is.
+> Voordat u op **verbinding maken**klikt, **moet** u ervoor zorgen dat het kanaal gereed is.
 > Zorg ervoor dat u niet laat het kanaal in een status gereed hebben zonder een invoer bijdrage feed voor langer dan 15 minuten >.
 >
 >
@@ -148,7 +149,7 @@ Als er een fout is ontvangen, wordt het kanaal moet opnieuw worden ingesteld en 
 1. Wanneer het kanaal afspelen hebt bevestigd, maakt u een programma. Onder de **Live** tabblad in het AMSE-hulpprogramma, met de rechtermuisknop op het gebied van het programma en selecteert u **nieuw programma maken**.  
 
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle9.png)
-2. Naam van het programma en wijzig indien nodig, de **voor het archiefvenster** (die standaard 4 uur). U kunt ook opgeven van een opslaglocatie bevinden of behoud de standaardwaarde.  
+2. Geef het programma een naam en wijzig indien nodig de **lengte van het archief venster** (de standaard waarde is vier uur). U kunt ook opgeven van een opslaglocatie bevinden of behoud de standaardwaarde.  
 3. Controleer de **Start het programma nu** vak.
 4. Klik op **programma maken**.  
 

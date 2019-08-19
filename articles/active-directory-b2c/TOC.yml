@@ -62,9 +62,6 @@
           href: active-directory-b2c-reference-tokens.md
         - name: Toegangstoken aanvragen
           href: active-directory-b2c-access-tokens.md
-        - name: Meerdere tokenverleners ondersteunen
-          href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
     - name: Gebruikersstroom en beleid
       items:
         - name: Gebruikersstromen
@@ -307,7 +304,12 @@
             - name: RelyingParty
               href: relyingparty.md
     - name: B2clogin.com gebruiken
-      href: b2clogin.md
+      items:
+        - name: Overzicht van b2clogin.com
+          href: b2clogin.md
+        - name: Web-API migreren naar b2clogin.com
+          href: multiple-token-endpoints.md
+          displayName: 'migrate, b2clogin, owin, jwt'
     - name: Automation
       items:
         - name: Gebruiksrapport exporteren

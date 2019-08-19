@@ -1,7 +1,7 @@
 ---
-title: Experimenten en interferentie uitvoeren in een virtueel netwerk
+title: Beveilig experimenten en demijnen in een virtueel netwerk
 titleSuffix: Azure Machine Learning service
-description: Voer machine learning experimenten uit en verlaag de beveiliging binnen een virtueel Azure-netwerk. Meer informatie over het maken van reken doelen voor model training en het uitvoeren van een interferentie binnen een virtueel netwerk. Meer informatie over de vereisten voor beveiligde virtuele netwerken, zoals het vereisen van binnenkomende en uitgaande poorten.
+description: meer informatie over het beveiligen van experimenten/trainings taken en het afleiden/scoren van taken in Azure Machine Learning binnen een Azure Virtual Network.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,29 +10,30 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: bd70957671c11137465225aa3bbb046b12a2c650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1b5e3777109b13baa7d774a524664551798ba4ca
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966908"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558198"
 ---
-# <a name="run-experiments-and-inference-securely-within-an-azure-virtual-network"></a>Experimenten uitvoeren en veilig afwijzen binnen een virtueel Azure-netwerk
+# <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 
-In dit artikel vindt u informatie over het uitvoeren van experimenten en interferentie, of het model leren van modellen binnen een virtueel netwerk. Een virtueel netwerk fungeert als beveiligings grens en isoleert uw Azure-resources van het open bare Internet. U kunt ook een virtueel Azure-netwerk toevoegen aan uw on-premises netwerk. Door netwerken aan te koppelen, kunt u uw modellen veilig trainen en toegang verkrijgen tot uw geïmplementeerde modellen. Defactorion of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor de voor spelling, meestal op productie gegevens.
+In dit artikel vindt u informatie over het beveiligen van experimenten/trainings taken en de functies voor het afwijzen en bepalen van problemen in Azure Machine Learning binnen een Azure Virtual Network (vnet). 
 
-De Azure Machine Learning-service is afhankelijk van andere Azure-Services voor reken resources. Reken bronnen of COMPUTE-doelen worden gebruikt voor het trainen en implementeren van modellen. De doelen kunnen worden gemaakt in een virtueel netwerk. U kunt bijvoorbeeld micro soft Data Science Virtual Machine gebruiken om een model te trainen en het model vervolgens te implementeren in azure Kubernetes service (AKS). Zie [overzicht van Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)voor meer informatie over virtuele netwerken.
+Een **virtueel netwerk** fungeert als beveiligings grens en isoleert uw Azure-resources van het open bare Internet. U kunt ook een virtueel Azure-netwerk toevoegen aan uw on-premises netwerk. Door netwerken aan te koppelen, kunt u uw modellen veilig trainen en toegang verkrijgen tot uw geïmplementeerde modellen.
 
-Dit artikel bevat gedetailleerde informatie over *Geavanceerde beveiligings instellingen*, informatie die niet nodig is voor basis-of experimentele gebruiks gevallen. Bepaalde gedeelten van dit artikel bevatten informatie over de configuratie voor diverse scenario's. U hoeft de instructies in de aangegeven volg orde of in hun geheel niet te volt ooien.
+De Azure Machine Learning-service is afhankelijk van andere Azure-Services voor reken resources. Reken bronnen of COMPUTE- [doelen](concept-compute-target.md)worden gebruikt voor het trainen en implementeren van modellen. De doelen kunnen worden gemaakt in een virtueel netwerk. U kunt bijvoorbeeld micro soft Data Science Virtual Machine gebruiken om een model te trainen en het model vervolgens te implementeren in azure Kubernetes service (AKS). Zie [overzicht van Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)voor meer informatie over virtuele netwerken.
+
+Dit artikel bevat ook gedetailleerde informatie over *Geavanceerde beveiligings instellingen*, informatie die niet nodig is voor basis-of experimentele gebruiks gevallen. Bepaalde gedeelten van dit artikel bevatten informatie over de configuratie voor diverse scenario's. U hoeft de instructies in de aangegeven volg orde of in hun geheel niet te volt ooien.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Maak een Azure Machine Learning service- [werk ruimte](how-to-manage-workspace.md) als u er nog geen hebt. In dit artikel wordt ervan uitgegaan dat u bekend bent met zowel de Azure Virtual Network-Service als de IP-netwerken in het algemeen. In dit artikel wordt ervan uitgegaan dat u een virtueel netwerk en subnet hebt gemaakt voor gebruik met uw reken resources. Als u niet bekend bent met de Azure Virtual Network-Service, kunt u meer informatie hierover vinden in de volgende artikelen:
++ Een Azure Machine Learning Services- [werk ruimte](how-to-manage-workspace.md). 
 
-* [IP-adressering](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
-* [Beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview)
-* [Snelstart: Een virtueel netwerk maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
-* [Netwerkverkeer filteren](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
++ Algemene werk ervaring van zowel de [Azure Virtual Network-Service](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) als [IP-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
+
++ Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources. 
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Een opslag account voor uw werk ruimte gebruiken
 
@@ -232,6 +233,9 @@ Wanneer het maken van het proces is voltooid, traint u uw model met behulp van h
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Een virtuele machine of een HDInsight-cluster gebruiken
 
+> [!IMPORTANT]
+> De Azure Machine Learning-service ondersteunt alleen virtuele machines waarop Ubuntu wordt uitgevoerd.
+
 Ga als volgt te werk als u een virtuele machine of een Azure HDInsight-cluster in een virtueel netwerk wilt gebruiken in uw werkruimte:
 
 1. Maak een virtuele machine of een HDInsight-cluster met behulp van de Azure Portal of de Azure CLI en plaats het cluster in een virtueel Azure-netwerk. Raadpleeg voor meer informatie de volgende artikelen:
@@ -263,17 +267,12 @@ Ga als volgt te werk als u een virtuele machine of een Azure HDInsight-cluster i
 
 1. Koppel de virtuele machine of het HDInsight-cluster aan uw Azure Machine Learning service-werk ruimte. Zie COMPUTE- [doelen voor model training instellen](how-to-set-up-training-targets.md)voor meer informatie.
 
-> [!IMPORTANT]
-> De Azure Machine Learning-service ondersteunt alleen virtuele machines waarop Ubuntu wordt uitgevoerd.
-
 ## <a name="use-azure-kubernetes-service-aks"></a>Azure Kubernetes service (AKS) gebruiken
 
 Ga als volgt te werk om AKS in een virtueel netwerk toe te voegen aan uw werkruimte:
 
 > [!IMPORTANT]
 > Voordat u aan de volgende procedure begint, controleert u de vereisten en plant u de IP-adres sering voor uw cluster. Zie [geavanceerde netwerken configureren in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking)voor meer informatie.
->
-> Behoud de standaard regels voor uitgaande verbindingen voor de NSG. Zie de standaard beveiligings regels in [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)voor meer informatie.
 >
 > Het AKS-exemplaar en het virtuele Azure-netwerk moeten zich in dezelfde regio bevinden.
 
@@ -304,13 +303,12 @@ Ga als volgt te werk om AKS in een virtueel netwerk toe te voegen aan uw werkrui
    ![Azure Machine Learning-service: Instellingen van het virtuele netwerk Machine Learning Compute](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
 1. Zorg ervoor dat de NSG-groep die het virtuele netwerk beheert, een binnenkomende beveiligings regel voor het Score-eind punt heeft ingeschakeld, zodat deze kan worden aangeroepen buiten het virtuele netwerk.
+   > [!IMPORTANT]
+   > Behoud de standaard regels voor uitgaande verbindingen voor de NSG. Zie de standaard beveiligings regels in [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)voor meer informatie.
+  
+   ![Een regel voor binnenkomende beveiliging](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
 
-    ![Een regel voor binnenkomende beveiliging](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
-
-    > [!TIP]
-    > Als u al een AKS-cluster in een virtueel netwerk hebt, kunt u het toevoegen aan de werk ruimte. Zie [implementeren op AKS](how-to-deploy-to-aks.md)voor meer informatie.
-
-U kunt ook de Azure Machine Learning SDK gebruiken om AKS toe te voegen aan een virtueel netwerk. Met de volgende code wordt een nieuw AKS-exemplaar `default` gemaakt in het subnet van een `mynetwork`virtueel netwerk met de naam:
+U kunt ook de Azure Machine Learning SDK gebruiken om de Azure Kubernetes-service toe te voegen aan een virtueel netwerk. Als u al een AKS-cluster in een virtueel netwerk hebt, koppelt u dit aan de werk ruimte, zoals wordt beschreven in [Deploying to aks](how-to-deploy-to-aks.md). Met de volgende code wordt een nieuw AKS-exemplaar `default` gemaakt in het subnet van een `mynetwork`virtueel netwerk met de naam:
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute

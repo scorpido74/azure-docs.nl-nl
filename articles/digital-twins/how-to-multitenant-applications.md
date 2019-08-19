@@ -1,75 +1,75 @@
 ---
-title: Multitenant-toepassingen met Azure digitale dubbels inschakelen | Microsoft Docs
-description: Klik hier voor meer informatie over het configureren van Azure Active Directory-toepassingen voor meerdere tenants voor digitale dubbels van Azure.
+title: Multi tenant-toepassingen met Azure Digital Apparaatdubbels inschakelen | Microsoft Docs
+description: Multi tenant-Azure Active Directory toepassingen configureren voor Azure Digital Apparaatdubbels.
 author: mavoge
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 08/12/2019
 ms.author: mavoge
-ms.openlocfilehash: 03b5693fe016cfb11d6f685f9088fe6e94f03b90
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ee3681640f68839c32e2963b34d5547abb6943b
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66688597"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976883"
 ---
-# <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Multitenant-toepassingen met Azure digitale dubbels inschakelen
+# <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Multi tenant-toepassingen met Azure Digital Apparaatdubbels inschakelen
 
-Oplossingen voor ontwikkelaars die op Azure digitale dubbels bouwen kunnen vinden die ze willen ondersteuning voor meerdere klanten met één service of oplossing. In feite *multitenant* toepassingen zijn een van de meest voorkomende digitale dubbels Azure-configuraties.
+Ontwikkel aars van oplossingen die op Azure Digital Apparaatdubbels bouwen, kunnen zien dat ze meerdere klanten willen ondersteunen met één service of oplossing. Multi *Tenant* -toepassingen zijn in feite een van de meest voorkomende Azure Digital apparaatdubbels-configuraties.
 
-Dit document wordt beschreven hoe het configureren van apps digitale dubbels Azure ter ondersteuning van verschillende tenants van Azure Active Directory en klanten.
+In dit document wordt beschreven hoe u een Azure Digital Apparaatdubbels-app kunt configureren voor de ondersteuning van verschillende Azure Active Directory tenants en klanten.
 
 ## <a name="multitenancy"></a>Multitenancy
 
-Een *multitenant* resource is een ingerichte exemplaar die ondersteuning biedt voor meerdere klanten. Elke klant heeft een eigen onafhankelijke gegevens en bevoegdheden. Elke klant ervaring is geïsoleerd van elkaars zodat hun "weergeven" van de toepassing is niet hetzelfde.
+Een resource voor meerdere tenants is één ingerichte instantie die ondersteuning biedt voor meer klanten. Elke klant heeft hun eigen onafhankelijke gegevens en bevoegdheden. De ervaring van elke klant is van elkaar geïsoleerd, zodat de ' weer gave ' van de toepassing DISTINCT is.
 
-Lees voor meer informatie over multitenancy [Multitenant-toepassingen in Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
+Lees voor meer informatie over multitenancy [multi tenant-toepassingen in azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
 
-## <a name="problem-scenario"></a>Probleem-scenario
+## <a name="problem-scenario"></a>Probleem scenario
 
-In dit scenario kunt u een ontwikkelaar van het bouwen van een digitale dubbels Azure-oplossing (**DEVELOPER**) en een klant die gebruikmaakt van die oplossing (**klant**):
+In dit scenario kunt u een ontwikkelaar overwegen een Azure Digital Apparaatdubbels-oplossing (**Developer**) te bouwen en een klant die deze oplossing gebruikt (**klant**):
 
-- **DEVELOPER** heeft een Azure-abonnement met een Azure Active Directory-tenant.
-- **DEVELOPER** implementeert u een exemplaar van Azure digitale Twins in hun Azure-abonnement. Azure Active Directory automatisch een service-principal gemaakt in **DEVELOPER**van Azure Active Directory-tenant.
-- Gebruikers binnen **DEVELOPER**de Azure Active Directory-tenant kunnen vervolgens [verkrijgen van tokens van OAuth 2.0](./security-authenticating-apis.md) van de digitale dubbels Azure-service.
-- **DEVELOPER** maakt nu een mobiele app, die rechtstreeks worden geïntegreerd met de Azure digitale dubbels Management API's.
-- **DEVELOPER** kunt **klant** het gebruik van de mobiele toepassing.
-- **KLANT** moet worden gemachtigd om te gebruiken de API in Azure, digitale Management dubbels **DEVELOPER**van toepassing.
+- **Ontwikkel aars** hebben een Azure-abonnement met een Azure Active Directory-Tenant.
+- **Ontwikkelaar** implementeert een Azure Digital apparaatdubbels-exemplaar in hun Azure-abonnement. Azure Active Directory automatisch een service-principal gemaakt in de Azure Active Directory Tenant van de **ontwikkelaar**.
+- Gebruikers in de Azure Active Directory-Tenant van de **ontwikkelaar**kunnen vervolgens [OAuth 2,0-tokens verkrijgen](./security-authenticating-apis.md) van de Azure Digital apparaatdubbels-service.
+- **Ontwikkel aars** maakt nu een mobiele app die rechtstreeks kan worden geïntegreerd met de Azure Digital apparaatdubbels Management-api's.
+- **Ontwikkel aars** kunnen **klanten** de mobiele toepassing gebruiken.
+- De **klant** moet gemachtigd zijn om de Azure Digital APPARAATDUBBELS Management API te gebruiken in de toepassing van de **ontwikkelaar**.
 
 Het probleem:
 
-- Wanneer **klant** meldt zich aan bij **DEVELOPER**van toepassing, de app kan niet verkrijgen van tokens voor **klant**van gebruikers te verifiëren met de Azure digitale dubbels Management API's.
-- Een uitzondering in Azure Active Directory wordt uitgegeven waarmee wordt aangegeven dat Azure digitale dubbels wordt niet herkend in **klant**van directory.
+- Wanneer een **klant** zich aanmeldt bij de toepassing van de **ontwikkelaar**, kan de app geen tokens verkrijgen voor gebruikers van de **klant**om zich te verifiëren met de Azure Digital apparaatdubbels Management-api's.
+- Er wordt een uitzonde ring gegeven in Azure Active Directory die aangeeft dat Azure Digital Apparaatdubbels niet wordt herkend in de directory van de **klant**.
 
-## <a name="problem-solution"></a>Probleem-oplossing
+## <a name="problem-solution"></a>Probleem oplossing
 
-Als u wilt het vorige scenario voor het probleem is opgelost, de volgende acties zijn nodig voor het maken van een digitale dubbels van Azure service-principal binnen de **klant**van Azure Active Directory-tenant:
+Om het scenario van het vorige probleem op te lossen, zijn de volgende acties nodig om een Azure Digital Apparaatdubbels Service-Principal te maken binnen de Azure Active Directory Tenant van de **klant**:
 
-- Als **klant** niet al een Azure-abonnement met een Azure Active Directory-tenant:
+- Als de **klant** nog geen Azure-abonnement heeft met een Azure Active Directory Tenant:
 
-  - **KLANT**van Azure Active Directory-tenantbeheerder moet verkrijgen een [betalen per gebruik Azure-abonnement](https://azure.microsoft.com/offers/ms-azr-0003p/).
-  - **KLANT**de tenantbeheerder van Azure Active Directory en vervolgens moet [hun tenant met het nieuwe abonnement koppelen](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
+  - De Azure Active Directory Tenant beheerder van de **klant**moet een [abonnement voor betalen per gebruik (Azure](https://azure.microsoft.com/offers/ms-azr-0003p/)) aanschaffen.
+  - De Azure Active Directory Tenant beheerder van de **klant**moet de [Tenant vervolgens koppelen aan het nieuwe abonnement](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
 
-- Op de [Azure-portal](https://portal.azure.com), **klant**van Azure Active Directory-tenant-beheerder heeft de volgende stappen uit:
+- Op de [Azure Portal](https://portal.azure.com)heeft de Azure Active Directory Tenant beheerder van de **klant**de volgende stappen:
 
   1. Open **abonnementen**.
-  1. Selecteer het abonnement met de Azure Active Directory-tenant moet worden gebruikt **DEVELOPER**van toepassing.
+  1. Selecteer het abonnement met de Azure Active Directory-Tenant die moet worden gebruikt in de toepassing van de **ontwikkelaar**.
 
      ![Azure Active Directory-abonnementen][1]
 
-  1. Selecteer **Resourceproviders**.
-  1. Zoeken naar **Microsoft.IoTSpaces**.
+  1. **Resource providers**selecteren.
+  1. Zoek naar **micro soft. IoTSpaces**.
   1. Selecteer **Registreren**.
 
-     ![Azure Active Directory-resourceproviders][2]
+     ![Azure Active Directory resource providers][2]
   
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees voor meer informatie over het gebruik van de gebruiker gedefinieerde functies met Azure digitale dubbels [over het maken van de gebruiker gedefinieerde functies van Azure digitale dubbels](./how-to-user-defined-functions.md).
+- Meer informatie over het gebruik van door de gebruiker gedefinieerde functies met Azure Digital Apparaatdubbels vindt u in het maken van door de [gebruiker gedefinieerde Azure Digital apparaatdubbels-functies](./how-to-user-defined-functions.md).
 
-- Lees meer over het gebruik van op rollen gebaseerd toegangsbeheer voor het beveiligen van de toepassing met roltoewijzingen meer [over het maken en beheren van Azure digitale dubbels op rollen gebaseerd toegangsbeheer](./security-create-manage-role-assignments.md).
+- Lees voor meer informatie over het gebruik van op rollen gebaseerd toegangs beheer om de toepassing verder te beveiligen met roltoewijzingen door [Azure Digital apparaatdubbels Access Control te maken en te beheren](./security-create-manage-role-assignments.md).
 
 <!-- Images -->
 [1]: media/multitenant/ad-subscriptions.png
