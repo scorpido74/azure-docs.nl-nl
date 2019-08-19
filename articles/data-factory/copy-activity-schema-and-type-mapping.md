@@ -90,7 +90,7 @@ De volgende eigenschappen worden ondersteund onder `translator`  ->  `mappings` 
 
 | Eigenschap | Description                                                  | Vereist |
 | -------- | ------------------------------------------------------------ | -------- |
-| naam     | Naam van de bron- of -sink-kolom.                           | Ja      |
+| nam     | Naam van de bron- of -sink-kolom.                           | Ja      |
 | ordinal  | De kolomindex. Beginnen met 1. <br>Toepassen en vereist wanneer met behulp van tekst zonder kopregel gescheiden. | Nee       |
 | path     | JSON-padexpressie voor elk veld op te halen of toewijzen. Van toepassing op hiërarchische gegevens bijvoorbeeld MongoDB/REST.<br>Voor velden onder het hoofdobject begint JSON-pad met root $; voor velden binnen de matrix die is gekozen door `collectionReference` eigenschap, JSON-pad begint met het matrixelement. | Nee       |
 | type     | Data Factory tussentijdse gegevenstype van de bron- of -sink-kolom. | Nee       |
