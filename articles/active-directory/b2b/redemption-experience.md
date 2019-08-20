@@ -1,6 +1,6 @@
 ---
-title: 'Uitnodiging inwisselen in B2B-samenwerking: Azure Active Directory | Microsoft Docs'
-description: Hierin wordt beschreven in de Azure AD B2B-samenwerking uitnodiging inwisselen ervaring voor eindgebruikers, met inbegrip van de overeenkomst met privacyvoorwaarden.
+title: Inwisseling van de uitnodiging in B2B-samen werking-Azure Active Directory | Microsoft Docs
+description: Hierin wordt de uitnodiging voor Azure AD B2B-samen werking voor eind gebruikers beschreven, met inbegrip van de overeenkomst met betrekking tot de privacy-voor waarden.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,72 +11,72 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80eaa134130195fce00ee6a4d68851e478c4532
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d32818f9e96e931f9e8c3c13554752327c5c456
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052472"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622615"
 ---
-# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-samenwerking uitnodiging inwisselen
+# <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Inwisseling uitnodiging Azure Active Directory B2B-samen werking
 
-Dit artikel beschrijft de manieren gastgebruikers toegang krijgen tot uw resources en de toestemming proces die ze tegenkomt. Als u een uitnodiging via e-mail naar de Gast verzenden, de uitnodiging bevat een koppeling die kan worden ingewisseld door de Gast om toegang te krijgen uw app of -portal. De uitnodiging per e-mail is slechts een van de manieren gasten toegang tot uw resources krijgen kunnen. Als alternatief kunt u gasten toevoegen aan uw directory en geef ze een directe koppeling naar de portal of de app die u wilt delen. Ongeacht welke methode die ze gebruiken, worden de gasten door een eerst toestemming geleid. Dit proces zorgt ervoor dat uw gasten privacyvoorwaarden accepteren en alle accepteren [gebruiksvoorwaarden](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) u hebt ingesteld.
+In dit artikel worden de manieren beschreven waarop gast gebruikers toegang hebben tot uw resources en het toestemmings proces dat ze tegen komen. Als u een uitnodigings-e-mail naar de gast stuurt, bevat de uitnodiging een koppeling die de gast kan inwisselen om toegang te krijgen tot uw app of portal. Het e-mail bericht is slechts een van de manieren waarop gasten toegang kunnen krijgen tot uw resources. Als alternatief kunt u gasten toevoegen aan uw directory en ze een directe koppeling geven naar de portal of app die u wilt delen. Gasten worden door een proces voor de eerste toestemming begeleid, ongeacht de methode die ze gebruiken. Dit proces zorgt ervoor dat uw gasten akkoord gaan met de privacy-voor waarden en alle [gebruiks voorwaarden](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) accepteren die u hebt ingesteld.
 
-Wanneer u een gastgebruiker aan uw directory toevoegen, het gastgebruikersaccount toestemming status heeft (zichtbaar zijn in PowerShell) die in eerste instantie ingesteld op **PendingAcceptance**. Deze instelling blijft totdat de Gast de uitnodiging accepteert en gaat akkoord met het privacybeleid en de gebruiksvoorwaarden. Hierna, verandert de status toestemming in **geaccepteerde**, en de toestemming van pagina's worden niet meer weergegeven op de Gast.
+Wanneer u een gast gebruiker aan uw Directory toevoegt, heeft het gast gebruikers account een toestemmings status (zichtbaar in Power shell) die in eerste instantie is ingesteld op **PendingAcceptance**. Deze instelling blijft actief totdat de gast uw uitnodiging aanvaardt en akkoord gaat met uw privacybeleid en gebruiks voorwaarden. Daarna wordt de status van de toestemming gewijzigd in **geaccepteerd**en worden de pagina's met toestemming niet meer aan de gast gepresenteerd.
 
-## <a name="redemption-through-the-invitation-email"></a>Inschrijving via de uitnodiging per e-mail
+## <a name="redemption-through-the-invitation-email"></a>Inwisselen via e-mail met uitnodiging
 
-Wanneer u een gastgebruiker toevoegen aan uw directory door [met behulp van de Azure-portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal), een uitnodiging via e-mail is verzonden naar de gast op in het proces. U kunt er ook voor kiezen om te uitnodigingen per e-mail verzenden wanneer u bent [met behulp van PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) gastgebruikers toevoegen aan uw directory. Hier volgt een beschrijving van de ervaring van de Gast wanneer ze de link in het e-mailbericht inwisselen.
+Wanneer u een gast gebruiker aan uw Directory toevoegt met [behulp van de Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal), wordt er een e-mail uitnodiging verzonden naar de gast in het proces. U kunt er ook voor kiezen om e-mail berichten te verzenden wanneer u [Power shell gebruikt](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) om gast gebruikers toe te voegen aan uw Directory. Hier volgt een beschrijving van de ervaring van de gast bij het inwisselen van de koppeling in het e-mail bericht.
 
-1. De Gast ontvangt een [uitnodigingse-mail](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements) die wordt verzonden vanuit **Microsoft Invitations**.
-2. De Gast selecteert **aan de slag** in het e-mailbericht.
-3. Als de Gast geen een Azure AD-account, een Microsoft-Account (MSA) of een e-mailaccount in een organisatie voor federatieve, ze wordt gevraagd om u te maken van een beheerde Serviceaccounts (tenzij de [eenmalige wachtwoordcode](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) functie is ingeschakeld, waarvoor een MSA niet nodig ).
-4. De Gast geleid door de [toestemming geven ervaring](#consent-experience-for-the-guest) die hieronder worden beschreven.
+1. De gast ontvangt een [uitnodigings-e-mail](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements) die wordt verzonden vanuit uitnodigingen van **micro soft**.
+2. De gast selecteert **aan de slag** in het e-mail bericht.
+3. Als de gast geen Azure AD-account, een micro soft-account (MSA) of een e-mail account in een federatieve organisatie heeft, wordt u gevraagd een MSA te maken (tenzij de functie voor [eenmalige wachtwoord code](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) is ingeschakeld, waarvoor geen MSA is vereist).
+4. De gast wordt geleid door de [toestemming](#consent-experience-for-the-guest) die hieronder wordt beschreven.
 
-## <a name="redemption-through-a-direct-link"></a>Inschrijving via een directe koppeling
+## <a name="redemption-through-a-direct-link"></a>Inkopen via een directe koppeling
 
-Als alternatief voor de uitnodiging per e-mail, kunt u geven een gast een directe koppeling naar uw app of -portal. U moet eerst de gastgebruiker toevoegen aan uw directory via de [Azure-portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) of [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell). Vervolgens kunt u een van de [aanpasbare manieren voor het implementeren van toepassingen voor gebruikers](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), met inbegrip van directe aanmelding koppelingen. Wanneer een gast gebruikmaakt van een directe koppeling in plaats van de uitnodiging per e-mail, moeten ze nog steeds via de toestemming van de eerste keer worden geleid.
+Als alternatief voor de uitnodigings-e-mail kunt u een gast een rechtstreekse koppeling geven naar uw app of portal. U moet eerst de gast gebruiker toevoegen aan uw directory via de [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) of [Power shell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell). Vervolgens kunt u een van de [aanpas bare manieren gebruiken om toepassingen te implementeren voor gebruikers](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), waaronder directe aanmeldings koppelingen. Wanneer een gast gebruikmaakt van een directe koppeling in plaats van het e-mail bericht met de uitnodiging, worden ze nog steeds door gegeven via de eerste toestemmings ervaring.
 
 > [!IMPORTANT]
-> De directe koppeling moet de tenant-specifieke. Met andere woorden, een tenant-ID moet bevatten of geverifieerd domein zodat de Gast kan worden geverifieerd in uw tenant, waar de gedeelde app zich bevindt. Een algemene URL, zoals https://myapps.microsoft.com voor een gast werkt niet omdat deze wordt u doorgestuurd naar de starttenant voor verificatie. Hier volgen enkele voorbeelden van directe koppelingen met tenant-context:
- > - Toegangsvenster Apps: https://myapps.microsoft.com/?tenantid=&lt; tenant-id&gt; 
- > - Toegangsvenster van Apps voor een geverifieerd domein: https://myapps.microsoft.com/&lt; geverifieerde domein&gt;
- > - Azure-portal: https://portal.azure.com/&lt; tenant-id&gt;
- > - Afzonderlijke Apps: Zie hoe u een [directe koppeling voor eenmalige aanmelding](../manage-apps/end-user-experiences.md#direct-sign-on-links)
+> De directe koppeling moet Tenant-specifiek zijn. Met andere woorden, het moet een Tenant-ID of geverifieerd domein bevatten zodat de gast kan worden geverifieerd in uw Tenant, waar de gedeelde app zich bevindt. Een gemeen schappelijke URL https://myapps.microsoft.com kan niet worden gebruikt voor een gast omdat deze wordt omgeleid naar hun eigen Tenant voor authenticatie. Hier volgen enkele voor beelden van directe koppelingen met de context van de Tenant:
+ > - Toegangs venster voor apps https://myapps.microsoft.com/?tenantid=&lt:; Tenant-id&gt; 
+ > - Toegangs paneel voor apps voor een geverifieerd domein https://myapps.microsoft.com/&lt:; geverifieerd domein&gt;
+ > - Azure portal: https://portal.azure.com/&lt; Tenant-id&gt;
+ > - Afzonderlijke app: zie een [koppeling voor direct aanmelden](../manage-apps/end-user-experiences.md#direct-sign-on-links) gebruiken
 
-Er zijn enkele gevallen waarbij de uitnodiging per e-mail geniet de voorkeur boven een directe koppeling. Als deze speciale gevallen belangrijk voor uw organisatie zijn, raden we u gebruikers uitnodigen met behulp van methoden die nog steeds de uitnodiging per e-mail verzenden:
- - De gebruiker beschikt niet over een Azure AD-account, een MSA of een e-mailaccount in een organisatie voor federatieve. Tenzij u de functie voor eenmalige wachtwoordcode gebruikt, moet de Gast de uitnodiging per e-mail om te worden geleid door de stappen voor het maken van een MSA inwisselen.
- - Het object van de uitgenodigde gebruiker kan soms niet een e-mailadres hebben vanwege een conflict met een verbindingsobject (bijvoorbeeld een Outlook contact-object). In dit geval de gebruiker klikt op de URL voor inschrijving in de uitnodiging per e-mail.
- - De gebruiker kan zich aanmelden met een alias van het e-mailadres dat is uitgenodigd. (Een alias is een aanvullende e-mailadres dat is gekoppeld aan een e-mailaccount.) In dit geval de gebruiker klikt op de URL voor inschrijving in de uitnodiging per e-mail.
+Er zijn enkele gevallen waarin de e-mail uitnodiging wordt aanbevolen via een directe koppeling. Als deze speciale gevallen belang rijk zijn voor uw organisatie, raden we u aan gebruikers uit te nodigen met behulp van methoden die nog steeds de uitnodigings-e-mail verzenden:
+ - De gebruiker heeft geen Azure AD-account, een MSA of een e-mail account in een federatieve organisatie. Tenzij u de functie voor eenmalige wachtwoord code gebruikt, moet de gast de uitnodigings-e-mail inwisselen om door de stappen voor het maken van een MSA te worden geleid.
+ - Soms heeft het uitgenodigde gebruikers object mogelijk geen e-mail adres vanwege een conflict met een contact object (bijvoorbeeld een Outlook-contact object). In dit geval moet de gebruiker op de opname-URL in het e-mail bericht met de uitnodiging klikken.
+ - De gebruiker kan zich aanmelden met een alias van het e-mail adres dat is uitgenodigd. (Een alias is een aanvullend e-mail adres dat is gekoppeld aan een e-mail account.) In dit geval moet de gebruiker op de opname-URL in het e-mail bericht met de uitnodiging klikken.
 
-## <a name="consent-experience-for-the-guest"></a>Toestemming ervaring voor de Gast
+## <a name="consent-experience-for-the-guest"></a>Bestemmings ervaring voor de gast
 
-Wanneer een gast zich aanmeldt voor toegang tot resources in een partnerorganisatie voor de eerste keer, zijn ze door de volgende pagina's geleid. 
+Wanneer een gast zich voor de eerste keer aanmeldt voor toegang tot resources in een partner organisatie, worden deze door de volgende pagina's geleid. 
 
-1. De beoordelingen van de Gast de **machtigingen controleren** pagina met een beschrijving van de privacyverklaring van de uitnodigende organisatie. Een gebruiker moet **accepteren** het gebruik van de informatie in overeenstemming met het privacybeleid van de uitnodigende organisatie om door te gaan.
+1. De gast controleert de pagina **machtigingen controleren** met een beschrijving van de privacyverklaring van de uitnodigende organisatie. Een gebruiker moet het gebruik van hun gegevens in overeenstemming met het privacybeleid van de uitnodigende organisatie **accepteren** om door te gaan.
 
-   ![Schermopname van de pagina van de machtigingen controleren](media/redemption-experience/review-permissions.png) 
-
-   > [!NOTE]
-   > Zie voor meer informatie over hoe u als tenantbeheerder aan de privacyverklaring van uw organisatie koppelen kunt [procedures: Privacy-informatie van uw organisatie toevoegen in Azure Active Directory](https://aka.ms/adprivacystatement).
-
-2. Als gebruiksvoorwaarden zijn geconfigureerd, de Gast wordt geopend en controleert u de gebruiksvoorwaarden en selecteert vervolgens **accepteren**. 
-
-   ![Schermafbeelding van de nieuwe gebruiksvoorwaarden](media/redemption-experience/terms-of-use-accept.png) 
+   ![Scherm opname met de pagina Machtigingen controleren](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
-   > U kunt configureren dat Zie [gebruiksvoorwaarden](../governance/active-directory-tou.md) in **beheren** > **organisatie relaties** > **gebruiksvoorwaarden**.
+   > Zie [How-to: voor informatie over hoe u als een Tenant beheerder kunt koppelen aan de privacyverklaring van uw organisatie. Voeg de privacygegevens van uw organisatie toe](https://aka.ms/adprivacystatement)in azure Active Directory.
 
-3. Tenzij anders vermeld, wordt de Gast omgeleid naar het toegangsvenster van Apps, die hier worden de toepassingen die toegang heeft tot de Gast.
+2. Als de gebruiks voorwaarden zijn geconfigureerd, wordt de gast geopend en worden de gebruiks voorwaarden beoordeeld. vervolgens selecteert u **accepteren**. 
 
-   ![Schermopname van het toegangsvenster van Apps](media/redemption-experience/myapps.png) 
+   ![Scherm opname met nieuwe gebruiks voorwaarden](media/redemption-experience/terms-of-use-accept.png) 
 
-In uw directory, de Gast van **uitnodiging geaccepteerd** waarde wordt gewijzigd in **Ja**. Als een MSA is gemaakt, van de Gast **bron** bevat **Microsoft-Account**. Zie voor meer informatie over de eigenschappen van gebruikersaccount Gast [eigenschappen van de gebruiker van een Azure AD B2B-samenwerking](user-properties.md). 
+   > [!NOTE]
+   > U kunt de [gebruiks voorwaarden configureren voor](../governance/active-directory-tou.md) het **beheren** > van**organisatie relaties** > **Gebruiksvoorwaarden**.
+
+3. Tenzij anders vermeld, wordt de gast omgeleid naar het toegangs venster voor apps, met daarin de toepassingen die de gast kan openen.
+
+   ![Scherm opname van het toegangs paneel voor apps](media/redemption-experience/myapps.png) 
+
+In uw Directory wordt de waarde van de **uitnodiging geaccepteerd** van de gast gewijzigd in **Ja**. Als er een MSA is gemaakt, wordt in de **bron** van de gast het **micro soft-account**weer gegeven. Zie [Eigenschappen van een Azure AD B2B-samenwerkings gebruiker](user-properties.md)voor meer informatie over eigenschappen van gast gebruikers accounts. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
 - [Gebruikers van Azure Active Directory B2B-samenwerking toevoegen in Azure portal](add-users-administrator.md)
-- [Hoe voeg informatiemedewerkers gebruikers van B2B-samenwerking toe aan Azure Active Directory?](add-users-information-worker.md)
-- [Gebruikers van Azure Active Directory B2B-samenwerking toevoegen met behulp van PowerShell](customize-invitation-api.md#powershell)
-- [Een organisatie als gastgebruiker verlaten](leave-the-organization.md)
+- [Hoe voegen mede werkers B2B-samenwerkings gebruikers toe aan Azure Active Directory?](add-users-information-worker.md)
+- [Azure Active Directory B2B-samenwerkings gebruikers toevoegen met behulp van Power shell](customize-invitation-api.md#powershell)
+- [Een organisatie als gast gebruiker laten staan](leave-the-organization.md)

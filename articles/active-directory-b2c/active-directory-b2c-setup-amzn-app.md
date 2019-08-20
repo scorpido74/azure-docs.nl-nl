@@ -1,44 +1,43 @@
 ---
-title: Instellen van zich kunnen registreren en aanmelden met een account van de Amazon - Azure Active Directory B2C | Microsoft Docs
-description: Meld u aan en meld u bieden aan klanten met een Amazon-account in uw toepassingen met behulp van Azure Active Directory B2C.
+title: Registratie instellen en aanmelden met een Amazon-account-Azure Active Directory B2C
+description: Bied u de mogelijkheid om u aan te melden en u aan te melden bij klanten met Amazon-accounts in uw toepassingen met Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a796826892942879e42b2d8fd22b8cc0208a2174
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89dd592e6e5ea1ce71277035654068ce2f782890
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508622"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622213"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Instellen van zich kunnen registreren en aanmelden met een Amazon-account met behulp van Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Amazon-account met Azure Active Directory B2C
 
 ## <a name="create-an-amazon-application"></a>Een Amazon-toepassing maken
 
-Gebruik een Amazon-account als een [id-provider](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory (Azure AD) B2C, moet u een toepassing maken in de tenant die aangeeft. Als u al een Amazon-account hebt kunt u krijgen via [ https://www.amazon.com/ ](https://www.amazon.com/).
+Als u een Amazon-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in azure Active Directory (Azure AD) B2C, moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Amazon-account hebt, kunt u zich aanmelden [https://www.amazon.com/](https://www.amazon.com/)bij.
 
-1. Aanmelden bij de [Amazon Developer Center](https://login.amazon.com/) met de referenties van de Amazon-account.
-2. Als u hebt nog niet gedaan, klikt u op **registreren**, volgt u de stappen van de registratie van ontwikkelaars en accepteren van het beleid.
-3. Selecteer **nieuwe toepassing registreren**.
-4. Voer een **naam**, **beschrijving**, en **Privacy-URL voor kennisgeving**, en klik vervolgens op **opslaan**. De privacyverklaring is een pagina die u beheert waarop privacyinformatie aan gebruikers biedt.
-5. In de **Webinstellingen** sectie, Kopieer de waarden van **Client-ID**. Selecteer **geheim weergeven** voor het ophalen van het clientgeheim en kopieer deze vervolgens. U moet beide een Amazon-account configureert als een id-provider in uw tenant. **Clientgeheim** is een belangrijke beveiligingsreferentie.
-6. In de **Webinstellingen** sectie, selecteer **bewerken**, en voer vervolgens `https://your-tenant-name.b2clogin.com` in **JavaScript oorsprongen toegestaan** en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **toegestaan URL's retourneren**. Vervang `your-tenant-name` met de naam van uw tenant. U moet alle kleine letters gebruiken bij het invoeren van de tenantnaam van uw, zelfs als de tenant is gedefinieerd met behulp van hoofdletters in Azure AD B2C.
-7. Klik op **Opslaan**.
+1. Meld u aan bij het [Amazon Developer Center](https://login.amazon.com/) met uw Amazon-account referenties.
+1. Als u dit nog niet hebt gedaan, klikt u op registreren, volgt **u**de registratie stappen voor de ontwikkelaar en accepteert u het beleid.
+1. Selecteer **nieuwe toepassing registreren**.
+1. Voer een **naam**, **Beschrijving**en URL voor de **privacyverklaring**in en klik vervolgens op **Opslaan**. De privacyverklaring is een pagina die u beheert en die privacy-informatie verstrekt aan gebruikers.
+1. Kopieer de waarden van de **client-id**in het gedeelte **Web Settings** . Selecteer **geheim weer geven** om het client geheim te ontvangen en kopieer het vervolgens. U hebt beide nodig om een Amazon-account te configureren als een id-provider in uw Tenant. **Client geheim** is een belang rijke beveiligings referentie.
+1. Selecteer **bewerken**in de sectie `https://your-tenant-name.b2clogin.com` Webinstellingen en voer in **toegestane java script-oorsprong** in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **toegestane retour-url's**. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
+1. Klik op **Opslaan**.
 
-## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Een Amazon-account configureert als een id-provider
+## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Een Amazon-account configureren als een id-provider
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map met uw Azure AD B2C-tenant door te klikken op de **map- en abonnementsfilter** in het bovenste menu en de map waarin uw tenant te kiezen.
-3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **id-providers**, en selecteer vervolgens **toevoegen**.
-5. Voer een **naam**. Voer bijvoorbeeld *Amazon*.
-6. Selecteer **type id-provider**, selecteer **Amazon**, en klikt u op **OK**.
-7. Selecteer **instellen van deze id-provider** en voert u de Client-ID die u eerder hebt genoteerd als de **Client-ID** en voer het Clientgeheim die u hebt genoteerd als de **clientgeheim**van de Amazon-toepassing die u eerder hebt gemaakt.
-8. Klik op **OK** en klik vervolgens op **maken** om op te slaan van de Amazon-configuratie.
-
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
+1. Selecteer **id-providers**en selecteer vervolgens **Amazon**.
+1. Voer een **naam**in. Bijvoorbeeld *Amazon*.
+1. Voer voor de **client-id**de client-id in van de Amazon-toepassing die u eerder hebt gemaakt.
+1. Voer voor het **client geheim**het client geheim in dat u hebt vastgelegd.
+1. Selecteer **Opslaan**.

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eee881e6d4e446e07867261545a90dfacaa93712
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512212"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622790"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Zelfstudie: Voeg id-providers toe aan uw toepassingen in Azure Active Directory B2C
 
@@ -94,13 +94,11 @@ Nadat u de toepassing hebt gemaakt voor de ID-provider die u wilt toevoegen, voe
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>De Azure Active Directory-ID-provider toevoegen
 
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C Tenant bevat door te klikken op het **filter Directory en abonnement** in het bovenste menu en de map te kiezen die uw Azure AD B2C Tenant bevat.
+1. Zorg ervoor dat u de map gebruikt die Azure AD B2C Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Azure AD B2C Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer **id-providers**, en selecteer vervolgens **toevoegen**.
+1. Selecteer **id-providers**en selecteer vervolgens **nieuwe OpenID Connect Connect-provider**.
 1. Voer een **naam**in. Voer bijvoorbeeld *Contoso Azure AD*in.
-1. Selecteer een **ID-provider type**, selecteer **OpenID Connect Connect**en klik vervolgens op **OK**.
-1. Klik op **Deze id-provider instellen**
-1. Voor **meta gegevens-URL**voert u de volgende URL `your-AD-tenant-domain` in, waarbij u vervangt door de domein naam van uw Azure AD-Tenant.
+1. Voor **meta gegevens-URL**voert u de volgende `your-AD-tenant-domain` URL in die wordt vervangen door de domein naam van uw Azure AD-Tenant:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -108,28 +106,27 @@ Nadat u de toepassing hebt gemaakt voor de ID-provider die u wilt toevoegen, voe
 
     Bijvoorbeeld `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-1. Voer voor **client-id**de *id van de toepassing (client)* in die u eerder hebt vastgelegd.
-1. Voer voor **client geheim**de waarde voor *client geheim* in die u eerder hebt vastgelegd.
-1. Voer desgewenst een waarde in voor **Domain_hint**. Bijvoorbeeld `ContosoAD`. [Domein hints](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) zijn richt lijnen die zijn opgenomen in de verificatie aanvraag van een toepassing. Ze kunnen worden gebruikt om de gebruiker te versnellen tot hun federatieve IdP-aanmeldings pagina. Of ze kunnen worden gebruikt door een toepassing met meerdere tenants om de gebruiker rechtstreeks naar de aanmeldings pagina van Azure AD te versnellen voor hun Tenant.
-1. Selecteer **OK**.
-1. Selecteer de **claims van deze id-provider toewijzen** en stel de volgende claims in:
+1. Voer voor **client-id**de toepassings-id in die u eerder hebt vastgelegd.
+1. Voer voor **client geheim**het client geheim in dat u eerder hebt vastgelegd.
+1. Behoud de standaard waarden voor het **bereik**, het **antwoord type**en de **antwoord modus**.
+1. Beschrijving Voer een waarde in voor **Domain_hint**. Bijvoorbeeld *ContosoAD*. [Domein hints](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) zijn richt lijnen die zijn opgenomen in de verificatie aanvraag van een toepassing. Ze kunnen worden gebruikt om de gebruiker te versnellen tot hun federatieve IdP-aanmeldings pagina. Of ze kunnen worden gebruikt door een toepassing met meerdere tenants om de gebruiker rechtstreeks naar de aanmeldings pagina van Azure AD te versnellen voor hun Tenant.
+1. Voer onder **claim toewijzing**van de identiteits provider de volgende claim toewijzings waarden in:
 
-    - Voer`oid`in bij **gebruikers-id**.
-    - Voer`name`in bij **weergave naam**.
-    - Voer`given_name`in voor de **opgegeven naam**.
-    - Voer`family_name`voor achternaam in.
-    - Voer`unique_name`in het **e-mail adres**in.
+    * **Gebruikers-id**: *OID*
+    * **Weergave naam**: *naam*
+    * Voor **naam**: *given_name*
+    * **Achternaam**: *family_name*
+    * **E-mail**: *unique_name*
 
-1. Selecteer **OK**en selecteer vervolgens **maken** om uw configuratie op te slaan.
+1. Selecteer **Opslaan**.
 
 ### <a name="add-the-facebook-identity-provider"></a>De Facebook-ID-provider toevoegen
 
-1. Selecteer **id-providers**, en selecteer vervolgens **toevoegen**.
-1. Voer een **naam**in. Typ bijvoorbeeld *Facebook*.
-1. Selecteer het **type ID-provider**, selecteer **Facebook**en selecteer **OK**.
-1. Selecteer **deze ID-provider instellen** en voer de *App-ID* in die u eerder hebt vastgelegd als de **client-id**.
-1. Voer het *app-geheim* in dat u hebt genoteerd als het **client geheim**.
-1. Selecteer **OK** en selecteer vervolgens **maken** om uw Facebook-configuratie op te slaan.
+1. Selecteer **id-providers**en selecteer vervolgens **Facebook**.
+1. Voer een **naam**in. Bijvoorbeeld *Facebook*.
+1. Voer voor de **client-id**de app-id in van de Facebook-toepassing die u eerder hebt gemaakt.
+1. Voer voor het **client geheim**het app-geheim in dat u hebt vastgelegd.
+1. Selecteer **Opslaan**.
 
 ## <a name="update-the-user-flow"></a>De gebruikers stroom bijwerken
 

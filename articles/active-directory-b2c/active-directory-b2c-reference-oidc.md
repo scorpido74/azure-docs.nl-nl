@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 08/20/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f6188f5c5bdd256ee84c5e7dc8632e5c067ceca5
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 36efdb7db57d3acfa7384d904e9be8faad4c6534
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541719"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622079"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webaanmelding met OpenID Connect Connect in Azure Active Directory B2C
 
@@ -32,11 +32,10 @@ Azure AD B2C breidt het Standard OpenID Connect Connect-protocol uit voor meer d
 
 Wanneer uw webtoepassing de gebruiker moet verifiëren en een gebruikers stroom kan uitvoeren, kan deze de gebruiker naar het `/authorize` eind punt sturen. De gebruiker actie onderneemt afhankelijk van de gebruikers stroom.
 
-In deze aanvraag geeft de client de machtigingen aan die moeten worden opgehaald van de gebruiker in de `scope` para meter en de gebruikers stroom om te worden uitgevoerd in de `p` para meter. In de volgende secties vindt u drie voor beelden (met regel einden voor de Lees baarheid), elk met een andere gebruikers stroom. Als u wilt weten hoe elke aanvraag werkt, kunt u de aanvraag in een browser plakken en deze uitvoeren. U kunt vervangen `fabrikamb2c` door de naam van uw Tenant als u er een hebt en een gebruikers stroom hebt gemaakt. U moet ook vervangen `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Vervang deze client-ID door de App-ID van de registratie van de toepassing die u hebt gemaakt. Wijzig ook de naam `b2c_1_sign_in` van het beleid in de naam van het beleid dat u in uw Tenant hebt.
+In deze aanvraag geeft de client aan welke machtigingen moeten worden verkregen van de gebruiker in de `scope` para meter en geeft u de gebruikers stroom op die moet worden uitgevoerd. In de volgende secties vindt u drie voor beelden (met regel einden voor de Lees baarheid), elk met een andere gebruikers stroom. Als u wilt weten hoe elke aanvraag werkt, kunt u de aanvraag in een browser plakken en deze uitvoeren. U kunt vervangen `fabrikamb2c` door de naam van uw Tenant als u er een hebt en een gebruikers stroom hebt gemaakt. U moet ook vervangen `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Vervang deze client-ID door de App-ID van de registratie van de toepassing die u hebt gemaakt. Wijzig ook de naam van het`{policy}`beleid () in de naam van het beleid dat u in uw Tenant `b2c_1_sign_in`hebt, bijvoorbeeld.
 
-#### <a name="use-a-sign-in-user-flow"></a>Een aanmeldings gebruikers stroom gebruiken
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -44,40 +43,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &scope=openid%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
-&p=b2c_1_sign_in
-```
-
-#### <a name="use-a-sign-up-user-flow"></a>Een gebruikers stroom voor registratie gebruiken
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_sign_up
-```
-
-#### <a name="use-an-edit-profile-user-flow"></a>Een gebruikers stroom voor het bewerken van profielen gebruiken
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_edit_profile
 ```
 
 | Parameter | Vereist | Description |
 | --------- | -------- | ----------- |
+| bouw | Ja | De naam van uw Azure AD B2C-Tenant |
+| verslaggev | Ja | De gebruikers stroom die wordt uitgevoerd. Dit is de naam van een gebruikers stroom die is gemaakt in uw Azure AD B2C-Tenant. De naam van de gebruikers stroom moet beginnen met `b2c_1_`. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of. `b2c_1_edit_profile` |
 | client_id | Ja | De toepassings-ID die de [Azure Portal](https://portal.azure.com/) toegewezen aan uw toepassing. |
 | nonce | Ja | Een waarde die is opgenomen in de aanvraag (gegenereerd door de toepassing) die is opgenomen in de resulterende ID-token als claim. De toepassing kan vervolgens deze waarde verifiëren om token replay-aanvallen te verhelpen. De waarde is doorgaans een wille keurige unieke teken reeks die kan worden gebruikt om de oorsprong van de aanvraag te identificeren. |
-| p | Ja | De gebruikers stroom die wordt uitgevoerd. Dit is de naam van een gebruikers stroom die is gemaakt in uw Azure AD B2C-Tenant. De naam van de gebruikers stroom moet beginnen met `b2c\_1\_`. |
 | response_type | Ja | Moet een ID-token voor OpenID Connect Connect bevatten. Als uw webtoepassing ook tokens nodig heeft voor het aanroepen van een web- `code+id_token`API, kunt u gebruiken. |
 | bereik | Ja | Een lijst met door spaties gescheiden bereiken. Het `openid` bereik geeft een machtiging aan voor het aanmelden van de gebruiker en het ophalen van gegevens over de gebruiker in de vorm van id-tokens. Het `offline_access` bereik is optioneel voor webtoepassingen. Dit geeft aan dat uw toepassing een vernieuwings *token* nodig heeft voor uitgebreide toegang tot resources. |
 | verschijnt | Nee | Het type gebruikers interactie dat is vereist. De enige geldige waarde is `login`op dit moment, waardoor de gebruiker de referenties voor die aanvraag invoert. |
@@ -91,7 +64,7 @@ Nadat de gebruiker de gebruikers stroom heeft voltooid, wordt er met de aangegev
 
 Er is een succes `response_mode=fragment` volle reactie met het volgende:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
@@ -106,7 +79,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 Fout reacties kunnen ook worden verzonden naar de `redirect_uri` para meter, zodat de toepassing deze op de juiste wijze kan afhandelen:
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -125,11 +98,15 @@ Alleen het ontvangen van een ID-token is voldoende om de gebruiker te verifiëre
 
 Azure AD B2C heeft een OpenID Connect voor het verbinden van meta gegevens, waarmee een toepassing informatie over Azure AD B2C tijdens runtime kan ophalen. Deze informatie omvat eind punten, token inhoud en sleutels voor token-ondertekening. Er is een JSON-meta gegevens document voor elke gebruikers stroom in uw B2C-Tenant. Het meta gegevens document voor de `b2c_1_sign_in` gebruikers stroom in bevindt zich bijvoorbeeld in: `fabrikamb2c.onmicrosoft.com`
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
+```
 
 Een van de eigenschappen van dit configuratie document is `jwks_uri`, waarvan de waarde voor dezelfde gebruikers stroom zou zijn:
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`.
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
+```
 
 Als u wilt bepalen welke gebruikers stroom is gebruikt voor het ondertekenen van een ID-token (en van waaruit de meta gegevens worden opgehaald), hebt u twee opties. Eerst wordt de naam van de gebruikers stroom opgenomen in `acr` de claim in het id-token. De andere optie is het coderen van de gebruikers stroom in de waarde van `state` de para meter wanneer u de aanvraag afgeeft en deze vervolgens decodeert om te bepalen welke gebruikers stroom is gebruikt. Beide methoden zijn geldig.
 
@@ -159,9 +136,9 @@ U kunt de autorisatie code die u hebt verkregen (met behulp `response_type=code+
 
 U kunt ook een toegangs token aanvragen voor de eigen back-end web-API van uw app door middel van het gebruik van de client-ID van de app als het aangevraagde bereik (wat resulteert in een toegangs token met die client-ID als ' doel groep '):
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -169,17 +146,18 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parameter | Vereist | Description |
 | --------- | -------- | ----------- |
+| bouw | Ja | De naam van uw Azure AD B2C-Tenant |
+| verslaggev | Ja | De gebruikers stroom die is gebruikt om de autorisatie code op te halen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. Voeg deze para meter toe aan de query reeks, niet op de hoofd tekst van het bericht. |
 | client_id | Ja | De toepassings-ID die de [Azure Portal](https://portal.azure.com/) toegewezen aan uw toepassing. |
 | client_secret | Ja | Het toepassings geheim dat is gegenereerd in de [Azure Portal](https://portal.azure.com/). Dit toepassings geheim is een belang rijk beveiligings artefact. U moet deze veilig opslaan op uw server. Wijzig dit client geheim op periodieke basis. |
 | code | Ja | De autorisatie code die u aan het begin van de gebruikers stroom hebt verkregen. |
 | grant_type | Ja | Het type toekenning, dat voor de autorisatie `authorization_code` code stroom moet gelden. |
-| p | Ja | De gebruikers stroom die is gebruikt om de autorisatie code op te halen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. Voeg deze para meter toe aan de query reeks, niet op de hoofd tekst van het bericht. |
 | redirect_uri | Ja | De `redirect_uri` para meter van de toepassing waarin u de autorisatie code hebt ontvangen. |
 | bereik | Nee | Een lijst met door spaties gescheiden bereiken. Het `openid` bereik geeft een machtiging aan voor het aanmelden van de gebruiker en het ophalen van gegevens over de gebruiker in de vorm van id_token-para meters. Het kan worden gebruikt om tokens te verkrijgen voor de eigen back-end web-API van uw toepassing, die wordt vertegenwoordigd door dezelfde toepassings-ID als de client. Het `offline_access` bereik geeft aan dat uw toepassing een vernieuwings token nodig heeft voor uitgebreide toegang tot resources. |
 
 Een geslaagd token antwoord ziet er als volgt uit:
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -189,6 +167,7 @@ Een geslaagd token antwoord ziet er als volgt uit:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | Parameter | Description |
 | --------- | ----------- |
 | not_before | Het tijdstip waarop het token als geldig wordt beschouwd in de epoche-tijd. |
@@ -200,7 +179,7 @@ Een geslaagd token antwoord ziet er als volgt uit:
 
 Fout berichten zien er als volgt uit:
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -216,9 +195,9 @@ Fout berichten zien er als volgt uit:
 
 Nu u een toegangs token hebt aangeschaft, kunt u het token gebruiken in aanvragen voor uw back-end-web-api's door dit op te nemen `Authorization` in de header:
 
-```
+```HTTP
 GET /tasks
-Host: https://mytaskwebapi.com
+Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
@@ -226,9 +205,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ID-tokens verlopen in korte tijd. Vernieuw de tokens nadat deze verlopen om toegang te kunnen krijgen tot bronnen. U kunt een token vernieuwen door een andere `POST` aanvraag naar het `/token` eind punt te verzenden. Geef deze keer de `refresh_token` para meter op in plaats van de `code` para meter:
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -236,17 +215,18 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | Parameter | Vereist | Description |
 | --------- | -------- | ----------- |
+| bouw | Ja | De naam van uw Azure AD B2C-Tenant |
+| verslaggev | Ja | De gebruikers stroom die is gebruikt om het oorspronkelijke vernieuwings token te verkrijgen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. Voeg deze para meter toe aan de query reeks, niet op de hoofd tekst van het bericht. |
 | client_id | Ja | De toepassings-ID die de [Azure Portal](https://portal.azure.com/) toegewezen aan uw toepassing. |
 | client_secret | Ja | Het toepassings geheim dat is gegenereerd in de [Azure Portal](https://portal.azure.com/). Dit toepassings geheim is een belang rijk beveiligings artefact. U moet deze veilig opslaan op uw server. Wijzig dit client geheim op periodieke basis. |
 | grant_type | Ja | Het type toekenning, dat een vernieuwings token moet zijn voor dit deel van de autorisatie code stroom. |
 | refresh_token | Ja | Het oorspronkelijke vernieuwings token dat is verkregen in het tweede deel van de stroom. Het `offline_access` bereik moet worden gebruikt in de autorisatie-en Token aanvragen om een vernieuwings token te kunnen ontvangen. |
-| p | Ja | De gebruikers stroom die is gebruikt om het oorspronkelijke vernieuwings token te verkrijgen. U kunt in deze aanvraag niet een andere gebruikers stroom gebruiken. Voeg deze para meter toe aan de query reeks, niet op de hoofd tekst van het bericht. |
 | redirect_uri | Nee | De `redirect_uri` para meter van de toepassing waarin u de autorisatie code hebt ontvangen. |
 | bereik | Nee | Een lijst met door spaties gescheiden bereiken. Het `openid` bereik geeft een machtiging aan voor het aanmelden van de gebruiker en het ophalen van gegevens over de gebruiker in de vorm van id-tokens. Het kan worden gebruikt voor het verzenden van tokens naar de eigen back-end web-API van uw toepassing, die wordt vertegenwoordigd door dezelfde toepassings-ID als de client. Het `offline_access` bereik geeft aan dat uw toepassing een vernieuwings token nodig heeft voor uitgebreide toegang tot resources. |
 
 Een geslaagd token antwoord ziet er als volgt uit:
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -256,6 +236,7 @@ Een geslaagd token antwoord ziet er als volgt uit:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | Parameter | Description |
 | --------- | ----------- |
 | not_before | Het tijdstip waarop het token als geldig wordt beschouwd in de epoche-tijd. |
@@ -267,7 +248,7 @@ Een geslaagd token antwoord ziet er als volgt uit:
 
 Fout berichten zien er als volgt uit:
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -285,7 +266,7 @@ Wanneer u de gebruiker van de toepassing wilt ondertekenen, is het niet voldoend
 
 Als u de gebruiker wilt afmelden, moet u de `end_session` gebruiker omleiden naar het eind punt dat wordt vermeld in het OpenID Connect-meta gegevens document dat eerder is beschreven:
 
-```
+```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 

@@ -1,161 +1,161 @@
 ---
 title: Veelgestelde vragen over Azure Active Directory B2C
-description: Veelgestelde vragen (FAQ) over Azure Active Directory B2C.
+description: Antwoorden op veelgestelde vragen over Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6f25cfb2c0e07278220cdd04ee38472157f1be4d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612493"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622256"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Veelgestelde vragen
 
-Deze pagina vindt u antwoorden op veelgestelde vragen over de Azure Active Directory (Azure AD) B2C. Houd regelmatig op updates controleren.
+Op deze pagina vindt u antwoorden op veelgestelde vragen over de Azure Active Directory (Azure AD) B2C. Blijf op de hoogte met het controleren op updates.
 
-### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Waarom geen ik toegang tot de Azure AD B2C-extensie in de Azure-portal?
+### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Waarom kan ik geen toegang krijgen tot de uitbrei ding van de Azure AD B2C in het Azure Portal?
 
-Er zijn twee gangbare redenen voor de Azure AD-extensie waarom niet voor u werkt is. Azure AD B2C vereist uw gebruikersrol in de map globale beheerder. Neem contact op met uw beheerder als u denkt dat u toegang moet hebben. Als u globale beheerder-bevoegdheden hebt, zorg ervoor dat u zich in een Azure AD B2C-map en niet in een Azure Active Directory-map. Ziet u instructies voor het [het maken van een Azure AD B2C-tenant](tutorial-create-tenant.md).
+Er zijn twee veelvoorkomende redenen waarom de Azure AD-uitbrei ding niet werkt voor u. Azure AD B2C vereist dat uw gebruikersrol in de Directory globale beheerder is. Neem contact op met uw beheerder als u denkt dat u toegang moet hebben. Als u globale beheerders rechten hebt, zorg er dan voor dat u zich in een Azure AD B2C Directory bevindt en niet een Azure Active Directory map. U kunt de instructies voor [het maken van een Azure AD B2C-Tenant](tutorial-create-tenant.md)bekijken.
 
-### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Kan ik Azure AD B2C-functies gebruiken in mijn bestaande, op basis van een werknemer Azure AD-tenant?
+### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Kan ik Azure AD B2C functies in mijn bestaande Azure AD-Tenant op basis van werk nemers gebruiken?
 
-Azure AD en Azure AD B2C zijn afzonderlijke productaanbod en kunnen niet worden gecombineerd in dezelfde tenant. Een Azure AD-tenant vertegenwoordigt een organisatie. Een Azure AD B2C-tenant vertegenwoordigt een verzameling van identiteiten die worden gebruikt met relying party toepassingen. Met aangepaste beleidsregels (in openbare preview), kan Azure AD B2C federeren naar Azure AD de verificatie van de werknemers toestaan in een organisatie.
+Azure AD en Azure AD B2C zijn afzonderlijke product aanbiedingen en kunnen niet worden gecombineerd in dezelfde Tenant. Een Azure AD-Tenant vertegenwoordigt een organisatie. Een Azure AD B2C-Tenant vertegenwoordigt een verzameling identiteiten die moeten worden gebruikt met Relying Party toepassingen. Met aangepast beleid (in open bare preview) kan Azure AD B2C met Azure AD communiceren met de verificatie van werk nemers in een organisatie.
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Kan ik Azure AD B2C gebruiken voor aanmelden bij sociale media (Facebook en Google +) in Office 365?
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Kan ik Azure AD B2C gebruiken om sociale aanmelding (Facebook en Google +) aan te bieden in Office 365?
 
-Azure AD B2C kan niet worden gebruikt om gebruikers te verifiëren voor Microsoft Office 365. Azure AD is Microsoft's oplossing voor het beheren van toegang van werknemers tot SaaS-apps en functies die zijn ontworpen voor dit doel, zoals licentie- en voorwaardelijke toegang heeft. Azure AD B2C biedt een platform voor identiteits- en toegangsbeheer voor het bouwen van webtoepassingen en mobiele toepassingen. Wanneer Azure AD B2C is geconfigureerd om te federeren met een Azure AD-tenant, beheert de Azure AD-tenant toegang van werknemers tot toepassingen die afhankelijk van Azure AD B2C zijn.
+Azure AD B2C kan niet worden gebruikt om gebruikers te verifiëren voor Microsoft Office 365. Azure AD is de oplossing van micro soft voor het beheren van de toegang van werk nemers tot SaaS-apps en bevat functies die voor dit doel zijn ontworpen, zoals licenties en voorwaardelijke toegang. Azure AD B2C biedt een platform voor identiteits-en toegangs beheer voor het bouwen van web-en mobiele toepassingen. Als Azure AD B2C is geconfigureerd om te communiceren met een Azure AD-Tenant, beheert de Azure AD-Tenant de toegang van werk nemers tot toepassingen die afhankelijk zijn van Azure AD B2C.
 
-### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Wat zijn lokale accounts in Azure AD B2C? Hoe verschillen ze van werk-of schoolaccounts in Azure AD?
+### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Wat zijn lokale accounts in Azure AD B2C? Wat zijn de verschillen tussen werk-of school accounts in azure AD?
 
-In een Azure AD-tenant, de gebruikers die deel uitmaken van de tenant-aanmelding met een e-mailadres van het formulier `<xyz>@<tenant domain>`. De `<tenant domain>` is een van de geverifieerde domeinen in de tenant of in de eerste `<...>.onmicrosoft.com` domein. Dit type account is een account voor werk of school.
+In een Azure AD-Tenant hebben gebruikers die deel uitmaken van de Tenant aanmelden met een e-mail adres `<xyz>@<tenant domain>`van het formulier. De `<tenant domain>` is een van de geverifieerde domeinen in de Tenant of het `<...>.onmicrosoft.com` eerste domein. Dit type account is een werk-of school account.
 
-In een Azure AD B2C-tenant, de meeste apps wilt dat de gebruiker om aan te melden met een willekeurige e-mailadres (bijvoorbeeld joe@comcast.net, bob@gmail.com, sarah@contoso.com, of jim@live.com). Dit type account is een lokaal account. We ondersteunen ook willekeurige gebruikersnamen als lokale accounts (bijvoorbeeld: Jan, bob, sarah of jim). U kunt een van deze twee typen van de lokale account bij het configureren van id-providers voor Azure AD B2C in Azure portal. In uw Azure AD B2C-tenant, klikt u op **id-providers** en selecteer vervolgens **gebruikersnaam** onder lokale accounts.
+In een Azure AD B2C-Tenant willen de meeste apps zich aanmelden met joe@comcast.neteen wille keurig e-mail adres (bijvoorbeeld bob@gmail.com sarah@contoso.com,, of jim@live.com). Dit type account is een lokaal account. We ondersteunen ook wille keurige gebruikers namen als lokale accounts (bijvoorbeeld Joe, Bob, Sarah of Jim). U kunt een van deze twee lokale account typen kiezen bij het configureren van id-providers voor Azure AD B2C in de Azure Portal. Selecteer in uw Azure AD B2C-Tenant de optie **id-providers**, selecteer **lokaal account**en selecteer vervolgens **gebruikers naam**.
 
-Gebruikersaccounts voor toepassingen moeten altijd worden gemaakt via een aanmelding gebruikersstroom, meld u aan of aanmelden gebruikersstroom, of met behulp van de Azure AD Graph API. Gebruikersaccounts die zijn gemaakt in Azure portal worden alleen gebruikt voor het beheren van de tenant.
+Gebruikers accounts voor toepassingen moeten altijd worden gemaakt via een gebruikers stroom voor registratie, registratie of aanmelding, of met behulp van de Azure AD-Graph API. Gebruikers accounts die zijn gemaakt in de Azure Portal worden alleen gebruikt voor het beheer van de Tenant.
 
-### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welke sociale id-providers bieden u nu ondersteuning? Welke wilt u in de toekomst ondersteunen?
+### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welke leveranciers van sociale ID ondersteunen u nu? Wat zijn de voor waarden die u in de toekomst wilt ondersteunen?
 
-We ondersteunen momenteel Facebook, Google +, LinkedIn, Amazon, Twitter (preview), WeChat (preview), Weibo (preview) en q (Preview). Ondersteuning voor andere populaire sociale id-providers op basis van vraag van klanten, zullen we toevoegen.
+Momenteel bieden we ondersteuning voor Facebook, Google +, LinkedIn, Amazon, Twitter (preview), WeChat (preview), Weibo (preview) en QQ (preview). We zullen ondersteuning voor andere populaire sociale id-providers toevoegen op basis van de vraag van de klant.
 
-Azure AD B2C heeft ook ondersteuning toegevoegd voor [aangepast beleid](active-directory-b2c-overview-custom.md). Met dit aangepaste beleid kan een ontwikkelaar van hun eigen beleid te maken met een id-provider die ondersteuning biedt voor [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) of SAML.
+Azure AD B2C heeft ook ondersteuning toegevoegd voor [aangepast beleid](active-directory-b2c-overview-custom.md). Met deze aangepaste beleids regels kan een ontwikkelaar een eigen beleid maken met een id-provider die [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) of SAML ondersteunt.
 
-Aan de slag met aangepast beleid door het uitchecken van onze [aangepast beleid beginnerspakket](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
+Ga aan de slag met aangepaste beleids regels door ons [aangepaste beleids Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)uit te checken.
 
-### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Kan ik bereiken voor het verzamelen van informatie over gebruikers uit verschillende sociale id-providers configureren?
+### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Kan ik scopes configureren voor het verzamelen van meer informatie over consumenten van verschillende aanbieders van sociale identiteiten?
 
-Nee. De standaard-bereiken die wordt gebruikt voor onze ondersteunde set sociale id-providers zijn:
+Nee. De standaard scopes die worden gebruikt voor onze ondersteunde providers voor sociale identificatie zijn:
 
-* Facebook: e-mailadres
+* Facebook: e-mail
 * Google+: email
-* Microsoft-account: openid e-mailprofiel
+* Microsoft-account: OpenID Connect-e-mail profiel
 * Amazon: profiel
 * LinkedIn: r_emailaddress, r_basicprofile
 
-### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Zijn mijn toepassing uitgevoerd op Azure voor het werken met Azure AD B2C?
+### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Moet mijn toepassing worden uitgevoerd op Azure voor de IT-afdeling met Azure AD B2C?
 
-Nee, u kunt hosten op uw toepassing een willekeurige plaats (in de cloud of on-premises). Nodig is om te communiceren met Azure AD B2C, is de mogelijkheid om te verzenden en ontvangen van HTTP-aanvragen op openbaar toegankelijke eindpunten.
+Nee, u kunt uw toepassing overal hosten (in de Cloud of on-premises). Alle IT-behoeften moeten communiceren met Azure AD B2C is de mogelijkheid om HTTP-aanvragen te verzenden en ontvangen op openbaar toegankelijke eind punten.
 
-### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Ik heb meerdere Azure AD B2C-tenants. Hoe kan ik ze beheren in Azure portal?
+### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Ik heb meerdere Azure AD B2C-tenants. Hoe kan ik deze beheren op het Azure Portal?
 
-Voordat u het 'Azure AD B2C' in het menu links van de Azure-portal opent, moet u overschakelen naar de map die u wilt beheren. Schakelen tussen mappen door te klikken op uw identiteit in de rechterbovenhoek van de Azure-portal en kies vervolgens een map in de vervolgkeuzelijst die wordt weergegeven.
+Voordat u Azure AD B2C in het menu aan de linkerkant van het Azure Portal opent, moet u overschakelen naar de map die u wilt beheren. U kunt wisselen tussen mappen door te klikken op uw identiteit in de rechter bovenhoek van de Azure Portal en vervolgens een map te kiezen in de vervolg keuzelijst die wordt weer gegeven.
 
-### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Hoe aanpassen e-mails voor domeinverificatie (de inhoud en de ' uit: ' veld) die is verzonden door Azure AD B2C?
+### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Hoe kan ik verificatie-e-mails (de inhoud en het veld ' van: ') die door Azure AD B2C worden verzonden, worden aangepast?
 
-U kunt de [functie huisstijl van bedrijf](../active-directory/fundamentals/customize-branding.md) om aan te passen van de inhoud van verificatie-e-mailberichten. Specifiek, kunnen deze twee elementen van het e-mailbericht worden aangepast:
+U kunt de [functie voor bedrijfs huisstijl](../active-directory/fundamentals/customize-branding.md) gebruiken om de inhoud van verificatie-e-mails aan te passen. Deze twee elementen van het e-mail bericht kunnen met name worden aangepast:
 
-* **Logo in banner**: Weergegeven in de rechterbenedenhoek.
-* **De achtergrondkleur**: Weergegeven aan de bovenkant.
+* **Banner logo**: Aan de rechter kant weer gegeven.
+* **Achtergrond kleur**: Bovenaan weer gegeven.
 
-    ![Schermafbeelding van een aangepaste verificatie-e-mailbericht](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![Scherm afbeelding van een aangepaste verificatie-e-mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-De e-handtekening bevat de naam van de Azure AD B2C-tenant die u hebt opgegeven tijdens het maken van de Azure AD B2C-tenant. U kunt de naam van deze instructies wijzigen:
+De e-mail handtekening bevat de naam van de Azure AD B2C Tenant die u hebt ingevoerd toen u de Azure AD B2C-Tenant voor het eerst hebt gemaakt. U kunt de naam wijzigen met behulp van de volgende instructies:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com/) als globale beheerder.
-1. Open de **Azure Active Directory** blade.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder.
+1. Open de Blade **Azure Active Directory** .
 1. Klik op de **eigenschappen** tabblad.
-1. Wijzig de **naam** veld.
+1. Wijzig het veld **naam** .
 1. Klik bovenaan de pagina op **Opslaan**.
 
-Er is momenteel geen manier om te wijzigen de ' uit: ' op het e-mailbericht.
+Het is momenteel niet mogelijk om het veld van te wijzigen in het e-mail bericht.
 
-### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hoe Migreer ik mijn bestaande gebruikersnamen, wachtwoorden en -profielen van mijn database naar Azure AD B2C?
+### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Hoe kan ik mijn bestaande gebruikers namen, wacht woorden en profielen van mijn data base migreren naar Azure AD B2C?
 
-De Azure AD Graph API kunt u het hulpprogramma voor migratie van schrijven. Zie de [gebruikershandleiding voor de migratie](active-directory-b2c-user-migration.md) voor meer informatie.
+U kunt de Azure AD-Graph API gebruiken om uw migratie programma te schrijven. Raadpleeg de [hand leiding voor gebruikers migratie](active-directory-b2c-user-migration.md) voor meer informatie.
 
-### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Welke gebruikersstroom wachtwoord wordt gebruikt voor lokale accounts in Azure AD B2C?
+### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Welke wachtwoord gebruikers stroom wordt gebruikt voor lokale accounts in Azure AD B2C?
 
-De gebruikersstroom van de Azure AD B2C-wachtwoord voor lokale accounts is gebaseerd op het beleid voor Azure AD. Azure AD B2C de gebruikersregistratie, aanmelding bij of gebruikersstromen aanmelden en het wachtwoord opnieuw instellen van de sterkte 'sterk' wachtwoord gebruiken en verlopen wachtwoorden niet. Lees de [Azure AD-wachtwoordbeleid](/previous-versions/azure/jj943764(v=azure.100)) voor meer informatie. Zie voor meer informatie over accountvergrendelingen en wachtwoorden [bedreigingen voor resources en -gegevens in Azure Active Directory B2C beheert](active-directory-b2c-reference-threat-management.md).
+De Azure AD B2C wacht woord van de gebruiker voor lokale accounts is gebaseerd op het beleid voor Azure AD. Azure AD B2C's registratie, aanmelden of aanmelden en gebruikers stromen voor het opnieuw instellen van het wacht woord gebruiken de sterke wachtwoord sterkte en verlopen geen wacht woorden. Lees het [wachtwoord beleid voor Azure AD](/previous-versions/azure/jj943764(v=azure.100)) voor meer informatie. Zie [bedreigingen voor resources en gegevens in azure Active Directory B2C beheren](active-directory-b2c-reference-threat-management.md)voor meer informatie over account vergrendelingen en wacht woorden.
 
-### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Kan ik Azure AD Connect gebruiken voor het migreren van consumentidentiteiten uit die zijn opgeslagen op mijn on-premises Active Directory naar Azure AD B2C?
+### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Kan ik Azure AD Connect gebruiken om consumenten-id's die op mijn on-premises Active Directory zijn opgeslagen te migreren naar Azure AD B2C?
 
-Nee, Azure AD Connect is niet ontworpen om te werken met Azure AD B2C. Overweeg het gebruik van de [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) voor gebruikersmigratie. Zie de [gebruikershandleiding voor de migratie](active-directory-b2c-user-migration.md) voor meer informatie.
+Nee, Azure AD Connect is niet ontworpen om te werken met Azure AD B2C. Overweeg het gebruik van de [Azure AD-Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) voor gebruikers migratie. Raadpleeg de [hand leiding voor gebruikers migratie](active-directory-b2c-user-migration.md) voor meer informatie.
 
-### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Kan mijn app openen om Azure AD B2C-pagina's in een iFrame?
+### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Kan mijn app Azure AD B2C pagina's in een iFrame openen?
 
-Nee, uit veiligheidsoverwegingen, Azure AD B2C-pagina's niet openen in een iFrame. Onze service communiceert met de browser om te voorkomen dat iFrames. De beveiligingscommunity in het algemeen en de OAUTH2-specificatie raden het gebruik van iFrames voor identiteitservaringen vanwege het risico van steunpunten voor de klik.
+Nee, om beveiligings redenen kunnen Azure AD B2C pagina's niet worden geopend in een iFrame. Onze service communiceert met de browser om iFrames te verbieden. De beveiligings Community in het algemeen en de OAUTH2-specificatie wordt aanbevolen voor het gebruik van iFrames voor identiteits ervaringen vanwege het risico van klikken-Jack.
 
-### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Werkt Azure AD B2C met systemen zoals Microsoft Dynamics CRM?
+### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Werkt Azure AD B2C met CRM-systemen zoals micro soft Dynamics?
 
-Integratie met Microsoft Dynamics 365-Portal is beschikbaar. Zie [Dynamics 365-Portal configureren voor Azure AD B2C gebruiken voor verificatie](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
+De integratie met micro soft Dynamics 365 Portal is beschikbaar. Zie [Dynamics 365 Portal configureren voor het gebruik van Azure AD B2C voor authenticatie](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
-### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Azure AD B2C biedt werk met SharePoint on-premises 2016 of lager?
+### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Werkt Azure AD B2C met share point on-premises 2016 of eerder?
 
-Azure AD B2C is niet bedoeld voor het SharePoint externe partner delen scenario; Zie [Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) in plaats daarvan.
+Azure AD B2C is niet bedoeld voor het scenario voor het delen van externe share point-partners; Zie in plaats daarvan [Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) .
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Moet ik Azure AD B2C of B2B gebruiken om externe identiteiten te beheren?
 
-In dit artikel meer informatie over [externe identiteiten](../active-directory/active-directory-b2b-compare-external-identities.md) voor meer informatie over het toepassen van de desbetreffende functies op uw externe id-scenario's.
+Lees dit artikel over [externe identiteiten](../active-directory/active-directory-b2b-compare-external-identities.md) voor meer informatie over het Toep assen van de juiste functies op uw externe identiteits scenario's.
 
-### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Welke rapportage- en controle van functies Azure AD B2C biedt? Zijn ze hetzelfde als in Azure AD Premium?
+### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Welke rapportage-en controle functies biedt Azure AD B2C? Zijn ze hetzelfde als in Azure AD Premium?
 
-Nee, Azure AD B2C ondersteunt niet de dezelfde set met rapporten als Azure AD Premium. Er zijn echter veel commonalities:
+Nee, Azure AD B2C biedt geen ondersteuning voor dezelfde set rapporten als Azure AD Premium. Er zijn echter veel commonalities:
 
-* **-Aanmeldingsrapporten** een record van elke aanmelding bieden met minder details.
-* **Controlerapporten** omvatten zowel beheerdersactiviteiten bewerkstelligen als activiteit van de toepassing.
-* **Gebruiksrapporten** zijn onder andere het aantal gebruikers, het aantal aanmeldingen en volume van MFA.
+* **Aanmeldings rapporten** bieden een record van elke aanmelding met minder details.
+* **Controle rapporten** bevatten zowel beheer activiteiten als toepassings activiteiten.
+* **Gebruiks rapporten** bevatten het aantal gebruikers, het aantal aanmeldingen en het volume MFA.
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Kan ik lokalisatie van de gebruikersinterface van pagina's die worden geleverd door Azure AD B2C? Welke talen worden ondersteund?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Kan ik de gebruikers interface lokaliseren van pagina's die worden bediend door Azure AD B2C? Welke talen worden ondersteund?
 
-Ja.  Meer informatie over [taalaanpassing](active-directory-b2c-reference-language-customization.md), deze bevindt zich in openbare preview. We bieden vertalingen voor 36 talen en kunt u een willekeurige tekenreeks om aan uw behoeften te overschrijven.
+Ja.  Meer informatie over [taal aanpassing](active-directory-b2c-reference-language-customization.md), die in open bare preview is. We bieden vertalingen voor 36 talen en u kunt alle teken reeksen aanpassen aan uw behoeften.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Kan ik mijn eigen URL's op mijn zich kunnen registreren en aanmelden pagina's die worden aangeboden door Azure AD B2C gebruiken? Bijvoorbeeld, kan ik de URL van login.microsoftonline.com naar login.contoso.com wijzigen?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Kan ik mijn eigen Url's gebruiken op mijn registratie-en aanmeldings pagina's die worden bediend door Azure AD B2C? Bijvoorbeeld, kan ik de URL wijzigen van login.microsoftonline.com in login.contoso.com?
 
-Momenteel niet. Deze functie is op ons schema groter. Controleren van uw domein in de **domeinen** dit doel niet wordt voltooid door tabblad in de Azure-portal.
+Momenteel niet. Deze functie is op ons plan. Als u uw domein verifieert op het tabblad **domeinen** in de Azure Portal dit doel niet wordt bereikt.
 
-### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Hoe kan ik mijn Azure AD B2C-tenant verwijderen?
+### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Mijn Azure AD B2C Tenant Hoe kan ik verwijderen?
 
-Volg deze stappen voor het verwijderen van uw Azure AD B2C-tenant:
+Voer de volgende stappen uit om uw Azure AD B2C-Tenant te verwijderen:
 
-1. Verwijder alle de **gebruikersstromen (beleid)** in uw Azure AD B2C-tenant.
-1. Verwijder alle de **toepassingen** u geregistreerd in uw Azure AD B2C-tenant.
-1. Vervolgens maakt u zich aanmeldt bij de [Azure-portal](https://portal.azure.com/) als beheerder van het abonnement. Gebruik hetzelfde werk- of schoolaccount of hetzelfde Microsoft-account die u hebt gebruikt om u te registreren voor Azure.
-1. Switch voor de Azure AD B2C-tenant die u wilt verwijderen.
-1. Selecteer **Azure Active Directory** in het menu links.
+1. Verwijder alle **gebruikers stromen (beleids regels)** in uw Azure AD B2C-Tenant.
+1. Verwijder alle **toepassingen** die u hebt geregistreerd in uw Azure AD B2C-Tenant.
+1. Meld u vervolgens aan bij de [Azure Portal](https://portal.azure.com/) als abonnements beheerder. Gebruik hetzelfde werk-of school account of hetzelfde Microsoft-account dat u hebt gebruikt om u aan te melden voor Azure.
+1. Schakel over naar de Azure AD B2C-Tenant die u wilt verwijderen.
+1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Onder **Beheren**, selecteer **Gebruikers**.
-1. Selecteer elke gebruiker in inschakelen (de beheerder van abonnement-gebruiker die u momenteel bent aangemeld als uitsluiten). Selecteer **verwijderen** aan de onderkant van de pagina en selecteer **Ja** wanneer hierom wordt gevraagd.
-1. Onder **beheren**, selecteer **App-registraties** (of **App-registraties (verouderd)** ).
-1. Selecteer **alle toepassingen weergeven**
-1. Selecteer de toepassing met de naam **b2c-extensions-app**, selecteer **verwijderen**, en selecteer vervolgens **Ja** wanneer hierom wordt gevraagd.
-1. Onder **beheren**, selecteer **gebruikersinstellingen**.
-1. Onder **LinkedIn-accountverbindingen**, selecteer **Nee**en selecteer vervolgens **opslaan**.
-1. Onder **beheren**, selecteer **eigenschappen**
-1. Onder **Access management voor Azure-resources**, selecteer **Ja**, en selecteer vervolgens **opslaan**.
-1. Afmelden bij de Azure-portal en vervolgens aanmelden bij het vernieuwen van uw toegang.
-1. Selecteer **Azure Active Directory** in het menu links.
-1. Op de **overzicht** weergeeft, schakelt **verwijderen directory**. Volg de aanwijzingen op het scherm instructies om het proces te voltooien.
+1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de abonnements beheerder die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
+1. Selecteer onder **beheren**de optie **App-registraties** (of **app-registraties (verouderd)** ).
+1. Selecteer **alle toepassingen weer geven**
+1. Selecteer de toepassing met de naam **B2C-Extensions-app**, selecteer **verwijderen**en selecteer vervolgens **Ja** wanneer u hierom wordt gevraagd.
+1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
+1. Selecteer bij **LinkedIn-account verbindingen**de optie **Nee**en selecteer vervolgens **Opslaan**.
+1. Selecteer onder **beheren**de optie **Eigenschappen**
+1. Selecteer onder **toegangs beheer voor Azure-resources**de optie **Ja**en selecteer vervolgens **Opslaan**.
+1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
+1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
+1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
 
-### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Kan ik Azure AD B2C als onderdeel van Enterprise Mobility Suite krijgen?
+### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Kan ik Azure AD B2C krijgen als onderdeel van ENTER prise Mobility Suite?
 
-Nee, Azure AD B2C is een betalen per gebruik van de Azure-service en is geen onderdeel van Enterprise Mobility Suite.
+Nee, Azure AD B2C is een Azure-service met betalen per gebruik en maakt geen deel uit van de Enter prise Mobility Suite.
 
-### <a name="how-do-i-report-issues-with-azure-ad-b2c"></a>Hoe rapporteer ik problemen met Azure AD B2C?
+### <a name="how-do-i-report-issues-with-azure-ad-b2c"></a>Hoe kan ik er problemen met Azure AD B2C melden?
 
-Zie [bestand ondersteuningsaanvragen voor Azure Active Directory B2C](active-directory-b2c-support.md).
+Zie [Bestands ondersteunings aanvragen voor Azure Active Directory B2C](active-directory-b2c-support.md).

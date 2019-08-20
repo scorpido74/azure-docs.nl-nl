@@ -328,8 +328,8 @@ Wanneer u gegevens uit Sales Force kopieert, worden de volgende toewijzingen geb
 | Number |Decimal |
 | Percent |Decimal |
 | Phone |String |
-| Selectie lijst |String |
-| Text |Reeks |
+| Picklist |String |
+| Text |String |
 | Text Area |String |
 | Text Area (Long) |String |
 | Text Area (Rich) |String |

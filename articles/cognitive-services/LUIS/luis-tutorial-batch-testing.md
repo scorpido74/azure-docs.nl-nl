@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 08/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0a3a9330eaa977f72cdbaba4e11aaa706b437fad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 60cd87b6cecfb30ebc90f445c79e25c241980a86
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945908"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623341"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Zelfstudie: Gegevens sets voor batch tests
 
@@ -95,7 +95,7 @@ Voer de volgende stappen uit:
 
 ## <a name="review-batch-results"></a>Bekijk de resultaten van batch
 
-De batch worden vier kwadranten van de resultaten weergegeven. Aan de rechterkant van de grafiek is een filter. Het filter is standaard ingesteld op het eerste doel in de lijst. Het filter bevat alleen de intenties en eenvoudige en samengestelde entiteiten. Wanneer u selecteert een [sectie van de grafiek](luis-concept-batch-test.md#batch-test-results) of een punt in de grafiek, de bijbehorende utterance(s) weer te geven onder de grafiek. 
+De batch worden vier kwadranten van de resultaten weergegeven. Aan de rechterkant van de grafiek is een filter. Het filter bevat intents en entiteiten. Wanneer u selecteert een [sectie van de grafiek](luis-concept-batch-test.md#batch-test-results) of een punt in de grafiek, de bijbehorende utterance(s) weer te geven onder de grafiek. 
 
 Bij het aanwijzen van de grafiek, kan muiswiel vergroten of verkleinen van de weergave in de grafiek. Dit is handig wanneer er veel punten op de grafiek geclusterde nauw samen. 
 
@@ -103,27 +103,27 @@ De grafiek is in vier kwadranten, met twee van de secties in het rood weergegeve
 
 ### <a name="getjobinformation-test-results"></a>De resultaten van GetJobInformation
 
-De **GetJobInformation** weergegeven in het filter de resultaten weergeven dat 2 van de vier voorspellingen gelukt is. Selecteer de naam **fout-positief** boven de bovenste juiste quadrant om te zien van de uitingen onder de grafiek. 
+De **GetJobInformation** weergegeven in het filter de resultaten weergeven dat 2 van de vier voorspellingen gelukt is. Selecteer de naam **Onwaar** in de Kwadrant linksonder om de uitingen onder de grafiek weer te geven. 
 
-![LUIS batch test uitingen](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+Gebruik het toetsen bord, CTRL + E, om over te scha kelen naar de weer gave label om de exacte tekst van de utterance van de gebruiker te zien. 
 
-Waarom zijn twee van de voorspelde als uitingen **ApplyForJob**, in plaats van de juiste intentie **GetJobInformation**? De twee intenties zijn zeer nauw verwant woord keuze en word-indeling. Bovendien zijn er bijna drie keer zoveel voorbeelden voor **ApplyForJob** dan **GetJobInformation**. Deze eenvormigheid van uitingen voorbeeld weegt **ApplyForJob** van intentie voordeel. 
+De utterance `Is there a database position open in Los Colinas?` wordt aangeduid als _GetJobInformation_ , maar het huidige model heeft de utterance als _ApplyForJob_gedicteerd. 
+
+Er zijn bijna drie keer zoveel voor beelden voor **ApplyForJob** dan **GetJobInformation**. Deze ongelijkheid van voor beeld uitingen weegt in **ApplyForJob** intentie voor deel, waardoor de onjuiste voor spelling wordt veroorzaakt. 
 
 U ziet dat beide intents de dezelfde telling van fouten hebben. Een onjuiste voorspelling in één doel is van invloed op de andere intentie ook. Beide zijn fouten opgetreden omdat de uitingen zijn onjuist voorspeld voor één doel, en ook onjuist niet voor een ander doel voorspeld. 
 
-![LUIS batch test filter fouten](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-De bijbehorende boven uitingen punt in de **fout-positief** sectie zijn `Can I apply for any database jobs with this resume?` en `Can I apply for any database jobs with this resume?`. Voor de eerste utterance, het woord `resume` is alleen gebruikt **ApplyForJob**. Voor de tweede utterance, het woord `apply` is alleen gebruikt de **ApplyForJob** intentie.
-
-## <a name="fix-the-app"></a>De app oplossen
+## <a name="how-to-fix-the-app"></a>De app herstellen
 
 Het doel van deze sectie is om alle de uitingen voorspeld correct voor **GetJobInformation** door de app op te lossen. 
 
-Een schijnbaar snelle oplossing zou zijn om toe te voegen deze uitingen van batch-bestand met de juiste intent. Dat is niet wat u wilt echter doen. Wilt u LUIS om goed te voorspellen deze uitingen zonder dat ze toe te voegen als voorbeelden. 
+Een schijnbaar snelle oplossing zou zijn om toe te voegen deze uitingen van batch-bestand met de juiste intent. Dat is niet wat u wilt doen. Wilt u LUIS om goed te voorspellen deze uitingen zonder dat ze toe te voegen als voorbeelden. 
 
 U vraagt zich misschien ook af over het verwijderen van uitingen van **ApplyForJob** totdat de hoeveelheid utterance hetzelfde als is **GetJobInformation**. Die de resultaten van het probleem kan mogelijk maar zou LUIS belemmeren van het voorspellen van dit doel nauwkeurig zodra. 
 
-De eerste oplossing is het toevoegen van meer uitingen naar **GetJobInformation**. De tweede oplossing is het verminderen van het gewicht van woorden, zoals `resume` en `apply` naar de **ApplyForJob** intentie. 
+De oplossing is om meer uitingen toe te voegen aan **GetJobInformation**. Vergeet niet om de utterance lengte, de woord keuze en de indeling van het woord te variëren terwijl u de bedoeling van het vinden van de informatie over de taak _niet_ kunt Toep assen op de taak.
 
 ### <a name="add-more-utterances"></a>Meer utterances toevoegen
 
@@ -161,15 +161,13 @@ Om te controleren dat de uitingen in de batch-test correct worden voorspeld, moe
 
 1. Selecteer **Test** in de bovenste navigatiebalk. Als de resultaten van de batch nog steeds geopend zijn, selecteert u **terug naar lijst met**.  
 
-2. Selecteer het weglatingsteken (***...*** ) aan de rechterkant van de batchnaam en selecteer **gegevensset uitvoeren**. Wacht totdat de batch-test is voltooid. U ziet dat de **resultaten** knop is nu groen. Dit betekent dat de hele batch is uitgevoerd.
+1. Selecteer de knop met weglatings tekens (***...***) rechts van de batch naam en selecteer **uitvoeren**. Wacht totdat de batch-test is voltooid. U ziet dat de **resultaten** knop is nu groen. Dit betekent dat de hele batch is uitgevoerd.
 
-3. Selecteer **resultaten**. De intenties moeten alle groen pictogrammen aan de linkerkant van de intentie namen hebben. 
-
-    ![Schermafbeelding van LUIS met batch resultaten knop gemarkeerd](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. Selecteer **resultaten**. De intenties moeten alle groen pictogrammen aan de linkerkant van de intentie namen hebben. 
 
 ## <a name="create-batch-file-with-entities"></a>Batch-bestand met entiteiten maken 
 
-Als u wilt controleren of entiteiten in een batch-test, moeten de entiteiten worden met het label in de batch-JSON-bestand. Alleen de door de machine geleerde entiteiten worden gebruikt: eenvoudige en samengestelde entiteiten. Voeg geen niet-machine-geleerde entiteiten doordat ze via reguliere expressies altijd worden gevonden, of expliciete tekst komt overeen met.
+Als u wilt controleren of entiteiten in een batch-test, moeten de entiteiten worden met het label in de batch-JSON-bestand. 
 
 De variatie van entiteiten voor het totale aantal woord ([token](luis-glossary.md#token)) aantal kan gevolgen hebben voor de voorspelling kwaliteit. Zorg ervoor dat de opgegeven met de intent met gelabelde uitingen trainingsgegevens bevat verschillende lengtes van entiteit. 
 
@@ -178,7 +176,6 @@ Wanneer het eerst schrijven en testen van batch-bestanden, het is raadzaam om te
 De waarde van een **taak** entiteit, opgegeven in de test-uitingen is meestal een of twee woorden, met een paar voorbeelden wordt meer woorden. Als _uw eigen_ human resources-app heeft doorgaans taaknamen van vele woorden bestaat, wordt de voorbeeld-uitingen met het label met **taak** entiteit in deze app niet goed werkt.
 
 1. Maak `HumanResources-entities-batch.json` in een teksteditor zoals [VSCode](https://code.visualstudio.com/) of [downloaden](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) deze.
-
 
 2. In de JSON-indeling batch-bestand, Voeg een matrix met objecten die uitingen met de **bedoeling** gewenste voorspelde in de test, evenals de locaties van alle entiteiten in de utterance. Aangezien een entiteit op basis van tokens, zorg starten en stoppen van elke entiteit op een teken. Niet beginnen of eindigen van de utterance op een spatie. Dit zorgt ervoor dat een fout opgetreden tijdens het importeren van de batch-bestand.  
 

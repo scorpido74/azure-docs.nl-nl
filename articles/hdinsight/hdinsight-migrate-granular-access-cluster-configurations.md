@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945078"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623846"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 
@@ -201,7 +201,7 @@ Als dit nog steeds niet werkt, neemt u contact op met uw AAD-beheerder om de jui
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Wat gebeurt er als er geen actie wordt ondernomen?
 
-De `GET /configurations` `GET /configurations/{configurationName}` en `POST /configurations/gateway` retourneert geen informatie en de aanroep zal niet langer gevoelige para meters retour neren, zoals de sleutel voor het opslag account of het wacht woord van het cluster. Hetzelfde geldt voor de bijbehorende SDK-methoden en Power shell-cmdlets.
+De `GET /configurations` - `POST /configurations/gateway` en-aanroepen geven geen informatie meer weer `GET /configurations/{configurationName}` en de aanroep zal niet langer gevoelige para meters retour neren, zoals sleutels voor het opslag account of het wacht woord van het cluster. Hetzelfde geldt voor de bijbehorende SDK-methoden en Power shell-cmdlets.
 
 Als u een oudere versie gebruikt van een van de hulpprogram ma's voor Visual Studio, VSCode, IntelliJ of eclips die hierboven worden genoemd, werken ze niet meer totdat u deze bijwerkt.
 
