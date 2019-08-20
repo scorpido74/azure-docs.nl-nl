@@ -11,12 +11,12 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 5e118bad0bfdd1a8e265aa0ed3eeea78a3b0da54
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543527"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624087"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Quickstart: Java gebruiken om verbinding te maken met en een query uit te brengen op een Azure-SQL database
 
@@ -55,7 +55,7 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Az
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-2. Navigeer naar de pagina **SQL-database** of **Met SQL beheerde exemplaren**.
+2. Selecteer **SQL-data bases** of open de pagina **SQL Managed instances** .
 
 3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**. 
 

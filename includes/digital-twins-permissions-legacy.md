@@ -5,15 +5,15 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 08/16/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 9f4bf6fb92b590e274e8880b5f900e5469f85727
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ef6b395aeff18a63f52f58e2477679b48a19b002
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012104"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624753"
 ---
 1. Open in de [Azure-portal](https://portal.azure.com) **Azure Active Directory** in linkerdeelvenster en open vervolgens het deelvenster **Eigenschappen**. Kopieer de **Map-id** naar een tijdelijk bestand. U gebruikt deze waarde om de voorbeeldtoepassing in de volgende sectie te configureren.
 
@@ -41,7 +41,7 @@ ms.locfileid: "69012104"
 
    e. Selecteer **Gereed** in het deelvenster **API-toegang toevoegen**.
 
-   f. Selecteer in het deelvenster **Vereiste machtigingen** de knop **Machtigingen verlenen** en accepteer de bevestiging die wordt weergegeven. Neem contact op met de beheerder als de machtiging voor deze API niet is toegekend.
+   f. Selecteer in het deel venster **vereiste machtigingen** de knop **machtigingen verlenen** en accepteer de bevestiging die wordt weer gegeven. Neem contact op met de beheerder als de machtiging voor deze API niet is toegekend.
 
       ![Deelvenster Vereiste machtigingen](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
 

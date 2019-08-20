@@ -1,45 +1,44 @@
 ---
-title: Instellen van zich kunnen registreren en aanmelden met een Google-account - Azure Active Directory B2C | Microsoft Docs
-description: Meld u aan en meld u bieden aan klanten met een Google-account in uw toepassingen met behulp van Azure Active Directory B2C.
+title: Registratie instellen en aanmelden met een Google-account-Azure Active Directory B2C
+description: Gebruik Azure Active Directory B2C om u aan te melden en u aan te melden bij klanten met Google accounts in uw toepassingen.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7e092e27f73901810a9f7edd210e3513c54095e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7286bf1fd51883587aa41dc69d5dae0a3e6fb824
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508502"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622415"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Instellen van zich kunnen registreren en aanmelden met een Google-account met behulp van Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met een Google-account met behulp van Azure Active Directory B2C
 
 ## <a name="create-a-google-application"></a>Een Google-toepassing maken
 
-Gebruik van een Google-account als een [id-provider](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory (Azure AD) B2C, moet u een toepassing maken in de tenant die aangeeft. Als u nog een Google-account hebt kunt u krijgen via [ https://accounts.google.com/SignUp ](https://accounts.google.com/SignUp).
+Als u een Google-account wilt gebruiken als een [ID-provider](active-directory-b2c-reference-oauth-code.md) in azure Active Directory (Azure AD) B2C, moet u een toepassing maken in uw Tenant waarmee deze wordt vertegenwoordigd. Als u nog geen Google-account hebt, kunt u zich aanmelden [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)bij.
 
-1. Aanmelden bij de [Google ontwikkelaars Console](https://console.developers.google.com/) met de referenties van uw Google-account.
-2. In de linkerbovenhoek van de pagina, selecteert u de projectlijst en selecteer vervolgens **nieuw Project**.
-3. Voer een **projectnaam**, klikt u op **maken**, en controleer vervolgens of u gebruikmaakt van het nieuwe project.
-4. Selecteer **referenties** in het menu aan de linkerkant en selecteer vervolgens **referenties maken** > **Oauth-Clientidentiteit**.
-5. Onder **toepassingstype**, selecteer **webtoepassing**.
-6. Voer een **naam** voor uw toepassing, voert u `https://your-tenant-name.b2clogin.com` in **geautoriseerd JavaScript oorsprongen**, en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in **geautoriseerde omleidings-URI's**. Vervang `your-tenant-name` met de naam van uw tenant. U moet alle kleine letters gebruiken bij het invoeren van de tenantnaam van uw, zelfs als de tenant is gedefinieerd met behulp van hoofdletters in Azure AD B2C.
-7. Klik op **Create**.
-8. Kopieer de waarden van **Client-ID** en **clientgeheim**. U moet beide Google configureren als een id-provider in uw tenant. **Clientgeheim** is een belangrijke beveiligingsreferentie.
+1. Meld u aan bij de [Google developers-console](https://console.developers.google.com/) met uw Google-account referenties.
+1. Selecteer in de linkerbovenhoek van de pagina de project lijst en selecteer vervolgens **Nieuw project**.
+1. Voer een **project naam**in, klik op **maken**en zorg ervoor dat u het nieuwe project gebruikt.
+1. Selecteer **referenties** in het linkermenu en selecteer vervolgens**OAuth-client-id** > maken.
+1. Onder **toepassings type**selecteert u **Web Application**.
+1. Voer een **naam** in voor uw toepassing, `https://your-tenant-name.b2clogin.com` Voer in **geautoriseerde java script-oorsprong**in en `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in geautoriseerde omleidings- **uri's**. Vervang `your-tenant-name` door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
+1. Klik op **Create**.
+1. Kopieer de waarden van de **client-id** en het **client geheim**. U hebt beide nodig om Google te configureren als een id-provider in uw Tenant. **Client geheim** is een belang rijke beveiligings referentie.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Een Google-account configureren als een id-provider
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map met uw Azure AD B2C-tenant door te klikken op de **map- en abonnementsfilter** in het bovenste menu en de map waarin uw tenant te kiezen.
-3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **id-providers**, en selecteer vervolgens **toevoegen**.
-5. Voer een **naam**. Voer bijvoorbeeld *Google*.
-6. Selecteer **type id-provider**, selecteer **Google**, en klikt u op **OK**.
-7. Selecteer **instellen van deze id-provider** en voert u de Client-ID die u eerder hebt genoteerd als de **Client-ID** en voer het Clientgeheim die u hebt genoteerd als de **clientgeheim**van de Google-toepassing die u eerder hebt gemaakt.
-8. Klik op **OK** en klik vervolgens op **maken** aan uw Google-configuratie op te slaan.
-
+1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
+1. Selecteer **id-providers**en selecteer vervolgens **Google**.
+1. Voer een **naam**in. Bijvoorbeeld *Google*.
+1. Voer voor de **client-id**de client-id in van de Google-toepassing die u eerder hebt gemaakt.
+1. Voer voor het **client geheim**het client geheim in dat u hebt vastgelegd.
+1. Selecteer **Opslaan**.

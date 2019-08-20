@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881430"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624341"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Logboek gegevens en-werk ruimten in Azure Monitor beheren
 
@@ -44,12 +44,12 @@ U kunt de toegangs beheer modus die is geconfigureerd op een werk ruimte weer ge
 
 ### <a name="configure-from-the-azure-portal"></a>Configureren vanuit de Azure Portal
 
-U kunt de huidige toegangs beheer modus voor de werk ruimte weer geven op de pagina **overzicht** van de werk ruimte in het menu van de **log Analytics werk ruimte** . 
+U kunt de huidige toegangs beheer modus voor de werk ruimte weer geven op de pagina **overzicht** van de werk ruimte in het menu van de **log Analytics werk ruimte** .
 
 ![Toegangs beheer modus voor werk ruimte weer geven](media/manage-access/view-access-control-mode.png)
 
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
-1. Selecteer in de Azure Portal Log Analytics werk ruimten > uw werk ruimte.  
+1. Selecteer in de Azure Portal Log Analytics werk ruimten > uw werk ruimte.
 
 U kunt deze instelling wijzigen op de pagina **Eigenschappen** van de werk ruimte. Het wijzigen van de instelling wordt uitgeschakeld als u geen machtigingen hebt om de werk ruimte te configureren.
 
@@ -60,7 +60,7 @@ U kunt deze instelling wijzigen op de pagina **Eigenschappen** van de werk ruimt
 Gebruik de volgende opdracht om de toegangs beheer modus voor alle werk ruimten in het abonnement te controleren:
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions}
 ```
 
 De uitvoer moet er als volgt uitzien:
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-Een waarde `False` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de werk ruimte-context.  Een waarde `True` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de resource context. 
+Een waarde `False` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de werk ruimte-context.  Een waarde `True` betekent dat de werk ruimte is geconfigureerd met de toegangs modus voor de resource context.
 
->[!NOTE]
->Als een werk ruimte wordt geretourneerd zonder een Booleaanse waarde en deze leeg is, komt dit ook overeen met `False` de resultaten van een waarde.
+> [!NOTE]
+> Als een werk ruimte wordt geretourneerd zonder een Booleaanse waarde en deze leeg is, komt dit ook overeen met `False` de resultaten van een waarde.
 >
 
 Gebruik het volgende script om de toegangs beheer modus voor een specifieke werk ruimte in te stellen op de machtiging resource-context:
@@ -81,9 +81,9 @@ Gebruik het volgende script om de toegangs beheer modus voor een specifieke werk
 ```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
-if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
@@ -92,9 +92,9 @@ Gebruik het volgende script om de toegangs beheer modus voor alle werk ruimten i
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
-if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
@@ -159,10 +159,10 @@ Leden van de rol *Inzender van Log Analytics* kunnen:
 * Beheeroplossingen toevoegen en verwijderen
 
     > [!NOTE]
-    > Wilt u is de laatste twee acties uitvoeren, moet deze machtiging worden verleend op het niveau van de resource-groep of abonnement.  
+    > Wilt u is de laatste twee acties uitvoeren, moet deze machtiging worden verleend op het niveau van de resource-groep of abonnement.
 
 * Opslagaccountsleutels lezen
-* Verzameling met logboeken uit Azure Storage configureren  
+* Verzameling met logboeken uit Azure Storage configureren
 * De controle-instellingen voor Azure-resources bewerken, inclusief
   * De VM-extensie toevoegen aan virtuele machines
   * Azure Diagnostics configureren op alle Azure-resources
@@ -202,7 +202,7 @@ Wanneer gebruikers een query uitvoeren op Logboeken vanuit een werk ruimte met b
 | Machtiging | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Voorbeelden:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | De mogelijkheid om alle logboek gegevens voor de resource weer te geven.  |
-| `Microsoft.Insights/diagnosticSettings/write ` | De mogelijkheid om Diagnostische instellingen te configureren om Logboeken in te stellen voor deze bron. |
+| `Microsoft.Insights/diagnosticSettings/write` | De mogelijkheid om Diagnostische instellingen te configureren om Logboeken in te stellen voor deze bron. |
 
 `/read`machtigingen worden meestal verleend vanuit een rol die  _\*/Read of_ _\*_ machtigingen bevat, zoals de ingebouwde functie [lezer](../../role-based-access-control/built-in-roles.md#reader) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) . Houd er rekening mee dat aangepaste rollen die specifieke acties of speciale ingebouwde rollen bevatten, deze machtiging mogelijk niet bevatten.
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 46755cb8d0383d166b10d50854eb476b676a6ee4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 477b4e51c49a558aed0e5623a3821fa9b8d9eabd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509740"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622370"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Aanmelden instellen voor een specifieke Azure Active Directory organisatie in Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Als u een Azure Active Directory (Azure AD) als een [ID-provider](active-directo
 Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant van de organisatie, die niet hetzelfde is als uw Azure AD B2C Tenant.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD-Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Azure AD-Tenant bevat. Dit is niet dezelfde Tenant als uw Azure AD B2C-Tenant.
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Azure AD-Tenant bevat. Dit is niet dezelfde Tenant als uw Azure AD B2C-Tenant.
 3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 4. Selecteer **nieuwe registratie**.
 5. Voer een naam in voor de toepassing. Bijvoorbeeld `Azure AD B2C App`.
@@ -47,27 +47,28 @@ Als u het aanmelden voor gebruikers van een specifieke Azure AD-organisatie wilt
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>Azure AD configureren als een id-provider
 
-1. Zorg ervoor dat u de map gebruikt die Azure AD B2C Tenant bevat. Selecteer het **Directory-en abonnements filter** in het bovenste menu en kies de map die uw Azure AD B2C Tenant bevat.
-2. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-3. Selecteer **id-providers**, en selecteer vervolgens **toevoegen**.
-4. Voer een **naam**in. Geef bijvoorbeeld `Contoso Azure AD` op.
-5. Selecteer een **ID-provider type**, selecteer **OpenID Connect Connect**en klik vervolgens op **OK**.
-6. Selecteer **Deze id-provider instellen**
-7. Voor **meta gegevens-URL**voert u de volgende `your-AD-tenant-domain` URL in die wordt vervangen door de domein naam van uw Azure AD-Tenant. Bijvoorbeeld `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
+1. Zorg ervoor dat u de map gebruikt die Azure AD B2C Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Azure AD B2C Tenant bevat.
+1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
+1. Selecteer **id-providers**en selecteer vervolgens **nieuwe OpenID Connect Connect-provider**.
+1. Voer een **naam**in. Voer bijvoorbeeld *Contoso Azure AD*in.
+1. Voor **meta gegevens-URL**voert u de volgende `your-AD-tenant-domain` URL in die wordt vervangen door de domein naam van uw Azure AD-Tenant:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-8. Voer voor **client-id**de toepassings-id in die u eerder hebt vastgelegd en voer voor **client geheim**het client geheim in dat u eerder hebt vastgelegd.
-9. Voer desgewenst een waarde in voor **Domain_hint**. Bijvoorbeeld `ContosoAD`. Dit is de waarde die moet worden gebruikt om te verwijzen naar deze id-provider met behulp van *domain_hint* in de aanvraag.
-10. Klik op **OK**.
-11. Selecteer de **claims van deze id-provider toewijzen** en stel de volgende claims in:
+    Bijvoorbeeld `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
-    - Voer`oid`in bij **gebruikers-id**.
-    - Voer`name`in bij **weergave naam**.
-    - Voer`given_name`in voor de **opgegeven naam**.
-    - Voer`family_name`voor achternaam in.
-    - Voer`unique_name`in het **e-mail adres**in.
+1. Voer voor **client-id**de toepassings-id in die u eerder hebt vastgelegd.
+1. Voer voor **client geheim**het client geheim in dat u eerder hebt vastgelegd.
+1. Behoud de standaard waarden voor het **bereik**, het **antwoord type**en de **antwoord modus**.
+1. Beschrijving Voer een waarde in voor **Domain_hint**. Bijvoorbeeld *ContosoAD*. Dit is de waarde die moet worden gebruikt om te verwijzen naar deze id-provider met behulp van *domain_hint* in de aanvraag.
+1. Voer onder **claim toewijzing**van de identiteits provider de volgende claim toewijzings waarden in:
 
-12. Klik op **OK**en klik vervolgens op **maken** om uw configuratie op te slaan.
+    * **Gebruikers-id**: *OID*
+    * **Weergave naam**: *naam*
+    * Voor **naam**: *given_name*
+    * **Achternaam**: *family_name*
+    * **E-mail**: *unique_name*
+
+1. Selecteer **Opslaan**.

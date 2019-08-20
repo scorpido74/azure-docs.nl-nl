@@ -1,26 +1,33 @@
 ---
-title: Gebruik van verouderde AAD-app-registratie voor Azure digitale dubbels | Microsoft Docs
-description: In dit artikel laat zien hoe om de oudere methode voor het maken van app-registratie met Azure Active Directory voor uw Azure digitale dubbels te gebruiken.
+title: Verouderde AAD-app-registratie gebruiken voor Azure Digital Apparaatdubbels | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de verouderde methode voor het maken van app-registratie met Azure Active Directory voor uw Azure Digital Apparaatdubbels-installatie gebruikt.
 author: alinamstanciu
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: ed6c540cedd21bb5154f8746050d5eaa9444b818
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e9689c71c881c7f5f29ac05fea53bb2c27f75591
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484731"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624761"
 ---
-# <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>Uw digitale dubbels Azure-app registreren bij Azure Active Directory verouderde
+# <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>Uw Azure Digital Apparaatdubbels-app registreren bij Azure Active Directory verouderd
 
-Dit artikel laat dat u de oude of verouderde manier voor het registreren van uw voorbeeldtoepassing met Azure Active Directory (Azure AD), zodat deze toegang heeft tot uw digitale Twins-exemplaar kunt gebruiken. Mogelijk wilt u deze methode in geval de nieuwe Azure AD-app-registratie werkt niet voor de installatie.
+In dit artikel wordt beschreven hoe u de Blade afgeschafte **app-registraties (verouderd)** gebruikt om uw voorbeeld toepassing te registreren.
+
+> [!IMPORTANT]
+> * De Blade nieuw **Azure Active Directory** > **app-registraties** vervangt de Blade verouderde **Azure Active Directory** > **app-registraties (verouderd)** 2019.
+> * App-registraties gemaakt of weer gegeven in de verouderde Blade wordt automatisch weer gegeven in de nieuwe blade.
+> * Voor uitgebreide informatie over het migreren naar de nieuwe Azure-app registratie-ervaring raadpleegt u de [Azure-app registraties-trainings handleiding](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) en [Azure Active Directory Quick](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)start.
 
 [!INCLUDE [Digital Twins legacy AAD](../../includes/digital-twins-permissions-legacy.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zodra uw app is geregistreerd bij de AAD, kan deze vervolgens verbinding maken met uw digitale Twins-instantie en help verderop in uw scenario. Zie de [snelstartgids](quickstart-view-occupancy-dotnet.md#build-application) of de [zelfstudie](tutorial-facilities-setup.md#configure-the-digital-twins-sample) voor meer informatie over de volgende stappen. 
+Ga verder met de [Snelstartgids](quickstart-view-occupancy-dotnet.md#build-application) of [zelf studie](tutorial-facilities-setup.md#configure-the-digital-twins-sample).
+
+Meer informatie [over het registreren van uw app met de nieuwe **app-registraties** ](tutorial-facilities-setup.md#grant-permissions-to-your-app)-Blade.

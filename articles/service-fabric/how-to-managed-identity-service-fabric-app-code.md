@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 528e1b0a353cdcd716f9bca63c423af7a6f12641
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d5593da4f874688fa099827e418b12e41363f4bd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958237"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624879"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services (preview)
 
 Service Fabric toepassingen kunnen beheerde identiteiten gebruiken om toegang te krijgen tot andere Azure-resources die ondersteuning bieden voor op Azure Active Directory gebaseerde verificatie. Een toepassing kan een [toegangs token](../active-directory/develop/developer-glossary.md#access-token) verkrijgen dat de identiteit vertegenwoordigt, die door het systeem of de gebruiker kan worden toegewezen, en dit als een Bearer-token gebruiken om zichzelf te verifiëren bij een andere service, ook wel bekend als een [beveiligde bron server](../active-directory/develop/developer-glossary.md#resource-server). Het token vertegenwoordigt de identiteit die is toegewezen aan de Service Fabric-toepassing en wordt alleen verleend aan Azure-resources (inclusief SF-toepassingen) die deze identiteit delen. Raadpleeg de documentatie van het [overzicht van beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor een gedetailleerde beschrijving van beheerde identiteiten, evenals het onderscheid tussen systeem toewijzingen en door de gebruiker toegewezen identiteiten. In dit artikel wordt gerefereerd aan een met Managed Identity geschikte Service Fabric toepassing als de [client toepassing](../active-directory/develop/developer-glossary.md#client-application) .
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3d1a8afdbad1878f4ce134edeeb95dad79e98a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dedb60a2a5d3681198fbc8a21af1dce1778e43eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65784820"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622660"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>De Azure AD Connect Health-agent installeren
 
@@ -38,14 +38,14 @@ In de volgende tabel ziet u een lijst vereisten voor het gebruik van Azure AD Co
 | Uitgaande verbinding met de Azure-service-eindpunten | Tijdens de installatie en runtime moet de agent verbonden zijn met de Azure AD Connect Health-service-eindpunten. Als de uitgaande connectiviteit is geblokkeerd met firewalls, moet u ervoor zorgen dat de volgende eindpunten wel zijn toegestaan. Meer informatie over [uitgaande connectiviteitseindpunten](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |Uitgaande verbindingen op basis van IP-adressen | Als u meer wilt weten over het filteren op IP-adressen in firewalls, ziet u [Azure IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653).|
 | SSL-controle voor uitgaand verkeer is gefilterd of uitgeschakeld | De agentregistratiestap of het uploaden van gegevens kan mislukken als er in de netwerklaag een SSL-inspectie of blokkering is voor uitgaand verkeer. Meer informatie over het [instellen van SSL-inspectie](https://technet.microsoft.com/library/ee796230.aspx) |
-| Firewallpoorten op de server waarop de agent wordt uitgevoerd |De volgende firewallpoorten moeten open zijn, anders kan de agent niet communiceren met de eindpunten van de Azure AD Health-service.<br /><br /><li>TCP-poort 443</li><li>TCP-poort 5671</li> <br />Houd er rekening mee dat poort 5671 niet langer vereist voor de meest recente versie van agent is. Upgrade uitvoeren naar de nieuwste versie, zodat alleen poort 443 vereist is. Lees meer over [firewallpoorten inschakelen](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
+| Firewallpoorten op de server waarop de agent wordt uitgevoerd |De volgende firewallpoorten moeten open zijn, anders kan de agent niet communiceren met de eindpunten van de Azure AD Health-service.<br /><br /><li>TCP-poort 443</li><li>TCP-poort 5671</li> <br />Houd er rekening mee dat poort 5671 niet langer vereist is voor de nieuwste versie van de agent. Voer een upgrade uit naar de nieuwste versie zodat alleen poort 443 is vereist. Lees meer over [firewallpoorten inschakelen](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 | Sta de volgende websites toe als verbeterde beveiliging van Internet Explorer is ingeschakeld |Als verbeterde beveiliging van Internet Explorer is ingeschakeld, moeten de volgende websites worden toegestaan op de server waarop u de agent wilt installeren.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>De federatieve server van uw organisatie moet worden vertrouwd door Azure Active Directory. Bijvoorbeeld: https:\//sts.contoso.com</li> Lees meer over [Internet Explorer configureren](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
 | Zorg ervoor dat PowerShell v4.0 of later is geïnstalleerd | <li>Windows Server 2008 R2 wordt geleverd met PowerShell versie 2.0, wat onvoldoende is voor de agent. Werk PowerShell bij zoals wordt uitgelegd in [Agent-installatie op Windows Server 2008 R2-servers](#agent-installation-on-windows-server-2008-r2-servers).</li><li>Windows Server 2012 wordt geleverd met PowerShell v3.0, wat onvoldoende is voor de agent.  [Update](https://www.microsoft.com/download/details.aspx?id=40855) het Windows Management Framework.</li><li>Windows Server 2012 R2 en later wordt geleverd met een voldoende recente versie van PowerShell.</li>|
 |FIPS uitschakelen|FIPS wordt niet ondersteund door Azure AD Connect Health-agents.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Uitgaande verbinding met de Azure-service-eindpunten
 
- Tijdens de installatie en runtime moet de agent verbonden zijn met de Azure AD Connect Health-service-eindpunten. Als u uitgaande connectiviteit is geblokkeerd met Firewalls, zorg er dan voor dat de volgende URL's worden niet standaard geblokkeerd. Beveiligingsbewaking of controle van deze URL's niet uit te schakelen, maar kunnen ze net als andere internetverkeer. Ze staan communicatie met Azure AD Connect Health-service-eindpunten. Meer informatie over het [uitgaande connectiviteit met Test-AzureADConnectHealthConnectivity controleren](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service).
+ Tijdens de installatie en runtime moet de agent verbonden zijn met de Azure AD Connect Health-service-eindpunten. Als uitgaande connectiviteit is geblokkeerd met behulp van firewalls, moet u ervoor zorgen dat de volgende Url's niet standaard worden geblokkeerd. Schakel de beveiligings controle of inspectie van deze Url's niet uit, maar sta toe als andere Internet verkeer. Ze staan communicatie toe met Azure AD Connect Health Service-eind punten. Meer informatie over het [controleren van de uitgaande connectiviteit met test-AzureADConnectHealthConnectivity](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service).
 
 | Domeinomgeving | Vereiste Azure-service-eindpunten |
 | --- | --- |
@@ -249,12 +249,12 @@ Als de configuratie is voltooid, worden deze services als het goed is al uitgevo
 
 ![Azure AD Connect Health verifiëren](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
-### <a name="quick-agent-installation-in-multiple-servers"></a>Snelle agentinstallatie op meerdere servers
+### <a name="quick-agent-installation-in-multiple-servers"></a>Snelle agent installatie op meerdere servers
 
-1. Maak een gebruikersaccount in Azure AD met een wachtwoord.
-2. Toewijzen de **eigenaar** rol voor deze lokale AAD-account in Azure AD Connect Health via de portal. Volg de stappen [hier](how-to-connect-health-operations.md#manage-access-with-role-based-access-control). Wijs de rol toe op alle service-exemplaren. 
-3. Download het .exe MSI-bestand in de lokale domeincontroller voor de installatie.
-4. Voer het volgende script om te registreren. Vervang de parameters met het nieuwe gebruikersaccount gemaakt en het bijbehorende wachtwoord. 
+1. Maak een gebruikers account in azure AD met een wacht woord.
+2. Wijs de rol van **eigenaar** voor dit lokale Aad-account toe aan Azure AD Connect Health via de portal. Volg de stappen die [hier](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)worden beschreven. Wijs de rol toe aan alle service-exemplaren. 
+3. Down load het exe MSI-bestand in de lokale domein controller voor installatie.
+4. Voer het volgende script uit om de registratie uit te voeren. Vervang de para meters door het nieuwe gebruikers account en het bijbehorende wacht woord. 
 
 ```powershell
 AdHealthAddsAgentSetup.exe /quiet
@@ -268,9 +268,9 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 
 ```
 
-1. Wanneer u klaar bent, kunt u toegang voor het lokale account verwijderen door het uitvoeren van een of meer van de volgende: 
-    * Verwijderen van de roltoewijzing voor het lokale account voor AAD Connect Health
-    * Het wachtwoord voor het lokale account draaien. 
+1. Wanneer u klaar bent, kunt u de toegang tot het lokale account verwijderen door een of meer van de volgende handelingen uit te voeren: 
+    * De roltoewijzing voor het lokale account voor AAD Connect Health verwijderen
+    * Het wacht woord voor het lokale account draaien. 
     * Het lokale AAD-account uitschakelen
     * Het lokale AAD-account verwijderen  
 
@@ -313,7 +313,7 @@ U hebt de volgende opties voor het configureren van de Azure AD Connect Health-a
 
 > [!NOTE]
 > U moet alle Azure AD Connect Health-agentservices opnieuw opstarten om de proxyinstellingen bij te werken. Voer de volgende opdracht uit:<br />
-> Restart-Service AdHealth*
+> Restart-service AzureADConnectHealth *
 >
 >
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295555"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624772"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Detectie van bedreigingen voor Azure-service lagen in Azure Security Center
 
@@ -47,6 +47,7 @@ Security Center Network-laag analyse zijn gebaseerd op voorbeeld [gegevens van I
 |**Verdachte binnenkomende SSH-netwerk activiteit**|Voor beeld van netwerk verkeer analyse heeft afwijkende binnenkomende SSH-communicatie gedetecteerd bij een bron in uw implementatie. Relatief groot aantal binnenkomende verbindingen met uw resource wordt als abnormaal beschouwd voor deze omgeving. Deze activiteit kan wijzen op een poging om uw SSH-interface te forceren.
 |**Verdachte binnenkomende RDP-netwerk activiteit van meerdere bronnen**|Voor beeld van netwerk verkeer analyse heeft afwijkende binnenkomende RDP-communicatie van meerdere bronnen naar een bron in uw implementatie gedetecteerd. Verschillende unieke IP-adressen die verbinding maken met uw resource, worden als abnormaal beschouwd voor deze omgeving. Deze activiteit kan wijzen op een poging om uw RDP-interface te forceren van meerdere hosts (botnet).|
 |**Verdachte binnenkomende RDP-netwerk activiteit**|Voor beeld van netwerk verkeer analyse heeft afwijkende binnenkomende RDP-communicatie gedetecteerd naar een bron in uw implementatie. Relatief groot aantal binnenkomende verbindingen met uw resource wordt als abnormaal beschouwd voor deze omgeving. Deze activiteit kan wijzen op een poging om uw SSH-interface te forceren.|
+|**Er is een netwerk communicatie met een schadelijk adres gedetecteerd**|Voorbeeld analyse van netwerk verkeer heeft communicatie gedetecteerd die afkomstig is van een bron in uw implementatie met een mogelijke opdracht-en beheer server (C & C). Houd er rekening mee dat dit type activiteit ervoor kan zorgen dat uw IP-adres wordt gemarkeerd als kwaadaardig bij externe entiteiten.|
 
 Zie [heuristische DNS-detecties in azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)om te begrijpen hoe Security Center netwerk signalen kunt gebruiken om bedreigings beveiliging toe te passen.
 ## Azure Management Layer (Azure Resource Manager) (preview-versie)<a name ="management-layer"></a>
@@ -77,4 +78,4 @@ Security Center biedt een extra beveiligingslaag door gebruik te maken van Azure
 > 3. Schakel onder **integraties inschakelen**de optie **toestaan dat Microsoft Cloud app Security toegang heeft tot mijn gegevens**uit en klik op **Opslaan**.
 
 >[!NOTE]
->Azure Security Center klant gegevens met betrekking tot beveiliging worden opgeslagen in dezelfde geografische regio als de resource. Als micro soft nog niet Azure Security Center in de geografische regio van de resource heeft geïmplementeerd, worden de gegevens opgeslagen in de Verenigde Staten. Als Microsoft Cloud App Security (MCAS) is ingeschakeld, wordt deze informatie opgeslagen in overeenstemming met de geolocatie regels van MCAS. Zie [gegevens opslag voor niet-regionale Services voor meer informatie](http://azuredatacentermap.azurewebsites.net/).
+>Azure Security Center klant gegevens met betrekking tot beveiliging worden opgeslagen in dezelfde geografische regio als de resource. Als micro soft nog niet Azure Security Center in de geografische regio van de resource heeft geïmplementeerd, worden de gegevens opgeslagen in de Verenigde Staten. Als Microsoft Cloud App Security (MCAS) is ingeschakeld, wordt deze informatie opgeslagen in overeenstemming met de geolocatie regels van MCAS. Zie [gegevens opslag voor niet-regionale Services voor meer informatie](https://azuredatacentermap.azurewebsites.net/).

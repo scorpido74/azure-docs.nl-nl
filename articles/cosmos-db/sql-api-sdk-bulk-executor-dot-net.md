@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 989d52e773ed01a8fd1f4d383c42d7628e196a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d24481c1364b41f38e4ca7b8f7d726ebc22a1117
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814723"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624643"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Bibliotheek .NET-bulk-uitvoerder: Informatie downloaden 
 
@@ -33,9 +33,9 @@ ms.locfileid: "68814723"
 
 | |  |
 |---|---|
-| **Beschrijving**| Met de bibliotheek .net bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. Met de BulkUpdate-module kunnen bestaande gegevens in Azure Cosmos DB containers bulksgewijs worden bijgewerkt als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
+| **Beschrijving**| Met de bibliotheek .net bulksgewijze uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren op Azure Cosmos DB accounts. Deze bibliotheek bevat BulkImport-, BulkUpdate-en BulkDelete-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches. De BulkDelete-module kan documenten bulksgewijs verwijderen op een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor de maximale grootte wordt verbruikt.|
 |**SDK downloaden**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **BulkExecutor-bibliotheek in GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+| **Bibliotheek voor bulk-uitvoerder in GitHub**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**API-documentatie**|[.NET API-referentiedocumentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Aan de slag**|[Aan de slag met de bibliotheek voor bulk-uitvoerder .NET SDK](bulk-executor-dot-net.md)|
 | **Huidige ondersteunde framework**| Microsoft .NET Framework 4.5.2, 4.6.1 en .NET Standard 2,0 |
@@ -60,7 +60,7 @@ ms.locfileid: "68814723"
 
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
-* .NET Standard 2,0 is toegevoegd als een van de ondersteunde doel raamwerken om de BulkExecutor-bibliotheek te laten werken met .NET core-toepassingen.
+* .NET Standard 2,0 is toegevoegd als een van de ondersteunde doel stellingen om de bulk-uitvoerder bibliotheek te laten werken met .NET core-toepassingen.
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
@@ -80,11 +80,11 @@ ms.locfileid: "68814723"
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* Er is een probleem opgelost, waardoor er een opmaak probleem is opgetreden in de gebruikers agent die wordt gebruikt door BulkExecutor.
+* Er is een probleem opgelost, waardoor er een opmaak probleem is opgetreden in de gebruikers agent die wordt gebruikt door bulk-uitvoerder.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 
-* Verbetering van BulkExecutor-import-en update-Api's, zodat deze transparant kan worden aangepast aan elastische schaling van Cosmos DB-container wanneer opslag de huidige capaciteit overschrijdt zonder uitzonde ringen te genereren.
+* Verbetering van de import-en update-Api's voor bulk-uitvoerder om op transparante wijze aan te passen aan elastisch schalen van de Cosmos-container wanneer opslag de huidige capaciteit overschrijdt zonder uitzonde ringen te genereren.
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
@@ -92,7 +92,7 @@ ms.locfileid: "68814723"
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 
-* Er is een probleem opgelost waardoor BulkExecutor een JSRT fout heeft veroorzaakt tijdens het importeren in vaste verzamelingen.
+* Er is een probleem opgelost, waardoor een bulk-uitvoerder de JSRT-fout genereert tijdens het importeren in vaste verzamelingen.
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 

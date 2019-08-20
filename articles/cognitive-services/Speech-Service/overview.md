@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ea6f04dbfd18a6e561a255988ba0465b9e017be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967617"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624268"
 ---
 # <a name="what-are-the-speech-services"></a>Wat zijn de Speech Services?
 
@@ -42,7 +42,8 @@ Deze functies vormen de spraak services van Azure. Gebruik de koppelingen in dez
 Meer informatie over wat er nieuw is in de Azure speech Services.
 
 * 2019 augustus
-  * **Nieuwe zelf studie**: [Stem uw bot in met de Speech SDK,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * **Nieuwe zelf studie**: [Spraak inschakelen voor uw bot met de Speech-SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * Er is voor de [`chat`](speech-synthesis-markup.md#adjust-speaking-styles) `en-US-JessaNeural` spraak een nieuwe spraak stijl toegevoegd. 
 * Juni 2019
   * 1\.6.0 van vrijgegeven spraak-SDK. Zie [release opmerkingen](releasenotes.md)voor een volledige lijst met updates, verbeteringen en bekende problemen.
 * Mei 2019-documentatie is nu beschikbaar voor [transcriptie](conversation-transcription-service.md), [Call Center transcriptie](call-center-transcription.md)en [spraak-eerste virtuele assistenten](voice-first-virtual-assistants.md).

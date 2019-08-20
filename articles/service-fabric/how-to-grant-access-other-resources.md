@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: b6e1108ffee13f1583d920947404963a69616788
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1facd85563a54de2b703bbc8c192976db92c30f7
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958419"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624893"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing (preview)
 
 Voordat de toepassing de beheerde identiteit voor toegang tot andere bronnen kan gebruiken, moeten er machtigingen worden verleend aan deze identiteit op de beveiligde Azure-resource die wordt geopend. Het verlenen van machtigingen is doorgaans een beheer actie op het ' besturings vlak ' van de Azure-service die eigenaar is van de beveiligde resource die wordt gerouteerd via Azure Resource Manager, waardoor alle toepasselijke op rollen gebaseerde toegangs controle wordt afgedwongen.
 

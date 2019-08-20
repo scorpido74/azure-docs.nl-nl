@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879115"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622719"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licentie vereisten voor Azure AD self-service voor wachtwoord herstel
 
@@ -34,7 +34,7 @@ Voor de selfservice voor wachtwoord herstel van Azure AD is een licentie verleen
 * Wachtwoorden opnieuw instellen via self-service voor cloudgebruikers
    * Ik ben een **alleen-Cloud gebruiker** en ben mijn wacht woord verg eten.
       * Ik wil mijn wacht woord **opnieuw instellen** op iets dat ik weet.
-   * Deze functionaliteit is opgenomen in Azure AD Premium P1 of P2 of Microsoft 365 Business.
+   * Deze functionaliteit is opgenomen in Azure AD Premium P1, P2, Microsoft 365 Business of Office 365.
 
 * Self-service voor wacht woord opnieuw instellen/wijzigen/ontgrendelen **met on-premises terugschrijven**
    * Ik ben een **hybride gebruiker** met mijn on-premises Active Directory gebruikers account is gesynchroniseerd met mijn Azure ad-account met behulp van Azure AD Connect. Ik wil mijn wacht woord wijzigen, mijn wacht woord verg eten of dit is vergrendeld.

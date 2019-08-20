@@ -6,18 +6,18 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 08/16/2019
 ms.author: alinast
-ms.openlocfilehash: 15a152d6941a8c77cae2ef7771be93db4ddceae4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "67484697"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622981"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelfstudie: Azure van digitale dubbels Preview implementeren en configureren van een ruimtelijke grafiek
+# <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelfstudie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
-Om samen te brengen personen, locaties en apparaten in een samenhangend ruimtelijke systeem kunt u de service Azure digitale dubbels Preview. Deze reeks zelfstudies laat zien hoe u Azure Digital Twins gebruikt voor het detecteren van ruimtebezetting met optimale omstandigheden qua temperatuur- en luchtkwaliteit. 
+U kunt de Azure Digital Apparaatdubbels preview-service gebruiken om mensen, plaatsen en apparaten samen te brengen in een samenhangend ruimtelijk systeem. Deze reeks zelfstudies laat zien hoe u Azure Digital Twins gebruikt voor het detecteren van ruimtebezetting met optimale omstandigheden qua temperatuur- en luchtkwaliteit. 
 
 In deze zelfstudies leert u een .NET-consoletoepassing te maken om een scenario op te bouwen voor een kantoorgebouw. Het gebouw heeft meerdere verdiepingen en verschillende ruimten per verdieping. De ruimten bevatten apparaten waaraan bewegings-, temperatuur- en luchtkwaliteitssensoren zijn gekoppeld. 
 

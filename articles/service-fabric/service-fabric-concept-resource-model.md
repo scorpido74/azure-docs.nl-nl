@@ -7,15 +7,15 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963844"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623830"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Wat is het resource model van de Service Fabric-toepassing?
-Het is raadzaam dat Service Fabric toepassingen worden geïmplementeerd op uw Service Fabric cluster via Azure Resource Manager. Met deze methode kunnen toepassingen en services in JSON worden beschreven en worden geïmplementeerd in dezelfde resource manager-sjabloon als uw cluster. In plaats van het implementeren en beheren van toepassingen via Power shell of Azure CLI, hoeft u niet te wachten tot het cluster gereed is. Het proces voor het registreren, inrichten en implementeren van de toepassing kan allemaal in één stap plaatsvinden. Dit is de best practice voor het beheren van de levens cyclus van toepassingen in uw cluster. Bekijk de [Aanbevolen procedures](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)voor meer informatie.
+Het is raadzaam dat Service Fabric toepassingen worden geïmplementeerd op uw Service Fabric cluster via Azure Resource Manager. Met deze methode kunnen toepassingen en services in JSON worden beschreven en worden geïmplementeerd in dezelfde resource manager-sjabloon als uw cluster. In plaats van het implementeren en beheren van toepassingen via Power shell of Azure CLI, hoeft u niet te wachten tot het cluster gereed is. Het proces van toepassingsregistratie, -inrichting en -implementatie kan in één stap worden uitgevoerd. Dit is de best practice voor het beheren van de levenscyclus van toepassingen in uw cluster. Bekijk de [Aanbevolen procedures](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)voor meer informatie.
 
 Als dit van toepassing is, kunt u uw toepassingen beheren als Resource Manager-resources om te verbeteren:
 * Audittrail: Resource Manager controleert elke bewerking en houdt een gedetailleerd *activiteiten logboek* bij waarmee u wijzigingen kunt traceren die zijn aangebracht in deze toepassingen en uw cluster.
@@ -33,7 +33,7 @@ In dit document leert u het volgende:
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>Toepassings resources implementeren met behulp van Azure Resource Manager  
 Als u een toepassing en de bijbehorende services wilt implementeren met behulp van het resource model Azure Resource Manager-toepassing, moet u de toepassings code inpakken, het pakket uploaden en vervolgens naar de locatie van het pakket verwijzen in een Azure Resource Manager-sjabloon als een toepassing resource. Bekijk voor meer informatie [package a Application](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
           
-Maak vervolgens een Azure Resource Manager sjabloon, werk het parameter bestand bij met toepassings gegevens en implementeer het op het Service Fabric cluster. Raadpleeg hier voor beelden
+Maak vervolgens een Azure Resource Manager sjabloon, werk het parameter bestand bij met toepassings gegevens en implementeer het op het Service Fabric cluster. Raadpleeg [hier](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)voor beelden.
 
 ### <a name="create-a-storage-account"></a>Een Storage-account maken 
 Voor het implementeren van een toepassing vanuit een resource manager-sjabloon is een opslag account nodig om de installatie kopie van de toepassing te faseren. U kunt een bestaand opslag account opnieuw gebruiken of een nieuw opslag account maken om uw toepassingen te faseren. Als u een bestaand opslag account wilt gebruiken, kunt u deze stap overs Laan. 

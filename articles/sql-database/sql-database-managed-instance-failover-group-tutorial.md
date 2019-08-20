@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5bf2ee68ff2cfde2846dff2d94f7478920a18760
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037110"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624973"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelfstudie: Een door SQL Database beheerd exemplaar toevoegen aan een failovergroep
 
@@ -151,7 +151,7 @@ Voor twee beheerde instanties om deel te nemen aan een failovergroep moet er een
     | **Gateway type** | Selecteer **VPN**. |
     | **VPN-type** | **Op route gebaseerd** selecteren |
     | **SKU**| De standaard waarde `VpnGw1`van wijzigen. |
-    | **Location**| De locatie waar uw secundaire beheerde instantie en secundaire virtuele netwerk zich bevindt.   |
+    | **Location**| De locatie waar uw primaire beheerde instantie en primair virtuele netwerk zich bevindt.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-primary`. |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
     | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, `primary-gateway-IP`zoals. |

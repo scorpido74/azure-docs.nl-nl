@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 88b6fbbd68f1f98e50ec0f04336a022dc1580a73
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562912"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624148"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
-U kunt een aantal verschillende technologieën gebruiken om uw Azure Functions project code te implementeren in Azure. In dit artikel vindt u een volledig overzicht van deze technologieën, wordt beschreven welke technologieën er beschikbaar zijn voor welke functie van functies, wat er gebeurt wanneer u elke methode gebruikt en aanbevelingen biedt voor de beste methode voor gebruik in verschillende scenario's . De verschillende hulpprogram ma's die ondersteuning bieden voor de implementatie van Azure Functions, zijn afgestemd op de juiste technologie op basis van hun context.
+U kunt een aantal verschillende technologieën gebruiken om uw Azure Functions project code te implementeren in Azure. In dit artikel vindt u een volledig overzicht van deze technologieën, wordt beschreven welke technologieën er beschikbaar zijn voor welke functie van functies, wat er gebeurt wanneer u elke methode gebruikt en aanbevelingen biedt voor de beste methode voor gebruik in verschillende scenario's . De verschillende hulpprogram ma's die ondersteuning bieden voor de implementatie van Azure Functions, zijn afgestemd op de juiste technologie op basis van hun context. Over het algemeen is zip-implementatie de aanbevolen implementatie technologie voor Azure Functions.
 
 ## <a name="deployment-technology-availability"></a>Beschik baarheid implementatie technologie
 
@@ -31,17 +31,17 @@ Azure Functions ondersteunt lokale ontwikkeling en hosting in Windows en Linux o
 
 Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën zijn beschikbaar voor elk van de Azure Functions. In het volgende diagram ziet u welke implementatie technologieën worden ondersteund voor elke combi natie van besturings systeem en hosting plan:
 
-| Implementatie technologie | Windows-verbruik | Windows Premium (preview) | Windows toegewezen  | Linux-verbruik | Speciaal voor Linux |
-|-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
-| Externe pakket-URL<sup>1</sup> |✔|✔|✔|✔|✔|
-| Zip-implementatie |✔|✔|✔| |✔|
-| Docker-container | | | | |✔|
-| Web implementeren |✔|✔|✔| | |
-| Broncodebeheer |✔|✔|✔| |✔|
-| Lokale Git<sup>1</sup> |✔|✔|✔| |✔|
-| Cloud synchronisatie<sup>1</sup> |✔|✔|✔| |✔|
-| FTP<sup>1</sup> |✔|✔|✔| |✔|
-| Portal bewerken |✔|✔|✔| |✔<sup>2</sup>|
+| Implementatie technologie | Windows-verbruik | Windows Premium (preview) | Windows toegewezen  | Linux-verbruik | Linux Premium (preview-versie) | Speciaal voor Linux |
+|-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
+| Externe pakket-URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
+| Zip-implementatie |✔|✔|✔|✔|✔|✔|
+| Docker-container | | | | |✔|✔|
+| Web implementeren |✔|✔|✔| | | |
+| Broncodebeheer |✔|✔|✔| |✔|✔|
+| Lokale Git<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Cloud synchronisatie<sup>1</sup> |✔|✔|✔| |✔|✔|
+| FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
+| Portal bewerken |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
 <sup>1</sup> implementatie technologie waarvoor [hand matige synchronisatie](#trigger-syncing)van de trigger is vereist.  
 <sup>2</sup> het bewerken van de portal is alleen ingeschakeld voor http-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
@@ -58,7 +58,40 @@ Wanneer u een van de triggers wijzigt, moeten de functies de infra structuur op 
 * Verzend een HTTP POST-aanvraag `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` naar het gebruik van de [hoofd sleutel](functions-bindings-http-webhook.md#authorization-keys).
 * Verzend een HTTP POST-aanvraag `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`naar. Vervang de tijdelijke aanduidingen door uw abonnements-ID, naam van de resource groep en de naam van uw functie-app.
 
-## <a name="deployment-technology-details"></a>Details implementatie technologie 
+### <a name="remote-build"></a>Externe build
+
+Azure Functions kunt automatisch builds uitvoeren op de code die na de implementaties van de post wordt ontvangen. Deze builds werken enigszins anders, afhankelijk van of uw app op Windows of Linux wordt uitgevoerd. Externe builds worden niet uitgevoerd wanneer een app eerder is ingesteld om te worden uitgevoerd in de modus [uitvoeren vanuit pakket](run-functions-from-deployment-package.md) . 
+
+> [!NOTE]
+> Als u problemen ondervindt met het maken van een externe build, kan het zijn dat de app is gemaakt voordat de functie beschikbaar werd gemaakt (1 augustus 2019). Probeer een nieuwe functie-app te maken.
+
+#### <a name="remote-build-on-windows"></a>Externe Build op Windows
+
+Alle functie-apps die worden uitgevoerd op Windows hebben een kleine beheer-app, de SCM-(of [kudu](https://github.com/projectkudu/kudu))-site. Deze site handelt veel van de implementatie en bouw logica voor Azure Functions.
+
+Wanneer een app wordt geïmplementeerd in Windows, worden taalspecifieke opdrachten, zoals `dotnet restore` (C#) of `npm install` (Java script), uitgevoerd.
+
+#### <a name="remote-build-on-linux-preview"></a>Externe Build op Linux (preview-versie)
+
+Als u externe Build op Linux wilt inschakelen, moet u de volgende [Toepassings instellingen](functions-how-to-use-azure-function-app-settings.md#settings)instellen:
+
+* `ENABLE_ORYX_BUILD=true`
+* `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
+
+Wanneer apps op afstand zijn gebouwd op Linux, worden ze [uitgevoerd vanuit het implementatie pakket](run-functions-from-deployment-package.md).
+
+> [!NOTE]
+> Extern bouwen op basis van het toegewezen (App Service) Linux-abonnement wordt momenteel alleen ondersteund voor node. js en python.
+
+##### <a name="consumption-preview-plan"></a>Plan voor verbruik (voor beeld)
+
+Linux-functie-apps die worden uitgevoerd in het verbruiks abonnement, hebben geen SCM/kudu-site, waarmee de implementatie opties worden beperkt. Functie-apps in Linux die worden uitgevoerd in het verbruiks abonnement, bieden echter ondersteuning voor externe builds. Deze externe builds gebruiken [Oryx](https://github.com/microsoft/Oryx).
+
+##### <a name="dedicated-and-premium-preview-plans"></a>Speciale en Premium-abonnementen (preview-versie)
+
+Functie-apps die worden uitgevoerd op Linux in het [speciale (app service)-abonnement](functions-scale.md#app-service-plan) en het [Premium-abonnement](functions-scale.md#premium-plan) hebben ook een beperkte SCM/kudu-site, die zelf gebruikmaakt van [Oryx](https://github.com/microsoft/Oryx).
+
+## <a name="deployment-technology-details"></a>Details implementatie technologie
 
 De volgende implementatie methoden zijn beschikbaar in Azure Functions.
 
@@ -70,17 +103,25 @@ U kunt een externe pakket-URL gebruiken om te verwijzen naar een extern pakket b
 >
 >Als u Azure Blob Storage gebruikt, gebruikt u een persoonlijke container met een [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) om functies toegang te geven tot het pakket. Telkens wanneer de toepassing opnieuw wordt gestart, wordt een kopie van de inhoud opgehaald. Uw verwijzing moet geldig zijn voor de levens duur van de toepassing.
 
->__Wanneer u deze gebruikt:__ De URL van het externe pakket is de enige ondersteunde implementatie methode voor Azure Functions die worden uitgevoerd op Linux in het verbruiks abonnement. Wanneer u het pakket bestand bijwerkt waarnaar wordt verwezen door een functie-app, moet u de [Triggers hand matig synchroniseren](#trigger-syncing) om Azure te laten weten dat uw toepassing is gewijzigd.
+>__Wanneer u deze gebruikt:__ De URL van het externe pakket is de enige ondersteunde implementatie methode voor Azure Functions die in Linux in het verbruiks abonnement wordt uitgevoerd, als de gebruiker niet wil dat er een externe build plaatsvindt. Wanneer u het pakket bestand bijwerkt waarnaar wordt verwezen door een functie-app, moet u de [Triggers hand matig synchroniseren](#trigger-syncing) om Azure te laten weten dat uw toepassing is gewijzigd.
 
 ### <a name="zip-deploy"></a>Zip-implementatie
 
-Gebruik Zip-implementatie om een zip-bestand met uw functie-app naar Azure te pushen. U kunt eventueel uw app instellen om te starten in de modus [uitvoeren vanuit pakket](run-functions-from-deployment-package.md) .
+Gebruik Zip-implementatie om een zip-bestand met uw functie-app naar Azure te pushen. Desgewenst kunt u uw app zo instellen dat deze [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md), of opgeven dat er een [externe build wordt gemaakt](#remote-build) .
 
 >__Hoe gebruikt u dit:__ Implementeren met behulp van uw favoriete client hulpprogramma: [VS code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)of de [Azure cli](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Als u een zip-bestand hand matig wilt implementeren in uw functie-app, volgt u de instructies in [Deploy vanuit een zip-bestand of-URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
->
->Wanneer u implementeert met behulp van zip-implementatie, kunt u instellen dat de app wordt uitgevoerd in de modus [uitvoeren vanuit pakket](run-functions-from-deployment-package.md) . Als u uitvoeren vanuit pakket modus wilt instellen, `WEBSITE_RUN_FROM_PACKAGE` stelt u de waarde `1`voor de toepassings instelling in op. U kunt het beste een zip-implementatie uitvoeren. Het levert snellere laad tijden voor uw toepassingen en is de standaard waarde voor VS code, Visual Studio en de Azure CLI.
 
->__Wanneer u deze gebruikt:__ Zip-implementatie is de aanbevolen implementatie technologie voor functies die worden uitgevoerd op Windows en Linux in het Premium-of dedicated-abonnement.
+Als u een zip-implementatie met een externe build wilt uitvoeren, gebruikt u de volgende [kern hulpprogramma's](functions-run-local.md) opdracht:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+U kunt ook tegenover code een instructie uitvoeren om een externe build uit te voeren tijdens de implementatie door de vlag ' ' azureFunctions. scmDoBuildDuringDeployment ' toe te voegen. Lees de instructies in de [wiki van Azure functions extension](https://github.com/microsoft/vscode-azurefunctions/wiki)voor meer informatie over het toevoegen van een markering aan VS code.
+
+>Wanneer u implementeert met behulp van zip-implementatie, kunt u instellen dat uw app [vanuit het pakket wordt uitgevoerd](run-functions-from-deployment-package.md). Als u uit het pakket wilt uitvoeren `WEBSITE_RUN_FROM_PACKAGE` , stelt u de `1`waarde voor de toepassings instelling in op. U kunt het beste een zip-implementatie uitvoeren. Het levert snellere laad tijden voor uw toepassingen en is de standaard waarde voor VS code, Visual Studio en de Azure CLI. 
+
+>__Wanneer u deze gebruikt:__ Zip-implementatie is de aanbevolen implementatie technologie voor Azure Functions.
 
 ### <a name="docker-container"></a>Docker-container
 
@@ -93,7 +134,7 @@ U kunt een Linux-container installatie kopie implementeren die uw functie-app be
 >
 >Als u wilt implementeren in een bestaande app met behulp van een [](functions-run-local.md)aangepaste container, gebruikt [`func deploy`](functions-run-local.md#publish) u de opdracht in azure functions core tools.
 
->__Wanneer u deze gebruikt:__ Gebruik de optie docker-container wanneer u meer controle nodig hebt over de Linux-omgeving waarin uw functie-app wordt uitgevoerd. Dit implementatie mechanisme is alleen beschikbaar voor functies die worden uitgevoerd op Linux in een App Service-abonnement.
+>__Wanneer u deze gebruikt:__ Gebruik de optie docker-container wanneer u meer controle nodig hebt over de Linux-omgeving waarin uw functie-app wordt uitgevoerd. Dit implementatie mechanisme is alleen beschikbaar voor functies die worden uitgevoerd op Linux.
 
 ### <a name="web-deploy-msdeploy"></a>Web Deploy (MSDeploy)
 
@@ -166,23 +207,7 @@ In de volgende tabel ziet u de besturings systemen en talen die ondersteuning bi
 
 ## <a name="deployment-slots"></a>Implementatiesites
 
-Wanneer u de functie-app in azure implementeert, kunt u implementeren in een afzonderlijke implementatie site in plaats van rechtstreeks naar de productie omgeving te implementeren. Zie [Azure app service-sleuven](../app-service/deploy-staging-slots.md)voor meer informatie over implementatie sites.
-
-### <a name="deployment-slots-levels-of-support"></a>Implementatie-sleuven ondersteunen de ondersteunings niveaus
-
-Er zijn twee ondersteunings niveaus voor implementatie sites:
-
-* **Algemene Beschik baarheid (ga)** : Volledig ondersteund en goedgekeurd voor productie gebruik.
-* **Voor beeld**: Nog niet ondersteund, maar zal in de toekomst naar verwachting de GA-status bereiken.
-
-| Besturings systeem/hosting abonnement | Ondersteunings niveau |
-| --------------- | ------ |
-| Windows-verbruik | Preview |
-| Windows Premium (preview) | Preview |
-| Windows toegewezen | Algemene beschikbaarheid |
-| Linux-verbruik | Niet-ondersteund |
-| Linux Premium (preview-versie) | Preview |
-| Speciaal voor Linux | Algemene beschikbaarheid |
+Wanneer u de functie-app in azure implementeert, kunt u implementeren in een afzonderlijke implementatie site in plaats van rechtstreeks naar productie. Zie de documentatie over [Azure functions implementatie sleuven](../app-service/deploy-staging-slots.md) voor meer informatie over implementatie sites.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,14 +4,14 @@ description: Azure Resource Manager gebruiken voor resources verplaatsen naar ee
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 53482fdd760517967c9a4a976b43b64ba745c637
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542952"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624564"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement
 
@@ -32,9 +32,11 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
    * [Hulp App Services verplaatsen](./move-limitations/app-service-move-limitations.md)
    * [Richt lijnen voor het verplaatsen van Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [Klassiek implementatie model richt lijnen](./move-limitations/classic-model-move-limitations.md) voor het verplaatsen van klassieke compute, klassieke opslag, klassieke virtuele netwerken en Cloud Services
+   * [Richt lijnen voor netwerk verplaatsing](./move-limitations/networking-move-limitations.md)
    * [Hulp Recovery Services verplaatsen](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Hulp Virtual Machines verplaatsen](./move-limitations/virtual-machines-move-limitations.md)
-   * [Richt lijnen voor het verplaatsen van virtuele netwerken](./move-limitations/virtual-network-move-limitations.md)
+
+   Als de doel resource groep een virtueel netwerk bevat, kan de status van de afhankelijke resources de verplaatsing blok keren, zelfs als deze resources niet bij de verplaatsing betrokken zijn. Zie richt lijnen voor het [verplaatsen van netwerken](./move-limitations/virtual-network-move-limitations.md)voor meer informatie.
 
 1. De bron-en doel abonnementen moeten actief zijn. Als u problemen ondervindt bij het inschakelen van een uitgeschakeld account, [maakt u een ondersteunings aanvraag voor Azure](../azure-supportability/how-to-create-azure-support-request.md). Selecteer **Abonnementsbeheer** voor het probleemtype.
 
@@ -97,10 +99,11 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
 1. **Voor een verplaatsing tussen abonnementen moeten de resource en de afhankelijke resources zich in dezelfde resource groep bevinden en moeten ze samen worden verplaatst.** Een virtuele machine met Managed disks vereist bijvoorbeeld dat de virtuele machine en de beheerde schijven samen worden verplaatst, samen met andere afhankelijke bronnen.
 
    Als u een resource naar een nieuw abonnement verplaatst, controleert u of de resource afhankelijke resources heeft en of ze zich in dezelfde resource groep bevinden. Als de resources zich niet in dezelfde resource groep bevinden, controleert u of de resources kunnen worden geconsolideerd in dezelfde resource groep. Als dit het geval is, kunt u al deze resources in dezelfde resource groep plaatsen met behulp van een Verplaats bewerking tussen resource groepen.
-    
-Zie [scenario voor verplaatsen tussen abonnementen](#scenario-for-move-across-subscriptions)voor meer informatie.
+
+   Zie [scenario voor verplaatsen tussen abonnementen](#scenario-for-move-across-subscriptions)voor meer informatie.
 
 ## <a name="scenario-for-move-across-subscriptions"></a>Scenario voor het verplaatsen van meerdere abonnementen
+
 Het verplaatsen van resources van het ene naar het andere abonnement is een proces dat uit drie stappen bestaat:
 
 ![scenario voor het verplaatsen van meerdere abonnementen](./media/resource-group-move-resources/cross-subscription-move-scenario.png)

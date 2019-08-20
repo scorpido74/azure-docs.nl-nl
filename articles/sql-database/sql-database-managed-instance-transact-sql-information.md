@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44b98b55bfa2d0424831f6cf612f66dbcdc8a6d9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 5e9972c5fea7aaa2e6b5270aff87343437b1963e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543692"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624013"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database van beheerde instanties T-SQL-verschillen van SQL Server
 
@@ -62,6 +62,7 @@ Beheerde exemplaren hebben automatische back-ups, zodat gebruikers volledige dat
 Beperkingen: 
 
 - Met een beheerd exemplaar kunt u een back-up maken van een exemplaar database met Maxi maal 32 stroken, die voldoende is voor data bases tot 4 TB als back-upcompressie wordt gebruikt.
+- U kunt niet `BACKUP DATABASE ... WITH COPY_ONLY` uitvoeren op een Data Base die is versleuteld met door service beheerde transparent Data Encryption (TDE). Door service beheerde TDE zorgt ervoor dat back-ups worden versleuteld met een interne TDE-sleutel. De sleutel kan niet worden geëxporteerd, dus u kunt de back-up niet herstellen. Gebruik automatische back-ups en herstel naar een bepaald tijdstip, of gebruik in plaats daarvan door de [klant beheerde (BYOK) TDe](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . U kunt versleuteling ook uitschakelen voor de data base.
 - De maximale grootte van de back-upstripe `BACKUP` met behulp van de opdracht in een beheerd exemplaar is 195 GB. Dit is de maximale grootte van de blob. Verhoog het aantal Stripes in de back-upopdracht om de afzonderlijke Stripe-grootte te verminderen en binnen deze limiet te blijven.
 
     > [!TIP]
@@ -512,6 +513,10 @@ Service Broker met meerdere exemplaren wordt niet ondersteund:
 - Nadat een beheerd exemplaar is gemaakt, wordt het beheerde exemplaar of VNet naar een andere resource groep of een ander abonnement niet ondersteund.
 - Sommige services, zoals App Service omgevingen, Logic apps en beheerde instanties (gebruikt voor geo-replicatie, transactionele replicatie of via gekoppelde servers), hebben geen toegang tot beheerde instanties in verschillende regio's als hun VNets zijn verbonden met behulp van [Global peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
 
+### <a name="tempdb-size"></a>TEMPDB-grootte
+
+De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per kern op een algemeen laag. De maximale `tempdb` grootte van een bedrijfskritiek laag wordt beperkt door de opslag grootte van het exemplaar. `Tempdb`de grootte van het logboek bestand is beperkt tot 120 GB op Algemeen en Bedrijfskritiek lagen. Sommige query's retour neren mogelijk een fout als deze meer dan 24 GB per kern `tempdb` nodig heeft of als er meer dan 120 GB aan logboek gegevens worden geproduceerd.
+
 ## <a name="Changes"></a>Gedrags wijzigingen
 
 De volgende variabelen, functies en weer gaven retour neren verschillende resultaten:
@@ -526,13 +531,39 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 
 ## <a name="Issues"></a>Bekende problemen en beperkingen
 
-### <a name="tempdb-size"></a>TEMPDB-grootte
+### <a name="cross-database-service-broker-dialogs-dont-work-after-service-tier-upgrade"></a>Service Broker dialoog vensters voor meerdere data bases werken niet na een upgrade van de servicelaag
 
-De maximale bestands grootte van `tempdb` mag niet groter zijn dan 24 GB per kern op een algemeen laag. De maximale `tempdb` grootte van een bedrijfskritiek laag wordt beperkt door de opslag grootte van het exemplaar. `Tempdb`de grootte van het logboek bestand is beperkt tot 120 GB op Algemeen en Bedrijfskritiek lagen. De `tempdb` data base is altijd gesplitst in 12 gegevens bestanden. Deze maximum grootte per bestand kan niet worden gewijzigd en er kunnen geen nieuwe bestanden aan `tempdb`worden toegevoegd. Sommige query's retour neren mogelijk een fout als deze meer dan 24 GB per kern `tempdb` nodig heeft of als er meer dan 120 GB aan logboek gegevens worden geproduceerd. `Tempdb`wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd `tempdb` , en eventuele wijzigingen worden niet bewaard. 
+**Vallen** Aug 2019
 
-### <a name="cant-restore-contained-database"></a>Kan Inge sloten data base niet herstellen
+Meerdere data base-Service Broker dialogen kunnen de berichten niet leveren nadat de bewerking van de service tier is gewijzigd. Elke wijziging van de vCores of de opslag grootte van een exemplaar in het `service_broke_guid` beheerde exemplaar leidt ertoe dat de waarde van de weer gave [sys. data bases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) voor alle data bases wordt gewijzigd. Elke `DIALOG` gemaakt met de instructie [begin dialog](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) waarmee naar service-Brokers in de andere data base door de GUID wordt verwezen, kan geen berichten afleveren.
 
-Beheerd exemplaar kan [Inge sloten data bases](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)niet herstellen. Herstel naar een bepaald tijdstip van de bestaande Inge sloten data bases werkt niet voor een beheerd exemplaar. In de tussen tijd raden wij u aan de containment-optie uit uw data bases te verwijderen die op het beheerde exemplaar zijn geplaatst. Gebruik niet de containment-optie voor de productie databases. 
+**Enkele** Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u de servicelaag bijwerkt en opnieuw initialiseert.
+
+### <a name="some-aad-login-types-cannot-be-impersonated"></a>Sommige AAD-aanmeldings typen kunnen niet worden geïmiteerd
+
+**Vallen** 2019 juli
+
+Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van volgende Aad-principals wordt niet ondersteund:
+-   Aliased AAD-gebruikers. In dit geval `15517`wordt de volgende fout geretourneerd.
+- AAD-aanmeldingen en-gebruikers op basis van AAD-toepassingen of service-principals. De volgende fouten worden in dit geval `15517` en `15406`worden geretourneerd.
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryde para meter wordt niet ondersteund in sp_send_db_mail
+
+**Vallen** April 2019
+
+De `@query` para meter in de [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) -procedure werkt niet.
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>AAD-aanmeldingen en gebruikers worden niet ondersteund in hulpprogram ma's
+
+**Vallen** Jan 2019
+
+SQL Server Management Studio en SQL Server Data Tools niet fuly Azure-Acctive Directory-aanmeldingen en-gebruikers te ondersteunen.
+- Het gebruik van Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) met SQL Server Data Tools wordt momenteel niet ondersteund.
+- Scripts voor Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) worden niet ondersteund in SQL Server Management Studio.
+
+### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB-structuur en-inhoud worden opnieuw gemaakt
+
+De `tempdb` data base is altijd gesplitst in 12 gegevens bestanden en de bestands structuur kan niet worden gewijzigd. De maximale grootte per bestand kan niet worden gewijzigd en er kunnen geen nieuwe bestanden aan `tempdb`worden toegevoegd. `Tempdb`wordt altijd opnieuw gemaakt als een lege data base wanneer het exemplaar wordt gestart of een failover wordt uitgevoerd `tempdb` , en eventuele wijzigingen worden niet bewaard.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Opslag ruimte overschrijden met kleine database bestanden
 
@@ -551,24 +582,9 @@ In dit voor beeld blijven bestaande data bases werken en kunnen ze zonder enig p
 
 U kunt [het aantal resterende bestanden identificeren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1) met behulp van systeem weergaven. Als u deze limiet bereikt, kunt u [een aantal kleinere bestanden leegmaken en verwijderen met behulp van de DBCC SHRINKFILE-instructie](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file) of overschakelen naar de [bedrijfskritiek-laag, die deze limiet niet overschrijdt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
-### <a name="tooling"></a>Hulpprogram ma's
-
-SQL Server Management Studio en SQL Server Data Tools kunnen problemen ondervinden bij het openen van een beheerd exemplaar.
-
-- Het gebruik van Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) met SQL Server Data Tools wordt momenteel niet ondersteund.
-- Scripts voor Azure AD server-principals (aanmeldingen) en gebruikers (open bare preview) worden niet ondersteund in SQL Server Management Studio.
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Onjuiste database namen in sommige weer gaven, logboeken en berichten
+### <a name="guid-values-shown-instead-of-database-names"></a>GUID-waarden die worden weer gegeven in plaats van database namen
 
 In verschillende systeem weergaven, prestatie meter items, fout berichten, XEvents en fouten logboek vermeldingen worden GUID-database-id's weer gegeven in plaats van de werkelijke database namen. Vertrouw niet op deze GUID-id's, omdat deze in de toekomst worden vervangen door feitelijke database namen.
-
-### <a name="database-mail"></a>Database-e-mail
-
-De `@query` para meter in de [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) -procedure werkt niet.
-
-### <a name="database-mail-profile"></a>Database Mail profiel
-
-Het Database Mail profiel dat door de SQL Server Agent wordt gebruikt, `AzureManagedInstance_dbmail_profile`moet worden aangeroepen. Er zijn geen beperkingen voor andere Database Mail profiel namen.
 
 ### <a name="error-logs-arent-persisted"></a>Fouten logboeken zijn niet persistent gemaakt
 
@@ -616,12 +632,6 @@ Hoewel deze code werkt met gegevens binnen hetzelfde exemplaar, is MSDTC vereist
 CLR-modules die worden geplaatst in een beheerd exemplaar en gekoppelde servers of gedistribueerde query's die verwijzen naar een huidige instantie, kunnen het IP-adres van een lokaal exemplaar soms niet omzetten. Deze fout is een tijdelijk probleem.
 
 **Enkele** Gebruik, indien mogelijk, context verbindingen in een CLR-module.
-
-### <a name="tde-encrypted-databases-with-a-service-managed-key-dont-support-user-initiated-backups"></a>TDE-versleutelde data bases met een door een service beheerde sleutel bieden geen ondersteuning voor door de gebruiker geïnitieerde back-ups
-
-U kunt niet `BACKUP DATABASE ... WITH COPY_ONLY` uitvoeren op een Data Base die is versleuteld met door service beheerde transparent Data Encryption (TDE). Door service beheerde TDE zorgt ervoor dat back-ups worden versleuteld met een interne TDE-sleutel. De sleutel kan niet worden geëxporteerd, dus u kunt de back-up niet herstellen.
-
-**Enkele** Gebruik automatische back-ups en herstel naar een bepaald tijdstip, of gebruik in plaats daarvan door de [klant beheerde (BYOK) TDe](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) . U kunt versleuteling ook uitschakelen voor de data base.
 
 ## <a name="next-steps"></a>Volgende stappen
 

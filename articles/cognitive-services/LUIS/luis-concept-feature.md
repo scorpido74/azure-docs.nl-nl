@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639207"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624571"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Woordgroepen lijst functies in uw LUIS-app
 
@@ -69,7 +69,7 @@ Omdat de woorden of zinsdelen voor het water lichaam synoniemen zijn en kunnen w
 
 ### <a name="non-interchangeable-lists"></a>Niet-Verwissel bare lijsten
 
-Een niet-verwisselbaar woordgroepen lijst is een signaal dat detectie naar LUIS verhoogt. De lijst met zinsdelen geeft woorden of woord groepen aan die belang rijker zijn dan andere woorden. Dit helpt bij het bepalen van de intentie en de entiteits detectie. Stel dat u een onderwerps domein hebt, zoals een globaal traject (dat wil zeggen over cult uren, maar nog steeds in één taal). Er zijn woorden en zinsdelen die belang rijk zijn voor de app, maar die niet synoniem zijn. 
+Een niet-verwisselbaar woordgroepen lijst is een signaal dat detectie naar LUIS verhoogt. De lijst met zinsdelen geeft woorden of zinsdelen aan die belang rijker zijn dan andere woorden. Dit helpt bij het bepalen van de intentie en de entiteits detectie. Stel dat u een onderwerps domein hebt, zoals een globaal traject (dat wil zeggen over cult uren, maar nog steeds in één taal). Er zijn woorden en zinsdelen die belang rijk zijn voor de app, maar die niet synoniem zijn. 
 
 Voor een ander voor beeld gebruikt u een niet-verwisselbaar woordgroepen lijst voor zeldzame, bedrijfs eigen en vreemde woorden. LUIS is mogelijk niet worden herkend zeldzame en eigen woorden, evenals de woorden in vreemde talen (buiten de cultuur van de app). De niet-verwisselbaar instelling geeft aan dat de set zeldzaam woorden vormt een klasse die LUIS moet leren herkennen, maar ze niet synoniemen zijn of uitwisselbaar met elkaar.
 

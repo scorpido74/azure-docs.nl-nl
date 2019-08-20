@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855103"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624245"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
@@ -31,6 +31,10 @@ De speech Services-implementatie van SSML is gebaseerd op de [opmaak taal versie
 Kies uit standaard-en Neural stemmen of maak uw eigen aangepaste spraak die uniek is voor uw product of merk. 75 + standaard stemmen zijn verkrijgbaar in meer dan 45 talen en land instellingen en vijf Neural stemmen zijn beschikbaar in vier talen en land instellingen. Zie [taal ondersteuning](language-support.md)voor een volledige lijst met ondersteunde talen, land instellingen en stemmen (Neural en Standard).
 
 Zie [tekst-naar-spraak-overzicht](text-to-speech.md)voor meer informatie over standaard-, Neural-en aangepaste stemmen.
+
+## <a name="special-characters"></a>Speciale tekens
+
+Wanneer u SSML gebruikt om tekst-naar-gesynthesizerde spraak te converteren, moet u er rekening mee houdt dat net als met XML, speciale tekens, zoals aanhalings tekens, apostrofs en haakjes, moeten worden voorafgegaan. Zie [voor meer informatie Extensible Markup Language (XML) 1,0: Bijlage D](https://www.w3.org/TR/xml/#sec-entexpand).
 
 ## <a name="supported-ssml-elements"></a>Ondersteunde SSML-elementen
 
@@ -134,7 +138,7 @@ Wijzigingen worden toegepast op het niveau van de zin en de stijl varieert per s
 
 | Kenmerk | Description | Vereiste / optioneel |
 |-----------|-------------|---------------------|
-| type | Geeft de spreek stijl aan. Op dit moment zijn gesp roken stijlen specifiek voor spraak. | Vereist bij het aanpassen van de spreek stijl voor een Neural-stem. Als u `mstts:express-as`gebruikt, moet u type opgeven. Als er een ongeldige waarde wordt gegeven, wordt dit element genegeerd. |
+| Type | Geeft de spreek stijl aan. Op dit moment zijn gesp roken stijlen specifiek voor spraak. | Vereist bij het aanpassen van de spreek stijl voor een Neural-stem. Als u `mstts:express-as`gebruikt, moet u type opgeven. Als er een ongeldige waarde wordt gegeven, wordt dit element genegeerd. |
 
 Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor elke Neural-stem.
 
@@ -142,6 +146,7 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | Een Emotion die positief en blij is |
 | | type=`empathy` | Een idee van caring en inzicht |
+| | type=`chat` | Spreken in een informeel, ongeforceerde Toon |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | Een formele Toon, vergelijkbaar met nieuws verzendingen |
 | | type=`sentiment` | Geeft een aanrakend bericht of verhaal |
 

@@ -3,7 +3,7 @@ title: Wijziging van Azure Media Services-Smooth Streaming Protocol (MS-SSTR) vo
 description: Deze specificatie beschrijft het protocol en de indeling voor gefragmenteerde op MP4 gebaseerde live streamen met HEVC in Azure Media Services. Dit is een wijziging van de Smooth Streaming Protocol documentatie (MS-SSTR) om ondersteuning te bieden voor HEVC-opname en-streaming. Alleen de wijzigingen die nodig zijn om HEVC te leveren, worden in dit artikel vermeld, met uitzonde ring van ' (geen wijziging) ' geeft aan dat tekst alleen ter verduidelijking wordt gekopieerd.
 services: media-services
 documentationcenter: ''
-author: cenkdin
+author: johndeu
 manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: dfd6de1ab2e4530afb56d1c6c67e6d78eb9ee474
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e0637b2a015a610f9c3f92809f63a442980b63b1
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015685"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624807"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC 
 
@@ -27,7 +27,7 @@ ms.locfileid: "69015685"
 
 In dit artikel vindt u gedetailleerde wijzigingen die moeten worden toegepast op de Smooth Streaming Protocol specificatie [MS-SSTR] om Smooth Streaming van met HEVC gecodeerde video in te scha kelen. In deze specificatie worden alleen de wijzigingen beschreven die nodig zijn om de HEVC-videocodec te leveren. Het artikel volgt hetzelfde nummer schema als de specificatie [MS-SSTR]. De lege nieuwskoppen die in het hele artikel worden gepresenteerd, worden verstrekt om de lezer naar hun positie te richten in de specificatie [MS-SSTR].  ' (Niet wijzigen) ' geeft aan dat tekst alleen ter informatie wordt gekopieerd.
 
-Het artikel bevat technische implementatie vereisten voor de Signa lering van de HEVC-videocodec in een Smooth Streaming-manifest en normatieve verwijzingen worden bijgewerkt om te verwijzen naar de huidige MPEG-standaarden die HEVC, Common Encryption van HEVC, en Box bevatten de namen voor de ISO-basis media bestands indeling zijn bijgewerkt zodat deze consistent zijn met de meest recente specificaties. 
+Het artikel bevat technische implementatie vereisten voor de Signa lering van de HEVC-videocodec (met behulp van ' hev1 ' of ' hvc1 ' Format-tracks) in een Smooth Streaming-manifest en normatieve verwijzingen worden bijgewerkt om te verwijzen naar de huidige MPEG-standaarden die Neem HEVC, Common Encryption van HEVC en Box names voor de ISO-basis media bestands indeling zijn bijgewerkt zodat deze consistent zijn met de nieuwste specificaties. 
 
 De Smooth Streaming Protocol specificatie [MS-SSTR] waarnaar wordt verwezen, beschrijft de draad indeling die wordt gebruikt voor het leveren van Live en on-demand digitale media, zoals audio en video, in de volgende omstandigheden: van een encoder naar een webserver, van een server naar een andere server en van een server naar een HTTP-client.
 Door het gebruik van een op MPEG-4 ([[MPEG4-Ra])](https://go.microsoft.com/fwlink/?LinkId=327787)gebaseerde levering van gegevens structuren via http kan naadloze switching bijna in realtime worden uitgevoerd tussen verschillende kwaliteits niveaus van gecomprimeerde media-inhoud. Het resultaat is een constante afspeel ervaring voor de eind gebruiker van de HTTP-client, zelfs als de weer gave van netwerk-en video weergave voor de client computer of het apparaat is gewijzigd.
@@ -148,10 +148,12 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 >   **FourCC (variabele):** Een code van vier tekens die aangeeft welke media-indeling voor elk voor beeld wordt gebruikt. Het volgende waarden bereik is gereserveerd met de volgende semantische betekenissen:
 > 
 > * "hev1": Video-voor beelden voor dit nummer maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hev1 ' die is opgegeven in [ISO/IEC-14496-15].
+>
+> * "hvc1": Video-voor beelden voor dit nummer maken gebruik van HEVC-video, met behulp van de voorbeeld indeling ' hvc1 ' die is opgegeven in [ISO/IEC-14496-15].
 > 
 >   **CodecPrivateData (variabele):** Gegevens die para meters opgeven die specifiek zijn voor de media-indeling en die gemeen schappelijk zijn voor alle voor beelden in de track, weer gegeven als een teken reeks met hexadecimale code bytes. De indeling en semantische betekenis van de byte reeks varieert als volgt met de waarde van het veld **FourCC** :
 > 
->   * Wanneer een TrackElement de HEVC-video beschrijft, is het **FourCC** -veld gelijk aan **' hev1 '** en;
+>   * Wanneer een TrackElement de HEVC-video beschrijft, is het veld **FourCC** gelijk aan **"hev1"** of **"hvc1"**
 > 
 >   Het veld **CodecPrivateData** bevat een hexadecimale teken reeks representatie van de volgende byte reeks, opgegeven in ABNF [[RFC5234]:](https://go.microsoft.com/fwlink/?LinkId=123096) (geen wijziging van MS-SSTR)
 > 
@@ -173,7 +175,7 @@ Het ProtectionElement moet aanwezig zijn als Common Encryption (CENC) is toegepa
 
 ### <a name="223-fragment-request"></a>2.2.3 fragment aanvraag 
 
->   **Opmerking**: De standaard media-indeling die is aangevraagd voor **MinorVersion** 2 en ' hev1 ' is ' iso8 ' brand ISO base-basis media bestands indeling die is opgegeven in [ISO/IEC 14496-12] ISO base Media File Format 4e Edition, en [ISO/IEC 23001-7] common Encryption tweede editie.
+>   **Opmerking**: De standaard media-indeling die is aangevraagd voor **MinorVersion** 2 en ' hev1 ' of ' hvc1 ' is ' iso8 ' brand ISO base-basis media bestands indeling die is opgegeven in [ISO/IEC 14496-12] ISO base Media File Format vierde editie en [ISO/IEC 23001-7] common Encryption tweede editie.
 
 ### <a name="224-fragment-response"></a>2.2.4 fragment antwoord 
 

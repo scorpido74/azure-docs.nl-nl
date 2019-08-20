@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/13/2019
+ms.date: 08/19/2019
 ms.author: dalek
-ms.openlocfilehash: 4029a9e46b9c9bb7cbd677deff4a172d8fc982f8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534587"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624402"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -103,7 +103,7 @@ U kunt het dagelijks volume kapje gebruiken om de verzamelde gegevens te beperke
 
 In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](../../azure-monitor/app/sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
 
-Als u het dagelijks kapje wilt wijzigen, selecteert u in het deel venster **gebruik en geschatte kosten** de optie **dagelijks Cap**in het gedeelte **configureren** van de Application Insights.
+Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configureren** van uw Application Insights-resource op de pagina **gebruik en geschatte kosten** de optie **dagelijks Cap**.
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
@@ -135,11 +135,13 @@ In elk bewaard record `itemCount` geeft het aantal oorspronkelijke records aan d
 
 ## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
 
-Application Insights is nu een beperkt aantal Application Insights klanten voor de preview-versie van de variabele retentie. Informatie over het deel nemen aan dit preview-programma is [hier](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)beschikbaar.
+De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
-De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voor elke Application Insights resource kunnen verschillende Bewaar perioden worden geselecteerd. De volledige set beschik bare Bewaar perioden is 30, 60, 120, 180, 270, 365, 550 of 730 dagen. 
+Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **gebruik en geschatte kosten** en selecteert u de optie **gegevens** retentie:
 
-Wanneer facturering is ingeschakeld voor een langere retentie, worden gegevens die langer zijn dan 90 dagen in rekening gebracht als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).  Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
+![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
+
+Wanneer facturering is ingeschakeld voor een langere retentie, worden gegevens die langer zijn dan 90 dagen in rekening gebracht als het tarief dat momenteel wordt gefactureerd voor Azure Log Analytics gegevens retentie. Meer informatie vindt u op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/). Blijf op de hoogte van de voortgang van de herbewaaring van variabelen door te [stemmen op deze suggestie](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="limits-summary"></a>Limieten overzicht
 

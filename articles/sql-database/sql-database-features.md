@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 7e5c33577a2d926266ae45057509b112dc27ce7b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985729"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624701"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Vergelijking van functies: Azure SQL Database versus SQL Server
 
@@ -53,7 +53,7 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [Sortering-Server/exemplaar](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Nee, standaard sortering `SQL_Latin1_General_CP1_CI_AS` van logische servers wordt altijd gebruikt. | Ja, kan worden ingesteld wanneer het [exemplaar wordt gemaakt](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) en kan later niet worden bijgewerkt. |
 | [Column Store-indexen](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Yes- [Premium-laag, Standard-laag-S3 en hoger, algemeen laag en bedrijfskritiek lagen](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
 | [Common language runtime-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nee | Ja, maar zonder toegang tot bestands systeem in `CREATE ASSEMBLY` instructie-Zie [CLR-verschillen](sql-database-managed-instance-transact-sql-information.md#clr) |
-| [Inge sloten data bases](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ja | Momenteel niet [als gevolg van een defect in Restore, inclusief herstel naar](sql-database-managed-instance-transact-sql-information.md#cant-restore-contained-database)een bepaald tijdstip. Dit is een defect dat binnenkort wordt opgelost. |
+| [Inge sloten data bases](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | Ja | Ja |
 | [Opgenomen gebruikers](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ja | Ja |
 | [Controle van tref woorden voor de stroom taal](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Ja | Ja |
 | [Referenties](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, maar alleen [Data Base-bereik referenties](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, maar alleen **Azure Key Vault** en `SHARED ACCESS SIGNATURE` worden ondersteund Zie [Details](sql-database-managed-instance-transact-sql-information.md#credential) |
@@ -132,7 +132,7 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [Tijdelijke tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Ja](sql-database-temporal-tables.md) | [Ja](sql-database-temporal-tables.md) |
 | Tijd zone-optie | Nee | [Ja](sql-database-managed-instance-timezone.md), en moet worden geconfigureerd wanneer het beheerde exemplaar wordt gemaakt. |
 | Detectie van bedreigingen|  [Ja](sql-database-threat-detection.md)|[Ja](sql-database-managed-instance-threat-detection.md)|
-| [Tracerings vlaggen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nee | Nee |
+| [Tracerings vlaggen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nee | Ja, maar alleen beperkte set globale tracerings vlaggen. Zie [DBCC-verschillen](sql-database-managed-instance-transact-sql-information.md#dbcc) |
 | [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) | Alleen Ja, transactionele [en momentopname replicatie abonnee](sql-database-single-database-migrate.md) | Ja, in [open bare preview](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance). Bekijk [hier](sql-database-managed-instance-transact-sql-information.md#replication)de beperkingen. |
 | [Variabelen](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ja | Ja |
 | [TDE (Transparent Data Encryption)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Alleen ja-Algemeen en Bedrijfskritiek service lagen| [Ja](transparent-data-encryption-azure-sql.md) |
