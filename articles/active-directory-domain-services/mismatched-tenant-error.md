@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 676efa155c85ab371ec41c49ad0c15eb2bd5a24a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 4978f7b782271daff996807172a24103bd8d9860
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234007"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617282"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Fouten van niet-overeenkomende mappen oplossen voor bestaande Azure AD Domain Services beheerde domeinen
 U hebt een bestaand Azure AD Domain Services beheerd domein. Wanneer u naar de Azure Portal gaat en het beheerde domein bekijkt, wordt het volgende fout bericht weer gegeven:
@@ -63,5 +63,5 @@ Er zijn twee opties voor het oplossen van problemen met overeenkomende mappen. U
 
 
 ## <a name="related-content"></a>Gerelateerde inhoud
-* [Azure AD Domain Services aan de slag-hand leiding](create-instance.md)
+* [Azure AD Domain Services aan de slag-hand leiding](tutorial-create-instance.md)
 * [Gids voor probleem oplossing-Azure AD Domain Services](troubleshoot.md)

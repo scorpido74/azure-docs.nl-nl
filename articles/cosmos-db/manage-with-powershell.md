@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965095"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616829"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL-API-resources beheren met Power shell
 
@@ -46,7 +46,7 @@ In de volgende secties ziet u hoe u het Azure Cosmos-account kunt beheren, met i
 
 ### <a id="create-account"></a>Een Azure Cosmos-account maken
 
-Met deze opdracht wordt een Azure Cosmos DB database account gemaakt met [consistentie beleid](consistency-levels.md)met [meerdere regio's][distribute-data-globally], afhankelijk van de veroudering.
+Met deze opdracht maakt u een Azure Cosmos-database account met een [consistentie beleid](consistency-levels.md)met [meerdere regio's][distribute-data-globally], afhankelijk van de veroudering.
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a>Een Azure Cosmos-account bijwerken
 
-Met deze opdracht kunt u de eigenschappen van uw Azure Cosmos DB-database bijwerken. Eigenschappen die kunnen worden bijgewerkt zijn onder andere het volgende:
+Met deze opdracht kunt u de eigenschappen van uw Azure Cosmos-database account bijwerken. Eigenschappen die kunnen worden bijgewerkt zijn onder andere het volgende:
 
 * Regio's toevoegen of verwijderen
 * Standaard consistentie beleid wijzigen
@@ -247,6 +247,7 @@ In het onderstaande voor beeld wordt ervan uitgegaan dat het account een huidige
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

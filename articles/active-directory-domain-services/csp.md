@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Domain Services voor Azure Cloud Solution Providers | Microsoft Docs
-description: Azure Active Directory Domain Services voor Azure Cloud Solution Providers.
+title: Azure Active Directory Domain Services voor Azure Cloud solution providers | Microsoft Docs
+description: Azure Active Directory Domain Services voor Azure Cloud solution providers.
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,79 +15,79 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: iainfou
-ms.openlocfilehash: a0ea28f3b62e6560e4adf8ea6bcb1fe984a1dbe6
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: dc4ad7d8cf9f3267713fd066fa79a4d9d8ab733f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473564"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612965"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Active Directory (AD) Domain Services voor Azure Cloud Solution Providers (CSP)
 In dit artikel wordt uitgelegd hoe u Azure AD Domain Services kunt gebruiken in een Azure CSP-abonnement.
 
 ## <a name="overview-of-azure-csp"></a>Overzicht van Azure CSP
-Azure CSP is een programma voor Microsoft-Partners en biedt een licentie-kanaal voor de verschillende Microsoft-cloudservices. Azure CSP maakt partners verkopen beheren, de eigenaar van de facturering regelen, bieden technische ondersteuning en facturering en worden van de klant één aanspreekpunt. Bovendien biedt Azure CSP een uitgebreide reeks hulpprogramma's, met inbegrip van een selfservice portal en de bijbehorende API's. Deze hulpprogramma's inschakelen CSP-partners eenvoudig inrichten en beheren van Azure-resources en facturering bieden voor klanten en hun abonnementen.
+Azure CSP is een programma voor micro soft-partners en biedt een licentie kanaal voor verschillende micro soft-Cloud Services. Met Azure CSP kunnen partners verkopen beheren, eigenaar worden van de facturerings relatie, technische en facturerings ondersteuning bieden en het individuele contact punt van de klant zijn. Daarnaast biedt Azure CSP een volledige set hulpprogram ma's, waaronder een Self-Service Portal en bijbehorende Api's. Met deze hulpprogram ma's kunnen CSP-partners eenvoudig Azure-resources inrichten en beheren, en factuur maken voor klanten en hun abonnementen.
 
-De [portal Partnercentrum](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) fungeert als een beginpunt voor alle Azure CSP-partners. Het biedt mogelijkheden voor uitgebreide klant, geautomatiseerde verwerking en meer. Azure CSP-partners kunt Partner Center mogelijkheden met behulp van een web gebaseerde gebruikersinterface of met behulp van PowerShell en verschillende API-aanroepen.
+De [Portal van de partner centrum](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) fungeert als een toegangs punt voor alle Azure CSP-partners. Het biedt uitgebreide mogelijkheden voor klant beheer, geautomatiseerde verwerking en meer. Azure CSP-partners kunnen partner centrum mogelijkheden gebruiken met behulp van een webinterface of met behulp van Power shell en verschillende API-aanroepen.
 
-Het volgende diagram illustreert de werking van het CSP-model op hoog niveau. Contoso heeft een Azure AD Active Directory. Ze hebben een partnerschap met een CSP, die u implementeert en beheert, resources in het Azure CSP-abonnement. Contoso mogelijk ook reguliere (direct) Azure-abonnementen, die rechtstreeks op Contoso worden gefactureerd.
+In het volgende diagram ziet u hoe het CSP-model op een hoog niveau werkt. Contoso heeft een Azure AD-Active Directory. Ze hebben een samen werking met een CSP, die resources implementeert en beheert in hun Azure CSP-abonnement. Contoso kan ook normale (direct) Azure-abonnementen hebben, die rechtstreeks aan contoso worden gefactureerd.
 
 ![Overzicht van het CSP-model](./media/csp/csp_model_overview.png)
 
-De CSP-partner tenant heeft drie speciale agent groepen - Admin-agents, Helpdesk-agents en verkoop-agents. De groep Admin agents is toegewezen aan de tenant administrator-rol in Azure AD-directory van Contoso. Als gevolg hiervan is een gebruiker die behoort tot de CSP-partner-beheerdersgroep agents beheerdersbevoegdheden tenant in Azure AD-directory van Contoso. Wanneer de bepalingen van de CSP-partner een Azure CSP-abonnement voor Contoso, hun groep Administrator agents wordt toegewezen aan de eigenaarsrol voor dat abonnement. Als gevolg hiervan zijn de CSP-partner admin agents de vereiste machtigingen voor het inrichten van Azure-resources zoals virtuele machines, virtuele netwerken en Azure AD Domain Services namens Contoso.
+De Tenant van de CSP-partner heeft drie speciale agent groepen: beheerders agenten, helpdesk agenten en verkoop medewerkers. De groep Administrator-agents wordt toegewezen aan de rol Tenant beheerder in de Azure AD-Directory van contoso. Als gevolg hiervan heeft een gebruiker die deel uitmaakt van de groep Administrator-agents van de CSP-partner, beheerders bevoegdheden voor tenants in de Azure AD-Directory van contoso. Wanneer de CSP-partner een Azure CSP-abonnement voor contoso heeft ingericht, wordt de groep Administrator-agents toegewezen aan de rol van eigenaar voor dat abonnement. Als gevolg hiervan beschikken de beheerders agents van de CSP-partner over de vereiste bevoegdheden om Azure-resources zoals virtuele machines, virtuele netwerken en Azure AD Domain Services namens Contoso in te richten.
 
-Zie voor meer informatie de [overzicht van Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
+Zie [Azure CSP Overview](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) (Engelstalig) voor meer informatie.
 
-## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Voordelen van het gebruik van Azure AD Domain Services in een Azure CSP-abonnement
-Azure AD Domain Services biedt Windows Server AD compatibele services in Azure, zoals LDAP, Kerberos/NTLM-verificatie, domein, Groepsbeleid en DNS. In de decennia zijn veel toepassingen gebouwd om te werken aan de hand AD met behulp van deze mogelijkheden. Veel onafhankelijke softwareleveranciers (ISV's) zijn gebouwd en geïmplementeerde toepassingen bij hun klanten. Deze toepassingen zijn kostbare ter ondersteuning van omdat waarvoor vaak toegang tot de verschillende omgevingen waarin deze toepassingen worden geïmplementeerd. Met Azure CSP-abonnementen hebt u een alternatief eenvoudiger met de schaal en flexibiliteit van Azure.
+## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Voor delen van het gebruik van Azure AD Domain Services in een Azure CSP-abonnement
+Azure AD Domain Services voorziet in Windows Server AD compatibele Services in azure, zoals LDAP, Kerberos/NTLM-verificatie, domein deelname, groeps beleid en DNS. Over de tien tallen zijn veel toepassingen gebouwd om te werken met AD met behulp van deze mogelijkheden. Veel Independent Software Vendors (Isv's) hebben gebouwde en geïmplementeerde toepassingen op locatie van hun klanten. Deze toepassingen zijn verlieslatend om te ondersteunen, omdat hiervoor vaak toegang is vereist tot de verschillende omgevingen waarin deze toepassingen zijn geïmplementeerd. Met Azure CSP-abonnementen hebt u een eenvoudiger alternatief met de schaal en flexibiliteit van Azure.
 
-Azure AD Domain Services biedt nu ondersteuning voor Azure CSP-abonnementen. U kunt nu uw toepassing in een Azure CSP-abonnement dat is gekoppeld aan Azure AD-adreslijst van uw klant implementeren. Als gevolg hiervan uw werknemers (ondersteuningsmedewerkers) kunnen beheren, te beheren en onderhouden van de virtuele machines waarop uw toepassing is geïmplementeerd, met bedrijfsreferenties van uw organisatie. Bovendien kunt u een beheerd domein van Azure AD Domain Services voor Azure AD-adreslijst van uw klant inrichten. Uw toepassing is verbonden met het beheerde domein van uw klant. Daarom mogelijkheden binnen uw toepassing die afhankelijk van Kerberos/NTLM, LDAP zijn, of de [System.DirectoryServices API](/dotnet/api/system.directoryservices) werken naadloos op basis van de directory van uw klant. Uw eindgebruikers merken aanzienlijk kunnen profiteren van uw toepassing als een service, zonder dat u hoeft zich geen zorgen over het onderhouden van de infrastructuur van die de toepassing wordt geïmplementeerd op te gebruiken.
+Azure AD Domain Services ondersteunt nu Azure CSP-abonnementen. U kunt uw toepassing nu implementeren in een Azure CSP-abonnement dat is gekoppeld aan de Azure AD-Directory van uw klant. Als gevolg hiervan kunnen uw werk nemers (ondersteunings medewerkers) de virtuele machines waarop uw toepassing wordt geïmplementeerd, beheren, beheren en onderhouden met de bedrijfs referenties van uw organisatie. U kunt ook een Azure AD Domain Services beheerd domein inrichten voor de Azure AD-Directory van uw klant. Uw toepassing is verbonden met het beheerde domein van uw klant. Daarom werken mogelijkheden in uw toepassing die afhankelijk zijn van Kerberos/NTLM, LDAP of de [System. Directory Services-API](/dotnet/api/system.directoryservices) naadloos met de directory van uw klant. Uw eind klanten profiteren aanzienlijk van uw toepassing als service, zonder dat u zich zorgen hoeft te maken over het onderhouden van de infra structuur waarop de toepassing wordt geïmplementeerd.
 
-Alle facturering voor Azure-resources die u in dat abonnement, met inbegrip van Azure AD Domain Services, in rekening voor u gebracht wordt verbruikt. U beheren volledige controle over de relatie met de klant als het gaat om verkopen, facturering en technische ondersteuning enzovoort. Dankzij de flexibiliteit van de CSP van de Azure-platform, een klein team van ondersteuning voor agents veel dergelijke klanten die instanties hebben kunt onderhouden van uw toepassing geïmplementeerd.
-
-
-## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>CSP-implementatiemodellen voor Azure AD Domain services
-Er zijn twee manieren waarop u Azure AD Domain Services met een Azure CSP-abonnement gebruiken kunt. Kies de juiste is, op basis van de beveiliging en eenvoud overwegingen die uw klanten hebben.
-
-### <a name="direct-deployment-model"></a>Directe implementatiemodel
-In dit implementatiemodel is Azure AD Domain Services ingeschakeld binnen een virtueel netwerk die behoren tot het Azure CSP-abonnement. De CSP-partner admin agents hebben de volgende bevoegdheden:
-* Globale beheerder-bevoegdheden in Azure AD-map van de klant.
-* Eigenaarsbevoegdheden abonnement op het Azure CSP-abonnement.
-
-![Directe implementatiemodel](./media/csp/csp_direct_deployment_model.png)
-
-In dit implementatiemodel kunnen de CSP-provider admin agents identiteiten beheren voor de klant. Deze agents beheerder hebben de mogelijkheid om het inrichten van nieuwe gebruikers, groepen, toepassingen in Azure AD-directory van de klant enzovoort toevoegen. Dit implementatiemodel mogelijk is geschikt voor kleinere organisaties die niet de beheerder van een toegewezen identiteit hebben of voorkeur voor de CSP-partner voor het beheren van identiteiten namens hen.
+Alle kosten voor Azure-resources die u in het abonnement gebruikt, inclusief Azure AD Domain Services, worden terugbetaald. U behoudt de volledige controle over de relatie met de klant wanneer deze van toepassing is op verkoop, facturering, technische ondersteuning enz. Met de flexibiliteit van het Azure CSP-platform kan een klein team van ondersteunings agenten veel dergelijke klanten onderhouden die exemplaren van uw toepassing hebben geïmplementeerd.
 
 
-### <a name="peered-deployment-model"></a>Gekoppelde implementatiemodel
-In dit implementatiemodel is Azure AD Domain Services ingeschakeld binnen een virtueel netwerk die horen bij de klant - dat wil zeggen, een directe Azure-abonnement voor zijn betaald door de klant. Toepassingen binnen een virtueel netwerk die behoren tot de CSP-abonnement van de klant vervolgens door de CSP-partner kunt implementeren. De virtuele netwerken kunnen vervolgens worden verbonden met behulp van peering op virtueel netwerk. Als gevolg hiervan kunt de werkbelastingen/toepassingen die zijn geïmplementeerd door de CSP-partner in het abonnement op Azure CSP verbinden met de klant beheerde domein in van de klant direct Azure-abonnement ingericht.
+## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>CSP-implementatie modellen voor Azure AD Domain Services
+Er zijn twee manieren waarop u Azure AD Domain Services kunt gebruiken met een Azure CSP-abonnement. Kies het juiste abonnement op basis van de beveiligings-en eenvoud overwegingen die uw klanten hebben.
 
-![Gekoppelde implementatiemodel](./media/csp/csp_peered_deployment_model.png)
+### <a name="direct-deployment-model"></a>Model voor directe implementatie
+In dit implementatie model wordt Azure AD Domain Services ingeschakeld binnen een virtueel netwerk dat deel uitmaakt van het abonnement van Azure CSP. De beheerders agents van de CSP-partner hebben de volgende bevoegdheden:
+* Globale beheerders bevoegdheden in de Azure AD-Directory van de klant.
+* Eigenaar van het abonnement op het abonnement van de Azure CSP.
 
-Dit implementatiemodel biedt een scheiding van bevoegdheden en kunt de CSP-partner helpdesk agents aan het Azure-abonnement beheren en implementeren en beheren van resources binnen deze. De CSP-partner helpdesk agents hoeft echter niet aan de globale beheerder-bevoegdheden hebben op van de klant Azure AD-directory. Van de klant identiteitsbeheerders kunnen doorgaan met het beheren van identiteiten voor hun organisatie.
+![Model voor directe implementatie](./media/csp/csp_direct_deployment_model.png)
 
-Kan dit implementatiemodel is geschikt voor scenario's waarin een ISV (independent software vendor) een gehoste biedt versie van hun on-premises toepassing, die ook verbinding maken met de klant moet de AD.
+In dit implementatie model kunnen beheerders agents van de CSP-provider identiteiten voor de klant beheren. Deze beheerders agenten hebben de mogelijkheid om nieuwe gebruikers, groepen, toepassingen toe te voegen in de Azure AD-Directory van de klant, enzovoort. Dit implementatie model kan geschikt zijn voor kleinere organisaties die geen gespecialiseerde identiteits beheerder hebben of liever voor de CSP-partner om namens hen identiteiten te beheren.
 
 
-## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Beheer van Azure AD Domain Services beheerde domeinen in CSP-abonnementen
-De volgende belangrijke overwegingen zijn van toepassing bij het beheren van een beheerd domein van een abonnement op Azure CSP:
+### <a name="peered-deployment-model"></a>Model voor gepeerd implementatie
+In dit implementatie model wordt Azure AD Domain Services ingeschakeld binnen een virtueel netwerk dat deel uitmaakt van de klant, dat wil zeggen een direct Azure-abonnement dat door de klant wordt betaald. De CSP-partner kan vervolgens toepassingen implementeren in een virtueel netwerk dat deel uitmaakt van het CSP-abonnement van de klant. De virtuele netwerken kunnen vervolgens worden verbonden met Azure Virtual Network-peering. Als gevolg hiervan kunnen de workloads/toepassingen die door de CSP-partner in het abonnement van de Azure CSP worden geïmplementeerd, verbinding maken met het beheerde domein van de klant dat is ingericht in het directe Azure-abonnement van de klant.
 
-* **Agents voor CSP-beheerder kunnen een beheerd domein met hun referenties worden ingericht:** Azure AD Domain Services biedt ondersteuning voor Azure CSP-abonnementen. Gebruikers die behoren tot een CSP-partner-beheerdersgroep agents kunnen daarom een nieuw Azure AD Domain Services beheerde domein inrichten.
+![Model voor gepeerd implementatie](./media/csp/csp_peered_deployment_model.png)
 
-* **CSP's kunnen maken van nieuwe beheerde domeinen voor hun klanten met behulp van PowerShell script:** Zie [hoe om in te schakelen van Azure AD Domain Services met behulp van PowerShell](powershell-create-instance.md) voor meer informatie.
+Dit implementatie model biedt een schei ding van bevoegdheden en stelt de helpdesk medewerkers van de CSP-partner in staat om het Azure-abonnement te beheren en resources binnen het te implementeren en te beheren. De Help Desk-agents van de CSP-partner hoeven echter geen globale beheerders bevoegdheden te hebben voor de Azure AD-Directory van de klant. De identiteits beheerders van de klant kunnen de identiteiten voor hun organisatie blijven beheren.
 
-* **Agents voor CSP-beheerder kunnen niet voortdurend beheertaken uitvoeren op het beheerde domein met hun referenties:** CSP-beheerder gebruikers kunnen routinematige taken binnen het beheerde domein met hun referenties niet uitvoeren. Deze gebruikers niet tot de Azure AD-directory van de klant en hun referenties zijn niet beschikbaar in Azure AD-directory van de klant. Azure AD Domain Services heeft daarom geen toegang tot de wachtwoord-hashes van Kerberos en NTLM voor deze gebruikers. Als gevolg hiervan worden niet dergelijke gebruikers geverifieerd in Azure AD Domain Services beheerde domeinen.
+Dit implementatie model is mogelijk geschikt voor scenario's waarbij een ISV (Independent Software Vendor) een gehoste versie van hun on-premises toepassing biedt, die ook verbinding moet maken met de AD van de klant.
+
+
+## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Azure AD Domain Services beheerde domeinen in CSP-abonnementen beheren
+De volgende belang rijke overwegingen zijn van toepassing wanneer u een beheerd domein beheert in een Azure CSP-abonnement:
+
+* **CSP-beheerders kunnen een beheerd domein inrichten met hun referenties:** Azure AD Domain Services ondersteunt Azure CSP-abonnementen. Daarom kunnen gebruikers die deel uitmaken van de groep Administrator-agents van een CSP-partner, een nieuw Azure AD Domain Services beheerd domein inrichten.
+
+* **Met Csp's kunnen scripts worden gemaakt van nieuwe beheerde domeinen voor hun klanten met behulp van Power shell:** Zie [Azure AD Domain Services inschakelen met behulp van Power shell](powershell-create-instance.md) voor meer informatie.
+
+* **CSP-beheerders kunnen geen voortdurende beheer taken uitvoeren op het beheerde domein met behulp van hun referenties:** CSP-beheerder gebruikers kunnen geen routine beheer taken uitvoeren binnen het beheerde domein met hun referenties. Deze gebruikers zijn extern voor de Azure AD-Directory van de klant en hun referenties zijn niet beschikbaar in de Azure AD-adres lijst van de klant. Daarom heeft Azure AD Domain Services geen toegang tot de Kerberos-en NTLM-wachtwoord-hashes voor deze gebruikers. Als gevolg hiervan kunnen dergelijke gebruikers niet worden geverifieerd op Azure AD Domain Services beheerde domeinen.
 
   > [!WARNING]
-  > **U moet een gebruikersaccount in de directory van de klant aan het doorlopende beheertaken uitvoeren in het beheerde domein maken.**
-  > U kunt zich niet bij het beheerde domein met behulp van de beheerder van een CSP-referenties. De referenties van een gebruikersaccount die horen bij de klant Azure AD-directory gebruiken om dit te doen. U moet deze referenties voor taken, zoals virtuele machines toevoegen aan het beheerde domein, beheren van DNS, beheer van de groep beleid, enzovoort.
+  > **U moet een gebruikers account in de directory van de klant maken om lopende beheer taken uit te voeren op het beheerde domein.**
+  > U kunt zich niet aanmelden bij het beheerde domein met behulp van de referenties van de CSP-beheer gebruiker. Gebruik de referenties van een gebruikers account dat deel uitmaakt van de Azure AD-Directory van de klant. U hebt deze referenties nodig voor taken zoals het toevoegen van virtuele machines aan het beheerde domein, het beheren van DNS, het beheren van groepsbeleid, enzovoort.
   >
 
-* **Het gebruikersaccount dat is gemaakt voor het doorlopende beheer moet worden toegevoegd aan de groep 'AAD DC Administrators':** De groep 'AAD DC Administrators' heeft de bevoegdheid voor bepaalde taken voor gedelegeerd beheer in het beheerde domein. Deze taken omvatten het configureren van DNS, het maken van organisatie-eenheden, beheren van Groepsbeleid enzovoort. Voor CSP-partner die taken uitvoeren op een beheerd domein moet een gebruikersaccount worden gemaakt binnen de Azure AD-directory van de klant. De referenties voor dit account moeten worden gedeeld met de CSP-partner admin-agents. Dit gebruikersaccount moet ook worden toegevoegd aan de groep 'AAD DC Administrators' om in te schakelen configuratietaken in het beheerde domein moet worden uitgevoerd met behulp van dit gebruikersaccount.
+* **Het gebruikers account dat is gemaakt voor doorlopend beheer moet worden toegevoegd aan de groep AAD DC-Administrators:** De groep AAD DC-Administrators heeft bevoegdheden om bepaalde gedelegeerde beheer taken uit te voeren op het beheerde domein. Deze taken omvatten het configureren van DNS, het maken van organisatie-eenheden, het beheren van groeps beleid, enzovoort. Voor een CSP-partner om dergelijke taken uit te voeren op een beheerd domein, moet een gebruikers account worden gemaakt in de Azure AD-adres lijst van de klant. De referenties voor dit account moeten worden gedeeld met de beheerders agents van de CSP-partner. Daarnaast moet dit gebruikers account worden toegevoegd aan de groep AAD DC Administrators om configuratie taken op het beheerde domein in te scha kelen die kunnen worden uitgevoerd met dit gebruikers account.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Schrijf u in het Azure CSP-programma](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) en beginnen met het maken van zakelijke via Azure CSP.
-* Bekijk de lijst [Azure-services beschikbaar zijn in Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
+* [Schrijf u in het Azure CSP-programma in](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) en begin met het maken van zaken via Azure CSP.
+* Bekijk de lijst met [Azure-Services die beschikbaar zijn in azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Azure AD Domain Services inschakelen met behulp van PowerShell](powershell-create-instance.md)
-* [Aan de slag met Azure AD Domain Services](create-instance.md)
+* [Aan de slag met Azure AD Domain Services](tutorial-create-instance.md)

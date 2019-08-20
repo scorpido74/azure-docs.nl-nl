@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/18/2019
-ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 08/16/2019
+ms.openlocfilehash: 69a3b4fc966b6dd506d91e52b33967a2e001367f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035063"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575793"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -25,7 +25,9 @@ Groepen voor automatische failover is een SQL Database functie waarmee u replica
 > [!NOTE]
 > Wanneer u werkt met één of gegroepeerde Data bases op een SQL Database Server en u meerdere secundaire zones in dezelfde of verschillende regio's wilt, gebruikt u [actieve geo-replicatie](sql-database-active-geo-replication.md). 
 
-Als u gebruikmaakt van groepen voor automatische failover met automatische failoverbeleid, wordt een storing die van invloed is op een of meer van de data bases in de groep, in automatische failover veroorzaakt. Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen listener-eind punten die ongewijzigd blijven tijdens failovers. Ongeacht of u hand matige of automatische failover hebt geactiveerd, schakelt failover alle secundaire data bases in de groep over naar primair. Nadat de data base-failover is voltooid, wordt de DNS-record automatisch bijgewerkt om de eind punten om te leiden naar de nieuwe regio. Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md)voor de specifieke RPO-en RTO-gegevens.
+Als u gebruikmaakt van groepen voor automatische failover met automatische failoverbeleid, wordt een storing die van invloed is op een of meer van de data bases in de groep, in automatische failover veroorzaakt. Dit zijn doorgaans incidenten die niet kunnen worden verholpen door de ingebouwde automatische maximale Beschik baarheid. De voor beelden van failover-triggers zijn een incident dat wordt veroorzaakt door een SQL-Tenant ring of besturings element dat niet beschikbaar is vanwege een geheugenlek van een OS-kernel op verschillende reken knooppunten, of een incident dat wordt veroorzaakt door een of meer tenants, omdat er een onjuiste netwerk kabel werd geknipt tijdens de ro utine hardware uit bedrijf nemen.  Zie [SQL database hoge Beschik baarheid](sql-database-high-availability.md)voor meer informatie.
+
+Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen listener-eind punten die ongewijzigd blijven tijdens failovers. Ongeacht of u hand matige of automatische failover hebt geactiveerd, schakelt failover alle secundaire data bases in de groep over naar primair. Nadat de data base-failover is voltooid, wordt de DNS-record automatisch bijgewerkt om de eind punten om te leiden naar de nieuwe regio. Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md)voor de specifieke RPO-en RTO-gegevens.
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, resulteert elke storing die van invloed is op data bases in de SQL Database Server of het beheerde exemplaar tot een automatische failover. U kunt de groep voor automatische failover beheren met:
 

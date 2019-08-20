@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000801"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615377"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over de verschillende API's in Azure Cosmos DB
 
@@ -123,7 +123,7 @@ Ja Azure cosmos DB biedt ondersteuning voor tijdseries analyseren, ziet u hier e
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Hoe start ik ontwikkelen op basis van de SQL-API?
 
-Eerst moet u aanmelden voor een Azure-abonnement. Zodra u zich hebt aangemeld voor een Azure-abonnement, kunt u een SQL-API-container toevoegen aan uw Azure-abonnement. Zie voor instructies over het toevoegen van een Azure Cosmos DB-account [maken van een Azure Cosmos DB-databaseaccount](create-sql-api-dotnet.md#create-account).
+Eerst moet u aanmelden voor een Azure-abonnement. Zodra u zich hebt aangemeld voor een Azure-abonnement, kunt u een SQL-API-container toevoegen aan uw Azure-abonnement. Zie [een Azure Cosmos-database account maken](create-sql-api-dotnet.md#create-account)voor instructies over het toevoegen van een Azure Cosmos DB-account.
 
 Er zijn [SDK's](sql-api-sdk-dotnet.md) beschikbaar voor .NET, Python, Node.js, JavaScript en Java. Ontwikkelaars kunnen ook gebruiken de [RESTful HTTP-API's](/rest/api/cosmos-db/) om te communiceren met Azure Cosmos DB-resources uit verschillende platforms en talen.
 
@@ -203,7 +203,7 @@ Het maken van machtigingen met ResourceTokens is toegestaan op het niveau van de
 
 ### <a name="what-is-the-azure-cosmos-dbs-api-for-mongodb"></a>Wat is de Azure Cosmos DB-API voor MongoDB?
 
-De API van het Azure Cosmos DB voor MongoDB is een interprotocol Compatibility Layer waarmee toepassingen eenvoudig en transparant kunnen communiceren met de systeem eigen Azure Cosmos DB data base-engine door gebruik te maken van bestaande Sdk's en stuur Programma's die door de community worden ondersteund voor MongoDB. Ontwikkel aars kunnen nu bestaande MongoDB-toolchains en-vaardig heden gebruiken om toepassingen te ontwikkelen die gebruikmaken van Azure Cosmos DB. Ontwikkel aars profiteren van de unieke mogelijkheden van Azure Cosmos DB, waaronder wereld wijde distributie met replicatie met meerdere masters, automatische indexering, onderhoud van back-ups, financieel ondersteunde service level agreements (Sla's), enzovoort.
+De API van het Azure Cosmos DB voor MongoDB is een interprotocol Compatibility Layer waarmee toepassingen eenvoudig en transparant kunnen communiceren met de systeem eigen Azure Cosmos-data base-engine door gebruik te maken van bestaande Sdk's en stuur Programma's die door de community worden ondersteund voor MongoDB. Ontwikkel aars kunnen nu bestaande MongoDB-toolchains en-vaardig heden gebruiken om toepassingen te ontwikkelen die gebruikmaken van Azure Cosmos DB. Ontwikkel aars profiteren van de unieke mogelijkheden van Azure Cosmos DB, waaronder wereld wijde distributie met replicatie met meerdere masters, automatische indexering, onderhoud van back-ups, financieel ondersteunde service level agreements (Sla's), enzovoort.
 
 ### <a name="how-do-i-connect-to-my-database"></a>Hoe kan ik verbinding maken met mijn data base?
 
@@ -453,7 +453,7 @@ De Table-API biedt dezelfde queryfunctionaliteit als Azure Table storage. Azure 
 Wanneer een van de volgende voorwaarden van toepassing is, moet u TableThroughput wijzigen:
 
 * Het uitvoeren van een extraheren, transformeren en laden (ETL) van gegevens, of u wilt uploaden van grote hoeveelheden gegevens in korte tijd.
-* U moet meer doorvoer van de container of van een set van containers op de back-end. Bijvoorbeeld, ziet u dat de gebruikte doorvoer hoger dan de ingerichte doorvoer is en u bent ophalen beperkt. Zie voor meer informatie, [doorvoer instellen voor Azure Cosmos DB-containers](set-throughput.md).
+* U moet meer doorvoer van de container of van een set van containers op de back-end. Bijvoorbeeld, ziet u dat de gebruikte doorvoer hoger dan de ingerichte doorvoer is en u bent ophalen beperkt. Zie [instellen van door Voer voor Azure Cosmos-containers](set-throughput.md)voor meer informatie.
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Kan ik omhoog of omlaag schalen de doorvoer van mijn tabel Table-API?
 
@@ -720,7 +720,7 @@ Apache Cassandra-API is een platformservice waardoor capaciteitsplanning, reager
 
 Azure Cosmos DB biedt wereldwijde distributie buiten het vak voor beschikbaarheid en lage latentie redenen. U hoeft niet te setup replica's of andere dingen. Alle schrijf bewerkingen zijn altijd blijvend quorum die in elke regio waar u schrijft en die prestatie garanties bieden.
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-and-more"></a>Wat gebeurt er met betrekking tot verschillende instellingen voor de metagegevens van de tabel, zoals waas worden gefilterd, caching, lezen herstellen wijzigen, gc_grace en compressie memtable_flush_period?
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gc_grace-compression-memtable_flush_period-and-more"></a>Wat gebeurt er met betrekking tot verschillende instellingen voor de metagegevens van de tabel, zoals waas worden gefilterd, caching, lezen herstellen wijzigen, gc_grace en compressie memtable_flush_period?
 
 Azure Cosmos DB biedt prestaties voor lees-/ schrijfbewerkingen en doorvoer zonder dat nodig is voor een van de configuratie-instellingen aan te raken en ze per ongeluk te bewerken.
 

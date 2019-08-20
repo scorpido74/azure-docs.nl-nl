@@ -1,18 +1,18 @@
 ---
 title: Tips voor het Azure Cosmos DB van de prestaties van async java
-description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van Azure Cosmos DB-Data Base
+description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van de Azure Cosmos-data base
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 2c2d776012e702469be4fd3217fb89be0ad419bf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7a470193110fda0bb675e56e17a8f5647ebda5ab
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261621"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614982"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Tips voor betere prestaties voor Azure Cosmos DB en async java
 
@@ -30,7 +30,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
    <a id="same-region"></a>
 1. **Termijnen-clients in dezelfde Azure-regio voor prestaties**
 
-    Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen, in dezelfde regio als de Azure Cosmos DB-Data Base. Voor een benadering van een vergelijking worden de aanroepen naar Azure Cosmos DB binnen dezelfde regio binnen 1-2 MS uitgevoerd, maar de latentie tussen de West-en Oost kust van de VS is > 50 MS. Deze latentie kan waarschijnlijk variëren van aanvraag om aan te vragen, afhankelijk van de route die door de aanvraag wordt door gegeven aan de limiet van de client naar de grens van het Azure-Data Center. De laagst mogelijke latentie wordt bereikt door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
+    Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen, in dezelfde regio als de Azure Cosmos-data base. Voor een benadering van een vergelijking worden de aanroepen naar Azure Cosmos DB binnen dezelfde regio binnen 1-2 MS uitgevoerd, maar de latentie tussen de West-en Oost kust van de VS is > 50 MS. Deze latentie kan waarschijnlijk variëren van aanvraag om aan te vragen, afhankelijk van de route die door de aanvraag wordt door gegeven aan de limiet van de client naar de grens van het Azure-Data Center. De laagst mogelijke latentie wordt bereikt door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
     ![Afbeelding van het verbindings beleid voor Azure Cosmos DB](./media/performance-tips/same-region.png)
 

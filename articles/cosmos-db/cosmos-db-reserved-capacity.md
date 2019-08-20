@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ab42c600b975adac9f13e8e75da9696e51e7e94d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e4d33756f1e09abedbf828deb447fbf14c6bfed7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779862"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616909"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Kosten optimaliseren met gereserveerde capaciteit in Azure Cosmos DB
 
@@ -57,7 +57,7 @@ De grootte van de reserve ring moet worden gebaseerd op de totale hoeveelheid do
    | Resourcegroep | De resource groep waarop de gereserveerde capaciteits korting wordt toegepast. |
    |Begrip  |   Eén jaar of drie jaar.   |
    |Doorvoertype   |  De door Voer is ingericht als aanvraag eenheden. U kunt een reserve ring voor de ingerichte door voer kopen voor zowel de installatie van één regio als voor meerdere schrijf bewerkingen in regio's. Het doorvoer type heeft twee waarden waaruit u kunt kiezen: 100 RU/s per uur en 100 multi-master RU/s per uur.|
-   | Gereserveerde capaciteitseenheden| De hoeveelheid door Voer die u wilt reserveren. U kunt deze waarde berekenen door de door voer te bepalen die nodig is voor al uw Cosmos DB resources (bijvoorbeeld data bases of containers) per regio. Vervolgens vermenigvuldigt u deze met het aantal regio's dat u koppelt aan uw Cosmos DB-Data Base. Bijvoorbeeld: Als u in elke regio vijf regio's met 1.000.000 RU/seconde hebt, selecteert u 5.000.000 RU per seconde voor de aanschaf van de reserve ring capaciteit. |
+   | Gereserveerde capaciteitseenheden| De hoeveelheid door Voer die u wilt reserveren. U kunt deze waarde berekenen door de door voer te bepalen die nodig is voor al uw Cosmos DB resources (bijvoorbeeld data bases of containers) per regio. Vervolgens vermenigvuldigt u deze met het aantal regio's dat u koppelt aan uw Cosmos-data base. Bijvoorbeeld: Als u in elke regio vijf regio's met 1.000.000 RU/seconde hebt, selecteert u 5.000.000 RU per seconde voor de aanschaf van de reserve ring capaciteit. |
 
 
 5. Nadat u het formulier hebt ingevuld, wordt de prijs berekend die is vereist om de gereserveerde capaciteit aan te schaffen. De uitvoer toont ook het percentage van de korting die u krijgt met de gekozen opties. Klik vervolgens op **selecteren**

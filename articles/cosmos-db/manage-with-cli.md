@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9ec049311fc158b13bba45deb2974d7cdd531f90
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f9d8bf9161343e4b36a3c16209873962b69d8af5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815034"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615222"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-resources beheren met Azure CLI
 
@@ -41,7 +41,7 @@ az cosmosdb create \
 
 ## <a name="create-a-database"></a>Een database maken
 
-Als u een Cosmos DB Data Base wilt maken, voert u de volgende opdracht uit:
+Als u een Cosmos-Data Base wilt maken, voert u de volgende opdracht uit:
 
 ```azurecli-interactive
 az cosmosdb database create \
@@ -52,7 +52,7 @@ az cosmosdb database create \
 
 ## <a name="create-a-container"></a>Een container maken
 
-Als u een Cosmos DB container met RU/s 400 en een partitie sleutel wilt maken, voert u de volgende opdracht uit:
+Als u een Cosmos-container met RU/s 400 en een partitie sleutel wilt maken, voert u de volgende opdracht uit:
 
 ```azurecli-interactive
 # Create a container
@@ -67,7 +67,7 @@ az cosmosdb collection create \
 
 ## <a name="change-the-throughput-of-a-container"></a>De door Voer van een container wijzigen
 
-Als u de door Voer van een Cosmos DB container wilt wijzigen in 1000 RU/s, voert u de volgende opdracht uit:
+Als u de door Voer van een Cosmos-container wilt wijzigen in 1000 RU/s, voert u de volgende opdracht uit:
 
 ```azurecli-interactive
 # Update container throughput

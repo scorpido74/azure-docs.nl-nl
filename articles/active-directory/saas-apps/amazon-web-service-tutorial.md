@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944960"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617334"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>Zelfstudie: Amazon Web Services (AWS) integreren met Azure Active Directory
 
@@ -369,6 +369,12 @@ Wanneer u de tegel AWS in het toegangs venster selecteert, wordt u automatisch a
    Meerdere AWS-tenants (vertegenwoordigd `servicePrincipals`door) kunnen worden toegevoegd aan Azure AD vanuit de galerie voor het inrichten van. Er is echter een bekend probleem waarbij niet alle geïmporteerde rollen automatisch kunnen worden geschreven van de meerdere AWS `servicePrincipals` die worden gebruikt voor het inrichten van de enkelvoudige `servicePrincipal` voor SSO. 
    
    Als tijdelijke oplossing kunt u de Microsoft Graph- [API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) gebruiken om alle geïmporteerde in elke `appRoles` AWS `servicePrincipal` op te halen waarbij het inrichten is geconfigureerd. U kunt deze functie teken reeksen vervolgens toevoegen aan de `servicePrincipal` AWS waar SSO is geconfigureerd.
+ 
+* Rollen moeten voldoen aan de volgende vereisten om in aanmerking te komen voor importeren vanuit AWS in azure AD:
+
+  * Rollen moeten precies één SAML-provider hebben gedefinieerd in AWS
+
+  * De gecombineerde lengte van de ARN van de rol en de SAML-provider ARN voor een rol die wordt geïmporteerd, mag Maxi maal 119 tekens bevatten
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

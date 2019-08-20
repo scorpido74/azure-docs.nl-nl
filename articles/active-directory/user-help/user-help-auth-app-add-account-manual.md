@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f2145811338200b38e84766459844b4c83e5a80
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382768"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616097"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Een account hand matig toevoegen aan de app
 
@@ -105,6 +105,6 @@ U kunt uw Amazon-account toevoegen door twee ledige verificatie in te scha kelen
 
 - Nadat u uw accounts aan de app hebt toegevoegd, kunt u zich aanmelden met behulp van de Microsoft Authenticator-app op uw apparaat. Zie [Aanmelden met de app](user-help-auth-app-sign-in.md)voor meer informatie.
 
-- Als u problemen ondervindt met het verkrijgen van uw verificatie code voor uw persoonlijke Microsoft-account, raadpleegt u de sectie **problemen met verificatie code oplossen** van het artikel [Microsoft-account Security Info & verificatie codes](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) .
+- Als u problemen ondervindt met het verkrijgen van uw verificatie code voor uw persoonlijke Microsoft-account, raadpleegt u de sectie **problemen met verificatie code oplossen** van het artikel [Microsoft-account Security Info & verificatie codes](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 
 - Voor apparaten met iOS kunt u ook een back-up maken van uw account referenties en de bijbehorende app-instellingen, zoals de volg orde van uw accounts, naar de Cloud. Zie [back-up en herstellen met Microsoft Authenticator-app](user-help-auth-app-backup-recovery.md)voor meer informatie.

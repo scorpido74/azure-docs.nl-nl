@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1ee6d9332a2be5ccb22b7571b348e2e0aae78fb2
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563556"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575651"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. json voor het maken van ervaring met Azure Managed Application
 
@@ -52,13 +52,11 @@ Het schema van de eigenschap para meters is afhankelijk van de combi natie van d
 
 Inclusief `$schema` wordt aanbevolen, maar is optioneel. Indien opgegeven, moet de waarde `version` voor overeenkomen met de versie `$schema` in de URI.
 
-U kunt een JSON-editor gebruiken om de definitie van de gebruikers interface te maken en deze vervolgens testen in de sandbox-definitie van de [gebruikers interface](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) om deze te bekijken. Zie [uw portal-interface testen voor Azure Managed Applications](test-createuidefinition.md)voor meer informatie over de sandbox.
+U kunt een JSON-editor gebruiken om uw createUiDefinition te maken en deze vervolgens te testen in de [createUiDefinition-sandbox](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) om deze te bekijken. Zie [uw portal-interface testen voor Azure Managed Applications](test-createuidefinition.md)voor meer informatie over de sandbox.
 
 ## <a name="basics"></a>Basics
 
 Basis beginselen is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Naast het weer geven van de elementen die `basics`zijn opgegeven in, injecteert de portal elementen voor gebruikers om het abonnement, de resource groep en de locatie voor de implementatie te kiezen. Als dat mogelijk is, moeten elementen die para meters voor implementatie query's uitvoeren, zoals de naam van een cluster of beheerders referenties, in deze stap gaan.
-
-Als het gedrag van een element afhankelijk is van het abonnement, de resource groep of de locatie van de gebruiker, kan dat element niet worden gebruikt in de basis beginselen. Bijvoorbeeld: **micro soft. compute. SizeSelector** is afhankelijk van het abonnement en de locatie van de gebruiker om de lijst met beschik bare grootten te bepalen. Daarom kunnen **micro soft. compute. SizeSelector** alleen worden gebruikt in stappen. Over het algemeen kunnen alleen elementen in de naam ruimte **micro soft. common** worden gebruikt in basis beginselen. Hoewel sommige elementen in andere naam ruimten (zoals **micro soft. compute. credentials**) die niet afhankelijk zijn van de gebruikers context, nog steeds zijn toegestaan.
 
 ## <a name="steps"></a>Stappen
 

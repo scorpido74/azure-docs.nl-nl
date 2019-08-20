@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3758766b1051acb9321ec67727eecef249971065
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310575"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615094"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als een opslag met sleutelwaarden – kosten-overzicht
 
 Azure Cosmos DB is een wereldwijd gedistribueerde, multi-model databaseservice voor het bouwen van maximaal beschikbare, grootschalige toepassingen eenvoudig. Azure Cosmos DB indexeert automatisch alle gegevens, efficiënt neemt standaard. Hiermee maakt u snel en consistent [SQL](how-to-sql-query.md) (en [JavaScript](stored-procedures-triggers-udfs.md))-query's op elk soort gegevens. 
 
-Dit artikel worden de kosten van Azure Cosmos DB voor eenvoudige schrijven en bewerkingen lezen wanneer deze wordt gebruikt als een sleutel/waarde-archief. Voorbeelden van bewerkingen zijn ingevoegd, vervangt, verwijderingen en upsert-bewerking van documenten worden geschreven. Naast het garanderen van een 99,99% beschikbaarheids-SLA voor alle accounts voor één regio en alle accounts voor meerdere regio's met soepele consistentie en 99,999% beschikbaarheid voor lezen op alle accounts voor meerdere regio's, Azure Cosmos DB biedt gegarandeerd < 10 ms latentie voor Lees- en voor de (geïndexeerde) schrijfbewerkingen respectievelijk in het 99e percentiel. 
+Dit artikel worden de kosten van Azure Cosmos DB voor eenvoudige schrijven en bewerkingen lezen wanneer deze wordt gebruikt als een sleutel/waarde-archief. Voorbeelden van bewerkingen zijn ingevoegd, vervangt, verwijderingen en upsert-bewerking van documenten worden geschreven. Behalve een SLA van 99,99% Beschik baarheid voor alle accounts voor één regio en alle accounts voor meerdere regio's met beperkte consistentie en 99,999% Lees Beschik baarheid voor alle database accounts met meerdere regio's, Azure Cosmos DB biedt gegarandeerde < 10-MS-latentie voor leest en voor de (geïndexeerde) schrijf bewerkingen respectievelijk op het 99e percentiel. 
 
 ## <a name="why-we-use-request-units-rus"></a>Waarom we Aanvraageenheden (ru's) gebruiken
 
 Azure Cosmos DB-prestaties is gebaseerd op het bedrag van de ingerichte [Aanvraageenheden](request-units.md) (RU) voor de partitie. De inrichting is op een tweede granulariteit en wordt aangeschaft in ru's per seconde ([niet te verwarren met de facturering per uur](https://azure.microsoft.com/pricing/details/cosmos-db/)). RU's moeten worden beschouwd als een valuta die vereenvoudigt het inrichten van de vereiste doorvoer voor de toepassing. Onze klanten hoeft niet te beschouwen verschillen tussen lezen en schrijven van capaciteitseenheden. Het model voor één valuta ru's maakt efficiëntie voor het delen van de ingerichte capaciteit tussen de lees- en schrijfbewerkingen. Dit model ingerichte capaciteit kan de service voor een voorspelbare en consistente doorvoer, gegarandeerde lage latentie en hoge beschikbaarheid. Ten slotte RU doorvoer voor het model worden gebruikt, maar elke ingerichte RU heeft ook een vooraf bepaalde hoeveelheid resources (geheugen, Core). RU/sec. is niet alleen IOPS.
 
-Als een wereldwijd gedistribueerde databasesysteem is Cosmos DB het alleen Azure-service een SLA voor latentie, doorvoer en consistentie naast de hoge beschikbaarheid biedt. De doorvoer die u inricht wordt toegepast op elk van de regio's die zijn gekoppeld aan uw Cosmos DB-databaseaccount. Voor leesbewerkingen, Cosmos DB biedt meerdere, duidelijk gedefinieerde [consistentieniveaus](consistency-levels.md) voor u om uit te kiezen. 
+Als een wereldwijd gedistribueerde databasesysteem is Cosmos DB het alleen Azure-service een SLA voor latentie, doorvoer en consistentie naast de hoge beschikbaarheid biedt. De door u ingerichte door Voer wordt toegepast op elk van de regio's die zijn gekoppeld aan uw Cosmos-database account. Voor leesbewerkingen, Cosmos DB biedt meerdere, duidelijk gedefinieerde [consistentieniveaus](consistency-levels.md) voor u om uit te kiezen. 
 
 De volgende tabel ziet u het aantal ru's die zijn vereist voor het uitvoeren van lezen en schrijven van transacties op basis van de grootte van het document van 1 KB en 100 kB's.
 

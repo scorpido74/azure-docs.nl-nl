@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: 66e0a7e13df9eddcd722492c9c894721517af5f9
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: cf73b6e0477e46f0a2eac43d7fa6bccc6845db92
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968919"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615255"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
 
@@ -48,11 +48,11 @@ Na te zijn geschreven moet de opgeslagen procedure worden geregistreerd bij een 
 
 ### <a id="create-an-item"></a>Een item maken met behulp van opgeslagen procedure
 
-Wanneer u een item maakt met behulp van opgeslagen procedure, het item wordt ingevoegd in de Azure Cosmos DB-container en een id voor het nieuwe item wordt geretourneerd. Het maken van een item is een asynchrone bewerking en is afhankelijk van de callback-functies van JavaScript. De callback-functie heeft twee parameters: een voor het foutobject in geval dat de bewerking mislukt en een voor een retourwaarde; in dit geval het gemaakte object. Binnen de callback kunt u de uitzondering verwerken of een fout genereren. Indien er geen callback is opgegeven en er een fout is opgetreden, genereert de Azure Cosmos DB-runtime een fout. 
+Wanneer u een item maakt met behulp van een opgeslagen procedure, wordt het item ingevoegd in de Azure Cosmos-container en wordt er een id voor het nieuwe item geretourneerd. Het maken van een item is een asynchrone bewerking en is afhankelijk van de callback-functies van JavaScript. De callback-functie heeft twee parameters: een voor het foutobject in geval dat de bewerking mislukt en een voor een retourwaarde; in dit geval het gemaakte object. Binnen de callback kunt u de uitzondering verwerken of een fout genereren. Indien er geen callback is opgegeven en er een fout is opgetreden, genereert de Azure Cosmos DB-runtime een fout. 
 
 De opgeslagen procedure bevat ook een parameter voor het instellen van de beschrijving, het is een Booleaanse waarde. Als de parameter is ingesteld op true en de beschrijving ontbreekt, genereert de opgeslagen procedure een uitzondering. Anders gaat de uitvoering van de rest van de opgeslagen procedure verder.
 
-Met het volgende opgeslagen procedurevoorbeeld neemt u een nieuw item in de Azure Cosmos DB als invoer, voegt u dit toe aan de Azure Cosmos DB-container en retourneert u de id voor het zojuist gemaakt item. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstart .NET SQL-API](create-sql-api-dotnet.md)
+In het volgende voor beeld wordt een nieuw Azure Cosmos-item als invoer gebruikt, ingevoegd in de Azure Cosmos-container en wordt de id voor het zojuist gemaakte item geretourneerd. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstart .NET SQL-API](create-sql-api-dotnet.md)
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -87,7 +87,7 @@ function sample(arr) {
 
 ### <a id="transactions"></a>Transacties in opgeslagen procedures
 
-U kunt transacties implementeren in items in een container met behulp van een opgeslagen procedure. In het volgende voorbeeld worden transacties ingezet binnen een fantasy football gaming-app om in één bewerking spelers te ruilen tussen twee teams. De opgeslagen procedure probeert de twee Azure Cosmos DB-items te lezen, waarbij elk item overeenkomt met de speler-id's die als argument zijn doorgegeven. Als beide spelers worden gevonden,worden vervolgens de items door de opgeslagen procedure bijgewerkt door hun teams om te wisselen. Als er gaandeweg fouten optreden, genereert de opgeslagen procedure een JavaScript-uitzondering waarmee impliciet de transactie wordt afgebroken.
+U kunt transacties implementeren in items in een container met behulp van een opgeslagen procedure. In het volgende voorbeeld worden transacties ingezet binnen een fantasy football gaming-app om in één bewerking spelers te ruilen tussen twee teams. De opgeslagen procedure probeert de twee Azure Cosmos-items te lezen die overeenkomen met de Player-Id's die als een argument zijn door gegeven. Als beide spelers worden gevonden,worden vervolgens de items door de opgeslagen procedure bijgewerkt door hun teams om te wisselen. Als er gaandeweg fouten optreden, genereert de opgeslagen procedure een JavaScript-uitzondering waarmee impliciet de transactie wordt afgebroken.
 
 ```javascript
 // JavaScript source code
@@ -214,7 +214,7 @@ Azure Cosmos DB biedt ondersteuning aan pre-triggers en post-triggers. Pre-trigg
 
 ### <a id="pre-triggers"></a>Pre-triggers
 
-Het volgende voorbeeld laat zien hoe een pre-trigger wordt gebruikt voor het valideren van de eigenschappen van een Azure Cosmos DB-item dat wordt gemaakt. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstartgids .NET SQL-API](create-sql-api-dotnet.md) om een timestamp-eigenschap toe te voegen aan een nieuw toegevoegd item als deze er geen bevat.
+In het volgende voor beeld ziet u hoe een pretrigger wordt gebruikt voor het valideren van de eigenschappen van een Azure Cosmos-item dat wordt gemaakt. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstartgids .NET SQL-API](create-sql-api-dotnet.md) om een timestamp-eigenschap toe te voegen aan een nieuw toegevoegd item als deze er geen bevat.
 
 ```javascript
 function validateToDoItemTimestamp() {
@@ -235,7 +235,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Pre-triggers kunnen geen invoerparameters hebben. Het aanvraagobject in de trigger wordt gebruikt voor het bewerken van het aanvraagbericht dat is gekoppeld aan de bewerking. In het vorige voorbeeld wordt de pre-trigger uitgevoerd bij het maken van een Azure Cosmos DB-item, en de berichttekst van de aanvraag bevat het item dat moet worden gemaakt in JSON-indeling.
+Pre-triggers kunnen geen invoerparameters hebben. Het aanvraagobject in de trigger wordt gebruikt voor het bewerken van het aanvraagbericht dat is gekoppeld aan de bewerking. In het vorige voor beeld wordt de pre-trigger uitgevoerd bij het maken van een Azure Cosmos-item en de hoofd tekst van het aanvraag bericht bevat het item dat moet worden gemaakt in de JSON-indeling.
 
 Wanneer triggers zijn geregistreerd, kunt u de bewerkingen opgeven waarmee deze kan worden uitgevoerd. Deze trigger moet worden gemaakt met een waarde `TriggerOperation` van `TriggerOperation.Create`, wat betekent dat het gebruik van de trigger in een vervangingsbewerking zoals wordt weergegeven in de volgende code niet is toegestaan.
 
@@ -279,7 +279,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-Eén ding dat belangrijk is om te weten is de transactionele uitvoering van triggers in Azure Cosmos DB. De na trigger wordt uitgevoerd als onderdeel van dezelfde transactie voor het onderliggende item zelf. Een uitzondering opgetreden tijdens het uitvoeren van de na mislukt de hele transactie. Alles doorgevoerd wordt teruggedraaid en een uitzondering geretourneerd.
+Eén ding dat belangrijk is om te weten is de transactionele uitvoering van triggers in Azure Cosmos DB. De post-trigger wordt uitgevoerd als onderdeel van dezelfde trans actie voor het onderliggende item zelf. Als er een uitzonde ring optreedt tijdens de uitvoering na trigger, mislukt de hele trans actie. Alle doorgevoerde items worden teruggedraaid en er wordt een uitzonde ring geretourneerd.
 
 Zie de artikelen [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) en [Post-triggers](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) voor voorbeelden van het registreren en aanroepen van een pre-trigger. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966395"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614262"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>De Kopieeractiviteit in Azure Data Factory
 
@@ -130,7 +130,7 @@ De volgende sjabloon van een kopieeractiviteit bevat een uitgebreide lijst met o
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van een Kopieer activiteit moet worden ingesteld op: **Copy** | Ja |
+| Type | De eigenschap type van een Kopieer activiteit moet worden ingesteld op: **Kopieer** | Ja |
 | inputs | Geef op de gegevensset die u hebt gemaakt die verwijst naar de brongegevens. Kopieeractiviteit ondersteunt alleen een één invoer. | Ja |
 | outputs | Geef op de gegevensset die u hebt gemaakt die verwijst naar de sink-gegevens. Kopieeractiviteit ondersteunt slechts één uitvoer. | Ja |
 | typeProperties | Een groep met eigenschappen te configureren van de kopieeractiviteit. | Ja |
@@ -144,7 +144,7 @@ De volgende sjabloon van een kopieeractiviteit bevat een uitgebreide lijst met o
 
 ## <a name="monitoring"></a>Bewaking
 
-U kunt controleren met de kopieeractiviteit in Azure Data Factory 'Maken en controleren' gebruikersinterface of via een programma uitvoeren. U kunt vervolgens vergelijken de prestaties en configuratie van uw scenario aan Copy-activiteit [prestaties verwijzing](copy-activity-performance.md#performance-reference) van interne testen.
+U kunt controleren met de kopieeractiviteit in Azure Data Factory 'Maken en controleren' gebruikersinterface of via een programma uitvoeren.
 
 ### <a name="monitor-visually"></a>Visueel bewaken
 

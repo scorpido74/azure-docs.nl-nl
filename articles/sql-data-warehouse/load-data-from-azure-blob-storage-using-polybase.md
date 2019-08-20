@@ -1,6 +1,6 @@
 ---
-title: "Zelfstudie: Laden van gegevens over taxi's in New York met Azure SQL Data Warehouse | Microsoft Docs"
-description: Zelfstudie wordt gebruikgemaakt van Azure portal en SQL Server Management Studio om het laden van gegevens over taxi's in New York vanuit een openbare Azure-blob naar Azure SQL Data Warehouse.
+title: "Zelfstudie: Over taxi's gegevens van New York laden in Azure SQL Data Warehouse | Microsoft Docs"
+description: In de zelf studie worden Azure Portal en SQL Server Management Studio gebruikt voor het laden van nieuwe over taxi's-gegevens van een open bare Azure-Blob naar Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5f2830b524c554a6988bfc873cd0f6c54e5c56a4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839685"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575215"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Zelfstudie: Gegevens over taxi's in New York met Azure SQL Data Warehouse laden
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Zelfstudie: Over taxi's gegevens van New York naar Azure SQL Data Warehouse laden
 
-Deze zelfstudie maakt gebruik van PolyBase te laden van gegevens over taxi's in New York vanuit een openbare Azure-blob naar Azure SQL Data Warehouse. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) voor het volgende: 
+In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van nieuwe over taxi's-gegevens van een open bare Azure-Blob naar Azure SQL Data Warehouse. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) voor het volgende: 
 
 > [!div class="checklist"]
 > * Een datawarehouse maken in Azure Portal
@@ -42,9 +42,9 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Een leeg SQL Data Warehouse maken
+## <a name="create-a-blank-sql-data-warehouse"></a>Een lege SQL Data Warehouse maken
 
-Er wordt een Azure SQL-databasewarehouse gemaakt met een gedefinieerde set [compute-resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
+Een Azure SQL Data Warehouse wordt gemaakt met een gedefinieerde set [reken resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
 
 Volg deze stappen om een leeg SQL Data Warehouse te maken. 
 
@@ -78,9 +78,9 @@ Volg deze stappen om een leeg SQL Data Warehouse te maken.
 
 5. Klik op **Selecteren**.
 
-6. Klik op **prestatieniveau** om op te geven of het datawarehouse Gen1 of Gen2 is en het aantal datawarehouse-eenheden. 
+6. Klik op **prestatie niveau** om op te geven of het Data Warehouse gen1 of Gen2 is en het aantal data warehouse-eenheden. 
 
-7. Selecteer voor deze zelfstudie **Gen2** van SQL Data Warehouse. De schuifregelaar is ingesteld op **DW1000c** standaard.  Verplaats de regelaar omhoog en omlaag om te zien hoe dit werkt. 
+7. Voor deze zelf studie selecteert u **Gen2** van SQL Data Warehouse. De schuif regelaar wordt standaard ingesteld op **DW1000c** .  Verplaats de regelaar omhoog en omlaag om te zien hoe dit werkt. 
 
     ![prestaties configureren](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -103,7 +103,7 @@ Met de SQL Database Warehouse-service wordt een firewall op serverniveau gemaakt
 > SQL Database Warehouse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
 >
 
-1. Wanneer de implementatie is voltooid, klikt u op **SQL Databases** in het menu aan de linkerkant. Klik vervolgens op de pagina **SQL Databases** op **mySampleDatabase**. De overzichtspagina voor uw database wordt geopend, met de volledig gekwalificeerde servernaam (zoals **mynewserver-20180430.database.windows.net**) en opties voor verdere configuratie. 
+1. Wanneer de implementatie is voltooid, klikt u op **SQL Databases** in het menu aan de linkerkant. Klik vervolgens op de pagina **SQL Databases** op **mySampleDatabase**. De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde server naam (zoals **mynewserver-20180430.database.Windows.net**) en biedt opties voor verdere configuratie. 
 
 2. Kopieer deze volledig gekwalificeerde servernaam om in volgende Quick Starts verbinding te maken met de server en de bijbehorende databases. Klik vervolgens op de servernaam om de serverinstellingen te openen.
 
@@ -133,8 +133,8 @@ U kunt nu via dit IP-adres verbinding maken met de SQL-server en de bijbehorende
 Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het maken van verbinding met de server.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Selecteer **SQL Data warehouses** in het menu links en klik op uw database op de **SQL datawarehouses** pagina. 
-3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voorbeeld is de volledig gekwalificeerde servernaam mynewserver-20180430.database.windows.net. 
+2. Selecteer **SQL data warehouses** in het menu links en klik op uw Data Base op de pagina **SQL data warehouses** . 
+3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voor beeld is de volledig gekwalificeerde naam mynewserver-20180430.database.windows.net. 
 
     ![verbindingsgegevens](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
 
@@ -149,7 +149,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
     | Instelling      | Voorgestelde waarde | Beschrijving | 
     | ------------ | --------------- | ----------- | 
     | Servertype | Database-engine | Deze waarde is verplicht |
-    | Servernaam | De volledig gekwalificeerde servernaam | De naam moet er ongeveer als volgt: **mynewserver-20180430.database.windows.net**. |
+    | Servernaam | De volledig gekwalificeerde servernaam | De naam moet er ongeveer als volgt uitzien: **mynewserver-20180430.database.Windows.net**. |
     | Authentication | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat we in deze zelfstudie hebben geconfigureerd. |
     | Aanmelden | Het beheerdersaccount voor de server | Dit is het account dat u hebt opgegeven tijdens het maken van de server. |
     | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Dit is het wachtwoord dat u hebt opgegeven tijdens het maken van de server. |
@@ -164,7 +164,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
 
 ## <a name="create-a-user-for-loading-data"></a>Een gebruiker maken voor het laden van gegevens
 
-De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Maximale hoeveelheid geheugen zijn gedefinieerd op basis van welke generatie van SQL Data Warehouse u hebt ingericht, [datawarehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md), en [resourceklasse](resource-classes-for-workload-management.md). 
+De serverbeheerdersaccount is bedoeld voor het uitvoeren van beheerbewerkingen en is niet geschikt voor het uitvoeren van query's op gebruikersgegevens. Het laden van gegevens is een geheugenintensieve bewerking. Geheugen limieten worden gedefinieerd op basis van de generatie van SQL Data Warehouse die u hebt ingericht, [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md)en [resource klasse](resource-classes-for-workload-management.md). 
 
 Het is raadzaam een aanmelding en gebruiker te maken die speciaal wordt toegewezen voor het laden van gegevens. Voeg vervolgens de ladende gebruiker toe aan een [bronklasse](resource-classes-for-workload-management.md). Hiermee wordt een maximale hoeveelheid geheugen ingesteld.
 
@@ -215,7 +215,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20
 
 ## <a name="create-external-tables-for-the-sample-data"></a>Externe tabellen voor de voorbeeldgegevens maken
 
-U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. Deze zelfstudie leert u hoe u met externe tabellen laden taxigegevens New York City uit een Azure storage-blob. Raadpleeg het [laadoverzicht](sql-data-warehouse-overview-load.md) voor informatie over het overbrengen van gegevens naar Azure-blobopslag of het rechtstreeks vanuit de bron laden van gegevens in SQL Data Warehouse.
+U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. In deze zelf studie leert u hoe u externe tabellen kunt gebruiken voor het laden van een taxi cab-gegevens van een Azure Storage-blob. Raadpleeg het [laadoverzicht](sql-data-warehouse-overview-load.md) voor informatie over het overbrengen van gegevens naar Azure-blobopslag of het rechtstreeks vanuit de bron laden van gegevens in SQL Data Warehouse.
 
 Voer de volgende SQL-scripts uit om informatie op te geven over de gegevens die u wilt laden. Deze informatie omvat de locatie waar de gegevens zich bevinden, de indeling van de inhoud van de gegevens en de tabeldefinitie voor de gegevens. 
 
@@ -561,16 +561,16 @@ Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-s
 
     ![Geladen tabellen weergeven](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
 
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Verifiëren met behulp van beheerde identiteiten laden (optioneel)
-Laden met PolyBase en verifiëren via beheerde identiteiten is de veiligste manier en kunt u gebruikmaken van VNet-Service-eindpunten met Azure storage. 
+## <a name="authenticate-using-managed-identities-to-load-optional"></a>Verifiëren met behulp van beheerde identiteiten om te laden (optioneel)
+Het laden met poly base en verificatie via beheerde identiteiten is het veiligste mechanisme waarmee u VNet-service-eind punten kunt gebruiken met Azure Storage. 
 
 ### <a name="prerequisites"></a>Vereisten
-1.  Installeer Azure PowerShell volgens dit [handleiding](https://docs.microsoft.com/powershell/azure/install-az-ps).
-2.  Als u een voor algemeen gebruik v1- of blob storage-account hebt, moet u eerst upgraden naar algemeen gebruik v2 met behulp van dit [handleiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
-3.  U moet hebben **vertrouwde Microsoft-services voor toegang tot dit storage-account toestaan** onder Azure Storage-account ingeschakeld **Firewalls en virtuele netwerken** instellingenmenu. Verwijzen naar dit [handleiding](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
+1.  Installeer Azure PowerShell met behulp van deze [hand leiding](https://docs.microsoft.com/powershell/azure/install-az-ps).
+2.  Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+3.  U moet **vertrouwde micro soft-Services toegang geven tot dit opslag account** ingeschakeld onder Azure Storage account **firewalls en instellingen voor virtuele netwerken** . Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
 
 #### <a name="steps"></a>Stappen
-1. In PowerShell **registreren van uw SQL Database-server** met Azure Active Directory (AAD):
+1. **Registreer uw SQL database server** bij Azure Active Directory (Aad) in Power shell:
 
    ```powershell
    Connect-AzAccount
@@ -578,32 +578,32 @@ Laden met PolyBase en verifiëren via beheerde identiteiten is de veiligste mani
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
     
-   1. Maak een **voor algemeen gebruik v2-Opslagaccount** met behulp van dit [handleiding](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+   1. Maak met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)een **v2-opslag account voor algemeen** gebruik.
 
    > [!NOTE]
-   > - Als u een voor algemeen gebruik v1- of blob storage-account hebt, moet u **eerst upgraden naar v2** met behulp van dit [handleiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar v2** met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
     
-1. Onder uw storage-account, gaat u naar **Access Control (IAM)** , en klikt u op **roltoewijzing toevoegen**. Toewijzen **Gegevensbijdrager voor Blob** RBAC-rol met uw SQL Database-server.
+1. Navigeer naar **Access Control (IAM)** onder uw opslag account en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw SQL database-server.
 
    > [!NOTE] 
-   > Alleen leden met de eigenaar van bevoegdheden kunnen deze stap uitvoeren. Voor de verschillende ingebouwde rollen voor Azure-resources, verwijzen naar dit [handleiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor verschillende ingebouwde rollen voor Azure-resources.
   
-1. **Polybase-verbinding met de Azure Storage-account:**
+1. **Poly base-verbinding met het Azure Storage-account:**
     
-   1. Maken van uw database-scoped referentie met **id = 'Beheerde Service-identiteit'** :
+   1. Maak een Data Base-bereik referentie met **identiteit = ' managed service Identity '** :
 
        ```SQL
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
        > [!NOTE] 
-       > - Er is niet nodig om op te geven van GEHEIM met de Azure Storage-toegangssleutel omdat dit mechanisme gebruikt [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) op de achtergrond.
-       > - Identiteitsnaam van de moet **'Beheerde Service-identiteit'** voor PolyBase-verbinding met het werken met Azure Storage-account.
+       > - U hoeft geen geheim op te geven met Azure Storage toegangs sleutel, omdat dit mechanisme gebruikmaakt van [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) onder de voor vallen.
+       > - De IDENTITEITs naam moet **Managed Service Identity** zijn voor poly base-connectiviteit om met Azure Storage-account te kunnen werken.
     
-   1. Maak de externe gegevensbron op te geven van de Database Scoped Credential met de beheerde Service-identiteit.
+   1. Maak de externe gegevens bron waarmee de data base met bereik referenties wordt opgegeven met de Managed Service Identity.
         
-   1. Query als normale [externe tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
+   1. Query's uitvoeren als normaal met [externe tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
-Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) indien gewenst kunt u service-eindpunten instellen voor SQL Data Warehouse. 
+Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) als u de service-eind punten voor virtuele netwerken wilt instellen voor SQL Data Warehouse. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -622,7 +622,7 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 3. Als u het datawarehouse wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, klikt u op **Verwijderen**.
 
-4. Als u wilt verwijderen van de SQL-server die u hebt gemaakt, klikt u op **mynewserver-20180430.database.windows.net** in de vorige afbeelding, en klik vervolgens op **verwijderen**.  Wees hiermee voorzichtig. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
+4. Als u de door u gemaakte SQL-Server wilt verwijderen, klikt u op **mynewserver-20180430.database.Windows.net** in de vorige afbeelding en klikt u vervolgens op **verwijderen**.  Wees hiermee voorzichtig. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
 5. Als u de resourcegroep wilt verwijderen, klikt u op **myResourceGroup**. Klik vervolgens op **Resourcegroep verwijderen**.
 
@@ -640,7 +640,7 @@ U hebt het volgende gedaan:
 > * De voortgang van de gegevens weergegeven terwijl deze werden geladen
 > * Statistieken gemaakt voor de nieuw geladen gegevens
 
-Ga naar het overzicht voor ontwikkelaars voor meer informatie over het migreren van een bestaande database naar SQL Data Warehouse.
+Ga naar het overzicht voor ontwikkel aars voor meer informatie over het migreren van een bestaande Data Base naar SQL Data Warehouse.
 
 > [!div class="nextstepaction"]
->[Ontwerpbeslissingen te nemen aan een bestaande database migreren naar SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Ontwerp beslissingen voor het migreren van een bestaande Data Base naar SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)

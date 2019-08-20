@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: bffb92e37ccddd43c2a64466282084bb6226c338
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24e7e67145b789737484fcb594f48127c41eafe9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570569"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575220"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Pacemaker instellen voor Red Hat Enterprise Linux in azure
 
@@ -107,12 +107,16 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    > RHEL 7,6: Fence-agents-4.2.1 -11. EL7 _ 6,8  
    > RHEL 7,5: Fence-agents-4.0.11 -86. EL7 _ 5,8  
    > RHEL 7,4: Fence-agents-4.0.11 -66. EL7 _ 4.12  
-   > Zie voor meer informatie [Azure VM die wordt uitgevoerd als een RHEL-lid van een cluster met hoge Beschik baarheid neemt erg veel tijd in beslag om te worden geomheiningd of mislukt het uitzetten van een storing of een time-out voordat de virtuele machine wordt uitgeschakeld](https://access.redhat.com/solutions/3408711)
+   > Zie voor meer informatie [Azure VM die wordt uitgevoerd als een RHEL-lid van een cluster met hoge Beschik baarheid neemt erg veel tijd in beslag om te worden geomheiningd of mislukt het uitzetten van een storing of een time-out voordat de virtuele machine wordt afgesloten](https://access.redhat.com/solutions/3408711).
 
    Controleer de versie van de Azure Fence-agent. Indien nodig moet u deze bijwerken naar een versie die gelijk is aan of hoger dan de hierboven vermelde.
+
    <pre><code># Check the version of the Azure Fence Agent
     sudo yum info fence-agents-azure-arm
    </code></pre>
+
+   > [!IMPORTANT]
+   > Als u de Azure Fence-agent wilt bijwerken, en als u aangepaste rol gebruikt, moet u ervoor zorgen dat u de aangepaste rol bijwerkt om actie **uitgeschakeld**op te nemen. Zie [een aangepaste rol maken voor de Fence-agent](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent)voor meer informatie.  
 
 1. **[A]**  Omzetten van de hostnaam instellen
 

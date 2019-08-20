@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ecf3ec6ba9c71f3d7624b541ba0618645ab14f4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: da7b9c44d15ac0ca16afe15e429a6fe2cf89e366
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535088"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575240"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -122,6 +122,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 ## <a name="change-log"></a>Wijzigingenlogboek
 
+- 08/16/2019: Wijzigingen in het [instellen van pacemaker op Red Hat Enterprise Linux in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) om klanten eraan te herinneren de acties in de aangepaste rol bij te werken, als een update naar de nieuwe versie van de Azure Fence-agent wordt uitgevoerd  
 - 08/15/2019: Wijzigingen in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) om de algemene Beschik baarheid van ultra disk (voorheen Ultra-SSD) weer te geven
 - 08/01/2019: Wijzigingen in het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) om wijzigingen te integreren die specifiek zijn voor SLES 15 
 - 07/23/2019: Wijzigingen in [cluster een SAP ASCS/SCS-exemplaar op een Windows-failovercluster met behulp van een bestands share in azure](sap-high-availability-guide-wsfc-file-share.md) om ondersteuning te geven voor opslag ruimte Direct door Azure site Recovery Services

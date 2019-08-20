@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 407b5b8dd4aa846140628c7d701ced92e8bcec03
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 57dc1e136d242fd0c5063526dc54bdb95351cf02
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780074"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616650"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-voorbeelden voor de SQL API
 > [!div class="op_single_selector"]
@@ -138,7 +138,7 @@ De methode [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/
 | [Wijzigingenfeed lezen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery) | 
 | [Partitiesleutelbereiken lezen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync) | 
 
-In het voor beeld van een feed voor de wijzigings voorbeeld, [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)wordt getoond hoe u de wijzigings bibliotheek voor feeds kunt gebruiken om gegevens te repliceren naar een andere Cosmos DB verzameling.   
+In het voor beeld van een feed voor wijzigings voorbeeld, [ChangeFeedMigrationTool](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)wordt getoond hoe u de wijzigings bibliotheek van de feed-processor gebruikt om gegevens te repliceren naar een andere Cosmos-container.   
 
 ## <a name="server-side-programming-examples"></a>Voorbeelden van programmering op de server
 De methode [RunDemoAsync](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs#L58-L91) van het *ServerSideScripts* -voorbeeld project laat zien hoe u de volgende taken kunt uitvoeren. Zie [opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies](stored-procedures-triggers-udfs.md)voor meer informatie over het Program meren van de server in azure Cosmos DB voordat u de volgende voor beelden uitvoert. 

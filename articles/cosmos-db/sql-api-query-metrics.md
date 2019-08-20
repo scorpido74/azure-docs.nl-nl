@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447258"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614818"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Afstemming van prestaties van query's met Azure Cosmos DB
 
@@ -44,7 +44,7 @@ De SDK's bieden verschillende opties voor het uitvoeren van query's. Bijvoorbeel
 | `EnableScanInQuery` | Moet worden ingesteld op true als u ervoor hebt gekozen buiten het indexeren, maar de query toch uitvoeren via een scan. Alleen is van toepassing als indexering voor het filterpad van het opgegeven uitgeschakeld. | 
 | `MaxItemCount` | Het maximum aantal items om terug te keren per retour naar de server. Door in te stellen op-1 kunt u de server die het aantal items beheren. Of u kunt deze waarde om op te halen van slechts een beperkt aantal items per retour verlagen. 
 | `MaxBufferedItemCount` | Dit is een optie voor de clientzijde, en gebruikt voor het beperken van het geheugenverbruik bij het uitvoeren van meerdere partities ORDER BY. Een hogere waarde vermindert de latentie voor het sorteren van meerdere partities. |
-| `MaxDegreeOfParallelism` | Opgehaald of ingesteld van het aantal gelijktijdige bewerkingen clientzijde tijdens parallelle queryuitvoering in de Azure Cosmos DB-database-service worden uitgevoerd. Een positieve waarde beperkt het aantal gelijktijdige bewerkingen aan de ingestelde waarde. Als deze is ingesteld op minder dan 0, besluit het systeem automatisch het aantal gelijktijdige bewerkingen om uit te voeren. |
+| `MaxDegreeOfParallelism` | Hiermee wordt het aantal gelijktijdige bewerkingen aan de client zijde opgehaald of ingesteld tijdens het uitvoeren van parallelle query's in de Azure Cosmos-database service. Een positieve waarde beperkt het aantal gelijktijdige bewerkingen aan de ingestelde waarde. Als deze is ingesteld op minder dan 0, besluit het systeem automatisch het aantal gelijktijdige bewerkingen om uit te voeren. |
 | `PopulateQueryMetrics` | Hiermee gedetailleerde logboekregistratie van statistieken van de tijd die is doorgebracht in verschillende fasen van het uitvoeren van query's, zoals compilatietijd, index-Lustijd en document wordt de tijd. U kunt uitvoer van de querystatistieken delen met ondersteuning van Azure om prestatieproblemen van query. |
 | `RequestContinuation` | U kunt uitvoeren van query's hervatten door te geven in de ondoorzichtige vervolgtoken dat wordt geretourneerd door elke query. Het vervolgtoken ingekapseld alle staat is vereist voor het uitvoeren van query's. |
 | `ResponseContinuationTokenLimitInKb` | U kunt de maximale grootte van het vervolgtoken dat wordt geretourneerd door de server beperken. Mogelijk moet u dit instellen als uw toepassingshost limieten voor grootte van de antwoord-header heeft. Deze instelling kan vergroten de totale duur en de gebruikte Aanvraageenheden voor de query.  |
@@ -216,7 +216,7 @@ De sectie over query uitvoering van metrische gegevens wordt uitgelegd hoe u de 
 ### <a name="indexing-policy"></a>Indexeringsbeleid
 Zie [indexeringsbeleid configureren](index-policy.md) voor indexering paden, soorten en modi en hoe ze invloed op de uitvoering van de query. Het indexeringsbeleid gebruikt standaard hash-indexering voor tekenreeksen, die geldt voor gelijkheid query's, maar niet voor de bereik-query's / OrderBy-query's. Als u een bereik-query's nodig voor tekenreeksen, wordt u aangeraden het indextype bereik voor alle tekenreeksen op te geven. 
 
-Azure Cosmos DB past standaard, automatische indexering voor alle gegevens. Voor hoge prestaties invoegen scenario's, overweeg dan paden uitsluiten zoals zo u de RU-kosten voor elke bewerking insert beperkt. 
+Azure Cosmos DB wordt standaard automatisch geïndexeerd toegepast op alle gegevens. Overweeg het uitsluiten van paden voor scenario's met hoge prestaties, omdat hierdoor de RU-kosten voor elke invoeg bewerking worden verminderd. 
 
 ## <a name="query-execution-metrics"></a>Query uitvoering van metrische gegevens
 U kunt gedetailleerde metrische gegevens over het uitvoeren van query's verkrijgen door de optionele `x-ms-documentdb-populatequerymetrics` header (`FeedOptions.PopulateQueryMetrics` in de .NET SDK). De waarde die wordt geretourneerd `x-ms-documentdb-query-metrics` heeft de volgende sleutel-waardeparen bedoeld voor geavanceerde probleemoplossing van het uitvoeren van query's. 

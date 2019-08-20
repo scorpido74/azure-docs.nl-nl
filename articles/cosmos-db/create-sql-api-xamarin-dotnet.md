@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 28ba47c1c0ec053af8632475ad52ab50672eab64
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9d7dc560d452eba4c31b24a2011254258211bf8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855157"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615734"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Quickstart: een taken-app maken met Xamarin met behulp van een SQL API-account van Azure Cosmos DB
 
@@ -137,7 +137,7 @@ Laten we nog eens kort bekijken hoe de app met Azure Cosmos DB communiceert.
     De functie `IDocumentQuery<T>.ExecuteNextAsync<T>` haalt de pagina met resultaten op van Azure Cosmos DB en `HasMoreResults` controleert of er nog extra resultaten moeten worden geretourneerd.
 
 > [!TIP]
-> Verschillende functies die op Azure Cosmos DB containers en documenten worden uitgevoerd, maken gebruik van een URI als para meter waarmee het adres van de container of het document wordt opgegeven. Deze URI is opgesteld met de klasse `URIFactory`. Uri's voor data bases, containers en documenten kunnen allemaal met deze klasse worden gemaakt.
+> Verschillende functies die worden uitgevoerd op Azure Cosmos-containers en-documenten, maken gebruik van een URI als para meter waarmee het adres van de container of het document wordt opgegeven. Deze URI is opgesteld met de klasse `URIFactory`. Uri's voor data bases, containers en documenten kunnen allemaal met deze klasse worden gemaakt.
 
 * De `ComsmosDBService.InsertToDoItem` functie laat zien hoe u een nieuw document kunt invoegen:
 

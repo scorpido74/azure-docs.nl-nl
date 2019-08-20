@@ -1,6 +1,6 @@
 ---
-title: 'Beveiligd back-endservices met behulp van client-certificaatverificatie: Azure API Management | Microsoft Docs'
-description: Meer informatie over het beveiligen van back-endservices met behulp van verificatie van clientcertificaten in Azure API Management.
+title: Back-end-services beveiligen met verificatie op basis van client certificaten-Azure API Management | Microsoft Docs
+description: Meer informatie over het beveiligen van back-end-services met verificatie op basis van client certificaten in azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,77 +13,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 13a2eb080c6822a8a6786be1952bc588fa8afd80
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc90b87c55b44d57b8b2251c535065792b5d4c71
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141617"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612016"
 ---
-# <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Over het beveiligen van back-endservices met behulp van client-certificaatverificatie in Azure API Management
+# <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Back-end-services beveiligen met verificatie op basis van client certificaten in azure API Management
 
-API Management kunnen voor het beveiligen van toegang tot de back-end-service van een API met behulp van clientcertificaten. Deze handleiding wordt beschreven hoe u voor het beheren van certificaten in de Azure API Management-service-exemplaar in de Azure-portal. Ook wordt uitgelegd hoe u een API voor het gebruik van een certificaat voor toegang tot een back-end-service configureren.
+Met API Management kunt u de toegang tot de back-end-service van een API beveiligen met behulp van client certificaten. In deze hand leiding wordt uitgelegd hoe u certificaten beheert in het Azure API Management service-exemplaar in de Azure Portal. Ook wordt uitgelegd hoe u een API configureert om een certificaat te gebruiken voor toegang tot een back-end-service.
 
-Zie voor meer informatie over het beheren van certificaten met behulp van de API Management REST API <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API-Beheercertificaat entiteit</a>.
+Voor informatie over het beheren van certificaten met behulp van de API Management REST API, zie de <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">entiteit Azure API Management rest API-certificaat</a>.
 
 ## <a name="prerequisites"> </a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Deze handleiding laat zien hoe u uw API Management service-exemplaar voor het gebruik van verificatie van clientcertificaten voor toegang tot de back-end-service voor een API configureren. Voordat u de stappen in dit artikel te volgen, moet u uw back-endservice geconfigureerd voor verificatie van clientcertificaten ([certificaatverificatie in Azure WebSites configureren Raadpleeg dit artikel] [ to configure certificate authentication in Azure WebSites refer to this article]). In dat geval moet u toegang tot het certificaat en het wachtwoord in voor het uploaden naar de API Management-service.
+In deze hand leiding wordt beschreven hoe u uw API Management service-exemplaar configureert voor het gebruik van verificatie van client certificaten voor toegang tot de back-end-service voor een API. Voordat u de stappen in dit artikel uitvoert, moet uw back-end-service zijn geconfigureerd voor verificatie van client certificaten ([voor het configureren van certificaat verificatie in azure WebSites raadpleegt u dit artikel][to configure certificate authentication in Azure WebSites refer to this article]). U hebt toegang tot het certificaat en het wacht woord voor het uploaden naar de API Management-service nodig.
 
-## <a name="step1"> </a>Een certificaat uploaden
+## <a name="step1"> </a>Een client certificaat uploaden
 
-![Clientcertificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert.png)
+![Client certificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert.png)
 
-Volg de stappen hieronder om een nieuw certificaat te uploaden. Als u nog geen exemplaar van API Management-service hebt gemaakt, Zie de zelfstudie [API Management service-exemplaar maken][Create an API Management service instance].
+Volg de onderstaande stappen om een nieuw client certificaat te uploaden. Als u nog geen API Management service-exemplaar hebt gemaakt, raadpleegt u de zelf studie [een API Management service-exemplaar maken][Create an API Management service instance].
 
-1. Navigeer naar uw Azure API Management service-exemplaar in de Azure-portal.
-2. Selecteer **clientcertificaten** in het menu.
+1. Navigeer naar uw Azure API Management service-exemplaar in de Azure Portal.
+2. Selecteer **client certificaten** in het menu.
 3. Klik op de knop **+ Toevoegen**.  
-    ![Clientcertificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. Zoeken naar het certificaat, de ID en wachtwoord opgeven.  
+    ![Client certificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
+4. Blader naar het certificaat en geef de ID en het wacht woord op.  
 5. Klik op **Create**.
 
 > [!NOTE]
-> Het certificaat moet zich in **pfx** indeling. Zelfondertekende certificaten zijn toegestaan.
+> Het certificaat moet de indeling **. pfx** hebben. Zelfondertekende certificaten zijn toegestaan.
 
-Zodra het certificaat is geüpload, wordt in de **clientcertificaten**.  Hebt u veel certificaten, noteer de vingerafdruk van het gewenste certificaat om [een API voor het gebruik van een clientcertificaat voor gatewayverificatie configureren][Configure an API to use a client certificate for gateway authentication].
+Zodra het certificaat is geüpload, wordt het weer gegeven in de **client certificaten**.  Als u veel certificaten hebt, noteert u de vinger afdruk van het gewenste certificaat om [een API te configureren voor het gebruik van een client certificaat voor gateway verificatie][Configure an API to use a client certificate for gateway authentication].
 
 > [!NOTE]
-> Als u wilt uitschakelen validatie van certificaatketen wanneer u bijvoorbeeld een zelf-ondertekend certificaat, volgt u de stappen in deze Veelgestelde vragen over [item](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end).
+> Als u validatie van certificaat keten wilt uitschakelen wanneer u bijvoorbeeld een zelfondertekend certificaat gebruikt, volgt u de stappen die worden beschreven in dit Veelgestelde vragen [item](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end).
 
-## <a name="step1a"> </a>Verwijderen van een clientcertificaat
+## <a name="step1a"> </a>Een client certificaat verwijderen
 
-Als u wilt een certificaat wilt verwijderen, klikt u op in het contextmenu **...**  en selecteer **verwijderen** naast het certificaat.
+Als u een certificaat wilt verwijderen, klikt u op context menu **...** en selecteert u **verwijderen** naast het certificaat.
 
-![Verwijderen van clientcertificaten](media/api-management-howto-mutual-certificates/apim-client-cert-delete.png)
+![Client certificaten verwijderen](media/api-management-howto-mutual-certificates/apim-client-cert-delete.png)
 
-Als het certificaat gebruikt door een API, wordt en vervolgens een waarschuwing wordt weergegeven. Als u wilt verwijderen van het certificaat, moet u eerst het certificaat verwijderen van API's die zijn geconfigureerd om deze te gebruiken.
+Als het certificaat wordt gebruikt door een API, wordt er een waarschuwings scherm weer gegeven. Als u het certificaat wilt verwijderen, moet u eerst het certificaat verwijderen uit Api's die zijn geconfigureerd om het te gebruiken.
 
-![Verwijderen van de client-certificaten is mislukt](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
+![Fout bij verwijderen van client certificaten](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
-## <a name="step2"> </a>Een API voor het gebruik van een clientcertificaat voor gatewayverificatie configureren
+## <a name="step2"> </a>Een API configureren voor het gebruik van een client certificaat voor gateway verificatie
 
-1. Klik op **API's** uit de **API Management** menu aan de linkerkant en navigeer naar de API.  
-    ![Clientcertificaten inschakelen](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
+1. Klik op **api's** in het menu **API Management** aan de linkerkant en navigeer naar de API.  
+    ![Client certificaten inschakelen](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. In de **ontwerp** tabblad, klikt u op een potloodpictogram van de **back-end** sectie. 
-3. Wijziging de **gatewayreferenties** naar **clientcertificaat** en selecteert u het certificaat in de vervolgkeuzelijst.  
-    ![Clientcertificaten inschakelen](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+2. Klik op het tabblad **ontwerp** op een potlood pictogram van de **back-end** -sectie. 
+3. Wijzig de **Gateway referenties** in het **client certificaat** en selecteer uw certificaat in de vervolg keuzelijst.  
+    ![Client certificaten inschakelen](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
 4. Klik op **Opslaan**. 
 
 > [!WARNING]
-> Deze wijziging wordt onmiddellijk van kracht en aanroepen van bewerkingen van die API het certificaat wordt gebruikt om te verifiëren op de back-endserver.
+> Deze wijziging is onmiddellijk van kracht en aanroepen naar bewerkingen van die API gebruiken het certificaat om te verifiëren op de back-endserver.
 
 
 > [!TIP]
-> Wanneer een certificaat is opgegeven voor de gatewayverificatie voor de back-end-service van een API, maakt deel uit van het beleid voor die API, en kunnen worden weergegeven in de beleidseditor.
+> Wanneer een certificaat wordt opgegeven voor gateway verificatie voor de back-end-service van een API, wordt het een onderdeel van het beleid voor die API en kan het worden weer gegeven in de beleids editor.
 
 ## <a name="self-signed-certificates"></a>Zelfondertekende certificaten
 
-Als u zelfondertekende certificaten gebruikt, moet u in de volgorde voor API Management om te communiceren met het systeem back-end-validatie van certificaatketen uitschakelen. Anders wordt een 500 foutcode geretourneerd. Als u wilt dit configureren, kunt u de [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (voor de nieuwe back-end) of [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (voor bestaande back-end) PowerShell-cmdlets en stel de `-SkipCertificateChainValidation` parameter `True`.
+Als u zelfondertekende certificaten gebruikt, moet u validatie van de certificaat keten uitschakelen om API Management te communiceren met het back-end-systeem. Anders wordt er een fout code van 500 geretourneerd. Als u dit wilt configureren, kunt u [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) de (voor nieuwe back-end [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) ) of (voor bestaande back-end) Power shell- `-SkipCertificateChainValidation` cmdlets `True`gebruiken en de para meter instellen op.
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

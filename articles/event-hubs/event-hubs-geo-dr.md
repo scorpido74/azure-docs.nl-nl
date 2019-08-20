@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8dca94f0200f6bd41dfdc199b41bf69981a960da
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562711"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611717"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Eventhubs - Geo-noodherstel 
 
 Wanneer volledige Azure-regio's of datacenters (als er geen [beschikbaarheidszones](../availability-zones/az-overview.md) worden gebruikt) treedt downtime, is het essentieel is voor de verwerking van gegevens om te kunnen blijven werken in een andere regio of het datacenter. Als zodanig *Geo-noodherstel* en *Geo-replicatie* zijn belangrijke functies voor dat elke onderneming. Azure Event Hubs biedt ondersteuning voor geo-noodherstel en geo-replicatie, op het niveau van de naamruimte. 
 
-De functie voor het opnieuw gebruiken van geo-nood herstel is wereld wijd beschikbaar voor zowel Event Hubs Standard-als speciale SKU. Houd er rekening mee dat u alleen geo-paar naam ruimten in dezelfde laag van de SKU kunt vinden. Als u bijvoorbeeld een naam ruimte in een cluster hebt die alleen in onze specifieke SKU wordt aangeboden, kan deze alleen worden gekoppeld aan een naam ruimte in een ander cluster. 
+> [!NOTE]
+> De functie voor geo-nood herstel is alleen beschikbaar voor de [Standard-en speciale sku's](https://azure.microsoft.com/pricing/details/event-hubs/).  
 
 ## <a name="outages-and-disasters"></a>Uitval en noodgevallen afhandelen
 
@@ -37,7 +38,9 @@ De functie voor het herstel bij Geo-gerelateerde noodgevallen van Azure Event Hu
 
 ## <a name="basic-concepts-and-terms"></a>Eenvoudige concepten en termen
 
-De functie van het herstel na noodgevallen noodherstel metagegevens geïmplementeerd, en is afhankelijk van de primaire en secundaire disaster recovery-naamruimten. De geo-nood herstel functie is alleen beschikbaar voor de [Standard-en speciale sku's](https://azure.microsoft.com/pricing/details/event-hubs/) . U hoeft niet te connection string wijzigen, omdat de verbinding is gemaakt via een alias.
+De functie van het herstel na noodgevallen noodherstel metagegevens geïmplementeerd, en is afhankelijk van de primaire en secundaire disaster recovery-naamruimten. 
+
+De functie voor het opnieuw gebruiken van geo-nood herstel is alleen beschikbaar voor de [Standard-en speciale sku's](https://azure.microsoft.com/pricing/details/event-hubs/) . U hoeft niet te connection string wijzigen, omdat de verbinding is gemaakt via een alias.
 
 De volgende termen worden gebruikt in dit artikel:
 
@@ -48,6 +51,19 @@ De volgende termen worden gebruikt in dit artikel:
 -  *Meta gegevens*: Entiteiten zoals Event hubs en consumenten groepen; en hun eigenschappen van de service die aan de naam ruimte zijn gekoppeld. Houd er rekening mee dat alleen de entiteiten en de bijbehorende instellingen automatisch worden gerepliceerd. Berichten en gebeurtenissen worden niet gerepliceerd. 
 
 -  *Failover*: Het proces voor het activeren van de secundaire naam ruimte.
+
+## <a name="supported-namespace-pairs"></a>Ondersteunde naam ruimte paren
+De volgende combi Naties van primaire en secundaire naam ruimten worden ondersteund:  
+
+| Primaire naam ruimte | Secundaire naam ruimte | Ondersteund | 
+| ----------------- | -------------------- | ---------- |
+| Standard | Standard | Ja | 
+| Standard | Toegewezen | Ja | 
+| Toegewezen | Toegewezen | Ja | 
+| Toegewezen | Standard | Nee | 
+
+> [!NOTE]
+> U kunt geen naam ruimten koppelen die zich in hetzelfde toegewezen cluster bevinden. U kunt naam ruimten in afzonderlijke clusters koppelen. 
 
 ## <a name="setup-and-failover-flow"></a>Installatie en failover-stroom
 

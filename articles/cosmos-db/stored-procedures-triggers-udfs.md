@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717536"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614051"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
 
@@ -79,11 +79,11 @@ Azure Cosmos DB ondersteunt twee soorten triggers:
 
 ### <a name="pre-triggers"></a>Pretriggers
 
-Azure Cosmos DB biedt triggers die kunnen worden aangeroepen door een bewerking uit te voeren op een Azure Cosmos DB item. U kunt bijvoorbeeld een pre-trigger opgeven wanneer u een item maakt. In dit geval wordt de pre-trigger uitgevoerd voordat het item wordt gemaakt. Vooraf triggers kunnen geen invoer parameters hebben. Indien nodig kan het aanvraag object worden gebruikt voor het bijwerken van de hoofd tekst van het document van de oorspronkelijke aanvraag. Als triggers zijn geregistreerd, kunnen gebruikers de bewerkingen die het kan worden uitgevoerd met opgeven. Als er een trigger is gemaakt `TriggerOperation.Create`met, betekent dit dat het gebruik van de trigger in een vervangings bewerking niet is toegestaan. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
+Azure Cosmos DB biedt triggers die kunnen worden aangeroepen door een bewerking uit te voeren op een Azure Cosmos-item. U kunt bijvoorbeeld een pre-trigger opgeven wanneer u een item maakt. In dit geval wordt de pre-trigger uitgevoerd voordat het item wordt gemaakt. Vooraf triggers kunnen geen invoer parameters hebben. Indien nodig kan het aanvraag object worden gebruikt voor het bijwerken van de hoofd tekst van het document van de oorspronkelijke aanvraag. Als triggers zijn geregistreerd, kunnen gebruikers de bewerkingen die het kan worden uitgevoerd met opgeven. Als er een trigger is gemaakt `TriggerOperation.Create`met, betekent dit dat het gebruik van de trigger in een vervangings bewerking niet is toegestaan. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
 
 ### <a name="post-triggers"></a>Post-triggers
 
-Net als bij pretriggers worden post-triggers ook geassocieerd met een bewerking op een Azure Cosmos DB-item en zijn er geen invoer parameters vereist. Ze worden uitgevoerd *nadat* de bewerking is voltooid en hebben toegang tot het antwoord bericht dat naar de client wordt verzonden. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
+Net als bij pretriggers worden post-triggers ook geassocieerd met een bewerking in een Azure Cosmos-item en zijn er geen invoer parameters vereist. Ze worden uitgevoerd *nadat* de bewerking is voltooid en hebben toegang tot het antwoord bericht dat naar de client wordt verzonden. Zie [het artikel triggers schrijven](how-to-write-stored-procedures-triggers-udfs.md#triggers) voor voor beelden.
 
 > [!NOTE]
 > Geregistreerde triggers worden niet automatisch uitgevoerd wanneer de bijbehorende bewerkingen (maken/verwijderen/vervangen/bijwerken) plaatsvinden. Ze moeten expliciet worden aangeroepen bij het uitvoeren van deze bewerkingen. Zie [het artikel triggers uitvoeren](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) voor meer informatie.

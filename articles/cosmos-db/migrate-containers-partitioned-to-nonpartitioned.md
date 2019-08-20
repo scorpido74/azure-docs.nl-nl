@@ -1,30 +1,30 @@
 ---
-title: Azure Cosmos DB-containers niet-gepartitioneerde migreren naar gepartitioneerde containers
-description: Informatie over het migreren van alle bestaande niet-gepartitioneerde containers in gepartitioneerde containers.
+title: Niet-gepartitioneerde Azure Cosmos-containers migreren naar gepartitioneerde containers
+description: Meer informatie over het migreren van alle bestaande niet-gepartitioneerde containers in gepartitioneerde containers.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8ba9489496a8f9e3703702e344684b4028a002cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d51c200ebff0d92b1bcdf2c8e3e0325103e214b7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241922"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615023"
 ---
-# <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migreren van niet-gepartitioneerde containers naar gepartitioneerde containers
+# <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Niet-gepartitioneerde containers migreren naar gepartitioneerde containers
 
-Azure Cosmos DB ondersteunt het maken van containers zonder partitiesleutel. U kunt op dit moment niet-gepartitioneerde containers maken met behulp van Azure CLI en Azure Cosmos DB SDK's (.Net, Java, NodeJs) waarvoor een versie lager dan of gelijk zijn aan 2.x. U kunt geen niet-gepartitioneerde containers met behulp van de Azure portal maken. Echter, niet-gepartitioneerde containers zijn niet elastische en opslagcapaciteit van 10 GB en doorvoer limiet van 10 K RU/s is opgelost.
+Azure Cosmos DB ondersteunt het maken van containers zonder een partitie sleutel. Op dit moment kunt u niet-gepartitioneerde containers maken met behulp van Azure CLI en Azure Cosmos DB Sdk's (.net, Java, NodeJs) die een versie hebben die kleiner is dan of gelijk is aan 2. x. U kunt geen niet-gepartitioneerde containers maken met behulp van de Azure Portal. Dergelijke niet-gepartitioneerde containers zijn echter niet elastisch en hebben vaste opslag capaciteit van 10 GB en doorvoer limiet van 10.000 RU/s.
 
-De containers niet-gepartitioneerde zijn verouderd en moet u uw bestaande niet-gepartitioneerde containers migreren naar gepartitioneerde containers schaal van de opslag en doorvoer. Azure Cosmos DB biedt een mechanisme voor het systeem gedefinieerd voor het migreren van uw niet-gepartitioneerde containers naar gepartitioneerde containers. Dit document wordt uitgelegd hoe alle bestaande niet-gepartitioneerde containers automatisch gemigreerd naar gepartitioneerde containers worden. U kunt profiteren van de functie voor automatische migratie alleen als u de V3-versie van de SDK's in alle talen.
+De niet-gepartitioneerde containers zijn verouderd en u moet uw bestaande niet-gepartitioneerde containers naar gepartitioneerde containers migreren om de opslag en door voer te schalen. Azure Cosmos DB biedt een systeem gedefinieerd mechanisme voor het migreren van niet-gepartitioneerde containers naar gepartitioneerde containers. In dit document wordt uitgelegd hoe alle bestaande niet-gepartitioneerde containers automatisch in gepartitioneerde containers worden gemigreerd. U kunt alleen profiteren van de functie voor automatisch migreren als u de V3-versie van Sdk's in alle talen gebruikt.
 
 > [!NOTE] 
-> U kunt Azure Cosmos DB MongoDB- en Gremlin-API-accounts op dit moment niet migreren met behulp van de stappen in dit document beschreven. 
+> Op dit moment kunt u de MongoDB-en Gremlin-API-accounts niet Azure Cosmos DB migreren met behulp van de stappen die in dit document worden beschreven. 
 
-## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migreren van de container met behulp van het systeem gedefinieerde partitiesleutel
+## <a name="migrate-container-using-the-system-defined-partition-key"></a>Container migreren met de door het systeem gedefinieerde partitie sleutel
 
-Ter ondersteuning van de migratie, Azure Cosmos DB wordt gedefinieerd door het systeem gedefinieerde partitiesleutel naam `/_partitionkey` voor de containers die geen een partitiesleutel hebben. U kunt de definitie van de partitie niet wijzigen nadat de containers worden gemigreerd. Bijvoorbeeld, wordt de definitie van een container die wordt gemigreerd naar een gepartitioneerde container als volgt zijn: 
+Ter ondersteuning van de migratie, Azure Cosmos DB definieert een door het systeem gedefinieerde `/_partitionkey` partitie sleutel met de naam op alle containers die geen partitie sleutel hebben. U kunt de partitie sleutel definitie niet wijzigen nadat de containers zijn gemigreerd. De definitie van een container die naar een gepartitioneerde container wordt gemigreerd, ziet er bijvoorbeeld als volgt uit: 
 
 ```json
 {
@@ -38,16 +38,16 @@ Ter ondersteuning van de migratie, Azure Cosmos DB wordt gedefinieerd door het s
 }
 ```
  
-Nadat de container wordt gemigreerd, kunt u documenten maken door het invullen van de `_partitionKey` eigenschap samen met de andere eigenschappen van het document. De `_partitionKey` eigenschap vertegenwoordigt de partitiesleutel van uw documenten. 
+Nadat de container is gemigreerd, kunt u documenten maken door de `_partitionKey` eigenschap samen met de andere eigenschappen van het document in te vullen. De `_partitionKey` eigenschap vertegenwoordigt de partitie sleutel van uw documenten. 
 
-Het kiezen van de juiste partitiesleutel is belangrijk dat u optimaal gebruikmaken van de ingerichte doorvoer. Zie voor meer informatie, [u bij het kiezen van een partitiesleutel](partitioning-overview.md) artikel. 
+Het kiezen van de juiste partitie sleutel is belang rijk om de ingerichte door Voer optimaal te benutten. Zie [het artikel een partitie sleutel kiezen](partitioning-overview.md) voor meer informatie. 
 
 > [!NOTE]
-> U kunt profiteren van het systeem gedefinieerde partitiesleutel alleen als u de meest recente/V3-versie van de SDK's in alle talen.
+> U kunt alleen gebruikmaken van de door het systeem gedefinieerde partitie sleutel als u de nieuwste/V3 versie van Sdk's in alle talen gebruikt.
 
-Het volgende voorbeeld ziet u een voorbeeld van code te maken van een document met het systeem gedefinieerde partitiesleutel dat document lezen:
+In het volgende voor beeld ziet u een voorbeeld code voor het maken van een document met de door het systeem gedefinieerde partitie sleutel en het lezen van het document:
 
-**JSON-weergave van het document**
+**JSON-weer gave van het document**
 
 ```csharp
 DeviceInformationItem = new DeviceInformationItem
@@ -91,15 +91,15 @@ CosmosItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-Zie voor het complete voorbeeld de [.Net-voorbeelden](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub-opslagplaats. 
+Zie de GitHub-opslag plaats voor [.net](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) -voor beelden voor het volledige voor beeld. 
                       
-## <a name="migrate-the-documents"></a>Migreren van de documenten
+## <a name="migrate-the-documents"></a>De documenten migreren
 
-Terwijl de containerdefinitie van de is uitgebreid met een partitie-eigenschap, de documenten in de container worden niet automatisch gemigreerd. Dit betekent dat de systeem-partitie-sleuteleigenschap `/_partitionKey` pad wordt niet automatisch toegevoegd aan de bestaande documenten. Moet u de bestaande documenten door te lezen van de documenten die zijn gemaakt zonder een partitiesleutel te partitioneren en ze terug met herschrijven `_partitionKey` eigenschap in de documenten. 
+Hoewel de container definitie wordt uitgebreid met een partitie sleutel eigenschap, worden de documenten in de container niet automatisch gemigreerd. Dit betekent dat het pad naar de `/_partitionKey` eigenschap van de systeem partitie sleutel niet automatisch wordt toegevoegd aan de bestaande documenten. U moet de bestaande documenten opnieuw partitioneren door de documenten te lezen die zijn gemaakt zonder partitie sleutel en ze terug te schrijven naar `_partitionKey` de eigenschap in de documenten. 
 
-## <a name="access-documents-that-dont-have-a-partition-key"></a>Toegang tot documenten waarvoor geen een partitiesleutel
+## <a name="access-documents-that-dont-have-a-partition-key"></a>Toegang tot documenten die geen partitie sleutel hebben
 
-Toepassingen hebben toegang tot de bestaande documenten waarvoor een partitiesleutel met behulp van de specifieke eigenschap, genaamd 'CosmosContainerSettings.NonePartitionKeyValue' niet, dit is de waarde van de documenten niet gemigreerd. U kunt deze eigenschap gebruiken in alle CRUD en query bewerkingen. Het volgende voorbeeld wordt een voorbeeld één Document lezen uit de NonePartitionKey. 
+Toepassingen hebben toegang tot de bestaande documenten die geen partitie sleutel hebben met de speciale systeem eigenschap ' CosmosContainerSettings. NonePartitionKeyValue '. Dit is de waarde van de niet-gemigreerde documenten. U kunt deze eigenschap in alle ruwe en query bewerkingen gebruiken. In het volgende voor beeld ziet u een voor beeld van het lezen van één document uit de NonePartitionKey. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
@@ -110,17 +110,17 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-Zie voor het complete voorbeeld over het partitioneren van de documenten, het [.Net-voorbeelden](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) GitHub-opslagplaats. 
+Zie de GitHub-opslag plaats voor .net-voor [beelden](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples) voor het volledige voor beeld voor het opnieuw partitioneren van de documenten. 
 
-## <a name="compatibility-with-sdks"></a>Compatibiliteit met SDK 's
+## <a name="compatibility-with-sdks"></a>Compatibiliteit met Sdk's
 
-Oudere versie van Azure Cosmos DB SDK's, zoals V2.x.x en V1.x.x geen ondersteuning voor de sleuteleigenschap van het systeem gedefinieerde partitie. Dus als u de containerdefinitie van de van een oudere SDK hebt gelezen, bevat de definitie van een partitie en deze containers gedragen exact hetzelfde als voorheen. Toepassingen die zijn gebouwd met de oudere versie van de SDK's blijven werken met niet-gepartitioneerde is zonder deze te wijzigen. 
+Oudere versie van Azure Cosmos DB Sdk's zoals v2. x. x en v1. x. x biedt geen ondersteuning voor de door het systeem gedefinieerde partitie sleutel eigenschap. Als u de container definitie van een oudere SDK leest, bevat deze dus geen partitie sleutel definitie en deze containers gedragen zich precies hetzelfde als voorheen. Toepassingen die zijn gebouwd met de oudere versie van Sdk's, blijven werken met niet-gepartitioneerde zonder wijzigingen. 
 
-Als een gemigreerde container wordt gebruikt door de meest recente/V3-versie van de SDK en u bent begonnen met het invullen van het systeem gedefinieerde partitiesleutel binnen de nieuwe documenten, u geen toegang tot (lezen, bijwerken, verwijderen, query's) documenten die van de oudere SDK's meer.
+Als een gemigreerde container wordt gebruikt door de nieuwste/V3-versie van de SDK en u begint met het vullen van de door het systeem gedefinieerde partitie sleutel in de nieuwe documenten, hebt u geen toegang tot (lezen, bijwerken, verwijderen en opvragen van) documenten van de oudere Sdk's meer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Partitionering in Azure Cosmos DB](partitioning-overview.md)
 * [Aanvraageenheden in Azure Cosmos DB](request-units.md)
-* [Doorvoer voor containers en databases inrichten](set-throughput.md)
-* [Werken met Azure Cosmos-account](account-overview.md)
+* [Door Voer voor het inrichten van containers en data bases](set-throughput.md)
+* [Werken met een Azure Cosmos-account](account-overview.md)

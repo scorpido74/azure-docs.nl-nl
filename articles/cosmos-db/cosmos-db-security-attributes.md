@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f1b578ff70e8a2795ba886e6d0c75eff521f77c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442555"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615532"
 ---
 # <a name="security-attributes-for-azure-cosmos-db"></a>Beveiligings kenmerken voor Azure Cosmos DB
 
@@ -26,7 +26,7 @@ In dit artikel worden de beveiligings kenmerken gedocumenteerd die zijn ingebouw
 
 | Beveiligings kenmerk | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling bij rest (zoals versleuteling aan server zijde, versleuteling aan server zijde met door de klant beheerde sleutels en andere versleutelings functies) | Ja | Alle Cosmos DB data bases en back-ups worden standaard versleuteld. Zie [gegevens versleuteling in azure Cosmos DB](database-encryption-at-rest.md). Versleuteling aan de server zijde met door de klant beheerde sleutels wordt niet ondersteund. |
+| Versleuteling bij rest (zoals versleuteling aan server zijde, versleuteling aan server zijde met door de klant beheerde sleutels en andere versleutelings functies) | Ja | Alle Cosmos-data bases en back-ups worden standaard versleuteld. Zie [gegevens versleuteling in azure Cosmos DB](database-encryption-at-rest.md). Versleuteling aan de server zijde met door de klant beheerde sleutels wordt niet ondersteund. |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Alle Azure Cosmos DB gegevens worden tijdens de overdracht versleuteld. |
 | Verwerking van versleutelings sleutels (CMK, BYOK, enz.)| Nee |  |
 | Versleuteling op kolom niveau (Azure Data Services)| Ja | Alleen in de Table API Premium. Niet alle Api's ondersteunen deze functie. Zie [Inleiding tot Azure Cosmos DB: Table-API](table-introduction.md). |

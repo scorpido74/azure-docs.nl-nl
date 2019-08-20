@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: d93f8c61511dd1d3fc2bfd253fa7a21857f67ed6
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563365"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611966"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Kies een prijs categorie voor Azure Search
 
@@ -62,7 +62,7 @@ Een oplossing op basis van Azure Search kan op de volgende manieren kosten in re
 
 In tegens telling tot virtuele machines of andere bronnen die kunnen worden ' onderbroken ' om te voor komen dat er kosten worden bespaard, is een Azure Search-service altijd beschikbaar op hardware die is toegewezen aan exclusief gebruik. Als zodanig is het maken van een service een factureer bare gebeurtenis die begint wanneer u de service maakt en eindigt wanneer u de service verwijdert. 
 
-De minimale kosten zijn de eerste Zoek eenheid (één replica x één partitie). Dit minimum is vastgesteld voor de levens duur van de service, omdat de service niet kan worden uitgevoerd op een waarde die lager is dan deze configuratie. Naast het minimum kunt u replica's en partities onafhankelijk van elkaar toevoegen. Incrementele toename van capaciteit via replica's en partities verhoogt uw factuur op basis van de volgende formule: [(replica's x partities x-tarief)](#search-units), waarbij het tarief dat u in rekening brengt, afhankelijk is van de prijs categorie die u selecteert.
+De minimale kosten zijn de eerste Zoek eenheid (één replica x één partitie) met het factureer bare percentage. Dit minimum is vastgesteld voor de levens duur van de service, omdat de service niet kan worden uitgevoerd op een waarde die lager is dan deze configuratie. Naast het minimum kunt u replica's en partities onafhankelijk van elkaar toevoegen. Incrementele toename van capaciteit via replica's en partities verhoogt uw factuur op basis van de volgende formule: [(replica's x partities x-tarief)](#search-units), waarbij het tarief dat u in rekening brengt, afhankelijk is van de prijs categorie die u selecteert.
 
 Wanneer u de kosten van een zoek oplossing wilt schatten, houd er dan rekening mee dat de prijzen en capaciteit niet lineair zijn. (De capaciteit verdubbelt meer dan de kosten.) Zie [replica's en partities toewijzen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)voor een voor beeld van de werking van de formule.
 
@@ -157,7 +157,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 ### <a name="evaluating-capacity"></a>De capaciteit evalueren
 
-De capaciteit en de kosten voor het uitvoeren van de service zijn rechtstreeks gerelateerd. De lagen leggen limieten op twee niveaus vast: opslag en bronnen. U moet nadenken over beide omdat de limiet die u eerst bereikt de daad werkelijke limiet is.
+De capaciteit en de kosten voor het uitvoeren van de service hand matig. De lagen leggen limieten op twee niveaus vast: opslag en bronnen. U moet nadenken over beide omdat de limiet die u eerst bereikt de daad werkelijke limiet is.
 
 Bedrijfs vereisten bepalen doorgaans het aantal indexen dat u nodig hebt. U hebt bijvoorbeeld een algemene index nodig voor een grote opslag ruimte van documenten. Of u hebt meerdere indexen nodig op basis van de regio-, toepassings-of Business-niche.
 
@@ -167,25 +167,25 @@ Als u de grootte van een index wilt bepalen, moet u er [een maken](search-create
 > Hoewel de toekomstige behoeften voor indices en opslag in de toekomst kunnen worden geschat, is het een goed idee om te doen. Als de capaciteit van een laag te laag wordt, moet u een nieuwe service inrichten op een hogere laag en vervolgens [uw indexen opnieuw laden](search-howto-reindex.md). Er is geen in-place upgrade van een service van de ene naar de andere SKU.
 >
 
-### <a name="step-1-develop-rough-estimates-by-using-the-free-tier"></a>Stap 1: Ruwe schattingen ontwikkelen met behulp van de gratis laag
+### <a name="estimate-with-the-free-tier"></a>Een schatting maken van de gratis laag
 
-Een benadering voor het schatten van capaciteit is om te beginnen met de laag gratis. Houd er rekening mee dat de gratis service Maxi maal drie indexen, 50 MB aan opslag ruimte en twee minuten aan indexerings tijd biedt. Het kan lastig zijn om een schatting te maken van de verwachte index grootte met deze beperkingen. Hier volgt een aanpak die u kunt uitvoeren:
+Een benadering voor het schatten van capaciteit is om te beginnen met de laag gratis. Houd er rekening mee dat de gratis service Maxi maal drie indexen, 50 MB aan opslag ruimte en twee minuten aan indexerings tijd biedt. Het kan lastig zijn om een schatting te maken van de verwachte index grootte met deze beperkingen, maar dit zijn de stappen:
 
 + [Maak een gratis service](search-create-service-portal.md).
-+ Bereid een kleine, representatieve gegevensset voor (bijvoorbeeld 5.000 documenten en een sample grootte van 10 procent).
-+ [Bouw een initiële index](search-create-index-portal.md) op en noteer de grootte ervan in de portal (bijvoorbeeld 30 MB).
++ Bereid een kleine, representatieve gegevensset voor.
++ [Bouw een initiële index in de portal](search-create-index-portal.md) en noteer de grootte ervan. Functies en kenmerken hebben invloed op de opslag. Als u bijvoorbeeld Voorst Ellen toevoegt (typeahead), worden de opslag vereisten verhoogd. Met dezelfde gegevensset kunt u proberen meerdere versies van een index te maken met verschillende kenmerken voor elk veld om te zien hoe opslag vereisten variëren. Zie [' implicaties voor opslag ' in Create a Basic index](search-what-is-an-index.md#storage-implications)(Engelstalig) voor meer informatie.
 
-Als het voor beeld representatief is en 10 procent van de hele gegevens bron, wordt een index van 30 MB van ongeveer 300 MB als alle documenten worden geïndexeerd. In strijd met dit voorlopige nummer kunt u de hoeveelheid die u wilt budget teren voor twee indexen (ontwikkeling en productie). Dit geeft u een totaal van 600 MB aan opslag vereisten. Aan deze eis kan eenvoudig worden voldaan door de basis-laag, zodat u daar zou beginnen.
+Met een ruwe schatting kunt u de hoeveelheid die u wilt budget teren voor twee indexen (ontwikkeling en productie) en vervolgens uw laag vervolgens kiezen.
 
-### <a name="step-2-develop-refined-estimates-by-using-a-billable-tier"></a>Stap 2: Verfijnde schattingen ontwikkelen met behulp van een factureer bare laag
+### <a name="estimate-with-a-billable-tier"></a>Ramen met een factureer bare laag
 
-Sommige klanten geven de voor keur aan om te beginnen met gespecialiseerde resources die grotere sampling-en verwerkings tijden kunnen bieden en vervolgens realistische schattingen van de index hoeveelheid, omvang en query volumes ontwikkelen tijdens de ontwikkeling. In eerste instantie wordt een service ingericht op basis van een schatting met de beste schatting. Als het ontwikkelings project is gerijpt, weten teams doorgaans of de bestaande service zich boven of onder capaciteit bevindt voor geprojecteerde productie workloads.
+Toegewezen resources kunnen grotere sampling-en verwerkings tijden bieden voor realistischere schattingen van de index hoeveelheid, grootte en query volumes tijdens de ontwikkeling. Sommige klanten springen direct in met een factureer bare laag en evalueren vervolgens opnieuw als het ontwikkelings project verouderd is.
 
 1. [Bekijk de service limieten per laag](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) om te bepalen of lagere lagen het aantal indexen kunnen ondersteunen dat u nodig hebt. In de lagen Basic, S1 en S2 zijn de index limieten respectievelijk 15, 50 en 200. De laag geoptimaliseerd voor opslag heeft een limiet van 10 indexen, omdat deze is ontworpen voor het ondersteunen van een laag aantal zeer grote indexen.
 
 1. [Een service op een factureer bare laag maken](search-create-service-portal.md):
 
-    + Begin met weinig, Basic of S1, als u aan het begin van uw leer curve bent.
+    + Start laag, op basis of S1, als u niet zeker weet wat de geprojecteerde belasting is.
     + Start hoog, op S2 of zelfs S3, als u weet dat u grote hoeveel heden indexen en query's kunt laden.
     + Begin met opslag die is geoptimaliseerd, bij L1 of L2, als u een grote hoeveelheid gegevens wilt indexeren en de belasting van query's relatief laag is, net als bij een interne zakelijke toepassing.
 

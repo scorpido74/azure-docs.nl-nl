@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 08/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: e820ed25cae23a2dad37c807eb3e188161eaecbf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014382"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617700"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Een Azure Data Lake Storage Gen2-opslagaccount maken
 
@@ -28,7 +28,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 |           | Vereiste |
 |-----------|--------------|
 |Portal     | Geen         |
-|PowerShell | Voor deze snelstart is Az.Storage-versie **0.7** of later van de PowerShell-module vereist. Voer de opdracht `Get-Module -ListAvailable Az.Storage` uit om uw huidige versie te vinden. Als er geen resultaten worden weergegeven wanneer u deze opdracht uitvoert, of als een andere versie dan **0.7** wordt weergegeven, dan moet u een upgrade van uw powershell-module uitvoeren. Zie de sectie [Upgrade uitvoeren van uw powershell-module](#upgrade-your-powershell-module) van deze handleiding.
+|PowerShell | Voor deze snelstart is Az.Storage-versie **0.7** of later van de PowerShell-module vereist. Voer de opdracht `Get-Module -ListAvailable Az.Storage` uit om uw huidige versie te vinden. Als u na het uitvoeren van deze opdracht geen resultaten ziet of als er een versie lager dan **0,7** wordt weer gegeven, moet u de Power shell-module bijwerken. Zie de sectie [Upgrade uitvoeren van uw powershell-module](#upgrade-your-powershell-module) van deze handleiding.
 |CLI        | U kunt zich aanmelden bij Azure en Azure CLI-opdrachten uitvoeren op een van de volgende twee manieren: <ul><li>U kunt CLI-opdrachten uitvoeren vanuit Azure Portal, in Azure Cloud Shell </li><li>U kunt de CLI installeren en CLI-opdrachten lokaal uitvoeren</li></ul>|
 
 Wanneer u werkt met de opdrachtregel, hebt u de mogelijkheid om de Azure Cloud-shell of de CLI lokaal te installeren.

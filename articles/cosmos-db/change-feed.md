@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467947"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615672"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Feed wijzigen in Azure Cosmos DB-overzicht
 
-Ondersteuning wijzigingenfeed in Azure Cosmos DB werkt door te luisteren naar een Azure Cosmos DB-container op basis van wijzigingen. Het voert vervolgens de gesorteerde lijst met documenten die zijn gewijzigd in de volgorde waarin ze zijn gewijzigd. De wijzigingen zijn persistent, kunnen asynchroon en incrementeel worden verwerkt, en de uitvoer kan naar een of meer consumenten worden gedistribueerd voor parallelle verwerking. 
+De ondersteuning voor feeds in Azure Cosmos DB kan worden gewijzigd door naar een Azure Cosmos-container te Luis teren. Het voert vervolgens de gesorteerde lijst met documenten die zijn gewijzigd in de volgorde waarin ze zijn gewijzigd. De wijzigingen zijn persistent, kunnen asynchroon en incrementeel worden verwerkt, en de uitvoer kan naar een of meer consumenten worden gedistribueerd voor parallelle verwerking. 
 
 Azure Cosmos DB is zeer geschikt voor IoT, games, detailhandel, en operationele logboekregistratie toepassingen. Een algemene ontwerppatroon in deze toepassingen is het gebruik van wijzigingen in de gegevens kunt u aanvullende acties activeren. Voorbeelden van aanvullende acties zijn:
 
@@ -56,7 +56,7 @@ In een Azure Cosmos-account van meerdere regio's als een regio voor schrijven fa
 
 Als een TTL (Time to Live)-eigenschap is ingesteld op een item op-1, wordt altijd wijzigingenfeed behouden. Als de gegevens worden niet verwijderd, blijft deze in de feed wijzigen.  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>Feed wijzigen en _etag, _lsn of _ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Feed wijzigen en _etag, _lsn of _ts
 
 De indeling _etag is intern en nemen niet afhankelijkheid, omdat deze op elk gewenst moment kunt wijzigen. _ts is een wijziging of een tijdstempel van maken. U kunt _ts gebruiken voor chronologische vergelijking. _lsn is een batch-ID die alleen is toegevoegd voor wijzigings invoer. het vertegenwoordigt de trans actie-ID. Aantal items mogelijk dezelfde _lsn. ETag op FeedResponse wijkt af van de _etag u op het item ziet. _etag is een interne id en wordt gebruikt voor gelijktijdigheid besturingselement vertelt over de versie van het item, terwijl ETag wordt gebruikt voor het sequentiëren van de feed.
 

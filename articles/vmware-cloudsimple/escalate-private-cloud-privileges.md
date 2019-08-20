@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e53d0d4f8f19a3cf81f1adb6c62b2797a50d146
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812223"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617619"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Persoonlijke Cloud vCenter-bevoegdheden escaleren vanuit de CloudSimple-Portal 
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Persoonlijke Cloud vCenter-bevoegdheden escaleren vanuit de CloudSimple-Portal
 
 Voor beheerders toegang tot uw persoonlijke Cloud-vCenter kunt u uw CloudSimple-bevoegdheden tijdelijk escaleren.  Met verhoogde bevoegdheden kunt u VMware-oplossingen installeren, identiteits bronnen toevoegen en gebruikers beheren.
 
@@ -38,7 +38,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
     ![VSphere-bevoegdheid wijzigen](media/escalate-private-cloud-privilege.png)
 
-4. Selecteer het gebruikers type vSphere.  Alleen **CloudOwner@cloudsimple.local** lokale gebruikers kunnen worden geëscaleerd.
+4. Selecteer het gebruikers type vSphere.  Alleen `CloudOwner@cloudsimple.local` lokale gebruikers kunnen worden geëscaleerd.
 
 5. Selecteer de tijds interval voor escaleren in de vervolg keuzelijst. Kies de kortste periode waarmee u de taak kunt volt ooien.
 

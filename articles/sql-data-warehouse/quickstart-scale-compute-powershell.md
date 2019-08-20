@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 3c3be507fd544ec86790f820830c2275e7703564
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 193aec8de2a6ee34da666a013dcb0d49d85c08b0
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641079"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574855"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Quickstart: De schaal van rekenkracht vergroten in Azure SQL Data Warehouse in PowerShell
 
@@ -27,7 +27,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In deze snelstart wordt ervan uitgegaan dat u al een SQL-datawarehouse hebt waarvan u de schaal kunt aanpassen. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
+In deze Quick Start wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt dat u kunt schalen. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
@@ -123,4 +123,4 @@ $database | Select-Object DatabaseName,Status
 U hebt nu geleerd hoe u de rekenkracht voor uw datawarehouse wijzigt. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
 
 > [!div class="nextstepaction"]
->[Gegevens laden in een SQL-datawarehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)

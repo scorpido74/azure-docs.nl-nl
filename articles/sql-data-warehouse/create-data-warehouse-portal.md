@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: 2864acca443e3135ea0023070da95accf97fe2e9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479435"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575195"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: Een Azure SQL-datawarehouse maken en hier een query voor uitvoeren in Azure Portal
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: Een Azure SQL Data Warehouse in het Azure Portal maken en er query's op uitvoeren
 
-U kunt snel een Azure SQL-Data Warehouse maken en er query's op uitvoeren met behulp van de Azure Portal.
+U kunt snel een Azure SQL Data Warehouse maken en er query's op uitvoeren met behulp van de Azure Portal.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -37,9 +37,9 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Een datawarehouse maken
 
-Er wordt een Azure SQL-databasewarehouse gemaakt met een gedefinieerde set [compute-resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-logical-servers.md). 
+Een Azure SQL Data Warehouse wordt gemaakt met een gedefinieerde set [reken resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-logical-servers.md). 
 
-Volg de stappen om een SQL-datawarehouse te maken die de voorbeelddatabase AdventureWorksDW bevat. 
+Volg deze stappen om een SQL Data Warehouse te maken die de voorbeeld gegevens van AdventureWorksDW bevat. 
 
 1. Klik in de linkerbovenhoek van Azure Portal op **Een resource maken**.
 
@@ -207,4 +207,4 @@ Volg deze stappen om resources op te schonen die u niet meer nodig hebt.
 U hebt nu een Data Warehouse gemaakt, een firewall regel gemaakt die is verbonden met uw data warehouse en enkele query's uitgevoerd. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
 
 > [!div class="nextstepaction"]
-> [Gegevens laden in een SQL-datawarehouse](load-data-from-azure-blob-storage-using-polybase.md)
+> [Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)

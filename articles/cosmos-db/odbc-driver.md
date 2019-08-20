@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 352cd23f00e911b895e52aacaced1bfba38f7f84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b859d01a39f906f518a82d468c3c9267545b9a07
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257255"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616903"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Verbinding maken met Azure Cosmos DB met behulp van analysehulpprogramma's voor BI met het ODBC-stuurprogramma
 
@@ -23,13 +23,13 @@ Het ODBC-stuurprogramma van Azure Cosmos DB is compatibel met ODBC 3.8 en onders
 > Verbinding maken met Azure Cosmos DB met het ODBC-stuurprogramma wordt momenteel ondersteund voor Azure Cosmos DB SQL API-accounts.
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>Waarom moet ik mijn gegevens normaliseren?
-Azure Cosmos DB is een database zonder schema, waarmee u snel ontwikkelen van toepassingen en de mogelijkheid om te herhalen zonder wordt beperkt tot een strikt schema gegevensmodellen over te brengen. Een individuele Azure Cosmos DB-database kan de JSON-documenten van verschillende structuren bevatten. Dit is ideaal voor het snel ontwikkelen van toepassingen, maar als u wilt analyseren en rapporten te maken van uw gegevens met behulp van gegevensanalyse en BI-hulpprogramma's, de gegevens vaak moeten worden "afgevlakt" en voldoen aan een specifieke schema.
+Azure Cosmos DB is een database zonder schema, waarmee u snel ontwikkelen van toepassingen en de mogelijkheid om te herhalen zonder wordt beperkt tot een strikt schema gegevensmodellen over te brengen. Eén Azure Cosmos-data base kan JSON-documenten van verschillende structuren bevatten. Dit is ideaal voor het snel ontwikkelen van toepassingen, maar als u wilt analyseren en rapporten te maken van uw gegevens met behulp van gegevensanalyse en BI-hulpprogramma's, de gegevens vaak moeten worden "afgevlakt" en voldoen aan een specifieke schema.
 
-Dit is waar het ODBC-stuurprogramma is beschikbaar in. U kunt nu met behulp van het ODBC-stuurprogramma opnieuw normaliseren gegevens in Azure Cosmos DB in tabellen en weergaven die geschikt zijn voor uw gegevensanalyse en rapportage u nodig hebt. De renormalized schema's hebben geen invloed op de onderliggende gegevens en ontwikkelaars om te voldoen aan deze niet kunnen beperken. In plaats daarvan kunnen deze u gebruikmaken van ODBC-hulpprogramma's voor toegang tot de gegevens. Dus wordt nu uw Azure Cosmos DB-database niet alleen een favoriet voor uw ontwikkelteam, maar uw data-analisten wordt vinden het geweldig te.
+Dit is waar het ODBC-stuurprogramma is beschikbaar in. U kunt nu met behulp van het ODBC-stuurprogramma opnieuw normaliseren gegevens in Azure Cosmos DB in tabellen en weergaven die geschikt zijn voor uw gegevensanalyse en rapportage u nodig hebt. De renormalized schema's hebben geen invloed op de onderliggende gegevens en ontwikkelaars om te voldoen aan deze niet kunnen beperken. In plaats daarvan kunnen deze u gebruikmaken van ODBC-hulpprogramma's voor toegang tot de gegevens. Nu is uw Azure Cosmos-data base niet alleen een favoriet voor uw ontwikkel team, maar uw gegevens analisten zullen het ook leuker maken.
 
 Aan de slag met het ODBC-stuurprogramma.
 
-## <a id="install"></a>Stap 1: Het Azure Cosmos DB ODBC-stuurprogramma installeren
+## <a id="install"></a>Stap 1: Het ODBC-stuur programma voor Azure Cosmos DB installeren
 
 1. Download de stuurprogramma's voor uw omgeving:
 
@@ -48,7 +48,7 @@ Aan de slag met het ODBC-stuurprogramma.
 
     ![Azure Cosmos DB ODBC-gegevensbronbeheer](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>Stap 2: Verbinding maken met uw Azure Cosmos DB-database
+## <a id="connect"></a>Stap 2: Verbinding maken met uw Azure Cosmos-data base
 
 1. Na [het Azure Cosmos DB ODBC-stuurprogramma installeren](#install), in de **ODBC-gegevensbronbeheer** venster, klikt u op **toevoegen**. U kunt een gebruiker of systeem-DSN maken. In dit voorbeeld maakt u een gebruikers-DSN.
 
@@ -57,32 +57,32 @@ Aan de slag met het ODBC-stuurprogramma.
 1. In de **Setup van Azure Cosmos DB ODBC-stuurprogramma SDN** venster, vult u in de volgende informatie: 
 
     ![Het venster Azure Cosmos DB ODBC-stuurprogramma DSN-instellingen](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Naam van gegevensbron**: Uw eigen beschrijvende naam voor de ODBC-DSN. Deze naam uniek is voor uw Azure Cosmos DB-account is, dus op de juiste wijze naam als u meerdere accounts hebt.
-    - **Beschrijving**: Een korte beschrijving van de gegevensbron.
-    - **Host**: URI voor uw Azure Cosmos DB-account. U kunt dit ophalen via de pagina sleutels voor Azure Cosmos DB in Azure portal, zoals wordt weergegeven in de volgende schermafbeelding. 
-    - **Toegang tot sleutel**: De primaire of secundaire alleen-lezen of alleen-lezen-sleutel op de pagina Azure Cosmos DB sleutels in Azure portal zoals weergegeven in de volgende schermafbeelding. Het is raadzaam om dat de alleen-lezen-sleutel te gebruiken als de DSN-naam wordt gebruikt voor de alleen-lezen gegevens verwerken en rapportage.
+    - **Naam van gegevens bron**: Uw eigen beschrijvende naam voor de ODBC-DSN. Deze naam uniek is voor uw Azure Cosmos DB-account is, dus op de juiste wijze naam als u meerdere accounts hebt.
+    - **Beschrijving**: Een korte beschrijving van de gegevens bron.
+    - **Host**: De URI voor uw Azure Cosmos DB-account. U kunt dit ophalen via de pagina sleutels voor Azure Cosmos DB in Azure portal, zoals wordt weergegeven in de volgende schermafbeelding. 
+    - **Toegangs sleutel**: De primaire of secundaire alleen-lezen of alleen-lezen sleutel van de pagina Azure Cosmos DB sleutels in de Azure Portal, zoals weer gegeven in de volgende scherm afbeelding. Het is raadzaam om dat de alleen-lezen-sleutel te gebruiken als de DSN-naam wordt gebruikt voor de alleen-lezen gegevens verwerken en rapportage.
     ![Op de pagina Azure Cosmos DB-sleutels](./media/odbc-driver/odbc-driver-keys.png)
-    - **De toegangssleutel voor versleutelen**: Selecteer de beste keuze op basis van de gebruikers van deze machine. 
+    - **Toegangs sleutel versleutelen voor**: Selecteer de beste keuze op basis van de gebruikers van deze computer. 
     
 1. Klik op de **Test** knop om te controleren of u kunt verbinding maken met uw Azure Cosmos DB-account. 
 
 1. Klik op **geavanceerde opties** en stel de volgende waarden:
-    - **Query uitvoeren op consistentie**: Selecteer de [consistentieniveau](consistency-levels.md) voor uw activiteiten. De standaardwaarde is de sessie.
-    - **Aantal nieuwe pogingen**: Voer het aantal keren dat een bewerking opnieuw als de eerste aanvraag niet wordt voltooid vanwege de frequentielimiet service.
-    - **Schemabestand**: Hebt u een aantal opties hier.
+    - **Consistentie van query's**: Selecteer het [consistentie niveau](consistency-levels.md) voor uw bewerkingen. De standaardwaarde is de sessie.
+    - **Aantal nieuwe pogingen**: Voer het aantal keren in dat een bewerking opnieuw moet worden uitgevoerd als de eerste aanvraag niet is voltooid wegens een service limiet.
+    - **Schema bestand**: U hebt hier een aantal opties.
         - Standaard, waardoor deze vermelding is (lege), scant het stuurprogramma voor de eerste pagina van de gegevens voor alle verzamelingen om te bepalen van het schema van elke verzameling. Dit staat bekend als de toewijzing van de verzameling. Zonder een schemabestand dat is gedefinieerd, wordt het stuurprogramma is voor het uitvoeren van de scan voor elke sessie stuurprogramma en kan leiden tot een hogere opstarttijd van een toepassing met behulp van de DSN. Het is raadzaam dat u altijd een schemabestand voor een DSN koppelen.
-        - Als u al een schemabestand (mogelijk één die u hebt gemaakt met behulp van de Schema-Editor) hebt, kunt u klikken op **Bladeren**, gaat u naar het bestand, klikt u op **opslaan**, en klik vervolgens op **OK**.
-        - Als u een nieuw schema maken wilt, klikt u op **OK**, en klik vervolgens op **Schema-Editor** in het hoofdvenster. Vervolgens gaat u verder met de informatie van de Schema-Editor. Nadat het nieuwe schemabestand is gemaakt, moet u gaat u terug naar de **geavanceerde opties** venster om op te nemen van de zojuist gemaakte schemabestand.
+        - Als u al een schema bestand hebt (mogelijk een dat u hebt gemaakt met de schema-editor), klikt u op **Bladeren**, navigeert u naar het bestand, klikt u op **Opslaan**en klikt u vervolgens op **OK**.
+        - Als u een nieuw schema maken wilt, klikt u op **OK**, en klik vervolgens op **Schema-Editor** in het hoofdvenster. Ga vervolgens verder met de informatie over de schema-editor. Nadat het nieuwe schemabestand is gemaakt, moet u gaat u terug naar de **geavanceerde opties** venster om op te nemen van de zojuist gemaakte schemabestand.
 
 1. Zodra u op Voltooien en sluit de **Setup van Azure Cosmos DB ODBC-stuurprogramma DSN** venster, de nieuwe gebruiker DSN-naam wordt toegevoegd aan de gebruikers-DSN-tabblad.
 
     ![Nieuwe Azure Cosmos DB ODBC DSN op het tabblad gebruikers-DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#collection-mapping"></a>Stap 3: De schemadefinitie van een met behulp van de toewijzingsmethode verzameling maken
+## <a id="#collection-mapping"></a>Stap 3: Een schema definitie maken met de methode verzamelings toewijzing
 
 Er zijn twee soorten steekproeven methoden die u kunt gebruiken: **verzameling toewijzing** of **tabel scheidingstekens**. Beide methoden steekproeven kan gebruikmaken van de sessie van een steekproef nemen, maar elke verzameling kunt alleen een specifieke methode gebruiken. De onderstaande stappen Maak een schema voor de gegevens in een of meer verzamelingen met behulp van de methode voor gebruikersstatusverzameling toewijzing. Deze methode worden de gegevens op de pagina van een verzameling om te bepalen de structuur van de gegevens opgehaald. Een verzameling naar een tabel aan de ODBC-transponeren Deze methode is efficiënt en snel wanneer de gegevens in een verzameling homogene. Als een verzameling heterogene soorten gegevens bevat, raden wij aan u de [tabel scheidingstekens toewijzingsmethode](#table-mapping) als het biedt een krachtiger methode om te bepalen van de gegevensstructuren in de verzameling. 
 
-1. Na het voltooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos DB-database](#connect), klikt u op **Schema-Editor** in de **Setup van Azure Cosmos DB ODBC-stuurprogramma DSN** venster.
+1. Klik na het volt ooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos-data base](#connect)op **schema-editor** in het venster **Azure Cosmos db odbc-stuur programma-DSN instellen** .
 
     ![Knop voor schema-editor in het venster Azure Cosmos DB ODBC-stuurprogramma DSN instellingen](./media/odbc-driver/odbc-driver-schema-editor.png)
 1. In de **Schema-Editor** venster, klikt u op **nieuw**.
@@ -97,15 +97,15 @@ Er zijn twee soorten steekproeven methoden die u kunt gebruiken: **verzameling t
 
 1. Wanneer u klaar bent met het definiëren van het schema, klikt u op **bestand** | **opslaan**, Ga naar de map op te slaan van het schema en klik vervolgens op **opslaan**.
 
-1. Voor het gebruik van dit schema met een DSN, opent u de **Azure Cosmos DB ODBC-stuurprogramma voor instellen van de DSN-venster** (via de ODBC-gegevensbronbeheer), klikt u op **geavanceerde opties**, en klik vervolgens in de **schemabestand** vak, gaat u naar de opgeslagen schema. Opslaan van een schemabestand naar een bestaande DSN Hiermee wijzigt u de DSN-verbinding met bereik tot de gegevens en de definitie van schema-structuur.
+1. Als u dit schema met een DSN wilt gebruiken, opent u het **venster Azure Cosmos DB ODBC driver DSN Setup** (via de ODBC-gegevens bron beheerder), klikt u op **Geavanceerde opties**en navigeert u in het vak **schema bestand** naar het opgeslagen schema. Opslaan van een schemabestand naar een bestaande DSN Hiermee wijzigt u de DSN-verbinding met bereik tot de gegevens en de definitie van schema-structuur.
 
-## <a id="table-mapping"></a>Stap 4: De schemadefinitie van een met behulp van de tabel-scheidingstekens maken toewijzingsmethode
+## <a id="table-mapping"></a>Stap 4: Een schema definitie maken met behulp van de toewijzings methode voor tabel scheidingen
 
 Er zijn twee soorten steekproeven methoden die u kunt gebruiken: **verzameling toewijzing** of **tabel scheidingstekens**. Beide methoden steekproeven kan gebruikmaken van de sessie van een steekproef nemen, maar elke verzameling kunt alleen een specifieke methode gebruiken. 
 
 De volgende stappen maakt u een schema voor de gegevens in een of meer verzamelingen met behulp van de **tabel scheidingstekens** toewijzingsmethode. U wordt aangeraden dat u deze methode gebruiken wanneer uw verzamelingen heterogene van het type van de gegevens bevatten. U kunt deze methode om het bereik van de meting naar een set met kenmerken en de bijbehorende waarden te gebruiken. Als een document bevat een eigenschap 'Type', kunt u bijvoorbeeld de steekproeven om de waarden van deze eigenschap te beperken. Het eindresultaat van de steekproeven is een set met tabellen voor elk van de waarden voor het Type dat u hebt opgegeven. Typ bijvoorbeeld = auto produceert een auto-tabel bij het Type = vlak geeft als resultaat een tabel van de gegevenslaag.
 
-1. Na het voltooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos DB-database](#connect), klikt u op **Schema-Editor** in het venster Azure Cosmos DB ODBC-stuurprogramma DSN instellingen.
+1. Klik na het volt ooien van de stappen 1-4 in [verbinding maken met uw Azure Cosmos-data base](#connect)op **schema-editor** in het venster Azure Cosmos DB ODBC-stuur programma-DSN instellen.
 
 1. In de **Schema-Editor** venster, klikt u op **nieuw**.
     De **Schema genereren** venster geeft alle verzamelingen in het Azure Cosmos DB-account. 
@@ -199,7 +199,7 @@ Klik in de **weergavedefinities** venster de volgende handelingen uit:
 
 Als u wilt, kunt u een groot aantal weergaven maken. Wanneer u klaar bent voor het definiëren van de weergaven die u kunt vervolgens steekproef de gegevens. 
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Stap 5: Uw gegevens weergeven in de BI-hulpprogramma's zoals Power BI Desktop
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Stap 5: Bekijk uw gegevens in de BI-hulpprogram ma's, zoals Power BI Desktop
 
 U kunt uw nieuwe DSN gebruiken om te verbinden met Azure Cosmos DB met een ODBC-hulpprogramma's: deze stap gewoon laat zien hoe u verbinding maakt met Power BI Desktop en maak een Power BI-visualisatie.
 

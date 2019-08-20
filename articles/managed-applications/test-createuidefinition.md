@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 91dd661cf4900512390079751f400f6a9888c452
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 54eb2df06df56c33e1a3cd74e7a4a93c07aab682
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845918"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575666"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Uw portal-interface voor Azure Managed Applications testen
 
@@ -91,7 +91,7 @@ Gebruik voor Azure CLI:
 
 Het script opent een nieuw tabblad in uw browser. De portal wordt weer gegeven met uw interface voor het maken van de beheerde toepassing.
 
-Geef waarden op voor de velden. Wanneer u klaar bent, ziet u de waarden die worden door gegeven aan de sjabloon.
+Geef waarden op voor de velden. Wanneer u klaar bent, ziet u de waarden die worden door gegeven aan de sjabloon die u kunt vinden in de console ontwikkel hulpprogramma's van uw browser.
 
 ![Waarden weergeven](./media/test-createuidefinition/show-json.png)
 

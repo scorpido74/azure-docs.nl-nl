@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/22/2018
 ms.author: sngun
-ms.openlocfilehash: 55bdcf9847f2194f269b92aed830a66c79c4d337
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 269b2bd1c1457b9e70ea4ada758aacb2f2ae96f3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985671"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614635"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-zelfstudie: Een SQL-API Java-consoletoepassing maken
 
@@ -84,7 +84,7 @@ Ga in Azure Portal naar uw Azure Cosmos DB-account en klik op **Sleutels**. Kopi
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Schermafbeelding van de Azure-portal gebruikt voor de NoSQL-zelfstudie voor het maken van een Java-consoletoepassing. Schermopname van Azure Portal waarin een Azure Cosmos DB-account wordt weergegeven met de hub ACTIEF gemarkeerd. Verder is de knop SLEUTELS gemarkeerd op de Azure Cosmos DB-accountblade en zijn de waarden URI, PRIMAIRE SLEUTEL en SECUNDAIRE SLEUTEL gemarkeerd op de blade Sleutels][keys]
+![Scherm afbeelding van de Azure Portal die door de NoSQL-zelf studie wordt gebruikt om een Java-Console toepassing te maken. Schermopname van Azure Portal waarin een Azure Cosmos DB-account wordt weergegeven met de hub ACTIEF gemarkeerd. Verder is de knop SLEUTELS gemarkeerd op de Azure Cosmos DB-accountblade en zijn de waarden URI, PRIMAIRE SLEUTEL en SECUNDAIRE SLEUTEL gemarkeerd op de blade Sleutels][keys]
 
 ## <a name="step-4-create-a-database"></a>Stap 4: Een database maken
 Uw Azure Cosmos DB-[database](databases-containers-items.md#azure-cosmos-databases) kan worden gemaakt met de methode [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) van de klasse **DocumentClient**. Een database is een logische container voor een JSON-documentopslag, gepartitioneerd in verzamelingen.
@@ -105,7 +105,7 @@ U kunt een verzameling maken met de methode [createCollection](/java/api/com.mic
     DocumentCollection collectionInfo = new DocumentCollection();
     collectionInfo.setId("familycoll");
 
-    // Azure Cosmos DB collections can be reserved with throughput specified in request units/second. 
+    // Azure Cosmos containers can be reserved with throughput specified in request units/second. 
     // Here we create a collection with 400 RU/s.
     RequestOptions requestOptions = new RequestOptions();
     requestOptions.setOfferThroughput(400);

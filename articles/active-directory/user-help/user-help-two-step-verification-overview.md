@@ -13,12 +13,12 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949554"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616003"
 ---
 # <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>Overzicht voor twee ledige verificatie en uw werk-of school account
 
@@ -29,7 +29,15 @@ Verificatie met twee factoren is veiliger dan alleen een wacht woord omdat het a
 >[!Important]
 >Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over hoe u uw Azure Active Directory-omgeving (Azure AD) instelt en beheert in de [documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 >
->Deze inhoud is ook alleen bedoeld voor gebruik met uw werk-of school account, het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld alain@contoso.com). Als u problemen ondervindt met twee ledige verificatie en uw persoonlijke Microsoft-account, het account dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com), Zie [twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Deze inhoud is ook alleen bedoeld voor gebruik met uw werk-of school account, het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld alain@contoso.com). Als u problemen ondervindt met twee ledige verificatie en uw persoonlijke Microsoft-account, het account dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com), Zie [twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+
+## <a name="who-decides-if-you-use-this-feature"></a>Wie besluit of u deze functie gebruikt?
+
+Afhankelijk van uw accounttype kan uw organisatie besluiten dat u gebruik moet maken van verificatie in twee stappen, maar het is ook mogelijk dat u dat zelf kunt bepalen.
+
+- **Werk- of schoolaccount.** Als u een werk- of schoolaccount gebruikt (zoals alain@contoso.com), is het aan uw organisatie of u verificatie in twee stappen moet gebruiken, samen met de specifieke verificatiemethoden. Omdat uw organisatie u heeft besloten om deze functie te gebruiken, is het niet mogelijk om deze afzonderlijk in te scha kelen.
+
+- **Persoonlijk Microsoft-account.** U kunt ervoor kiezen verificatie in twee stappen in te stellen voor uw persoonlijke Microsoft-accounts (zoals alain@outlook.com). Als u problemen ondervindt met twee ledige verificatie en uw persoonlijke Microsoft-account, raadpleegt u [twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Omdat u kiest of u deze functie wilt gebruiken, kunt u deze op elk gewenst moment inschakelen en uitschakelen.
 
 ## <a name="two-factor-verification-related-articles"></a>Twee ledige verificatie-gerelateerde artikelen
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952049"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615881"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: Problemen met de agent of uitbrei ding
 
@@ -106,7 +106,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 **Fout code**: UserErrorUnsupportedDiskSize <br>
 **Fout bericht**: Momenteel Azure Backup biedt geen ondersteuning voor schijf grootten die groter zijn dan 4095 GB <br>
 
-De back-upbewerking kan mislukken bij het maken van een back-up van een virtuele machine met een schijf grootte groter dan 4.095 GB. Als u zich wilt aanmelden voor een beperkte open bare preview van Azure Backup ondersteuning voor grote schijven voor schijven die groter zijn dan 4 TB en tot Maxi maal 30 TB groot zijn, raadpleegt u [een overzicht van Azure VM-back-up](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+De back-upbewerking kan mislukken bij het maken van een back-up van een virtuele machine met een schijf grootte groter dan 4.095 GB. Raadpleeg dit [artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)als u zich wilt aanmelden voor een beperkte open bare preview van Azure backup ondersteuning voor grote schijven voor schijven die groter zijn dan 4 TB en tot Maxi maal 30 TB groot zijn.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: kan geen back-up initiëren omdat er momenteel een andere back-upbewerking wordt uitgevoerd
 

@@ -1,17 +1,17 @@
 ---
 title: Tips voor Azure Cosmos DB prestaties voor .NET
-description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van Azure Cosmos DB-Data Base
+description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van de Azure Cosmos-data base
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 21886c11bea6ff09cf97362e06c6d304aaa0d8cc
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3c4dbd38edaf36461578e087010d978a25450d06
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250044"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614923"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET
 
@@ -48,8 +48,8 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
      |Verbindings modus  |Ondersteund protocol  |Ondersteunde Sdk's  |API/service poort  |
      |---------|---------|---------|---------|
      |Gateway  |   HTTPS    |  Alle SDK'S    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Direct    |    HTTPS     |  .NET-en Java-SDK    |   Poorten binnen 10000-20000-bereik    |
-     |Direct    |     TCP    |  .NET SDK    | Poorten binnen 10000-20000-bereik |
+     |Rechtstreeks    |    HTTPS     |  .NET-en Java-SDK    |   Poorten binnen 10000-20000-bereik    |
+     |Rechtstreeks    |     TCP    |  .NET SDK    | Poorten binnen 10000-20000-bereik |
 
      Azure Cosmos DB biedt een eenvoudig en open REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. Zowel directe TCP als HTTPS gebruiken SSL voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
 
@@ -78,7 +78,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
    <a id="same-region"></a>
 3. **Termijnen-clients in dezelfde Azure-regio voor prestaties**
 
-    Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen, in dezelfde regio als de Azure Cosmos DB-Data Base. Voor een benadering van een vergelijking worden de aanroepen naar Azure Cosmos DB binnen dezelfde regio binnen 1-2 MS uitgevoerd, maar de latentie tussen de West-en Oost kust van de VS is > 50 MS. Deze latentie kan waarschijnlijk variëren van aanvraag om aan te vragen, afhankelijk van de route die door de aanvraag wordt door gegeven aan de limiet van de client naar de grens van het Azure-Data Center. De laagst mogelijke latentie wordt bereikt door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
+    Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen, in dezelfde regio als de Azure Cosmos-data base. Voor een benadering van een vergelijking worden de aanroepen naar Azure Cosmos DB binnen dezelfde regio binnen 1-2 MS uitgevoerd, maar de latentie tussen de West-en Oost kust van de VS is > 50 MS. Deze latentie kan waarschijnlijk variëren van aanvraag om aan te vragen, afhankelijk van de route die door de aanvraag wordt door gegeven aan de limiet van de client naar de grens van het Azure-Data Center. De laagst mogelijke latentie wordt bereikt door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
     ![Afbeelding van het verbindings beleid voor Azure Cosmos DB](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
@@ -162,9 +162,9 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     - Voor uitvoer bare toepassingen kunt u dit doen door de optie **32-bit** te selecteren in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
-    - Voor op VSTest gebaseerde test projecten **kunt u dit**->doen door test**instellingen**->testen**standaard processor architectuur als x64**te selecteren in de menu optie van **Visual Studio test** .
+    - Voor op VSTest gebaseerde test projecten kunt u dit doen door test->**instellingen**->testen**standaard processor architectuur als x64**te selecteren in de menu optie van **Visual Studio test** .
 
-    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren onder **extra**->**Opties**->**projecten en oplossingen** Webprojecten.  ->
+    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren onder **extra**->**Opties**->**projecten en oplossingen** Webprojecten. ->
 
     - Voor ASP.NET-webtoepassingen die zijn geïmplementeerd op Azure, kunt u dit doen door het **platform als 64-bit** te kiezen in de **Toepassings instellingen** op de Azure Portal.
 

@@ -1,6 +1,6 @@
 ---
-title: Workload monitor - Azure portal | Microsoft Docs
-description: Azure SQL Data Warehouse met behulp van de Azure portal controleren
+title: Werk belasting bewaken-Azure Portal | Microsoft Docs
+description: Azure SQL Data Warehouse bewaken met behulp van de Azure Portal
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,37 +10,37 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c8ce090039e3d5cc85c86d920710294de2165f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73e7312eacd11fbec052d2b0b7781528c3b3d50f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748830"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575383"
 ---
-# <a name="monitor-workload---azure-portal"></a>Workload monitor - Azure portal
+# <a name="monitor-workload---azure-portal"></a>Workload bewaken-Azure Portal
 
-Dit artikel wordt beschreven hoe u uw workload controleren met de Azure-portal. Dit omvat het instellen van Azure Monitor-logboeken voor het onderzoeken van query's uitvoeren en werkbelasting trends met behulp van log analytics voor [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
+In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om uw workload te bewaken. Dit omvat het instellen van Azure Monitor logboeken voor het onderzoeken van de uitvoering van query's en het analyseren van werk belasting met behulp van log Analytics voor [Azure SQL Data Warehouse](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-- Azure SQL Data Warehouse: We verzamelen logboeken voor een SQL datawarehouse. Als u een SQL datawarehouse ingericht hebt, raadpleegt u de instructies in [maken van een SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- Azure SQL Data Warehouse: Er worden logboeken verzameld voor een SQL Data Warehouse. Als u geen SQL Data Warehouse hebt ingericht, raadpleegt u de instructies in [Create a SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
 
-## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
+## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte maken
 
-Navigeer naar de blade bladeren voor Log Analytics-werkruimten en een werkruimte maken 
+Ga naar de Blade bladeren voor Log Analytics-werk ruimten en maak een werk ruimte 
 
 ![Log Analytics-werkruimten](media/sql-data-warehouse-monitor/log_analytics_workspaces.png)
 
-![Analytics-werkruimte toevoegen](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
+![Analytics-werk ruimte toevoegen](media/sql-data-warehouse-monitor/add_analytics_workspace.png)
 
-![Analytics-werkruimte toevoegen](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
+![Analytics-werk ruimte toevoegen](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
 
-Ga naar de volgende voor meer informatie over werkruimten [documentatie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace).
+Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace)voor meer informatie over werk ruimten.
 
-## <a name="turn-on-diagnostic-logs"></a>Logboeken met diagnostische gegevens inschakelen 
+## <a name="turn-on-diagnostic-logs"></a>Diagnostische logboeken inschakelen 
 
-Diagnostische instellingen voor het verzenden van Logboeken van uw SQL datawarehouse configureren. Logboeken bestaan uit de weergaven van de telemetrie van uw datawarehouse gelijk is aan de meest gebruikte prestaties DMV's voor probleemoplossing voor SQL Data Warehouse. De volgende weergaven worden momenteel ondersteund:
+Diagnostische instellingen configureren voor het verzenden van logboeken van uw SQL Data Warehouse. Logboeken bestaan uit telemetriegegevens van uw data warehouse die overeenkomen met de meest voorkomende prestatie problemen met Dmv's voor SQL Data Warehouse. Momenteel worden de volgende weer gaven ondersteund:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?view=aps-pdw-2016-au7)
@@ -49,30 +49,30 @@ Diagnostische instellingen voor het verzenden van Logboeken van uw SQL datawareh
 - [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=aps-pdw-2016-au7)
 
 
-![Logboeken met diagnostische gegevens inschakelen](media/sql-data-warehouse-monitor/enable_diagnostic_logs.png)
+![Diagnostische logboeken inschakelen](media/sql-data-warehouse-monitor/enable_diagnostic_logs.png)
 
-Logboeken kunnen worden verzonden naar Azure Storage, Stream Analytics of Log Analytics. Selecteer voor deze zelfstudie Log Analytics.
+Logboeken kunnen worden verzonden naar Azure Storage, Stream Analytics of Log Analytics. Voor deze zelf studie selecteert u Log Analytics.
 
 ![Logboeken opgeven](media/sql-data-warehouse-monitor/specify_logs.png)
 
 ## <a name="run-queries-against-log-analytics"></a>Query's uitvoeren op Log Analytics
 
-Navigeer naar uw Log Analytics-werkruimte waar u het volgende kunt doen:
+Navigeer naar uw Log Analytics-werk ruimte waar u het volgende kunt doen:
 
-- Logboeken met behulp van Logboeken-query's analyseren en query's voor hergebruik opslaan
-- Query's voor hergebruik opslaan
-- Waarschuwingen maken
-- De queryresultaten vastmaken aan een dashboard
+- Logboeken analyseren met behulp van logboek query's en query's opslaan voor hergebruik
+- Query's opslaan voor hergebruik
+- Logboek waarschuwingen maken
+- Query resultaten vastmaken aan een dash board
 
-Voor meer informatie over de mogelijkheden van Logboeken-query's, gaat u naar de volgende [documentatie](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language).
+Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)voor meer informatie over de mogelijkheden van logboek query's.
 
-![Log Analytics-werkruimte editor](media/sql-data-warehouse-monitor/log_analytics_workspace_editor.png)
+![Log Analytics werkruimte editor](media/sql-data-warehouse-monitor/log_analytics_workspace_editor.png)
 
 
 
-![Meld u Analytics-werkruimte query 's](media/sql-data-warehouse-monitor/log_analytics_workspace_queries.png)
+![Log Analytics werkruimte query's](media/sql-data-warehouse-monitor/log_analytics_workspace_queries.png)
 
-## <a name="sample-log-queries"></a>Voorbeeld van Logboeken-query 's
+## <a name="sample-log-queries"></a>Voorbeeld logboek query's
 
 
 
@@ -99,4 +99,4 @@ AzureDiagnostics
 ```
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u hebt ingesteld en geconfigureerd met Azure monitor-Logboeken, [aanpassen van de Azure-dashboards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) om te delen met uw team.
+Nu u de logboeken van Azure monitor hebt ingesteld en geconfigureerd, [past u Azure-Dash boards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) aan om te delen in uw team.

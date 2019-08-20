@@ -7,16 +7,16 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 7923ce10912ebb6f09c1c3d8390dd51b4f876bea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 86d4dd706b097891db155214e4edb7e85e054858
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68551994"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616953"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gebruik Azure Cosmos DB-wijzigingenfeed voor het visualiseren van realtime gegevensanalyse
 
-De Azure Cosmos DB-wijzigingenfeed is een mechanisme om op te halen een continue en incrementele feed van de records uit een Azure Cosmos DB-container als deze records worden gemaakt of gewijzigd. Wijzigingenfeed ondersteuning werkt door te luisteren naar de container voor eventuele wijzigingen. Het voert vervolgens de gesorteerde lijst met documenten die zijn gewijzigd in de volgorde waarin ze zijn gewijzigd. Zie voor meer informatie over de wijzigingenfeed [werken met change feed](change-feed.md) artikel. 
+De Azure Cosmos DB wijzigings feed is een mechanisme voor het verkrijgen van een doorlopende en incrementele feed van records uit een Azure Cosmos-container wanneer die records worden gemaakt of gewijzigd. Wijzigingenfeed ondersteuning werkt door te luisteren naar de container voor eventuele wijzigingen. Het voert vervolgens de gesorteerde lijst met documenten die zijn gewijzigd in de volgorde waarin ze zijn gewijzigd. Zie voor meer informatie over de wijzigingenfeed [werken met change feed](change-feed.md) artikel. 
 
 Dit artikel wordt beschreven hoe wijzigingenfeed kan worden gebruikt door een e-commerce-bedrijf Gebruikerspatronen begrijpen, voert u gegevens in realtime analyses en visualisatie. U kunt gebeurtenissen, zoals een gebruiker een item weergeven, een item toe te voegen aan hun winkelwagen of aanschaffen van een item wordt analyseren. Wanneer een van deze gebeurtenissen zich voordoet, een nieuwe record wordt gemaakt en de wijzigingenfeed logboeken die record. Wijzigingenfeed vervolgens triggers een reeks stappen, wat resulteert in een visualisatie van metrische gegevens die de bedrijfsprestaties van het en de activiteit analyseert. Voorbeeld van metrische gegevens die u kunt visualiseren omzet, unieke bezoekers, meest populaire artikelen bevatten en gemiddelde prijs van de items die worden weergegeven ten opzichte van toegevoegd aan een winkelwagen ten opzichte van die zijn aangeschaft. Deze metrische voorbeeldgegevens kunt een e-commerce-bedrijf evalueren de populariteit van de site, de reclame- en winsten te ontwikkelen en beslissingen met betrekking tot welke voorraad te investeren in.
 
@@ -41,9 +41,9 @@ Het volgende diagram staat voor de gegevensstroom en de onderdelen die betrokken
    }
    ```
 
-2. **Cosmos DB:** De gegenereerde gegevens worden opgeslagen in een Azure Cosmos DB verzameling.  
+2. **Cosmos DB:** De gegenereerde gegevens worden opgeslagen in een Azure Cosmos-container.  
 
-3. **Wijzigings feed:** De wijzigings feed wordt geluisterd naar wijzigingen in de verzameling Azure Cosmos DB. Telkens wanneer een nieuw document wordt toegevoegd aan de verzameling (dat is wanneer een gebeurtenis optreedt die een gebruiker een item bekijkt een item toe te voegen aan hun winkelwagen of aanschaffen van een item), de wijzigingenfeed wordt activeren een [Azure-functie](../azure-functions/functions-overview.md).  
+3. **Wijzigings feed:** De wijzigings feed wordt geluisterd naar wijzigingen in de Azure Cosmos-container. Telkens wanneer een nieuw document wordt toegevoegd aan de verzameling (dat is wanneer een gebeurtenis optreedt die een gebruiker een item bekijkt een item toe te voegen aan hun winkelwagen of aanschaffen van een item), de wijzigingenfeed wordt activeren een [Azure-functie](../azure-functions/functions-overview.md).  
 
 4. **Azure-functie:** Met de functie Azure worden de nieuwe gegevens verwerkt en verzonden naar een [Azure Event hub](../event-hubs/event-hubs-about.md).  
 
@@ -143,7 +143,7 @@ Een Azure Event Hub ontvangt de gebeurtenisgegevens, winkels, processen, en verz
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>Azure-functie instellen om te lezen van de wijzigingenfeed
 
-Wanneer een nieuw document wordt gemaakt of een huidige document in een Cosmos DB-verzameling wordt gewijzigd, wordt het gewijzigde document door de wijzigingenfeed automatisch toegevoegd aan de geschiedenis van wijzigingen aan verzamelingen. U wordt nu ontwikkelen en uitvoeren van een Azure-functie die de wijzigingenfeed verwerkt. Wanneer een document wordt gemaakt of gewijzigd in de verzameling die u hebt gemaakt, wordt de Azure-functie wordt geactiveerd door een wijziging feed. De Azure-functie wordt vervolgens het gewijzigde document verzenden naar de Event Hub.
+Wanneer een nieuw document wordt gemaakt of een huidig document is gewijzigd in een Cosmos-container, voegt de wijzigings feed het gewijzigde document automatisch toe aan de geschiedenis van verzamelings wijzigingen. U wordt nu ontwikkelen en uitvoeren van een Azure-functie die de wijzigingenfeed verwerkt. Wanneer een document wordt gemaakt of gewijzigd in de verzameling die u hebt gemaakt, wordt de Azure-functie wordt geactiveerd door een wijziging feed. De Azure-functie wordt vervolgens het gewijzigde document verzenden naar de Event Hub.
 
 1. Ga terug naar de opslagplaats die u hebt gekloond op uw apparaat.  
 
@@ -318,7 +318,7 @@ Power BI is een suite met hulpprogramma's voor business analytics voor het analy
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Optioneel: Visualiseren met een E-commerce-site
 
-Nu ziet u hoe u de nieuwe gegevens analysis tool kunt gebruiken om te verbinden met een echte e-commerce-site. Het samenstellen van de e-commerce-site, gebruikt u een Azure Cosmos DB-database voor het opslaan van de lijst met productcategorieën (dameskleding, heren, Unisex), de productcatalogus en een lijst van de meest populaire artikelen.
+Nu ziet u hoe u de nieuwe gegevens analysis tool kunt gebruiken om te verbinden met een echte e-commerce-site. Als u de e-commerce-site wilt maken, gebruikt u een Azure Cosmos-data base om de lijst met product categorieën (vrouwen, heren, unisex), de product catalogus en een lijst met veelgebruikte items op te slaan.
 
 1. Ga terug naar de [Azure Portal](https://portal.azure.com/), klikt u vervolgens aan uw **Cosmos DB-account**, klikt u vervolgens aan **Data Explorer**.  
 

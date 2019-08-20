@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 0cdd7f291b43f442b8471a19f515e4a2d12b4e74
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562872"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615889"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -315,14 +315,22 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Publiceren naar Azure
 
-Wanneer u klaar bent om te publiceren, moet u ervoor zorgen dat al uw afhankelijkheden worden weer gegeven in het bestand *Requirements. txt* , dat zich in de hoofdmap van de projectmap bevindt. Als u een pakket gebruikt dat een compiler vereist en de installatie van manylinux-compatibele wielen van PyPI niet ondersteunt, mislukt het publiceren naar Azure met de volgende fout: 
+Wanneer u klaar bent om te publiceren, moet u ervoor zorgen dat al uw afhankelijkheden worden weer gegeven in het bestand *Requirements. txt* , dat zich in de hoofdmap van de projectmap bevindt. Azure Functions kunt deze afhankelijkheden [op afstand bouwen](functions-deployment-technologies.md#remote-build) .
+
+Als u wilt implementeren in Azure en een externe build wilt uitvoeren, gebruikt u de volgende opdracht:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Als u geen externe build gebruikt en u een pakket gebruikt dat een compiler vereist en de installatie van veel Linux-compatibele wielen van PyPI niet ondersteunt, kunt u zonder lokaal te publiceren naar Azure met de volgende fout:
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-Als u automatisch de vereiste binaire bestanden wilt bouwen en configureren, [installeert](https://docs.docker.com/install/) u docker op uw lokale computer en voert u de volgende opdracht uit om te publiceren met behulp van de [Azure functions core tools](functions-run-local.md#v2) (func). Vervang `<app name>` door de naam van uw functie-app in Azure. 
+Als u lokaal wilt maken en de vereiste binaire bestanden wilt configureren, [installeert](https://docs.docker.com/install/) u docker op uw lokale computer en voert u de volgende opdracht uit om te publiceren met behulp van de [Azure functions core tools](functions-run-local.md#v2) (func). Vervang `<app name>` door de naam van uw functie-app in Azure. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

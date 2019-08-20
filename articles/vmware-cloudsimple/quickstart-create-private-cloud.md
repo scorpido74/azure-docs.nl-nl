@@ -1,64 +1,65 @@
 ---
-title: Azure VMware-oplossing door CloudSimple Quick Start-een privécloud maken
-description: Meer informatie over het maken en configureren van een privécloud met Azure VMware-oplossing op CloudSimple
+title: Azure VMware-oplossing door CloudSimple Quick Start-een Privécloud maken
+description: Meer informatie over het maken en configureren van een Privécloud met Azure VMware-oplossing op CloudSimple
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6b68dcd47377ee56c4ebedc94905e1f0a8b70b38
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: fdf1fc14eb4ab1458c25b484bae6cd84ecec6d7f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812333"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575502"
 ---
-# <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een privécloud configureren
+# <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
 
-In dit artikel leert u hoe u een CloudSimple-privécloud maakt en uw privécloud hebt ingesteld.
-
-## <a name="before-you-begin"></a>Voordat u begint
-
-Wijs een CIDR-bereik toe voor vSphere/vSAN-subnetten voor de Privécloud. Een Privécloud wordt gemaakt als een geïsoleerde VMware-stack (ESXi hosts, vCenter, vSAN en NSX) die worden beheerd door een vCenter-Server. Beheer onderdelen worden geïmplementeerd in het netwerk dat is geselecteerd voor vSphere/vSAN-subnets CIDR. Het netwerk-CIDR-bereik is tijdens de implementatie onderverdeeld in verschillende subnetten.  De adres ruimte van het vSphere/vSAN-subnet moet uniek zijn. Het mag niet overlappen met een netwerk dat communiceert met de CloudSimple-omgeving.  De netwerken die met CloudSimple communiceren, zijn onder andere on-premises netwerken en Azure Virtual Networks.  Zie voor meer informatie over vSphere-en vSAN-subnetten [vlan's en subnetten-overzicht](cloudsimple-vlans-subnets.md).
-
-* Minimum aantal vSphere/vSAN-subnetten CIDR-bereik voor voegsel:/24 
-* Maximum aantal vSphere/vSAN-subnetten voor voegsel van CIDR-bereik:/21
+In dit artikel leert u hoe u een CloudSimple-Privécloud maakt en uw Privécloud hebt ingesteld.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
+
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-private-cloud"></a>Een privécloud maken
+## <a name="create-a-private-cloud"></a>Een Privécloud maken
+
+Een Privécloud is een geïsoleerde VMware-stack die ondersteuning biedt voor ESXi-hosts, vCenter, vSAN en NSX.
+
+Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eigen vCenter-Server in een eigen beheer domein. De stack wordt uitgevoerd op toegewezen knoop punten en geïsoleerde bare metal hardware-knoop punten.
 
 1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
 3. Selecteer de CloudSimple-service waarop u uw Privécloud wilt maken.
-4. Klik in overzicht op **Privécloud maken** om een nieuw browser tabblad voor CloudSimple portal te openen.  Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.  
+4. Klik in **overzicht**op **privécloud maken** om een nieuw browser tabblad voor CloudSimple portal te openen.  Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.  
 
     ![Een Privécloud maken van Azure](media/create-private-cloud-from-azure.png)
 
-5. Geef in CloudSimple Portal een naam op voor uw Privécloud
-6. De **locatie** van de privécloud selecteren
-7. Het **knooppunt type** selecteren dat u in azure hebt ingericht.  U kunt de [optie CS28 of CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)kiezen. De laatste optie omvat de maximale reken-en geheugen capaciteit.
-8. Geef het **aantal knoop punten**op.  Mini maal drie knoop punten zijn vereist voor het maken van een Privécloud
+5. Geef in de CloudSimple-Portal een naam op voor de Privécloud.
+6. Selecteer de **locatie** van de privécloud.
+7. Selecteer het **knooppunt type**in overeenstemming met wat u hebt gekocht in Azure. U kunt de [optie CS28 of CS36](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku)kiezen. De laatste optie omvat de maximale reken-en geheugen capaciteit.
+8. Geef het **aantal knoop punten**op.  Er zijn ten minste drie knoop punten vereist voor het maken van een Privécloud.
 
     ![Een persoonlijke Cloud maken-basis gegevens](media/create-private-cloud-basic-info.png)
 
 9. Klik op **Next: Geavanceerde opties**.
-10. Voer het CIDR-bereik in voor vSphere/vSAN-subnetten. Zorg ervoor dat het CIDR-bereik niet overlapt met een van uw on-premises of andere Azure-subnetten.
+10. Voer het CIDR-bereik in voor vSphere/vSAN-subnetten. Zorg ervoor dat het CIDR-bereik niet overlapt met een van uw on-premises of andere Azure-subnetten (virtuele netwerken) of met het gateway-subnet.
 
-    ![Een persoonlijke Cloud maken-geavanceerde opties](media/create-private-cloud-advanced-options.png)
+    **Opties voor het CIDR-bereik:** /24,/23,/22 of/21. Een/24 CIDR-bereik ondersteunt Maxi maal negen knoop punten, een/23 CIDR-bereik ondersteunt Maxi maal 41 knoop punten en een/22-en/21 CIDR-bereik ondersteunt Maxi maal 64 knoop punten (het maximum aantal knoop punten in een Privécloud).
 
-11. Selecteer **Volgende: Controleren en maken**.
+      > [!IMPORTANT]
+      > IP-adressen in het vSphere/vSAN CIDR-bereik zijn gereserveerd voor gebruik door de infra structuur van de Privécloud.  Gebruik het IP-adres in dit bereik op geen enkele virtuele machine.
+
+11. Klik op **Next: Controleren en maken**.
 12. Controleer de instellingen. Als u instellingen wilt wijzigen, klikt u op **vorige**.
 13. Klik op **Create**.
 
-Het inrichtings proces voor de privécloud wordt gestart.  Het kan twee uur duren voordat de Privécloud is ingericht.
+Het inrichtings proces voor de privécloud wordt gestart.  Het kan tot twee uur duren voordat de Privécloud is ingericht.
 
 ## <a name="launch-cloudsimple-portal"></a>CloudSimple-Portal starten
 
-U kunt toegang krijgen tot de CloudSimple-Portal vanuit Azure Portal.  De CloudSimple-portal wordt gestart met uw Azure-aanmeldings referenties via eenmalige aanmelding (SSO).  Voor toegang tot de CloudSimple-Portal moet u de **CloudSimple-service autorisatie** toepassing autoriseren.  Zie [instemming met de CloudSimple-service autorisatie toepassing](https://docs.azure.cloudsimple.com/access-cloudsimple-portal/#consent-to-cloudsimple-service-authorization-application) voor meer informatie over het verlenen van machtigingen.
+U kunt de CloudSimple-Portal openen via Azure Portal.  De CloudSimple-portal wordt gestart met uw Azure-aanmeldings referenties via eenmalige aanmelding (SSO).  Voor toegang tot de CloudSimple-Portal moet u de **CloudSimple-service autorisatie** toepassing autoriseren.  Zie [instemming met de CloudSimple-service autorisatie toepassing](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)voor meer informatie over het verlenen van machtigingen.
 
 1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
@@ -69,7 +70,7 @@ U kunt toegang krijgen tot de CloudSimple-Portal vanuit Azure Portal.  De CloudS
 
 ## <a name="create-point-to-site-vpn"></a>Punt-naar-site-VPN maken
 
-Een punt-naar-site-VPN-verbinding is de eenvoudigste manier om vanaf uw computer verbinding te maken met uw Privécloud. Gebruik punt-naar-site-VPN-verbinding als u op afstand verbinding maakt met de Privécloud.  Volg de onderstaande stappen voor snelle toegang tot uw Privécloud.  U kunt toegang tot de CloudSimple-regio van uw on-premises netwerk doen met behulp van [site-naar-site-VPN](https://docs.azure.cloudsimple.com/vpn-gateway/) of [Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/).
+Een punt-naar-site-VPN-verbinding is de eenvoudigste manier om vanaf uw computer verbinding te maken met uw Privécloud. Gebruik punt-naar-site-VPN-verbinding als u op afstand verbinding maakt met de Privécloud.  Volg de onderstaande stappen voor snelle toegang tot uw Privécloud.  U kunt toegang tot de CloudSimple-regio van uw on-premises netwerk doen met behulp van [site-naar-site-VPN](vpn-gateway.md) of [Azure ExpressRoute](on-premises-connection.md).
 
 ### <a name="create-gateway"></a>Gateway maken
 
@@ -94,9 +95,9 @@ Een punt-naar-site-VPN-verbinding is de eenvoudigste manier om vanaf uw computer
 6. In het gedeelte VLAN'S/subnetten kunt u beheer-en gebruikers-VLAN'S of-subnetten voor de gateway en verbindingen opgeven.
 
     * Met de opties voor **automatisch toevoegen** wordt het globale beleid voor deze gateway ingesteld. De instellingen zijn van toepassing op de huidige gateway. De instellingen kunnen worden overschreven in het gebied **selecteren** .
-    * Selecteer **vlan's voor beheer/subnetten van persoonlijke Clouds toevoegen**. 
-    * Klik op door de gebruiker gedefinieerde vlan's **/subnetten toevoegen**om alle door de gebruiker gedefinieerde vlan's/subnetten toe te voegen. 
-    * De **selectie** -instellingen overschrijven de algemene instellingen onder **automatisch toevoegen**. 
+    * Selecteer **vlan's voor beheer/subnetten van persoonlijke Clouds toevoegen**.
+    * Klik op door de gebruiker gedefinieerde vlan's **/subnetten toevoegen**om alle door de gebruiker gedefinieerde vlan's/subnetten toe te voegen.
+    * De **selectie** -instellingen overschrijven de algemene instellingen onder **automatisch toevoegen**.
 
 7. Klik op **volgende** om de instellingen te controleren. Klik op de pictogrammen bewerken om wijzigingen aan te brengen.
 8. Klik op **maken** om de VPN-gateway te maken.
@@ -109,24 +110,24 @@ VPN-client is nodig om vanaf uw computer verbinding te maken met CloudSimple.  D
 2. Selecteer **VPN gateway**.
 3. Klik in de lijst met VPN-gateways op de punt-naar-site-VPN-gateway.
 4. Selecteer **gebruikers**.
-5. Klik op **mijn VPN-configuratie downloaden**
+5. Klik op **mijn VPN-configuratie downloaden**.
 
     ![VPN-configuratie downloaden](media/download-p2s-vpn-configuration.png)
 
-6. De configuratie op uw VPN-client importeren
+6. Importeer de configuratie op uw VPN-client.
 
     * Instructies voor het [importeren van de configuratie op Windows-client](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
     * Instructies voor het [importeren van de configuratie in macOS of OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
-7. Verbinding maken met CloudSimple
+7. Verbinding maken met CloudSimple.
 
 ## <a name="create-a-vlan-for-your-workload-vms"></a>Een VLAN maken voor uw werk belasting-Vm's
 
-Nadat u een privécloud hebt gemaakt, maakt u een VLAN waar u uw werk belasting/toepassings-Vm's implementeert.
+Nadat u een Privécloud hebt gemaakt, maakt u een VLAN waar u uw werk belasting/toepassings-Vm's implementeert.
 
 1. Selecteer in de CloudSimple-Portal **netwerk**.
 2. Klik op **VLAN/subnetten**.
-3. Klik op **VLAN/subnet maken**
+3. Klik op **VLAN/subnet maken**.
 
     ![VLAN/subnet maken](media/create-new-vlan-subnet.png)
 
@@ -138,11 +139,11 @@ Nadat u een privécloud hebt gemaakt, maakt u een VLAN waar u uw werk belasting/
 
     ![Details van VLAN/subnet maken](media/create-new-vlan-subnet-details.png)
 
-Het VLAN/subnet wordt gemaakt.  U kunt deze VLAN-ID nu gebruiken om een gedistribueerde poort groep te maken in uw Privécloud. 
+Het VLAN/subnet wordt gemaakt.  U kunt deze VLAN-ID nu gebruiken om een gedistribueerde poort groep te maken in uw Privécloud.
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Uw omgeving verbinden met een virtueel Azure-netwerk
 
-CloudSimple biedt u een ExpressRoute-circuit voor uw privécloud. U kunt uw virtuele netwerk op Azure aansluiten op het ExpressRoute-circuit. Volg de stappen in [Azure Virtual Network-verbinding met ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/) voor volledige informatie over het instellen van de verbinding.
+CloudSimple biedt u een ExpressRoute-circuit voor uw Privécloud. U kunt uw virtuele netwerk op Azure aansluiten op het ExpressRoute-circuit. Volg de stappen in [Azure Virtual Network-verbinding met ExpressRoute](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)voor volledige informatie over het instellen van de verbinding.
 
 ## <a name="sign-in-to-vcenter"></a>Aanmelden bij vCenter
 
@@ -154,7 +155,7 @@ U kunt zich nu aanmelden bij vCenter om virtuele machines en beleids regels in t
 
 2. Selecteer de gewenste vSphere-client om toegang te krijgen tot de vCenter en meld u aan met uw gebruikers naam en wacht woord.  De standaard waarden zijn:
     * Gebruikers naam: **CloudOwner@cloudsimple.local**
-    * Wachtwoord: **CloudSimple123!**  
+    * Wacht woord **CloudSimple123!**  
 
 De vCenter-schermen in de volgende procedures zijn afkomstig van de vSphere-client (HTML5).
 
@@ -182,22 +183,19 @@ Als u een wacht woord instelt dat niet aan de vereisten voldoet:
 
 NSX Manager wordt geïmplementeerd met een standaard wachtwoord.  U wordt aangeraden het wacht woord te wijzigen nadat u de Privécloud hebt gemaakt.
 
-   * Gebruikers naam: **beheerder**
-   * Wachtwoord: **CloudSimple123!**
+* Gebruikers naam: **beheerder**
+* Wacht woord **CloudSimple123!**
 
 U vindt de Fully Qualified Domain Name (FQDN) en het IP-adres van NSX Manager op CloudSimple-Portal.
 
 1. Start de CloudSimple-Portal en selecteer **resources**.
 2. Klik op de privécloud die u wilt gebruiken.
 3. **VSphere-beheer netwerk** selecteren
-4. Gebruik de FQDN of het IP-adres van **NSX Manager** en maak verbinding via een webbrowser. 
+4. Gebruik de FQDN of het IP-adres van **NSX Manager** en maak verbinding via een webbrowser.
 
     ![FQDN van NSX Manager zoeken](media/private-cloud-nsx-manager-fqdn.png)
 
-Volg de instructies in het [wacht woord van een gebruiker beheren](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.4/administration/GUID-DB31B304-66A5-4516-9E55-2712D12B4F27.html)om het wacht woord te wijzigen.
-
-> [!WARNING]
-> Het NSX-beheerders wachtwoord verloopt standaard na 90 dagen.
+Volg de instructies in de [installatie van NSX Manager](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)om het wacht woord te wijzigen.
 
 ## <a name="create-a-port-group"></a>Een poort groep maken
 
@@ -208,7 +206,6 @@ Een gedistribueerde poort groep maken in vSphere:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VMware-Vm's in azure gebruiken](https://docs.azure.cloudsimple.com/quickstart-create-vmware-virtual-machine)
 * [VMware-Vm's in azure gebruiken](quickstart-create-vmware-virtual-machine.md)
-* [Verbinding maken met een on-premises netwerk met behulp van Azure ExpressRoute](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Site-naar-site-VPN van on-premises instellen](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [Verbinding maken met een on-premises netwerk met behulp van Azure ExpressRoute](on-premises-connection.md)
+* [Site-naar-site-VPN van on-premises instellen](vpn-gateway.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954355"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616137"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Beveiligings gegevens instellen (preview) voor het gebruik van een verificator-app
 
@@ -145,6 +145,8 @@ U hebt extra opties voor het controleren van uw identiteit door uw organisatie, 
     >Als sommige van deze opties ontbreken, is het waarschijnlijk dat uw organisatie deze methoden niet toestaat. Als dit het geval is, moet u een beschik bare methode kiezen of contact opnemen met de beheerder voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
+
+- Meld u aan met behulp van de Microsoft Authenticator-app en volg de stappen in het artikel [Aanmelden met verificatie in twee stappen of beveiligings informatie](security-info-setup-signin.md) .
 
 - Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](user-help-reset-password.md).
 

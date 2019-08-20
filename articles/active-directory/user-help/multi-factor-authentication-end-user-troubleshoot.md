@@ -13,12 +13,12 @@ ms.date: 08/07/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32ec9c2d181072bb67a8ca0f2cb04560287286
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949773"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616108"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Veelvoorkomende problemen met twee ledige verificatie oplossen
 
@@ -29,7 +29,7 @@ Er zijn enkele veelvoorkomende problemen met twee ledige verificatie die vaak va
 >[!Important]
 >Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over hoe u uw Azure Active Directory-omgeving (Azure AD) instelt en beheert in de [documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 >
->Deze inhoud is ook alleen bedoeld voor gebruik met uw werk-of school account, het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld alain@contoso.com). Als u problemen ondervindt met twee ledige verificatie en uw persoonlijke Microsoft-account, het account dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com), Zie [twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Deze inhoud is ook alleen bedoeld voor gebruik met uw werk-of school account, het account dat u hebt ontvangen van uw organisatie (bijvoorbeeld alain@contoso.com). Als u problemen ondervindt met twee ledige verificatie en uw persoonlijke Microsoft-account, het account dat u zelf hebt ingesteld (bijvoorbeeld danielle@outlook.com), Zie [twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-forgot-my-mobile-device-at-home"></a>Ik ben thuis mijn mobiele apparaat verg eten
 
@@ -92,7 +92,11 @@ Mogelijk vindt u het moeilijker om een verificatie methode met een mobiel appara
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Ik kan mijn app-wacht woorden niet gebruiken
 
-App-wacht woorden vervangen uw normale wacht woord voor oudere desktop toepassingen die geen ondersteuning bieden voor twee ledige verificatie. Controleer eerst of u het wacht woord juist hebt getypt. Als dat niet het geval is, maakt u een nieuw app-wacht woord voor de app door de stappen in de sectie **app-wacht woorden maken en verwijderen te volgen met behulp van de portal mijn apps** in het artikel [app-wacht woorden beheren voor verificatie in twee stappen](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-using-the-myapps-portal) .
+App-wacht woorden vervangen uw normale wacht woord voor oudere desktop toepassingen die geen ondersteuning bieden voor twee ledige verificatie. Controleer eerst of u het wacht woord juist hebt getypt. Als dat niet het geval is, maakt u een nieuw app-wacht woord voor de app door de stappen in de sectie **app-wacht woorden maken en verwijderen te volgen met behulp van de portal mijn apps** in het artikel [app-wacht woorden beheren voor verificatie in twee stappen](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) .
+
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>Waarom kan ik geen twee ledige verificatie uitschakelen?
+
+Als u twee ledige verificatie met uw werk-of school account gebruikt (bijvoorbeeld alain@contoso.com), betekent dit waarschijnlijk dat uw organisatie heeft besloten deze extra beveiligings functie te gebruiken. Omdat uw organisatie u heeft besloten om deze functie te gebruiken, is het niet mogelijk om deze afzonderlijk in te scha kelen. Als u echter twee ledige verificatie met een persoonlijk account gebruikt, alain@outlook.comhebt u de mogelijkheid om de functie in of uit te scha kelen. Zie voor meer informatie over het beheren van twee ledige verificatie voor uw persoonlijke micro soft [-accounts, het inschakelen van twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Ik heb geen antwoord op mijn probleem gevonden
 

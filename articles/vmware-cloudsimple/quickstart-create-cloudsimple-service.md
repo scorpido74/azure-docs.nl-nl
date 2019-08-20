@@ -1,37 +1,47 @@
 ---
 title: Azure VMware-oplossing op CloudSimple Quick start-service maken
-description: Meer informatie over het maken van de CloudSimple-service, het inrichten van knoop punten en het reserveren van knoop punten
+description: Meer informatie over het maken van de CloudSimple-service, het aanschaffen van knoop punten en het reserveren van knoop punten
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13b07b3b50bdb03373275ca9594baa6357e9f66f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b20ff261939dd97a74d27f5ec7f21eae2665f474
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812288"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574539"
 ---
-# <a name="quickstart---create-service"></a>Quick start-service maken
+# <a name="quickstart---create-cloudsimple-service"></a>Quick Start-CloudSimple-service maken
 
 Om aan de slag te gaan, maakt u de Azure VMware-oplossing door CloudSimple in de Azure Portal.
 
-## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware-oplossing per CloudSimple-service-overzicht
-
-Met de CloudSimple-service kunt u Azure VMware-oplossing gebruiken door CloudSimple.  Door de service te maken, kunt u knoop punten inrichten, knoop punten reserveren en persoonlijke clouds maken.  U voegt de CloudSimple-service toe aan elke Azure-regio waar de CloudSimple-service beschikbaar is.  De service definieert het Edge-netwerk van de Azure VMware-oplossing door CloudSimple.  Dit Edge-netwerk wordt gebruikt voor services die VPN, ExpressRoute en Internet connectiviteit met uw persoonlijke Clouds bevatten.
+Met de CloudSimple-service kunt u Azure VMware-oplossing gebruiken door CloudSimple.  Door de service te maken, kunt u knoop punten aanschaffen, knoop punten reserveren en persoonlijke clouds maken.  U voegt de CloudSimple-service toe aan elke Azure-regio waar de CloudSimple-service beschikbaar is.  De service definieert het Edge-netwerk van de Azure VMware-oplossing door CloudSimple.  Dit Edge-netwerk wordt gebruikt voor services die VPN, ExpressRoute en Internet connectiviteit met uw persoonlijke Clouds bevatten.
 
 U moet een gateway-subnet maken om de CloudSimple-service toe te voegen. Het gateway-subnet wordt gebruikt bij het maken van het Edge-netwerk en vereist een/28 CIDR-blok. De adres ruimte van het gateway-subnet moet uniek zijn. Het mag niet overlappen met een van uw on-premises netwerk adres ruimten of de adres ruimte van het virtuele Azure-netwerk.
-
-## <a name="before-you-begin"></a>Voordat u begint
-
-Een/28 CIDR-blok voor gateway-subnet toewijzen.  Een gateway-subnet is vereist per CloudSimple-service en is uniek voor de regio waarin het is gemaakt. Het gateway-subnet wordt gebruikt voor Edge-netwerk services en vereist een/28 CIDR-blok. De adres ruimte van het gateway-subnet moet uniek zijn. Het mag niet overlappen met een netwerk dat communiceert met de CloudSimple-omgeving.  De netwerken die met CloudSimple communiceren, zijn onder andere on-premises netwerken en Azure Virtual Networks. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+
+## <a name="enable-microsoftvmwarecloudsimple-resource-provider"></a>Resource provider micro soft. VMwareCloudSimple inschakelen
+
+Volg de onderstaande stappen om de resource provider voor de CloudSimple-service in te scha kelen.
+
+1. Selecteer **Alle services**.
+2. Zoek en selecteer **abonnementen**.
+
+    ![Abonnementen selecteren](media/cloudsimple-service-select-subscriptions.png)
+
+3. Selecteer het abonnement waarvoor u de CloudSimple-service wilt inschakelen.
+4. Klik op **resource providers** voor het abonnement.
+5. Gebruik **micro soft. VMwareCloudSimple** om de resource provider te filteren.
+6. Selecteer de resource provider **micro soft. VMwareCloudSimple** en klik op **registreren**.
+
+    ![Resourceprovider registreren](media/cloudsimple-service-enable-resource-provider.png)
 
 ## <a name="create-the-service"></a>De service maken
 
@@ -56,7 +66,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 De service wordt gemaakt en toegevoegd aan de lijst met Services.
 
-## <a name="provision-nodes"></a>Knooppunten inrichten
+## <a name="purchase-nodes"></a>Knooppunten kopen
 
 Als u betalen naar gebruik-capaciteit wilt instellen voor een CloudSimple Privécloud, moet u eerst knoop punten inrichten in de Azure Portal.
 
@@ -70,7 +80,7 @@ Als u betalen naar gebruik-capaciteit wilt instellen voor een CloudSimple Privé
 
     ![CloudSimple-knoop punten toevoegen](media/create-cloudsimple-node-add.png)
 
-5. Selecteer het abonnement waar u de CloudSimple-knoop punten wilt inrichten.
+5. Selecteer het abonnement waar u CloudSimple-knoop punten wilt kopen.
 6. Selecteer de resource groep voor de knoop punten. Klik op **nieuwe maken**om een nieuwe resource groep toe te voegen.
 7. Voer het voor voegsel in om de knoop punten te identificeren.
 8. Selecteer de locatie voor de knooppunt resources.
@@ -84,4 +94,4 @@ Als u betalen naar gebruik-capaciteit wilt instellen voor een CloudSimple Privé
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Privécloud maken en omgeving configureren](quickstart-create-private-cloud.md)
-* Meer informatie over de [CloudSimple-service](https://docs.azure.cloudsimple.com/cloudsimple-service)
+* Meer informatie over de [CloudSimple-service](cloudsimple-service.md)

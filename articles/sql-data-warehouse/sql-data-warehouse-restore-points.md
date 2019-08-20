@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: bb5a267d1c7058193f1d7c8ed4087f5c0ebab267
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9dcb8b2e9c1b75aac3c195f89777ac9c6eb030d7
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426588"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575261"
 ---
 # <a name="user-defined-restore-points"></a>Door de gebruiker gedefinieerde herstel punten
 
@@ -61,7 +61,7 @@ Door de gebruiker gedefinieerde herstel punten kunnen ook worden gemaakt via Azu
 
 1. Meld u aan bij uw [Azure Portal][Azure portal] -account.
 
-2. Navigeer naar het SQL-Data Warehouse waarvoor u een herstel punt wilt maken.
+2. Ga naar de SQL Data Warehouse waarvoor u een herstel punt wilt maken.
 
 3. Selecteer **overzicht** in het linkerdeel venster en selecteer **+ Nieuw herstel punt**. Als de knop Nieuw herstel punt niet is ingeschakeld, moet u ervoor zorgen dat het Data Warehouse niet wordt onderbroken.
 

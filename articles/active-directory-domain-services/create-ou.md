@@ -1,87 +1,93 @@
 ---
-title: 'Azure Active Directory Domain Services: Administration Guide | Microsoft Docs'
-description: Maken van een organisatie-eenheid (OE) in Azure AD Domain Services beheerde domeinen
+title: Een organisatie-eenheid (OE) maken in Azure AD Domain Services | Microsoft Docs '
+description: Meer informatie over het maken en beheren van een aangepaste organisatie-eenheid (OE) in een Azure AD Domain Services beheerd domein.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/07/2019
 ms.author: iainfou
-ms.openlocfilehash: b2bdad25d676d65494fdd5b6a314f8c3381254de
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a3f9ad20e4bfba6e0bb858c82ccce73bb687a826
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473686"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613078"
 ---
-# <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Maken van een organisatie-eenheid (OE) in een Azure AD Domain Services beheerde domein
-Azure AD Domain Services beheerde domeinen bevatten twee ingebouwde containers respectievelijk 'AADDC Computers' en 'AADDC gebruikers' genoemd. De container 'AADDC Computers' heeft computerobjecten voor alle computers die zijn gekoppeld aan het beheerde domein. De container 'AADDC gebruikers' bevat gebruikers en groepen in de Azure AD-tenant. Af en toe kan het nodig zijn voor het maken van serviceaccounts in het beheerde domein om workloads te implementeren zijn. U kunt voor dit doel een aangepaste organisatie-eenheid (OE) in het beheerde domein maken en service-accounts binnen een organisatie-eenheid maken. Dit artikel leest u hoe een organisatie-eenheid maken in uw beheerde domein.
+# <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Een organisatie-eenheid (OE) maken in een Azure AD Domain Services beheerd domein
+
+Organisatie-eenheden (Ou's) in Active Directory Domain Services (AD DS) kunt u objecten logisch groeperen, zoals gebruikers accounts, service accounts of computer accounts. U kunt vervolgens beheerders toewijzen aan specifieke organisatie-eenheden en groeps beleid Toep assen om specifieke configuratie-instellingen af te dwingen.
+
+Azure AD DS Managed domains bevatten twee ingebouwde Ou's: *AADDC computers* en *AADDC-gebruikers*. De organisatie-eenheid *AADDC computers* bevat computer objecten voor alle computers die zijn gekoppeld aan het beheerde domein. De organisatie-eenheid *AADDC gebruikers* bevat gebruikers en groepen die zijn gesynchroniseerd vanuit de Azure AD-Tenant. Bij het maken en uitvoeren van werk belastingen die gebruikmaken van Azure AD DS, moet u mogelijk service accounts voor toepassingen maken om zichzelf te verifiëren. Als u deze service accounts wilt ordenen, maakt u vaak een aangepaste OE in het door Azure AD DS beheerde domein en maakt u vervolgens service accounts binnen die organisatie-eenheid.
+
+In dit artikel wordt beschreven hoe u een organisatie-eenheid maakt in uw Azure AD DS beheerde domein.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Als u de taken die in dit artikel worden vermeld, hebt u het volgende nodig:
 
-1. Een geldige **Azure-abonnement**.
-2. Een **Azure AD-directory** -een gesynchroniseerd met een on-premises directory of een map alleen in de cloud.
-3. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-directory. Als u dit nog niet hebt gedaan, volgt u alle taken die worden beschreven in de [introductiehandleiding](create-instance.md).
-4. Een domein virtuele machine van waaruit u de Azure AD Domain Services beheerde domein beheren. Als u geen dergelijke een virtuele machine hebt, volgt u alle taken die worden beschreven in het artikel [Windows virtuele machine toevoegen aan een beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md).
-5. U moet de referenties van een **gebruikersaccount die behoren tot de groep 'AAD DC Administrators'** in uw directory, een aangepaste organisatie-eenheid maken op uw beheerde domein.
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
-## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>AD-beheerprogramma's installeren op een virtuele machine domein voor beheer op afstand
-Azure AD Domain Services beheerde domeinen kunnen worden beheerd op afstand met vertrouwde Active Directory-beheerprogramma's zoals de Active Directory-beheercentrum (ADAC) of AD PowerShell. Tenantbeheerders geen bevoegdheden voor verbinding met de domeincontrollers in het beheerde domein via Extern bureaublad. Installeer de functie AD administration tools op een virtuele machine toegevoegd aan het beheerde domein voor het beheren van het beheerde domein. Raadpleeg het artikel met de titel [beheren van een Azure AD Domain Services-domein](manage-domain.md) voor instructies.
+* Een actief Azure-abonnement.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+* Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
+* Een gebruikers account dat lid is van de groep *Azure AD DC* -Administrators in uw Azure AD-Tenant.
 
-## <a name="create-an-organizational-unit-on-the-managed-domain"></a>Maken van een organisatie-eenheid in het beheerde domein
-Nu dat de AD-beheerprogramma's zijn geïnstalleerd op de virtuele machine van een domein, we kunnen deze hulpprogramma's gebruiken voor het maken van een organisatie-eenheid in het beheerde domein. Voer de volgende stappen uit:
+## <a name="custom-ou-considerations-and-limitations"></a>Overwegingen en beperkingen voor aangepaste OE
+
+Wanneer u aangepaste organisatie-eenheden maakt in een door Azure AD DS beheerd domein, krijgt u extra beheer flexibiliteit voor gebruikers beheer en het Toep assen van groeps beleid. Vergeleken met een on-premises AD DS omgeving, zijn er enkele beperkingen en overwegingen bij het maken en beheren van een aangepaste OE-structuur in azure AD DS:
+
+* Gebruikers moeten lid zijn van de groep *Aad DC* -Administrators om aangepaste organisatie-eenheden te maken.
+* Een gebruiker die een aangepaste OE maakt, krijgt beheerders bevoegdheden (volledig beheer) over die organisatie-eenheid en is de eigenaar van de resource.
+    * Standaard heeft de groep *Aad DC* -Administrators ook volledig beheer over de aangepaste organisatie-eenheid.
+* Er wordt een standaard organisatie-eenheid voor *AADDC-gebruikers* gemaakt die de gesynchroniseerde gebruikers accounts uit uw Azure AD-Tenant bevat.
+    * U kunt geen gebruikers of groepen van de organisatie-eenheid *AADDC gebruikers* verplaatsen naar aangepaste organisatie-eenheden die u maakt. Alleen gebruikers accounts of resources die zijn gemaakt in het door Azure AD DS beheerde domein kunnen worden verplaatst naar aangepaste organisatie-eenheden.
+* Gebruikers accounts, groepen, service accounts en computer objecten die u onder aangepaste organisatie-eenheden maakt, zijn niet beschikbaar in uw Azure AD-Tenant.
+    * Deze objecten worden niet weer gegeven met behulp van de Azure AD-Graph API of in de Azure AD-gebruikers interface. ze zijn alleen beschikbaar in uw door Azure AD DS beheerde domein.
+
+## <a name="create-a-custom-ou"></a>Een aangepaste OE maken
+
+Als u een aangepaste OE wilt maken, gebruikt u de Active Directory-beheer Programma's van een VM die is gekoppeld aan een domein. Met de Active Directory-beheercentrum kunt u resources weer geven, bewerken en maken in een beheerd domein van Azure AD DS, met inbegrip van organisatie-eenheden.
 
 > [!NOTE]
-> Alleen leden van de groep 'AAD DC Administrators' hebben de vereiste bevoegdheden voor het maken van een aangepaste organisatie-eenheid. Zorg ervoor dat u de volgende stappen uitvoeren als een gebruiker die deel uitmaakt van deze groep.
->
->
+> Als u een aangepaste OE wilt maken in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC* -Administrators.
 
-1. Klik vanuit het startscherm op **Systeembeheer**. Hier ziet u de AD beheerprogramma's geïnstalleerd op de virtuele machine.
+1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven die in de zelf studie zijn geïnstalleerd om [een beheer-VM te maken][tutorial-create-management-vm].
+1. Als u organisatie-eenheden wilt maken en beheren, selecteert u **Active Directory-beheercentrum** in de lijst met beheer Programma's.
+1. Kies in het linkerdeel venster uw door Azure AD DS beheerde domein, zoals *contoso.com*. Er wordt een lijst met bestaande Ou's en resources weer gegeven:
 
-    ![Beheerprogramma's geïnstalleerd op server](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
-2. Klik op **Active Directory-beheercentrum**.
+    ![Selecteer uw door Azure AD DS beheerde domein in het Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
 
-    ![Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/adac-overview.png)
-3. Als u het domein, klikt u op de naam van het domein in het linkerdeelvenster (bijvoorbeeld ' contoso100.com').
+1. Het deel venster **taken** wordt weer gegeven aan de rechter kant van de Active Directory-Beheercentrum. Selecteer onder het domein, zoals *contoso.com*, de optie **Nieuw > organisatie-eenheid**.
 
-    ![Active Directory-Beheercentrum - domein weergeven](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
-4. Aan de rechterkant **taken** deelvenster, klikt u op **nieuw** onder de naam van knooppunt van het domein. In dit voorbeeld we klikt u op **nieuw** onder het knooppunt 'contoso100(local)' aan de rechterkant **taken** deelvenster.
+    ![Selecteer de optie voor het maken van een nieuwe organisatie-eenheid in de Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
 
-    ![Active Directory-Beheercentrum - nieuwe organisatie-eenheid](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
-5. Hier ziet u de optie voor het maken van een organisatie-eenheid. Klik op **organisatie-eenheid** starten de **organisatie-eenheid maken** dialoogvenster.
-6. In de **organisatie-eenheid maken** dialoogvenster, Geef een **naam** voor de nieuwe organisatie-eenheid. Geef een korte beschrijving voor de organisatie-eenheid. U kunt ook instellen de **beheerd door** veld voor de organisatie-eenheid. Klik op om de aangepaste organisatie-eenheid **OK**.
+1. Geef in het dialoog venster **organisatie-eenheid maken** een **naam** op voor de nieuwe OE, zoals *MyCustomOu*. Geef een korte beschrijving voor de OE, zoals een *aangepaste OE voor service accounts*. Desgewenst kunt u ook het veld **beheerd door** instellen voor de organisatie-eenheid. Selecteer **OK**om de aangepaste OE te maken.
 
-    ![Active Directory-Beheercentrum - dialoogvenster van de organisatie-eenheid maken](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
-7. De zojuist gemaakte organisatie-eenheid wordt nu weergegeven in het AD-beheercentrum (ADAC).
+    ![Een aangepaste OE maken op basis van de Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
 
-    ![Active Directory-Beheercentrum - organisatie-eenheid gemaakt](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+1. In de Active Directory-beheercentrum wordt de aangepaste OE nu vermeld en is deze beschikbaar voor gebruik:
 
-## <a name="permissionssecurity-for-newly-created-ous"></a>Machtigingen/beveiliging voor de nieuwe organisatie-eenheden
-Standaard wordt de gebruiker (lid van de groep 'AAD DC Administrators') die de aangepaste organisatie-eenheid gemaakt beheerdersbevoegdheden (volledig beheer) verleend via de organisatie-eenheid. De gebruiker kan vervolgens gaat u verder en bevoegdheden verlenen aan andere gebruikers of aan de groep 'AAD DC Administrators' naar wens. Zoals te zien is in de volgende schermopname is de gebruiker 'bob@domainservicespreview.onmicrosoft.com' die de nieuwe 'MyCustomOU' organisatie-eenheid hebt gemaakt, wordt de volledige controle over het worden verleend.
+    ![Aangepaste organisatie-eenheid beschikbaar voor gebruik in de Active Directory-beheercentrum](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
- ![Active Directory-Beheercentrum - nieuwe organisatie-eenheid-beveiliging](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
+## <a name="next-steps"></a>Volgende stappen
 
-## <a name="notes-on-administering-custom-ous"></a>Opmerkingen over het beheren van aangepaste organisatie-eenheden
-Nu dat u een aangepaste organisatie-eenheid hebt gemaakt, kunt u direct verder gaan en gebruikers, groepen, computers en service-accounts in deze organisatie-eenheid maken. U kunt gebruikers of groepen van de 'AADDC gebruikers' organisatie-eenheid niet verplaatsen naar aangepaste organisatie-eenheden.
+Raadpleeg de volgende artikelen voor meer informatie over het gebruik van de beheer Programma's of het maken en gebruiken van service accounts:
 
-> [!WARNING]
-> Gebruikersaccounts, groepen, service-accounts en computerobjecten die u onder aangepaste OE's maakt zijn niet beschikbaar in uw Azure AD-tenant. Met andere woorden weergeven deze objecten niet met behulp van de Azure AD Graph API of in de gebruikersinterface van Azure AD. Deze objecten zijn alleen beschikbaar in uw Azure AD Domain Services beheerde domein.
->
->
-
-## <a name="related-content"></a>Gerelateerde inhoud
-* [Een Azure AD Domain Services-domein beheren](manage-domain.md)
-* [Beheren van Groepsbeleid voor Azure AD Domain Services](manage-group-policy.md)
 * [Active Directory-beheercentrum: Aan de slag](https://technet.microsoft.com/library/dd560651.aspx)
-* [Stapsgewijze handleiding voor Service-Accounts](https://technet.microsoft.com/library/dd548356.aspx)
+* [Stapsgewijze hand leiding voor service accounts](https://technet.microsoft.com/library/dd548356.aspx)
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md

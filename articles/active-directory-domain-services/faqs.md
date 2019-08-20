@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d44937c977ba264d671f2053d387470651af68a
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030881"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612884"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Veelgestelde vragen
 Op deze pagina vindt u antwoorden op veelgestelde vragen over de Azure Active Directory Domain Services. Blijf op de hoogte met het controleren op updates.
@@ -31,6 +31,9 @@ Raadpleeg de [hand leiding](troubleshoot.md) voor het oplossen van problemen met
 ## <a name="configuration"></a>Configuratie
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Kan ik meerdere beheerde domeinen maken voor één Azure AD-adres lijst?
 Nee. U kunt slechts één beheerd domein maken dat door Azure AD Domain Services wordt onderhouden voor één Azure AD-adres lijst.  
+
+### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Kan ik Azure AD Domain Services inschakelen in een klassiek virtueel netwerk?
+Klassieke virtuele netwerken worden niet ondersteund voor nieuwe implementaties. Bestaande beheerde domeinen die in klassieke virtuele netwerken zijn geïmplementeerd, worden nog steeds ondersteund.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Kan ik Azure AD Domain Services inschakelen in een Azure Resource Manager virtueel netwerk?
 Ja. Azure AD Domain Services kan worden ingeschakeld in een Azure Resource Manager virtueel netwerk. Klassieke virtuele netwerken van Azure worden niet meer ondersteund voor het maken van nieuwe beheerde domeinen.

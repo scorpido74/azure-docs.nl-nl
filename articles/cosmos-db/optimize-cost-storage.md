@@ -1,47 +1,47 @@
 ---
-title: Optimaliseer opslagkosten in Azure Cosmos DB
-description: In dit artikel wordt uitgelegd hoe u voor het beheren van kosten voor opslag voor de gegevens die zijn opgeslagen in Azure Cosmos DB
+title: De opslag kosten in Azure Cosmos DB optimaliseren
+description: In dit artikel wordt uitgelegd hoe u opslag kosten beheert voor de gegevens die zijn opgeslagen in Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 71f1f8896126728277ba6f0bf2c0ded1b2a608b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967256"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615007"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Optimaliseer opslagkosten in Azure Cosmos DB
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>De opslag kosten in Azure Cosmos DB optimaliseren
 
-Azure Cosmos DB biedt onbeperkte opslag en doorvoer. In tegenstelling tot doorvoer, wat u inrichten moet/configureren op uw Azure Cosmos-containers of -databases, wordt de opslag in rekening gebracht op basis van gebruik. Alleen voor de logische opslag die u verbruikt in rekening gebracht en u hoeft van tevoren geen opslag reserveren. Opslag automatisch schalen omhoog en omlaag op basis van de gegevens die u toevoegt of verwijdert aan een Azure Cosmos DB-container.
+Azure Cosmos DB biedt onbeperkte opslag en door voer. In tegens telling tot door Voer, die u moet inrichten/configureren in uw Azure Cosmos-containers of-data bases, wordt de opslag gefactureerd op basis van een verbruiks basis. U wordt alleen gefactureerd voor de logische opslag die u gebruikt en u hoeft geen opslag vooraf te reserveren. Storage wordt automatisch omhoog en omlaag geschaald op basis van de gegevens die u toevoegt of verwijdert aan een Azure Cosmos-container.
 
 ## <a name="storage-cost"></a>Opslagkosten
 
-Opslag wordt in rekening gebracht met de eenheid van GB's. Lokale SSD-opslag is die wordt gebruikt door uw gegevens en indexering. De totale opslag die wordt gebruikt, is gelijk aan de opslag die is vereist door de gegevens en de indexen die worden gebruikt in alle regio's als u van Azure Cosmos DB gebruikmaakt. Als u een Azure Cosmos-account wereldwijd in drie regio's repliceren, betaalt u voor de totale opslagkosten in elk van deze drie regio's. Zie voor een schatting van uw opslagvereisten [Capaciteitsplanner](https://www.documentdb.com/capacityplanner) hulpprogramma. De kosten voor opslag in Azure Cosmos DB is $0,25 GB/maand, Zie [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente updates. U kunt waarschuwingen instellen om te bepalen van opslag die wordt gebruikt door uw Azure Cosmos-container voor het bewaken van uw opslag, Zie [Monitor Azure Cosmos DB](monitor-accounts.md)) artikel.
+Opslag wordt gefactureerd met de eenheid van GB. Lokale SSD-back-upopslag wordt gebruikt door uw gegevens en indexering. De totale gebruikte opslag ruimte is gelijk aan de opslag die is vereist voor de gegevens en indexen die worden gebruikt in alle regio's waar u Azure Cosmos DB gebruikt. Als u een Azure Cosmos-account globaal in drie regio's repliceert, betaalt u voor de totale opslag kosten in elk van deze drie regio's. Zie [capaciteits planner](https://www.documentdb.com/capacityplanner) voor het maken van een schatting van uw opslag vereiste. De kosten voor opslag in Azure Cosmos DB zijn $0,25 GB per maand, zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente updates. U kunt waarschuwingen instellen om de opslag te bepalen die wordt gebruikt door de Azure Cosmos-container om uw opslag te bewaken, zie het artikel [monitor Azure Cosmos DB](monitor-accounts.md)).
 
-## <a name="optimize-cost-with-item-size"></a>Kosten met de grootte van artikel optimaliseren
+## <a name="optimize-cost-with-item-size"></a>Kosten optimaliseren met item grootte
 
-Azure Cosmos DB wordt verwacht dat de grootte van het artikel moet 2 MB of minder voor optimale prestaties en kostenbesparingen. Als u een item voor het opslaan van groter zijn dan 2 MB aan gegevens moet, houd rekening met het schema van het item opnieuw. In het zeldzame geval dat u het schema niet wijzigen, kunt u het item in de subitems splitsen en ze logisch te koppelen met een algemene identifier(ID). Alle functies van de Azure Cosmos DB consistent worden gewerkt door verankeren aan dat logische id.
+Azure Cosmos DB verwacht dat de grootte van het item 2 MB of minder is voor optimale prestaties en kosten voordelen. Als u een item nodig hebt om meer dan 2 MB aan gegevens op te slaan, kunt u het schema van het item opnieuw ontwerpen. In zeldzame gevallen kan het schema niet opnieuw worden ontworpen, kunt u het item splitsen in subitems en deze logisch koppelen met een algemene id (ID). Alle Azure Cosmos DB functies werken consistent door deze logische id te verankeren.
 
-## <a name="optimize-cost-with-indexing"></a>Kosten met indexeren optimaliseren
+## <a name="optimize-cost-with-indexing"></a>Kosten optimaliseren met indexeren
 
-Standaard de gegevens automatisch geïndexeerd, die de totale hoeveelheid opslagruimte kunt verhogen. U kunt echter aangepaste index beleid om deze overhead verminderen toepassen. Automatisch indexeren die niet afgestemd is op door middel van beleid is ongeveer 10-20% van de itemgrootte aan. Door te verwijderen of aanpassen, index-beleid, betaalt u geen extra kosten voor schrijfbewerkingen en capaciteit voor extra doorvoer vereisen. Zie [indexeren in Azure Cosmos DB](indexing-policies.md) om aangepaste indexering beleid te configureren. Als u hebt gewerkt met relationele databases, mag u denkt dat 'Alles indexeren' betekent verdubbeling van opslag of hoger. In Azure Cosmos DB is in het geval is Mediaan, het echter veel lager. In Azure Cosmos DB is de opslagoverhead van de index meestal intensief (10-20%) zelfs met automatische indexering, omdat het is ontworpen voor een lage opslagverbruik. U kunt de verhouding van de prestaties van de voetafdruk en de query van de index op een meer verfijnde manier beheren door het beheer van het indexeringsbeleid.
+Standaard worden de gegevens automatisch geïndexeerd, waardoor de totale hoeveelheid verbruikte opslag kan worden verg root. U kunt echter aangepast index beleid Toep assen om deze overhead te verminderen. Automatische indexering die niet is afgestemd op het beleid is ongeveer 10-20% van de grootte van het item. Door het verwijderen of aanpassen van het index beleid betaalt u geen extra kosten voor schrijf bewerkingen en hebt u geen extra doorvoer capaciteit nodig. Zie [indexeren in azure Cosmos DB](indexing-policies.md) voor het configureren van aangepaste indexerings beleidsregels. Als u al eerder met relationele data bases hebt gewerkt, kunt u zien dat "alles indexeren" betekent dat de opslag of een hogere versie wordt verdubbeld. In Azure Cosmos DB, in het mediaan geval is het echter veel lager. In Azure Cosmos DB is de opslag overhead van de index meestal laag (10-20%) zelfs bij automatische indexering, omdat deze is ontworpen voor een geringe opslag capaciteit. Door het indexerings beleid te beheren, kunt u het bereik van de index footprint en query prestaties op een meer verfijnde manier beheren.
 
-## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Kosten met de tijd op live en wijzigingenfeed optimaliseren
+## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimaliseer kosten met tijd tot Live en wijzigings invoer
 
-Nadat u de gegevens niet meer nodig hebt u kunt zonder problemen verwijderen uit uw Azure Cosmos-account met behulp van [time to live van](time-to-live.md), [wijzigingenfeed](change-feed.md) of u kunt de oude gegevens migreren naar een ander gegevensarchief, zoals Azure blob-opslag of Azure datawarehouse. Met time to live van of een TTL-waarde, biedt Azure Cosmos DB de mogelijkheid items om automatisch te verwijderen uit een container na een bepaalde periode. Standaard kunt u tijd te bevinden zich op het niveau van de container en de waarde op basis van de per-item overschrijven instellen. Nadat de TTL-waarde is ingesteld op een container of op het itemniveau van een, worden Azure Cosmos DB automatisch deze items verwijderd nadat de tijd is verstreken sinds de tijd dat ze het laatst zijn gewijzigd. Met behulp van feed wijzigen, kunt u gegevens migreren naar een van beide een andere container in Azure Cosmos DB of met een extern gegevensarchief. De migratie neemt nul uitvaltijd en wanneer u bent klaar migreert, kunt u verwijderen of time to live verwijderen van de bron-Azure Cosmos-container van configureren.
+Wanneer u de gegevens niet meer nodig hebt, kunt u deze probleemloos verwijderen uit uw Azure Cosmos-account met behulp van [time to Live](time-to-live.md), [feed Change](change-feed.md) of kunt u de oude gegevens migreren naar een ander gegevens archief, zoals Azure Blob Storage of Azure Data Warehouse. Met time to Live of TTL kunt Azure Cosmos DB automatisch items uit een container verwijderen na een bepaalde tijds periode. Standaard kunt u time to Live instellen op container niveau en de waarde per item overschrijven. Nadat u de TTL hebt ingesteld op een container of op item niveau, verwijdert Azure Cosmos DB deze items automatisch na de periode vanaf het moment dat ze voor het laatst zijn gewijzigd. Met behulp van Change feed kunt u gegevens migreren naar een andere container in Azure Cosmos DB of naar een extern gegevens archief. De migratie neemt nul in beslag en wanneer u klaar bent met de migratie, kunt u de levens duur van de Azure Cosmos-container verwijderen of zo configureren dat deze actief is.
 
-## <a name="optimize-cost-with-rich-media-data-types"></a>Kosten met uitgebreide media-gegevenstypen optimaliseren 
+## <a name="optimize-cost-with-rich-media-data-types"></a>Kosten optimaliseren met uitgebreide media gegevens typen 
 
-Als u wilt opslaan, uitgebreide mediatypen, bijvoorbeeld video's, afbeeldingen, enzovoort, hebt u een aantal opties in Azure Cosmos DB. Een optie is voor het opslaan van deze typen uitgebreide media als Azure Cosmos-items. Er is een limiet van 2 MB per item en kunt u deze limiet voorkomen door het koppelen van het gegevensitem in meerdere subitems. Of u kunt in Azure Blob-opslag opslaan en gebruiken van de metagegevens van de verwijzing naar uw Azure Cosmos-items. Er zijn een aantal voordelen en nadelen met deze methode. De eerste benadering kunt u de beste prestaties in termen van latentie, doorvoer Sla's plus kant en klare wereldwijde distributie mogelijkheden voor de uitgebreide media-gegevenstypen naast uw reguliere Azure Cosmos-items. De ondersteuning is echter beschikbaar op een hogere prijs. Door het opslaan van media in Azure Blob-opslag, kunt u uw totale kosten verlagen. Als de latentie van essentieel belang is, kunt u premium-opslag gebruiken voor uitgebreide media-bestanden die van Azure Cosmos-items wordt verwezen. Deze systeemeigen is geïntegreerd met CDN voor het leveren van afbeeldingen uit de edge-server op de lagere kosten voor geo-beperking te omzeilen. De omlaag aan clientzijde met dit scenario is dat u hebt te maken met twee services: Azure Cosmos DB en Azure Blob storage, kan de operationele kosten verhoogt. 
+Als u uitgebreide media typen wilt opslaan, bijvoorbeeld Video's, afbeeldingen enzovoort, hebt u een aantal opties in Azure Cosmos DB. Een optie is om deze uitgebreide media typen op te slaan als Azure Cosmos-items. Er is een limiet van 2 MB per item, en u kunt deze limiet vermijden door het gegevens item in meerdere subitems te koppelen. U kunt ze ook opslaan in Azure Blob Storage en de meta gegevens gebruiken om ernaar te verwijzen vanuit uw Azure Cosmos-items. Er zijn een aantal voor delen en nadelen met deze aanpak. Met de eerste benadering krijgt u de beste prestaties in de loop van de latentie, doorvoer-Sla's en kant-en-klare algemene distributie mogelijkheden voor de uitgebreide media gegevens typen naast uw reguliere Azure Cosmos-items. De ondersteuning is echter beschikbaar voor een hogere prijs. Door media op te slaan in Azure Blob-opslag, kunt u de totale kosten verlagen. Als latentie kritiek is, kunt u Premium Storage gebruiken voor Rich Media-bestanden waarnaar wordt verwezen vanuit Azure Cosmos-items. Dit is geïntegreerd met CDN voor installatie kopieën van de Edge-server tegen lagere kosten om de geo-beperking te omzeilen. De vervolg keuzelijst met dit scenario is dat u met twee services-Azure Cosmos DB en Azure Blob-opslag moet omgaan, waardoor de operationele kosten kunnen worden verhoogd. 
 
 ## <a name="check-storage-consumed"></a>Verbruikte opslag controleren
 
-Om te controleren of het opslagverbruik van een Azure Cosmos-container, kunt u het uitvoeren van een hoofd- of GET-aanvraag voor de container en inspecteer de `x-ms-request-quota` en de `x-ms-request-usage` headers. U kunt ook als u werkt met de .NET SDK, kunt u de [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), en [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) eigenschappen om op te halen van de opslag die wordt gebruikt.
+Om het opslag verbruik van een Azure Cosmos-container te controleren, kunt u een Head uitvoeren of aanvragen ophalen voor de container en de `x-ms-request-quota` en de `x-ms-request-usage` kopteksten controleren. Als u werkt met de .NET SDK, kunt u ook de eigenschappen [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))en [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) gebruiken om de gebruikte opslag ruimte op te halen.
 
-## <a name="using-sdk"></a>Met behulp van SDK
+## <a name="using-sdk"></a>SDK gebruiken
 
 ```csharp
 // Measure the item size usage (which includes the index size)
@@ -52,12 +52,12 @@ Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vervolgens kunt u doorgaan naar meer informatie over kostenoptimalisatie in Azure Cosmos DB met de volgende artikelen:
+Daarna kunt u meer te weten komen over cost Optimization in Azure Cosmos DB met de volgende artikelen:
 
-* Meer informatie over [optimaliseren voor de ontwikkeling en testen](optimize-dev-test.md)
-* Meer informatie over [informatie over uw factuur voor Azure Cosmos DB](understand-your-bill.md)
-* Meer informatie over [doorvoer kosten optimaliseren](optimize-cost-throughput.md)
-* Meer informatie over [optimaliseren van de kosten van lees- en schrijfbewerkingen](optimize-cost-reads-writes.md)
-* Meer informatie over [de kosten van query's optimaliseren](optimize-cost-queries.md)
-* Meer informatie over [optimaliseren van de kosten van Azure Cosmos-accounts voor meerdere regio's](optimize-cost-regions.md)
+* Meer informatie over het [optimaliseren voor ontwikkeling en testen](optimize-dev-test.md)
+* Meer informatie over [uw Azure Cosmos DB factuur](understand-your-bill.md)
+* Meer informatie over het [optimaliseren van doorvoer kosten](optimize-cost-throughput.md)
+* Meer informatie over [het optimaliseren van de kosten van lees-en schrijf bewerkingen](optimize-cost-reads-writes.md)
+* Meer informatie over [het optimaliseren van de kosten van query's](optimize-cost-queries.md)
+* Meer informatie over [het optimaliseren van de kosten voor Azure Cosmos-accounts met meerdere regio's](optimize-cost-regions.md)
 

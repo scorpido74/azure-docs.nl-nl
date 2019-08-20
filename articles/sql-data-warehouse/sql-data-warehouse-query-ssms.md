@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 67707b64bb6018b322ba980535651c126a526eb7
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b96896c0366c6fba2548480b166bdb9cf6ca692c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479538"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575344"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Verbinding maken met SQL Data Warehouse met SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Gebruik SQL Server Management Studio (SSMS) om verbinding te maken met en een qu
 ## <a name="prerequisites"></a>Vereisten
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een bestaande SQL-datawarehouse. Zie [Een SQL Data Warehouse maken][Create a SQL Data Warehouse] als u er een wilt maken.
+* Een bestaande SQL Data Warehouse. Zie [Een SQL Data Warehouse maken][Create a SQL Data Warehouse] als u er een wilt maken.
 * SQL Server Management Studio (SSMS) is geïnstalleerd. [Installeer SSMS][Install SSMS] gratis als u dit nog niet hebt gedaan.
 * De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met SQL Data Warehouse][Connect to SQL Data Warehouse] om dit te vinden.
 

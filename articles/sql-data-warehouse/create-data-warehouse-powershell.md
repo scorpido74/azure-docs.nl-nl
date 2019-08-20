@@ -10,16 +10,16 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 1f800ade5c5122f0891c9122f6698b6550048c67
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479329"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574902"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Quickstart: Een Azure SQL-Data Warehouse maken en er een query op uitvoeren met Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Quickstart: Een Azure SQL Data Warehouse met Azure PowerShell maken en er een query op uitvoeren
 
-Maak snel een Azure SQL data warehouse met behulp van Azure PowerShell.
+Maak snel een Azure SQL Data Warehouse met behulp van Azure PowerShell.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -90,7 +90,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Een serverfirewallregel configureren
 
-Maak een [firewall regel op Azure SQL server-niveau](../sql-database/sql-database-firewall-configure.md) met de opdracht [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) . Met een firewall regel op server niveau kan een externe toepassing, zoals SQL Server Management Studio, of het hulp programma SQLCMD om verbinding te maken met een SQL Data Warehouse via de SQL Data Warehouse service Firewall. In het volgende voorbeeld wordt de firewall alleen geopend voor andere Azure-resources. Voor externe connectiviteit wijzigt u het IP-adres in een correct adres voor uw omgeving. Als u alle IP-adressen wilt openen, gebruikt u 0.0.0.0 als beginadres en 255.255.255.255 als eindadres.
+Maak een [firewall regel op Azure SQL server-niveau](../sql-database/sql-database-firewall-configure.md) met de opdracht [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) . Met een firewall regel op server niveau kan een externe toepassing, zoals SQL Server Management Studio of het hulp programma SQLCMD, verbinding maken met een SQL Data Warehouse via de firewall van de SQL Data Warehouse-service. In het volgende voorbeeld wordt de firewall alleen geopend voor andere Azure-resources. Voor externe connectiviteit wijzigt u het IP-adres in een correct adres voor uw omgeving. Als u alle IP-adressen wilt openen, gebruikt u 0.0.0.0 als beginadres en 255.255.255.255 als eindadres.
 
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
@@ -149,4 +149,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 U hebt nu een Data Warehouse gemaakt, een firewall regel gemaakt die is verbonden met uw data warehouse en enkele query's uitgevoerd. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
 > [!div class="nextstepaction"]
->[Gegevens laden in een SQL-datawarehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)

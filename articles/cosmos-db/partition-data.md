@@ -6,12 +6,12 @@ author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 67ad37491f71ac82ff52331d19ea92a646c80a52
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716985"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616799"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitioneren en horizon taal schalen in Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Een logische partitie definieert ook het bereik van database transacties. U kunt
 
 ## <a name="physical-partitions"></a>Fysieke partities
 
-Een Azure Cosmos-container wordt geschaald door gegevens en door voer over een groot aantal logische partities te distribueren. Intern worden een of meer logische partities toegewezen aan een fysieke partitie die bestaat uit een set replica's, ook wel een [*replicaset*](global-dist-under-the-hood.md)genoemd. Elke replicaset host een exemplaar van de Azure Cosmos DB data base-engine. Een replicaset zorgt ervoor dat de gegevens die zijn opgeslagen in de fysieke partitie, duurzaam, Maxi maal beschikbaar en consistent zijn. Een fysieke partitie ondersteunt de maximale hoeveelheid opslag-en aanvraag eenheden (RUs). Elke replica die de fysieke partitie vormt, neemt de opslag limiet van de partitie over. Alle replica's van een fysieke partitie ondersteunen gezamenlijk de door Voer die is toegewezen aan de fysieke partitie. 
+Een Azure Cosmos-container wordt geschaald door gegevens en door voer over een groot aantal logische partities te distribueren. Intern worden een of meer logische partities toegewezen aan een fysieke partitie die bestaat uit een set replica's, ook wel een [*replicaset*](global-dist-under-the-hood.md)genoemd. Elke replica set host een exemplaar van de Azure Cosmos data base-engine. Een replicaset zorgt ervoor dat de gegevens die zijn opgeslagen in de fysieke partitie, duurzaam, Maxi maal beschikbaar en consistent zijn. Een fysieke partitie ondersteunt de maximale hoeveelheid opslag-en aanvraag eenheden (RUs). Elke replica die de fysieke partitie vormt, neemt de opslag limiet van de partitie over. Alle replica's van een fysieke partitie ondersteunen gezamenlijk de door Voer die is toegewezen aan de fysieke partitie. 
 
 In de volgende afbeelding ziet u hoe logische partities worden toegewezen aan fysieke partities die globaal worden gedistribueerd:
 

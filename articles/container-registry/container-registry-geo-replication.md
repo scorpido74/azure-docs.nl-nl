@@ -6,14 +6,14 @@ author: stevelas
 manager: gwallace
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/24/2019
+ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 2fffa3b063969cbe68fb9a405f4198f15b3f9809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845200"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574387"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
 
@@ -105,6 +105,14 @@ ACR begint installatiekopieën te synchroniseren voor de geconfigureerde replica
 Geo-replicatie is een functie van de [Premium SKU](container-registry-skus.md) van Azure Container Registry. Wanneer u een register naar de gewenste regio's repliceert, worden er kosten voor het Premium-register voor elke regio gemaakt.
 
 In het voorgaande voorbeeld ging Contoso van twee registers naar één en voegde het bedrijf replica's toe aan US - oost, Canada - centraal en Europa - west. Contoso zou vier keer per maand Premium betalen, zonder extra configuratie of beheer. Elke regio haalt nu installatiekopieën lokaal op, wat zorgt voor betere prestaties en een hogere betrouwbaarheid zonder kosten voor uitgaand netwerkverkeer voor US - west naar Canada en US - oost.
+
+## <a name="troubleshoot-push-operations-with-geo-replicated-registries"></a>Problemen met push bewerkingen met geo-gerepliceerde registers oplossen
+ 
+Een docker-client die een installatie kopie naar een geo-gerepliceerd REGI ster pusht, kan niet alle afbeeldings lagen en het bijbehorende manifest naar één gerepliceerde regio pushen. Dit kan gebeuren omdat Azure-Traffic Manager register aanvragen naar het netwerk-dichtstbijzijnde gerepliceerde REGI ster stuurt. Als het REGI ster twee regio's voor replicatie in de *buurt* heeft, kunnen afbeeldings lagen en het manifest naar de twee sites worden gedistribueerd en mislukt de push bewerking wanneer het manifest is gevalideerd. Dit probleem wordt veroorzaakt door de manier waarop de DNS-naam van het REGI ster op sommige Linux-hosts wordt opgelost. Dit probleem doet zich niet voor in Windows, dat een DNS-cache aan de client zijde biedt.
+ 
+Als dit probleem optreedt, kunt u een DNS-cache aan de client zijde Toep assen, `dnsmasq` zoals op de Linux-host. Dit helpt ervoor te zorgen dat de naam van het REGI ster consistent wordt opgelost. Als u een virtuele Linux-machine in azure gebruikt om naar een REGI ster te pushen, raadpleegt u opties in [DNS-naam omzettings opties voor virtuele Linux-machines in azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns).
+
+Als u de DNS-omzetting naar de dichtstbijzijnde replica tijdens het pushen van installatie kopieën wilt optimaliseren, configureert u een geo-gerepliceerd REGI ster in dezelfde Azure-regio's als de bron van de push bewerkingen of de dichtstbijzijnde regio bij het werken buiten Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 

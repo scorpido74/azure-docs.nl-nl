@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 2d0c8cfb5e146694304d32eca27836f49d82e887
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618688"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614118"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure SQL Data Warehouse met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -400,7 +400,7 @@ Meer informatie over het gebruik van PolyBase te laden efficiënt SQL Data Wareh
 
 ## <a name="use-polybase-to-load-data-into-azure-sql-data-warehouse"></a>Gebruik van PolyBase om gegevens te laden in Azure SQL Data Warehouse
 
-Met behulp van [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) is een efficiënte manier om een grote hoeveelheid gegevens in Azure SQL Data Warehouse laden met hoge doorvoer. Met behulp van PolyBase in plaats van het standaardmechanisme voor BULKINSERT ziet u een grote toename in de doorvoer. Zie [prestaties verwijzing](copy-activity-performance.md#performance-reference) voor een gedetailleerde vergelijking. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
+Met behulp van [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) is een efficiënte manier om een grote hoeveelheid gegevens in Azure SQL Data Warehouse laden met hoge doorvoer. Met behulp van PolyBase in plaats van het standaardmechanisme voor BULKINSERT ziet u een grote toename in de doorvoer. Zie voor een overzicht met een use case [1 TB laden in Azure SQL Data Warehouse](v1/data-factory-load-sql-data-warehouse.md).
 
 * Als uw bron gegevens zich in **Azure Blob, Azure data Lake Storage gen1 of Azure data Lake Storage Gen2**bevindt en de **indeling poly base-compatibel is**, kunt u de Kopieer activiteit gebruiken om direct poly Base te activeren, zodat Azure SQL Data Warehouse de gegevens van de bron kan ophalen. Zie voor meer informatie,  **[directe kopiëren met behulp van PolyBase](#direct-copy-by-using-polybase)** .
 * Als de bron-gegevensopslag en -indeling wordt niet oorspronkelijk ondersteund door PolyBase, gebruikt u de **[gefaseerd kopiëren met behulp van PolyBase](#staged-copy-by-using-polybase)** functie in plaats daarvan. De functie gefaseerd kopiëren biedt u ook betere doorvoer. De gegevens wordt automatisch geconverteerd in PolyBase-compatibele indeling. En de gegevens worden opgeslagen in Azure Blob-opslag. Vervolgens worden de gegevens in SQL Data Warehouse geladen.

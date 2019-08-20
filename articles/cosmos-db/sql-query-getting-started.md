@@ -1,33 +1,33 @@
 ---
 title: Aan de slag met SQL-query's in Azure Cosmos DB
-description: Inleiding tot SQL-query 's
+description: Inleiding tot SQL-query's
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 87b275806c06443e37e9e92c35a38b4cde378322
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5537133b31bb63c9fa6ac3a52b344f7f1d9c4c8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342535"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614339"
 ---
-# <a name="getting-started-with-sql-queries"></a>Aan de slag met SQL-query 's
+# <a name="getting-started-with-sql-queries"></a>Aan de slag met SQL-query's
 
-Azure Cosmos DB SQL API-accounts ondersteunen een query uitvoeren op items Structured Query Language (SQL) gebruiken als een querytaal voor JSON. De ontwerpdoelstellingen van de querytaal van Azure Cosmos DB zijn:
+Azure Cosmos DB SQL-API-accounts ondersteunen het opvragen van items met behulp van Structured Query Language (SQL) als een JSON-query taal. De ontwerp doelen van de Azure Cosmos DB query taal zijn:
 
-* Ondersteuning voor SQL, een van de meest vertrouwde en populaire querytalen, in plaats van een nieuwe querytaal vruchtbare. SQL biedt een formele programmeermodel voor uitgebreide query's via JSON-items.  
+* Ondersteuning voor SQL, een van de meest bekende en populaire query talen, in plaats van een nieuwe query taal. SQL biedt een formeel programmeer model voor uitgebreide query's over JSON-items.  
 
-* JavaScript programmeermodel gebruiken als basis voor de querytaal. JavaScript typesysteem, evaluatie van de expressie en functieaanroepen zijn de hoofdmappen van de SQL-API. Deze hoofdmappen bieden een natuurlijk programmeermodel voor functies, zoals projecties van relationele, hiërarchische navigatie in JSON-items, zelf-joins, ruimtelijke query's, en het aanroepen van de gebruiker gedefinieerde functies (UDF's) die volledig in JavaScript geschreven.
+* Gebruik het programmeer model java script als basis voor de query taal. Java script-type systeem, expressie-evaluatie en functie aanroep zijn de hoofd mappen van de SQL-API. Deze roots bieden een natuurlijk programmeer model voor functies zoals relationele projecties, hiërarchische navigatie in JSON-items, Self-join's, ruimtelijke query's en het aanroepen van door de gebruiker gedefinieerde functies (Udf's), die volledig zijn geschreven in Java script.
 
-## <a name="upload-sample-data"></a>Voorbeeldgegevens uploaden
+## <a name="upload-sample-data"></a>Voorbeeld gegevens uploaden
 
-Maak een container met de naam in uw SQL API Cosmos DB-account `Families`. Maak twee eenvoudige JSON-items in de container. U kunt de meeste van de voorbeeldquery's uitvoeren in de Azure Cosmos DB-query-documenten met behulp van deze gegevensset.
+Maak in uw SQL API-Cosmos DB account een container met `Families`de naam. Maak twee eenvoudige JSON-items in de container. U kunt de meeste voorbeeld query's uitvoeren in de Azure Cosmos DB query-documenten met behulp van deze gegevensset.
 
 ### <a name="create-json-items"></a>JSON-items maken
 
-De volgende code maakt twee eenvoudige JSON-items over families. De eenvoudige JSON-items voor de Andersen en Wakefield families bevatten ouders, kinderen en hun huisdieren, adres en registratie-informatie. Het eerste item heeft tekenreeksen, getallen, Booleaanse waarden, matrices en geneste eigenschappen.
+Met de volgende code worden twee eenvoudige JSON-onderdelen gemaakt over families. De eenvoudige JSON-items voor de families Splinter en Wakefield bevatten ouders, kinderen en hun huis dieren, adres en registratie gegevens. Het eerste item heeft teken reeksen, getallen, Booleaanse waarden, matrices en geneste eigenschappen.
 
 
 ```json
@@ -52,7 +52,7 @@ De volgende code maakt twee eenvoudige JSON-items over families. De eenvoudige J
 }
 ```
 
-Maakt gebruik van het tweede item `givenName` en `familyName` in plaats van `firstName` en `lastName`.
+Het tweede item maakt `givenName` gebruik `familyName` van en `firstName` in `lastName`plaats van en.
 
 ```json
 {
@@ -84,11 +84,11 @@ Maakt gebruik van het tweede item `givenName` en `familyName` in plaats van `fir
 }
 ```
 
-### <a name="query-the-json-items"></a>Query uitvoeren op de JSON-items
+### <a name="query-the-json-items"></a>De JSON-items opvragen
 
-Probeer enkele query's op basis van de JSON-gegevens om te begrijpen van enkele van de belangrijkste aspecten van Azure Cosmos DB SQL-querytaal.
+Probeer enkele query's uit op de JSON-gegevens om inzicht te krijgen in de belangrijkste aspecten van de SQL-query taal van Azure Cosmos DB.
 
-De volgende query retourneert de items waar de `id` veld komt overeen met `AndersenFamily`. Omdat het een `SELECT *` query, de uitvoer van de query is de volledige JSON-object. Zie voor meer informatie over de syntaxis van SELECT [SELECT-instructie](sql-query-select.md). 
+De volgende query retourneert de items waarbij het `id` veld overeenkomt. `AndersenFamily` Omdat het een `SELECT *` query is, is de uitvoer van de query het volledige JSON-item. Zie [instructie SELECT](sql-query-select.md)voor meer informatie over de syntaxis SELECT. 
 
 ```sql
     SELECT *
@@ -96,7 +96,7 @@ De volgende query retourneert de items waar de `id` veld komt overeen met `Ander
     WHERE f.id = "AndersenFamily"
 ```
 
-Resultaten van de query zijn: 
+De query resultaten zijn: 
 
 ```json
     [{
@@ -118,7 +118,7 @@ Resultaten van de query zijn:
     }]
 ```
 
-De volgende query uit zet de JSON-uitvoer in een andere vorm. De query projecteert een nieuwe JSON `Family` object met twee geselecteerde velden, `Name` en `City`, wanneer de plaats hetzelfde als de status is. "NY, NY" komt overeen met deze aanvraag.
+Met de volgende query wordt de JSON-uitvoer in een andere vorm opgemaakt. De query projecteert een nieuw `Family` JSON- `Name` object met twee geselecteerde velden `City`en, wanneer de adres plaats hetzelfde is als de status. "NY, NY" komt overeen met dit geval.
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -126,7 +126,7 @@ De volgende query uit zet de JSON-uitvoer in een andere vorm. De query projectee
     WHERE f.address.city = f.address.state
 ```
 
-Resultaten van de query zijn:
+De query resultaten zijn:
 
 ```json
     [{
@@ -137,7 +137,7 @@ Resultaten van de query zijn:
     }]
 ```
 
-De volgende query retourneert alle opgegeven namen van kinderen in de familie waarvan `id` komt overeen met `WakefieldFamily`, geordende per stad.
+Met de volgende query worden alle opgegeven namen van onderliggende items geretourneerd in de `id` familie `WakefieldFamily`waarvan de treffers zijn geordend op basis van de plaats.
 
 ```sql
     SELECT c.givenName
@@ -158,15 +158,15 @@ De resultaten zijn:
 
 ## <a name="remarks"></a>Opmerkingen
 
-De voorgaande voorbeelden tonen verschillende aspecten van de querytaal van Cosmos DB:  
+In de voor gaande voor beelden worden verschillende aspecten van de Cosmos DB query taal weer gegeven:  
 
-* Omdat SQL API op JSON-waarden werkt, behandelt structuur vormgegeven entiteiten in plaats van rijen en kolommen. U kunt verwijzen naar de structuurknooppunten op elke willekeurige diepte zoals `Node1.Node2.Node3…..Nodem`, vergelijkbaar met de verwijzing tweedelige van `<table>.<column>` in ANSI SQL.
+* Aangezien de SQL-API werkt op JSON-waarden, worden er in plaats van rijen en kolommen getreede entiteiten behandeld. U kunt naar de structuur knooppunten op elke wille keurige diepte `Node1.Node2.Node3…..Nodem`verwijzen, net als bij de tweedelige `<table>.<column>` verwijzing van in ANSI SQL.
 
-* Omdat de querytaal met gegevens zonder schema werkt, moet het typesysteem dynamisch zijn gebonden. Een expressie kan verschillende typen voor verschillende elementen opleveren. Het resultaat van een query is een geldige JSON-waarde, maar staat niet vast van een vast schema.  
+* Omdat de query taal werkt met schemaloze gegevens, moet het type systeem dynamisch worden gebonden. Een expressie kan verschillende typen voor verschillende elementen opleveren. Het resultaat van een query is een geldige JSON-waarde, maar is niet gegarandeerd een vast schema.  
 
-* Azure Cosmos DB biedt alleen ondersteuning voor JSON-items. Het systeem en voor expressies zijn beperkt tot alleen bekommeren om JSON-typen. Zie voor meer informatie de [JSON-specificatie](https://www.json.org/).  
+* Azure Cosmos DB biedt alleen ondersteuning voor JSON-items. Het type systeem en expressies zijn beperkt tot het verwerken van JSON-typen. Zie voor meer informatie de [JSON-specificatie](https://www.json.org/).  
 
-* Een Cosmos DB-container is een verzameling JSON-items zonder schema. De relaties binnen en tussen container items worden impliciet vastgelegd door containment, niet door de primaire sleutel en refererende sleutels relaties. Deze functie is belangrijk voor de intra-item wordt verderop in dit artikel besproken.
+* Een Cosmos-container is een schema-gratis verzameling van JSON-items. De relaties binnen en in container items worden impliciet vastgelegd door containment, niet op basis van primaire sleutel en refererende-sleutel relaties. Deze functie is belang rijk voor de objecten die verderop in dit artikel worden besproken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

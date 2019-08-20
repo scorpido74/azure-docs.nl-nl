@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ad3c446df2f2ce62024dfdda589669653f65ef4
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488713"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614219"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Een HDInsight-cluster met Enterprise Security Package configureren met behulp van Azure Active Directory Domain Services
 
@@ -31,7 +31,7 @@ In dit artikel leert u hoe u een HDInsight-cluster met ESP kunt configureren met
 >
 > Als de cluster opslag Azure Blob Storage (WASB) is, moet u MFA niet uitschakelen.
 
-Het inschakelen van AzureAD-DS is een vereiste voordat u een HDInsight-cluster met ESP kunt maken. Zie [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../../active-directory-domain-services/create-instance.md)voor meer informatie. 
+Het inschakelen van AzureAD-DS is een vereiste voordat u een HDInsight-cluster met ESP kunt maken. Zie [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md)voor meer informatie. 
 
 Als Azure AD-DS is ingeschakeld, beginnen alle gebruikers en objecten standaard met het synchroniseren van Azure Active Directory (AAD) naar Azure AD DS. De lengte van de synchronisatie bewerking is afhankelijk van het aantal objecten in azure AD. De synchronisatie kan enkele dagen duren voor honderd duizenden objecten. 
 
@@ -39,7 +39,7 @@ De domein naam die u met Azure AD-DS gebruikt, mag Maxi maal 39 tekens lang zijn
 
 U kunt ervoor kiezen om alleen de groepen te synchroniseren die toegang nodig hebben tot de HDInsight-clusters. Deze optie om alleen bepaalde groepen te synchroniseren, wordt *scoped Synchronization*genoemd. Zie [de scoped Synchronization from Azure AD configureren voor instructies in uw beheerde domein](../../active-directory-domain-services/scoped-synchronization.md) .
 
-Wanneer u beveiligd LDAP inschakelt, plaatst u de domein naam in de onderwerpnaam en de alternatieve naam voor het onderwerp in het certificaat. Als uw domein naam bijvoorbeeld *contoso100.onmicrosoft.com*is, zorgt u ervoor dat de naam van de certificaat houder en de alternatieve naam van het onderwerp bestaat. Zie [secure LDAP configureren voor een beheerd domein van Azure AD-DS](../../active-directory-domain-services/configure-ldaps.md)voor meer informatie. Hieronder ziet u een voor beeld van het maken van een zelfondertekend certificaat en de domein naam (*contoso100.onmicrosoft.com*) in de onderwerpnaam en DnsName (alternatieve naam voor het onderwerp):
+Wanneer u beveiligd LDAP inschakelt, plaatst u de domein naam in de onderwerpnaam en de alternatieve naam voor het onderwerp in het certificaat. Als uw domein naam bijvoorbeeld *contoso100.onmicrosoft.com*is, zorgt u ervoor dat de naam van de certificaat houder en de alternatieve naam van het onderwerp bestaat. Zie [secure LDAP configureren voor een beheerd domein van Azure AD-DS](../../active-directory-domain-services/tutorial-configure-ldaps.md)voor meer informatie. Hieronder ziet u een voor beeld van het maken van een zelfondertekend certificaat en de domein naam (*contoso100.onmicrosoft.com*) in de onderwerpnaam en DnsName (alternatieve naam voor het onderwerp):
 
 ```powershell
 $lifetime=Get-Date
@@ -70,7 +70,7 @@ Zodra de beheerde identiteit is gemaakt en de juiste rol heeft gekregen, kan de 
 ## <a name="networking-considerations"></a>Aandachtspunten voor netwerken
 
 > [!NOTE]  
-> Azure AD-DS moet worden geïmplementeerd in een op Azure Resource Manager (ARM) gebaseerd vNET. Klassieke virtuele netwerken worden niet ondersteund voor Azure AD-DS. Raadpleeg [Azure Active Directory Domain Services met de Azure Portal inschakelen](../../active-directory-domain-services/active-directory-ds-getting-started-network.md) voor meer informatie.
+> Azure AD-DS moet worden geïmplementeerd in een op Azure Resource Manager gebaseerd vNET. Klassieke virtuele netwerken worden niet ondersteund voor Azure AD-DS. Raadpleeg [Azure Active Directory Domain Services met de Azure Portal inschakelen](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) voor meer informatie.
 
 Nadat u Azure AD-DS hebt ingeschakeld, wordt een lokale Domain Name Service (DNS)-server uitgevoerd op de AD-Virtual Machines (Vm's). Configureer uw Azure AD-DS-Virtual Network (VNET) voor het gebruik van deze aangepaste DNS-servers. Als u de juiste IP-adressen wilt vinden, selecteert u **Eigenschappen** onder de categorie **beheren** en bekijkt u de IP-adressen onder **IP-adres op Virtual Network**.
 

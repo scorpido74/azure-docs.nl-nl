@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619061"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575505"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problemen met Azure SQL Data Warehouse oplossen
 Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oplossing.
@@ -24,7 +24,7 @@ Dit artikel bevat een lijst met veelvoorkomende problemen met de probleem oploss
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | De aanmelding is mislukt voor de gebruiker ' NT AUTHORITY\ANONYMOUS-aanmelding '. (Microsoft SQL Server, Error: 18456) | Deze fout treedt op wanneer een AAD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  U kunt dit probleem oplossen door de SQL Data Warehouse op te geven waarmee u verbinding wilt maken op het moment van de verbinding of door de gebruiker toe te voegen aan de hoofd database.  Zie het artikel over [beveiligings overzicht][Security overview] voor meer informatie. |
-| De server-principal ' MyUserName ' heeft geen toegang tot de data base ' Master ' in de huidige beveiligings context. Kan de standaard database van de gebruiker niet openen. Aanmelding mislukt. De aanmelding is mislukt voor de gebruiker MyUserName. (Microsoft SQL Server, Error: 916) | Deze fout treedt op wanneer een AAD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  U kunt dit probleem oplossen door de SQL Data Warehouse op te geven waarmee u verbinding wilt maken op het moment van de verbinding of door de gebruiker toe te voegen aan de hoofd database.  Zie het artikel over [beveiligings overzicht][Security overview] voor meer informatie. |
+| De server-principal ' MyUserName ' heeft geen toegang tot de data base ' Master ' in de huidige beveiligings context. Kan de standaard database van de gebruiker niet openen. De aanmelding is mislukt. De aanmelding is mislukt voor de gebruiker MyUserName. (Microsoft SQL Server, Error: 916) | Deze fout treedt op wanneer een AAD-gebruiker probeert verbinding te maken met de hoofd database, maar geen gebruiker heeft in de master-data base.  U kunt dit probleem oplossen door de SQL Data Warehouse op te geven waarmee u verbinding wilt maken op het moment van de verbinding of door de gebruiker toe te voegen aan de hoofd database.  Zie het artikel over [beveiligings overzicht][Security overview] voor meer informatie. |
 | CTAIP-fout                                                  | Deze fout kan optreden als er een aanmelding is gemaakt op de SQL Server-hoofd database, maar niet in de SQL Data Warehouse data base.  Als deze fout optreedt, bekijkt u het artikel overzicht van de [beveiliging][Security overview] .  In dit artikel wordt uitgelegd hoe u een aanmelding en gebruiker op Master maakt en hoe u een gebruiker maakt in de SQL Data Warehouse data base. |
 | Geblokkeerd door de firewall                                          | Azure SQL-data bases worden beveiligd door firewalls op server-en database niveau om ervoor te zorgen dat alleen bekende IP-adressen toegang hebben tot een Data Base. De firewalls zijn standaard beveiligd. Dit betekent dat u een expliciete en een IP-adres of bereik van adressen moet inschakelen voordat u verbinding kunt maken.  Als u uw firewall voor toegang wilt configureren, volgt u de stappen in de [Server firewall toegang configureren voor uw client-IP][Configure server firewall access for your client IP] in de instructies voor het [inrichten][Provisioning instructions]. |
 | Kan geen verbinding maken met het hulp programma of stuur programma                           | SQL Data Warehouse wordt aangeraden [SSMS][SSMS], [SSDT for Visual Studio][SSDT for Visual Studio]of [Sqlcmd][sqlcmd] te gebruiken om uw gegevens op te vragen. Zie [Stuur Programma's voor Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] en [verbinding maken met Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] -artikelen voor meer informatie over Stuur Programma's en het maken van verbinding met SQL Data Warehouse. |

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557343"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574964"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Gegevenswetenschap met een Linux Data Science Virtual Machine in Azure
 Deze procedure ziet u hoe u enkele algemene datatechnologietaken met de Linux Data Science VM uitvoert. De Linux Data Science Virtual Machine (DSVM) is een installatiekopie van een virtuele machine op Azure die vooraf worden geïnstalleerd met een verzameling hulpprogramma's die doorgaans gebruikt voor gegevensanalyse en machine learning is beschikbaar. De belangrijke software-componenten zijn ingedeeld de [Linux Data Science Virtual Machine inrichten](linux-dsvm-intro.md) onderwerp. De VM-installatiekopie maakt het gemakkelijk om te beginnen gegevenswetenschap in minuten, zonder te installeren en configureren van elk van de hulpprogramma's afzonderlijk. U kunt eenvoudig opschalen van de virtuele machine, indien nodig, en stoppen wanneer deze niet in gebruik. Deze resource is zo flexibel en kostenefficiënt.
@@ -229,6 +229,20 @@ Om het te proberen op de eerste 10 rijen van de test instellen:
 
     consume(ep, smallTestSet[1:10, ])
 
+<a name="deep-learning"></a>
+
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Deep Learning-zelfstudies en -scenario's
+
+Naast de voorbeelden framework op basis van is een set van uitgebreide scenario's ook beschikbaar die zijn gevalideerd op de DLVM. Deze scenario's kunt u snel uw ontwikkeling van deep learning-toepassingen in domeinen, zoals afbeeldingen en tekst/language understanding. Meer zelfstudies voor end-to-end in verschillende domeinen en -technologie blijft worden toegevoegd.   
+
+
+- Het [uitvoeren van Neural-netwerken in verschillende Frameworks](https://github.com/ilkarman/DeepLearningFrameworks): Een uitgebreid overzicht waarin wordt uitgelegd hoe u code van het ene naar het andere Framework migreert. Ook zien hoe om te vergelijken model en de prestaties van de tijd van frameworks uitvoeren. 
+
+- [Een hand leiding met instructies voor het bouwen van een end-to-end oplossing voor het detecteren van producten in installatie kopieën](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Image detectie is een techniek waarmee objecten binnen afbeeldingen kunnen worden gevonden en geclassificeerd. Deze technologie is de mogelijkheid om enorme voordelen in veel echte leven domeinen. Bijvoorbeeld, kunnen detailhandelaren deze techniek gebruiken om te bepalen welk product een klant is opgehaald uit de plank. Deze informatie helpt op zijn beurt winkels productinventaris beheren. 
+
+- [Deep learning voor audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) in deze zelfstudie leert u hoe u met het trainen van een deep learning-model voor detectie audio gebeurtenis op de [stedelijke geluiden gegevensset](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) en biedt een overzicht van hoe u met audiogegevens werkt.
+
+- [Classificatie van tekst documenten](https://github.com/anargyri/lstm_han): In dit scenario ziet u hoe u twee verschillende Neural-netwerk architecturen bouwt en traint: Hiërarchische aandacht voor netwerk en LSTM-netwerk (Long Short Term Memory). Deze neurale netwerken voor het gebruik van de Keras-API voor deep learning voor het classificeren van documenten. Keras is een front-end tot drie van de populairste diep gaande lessen: Microsoft Cognitive Toolkit, tensor flow en Theano.
 
 ## <a name="use-other-tools-available"></a>Andere hulpprogramma's gebruiken
 De resterende secties laten zien hoe u sommige van de beheerhulpprogramma's geïnstalleerd op de Linux Data Science VM. Hier volgt de lijst met hulpprogramma's besproken:

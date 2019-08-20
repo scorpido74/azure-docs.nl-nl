@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602029"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616676"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -105,7 +105,7 @@ Zie de [resource token Broker-app](https://github.com/Azure/azure-documentdb-dot
 <a id="users"></a>
 
 ## <a name="users"></a>Gebruikers
-Cosmos DB gebruikers zijn gekoppeld aan een Cosmos DB-Data Base.  Elke Data Base kan nul of meer Cosmos DB gebruikers bevatten.  In het volgende code voorbeeld ziet u hoe u een Cosmos DB-gebruikers bron maakt.
+Cosmos DB gebruikers zijn gekoppeld aan een Cosmos-data base.  Elke Data Base kan nul of meer Cosmos DB gebruikers bevatten.  In het volgende code voorbeeld ziet u hoe u een Cosmos DB-gebruikers bron maakt.
 
 ```csharp
 //Create a user.
@@ -193,5 +193,5 @@ Azure Cosmos DB kunt u zoeken, selecteren, wijzigen en verwijderen van persoonli
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [Cosmos DB voor meer informatie over Cosmos DB database beveiliging: Database beveiliging](database-security.md).
+* Zie [Cosmos DB voor meer informatie over Cosmos-database beveiliging: Database beveiliging](database-security.md).
 * Zie [Access Control op Azure Cosmos DB resources](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)voor meer informatie over het maken van Azure Cosmos DB autorisatie tokens.

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952038"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617349"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteunings matrix voor Azure VM-back-up
 U kunt de [Azure backup-service](backup-overview.md) gebruiken voor het maken van een back-up van on-premises machines en werk belastingen, en virtuele machines van Azure (vm's). Dit artikel bevat een overzicht van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met Azure Backup.
@@ -42,7 +42,7 @@ Meer informatie over back-ups [met behulp van een back-upserver](backup-architec
 Back-up inschakelen wanneer u een Windows Azure-VM maakt | Ondersteund voor: <br/><br/> -Windows Server 2019 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2016 (Data Center/Data Center core/Standard) <br/><br/> -Windows Server 2012 R2 (Data Center/Standard) <br/><br/> -Windows Server 2008 R2 (RTM en SP1 Standard)
 Back-up inschakelen bij het maken van een virtuele Linux-machine | Ondersteund voor:<br/><br/> -Ubuntu-Server: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> Debian 8, 9<br/><br/> CentOS 6,9, 7,3<br/><br/> -Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Een back-up maken van een VM die wordt afgesloten/offline VM | Ondersteund.<br/><br/> Moment opname is alleen vastlopen consistent, niet voor app-consistent.
-Back-ups maken van schijven na migratie naar Managed disks | Ondersteund.<br/><br/> De back-up blijft werken. U hoeft geen actie te ondernemen.
+Back-ups maken van schijven na migratie naar Managed disks | Ondersteund.<br/><br/> De back-up blijft werken. Geen actie vereist.
 Back-up van beheerde schijven maken na inschakelen van vergren deling van resource groep | Wordt niet ondersteund.<br/><br/> Azure Backup kunt de oudere herstel punten niet verwijderen, waardoor de back-ups mislukken wanneer de maximum limiet van herstel punten is bereikt.
 Back-upbeleid voor een VM wijzigen | Ondersteund.<br/><br/> Er wordt een back-up van de VM gemaakt met behulp van de instellingen voor het plannen en bewaren van het nieuwe beleid. Als de Bewaar instellingen worden uitgebreid, worden de bestaande herstel punten gemarkeerd en bewaard. Als ze worden gereduceerd, worden de bestaande herstel punten verwijderd bij de volgende opschoon taak en uiteindelijk gewist.
 Een back-uptaak annuleren | Ondersteund tijdens het momentopname proces.<br/><br/> Niet ondersteund wanneer de moment opname wordt overgedragen naar de kluis.
@@ -157,7 +157,7 @@ Herstellen van op zones vastgemaakte Vm's | Ondersteund (voor VM waarvan een bac
 
 **Onderdeel** | **Ondersteuning**
 --- | ---
-Azure VM-gegevensschijven | Maak een back-up van een virtuele machine met 16 of minder gegevens schijven. <br/><br/> Ondersteunt schijf grootten tot 4 TB.<br/><br/>Als u zich wilt aanmelden voor een beperkte open bare preview van Azure Backup ondersteuning voor grote schijven voor schijven die groter zijn dan 4 TB en tot Maxi maal 30 TB groot zijn, raadpleegt u [een overzicht van Azure VM-back-up](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+Azure VM-gegevensschijven | Maak een back-up van een virtuele machine met 16 of minder gegevens schijven. <br/><br/> Ondersteunt schijf grootten tot 4 TB.<br/><br/>Raadpleeg dit [artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)als u zich wilt aanmelden voor een beperkte open bare preview van Azure backup ondersteuning voor grote schijven voor schijven die groter zijn dan 4 TB en tot Maxi maal 30 TB groot zijn.
 Grootte van de gegevens schijf | Afzonderlijke schijf mag maximaal 4095 GB zijn.<br/><br/>Raadpleeg dit [artikel](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)als u zich wilt aanmelden voor een beperkte open bare preview van Azure backup ondersteuning voor grote schijven voor schijven die groter zijn dan 4 TB tot 30TB.
 Opslagtype | Standard-HDD, Standard-SSD Premium-SSD.
 Managed Disks | Ondersteund.

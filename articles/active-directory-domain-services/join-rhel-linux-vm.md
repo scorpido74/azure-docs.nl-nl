@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: d0acbd02103ebd8dd3819579c85b4ddac22dba78
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0e3803edd47c3589652b3fedecd12125e3ff40b7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773100"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612795"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Een virtuele Red Hat Enterprise Linux 7-machine toevoegen aan een beheerd domein
 In dit artikel wordt beschreven hoe u een virtuele machine van Red Hat Enterprise Linux (RHEL) 7 kunt koppelen aan een Azure AD Domain Services beheerd domein.
@@ -31,9 +31,9 @@ In dit artikel wordt beschreven hoe u een virtuele machine van Red Hat Enterpris
 Voor het uitvoeren van de taken die in dit artikel worden vermeld, hebt u het volgende nodig:  
 1. Een geldig **Azure-abonnement**.
 2. Een **Azure AD-Directory** : gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-3. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](create-instance.md)worden beschreven.
-4. Zorg ervoor dat u de IP-adressen van het beheerde domein hebt geconfigureerd als de DNS-servers voor het virtuele netwerk. Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](active-directory-ds-getting-started-dns.md) voor meer informatie.
-5. Voer de stappen uit die nodig zijn om [wacht woorden te synchroniseren met uw Azure AD Domain Services beheerde domein](active-directory-ds-getting-started-password-sync.md).
+3. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](tutorial-create-instance.md)worden beschreven.
+4. Zorg ervoor dat u de IP-adressen van het beheerde domein hebt geconfigureerd als de DNS-servers voor het virtuele netwerk. Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) voor meer informatie.
+5. Voer de stappen uit die nodig zijn om [wacht woorden te synchroniseren met uw Azure AD Domain Services beheerde domein](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
 
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Een Red Hat Enterprise Linux virtuele machine inrichten
@@ -64,10 +64,10 @@ sudo vi /etc/hosts
 Voer in het bestand hosts de volgende waarde in:
 
 ```console
-127.0.0.1 contoso-rhel.contoso100.com contoso-rhel
+127.0.0.1 contoso-rhel.contoso.com contoso-rhel
 ```
 
-Hier is ' contoso100.com ' de DNS-domein naam van uw beheerde domein. Contoso-RHEL is de hostnaam van de virtuele RHEL-machine die u aan het beheerde domein toevoegt.
+Hier is ' contoso.com ' de DNS-domein naam van uw beheerde domein. Contoso-RHEL is de hostnaam van de virtuele RHEL-machine die u aan het beheerde domein toevoegt.
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Vereiste pakketten installeren op de virtuele Linux-machine
@@ -84,7 +84,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
 1. Ontdek het door AAD Domain Services beheerde domein. Typ de volgende opdracht in uw SSH-terminal:
 
     ```console
-    sudo realm discover CONTOSO100.COM
+    sudo realm discover contoso.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
     > * Geef de domein naam in hoofd letters op, anders kinit mislukt.
 
     ```console
-    kinit bob@CONTOSO100.COM
+    kinit bob@contoso.COM
     ```
 
 3. Voeg de computer toe aan het domein. Typ de volgende opdracht in uw SSH-terminal:
@@ -111,7 +111,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
     > Als uw virtuele machine geen lid kan worden van het domein, moet u ervoor zorgen dat uitgaande Kerberos-verkeer op TCP + UDP-poort 464 naar het subnet van het virtuele netwerk voor uw door Azure AD DS beheerd domein is toegestaan voor de netwerk beveiligings groep van de virtuele machine.
 
     ```console
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
+    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
     ```
 
 U moet een bericht ontvangen (de computer is geregistreerd bij realm) wanneer de computer is toegevoegd aan het beheerde domein.
@@ -120,10 +120,10 @@ U moet een bericht ontvangen (de computer is geregistreerd bij realm) wanneer de
 ## <a name="verify-domain-join"></a>Domein deelname verifiëren
 Controleer of de computer is toegevoegd aan het beheerde domein. Maak verbinding met het domein dat is gekoppeld aan RHEL VM met een andere SSH-verbinding. Gebruik een domein gebruikers account en controleer of het gebruikers account correct is opgelost.
 
-1. Typ in de SSH-terminal de volgende opdracht om verbinding te maken met het domein dat is gekoppeld aan de virtuele RHEL-machine via SSH. Gebruik een domein account dat tot het beheerde domein behoort (bijvoorbeeld 'bob@CONTOSO100.COM' in dit geval).
+1. Typ in de SSH-terminal de volgende opdracht om verbinding te maken met het domein dat is gekoppeld aan de virtuele RHEL-machine via SSH. Gebruik een domein account dat tot het beheerde domein behoort (bijvoorbeeld 'bob@contoso.COM' in dit geval).
     
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-rhel.contoso100.com
+    ssh -l bob@contoso.COM contoso-rhel.contoso.com
     ```
 
 2. Typ in de SSH-terminal de volgende opdracht om te controleren of de basismap juist is geïnitialiseerd.
@@ -140,10 +140,10 @@ Controleer of de computer is toegevoegd aan het beheerde domein. Maak verbinding
 
 
 ## <a name="troubleshooting-domain-join"></a>Problemen met domein deelname oplossen
-Raadpleeg het artikel [problemen oplossen van domein toevoegen](join-windows-vm.md#troubleshoot-joining-a-domain) .
+Raadpleeg het artikel [problemen oplossen van domein toevoegen](join-windows-vm.md#troubleshoot-domain-join-issues) .
 
 ## <a name="related-content"></a>Gerelateerde inhoud
-* [Azure AD Domain Services aan de slag-hand leiding](create-instance.md)
+* [Azure AD Domain Services aan de slag-hand leiding](tutorial-create-instance.md)
 * [Een virtuele machine met Windows Server toevoegen aan een door Azure AD Domain Services beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Aanmelden bij een virtuele machine met Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * [Kerberos installeren](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)

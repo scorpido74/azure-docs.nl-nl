@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566065"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611915"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Bestaande Azure Service Bus Standard-naam ruimten migreren naar de Premium-laag
 Voorheen beAzure Service Bus de aangeboden naam ruimten alleen in de laag standaard. Naam ruimten zijn instellingen voor multi tenants die zijn geoptimaliseerd voor omgevingen met lage door Voer en ontwikkel aars. De Premium-laag biedt toegewezen bronnen per naam ruimte voor voorspel bare latentie en verhoogde door voer tegen een vaste prijs. De Premium-laag is geoptimaliseerd voor omgevingen met hoge door Voer en productie waarvoor extra bedrijfs functies nodig zijn.
@@ -115,7 +115,8 @@ Migratie met behulp van de Azure Portal heeft dezelfde logische stroom als migra
    1. Nadat de synchronisatie is voltooid, selecteert u **volgende** onder aan de pagina.
 
 1. Bekijk de wijzigingen op de pagina samen vatting. Selecteer **volledige migratie** om te scha kelen tussen naam ruimten en de migratie te volt ooien.
-    ![Switch naam ruimte: menu][] switch de pagina bevestiging wordt weer gegeven wanneer de migratie is voltooid.
+    ![Switch naam ruimte: menu switch][]  
+    De bevestigings pagina wordt weer gegeven wanneer de migratie is voltooid.
     ![Switch naam ruimte-geslaagd][]
 
 ## <a name="caveats"></a>Waarschuwingen

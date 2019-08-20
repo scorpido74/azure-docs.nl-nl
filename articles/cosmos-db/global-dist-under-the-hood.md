@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 849c3a745de08e7cf8ff7f1b8bb237a6d0f54395
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384160"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615345"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distributie van globale gegevens met Azure Cosmos DB-onder de motorkap
 
@@ -32,9 +32,9 @@ Zoals in de volgende afbeelding wordt weer gegeven, worden de gegevens binnen ee
 
 ![Fysieke partities](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
 
-Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde replicaset . Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomt met de fysieke partities dynamisch worden geplaatst en taakverdeling tussen de computers binnen een cluster en datacentrums binnen een regio.  
+Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde replicaset. Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomt met de fysieke partities dynamisch worden geplaatst en taakverdeling tussen de computers binnen een cluster en datacentrums binnen een regio.  
 
-Een replica wordt een unieke behoort tot een Azure Cosmos DB-tenant. Elke replica als host fungeert voor een exemplaar van de Cosmos-DB [database-engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), die de resources, evenals de bijbehorende indexen beheert. De database-engine van Cosmos DB is van invloed op een atom-record-sequence ' (ARS) gebaseerde typesysteem. De engine is neutraal met het concept van een schema, waardoor de grens tussen de waarden van de structuur en het exemplaar van records wordt vervaagd. Cosmos DB realiseert volledige schema agnosticism door alles bij opname automatisch te indexeren op een efficiënte manier, waardoor gebruikers kunnen hun wereldwijd gedistribueerde gegevens op te vragen zonder dat u hoeft te bekommeren om schema's of indexbeheer.
+Een replica wordt een unieke behoort tot een Azure Cosmos DB-tenant. Elke replica als host fungeert voor een exemplaar van de Cosmos-DB [database-engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), die de resources, evenals de bijbehorende indexen beheert. De Cosmos-data base-engine wordt uitgevoerd op een ARS-systeem (Atom-record-Sequence). De engine is neutraal met het concept van een schema, waardoor de grens tussen de waarden van de structuur en het exemplaar van records wordt vervaagd. Cosmos DB realiseert volledige schema agnosticism door alles bij opname automatisch te indexeren op een efficiënte manier, waardoor gebruikers kunnen hun wereldwijd gedistribueerde gegevens op te vragen zonder dat u hoeft te bekommeren om schema's of indexbeheer.
 
 De Cosmos-data base-engine bestaat uit onderdelen, zoals de implementatie van verschillende coördinatie primitieven, taal runtimes, de query processor en de opslag-en indexerings subsystemen die verantwoordelijk zijn voor transactionele opslag en het indexeren van gegevens, respectievelijk. Voor duurzaamheid en hoge beschikbaarheid, de database-engine zich blijft voordoen de gegevens en index op SSD's en repliceert dit met de database-engine-exemplaren in de replica-vormen respectievelijk. Grotere tenants komen overeen met een hogere schaal van door Voer en opslag en hebben een grotere of meer replica's of beide. Elk onderdeel van het systeem is volledig asynchroon: Er is geen thread blokkeert ooit en elke thread werkt tijdelijke zonder dat er geen onnodige thread-switches. Frequentielimiet en back-druk zijn in de hele stack van het toegangsbeheer tot alle i/o-paden gekoppeld. De Cosmos-data base-engine is ontworpen om gebruik te maken van nauw keurige gelijktijdigheid en om hoge door voer te bieden terwijl u binnen frugale hoeveel heden systeem bronnen werkt.
 
@@ -50,7 +50,7 @@ Een fysieke partitie wordt gematerialeerd als een met zichzelf beheerde en dynam
 
 ## <a name="partition-sets"></a>Partitie-sets
 
-Een groep fysieke partities, één van elk geconfigureerd met de Cosmos-database regio's, bestaat uit het beheren van dezelfde set sleutels die worden gerepliceerd in alle geconfigureerde regio's. Deze hogere coördinatie primitieve wordt een partitieset  genoemd: een geografisch gedistribueerde dynamische overlay van fysieke partities die een bepaalde set sleutels beheert. Terwijl een bepaalde fysieke partitie (een replicaset) binnen een cluster ligt, kan een partitieset clusters, data centers en geografische regio's omvatten, zoals wordt weer gegeven in de onderstaande afbeelding:  
+Een groep fysieke partities, één van elk geconfigureerd met de Cosmos-database regio's, bestaat uit het beheren van dezelfde set sleutels die worden gerepliceerd in alle geconfigureerde regio's. Deze hogere coördinatie primitieve wordt een partitieset genoemd: een geografisch gedistribueerde dynamische overlay van fysieke partities die een bepaalde set sleutels beheert. Terwijl een bepaalde fysieke partitie (een replicaset) binnen een cluster ligt, kan een partitieset clusters, data centers en geografische regio's omvatten, zoals wordt weer gegeven in de onderstaande afbeelding:  
 
 ![Partitiesets](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
@@ -77,7 +77,7 @@ Of u uw Cosmos-data base met één of meerdere schrijf regio's configureert, u k
 
 Met de consistentie van de gebonden veroudering wordt gegarandeerd dat alle Lees bewerkingen binnen *K* -voor voegsels vallen of *T* seconden van de laatste schrijf bewerking in een van de regio's. Bovendien zijn Lees bewerkingen met gebonden verouderde consistentie gegarandeerd een monotone en met consistente voorvoegsel garanties. Het protocol anti entropie werkt op een manier beperkt in de snelheid en zorgt ervoor dat de voorvoegsels niet worden en de tegendruk op de schrijfbewerkingen niet hoeft te worden toegepast. Met sessie consistentie wordt de monotone Lees-, monotone schrijf-, lees-en schrijf bewerkingen gegarandeerd. Voor de data bases die zijn geconfigureerd met sterke consistentie, zijn de voor delen (lage schrijf latentie, hoge schrijf Beschik baarheid) van meerdere schrijf regio's niet van toepassing, vanwege synchrone replicatie tussen regio's.
 
-De semantiek van de vijf consistentie modellen in Cosmos DB worden [hier](consistency-levels.md)beschreven en mathematisch beschreven met behulp van een TLA [-specificatie op](https://github.com/Azure/azure-cosmos-tla)hoog niveau.
+De semantiek van de vijf consistentie modellen in Cosmos DB worden [hier](consistency-levels.md)beschreven en mathematisch beschreven met behulp van een TLA-specificatie op hoog [](https://github.com/Azure/azure-cosmos-tla)niveau.
 
 ## <a name="next-steps"></a>Volgende stappen
 

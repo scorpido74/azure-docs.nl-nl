@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Maken van een classificatie van de werkbelasting van - T-SQL | Microsoft Docs'
-description: T-SQL gebruiken om te maken van een classificatie van de werkbelasting met hoge urgentie.
+title: 'Quickstart: Een classificatie voor de werk belasting maken-T-SQL | Microsoft Docs'
+description: T-SQL gebruiken om een werk belasting classificatie te maken met hoge urgentie.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: f400989fdbdede4f4a07ee13c5a606d51529150c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588692"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574862"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Quickstart: Maken van een werkbelasting classificatie met T-SQL
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Quickstart: Een classificatie van een werk belasting maken met T-SQL
 
-In deze snelstartgids maakt snel u een classificatie van de werkbelasting met hoge urgentie van de Directeur van uw organisatie. Deze classificatie werkbelasting kunt CEO query's hebben voorrang op andere query's met lagere prioriteit in de wachtrij.
+In deze Quick Start maakt u snel een classificatie van werk belastingen met hoge prioriteit voor de CEO van uw organisatie. Met deze classificatie van werk belasting kunnen CEO query's voor rang krijgen op andere query's met een lagere urgentie in de wachtrij.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -30,15 +30,15 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze snelstartgids wordt ervan uitgegaan dat u hebt al een SQL datawarehouse en dat u databasemachtigingen voor CONTROL hebt. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
+In deze Quick Start wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt en dat u beschikt over de machtigingen voor de beheer DATABASE. Gebruik [Maken en verbinden - portal](create-data-warehouse-portal.md) om een datawarehouse met de naam **mySampleDataWarehouse** te maken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
 Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-login-for-theceo"></a>Aanmelding voor TheCEO maken
+## <a name="create-login-for-theceo"></a>Aanmelding maken voor TheCEO
 
-Maak een aanmelding van de SQL Server-verificatie in de `master` database met behulp van [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) voor 'TheCEO'.
+Maak een SQL Server-verificatie aanmelding in `master` de-data base met behulp van de [aanmeldings gegevens](/sql/t-sql/statements/create-login-transact-sql) voor ' TheCEO '.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -50,7 +50,7 @@ END
 
 ## <a name="create-user"></a>Gebruiker maken
 
-[Gebruiker maken](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO" in mySampleDataWarehouse
+[Gebruiker maken](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), ' TheCEO ', in mySampleDataWarehouse
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -60,9 +60,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier"></a>Een workload classificatie maken
+## <a name="create-a-workload-classifier"></a>Een classificatie van een werk belasting maken
 
-Maak een [werkbelasting classificatie](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) voor 'TheCEO' met hoge urgentie.
+Maak een [werk belasting classificatie](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) voor ' TheCEO ' met hoge prioriteit.
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -72,7 +72,7 @@ WITH (WORKLOAD_GROUP = 'xlargerc'
       ,IMPORTANCE = HIGH);
 ```
 
-## <a name="view-existing-classifiers"></a>Bestaande classificaties weergeven
+## <a name="view-existing-classifiers"></a>Bestaande classificaties weer geven
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers
@@ -86,27 +86,27 @@ DROP USER [TheCEO]
 ;
 ```
 
-U bent in rekening gebracht voor datawarehouse-eenheden en gegevens die zijn opgeslagen in uw datawarehouse. Deze compute- en opslagresources worden apart in rekening gebracht.
+Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en gegevens die zijn opgeslagen in uw data warehouse. Deze compute- en opslagresources worden apart in rekening gebracht.
 
-- Als u de gegevens in de opslag wilt houden, kunt u het berekenen onderbreken wanneer u het datawarehouse niet gebruikt. Onderbreekt Reken-, u betaalt alleen voor de opslag van gegevens. Wanneer u klaar om te werken met de gegevens bent, hervat u compute.
+- Als u de gegevens in de opslag wilt houden, kunt u het berekenen onderbreken wanneer u het datawarehouse niet gebruikt. Door Compute te onderbreken, worden er alleen kosten in rekening gebracht voor gegevens opslag. Wanneer u klaar bent om met de gegevens te werken, hervat u de compute.
 - Als u in de toekomst geen kosten meer wilt hebben, kunt u de datawarehouse verwijderen.
 
-Volg deze stappen voor het opschonen van resources.
+Volg deze stappen om resources op te schonen.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), Selecteer op uw datawarehouse.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer uw data warehouse.
 
     ![Resources opschonen](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Als u wilt onderbreken, selecteert u de **onderbreken** knop. Als het datawarehouse is onderbroken, ziet u een knop **Start**.  Als u wilt hervatten compute, selecteer **Start**.
+2. Selecteer de knop PAUSE om de berekening te onderbreken. Als het datawarehouse is onderbroken, ziet u een knop **Start**.  Selecteer **Start**om de compute te hervatten.
 
-3. Als het datawarehouse, zodat u niet in rekening voor berekenen of opslaan gebracht bent, selecteert u **verwijderen**.
+3. Als u het Data Warehouse wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, selecteert u **verwijderen**.
 
-4. Als u wilt verwijderen van de SQL-server die u hebt gemaakt, selecteert u **mynewserver-20180430.database.windows.net** in de vorige afbeelding, en selecteer vervolgens **verwijderen**.  Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
+4. Als u de door u gemaakte SQL-Server wilt verwijderen, selecteert u **mynewserver-20180430.database.Windows.net** in de vorige installatie kopie en selecteert u vervolgens **verwijderen**.  Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
-5. Als u wilt verwijderen van de resourcegroep, selecteer **myResourceGroup**, en selecteer vervolgens **resourcegroep verwijderen**.
+5. Als u de resource groep wilt verwijderen, selecteert u **myResourceGroup**en selecteert u **resource groep verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U hebt nu een classificatie van de werkbelasting. Enkele query's worden uitgevoerd als TheCEO om te zien hoe ze uitvoeren. Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en het belang toegewezen weer te geven.
-- Zie voor meer informatie over het beheer van Azure SQL Data Warehouse workload [werkbelasting belang](sql-data-warehouse-workload-importance.md) en [werkbelasting classificatie](sql-data-warehouse-workload-classification.md).
-- Zie de artikelen met procedures voor [configureren werkbelasting belang](sql-data-warehouse-how-to-configure-workload-importance.md) en hoe u [beheren en bewaken beheer van de werkbelasting](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- U hebt nu een classificatie voor de werk belasting gemaakt. Voer enkele query's uit als TheCEO om te zien hoe ze worden uitgevoerd. Zie [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) voor het weer geven van query's en de prioriteit die is toegewezen.
+- Zie [urgentie van werk](sql-data-warehouse-workload-importance.md) belasting en [classificatie van werk](sql-data-warehouse-workload-classification.md)belasting voor meer informatie over het beheer van Azure SQL Data Warehouse workload.
+- Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

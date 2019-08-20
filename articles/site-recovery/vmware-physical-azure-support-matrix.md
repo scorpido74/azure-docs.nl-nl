@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: raynew
-ms.openlocfilehash: 65c330a9b2dcc97160280daede926573fdef4c00
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fd24d0d9f05855cf22da547f95b16da0a8d2c788
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679365"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617648"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -30,7 +30,7 @@ Herstel na nood geval van fysieke servers | Replicatie van on-premises fysieke W
 
 ## <a name="on-premises-virtualization-servers"></a>On-premises virtualisatie servers
 
-**Server** | **Vereiste** | **Details**
+**Server** | **Vereisten** | **Details**
 --- | --- | ---
 vCenter Server | Versie 6,7, 6,5, 6,0 of 5,5 | U wordt aangeraden een vCenter-Server te gebruiken in uw implementatie voor herstel na nood gevallen.
 vSphere-hosts | Versie 6,7, 6,5, 6,0 of 5,5 | We raden aan dat vSphere-hosts en vCenter-servers zich in hetzelfde netwerk bevinden als de proces server. Standaard wordt de proces server uitgevoerd op de configuratie server. [Meer informatie](vmware-physical-azure-config-process-server-overview.md).
@@ -43,7 +43,7 @@ De configuratie server is een on-premises machine waarop Site Recovery-onderdele
 - Voor virtuele VMware-machines stelt u de configuratie server in door een OVF-sjabloon te downloaden om een virtuele VMware-machine te maken.
 - Voor fysieke servers stelt u de computer van de configuratie server hand matig in.
 
-**Onderdeel** | **Vereiste**
+**Onderdeel** | **Vereisten**
 --- |---
 CPU-kernen | 8
 RAM | 16 GB
@@ -181,7 +181,7 @@ VMDK van gast/server | Ja
 Gedeelde gast/server-cluster schijf | Nee
 Door gast/server versleutelde schijf | Nee
 Gast/server-NFS | Nee
-ISCSI voor gast/server | Nee
+ISCSI voor gast/server | Voor migratie-Ja<br/>Voor herstel na nood gevallen-Nee, iSCSI zal failback als een gekoppelde schijf aan de VM
 Het SMB 3,0 van de gast/server | Nee
 RDM/server | Ja<br/><br/> N.v.t. voor fysieke servers
 Gast/server schijf > 1 TB | Ja, schijf moet groter zijn dan 1024 MB<br/><br/>Maxi maal 8.192 GB bij het repliceren naar Managed disks (9,26-versie en hoger)<br></br> Maxi maal 4.095 GB bij het repliceren naar opslag accounts
@@ -232,7 +232,7 @@ Managed Disks | Ja
 
 On-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de vereisten van de Azure-VM die in deze tabel worden samenvatten. Wanneer Site Recovery een controle op vereisten uitvoert voor replicatie, mislukt de controle als aan sommige vereisten niet wordt voldaan.
 
-**Onderdeel** | **Vereiste** | **Details**
+**Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
 Gast besturingssysteem | Controleer de [ondersteunde besturings systemen](#replicated-machines) voor gerepliceerde machines. | De controle is mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.

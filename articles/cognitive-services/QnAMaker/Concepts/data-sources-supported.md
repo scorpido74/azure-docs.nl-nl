@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: a3e1853e587f2f1632641cbb896eba59f8dc9455
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515768"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615986"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Gegevensbronnen voor QnA Maker-inhoud
 
 QnA Maker worden vraag-antwoord paren automatisch geëxtraheerd uit semi-gestructureerde inhoud zoals veelgestelde vragen over, producthandleidingen, richtlijnen, voor ondersteuningsdocumenten en beleidsregels die zijn opgeslagen als webpagina's, PDF-bestanden of bestanden van Microsoft Word-document. Inhoud kan ook worden toegevoegd aan de knowledge base van gestructureerde QnA inhoudsbestanden. 
+
+## <a name="data-types"></a>Gegevenstypen
 
 De onderstaande tabel bevat een overzicht van de typen inhoud en bestandsindelingen die worden ondersteund door de QnA Maker.
 
@@ -32,11 +34,21 @@ De onderstaande tabel bevat een overzicht van de typen inhoud en bestandsindelin
 
 ## <a name="data-source-locations"></a>Gegevensbronnen
 
-De meeste gegevens bron locaties moeten open bare Url's of bestanden bieden waarvoor geen verificatie is vereist. 
+Gegevens bron locaties zijn **open bare url's of bestanden**, waarvoor geen verificatie is vereist. 
 
-[Share point-gegevens bron locaties](../How-to/add-sharepoint-datasources.md) mogen geauthenticeerde bestanden bevatten. Share point-resources moeten bestanden, niet webpagina's zijn. 
+Als u verificatie voor uw gegevens bron nodig hebt, kunt u de volgende methoden voor het ophalen van die gegevens in QnA Maker:
 
-Als u een geverifieerd bestand of URL hebt, kunt u het bestand downloaden van de geverifieerde site naar uw lokale computer en vervolgens het bestand van uw lokale computer toevoegen aan de Knowledge Base. 
+* [Down load het bestand hand matig](#download-file-from-authenticated-data-source-location) en importeer het in QnA Maker
+* Bestand importeren voor geverifieerde [share point-locatie](#import-file-from-authenticated-sharepoint) 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>Bestand downloaden van de locatie van de geverifieerde gegevens bron
+
+Als u een geauthenticeerd bestand (niet op een geauthenticeerde share point-locatie) of URL hebt, kunt u het bestand downloaden van de geverifieerde site naar uw lokale computer en vervolgens het bestand van uw lokale computer toevoegen aan de Knowledge Base.
+
+### <a name="import-file-from-authenticated-sharepoint"></a>Bestand importeren vanuit geverifieerde share point 
+
+[Share point-gegevens bron locaties](../How-to/add-sharepoint-datasources.md) mogen geauthenticeerde **bestanden**bevatten. Share point-resources moeten bestanden, niet webpagina's zijn. Als de URL eindigt met een webextensie, zoals **. ASPX**, wordt niet geïmporteerd in QnA Maker vanuit share point.
+
 
 ## <a name="faq-urls"></a>Veelgestelde vragen over URL 's
 

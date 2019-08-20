@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 582b0a586f830659bbea4dd665be938d2895de47
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544829"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615289"
 ---
 # <a name="use-the-change-feed-estimator"></a>De Estimator van de wijzigings feed gebruiken
 
@@ -23,7 +23,7 @@ De wijzigings verwerkings processor fungeert als een pointer die door uw [wijzig
 
 De implementatie van de wijzigings feed-processor kan wijzigingen verwerken met een bepaald percentage op basis van de beschik bare resources zoals CPU, geheugen, netwerk, enzovoort.
 
-Als dit percentage langzamer is dan de snelheid waarmee uw wijzigingen worden aangebracht in uw Azure Cosmos DB-container, begint de processor op de achterlopende vertraging.
+Als dit percentage langzamer is dan de snelheid waarmee uw wijzigingen worden aangebracht in de Azure Cosmos-container, begint de processor met de vertraging.
 
 Door dit scenario te identificeren, kunt u beter begrijpen of we de implementatie van de wijzigings feed moeten schalen.
 
@@ -60,8 +60,7 @@ U kunt deze schatting verzenden naar uw bewakings oplossing en deze gebruiken om
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu doorgaan naar meer informatie over de wijzigingenfeed in de volgende artikelen:
+U kunt nu door gaan met meer informatie over het wijzigen van de feed-processor in de volgende artikelen:
 
-* [Overzicht van wijzigings feed](change-feed.md)
-* [Manieren om een wijzigings feed te lezen](read-change-feed.md)
-* [De Change feed-processor gebruiken](change-feed-processor.md)
+* [Overzicht van de processor voor wijzigings invoer](change-feed-processor.md)
+* [Start tijd voor wijzigen van feed-processor](how-to-configure-change-feed-start-time.md)

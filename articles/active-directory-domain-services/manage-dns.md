@@ -1,108 +1,94 @@
 ---
 title: DNS beheren voor Azure AD Domain Services | Microsoft Docs
-description: DNS beheren voor Azure AD Domain Services
-services: active-directory-ds
-documentationcenter: ''
+description: Meer informatie over het installeren van de Hulpprogram Ma's voor DNS-server voor het beheren van DNS voor een Azure Active Directory Domain Services beheerd domein.
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 08/07/2019
 ms.author: iainfou
-ms.openlocfilehash: 6753c26a99bb38e92613a6bad753e7dd101ba68e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473131"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612317"
 ---
-# <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>DNS beheren in een Azure AD Domain Services beheerde domein
-Azure Active Directory Domain Services bevat een DNS (Domain Name Resolution)-server waarmee de DNS-omzetting voor het beheerde domein. Af en toe moet u mogelijk DNS configureren in het beheerde domein. Mogelijk moet u DNS-records voor machines die niet zijn gekoppeld aan het domein maken, configureren van virtuele IP-adressen voor load balancers of instellen van externe DNS-doorstuurservers. Om deze reden zijn gebruikers die deel uitmaken van de groep 'AAD DC Administrators' bevoegdheden verleend voor DNS-beheer in het beheerde domein.
+# <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>DNS beheren in een door Azure AD Domain Services beheerd domein
+
+In Azure Active Directory Domain Services (Azure AD DS) is een belang rijk onderdeel van DNS (Domain Name Resolution). Azure AD DS bevat een DNS-server die naam omzetting voor het beheerde domein biedt. Deze DNS-server bevat ingebouwde DNS-records en-updates voor de belangrijkste onderdelen waarmee de service kan worden uitgevoerd.
+
+Wanneer u uw eigen toepassingen en services uitvoert, moet u mogelijk DNS-records maken voor machines die niet zijn toegevoegd aan het domein, virtuele IP-adressen configureren voor load balancers of externe DNS-doorstuur servers instellen. Gebruikers die deel uitmaken van de groep *Aad DC* -Administrators, krijgen machtigingen voor DNS-beheer op het door Azure AD DS beheerde domein verleend en kunnen aangepaste DNS-records maken en bewerken.
+
+In dit artikel wordt beschreven hoe u de hulpprogram ma's voor DNS-server installeert en vervolgens de DNS-console gebruikt voor het beheren van records.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Voor de taken die in dit artikel worden vermeld, hebt u het volgende nodig:
 
-1. Een geldige **Azure-abonnement**.
-2. Een **Azure AD-directory** -een gesynchroniseerd met een on-premises directory of een map alleen in de cloud.
-3. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-directory. Als u dit nog niet hebt gedaan, volgt u alle taken die worden beschreven in de [introductiehandleiding](create-instance.md).
-4. Een **domein virtuele machine** van waaruit u de Azure AD Domain Services beheerde domein beheren. Als u geen dergelijke een virtuele machine hebt, volgt u alle taken die worden beschreven in het artikel [Windows virtuele machine toevoegen aan een beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md).
-5. U moet de referenties van een **gebruikersaccount die behoren tot de groep 'AAD DC Administrators'** in uw directory, voor het beheren van DNS voor uw beheerde domein.
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
-<br>
+* Een actief Azure-abonnement.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+* Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken van een Windows Server-VM en voegt u deze toe aan een beheerd domein][create-join-windows-vm].
+* Een gebruikers account dat lid is van de groep *Azure AD DC* -Administrators in uw Azure AD-Tenant.
 
-## <a name="task-1---create-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>Taak 1: Maak een virtuele machine domein voor het extern beheren van DNS voor het beheerde domein
-Azure AD Domain Services beheerde domeinen kunnen worden beheerd op afstand met vertrouwde Active Directory-beheerprogramma's zoals de Active Directory-beheercentrum (ADAC) of AD PowerShell. Op deze manier kan DNS voor het beheerde domein extern worden beheerd met de beheerhulpprogramma's voor DNS-Server.
+## <a name="install-dns-server-tools"></a>Hulpprogram ma's voor DNS-server installeren
 
-Beheerders in uw Azure AD-directory geen bevoegdheden voor verbinding met de domeincontrollers in het beheerde domein via Extern bureaublad. Leden van de groep 'AAD DC Administrators' kunnen DNS beheren voor beheerde domeinen op afstand met behulp van hulpprogramma's voor DNS-Server vanaf een Windows-Server/client-computer die lid van het beheerde domein is. DNS-Server-hulpprogramma's maken deel uit van de optionele functie van Remote Server Administration Tools (RSAT).
+Als u DNS wilt maken en wijzigen, moet u de DNS-server hulpprogramma's installeren. Deze hulpprogram ma's kunnen worden geïnstalleerd als een functie in Windows Server. Zie install [Remote Server Administration Tools (RSAT) (Engelstalig)][install-rsat]voor meer informatie over het installeren van de beheer Programma's op een Windows-client.
 
-De eerste taak is het maken van een Windows Server virtuele machine die is gekoppeld aan het beheerde domein. Voor instructies raadpleegt u het artikel [een Windows Server-machine toevoegen aan Azure AD Domain Services beheerde domein](active-directory-ds-admin-guide-join-windows-vm.md).
+1. Meld u aan bij uw beheer-VM. Zie [verbinding maken met een virtuele machine van Windows Server][connect-windows-server-vm]voor stappen voor het maken van verbinding met behulp van de Azure Portal.
+1. **Serverbeheer** moet standaard worden geopend wanneer u zich aanmeldt bij de VM. Als dat niet het geval is, selecteert u **Serverbeheer**in het menu **Start** .
+1. Selecteer in het deel venster *dash board* van het **Serverbeheer** -venster **functies en onderdelen toevoegen**.
+1. Selecteer op de pagina **voordat u begint** van de *wizard functies en onderdelen toevoegen*de optie **volgende**.
+1. Voor het *installatie type*, houdt u de **installatie optie op basis van functie of op basis** van het onderdeel ingeschakeld en selecteert u **volgende**.
+1. Kies op de pagina **server selectie** de huidige virtuele machine uit de Server groep, bijvoorbeeld *myvm.contoso.com*, en selecteer vervolgens **volgende**.
+1. Klik op de pagina **Server functies** op **volgende**.
+1. Vouw op de pagina **functies** het knoop punt **Remote Server Administration Tools** uit en vouw vervolgens het knoop punt **hulpprogram ma's voor functie beheer** uit. Selecteer de functie **Hulpprogram ma's voor DNS-server** in de lijst met hulpprogram ma's voor functie beheer.
 
-## <a name="task-2---install-dns-server-tools-on-the-virtual-machine"></a>Taak 2 - hulpprogramma's voor DNS-Server installeren op de virtuele machine
-De volgende stappen voor het installeren van de DNS-beheerprogramma's op de virtuele machine van een domein. Voor meer informatie over [installeren en gebruiken van Remote Server Administration Tools](https://technet.microsoft.com/library/hh831501.aspx), Zie Technet.
+    ![De Hulpprogram ma's voor de DNS-server installeren in de lijst met beschik bare hulpprogram ma's voor functie beheer](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
 
-1. Navigeer naar de Azure-portal. Klik op **alle resources** in het linkerdeelvenster. Zoek en klik op de virtuele machine die u in taak 1 hebt gemaakt.
-2. Klik op de **Connect** knop op het tabblad Overzicht. Een Remote Desktop Protocol (RDP)-bestand gemaakt en gedownload.
+1. Selecteer **installeren**op de pagina **bevestiging** . Het kan een paar minuten duren voordat de groepsbeleid-beheer hulpprogramma's zijn geïnstalleerd.
+1. Wanneer de installatie van de functie is voltooid, selecteert u **sluiten** om de wizard **functies en onderdelen toevoegen** af te sluiten.
 
-    ![Verbinding maken met Windows virtuele machine](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Open het gedownloade RDP-bestand om verbinding met de VM te maken. Als u hierom wordt gevraagd, klikt u op **Verbinden**. Gebruik de referenties van een gebruiker die behoort tot de groep 'AAD DC Administrators'. Bijvoorbeeld 'bob@domainservicespreview.onmicrosoft.com'. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Klik op Ja of doorgaan om verbinding te maken.
+## <a name="open-the-dns-management-console-to-administer-dns"></a>De DNS-beheer console openen voor het beheren van DNS
 
-4. Openen vanuit het startscherm **Serverbeheer**. Klik op **functies en onderdelen toevoegen** in het centrale deelvenster van het venster Server Manager.
-
-    ![Start de Server Manager op de virtuele machine](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. Op de **voordat u begint** pagina van de **functies Wizard Functies toevoegen en**, klikt u op **volgende**.
-
-    ![Voordat u begint met pagina](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. Op de **installatietype** pagina, laat u de **op basis van functie of onderdeel gebaseerde installatie** optie is ingeschakeld en klik op **volgende**.
-
-    ![Pagina Type installatie](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. Op de **serverselectie** pagina, selecteert u de huidige virtuele machine uit de servergroep en klik op **volgende**.
-
-    ![Pagina voor het selecteren van server](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Op de **serverfuncties** pagina, klikt u op **volgende**.
-9. Op de **functies** pagina, klikt u op om uit te breiden de **Remote Server Administration Tools** knooppunt en klik vervolgens op om uit te breiden de **functiebeheer** knooppunt. Selecteer **beheerhulpprogramma's voor DNS-** functie uit de lijst met beheerprogramma's voor rollen.
-
-    ![Pagina onderdelen](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
-10. Op de **bevestiging** pagina, klikt u op **installeren** voor het installeren van de functie van de hulpprogramma's voor DNS-Server op de virtuele machine. Wanneer de functie-installatie is voltooid, klikt u op **sluiten** om af te sluiten de **functies en onderdelen toevoegen** wizard.
-
-    ![Bevestigingspagina](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
-
-## <a name="task-3---launch-the-dns-management-console-to-administer-dns"></a>Taak 3: Start de console DNS-beheer voor het beheren van DNS
-U kunt nu, hulpprogramma's voor Windows Server DNS gebruiken voor het beheren van DNS in het beheerde domein.
+Als u de hulpprogram ma's voor DNS-server hebt geïnstalleerd, kunt u DNS-records beheren op het door Azure AD DS beheerde domein.
 
 > [!NOTE]
-> U moet een lid van de groep 'AAD DC Administrators' voor het beheren van DNS in het beheerde domein.
->
->
+> Als u DNS wilt beheren in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC* -Administrators.
 
-1. Klik vanuit het startscherm op **Systeembeheer**. U ziet de **DNS** -console is geïnstalleerd op de virtuele machine.
+1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven, inclusief **DNS** die in de vorige sectie is geïnstalleerd. Selecteer **DNS** om de DNS-beheer console te starten.
+1. Selecteer in het dialoog venster **verbinding maken met DNS-server** **de volgende computer**en voer vervolgens de DNS-domein naam in van het beheerde domein, zoals *contoso.com*:
 
-    ![Beheerprogramma's - DNS-Console](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
-2. Klik op **DNS** om te starten van de DNS-beheerconsole.
-3. In de **verbinding maken met de DNS-Server** dialoogvenster, klikt u op **de volgende computer**, en voert u de DNS-domeinnaam van het beheerde domein (bijvoorbeeld ' contoso100.com').
+    ![Verbinding maken met het beheerde domein van Azure AD DS in de DNS-console](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 
-    ![DNS-Console - verbinding maken met domein](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
-4. De DNS-Console verbinding met het beheerde domein.
+1. De DNS-console maakt verbinding met het opgegeven Azure AD DS beheerde domein. Vouw de zone voor **Forward lookup** of zones voor reverse **lookup** uit om de vereiste DNS-vermeldingen te maken of bewerk bestaande records als dat nodig is.
 
-    ![De Console DNS - domein beheren](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
-5. U kunt nu de DNS-console gebruiken om toe te voegen DNS-vermeldingen voor computers binnen het virtuele netwerk waarin u AAD Domain Services hebt ingeschakeld.
+    ![DNS-console-domein beheren](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
 
 > [!WARNING]
-> Wees voorzichtig bij het beheren van DNS voor het beheerde domein met behulp van hulpprogramma's voor het beheer van DNS. Zorg ervoor dat u **niet verwijderen of wijzigen van de ingebouwde DNS-records die worden gebruikt door Domain Services in het domein**. Ingebouwde DNS-records bevatten domein DNS-records, naamserverrecords en andere records die worden gebruikt voor de locatie van de domeincontroller. Als u deze records wijzigt, worden de domeinservices onderbroken in het virtuele netwerk.
->
->
+> Wanneer u records beheert met behulp van de DNS-server hulpprogramma's, moet u ervoor zorgen dat u de ingebouwde DNS-records die door Azure AD DS worden gebruikt, niet verwijdert of wijzigt. Ingebouwde DNS-records zijn DNS-records voor domein, naam server records en andere records die worden gebruikt voor de locatie van de domein controller. Als u deze records wijzigt, worden de domein Services onderbroken op het virtuele netwerk.
 
-Zie voor meer informatie over het beheren van DNS, de [hulpprogramma's voor DNS-artikel op Technet](https://technet.microsoft.com/library/cc753579.aspx).
+## <a name="next-steps"></a>Volgende stappen
 
-## <a name="related-content"></a>Gerelateerde inhoud
-* [Azure AD Domain Services - handleiding aan de slag](create-instance.md)
-* [Een Windows Server-machine toevoegen aan Azure AD Domain Services beheerde domein](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Een Azure AD Domain Services-domein beheren](manage-domain.md)
-* [Beheerhulpprogramma's voor DNS](https://technet.microsoft.com/library/cc753579.aspx)
+Zie het [artikel over DNS-hulpprogram ma's op TechNet](https://technet.microsoft.com/library/cc753579.aspx)voor meer informatie over het beheren van DNS.
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm
+
+<!-- EXTERNAL LINKS -->
+[install-rsat]: /windows-server/remote/remote-server-administration-tools#BKMK_Thresh

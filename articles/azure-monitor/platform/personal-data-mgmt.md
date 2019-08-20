@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827370"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617311"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
 
@@ -98,6 +98,11 @@ Voor beide gegevens aanvragen weer geven en exporteren moet de [log Analytics qu
 We zijn beschikbaar gesteld als onderdeel van een privacy-verwerkings-API-pad. Dit pad moet spaarzaam worden gebruikt vanwege het risico dat eraan is gekoppeld, de potentiële invloed op de prestaties en de kans om alle aggregaties, metingen en andere aspecten van uw Log Analytics gegevens te scheef trekken. Zie de sectie [strategie voor het verwerken van persoonlijke gegevens](#strategy-for-personal-data-handling) voor alternatieve benaderingen voor het afhandelen van persoonlijke gegevens.
 
 Opschonen is een zeer beschermde bewerking die geen enkele app of gebruiker in azure (inclusief zelfs de resource-eigenaar) toestemming heeft om uit te voeren zonder expliciet een rol in Azure Resource Manager te krijgen. Deze rol is _gegevens verzamelaar_ en moet voorzichtig worden gedelegeerd vanwege het mogelijke verlies van gegevens. 
+
+> [!IMPORTANT]
+> Voor het beheren van systeem bronnen worden opschoon aanvragen beperkt tot 50 aanvragen per uur. U moet een batch uitvoeren voor het opschonen van aanvragen door één opdracht te verzenden waarvan het predicaat alle gebruikers-id's bevat die moeten worden opgeschoond. Gebruik de [operator in](/azure/kusto/query/inoperator) om meerdere identiteiten op te geven. U moet de query uitvoeren voordat u de opschoon aanvraag uitvoert om te controleren of de resultaten worden verwacht. 
+
+
 
 Zodra de Azure Resource Manager rol is toegewezen, zijn er twee nieuwe API-paden beschikbaar: 
 

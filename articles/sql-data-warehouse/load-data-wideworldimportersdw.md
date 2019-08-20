@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 30b4009b2f52f4949a380f0fc51b02f94c98d966
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304283"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574932"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Zelfstudie: Gegevens laden naar Azure SQL Data Warehouse
 
@@ -42,9 +42,9 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Een leeg SQL Data Warehouse maken
+## <a name="create-a-blank-sql-data-warehouse"></a>Een lege SQL Data Warehouse maken
 
-Er wordt een Azure SQL-databasewarehouse gemaakt met een gedefinieerde set [compute-resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
+Een Azure SQL Data Warehouse wordt gemaakt met een gedefinieerde set [reken resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
 
 Volg deze stappen om een leeg SQL Data Warehouse te maken. 
 

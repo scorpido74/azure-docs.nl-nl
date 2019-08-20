@@ -1,132 +1,127 @@
 ---
-title: 'Azure Active Directory Domain Services: groepsbeleid beheren | Microsoft Docs'
-description: groepsbeleid op Azure Active Directory Domain Services beheerde domeinen beheren
-services: active-directory-ds
-documentationcenter: ''
+title: Groeps beleid maken en beheren in Azure AD Domain Services | Microsoft Docs
+description: Meer informatie over het bewerken van de ingebouwde groeps beleidsobjecten (Gpo's) en het maken van uw eigen aangepaste beleids regels in een Azure Active Directory Domain Services beheerd domein.
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: c7b32885fdb3cf4f3e584c916d6b234fff54bfc4
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234032"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612696"
 ---
-# <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>groepsbeleid op een Azure AD Domain Services beheerd domein beheren
-Azure Active Directory Domain Services bevat ingebouwde groepsbeleid objecten (Gpo's) voor de containers ' AADDC users ' en ' AADDC computers '. U kunt deze ingebouwde Gpo's aanpassen voor het configureren van groepsbeleid op het beheerde domein. Daarnaast kunnen leden van de groep AAD DC-Administrators hun eigen aangepaste organisatie-eenheden maken in het beheerde domein. Ze kunnen ook aangepaste groeps beleidsobjecten maken en deze koppelen aan deze aangepaste organisatie-eenheden. Gebruikers die deel uitmaken van de groep ' AAD DC Administrators ' worden groepsbeleid beheerders rechten verleend op het beheerde domein.
+# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>groepsbeleid beheren in een Azure AD Domain Services beheerd domein
+
+Instellingen voor gebruikers-en computer objecten in Azure Active Directory Domain Services (Azure AD DS) worden vaak beheerd met behulp van groepsbeleid-objecten (Gpo's). Azure AD DS bevat ingebouwde Gpo's voor de containers *AADDC gebruikers* en *AADDC-computers* . U kunt deze ingebouwde Gpo's aanpassen om groepsbeleid te configureren die nodig zijn voor uw omgeving. Leden van de groep *Azure AD DC* -Administrators hebben Groepsbeleid beheerders bevoegdheden in het Azure AD DS-domein, en kunnen ook aangepaste gpo's en organisatie-eenheden (ou's) maken. Zie [Groepsbeleid Overview][group-policy-overview]voor meer informatie over wat Groepsbeleid is en hoe het werkt.
+
+In dit artikel wordt beschreven hoe u de groepsbeleid-beheer hulpprogramma's installeert, vervolgens de ingebouwde Gpo's bewerkt en aangepaste Gpo's maakt.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Voor het uitvoeren van de taken die in dit artikel worden vermeld, hebt u het volgende nodig:
 
-1. Een geldig **Azure-abonnement**.
-2. Een **Azure AD-Directory** : gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-3. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](create-instance.md)worden beschreven.
-4. Een **virtuele machine die lid** is van een domein van waaruit u het Azure AD Domain Services beheerde domein beheert. Als u een dergelijke virtuele machine niet hebt, volgt u alle taken die worden beschreven in het artikel [een virtuele Windows-machine toevoegen aan een beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md).
-5. U hebt de referenties nodig van een **gebruikers account dat deel uitmaakt van de groep Aad DC** -Administrators in uw directory om Groepsbeleid voor uw beheerde domein te beheren.
+U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 
-<br>
+* Een actief Azure-abonnement.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
+    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services-exemplaar][create-azure-ad-ds-instance].
+* Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken van een Windows Server-VM en voegt u deze toe aan een beheerd domein][create-join-windows-vm].
+* Een gebruikers account dat lid is van de groep *Azure AD DC* -Administrators in uw Azure AD-Tenant.
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>Taak 1: een virtuele machine die lid is van een domein inrichten voor het extern beheren van groepsbeleid voor het beheerde domein
-Azure AD Domain Services beheerde domeinen kunnen extern worden beheerd met vertrouwde Active Directory beheer Programma's, zoals de Active Directory-beheercentrum (ADAC) of AD Power shell. Op dezelfde manier kan groepsbeleid voor het beheerde domein extern worden beheerd met behulp van de groepsbeleid-beheer hulpprogramma's.
+## <a name="install-group-policy-management-tools"></a>groepsbeleid-beheer hulpprogramma's installeren
 
-Beheerders in uw Azure AD-adres lijst zijn niet gemachtigd om via Extern bureaublad verbinding te maken met domein controllers in het beheerde domein. Leden van de groep AAD DC Administrators kunnen groepsbeleid voor beheerde domeinen op afstand beheren. Ze kunnen gebruikmaken van groepsbeleid-hulpprogram ma's op een Windows Server/client-computer die is toegevoegd aan het beheerde domein. Groepsbeleid-hulpprogram ma's kunnen worden geïnstalleerd als onderdeel van de optionele functie voor groepsbeleid beheer op Windows Server-en client computers die zijn gekoppeld aan het beheerde domein.
+Als u groepsbeleid object (Gpo's) wilt maken en configureren, moet u de groepsbeleid-beheer hulpprogramma's installeren. Deze hulpprogram ma's kunnen worden geïnstalleerd als een functie in Windows Server. Zie install [Remote Server Administration Tools (RSAT) (Engelstalig)][install-rsat]voor meer informatie over het installeren van de beheer Programma's op een Windows-client.
 
-De eerste taak is het inrichten van een virtuele Windows Server-machine die is gekoppeld aan het beheerde domein. Raadpleeg het artikel ' [een virtuele Windows Server-machine toevoegen aan een Azure AD Domain Services beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md)' voor instructies.
+1. Meld u aan bij uw beheer-VM. Zie [verbinding maken met een virtuele machine van Windows Server][connect-windows-server-vm]voor stappen voor het maken van verbinding met behulp van de Azure Portal.
+1. **Serverbeheer** moet standaard worden geopend wanneer u zich aanmeldt bij de VM. Als dat niet het geval is, selecteert u **Serverbeheer**in het menu **Start** .
+1. Selecteer in het deel venster *dash board* van het **Serverbeheer** -venster **functies en onderdelen toevoegen**.
+1. Selecteer op de pagina **voordat u begint** van de *wizard functies en onderdelen toevoegen*de optie **volgende**.
+1. Voor het *installatie type*, houdt u de **installatie optie op basis van functie of op basis** van het onderdeel ingeschakeld en selecteert u **volgende**.
+1. Kies op de pagina **server selectie** de huidige virtuele machine uit de Server groep, bijvoorbeeld *myvm.contoso.com*, en selecteer vervolgens **volgende**.
+1. Klik op de pagina **Server functies** op **volgende**.
+1. Selecteer op de pagina **functies** de **Groepsbeleid beheer** functie.
 
-## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>Taak 2: groepsbeleid-hulpprogram ma's installeren op de virtuele machine
-Voer de volgende stappen uit om de groepsbeleid-beheer hulpprogramma's te installeren op de virtuele machine die lid is van het domein.
+    ![Installeer het ' groepsbeleid-beheer ' op de pagina functies](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
-1. Navigeer naar het Azure Portal. Klik op **alle resources** in het linkerdeel venster. Zoek en klik op de virtuele machine die u hebt gemaakt in taak 1.
-2. Klik op de knop **verbinding maken** op het tabblad Overzicht. Er wordt een Remote Desktop Protocol-bestand (. RDP) gemaakt en gedownload.
+1. Selecteer **installeren**op de pagina **bevestiging** . Het kan een paar minuten duren voordat de groepsbeleid-beheer hulpprogramma's zijn geïnstalleerd.
+1. Wanneer de installatie van de functie is voltooid, selecteert u **sluiten** om de wizard **functies en onderdelen toevoegen** af te sluiten.
 
-    ![Verbinding maken met virtuele Windows-machine](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Open het gedownloade RDP-bestand om verbinding met de VM te maken. Als u hierom wordt gevraagd, klikt u op **Verbinden**. Gebruik bij de aanmeldings prompt de referenties van een gebruiker die deel uitmaakt van de groep AAD DC-Administrators. We gebruikenbob@domainservicespreview.onmicrosoft.combijvoorbeeld in ons geval. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Klik op Ja of door gaan om door te gaan met de verbinding.
-4. Open **Serverbeheer**in het Start scherm. Klik op **functies en onderdelen toevoegen** in het middelste deel venster van het venster Serverbeheer.
+## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Het console Groepsbeleidbeheer openen en een object bewerken
 
-    ![Serverbeheer op virtuele machine starten](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. Klik op de pagina **voordat u begint** van de **wizard functies en onderdelen toevoegen**op **volgende**.
-
-    ![Voordat u begint met de pagina](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. Zorg ervoor dat op de pagina **type installatie** de optie installatie die op de **functie of het onderdeel is gebaseerd** is ingeschakeld en klik op **volgende**.
-
-    ![Pagina type installatie](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. Selecteer op de pagina **selectie van servers** de huidige virtuele machine uit de Server groep en klik op **volgende**.
-
-    ![Pagina selectie van servers](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Klik op de pagina **Server functies** op **volgende**. Deze pagina wordt overgeslagen omdat er geen rollen op de server worden geïnstalleerd.
-9. Selecteer op de pagina **functies** de **Groepsbeleid beheer** functie.
-
-    ![Pagina functies](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
-10. Klik op de pagina **bevestiging** op **installeren** om de functie Groepsbeleid beheer op de virtuele machine te installeren. Wanneer de installatie van de functie is voltooid, klikt u op **sluiten** om de wizard **functies en onderdelen toevoegen** af te sluiten.
-
-    ![Bevestigings pagina](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management-confirmation.png)
-
-## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>Taak 3: de groepsbeleid-beheer console starten om groepsbeleid te beheren
-U kunt de groepsbeleid-beheer console gebruiken op de virtuele machine die lid is van het domein om groepsbeleid te beheren op het beheerde domein.
+Standaard groeps beleidsobjecten (Gpo's) bestaan voor gebruikers en computers in een door Azure AD DS beheerd domein. Met de functie voor groepsbeleid beheer die in de vorige sectie is geïnstalleerd, bekijken en bewerken we een bestaand groeps beleidsobject. In de volgende sectie maakt u een aangepast groeps beleidsobject.
 
 > [!NOTE]
-> U moet lid zijn van de groep AAD DC Administrators om groepsbeleid te beheren op het beheerde domein.
->
->
+> Als u groeps beleid wilt beheren in een door Azure AD DS beheerd domein, moet u zijn aangemeld bij een gebruikers account dat lid is van de groep *Aad DC* -Administrators.
 
-1. Klik in het Start scherm op **systeem beheer**. U ziet dat de **Groepsbeleid-beheer** console op de virtuele machine is geïnstalleerd.
+1. Selecteer in het Start scherm de optie **systeem beheer**. Er wordt een lijst met beschik bare beheer hulpprogramma's weer gegeven, met inbegrip van **Groepsbeleid-beheer** dat in de vorige sectie is geïnstalleerd.
+1. Als u de console Groepsbeleidbeheer (GPMC) wilt openen, kiest u **Groepsbeleid beheer**.
 
-    ![groepsbeleid beheer starten](./media/active-directory-domain-services-admin-guide/gp-management-installed.png)
-2. Klik op **Groepsbeleid beheer** om de Groepsbeleid-beheer console te starten.
+    ![De console Groepsbeleidbeheer wordt gereed voor het bewerken van groeps beleidsobjecten](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-    ![groepsbeleid-console](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
+Er zijn twee ingebouwde groepsbeleid objecten (Gpo's) in een door Azure AD DS beheerd domein, een voor de container *AADDC computers* en één voor de container *gebruikers van AADDC* . U kunt deze groeps beleidsobjecten zo instellen dat groeps beleid zo nodig wordt geconfigureerd in uw Azure AD DS beheerde domein.
 
-## <a name="task-4---customize-built-in-group-policy-objects"></a>Taak 4-ingebouwde groepsbeleid objecten aanpassen
-Er zijn twee ingebouwde groepsbeleid objecten (Gpo's): één voor de containers AADDC computers en AADDC gebruikers in uw beheerde domein. U kunt deze groeps beleidsobjecten aanpassen voor het configureren van groeps beleid op het beheerde domein.
+1. Vouw in de **Groepsbeleid-beheer** console het knoop punt **forest: contoso.com** uit. Vouw vervolgens de knoop punten **domeinen** uit.
 
-1. Klik in de **Groepsbeleid-beheer** console op het knoop punt **forest: contoso100.com** en **domeinen** om de groeps beleidsregels voor uw beheerde domein weer te geven.
+    Er bestaan twee ingebouwde containers voor *AADDC-computers* en *AADDC-gebruikers*. Voor elk van deze containers is een standaard groeps beleidsobject toegepast.
 
-    ![Ingebouwde Gpo's](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-2. U kunt deze ingebouwde Gpo's aanpassen voor het configureren van groeps beleid op uw beheerde domein. Klik met de rechter muisknop op het groeps beleidsobject en klik op **bewerken...** om het ingebouwde groeps beleidsobject aan te passen. Met het hulp programma groepsbeleid Configuration Editor kunt u het groeps beleidsobject aanpassen.
+    ![Ingebouwde Gpo's die zijn toegepast op de standaard containers AADDC computers en AADDC gebruikers](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-    ![Ingebouwd groeps beleidsobject bewerken](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-3. U kunt nu de **Groepsbeleidsbeheer-editor** -console gebruiken om het ingebouwde groeps beleidsobject te bewerken. De volgende scherm afbeelding laat bijvoorbeeld zien hoe u het ingebouwde groeps beleidsobject ' AADDC-computers ' aanpast.
+1. Deze ingebouwde groeps beleidsobjecten kunnen worden aangepast voor het configureren van specifieke groeps beleidsregels op uw door Azure AD DS beheerd domein. Klik met de rechter muisknop op een van de groeps beleidsobjecten, zoals *AADDC computers*, en selecteer vervolgens **bewerken...** .
 
-    ![Groeps beleidsobject aanpassen](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Kies de optie voor het bewerken van een van de ingebouwde Gpo's](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
-## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>Taak 5: een aangepast groepsbeleid-object maken (GPO)
-U kunt uw eigen aangepaste groeps beleidsobjecten maken of importeren. U kunt ook aangepaste groeps beleidsobjecten koppelen aan een aangepaste organisatie-eenheid die u hebt gemaakt in uw beheerde domein. Zie [een aangepaste organisatie-eenheid maken in een beheerd domein](create-ou.md)voor meer informatie over het maken van aangepaste organisatie-eenheden.
+1. Het hulp programma Groepsbeleidsbeheer-editor wordt geopend, waarmee u het groeps beleidsobject, zoals *account beleid*, kunt aanpassen:
 
-> [!NOTE]
-> U moet lid zijn van de groep AAD DC Administrators om groepsbeleid te beheren op het beheerde domein.
->
->
+    ![Groeps beleidsobject aanpassen om instellingen te configureren zoals vereist](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-1. Klik in de **Groepsbeleid-beheer** console om uw aangepaste organisatie-eenheid (OE) te selecteren. Klik met de rechter muisknop op de organisatie-eenheid en klik op **groeps beleidsobject in dit domein maken en hier een koppeling...** .
+    Wanneer u klaar bent, kiest u **bestand > opslaan** om het beleid op te slaan. Computers vernieuwen groepsbeleid standaard elke 90 minuten en voeren de wijzigingen toe die u hebt aangebracht.
 
-    ![Een aangepast groeps beleidsobject maken](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
-2. Geef een naam op voor het nieuwe groeps beleidsobject en klik op **OK**.
+## <a name="create-a-custom-group-policy-object"></a>Een aangepast groepsbeleid-object maken
 
-    ![Geef een naam op voor het groeps beleidsobject](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
-3. Er wordt een nieuw groeps beleidsobject gemaakt en gekoppeld aan uw aangepaste organisatie-eenheid. Klik met de rechter muisknop op het groeps beleidsobject en klik op **bewerken...** in het menu.
+Als u gelijksoortige beleids instellingen wilt groeperen, maakt u vaak extra groeps beleidsobjecten in plaats van alle vereiste instellingen toe te passen in de enkelvoudige standaard groeps beleidsobject. Met Azure AD DS kunt u uw eigen aangepaste groeps beleidsobjecten maken of importeren en deze koppelen aan een aangepaste organisatie-eenheid. Als u eerst een aangepaste OE wilt maken, raadpleegt u [een aangepaste organisatie-eenheid maken in een door Azure AD DS beheerd domein](create-ou.md).
 
-    ![Nieuw groeps beleidsobject](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
-4. U kunt het nieuw gemaakte groeps beleidsobject aanpassen met behulp van de **Groepsbeleidsbeheer-editor**.
+1. Selecteer in de **Groepsbeleid-beheer** console uw aangepaste organisatie-eenheid (OE), bijvoorbeeld *MyCustomOU*. Klik met de rechter muisknop op de OE en kies **een groeps beleidsobject in dit domein maken en hier een koppeling aanbrengen...** :
 
-    ![Nieuw groeps beleidsobject aanpassen](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+    ![Een aangepast groeps beleidsobject maken in de groepsbeleid-beheer console](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
 
+1. Geef een naam op voor het nieuwe groeps beleidsobject, zoals *Mijn aangepaste GPO*, en selecteer vervolgens **OK**. U kunt eventueel dit aangepaste GPO baseren op een bestaande groeps beleidsobject en een set met beleids opties.
 
-Meer informatie over het gebruik van [console Groepsbeleidbeheer](https://technet.microsoft.com/library/cc753298.aspx) is beschikbaar op TechNet.
+    ![Geef een naam op voor het nieuwe aangepaste GPO](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
 
-## <a name="related-content"></a>Gerelateerde inhoud
-* [Azure AD Domain Services aan de slag-hand leiding](create-instance.md)
-* [Een virtuele machine met Windows Server toevoegen aan een door Azure AD Domain Services beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Een Azure AD Domain Services domein beheren](manage-domain.md)
-* [console Groepsbeleidbeheer](https://technet.microsoft.com/library/cc753298.aspx)
+1. Het aangepaste groeps beleidsobject wordt gemaakt en gekoppeld aan uw aangepaste organisatie-eenheid. Als u de beleids instellingen nu wilt configureren, selecteert u het aangepaste groeps beleidsobject en kiest u **bewerken...** :
+
+    ![Kies de optie voor het bewerken van uw aangepaste GPO](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+
+1. De **Groepsbeleidsbeheer-editor** wordt geopend, waarmee u het groeps beleidsobject kunt aanpassen:
+
+    ![Groeps beleidsobject aanpassen om instellingen te configureren zoals vereist](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+
+    Wanneer u klaar bent, kiest u **bestand > opslaan** om het beleid op te slaan. Computers vernieuwen groepsbeleid standaard elke 90 minuten en voeren de wijzigingen toe die u hebt aangebracht.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie [werken met Groepsbeleid voorkeurs items][group-policy-console]voor meer informatie over de beschik bare Groepsbeleid-instellingen die u kunt configureren met behulp van de console Groepsbeleidbeheer.
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm
+
+<!-- EXTERNAL LINKS -->
+[group-policy-overview]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11)
+[install-rsat]: /windows-server/remote/remote-server-administration-tools#BKMK_Thresh
+[group-policy-console]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789194(v=ws.11)

@@ -3,24 +3,22 @@ title: Problemen met hive oplossen met behulp van Azure HDInsight
 description: Krijg antwoorden op veelgestelde vragen over het werken met Apache Hive en Azure HDInsight.
 keywords: Azure HDInsight, Hive, veelgestelde vragen, gids voor probleem oplossing, veelgestelde vragen
 ms.service: hdinsight
-author: dharmeshkakadia
-ms.author: dkakadia
-ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: 91e6803e0a1302a33a3bf176ad84d0b0e0c8c5b6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+author: hrasheed-msft
+ms.author: hrasheed
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: ca1e3e11ad5458e8e7f7072b7d3dd561853029fe
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875931"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575707"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Problemen met Apache Hive oplossen met behulp van Azure HDInsight
 
 Meer informatie over de belangrijkste vragen en hun oplossingen bij het werken met Apache Hive Payloads in Apache Ambari.
 
-
 ## <a name="how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster"></a>Hoe kan ik een Hive-metastore exporteren en importeren in een ander cluster?
-
 
 ### <a name="resolution-steps"></a>Oplossingen
 
@@ -36,16 +34,15 @@ Meer informatie over de belangrijkste vragen en hun oplossingen bij het werken m
 
 3. Kopieer het bestand AllTables. SQL naar het nieuwe HDInsight-cluster en voer de volgende opdracht uit:
 
-   ```apache
-   hive -f alltables.sql
-   ```
+    ```apache
+    hive -f alltables.sql
+    ```
 
-In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden op het nieuwe cluster hetzelfde zijn als de gegevens paden op het oude cluster. Als de gegevens paden verschillen, kunt u het gegenereerde bestand AllTables. SQL hand matig bewerken om eventuele wijzigingen weer te geven.
+In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden op het nieuwe cluster hetzelfde zijn als de gegevens paden op het oude cluster. Als de gegevens paden verschillen, kunt u het gegenereerde `alltables.sql` bestand hand matig bewerken om eventuele wijzigingen weer te geven.
 
 ### <a name="additional-reading"></a>Meer lezen
 
 - [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Wilt u Hive-logboeken Hoe kan ik vinden op een cluster?
 
@@ -56,25 +53,24 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
 2. Gebruik de volgende opdracht om Hive client-logboeken weer te geven:
 
    ```apache
-   /tmp/<username>/hive.log 
+   /tmp/<username>/hive.log
    ```
 
 3. Als u Hive-metastore logboeken wilt weer geven, gebruikt u de volgende opdracht:
 
    ```apache
-   /var/log/hive/hivemetastore.log 
+   /var/log/hive/hivemetastore.log
    ```
 
-4. Als u Hiveserver-logboeken wilt weer geven, gebruikt u de volgende opdracht:
+4. Als u logboeken van Hive-server wilt weer geven, gebruikt u de volgende opdracht:
 
    ```apache
-   /var/log/hive/hiveserver2.log 
+   /var/log/hive/hiveserver2.log
    ```
 
 ### <a name="additional-reading"></a>Meer lezen
 
 - [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 ## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Hoe kan ik de Hive-shell starten met specifieke configuraties in een cluster?
 
@@ -83,7 +79,7 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
 1. Geef een sleutel-waardepaar voor de configuratie op wanneer u de Hive-shell start. Zie voor meer informatie, [meer lezen](#additional-reading-end).
 
    ```apache
-   hive -hiveconf a=b 
+   hive -hiveconf a=b
    ```
 
 2. Gebruik de volgende opdracht om alle efficiënte configuraties op Hive-shell weer te geven:
@@ -95,23 +91,21 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
    Gebruik bijvoorbeeld de volgende opdracht om Hive-shell te starten met logboek registratie voor fout opsporing in te scha kelen op de-console:
 
    ```apache
-   hive -hiveconf hive.root.logger=ALL,console 
+   hive -hiveconf hive.root.logger=ALL,console
    ```
 
 ### <a name="additional-reading"></a>Meer lezen
 
 - [Eigenschappen van Hive-configuratie](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
-
 ## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Hoe kan ik Apache TEZ DAG-gegevens op een cluster kritiek pad analyseren?
 
-
 ### <a name="resolution-steps"></a>Oplossingen
- 
+
 1. Als u een Apache TEZ-Directed Acyclic Graph (DAG) wilt analyseren op een cluster-essentiële grafiek, maakt u verbinding met het HDInsight-cluster met behulp van SSH. Zie voor meer informatie, [meer lezen](#additional-reading-end).
 
 2. Voer de volgende opdracht uit op een opdrachtprompt:
-   
+
    ```apache
    hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
    ```
@@ -137,31 +131,28 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
     - **TaskConcurrencyAnalyzer**: De details van de taak gelijktijdigheid afdrukken in een DAG
     - **VertexLevelCriticalPathAnalyzer**: Het kritieke pad op het hoek punt op het niveau van een DAG zoeken
 
-
 ### <a name="additional-reading"></a>Meer lezen
 
 - [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-
 ## <a name="how-do-i-download-tez-dag-data-from-a-cluster"></a>TEZ DAG gegevens van een cluster Hoe kan ik downloaden?
-
 
 #### <a name="resolution-steps"></a>Oplossingen
 
 Er zijn twee manieren om de TEZ DAG-gegevens te verzamelen:
 
 - Vanaf de opdrachtregel:
- 
+
     Maak verbinding met het HDInsight-cluster met behulp van SSH. Voer bij de opdracht prompt de volgende opdracht uit:
 
   ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId> 
+  hadoop jar /usr/hdp/current/tez-client/tez-history-parser-*.jar org.apache.tez.history.ATSImportTool -downloadDir . -dagId <DagId>
   ```
 
 - Gebruik de weer gave Ambari TEZ:
-   
-  1. Ga naar Ambari. 
-  2. Ga naar de weer gave TEZ (onder het pictogram tegels in de rechter bovenhoek). 
+
+  1. Ga naar Ambari.
+  2. Ga naar de weer gave TEZ (onder het pictogram tegels in de rechter bovenhoek).
   3. Selecteer de DAG die u wilt weer geven.
   4. Selecteer **gegevens downloaden**.
 
@@ -169,10 +160,12 @@ Er zijn twee manieren om de TEZ DAG-gegevens te verzamelen:
 
 [Verbinding maken met een HDInsight-cluster met behulp van SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
+## <a name="next-steps"></a>Volgende stappen
 
-### <a name="see-also"></a>Zie ook
-[Problemen oplossen met behulp van Azure HDInsight](hdinsight-troubleshoot-guide.md)
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
 
+- Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
+- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

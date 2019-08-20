@@ -6,12 +6,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 70f3471b22027bbf5ece87897e678370767f6743
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 56f293600d876a5bc52b618ce8eed044e93f424d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717088"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616877"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Een lambda-architectuur implementeren op het Azure-platform 
 
@@ -42,7 +42,7 @@ De grondbeginselen van een lambda-architectuur worden beschreven in het voorgaan
 
 Bij Lees hier meer over, zijn we kunnen voor het implementeren van deze architectuur met alleen de volgende:
 
-* Azure Cosmos DB-verzameling(en)
+* Azure Cosmos-container (s)
 * HDInsight (Apache Spark 2.1)-cluster
 * Spark-Connector [1.0](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark_2.1.0_2.11-1.0.0)
 
@@ -114,11 +114,11 @@ Wat is het belangrijk is in deze lagen:
 
  1. Alle **gegevens** (multicast om problemen te vermijden) alleen in Azure Cosmos DB wordt gepusht.
  2. De **batchlaag** heeft een master gegevensset (onveranderbare, alleen toevoegen set van onbewerkte gegevens) die zijn opgeslagen in Azure Cosmos DB. U kunt vooraf een uw aggregaties worden opgeslagen in uw weergaven berekende batch berekenen met behulp van HDI Spark.
- 3. De **leveringslaag** is een Azure Cosmos DB-database met verzamelingen voor de master gegevensset en batchweergave berekend.
+ 3. De leverende **laag** is een Azure Cosmos-data base met verzamelingen voor de hoofd-gegevensset en de berekende batch weergave.
  4. De **snelheidslaag** verderop in dit artikel wordt besproken.
  5. Alle query's kunnen worden beantwoord door de resultaten van de batch en realtime weergaven samenvoegen of ze afzonderlijk te pingen.
 
-### <a name="code-example-pre-computing-batch-views"></a>Code voorbeeld: Batch weergaven vóór gebruik
+### <a name="code-example-pre-computing-batch-views"></a>Voorbeeld van code: Batch weergaven vóór gebruik
 Om te laten zien hoe u voor het uitvoeren van vooraf berekende weergaven op basis van uw **master gegevensset** van Apache Spark op Azure Cosmos DB, gebruik de volgende codefragmenten uit de notebooks [Lambda-architectuur Rearchitected - Batchlaag ](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb) en [Lambda-architectuur Rearchitected - Batch om te voldoen aan laag](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20to%20Serving%20Layer.ipynb). In dit scenario gebruikt u de Twitter-gegevens die zijn opgeslagen in Azure Cosmos DB.
 
 Laten we beginnen met het maken van de van configuratieverbinding met de Twitter-gegevens in Azure Cosmos DB met behulp van de PySpark-code hieronder.
@@ -161,7 +161,7 @@ limit 10
 
 ![Grafiek met het aantal tweets per hashtag](./media/lambda-architecture/lambda-architecture-batch-hashtags-bar-chart.png)
 
-Nu dat u uw query hebt, slaan we deze terug naar een verzameling met behulp van de Spark-Connector op te slaan van de uitvoergegevens in een andere verzameling.  In dit voorbeeld gebruiken Scala aan de verbinding presenteren. Vergelijkbaar met het vorige voorbeeld, de van configuratieverbinding maken met de Apache Spark DataFrame opslaan op een andere Azure Cosmos DB-verzameling.
+Nu dat u uw query hebt, slaan we deze terug naar een verzameling met behulp van de Spark-Connector op te slaan van de uitvoergegevens in een andere verzameling.  In dit voorbeeld gebruiken Scala aan de verbinding presenteren. Net als in het vorige voor beeld maakt u de configuratie verbinding om de Apache Spark data frame op te slaan in een andere Azure Cosmos-container.
 
 ```
 val writeConfigMap = Map(
@@ -192,7 +192,7 @@ val tweets_bytags = spark.sql("select hashtags.text as hashtags, count(distinct 
 tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 ```
 
-Deze laatste instructie nu is uw Spark DataFrame opgeslagen in een nieuwe Azure Cosmos DB-verzameling; vanuit een lambda-architectuur perspectief, dit is uw **batchweergave** binnen de **leveringslaag**.
+Met deze laatste instructie is uw Spark-data frame opgeslagen in een nieuwe Azure Cosmos-container. vanuit het perspectief van een lambda-architectuur is dit de **batch weergave** in de laag die moet worden **gereserveerd**.
  
 #### <a name="resources"></a>Resources
 
@@ -205,7 +205,7 @@ Zoals eerder vermeld, met de Azure Cosmos DB Change Feed clientbibliotheek Hierm
 
 ![Diagram markeren de snelheidslaag van de lambda-architectuur](./media/lambda-architecture/lambda-architecture-speed.png)
 
-U doet dit door een afzonderlijke Azure Cosmos DB-verzameling om op te slaan van de resultaten van uw structured streaming query's te maken.  Hiermee kunt u andere systemen toegang heeft tot deze informatie niet alleen Apache Spark. U kunt ook uw documenten automatisch moeten worden verwijderd na een bepaalde duur configureren met de functie Cosmos DB Time-to-Live (TTL).  Zie voor meer informatie over de functie voor Azure Cosmos DB TTL [gegevens in Azure Cosmos DB-verzamelingen met time to live van automatisch laten verlopen](time-to-live.md)
+U doet dit door een afzonderlijke Azure Cosmos-container te maken om de resultaten van uw Structured streaming-query's op te slaan.  Hiermee kunt u andere systemen toegang heeft tot deze informatie niet alleen Apache Spark. U kunt ook uw documenten automatisch moeten worden verwijderd na een bepaalde duur configureren met de functie Cosmos DB Time-to-Live (TTL).  Zie voor meer informatie over de functie van de Azure Cosmos DB TTL [gegevens laten verlopen in azure Cosmos-containers automatisch met time to Live](time-to-live.md)
 
 ```
 // Import Libraries

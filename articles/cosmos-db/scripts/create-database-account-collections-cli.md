@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
 ms.reviewer: sngun
-ms.openlocfilehash: c139ff60ef36b87d9ac16bfd16ad319cd9e17d10
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0ff6d0ea2701eab8f7cc98f2aeead7492b231f77
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66154730"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616745"
 ---
 # <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Azure Cosmos DB: Een SQL API-account maken met CLI
 
@@ -43,8 +43,8 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee wordt een Azure Cosmos DB-account gemaakt. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Hiermee maakt u een Azure Cosmos DB-database. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Hiermee maakt u een Azure Cosmos DB-container. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Hiermee maakt u een Azure Cosmos-data base. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Hiermee maakt u een Azure Cosmos-container. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

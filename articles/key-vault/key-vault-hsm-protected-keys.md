@@ -1,6 +1,6 @@
 ---
-title: Het genereren en overdragen van met HSM beveiligde sleutels voor Azure Key Vault - Azure Key Vault | Microsoft Docs
-description: Gebruik dit artikel om te plannen, te genereren en vervolgens over te dragen van uw eigen HSM beveiligde sleutels gebruiken met Azure Key Vault. Ook wel BYOK of uw eigen sleutel.
+title: Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault-Azure Key Vault | Microsoft Docs
+description: Gebruik dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault. Ook wel bekend als BYOK of uw eigen sleutel nemen.
 services: key-vault
 author: barclayn
 manager: barbkess
@@ -9,94 +9,94 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: f510fa09d30f942f4e26a3a41fd8faa77a37e32a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 16aebf2bb2e0c4d495aa8e3a45d3398a9aa9b9ed
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205990"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575052"
 ---
-# <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Het genereren en overdragen met HSM beveiligde sleutels voor Azure Key Vault
+# <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Voor extra zekerheid, wanneer u Azure Key Vault, gebruikt kunt u importeren of genereren van sleutels in hardware security modules (HSM's) die de HSM-grens nooit verlaten. In dit scenario wordt vaak aangeduid als *uw eigen sleutel*, of byok genoemd. De HSM's zijn FIPS 140-2 Level 2-gevalideerde modules. Azure Key Vault gebruikt nCipher nShield-familie van HSM's voor het beveiligen van uw sleutels.
+Voor extra zekerheid kunt u, wanneer u Azure Key Vault gebruikt, sleutels importeren of genereren in Hardware Security modules (Hsm's) die de HSM-grens nooit verlaten. Dit scenario wordt vaak *uw eigen sleutel*of BYOK genoemd. De HSM's zijn FIPS 140-2 Level 2-gevalideerde modules. Azure Key Vault maakt gebruik van nCipher nShield-familie van Hsm's om uw sleutels te beveiligen.
 
-Gebruik de informatie in dit onderwerp om te plannen, te genereren en vervolgens over te dragen van uw eigen HSM beveiligde sleutels gebruiken met Azure Key Vault.
+Gebruik de informatie in dit onderwerp om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault.
 
 Deze functionaliteit is niet beschikbaar voor Azure China.
 
 > [!NOTE]
-> Zie voor meer informatie over Azure Key Vault [wat is Azure Key Vault?](key-vault-whatis.md)  
-> Zie voor een aan de slag-zelfstudie, zoals het maken van een sleutelkluis voor HSM beschermde sleutels, [wat is Azure Key Vault?](key-vault-overview.md).
+> Zie [Wat is Azure Key Vault?](key-vault-whatis.md) voor meer informatie over Azure Key Vault.  
+> Zie [Wat is Azure Key Vault?](key-vault-overview.md)voor een zelf studie waarmee u aan de slag kunt gaan met het maken van een sleutel kluis voor met HSM beschermde sleutels.
 
-Meer informatie over het genereren en overdragen van een met HSM beveiligde sleutel via Internet:
+Meer informatie over het genereren en overdragen van een met HSM beschermde sleutel via internet:
 
-* U kunt de sleutel genereren op een offline werkstation, waardoor de kwetsbaarheid voor aanvallen.
-* De sleutel is gecodeerd met een sleutel (KEK-Exchange Key), die versleuteld blijft totdat deze zijn overgebracht naar de Azure Key Vault HSM's. Alleen de versleutelde versie van de sleutel verlaat het oorspronkelijke werkstation.
-* De toolset stelt de eigenschappen van uw tenantsleutel die wordt uw sleutel aan de beveiligingswereld van Azure Key Vault gebonden. Dus nadat de Azure Key Vault HSM's ontvangen en de sleutel te ontsleutelen, kunnen deze HSM's gebruiken. De sleutel kan niet worden geëxporteerd. Deze binding wordt afgedwongen door de nCipher HSM's.
-* De sleutel (KEK-Key Exchange) dat wordt gebruikt voor het versleutelen van uw sleutel wordt gegenereerd in de Azure Key Vault HSM's en kan niet worden geëxporteerd. De HSM's dwingen af dat er geen versie van de KEK buiten de HSM's kunnen worden. De toolset bevat bovendien attest van nCipher dat de KEK-sleutel kan niet worden geëxporteerd en is gegenereerd binnen een legitieme door nCipher vervaardigde HSM.
-* De toolset bevat een attest van nCipher dat de Azure Key Vault-beveiligingswereld ook is gegeneerd met een legitieme HSM geproduceerd door nCipher. Deze verklaring is uw bewijs dat Microsoft legitieme hardware wordt gebruikt.
-* Microsoft gebruikt afzonderlijke kek's en afzonderlijke Beveiligingswerelden in elke geografische regio. Dankzij deze scheiding zorgt ervoor dat de sleutel kan worden gebruikt alleen in datacenters in de regio waarin u hebt versleuteld. Bijvoorbeeld, kan niet een sleutel van een Europese klant worden gebruikt in datacenters in Noord-Amerika of Azië.
+* U genereert de sleutel van een offline werk station, waardoor de kwets baarheid wordt verminderd.
+* De sleutel is versleuteld met een sleutel uitwisselings sleutel (KEK), die versleuteld blijft totdat deze wordt overgedragen naar de Azure Key Vault Hsm's. Alleen de versleutelde versie van uw sleutel laat het oorspronkelijke werk station ongewijzigd.
+* De toolset stelt eigenschappen in voor uw Tenant sleutel die uw sleutel verbindt met de Azure Key Vault beveiligings wereld. Nadat de Azure Key Vault Hsm's de sleutel heeft ontvangen en ontsleuteld, kan alleen deze Hsm's deze gebruiken. De sleutel kan niet worden geëxporteerd. Deze binding wordt afgedwongen door de nCipher Hsm's.
+* De sleutel uitwisselings sleutel (KEK) die wordt gebruikt om uw sleutel te versleutelen, wordt gegenereerd in de Azure Key Vault Hsm's en kan niet worden geëxporteerd. De Hsm's dwingt af dat er geen duidelijke versie van de KEK buiten de Hsm's kan worden uitgevoerd. Daarnaast bevat de toolset Attestation van nCipher dat de KEK niet exporteerbaar is en is gegenereerd in een echte HSM die is gefabriceerd door nCipher.
+* De toolset bevat Attestation van nCipher dat de Azure Key Vault Security-wereld ook is gegenereerd op basis van een echte HSM die is gefabriceerd door nCipher. Deze verklaring bewijst dat micro soft legitieme hardware gebruikt.
+* Micro soft maakt gebruik van afzonderlijke KEKs en afzonderlijke beveiligings werelden in elke geografische regio. Deze schei ding zorgt ervoor dat uw sleutel alleen kan worden gebruikt in data centers in de regio waarin u deze hebt versleuteld. Een sleutel van een Europese klant kan bijvoorbeeld niet worden gebruikt in data centers in Noord-Amerika of Azië.
 
-## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Meer informatie over nCipher HSM's en Microsoft-services
+## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>Meer informatie over nCipher Hsm's en micro soft-Services
 
-nCipher Security is een toonaangevende wereldwijde leverancier van gegevensversleuteling en cyberbeveiliging beveiligingsoplossingen voor de financiële, hightech, productie, overheid en technologiesector. Met een 40 jaar bijhouden record van de bescherming van zakelijke en overheidsgegevens worden cryptografische beveiligingsoplossingen nCipher door vier van de vijf grootste energie- en ruimtevaart bedrijven gebruikt. Hun oplossingen worden ook gebruikt door 22 NAVO landen/regio's en meer dan 80 procent van de betalingstransacties wereldwijd beveiligen.
+nCipher Security is een toonaangevende wereld wijde provider van gegevens versleuteling en Cyber-beveiligings oplossingen voor de sectoren financiële services, hoge technologie, productie, overheid en technologie. Met een 40 jaar bijhouden van de bescherming van bedrijfs-en overheids informatie, worden nCipher-beveiligings oplossingen gebruikt door vier van de vijf grootste energie-en lucht bedrijven. Hun oplossingen worden ook gebruikt door 22 NAVO landen/regio's en beveiligen meer dan 80 procent van de wereld wijde betalings transacties.
 
-Microsoft heeft samengewerkt met nCipher beveiliging voor het verbeteren van de status van illustraties voor HSM's. Deze verbeteringen kunnen u profiteren van de gebruikelijke voordelen van gehoste services, zonder verliest controle over uw sleutels. Om precies kan deze uitbreidingen Microsoft de HSM's zodat u niet te hoeft beheren. Als een cloudservice schaalt Azure Key Vault op korte termijn opschaalbaar om te voldoen aan de gebruikspieken van uw organisatie. Op hetzelfde moment, uw sleutel beschermd binnen de HSM's van Microsoft: U behoudt de controle over de levenscyclus van de omdat u de sleutel genereren en naar HSM's van Microsoft overdragen.
+Micro soft heeft samengewerkt met nCipher-beveiliging om de status van Art voor Hsm's te verbeteren. Deze verbeteringen bieden u de mogelijkheid om de typische voor delen van gehoste services te krijgen zonder dat u de verliest controle over uw sleutels hoeft te nemen. Met deze verbeteringen kan micro soft de Hsm's beheren, zodat u dit niet hoeft te doen. Als Cloud service Azure Key Vault zo snel omhoog geschaald om te voldoen aan de gebruiks pieken van uw organisatie. Op hetzelfde moment wordt uw sleutel beschermd in de Hsm's van micro soft: U behoudt de controle over de levens cyclus van de sleutel, omdat u de sleutel genereert en deze overdraagt naar de Hsm's van micro soft.
 
-## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementatie van uw eigen sleutel (BYOK) brengen voor Azure Key Vault
+## <a name="implementing-bring-your-own-key-byok-for-azure-key-vault"></a>Implementatie van uw eigen sleutel (BYOK) voor Azure Key Vault
 
-Gebruik de volgende informatie en procedures als u uw eigen HSM beschermde sleutel genereren en vervolgens naar Azure Key Vault overbrengen, het uw eigen scenario key (BYOK).
+Gebruik de volgende informatie en procedures als u uw eigen met HSM beveiligde sleutel wilt genereren en deze vervolgens wilt overzetten naar Azure Key Vault: het BYOK-scenario (uw eigen sleutel).
 
 ## <a name="prerequisites-for-byok"></a>Vereisten voor BYOK
 
-Zie de volgende tabel voor een lijst met vereisten voor het meenemen van uw eigen sleutel (BYOK) voor Azure Key Vault.
+Zie de volgende tabel voor een lijst met vereisten voor het nemen van uw eigen sleutel (BYOK) voor Azure Key Vault.
 
 | Vereiste | Meer informatie |
 | --- | --- |
-| Een abonnement op Azure |Voor het maken van een Azure Key Vault, moet u een Azure-abonnement: [Aanmelden voor een gratis proefversie](https://azure.microsoft.com/pricing/free-trial/) |
-| De Azure Key Vault Premium-servicelaag voor de ondersteuning van met HSM beveiligde sleutels |Zie voor meer informatie over de service-lagen en mogelijkheden voor Azure Key Vault, de [prijzen van Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) website. |
-| nCipher nShield-HSM's, smartcards en voor ondersteuningssoftware |U moet hebben toegang tot een nCipher Hardware Security Module en operationele basiskennis hebben van nCipher nShield-HSM's. Zie [nCipher nShield Hardware Security Module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) voor de lijst met compatibele modellen of om aan te schaffen van een HSM, als u niet hebt. |
-| De volgende hardware en software:<ol><li>Een offline x64 werkstation met als een minimaal besturingssysteem Windows 7, Windows en nCipher nShield-software ten minste versie 11.50.<br/><br/>Als dit werkstation Windows 7 wordt uitgevoerd, moet u [Microsoft .NET Framework 4.5 installeren](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Een werkstation dat is verbonden met Internet en heeft een minimumversie Windows-besturingssysteem van Windows 7 en [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **minimaal versie 1.1.0** geïnstalleerd.</li><li>Een USB-station of ander draagbaar opslagapparaat met ten minste 16 MB vrije ruimte.</li></ol> |Uit veiligheidsoverwegingen, wordt u aangeraden dat de eerste werkstation niet is verbonden met een netwerk. Deze aanbeveling is echter niet via een programma afgedwongen.<br/><br/>In de volgende instructies wordt dit werkstation aangeduid als niet-verbonden werkstation.</p></blockquote><br/>Bovendien, als uw tenantsleutel bedoeld voor een productienetwerk is, raden wij u een tweede, afzonderlijk werkstation gebruiken voor het downloaden van de toolset en uploaden van de tenant-sleutel. Maar voor testdoeleinden kunt u hetzelfde werkstation gebruiken als het eerste.<br/><br/>In de volgende instructies wordt dit tweede werkstation aangeduid als het met Internet verbonden werkstation.</p></blockquote><br/> |
+| Een abonnement op Azure |Als u een Azure Key Vault wilt maken, hebt u een Azure-abonnement nodig: [Meld u aan voor een gratis proef versie](https://azure.microsoft.com/pricing/free-trial/) |
+| De Azure Key Vault Premium-servicelaag ter ondersteuning van met HSM beveiligde sleutels |Zie de [Azure Key Vault-prijs](https://azure.microsoft.com/pricing/details/key-vault/) website voor meer informatie over de service lagen en mogelijkheden voor Azure Key Vault. |
+| nCipher nShield Hsm's, Smart Cards en ondersteunings software |U moet toegang hebben tot een nCipher Hardware Security module en basis kennis van nCipher nShield Hsm's. Zie [NCipher NShield Hardware Security module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) voor de lijst met compatibele modellen of als u een HSM wilt kopen als u deze niet hebt. |
+| De volgende hardware en software:<ol><li>Een offline x64-werk station met een mini maal Windows-besturings systeem van Windows 7 en nCipher nShield-software van ten minste versie 11,50.<br/><br/>Als op dit werk station Windows 7 wordt uitgevoerd, moet u [Microsoft .NET Framework 4,5 installeren](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Een werk station dat is verbonden met internet en een mini maal Windows-besturings systeem van Windows 7 en [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **Mini maal geïnstalleerde versie 1.1.0** geïnstalleerd.</li><li>Een USB-station of ander draagbaar opslag apparaat met ten minste 16 MB beschik bare ruimte.</li></ol> |Uit veiligheids overwegingen raden we u aan het eerste werk station niet met een netwerk te verbinden. Deze aanbeveling wordt echter niet programmatisch afgedwongen.<br/><br/>In de volgende instructies wordt dit werk station aangeduid als het niet-verbonden werk station.</p></blockquote><br/>Als uw Tenant sleutel voor een productie netwerk is, raden we u aan een tweede, afzonderlijk werk station te gebruiken om de hulpprogram ma's te downloaden en de Tenant sleutel te uploaden. Maar voor test doeleinden kunt u hetzelfde werk station gebruiken als het eerste.<br/><br/>In de volgende instructies wordt dit tweede werk station aangeduid als het met internet verbonden werk station.</p></blockquote><br/> |
 
-## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Genereren en uw sleutel overdragen naar Azure Key Vault HSM
+## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Uw sleutel genereren en overdragen naar Azure Key Vault HSM
 
-U kunt de volgende vijf stappen wilt gebruiken voor het genereren en uw sleutel overdragen naar een Azure Key Vault HSM:
+U gebruikt de volgende vijf stappen voor het genereren en overdragen van uw sleutel naar een Azure Key Vault HSM:
 
-* [Stap 1: Uw met Internet verbonden werkstation voorbereiden](#step-1-prepare-your-internet-connected-workstation)
-* [Stap 2: Uw niet-verbonden werkstation voorbereiden](#step-2-prepare-your-disconnected-workstation)
-* [Stap 3: De sleutel genereren](#step-3-generate-your-key)
+* [Stap 1: Het met internet verbonden werk station voorbereiden](#step-1-prepare-your-internet-connected-workstation)
+* [Stap 2: Het niet-verbonden werk station voorbereiden](#step-2-prepare-your-disconnected-workstation)
+* [Stap 3: Uw sleutel genereren](#step-3-generate-your-key)
 * [Stap 4: Uw sleutel voorbereiden voor overdracht](#step-4-prepare-your-key-for-transfer)
 * [Stap 5: Uw sleutel overdragen naar Azure Key Vault](#step-5-transfer-your-key-to-azure-key-vault)
 
-## <a name="step-1-prepare-your-internet-connected-workstation"></a>Stap 1: Uw met Internet verbonden werkstation voorbereiden
+## <a name="step-1-prepare-your-internet-connected-workstation"></a>Stap 1: Het met internet verbonden werk station voorbereiden
 
-Voer de volgende procedures op uw werkstation dat is verbonden met Internet voor deze eerste stap.
+Voer voor deze eerste stap de volgende procedures uit op uw werk station dat is verbonden met internet.
 
-### <a name="step-11-install-azure-powershell"></a>Stap 1.1: Azure PowerShell installeren
+### <a name="step-11-install-azure-powershell"></a>Stap 1,1: Azure PowerShell installeren
 
-Vanuit het met Internet verbonden werkstation, download en installeer de Azure PowerShell-module met de cmdlets voor het beheren van Azure Key Vault. Zie voor installatie-instructies [hoe u Azure PowerShell installeren en configureren](/powershell/azure/overview).
+Op het met internet verbonden werk station downloadt en installeert u de Azure PowerShell module met de-cmdlets voor het beheren van Azure Key Vault. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor installatie-instructies.
 
-### <a name="step-12-get-your-azure-subscription-id"></a>Stap 1.2: Uw Azure-abonnement-ID ophalen
+### <a name="step-12-get-your-azure-subscription-id"></a>Stap 1,2: Uw Azure-abonnements-ID ophalen
 
-Start een Azure PowerShell-sessie en aanmelden bij uw Azure-account met behulp van de volgende opdracht uit:
+Start een Azure PowerShell-sessie en meld u aan bij uw Azure-account met behulp van de volgende opdracht:
 
 ```Powershell
    Connect-AzAccount
 ```
-Voer in het pop-upvenster in de browser uw gebruikersnaam en wachtwoord voor uw Azure-account in. Vervolgens gebruikt u de [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) opdracht:
+Voer in het pop-upvenster in de browser uw gebruikersnaam en wachtwoord voor uw Azure-account in. Gebruik vervolgens de opdracht [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription) :
 
 ```powershell
    Get-AzSubscription
 ```
-Zoek in de uitvoer de ID voor het abonnement dat u voor Azure Key Vault gebruiken wilt. U kunt deze abonnements-ID wordt later nodig.
+Ga vanuit de uitvoer naar de ID van het abonnement dat u wilt gebruiken voor Azure Key Vault. U hebt deze abonnements-ID later nodig.
 
-Sluit de Azure PowerShell-venster niet.
+Sluit het Azure PowerShell-venster niet.
 
-### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Stap 1.3: Download de BYOK-toolset voor Azure Key Vault
+### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>Stap 1,3: Down load de BYOK-toolset voor Azure Key Vault
 
-Ga naar het Microsoft Download Center en [download de Azure Key Vault BYOK-hulpmiddelenset](https://www.microsoft.com/download/details.aspx?id=45345) voor uw geografische regio of het exemplaar van Azure. Gebruik de volgende informatie om te identificeren van de naam van het pakket downloaden en de bijbehorende SHA-256-pakket-hash:
+Ga naar het micro soft Download centrum en [down load de Azure Key Vault BYOK](https://www.microsoft.com/download/details.aspx?id=45345) -toolset voor uw geografische regio of Azure-exemplaar. Gebruik de volgende informatie om de pakket naam te identificeren die u wilt downloaden en de bijbehorende SHA-256-pakket-hash:
 
 ---
 **Verenigde Staten:**
@@ -106,14 +106,14 @@ KeyVault-BYOK-Tools-UnitedStates.zip
 2E8C00320400430106366A4E8C67B79015524E4EC24A2D3A6DC513CA1823B0D4
 
 ---
-**Europa:**
+**Europa**
 
-KeyVault-BYOK-Tools-Europe.zip
+KeyVault-BYOK-Tools-Europe. zip
 
 9AAA63E2E7F20CF9BB62485868754203721D2F88D300910634A32DFA1FB19E4A
 
 ---
-**Azië:**
+**Asia**
 
 KeyVault-BYOK-Tools-AsiaPacific.zip
 
@@ -122,7 +122,7 @@ KeyVault-BYOK-Tools-AsiaPacific.zip
 ---
 **Latijns-Amerika:**
 
-KeyVault-BYOK-Tools-LatinAmerica.zip
+KeyVault-BYOK-Tools-LatinAmerica. zip
 
 E7DFAFF579AFE1B9732C30D6FD80C4D03756642F25A538922DD1B01A4FACB619
 
@@ -143,12 +143,12 @@ KeyVault-BYOK-Tools-Korea.zip
 ---
 **Zuid-Afrika:**
 
-KeyVault-BYOK-Tools-SouthAfrica.zip
+KeyVault-BYOK-Tools-SouthAfrica. zip
 
 C41060C5C0170AAAAD896DA732E31433D14CB9FC83AC3C67766F46D98620784A
 
 ---
-**VAE:**
+**VAE**
 
 KeyVault-BYOK-Tools-UAE.zip
 
@@ -178,16 +178,23 @@ A79DD8C6DFFF1B00B91D1812280207A205442B3DDF861B79B8B991BB55C35263
 ---
 **Canada:**
 
-KeyVault-BYOK-Tools-Canada.zip
+KeyVault-BYOK-Tools-Canada. zip
 
 61BE1A1F80AC79912A42DEBBCC42CF87C88C2CE249E271934630885799717C7B
 
 ---
 **Duitsland:**
 
-KeyVault-BYOK-Tools-Germany.zip
+KeyVault-BYOK-Tools-Germany. zip
 
 5385E615880AAFC02AFD9841F7BADD025D7EE819894AA29ED3C71C3F844C45D6
+
+---
+**Open bare Duitsland:**
+
+KeyVault-BYOK-Tools-Germany-Public. zip
+
+54534936D0A0C99C8117DB724C34A5E50FD204CFCBD75C78972B785865364A29
 
 ---
 **India:**
@@ -199,7 +206,7 @@ KeyVault-BYOK-Tools-India.zip
 ---
 **Frankrijk:**
 
-KeyVault-BYOK-Tools-France.zip
+KeyVault-BYOK-Tools-France. zip
 
 5C9D1F3E4125B0C09E9F60897C9AE3A8B4CB0E7D13A14F3EDBD280128F8FE7DF
 
@@ -211,8 +218,16 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 432746BD0D3176B708672CCFF19D6144FCAA9E5EB29BB056489D3782B3B80849
 
 ---
+**Zwitserland:**
 
-Voor het valideren van de integriteit van uw gedownloade BYOK-toolset, vanuit de Azure PowerShell-sessie, gebruikt u de [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) cmdlet.
+KeyVault-BYOK-Tools-Switzerland. zip
+
+88CF8D39899E26D456D4E0BC57E5C94913ABF1D73A89013FCE3BBD9599AD2FE9
+
+---
+
+
+Gebruik de cmdlet [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) om de integriteit van uw gedownloade BYOK-toolset te valideren vanuit uw Azure PowerShell-sessie.
 
    ```powershell
    Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -220,81 +235,81 @@ Voor het valideren van de integriteit van uw gedownloade BYOK-toolset, vanuit de
 
 De toolset bevat:
 
-* Een KEK Key Exchange Key ()-pakket met een naam die begint met **BYOK-KEK - pkg-.**
-* Een beveiligingswereldpakket met een naam die met begint **BYOK-SecurityWorld - pkg-.**
+* Een KEK-pakket (Key Exchange Key) met een naam die begint met **BYOK-Kek-pak-.**
+* Een beveiligings wereld pakket met een naam die begint met **BYOK-SecurityWorld-pak-.**
 * Een python-script met de naam **verifykeypackage.py.**
-* Een uitvoerbaar opdrachtregelbestand met de naam **KeyTransferRemote.exe** en bijbehorende DLL-bestanden.
-* Een visueel element C++ herdistribueerbaar pakket, met de naam **vcredist_x64.exe.**
+* Een uitvoerbaar opdracht regel bestand met de naam **KeyTransferRemote. exe** en de bijbehorende DLL-bestanden.
+* Een Visual C++ Redistributable-pakket met de naam **vcredist_x64. exe.**
 
-Kopieer het pakket naar een USB-station of ander draagbaar opslagmedium.
+Kopieer het pakket naar een USB-station of andere draag bare opslag.
 
-## <a name="step-2-prepare-your-disconnected-workstation"></a>Stap 2: Uw niet-verbonden werkstation voorbereiden
+## <a name="step-2-prepare-your-disconnected-workstation"></a>Stap 2: Het niet-verbonden werk station voorbereiden
 
-Voor deze tweede stap doen in de volgende procedures op het werkstation dat niet is verbonden met een netwerk (Internet of uw interne netwerk).
+Voer voor deze tweede stap de volgende procedures uit op het werk station dat niet is verbonden met een netwerk (Internet of uw interne netwerk).
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>Stap 2.1: Voorbereiden van de niet-verbonden werkstation met nCipher nShield-HSM
+### <a name="step-21-prepare-the-disconnected-workstation-with-ncipher-nshield-hsm"></a>Stap 2.1: Het niet-verbonden werk station voorbereiden met nCipher nShield HSM
 
-Installeer de nCipher-ondersteuningssoftware op een Windows-computer, en voeg vervolgens een nCipher nShield-HSM aan die computer.
+Installeer de nCipher-ondersteunings software op een Windows-computer en koppel vervolgens een nCipher nShield HSM aan die computer.
 
-Zorg ervoor dat de nCipher-hulpprogramma's in het pad ( **%nfast_home%\bin**). Bijvoorbeeld, typ het volgende:
+Zorg ervoor dat de nCipher-hulpprogram ma's zich in het pad bevinden ( **%nfast_home%\Bin**). Typ bijvoorbeeld het volgende:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
   ```
 
-Zie voor meer informatie de handleiding inbegrepen bij de nShield-HSM.
+Zie de gebruikers handleiding die is opgenomen in de nShield HSM voor meer informatie.
 
-### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Stap 2.2: Installeer de BYOK-toolset op niet-verbonden werkstation
+### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Stap 2.2: Installeer de BYOK-toolset op het niet-verbonden werk station
 
-Kopieer het pakket met BYOK-toolset van het USB-station of ander draagbaar opslagmedium en doet u het volgende:
+Kopieer het pakket met de BYOK-hulpprogram ma's van het USB-station of andere draag bare opslag en Ga als volgt te werk:
 
-1. Pak de bestanden uit het gedownloade pakket naar een map.
-2. Voer vcredist_x64.exe uit in die map.
-3. Volg de instructies voor de installatie de Visual C++ runtime-onderdelen voor Visual Studio 2013.
+1. Pak de bestanden uit het gedownloade pakket naar een wille keurige map.
+2. Voer vcredist_x64. exe uit in de map.
+3. Volg de instructies voor het installeren van de C++ Visual runtime-onderdelen voor visual studio 2013.
 
-## <a name="step-3-generate-your-key"></a>Stap 3: De sleutel genereren
+## <a name="step-3-generate-your-key"></a>Stap 3: Uw sleutel genereren
 
-Voor deze derde stap, voer de volgende procedures op de niet-verbonden werkstation. Voor deze stap moet uw HSM zijn in de modus voor de initialisatie. 
+Voer voor deze derde stap de volgende procedures uit op het niet-verbonden werk station. Om deze stap te volt ooien moet uw HSM zich in de initialisatie modus bevindt. 
 
-### <a name="step-31-change-the-hsm-mode-to-i"></a>Stap 3.1: De HSM-modus wijzigen in 'Ik'
+### <a name="step-31-change-the-hsm-mode-to-i"></a>Stap 3.1: Wijzig de HSM-modus in ' I '
 
-Als u nCipher nShield Edge, de modus te wijzigen: 1. Gebruik de knop modus om de vereiste modus te markeren. 2. Binnen een paar seconden en houdt u de knop wissen voor een paar seconden. Als de modus wijzigt, wordt de nieuwe modus LED niet meer knippert en branden blijft. De Status-LED onregelmatig voor een paar seconden mogelijk flash en vervolgens knippert regelmatig wanneer het apparaat gereed is. Anders wordt het apparaat blijft in de huidige modus, met de juiste modus LED belicht.
+Als u nCipher nShield Edge gebruikt, kunt u de modus als volgt wijzigen: 1. Gebruik de knop modus om de vereiste modus te markeren. 2. Binnen een paar seconden drukt u op de knop wissen en houdt u deze gedurende een paar seconden ingedrukt. Als de modus wordt gewijzigd, wordt de LED van de nieuwe modus niet meer knippert en blijft deze branden. De LED van de status kan een paar seconden onregelmatig knip peren en vervolgens regel matig knippert wanneer het apparaat klaar is. Als dat niet het geval is, blijft het apparaat in de huidige modus, met de juiste modus LED voor branden.
 
-### <a name="step-32-create-a-security-world"></a>Stap 3.2: Maak een beveiligingswereld
+### <a name="step-32-create-a-security-world"></a>Stap 3,2: Een beveiligings wereld maken
 
-Start een opdrachtprompt en voer de nCipher-nieuwe-wereld-programma.
+Start een opdracht prompt en voer het nCipher New-World-programma uit.
 
    ```cmd
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
-Dit programma maakt een **Beveiligingswereld** bestand op % NFAST_KMDATA%\local\world, wat overeenkomt met de map C:\ProgramData\nCipher\Key Management Settings\User. U kunt andere waarden gebruiken voor het quorum, maar in ons voorbeeld u gevraagd drie lege kaarten en pincodes voor elk adres invoeren. Klik, twee kaarten volledige toegang geven tot de beveiligingswereld. Deze kaarten worden de **Beheerderskaartenset** voor de nieuwe beveiligingswereld.
+Dit programma maakt een **beveiligings wereld** bestand op%NFAST_KMDATA%\local\world, dat overeenkomt met de map C:\ProgramData\nCipher\Key Management Data\local. U kunt verschillende waarden voor het quorum gebruiken, maar in het volgende voor beeld wordt u gevraagd om drie lege kaarten en pincodes voor elke waarde in te voeren. Vervolgens geven alle twee kaarten volledige toegang tot de beveiligings wereld. Deze kaarten worden de **beheerders kaart** die is ingesteld voor de nieuwe beveiligings wereld.
 
 > [!NOTE]
-> Als uw HSM biedt geen ondersteuning voor de nieuwere ineens suite DLf3072s256mRijndael, kunt u vervangen--coderingssuite DLf3072s256mRijndael = met--coderingssuite DLf1024s160mRijndael =
+> Als uw HSM de nieuwere coderings Suite-DLf3072s256mRijndael niet ondersteunt, kunt u--cipher-Suite = DLf3072s256mRijndael vervangen door--cipher-Suite = DLf1024s160mRijndael
 
 Ga daarna als volgt te werk:
 
-* Back-up van het wereldbestand. Beveilig het wereldbestand, de Beheerderskaarten en de bijbehorende pincodes, en zorg ervoor dat niemand toegang tot meer dan één kaart heeft.
+* Maak een back-up van het wereld bestand. Beveilig en Beveilig het wereld bestand, de beheerders kaarten en hun pincodes, en zorg ervoor dat er geen enkele persoon toegang tot meer dan één kaart heeft.
 
-### <a name="step-33-change-the-hsm-mode-to-o"></a>Stap 3.3: De HSM-modus te wijzigen ' o '
+### <a name="step-33-change-the-hsm-mode-to-o"></a>Stap 3,3: Wijzig de HSM-modus in ' O '
 
-Als u nCipher nShield Edge, de modus te wijzigen: 1. Gebruik de knop modus om de vereiste modus te markeren. 2. Binnen een paar seconden en houdt u de knop wissen voor een paar seconden. Als de modus wijzigt, wordt de nieuwe modus LED niet meer knippert en branden blijft. De Status-LED onregelmatig voor een paar seconden mogelijk flash en vervolgens knippert regelmatig wanneer het apparaat gereed is. Anders wordt het apparaat blijft in de huidige modus, met de juiste modus LED belicht.
+Als u nCipher nShield Edge gebruikt, kunt u de modus als volgt wijzigen: 1. Gebruik de knop modus om de vereiste modus te markeren. 2. Binnen een paar seconden drukt u op de knop wissen en houdt u deze gedurende een paar seconden ingedrukt. Als de modus wordt gewijzigd, wordt de LED van de nieuwe modus niet meer knippert en blijft deze branden. De LED van de status kan een paar seconden onregelmatig knip peren en vervolgens regel matig knippert wanneer het apparaat klaar is. Als dat niet het geval is, blijft het apparaat in de huidige modus, met de juiste modus LED voor branden.
 
-### <a name="step-34-validate-the-downloaded-package"></a>Stap 3.4: Het gedownloade pakket valideren
+### <a name="step-34-validate-the-downloaded-package"></a>Stap 3,4: Het gedownloade pakket valideren
 
-Deze stap is optioneel, maar aanbevolen zodat u het volgende kunt valideren:
+Deze stap is optioneel, maar wordt aanbevolen, zodat u het volgende kunt valideren:
 
-* De uitwisselingssleutel van de sleutel die is opgenomen in de hulpmiddelenset is, gegenereerd met een legitieme nCipher nShield-HSM.
-* De hash van de Beveiligingswereld die is opgenomen in de hulpmiddelenset is, gegenereerd met een legitieme nCipher nShield-HSM.
-* De uitwisselingssleutel van de sleutel is niet exporteerbaar maken.
+* De sleutel uitwisselings sleutel die is opgenomen in de toolset is gegenereerd op basis van een legitieme nCipher nShield HSM.
+* De hash van de beveiligings wereld die is opgenomen in de toolset is gegenereerd in een legitieme nCipher nShield HSM.
+* De sleutel uitwisselings sleutel kan niet worden geëxporteerd.
 
 > [!NOTE]
-> Voor het valideren van het gedownloade pakket, moet de HSM moet worden verbonden, zijn ingeschakeld, en een beveiligingswereld (zoals de groep die u zojuist hebt gemaakt).
+> Voor het valideren van het gedownloade pakket moet de HSM zijn verbonden, ingeschakeld en moet deze een beveiligings wereld hebben (zoals de versie die u zojuist hebt gemaakt).
 
 Het gedownloade pakket valideren:
 
-1. Voer het script verifykeypackage.py door een van de volgende, afhankelijk van uw geografische regio of het exemplaar van Azure te typen:
+1. Voer het script verifykeypackage.py uit door een van de volgende opties te typen, afhankelijk van uw geografische regio of Azure-exemplaar:
 
    * Voor Noord-Amerika:
 
@@ -323,70 +338,76 @@ Het gedownloade pakket valideren:
    * Voor Australië:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-AUS-1 -w BYOK-SecurityWorld-pkg-AUS-1
-   * Voor [Azure Government](https://azure.microsoft.com/features/gov/), waarbij de US government-exemplaar van Azure worden gebruikt:
+   * Voor [Azure Government](https://azure.microsoft.com/features/gov/), waarbij gebruik wordt gemaakt van het Amerikaanse overheids exemplaar van Azure:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USGOV-1 -w BYOK-SecurityWorld-pkg-USGOV-1
-   * Voor de Amerikaanse overheid DOD:
+   * Voor Amerikaanse overheid DOD:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-USDOD-1 -w BYOK-SecurityWorld-pkg-USDOD-1
-   * Canada:
+   * Voor Canada:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-CANADA-1 -w BYOK-SecurityWorld-pkg-CANADA-1
    * Voor Duitsland:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
+   * Voor open bare Duitsland:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-GERMANY-1 -w BYOK-SecurityWorld-pkg-GERMANY-1
    * Voor India:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
-   * Frankrijk:
+   * Voor Frank rijk:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-FRANCE-1 -w BYOK-SecurityWorld-pkg-FRANCE-1
-   * Voor het Verenigd Koninkrijk:
+   * Voor het Verenigd Konink rijk:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
+   * Voor Zwitser land:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-SUI-1 -w BYOK-SecurityWorld-pkg-SUI-1
 
      > [!TIP]
-     > De nCipher nShield-software bevat python in %NFAST_HOME%\python\bin
+     > De nCipher nShield-software omvat python op%NFAST_HOME%\python\bin
      >
      >
-2. Bevestig dat u het volgende, waarmee wordt aangegeven validatie is geslaagd: **Resultaat: GESLAAGD**
+2. Controleer of het volgende wordt weer gegeven. Dit geeft aan dat de validatie is geslaagd: **Daardoor GELEVERD**
 
-Met dit script wordt de ondertekenaarsketen tot de basissleutel nShield gevalideerd. De hash van deze hoofdsleutel is ingesloten in het script en de waarde moet **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. U kunt deze waarde ook afzonderlijk controleren door naar de pagina de [nCipher website](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
+Met dit script wordt de ondertekenaar gecontroleerd op basis van de nShield-hoofd sleutel. De hash van deze hoofd sleutel is inge sloten in het script en de waarde moet **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**zijn. U kunt deze waarde ook afzonderlijk bevestigen door de [nCipher-website](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)te bezoeken.
 
-U kunt nu een nieuwe sleutel te maken.
+U bent nu klaar om een nieuwe sleutel te maken.
 
-### <a name="step-35-create-a-new-key"></a>Stap 3.5: Een nieuwe sleutel maken
+### <a name="step-35-create-a-new-key"></a>Stap 3,5: Een nieuwe sleutel maken
 
-Genereer een sleutel met behulp van de nCipher-nShield **generatekey** programma.
+Genereer een sleutel met behulp van het nCipher nShield **generatekey** -programma.
 
 Voer de volgende opdracht uit om de sleutel te genereren:
 
     generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey plainname=contosokey nvram=no pubexp=
 
-Wanneer u deze opdracht uitvoert, gebruikt u deze instructies:
+Wanneer u deze opdracht uitvoert, volgt u deze instructies:
 
-* De parameter *beveiligen* moet worden ingesteld op de waarde **module**, zoals wordt weergegeven. Hiermee maakt u een modulair beveiligde sleutel. De BYOK-toolset biedt geen ondersteuning voor met OCS beveiligde sleutels.
-* Vervang de waarde van *contosokey* voor de **ident** en **plainname** met een string-waarde. Administratieve overhead te minimaliseren en de kans op fouten te verminderen, wordt u aangeraden dat u dezelfde waarde voor beide gebruiken. De **ident** waarde mag alleen cijfers, streepjes en kleine letters.
-* De pubexp is leeg (standaard) in dit voorbeeld, maar u kunt specifieke waarden opgeven. Zie voor meer informatie de [nCipher-documentatie.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* De para meter *Protect* moet worden ingesteld op de waarde- **module**, zoals wordt weer gegeven. Hiermee maakt u een door een module beveiligde sleutel. De BYOK-toolset biedt geen ondersteuning voor met OCS beveiligde sleutels.
+* Vervang de waarde van *contosokey* voor de **ident** en de eigenschap **Plain** door een wille keurige teken reeks waarde. Voor het minimaliseren van administratieve overhead en het verminderen van het risico van fouten, raden we u aan om dezelfde waarde voor beide te gebruiken. De **ident** -waarde mag alleen cijfers, streepjes en kleine letters bevatten.
+* De pubexp wordt in dit voor beeld leeg gelaten (standaard), maar u kunt specifieke waarden opgeven. Zie de [nCipher-documentatie](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based) voor meer informatie.
 
-Deze opdracht maakt u een Tokenized sleutelbestand in uw map %NFAST_KMDATA%\local met een naam die begint met **key_simple_** , gevolgd door de **ident** die is opgegeven in de opdracht. Bijvoorbeeld: **key_simple_contosokey**. Dit bestand bevat een versleutelde sleutel.
+Met deze opdracht maakt u een Tokend sleutel bestand in de map%NFAST_KMDATA%\local met een naam die begint met **key_simple_** , gevolgd door de **ident** die in de opdracht is opgegeven. Bijvoorbeeld: **key_simple_contosokey**. Dit bestand bevat een versleutelde sleutel.
 
-Back-up van deze Tokenized sleutelbestand op een veilige locatie.
+Maak een back-up van dit token sleutel bestand op een veilige locatie.
 
 > [!IMPORTANT]
-> Wanneer u uw sleutel later naar Azure Key Vault overdraagt, exporteren niet Microsoft deze sleutel naar u terug, dus het erg belangrijk is dat u back-up uw sleutel en beveiligingswereld veilig. Neem contact op met [nCipher](https://www.ncipher.com/about-us/contact-us) voor richtlijnen en aanbevolen procedures voor het back-ups van uw sleutel.
+> Wanneer u de sleutel later overdraagt aan Azure Key Vault, kan micro soft deze sleutel niet meer naar u exporteren, zodat het erg belang rijk is dat u een veilige back-up maakt van uw sleutel en beveiligings wereld. Neem contact op met [nCipher](https://www.ncipher.com/about-us/contact-us) voor hulp en aanbevolen procedures voor het maken van een back-up van uw sleutel.
 >
 
 
-U bent nu klaar om over te dragen van uw sleutel naar Azure Key Vault.
+U bent nu klaar om uw sleutel over te dragen naar Azure Key Vault.
 
 ## <a name="step-4-prepare-your-key-for-transfer"></a>Stap 4: Uw sleutel voorbereiden voor overdracht
 
-Voer de volgende procedures op de niet-verbonden werkstation voor deze vierde stap.
+Voer voor deze vierde stap de volgende procedures uit op het niet-verbonden werk station.
 
-### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>Stap 4.1: Een kopie van uw sleutel met beperkte machtigingen maken
+### <a name="step-41-create-a-copy-of-your-key-with-reduced-permissions"></a>Stap 4,1: Een kopie van uw sleutel met beperkte machtigingen maken
 
-Open een nieuwe opdrachtprompt en wijzig de huidige map naar de locatie waar u de BYOK-zip-bestand hebt uitgepakt. Als u wilt beperken de machtigingen voor uw sleutel vanaf een opdrachtprompt, voert u een van de volgende, afhankelijk van uw geografische regio of het exemplaar van Azure:
+Open een nieuwe opdracht prompt en wijzig de huidige map in de locatie waar u het BYOK zip-bestand hebt uitgepakt. Als u de machtigingen voor uw sleutel wilt beperken, voert u een van de volgende handelingen uit vanaf een opdracht prompt, afhankelijk van de geografische regio of het exemplaar van Azure:
 
 * Voor Noord-Amerika:
 
@@ -415,45 +436,51 @@ Open een nieuwe opdrachtprompt en wijzig de huidige map naar de locatie waar u d
 * Voor Australië:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1
-* Voor [Azure Government](https://azure.microsoft.com/features/gov/), waarbij de US government-exemplaar van Azure worden gebruikt:
+* Voor [Azure Government](https://azure.microsoft.com/features/gov/), waarbij gebruik wordt gemaakt van het Amerikaanse overheids exemplaar van Azure:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1
-* Voor de Amerikaanse overheid DOD:
+* Voor Amerikaanse overheid DOD:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USDOD-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USDOD-1
-* Canada:
+* Voor Canada:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1
 * Voor Duitsland:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
+* Voor open bare Duitsland:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1
 * Voor India:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
-* Frankrijk:
+* Voor Frank rijk:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-FRANCE-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-FRANCE-1
-* Voor het Verenigd Koninkrijk:
+* Voor het Verenigd Konink rijk:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
+* Voor Zwitser land:
 
-Wanneer u deze opdracht uitvoert, vervangt *contosokey* door dezelfde waarde als u hebt opgegeven in **stap 3.5: Maak een nieuwe sleutel** uit de [de sleutel genereren](#step-3-generate-your-key) stap.
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
 
-U wordt gevraagd om uw kaarten security world-beheerder.
+Wanneer u deze opdracht uitvoert, vervangt u *contosokey* door dezelfde waarde die u hebt **opgegeven in stap 3,5: Maak een nieuwe sleutel** van de stap [uw sleutel genereren](#step-3-generate-your-key) .
 
-Wanneer de opdracht is voltooid, ziet u **resultaat: SUCCES** en de kopie van uw sleutel met beperkte machtigingen zich in het bestand met de naam key_xferacId_\<contosokey >.
+U wordt gevraagd om uw beveiligings wereld-beheer kaarten te koppelen.
 
-U kunt inspecteert de ACL's van de volgende opdrachten met de nCipher nShield-hulpprogramma's:
+Wanneer de opdracht is voltooid, ziet **u het volgende resultaat: Geslaagd** en de kopie van uw sleutel met beperkte machtigingen bevindt zich in het\<bestand met de naam key_xferacId_ contosokey >.
+
+U kunt de ACL'S controleren met behulp van de volgende opdrachten met behulp van de nCipher nShield-hulpprogram ma's:
 
 * aclprint.py:
 
         "%nfast_home%\bin\preload.exe" -m 1 -A xferacld -K contosokey "%nfast_home%\python\bin\python" "%nfast_home%\python\examples\aclprint.py"
-* kmfile-dump.exe:
+* kmfile-dump. exe:
 
         "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
-  Wanneer u deze opdrachten uitvoert, vervangt u contosokey met dezelfde waarde die u hebt opgegeven in **stap 3.5: Maak een nieuwe sleutel** uit de [de sleutel genereren](#step-3-generate-your-key) stap.
+  Wanneer u deze opdrachten uitvoert, vervangt u contosokey door dezelfde waarde die u hebt **opgegeven in stap 3,5: Maak een nieuwe sleutel** van de stap [uw sleutel genereren](#step-3-generate-your-key) .
 
-### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>4\.2 stap: Uw sleutel versleutelt met behulp van Microsoft uitwisselingssleutel van de sleutel
+### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Stap 4,2: Uw sleutel versleutelen met behulp van de sleutel uitwisselings sleutel van micro soft
 
 Voer een van de volgende opdrachten uit, afhankelijk van uw geografische regio of het exemplaar van Azure:
 
@@ -484,50 +511,57 @@ Voer een van de volgende opdrachten uit, afhankelijk van uw geografische regio o
 * Voor Australië:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-AUS-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-AUS-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Voor [Azure Government](https://azure.microsoft.com/features/gov/), waarbij de US government-exemplaar van Azure worden gebruikt:
+* Voor [Azure Government](https://azure.microsoft.com/features/gov/), waarbij gebruik wordt gemaakt van het Amerikaanse overheids exemplaar van Azure:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USGOV-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USGOV-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Voor de Amerikaanse overheid DOD:
+* Voor Amerikaanse overheid DOD:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-USDOD-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-USDOD-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Canada:
+* Voor Canada:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-CANADA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-CANADA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * Voor Duitsland:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Voor open bare Duitsland:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-GERMANY-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-GERMANY-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 * Voor India:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Frankrijk:
+* Voor Frank rijk:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-France-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-France-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
-* Voor het Verenigd Koninkrijk:
+* Voor het Verenigd Konink rijk:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* Voor Zwitser land:
 
-Wanneer u deze opdracht uitvoert, gebruikt u deze instructies:
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
-* Vervang *contosokey* met de id die u gebruikt voor het genereren van de sleutel in **stap 3.5: Maak een nieuwe sleutel** uit de [de sleutel genereren](#step-3-generate-your-key) stap.
-* Vervang *SubscriptionID* met de ID van de Azure-abonnement met uw key vault. U hebt deze waarde hebt opgehaald in **stap 1.2: Uw Azure-abonnement-ID ophalen** uit de [uw met Internet verbonden werkstation voorbereiden](#step-1-prepare-your-internet-connected-workstation) stap.
-* Vervang *ContosoFirstHSMKey* met een label dat wordt gebruikt voor de naam van uw uitvoerbestand.
 
-Wanneer dit voltooid is, wordt de pagina **resultaat: SUCCES** en er is een nieuw bestand in de huidige map met de volgende naam: KeyTransferPackage-*ContosoFirstHSMkey*.byok
+Wanneer u deze opdracht uitvoert, volgt u deze instructies:
 
-### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Stap 4.3: De overdracht van de sleutel-pakket kopiëren naar het met Internet verbonden werkstation
+* Vervang *contosokey* door de id die u hebt gebruikt om de sleutel te **genereren in stap 3,5: Maak een nieuwe sleutel** van de stap [uw sleutel genereren](#step-3-generate-your-key) .
+* Vervang *SubscriptionID* door de id van het Azure-abonnement dat uw sleutel kluis bevat. U hebt deze waarde eerder opgehaald, in **stap 1,2: Haal uw Azure-abonnements** -id op in de stap [uw werk station voorbereiden op Internet-verbinding](#step-1-prepare-your-internet-connected-workstation) .
+* Vervang *ContosoFirstHSMKey* door een label dat wordt gebruikt voor de naam van het uitvoer bestand.
 
-Gebruik een USB-station of ander draagbaar opslagmedium om te kopiëren van het uitvoerbestand uit de vorige stap (KeyTransferPackage-ContosoFirstHSMkey.byok) naar uw met Internet verbonden werkstation.
+Wanneer dit is voltooid, wordt het volgende **resultaat weer gegeven: Dit** is gelukt en er is een nieuw bestand in de huidige map met de volgende naam: KeyTransferPackage-*ContosoFirstHSMkey*.byok
+
+### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Stap 4,3: Uw sleutel overdrachts pakket kopiëren naar het met internet verbonden werk station
+
+Gebruik een USB-station of andere draag bare opslag om het uitvoer bestand van de vorige stap (KeyTransferPackage-ContosoFirstHSMkey. byok) te kopiëren naar uw werk station met Internet verbinding.
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Stap 5: Uw sleutel overdragen naar Azure Key Vault
 
-Voor deze laatste stap op het met Internet verbonden werkstation gebruiken de [toevoegen AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet voor het uploaden van het pakket voor sleuteloverdracht die u hebt gekopieerd uit de niet-verbonden werkstation naar de Azure Key Vault HSM:
+Voor deze laatste stap gebruikt u op het met internet verbonden werk station de cmdlet [add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) om het sleutel overdrachts pakket dat u van het niet-verbonden werk station hebt gekopieerd, te uploaden naar de Azure Key Vault HSM:
 
    ```powershell
         Add-AzKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
    ```
 
-Als de upload voltooid is, ziet u de eigenschappen van de sleutel die u zojuist hebt toegevoegd wordt weergegeven.
+Als het uploaden is gelukt, ziet u de eigenschappen van de sleutel die u zojuist hebt toegevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu deze met HSM beveiligde sleutel gebruiken in uw key vault. Zie voor meer informatie deze functies en prijzen [vergelijking](https://azure.microsoft.com/pricing/details/key-vault/).
+U kunt deze met HSM beschermde sleutel nu gebruiken in uw sleutel kluis. Zie voor meer informatie deze [vergelijking](https://azure.microsoft.com/pricing/details/key-vault/)van prijzen en functies.

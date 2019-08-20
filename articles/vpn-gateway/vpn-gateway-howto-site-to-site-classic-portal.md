@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 77cfde8cc9c6556b907f1185f451c70c8c8e888d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2e6036c5f29614f2e91278b693c07dc3dc8595f2
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533987"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575477"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Een site-naar-site-verbinding maken met behulp van Azure Portal (klassiek)
 
@@ -39,7 +39,7 @@ Controleer voordat u met de configuratie begint, of aan de volgende criteria is 
 * U hebt een compatibel VPN-apparaat nodig en iemand die dit kan configureren. Zie [Over VPN-apparaten](vpn-gateway-about-vpn-devices.md) voor meer informatie over compatibele VPN-apparaten en -apparaatconfiguratie.
 * Controleer of u een extern gericht openbaar IPv4-adres voor het VPN-apparaat hebt.
 * Als u de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die u hierbij kan helpen en de benodigde gegevens kan verstrekken. Wanneer u deze configuratie maakt, moet u de IP-adresbereikvoorvoegsels opgeven die Azure naar uw on-premises locatie doorstuurt. Geen van de subnetten van uw on-premises netwerk kan overlappen met de virtuele subnetten waarmee u verbinding wilt maken.
-* Momenteel is het in PowerShell vereist dat de gedeelde sleutel wordt opgegeven en de VPN-gatewayverbinding wordt gemaakt. Installeer de nieuwste versie van de Azure SM (Service Management) PowerShell-cmdlets. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. Als u werkt met PowerShell voor deze configuratie, zorg er dan voor dat u de bewerkingen uitvoert als beheerder.
+* Momenteel is het in PowerShell vereist dat de gedeelde sleutel wordt opgegeven en de VPN-gatewayverbinding wordt gemaakt. Installeer de nieuwste versie van de Azure SM (Service Management) PowerShell-cmdlets. Zie [Service Management](/powershell/azure/servicemanagement/install-azure-ps)om de cmdlets te installeren. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie over Power shell-installaties in het algemeen. Als u werkt met PowerShell voor deze configuratie, zorg er dan voor dat u de bewerkingen uitvoert als beheerder.
 
 ### <a name="values"></a>Voorbeeld van configuratiewaarden voor deze oefening
 
@@ -159,6 +159,12 @@ In deze stap stelt u de gedeelde sleutel in en maakt u de verbinding. De sleutel
 
 ### <a name="step-1-connect-to-your-azure-account"></a>Stap 1. Verbinding maken met uw Azure-account
 
+U moet deze opdrachten lokaal uitvoeren met de module Power shell-Service beheer. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
+
+```powershell
+azure config mode asm
+```
+
 1. Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 
    ```powershell
@@ -177,18 +183,14 @@ In deze stap stelt u de gedeelde sleutel in en maakt u de verbinding. De sleutel
 
 ### <a name="step-2-set-the-shared-key-and-create-the-connection"></a>Stap 2. De gedeelde sleutel instellen en de verbinding maken
 
-Als u werkt met PowerShell en het klassieke implementatiemodel, komen de namen van resources in de portal soms niet overeen met wat verwacht wordt in Azure bij het gebruik van PowerShell. In de volgende stappen leert u hoe u het netwerkconfiguratiebestand exporteert om de exacte namen te verkrijgen. U moet deze opdrachten lokaal uitvoeren met de module Power shell-Service beheer. Als u wilt overschakelen naar Service beheer, gebruikt u deze opdracht:
-
-```powershell
-azure config mode asm
-```
+Wanneer u in de portal een klassiek VNet maakt (niet met behulp van Power shell), voegt Azure de naam van de resource groep toe aan de korte naam. Volgens Azure is de naam van het VNet dat u voor deze oefening hebt gemaakt bijvoorbeeld ' Group TestRG1 TestVNet1 ', niet ' TestVNet1 '. Power shell vereist de volledige naam van het virtuele netwerk, niet de korte naam die wordt weer gegeven in de portal. De lange naam is niet zichtbaar in de portal. De volgende stappen helpen u bij het exporteren van het netwerk configuratie bestand om de exacte waarden voor de naam van het virtuele netwerk op te halen. 
 
 1. Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. In dit voorbeeld wordt het netwerkconfiguratiebestand geëxporteerd naar C:\AzureNet.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-2. Open het netwerkconfiguratiebestand met een xml-editor en controleer de waarden voor LocalNetworkSite name en VirtualNetworkSite name. Pas het voorbeeld aan uw omgeving aan. Gebruik voor een naam die spaties bevat, enkele aanhalingstekens rond de waarde.
+2. Open het netwerkconfiguratiebestand met een xml-editor en controleer de waarden voor LocalNetworkSite name en VirtualNetworkSite name. Wijzig het voor beeld voor deze oefening zodat ze overeenkomen met de waarden in de XML. Gebruik voor een naam die spaties bevat, enkele aanhalingstekens rond de waarde.
 
 3. Stel de gedeelde sleutel in en maak de verbinding. -SharedKey is een waarde die u genereert en opgeeft. In het voorbeeld wordt abc123 gebruikt, maar u kunt een ingewikkeldere waarde gebruiken. (aanbevolen) Het is van belang dat de waarde die u hier opgeeft, dezelfde waarde is die u hebt opgegeven bij het configureren van het VPN-apparaat.
 

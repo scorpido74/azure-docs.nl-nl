@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 2b5ebc9f35dd207e8e530b7d74acc5517125fbf4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 23e8c82bad60675338a0482155ed8a92cdad3d3d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935005"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617677"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Azure Active Directory Domain Services authenticatie via SMB voor Azure Files inschakelen
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,9 +46,11 @@ Voordat u Azure AD via SMB voor Azure Files inschakelt, moet u ervoor zorgen dat
 
 2.  **Schakel Azure AD Domain Services in voor de Azure AD-Tenant.**
 
-    Als u verificatie met Azure AD-referenties wilt ondersteunen, moet u Azure AD DS inschakelen voor uw Azure AD-Tenant. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen om Azure Active Directory Domain Services in te [scha kelen met behulp van de Azure Portal](../../active-directory-domain-services/create-instance.md).
+< < < < < <e kop om verificatie met Azure AD-referenties te ondersteunen, moet u < inschakelen voor uw Azure AD-Tenant. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen om Azure Active Directory Domain Services in te [scha kelen met behulp van de Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
+= = = = = = Als u verificatie met Azure AD-referenties wilt ondersteunen, moet u Azure AD DS inschakelen voor uw Azure AD-Tenant. Als u niet de beheerder van de Azure AD-Tenant bent, neemt u contact op met de beheerder en volgt u de stapsgewijze richt lijnen om Azure Active Directory Domain Services in te [scha kelen met behulp van de Azure Portal](../../active-directory-domain-services/create-instance.md).
+>>>>>>> 5f049740fef320adb172d59f68bd161bdc4318e1
 
-    Het duurt doorgaans ongeveer 15 minuten voordat een Azure AD DS-implementatie is voltooid. Controleer of de status van de Azure-AD DSwordt weer gegeven, waarbij de wachtwoord hash-synchronisatie is ingeschakeld, voordat u doorgaat met de volgende stap.
+    It typically takes about 15 minutes for an Azure AD DS deployment to complete. Verify that the health status of Azure AD DS shows **Running**, with password hash synchronization enabled, before proceeding to the next step.
 
 3.  **Domein-lid worden van een Azure-VM met Azure AD DS.**
 

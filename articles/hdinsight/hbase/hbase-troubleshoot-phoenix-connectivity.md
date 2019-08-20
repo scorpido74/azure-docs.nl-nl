@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: 641d622377bad7a1239efd526b93c6f0f0c08d4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 08/14/2019
+ms.openlocfilehash: 66077416dca4048fc99047f7d6b967e55aab0a23
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68887038"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575737"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scenario: Verbindings problemen Apache Phoenix in azure HDInsight
 
@@ -27,7 +27,7 @@ Onjuist IP-adres van actief Zookeeper-knoop punt.
 
 ### <a name="resolution"></a>Oplossing
 
-Het IP-adres van het actieve Zookeeper-knoop punt kan worden geïdentificeerd via de Ambari-gebruikers interface, door de koppelingen naar **HBase-> snelle koppelingen te volgen-> ZK***  **(Active)-> Zookeeper info**. Corrigeer deze indien nodig.
+Het IP-adres van het actieve Zookeeper-knoop punt kan worden geïdentificeerd via de Ambari-gebruikers interface door de koppelingen naar **HBase** > **Quick links** > **ZK (Active)**  > **Zookeeper info**te volgen. Corrigeer het IP-adres als dat nodig is.
 
 ---
 
@@ -35,27 +35,27 @@ Het IP-adres van het actieve Zookeeper-knoop punt kan worden geïdentificeerd vi
 
 Bij het uitvoeren van opdrachten `!tables`, zoals, wordt een fout bericht van de volgende strekking weer gegeven:
 
-```
+```output
 Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings.
 ```
 
 Bij het uitvoeren van opdrachten `count 'SYSTEM.CATALOG'`, zoals, wordt een fout bericht van de volgende strekking weer gegeven:
 
-```
+```output
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
 ### <a name="resolution"></a>Oplossing
 
-Start de HMaster-service opnieuw op alle Zookeeper-knoop punten vanuit de Ambari-gebruikers interface.
+In de Apache Ambari-gebruikers interface voert u de volgende stappen uit om de HMaster-service opnieuw op alle ZooKeeper-knoop punten te starten:
 
-1. Ga naar **HBase-> Active HBase Master** link in het gedeelte summary van HBase.
+1. Ga in de sectie **samen vatting** van HBase naar **HBase** > **Active HBase Master**.
 
-1. Start in het gedeelte **onderdelen** de HBase Master-service opnieuw.
+1. Start de HBase Master-service opnieuw op in de sectie **onderdelen** .
 
-1. Herhaal de bovenstaande stappen voor de resterende **stand-by HBase Master** Services.
+1. Herhaal deze stappen voor alle resterende **stand-by-HBase Master** Services.
 
-Het kan vijf minuten duren voordat de HBase Master service het herstel heeft gestabiliseerd en voltooid. Zodra de `SYSTEM.CATALOG` tabel weer normaal is, wordt het connectiviteits probleem met Apache Phoenix automatisch opgelost.
+Het kan tot vijf minuten duren voordat de HBase Master service het herstel heeft gestabiliseerd en voltooid. Wanneer de `SYSTEM.CATALOG` tabel weer normaal is, wordt het connectiviteits probleem met Apache Phoenix automatisch opgelost.
 
 ## <a name="next-steps"></a>Volgende stappen
 

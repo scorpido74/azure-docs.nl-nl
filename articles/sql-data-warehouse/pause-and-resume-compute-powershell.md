@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Onderbreken en hervatten compute in Azure SQL Data Warehouse - PowerShell | Microsoft Docs'
-description: Gebruik PowerShell om te onderbreken compute in Azure SQL Data Warehouse om kosten te besparen. Compute hervat wanneer u klaar bent voor het gebruik van het datawarehouse.
+title: 'Quickstart: De berekening onderbreken en hervatten in Azure SQL Data Warehouse-Power shell | Microsoft Docs'
+description: Gebruik Power shell om de reken kracht in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. Hervat de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe9cd6c951f9eba73cee1bea66df88f3143859b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 220d2aefd714cd3546fa4d5c2ac8852d2786b8ac
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66156276"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575416"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Quickstart: Onderbreken en hervatten compute in Azure SQL Data Warehouse met PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Quickstart: De compute in Azure SQL Data Warehouse onderbreken en hervatten met Power shell
 
-Gebruik PowerShell om te onderbreken compute in Azure SQL Data Warehouse om kosten te besparen. [Compute hervatten](sql-data-warehouse-manage-compute-overview.md) wanneer u bent klaar voor gebruik van het datawarehouse.
+Gebruik Power shell om de reken kracht in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat](sql-data-warehouse-manage-compute-overview.md) de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -27,23 +27,23 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In deze snelstartgids wordt ervan uitgegaan dat u hebt al een SQL datawarehouse die u kunt onderbreken en hervatten. Als u maken wilt, kunt u [maken en verbinden - portal](create-data-warehouse-portal.md) te maken van een datawarehouse met de naam **mySampleDataWarehouse**.
+In deze Snelstartgids wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt dat u kunt onderbreken en hervatten. Als u er een wilt maken, kunt u [maken en verbinden-Portal](create-data-warehouse-portal.md) gebruiken om een Data Warehouse met de naam **mySampleDataWarehouse**te maken.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij uw Azure-abonnement met de [Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) opdracht en volgt u de op het scherm aanwijzingen.
+Meld u aan bij uw Azure-abonnement met de opdracht [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) en volg de aanwijzingen op het scherm.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Als u wilt zien welke abonnement dat u gebruikt, [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription).
+Als u wilt zien welk abonnement u gebruikt, voert u [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)uit.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Als u gebruiken een ander abonnement dan de standaard wilt, voert u [Set AzContext](/powershell/module/az.accounts/set-azcontext).
+Als u een ander abonnement wilt gebruiken dan de standaard instelling, voert u [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -61,14 +61,14 @@ Volg deze stappen om de locatiegegevens voor uw datawarehouse op te zoeken.
 
     ![Servernaam en resourcegroep](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. Noteer de naam van het datawarehouse de naam van de database. Noteer ook de naam van de server en de resourcegroep.
-6. Als uw server foo.database.windows.net is, gebruikt u alleen het eerste deel als de servernaam in de PowerShell-cmdlets. Op de voorgaande afbeelding is de volledige servernaam newserver 20171113.database.windows.net. Verwijder het achtervoegsel en gebruik **newserver-20171113** als de naam van de server in de PowerShell-cmdlet.
+4. Noteer de naam van het Data Warehouse, de naam van de data base. Noteer ook de naam van de server en de resourcegroep.
+6. Als uw server foo.database.windows.net is, gebruikt u alleen het eerste deel als de servernaam in de PowerShell-cmdlets. Op de voorgaande afbeelding is de volledige servernaam newserver 20171113.database.windows.net. Verwijder het achtervoegsel en gebruik **newserver-20171113** als server naam in de Power shell-cmdlet.
 
-## <a name="pause-compute"></a>De rekencapaciteit onderbreken
+## <a name="pause-compute"></a>Compute onderbreken
 
-Om kosten te besparen, kunt u onderbreken en hervatten van de compute-resources op de aanvraag. Bijvoorbeeld, als u de database niet tijdens de nacht en tijdens het weekend gebruikt, kunt u tijdens deze perioden onderbreken, en hervatten gedurende de dag. Er zijn geen kosten voor compute-resources, terwijl de database is onderbroken. U blijven echter in rekening gebracht voor opslag.
+Als u kosten wilt besparen, kunt u de reken resources op aanvraag onderbreken en hervatten. Als u de data base bijvoorbeeld niet gebruikt in de nacht en in het weekend, kunt u deze onderbreken tijdens deze tijden en deze op de dag hervatten. Er worden geen kosten in rekening gebracht voor reken resources terwijl de data base wordt onderbroken. Er worden echter nog steeds kosten in rekening gebracht voor opslag.
 
-Als u wilt onderbreken van een database, gebruikt u de [stand-by-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) cmdlet. Het volgende voorbeeld wordt een datawarehouse met de naam onderbroken **mySampleDataWarehouse** die worden gehost op een server met de naam **newserver-20171113**. De server zich in een Azure-resourcegroep met de naam **myResourceGroup**.
+Gebruik de cmdlet [suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) om een Data Base te onderbreken. In het volgende voor beeld wordt een Data Warehouse met de naam **mySampleDataWarehouse** gehost op een server met de naam **newserver-20171113**. De server bevindt zich in een Azure-resource groep met de naam **myResourceGroup**.
 
 
 ```Powershell
@@ -76,7 +76,7 @@ Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "newserver-20171113" –DatabaseName "mySampleDataWarehouse"
 ```
 
-Een Variant deze volgende voorbeeld wordt de database in het object $database. Deze geeft vervolgens het object [stand-by-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). De resultaten worden opgeslagen in de resultDatabase object. De laatste opdracht toont de resultaten.
+In het volgende voor beeld wordt de data base in het $database-object opgehaald. Vervolgens wordt het object door sluizen naar [suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase). De resultaten worden opgeslagen in het object resultDatabase. Met de laatste opdracht worden de resultaten weer gegeven.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -86,16 +86,16 @@ $resultDatabase
 ```
 
 
-## <a name="resume-compute"></a>De rekencapaciteit hervatten
+## <a name="resume-compute"></a>Compute hervatten
 
-Voor het starten van een database, gebruikt u de [hervatten AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) cmdlet. Het volgende voorbeeld wordt een database met de naam die wordt gehost op een server met de naam newserver-20171113 mySampleDataWarehouse gestart. De server zich in een Azure-resourcegroep met de naam myResourceGroup.
+Als u een Data Base wilt starten, gebruikt u de cmdlet [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) . In het volgende voor beeld wordt een Data Base met de naam mySampleDataWarehouse gehost op een server met de naam newserver-20171113. De server bevindt zich in een Azure-resource groep met de naam myResourceGroup.
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "newserver-20171113" -DatabaseName "mySampleDataWarehouse"
 ```
 
-Een Variant deze volgende voorbeeld wordt de database in het object $database. Deze geeft vervolgens het object [hervatten AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) en worden de resultaten opgeslagen in $resultDatabase. De laatste opdracht toont de resultaten.
+In het volgende voor beeld wordt de data base in het $database-object opgehaald. Vervolgens wordt het object door sluizen om [AzSqlDatabase te hervatten](/powershell/module/az.sql/resume-azsqldatabase) en worden de resultaten opgeslagen in $resultDatabase. Met de laatste opdracht worden de resultaten weer gegeven.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -104,9 +104,9 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="check-status-of-your-data-warehouse-operation"></a>Controleer de status van uw datawarehouse-bewerking
+## <a name="check-status-of-your-data-warehouse-operation"></a>Controleer de status van uw data warehouse-bewerking
 
-Om te controleren of de status van uw datawarehouse, gebruikt u de [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) cmdlet.
+Als u de status van uw data warehouse wilt controleren, gebruikt u de cmdlet [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) .
 
 ```
 Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database02"
@@ -116,12 +116,12 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "ResourceGroup01" -ServerName "Serv
 
 Er worden kosten in rekening gebracht voor datawarehouse-eenheden en gegevens die zijn opgeslagen in uw datawarehouse. Deze compute- en opslagresources worden apart in rekening gebracht.
 
-- Als u dat de gegevens in storage wilt, onderbreken.
+- Als u de gegevens in de opslag ruimte wilt bewaren, moet u de compute onderbreken.
 - Als u in de toekomst geen kosten meer wilt hebben, kunt u de datawarehouse verwijderen.
 
 Volg deze stappen om de resources op te schonen zoals gewenst.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en klikt u op uw datawarehouse.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en klik op uw data warehouse.
 
     ![Resources opschonen](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
@@ -129,14 +129,14 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 3. Als u de datawarehouse wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, klikt u op **Verwijderen**.
 
-4. Als u wilt verwijderen van de SQL-server die u hebt gemaakt, klikt u op **mynewserver-20171113.database.windows.net**, en klik vervolgens op **verwijderen**.  Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
+4. Als u de door u gemaakte SQL-Server wilt verwijderen, klikt u op **mynewserver-20171113.database.Windows.net**en vervolgens op **verwijderen**.  Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
 5. Als u de resourcegroep wilt verwijderen, klikt u op **myResourceGroup**. Klik vervolgens op **Resourcegroep verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu onderbroken en hervat de rekenkracht voor uw datawarehouse. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
+U hebt nu de reken kracht voor uw data warehouse onderbroken en hervat. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
 
 > [!div class="nextstepaction"]
-> [Gegevens laden in een SQL-datawarehouse](load-data-from-azure-blob-storage-using-polybase.md)
+> [Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)

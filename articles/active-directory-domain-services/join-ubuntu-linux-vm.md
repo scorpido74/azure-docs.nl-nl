@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 78afec75269876c309b2c324d8a5973fd5ebf9a8
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773043"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612290"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Een virtuele Ubuntu-machine in azure toevoegen aan een beheerd domein
 In dit artikel wordt beschreven hoe u een Ubuntu Linux virtuele machine kunt koppelen aan een Azure AD Domain Services beheerd domein.
@@ -31,9 +31,9 @@ In dit artikel wordt beschreven hoe u een Ubuntu Linux virtuele machine kunt kop
 Voor het uitvoeren van de taken die in dit artikel worden vermeld, hebt u het volgende nodig:  
 1. Een geldig **Azure-abonnement**.
 2. Een **Azure AD-Directory** : gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-3. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](create-instance.md)worden beschreven.
-4. Zorg ervoor dat u de IP-adressen van het beheerde domein hebt geconfigureerd als de DNS-servers voor het virtuele netwerk. Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](active-directory-ds-getting-started-dns.md) voor meer informatie.
-5. Voer de stappen uit die nodig zijn om [wacht woorden te synchroniseren met uw Azure AD Domain Services beheerde domein](active-directory-ds-getting-started-password-sync.md).
+3. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](tutorial-create-instance.md)worden beschreven.
+4. Zorg ervoor dat u de IP-adressen van het beheerde domein hebt geconfigureerd als de DNS-servers voor het virtuele netwerk. Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) voor meer informatie.
+5. Voer de stappen uit die nodig zijn om [wacht woorden te synchroniseren met uw Azure AD Domain Services beheerde domein](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
 
 
 ## <a name="provision-an-ubuntu-linux-virtual-machine"></a>Een Ubuntu Linux virtuele machine inrichten
@@ -64,10 +64,10 @@ sudo vi /etc/hosts
 Voer in het bestand hosts de volgende waarde in:
 
 ```console
-127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
+127.0.0.1 contoso-ubuntu.contoso.com contoso-ubuntu
 ```
 
-Hier is ' contoso100.com ' de DNS-domein naam van uw beheerde domein. Contoso-Ubuntu is de hostnaam van de virtuele Ubuntu-machine die u aan het beheerde domein toevoegt.
+Hier is ' contoso.com ' de DNS-domein naam van uw beheerde domein. Contoso-Ubuntu is de hostnaam van de virtuele Ubuntu-machine die u aan het beheerde domein toevoegt.
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Vereiste pakketten installeren op de virtuele Linux-machine
@@ -88,7 +88,7 @@ Installeer vervolgens pakketten die vereist zijn voor domein deelname op de virt
 3. Tijdens de installatie van Kerberos wordt een roze scherm weer gegeven. De installatie van het pakket ' krb5-gebruiker ' vraagt naar de realm-naam (in alle hoofd letters). De installatie schrijft de secties [realm] en [domain_realm] in/etc/krb5.conf.
 
     > [!TIP]
-    > Als de naam van uw beheerde domein contoso100.com is, voert u CONTOSO100.COM in als de realm. Houd er rekening mee dat de realm-naam in hoofd letters moet worden opgegeven.
+    > Als de naam van uw beheerde domein contoso.com is, voert u contoso.COM in als de realm. Houd er rekening mee dat de realm-naam in hoofd letters moet worden opgegeven.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Configureer de NTP-instellingen (Network Time Protocol) op de virtuele Linux-machine
@@ -101,16 +101,16 @@ sudo vi /etc/ntp.conf
 Voer in het bestand ntp. conf de volgende waarde in en sla het bestand op:
 
 ```console
-server contoso100.com
+server contoso.com
 ```
 
-Hier is ' contoso100.com ' de DNS-domein naam van uw beheerde domein.
+Hier is ' contoso.com ' de DNS-domein naam van uw beheerde domein.
 
 Synchroniseer nu de datum en tijd van de Ubuntu-VM met de NTP-server en start vervolgens de NTP-service:
 
 ```console
 sudo systemctl stop ntp
-sudo ntpdate contoso100.com
+sudo ntpdate contoso.com
 sudo systemctl start ntp
 ```
 
@@ -121,7 +121,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
 1. Ontdek het door AAD Domain Services beheerde domein. Typ de volgende opdracht in uw SSH-terminal:
 
     ```console
-    sudo realm discover CONTOSO100.COM
+    sudo realm discover contoso.COM
     ```
 
    > [!NOTE]
@@ -133,12 +133,12 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
 2. Initialiseer Kerberos. Typ de volgende opdracht in uw SSH-terminal:
 
     > [!TIP]
-    > * Zorg ervoor dat u een gebruiker opgeeft die deel uitmaakt van de groep AAD DC Administrators.
+    > * Zorg ervoor dat u een gebruiker opgeeft die deel uitmaakt van de groep AAD DC Administrators. Voeg, indien nodig, [een gebruikers account toe aan een groep in azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)
     > * Geef de domein naam in hoofd letters op, anders kinit mislukt.
     >
 
     ```console
-    kinit bob@CONTOSO100.COM
+    kinit bob@contoso.COM
     ```
 
 3. Voeg de computer toe aan het domein. Typ de volgende opdracht in uw SSH-terminal:
@@ -149,7 +149,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
     > Als uw virtuele machine geen lid kan worden van het domein, moet u ervoor zorgen dat uitgaande Kerberos-verkeer op TCP + UDP-poort 464 naar het subnet van het virtuele netwerk voor uw door Azure AD DS beheerd domein is toegestaan voor de netwerk beveiligings groep van de virtuele machine.
 
     ```console
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
+    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
     ```
 
 U moet een bericht ontvangen (de computer is geregistreerd bij realm) wanneer de computer is toegevoegd aan het beheerde domein.
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Domein deelname verifiëren
 Controleer of de computer is toegevoegd aan het beheerde domein. Maak verbinding met het domein dat is gekoppeld aan Ubuntu VM met een andere SSH-verbinding. Gebruik een domein gebruikers account en controleer of het gebruikers account correct is opgelost.
 
-1. Typ in de SSH-terminal de volgende opdracht om verbinding te maken met het domein dat is gekoppeld aan de virtuele Ubuntu-machine via SSH. Gebruik een domein account dat tot het beheerde domein behoort (bijvoorbeeld 'bob@CONTOSO100.COM' in dit geval).
+1. Typ in de SSH-terminal de volgende opdracht om verbinding te maken met het domein dat is gekoppeld aan de virtuele Ubuntu-machine via SSH. Gebruik een domein account dat tot het beheerde domein behoort (bijvoorbeeld 'bob@contoso.COM' in dit geval).
     
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
+    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
     ```
 
 2. Typ in de SSH-terminal de volgende opdracht om te controleren of de basismap juist is geïnitialiseerd.
@@ -214,7 +214,7 @@ Controleer of de computer is toegevoegd aan het beheerde domein. Maak verbinding
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>De groep ' AAD DC Administrators ' sudo privileges verlenen
 U kunt leden van de groep ' AAD DC Administrators ' beheerders bevoegdheden verlenen op de Ubuntu-VM. Het sudo-bestand bevindt zich op/etc/sudoers. De leden van AD-groepen die zijn toegevoegd in sudo kunnen sudo uitvoeren.
 
-1. Controleer in uw SSH-terminal of u bent aangemeld met de bevoegdheden van de super gebruiker. U kunt het lokale beheerders account dat u hebt opgegeven tijdens het maken van de virtuele machine gebruiken. Voer de volgende opdracht uit:
+1. Zorg ervoor dat u bent aangemeld met de bevoegdheden van uw SSH-terminal. U kunt het lokale beheerders account dat u hebt opgegeven tijdens het maken van de virtuele machine gebruiken. Voer de volgende opdracht uit:
     
     ```console
     sudo vi /etc/sudoers
@@ -227,14 +227,14 @@ U kunt leden van de groep ' AAD DC Administrators ' beheerders bevoegdheden verl
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-3. U kunt zich nu aanmelden als lid van de groep AAD DC Administrators en moet beschikken over beheerders bevoegdheden op de VM.
+3. U kunt zich nu aanmelden als lid van de groep AAD DC Administrators en moet beschikken over beheerders bevoegdheden voor de virtuele machine.
 
 
 ## <a name="troubleshooting-domain-join"></a>Problemen met domein deelname oplossen
-Raadpleeg het artikel [problemen oplossen van domein toevoegen](join-windows-vm.md#troubleshoot-joining-a-domain) .
+Raadpleeg het artikel [problemen oplossen van domein toevoegen](join-windows-vm.md#troubleshoot-domain-join-issues) .
 
 
 ## <a name="related-content"></a>Gerelateerde inhoud
-* [Azure AD Domain Services aan de slag-hand leiding](create-instance.md)
+* [Azure AD Domain Services aan de slag-hand leiding](tutorial-create-instance.md)
 * [Een virtuele machine met Windows Server toevoegen aan een door Azure AD Domain Services beheerd domein](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Aanmelden bij een virtuele machine met Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

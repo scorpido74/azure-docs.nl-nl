@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-script - Doorvoer van Azure Cosmos DB-container schalen | Microsoft Docs
-description: Azure CLI-voorbeeldscript - Doorvoer van Azure Cosmos DB-container schalen
+title: Azure CLI-script-schaal van Azure Cosmos-container door Voer | Microsoft Docs
+description: Voor beeld van Azure CLI-script-de Azure Cosmos-container doorvoer schalen
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,16 +8,16 @@ ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 593fade731fac86e7fcda69bfe223716127de9e1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a7ae4b015ba476ca1ffdb4b4510334490a6f6fee
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60446649"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616698"
 ---
-# <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Doorvoer van Azure Cosmos DB-container schalen met behulp van de Azure CLI
+# <a name="scale-azure-cosmos-container-throughput-using-the-azure-cli"></a>Azure Cosmos-container doorvoer schalen met behulp van Azure CLI
 
-In dit voorbeeld wordt containerdoorvoer geschaald voor elk soort Azure Cosmos DB-container.  
+In dit voor beeld wordt de container doorvoer geschaald voor elk type Azure Cosmos-container.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,9 +43,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Hiermee wordt een Azure Cosmos DB-account gemaakt. |
-| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Hiermee maakt u een Azure Cosmos DB-database. |
-| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Hiermee maakt u een Azure Cosmos DB-container. |
-| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Hiermee werkt u een Azure Cosmos DB-container bij. |
+| [az cosmosdb database create](/cli/azure/cosmosdb/database#az-cosmosdb-database-create) | Hiermee maakt u een Azure Cosmos-data base. |
+| [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Hiermee maakt u een Azure Cosmos-container. |
+| [az cosmosdb collection update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) | Hiermee wordt een Azure Cosmos-container bijgewerkt. |
 | [az group delete](/cli/azure/group#az-group-delete) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

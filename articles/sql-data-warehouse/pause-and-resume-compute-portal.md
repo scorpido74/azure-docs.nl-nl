@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Onderbreken en hervatten compute in Azure SQL Data Warehouse - Azure portal | Microsoft Docs'
-description: Gebruik de Azure portal om te onderbreken compute in Azure SQL Data Warehouse om kosten te besparen. Compute hervat wanneer u klaar bent voor het gebruik van het datawarehouse.
+title: 'Quickstart: De berekening onderbreken en hervatten in Azure SQL Data Warehouse-Azure Portal | Microsoft Docs'
+description: Gebruik de Azure Portal om Compute in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. Hervat de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: manage
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9c3ed6dd79d6225b38751c910253cfa1f0720d1c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 46fb1fc6455cd35d8bb1eaf0a1b7ee499f5c1caf
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61475594"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574886"
 ---
-# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: Berekening voor een Azure SQL Data Warehouse in Azure portal onderbreken en hervatten
+# <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: De berekening onderbreken en hervatten voor een Azure SQL Data Warehouse in het Azure Portal
 
-Gebruik de Azure portal om te onderbreken compute in Azure SQL Data Warehouse om kosten te besparen. [Compute hervatten](sql-data-warehouse-manage-compute-overview.md) wanneer u bent klaar voor gebruik van het datawarehouse.
+Gebruik de Azure Portal om Compute in Azure SQL Data Warehouse te onderbreken om kosten op te slaan. [Hervat](sql-data-warehouse-manage-compute-overview.md) de compute wanneer u klaar bent om het Data Warehouse te gebruiken.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -29,63 +29,63 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Gebruik [maken en verbinden - portal](create-data-warehouse-portal.md) te maken van een datawarehouse met de naam **mySampleDataWarehouse**. 
+Gebruik [Create en Connect-Portal](create-data-warehouse-portal.md) om een Data Warehouse te maken met de naam **mySampleDataWarehouse**. 
 
-## <a name="pause-compute"></a>De rekencapaciteit onderbreken
+## <a name="pause-compute"></a>Compute onderbreken
 
-Om kosten te besparen, kunt u onderbreken en hervatten van de compute-resources op de aanvraag. Bijvoorbeeld, als u niet de database's nachts en tijdens het weekend gebruikt, kunt u tijdens deze perioden onderbreken, en hervatten gedurende de dag. U wordt niet in rekening gebracht voor rekenresources terwijl de database is onderbroken. U blijft echter in rekening gebracht voor opslag. 
+Als u kosten wilt besparen, kunt u de reken resources op aanvraag onderbreken en hervatten. Als u bijvoorbeeld de data base niet meer gebruikt in de nacht en in het weekend, kunt u deze onderbreken tijdens deze tijden en deze op de dag hervatten. Er worden geen kosten in rekening gebracht voor reken resources wanneer de data base wordt onderbroken. Er worden echter nog steeds kosten in rekening gebracht voor opslag. 
 
-Volg deze stappen als u wilt onderbreken van een SQL datawarehouse.
+Volg deze stappen om een SQL Data Warehouse te onderbreken.
 
 1. Klik op de linkerpagina in Azure Portal op **SQL-databases**.
 2. Selecteer **mySampleDataWarehouse** op de pagina **SQL-databases**. De datawarehouse wordt geopend. 
-3. Op de **mySampleDataWarehouse** pagina, ziet u **Status** is **Online**.
+3. Op de pagina **mySampleDataWarehouse** is de **status** van de melding **online**.
 
-    ![COMPUTE, online](media/pause-and-resume-compute-portal/compute-online.png)
+    ![Online berekenen](media/pause-and-resume-compute-portal/compute-online.png)
 
-4. Als u wilt onderbreken van het datawarehouse, klikt u op de **onderbreken** knop. 
-5. Een vraag bevestiging gevraagd of u wilt doorgaan. Klik op **Ja**.
-6. Wacht even en klikt u vervolgens ziet u de **Status** is **onderbreken**.
+4. Klik op de knop PAUSE om het Data Warehouse te onderbreken. 
+5. Er wordt een bevestigings vraag weer gegeven waarin u wordt gevraagd of u wilt door gaan. Klik op **Ja**.
+6. Wacht even en u ziet dan dat de **status** is **onderbroken**.
 
     ![Onderbreken](media/pause-and-resume-compute-portal/pausing.png)
 
-7. Wanneer de onderbreken-bewerking voltooid is, wordt de status is **onderbroken** en is het keuzerondje **Start**.
-8. De rekenresources voor het datawarehouse zijn nu offline. U wordt niet in rekening gebracht voor rekenkracht totdat u de service hervat.
+7. Wanneer de pauze bewerking is voltooid, wordt de status **onderbroken** en wordt het keuze rondje **gestart**.
+8. De reken resources voor het Data Warehouse zijn nu offline. Er worden geen kosten in rekening gebracht voor de reken kracht tot u de service hervat.
 
-    ![COMPUTE offline](media/pause-and-resume-compute-portal/compute-offline.png)
+    ![Offline berekenen](media/pause-and-resume-compute-portal/compute-offline.png)
 
 
-## <a name="resume-compute"></a>De rekencapaciteit hervatten
+## <a name="resume-compute"></a>Compute hervatten
 
-Volg deze stappen voor het hervatten van een SQL datawarehouse.
+Volg deze stappen om een SQL Data Warehouse te hervatten.
 
 1. Klik op de linkerpagina in Azure Portal op **SQL-databases**.
 2. Selecteer **mySampleDataWarehouse** op de pagina **SQL-databases**. De datawarehouse wordt geopend. 
-3. Op de **mySampleDataWarehouse** pagina, ziet u **Status** is **onderbroken**.
+3. Op de pagina **mySampleDataWarehouse** wordt de **status** van de melding **onderbroken**.
 
-    ![COMPUTE offline](media/pause-and-resume-compute-portal/compute-offline.png)
+    ![Offline berekenen](media/pause-and-resume-compute-portal/compute-offline.png)
 
-4. Als u wilt doorgaan met het datawarehouse, klikt u op **Start**. 
-5. Een vraag bevestiging gevraagd of u wilt starten. Klik op **Ja**.
-6. U ziet dat de **Status** is **hervatten**.
+4. Klik op **Start**om het Data Warehouse te hervatten. 
+5. Er wordt een bevestigings vraag weer gegeven waarin u wordt gevraagd of u wilt beginnen. Klik op **Ja**.
+6. U ziet dat de **status** wordt **hervat**.
 
     ![Hervatten](media/pause-and-resume-compute-portal/resuming.png)
 
-7. Wanneer het datawarehouse weer online is, wordt de status is **Online** en is het keuzerondje **onderbreken**.
-8. Nu de rekenresources voor het datawarehouse online zijn en kunt u de service. Kosten voor compute is hervat.
+7. Wanneer het Data Warehouse weer online is, is de status **online** en is het keuze rondje **pauzeren**.
+8. De reken resources voor het Data Warehouse zijn nu online en u kunt de service gebruiken. De kosten voor de reken kracht zijn hervat.
 
-    ![COMPUTE, online](media/pause-and-resume-compute-portal/compute-online.png)
+    ![Online berekenen](media/pause-and-resume-compute-portal/compute-online.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In rekening worden gebracht voor datawarehouse-eenheden en de gegevens die zijn opgeslagen in uw datawarehouse. Deze compute- en opslagresources worden apart in rekening gebracht. 
+Er worden kosten in rekening gebracht voor Data Warehouse-eenheden en de gegevens die zijn opgeslagen in uw data warehouse. Deze compute- en opslagresources worden apart in rekening gebracht. 
 
-- Als u dat de gegevens in storage wilt, onderbreken.
+- Als u de gegevens in de opslag ruimte wilt bewaren, moet u de compute onderbreken.
 - Als u in de toekomst geen kosten meer wilt hebben, kunt u de datawarehouse verwijderen. 
 
 Volg deze stappen om de resources op te schonen zoals gewenst.
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en klikt u op uw datawarehouse.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en klik op uw data warehouse.
 
     ![Resources opschonen](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
@@ -93,14 +93,14 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 2. Als u de datawarehouse wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, klikt u op **Verwijderen**.
 
-3. Als u wilt verwijderen van de SQL-server die u hebt gemaakt, klikt u op **mynewserver-20171113.database.windows.net**, en klik vervolgens op **verwijderen**.  Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
+3. Als u de door u gemaakte SQL-Server wilt verwijderen, klikt u op **mynewserver-20171113.database.Windows.net**en vervolgens op **verwijderen**.  Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
 4. Als u de resourcegroep wilt verwijderen, klikt u op **myResourceGroup**. Klik vervolgens op **Resourcegroep verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu onderbroken en hervat de rekenkracht voor uw datawarehouse. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
+U hebt nu de reken kracht voor uw data warehouse onderbroken en hervat. Voor meer informatie over Azure SQL Data Warehouse gaat u verder met de zelfstudie voor het laden van gegevens.
 
 > [!div class="nextstepaction"]
-> [Gegevens laden in een SQL-datawarehouse](load-data-from-azure-blob-storage-using-polybase.md)
+> [Gegevens in een SQL Data Warehouse laden](load-data-from-azure-blob-storage-using-polybase.md)

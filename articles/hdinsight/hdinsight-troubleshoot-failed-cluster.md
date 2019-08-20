@@ -1,268 +1,268 @@
 ---
-title: Problemen met een traag of niet werkend taak op een HDInsight-cluster - Azure HDInsight oplossen
-description: Problemen vaststellen en oplossen van een traag of niet werkend HDInsight-cluster.
+title: Problemen met een trage of mislukte taak in een HDInsight-cluster oplossen-Azure HDInsight
+description: Diagnose en probleem oplossing voor een langzaam of mislukt HDInsight-cluster.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: b7afeee554a1faee9507f0a891803024f3bc11e4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203630"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573617"
 ---
-# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen met een traag of niet werkend taak op een HDInsight-cluster oplossen
+# <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problemen oplossen met een trage of mislukte taak in een HDInsight-cluster
 
-Als een toepassing verwerken van gegevens in een HDInsight-cluster is traag of waarbij een foutcode, hebt u verschillende opties voor het oplossen van problemen. Als uw taken langer duurt dan verwacht, of er trage reactietijden in het algemeen, kunnen er fouten upstream van uw cluster, zoals de services waarop het cluster wordt uitgevoerd. De meest voorkomende oorzaak van deze vertragingen is echter ontoereikend schalen. Wanneer u een nieuw HDInsight-cluster maakt, selecteert u de juiste [grootten van virtuele machines](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
+Als een toepassing die gegevens verwerkt op een HDInsight-cluster langzaam wordt uitgevoerd of als er een fout optreedt, hebt u verschillende opties voor probleem oplossing. Als uw taken langer duren dan verwacht of als u een trage reactie tijd in het algemeen ziet, is er mogelijk een fout opgetreden in de upstream van het cluster, zoals de services waarop het cluster wordt uitgevoerd. De meest voorkomende oorzaak van deze vertragingen is echter onvoldoende schalen. Wanneer u een nieuw HDInsight-cluster maakt, selecteert u de juiste grootte van de [virtuele machine](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters).
 
-Verzamel informatie over alle aspecten van de omgeving, zoals de bijbehorende Azure-Services, configuratie van het cluster en informatie over het uitvoeren van taak voor het bepalen van een traag of niet werkend cluster. Een diagnose handig is om te proberen om het te reproduceren van de foutstatus in een ander cluster.
+Als u een langzame of mislukte cluster wilt vaststellen, verzamelt u informatie over alle aspecten van de omgeving, zoals gekoppelde Azure-Services, cluster configuratie en informatie over taak uitvoering. Een nuttige diagnose is om te proberen de fout status te reproduceren op een ander cluster.
 
-* Stap 1: Verzamel gegevens over het probleem.
-* Stap 2: Valideer de HDInsight-cluster-omgeving.
+* Stap 1: Gegevens over het probleem verzamelen.
+* Stap 2: Valideer de HDInsight-cluster omgeving.
 * Stap 3: Bekijk de status van uw cluster.
-* Stap 4: Bekijk de omgeving stack en versies.
-* Stap 5: Bekijk de logboekbestanden van het cluster.
+* Stap 4: Bekijk de stack en versies van de omgeving.
+* Stap 5: Controleer de logboek bestanden van het cluster.
 * Stap 6: Controleer de configuratie-instellingen.
-* Stap 7: Reproduceer het probleem op een ander cluster.
+* Stap 7: Reproduceer de fout op een ander cluster.
 
-## <a name="step-1-gather-data-about-the-issue"></a>Stap 1: Verzamelen van gegevens over het probleem
+## <a name="step-1-gather-data-about-the-issue"></a>Stap 1: Gegevens over het probleem verzamelen
 
-HDInsight bevat veel hulpprogramma's die u gebruiken kunt om te identificeren en oplossen van problemen met clusters. De volgende stappen begeleiden u bij deze hulpprogramma's en biedt suggesties voor dicht van het probleem.
+HDInsight biedt veel hulpprogram ma's die u kunt gebruiken om problemen met clusters te identificeren en op te lossen. De volgende stappen begeleiden u bij deze hulpprogram ma's en bieden suggesties voor het zoeken van het probleem.
 
-### <a name="identify-the-problem"></a>Het probleem
+### <a name="identify-the-problem"></a>Het probleem identificeren
 
-Als u wilt het probleem te identificeren, houd rekening met de volgende vragen:
+Houd rekening met de volgende vragen om het probleem te identificeren:
 
-* Wat ik verwacht te gebeuren? Wat is er gebeurd in plaats daarvan?
-* Hoe lang het proces duren om uit te voeren? Hoe lang moet deze hebt uitgevoerd?
-* Mijn taken altijd langzaam worden uitgevoerd van dit cluster hebben? Ze sneller worden uitgevoerd op een ander cluster?
-* Als dit probleem eerst opgetreden? Hoe vaak is het voorgekomen sinds?
-* Heeft gewijzigd in de configuratie van mijn cluster?
+* Wat had ik verwacht? Wat is er gebeurd?
+* Hoe lang duurt het proces om uit te voeren? Hoe lang moet de app worden uitgevoerd?
+* Moeten mijn taken altijd langzaam worden uitgevoerd op dit cluster? Zijn ze sneller actief op een ander cluster?
+* Wanneer is dit probleem voor het eerst opgetreden? Hoe vaak is dit gebeurd sinds?
+* Is er iets gewijzigd in mijn cluster configuratie?
 
 ### <a name="cluster-details"></a>Clusterdetails
 
-Belangrijke clustergegevens bevat:
+Belang rijke cluster informatie omvat:
 
-* De naam van het cluster.
-* Regio cluster - controleren op [regio storingen](https://azure.microsoft.com/status/).
-* HDInsight-clustertype en -versie.
-* Type en aantal HDInsight-exemplaren die zijn opgegeven voor de hoofd- en worker-knooppunten.
+* Cluster naam.
+* Cluster regio: Controleer op [regio storingen](https://azure.microsoft.com/status/).
+* Het type en de versie van het HDInsight-cluster.
+* Type en aantal HDInsight-instanties dat is opgegeven voor de hoofd-en worker-knoop punten.
 
-De Azure-portal kan deze informatie leveren:
+De Azure Portal kan deze informatie leveren:
 
-![HDInsight-Azure portal informatie](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
+![Gegevens van HDInsight-Azure Portal](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-U kunt ook [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+U kunt ook [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)gebruiken:
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
 az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-Een andere optie is met behulp van PowerShell. Zie voor meer informatie, [beheren Apache Hadoop-clusters in HDInsight met Azure PowerShell](hdinsight-administer-use-powershell.md).
+Een andere optie is het gebruik van Power shell. Zie [Apache Hadoop clusters in HDInsight beheren met Azure PowerShell](hdinsight-administer-use-powershell.md)voor meer informatie.
 
-## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Stap 2: De HDInsight-cluster-omgeving valideren
+## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>Stap 2: De HDInsight-cluster omgeving valideren
 
-Elke HDInsight-cluster is gebaseerd op de verschillende Azure-services en op de open-source-software, zoals Apache HBase- en Apache Spark. HDInsight-clusters kunnen ook op andere Azure-services zoals Azure Virtual Networks aanroepen.  Een clusterfout kan worden veroorzaakt door een van de actieve services op het cluster, of door een externe service.  Een wijziging in de configuratie voor cluster-service kan ook leiden tot het cluster uitvalt.
+Elk HDInsight-cluster is afhankelijk van verschillende Azure-Services en op open-source software, zoals Apache HBase en Apache Spark. HDInsight-clusters kunnen ook aanroepen op andere Azure-Services, zoals Azure Virtual Networks.  Een cluster fout kan worden veroorzaakt door een van de actieve services in uw cluster of door een externe service.  Een wijziging in de configuratie van een cluster service kan er ook toe leiden dat het cluster mislukt.
 
 ### <a name="service-details"></a>Servicedetails
 
-* Controleer de release-versies van open-source-bibliotheek.
-* Controleren op [serviceonderbrekingen van Azure](https://azure.microsoft.com/status/).  
-* Limieten voor Azure-Service controleren. 
-* Controleer de configuratie van Azure Virtual Network-subnet.  
+* Controleer de versies van de open-source bibliotheek versie.
+* Controleren op [uitval van Azure-service](https://azure.microsoft.com/status/).  
+* Controleren op gebruiks limieten van Azure-service. 
+* Controleer de configuratie van het Azure Virtual Network-subnet.  
 
-### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Configuratie-instellingen van het cluster met de Ambari-UI weergeven
+### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Cluster configuratie-instellingen weer geven met de Ambari-gebruikers interface
 
-Apache Ambari biedt beheer en bewaking van een HDInsight-cluster met een webgebruikersinterface en een REST-API. Ambari is opgenomen op Linux gebaseerde HDInsight-clusters. Selecteer de **Clusterdashboard** deelvenster aan de Azure HDInsight-portalpagina.  Selecteer de **HDInsight-clusterdashboard** deelvenster om de UI Ambari te openen en voer de referenties voor clusteraanmelding.  
+Apache Ambari biedt beheer en bewaking van een HDInsight-cluster met een web-UI en een REST API. Ambari is opgenomen in HDInsight-clusters op basis van Linux. Selecteer het deel venster **cluster dashboard** op de pagina Azure Portal HDInsight.  Selecteer het deel venster **dash board voor HDInsight-cluster** om de Ambari-gebruikers interface te openen en voer de aanmeldings referenties voor het cluster in.  
 
 ![Ambari-gebruikersinterface](./media/hdinsight-troubleshoot-failed-cluster/ambari-ui.png)
 
-Als u een lijst met serviceweergaven, schakelt **Ambari-weergaven** op de Azure portal-pagina.  Deze lijst is afhankelijk van welke bibliotheken zijn geïnstalleerd. Bijvoorbeeld, ziet u mogelijk de wachtrijbeheerder YARN, Hive-weergave en Tez weergave.  Selecteer de koppeling van een service om te zien van configuratie- en servicegegevens.
+Als u een lijst met Service weergaven wilt openen, selecteert u **Ambari-weer gaven** op de pagina Azure Portal.  Deze lijst is afhankelijk van welke bibliotheken zijn geïnstalleerd. Zo ziet u een voor beeld van een garen van het wachtrij beheer, Hive-weer gave en TEZ.  Selecteer een service koppeling om de configuratie-en service gegevens te bekijken.
 
-#### <a name="check-for-azure-service-outages"></a>Controleer bij uitval van de Azure-service
+#### <a name="check-for-azure-service-outages"></a>Controleren op Azure-service storingen
 
-HDInsight is afhankelijk van verschillende Azure-services. Deze virtuele servers wordt uitgevoerd op Azure HDInsight, opgeslagen gegevens en -scripts in Azure Blob storage of Azure Data Lake Storage en logboekbestanden van indexen in Azure Table storage. Onderbrekingen van deze services, kunnen Hoewel zeldzaam, problemen veroorzaken in HDInsight. Als er onverwachte vertragingen of fouten in uw cluster, Controleer de [Azure-Statusdashboard](https://azure.microsoft.com/status/). De status van elke service wordt per regio weergegeven. Controleren van uw cluster regio en regio's voor alle gerelateerde services.
+HDInsight is afhankelijk van verschillende Azure-Services. Hiermee worden virtuele servers op Azure HDInsight uitgevoerd, worden gegevens en scripts opgeslagen in Azure Blob Storage of Azure Data Lake Storage, en worden logboek bestanden geïndexeerd in azure Table Storage. Storingen in deze services, hoewel zeldzame, kunnen problemen veroorzaken in HDInsight. Als er onverwachte vertragingen of fouten in uw cluster optreden, controleert u het [dash board van Azure-status](https://azure.microsoft.com/status/). De status van elke service wordt per regio weer gegeven. Controleer de regio van uw cluster en de regio's voor alle gerelateerde services.
 
-#### <a name="check-azure-service-usage-limits"></a>Limieten voor Azure-service controleren
+#### <a name="check-azure-service-usage-limits"></a>Gebruiks limieten van Azure-service controleren
 
-Als u een groot cluster starten of vele clusters tegelijk hebt gestart, wordt een cluster kan mislukken als u een Azure-service hebt overschreden. Servicelimieten variëren, afhankelijk van uw Azure-abonnement. Zie voor meer informatie, [Azure-abonnement en Servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits).
-U kunt aanvragen dat Microsoft het aantal HDInsight-resources die beschikbaar zijn (zoals VM-kernen en VM-exemplaren) verhogen met een [Resource Manager core quotumaanvraag toename](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Als u een groot cluster start of meerdere clusters tegelijkertijd hebt gestart, kan een cluster mislukken als u een limiet van Azure-Services hebt overschreden. Service limieten variëren, afhankelijk van uw Azure-abonnement. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits)voor meer informatie.
+U kunt aanvragen dat micro soft het aantal HDInsight-resources dat beschikbaar is (zoals VM-kernen en VM-exemplaren), verg Roten met een aanvraag voor het verhogen van de [kern quota van Resource Manager](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-#### <a name="check-the-release-version"></a>Controleer de releaseversie
+#### <a name="check-the-release-version"></a>De release versie controleren
 
-Vergelijk de clusterversie met de meest recente versie van HDInsight. Elke HDInsight-versie bevat verbeteringen, zoals nieuwe toepassingen, functies, patches en oplossingen voor problemen. Het probleem dat invloed heeft op uw cluster is mogelijk opgelost in de meest recente versie. Indien mogelijk moet u uw cluster met behulp van de meest recente versie van HDInsight en gekoppelde tapewisselaars, zoals Apache HBase, Apache Spark en andere opnieuw uitvoeren.
+Vergelijk de Cluster versie met de nieuwste versie van HDInsight. Elke HDInsight-release bevat verbeteringen zoals nieuwe toepassingen, functies, patches en oplossingen voor fouten. Het probleem dat van invloed is op uw cluster is mogelijk opgelost in de meest recente release versie. Voer, indien mogelijk, uw cluster opnieuw uit met de nieuwste versie van HDInsight en de bijbehorende bibliotheken zoals Apache HBase, Apache Spark en anderen.
 
-#### <a name="restart-your-cluster-services"></a>Uw clusterservices opnieuw starten
+#### <a name="restart-your-cluster-services"></a>De Cluster Services opnieuw starten
 
-Als u vertragingen in het cluster ondervindt, kunt u overwegen uw services via de Ambari-UI of de klassieke Azure-CLI opnieuw te starten. Tijdelijke fouten mogelijk last van het cluster en het opnieuw starten is de snelste manier om uw omgeving stabiel en mogelijk verbeterde prestaties.
+Als u vertragingen in uw cluster ondervindt, kunt u overwegen uw services opnieuw te starten via de Ambari-gebruikers interface of de klassieke Azure-CLI. Het cluster ondervindt mogelijk tijdelijke fouten en het opnieuw opstarten is de snelste manier om uw omgeving te stabiliseren en mogelijk de prestaties te verbeteren.
 
-## <a name="step-3-view-your-clusters-health"></a>Stap 3: Bekijk de status van uw cluster
+## <a name="step-3-view-your-clusters-health"></a>Stap 3: De status van uw cluster weer geven
 
-HDInsight-clusters bestaan uit verschillende soorten knooppunten die worden uitgevoerd op virtuele machine-instanties. Elk knooppunt kan worden gecontroleerd voor overbelaste bronnen, problemen met de netwerkverbinding en andere problemen die het cluster kunnen vertragen. Elk cluster bevat twee hoofdknooppunten en de meeste clustertypen bestaan uit een combinatie van werknemer en edge-knooppunten. 
+HDInsight-clusters bestaan uit verschillende typen knoop punten die worden uitgevoerd op exemplaren van virtuele machines. Elk knoop punt kan worden bewaakt voor bron beroving, problemen met de netwerk verbinding en andere problemen waardoor het cluster kan vertragen. Elk cluster bevat twee hoofd knooppunten en de meeste cluster typen bevatten een combi natie van worker-en Edge-knoop punten. 
 
-Zie voor een beschrijving van de verschillende knooppunten maakt gebruik van elk clustertype [clusters instellen in HDInsight met Apache Hadoop, Apache Spark en Apache Kafka](hdinsight-hadoop-provision-linux-clusters.md).
+Zie [clusters instellen in HDInsight met Apache Hadoop, Apache Spark, Apache Kafka en meer](hdinsight-hadoop-provision-linux-clusters.md)voor een beschrijving van de verschillende knoop punten die elk cluster type gebruikt.
 
-De volgende secties wordt beschreven hoe u de status van elk knooppunt en het hele cluster controleert.
+In de volgende secties wordt beschreven hoe u de status van elk knoop punt en van het hele cluster controleert.
 
-### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Er een momentopname van de clusterstatus met behulp van de Ambari UI-dashboard
+### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>Een moment opname van de cluster status ophalen met behulp van het dash board Ambari-gebruikers interface
 
-De [Ambari UI dashboard](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) biedt een overzicht van de clusterstatus, zoals de actieve tijdsduur, geheugen, netwerk en CPU-gebruik, HDFS-schijfgebruik, enzovoort. Het Hosts-sectie van Ambari gebruiken om resources op het hostniveau van een weer te geven. U kunt ook stoppen en opnieuw starten van services.
+Het [Ambari-dash board van de gebruikers interface](#view-cluster-configuration-settings-with-the-ambari-ui) (`https://<clustername>.azurehdinsight.net`) biedt een overzicht van de cluster status, zoals uptime, geheugen, netwerk-en CPU-gebruik, HDFS-schijf gebruik, enzovoort. Gebruik de sectie hosts van Ambari om resources op hostniveau weer te geven. U kunt ook services stoppen en opnieuw starten.
 
 ### <a name="check-your-webhcat-service"></a>Controleer uw WebHCat-service
 
-Een veelvoorkomend scenario voor Apache Hive, Apache Pig of Apache Sqoop mislukte taken is een fout met de [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (of *Templeton*) service. WebHCat is een REST-interface voor de taakuitvoering van externe, zoals Hive, Pig, overzicht en MapReduce. WebHCat zet de verzending van taakaanvragen in Apache Hadoop YARN-toepassingen, en retourneert een status die is afgeleid van de status van de YARN-toepassing.  De volgende secties worden algemene WebHCat HTTP-statuscodes.
+Een veelvoorkomend scenario voor Apache Hive-, Apache Pig-of Apache Sqoop-taken mislukken is een fout met de [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) -service (of *Templeton*). WebHCat is een REST-interface voor het uitvoeren van externe taken, zoals Hive, varken, overzicht en MapReduce. WebHCat vertaalt de aanvraag voor het indienen van taken in Apache Hadoop garen-toepassingen en retourneert een status die is afgeleid van de toepassings status van de GARENs.  In de volgende secties worden veelvoorkomende HTTP-status codes voor WebHCat beschreven.
 
-#### <a name="badgateway-502-status-code"></a>BadGateway (502-statuscode)
+#### <a name="badgateway-502-status-code"></a>BadGateway (502-status code)
 
-Dit is een algemeen bericht van gateway-knooppunten, en is de meest voorkomende fouten-statuscode. Een mogelijke oorzaak hiervoor is de WebHCat-service wordt omlaag op het actieve hoofdknooppunt. Om te controleren of deze mogelijkheid, gebruik de volgende CURL-opdracht:
+Deze code is een algemeen bericht van Gateway knooppunten en de meest voorkomende fout status codes. Een mogelijke oorzaak hiervoor is dat de WebHCat-service actief is op het actieve hoofd knooppunt. Gebruik de volgende krul opdracht om te controleren of dit mogelijk is:
 
 ```bash
 curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
 ```
 
-Ambari geeft een waarschuwing weergegeven van de hosts waarop de WebHCat-service niet actief is. U kunt proberen om de service WebHCat een back-up door de service op de host opnieuw te starten.
+In Ambari wordt een waarschuwing weer gegeven met de hosts waarop de WebHCat-service niet beschikbaar is. U kunt proberen om de WebHCat-service terug te zetten door de service op de host opnieuw te starten.
 
-![WebHCat-Server opnieuw opstarten](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
+![WebHCat-server opnieuw starten](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
 
-Als een WebHCat-server nog steeds niet afkomstig van, controleert u het bewerkingenlogboek voor voor foutberichten van. Voor meer informatie gedetailleerde, Controleer de `stderr` en `stdout` bestanden waarnaar wordt verwezen in het knooppunt.
+Als er nog geen WebHCat-server beschikbaar is, controleert u het operations-logboek op fout berichten. Controleer de en `stderr` `stdout` de bestanden waarnaar wordt verwezen in het knoop punt voor meer informatie.
 
-#### <a name="webhcat-times-out"></a>WebHCat een time-out optreedt
+#### <a name="webhcat-times-out"></a>WebHCat time-out
 
-Een HDInsight-Gateway een time-out optreedt antwoorden die duurt langer dan twee minuten retourneren `502 BadGateway`. WebHCat YARN-services voor de status van een taak query's en als YARN langer dan twee minuten om te reageren duurt, die aanvragen kan er een time-out.
+Als er een time-out optreedt voor An HDInsight gateway, duurt het `502 BadGateway`langer dan twee minuten om te retour neren. WebHCat queryeert garen Services voor taak statussen, en als GARENs langer dan twee minuten duren, kan de aanvraag een time-out hebben.
 
-In dit geval bekijken in de volgende logboekbestanden in de `/var/log/webhcat` directory:
+In dit geval raadpleegt u de volgende logboeken `/var/log/webhcat` in de map:
 
-* **webhcat.log** is van het logboek log4j welke serverlogboeken schrijfbewerkingen
-* **webhcat console.log** is de stdout van de server wanneer er aan de slag
-* **webhcat-console-error.log** is de stderr van het server-proces
+* **webhcat. log** is het log4j-logboek waarnaar de server logboeken schrijft
+* **webhcat-console. log** is de stdout van de server wanneer deze wordt gestart
+* **webhcat-console-error. log** is de stderr van het Server proces
 
 > [!NOTE]  
-> Elke `webhcat.log` wordt overgedragen dagelijks genereren van bestanden met de naam `webhcat.log.YYYY-MM-DD`. Selecteer het juiste bestand voor het tijdsbereik dat u onderzoekt.
+> Elke `webhcat.log` wordt elke dag doorgevoerd, waarbij bestanden worden `webhcat.log.YYYY-MM-DD`gegenereerd met de naam. Selecteer het juiste bestand voor het tijds bereik dat u wilt onderzoeken.
 
-De volgende secties beschrijven enkele mogelijke oorzaken voor WebHCat time-outs.
+In de volgende secties worden enkele mogelijke oorzaken voor WebHCat-outs beschreven.
 
-##### <a name="webhcat-level-timeout"></a>Time-out voor het niveau van WebHCat
+##### <a name="webhcat-level-timeout"></a>WebHCat-out
 
-Wanneer WebHCat belast, met meer dan 10 open sockets wordt, duurt het langer nieuwe socketverbindingen, wat is een time-out kunnen leiden tot stand gebracht. U kunt de netwerkverbindingen naar en van WebHCat gebruiken `netstat` op het hoofdknooppunt van het huidige actieve:
+Wanneer WebHCat wordt geladen en er meer dan 10 open sockets zijn, duurt het langer om nieuwe socket verbindingen tot stand te brengen, wat kan leiden tot een time-out. Als u de netwerk verbindingen van en naar WebHCat wilt weer `netstat` geven, gebruikt u op de huidige actieve hoofd knooppunt:
 
 ```bash
 netstat | grep 30111
 ```
 
-30111 is WebHCat luistert op poort. Het aantal open sockets moet minder dan 10.
+30111 is de poort WebHCat luistert naar. Het aantal open sockets moet kleiner zijn dan 10.
 
-Als er geen sockets geopend, wordt in de vorige opdracht een resultaat niet produceren. Om te controleren als Templeton actief is en luistert op poort 30111, gebruiken:
+Als er geen open sockets zijn, produceert de vorige opdracht geen resultaat. Als u wilt controleren of Templeton is ingesteld op poort 30111, gebruikt u:
 
 ```bash
 netstat -l | grep 30111
 ```
 
-##### <a name="yarn-level-timeout"></a>Time-out van de YARN-niveau
+##### <a name="yarn-level-timeout"></a>Time-out voor garen niveau
 
-Templeton roept YARN taken uit te voeren en de communicatie tussen Templeton en YARN kan leiden tot een time-out.
+Templeton belt GARENs om taken uit te voeren en de communicatie tussen Templeton en garen kan een time-out veroorzaken.
 
-Op het niveau van de YARN zijn er twee soorten time-outs:
+Op het niveau van de GARENs zijn er twee soorten time-outs:
 
-1. Een YARN-taak verzenden duurt lang genoeg om te leiden tot een time-out.
+1. Het verzenden van een garen taak kan lang genoeg duren om een time-out te veroorzaken.
 
-    Als u opent de `/var/log/webhcat/webhcat.log` logboekbestand en zoek naar "in de wachtrij job", kunnen er meerdere vermeldingen waar de uitvoeringstijd is te lang (> 2000 ms), met de vermeldingen met toenemende wachttijden.
+    Als u het `/var/log/webhcat/webhcat.log` logboek bestand opent en op ' wachtrij taak ' zoekt, ziet u mogelijk meerdere vermeldingen waarbij de uitvoerings tijd buitensporig lang is (> 2000 MS), met vermeldingen die de toenemende wacht tijden weer geven.
 
-    De tijd voor de taken in de wachtrij blijft toenemen omdat de snelheid waarmee nieuwe taken verstuurd hoger zijn dan de frequentie waarmee de oude taken zijn voltooid. Zodra de YARN-geheugen 100 is % gebruikt, de *joblauncher wachtrij* kan niet meer lenen capaciteit van de *wachtrij*. Daarom kunnen niet meer nieuwe taken worden geaccepteerd in de wachtrij joblauncher. Dit gedrag kan ertoe leiden dat de wachttijd op langer en meer, waardoor een time-outfout die wordt meestal gevolgd door nog veel meer.
+    De tijd voor de taken in de wachtrij blijft toenemen omdat de snelheid waarmee nieuwe taken worden verzonden hoger is dan de snelheid waarmee de oude taken zijn voltooid. Zodra het garen geheugen 100% is gebruikt, kan de *joblauncher-wachtrij* geen capaciteit meer lenen van de *standaard wachtrij*. Daarom kunnen er geen nieuwe taken meer worden geaccepteerd in de joblauncher-wachtrij. Dit kan ervoor zorgen dat de wacht tijd langer en langer duurt, waardoor er een time-outfout optreedt die meestal door veel andere wordt gevolgd.
 
-    De volgende afbeelding ziet u de wachtrij joblauncher 714.4% gebruikt. Dit is acceptabel, zolang er nog steeds gratis capaciteit in de wachtrij om te lenen is uit. Echter, wanneer het cluster volledig is verbruikt en de YARN-geheugen op 100%-capaciteit is, nieuwe taken moeten wachten, waardoor uiteindelijk time-outs.
+    In de volgende afbeelding ziet u de joblauncher-wachtrij met een overgebruik van 714,4%. Dit is acceptabel, zolang er nog steeds vrije capaciteit in de standaard wachtrij staat om van te lenen. Wanneer het cluster echter volledig wordt gebruikt en de capaciteit van het garen ten 100% is, moeten nieuwe taken wachten, waardoor de time-outs uiteindelijk worden veroorzaakt.
 
-    ![Joblauncher wachtrij](./media/hdinsight-troubleshoot-failed-cluster/joblauncher-queue.png)
+    ![Joblauncher-wachtrij](./media/hdinsight-troubleshoot-failed-cluster/joblauncher-queue.png)
 
-    Er zijn twee manieren om dit probleem te verhelpen: Verlaag de snelheid van nieuwe taken worden verzonden of toename van de snelheid van het verbruik van de oude taken door omhoog schalen van het cluster.
+    Er zijn twee manieren om dit probleem op te lossen: Verminder de snelheid van de nieuwe taken die worden verzonden of verg root de verbruiks snelheid van oude taken door het cluster omhoog te schalen.
 
-2. YARN-verwerking kan lang duren, wat leiden time-outs tot kan.
+2. Het verwerken van GARENs kan enige tijd duren. Dit kan leiden tot time-outs.
 
-    * Een overzicht van alle taken: Dit is een tijdrovende aanroep. Deze aanroep worden de toepassingen uit de ResourceManager YARN, en voor elke voltooide toepassing wordt opgesomd, krijgt de status van de YARN-JobHistoryServer. Met een hoger aantal taken kan deze aanroep time-out.
+    * Alle taken weer geven: Dit is een tijdrovende oproep. Met deze aanroep worden de toepassingen van de garen-Resource Manager opgesomd en voor elke voltooide toepassing wordt de status opgehaald van het garen JobHistoryServer. Met een hoger aantal taken kan deze aanroep een time-out hebben.
 
-    * Lijst met taken ouder zijn dan zeven dagen: De HDInsight YARN-JobHistoryServer is geconfigureerd voor het bewaren van gegevens van de voltooide taak gedurende zeven dagen (`mapreduce.jobhistory.max-age-ms` waarde). Het inventariseren van resultaten opgeschoonde taken in een time-out.
+    * Taken weer geven die ouder zijn dan zeven dagen: Het HDInsight-garen JobHistoryServer is zo geconfigureerd dat de voltooide taak gegevens zeven dagen`mapreduce.jobhistory.max-age-ms` (waarde) behouden blijven. Het opsommen van verwijderde taken resulteert in een time-out.
 
-Deze om problemen te diagnosticeren:
+U kunt deze problemen als volgt vaststellen:
 
-1. Bepalen het bereik van de UTC-tijd om op te lossen
-2. Selecteer de juiste `webhcat.log` bestand(en)
-3. WAARSCHUWEN en foutberichten Zoek in die tijd
+1. Het UTC-tijds bereik voor het oplossen van problemen bepalen
+2. Selecteer de gewenste `webhcat.log` bestanden
+3. Zoeken naar waarschuwingen en fout berichten tijdens die tijd
 
-#### <a name="other-webhcat-failures"></a>Andere fouten van WebHCat
+#### <a name="other-webhcat-failures"></a>Andere WebHCat-fouten
 
-1. HTTP-statuscode 500
+1. HTTP-status code 500
 
-    In de meeste gevallen waarbij WebHCat 500 retourneert, bevat het foutbericht details over de fout. Anders, Bekijk `webhcat.log` voor waarschuwen en foutberichten.
+    In de meeste gevallen waarin WebHCat 500 retourneert, bevat het fout bericht Details over de fout. Raadpleeg `webhcat.log` anders voor waarschuwingen en fout berichten.
 
-2. Taakfouten
+2. Taak fouten
 
-    Mogelijk zijn er gevallen waarbij interacties met WebHCat zijn geslaagd, maar de taken mislukken.
+    Er zijn mogelijk situaties waarin interacties met WebHCat zijn geslaagd, maar de taken mislukken.
 
-    Templeton verzamelt de taak console-uitvoer als `stderr` in `statusdir`, dit is vaak handig voor het oplossen van problemen. `stderr` bevat de YARN-toepassings-id van de werkelijke query.
+    Templeton verzamelt de taak console-uitvoer `stderr` als `statusdir`in, wat vaak handig is voor het oplossen van problemen. `stderr`bevat de toepassings-id van de GARENs van de werkelijke query.
 
-## <a name="step-4-review-the-environment-stack-and-versions"></a>Stap 4: Raadpleeg de omgeving stack en versies
+## <a name="step-4-review-the-environment-stack-and-versions"></a>Stap 4: De omgevings stack en-versies controleren
 
-De UI Ambari **Stack en versie** pagina vindt u informatie over de cluster-services configuratie- en versiegeschiedenis.  Onjuiste bibliotheek versies van de Hadoop-service is een oorzaak van de clusterfout.  Selecteer in de Ambari-UI de **Admin** menu en vervolgens **stapels en versies**.  Selecteer de **versies** tabblad op de pagina om te zien van de service versie-informatie:
+De pagina Ambari UI- **stack en-versie** bevat informatie over de configuratie van de Cluster Services en de geschiedenis van de service versie.  Onjuiste versies van de Hadoop-service bibliotheek kunnen een storing in de cluster veroorzaken.  Selecteer in de Ambari-gebruikers interface het menu **beheerder** en vervolgens **stacks en versies**.  Selecteer op de pagina het tabblad **versies** om informatie over de service versie weer te geven:
 
 ![Stack en versies](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
 
-## <a name="step-5-examine-the-log-files"></a>Stap 5: Bekijk de logboekbestanden
+## <a name="step-5-examine-the-log-files"></a>Stap 5: De logboek bestanden controleren
 
-Er zijn veel soorten logboeken die zijn gegenereerd op basis van de vele services en onderdelen die deel uitmaken van een HDInsight-cluster. [Logboekbestanden WebHCat](#check-your-webhcat-service) eerder zijn beschreven. Er zijn diverse andere nuttige logboekbestanden die u onderzoeken kunt als u problemen met uw cluster wilt beperken, zoals beschreven in de volgende secties.
+Er zijn veel soorten logboeken die worden gegenereerd op basis van de vele services en onderdelen waaruit een HDInsight-cluster bestaat. [WebHCat-logboek bestanden](#check-your-webhcat-service) worden eerder beschreven. Er zijn verschillende andere nuttige logboek bestanden die u kunt onderzoeken om problemen met uw cluster op te lossen, zoals wordt beschreven in de volgende secties.
 
-* HDInsight-clusters bestaan uit verschillende knooppunten, die de meeste zijn met name voor het uitvoeren van de verzonden taken. Taken gelijktijdig worden uitgevoerd, maar logboekbestanden kunnen resultaten alleen lineair worden weergeven. HDInsight wordt uitgevoerd in nieuwe taken beëindigd anderen die niet eerst voltooid. Alle deze activiteit wordt geregistreerd voor de `stderr` en `syslog` bestanden.
+* HDInsight-clusters bestaan uit verschillende knoop punten, waarvan de meeste taken taken kunnen uitvoeren. Taken worden gelijktijdig uitgevoerd, maar logboek bestanden kunnen alleen lineaire resultaten weer geven. HDInsight voert nieuwe taken uit en beëindigt andere die niet eerst zijn voltooid. Al deze activiteit wordt geregistreerd bij de `stderr` - `syslog` en-bestanden.
 
-* De logboekbestanden van het script-actie worden fouten of onverwachte configuratiewijzigingen weergeven tijdens het maken van een van uw cluster.
+* In de script actie logboek bestanden worden fouten of onverwachte configuratie wijzigingen weer gegeven tijdens het maken van het cluster.
 
-* De logboeken van de stap Hadoop identificeren Hadoop-taken gestart als onderdeel van een stap met fouten.
+* De Hadoop-stap logboeken identificeren Hadoop-taken die worden gestart als onderdeel van een stap die fouten bevat.
 
-### <a name="check-the-script-action-logs"></a>Raadpleeg de logboeken van de actie script
+### <a name="check-the-script-action-logs"></a>Controleer de script actie logboeken
 
-HDInsight [scriptacties](hdinsight-hadoop-customize-cluster-linux.md) scripts uitvoeren op het cluster handmatig of als de opgegeven. Scriptacties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of om te wijzigen van configuratie-instellingen van de standaardwaarden. Controle van de logboeken van de actie script krijgt u inzicht in fouten die zijn opgetreden tijdens de installatie en configuratie.  U kunt de status van een scriptactie weergeven door het selecteren van de **ops** knop in de Ambari-UI of via de logboeken van het standaardopslagaccount.
+Met HDInsight- [script acties](hdinsight-hadoop-customize-cluster-linux.md) worden scripts hand matig of indien opgegeven in het cluster uitgevoerd. Script acties kunnen bijvoorbeeld worden gebruikt voor het installeren van extra software op het cluster of voor het wijzigen van de configuratie-instellingen van de standaard waarden. Het controleren van de script actie logboeken kan inzicht geven in fouten die zijn opgetreden tijdens het instellen en configureren van het cluster.  U kunt de status van een script actie weer geven door de **OPS** -knop in de Ambari-gebruikers interface te selecteren of door de logboeken te openen vanuit het standaard opslag account.
 
-De actie scriptlogboeken bevinden zich in de `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` directory.
+De script actie logboeken bevinden `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` zich in de map.
 
-### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>HDInsight logboeken bekijken via Ambari snelkoppelingen
+### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>HDInsight-logboeken weer geven met Ambari-snelle koppelingen
 
-De Ambari-Webgebruikersinterface HDInsight omvat een aantal **snelkoppelingen** secties.  Voor toegang tot de koppelingen van het logboek voor een bepaalde service in uw HDInsight-cluster, opent u de Ambari UI voor uw cluster, en selecteer vervolgens de koppeling van de service in de lijst aan de linkerkant. Selecteer de **snelkoppelingen** vervolgkeuzelijst, klikt u vervolgens het HDInsight-knooppunt van belang en selecteer vervolgens de koppeling voor de bijbehorende logboekbestanden.
+De gebruikers interface van HDInsight Ambari bevat een aantal secties **snelle koppelingen** .  Als u de logboek koppelingen voor een bepaalde service in uw HDInsight-cluster wilt openen, opent u de Ambari-gebruikers interface voor uw cluster en selecteert u vervolgens de service koppeling in de lijst links. Selecteer de vervolg keuzelijst **snelle koppelingen** , vervolgens het HDInsight-knoop punt en selecteer vervolgens de koppeling voor het bijbehorende logboek.
 
-Bijvoorbeeld: voor HDFS-Logboeken:
+Bijvoorbeeld voor HDFS-logboeken:
 
-![Ambari snelle koppelingen naar logboekbestanden](./media/hdinsight-troubleshoot-failed-cluster/quick-links.png)
+![Ambari snelle koppelingen naar logboek bestanden](./media/hdinsight-troubleshoot-failed-cluster/quick-links.png)
 
-### <a name="view-hadoop-generated-log-files"></a>Hadoop gegenereerde logboekbestanden weergeven
+### <a name="view-hadoop-generated-log-files"></a>Door Hadoop gegenereerde logboek bestanden weer geven
 
-Een HDInsight-cluster genereert logboeken die worden geschreven naar Azure-tabellen en Azure Blob-opslag. YARN Hiermee maakt u een eigen uitvoeringslogboeken. Zie voor meer informatie, [logboeken voor een HDInsight-cluster beheren](hdinsight-log-management.md#access-the-hadoop-log-files).
+An HDInsight-cluster genereert logboeken die zijn geschreven naar Azure-tabellen en Azure Blob-opslag. GARENs maken eigen uitvoerings Logboeken. Zie [logboeken beheren voor een HDInsight-cluster](hdinsight-log-management.md#access-the-hadoop-log-files)voor meer informatie.
 
-### <a name="review-heap-dumps"></a>Heapdumps bekijken
+### <a name="review-heap-dumps"></a>Heap-dumps controleren
 
-Heapdumps bevatten een momentopname van het geheugen van de toepassing, met inbegrip van de waarden van variabelen op dat moment, wat nuttig is voor het oplossen van problemen die tijdens runtime optreden. Zie voor meer informatie, [heapdumps inschakelen voor Apache Hadoop-services op Linux gebaseerde HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
+Heap-dumps bevatten een moment opname van het geheugen van de toepassing, met inbegrip van de waarden van variabelen op dat moment, die handig zijn voor het vaststellen van problemen die tijdens runtime optreden. Zie voor meer informatie [heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md).
 
-## <a name="step-6-check-configuration-settings"></a>Stap 6: Configuratie-instellingen controleren
+## <a name="step-6-check-configuration-settings"></a>Stap 6: Controleer de configuratie-instellingen
 
-HDInsight-clusters zijn vooraf geconfigureerd met standaardinstellingen voor verwante services, zoals Hadoop, Hive, HBase, enzovoort. Afhankelijk van het type cluster, de hardwareconfiguratie, het aantal knooppunten, de typen taken u uitvoert, en de gegevens u werkt met (en hoe deze gegevens worden verwerkt), moet u mogelijk uw configuratie te optimaliseren.
+HDInsight-clusters zijn vooraf geconfigureerd met standaard instellingen voor gerelateerde services, zoals Hadoop, Hive, HBase, enzovoort. Afhankelijk van het type cluster, de hardwareconfiguratie, het aantal knoop punten, de typen taken die u uitvoert en de gegevens waarmee u werkt (en hoe die gegevens worden verwerkt), moet u mogelijk uw configuratie optimaliseren.
 
-Zie voor gedetailleerde instructies over het optimaliseren van prestatieconfiguraties voor de meeste scenario's [optimaliseren configuraties van clusters met Apache Ambari](hdinsight-changing-configs-via-ambari.md). Wanneer u Spark, Zie [optimaliseren Apache Spark-taken voor prestaties](spark/apache-spark-perf.md). 
+Zie [cluster configuraties optimaliseren met Apache Ambari](hdinsight-changing-configs-via-ambari.md)voor gedetailleerde instructies voor het optimaliseren van prestatie configuraties voor de meeste scenario's. Als u Spark gebruikt, raadpleegt u [Apache Spark-taken optimaliseren voor prestaties](spark/apache-spark-perf.md). 
 
 ## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>Stap 7: De fout in een ander cluster reproduceren
 
-Om u te helpen bij het analyseren van de bron van de clusterfout van een, start u een nieuw cluster met dezelfde configuratie en voer vervolgens opnieuw de mislukte taak stappen één voor één. Controleer de resultaten van elke stap voordat u het volgende object verwerkt. Deze methode biedt u de mogelijkheid om te corrigeren en voer één mislukte stap opnieuw uit. Deze methode heeft ook het voordeel van het laden van slechts één keer uw invoergegevens.
+Om te helpen bij het vaststellen van de bron van een cluster fout, start u een nieuw cluster met dezelfde configuratie en voert u de stappen van de mislukte taak één voor één opnieuw uit. Controleer de resultaten van elke stap voordat u het volgende gaat verwerken. Deze methode biedt u de mogelijkheid om één mislukte stap te corrigeren en opnieuw uit te voeren. Deze methode biedt ook het voor deel dat u slechts één keer uw invoer gegevens hoeft te laden.
 
-1. Een nieuwe testcluster maken met dezelfde configuratie als het cluster is mislukt.
-2. Indienen van de eerste taakstap voor de testcluster.
-3. Wanneer de stap verwerking is voltooid, controleert u of fouten in de logboekbestanden van de stap. Verbinding maken met het hoofdknooppunt van het testcluster en de logboekbestanden er weergeven. De logboekbestanden van de stap wordt alleen weergegeven nadat de stap voor enige tijd is voltooid, wordt uitgevoerd of is mislukt.
-4. Als de eerste stap is voltooid, voert u de volgende stap. Als er fouten zijn opgetreden, moet u de fout in de logboekbestanden onderzoeken. Als dit een fout opgetreden in uw code is, uitvoeren van de correctie en voer de stap opnieuw uit.
-5. Pas alle stappen worden uitgevoerd zonder fouten worden voortgezet.
-6. Wanneer u klaar bent het opsporen van fouten in de testcluster verwijderen.
+1. Maak een nieuw test cluster met dezelfde configuratie als de mislukte cluster.
+2. Verzend de eerste taak stap naar het test cluster.
+3. Wanneer de stap is voltooid, controleert u of er fouten zijn opgetreden in de logboek bestanden van de stap. Maak verbinding met het hoofd knooppunt van het test cluster en Bekijk de logboek bestanden daar. De stap logboek bestanden worden alleen weer gegeven nadat de stap enige tijd is uitgevoerd, is voltooid of mislukt.
+4. Als de eerste stap is geslaagd, voert u de volgende stap uit. Als er fouten zijn opgetreden, onderzoekt u de fout in de logboek bestanden. Als er een fout is opgetreden in de code, maakt u de correctie en voert u de stap opnieuw uit.
+5. Ga door totdat alle stappen zonder fouten worden uitgevoerd.
+6. Wanneer u klaar bent met het opsporen van fouten in het test cluster, verwijdert u dit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [HDInsight-clusters beheren met behulp van de Apache Ambari-webinterface](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight-logboekbestanden analyseren](hdinsight-debug-jobs.md)
-* [Meld u de toepassing toegang Apache Hadoop YARN in HDInsight op basis van Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Heapdumps voor Apache Hadoop-services op Linux gebaseerde HDInsight inschakelen](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Bekende problemen voor Apache Spark-cluster in HDInsight](hdinsight-apache-spark-known-issues.md)
+* [HDInsight-logboeken analyseren](hdinsight-debug-jobs.md)
+* [Toegang tot Apache Hadoop garen van een toepassing aanmelden op basis van Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Bekende problemen met Apache Spark cluster op HDInsight](hdinsight-apache-spark-known-issues.md)

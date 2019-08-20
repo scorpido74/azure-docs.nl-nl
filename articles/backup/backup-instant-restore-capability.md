@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: f2485786f323bc6d19d39f4da6ffa7cab14bbb4c
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: aad3ca34ab9db5ec910e70e70ba5a31afa94e417
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951844"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611978"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
@@ -24,7 +24,7 @@ Het nieuwe model voor direct terugzetten biedt de volgende functie verbeteringen
 
 * De mogelijkheid om moment opnamen te gebruiken die zijn gemaakt als onderdeel van een back-uptaak die beschikbaar is voor herstel, zonder te wachten tot de overdracht van gegevens naar de kluis is voltooid. Het verkleint de wacht tijd voor moment opnamen die moeten worden gekopieerd naar de kluis voordat de herstel bewerking wordt geactiveerd.
 * Hiermee vermindert u de back-up-en herstel tijden door moment opnamen lokaal te bewaren, voor twee dagen standaard. Deze standaard waarde voor het bewaren van moment opnamen kan worden geconfigureerd voor elke waarde tussen 1 en 5 dagen.
-* Ondersteunt schijf grootten tot 4 TB. Het wijzigen van de grootte van schijven wordt niet aanbevolen door Azure Backup. Als u zich wilt aanmelden voor een beperkte open bare preview van Azure Backup ondersteuning voor grote schijven voor schijven die groter zijn dan 4 TB en tot Maxi maal 30 TB groot zijn, raadpleegt u [een overzicht van Azure VM-back-up](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+* Ondersteunt schijf grootten tot 4 TB. Het wijzigen van de grootte van schijven wordt niet aanbevolen door Azure Backup. Als u zich wilt aanmelden voor een beperkte open bare preview van Azure Backup ondersteuning voor grote schijven voor schijven die groter zijn dan 4 TB en tot Maxi maal 30 TB groot zijn, raadpleegt u [back-up van de VM met schijf grootten tot 30 TB](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 * Ondersteunt Standard-SSD schijven samen met Standard-HDD schijven en Premium-SSD schijven.
 * De mogelijkheid om een niet-beheerde virtuele machine te gebruiken oorspronkelijke opslag accounts (per schijf) bij het herstellen. Deze mogelijkheid bestaat zelfs wanneer de virtuele machine schijven heeft die over verschillende opslag accounts worden gedistribueerd. Het versnelt de herstel bewerkingen voor een groot aantal verschillende VM-configuraties.
 * Voor back-ups van virtuele machines die gebruikmaken van Premium Storage, kunt u met direct terugzetten *50%* beschik bare ruimte toewijzen aan de totale toegewezen opslag ruimte. Dit is **alleen** vereist voor de eerste back-up. De 50% beschik bare ruimte is geen vereiste voor back-ups nadat de eerste back-up is voltooid.

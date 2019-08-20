@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 37b6a9947d3cabe1f566f842e321229efe9d03b6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598530"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614684"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Een .NET-console-app maken voor het beheren van gegevens in Azure Cosmos DB SQL-API-account
 
@@ -253,7 +253,7 @@ Een database kan worden gemaakt met de functie [**CreateDatabaseIfNotExistsAsync
 
 Selecteer **F5** om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos DB-database gemaakt.  
+Gefeliciteerd! U hebt een Azure Cosmos-data base gemaakt.  
 
 ## <a id="CreateColl"></a>Stap 5: Een container maken
 > [!WARNING]
@@ -283,10 +283,10 @@ U kunt een container maken met behulp van de functie [**CreateContainerIfNotExis
 
    Selecteer **F5** om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt nu een Azure Cosmos DB-container gemaakt.  
+Gefeliciteerd! U hebt een Azure Cosmos-container gemaakt.  
 
 ## <a id="CreateDoc"></a>Stap 6: Items toevoegen aan de container
-Een item kan worden gemaakt met behulp van de functie [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) van de klasse **CosmosContainer** . Als u de SQL-API gebruikt, worden items als documenten geprojecteerd. Deze zijn door de gebruiker gedefinieerde (willekeurige) JSON-inhoud. U kunt nu een item invoegen in uw Azure Cosmos DB-container.
+Een item kan worden gemaakt met behulp van de functie [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) van de klasse **CosmosContainer** . Als u de SQL-API gebruikt, worden items als documenten geprojecteerd. Deze zijn door de gebruiker gedefinieerde (willekeurige) JSON-inhoud. U kunt nu een item invoegen in de Azure Cosmos-container.
 
 Eerst gaan we een **familie** klasse maken die objecten vertegenwoordigt die zijn opgeslagen in azure Cosmos db in dit voor beeld. Daarnaast moeten de subklassen **Parent**, **Child**, **Pet** en **Address** worden gemaakt die in de klasse **Family** worden gebruikt. Opmerking item moet een **id-** eigenschap hebben die is geserialiseerd als **id** in JSON.
 
@@ -320,7 +320,7 @@ Met de code wordt gecontroleerd of een item met dezelfde ID al bestaat voordat h
 
 Selecteer **F5** om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt twee Azure Cosmos DB-items gemaakt.  
+Gefeliciteerd! U hebt twee Azure Cosmos-items gemaakt.  
 
 ## <a id="Query"></a>Stap 7: Query's uitvoeren op Azure Cosmos DB-resources
 Azure Cosmos DB biedt ondersteuning voor uitgebreide [query's](sql-api-sql-query.md) op de JSON-documenten die zijn opgeslagen in elke verzameling. In de volgende voorbeeldcode ziet u hoe u een query uitvoert voor de items die u in de vorige stap hebt ingevoegd.
@@ -347,7 +347,7 @@ Azure Cosmos DB biedt ondersteuning voor uitgebreide [query's](sql-api-sql-query
 
 Selecteer **F5** om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een query uitgevoerd op een Azure Cosmos DB-container.
+Gefeliciteerd! U hebt een query uitgevoerd op een Azure Cosmos-container.
 
 ## <a id="ReplaceItem"></a>Stap 8: Een JSON-item vervangen
 Nu gaat u een item in Azure Cosmos DB bijwerken.
@@ -375,7 +375,7 @@ Nu gaat u een item in Azure Cosmos DB bijwerken.
 
    Selecteer **F5** om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos DB-item vervangen.
+Gefeliciteerd! U hebt een Azure Cosmos-item vervangen.
 
 ## <a id="DeleteDocument"></a>Stap 9: Item verwijderen
 Nu gaat u een item verwijderen uit Azure Cosmos DB.
@@ -404,7 +404,7 @@ Nu gaat u een item verwijderen uit Azure Cosmos DB.
 
 Selecteer **F5** om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos DB-item verwijderd.
+Gefeliciteerd! U hebt een Azure Cosmos-item verwijderd.
 
 ## <a id="DeleteDatabase"></a>Stap 10: De database verwijderen
 Nu gaat u de database verwijderen. Als u de gemaakte database verwijdert, worden de database en alle onderliggende resources (containers, items en eventuele opgeslagen procedures, door de gebruiker gedefinieerde functies en triggers) verwijderd. U gaat ook het **CosmosClient**-instantie verwijderen.
@@ -419,7 +419,7 @@ Nu gaat u de database verwijderen. Als u de gemaakte database verwijdert, worden
 
 Selecteer **F5** om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos DB-database verwijderd.
+Gefeliciteerd! U hebt een Azure Cosmos-data base verwijderd.
 
 ## <a id="Run"></a>Stap 11: Uw C#-consoletoepassing volledig uitvoeren
 Druk in Visual Studio op F5 en compileer en voer de toepassing uit in de foutopsporingsmodus.

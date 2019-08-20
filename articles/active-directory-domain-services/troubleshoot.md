@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c5ec80e81381423bdfdee07b1c020343d14ed559
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772976"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617073"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services-probleemoplossings gids
 In dit artikel vindt u tips voor het oplossen van problemen die zich kunnen voordoen bij het instellen of beheren van Azure Active Directory (AD) Domain Services.
@@ -32,7 +32,7 @@ Kies de stappen voor het oplossen van problemen die overeenkomen met het fout be
 
 | **Fout bericht** | **Resolutie** |
 | --- |:--- |
-| *De naam contoso100.com is al in gebruik op dit netwerk. Geef een naam op die niet in gebruik is.* |[Domein naam conflict in het virtuele netwerk](troubleshoot.md#domain-name-conflict) |
+| *De naam contoso.com wordt al gebruikt in dit netwerk. Geef een naam op die niet in gebruik is.* |[Domein naam conflict in het virtuele netwerk](troubleshoot.md#domain-name-conflict) |
 | *Domain Services kan niet worden ingeschakeld in deze Azure AD-tenant. De service heeft niet voldoende machtigingen voor de toepassing met de naam 'Azure AD Domain Services Sync'. Verwijder de toepassing met de naam 'Azure AD Domain Services Sync' en probeer vervolgens om Domain Services in te schakelen voor uw Azure AD-tenant.* |[Domain Services heeft niet de juiste machtigingen voor de Azure AD Domain Services Sync-toepassing](troubleshoot.md#inadequate-permissions) |
 | *Domain Services kan niet worden ingeschakeld in deze Azure AD-tenant. De toepassing Domain Services in uw Azure AD-tenant heeft niet de vereiste machtigingen om Domain Services in te schakelen. Verwijder de toepassing met de toepassings-id d87dcbc6-a371-462e-88e3-28ad15ec4e64 en probeer vervolgens om Domain Services in te schakelen voor uw Azure AD-tenant.* |[De domein Services-toepassing is niet juist geconfigureerd in uw Tenant](troubleshoot.md#invalid-configuration) |
 | *Domain Services kan niet worden ingeschakeld in deze Azure AD-tenant. De toepassing Microsoft Azure AD is uitgeschakeld in uw Azure AD-tenant. Schakel de toepassing met de toepassings-id 00000002-0000-0000-c000-000000000000 in en probeer vervolgens om Domain Services in te schakelen voor uw Azure AD-tenant.* |[De Microsoft Graph toepassing is uitgeschakeld in uw Azure AD-Tenant](troubleshoot.md#microsoft-graph-disabled) |
@@ -40,7 +40,7 @@ Kies de stappen voor het oplossen van problemen die overeenkomen met het fout be
 ### <a name="domain-name-conflict"></a>Conflict met domein naam
 **Fout bericht:**
 
-*De naam contoso100.com is al in gebruik op dit netwerk. Geef een naam op die niet in gebruik is.*
+*De naam contoso.com wordt al gebruikt in dit netwerk. Geef een naam op die niet in gebruik is.*
 
 **Herstel**
 
@@ -135,12 +135,12 @@ Als een of meer gebruikers in uw Azure AD-Tenant zich niet kunnen aanmelden bij 
 >
 >
 
-* Zorg ervoor dat u [wachtwoordsynchronisatie hebt ingeschakeld](active-directory-ds-getting-started-password-sync.md) volgens de stappen beschreven in de handleiding.
+* Zorg ervoor dat u [wachtwoordsynchronisatie hebt ingeschakeld](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) volgens de stappen beschreven in de handleiding.
 * **Externe accounts:** Zorg ervoor dat het betreffende gebruikersaccount geen extern account in de Azure AD-tenant is. Voor beelden van externe accounts zijn micro soft-accounts (bijvoorbeeldjoe@live.com' ') of gebruikers accounts uit een externe Azure AD-adres lijst. Omdat Azure AD Domain Services geen referenties heeft voor dergelijke gebruikers accounts, kunnen deze gebruikers zich niet aanmelden bij het beheerde domein.
 * **Gesynchroniseerde accounts:** Als de betrokken gebruikers accounts worden gesynchroniseerd vanuit een on-premises Directory, controleert u het volgende:
 
   * U hebt de [meest recente aanbevolen versie van Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)geïmplementeerd of bijgewerkt.
-  * U hebt Azure AD Connect geconfigureerd om [een volledige synchronisatie uit te voeren](active-directory-ds-getting-started-password-sync.md).
+  * U hebt Azure AD Connect geconfigureerd om [een volledige synchronisatie uit te voeren](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).
   * Afhankelijk van de grootte van uw map kan het enige tijd duren voordat gebruikers accounts en referentie-hashes beschikbaar zijn in Azure AD Domain Services. Zorg ervoor dat u lang genoeg wacht voordat u opnieuw probeert te authenticeren.
   * Als het probleem zich blijft voordoen nadat u de voor gaande stappen hebt gecontroleerd, start u de Microsoft Azure AD Sync-service opnieuw op. Start vanaf de synchronisatie computer een opdracht prompt en voer de volgende opdrachten uit:
 

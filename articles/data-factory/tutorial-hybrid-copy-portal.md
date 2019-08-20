@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: abnarain
-ms.openlocfilehash: 7e09c36128c3471ce9df33b2a78eb14fab89435b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad09715f8ccbe20ec6f58d3a4543e0168e9f4cbc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497939"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617708"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
 In deze zelfstudie gebruikt u de gebruikersinterface (UI) van Azure Data Factory om een pijplijn voor een data factory te maken waarmee gegevens worden gekopieerd van een on-premises SQL Server-database naar Azure Blob-opslag. U gaat een zelf-hostende Integration Runtime maken en gebruiken. Deze verplaatst gegevens van on-premises gegevensarchieven en gegevensarchieven in de cloud en omgekeerd.
@@ -89,7 +89,6 @@ In deze zelfstudie gaat u de naam en sleutel van uw opslagaccount gebruiken. Voe
 
 1. Selecteer in het venster **Opslagaccount** de optie **Toegangssleutels**.
 
-    ![Toegangssleutels](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
 
 1. Kopieer de waarden in de vakken **opslagaccountnaam** en **key1** en plak deze in Kladblok of een andere editor voor later gebruik in de zelfstudie. 
 
@@ -114,14 +113,11 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
 1. Houd het venster **Container** voor **adftutorial** geopend. U gaat hiermee aan het einde van deze zelfstudie de uitvoer controleren. In Data Factory wordt automatisch in deze container de uitvoermap gemaakt, zodat u er zelf geen hoeft te maken.
 
-    ![Containervenster](media/tutorial-hybrid-copy-powershell/container-page.png)
-
-
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 In deze stap maakt u een data factory en start u de Data Factory-gebruikersinterface om een pijplijn te maken in de data factory. 
 
 1. Open de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-1. Selecteer in het menu links **een resource maken** > **gegevens en analyses** > **Data Factory**:
+1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**:
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -161,11 +157,11 @@ De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutb
 
 1. Voer op het tabblad **Algemeen** onder in het venster **Eigenschappen** bij **Naam** **SQLServerToBlobPipeline** in.
 
-   ![Naam pijplijn](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
+   ![Naam van de pijplijn](./media/tutorial-hybrid-copy-portal/pipeline-name.png)
 
 1. Vouw in de werkset **Activiteiten** **DataFlow** uit. Gebruik slepen en neerzetten om de activiteit **Kopiëren** naar het ontwerpoppervlak van de pijplijn te verplaatsen. Stel de naam van de activiteit in op **CopySqlServerToAzureBlobActivity**.
 
-   ![Naam van de activiteit](./media/tutorial-hybrid-copy-portal/copy-activity-name.png)
+   ![Activiteitsnaam](./media/tutorial-hybrid-copy-portal/copy-activity-name.png)
 
 1. Ga in het venster **Eigenschappen** naar het tabblad **Bron** en selecteer **+ Nieuw**.
 
@@ -193,13 +189,13 @@ De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutb
 
 1. Voer een naam in voor de integratieruntime en selecteer **Volgende**.
 
-    ![Naam integratieruntime](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
+    ![Naam van integratieruntime](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
 1. Selecteer bij **optie 1: snelle installatie** de koppeling **Klik hier om de snelle installatie voor deze computer te starten**. 
 
     ![Koppeling Snelle installatie](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 
-1. Selecteer **Sluiten** in het venster **Snelle installatie van integratieruntime (zelf-hostend)**. 
+1. Selecteer **Sluiten** in het venster **Snelle installatie van integratieruntime (zelf-hostend)** . 
 
     ![Snelle installatie van integratieruntime (zelf-hostend)](./media/tutorial-hybrid-copy-portal/integration-runtime-setup-successful.png)
 
@@ -231,7 +227,7 @@ De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutb
 
     a. Controleer of in **Gekoppelde service** **SqlServerLinkedService** wordt weergegeven.
 
-    b. Selecteer bij **Tabel** **[dbo].[emp]**.
+    b. Selecteer bij **Tabel** **[dbo].[emp]** .
 
     ![Brongegevenssetinformatie](./media/tutorial-hybrid-copy-portal/source-dataset-connection.png)
 

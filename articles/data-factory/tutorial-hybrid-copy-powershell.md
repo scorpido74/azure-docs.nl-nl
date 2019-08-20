@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 49d9be9f10f0e840cfa3d027901a297de8cbf750
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 87b32fdef449945b1e8facac2ac5a51b4ef67972
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328158"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617555"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Zelfstudie: Gegevens van een on-premises SQL-serverdatabase naar Azure Blob Storage kopiëren
 In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te maken waarmee gegevens worden gekopieerd van een on-premises SQL Server-database naar een Azure Blob-opslag. U gaat een zelf-hostende Integration Runtime maken en gebruiken. Deze verplaatst gegevens van on-premises gegevensarchieven en gegevensarchieven in de cloud en omgekeerd. 
@@ -82,8 +82,6 @@ In deze QuickStart gaat u de naam en sleutel van uw Azure Storage-account gebrui
 
 1. Selecteer in het venster **Opslagaccount** de optie **Toegangssleutels**.
 
-    ![De naam en sleutel van het opslagaccount ophalen](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
-
 1. Kopieer de waarden in de vakken **opslagaccountnaam** en **key1** en plak deze in Kladblok of een andere editor voor later gebruik in de zelfstudie. 
 
 #### <a name="create-the-adftutorial-container"></a>De container adftutorial maken 
@@ -99,7 +97,7 @@ In deze sectie maakt u in uw Azure Blob Storage een blobcontainer met de naam **
 
 1. Voer in het venster **Nieuwe container** in het vak **Naam** **adftutorial** in en selecteer **OK**. 
 
-    ![Naam van container invoeren](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
+    ![Containernaam invoeren](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
 1. Selecteer **adftutorial** in de lijst met containers.  
 
@@ -107,9 +105,8 @@ In deze sectie maakt u in uw Azure Blob Storage een blobcontainer met de naam **
 
 1. Houd het venster **Container** voor **adftutorial** geopend. U gaat hiermee aan het einde van deze zelfstudie de uitvoer controleren. In Data Factory wordt automatisch in deze container de uitvoermap gemaakt, zodat u er zelf geen hoeft te maken.
 
-    ![Containervenster](media/tutorial-hybrid-copy-powershell/container-page.png)
 
-### <a name="windows-powershell"></a>Windows Powershell
+### <a name="windows-powershell"></a>Windows PowerShell
 
 #### <a name="install-azure-powershell"></a>Azure PowerShell installeren
 
@@ -135,7 +132,7 @@ Installeer de nieuwste versie van Azure PowerShell als u deze niet al op uw comp
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) (bijvoorbeeld tussen dubbele aanhalingstekens) `"adfrg"`en voer de opdracht uit. 
    
@@ -415,7 +412,7 @@ In deze stap gaat u uw on-premises SQL Server-exemplaar aan de data factory kopp
     > [!IMPORTANT]
     > - Selecteer de sectie op basis van de verificatie die u gebruikt om verbinding te maken met uw SQL Server-exemplaar.
     > - Vervang de **\<naam> van de Integration Runtime** door de naam van uw Integration Runtime.
-    > - Vervang **\<servername>**, **\<databasename>**, **\<username**> en **\<password>** door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
+    > - Vervang **\<servername>** , **\<databasename>** , **\<username**> en **\<password>** door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
     > - Als u een backslash wilt gebruiken (\\) in de naam van uw gebruikersaccount of server, moet u er voor het escapeteken (\\) gebruiken. Gebruik bijvoorbeeld *mydomain\\\\myuser*. 
 
 1. Voor het versleutelen van gevoelige gegevens (gebruikersnaam, wachtwoord, enz.), voer de `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet uit.  

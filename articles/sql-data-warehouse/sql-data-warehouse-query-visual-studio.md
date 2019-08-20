@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: aea2b3229dd793bc31adc0038763e09340a5f85a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534774"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575309"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Verbinding maken met SQL Data Warehouse met Visual Studio en SSDT
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Gebruik Visual Studio om binnen enkele minuten query’s uit te voeren bij Azure
 ## <a name="prerequisites"></a>Vereisten
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een bestaande SQL-datawarehouse. Zie [Een SQL Data Warehouse maken][Create a SQL Data Warehouse] als u er een wilt maken.
+* Een bestaande SQL Data Warehouse. Zie [Een SQL Data Warehouse maken][Create a SQL Data Warehouse] als u er een wilt maken.
 * SSDT voor Visual Studio. Als u Visual Studio hebt, hebt u dit waarschijnlijk al. Voor installatie-instructies en -opties raadpleegt u [Visual Studio en SSDT installeren][Installing Visual Studio and SSDT].
 * De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met SQL Data Warehouse][Connect to SQL Data Warehouse] om dit te vinden.
 

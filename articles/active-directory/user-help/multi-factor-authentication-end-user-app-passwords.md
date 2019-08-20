@@ -1,6 +1,6 @@
 ---
-title: App-wachtwoorden - Azure Active Directory beheren | Microsoft Docs
-description: Meer informatie over app-wachtwoorden en wat ze zijn gebruikt voor met betrekking tot verificatie in twee stappen.
+title: App-wacht woorden beheren-Azure Active Directory | Microsoft Docs
+description: Meer informatie over app-wacht woorden en wat ze worden gebruikt voor met betrekking tot verificatie in twee stappen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -10,117 +10,123 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a9d997f9ced0fbd921abfb13cda5a4845eb3763
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334954"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616290"
 ---
-# <a name="manage-app-passwords-for-two-step-verification"></a>App-wachtwoorden voor verificatie in twee stappen beheren
+# <a name="manage-app-passwords-for-two-step-verification"></a>App-wacht woorden beheren voor verificatie in twee stappen
 
-Bepaalde niet-browsertoepassingen, zoals Outlook 2010, biedt geen ondersteuning voor verificatie in twee stappen. Dit gebrek aan ondersteuning betekent dat als u verificatie in twee stappen, de app werkt niet. Als u lost dit probleem, kunt u een automatisch gegenereerd wachtwoord gebruiken met elke niet-browser-app, los van uw normale wachtwoord maken.
+>[!Important]
+>Uw beheerder staat mogelijk niet toe dat u app-wacht woorden gebruikt. Als u app- **wacht woorden** niet ziet als een optie, zijn ze niet beschikbaar in uw organisatie.
 
-Wanneer u app-wachtwoorden, is het belangrijk om te onthouden:
+Wanneer u app-wacht woorden gebruikt, is het belang rijk om het volgende te onthouden:
 
-- App-wachtwoorden zijn automatisch gegenereerd en slechts één keer per app worden opgegeven.
+- App-wacht woorden worden automatisch gegenereerd en eenmaal per app ingevoerd.
 
-- Er is een limiet van 40 wachtwoorden per gebruiker. Als u probeert een na deze limiet te maken, wordt u gevraagd om te verwijderen van een bestaand wachtwoord naar de nieuwe maken te mogen.
+- Er is een limiet van 40 wacht woorden per gebruiker. Als u later een van deze limieten probeert te maken, wordt u gevraagd een bestaand wacht woord te verwijderen voordat u de nieuwe kunt maken.
 
-- Gebruik één appwachtwoord per apparaat, niet per app. Maak bijvoorbeeld een enkel wachtwoord voor alle apps op uw laptop en vervolgens op een andere enkel wachtwoord voor alle apps op uw bureaublad.
+- Gebruik één app-wacht woord per apparaat, niet per app. U kunt bijvoorbeeld één wacht woord maken voor alle apps op uw laptop en vervolgens een ander wacht woord voor alle apps op uw bureau blad.
 
     >[!Note]
-    >Nieuwe verificatieprotocollen worden ondersteund door Office 2013 clients (inclusief Outlook) en kan worden gebruikt met verificatie in twee stappen. Deze ondersteuning betekent dat na verificatie in twee stappen is ingeschakeld, niet meer u app-wachtwoorden voor Office 2013 clients moet. Zie voor meer informatie de [hoe moderne verificatie werkt voor client-apps voor Office 2013 en Office 2016](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) artikel.
+    >Office 2013-clients (inclusief Outlook) ondersteunen nieuwe verificatie protocollen en kunnen worden gebruikt met verificatie in twee stappen. Deze ondersteuning betekent dat als u verificatie in twee stappen hebt ingeschakeld, u geen app-wacht woorden meer nodig hebt voor Office 2013-clients. Zie voor meer informatie het artikel [hoe moderne verificatie werkt voor office 2013-en office 2016-client-apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .
 
-## <a name="where-to-create-and-delete-your-app-passwords"></a>Waar u wilt maken en uw app-wachtwoorden verwijderen
+## <a name="create-new-app-passwords"></a>Nieuwe app-wacht woorden maken
 
-Tijdens het registreren van uw initiële verificatie in twee stappen controle krijgt u een app-wachtwoord. Als u meer dan één wachtwoord nodig hebt, kunt u aanvullende wachtwoorden, op basis van hoe u verificatie in twee stappen:
+Tijdens het eerste registratie proces voor twee ledige verificatie wordt u met één app-wacht woord opgegeven. Als u meer dan één nodig hebt, moet u ze zelf maken. U kunt app-wacht woorden maken op basis van meerdere gebieden, afhankelijk van de instelling van twee ledige verificatie in uw organisatie. Zie [overzicht voor twee ledige verificatie en uw werk-of school account](multi-factor-authentication-end-user-first-time.md) en de bijbehorende artikelen voor meer informatie over het registreren van het gebruik van twee ledige verificatie met uw werk-of school account.
 
-- **U verificatie in twee stappen gebruiken met uw werk of school-account en de MyApps-portal.** Maken en verwijderen van uw app-wachtwoorden van de instructies in het maken en verwijderen van app-wachtwoorden via de MyApps-portal-sectie van dit artikel. Zie voor meer informatie over de MyApps-portal en het gebruik ervan [wat is de MyApps-portal in Azure Active Directory?](active-directory-saas-access-panel-introduction.md).
+### <a name="where-to-create-and-delete-your-app-passwords"></a>Waar u uw app-wacht woorden kunt maken en verwijderen?
 
-- **U verificatie in twee stappen gebruiken met uw werk of school-account en de Office 365-portal.** Maken en verwijderen van uw app-wachtwoorden met behulp van de instructies in de [maken en verwijderen app-wachtwoorden met behulp van de Office 365-portal](#create-and-delete-app-passwords-using-the-office-365-portal) sectie van dit artikel.
+U kunt app-wacht woorden maken en verwijderen op basis van de manier waarop u twee ledige verificatie gebruikt:
 
-- **U verificatie in twee stappen gebruiken met uw persoonlijke Microsoft-account.** Maken en verwijderen van uw app-wachtwoorden met behulp van de [basisprincipes van beveiliging](https://account.microsoft.com/account/) pagina aan uw persoonlijke Microsoft-account. Zie voor meer informatie de [App-wachtwoorden en verificatie in twee stappen](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) artikel.
+- **Uw organisatie gebruikt twee ledige verificatie en de extra beveiligings verificatie pagina.** Als u uw werk-of school account (zoals alain@contoso.com) gebruikt met twee ledige verificatie in uw organisatie, kunt u uw app-wacht woorden beheren via de [pagina aanvullende beveiligings verificatie](https://account.activedirectory.windowsazure.com/Proofup.aspx). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met de extra beveiligings verificatie pagina](#create-and-delete-app-passwords-from-the-additional-security-verification-page) in dit artikel.
 
-## <a name="create-and-delete-app-passwords-using-the-myapps-portal"></a>Maken en verwijderen van app-wachtwoorden met behulp van de MyApps-portal
-U kunt maken en verwijderen van app-wachtwoorden via de MyApps-portal.
+- **Uw organisatie gebruikt twee ledige verificatie en de Office 365-Portal.** Als u uw werk-of school account gebruikt (zoals, alain@contoso.com), twee ledige verificatie en Office 365-apps in uw organisatie, kunt u uw app-wacht woorden beheren via de pagina van de [Office 365-Portal](https://office.portal.com). Zie voor gedetailleerde instructies [app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) in dit artikel.
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>Het maken van een app-wachtwoord met behulp van de MyApps-portal
+- **U gebruikt twee ledige verificatie met een persoonlijke Microsoft-account.** Als u een persoonlijke Microsoft-account gebruikt (zoals, alain@outlook.com) met verificatie op basis van twee factoren, kunt u uw app-wacht woorden beheren op de pagina met [beveiligings beginselen](https://account.microsoft.com/security/). Voor gedetailleerde instructies raadpleegt [u app-wacht woorden gebruiken met apps die geen ondersteuning bieden voor verificatie in twee stappen](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
-1. Meld u aan bij [https://myapps.microsoft.com](https://myapps.microsoft.com).
+## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>App-wacht woorden maken en verwijderen op de pagina aanvullende beveiligings verificatie
 
-2. Selecteer uw naam rechtsboven en kies **profiel**.
+U kunt app-wacht woorden maken en verwijderen op de pagina **aanvullende beveiligings verificatie** voor uw werk-of school account.
 
-3. Selecteer **aanvullende beveiligingsverificatie**.
+1. Meld u aan bij de [aanvullende beveiligings verificatie pagina](https://account.activedirectory.windowsazure.com/Proofup.aspx)en selecteer vervolgens **app-wacht woorden**.
 
-   ![Selecteer aanvullende beveiligingsverificatie - schermafbeelding](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+    ![Pagina app-wacht woorden, met het tabblad app-wacht woorden gemarkeerd](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
 
-4. Selecteer **App-wachtwoorden**.
+2. Selecteer **maken**, typ de naam van de app waarvoor het app-wacht woord is vereist en selecteer **volgende**.
 
-   ![Selecteer de app-wachtwoorden - schermafbeelding](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
+    ![Pagina app-wacht woorden maken, met de naam van de app waarvoor het wacht woord is vereist](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
 
-5. Klik op **Create**.
+3. Kopieer het wacht woord van de pagina **uw app-wacht woord** en selecteer vervolgens **sluiten**.
 
-6. Typ een naam voor het app-wachtwoord en selecteer vervolgens **volgende**.
+    ![Uw app-wacht woord pagina met het wacht woord voor uw opgegeven app](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
 
-7. Het app-wachtwoord kopiëren naar het Klembord en plak deze in uw app.
-   
-    ![Een app-wachtwoord maken](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+4. Controleer op de pagina **app-wacht woorden** of uw app wordt weer gegeven.
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Verwijderen van een app-wachtwoord met behulp van de MyApps-portal
+     ![Pagina app-wacht woorden, met een nieuwe app die in de lijst wordt weer gegeven](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
-1. Ga naar uw profiel, en selecteer vervolgens **aanvullende beveiligingsverificatie**.
+5. Open de app waarvoor u het app-wacht woord hebt gemaakt (bijvoorbeeld Outlook 2010) en plak het app-wacht woord wanneer u daarom wordt gevraagd. U hoeft dit slechts één keer per app uit te voeren.
 
-2. Selecteer **App-wachtwoorden**, en selecteer vervolgens **verwijderen** naast het app-wachtwoord die u wilt verwijderen.
+### <a name="to-delete-an-app-password-using-the-app-passwords-page"></a>Een app-wacht woord verwijderen met de pagina app-wacht woorden
 
-   ![Verwijderen van een app-wachtwoord](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+1. Selecteer op de pagina **app-wacht woorden** **verwijderen** naast het app-wacht woord dat u wilt verwijderen.
 
-3. Selecteer **Ja** om te bevestigen dat u wilt verwijderen van het wachtwoord en selecteer vervolgens **sluiten**.
+   ![Een app-wacht woord verwijderen](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
-## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Maken en verwijderen van app-wachtwoorden met behulp van de Office 365-portal
+2. Selecteer **Ja** om te bevestigen dat u het wacht woord wilt verwijderen en selecteer vervolgens **sluiten**.
 
-Als u verificatie in twee stappen met uw werk of school-account en uw Office 365-apps gebruikt, kunt u maken en verwijderen van uw app-wachtwoorden met behulp van de Office 365-portal. U kunt maximaal 40 app-wachtwoorden hebben op elk willekeurig moment. Als u een andere app-wachtwoord na deze limiet moet, hebt u een van uw bestaande appwachtwoorden verwijderen.
+    Het app-wacht woord is verwijderd.
 
-### <a name="to-create-app-passwords-using-the-office-365-portal"></a>App-wachtwoorden met behulp van de Office 365-portal maken
+## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>App-wacht woorden maken en verwijderen met behulp van de Office 365-Portal
 
-1. Meld u aan bij uw werk- of schoolaccount.
+Als u verificatie in twee stappen gebruikt met uw werk-of school account en uw Office 365-apps, kunt u uw app-wacht woorden maken en verwijderen met behulp van de Office 365-Portal.
 
-2. Ga naar [ https://portal.office.com ](https://portal.office.com), selecteer de **instellingen** pictogram in de rechterbovenhoek van de **Office 365-portal** pagina uit en vouw vervolgens **extra beveiliging verificatie**.
+### <a name="to-create-app-passwords-using-the-office-365-portal"></a>App-wacht woorden maken met behulp van de Office 365-Portal
 
-    ![Office-portal met extra beveiliging verificatie gebied uitgevouwen](media/security-info/security-info-o365password.png)
+1. Meld u aan bij Office 365 en ga naar de [pagina Mijn account](https://portal.office.com), selecteer **Beveiliging & privacy**en vouw vervolgens **extra beveiligings verificatie**uit.
 
-3. Selecteer de tekst waarin wordt gemeld, **maken en beheren van app-wachtwoorden** te openen de **app-wachtwoorden** pagina.
+    ![Office-Portal met uitgebreid extra beveiligings verificatie gebied](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
 
-4. Selecteer **maken**, typ een beschrijvende naam voor de app die de app-wachtwoord nodig, en selecteer vervolgens **volgende**.
+2. Selecteer de tekst waarin wordt vermeld, **Maak en beheer app-wacht woorden** om de pagina **app-wacht woorden** te openen.
 
-5. Selecteer **wachtwoord naar Klembord kopiëren**, en selecteer vervolgens **sluiten**.
+    ![Pagina app-wacht woorden, met het tabblad app-wacht woorden gemarkeerd](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
 
-6. Gebruik het gekopieerde app-wachtwoord aanmelden bij uw niet-browser-app. U hoeft alleen één keer wachtwoord invoeren en deze voor de toekomst wordt onthouden.
+3. Selecteer **maken**, typ de naam van de app waarvoor het app-wacht woord is vereist en selecteer **volgende**.
 
-### <a name="to-delete-app-passwords-using-the-office-365-portal"></a>Verwijderen van app-wachtwoorden met behulp van de Office 365-portal
+    ![Pagina app-wacht woorden maken, met de naam van de app waarvoor het wacht woord is vereist](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
 
-1. Meld u aan bij uw werk- of schoolaccount.
+4. Kopieer het wacht woord van de pagina **uw app-wacht woord** en selecteer vervolgens **sluiten**.
 
-2. Ga naar [ https://portal.office.com ](https://portal.office.com), selecteer de **instellingen** pictogram in de rechterbovenhoek van de **Office 365-portal** pagina en selecteer vervolgens **extra beveiliging verificatie**.
+    ![Uw app-wacht woord pagina met het wacht woord voor uw opgegeven app](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
 
-3. Selecteer de tekst waarin wordt gemeld, **maken en beheren van app-wachtwoorden** te openen de **app-wachtwoorden** pagina.
+5. Controleer op de pagina **app-wacht woorden** of uw app wordt weer gegeven.
 
-4. Selecteer **verwijderen** voor het app-wachtwoord wilt verwijderen, selecteert u **Ja** in het bevestigingsvenster en selecteer vervolgens **sluiten**.
+     ![Pagina app-wacht woorden, met een nieuwe app die in de lijst wordt weer gegeven](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
-    Het app-wachtwoord is verwijderd.
+6. Open de app waarvoor u het app-wacht woord hebt gemaakt (bijvoorbeeld Outlook 2010) en plak het app-wacht woord wanneer u daarom wordt gevraagd. U hoeft dit slechts één keer per app uit te voeren.
 
-5. Volg de stappen voor het maken van een app-wachtwoord voor het maken van uw nieuwe app-wachtwoord.
+### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>App-wacht woorden verwijderen met de pagina app-wacht woorden
 
-## <a name="if-your-app-passwords-arent-working-properly"></a>Als uw app-wachtwoorden niet goed werken
+1. Selecteer op de pagina **app-wacht woorden** **verwijderen** naast het app-wacht woord dat u wilt verwijderen.
 
-Zorg ervoor dat u uw wachtwoord correct hebt ingevoerd. Als u zeker dat u uw wachtwoord juist hebt ingevoerd, kunt u proberen opnieuw aan te melden en een nieuw app-wachtwoord maken. Als geen van deze opties voor uw probleem wordt verholpen, contact op met het ondersteuningsteam van uw bedrijf, zodat ze uw bestaande app-wachtwoorden, zodat u kunt een gloednieuwe maken kunnen verwijderen. 
+   ![Een app-wacht woord verwijderen](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+
+2. Selecteer **Ja** in het bevestigings venster en selecteer vervolgens **sluiten**.
+
+    Het app-wacht woord is verwijderd.
+
+## <a name="if-your-app-passwords-arent-working-properly"></a>Als uw app-wacht woorden niet goed werken
+
+Zorg ervoor dat u het wacht woord correct hebt getypt. Als u zeker weet dat u uw wacht woord correct hebt ingevoerd, kunt u proberen zich opnieuw aan te melden en een nieuw app-wacht woord te maken. Als geen van deze opties uw probleem verhelpen, neemt u contact op met de Help Desk van uw organisatie zodat ze uw bestaande app-wacht woorden kunnen verwijderen, zodat u gloed nieuwe maakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [De verificatie-instellingen voor verificatie in twee stappen beheren](multi-factor-authentication-end-user-manage-settings.md)
+- [De instellingen voor verificatie in twee stappen beheren](multi-factor-authentication-end-user-manage-settings.md)
 
-- Probeer de [Microsoft Authenticator-app](user-help-auth-app-download-install.md) om te controleren of uw aanmeldingen met app-meldingen, in plaats van tekst of aanroepen ontvangen.
+- Probeer de [Microsoft Authenticator-app](user-help-auth-app-download-install.md) uit om uw aanmeldingen met app-meldingen te verifiëren in plaats van teksten of aanroepen te ontvangen.

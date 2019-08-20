@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619810"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616935"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulksgewijs executor Java-clientbibliotheek gebruiken om te bulksgewijs bewerkingen uitvoeren op Azure Cosmos DB-gegevens
 
-In deze zelfstudie vindt u instructies over het gebruik van de Azure Cosmos DB bulksgewijs executor Java-bibliotheek voor het importeren en bijwerken van Azure Cosmos DB-documenten. Zie voor meer informatie over het bulksgewijs executor-bibliotheek en hoe Hiermee kunt u gebruikmaken van de enorme doorvoer en opslag, [bulk-overzicht van de bibliotheek executor](bulk-executor-overview.md) artikel. In deze zelfstudie, u een Java-toepassing die wordt gegenereerd willekeurige documenten maken en ze zijn bulksgewijs geïmporteerd in een Azure Cosmos DB-container. Na het importeren wordt u bulksgewijs sommige eigenschappen van een document bij te werken. 
+In deze zelfstudie vindt u instructies over het gebruik van de Azure Cosmos DB bulksgewijs executor Java-bibliotheek voor het importeren en bijwerken van Azure Cosmos DB-documenten. Zie voor meer informatie over het bulksgewijs executor-bibliotheek en hoe Hiermee kunt u gebruikmaken van de enorme doorvoer en opslag, [bulk-overzicht van de bibliotheek executor](bulk-executor-overview.md) artikel. In deze zelf studie bouwt u een Java-toepassing die wille keurige documenten genereert en deze worden bulksgewijs geïmporteerd in een Azure Cosmos-container. Na het importeren wordt u bulksgewijs sommige eigenschappen van een document bij te werken. 
 
 Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteund door Azure Cosmos DB-API-accounts voor SQL-API'S en Gremlin. In dit artikel wordt beschreven hoe u een bulk-uitvoerder Java-bibliotheek met SQL API-accounts gebruikt. Zie voor meer informatie over het gebruik van grote hoeveelheden executor .NET-bibliotheek met Gremlin-API, [bulksgewijs bewerkingen uitvoeren in Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md).
 
@@ -88,7 +88,7 @@ De gekloonde opslagplaats bevat twee voorbeelden "bulkimport" en "bulkupdate" te
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Roep de importAll API waarmee willekeurige documenten om te importeren in een Azure Cosmos DB-container bulksgewijs worden gegenereerd. U kunt de opdrachtregel-configuraties in het bestand CmdLineConfiguration.java configureren.
+4. Roep de importal API aan waarmee wille keurige documenten worden gegenereerd om bulksgewijs te importeren in een Azure Cosmos-container. U kunt de opdrachtregel-configuraties in het bestand CmdLineConfiguration.java configureren.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ U kunt bestaande documenten met behulp van de API BulkUpdateAsync bijwerken. In 
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Roep de updateAll API waarmee willekeurige documenten die moeten worden vervolgens geïmporteerd in een Azure Cosmos DB-container bulksgewijs worden gegenereerd. U kunt de opdrachtregel configuraties moeten worden doorgegeven in CmdLineConfiguration.java bestand configureren.
+2. Roep de updateAll-API aan waarmee wille keurige documenten worden gegenereerd die vervolgens bulksgewijs worden geïmporteerd in een Azure Cosmos-container. U kunt de opdrachtregel configuraties moeten worden doorgegeven in CmdLineConfiguration.java bestand configureren.
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ Houd rekening met de volgende punten voor betere prestaties bij het gebruik van 
    * Grootte van de heap van JVM ingesteld op een aantal groot genoeg is om te voorkomen dat een probleem met geheugen bij het verwerken van grote aantal documenten. Heap-grootte aanbevolen: max (3GB, 3 * sizeof (alle documenten die worden doorgegeven aan bulksgewijs importeren API in één batch)).  
    * Er is een voorverwerking tijd, dit ontvangt u een hogere doorvoer bij het uitvoeren van bulkbewerkingen met een groot aantal documenten. Dus als u importeren 10.000.000 documenten wilt, is waarop bulkimport 10 keer 10 bulksgewijs documenten elk van de grootte van 1.000.000 beter dan het uitvoeren van bulkimport 100 keer op 100 bulksgewijs documenten elk van de grootte van 100.000 documenten.  
 
-* Het verdient aanbeveling om een enkele DocumentBulkExecutor-object voor de gehele toepassing binnen een enkele virtuele machine die overeenkomt met een specifieke Azure Cosmos DB-container te maken.  
+* Het is raadzaam om één DocumentBulkExecutor-object voor de hele toepassing te instantiëren binnen één virtuele machine die overeenkomt met een specifieke Azure Cosmos-container.  
 
 * Omdat de uitvoering van een enkele bulksgewijs bewerking API een grote hoeveelheid CPU- en IO van de client-computer verbruikt. Dit gebeurt door bij het maken van meerdere taken intern, te voorkomen dat bij het maken van meerdere gelijktijdige taken binnen uw het toepassingsproces dat elke uitvoering bulksgewijze bewerking API-aanroepen. Als een enkel bulksgewijs bewerking API-aanroep die wordt uitgevoerd op een enkele virtuele machine niet kan gebruiken voor uw hele containerdoorvoer (als uw container doorvoer > 1 miljoen RU/s), is het beter om te maken van afzonderlijke virtuele machines voor het gelijktijdig uitvoeren van bulksgewijs bewerking API-aanroepen.
 

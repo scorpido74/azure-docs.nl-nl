@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031042"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613021"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure-AD-toepassingsproxy implementeren op een Azure AD Domain Services beheerd domein
 Azure Active Directory (AD)-toepassings proxy helpt u externe werk nemers te ondersteunen door on-premises toepassingen te publiceren voor toegang via internet. Met Azure AD Domain Services kunt u nu oudere toepassingen die on-premises worden uitgevoerd, verplaatsen naar Azure-infrastructuur services. U kunt deze toepassingen vervolgens publiceren met behulp van de Azure-AD-toepassingsproxy om veilige externe toegang te bieden aan gebruikers in uw organisatie.
@@ -35,7 +35,7 @@ Voor het uitvoeren van de taken die in dit artikel worden vermeld, hebt u het vo
 1. Een geldig **Azure-abonnement**.
 2. Een **Azure AD-Directory** : gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
 3. Een **Azure AD Premium licentie** is vereist voor het gebruik van de Azure AD-toepassingsproxy.
-4. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](create-instance.md)worden beschreven.
+4. **Azure AD Domain Services** moet zijn ingeschakeld voor de Azure AD-adres lijst. Als u dit nog niet hebt gedaan, volgt u alle taken die in de aan de slag- [hand leiding](tutorial-create-instance.md)worden beschreven.
 
 <br>
 
@@ -114,18 +114,18 @@ Gebruik op resources gebaseerde KCD zoals beschreven in dit [artikel](deploy-kcd
 
 Gebruik de Power shell-cmdlet Get-ADComputer om de instellingen op te halen voor de computer waarop de Azure AD-toepassingsproxy-connector is geïnstalleerd.
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 Vervolgens gebruikt u de cmdlet Set-ADComputer om KCD op basis van resources in te stellen voor de bron server.
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 Als u meerdere connectors voor toepassings proxy hebt geïmplementeerd op uw beheerde domein, moet u op resources gebaseerde KCD configureren voor elk van deze connector exemplaren.
 
 
 ## <a name="related-content"></a>Gerelateerde inhoud
-* [Azure AD Domain Services aan de slag-hand leiding](create-instance.md)
+* [Azure AD Domain Services aan de slag-hand leiding](tutorial-create-instance.md)
 * [Beperkte Kerberos-delegering configureren voor een beheerd domein](deploy-kcd.md)
 * [Overzicht van beperkte Kerberos-overdracht](https://technet.microsoft.com/library/jj553400.aspx)

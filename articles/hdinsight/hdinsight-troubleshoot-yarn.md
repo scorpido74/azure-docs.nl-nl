@@ -4,24 +4,24 @@ description: Vind antwoorden op veelgestelde vragen over het werken met Apache H
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 8396f682558b71ca99af845bd51f7b2c8059f79b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072017"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69573703"
 ---
-# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Apache Hadoop YARN oplossen met behulp van Azure HDInsight
+# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop GARENs oplossen met behulp van Azure HDInsight
 
 Meer informatie over de meest voorkomende problemen en hun oplossingen als u werkt met Apache Hadoop YARN-nettoladingen in Apache Ambari.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Hoe maak ik een nieuwe YARN-wachtrij op een cluster?
 
-### <a name="resolution-steps"></a>Oplossingen 
+### <a name="resolution-steps"></a>Oplossingen
 
-De volgende stappen uit in Ambari gebruiken om te maken van een nieuwe YARN-wachtrij en vervolgens de capaciteitstoewijzing tussen alle wachtrijen in balans brengen. 
+De volgende stappen uit in Ambari gebruiken om te maken van een nieuwe YARN-wachtrij en vervolgens de capaciteitstoewijzing tussen alle wachtrijen in balans brengen.
 
 In dit voorbeeld twee bestaande wachtrijen (**standaard** en **thriftsvr**) beide worden gewijzigd van 50% capaciteit aan 25% capaciteit, waardoor de nieuwe capaciteit van de wachtrij (spark)-50%.
 
@@ -59,21 +59,20 @@ Deze wijzigingen zijn zichtbaar onmiddellijk op de gebruikersinterface van YARN 
 
 ### <a name="additional-reading"></a>Meer lezen
 
-- [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
-
+- [Apache Hadoop garen CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Hoe kan ik YARN-logboeken downloaden uit een cluster?
-
 
 ### <a name="resolution-steps"></a>Oplossingen 
 
 1. Verbinding maken met het HDInsight-cluster met behulp van een Secure Shell (SSH)-client. Zie voor meer informatie, [meer lezen](#additional-reading-2).
 
-2. Als u de toepassing-id's voor de YARN-toepassingen die momenteel worden uitgevoerd, moet u de volgende opdracht uitvoeren:
+1. Als u de toepassing-id's voor de YARN-toepassingen die momenteel worden uitgevoerd, moet u de volgende opdracht uitvoeren:
 
     ```apache
     yarn top
     ```
+
     De id's worden vermeld in de **APPLICATIONID** kolom. U kunt Logboeken downloaden de **APPLICATIONID** kolom.
 
     ```apache
@@ -89,51 +88,57 @@ Deze wijzigingen zijn zichtbaar onmiddellijk op de gebruikersinterface van YARN 
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. YARN-container om Logboeken te downloaden voor alle toepassingen masters, gebruik de volgende opdracht:
-   
+1. YARN-container om Logboeken te downloaden voor alle toepassingen masters, gebruik de volgende opdracht:
+
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Deze opdracht maakt een logboekbestand met de naam amlogs.txt. 
+    Deze opdracht maakt een logboekbestand met de naam amlogs.txt.
 
-4. Als u wilt downloaden YARN-logboeken voor containers voor de meest recente toepassing master, gebruik de volgende opdracht:
+1. Als u wilt downloaden YARN-logboeken voor containers voor de meest recente toepassing master, gebruik de volgende opdracht:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Deze opdracht maakt een logboekbestand met de naam latestamlogs.txt. 
+    Deze opdracht maakt een logboekbestand met de naam latestamlogs.txt.
 
-4. Als u wilt downloaden YARN-logboeken voor containers voor de eerste twee toepassing masters, gebruik de volgende opdracht:
+1. Als u wilt downloaden YARN-logboeken voor containers voor de eerste twee toepassing masters, gebruik de volgende opdracht:
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Deze opdracht maakt een logboekbestand met de naam first2amlogs.txt. 
+    Deze opdracht maakt een logboekbestand met de naam first2amlogs.txt.
 
-5. Gebruik de volgende opdracht voor het downloaden van alle YARN-logboeken voor containers:
+1. Gebruik de volgende opdracht voor het downloaden van alle YARN-logboeken voor containers:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Deze opdracht maakt een logboekbestand met de naam logs.txt. 
+    Deze opdracht maakt een logboekbestand met de naam logs.txt.
 
-6. Gebruik de volgende opdracht voor het downloaden van de container YARN-logboek voor een specifieke container:
+1. Gebruik de volgende opdracht voor het downloaden van de container YARN-logboek voor een specifieke container:
 
     ```apache
-    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
+    yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
     Deze opdracht maakt een logboekbestand met de naam containerlogs.txt.
 
 ### <a name="additional-reading-2"></a>Meer lezen
 
-- [Verbinding maken met HDInsight (Apache Hadoop) via SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Verbinding maken met HDInsight (Apache Hadoop) met behulp van SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN-concepten en toepassingen](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
+## <a name="next-steps"></a>Volgende stappen
 
-### <a name="see-also"></a>Zie ook
-[Problemen oplossen met behulp van Azure HDInsight](hdinsight-troubleshoot-guide.md)
+Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+
+- Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
+
+- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de ondersteunings [abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

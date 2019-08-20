@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949824"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616149"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>De instellingen voor de verificatie methode met twee factoren beheren
 
@@ -135,6 +135,10 @@ Afhankelijk van de instellingen van uw organisatie ziet u mogelijk een selectie 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Tips voor het oplossen van problemen en Help-informatie over [problemen met twee ledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)
+Nadat u uw twee ledige verificatie-instellingen hebt toegevoegd of bijgewerkt, kunt u uw app-wacht woorden beheren, aanmelden of hulp krijgen bij enkele veelvoorkomende problemen met twee ledige verificatie.
 
 - [App-wacht woorden beheren voor twee ledige verificatie](multi-factor-authentication-end-user-app-passwords.md) voor alle apps die geen ondersteuning bieden voor twee ledige verificatie.
+
+- [Aanmelden met twee ledige verificatie](multi-factor-authentication-end-user-signin.md)
+
+- [Hulp krijgen bij twee ledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)

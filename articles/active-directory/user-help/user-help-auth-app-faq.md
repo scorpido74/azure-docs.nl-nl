@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8786a99f012124848b02eb3db0c2a2e32ff01594
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c65192501f5cfa075ddb6a27369587de2952f38a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382392"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616035"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Veelgestelde vragen over Microsoft Authenticator-apps
 
@@ -54,7 +54,7 @@ De app Microsoft Authenticator vervangt de Azure Authenticator app en de aanbevo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u problemen ondervindt met het verkrijgen van uw verificatie code voor uw persoonlijke Microsoft-account, raadpleegt u de sectie **problemen met verificatie code oplossen** van het artikel [Microsoft-account Security Info & verificatie codes](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) .
+- Als u problemen ondervindt met het verkrijgen van uw verificatie code voor uw persoonlijke Microsoft-account, raadpleegt u de sectie **problemen met verificatie code oplossen** van het artikel [Microsoft-account Security Info & verificatie codes](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) .
 
 - Als u meer informatie wilt over verificatie in twee stappen, raadpleegt u [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md)
 

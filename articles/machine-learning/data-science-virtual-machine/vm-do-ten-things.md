@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2af65dbae59774ed718d58f055158e61f15e2198
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557494"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575105"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u dit op de Windows Data Science Virtual Machine doen kunt
 
@@ -54,7 +54,7 @@ In dit artikel leert u hoe u uw DSVM voor verschillende data science-taken uitvo
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Gegevens verkennen en ontwikkelen van modellen met behulp van Microsoft ML Server of Python
+## <a name="1-explore-data--develop-models-with-microsoft-ml-server"></a>1. Gegevens verkennen & modellen ontwikkelen met micro soft ML Server
 Talen als R en Python kunt u uw gegevens analyseren op de DSVM.
 
 Voor R, kunt u een IDE zoals RStudio die kan worden gevonden in het startmenu of het bureaublad of R-hulpprogramma's voor Visual Studio. Microsoft heeft opgegeven, aanvullende bibliotheken boven op de Open-source/CRAN-R om schaalbare analyses en de mogelijkheid voor het analyseren van gegevens die groter is dan de geheugengrootte die is toegestaan door het uitvoeren van parallelle gesegmenteerde analyse te schakelen. 
@@ -73,7 +73,7 @@ Zie de [documentatie bij PTVS](https://aka.ms/ptvsdocs) voor meer informatie ove
 
 Nu u worden ingesteld om een nieuwe Python-project te maken. Navigeer naar **bestand** -> **nieuw** -> **Project** -> **Python** en selecteer het type Python-toepassing die u wilt maken. U kunt de Python-omgeving voor het huidige project instellen op de gewenste versie (Python 2.7 of 3.6) met de rechtermuisknop te klikken op de **Python-omgevingen**, Klik daarvoor **Python-omgevingen toevoegen/verwijderen**, en vervolgens de gewenste omgeving verzamelen. U vindt meer informatie over het werken met PTVS in het product [documentatie](https://aka.ms/ptvsdocs).
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Met behulp van een Jupyter-Notebook om te verkennen en modelleren van uw gegevens met Python of R
+## <a name="2-use-jupyter-notebooks"></a>2. Jupyter-notebooks gebruiken
 De Jupyter-Notebook is een krachtige omgeving die voorziet in een browser gebaseerde "IDE' gegevens verkennen en modelleren. U kunt Python 2, 3 van Python of R (Open Source en het Microsoft R Server) gebruiken in een Jupyter-Notebook.
 
 Als u wilt de Jupyter-Notebook start, klik op het pictogram van het menu start / pictogram op het bureaublad met de titel **Jupyter-Notebook**. In de opdrachtprompt DSVM kunt u ook de opdracht uitvoeren ```jupyter notebook``` uit de map waar u bestaande laptops hebt of wilt maken van nieuwe notitieblokken.  
@@ -92,7 +92,7 @@ Zodra u Jupyter hebt gestart, ziet u een map met een paar voorbeeld laptops die 
 
 Wanneer u de notebook die u kunt verkennen worden uw gegevens, het model te bouwen, testen van het model met behulp van uw keuze van bibliotheken.
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3. Bouw modellen met behulp van R of Python en neem oplossingen in gebruik met behulp van Azure Machine Learning
+## <a name="3-train--deploy-models-with-azure-machine-learning"></a>3. Modellen trainen & implementeren met Azure Machine Learning
 Nadat u hebt gemaakt en gevalideerd, het model is de volgende stap meestal te implementeren in productie. Hierdoor kan uw client toepassingen om aan te roepen van het modelvoorspellingen op een realtime of op basis van een batch-modus. Azure Machine Learning biedt een mechanisme om een ingebouwd in R of Python-model operationeel te maken.
 
 Wanneer u een operationeel maken van uw model in Azure Machine Learning, wordt een webservice waarmee clients voor REST-aanroepen die invoer parameters doorgeven en voorspellingen uit het model als uitvoer wordt weergegeven.   
@@ -210,19 +210,19 @@ ans = consume(ep, sleepstudy)$ans
 
 Meer informatie over de Azure Machine Learning, R-bibliotheek vindt [hier](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
 
-## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4. Beheren van uw Azure-resources met behulp van Azure portal of Powershell
+## <a name="4-manage-azure-resources"></a>4. Azure-resources beheren
 De DSVM wordt niet alleen kunt u het bouwen van uw analyseoplossing lokaal op de virtuele machine, maar er wordt een ook kunt u toegang tot de cloud van Microsoft Azure-services. Azure biedt diverse compute, storage, data analytics-services en andere services die u kunt beheren en openen vanuit uw DSVM.
 
-Voor het beheren van uw Azure-abonnement en cloud-resources kunt u uw browser gebruiken en wijs de [Azure-portal](https://portal.azure.com). U kunt ook Azure Powershell gebruiken voor het beheren van uw Azure-abonnement en resources via een script.
-U kunt Azure Powershell kunt uitvoeren vanuit een snelkoppeling op het bureaublad of vanuit het startmenu met de titel "Microsoft Azure Powershell." Raadpleeg [documentatie over Microsoft Azure Powershell](../../powershell-azure-resource-manager.md) voor meer informatie over hoe u uw Azure-abonnement en de resources met behulp van Windows Powershell-scripts kunt beheren.
+Als u uw Azure-abonnement en cloud resources wilt beheren, hebt u twee opties:
++ **Azure Portal**: gebruik uw browser en wijs de [Azure Portal](https://portal.azure.com)
 
-## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5. Uitbreiden van uw opslagruimte in met een gedeeld bestandssysteem installeren
++ **Azure Power shell**: Windows Power shell-scripts gebruiken. Voer Azure Power shell uit vanuit een snelkoppeling op het bureau blad of vanuit het menu Start met de titel Microsoft Azure Power shell. Raadpleeg de [Microsoft Azure Power shell-documentatie](../../powershell-azure-resource-manager.md) voor volledige informatie. 
+
+## <a name="5-extend-storage-with-shared-file-systems"></a>5. Opslag uitbreiden met gedeelde bestands systemen
 Gegevenswetenschappers kunnen delen grote gegevenssets, code of andere resources in het team. De DSVM zelf heeft ongeveer 45GB beschikbare ruimte. Om uit te breiden van uw opslag, kunt u de Azure File-Service en een op een of meer exemplaren van de DSVM koppelen of openen via een REST-API.  U kunt ook [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) of gebruik [Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) om toe te voegen extra toegewezen gegevensschijven. 
 
 > [!NOTE]
 > De maximale ruimte van de share Azure File-Service is 5 TB en afzonderlijke maximumbestandsgrootte is 1 TB. 
-> 
-> 
 
 U kunt Azure Powershell gebruiken om een Azure File Service-share te maken. Dit is het script moet worden uitgevoerd in Azure PowerShell voor het maken van een Azure-service-bestandsshare.
 
@@ -258,7 +258,7 @@ net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 Nu kunt u dit station openen als een normale station op de virtuele machine.
 
-## <a name="6-share-code-with-your-team-using-github"></a>6. Deel code met uw team met behulp van GitHub
+## <a name="6-share-code-in-github"></a>6. Code delen in GitHub
 GitHub is een opslagplaats waar u veel voorbeeldcode en bronnen voor verschillende hulpprogramma's met behulp van verschillende technologieën die worden gedeeld door de community van ontwikkelaars kunt vinden. Deze Git gebruikt als de technologie bij te houden en versies van de bestanden opslaat. GitHub is ook een platform waar u uw eigen opslagplaats opslaan van de gedeelde code en de documentatie van uw team, versiebeheer te implementeren en ook beheren die toegang hebben tot het weergeven en indienen code kunt maken. Ga naar de [GitHub help-pagina's](https://help.github.com/) voor meer informatie over het gebruik van Git. U kunt GitHub gebruiken als een van de manieren om samen te werken met uw team, gebruikt u code die door de community zijn ontwikkeld en code terug naar de community bijdragen.
 
 De DSVM is al geladen met clienthulpprogramma's op zowel opdrachtregelprogramma als goed GUI voor toegang tot de GitHub-opslagplaats. Het opdrachtregelprogramma voor het werken met Git en GitHub heet Git Bash. Visual Studio is geïnstalleerd op de DSVM heeft de Git-extensies. U kunt opstarten pictogrammen vinden voor deze hulpprogramma's in het startmenu en het bureaublad.
@@ -273,7 +273,7 @@ In Visual Studio, kunt u de dezelfde kloonbewerking doen. In de volgende scherm 
 
 U vindt meer informatie over het werken met uw GitHub-opslagplaats van verschillende resources beschikbaar op github.com met behulp van Git. De [overzichtskaart](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) is een nuttig verwijzing.
 
-## <a name="7-access-various-azure-data-and-analytics-services"></a>7. Toegang tot verschillende Azure-gegevens en analyses services
+## <a name="7-access-many-azure-data--analytics-services"></a>7. Toegang tot veel Azure Data & Analytics-Services
 ### <a name="azure-blob"></a>Azure Blob
 Azure-blob is een betrouwbare, betaalbare cloudopslag voor gegevens, groot en klein. Deze sectie wordt beschreven hoe u gegevens kunt verplaatsen naar Azure BLOB Storage en toegang tot gegevens die zijn opgeslagen in een Azure-Blob.
 
@@ -851,8 +851,8 @@ Hier volgen de stappen van de per-vereisten voor toegang tot Azure Cosmos DB van
 
 Nadat u de gegevens importeert, kunt u naar Jupyter en open het notitieblok met de titel *DocumentDBSample* die python-code voor toegang tot Azure Cosmos DB en voer enkele eenvoudige query's bevat. U meer informatie over Cosmos DB door naar de service te [documentatiepagina](https://docs.microsoft.com/azure/cosmos-db/).
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Maak rapporten en dashboard met de Power BI Desktop
-U kunt het Vulkaan JSON-bestand uit het vorige voorbeeld Cosmos DB in Power BI voor visuele inzicht in de gegevens visualiseren. Gedetailleerde stappen zijn beschikbaar in de [Power BI-artikel](../../cosmos-db/powerbi-visualize.md). Hier volgen de hoofdstappen:
+## <a name="8-power-bi-reports--dashboards"></a>8. Power BI rapporten &-dash boards 
+U kunt het JSON-bestand van Volcano visualiseren vanuit het voor gaande Cosmos DB voor beeld in Power BI bureau blad om visuele inzichten in de gegevens te krijgen. Gedetailleerde stappen zijn beschikbaar in de [Power BI-artikel](../../cosmos-db/powerbi-visualize.md). Hier volgen de hoofdstappen:
 
 1. Open Power BI Desktop en 'gegevens ophalen." Geef de URL als: https://cahandson.blob.core.windows.net/samples/volcano.json
 2. U ziet de JSON-records worden geïmporteerd als een lijst
@@ -884,7 +884,7 @@ U kunt beginnen het bouwen van rapporten en visualisaties met behulp van het geg
 
 ![Power BI Desktop rapportweergave - Power BI-connector](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9. Dynamisch schalen van uw DSVM om te voldoen aan de projectbehoeften van uw
+## <a name="9-dynamic-dsvm-scaling"></a>9. Dynamische DSVM-schaling 
 U kunt de schaal omhoog en omlaag de DSVM om te voldoen aan de projectbehoeften van uw. Als u niet nodig hebt voor het gebruik van de virtuele machine in het weekend of 's avonds, u kunt alleen de virtuele machine af van de [Azure-portal](https://portal.azure.com).
 
 > [!NOTE]
@@ -898,10 +898,23 @@ Op dezelfde manier als uw behoeften voor de verwerkingscapaciteit van de virtuel
 
 ![Instellingen voor VM-instanties](./media/vm-do-ten-things/VMScaling.PNG)
 
-## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10. Aanvullende hulpprogramma's installeren op uw virtuele machine
+## <a name="10-add-more-tools"></a>10. Meer hulp middelen toevoegen
 Er zijn verschillende hulpprogramma's die vooraf zijn ingebouwd in de DSVM die veel van de algemene gegevens analytics moet kunt oplossen. Dit bespaart u tijd doordat hoeft te installeren en configureren uw omgevingen één voor één en u geld besparen door betaalt alleen voor resources die u gebruikt.
 
 U kunt gebruikmaken van andere Azure data en analyse-services bevatten in dit artikel voor het verbeteren van uw omgeving voor analyse. In sommige gevallen mogelijk wens extra hulpprogramma's, met inbegrip van sommige bedrijfseigen externe hulpprogramma's. U hebt volledige beheerderstoegang op de virtuele machine voor het installeren van nieuwe hulpprogramma's die u nodig hebt. U kunt ook extra pakketten installeren in Python / R die niet vooraf zijn geïnstalleerd. Voor Python kunt u een ```conda``` of ```pip```. Voor R kunt u de ```install.packages()``` in de R-console of gebruik de IDE en kies "**pakketten** -> **pakketten installeren...** ".
+
+## <a name="deep-learning"></a>Deep learning
+
+Naast de voorbeelden framework op basis van is een set van uitgebreide scenario's ook beschikbaar die zijn gevalideerd op de DLVM. Deze scenario's kunt u snel uw ontwikkeling van deep learning-toepassingen in domeinen, zoals afbeeldingen en tekst/language understanding. Meer zelfstudies voor end-to-end in verschillende domeinen en -technologie blijft worden toegevoegd.   
+
+
+- Het [uitvoeren van Neural-netwerken in verschillende Frameworks](https://github.com/ilkarman/DeepLearningFrameworks): Een uitgebreid overzicht waarin wordt uitgelegd hoe u code van het ene naar het andere Framework migreert. Ook zien hoe om te vergelijken model en de prestaties van de tijd van frameworks uitvoeren. 
+
+- [Een hand leiding met instructies voor het bouwen van een end-to-end oplossing voor het detecteren van producten in installatie kopieën](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Image detectie is een techniek waarmee objecten binnen afbeeldingen kunnen worden gevonden en geclassificeerd. Deze technologie is de mogelijkheid om enorme voordelen in veel echte leven domeinen. Bijvoorbeeld, kunnen detailhandelaren deze techniek gebruiken om te bepalen welk product een klant is opgehaald uit de plank. Deze informatie helpt op zijn beurt winkels productinventaris beheren. 
+
+- [Deep learning voor audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) in deze zelfstudie leert u hoe u met het trainen van een deep learning-model voor detectie audio gebeurtenis op de [stedelijke geluiden gegevensset](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) en biedt een overzicht van hoe u met audiogegevens werkt.
+
+- [Classificatie van tekst documenten](https://github.com/anargyri/lstm_han): In dit scenario ziet u hoe u twee verschillende Neural-netwerk architecturen bouwt en traint: Hiërarchische aandacht voor netwerk en LSTM-netwerk (Long Short Term Memory). Deze neurale netwerken voor het gebruik van de Keras-API voor deep learning voor het classificeren van documenten. Keras is een front-end tot drie van de populairste diep gaande lessen: Microsoft Cognitive Toolkit, tensor flow en Theano.
 
 ## <a name="summary"></a>Samenvatting
 Hieronder volgen slechts enkele van de dingen die u dit op de Microsoft Data Science Virtual Machine doen kunt. Er zijn veel meer dingen die u doen kunt om deze een effectieve analytics-omgeving.

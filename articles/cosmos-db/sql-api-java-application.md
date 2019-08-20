@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/22/2018
 ms.author: ramkris
-ms.openlocfilehash: dfb4e40aeed797a55a7b2cabad32d33920547c06
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: bd2894c23e206ed5f49fec8aa169d6ed852df4c6
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479503"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616662"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Een Java-webtoepassing maken met Azure Cosmos DB en de SQL-API
 
@@ -250,7 +250,7 @@ Hiervoor moet u de volgende stappen uitvoeren om het project te converteren naar
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. De verwijzing naar documenten vindt net als bij Azure Cosmos DB-databases en -verzamelingen plaats via self link-elementen. Met de volgende Help-functie kunt u documenten ophalen met een ander kenmerk (bijvoorbeeld 'id') in plaats van een self link-element:
+5. Net als bij Azure Cosmos-data bases en-verzamelingen worden documenten ook verwezen door Self links. Met de volgende Help-functie kunt u documenten ophalen met een ander kenmerk (bijvoorbeeld 'id') in plaats van een self link-element:
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -742,7 +742,7 @@ Alle voorbeelden in deze zelfstudie zijn opgenomen in het [todo](https://github.
 8. Klik in het scherm **Local Destination** (Lokale bestemming) op **Browse** (Bladeren) om een map te selecteren waarnaar de opslag kan worden gekopieerd en klik op **Next** (Volgende).
 9. Zorg er in het scherm **Select a wizard to use for importing projects** (Een wizard selecteren waarmee projecten worden geïmporteerd) voor dat **Import existing projects** (Bestaande projecten selecteren) is geselecteerd en klik op **Next** (Volgende).
 10. Schakel in het scherm **Import Projects** (Projecten importeren) het selectievakje uit voor het **DocumentDB-project** en klik op **Finish** (Voltooien). Het DocumentDB-project bevat de Azure Cosmos DB Java SDK die we in plaats daarvan als een afhankelijkheid zullen toevoegen.
-11. Navigeer in **Projectverkenner** naar azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java en vervang de waarden voor HOST en MASTER_KEY door de URI en PRIMAIRE SLEUTEL voor uw Azure Cosmos DB-account en sla het bestand vervolgens op. Zie [Stap 1: een Azure Cosmos DB-databaseaccount maken](#CreateDB).
+11. Navigeer in **Projectverkenner** naar azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java en vervang de waarden voor HOST en MASTER_KEY door de URI en PRIMAIRE SLEUTEL voor uw Azure Cosmos DB-account en sla het bestand vervolgens op. Zie [Stap 1: Een Azure Cosmos-database account](#CreateDB)maken.
 12. Klik in **Projectverkenner** met de rechtermuisknop op **azure-documentdb-java-sample**, klik op **Opbouwpad** en vervolgens op **Opbouwpad configureren**.
 13. Selecteer in het rechterdeelvenster van het scherm **Java Build Path** (Java-opbouwpad) het tabblad **Libraries** (Bibliotheken) en klik vervolgens op **Add External JARs** (Externe JAR's toevoegen). Navigeer naar de locatie van het bestand lombok.jar en klik op **Open** (Openen) en **OK**.
 14. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Targeted Runtimes** (Beoogde runtimes).

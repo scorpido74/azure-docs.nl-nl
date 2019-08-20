@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018902"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575137"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 > [!div class="op_single_selector"]
@@ -176,11 +176,10 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge�
     Wanneer u uw eigen exemplaar van SQL 2017 gebruikt, moet u SSRS hand matig configureren. Controleer na de configuratie van SSRS of de eigenschap *IsInitialized* van SSRS is ingesteld op *True*. Als deze waarde is ingesteld op True, wordt ervan uitgegaan dat SSRS al is geconfigureerd en wordt de SSRS-configuratie overgeslagen.
 
     Gebruik de volgende waarden voor de SSRS-configuratie: 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - Service account: ' Ingebouwd account gebruiken ' moet netwerk service zijn
+    - URL van webservice: ' Virtuele map ' moet ReportServer_ zijn<SQLInstanceName>
+    - Database: DATABASENAME moet Report Server $<SQLInstanceName>
+    - URL van webportal: ' Virtuele map ' moet Reports_ zijn<SQLInstanceName>
 
     Meer [informatie](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
 
