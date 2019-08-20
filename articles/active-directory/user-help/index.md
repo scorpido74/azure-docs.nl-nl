@@ -11,12 +11,12 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a6908a26e1d513261094be28620c3c9a2d86b48
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a065f275321d16b9eaf82a02cb7da45c15aa82cc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383106"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616321"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Gebruikershulp voor verificatie, apps en apparaatbeheer
 
@@ -92,8 +92,11 @@ We hebben deze inhoud gemaakt om u te helpen aan de slag te gaan en beveiligings
                     <div class="cardText">
                         <h3>Hulp bij verificatie in twee stappen</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time">Verificatie in twee stappen instellen</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-auth-app">Een verificator-app instellen</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-phone-number">Een mobiel apparaat instellen</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-setup-office-phone">Een kantoortelefoon instellen</a><br/>
                         <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-manage-settings">Uw instellingen beheren</a><br/>
+                        <a href="/azure/active-directory/user-help/multi-factor-authentication-end-user-troubleshoot">Hulp bij veelvoorkomende problemen</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-sign-in">Aanmelden</a>
                         </p>
                     </div>

@@ -29,6 +29,8 @@
           items:
             - name: Aan de slag met app-integratie
               href: plan-an-application-integration.md
+            - name: De implementatie van een toegangspaneel plannen
+              href: access-panel-deployment-plan.md
             - name: Begeleiding voor ontwikkelaars
               href: developer-guidance-for-integrating-applications.md
         - name: Eenmalige aanmelding

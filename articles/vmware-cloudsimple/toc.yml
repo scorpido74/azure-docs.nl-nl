@@ -111,15 +111,19 @@
         - name: Virtuele VMware-machines instellen voor de privécloud
           items:
             - name: Een VM in Azure maken
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: VM's in Azure beheren
+              href: azure-manage-vm.md
     - name: Handleidingen
       items:
         - name: Uw omgeving beveiligen
           href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
         - name: Privécloudbeheer
           items:
+            - name: Privécloudmachtigingen escaleren
+              href: escalate-privileges.md
             - name: Workload DNS en DHCP instellen
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
+              href: dns-dhcp-setup.md
             - name: VPN met NSX-laag 2 voor migratie
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
         - name: Privécloudnetwerken
@@ -133,11 +137,11 @@
         - name: VMware-platform
           items:
             - name: Informatie over het machtigingsmodel van de privécloud
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: vCenter-identiteitsbronnen
               href: set-vcenter-identity.md
             - name: Azure Application Gateway met VMware-VM's
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
+              href: azure-application-gateway.md
             - name: vCenter-server van privécloud als vRealize-automatiseringseindpunt configureren
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: Workload-VM's naar een privécloud migreren
@@ -146,8 +150,8 @@
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
         - name: VMware-ecosysteem
           items:
-            - name: Virtuele machines voor back-upworkloads
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+            - name: Back-up maken van workload van virtuele machines
+              href: backup-workloads-veeam.md
             - name: VMware Horizon-oplossingsgids
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: vSAN-versleuteling voor uw privécloud configureren

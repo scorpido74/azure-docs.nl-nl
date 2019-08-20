@@ -4,8 +4,16 @@
   items:
     - name: Overzicht
       href: user-help-two-step-verification-overview.md
-    - name: Mijn account instellen
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: Uw methoden voor verificatie in twee stappen instellen
+      items:
+        - name: Overzicht
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: Een verificator-app instellen
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: Een mobiel apparaat instellen
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: Een kantoortelefoon instellen
+          href: multi-factor-authentication-setup-office-phone.md
     - name: Uw instellingen beheren
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: Help opvragen

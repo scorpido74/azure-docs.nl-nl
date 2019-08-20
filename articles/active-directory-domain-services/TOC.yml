@@ -1,93 +1,80 @@
 - name: Documentatie voor Azure AD Domain Services
   href: index.yml
 - name: Overzicht
-  expanded: true
   items:
     - name: Wat is Azure AD Domain Services?
       href: overview.md
-    - name: Vergelijken met Windows Server AD
-      href: comparison.md
-    - name: Vergelijken met Azure AD Join
-      href: active-directory-ds-compare-with-azure-ad-join.md
-    - name: Functies
-      href: active-directory-ds-features.md
+    - name: Identiteitsservices vergelijken
+      href: compare-identity-solutions.md
+- name: Zelfstudies
+  expanded: true
+  items:
+    - name: Een beheerd domein maken
+      href: tutorial-create-instance.md
+    - name: Deelnemen aan domeinen van een Windows Server-VM
+      href: join-windows-vm.md
+    - name: Beheerhulpprogramma's installeren
+      href: tutorial-create-management-vm.md
+    - name: Secure LDAP configureren
+      href: tutorial-configure-ldaps.md
 - name: Voorbeelden
   items:
     - name: Een Azure AD DS-exemplaar maken met behulp van Azure PowerShell
       href: powershell-create-instance.md
 - name: Concepten
   items:
-    - name: Hoe synchronisatie werkt
+    - name: Hoe Azure AD DS-synchronisatie werkt
       href: synchronization.md
+    - name: Hoe synchronisatie van wachtwoord-hashes werkt
+      href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: What is Azure Active Directory? (Engelstalig)
+      href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Azure Active Directory-architectuur
+      href: ../active-directory/fundamentals/active-directory-architecture.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: Administratieve met minimale bevoegdheden implementeren
+      href: /windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
 - name: Procedures
   items:
-    - name: Een Azure AD DS-exemplaar maken
+    - name: Algemene instellingen configureren
       items:
-        - name: 'Taak 1: de basisinstellingen configureren'
-          href: create-instance.md
-        - name: 'Taak 2: de netwerkinstellingen configureren'
-          href: active-directory-ds-getting-started-network.md
-        - name: 'Taak 3: de beheergroep configureren en Azure AD Domain Services inschakelen'
-          href: active-directory-ds-getting-started-admingroup.md
-        - name: 'Taak 4: de DNS-instellingen voor het virtuele netwerk bijwerken'
-          href: active-directory-ds-getting-started-dns.md
-        - name: 'Taak 5: wachtwoord-hashsynchronisatie inschakelen'
-          href: active-directory-ds-getting-started-password-sync.md
+        - name: Wachtwoord-hashsynchronisatie inschakelen
+          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
+        - name: Bereik voor synchronisatie van Azure AD
+          href: scoped-synchronization.md
+        - name: Een organisatie-eenheid (OU) maken
+          href: create-ou.md
+        - name: Een door een groep beheerd serviceaccount (gMSA) maken
+          href: create-gmsa.md
     - name: Plannen voor Azure AD DS
       items:
-        - name: Scenario's
+        - name: Algemene scenario's
           href: scenarios.md
-        - name: Een virtueel netwerk plannen
+        - name: Overwegingen voor virtuele netwerken
           href: network-considerations.md
     - name: Azure AD DS beheren
       items:
-        - name: Beveiligingscontrolegebeurtenissen inschakelen (preview)
-          href: security-audit-events.md
-        - name: De status van een beheerd domein controleren
-          href: check-health.md
-        - name: Bereik voor synchronisatie van Azure AD naar een beheerd domein configureren
-          href: scoped-synchronization.md
-        - name: Uw beheerde domein beveiligen
-          href: secure-your-domain.md
-        - name: Een organisatie-eenheid maken in een beheerd domein
-          href: create-ou.md
-        - name: Een beheerd serviceaccount voor groepen maken in een beheerd domein
-          href: create-gmsa.md
-        - name: Groepsbeleid voor Azure AD Domain Services beheren
+        - name: Groepsbeleid beheren
           href: manage-group-policy.md
-        - name: Wachtwoordbeleid in een beheerd domein configureren
-          href: password-policy.md
+        - name: DNS beheren
+          href: manage-dns.md
+        - name: Integriteitsstatus controleren
+          href: check-health.md
+        - name: E-mailmeldingen configureren
+          href: notifications.md
         - name: Een beheerd domein verwijderen
           href: delete-aadds.md
-        - name: Een virtuele machine voor beheer van Azure AD DS maken
-          href: manage-domain.md
-        - name: DNS beheren voor Azure AD Domain Services
-          href: manage-dns.md
-        - name: E-mailmeldingen bijwerken
-          href: notifications.md
-        - name: Secure LDAP (LDAPS) in een Azure AD Domain Services-domein configureren
-          href: configure-ldaps.md
-          items:
-            - name: 'Taak 2: het certificaat voor Secure LDAP exporteren'
-              href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
-            - name: 'Taak 3: Secure LDAP inschakelen voor het beheerde domein met de Azure-portal'
-              href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
-            - name: 'Taak 4: DNS configureren voor toegang tot het beheerde domein vanaf het internet'
-              href: active-directory-ds-ldaps-configure-dns.md
-            - name: 'Taak 5: verbinding maken met het beheerde domein en de Secure LDAP-toegang vergrendelen'
-              href: active-directory-ds-ldaps-bind-lockdown.md
-    - name: Toepassingen implementeren naar Azure AD DS
+    - name: Azure AD DS beveiligen
       items:
-        - name: Ondersteuning voor profielsynchronisatie voor SharePoint Server configureren
-          href: deploy-sp-profile-sync.md
+        - name: Uw beheerde domein beveiligen
+          href: secure-your-domain.md
         - name: Kerberos-beperkte overdracht configureren
           href: deploy-kcd.md
-        - name: Azure AD-toepassingsproxy implementeren
-          href: deploy-azure-app-proxy.md
-    - name: Virtuele machines toevoegen aan Azure AD DS
+        - name: Beleid voor wachtwoord- en accountvergrendeling configureren
+          href: password-policy.md
+        - name: Beveiligingscontrolegebeurtenissen inschakelen (preview)
+          href: security-audit-events.md
+    - name: Deelnemen aan domeinen van VM's
       items:
-        - name: Windows Server-VM
-          href: join-windows-vm.md
         - name: Windows Server-VM op basis van sjabloon
           href: join-windows-vm-template.md
         - name: CentOS
@@ -98,24 +85,31 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Problemen met Azure AD DS oplossen
+    - name: Toepassingen implementeren naar Azure AD DS
       items:
-        - name: Handleiding voor het oplossen van problemen
+        - name: Azure AD-toepassingsproxy implementeren
+          href: deploy-azure-app-proxy.md
+        - name: Ondersteuning voor profielsynchronisatie voor SharePoint Server configureren
+          href: deploy-sp-profile-sync.md
+    - name: Problemen oplossen
+      items:
+        - name: Algemene fouten
           href: troubleshoot.md
-        - name: Waarschuwingsproblemen oplossen
-          href: troubleshoot-alerts.md
+        - name: Algemene waarschuwingen
           items:
-            - name: Problemen met NSG-configuratie oplossen
+            - name: Algemene waarschuwingen
+              href: troubleshoot-alerts.md
+            - name: Problemen met netwerkconfiguratie oplossen
               href: alert-nsg.md
             - name: Ontbrekende service-principals herstellen
               href: alert-service-principal.md
-            - name: Fouten met betrekking tot Secure LDAP
+            - name: Waarschuwingen met betrekking tot Secure LDAP
               href: alert-ldaps.md
-        - name: Fouten met niet-overeenkomende tenants oplossen
+        - name: Fouten met niet-overeenkomende tenants
           href: mismatched-tenant-error.md
         - name: Onderbroken domeinen
           href: suspension.md
-        - name: Problemen met Secure LDAP oplossen
+        - name: Secure LDAP
           href: tshoot-ldaps.md
 - name: Resources
   items:

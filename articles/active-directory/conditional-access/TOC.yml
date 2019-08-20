@@ -19,6 +19,10 @@
 - name: Concepten
   expanded: false
   items:
+    - name: Voorwaardelijke toegang implementeren
+      href: howto-conditional-access-adoption-kit.md
+    - name: Algemeen beleid voor voorwaardelijke toegang
+      href: concept-conditional-access-policy-common.md
     - name: Voorwaarden
       href: conditions.md
     - name: Locatievoorwaarden
@@ -38,6 +42,22 @@
       href: plan-conditional-access.md
     - name: Aanbevolen procedures
       href: best-practices.md
+    - name: Algemene beleidssjablonen
+      items:
+        - name: MFA vereisen voor beheerders
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: MFA vereisen voor Azure-beheer
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Verouderde verificatie blokkeren
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Voorwaardelijke toegang op basis van risico's
+          href: howto-conditional-access-policy-risk.md
+        - name: Vertrouwde locatie vereisen voor MFA-registratie
+          href: howto-conditional-access-policy-registration.md
+        - name: Toegang per locatie blokkeren
+          href: howto-conditional-access-policy-location.md
+        - name: Compatibele apparaten vereisen
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Verouderde verificatie blokkeren
       href: block-legacy-authentication.md
     - name: Voorwaardelijke toegang voor MFA-registratie

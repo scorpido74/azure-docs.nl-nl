@@ -1,96 +1,100 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure AD Domain Services
+summary: Informatie over het gebruik van Azure Active Directory Domain Services om toepassingen Kerberos- of NTLM-verificatie te bieden of Azure-VM's samen te voegen in een beheerd domein.
 metadata:
   title: Documentatie voor Azure AD Domain Services
-  description: Leer hoe u Active Directory Domain Services kunt gebruiken om virtuele Azure-machines te koppelen aan een domein zonder domeincontrollers. Zelfstudies en andere documentatie laten zien hoe u virtuele machines kunt beheren met groepsbeleid.
-  keywords: 'Azure AD, Azure, domeindeelname, groepsbeleid, LDAP, Kerberos, domeincontroller, DC, lift-and-shift'
+  description: Informatie over het gebruik van Azure Active Directory Domain Services om toepassingen Kerberos- of NTLM-verificatie te bieden of Azure-VM's samen te voegen in een beheerd domein.
+  services: service
+  ms.service: active-directory
+  ms.subservice: domain-services
+  ms.topic: landing-page
+  ms.collection: collection
   author: iainfoulds
   ms.author: iainfou
   manager: daveba
-  ms.date: 05/22/2019
-  ms.topic: landing-page
-  ms.devlang: na
-  ms.service: active-directory
-  ms.subservice: domain-services
-sections:
-  - items:
-      - type: markdown
-        text: Leer hoe u Active Directory Domain Services kunt gebruiken om virtuele Azure-machines te koppelen aan een domein zonder domeincontrollers. Zelfstudies en andere documentatie laten zien hoe u virtuele machines kunt beheren met groepsbeleid.
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: overview.md
-            html: <p>Meer informatie over wat Azure AD Domain Services voor u kan betekenen.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_investigate.svg'
-            title: Wat is Azure AD Domain Services?
-          - href: create-instance.md
-            html: <p>Maak uw eigen beheerde domein aan de hand van deze eenvoudige handleiding.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            title: Aan de slag
-          - href: contact-us.md
-            html: <p>Krijg hulp wanneer u die nodig hebt.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_support.svg'
-            title: Ondersteuning krijgen
-          - href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-            html: <p>Zie de nieuwe functies in Azure AD Domain Services.</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_whats-new.svg'
-            title: Nieuwe functies
-  - title: Video's
-    items:
-      - type: markdown
-        text: '>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]'
-  - title: Artikelen over planning
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="comparison.md">Hoe weet u of de service geschikt voor u is?</a>
-          - html: <a href="active-directory-ds-features.md">Functies van Azure AD Domain Services</a>
-          - html: <a href="scenarios.md">Waarvoor kunt u de service gebruiken?</a>
-          - html: <a href="synchronization.md">Hoe synchronisatie werkt in Azure AD Domain Services</a>
-          - html: '<a href="https://azure.microsoft.com/pricing/details/active-directory-ds/">Prijzen van Azure AD Domain Services</a>'
-  - title: Apps en Azure AD Domain Services
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="deploy-azure-app-proxy.md">Azure AD-app-proxy implementeren</a>
-          - html: <a href="deploy-sp-profile-sync.md">Profielsynchronisatie voor SharePoint Server</a>
-          - html: <a href="deploy-kcd.md">Kerberos-beperkte overdracht configureren</a>
-  - title: Artikelen met procedures
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="check-health.md">De status van een beheerd domein controleren </a>
-          - html: <a href="csp.md">Azure CSP-abonnementen en Azure AD Domain Services</a>
-          - html: <a href="manage-dns.md">DNS beheren</a>
-          - html: <a href="network-considerations.md">Een virtueel netwerk selecteren</a>
-          - html: <a href="configure-ldaps.md">Secure LDAP configureren</a>
-          - html: <a href="create-ou.md">Een organisatie-eenheid maken</a>
-          - html: <a href="manage-group-policy.md">Groepsbeleid beheren</a>
-  - title: Artikelen over probleemoplossing
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="troubleshoot.md">Handleiding voor het oplossen van problemen</a>
-          - html: <a href="troubleshoot-alerts.md">Waarschuwingen in een beheerd domein oplossen</a>
-          - html: <a href="faqs.md">Veelgestelde vragen</a>
-          - html: '<a href="https://azure.microsoft.com/support/options/">Ondersteuning krijgen</a>'
-  - title: Meer informatie
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://feedback.azure.com/forums/169401-azure-active-directory/">Feedback geven over Azure AD Domain Services op UserVoice</a>'
-          - html: '<a href="https://azure.microsoft.com/roadmap/?category=security-identity">Azure-roadmap</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-contact-us">Contact opnemen</a>'
+  ms.date: 08/01/2019
+  ms.openlocfilehash: 3c97b7bbb652fd26e5c8fdb6d20576a3c9e70421
+  ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/19/2019
+  ms.locfileid: "69612863"
+landingContent:
+- title: Informatie over Azure AD Domain Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure AD Domain Services?
+      url: overview.md
+    - text: Identiteitsoplossingen vergelijken
+      url: compare-identity-solutions.md
+    - text: Hoe werkt synchronisatie?
+      url: synchronization.md
+    - text: Veelgestelde vragen
+      url: faqs.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Een beheerd domein maken
+      url: tutorial-create-instance.md
+  - linkListType: tutorial
+    links:
+    - text: Deelnemen aan domeinen van een Windows Server-VM
+      url: join-windows-vm.md
+    - text: Beheerhulpprogramma's installeren
+      url: tutorial-create-management-vm.md
+- title: Configureren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Secure LDAP configureren
+      url: tutorial-configure-ldaps.md
+  - linkListType: how-to-guide
+    links:
+    - text: Wachtwoord-hashsynchronisatie inschakelen
+      url: active-directory-ds-getting-started-password-sync-synced-tenant.md
+    - text: Een organisatie-eenheid (OU) maken
+      url: create-ou.md
+    - text: Kerberos-beperkte overdracht configureren
+      url: deploy-kcd.md
+    - text: Beveiligd beheerd domein
+      url: secure-your-domain.md
+- title: Beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Groepsbeleid beheren
+      url: manage-group-policy.md
+    - text: DNS beheren
+      url: manage-dns.md
+    - text: Integriteitsstatus controleren
+      url: check-health.md
+    - text: E-mailmeldingen configureren
+      url: notifications.md
+    - text: Beveiligingscontroles inschakelen (preview)
+      url: security-audit-events.md
+- title: Deelnemen aan domeinen van VM's
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Windows Server
+      url: join-windows-vm.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ubuntu Server
+      url: join-ubuntu-linux-vm.md
+    - text: Red Hat Enterprise Linux
+      url: join-rhel-linux-vm.md
+- title: Problemen oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Algemene problemen
+      url: troubleshoot.md
+    - text: Algemeen waarschuwingsberichten
+      url: troubleshoot-alerts.md
+    - text: Problemen met netwerkbeveiligingsgroep
+      url: alert-nsg.md
+    - text: Secure LDAP-problemen
+      url: alert-ldaps.md

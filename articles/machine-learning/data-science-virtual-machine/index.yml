@@ -3,41 +3,37 @@ documentType: LandingData
 title: Documentatie over Azure Data Science Virtual Machine
 metadata:
   title: Documentatie over Data Science Virtual Machine - Azure
-  description: 'Informatie over hoe u Data Science Virtual Machine gebruikt, een experimentele omgeving in de Azure-cloud die speciaal voor gegevenswetenschap is gebouwd. DSVM bevat veel populaire gegevenswetenschap- en andere hulpprogramma''s die vooraf zijn geïnstalleerd en geconfigureerd voor het snel ontwikkelen van intelligente toepassingen voor geavanceerde analyses.'
+  description: 'Informatie over hoe u Data Science Virtual Machine gebruikt, een experimentele omgeving in de Azure-cloud die voor gegevenswetenschap is gebouwd. Populaire gegevenswetenschap- en andere hulpprogramma''s zijn vooraf geïnstalleerd en geconfigureerd voor het snel ontwikkelen van intelligente toepassingen voor geavanceerde analyses.'
   services: machine-learning
   author: vijetajo
-  manager: cgronlun
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
+  ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: 'De Data Science en Deep Learning Virtual Machines zijn aangepaste VM-installatiekopieën in Azure, vol met hulpprogramma’s voor data science, die worden gebruikt om intelligente toepassingen voor geavanceerde analyse te bouwen.'
+  description: 'Azure Data Science Virtual Machine (DSVM) is een aangepaste VM-installatiekopie met gegevenswetenschap en machine learning-hulpprogramma''s. Gebruik deze VM om intelligente, geavanceerde analytische toepassingen te bouwen. <a href="overview.md">Meer informatie...</a>'
 sections:
   - title: QuickStarts van vijf minuten
     items:
       - type: paragraph
         text: 'Informatie over het instellen van een op Windows of Linux gebaseerde Data Science-VM:'
+      - type: paragraph
+        text: <b>Windows DSVM</b>
       - type: list
         style: unordered
         items:
-          - html: <a href="provision-vm.md">Windows</a>
-          - html: <a href="linux-dsvm-intro.md">Linux CentOS</a>
-          - html: <a href="dsvm-ubuntu-intro.md">Linux Ubuntu</a>
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over het inrichten en gebruiken van Data Science-VM’s:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="provision-vm">Een Windows-DSVM inrichten</a>
+          - html: <a href="provision-vm">Een Windows-DSVM instellen</a>
           - html: <a href="vm-do-ten-things">Een Windows-DSVM gebruiken</a>
-          - html: <a href="linux-dsvm-intro">Een Linux CentOS-DSVM inrichten</a>
-          - html: <a href="dsvm-ubuntu-intro">Een Linux Ubuntu-DSVM inrichten</a>
+      - type: paragraph
+        text: <b>Linux-DSVM (Ubuntu | CentOS)</b>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="linux-dsvm-intro">Een Linux CentOS-DSVM instellen</a>
+          - html: <a href="dsvm-ubuntu-intro">Een Linux Ubuntu-DSVM instellen</a>
           - html: <a href="linux-dsvm-walkthrough">Een Linux-DSVM gebruiken</a>
   - title: Meer Azure Machine Learning-technologieën
     items:
@@ -47,7 +43,7 @@ sections:
         style: cards
         className: cardsFTitle
         items:
-          - title: Azure Machine Learning-service (preview)
+          - title: Azure Machine Learning-service
             href: /azure/machine-learning/service/
             image:
               src: media/index/i_machine-learning.svg
