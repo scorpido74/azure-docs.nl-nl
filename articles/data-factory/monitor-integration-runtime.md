@@ -44,8 +44,8 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 | Eigenschap | Description |
 -------- | ------------- | 
 | Name | De naam van de Azure integratieruntime. |  
-| Status | De status van de Azure integratieruntime. | 
-| Locatie | Locatie van de Azure integratieruntime. Zie voor meer informatie over de locatie van een Azure integratieruntime [Inleiding tot integratieruntime](concepts-integration-runtime.md). |
+| State | De status van de Azure integratieruntime. | 
+| Location | Locatie van de Azure integratieruntime. Zie voor meer informatie over de locatie van een Azure integratieruntime [Inleiding tot integratieruntime](concepts-integration-runtime.md). |
 | DataFactoryName | De naam van de data factory die deel uitmaakt van de Azure integratieruntime op. | 
 | ResourceGroupName | De naam van de resourcegroep die de data factory behoort.  |
 | Description | Beschrijving van de integratieruntime.  |
