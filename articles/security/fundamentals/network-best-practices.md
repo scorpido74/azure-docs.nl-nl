@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: a821ce5d9e545db2dee2adbe942eab5edcfdb01f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726958"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934711"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerk beveiliging
 In dit artikel wordt een verzameling van aanbevolen procedures voor Azure beschreven om uw netwerk beveiliging te verbeteren. Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure-netwerken en de ervaringen van klanten, zoals uzelf.
@@ -35,7 +35,7 @@ In dit artikel wordt voor elke best practice uitgelegd:
 Deze best practices zijn gebaseerd op een consensus advies en Azure-platform mogelijkheden en-functie sets, zoals ze bestaan op het moment dat dit artikel werd geschreven. Meningen en technologieën veranderen in de loop van de tijd en dit artikel wordt regel matig bijgewerkt om deze wijzigingen weer te geven.
 
 ## <a name="use-strong-network-controls"></a>Sterke netwerk besturings elementen gebruiken
-U kunt [Azure virtual machines (vm's)](https://azure.microsoft.com/services/virtual-machines/) en toestellen verbinden met andere apparaten in het netwerk door ze te plaatsen in [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/). Dat wil zeggen dat u virtuele netwerk interface kaarten kunt verbinden met een virtueel netwerk om TCP/IP-communicatie tussen netwerk apparaten toe te staan. Virtuele machines die zijn verbonden met een virtueel Azure-netwerk, kunnen verbinding maken met apparaten in hetzelfde virtuele netwerk, verschillende virtuele netwerken, Internet of uw eigen on-premises netwerken.
+U kunt [Azure virtual machines (vm's)](https://azure.microsoft.com/services/virtual-machines/) en toestellen verbinden met andere apparaten in het netwerk door ze te plaatsen in [Azure Virtual Networks](../../virtual-network/index.yml). Dat wil zeggen dat u virtuele netwerk interface kaarten kunt verbinden met een virtueel netwerk om TCP/IP-communicatie tussen netwerk apparaten toe te staan. Virtuele machines die zijn verbonden met een virtueel Azure-netwerk, kunnen verbinding maken met apparaten in hetzelfde virtuele netwerk, verschillende virtuele netwerken, Internet of uw eigen on-premises netwerken.
 
 Wanneer u uw netwerk en de beveiliging van uw netwerk plant, raden we u aan om het volgende te centraliseren:
 
@@ -114,7 +114,7 @@ Azure-netwerk beveiligings apparaten kunnen betere beveiliging bieden dan bij we
 Ga naar [Azure Marketplace](https://azure.microsoft.com/marketplace/) en zoek naar ' Beveiliging ' en ' netwerk beveiliging ' om beschik bare Azure Virtual Network-beveiligings apparaten te vinden.
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Perimeter netwerken voor beveiligings zones implementeren
-Een [perimeter netwerk](https://docs.microsoft.com/azure/best-practices-network-security) (ook wel DMZ genoemd) is een fysiek of logisch netwerk segment dat een extra beveiligingslaag vormt tussen uw assets en Internet. Gespecialiseerde apparaten voor netwerk toegangs beheer aan de rand van een perimeter netwerk bieden alleen gewenst verkeer in uw virtuele netwerk.
+Een [perimeter netwerk](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (ook wel DMZ genoemd) is een fysiek of logisch netwerk segment dat een extra beveiligingslaag vormt tussen uw assets en Internet. Gespecialiseerde apparaten voor netwerk toegangs beheer aan de rand van een perimeter netwerk bieden alleen gewenst verkeer in uw virtuele netwerk.
 
 Perimeter netwerken zijn handig omdat u zich kunt richten op het beheer, de bewaking, logboek registratie en rapportage van uw netwerk toegang op de apparaten aan de rand van uw virtuele Azure-netwerk. Een perimeter netwerk is de locatie waar u normaal gesp roken DDoS-preventie (Distributed Denial of service), inbreuk detectie/indringings systemen (ID'S/IP'S), firewall regels en-beleids regels, webfiltering, antimalware van het netwerk, en meer inschakelt. De netwerk beveiligings apparaten bevinden zich tussen internet en uw virtuele Azure-netwerk en hebben een interface op beide netwerken.
 
@@ -177,7 +177,7 @@ Als de gebruiker bijvoorbeeld een aanvraag voor uw service van de EU doet, wordt
 ## <a name="disable-rdpssh-access-to-virtual-machines"></a>RDP/SSH-toegang tot virtuele machines uitschakelen
 Het is mogelijk om Azure virtual machines te bereiken met behulp van [Remote Desktop Protocol](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) en het SSH-protocol ( [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) ). Deze protocollen maken de beheer-Vm's vanaf externe locaties mogelijk en zijn standaard in Data Center computing.
 
-Het potentiële beveiligings probleem met het gebruik van deze protocollen via internet is dat aanvallers schadelijke [technieken kunnen](https://en.wikipedia.org/wiki/Brute-force_attack) gebruiken om toegang te krijgen tot virtuele machines van Azure. Nadat de aanvallers toegang hebben gekregen, kunnen ze uw VM gebruiken als een start punt voor het inbreuk op andere computers in uw virtuele netwerk of zelfs voor aanvallen via een netwerk apparaat buiten Azure.
+Het potentiële beveiligings probleem met het gebruik van deze protocollen via internet is dat aanvallers schadelijke [](https://en.wikipedia.org/wiki/Brute-force_attack) technieken kunnen gebruiken om toegang te krijgen tot virtuele machines van Azure. Nadat de aanvallers toegang hebben gekregen, kunnen ze uw VM gebruiken als een start punt voor het inbreuk op andere computers in uw virtuele netwerk of zelfs voor aanvallen via een netwerk apparaat buiten Azure.
 
 U wordt aangeraden directe RDP-en SSH-toegang tot uw Azure virtual machines via internet uit te scha kelen. Nadat directe RDP-en SSH-toegang via internet is uitgeschakeld, hebt u andere opties die u kunt gebruiken om toegang te krijgen tot deze Vm's voor extern beheer.
 
