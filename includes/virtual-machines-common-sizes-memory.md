@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881590"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626321"
 ---
 Voor geheugen geoptimaliseerde VM-grootten bieden een hoge geheugen-naar-CPU-verhouding die ideaal is voor relationele database servers, gemiddeld tot grote caches en analyse in het geheugen. In dit artikel vindt u informatie over het aantal Vcpu's, gegevens schijven en Nic's, evenals opslag doorvoer en netwerk bandbreedte voor elke grootte in deze groep.
 
 * De Ev3-serie bevat de E5-2673 2,3 v4-processor (Broadwell) in een configuratie met Hyper-Threading, met een betere waarde voor de meeste werk belastingen voor algemeen gebruik en brengt de Ev3 in op uitlijning met de virtuele machines voor algemeen gebruik van de meeste andere Clouds.  Het geheugen is uitgevouwen (van 7 GiB/vCPU tot 8 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading.  De Ev3 is de follow-up van de VM-grootten van het hoge geheugen van de D/dv2-families.
 
-* De Eav3-serie en de Easv3-serie gebruiken de 2.35 GHz EPYC<sup>TM</sup> 7452V-processor van AMD in een configuratie met meerdere threads met Maxi maal 256GB L3-cache, waarmee u de meeste opties voor het uitvoeren van de meeste voor geheugen geoptimaliseerde workloads uitvoert.  De Eav3-serie en de Easv3-serie hebben dezelfde geheugen-en schijf configuraties als de Ev3 & Esv3-serie.
+* De Eav3-serie en de Easv3-serie gebruiken de 2.35 GHz EPYC<sup>TM</sup> 7452V-processor van AMD in een configuratie met meerdere threads met Maxi maal 256 MB L3-cache, waarmee u de meeste opties voor het uitvoeren van de meeste voor geheugen geoptimaliseerde werk belastingen kunt verhogen.  De Eav3-serie en de Easv3-serie hebben dezelfde geheugen-en schijf configuraties als de Ev3 & Esv3-serie.
 
 * De Mv2-serie biedt het hoogste aantal vCPU (Maxi maal 208 Vcpu's) en het grootste geheugen (Maxi maal 5,7 TiB) van elke virtuele machine in de Cloud. Dit is ideaal voor zeer grote databases of andere toepassingen die zo kunnen profiteren van een groot aantal vCPU’s en grote hoeveelheden geheugen.
 

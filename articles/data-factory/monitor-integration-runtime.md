@@ -50,10 +50,10 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 | ResourceGroupName | De naam van de resourcegroep die de data factory behoort.  |
 | Description | Beschrijving van de integratieruntime.  |
 
-### <a name="status"></a>Status
+### <a name="status"></a>State
 De volgende tabel bevat de mogelijke statussen van een Azure integratieruntime:
 
-| Status | Opmerkingen /-scenario 's | 
+| State | Opmerkingen /-scenario 's | 
 | ------ | ------------------ |
 | Online | De Azure integratieruntime is online en klaar om te worden gebruikt. | 
 | Offline | De Azure integratieruntime is offline vanwege een interne fout. |
@@ -71,7 +71,7 @@ De volgende tabel bevat beschrijvingen van de eigenschappen voor bewaking **elk 
 | Eigenschap | Description | 
 | -------- | ----------- | 
 | Name | De naam van de zelf-hostende integratieruntime en de knooppunten die zijn gekoppeld. Knooppunt is een on-premises Windows-computer met de zelf-hostende integratieruntime is geïnstalleerd. |  
-| Status | De status van de algehele zelf-hostende integratieruntime en elk knooppunt. Voorbeeld: Online/Offline/Limited/etc. Zie voor meer informatie over deze statussen van de volgende sectie. | 
+| State | De status van de algehele zelf-hostende integratieruntime en elk knooppunt. Voorbeeld: Online/Offline/Limited/etc. Zie voor meer informatie over deze statussen van de volgende sectie. | 
 | Versie | De versie van de zelf-hostende integratieruntime en elk knooppunt. De versie van de zelf-hostende integratieruntime wordt bepaald op basis van de versie van het merendeel van de knooppunten in de groep. Als er knooppunten met verschillende versies in de installatie van de zelf-hostende integration runtime zijn, alleen de knooppunten met het versienummer hetzelfde als de logische zelf-hostende integratie-runtime-functie goed. Anderen in de beperkte modus zijn en moeten handmatig worden bijgewerkt (alleen als automatisch bijwerken is mislukt). | 
 | Beschikbaar geheugen | Beschikbaar geheugen op een zelf-hostende integration runtime-knooppunt. Deze waarde is een momentopname van een bijna realtime. | 
 | CPU-gebruik | CPU-gebruik van een zelf-hostende integration runtime-knooppunt. Deze waarde is een momentopname van een bijna realtime. |
@@ -92,7 +92,7 @@ U kunt de waarde in de Azure-portal berekende standaard overschrijven. Selecteer
 ### <a name="status-per-node"></a>Status (per knooppunt)
 De volgende tabel bevat de mogelijke statussen van een zelf-hostende integration runtime-knooppunt:
 
-| Status | Description |
+| State | Description |
 | ------ | ------------------ | 
 | Online | Knooppunt is verbonden met de Data Factory-service. |
 | Offline | Knooppunt is offline. |
@@ -105,7 +105,7 @@ Een knooppunt mag inactief zijn als er geen verbinding met andere knooppunten.
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Status (algemene zelf-hostende integratieruntime)
 De volgende tabel bevat de mogelijke statussen van een zelf-hostende integratieruntime. Deze status is afhankelijk van de status van alle knooppunten die deel uitmaken van de runtime. 
 
-| Status | Description |
+| State | Description |
 | ------ | ----------- | 
 | Registratie moet | Kan geen knooppunt voor is geregistreerd bij deze zelf-hostende integratieruntime nog. |
 | Online | Alle knooppunten zijn online. |
@@ -163,8 +163,8 @@ Azure-SSIS integratieruntime is een volledig beheerd cluster van Azure virtuele 
 | Knooppunten | De toegewezen/beschikbare knooppunten van uw Azure-SSIS integratieruntime met knooppunt-specifieke statussen (begin/beschikbaar/recycling/niet beschikbaar) en bruikbare fouten. |
 | OtherErrors | De niet-knooppunt-specifieke bruikbare fouten in uw Azure-SSIS integratieruntime. |
 | LastOperation | Het resultaat van de laatste starten/stoppen-bewerking op uw Azure-SSIS integratieruntime met bruikbare fouten als deze is mislukt. |
-| Status | De algemene status (eerste/starten/gestart/stoppen/gestopt) van uw Azure-SSIS integratieruntime. |
-| Locatie | De locatie van uw Azure-SSIS integratieruntime. |
+| State | De algemene status (eerste/starten/gestart/stoppen/gestopt) van uw Azure-SSIS integratieruntime. |
+| Location | De locatie van uw Azure-SSIS integratieruntime. |
 | NodeSize | De grootte van elk knooppunt van uw Azure-SSIS integratieruntime. |
 | NodeCount | Het aantal knooppunten in uw Azure-SSIS integratieruntime. |
 | MaxParallelExecutionsPerNode | Het aantal parallelle uitvoeringen per knooppunt in uw Azure-SSIS integratieruntime. |
@@ -184,7 +184,7 @@ Azure-SSIS integratieruntime is een volledig beheerd cluster van Azure virtuele 
   
 ### <a name="status-per-node"></a>Status (per knooppunt)
 
-| Status | Description |
+| State | Description |
 | ------ | ----------- | 
 | Starten | Dit knooppunt wordt voorbereid. |
 | Beschikbaar | Dit knooppunt is gereed voor u SSIS-pakketten implementeren/uitvoeren. |

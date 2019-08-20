@@ -7,9 +7,8 @@ metadata:
   description: 'Leer hoe u een bedrijfsoplossing voor zoekopdrachten in persoonlijke, heterogene inhoud maakt met behulp van Azure Search. In zelfstudies, API-referentiemateriaal en andere documenten kunt u zien hoe u doorzoekbare inhoud samenvoegt in één snelle index, waarin u kunt zoeken met behulp van eenvoudige-tot-geavanceerde syntaxis voor een grote verscheidenheid aan scenario’s.'
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

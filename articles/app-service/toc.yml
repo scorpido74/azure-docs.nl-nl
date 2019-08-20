@@ -170,7 +170,7 @@
     - name: App schalen
       items:
         - name: Servercapaciteit omhoog schalen
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: PremiumV2-laag configureren
           href: app-service-configure-premium-tier.md
         - name: Uitschalen naar meerdere exemplaren

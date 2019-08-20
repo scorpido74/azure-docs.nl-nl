@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 94cd178b925b0b55f0ed6ed38ed821820bb1e072
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 49fbfe116a2fe554abb3a3ca4d1dcd6cab2b746d
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176146"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626317"
 ---
 Als u verder wilt gaan met het volgende aanbevolen artikel, kunt u de resources die u al hebt gemaakt behouden en opnieuw gebruiken.
 
@@ -25,12 +25,12 @@ Anders kunt u de Azure-resources die u in dit artikel hebt gemaakt verwijderen o
 
 Een resourcegroep verwijderen op naam:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
 
-2. Typ in het tekstvak **Filteren op naam...** de naam van de resourcegroep die uw IoT Hub bevat. 
+2. In het tekstvak **filteren op naam** typt u de naam van de resource groep met uw IOT hub. 
 
-3. Klik rechts van de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+3. Selecteer in de lijst met resultaten rechts van uw resource groep de optie **...** en vervolgens de **resource groep verwijderen**.
 
     ![Verwijderen](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
 
-4. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resourcegroep nogmaals om te bevestigen en klik op **Verwijderen**. Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
+4. U wordt gevraagd om het verwijderen van de resourcegroep te bevestigen. Typ de naam van de resource groep nogmaals ter bevestiging en selecteer vervolgens **verwijderen**. Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.

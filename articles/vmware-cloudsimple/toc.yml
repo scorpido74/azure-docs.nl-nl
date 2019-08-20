@@ -117,7 +117,7 @@
     - name: Handleidingen
       items:
         - name: Uw omgeving beveiligen
-          href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
+          href: private-cloud-secure.md
         - name: Privécloudbeheer
           items:
             - name: Privécloudmachtigingen escaleren
@@ -143,7 +143,7 @@
             - name: Azure Application Gateway met VMware-VM's
               href: azure-application-gateway.md
             - name: vCenter-server van privécloud als vRealize-automatiseringseindpunt configureren
-              href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
+              href: configure-server-vrealize-automation-endpoint.md
             - name: Workload-VM's naar een privécloud migreren
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Hoge toepassingsbeschikbaarheid in VMware in Azure garanderen
