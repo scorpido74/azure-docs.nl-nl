@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: 041f9c95b22fd4b8c238c603deb0558f2bca01a8
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737626"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624613"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Honderden terabytes aan gegevens migreren naar Azure Cosmos DB 
 
@@ -124,7 +124,7 @@ Aangezien de migratie zo snel mogelijk moet worden voltooid, is het raadzaam om 
 
 Nadat de migratie is voltooid, kunt u de indexering bijwerken.  
 
-## <a name="migration-process"></a>Migratie proces 
+## <a name="migration-process"></a>Migratieproces 
 
 Nadat de vereisten zijn voltooid, kunt u gegevens migreren met de volgende stappen:  
 
@@ -140,9 +140,16 @@ Nadat de vereisten zijn voltooid, kunt u gegevens migreren met de volgende stapp
 
 6. Sommige van deze fouten kunnen worden veroorzaakt door onjuiste documenten in de bron gegevens. Deze moeten worden aangeduid en opgelost. Vervolgens moet u de import stap op de mislukte partities opnieuw uitvoeren om ze opnieuw op te nemen. 
 
-Nadat de migratie is voltooid, kunt u controleren of het aantal documenten in Azure Cosmos DB hetzelfde is als het aantal documenten in de bron database. In dit voor beeld is de totale grootte in Azure Cosmos DB 65 terabytes. Na de migratie kan indexering selectief worden ingeschakeld en het RUs kan worden verlaagd naar het niveau dat nodig is voor de bewerkingen van de werk belasting.   
+Nadat de migratie is voltooid, kunt u controleren of het aantal documenten in Azure Cosmos DB hetzelfde is als het aantal documenten in de bron database. In dit voor beeld is de totale grootte in Azure Cosmos DB 65 terabytes. Na de migratie kan indexering selectief worden ingeschakeld en het RUs kan worden verlaagd naar het niveau dat nodig is voor de bewerkingen van de werk belasting.
+
+## <a name="contact-the-azure-cosmos-db-team"></a>Contact opnemen met het Azure Cosmos DB team
+Hoewel u deze hand leiding kunt volgen om grote gegevens sets naar Azure Cosmos DB te migreren voor grootschalige migraties, is het raadzaam om het Azure Cosmos DB-product team te bereiken om de gegevens modellen en een algemene architectuur beoordeling te valideren. Op basis van uw gegevensset en werk belasting kan het product team ook andere prestaties en kosten optimalisaties Voorst Ellen die van toepassing kunnen zijn op u. Als u contact wilt opnemen met het Azure Cosmos DB team voor hulp bij grootschalige migraties, kunt u een ondersteunings ticket openen onder het probleem type ' algemeen advies ' en ' grote (TB +) migraties ', zoals hieronder wordt weer gegeven.
+
+![Onderwerp over migratie ondersteuning](./media/migrate-cosmosdb-data/supporttopic.png)
+
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het uitproberen van de voorbeeld toepassingen die de bulk-uitvoerder bibliotheek in [.net](bulk-executor-dot-net.md) en [Java](bulk-executor-java.md)gebruiken. 
 * De bibliotheek bulk-uitvoerder is geïntegreerd in de Cosmos DB Spark-connector, Zie [Azure Cosmos DB artikel Spark-connector](spark-connector.md) voor meer informatie.  
+* Neem contact op met het product team van Azure Cosmos DB door een ondersteunings ticket te openen onder het probleem type ' algemeen advies ' en ' grote (TB +) ' subtype ' voor meer informatie over grootschalige migraties. 
 
