@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990276"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636656"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -167,7 +167,7 @@ Ga in het [Azure Portal]naar de beheer pagina van de app. Klik in het menu links
 
 ![Algemene instellingen](./media/configure-common/open-general.png)
 
-Hier kunt u enkele algemene instellingen voor de app configureren. Voor sommige instellingen moet u [Omhoog schalen naar een hogere prijs categorie](web-sites-scale.md).
+Hier kunt u enkele algemene instellingen voor de app configureren. Voor sommige instellingen moet u [Omhoog schalen naar een hogere prijs categorie](manage-scale-up.md).
 
 - **Stack-instellingen**: De software stack voor het uitvoeren van de app, met inbegrip van de taal-en SDK-versies. Voor Linux-apps en aangepaste container-apps kunt u ook een optionele opstart opdracht of-bestand instellen.
 - **Platform instellingen**: Hiermee kunt u instellingen configureren voor het hosting platform, waaronder:
@@ -268,4 +268,4 @@ Zie [een aangepaste Linux-container configureren voor Azure app service](contain
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Basis principes controleren in Azure App Service]: ./web-sites-monitor.md
 [modus]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Een app schalen in Azure App Service]: ./web-sites-scale.md
+[Een app schalen in Azure App Service]: ./manage-scale-up.md

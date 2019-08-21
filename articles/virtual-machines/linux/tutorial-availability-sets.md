@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1eea6bf06c6245cf5a13cdd33879cf31469f6042
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 718f2e3391fe89bcc64426c37401f9bf91643201
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708563"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641139"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Zelfstudie: Virtuele machines met hoge beschikbaarheid maken en implementeren met de Azure CLI
 
@@ -38,14 +38,22 @@ In deze zelfstudie leert u het volgende:
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-## <a name="availability-set-overview"></a>Overzicht beschikbaarheidsset
+## <a name="high-availability-in-azure-overview"></a>Overzicht van hoge Beschik baarheid in azure
+Hoge Beschik baarheid in azure kan op diverse manieren worden gemaakt. Twee opties die u hebt, zijn beschikbaarheids sets en beschikbaarheids zones. Door beschikbaarheids sets te gebruiken, worden uw Vm's beschermd tegen storingen die zich in een Data Center kunnen voordoen. Dit omvat hardwarefouten en Azure-software fouten. Door gebruik te maken van beschikbaarheids zones, worden uw Vm's op een fysiek afzonderlijke infra structuur geplaatst zonder gedeelde bronnen en worden ze daarom beschermd tegen het hele fout in het Data Center.
+
+Gebruik beschikbaarheids sets of Beschikbaarheidszones wanneer u betrouw bare VM-oplossingen wilt implementeren in Azure.
+
+### <a name="availability-set-overview"></a>Overzicht beschikbaarheidsset
 
 Een beschikbaarheidsset is een logische groeperingsmogelijkheid die u in Azure kunt gebruiken om ervoor te zorgen dat de VM-resources die u erin plaatst, van elkaar worden geïsoleerd wanneer ze in een Azure-datacenter worden geïmplementeerd. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, rekenrekken, opslageenheden en netwerkswitches worden uitgevoerd. Als er zich een hardware- of softwarestoring in Azure voordoet, wordt slechts een subset van uw VM's getroffen en blijft uw totale toepassing actief en beschikbaar voor uw klanten. Beschikbaarheidssets zijn essentieel wanneer u betrouwbare cloudoplossingen wilt bouwen.
 
 Laten we eens kijken naar een typische VM-oplossing met vier front-end webservers en twee back-end VM's die een database hosten. Met Azure wilt u twee beschikbaarheidssets definiëren voordat u uw VM's implementeert: een beschikbaarheidsset voor de ‘web’-laag en een beschikbaarheidsset voor de ‘database’-laag. Bij het maken van een nieuwe VM kunt u vervolgens de beschikbaarheidsset opgeven als parameter voor de opdracht az vm create, en zorgt Azure er automatisch voor dat de VM's die u binnen de beschikbare set maakt, worden geïsoleerd over meerdere fysieke hardwareresources. Als er een probleem is met de fysieke hardware waarop een van uw webserver- of databaseserver-VM's draait, weet u dat de andere instanties van uw webserver en database-VM's actief blijven, omdat ze worden uitgevoerd op andere hardware.
 
-Gebruik beschikbaarheidssets wanneer u betrouwbare VM-oplossingen wilt implementeren in Azure.
+### <a name="availability-zone-overview"></a>Overzicht van beschikbaarheids zone
 
+Beschikbaarheidszones is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Om tolerantie te garanderen, zijn er mini maal drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante Services repliceren uw toepassingen en gegevens op Beschikbaarheidszones om te beschermen tegen enkele punten van een storing. Met Beschikbaarheidszones biedt Azure een toonaangevende SLA voor de VM-uptime van 99,99%.
+
+Net als bij beschikbaarheids sets, gaan we een typische VM-oplossing gebruiken waar u vier front-end webservers hebt en twee back-end-Vm's gebruikt die een Data Base hosten. Net als bij beschikbaarheids sets, wilt u uw virtuele machines in twee afzonderlijke beschikbaarheids zones implementeren: één beschikbaarheids zone voor de ' Web '-laag en één beschikbaarheids zone voor de laag ' data base '. Wanneer u een nieuwe virtuele machine maakt en de beschikbaarheids zone opgeeft als een para meter voor de opdracht AZ VM Create, zorgt Azure er automatisch voor dat de virtuele machines die u maakt, worden geïsoleerd in volledig verschillende beschikbaarheids zones. Als er een probleem is met het hele Data Center waarop een van uw webserver-of database server-Vm's worden uitgevoerd, weet u dat de andere exemplaren van uw webserver en data base-Vm's actief blijven omdat ze worden uitgevoerd op volledig gescheiden data centers.
 
 ## <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
 
@@ -117,3 +125,7 @@ Ga naar de volgende zelfstudie voor meer informatie over virtuele-machineschaals
 
 > [!div class="nextstepaction"]
 > [Een virtuele-machineschaalset maken](tutorial-create-vmss.md)
+
+* Ga naar de [Beschikbaarheidszones-documentatie](../../availability-zones/az-overview.md)voor meer informatie over beschikbaarheids zones.
+* Meer documentatie over zowel beschikbaarheids sets als beschikbaarheids zones is [hier](./manage-availability.md)ook beschikbaar.
+* Als u beschikbaarheids zones wilt uitproberen, gaat u naar [een virtuele Linux-machine maken in een beschikbaarheids zone met de Azure cli](./create-cli-availability-zone.md)

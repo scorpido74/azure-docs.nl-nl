@@ -1,11 +1,9 @@
 ---
-title: Over het gebruik van Twilio voor spraak en SMS-berichten (Java) | Microsoft Docs
-description: Informatie over het maken van een telefonische oproep en verzenden van een SMS-bericht met de Twilio API-service op Azure. Voorbeelden van code geschreven in Java.
+title: Twilio gebruiken voor spraak en SMS (Java) | Microsoft Docs
+description: Meer informatie over het maken van een telefoon gesprek en het verzenden van een SMS-bericht met de Twilio API-service in Azure. Code voorbeelden geschreven in Java.
 services: ''
 documentationcenter: java
-author: devinrader
-manager: twilio
-editor: mollybos
+author: georgewallace
 ms.assetid: f3508965-5527-4255-9d51-5d5f926f4d43
 ms.service: multiple
 ms.workload: na
@@ -13,51 +11,51 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 386b4b8440c74f6599e7147996b5843ea0f67e68
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 18e93ce18ed746612996399dc1aeb258abd26165
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623949"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637212"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Over het gebruik van Twilio voor spraak en SMS-mogelijkheden in Java
-Deze handleiding laat zien hoe u algemene programming taken met de Twilio API-service op Azure uitvoeren. De behandelde scenario's omvatten een telefonische oproep maken en verzenden van een bericht Short Message Service (SMS). Zie voor meer informatie over Twilio en het gebruik van spraak en SMS-berichten in uw toepassingen, de [Vervolgstappen](#NextSteps) sectie.
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Twilio gebruiken voor spraak-en SMS-mogelijkheden in Java
+In deze hand leiding wordt gedemonstreerd hoe u veelvoorkomende programmeer taken uitvoert met de Twilio API-service in Azure. De besproken scenario's zijn onder andere het maken van een telefoon oproep en het verzenden van een SMS-bericht (Short Message Service). Zie de sectie [volgende stappen](#NextSteps) voor meer informatie over Twilio en het gebruik van spraak en SMS in uw toepassingen.
 
 ## <a id="WhatIs"></a>Wat is Twilio?
-Twilio is een TAPI-webservice-API waarmee u uw bestaande webtalen en vaardigheden gebruiken om te bouwen voor spraak en SMS-toepassingen. Twilio is een service van derden (niet een functie van Azure en niet een Microsoft-product).
+Twilio is een Telephony Web-Service-API waarmee u uw bestaande webtalen en-vaardig heden kunt gebruiken om spraak-en SMS-toepassingen te bouwen. Twilio is een service van derden (geen Azure-functie en geen micro soft-product).
 
-**Twilio-stem** zorgt ervoor dat uw toepassingen maken en telefoongesprekken binnenkrijgt. **Twilio-SMS** zorgt ervoor dat uw toepassingen en ontvangen van SMS-berichten. **Twilio-Client** zorgt ervoor dat uw toepassingen spraakcommunicatie mogelijk maken via bestaande internetverbindingen, waaronder mobiele verbindingen.
+Met **Twilio Voice** kunnen uw toepassingen telefoon gesprekken voeren en ontvangen. Met **TWILIO SMS** kunnen uw toepassingen SMS-berichten maken en ontvangen. Met **Twilio-client** kunnen uw toepassingen spraak communicatie mogelijk maken via bestaande Internet verbindingen, waaronder mobiele verbindingen.
 
-## <a id="Pricing"></a>Twilio-prijzen en speciale aanbiedingen
-Informatie over de prijzen van Twilio is beschikbaar op [Twilio prijzen][twilio_pricing]. Azure-klanten ontvangen een [speciale aanbieding][special_offer]: een gratis tegoed van 1000 teksten of 1000 inkomende minuten. Als u zich aanmelden voor deze aanbieding of meer informatie, gaat u naar [ https://ahoy.twilio.com/azure ] [ special_offer].
+## <a id="Pricing"></a>Prijzen voor Twilio en speciale aanbiedingen
+Informatie over prijzen voor Twilio is beschikbaar op [Twilio-prijzen][twilio_pricing]. Azure-klanten ontvangen een [speciale aanbieding][special_offer]: een gratis tegoed van 1000 teksten of 1000 binnenkomende minuten. Als u zich voor deze aanbieding wilt aanmelden of meer informatie wilt krijgen [https://ahoy.twilio.com/azure][special_offer], gaat u naar.
 
-## <a id="Concepts"></a>Concepten
-De Twilio API is een RESTful-API die spraak en SMS-functionaliteit voor toepassingen biedt. -Clientbibliotheken zijn beschikbaar in meerdere talen. Zie voor een lijst [Twilio API-bibliotheken][twilio_libraries].
+## <a id="Concepts"></a>Concept
+De Twilio-API is een resterende API die spraak-en SMS-functionaliteit biedt voor toepassingen. Client bibliotheken zijn beschikbaar in meerdere talen. Zie [TWILIO API libraries][twilio_libraries]voor een lijst.
 
-Belangrijke aspecten van de Twilio API zijn Twilio-termen en Twilio Markup Language (TwiML).
+De belangrijkste aspecten van de Twilio-API zijn Twilio-werk woorden en Twilio Markup Language (TwiML).
 
-### <a id="Verbs"></a>Twilio-termen
-De API maakt gebruik van Twilio termen; bijvoorbeeld, de **&lt;zeg&gt;** term geeft Twilio hoorbaar een bericht te bezorgen bij een oproep.
+### <a id="Verbs"></a>Twilio-werk woorden
+De API maakt gebruik van Twilio-werk woorden. **de&lt;termzeg&gt;** geeft bijvoorbeeld Twilio aan audibly een bericht te verzenden bij een aanroep.
 
-Hier volgt een lijst met Twilio-bewerkingen.
+Hier volgt een lijst met Twilio-werk woorden.
 
-* **&lt;Dial&gt;** : De oproepende functie verbindt met een ander telefoonnummer.
-* **&lt;Gather&gt;** : Verzamelt cijfers ingevoerd op het telefoonnummer.
-* **&lt;Ophangen&gt;** : Een gesprek is beëindigd.
-* **&lt;Afspelen&gt;** : Hiermee wordt een geluidsbestand afgespeeld.
-* **&lt;Wachtrij&gt;** : Voeg het aan een wachtrij met aanroepers.
-* **&lt;Onderbreken&gt;** : Wacht op de achtergrond gedurende een opgegeven aantal seconden.
-* **&lt;Record&gt;** : Registreert de stem van de oproepende functie en het resultaat van een URL van een bestand met de opname.
-* **&lt;Omleiden&gt;** : Het besturingselement van de overdracht van een telefoongesprek of SMS aan de TwiML op een andere URL.
-* **&lt;Afwijzen&gt;** : Een binnenkomende oproep naar uw Twilio-getal afwijzen zonder facturering u.
-* **&lt;Stel dat&gt;** : Converteert tekst naar spraak die wordt gemaakt op een aanroep.
-* **&lt;Sms&gt;** : Verzendt een SMS-bericht.
+* **&lt;Dial&gt;** : Verbindt de beller met een andere telefoon.
+* Verzamelen:  **&lt;&gt;** Hiermee worden numerieke cijfers op het telefoon toetsen blok verzameld.
+* Ophangen:  **&lt;&gt;** Beëindigt een aanroep.
+* Afspelen:  **&lt;&gt;** Een audio bestand speelt.
+* Wachtrij:  **&lt;&gt;** Voeg de toe aan een wachtrij van bellers.
+* Onderbreken:  **&lt;&gt;** Wacht een opgegeven aantal seconden op de achtergrond.
+* Record:  **&lt;&gt;** Registreert de stem van de beller en retourneert een URL van een bestand dat de opname bevat.
+* Omleiden:  **&lt;&gt;** Hiermee wordt het beheer van een aanroep of SMS overgedragen aan de TwiML op een andere URL.
+* Afwijzen: **&gt; &lt;** Hiermee wordt een inkomende oproep naar uw Twilio-nummer afgewezen zonder dat u wordt gefactureerd.
+* Zeggen:  **&lt;&gt;** Hiermee wordt tekst geconverteerd naar spraak die tijdens een aanroep wordt gemaakt.
+* **&lt;Sms&gt;** : Hiermee wordt een SMS-bericht verzonden.
 
 ### <a id="TwiML"></a>TwiML
-TwiML is een set op basis van de Twilio-termen die Twilio van het verwerken van een oproep of SMS op de hoogte op basis van een XML-instructies.
+TwiML is een reeks op XML gebaseerde instructies op basis van de Twilio-werk woorden die Twilio over het verwerken van een aanroep of SMS.
 
-Als u bijvoorbeeld de volgende TwiML de tekst wilt converteren **Hello World!** spraak.
+Zo zou de volgende TwiML de tekst converteren **Hallo wereld!** naar spraak.
 
 ```xml
     <?xml version="1.0" encoding="UTF-8" ?>
@@ -66,25 +64,25 @@ Als u bijvoorbeeld de volgende TwiML de tekst wilt converteren **Hello World!** 
     </Response>
 ```
 
-Wanneer uw toepassing de Twilio-API aanroept, is een van de API-parameters de URL die wordt het TwiML-antwoord geretourneerd. Voor ontwikkelingsdoeleinden, kunt u de opgegeven Twilio URL's voor de TwiML antwoorden die worden gebruikt door uw toepassingen. U kunt ook uw eigen URL's voor het produceren van de antwoorden TwiML hosten en een andere optie is met de **TwiMLResponse** object.
+Wanneer uw toepassing de Twilio API aanroept, is een van de API-para meters de URL die het TwiML-antwoord retourneert. Voor ontwikkelings doeleinden kunt u Twilio-Url's gebruiken om de TwiML-reacties te geven die worden gebruikt door uw toepassingen. U kunt ook uw eigen Url's hosten om de TwiML-reacties te maken en een andere optie is het object **TwiMLResponse** te gebruiken.
 
-Zie voor meer informatie over Twilio-termen, de kenmerken en TwiML [TwiML][twiml]. Zie voor meer informatie over de Twilio API [Twilio API][twilio_api].
+Zie [TwiML][twiml]voor meer informatie over Twilio-werk woorden, hun kenmerken en TwiML. Zie [TWILIO API][twilio_api](Engelstalig) voor meer informatie over de TWILIO-API.
 
-## <a id="CreateAccount"></a>Een Twilio-Account maken
-Wanneer u klaar bent om een Twilio-account, u zich aanmelden bij [probeer Twilio][try_twilio]. U kunt beginnen met een gratis account en een upgrade voor uw account later opnieuw.
+## <a id="CreateAccount"></a>Een Twilio-account maken
+Wanneer u klaar bent om een Twilio-account op te halen, meldt u zich aan bij [try Twilio][try_twilio]. U kunt beginnen met een gratis account en later uw account bijwerken.
 
-Wanneer u zich voor een Twilio-account aanmelden, ontvangt u een account-ID en een verificatietoken. Beide nodig om de Twilio API-aanroepen. Als u wilt voorkomt ongeoorloofde toegang tot uw account, uw verificatietoken veilig houden. Uw account-ID en verificatiesleutel token kunnen worden bekeken op de [Twilio Console][twilio_console], in de velden met het label **ACCOUNT-SID** en **-VERIFICATIETOKEN**, respectievelijk.
+Wanneer u zich aanmeldt voor een Twilio-account, ontvangt u een account-ID en een verificatie token. Beide zijn nodig voor het maken van Twilio-API-aanroepen. Zorg ervoor dat uw verificatie token is beveiligd om onbevoegde toegang tot uw account te voor komen. Uw account-ID en verificatie token kunnen respectievelijk worden weer gegeven in de [Twilio-console][twilio_console], in de velden met de naam **account sid** en **verificatie token**.
 
 ## <a id="create_app"></a>Een Java-toepassing maken
-1. De Twilio-JAR verkrijgen en toe te voegen aan uw Java build path en uw implementatie WAR assembly. Op [ https://github.com/twilio/twilio-java ] [ twilio_java], kunt u downloaden van de GitHub-bronnen en uw eigen JAR maken of een vooraf gemaakte JAR (met of zonder afhankelijkheden) te downloaden.
-2. Zorg ervoor dat van uw JDK **cacerts** keystore de Equifax beveiligde CA-certificaat bevat met MD5 vingerafdruk 67:CB:9 D: C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 (het serienummer is 35:DE:F4:CF en de SHA1 vingerafdruk is D2:32:09:AD:23:D3:14:23:21:74:E4:0 D: 7F:9 D: 62:13:97:86:63:3A). Dit is het certificaat van de certificeringsinstantie (CA) voor de [ https://api.twilio.com ] [ twilio_api_service] -service, die wordt aangeroepen wanneer u Twilio APIs gebruiken. Voor informatie over het waarborgen van de JDK **cacerts** keystore bevat de juiste CA-certificaat, Zie [een certificaat toe te voegen aan de Store met Java CA-certificaat][add_ca_cert].
+1. Haal het Twilioe JAR op en voeg deze toe aan uw Java-build-pad en uw WAR-implementatie-assembly. [https://github.com/twilio/twilio-java][twilio_java]U kunt de GitHub-bronnen downloaden en uw eigen jar maken, of een vooraf gebouwde jar (met of zonder afhankelijkheden) downloaden.
+2. Zorg ervoor dat de JDK van de **cacerts** -serie het Equifax-certificaat voor beveiligde certificerings instanties bevat met MD5-vinger afdruk 67: CB: 9D: C0:13:24:8 bis: 82:9b: B2:17: ~: D1:1b: EC: D4 (het serie nummer is 35: de waarde: F4: CF en SHA1:23 :D 3:14:23:21:74: E4:0D: 7F: 9D: 62:13:97:86:63:3A). Dit is het certificaat van de certificerings instantie (CA [https://api.twilio.com][twilio_api_service] ) voor de service, die wordt aangeroepen wanneer u Twilio-api's gebruikt. Zie [een certificaat toevoegen aan het certificaat archief van de Java-ca][add_ca_cert]voor meer informatie over het controleren van de **cacerts** -jdk van uw computer met het juiste CA-certificaat.
 
-Gedetailleerde instructies voor het gebruik van de Twilio-clientbibliotheek voor Java zijn beschikbaar op [hoe u een telefonische oproep met behulp van Twilio in een Java-toepassing in Azure][howto_phonecall_java].
+Gedetailleerde instructies voor het gebruik van de Twilio-client bibliotheek voor Java zijn beschikbaar voor [het maken van een telefoon oproep met behulp van Twilio in een Java-toepassing in azure][howto_phonecall_java].
 
-## <a id="configure_app"></a>Uw toepassing configureren voor gebruik Twilio-bibliotheken
-U kunt toevoegen vanuit uw code **importeren** instructies aan het begin van de bronbestanden voor de Twilio-pakketten of klassen die u wilt gebruiken in uw toepassing.
+## <a id="configure_app"></a>Uw toepassing configureren voor het gebruik van Twilio-bibliotheken
+U kunt binnen uw code **import** instructies toevoegen boven aan de bron bestanden voor de Twilio-pakketten of-klassen die u wilt gebruiken in uw toepassing.
 
-Voor Java-bronbestanden:
+Voor Java-bron bestanden:
 
 ```java
     import com.twilio.*;
@@ -93,7 +91,7 @@ Voor Java-bronbestanden:
     import com.twilio.twiml.*;
 ```
 
-Voor de bronbestanden van de pagina voor Java-Server (JSP):
+Bron bestanden voor Java Server-pagina's (JSP):
 
 ```java
     import="com.twilio.*"
@@ -102,10 +100,10 @@ Voor de bronbestanden van de pagina voor Java-Server (JSP):
     import="com.twilio.twiml.*"
  ```
  
-Afhankelijk van welke Twilio-pakketten of klassen die u wilt gebruiken, uw **importeren** instructies kunnen mogelijk verschillen.
+Afhankelijk van de Twilio-pakketten of-klassen die u wilt gebruiken, kunnen uw **import** instructies afwijken.
 
-## <a id="howto_make_call"></a>Procedures: Een uitgaande aanroep
-Hieronder ziet u hoe u een uitgaande aanroepen met behulp van de **aanroepen** klasse. Deze code maakt ook gebruik van een site Twilio-voorwaarde om te retourneren van het antwoord Twilio Markup Language (TwiML). Vervang de waarden voor de **van** en **naar** telefoonnummers, en zorg ervoor dat u controleert of de **van** telefoonnummer voor uw Twilio-account vóór het uitvoeren van de code.
+## <a id="howto_make_call"></a>Procedures: Een uitgaande oproep doen
+Hieronder ziet u hoe u een uitgaande oproep maakt met behulp van de **aanroep** klasse. Deze code maakt ook gebruik van een Twilio-site om het TwiML-antwoord (Twilio Markup Language) te retour neren. Vervang uw waarden door **van** en **naar** telefoon nummers en zorg ervoor dat u het telefoon nummer **van** uw Twilio-account controleert voordat u de code uitvoert.
 
 ```java
     // Use your account SID and authentication token instead
@@ -129,12 +127,12 @@ Hieronder ziet u hoe u een uitgaande aanroepen met behulp van de **aanroepen** k
     Call.creator(to, from, uri).create();
 ```
 
-Voor meer informatie over de parameters doorgegeven aan de **Call.creator** methode, Zie [ https://www.twilio.com/docs/api/rest/making-calls ] [ twilio_rest_making_calls].
+[Zie https://www.twilio.com/docs/api/rest/making-calls][twilio_rest_making_calls]voor meer informatie over de para meters die worden door gegeven aan de methode **call. Creator** .
 
-Zoals gezegd, wordt met deze code een Twilio-opgegeven site gebruikt om terug te keren van het antwoord TwiML. U kunt uw eigen locatie in plaats daarvan gebruiken voor het antwoord TwiML; Zie voor meer informatie, [hoe TwiML antwoorden bieden in een Java-toepassing in Azure](#howto_provide_twiml_responses).
+Zoals vermeld, gebruikt deze code een Twilio-site voor het retour neren van het TwiML-antwoord. U kunt in plaats daarvan uw eigen site gebruiken om het TwiML-antwoord op te geven. Zie [TwiML-antwoorden bieden in een Java-toepassing op Azure](#howto_provide_twiml_responses)voor meer informatie.
 
 ## <a id="howto_send_sms"></a>Procedures: Een SMS-bericht verzenden
-Hieronder ziet u hoe u verzendt een SMS-bericht met de **bericht** klasse. De **van** getal, **4155992671**, wordt geleverd door Twilio voor proefaccounts voor het verzenden van SMS-berichten. De **naar** getal moet worden geverifieerd voor uw Twilio-account vóór het uitvoeren van de code.
+Hieronder ziet u hoe u een SMS-bericht verzendt met behulp van de **bericht** klasse. Het **van** -nummer, **4155992671**, wordt verschaft door Twilio voor proef accounts om SMS-berichten te verzenden. Het **to** -nummer moet worden geverifieerd voor uw Twilio-account voordat u de code uitvoert.
 
 ```java
     // Use your account SID and authentication token instead
@@ -155,14 +153,14 @@ Hieronder ziet u hoe u verzendt een SMS-bericht met de **bericht** klasse. De **
     Message sms = Message.creator(to, from, body).create();
 ```
 
-Voor meer informatie over de parameters doorgegeven aan de **Message.creator** methode, Zie [ https://www.twilio.com/docs/api/rest/sending-sms ] [ twilio_rest_sending_sms].
+[Zie https://www.twilio.com/docs/api/rest/sending-sms][twilio_rest_sending_sms]voor meer informatie over de para meters die worden door gegeven aan de methode **Message. Creator** .
 
-## <a id="howto_provide_twiml_responses"></a>Procedures: Bieden van respons TwiML van uw eigen Website
-Wanneer uw toepassing initieert een aanroep naar de Twilio API, bijvoorbeeld de **CallCreator.create** methode, Twilio wordt uw aanvraag verzenden naar een URL die wordt verwacht dat TwiML reactie retourneren. Het bovenstaande voorbeeld maakt gebruik van de URL van de geleverde Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (Hoewel TwiML is ontworpen voor gebruik door webservices, vindt u de TwiML in uw browser. Bijvoorbeeld, klikt u op [ https://twimlets.com/message ] [ twimlet_message_url] om te zien van een lege **&lt; antwoord&gt;** element; een ander voorbeeld, klikt u op [ https://twimlets.com/message?Message%5B0%5D=Hello%20World%21 ] [ twimlet_message_url_hello_world] om te zien een **&lt; antwoord&gt;** element bevat een **&lt; zeg&gt;** element.)
+## <a id="howto_provide_twiml_responses"></a>Procedures: TwiML-reacties van uw eigen website bieden
+Wanneer uw toepassing een aanroep initieert naar de Twilio-API, bijvoorbeeld via de methode **CallCreator. Create** , stuurt Twilio uw aanvraag naar een URL die naar verwachting een TwiML-antwoord retourneert. In het bovenstaande voor beeld wordt gebruikgemaakt van [https://twimlets.com/message][twimlet_message_url]de Twilio-URL. (Hoewel TwiML is ontworpen voor gebruik door webservices, kunt u de TwiML in uw browser weer geven. Klik [https://twimlets.com/message][twimlet_message_url] bijvoorbeeld op om een leeg  **&lt;&gt; antwoord** element weer te geven. Klik [https://twimlets.com/message?Message%5B0%5D=Hello%20World%21][twimlet_message_url_hello_world] op een ander voor beeld om  **&lt; een&gt; antwoord** element te zien dat een **&lt; Zeg&gt;** element.)
 
-In plaats van de geleverde Twilio-URL, kunt u uw eigen URL-locatie waarmee HTTP-antwoorden worden geretourneerd. U kunt de site maken in elke taal waarmee HTTP-antwoorden; wordt geretourneerd in dit onderwerp wordt ervan uitgegaan dat u de URL in een JSP-pagina gaat hosten.
+In plaats van te vertrouwen op de Twilio-URL, kunt u uw eigen URL-site maken die HTTP-antwoorden retourneert. U kunt de site maken in elke taal die HTTP-antwoorden retourneert; in dit onderwerp wordt ervan uitgegaan dat u de URL op een JSP-pagina host.
 
-De volgende JSP-pagina resulteert in een TwiML-antwoord met de melding dat **Hello World!** op de aanroep.
+De volgende JSP-pagina resulteert in een TwiML-antwoord met de tekst **Hallo wereld!** op de aanroep.
 
 ```xml
     <%@ page contentType="text/xml" %>
@@ -171,7 +169,7 @@ De volgende JSP-pagina resulteert in een TwiML-antwoord met de melding dat **Hel
     </Response>
 ```
 
-De volgende JSP-pagina resulteert in een TwiML-antwoord dat zegt tekst, heeft verschillende wordt onderbroken en zegt informatie over de Twilio API-versie en de naam van de Azure-rol.
+De volgende JSP-pagina resulteert in een TwiML-antwoord met een tekst, bevat verschillende pauzes en geeft informatie over de Twilio-API-versie en de naam van de Azure-rol.
 
 ```xml
     <%@ page contentType="text/xml" %>
@@ -185,9 +183,9 @@ De volgende JSP-pagina resulteert in een TwiML-antwoord dat zegt tekst, heeft ve
     </Response>
 ```
 
-De **ApiVersion** parameter is beschikbaar in spraakopdrachten Twilio (geen SMS-aanvragen). Zie voor de beschikbare aanvraagparameters voor Twilio spraak- en SMS-aanvragen <https://www.twilio.com/docs/api/twiml/twilio_request> en <https://www.twilio.com/docs/api/twiml/sms/twilio_request>, respectievelijk. De **RoleName** omgevingsvariabele is beschikbaar als onderdeel van een Azure-implementatie. (Als u toevoegen, aangepaste omgevingsvariabelen wilt zodat deze kunnen worden opgehaald uit **System.getenv**, Zie de omgevingsvariabelen in sectie [diverse configuratie-instellingen voor rol] [ misc_role_config_settings].)
+De para meter **ApiVersion** is beschikbaar in Twilio-spraak aanvragen (geen SMS-aanvragen). Zie <https://www.twilio.com/docs/api/twiml/twilio_request> en<https://www.twilio.com/docs/api/twiml/sms/twilio_request>voor een overzicht van de beschik bare aanvraag parameters voor Twilio Voice-en SMS-aanvragen. De omgevings variabele **rolnaam** is beschikbaar als onderdeel van een Azure-implementatie. (Als u aangepaste omgevings variabelen wilt toevoegen, zodat ze kunnen worden opgehaald uit **System. GETENV**, raadpleegt u de sectie omgevings variabelen in de [configuratie-instellingen voor diverse rollen][misc_role_config_settings].)
 
-Zodra u uw JSP-pagina is ingesteld dat bieden van respons TwiML hebt, gebruikt u de URL van de JSP-pagina als de URL wordt doorgegeven in de **Call.creator** methode. Bijvoorbeeld, hebt u een webtoepassing met de naam MyTwiML geïmplementeerd naar een Azure gehoste service, en de naam van de JSP-pagina is mytwiml.jsp, de URL kan worden doorgegeven aan **Call.creator** zoals wordt weergegeven in het volgende:
+Zodra u uw JSP-pagina hebt ingesteld om TwiML-antwoorden te geven, gebruikt u de URL van de JSP-pagina als de URL die wordt door gegeven aan de methode **call. Creator** . Als u bijvoorbeeld een webtoepassing met de naam MyTwiML hebt geïmplementeerd in een door Azure gehoste service en de naam van de JSP-pagina MyTwiML. jsp is, kan de URL worden door gegeven aan **call. Creator** , zoals wordt weer gegeven in het volgende:
 
 ```java
     // Declare To and From numbers and the URL of your JSP page
@@ -200,20 +198,20 @@ Zodra u uw JSP-pagina is ingesteld dat bieden van respons TwiML hebt, gebruikt u
     Call.creator(to, from, uri).create();
 ```
 
-Een andere optie voor het reageren met TwiML is via de **VoiceResponse** klasse, die beschikbaar is in de **com.twilio.twiml** pakket.
+Een andere optie voor het reageren met TwiML is via de klasse **VoiceResponse** , die beschikbaar is in het pakket **com. twilio. TwiML** .
 
-Zie voor meer informatie over het gebruik van Twilio in Azure met Java [hoe u een telefonische oproep met behulp van Twilio in een Java-toepassing in Azure][howto_phonecall_java].
+Zie [hoe u een telefoon oproep maakt met behulp van Twilio in een Java-toepassing in azure][howto_phonecall_java]voor meer informatie over het gebruik van Twilio in azure met Java.
 
 ## <a id="AdditionalServices"></a>Procedures: Aanvullende Twilio-Services gebruiken
-Naast de voorbeelden die hier worden weergegeven, biedt Twilio web-API's die u kunt gebruikmaken van aanvullende Twilio-functionaliteit van uw Azure-toepassing. Zie voor meer informatie, de [Twilio-API-documentatie][twilio_api_documentation].
+Naast de voor beelden die hier worden weer gegeven, biedt Twilio-Api's die u kunt gebruiken om gebruik te maken van extra Twilio-functionaliteit van uw Azure-toepassing. Zie de [TWILIO API-documentatie][twilio_api_documentation]voor meer informatie.
 
 ## <a id="NextSteps"></a>Volgende stappen
-Nu dat u de basisprincipes van de Twilio-service hebt geleerd, volgt u deze koppelingen voor meer informatie:
+Nu u de basis principes van de Twilio-service hebt geleerd, volgt u deze koppelingen voor meer informatie:
 
-* [Twilio-beveiligingsrichtlijnen][twilio_security_guidelines]
-* [Van Twilio HowTo en voorbeeldcode][twilio_howtos]
-* [Twilio zelfstudies][twilio_quickstarts]
-* [Twilio on GitHub][twilio_on_github]
+* [Twilio-beveiligings richtlijnen][twilio_security_guidelines]
+* [Twilio procedure-en voorbeeld code][twilio_howtos]
+* [Zelf studies voor Twilio Quick Start][twilio_quickstarts]
+* [Twilio op GitHub][twilio_on_github]
 * [Neem contact op met ondersteuning voor Twilio][twilio_support]
 
 [twilio_java]: https://github.com/twilio/twilio-java

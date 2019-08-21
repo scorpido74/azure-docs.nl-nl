@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2016
+ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 6a848717e4796e0bb35cbcf045bb50fabf543c1b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 21122847c1b417b00cfe8c69b8324a2f73bf31ea
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617665"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641135"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal
 Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken.
@@ -27,7 +27,7 @@ Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet 
 Het probleemoplossingsproces is als volgt:
 
 1. Stop de betrokken VM.
-1. Maak een moment opname voor de besturingssysteem schijf van de virtuele machine.
+1. Maak een moment opname van de besturingssysteem schijf van de virtuele machine.
 1. Maak een virtuele harde schijf van de moment opname.
 1. Koppel en koppel de virtuele harde schijf aan een andere Windows-VM voor het oplossen van problemen.
 1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogram ma's uit om problemen op de oorspronkelijke virtuele harde schijf op te lossen.
@@ -175,18 +175,6 @@ Azure Portal ondersteunt nu het wijzigen van de besturingssysteem schijf van de 
 
 1. Kies de nieuwe schijf die u hebt gerepareerd en typ de naam van de virtuele machine om de wijziging te bevestigen. Als de schijf niet in de lijst wordt weer geven, wacht u 10 ~ 15 minuten nadat u de schijf hebt losgekoppeld van de virtuele machine voor probleem oplossing. Zorg er ook voor dat de schijf zich op dezelfde locatie bevindt als de virtuele machine.
 1. Selecteer OK.
-
-## <a name="re-enable-boot-diagnostics"></a>Diagnostische gegevens over opstarten opnieuw inschakelen
-Wanneer u uw virtuele machine maakt op basis van de bestaande virtuele harde schijf, worden diagnostische gegevens over opstarten mogelijk niet automatisch ingeschakeld. Als u de status van diagnostische gegevens over opstarten wilt controleren en indien nodig wilt inschakelen, selecteert u uw virtuele machine in de portal. Klik onder **bewaking**op **Diagnostische instellingen**. Controleer of de status is ingeschakeld en of het selectie vakje **Diagnostische gegevens** **over**opstarten is geselecteerd. Als u wijzigingen aanbrengt, klikt u op **Opslaan**:
-
-![Instellingen voor diagnostische gegevens over opstarten bijwerken](./media/troubleshoot-recovery-disks-portal-linux/reenable-boot-diagnostics.png)
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Problemen met een beheerde schijf-VM oplossen door een nieuwe besturingssysteem schijf te koppelen
-1. Stop de geactiveerde VM.
-2. [Maak een moment opname van een beheerde schijf](../windows/snapshot-copy-managed-disk.md) van de besturingssysteem schijf van de virtuele machine van de beheerde schijf.
-3. [Een beheerde schijf maken op basis van de moment opname](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [Koppel de beheerde schijf als een gegevens schijf van de virtuele machine](../windows/attach-disk-ps.md).
-5. [Wijzig de gegevens schijf van stap 4 in de besturingssysteem schijf](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [problemen met ssh-verbindingen met een Azure VM oplossen](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine. Zie problemen met [toepassings connectiviteit oplossen op een Linux-VM](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.

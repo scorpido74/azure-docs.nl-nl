@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6a929359c0e4e0a5c64eadbf41f565dfeb56a233
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e18d6519d1ee3c1750757af5c59157de8bdde80c
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854116"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637920"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
 
@@ -51,22 +51,29 @@ Verbinding maken met behulp van een van de volgende opties:
 
 - **Sta de IP-adresbereiken van Azure Data Center toe**. Met deze optie worden [IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653) in de down load toegestaan. Gebruik de cmdlet Set-AzureNetworkSecurityRule om toegang te krijgen tot een netwerk beveiligings groep (NSG). Als u een lijst met alleen de regio-specifieke Ip's wilt weer geven, moet u ook de lijst met veilige geadresseerden de service label van de Azure Active Directory (Azure AD) bijwerken om verificatie in te scha kelen.
 
-- **Toegang toestaan met behulp van NSG-Tags**. Als u Nsg's gebruikt om de connectiviteit te beperken, voegt u met deze optie een regel toe aan uw NSG die uitgaande toegang tot Azure Backup mogelijk maakt met behulp van de AzureBackup-tag. Naast deze tag hebt u ook de juiste [regels](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) voor Azure AD en Azure Storage nodig om connectiviteit voor verificatie en gegevens overdracht toe te staan. De label AzureBackup is momenteel alleen beschikbaar in Power shell. Een regel maken met behulp van de AzureBackup-tag:
+- **Toegang toestaan met behulp van NSG-Tags**.  Als u NSG gebruikt om de connectiviteit te beperken, moet u AzureBackup-service label gebruiken om uitgaande toegang tot Azure Backup toe te staan. Daarnaast moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan met behulp van [regels](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) voor Azure AD en Azure Storage. U kunt dit doen vanuit de portal of Power shell.
 
-    - Referenties van een Azure-account toevoegen en de nationale Clouds bijwerken<br/>
-    `Add-AzureRmAccount`
+    Een regel maken met behulp van de portal:
+    
+    - In **alle services**gaat u naar **netwerk beveiligings groepen** en selecteert u de netwerk beveiligings groep.
+    - Selecteer **uitgaande beveiligings regels** onder **instellingen**.
+    - Selecteer **Toevoegen**. Voer alle vereiste gegevens voor het maken van een nieuwe regel in, zoals beschreven in de instellingen van de [beveiligings regel](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op **service label** en **doel service label** is ingesteld op **AzureBackup**.
+    - Klik op **toevoegen**om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
+    
+   Een regel maken met behulp van Power shell:
 
-    - Het NSG-abonnement selecteren<br/>
-    `Select-AzureRmSubscription "<Subscription Id>"`
-
-     - Selecteer de NSG<br/>
-    `$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"`
-
-    - Regel voor uitgaande verbindingen voor Azure Backup servicetag toevoegen<br/>
-    `Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"`
-
+   - Referenties van een Azure-account toevoegen en de nationale Clouds bijwerken<br/>
+    ``Add-AzureRmAccount``
+  - Het NSG-abonnement selecteren<br/>
+    ``Select-AzureRmSubscription "<Subscription Id>"``
+  - Selecteer de NSG<br/>
+    ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
+  - Regel voor uitgaande verbindingen voor Azure Backup servicetag toevoegen<br/>
+   ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
   - De NSG opslaan<br/>
-    `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
+    ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
+
+   
 - **Toegang toestaan met behulp van Azure firewall-Tags**. Als u Azure Firewall gebruikt, maakt u een toepassings regel met behulp van de AzureBackup [FQDN-tag](https://docs.microsoft.com/azure/firewall/fqdn-tags). Hierdoor is uitgaande toegang tot Azure Backup mogelijk.
 - **Implementeer een HTTP-proxy server om verkeer te routeren**. Wanneer u een back-up maakt van een SQL Server Data Base op een virtuele machine van Azure, gebruikt de back-upextensie op de VM de HTTPS-Api's om beheer opdrachten te verzenden naar Azure Backup en gegevens naar Azure Storage. Voor de back-upextensie wordt ook Azure AD gebruikt voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. De uitbrei dingen zijn het enige onderdeel dat is geconfigureerd voor toegang tot het open bare Internet.
 

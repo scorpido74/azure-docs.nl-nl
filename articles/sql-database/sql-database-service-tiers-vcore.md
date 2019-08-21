@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e5af3803ebb4cb0a88a082d3c85d0df68da8d1b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566613"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637290"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Kies uit de vCore-service lagen en migreer vanuit de DTU-service lagen
 
@@ -28,7 +28,7 @@ Met het virtuele kern (vCore) gebaseerde aankoop model kunt u de reken-en opslag
 Gen4 hardware biedt aanzienlijk meer geheugen per vCore. Met GEN5-hardware kunt u echter reken resources veel meer schalen.
 
 > [!IMPORTANT]
-> Nieuwe Gen4-data bases worden niet meer ondersteund in de AustraliaEast-regio.
+> Nieuwe Gen4-data bases worden niet meer ondersteund in de Australië-oost-of Brazilië-zuid regio's.
 > [!NOTE]
 > Zie [service lagen voor het op DTU gebaseerde aankoop model](sql-database-service-tiers-dtu.md)voor meer informatie over de op DTU gebaseerde service lagen. Zie [Azure SQL database-inkoop modellen](sql-database-purchase-models.md)voor informatie over de verschillen tussen de service lagen voor de op DTU gebaseerde en de op vCore gebaseerde aankoop modellen.
 

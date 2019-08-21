@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: 60b3d1dcc7d60b25319b3fa5dd740541a457927f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985138"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640092"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -65,9 +65,9 @@ Gebruik deze tabel als richt lijn:
 |**Blob-opslag (hiërarchie van naam ruimte)** | Azure AD & SAS |
 |**Bestands opslag** | Alleen SAS |
 
-### <a name="option-1-use-azure-ad"></a>Optie 1: Azure AD gebruiken
+### <a name="option-1-use-azure-active-directory"></a>Optie 1: Azure Active Directory gebruiken
 
-Met behulp van Azure AD kunt u eenmaal referenties opgeven in plaats van een SAS-token aan elke opdracht toe te voegen.  
+Door Azure Active Directory te gebruiken, kunt u eenmaal referenties opgeven in plaats van een SAS-token aan elke opdracht toe te voegen.  
 
 > [!NOTE]
 > Als u in de huidige release blobs tussen opslag accounts wilt kopiëren, moet u een SAS-token toevoegen aan elke bron-URL. U kunt de SAS-token alleen weglaten van de doel-URL. Zie [blobs kopiëren tussen opslag accounts](storage-use-azcopy-blobs.md)voor voor beelden.
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> U kunt een prompt gebruiken zoals in dit voor beeld wordt weer gegeven. Op die manier wordt het client geheim niet weer gegeven in de opdracht geschiedenis van de console. 
+> U kunt een prompt gebruiken zoals in dit voor beeld wordt weer gegeven. Op die manier wordt uw wacht woord niet weer gegeven in de opdracht geschiedenis van de console.  
 
 Typ vervolgens de volgende opdracht en druk vervolgens op ENTER.
 
@@ -170,7 +170,7 @@ Vervolgens stelt u de `AZCOPY_SPA_CERT_PASSWORD` omgevings variabele in op het c
 > [!NOTE]
 > Zorg ervoor dat u deze waarde instelt vanaf de opdracht prompt en niet in de omgevings variabele-instellingen van uw besturings systeem. Op die manier is de waarde alleen beschikbaar voor de huidige sessie.
 
-In dit voor beeld ziet u hoe u dit kunt doen in Power shell.
+In dit voor beeld ziet u hoe u deze taak kunt uitvoeren in Power shell.
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"

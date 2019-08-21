@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/07/2019
-ms.openlocfilehash: e75f2fdd0530b92e8c8405b74c2a364ff9e9e28e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 08/16/2019
+ms.openlocfilehash: 6e734a661557b024257fcd1b9d9c2da6a3bc8f85
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935430"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640231"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Problemen met regio servers in azure HDInsight
 
@@ -27,7 +27,7 @@ Wanneer u `hbase hbck` de opdracht uitvoert, wordt een fout bericht weer gegeven
 multiple regions being unassigned or holes in the chain of regions
 ```
 
-Vanuit de Apache-HBase Master gebruikers interface kan worden gezien dat het aantal regio's niet in balans is over alle regio servers.
+Vanuit de Apache-HBase Master gebruikers interface ziet u het aantal regio's dat niet in balans is over alle regio servers. Vervolgens kunt u de opdracht `hbase hbck` uitvoeren om gaten in de regio keten weer te geven.
 
 ### <a name="cause"></a>Oorzaak
 
@@ -37,15 +37,15 @@ Openingen kunnen het resultaat zijn van offline regio's.
 
 Los de toewijzingen op. Volg de onderstaande stappen om de niet-toegewezen regio's weer in de normale staat te brengen:
 
-1. Meld u aan bij HDInsight HBase-cluster met behulp van SSH.
+1. Meld u met SSH aan bij het HDInsight HBase-cluster.
 
-1. Voer `hbase zkcli` de opdracht uit om verbinding te maken met de Zookeeper-shell.
+1. Voer `hbase zkcli` de opdracht uit om verbinding te maken met de ZooKeeper-shell.
 
 1. Uitvoeren `rmr /hbase/regions-in-transition` of`rmr /hbase-unsecure/regions-in-transition` opdracht.
 
 1. Sluit Zookeeper-shell af `exit` met behulp van de opdracht.
 
-1. Open de Ambari-gebruikers interface en start de service Active HBase Master opnieuw vanaf Ambari.
+1. Open de Apache Ambari-gebruikers interface en start de Active HBase Master-service opnieuw.
 
 1. Voer `hbase hbck` de opdracht opnieuw uit (zonder verdere opties). Controleer de uitvoer en zorg ervoor dat alle regio's worden toegewezen.
 
@@ -61,7 +61,7 @@ De regio servers kunnen niet worden gestart.
 
 Meerdere mappen voor het splitsen van WAL.
 
-1. Lijst met huidige Wals ophalen: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
+1. Lijst met huidige WALs ophalen: `hadoop fs -ls -R /hbase/WALs/ > /tmp/wals.out`.
 
 1. Inspecteer `wals.out` het bestand. Als er te veel splitsings mappen zijn (te beginnen met *-splitsen), mislukt de regio server waarschijnlijk vanwege deze directory's.
 

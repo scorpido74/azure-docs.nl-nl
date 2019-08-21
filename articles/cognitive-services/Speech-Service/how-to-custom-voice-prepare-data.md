@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559584"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640432"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Gegevens voorbereiden voor het maken van een aangepaste spraak
 
@@ -57,7 +57,7 @@ Elk audio bestand moet één utterance bevatten (één zin of één draai van ee
 
 Volg deze richt lijnen bij het voorbereiden van audio.
 
-| Eigenschap | Waarde |
+| Eigenschap | Value |
 | -------- | ----- |
 | Bestands indeling | RIFF (. wav), gegroepeerd in een zip-bestand |
 | Sampling frequentie | Ten minste 16.000 Hz |
@@ -124,7 +124,7 @@ Transcripten moeten worden voor bereid op de specificaties die in deze tabel wor
 | Bestandsnaam | Dezelfde naam gebruiken als het overeenkomende audio bestand |
 | Coderings indeling | Alleen UTF-8-stuk lijst |
 | Aantal utterances per regel | Geen limiet |
-| Maximale bestandsgrootte | 50 MILJOEN |
+| Maximale bestandsgrootte | 50 MB |
 
 Alle transcripten-bestanden in dit gegevens type moeten worden gegroepeerd in een zip-bestand. Er is geen submap toegestaan in het zip-bestand. U hebt bijvoorbeeld een zip-bestand met een audio bestand met de naam ' kingstory. wav ', 45 seconden lang, en een andere met de naam ' queenstory. mp3 ', 200 seconden lang. U moet een ander zip-bestand uploaden dat twee transcripten bevat: een met de naam ' kingstory. txt ', de andere ' queenstory. txt '. In elk bestand met tekst zonder opmaak geeft u de volledige juiste transcriptie op voor de overeenkomende audio.
 
@@ -139,7 +139,7 @@ Volg deze richt lijnen bij het voorbereiden van audio.
 > [!NOTE]
 > De Long-audio segmentation-service maakt gebruik van de batch transcriptie-functie van spraak naar tekst, die alleen ondersteuning biedt voor standaard-abonnements gebruikers (S0).
 
-| Eigenschap | Waarde |
+| Eigenschap | Value |
 | -------- | ----- |
 | Bestands indeling | RIFF (. wav) met een sampling frequentie van ten minste 16 kHz-16-bits in PCM of. mp3 met een bitsnelheid van ten minste 256 KBps, gegroepeerd in een zip-bestand |
 | Bestandsnaam | Alleen ASCII-tekens. Unicode-tekens in de naam kunnen niet worden uitgevoerd (bijvoorbeeld de Chinese tekens of symbolen zoals ' — '). Er is geen dubbele naam toegestaan. |

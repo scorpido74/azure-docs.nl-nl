@@ -5,18 +5,17 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 316cfb228050030b15e791e1d890c9048eadc109
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 57dd8e47d44248270920e44268b99c98d399504d
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841091"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69635896"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Afgeschafte vaardig heden voor de cognitieve zoek functie
 
@@ -25,7 +24,7 @@ In dit document worden cognitieve vaardig heden beschreven die als afgeschaft wo
 * Vaardigheids naam: De naam van de vaardigheid die wordt afgeschaft, wordt toegewezen aan het @odata.type kenmerk.
 * Laatst beschik bare API-versie: De laatste versie van de open bare API van Azure Search waarmee vaardig heden met de bijbehorende afgeschafte vaardig heden kunnen worden gemaakt/bijgewerkt.
 * Einde van de ondersteuning: De laatste dag waarna de bijbehorende vaardigheid wordt beschouwd als niet-ondersteund. Eerder gemaakte vaardig heden moet nog steeds blijven functioneren, maar gebruikers worden aanbevolen een gedeprecieerde vaardigheid te migreren.
-* Aanbevelingen: Migratie traject vooruit om een ondersteunde vaardigheid te gebruiken. Gebruikers wordt aangeraden de aanbevelingen te volgen om ondersteuning te blijven ontvangen.
+* Vereisten Migratie traject vooruit om een ondersteunde vaardigheid te gebruiken. Gebruikers wordt aangeraden de aanbevelingen te volgen om ondersteuning te blijven ontvangen.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 

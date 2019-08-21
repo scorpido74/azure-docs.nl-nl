@@ -10,18 +10,88 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
-ms.translationtype: MT
+ms.openlocfilehash: 684a84431c8348ddafab8cefbe831c2b58c3cee6
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828616"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639932"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Releaseopmerkingen Azure Machine Learning-service
 
 In dit artikel meer informatie over de versies van de Azure Machine Learning-service.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://aka.ms/aml-sdk) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informatie over bekende problemen en oplossingen.
+
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK voor python v-1.0.57
++ **Nieuwe functies**
+  + Ingeschakeld `TabularDataset` om te worden gebruikt door AutomatedML. `TabularDataset` Ga https://aka.ms/azureml/howto/createdatasets voor meer informatie naar.
+  
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **automl-client-core-nativeclient**
+    + Er is een fout opgelost die optreedt wanneer training en/of validerings labels (y en y_valid) zijn opgenomen in de vorm van Pandas data frame, maar niet als numpy-matrix.
+    + De interface voor het maken `RawDataContext` van een kan alleen worden gemaakt als `AutoMLBaseSettings` de gegevens en het object zijn vereist.
+    +  Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komen in de Trainingsset tijdens het voors pellen.
+  + **azure-cli-ml**
+    + U kunt nu het SSL-certificaat voor het Score-eind punt dat is geïmplementeerd op het AKS-cluster bijwerken voor zowel het micro soft-certificaat dat is gegenereerd door een klant.
+  + **azureml-automl-core**
+    + Er is een probleem opgelost in AutoML waarbij rijen met ontbrekende labels niet correct zijn verwijderd.
+    + Verbeterde logboek registratie van fouten in AutoML; Er worden nu altijd volledige fout berichten naar het logboek bestand geschreven.
+    + AutoML heeft het vastmaken van het pakket `azureml-defaults`zodanig `azureml-explain-model`bijgewerkt dat `azureml-dataprep`het include,, en. AutoML ontvangt geen waarschuwing meer over niet-overeenkomende pakket (behalve voor `azureml-train-automl` het pakket).
+    + Er is een probleem opgelost in tijds Erie, waarbij de AVK gesplitst zijn van ongelijke omvang, waardoor de berekening van de opslag locatie mislukt.
+    + Bij het uitvoeren van een ensemble-iteratie voor het multi validatie type training, als we de modellen die zijn getraind op de hele gegevensset niet kunnen downloaden, hebben we een inconsistentie aangetroffen tussen de model gewichten en de modellen die in de stemming werden ingevoerd dienen.
+    + Er is een fout opgelost die optreedt wanneer training en/of validerings labels (y en y_valid) zijn opgenomen in de vorm van Pandas data frame, maar niet als numpy-matrix.
+    + Het probleem is opgelost met de prognose taken wanneer er geen is aangetroffen in de Boole-kolommen van de invoer tabellen.
+    + Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen. -Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komen in de Trainingsset tijdens het voors pellen.
+  + **azureml-core**
+    + Probleem opgelost met het rangschikken van de blob_cache_timeout-para meter.
+    + De uitzonderings typen voor externe aanpassing en trans formatie zijn toegevoegd aan systeem fouten.
+    + Er is ondersteuning toegevoegd voor Key Vault geheimen voor externe uitvoeringen. Voeg een azureml. core. class kluis. klasse-kluis toe om geheimen toe te voegen, op te halen en weer te geven van de sleutel kluis die is gekoppeld aan uw werk ruimte. Ondersteunde bewerkingen zijn:
+      + azureml. core. workspace. workspace. Get _default_keyvault ()
+      + azureml. core. de sleutel kluis. _secret (naam, waarde)
+      + azureml. core. de sleutel kluis. _secrets (secrets_dict)
+      + azureml. core. de sleutel kluis. de sleutel kluis. Get _secret (naam)
+      + azureml. core. de sleutel kluis. de sleutel kluis. Get _secrets (secrets_list)
+      + azureml. core. de sleutel kluis. de sleutel kluis. list_secrets ()
+    + Aanvullende methoden voor het verkrijgen van de standaard-sleutel kluis en het ophalen van geheimen tijdens externe uitvoering:
+      + azureml. core. workspace. workspace. Get _default_keyvault ()
+      + azureml. core. run. run. Get _secret (naam)
+      + azureml. core. run. run. Get _secrets (secrets_list)
+    + Er zijn extra onderdrukkings parameters toegevoegd voor verzenden-Hyperdrive CLI-opdracht.
+    + Verbeter de betrouw baarheid van API-aanroepen om nieuwe pogingen uit te breiden naar algemene aanvragen bibliotheek uitzonderingen.
+    + Voeg ondersteuning toe voor het verzenden van uitvoeringen vanuit een ingediende uitvoering.
+    + Er is een vast verlopen SAS-token probleem opgetreden in FileWatcher dat ertoe heeft geleid dat bestanden niet meer worden geüpload nadat het oorspronkelijke token is verlopen.
+    + Ondersteunde HTTP CSV/TSV-bestanden importeren in dataset python SDK.
+    + De methode Workspace. Setup () is afgeschaft. Er wordt een waarschuwings bericht weer gegeven dat gebruikers Create () of Get ()/from_config () gebruiken.
+    + Er is een omgeving toegevoegd. Voeg _private_pip_wheel () toe, waarmee u persoonlijke aangepaste Python-pakketten (. WHL) kunt uploaden naar de werk ruimte en deze veilig met behulp van ze kunt gebruiken om de omgeving te bouwen/te realiseren.
+    + U kunt nu het SSL-certificaat voor het Score-eind punt dat is geïmplementeerd op het AKS-cluster bijwerken voor zowel het micro soft-certificaat dat is gegenereerd door een klant.
+  + **azureml-explain-model**
+    + Para meter toegevoegd om een model-ID toe te voegen aan uitleg bij het uploaden.
+    + Labels `is_raw` zijn toegevoegd aan uitleg in het geheugen en uploads.
+    + Er zijn pytorch-ondersteuning en tests toegevoegd voor het pakket voor de azureml-uitleg-model.
+  + **azureml-opendatasets**
+    + Ondersteuning voor het detecteren en registreren van automatische test omgevingen.
+    + U hebt klassen toegevoegd om Amerikaanse populatie per regio en post te krijgen.
+  + **azureml-pipeline-core**
+    + De eigenschap label is toegevoegd aan de definitie van de invoer-en uitvoer poort.
+  + **azureml-telemetrie**
+    + Er is een onjuiste telemetrie-configuratie hersteld.
+  + **azureml-train-automl**
+    + Er is een fout opgetreden bij het uitvoeren van een probleem waarbij tijdens de installatie fouten geen logboek wordt ontvangen van het veld ' Errors ' voor de installatie en daarom niet is opgeslagen in de bovenliggende run ' Errors '.
+    + Er is een probleem opgelost in AutoML waarbij rijen met ontbrekende labels niet correct zijn verwijderd.
+    + Sta AutoML-gebruikers toe om trainings reeksen te verwijderen die niet lang genoeg zijn bij het voors pellen.
+    + Sta AutoML-gebruikers toe om korrels te verwijderen uit de testset die niet voor komen in de Trainingsset tijdens het voors pellen.
+    + AutoMLStep gaat nu door naar de back-end van automl om te voor komen dat er problemen zijn met wijzigingen of toevoegingen van nieuwe configuratie parameters.
+  + **azureml-train-core**
+    + Torch 1,2-ondersteuning is toegevoegd in PyTorch Estimator.
+  + **azureml-widgets**
+    + Verbeterde matrix diagrammen voor Verwar ring voor classificatie trainingen.
+
+### <a name="azure-portal"></a>Azure-portal
++ **Preview-functie**
+  + Logboek-en uitvoer bestands streaming is nu beschikbaar voor pagina's met details van de uitvoering. De bestanden streamen updates in realtime wanneer de schakel optie voor preview is ingeschakeld.
 
 ## <a name="2019-08-05"></a>2019-08-05
 

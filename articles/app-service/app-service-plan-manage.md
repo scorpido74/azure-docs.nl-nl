@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77d5e4ace14fb0071b6e01a01edbad0128382303
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953884"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639739"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Een App Service-abonnement beheren in azure
 
@@ -97,7 +97,7 @@ U vindt de **kloon-app** in de sectie **hulp middelen voor ontwikkel aars** van 
 
 ## <a name="scale-an-app-service-plan"></a>Een App Service plan schalen
 
-Zie [een app omhoog schalen in azure](web-sites-scale.md)om de prijs categorie van een app service plan omhoog te schalen.
+Zie [een app omhoog schalen in azure](manage-scale-up.md)om de prijs categorie van een app service plan omhoog te schalen.
 
 Als u het aantal exemplaren van een app wilt uitschalen, raadpleegt u [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
@@ -113,7 +113,7 @@ Om onverwachte kosten te voor komen, wordt het plan ook standaard verwijderd wan
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een app omhoog schalen in azure](web-sites-scale.md)
+> [Een app omhoog schalen in azure](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

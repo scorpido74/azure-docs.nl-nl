@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 08/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 60e1db913336cc9f9e355c2e8f8466854de20389
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b93d9ee65850749e79714b632584f1977ca88c81
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828327"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639989"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Virtuele Hyper-V-machines beoordelen met Azure Migrate server-evaluatie
 
@@ -128,13 +128,17 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
 
 Importeer het gedownloade bestand en maak de virtuele machine.
 
-1. Pak het gecomprimeerde VHD-bestand uit in een map op de Hyper-V-host die als host fungeert voor de toestel-VM. Er worden drie mappen geëxtraheerd.
+1. Na het downloaden van het gecomprimeerde VHD-bestand naar de Hyper-V-host waarop de apparaat-VM wordt geplaatst, pakt u het zip-bestand uit.
+    - In de geëxtraheerde locatie wordt het bestand uitgepakt naar een map met de naam **AzureMigrateAppliance_VersionNumber**.
+    - Deze map bevat een submap, ook wel **AzureMigrateAppliance_VersionNumber**genoemd.
+    - Deze submap bevat drie verdere submappen: **moment opnamen**, **virtuele harde schijven**en **virtual machines**.
+
 2. Open Hyper-V-beheer. Klik in **acties**op **virtuele machine importeren**.
 
     ![VHD implementeren](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
 2. Klik in de wizard virtuele machine importeren > **voordat u begint**op **volgende**.
-3. In **map zoeken**geeft u de map op die de geëxtraheerde VHD bevat. Klik op **Volgende**.
+3. Selecteer in **map zoeken**de map **virtual machines** . Klik op **Volgende**.
 1. Klik in **virtuele machine selecteren**op **volgende**.
 2. In **import type kiezen**klikt u op **de virtuele machine kopiëren (een nieuwe unieke id maken)** . Klik op **Volgende**.
 3. Laat in **doel kiezen**de standaard instelling ongewijzigd. Klik op **Volgende**.

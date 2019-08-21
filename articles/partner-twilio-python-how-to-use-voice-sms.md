@@ -1,11 +1,9 @@
 ---
-title: Over het gebruik van Twilio voor spraak en SMS-berichten (Python) | Microsoft Docs
-description: Informatie over het maken van een telefonische oproep en verzenden van een SMS-bericht met de Twilio API-service op Azure. Voorbeelden van code geschreven in Python.
+title: Twilio gebruiken voor spraak en SMS (python) | Microsoft Docs
+description: Meer informatie over het maken van een telefoon gesprek en het verzenden van een SMS-bericht met de Twilio API-service in Azure. Code voorbeelden geschreven in python.
 services: ''
 documentationcenter: python
-author: devinrader
-manager: twilio
-editor: ''
+author: georgewallace
 ms.assetid: 561bc75b-4ac4-40ba-bcba-48e901f27cc3
 ms.service: multiple
 ms.workload: na
@@ -13,110 +11,110 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
-ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: gwallace
+ms.openlocfilehash: 3b9022dd2b5998f95179ee3dfabe6706b55036bc
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457665"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636002"
 ---
-# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Over het gebruik van Twilio voor spraak en SMS-mogelijkheden in Python
-Deze handleiding laat zien hoe u algemene programming taken met de Twilio API-service op Azure uitvoeren. De behandelde scenario's omvatten een telefonische oproep maken en verzenden van een bericht Short Message Service (SMS). Zie voor meer informatie over Twilio en het gebruik van spraak en SMS-berichten in uw toepassingen, de [Vervolgstappen](#NextSteps) sectie.
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio gebruiken voor spraak-en SMS-mogelijkheden in python
+In deze hand leiding wordt gedemonstreerd hoe u veelvoorkomende programmeer taken uitvoert met de Twilio API-service in Azure. De besproken scenario's zijn onder andere het maken van een telefoon oproep en het verzenden van een SMS-bericht (Short Message Service). Zie de sectie [volgende stappen](#NextSteps) voor meer informatie over Twilio en het gebruik van spraak en SMS in uw toepassingen.
 
 ## <a id="WhatIs"></a>Wat is Twilio?
-Twilio is de toekomst van zakelijke communicatie, zodat ontwikkelaars kunnen spraak, VoIP en berichten in toepassingen insluiten wordt ingeschakeld. Ze virtualiseren alle infrastructuur die nodig is in een cloud-gebaseerde, globale omgeving, beschikbaar te maken via de Twilio communications API-platform. Toepassingen zijn eenvoudig te maken en schaalbare. Werk flexibel met betaalt u Ga-prijzen en profiteren van betrouwbaarheid van de cloud.
+Twilio is de toekomst van bedrijfs communicatie ingeschakeld, waardoor ontwikkel aars spraak, VoIP en berichten in toepassingen kunnen insluiten. Ze virtualiseren alle infra structuur die nodig is in een in de cloud gebaseerde wereld wijde omgeving, waardoor deze toegankelijk is via het Twilio Communications API-platform. Toepassingen zijn eenvoudig te bouwen en te schaalbaar. Profiteer van flexibiliteit met prijzen voor betalen per gebruik en profiteer van de betrouw baarheid van de Cloud.
 
-**Twilio-stem** zorgt ervoor dat uw toepassingen maken en telefoongesprekken binnenkrijgt.
-**Twilio-SMS** kan uw toepassing te verzenden en ontvangen van SMS-berichten.
-**Twilio-Client** kunt u VoIP-aanroepen vanuit een telefoon, tablet of een browser en biedt ondersteuning voor WebRTC.
+Met **Twilio Voice** kunnen uw toepassingen telefoon gesprekken voeren en ontvangen.
+Met **TWILIO SMS** kan uw toepassing tekst berichten verzenden en ontvangen.
+Met **Twilio-client** kunt u VoIP-aanroepen van elke telefoon, tablet of browser maken en WebRTC ondersteunen.
 
-## <a id="Pricing"></a>Twilio-prijzen en speciale aanbiedingen
-Azure-klanten ontvangen een [speciale aanbieding] [ special_offer] $10 van Twilio-tegoed bij de upgrade van uw Twilio-Account. Deze Twilio-tegoed kan worden toegepast op een Twilio-gebruik (tegoed van $10 gelijk aan maximaal 1000 SMS-berichten verzenden of ontvangen van maximaal 1000 inkomende Voice-minuten, afhankelijk van de locatie van uw telefoon en -bericht of aanroep van de bestemming). Dit inwisselen [Twilio tegoed] [ special_offer] en aan de slag.
+## <a id="Pricing"></a>Prijzen voor Twilio en speciale aanbiedingen
+Azure-klanten ontvangen een [speciale aanbieding][special_offer] van $10 Twilio-tegoed wanneer u uw Twilio-account bijwerkt. Dit Twilio-tegoed kan worden toegepast op elk Twilio-gebruik ($10-credit equivalent om zoveel 1.000 SMS-berichten te verzenden of Maxi maal 1000 binnenkomende spraak minuten te ontvangen), afhankelijk van de locatie van uw telefoon nummer en bericht-of oproep doel. Inwisselen van dit [Twilio tegoed][special_offer] en aan de slag.
 
-Twilio is een betalen per gebruik. Er zijn geen kosten voor het instellen en u kunt uw account op elk gewenst moment sluiten. U vindt meer informatie op [Twilio prijzen][twilio_pricing].
+Twilio is een service voor betalen naar gebruik. Er zijn geen instel kosten en u kunt uw account op elk gewenst moment sluiten. U kunt meer informatie vinden op [Twilio prijzen][twilio_pricing].
 
-## <a id="Concepts"></a>Concepten
-De Twilio API is een RESTful-API die spraak en SMS-functionaliteit voor toepassingen biedt. -Clientbibliotheken zijn beschikbaar in meerdere talen. Zie voor een lijst [Twilio API-bibliotheken][twilio_libraries].
+## <a id="Concepts"></a>Concept
+De Twilio-API is een resterende API die spraak-en SMS-functionaliteit biedt voor toepassingen. Client bibliotheken zijn beschikbaar in meerdere talen. Zie [TWILIO API libraries][twilio_libraries]voor een lijst.
 
-Belangrijke aspecten van de Twilio API zijn Twilio-termen en Twilio Markup Language (TwiML).
+De belangrijkste aspecten van de Twilio-API zijn Twilio-werk woorden en Twilio Markup Language (TwiML).
 
-### <a id="Verbs"></a>Twilio-termen
-De API maakt gebruik van Twilio termen; bijvoorbeeld, de **&lt;zeg&gt;** term geeft Twilio hoorbaar een bericht te bezorgen bij een oproep.
+### <a id="Verbs"></a>Twilio-werk woorden
+De API maakt gebruik van Twilio-werk woorden. **de&lt;termzeg&gt;** geeft bijvoorbeeld Twilio aan audibly een bericht te verzenden bij een aanroep.
 
-Hier volgt een lijst met Twilio-bewerkingen. Meer informatie over de andere bewerkingen en mogelijkheden via [Twilio Markup Language documentatie][twiml].
+Hier volgt een lijst met Twilio-werk woorden. Meer informatie over de andere bewerkingen en mogelijkheden via [documentatie voor Twilio Markup Language][twiml].
 
-* **&lt;Dial&gt;** : De oproepende functie verbindt met een ander telefoonnummer.
-* **&lt;Gather&gt;** : Verzamelt cijfers ingevoerd op het telefoonnummer.
-* **&lt;Ophangen&gt;** : Een gesprek is beëindigd.
-* **&lt;Onderbreken&gt;** : Wacht op de achtergrond gedurende een opgegeven aantal seconden.
-* **&lt;Afspelen&gt;** : Hiermee wordt een geluidsbestand afgespeeld.
-* **&lt;Wachtrij&gt;** : Voeg het aan een wachtrij met aanroepers.
-* **&lt;Record&gt;** : Registreert de stem van de beller en retourneert een URL van een bestand met de opname.
-* **&lt;Omleiden&gt;** : Het besturingselement van de overdracht van een telefoongesprek of SMS aan de TwiML op een andere URL.
-* **&lt;Afwijzen&gt;** : Een binnenkomende oproep naar uw Twilio-getal afwijzen zonder facturering u.
-* **&lt;Stel dat&gt;** : Converteert tekst naar spraak die wordt gemaakt op een aanroep.
-* **&lt;Sms&gt;** : Verzendt een SMS-bericht.
+* **&lt;Dial&gt;** : Verbindt de beller met een andere telefoon.
+* Verzamelen:  **&lt;&gt;** Hiermee worden numerieke cijfers op het telefoon toetsen blok verzameld.
+* Ophangen:  **&lt;&gt;** Beëindigt een aanroep.
+* Onderbreken:  **&lt;&gt;** Wacht een opgegeven aantal seconden op de achtergrond.
+* Afspelen:  **&lt;&gt;** Een audio bestand speelt.
+* Wachtrij:  **&lt;&gt;** Voeg de toe aan een wachtrij van bellers.
+* Record:  **&lt;&gt;** Registreert de stem van de beller en retourneert een URL van een bestand dat de opname bevat.
+* Omleiden:  **&lt;&gt;** Hiermee wordt het beheer van een aanroep of SMS overgedragen aan de TwiML op een andere URL.
+* Afwijzen: **&gt; &lt;** Hiermee wordt een inkomende oproep naar uw Twilio-nummer afgewezen zonder dat u wordt gefactureerd.
+* Zeggen:  **&lt;&gt;** Hiermee wordt tekst geconverteerd naar spraak die tijdens een aanroep wordt gemaakt.
+* **&lt;Sms&gt;** : Hiermee wordt een SMS-bericht verzonden.
 
 ### <a id="TwiML"></a>TwiML
-TwiML is een set op basis van de Twilio-termen die Twilio van het verwerken van een oproep of SMS op de hoogte op basis van een XML-instructies.
+TwiML is een reeks op XML gebaseerde instructies op basis van de Twilio-werk woorden die Twilio over het verwerken van een aanroep of SMS.
 
-Als u bijvoorbeeld de volgende TwiML de tekst wilt converteren **Hello World** naar spraak.
+Als voor beeld wordt met de volgende TwiML de tekst **Hallo wereld** naar spraak geconverteerd.
 
     <?xml version="1.0" encoding="UTF-8" ?>
     <Response>
       <Say>Hello World</Say>
     </Response>
 
-Wanneer uw toepassing de Twilio-API aanroept, is een van de API-parameters de URL die wordt het TwiML-antwoord geretourneerd. Voor ontwikkelingsdoeleinden, kunt u de opgegeven Twilio URL's voor de TwiML antwoorden die worden gebruikt door uw toepassingen. U kunt ook uw eigen URL's voor het produceren van de antwoorden TwiML hosten en een andere optie is met de `TwiMLResponse` object.
+Wanneer uw toepassing de Twilio API aanroept, is een van de API-para meters de URL die het TwiML-antwoord retourneert. Voor ontwikkelings doeleinden kunt u Twilio-Url's gebruiken om de TwiML-reacties te geven die worden gebruikt door uw toepassingen. U kunt ook uw eigen url's hosten om de TwiML-reacties te maken en een andere optie is `TwiMLResponse` het object te gebruiken.
 
-Zie voor meer informatie over Twilio-termen, de kenmerken en TwiML [TwiML][twiml]. Zie voor meer informatie over de Twilio API [Twilio API][twilio_api].
+Zie [TwiML][twiml]voor meer informatie over Twilio-werk woorden, hun kenmerken en TwiML. Zie [TWILIO API][twilio_api](Engelstalig) voor meer informatie over de TWILIO-API.
 
-## <a id="CreateAccount"></a>Een Twilio-Account maken
-Wanneer u klaar bent voor een Twilio-account, u zich aanmelden bij [probeer Twilio][try_twilio]. U kunt beginnen met een gratis account en een upgrade voor uw account later opnieuw.
+## <a id="CreateAccount"></a>Een Twilio-account maken
+Wanneer u klaar bent om een Twilio-account op te halen, meldt u zich aan bij [try Twilio][try_twilio]. U kunt beginnen met een gratis account en later uw account bijwerken.
 
-Wanneer u zich aanmeldt voor een Twilio-account, ontvangt u een account-SID en een verificatietoken. Beide nodig om de Twilio API-aanroepen. Als u wilt voorkomt ongeoorloofde toegang tot uw account, uw verificatietoken veilig houden. Uw account-SID en verificatietoken worden weergegeven in de [Twilio Console][twilio_console], in de velden met het label **ACCOUNT-SID** en **-VERIFICATIETOKEN**, respectievelijk.
+Wanneer u zich aanmeldt voor een Twilio-account, ontvangt u een account-SID en een verificatie token. Beide zijn nodig voor het maken van Twilio-API-aanroepen. Zorg ervoor dat uw verificatie token is beveiligd om onbevoegde toegang tot uw account te voor komen. Uw account-SID en verificatie token zijn zichtbaar in de [Twilio-console][twilio_console], in de velden met de naam account- **sid** en **verificatie token**.
 
-## <a id="create_app"></a>Een Python-toepassing maken
-Een Python-toepassing die gebruikmaakt van de Twilio-service en wordt uitgevoerd in Azure is niet anders dan de andere Python-toepassing die gebruikmaakt van de Twilio-service. Hoewel Twilio-services op basis van REST zijn en op verschillende manieren kunnen worden aangeroepen vanuit Python, in dit artikel wordt de nadruk gelegd op het gebruik van Twilio-services met [Twilio-bibliotheek voor Python vanuit GitHub][twilio_python]. Zie voor meer informatie over het gebruik van de Twilio-bibliotheek voor Python [ https://www.twilio.com/docs/libraries/python ] [ twilio_lib_docs].
+## <a id="create_app"></a>Een python-toepassing maken
+Een python-toepassing die gebruikmaakt van de Twilio-service en wordt uitgevoerd in azure, is niet anders dan andere python-toepassingen die gebruikmaken van de Twilio-service. Hoewel Twilio Services op verschillende manieren kunnen worden aangeroepen vanuit Python, wordt in dit artikel de nadruk gelegd op het gebruik van Twilio-Services met [Twilio-bibliotheek voor python van github][twilio_python]. Zie [https://www.twilio.com/docs/libraries/python][twilio_lib_docs]voor meer informatie over het gebruik van de Twilio-bibliotheek voor python.
 
-Eerste, [instellen een nieuwe Azure Linux VM] [azure_vm_setup] om te fungeren als host voor uw nieuwe Python-webtoepassing. Zodra de virtuele Machine wordt uitgevoerd, moet u uw toepassingen op een openbare poort beschikbaar te stellen zoals hieronder wordt beschreven.
+Eerst [Stel een nieuwe Azure Linux-VM] [azure_vm_setup] in als host voor uw nieuwe python-webtoepassing. Wanneer de virtuele machine wordt uitgevoerd, moet u uw toepassing zichtbaar maken op een open bare poort, zoals hieronder wordt beschreven.
 
-### <a name="add-an-incoming-rule"></a>Een inkomende regel toevoegen
-  1. Ga naar de pagina [Network Security Group] [azure_nsg].
-  2. Selecteer de Netwerkbeveiligingsgroep die overeenkomt met uw virtuele Machine.
-  3. Toevoegen en **uitgaande regel** voor **poort 80**. Zorg ervoor dat binnenkomende van elk adres toestaan.
+### <a name="add-an-incoming-rule"></a>Een binnenkomende regel toevoegen
+  1. Ga naar de pagina [netwerk beveiligings groep] [azure_nsg].
+  2. Selecteer de netwerk beveiligings groep die overeenkomt met uw virtuele machine.
+  3. Voeg en **regel** voor uitgaand verkeer toe voor **poort 80**. Zorg ervoor dat u inkomende berichten vanaf elk adres toelaat.
 
-### <a name="set-the-dns-name-label"></a>Stel de DNS-naamlabel
-  1. Ga naar de pagina [het openbare IP-adressen] [azure_ips].
-  2. Selecteer de openbare IP-adres dat overeenkomt met uw virtuele Machine.
-  3. Stel de **DNS-naamlabel** in de **configuratie** sectie. In het geval van dit voorbeeld wordt het resultaat er ongeveer als volgt *uw-domeinlabel*. centralus.cloudapp.azure.com
+### <a name="set-the-dns-name-label"></a>Het DNS-naam label instellen
+  1. Ga naar de pagina [de Openbare IP-adressen] [azure_ips].
+  2. Selecteer het open bare IP-adres dat overeenkomt met uw virtuele machine.
+  3. Stel het **DNS-naam label** in het gedeelte **configuratie** in. In het geval van dit voor beeld ziet het er ongeveer als volgt uit: *uw domein label*. centralus.cloudapp.Azure.com
 
-Wanneer u bent geen verbinding maken via SSH met de virtuele Machine kunt u de Web-Framework van uw keuze (de twee meest bekende in Python wordt [Flask](http://flask.pocoo.org/) en [Django](https://www.djangoproject.com)). U kunt een van beide installeren door te voeren de `pip install` opdracht.
+Zodra u via SSH verbinding kunt maken met de virtuele machine, kunt u het webframework van uw keuze installeren (de twee meest bekende in python die de [kolf](http://flask.pocoo.org/) en [Django](https://www.djangoproject.com)zijn). U kunt een van beide installeren door de `pip install` opdracht uit te voeren.
 
-Houd er rekening mee dat we de virtuele Machine voor het toestaan van verkeer op poort 80 alleen geconfigureerd. Dus zorg ervoor dat de toepassing configureren voor het gebruik van deze poort.
+Houd er wel voor dat we de virtuele machine zo hebben geconfigureerd dat alleen verkeer wordt toegestaan op poort 80. Zorg er dus voor dat u de toepassing configureert voor het gebruik van deze poort.
 
-## <a id="configure_app"></a>Uw toepassing configureren voor gebruik Twilio-bibliotheken
-U kunt uw toepassing de Twilio-clientbibliotheek voor Python gebruiken op twee manieren configureren:
+## <a id="configure_app"></a>Uw toepassing configureren voor het gebruik van Twilio-bibliotheken
+U kunt uw toepassing configureren voor het gebruik van de Twilio-bibliotheek voor python op twee manieren:
 
-* De Twilio-bibliotheek voor Python als Pip-pakketten installeren. Deze kan worden geïnstalleerd met de volgende opdrachten:
+* Installeer de Twilio-bibliotheek voor python als PIP-pakket. Deze kan worden geïnstalleerd met de volgende opdrachten:
    
         $ pip install twilio
 
     OF
 
-* Download de Twilio-bibliotheek voor Python van GitHub ([https://github.com/twilio/twilio-python][twilio_python]) en installeer dit als volgt:
+* Down load de Twilio-bibliotheek voor python van[https://github.com/twilio/twilio-python][twilio_python]github () en installeer deze als volgt:
 
         $ python setup.py install
 
-Als u de Twilio-bibliotheek voor Python hebt geïnstalleerd, kunt u vervolgens `import` in uw Python-bestanden:
+Nadat u de Twilio-bibliotheek voor python hebt geïnstalleerd, kunt `import` u deze in uw python-bestanden weer:
 
         import twilio
 
-Zie voor meer informatie, [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.rst).
+Zie [twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.rst)voor meer informatie.
 
-## <a id="howto_make_call"></a>Procedures: Een uitgaande aanroep
-Hieronder ziet u hoe u een uitgaande-aanroep. Deze code maakt ook gebruik van een site Twilio-voorwaarde om te retourneren van het antwoord Twilio Markup Language (TwiML). Vervang de waarden voor de **from_number** en **to_number** telefoonnummers, en zorg ervoor dat u hebt geverifieerd de **from_number** telefoonnummer voor uw Twilio-account voordat de code wordt uitgevoerd.
+## <a id="howto_make_call"></a>Procedures: Een uitgaande oproep doen
+Hieronder ziet u hoe u een uitgaande oproep kunt doen. Deze code maakt ook gebruik van een Twilio-site om het TwiML-antwoord (Twilio Markup Language) te retour neren. Vervang uw waarden door de **from_number** -en **to_number** -telefoon nummers en zorg ervoor dat u het **from_number** -telefoon nummer voor uw Twilio-account hebt gecontroleerd voordat u de code uitvoert.
 
     from urllib.parse import urlencode
 
@@ -149,10 +147,10 @@ Hieronder ziet u hoe u een uitgaande-aanroep. Deze code maakt ook gebruik van ee
                                url=url + urlencode({'Message': message}))
     print(call.sid)
 
-Zoals gezegd, wordt met deze code een Twilio-opgegeven site gebruikt om terug te keren van het antwoord TwiML. U kunt uw eigen locatie in plaats daarvan gebruiken voor het antwoord TwiML; Zie voor meer informatie, [hoe bieden TwiML reacties van uw eigen website](#howto_provide_twiml_responses).
+Zoals vermeld, gebruikt deze code een Twilio-site voor het retour neren van het TwiML-antwoord. U kunt in plaats daarvan uw eigen site gebruiken om het TwiML-antwoord op te geven. Zie [TwiML-reacties op uw eigen website bieden](#howto_provide_twiml_responses)voor meer informatie.
 
 ## <a id="howto_send_sms"></a>Procedures: Een SMS-bericht verzenden
-Hieronder ziet u hoe u verzendt een SMS-bericht met de `TwilioRestClient` klasse. De **from_number** nummer wordt verstrekt door Twilio voor proefaccounts voor het verzenden van SMS-berichten. De **to_number** nummer voor uw Twilio-account moet worden geverifieerd voordat de code wordt uitgevoerd.
+Hieronder ziet u hoe u een SMS-bericht verzendt met `TwilioRestClient` behulp van de-klasse. Het **from_number** -nummer wordt verzorgd door Twilio voor proef accounts voor het verzenden van SMS-berichten. Het **to_number** -nummer moet worden geverifieerd voor uw Twilio-account voordat u de code uitvoert.
 
     # Import the Twilio Python Client.
     from twilio.rest import TwilioRestClient
@@ -173,14 +171,14 @@ Hieronder ziet u hoe u verzendt een SMS-bericht met de `TwilioRestClient` klasse
                                      from_=from_number,
                                      body=message)
 
-## <a id="howto_provide_twiml_responses"></a>Procedures: Bieden van respons TwiML van uw eigen Website
-Wanneer uw toepassing een aanroep naar de Twilio API initieert, wordt Twilio uw aanvraag naar een URL die wordt verwacht dat een TwiML antwoord verzonden. Het bovenstaande voorbeeld maakt gebruik van de URL van de geleverde Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (Hoewel TwiML is ontworpen voor gebruik door Twilio, vindt u dit in uw browser. Bijvoorbeeld, klikt u op [ https://twimlets.com/message ] [ twimlet_message_url] om te zien van een lege `<Response>` element; een ander voorbeeld, klikt u op [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ] [ twimlet_message_url_hello_world]om te zien een `<Response>` element bevat een `<Say>` element.)
+## <a id="howto_provide_twiml_responses"></a>Procedures: TwiML-reacties van uw eigen website bieden
+Wanneer uw toepassing een aanroep naar de Twilio-API initieert, stuurt Twilio uw aanvraag naar een URL die naar verwachting een TwiML-antwoord retourneert. In het bovenstaande voor beeld wordt gebruikgemaakt van [https://twimlets.com/message][twimlet_message_url]de Twilio-URL. (Hoewel TwiML is ontworpen voor gebruik door Twilio, kunt u het weer geven in uw browser. Klik [https://twimlets.com/message][twimlet_message_url] bijvoorbeeld om een leeg `<Response>` element weer te geven. als een ander voor beeld [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] klikt u op `<Response>` om een element met `<Say>` een-element weer te geven.)
 
-In plaats van de geleverde Twilio-URL, kunt u uw eigen locatie waarmee HTTP-antwoorden worden geretourneerd. U kunt de site in elke taal die wordt geretourneerd van XML-antwoorden; maken in dit onderwerp wordt ervan uitgegaan dat u Python gebruikt voor het maken van de TwiML.
+In plaats van te vertrouwen op de Twilio-URL, kunt u uw eigen site maken die HTTP-antwoorden retourneert. U kunt de site maken in elke taal die XML-antwoorden retourneert; in dit onderwerp wordt ervan uitgegaan dat u python gebruikt om de TwiML te maken.
 
-De volgende voorbeelden wordt een TwiML-antwoord met de melding dat uitvoer **Hello World** bij het aanroepen van.
+In de volgende voor beelden wordt een TwiML-antwoord uitgevoerd met de tekst **Hallo wereld** bij de aanroep.
 
-Met Flask:
+Met kolf:
 
     from flask import Response
     @app.route("/")
@@ -195,7 +193,7 @@ Met Django:
         xml = '<Response><Say>Hello world.</Say></Response>'
         return HttpResponse(xml, content_type='text/xml')
 
-Zoals u in het bovenstaande voorbeeld zien kunt, is het antwoord TwiML gewoon een XML-document. De Twilio-bibliotheek voor Python bevat klassen die TwiML voor u wordt gegenereerd. Het onderstaande voorbeeld levert het equivalent antwoord zoals hierboven, maar maakt gebruik van de `twiml` module in de Twilio-bibliotheek voor Python:
+Zoals u in het bovenstaande voor beeld kunt zien, is het TwiML-antwoord slechts een XML-document. De Twilio-bibliotheek voor python bevat klassen waarmee TwiML voor u wordt gegenereerd. In het volgende voor beeld wordt het equivalente antwoord gegenereerd, zoals hierboven `twiml` wordt weer gegeven, maar wordt de module gebruikt in de Twilio-bibliotheek voor python:
 
     from twilio import twiml
 
@@ -203,9 +201,9 @@ Zoals u in het bovenstaande voorbeeld zien kunt, is het antwoord TwiML gewoon ee
     response.say("Hello world.")
     print(str(response))
 
-Zie voor meer informatie over TwiML [ https://www.twilio.com/docs/api/twiml ] [ twiml_reference].
+Zie [https://www.twilio.com/docs/api/twiml][twiml_reference]voor meer informatie over TwiML.
 
-Zodra u uw Python-toepassing is ingesteld dat bieden van respons TwiML hebt, gebruikt u de URL van de toepassing als de URL wordt doorgegeven in de `client.calls.create` methode. Bijvoorbeeld, als u een webtoepassing met de naam hebt **MyTwiML** geïmplementeerd op een Azure gehoste service, kunt u de url als webhook zoals wordt weergegeven in het volgende voorbeeld:
+Zodra u uw python-toepassing hebt ingesteld om TwiML-antwoorden te geven, gebruikt u de URL van de toepassing als de URL `client.calls.create` die wordt door gegeven aan de-methode. Als u bijvoorbeeld een webtoepassing met de naam **MyTwiML** hebt geïmplementeerd in een door Azure gehoste service, kunt u de URL als webhook gebruiken, zoals wordt weer gegeven in het volgende voor beeld:
 
     from twilio.rest import TwilioRestClient
 
@@ -225,15 +223,15 @@ Zodra u uw Python-toepassing is ingesteld dat bieden van respons TwiML hebt, geb
     print(call.sid)
 
 ## <a id="AdditionalServices"></a>Procedures: Aanvullende Twilio-Services gebruiken
-Naast de voorbeelden die hier worden weergegeven, biedt Twilio web-API's die u kunt gebruikmaken van aanvullende Twilio-functionaliteit van uw Azure-toepassing. Zie voor meer informatie, de [Twilio-API-documentatie][twilio_api].
+Naast de voor beelden die hier worden weer gegeven, biedt Twilio-Api's die u kunt gebruiken om gebruik te maken van extra Twilio-functionaliteit van uw Azure-toepassing. Zie de [TWILIO API-documentatie][twilio_api]voor meer informatie.
 
 ## <a id="NextSteps"></a>Volgende stappen
-Nu dat u de basisprincipes van de Twilio-service hebt geleerd, volgt u deze koppelingen voor meer informatie:
+Nu u de basis principes van de Twilio-service hebt geleerd, volgt u deze koppelingen voor meer informatie:
 
-* [Twilio-beveiligingsrichtlijnen][twilio_security_guidelines]
-* [Twilio-HowTo handleidingen en voorbeeldcode][twilio_howtos]
-* [Twilio zelfstudies][twilio_quickstarts]
-* [Twilio on GitHub][twilio_on_github]
+* [Twilio-beveiligings richtlijnen][twilio_security_guidelines]
+* [Twilio-hand leidingen en voorbeeld code][twilio_howtos]
+* [Zelf studies voor Twilio Quick Start][twilio_quickstarts]
+* [Twilio op GitHub][twilio_on_github]
 * [Neem contact op met ondersteuning voor Twilio][twilio_support]
 
 [special_offer]: https://ahoy.twilio.com/azure

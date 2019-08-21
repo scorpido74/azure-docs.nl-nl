@@ -4,22 +4,21 @@ description: Dit artikel gaat over het oplossen van problemen die optreden bij h
 ms.service: backup
 author: dcurwin
 ms.author: dacurwin
-ms.date: 07/22/2019
+ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 486c0ae674f1549206b7aa3110faf31132c22f2a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1182c7d4ac9a103e752a8cd0c392c5e57f1eebd0
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639392"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637570"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Problemen bij het maken van back-ups van Azure-bestanden oplossen
 U kunt met behulp van de informatie in de volgende tabellen problemen en fouten oplossen die optreden tijdens het maken van back-ups van Azure-bestandsshares.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Beperkingen voor het maken van back-ups van Azure-bestandsshares in de preview-versie
 Back-up voor Azure-bestandsshares is in preview. Azure-bestandsshares worden ondersteund in de accounts voor algemeen gebruik v1 en v2. De volgende back-upscenario's worden niet ondersteund voor Azure-bestandsshares:
-- U kunt Azure-bestandsshares niet beveiligen in opslagaccounts waarvoor virtuele netwerken zijn of een firewall is ingeschakeld.
 - Er is geen CLI beschikbaar voor het beveiligen van Azure Files met behulp van Azure Backup.
 - Het maximumaantal geplande back-ups per dag is één.
 - Het maximumaantal on-demand back-ups per dag is vier.
@@ -51,7 +50,6 @@ De volgende tabel is bedoeld voor het configureren van de back-up:
 | U hebt het maximumaantal momentopnamen voor deze bestandsshare bereikt. U kunt nieuwe maken zodra de oudere zijn verlopen. | <ul><li> Deze fout kan optreden wanneer u meerdere back-ups op aanvraag voor een bestand maakt. <li> Er is een limiet van 200 momentopnamen per bestandsshare, met inbegrip van de opnamen die worden gemaakt door Azure Backup. Oudere geplande back-ups (of momentopnamen) worden automatisch opgeschoond. Back-ups (of momentopnamen) op aanvraag moeten worden verwijderd als de limiet is bereikt.<li> Verwijder de back-ups op aanvraag (momentopnamen van Azure-bestandsshares) uit de Azure Files-portal. **Opmerking**: als u momentopnamen verwijdert die zijn gemaakt door Azure Backup, gaan de herstelpunten verloren. |
 | Back-up of terugzetten van bestandsshare is mislukt vanwege een beperking van de opslagservice. Dit komt mogelijk doordat de opslagservice bezig is met het verwerken van andere aanvragen voor het betreffende opslagaccount.| Probeer de bewerking na enige tijd opnieuw. |
 | Terugzetten is mislukt met de melding Kan de doelbestandsshare niet vinden. | <ul><li>Controleer of het geselecteerde opslagaccount bestaat en of de doelbestandsshare niet is verwijderd. <li> Controleer of het opslagaccount een ondersteund opslagaccount voor het maken van back-ups van bestandsshares is. |
-| Azure Backup wordt op dit moment niet ondersteund voor Azure-bestandsshares in opslagaccounts waarvoor virtuele netwerken zijn ingeschakeld. | Schakel virtuele netwerken op uw opslagaccount uit om back-ups of herstelbewerkingen goed te laten verlopen. |
 | Back-up- of hersteltaken mislukken omdat het opslagaccount is vergrendeld. | Verwijder de vergrendeling van het opslagaccount of gebruik verwijderingsvergrendeling in plaats van leesvergrendeling en probeer het opnieuw. |
 | Herstellen mislukt omdat het aantal mislukte bestanden de drempelwaarde overschrijdt. | <ul><li> De oorzaken voor het mislukken van het herstellen worden in een bestand weergegeven (het pad staat in de taakgegevens). Los de fouten op en voer de herstelbewerking alleen opnieuw uit voor de mislukte bestanden. <li> Veelvoorkomende redenen voor fouten bij bestand terugzetten: <br/> -Controleer of de mislukte bestanden niet op dit moment worden gebruikt. <br/> -Er bestaat een map met dezelfde naam als het mislukte bestand in de bovenliggende map. |
 | Herstellen mislukt omdat er geen bestand kan worden hersteld. | <ul><li> De oorzaken voor het mislukken van het herstellen worden in een bestand weergegeven (het pad staat in de taakgegevens). Los de fouten op en voer de herstelbewerkingen alleen opnieuw uit voor de mislukte bestanden. <li> Veelvoorkomende redenen voor fouten bij bestand terugzetten: <br/> -Controleer of de mislukte bestanden niet op dit moment worden gebruikt. <br/> -Er bestaat een map met dezelfde naam als het mislukte bestand in de bovenliggende map. |

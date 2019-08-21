@@ -1,37 +1,35 @@
 ---
-title: Een Azure Search-index maken in Azure portal - Azure Search
-description: Informatie over het maken van een index voor Azure Search met behulp van een ingebouwde portal index ontwerpfuncties.
-manager: cgronlun
+title: Een Azure Search-index maken in Azure Portal-Azure Search
+description: Meer informatie over het maken van een index voor Azure Search met behulp van ingebouwde portal-index ontwerpen.
+manager: nitinme
 author: heidisteen
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 02/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6a2bac71c37cc750eb24e3492ecdcdf0b2333cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60817275"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638814"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>Een Azure Search-index maken in de portal
 
-Azure Search bevat een ingebouwde index designer in de portal handig voor prototypen of maken een [search-index](search-what-is-an-index.md) die worden gehost op uw Azure Search-service. Het hulpprogramma wordt gebruikt voor de bouw schema. Wanneer u de definitie van de opslaat, wordt een lege index wordt volledig uitgedrukt in Azure Search. Hoe u deze laden met doorzoekbare gegevens is aan u.
+Azure Search bevat een ingebouwde index ontwerper in de portal die nuttig is voor prototypen of het maken van een [zoek index](search-what-is-an-index.md) die wordt gehost op uw Azure Search-service. Het hulp programma wordt gebruikt voor het bouwen van een schema. Wanneer u de definitie opslaat, wordt een lege index volledig weer gegeven in Azure Search. Hoe u het laadt met Doorzoek bare gegevens, is voor u.
 
-De indexdesigner is slechts één methode voor het maken van een index. Via een programma, kunt u een index met behulp van de [.NET](search-create-index-dotnet.md) of [REST](search-create-index-rest-api.md) API's.
+De index ontwerper is slechts één benadering voor het maken van een index. Via een programma kunt u een index maken met behulp van de [.net](search-create-index-dotnet.md) -of [rest](search-create-index-rest-api.md) -api's.
 
-## <a name="start-index-designer"></a>Indexdesigner te starten
+## <a name="start-index-designer"></a>Index Designer starten
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) en open het servicedashboard. Klik in de koppelingsbalk op **Alle services** als u in het huidige abonnement naar bestaande 'zoekservices' wilt zoeken. 
 
-2. Klik op de **index toevoegen** koppeling in de opdrachtbalk aan de bovenkant van de pagina.
+2. Klik op de koppeling **index toevoegen** in de opdracht balk boven aan de pagina.
 
-   ![Index koppeling toevoegen in de opdrachtbalk](media/search-create-index-portal/add-index.png "index koppeling toevoegen in de opdrachtbalk")
+   ![Index koppeling toevoegen in de opdracht balk](media/search-create-index-portal/add-index.png "Index koppeling toevoegen in de opdracht balk")
 
-3. Geef uw Azure Search-index een naam. Namen van de index wordt verwezen in indexeren en query-bewerkingen. De naam van de index wordt een onderdeel van de eindpunt-URL die wordt gebruikt om verbinding te maken met de index en om HTTP-aanvragen in de REST API voor Azure Search te verzenden.
+3. Geef uw Azure Search-index een naam. Er wordt naar index namen verwezen in indexerings-en query bewerkingen. De naam van de index wordt een onderdeel van de eindpunt-URL die wordt gebruikt om verbinding te maken met de index en om HTTP-aanvragen in de REST API voor Azure Search te verzenden.
 
    * Begin met een letter.
    * Gebruik alleen kleine letters, cijfers of streepjes (-).
@@ -39,19 +37,19 @@ De indexdesigner is slechts één methode voor het maken van een index. Via een 
 
 ## <a name="add-fields"></a>Velden toevoegen
 
-De index bevat onder andere een *Veldenverzameling* die de doorzoekbare gegevens in uw index definieert. De Veldenverzameling helemaal, Hiermee geeft u de structuur van documenten die u afzonderlijk uploadt. Een Veldenverzameling bevat de vereiste en optionele velden, met de naam en type en met indexkenmerken die bepalen hoe het veld kan worden gebruikt.
+De index bevat onder andere een *Veldenverzameling* die de doorzoekbare gegevens in uw index definieert. Samen bevat de verzameling velden de structuur van documenten die u afzonderlijk uploadt. Een verzameling velden bevat vereiste en optionele velden, met de naam en getypt, met index kenmerken die bepalen hoe het veld kan worden gebruikt.
 
-1. Velden toevoegen om aan te geven de documenten die u uploadt, instellen van een [gegevenstype](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor elk criterium. Bijvoorbeeld, als documenten bestaan uit een *hotel-id*, *hotelnaam*, *adres*, *plaats*, en *regio*, een corresponderend veld voor elk kenmerk in de index te maken. Controleer de [ontwerprichtlijnen in de onderstaande sectie](#design) voor hulp bij het instellen van kenmerken.
+1. Voeg velden toe om de documenten die u uploadt volledig op te geven en een [gegevens type](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor elke document in te stellen. Als bijvoorbeeld documenten bestaan uit een *Hotel-id*, *Hotel naam*, *adres*, *plaats*en *regio*, maakt u een overeenkomend veld voor elke groep in de index. Raadpleeg de [ontwerp richtlijnen in de sectie hieronder](#design) voor hulp bij het instellen van kenmerken.
 
-2. Geef een *sleutel* veld van het type Edm.String. Waarden voor dit veld moeten een unieke identificatie van elk document. De standaardnaam van het veld is *id*, maar u kunt de naam wijzigen, zolang de tekenreeks maar voldoet aan de [naamgevingsregels](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Bijvoorbeeld, als uw Veldenverzameling bevat *hotel-id*, kiest u die voor uw sleutel. Voor elke Azure Search-index is een sleutelveld verplicht en het moet een tekenreeks zijn.
+2. Geef een *sleutel* veld op van het type EDM. String. De waarden voor dit veld moeten elk document uniek identificeren. De standaardnaam van het veld is *id*, maar u kunt de naam wijzigen, zolang de tekenreeks maar voldoet aan de [naamgevingsregels](https://docs.microsoft.com/rest/api/searchservice/Naming-rules). Als uw collectie Fields bijvoorbeeld *Hotel-id*bevat, kiest u dat voor uw sleutel. Voor elke Azure Search-index is een sleutelveld verplicht en het moet een tekenreeks zijn.
 
-3. Kenmerken instellen voor elk veld. De indexdesigner niet van toepassing op kenmerken die ongeldig voor het gegevenstype zijn, maar niet voorstellen wat moet worden opgenomen. Bekijk de instructies in de volgende sectie om te begrijpen wat de kenmerken voor zijn.
+3. Stel kenmerken in voor elk veld. De index Designer sluit alle kenmerken uit die ongeldig zijn voor het gegevens type, maar worden niet voorgesteld wat moet worden opgenomen. Lees de instructies in de volgende sectie voor meer informatie over de kenmerken van.
 
-    API-documentatie voor Azure Search bevat voorbeelden van code met een eenvoudige index *hotels*. In de onderstaande schermafbeelding ziet u de definitie van de index, met inbegrip van de Franse taalanalyse die tijdens de indexdefinitie die u kunt het opnieuw maken als een oefening in de portal.
+    API-documentatie voor Azure Search bevat voorbeelden van code met een eenvoudige index *hotels*. In de onderstaande scherm afbeelding ziet u de index definitie, inclusief de Franse taal analyse die tijdens de index definitie is opgegeven, die u als een Oefen oefening in de portal kunt maken.
 
-    ![Hotels demo index](media/search-create-index-portal/field-definitions.png "Hotels demo index")
+    ![Demo-index van hotels](media/search-create-index-portal/field-definitions.png "Demo-index van hotels")
 
-4. Wanneer u klaar bent, klikt u op **maken** opslaan en de index te maken.
+4. Wanneer u klaar bent, klikt u op **maken** om de index op te slaan en te maken.
 
 <a name="design"></a>
 
@@ -59,7 +57,7 @@ De index bevat onder andere een *Veldenverzameling* die de doorzoekbare gegevens
 
 Hoewel u op elk gewenst moment nieuwe velden kunt toevoegen, worden bestaande velddefinities voor de hele levensduur van de index vergrendeld. Daarom gebruiken ontwikkelaars de portal doorgaans om eenvoudige indexen te maken, om ideeën uit te testen of om een instelling op te zoeken met behulp van de portalpagina's. Een frequente iteratie van een index-ontwerp is efficiënter als u een op code gebaseerde benadering hanteert, zodat u uw index eenvoudig kunt herbouwen.
 
-Voordat de index wordt opgeslagen, worden er analyses en suggesties aan velden gekoppeld. Zorg ervoor dat taalanalyses of suggesties aan uw indexdefinitie toevoegen, terwijl u deze maakt.
+Voordat de index wordt opgeslagen, worden er analyses en suggesties aan velden gekoppeld. Zorg ervoor dat u taal analysen of suggesties toevoegt aan de index definitie terwijl u deze maakt.
 
 Tekenreeksvelden zijn vaak gemarkeerd als **Doorzoekbaar** en **Ophalen mogelijk**. Velden die worden gebruikt om zoekopdrachten te verfijnen, zijn onder andere **Sorteerbaar**, **Filteren mogelijk** en **Facetten mogelijk**.
 
@@ -78,7 +76,7 @@ Veldkenmerken bepalen hoe een veld wordt gebruikt, bijvoorbeeld of het wordt geb
 
 Nadat u een Azure Search-index hebt gemaakt, kunt u doorgaan met de volgende stap: [het uploaden van doorzoekbare gegevens in de index](search-what-is-data-import.md).
 
-U kunt ook u kunt ook rekening houden met een [stil indexen](search-what-is-an-index.md). Naast de Veldenverzameling bevat een index ook analyses, suggesties, scoreprofielen en CORS-instellingen. De portal biedt tabbladen voor het definiëren van de meest voorkomende elementen: Velden, analyses en suggesties. Als u andere elementen wilt maken of wijzigen, kunt u de REST API of de .NET SDK gebruiken.
+U kunt ook een [diep gaande blik op indexen](search-what-is-an-index.md)maken. Naast de Veldenverzameling bevat een index ook analyses, suggesties, scoreprofielen en CORS-instellingen. De portal biedt pagina's met tabbladen voor het definiëren van de meest voorkomende elementen: Velden, analyse functies en suggesties. Als u andere elementen wilt maken of wijzigen, kunt u de REST API of de .NET SDK gebruiken.
 
 ## <a name="see-also"></a>Zie ook
 

@@ -1,6 +1,6 @@
 ---
-title: App - Azure App Service herstellen
-description: Leer hoe u uw app terugzetten vanuit een back-up.
+title: App herstellen-Azure App Service
+description: Meer informatie over het herstellen van uw app vanuit een back-up.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,81 +15,81 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e8bebdb3f54ac59ec19ef798cc3e794473bbec0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2289ef81785520b81c7d69a97cb20196015fe802
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60832466"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637752"
 ---
 # <a name="restore-an-app-in-azure"></a>Een app in Azure herstellen
-Dit artikel leest u hoe u een app in herstellen [Azure App Service](../app-service/overview.md) die u eerder hebt back-up (Zie [maakt u een Back-up van uw app in Azure](manage-backup.md)). U kunt uw app met de gekoppelde databases op verzoek herstellen naar een eerdere status of maak een nieuwe app op basis van een back-ups van uw oorspronkelijke app. Azure App Service ondersteunt de volgende databases voor back-up en herstel:
+In dit artikel wordt beschreven hoe u een app kunt herstellen in [Azure app service](../app-service/overview.md) waarvan u eerder een back-up hebt gemaakt (zie een back-up van [uw app maken in azure](manage-backup.md)). U kunt uw app met de gekoppelde data bases op aanvraag herstellen naar een eerdere status of een nieuwe app maken op basis van een van de back-ups van de oorspronkelijke app. Azure App Service ondersteunt de volgende data bases voor back-up en herstel:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
 - [MySQL in-app](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
-Terugzetten vanaf een back-ups is beschikbaar voor apps die worden uitgevoerd in **Standard** en **Premium** laag. Zie voor meer informatie over het omhoog schalen van uw app [opschalen van een app in Azure](web-sites-scale.md). **Premium** laag kunt u een groter aantal dagelijkse back-ups moeten worden uitgevoerd dan **Standard** laag.
+Herstellen vanuit back-ups is beschikbaar voor apps die worden uitgevoerd in de laag **Standard** en **Premium** . Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie over het omhoog schalen van uw app. Met de **Premium** -laag kunnen een groter aantal dagelijkse back-ups worden uitgevoerd dan de **Standard** -laag.
 
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>Een app herstellen vanuit een bestaande back-up
-1. Op de **instellingen** pagina van uw app in Azure portal, klikt u op **back-ups** om weer te geven de **back-ups** pagina. Klik vervolgens op **herstellen**.
+1. Klik op de pagina **instellingen** van uw app in de Azure Portal op **back-ups** om de pagina **back-ups** weer te geven. Klik vervolgens op **herstellen**.
    
-    ![Klik op nu herstellen][ChooseRestoreNow]
-2. In de **herstellen** pagina, selecteert u eerst de back-bron.
+    ![Kies nu herstellen][ChooseRestoreNow]
+2. Selecteer op de pagina **herstellen** eerst de bron van de back-up.
    
     ![](./media/web-sites-restore/021ChooseSource1.png)
    
-    De **back-up App** optie ziet u alle bestaande back-ups van de huidige app en kunt u een eenvoudig selecteren.
-    De **opslag** optie kunt u een back-ZIP-bestand van een bestaande Azure-opslagaccount en container in uw abonnement selecteren.
-    Als u probeert te herstellen van een back-up van een andere app, gebruikt u de **opslag** optie.
-3. Geef vervolgens de bestemming voor het herstellen van de app in **hersteldoel**.
+    Met de optie **app-back-up** worden alle bestaande back-ups van de huidige app weer gegeven. u kunt er eenvoudig een selecteren.
+    Met de optie **opslag** kunt u elk back-upzip-bestand selecteren op basis van een bestaand Azure Storage account en elke container in uw abonnement.
+    Als u een back-up van een andere app wilt herstellen, gebruikt u de optie **opslag** .
+3. Geef vervolgens de bestemming voor het herstellen van de app op in de **terugzet bestemming**.
    
     ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > Als u ervoor kiest **overschrijven**, worden alle bestaande gegevens in uw huidige app worden gewist en overschreven. Voordat u klikt op **OK**, zorg ervoor dat het is precies wat u wilt doen.
+   > Als u **overschrijven**kiest, worden alle bestaande gegevens in uw huidige app gewist en overschreven. Voordat u op **OK**klikt, moet u ervoor zorgen dat deze precies overeenkomt met wat u wilt doen.
    > 
    > 
    
    > [!WARNING]
-   > Als de App-Service gegevens naar de database schrijft terwijl u deze wilt herstellen, kan dit problemen zoals schending van de primaire sleutel en verlies van gegevens leiden. Het wordt aangeraden eerst de App-Service stoppen voordat u begint met het herstellen van de database.
+   > Als de App Service gegevens naar de data base schrijft terwijl u deze herstelt, kan dit leiden tot symptomen zoals een schending van de primaire sleutel en het verlies van gegevens. U wordt aangeraden de App Service eerst te stoppen voordat u begint met het herstellen van de data base.
    > 
    > 
    
-    U kunt selecteren **bestaande App** om te herstellen van back-up van de app naar een andere app in dezelfde resourcegroep bevinden. Voordat u deze optie gebruikt, moet hebt u al een andere app gemaakt in de resourcegroep met de databaseconfiguratie naar een gedefinieerd in de back-up van de app voor het spiegelen. U kunt ook maken een **nieuw** app naar uw inhoud te herstellen.
+    U kunt **bestaande app** selecteren om de back-up van de app te herstellen naar een andere app in dezelfde resource groep. Voordat u deze optie gebruikt, moet u al een andere app in uw resource groep hebben gemaakt met een spiegel database configuratie die is gedefinieerd in de app-back-up. U kunt ook een **nieuwe** app maken om uw inhoud te herstellen naar.
 
 4. Klik op **OK**.
 
 <a name="StorageAccount"></a>
 
-## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Downloaden of een back-up van een storage-account verwijderen
-1. In het hoofdvenster **Bladeren** pagina van de Azure portal, selecteer **opslagaccounts**. Er wordt een lijst met uw bestaande opslagaccounts weergegeven.
-2. Selecteer het opslagaccount waarin de back-up die u wilt downloaden of verwijderen. De pagina voor het opslagaccount dat wordt weergegeven.
-3. Selecteer in de pagina van het opslagaccount, de container die u wilt
+## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Een back-up van een opslag account downloaden of verwijderen
+1. Selecteer op de pagina **overzicht** van de Azure Portal **opslag accounts**. Er wordt een lijst met bestaande opslag accounts weer gegeven.
+2. Selecteer het opslag account dat de back-up bevat die u wilt downloaden of verwijderen. De pagina voor het opslag account wordt weer gegeven.
+3. Selecteer op de pagina opslag account de gewenste container
    
-    ![Weergavecontainers][ViewContainers]
-4. Selecteer de back-upbestand dat u wilt downloaden of te verwijderen.
+    ![Containers weer geven][ViewContainers]
+4. Selecteer een back-upbestand dat u wilt downloaden of verwijderen.
    
     ![ViewContainers](./media/web-sites-restore/03ViewFiles.png)
 5. Klik op **downloaden** of **verwijderen** , afhankelijk van wat u wilt doen.  
 
 <a name="OperationLogs"></a>
 
-## <a name="monitor-a-restore-operation"></a>Monitor een herstelbewerking uit
-Voor informatie over het slagen of mislukken van de app-herstelbewerking, gaat u naar de **activiteitenlogboek** pagina in de Azure portal.  
+## <a name="monitor-a-restore-operation"></a>Een herstel bewerking bewaken
+Als u meer wilt weten over het slagen of mislukken van de herstel bewerking van de app, gaat u naar de pagina **activiteiten logboek** in de Azure Portal.  
  
 
-Schuif omlaag naar de gewenste bewerking voor het herstellen en klik op om deze te selecteren.
+Schuif omlaag om de gewenste terugzet bewerking te vinden en klik om deze te selecteren.
 
-De pagina met details worden de beschikbare informatie met betrekking tot de herstelbewerking opnieuw weergegeven.
+Op de pagina Details wordt de beschik bare informatie weer gegeven met betrekking tot de herstel bewerking.
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-U kunt back-upbeheer met scripts automatiseren met behulp van de [Azure CLI](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/overview).
+U kunt back-upbeheer automatiseren met scripts met behulp van [Azure cli](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/overview).
 
-Zie voor voorbeelden:
+Zie voor voor beelden:
 
 - [Azure CLI-voorbeelden](samples-cli.md)
 - [Voorbeelden van Azure PowerShell](samples-powershell.md)

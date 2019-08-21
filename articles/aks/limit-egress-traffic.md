@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: cf9dc304efea8874d16953f74bf88a4317760819
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031831"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639788"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Preview-uitgaand verkeer voor cluster knooppunten beperken en toegang beheren tot vereiste poorten en services in azure Kubernetes service (AKS)
 
@@ -58,6 +58,10 @@ Voor beheer-en operationele doel einden moeten knoop punten in een AKS-cluster t
 Als u de beveiliging van uw AKS-cluster wilt verhogen, kunt u uitgaand verkeer beperken. Het cluster is geconfigureerd voor het ophalen van basis installatie kopieën van het systeem container van MCR of ACR. Als u het uitgaande verkeer op deze manier vergrendelt, moet u specifieke poorten en FQDN-s opgeven zodat de AKS-knoop punten correct kunnen communiceren met de vereiste externe services. Zonder deze geautoriseerde poorten en FQDN-namen kunnen uw AKS-knoop punten niet communiceren met de API-server of kern onderdelen installeren.
 
 U kunt [Azure firewall][azure-firewall] of een firewall apparaat van een derde partij gebruiken om uw uitgangs verkeer te beveiligen en deze vereiste poorten en adressen te definiëren. AKS maakt deze regels niet automatisch voor u. De volgende poorten en adressen zijn als referentie bij het maken van de juiste regels in uw netwerk firewall.
+
+> [!IMPORTANT]
+> Wanneer u Azure Firewall gebruikt om uitgaand verkeer te beperken en een door de gebruiker gedefinieerde route (UDR) te maken om al het uitgaande verkeer af te dwingen, moet u een geschikte DNAT-regel in de firewall maken om binnenkomend verkeer op de juiste wijze toe te staan. Als Azure Firewall wordt gebruikt met een UDR, wordt de ingangs instellingen voor asymmetrische route ring onderbroken. (Het probleem treedt op omdat het AKS-subnet een standaard route heeft die naar het privé-IP-adres van de firewall gaat, maar u een open bare load balancer-binnenkomend of Kubernetes service van het type: LoadBalancer). In dit geval wordt het binnenkomende load balancer verkeer ontvangen via het open bare IP-adres, maar het retour pad gaat via het privé-IP-adres van de firewall. Omdat de firewall stateful is, wordt het terugkerende pakket neergezet omdat de firewall niet op de hoogte is van een vastgestelde sessie. Zie [Azure firewall integreren met Azure Standard Load Balancer](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb)voor meer informatie over het integreren van Azure Firewall met uw ingangs-of service Load Balancer.
+>
 
 In AKS zijn er twee sets poorten en adressen:
 

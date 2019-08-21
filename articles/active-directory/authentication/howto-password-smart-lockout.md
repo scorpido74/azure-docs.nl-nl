@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879247"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637598"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory slim vergren delen
 
@@ -48,7 +48,7 @@ Wanneer [Pass-Through-verificatie](../hybrid/how-to-connect-pta.md)wordt gebruik
 Als u bijvoorbeeld wilt dat uw Azure AD-teller hoger is dan AD, zou Azure AD 120 seconden (2 minuten) zijn, terwijl uw on-premises AD is ingesteld op 1 minuut (60 seconden).
 
 > [!IMPORTANT]
-> Het is momenteel niet mogelijk om de Cloud accounts van gebruikers door de beheerder te ontgrendelen als ze zijn vergrendeld door de mogelijkheden van slim vergren delen. De beheerder moet wachten tot de vergrendelings duur is verlopen.
+> Op dit moment kan een beheerder de Cloud accounts van gebruikers niet ontgrendelen als ze zijn vergrendeld door de mogelijkheid van slim vergren delen. De beheerder moet wachten tot de vergrendelings duur is verlopen. De gebruiker kan echter worden ontgrendeld met behulp van selfservice voor wachtwoord herstel (SSPR) van een vertrouwd apparaat of locatie.
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>On-premises account vergrendelings beleid controleren
 

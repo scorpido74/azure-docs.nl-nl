@@ -9,12 +9,12 @@ ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d6a85d0f9480418bd840786e17ee258dbdb90c48
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 32b3f113658a20790e0f149739a882004f12fe21
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985213"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640817"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Voer Azure CLI-of Power shell-opdrachten uit met Azure AD-referenties om toegang te krijgen tot BLOB-of wachtrij gegevens
 
@@ -26,7 +26,7 @@ U kunt machtigingen toewijzen aan Blob-en wachtrij gegevens aan een Azure AD-bev
 
 De uitbrei dingen worden ondersteund voor bewerkingen op containers en wacht rijen. Welke bewerkingen u kunt aanroepen, is afhankelijk van de machtigingen die zijn verleend aan de Azure AD-beveiligings-principal waarmee u zich aanmeldt bij Azure CLI of Power shell. Machtigingen voor het Azure Storage van containers of wacht rijen worden toegewezen via op rollen gebaseerd toegangs beheer (RBAC). Als u bijvoorbeeld de rol **BLOB data Reader** hebt toegewezen, kunt u script opdrachten uitvoeren die gegevens uit een container of wachtrij lezen. Als u de rol **BLOB data contributor** hebt toegewezen, kunt u script opdrachten uitvoeren die een container of wachtrij lezen, schrijven of verwijderen, of de gegevens die ze bevatten. 
 
-Zie [opslag bewerkingen aanroepen met OAuth](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#call-storage-operations-with-oauth-tokens)-tokens voor meer informatie over de vereiste machtigingen voor elke Azure Storage bewerking in een container of wachtrij.  
+Zie [opslag bewerkingen aanroepen met OAuth](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)-tokens voor meer informatie over de vereiste machtigingen voor elke Azure Storage bewerking in een container of wachtrij.  
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>CLI-opdrachten aanroepen met Azure AD-referenties
 

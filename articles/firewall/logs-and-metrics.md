@@ -1,24 +1,26 @@
 ---
-title: Overzicht van Azure-Firewall-logboeken
-description: In dit artikel wordt een overzicht van de diagnostische logboeken van de Firewall van Azure.
+title: Overzicht van Azure Firewall logboeken en metrische gegevens
+description: Dit artikel bevat een overzicht van de Azure Firewall Diagnostische logboeken en metrische gegevens.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: c129c394f3d694b832722287027c1f9e58028a33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8524c8f05a5d48755ab1ccca62f0fd53870190bb
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61065849"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640243"
 ---
-# <a name="azure-firewall-logs"></a>Azure Firewall-logboeken
+# <a name="azure-firewall-logs-and-metrics"></a>Logboeken en metrische gegevens Azure Firewall
 
 U kunt Azure Firewall bewaken met behulp van firewall-logboeken. U kunt ook activiteitenlogboeken gebruiken om bewerkingen in Azure Firewall-resources te controleren.
 
 Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Logboeken kunnen worden verzonden naar [Azure Monitor-logboeken](../azure-monitor/insights/azure-networking-analytics.md), Storage en Event Hubs en kunnen worden geanalyseerd in Azure Monitor-logboeken of door verschillende hulpprogramma's zoals Excel en Power BI.
+
+Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's ondersteunen, waardoor ze nuttig zijn voor waarschuwingen en snelle detectie van problemen. 
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
@@ -26,7 +28,7 @@ Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Logboeke
 
 * **Logboek voor toepassingsregels**
 
-   Het toepassingslogboek van de regel wordt opgeslagen in een storage-account, worden gestreamd naar eventhubs en/of verzonden naar de logboeken van Azure Monitor alleen als u deze voor elke Azure-Firewall hebt ingeschakeld. Elke nieuwe verbinding die overeenkomt met een van uw geconfigureerde toepassingsregels, resulteert in een logboek voor de geaccepteerde/geweigerde verbinding. De gegevens worden geregistreerd in JSON-indeling, zoals weergegeven in het volgende voorbeeld:
+   Het toepassings regel logboek wordt opgeslagen in een opslag account, gestreamd naar Event hubs en/of verzonden naar Azure Monitor Logboeken alleen als u het hebt ingeschakeld voor elke Azure Firewall. Elke nieuwe verbinding die overeenkomt met een van uw geconfigureerde toepassingsregels, resulteert in een logboek voor de geaccepteerde/geweigerde verbinding. De gegevens worden geregistreerd in JSON-indeling, zoals weergegeven in het volgende voorbeeld:
 
    ```
    Category: application rule logs.
@@ -49,7 +51,7 @@ Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Logboeke
 
 * **Logboek voor netwerkregels**
 
-   Het logboek van de regel netwerk wordt opgeslagen in een storage-account, worden gestreamd naar eventhubs en/of verzonden naar de logboeken van Azure Monitor alleen als u deze voor elke Azure-Firewall hebt ingeschakeld. Elke nieuwe verbinding die overeenkomt met een van uw geconfigureerde netwerkregels, resulteert in een logboek voor de geaccepteerde/geweigerde verbinding. De gegevens worden geregistreerd in JSON-indeling, zoals weergegeven in het volgende voorbeeld:
+   Het netwerk regel logboek wordt opgeslagen in een opslag account, gestreamd naar Event hubs en/of verzonden naar Azure Monitor Logboeken alleen als u het hebt ingeschakeld voor elke Azure Firewall. Elke nieuwe verbinding die overeenkomt met een van uw geconfigureerde netwerkregels, resulteert in een logboek voor de geaccepteerde/geweigerde verbinding. De gegevens worden geregistreerd in JSON-indeling, zoals weergegeven in het volgende voorbeeld:
 
    ```
    Category: network rule logs.
@@ -73,17 +75,53 @@ Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Logboeke
 
 U hebt drie opties voor het opslaan van uw logboeken:
 
-* **Opslagaccount**: Storage-accounts zijn beste worden gebruikt voor Logboeken als Logboeken worden opgeslagen voor een langere duur en gecontroleerd wanneer dit nodig is.
-* **Eventhubs**: Eventhubs zijn een goede optie voor het integreren met andere security information en event management (SEIM) hulpprogramma's voor waarschuwingen over uw resources.
-* **Logboeken in Azure Monitor**: Logboeken in Azure Monitor is best gebruikt voor algemene realtime-controle van uw toepassing of trends kijken.
+* **Opslagaccount**: Opslag accounts worden het beste gebruikt voor Logboeken wanneer logboeken worden opgeslagen voor een langere duur en worden gecontroleerd wanneer dit nodig is.
+* **Event hubs**: Event hubs zijn een uitstekende optie om te integreren met andere hulpprogram ma's voor SEIM (Security Information and Event Management) om waarschuwingen over uw resources te krijgen.
+* **Azure monitor logboeken**: Azure Monitor logboeken worden het beste gebruikt voor algemene realtime-bewaking van uw toepassing of voor het bekijken van trends.
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
 
    Activiteitenlogboekitems worden standaard verzameld en kunnen in de Azure-portal worden bekeken.
 
-   U kunt [Azure-activiteitenlogboeken](../azure-resource-manager/resource-group-audit.md) (voorheen bekend als operationele logboeken en auditlogboeken) gebruiken om alle bewerkingen te bekijken die naar uw Azure-abonnement worden verzonden.
+   U kunt [Azure-activiteiten logboeken](../azure-resource-manager/resource-group-audit.md) (voorheen bekend als operationele logboeken en audit Logboeken) gebruiken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnement.
+
+## <a name="metrics"></a>Metrische gegevens
+
+Metrische gegevens in Azure Monitor zijn numerieke waarden die een aspect van een systeem op een bepaald moment beschrijven. Metrische gegevens worden elke minuut verzameld en zijn nuttig voor waarschuwingen omdat ze regel matig kunnen worden gesampled. Een waarschuwing kan snel worden geactiveerd met relatief eenvoudige logica.
+
+De volgende metrische gegevens zijn beschikbaar voor Azure Firewall:
+
+- **Aantal op toepassings regels** gebaseerde treffers-het aantal keren dat een toepassings regel is bereikt.
+
+    Eenheid: aantal
+
+- **Verwerkte gegevens** -hoeveelheid gegevens waarmee de firewall wordt gepasseerd.
+
+    Eenheid: bytes
+
+- Status van **firewall** : geeft de status van de firewall aan.
+
+    Eenheid: percentage
+
+   Deze metriek heeft twee dimensies:
+  - **Status**: Mogelijke waarden zijn *in orde*, gedegradeerd, beschadigd.
+  - **Reden**: Hiermee wordt de reden aangegeven van de bijbehorende status van de firewall. Het kan bijvoorbeeld duiden op *SNAT-poorten* als de firewall status wordt gedegradeerd of beschadigd.
+
+
+
+- **Aantal netwerk regels treffers** -het aantal keren dat een netwerk regel is bereikt.
+
+    Eenheid: aantal
+
+- **SNAT-poort gebruik** : het percentage SNAT-poorten dat door de firewall is gebruikt.
+
+    Eenheid: percentage
+
+   Wanneer u meer open bare IP-adressen aan uw firewall toevoegt, zijn er meer SNAT-poorten beschikbaar, waardoor het gebruik van de SNAT-poorten wordt verminderd. Daarnaast worden er ook extra SNAT-poorten beschikbaar wanneer de firewall wordt geschaald om verschillende redenen (bijvoorbeeld CPU of door Voer). Een bepaald percentage van het gebruik van de SNAT-poorten kan dan ook worden vervolgd zonder dat u open bare IP-adressen toevoegt, alleen omdat de service is uitgeschaald. U kunt het aantal open bare IP-adressen dat beschikbaar is voor het verg Roten van de beschik bare poorten op uw firewall, direct beheren. Maar u kunt het schalen van de firewall niet rechtstreeks beheren. Op dit moment worden er alleen SNAT-poorten toegevoegd voor de eerste vijf open bare IP-adressen.   
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het bewaken van Azure-Firewall-logboeken en metrische gegevens, [zelfstudie: Azure-Firewall-logboeken bewaken](tutorial-diagnostics.md).
+- Zie [zelf studie voor meer informatie over het bewaken van Azure firewall logboeken en metrische gegevens: Azure Firewall logboeken](tutorial-diagnostics.md)bewaken.
+
+- Zie [metrische gegevens in azure monitor](../azure-monitor/platform/data-platform-metrics.md)voor meer informatie over metrische gegevens in azure monitor.

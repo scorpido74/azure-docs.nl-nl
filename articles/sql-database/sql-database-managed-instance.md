@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 94035fda6b1dff491a69c0f0001019ccd753d4e8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ebf4f516b8f90ce2ba8b277281300ae3239821c5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816628"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640810"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
@@ -82,7 +82,7 @@ In vCore-model kunt u kiezen tussen generaties van hardware.
 Vind meer informatie over het verschil tussen hardware-generaties in de [resource limieten voor beheerde exemplaren](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
 > [!IMPORTANT]
-> Nieuwe Gen4-data bases worden niet meer ondersteund in de AustraliaEast-regio.
+> Nieuwe Gen4-data bases worden niet meer ondersteund in de Australië-oost-of Brazilië-zuid regio's.
 
 ## <a name="managed-instance-service-tiers"></a>Service lagen van beheerd exemplaar
 

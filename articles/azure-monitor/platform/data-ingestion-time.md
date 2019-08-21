@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990160"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639490"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Opname tijd van gegevens vastleggen in Azure Monitor
 Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. Er zijn vaak vragen over de tijd die nodig is om te zorgen dat logboek gegevens beschikbaar worden nadat deze zijn verzameld. In dit artikel worden de verschillende factoren beschreven die van invloed zijn op deze latentie.
@@ -100,8 +100,11 @@ Heartbeat
 | summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by Computer 
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
- 
+
+De voor gaande percentiel controles zijn geschikt voor het vinden van algemene trends in latentie. Als u een piek in de latentie van een korte termijn wilt identificeren,`max()`is het gebruik van het maximum () mogelijk effectiever.
+
 Als u wilt inzoomen op de opname tijd voor een specifieke computer gedurende een bepaalde periode, gebruikt u de volgende query, waarmee ook de gegevens van de afgelopen dag in een grafiek worden gevisualiseerd: 
+
 
 ``` Kusto
 Heartbeat 

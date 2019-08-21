@@ -1,6 +1,6 @@
 ---
-title: Gebruik Azure Security Center aanbevelingen om beveiliging te verbeteren | Microsoft Docs
-description: " Informatie over het gebruik van beveiligingsbeleid en aanbevelingen in Azure Security Center om te beperken van een aanval op de beveiliging. "
+title: Gebruik Azure Security Center aanbevelingen voor het verbeteren van de beveiliging | Microsoft Docs
+description: " Meer informatie over het gebruik van beveiligings beleid en aanbevelingen in Azure Security Center voor het oplossen van een beveiligings aanval. "
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/26/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967968"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640878"
 ---
-# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Gebruik Azure Security Center aanbevelingen om beveiliging te verbeteren
-U kunt de kans op een aanzienlijke beveiligingsgebeurtenis beperken door een beveiligingsbeleid configureren en vervolgens implementeren van de aanbevelingen die door Azure Security Center. Dit artikel ziet u hoe u beveiligingsbeleid en aanbevelingen in Security Center gebruikt om te beperken van een aanval op de beveiliging. 
+# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center aanbevelingen gebruiken om de beveiliging te verbeteren
+U kunt de kans op een belang rijke beveiligings gebeurtenis verminderen door een beveiligings beleid te configureren en vervolgens de aanbevelingen te implementeren die door Azure Security Center worden gegeven. In dit artikel leest u hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. 
 
-Security Center wordt automatisch uitgevoerd continue scans voor het analyseren van de beveiligingsstatus van uw Azure-resources. Wanneer Security Center potentiële beveiligingsproblemen worden geïdentificeerd, worden er aanbevelingen die u bij het begeleiden configureren van de vereiste beveiligingscontroles. Security Center-updates zijn aanbevelingen binnen 24 uur, met de volgende uitzonderingen:
+Security Center doorlopende scans wordt automatisch uitgevoerd om de beveiligings status van uw Azure-resources te analyseren. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde beveiligings controles leiden. Security Center worden aanbevelingen binnen 24 uur bijgewerkt, met de volgende uitzonde ringen:
 
-- Besturingssysteem beveiligingsaanbevelingen voor de configuratie worden bijgewerkt binnen 48 uur
-- Aanbevelingen voor Endpoint Protection problemen worden binnen acht uur bijgewerkt
+- Aanbevelingen voor de beveiligings configuratie van het besturings systeem worden binnen 48 uur bijgewerkt
+- Aanbevelingen voor Endpoint Protection-problemen worden binnen 8 uur bijgewerkt
 
 ## <a name="scenario"></a>Scenario
-In dit scenario laat zien hoe u Security Center gebruiken om te helpen verminderen de kans op een beveiligingsincident door Security Center aanbevelingen voor bewaking en actie te ondernemen. Het scenario wordt gebruikt voor het fictieve bedrijf, Contoso en rollen die zijn gepresenteerd in het Security Center [planning- en bedieningsgids voor](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). In dit scenario focussen we op de functies van de volgende personen:
+In dit scenario ziet u hoe u Security Center kunt gebruiken om de kans op een beveiligings incident te verminderen door te controleren of er aanbevelingen zijn voor Security Center en actie te ondernemen. In het scenario wordt gebruikgemaakt van het fictieve bedrijf, Contoso en de functies die worden weer gegeven in de Security Center plannings- [en bedienings handleiding](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). In dit scenario richten we ons op de rollen van de volgende personen:
 
-![Scenario-rollen](./media/security-center-using-recommendations/scenario-roles.png)
+![Scenario rollen](./media/security-center-using-recommendations/scenario-roles.png)
 
-Contoso heeft enkele onlangs gemigreerd van de on-premises resources naar Azure. Contoso wil voor het beveiligen van hun resources en het verminderen van kwetsbaarheid van hun bronnen in de cloud.
+Contoso heeft een aantal van hun on-premises resources naar Azure gemigreerd. Contoso wil hun resources beveiligen en het beveiligings probleem van hun resources in de Cloud verminderen.
 
 ## <a name="use-azure-security-center"></a>Azure Security Center gebruiken
-David van Contoso de IT-beveiliging, heeft al gekozen voor onboarding Security Center voor Contoso abonnementen aan Azure Security Center om te voorkomen en detecteren van beveiligingsrisico's. 
+David, van de IT-beveiliging van contoso, heeft al gekozen om Security Center te doen op de abonnementen van Contoso op Azure Security Center om beveiligings problemen te voor komen en te detecteren. 
 
-Security Center analyseert de beveiligingsstatus van Contoso Azure-resources automatisch en standaard-beveiligingsbeleid is van toepassing. Wanneer Security Center potentiële beveiligingsproblemen worden geïdentificeerd, maakt het **aanbevelingen** op basis van de besturingselementen die zijn ingesteld in het beveiligingsbeleid. 
+Security Center analyseert automatisch de beveiligings status van de Azure-resources van Contoso en past het standaard beveiligings beleid toe. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden **aanbevelingen** gemaakt op basis van de besturings elementen die zijn ingesteld in het beveiligings beleid. 
 
-Beveiliging van Azure standard-laag, David uitgevoerd in alle abonnementen om op te halen van de volledige suite met aanbevelingen en beveiligingsfuncties die beschikbaar zijn. Jeff uitvoeren van Onboarding van alle zijn bestaande on-premises servers die nog niet hebt zijn gemigreerd naar de cloud zodat hij van Security Center hybrid profiteren kan bieden ook ondersteuning voor zijn [Windows](quick-onboard-windows-computer.md) en [Linux](quick-onboard-linux-computer.md) -servers.
+David voert de Azure Security-laag uit op alle abonnementen om de volledige suite met aanbevelingen en beveiligings functies beschikbaar te krijgen. Jeroen voert ook alle bestaande on-premises servers uit die nog niet zijn gemigreerd naar de Cloud, zodat ze kunnen profiteren van de hybride ondersteuning van Security Center op hun [Windows](quick-onboard-windows-computer.md) -en [Linux](quick-onboard-linux-computer.md) -servers.
 
-Jeff is de eigenaar van een cloud-workload. Jeff is verantwoordelijk voor het toepassen van beveiligingscontroles in overeenstemming met het beveiligingsbeleid van Contoso. 
+Jeff is een eigenaar van de Cloud-workload. Jeff is verantwoordelijk voor het Toep assen van beveiligings controles in overeenstemming met het beveiligings beleid van contoso. 
 
 Jeff voert de volgende taken uit:
 
-- Beveiligingsaanbevelingen voor die door Security Center bewaken
-- Aanbevelingen voor beveiliging evalueren en bepalen of hij moet toepassen of verwijderen
-- Aanbevelingen voor beveiliging toepassen
+- Beveiligings aanbevelingen bewaken die worden verschaft door Security Center
+- Evalueer beveiligings aanbevelingen en beslis of de aanbevelingen moeten worden toegepast of genegeerd.
+- Aanbevelingen voor beveiliging Toep assen
 
-### <a name="remediate-threats-using-recommendations"></a>Bedreigingen met behulp van aanbevelingen herstellen
-Als onderdeel van de dagelijkse bewakingsactiviteiten, Jeff zich aanmeldt bij Azure en Security Center wordt geopend. 
+### <a name="remediate-threats-using-recommendations"></a>Bedreigingen herstellen met behulp van aanbevelingen
+Als onderdeel van hun dagelijkse bewakings activiteiten houdt Jeff zich aan bij Azure en opent Security Center. 
 
-1. Jeff selecteert van diens werkbelasting abonnementen.
+1. Jeff selecteert de abonnementen van de werk belasting.
 
-2. Jeroen controleert hij **score secure** om op te halen in een algemene afbeelding van hoe veilig de abonnementen zijn en hij ziet dat de score 548.
+2. Jeff controleert de **beveiligde Score** om een beeld te krijgen van hoe veilig de abonnementen zijn en ziet dat de Score 548 is.
 
-3. Jeff heeft om te bepalen welke aanbevelingen voor het afhandelen van eerst. Jeff klikt op beveiligde score en wordt gestart voor het afhandelen van aanbevelingen op basis van hoeveel zijn verbetert [score impact secure](security-center-secure-score.md).
+3. Jeff moet bepalen welke aanbevelingen het eerst moeten worden verwerkt. In dat geval klikt u op beveiligde Score en begint u met het afhandelen van aanbevelingen op basis van de mate waarin het effect van de [beveiligde Score](security-center-secure-score.md)wordt verbeterd.
 
-4. Omdat Jeff voorzien van tal van verbonden virtuele machines en servers is, Jeff wil zich richten op **reken- en apps**.
+4. Omdat Jeff een groot aantal aangesloten Vm's en servers heeft, besluit Jeff zich te richten op **Compute en apps**.
 
-5. Wanneer Jeff klikt **reken- en apps**, hij ziet een lijst met aanbevelingen en ze worden verwerkt op basis van de beveiligde impact te beoordelen.
+5. Wanneer Jeff op **Compute en apps**klikt, wordt een lijst met aanbevelingen weer geven en worden deze verwerkt op basis van de impact op de beveiligde Score.
 
-6. Jeff heeft een groot aantal virtuele machines voor internetgerichte en omdat de poorten worden blootgesteld, hij is vastgesteld dat een aanvaller de controle over de servers kan krijgen. Dus Jeff wil gebruiken (**just-in-time-VM-toegang**) [security-center-just-in-time.md].
+6. Jeroen heeft talloze Internet gerichte Vm's en omdat hun poorten worden weer gegeven, is het een goed moment dat een aanvaller controle kan krijgen over de servers. Jeff kiest voor gebruik (**just-in-time-VM-toegang**) [Security-Center-just-in-time.MD].
 
-Jeff blijft verplaatsen door middel van de hoge prioriteit en aanbevelingen voor gemiddelde prioriteit en beslissingen over de uitvoering. Voor elke aanbeveling kijkt Jeff naar de gedetailleerde informatie opgegeven door Security Center om te begrijpen welke bronnen worden beïnvloed, wat de veilige score van invloed is, welke elke aanbeveling betekent en welke stappen voor het oplossen van problemen.
+Jeff gaat door met de aanbevelingen met hoge prioriteit en normale prioriteit en maakt beslissingen bij de implementatie. Voor elke aanbeveling bekijkt Jeff de gedetailleerde informatie die wordt verstrekt door Security Center om te begrijpen welke resources worden beïnvloed, wat de invloed heeft op de gevolgen van de veilige Score, wat elke aanbeveling betekent en stappen voor herstel voor het oplossen van elk probleem.
 
 ## <a name="conclusion"></a>Conclusie
-Bewaking van de aanbevelingen in Security Center helpt u beveiligingsproblemen te elimineren voordat een aanval plaatsvindt. Als u aanbevelingen voor herstel, wordt uw beveiligde score en uw workloads beveiligingspostuur verbeteren. Security Center detecteert automatisch nieuwe resources implementeren, beoordeelt ze op basis van uw beveiligingsbeleid en aanbevelingen geven voor het beveiligen van deze nieuwe.
+Als u aanbevelingen in Security Center bewaken, kunt u beveiligings problemen elimineren voordat een aanval plaatsvindt. Wanneer u aanbevelingen herstelt, worden uw beveiligde Score en de beveiligings postuur van uw workloads verbeterd. Security Center detecteert automatisch nieuwe resources die u implementeert, beoordeelt deze tegen uw beveiligings beleid en biedt nieuwe aanbevelingen voor het beveiligen ervan.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zorg ervoor dat u hebt een bewakingsproces aanwezig is, in die u regelmatig controleren of de aanbevelingen in Security Center zodat u zeker dat u uw resources beveiligen na verloop van tijd kunt maken.
+Zorg ervoor dat u een controle proces hebt, waarin u regel matig de aanbevelingen in Security Center controleert, zodat u ervoor kunt zorgen dat uw resources in de loop van de tijd veilig blijven.
 
-In dit scenario laat zien hoe u beveiligingsbeleid en aanbevelingen in Security Center gebruikt om te beperken van een aanval op de beveiliging. Zie de [respons op incidenten scenario](security-center-incident-response.md) voor meer informatie over hoe u met reacties op incidenten in plaats van plan bent voordat er een aanval plaatsvindt.
+In dit scenario wordt uitgelegd hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. Raadpleeg het [scenario voor reactie](security-center-incident-response.md) op incidenten voor meer informatie over hoe u een reactie plan voor incidenten hebt voordat een aanval plaatsvindt.
 
-Meer informatie over het reageren op bedreigingen met [respons op incidenten](security-center-incident-response.md).
+Meer informatie over hoe u kunt reageren op bedreigingen met [reactie](security-center-incident-response.md)op incidenten.

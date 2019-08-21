@@ -1,13 +1,13 @@
 ---
-title: 502 Ongeldige gateway oplossen, 503 service niet beschikbaar fouten - Azure App Service | Microsoft Docs
-description: Problemen oplossen met 502 Ongeldige gateway- en 503 service niet beschikbaar fouten in uw app die wordt gehost in Azure App Service.
+title: Fix 502 ongeldige gateway, 503 Service niet-beschik bare fouten-Azure App Service | Microsoft Docs
+description: Problemen oplossen met 502 ongeldige gateway en de 503-Service niet-beschik bare fouten in uw app die wordt gehost in Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: ''
 tags: top-support-issue
-keywords: 502 Ongeldige gateway, 503 service niet beschikbaar, 503-fout, fout 502
+keywords: 502 ongeldige gateway, 503-Service niet beschikbaar, fout 503, fout 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
@@ -17,47 +17,47 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d40b11538d5aee20b54ddd6d3ca112f30238b512
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60833040"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636543"
 ---
-# <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>HTTP-fouten '502 Ongeldige gateway' en '503 service niet beschikbaar' in Azure App Service oplossen
-'502 Ongeldige gateway' en '503 service niet beschikbaar' zijn veelvoorkomende fouten in uw app die wordt gehost in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Dit artikel helpt bij het oplossen van deze fouten.
+# <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problemen met HTTP-fouten van "502 ongeldige gateway" en "503-Service niet beschikbaar" in Azure App Service
+"502 ongeldige gateway" en "503-Service niet beschikbaar" zijn veelvoorkomende fouten in uw app die wordt gehost in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Dit artikel helpt u bij het oplossen van deze fouten.
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op [het Azure MSDN en Stack Overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning voor Azure site](https://azure.microsoft.com/support/options/) en klikt u op **ontvang ondersteuning**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en de stack overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en klik op **Ontvang ondersteuning**.
 
 ## <a name="symptom"></a>Symptoom
-Wanneer u naar de app bladert, wordt een HTTP '502 Ongeldige Gateway' fout of een HTTP-fout '503 Service niet beschikbaar'.
+Wanneer u naar de app bladert, wordt een HTTP-fout ' 502-ongeldige gateway ' weer gegeven of is de fout melding HTTP "503-Service niet beschikbaar".
 
 ## <a name="cause"></a>Oorzaak
-Dit probleem wordt vaak veroorzaakt door problemen met toepassingen niveau, zoals:
+Dit probleem wordt vaak veroorzaakt door problemen op toepassings niveau, zoals:
 
-* aanvragen duurt lang
-* toepassing met behulp van hoge geheugen/CPU
-* de toepassing is gecrasht vanwege een uitzondering.
+* aanvragen nemen een lange tijd in beslag
+* toepassing met hoge geheugen/CPU
+* toepassing is vastgelopen vanwege een uitzonde ring.
 
-## <a name="troubleshooting-steps-to-solve-502-bad-gateway-and-503-service-unavailable-errors"></a>Stappen voor probleemoplossing '502 Ongeldige gateway' en '503 service niet beschikbaar'-fouten oplossen
-Oplossen van problemen kan worden onderverdeeld in drie verschillende taken, in opeenvolgende volgorde:
+## <a name="troubleshooting-steps-to-solve-502-bad-gateway-and-503-service-unavailable-errors"></a>Probleemoplossings stappen voor het oplossen van fouten met de fout "502 ongeldige gateway" en "503-Service niet beschikbaar"
+Probleem oplossing kan worden onderverdeeld in drie afzonderlijke taken, in sequentiële volg orde:
 
-1. [Bekijk en werking van de toepassing controleren](#observe)
+1. [Gedrag van de toepassing observeren en bewaken](#observe)
 2. [Gegevens verzamelen](#collect)
-3. [Het probleem](#mitigate)
+3. [Het probleem oplossen](#mitigate)
 
-[App Service](overview.md) biedt verschillende opties bij elke stap.
+[App service](overview.md) biedt u verschillende opties bij elke stap.
 
 <a name="observe" />
 
-### <a name="1-observe-and-monitor-application-behavior"></a>1. Bekijk en werking van de toepassing controleren
-#### <a name="track-service-health"></a>Servicestatus bijhouden
-Microsoft Azure publicizes telkens wanneer er een onderbreking of prestaties verslechtering van de service is. U kunt de status van de service volgen op de [Azure Portal](https://portal.azure.com/). Zie voor meer informatie, [servicestatus bijhouden](../monitoring-and-diagnostics/insights-service-health.md).
+### <a name="1-observe-and-monitor-application-behavior"></a>1. Gedrag van de toepassing observeren en bewaken
+#### <a name="track-service-health"></a>Service status bijhouden
+Microsoft Azure bekendmaking telkens wanneer er sprake is van een onderbreking van de service of prestaties. U kunt de status van de service in de [Azure-Portal](https://portal.azure.com/)volgen. Zie [service status bijhouden](../monitoring-and-diagnostics/insights-service-health.md)voor meer informatie.
 
-#### <a name="monitor-your-app"></a>Uw app bewaken
-Deze optie kunt u achterhalen als uw toepassing problemen ondervindt. In de blade van uw app, klikt u op de **aanvragen en fouten** tegel. De **Metric** blade ziet u alle metrische gegevens die u kunt toevoegen.
+#### <a name="monitor-your-app"></a>Uw app controleren
+Met deze optie kunt u nagaan of uw toepassing problemen ondervindt. Klik in de Blade van uw app op de tegel **aanvragen en fouten** . Op de Blade **metrische gegevens** ziet u alle metrische gegevens die u kunt toevoegen.
 
-Sommige van de metrische gegevens die u mogelijk wilt controleren voor uw app
+Enkele van de metrische gegevens die u mogelijk wilt bewaken voor uw app, zijn
 
 * Gemiddeld geheugenwerkset
 * Gemiddelde reactietijd
@@ -65,58 +65,58 @@ Sommige van de metrische gegevens die u mogelijk wilt controleren voor uw app
 * Geheugenwerkset
 * Aanvragen
 
-![de app controleren voor het oplossen van HTTP-fouten van 502 Ongeldige gateway- en 503 service niet beschikbaar](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
+![app bewaken bij het oplossen van HTTP-fouten van 502 ongeldige gateway en de 503-Service is niet beschikbaar](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
 Zie voor meer informatie:
 
-* [Apps bewaken in Azure App Service](web-sites-monitor.md)
+* [Apps in Azure App Service bewaken](web-sites-monitor.md)
 * [Waarschuwingen ontvangen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Gegevens verzamelen
-#### <a name="use-the-diagnostics-tool"></a>Het hulpprogramma diagnostics gebruiken
-App Service biedt een intelligente en interactieve ervaring om u te helpen bij het oplossen van uw app geen configuratie vereist. Als u problemen met uw app uitvoert, wordt het hulpprogramma diagnostics wijs wat er mis om u te helpen de juiste informatie snel en eenvoudig kunt oplossen en los het probleem is.
+#### <a name="use-the-diagnostics-tool"></a>Het hulp programma voor diagnostische gegevens gebruiken
+App Service biedt een intelligente en interactieve ervaring om u te helpen bij het oplossen van problemen met uw app zonder dat hiervoor configuratie is vereist. Wanneer u problemen ondervindt met uw app, wordt in het diagnostische hulp programma aangegeven wat er mis is met de juiste informatie om snel te kunnen werken en het probleem op te lossen.
 
-Voor toegang tot App Service-diagnostics, gaat u naar uw App Service-app of een App Service-omgeving in de [Azure-portal](https://portal.azure.com). Klik in het linkernavigatievenster op **vaststellen en oplossen van problemen met**.
+Om toegang te krijgen tot App Service diagnostische gegevens, gaat u naar uw App Service app of App Service Environment in de [Azure Portal](https://portal.azure.com). Klik in de linkernavigatiebalk op **problemen vaststellen en oplossen**.
 
-#### <a name="use-the-kudu-debug-console"></a>Gebruik de Kudu-Console voor foutopsporing
-App Service wordt geleverd met een console voor foutopsporing die u gebruiken kunt voor foutopsporing, verkennen, het uploaden van bestanden, evenals de JSON-eindpunten voor het ophalen van gegevens over uw omgeving. Dit heet de *Kudu-Console* of de *SCM-Dashboard* voor uw app.
+#### <a name="use-the-kudu-debug-console"></a>De kudu-console voor fout opsporing gebruiken
+App Service wordt geleverd met een console voor fout opsporing die u kunt gebruiken voor het opsporen van fouten, het verkennen, uploaden van bestanden en JSON-eind punten voor het verkrijgen van informatie over uw omgeving. Dit wordt de *kudu-console* of het *SCM-dash board* voor uw app genoemd.
 
-U kunt dit dashboard openen door te gaan naar de koppeling **https://&lt;uw app-naam >.scm.azurewebsites.net/** .
+U kunt dit dash board openen door naar de koppeling te gaan **https://&lt;uw app-naam >. scm. azurewebsites. net/** .
 
-Enkele van de dingen die Kudu biedt, zijn:
+Enkele van de dingen die kudu biedt:
 
-* omgevingsinstellingen voor uw toepassing
-* logboekstream
+* omgevings instellingen voor uw toepassing
+* logboek stroom
 * diagnostische dump
-* fouten opsporen in een console waarin u Powershell-cmdlets en basic DOS-opdrachten kunt uitvoeren.
+* console voor fout opsporing, waarin u Power shell-cmdlets en Basic DOS-opdrachten kunt uitvoeren.
 
-Een andere handige functie van Kudu is dat, als uw toepassing de eerste kans uitzonderingen genereren is, kunt u Kudu en dumpbestanden voor de SysInternals-hulpprogramma Procdump geheugen maken. Deze geheugendumps zijn momentopnamen van het proces en vaak kunt u meer gecompliceerde problemen oplossen met uw app.
+Een andere handige functie van kudu is dat, als uw toepassing uitzonde ringen voor de eerste kans verkrijgt, u kudu en het hulp programma SysInternals kunt gebruiken Procdump om geheugen dumps te maken. Deze geheugen dumps zijn moment opnamen van het proces en kunnen u vaak helpen om complexere problemen met uw app op te lossen.
 
-Zie voor meer informatie over functies die beschikbaar zijn in Kudu [Azure Websites online tools die u moet weten over](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Zie voor meer informatie over de beschik bare functies in kudu [Azure websites online-hulpprogram ma's waarover u moet weten](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. Het probleem
+### <a name="3-mitigate-the-issue"></a>3. Het probleem oplossen
 #### <a name="scale-the-app"></a>De app schalen
-In Azure App Service, kunt voor betere prestaties en doorvoer, u de schaal waarmee u uw toepassing uitvoert aanpassen. Omhoog schalen van een app bestaat uit twee gerelateerde acties: uw App Service-plan in een hogere prijscategorie te wijzigen, en bepaalde instellingen te configureren nadat u hebt overgeschakeld naar de hogere prijscategorie.
+In Azure App Service kunt u voor betere prestaties en door Voer de schaal aanpassen waarop u uw toepassing uitvoert. Voor het omhoog schalen van een app zijn twee gerelateerde acties vereist: het wijzigen van uw App Service plan in een hogere prijs categorie en het configureren van bepaalde instellingen nadat u bent overgeschakeld naar de hogere prijs categorie.
 
-Zie voor meer informatie over het omhoog schalen [schalen van een app in Azure App Service](web-sites-scale.md).
+Zie [een app schalen in azure app service](manage-scale-up.md)voor meer informatie over schalen.
 
-Bovendien kunt u uw toepassing uitvoeren op meer dan één exemplaar. Dit niet alleen biedt u meer mogelijkheden voor verwerking, maar biedt ook een zekere mate van fouttolerantie. Als het proces zich op één instantie uitvalt, wordt in het andere exemplaar nog steeds blijven uitvoeren van aanvragen.
+Daarnaast kunt u ervoor kiezen om uw toepassing uit te voeren op meer dan één exemplaar. Dit biedt niet alleen meer verwerkings mogelijkheden, maar biedt ook een zekere mate van fout tolerantie. Als het proces wordt uitgevoerd op één instantie, blijft de andere instantie nog steeds aanvragen verwerken.
 
-U kunt instellen om het handmatig of automatisch worden geschaald.
+U kunt de schaal instellen op hand matig of automatisch.
 
-#### <a name="use-autoheal"></a>Gebruikmaken van AutoHeal
-AutoHeal wordt gerecycled het werkproces voor uw app op basis van de instellingen die u (zoals wijzigingen in de configuratie, aanvragen, de limieten voor geheugen of de tijd die nodig is kiest voor het uitvoeren van een aanvraag). De meeste van de tijd is recyclen van het proces de snelste manier om te herstellen van een probleem. Hoewel u altijd opnieuw de app rechtstreeks vanuit de Azure Portal start kunt, wordt AutoHeal het automatisch voor u doen. U hoeft alleen is bepaalde triggers toevoegen in de hoofdmap web.config voor uw app. Houd er rekening mee dat deze instellingen op dezelfde manier als werken zou, zelfs als uw toepassing niet een .NET een is.
+#### <a name="use-autoheal"></a>Automatisch herstellen gebruiken
+Met auto Retoucheer wordt het werk proces voor uw app gerecycled op basis van de instellingen die u kiest (zoals configuratie wijzigingen, aanvragen, limieten op basis van geheugen of de tijd die nodig is om een aanvraag uit te voeren). In de meeste gevallen is het recyclen van het proces de snelste manier om een probleem op te lossen. Hoewel u de app altijd rechtstreeks vanuit Azure Portal kunt opnieuw opstarten, wordt deze automatisch door hergebruikt. U hoeft alleen maar enkele triggers toe te voegen in de hoofdmap web. config voor uw app. Houd er rekening mee dat deze instellingen op dezelfde manier werken, zelfs als uw toepassing geen .NET-versie is.
 
-Zie voor meer informatie, [automatisch herstel Azure Web Sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
+Zie voor meer informatie [automatisch herstel van Azure web sites](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/).
 
 #### <a name="restart-the-app"></a>De app opnieuw starten
-Dit is vaak de eenvoudigste manier om eenmalige problemen te verhelpen. Op de [Azure Portal](https://portal.azure.com/), op de blade van uw app, hebt u de opties om te stoppen of opnieuw starten van uw app.
+Dit is vaak de eenvoudigste manier om eenmalige problemen op te lossen. In [Azure Portal](https://portal.azure.com/)op de Blade van uw app hebt u de opties om uw app te stoppen of opnieuw op te starten.
 
- ![opnieuw opstarten van de app om op te lossen HTTP-fouten van 502 Ongeldige gateway- en 503 service niet beschikbaar](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
+ ![de app opnieuw starten voor het oplossen van HTTP-fouten met de 502-ongeldige gateway en de 503-Service is niet beschikbaar](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-U kunt ook uw app met behulp van Azure Powershell beheren. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md) voor meer informatie.
+U kunt uw app ook beheren met Azure Power shell. Zie [Azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md) voor meer informatie.
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: b84e317745b7bd20f4862bd04584e42254a660d1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566188"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640863"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Resource limieten voor elastische Pools met behulp van de vCore inkoop model limieten
 
@@ -37,7 +37,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Algemeen servicelaag: Opslag grootten en berekenings grootten
 
 > [!IMPORTANT]
-> Nieuwe Gen4-data bases worden niet meer ondersteund in de AustraliaEast-regio.
+> Nieuwe Gen4-data bases worden niet meer ondersteund in de Australië-oost-of Brazilië-zuid regio's.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Algemeen servicelaag: Generatie 4 Compute platform (deel 1)
 
@@ -153,7 +153,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Bedrijfskritiek servicelaag: Opslag grootten en berekenings grootten
 
 > [!IMPORTANT]
-> Nieuwe Gen4-data bases worden niet meer ondersteund in de AustraliaEast-regio.
+> Nieuwe Gen4-data bases worden niet meer ondersteund in de Australië-oost-of Brazilië-zuid regio's.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Bedrijfskritiek servicelaag: Generatie 4 Compute platform (deel 1)
 

@@ -1,133 +1,131 @@
 ---
-title: Multitenancy voor isolatie van inhoud in de ene service - Azure Search modelleren
-description: Meer informatie over algemene ontwerppatronen voor multitenant SaaS-toepassingen tijdens het gebruik van Azure Search.
+title: Meerdere pacht modellen voor inhouds isolatie in één service-Azure Search
+description: Meer informatie over veelgebruikte ontwerp patronen voor SaaS-toepassingen met meerdere tenants tijdens het gebruik van Azure Search.
 manager: jlembicz
 author: LiamCavanagh
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: liamca
-ms.custom: seodec2018
-ms.openlocfilehash: 58d7ca65a14f9f774b19796c9beae2a7c84102ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3e47fc0c46c638a51e6555ccbdc1885f081c149
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61288699"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640549"
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Ontwerppatronen voor multitenant SaaS-toepassingen en Azure Search
-Een multitenant-toepassing is die de dezelfde services en mogelijkheden biedt naar een willekeurig aantal tenants die niet kan zien of de gegevens van een andere tenant delen. Dit document bespreekt strategieën voor tenant-isolatie voor multitenant-toepassingen die zijn gebouwd met Azure Search.
+# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Ontwerp patronen voor SaaS-toepassingen met meerdere tenants en Azure Search
+Een multi tenant-toepassing biedt dezelfde services en mogelijkheden voor elk aantal tenants dat de gegevens van een andere Tenant niet kan zien of delen. In dit document worden de isolatie strategieën voor tenants besproken voor multi tenant-toepassingen die zijn gebouwd met Azure Search.
 
-## <a name="azure-search-concepts"></a>Azure Search-concepten
-Als een oplossing voor search-as-a-service kunnen Azure Search ontwikkelaars uitgebreide zoekervaring toevoegen aan toepassingen zonder beheren van een infrastructuur of een expert in ophalen van gegevens is. Gegevens worden geüpload naar de service en vervolgens opgeslagen in de cloud. Met behulp van eenvoudige aanvragen aan de Azure Search-API, kunnen de gegevens vervolgens worden gewijzigd en doorzocht. Een overzicht van de service kan worden gevonden in [in dit artikel](https://aka.ms/whatisazsearch). Voordat u hierover te discussiëren ontwerppatronen, is het belangrijk om te begrijpen van enkele concepten in Azure Search.
+## <a name="azure-search-concepts"></a>Azure Search concepten
+Als een Search-as-a-service-oplossing kunt u met Azure Search ontwikkel aars uitgebreidere Zoek ervaringen toevoegen aan toepassingen zonder dat ze een infra structuur hoeven te beheren of een expert te zijn in het ophalen van informatie. Gegevens worden naar de service geüpload en vervolgens opgeslagen in de Cloud. Door eenvoudige aanvragen te gebruiken voor de Azure Search-API, kunnen de gegevens worden gewijzigd en doorzocht. In [dit artikel](https://aka.ms/whatisazsearch)vindt u een overzicht van de service. Voordat u ontwerp patronen bespreekt, is het belang rijk dat u enkele concepten in Azure Search begrijpt.
 
-### <a name="search-services-indexes-fields-and-documents"></a>Services, indexen, velden en documenten zoeken
-Wanneer u Azure Search, een zich abonneert op een *search-service*. Als u gegevens naar Azure Search is geüpload, wordt deze opgeslagen in een *index* binnen de search-service. Er is een aantal indexen binnen één service. Voor het gebruik van de vertrouwde concepten van databases, kan de search-service worden vergeleken met een database terwijl de indexen in een service kunnen worden vergeleken met tabellen in een database.
+### <a name="search-services-indexes-fields-and-documents"></a>Services, indexen, velden en documenten doorzoeken
+Wanneer u Azure Search gebruikt, wordt er één geabonneerd op een *Zoek service*. Wanneer gegevens worden geüpload naar Azure Search, wordt deze opgeslagen in een *index* binnen de zoek service. Er kan een aantal indexen binnen één service zijn. Als u de vertrouwde concepten van data bases wilt gebruiken, kan de zoek service worden likened naar een Data Base terwijl de indexen binnen een service kunnen worden likened aan tabellen in een Data Base.
 
-Elke index binnen een search-service heeft een eigen schema, dat is gedefinieerd door een aantal aanpasbare *velden*. Gegevens worden toegevoegd aan een Azure Search-index in de vorm van afzonderlijke *documenten*. Elk document moet worden geüpload naar een specifieke index en van die index schema moet passen. Bij het zoeken naar gegevens met behulp van Azure Search, wordt de zoekopdracht in volledige tekst query's worden uitgegeven op basis van een bepaalde index.  Als u wilt vergelijken van deze concepten die van een database, velden kunnen worden vergeleken met de kolommen in een tabel en documenten kunnen worden vergeleken met rijen.
+Elke index binnen een zoek service heeft een eigen schema, dat wordt gedefinieerd door een aantal aanpas bare *velden*. Gegevens worden toegevoegd aan een Azure Search index in de vorm van afzonderlijke *documenten*. Elk document moet worden geüpload naar een bepaalde index en moet overeenkomen met het schema van de index. Bij het zoeken naar gegevens met behulp van Azure Search, worden de Zoek opdrachten in volledige tekst op basis van een bepaalde index uitgegeven.  Om deze concepten te vergelijken met die van een Data Base, kunnen velden worden likened aan kolommen in een tabel en kunnen de documenten worden likened naar rijen.
 
 ### <a name="scalability"></a>Schaalbaarheid
-Een Azure Search-service in de standaard [prijscategorie](https://azure.microsoft.com/pricing/details/search/) kunt in twee dimensies schalen: opslag en beschikbaarheid.
+Elke Azure Search-service in de [prijs categorie](https://azure.microsoft.com/pricing/details/search/) Standard kan worden geschaald in twee dimensies: opslag en beschik baarheid.
 
-* *Partities* kunnen worden toegevoegd aan het verhogen van de opslag van een service voor zoeken.
-* *Replica's* kunnen worden toegevoegd aan een service voor het verhogen van de doorvoer van aanvragen die een search-service kan verwerken.
+* Er kunnen *partities* worden toegevoegd om de opslag van een zoek service te verg Roten.
+* *Replica's* kunnen worden toegevoegd aan een service om de door voer te verg Roten van aanvragen die door een zoek service kunnen worden verwerkt.
 
-Toevoegen en verwijderen partities en replica's op kunt de capaciteit van de search-service om te groeien met de hoeveelheid gegevens en het verkeer naar de eisen van de toepassing. Opdat een search-service om een leesbewerking [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), hiervoor twee replica's. Opdat een service voor het bereiken van een lezen / schrijven [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/), drie replica's is vereist.
+Door partities en replica's toe te voegen en te verwijderen, kan de capaciteit van de zoek service groeien met de hoeveelheid gegevens en het verkeer dat de toepassing vereist. Om een zoek service te kunnen bereiken voor een Lees- [Sla](https://azure.microsoft.com/support/legal/sla/search/v1_0/), zijn er twee replica's nodig. Om een service een [Sla](https://azure.microsoft.com/support/legal/sla/search/v1_0/)voor lezen/schrijven te kunnen krijgen, zijn er drie replica's nodig.
 
-### <a name="service-and-index-limits-in-azure-search"></a>Limieten voor service en de index in Azure Search
-Er zijn een aantal verschillende [Prijscategorieën](https://azure.microsoft.com/pricing/details/search/) in Azure Search, elk van de lagen heeft verschillende [limieten en quota](search-limits-quotas-capacity.md). Sommige van deze limieten zijn op het serviceniveau, sommige zijn op de index-niveau en sommige zijn op de partitie-niveau.
+### <a name="service-and-index-limits-in-azure-search"></a>Service-en index limieten in Azure Search
+Er zijn een aantal verschillende [prijs categorieën](https://azure.microsoft.com/pricing/details/search/) in azure Search. elk van de lagen heeft verschillende limieten [en quota's](search-limits-quotas-capacity.md). Sommige van deze limieten bevinden zich op het niveau van de service, sommige zijn op het niveau van de index en sommige zijn op partitie niveau.
 
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| Maximum aantal replica's per Service |3 |12 |12 |12 |12 |
-| Maximum aantal partities per Service |1 |12 |12 |12 |3 |
-| Maximum aantal Zoekeenheden (replica's * partities) per Service |3 |36 |36 |36 |36 (maximaal 3 partities) |
-| Maximale opslag per Service |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
+| Maximum aantal Replica's per service |3 |12 |12 |12 |12 |
+| Maximum aantal partities per service |1 |12 |12 |12 |3 |
+| Maximum aantal Zoek eenheden (Replica's * partities) per service |3 |36 |36 |36 |36 (Maxi maal 3 partities) |
+| Maximale opslag per service |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
 | Maximale opslag per partitie |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Maximum aantal indexen per Service |5 |50 |200 |200 |3000 (maximaal 1000 indexen per partitie) |
+| Maximum aantal indexen per service |5 |50 |200 |200 |3000 (max. 1000 indexen/partitie) |
 
-#### <a name="s3-high-density"></a>S3 High Density'
-In de Azure Search S3-prijscategorie is er een optie voor de modus hoge dichtheid (HD) is speciaal ontworpen voor scenario's voor meerdere tenants. In veel gevallen is het nodig voor het ondersteunen van een groot aantal kleinere tenants onder één service om te profiteren van de voordelen van eenvoud en kostenbeheersing efficiëntie.
+#### <a name="s3-high-density"></a>S3-hoge dichtheid
+In de prijs categorie S3 van Azure Search is er een optie voor de HD-modus (High density) die specifiek is ontworpen voor multi tenant scenario's. In veel gevallen is het nood zakelijk om een groot aantal kleinere tenants te ondersteunen onder één service om de voor delen van eenvoud en kosten efficiëntie te verhalen.
 
-S3 HD kunt u veel kleine indexen moeten worden verpakt onder het beheer van een service met één zoekopdracht doorzoeken door verhandeling de mogelijkheid om uit indexen met behulp van partities voor de mogelijkheid voor het hosten van meer indexen in één service te schalen.
+Met S3 HD kunnen de vele kleine indexen worden ingepakt onder het beheer van één zoek service door de mogelijkheid te bieden om indexen te schalen met behulp van partities voor de mogelijkheid om meer indexen in één service te hosten.
 
-Concrete invulling te geven, kan een S3-service hebben tussen 1 en 200 indexen die samen tot 1,4 miljard documenten kunnen hosten. Een S3 HD aan de andere kant afzonderlijke indexen alleen gaan tot wel 1 miljoen documenten wilt toestaan, maar maximaal 1000 indices per partitie (maximaal 3000 per service) met een totale documentaantal van 200 miljoen per partitie kan worden verwerkt (maximaal 600 miljoen per service).
+Een S3-service kan in concrete tussen 1 en 200 indexen bevatten die samen een tot 1.400.000.000 documenten kunnen hosten. Met een S3 HD daarentegen kunnen afzonderlijke indexen slechts tot 1.000.000 documenten gaan, maar kan er Maxi maal 1000 indexen per partitie worden verwerkt (Maxi maal 3000 per service) met een totaal aantal 200.000.000 documenten per partitie (Maxi maal 600.000.000 per service).
 
-## <a name="considerations-for-multitenant-applications"></a>Overwegingen voor multitenant-toepassingen
-Multitenant-toepassingen moeten effectief met het distribueren van bronnen tussen de tenants behoud van bepaalde mate van privacy tussen de verschillende tenants. Er zijn enkele overwegingen bij het ontwerpen van de architectuur voor dergelijke toepassing:
+## <a name="considerations-for-multitenant-applications"></a>Overwegingen voor multi tenant-toepassingen
+Multi tenant-toepassingen moeten bronnen efficiënt verdelen over de tenants met behoud van wat privacy niveau tussen de verschillende tenants. Er zijn enkele overwegingen bij het ontwerpen van de architectuur voor een dergelijke toepassing:
 
-* *Isolatie van tenants:* Ontwikkelaars van toepassingen moeten passende maatregelen om ervoor te zorgen dat er geen tenants hebben niet-geautoriseerde of toegang tot de gegevens van andere tenants ongewenste. Naast het perspectief van de privacy van gegevens vereisen tenant isolatie strategieën effectief beheer van gedeelde resources en de bescherming van de luidruchtige buren.
-* *Kosten van de resource cloud:* Net als bij elke andere toepassing, moeten de software-oplossingen kosten concurrerende als onderdeel van een multitenant-toepassing blijven.
-* *Eenvoudige bewerkingen:* Wanneer u een architectuur met meerdere tenants ontwikkelt, is de impact op de bewerkingen en de complexiteit van de toepassing een belangrijk aandachtspunt. Azure Search is een [SLA van 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* *Wereldwijde voetafdruk:* Multitenant-toepassingen mogelijk effectief fungeren tenants die zijn verdeeld over de hele wereld.
-* *Schaalbaarheid:* Ontwikkelaars van toepassingen moeten rekening houden met hoe ze in overeenstemming brengen tussen een voldoende laag niveau van de complexiteit van de toepassing te onderhouden en het ontwerpen van de toepassing om te schalen met het aantal tenants en de grootte van de gegevens en werkbelasting van tenants.
+* *Tenant isolatie:* Toepassings ontwikkelaars moeten passende maat regelen nemen om ervoor te zorgen dat tenants geen ongeoorloofde of ongewenste toegang hebben tot de gegevens van andere tenants. Buiten het perspectief van de privacy van gegevens vereisen de isolatie strategieën voor tenants een effectief beheer van gedeelde bronnen en bescherming tegen lawaai van de ruis.
+* *Kosten van Cloud resource:* Net als bij elke andere toepassing moeten software oplossingen kosten concurrerend zijn als onderdeel van een multi tenant-toepassing.
+* *Gemakkelijke bewerkingen:* Bij het ontwikkelen van een architectuur met meerdere tenants is de invloed op de bewerkingen en complexiteit van de toepassing een belang rijke overweging. Azure Search heeft een [Sla van 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* *Algemene footprint:* Multi tenant-toepassingen moeten mogelijk doel treffend zijn voor tenants die over de hele wereld worden gedistribueerd.
+* *Schaalbaarheid:* Ontwikkel aars van toepassingen moeten overwegen hoe ze zich afstemmen tussen het onderhouden van een voldoende laag niveau van toepassings complexiteit en het ontwerpen van de toepassing om te schalen met het aantal tenants en de grootte van de gegevens en workload van de tenants.
 
-Azure Search biedt een aantal grenzen die kunnen worden gebruikt voor het isoleren van de gegevens en werkbelasting van tenants.
+Azure Search biedt een aantal grenzen die kunnen worden gebruikt voor het isoleren van gegevens en werk belasting van tenants.
 
-## <a name="modeling-multitenancy-with-azure-search"></a>Multitenancy met Azure Search modelleren
-In het geval van een scenario voor meerdere tenants, ontwikkelaar van de toepassing verbruikt een of meer search-services en delen van hun tenants tussen services en/of indexen. Azure Search heeft een aantal algemene patronen bij het modelleren van een scenario voor meerdere tenants:
+## <a name="modeling-multitenancy-with-azure-search"></a>Multitenancy met Azure Search model leren
+In het geval van een multi tenant scenario gebruikt de ontwikkelaar van de toepassing een of meer zoek services en wordt de tenants verdeeld over services, indices of beide. Azure Search heeft enkele algemene patronen bij het model leren van een scenario met meerdere tenants:
 
-1. *Index per tenant:* Elke tenant heeft een eigen index binnen een search-service die wordt gedeeld met andere tenants.
-2. *De service per tenant:* Elke tenant heeft een eigen toegewezen Azure Search-service, biedt de hoogste niveau van scheiding van gegevens en werkbelasting.
-3. *De combinatie van beide:* Grotere, meer actieve tenants zijn toegewezen services toegewezen, terwijl tenants kleinere afzonderlijke indexen in gedeelde services zijn toegewezen.
+1. *Index per Tenant:* Elke Tenant heeft een eigen index binnen een zoek service die wordt gedeeld met andere tenants.
+2. *Service per Tenant:* Elke Tenant heeft een eigen toegewezen Azure Search service, die het hoogste niveau van gegevens en workload-schei ding biedt.
+3. *Combi natie van:* Grotere, meer actieve tenants krijgen toegewezen services, terwijl bij kleinere tenants afzonderlijke indexen binnen gedeelde services worden toegewezen.
 
-## <a name="1-index-per-tenant"></a>1. Index per tenant
-![Een portrayal van de index-per-tenant-model](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+## <a name="1-index-per-tenant"></a>1. Index per Tenant
+![Een portrayal van het model van de index-per-Tenant](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
 
-In een model met index-per-tenant nemen meerdere tenants een enkele Azure Search-service waarbij elke tenant een eigen index heeft.
+Meerdere tenants in een model voor index-per-Tenant bevinden zich in één Azure Search-service waarbij elke Tenant een eigen index heeft.
 
-Tenants bereiken gegevensisolatie omdat alle aanvragen zoeken en documentbewerkingen op het indexniveau van een in Azure Search worden uitgegeven. In het niveau van de toepassing is het bewustzijn nodig om te leiden van de verschillende tenants verkeer naar de juiste indexen bij het beheren van resources op het serviceniveau van de voor alle tenants.
+Tenants bereiken gegevens isolatie, omdat alle Zoek opdrachten en document bewerkingen worden uitgegeven op index niveau in Azure Search. In de toepassingslaag moet u zich bewust zijn van het directe verkeer van de verschillende tenants naar de juiste indexen, terwijl u ook resources op service niveau voor alle tenants beheert.
 
-Een sleutelkenmerk van de index-per-tenant-model is de mogelijkheid voor de ontwikkelaar van de toepassing naar meerdere virtuele machines gebruiken de capaciteit van een service voor zoeken tussen tenants van de toepassing. Als de tenants een ongelijke verdeling van de werkbelasting hebben, kan de optimale combinatie van tenants worden verdeeld over een zoekservice indexen voor een aantal zeer actief, resource-intensieve tenants terwijl tegelijkertijd een lange staart van minder actieve tenants. De verhouding is het niet van het model voor het afhandelen van situaties waarin elke tenant gelijktijdig zeer actief is.
+Een sleutel kenmerk van het model van de index-per-Tenant is de mogelijkheid van de ontwikkelaar van de toepassing om de capaciteit van een zoek service over te nemen op basis van de tenants van de toepassing. Als de tenants een ongelijke verdeling van de werk belasting hebben, kan de optimale combi natie van tenants worden gedistribueerd over de indices van een zoek service voor een aantal uiterst actieve, tijdrovende tenants en tegelijkertijd een lange staart van minder actieve tenants. De afweging is het onvermogen van het model voor het afhandelen van situaties waarbij elke Tenant gelijktijdig Maxi maal actief is.
 
-De index-per-tenant-model vormt de basis voor een model voor variabele kosten, waar een hele Azure Search-service is gekocht vooraf te betalen en vervolgens gevuld met tenants. Dit kan de niet-gebruikte capaciteit moet zijn aangewezen voor proefversies en gratis accounts.
+Het model van de index-per-Tenant vormt de basis voor een variabel kosten model, waarbij een hele Azure Search service vooraf wordt aangeschaft en vervolgens wordt gevuld met tenants. Hierdoor kan ongebruikte capaciteit worden aangegeven voor experimenten en gratis accounts.
 
-Voor toepassingen met een wereldwijde footprint altijd het model van de index-per-tenant niet de meest efficiënte. Als tenants van een toepassing worden verdeeld over de hele wereld, is het mogelijk dat een afzonderlijke service die nodig zijn voor elke regio die kosten voor elk van deze mogelijk dupliceren.
+Voor toepassingen met een algemene footprint is het model van de index-per-Tenant mogelijk niet het meest efficiënt. Als de tenants van een toepassing over de hele wereld worden gedistribueerd, kan er een afzonderlijke service nodig zijn voor elke regio, waardoor de kosten voor elk van de verschillende regio's kunnen worden gedupliceerd.
 
-Azure Search kan de schaal van de afzonderlijke indexen en het totale aantal indexen te laten groeien. Als een juiste prijzen worden de laag gekozen, is de partities en replica's kunnen worden toegevoegd aan de hele search-service als een afzonderlijke index in de service te groot is voor wat betreft opslag of het verkeer toeneemt.
+Azure Search kunt de schaal van zowel de afzonderlijke indexen als het totale aantal indexen dat moet worden uitgebreid. Als er een geschikte prijs categorie wordt gekozen, kunnen partities en replica's worden toegevoegd aan de gehele zoek service wanneer een afzonderlijke index binnen de service te groot is voor wat betreft opslag of verkeer.
 
-Als het totale aantal indexen te voor één service groot is een andere service om te voldoen aan de nieuwe tenants worden ingericht. Als indexen te worden verplaatst tussen search-services als nieuwe services worden toegevoegd, moet de gegevens van de index handmatig worden gekopieerd van een index in de andere als Azure Search is niet toegestaan voor een index worden verplaatst.
+Als het totale aantal indexen te groot is voor één service, moet een andere service worden ingericht voor de nieuwe tenants. Als indexen moeten worden verplaatst tussen Zoek Services terwijl nieuwe services worden toegevoegd, moeten de gegevens uit de index hand matig worden gekopieerd van de ene index naar de andere omdat Azure Search geen index toestaat.
 
-## <a name="2-service-per-tenant"></a>2. Service per tenant
-![Een portrayal van het service-per-tenant-model](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+## <a name="2-service-per-tenant"></a>2. Service per Tenant
+![Een portrayal van het service-per-Tenant model](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
 
-Elke tenant heeft in een architectuur met service-per-tenant een eigen search-service.
+In een architectuur met een service-per-Tenant heeft elke Tenant een eigen zoek service.
 
-In dit model realiseert de toepassing het maximumniveau van isolatie voor de tenants. Elke service heeft toegewezen opslag en doorvoer voor het verwerken van de zoekopdracht, evenals een afzonderlijke API-sleutels.
+In dit model bereikt de toepassing het maximale isolatie niveau voor de tenants. Elke service heeft specifieke opslag en door Voer voor het verwerken van een zoek opdracht en afzonderlijke API-sleutels.
 
-Het service-per-tenant-model is een effectieve keuze voor toepassingen waarbij elke tenant heeft een groot footprint of de werkbelasting heeft slechts variabiliteit tenant tenant, zoals resources zijn niet verdeeld over verschillende tenants werkbelastingen.
+Voor toepassingen waarbij elke Tenant een grote footprint heeft of als de werk belasting weinig variabiliteit heeft van Tenant naar Tenant, is het model van de service-per-Tenant een efficiënte keuze omdat resources niet worden gedeeld tussen de werk belastingen van verschillende tenants.
 
-Een service per tenant model biedt ook het voordeel van een voorspelbaar, vaste kostenmodel. Er is geen investeringen vooraf in een hele search-service totdat er een tenant in te vullen, maar de kosten-per-tenant hoger dan een index-per-tenant-model is.
+Een service per Tenant model biedt ook het voor deel van een voorspelbaar, vast kosten model. Er is geen investering vooraf in een volledige zoek service, totdat er een Tenant is om deze in te vullen. de kosten per Tenant zijn echter hoger dan een model per Tenant.
 
-Het service-per-tenant-model is een efficiënte keuze voor toepassingen met een wereldwijde voetafdruk. Met geografisch verspreide-tenants is het eenvoudig te hebben van elke tenant-service in de juiste regio.
+Het model service-per-Tenant is een efficiënte keuze voor toepassingen met een algemene footprint. Met geografisch gedistribueerde tenants is het eenvoudig om elke Tenant service in de juiste regio te hebben.
 
-De uitdagingen bij het schalen van dit patroon zich kunnen voordoen bij afzonderlijke tenants langzamerhand hun service. Azure Search ondersteunt momenteel geen upgrade van de prijscategorie van een service voor zoeken, zodat alle gegevens zelf zou moeten handmatig worden gekopieerd naar een nieuwe service.
+De uitdagingen bij het schalen van dit patroon ontstaan als afzonderlijke tenants hun service uitgroeien. Azure Search biedt momenteel geen ondersteuning voor de upgrade van de prijs categorie van een zoek service, zodat alle gegevens hand matig moeten worden gekopieerd naar een nieuwe service.
 
-## <a name="3-mixing-both-models"></a>3. Met een combinatie van beide modellen
-Een ander patroon voor het modelleren van multitenancy is een combinatie van strategieën voor zowel de index-per-tenant en de service-per-tenant.
+## <a name="3-mixing-both-models"></a>3. Beide modellen combi neren
+Een ander patroon voor het model leren van multitenancy is het combi neren van zowel de strategie per Tenant als voor de service per Tenant.
 
-Door een combinatie van de twee patronen, de grootste tenants van een toepassing in beslag kunnen nemen toegewezen services terwijl de lang staart van minder actieve, kleinere tenants in beslag indexen in een gedeelde-service nemen kan. Dit model zorgt ervoor dat het grootste tenants consistent hoge prestaties van de service bij het beveiligen van de kleinere tenants van de eventuele luidruchtige buren hebben.
+Door de twee patronen te mengen, kunnen de grootste tenants van een toepassing speciale services innemen, terwijl de lange staart van minder actieve, kleinere tenants in een gedeelde service indexen kan innemen. Dit model zorgt ervoor dat de grootste tenants voortdurend hoge prestaties van de service hebben terwijl u de kleinere tenants van alle onrustige neighbors kunt beveiligen.
 
-Implementatie van deze strategie hebben echter prognose voorspellen welke tenants moet een toegewezen service ten opzichte van een index in een gedeelde-service. Met de noodzaak voor het beheren van deze modellen multitenancy verhoogt de complexiteit van de toepassing.
+Het implementeren van deze strategie is echter afhankelijk van de prognose bij het voors pellen van de tenants die een specifieke service vereisen tegenover een index in een gedeelde service. Toepassings complexiteit neemt toe met de nood zaak om beide multitenancys modellen te beheren.
 
-## <a name="achieving-even-finer-granularity"></a>Zelfs weer specifieker bereiken
-De bovenstaande ontwerppatronen als model voor meerdere tenants scenario's in Azure Search wordt ervan uitgegaan dat een uniform scope waarbij elke tenant een hele exemplaar van een toepassing is. Toepassingen kunnen echter soms verwerkt voor veel kleinere bereiken.
+## <a name="achieving-even-finer-granularity"></a>Nauw keurigere granulariteit bereiken
+De bovenstaande ontwerp patronen voor het model leren van scenario's met meerdere tenants in Azure Search uitgaan van een uniform bereik waarbij elke Tenant een geheel exemplaar van een toepassing is. Toepassingen kunnen soms veel kleinere bereiken verwerken.
 
-Als service-per-tenant en index per tenant modellen niet voldoende kleine bereiken zijn, is het mogelijk om een index voor het bereiken van een nog betere mate van granulatie te modelleren.
+Als service-per-Tenant-en index-per-Tenant modellen niet voldoende kleine bereiken zijn, is het mogelijk om een index te model leren om een nog nauw keurigere mate van granulatie te bereiken.
 
-Als u wilt één index zich anders gedragen voor andere client-eindpunten, kan een veld worden toegevoegd aan een index waarmee wordt aangegeven dat een bepaalde waarde voor elke client mogelijk. Telkens wanneer een client Azure Search als u wilt opvragen of wijzigen van een index, roept de code van de clienttoepassing Hiermee geeft u de juiste waarde voor dat veld met behulp van Azure-Search [filter](https://msdn.microsoft.com/library/azure/dn798921.aspx) mogelijkheden bij het uitvoeren van query's.
+Als u een enkele index anders wilt gebruiken voor verschillende client eindpunten, kan een veld worden toegevoegd aan een index die een bepaalde waarde voor elke mogelijke client aanduidt. Telkens wanneer een client Azure Search aanroept om een index op te vragen of te wijzigen, geeft de code van de client toepassing de juiste waarde voor dat veld aan met behulp van de [filter](https://msdn.microsoft.com/library/azure/dn798921.aspx) mogelijkheid van Azure Search op de query tijd.
 
-Deze methode kan worden gebruikt om de functionaliteit van afzonderlijke gebruikersaccounts, afzonderlijke machtigingsniveaus, bereiken en zelfs verschillende toepassingen.
+Deze methode kan worden gebruikt voor het bezorgen van de functionaliteit van afzonderlijke gebruikers accounts, afzonderlijke machtigings niveaus en zelfs volledig gescheiden toepassingen.
 
 > [!NOTE]
-> Met behulp van de hierboven beschreven aanpak voor het configureren van één index voor meerdere tenants is van invloed op de relevantie van zoekresultaten. Zoeken op relevantie scores worden berekend op een bereik van de index-niveau, niet op tenantniveau-bereik, zodat de gegevens van alle tenants zijn opgenomen in de volgorde van relevantie-scores onderliggende statistieken, zoals de frequentie van de termijn.
+> Met behulp van de hierboven beschreven methode kunt u een enkele index configureren voor meerdere tenants die van invloed is op de relevantie van de zoek resultaten. Zoek relevantie scores worden berekend op het bereik op index niveau, niet op Tenant niveau, zodat alle gegevens van de tenants worden opgenomen in de onderliggende statistieken van de relevantie scores zoals term frequentie.
 > 
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-Azure Search is een aantrekkelijke keuze voor veel toepassingen, [voor meer informatie over de robuuste mogelijkheden van de service](https://aka.ms/whatisazsearch). Bij het evalueren van de verschillende ontwerppatronen voor multitenant-toepassingen, houd rekening met de [verschillende Prijscategorieën](https://azure.microsoft.com/pricing/details/search/) en de desbetreffende [Servicelimieten](search-limits-quotas-capacity.md) om aan te passen beste Azure Search aan toepassing werkbelastingen en architecturen van elke omvang.
+Azure Search is een fascinerende keuze voor veel toepassingen, [Lees meer over de krachtige mogelijkheden van de service](https://aka.ms/whatisazsearch). Bij het evalueren van de verschillende ontwerp patronen voor multi tenant-toepassingen, moet u rekening houden met de [verschillende prijs categorieën](https://azure.microsoft.com/pricing/details/search/) en de bijbehorende [service limieten](search-limits-quotas-capacity.md) om Azure Search te passen op werk belastingen van toepassingen en architecturen van elke omvang.
 
-Vragen over Azure Search en scenario's voor meerdere tenants kunnen worden omgeleid naar azuresearch_contact@microsoft.com.
+Vragen over Azure Search en multi tenant scenario's kunnen worden omgeleid naar azuresearch_contact@microsoft.com.
 

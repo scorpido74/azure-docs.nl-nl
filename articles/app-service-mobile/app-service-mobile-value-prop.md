@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 72614a7f804f404e3e560d944db7b3d2e496c383
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: a3817b3e9f62a863f3fea9305ef169db2eb84491
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705675"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637949"
 ---
 # <a name="getting-started"> </a>Mobile Apps in Azure App Service
 
@@ -104,7 +104,7 @@ Zie [Azure App Service] voor meer informatie over het Azure App Service-platform
 [Xamarin.iOS en Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[Automatische schaling]: ../app-service/web-sites-scale.md
+[Automatische schaling]: ../app-service/manage-scale-up.md
 [Faseringsomgevingen]: ../app-service/deploy-staging-slots.md
 [hybride verbindingen]: ../biztalk-services/integration-hybrid-connection-overview.md
 [virtuele netwerken]: ../app-service/web-sites-integrate-with-vnet.md

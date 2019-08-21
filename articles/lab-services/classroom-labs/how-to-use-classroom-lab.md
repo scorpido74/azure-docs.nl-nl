@@ -12,47 +12,76 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: bc5c12d4bb92edaafcc9808da8c48106a6e0cbd5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: ef954f44799b1cf4103847b21ea78e0ac94a9021
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104115"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640173"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
-In dit artikel wordt beschreven hoe u toegang krijgt tot een leslokaallab, hoe u verbinding maakt met de virtuele machine in het lab en hoe u de virtuele machine kunt stoppen. 
+In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 
 
-## <a name="register-to-a-lab"></a>Registreren voor een lab
-1. Navigeer naar de **registratie-URL** die u hebt ontvangen van de docent. 
-2. Meld u aan bij de service met uw schoolaccount om de registratie te voltooien. 
-3. Controleer nadat u zich hebt geregistreerd of u de virtuele machines ziet voor het lab waartoe u toegang hebt. 
-2. Wacht tot de virtuele machine gereed is en **start** dan de virtuele machine. Dit proces duurt enige tijd.  
+## <a name="register-to-the-lab"></a>Registreren bij het lab
+
+1. Navigeer naar de **registratie-URL** die u hebt ontvangen van de docent. U hoeft de registratie-URL niet meer te gebruiken nadat u de registratie hebt voltooid. In plaats daarvan gebruikt u deze URL: [https://labs.azure.com](https://labs.azure.com). Internet Explorer 11 wordt nog niet ondersteund. 
+1. Meld u aan bij de service met uw schoolaccount om de registratie te voltooien. 
+2. Controleer nadat u zich hebt geregistreerd of u de virtuele machines ziet voor het lab waartoe u toegang hebt. 
+3. Wacht tot de virtuele machine klaar is. Let op de volgende velden op de VM-tegel:
+    1. Boven aan de tegel ziet u de **naam van het lab**.
+    1. Aan de rechter kant ziet u het pictogram voor het **besturings systeem (OS)** van de virtuele machine. In dit voor beeld is het Windows-besturings systeem. 
+    1. U ziet pictogrammen/knoppen onder aan de tegel om de virtuele machine te starten/stoppen en verbinding te maken met de virtuele machine. 
+    1. Rechts van de knoppen ziet u de status van de virtuele machine. Controleer of de status van de virtuele machine is **gestopt**.
+
+        ![VM is gestopt](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
+
+## <a name="start-to-stop-the-vm"></a>Beginnen met het stoppen van de virtuele machine
+1. **Start** de virtuele machine door de eerste knop te selecteren, zoals wordt weer gegeven in de volgende afbeelding. Dit proces duurt enige tijd.  
 
     ![De virtuele machine starten](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
+4. Controleer of de status van de virtuele machine is ingesteld op **actief**. 
+
+    ![VM in uitvoerings status](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
+
+    U ziet dat het pictogram van de eerste knop is gewijzigd om een **Stop** bewerking weer te geven. U kunt deze knop selecteren om de virtuele machine te stoppen. 
+
+## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
+
+1. Selecteer de tweede knop zoals weer gegeven in de volgende afbeelding om **verbinding te maken** met de VM van het lab. 
+
+    ![Verbinding maken met de virtuele machine](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
+2. Voer een van de volgende stappen uit: 
+    1. Sla het **RDP** -bestand op de harde schijf op voor virtuele **Windows** -machines. Open het RDP-bestand om verbinding te maken met de virtuele machine. Gebruik de **gebruikers naam** en het **wacht woord** die u van uw docent/docent krijgt om u aan te melden bij de computer. 
+    3. Voor virtuele **Linux** -machines kunt u **SSH** of **RDP** gebruiken (als deze is ingeschakeld) om er verbinding mee te maken. Zie [verbinding met extern bureau blad inschakelen voor Linux-machines](how-to-enable-remote-desktop-linux.md)voor meer informatie. 
+
+## <a name="progress-bar"></a>Voortgangsbalk 
+De voortgangs balk op de tegel toont het aantal uren dat is gebruikt voor het aantal aan u toegewezen [quota-uren](how-to-configure-student-usage.md#set-quotas-for-users) . Deze tijd is de extra tijd die aan u is toegewezen, naast de geplande tijd voor het lab. De kleur van de voortgangs balk en de tekst onder de voortgangs balk varieert per van de volgende scenario's:
+
+- Als een klasse wordt uitgevoerd (binnen de planning van de klasse), wordt de voortgangs balk grijs weer gegeven om de quota uren niet te gebruiken. 
+
+    ![Voortgangs balk in grijze kleur](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-class-in-progress.png)
+- Als er geen quotum is toegewezen (nul uur), wordt de tekst die **beschikbaar is tijdens klassen alleen** weer gegeven in plaats van de voortgangs balk. 
+    
+    ![Status wanneer er geen quotum is ingesteld](../media/tutorial-connect-vm-in-classroom-lab/available-during-class.png)
+- Als u **geen quotum**hebt, is de kleur van de voortgangs balk **rood**. 
+
+    ![Voortgangs balk met rode kleur](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-red-color.png)
+- De kleur van de voortgangs balk is **blauw** wanneer deze zich buiten het geplande tijdstip voor het lab bevindt en een deel van de quota tijd is gebruikt. 
+
+    ![Voortgangs balk met blauwe kleur](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-blue-color.png)
 
 
 ## <a name="view-all-the-classroom-labs"></a>Alle leslokaallabs weergeven
 Als u zich voor de labs registreert, kunt u alle leslokaallabs weergeven door de volgende stappen uit te voeren: 
 
-1. Navigeer naar [https://labs.azure.com](https://labs.azure.com). Houd er rekening mee dat Internet Explorer 11 wordt nog niet ondersteund. 
+1. Navigeer naar [https://labs.azure.com](https://labs.azure.com). Internet Explorer 11 wordt nog niet ondersteund. 
 2. Meld u aan bij de service met het gebruikersaccount waarmee u zich hebt geregistreerd voor het lab. 
 3. Controleer of u alle labs ziet waarvoor u toegangsrechten hebt. 
 
     ![Alle labs weergeven](../media/how-to-use-classroom-lab/all-labs.png)
 
-## <a name="connect-to-the-virtual-machine-in-a-classroom-lab"></a>Verbinding maken met de virtuele machine in een leslokaallab
-
-1. Selecteer **Start** op de tegel om de virtuele machine te starten als deze nog niet is gestart. 
-2. Selecteer **Verbinding maken** op de tegel van de virtuele machine van het lab dat u wilt openen. 
-3. Voer een van de volgende stappen uit: 
-   1. Voor **Windows** opslaan voor virtuele machines, de **RDP** bestand naar de harde schijf. Open het RDP-bestand verbinding maken met de virtuele machine. Gebruik de **gebruikersnaam** en **wachtwoord** u ophalen uit uw docenten/professor aan te melden bij de computer. 
-   3. Voor **Linux** virtuele machines, kopiëren en opslaan van de SSH-verbindingsreeks op de **verbinding maken met uw virtuele machine** in het dialoogvenster. Deze verbindingsreeks vanuit een SSH-terminal gebruiken (zoals [Putty](https://www.putty.org/)) verbinding maken met de virtuele machine.
-
-## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>De virtuele machine in een leslokaallab stoppen
-
-Selecteer **Stoppen** op de tegel om de virtuele machine te stoppen. Zodra de virtuele machine is gestopt, wordt de knop **Start** op de tegel geactiveerd. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

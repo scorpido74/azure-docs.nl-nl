@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 961c0de6856a9791f76be1ec609f176f1fbbf8fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567326"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641111"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -42,7 +42,7 @@ Azure SQL Database Managed instance kan worden geïmplementeerd op twee hardware
 | Maximum aantal gereserveerde exemplaren |  Algemeen: 8 TB<br/>Bedrijfskritiek: CAPACITEIT | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
 
 > [!IMPORTANT]
-> Nieuwe Gen4-data bases worden niet meer ondersteund in de AustraliaEast-regio.
+> Nieuwe Gen4-data bases worden niet meer ondersteund in de Australië-oost-of Brazilië-zuid regio's.
 
 ### <a name="service-tier-characteristics"></a>Kenmerken van servicelaag
 
@@ -96,7 +96,7 @@ De volgende tabel bevat de standaard regionale limieten voor ondersteunde abonne
 
 |Abonnementstype| Maximum aantal subnetten beheerde exemplaren | Maximum aantal vCore-eenheden * |
 | :---| :--- | :--- |
-|Betalen per gebruik|3|320|
+|Betalen naar gebruik|3|320|
 |CSP |8 (15 inch in sommige regio's * *)|960 (1440 in sommige regio's * *)|
 |Pay-as-you-go Dev/Test|3|320|
 |Enterprise Dev/Test|3|320|

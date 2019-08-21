@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.author: mlearned
-ms.openlocfilehash: 0238278b81255d735f8a950ca307d0e05100cfec
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614560"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639796"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Verbinding maken met de cluster Windows Server-knoop punten van RDP naar Azure Kubernetes service (AKS) voor onderhoud of probleem oplossing
 
@@ -63,6 +63,27 @@ In de volgende voorbeeld uitvoer ziet u dat de VM is gemaakt en wordt het open b
 ```
 
 Registreer het open bare IP-adres van de virtuele machine. U gebruikt dit adres in een latere stap.
+
+## <a name="allow-access-to-the-virtual-machine"></a>Toegang tot de virtuele machine toestaan
+
+Subnetten van AKS-knooppunt groep worden standaard beveiligd met Nsg's (netwerk beveiligings groepen). Als u toegang wilt krijgen tot de virtuele machine, moet u toegang inschakelen in de NSG.
+
+> [!NOTE]
+> De Nsg's worden bepaald door de AKS-service. Alle wijzigingen die u in de NSG aanbrengt, worden op elk gewenst moment overschreven door het besturings vlak.
+>
+
+Haal eerst de resource groep en de naam van de NSG op van de NSG om de regel toe te voegen aan:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+Maak vervolgens de NSG-regel:
+
+```azurecli-interactive
+az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --priority 100 --destination-port-range 3389 --protocol Tcp --description "Temporary RDP access to Windows nodes"
+```
 
 ## <a name="get-the-node-address"></a>Het knooppunt adres ophalen
 
@@ -117,6 +138,17 @@ Als u klaar bent, sluit u de RDP-verbinding met het Windows Server-knoop punt en
 
 ```azurecli-interactive
 az vm delete --resource-group myResourceGroup --name myVM
+```
+
+En de NSG-regel:
+
+```azurecli-interactive
+CLUSTER_RG=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NSG_NAME=$(az network nsg list -g $CLUSTER_RG --query [].name -o tsv)
+```
+
+```azurecli-interactive
+az network nsg rule delete --resource-group $CLUSTER_RG --nsg-name $NSG_NAME --name tempRDPAccess
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

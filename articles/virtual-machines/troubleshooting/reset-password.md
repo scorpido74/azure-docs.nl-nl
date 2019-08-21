@@ -1,6 +1,6 @@
 ---
-title: Het opnieuw instellen van wachtwoord van de lokale Linux op Azure Virtual machines | Microsoft Docs
-description: De stappen om het wachtwoord van de lokale Linux op Azure virtuele machine opnieuw in te voeren
+title: Lokaal Linux-wacht woord opnieuw instellen op virtuele Azure-machines | Microsoft Docs
+description: De stappen voor het opnieuw instellen van het lokale Linux-wacht woord op de Azure VM
 services: virtual-machines-linux
 documentationcenter: ''
 author: Deland-Han
@@ -11,55 +11,58 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fc51dfb90158316b3fe6c11b5265f1cf3251505
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306948"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641036"
 ---
-# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Het opnieuw instellen van wachtwoord van de lokale Linux op Azure Virtual machines
+# <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Lokaal Linux-wacht woord opnieuw instellen op virtuele Azure-machines
 
-Dit artikel bevat verschillende methoden voor het opnieuw instellen van wachtwoorden voor lokale Linux virtuele Machine (VM). Als het gebruikersaccount dat is verlopen of als u alleen wilt maken van een nieuw account, kunt u de volgende methoden om te maken van een nieuwe lokale beheerdersaccount en opnieuw toegang te krijgen tot de virtuele machine.
+In dit artikel worden verschillende methoden geïntroduceerd voor het opnieuw instellen van lokale virtuele Linux-machine wachtwoorden. Als het gebruikers account is verlopen of als u alleen een nieuw account wilt maken, kunt u de volgende methoden gebruiken om een nieuw lokaal beheerders account te maken en opnieuw toegang te krijgen tot de virtuele machine.
 
 ## <a name="symptoms"></a>Symptomen
 
-U kunt zich niet aanmelden bij de virtuele machine en u ontvangt een bericht weergegeven dat aangeeft dat het wachtwoord die u hebt gebruikt, onjuist is. U kunt de VMAgent bovendien niet gebruiken voor uw wachtwoord in de Azure portal opnieuw instellen.
+U kunt zich niet aanmelden bij de virtuele machine en er wordt een bericht weer gegeven dat aangeeft dat het wacht woord dat u hebt gebruikt onjuist is. Daarnaast kunt u VMAgent niet gebruiken om uw wacht woord opnieuw in te stellen op de Azure Portal.
 
-## <a name="manual-password-reset-procedure"></a>Handmatige procedure voor wachtwoordherstel
+## <a name="manual-password-reset-procedure"></a>Procedure voor hand matig opnieuw instellen van wacht woorden
 
-1.  De virtuele machine verwijderen en behouden van de gekoppelde schijven.
+> [!NOTE]
+> De volgende stappen zijn niet van toepassing op de virtuele machine met een niet-beheerde schijf.
 
-2.  De Besturingssysteemschijf als gegevensschijf koppelen aan een andere tijdelijke virtuele machine op dezelfde locatie.
+1. Maak een moment opname van de besturingssysteem schijf van de betreffende virtuele machine, maakt een schijf van de moment opname en koppel de schijf vervolgens aan een virtuele machine voor probleem oplossing. Zie [problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal](troubleshoot-recovery-disks-portal-linux.md)voor meer informatie.
 
-3.  Voer de volgende SSH-opdracht op de tijdelijke virtuele machine om te worden van een supergebruiker.
+2. Maak verbinding met de virtuele machine voor probleem oplossing met behulp van Extern bureaublad.
+
+3.  Voer de volgende SSH-opdracht uit op de virtuele machine voor probleem oplossing om een super gebruiker te worden.
 
     ```bash
     sudo su
     ```
 
-4.  Voer **fdisk -l** of kijken naar het systeemlogboek in logboeken naar de zojuist gekoppelde schijf vinden. Zoek de stationsnaam van het te koppelen. Klik op de tijdelijke virtuele machine, zoeken in het relevante logbestand.
+4.  Voer **fdisk-l** uit of zoek naar systeem Logboeken om de zojuist gekoppelde schijf te vinden. Zoek de naam van het station dat u wilt koppelen. Zoek vervolgens in het relevante logboek bestand op de tijdelijke VM.
 
     ```bash
     grep SCSI /var/log/kern.log (ubuntu)
     grep SCSI /var/log/messages (centos, suse, oracle)
     ```
 
-    Hier volgt een van de voorbeelduitvoer van de opdracht grep:
+    Hier volgt een voor beeld van de uitvoer van de grep-opdracht:
 
     ```bash
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
     ```
 
-5.  Maken van een koppelpunt met de naam **tempmount**.
+5.  Maak een koppel punt met de naam **tempmount**.
 
     ```bash
     mkdir /tempmount
     ```
 
-6.  Koppel de besturingssysteemschijf op het koppelpunt. Moet u doorgaans koppelen *sdc1* of *sdc2*. Dit is afhankelijk van de hosting-partitie in */etc* map van de machineschijf verbroken.
+6.  Koppel de besturingssysteem schijf op het koppel punt. Normaal gesp roken moet u *sdc1* of *SDC2*koppelen. Dit is afhankelijk van de host-partitie in de map */etc* van de beschadigde machine schijf.
 
     ```bash
     mount /dev/sdc1 /tempmount
@@ -76,13 +79,13 @@ U kunt zich niet aanmelden bij de virtuele machine en u ontvangt een bericht wee
     cp /tempmount/etc/shadow /tempmount/etc/shadow_orig
     ```
 
-8.  Opnieuw instellen van wachtwoord van de gebruiker die u nodig hebt:
+8.  Stel het wacht woord van de gebruiker in dat u nodig hebt:
 
     ```bash
     passwd <<USER>> 
     ```
 
-9.  De gewijzigde bestanden verplaatsen naar de juiste locatie op van de machine van de beschadigde schijf.
+9.  Verplaats de gewijzigde bestanden naar de juiste locatie op de schijf van de beschadigde machine.
 
     ```bash
     cp /etc/passwd /tempmount/etc/passwd
@@ -98,12 +101,12 @@ U kunt zich niet aanmelden bij de virtuele machine en u ontvangt een bericht wee
     umount /tempmount
     ```
 
-11. De schijf loskoppelen van de management portal.
+11. Ontkoppel de schijf in Azure Portal van de virtuele machine voor probleem oplossing.
 
-12. Maak de virtuele machine opnieuw.
+12. [Wijzig de besturingssysteem schijf voor de betrokken VM](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Virtuele Azure-machine oplossen door besturingssysteemschijf te koppelen aan een andere Azure-VM](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Problemen met Azure VM oplossen door de besturingssysteem schijf aan een andere Azure-VM te koppelen](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Azure CLI: Het verwijderen en opnieuw implementeren van een VM op basis van VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI: Een virtuele machine verwijderen en opnieuw implementeren vanaf VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

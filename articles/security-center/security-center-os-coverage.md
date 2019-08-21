@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/03/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 21a42b2986b52282fbab914fa702d8c4a323ed35
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611944"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640790"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platforms en functies die door Azure Security Center worden ondersteund
 
@@ -111,7 +111,7 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 |------|------|-----|-----|
 | Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nee, ingebouwd in besturingssysteem| Ja |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Ja |
-| Trend Micro: alle versies | Windows Server-familie  | Nee | Ja |
+| Trend Micro: alle versies * | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Linux-Server familie  | Nee | Klikt **\*** |
@@ -121,6 +121,7 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 
 > [!NOTE]
 > - Voor de detectie van System Center Endpoint Protection (SCEP) op een virtuele machine met Windows Server 2008 R2 moet SCEP worden geïnstalleerd na Power Shell 3,0 (of een hogere versie).
+> - Detectie van Trend Micro bescherming wordt ondersteund voor diepe beveiligings agenten.  OfficeScan-agents worden niet ondersteund.
 
 ## <a name="supported-paas-features"></a>Ondersteunde PaaS-functies
 

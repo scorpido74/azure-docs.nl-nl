@@ -1,37 +1,35 @@
 ---
-title: Indexeerfuncties voor verkennen gegevensbronnen tijdens het indexeren - Azure zoeken
+title: Indexeer functies voor het verkennen van gegevens bronnen tijdens het indexeren-Azure Search
 description: Azure SQL-database, Azure Cosmos DB of Azure Storage verkennen om doorzoekbare gegevens op te halen en een Azure Search-index te vullen.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 6871c75f0af662762ffac6e7346d4999e55eb937
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: af01b6127a8a3e20edfac19ce3b54cecb9d561d1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303446"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640591"
 ---
 # <a name="indexers-in-azure-search"></a>Indexeerfuncties in Azure Search
 
-Een *indexeerfunctie* in Azure Search is een Verkenner die doorzoekbare gegevens en metagegevens geëxtraheerd uit een externe Azure-gegevensbron en een index vult op basis van veld naar toewijzingen tussen de index en uw gegevensbron. Deze aanpak wordt ook wel genoemd 'pull-model' omdat de service de gegevens ophaalt zonder dat u hoeft de code waarmee gegevens worden toegevoegd aan een index te schrijven.
+Een *Indexeer functie* in azure Search is een crawler die Doorzoek bare gegevens en meta gegevens ophaalt uit een externe Azure-gegevens bron en een index vult op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron. Deze methode wordt ook wel ' pull model ' genoemd, omdat de service gegevens ophaalt zonder dat u code hoeft te schrijven waarmee gegevens worden toegevoegd aan een index.
 
-Indexeerfuncties zijn gebaseerd op typen gegevensbronnen of platforms met afzonderlijke indexeerfuncties voor SQL Server op Azure, Cosmos DB, Azure Table Storage en Blob-opslag. BLOB storage-indexeerfuncties hebben extra eigenschappen die specifiek zijn voor blob-inhoud typen.
+Indexeer functies zijn gebaseerd op gegevens bron typen of-platformen, met afzonderlijke Indexeer functies voor SQL Server op Azure, Cosmos DB, Azure Table Storage en Blob Storage. Blob Storage-Indexeer functies hebben aanvullende eigenschappen die specifiek zijn voor BLOB-inhouds typen.
 
 U kunt een indexeerfunctie gebruiken voor de opname van gegevens of een combinatie van technieken gebruiken, waaronder een indexeerfunctie voor het laden van slechts enkele velden in de index.
 
-U kunt indexeerfuncties op verzoek uitvoeren of op een terugkerende gegevens vernieuwd volgens een schema dat wordt zo vaak als elke vijf minuten worden uitgevoerd. Als u vaker updates wilt uitvoeren, hebt u een pushmodel nodig dat tegelijkertijd gegevens in Azure Search en uw externe gegevensbron bijwerkt.
+U kunt op aanvraag Indexeer functies of een periodiek schema voor gegevens vernieuwing uitvoeren dat wordt uitgevoerd op elke vijf minuten. Als u vaker updates wilt uitvoeren, hebt u een pushmodel nodig dat tegelijkertijd gegevens in Azure Search en uw externe gegevensbron bijwerkt.
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Strategieën voor het maken en beheren van indexeerfuncties
 
 U kunt op de volgende manieren indexeerfuncties maken en beheren:
 
-* [Portal > Gegevenswizard importeren](search-import-data-portal.md)
+* [Wizard Portal-> gegevens importeren](search-import-data-portal.md)
 * [Service REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
@@ -39,13 +37,13 @@ Een nieuwe indexeerfunctie wordt in eerste instantie aangekondigd als preview-fu
 
 ## <a name="permissions"></a>Machtigingen
 
-Alle bewerkingen met betrekking tot indexeerfuncties, met inbegrip van GET-aanvragen voor status- of -definities vereisen een [admin api-sleutel](search-security-api-keys.md). 
+Voor alle bewerkingen met betrekking tot Indexeer functies, waaronder GET-aanvragen voor status of definities, is een [admin API-sleutel](search-security-api-keys.md)vereist. 
 
 <a name="supported-data-sources"></a>
 
 ## <a name="supported-data-sources"></a>Ondersteunde gegevensbronnen
 
-Indexeerfuncties verkennen gegevensarchieven in Azure.
+Indexeer functies verkennen gegevens archieven in Azure.
 
 * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
@@ -53,51 +51,51 @@ Indexeerfuncties verkennen gegevensarchieven in Azure.
 * [Azure Table Storage](search-howto-indexing-azure-tables.md) 
 
 > [!Note]
-> Azure Table Storage wordt niet ondersteund voor [cognitief zoeken](cognitive-search-concept-intro.md).
+> Azure Table Storage wordt niet ondersteund voor [cognitieve Zoek opdrachten](cognitive-search-concept-intro.md).
 >
 
 ## <a name="basic-configuration-steps"></a>Basisconfiguratiestappen
 Indexeerfuncties kunnen functies bieden die uniek voor de gegevensbron zijn. In dit opzicht variëren bepaalde aspecten van de configuratie van de indexeerfunctie of de gegevensbron al naar gelang het type indexeerfunctie. Alle indexeerfuncties hebben echter dezelfde basissamenstelling en voor alle indexeerfuncties gelden dezelfde vereisten. Hieronder vindt u de stappen die voor alle indexeerfuncties gemeenschappelijk zijn.
 
 ### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
-Een indexeerfunctie haalt verbinding met de gegevensbron van een *gegevensbron* object. De definitie van de gegevensbron bevat een verbindingsreeks en mogelijk referenties. Roep de [Datasource maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST-API of [DataSource-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) om de resource te maken.
+Met een Indexeer functie wordt een gegevens bron verbinding opgehaald van een *gegevens bron* object. De definitie van de gegevens bron biedt een connection string en mogelijk referenties. Roep de [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) -rest API of- [klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) op om de resource te maken.
 
 Gegevensbronnen worden geconfigureerd en onafhankelijk van de indexeerfuncties beheerd die gebruikmaken van de gegevensbronnen. Dit betekent dat een gegevensbron door meerdere indexeerfuncties kan worden gebruikt om tegelijkertijd meer dan één index te laden.
 
 ### <a name="step-2-create-an-index"></a>Stap 2: Een index maken
-Een indexeerfunctie automatiseert bepaalde taken met betrekking tot de opname van gegevens, maar het maken van een index behoort hier niet toe. Een vereiste is dat u een vooraf gedefinieerde index moet hebben met velden die overeenkomen met de velden in uw externe gegevensbron. Velden overeen moeten komen met door de naam en het gegevenstype. Zie voor meer informatie over het structureren van een index [maken van een Index (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) of [Index-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Zie [Veldtoewijzingen in Azure Search-indexeerfuncties](search-indexer-field-mappings.md) voor hulp bij veldkoppelingen.
+Een indexeerfunctie automatiseert bepaalde taken met betrekking tot de opname van gegevens, maar het maken van een index behoort hier niet toe. Een vereiste is dat u een vooraf gedefinieerde index moet hebben met velden die overeenkomen met de velden in uw externe gegevensbron. Velden moeten overeenkomen met de naam en het gegevens type. Zie [Create a index (Azure Search rest API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) of [index class](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)(Engelstalig) voor meer informatie over het structureren van een index. Zie [Veldtoewijzingen in Azure Search-indexeerfuncties](search-indexer-field-mappings.md) voor hulp bij veldkoppelingen.
 
 > [!Tip]
 > Hoewel indexeerfuncties een index niet voor u kunnen genereren, kan de wizard **Gegevens importeren** in de portal helpen. In de meeste gevallen kan de wizard een indexschema afleiden uit bestaande metagegevens in de bron, met een voorlopig indexschema dat u kunt bewerken terwijl de wizard actief is. Als de index eenmaal is aangemaakt op de service, blijven verdere bewerkingen in de portal meestal beperkt tot het toevoegen van nieuwe velden. Overweeg de wizard voor het maken, maar niet voor het herzien van een index. Doorloop het [Portaloverzicht](search-get-started-portal.md) om aan de slag te gaan.
 
-### <a name="step-3-create-and-schedule-the-indexer"></a>Stap 3: Maken en plannen van de indexeerfunctie
-Definitie van de indexeerfunctie is een constructie die combineert alle elementen met betrekking tot de opname van gegevens. Vereiste elementen hebben een gegevensbron en index. Optionele elementen bevatten een planning- en veldtoewijzingen. Toewijzing van veld zijn alleen optioneel als gegevensbron en indexvelden duidelijk overeenkomen. Een indexeerfunctie kan verwijzen naar een gegevensbron van een andere service, zolang die gegevensbron maar uit hetzelfde abonnement komt. Zie [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Een indexeerfunctie maken (Azure Search REST API)) voor meer informatie over het structureren van een indexeerfunctie.
+### <a name="step-3-create-and-schedule-the-indexer"></a>Stap 3: De Indexeer functie maken en plannen
+De definitie van de Indexeer functie is een constructie waarmee alle elementen worden gecombineerd die zijn gerelateerd aan gegevens opname. De vereiste elementen bevatten een gegevens bron en index. Optionele elementen bevatten een schema-en veld toewijzingen. Veld toewijzing is alleen optioneel als bron velden en index velden duidelijk overeenkomen. Een indexeerfunctie kan verwijzen naar een gegevensbron van een andere service, zolang die gegevensbron maar uit hetzelfde abonnement komt. Zie [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (Een indexeerfunctie maken (Azure Search REST API)) voor meer informatie over het structureren van een indexeerfunctie.
 
 <a id="RunIndexer"></a>
 
-## <a name="run-indexers-on-demand"></a>Indexeerfuncties op aanvraag uitvoeren
+## <a name="run-indexers-on-demand"></a>Indexeer functies op aanvraag uitvoeren
 
-Het is gebruikelijk om te plannen indexeren, een indexeerfunctie kan worden aangeroepen op aanvraag met behulp van de [RunCommand-](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
+Hoewel het gebruikelijk is om het indexeren te plannen, kan een Indexeer functie ook op aanvraag worden aangeroepen met behulp van de [opdracht uitvoeren](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
 
     POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
     api-key: [Search service admin key]
 
 > [!NOTE]
-> Wanneer uitvoeren API is geretourneerd, het aanroepen van de indexeerfunctie is gepland, maar de werkelijke verwerking verloopt asynchroon. 
+> Wanneer run API wordt geretourneerd, is de aanroep van de Indexeer functie gepland, maar wordt de daad werkelijke verwerking asynchroon uitgevoerd. 
 
-U kunt de status van de indexeerfunctie in de portal of via ophalen indexeerfunctie Status API bewaken. 
+U kunt de status van de Indexeer functie bewaken in de portal of via de API van de Indexeer functie ophalen. 
 
 <a name="GetIndexerStatus"></a>
 
-## <a name="get-indexer-status"></a>Status van de indexeerfunctie ophalen
+## <a name="get-indexer-status"></a>De Indexeer functie-status ophalen
 
-U kunt de status en uitvoering van de geschiedenis van een indexeerfunctie via ophalen de [indexeerfunctie Status ophalen-opdracht](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
+U kunt de status en de uitvoerings geschiedenis van een Indexeer functie ophalen met behulp van de [opdracht Get Indexing-status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
 
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
 
-Het antwoord bevat de algemene status van de indexeerfunctie, het laatste (of in uitvoering) indexer-aanroepen en de geschiedenis van recente indexeerfunctie aanroepen.
+Het antwoord bevat de algemene status van de Indexeer functie, de laatste (of in uitvoering zijnde) indexerings aanroep en de geschiedenis van recente Indexeer functie-aanroepen.
 
     {
         "status":"running",
@@ -125,7 +123,7 @@ Het antwoord bevat de algemene status van de indexeerfunctie, het laatste (of in
         }]
     }
 
-Uitvoeringsgeschiedenis bevat maximaal de 50 meest recente voltooide uitvoeringen die in omgekeerde volgorde worden gesorteerd (zodat de meest recente uitvoering in het antwoord eerste komt).
+De uitvoerings geschiedenis bevat tot de 50 meest recente voltooide uitvoeringen, die in omgekeerde chronologische volg orde worden gesorteerd (zodat de meest recente uitvoering eerst in het antwoord komt).
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u het uitgangspunt hebt begrepen, is de volgende stap de vereisten en taken te bekijken die specifiek zijn voor elk gegevensbrontype.

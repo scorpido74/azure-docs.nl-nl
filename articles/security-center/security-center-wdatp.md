@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 87f5a14bcd6003ad81b663ed97e5349dcbff2a30
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296516"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640905"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection met Azure Security Center
 
@@ -51,7 +51,7 @@ U kunt de waarschuwing verder onderzoeken door te draaien naar Windows Defender 
 
 ## <a name="platform-support"></a>Platformondersteuning
 
-Windows Defender ATP in Security Center ondersteunt detectie op Windows Server 2012 R2 en Windows Server 2016-besturings systemen die tot een standaard service abonnement behoren.
+Windows Defender ATP in Security Center ondersteunt detectie op Windows Server 2016-, 2012 R2-en 2008 R2 SP1-besturings systemen in een standaard service-abonnement.
 
 > [!NOTE]
 > Wanneer u Azure Security Center gebruikt voor het bewaken van servers, wordt automatisch een Windows Defender ATP-Tenant gemaakt en worden de Windows Defender ATP-gegevens standaard in Europa opgeslagen. Als u uw gegevens naar een andere locatie wilt verplaatsen, moet u contact opnemen met Microsoft Ondersteuning om de Tenant opnieuw in te stellen.

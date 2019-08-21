@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932342"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636558"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service plan
 
@@ -100,7 +100,7 @@ U kunt bijvoorbeeld beginnen met het testen van uw web-app in een **gratis** app
 
 Hetzelfde werkt in de omgekeerde volg orde. Wanneer u denkt dat u de mogelijkheden of functies van een hogere laag niet meer nodig hebt, kunt u omlaag schalen naar een lagere laag, waardoor u geld bespaart.
 
-Zie [een app omhoog schalen in azure](web-sites-scale.md)voor meer informatie over het omhoog schalen van het app service plan.
+Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie over het omhoog schalen van het app service plan.
 
 Als uw app zich in hetzelfde App Service plan bevindt met andere apps, wilt u mogelijk de prestaties van de app verbeteren door de reken resources te isoleren. U kunt dit doen door de app te verplaatsen naar een afzonderlijk App Service plan. Zie [een app naar een andere app service plan verplaatsen](app-service-plan-manage.md#move)voor meer informatie.
 

@@ -1,6 +1,6 @@
 ---
-title: Gebruik van een virtuele machine met de Azure CLI voor het oplossen van problemen voor Linux | Microsoft Docs
-description: Informatie over het oplossen van problemen met Linux-VM door verbinding te maken van de besturingssysteemschijf aan een virtuele machine met de Azure CLI voor herstel
+title: Een Linux-probleemoplossings-VM gebruiken met de Azure CLI | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met Linux-VM'S door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure CLI
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
@@ -13,88 +13,138 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: e1e91ec4393072a7da78c0de800cab26608c74d6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 49ee83e451e9d555a7fe5fca57bc58d6616334da
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709339"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641053"
 ---
-# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Een Linux-VM oplossen door de besturingssysteemschijf koppelen aan een virtuele machine met de Azure CLI voor herstel
-Als uw Linux-machine (VM) een fout opstart- of schijffout optreedt, moet u mogelijk de stappen voor probleemoplossing uitvoeren op de virtuele harde schijf zelf. Een veelvoorkomend voorbeeld is een ongeldige waarde in `/etc/fstab` dat voorkomt dat de virtuele machine wordt het opstarten. Dit artikel wordt uitgelegd hoe u verbinding maken met de virtuele harde schijf met een andere Linux-VM op eventuele fouten te corrigeren en vervolgens de oorspronkelijke virtuele machine opnieuw te maken met de Azure CLI. 
-
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI
+Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure CLI gebruikt om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken. 
 
 ## <a name="recovery-process-overview"></a>Overzicht van het herstelproces
 Het probleemoplossingsproces is als volgt:
 
-1. Verwijder de virtuele machine problemen worden aangetroffen, de virtuele harde schijven te houden.
-2. Toevoegen en koppelen van de virtuele harde schijf met een andere Linux-VM voor het oplossen van problemen.
-3. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of alle hulpmiddelen voor het oplossen van problemen op de oorspronkelijke virtuele harde schijf worden uitgevoerd.
-4. Koppel de virtuele harde schijf van de VM voor probleemoplossing los.
-5. Een virtuele machine met behulp van de oorspronkelijke virtuele harde schijf maken.
+1. Stop de betrokken VM.
+1. Maak een moment opname van de besturingssysteem schijf van de virtuele machine.
+1. Maak een schijf van de moment opname van de besturingssysteem schijf.
+1. Koppel en koppel de nieuwe besturingssysteem schijf aan een andere virtuele Linux-machine voor het oplossen van problemen.
+1. Maak verbinding met de VM voor probleemoplossing. Bewerk bestanden of voer hulpprogram ma's uit om problemen op de nieuwe besturingssysteem schijf op te lossen.
+1. Ontkoppel de nieuwe besturingssysteem schijf en ontkoppel deze van de virtuele machine voor probleem oplossing.
+1. Wijzig de besturingssysteem schijf voor de betrokken VM.
 
-Voor de virtuele machine die gebruikmaakt van beheerde schijf, Zie [een beheerde schijf-VM oplossen door het koppelen van een nieuwe schijf met besturingssysteem](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
+Als u deze probleemoplossings stappen wilt uitvoeren, moet u de nieuwste [Azure cli](/cli/azure/install-az-cli2) installeren en u aanmelden bij een Azure-account met [AZ login](/cli/azure/reference-index).
 
-Als u deze stappen voor probleemoplossing, moet u de meest recente [Azure CLI](/cli/azure/install-az-cli2) geïnstalleerd en aangemeld bij een Azure-account met [az login](/cli/azure/reference-index).
+> [!Important]
+> De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [beheerde schijven](../linux/managed-disks-overview.md). 
 
-In de volgende voorbeelden kunt u namen van parameters vervangen door uw eigen waarden. Voorbeeld-parameternamen bevatten `myResourceGroup`, `mystorageaccount`, en `myVM`.
+Vervang in de volgende voor beelden parameter namen door uw eigen waarden. Voor beelden van parameter `myResourceGroup` namen `myVM`zijn en.
 
+## <a name="determine-boot-issues"></a>Opstart problemen vaststellen
+Controleer de seriële uitvoer om te bepalen waarom de virtuele machine niet correct kan worden opgestart. Een veelvoorkomend voor beeld is een ongeldige vermelding `/etc/fstab`in, of de onderliggende virtuele harde schijf die wordt verwijderd of verplaatst.
 
-## <a name="determine-boot-issues"></a>Opstartproblemen met bepalen
-Bekijk de seriële uitvoer om te bepalen waarom de virtuele machine niet staat zijn om correct is. Een veelvoorkomend voorbeeld is een ongeldige waarde in `/etc/fstab`, of de onderliggende virtuele harde schijf wordt verwijderd of verplaatst.
-
-Ophalen van de opstartlogboeken met [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics). Het volgende voorbeeld wordt de seriële uitvoer van de virtuele machine met de naam `myVM` in de resourcegroep met de naam `myResourceGroup`:
+De opstart logboeken ophalen met [AZ VM boot-Diagnostics Get-boot-log](/cli/azure/vm/boot-diagnostics). `myVM` In het volgende voor beeld wordt de seriële uitvoer opgehaald van de virtuele machine met de `myResourceGroup`naam in de resource groep met de naam:
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ```
 
-Controleer de seriële uitvoer om te bepalen waarom de virtuele machine is mislukt om op te starten. Als de seriële uitvoer is niet een aanwijzing bieden, moet u mogelijk om te controleren van de logboekbestanden in `/var/log` beschikt u over de virtuele harde schijf die zijn verbonden met een virtuele machine voor probleemoplossing.
+Bekijk de seriële uitvoer om te bepalen waarom de virtuele machine niet kan worden opgestart. Als de seriële uitvoer geen indicatie geeft, moet u mogelijk logboek bestanden `/var/log` weer geven zodra u de virtuele harde schijf hebt verbonden met een VM voor probleem oplossing.
 
+## <a name="stop-the-vm"></a>De virtuele machine stoppen
 
-## <a name="view-existing-virtual-hard-disk-details"></a>Bestaande virtuele harde schijfdetails weergeven
-Voordat u de virtuele harde schijf (VHD) aan een andere virtuele machine koppelen kunt, moet u voor het identificeren van de URI van de besturingssysteemschijf. 
+In het volgende voor beeld wordt de `myVM` VM gestopt met de naam `myResourceGroup`van de resource groep met de naam:
 
-Informatie weergeven over uw virtuele machine met [az vm show](/cli/azure/vm). Gebruik de `--query` vlag om op te halen van de URI voor de besturingssysteemschijf. Het volgende voorbeeld wordt informatie over de schijf voor de virtuele machine met de naam `myVM` in de resourcegroep met de naam `myResourceGroup`:
-
-```azurecli
-az vm show --resource-group myResourceGroup --name myVM \
-    --query [storageProfile.osDisk.vhd.uri] --output tsv
+```powershell
+Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-De URI is vergelijkbaar met **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** .
+Wacht totdat de virtuele machine is verwijderd voordat u de volgende stap verwerkt.
 
-## <a name="delete-existing-vm"></a>Bestaande virtuele machine verwijderen
-Virtuele harde schijven en virtuele machines zijn twee verschillende resources in Azure. Een virtuele harde schijf is waar het besturingssysteem zelf, toepassingen en configuraties worden opgeslagen. De virtuele machine zelf bestaat uit metagegevens die definieert de grootte of locatie en verwijst naar resources, zoals een virtuele harde schijf of virtuele netwerkinterfacekaart (NIC). Elke virtuele harde schijf heeft een lease toegewezen wanneer die zijn gekoppeld aan een virtuele machine. Hoewel gegevensschijven zelfs wanneer de virtuele machine wordt uitgevoerd, kunnen worden gekoppeld en losgekoppeld, kan de besturingssysteemschijf niet worden losgekoppeld tenzij de VM-resource wordt verwijderd. De lease blijft de besturingssysteemschijf koppelen aan een virtuele machine, zelfs wanneer die virtuele machine in een status gestopt en toewijzing ongedaan gemaakt.
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Een moment opname maken van de besturingssysteem schijf van de virtuele machine
 
-De eerste stap bij het herstellen van uw virtuele machine is de VM-resource zelf verwijderen. Wanneer de virtuele machine wordt verwijderd, blijven de virtuele harde schijven aanwezig in uw opslagaccount. Nadat de virtuele machine is verwijderd, kunt u de virtuele harde schijf koppelen aan een andere virtuele machine oplossen van problemen en los de fouten.
+Een moment opname is een volledige, alleen-lezen kopie van een VHD. Deze kan niet worden gekoppeld aan een virtuele machine. In de volgende stap maakt u een schijf van deze moment opname. In het volgende voor beeld wordt een moment `mySnapshot` opname gemaakt met de naam van de besturingssysteem schijf van de virtuele machine met de naam ' myVM '. 
 
-Verwijderen van de virtuele machine met [az vm verwijderen](/cli/azure/vm). Het volgende voorbeeld wordt de virtuele machine met de naam `myVM` uit de resourcegroep met de naam `myResourceGroup`:
+```powershell
+$resourceGroupName = 'myResourceGroup' 
+$location = 'eastus' 
+$vmName = 'myVM'
+$snapshotName = 'mySnapshot'  
 
-```azurecli
-az vm delete --resource-group myResourceGroup --name myVM 
+#Get the VM
+$vm = get-azvm `
+-ResourceGroupName $resourceGroupName `
+-Name $vmName
+
+#Create the snapshot configuration for the OS disk
+$snapshot =  New-AzSnapshotConfig `
+-SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+-Location $location `
+-CreateOption copy
+
+#Take the snapshot
+New-AzSnapshot `
+   -Snapshot $snapshot `
+   -SnapshotName $snapshotName `
+   -ResourceGroupName $resourceGroupName 
 ```
+## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de moment opname
 
-Wacht totdat de virtuele machine verwijderd is voordat u de virtuele harde schijf aan een andere virtuele machine koppelen. De lease op de virtuele harde schijf die het aan de virtuele machine koppelt moet worden vrijgegeven voordat u de virtuele harde schijf aan een andere virtuele machine koppelen kunt.
+Met dit script maakt u een beheerde schijf `newOSDisk` met een naam uit `mysnapshot`de moment opname met de naam.  
 
+```powershell
+#Set the context to the subscription Id where Managed Disk will be created
+#You can skip this step if the subscription is already selected
 
-## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Bestaande virtuele harde schijf koppelen aan een andere virtuele machine
-Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplossen van problemen. U kunt de bestaande virtuele harde schijf koppelen aan deze VM voor probleemoplossing om te bladeren en de inhoud van de schijf bewerken. Dit proces kunt u Corrigeer eventuele fouten in de configuratie of extra toepassing of Systeemlogboekbestanden, bijvoorbeeld kunnen beoordelen. Kies of maak een andere virtuele machine moet worden gebruikt voor het oplossen van problemen.
+$subscriptionId = 'yourSubscriptionId'
 
-Koppel de bestaande virtuele harde schijf met [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk). Wanneer u de bestaande virtuele harde schijf koppelt, geeft u de URI naar de schijf hebt verkregen in de voorgaande `az vm show` opdracht. Het volgende voorbeeld wordt een bestaande virtuele harde schijf gekoppeld aan de VM voor probleemoplossing met de naam `myVMRecovery` in de resourcegroep met de naam `myResourceGroup`:
+Select-AzSubscription -SubscriptionId $SubscriptionId
+
+#Provide the name of your resource group
+$resourceGroupName ='myResourceGroup'
+
+#Provide the name of the snapshot that will be used to create Managed Disks
+$snapshotName = 'mySnapshot' 
+
+#Provide the name of the Managed Disk
+$diskName = 'newOSDisk'
+
+#Provide the size of the disks in GB. It should be greater than the VHD file size.
+$diskSize = '128'
+
+#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
+$storageType = 'StandardLRS'
+
+#Provide the Azure region (e.g. westus) where Managed Disks will be located.
+#This location should be same as the snapshot location
+#Get all the Azure location using command below:
+#Get-AzLocation
+$location = 'eastus'
+
+$snapshot = Get-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
+ 
+$diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+ 
+New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+```
+U hebt nu een kopie van de oorspronkelijke besturingssysteem schijf. U kunt deze nieuwe schijf koppelen aan een andere Windows-VM voor het oplossen van problemen.
+
+## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>De nieuwe virtuele harde schijf koppelen aan een andere VM
+Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplossen van problemen. U koppelt de schijf aan deze virtuele machine voor probleem oplossing om de schijf inhoud te zoeken en te bewerken. Met dit proces kunt u eventuele configuratie fouten corrigeren of aanvullende toepassings-of systeem logboek bestanden controleren, bijvoorbeeld. Kies of maak een andere virtuele machine die moet worden gebruikt voor het oplossen van problemen.
+
+Koppel de bestaande virtuele harde schijf met [AZ VM unmanaged-Disk attach](/cli/azure/vm/unmanaged-disk). Wanneer u de bestaande virtuele harde schijf koppelt, geeft u de URI op naar de schijf die `az vm show` u hebt verkregen in de voor gaande opdracht. In het volgende voor beeld wordt een bestaande virtuele harde schijf gekoppeld aan de VM `myVMRecovery` voor probleem oplossing met de `myResourceGroup`naam in de resource groep met de naam:
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
     --vhd-uri https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
 ```
-
-
-## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevensschijf koppelen
+## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevens schijf koppelen
 
 > [!NOTE]
-> De volgende voorbeelden worden de stappen die nodig zijn op een Ubuntu-VM beschreven. Als u een andere Linux-distributie, zoals Red Hat Enterprise Linux of SUSE, de locatie van het logboekbestand en `mount` opdrachten mogelijk iets anders. Raadpleeg de documentatie voor uw specifieke distributie voor de benodigde wijzigingen in opdrachten.
+> In de volgende voor beelden worden de stappen beschreven die nodig zijn voor een Ubuntu-VM. Als u een andere Linux-distributie gebruikt, zoals Red Hat Enterprise Linux of Suse, zijn de locaties en `mount` opdrachten van het logboek bestand mogelijk iets anders. Raadpleeg de documentatie voor uw specifieke distributie voor de desbetreffende wijzigingen in de opdrachten.
 
-1. SSH naar uw VM voor probleemoplossing met behulp van de juiste referenties. Als deze schijf de eerste gegevensschijf die is gekoppeld aan uw virtuele machine voor probleemoplossing is, de schijf waarschijnlijk is verbonden met `/dev/sdc`. Gebruik `dmseg` om gekoppelde schijven weer te geven:
+1. SSH naar uw virtuele machine voor probleem oplossing met de juiste referenties. Als deze schijf de eerste gegevens schijf is die aan uw virtuele machine voor probleem oplossing is gekoppeld, is `/dev/sdc`de schijf waarschijnlijk verbonden met. Gebruiken `dmseg` om gekoppelde schijven weer te geven:
 
     ```bash
     dmesg | grep SCSI
@@ -110,90 +160,85 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    In het voorgaande voorbeeld, de besturingssysteemschijf is op `/dev/sda` en de tijdelijke schijf die is opgegeven voor elke virtuele machine is op `/dev/sdb`. Als u meerdere gegevensschijven had, moeten ze op `/dev/sdd`, `/dev/sde`, enzovoort.
+    In het vorige voor beeld bevindt de besturingssysteem `/dev/sda` schijf zich op en de tijdelijke schijf die voor elke `/dev/sdb`VM is ingesteld, bevindt zich op. Als u meerdere gegevens schijven had, moeten ze zich op `/dev/sdd`, `/dev/sde`,,,, enzovoort.
 
-2. Maak een map voor het koppelen van uw bestaande virtuele harde schijf. Het volgende voorbeeld wordt een map met de naam `troubleshootingdisk`:
+2. Maak een directory voor het koppelen van uw bestaande virtuele harde schijf. In het volgende voor beeld wordt een `troubleshootingdisk`map gemaakt met de naam:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Als u meerdere partities op uw bestaande virtuele harde schijf hebt, koppelt u de vereiste partitie. Het volgende voorbeeld koppelt de eerste primaire partitie op `/dev/sdc1`:
+3. Als u meerdere partities op de bestaande virtuele harde schijf hebt, koppelt u de vereiste partitie. In het volgende voor beeld wordt de eerste primaire partitie `/dev/sdc1`gekoppeld aan:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Aanbevolen procedure is om te koppelen van gegevensschijven op virtuele machines in Azure met behulp van de universele, unieke id (UUID) van de virtuele harde schijf. Voor dit scenario voor de korte oplossen van problemen met is koppelen van de virtuele harde schijf met behulp van de UUID niet nodig. Echter bij normaal gebruik bewerken `/etc/fstab` virtuele harde schijven koppelen met behulp van de apparaatnaam in plaats van UUID kan ertoe leiden dat de virtuele machine niet kunnen worden opgestart.
+    > Best Practice is het koppelen van gegevens schijven op virtuele machines in azure met behulp van de Universally Unique Identifier (UUID) van de virtuele harde schijf. Voor dit korte probleemoplossings scenario is het niet nodig om de virtuele harde schijf te koppelen met behulp van de UUID. Het bewerken `/etc/fstab` van virtuele harde schijven met de apparaatnaam in plaats van de UUID kan er echter toe leiden dat de VM niet kan worden opgestart onder normaal gebruik.
 
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>Problemen oplossen op oorspronkelijke virtuele harde schijf
-Met de bestaande virtuele harde schijf dat wordt gekoppeld, kunt u nu onderhouds- en stappen voor probleemoplossing naar behoefte uitvoeren. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
+## <a name="fix-issues-on-the-new-os-disk"></a>Problemen op de nieuwe besturingssysteem schijf oplossen
+Als de bestaande virtuele harde schijf is gekoppeld, kunt u nu eventuele onderhouds-en probleemoplossings stappen uitvoeren. Zodra u de problemen hebt opgelost, kunt u doorgaan met de volgende stappen.
 
 
-## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Oorspronkelijke virtuele harde schijf loskoppelen
-Zodra de fouten opgelost zijn, kunt u ontkoppelen en de bestaande virtuele harde schijf loskoppelen van uw virtuele machine voor probleemoplossing. U kunt de virtuele harde schijf met andere VM's niet gebruiken totdat de lease die de virtuele harde schijf koppelen aan de virtuele machine voor probleemoplossing is vrijgegeven.
+## <a name="unmount-and-detach-the-new-os-disk"></a>De nieuwe besturingssysteem schijf ontkoppelen en loskoppelen
+Wanneer de fouten zijn opgelost, ontkoppelt u de bestaande virtuele harde schijf en koppelt u deze los van de VM voor probleem oplossing. U kunt de virtuele harde schijf niet met andere virtuele machines gebruiken totdat de lease die de virtuele harde schijf koppelt aan de VM voor probleem oplossing is vrijgegeven.
 
-1. Ontkoppel de bestaande virtuele harde schijf van de SSH-sessie aan uw VM voor probleemoplossing. Eerst uit de bovenliggende map voor uw koppelpunt wijzigen:
+1. Ontkoppel de bestaande virtuele harde schijf van de SSH-sessie naar uw VM voor probleem oplossing. Wijzig eerst de bovenliggende map voor het koppel punt:
 
     ```bash
     cd /
     ```
 
-    Nu de bestaande virtuele harde schijf ontkoppelen. Het volgende voorbeeld wordt het apparaat op `/dev/sdc1`:
+    Ontkoppel nu de bestaande virtuele harde schijf. In het volgende voor beeld wordt het apparaat ontkoppeld op `/dev/sdc1`:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-2. Nu de virtuele harde schijf van de virtuele machine loskoppelen. Sluit de SSH-sessie af op uw virtuele machine voor probleemoplossing. Lijst van de gekoppelde gegevensschijven aan uw VM voor probleemoplossing met [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk). Het volgende voorbeeld worden de gegevensschijven die zijn gekoppeld aan de virtuele machine met de naam `myVMRecovery` in de resourcegroep met de naam `myResourceGroup`:
+2. Ontkoppel nu de virtuele harde schijf van de VM. Sluit de SSH-sessie af op uw virtuele machine voor probleem oplossing. Vermeld de gekoppelde gegevens schijven aan uw virtuele machine voor probleem oplossing met [AZ VM unmanaged-Disk List](/cli/azure/vm/unmanaged-disk). `myVMRecovery` In het volgende voor beeld ziet u de gegevens schijven die zijn gekoppeld aan de virtuele machine `myResourceGroup`met de naam in de resource groep met de naam:
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
         --query '[].{Disk:vhd.uri}' --output table
     ```
 
-    Noteer de naam voor uw bestaande virtuele harde schijf. Bijvoorbeeld, de naam van een schijf met de URI van **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** is **myVHD**. 
+    Noteer de naam van de bestaande virtuele harde schijf. De naam van een schijf met de URI van **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** is bijvoorbeeld **myVHD**. 
 
-    De gegevensschijf van uw virtuele machine loskoppelen [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk). Het volgende voorbeeld wordt losgekoppeld van de schijf met de naam `myVHD` van de virtuele machine met de naam `myVMRecovery` in de `myResourceGroup` resourcegroep:
+    De gegevens schijf loskoppelen van uw VM [AZ VM unmanaged-Disk Detach](/cli/azure/vm/unmanaged-disk). In het volgende voor beeld wordt de schijf `myVHD` losgekoppeld van de virtuele `myVMRecovery` machine met `myResourceGroup` de naam in de resource groep:
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
         --name myVHD
     ```
 
+## <a name="change-the-os-disk-for-the-affected-vm"></a>De besturingssysteem schijf voor de betrokken VM wijzigen
 
-## <a name="create-vm-from-original-hard-disk"></a>Virtuele machine maken vanaf de oorspronkelijke harde schijf
-Gebruik voor het maken van een virtuele machine van de oorspronkelijke virtuele harde schijf [deze Azure Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd). De daadwerkelijke JSON-sjabloon is op de volgende koppeling:
+U kunt Azure PowerShell gebruiken om de schijven van het besturings systeem te wisselen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken.
 
-- https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
+In dit voor beeld wordt de `myVM` virtuele machine met de naam gestopt en wordt de schijf toegewezen als de nieuwe besturingssysteem schijf. `newOSDisk` 
 
-De sjabloon implementeert een virtuele machine met behulp van de VHD-URI van de vorige opdracht. Implementeer de sjabloon met [az group deployment maken](/cli/azure/group/deployment). Hiermee geeft u de URI naar de oorspronkelijke VHD en geef vervolgens het type besturingssysteem, VM-grootte en de naam van de virtuele machine als volgt:
+```powershell
+# Get the VM 
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
 
-```azurecli
-az group deployment create --resource-group myResourceGroup --name myDeployment \
-  --parameters '{"osDiskVhdUri": {"value": "https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd"},
-    "osType": {"value": "Linux"},
-    "vmSize": {"value": "Standard_DS1_v2"},
-    "vmName": {"value": "myDeployedVM"}}' \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
+# Make sure the VM is stopped\deallocated
+Stop-AzVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+
+# Get the new disk that you want to swap in
+$disk = Get-AzDisk -ResourceGroupName myResourceGroup -Name newDisk
+
+# Set the VM configuration to point to the new disk  
+Set-AzVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
+
+# Update the VM with the new OS disk. Possible values of StorageAccountType include: 'Standard_LRS' and 'Premium_LRS'
+Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
+
+# Start the VM
+Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
-
-## <a name="re-enable-boot-diagnostics"></a>Diagnostische gegevens over opstarten opnieuw inschakelen
-Wanneer u uw virtuele machine van de bestaande virtuele harde schijf maakt, diagnostische gegevens over opstarten mogelijk niet automatisch ingeschakeld. Inschakelen van diagnostische gegevens over opstarten met [az vm boot-diagnostics inschakelen](/cli/azure/vm/boot-diagnostics). Het volgende voorbeeld wordt de diagnostische extensie op de virtuele machine met de naam `myDeployedVM` in de resourcegroep met de naam `myResourceGroup`:
-
-```azurecli
-az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
-```
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Een beheerde schijf-VM oplossen door een nieuwe besturingssysteemschijf te koppelen
-1. De betreffende virtuele machine stoppen.
-2. [Maken van een momentopname van een beheerde schijf](../linux/snapshot-copy-managed-disk.md) van de Besturingssysteemschijf van de virtuele machine van beheerde schijf.
-3. [Een beheerde schijf maken op basis van de momentopname](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [De beheerde schijf koppelen als een gegevensschijf van de virtuele machine](../windows/attach-disk-ps.md).
-5. [Wijzigen van de gegevensschijf van stap 4 in besturingssysteemschijf](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u hebt met het maken van een verbinding met uw virtuele machine problemen, Zie [oplossen SSH-verbindingen met een Azure-VM](troubleshoot-ssh-connection.md). Zie voor problemen met toegang tot toepassingen die worden uitgevoerd op de virtuele machine, [verbindingsproblemen van toepassing op een Linux-VM oplossen](troubleshoot-app-connection.md).
+Zie [problemen met ssh-verbindingen met een Azure VM oplossen](troubleshoot-ssh-connection.md)als u problemen ondervindt bij het maken van verbinding met uw virtuele machine. Zie problemen met [toepassings connectiviteit oplossen op een Linux-VM](troubleshoot-app-connection.md)voor problemen met het openen van toepassingen die op uw virtuele machine worden uitgevoerd.
 
