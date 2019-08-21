@@ -8,34 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3126613a9dca00d221610dc46116dd409c65d53d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b2879a1ebcf01a0433873e8da77c4ce55a078cd
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446632"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647004"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Capaciteit voor uw implementatie QnA Maker kiezen
 
 De QnA Maker-service heeft een afhankelijkheid op drie Azure-resources:
 1.  App Service (voor de runtime)
-2.  Azure Search (voor het opslaan van vragen en antwoorden supereenvoudig)
+2.  Azure Search (voor het opslaan en zoeken van QnAs)
 3.  App Insights (optioneel, voor het opslaan van chatlogs en telemetrie)
 
 Voordat u uw QnA Maker-service maakt, moet u bepalen welke laag van de bovenstaande services is geschikt voor u. 
 
 Er zijn doorgaans drie parameters die u moet overwegen:
 
-1. **De doorvoer die u nodig hebt van de service**: Selecteer de juiste [App Plan](https://azure.microsoft.com/pricing/details/app-service/plans/) voor uw appservice op basis van uw behoeften. U kunt [omhoog schalen](https://docs.microsoft.com/azure/app-service/web-sites-scale) of u de App. Dit moet ook van invloed zijn op uw Azure Search-SKU-selectie, Zie meer informatie [hier](https://docs.microsoft.com/azure/search/search-sku-tier).
+1. **De door Voer die u nodig hebt via de service**: Selecteer het juiste [app-abonnement](https://azure.microsoft.com/pricing/details/app-service/plans/) voor uw app service op basis van uw behoeften. U kunt [omhoog schalen](https://docs.microsoft.com/azure/app-service/manage-scale-up) of u de App. Dit moet ook van invloed zijn op uw Azure Search-SKU-selectie, Zie meer informatie [hier](https://docs.microsoft.com/azure/search/search-sku-tier).
 
-1. **Grootte en het aantal knowledge bases**: Kies de juiste [Azure zoeken SKU](https://azure.microsoft.com/pricing/details/search/) voor uw scenario. U kunt N-1 knowledge bases publiceren in een bepaalde laag, waarbij N staat voor het maximale aantal indexen toegestaan in de laag. Controleer ook de maximale grootte en het aantal documenten toegestaan per laag.
+1. **Grootte en aantal kennis grondslagen**: Kies de juiste [Azure Search-SKU](https://azure.microsoft.com/pricing/details/search/) voor uw scenario. U kunt N-1 knowledge bases publiceren in een bepaalde laag, waarbij N staat voor het maximale aantal indexen toegestaan in de laag. Controleer ook de maximale grootte en het aantal documenten toegestaan per laag.
 
-    Als de laag 15 toegestane indexen heeft, kunt u bijvoorbeeld 14 knowledge bases (1-index per gepubliceerd knowledge base) publiceren. De vijftiende index wordt gebruikt voor alle knowledge bases voor het ontwerpen en testen. 
+    Als uw laag bijvoorbeeld 15 toegestane indexen heeft, kunt u 14 Knowledge bases publiceren (1 index per gepubliceerde kennis basis). De vijftiende index wordt gebruikt voor alle kennis grondslagen voor ontwerpen en testen. 
 
-1. **Aantal documenten als bron**: De gratis SKU van de QnA Maker-management-service beperkt het aantal documenten die u via de portal en de API's naar 3 (van 1 MB grootte, elk beheren kunt). De standaard SKU heeft geen limieten voor het aantal documenten die u kunt beheren. Meer informatie [hier](https://aka.ms/qnamaker-pricing).
+1. **Aantal documenten als bronnen**: De gratis SKU van de QnA Maker Management-service beperkt het aantal documenten dat u kunt beheren via de portal en de Api's tot 3 (van elke grootte van 1 MB). De standaard SKU heeft geen limieten voor het aantal documenten die u kunt beheren. Meer informatie [hier](https://aka.ms/qnamaker-pricing).
 
 De volgende tabel biedt richtlijnen op hoog niveau.
 
