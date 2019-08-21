@@ -61,9 +61,9 @@ Tijdens het versleutelen genereert de client bibliotheek een wille keurige initi
 > 
 > 
 
-Het downloaden van een versleutelde BLOB bestaat uit het ophalen van de inhoud van de volledige blob met behulp van de methoden **Get***. De ingepakte CEK is gewrappt en gebruikt samen met de IV (opgeslagen als blob-meta gegevens in dit geval) om de ontsleutelde gegevens te retour neren aan de gebruikers.
+Het downloaden van een versleutelde BLOB bestaat uit het ophalen van de inhoud van de volledige blob met behulp van de methoden **Get** *. De ingepakte CEK is gewrappt en gebruikt samen met de IV (opgeslagen als blob-meta gegevens in dit geval) om de ontsleutelde gegevens te retour neren aan de gebruikers.
 
-Als u een wille keurig bereik downloadt (**Get***-methoden met de bereik parameters in) in de versleutelde blob, moet u het bereik dat door de gebruikers wordt verstrekt, aanpassen om een klein aantal extra gegevens te krijgen dat kan worden gebruikt om het aangevraagde bereik te ontsleutelen. .
+Als u een wille keurig bereik downloadt (**Get** *-methoden met de bereik parameters in) in de versleutelde blob, moet u het bereik dat door de gebruikers wordt verstrekt, aanpassen om een klein aantal extra gegevens te krijgen dat kan worden gebruikt om het aangevraagde bereik te ontsleutelen. .
 
 Blok-blobs en pagina-blobs kunnen alleen worden versleuteld/ontsleuteld met dit schema. Er is momenteel geen ondersteuning voor het versleutelen van toevoeg-blobs.
 

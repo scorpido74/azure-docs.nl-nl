@@ -133,7 +133,7 @@ Nadat de installatie is voltooid, duurt het 30 minuten tot een uur voordat de ge
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Bewakings instellingen voor subnetten en knoop punten bewerken 
 
-Alle subnetten waarop ten minste één agent is geïnstalleerd, worden weer ****  gegeven op het tabblad subnetwerken op de pagina configuratie. 
+Alle subnetten waarop ten minste één agent is geïnstalleerd, worden weer gegeven op het tabblad  **subnetwerken**  op de pagina configuratie. 
 
 
 De bewaking van bepaalde subnetwerken in-of uitschakelen:
@@ -203,9 +203,9 @@ Nadat u de Netwerkprestatiemeter oplossing hebt ingeschakeld, biedt de tegel opl
 
 ### <a name="drill-down-for-depth"></a>Inzoomen op diepte 
 
-U kunt verschillende koppelingen in het dash board van de oplossing selecteren om in te zoomen op een wille keurig interesse gebied. Als u bijvoorbeeld een waarschuwing ziet of als er een slechte netwerk koppeling wordt weer gegeven op het dash board, selecteert u deze om verder te onderzoeken. Een pagina bevat een lijst met alle subnetwerk koppelingen voor de desbetreffende netwerk koppeling. U kunt het verlies, de latentie en de status van elke subnetwerk koppeling zien. U kunt snel zien welke subnetwerk koppeling problemen veroorzaakt.  Selecteer **knooppunt koppelingen weer geven**om alle knooppunt koppelingen voor de beschadigde subnet koppeling weer te geven. Vervolgens ziet u de koppelingen van afzonderlijke knoop punten en de status van de beschadigde knoop punten. 
+U kunt verschillende koppelingen in het dash board van de oplossing selecteren om in te zoomen op een wille keurig interesse gebied. Als u bijvoorbeeld een waarschuwing ziet of als er een slechte netwerk koppeling wordt weer gegeven op het dash board, selecteert u deze om verder te onderzoeken. Een pagina bevat een lijst met alle subnetwerk koppelingen voor de desbetreffende netwerk koppeling. U kunt het verlies, de latentie en de status van elke subnetwerk koppeling zien. U kunt snel zien welke subnetwerk koppeling problemen veroorzaakt. Selecteer **knooppunt koppelingen weer geven**  om alle knooppunt koppelingen voor de beschadigde subnet koppeling weer te geven. Vervolgens ziet u de koppelingen van afzonderlijke knoop punten en de status van de beschadigde knoop punten. 
 
- Selecteer **topologie weer geven**om de hop-per-hop-topologie van de routes tussen de bron-en doel knooppunten weer te geven. De beschadigde routes worden rood weer gegeven. U kunt de latentie weer geven die door elke hop is bijgedragen, zodat u het probleem snel kunt identificeren met een bepaald gedeelte van het netwerk.
+Selecteer  **topologie weer geven**  om de hop-per-hop-topologie van de routes tussen de bron-en doel knooppunten weer te geven. De beschadigde routes worden rood weer gegeven. U kunt de latentie weer geven die door elke hop is bijgedragen, zodat u het probleem snel kunt identificeren met een bepaald gedeelte van het netwerk.
 
  
 

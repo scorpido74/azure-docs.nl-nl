@@ -92,7 +92,7 @@ Zodra u alle modules voor een implementatie die is geconfigureerd hebt, selectee
 
 ### <a name="step-3-specify-routes-optional"></a>Stap 3: (Optioneel) Routes opgeven
 
-Routes definiëren hoe modules met elkaar communiceren binnen een implementatie. Standaard de wizard u geeft een route met de naam **route** en gedefinieerd als **FROM /* in $upstream **, wat betekent dat de uitvoer van alle modules die berichten worden verzonden naar uw IoT-hub.  
+Routes definiëren hoe modules met elkaar communiceren binnen een implementatie. Standaard de wizard u geeft een route met de naam **route** en gedefinieerd als **FROM /* in $upstream**, wat betekent dat de uitvoer van alle modules die berichten worden verzonden naar uw IoT-hub.  
 
 Toevoegen of bijwerken van de routes met gegevens uit [declareren routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende** om door te gaan naar de sectie controleren.
 

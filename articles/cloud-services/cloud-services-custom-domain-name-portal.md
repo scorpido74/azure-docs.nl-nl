@@ -116,7 +116,7 @@ De volgende A-record stuurt bijvoorbeeld alle verkeer van **contoso.com** naar *
 | --- | --- |
 | \@ |137.135.70.239 |
 
-In dit voor beeld ziet u hoe u een A-record maakt voor het hoofd domein. Als u een invoer van joker tekens wilt maken voor alle subdomeinen, voert u ' * * * * * * ' in als het subdomein.
+In dit voor beeld ziet u hoe u een A-record maakt voor het hoofd domein. Als u een invoer van joker tekens wilt maken voor alle subdomeinen, voert u '*****' in als het subdomein.
 
 > [!WARNING]
 > IP-adressen in azure zijn standaard dynamisch. U wilt waarschijnlijk een [gereserveerd IP-adres](../virtual-network/virtual-networks-reserved-public-ip.md) gebruiken om ervoor te zorgen dat uw IP-adres niet wordt gewijzigd.
