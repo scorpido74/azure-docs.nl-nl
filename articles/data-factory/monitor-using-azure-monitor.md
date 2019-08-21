@@ -106,11 +106,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Eigenschap | Type | Description |
 | --- | --- | --- |
 | storageAccountId |String | De resource-ID van het opslag account waarnaar u Diagnostische logboeken wilt verzenden |
-| serviceBusRuleId |String | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de volgende indeling: {Service Bus Resource ID}/authorizationrules/{key name}.|
+| serviceBusRuleId |Reeks | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de volgende indeling: {Service Bus Resource ID}/authorizationrules/{key name}.|
 | workspaceId | Complex type | Matrix van metrische tijd korrels en het Bewaar beleid. Deze eigenschap is momenteel leeg. |
 |metrics| Parameter waarden van de pijplijn uitvoering worden door gegeven aan de aangeroepen pijp lijn| Een JSON-object parameter namen toewijzen aan argument waarden |
 | logs| Complex type| Naam van een diagnostische logboek categorie voor een resource type. Als u de lijst met diagnostische logboek categorieën voor een resource wilt ophalen, moet u eerst een bewerking Diagnostische instellingen ophalen uitvoeren. |
-| category | String | Matrix met logboek categorieën en het Bewaar beleid |
+| category| String| Matrix met logboek categorieën en het Bewaar beleid |
 | timeGrain | String | De granulatie van metrische gegevens die zijn vastgelegd in de ISO 8601-duur notatie. Moet PT1M (één minuut)|
 | enabled| Boolean-waarde | Hiermee wordt aangegeven of de verzameling van deze metrische waarde of logboek categorie is ingeschakeld voor deze resource|
 | retentionPolicy| Complex type| Hierin wordt het Bewaar beleid voor een metrische of logboek categorie beschreven. Wordt alleen gebruikt voor de optie voor het opslag account.|
@@ -277,19 +277,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Eigenschap | Type | Description | Voorbeeld |
 | --- | --- | --- | --- |
-| Niveau |Tekenreeks | Het niveau van de diagnostische Logboeken. Niveau 4 is altijd het geval voor het uitvoeren van activiteiten Logboeken. | `4`  |
-| correlationId |Tekenreeks | Unieke ID voor het bijhouden van end-to-end van een bepaalde aanvraag | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Tekenreeks | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|activityRunId| Tekenreeks| ID van de uitvoering van de activiteit | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
-|pipelineRunId| Tekenreeks| ID van de pijplijn uitvoering | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Tekenreeks | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| Niveau |String | Het niveau van de diagnostische Logboeken. Niveau 4 is altijd het geval voor het uitvoeren van activiteiten Logboeken. | `4`  |
+| correlationId |String | Unieke ID voor het bijhouden van end-to-end van een bepaalde aanvraag | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|activityRunId| String| ID van de uitvoering van de activiteit | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
+|pipelineRunId| String| ID van de pijplijn uitvoering | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|resourceId| String | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Reeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' ActivityRuns ' | `ActivityRuns` |
 |level| Reeks | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
 |operationName| Reeks |De naam van de activiteit met de status. Als de status de heartbeat start is, is `MyActivity -`dit. Als de status end heartbeat is, is `MyActivity - Succeeded` dit de laatste status | `MyActivity - Succeeded` |
-|pipelineName| Tekenreeks | Naam van de pijp lijn | `MyPipeline` |
-|activityName| Tekenreeks | Naam van de activiteit | `MyActivity` |
-|start| Tekenreeks | Begin van de uitvoering van de activiteit in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
-|end| Tekenreeks | Eindigt op de uitvoering van de activiteit in time span, UTC-indeling. Als de activiteit nog niet is beëindigd (diagnostisch logboek voor het starten van een activiteit), is de `1601-01-01T00:00:00Z` standaard waarde van is ingesteld.  | `2017-06-26T20:55:29.5007959Z` |
+|pipelineName| String | Naam van de pijp lijn | `MyPipeline` |
+|activityName| String | Naam van de activiteit | `MyActivity` |
+|start| String | Begin van de uitvoering van de activiteit in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
+|end| String | Eindigt op de uitvoering van de activiteit in time span, UTC-indeling. Als de activiteit nog niet is beëindigd (diagnostisch logboek voor het starten van een activiteit), is de `1601-01-01T00:00:00Z` standaard waarde van is ingesteld.  | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-logs-attributes"></a>Kenmerken van Logboeken voor pijplijn uitvoeringen
 
@@ -323,18 +323,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Eigenschap | Type | Description | Voorbeeld |
 | --- | --- | --- | --- |
-| Niveau |Tekenreeks | Het niveau van de diagnostische Logboeken. Niveau 4 is het geval voor het uitvoeren van activiteiten Logboeken. | `4`  |
-| correlationId |Tekenreeks | Unieke ID voor het bijhouden van end-to-end van een bepaalde aanvraag | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Tekenreeks | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|runId| Tekenreeks| ID van de pijplijn uitvoering | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Tekenreeks | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| Niveau |String | Het niveau van de diagnostische Logboeken. Niveau 4 is het geval voor het uitvoeren van activiteiten Logboeken. | `4`  |
+| correlationId |String | Unieke ID voor het bijhouden van end-to-end van een bepaalde aanvraag | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+|runId| String| ID van de pijplijn uitvoering | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
+|resourceId| String | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Reeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' PipelineRuns ' | `PipelineRuns` |
-|level| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
-|operationName| Tekenreeks |De naam van de pijp lijn met de status. "Pijp lijn-geslaagd" met eind status wanneer de pijplijn uitvoering is voltooid| `MyPipeline - Succeeded` |
+|level| String | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
+|operationName| String |De naam van de pijp lijn met de status. "Pijp lijn-geslaagd" met eind status wanneer de pijplijn uitvoering is voltooid| `MyPipeline - Succeeded` |
 |pipelineName| Reeks | Naam van de pijp lijn | `MyPipeline` |
 |start| Reeks | Begin van de uitvoering van de activiteit in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
-|end| Tekenreeks | Het einde van de activiteit wordt uitgevoerd in time span, UTC-indeling. Als de activiteit nog niet is beëindigd (diagnostisch logboek voor het starten van een activiteit), is de `1601-01-01T00:00:00Z` standaard waarde van is ingesteld.  | `2017-06-26T20:55:29.5007959Z` |
-|status| Tekenreeks | De uiteindelijke status van de pijplijn uitvoering (geslaagd of mislukt) | `Succeeded`|
+|end| String | Het einde van de activiteit wordt uitgevoerd in time span, UTC-indeling. Als de activiteit nog niet is beëindigd (diagnostisch logboek voor het starten van een activiteit), is de `1601-01-01T00:00:00Z` standaard waarde van is ingesteld.  | `2017-06-26T20:55:29.5007959Z` |
+|status| String | De uiteindelijke status van de pijplijn uitvoering (geslaagd of mislukt) | `Succeeded`|
 
 #### <a name="trigger-run-logs-attributes"></a>Kenmerken van run logs van trigger
 
@@ -367,19 +367,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 | Eigenschap | Type | Description | Voorbeeld |
 | --- | --- | --- | --- |
-| Niveau |Tekenreeks | Het niveau van de diagnostische Logboeken. Ingesteld op niveau 4 voor het uitvoeren van activiteiten Logboeken. | `4`  |
-| correlationId |Tekenreeks | Unieke ID voor het bijhouden van end-to-end van een bepaalde aanvraag | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Tekenreeks | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| Niveau |String | Het niveau van de diagnostische Logboeken. Ingesteld op niveau 4 voor het uitvoeren van activiteiten Logboeken. | `4`  |
+| correlationId |String | Unieke ID voor het bijhouden van end-to-end van een bepaalde aanvraag | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| Reeks| ID van de trigger uitvoering | `08587023010602533858661257311` |
-|resourceId| Tekenreeks | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|resourceId| String | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| Reeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' PipelineRuns ' | `PipelineRuns` |
-|level| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
-|operationName| Tekenreeks |De naam van de trigger met de definitieve status of deze is gestart. "MyTrigger-geslaagd" als de heartbeat is geslaagd| `MyTrigger - Succeeded` |
-|triggerName| Tekenreeks | De naam van de trigger | `MyTrigger` |
-|triggerType| Tekenreeks | Het type van de trigger (hand matige trigger of plannings trigger) | `ScheduleTrigger` |
-|triggerEvent| Tekenreeks | Gebeurtenis van de trigger | `ScheduleTime - 2017-07-06T01:50:25Z` |
-|start| Tekenreeks | Starten van trigger geactiveerd in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
-|status| Tekenreeks | De uiteindelijke status van het feit of de trigger is geactiveerd (geslaagd of mislukt) | `Succeeded`|
+|level| String | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
+|operationName| String |De naam van de trigger met de definitieve status of deze is gestart. "MyTrigger-geslaagd" als de heartbeat is geslaagd| `MyTrigger - Succeeded` |
+|triggerName| String | De naam van de trigger | `MyTrigger` |
+|triggerType| String | Het type van de trigger (hand matige trigger of plannings trigger) | `ScheduleTrigger` |
+|triggerEvent| String | Gebeurtenis van de trigger | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|start| String | Starten van trigger geactiveerd in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
+|status| String | De uiteindelijke status van het feit of de trigger is geactiveerd (geslaagd of mislukt) | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Log Analytics schema
 
