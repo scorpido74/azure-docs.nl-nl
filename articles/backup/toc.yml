@@ -114,6 +114,8 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: Gegevens herstellen vanaf Azure Backup Server
           href: backup-azure-alternate-dpm-server.md
+        - name: VMware-Vm's herstellen met Azure Backup Server
+          href: restore-azure-backup-server-vmware.md
     - name: Azure Backup Server in Azure Stack
       items:
         - name: Azure Backup Server installeren

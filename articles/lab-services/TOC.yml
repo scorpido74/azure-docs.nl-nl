@@ -72,7 +72,7 @@
   items:
     - name: Leslokaallabs
       items:
-        - name: Labaccounts maken en configureren
+        - name: Labaccounts maken en configureren (labaccounteigenaar)
           items:
             - name: Labaccounts maken en beheren
               href: classroom-labs/how-to-manage-lab-accounts.md
@@ -82,7 +82,7 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Een gedeelde installatiekopiegalerie toevoegen of loskoppelen
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: 'Leslokaallabs maken, configureren en gebruiken'
+        - name: Leslokaallabs maken en configureren (docent)
           items:
             - name: Leslokaallabs maken en beheren
               href: classroom-labs/how-to-manage-classroom-labs.md
@@ -90,8 +90,6 @@
               href: classroom-labs/how-to-create-manage-template.md
             - name: Gebruik configureren en beheren
               href: classroom-labs/how-to-configure-student-usage.md
-            - name: Leslokaallabs openen
-              href: classroom-labs/how-to-use-classroom-lab.md
             - name: Schema's maken en beheren
               href: classroom-labs/how-to-create-schedules.md
             - name: Een omgeving met meerdere VM's binnen een VM-sjabloon maken
@@ -102,6 +100,10 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Wachtwoorden voor virtuele machines instellen of opnieuw instellen
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+        - name: Verbinding maken met VM's in leslokaallabs (student)
+          items:
+            - name: Leslokaallabs openen
+              href: classroom-labs/how-to-use-classroom-lab.md
     - name: DevTest Labs
       items:
         - name: Een lab configureren
@@ -120,6 +122,8 @@
               href: configure-lab-remote-desktop-gateway.md
             - name: Aankondiging plaatsen in een lab
               href: devtest-lab-announcements.md
+            - name: Browserverbinding in VM's inschakelen
+              href: enable-browser-connection-lab-virtual-machines.md
             - name: Kostenbeheer configureren
               href: devtest-lab-configure-cost-management.md
             - name: Meldingen over automatisch afsluiten verzenden
@@ -166,6 +170,8 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: Een VM maken met behulp van een installatiekopie vanuit een galerie met gedeelde installatiekopieën
               href: add-vm-use-shared-image.md
+            - name: Verbinding maken met uw VM via een browser
+              href: connect-virtual-machine-through-browser.md
             - name: Een VM starten of stoppen met PowerShell of CLI
               href: use-command-line-start-stop-virtual-machines.md
             - name: Een VM opnieuw opstarten

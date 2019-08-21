@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: Het hulpprogramma voor migratie gebruiken
               href: platform/alerts-using-migration-tool.md
+            - name: Automatisch migratieproces
+              href: platform/alerts-automatic-migration.md
             - name: Klassieke waarschuwingen voor metrische gegevens beheren
               href: platform/alerts-classic-portal.md
             - name: Een klassieke waarschuwing voor metrische gegevens met behulp van een Resource Manager-sjabloon

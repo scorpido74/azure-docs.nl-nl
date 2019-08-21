@@ -108,7 +108,7 @@
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric-CLI
@@ -354,7 +354,7 @@
       href: service-fabric-api-management-overview.md
     - name: App-resourcemodel
       href: service-fabric-concept-resource-model.md
-    - name: Beheerde identiteit
+    - name: Beheerde identiteit (preview)
       href: concepts-managed-identity.md
 - name: Handleidingen
   items:
@@ -747,7 +747,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: Problemen met uw lokale cluster oplossen
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Beheerde identiteit voor Service Fabric-apps gebruiken
+    - name: Beheerde identiteit voor Service Fabric-apps gebruiken (preview)
       items:
         - name: Clusterinstallatie
           items:

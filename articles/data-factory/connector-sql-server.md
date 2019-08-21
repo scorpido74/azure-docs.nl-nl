@@ -60,7 +60,7 @@ De volgende eigenschappen worden ondersteund voor de SQL Server gekoppelde servi
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **sqlserver**. | Ja |
 | connectionString |Geef **verbindings reeks** gegevens op die nodig zijn om verbinding te maken met de SQL Server-Data Base met behulp van SQL-verificatie of Windows-verificatie. Raadpleeg de volgende voor beelden.<br/>Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen. Als de SQL-verificatie wordt uitgevoerd, `password` haalt u de configuratie uit het Connection String. Zie voor meer informatie het JSON-voor beeld dat volgt op de tabel en [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
-| userName |Geef een gebruikers naam op als u Windows-verificatie gebruikt. Een voor beeld **is\\domeinnaam domein naam**. |Nee |
+| userName |Geef een gebruikers naam op als u Windows-verificatie gebruikt. Een voor beeld **domainname\\username**. |Nee |
 | password |Geef een wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Nee |
 | connectVia | Deze [Integration runtime](concepts-integration-runtime.md) wordt gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als dat niet is opgegeven, wordt de standaard Azure Integration runtime gebruikt. |Nee |
 
