@@ -65,7 +65,7 @@ Maak eerst een HTTP-geactiveerde functie waarmee de indeling voor een duurzame f
 
     ![Kies de HTTP-starter-sjabloon](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Laat de standaardnaam als `DurableFunctionsHttpStart` en druk op *** Enter **, selecteer vervolgens **anoniem** verificatie.
+3. Laat de standaardnaam als `DurableFunctionsHttpStart` en druk op ** **Enter**, selecteer vervolgens **anoniem** verificatie.
 
     ![Anonieme verificatie kiezen](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 

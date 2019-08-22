@@ -7,14 +7,14 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934375"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639482"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Instellingen voor geheime toepassingen veilig opslaan voor een webtoepassing
 
@@ -45,12 +45,12 @@ Als u een project ontwikkelt en de bron code veilig moet delen, gebruikt u [Azur
 
     ![Key Vault toegangs beleid toevoegen](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Voeg uw geheim toe aan Key Vault op Azure Portal. Voor geneste configuratie-instellingen vervangt u ': ' door '--' zodat de naam van het Key Vault geheim geldig is. ': ' mag niet de naam van een Key Vault geheim hebben.
+3. Voeg uw geheim toe aan Key Vault op de Azure Portal. Voor geneste configuratie-instellingen vervangt u ': ' door '--' zodat de naam van het Key Vault geheim geldig is. ': ' mag niet de naam van een Key Vault geheim hebben.
 
     ![Key Vault geheim toevoegen](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE] 
-    > Voorafgaand aan Visual Studio 2017 V 15,6 is het raadzaam om de Azure Services-verificatie-extensie voor Visual Studio te installeren. Maar het is nu afgeschaft omdat de funcionality is geïntegreerd in de Visual Studio. Als u een oudere versie van Visual Studio 2017 gebruikt, wordt u aangeraden om een update uit te brengen naar ten minste VS 2017 15,6 of hoger, zodat u deze functionaliteit systeem eigen kunt gebruiken en toegang krijgt tot de sleutel kluis via de aanmeldings identiteit van Visual Studio zelf.
+    > Voorafgaand aan Visual Studio 2017 V 15,6 is het raadzaam om de Azure Services-verificatie-extensie voor Visual Studio te installeren. Maar het is nu afgeschaft omdat de functionaliteit is geïntegreerd in de Visual Studio. Als u een oudere versie van Visual Studio 2017 gebruikt, wordt u aangeraden om een update uit te brengen naar ten minste VS 2017 15,6 of hoger, zodat u deze functionaliteit systeem eigen kunt gebruiken en toegang krijgt tot de sleutel kluis via de aanmeldings identiteit van Visual Studio zelf.
     >
  
 4. Voeg de volgende NuGet-pakketten toe aan uw project:
@@ -97,7 +97,7 @@ Als u een snel prototype schrijft en Azure-resources niet wilt inrichten, gaat u
 
 1. Het volgende NuGet-pakket installeren op uw project
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
 2. Maak een bestand dat er ongeveer als volgt uitziet. Sla het bestand op onder een locatie buiten de projectmap.

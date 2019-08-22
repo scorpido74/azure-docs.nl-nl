@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: b54f69edfebca2786ec996b1ca71cea933179b58
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190845"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641030"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Inleiding tot Azure Blob-opslag
 
@@ -29,7 +29,7 @@ Er zijn drie typen resources voor blobopslag:
 
 Het volgende diagram geeft de relatie tussen deze resources weer.
 
-![relatie tussen de Logboekopslagaccount-Blob en Container-resource](./media/storage-blob-introduction/blob1.png)
+![relatie tussen account-Blob en container resource](./media/storage-blob-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>Opslagaccounts
 
@@ -56,7 +56,7 @@ Azure Storage ondersteunt drie soorten blobs:
 
 * **Blok-blobs** worden gebruikt voor het opslaan van tekst en binaire gegevens, tot ongeveer 4,7 TB. Blok-blobs bestaan uit blokken met gegevens die afzonderlijk kunnen worden beheerd.
 * **Toevoeg-blobs** bestaan uit blokken zoals blok-blobs, maar zijn geoptimaliseerd voor toevoegbewerkingen. Toevoeg-blobs zijn ideaal voor scenario's zoals het registreren van logboekgegevens van virtuele machines.
-* **Pagina-blobs** worden gebruikt voor het opslaan van bestanden voor willekeurige toegang tot maximaal 8 TB in grootte. Pagina-blobs virtuele harde schijf (VHD)-bestanden worden opgeslagen en fungeren als schijven voor virtuele machines van Azure. Zie [Overzicht van Azure-pagina-blobs](storage-blob-pageblob-overview.md) voor meer informatie over pagina-blobs
+* **Pagina-blobs** worden gebruikt voor het opslaan van bestanden voor willekeurige toegang tot maximaal 8 TB in grootte. Pagina-blobs slaan VHD-bestanden (virtuele harde schijf) en fungeren als schijven voor virtuele Azure-machines. Zie [Overzicht van Azure-pagina-blobs](storage-blob-pageblob-overview.md) voor meer informatie over pagina-blobs
 
 Zie [Blok-blobs, toevoeg-blobs en pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) voor meer informatie over de verschillende soorten blobs.
 
@@ -66,10 +66,10 @@ Er zijn een aantal oplossingen waarmee u bestaande gegevens naar de blobopslag k
 
 - **AzCopy** is een gebruiksvriendelijk opdrachtregelprogramma voor Windows en Linux waarmee u in containers of opslagaccounts gegevens kunt kopiëren naar en vanuit de blobopslag. Zie [Gegevensoverdracht met AzCopy v10 (preview-versie)](../common/storage-use-azcopy-v10.md) voor meer informatie over AzCopy. 
 - De **bibliotheek voor gegevensverplaatsing van Azure Storage** is een .NET-bibliotheek voor het verplaatsen van gegevens tussen Azure Storage-services. Het hulpprogramma AzCopy is samengesteld uit de bibliotheek voor gegevensverplaatsing. Zie de [naslagdocumentatie](/dotnet/api/microsoft.azure.storage.datamovement) voor de bibliotheek voor gegevensverplaatsing voor meer informatie. 
-- **Azure Data Factory** ondersteunt het kopiëren van gegevens naar en van de blobopslag met behulp van de accountsleutel, Shared Access Signature, de service-principal of beheerde identiteiten voor de verificatie van Azure-resources. Zie [Gegevens naar en van Azure Blob Storage kopiëren met Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie. 
+- **Azure Data Factory** ondersteunt het kopiëren van gegevens naar en van Blob Storage met behulp van de account sleutel, een Shared Access Signature, een service-principal of beheerde identiteiten voor Azure-resources. Zie [Gegevens naar en van Azure Blob Storage kopiëren met Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie. 
 - **Blobfuse** is een stuurprogramma voor het virtuele bestandssysteem voor Azure Blob Storage. U kunt Blobfuse gebruiken om via het Linux-bestandssysteem toegang te krijgen tot uw bestaande blok-blobgegevens in uw Azure Storage-account. Zie [Blob-opslag koppelen als een bestandssysteem met Blobfuse](storage-how-to-mount-container-linux.md) voor meer informatie.
-- **Azure Data Box** service is beschikbaar voor het overzetten van on-premises gegevens naar Blob-opslag als grote gegevenssets of netwerkbeperkingen uploaden van gegevens via de kabel onrealistisch maken. Afhankelijk van de gegevensgrootte van uw, kunt u aanvragen [Azure Data Box-schijf](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md), of [Azure Data Box zware](../../databox/data-box-heavy-overview.md) apparaten van Microsoft. U kunt vervolgens uw gegevens kopiëren naar die apparaten en ze verzenden naar Microsoft worden geüpload naar Blob storage.
-- De **Azure Import/Export-service** biedt een manier om te importeren of exporteren van grote hoeveelheden gegevens naar en van uw opslagaccount met behulp van harde schijven die u opgeeft. Zie [De Microsoft Azure Import/Export-service gebruiken om gegevens over te zetten naar de blobopslag](../common/storage-import-export-service.md) voor meer informatie.
+- **Azure data Box** -service is beschikbaar voor het overdragen van on-premises gegevens naar Blob-opslag wanneer grote gegevens sets of netwerk beperkingen het uploaden van informatie via de kabel onrealistisch maken. Afhankelijk van uw gegevens grootte kunt u [Azure data Box Disk](../../databox/data-box-disk-overview.md), [Azure data Box](../../databox/data-box-overview.md)of [Azure data Box Heavy](../../databox/data-box-heavy-overview.md) apparaten van micro soft aanvragen. U kunt uw gegevens vervolgens naar die apparaten kopiëren en deze terugsturen naar micro soft om ze te uploaden naar Blob Storage.
+- De **Azure import/export-service** biedt een manier om grote hoeveel heden gegevens te importeren of exporteren naar en van uw opslag account met behulp van harde schijven die u opgeeft. Zie [De Microsoft Azure Import/Export-service gebruiken om gegevens over te zetten naar de blobopslag](../common/storage-import-export-service.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

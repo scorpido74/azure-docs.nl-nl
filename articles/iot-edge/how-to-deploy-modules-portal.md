@@ -70,7 +70,7 @@ De Azure portal heeft een wizard waarmee wordt beschreven hoe u het manifest van
 
 ### <a name="specify-routes"></a>Routes opgeven
 
-Standaard de wizard u geeft een route met de naam **route** en gedefinieerd als **FROM /* in $upstream **, wat betekent dat de uitvoer van alle modules die berichten worden verzonden naar uw IoT-hub.  
+Standaard de wizard u geeft een route met de naam **route** en gedefinieerd als **FROM /\* in $upstream**, wat betekent dat de uitvoer van alle modules die berichten worden verzonden naar uw IoT-hub.  
 
 Toevoegen of bijwerken van de routes met gegevens uit [declareren routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende** om door te gaan naar de sectie controleren.
 

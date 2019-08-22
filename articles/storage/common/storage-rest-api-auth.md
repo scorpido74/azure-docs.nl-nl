@@ -1,24 +1,24 @@
 ---
-title: Azure Storage services aanroepen REST API bewerkingen, inclusief verificatie | Microsoft Docs
-description: Azure Storage services aanroepen REST API bewerkingen, inclusief verificatie
+title: Azure Storage services aanroepen REST API bewerkingen met een gedeelde sleutel autorisatie | Microsoft Docs
+description: Gebruik de Azure Storage REST API om een aanvraag voor Blob-opslag te maken met behulp van gedeelde sleutel autorisatie.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1463a470c84d38ebc30e32cf539aa9d6f64a6854
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989943"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640669"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>De Azure Storage REST API gebruiken
 
-In dit artikel wordt beschreven hoe u de Blob Storage service REST Api's gebruikt en hoe u de oproep naar de service kunt verifiëren. Het is geschreven vanuit het oogpunt van een ontwikkelaar die niets weet over REST en geen idee is hoe u een REST-oproep kunt doen. We kijken naar de referentie documentatie voor een REST-aanroep en zien hoe u deze kunt vertalen in een daad werkelijke REST-aanroep, welke velden gaan waar? Na het instellen van een REST-aanroep kunt u gebruikmaken van deze kennis voor gebruik van een van de andere Storage service REST-Api's.
+In dit artikel wordt beschreven hoe u de Blob Storage service REST Api's gebruikt en hoe u de aanroep naar de service kunt autoriseren. Het is geschreven vanuit het oogpunt van een ontwikkelaar die niets weet over REST en geen idee is hoe u een REST-oproep kunt doen. We kijken naar de referentie documentatie voor een REST-aanroep en zien hoe u deze kunt vertalen in een daad werkelijke REST-aanroep, welke velden gaan waar? Na het instellen van een REST-aanroep kunt u gebruikmaken van deze kennis voor gebruik van een van de andere Storage service REST-Api's.
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -267,12 +267,13 @@ Nu u begrijpt hoe u de aanvraag maakt, de service aanroept en de resultaten pars
 ## <a name="creating-the-authorization-header"></a>De autorisatie-header maken
 
 > [!TIP]
-> Azure Storage ondersteunt nu de integratie van Azure Active Directory (Azure AD) voor blobs en wacht rijen. Azure AD biedt een veel eenvoudiger ervaring voor het autoriseren van een aanvraag voor het Azure Storage. Zie [verifiëren met Azure Active Directory](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory)voor meer informatie over het gebruik van Azure AD om rest-bewerkingen te autoriseren. Zie [toegang tot Azure Storage verifiëren met behulp van Azure Active Directory](storage-auth-aad.md)voor een overzicht van Azure AD-integratie met Azure Storage.
+> Azure Storage ondersteunt nu de integratie van Azure Active Directory (Azure AD) voor blobs en wacht rijen. Azure AD biedt een veel eenvoudiger ervaring voor het autoriseren van een aanvraag voor het Azure Storage. Zie autoriseren [met Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory)voor meer informatie over het gebruik van Azure AD om rest-bewerkingen te autoriseren. Zie [toegang tot Azure Storage verifiëren met behulp van Azure Active Directory](storage-auth-aad.md)voor een overzicht van Azure AD-integratie met Azure Storage.
 
-Er is een artikel waarin conceptueel (geen code) wordt uitgelegd hoe [verificatie voor de Azure Storage services](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services)moet worden uitgevoerd.
+Er is een artikel waarin conceptueel (geen code) wordt uitgelegd hoe [aanvragen voor Azure Storage worden geautoriseerd](/rest/api/storageservices/authorize-requests-to-azure-storage).
+
 We gaan dat artikel naar precies naar wens en de code weer geven.
 
-Gebruik eerst een verificatie met gedeelde sleutel. De indeling van de autorisatie-header ziet er als volgt uit:
+Gebruik eerst verificatie met gedeelde sleutel. De indeling van de autorisatie-header ziet er als volgt uit:
 
 ```  
 Authorization="SharedKey <storage account name>:<signature>"  
@@ -360,7 +361,7 @@ Dit deel van de teken reeks van de hand tekening vertegenwoordigt het opslag acc
 
 Als u query parameters hebt, bevat dit voor beeld ook die para meters. Hier volgt de code, waarmee ook extra query parameters en query parameters met meerdere waarden worden verwerkt. Houd er rekening mee dat u deze code bouwt voor het werken met alle REST-Api's. U wilt alle mogelijkheden gebruiken, zelfs als de methode ListContainers niet alle nodig heeft.
 
-```csharp 
+```csharp
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
 {
     // The absolute path will be "/" because for we're getting a list of containers.
@@ -376,7 +377,7 @@ private static string GetCanonicalizedResource(Uri address, string storageAccoun
         sb.Append('\n').Append(item).Append(':').Append(values[item]);
     }
 
-    return sb.ToString();
+    return sb.ToString().ToLower();
 }
 ```
 
@@ -571,3 +572,4 @@ In dit artikel hebt u geleerd hoe u een aanvraag kunt indienen voor de Blob Stor
 * [REST API BLOB-service](/rest/api/storageservices/blob-service-rest-api)
 * [Bestands service REST API](/rest/api/storageservices/file-service-rest-api)
 * [REST API Queue-service](/rest/api/storageservices/queue-service-rest-api)
+* [REST API van tabel service](/rest/api/storageservices/table-service-rest-api)
