@@ -76,7 +76,7 @@ Als u wilt dat gebruikers zich aanmelden met een LinkedIn-account, moet u het ac
 
 Definieer een LinkedIn-account als een claim provider door het toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid.
 
-1. Open het bestand *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML** *in de editor. Dit bestand bevindt zich in het [aangepaste beleids Starter Pack][starter-pack] dat u hebt gedownload als onderdeel van een van de vereisten.
+1. Open het bestand *SocialAndLocalAccounts/ **TrustFrameworkExtensions. XML*** in de editor. Dit bestand bevindt zich in het [aangepaste beleids Starter Pack][starter-pack] dat u hebt gedownload als onderdeel van een van de vereisten.
 1. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
 1. Voeg als volgt een nieuwe **ClaimsProvider** toe:
 
