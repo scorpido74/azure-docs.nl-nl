@@ -1,6 +1,6 @@
 ---
-title: Query op de Azure IoT Hub-berichtroutering | Microsoft Docs
-description: Handleiding voor ontwikkelaars - Query-syntaxis voor het routeren van berichten op Azure IoT Hub.
+title: Query's uitvoeren op Azure IoT Hub-bericht routering | Microsoft Docs
+description: 'Ontwikkelaars handleiding: query syntaxis voor bericht routering op Azure IoT Hub.'
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,24 +8,24 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400640"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877064"
 ---
-# <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub-berichtroutering query-syntaxis
+# <a name="iot-hub-message-routing-query-syntax"></a>Query syntaxis voor het routeren van berichten IoT Hub
 
-Berichtroutering kan gebruikers voor het routeren van verschillende gegevenstypen namelijk, telemetrieberichten van apparaten, levenscyclusgebeurtenissen voor het apparaat en dubbele apparaat wijzigt gebeurtenissen naar verschillende eindpunten. U kunt ook uitgebreide query's toepassen op deze gegevens voordat u deze voor het ontvangen van de gegevens die voor u belangrijk is. In dit artikel beschrijft de querytaal van IoT-Hub bericht routering, en biedt enkele veelvoorkomende querypatronen.
+Met bericht routering kunnen gebruikers verschillende gegevens typen routeren, namelijk telemetrie-berichten van apparaten, levenscyclus gebeurtenissen van apparaten en gebeurtenissen voor het wijzigen van het apparaat naar verschillende eind punten. U kunt ook uitgebreide query's Toep assen op deze gegevens voordat u deze doorstuurt om de gegevens te ontvangen die voor u van belang zijn. In dit artikel wordt de query taal voor het routeren van berichten IoT Hub beschreven en vindt u enkele veelgebruikte query patronen.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Berichtroutering, kunt u een query uitvoeren op de eigenschappen van berichten en de berichttekst, evenals de device twin tags en de apparaatdubbeleigenschappen. Als de berichttekst geen JSON is, routering van berichten, kan het bericht nog steeds routeren, maar query's kunnen niet worden toegepast op de berichttekst.  Query's worden beschreven als Booleaanse expressies waarbij een Booleaanse waarde waar de query wordt mislukt waarmee alle binnenkomende gegevens, routes en Booleaanse waarde ONWAAR is de query mislukt en er worden geen gegevens wordt doorgestuurd. Als de expressie wordt geëvalueerd op null of niet-gedefinieerde, wordt dit beschouwd als onwaar en een fout wordt gegenereerd in Logboeken met diagnostische gegevens in geval van een storing. De querysyntaxis van de moet juist zijn voor de route worden opgeslagen en worden geëvalueerd.  
+Met bericht routering kunt u een query uitvoeren op de bericht eigenschappen en de bericht tekst, evenals dubbele labels voor apparaten en dubbele eigenschappen van het apparaat. Als de bericht tekst niet JSON is, kan bericht routering het bericht nog steeds routeren, maar query's kunnen niet worden toegepast op de bericht tekst.  Query's worden beschreven als Boole-expressies waarbij een Booleaanse waarde True maakt dat de query slaagt en dat alle binnenkomende gegevens doorstuurt, en Boolean False mislukt de query en er worden geen gegevens doorgestuurd. Als de expressie wordt geëvalueerd als null of niet gedefinieerd, wordt deze als onwaar beschouwd en wordt er een fout gegenereerd in Diagnostische logboeken in geval van een storing. De query syntaxis moet correct zijn voor het opslaan en evalueren van de route.  
 
-## <a name="message-routing-query-based-on-message-properties"></a>Bericht routering query op basis van eigenschappen van berichten 
+## <a name="message-routing-query-based-on-message-properties"></a>Bericht routering query op basis van bericht eigenschappen 
 
-De IoT-Hub definieert een [algemene indeling](iot-hub-devguide-messages-construct.md) voor alle apparaat-naar-cloud-berichten de interoperabiliteit voor alle protocollen. IoT Hub-bericht wordt ervan uitgegaan dat de volgende JSON-weergave van het bericht. Eigenschappen voor alle gebruikers worden toegevoegd en inhoud van het bericht te identificeren. Gebruikers kunnen eigenschappen van toepassingen selectief toevoegen aan het bericht. Het is raadzaam om met behulp van de namen van de unieke eigenschappen zoals IoT Hub apparaat-naar-cloud-berichten niet hoofdlettergevoelig is. Bijvoorbeeld, als u meerdere eigenschappen met dezelfde naam hebben, verzendt IoT-Hub alleen een van de eigenschappen.  
+Met de IoT Hub definieert u een [algemene indeling](iot-hub-devguide-messages-construct.md) voor alle apparaat-naar-Cloud-berichten voor interoperabiliteit in verschillende protocollen. IoT Hub bericht wordt uitgegaan van de volgende JSON-weer gave van het bericht. Systeem eigenschappen worden toegevoegd voor alle gebruikers en identificeren de inhoud van het bericht. Gebruikers kunnen eigenschappen van toepassingen selectief toevoegen aan het bericht. U kunt het beste unieke eigenschapnamen gebruiken als IoT Hub apparaat-naar-Cloud-berichten niet hoofdletter gevoelig zijn. Als u bijvoorbeeld meerdere eigenschappen met dezelfde naam hebt, wordt in IoT Hub slechts een van de eigenschappen verzonden.  
 
 ```json
 { 
@@ -49,50 +49,51 @@ De IoT-Hub definieert een [algemene indeling](iot-hub-devguide-messages-construc
 
 ### <a name="system-properties"></a>Systeemeigenschappen
 
-Systeemeigenschappen te identificeren van de inhoud en de bron van de berichten. 
+Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren. 
 
 | Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
-| contentType | string | De gebruiker geeft het type inhoud van het bericht. Als u wilt toestaan dat query op de berichttekst, moet deze waarde application/JSON worden ingesteld. |
-| contentEncoding | string | De gebruiker Hiermee geeft u het coderingstype van het bericht. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als de contentType is ingesteld op application/JSON. |
-| iothub-verbinding-apparaat-id | string | Deze waarde is ingesteld door de IoT Hub en de ID van het apparaat identificeert. Gebruiken om te vragen, `$connectionDeviceId`. |
-| iothub-enqueuedtime | string | Deze waarde is ingesteld door de IoT Hub en de werkelijke tijd van het bericht in UTC enqueuing vertegenwoordigt. Gebruiken om te vragen, `enqueuedTime`. |
+| contentType | string | De gebruiker geeft het inhouds type van het bericht op. Als u een query wilt toestaan voor de hoofd tekst van het bericht, moet u de waarde Application/JSON instellen. |
+| contentEncoding | string | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
+| iothub-verbinding-apparaat-id | string | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik `$connectionDeviceId`voor query's. |
+| iothub-enqueuedtime | string | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik `enqueuedTime`voor query's. |
+| iothub-interface-naam | string | Deze waarde wordt ingesteld door de gebruiker en vertegenwoordigt de naam van de digitale twee interface die het telemetrie-bericht implementeert. Gebruik `$interfaceName`voor query's. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). |
 
-Zoals beschreven in de [IoT Hub-berichten](iot-hub-devguide-messages-construct.md), er zijn aanvullende eigenschappen in een bericht. Naast **contentType**, **contentEncoding**, en **enqueuedTime**, wordt de **connectionDeviceId** en  **connectionModuleId** kunnen ook worden opgevraagd.
+Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast **Content type**, **contentEncoding**en **enqueuedTime**kan ook een query worden uitgevoerd op de **connectionDeviceId** -en **connectionModuleId** .
 
 ### <a name="application-properties"></a>Toepassingseigenschappen
 
-Eigenschappen voor de toepassing zijn zelfgedefinieerde tekenreeksen die kunnen worden toegevoegd aan het bericht. Deze velden zijn optioneel.  
+Toepassings eigenschappen zijn door de gebruiker gedefinieerde teken reeksen die aan het bericht kunnen worden toegevoegd. Deze velden zijn optioneel.  
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op berichteigenschappen moet worden voorafgegaan door de `$` symbool. Query's op de eigenschappen voor de toepassing worden geopend met de naam en moet niet worden voorafgegaan door de `$`symbool. Als de naam van een toepassing eigenschap met begint `$`, klikt u vervolgens IoT Hub wordt ernaar zoeken in de eigenschappen, en niet is gevonden en vervolgens ziet het er in de toepassingseigenschappen van de. Bijvoorbeeld: 
+Een query op bericht systeem eigenschappen moet worden voorafgegaan door het `$` symbool. Query's op toepassings eigenschappen zijn toegankelijk met hun naam en mogen niet worden voorafgegaan door het `$`symbool. Als de naam van een toepassings eigenschap `$`begint met, zoekt IOT hub deze in de systeem eigenschappen en wordt deze niet gevonden. vervolgens wordt de toepassings eigenschappen weer gegeven. Bijvoorbeeld: 
 
-Query uitvoeren op systeem eigenschap contentEncoding 
+Een query uitvoeren op de systeem eigenschap contentEncoding 
 
 ```sql
 $contentEncoding = 'UTF-8'
 ```
 
-Query uitvoeren op de toepassing de eigenschap processingPath:
+Query uitvoeren op toepassings eigenschap processingPath:
 
 ```sql
 processingPath = 'hot'
 ```
 
-Als u wilt combineren deze query's, kunt u Booleaanse expressies en functies:
+U kunt deze query's combi neren met Boole-expressies en-functies:
 
 ```sql
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-Een volledige lijst met ondersteunde operatoren en functies worden vermeld [expressie en voorwaarden](iot-hub-devguide-query-language.md#expressions-and-conditions)
+Een volledige lijst met ondersteunde Opera tors en functies wordt weer gegeven in de [expressie en voor waarden](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
-## <a name="message-routing-query-based-on-message-body"></a>Bericht routering query op basis van de hoofdtekst van bericht 
+## <a name="message-routing-query-based-on-message-body"></a>Bericht routerings query op basis van bericht tekst 
 
-Als u wilt inschakelen voor het uitvoeren van query's op de berichttekst, moet het bericht in een JSON gecodeerd in UTF-8, UTF-16- of UTF-32. De `contentType` moet worden ingesteld op `application/JSON` en `contentEncoding` op een van de ondersteunde UTF-coderingen in de systeemeigenschap. Als deze eigenschappen niet opgegeven zijn, wordt de query-expressie in de hoofdtekst van het bericht niet geëvalueerd door IoT Hub. 
+Als u het uitvoeren van query's op bericht hoofdtekst wilt inschakelen, moet het bericht in een JSON worden gecodeerd in UTF-8, UTF-16 of UTF-32. De `contentType` moet worden `application/JSON` ingesteld`contentEncoding` op een van de ondersteunde UTF-code ringen in de systeem eigenschap. Als deze eigenschappen niet worden opgegeven, wordt de query-expressie niet door IoT Hub geëvalueerd op de bericht tekst. 
 
-Het volgende voorbeeld laat zien hoe een bericht maken met een juist opgemaakte en gecodeerde JSON-hoofdtekst: 
+In het volgende voor beeld ziet u hoe u een bericht maakt met een juist gevormde en gecodeerde JSON-hoofd tekst: 
 
 ```javascript
 var messageBody = JSON.stringify(Object.assign({}, {
@@ -143,7 +144,7 @@ deviceClient.sendEvent(message, (err, res) => {
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op de hoofdtekst van het bericht moet worden voorafgegaan door de `$body`. U kunt de verwijzing naar een instantie, hoofdtekst van de verwijzing naar een matrix of meerdere hoofdtekst verwijzingen gebruiken in de query-expressie. Uw query-expressie kunt ook een verwijzing hoofdtekst combineren met Systeemeigenschappen bericht en naslaginformatie over eigenschappen van toepassing. De volgende zijn bijvoorbeeld alle geldige query-expressies: 
+Een query op de bericht tekst moet worden voorafgegaan door de `$body`. U kunt een verwijzing naar een hoofd tekst, een verwijzing naar de hoofd tekst of meerdere hoofd verwijzingen in de query-expressie gebruiken. De query-expressie kan ook een verwijzing naar een hoofd tekst combi neren met bericht systeem eigenschappen en naslag informatie over de eigenschappen van een Message-toepassing. Zo zijn de volgende geldige query-expressies: 
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -161,9 +162,9 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
-## <a name="message-routing-query-based-on-device-twin"></a>Bericht routering query op basis van apparaatdubbel 
+## <a name="message-routing-query-based-on-device-twin"></a>Bericht routering query op basis van het apparaat dubbele 
 
-Berichtroutering, kunt u een query uitvoeren op [Apparaatdubbel](iot-hub-devguide-device-twins.md) tags en eigenschappen die JSON-objecten zijn. Houd er rekening mee dat voor het uitvoeren van query's op moduledubbel niet wordt ondersteund. Hieronder ziet u een voorbeeld van Apparaatdubbel-tags en eigenschappen.
+Met bericht routering kunt u een query uitvoeren op dubbele Tags en eigenschappen van het [apparaat](iot-hub-devguide-device-twins.md) , die JSON-objecten zijn. Het uitvoeren van query's op module dubbele wordt niet ondersteund. Hieronder ziet u een voor beeld van dubbele Tags en eigenschappen van een apparaat.
 
 ```JSON
 {
@@ -196,7 +197,7 @@ Berichtroutering, kunt u een query uitvoeren op [Apparaatdubbel](iot-hub-devguid
 
 ### <a name="query-expressions"></a>Query-expressies
 
-Een query op de hoofdtekst van het bericht moet worden voorafgegaan door de `$twin`. Uw query-expressie kunt ook een dubbele eigenschap of tag verwijzing combineren met een verwijzing hoofdtekst, bericht Systeemeigenschappen en naslaginformatie over eigenschappen van toepassing. Het is raadzaam om met behulp van unieke namen in labels en eigenschappen als de query niet hoofdlettergevoelig is. Ook met behulp van weerhouden `twin`, `$twin`, `body`, of `$body`, aan de eigenschapnamen van een. De volgende zijn bijvoorbeeld alle geldige query-expressies: 
+Een query op de bericht tekst moet worden voorafgegaan door de `$twin`. De query-expressie kan ook een dubbele tag of eigenschaps verwijzing combi neren met een verwijzing naar een hoofd tekst, eigenschappen van het bericht systeem en naslag informatie over de eigenschappen van een bericht toepassing. U kunt het beste unieke namen gebruiken in tags en eigenschappen, aangezien de query niet hoofdletter gevoelig is. U `twin` `$twin` `$body`kunt ook onthouden of,, of, als eigenschaps namen. `body` Zo zijn de volgende geldige query-expressies: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
@@ -212,5 +213,5 @@ $twin.tags.deploymentLocation.floor = 1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [berichtroutering](iot-hub-devguide-messages-d2c.md).
-* Probeer de [message routing zelfstudie](tutorial-routing.md).
+* Meer informatie over [bericht routering](iot-hub-devguide-messages-d2c.md).
+* Probeer de [zelf studie voor bericht routering](tutorial-routing.md).

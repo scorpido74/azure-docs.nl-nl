@@ -1,13 +1,13 @@
 ---
-title: OData georuimtelijke naslag - Azure Search
-description: OData georuimtelijke functies, geo.distance en geo.intersects in Azure Search-query's.
+title: Verwijzing naar geo-ruimtelijke functie van OData-Azure Search
+description: Geo-ruimtelijke functies van OData, geo. Distance en geo. intersects, in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,22 +19,22 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0ce63ab1143c784eb3e10f47c20ef2b5034d63a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079793"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647566"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>OData, georuimtelijke functies in Azure Search - `geo.distance` en `geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Geo-ruimtelijke functies van OData in azure Search `geo.distance` -en`geo.intersects`
 
-Azure Search biedt ondersteuning voor georuimtelijke query's in [OData-filterexpressies](query-odata-filter-orderby-syntax.md) via de `geo.distance` en `geo.intersects` functies. De `geo.distance` functie wordt de afstand in kilometer zijn verwijderd tussen de twee punten, één wordt een veld of de bereik-variabele en een wordt een constante doorgegeven als onderdeel van het filter. De `geo.intersects` functie retourneert `true` als een opgegeven punt zich binnen een bepaalde veelhoek, waarbij het punt een veld of bereik-variabele en de veelhoek is opgegeven als een constante doorgegeven als onderdeel van het filter.
+Azure Search ondersteunt geo-ruimtelijke query's in [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `geo.distance` de `geo.intersects` functies en. De `geo.distance` functie retourneert de afstand in kilo meters tussen twee punten, een veld of bereik variabele en een constante die wordt door gegeven als onderdeel van het filter. De `geo.intersects` functie retourneert `true` of een bepaald punt zich in een bepaalde veelhoek bevindt, waarbij het punt een veld-of bereik variabele is en de veelhoek is opgegeven als een constante die als onderdeel van het filter wordt door gegeven.
 
-De `geo.distance` functie kan ook worden gebruikt de [ **$orderby** parameter](search-query-odata-orderby.md) zoekresultaten op afstand van een bepaald moment sorteren. De syntaxis voor `geo.distance` in **$orderby** is hetzelfde als het zich in **$filter**. Bij het gebruik van `geo.distance` in **$orderby**, het veld waarop deze van toepassing is moet van het type `Edm.GeographyPoint` en moet ook **sorteerbaar**.
+De `geo.distance` functie kan ook worden gebruikt in de [para meter **$OrderBy** ](search-query-odata-orderby.md) om Zoek resultaten te sorteren op afstand van een bepaald punt. De syntaxis voor `geo.distance` in **$OrderBy** is hetzelfde als in **$filter**. Wanneer u `geo.distance` in **$OrderBy**gebruikt, moet het veld waarop het van toepassing is, `Edm.GeographyPoint` van het type zijn en moet het ook **sorteerbaar**zijn.
 
 ## <a name="syntax"></a>Syntaxis
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `geo.distance` en `geo.intersects` functies, evenals de georuimtelijke waarden waarop zij werken:
+De volgende ebnf ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `geo.distance` functies `geo.intersects` en, evenals de geo-ruimtelijke waarden waarop ze worden toegepast:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -58,69 +58,69 @@ geo_polygon ::=
 lon_lat_list ::= lon_lat(',' lon_lat)*
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-### <a name="geodistance"></a>geo.distance
+### <a name="geodistance"></a>geo. distance
 
-De `geo.distance` functie heeft twee parameters van het type `Edm.GeographyPoint` en retourneert een `Edm.Double` waarde die de afstand tussen hen in kilometer zijn verwijderd. Dit wijkt af van andere services die ondersteuning bieden voor OData georuimtelijke bewerkingen, die doorgaans afstanden in meters te retourneren.
+De `geo.distance` functie heeft twee para meters `Edm.GeographyPoint` van het type `Edm.Double` en retourneert een waarde die de afstand ertussen in kilo meters. Dit wijkt af van andere services die ondersteuning bieden voor geo-spatiale bewerkingen van OData, die doorgaans afstanden retour neren in meters.
 
-Een van de parameters voor `geo.distance` moet een constante Geografie-punt en de andere moet een pad naar veld (of een bereik-variabele in het geval van een filter iteratie van een veld van het type `Collection(Edm.GeographyPoint)`). De volgorde van deze parameters maakt niet uit.
+Een van de para meters `geo.distance` moet een geografische punt constante zijn, en de andere moet een veld pad (of een bereik variabele zijn in het geval van een filter iteratie voor een veld van het type `Collection(Edm.GeographyPoint)`). De volg orde van deze para meters is niet van belang.
 
-De Geografie point-constante is van het formulier `geography'POINT(<longitude> <latitude>)'`, waarbij de lengtegraad en breedtegraad numerieke constanten zijn.
+De geografie punt constante is van het formulier `geography'POINT(<longitude> <latitude>)'`, waarbij de lengte graad en de breedte numeriek constanten zijn.
 
 > [!NOTE]
-> Bij het gebruik van `geo.distance` in een filter, moet u de afstand die zijn geretourneerd door de functie met een constante met vergelijken `lt`, `le`, `gt`, of `ge`. De operators `eq` en `ne` worden niet ondersteund bij het vergelijken van afstanden. Dit is bijvoorbeeld een correct gebruik van `geo.distance`: `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`.
+> Wanneer u `geo.distance` in een filter gebruikt, moet u de afstand die door de functie wordt geretourneerd, vergelijken `lt`met een `gt`constante using `ge`, `le`, of. De Opera `eq` tors `ne` en worden niet ondersteund bij het vergelijken van de afstanden. Dit is bijvoorbeeld een correct gebruik van `geo.distance`:. `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
 
-### <a name="geointersects"></a>geo.intersects
+### <a name="geointersects"></a>geo. intersects
 
-De `geo.intersects` functie omvat een variabele van het type `Edm.GeographyPoint` en een constante `Edm.GeographyPolygon` en retourneert een `Edm.Boolean`  --  `true` als het punt zich binnen de grenzen van de polygoon `false` anders.
+De `geo.intersects` functie gebruikt een variabele van het `Edm.GeographyPoint` type en een `Edm.GeographyPolygon` constante en retourneert `Edm.Boolean` een  --  `true` als het punt zich binnen de grenzen van de veelhoek bevindt, `false` anders.
 
-De veelhoek is een tweedimensionale oppervlak opgeslagen als een reeks punten definiëren van een selectiekader ring (Zie de [voorbeelden](#examples) hieronder). De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets moeten hetzelfde zijn. [Punten in een polygoon moeten zich in tegen de klok in volgorde](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+De veelhoek is een tweedimensionale Opper vlak dat is opgeslagen als een reeks punten die een gebonden ring definiëren (Zie de [voor beelden](#examples) hieronder). De veelhoek moet worden gesloten, wat betekent dat de eerste en laatste punt sets hetzelfde moeten zijn. [Punten in een veelhoek moeten een aflinksome volg orde hebben](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
-### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Georuimtelijke query's en de 180th kaartmeridiaan spanning veelhoeken
+### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>Georuimtelijke query's en veelhoeken die de 180th-meridiaan bespannen
 
-Voor veel georuimtelijke query bibliotheken formuleren van een query uitvoert met de 180th kaartmeridiaan (in de buurt van de datumgrens) is een off-limits of een tijdelijke oplossing, zoals het splitsen van de veelhoek in twee, een aan beide zijden van de kaartmeridiaan vereist.
+Voor veel georuimtelijke query bibliotheken waarbij een query wordt ingesteld die de 180th-meridiaan (in de buurt van de grens waarde) bevat, of een tijdelijke oplossing vereist, zoals het splitsen van de veelhoek in twee, één aan beide zijden van de meridiaan.
 
-In Azure Search, georuimtelijke query's met 180 graden lengtegraad werkt zoals verwacht als de query-shape rechthoekige en uw coördinaten uitgelijnd met een rasterindeling langs de lengtegraad en breedtegraad (bijvoorbeeld `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). Anders voor niet-rechthoekige of niet-uitgelijnd vormen, kunt u de benadering van de polygoon splitsen.  
+In Azure Search worden georuimtelijke query's met een lengte van 180 graden als verwacht beschouwd als de query vorm rechthoekig is en uw coördinaten worden uitgelijnd op een raster indeling langs lengte graad en breedte graad (bijvoorbeeld `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). Als dat niet het geval is, kunt u voor niet-rechthoekige of niet-afgestemde vormen de methode split-veelhoek overwegen.  
 
-### <a name="geo-spatial-functions-and-null"></a>Georuimtelijke functies en `null`
+### <a name="geo-spatial-functions-and-null"></a>Georuimtelijke functies en`null`
 
-Als alle andere velden die niet-verzameling in Azure Search, velden van het type `Edm.GeographyPoint` mag `null` waarden. Wanneer Azure Search wordt geëvalueerd `geo.intersects` voor een veld dat is `null`, het resultaat is altijd `false`. Het gedrag van `geo.distance` in dit geval is afhankelijk van de context:
+Net als alle andere niet-verzamelings velden in azure Search, kunnen `Edm.GeographyPoint` velden van `null` het type waarden bevatten. Wanneer Azure Search een veld `geo.intersects` evalueert dat is `null`, is `false`het resultaat altijd. Het gedrag van `geo.distance` in dit geval is afhankelijk van de context:
 
-- In de filters, `geo.distance` van een `null` resulteert in een veld `null`. Dit betekent dat het document komt niet overeen met omdat `null` in vergelijking met een niet-null-waarde resulteert in `false`.
-- Bij het sorteren van resultaten met behulp van **$orderby**, `geo.distance` van een `null` veld resultaten in de maximale afstand mogelijk. Documenten met zo'n veld sorteren lager is dan alle andere wanneer de sorteerrichting `asc` wordt gebruikt (de standaardinstelling) en hoger is dan alle andere wanneer de richting is `desc`.
+- In filters `geo.distance` resulteert een `null` veld in `null`. Dit betekent dat het document niet overeenkomt `null` omdat er een andere waarde dan null wordt geëvalueerd. `false`
+- Bij het sorteren van resultaten met `geo.distance` behulp `null` van **$OrderBy**, resulteert een veld in de Maxi maal mogelijke afstand. Documenten met een dergelijk veld worden lager gesorteerd dan alle andere wanneer de sorteer richting `asc` wordt gebruikt (de standaard instelling) en hoger dan alle andere wanneer de richting is `desc`.
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="filter-examples"></a>Voorbeelden van filters
+### <a name="filter-examples"></a>Filter voorbeelden
 
-Alle hotels binnen 10 kilometer van de opgegeven referentie vinden (locatie is waar een veld van het type `Edm.GeographyPoint`):
+Alle hotels zoeken binnen 10 kilo meter van een gegeven referentie punt (waarbij locatie een veld van het `Edm.GeographyPoint`type is):
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-Alle hotels binnen een bepaalde viewport beschreven als een veelhoek vinden (locatie is waar een veld van het type `Edm.GeographyPoint`). Houd er rekening mee dat de veelhoek is gesloten (de eerste en laatste punt sets moet hetzelfde) en [de punten moeten worden weergegeven in tegen de klok in volgorde](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
+Alle hotels in een bepaalde View Port zoeken die worden beschreven als een veelhoek (waarbij locatie een veld `Edm.GeographyPoint`van het type is). Houd er rekening mee dat de veelhoek is gesloten (de eerste en laatste punt sets moeten hetzelfde zijn) en [de punten moeten in de juiste volg orde worden weer gegeven](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
-### <a name="order-by-examples"></a>Volgorde van voorbeelden
+### <a name="order-by-examples"></a>Voor beelden per order
 
-Hotels door Aflopend sorteren `rating`, klikt u vervolgens oplopende op afstand van de opgegeven coördinaten:
+Hotels sorteren op `rating`aflopend en vervolgens oplopend op afstand van de opgegeven coördinaten:
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Hotels in aflopende volgorde sorteren `search.score` en `rating`, en klik vervolgens in oplopende volgorde op afstand van de opgegeven coördinaten zodat tussen twee hotels met identieke beoordeling, het beste een eerste wordt weergegeven:
+Sorteer hotels in aflopende Volg `search.score` orde `rating`op en, en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten, zodat tussen twee hotels met een identieke classificatie, het dichtstbijzijnde item bovenaan wordt weer gegeven:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>Volgende stappen  
 
 - [Filters in Azure Search](search-filters.md)
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 4b2934c8b93ffb247661886cb2791c0719996aeb
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 47db310f6affa6317a74020d182c521d65cd32f3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297189"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875234"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-implementatie naar Azure App Service
 
@@ -156,7 +156,7 @@ Mogelijk worden de volgende veelvoorkomende fout berichten weer geven wanneer u 
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|U hebt geen vertakking opgegeven tijdens `git push`of u hebt geen `push.default` waarde ingesteld in `.gitconfig`.|Voer `git push` opnieuw uit en geef de hoofd vertakking `git push azure master`op:.|
 |`src refspec [branchname] does not match any.`|U hebt geprobeerd naar een andere vertakking dan Master te pushen op de externe Azure-server.|Voer `git push` opnieuw uit en geef de hoofd vertakking `git push azure master`op:.|
 |`RPC failed; result=22, HTTP code = 5xx.`|Deze fout kan optreden als u probeert een grote Git-opslag plaats via HTTPS te pushen.|Wijzig de Git-configuratie op de lokale computer zodat deze `postBuffer` groter wordt. Bijvoorbeeld: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|U hebt een node. js-app geïmplementeerd met een _package. json_ -bestand dat aanvullende vereiste modules specificeert.|Bekijk de `npm ERR!` fout berichten vóór deze fout voor meer context over de fout. Hieronder vindt u de bekende oorzaken van deze fout en de bijbehorende `npm ERR!` berichten:<br /><br />**Onjuist gevormd pakket. JSON-bestand**:`npm ERR! Couldn't read dependencies.`<br /><br />**Systeem eigen module heeft geen binaire distributie voor Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />of <br />' NPM ERR! [modulename@version] voor installatie: \make || gmake\`|
+|`Error - Changes committed to remote repository but your web app not updated.`|U hebt een node. js-app geïmplementeerd met een _package. json_ -bestand dat aanvullende vereiste modules specificeert.|Bekijk de `npm ERR!` fout berichten vóór deze fout voor meer context over de fout. Hieronder vindt u de bekende oorzaken van deze fout en de bijbehorende `npm ERR!` berichten:<br /><br />**Onjuist gevormd pakket. JSON-bestand**:`npm ERR! Couldn't read dependencies.`<br /><br />**Systeem eigen module heeft geen binaire distributie voor Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />of <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

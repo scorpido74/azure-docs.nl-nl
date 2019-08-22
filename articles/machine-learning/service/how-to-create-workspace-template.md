@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/16/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 0e78d9cfce59615a53534fe9815205e39f64853d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 89c24512e50dedbf10d145088ec77c2e6e303d1e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868836"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873155"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte voor Azure Machine Learning service te maken
 
@@ -38,7 +38,7 @@ De volgende Resource Manager-sjabloon kan worden gebruikt om een Azure Machine L
 Met deze sjabloon worden de volgende Azure-Services gemaakt:
 
 * Azure-resourcegroep
-* Azure Storage-account
+* Azure-opslagaccount
 * Azure Key Vault
 * Azure Application Insights
 * Azure Container Registry
@@ -71,8 +71,6 @@ Zie de volgende artikelen voor meer informatie over sjablonen:
    * Resourcegroep: Selecteer of maak een resource groep om de services te kunnen bevatten.
    * Werkruimte naam: De naam die moet worden gebruikt voor de Azure Machine Learning werk ruimte die wordt gemaakt. De naam van de werk ruimte moet tussen de 3 en 33 tekens lang zijn. De naam mag alleen alfanumerieke tekens en '-' bevatten.
    * Locatie: Selecteer de locatie waar de resources worden gemaakt.
-
-     ![De sjabloon parameters in de Azure Portal](media/how-to-create-workspace-template/template-parameters.png)
 
 Zie [resources implementeren vanuit een aangepaste sjabloon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)voor meer informatie.
 

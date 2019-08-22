@@ -1,46 +1,46 @@
 ---
-title: Een zelfstandig Prometheus exemplaar in een Azure Red Hat OpenShift-cluster implementeren | Microsoft Docs
-description: Maakt een exemplaar Prometheus in een Azure Red Hat OpenShift-cluster voor het bewaken van metrische gegevens van uw toepassing.
+title: Een zelfstandig Prometheus-exemplaar implementeren in een Azure Red Hat open Shift-cluster | Microsoft Docs
+description: Maak een Prometheus-exemplaar in een Azure Red Hat open Shift-cluster om de metrische gegevens van uw toepassing te controleren.
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/17/2019
-keywords: prometheus, aro, openshift, metrische gegevens, red hat
-ms.openlocfilehash: a9748932a72106413677b21fe0efd1f69fb02e47
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+keywords: Prometheus, Aro, open Shift, metrische gegevens, Red Hat
+ms.openlocfilehash: f81a993caa31578e689fb3a90108f3cf0ca81fc2
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827018"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875125"
 ---
-# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Een zelfstandig Prometheus exemplaar in een Azure Red Hat OpenShift-cluster implementeren
+# <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Een zelfstandig Prometheus-exemplaar in een Azure Red Hat open Shift-cluster implementeren
 
-In dit artikel wordt beschreven hoe u een zelfstandige Prometheus exemplaar die gebruikmaakt van servicedetectie in een Azure Red Hat OpenShift-cluster configureren.
+In dit artikel wordt beschreven hoe u een zelfstandig Prometheus-exemplaar configureert waarin Service detectie wordt gebruikt in een Azure Red Hat open Shift-cluster.
 
 > [!NOTE]
-> Klant-beheerderstoegang tot Azure Red Hat OpenShift-cluster is niet vereist.
+> Gebruikers beheerders toegang tot Azure Red Hat open Shift-cluster is niet vereist.
 
-Setup van doel:
+Doel installatie:
 
-- Een project (prometheus-project), die Prometheus en Alertmanager bevat.
-- Twee projecten (app-project1 en app-project2), waarin de toepassingen te bewaken.
+- Eén project (Prometheus-project) met Prometheus en Alertmanager.
+- Twee projecten (app-Project1 en app-Project2), die de te bewaken toepassingen bevatten.
 
-U zult enkele Prometheus config-bestanden lokaal voorbereiden. Maak een nieuwe map voor het opslaan van deze. Configuratiebestanden worden opgeslagen in het cluster als geheimen, in het geval geheime tokens later worden toegevoegd aan het cluster.
+U gaat een aantal Prometheus-configuratie bestanden lokaal voorbereiden. Maak een nieuwe map om deze op te slaan. Configuratie bestanden worden in het cluster opgeslagen als geheimen, in het geval dat geheime tokens later aan het cluster worden toegevoegd.
 
-## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Meld u aan het cluster met behulp van het hulpprogramma OC
+## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Aanmelden bij het cluster met het hulp programma OC
 
-1. Open een webbrowser en ga vervolgens naar de web-console van het cluster (https://openshift. *willekeurige-id*. *regio*. azmosa.io).
+1. Open een webbrowser en ga vervolgens naar de webconsole van uw cluster (https://openshift. *wille keurige id*. *Region*. azmosa.io).
 2. Meld u aan met uw Azure-referenties.
-3. Selecteer uw gebruikersnaam in de rechterbovenhoek en selecteer vervolgens **kopie aanmeldingsopdracht**.
-4. Plak uw gebruikersnaam in de terminal die u gaat gebruiken.
+3. Selecteer uw gebruikers naam in de rechter bovenhoek en selecteer vervolgens **aanmeldings opdracht kopiëren**.
+4. Plak uw gebruikers naam in de terminal die u gaat gebruiken.
 
 > [!NOTE]
-> Als u wilt zien als u bent aangemeld met het juiste cluster, de `oc whoami -c` opdracht.
+> Voer de `oc whoami -c` opdracht uit om te zien of u bent aangemeld bij het juiste cluster.
 
-## <a name="prepare-the-projects"></a>Voorbereiden van de projecten
+## <a name="prepare-the-projects"></a>De projecten voorbereiden
 
-Voer de volgende opdrachten voor het maken van de projecten:
+Voer de volgende opdrachten uit om de projecten te maken:
 ```
 oc new-project prometheus-project
 oc new-project app-project1
@@ -49,10 +49,10 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> Kunt u ofwel de `-n` of `--namespace` parameter of Selecteer een actieve project door het uitvoeren van de `oc project` opdracht.
+> U kunt de `-n` para meter or `--namespace` gebruiken of een actief project selecteren door de `oc project` opdracht uit te voeren.
 
-## <a name="prepare-the-prometheus-configuration-file"></a>Het configuratiebestand Prometheus voorbereiden
-Maak een bestand prometheus.yml door in te voeren van de volgende inhoud:
+## <a name="prepare-the-prometheus-configuration-file"></a>Het Prometheus-configuratie bestand voorbereiden
+Maak een Prometheus. yml-bestand door de volgende inhoud in te voeren:
 ```
 global:
   scrape_interval: 30s
@@ -73,18 +73,18 @@ scrape_configs:
           - app-project1
           - app-project2
 ```
-Maak een geheim Prom aangeroepen door in te voeren van de volgende configuratie:
+Maak een geheim met de naam PROM door de volgende configuratie in te voeren:
 ```
 oc create secret generic prom --from-file=prometheus.yml -n prometheus-project
 ```
 
-Het bestand prometheus.yml is een eenvoudige Prometheus-configuratiebestand. Hiermee stelt u het interval en configureert deze automatische detectie in drie de projecten (prometheus-project, app-project1, app-project2). In het vorige configuratiebestand van de eindpunten automatisch gedetecteerd zijn die is geëxtraheerd via HTTP zonder verificatie.
+Het Prometheus. yml-bestand is een basis-Prometheus configuratie bestand. Hiermee stelt u de intervallen en configureert u automatische detectie in drie projecten (Prometheus-project, app-Project1, app-Project2). In het vorige configuratie bestand worden de automatisch gedetecteerde eind punten overlopend via HTTP, zonder verificatie.
 
-Zie voor meer informatie over eindpunten slijmen [Prometheus speciaal config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
+Zie [Prometheus scape config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)voor meer informatie over het uitvallen van eind punten.
 
 
-## <a name="prepare-the-alertmanager-config-file"></a>Het configuratiebestand Alertmanager voorbereiden
-Maak een bestand alertmanager.yml door in te voeren van de volgende inhoud:
+## <a name="prepare-the-alertmanager-config-file"></a>Het Alertmanager-configuratie bestand voorbereiden
+Maak een alertmanager. yml-bestand door de volgende inhoud in te voeren:
 ```
 global:
   resolve_timeout: 5m
@@ -102,30 +102,30 @@ receivers:
 - name: default
 - name: deadmansswitch
 ```
-Maak een geheim met de naam Prom waarschuwingen door te voeren van de volgende configuratie:
+Maak een geheim met de naam Prom-waarschuwingen door de volgende configuratie in te voeren:
 ```
 oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-project
 ```
 
-Alertmanager.yml is het configuratiebestand Alert Manager.
+Alertmanager. yml is het configuratie bestand van waarschuwings beheer.
 
 > [!NOTE]
-> Als u wilt controleren of de vorige twee stappen, voer de `oc get secret -n prometheus-project` opdracht.
+> Voer de `oc get secret -n prometheus-project` opdracht uit om de twee vorige stappen te controleren.
 
 ## <a name="start-prometheus-and-alertmanager"></a>Prometheus en Alertmanager starten
-Ga naar [openshift/oorspronkelijke opslagplaats](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) en download de [prometheus standalone.yaml](
-https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) sjabloon. De sjabloon toepassen op prometheus-project door op te geven van de volgende configuratie:
+Ga naar Open [SHIFT/Origin](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus) en down load de [sjabloon Prometheus-standalone.](
+https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml) YAML. Pas de sjabloon toe op Prometheus-project door de volgende configuratie in te voeren:
 ```
 oc process -f https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml | oc apply -f - -n prometheus-project
 ```
-Het bestand prometheus standalone.yaml is een OpenShift-sjabloon. Een Prometheus-exemplaar wordt gemaakt met oauth-proxy vóór het en een exemplaar van Alertmanager, ook beveiligd met oauth-proxy. In deze sjabloon oauth-proxy is geconfigureerd, zodat elke gebruiker die u '' de naamruimte prometheus-project ophalen kunt (Zie de `-openshift-sar` vlag).
+Het Prometheus-standalone. yaml-bestand is een open Shift-sjabloon. Er wordt een Prometheus-exemplaar gemaakt met OAuth-proxy vóór het en een Alertmanager-exemplaar, ook beveiligd met OAuth-proxy. In deze sjabloon is OAuth-proxy zo geconfigureerd dat elke gebruiker die de naam ruimte Prometheus-project kan ophalen (Zie de `-openshift-sar` vlag).
 
 > [!NOTE]
-> Uitvoeren om te controleren of de prom StatefulSet gelijk gewenst en het huidige aantal replica's heeft, de `oc get statefulset -n prometheus-project` opdracht. Uitvoeren om te controleren of alle resources in het project, de `oc get all -n prometheus-project` opdracht.
+> Voer de `oc get statefulset -n prometheus-project` opdracht uit om te controleren of de PROM StatefulSet gelijk is aan de gewenste replica's en het huidige aantal. Als u alle resources in het project wilt controleren, `oc get all -n prometheus-project` voert u de opdracht uit.
 
-## <a name="add-permissions-to-allow-service-discovery"></a>Voeg machtigingen toe aan de servicedetectie toestaan
+## <a name="add-permissions-to-allow-service-discovery"></a>Machtigingen toevoegen om service detectie toe te staan
 
-Maak een bestand prometheus sdrole.yml door in te voeren van de volgende inhoud:
+Maak een Prometheus-sdrole. yml-bestand door de volgende inhoud in te voeren:
 ```
 apiVersion: template.openshift.io/v1
 kind: Template
@@ -170,46 +170,46 @@ objects:
     name: prom
     namespace: ${PROMETHEUS_PROJECT}
 ```
-Als sjabloon wilt toepassen op alle projecten die u wilt toestaan servicedetectie, voer de volgende opdrachten:
+Voer de volgende opdrachten uit om de sjabloon toe te passen op alle projecten van waaruit u service detectie wilt toestaan:
 ```
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project1
 oc process -f prometheus-sdrole.yml | oc apply -f - -n app-project2
+oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
-Als u wilt Prometheus voor het verzamelen van metrische gegevens van zichzelf, pas de machtigingen in prometheus-project.
 
 > [!NOTE]
-> Uitvoeren om te controleren of de rol en RoleBinding correct zijn gemaakt, de `oc get role` en `oc get rolebinding` opdrachten.
+> Voer de opdrachten en `oc get role` `oc get rolebinding` uit om te controleren of de functie en RoleBinding correct zijn gemaakt.
 
-## <a name="optional-deploy-example-application"></a>Optioneel: Van de voorbeeldtoepassing implementeren
+## <a name="optional-deploy-example-application"></a>Optioneel: Voorbeeld toepassing implementeren
 
-Alles goed werkt, maar er zijn geen gegevensbronnen metrische. Ga naar de URL Prometheus (https://prom-prometheus-project.apps.*willekeurige-id*.*regio*.azmosa.io/). U vindt deze met behulp van de volgende opdracht:
+Alles werkt, maar er zijn geen metrische bronnen. Ga naar de URL Prometheus (https://prom-prometheus-project.apps.*willekeurige-id*.*regio*.azmosa.io/). U kunt deze vinden met de volgende opdracht:
 
 ```
 oc get route prom -n prometheus-project
 ```
 > [!IMPORTANT]
-> Vergeet niet het voorvoegsel https:// toevoegen aan begin van de hostnaam.
+> Vergeet niet om het voor voegsel https://toe te voegen aan het begin van de hostnaam.
 
-De **Status > Servicedetectie** pagina ziet u de actieve doelen 0/0.
+Op de pagina **Status > service detectie** worden 0/0 actieve doelen weer gegeven.
 
-Voor het implementeren van een voorbeeldtoepassing, waarmee wordt aangegeven dat Python basismetriek onder het eindpunt /metrics, voer de volgende opdrachten:
+Voer de volgende opdrachten uit om een voorbeeld toepassing te implementeren, waardoor de basis gegevens van python onder het/Metrics-eind punt worden weer gegeven:
 ```
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example1 -n app-project1
 
 oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=example2 -n app-project2
 ```
-De nieuwe toepassingen die moeten worden weergegeven als geldige doelen op de pagina Servicedetectie binnen 30 seconden na de implementatie.
+De nieuwe toepassingen moeten worden weer gegeven als geldige doelen op de service detectie pagina binnen 30 seconden na de implementatie.
 
-Voor meer informatie, selecteert u **Status** > **doelen**.
+Selecteer **status** > **doelen**voor meer informatie.
 
 > [!NOTE]
-> Voor elke is scraped doel voegt Prometheus een gegevenspunt in de van metrische gegevens. Selecteer **Prometheus** invoeren in de linkerbovenhoek **van** als de expressie, en selecteer vervolgens **Execute**.
+> Voor elke geslaagde, Prometheus een gegevens punt toevoegen aan de metrische waarde. Selecteer **Prometheus** in de linkerbovenhoek, Voer in als de expressie en selecteer vervolgens **uitvoeren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt aangepaste Prometheus instrumentatie toevoegen aan uw toepassingen. De Prometheus Client-bibliotheek die Prometheus metrische gegevens voorbereiden vereenvoudigt, is gereed voor verschillende programmeertalen.
+U kunt aangepaste Prometheus-instrumentatie toevoegen aan uw toepassingen. De Prometheus-client bibliotheek, waarmee de voor bereiding van Prometheus-gegevens wordt vereenvoudigd, is gereed voor verschillende programmeer talen.
 
-Zie voor meer informatie de volgende GitHub-bibliotheken:
+Voor meer informatie raadpleegt u de volgende GitHub-bibliotheken:
 
  - [Java](https://github.com/prometheus/client_java)
  - [Python](https://github.com/prometheus/client_python)

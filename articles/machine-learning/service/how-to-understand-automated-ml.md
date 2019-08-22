@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: ea85a0906ce231312c491d31a33c331480d23812
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a5632767ef8230d16b47f350436fda53794efdf5
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362153"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872587"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Automatische machine learning resultaten begrijpen
 
@@ -47,15 +47,15 @@ Nadat u een geautomatiseerd machine learning experiment hebt uitgevoerd, kunt u 
 
 1. Selecteer in de lijst met experimenten het abonnement dat u wilt verkennen.
 
-   ![Lijst van experiment](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)
+   [![Proef lijst](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
 1. Selecteer in de onderste tabel het **uitvoerings nummer**.
 
-   ![Experiment uitvoeren](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)
+   Experimenteel uitvoeren) [ ![](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png)
 
 1. Selecteer in de tabel iteraties het **herhalings nummer** voor het model dat u verder wilt verkennen.
 
-   ![Model van experiment](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)
+   [![Model experimenteren](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
 U ziet ook dezelfde resultaten tijdens het uitvoeren wanneer u de `RunDetails` [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)gebruikt.
 
@@ -192,7 +192,7 @@ Na elke uitvoering ziet u een voorspelde versus waar graph voor elke regressiemo
 
 Voorbeeld 1: Een regressie model met lage nauw keurigheid bij ![het voors pellen van een regressie model met lage nauw keurigheid in voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-Voorbeeld 2: Een regressie model met hoge nauw keurigheid in de voor spellingen ![van een regressie model met hoge nauw keurigheid in de voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)
+Voorbeeld 2: Een regressie model met hoge nauw keurigheid in de voor spellingen [ ![van een regressie model met hoge nauw keurigheid in de voor spellingen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 

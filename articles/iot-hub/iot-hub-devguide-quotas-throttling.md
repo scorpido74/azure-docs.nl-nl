@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950531"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877176"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referentie-IoT Hub quota's en beperking
 
@@ -25,6 +25,10 @@ Elk Azure-abonnement kan Maxi maal 50 IoT hubs hebben en Maxi maal één gratis 
 Elke IoT-hub is ingericht met een bepaald aantal eenheden in een bepaalde laag. De laag en het aantal eenheden bepalen het maximale dagelijkse quotum van berichten dat u kunt verzenden. De grootte van het bericht dat wordt gebruikt voor het berekenen van het dagelijkse quotum is 0,5 KB voor een gratis hub en 4KB voor alle andere lagen. Zie [prijzen van Azure IOT hub](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie.
 
 De laag bepaalt ook de beperkings limieten die IoT Hub afgedwongen voor alle bewerkingen.
+
+### <a name="iot-plug-and-play"></a>IoT Plug and Play
+
+Tijdens de open bare preview verzenden IoT Plug en Play-apparaten afzonderlijke berichten per interface, waardoor het aantal berichten dat kan worden meegeteld voor uw bericht quotum, kan toenemen.
 
 ## <a name="operation-throttles"></a>Bewerking beperken
 

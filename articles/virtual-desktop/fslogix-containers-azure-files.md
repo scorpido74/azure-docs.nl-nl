@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
-ms.translationtype: MT
+ms.openlocfilehash: 54d3f175e74b9f94c7845725e3d8f4531750df57
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947220"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877561"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profielcontainers en Azure Files
 
@@ -69,7 +69,7 @@ S2D-clusters vereisen een besturings systeem dat met een patch in een beveiligde
 
 Op 19 november 2018 heeft [micro soft FSLogix aangeschaft](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix is een oplossing voor veel uitdagingen met een profiel container. De sleutel is onder andere:
 
-- **Nemen** De [FSLogix-profiel containers](https://fslogix.com/products/profile-containers) zijn hoge prestaties en kunnen prestatie problemen oplossen die de Exchange-modus met een historische cache hebben geblokkeerd.
+- **Prestaties:** De [FSLogix-profiel containers](https://fslogix.com/products/profile-containers) zijn hoge prestaties en kunnen prestatie problemen oplossen die de Exchange-modus met een historische cache hebben geblokkeerd.
 - **OneDrive:** Zonder FSLogix-profiel containers wordt OneDrive voor bedrijven niet ondersteund in niet-permanente RDSH-of VDI-omgevingen. In de [Best practices voor OneDrive voor bedrijven en FSLogix](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) wordt beschreven hoe ze communiceren. Zie [de Synchronisatieclient gebruiken op virtuele Bureau bladen](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi)voor meer informatie.
 - **Aanvullende mappen:** FSLogix biedt de mogelijkheid om gebruikers profielen uit te breiden voor het toevoegen van extra mappen.
 
@@ -86,7 +86,7 @@ Virtueel bureau blad van Windows biedt volledige controle over de grootte, het t
 Om ervoor te zorgen dat uw virtuele Windows-bureau blad-omgeving de best practices volgt:
 
 - Azure Files Storage-account moet zich in dezelfde regio bevinden als de virtuele machines van de host.
-- Azure Files machtigingen moeten overeenkomen met de machtigingen die zijn beschreven in [vereisten-profiel containers](https://docs.fslogix.com/display/20170529/Requirements+-+Profile+Containers).
+- Azure Files machtigingen moeten overeenkomen met de machtigingen die zijn beschreven in [vereisten-profiel containers](https://docs.microsoft.com/fslogix/overview#requirements).
 - Elke hostgroep moet zijn gebaseerd op hetzelfde type en dezelfde grootte VM op basis van dezelfde hoofd installatie kopie.
 - Elke VM van een hostgroep moet zich in dezelfde resource groep beheersen voor het beheren, schalen en bijwerken.
 - Voor optimale prestaties moeten de opslag oplossing en de FSLogix-profiel container zich op dezelfde locatie in het Data Center bevinden.
@@ -99,6 +99,6 @@ Gebruik de volgende hand leidingen om een virtuele Windows-desktop omgeving in t
 - Zie [een Tenant maken in Windows virtueel bureau blad](tenant-setup-azure-active-directory.md)om te beginnen met het bouwen van de oplossing voor desktop virtualisatie.
 - Zie [een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)voor meer informatie over het maken van een hostgroep in uw virtuele Windows-bureau blad-Tenant.
 - Zie [Azure Files share instellen](/articles/storage/files/storage-files-active-directory-enable.md)voor meer informatie over het instellen van volledig beheerde bestands shares in de Cloud.
-- Zie [een gebruikers profiel share instellen voor een hostgroep voor](create-host-pools-user-profile.md)meer informatie over het configureren van FSLogix-profiel containers.
+- Zie [een profiel container maken voor een hostgroep met een bestands share voor](create-host-pools-user-profile.md)meer informatie over het configureren van FSLogix-profiel containers.
 - Zie [app-groepen beheren voor Windows virtueel bureau blad](manage-app-groups.md)om gebruikers toe te wijzen aan een hostgroep.
 - Zie [verbinding maken met het virtuele bureau blad van Windows](connect-web.md)voor toegang tot uw virtuele bureau blad-resources via een webbrowser.

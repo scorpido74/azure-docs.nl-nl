@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 5ef1749217dd8980892d7bf933cbe1412929fbbd
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976981"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873199"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud (preview-versie)
 
@@ -76,6 +76,8 @@ Zie de [zelf studie](tutorial-message-enrichments.md) over het gebruik van beric
 
 * De totale bericht grootte, inclusief de verrijkingen, mag niet groter zijn dan 256 KB. Als de grootte van een bericht groter is dan 256 KB, wordt het bericht door de IoT Hub verwijderd. U kunt [IOT hub metrische gegevens](iot-hub-metrics.md) gebruiken om fouten op te sporen en op te sporen wanneer berichten worden verwijderd. U kunt bijvoorbeeld D2C. telemetrie. bewaken. ongeldig.
 
+* Verrijkingen van berichten zijn niet van toepassing op digitale dubbele wijzigings gebeurtenissen (onderdeel van de [open bare preview-versie van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md)).
+
 ## <a name="pricing"></a>Prijzen
 
 Verrijkingen van berichten zijn beschikbaar voor geen extra kosten. Op dit moment worden er kosten in rekening gebracht wanneer u een bericht naar een IoT Hub verzendt. Er wordt slechts één keer per bericht in rekening gebracht, zelfs als het bericht naar meerdere eind punten gaat.
@@ -87,6 +89,8 @@ Deze functie is beschikbaar als preview-versie en is beschikbaar in alle regio's
 ## <a name="next-steps"></a>Volgende stappen
 
 Bekijk deze artikelen voor meer informatie over het routeren van berichten naar een IoT Hub:
+
+* [Zelf studie over bericht uitbreidingen](tutorial-message-enrichments.md)
 
 * [IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten](iot-hub-devguide-messages-d2c.md)
 

@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 56ff40cb2b103c620b880792571549e2bdb17064
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c06d789e6a005c0079f889cead6a75f4d0baf19
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064371"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875700"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennismaking met de gebruikersinterface van Azure IoT Central
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In dit artikel maakt u kennis met de gebruikersinterface van Microsoft Azure IoT Central. U kunt de gebruikersinterface gebruiken om een Azure IoT Central-oplossing te maken en de daarmee verbonden apparaten te beheren en gebruiken.
 
@@ -35,11 +37,11 @@ Als _operator_ gebruikt u de gebruikersinterface van Azure IoT Central om uw Azu
 
 ## <a name="use-the-left-navigation-menu"></a>Gebruik het linkernavigatiemenu
 
-Gebruik het navigatiemenu links voor toegang tot de verschillende gebieden van de toepassing. U kunt uitvouwen of samenvouwen van de navigatiebalk hiervoor **<** of **>** :
+Gebruik het navigatie menu aan de linkerkant om toegang te krijgen tot de verschillende gebieden van de toepassing. U kunt de navigatie balk uitvouwen of samen **<** vouwen **>** door te selecteren of:
 
 | Menu | Description |
 | ---- | ----------- |
-| ![Linkernavigatiemenu](media/overview-iot-central-tour/navigationbar.png) | <ul><li>De **Dashboard** knop geeft het toepassingsdashboard van uw. Als een opbouwfunctie voor expressies, kunt u het dashboard aanpassen voor uw operators. Gebruikers kunnen ook hun eigen dashboards maken.</li><li>Met de knop **Device Explorer** ziet u een lijst met de gesimuleerde en echte apparaten die aan elke apparaatsjabloon in de toepassing zijn gekoppeld. Als operator gebruikt u de **Device Explorer** om uw verbonden apparaten te beheren.</li><li>Met de knop **Apparaatsets** kunt u apparaatsets bekijken en maken. Als operator kunt u de apparaatsets maken als een logische verzameling apparaten die door een query wordt gespecificeerd.</li><li>Met de knop **Analyse** worden analytische gegevens weergegeven die zijn afgeleid van telemetriegegevens van apparaten en apparaatsets. Als operator kunt u uw apparaatgegevens aangepast weergeven voor meer inzicht in uw toepassing.</li><li>De knop **Taken** schakelt bulksgewijs beheer van apparaten doordat u taken kunt maken en uitvoeren voor het uitvoeren van updates op schaal.</li><li>De knop **Apparaatsjablonen** geeft de hulpprogramma's weer die een opbouwfunctie gebruikt om apparaatsjablonen te maken en beheren.</li><li>Met de knop **Continue gegevensexport** kan een beheerder een continue export configureren naar andere Azure-services zoals opslag en wachtrijen.</li><li>Met de knop **Beheer** worden de beheerpagina's van de toepassing weergegeven waar een administrator de instellingen, gebruikers en rollen van een toepassing kan beheren.</li></ul> |
+| ![Linkernavigatiemenu](media/overview-iot-central-tour/navigationbar.png) | <ul><li>Met de knop **dash board** wordt uw toepassings dashboard weer gegeven. Als opbouw functie kunt u het dash board aanpassen voor uw Opera tors. Gebruikers kunnen ook hun eigen Dash boards maken.</li><li>Met de knop **Device Explorer** ziet u een lijst met de gesimuleerde en echte apparaten die aan elke apparaatsjabloon in de toepassing zijn gekoppeld. Als operator gebruikt u de **Device Explorer** om uw verbonden apparaten te beheren.</li><li>Met de knop **Apparaatsets** kunt u apparaatsets bekijken en maken. Als operator kunt u de apparaatsets maken als een logische verzameling apparaten die door een query wordt gespecificeerd.</li><li>Met de knop **Analyse** worden analytische gegevens weergegeven die zijn afgeleid van telemetriegegevens van apparaten en apparaatsets. Als operator kunt u uw apparaatgegevens aangepast weergeven voor meer inzicht in uw toepassing.</li><li>De knop **Taken** schakelt bulksgewijs beheer van apparaten doordat u taken kunt maken en uitvoeren voor het uitvoeren van updates op schaal.</li><li>De knop **Apparaatsjablonen** geeft de hulpprogramma's weer die een opbouwfunctie gebruikt om apparaatsjablonen te maken en beheren.</li><li>Met de knop **Continue gegevensexport** kan een beheerder een continue export configureren naar andere Azure-services zoals opslag en wachtrijen.</li><li>Met de knop **Beheer** worden de beheerpagina's van de toepassing weergegeven waar een administrator de instellingen, gebruikers en rollen van een toepassing kan beheren.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Zoeken, hulp en ondersteuning
 
@@ -47,25 +49,25 @@ Het bovenste menu wordt op elke pagina weergegeven:
 
 ![Werkbalk](media/overview-iot-central-tour/toolbar.png)
 
-- Als u wilt zoeken naar apparaatsjablonen en apparaten, voer een **zoeken** waarde.
-- Kies de taal van de gebruikersinterface of thema wilt wijzigen, de **instellingen** pictogram.
-- Als u wilt afmelden bij de toepassing, kiest u de **Account** pictogram.
-- Als u hulp en ondersteuning nodig hebt, kiest u het keuzemenu **Help** voor een lijst met bronnen. In een proefversie, de bronnen voor ondersteuning hebben toegang tot [live chat](howto-show-hide-chat.md).
+- Als u wilt zoeken naar Apparaatinstellingen en apparaten, voert u een **Zoek** waarde in.
+- Als u de taal of het thema van de gebruikers interface wilt wijzigen, kiest u het pictogram **instellingen** .
+- Kies het **account** pictogram om u af te melden bij de toepassing.
+- Als u hulp en ondersteuning nodig hebt, kiest u het keuzemenu **Help** voor een lijst met bronnen. In een proef toepassing omvatten de ondersteunings bronnen toegang tot [Live Chat](howto-show-hide-chat.md).
 
 Voor de gebruikersinterface kunt u kiezen tussen een licht thema of een donker thema:
 
 ![Een thema voor de gebruikersinterface kiezen](media/overview-iot-central-tour/themes.png)
 
 > [!NOTE]
-> De optie te kiezen tussen het lichte en donkere thema's is niet beschikbaar als de beheerder een aangepast thema voor de toepassing heeft geconfigureerd.
+> De optie om te kiezen tussen lichte en donkere Thema's is niet beschikbaar als uw beheerder een aangepast thema voor de toepassing heeft geconfigureerd.
 
 ## <a name="dashboard"></a>Dashboard
 
 ![Dashboard](media/overview-iot-central-tour/homepage.png)
 
-* Het dashboard is de eerste pagina die u ziet wanneer u zich aanmeldt bij uw Azure IoT Central-toepassing. Als een opbouwfunctie voor expressies, kunt u het dashboard voor andere gebruikers door toe te voegen, tegels aanpassen. Raadpleeg voor meer informatie de zelfstudie [Customize the Azure IoT Central operator's view](tutorial-customize-operator.md) (De operatorweergave van Azure IoT Central aanpassen).
+* Het dash board is de eerste pagina die u ziet wanneer u zich aanmeldt bij uw Azure IoT Central-toepassing. Als ontwerper kunt u het toepassings dashboard aanpassen voor andere gebruikers door tegels toe te voegen. Raadpleeg voor meer informatie de zelfstudie [Customize the Azure IoT Central operator's view](tutorial-customize-operator.md) (De operatorweergave van Azure IoT Central aanpassen).
 
-* Als operator kunt u persoonlijke dashboards maken en schakelen tussen deze en de standaard-dashboard. Zie voor meer informatie, de [maken en beheren van persoonlijke dashboards](howto-personalize-dashboard.md) artikel met instructies.
+* Als operator kunt u persoonlijke Dash boards maken en scha kelen tussen deze en het standaard dashboard. Zie het artikel [persoonlijke Dash boards maken en beheren](howto-personalize-dashboard.md) voor meer informatie.
 
 ## <a name="device-explorer"></a>Apparatenverkenner
 
@@ -92,18 +94,18 @@ De pagina Analyse bevat diagrammen met informatie over hoe de apparaten die met 
 
 ![Pagina Taken](media/overview-iot-central-tour/jobs.png)
 
-De taken op de pagina kunt u uitvoeren van bewerkingen voor Apparaatbeheer bulksgewijs op uw apparaten. De opbouwfunctie maakt gebruik van deze pagina om apparaateigenschappen, instellingen en opdrachten bij te werken. Zie voor meer informatie, het artikel [Een taak uitvoeren](howto-run-a-job.md).
+Op de pagina taken kunt u bulk bewerkingen voor Apparaatbeheer uitvoeren op uw apparaten. De opbouwfunctie maakt gebruik van deze pagina om apparaateigenschappen, instellingen en opdrachten bij te werken. Zie voor meer informatie, het artikel [Een taak uitvoeren](howto-run-a-job.md).
 
-## <a name="device-templates"></a>Apparaatsjablonen
+## <a name="device-templates"></a>Apparaatinstellingen
 
 ![De pagina Apparaatsjablonen](media/overview-iot-central-tour/templates.png)
 
-De opbouwfunctie gebruikt de pagina Apparaatsjablonen om de apparaatsjablonen in de toepassing te maken en beheren. Een sjabloon van het apparaat geeft kenmerken op apparaat, zoals:
+De opbouwfunctie gebruikt de pagina Apparaatsjablonen om de apparaatsjablonen in de toepassing te maken en beheren. Een sjabloon voor apparaten geeft de kenmerken van het apparaat aan, zoals:
 
-- Telemetrie, status en gebeurtenis metingen.
+- Telemetrie-, status-en gebeurtenis metingen.
 - Instellingen en eigenschappen.
-- De opdrachten.
-- Regels op basis van gebeurtenissen of telemetriewaarden.
+- Opdrachten.
+- Regels op basis van gebeurtenissen of telemetrie-waarden.
 
 Raadpleeg voor meer informatie de zelfstudie [Define a new device type in your Azure IoT Central application](tutorial-define-device-type.md) (Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing).
 
@@ -111,13 +113,13 @@ Raadpleeg voor meer informatie de zelfstudie [Define a new device type in your A
 
 ![Pagina Continue gegevensexport](media/overview-iot-central-tour/export.png)
 
-De continue export gegevenspagina is wanneer een beheerder over het streamen van gegevens, zoals de telemetrie van de toepassing definieert. Andere services kunnen de geëxporteerde gegevens opslaan of die gebruiken voor analysedoeleinden. Zie het artikel [Exporteren van gegevens in Azure IoT Central](howto-export-data.md) voor meer informatie.
+De pagina doorlopend gegevens exporteren is de locatie waar een beheerder bepaalt hoe gegevens worden gestreamd, zoals telemetrie, van de toepassing. Andere services kunnen de geëxporteerde gegevens opslaan of die gebruiken voor analysedoeleinden. Zie het artikel [Exporteren van gegevens in Azure IoT Central](howto-export-data.md) voor meer informatie.
 
 ## <a name="administration"></a>Beheer
 
 ![Beheerpagina](media/overview-iot-central-tour/administration.png)
 
-De beheerpagina bevat koppelingen naar de hulpprogramma's die een beheerder gebruikt, zoals gebruikers en rollen in de toepassing definiëren en aanpassen van de gebruikersinterface. Raadpleeg voor meer informatie het artikel [Administer your Azure IoT Central application](howto-administer.md) (Uw Azure IoT Central-toepassing beheren).
+De beheer pagina bevat koppelingen naar de hulpprogram ma's die een beheerder gebruikt, zoals het definiëren van gebruikers en rollen in de toepassing, en het aanpassen van de gebruikers interface. Raadpleeg voor meer informatie het artikel [Administer your Azure IoT Central application](howto-administer.md) (Uw Azure IoT Central-toepassing beheren).
 
 ## <a name="next-steps"></a>Volgende stappen
 

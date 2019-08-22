@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d6ad7631ae32f8bd04812093a0fef4fa3d575864
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067401"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875465"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Zelfstudie: Azure IoT Central gebruiken om uw apparaten te bewaken
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In deze zelfstudie leert u hoe u als operator uw Microsoft Azure IoT Central toepassing kunt gebruiken om uw apparaten te bewaken en instellingen te wijzigen.
 
@@ -55,7 +57,7 @@ Kies de weergave **Dashboard** om informatie over het apparaat te bekijken.
 
 ![Apparaatdashboard](media/tutorial-monitor-devices/initial_screen.png)
 
-De grafiek op het dashboard toont een grafische voorstelling van de temperatuur van het apparaat. U ziet ook de huidige temperatuur doel voor het apparaat in de **apparaateigenschappen** tegel. U besluit dat de doeltemperatuur te hoog is.
+De grafiek op het dashboard toont een grafische voorstelling van de temperatuur van het apparaat. U kunt ook de huidige doel temperatuur voor het apparaat zien op de tegel eigenschappen van het **apparaat** . U besluit dat de doeltemperatuur te hoog is.
 
 ## <a name="remediate-an-issue"></a>Een probleem oplossen
 
@@ -63,7 +65,7 @@ Gebruik de pagina **Instellingen** om de doeltemperatuur van het apparaat te wij
 
 1. Kies **Instellingen**. Wijzig **Temperatuur instellen** in 75. Kies **Update** om de nieuwe doeltemperatuur naar het apparaat te verzenden. Wanneer het apparaat de instellingswijziging bevestigt, verandert de status van de instellingswaarde in **Gesynchroniseerd**:
 
-    ![Instellingen bijwerken](media/tutorial-monitor-devices/change_settings.png)
+    ![Update-instellingen](media/tutorial-monitor-devices/change_settings.png)
 
 2. Kies **Dashboard** en controleer de waarde van de nieuwe instelling:
 

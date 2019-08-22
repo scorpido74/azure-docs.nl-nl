@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 305a35d1d40d94d1ce8e463b4af51eb84278bc3f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510257"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876407"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere Azure SQL-data bases
 
@@ -155,8 +155,14 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
 Er zijn twee manieren waarop u een elastische pool kunt maken in de Azure Portal.
 
-1. U kunt een elastische pool maken door in de **Marketplace** **SQL elastische pool** te doorzoeken of door te klikken op **+ toevoegen** op de Blade elastische SQL-groepen. U kunt een nieuwe of bestaande server opgeven via de werk stroom voor het inrichten van deze pool.
-2. U kunt ook een elastische pool maken door naar een bestaande SQL-Server te gaan en te klikken op **groep maken** om een groep rechtstreeks op die server te maken. Het enige verschil is dat u de stap overs laat waarin u de server opgeeft tijdens de werk stroom voor het inrichten van de pool.
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als Azure SQL niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
+2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
+3. Selecteer in de tegel **data bases** de optie **elastische groep** in de vervolg keuzelijst **resource type** en selecteer vervolgens **maken**:
+
+   ![Elastische pool maken](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. U kunt ook een elastische pool maken door te navigeren naar een bestaande Azure SQL-Server en op **+ nieuwe pool** te klikken om een groep rechtstreeks op die server te maken.
 
 > [!NOTE]
 > U kunt meerdere groepen maken op een-server, maar het is niet mogelijk om data bases van verschillende servers toe te voegen aan dezelfde groep.

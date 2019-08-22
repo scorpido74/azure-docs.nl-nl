@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 56ced4f5e2fd0fbf829f72cff2413998398a7a09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 30bfd3b119b3ae4badbda50747158e8b08a9dd08
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066013"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875529"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Zelfstudie: Regels en acties voor uw apparaat configureren in Azure IoT Central
 
 *Dit artikel is van toepassing op operators, opbouwfuncties en beheerders.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In deze zelfstudie maakt u een regel die een e-mail verzendt wanneer de temperatuur in een aangesloten airconditioningapparaat hoger is dan 32 &deg;C.
 
@@ -34,15 +36,15 @@ Voer voordat u begint de zelfstudie [Een nieuw apparaattype definiëren in uw to
 
 ## <a name="create-a-telemetry-based-rule"></a>Een regel op basis van telemetrie maken
 
-1. Selecteer om een nieuwe regel op basis van telemetrie toe aan uw toepassing, in het navigatiemenu links **Apparaatsjablonen**:
+1. Als u een nieuwe telemetrie-regel wilt toevoegen aan uw toepassing, selecteert u in het navigatie menu aan de linkerkant de optie **Apparaatbeheer**:
 
     ![De pagina Apparaatsjablonen](media/tutorial-configure-rules/templatespage1.png)
 
     U ziet de apparaatsjabloon **Aangesloten airconditioner (1.0.0)**  die u in de vorige zelfstudie hebt gemaakt.
 
-2. Voor het aanpassen van de sjabloon voor het apparaat, selecteert u de **airconditioner verbonden** sjabloon die u in de vorige zelfstudie hebt gemaakt.
+2. Als u uw sjabloon wilt aanpassen, selecteert u de **verbonden Air-voorwaarde** sjabloon die u hebt gemaakt in de vorige zelf studie.
 
-3. Toevoegen van een regel op basis van telemetrie in de **regels** weergave, selecteer **regels**, selecteer **+ nieuwe regel**, en selecteer vervolgens **telemetrie**:
+3. Als u een regel op basis van telemetrie wilt toevoegen in de weer gave **regels** , selecteert u **regels**, selecteert u **+ nieuwe regel**en selecteert u telemetrie:
 
     ![Weergave Regels](media/tutorial-configure-rules/newrule.png)
 
@@ -71,7 +73,7 @@ Wanneer u een regel definieert, definieert u ook een actie die moet worden uitge
 
     | Instelling   | Value                          |
     | --------- | ------------------------------ |
-    | Naar        | Uw e-mailadres             |
+    | Naar        | Je e-mailadres             |
     | Opmerkingen     | De temperatuur van de airconditioner heeft de drempelwaarde overschreden. |
 
     > [!NOTE]

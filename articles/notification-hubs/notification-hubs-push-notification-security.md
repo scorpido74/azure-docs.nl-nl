@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs-beveiliging
-description: In dit onderwerp wordt uitgelegd beveiliging voor Azure notification hubs.
+title: Notification Hubs beveiliging
+description: In dit onderwerp wordt de beveiliging beschreven van Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
 author: jwargo
@@ -14,42 +14,40 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: jowargo
-ms.openlocfilehash: 3f5b23028094b545262e9c01640890f2c0b989ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431252"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891577"
 ---
-# <a name="notification-hubs-security"></a>Notification Hubs-beveiliging
+# <a name="notification-hubs-security"></a>Notification Hubs beveiliging
 
 ## <a name="overview"></a>Overzicht
 
-Dit onderwerp beschrijft het beveiligingsmodel van Azure Notification Hubs.
+In dit onderwerp wordt het beveiligings model van Azure Notification Hubs beschreven.
 
 ## <a name="shared-access-signature-security-sas"></a>Shared Access Signature Security (SAS)
 
-Notification Hubs implementeert een schema op entiteitsniveau security SAS (Shared Access Signature) genoemd. In dit schema kunt messaging-entiteiten op te geven tot 12 autorisatieregels in de beschrijving die verlenen van rechten voor die entiteit.
+Notification Hubs implementeert een beveiligings schema op entiteits niveau met de naam SAS (Shared Access Signature). Elke regel bevat een naam, een sleutel waarde (gedeeld geheim) en een set rechten, zoals wordt uitgelegd in [beveiligings claims](#security-claims). Wanneer u een notification hub maakt, worden er automatisch twee regels gemaakt: één met **Luister** rechten (die de client-app gebruikt) en één met **alle** rechten (die de app-back-end gebruikt).
 
-Elke regel bevat een naam, de waarde van een sleutel (gedeelde geheim genoemd) en een set rechten, zoals uitgelegd in [beveiligingsclaims](#security-claims). Bij het maken van een Notification Hub, twee regels worden automatisch gemaakt: één met **luisteren** rechten (die gebruikmaakt van de client-app) en één met **alle** rechten (die gebruikmaakt van de back-end).
+Bij het uitvoeren van registratie beheer vanuit client-apps, als de gegevens die via meldingen worden verzonden, niet gevoelig zijn (bijvoorbeeld weer updates), een veelgebruikte manier om toegang te krijgen tot een notification hub is de sleutel waarde van de regel alleen-lezen toegang tot de client-app te geven. en om de sleutel waarde van de regel volledige toegang te geven tot de back-end van de app.
 
-Bij het uitvoeren van registratiebeheer van de van de client-apps, als de gegevens worden verzonden via meldingen is geen gevoelige (bijvoorbeeld updates weer), een veelgebruikte manier voor toegang tot een Meldingshub die is de waarde van de sleutel van de regel luisteren naar alleen-lezen toegang geven tot de client-app en de waarde van de sleutel van de regel voor volledige toegang geven tot de back-end.
+Apps moeten de sleutel waarde niet insluiten in Windows Store-client-apps. in plaats daarvan wordt de client-app tijdens het opstarten opgehaald uit de back-end van de app.
 
-Apps niet de sleutelwaarde in Windows Store-client-apps insluiten, moet in plaats daarvan de client-app vanuit de back-end bij het opstarten worden opgehaald.
+De sleutel met **listen** -toegang kan een client-app voor elk label registreren. Als uw app de registraties beperkt tot specifieke tags voor specifieke clients (bijvoorbeeld wanneer labels gebruikers-Id's vertegenwoordigen), moet uw app-back-end de registraties uitvoeren. Zie [registratie beheer](notification-hubs-push-notification-registration-management.md)voor meer informatie. Op deze manier is de client-app niet rechtstreeks toegang tot Notification Hubs.
 
-De sleutel met de **luisteren** toegang zorgt dat een client-app te registreren voor een label. Als uw app moet registraties beperken tot specifieke labels voor specifieke clients (bijvoorbeeld wanneer tags vertegenwoordigt een gebruikers-id's), moet de back-end van uw app de registraties uitvoeren. Zie voor meer informatie, [registratiebeheer](notification-hubs-push-notification-registration-management.md). Houd er rekening mee dat op deze manier kan de client-app wordt geen directe toegang tot Notification Hubs.
+## <a name="security-claims"></a>Beveiligings claims
 
-## <a name="security-claims"></a>Beveiligingsclaims
-
-Net als bij andere entiteiten, Notification Hub-bewerkingen zijn toegestaan voor drie beveiligingsclaims: **Luisteren**, **verzenden**, en **beheren**.
+Net als bij andere entiteiten zijn notification hub-bewerkingen toegestaan voor drie beveiligings claims: **Luis teren**, **verzenden**en **beheren**.
 
 | Claim   | Description                                          | Toegestane bewerkingen |
 | ------- | ---------------------------------------------------- | ------------------ |
-| Luisteren  | Maken of bijwerken, lezen en één registraties te verwijderen | Registratie maken/bijwerken<br><br>Lezen registratie<br><br>Alle registraties voor een ingang lezen<br><br>Registratie verwijderen |
+| Luisteren  | Enkelvoudige registraties maken/bijwerken, lezen en verwijderen | Registratie maken/bijwerken<br><br>Registratie lezen<br><br>Alle registraties voor een ingang lezen<br><br>Registratie verwijderen |
 | Verzenden    | Berichten verzenden naar de notification hub                | Bericht verzenden |
-| Beheren  | CRUDs op Notification Hubs (inclusief het bijwerken van de PNS-referenties en sleutels) en lezen registraties op basis van tags |Meldingshubs maken/bijwerken/lezen/verwijderen<br><br>Registraties lezen op label |
+| Beheren  | RUWE gegevens op Notification Hubs (inclusief het bijwerken van PNS-referenties en beveiligings sleutels) en het lezen van registraties op basis van Tags |Notification hubs maken/bijwerken/lezen/verwijderen<br><br>Registraties per tag lezen |
 
-Notification Hubs accepteert handtekening tokens gegenereerd met gedeelde sleutels die zijn geconfigureerd op de Notification Hub.
+Notification Hubs accepteert handtekening tokens die zijn gegenereerd met gedeelde sleutels die rechtstreeks zijn geconfigureerd op de notification hub.
 
-Het is niet mogelijk een melding verzenden naar meer dan één naamruimte. Naamruimten zijn logische container voor notification hubs en niet betrokken bij het verzenden van meldingen.
-Het niveau van de naamruimte-toegangsbeleid (referenties) kunnen worden gebruikt voor bewerkingen op naamruimteniveau, bijvoorbeeld: notification hubs weergeven, maken of verwijderen van notification hubs, enzovoort. Alleen het niveau van de hub toegangsbeleid kunt u meldingen verzendt.
+Het is niet mogelijk om een melding naar meer dan één naam ruimte te verzenden. Naam ruimten zijn logische container voor notification hubs en zijn niet betrokken bij het verzenden van meldingen.
+Het toegangs beleid op naam ruimte niveau (referenties) kan worden gebruikt voor bewerkingen op naam ruimte niveau, zoals het vermelden van meldings hubs, het maken of verwijderen van Notification hubs, enzovoort. Alleen met het toegangs beleid op hubniveau kunt u meldingen verzenden.

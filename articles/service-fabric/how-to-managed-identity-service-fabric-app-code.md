@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: f0944e9fddc0afb28f758ba7b16232330d3bc34d
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635531"
+ms.locfileid: "69656627"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services (preview)
 
@@ -60,7 +60,7 @@ positie
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
 | `http://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteits eindpunt voor Service Fabric toepassingen, dat wordt gegeven via de omgevings variabele MSI_ENDPOINT. |
 | `api-version` | Een query reeks parameter, waarmee de API-versie van de beheerde identiteits token service wordt opgegeven. Momenteel is `2019-07-01-preview`de enige geaccepteerde waarde en deze kan worden gewijzigd. |
-| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Dit wordt weer gegeven als de `aud` claim (publiek) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd om toegang te krijgen tot Azure Key Vault, https://keyvault.azure.com/ waarvan de URI van de app-id is. |
+| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Dit wordt weer gegeven als de `aud` claim (publiek) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Key Vault, waarvan de URI van\/de App-ID https:/keyvault.Azure.com/is. |
 | `Secret` | Een veld voor de HTTP-aanvraag header, dat wordt vereist door de Service Fabric Managed Identity token service voor Service Fabric Services om de oproepende functie te verifiëren. Deze waarde wordt gegeven door de omgevings variabele SF runtime via MSI_SECRET. |
 
 

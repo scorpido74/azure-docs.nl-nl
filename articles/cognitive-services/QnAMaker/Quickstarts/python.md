@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/13/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5add68902b23d41c9e3031839508418a81086e6b
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: fc15b08bb293864c22b7e26c1e408b99ac58d698
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342175"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647083"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>De QnA Maker REST-API gebruiken met Python
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ In dit artikel leest u hoe u de [QnA Maker-API van Microsoft](../Overview/overvi
 - [Een knowledge base verwijderen.](#Delete)
 - [De huidige eindpuntsleutels ophalen.](#GetKeys)
 - [De huidige eindpuntsleutels opnieuw genereren.](#PutKeys)
-- [De huidige set wijzigingen voor niet-hoofdlettergevoelige word ophalen.](#GetAlterations)
-- [Vervang de huidige set met niet-hoofdlettergevoelige word wijzigingen.](#PutAlterations)
+- [De huidige set hoofdletter gevoelige woord wijzigingen ophalen.](#GetAlterations)
+- [De huidige set hoofdletter gevoelige woord wijzigingen vervangen.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

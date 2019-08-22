@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 10/06/2017
-ms.openlocfilehash: 243f4e63cc04bca018c2bf69492dccf163e92b73
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/16/2019
+ms.openlocfilehash: 0a89cd2c576a3539d7b1b6a282a2287551e8265a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780829"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877133"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Taken plannen en uitzenden (node. js)
 
@@ -48,9 +48,11 @@ Aan het einde van deze zelf studie hebt u twee node. js-apps:
 
 * **scheduleJobService. js**, waarmee een directe methode wordt aangeroepen in de gesimuleerde apparaat-app en de gewenste eigenschappen van het apparaat worden bijgewerkt met behulp van een taak.
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+## <a name="prerequisites"></a>Vereisten
 
-* Node. js versie 10.0. x of hoger [uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) hierin wordt beschreven hoe u node. js voor deze zelf studie installeert op Windows of Linux.
+Voor deze zelfstudie hebt u het volgende nodig:
+
+* Node. js versie 10.0. x of hoger. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) hierin wordt beschreven hoe u node. js installeert voor deze zelf studie op Windows of Linux.
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
@@ -68,39 +70,39 @@ In deze sectie maakt u een node. JS-Console-app die reageert op een directe meth
 
 1. Maak een nieuwe lege map met de naam **simDevice**.  Maak in de map **simDevice** een package. JSON-bestand met de volgende opdracht achter de opdracht prompt.  Accepteer alle standaardwaarden:
 
-   ```
+   ```console
    npm init
    ```
 
 2. Voer bij de opdracht prompt in de map **simDevice** de volgende opdracht uit om het **Azure-IOT-Device-SDK-** pakket te installeren en **Azure-IOT-Device-mqtt** -pakket:
-   
-   ```
+
+   ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
 3. Maak een nieuw **simDevice. js** -bestand in de map **simDevice** met behulp van een tekst editor.
 
 4. Voeg de volgende ' vereist '-instructies toe aan het begin van het bestand **simDevice. js** :
-   
-    ```
+
+    ```javascript
     'use strict';
-   
+
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Voeg een **connectionString**-variabele toe en gebruik deze om een **client**exemplaar te maken.  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
+5. Voeg een **connectionString**-variabele toe en gebruik deze om een **client**exemplaar te maken. Vervang de `{yourDeviceConnectionString}` waarde van de tijdelijke aanduiding door het apparaat Connection String u eerder hebt gekopieerd.
+
+    ```javascript
+    var connectionString = '{yourDeviceConnectionString}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
 6. Voeg de volgende functie toe om de methode **lockDoor** te verwerken.
-   
-    ```
+
+    ```javascript
     var onLockDoor = function(request, response) {
-   
+
         // Respond the cloud app for the direct method
         response.send(200, function(err) {
             if (err) {
@@ -109,14 +111,14 @@ In deze sectie maakt u een node. JS-Console-app die reageert op een directe meth
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
         });
-   
+
         console.log('Locking Door!');
     };
     ```
 
 7. Voeg de volgende code toe om de handler voor de methode **lockDoor** te registreren.
 
-   ```
+   ```javascript
    client.open(function(err) {
         if (err) {
             console.error('Could not connect to IotHub client.');
@@ -145,30 +147,30 @@ In deze sectie maakt u een node. JS-Console-app die een externe **lockDoor** op 
 
 1. Maak een nieuwe lege map met de naam **scheduleJobService**.  Maak in de map **scheduleJobService** een package. JSON-bestand met de volgende opdracht achter de opdracht prompt.  Accepteer alle standaardwaarden:
 
-    ```
+    ```console
     npm init
     ```
 
 2. Voer bij de opdracht prompt in de map **scheduleJobService** de volgende opdracht uit om het **Azure-iothub** apparaat SDK-pakket en het **Azure-IOT-Device-mqtt** -pakket te installeren:
-   
-    ```
+
+    ```console
     npm install azure-iothub uuid --save
     ```
 
 3. Maak een nieuw **scheduleJobService. js** -bestand in de map **scheduleJobService** met behulp van een tekst editor.
 
-4. Voeg de volgende ' vereist '-instructies toe aan het begin van het bestand **dmpatterns_gscheduleJobServiceetstarted_service. js** :
-   
-    ```
+4. Voeg de volgende ' vereist '-instructies toe aan het begin van het bestand **scheduleJobService. js** :
+
+    ```javascript
     'use strict';
-   
+
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Voeg de volgende variabelen declaraties toe en vervang de waarden van de tijdelijke aanduiding:
-   
-    ```
+5. Voeg de volgende variabelen declaraties toe. Vervang de waarde van de tijdelijkeaanduidingdoordewaardedieuhebtgekopieerdindeIOThubophalenConnectionString.`{iothubconnectionstring}` [](#get-the-iot-hub-connection-string) Als u een ander apparaat dan **myDeviceId**hebt geregistreerd, moet u dit wijzigen in de query voorwaarde.
+
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     var queryCondition = "deviceId IN ['myDeviceId']";
     var startTime = new Date();
@@ -177,8 +179,8 @@ In deze sectie maakt u een node. JS-Console-app die een externe **lockDoor** op 
     ```
 
 6. Voeg de volgende functie toe die wordt gebruikt om de uitvoering van de taak te bewaken:
-   
-    ```
+
+    ```javascript
     function monitorJob (jobId, callback) {
         var jobMonitorInterval = setInterval(function() {
             jobClient.getJob(jobId, function(err, result) {
@@ -197,14 +199,14 @@ In deze sectie maakt u een node. JS-Console-app die een externe **lockDoor** op 
     ```
 
 7. Voeg de volgende code toe om de taak te plannen die de methode van het apparaat aanroept:
-   
-    ```
+  
+    ```javascript
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
         responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
     };
-   
+
     var methodJobId = uuid.v4();
     console.log('scheduling Device Method job with id: ' + methodJobId);
     jobClient.scheduleDeviceMethod(methodJobId,
@@ -228,8 +230,8 @@ In deze sectie maakt u een node. JS-Console-app die een externe **lockDoor** op 
     ```
 
 8. Voeg de volgende code toe om de taak te plannen om het apparaat bij te werken:
-   
-    ```
+
+    ```javascript
     var twinPatch = {
        etag: '*',
        properties: {
@@ -239,9 +241,9 @@ In deze sectie maakt u een node. JS-Console-app die een externe **lockDoor** op 
            }
        }
     };
-   
+
     var twinJobId = uuid.v4();
-   
+
     console.log('scheduling Twin Update job with id: ' + twinJobId);
     jobClient.scheduleTwinUpdate(twinJobId,
                                 queryCondition,
@@ -270,18 +272,26 @@ In deze sectie maakt u een node. JS-Console-app die een externe **lockDoor** op 
 U kunt nu de toepassingen gaan uitvoeren.
 
 1. Voer bij de opdracht prompt in de map **simDevice** de volgende opdracht uit om te beginnen met Luis teren naar de methode voor direct opnieuw opstarten.
-   
-    ```
+
+    ```console
     node simDevice.js
     ```
 
 2. Voer bij de opdracht prompt in de map **scheduleJobService** de volgende opdracht uit om de taken te activeren om de deur te vergren delen en de dubbele
-   
-    ```
+
+    ```console
     node scheduleJobService.js
     ```
 
-3. U ziet de reactie van het apparaat op de directe methode in de-console.
+3. U ziet de reactie van het apparaat op de directe methode en de taak status in de-console.
+
+   Hieronder ziet u de reactie van het apparaat op de directe methode:
+
+   ![Uitvoer van gesimuleerde apparaat-app](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+
+   Hieronder ziet u de service plannings taken voor de directe methode en dubbele update van het apparaat, en de taken die worden uitgevoerd voor voltooiing:
+
+   ![De app gesimuleerde apparaten uitvoeren](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

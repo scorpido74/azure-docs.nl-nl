@@ -1,5 +1,5 @@
 ---
-title: REST API claim uitwisselingen integreren in uw Azure Active Directory B2C gebruikers traject | Microsoft Docs
+title: REST API claim uitwisselingen integreren in uw Azure Active Directory B2C gebruikers traject
 description: Integreer REST API claim uitwisselingen in uw Azure AD B2C gebruikers traject als validatie van gebruikers invoer.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2017
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed26c4d90738e10f3eb5a9a486cd2734090abd0e
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 49cd049c56e0c1d80318f9323aefe2d128774f3f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227260"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69645130"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API claims-uitwisselingen integreren in uw Azure AD B2C gebruikers traject als validatie van gebruikers invoer
 
@@ -24,6 +24,7 @@ ms.locfileid: "68227260"
 Met het Framework voor identiteits ervaring, dat Azure Active Directory B2C (Azure AD B2C) ondervindt, kunt u integreren met een REST-API in een reis van een gebruiker. In dit overzicht leert u hoe Azure AD B2C communiceert met .NET Framework-REST services (Web-API).
 
 ## <a name="introduction"></a>Inleiding
+
 U kunt met behulp van Azure AD B2C uw eigen bedrijfs logica toevoegen aan een gebruikers reis door uw eigen REST-service aan te roepen. Met het Framework voor identiteits ervaring worden gegevens verzonden naar de REST-service in een claim verzameling met *invoer* en worden gegevens teruggestuurd vanuit de rest van een verzameling *uitvoer claims* . Met de ondersteunings integratie van de REST-service kunt u het volgende doen:
 
 * **Gebruikers invoer gegevens valideren**: Met deze actie voor komt u dat ongeldige gegevens persistent worden gemaakt in azure AD. Als de waarde van de gebruiker ongeldig is, retourneert de REST-service een fout bericht dat de gebruiker de opdracht geeft een vermelding op te geven. U kunt bijvoorbeeld controleren of het e-mail adres van de gebruiker bestaat in de data base van uw klant.
@@ -34,59 +35,60 @@ U kunt met behulp van Azure AD B2C uw eigen bedrijfs logica toevoegen aan een ge
 U kunt op de volgende manieren de integratie met de REST-services ontwerpen:
 
 * **Validatie technische profiel**: De aanroep van de REST-service vindt plaats binnen het technische profiel voor validatie van het opgegeven technische profiel. Het validatie-technische profiel valideert de door de gebruiker verschafte gegevens voordat de reis van de gebruiker vooruit gaat. Met het technische profiel voor validatie kunt u het volgende doen:
-   * Invoer claims verzenden.
-   * Valideer de invoer claims en genereren aangepaste fout berichten.
-   * Uitvoer claims verzenden.
+  * Invoer claims verzenden.
+  * Valideer de invoer claims en genereren aangepaste fout berichten.
+  * Uitvoer claims verzenden.
 
 * **Uitwisseling van claims**: Dit ontwerp is vergelijkbaar met het technische profiel voor validatie, maar dit gebeurt in een indelings stap. Deze definitie is beperkt tot:
-   * Invoer claims verzenden.
-   * Uitvoer claims verzenden.
+  * Invoer claims verzenden.
+  * Uitvoer claims verzenden.
 
 ## <a name="restful-walkthrough"></a>REST-scenario
+
 In dit scenario ontwikkelt u een .NET Framework Web-API die de gebruikers invoer valideert en een loyaliteits nummer van gebruikers biedt. Uw toepassing kan bijvoorbeeld toegang verlenen tot Platinum- *voor delen* op basis van het loyaliteits nummer.
 
 Overzicht:
-* Ontwikkel de REST-service (.NET Framework Web-API).
-* Gebruik de REST-service in de reis van de gebruiker.
-* Verzend invoer claims en lees deze in uw code.
-* Valideer de voor naam van de gebruiker.
-* Een loyaliteits nummer terugsturen.
-* Voeg het loyaliteits nummer toe aan een JSON Web Token (JWT).
+
+* De REST-service (.NET Framework Web-API) ontwikkelen
+* De REST-service in de gebruikers reis gebruiken
+* Invoer claims verzenden en lezen in uw code
+* De voor naam van de gebruiker valideren
+* Een loyaliteits nummer terugsturen
+* Het loyaliteits nummer toevoegen aan een JSON Web Token (JWT)
 
 ## <a name="prerequisites"></a>Vereisten
+
 Volg de stappen in het artikel aan de slag [met aangepaste beleids regels](active-directory-b2c-get-started-custom.md) .
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>Stap 1: Een ASP.NET-Web-API maken
 
 1. Maak in Visual Studio een project door **bestand** > **Nieuw** > **project**te selecteren.
-
-2. Selecteer in het venster **New Project** de **optie C#Visual**   >  **Web** > **ASP.net Web Application (.NET Framework)** .
-
-3. Typ in het vak **naam** een naam voor de toepassing (bijvoorbeeld *contoso. AADB2C. API*) en selecteer vervolgens **OK**.
+1. Selecteer in het venster **New Project** de **optie C#Visual**   >  **Web** > **ASP.net Web Application (.NET Framework)** .
+1. Typ in het vak **naam** een naam voor de toepassing (bijvoorbeeld *contoso. AADB2C. API*) en selecteer vervolgens **OK**.
 
     ![Een nieuw Visual Studio-project maken in Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-4. Selecteer in het venster **nieuwe ASP.net** -webtoepassing een **Web API** -of **Azure API-app** -sjabloon.
+1. Selecteer in het venster **nieuwe ASP.net** -webtoepassing een **Web API** -of **Azure API-app** -sjabloon.
 
     ![Een web-API-sjabloon in Visual Studio selecteren](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
-5. Zorg ervoor dat verificatie is ingesteld op **geen verificatie**.
-
-6. Selecteer **OK** om het project te maken.
+1. Zorg ervoor dat verificatie is ingesteld op **geen verificatie**.
+1. Selecteer **OK** om het project te maken.
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Stap 2: Het REST API-eind punt voorbereiden
 
 ### <a name="step-21-add-data-models"></a>Stap 2.1: Gegevens modellen toevoegen
+
 De modellen vertegenwoordigen de invoer claims en uitvoer claim gegevens in uw REST-service. Uw code leest de invoer gegevens door het invoer claim model van een JSON-teken reeks naar een C# object (uw model) te deserialiseren. De ASP.NET Web-API deserialeert het uitvoer claim model automatisch terug naar JSON en schrijft vervolgens de geserialiseerde gegevens naar de hoofd tekst van het HTTP-antwoord bericht.
 
 Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
 
 1. Als Solution Explorer nog niet is geopend, selecteert u**Solution Explorer** **weer geven** > .
-2. Klik in Solution Explorer met de rechtermuisknop op de map **Modellen** en selecteer achtereenvolgens **Toevoegen** en **Klasse**.
+1. Klik in Solution Explorer met de rechtermuisknop op de map **Modellen** en selecteer achtereenvolgens **Toevoegen** en **Klasse**.
 
     ![Menu-item klasse toevoegen geselecteerd in Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
-3. Geef de klasse `InputClaimsModel`een naam en voeg de volgende eigenschappen toe aan `InputClaimsModel` de klasse:
+1. Geef de klasse `InputClaimsModel`een naam en voeg de volgende eigenschappen toe aan `InputClaimsModel` de klasse:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -100,7 +102,7 @@ Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
     }
     ```
 
-4. Maak een nieuw model `OutputClaimsModel`en voeg de volgende eigenschappen toe aan de `OutputClaimsModel` klasse:
+1. Maak een nieuw model `OutputClaimsModel`en voeg de volgende eigenschappen toe aan de `OutputClaimsModel` klasse:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -112,7 +114,7 @@ Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
     }
     ```
 
-5. Maak nog een model `B2CResponseContent`dat u kunt gebruiken om fout berichten over invoer validatie te genereren. Voeg de volgende eigenschappen toe aan `B2CResponseContent` de klasse, geef de ontbrekende verwijzingen op en sla het bestand op:
+1. Maak nog een model `B2CResponseContent`dat u kunt gebruiken om fout berichten over invoer validatie te genereren. Voeg de volgende eigenschappen toe aan `B2CResponseContent` de klasse, geef de ontbrekende verwijzingen op en sla het bestand op:
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -134,23 +136,24 @@ Maak een model dat invoer claims vertegenwoordigt door het volgende te doen:
     ```
 
 ### <a name="step-22-add-a-controller"></a>Stap 2.2: Een controller toevoegen
+
 In de Web-API is een _controller_ een object waarmee HTTP-aanvragen worden verwerkt. De controller retourneert uitvoer claims of, als de voor naam ongeldig is, een HTTP-fout bericht met een conflict.
 
 1. Klik in Solution Explorer met de rechtermuisknop op de map **Controllers** en selecteer achtereenvolgens **Toevoegen** en **Controller**.
 
     ![Een nieuwe controller toevoegen in Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. Selecteer in het venster **steigers toevoegen** de optie **Web-API-controller-leeg**en selecteer vervolgens **toevoegen**.
+1. Selecteer in het venster **steigers toevoegen** de optie **Web-API-controller-leeg**en selecteer vervolgens **toevoegen**.
 
     ![Web-API 2-controller selecteren-leeg in Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
-3. Geef in het venster **controller toevoegen** de naam van de controller **IdentityController**en selecteer vervolgens **toevoegen**.
+1. Geef in het venster **controller toevoegen** de naam van de controller **IdentityController**en selecteer vervolgens **toevoegen**.
 
     ![De naam van de controller in Visual Studio invoeren](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
     Met de steigers maakt u een bestand met de naam *IdentityController.cs* in de map *controllers* .
 
-4. Als het *IdentityController.cs* -bestand nog niet is geopend, dubbelklikt u erop en vervangt u de code in het bestand door de volgende code:
+1. Als het *IdentityController.cs* -bestand nog niet is geopend, dubbelklikt u erop en vervangt u de code in het bestand door de volgende code:
 
     ```csharp
     using Contoso.AADB2C.API.Models;
@@ -204,29 +207,31 @@ In de Web-API is een _controller_ een object waarmee HTTP-aanvragen worden verwe
     ```
 
 ## <a name="step-3-publish-the-project-to-azure"></a>Stap 3: Het project naar Azure publiceren
+
 1. Klik in Solution Explorer met de rechter muisknop op het project **contoso. AADB2C. API** en selecteer vervolgens **publiceren**.
 
     ![Publiceren naar Microsoft Azure App Service met Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
-2. Selecteer **Microsoft Azure app service**in het venster **publiceren** en selecteer vervolgens **publiceren**.
+1. Selecteer **Microsoft Azure app service**in het venster **publiceren** en selecteer vervolgens **publiceren**.
 
     ![Nieuwe Microsoft Azure App Service maken met Visual Studio](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
     Het venster **app service maken** wordt geopend. Hierin maakt u alle benodigde Azure-resources om de ASP.NET-Web-app in azure uit te voeren.
 
-    > [!NOTE]
-    >Zie [een ASP.net-Web-app maken in azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)voor meer informatie over het publiceren.
+    > [!TIP]
+    > Zie [een ASP.net-Web-app maken in azure](../app-service/app-service-web-get-started-dotnet-framework.md)voor meer informatie over het publiceren.
 
-3. Typ in het vak **Web-app-naam** een unieke app-naam (geldige tekens zijn a-z, 0-9 en koppel tekens (-). De URL van de web-app is http://< app_name >. azurewebsites. NET, waarbij *app_name* de naam van uw web-app is. U kunt de automatisch gegenereerde naam accepteren, die uiteraard uniek is.
+1. Typ in het vak **Web-app-naam** een unieke app-naam (geldige tekens zijn a-z, 0-9 en koppel tekens (-). De URL van de web-app is http://< app_name >. azurewebsites. NET, waarbij *app_name* de naam van uw web-app is. U kunt de automatisch gegenereerde naam accepteren, die uiteraard uniek is.
 
     ![De App Service eigenschappen configureren](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Selecteer **maken**om Azure-resources te gaan maken.
+1. Selecteer **maken**om Azure-resources te gaan maken.
     Nadat de ASP.NET-Web-app is gemaakt, wordt deze door de wizard gepubliceerd naar Azure en wordt de app vervolgens gestart in de standaard browser.
 
-6. Kopieer de URL van de web-app.
+1. Kopieer de URL van de web-app.
 
 ## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Stap 4: De nieuwe `loyaltyNumber` claim toevoegen aan het schema van uw TrustFrameworkExtensions. XML-bestand
+
 De `loyaltyNumber` claim is nog niet gedefinieerd in het schema. Een definitie toevoegen in het `<BuildingBlocks>` -element, dat u aan het begin van het bestand *TrustFrameworkExtensions. XML* kunt vinden.
 
 ```xml
@@ -242,6 +247,7 @@ De `loyaltyNumber` claim is nog niet gedefinieerd in het schema. Een definitie t
 ```
 
 ## <a name="step-5-add-a-claims-provider"></a>Stap 5: Een claim provider toevoegen
+
 Elke claim provider moet een of meer technische profielen hebben, die de eind punten en protocollen bepalen die nodig zijn om te communiceren met de claim provider.
 
 Een claim provider kan om verschillende redenen meerdere technische profielen hebben. Er kunnen bijvoorbeeld meerdere technische profielen worden gedefinieerd omdat de claim provider meerdere protocollen ondersteunt, eind punten kunnen verschillende mogelijkheden hebben of kunnen claims bevatten die een groot aantal garantie niveaus hebben. Het kan acceptabel zijn om gevoelige claims vrij te geven in één gebruikers traject, maar niet in een andere.
@@ -269,8 +275,10 @@ Zoek het `<ClaimsProviders>` knoop punt en voeg het volgende XML-fragment toe on
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -297,7 +305,10 @@ Zoek het `<ClaimsProviders>` knoop punt en voeg het volgende XML-fragment toe on
 </ClaimsProvider>
 ```
 
+De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` Geef de wijzigingen op die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Voor meer informatie over het beveiligen van uw REST-Api's voor productie raadpleegt u [beveiligde rest api's met basis verificatie](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) en [beveiligde rest api's met certificaat verificatie](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
+
 ## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Stap 6: Voeg de `loyaltyNumber` claim toe aan uw Relying Party-beleids bestand zodat de claim wordt verzonden naar uw toepassing
+
 Bewerk het bestand *SignUpOrSignIn. xml* RELYING Party (RP) en wijzig het element TechnicalProfile id = "PolicyProfile" om het volgende toe te voegen: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
 Nadat u de nieuwe claim hebt toegevoegd, ziet de Relying Party code er als volgt uit:
@@ -327,19 +338,20 @@ Nadat u de nieuwe claim hebt toegevoegd, ziet de Relying Party code er als volgt
 
 1. In de [Azure Portal](https://portal.azure.com)gaat u naar de [context van uw Azure AD B2C-Tenant](active-directory-b2c-navigate-to-b2c-context.md)en opent u **Azure AD B2C**.
 
-2. Selecteer een **Framework voor identiteits ervaring**.
+1. Selecteer een **Framework voor identiteits ervaring**.
 
-3. Open **alle beleids regels**.
+1. Open **alle beleids regels**.
 
-4. Selecteer **beleid uploaden**.
+1. Selecteer **beleid uploaden**.
 
-5. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
+1. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
 
-6. Upload het bestand TrustFrameworkExtensions. XML en zorg ervoor dat het validatie wordt door gegeven.
+1. Upload het bestand TrustFrameworkExtensions. XML en zorg ervoor dat het validatie wordt door gegeven.
 
-7. Herhaal de vorige stap met het bestand SignUpOrSignIn. XML.
+1. Herhaal de vorige stap met het bestand SignUpOrSignIn. XML.
 
 ## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Stap 8: Het aangepaste beleid testen met behulp van nu uitvoeren
+
 1. Selecteer **Azure AD B2C instellingen**en ga vervolgens naar **identiteits ervaring-Framework**.
 
     > [!NOTE]
@@ -357,7 +369,7 @@ Nadat u de nieuwe claim hebt toegevoegd, ziet de Relying Party code er als volgt
 4. In het vak **naam** typt u een naam (anders dan ' test ').
     Azure AD B2C de gebruiker aan te melden en vervolgens een loyaltyNumber naar uw toepassing te verzenden. Noteer het nummer in deze JWT.
 
-```
+```JSON
 {
   "typ": "JWT",
   "alg": "RS256",
@@ -379,9 +391,16 @@ Nadat u de nieuwe claim hebt toegevoegd, ziet de Relying Party code er als volgt
 ```
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>Beschrijving De volledige beleids bestanden en code downloaden
+
 * Nadat u de walkthrough aan de [slag met aangepast beleid](active-directory-b2c-get-started-custom.md) hebt voltooid, wordt u aangeraden om uw scenario te bouwen met behulp van uw eigen aangepaste beleids bestanden. Voor uw referentie hebben we [voorbeeld beleids bestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)gegeven.
+
 * U kunt de volledige code downloaden van een [voor beeld van een Visual Studio-oplossing voor referentie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/).
 
 ## <a name="next-steps"></a>Volgende stappen
+
+Uw volgende taak is het beveiligen van de REST-API met behulp van basis-of verificatie van client certificaten. Raadpleeg de volgende artikelen voor meer informatie over het beveiligen van uw Api's:
+
 * [Beveilig uw REST API met basis verificatie (gebruikers naam en wacht woord)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [De REST-API beveiligen met client certificaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+
+Zie [Naslag informatie over alle beschik bare elementen in een onderliggend technisch profiel: Het resterende technische profiel](restful-technical-profile.md).

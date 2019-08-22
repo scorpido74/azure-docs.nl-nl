@@ -1,6 +1,6 @@
 ---
-title: Referenties Store in Azure Key Vault | Microsoft Docs
-description: Informatie over het opslaan van referenties voor gegevens die worden gebruikt in een Azure-sleutelkluis die Azure Data Factory automatisch in runtime kunnen ophalen.
+title: Referenties opslaan in Azure Key Vault | Microsoft Docs
+description: Meer informatie over het opslaan van referenties voor gegevens archieven die worden gebruikt in een Azure-sleutel kluis die Azure Data Factory automatisch kan ophalen tijdens runtime.
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -11,31 +11,31 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 71f78685ee5fa340ec22c63e3e7f057bef122474
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 735013046f65a9dba345c52db883df0b114ba7f2
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048513"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892058"
 ---
-# <a name="store-credential-in-azure-key-vault"></a>Store-referentie in Azure Key Vault
+# <a name="store-credential-in-azure-key-vault"></a>Referenties opslaan in Azure Key Vault
 
-Slaat u referenties op voor gegevensarchieven en COMPUTE in een [Azure Key Vault](../key-vault/key-vault-whatis.md). Azure Data Factory worden opgehaald van de referenties bij het uitvoeren van een activiteit die gebruikmaakt van het gegevensarchief/rekenservices er gegevens.
+U kunt referenties voor gegevens archieven en berekeningen opslaan in een [Azure Key Vault](../key-vault/key-vault-whatis.md). Azure Data Factory haalt de referenties op bij het uitvoeren van een activiteit die gebruikmaakt van de gegevens opslag/compute.
 
-Deze functie wordt op dit moment ondersteund door alle activiteitstypen, met uitzondering van aangepaste activiteit. Voor de connectorconfiguratie van de Controleer met name de sectie 'gekoppelde service-eigenschappen' [elk onderwerp connector](copy-activity-overview.md#supported-data-stores-and-formats) voor meer informatie.
+Momenteel ondersteunen alle activiteitstypen behalve aangepaste activiteiten deze functie. Voor de configuratie van de connector raadpleegt u de sectie ' eigenschappen van gekoppelde service ' in [elk onderwerp](copy-activity-overview.md#supported-data-stores-and-formats) van de connector voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze functie is afhankelijk van de identiteit van de data factory die worden beheerd. Ontdek hoe het werkt vanuit [beheerde identiteit voor de Data factory](data-factory-service-identity.md) en zorg ervoor dat uw data factory hebben een gekoppeld.
+Deze functie is afhankelijk van de data factory beheerde identiteit. Meer informatie over hoe het werkt vanuit de [beheerde identiteit voor Data Factory](data-factory-service-identity.md) en om ervoor te zorgen dat uw Data Factory een koppeling hebben.
 
 ## <a name="steps"></a>Stappen
 
-Als u wilt verwijzen naar een referenties die zijn opgeslagen in Azure Key Vault, moet u naar:
+Als u wilt verwijzen naar een referentie die is opgeslagen in Azure Key Vault, moet u het volgende doen:
 
-1. **Ophalen van data factory beheerde identiteit** door de waarde van "beheerde identiteit toepassings-ID gegenereerd samen met uw factory kopiëren. Als u ADF gebruikersinterface ontwerpen, wordt de beheerde identiteit toepassings-ID weergegeven in het venster van Azure Key Vault gekoppelde service maken. u kunt ook het ophalen van Azure-portal verwijzen naar [ophalen gegevensfactory beheerde identiteit](data-factory-service-identity.md#retrieve-managed-identity).
-2. **De beheerde identiteit toegang verlenen tot uw Azure Key Vault.** In uw key vault -> beleid -> toegang toevoegen -> nieuwe zoekopdracht dit beheerde identiteit toepassings-ID te verlenen **ophalen** machtiging in de vervolgkeuzelijst geheime machtigingen. Hiermee kunt deze aangewezen factory voor toegang tot geheim in de sleutelkluis.
-3. **Een gekoppelde service die verwijst naar uw Azure Key Vault maken.** Raadpleeg [gekoppelde service van Azure Key Vault](#azure-key-vault-linked-service).
-4. **Data store gekoppelde service, in welke verwijzing naar de bijbehorende geheime sleutel opgeslagen in kluis maken.** Raadpleeg [verwijzing geheim is opgeslagen in key vault](#reference-secret-stored-in-key-vault).
+1. **Haal Data Factory beheerde identiteit** op door de waarde van de beheerde ID-toepassings-id die samen met uw fabriek is gegenereerd te kopiëren. Als u de gebruikers interface voor ADF-ontwerpen gebruikt, wordt de ID van de beheerde identiteits toepassing weer gegeven in het venster Azure Key Vault gekoppelde service maken. u kunt deze ook ophalen uit Azure Portal. Raadpleeg [Data Factory beheerde identiteit ophalen](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Verleen de beheerde identiteit toegang tot uw Azure Key Vault.** In uw sleutel kluis-> toegangs beleid-> Voeg nieuwe toe > Zoek deze toepassings-ID van de beheerde identiteit in om toestemming te geven in de vervolg keuzelijst geheim machtigingen. Hiermee kan deze toegewezen Factory toegang krijgen tot het geheim in de sleutel kluis.
+3. **Een gekoppelde service maken die verwijst naar uw Azure Key Vault.** Raadpleeg [Azure Key Vault gekoppelde service](#azure-key-vault-linked-service).
+4. **Maak een gekoppelde Data Store-service, waarin wordt verwezen naar het corresponderende geheim dat is opgeslagen in de sleutel kluis.** Raadpleeg het [referentie geheim dat is opgeslagen in de sleutel kluis](#reference-secret-stored-in-key-vault).
 
 ## <a name="azure-key-vault-linked-service"></a>Azure Key Vault gekoppelde service
 
@@ -43,20 +43,20 @@ De volgende eigenschappen worden ondersteund voor Azure Key Vault gekoppelde ser
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **AzureKeyVault**. | Ja |
-| baseUrl | De Azure Key Vault-URL opgeven. | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **AzureKeyVault**. | Ja |
+| baseUrl | Geef de Azure Key Vault URL op. | Ja |
 
-**Met behulp van gebruikersinterface ontwerpen:**
+**Gebruikers interface voor ontwerpen gebruiken:**
 
-Klik op **verbindingen** -> **gekoppelde Services** ->  **+ nieuw** -zoek naar "Azure Key Vault" >:
+Klik op **verbindingen** -> **gekoppelde services** ->  **+ Nieuw** -> zoek naar ' Azure Key Vault ':
 
-![Zoeken in Azure Sleutelkluis](media/store-credentials-in-key-vault/search-akv.png)
+![Azure zoeken](media/store-credentials-in-key-vault/search-akv.png)
 
-Selecteer de ingerichte Azure Key Vault waarin uw referenties worden opgeslagen. U kunt doen **testverbinding** om te controleren of uw AKV verbinding is geldig. 
+Selecteer de ingerichte Azure Key Vault waar uw referenties worden opgeslagen. U kunt de **verbinding testen** om er zeker van te zijn dat uw Azure-verbinding geldig is. 
 
-![Configureren van Azure Sleutelkluis](media/store-credentials-in-key-vault/configure-akv.png)
+![Azure configureren](media/store-credentials-in-key-vault/configure-akv.png)
 
-**JSON-voorbeeld:**
+**JSON-voor beeld:**
 
 ```json
 {
@@ -70,27 +70,27 @@ Selecteer de ingerichte Azure Key Vault waarin uw referenties worden opgeslagen.
 }
 ```
 
-## <a name="reference-secret-stored-in-key-vault"></a>Naslaginformatie over geheim is opgeslagen in key vault
+## <a name="reference-secret-stored-in-key-vault"></a>Referentie geheim opgeslagen in de sleutel kluis
 
-De volgende eigenschappen worden ondersteund wanneer u een veld in de gekoppelde service verwijst naar een key vault-geheim configureren:
+De volgende eigenschappen worden ondersteund wanneer u een veld configureert in een gekoppelde service die naar een sleutel kluis geheim verwijst:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van het veld moet worden ingesteld op: **AzureKeyVaultSecret**. | Ja |
-| secretName | De naam van het geheim in azure key vault. | Ja |
-| secretVersion | De versie van het geheim in azure key vault.<br/>Indien niet opgegeven, gebruikt deze altijd de nieuwste versie van de geheime sleutel.<br/>Als u opgeeft, klikt u vervolgens vastprikken het naar de opgegeven versie.| Nee |
-| store | Verwijst naar een Azure Key Vault gekoppelde service die u gebruikt voor het opslaan van de referentie. | Ja |
+| Type | De eigenschap type van het veld moet worden ingesteld op: **AzureKeyVaultSecret**. | Ja |
+| secretName | De naam van het geheim in Azure Key Vault. | Ja |
+| secretVersion | De versie van het geheim in Azure Key Vault.<br/>Als u niets opgeeft, wordt altijd de meest recente versie van het geheim gebruikt.<br/>Als deze is opgegeven, wordt de opgegeven versie weer gegeven.| Nee |
+| store | Verwijst naar een Azure Key Vault gekoppelde service die u gebruikt om de referentie op te slaan. | Ja |
 
-**Met behulp van gebruikersinterface ontwerpen:**
+**Gebruikers interface voor ontwerpen gebruiken:**
 
-Selecteer **Azure Key Vault** voor geheime velden tijdens het maken van de verbinding met uw gegevens gegevensarchief/rekenservices. Selecteer de ingerichte Azure Key Vault gekoppelde Service en geef de **geheime naam**. U kunt eventueel ook een geheime versie opgeven. 
+Selecteer **Azure Key Vault** voor geheime velden tijdens het maken van de verbinding met uw gegevens archief/compute. Selecteer de ingerichte Azure Key Vault gekoppelde service en geef de **geheime naam**op. U kunt eventueel ook een geheime versie opgeven. 
 
 >[!TIP]
->Voor connectors met behulp van de verbindingsreeks in de gekoppelde service, zoals SQL Server, Blob-opslag, enz., kunt u alleen de geheime velden bijvoorbeeld wachtwoord opslaan in Azure Sleutelkluis, of voor het opslaan van de volledige verbindingsreeks in Azure Sleutelkluis. U vindt beide opties in de gebruikersinterface.
+>Voor connectors die gebruikmaken van connection string in gekoppelde service, zoals SQL Server, Blob Storage, enzovoort, kunt u kiezen om alleen het geheime veld op te slaan, bijvoorbeeld een wacht woord in azure, of om de volledige connection string op te slaan in Azure. U kunt beide opties vinden in de gebruikers interface.
 
-![AKV geheim configureren](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![Azure-geheim configureren](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
-**JSON-voorbeeld: (Zie de sectie 'wachtwoord')**
+**JSON-voor beeld: (Zie de sectie wacht woord)**
 
 ```json
 {

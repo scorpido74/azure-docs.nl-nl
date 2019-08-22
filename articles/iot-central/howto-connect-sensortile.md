@@ -1,6 +1,6 @@
 ---
-title: Een apparaat SensorTile.box verbinden met uw Azure IoT Central-toepassing | Microsoft Docs
-description: Leer hoe u een apparaat SensorTile.box verbinden met uw Azure IoT Central-toepassing als een apparaat-ontwikkelaar.
+title: Een SensorTile. Box-apparaat verbinden met uw Azure IoT Central-toepassing | Microsoft Docs
+description: Als ontwikkelaar van een apparaat leert u hoe u een SensorTile. Box-apparaat verbindt met uw Azure IoT Central-toepassing.
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 04/24/2019
@@ -8,79 +8,81 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 8c1b4a4ab834b2203a7e0b6e4e9e366c3fc38774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce0c5abe6e89094623c07afa2d1c85903e0e7ee7
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472193"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877437"
 ---
-# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile.box apparaat verbinden met uw Azure IoT Central-toepassing
+# <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>SensorTile. Box-apparaat verbinden met uw Azure IoT Central-toepassing
 
-Dit artikel wordt beschreven hoe u, als een apparaat-ontwikkelaar, een SensorTile.box apparaat verbinden met uw Microsoft Azure IoT Central-toepassing.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+In dit artikel wordt beschreven hoe u als een ontwikkelaar van een apparaat een SensorTile. Box-apparaat verbindt met uw Microsoft Azure IoT Central toepassing.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u wilt de stappen in dit artikel hebt voltooid, moet u de volgende bronnen:
+U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
-* Een apparaat SensorTile.box. Zie voor meer informatie, [SensorTile.box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html).
-* De ST BLE Sensor-app op uw Android-apparaat is geïnstalleerd, kunt u [downloaden vanaf hier](https://play.google.com/store/apps/details?id=com.st.bluems). Voor meer informatie naar: [ST KELEN Sensor](https://www.st.com/stblesensor)
-* Een Azure IoT Central-toepassing gemaakt op basis van de **DevKits** toepassingssjabloon. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
-* Toevoegen de **SensorTile.box** apparaat sjabloon in uw IoT Central-toepassing, recentst de **Apparaatsjablonen** pagina en klik op **+ nieuw**, en selecteer de **SensorTile.box** sjabloon.
+* Een SensorTile. Box-apparaat. Zie [SensorTile. Box](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mems-motion-sensor-eval-boards/steval-mksbox1v1.html)voor meer informatie.
+* De ST-sensor-app die op uw Android-apparaat is geïnstalleerd, kunt u [hier downloaden](https://play.google.com/store/apps/details?id=com.st.bluems). Ga voor meer informatie naar: [STe-sensor](https://www.st.com/stblesensor)
+* Een Azure IoT Central-toepassing gemaakt op basis van de toepassings sjabloon **DevKits** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+* Voeg de sjabloon **SensorTile. Box** device toe aan uw IOT Central-toepassing door naar de pagina met **Apparaatinstellingen** te gaan en op **+ Nieuw**te klikken en de sjabloon **SensorTile. Box** te selecteren.
 
-### <a name="get-your-device-connection-details"></a>Uw apparaat Verbindingsdetails ophalen
+### <a name="get-your-device-connection-details"></a>De verbindings gegevens van uw apparaat ophalen
 
-Voeg in uw Azure IoT Central-toepassing een echt apparaat uit de **SensorTile.box** apparaat sjabloon en maak een notitie van de verbindingsgegevens van apparaat: **Scope-ID**, **apparaat-ID**, en **primaire sleutel**:
+Voeg in uw Azure IoT Central-toepassing een echt apparaat toe vanuit de sjabloon **SensorTile. Box** en noteer de details van de apparaatgegevens: **Bereik-id**, **apparaat-id**en **primaire sleutel**:
 
-1. Een apparaat uit Device Explorer toevoegen. Selecteer **+ Nieuw > echte** om toe te voegen een echt apparaat.
+1. Een apparaat toevoegen uit Device Explorer. Selecteer **+ nieuw > Real** om een echt apparaat toe te voegen.
 
-    * Voer een kleine **apparaat-ID**, of gebruik de voorgestelde **apparaat-ID**.
-    * Voer een **apparaatnaam**, of de voorgestelde naam gebruiken
+    * Voer een **apparaat-id**in kleine letters in of gebruik de voorgestelde **apparaat-id**.
+    * Voer een **naam**voor het apparaat in of gebruik de voorgestelde naam
 
     ![Apparaat toevoegen](media/howto-connect-sensortile/real-device.png)
 
-1. Het apparaat verbinding om informatie te krijgen, **bereik-ID**, **apparaat-ID**, en **primaire sleutel**, selecteer **Connect** op de Apparaatpagina.
+1. Selecteer **verbinding maken** op de pagina apparaat om de verbindings Details van het apparaat, de **scope-id**, de **apparaat-id**en de **primaire sleutel**op te halen.
 
     ![Verbindingsdetails](media/howto-connect-sensortile/connect-device.png)
 
-1. Maak een notitie van de verbindingsgegevens. U bent tijdelijk niet verbonden met het internet wanneer u uw apparaat DevKit in de volgende stap voorbereiden.
+1. Noteer de verbindings gegevens. U hebt tijdelijk geen verbinding meer met Internet wanneer u uw DevKit-apparaat voorbereidt in de volgende stap.
 
-## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>De SensorTile.box met de mobiele toepassing instellen
+## <a name="set-up-the-sensortilebox-with-the-mobile-application"></a>Het SensorTile. Box instellen met de mobiele toepassing
 
-In deze sectie leert u hoe u de firmware van toepassing op het apparaat te pushen. U vervolgens de apparaatgegevens naar IoT Central verzenden via de mobiele app van ST BLE Sensor connectiviteit van de Bluetooth-laag energieverbruik (inschakelen).
+In deze sectie leert u hoe u de firmware van de toepassing naar het apparaat kunt pushen. U verstuurt vervolgens hoe u de apparaatgegevens verzendt naar IoT Central via de mobiele app van de ST-trein sensor met behulp van een verbinding met Bluetooth-laag energie verbruik.
 
-1. Open de app ST BLE Sensor en druk op de **een nieuwe app maken** knop.
+1. Open de ST-sensor-app en klik op de knop **een nieuwe app maken** .
 
     ![App maken](media/howto-connect-sensortile/create-app.png)
 
-1. Selecteer de **Barometer** toepassing.
-1. Druk op de knop voor uploaden.
+1. Selecteer de toepassing **barometer** .
+1. Druk op de knop uploaden.
 
     ![Barometer uploaden](media/howto-connect-sensortile/barometer-upload.png)
 
-1. Druk op de knop afspelen die zijn gekoppeld aan uw SensorTile.box.
-1. Wanneer het proces voltooid is, streamt de SensorTile.box de temperatuur, druk te verlichten en vochtigheid via inschakelen.
+1. Druk op de afspeel knop die is gekoppeld aan uw SensorTile. Box.
+1. Wanneer het proces is voltooid, stromen de SensorTile. Box de Tempe ratuur, druk en lucht vochtigheid over de handel.
 
-## <a name="connect-the-sensortilebox-to-the-cloud"></a>Verbinding maken met de SensorTile.box naar de cloud
+## <a name="connect-the-sensortilebox-to-the-cloud"></a>De SensorTile. Box verbinden met de Cloud
 
-In deze sectie leert u hoe u de SensorTile.box verbinden met de mobiele toepassing, en verbinding maken met de mobiele toepassing in de cloud.
+In deze sectie leert u hoe u de SensorTile. box verbindt met de mobiele toepassing en hoe u de mobiele toepassing verbindt met de Cloud.
 
-1. Gebruik het menu links, selecteer de **Cloud logboekregistratie** knop.
+1. Selecteer de knop voor **Cloud logboek registratie** in het menu links.
 
-    ![Cloud-logboekregistratie](media/howto-connect-sensortile/cloud-logging.png)
+    ![Cloud logboek registratie](media/howto-connect-sensortile/cloud-logging.png)
 
-1. Selecteer **Azure IoT Central** als cloudprovider.
-1. Plaats de apparaat-ID en Scope-ID die eerder zijn vastgesteld.
+1. Selecteer **Azure IOT Central** als de Cloud provider.
+1. Voeg de apparaat-ID en de scope-ID in die eerder zijn vermeld.
 
     ![Referenties](media/howto-connect-sensortile/credentials.png)
 
-1. Selecteer de **Toepassingssleutel** keuzerondje.
-1. Klik op **Connect** en selecteert u de telemetrische gegevens die u wilt uploaden.
-1. Na een paar seconden, de gegevens worden weergegeven op het dashboard IoT Central.
+1. Selecteer het keuze rondje voor de **toepassings sleutel** .
+1. Klik op **verbinden** en selecteer de telemetriegegevens die u wilt uploaden.
+1. Na enkele seconden worden de gegevens weer gegeven in het dash board van de IoT Central-toepassing.
 
-## <a name="sensortilebox-device-template-details"></a>SensorTile.box sjabloon Apparaatdetails
+## <a name="sensortilebox-device-template-details"></a>Details van SensorTile. Box-Device-sjabloon
 
-Een toepassing gemaakt op basis van de sjabloon SensorTile.box apparaat met de volgende kenmerken:
+Een toepassing die is gemaakt op basis van de SensorTile. Box-sjabloon met de volgende kenmerken:
 
 ### <a name="telemetry"></a>Telemetrie
 
@@ -93,15 +95,15 @@ Een toepassing gemaakt op basis van de sjabloon SensorTile.box apparaat met de v
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
+| versnellings meter | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
-| gyroscopeX     | dps   | -3276   | 3276    | 1              |
-| gyroscopeY     | dps   | -3276   | 3276    | 1              |
-| gyroscopeZ     | dps   | -3276   | 3276    | 1              |
+| gyroscopeX     | DPS   | -3276   | 3276    | 1              |
+| gyroscopeY     | DPS   | -3276   | 3276    | 1              |
+| gyroscopeZ     | DPS   | -3276   | 3276    | 1              |
 | FFT_X     |    |    |     |               |
 | FFT_Y     |    |    |     |               |
 | FFT_Z     |    |    |     |               |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u hebt geleerd hoe u een SensorTile.box verbinden met uw Azure IoT Central-toepassing, de voorgestelde volgende stap is te leren [over het instellen van een sjabloon aangepast apparaat](howto-set-up-template.md) voor uw eigen IoT-apparaat.
+Nu u hebt geleerd hoe u een SensorTile. box verbindt met uw Azure IoT Central-toepassing, is de voorgestelde volgende stap informatie [over het instellen van een aangepaste apparaatprofiel](howto-set-up-template.md) voor uw eigen IOT-apparaat.

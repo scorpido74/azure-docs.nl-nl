@@ -5,18 +5,18 @@ author: rkmanda
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 32caebf8ea216050427f4400102cf56ffc657b55
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875248"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876899"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub hoge Beschik baarheid en herstel na nood geval
 
-Als eerste stap voor het implementeren van een robuuste IoT-oplossing, moeten architecten, ontwikkel aars en zakelijke eigen aren de doel stellingen van de uptime definiëren voor de oplossingen die ze bouwen. Deze doel stellingen kunnen voornamelijk worden gedefinieerd op basis van specifieke zakelijke doel stellingen voor elk scenario. In deze context wordt in het artikel [technische richt lijnen voor Azure-bedrijfs continuïteit](https://docs.microsoft.com/azure/architecture/resiliency/) beschreven, waarmee u kunt denken over bedrijfs continuïteit en herstel na nood gevallen. Het document [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](https://msdn.microsoft.com/library/dn251004.aspx) biedt architectuur richtlijnen voor strategieën voor Azure-toepassingen om hoge beschik BAARHEID (ha) en herstel na nood gevallen (Dr) te kunnen uitvoeren.
+Als eerste stap voor het implementeren van een robuuste IoT-oplossing, moeten architecten, ontwikkel aars en zakelijke eigen aren de doel stellingen van de uptime definiëren voor de oplossingen die ze bouwen. Deze doel stellingen kunnen voornamelijk worden gedefinieerd op basis van specifieke zakelijke doel stellingen voor elk scenario. In deze context wordt in het artikel [technische richt lijnen voor Azure-bedrijfs continuïteit](https://docs.microsoft.com/azure/architecture/resiliency/) beschreven, waarmee u kunt denken over bedrijfs continuïteit en herstel na nood gevallen. Het document [nood herstel en hoge Beschik baarheid voor Azure-toepassingen](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery) biedt architectuur richtlijnen voor strategieën voor Azure-toepassingen om hoge beschik BAARHEID (ha) en herstel na nood gevallen (Dr) te kunnen uitvoeren.
 
 In dit artikel worden de HA-en DR-functies beschreven die specifiek door de IoT Hub-service worden aangeboden. De algemene gebieden die in dit artikel worden besproken, zijn:
 
@@ -41,7 +41,7 @@ De IoT Hub-service voorziet in binnen regio HA door redundantie in bijna alle la
 
 Er kunnen zeldzame situaties optreden wanneer een Data Center uitvallende storingen veroorzaakt door stroom storingen of andere storingen met betrekking tot fysieke activa. Dergelijke gebeurtenissen zijn zeldzame gevallen waarin de functie voor de intra regio HA die hierboven wordt beschreven wellicht niet altijd meer helpt. IoT Hub biedt meerdere oplossingen voor het herstellen van dergelijke uitgebreide storingen. 
 
-De herstel opties die beschikbaar zijn voor klanten in een dergelijke situatie zijn ' door micro soft geïnitieerde failover ' en ' hand matige failover '. Het belangrijkste verschil tussen de twee is dat micro soft de eerste initieert en de gebruiker initieert de laatste. Daarnaast biedt hand matige failover een lagere herstel tijd (RTO) in vergelijking met de optie voor door micro soft geïnitieerde failover. De specifieke Rto's die bij elke optie worden aangeboden, worden besproken in de volgende secties. Wanneer een van deze opties voor het uitvoeren van een failover van een IoT-hub vanuit de primaire regio wordt uitgevoerd, wordt de hub volledig functioneel in de bijbehorende [Azure geo-gekoppelde regio](../best-practices-availability-paired-regions.md).
+De herstel opties die beschikbaar zijn voor klanten in een dergelijke situatie, zijn door [micro soft geïnitieerde failover](#microsoft-initiated-failover) en [hand matige failover](#manual-failover). Het belangrijkste verschil tussen de twee is dat micro soft de eerste initieert en de gebruiker initieert de laatste. Daarnaast biedt hand matige failover een lagere herstel tijd (RTO) in vergelijking met de optie voor door micro soft geïnitieerde failover. De specifieke Rto's die bij elke optie worden aangeboden, worden besproken in de volgende secties. Wanneer een van deze opties voor het uitvoeren van een failover van een IoT-hub vanuit de primaire regio wordt uitgevoerd, wordt de hub volledig functioneel in de bijbehorende [Azure geo-gekoppelde regio](../best-practices-availability-paired-regions.md).
 
 Beide failover-opties bieden de volgende herstel punt doelstellingen (Rpo's):
 
@@ -55,26 +55,24 @@ Beide failover-opties bieden de volgende herstel punt doelstellingen (Rpo's):
 | Bewakings berichten voor bewerkingen |Alle ongelezen berichten gaan verloren |
 | Feedback berichten van Cloud naar apparaat |Alle ongelezen berichten gaan verloren |
 
-<sup>1</sup> Cloud-naar-apparaat-berichten en bovenliggende taken worden niet hersteld als onderdeel van een hand matige failover in de preview-versie van deze functie.
+<sup>1</sup> Cloud-naar-apparaat-berichten en bovenliggende taken worden niet hersteld als onderdeel van een hand matige failover.
 
-Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen van het apparaat en de back-end-toepassingen verwacht te blijven werken zonder dat hiervoor hand matige interventie nodig is.
+Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen van het apparaat en de back-end-toepassingen verwacht te blijven werken zonder dat hiervoor hand matige interventie nodig is. Dit betekent dat uw apparaat-naar-Cloud-berichten moeten blijven werken en dat het hele REGI ster van het apparaat intact is. Gebeurtenissen die via Event Grid worden gegenereerd, kunnen worden gebruikt via dezelfde abonnement (en) die eerder zijn geconfigureerd, mits deze Event Grid abonnementen nog steeds beschikbaar zijn.
 
 > [!CAUTION]
 > - De Event hub-compatibele naam en het eind punt van het eind punt van de IoT Hub ingebouwde gebeurtenissen na een failover wijzigen. Bij het ontvangen van telemetriegegevens van het ingebouwde eind punt met behulp van de Event Hub client of de gebeurtenis processor host, moet u [de Connection String IOT hub gebruiken](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) om de verbinding tot stand te brengen. Zo zorgt u ervoor dat uw back-end-toepassingen blijven werken zonder dat er hand matige interventie post-failover is vereist. Als u de Event hub-compatibele naam en het eind punt in uw back-end-toepassing rechtstreeks gebruikt, moet u de toepassing opnieuw configureren door [de nieuwe event hub-compatibele naam en het eind punt na de](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) failover op te halen om de bewerkingen voort te zetten.
 >
-> - Na een failover kunnen de gebeurtenissen die via Event Grid worden gegenereerd, worden gebruikt via dezelfde abonnement (en) die eerder zijn geconfigureerd, zolang deze Event Grid abonnementen nog steeds beschikbaar zijn.
->
 > - Bij het door sturen naar Blob-opslag wordt aangeraden om de blobs in te schrijven en vervolgens te herhalen, om ervoor te zorgen dat alle containers worden gelezen zonder dat er aannames van de partitie worden gemaakt. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. Zie [route ring naar Blob Storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage)voor meer informatie over het opsommen van de lijst met blobs.
 
-### <a name="microsoft-initiated-failover"></a>Door micro soft geïnitieerde failover
+## <a name="microsoft-initiated-failover"></a>Door micro soft geïnitieerde failover
 
 Door micro soft geïnitieerde failover wordt door micro soft in zeldzame gevallen uitgevoerd om alle IoT-hubs te failoveren vanuit een betrokken regio naar de overeenkomstige geografische paar regio. Dit proces is een standaard optie (geen manier om gebruikers te kiezen) en vereist geen tussen komst van de gebruiker. Micro soft behoudt zich het recht voor om te bepalen wanneer deze optie wordt uitgeoefend. Dit mechanisme heeft geen toestemming van een gebruiker voor het uitvoeren van een failover van de gebruiker. Failover die door micro soft is gestart, heeft een beoogde herstel tijd (RTO) van 2-26 uur. 
 
 De grote RTO is omdat micro soft de failover-bewerking moet uitvoeren namens alle betrokken klanten in die regio. Als u een minder kritieke IoT-oplossing gebruikt die zich ongeveer een dag bevindt, is het raadzaam dat u een afhankelijkheid neemt van deze optie om te voldoen aan de algemene doel stellingen voor herstel na nood gevallen voor uw IoT-oplossing. De totale tijd dat runtime-bewerkingen volledig operationeel worden zodra dit proces wordt geactiveerd, wordt beschreven in de sectie ' te herstellen tijdstip '.
 
-### <a name="manual-failover-preview"></a>Hand matige failover (preview-versie)
+## <a name="manual-failover"></a>Handmatige failover
 
-Als de doel stellingen van uw bedrijf niet voldoen aan de RTO die door micro soft is geïnitieerd voor failover, kunt u het beste hand matige failover gebruiken om het failoverproces zelf te activeren. De RTO die deze optie gebruikt, kan een wille keurige periode van tien minuten tot enkele uren zijn. De RTO is momenteel een functie van het aantal apparaten dat is geregistreerd voor de IoT hub-instantie waarvoor failover is uitgevoerd. U kunt verwachten dat de RTO voor een hub die ongeveer 100.000 apparaten host, zich in de indicatieve van 15 minuten bevindt. De totale tijd dat runtime-bewerkingen volledig operationeel worden zodra dit proces wordt geactiveerd, wordt beschreven in de sectie ' te herstellen tijdstip '.
+Als de doel stellingen van uw bedrijf niet voldoen aan de RTO die door micro soft is gestart, kunt u een hand matige failover uitvoeren om het failoverproces zelf te activeren. De RTO die deze optie gebruikt, kan een wille keurige periode van tien minuten tot enkele uren zijn. De RTO is momenteel een functie van het aantal apparaten dat is geregistreerd voor de IoT hub-instantie waarvoor failover is uitgevoerd. U kunt verwachten dat de RTO voor een hub die ongeveer 100.000 apparaten host, zich in de indicatieve van 15 minuten bevindt. De totale tijd dat runtime-bewerkingen volledig operationeel worden zodra dit proces wordt geactiveerd, wordt beschreven in de sectie ' te herstellen tijdstip '.
 
 De optie hand matige failover is altijd beschikbaar voor gebruik, ongeacht of er sprake is van uitval tijd van de primaire regio. Daarom kan deze optie mogelijk worden gebruikt voor het uitvoeren van geplande failovers. Een voor beeld van het gebruik van geplande failovers is het uitvoeren van periodieke failover-oefeningen. Een waarschuwing dat een geplande failover-bewerking resulteert in een downtime voor de hub gedurende de periode die is gedefinieerd door de RTO voor deze optie, en resulteert ook in een gegevens verlies zoals gedefinieerd in de bovenstaande tabel RPO. U kunt overwegen om een test IoT hub-exemplaar in te stellen om de optie voor de geplande failover regel matig uit te voeren, zodat u uw end-to-end-oplossingen optimaal kunt benutten wanneer een echte nood situatie optreedt.
 
@@ -83,18 +81,18 @@ De optie hand matige failover is altijd beschikbaar voor gebruik, ongeacht of er
 >
 > - Hand matige failover mag niet worden gebruikt als mechanisme voor het permanent migreren van uw hub tussen de met Azure geografische gekoppelde regio's. Dit zou een verhoogde latentie veroorzaken voor de bewerkingen die worden uitgevoerd op de hub van apparaten die zich in de oude primaire regio bevinden.
 
-### <a name="failback"></a>Failback
+## <a name="failback"></a>Failback
 
 Het is niet mogelijk om een back-up te maken van de oude primaire regio door de failover-actie nog een keer te activeren. Als de oorspronkelijke failoverbewerking werd uitgevoerd om een uitgebreide onderbreking in de oorspronkelijke primaire regio te herstellen, wordt aangeraden om de hub terug te zetten naar de oorspronkelijke locatie wanneer de locatie is hersteld van de onderbrekings situatie.
 
 > [!IMPORTANT]
 > - Gebruikers mogen alleen twee geslaagde failovers en twee geslaagde failback-bewerkingen per dag uitvoeren.
 >
-> - Terug naar back-failover/failback-bewerkingen zijn niet toegestaan. Gebruikers moeten één uur wachten tussen deze bewerkingen.
+> - Terug naar back-failover/failback-bewerkingen zijn niet toegestaan. U moet één uur wachten tussen deze bewerkingen.
 
-### <a name="time-to-recover"></a>Tijd om te herstellen
+## <a name="time-to-recover"></a>Tijd om te herstellen
 
-Hoewel de FQDN (en dus de connection string) van de IoT hub-instantie dezelfde post-failover blijven, wordt het onderliggende IP-adres gewijzigd. Daarom kan de algemene tijd voor het uitvoeren van runtime-bewerkingen ten opzichte van uw IoT hub-exemplaar volledig operationeel zijn nadat het failover-proces is geactiveerd, met behulp van de volgende functie.
+Hoewel de FQDN (en dus de connection string) van de IoT hub-instantie dezelfde post-failover blijft, verandert het onderliggende IP-adres. Daarom kan de algemene tijd voor het uitvoeren van runtime-bewerkingen ten opzichte van uw IoT hub-exemplaar volledig operationeel zijn nadat het failover-proces is geactiveerd, met behulp van de volgende functie.
 
 Tijd voor herstel = RTO [10 min-2 uur voor hand matige failover | 2-26 uur voor door micro soft geïnitieerde failover] + DNS-doorgifte vertraging + tijd die door de client toepassing wordt gebruikt om alle in cache opgeslagen IoT Hub IP-adressen te vernieuwen.
 
@@ -128,12 +126,11 @@ Hier volgt een samen vatting van de HA/DR-opties die in dit artikel worden gepre
 | HA/DR-optie | RTO | RPO | Is hand matige interventie vereist? | Implementatie complexiteit | Extra kosten impact|
 | --- | --- | --- | --- | --- | --- |
 | Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|Nee|Geen|Geen|
-| Hand matige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
+| Handmatige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
 | Kruis regio HA |< 1 min|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|Nee|Hoog|> 1x de kosten van 1 IoT hub|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg deze koppelingen voor meer informatie over Azure IoT Hub:
-
-* [Aan de slag met IoT hubs (Quick Start)](quickstart-send-telemetry-dotnet.md)
 * [Wat is Azure IoT Hub?](about-iot-hub.md)
+* [Aan de slag met IoT hubs (Quick Start)](quickstart-send-telemetry-dotnet.md)
+* [Zelfstudie: Hand matige failover uitvoeren voor een IoT-hub](tutorial-manual-failover.md)

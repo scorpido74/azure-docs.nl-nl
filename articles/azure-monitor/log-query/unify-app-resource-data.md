@@ -1,6 +1,6 @@
 ---
-title: Lever een geïntegreerde ervaring meerdere Azure Monitor Application Insights-resources | Microsoft Docs
-description: Dit artikel bevat informatie over het gebruik van een functie in Azure controleren logboeken naar meerdere Application Insights-resources opvragen en visualiseren van gegevens.
+title: Meerdere Azure Monitor Application Insights resources samen voegen | Microsoft Docs
+description: In dit artikel vindt u informatie over het gebruik van een functie in Azure Monitor logboeken voor het opvragen van meerdere Application Insights resources en het visualiseren van die gegevens.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,27 +12,34 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 190b7f15a8ae0a5b9472188129f7116050fc831f
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466839"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650141"
 ---
-# <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Lever een geïntegreerde ervaring meerdere Azure Monitor Application Insights-resources 
-In dit artikel wordt beschreven hoe u query's uitvoeren en Bekijk alle uw Application Insights toepassing logboekgegevens op één plek, zelfs wanneer ze zich in verschillende Azure-abonnementen, als vervanging voor de afschaffing van de Application Insights-Connector. Het aantal resources Application Insights-resources die u in één query opnemen kunt is beperkt tot 100.  
+# <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Meerdere Azure Monitor Application Insights resources samen voegen 
+In dit artikel wordt beschreven hoe u al uw Application Insights logboek gegevens op één plek kunt opvragen en weer geven, zelfs wanneer ze zich in verschillende Azure-abonnementen bevinden, als vervanging voor de afschaffing van de Application Insights-connector. Het aantal Application Insights resources dat u in één query kunt toevoegen, is beperkt tot 100.
 
-## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Aanbevolen benadering query uitvoeren op meerdere Application Insights-resources 
-Aanbieding meerdere Application Insights-resources in een query kan worden omslachtig en moeilijk te onderhouden. U kunt in plaats daarvan gebruikmaken van functie zodat deze de querylogica scheiden van de toepassingen scopes.  
+## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Aanbevolen benadering voor het opvragen van meerdere Application Insights resources 
+Het weer geven van meerdere Application Insights resources in een query kan lastig en moeilijk te onderhouden zijn. In plaats daarvan kunt u gebruikmaken van de functie voor het scheiden van de query logica van de scopes van de toepassing.  
 
-In dit voorbeeld laat zien hoe u kunt meerdere Application Insights-resources controleren en visualiseren van het aantal mislukte aanvragen met de toepassingsnaam. Voordat u begint, moet u deze query uitvoeren in de werkruimte die is verbonden met Application Insights-resources om de lijst met verbonden toepassingen: 
+In dit voor beeld ziet u hoe u meerdere Application Insights resources kunt bewaken en het aantal mislukte aanvragen op toepassings naam visualiseren. Voordat u begint, voert u deze query uit in de werk ruimte die is verbonden met Application Insights resources om de lijst met verbonden toepassingen te verkrijgen: 
 
 ```
 ApplicationInsights
 | summarize by ApplicationName
 ```
 
-Maak een functie met behulp van de operator union met de lijst met toepassingen, en sla de query in uw werkruimte als functie met de alias *applicationsScoping*.  
+Maak een functie met behulp van de operator Union met de lijst met toepassingen en sla de query vervolgens op in uw werk ruimte als functie met de alias *applicationsScoping*. 
+
+U kunt de vermelde toepassingen op elk gewenst moment in de portal wijzigen door naar query Verkenner in uw werk ruimte te gaan en de functie te selecteren die u wilt bewerken en vervolgens `SavedSearch` op te slaan, of met de Power shell-cmdlet. 
+
+>[!NOTE]
+>Deze methode kan niet worden gebruikt met logboek waarschuwingen omdat de toegangs validatie van de resources van de waarschuwings regel, inclusief werk ruimten en toepassingen, wordt uitgevoerd tijdens het maken van de waarschuwing. Het toevoegen van nieuwe resources aan de functie nadat het maken van de waarschuwing niet wordt ondersteund. Als u de functie voor het bereik van resources in logboek waarschuwingen wilt gebruiken, moet u de waarschuwings regel in de portal of met een resource manager-sjabloon bewerken om de resources binnen het bereik bij te werken. U kunt ook de lijst met resources opnemen in de waarschuwings query voor Logboeken.
+
+De `withsource= SourceApp` opdracht voegt een kolom toe aan de resultaten die de toepassing aanduidt die het logboek heeft verzonden. De operator parse is optioneel in dit voor beeld en wordt gebruikt om de toepassings naam op te halen uit de eigenschap SourceApp. 
 
 ```
 union withsource=SourceApp 
@@ -44,14 +51,7 @@ app('Contoso-app5').requests
 | parse SourceApp with * "('" applicationName "')" *  
 ```
 
->[!NOTE]
->U kunt de vermelde toepassingen op elk gewenst moment in de portal wijzigen door te gaan naar Query explorer in uw werkruimte en het selecteren van de functie voor het bewerken en vervolgens op te slaan of met behulp van de `SavedSearch` PowerShell-cmdlet. De `withsource= SourceApp` opdracht voegt een kolom aan de resultaten die de toepassing Hiermee wordt aangegeven dat het logboek verzonden. 
->
->De query gebruikt Application Insights-schema, maar de query wordt uitgevoerd in de werkruimte, omdat de functie applicationsScoping de gegevensstructuur van Application Insights retourneert. 
->
->De operator parseren is optioneel in dit voorbeeld, naam van de toepassing van de eigenschap SourceApp worden uitgepakt. 
-
-U bent nu klaar voor gebruik van applicationsScoping-functie in de query meerdere bronnen:  
+U bent nu klaar om de functie applicationsScoping in de cross-resource query te gebruiken:  
 
 ```
 applicationsScoping 
@@ -62,17 +62,17 @@ applicationsScoping
 | render timechart
 ```
 
-De functiealias retourneert de samenvoeging van de aanvragen van de gedefinieerde toepassingen. De query en filters voor mislukte aanvragen en de trends visualiseert door toepassing.
+De query maakt gebruik van Application Insights schema, hoewel de query wordt uitgevoerd in de werk ruimte, omdat de functie applicationsScoping de Application Insights gegevens structuur retourneert. De functie alias retourneert de samen voeging van de aanvragen van alle gedefinieerde toepassingen. De query filtert vervolgens op mislukte aanvragen en visualiseert de trends op basis van de toepassing.
 
-![Voorbeeld van de resultaten van cross-query](media/unify-app-resource-data/app-insights-query-results.png)
+![Voor beeld van resultaten van cross-query](media/unify-app-resource-data/app-insights-query-results.png)
 
-## <a name="query-across-application-insights-resources-and-workspace-data"></a>Query's uitvoeren voor Application Insights-resources en werkruimte gegevens 
-Wanneer u stopt de Connector en moet u query's uitvoeren op een tijdsbereik dat is verkleind door Application Insights-Gegevensretentie (90 dagen), moet u uitvoeren [query's voor meerdere bronnen](../../azure-monitor/log-query/cross-workspace-query.md) in de werkruimte en het Application Insights resources voor een tussenliggende periode. Dit is totdat de gegevens van uw toepassingen worden bij elkaar opgeteld per de nieuwe Application Insights-gegevens bewaren die hierboven worden vermeld. De query is bepaalde bewerkingen vereist omdat de schema's in de werkruimte en Application Insights verschillend zijn. Zie de tabel verderop in deze sectie de schemaverschillen markeren. 
+## <a name="query-across-application-insights-resources-and-workspace-data"></a>Query's uitvoeren op Application Insights resources en werkruimte gegevens 
+Wanneer u de connector stopt en query's moet uitvoeren over een tijds bereik dat is bijgesneden door Application Insights gegevens retentie (90 dagen), moet u [query's voor meerdere resources](../../azure-monitor/log-query/cross-workspace-query.md) uitvoeren op de werk ruimte en Application Insights resources voor een tussenliggend periodieke. Dit is tot de gegevens van uw toepassingen worden verzameld op basis van de nieuwe Application Insights voor het bewaren van gegevens. Voor de query zijn enkele bewerkingen vereist, aangezien de schema's in Application Insights en de werk ruimte verschillend zijn. Zie de tabel verderop in deze sectie om de schema verschillen te markeren. 
 
 >[!NOTE]
->[Meerdere bronnen query](../log-query/cross-workspace-query.md) in logboek waarschuwingen wordt ondersteund in de nieuwe [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Azure Monitor gebruikt standaard de [verouderde Log Analytics-waarschuwing API](../platform/api-alerts.md) voor het maken van nieuwe logboek waarschuwingsregels van Azure-portal, tenzij u van overschakelt [verouderde Log waarschuwingen API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Na de switch, de nieuwe API wordt de standaardwaarde voor nieuwe regels voor waarschuwingen in Azure portal en u kunt meerdere bronnen query log regels waarschuwingen maken. U kunt maken [meerdere bronnen query](../log-query/cross-workspace-query.md) melden van regels voor waarschuwingen zonder dat de switch met behulp van de [ARM-sjabloon voor scheduledQueryRules API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) –, maar deze waarschuwingsregel wordt al beheerd [ scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en niet vanuit Azure portal.
+>Er wordt een [query voor meerdere resources](../log-query/cross-workspace-query.md) in logboek waarschuwingen ondersteund in de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Azure Monitor maakt standaard gebruik van de [verouderde log Analytics waarschuwings-API](../platform/api-alerts.md) voor het maken van nieuwe logboek waarschuwings regels van Azure Portal, tenzij u overschakelt van verouderde [API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Na de switch wordt de nieuwe API de standaard instelling voor nieuwe waarschuwings regels in Azure Portal en kunt u regels voor het maken van query logboek waarschuwingen voor meerdere resources. U kunt waarschuwings regels voor het query logboek voor [meerdere resources](../log-query/cross-workspace-query.md) maken zonder de switch te maken met behulp van de [arm-sjabloon voor de scheduledQueryRules-API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , maar deze waarschuwings regel kan wel worden beheerd met [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en niet vanuit Azure Portal.
 
-Bijvoorbeeld, als de connector is gestopt op 2018-11-01, werken wanneer u een query naar Logboeken in Application Insights-bronnen en toepassingen van gegevens in de werkruimte, kan de query zou worden samengesteld als in het volgende voorbeeld:
+Als de connector bijvoorbeeld niet meer werkt op 2018-11-01, wordt uw query, zoals in het volgende voor beeld, geconstrueerd als u Logboeken doorzoekt tussen Application Insights resources en toepassings gegevens in de werk ruimte:
 
 ```
 applicationsScoping //this brings data from Application Insights resources 
@@ -93,14 +93,14 @@ applicationsScoping //this brings data from Application Insights resources
 | project timestamp , duration , name , resultCode 
 ```
 
-## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Schemaverschillen voor Application Insights en Log Analytics-werkruimte
-De volgende tabel ziet u de schemaverschillen tussen Log Analytics en Application Insights.  
+## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Verschillen in schema Application Insights en Log Analytics van werk ruimten
+In de volgende tabel ziet u de schema verschillen tussen Log Analytics en Application Insights.  
 
-| Meld u eigenschappen van de Analytics-werkruimte| Application Insights-resource-eigenschappen|
+| Eigenschappen van Log Analytics werk ruimte| Eigenschappen van Application Insights-bron|
 |------------|------------| 
 | AnonUserId | user_id|
 | ApplicationId | appId|
-| ApplicationName | appName|
+| ApplicationName | Toepassings|
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
@@ -122,7 +122,7 @@ De volgende tabel ziet u de schemaverschillen tussen Log Analytics en Applicatio
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| ExceptionType | type |
+| ExceptionType | Type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
@@ -140,7 +140,7 @@ De volgende tabel ziet u de schemaverschillen tussen Log Analytics en Applicatio
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
+| TelemetryTYpe | Type |
 | URL | url |
 | UserAccountId | user_AccountId |
 

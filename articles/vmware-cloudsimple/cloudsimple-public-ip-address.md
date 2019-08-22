@@ -1,23 +1,23 @@
 ---
-title: VMware-oplossing door CloudSimple-openbaar IP-adres van Azure
-description: Meer informatie over open bare IP-adressen en hun voor delen op VMware-oplossing door CloudSimple
+title: Azure VMware-oplossing op CloudSimple-openbaar IP-adres
+description: Meer informatie over open bare IP-adressen en hun voor delen van Azure VMware-oplossing door CloudSimple
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 29d2bdb75a7f4409e6b3ffee2608cfe7adde6b1f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812519"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877686"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>Overzicht van open bare IP-adressen CloudSimple
 
-Met een openbaar IP-adres kunnen Internet bronnen binnenkomende, persoonlijke cloud resources op een privé-IP-adres communiceren. Het privé-IP-adres is een virtuele machine of een software-load balancer. Het privé-IP-adres bevindt zich in uw privécloud. Met het open bare IP-adres kunt u de services die in uw privécloud worden uitgevoerd, beschikbaar maken op internet.
+Met een openbaar IP-adres kunnen Internet bronnen inkomend communiceren met persoonlijke cloud resources op een privé-IP-adres. Het privé-IP-adres is een virtuele machine of een software load balancer in uw Privécloud. Met het open bare IP-adres kunt u de services die in uw Privécloud worden uitgevoerd, beschikbaar maken op internet.
 
 Het open bare IP-adres is toegewezen aan het privé-IP-adres totdat u de toewijzing ervan ongedaan maakt. Een openbaar IP-adres kan alleen worden toegewezen aan één privé-IP-adres.
 
@@ -33,4 +33,4 @@ Het gebruik van een openbaar IP-adres om inkomende communicatie te geven biedt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [toewijzen van een openbaar IP-adres](https://docs.azure.cloudsimple.com/public-ips/)
+* Meer informatie over het [toewijzen van een openbaar IP-adres](public-ips.md)

@@ -1,13 +1,13 @@
 ---
-title: Naslag voor OData search.in - Azure Search
-description: OData search.in-functie in Azure Search-query's.
+title: Referentie voor search.in-functies van OData-Azure Search
+description: OData search.in-functie in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,32 +19,32 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a61291e547021077341a5f1b3db7422afa5b9440
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8bac0205fa2de8378abaa4d9e8ba8e05ea69192e
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449972"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647942"
 ---
-# <a name="odata-searchin-function-in-azure-search"></a>OData `search.in` functie in Azure Search
+# <a name="odata-searchin-function-in-azure-search"></a>OData `search.in` -functie in azure Search
 
-Een veelvoorkomend scenario in [OData-filterexpressies](query-odata-filter-orderby-syntax.md) is om te controleren of één veld in elk document dat gelijk aan een van de vele mogelijke waarden is. Dit is bijvoorbeeld hoe sommige toepassingen implementeren [security trimming wordt geregeld](search-security-trimming-for-azure-search.md) --door het controleren van een veld met een of meer principal-id's op basis van een lijst van de principal-id's die het verzenden van de query. Één manier is het schrijven van een query zoals dit is het gebruik van de [ `eq` ](search-query-odata-comparison-operators.md) en [ `or` ](search-query-odata-logical-operators.md) operators:
+Een veelvoorkomend scenario in [OData-filter expressies](query-odata-filter-orderby-syntax.md) is om te controleren of één veld in elk document gelijk is aan een van de vele mogelijke waarden. Dit is bijvoorbeeld hoe sommige toepassingen [beveiliging](search-security-trimming-for-azure-search.md) kunnen beperken, door een veld met een of meer Principal-id's te controleren op basis van een lijst met Principal-id's die de gebruiker die de query heeft uitgegeven. Een manier om een query als volgt te schrijven, is door [`eq`](search-query-odata-comparison-operators.md) de [`or`](search-query-odata-logical-operators.md) Opera tors en te gebruiken:
 
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
 
-Er is echter een kortere manier om te schrijven, met behulp van de `search.in` functie:
+Er is echter een kortere manier om dit te schrijven, met `search.in` behulp van de functie:
 
     group_ids/any(g: search.in(g, '123, 456, 789'))
 
 > [!IMPORTANT]
-> Naast het korter en gemakkelijker te lezen, met behulp van `search.in` biedt ook [prestatievoordelen](#bkmk_performance) en voorkomt u bepaalde [grootte van de beperkingen van filters](search-query-odata-filter.md#bkmk_limits) wanneer er honderden of zelfs duizenden waarden om op te nemen in het filter. Voor deze reden wordt ten zeerste aangeraden `search.in` in plaats van een meer complexe scheiding van gelijkheid expressies.
+> U `search.in` kunt niet alleen korter en eenvoudiger te lezen, maar ook [prestatie voordelen](#bkmk_performance) en voor komen dat bepaalde [beperkingen van filters worden beperkt](search-query-odata-filter.md#bkmk_limits) wanneer er honderden of zelfs duizenden waarden zijn die in het filter moeten worden meegenomen. Daarom raden we u ten zeerste aan `search.in` om te gebruiken in plaats van een complexere schei ding van gelijkheids expressies.
 
 > [!NOTE]
-> Versie 4.01 van de OData-standaard is onlangs geïntroduceerd de [ `in` operator](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230), die is soortgelijk gedrag als de `search.in` functie in Azure Search. Echter, Azure Search biedt geen ondersteuning deze operator, dus moet u de `search.in` werken in plaats daarvan.
+> Versie 4,01 van de OData-standaard heeft onlangs de [ `in` operator](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230)geïntroduceerd. deze heeft hetzelfde gedrag als `search.in` de functie in azure Search. Azure Search biedt echter geen ondersteuning voor deze operator. hiervoor moet u de `search.in` functie gebruiken.
 
 ## <a name="syntax"></a>Syntaxis
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `search.in` functie:
+De volgende ebnf ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `search.in` functie:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -53,60 +53,60 @@ search_in_call ::=
     'search.in(' variable ',' string_literal(',' string_literal)? ')'
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-De `search.in` functie test of een veld van de opgegeven tekenreeks of variabele bereik is gelijk aan een van een opgegeven lijst met waarden. Gelijkheid van de variabele en van elke waarde in de lijst wordt bepaald op een hoofdlettergevoelige manier, dezelfde manier als voor de `eq` operator. Daarom een expressie, zoals `search.in(myfield, 'a, b, c')` is gelijk aan `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, behalve dat `search.in` leidt tot veel betere prestaties.
+De `search.in` functie test of een opgegeven teken reeks veld of bereik variabele gelijk is aan een van een bepaalde lijst met waarden. De gelijkheid tussen de variabele en elke waarde in de lijst wordt op een hoofdletter gevoelige manier bepaald, op dezelfde manier als voor de `eq` operator. Een expressie lijkt `search.in(myfield, 'a, b, c')` daarom gelijk aan `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, behalve dat `search.in` er veel betere prestaties worden verkregen.
 
-Er zijn twee overloads van de `search.in` functie:
+Er zijn twee Overloads van de `search.in` functie:
 
 - `search.in(variable, valueList)`
 - `search.in(variable, valueList, delimiters)`
 
-De parameters zijn gedefinieerd in de volgende tabel:
+De para meters worden gedefinieerd in de volgende tabel:
 
-| Parameternaam | Type | Description |
+| Parameternaam | type | Description |
 | --- | --- | --- |
-| `variable` | `Edm.String` | De verwijzing naar een tekenreeks-veld (of een variabele bereik via een tekenreeksveld verzameling in het geval waarbij `search.in` wordt gebruikt binnen een `any` of `all` expressie). |
-| `valueList` | `Edm.String` | Een tekenreeks met een door tekens gescheiden lijst met waarden te vergelijken met de `variable` parameter. Als de `delimiters` parameter niet wordt opgegeven, de standaardscheidingstekens ruimte en door komma's. |
-| `delimiters` | `Edm.String` | Een tekenreeks waarin elk teken wordt behandeld als scheidingsteken bij het parseren van de `valueList` parameter. De standaardwaarde van deze parameter is `' ,'` wat betekent dat alle waarden met spaties en/of komma's worden gescheiden. Als u gebruiken, scheidingstekens dan spaties en komma's wilt omdat de waarden die tekens bevatten, kunt u alternatieve scheidingstekens, zoals `'|'` in deze parameter. |
+| `variable` | `Edm.String` | Een verwijzing naar een teken reeks veld (of een bereik variabele over een teken reeks verzamelings `search.in` veld in het geval `any` waarin `all` binnen een or-expressie wordt gebruikt). |
+| `valueList` | `Edm.String` | Een teken reeks met een gescheiden lijst met waarden die moet overeenkomen `variable` met de para meter. Als de `delimiters` para meter niet is opgegeven, zijn de standaard scheidings tekens spatie en komma. |
+| `delimiters` | `Edm.String` | Een teken reeks waarbij elk teken wordt behandeld als een schei ding `valueList` bij het parseren van de para meter. De standaard waarde van deze para meter `' ,'` is wat betekent dat alle waarden met spaties en/of komma's ertussen van elkaar worden gescheiden. Als u andere scheidings tekens dan spaties en komma's wilt gebruiken omdat uw waarden de teken reeks bevatten, kunt u alternatieve afscheiders opgeven, zoals `'|'` in deze para meter. |
 
 <a name="bkmk_performance"></a>
 
-### <a name="performance-of-searchin"></a>Prestaties van `search.in`
+### <a name="performance-of-searchin"></a>Prestaties van`search.in`
 
-Als u `search.in`, u krijgt dan een seconde reactietijd wanneer de tweede parameter een lijst met honderden of duizenden waarden bevat. Er is geen expliciete limiet voor het aantal items dat u kunt doorgeven aan `search.in`, hoewel u nog steeds worden beperkt door de grootte van de maximale aanvraag. Echter, de latentie zal toenemen naarmate het aantal waarden groeit.
+Als u gebruikt `search.in`, kunt u een sub-Second-reactie tijd verwachten wanneer de tweede para meter een lijst met honderden of duizenden waarden bevat. Er is geen expliciete limiet voor het aantal items dat u kunt door `search.in`geven, hoewel u nog steeds beperkt bent door de maximum grootte van de aanvraag. De latentie neemt echter toe naarmate het aantal waarden toeneemt.
 
 ## <a name="examples"></a>Voorbeelden
 
-Zoek alle hotels met de naam gelijk is aan 'Zee weergave motel' of 'Budget hotel'. Zinnen bevatten spaties, dit is een standaardscheidingsteken. U kunt een alternatieve scheidingsteken tussen enkele aanhalingstekens als de derde tekenreeksparameter opgeven:  
+Zoek alle hotels met een naam die gelijk is aan ' Sea View Motel ' of ' budget hotel '. Zinsdelen bevatten spaties. Dit is een standaard scheidings teken. U kunt een alternatief scheidings teken opgeven tussen enkele aanhalings tekens als de derde teken reeks parameter:  
 
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
 
-Zoek alle hotels met de naam gelijk is aan 'Zee weergave motel' of 'Budget hotel' gescheiden door ' |'):
+Alle hotels zoeken waarvan de naam gelijk is aan ' Sea View Motel ' of ' budget hotel ', gescheiden door ' | '):
 
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
 
-Zoek alle hotels met ruimten met de tag 'Wi-Fi' of 'l' als volgt:
+Alle hotels zoeken met kamers met het label ' WiFi ' of ' tub ':
 
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
 
-Een overeenkomst op zinnen binnen een verzameling, zoals 'hete handdoeken rekken' of 'hairdryer opgenomen' niet vinden in tags.
+Zoek een overeenkomst op zinsdelen in een verzameling, zoals ' verwarmd handdoekontwerptoepassingen-racks ' of ' hairdryer inbegrepen ' in Tags.
 
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-Zoek alle hotels zonder de tag 'motel' of 'handbagage':
+Alle hotels zoeken zonder tag ' Motel ' of ' cabin':
 
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
 
 ## <a name="next-steps"></a>Volgende stappen  
 
 - [Filters in Azure Search](search-filters.md)
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 786c5725046885a0321696e95703c53081e96979
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560332"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648608"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Zelfstudie: namen extraheren met de entiteit Simple en een woordenlijst
 
@@ -137,7 +137,7 @@ Eenvoudige entiteiten hebben veel voorbeelden nodig om voorspellingen van hoge b
 
 1. De taken in de voorbeelduitingen labelen
 
-    Als er meer voorbeelduitingen in de ene intentie dan in de andere intentie staan, is het voor die intentie waarschijnlijker dat deze de meest voorspelde intext is. 
+    Als er meer voorbeeld uitingen in één intentie is dan een andere intentie, heeft die intentie een hogere kans om het hoogste voor speld doel te zijn. 
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>De app trainen zodat de wijzigingen aan de intentie kunnen worden getest 
 

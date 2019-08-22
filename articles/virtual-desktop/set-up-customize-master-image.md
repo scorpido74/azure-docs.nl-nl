@@ -1,48 +1,48 @@
 ---
-title: Voorbereiden en aanpassen van een master VHD-installatiekopie - Azure
-description: Het voorbereiden, aanpassen en een virtuele Windows-bureaublad preview master-installatiekopie uploaden naar Azure.
+title: Een VHD-model installatie kopie voorbereiden en aanpassen-Azure
+description: Een installatie kopie van een virtuele Windows Desktop-Preview Master voorbereiden, aanpassen en uploaden naar Azure.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 2413a380adf32755452482d2b68d2055f7db666d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: abde79ab131719fe4f2963db98c7a6daa3419424
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620443"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876842"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
-In dit artikel wordt uitgelegd hoe u de installatiekopie van een master virtuele harde schijf (VHD) voorbereiden voor het uploaden naar Azure, waaronder het maken van virtuele machines (VM's) en software installeren op deze. Deze instructies zijn voor een virtuele Windows-bureaublad Preview-specifieke configuratie die kan worden gebruikt met de bestaande processen van uw organisatie.
+In dit artikel leest u hoe u een installatie kopie van een virtuele harde schijf (VHD) voor het uploaden naar Azure voorbereidt, inclusief het maken van virtuele machines (Vm's) en het installeren van software. Deze instructies gelden voor een Windows-voor beeld-specifieke configuratie voor virtuele Bureau bladen die kan worden gebruikt met de bestaande processen van uw organisatie.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Meerdere Windows 10 Enterprise-sessie is beschikbaar in de galerie met installatiekopieën van Azure. Er zijn twee opties voor het aanpassen van deze installatiekopie.
+Windows 10 Enter prise multi-session is beschikbaar in de galerie met installatie kopieën van Azure. Er zijn twee opties voor het aanpassen van deze installatie kopie.
 
-De eerste optie is voor het inrichten van een virtuele machine (VM) in Azure door de instructies in [een virtuele machine maken vanaf een beheerde installatiekopie](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed), en gaat u verder met [Software voorbereidings- en installatie](set-up-customize-master-image.md#software-preparation-and-installation).
+De eerste optie is het inrichten van een virtuele machine (VM) in azure door de instructies te volgen in [een VM maken op basis van een beheerde installatie kopie](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)en vervolgens door te gaan naar de voor [bereiding en installatie van software](set-up-customize-master-image.md#software-preparation-and-installation).
 
-De tweede optie is voor het maken van de installatiekopie lokaal downloaden van de installatiekopie, inrichten van een Hyper-V-VM en aan te passen aan uw behoeften, die we in de volgende sectie behandelen.
+De tweede optie is om de installatie kopie lokaal te maken door de installatie kopie te downloaden, een Hyper-V-VM in te richten en deze aan te passen aan uw behoeften, die in de volgende sectie worden behandeld.
 
-### <a name="local-image-creation"></a>Het maken van lokale installatiekopieën
+### <a name="local-image-creation"></a>Lokale installatie kopie maken
 
-Nadat u de installatiekopie hebt gedownload naar een lokale locatie, opent u **Hyper-V-beheer** aan een virtuele machine maken met de VHD die u hebt gekopieerd. De volgende instructies zijn een eenvoudige versie, maar u vindt meer gedetailleerde instructies in [maken van een virtuele machine in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Zodra u de installatie kopie naar een lokale locatie hebt gedownload, opent u **Hyper-V-beheer** om een virtuele machine te maken met de VHD die u hebt gekopieerd. De volgende instructies zijn een eenvoudige versie, maar u vindt meer gedetailleerde instructies voor het [maken van een virtuele machine in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
 
 Een virtuele machine maken met de gekopieerde VHD:
 
-1. Open de **Wizard Nieuwe virtuele Machine**.
+1. Open de **wizard Nieuwe virtuele machine**.
 
-2. Selecteer op de pagina generatie opgeven **generatie 1**.
+2. Selecteer op de pagina generatie opgeven de optie **generatie 1**.
 
-    ![Een schermafbeelding van de pagina generatie opgeven. De optie "Generation 1" is geselecteerd.](media/a41174fd41302a181e46385e1e701975.png)
+    ![Een scherm afbeelding van de pagina voor het genereren van opgeven. De optie ' generatie 1 ' is geselecteerd.](media/a41174fd41302a181e46385e1e701975.png)
 
-3. Onder Type controlepunt uitschakelen controlepunten Hiervoor schakelt het selectievakje in.
+3. Schakel onder controlepunt type de controle punten uit door het selectie vakje uit te scha kelen.
 
-    ![Een schermafbeelding van het Type controlepunt-gedeelte van de pagina controlepunten.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
+    ![Een scherm afbeelding van de sectie type controle punt van de pagina met controle punten.](media/20c6dda51d7cafef33251188ae1c0c6a.png)
 
-U kunt ook de volgende cmdlet uitvoeren in PowerShell om uit te schakelen van controlepunten.
+U kunt ook de volgende cmdlet uitvoeren in Power shell om controle punten uit te scha kelen.
 
 ```powershell
 Set-VM -Name <VMNAME> -CheckpointType Disabled
@@ -50,71 +50,71 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Vaste schijf
 
-Als u een virtuele machine vanaf een bestaande VHD maken, maakt het een dynamische schijf standaard. Het kan worden gewijzigd naar een vaste schijf door het selecteren van **schijf bewerken...**  zoals wordt weergegeven in de volgende afbeelding. Zie voor meer instructies, [voorbereiden van een Windows VHD of VHDX te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+Als u een virtuele machine maakt op basis van een bestaande VHD, wordt standaard een dynamische schijf gemaakt. U kunt het wijzigen naar een vaste schijf door **schijf bewerken** te selecteren, zoals wordt weer gegeven in de volgende afbeelding. Zie [een Windows VHD of VHDX voorbereiden voor het uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)voor meer gedetailleerde instructies.
 
-![Een schermafbeelding van de schijf bewerken wordt gebruikt.](media/35772414b5a0f81f06f54065561d1414.png)
+![Een scherm afbeelding van de optie voor het bewerken van de schijf.](media/35772414b5a0f81f06f54065561d1414.png)
 
-U kunt ook de volgende PowerShell-cmdlet als u wilt wijzigen van de schijf naar een vaste schijf uitvoeren.
+U kunt ook de volgende Power shell-cmdlet uitvoeren om de schijf naar een vaste schijf te wijzigen.
 
 ```powershell
 Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
-## <a name="software-preparation-and-installation"></a>Software voorbereidings- en installatie
+## <a name="software-preparation-and-installation"></a>Software voorbereiding en-installatie
 
-In deze sectie bevat informatie over hoe u voorbereidt en FSLogix, Windows Defender en andere veelgebruikte toepassingen installeren. 
+In deze sectie wordt beschreven hoe u FSLogix, Windows Defender en andere algemene toepassingen voorbereidt en installeert. 
 
-Als u Office 365 ProPlus en OneDrive op uw virtuele machine installeert, Zie [Office installeren op een master VHD-installatiekopie](install-office-on-wvd-master-image.md). Volg de koppeling in de volgende stappen van dit artikel gaat u terug naar dit artikel en het model VHD-proces te voltooien.
+Als u Office 365 ProPlus en OneDrive op uw VM installeert, raadpleegt u [Office installeren op een Master-VHD-installatie kopie](install-office-on-wvd-master-image.md). Volg de koppeling in de volgende stappen van dit artikel om terug te gaan naar dit artikel en het hoofd-VHD-proces te volt ooien.
 
-Als uw gebruikers nodig hebben voor toegang tot bepaalde LOB-toepassingen, raden wij dat u deze installeren na het voltooien van deze sectie instructies.
+Als uw gebruikers toegang moeten hebben tot bepaalde LOB-toepassingen, raden we u aan deze te installeren nadat u de instructies van deze sectie hebt voltooid.
 
-### <a name="disable-automatic-updates"></a>Automatische Updates uitschakelen
+### <a name="disable-automatic-updates"></a>Automatische updates uitschakelen
 
-Automatische Updates via lokaal groepsbeleid uitschakelen:
+Automatische updates via lokale groepsbeleid uitschakelen:
 
-1. Open **Editor voor lokaal groepsbeleid\\Beheersjablonen\\Windows-onderdelen\\Windows Update**.
-2. Met de rechtermuisknop op **automatische updates configureren** en stel deze in op **uitgeschakelde**.
+1. Open **lokale Groepsbeleidsobjecteditor\\\\Beheersjablonen\\Windows-onderdelen Windows Update**.
+2. Klik met de rechter muisknop op **Automatische updates configureren** en stel deze in op **uitgeschakeld**.
 
-U kunt ook de volgende opdracht uitvoeren op de opdrachtregel om Automatische Updates uitschakelen.
+U kunt ook de volgende opdracht uitvoeren op een opdracht prompt om Automatische updates uit te scha kelen.
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
-### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Indeling Start opgeven voor Windows 10-computers (optioneel)
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Start indeling voor Windows 10-Pc's opgeven (optioneel)
 
-Voer deze opdracht uit om op te geven van een indeling Start voor Windows 10-pc's.
+Voer deze opdracht uit om een start indeling op te geven voor Windows 10-Pc's.
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
 
-### <a name="set-up-user-profile-container-fslogix"></a>Instellen van de gebruiker profiel container (FSLogix)
+### <a name="set-up-user-profile-container-fslogix"></a>Gebruikers profiel container instellen (FSLogix)
 
-Als u wilt de container FSLogix opnemen als onderdeel van de installatiekopie, volg de instructies in [instellen van een share van de gebruiker profiel voor een groep host](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de container FSLogix met testen [in deze Quick Start](https://docs.fslogix.com/display/20170529/Profile+Containers+-+Quick+Start).
+Als u de container FSLogix wilt opnemen als onderdeel van de installatie kopie, volgt u de instructies in [een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). U kunt de functionaliteit van de FSLogix-container testen met [deze Snelstartgids](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial).
 
 ### <a name="configure-windows-defender"></a>Windows Defender configureren
 
-Als Windows Defender is geconfigureerd in de virtuele machine, zorg er dan voor dat deze heeft geconfigureerd voor niet-scan de volledige inhoud van de VHD en VHDX-bestanden tijdens de bijlage.
+Als Windows Defender is geconfigureerd in de virtuele machine, moet u ervoor zorgen dat de volledige inhoud van VHD-en VHDX-bestanden tijdens een bijlage niet wordt gescand.
 
-Deze configuratie alleen verwijderd VHD en VHDX-bestanden worden gescand tijdens de bijlage, maar heeft geen invloed op realtime scannen.
+Deze configuratie verwijdert alleen het scannen van VHD-en VHDX-bestanden tijdens een bijlage, maar heeft geen invloed op real-time scans.
 
-Zie voor meer instructies voor het configureren van Windows Defender in Windows Server, [configureren van Windows Defender Antivirus uitsluitingen voor Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+Zie [Windows Defender anti virus-uitsluitingen configureren op Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)voor meer gedetailleerde instructies voor het configureren van Windows Defender op Windows Server.
 
-Zie voor meer informatie over het configureren van bepaalde bestanden uitsluiten van scannen met Windows Defender, [configureren en valideren van uitsluitingen op basis van de extensie en mapnaam bestandslocatie](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
+Zie uitsluitingen [configureren en valideren op basis van bestands extensie en maplocatie](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)voor meer informatie over het configureren van Windows Defender om bepaalde bestanden uit te sluiten.
 
-### <a name="configure-session-timeout-policies"></a>Configureren van beleid voor time-out van sessie
+### <a name="configure-session-timeout-policies"></a>Sessietime-outbeleid configureren
 
-Externe sessie-beleid kunnen worden afgedwongen op het niveau van Groepsbeleid, omdat alle virtuele machines in een groep host deel van dezelfde beveiligingsgroep uitmaken.
+Externe-sessie beleidsregels kunnen worden afgedwongen op groepsbeleid niveau, omdat alle virtuele machines in een hostgroep deel uitmaken van dezelfde beveiligings groep.
 
-Externe sessie-beleid configureren:
+Beleid voor externe sessies configureren:
 
-1. Navigeer naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-Services**  >  **Extern bureaublad-sessiehost** > **sessie tijdslimieten**.
-2. Selecteer in het deelvenster aan de rechterkant de **tijdslimiet voor actieve maar niet-actieve sessies van extern bureaublad-Services** beleid.
-3. Nadat het modale venster wordt weergegeven, wijzigt u de beleidsoptie van **niet geconfigureerd** naar **ingeschakeld** aan het beleid te activeren.
-4. In de vervolgkeuzelijst onder de optie voor de hoeveelheid tijd te instellen **4 uur**.
+1. Navigeer naar **Beheersjablonen** > **Windows** > -onderdelenexternbureaublad-services > de limieten voor**sessies**van**extern bureaublad sessie**- > sessiehost.
+2. Selecteer in het deel venster aan de rechter kant het beleid **tijds limiet instellen voor actieve maar niet-actieve Extern bureaublad-services sessies** .
+3. Nadat het modale venster wordt weer gegeven, wijzigt u de beleids optie van **niet geconfigureerd** in **ingeschakeld** om het beleid te activeren.
+4. Stel de hoeveelheid tijd in het vervolg keuzemenu onder de beleids optie in op **4 uur**.
 
-U kunt ook externe sessie-beleid handmatig configureren door het uitvoeren van de volgende opdrachten:
+U kunt beleid voor externe sessies ook hand matig configureren door de volgende opdrachten uit te voeren:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
@@ -125,64 +125,64 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDi
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
 ```
 
-### <a name="set-up-time-zone-redirection"></a>Instellen van de tijdzone-omleiding
+### <a name="set-up-time-zone-redirection"></a>Tijd zone-omleiding instellen
 
-Tijdzone-omleiding kan worden afgedwongen op het niveau van Groepsbeleid, omdat alle virtuele machines in een groep host deel van dezelfde beveiligingsgroep uitmaken.
+Tijdzone omleiding kan worden afgedwongen op groepsbeleid niveau, omdat alle virtuele machines in een hostgroep deel uitmaken van dezelfde beveiligings groep.
 
-Om te leiden tijdzones:
+Tijd zones omleiden:
 
-1. Open op de Active Directory-server, de **Group Policy Management Console**.
-2. Vouw uw domein en groepsbeleidsobjecten.
-3. Met de rechtermuisknop op de **Group Policy Object** dat u hebt gemaakt voor de instellingen voor Groepsbeleid en selecteer **bewerken**.
-4. In de **Editor voor Groepsbeleidsbeheer**, gaat u naar **Computerconfiguratie** > **beleid** > **Administrative Sjablonen** > **Windows-onderdelen** > **extern bureaublad-Services** > **extern bureaublad-sessiehost**   >  **Apparaat en Resource-omleiding**.
-5. Schakel de **tijdzoneomleiding toestaan** instelling.
+1. Open de **console Groepsbeleidbeheer**op de Active Directory-server.
+2. Breid uw domein en groepsbeleid objecten uit.
+3. Klik met de rechter muisknop op het **Groepsbeleid-object** dat u hebt gemaakt voor de instellingen voor groeps beleid en selecteer **bewerken**.
+4. Ga in het **Groepsbeleidsbeheer-editor**naar **computer configuratie** > **beleid** > **Beheersjablonen** > **Windows-onderdelen**  >   **Extern bureaublad-services** > **extern bureaublad Session**host > -**apparaat en-bron omleiding**.
+5. Schakel de instelling **tijd zone omleiding toestaan** in.
 
-U kunt ook deze opdracht uitvoeren op de master-image tijdzones omleiden:
+U kunt deze opdracht ook uitvoeren op de hoofd installatie kopie om tijd zones om te leiden:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableTimeZoneRedirection /t REG_DWORD /d 1 /f
 ```
 
-### <a name="disable-storage-sense"></a>Opslaginzicht uitschakelen
+### <a name="disable-storage-sense"></a>Opslag Sense uitschakelen
 
-Voor virtuele Windows-bureaublad-sessiehost die gebruikmaken van Windows 10 Enterprise of Windows 10 Enterprise meerdere sessies, raden wij Opslaginzicht uitschakelen. U kunt Opslaginzicht uitschakelen in het menu instellingen onder **opslag**, zoals weergegeven in de volgende schermafbeelding:
+Voor Windows Virtual Desktop Session Host die gebruikmaakt van Windows 10 Enter prise of Windows 10 Enter prise multi-session, raden we u aan om opslag Sense uit te scha kelen. U kunt opslag Sense uitschakelen in het menu instellingen onder **opslag**, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-![Een schermafbeelding van het Storage-menu onder instellingen. De optie 'Opslaginzicht' is uitgeschakeld.](media/storagesense.png)
+![Een scherm opname van het menu opslag onder instellingen. De optie ' opslag Sense ' is uitgeschakeld.](media/storagesense.png)
 
-U kunt ook de instelling met het register wijzigen door het uitvoeren van de volgende opdracht uit:
+U kunt de instelling ook wijzigen met het REGI ster door de volgende opdracht uit te voeren:
 
 ```batch
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
 ```
 
-### <a name="include-additional-language-support"></a>Ondersteuning voor extra talen opnemen
+### <a name="include-additional-language-support"></a>Aanvullende taal ondersteuning toevoegen
 
-Dit artikel wordt niet beschreven hoe het configureren van taal en regionale ondersteuning. Raadpleeg voor meer informatie de volgende artikelen:
+Dit artikel heeft geen betrekking op het configureren van taal-en regionale ondersteuning. Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Talen toevoegen aan Windows-installatiekopieën](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [Onderdelen op verzoek](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Taal en regio onderdelen op verzoek (DOM)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Talen toevoegen aan Windows-installatie kopieën](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
+- [Onderdelen op aanvraag](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
+- [Taal-en regio functies op aanvraag (DOM)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
 
-### <a name="other-applications-and-registry-configuration"></a>Andere toepassingen en de Register-configuratie
+### <a name="other-applications-and-registry-configuration"></a>Andere toepassingen en register configuratie
 
-In deze sectie bevat informatie over toepassings- en configuratie van besturingssysteem. Alle configuratie in deze sectie vindt plaats via registervermeldingen die kunnen worden uitgevoerd door de opdrachtregel en regedit hulpprogramma's.
+In deze sectie wordt de configuratie van toepassingen en besturings systemen besproken. Alle configuratie in deze sectie wordt uitgevoerd via Register vermeldingen die kunnen worden uitgevoerd met behulp van de opdracht regel-en Regedit-hulpprogram ma's.
 
 >[!NOTE]
->Aanbevolen procedures kunt u implementeren in de configuratie met groepsbeleidsobjecten (GPO's) of invoer van register. De beheerder kan een van beide opties op basis van de behoeften van hun organisatie kiezen.
+>U kunt best practices in de configuratie implementeren met behulp van groepsbeleid objecten (Gpo's) of register invoer. De beheerder kan een van beide opties kiezen op basis van de vereisten van de organisatie.
 
-Voor feedback hub verzameling van telemetriegegevens op meerdere Windows 10 Enterprise-sessie, kunt u deze opdracht uitvoeren:
+Voer de volgende opdracht uit voor het verzamelen van telemetrie-gegevens over Windows 10 Enter prise met een feedback hub:
 
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 3 /f
 ```
 
-Voer de volgende opdracht om op te lossen Watson crashes:
+Voer de volgende opdracht uit om Watson-crashes op te lossen:
 
 ```batch
 remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Windows Error Reporting
 ```
 
-Voer de volgende opdrachten in de Register-editor om op te lossen 5 k resolutie ondersteuning. U kunt de opdrachten moet uitvoeren voordat u de side-by-side-stack kunt inschakelen.
+Voer de volgende opdrachten in de REGI ster-editor in om ondersteuning voor 5k-oplossingen te herstellen. U moet de opdrachten uitvoeren voordat u de side-by-side-stack kunt inschakelen.
 
 ```batch
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MaxMonitors /t REG_DWORD /d 4 /f
@@ -194,38 +194,38 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-sxs" /v MaxYResolution /t REG_DWORD /d 2880 /f
 ```
 
-## <a name="prepare-the-image-for-upload-to-azure"></a>De installatiekopie van het voorbereiden voor upload naar Azure
+## <a name="prepare-the-image-for-upload-to-azure"></a>De installatie kopie voorbereiden voor uploaden naar Azure
 
-Nadat u hebt de configuratie voltooid en alle toepassingen geïnstalleerd, volgt u de instructies in [voorbereiden van een Windows VHD of VHDX te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) voorbereiden van de installatiekopie.
+Nadat u de configuratie hebt voltooid en alle toepassingen hebt geïnstalleerd, volgt u de instructies in [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) om de installatie kopie voor te bereiden.
 
-Na het voorbereiden van de afbeelding voor het uploaden, zorg ervoor dat de virtuele machine blijft in de status uitgeschakeld of toewijzing ongedaan gemaakt.
+Nadat de installatie kopie is voor bereid voor het uploaden, moet u ervoor zorgen dat de virtuele machine de status uitgeschakeld of niet-toegewezen heeft.
 
-## <a name="upload-master-image-to-a-storage-account-in-azure"></a>Master-image te uploaden naar een opslagaccount in Azure
+## <a name="upload-master-image-to-a-storage-account-in-azure"></a>Master installatie kopie uploaden naar een opslag account in azure
 
-In deze sectie is alleen van toepassing wanneer de master-image lokaal is gemaakt.
+Deze sectie is alleen van toepassing wanneer de master installatie kopie lokaal is gemaakt.
 
-De volgende instructies wordt uitgelegd hoe u een master-image te uploaden naar een Azure storage-account. Als u nog een Azure storage-account hebt, volgt u de instructies in [in dit artikel](https://code.visualstudio.com/tutorials/static-website/create-storage) een te maken.
+In de volgende instructies wordt uitgelegd hoe u uw master installatie kopie uploadt naar een Azure-opslag account. Als u nog geen Azure Storage-account hebt, volgt u de instructies in [dit artikel](https://code.visualstudio.com/tutorials/static-website/create-storage) om er een te maken.
 
-1. Converteren naar vaste de VM-installatiekopie (VHD) als u dat nog niet gedaan hebt. Als u niet de installatiekopie van het converteren naar vaste, kunt u de installatiekopie kan niet met succes maken.
+1. Converteer de VM-installatie kopie (VHD) naar vast als u dat nog niet hebt gedaan. Als u de afbeelding niet naar vast hebt geconverteerd, is het niet mogelijk om de installatie kopie te maken.
 
-2. Upload de VHD naar een blobcontainer in uw storage-account. U kunt snel uploaden met de [Opslagverkenner hulpprogramma](https://azure.microsoft.com/features/storage-explorer/). Zie voor meer informatie over het hulpprogramma Storage Explorer, [in dit artikel](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+2. Upload de VHD naar een BLOB-container in uw opslag account. U kunt snel uploaden met het [Storage Explorer-hulp programma](https://azure.microsoft.com/features/storage-explorer/). Zie [dit artikel](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)voor meer informatie over het Storage Explorer-hulp programma.
 
-    ![Een schermafbeelding van Microsoft Azure Storage Explorer van het hulpprogramma zoekvenster. Het selectievakje '.vhd- of vhdx-bestanden uploaden als pagina-blobs (aanbevolen)' is ingeschakeld.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    ![Een scherm opname van het zoek venster van het Microsoft Azure Storage Explorer-hulp programma. Het selectie vakje upload. VHD-of vhdx-bestanden als pagina-blobs (aanbevolen) is ingeschakeld.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
-3. Ga vervolgens naar de Azure-portal in uw browser en zoek naar 'Installatiekopieën'. Uw zoekopdracht moet leiden u de **afbeelding maken** pagina, zoals wordt weergegeven in de volgende schermafbeelding:
+3. Ga vervolgens naar de Azure Portal in uw browser en zoek naar ' installatie kopieën '. Uw zoek opdracht leidt u naar de pagina **installatie kopie maken** , zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-    ![Een schermafbeelding van de pagina van de installatiekopie maken van de Azure-portal, gevuld met voorbeelden van waarden voor de installatiekopie.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
+    ![Een scherm opname van de pagina afbeelding maken van het Azure Portal, gevuld met voorbeeld waarden voor de afbeelding.](media/d3c840fe3e2430c8b9b1f44b27d2bf4f.png)
 
-4. Als u de installatiekopie hebt gemaakt, ziet u een melding zoals in de volgende schermafbeelding:
+4. Wanneer u de installatie kopie hebt gemaakt, ziet u een melding zoals de afbeelding in de volgende scherm afbeelding:
 
-    ![Een schermafbeelding van de melding 'installatiekopie is gemaakt'.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
+    ![Een scherm opname van de melding ' installatie kopie is gemaakt '.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u een installatiekopie hebt, kunt u maken of bijwerken van de host van toepassingen. Zie de volgende artikelen voor meer informatie over het maken en bijwerken van de host van toepassingen:
+Nu u een installatie kopie hebt, kunt u hostgroepen maken of bijwerken. Raadpleeg de volgende artikelen voor meer informatie over het maken en bijwerken van hostgroepen:
 
-- [Een host-pool maken met een Azure Resource Manager-sjabloon](create-host-pools-arm-template.md)
-- [Zelfstudie: Een host-pool maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Een host-pool maken met PowerShell](create-host-pools-powershell.md)
-- [Instellen van een share van de gebruiker profiel voor een groep host](create-host-pools-user-profile.md)
-- [Configureren van de taakverdelingsmethode voor een virtuele Windows-bureaublad](configure-host-pool-load-balancing.md)
+- [Een hostgroep met een Azure Resource Manager-sjabloon maken](create-host-pools-arm-template.md)
+- [Zelfstudie: Een hostgroep maken met Azure Marketplace](create-host-pools-azure-marketplace.md)
+- [Een hostgroep maken met Power shell](create-host-pools-powershell.md)
+- [Een profiel container maken voor een hostgroep met een bestands share](create-host-pools-user-profile.md)
+- [De taakverdelings methode voor virtuele Bureau bladen van Windows configureren](configure-host-pool-load-balancing.md)

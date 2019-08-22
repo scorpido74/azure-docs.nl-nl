@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
-ms.translationtype: MT
+ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033539"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650694"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -225,7 +225,7 @@ In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. Zie het artike
 
 #### <a name="description"></a>**Beschrijving**
 
-Dit is een vereist veld. Items die moeten worden meegenomen in de beschrijving: 
+Dit is een verplicht veld. Items die moeten worden meegenomen in de beschrijving: 
 
 * Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving.  
 * Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.  
@@ -302,12 +302,7 @@ Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-
 
     Het bovenstaande ziet er als volgt uit:
 
-    <h1>Dit is Kop 1</h1> 
-    <h2>Dit is Kop 2</h2> 
-    <h3>Dit is kop 3</h3> 
-    <h4>Dit is kop 4</h4> 
-    <h5>Dit is koptekst 5</h5> 
-    <h6>Dit is kop 6</h6> 
+    ![Voorbeeld koppen](./media/heading.png)
 
 #### <a name="links"></a>Koppelingen
 
@@ -381,7 +376,7 @@ Zodra u een abonnement hebt gemaakt, ziet u de namen, Id's, prijs modellen, Besc
 **Nieuw plan maken** (mini maal één abonnement voor degenen die via micro soft willen verkopen)
 
 - **Plan-ID:** Maak een unieke plan-ID voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL en Azure Resource Manager sjablonen (indien van toepassing). Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Houd er rekening mee dat de ID niet kan worden gewijzigd nadat het maken is geselecteerd.
-- **Naam van abonnement:** Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld Naam van aanbieding: Windows Server; plant Windows Server 2016, Windows Server 2019).
+- **Naam van abonnement:** Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld Naam aanbieding: Windows Server; plant Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-listing"></a>Aanbieding plannen
 

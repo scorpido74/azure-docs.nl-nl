@@ -7,18 +7,23 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.author: bharathb
-ms.openlocfilehash: a4de902e51b101d14aac599c9aad8c4feb86a9c6
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6092b3aac2b0282a795d89730266e72179b34e8a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624613"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648902"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Honderden terabytes aan gegevens migreren naar Azure Cosmos DB 
 
 Azure Cosmos DB kunnen terabytes aan gegevens opslaan. U kunt een grootschalige gegevens migratie uitvoeren om de werk belasting van uw productie naar Azure Cosmos DB te verplaatsen. In dit artikel worden de uitdagingen beschreven voor het verplaatsen van grootschalige gegevens naar Azure Cosmos DB en wordt u uitgebreid naar het hulp programma dat u helpt bij de uitdagingen en het migreren van gegevens naar Azure Cosmos DB. In dit geval studie heeft de klant de Cosmos DB SQL-API gebruikt.  
 
 Voordat u de volledige werk belasting naar Azure Cosmos DB migreert, kunt u een subset van gegevens migreren om enkele van de aspecten te valideren, zoals de partitie sleutel keuze, query prestaties en gegevens modellering. Nadat u het testen van het concept hebt gevalideerd, kunt u de gehele werk belasting naar Azure Cosmos DB verplaatsen.  
+
+U kunt ook het [Cosmos DB Boots trap programma](https://azurecosmosdb.github.io/CosmosBootstrap/) gebruiken om het bouwen of migreren van uw toepassingen op Azure Cosmos DB te versnellen. Als onderdeel van dit programma worden technici van het Azure Cosmos DB-team toegewezen aan uw project en helpt u uw gegevens naar Azure Cosmos DB te migreren. Klik op de onderstaande knop om u aan te melden voor het Cosmos DB Boots trap-programma:
+
+> [!div class="nextstepaction"]
+> [Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ## <a name="tools-for-data-migration"></a>Hulpprogram ma's voor gegevens migratie 
 
@@ -152,4 +157,7 @@ Hoewel u deze hand leiding kunt volgen om grote gegevens sets naar Azure Cosmos 
 * Meer informatie over het uitproberen van de voorbeeld toepassingen die de bulk-uitvoerder bibliotheek in [.net](bulk-executor-dot-net.md) en [Java](bulk-executor-java.md)gebruiken. 
 * De bibliotheek bulk-uitvoerder is geïntegreerd in de Cosmos DB Spark-connector, Zie [Azure Cosmos DB artikel Spark-connector](spark-connector.md) voor meer informatie.  
 * Neem contact op met het product team van Azure Cosmos DB door een ondersteunings ticket te openen onder het probleem type ' algemeen advies ' en ' grote (TB +) ' subtype ' voor meer informatie over grootschalige migraties. 
+* Gebruik het [Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/) om het bouwen of migreren van uw toepassingen op Azure Cosmos DB te versnellen.
 
+> [!div class="nextstepaction"]
+> [Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/)

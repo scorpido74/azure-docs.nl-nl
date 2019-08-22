@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: ac754acd61700dc39ebc633da4274c74d8463824
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a9829f380200e616d242f5406b72593014f0efc2
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884171"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656551"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Upgrade van Azure virtual machine-schaal sets automatische installatie kopieën van besturings systemen
 
@@ -69,6 +69,7 @@ De volgende Sku's worden momenteel ondersteund (en worden regel matig toegevoegd
 | Microsoft Corporation   | WindowsServer | 2019-Data Center |
 | Microsoft Corporation   | WindowsServer | 2019-Data Center-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2019-Data Center-met-containers |
+| Microsoft Corporation   | WindowsServer | Data Center-core-1903-with-containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Vereisten voor het configureren van automatische upgrade van de installatie van een besturings systeem

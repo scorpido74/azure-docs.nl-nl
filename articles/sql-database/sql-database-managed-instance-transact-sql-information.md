@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b792c0fc5d02a84d45b47ac68e0058144f31e673
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641001"
+ms.locfileid: "69644880"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen in beheerde exemplaren, beperkingen en bekende problemen
 
@@ -545,15 +545,13 @@ Service Broker dialoog vensters voor meerdere data bases worden gestopt met het 
 
 **Enkele** Stop alle activiteiten die gebruikmaken van cross-data base Service Broker dialoog venster gesprekken voordat u de servicelaag bijwerkt en opnieuw initialiseert. Als er nog andere berichten zijn die niet worden bezorgd na wijziging van de servicelaag, leest u de berichten van de bron wachtrij en verzendt u deze opnieuw naar de doel wachtrij.
 
-### <a name="impresonification-of-aad-login-types-is-not-supported"></a>Impresonification van AAD-aanmeldings typen wordt niet ondersteund
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>Impersonification van AAD-aanmeldings typen wordt niet ondersteund
 
 **Vallen** 2019 juli
 
 Imitatie met `EXECUTE AS USER` of `EXECUTE AS LOGIN` van volgende Aad-principals wordt niet ondersteund:
 -   Aliased AAD-gebruikers. In dit geval `15517`wordt de volgende fout geretourneerd.
 - AAD-aanmeldingen en-gebruikers op basis van AAD-toepassingen of service-principals. De volgende fouten worden in dit geval `15517` en `15406`worden geretourneerd.
-
-### <a name="database-email"></a>Data base-e-mail 
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryde para meter wordt niet ondersteund in sp_send_db_mail
 

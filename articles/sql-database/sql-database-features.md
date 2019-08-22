@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: c4ba2269003c9d401982b83f4e66c8caf45a0073
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
-ms.translationtype: MT
+ms.openlocfilehash: a8d36e48558432edfaa242b9db13c59adacf5619
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624701"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876362"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Vergelijking van functies: Azure SQL Database versus SQL Server
 
@@ -102,8 +102,6 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [OPENXML](https://docs.microsoft.com/sql/t-sql/functions/openxml-transact-sql)|Ja|Ja|
 | [Operators](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | De meeste-Zie afzonderlijke Opera tors |Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md) |
 | [Partitioneren](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | Ja | Ja |
-| Openbaar IP-adres | Ja. De toegang kan worden beperkt met behulp van firewall-of service-eind punten.  | Ja. Moet expliciet zijn ingeschakeld en poort 3342 moet zijn ingeschakeld in NSG-regels. Open bare IP kan indien nodig worden uitgeschakeld. Zie [openbaar eind punt](sql-database-managed-instance-public-endpoint-securely.md) voor meer informatie. | 
-| [Herstel naar een bepaald tijdstip data base](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ja, alle service lagen met uitzonde ring van grootschalige-Zie [SQL database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) | Ja, Zie [SQL database herstellen](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nee. U kunt een query uitvoeren op gegevens in de bestanden die in `OPENROWSET` Azure Blob Storage worden geplaatst met behulp van de functie. | Nee. U kunt een query uitvoeren op gegevens in de bestanden die in `OPENROWSET` Azure Blob Storage worden geplaatst met behulp van de functie. |
 | [Predicaten](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Ja | Ja |
 | [Query meldingen](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nee | Ja |
@@ -147,39 +145,47 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 | --- | --- | --- |
 | [Actieve Geo-replicatie](sql-database-active-geo-replication.md) | Ja, alle service lagen dan grootschalige | Nee, Zie [automatische failover-groepen (preview-versie)](sql-database-auto-failover-group.md) als alternatief |
 | [Groepen voor automatische failover](sql-database-auto-failover-group.md) | Ja, alle service lagen dan grootschalige | Ja, in [open bare preview](sql-database-auto-failover-group.md)|
+| Automatisch schalen | Ja, in [serverloze model](sql-database-serverless.md) | Nee, u moet gereserveerde Compute en opslag kiezen. |
+| [Azure Active Directory-verificatie (AAD)](sql-database-aad-authentication.md) | Ja. Alleen AAD-gebruikers. | Ja. Inclusief AAD-aanmeldingen op server niveau. |
 | [Azure Resource Health](/azure/service-health/resource-health-overview) | Ja | Nee |
+| Retentie van back-ups | Ja. standaard 7 dagen, Maxi maal 35 dagen. | Ja. standaard 7 dagen, Maxi maal 35 dagen. |
 | [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Ja | Ja |
 | Toegang tot bestands systeem | Nee. Gebruik [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) of [](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) OPENROWSET om gegevens van Azure Blob Storage als een alternatief te openen en te laden. | Nee. Gebruik [Bulk Insert](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) of [](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) OPENROWSET om gegevens van Azure Blob Storage als een alternatief te openen en te laden. |
 | [Geo-restore](sql-database-recovery-using-backups.md#geo-restore) | Ja, alle service lagen dan grootschalige | Ja, met behulp van [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa). |
 | [Grootschalige-architectuur](sql-database-service-tier-hyperscale.md) | Ja | Nee |
 | [Lange termijn retentie van back-ups-LTR](sql-database-long-term-retention.md) | Ja, behoud automatisch tot tien jaar back-ups. | Nog niet. Gebruik `COPY_ONLY` [hand matige back-ups](sql-database-managed-instance-transact-sql-information.md#backup) als tijdelijke oplossing. |
-| [Op beleid gebaseerd beheer](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nee | Nee |
-| Resource groepen | Ja, als [elastische Pools](sql-database-elastic-pool.md) | Ingebouwde één beheerd exemplaar kan meerdere data bases hebben die dezelfde groep resources delen |
-| Omhoog of omlaag schalen (online) | Ja, u kunt DTU of gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. | Ja, u kunt gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. | 
-| Automatisch schalen | Ja, in [serverloze model](sql-database-serverless.md) | Nee, u moet gereserveerde Compute en opslag kiezen. |
 | Onderbreken/hervatten | Ja, in [serverloze model](sql-database-serverless.md) | Nee | 
-| [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Ja](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Ja, [versie 150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
+| [Op beleid gebaseerd beheer](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nee | Nee |
+| Openbaar IP-adres | Ja. De toegang kan worden beperkt met behulp van firewall-of service-eind punten.  | Ja. Moet expliciet zijn ingeschakeld en poort 3342 moet zijn ingeschakeld in NSG-regels. Open bare IP kan indien nodig worden uitgeschakeld. Zie [openbaar eind punt](sql-database-managed-instance-public-endpoint-securely.md) voor meer informatie. | 
+| [Herstel naar een bepaald tijdstip data base](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ja, alle service lagen met uitzonde ring van grootschalige-Zie [SQL database Recovery](sql-database-recovery-using-backups.md#point-in-time-restore) | Ja, Zie [SQL database herstellen](sql-database-recovery-using-backups.md#point-in-time-restore) |
+| Resource groepen | Ja, als [elastische Pools](sql-database-elastic-pool.md) | Nee. Eén beheerde mnstance kan meerdere data bases hebben die dezelfde groep resources delen. Beheerde exemplaren kunnen geen resources delen. |
+| Omhoog of omlaag schalen (online) | Ja, u kunt DTU of gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. | Ja, u kunt gereserveerde vCores of maximale opslag ruimte wijzigen met de minimale downtime. |
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ja | Ja |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Ja | Nee |
-| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nee, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) is een afzonderlijke Azure-Cloud service. | Nee, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) is een afzonderlijke Azure-Cloud service. |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ja, met een beheerde SSIS in Azure Data Factory-omgeving (ADF), waarbij pakketten worden opgeslagen in SSISDB die worden gehost door Azure SQL Database en worden uitgevoerd op Azure SSIS Integration Runtime (IR), raadpleegt u [Azure-SSIS IR maken in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Zie [Azure SQL database afzonderlijke data bases/elastische Pools en beheerde exemplaren vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)om de SSIS-functies in SQL database server en het beheerde exemplaar te vergelijken. | Ja, met een beheerde SSIS in Azure Data Factory-omgeving (ADF), waarbij pakketten worden opgeslagen in SSISDB die worden gehost door een beheerd exemplaar en worden uitgevoerd op Azure SSIS Integration Runtime (IR), raadpleegt u [Azure-SSIS IR maken in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>Zie [Azure SQL database afzonderlijke data bases/elastische Pools en beheerde exemplaren vergelijken](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance)om de SSIS-functies in SQL database en het beheerde exemplaar te vergelijken. |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nee- [zie Power bi](https://docs.microsoft.com/power-bi/) | Nee- [zie Power bi](https://docs.microsoft.com/power-bi/) |
 | [Query prestaties inzichten (QPI)](sql-database-query-performance.md) | Ja | Nee. Gebruik ingebouwde rapporten in SQL Server Management Studio en Azure Data Studio. |
 | [VNet](../virtual-network/virtual-networks-overview.md) | Gedeeltelijk, het maakt beperkte toegang mogelijk met behulp van [VNet-eind punten](sql-database-vnet-service-endpoint-rule-overview.md) | Ja, beheerd exemplaar wordt geïnjecteerd in het VNet van de klant. Zie [subnet](sql-database-managed-instance-transact-sql-information.md#subnet) en [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |
+| VNet-service-eind punt | [Ja](sql-database-vnet-service-endpoint-rule-overview.md) | Nee |
 
 ## <a name="tools"></a>Hulpprogramma's
 Azure SQL database ondersteunt diverse hulp middelen voor gegevens die u kunnen helpen bij het beheren van uw gegevens.
 
-| **SQL-hulp programma** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties** |
+| **Hulpprogramma** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties** |
 | --- | --- | --- |
+| Azure-portal | Ja | Ja |
+| Azure-CLI | Ja | Ja|
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Ja | Ja |
+| Azure Powershell | Ja | Ja |
 | [BACPAC-bestand (exporteren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja, Zie [SQL database exporteren](sql-database-export.md) | Ja, Zie [SQL database exporteren](sql-database-export.md) |
 | [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ja, Zie [SQL database importeren](sql-database-import.md) | Ja, Zie [SQL database importeren](sql-database-import.md) |
 | [Data Quality Services (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | Nee | Nee |
 | [Master Data Services (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | Nee | Nee |
+| [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Ja](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Ja, [versie 150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
 | [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Ja | Ja |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja [, versie 18,0 en hoger](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Geen-Zie [uitgebreide gebeurtenissen](sql-database-xevent-db-diff-from-svr.md) | Ja |
 | [System Center Operations Manager-SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Nee |
 

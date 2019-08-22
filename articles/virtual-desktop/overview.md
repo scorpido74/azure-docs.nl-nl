@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7c331a4a7395069dc4dc3ab1dcfc89415be0898c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854454"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876779"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Wat is Windows virtueel bureau blad preview? 
 
@@ -81,7 +81,7 @@ Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Win
 De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Windows, moeten zijn:
 
 * [Standaard lid](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) van een domein of een [hybride AD-join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuele machines kunnen geen deel uitmaken van Azure AD.
-* Een van de volgende [ondersteunde installatie kopieën van het besturings systeem](#supported-virtual-machine-os-image)uitvoeren.
+* Een van de volgende [ondersteunde installatie kopieën van het besturings systeem](#supported-virtual-machine-os-images)uitvoeren.
 
 >[!NOTE]
 >Als u een Azure-abonnement nodig hebt, kunt u [zich aanmelden voor een gratis proef versie van één maand](https://azure.microsoft.com/free/). Als u de gratis proef versie van Azure gebruikt, moet u Azure AD Domain Services gebruiken om uw Windows Server-Active Directory gesynchroniseerd te laten met Azure Active Directory.
@@ -101,7 +101,7 @@ De volgende Extern bureaublad-clients ondersteunen Windows virtueel bureau blad:
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-image"></a>Ondersteunde besturingssysteem installatie kopie van virtuele machine
+## <a name="supported-virtual-machine-os-images"></a>Ondersteunde installatie kopieën van besturings systemen voor virtuele machines
 
 Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieën van besturings systemen:
 

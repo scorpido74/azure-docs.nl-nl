@@ -1,41 +1,41 @@
 ---
-title: CSV-blobs indexeren met de indexeerfunctie Azure Search Blob - Azure Search
-description: CSV-blobs in Azure Blob-opslag voor zoeken in volledige tekst met behulp van een Azure Search-index verkennen. Indexeerfuncties automatiseren opname van gegevens voor bepaalde gegevensbronnen, zoals Azure Blob-opslag.
+title: CSV-blobs indexeren met Azure Search BLOB-indexer-Azure Search
+description: CSV-blobs in Azure Blob-opslag verkennen voor Zoek opdrachten in volledige tekst met behulp van een Azure Search index. Indexeer functies automatiseren gegevens opname voor geselecteerde gegevens bronnen, zoals Azure Blob-opslag.
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: e7d959e77d27fb04b18f402e4056d4dea1607039
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b135fd1a0758567a7b504996bf442a913741fe59
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522895"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656758"
 ---
-# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexeren van CSV-blobs met de indexeerfunctie voor Azure Search blob
+# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexeren van CSV-blobs met Azure Search BLOB-Indexeer functie
 
 > [!Note]
-> parseermodus delimitedText is in preview en niet bedoeld voor gebruik in productieomgevingen. De [2019 in de REST-API-versie-05-06-Preview](search-api-preview.md) biedt deze functie. Er is geen .NET SDK-ondersteuning op dit moment.
+> de delimitedText-verwerkings modus is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
 
-Standaard [indexeerfunctie voor Azure Search blob](search-howto-indexing-azure-blob-storage.md) parseert gescheiden tekst blobs als één segment van de tekst. Echter met blobs met CSV-gegevens, wilt u meestal voor het behandelen van elke regel in de blob als een afzonderlijke document. Bijvoorbeeld, de volgende tekst met scheidingstekens worden gegeven, kunt u parseren in twee documenten, elk met de 'id', 'datePublished' en 'tags' velden: 
+[Azure Search BLOB-Indexeer functie](search-howto-indexing-azure-blob-storage.md) parseert standaard blobs met scheidings tekens als één tekst segment. Met blobs die CSV-gegevens bevatten, wilt u echter vaak elke regel in de BLOB behandelen als een afzonderlijk document. Als u bijvoorbeeld de volgende tekst met scheidings tekens wilt, kunt u deze in twee documenten parseren, elk met de velden ' id ', ' datePublished ' en ' Tags ': 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-In dit artikel leert u hoe het parseren van CSV-blobs met een Azure Search blob indexerby instelling de `delimitedText` parseermodus. 
+In dit artikel vindt u informatie over het parseren van CSV-blobs met een Azure Search BLOB indexerby `delimitedText` instellen van de verdeel modus. 
 
 > [!NOTE]
-> Volg de aanbevelingen van de configuratie van indexeerfunctie in [een-op-veel indexeren](search-howto-index-one-to-many-blobs.md) voor uitvoer van meerdere documenten zoeken van een Azure-blob.
+> Volg de aanbevelingen voor de configuratie van de Indexeer functie in [een-op-veel](search-howto-index-one-to-many-blobs.md) -indexering om meerdere zoek documenten uit één Azure-Blob af te voeren.
 
-## <a name="setting-up-csv-indexing"></a>Instellen van het indexeren van CSV
-Indexeren van CSV-blobs, maken of bijwerken van de definitie van een indexeerfunctie met de `delimitedText` parseermodus op een [indexeerfunctie maken](https://docs.microsoft.com/rest/api/searchservice/create-indexer) aanvraag:
+## <a name="setting-up-csv-indexing"></a>CSV-indexering instellen
+Als u CSV-blobs wilt indexeren, maakt of werkt u een Indexeer `delimitedText` functie definitie met de parserings modus op een aanvraag voor het maken van een [Indexeer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) functie:
 
     {
       "name" : "my-csv-indexer",
@@ -43,27 +43,27 @@ Indexeren van CSV-blobs, maken of bijwerken van de definitie van een indexeerfun
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-`firstLineContainsHeaders` Geeft aan dat de eerste regel (niet-lege) van elke blob headers bevat.
-Als blobs niet een initiële headerregel bevat, moeten de kolomkoppen in de configuratie van de indexeerfunctie worden opgegeven: 
+`firstLineContainsHeaders`geeft aan dat de eerste (niet-lege) regel van elke BLOB kopteksten bevat.
+Als blobs geen oorspronkelijke header regel bevatten, moeten de headers worden opgegeven in de Indexeer functie: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-U kunt het scheidingsteken teken met behulp van de `delimitedTextDelimiter` configuratie-instelling. Bijvoorbeeld:
+U kunt het scheidings teken aanpassen met `delimitedTextDelimiter` behulp van de configuratie-instelling. Bijvoorbeeld:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> Op dit moment wordt alleen de UTF-8-codering ondersteund. Als u ondersteuning nodig voor andere coderingen hebt, stemt u erop op [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Op dit moment wordt alleen de UTF-8-code ring ondersteund. Als u ondersteuning voor andere code ringen nodig hebt, stem u dan op [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 > [!IMPORTANT]
-> Wanneer u de tekst met scheidingstekens parseermodus, Azure Search wordt ervan uitgegaan dat alle blobs in uw gegevensbron CSV zal zijn. Als u nodig hebt ter ondersteuning van een combinatie van CSV- en niet-CSV-blobs in de dezelfde gegevensbron, neem stemt u erop op [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Wanneer u de modus voor het parseren van tekst met scheidings tekens gebruikt Azure Search, wordt ervan uitgegaan dat alle blobs in uw gegevens bron CSV zijn. Als u een combi natie van CSV-en niet-CSV-blobs in dezelfde gegevens bron wilt ondersteunen, moet u deze op [UserVoice](https://feedback.azure.com/forums/263029-azure-search)stemmen.
 > 
 > 
 
-## <a name="request-examples"></a>Voorbeelden van aanvraag
-Als dit alle samen, zijn hier de volledige nettolading-voorbeelden. 
+## <a name="request-examples"></a>Aanvraag voorbeelden
+Als u dit alles gebruikt, zijn hier de volledige voor beelden van payload. 
 
-Gegevensbron: 
+Bron 
 
     POST https://[service name].search.windows.net/datasources?api-version=2019-05-06-Preview
     Content-Type: application/json
@@ -76,7 +76,7 @@ Gegevensbron:
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
 
-Indexer:
+Indexeer functie
 
     POST https://[service name].search.windows.net/indexers?api-version=2019-05-06-Preview
     Content-Type: application/json
@@ -89,6 +89,6 @@ Indexer:
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-search-better"></a>Help ons Azure Search verbeteren
-Als u functieverzoeken heeft of suggesties voor verbeteringen hebt, uw gegevens over opgeven [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+## <a name="help-us-make-azure-search-better"></a>Help ons Azure Search beter te maken
+Als u een functie verzoek of ideeën voor verbeteringen hebt, geeft u uw invoer op [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)op.
 

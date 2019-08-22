@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 81b2145e6107558f2d9698c7e5d03658f1129b00
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63534260e042a1b47ca5e635c48123672d663a9b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667935"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873311"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Taken plannen en uitzenden (python)
 
@@ -47,15 +47,17 @@ Aan het einde van deze zelf studie hebt u twee python-apps:
 
 **scheduleJobService.py**, waarmee een directe methode wordt aangeroepen in de gesimuleerde apparaat-app en de gewenste eigenschappen van het apparaat worden bijgewerkt met behulp van een taak.
 
-[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
-
-Hier volgen de installatie-instructies voor de vereisten.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 > [!NOTE]
 > De **Azure IOT SDK voor python** biedt geen rechtstreekse ondersteuning voor de functionaliteit van **taken** . In plaats daarvan biedt deze zelf studie een alternatieve oplossing die gebruikmaakt van asynchrone threads en timers. Zie de **Service client SDK** Feature List op de pagina [Azure IOT SDK voor python](https://github.com/Azure/azure-iot-sdk-python) voor verdere updates.
 >
+
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
+
+## <a name="prerequisites"></a>Vereisten
+
+Voor deze zelfstudie hebt u het volgende nodig:
+
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -74,6 +76,10 @@ In deze sectie maakt u een python-console-app die reageert op een directe method
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > De PIP-pakketten voor Azure-iothub-service-client en Azure-iothub-Device-client zijn momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) post.
+   >
 
 2. Maak een nieuw **simDevice.py** -bestand in uw werkmap met behulp van een tekst editor.
 
@@ -158,9 +164,27 @@ In deze sectie maakt u een python-console-app die reageert op een directe method
 
 ## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 
-[!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
+In dit artikel maakt u een back-end-service die een directe methode aanroept op een apparaat en het apparaat dubbele. De service heeft de machtiging **Connect** nodig om een directe methode op een apparaat aan te roepen. De service heeft ook de lees-en **Schrijf** machtigingen voor het **REGI ster** nodig om het id-REGI ster te lezen en te schrijven. Er is geen standaard beleid voor gedeelde toegang dat alleen deze machtigingen bevat. u moet er dus een maken.
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+Ga als volgt te werk om een gedeeld toegangs beleid te maken dat **service Connect**-, **register Lees**-en **Schrijf** machtigingen voor het REGI ster heeft, en om een Connection String voor dit beleid te verkrijgen:
+
+1. Open uw IoT-hub in de [Azure Portal](https://portal.azure.com). De eenvoudigste manier om uw IoT-hub te bereiken, is door **resource groepen**te selecteren, de resource groep te selecteren waar uw IOT-hub zich bevindt en vervolgens uw IOT-hub te selecteren in de lijst met resources.
+
+2. Selecteer in het linkerdeel venster van uw IoT-hub het **beleid voor gedeelde toegang**.
+
+3. Selecteer in het bovenste menu boven de lijst met beleids regels **toevoegen**.
+
+4. Voer in het deel venster **een gedeeld toegangs beleid toevoegen** een beschrijvende naam in voor uw beleid. bijvoorbeeld: *serviceAndRegistryReadWrite*. Selecteer onder **machtigingen** **service verbinding** en **REGI ster schrijven** (**REGI ster lezen** wordt automatisch geselecteerd wanneer u **register schrijven**selecteert). Selecteer vervolgens **Maken**.
+
+    ![Weer geven hoe een nieuw beleid voor gedeelde toegang moet worden toegevoegd](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
+
+5. Selecteer in het deel venster **Shared Access policies** uw nieuwe beleid in de lijst met beleids regels.
+
+6. Onder **gedeelde toegangs sleutels**selecteert u het Kopieer pictogram voor de **verbindings reeks--primaire sleutel** en slaat u de waarde op.
+
+    ![Het ophalen van de verbindingsreeks](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
+
+Zie [toegangs beheer en machtigingen](./iot-hub-devguide-security.md#access-control-and-permissions)voor meer informatie over het IOT hub van het beleid voor gedeelde toegang en machtigingen.
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Taken plannen voor het aanroepen van een directe methode en het bijwerken van de eigenschappen van een apparaat met dubbele gegevens
 
@@ -172,9 +196,13 @@ In deze sectie maakt u een python-console-app die een externe **lockDoor** op ee
     pip install azure-iothub-service-client
     ```
 
+   > [!NOTE]
+   > De PIP-pakketten voor Azure-iothub-service-client en Azure-iothub-Device-client zijn momenteel alleen beschikbaar voor Windows-besturings systemen. Voor Linux/Mac OS raadpleegt u de sectie met Linux-en Mac OS-specifieke secties in de [ontwikkel omgeving voorbereiden voor python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) post.
+   >
+
 2. Maak een nieuw **scheduleJobService.py** -bestand in uw werkmap met behulp van een tekst editor.
 
-3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **scheduleJobService.py** -bestand:
+3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **scheduleJobService.py** -bestand. Vervang de `{IoTHubConnectionString}` tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de `{deviceId}` tijdelijke aanduiding door de apparaat-id die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub):
 
     ```python
     import sys

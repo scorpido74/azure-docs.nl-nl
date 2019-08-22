@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 298770b1b2da816ddef9154fafb20d7c6cb82df3
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 6c18a244ceae2ccd9a536abeb6bc2d85760bb0a6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849041"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875909"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Een taak maken en uitvoeren in uw Azure IoT Central-toepassing
 
@@ -41,7 +41,7 @@ In deze sectie wordt beschreven hoe u een taak maakt en uitvoert. U ziet hoe u d
 
 1. Nadat u uw apparaten hebt geselecteerd, kiest u **uitvoeren** of **Opslaan**. De taak wordt nu weer gegeven op de pagina met hoofd **taken** . In deze weer gave ziet u de taak die momenteel wordt uitgevoerd en de geschiedenis van eerder uitgevoerde taken. De taak die wordt uitgevoerd, wordt altijd bovenaan de lijst weer gegeven. Uw opgeslagen taak kan op elk gewenst moment opnieuw worden geopend om door te gaan met bewerken of om te worden uitgevoerd.
 
-    ![Taak weer geven](./media/howto-run-a-job/viewjob.png)
+    ![Taak weergeven](./media/howto-run-a-job/viewjob.png)
 
     > [!NOTE]
     > U kunt de geschiedenis van uw eerder uitgevoerde taken gedurende Maxi maal 30 dagen bekijken.

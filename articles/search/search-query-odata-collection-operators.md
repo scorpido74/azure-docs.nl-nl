@@ -1,13 +1,13 @@
 ---
-title: Referentie voor OData-operator - Azure Search
-description: OData-verzameling operators, alle, en lambda-expressies in Azure Search-query's.
+title: Referentie voor OData-verzamelings operator-Azure Search
+description: OData-verzamelings operators, alle en alle en Lambda-expressies in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 7afafe158732b14ebe314eeee5d015acddc55b72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e057d0b57162d10aab13d8b1f77e0eaddca2ec2a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079936"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647639"
 ---
-# <a name="odata-collection-operators-in-azure-search---any-and-all"></a>OData-verzameling operators in Azure Search - `any` en `all`
+# <a name="odata-collection-operators-in-azure-search---any-and-all"></a>OData-verzamelings operators `any` in azure Search-en`all`
 
-Bij het schrijven van een [OData-filterexpressie](query-odata-filter-orderby-syntax.md) als u wilt gebruiken met Azure Search, is het vaak nuttig om te filteren in de verzameling velden. U kunt dit doen met behulp van de `any` en `all` operators.
+Wanneer u een [OData-filter expressie](query-odata-filter-orderby-syntax.md) schrijft om te gebruiken met Azure Search, is het vaak handig om te filteren op verzamelings velden. U kunt dit doen met behulp `all` van de `any` Opera tors en.
 
 ## <a name="syntax"></a>Syntaxis
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van `any` of `all`.
+De volgende ebnf ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die `any` gebruikmaakt `all`van of.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -45,56 +45,56 @@ collection_filter_expression ::=
 lambda_expression ::= identifier ':' boolean_expression
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Er zijn drie soorten expressie filteren van verzamelingen.
+Er zijn drie soorten expressies waarmee verzamelingen worden gefilterd.
 
-- De eerste twee herhalen van een veld verzameling, het toepassen van een predikaat is opgegeven in de vorm van een lambda-expressie op elk element van de verzameling.
-  - Een expressie met `all` retourneert `true` als het predikaat ingesteld op true voor elk element van de verzameling is.
-  - Een expressie met `any` retourneert `true` als het predikaat ingesteld op true voor ten minste één element van de verzameling is.
-- De derde vorm van verzameling filteren gebruikt `any` zonder een lambda-expressie om te testen of een verzameling veld leeg is. Als de verzameling worden elementen bevat, retourneert deze `true`. Als de verzameling leeg is, retourneert deze `false`.
+- De eerste twee herhaalde iteratie van een verzamelings veld, waarbij een predikaat wordt toegepast dat is opgegeven in de vorm van een lambda-expressie voor elk element van de verzameling.
+  - Een expressie die `all` gebruikmaakt `true` van retourneert als het predicaat True is voor elk element van de verzameling.
+  - Een expressie die `any` gebruikmaakt `true` van retourneert als het predicaat True is voor ten minste één element van de verzameling.
+- Het derde formulier van het verzamelings `any` filter gebruikt zonder een lambda-expressie om te testen of een veld in de verzameling leeg is. Als de verzameling elementen bevat, wordt deze geretourneerd `true`. Als de verzameling leeg is, wordt geretourneerd `false`.
 
-Een **lambda-expressie** in een verzameling filter is, zoals de hoofdtekst van een lus in een programmeertaal. Een variabele, wordt gedefinieerd met de naam de **bereik variabele**, dat het huidige element van de verzameling tijdens herhaling bevat. Het definieert ook een andere Booleaanse expressie die wordt de filtercriteria om toe te passen aan de variabele bereik voor elk element van de verzameling.
+Een **lambda-expressie** in een verzamelings filter is net als de hoofd tekst van een lus in een programmeer taal. Hiermee wordt een variabele gedefinieerd, de **variabele Range**genoemd, die het huidige element van de verzameling tijdens iteratie bevat. Er wordt ook een andere booleaanse expressie gedefinieerd die de filter criteria is die moeten worden toegepast op de bereik variabele voor elk element van de verzameling.
 
 ## <a name="examples"></a>Voorbeelden
 
-Overeenkomst documenten waarvan `tags` veld exact de tekenreeks 'Wi-Fi' bevat:
+Overeenkomende documenten waarvan `tags` het veld precies de teken reeks ' WiFi ' bevat:
 
     tags/any(t: t eq 'wifi')
 
-Overeenkomst documenten waar elk element van de `ratings` veld valt tussen 3 en 5 liggen:
+Vergelijkt documenten waarbij elk element `ratings` van het veld tussen 3 en 5 ligt:
 
     ratings/all(r: r ge 3 and r le 5)
 
-Overeenkomst documenten waarin een van de geo-coördinaten in het `locations` veld binnen de opgegeven veelhoek is:
+Vergelijkt documenten waarbij een van de geo- `locations` coördinaten in het veld binnen de opgegeven veelhoek ligt:
 
     locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
 
-Overeenkomst documenten waar de `rooms` veld leeg is:
+Overeenkomende documenten waarbij het `rooms` veld leeg is:
 
     not rooms/any()
 
-Overeenkomen met documenten wanneer voor alle ruimten de `rooms/amenities` veld bevat "' tv-samenvatting en `rooms/baseRate` is minder dan 100:
+Documenten die voor alle ruimten overeenkomen, `rooms/amenities` het veld bevat ' TV ' `rooms/baseRate` en is kleiner dan 100:
 
     rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
 
 ## <a name="limitations"></a>Beperkingen
 
-Niet elke functie van filterexpressies is beschikbaar in de hoofdtekst van een lambda-expressie. De beperkingen verschillen, afhankelijk van het gegevenstype van de verzameling-veld dat u wilt filteren. De volgende tabel geeft een overzicht van de beperkingen.
+Niet elke functie van filter expressies is beschikbaar in de hoofd tekst van een lambda-expressie. De beperkingen variëren, afhankelijk van het gegevens type van het verzamelings veld dat u wilt filteren. De volgende tabel geeft een overzicht van de beperkingen.
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-Zie voor meer informatie over deze beperkingen, evenals de voorbeelden [probleemoplossing filters voor bestandsverzameling in Azure Search](search-query-troubleshoot-collection-filters.md). Voor meer gedetailleerde informatie over waarom deze beperkingen bestaat, Zie [informatie over filters voor bestandsverzameling in Azure Search](search-query-understand-collection-filters.md).
+Zie [problemen met verzamelings filters in azure Search oplossen](search-query-troubleshoot-collection-filters.md)voor meer informatie over deze beperkingen en voor beelden. Zie informatie over het [verzamelen van filters in azure Search](search-query-understand-collection-filters.md)voor meer gedetailleerde informatie over de oorzaak van deze beperkingen.
 
 ## <a name="next-steps"></a>Volgende stappen  
 
 - [Filters in Azure Search](search-filters.md)
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

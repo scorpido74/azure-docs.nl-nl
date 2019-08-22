@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a7477fa312a172579c6b4717e9f679ac253e1b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823811"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648665"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -36,6 +36,20 @@ Azure AD ontvangt verbeteringen regelmatig. Als u wilt bijhouden met de meest re
 - Plannen voor wijzigingen
 
 Deze pagina wordt maandelijks bijgewerkt, dus regelmatig bezoekt. Als u op zoek bent naar items die ouder zijn dan zes maanden, kunt u deze vinden in het [Archief voor wat er nieuw is in azure Active Directory](whats-new-archive.md).
+
+---
+
+## <a name="august-2019"></a>2019 augustus
+
+### <a name="adalnet-ignores-the-msalnet-shared-cache-for-on-behalf-of-scenarios"></a>ADAL.NET negeert de gedeelde cache van MSAL.NET voor namens een scenario
+
+**Type:** Vast  
+**Service categorie:** Authenticaties (aanmeldingen)  
+**Product mogelijkheden:** Verificatie van de gebruiker
+
+Vanaf Azure AD Authentication Library (ADAL.NET) versie 5.0.0-Preview moeten app-ontwikkel aars [één cache per account serialiseren voor web-apps en Web-api's](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api). Anders is het mogelijk dat sommige scenario's die gebruikmaken van de [namen van de stroom](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow), samen met een aantal `UserAssertion`specifieke gebruiks cases, een verhoogde bevoegdheid hebben. Om dit beveiligings probleem te voor komen, negeert ADAL.NET nu de micro soft-verificatie bibliotheek voor dotnet (MSAL.NET) gedeelde cache voor namens een scenario.
+
+Zie [Azure Active Directory beveiligingslek met betrekking tot misbruik van bevoegdheden voor verificatie bibliotheek](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258)voor meer informatie over dit probleem.
 
 ---
 
@@ -69,7 +83,7 @@ Nieuwe wijzigingen in de gebruikers interface zijn afkomstig van het ontwerp van
 
 **Type:** Plan voor wijziging  
 **Service categorie:** MFA  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 Het IP-adres van de MFA-server wordt verwijderd uit het [Office 365 IP-adres en de URL-webservice](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Als u momenteel afhankelijk bent van deze pagina's om uw firewall instellingen bij te werken, moet u ervoor zorgen dat u ook de lijst met IP-adressen die worden beschreven in de sectie **firewall vereisten voor Azure multi-factor Authentication-Server** van het gedeelte aan de slag [ met het artikel Azure multi-factor Authentication-Server](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) .
 
@@ -78,7 +92,7 @@ Het IP-adres van de MFA-server wordt verwijderd uit het [Office 365 IP-adres en 
 ### <a name="app-only-tokens-now-require-the-client-app-to-exist-in-the-resource-tenant"></a>Voor alleen app-tokens moet de client-app bestaan in de resource Tenant
 
 **Type:** Vast  
-**Service categorie:** Verificaties (aanmeldingen)  
+**Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Verificatie van de gebruiker
 
 Op 26 juli 2019 hebben we gewijzigd hoe we alleen app-tokens bieden via de [client referenties verlenen](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow). Voorheen konden apps tokens krijgen om andere apps aan te roepen, ongeacht of de client-app zich in de Tenant bevindt. We hebben dit gedrag bijgewerkt, waardoor enkele Tenant bronnen, ook wel web-Api's genoemd, alleen kunnen worden aangeroepen door client-apps die voor komen in de resource-Tenant.
@@ -95,7 +109,7 @@ Zie [Wat is er nieuw voor verificatie?](https://docs.microsoft.com/azure/active-
 ### <a name="new-passwordless-sign-in-to-azure-ad-using-fido2-security-keys"></a>Nieuwe aanmelding zonder wacht woord voor Azure AD met behulp van FIDO2-beveiligings sleutels
 
 **Type:** Nieuwe functie  
-**Service categorie:** Verificaties (aanmeldingen)  
+**Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Verificatie van de gebruiker
 
 Azure AD-klanten kunnen nu beleid instellen voor het beheren van FIDO2-beveiligings sleutels voor de gebruikers en groepen van hun organisatie. Eind gebruikers kunnen hun beveiligings sleutels ook zelf registreren, de sleutels gebruiken om zich aan te melden bij hun micro soft-accounts op websites, terwijl ze op FIDO apparaten werken, en zich aanmelden bij hun Azure AD-gekoppelde Windows 10-apparaten.
@@ -122,7 +136,7 @@ Zie voor meer informatie over de apps [SaaS-toepassing-integratie met Azure Acti
 
 **Type:** Nieuwe functie  
 **Service categorie:** Bedrijfsapps  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 U kunt nu het maken, bijwerken en verwijderen van gebruikers accounts automatiseren voor deze nieuwe, geïntegreerde apps:
 
@@ -170,7 +184,7 @@ Zie [beveiligings controles voor Azure AD Domain Services inschakelen (preview)]
 
 **Type:** Nieuwe functie  
 **Service categorie:** Selfservice voor wachtwoord opnieuw instellen  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 Met de nieuwe verificatie methoden & Insights-rapporten kunt u beter begrijpen hoe functies zoals Azure multi-factor Authentication en self-service voor het opnieuw instellen van wacht woorden worden geregistreerd en gebruikt in uw organisatie, inclusief het aantal geregistreerde gebruikers voor elke functie, hoe vaak de selfservice voor wachtwoord herstel wordt gebruikt om wacht woorden opnieuw in te stellen, en op basis van welke methode het opnieuw instellen plaatsvindt.
 
@@ -182,7 +196,7 @@ Zie het gebruik van de [verificatie methoden & Insights (preview)](https://docs.
 
 **Type:** Nieuwe functie  
 **Service categorie:** Identity Protection  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 Alle Azure AD-beheerders kunnen nu het vaandel selecteren boven aan bestaande beveiligings rapporten, zoals de gebruikers die zijn **gemarkeerd voor risico** rapport, om de nieuwe beveiligings ervaring te gebruiken, zoals wordt weer gegeven in de rapporten **Risk ante gebruikers** en **Risk ante** aanmeldingen. . Na verloop van tijd worden alle beveiligings rapporten van oudere versies naar de nieuwe versies verplaatst, met de nieuwe rapporten die u de volgende aanvullende mogelijkheden bieden:
 
@@ -226,7 +240,7 @@ Zie voor meer informatie [directe Federatie met AD FS en providers van derden vo
 
 **Type:** Nieuwe functie  
 **Service categorie:** Bedrijfsapps  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 U kunt nu het maken, bijwerken en verwijderen van gebruikers accounts automatiseren voor deze nieuwe, geïntegreerde apps:
 
@@ -261,7 +275,7 @@ Zie [groepen beheren in de Azure AD-Portal](https://docs.microsoft.com/azure/act
 ### <a name="azure-ad-now-supports-static-query-parameters-in-reply-redirect-uris"></a>Azure AD biedt nu ondersteuning voor statische query parameters in antwoord-Uri's (redirect)
 
 **Type:** Nieuwe functie  
-**Service categorie:** Verificaties (aanmeldingen)  
+**Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Verificatie van de gebruiker
 
 Azure AD-apps kunnen nu uri's voor beantwoorden (omleiden) registreren en gebruiken met statische query parameters ( `https://contoso.com/oauth2?idp=microsoft`bijvoorbeeld) voor OAuth 2,0-aanvragen. De statische query parameter is onderhevig aan de teken reeks die overeenkomt met antwoord-Uri's, net als elk ander deel van de antwoord-URI. Als er geen geregistreerde teken reeks is die overeenkomt met de door de URL gedecodeerde omleidings-URI, wordt de aanvraag geweigerd. Als de antwoord-URI wordt gevonden, wordt de gehele teken reeks gebruikt om de gebruiker te omleiden, inclusief de para meter static query.
@@ -276,7 +290,7 @@ Momenteel zijn de app-registratie schermen van de Azure Portal nog steeds blok k
 
 **Type:** Nieuwe functie  
 **Service categorie:** Rapportage  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 Met trots kondigen we aan dat Azure AD-activiteiten Logboeken (rapporten over controles en aanmeldingen) nu beschikbaar zijn via de Azure AD Power shell-module. U kunt voorheen uw eigen scripts maken met behulp van MS Graph API-eind punten en nu hebben we die mogelijkheid tot Power shell-cmdlets uitgebreid.
 
@@ -288,7 +302,7 @@ Zie [Azure AD Power shell-cmdlets voor rapportage](https://docs.microsoft.com/az
 
 **Type:** Gewijzigde functie  
 **Service categorie:** Rapportage  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 De controle-en aanmeldings logboek rapporten zijn bijgewerkt, zodat u nu verschillende filters kunt Toep assen zonder ze als kolommen toe te voegen aan de rapport schermen. Daarnaast kunt u bepalen hoeveel filters u wilt weer geven op het scherm. Deze updates werken allemaal samen om uw rapporten gemakkelijker te kunnen lezen en zo meer te bereiken aan uw behoeften.
 
@@ -302,7 +316,7 @@ Zie [controle logboeken filteren](https://docs.microsoft.com/azure/active-direct
 
 **Type:** Nieuwe functie  
 **Service categorie:** Identity Protection  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 We zijn blij met het aankondigen van de nieuwe riskDetections-API voor Microsoft Graph nu in open bare preview. U kunt deze nieuwe API gebruiken om een lijst weer te geven met de identiteits beveiliging van de gebruiker en de detectie van de aanmeldings Risico's van uw organisatie. U kunt deze API ook gebruiken om efficiënter een query uit te voeren op uw risico detecties, inclusief details over het detectie type, de status, het niveau en meer.
 
@@ -328,7 +342,7 @@ Zie voor meer informatie over de apps [SaaS-toepassing-integratie met Azure Acti
 
 **Type:** Nieuwe functie  
 **Service categorie:** Bedrijfsapps  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 U kunt nu het maken, bijwerken en verwijderen van gebruikers accounts automatiseren voor deze nieuwe, geïntegreerde apps:
 
@@ -359,7 +373,7 @@ Zie [de status van gebruikers inrichten controleren](https://docs.microsoft.com/
 ### <a name="company-branding-now-appears-on-sign-out-and-error-screens"></a>De huis stijl van het bedrijf wordt nu weer gegeven bij afmelden en fout schermen
 
 **Type:** Gewijzigde functie  
-**Service categorie:** Verificaties (aanmeldingen)  
+**Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Verificatie van de gebruiker
 
 Azure AD is bijgewerkt, zodat de huis stijl van uw bedrijf nu wordt weer gegeven op de schermen voor afmelden en fout en op de aanmeldings pagina. U hoeft niets te doen om deze functie in te scha kelen. Azure AD maakt gewoon gebruik van de activa die u al hebt ingesteld in het **huis stijlgebied** van de Azure Portal.
@@ -372,7 +386,7 @@ Zie [huisstijl toevoegen aan de Azure Active Directory pagina's van uw organisat
 
 **Type:** Afgeschaft  
 **Service categorie:** MFA  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication in hun organisatie willen vereisen, moeten nu gebruikmaken van Azure multi-factor Authentication in de Cloud. Klanten die de MFA-server vóór 1 juli hebben geactiveerd, zien geen wijziging. U kunt nog steeds de nieuwste versie downloaden, toekomstige updates ophalen en activerings referenties genereren.
 
@@ -398,7 +412,7 @@ De afschaffing van TLS 1,0 en TLS 1,1 gebeurt op 31 augustus 2019, maar we biede
 
 **Type:** Nieuwe functie  
 **Service categorie:** Bedrijfsapps  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 U kunt nu het rapport gebruik en inzichten gebruiken, dat zich bevindt in het gebied **bedrijfs toepassingen** van de Azure Portal, om een toepassings gerichte weer gave van uw aanmeldings gegevens te verkrijgen, met inbegrip van informatie over:
 
@@ -416,7 +430,7 @@ Zie voor meer informatie over deze functie [het rapport gebruik en inzichten in 
 
 **Type:** Nieuwe functie  
 **Service categorie:** Bedrijfsapps  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 Volg deze nieuwe zelf studies om de Azure AD-inrichtings service te gebruiken voor het automatiseren van het maken, verwijderen en bijwerken van gebruikers accounts voor de volgende Cloud-apps:
 
@@ -436,7 +450,7 @@ Voor meer informatie over hoe u uw organisatie beter kunt beveiligen door middel
 
 **Type:** Nieuwe functie  
 **Service categorie:** N/A  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 U kunt nu uw identiteits beveiligings postuur bewaken en verbeteren met behulp van de functie voor beveiligde scores voor identiteiten in azure AD. De functie voor het beveiligen van identiteiten maakt gebruik van één dash board waarmee u het volgende kunt doen:
 
@@ -453,7 +467,7 @@ Zie [Wat is de identiteit beveiligde Score in azure Active Directory?](https://d
 ### <a name="new-app-registrations-experience-is-now-available-general-availability"></a>Nieuwe App-registraties-ervaring is nu beschikbaar (algemene Beschik baarheid)
 
 **Type:** Nieuwe functie  
-**Service categorie:** Verificaties (aanmeldingen)  
+**Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Ontwikkelaarservaring
 
 De nieuwe [app-registraties](https://aka.ms/appregistrations) -ervaring is nu in algemene Beschik baarheid. Deze nieuwe ervaring omvat alle belang rijke functies van de Azure Portal en de portal voor toepassings registratie en verbetert deze.
@@ -472,7 +486,7 @@ Zie voor meer informatie [micro soft Identity platform](https://docs.microsoft.c
 
 **Type:** Nieuwe functie  
 **Service categorie:** Identity Protection  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 Het is blij dat u de Risk ante gebruikers API kunt gebruiken om de risico geschiedenis van gebruikers op te halen, Risk ante gebruikers te sluiten en gebruikers te bevestigen dat ze zijn aangetast. Met deze wijziging kunt u de risico status van uw gebruikers efficiënter bijwerken en inzicht krijgen in hun risico geschiedenis.
 
@@ -538,7 +552,7 @@ Zie [een naamgevings beleid afdwingen voor Office 365-groepen](https://docs.micr
 
 **Type:** Gewijzigde functie  
 **Service categorie:** Rapportage  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 We zijn blij met het aankondigen van de algemene Beschik baarheid van Microsoft Graph API-eind punten ondersteuning voor Azure AD-activiteiten Logboeken. Met deze versie kunt u nu versie 1,0 van zowel de Azure AD-audit logboeken en de Api's voor aanmeld Logboeken gebruiken.
 
@@ -550,7 +564,7 @@ Zie overzicht van de [API voor Azure AD-controle logboeken](https://docs.microso
 
 **Type:** Nieuwe functie  
 **Service categorie:** Voorwaardelijke toegang  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming  
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &  
 
 Beheerders kunnen nu beleid voor voorwaardelijke toegang maken voor gebruik door de gecombineerde registratie pagina. Dit geldt ook voor het Toep assen van beleid om registratie in te stellen als:
 
@@ -568,13 +582,13 @@ Zie voor meer informatie over voorwaardelijke toegang en het opnieuw instellen v
 
 ## <a name="april-2019"></a>April 2019
 
-### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>Nieuwe Azure AD Threat Intelligence-detectie is nu beschikbaar in vernieuwd Azure AD Identity Protection
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>Nieuwe Azure AD Threat Intelligence-detectie is nu beschikbaar als onderdeel van Azure AD Identity Protection
 
 **Type:** Nieuwe functie  
 **Service categorie:** Azure AD-identiteitsbeveiliging  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
-Azure AD Threat Intelligence-detectie is nu beschikbaar in de vernieuwde Azure AD Identity Protection. Deze nieuwe functionaliteit helpt bij het aanduiden van gebruikers activiteit die ongebruikelijk is voor een specifieke gebruiker of die consistent is met bekende aanvals patronen gebaseerd op de interne en externe bedreigings informatie van micro soft.
+Azure AD Threat Intelligence-detectie is nu beschikbaar als onderdeel van de bijgewerkte functie Azure AD Identity Protection. Deze nieuwe functionaliteit helpt bij het aanduiden van ongebruikelijke gebruikers activiteit voor een specifieke gebruiker of activiteit die consistent is met bekende aanvals patronen gebaseerd op de interne en externe informatie bronnen van micro soft.
 
 Voor meer informatie over de vernieuwde versie van Azure AD Identity Protection raadpleegt u de [vier belangrijkste uitbrei dingen van de Azure AD Identity Protection nu in de open bare preview](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) -blog staan en [wat Azure Active Directory Identity Protection (vernieuwd)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) Knowledge. Zie het artikel [Azure Active Directory Identity Protection risico gebeurtenissen](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) voor meer informatie over de detectie van Azure AD Threat Intelligence.
 
@@ -612,7 +626,7 @@ Zie [een naamgevings beleid afdwingen voor Office 365-groepen](https://docs.micr
 
 **Type:** Nieuwe functie  
 **Service categorie:** Rapportage  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 Om uw feedback over visualisaties met de activiteiten logboeken van Azure AD te helpen aanpakken, introduceren we een nieuwe inzichten-functie in Log Analytics. Deze functie helpt u bij het verkrijgen van inzichten over uw Azure AD-resources door gebruik te maken van onze interactieve sjablonen, werkmappen genoemd. Deze vooraf gemaakte werkmappen kunnen Details bieden voor apps of gebruikers, en omvatten:
 
@@ -684,7 +698,7 @@ Zie [probleemoplossings fouten tijdens de synchronisatie](https://docs.microsoft
 
 **Type:** Nieuwe functie  
 **Service categorie:** Voorwaardelijke toegang  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 Voorwaardelijke toegang op basis van app-beveiliging is nu beschikbaar via het beveiligings beleid voor het **vereisen van apps** . Dit nieuwe beleid helpt de beveiliging van uw organisatie te verbeteren door te voor komen dat:
 
@@ -702,7 +716,7 @@ Zie [app-beveiligings beleid vereisen voor toegang tot Cloud-apps met voorwaarde
 
 **Type:** Nieuwe functie  
 **Service categorie:** Voorwaardelijke toegang  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 We hebben onze Azure AD-ondersteuning voor micro soft Edge uitgebreid, met inbegrip van nieuwe ondersteuning voor eenmalige aanmelding voor Azure AD en voorwaardelijke toegang. Als u Microsoft Intune Managed Browser eerder hebt gebruikt, kunt u nu gebruikmaken van micro soft Edge.
 
@@ -715,7 +729,7 @@ Zie voor meer informatie over het instellen en beheren van uw apparaten en apps 
 ### <a name="identity-experience-framework-and-custom-policy-support-in-azure-active-directory-b2c-is-now-available-ga"></a>Het Framework voor identiteits ervaring en aangepaste beleids ondersteuning in Azure Active Directory B2C is nu beschikbaar (GA)
 
 **Type:** Nieuwe functie  
-**Service categorie:** B2C - Consumentenidentiteitsbeheer  
+**Service categorie:** B2C-Consumer Identity Management  
 **Product mogelijkheden:** B2B/B2C
 
 U kunt nu aangepaste beleids regels maken in Azure AD B2C, met inbegrip van de volgende taken, die op schaal en onder onze Azure-SLA worden ondersteund:
@@ -789,7 +803,7 @@ U kunt nu een SSO-ervaring (eenmalige aanmelding) bieden voor on-premises, met S
 ### <a name="client-apps-in-request-loops-will-be-interrupted-to-improve-reliability-and-user-experience"></a>Client-apps in de aanvraag lussen worden onderbroken om de betrouw baarheid en gebruikers ervaring te verbeteren
 
 **Type:** Nieuwe functie  
-**Service categorie:** Verificaties (aanmeldingen)  
+**Service categorie:** Authenticaties (aanmeldingen)  
 **Product mogelijkheden:** Verificatie van de gebruiker
 
 Client-apps kunnen honderden dezelfde aanmeldings aanvragen binnen korte tijd onjuist uitgeven. Deze aanvragen, ongeacht of ze wel of niet zijn gelukt, nemen alle bijdragen aan een slechte gebruikers ervaring en verhoogde workloads voor de IDP, verg root de latentie voor alle gebruikers en verminderen de beschik baarheid van de IDP.
@@ -802,7 +816,7 @@ Deze update verzendt een `invalid_grant` fout melding `AADSTS50196: The server t
 
 **Type:** Gewijzigde functie  
 **Service categorie:** Rapportage  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 We hebben een nieuwe Azure AD- **controle logboek** pagina gemaakt waarmee u zowel de Lees baarheid als de manier waarop u naar uw gegevens zoekt, kunt verbeteren. Als u de nieuwe pagina **controle logboeken** wilt weer geven, selecteert u **controle logboeken** in het gedeelte **activiteit** van Azure AD.
 
@@ -816,7 +830,7 @@ Zie voor meer informatie over de nieuwe pagina **controle** logboeken [activitei
 
 **Type:** Gewijzigde functie  
 **Service categorie:** Voorwaardelijke toegang  
-**Product mogelijkheden:** Identiteitbeveiliging en -bescherming
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
 Om te voor komen dat beheerders zichzelf via onjuist geconfigureerde beleids regels voor voorwaardelijke toegang per ongeluk kunnen vergren delen, hebben we nieuwe waarschuwingen en bijgewerkte richt lijnen gemaakt in de Azure Portal. Zie [Wat zijn service afhankelijkheden in azure Active Directory voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/service-dependencies)voor meer informatie over de nieuwe richt lijnen.
 
@@ -836,7 +850,7 @@ We hebben onze bestaande gebruiks voorwaarden bijgewerkt om te helpen bij het ve
 
 **Type:** Gewijzigde functie  
 **Service categorie:** Rapportage  
-**Product mogelijkheden:** Controleren en rapporteren
+**Product mogelijkheden:** & Rapportage controleren
 
 U kunt nu grote hoeveel heden activiteiten logboeken rechtstreeks downloaden vanuit het Azure Portal. Met deze update kunt u het volgende doen:
 
@@ -862,7 +876,7 @@ We zijn bezig met het bijwerken van de manier waarop Exchange ActiveSync (EAS) d
 
 - Gebruikers locatie, op basis van land, regio of IP-adres
 
-- Aanmeldingsrisico
+- Aanmeldings risico
 
 - Apparaatplatform
 
@@ -872,7 +886,7 @@ Als u deze voor waarden in uw beleid voor voorwaardelijke toegang eerder hebt ge
 
 ## <a name="february-2019"></a>Februari 2019
 
-### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Configureerbare Azure AD SAML-tokenversleuteling (openbare preview) 
+### <a name="configurable-azure-ad-saml-token-encryption-public-preview"></a>Configureerbaar Azure AD SAML-token versleuteling (open bare preview) 
 
 **Type:** Nieuwe functie  
 **Service categorie:** Bedrijfsapps  
@@ -884,7 +898,7 @@ Zie [Azure AD SAML-token versleuteling configureren](https://docs.microsoft.com/
 
 ---
 
-### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Een toegangsbeoordeling maken voor groepen of apps met behulp van Azure AD-toegangsbeoordelingen
+### <a name="create-an-access-review-for-groups-or-apps-using-azure-ad-access-reviews"></a>Een toegangs beoordeling maken voor groepen of apps met behulp van Azure AD-toegangs beoordelingen
 
 **Type:** Nieuwe functie  
 **Service categorie:** Toegangsbeoordelingen  
@@ -896,7 +910,7 @@ Zie [een toegangs beoordeling van groepen of toepassingen in azure AD-toegangs b
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Er zijn nieuwe federatieve apps beschikbaar in de Azure AD-app-galerie - februari 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---february-2019"></a>Nieuwe federatieve apps die beschikbaar zijn in de Azure AD-App-galerie-februari 2019
 
 **Type:** Nieuwe functie  
 **Service categorie:** Bedrijfsapps  
@@ -910,7 +924,7 @@ Zie voor meer informatie over de apps [SaaS-toepassing-integratie met Azure Acti
 
 ---
 
-### <a name="enhanced-combined-mfasspr-registration"></a>Verbeterde gecombineerde MFA/SSPR-registratie
+### <a name="enhanced-combined-mfasspr-registration"></a>Uitgebreide registratie van gecombineerde MFA/SSPR
 
 **Type:** Gewijzigde functie  
 **Service categorie:** Selfservice voor wachtwoord opnieuw instellen  
@@ -938,10 +952,10 @@ Voor meer informatie over de verbeterde registratie-ervaring raadpleegt [u de le
 
 ---
 
-### <a name="updated-policy-management-experience-for-user-flows"></a>Bijgewerkte beleidsbeheerervaring voor gebruikersstromen
+### <a name="updated-policy-management-experience-for-user-flows"></a>Beleids beheer ervaring voor gebruikers stromen bijgewerkt
 
 **Type:** Gewijzigde functie  
-**Service categorie:** B2C - Consumentenidentiteitsbeheer  
+**Service categorie:** B2C-Consumer Identity Management  
 **Product mogelijkheden:** B2B/B2C
 
 We hebben het proces voor het maken en beheren van beleid voor gebruikers stromen bijgewerkt (voorheen bekend als ingebouwde beleids regels). Deze nieuwe ervaring is nu de standaard instelling voor al uw Azure AD-tenants.
@@ -952,10 +966,10 @@ Voor meer informatie over de nieuwe beleids beheer-ervaring raadpleegt u de [Azu
 
 ---
 
-### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Specifieke versies van pagina-elementen kiezen die worden geleverd door Azure AD B2C
+### <a name="choose-specific-page-element-versions-provided-by-azure-ad-b2c"></a>Specifieke versie van pagina-elementen kiezen die wordt opgegeven door Azure AD B2C
 
 **Type:** Nieuwe functie  
-**Service categorie:** B2C - Consumentenidentiteitsbeheer  
+**Service categorie:** B2C-Consumer Identity Management  
 **Product mogelijkheden:** B2B/B2C
 
 U kunt nu een specifieke versie van de pagina-elementen kiezen die door Azure AD B2C worden verschaft. Door een specifieke versie te selecteren, kunt u de updates testen voordat ze op een pagina worden weer gegeven en kunt u voorspel bare gedrag ophalen. Daarnaast kunt u ervoor kiezen om specifieke pagina versies af te dwingen om Java script-aanpassingen toe te staan. Als u deze functie wilt inschakelen, gaat u naar de pagina **Eigenschappen** in uw gebruikers stromen.
@@ -964,10 +978,10 @@ Voor meer informatie over het kiezen van specifieke versies van pagina-elementen
 
 ---
 
-### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Configureerbare wachtwoordvereisten voor eindgebruikers voor B2C (GA)
+### <a name="configurable-end-user-password-requirements-for-b2c-ga"></a>Configureer bare vereisten voor het wacht woord voor de eind gebruiker voor B2C (GA)
 
 **Type:** Nieuwe functie  
-**Service categorie:** B2C - Consumentenidentiteitsbeheer  
+**Service categorie:** B2C-Consumer Identity Management  
 **Product mogelijkheden:** B2B/B2C
 
 U kunt nu de wachtwoord complexiteit van uw organisatie instellen voor uw eind gebruikers, in plaats van uw systeem eigen Azure AD-wachtwoord beleid te gebruiken. Op de Blade **Eigenschappen** van uw gebruikers stromen (voorheen bekend als uw ingebouwde beleids regels) kunt u een wachtwoord complexiteit van **eenvoudig** of **sterk**kiezen, of u kunt een **aangepaste** set vereisten maken.
@@ -976,10 +990,10 @@ Zie [complexiteits vereisten configureren voor wacht woorden in azure Active Dir
 
 ---
 
-### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nieuwe standaardsjablonen voor aangepaste verificatie-ervaringen
+### <a name="new-default-templates-for-custom-branded-authentication-experiences"></a>Nieuwe standaard sjablonen voor aangepaste merk authenticatie-ervaringen
 
 **Type:** Nieuwe functie  
-**Service categorie:** B2C - Consumentenidentiteitsbeheer  
+**Service categorie:** B2C-Consumer Identity Management  
 **Product mogelijkheden:** B2B/B2C
 
 U kunt onze nieuwe standaard sjablonen op de Blade **pagina-indelingen** van uw gebruikers stromen (voorheen bekend als ingebouwde beleids regels) gebruiken om een aangepaste merk bare verificatie-ervaring voor uw gebruikers te maken.

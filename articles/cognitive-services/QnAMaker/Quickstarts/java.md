@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/13/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f2803edf3f6a989f9b33543de9eb33f30ad2bfa8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: aae59747422fd9dfb53266ee9693c3380c35f73b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071981"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647136"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>De QnA Maker REST-API gebruiken met Java 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ In dit artikel leest u hoe u de [QnA Maker-API van Microsoft](../Overview/overvi
 - [Een knowledge base verwijderen.](#Delete)
 - [De huidige eindpuntsleutels ophalen.](#GetKeys)
 - [De huidige eindpuntsleutels opnieuw genereren.](#PutKeys)
-- [De huidige set wijzigingen voor niet-hoofdlettergevoelige word ophalen.](#GetAlterations)
-- [Vervang de huidige set met niet-hoofdlettergevoelige word wijzigingen.](#PutAlterations)
+- [De huidige set hoofdletter gevoelige woord wijzigingen ophalen.](#GetAlterations)
+- [De huidige set hoofdletter gevoelige woord wijzigingen vervangen.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

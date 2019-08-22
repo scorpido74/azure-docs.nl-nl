@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 6/1/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740875"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891712"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -361,6 +360,13 @@ U kunt ook een resource manager-sjabloon gebruiken waarmee de populaire [GoAcces
 ### <a name="what-could-cause-backend-health-to-return-an-unknown-status"></a>Wat kan ertoe leiden dat de status van de back-end wordt weer gegeven?
 
 Normaal gesp roken ziet u een onbekende status wanneer de toegang tot de back-end wordt geblokkeerd door een netwerk beveiligings groep (NSG), aangepaste DNS of door de gebruiker gedefinieerde route ring (UDR) op het toepassings gateway-subnet. Zie voor meer informatie [status van back-end, diagnostische logboek registratie en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md).
+
+### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>Is er een geval waarin NSG-stroom logboeken geen toegestaan verkeer weer geven?
+
+Ja. Als uw configuratie overeenkomt met het volgende scenario, ziet u geen toegestaan verkeer in uw NSG-stroom logboeken:
+- U hebt Application Gateway v2 geïmplementeerd
+- U hebt een NSG op het toepassings gateway-subnet
+- U hebt NSG-stroom logboeken ingeschakeld op die NSG
 
 ## <a name="next-steps"></a>Volgende stappen
 

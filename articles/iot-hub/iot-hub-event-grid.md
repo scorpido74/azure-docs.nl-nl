@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 0f8942d92958ee8add9645239cc5664a4a96bb33
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533357"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648645"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
@@ -72,7 +72,7 @@ In het volgende voor beeld ziet u het schema van een gebeurtenis die is verbonde
 
 ### <a name="device-telemetry-schema"></a>Telemetrie-schema van apparaat
 
-Het telemetrie-bericht van een apparaat moet een geldige JSON-indeling hebben waarvoor het content type is ingesteld op JSON en contentEncoding is ingesteld op UTF-8 in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Als deze niet is ingesteld, worden de berichten in IoT Hub geschreven in de indeling basis 64-code ring.
+Het telemetrie-bericht van een apparaat moet een geldige JSON-indeling hebben waarvoor het content type is ingesteld op **Application/JSON** en contentEncoding ingesteld op **UTF-8** in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Beide eigenschappen zijn niet hoofdletter gevoelig. Als de inhouds codering niet is ingesteld, schrijft IoT Hub de berichten in de indeling basis 64-code ring.
 
 U kunt telemetrie-gebeurtenissen van apparaten verrijken voordat ze worden gepubliceerd naar Event Grid door het eind punt te selecteren als Event Grid. Zie voor meer informatie overzicht van verrijkingen van [berichten](iot-hub-message-enrichments-overview.md).
 
@@ -174,9 +174,9 @@ Het onderwerp van IoT-gebeurtenissen maakt gebruik van de volgende indeling:
 devices/{deviceId}
 ```
 
-Met Event Grid kunt u ook kenmerken van elke gebeurtenis filteren, met inbegrip van de gegevens inhoud. Zo kunt u kiezen welke gebeurtenissen op basis van de inhoud van het telemetrie-bericht worden geleverd. Zie [Geavanceerde filters](../event-grid/event-filtering.md#advanced-filtering) om voor beelden te bekijken. Voor het filteren van de hoofd tekst van de telemetrie-berichten moet u het content type instellen op JSON en contentEncoding naar UTF-8 in de eigenschappen van het bericht [systeem](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties).
+Met Event Grid kunt u ook kenmerken van elke gebeurtenis filteren, met inbegrip van de gegevens inhoud. Zo kunt u kiezen welke gebeurtenissen op basis van de inhoud van het telemetrie-bericht worden geleverd. Zie [Geavanceerde filters](../event-grid/event-filtering.md#advanced-filtering) om voor beelden te bekijken. Voor het filteren van de hoofd tekst van de telemetrie-berichten moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties). Beide eigenschappen zijn niet hoofdletter gevoelig.
 
-Voor niet-telemetrie-gebeurtenissen zoals DeviceConnected, DeviceDisconnected, DeviceCreated en DeviceDeleted kan de Event Grid-filtering worden gebruikt bij het maken van het abonnement. Voor telemetrie-gebeurtenissen kunnen gebruikers naast het filteren in Event Grid ook filteren op apparaatdubbels, bericht eigenschappen en hoofd tekst via de routerings query voor berichten. We maken een standaard [route](iot-hub-devguide-messages-d2c.md) in IOT hub, op basis van uw event grid-abonnement op telemetrie van apparaten. Deze enkele route kan al uw Event Grid abonnementen afhandelen. Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt u uw [routerings query](iot-hub-devguide-routing-query-syntax.md)bijwerken. De routerings query kan alleen worden toegepast op de bericht tekst als de hoofd tekst JSON is. U moet ook het content type instellen op JSON en contentEncoding naar UTF-8 in de [Eigenschappen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)van het bericht systeem.
+Voor niet-telemetrie-gebeurtenissen zoals DeviceConnected, DeviceDisconnected, DeviceCreated en DeviceDeleted kan de Event Grid-filtering worden gebruikt bij het maken van het abonnement. Voor telemetrie-gebeurtenissen kunnen gebruikers naast het filteren in Event Grid ook filteren op apparaatdubbels, bericht eigenschappen en hoofd tekst via de routerings query voor berichten. We maken een standaard [route](iot-hub-devguide-messages-d2c.md) in IOT hub, op basis van uw event grid-abonnement op telemetrie van apparaten. Deze enkele route kan al uw Event Grid abonnementen afhandelen. Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt u uw [routerings query](iot-hub-devguide-routing-query-syntax.md)bijwerken. De routerings query kan alleen worden toegepast op de bericht tekst als de hoofd tekst JSON is. U moet ook het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de [Eigenschappen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)van het bericht systeem.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beperkingen voor de verbinding met het apparaat en de verbroken gebeurtenissen van het apparaat
 

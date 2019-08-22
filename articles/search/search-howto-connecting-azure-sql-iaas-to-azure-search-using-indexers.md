@@ -1,92 +1,92 @@
 ---
-title: Zoeken naar Azure SQL VM VM-verbinding voor zoekindexen - Azure
-description: Versleutelde verbindingen inschakelen en configureren van de firewall om toe te staan van verbindingen met SQL Server op een Azure-machine (VM) van een indexeerfunctie voor Azure Search.
+title: VM-verbinding van virtuele Azure SQL-machine voor zoek indexering-Azure Search
+description: Schakel versleutelde verbindingen in en configureer de firewall om verbindingen met SQL Server op een virtuele Azure-machine (VM) van een Indexeer functie op Azure Search toe te staan.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7629750da8f58c2c62f15102b60b5b562689f087
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60871277"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656703"
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Configureren van een verbinding tussen een Azure Search-indexeerfunctie en SQL Server op een Azure VM
-Zoals aangegeven [Azure SQL-Database verbinding te maken in Azure Search met indexeerfuncties](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), het maken van indexeerfuncties tegen **SQL Server op Azure Virtual machines** (of **SQL Azure-VM's** voor korte) wordt ondersteund Azure Search, maar er zijn enkele beveiliging gerelateerde vereisten voor het eerste regelt. 
+# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Een verbinding van een Azure Search Indexeer functie configureren om te SQL Server op een Azure VM
+Zoals beschreven in het [verbinden van Azure SQL database naar Azure Search met Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), is het maken van Indexeer functies op basis **van SQL Server op Azure-vm's** (of **SQL Azure vm's** voor korte) door Azure Search ondersteund, maar zijn er een paar beveiligings vereisten voor Zorg ervoor dat u eerst. 
 
-Verbindingen van Azure Search met SQL Server op een virtuele machine is een openbare internetverbinding. Alle van de beveiligingsmaatregelen die u normaal gesproken voor deze verbindingen volgen ook van toepassing zijn hier:
+Verbindingen van Azure Search naar SQL Server op een VM is een open bare Internet verbinding. Alle beveiligings maatregelen die u normaal gesp roken uitvoert, zijn hier ook van toepassing:
 
-+ Verkrijgen van een certificaat van een [certificeringsinstantie provider](https://en.wikipedia.org/wiki/Certificate_authority#Providers) voor de volledig gekwalificeerde domeinnaam van de SQL Server-exemplaar op de virtuele machine van Azure.
-+ Het certificaat installeren op de virtuele machine, inschakelen en configureren van versleutelde verbindingen op de virtuele machine met behulp van de instructies in dit artikel.
++ Verkrijg een certificaat van een [certificerings instantie provider](https://en.wikipedia.org/wiki/Certificate_authority#Providers) voor de Fully Qualified Domain name van de SQL Server instantie op de virtuele Azure-machine.
++ Installeer het certificaat op de VM en configureer vervolgens versleutelde verbindingen op de VM met behulp van de instructies in dit artikel.
 
 ## <a name="enable-encrypted-connections"></a>Versleutelde verbindingen inschakelen
-Azure Search is een versleuteld kanaal vereist voor alle indexeerfunctie aanvragen via een openbare internetverbinding. Deze sectie vindt u de stappen uit om dit werk.
+Voor Azure Search is een versleuteld kanaal vereist voor alle indexer aanvragen via een open bare Internet verbinding. In deze sectie vindt u de stappen voor het maken van dit werk.
 
-1. Controleer de eigenschappen van het certificaat om te controleren of dat de naam van het onderwerp is de volledig gekwalificeerde domeinnaam (FQDN) van de Azure-VM. U kunt een hulpprogramma zoals CertUtils of de module Certificaten gebruiken om de eigenschappen weer te geven. U kunt de FQDN-naam ophalen uit de sectie Essentials van de serviceblade van de virtuele machine, in de **openbaar IP-adres/DNS-naamlabel** veld in de [Azure-portal](https://portal.azure.com/).
+1. Controleer de eigenschappen van het certificaat om te controleren of de onderwerpnaam de Fully Qualified Domain Name (FQDN) van de virtuele Azure-machine is. U kunt een hulp programma gebruiken zoals CertUtil of de module Certificaten om de eigenschappen weer te geven. U kunt de FQDN-naam ophalen uit de sectie belangrijkste onderdelen van de VM-service in het veld **openbaar IP-adres/DNS-label** in het [Azure Portal](https://portal.azure.com/).
    
-   * Voor virtuele machines die zijn gemaakt met behulp van de nieuwere **Resource Manager** sjabloon, de FQDN-naam is opgemaakt als `<your-VM-name>.<region>.cloudapp.azure.com`
-   * Voor oudere VM's die zijn gemaakt als een **klassieke** VM, de FQDN-naam is opgemaakt als `<your-cloud-service-name.cloudapp.net>`.
+   * Voor virtuele machines die zijn gemaakt met de nieuwere **Resource Manager** -sjabloon, wordt de FQDN-indeling`<your-VM-name>.<region>.cloudapp.azure.com`
+   * Voor oudere Vm's die zijn gemaakt als een **klassieke** virtuele machine, wordt de `<your-cloud-service-name.cloudapp.net>`FQDN-indeling als.
 
-2. SQL Server voor het gebruik van het certificaat met behulp van de Register-Editor (regedit) configureren. 
+2. Configureer SQL Server om het certificaat te gebruiken met behulp van de REGI ster-editor (regedit). 
    
-    Hoewel SQL Server Configuration Manager vaak voor deze taak gebruikt wordt, kunt u deze niet gebruiken voor dit scenario. Dit niet het geïmporteerde certificaat wordt niet vinden omdat de FQDN-naam van de virtuele machine op Azure komt niet overeen met de FQDN-naam zoals wordt bepaald door de virtuele machine (het identificeert het domein als de lokale computer of de netwerk-domein waaraan deze is gekoppeld). Wanneer de namen komen niet overeen, gebruikt u regedit om op te geven van het certificaat.
+    Hoewel SQL Server Configuration Manager vaak wordt gebruikt voor deze taak, kunt u dit niet gebruiken voor dit scenario. Het geïmporteerde certificaat wordt niet gevonden omdat de FQDN-naam van de virtuele machine in azure niet overeenkomt met de FQDN die door de virtuele machine wordt bepaald (het domein wordt aangeduid als de lokale computer of het netwerk domein waarmee het is verbonden). Wanneer namen niet overeenkomen, gebruikt u regedit om het certificaat op te geven.
    
-   * Blader in regedit, naar deze registersleutel: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
+   * In Regedit, bladert u naar deze register `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`sleutel:.
      
-     De `[MSSQL13.MSSQLSERVER]` onderdeel varieert op basis van de versie en exemplaarnaam. 
-   * Stel de waarde van de **certificaat** sleutel op de **vingerafdruk** van het SSL-certificaat dat u hebt geïmporteerd naar de virtuele machine.
+     Het `[MSSQL13.MSSQLSERVER]` deel is afhankelijk van versie en exemplaar naam. 
+   * Stel de waarde van de **certificaat** sleutel in op de **vinger afdruk** van het SSL-certificaat dat u in de virtuele machine hebt geïmporteerd.
      
-     Er zijn verschillende manieren waarop u de vingerafdruk sommige beter dan andere. Als u vanuit kopieert de **certificaten** -module in MMC-module u waarschijnlijk haalt een onzichtbare toonaangevende teken [zoals beschreven in dit ondersteuningsartikel](https://support.microsoft.com/kb/2023869/), wat resulteert in een fout wanneer u een verbinding probeert . Er bestaan verschillende oplossingen voor het corrigeren van dit probleem. De eenvoudigste manier is het backspace via en typ nogmaals het eerste teken van de vingerafdruk van het verwijderen van het eerste teken in het veld sleutelwaarde in regedit. U kunt ook een ander hulpprogramma gebruiken om te kopiëren van de vingerafdruk van het.
+     Er zijn verschillende manieren om de vinger afdruk te verkrijgen, wat beter is dan andere. Als u het kopieert vanuit de module **certificaten** in MMC, haalt u waarschijnlijk een onzichtbare voorloop tekens op [zoals beschreven in dit ondersteunings artikel](https://support.microsoft.com/kb/2023869/), wat resulteert in een fout wanneer u een verbinding probeert te maken. Er zijn verschillende tijdelijke oplossingen voor het oplossen van dit probleem. Het eenvoudigste is om op BACKSPACE te drukken en vervolgens het eerste teken van de vinger afdruk opnieuw te typen om het voorloop teken te verwijderen uit het veld sleutel waarde in Regedit. U kunt ook een ander hulp programma gebruiken om de vinger afdruk te kopiëren.
 
-3. Machtigingen verlenen voor het serviceaccount. 
+3. Machtigingen verlenen aan het service account. 
    
-    Zorg ervoor dat de dat juiste machtigingen voor de persoonlijke sleutel van het SSL-certificaat is verleend door de SQL Server-serviceaccount. Als u deze stap over het hoofd zien, kan SQL Server niet worden gestart. U kunt de **certificaten** -module of **CertUtils** voor deze taak.
+    Zorg ervoor dat aan het SQL Server-service account de juiste machtigingen worden verleend voor de persoonlijke sleutel van het SSL-certificaat. Als u deze stap verkrijgt, wordt SQL Server niet gestart. U kunt de module **certificaten** of **certutil** voor deze taak gebruiken.
     
 4. Start de SQL Server-service opnieuw.
 
-## <a name="configure-sql-server-connectivity-in-the-vm"></a>SQL Server-connectiviteit in de virtuele machine configureren
-Na het instellen van de versleutelde verbinding vereist voor Azure Search, zijn er aanvullende configuratiestappen verbetert de intrinsieke SQL Server op Azure Virtual machines. Als u dit nog niet hebt gedaan, wordt de volgende stap is het voltooien van de configuratie met behulp van een van de volgende artikelen:
+## <a name="configure-sql-server-connectivity-in-the-vm"></a>SQL Server connectiviteit in de VM configureren
+Nadat u de versleutelde verbinding hebt ingesteld die is vereist voor Azure Search, zijn er extra configuratie stappen in intrinsiek voor SQL Server op Azure-Vm's. Als u dit nog niet hebt gedaan, is de volgende stap het volt ooien van de configuratie met behulp van een van deze artikelen:
 
-* Voor een **Resource Manager** VM, Zie [verbinding maken met een SQL Server-VM op Azure met behulp van Resource Manager](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
-* Voor een **klassieke** VM, Zie [verbinden met een SQL Server-VM in de klassieke Azure-](../virtual-machines/windows/classic/sql-connect.md).
+* Zie [verbinding maken met een virtuele machine van SQL Server in azure met behulp van Resource Manager](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md)voor een **Resource Manager** -VM. 
+* Zie [verbinding maken met een virtuele machine van SQL Server op Azure Classic](../virtual-machines/windows/classic/sql-connect.md)voor een **klassieke** VM.
 
-Lees met name de sectie in elk artikel voor 'verbinding maken via internet'.
+Bekijk in het bijzonder de sectie in elk artikel voor ' verbinding maken via internet '.
 
-## <a name="configure-the-network-security-group-nsg"></a>De Netwerkbeveiligingsgroep (NSG) configureren
-Het is niet ongebruikelijk dat de NSG en bijbehorende Azure-eindpunt of lijst met ACL (Access Control) zodat uw Azure-VM toegankelijk is voor andere partijen configureren. Waarschijnlijk dat hebt u dit nog gedaan om toe te staan van uw eigen toepassingslogica verbinding maakt met uw SQL Azure-VM. Het is niet anders voor een Azure Search-verbinding met uw SQL Azure-VM. 
+## <a name="configure-the-network-security-group-nsg"></a>De netwerk beveiligings groep (NSG) configureren
+Het is niet ongebruikelijk om de NSG en de bijbehorende Azure-eind punt of Access Control lijst (ACL) te configureren om uw Azure-VM toegankelijk te maken voor andere partijen. U hebt dit gedaan voordat u uw eigen toepassings logica kunt koppelen aan uw SQL Azure-VM. Het is geen verschil voor een Azure Search verbinding met uw SQL Azure VM. 
 
-De onderstaande koppelingen bevatten instructies voor de NSG-configuratie voor VM-implementaties. Volg deze instructies voor de Toegangsbeheerlijst van een Azure Search-eindpunt op basis van het IP-adres.
+De onderstaande koppelingen bieden instructies voor de NSG-configuratie voor VM-implementaties. Gebruik deze instructies om een Azure Search-eind punt op basis van het IP-adres van de toegangs beheer lijst te gebruiken.
 
 > [!NOTE]
-> Zie voor achtergrondinformatie [wat is er een Netwerkbeveiligingsgroep?](../virtual-network/security-overview.md)
+> Zie [Wat is een netwerk beveiligings groep?](../virtual-network/security-overview.md) voor achtergrond informatie.
 > 
 > 
 
-* Voor een **Resource Manager** VM, Zie [nsg's maken voor ARM-implementaties](../virtual-network/tutorial-filter-network-traffic.md). 
-* Voor een **klassieke** VM, Zie [nsg's maken voor klassieke implementaties](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
+* Zie [nsg's maken voor arm](../virtual-network/tutorial-filter-network-traffic.md)-implementaties voor een **Resource Manager** -VM. 
+* Zie [nsg's maken voor klassieke implementaties](../virtual-network/virtual-networks-create-nsg-classic-ps.md)voor een **klassieke** virtuele machine.
 
-IP-adressen kan opleveren voor enkele uitdagingen die eenvoudig oplossen zijn als u zich bewust bent van het probleem en mogelijke oplossingen. De resterende secties vindt u aanbevelingen voor het afhandelen van problemen met betrekking tot IP-adressen in de ACL.
+IP-adres Sering kan enkele uitdagingen opleveren die eenvoudig kunnen worden verholpen als u op de hoogte bent van het probleem en mogelijke oplossingen. De overige secties bevatten aanbevelingen voor het verwerken van problemen met betrekking tot IP-adressen in de ACL.
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>Toegang beperken tot het IP-adres van de search-service
-Het is raadzaam dat u de toegang beperken tot het IP-adres van uw zoekservice in de ACL in plaats van uw SQL Azure-VM's breed mogelijk toegankelijk maken voor de verbindingsaanvragen die. U kunt eenvoudig uit het IP-adres vinden door te pingen van de FQDN-naam (bijvoorbeeld `<your-search-service-name>.search.windows.net`) van uw search-service.
+#### <a name="restrict-access-to-the-search-service-ip-address"></a>De toegang tot het IP-adres van de zoek service beperken
+We raden u ten zeerste aan de toegang tot het IP-adres van uw zoek service in de ACL te beperken, in plaats van uw SQL Azure Vm's breed open te maken voor verbindings aanvragen. U kunt het IP-adres eenvoudig vinden door de FQDN-namen (bijvoorbeeld `<your-search-service-name>.search.windows.net`) van uw zoek service te pingen.
 
-#### <a name="managing-ip-address-fluctuations"></a>IP-adres fluctuaties beheren
-Als uw search-service heeft slechts één zoekeenheid (dat wil zeggen, een van de replica en één partitie), wordt het IP-adres wijzigen tijdens de routine-service opnieuw is opgestart, ongeldig maken van een bestaande ACL met IP-adres van de search-service.
+#### <a name="managing-ip-address-fluctuations"></a>Schommelingen van IP-adressen beheren
+Als uw zoek service slechts één Zoek eenheid (dat wil zeggen, één replica en één partitie) heeft, wordt het IP-adres gewijzigd tijdens het starten van de routine service, waarbij een bestaande ACL met het IP-adres van uw zoek service ongeldig wordt.
 
-Een manier om te voorkomen dat de volgende verbindingsfout is meer dan één replica en één partitie gebruiken in Azure Search. In dat geval de kosten verhoogt, maar het ook het IP-adres probleem oplost. In Azure Search geen IP-adressen wanneer u meer dan één zoekeenheid hebt gewijzigd.
+Een van de manieren om de volgende verbindings fout te voor komen, is het gebruik van meer dan één replica en één partitie in Azure Search. Hierdoor worden de kosten verhoogd, maar wordt ook het probleem met het IP-adres opgelost. In Azure Search worden IP-adressen niet gewijzigd als u meer dan één Zoek eenheid hebt.
 
-Een tweede methode is om de verbinding mislukt, en vervolgens opnieuw de ACL's in de NSG te configureren. Gemiddeld, kunt u IP-adressen te wijzigen om de paar weken verwachten. Voor klanten die gecontroleerde indexeren op basis van incidentele, deze aanpak is wellicht mogelijk.
+Een tweede aanpak is om de verbinding te laten mislukken en vervolgens de Acl's opnieuw te configureren in de NSG. Gemiddeld kunt u instellen dat IP-adressen om de paar weken worden gewijzigd. Voor klanten die het indexeren regel matig uitvoeren, kan deze aanpak levensvatbaar zijn.
 
-Een derde levensvatbare (maar niet erg veilig)-aanpak is om op te geven van het IP-adresbereik van de Azure-regio waar uw search-service is ingericht. De lijst met IP-adresbereiken waaruit openbare IP-adressen worden toegewezen aan Azure-resources wordt gepubliceerd op [Azure Datacenter IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653). 
+Een derde levensvat bare methode (maar niet bijzonder veilig) is het IP-adres bereik opgeven van de Azure-regio waar uw zoek service is ingericht. De lijst met IP-bereiken waaruit open bare IP-adressen worden toegewezen aan Azure-resources, wordt gepubliceerd op [Azure Data Center IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653). 
 
-#### <a name="include-the-azure-search-portal-ip-addresses"></a>Neem de portal IP-adressen van Azure Search
-Als u een indexeerfunctie maken via de Azure-portal, moet Azure Search portal logische ook toegang tot uw SQL Azure-virtuele machine tijdens het aanmaken. Zoeken in Azure portal IP-adressen kunnen u vinden door te pingen `stamp2.search.ext.azure.com`.
+#### <a name="include-the-azure-search-portal-ip-addresses"></a>De IP-adressen van de Azure Search-Portal toevoegen
+Als u de Azure Portal gebruikt om een Indexeer functie te maken, moet Azure Search-Portal-logica ook toegang hebben tot uw SQL Azure VM tijdens de aanmaak tijd. IP-adressen van Azure Search-Portal kunnen worden gevonden `stamp2.search.ext.azure.com`door te pingen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Met zoals configuratie, kunt u nu een SQL-Server op virtuele Azure-machine opgeven als de gegevensbron voor een Azure Search-indexeerfunctie. Zie [Azure SQL-Database verbinding te maken in Azure Search met indexeerfuncties](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) voor meer informatie.
+Met configuratie uit de weg kunt u nu een SQL Server op de Azure-VM opgeven als de gegevens bron voor een Azure Search indexer. Zie [Azure SQL database verbinding maken met Azure Search met Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) voor meer informatie.
 

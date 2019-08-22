@@ -1,13 +1,13 @@
 ---
-title: Naslag voor OData search.score - Azure Search
-description: OData search.score-functie in Azure Search-query's.
+title: OData Search. Score functie referentie-Azure Search
+description: OData Search. Score-functie in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: dc444216c4677b9970b867e92aa5ae259a197220
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b6bf56a61ca685b306a15e474623336216ba531b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079689"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647520"
 ---
-# <a name="odata-searchscore-function-in-azure-search"></a>OData `search.score` functie in Azure Search
+# <a name="odata-searchscore-function-in-azure-search"></a>OData `search.score` -functie in azure Search
 
-Wanneer u een query verzenden naar Azure Search zonder de [ **$orderby** parameter](search-query-odata-orderby.md), de resultaten die keert u terug in aflopende volgorde worden gesorteerd op relevantiescore. Zelfs wanneer u gebruik **$orderby**, de relevantiescore wordt gebruikt om te doorbreken ties standaard. Maar is soms het handig om te gebruiken van de relevantiescore als een eerste sorteercriteria en andere criteria als de beslissen. De `search.score` functie kunt u om dit te doen.
+Wanneer u een query verzendt naar Azure Search zonder de [para meter **$OrderBy** ](search-query-odata-orderby.md), worden de resultaten die terugkomen in aflopende volg orde gesorteerd op relevantie score. Zelfs wanneer u **$OrderBy**gebruikt, wordt de relevantie score standaard gebruikt om bindingen te verstoren. Soms is het echter handig om de relevantie score te gebruiken als eerste Sorteer criterium en enkele andere criteria als de afbreeker. Met `search.score` de functie kunt u dit doen.
 
 ## <a name="syntax"></a>Syntaxis
 
-De syntaxis voor `search.score` in **$orderby** is `search.score()`. De functie `search.score` neemt geen parameters. Het kan worden gebruikt met de `asc` of `desc` sorteervolgorde aanduiding, net als elke andere-component in de **$orderby** parameter. Deze kan overal in de lijst met sorteercriteria weergegeven.
+De syntaxis voor `search.score` in **$OrderBy** is `search.score()`. De functie `search.score` voert geen para meters uit. Deze kan worden gebruikt in combi `asc` natie `desc` met de specificatie of de sorteer volgorde, net als bij elke andere component in de para meter **$OrderBy** . Dit kan ergens in de lijst met Sorteer criteria worden weer gegeven.
 
 ## <a name="example"></a>Voorbeeld
 
-Hotels in aflopende volgorde sorteren `search.score` en `rating`, en klik vervolgens in oplopende volgorde op afstand van de opgegeven coördinaten zodat tussen twee hotels met identieke beoordeling, het beste een eerste wordt weergegeven:
+Sorteer hotels in aflopende Volg `search.score` orde `rating`op en, en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten, zodat tussen twee hotels met een identieke classificatie, het dichtstbijzijnde item bovenaan wordt weer gegeven:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

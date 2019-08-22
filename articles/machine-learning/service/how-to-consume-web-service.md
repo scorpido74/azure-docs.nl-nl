@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b7157cd58abc7f1fecf288e72b0232c8a67b7ee
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512582"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656273"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning-model dat is geïmplementeerd als een webservice gebruiken
 
@@ -43,7 +43,7 @@ De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azur
 * `auth_enabled`-Als de sleutel verificatie is ingeschakeld `True`, anders, `False`.
 * `token_auth_enabled`-Als token verificatie is ingeschakeld, `True`anders,. `False`
 * `scoring_uri` -De REST-API-adres.
-
+* `swagger_uri`-Het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met de Azure machine learning-service](how-to-deploy-and-where.md#schema)voor meer informatie.
 
 Er zijn een drie manieren om op te halen van deze informatie voor de geïmplementeerde webservices:
 
@@ -56,6 +56,7 @@ Er zijn een drie manieren om op te halen van deze informatie voor de geïmplemen
                                            image_config=image_config,
                                            workspace=ws)
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 * U kunt `Webservice.list` geïmplementeerd om op te halen een lijst van webservices voor modellen in uw werkruimte. U kunt filters toevoegen om te beperken van de lijst met geretourneerde informatie. Zie de naslag documentatie voor de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) voor meer informatie over wat kan worden gefilterd.
@@ -63,6 +64,7 @@ Er zijn een drie manieren om op te halen van deze informatie voor de geïmplemen
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
     ```
 
 * Als u de naam van de geïmplementeerde service weet, kunt u een nieuwe instantie van `Webservice`maken en de werk ruimte en de service naam als para meters opgeven. Het nieuwe object bevat informatie over de geïmplementeerde service.
@@ -70,11 +72,12 @@ Er zijn een drie manieren om op te halen van deze informatie voor de geïmplemen
     ```python
     service = Webservice(workspace=ws, name='myservice')
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 ### <a name="authentication-for-services"></a>Verificatie voor services
 
-Azure Machine Learning biedt twee manieren om de toegang tot uw webservices te beheren. 
+Azure Machine Learning biedt twee manieren om de toegang tot uw webservices te beheren.
 
 |Verificatiemethode|ACI|AKS|
 |---|---|---|

@@ -1,13 +1,13 @@
 ---
-title: OData-vergelijking van de operator referentie - Azure Search
-description: OData-vergelijkingsoperators eq, ne, gt, lt, ge en le in Azure Search-query's.
+title: Referentie vergelijkings operator van OData-Azure Search
+description: OData-vergelijkings operatoren, EQ, ne, gt, lt, ge en Le, in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,37 +19,37 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b51bf3d77283ae828f47fdb0355d2deb43f071a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8bd8b05fd874e05e5e59042d461f4a4286c81e4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079923"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648064"
 ---
-# <a name="odata-comparison-operators-in-azure-search---eq-ne-gt-lt-ge-and-le"></a>OData-vergelijkingsoperators in Azure Search - `eq`, `ne`, `gt`, `lt`, `ge`, en `le`
+# <a name="odata-comparison-operators-in-azure-search---eq-ne-gt-lt-ge-and-le"></a>OData-vergelijkings operatoren `eq`in `ne`Azure Search `gt`-, `ge`,, `lt`, en`le`
 
-De meest eenvoudige bewerking in een [OData-filterexpressie](query-odata-filter-orderby-syntax.md) in Azure Search is een veld in een bepaalde waarde wilt vergelijken. Er zijn twee soorten vergelijking mogelijk--gelijkheidsvergelijking en bereik vergelijking. U kunt de volgende operatoren gebruiken om te vergelijken van een veld met een constante waarde:
+De meest eenvoudige bewerking in een [OData-filter expressie](query-odata-filter-orderby-syntax.md) in azure Search is het vergelijken van een veld met een bepaalde waarde. Er zijn twee soorten vergelijking mogelijk: gelijkheids vergelijking en bereik vergelijking. U kunt de volgende opera toren gebruiken om een veld te vergelijken met een constante waarde:
 
-Gelijkheid operators:
+Gelijkheids operatoren:
 
-- `eq`: Test of een veld is **gelijk zijn aan** een constante waarde
-- `ne`: Test of een veld is **niet gelijk zijn aan** een constante waarde
+- `eq`: Testen of een veld **gelijk is aan** een constante waarde
+- `ne`: Testen of een veld **niet gelijk is aan** een constante waarde
 
-Bereik-operators:
+Bereik operatoren:
 
-- `gt`: Test of een veld is **groter is dan** een constante waarde
-- `lt`: Test of een veld is **minder dan** een constante waarde
-- `ge`: Test of een veld is **groter is dan of gelijk zijn aan** een constante waarde
-- `le`: Test of een veld is **kleiner dan of gelijk zijn aan** een constante waarde
+- `gt`: Testen of een veld **groter is dan** een constante waarde
+- `lt`: Testen of een veld **kleiner is dan** een constante waarde
+- `ge`: Testen of een veld **groter is dan of gelijk is aan** een constante waarde
+- `le`: Testen of een veld **kleiner is dan of gelijk is aan** een constante waarde
 
-U kunt de bereik-operators gebruiken in combinatie met de [logische operators](search-query-odata-logical-operators.md) om te testen of een veld binnen een bepaald bereik van waarden is. Zie de [voorbeelden](#examples) verderop in dit artikel.
+U kunt de bereik operatoren in combi natie met de [logische Opera tors](search-query-odata-logical-operators.md) gebruiken om te testen of een veld binnen een bepaald waardebereik ligt. Zie de [voor beelden](#examples) verderop in dit artikel.
 
 > [!NOTE]
-> Als u liever, kunt u de constante waarde aan de linkerkant van de operator en de naam van het veld aan de rechterkant plaatsen. Voor operators van bereik, is de betekenis van de vergelijking omgekeerd. Bijvoorbeeld, als de constante waarde aan de linkerkant `gt` wilt testen of de constante waarde groter dan het veld is. U kunt ook de vergelijkingsoperators gebruiken om te vergelijken van het resultaat van een functie, zoals `geo.distance`, met een waarde. Voor Boolean functies, zoals `search.ismatch`, vergelijken van het resultaat dat `true` of `false` is optioneel.
+> Als u wilt, kunt u de constante waarde aan de linkerkant van de operator en de veld naam aan de rechter kant plaatsen. Voor bereik Opera tors wordt de betekenis van de vergelijking omgekeerd. Als de constante waarde bijvoorbeeld aan de linkerkant is, `gt` wordt getest of de constante waarde groter is dan het veld. U kunt ook de vergelijkings operators gebruiken om het resultaat van een functie, `geo.distance`zoals, met een waarde te vergelijken. Voor Booleaanse functies zoals `search.ismatch`, het vergelijken van het resultaat naar `false` `true` of is optioneel.
 
 ## <a name="syntax"></a>Syntaxis
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van de vergelijkingsoperators op.
+De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van een OData-expressie die gebruikmaakt van de vergelijkings operators.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -63,57 +63,57 @@ variable_or_function ::= variable | function_call
 comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Er zijn twee soorten vergelijkingsexpressies. Het enige verschil tussen deze is of de constante wordt weergegeven op de of rechts-rechter-aan de linkerkant van de operator. De expressie aan de andere kant van de operator moet een **variabele** of een aanroep van de functie. Een variabele mag bestaan uit de naam van een veld of een bereik-variabele in het geval van een [lambda-expressie](search-query-odata-collection-operators.md).
+Er zijn twee vormen van vergelijkings expressies. Het enige verschil tussen deze items is of de constante wordt weer gegeven aan de linkerkant of de rechter kant van de operator. De expressie aan de andere kant van de operator moet een **variabele** of een functie aanroep zijn. Een variabele kan een veld naam of een bereik variabele zijn in het geval van een lambda- [expressie](search-query-odata-collection-operators.md).
 
-## <a name="data-types-for-comparisons"></a>Gegevenstypen voor vergelijkingen
+## <a name="data-types-for-comparisons"></a>Gegevens typen voor vergelijkingen
 
-De gegevenstypen aan beide zijden van een vergelijkingsoperator moeten compatibel zijn. Bijvoorbeeld, als aan de linkerkant is een veld van het type `Edm.DateTimeOffset`, en vervolgens aan de rechterkant een datum / tijd-constante zijn moet. Numerieke gegevenstypen zijn flexibeler. U kunt variabelen en functies van een numeriek type met constanten van andere numerieke typen, met enkele beperkingen, vergelijken, zoals beschreven in de volgende tabel.
+De gegevens typen aan beide zijden van een vergelijkings operator moeten compatibel zijn. Als de linkerkant bijvoorbeeld een veld van het type `Edm.DateTimeOffset`is, moet de rechter kant een datum-tijd-constante zijn. Numerieke gegevens typen zijn flexibeler. U kunt variabelen en functies van elk numeriek type vergelijken met constanten van elk ander numeriek type, met enkele beperkingen, zoals beschreven in de volgende tabel.
 
-| Type variabele of functie | Constante waardetype | Beperkingen |
+| Variabele of functie type | Type constante waarde | Beperkingen |
 | --- | --- | --- |
-| `Edm.Double` | `Edm.Double` | Vergelijking is onderhevig aan [speciale regels voor `NaN`](#special-case-nan) |
-| `Edm.Double` | `Edm.Int64` | Constante wordt geconverteerd naar `Edm.Double`, wat resulteert in een verlies van precisie voor de waarden van grote omvang |
+| `Edm.Double` | `Edm.Double` | De vergelijking is onderhevig aan [speciale `NaN` regels voor](#special-case-nan) |
+| `Edm.Double` | `Edm.Int64` | Constante wordt geconverteerd naar `Edm.Double`, wat resulteert in een precisie verlies voor waarden van grote grootte |
 | `Edm.Double` | `Edm.Int32` | N.v.t. |
-| `Edm.Int64` | `Edm.Double` | Vergelijkingen tussen `NaN`, `-INF`, of `INF` zijn niet toegestaan |
+| `Edm.Int64` | `Edm.Double` | Vergelijkingen naar `NaN`, `-INF`of `INF` zijn niet toegestaan |
 | `Edm.Int64` | `Edm.Int64` | N.v.t. |
-| `Edm.Int64` | `Edm.Int32` | Constante wordt geconverteerd naar `Edm.Int64` voor vergelijking |
-| `Edm.Int32` | `Edm.Double` | Vergelijkingen tussen `NaN`, `-INF`, of `INF` zijn niet toegestaan |
+| `Edm.Int64` | `Edm.Int32` | Constante wordt geconverteerd naar `Edm.Int64` vóór vergelijking |
+| `Edm.Int32` | `Edm.Double` | Vergelijkingen naar `NaN`, `-INF`of `INF` zijn niet toegestaan |
 | `Edm.Int32` | `Edm.Int64` | N.v.t. |
 | `Edm.Int32` | `Edm.Int32` | N.v.t. |
 
-Voor de vergelijkingen die niet zijn toegestaan, bijvoorbeeld het vergelijken van een veld van het type `Edm.Int64` naar `NaN`, de Azure Search REST-API retourneert een "HTTP 400: Ongeldige aanvraag"fout.
+Voor vergelijkingen die niet zijn toegestaan, zoals het vergelijken van een veld van het `Edm.Int64` type `NaN`naar, retourneert de Azure Search rest API een ' http 400: Fout met ongeldige aanvraag.
 
 > [!IMPORTANT]
-> Hoewel numeriek type vergelijkingen flexibel zijn, is het raadzaam vergelijkingen schrijven in de filters, zodat de constante waarde is van hetzelfde gegevenstype als de variabele of functie waaraan het wordt vergeleken. Dit is vooral belangrijk wanneer combineren met drijvende komma en gehele getallen, waar de impliciete conversies die minder nauwkeurig mogelijk zijn.
+> Hoewel numerieke type vergelijkingen flexibel zijn, raden we u aan om vergelijkingen in filters te schrijven, zodat de constante waarde van hetzelfde gegevens type is als de variabele of functie waarmee deze wordt vergeleken. Dit is vooral belang rijk bij het combi neren van drijvende-komma-en integerwaarden, waarbij impliciete conversies die nauw keurigheid kunnen verliezen, mogelijk zijn.
 
 <a name="special-case-nan"></a>
 
-### <a name="special-cases-for-null-and-nan"></a>Speciale gevallen voor `null` en `NaN`
+### <a name="special-cases-for-null-and-nan"></a>Speciale gevallen voor `null` en`NaN`
 
-Wanneer u vergelijkingsoperators, is het belangrijk om te onthouden dat alle niet-verzameling velden in Azure Search mogelijk kunnen worden `null`. De volgende tabel toont de mogelijke resultaten voor een van de vergelijkingsexpressie waar beide kanten kan worden `null`:
+Wanneer vergelijkings operatoren worden gebruikt, is het belang rijk te weten dat alle niet-verzamelings velden `null`in azure Search mogelijk zijn. De volgende tabel bevat alle mogelijke resultaten voor een vergelijkings expressie waarbij beide zijden kunnen zijn `null`:
 
-| Operator | Resultaat wanneer alleen het veld of de variabele is `null` | Resultaat wanneer alleen de constante is `null` | Resultaat als het veld of de variabele en de constante zijn `null` |
+| Operator | Resultaat wanneer alleen het veld of de variabele is`null` | Resultaat wanneer alleen de constante is`null` | Resultaat wanneer het veld of de variabele en de constante worden`null` |
 | --- | --- | --- | --- |
-| `gt` | `false` | HTTP 400: Ongeldige aanvraag-fout | HTTP 400: Ongeldige aanvraag-fout |
-| `lt` | `false` | HTTP 400: Ongeldige aanvraag-fout | HTTP 400: Ongeldige aanvraag-fout |
-| `ge` | `false` | HTTP 400: Ongeldige aanvraag-fout | HTTP 400: Ongeldige aanvraag-fout |
-| `le` | `false` | HTTP 400: Ongeldige aanvraag-fout | HTTP 400: Ongeldige aanvraag-fout |
+| `gt` | `false` | HTTP 400: Fout met ongeldige aanvraag | HTTP 400: Fout met ongeldige aanvraag |
+| `lt` | `false` | HTTP 400: Fout met ongeldige aanvraag | HTTP 400: Fout met ongeldige aanvraag |
+| `ge` | `false` | HTTP 400: Fout met ongeldige aanvraag | HTTP 400: Fout met ongeldige aanvraag |
+| `le` | `false` | HTTP 400: Fout met ongeldige aanvraag | HTTP 400: Fout met ongeldige aanvraag |
 | `eq` | `false` | `false` | `true` |
 | `ne` | `true` | `true` | `false` |
 
-Kortom, `null` gelijk is aan zichzelf en is niet kleiner of groter is dan een andere waarde.
+In samen vatting `null` is alleen gelijk aan zichzelf en is niet kleiner dan of groter dan een andere waarde.
 
-Als uw index velden van het type heeft `Edm.Double` en uploadt u `NaN` waarden aan deze velden, moet u rekening voor die bij het schrijven van filters. Azure Search implementeert de IEEE 754-standaard voor het verwerken van `NaN` waarden en vergelijkingen met dergelijke waarden niet duidelijk resultaten opleveren zoals wordt weergegeven in de volgende tabel.
+Als uw index velden van het type `Edm.Double` bevat en u `NaN` waarden naar die velden uploadt, moet u er rekening mee doen wanneer u filters schrijft. Azure Search implementeert de IEEE 754-standaard voor `NaN` de afhandelings waarden en vergelijkingen met dergelijke waarden veroorzaken niet-duidelijke resultaten, zoals wordt weer gegeven in de volgende tabel.
 
-| Operator | Resultaat wanneer ten minste één operand `NaN` |
+| Operator | Resultaat wanneer ten minste één operand is`NaN` |
 | --- | --- |
 | `gt` | `false` |
 | `lt` | `false` |
@@ -122,41 +122,41 @@ Als uw index velden van het type heeft `Edm.Double` en uploadt u `NaN` waarden a
 | `eq` | `false` |
 | `ne` | `true` |
 
-Kortom, `NaN` is niet gelijk aan een willekeurige waarde, waaronder zelf.
+Samen vatting `NaN` is niet gelijk aan een wille keurige waarde, met inbegrip van zichzelf.
 
-### <a name="comparing-geo-spatial-data"></a>Georuimtelijke gegevens vergelijken
+### <a name="comparing-geo-spatial-data"></a>Geografische ruimtelijke gegevens vergelijken
 
-U kunt geen rechtstreeks vergelijken met een veld van het type `Edm.GeographyPoint` met een constante waarde, maar u kunt de `geo.distance` functie. Deze functie retourneert een waarde van het type `Edm.Double`, zodat u deze met een numerieke vergelijken kunt constante om te filteren op basis van de afstand van constante georuimtelijke coördinaten. Zie de [voorbeelden](#examples) hieronder.
+Het is niet mogelijk om een veld van `Edm.GeographyPoint` het type rechtstreeks te vergelijken met een constante waarde, `geo.distance` maar u kunt de functie gebruiken. Deze functie retourneert een waarde van het `Edm.Double`type, zodat u deze kunt vergelijken met een numerieke constante die moet worden gefilterd op basis van de afstand van constante geo-ruimtelijke coördinaten. Zie de onderstaande [voor beelden](#examples) .
 
-### <a name="comparing-string-data"></a>Tekenreeksgegevens vergelijken
+### <a name="comparing-string-data"></a>Teken reeks gegevens vergelijken
 
-Tekenreeksen kunnen worden vergeleken in de filters voor exacte overeenkomsten met behulp van de `eq` en `ne` operators. Deze vergelijkingen zijn hoofdlettergevoelig.
+Teken reeksen kunnen worden vergeleken in filters voor exacte overeenkomsten met `eq` behulp van de `ne` Opera tors. Deze vergelijkingen zijn hoofdletter gevoelig.
 
 ## <a name="examples"></a>Voorbeelden
 
-Overeenkomst documenten waar de `Rating` veld is tussen de 3 en 5 liggen:
+Overeenkomende documenten waarbij het `Rating` veld tussen 3 en 5 ligt:
 
     Rating ge 3 and Rating le 5
 
-Overeenkomst documenten waar de `Location` veld is minder dan 2 kilometer zijn verwijderd van de opgegeven lengtegraad en breedtegraad:
+Documenten vergelijken waarbij het `Location` veld kleiner is dan 2 kilo meters van de opgegeven breedte graad en lengte graad:
 
     geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
 
-Overeenkomst documenten waar de `LastRenovationDate` veld is groter dan of gelijk zijn aan 1 januari 2015, middernacht UTC:
+Documenten vergelijken waarbij het `LastRenovationDate` veld groter is dan of gelijk is aan 1 januari, 2015, Midnight UTC:
 
     LastRenovationDate ge 2015-01-01T00:00:00.000Z
 
-Overeenkomst documenten waar de `Details/Sku` veld is niet `null`:
+Documenten die overeenkomen `Details/Sku` met het veld `null`:
 
     Details/Sku ne null
 
-Documenten voor hotels waar ten minste één ruimte type 'Deluxe ruimte', waarbij heeft de tekenreeks van de `Rooms/Type` veld precies overeenkomen met het filter:
+Vergelijkings documenten voor hotels waarbij ten minste één kamer het type ' Deluxe room ' heeft, waarbij de `Rooms/Type` teken reeks van het veld precies overeenkomt met het filter:
 
     Rooms/any(room: room/Type eq 'Deluxe Room')
 
 ## <a name="next-steps"></a>Volgende stappen  
 
 - [Filters in Azure Search](search-filters.md)
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

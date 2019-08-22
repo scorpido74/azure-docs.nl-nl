@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: a874c8a1fe2e8a81e2f42b2c88447fd52b47f3ad
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611966"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647351"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Kies een prijs categorie voor Azure Search
 
@@ -53,10 +53,10 @@ Meer informatie over de verschillende lagen op de [pagina met prijzen](https://a
 
 Een oplossing op basis van Azure Search kan op de volgende manieren kosten in rekening worden gebracht:
 
-+ Basis kosten van de service bij een minimale configuratie
-+ Incrementele kosten bij het omhoog schalen (replica's of partities toevoegen)
-+ Bandbreedte kosten voor uitgaande gegevens overdracht
-+ Cognitieve zoek functie van Cognitive Services bronnen
++ Basis kosten van service op minimale configuratie (een service maken)
++ Incrementele kosten bij omhoog schalen (replica's of partities toevoegen)
++ Bandbreedte kosten (uitgaande gegevens overdracht) 
++ Cognitieve zoek opdracht (Cognitive Services koppelen voor AI-verrijking, Azure Storage voor kennis opslag)
 
 ### <a name="service-costs"></a>Service kosten
 

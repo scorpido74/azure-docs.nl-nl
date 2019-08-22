@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 412a3cb32663f5bd3bfad2d565b6797f92e26b75
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641111"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874403"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -56,11 +56,13 @@ Het beheerde exemplaar heeft twee service lagen: Algemeen en Bedrijfskritiek. De
 | Maximale databasegrootte | Bepaald door de maximale opslag grootte per instantie | Bepaald door de maximale opslag grootte per instantie |
 | Maximum aantal data bases per exemplaar | 100 | 100 |
 | Maximum aantal database bestanden per exemplaar | Maxi maal 280 | 32.767 bestanden per data base |
+| Maximale bestands grootte | 8 TB | 4 TB |
 | Gegevens/logboek IOPS (benadering) | 500-7.500 per bestand<br/>\*[Bestands grootte verg Roten om meer IOPS te verkrijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 k-110 K (1375/vCore)<br/>Voeg meer vCores toe om betere IO-prestaties te krijgen. |
 | Doorvoer limiet schrijf bewerkingen vastleggen in logboek | 3 MB/s per vCore<br/>Maxi maal 22 MB/s per instantie | 4 MB/s per vCore<br/>Maxi maal 48 MB/s per instantie|
 | Gegevens doorvoer (bij benadering) | 100-250 MB/s per bestand<br/>\*[De bestands grootte verg Roten om betere IO-prestaties te krijgen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | N/A |
 | I/o-latentie van opslag (ongeveer) | 5-10 MS | 1-2 MS |
 | Maximale grootte van tempDB | 192-1.920 GB (24 GB per vCore)<br/>Voeg meer vCores toe om meer TempDB-ruimte te krijgen. | Beperkt door de maximale opslag grootte van het exemplaar. De grootte van het TempDB-logboek bestand is momenteel beperkt tot 24 GB/vCore. |
+| In-memory OLTP | Niet ondersteund | Beschikbaar |
 | Maximum aantal sessies | 30000 | 30000 |
 
 > [!NOTE]

@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/19/2019
 ms.author: v-adgera
-ms.openlocfilehash: 64a980ba8ed581b3cad369951220d47baf9e17ab
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849288"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656529"
 ---
 # <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
 
@@ -26,6 +26,9 @@ In dit artikel vindt u een overzicht van de aanbevolen procedures om te volgen.
 > [!IMPORTANT]
 > Bekijk aanvullende beveiligings bronnen om te zorgen voor een maximale beveiliging voor uw IoT-ruimte. Zorg ervoor dat u leveranciers van uw apparaten opneemt.
 
+> [!TIP]
+> Gebruik [Azure Security Center voor IOT](https://docs.microsoft.com/azure/asc-for-iot/) om IOT-beveiligings dreigingen en beveiligings problemen te detecteren.
+
 ## <a name="iot-security-best-practices"></a>Best practices voor IoT-beveiliging
 
 Enkele belang rijke procedures voor het veilig beveiligen van uw IoT-apparaten zijn:
@@ -36,6 +39,7 @@ Enkele belang rijke procedures voor het veilig beveiligen van uw IoT-apparaten z
 > * Overweeg het mogelijke gebruik van IP-adres filtering en poort beperking voor apparaten.
 > * Beperk I/O en bandbreedte van apparaten om de prestaties te verbeteren. De mate van beperking kan de beveiliging verbeteren door denial-of-service-aanvallen te voor komen.
 > * De firmware van het apparaat up-to-date houden.
+> * Regel matig de aanbevolen procedures voor apparaat-, netwerk-en gateway beveiliging controleren en controleren, wanneer ze blijven verbeteren en ontwikkelen.
 
 Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zijn onder andere:
 
@@ -43,6 +47,7 @@ Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zij
 > * Opgeslagen, opgeslagen of permanente gegevens versleutelen.
 > * Vereisen dat wacht woorden of sleutels regel matig worden gewijzigd of vernieuwd.
 > * Beperk de toegang en machtigingen op rol nauw keurig. Raadpleeg de sectie [Aanbevolen procedures voor toegangs beheer op basis van rollen](#rbac) hieronder.
+> * Overweeg een gesplitste netwerk topologie zodat apparaten op elk netwerk van elkaar zijn geïsoleerd.
 > * Gebruik krachtige versleuteling. Lange wacht woorden vereisen en beveiligde protocollen en twee ledige verificatie gebruiken.
 
 [Controleren](./how-to-configure-monitoring.md) IoT-bronnen om te kijken naar uitbijters, bedreigingen of resource parameters die buiten het bereik van de gebruikelijke bewerking vallen. Gebruik Azure Analytics voor bewakings beheer.

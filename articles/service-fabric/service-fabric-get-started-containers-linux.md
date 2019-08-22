@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: atsenthi
-ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599566"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650659"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Uw eerste Service Fabric-containertoepassing maken in Linux
 > [!div class="op_single_selector"]
@@ -181,28 +181,11 @@ Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u de po
 ![Service Fabric Yeoman-generator voor containers][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>Verificatie van container opslagplaats configureren
- Als de container moet verifiëren bij een persoonlijke privéopslagplaats, voegt u `RepositoryCredentials` toe. Voeg voor dit artikel de accountnaam en het wachtwoord in voor het containerregister myregistry.azurecr.io. Zorg ervoor dat het beleid is toegevoegd onder het label ServiceManifestImport dat overeenkomt met het juiste service pakket.
 
-```xml
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0" />
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-        <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-   </ServiceManifestImport>
-``` 
-
-Het is raadzaam om het wacht woord voor de opslag plaats te versleutelen. Raadpleeg [service Fabric toepassingen](service-fabric-application-secret-management.md) voor instructies om versleutelde geheimen te beheren.
-
-### <a name="configure-cluster-wide-credentials"></a>Referenties voor het hele cluster configureren
-Raadpleeg hier de documentatie [](
-service-fabric-get-started-containers.md#configure-cluster-wide-credentials)
+Bekijk [container opslagplaats verificatie](configure-container-repository-credentials.md)voor meer informatie over het configureren van verschillende verificatie typen voor het downloaden van container installatie kopieën.
 
 ## <a name="configure-isolation-mode"></a>Isolatiemodus configureren
-Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, waardoor er twee isolatie modi voor containers zijn: proces-en hyper-v-ondersteuning. In de Hyper-isolatie modus worden de kernels geïsoleerd tussen elke container en de container-host. De hyper-v-isolatie wordt geïmplementeerd met behulp van [Clear-containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatie modus wordt opgegeven voor Linux-clusters in `ServicePackageContainerPolicy` het-element in het manifest bestand van de toepassing. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaard instelling is proces isolatie modus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
+Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, waardoor er twee isolatie modi voor containers zijn: proces-en Hyper-V-ondersteuning. Met de isolatie modus voor Hyper-V worden de kernels geïsoleerd tussen elke container en de container-host. De Hyper-V-isolatie wordt geïmplementeerd met behulp van [Clear-containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatie modus wordt opgegeven voor Linux-clusters in `ServicePackageContainerPolicy` het-element in het manifest bestand van de toepassing. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaard instelling is proces isolatie modus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
 
 ```xml
 <ServiceManifestImport>

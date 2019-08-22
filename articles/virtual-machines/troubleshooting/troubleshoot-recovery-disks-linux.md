@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 49ee83e451e9d555a7fe5fca57bc58d6616334da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: b1aca591437738b29786f50c2a5291ab456f3416
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641053"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876697"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI
 Als op de virtuele Linux-machine (VM) een opstart-of schijf fout optreedt, moet u mogelijk de stappen voor probleem oplossing uitvoeren op de virtuele harde schijf zelf. Een voor beeld hiervan is een ongeldige vermelding in `/etc/fstab` die verhindert dat de virtuele machine kan worden opgestart. In dit artikel wordt beschreven hoe u de Azure CLI gebruikt om de virtuele harde schijf te verbinden met een andere Linux-VM om eventuele fouten op te lossen en vervolgens de oorspronkelijke VM opnieuw te maken. 
@@ -39,7 +39,7 @@ Als u deze probleemoplossings stappen wilt uitvoeren, moet u de nieuwste [Azure 
 > [!Important]
 > De scripts in dit artikel zijn alleen van toepassing op de virtuele machines die gebruikmaken van [beheerde schijven](../linux/managed-disks-overview.md). 
 
-Vervang in de volgende voor beelden parameter namen door uw eigen waarden. Voor beelden van parameter `myResourceGroup` namen `myVM`zijn en.
+Vervang in de volgende voor beelden parameter namen door uw eigen waarden, zoals `myResourceGroup` en. `myVM`
 
 ## <a name="determine-boot-issues"></a>Opstart problemen vaststellen
 Controleer de seriële uitvoer om te bepalen waarom de virtuele machine niet correct kan worden opgestart. Een veelvoorkomend voor beeld is een ongeldige vermelding `/etc/fstab`in, of de onderliggende virtuele harde schijf die wordt verwijderd of verplaatst.
@@ -56,88 +56,70 @@ Bekijk de seriële uitvoer om te bepalen waarom de virtuele machine niet kan wor
 
 In het volgende voor beeld wordt de `myVM` VM gestopt met de naam `myResourceGroup`van de resource groep met de naam:
 
-```powershell
-Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+```azurecli
+az vm stop --resource-group MyResourceGroup --name MyVm
 ```
-
-Wacht totdat de virtuele machine is verwijderd voordat u de volgende stap verwerkt.
-
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Een moment opname maken van de besturingssysteem schijf van de virtuele machine
+## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>Een moment opname maken van de besturingssysteem schijf van de betrokken VM
 
 Een moment opname is een volledige, alleen-lezen kopie van een VHD. Deze kan niet worden gekoppeld aan een virtuele machine. In de volgende stap maakt u een schijf van deze moment opname. In het volgende voor beeld wordt een moment `mySnapshot` opname gemaakt met de naam van de besturingssysteem schijf van de virtuele machine met de naam ' myVM '. 
 
-```powershell
-$resourceGroupName = 'myResourceGroup' 
-$location = 'eastus' 
-$vmName = 'myVM'
-$snapshotName = 'mySnapshot'  
+```azurecli
+#Get the OS disk Id 
+$osdiskid=(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 
-#Get the VM
-$vm = get-azvm `
--ResourceGroupName $resourceGroupName `
--Name $vmName
-
-#Create the snapshot configuration for the OS disk
-$snapshot =  New-AzSnapshotConfig `
--SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
--Location $location `
--CreateOption copy
-
-#Take the snapshot
-New-AzSnapshot `
-   -Snapshot $snapshot `
-   -SnapshotName $snapshotName `
-   -ResourceGroupName $resourceGroupName 
+#creates a snapshot of the disk
+az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --name mySnapshot
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>Een schijf maken op basis van de moment opname
 
-Met dit script maakt u een beheerde schijf `newOSDisk` met een naam uit `mysnapshot`de moment opname met de naam.  
+Met dit script maakt u een beheerde schijf `myOSDisk` met een naam uit `mySnapshot`de moment opname met de naam.  
 
-```powershell
-#Set the context to the subscription Id where Managed Disk will be created
-#You can skip this step if the subscription is already selected
-
-$subscriptionId = 'yourSubscriptionId'
-
-Select-AzSubscription -SubscriptionId $SubscriptionId
-
+```azurecli
 #Provide the name of your resource group
-$resourceGroupName ='myResourceGroup'
+$resourceGroup=myResourceGroup
 
 #Provide the name of the snapshot that will be used to create Managed Disks
-$snapshotName = 'mySnapshot' 
+$snapshot=mySnapshot
 
 #Provide the name of the Managed Disk
-$diskName = 'newOSDisk'
+$osDisk=myNewOSDisk
 
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
-$diskSize = '128'
+$diskSize=128
 
-#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-$storageType = 'StandardLRS'
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType=Premium_LRS
 
-#Provide the Azure region (e.g. westus) where Managed Disks will be located.
-#This location should be same as the snapshot location
-#Get all the Azure location using command below:
-#Get-AzLocation
-$location = 'eastus'
+#Provide the OS type
+$osType=linux
 
-$snapshot = Get-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
- 
-$diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
- 
-New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
+#Provide the name of the virtual machine
+$virtualMachine=myVM
+
+#Get the snapshot Id 
+$snapshotId=(az snapshot show --name $snapshot --resource-group $resourceGroup --query [id] -o tsv)
+
+# Create a new Managed Disks using the snapshot Id.
+
+az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType --size-gb $diskSize --source $snapshotId
+
 ```
+
+Als de resource groep en de bron momentopname zich niet in dezelfde regio bevinden, ontvangt u de fout melding ' resource is niet gevonden ' wanneer u `az disk create`uitvoert. In dit geval moet u opgeven `--location <region>` dat de schijf wordt gemaakt in dezelfde regio als de moment opname van de bron.
+
 U hebt nu een kopie van de oorspronkelijke besturingssysteem schijf. U kunt deze nieuwe schijf koppelen aan een andere Windows-VM voor het oplossen van problemen.
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>De nieuwe virtuele harde schijf koppelen aan een andere VM
-Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplossen van problemen. U koppelt de schijf aan deze virtuele machine voor probleem oplossing om de schijf inhoud te zoeken en te bewerken. Met dit proces kunt u eventuele configuratie fouten corrigeren of aanvullende toepassings-of systeem logboek bestanden controleren, bijvoorbeeld. Kies of maak een andere virtuele machine die moet worden gebruikt voor het oplossen van problemen.
+Voor de volgende stappen gebruikt u een andere virtuele machine voor het oplossen van problemen. U koppelt de schijf aan deze virtuele machine voor probleem oplossing om de schijf inhoud te zoeken en te bewerken. Met dit proces kunt u eventuele configuratie fouten corrigeren of aanvullende toepassings-of systeem logboek bestanden bekijken.
 
-Koppel de bestaande virtuele harde schijf met [AZ VM unmanaged-Disk attach](/cli/azure/vm/unmanaged-disk). Wanneer u de bestaande virtuele harde schijf koppelt, geeft u de URI op naar de schijf die `az vm show` u hebt verkregen in de voor gaande opdracht. In het volgende voor beeld wordt een bestaande virtuele harde schijf gekoppeld aan de VM `myVMRecovery` voor probleem oplossing met de `myResourceGroup`naam in de resource groep met de naam:
+Met dit script koppelt `myNewOSDisk` u de schijf `MyTroubleshootVM`aan de VM:
 
 ```azurecli
-az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
-    --vhd-uri https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
+# Get ID of the OS disk that you just created.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+# Attach the disk to the troubleshooting VM
+az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 --sku Standard_LRS --vm-name MyTroubleshootVM
 ```
 ## <a name="mount-the-attached-data-disk"></a>De gekoppelde gegevens schijf koppelen
 
@@ -197,46 +179,30 @@ Wanneer de fouten zijn opgelost, ontkoppelt u de bestaande virtuele harde schijf
     sudo umount /dev/sdc1
     ```
 
-2. Ontkoppel nu de virtuele harde schijf van de VM. Sluit de SSH-sessie af op uw virtuele machine voor probleem oplossing. Vermeld de gekoppelde gegevens schijven aan uw virtuele machine voor probleem oplossing met [AZ VM unmanaged-Disk List](/cli/azure/vm/unmanaged-disk). `myVMRecovery` In het volgende voor beeld ziet u de gegevens schijven die zijn gekoppeld aan de virtuele machine `myResourceGroup`met de naam in de resource groep met de naam:
+2. Ontkoppel nu de virtuele harde schijf van de VM. Sluit de SSH-sessie af op uw virtuele machine voor probleem oplossing:
 
     ```azurecli
-    azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
-        --query '[].{Disk:vhd.uri}' --output table
-    ```
-
-    Noteer de naam van de bestaande virtuele harde schijf. De naam van een schijf met de URI van **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** is bijvoorbeeld **myVHD**. 
-
-    De gegevens schijf loskoppelen van uw VM [AZ VM unmanaged-Disk Detach](/cli/azure/vm/unmanaged-disk). In het volgende voor beeld wordt de schijf `myVHD` losgekoppeld van de virtuele `myVMRecovery` machine met `myResourceGroup` de naam in de resource groep:
-
-    ```azurecli
-    az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
-        --name myVHD
+    az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk
     ```
 
 ## <a name="change-the-os-disk-for-the-affected-vm"></a>De besturingssysteem schijf voor de betrokken VM wijzigen
 
-U kunt Azure PowerShell gebruiken om de schijven van het besturings systeem te wisselen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken.
+U kunt Azure CLI gebruiken om de besturingssysteem schijven te wisselen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken.
 
-In dit voor beeld wordt de `myVM` virtuele machine met de naam gestopt en wordt de schijf toegewezen als de nieuwe besturingssysteem schijf. `newOSDisk` 
+In dit voor beeld wordt de `myVM` virtuele machine met de naam gestopt en wordt de schijf toegewezen als de nieuwe besturingssysteem schijf. `myNewOSDisk`
 
-```powershell
-# Get the VM 
-$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
+```azurecli
+# Stop the affected VM
+az vm stop -n myVM -g myResourceGroup
 
-# Make sure the VM is stopped\deallocated
-Stop-AzVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+# Get ID of the OS disk that is repaired.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 
-# Get the new disk that you want to swap in
-$disk = Get-AzDisk -ResourceGroupName myResourceGroup -Name newDisk
-
-# Set the VM configuration to point to the new disk  
-Set-AzVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name  -sto
-
-# Update the VM with the new OS disk. Possible values of StorageAccountType include: 'Standard_LRS' and 'Premium_LRS'
-Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type of the storage account >
+# Change the OS disk of the affected VM to "myNewOSDisk"
+az vm update -g myResourceGroup -n myVM --os-disk $myNewOSDiskid
 
 # Start the VM
-Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
+az vm start -n myVM -g myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

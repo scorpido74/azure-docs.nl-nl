@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ced771002ca9f542f89dbf74ba4a4745ad2a0339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: aa5ff93b4f1f6392f753a88d57a072f542fc16e2
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850182"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877276"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Zelfstudie: De operatorweergave van Azure IoT Central aanpassen
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In deze zelfstudie leert u, als systeembouwer, hoe u de operatorweergave van uw toepassing kunt aanpassen. Wanneer u als systeembouwer een wijziging in de toepassing aanbrengt, kunt u een voorbeeld van de operatorweergave in de Microsoft Azure IoT Central-toepassing bekijken.
 
@@ -28,8 +30,8 @@ In deze zelfstudie leert u het volgende:
 > * De indeling van uw apparaatinstellingen configureren
 > * De indeling van uw apparaateigenschappen configureren
 > * Voorbeeld van het apparaat weergeven als operator
-> * Uw standaarddashboard toepassing configureren
-> * Voorbeeld van het dashboard van de toepassing standaard als een operator
+> * Uw standaard toepassings dashboard configureren
+> * Een voor beeld van het standaard toepassings dashboard als operator
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,7 +48,7 @@ Als systeembouwer kunt u bepalen welke informatie in een apparaatdashboard wordt
 
     ![De pagina Apparaatsjablonen](media/tutorial-customize-operator/devicetemplates.png)
 
-2. Voor het aanpassen van uw apparaatdashboard, selecteert u de **airconditioner verbonden (1.0.0)** apparaat sjabloon apparaat u hebt gemaakt in de [een nieuwe apparaattype in uw toepassing definiëren](tutorial-define-device-type.md) zelfstudie.
+2. Als u het dash board van uw apparaat wilt aanpassen, selecteert u het apparaat sjabloon apparaat **voor verbonden Air-voor waardeer (1.0.0)** dat u hebt gemaakt in het [type een nieuw apparaat definiëren in](tutorial-define-device-type.md) de zelf studie voor uw toepassing.
 
 3. Als u het dashboard wilt bewerken, selecteert u het tabblad **Dashboard**.
 
@@ -57,7 +59,7 @@ Als systeembouwer kunt u bepalen welke informatie in een apparaatdashboard wordt
     | Instelling     | Waarde |
     | ----------- | ----- |
     | Name        | Maximale temperatuur |
-    | Tijdsbereik  | Afgelopen week 1 |
+    | Tijdsbereik  | Afgelopen week |
     | Metingtype | Telemetrie |
     | Meting | temperatuur |
     | Aggregatie | Maximum |
@@ -91,7 +93,7 @@ Naast het dashboard en instellingen kunt u ook de operatorweergave van de appara
 
     ![De indeling van de eigenschappen bewerken](media/tutorial-customize-operator/propertieslayout.png)
 
-## <a name="preview-the-device"></a>Voorbeeld van het apparaat
+## <a name="preview-the-device"></a>Voor beeld van het apparaat
 
 U gebruikt de pagina **Apparaatsjablonen** om het dashboard, de instellingen, en het tabblad eigenschappen voor een operator aan te passen. U kunt de pagina **Apparaat** gebruiken om de apparaatsjabloon weer te geven en te gebruiken.
 
@@ -99,7 +101,7 @@ U gebruikt de pagina **Apparaatsjablonen** om het dashboard, de instellingen, en
 
     ![De apparaatsjabloon weergeven en gebruiken](media/tutorial-customize-operator/usetemplate.png)
 
-2. Als u de locatie van dit apparaat wilt bijwerken, kiest u **Eigenschappen** en bewerkt u de waarde in de tegel Locatie. Selecteer vervolgens **opslaan**:
+2. Als u de locatie van dit apparaat wilt bijwerken, kiest u **Eigenschappen** en bewerkt u de waarde in de tegel Locatie. Selecteer vervolgens **Opslaan**:
 
     ![Een eigenschapswaarde wijzigen](media/tutorial-customize-operator/editproperty.png)
 
@@ -113,37 +115,37 @@ U gebruikt de pagina **Apparaatsjablonen** om het dashboard, de instellingen, en
 
     ![Operatorweergave van het dashboard van het apparaat](media/tutorial-customize-operator/operatordashboard.png)
 
-## <a name="configure-the-default-dashboard"></a>Het standaarddashboard configureren
+## <a name="configure-the-default-dashboard"></a>Het standaard dashboard configureren
 
-Wanneer een opbouwfunctie voor of een operator moet u zich aanmeldt bij een toepassing met Azure IoT Central, zien ze het dashboard. U kunt de inhoud van het standaarddashboard om op te nemen van de inhoud zeer nuttig en relevant zijn voor een operator configureren als een builder.
+Wanneer een Builder of operator zich aanmeldt bij een Azure IoT Central-toepassing, zien ze het dash board van de toepassing. Als opbouw functie kunt u de inhoud van het standaard dashboard configureren zodat de meest nuttige en relevante inhoud voor een operator wordt meegenomen.
 
 > [!NOTE]
-> Gebruikers kunnen ook hun eigen persoonlijke dashboards maken en kies een standaard.
+> Gebruikers kunnen ook hun eigen persoonlijke Dash boards maken en er een kiezen als standaard.
 
-1. Voor het aanpassen van het dashboard van de toepassing standaard, gaat u naar de **Dashboard** pagina en selecteer **bewerken** in de rechterbovenhoek van de pagina. Een deelvenster wordt weergegeven met een bibliotheek van objecten die u aan het dashboard toevoegen kunt.
+1. Als u het standaard toepassings dashboard wilt aanpassen, gaat u naar de pagina **dash board** en selecteert u **bewerken** rechtsboven op de pagina. Er wordt een paneel met een bibliotheek met objecten weer gegeven die u aan het dash board kunt toevoegen.
 
-    ![Dashboardpagina](media/tutorial-customize-operator/builderhome.png)
+    ![Dashboard pagina](media/tutorial-customize-operator/builderhome.png)
 
-2. Voor het aanpassen van het dashboard toevoegen tegels van de **bibliotheek**. Kies **Koppeling** en voeg gegevens toe van de website van uw organisatie. Kies vervolgens **Opslaan**:
+2. Voeg tegels uit de **bibliotheek**toe om het dash board aan te passen. Kies **Koppeling** en voeg gegevens toe van de website van uw organisatie. Kies vervolgens **Opslaan**:
 
-    ![Koppeling naar het dashboard toevoegen](media/tutorial-customize-operator/addlink.png)
+    ![Koppeling naar het dash board toevoegen](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > U kunt ook koppelingen toevoegen voor pagina's in uw Azure IoT Central-toepassing. U kunt bijvoorbeeld een koppeling toevoegen voor een apparaatdashboard of instellingenpagina.
 
-3. (Optioneel) Kies **installatiekopie** en upload een afbeelding om weer te geven op uw dashboard. Een afbeelding kan een URL waarmee u navigeren wanneer u deze selecteert hebben:
+3. Kies eventueel **afbeelding** en upload een afbeelding om weer te geven op uw dash board. Een afbeelding kan een URL bevatten waarnaar u navigeert wanneer u deze selecteert:
 
-    ![Een afbeelding toevoegen aan het dashboard](media/tutorial-customize-operator/addimage.png)
+    ![Een afbeelding toevoegen aan het dash board](media/tutorial-customize-operator/addimage.png)
 
     Zie [Afbeeldingen voorbereiden en uploaden naar uw Azure IoT Central-toepassing](howto-prepare-images.md) voor meer informatie.
 
-## <a name="preview-the-dashboard"></a>Voorbeeld van het dashboard
+## <a name="preview-the-dashboard"></a>Het dash board bekijken
 
-Preview-versie van het dashboard als operator, selecteer **gedaan** in de rechterbovenhoek van de pagina.
+Als u een voor beeld van het toepassings dashboard wilt weer geven als een operator, selecteert u in de rechter bovenhoek van de pagina.
 
 ![De ontwerpmodus in- en uitschakelen](media/tutorial-customize-operator/operatorviewhome.png)
 
-U kunt de koppeling en -afbeelding-tegels om te navigeren naar de URL's die u als een opbouwfunctie instelt selecteren.
+U kunt de tegels koppeling en afbeelding selecteren om te navigeren naar de Url's die u als een opbouw functie hebt ingesteld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

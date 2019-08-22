@@ -7,12 +7,12 @@ ms.date: 08/10/2018
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
-ms.translationtype: MT
+ms.openlocfilehash: ee8dd9da186013dc168e20e6b8b842cca85de172
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986407"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877627"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure-opslag emulator gebruiken voor ontwikkelen en testen
 
@@ -221,9 +221,21 @@ Er zijn geen verschillen die specifiek zijn voor de wachtrij opslag in de emulat
 
 ## <a name="storage-emulator-release-notes"></a>Release opmerkingen bij de opslag-emulator
 
+### <a name="version-510"></a>Versie 5,10
+
+* De opslag emulator weigert versie 2019-07-07 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+
+### <a name="version-59"></a>Versie 5,9
+
+* De opslag emulator weigert versie 2019-02-02 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+
+### <a name="version-58"></a>Versie 5,8
+
+* De opslag emulator weigert versie 2018-11-09 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+
 ### <a name="version-57"></a>Versie 5,7
 
-Er is een fout opgelost die kan leiden tot een storing als logboek registratie is ingeschakeld.
+* Er is een fout opgelost die kan leiden tot een storing als logboek registratie is ingeschakeld.
 
 ### <a name="version-56"></a>Versie 5,6
 
@@ -236,11 +248,11 @@ Er is een fout opgelost die kan leiden tot een storing als logboek registratie i
 
 ### <a name="version-54"></a>Versie 5,4
 
-Ter verbetering van de stabiliteit van de installatie probeert de emulator niet langer poorten te reserveren tijdens de installatie. Als poort reserveringen gewenst zijn, gebruikt u de optie *-reserveports* van de opdracht **init** om deze op te geven.
+* Ter verbetering van de stabiliteit van de installatie probeert de emulator niet langer poorten te reserveren tijdens de installatie. Als poort reserveringen gewenst zijn, gebruikt u de optie *-reserveports* van de opdracht **init** om deze op te geven.
 
 ### <a name="version-53"></a>Versie 5,3
 
-De opslag emulator ondersteunt nu versie 2017-07-29 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslag emulator ondersteunt nu versie 2017-07-29 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
 
 ### <a name="version-52"></a>Versie 5,2
 
@@ -249,7 +261,7 @@ De opslag emulator ondersteunt nu versie 2017-07-29 van de opslag Services op bl
 
 ### <a name="version-51"></a>Versie 5,1
 
-Er is een fout opgelost waarbij de opslag emulator de `DataServiceVersion` header retourneert in sommige antwoorden waarbij de service niet was.
+* Er is een fout opgelost waarbij de opslag emulator de `DataServiceVersion` header retourneert in sommige antwoorden waarbij de service niet was.
 
 ### <a name="version-50"></a>Versie 5,0
 

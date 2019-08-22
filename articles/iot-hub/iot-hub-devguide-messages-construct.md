@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 9a62001f168e0577ea07ad030923a4d0398e50af
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534976"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872490"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-berichten maken en lezen
 
@@ -73,7 +73,7 @@ Zie [Azure IOT sdk's](iot-hub-devguide-sdks.md)(Engelstalig) voor meer informati
 
 ## <a name="message-size"></a>Berichtgrootte
 
-IoT Hub de grootte van het bericht in een protocol-neutraal manier meet, waarbij alleen de daad werkelijke lading wordt overwogen. De grootte in bytes wordt berekend als de som van het volgende:
+IoT Hub de grootte van het bericht in een protocol-neutraal manier meet, waarbij alleen de daad werkelijke lading wordt overwogen. De grootte in bytes wordt berekend als de som van de volgende waarden:
 
 * De grootte van de hoofd tekst in bytes.
 * De grootte in bytes van alle waarden van de eigenschappen van het bericht systeem.

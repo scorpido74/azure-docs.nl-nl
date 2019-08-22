@@ -8,16 +8,18 @@ ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: d9d7b2d189c6a1533be2d1cae4989669787c3f2a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: ad5f660ff72eceecbb6db2e9557b023ed2c6ea99
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848996"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875811"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>Meerdere acties groeperen om uit te voeren vanuit een of meer regels
 
 *Dit artikel is van toepassing op bouwers en beheerders.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In azure IoT Central maakt u regels om acties uit te voeren wanneer aan een voor waarde wordt voldaan. Regels zijn gebaseerd op telemetrie van apparaten of gebeurtenissen. U kunt bijvoorbeeld een operator waarschuwen wanneer de Tempe ratuur van een apparaat een drempel waarde overschrijdt. In dit artikel wordt beschreven hoe u [Azure monitor](../azure-monitor/overview.md) *actie groepen* kunt gebruiken om meerdere acties aan een IOT Central regel te koppelen. U kunt een actie groep koppelen aan meerdere regels. Een [actie groep](../azure-monitor/platform/action-groups.md) is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement.
 
@@ -37,7 +39,7 @@ Een actie groep kan:
 
 De volgende scherm afbeelding toont een actie groep die e-mail-en SMS-meldingen verzendt en een webhook aanroept:
 
-![Actie groep](media/howto-use-action-groups/actiongroup.png)
+![Actiegroep](media/howto-use-action-groups/actiongroup.png)
 
 Als u een actie groep wilt gebruiken in een IoT Central regel, moet de actie groep zich in hetzelfde Azure-abonnement bevallen als de IoT Central-toepassing.
 
@@ -57,10 +59,10 @@ Selecteer **Opslaan**. De actie groep wordt nu weer gegeven in de lijst met acti
 
 De volgende tabel bevat een overzicht van de informatie die wordt verzonden naar de ondersteunde actie typen:
 
-| Actietype | Uitvoer indeling |
+| Actietype | Uitvoerindeling |
 | ----------- | -------------- |
 | Email       | E-mail sjabloon standaard IoT Central |
-| Sms         | Azure IoT Central-waarschuwing: $ {ApplicationName}-"$ {ruleNaam} ' geactiveerd op ' $ {DeviceName} ' op $ {triggerDate} $ {triggerTime} |
+| SMS         | Azure IoT Central-waarschuwing: $ {ApplicationName}-"$ {ruleNaam} ' geactiveerd op ' $ {DeviceName} ' op $ {triggerDate} $ {triggerTime} |
 | Spraak       | Azure I. O. T Central alert: regel "$ {DeviceName}" geactiveerd op apparaat "$ {apparaatnaam}" op $ {triggerDate} $ {triggerTime}, in toepassing $ {ApplicationName} |
 | Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "data": {[reguliere webhook Payload](#payload)}} |
 

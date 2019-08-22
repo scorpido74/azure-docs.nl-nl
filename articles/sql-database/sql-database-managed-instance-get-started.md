@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567514"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873864"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Quickstart: Een beheerd exemplaar van Azure SQL Database maken
 
@@ -35,11 +35,11 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 In de volgende stappen wordt uitgelegd hoe u een beheerd exemplaar maakt.
 
-1. Selecteer **een resource maken** in de linkerbovenhoek van de Azure Portal.
-2. Zoek naar een **beheerd exemplaar**en selecteer vervolgens **Azure SQL Managed instance**.
-3. Selecteer **Maken**.
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als Azure SQL niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
+2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over Azure SQL Database beheerde instantie bekijken door **Details weer geven** op de tegel **Managed instances** te selecteren.
+3. Selecteer **maken**:
 
-   ![Een beheerd exemplaar maken](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
+   ![Een beheerd exemplaar maken](./media/sql-database-managed-instance-get-started/create-managed-instance.png)
 
 4. Vul het formulier **SQL Managed instance** in met behulp van de informatie in de volgende tabel.
 

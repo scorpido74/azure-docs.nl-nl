@@ -1,29 +1,29 @@
 ---
-title: 'Voorbeeld: Facetten met meerdere niveaus - Azure Search'
-description: Meer informatie over het bouwen van onderverdeling structuren voor meerdere niveaus taxonomie, het maken van een geneste navigatiestructuur die u kunt opnemen op de toepassingspagina's.
+title: 'Voorbeeld: Facetten met meerdere niveaus-Azure Search'
+description: Meer informatie over het bouwen van facet structuren voor taxonomieën op meerdere niveaus, het maken van een geneste navigatie structuur die u op toepassings pagina's kunt invoegen.
 author: cstone
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: chstone
-ms.openlocfilehash: e17a91a35b69102e4e0ac6025559bbc32e71d8fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a6fda0157f0f3a4ca5861acd4bcbead7839e451
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024126"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649937"
 ---
 # <a name="example-multi-level-facets-in-azure-search"></a>Voorbeeld: Facetten met meerdere niveaus in Azure Search
 
-Azure Search-schema's ondersteunen meerdere niveaus taxonomie categorieën niet expliciet, maar u kunt deze benaderen door inhoud vóór het indexeren en vervolgens enkele speciale handelingen toe te passen om de resultaten te bewerken. 
+Azure Search-schema's bieden geen expliciete ondersteuning voor taxonomie categorieën met meerdere niveaus, maar u kunt ze benaderen door inhoud te bewerken voordat u de indexeert en vervolgens een speciale verwerking toe te passen op de resultaten. 
 
 ## <a name="start-with-the-data"></a>Beginnen met de gegevens
 
-Het voorbeeld in dit artikel is gebaseerd op het voorbeeld van een vorige [Model van de database AdventureWorks inventaris](search-example-adventureworks-modeling.md), ter illustratie van meerdere niveaus op meerdere niveaus in Azure Search.
+Het voor beeld in dit artikel is gebaseerd op een voor gaande voor beeld, [de AdventureWorks-inventarisatie database model leren](search-example-adventureworks-modeling.md)om te demonstreren op meerdere niveaus in azure Search.
 
-AdventureWorks is een eenvoudige twee niveaus taxonomie met een bovenliggende / onderliggende relatie. Voor de diepte van de vaste lengte taxonomie van deze structuur, kan een eenvoudige query van de SQL-join worden gebruikt voor het groeperen van de taxonomie:
+AdventureWorks heeft een eenvoudige taxonomie op twee niveaus met een bovenliggende/onderliggende relatie. Voor taxonomie diepten met een vaste lengte van deze structuur kunt u een eenvoudige SQL-samenvoegings query gebruiken om de taxonomie te groeperen:
 
 ```T-SQL
 SELECT 
@@ -35,27 +35,27 @@ LEFT JOIN
   ON category.ParentProductCategoryId=parent.ProductCategoryId
 ```
 
-  ![Queryresultaten](./media/search-example-adventureworks/prod-query-results.png "queryresultaten")
+  ![Query resultaten](./media/search-example-adventureworks/prod-query-results.png "Query resultaten")
 
-## <a name="indexing-to-a-collection-field"></a>Indexeren van een verzameling-veld
+## <a name="indexing-to-a-collection-field"></a>Indexeren naar een verzamelings veld
 
-In de index met deze structuur, maakt u een **Collection(Edm.String)** veld in de Azure Search-schema voor het opslaan van deze gegevens, ervoor te zorgen dat veldkenmerken kan worden doorzocht, Filterbaar, geschikt voor facetten, zijn en worden opgehaald.
+Maak in de index die deze structuur bevat, een **verzameling (EDM. String)** in het Azure Search schema om deze gegevens op te slaan. Zorg er ook voor dat veld kenmerken kunnen worden doorzocht, gefilterd, facetbaar en ophalen.
 
-Nu bij het indexeren van inhoud die naar een specifieke taxonomie categorie verwijst, dienen de taxonomie als een matrix met de tekst van elk niveau van de taxonomie. Bijvoorbeeld, voor een entiteit met `ProductCategoryId = 5 (Mountain Bikes)`, het veld als verzenden `[ "Bikes", "Bikes|Mountain Bikes"]`
+Wanneer u inhoud indexeert die verwijst naar een specifieke taxonomie categorie, verzendt u de taxonomie als een matrix met tekst van elk niveau van de taxonomie. Indien bijvoorbeeld voor een entiteit met `ProductCategoryId = 5 (Mountain Bikes)`, het veld verzenden als`[ "Bikes", "Bikes|Mountain Bikes"]`
 
-U ziet de opname van de bovenliggende categorie 'Fietsen' in de onderliggende categoriewaarde 'Mountainbikes'. Elke subcategorie moet het volledige pad ten opzichte van het hoofdelement insluiten. Het scheidingsteken pipe-teken is willekeurig, maar het moet consistent zijn en moet niet worden weergegeven in de brontekst. Het scheidingsteken wordt gebruikt in de toepassingscode te reconstrueren de structuur van de taxonomie van facet resultaten.
+U ziet dat de bovenliggende categorie ' Bikes ' in de waarde ' Mountain Bikes ' van de onderliggende categorie wordt opgenomen. Elke subcategorie moet het volledige pad insluiten ten opzichte van het hoofd element. Het sluis teken is wille keurig, maar het moet consistent zijn en mag niet in de bron tekst worden weer gegeven. Het scheidings teken wordt gebruikt in de toepassings code om de taxonomie structuur opnieuw te maken op basis van de facet resultaten.
 
-## <a name="construct-the-query"></a>Bouw de query
+## <a name="construct-the-query"></a>De query maken
 
-Bij de uitgifte van query's, zijn onder andere de volgende facet-specificatie (taxonomie is het geschikt voor facetten taxonomieveld): `facet = taxonomy,count:50,sort:value`
+Bij het uitvoeren van query's, neemt u de volgende facet specificatie op (waarbij taxonomie het facetel taxonomie veld is):`facet = taxonomy,count:50,sort:value`
 
-De waarde moet hoog genoeg is om alle mogelijke taxonomie waarden te retourneren. De gegevens van AdventureWorks bevat 41 afzonderlijke taxonomie waarden, dus `count:50` is voldoende.
+De Count-waarde moet hoog genoeg zijn om alle mogelijke taxonomie waarden te retour neren. De AdventureWorks-gegevens bevatten 41 afzonderlijke taxonomie waarden, `count:50` dus voldoende.
 
-  ![Basis van meervoudig filteren](./media/search-example-adventureworks/facet-filter.png "basis van meervoudig filteren")
+  ![Facet filter](./media/search-example-adventureworks/facet-filter.png "Facet filter")
 
-## <a name="build-the-structure-in-client-code"></a>De structuur in clientcode bouwen
+## <a name="build-the-structure-in-client-code"></a>De structuur in de client code bouwen
 
-In de code van uw client-toepassing reconstrueren, de structuur van de taxonomie door het splitsen van elke facetwaarde op het pipe-teken.
+Maak in uw client toepassings code de taxonomie structuur opnieuw door elke facet waarde op het sluis teken te splitsen.
 
 ```javascript
 var sum = 0
@@ -82,21 +82,21 @@ results['@search.facets'][field].forEach(function(d) {
 categories.count = sum;
 ```
 
-De **categorieën** object kan nu worden gebruikt om een boomstructuur samenvouwbare taxonomie met nauwkeurige telt het aantal weer te geven:
+Het object **Categorieën** kan nu worden gebruikt om een samenvouw bare taxonomie structuur met nauw keurig aantal te genereren:
 
-  ![met meerdere niveaus basis van meervoudig filteren](./media/search-example-adventureworks/multi-level-facet.png "met meerdere niveaus basis van meervoudig filteren")
+  ![beperkt filter met meerdere niveaus](./media/search-example-adventureworks/multi-level-facet.png "beperkt filter met meerdere niveaus")
 
  
-Elke koppeling in de structuur moet het gerelateerde filter toepassen. Bijvoorbeeld:
+Voor elke koppeling in de structuur moet het gerelateerde filter worden toegepast. Bijvoorbeeld:
 
-+ **taxonomie/any** `(x:x eq 'Accessories')` retourneert alle documenten in de vertakking accessoires
-+ **taxonomie/any** `(x:x eq 'Accessories|Bike Racks')` retourneert alleen de documenten met een subcategorie van Bike Racks onder de tak accessoires.
++ **taxonomie/alle** `(x:x eq 'Accessories')` documenten in de vertakking accessoires worden geretourneerd
++ **taxonomie/wille keurig** `(x:x eq 'Accessories|Bike Racks')` retourneert alleen de documenten met een subcategorie fiets racks onder de vertakking accessoires.
 
-Deze techniek wordt passend gemaakt zodat complexere scenario's zoals diepere taxonomie structuren en subcategorieën die in een andere bovenliggende categorieën optreden gedupliceerd (bijvoorbeeld `Bike Components|Forks` en `Camping Equipment|Forks`).
+Deze techniek wordt geschaald voor complexere scenario's, zoals diepere taxonomie structuren en dubbele subcategorieën die optreden onder verschillende bovenliggende categorieën (bijvoorbeeld `Bike Components|Forks` en `Camping Equipment|Forks`).
 
 > [!TIP]
-> Snelheid van de query wordt beïnvloed door het aantal facetten geretourneerd. Ondersteuning voor zeer grote taxonomie sets, overweegt u het toevoegen van een geschikt voor facetten **Edm.String** veld voor het opslaan van de waarde op het hoogste niveau taxonomie voor elk document. De bovenstaande dezelfde techniek vervolgens van toepassing, maar alleen de verzameling-facet query (gefilterd op het hoofdveld taxonomie) uitvoeren wanneer de gebruiker een knooppunt op het hoogste niveau uitgebreid. Of, als 100% intrekken niet vereist is, gewoon het aantal facet beperken tot een redelijk aantal, en zorg ervoor dat de vermeldingen facet worden gesorteerd op aantal.
+> De query snelheid wordt beïnvloed door het aantal geretourneerde facetten. Voor het ondersteunen van zeer grote taxonomie sets kunt u een facetable **EDM toevoegen. teken reeks** veld waarin de taxonomie op het hoogste niveau voor elk document wordt opgeslagen. Pas vervolgens dezelfde bovenstaande techniek toe, maar Voer alleen de verzameling-facet query (gefilterd op het basis veld taxonomie) uit wanneer de gebruiker een knoop punt op het hoogste niveau uitbreidt. Of als 100% intrekken niet vereist is, verminder dan gewoon het aantal facetten naar een redelijk getal en zorg ervoor dat de facet vermeldingen worden gesorteerd op aantal.
 
 ## <a name="see-also"></a>Zie ook
 
-[Voorbeeld: Model van de inventaris van de AdventureWorks-database van Azure Search](search-example-adventureworks-modeling.md)
+[Voorbeeld: De AdventureWorks Inventory data base model leren voor Azure Search](search-example-adventureworks-modeling.md)

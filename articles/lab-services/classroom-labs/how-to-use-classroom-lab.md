@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: ef954f44799b1cf4103847b21ea78e0ac94a9021
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
-ms.translationtype: HT
+ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640173"
+ms.locfileid: "69644990"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
 In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 
@@ -37,7 +37,7 @@ In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, al
 
         ![VM is gestopt](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
-## <a name="start-to-stop-the-vm"></a>Beginnen met het stoppen van de virtuele machine
+## <a name="start-or-stop-the-vm"></a>De virtuele machine starten of stoppen
 1. **Start** de virtuele machine door de eerste knop te selecteren, zoals wordt weer gegeven in de volgende afbeelding. Dit proces duurt enige tijd.  
 
     ![De virtuele machine starten](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c225aa5f821925247d27890e9ee75f3eac4d9eb9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 36c06182d0807ce3d255477a865023ae7b74e2cb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977350"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874931"
 ---
 # <a name="create-a-data-source"></a>Een gegevensbron maken
 
@@ -22,7 +22,11 @@ De Azure Maps Web-SDK slaat gegevens op in gegevens bronnen waarmee de gegevens 
 
 **Geojson-gegevens bron**
 
-Met een geojson-gegevens bron kunnen gegevens lokaal worden geladen en opgeslagen `DataSource` met behulp van de-klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . De `DataSource` klasse biedt functies voor het importeren van lokale of externe geojson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De `DataSource` klasse biedt functionaliteit voor cluster-punt gegevens. 
+Met een geojson-gegevens bron kunnen gegevens lokaal worden geladen en opgeslagen `DataSource` met behulp van de-klasse. Geojson-gegevens kunnen hand matig worden gemaakt of gemaakt met behulp van de Help-klassen in de naam ruimte [Atlas. data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) . De `DataSource` klasse biedt functies voor het importeren van lokale of externe geojson-bestanden. Externe geojson-bestanden moeten worden gehost op een eind punt waarvoor CORs is ingeschakeld. De `DataSource` klasse biedt functionaliteit voor cluster-punt gegevens. Gegevens kunnen eenvoudig worden toegevoegd, verwijderd en bijgewerkt met de `DataSource` -klasse.
+
+
+> [!TIP]
+> Als u alle gegevens in een `DataSource`wilt overschrijven, kunt u, als u `add` de `clear` functies aanroept, de kaart twee keer opnieuw renderen, wat een enigszins vertraging kan veroorzaken. Gebruik in plaats `setShapes` daarvan de functie waarmee alle gegevens in de gegevens bron worden verwijderd en vervangen en slechts één weer gave van de kaart wordt geactiveerd.
 
 **Bron van vector tegel**
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 38b37b45964dd724b18f22a478be0d85a7036ce7
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9b96294362400891113812e308ff59bd0e438b90
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946967"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873357"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Apache Hadoop-toepassingen van derden installeren op Azure HDInsight
 
@@ -37,7 +37,7 @@ De volgende lijst bevat de gepubliceerde toepassingen:
 |[Sterren explosie Presto voor Azure HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto is een snelle en schaal bare gedistribueerde SQL-query-engine. Ontworpen voor de scheiding van opslagruimte en rekenkracht, is Presto ideaal voor het opvragen van gegevens in Azure Data Lake Storage, Azure Blob Storage, SQL en NoSQL-databases en andere gegevensbronnen. |
 |[StreamSets gegevens verzamelaar voor HDInsight-Cloud](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop,HBase,Spark,Kafka |StreamSets Data Collector is een licht gewicht krachtige engine waarmee gegevens in realtime worden gestreamd. Gebruik gegevens verzamelaar om gegevens in uw gegevens stromen te routeren en te verwerken. Het wordt geleverd met een proef licentie van 30 dagen. |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark,HBase |Trifacta Wrangler Enter prise voor HDInsight biedt ondersteuning voor zakelijke gegevens wrangling voor elke schaal van gegevens. De kosten voor het uitvoeren van Trifacta op Azure zijn een combi natie van kosten voor het Trifacta-abonnement plus de kosten van de Azure-infra structuur voor de virtuele machines. |
-|[Unifi-gegevens platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/unifi-software.unifi-data-catalog) |Hadoop,HBase,Storm,Spark |Het Unifi-gegevens platform is een naadloos geïntegreerde suite van self-service data tools, ontworpen om de zakelijke gebruiker in staat te stellen gegevens uitdagingen aan te pakken waarmee incrementele omzet wordt gestimuleerd, de kosten en de operationele complexiteit worden verminderd. |
+|[Unifi-gegevens platform](https://unifisoftware.com/platform/) |Hadoop,HBase,Storm,Spark |Het Unifi-gegevens platform is een naadloos geïntegreerde suite van self-service data tools, ontworpen om de zakelijke gebruiker in staat te stellen gegevens uitdagingen aan te pakken waarmee incrementele omzet wordt gestimuleerd, de kosten en de operationele complexiteit worden verminderd. |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel data-app voor HDInsight Spark-cluster. |
 |[AI-Data Catalog met water breedte](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |Spark |De water Raad catalogi, organiseert en bestuurt gegevens met behulp van AI om gegevens automatisch te labelen met bedrijfs voorwaarden. Waterlijn van zakelijke overweg catalog is een essentieel, succes-onderdeel voor selfservice-analyses, naleving en bestuur en initiatieven voor IT-beheer. |
 

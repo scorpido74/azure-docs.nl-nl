@@ -1,13 +1,13 @@
 ---
-title: OData naslaginformatie over expressiesyntaxis - Azure Search
-description: Formele grammatica en de syntaxis van de specificatie voor OData-expressies in Azure Search-query's.
+title: Verwijzing naar de syntaxis van de OData-expressie-Azure Search
+description: Formele grammatica en syntaxis specificatie voor OData-expressies in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ebe41ba61ac5136900328db9c35acb8551dcd5b2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5d7e6456cd6a6648ff2ca38ecbb4f2de5479d7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428659"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647496"
 ---
-# <a name="odata-expression-syntax-reference-for-azure-search"></a>Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search
+# <a name="odata-expression-syntax-reference-for-azure-search"></a>Verwijzing naar de syntaxis van de OData-expressie voor Azure Search
 
-Maakt gebruik van Azure Search [OData-expressies](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) als parameters in de API. Meestal OData-expressies worden gebruikt voor de `$orderby` en `$filter` parameters. Deze expressies kunnen lastig zijn, met meerdere componenten, functies en operatoren. Echter, zelfs voor eenvoudige OData-expressies zoals eigenschap paden worden gebruikt in een groot gedeelte van de Azure Search REST-API. Bijvoorbeeld: padexpressies worden gebruikt om te verwijzen naar de onderliggende velden van complexe velden overal in de API, zoals wanneer aanbieding subplan velden in een [suggestie](index-add-suggesters.md), een [scoring-functie](index-add-scoring-profiles.md), wordt de `$select` parameter , of zelfs [fielded zoeken in query's Lucene](query-lucene-syntax.md).
+Azure Search gebruikt [OData-expressies](https://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html) als para meters in de API. OData-expressies worden meestal gebruikt voor de `$orderby` para meters en. `$filter` Deze expressies kunnen complex zijn, met meerdere componenten, functies en Opera tors. Zelfs eenvoudige OData-expressies zoals eigenschaps paden worden in veel delen van de Azure Search REST API gebruikt. Paden worden bijvoorbeeld gebruikt om te verwijzen naar subvelden van complexe velden overal in de API, zoals bij het weer geven van subvelden in een [suggestie](index-add-suggesters.md), een [Score functie](index-add-scoring-profiles.md), de para `$select` meter of zelfs een [Zoek opdracht in lucene query's](query-lucene-syntax.md).
 
-Dit artikel beschrijft alle volgende vormen van OData-expressies met behulp van een formele grammatica. Er is ook een [interactieve diagram](#syntax-diagram) om u te helpen visueel verkennen van de grammatica.
+In dit artikel worden al deze vormen van OData-expressies met een formele grammatica beschreven. Er is ook een [interactief diagram](#syntax-diagram) waarmee u de grammatica visueel kunt verkennen.
 
 ## <a name="formal-grammar"></a>Formele grammatica
 
-Er wordt beschreven en de subset met de OData-taal die wordt ondersteund door Azure Search met behulp van een EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) grammatica. Regels worden "boven naar beneden", beginnend met de meest complexe expressies en afbreken meer primitieve expressies weergegeven. Aan de bovenkant zijn de grammaticaregels die met bepaalde parameters van de Azure Search REST-API overeenkomen:
+We kunnen de subset van de OData-taal die wordt ondersteund door Azure Search, beschrijven met behulp van een EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form))-grammatica. De regels worden ' boven naar beneden ' weer gegeven, te beginnen met de meest complexe expressies en opsplitsen in meer primitieve expressies. Bovenaan ziet u de grammatica regels die overeenkomen met de specifieke para meters van de Azure Search REST API:
 
 - [`$filter`](search-query-odata-filter.md), gedefinieerd door de `filter_expression` regel.
 - [`$orderby`](search-query-odata-orderby.md), gedefinieerd door de `order_by_expression` regel.
 - [`$select`](search-query-odata-select.md), gedefinieerd door de `select_expression` regel.
-- Veld paden, die zijn gedefinieerd door de `field_path` regel. Veld paden worden in de API gebruikt. Ze kunnen verwijzen naar een van beide velden op het hoogste niveau van een index of in onderliggende velden met een of meer [complexe veld](search-howto-complex-data-types.md) bovenliggende elementen.
+- Veld paden, gedefinieerd door de `field_path` regel. Veld paden worden gebruikt in de API. Ze kunnen verwijzen naar de velden op het hoogste niveau van een index of subvelden met een of meer [complexe veld](search-howto-complex-data-types.md) voorgangers.
 
-Nadat de EBNF een doorzoekbaar is [syntaxisschema](https://en.wikipedia.org/wiki/Syntax_diagram) waarmee u interactief verkennen van de grammatica en de relaties tussen de regels.
+Nadat de EBNF is een doorzoekbaar- [syntaxis diagram](https://en.wikipedia.org/wiki/Syntax_diagram) waarmee u de grammatica en de relaties tussen de regels interactief kunt verkennen.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -207,16 +207,16 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-## <a name="syntax-diagram"></a>Syntaxisschema
+## <a name="syntax-diagram"></a>Syntaxis diagram
 
-Als u wilt visueel verkennen van de OData-taal-grammatica wordt ondersteund door Azure Search, kunt u proberen het interactieve syntaxisschema:
+Als u de grammatica van de OData-taal die door Azure Search wordt ondersteund, visueel wilt verkennen, probeert u het interactieve syntaxis diagram:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/)
 
 ## <a name="see-also"></a>Zie ook  
 
 - [Filters in Azure Search](search-filters.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene-querysyntaxis](query-lucene-syntax.md)
-- [Vereenvoudigde querysyntaxis in Azure Search](query-simple-syntax.md)
+- [Eenvoudige query syntaxis in Azure Search](query-simple-syntax.md)

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ece55cdad04e71d339944b5fcda5a16d35630c16
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477158"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877738"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Wat is SQL Server op Azure Virtual Machines? (Windows)
 
@@ -83,7 +83,7 @@ Als u uw eigen licentie wilt meenemen, converteert u een SQL-VM waarbij per gebr
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Het is mogelijk een oudere installatiekopie van SQL Server die niet beschikbaar is in de Azure-portal te implementeren met behulp van PowerShell. Gebruik de volgende opdracht om alle beschikbare installatiekopieën te bekijken met behulp van Powershell:
+Het is mogelijk om een oudere installatie kopie te implementeren van SQL Server die niet beschikbaar is in de Azure Portal met behulp van Power shell. Gebruik de volgende opdracht om alle beschikbare installatiekopieën te bekijken met behulp van Powershell:
 
   ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -98,6 +98,30 @@ Nadat u de SQL Server-VM hebt gemaakt, verbindt u deze met toepassingen of hulpp
 ### <a name="migrate-your-data"></a>Uw gegevens migreren
 Als u een bestaande database hebt, doet u er verstandig aan deze te verplaatsen naar uw nieuw ingerichte virtuele SQL-machine. Zie [Een database migreren naar SQL Server op een virtuele machine in Azure](virtual-machines-windows-migrate-sql.md) voor een lijst met migratieopties en begeleiding bij de migratie.
 
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure SQL-resources maken en beheren met de Azure Portal
+
+De Azure Portal biedt één pagina waar u [al uw Azure SQL-resources](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) kunt beheren, met inbegrip van uw virtuele SQL-machines.
+
+Als u de pagina **Azure SQL-resources** wilt openen, selecteert u **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
+
+> [!NOTE]
+> **Azure SQL** biedt een snelle en eenvoudige manier om toegang te krijgen tot al uw SQL-data bases, elastische Pools, database servers, SQL Managed instances en virtuele SQL-machines. Azure SQL is geen service of resource. 
+
+Als u bestaande resources wilt beheren, selecteert u het gewenste item in de lijst. Als u nieuwe Azure SQL-resources wilt maken, selecteert u **+ toevoegen**. 
+
+![Pagina Azure SQL-Portal](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+
+Nadat u **+ toevoegen**hebt geselecteerd, kunt u aanvullende informatie over de verschillende opties bekijken door **Details weer geven** op een wille keurige tegel te selecteren.
+
+![Details van de tegel data bases](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
+
+Zie deze artikelen voor meer informatie:
+
+- [Een afzonderlijke data base maken](../../../sql-database/sql-database-single-database-get-started.md)
+- [Een pool voor Elastic Database maken](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
+- [Een beheerd exemplaar maken](../../../sql-database/sql-database-managed-instance-get-started.md)
+- [Een virtuele SQL-machine maken](quickstart-sql-vm-create-portal.md)
+
 ## <a id="lifecycle"></a> Vernieuwingsbeleid voor installatiekopieën van virtuele SQL-machines
 Azure onderhoudt slechts één installatiekopie van een virtuele machine voor elk ondersteunde combinatie van besturingssysteem, versie en editie. Dit betekent dat installatiekopieën na verloop van tijd worden vernieuwd en dat oudere installatiekopieën worden verwijderd. Zie de sectie **Installatiekopieën** in de [veelgestelde vragen over virtuele machines met SQL Server](virtual-machines-windows-sql-server-iaas-faq.md#images) voor meer informatie.
 
@@ -105,10 +129,10 @@ Azure onderhoudt slechts één installatiekopie van een virtuele machine voor el
 Het programma voor kwaliteitsverbetering (CEIP) is standaard ingeschakeld. Met dit programma worden regelmatig rapporten naar Microsoft verzonden zodat SQL Server kan worden verbeterd. Er hoeft voor het programma voor kwaliteitsverbetering geen beheertaak worden uitgevoerd, tenzij u het na het inrichten wilt uitschakelen. U kunt het programma voor kwaliteitsverbetering aanpassen of uitschakelen door via Extern bureaublad verbinding te maken met de virtuele machine. Voer vervolgens het hulpprogramma **SQL Server-fouten- en gebruiksrapportage** uit. Volg de instructies voor het uitschakelen van rapportage. Zie de [privacyverklaring van SQL Server](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement) voor meer informatie over gegevensverzameling.
 
 ## <a name="related-products-and-services"></a>Gerelateerde producten en services
-### <a name="windows-virtual-machines"></a>Windows Virtual Machines
+### <a name="windows-virtual-machines"></a>Virtuele machines van Windows
 * [Overzicht van Virtual Machines](../overview.md)
 
-### <a name="storage"></a>Opslag
+### <a name="storage"></a>Storage
 * [Inleiding tot Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>Netwerken

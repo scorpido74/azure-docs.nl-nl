@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 9f40ec658fc6725f381300d967c9d7cd61c3a218
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624148"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650463"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -60,7 +60,7 @@ Wanneer u een van de triggers wijzigt, moeten de functies de infra structuur op 
 
 ### <a name="remote-build"></a>Externe build
 
-Azure Functions kunt automatisch builds uitvoeren op de code die na de implementaties van de post wordt ontvangen. Deze builds werken enigszins anders, afhankelijk van of uw app op Windows of Linux wordt uitgevoerd. Externe builds worden niet uitgevoerd wanneer een app eerder is ingesteld om te worden uitgevoerd in de modus [uitvoeren vanuit pakket](run-functions-from-deployment-package.md) . 
+Azure Functions kunt automatisch builds uitvoeren op de code die na de implementaties van de post wordt ontvangen. Deze builds werken enigszins anders, afhankelijk van of uw app op Windows of Linux wordt uitgevoerd. Externe builds worden niet uitgevoerd wanneer een app eerder is ingesteld om te worden uitgevoerd in de modus [uitvoeren vanuit pakket](run-functions-from-deployment-package.md) . Ga naar [zip-implementatie](#zip-deploy)voor meer informatie over het gebruik van extern bouwen.
 
 > [!NOTE]
 > Als u problemen ondervindt met het maken van een externe build, kan het zijn dat de app is gemaakt voordat de functie beschikbaar werd gemaakt (1 augustus 2019). Probeer een nieuwe functie-app te maken.
@@ -85,11 +85,11 @@ Wanneer apps op afstand zijn gebouwd op Linux, worden ze [uitgevoerd vanuit het 
 
 ##### <a name="consumption-preview-plan"></a>Plan voor verbruik (voor beeld)
 
-Linux-functie-apps die worden uitgevoerd in het verbruiks abonnement, hebben geen SCM/kudu-site, waarmee de implementatie opties worden beperkt. Functie-apps in Linux die worden uitgevoerd in het verbruiks abonnement, bieden echter ondersteuning voor externe builds. Deze externe builds gebruiken [Oryx](https://github.com/microsoft/Oryx).
+Linux-functie-apps die worden uitgevoerd in het verbruiks abonnement, hebben geen SCM/kudu-site, waarmee de implementatie opties worden beperkt. Functie-apps in Linux die worden uitgevoerd in het verbruiks abonnement, bieden echter ondersteuning voor externe builds.
 
 ##### <a name="dedicated-and-premium-preview-plans"></a>Speciale en Premium-abonnementen (preview-versie)
 
-Functie-apps die worden uitgevoerd op Linux in het [speciale (app service)-abonnement](functions-scale.md#app-service-plan) en het [Premium-abonnement](functions-scale.md#premium-plan) hebben ook een beperkte SCM/kudu-site, die zelf gebruikmaakt van [Oryx](https://github.com/microsoft/Oryx).
+Functie-apps die worden uitgevoerd op Linux in het [speciale (app service)-abonnement](functions-scale.md#app-service-plan) en het [Premium-abonnement](functions-scale.md#premium-plan) hebben ook een beperkte SCM/kudu-site.
 
 ## <a name="deployment-technology-details"></a>Details implementatie technologie
 
@@ -111,7 +111,7 @@ Gebruik Zip-implementatie om een zip-bestand met uw functie-app naar Azure te pu
 
 >__Hoe gebruikt u dit:__ Implementeren met behulp van uw favoriete client hulpprogramma: [VS code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)of de [Azure cli](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Als u een zip-bestand hand matig wilt implementeren in uw functie-app, volgt u de instructies in [Deploy vanuit een zip-bestand of-URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-Als u een zip-implementatie met een externe build wilt uitvoeren, gebruikt u de volgende [kern hulpprogramma's](functions-run-local.md) opdracht:
+Als u een zip-implementatie met een [externe build](#remote-build)wilt uitvoeren, gebruikt u de volgende [kern hulpprogramma's](functions-run-local.md) opdracht:
 
 ```bash
 func azure functionapp publish <app name> --build remote

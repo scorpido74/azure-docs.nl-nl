@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 08/20/2019
 ms.author: v-adgera
-ms.openlocfilehash: 7ceb36d818c84642461372f0df70c8088908550c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965820"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873659"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -53,7 +53,9 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 ## <a name="obtain-an-oauth-20-token"></a>Een OAuth 2,0-token verkrijgen
 
-Stel vervolgens postman in en configureer dit om een Azure Active Directory token te verkrijgen. Vervolgens maakt u een geverifieerde HTTP-aanvraag voor Azure Digital Apparaatdubbels met behulp van het verkregen token:
+[!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
+
+Postman instellen en configureren om een Azure Active Directory token te verkrijgen. Vervolgens maakt u een geverifieerde HTTP-aanvraag voor Azure Digital Apparaatdubbels met behulp van het verkregen token:
 
 1. Ga naar [www.getpostman.com](https://www.getpostman.com/) om de app te downloaden.
 1. Controleer of uw **autorisatie-URL** juist is. De notatie moet de volgende indeling hebben:
@@ -75,7 +77,7 @@ Stel vervolgens postman in en configureer dit om een Azure Active Directory toke
     | Verificatie-URL | Gebruik de **autorisatie-URL** uit stap 2 |
     | Client-id | Gebruik de **toepassings-id** voor de app Azure Active Directory die is gemaakt of opnieuw is gebruikt in de vorige sectie |
     | Scope | Leeg laten |
-    | Status | Leeg laten |
+    | State | Leeg laten |
     | Clientverificatie | `Send as Basic Auth header` |
 
 1. De client moet er nu als volgt uitzien:

@@ -2,7 +2,7 @@
 title: Werken met zoek resultaten-Azure Search
 description: Structuur en sorteer de zoek resultaten, haal een document telling op en voeg inhouds navigatie toe aan Zoek resultaten in Azure Search.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bb86a75be464cb78a16170626bc96778d43bb8b6
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974622"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647711"
 ---
 # <a name="how-to-work-with-search-results-in-azure-search"></a>Werken met zoek resultaten in Azure Search
 Dit artikel bevat richt lijnen voor het implementeren van standaard elementen van een pagina met zoek resultaten, zoals het totale aantal, het ophalen van documenten, het sorteren van orders en navigatie. Pagina-gerelateerde opties die gegevens of informatie bijdragen aan uw zoek resultaten, worden opgegeven via de [Zoek documenten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) die naar uw Azure Search-service worden verzonden. 
@@ -50,7 +50,7 @@ Paginating-resultaten vereisen `$top` beide `$skip`en, `$top` waar geeft aan hoe
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Layout
+## <a name="layout"></a>Indeling
 
 Op een pagina met zoek resultaten wilt u mogelijk een miniatuur afbeelding, een subset van velden en een koppeling naar een volledige product pagina weer geven.
 
@@ -64,7 +64,7 @@ Een subset van velden voor een tegel indeling retour neren:
 
 Afbeeldingen en media bestanden kunnen niet rechtstreeks worden doorzocht en moeten worden opgeslagen in een ander opslag platform, zoals Azure Blob Storage, om de kosten te verlagen. In de index en documenten definieert u een veld waarin het URL-adres van de externe inhoud wordt opgeslagen. U kunt vervolgens het veld gebruiken als verwijzing naar een afbeelding. De URL naar de afbeelding moet in het document staan.
 
-Als u een product beschrijvings pagina voor  een geonclick gebeurtenis wilt ophalen, gebruikt u [opzoek document](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) voor het door geven van de sleutel van het document dat moet worden opgehaald. Het gegevens type van de sleutel is `Edm.String`. In dit voor beeld is dit *246810*.
+Als u een product beschrijvings pagina voor een geonclick gebeurtenis wilt ophalen, gebruikt u [opzoek document](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) voor het door geven van de sleutel van het document dat moet worden opgehaald. Het gegevens type van de sleutel is `Edm.String`. In dit voor beeld is dit *246810*.
 
     GET /indexes/online-catalog/docs/246810
 

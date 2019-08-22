@@ -1,8 +1,8 @@
 ---
-title: Taalfilters voor meerdere talen inhoud van een zoekindex - Azure Search
-description: Filtercriteria ter ondersteuning van meerdere taal zoeken, scoping queryuitvoering taalspecifieke velden.
+title: Taal filters voor inhoud in meerdere talen in een zoek index-Azure Search
+description: Filter criteria voor het ondersteunen van zoeken in meerdere talen, het bereik van query's uitvoeren op taalspecifieke velden.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.workload: search
@@ -10,46 +10,46 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61289616"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649871"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Hoe kunt u filteren op taal in Azure Search 
+# <a name="how-to-filter-by-language-in-azure-search"></a>Filteren op taal in Azure Search 
 
-Een basisvereiste in een zoektoepassing meertalig is de mogelijkheid om te zoeken en ophalen van resultaten in de taal van gebruiker. In Azure Search is een manier om te voldoen aan de taalvereisten van een multilingual app voor het maken van een reeks velden die zijn toegewezen voor het opslaan van tekenreeksen in een bepaalde taal en vervolgens zoeken in volledige tekst om alleen de velden te beperken bij het uitvoeren van query's.
+Een belang rijke vereiste in een meertalige Zoek toepassing is de mogelijkheid om de resultaten in de eigen taal van de gebruiker te doorzoeken en op te halen. In Azure Search, een manier om te voldoen aan de taal vereisten van een meertalige app is het maken van een reeks velden die zijn toegewezen aan het opslaan van teken reeksen in een specifieke taal, en vervolgens de zoek opdracht voor volledige tekst beperken tot deze velden op de query tijd.
 
-Queryparameters op de aanvraag worden gebruikt voor zowel het bereik van de search-bewerking en verwijder vervolgens de resultaten van de velden die niet compatibel is met de zoekervaring die u wilt leveren inhoud bieden.
+Query parameters op de aanvraag worden gebruikt om de zoek bewerking te bereiken en de resultaten te verkorten van alle velden die geen inhoud bieden die compatibel is met de zoek ervaring die u wilt leveren.
 
 | Parameters | Doel |
 |-----------|--------------|
-| **searchFields** | Limieten voor volledige tekst zoeken aan de lijst met benoemde velden. |
-| **$select** | Hiermee wist het antwoord zodanig dat alleen de velden die u opgeeft. Standaard zijn alle Ophaalbare velden worden geretourneerd. De **$select** parameter kunt u kiezen welke om terug te keren. |
+| **searchFields** | Hiermee beperkt u het zoeken in volledige tekst in de lijst met benoemde velden. |
+| **$select** | Hiermee verkleint u het antwoord op alleen de velden die u opgeeft. Standaard worden alle ophaalbaar velden geretourneerd. Met de para meter **$Select** kunt u kiezen welke items u wilt retour neren. |
 
-Het succes van deze techniek afhangt van de integriteit van de inhoud van de velden. Azure Search niet omzetten van tekenreeksen of taaldetectie wordt uitgevoerd. Het is aan u om ervoor te zorgen dat velden bevatten de tekenreeksen die u verwacht.
+Het succes van deze techniek scharniert op de integriteit van de veld inhoud. Azure Search converteert geen teken reeksen of voert geen taal detectie uit. U moet ervoor zorgen dat velden de door u verwachte teken reeksen bevatten.
 
-## <a name="define-fields-for-content-in-different-languages"></a>Velden voor de inhoud in verschillende talen definiëren
+## <a name="define-fields-for-content-in-different-languages"></a>Velden definiëren voor inhoud in verschillende talen
 
-Query's in Azure Search gericht op één index. Ontwikkelaars die willen taalspecifieke tekenreeksen in een enkele zoekervaring doorgaans bieden speciale velden voor het opslaan van de waarden definiëren: één veld voor Engels tekenreeksen, één voor Frans, enzovoort. 
+In Azure Search worden query's gericht op één index. Ontwikkel aars die taalspecifieke teken reeksen willen opgeven in één zoek opdracht, definiëren meestal specifieke velden voor het opslaan van de waarden: Eén veld voor Engelse teken reeksen, een voor Frans, enzovoort. 
 
-In onze voorbeelden, met inbegrip van de [onroerend goed-voorbeeld](search-get-started-portal.md) hieronder wordt weergegeven, u mogelijk hebt gezien velddefinities die vergelijkbaar is met de volgende schermafbeelding. U ziet hoe dit voorbeeld ziet u de taal analyzer toewijzingen voor de velden in de index. Velden met tekenreeksen uitvoeren beter in zoeken in volledige tekst in combinatie met speciaal ontworpen voor het afhandelen van de linguïstische regels van de doeltaal analyzer.
+In onze voor beelden, met inbegrip van het voor [beeld](search-get-started-portal.md) van het onroerend goed, hebt u mogelijk de veld definities gezien die vergelijkbaar zijn met de volgende scherm afbeelding. In dit voor beeld ziet u de taal analyse toewijzingen voor de velden in deze index. Velden met teken reeksen worden beter in Zoek opdrachten in volledige tekst uitgevoerd wanneer ze zijn gekoppeld aan een Analyzer die is ontworpen om de taal kundige regels van de doel taal te verwerken.
 
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Zie voor voorbeelden van code met velddefinities met talen analysefuncties, [definiëren van een index (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) en [definiëren van een index (REST)](search-create-index-rest-api.md).
+> Zie [een index definiëren (.net)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) en [een index definiëren (rest)](search-create-index-rest-api.md)voor code voorbeelden van veld definities met taal analysen.
 
-## <a name="build-and-load-an-index"></a>Bouw en een index laden
+## <a name="build-and-load-an-index"></a>Een index maken en laden
 
-Een stap tussenliggende (en mogelijk voor de hand liggende) is die u hebt voor [bouwen en de index te vullen](https://docs.microsoft.com/azure/search/search-create-index-dotnet) voordat u een query te formuleren. We deze stap voor de volledigheid worden vermeld. Een manier om te bepalen of de index beschikbaar is, is door het controleren van de lijst indexen de [portal](https://portal.azure.com).
+Een tussenliggende (en mogelijk duidelijke) stap is dat u [de index moet bouwen en vullen](https://docs.microsoft.com/azure/search/search-create-index-dotnet) voordat u een query kunt formuleren. Deze stap wordt hier vermeld voor volledigheid. Een manier om te bepalen of de index beschikbaar is, is door de lijst indexen te controleren in de [Portal](https://portal.azure.com).
 
-## <a name="constrain-the-query-and-trim-results"></a>Beperken van de query en trim resultaten
+## <a name="constrain-the-query-and-trim-results"></a>De resultaten van de query en het knippen beperken
 
-Parameters voor de query worden gebruikt om de zoekopdracht beperken tot specifieke velden en verwijder vervolgens de resultaten van de velden niet nuttig is voor uw scenario. Een doel van de zoekopdracht beperken gegeven aan velden met Franse tekenreeksen, zou u ook **searchFields** om de query op de velden met tekenreeksen in die taal. 
+De para meters voor de query worden gebruikt om de zoek opdracht te beperken tot specifieke velden en vervolgens de resultaten van velden die niet nuttig zijn voor uw scenario, te verkorten. Gezien het doel van het beperken van een zoek opdracht naar velden met Franse teken reeksen, gebruikt u **searchFields** om de query te richten op velden met teken reeksen in die taal. 
 
-Een zoekopdracht retourneert standaard alle velden die zijn gemarkeerd als ophaalbaar. Mogelijk wilt u als zodanig velden die niet voldoen aan de taalspecifieke zoekopdrachten ervaring die u wilt uitsluiten. Met name als u zoeken naar een veld met de Franse tekenreeksen beperkt, u waarschijnlijk velden met tekenreeksen met de Engelse uitsluiten van de resultaten. Met behulp van de **$select** query van de parameter-hebt u meer controle over welke velden worden geretourneerd naar de aanroepende toepassing.
+Een zoek opdracht retourneert standaard alle velden die zijn gemarkeerd als ophalen. Daarom wilt u mogelijk velden uitsluiten die niet voldoen aan de taalspecifieke Zoek ervaring die u wilt bieden. Als u de zoek opdracht beperkt tot een veld met Franse teken reeksen, wilt u waarschijnlijk velden met Engelse teken reeksen uitsluiten van uw resultaten. Met behulp van de para meter **$Select** query kunt u bepalen welke velden worden geretourneerd naar de aanroepende toepassing.
 
 ```csharp
 parameters =
@@ -60,12 +60,12 @@ parameters =
     };
 ```
 > [!Note]
-> Hoewel er no $filter argument voor de query, is ten zeerste deze use case gekoppeld aan filter concepten, zodat we deze als een scenario voor het filteren.
+> Hoewel er geen $filter argument is voor de query, wordt deze use-case sterk gekoppeld aan filter concepten, zodat we deze als een filter scenario presen teren.
 
 ## <a name="see-also"></a>Zie ook
 
 + [Filters in Azure Search](search-filters.md)
 + [Taalanalyse](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Hoe vol tekstzoekopdrachten werkt in Azure Search](search-lucene-query-architecture.md)
-+ [REST-API voor Search-documenten](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [De manier waarop zoeken in volledige tekst werkt in Azure Search](search-lucene-query-architecture.md)
++ [Zoeken naar documenten REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 13eef9beb6c86683c56efc744dc42b4614b84fe9
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: b813ef89bb1a55f769d0ea2391855ba5d671c140
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946488"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648796"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reageren op Blob Storage-gebeurtenissen
 
@@ -29,9 +29,11 @@ Als u dit nu wilt doen, raadpleegt u een van de volgende Quick Start-artikelen:
 
 |Als u dit hulp programma wilt gebruiken:    |Zie dit artikel: |
 |--|-|
-|Azure-portal    |[Snelstart: Blob Storage-gebeurtenissen naar een webeindpunt door sturen met de Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Portal    |[Snelstart: Blob Storage-gebeurtenissen naar een webeindpunt door sturen met de Azure Portal](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |PowerShell    |[Snelstart: Opslag gebeurtenissen naar een webeindpunt door sturen met Power shell](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure-CLI    |[Snelstart: Opslag gebeurtenissen naar een webeindpunt door sturen met Azure CLI](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+
+Als uw account een hiërarchische naam ruimte heeft, ziet u in deze zelf studie hoe u verbinding maakt met een Event Grid-abonnement, een Azure-functie en een [taak](https://docs.azuredatabricks.net/user-guide/jobs.html) in azure Databricks: [Vind Gebruik Azure Data Lake Storage Gen2 gebeurtenissen om een Databricks Delta tabel](data-lake-storage-events.md)bij te werken.
 
 ## <a name="the-event-model"></a>Het gebeurtenis model
 

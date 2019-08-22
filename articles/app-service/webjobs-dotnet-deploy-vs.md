@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d50acc50880229626c847d41d9abe9a9e13d9c6e
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736114"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876873"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Webjobs ontwikkelen en implementeren met behulp van Visual Studio-Azure App Service
 
@@ -37,7 +37,7 @@ Wanneer u versie 3. x van de webjobs gebruikt, kunt u webjobs maken en publicere
 > [!NOTE]
 > .NET core-webjobs kunnen niet worden gekoppeld aan webprojecten. Als u uw Webtaak wilt implementeren met een web-app, moet u [uw Webtaak maken als .NET Framework-console-app](#webjobs-as-net-framework-console-apps).  
 
-### <a name="deploy-to-azure-app-service"></a>Implementeren in Azure App Service
+### <a name="deploy-to-azure-app-service"></a>Implementeren naar Azure App Service
 
 Het publiceren van een .NET core-Webtaak naar App Service vanuit Visual Studio maakt gebruik van dezelfde hulp middelen als voor het publiceren van een ASP.NET Core-app.
 
@@ -90,7 +90,7 @@ U kunt een project zelf als Webtaak implementeren of koppelen aan een webproject
 
 Als u Visual Studio 2015 gebruikt, installeert u de [Azure SDK voor .net (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Als u Visual Studio 2019 gebruikt, installeert u de [werk belasting Azure Development](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
+Als u Visual Studio 2017 gebruikt, installeert u de [werk belasting Azure Development](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
 ### <a id="convert"></a>De implementatie van webjobs inschakelen voor een bestaand console toepassings project
 

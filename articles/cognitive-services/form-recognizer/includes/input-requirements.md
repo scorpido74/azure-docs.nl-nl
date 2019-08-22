@@ -5,19 +5,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 17dc32f8948387b90229d3c4c07102cff98e3018
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4079b0cab0126a9750bbb91ca7046aa18dbe9ece
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562702"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657765"
 ---
 Formulier herkenning werkt op invoer documenten die aan de volgende vereisten voldoen:
 
 * Indeling moet JPG, PNG of PDF zijn (tekst of gescand). Tekst-Inge sloten Pdf's zijn het beste omdat er geen mogelijke fout is in teken extractie en locatie.
 * Als uw Pdf's met een wacht woord zijn vergrendeld, moet u de vergren deling verwijderen voordat u ze verzendt.
 * De bestands grootte moet kleiner zijn dan 4 MB.
-* Voor afbeeldingen moeten de afmetingen tussen 50 x 50 pixels en 4200 x 4200 pixels liggen.
+* Voor afbeeldingen moeten de afmetingen tussen 600 x 100 pixels en 4200 x 4200 pixels liggen.
 * Als u scant vanuit papieren documenten, moeten formulieren kwalitatief hoogwaardige scans zijn.
 * Tekst moet het Latijnse alfabet (Engelse tekens) gebruiken.
 * De gegevens moeten sleutels en waarden bevatten.

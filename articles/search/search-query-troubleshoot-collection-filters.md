@@ -1,13 +1,13 @@
 ---
-title: Het oplossen van de filters voor bestandsverzameling OData - Azure Search
-description: Het oplossen van fouten van OData-verzameling filteren in Azure Search-query's.
+title: Problemen met OData-verzamelings filters oplossen-Azure Search
+description: Problemen met OData-verzamelings filter fouten in Azure Search query's oplossen.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,58 +19,58 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c7fa00c82eea03a50bae22fcb1ad16e230aa5bcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fbd43cc13d3b7377668aad2fadc874ae47422ee1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079624"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647952"
 ---
-# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>Het oplossen van OData-verzameling filters in Azure Search
+# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>Problemen met OData-verzamelings filters in Azure Search oplossen
 
-Naar [filter](query-odata-filter-orderby-syntax.md) op verzameling velden in Azure Search, kunt u de [ `any` en `all` operators](search-query-odata-collection-operators.md) samen met **lambda-expressies**. Een lambda-expressie is een subquery filter dat wordt toegepast op elk element van een verzameling.
+Als u wilt [filteren](query-odata-filter-orderby-syntax.md) op verzamelings velden in azure Search, kunt u de [ `any` Opera tors en `all` ](search-query-odata-collection-operators.md) gebruiken in combi natie met **lambda-expressies**. Een lambda-expressie is een subfilter dat op elk element van een verzameling wordt toegepast.
 
-Niet elke functie van filterexpressies is beschikbaar in een lambda-expressie. Welke functies beschikbaar zijn, is afhankelijk van het gegevenstype van de verzameling-veld dat u wilt filteren. Dit kan resulteren in een fout als u probeert te gebruiken van een functie in een lambda-expressie die niet wordt ondersteund in deze context. Als u dergelijke fouten ondervindt tijdens het schrijven van een complexe filter over de verzameling velden, krijgt in dit artikel u het probleem op te lossen.
+Niet elke functie van filter expressies is beschikbaar in een lambda-expressie. Welke functies beschikbaar zijn, is afhankelijk van het gegevens type van het verzamelings veld dat u wilt filteren. Dit kan een fout veroorzaken als u probeert een functie te gebruiken in een lambda-expressie die niet wordt ondersteund in deze context. Als er dergelijke fouten optreden tijdens het schrijven van een complex filter voor verzamelings velden, helpt dit artikel bij het oplossen van het probleem.
 
-## <a name="common-collection-filter-errors"></a>Veelvoorkomende fouten van de verzameling filter
+## <a name="common-collection-filter-errors"></a>Veelvoorkomende fouten bij verzamelings filter
 
-De volgende tabel bevat fouten die optreden mogelijk wanneer bij het uitvoeren van een verzamelingsfilter. Deze fouten zich voordoen wanneer u een functie van filterexpressies die niet wordt ondersteund in een lambda-expressie gebruikt. Elke fout biedt enkele richtlijnen voor hoe u uw filter om te voorkomen dat de fout kan herschrijven. De tabel bevat ook een koppeling naar de betreffende sectie van dit artikel vindt u meer informatie over hoe u om te voorkomen dat deze fout.
+De volgende tabel bevat fouten die kunnen optreden wanneer u probeert een verzamelings filter uit te voeren. Deze fouten doen zich voor wanneer u een functie van filter expressies gebruikt die niet worden ondersteund binnen een lambda-expressie. Elke fout geeft een aantal richt lijnen over hoe u het filter opnieuw kunt schrijven om de fout te voor komen. De tabel bevat ook een koppeling naar de relevante sectie van dit artikel met meer informatie over hoe u deze fout kunt voor komen.
 
-| Foutbericht | Situatie | Zie voor meer informatie |
+| Foutbericht | Hiervan | Zie voor meer informatie |
 | --- | --- | --- |
-| De functie 'ismatch' heeft geen parameters die zijn gekoppeld aan het bereik van de variabele '. Alleen gebonden veld verwijzingen worden ondersteund in de lambda-expressies ('any' of 'all'). Uw filter wijzigen zodat de functie 'ismatch' buiten de lambda-expressie valt en probeer het opnieuw. | Met behulp van `search.ismatch` of `search.ismatchscoring` binnen een lambda-expressie | [Regels voor het filteren van complexe verzamelingen](#bkmk_complex) |
-| Ongeldige lambda-expressie. Een test gevonden voor gelijkheid of ongelijkheid waar het tegenovergestelde werd verwacht in een lambda-expressie die een veld van het type Collection(Edm.String) te herhalen. Gebruik expressies van het formulier 'y' x eq' of 'search.in(...)' voor 'alle'. Voor 'alle', de expressies van het formulier 'y' x ne', 'niet (x eq y)' of 'niet search.in(...)' gebruik. | Filteren op een veld van het type `Collection(Edm.String)` | [Regels voor het filteren van tekenreeks verzamelingen](#bkmk_strings) |
-| Ongeldige lambda-expressie. Een niet-ondersteunde vorm van complexe Boole-expressie gevonden. Gebruik expressies die 'Or-items van and', ook wel bekend als scheidende normaal formulier voor 'alle'. Bijvoorbeeld: '(a and b) of (c en d)' waarbij a, b, c en d vergelijking of gelijkheid onderliggende expressies zijn. Voor 'alle', gebruik expressies die 'And van or-items', ook wel bekend als Conjunctive normaal formulier. Bijvoorbeeld: '(a or b) en (c of d)' waarbij a, b, c en d vergelijking of ongelijkheid onderliggende expressies zijn. Voorbeelden van vergelijkingsexpressies: ' x gt 5', ' x-le 2'. Voorbeeld van een expressie gelijkheid: ' x eq 5'. Voorbeeld van een expressie ongelijkheid: ' x ne 5'. | Filteren op velden van het type `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`, `Collection(Edm.Int32)`, of `Collection(Edm.Int64)` | [Regels voor het filteren van vergelijkbare verzamelingen](#bkmk_comparables) |
-| Ongeldige lambda-expressie. Een niet-ondersteund gebruik van geo.distance() of geo.intersects() gevonden in een lambda-expressie die een veld van het type Collection(Edm.GeographyPoint) te herhalen. Voor 'alle', zorg ervoor dat u met behulp van de operators 'lt' of 'RP' geo.distance() vergelijken en zorg ervoor dat er niet voor het gebruik van geo.intersects() is genegeerde. Voor 'alle', zorg dat u met behulp van de operators 'gt' of 'ge' geo.distance() vergelijken en zorg ervoor dat voor het gebruik van geo.intersects() genegeerde is. | Filteren op een veld van het type `Collection(Edm.GeographyPoint)` | [Regels voor het filteren van GeographyPoint-verzamelingen](#bkmk_geopoints) |
-| Ongeldige lambda-expressie. Complexe Booleaanse expressies worden niet ondersteund in de lambda-expressies die velden van het type Collection(Edm.GeographyPoint) herhalen. Deelnemen aan onderliggende expressies met voor 'alle', 'of'; 'en' wordt niet ondersteund. Voor 'alle', doe subexpressies met 'en'; 'of' wordt niet ondersteund. | Filteren op velden van het type `Collection(Edm.String)` of `Collection(Edm.GeographyPoint)` | [Regels voor het filteren van tekenreeks verzamelingen](#bkmk_strings) <br/><br/> [Regels voor het filteren van GeographyPoint-verzamelingen](#bkmk_geopoints) |
-| Ongeldige lambda-expressie. Een vergelijkingsoperator (een van de 'lt', 'RP', 'gt' of 'ge') gevonden. Alleen gelijkheid operators zijn toegestaan in de lambda-expressies die velden van het type Collection(Edm.String) herhalen. Gebruik expressies van het formulier 'y' x eq' voor 'alle'. Voor 'alle', gebruik expressies van het formulier x ne 'y' of 'niet (x eq y)'. | Filteren op een veld van het type `Collection(Edm.String)` | [Regels voor het filteren van tekenreeks verzamelingen](#bkmk_strings) |
+| De functie ismatch heeft geen para meters die zijn gekoppeld aan de bereik variabele. Alleen gebonden veld verwijzingen worden ondersteund binnen lambda-expressies (' any ' en ' all '). Wijzig het filter zodanig dat de functie ismatch zich buiten de lambda-expressie bevindt en probeer het opnieuw. | Met `search.ismatch` of`search.ismatchscoring` binnen een lambda-expressie | [Regels voor het filteren van complexe verzamelingen](#bkmk_complex) |
+| Ongeldige lambda-expressie. Er is een test gevonden voor gelijkheid of ongelijkheid, waarbij het tegenovergestelde werd verwacht in een lambda-expressie die een veld van het type verzameling (EDM. String) doorloopt. Gebruik voor ' any ' expressies van het formulier ' x EQ y ' of ' search.in (...) '. Gebruik voor ' all ' expressies van de vorm ' x-y ', ' niet (x-EQ y) ' of ' niet search.in (...) '. | Filteren op een veld van het type`Collection(Edm.String)` | [Regels voor het filteren van teken reeks verzamelingen](#bkmk_strings) |
+| Ongeldige lambda-expressie. Er is een niet-ondersteunde vorm van een complexe Boole-expressie gevonden. Voor any, gebruikt u expressies die or zijn van and, ook wel bekend als disjunctive Normal form. Bijvoorbeeld: (a en b) of (c en d), waarbij a, b, c en d, worden vergeleken of gelijkheid van onderliggende expressies. Gebruik voor ' all ' expressies die ' and of or ' zijn, ook wel bekend als Conjunctive Normal form. Bijvoorbeeld: (a of b) en (c of d) waarbij a, b, c en d een vergelijking of ongelijke subexpressie zijn. Voor beelden van vergelijkings expressies: x gt 5, x Le 2. Voor beeld van een gelijkheids expressie: ' x EQ 5 '. Voor beeld van een expressie voor ongelijkheid: ' x ne 5 '. | Filteren op velden van het `Collection(Edm.DateTimeOffset)`type `Collection(Edm.Double)`, `Collection(Edm.Int32)`, of`Collection(Edm.Int64)` | [Regels voor het filteren van vergelijk bare verzamelingen](#bkmk_comparables) |
+| Ongeldige lambda-expressie. Er is een niet-ondersteund gebruik van geo. distance () of geo. intersects () gevonden in een lambda-expressie die wordt herhaald voor een veld van het type verzameling (EDM. GeographyPoint). Voor any moet u geo. distance () vergelijken met de Opera tors lt of Le en ervoor zorgen dat het gebruik van geo. intersects () niet wordt genegeerd. Voor alle moet u geo. distance () vergelijken met de Opera tors gt of ge en ervoor zorgen dat elk gebruik van geo. intersects () wordt genegeerd. | Filteren op een veld van het type`Collection(Edm.GeographyPoint)` | [Regels voor het filteren van GeographyPoint-verzamelingen](#bkmk_geopoints) |
+| Ongeldige lambda-expressie. Complexe Boole-expressies worden niet ondersteund in lambda-expressies die worden herhaald voor velden van het type verzameling (EDM. GeographyPoint). Voor any, moet u lid zijn van subexpressies met ' or '; ' en ' worden niet ondersteund. Voor ' all ' moet u deel nemen aan subexpressies met ' en '. ' or ' wordt niet ondersteund. | Filteren op velden van het `Collection(Edm.String)` type of`Collection(Edm.GeographyPoint)` | [Regels voor het filteren van teken reeks verzamelingen](#bkmk_strings) <br/><br/> [Regels voor het filteren van GeographyPoint-verzamelingen](#bkmk_geopoints) |
+| Ongeldige lambda-expressie. Er is een vergelijkings operator gevonden (een van de ' lt ', ' Le ', ' gt ' of ' ge '). Alleen gelijkheids operatoren zijn toegestaan in lambda-expressies die worden herhaald voor velden van het type verzameling (EDM. String). Voor any, gebruikt u expressies van het formulier x EQ y. Gebruik voor ' all ' expressies van het formulier ' x-e-y ' of ' niet (x-EQ y) '. | Filteren op een veld van het type`Collection(Edm.String)` | [Regels voor het filteren van teken reeks verzamelingen](#bkmk_strings) |
 
 <a name="bkmk_examples"></a>
 
-## <a name="how-to-write-valid-collection-filters"></a>Over het schrijven van geldige verzameling filters
+## <a name="how-to-write-valid-collection-filters"></a>Geldige verzamelings filters schrijven
 
-De regels voor het schrijven van geldige verzameling filters zijn verschillend voor elk gegevenstype. De volgende secties worden de regels door voorbeelden van waaruit de filterwaarden functies worden ondersteund en welke niet weer te geven:
+De regels voor het schrijven van geldige verzamelings filters verschillen voor elk gegevens type. In de volgende secties worden de regels beschreven door voor beelden te bekijken van welke filter functies worden ondersteund en welke niet:
 
-- [Regels voor het filteren van tekenreeks verzamelingen](#bkmk_strings)
+- [Regels voor het filteren van teken reeks verzamelingen](#bkmk_strings)
 - [Regels voor het filteren van Booleaanse verzamelingen](#bkmk_bools)
 - [Regels voor het filteren van GeographyPoint-verzamelingen](#bkmk_geopoints)
-- [Regels voor het filteren van vergelijkbare verzamelingen](#bkmk_comparables)
+- [Regels voor het filteren van vergelijk bare verzamelingen](#bkmk_comparables)
 - [Regels voor het filteren van complexe verzamelingen](#bkmk_complex)
 
 <a name="bkmk_strings"></a>
 
-## <a name="rules-for-filtering-string-collections"></a>Regels voor het filteren van tekenreeks verzamelingen
+## <a name="rules-for-filtering-string-collections"></a>Regels voor het filteren van teken reeks verzamelingen
 
-In de lambda-expressies voor tekenreeks verzamelingen, de enige vergelijkingsoperators op die kunnen worden gebruikt zijn `eq` en `ne`.
+In lambda-expressies voor teken reeks verzamelingen worden `eq` de enige vergelijkings operatoren die kunnen worden gebruikt, en. `ne`
 
 > [!NOTE]
-> Azure Search biedt geen ondersteuning voor de `lt` / `le` / `gt` / `ge` operators voor tekenreeksen, of binnen of buiten een lambda-expressie.
+> Azure Search biedt geen ondersteuning voor `lt` de / `le` / Operators`gt` voor teken reeksen, zowel binnen als buiten een lambda-expressie. / `ge`
 
-De hoofdtekst van een `any` kunt alleen een failovertest voor gelijkheid tijdens de hoofdtekst van een `all` alleen voor ongelijkheid kunt testen.
+De hoofd tekst van `any` een kan alleen testen op gelijkheid terwijl de hoofd tekst `all` van een alleen test op ongelijkheid kan worden getest.
 
-Het is ook mogelijk om te combineren van meerdere expressies via `or` in de hoofdtekst van een `any`, en via `and` in de hoofdtekst van een `all`. Omdat de `search.in` functie is gelijk aan het combineren van de gelijkheid controleert `or`, het ook toegestaan in de hoofdtekst van een `any`. Daarentegen `not search.in` is toegestaan in de hoofdtekst van een `all`.
+Het is ook mogelijk om meerdere expressies te combi `or` neren via in de hoofd `any`tekst van een `and` en via in de hoofd `all`tekst van een. Aangezien de `search.in` functie gelijk is aan het combi neren van `or`gelijkheids controles met, is het ook toegestaan in `any`de hoofd tekst van een. `not search.in` Is daarentegen toegestaan in de hoofd tekst van een `all`.
 
-Bijvoorbeeld, zijn deze expressies toegestaan:
+Deze expressies zijn bijvoorbeeld toegestaan:
 
 - `tags/any(t: t eq 'books')`
 - `tags/any(t: search.in(t, 'books, games, toys'))`
@@ -80,7 +80,7 @@ Bijvoorbeeld, zijn deze expressies toegestaan:
 - `tags/any(t: t eq 'books' or t eq 'games')`
 - `tags/all(t: t ne 'books' and not (t eq 'games'))`
 
-terwijl deze expressies zijn niet toegestaan:
+Deze expressies zijn niet toegestaan:
 
 - `tags/any(t: t ne 'books')`
 - `tags/any(t: not search.in(t, 'books, games, toys'))`
@@ -93,9 +93,9 @@ terwijl deze expressies zijn niet toegestaan:
 
 ## <a name="rules-for-filtering-boolean-collections"></a>Regels voor het filteren van Booleaanse verzamelingen
 
-Het type `Edm.Boolean` ondersteunt alleen de `eq` en `ne` operators. Als zodanig het werkt niet echt waarmee deze componenten controleren van de variabele in hetzelfde bereik met combineren `and` / `or` omdat dat altijd tot tautologies of strijdigheden leiden zou.
+Het type `Edm.Boolean` ondersteunt alleen de `eq` Opera `ne` tors en. Daarom is het niet veel zinvol om dergelijke componenten toe te voegen die dezelfde bereik variabele `and` / `or` controleren, omdat deze altijd zou leiden tot tautologies of tegen strijdigheden.
 
-Hier volgen enkele voorbeelden van filters op Booleaanse verzamelingen die zijn toegestaan:
+Hier volgen enkele voor beelden van filters voor Booleaanse verzamelingen die zijn toegestaan:
 
 - `flags/any(f: f)`
 - `flags/all(f: f)`
@@ -104,9 +104,9 @@ Hier volgen enkele voorbeelden van filters op Booleaanse verzamelingen die zijn 
 - `flags/all(f: not f)`
 - `flags/all(f: not (f eq true))`
 
-In tegenstelling tot tekenreeks verzamelingen hebben Booleaanse verzamelingen geen beperkingen op die de operator kan worden gebruikt in welk type lambda-expressie Beide `eq` en `ne` kan worden gebruikt in de hoofdtekst van `any` of `all`.
+In tegens telling tot teken reeks verzamelingen hebben Boole-verzamelingen geen limieten voor de operator die kan worden gebruikt in welk type lambda-expressie. Beide `eq` `any` `all`en `ne` kunnen worden gebruikt in de hoofd tekst van of.
 
-Expressies, zoals de volgende zijn niet toegestaan voor Booleaanse verzamelingen:
+Expressies zoals de volgende zijn niet toegestaan voor Booleaanse verzamelingen:
 
 - `flags/any(f: f or not f)`
 - `flags/any(f: f or f)`
@@ -117,23 +117,23 @@ Expressies, zoals de volgende zijn niet toegestaan voor Booleaanse verzamelingen
 
 ## <a name="rules-for-filtering-geographypoint-collections"></a>Regels voor het filteren van GeographyPoint-verzamelingen
 
-Waarden van het type `Edm.GeographyPoint` in een verzameling kan niet rechtstreeks met elkaar worden vergeleken. In plaats daarvan, ze moeten worden gebruikt als parameters voor de `geo.distance` en `geo.intersects` functies. De `geo.distance` functie op zijn beurt moet worden vergeleken met een waarde voor scheidingsafstand met behulp van een van de vergelijkingsoperators `lt`, `le`, `gt`, of `ge`. Deze regels zijn ook van toepassing op niet-verzameling Edm.GeographyPoint velden.
+Waarden van het `Edm.GeographyPoint` type in een verzameling kunnen niet rechtstreeks met elkaar worden vergeleken. In plaats daarvan moeten ze worden gebruikt als para meters `geo.intersects` voor de `geo.distance` functies en. De `geo.distance` functie moet op zijn beurt worden vergeleken met een afstands waarde met behulp van `lt`een van `gt`de vergelijkings operatoren, `le`, of `ge`. Deze regels zijn ook van toepassing op velden van het soort EDM. GeographyPoint die niet zijn verzameld.
 
-Tekenreeks-verzamelingen, zoals `Edm.GeographyPoint` verzamelingen hebben sommige regels voor hoe de georuimtelijke functies kunnen worden gebruikt en op de verschillende typen lambda-expressies gecombineerd:
+Net als teken reeks `Edm.GeographyPoint` verzamelingen hebben verzamelingen enkele regels voor de manier waarop de georuimtelijke functies kunnen worden gebruikt en gecombineerd in de verschillende soorten lambda-expressies:
 
-- Welke vergelijkingsoperators kunt u met de `geo.distance` functie afhankelijk is van het type van de lambda-expressie. Voor `any`, kunt u alleen `lt` of `le`. Voor `all`, kunt u alleen `gt` of `ge`. U kunt negatief moet worden gemaakt met betrekking tot expressies `geo.distance`, maar u hebt de vergelijkingsoperator wijzigen (`geo.distance(...) lt x` wordt `not (geo.distance(...) ge x)` en `geo.distance(...) le x` wordt `not (geo.distance(...) gt x)`).
-- In de hoofdtekst van een `all`, wordt de `geo.intersects` functie moet worden gecompenseerd. Daarentegen in de hoofdtekst van een `any`, wordt de `geo.intersects` functie niet moet worden gecompenseerd.
-- In de hoofdtekst van een `any`, georuimtelijke expressies kunnen worden gecombineerd met `or`. In de hoofdtekst van een `all`, dergelijke expressies kunnen worden gecombineerd met `and`.
+- Welke vergelijkings operatoren u met de `geo.distance` functie kunt gebruiken, is afhankelijk van het type lambda-expressie. Voor `any`kunt u alleen `lt` of `le`gebruiken. Voor `all`kunt u alleen `gt` of `ge`gebruiken. U kunt `geo.distance`expressies negeren met, maar u moet de vergelijkings operator wijzigen ( `not (geo.distance(...) ge x)` `geo.distance(...) lt x` wordt in en `geo.distance(...) le x` wordt `not (geo.distance(...) gt x)`).
+- In de hoofd tekst van `all`een moet `geo.intersects` de functie worden genegeerd. `any` De`geo.intersects` functie mag daarentegen in de hoofd tekst van een niet worden genegeerd.
+- In de hoofd tekst van `any`een kunnen geo-spatiale expressies worden gecombineerd `or`met. In de hoofd tekst van `all`een kunnen dergelijke expressies worden gecombineerd met `and`.
 
-De bovenstaande beperkingen bestaan voor dezelfde redenen als gelijkheid/ongelijkheid beperking van de tekenreeks verzamelingen. Zie [Understanding OData verzameling filters in Azure Search](search-query-understand-collection-filters.md) voor stil bij de volgende redenen.
+De bovenstaande beperkingen bestaan om Vergelijk bare redenen als de beperking voor gelijkheid/ongelijkheid voor teken reeks verzamelingen. Zie meer [informatie over OData-verzamelings filters in azure Search](search-query-understand-collection-filters.md) voor een diep gaande blik op deze redenen.
 
-Hier volgen enkele voorbeelden van filters op `Edm.GeographyPoint` verzamelingen die zijn toegestaan:
+Hier volgen enkele voor beelden van filters `Edm.GeographyPoint` voor verzamelingen die zijn toegestaan:
 
 - `locations/any(l: geo.distance(l, geography'POINT(-122 49)') lt 10)`
 - `locations/any(l: not (geo.distance(l, geography'POINT(-122 49)') ge 10) or geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 - `locations/all(l: geo.distance(l, geography'POINT(-122 49)') ge 10 and not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
 
-De volgende tabel bevat voorbeelden van expressies zijn niet toegestaan voor `Edm.GeographyPoint` verzamelingen:
+Expressies zoals het volgende zijn niet toegestaan voor `Edm.GeographyPoint` verzamelingen:
 
 - `locations/any(l: l eq geography'POINT(-122 49)')`
 - `locations/any(l: not geo.intersects(l, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))`
@@ -145,88 +145,88 @@ De volgende tabel bevat voorbeelden van expressies zijn niet toegestaan voor `Ed
 
 <a name="bkmk_comparables"></a>
 
-## <a name="rules-for-filtering-comparable-collections"></a>Regels voor het filteren van vergelijkbare verzamelingen
+## <a name="rules-for-filtering-comparable-collections"></a>Regels voor het filteren van vergelijk bare verzamelingen
 
-In deze sectie is van toepassing op de volgende gegevenstypen:
+Deze sectie is van toepassing op alle volgende gegevens typen:
 
 - `Collection(Edm.DateTimeOffset)`
 - `Collection(Edm.Double)`
 - `Collection(Edm.Int32)`
 - `Collection(Edm.Int64)`
 
-Typen zoals `Edm.Int32` en `Edm.DateTimeOffset` ondersteuning voor alle zes van de vergelijkingsoperators: `eq`, `ne`, `lt`, `le`, `gt`, en `ge`. Lambda-expressies op verzamelingen van de volgende typen kunnen eenvoudige expressies met behulp van een van deze operators bevatten. Dit geldt voor zowel `any` en `all`. Bijvoorbeeld, zijn deze filters toegestaan:
+`Edm.Int32` Typen zoals en `eq` `ne` `ge` `lt` `le` `gt`ondersteunen alle zes van de vergelijkings operatoren:,,,, en. `Edm.DateTimeOffset` Lambda-expressies over verzamelingen van deze typen kunnen eenvoudige expressies met een van deze opera tors bevatten. Dit geldt voor zowel `any` `all`als. Deze filters zijn bijvoorbeeld toegestaan:
 
 - `ratings/any(r: r ne 5)`
 - `dates/any(d: d gt 2017-08-24T00:00:00Z)`
 - `not margins/all(m: m eq 3.5)`
 
-Er zijn echter beperkingen met betrekking tot hoe dergelijke vergelijkingsexpressies kunnen worden gecombineerd tot complexe expressies in een lambda-expressie:
+Er zijn echter beperkingen ten aanzien van de manier waarop dergelijke vergelijkings expressies kunnen worden gecombineerd tot complexere expressies binnen een lambda-expressie:
 
 - Regels voor `any`:
-  - Eenvoudige ongelijkheid expressies kunnen niet nuttige worden gecombineerd met andere expressies. Bijvoorbeeld, mag deze expressie:
+  - Expressies met een eenvoudige ongelijkheid kunnen niet worden gebruikt in combi natie met andere expressies. Deze expressie is bijvoorbeeld toegestaan:
     - `ratings/any(r: r ne 5)`
 
-    maar deze expressie niet:
+    maar deze expressie is niet:
     - `ratings/any(r: r ne 5 and r gt 2)`
 
-    en hoewel deze expressie is toegestaan, is het niet handig omdat de voorwaarden overlappen:
+    en hoewel deze expressie is toegestaan, is het niet nuttig omdat de voor waarden elkaar overlappen:
     - `ratings/any(r: r ne 5 or r gt 7)`
-  - Eenvoudige vergelijkingsexpressies met betrekking tot `eq`, `lt`, `le`, `gt`, of `ge` kan worden gecombineerd met `and` / `or`. Bijvoorbeeld:
+  - Eenvoudige vergelijkings `eq`expressies `lt`waarbij `le`, `gt`,, `ge` of kunnen worden gecombineerd `and`met / `or`. Bijvoorbeeld:
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - Van de vergelijkingsexpressies in combinatie met `and` (voegwoorden) verder kunnen worden gecombineerd met `or`. Dit formulier is bekend in Booleaanse logica als '[scheidende normaal formulier](https://en.wikipedia.org/wiki/Disjunctive_normal_form)' (DNF). Bijvoorbeeld:
+  - Vergelijkings expressies `and` gecombineerd met (samen voegingen) kunnen verder `or`worden gecombineerd met. Dit formulier is bekend als Boole-logica als '[disjunctive normaal Form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)' (DNF). Bijvoorbeeld:
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - Regels voor `all`:
-  - Eenvoudige gelijkheid expressies kunnen niet nuttige worden gecombineerd met andere expressies. Bijvoorbeeld, mag deze expressie:
+  - Eenvoudige gelijkheids expressies kunnen niet nuttig worden gecombineerd met andere expressies. Deze expressie is bijvoorbeeld toegestaan:
     - `ratings/all(r: r eq 5)`
 
-    maar deze expressie niet:
+    maar deze expressie is niet:
     - `ratings/all(r: r eq 5 or r le 2)`
 
-    en hoewel deze expressie is toegestaan, is het niet handig omdat de voorwaarden overlappen:
+    en hoewel deze expressie is toegestaan, is het niet nuttig omdat de voor waarden elkaar overlappen:
     - `ratings/all(r: r eq 5 and r le 7)`
-  - Eenvoudige vergelijkingsexpressies met betrekking tot `ne`, `lt`, `le`, `gt`, of `ge` kan worden gecombineerd met `and` / `or`. Bijvoorbeeld:
+  - Eenvoudige vergelijkings `ne`expressies `lt`waarbij `le`, `gt`,, `ge` of kunnen worden gecombineerd `and`met / `or`. Bijvoorbeeld:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - Van de vergelijkingsexpressies in combinatie met `or` (disjunctions) verder kunnen worden gecombineerd met `and`. Dit formulier is bekend in Booleaanse logica als '[Conjunctive normaal formulier](https://en.wikipedia.org/wiki/Conjunctive_normal_form)' (CNF). Bijvoorbeeld:
+  - Vergelijkings expressies `or` in combi natie met (ontkoppelingen) kunnen `and`verder worden gecombineerd met. Dit formulier is bekend als Boole-logica als '[Conjunctive normaal Form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)' (CNF). Bijvoorbeeld:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>
 
 ## <a name="rules-for-filtering-complex-collections"></a>Regels voor het filteren van complexe verzamelingen
 
-Lambda-expressies via complexe verzamelingen ondersteunt de syntaxis van een veel meer flexibiliteit dan lambda-expressies in verzamelingen van primitieve typen. U kunt een filter om voor te bereiden in dergelijke een lambda-expressie die u buiten een, met slechts twee uitzonderingen kunt gebruiken.
+Lambda-expressies over complexe verzamelingen ondersteunen een veel meer flexibele syntaxis dan lambda-expressies voor verzamelingen van primitieve typen. U kunt elke filter constructie in een dergelijke lambda-expressie gebruiken die u buiten een kunt gebruiken, met slechts twee uitzonde ringen.
 
-De functies First, `search.ismatch` en `search.ismatchscoring` binnen lambda-expressies worden niet ondersteund. Zie voor meer informatie, [Understanding OData verzameling filters in Azure Search](search-query-understand-collection-filters.md).
+Ten eerste, de `search.ismatch` functies `search.ismatchscoring` en worden niet ondersteund binnen lambda-expressies. Zie [informatie over OData-verzamelings filters in azure Search](search-query-understand-collection-filters.md)voor meer informatie.
 
-Ten tweede verwijzen naar velden die niet *gebonden* aan de variabele bereik (zogeheten *gratis variabelen*) is niet toegestaan. Bijvoorbeeld, houd rekening met de volgende twee gelijkwaardige OData-filterexpressies:
+Ten tweede is het niet toegestaan om te verwijzen naar velden die niet zijn *gebonden* aan de variabele Range (dus *gratis variabelen*). Bekijk bijvoorbeeld de volgende twee equivalente OData-filter expressies:
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking')) and details/margin gt 0.5`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and details/margin gt 0.5))`
 
-De eerste expressie die actief mag zijn, terwijl het tweede formulier wordt geweigerd omdat `details/margin` is niet gebonden aan de variabele bereik `s`.
+De eerste expressie is toegestaan, terwijl het tweede formulier wordt afgewezen omdat `details/margin` het niet is gekoppeld aan de bereik variabele. `s`
 
-Deze regel wordt ook vergroot voor expressies die in een buitenste bereik gebonden variabelen. Deze variabelen zijn gratis met betrekking tot het bereik waarin ze worden weergegeven. Bijvoorbeeld, de eerste expressie die is toegestaan, terwijl de tweede equivalente expressie is niet toegestaan omdat `s/name` is gratis met betrekking tot het bereik van de variabele bereik `a`:
+Deze regel wordt ook uitgebreid naar expressies met variabelen die zijn gebonden in een buitenste bereik. Dergelijke variabelen zijn gratis ten opzichte van het bereik waarin ze worden weer gegeven. De eerste expressie is bijvoorbeeld toegestaan, terwijl de tweede equivalente expressie niet is toegestaan omdat `s/name` deze vrij is ten opzichte van het bereik van `a`de variabele bereik:
 
 1. `stores/any(s: s/amenities/any(a: a eq 'parking') and s/name ne 'Flagship')`
 1. `stores/any(s: s/amenities/any(a: a eq 'parking' and s/name ne 'Flagship'))`
 
-Deze beperking mag niet een probleem in de praktijk zijn omdat het is altijd mogelijk te maken van filters zodat lambda-expressies alleen gebonden variabelen bevatten.
+Deze beperking is niet een probleem in de praktijk omdat het altijd mogelijk is om filters te maken, zodat lambda-expressies alleen gebonden variabelen bevatten.
 
-## <a name="cheat-sheet-for-collection-filter-rules"></a>Overzichtskaart voor regels voor het verzamelen
+## <a name="cheat-sheet-for-collection-filter-rules"></a>Cheat-blad voor regels voor verzamelings filter
 
-De volgende tabel geeft een overzicht van de regels voor het maken van geldige filters voor het gegevenstype van elke verzameling.
+De volgende tabel bevat een overzicht van de regels voor het samen stellen van geldige filters voor elk verzamelings gegevens type.
 
 [!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
 
-Zie voor meer voorbeelden van hoe u een van de geldige filters voor elk geval [over het schrijven van geldige verzameling filters](#bkmk_examples).
+Zie [geldige verzamelings filters schrijven](#bkmk_examples)voor voor beelden van het maken van geldige filters voor elke case.
 
-Als u schrijffilters vaak en inzicht krijgen in de regels van de eerste beginselen kunt u meer dan alleen onthouden, Zie [Understanding OData verzameling filters in Azure Search](search-query-understand-collection-filters.md).
+Als u regel matig filters schrijft en u meer informatie wilt over de regels uit de eerste principes, kunt u meer weten [over de filters van OData-verzamelingen in azure Search](search-query-understand-collection-filters.md).
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Informatie over filters voor OData-verzameling in Azure Search](search-query-understand-collection-filters.md)
+- [Meer informatie over OData-verzamelings filters in Azure Search](search-query-understand-collection-filters.md)
 - [Filters in Azure Search](search-filters.md)
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

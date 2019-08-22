@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Een R-script uitvoeren op een cluster ML-Services in Azure HDInsight met behulp van RStudio Server'
-description: In de Quick Start, kunt u een R-script uitvoeren op een ML-Services-cluster in Azure HDInsight met behulp van RStudio Server.
+title: 'Quickstart: Een R-script uitvoeren op een ML Services-cluster in azure HDInsight met behulp van de RStudio-server'
+description: In de Quick Start voert u een R-script uit op een cluster met MILLILITER Services in azure HDInsight met behulp van RStudio server.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,32 +8,32 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 484763adfa154dcdf226b03f1f591d248532ee35
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 295430027afabcfcf793a87ae5859dc9c6675966
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450917"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876296"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Quickstart: Een R-script uitvoeren op een cluster ML-Services in Azure HDInsight met behulp van RStudio Server
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Quickstart: Een R-script uitvoeren op een ML Services-cluster in azure HDInsight met behulp van de RStudio-server
 
-ML-Services op Azure HDInsight kunnen R-scripts met Apache Spark en Apache Hadoop MapReduce gedistribueerde berekeningen kunt uitvoeren. ML-Services wordt bepaald hoe aanroepen zijn uitgevoerd door de instelling van de compute-context. Het edge-knooppunt van een cluster biedt een handige locatie verbinding maken met het cluster en uw R-scripts uit te voeren. Met een edge-knooppunt hebt u de mogelijkheid van het uitvoeren van de geparallelliseerde gedistribueerde functies van RevoScaleR over de kernen van het edge-knooppunt-server. U kunt ook ze uitvoeren op de knooppunten van het cluster met behulp van RevoScaleR Hadoop-Mapreduce of Apache Spark compute-context.
+Met ML-Services op Azure HDInsight kunnen R-scripts Apache Spark en Apache Hadoop MapReduce gebruiken om gedistribueerde berekeningen uit te voeren. MILLILITERs services bepalen hoe aanroepen worden uitgevoerd door de compute-context in te stellen. Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een Edge-knoop punt hebt u de mogelijkheid om de geparallel gedistribueerde functies van RevoScaleR uit te voeren op de kernen van de server met het Edge-knoop punt. U kunt ze ook uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van RevoScaleR of Apache Spark reken contexten.
 
-In deze snelstartgids leert u hoe u een R-script uitvoeren met RStudio Server die wordt gedemonstreerd hoe Spark voor gedistribueerde R-berekeningen. U definieert een compute-context voor het uitvoeren van berekeningen lokaal op een edge-knooppunt en opnieuw worden verdeeld over de knooppunten in het HDInsight-cluster.
+In deze Quick Start leert u hoe u een R-script kunt uitvoeren met RStudio-server met behulp van Spark voor gedistribueerde R-berekeningen. U definieert een compute-context om berekeningen lokaal uit te voeren op een Edge-knoop punt en wordt opnieuw gedistribueerd over de knoop punten in het HDInsight-cluster.
 
 ## <a name="prerequisite"></a>Vereiste
 
-Een ML-Services-cluster in HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ML-Services** voor **clustertype**.
+Een cluster met MILLILITERs Services op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ml Services** voor het **cluster type**.
 
 ## <a name="connect-to-rstudio-server"></a>Verbinding maken met RStudio Server
 
-RStudio Server wordt uitgevoerd op het edge-knooppunt van het cluster. Ga naar de volgende URL waar `CLUSTERNAME` is de naam van het ML-Services-cluster dat u hebt gemaakt:
+De RStudio-server wordt uitgevoerd op het Edge-knoop punt van het cluster. Ga naar de volgende URL, `CLUSTERNAME` waarbij de naam is van het door u gemaakte ml Services-cluster:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-De eerste keer dat u zich aanmeldt moet u zich twee keer verifiëren. Voor de eerste verificatieprompt geeft u de beheerdersaanmelding bij de cluster en het wachtwoord, de standaardwaarde is `admin`. Voor de tweede verificatieprompt geeft u de SSH-aanmelding en het wachtwoord, de standaardwaarde is `sshuser`. Volgende aanmeldingen is alleen vereist voor de SSH-referenties.
+De eerste keer dat u zich aanmeldt, moet u twee keer verifiëren. Geef bij de eerste verificatie prompt de aanmeldings naam van de Cluster beheerder en het wacht `admin`woord op. de standaard instelling is. Voor de tweede verificatie prompt geeft u de SSH-aanmeldings naam en het wacht `sshuser`woord op. de standaard instelling is. Voor volgende aanmeldingen zijn alleen de SSH-referenties vereist.
 
 Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende schermafbeelding:
 
@@ -41,7 +41,7 @@ Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende scher
 
 ## <a name="use-a-compute-context"></a>Een compute-context gebruiken
 
-1. Gebruik vanuit RStudio Server, de volgende code om voorbeeldgegevens te laden in de standaardopslag voor HDInsight:
+1. Gebruik de volgende code van RStudio-server om voorbeeld gegevens te laden in de standaard opslag voor HDInsight:
 
     ```RStudio
     # Set the HDFS (WASB) location of example data
@@ -76,9 +76,9 @@ Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende scher
      rxHadoopCopyFromLocal(source, bigDataDirRoot)
     ```
 
-    Deze stap kan ongeveer 8 minuten duren om uit te voeren.
+    Deze stap kan ongeveer acht minuten duren.
 
-1. Maak enkele gegevens en definieer twee gegevensbronnen. Voer de volgende code in RStudio:
+1. Maak enkele gegevens informatie en Definieer twee gegevens bronnen. Voer de volgende code in RStudio in:
 
     ```RStudio
     # Define the HDFS (WASB) file system
@@ -105,7 +105,7 @@ Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende scher
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. Voer logistic regression via de via de **lokale** compute-context. Voer de volgende code in RStudio:
+1. Voer een logistiek regressie uit op basis van de gegevens met behulp van de **lokale** Compute-context. Voer de volgende code in RStudio in:
 
     ```RStudio
     # Set a local compute context
@@ -120,7 +120,7 @@ Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende scher
      summary(modelLocal)
     ```
 
-    De berekeningen moeten in ongeveer 7 minuten voltooid. Hier ziet u uitvoer die met regels die vergelijkbaar is met het volgende codefragment eindigt:
+    De berekeningen moeten in ongeveer 7 minuten worden voltooid. U ziet dat er uitvoer wordt weer gegeven die eindigt op regels die vergelijkbaar zijn met het volgende code fragment:
 
     ```output
     Data: airOnTimeDataLocal (RxTextData Data Source)
@@ -150,7 +150,7 @@ Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende scher
       Number of iterations: 7
     ```
 
-1. Uitvoeren van de dezelfde logistic regression met behulp van de **Spark** context. De Spark-context distribueert de verwerking over alle werkknooppunten in het HDInsight-cluster. Voer de volgende code in RStudio:
+1. Voer dezelfde logistiek regressie uit met behulp van de **Spark** -context. De Spark-context distribueert de verwerking over alle werkknooppunten in het HDInsight-cluster. Voer de volgende code in RStudio in:
 
     ```RStudio
     # Define the Spark compute context
@@ -168,17 +168,20 @@ Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende scher
      summary(modelSpark)
     ```
 
-    De berekeningen moeten in circa 5 minuten voltooid.
+    De berekeningen moeten in ongeveer 5 minuten worden voltooid.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de Quick Start hebt voltooid, kunt u het cluster verwijdert. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Als u wilt verwijderen van een cluster, Zie [verwijderen van een HDInsight-cluster met behulp van uw browser, PowerShell of Azure CLI](../hdinsight-delete-cluster.md).
+Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u geleerd hoe u een R-script uitvoeren met RStudio Server die met behulp van Spark voor gedistribueerde R-berekeningen wordt gedemonstreerd.  Ga naar het volgende artikel voor meer informatie over de opties die beschikbaar zijn om op te geven of en hoe de uitvoering is geparallelliseerd over kernen van het edge-knooppunt of de HDInsight-cluster.
+In deze Quick Start hebt u geleerd hoe u een R-script uitvoert met een RStudio-server die Spark gebruikt voor gedistribueerde R-berekeningen.  Ga naar het volgende artikel voor meer informatie over de opties die beschikbaar zijn om op te geven of en hoe uitvoering wordt geevenwijdigd over kernen van het Edge-knoop punt of HDInsight-cluster.
 
 > [!div class="nextstepaction"]
->[Opties voor COMPUTE context voor ML-Services op HDInsight](./r-server-compute-contexts.md)
+>[Opties voor Compute-context voor MILLILITERs Services in HDInsight](./r-server-compute-contexts.md)
+
+> [!NOTE]
+> Op deze pagina vindt u een beschrijving van de functies van RStudio-software. Microsoft Azure HDInsight is niet gekoppeld aan RStudio, Inc.
