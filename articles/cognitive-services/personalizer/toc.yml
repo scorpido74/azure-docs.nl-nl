@@ -53,14 +53,6 @@
           href: concept-feature-evaluation.md
     - name: Schaalbaarheid en prestaties
       href: concepts-scalability-performance.md
-- name: Demonstraties
-  items:
-    - name: Website met nieuwsinhoud
-      href: 'https://personalizerdemo-staging.azurewebsites.net/'
-    - name: Website met winkelinhoud
-      href: 'http://personalizer-traveldemo.azurewebsites.net/'
-    - name: Voorbeeldcode voor demonstraties
-      href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/demos'
 - name: Handleidingen
   items:
     - name: Personalizer maken en configureren

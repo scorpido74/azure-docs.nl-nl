@@ -1,6 +1,6 @@
 ---
-title: Architectuur concepten in Azure IoT Central | Microsoft Docs
-description: Dit artikel bevat belangrijke concepten die betrekking hebben de architectuur van Azure IoT Central
+title: Architecturale concepten in azure IoT Central | Microsoft Docs
+description: In dit artikel worden de belangrijkste concepten besproken die betrekking hebben op de architectuur van Azure IoT Central
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/31/2019
@@ -8,105 +8,107 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4bc9a79576c3165585a4a2c897bd41bfb77c080c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43357bdeb444fed20f29107d10dc31a61857fccf
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693128"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877511"
 ---
-# <a name="azure-iot-central-architecture"></a>Azure IoT Central-architectuur
+# <a name="azure-iot-central-architecture"></a>Architectuur van Azure IoT Central
 
-Dit artikel bevat een overzicht van de architectuur van Microsoft Azure IoT Central.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-![Op het hoogste niveau architectuur](media/concepts-architecture/architecture.png)
+Dit artikel bevat een overzicht van de Microsoft Azure IoT Central architectuur.
+
+![Architectuur op het hoogste niveau](media/concepts-architecture/architecture.png)
 
 ## <a name="devices"></a>Apparaten
 
-Apparaten uitwisselen van gegevens met uw Azure IoT Central-toepassing. Een apparaat kunt doen:
+Apparaten wisselen gegevens uit met uw Azure IoT Central-toepassing. Een apparaat kan:
 
 - Metingen zoals telemetrie verzenden.
-- Instellingen synchroniseren met uw toepassing.
+- Synchroniseer de instellingen met uw toepassing.
 
-De gegevens die een apparaat met uw toepassing uitwisselen kan is in Azure IoT Central opgegeven in de sjabloon van een apparaat. Zie voor meer informatie over apparaatsjablonen [metagegevens management](#metadata-management).
+In azure IoT Central worden de gegevens die een apparaat kan uitwisselen met uw toepassing opgegeven in een sjabloon voor een apparaat. Zie [meta gegevens beheer](#metadata-management)voor meer informatie over Apparaatinstellingen.
 
-Zie voor meer informatie over hoe apparaten verbinding met uw Azure IoT Central-toepassing maken, [apparaatconnectiviteit](concepts-connectivity.md).
+Raadpleeg [connectiviteit](concepts-connectivity.md)van apparaten voor meer informatie over de manier waarop apparaten verbinding maken met uw Azure IOT Central-toepassing.
 
-## <a name="cloud-gateway"></a>Cloudgateway
+## <a name="cloud-gateway"></a>Cloud gateway
 
-Azure IoT Central maakt gebruik van Azure IoT Hub als een cloudgateway waarmee de connectiviteit van apparaten. Met IoT Hub kunt:
+Azure IoT Central maakt gebruik van Azure IoT Hub als een Cloud gateway die connectiviteit van apparaten mogelijk maakt. IoT Hub maakt het volgende mogelijk:
 
-- Opname van gegevens op schaal in de cloud.
-- Beheer van apparaten.
-- Beveiligde connectiviteit van apparaten.
+- Gegevens opname op schaal in de Cloud.
+- Apparaatbeheer.
+- Connectiviteit van beveiligde apparaten.
 
-Zie voor meer informatie over IoT Hub, [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+Zie voor meer informatie over IoT Hub [Azure IOT hub](https://docs.microsoft.com/azure/iot-hub/).
 
-Zie voor meer informatie over de connectiviteit van apparaten in Azure IoT Central, [apparaatconnectiviteit](concepts-connectivity.md).
+Zie [connectiviteit van apparaten](concepts-connectivity.md)voor meer informatie over de connectiviteit van apparaten in azure IOT Central.
 
-## <a name="data-stores"></a>Gegevensarchieven
+## <a name="data-stores"></a>Gegevensopslag
 
-Azure IoT Central worden toepassingsgegevens opgeslagen in de cloud. Toepassingsgegevens opgeslagen bevat:
+In azure IoT Central worden toepassings gegevens opgeslagen in de Cloud. De opgeslagen toepassings gegevens zijn onder andere:
 
-- Apparaatsjablonen.
+- Device-sjablonen.
 - Apparaat-id's.
-- Metagegevens van apparaten.
-- Gebruiker en rol gegevens.
+- Meta gegevens van het apparaat.
+- Gebruikers gegevens en-rollen.
 
-Azure IoT Central maakt gebruik van een time series opslaan voor de meting die worden verzonden van uw apparaten. Time series-gegevens van apparaten die worden gebruikt door de analytics-service.
+Azure IoT Central gebruikt een time series Store voor de meet gegevens die vanaf uw apparaten worden verzonden. Time Series-gegevens van apparaten die worden gebruikt door de analyse service.
 
 ## <a name="analytics"></a>Analyse
 
-De analytics-service is verantwoordelijk voor het genereren van de aangepaste rapportagegegevens die de toepassing worden weergegeven. Een operator kan [aanpassen van de analyse](howto-create-analytics.md) weergegeven in de toepassing. De analytics-service is gebouwd boven [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) en verwerkt de meetgegevens van uw apparaten worden verzonden.
+De analyse service is verantwoordelijk voor het genereren van de aangepaste rapportage gegevens die door de toepassing worden weer gegeven. Een operator kan [de analyse aanpassen](howto-create-analytics.md) die in de toepassing wordt weer gegeven. De Analytics-service is boven op [Azure time series Insights](https://azure.microsoft.com/services/time-series-insights/) gebouwd en verwerkt de meet gegevens die vanaf uw apparaten worden verzonden.
 
 ## <a name="rules-and-actions"></a>Regels en acties
 
-[Regels en acties](howto-create-telemetry-rules.md) werken nauw samen om taken in de toepassing te automatiseren. Een opbouwfunctie kunt definiëren regels op basis van telemetrie van apparaten, zoals de temperatuur van meer dan een opgegeven drempelwaarde. Azure IoT Central gebruikt een processor voor streaming om te bepalen wanneer de regelvoorwaarden wordt voldaan. Als een voorwaarde wordt voldaan, wordt er een actie gedefinieerd door de opbouwfunctie voor geactiveerd. Een actie kan bijvoorbeeld een e-mail naar een technicus die de temperatuur van een apparaat te hoog is verzenden.
+[Regels en acties](howto-create-telemetry-rules.md) kunnen nauw samen worden gebruikt om taken in de toepassing te automatiseren. Een Builder kan regels definiëren op basis van de telemetrie van apparaten, zoals de Tempe ratuur die een gedefinieerde drempel waarde overschrijdt. Azure IoT Central gebruikt een Stream-processor om te bepalen wanneer aan de voor waarden van de regel wordt voldaan. Wanneer aan een regel voorwaarde wordt voldaan, wordt een door de Builder gedefinieerde actie geactiveerd. Een actie kan bijvoorbeeld een e-mail verzenden om een technicus op de hoogte te stellen dat de Tempe ratuur op een apparaat te hoog is.
 
-## <a name="metadata-management"></a>Beheer van metagegevens
+## <a name="metadata-management"></a>Beheer van meta gegevens
 
-Apparaatsjablonen definiëren in een Azure IoT Central-toepassing, het gedrag en de mogelijkheid van de typen apparaten. Bijvoorbeeld, een apparaat koelkast sjabloon Hiermee geeft u de telemetrie die een koelkast worden verzonden naar uw toepassing.
+In een Azure IoT Central-toepassing worden met Apparaatinstellingen het gedrag en de mogelijkheden van typen apparaten gedefinieerd. Een sjabloon voor een koel kast bevat bijvoorbeeld de telemetrie die een koel kast naar uw toepassing verzendt.
 
-![Sjabloon-architectuur](media/concepts-architecture/template_architecture.png)
+![Sjabloon architectuur](media/concepts-architecture/template_architecture.png)
 
-In de sjabloon van een apparaat:
+In een apparaatprofiel:
 
-- **Metingen** geeft de telemetrie van het apparaat worden verzonden naar de toepassing.
-- **Instellingen** geeft de configuraties die een operator kan instellen.
-- **Eigenschappen** metagegevens die een operator kan ingesteld opgeven.
-- **Regels** gedrag in de toepassing op basis van gegevens die zijn verzonden vanaf een apparaat te automatiseren.
-- **Dashboards** aanpasbare weergaven van een apparaat in de toepassing.
+- **Metingen** geven de telemetrie op die het apparaat naar de toepassing verzendt.
+- **Instellingen** geven de configuraties op die een operator kan instellen.
+- **Eigenschappen** geven meta gegevens op die een operator kan instellen.
+- **Regels** automatiseren gedrag in de toepassing op basis van gegevens die vanaf een apparaat worden verzonden.
+- **Dash boards** zijn aanpas bare weer gaven van een apparaat in de toepassing.
 
-Een toepassing kan een of meer gesimuleerde en echte apparaten op basis van de sjabloon voor elk apparaat hebben.
+Een toepassing kan een of meer gesimuleerde en echte apparaten op basis van elk apparaatprofiel hebben.
 
-## <a name="data-export"></a>Gegevens exporteren
+## <a name="data-export"></a>Gegevensexport
 
-In een Azure IoT Central-toepassing, kunt u [uw gegevens continu exporteren](howto-export-data-event-hubs-service-bus.md) aan uw eigen Azure Event Hubs en Azure Service Bus-instanties. U kunt uw gegevens ook periodiek exporteren naar uw Azure Blob storage-account. IoT Central kunnen metingen, apparaten en apparaatsjablonen exporteren.
+In een Azure IoT Central-toepassing kunt u [uw gegevens voortdurend exporteren](howto-export-data-event-hubs-service-bus.md) naar uw eigen azure-Event Hubs en Azure service bus exemplaren. U kunt uw gegevens ook periodiek exporteren naar uw Azure Blob-opslag account. IoT Central kunt metingen, apparaten en apparaatinstellingen exporteren.
 
-## <a name="batch-device-updates"></a>Bijwerken van de batch-apparaten
+## <a name="batch-device-updates"></a>Updates voor batch-apparaten
 
-In een Azure IoT Central-toepassing, kunt u [maken en uitvoeren van taken](howto-run-a-job.md) voor het beheren van verbonden apparaten. Deze taken kunt u doen bulksgewijs updates van apparaateigenschappen of instellingen of opdrachten worden uitgevoerd. U kunt bijvoorbeeld een taak voor het verhogen van de snelheid van de ventilator voor meerdere gekoeld verkoopautomaten maken.
+In een Azure IoT Central-toepassing kunt u [taken maken en uitvoeren](howto-run-a-job.md) om verbonden apparaten te beheren. Met deze taken kunt u bulksgewijs updates uitvoeren op eigenschappen of instellingen van het apparaat, of opdracht geven. U kunt bijvoorbeeld een taak maken om de snelheid van de ventilator voor meerdere gekoelde verkoop machines te verg Roten.
 
 ## <a name="role-based-access-control-rbac"></a>Toegangsbeheer op basis van rollen (RBAC)
 
-Een [de beheerder kan toegangsregels definiëren](howto-administer.md) voor een Azure IoT Central-toepassing met behulp van de vooraf gedefinieerde rollen. Een beheerder kan gebruikers toewijzen aan rollen om te bepalen welke aspecten van de toepassing voor de gebruiker toegang heeft.
+Een [beheerder kan toegangs regels definiëren](howto-administer.md) voor een Azure IOT Central-toepassing met behulp van de vooraf gedefinieerde rollen. Een beheerder kan gebruikers toewijzen aan rollen die bepalen op welke gebieden van de toepassing de gebruiker toegang heeft.
 
 ## <a name="security"></a>Beveiliging
 
-Beveiligingsfuncties in Azure IoT Central zijn onder andere:
+Beveiligings functies in azure IoT Central zijn onder andere:
 
-- In-transit en inactieve gegevens versleuteld.
-- Verificatie wordt verstrekt door Azure Active Directory of Microsoft-Account. Verificatie met twee factoren wordt ondersteund.
-- Isolatie van volledige tenants.
-- Beveiliging op apparaat.
+- Gegevens worden in transit en op rest versleuteld.
+- Verificatie wordt door Azure Active Directory of een micro soft-account verschaft. Verificatie met twee factoren wordt ondersteund.
+- Volledige isolatie van de Tenant.
+- Beveiliging op apparaatniveau.
 
 ## <a name="ui-shell"></a>UI-shell
 
-De UI-shell is een moderne, responsieve, HTML5 browser-gebaseerde toepassing.
-Een beheerder kan de gebruikersinterface van de toepassing aanpassen door aangepaste thema's toepassen en wijzigen van de help-koppelingen om te verwijzen naar uw eigen aangepaste help-resources. Zie voor meer informatie over de UI-aanpassing, [aanpassen van de Azure IoT Central gebruikersinterface](howto-customize-ui.md) artikel.
+De UI-shell is een moderne, op de browser gebaseerde toepassing die in de Cloud is gebaseerd.
+Een beheerder kan de gebruikers interface van de toepassing aanpassen door aangepaste Thema's toe te passen en de Help-koppelingen te wijzigen zodat deze naar uw eigen aangepaste Help-bronnen verwijzen. Zie het artikel over [de Azure IOT Central-gebruikers interface aanpassen](howto-customize-ui.md) voor meer informatie over UI-aanpassing.
 
-Een operator kunt toepassing persoonlijke dashboards maken. U kunt verschillende dashboards die andere gegevens weergeven en tussen deze twee schakelt hebben.
+Een operator kan gepersonaliseerde toepassings dashboards maken. U kunt verschillende Dash boards hebben die verschillende gegevens weer geven en hiertussen scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u hebt geleerd over de architectuur van Azure IoT Central, de voorgestelde volgende stap is te leren over [apparaatconnectiviteit](concepts-connectivity.md) in Azure IoT Central.
+Nu u over de architectuur van Azure IoT Central hebt geleerd, is de voorgestelde volgende stap in azure IoT Central meer informatie over de [connectiviteit van apparaten](concepts-connectivity.md) .

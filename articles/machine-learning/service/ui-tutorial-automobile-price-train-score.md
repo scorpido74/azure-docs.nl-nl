@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/21/2019
-ms.openlocfilehash: b0d227b71677db1d6b4ce8386b02cf957ca259f7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/16/2019
+ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668413"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891648"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>Zelfstudie: Prijs voor auto Mobile voors pellen met de visuele interface
 
@@ -27,9 +27,11 @@ In deel één gaat u uw omgeving instellen, gegevens sets en analyse modules naa
 In deel één van de zelf studie leert u het volgende:
 
 > [!div class="checklist"]
-> * Gegevens importeren en opschonen
+> * Een nieuw experiment maken
+> * Gegevens importeren
+> * Gegevens voorbereiden
 > * Een machine learning model trainen
-> * Een model beoordelen en evalueren
+> * Een machine learning model evalueren
 
 In [deel twee](ui-tutorial-automobile-price-deploy.md) van de zelf studie leert u hoe u uw voorspellende model als een Azure-webservice implementeert, zodat u deze kunt gebruiken om de prijs van een auto te voors pellen op basis van technische specificaties die u verzendt. 
 
@@ -37,13 +39,17 @@ Een voltooide versie van deze zelf studie is beschikbaar als een voor beeld van 
 
 Als u dit wilt vinden, selecteert u op de **pagina experimenten**de optie **Nieuw toevoegen**en selecteert u vervolgens het **voor beeld 1 regressie: Experiment voor auto Mobile-prijs voorspelling (basis** ).
 
-## <a name="create-a-workspace"></a>Een werkruimte maken
+## <a name="create-a-new-experiment"></a>Een nieuw experiment maken
+
+Voor het maken van een experiment voor een Visual-Interface hebt u eerst een service-werk ruimte van Azure machine Learns nodig. In deze sectie leert u hoe u deze resources kunt maken.
+
+### <a name="create-a-new-workspace"></a>Een nieuwe werkruimte maken
 
 Als u een werk ruimte van Azure Machine Learning service hebt, gaat u naar de volgende sectie.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-new-experiment"></a>Nieuw experiment maken
+### <a name="create-an-experiment"></a>Een experiment maken
 
 1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com/).
 
@@ -57,7 +63,7 @@ Als u een werk ruimte van Azure Machine Learning service hebt, gaat u naar de vo
 
 1. Selecteer de naam van het standaard experiment **' experiment gemaakt op..** . ' boven aan het canvas en wijzig deze in een iets zinvolle. Bijvoorbeeld **' prijs voorspelling voor auto Mobile '** . De naam hoeft niet uniek te zijn.
 
-## <a name="specify-data"></a>Gegevens opgeven
+## <a name="import-data"></a>Gegevens importeren
 
 Machine learning is afhankelijk van gegevens. Gelukkig, er zijn verschillende voorbeeld gegevens sets opgenomen in deze interface waarmee u kunt experimenteren. Voor deze zelf studie gebruikt u de voor beeld-gegevensset **prijs gegevens (onbewerkt)** . 
 
@@ -65,9 +71,9 @@ Machine learning is afhankelijk van gegevens. Gelukkig, er zijn verschillende vo
 
 1. Selecteer de gegevensset, **prijs gegevens auto Mobile (onbewerkt)** en sleep deze naar het canvas.
 
-   ![Gegevens naar canvas slepen](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
+   ![Gegevens naar canvas slepen](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
 
-1. Selecteer de kolommen met gegevens waarmee u wilt werken. Typ **in** het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
+1. Selecteer de kolommen met gegevens waarmee u wilt werken. Typ in het zoekvak boven aan het palet om de module **select columns in dataset** te vinden.
 
 1. Klik en sleep de module **kolommen in gegevensset selecteren** op het canvas. Verwijder de module onder de module DataSet.
 
@@ -87,11 +93,11 @@ Machine learning is afhankelijk van gegevens. Gelukkig, er zijn verschillende vo
 
     Selecteer in het dialoog venster **kolommen selecteren** **alle kolommen** en voeg **alle onderdelen**toe. Het dialoogvenster zou er zo uit moeten zien:
 
-     ![kolom-selector](./media/ui-tutorial-automobile-price-train-score/select-all.png)
+     ![kolom-selector](./media/ui-tutorial-automobile-price-train-score/select-all.gif)
 
 1. Selecteer op de rechter benedenhoek **OK** om de kolom kiezer te sluiten.
 
-## <a name="run-the-experiment"></a>Het experiment uitvoeren
+### <a name="run-the-experiment"></a>Het experiment uitvoeren
 
 Klik op elk gewenst moment op de uitvoer poort van een gegevensset of module om te zien hoe de gegevens eruitzien op dat punt in de gegevens stroom. Als de optie visualiseren is uitgeschakeld, moet u eerst het experiment uitvoeren.
 
@@ -100,7 +106,7 @@ Klik op elk gewenst moment op de uitvoer poort van een gegevensset of module om 
 Nadat het Compute-doel beschikbaar is, wordt het experiment uitgevoerd. Wanneer de uitvoering is voltooid, verschijnt er een groen vinkje op elke module.
 
 
-## <a name="visualize-the-data"></a>De gegevens visualiseren
+### <a name="visualize-the-data"></a>De gegevens visualiseren
 
 Nu u het eerste experiment hebt uitgevoerd, kunt u de gegevens visualiseren om meer te weten te komen over de gegevensset die u hebt.
 
@@ -110,9 +116,9 @@ Nu u het eerste experiment hebt uitgevoerd, kunt u de gegevens visualiseren om m
 
     In deze gegevensset wordt elke auto weergegeven als een rij. De variabelen die aan elke auto zijn gekoppeld, worden weergegeven als kolommen. Deze gegevensset bevat 205 rijen en 26 kolommen.
 
-     Telkens wanneer u op een kolom met gegevens klikt, wordt de informatie over de **Statistieken** en de **visualisatie** afbeelding van die kolom links weer gegeven. Als u bijvoorbeeld op de **NUM-of-deuren** ziet, zijn er twee unieke waarden en twee ontbrekende waarden. Schuif omlaag om de waarden te zien: twee en vier deuren.
+    Telkens wanneer u op een kolom met gegevens klikt, wordt de informatie over de **Statistieken** en de **visualisatie** afbeelding van die kolom links weer gegeven.
 
-     ![Voor beeld van de gegevens](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)
+    [![Voor beeld van de gegevens](./media/ui-tutorial-automobile-price-train-score/preview-data.gif)](./media/ui-tutorial-automobile-price-train-score/preview-data.gif#lightbox)
 
 1. Klik op elke kolom om meer te weten te komen over uw gegevensset en denk na over de vraag of deze kolommen nuttig zijn om de prijs van een auto te voors pellen.
 
@@ -137,15 +143,11 @@ Verwijder eerst de kolom **normald-verliezen** volledig.
 
     * Selecteer op de rechter benedenhoek **OK** om de kolom kiezer te sluiten.
 
-    ![Een kolom uitsluiten](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Een kolom uitsluiten](./media/ui-tutorial-automobile-price-train-score/exclude-column.gif)
         
     Nu wordt in het deel venster Eigenschappen voor geselecteerde kolommen in gegevensset aangegeven dat alle kolommen uit de gegevensset worden door gegeven behalve genormaliseerde **verliezen**.
         
     Het deel venster met eigenschappen geeft aan dat de kolom genormaliseerde **-verliezen** is uitgesloten.
-        
-    ![Eigenschappen venster](./media/ui-tutorial-automobile-price-train-score/property-pane.png)
-        
-    U kunt een opmerking aan een module toevoegen door te dubbelklikken op de module en tekst in te voeren. Zodoende kunt u in één oogopslag zien wat de module in uw experiment doet. 
 
 1. Dubbel klik op de module **select columns in dataset** en typ de opmerking ' normale verliezen uitsluiten '. 
     
@@ -168,22 +170,22 @@ Wanneer u een model traint, moet u iets doen over de ontbrekende gegevens. In di
 1. Selecteer in het deel venster Eigenschappen de optie **hele rij verwijderen** onder **reinigings modus**.
 
 1. Dubbelklik op de module en typ de opmerking 'Rijen met ontbrekende waarde verwijderen'.
- 
-    ![Rijen verwijderen](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
 
     Het experiment moet er nu ongeveer als volgt uitzien:
     
     ![Select-kolom](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
 
-## <a name="train-the-model"></a>Het model trainen
+## <a name="train-a-machine-learning-model"></a>Een machine learning model trainen
 
 Nu de gegevens gereed zijn, kunt u een voorspellend model maken. U gebruikt uw gegevens om het model te trainen. Vervolgens test u het model om te zien hoe de prijzen kunnen worden voor speld.
+
+### <a name="select-an-algorithm"></a>Een algoritme selecteren
 
 **Classificatie** en **regressie** zijn twee soorten beheerde machine learning-algoritmen. Met **classificatie** wordt een antwoord voor speld op basis van een gedefinieerde set categorieën, zoals een kleur (rood, blauw of groen). **Regressie** wordt gebruikt om een getal te voors pellen.
 
 Omdat u de prijs wilt voors pellen, wat een getal is, kunt u een regressie algoritme gebruiken. Voor dit voor beeld gebruikt u een lineair regressie model.
 
-Train het model door het een set gegevens te geven die de prijs bevat. Het model scant de gegevens en zoekt naar correlaties tussen de functies van een auto en de prijs.
+### <a name="split-the-data"></a>De gegevens splitsen
 
 Gebruik uw gegevens voor de training van het model en het testen door de gegevens te splitsen in afzonderlijke trainingen en gegevens sets testen.
 
@@ -191,17 +193,17 @@ Gebruik uw gegevens voor de training van het model en het testen door de gegeven
 
 1. Selecteer de module **Split data** . Stel in het deel venster Eigenschappen het gedeelte van de rijen in de eerste uitvoer gegevensset in op 0,7. Op deze manier gebruiken we 70 procent van de gegevens om het model te trainen en 30 procent voor het testen terug te zetten.
 
-    ![Scherm afbeelding met de juiste configuratie van het deel venster Eigenschappen. De waarden van ' Split data ' moeten ' rijen splitsen ' zijn, 0,7, wille keurig splitsen, 0, onwaar.](./media/ui-tutorial-automobile-price-train-score/split-data.png)
-
 1. Dubbel klik op de **gesplitste gegevens** en typ de opmerking ' Splits de gegevensset in de Trainingsset (0,7) en de test set (0,3) '.
+
+### <a name="train-the-model"></a>Het model trainen
+
+Train het model door het een set gegevens te geven die de prijs bevat. Het model scant de gegevens en zoekt naar correlaties tussen de functies van een auto en de prijs.
 
 1. Als u het leer algoritme wilt selecteren, wist u het zoekvak van het module palet.
 
 1. Vouw de **machine learning** uit en vouw vervolgens **Initialiseer model**uit. Er worden verschillende categorieën weergegeven die kunnen worden gebruikt om de machine learning-algoritmen te initialiseren.
 
 1. Voor dit experiment selecteert u **regressie** > **lineaire regressie** en sleept u deze naar het canvas op het experiment.
-
-    ![Scherm afbeelding met de juiste configuratie van het deel venster Eigenschappen. De waarden van ' Split data ' moeten ' rijen splitsen ' zijn, 0,7, wille keurig splitsen, 0, onwaar.](./media/ui-tutorial-automobile-price-train-score/linear-regression-module.png)
 
 1. Zoek de module **Train model** en sleep deze naar het canvas van het experiment. Koppel de uitvoer van de module Linear Regression aan de linkerkant van de module Train model en koppel de gegevens uitvoer (links poort) van de module gesplitste **gegevens** aan de rechter invoer van de module **Train model** .
 
@@ -215,7 +217,7 @@ Gebruik uw gegevens voor de training van het model en het testen door de gegeven
 
     ![Scherm afbeelding met de juiste configuratie van het experiment na het toevoegen van de module Train model.](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-## <a name="score-and-evaluate-the-model"></a>Het model beoordelen en evalueren
+## <a name="evaluate-a-machine-learning-model"></a>Een machine learning model evalueren
 
 Nu u het model hebt getraind met 70 procent van uw gegevens, kunt u het gebruiken om de andere 30 procent van de gegevens te scoren om te zien hoe goed uw model functioneert.
 
@@ -244,26 +246,6 @@ De volgende statistieken worden weer gegeven voor uw model:
 * **Determinatiecoëfficiënt**: Dit is ook een statistische waarde die aangeeft hoe goed een model past bij de gegevens.
 
 Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleine waarde geeft aan dat de voorspelling dichter bij de werkelijke waarde ligt. Voor een coëfficiënt van de bepaling is de waarde één (1,0), hoe beter de voor spellingen.
-
-## <a name="manage-experiments-in-azure-machine-learning-service-workspace"></a>Experimenten beheren in Azure Machine Learning service-werk ruimte
-
-De experimenten die u in de visuele interface maakt, kunnen worden beheerd vanuit de werk ruimte Azure Machine Learning service. Gebruik de werk ruimte om meer gedetailleerde informatie te zien, zoals personen experimenten, Diagnostische logboeken, uitvoerings grafieken en meer.
-
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com/).  
-
-1. Selecteer **experimenten**in uw werk ruimte. Selecteer vervolgens het experiment dat u hebt gemaakt.
-
-    ![Scherm afbeelding die laat zien hoe u kunt navigeren naar experimenten in de Azure Portal](./media/ui-tutorial-automobile-price-train-score/portal-experiments.png)
-
-    Op deze pagina ziet u een overzicht van het experiment en de meest recente uitvoeringen.
-
-    ![Scherm afbeelding met een overzicht van de experiment statistieken in de Azure Portal](./media/ui-tutorial-automobile-price-train-score/experiment-overview.png)
-
-1. Selecteer een uitvoerings nummer om meer informatie over een bepaalde uitvoering te bekijken.
-
-    ![Rapport voor gedetailleerde uitvoer van scherm afbeelding](./media/ui-tutorial-automobile-price-train-score/run-details.png)
-
-    Het rapport uitvoeren wordt in realtime bijgewerkt. Als u in uw experiment een **python-script uitvoeren** of de module **R-script uitvoeren** hebt gebruikt, kunt u script logboeken opgeven voor uitvoer op het tabblad Logboeken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

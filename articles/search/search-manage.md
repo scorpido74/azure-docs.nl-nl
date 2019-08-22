@@ -1,8 +1,8 @@
 ---
-title: Beheer van de service voor Azure Search in de portal - Azure Search
-description: Azure Search-service, een gehoste cloud search-service op Microsoft Azure, met de Azure-portal beheren.
+title: Service beheer voor Azure Search in de portal-Azure Search
+description: Een Azure Search-service beheren, een gehoste service voor zoeken in de Cloud op Microsoft Azure met behulp van de Azure Portal.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565430"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647680"
 ---
-# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Beheer van de service voor Azure Search in Azure portal
+# <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Service beheer voor Azure Search in het Azure Portal
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
@@ -25,100 +25,100 @@ ms.locfileid: "60565430"
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Search is een volledig beheerde, cloud-gebaseerde search-service die wordt gebruikt voor het bouwen van een rijke zoekervaring wordt geboden in aangepaste apps. In dit artikel bevat informatie over de beheertaken voor de service die u kunt uitvoeren in de [Azure-portal](https://portal.azure.com) voor een search-service die u al hebt ingericht. Service-beheer is lichtgewicht standaard beperkt tot de volgende taken:
+Azure Search is een volledig beheerde, op de cloud gebaseerde zoek service die wordt gebruikt voor het bouwen van een uitgebreide zoek ervaring in aangepaste apps. In dit artikel worden de Service beheer taken behandeld die u kunt uitvoeren in de [Azure Portal](https://portal.azure.com) voor een zoek service die u al hebt ingericht. Service beheer is lichter ontwerp, beperkt tot de volgende taken:
 
 > [!div class="checklist"]
-> * Beheer de toegang tot de *api-sleutels* gebruikt voor het lezen of schrijven toegang tot uw service.
-> * Servicecapaciteit door het veranderen van de toewijzing van partities en replica's aanpassen.
-> * Resourcegebruik, ten opzichte van de maximale limieten van de servicelaag te bewaken.
+> * Beheer de toegang tot de *API-sleutels* die worden gebruikt voor lees-of schrijf toegang tot uw service.
+> * Pas de service capaciteit aan door de toewijzing van partities en replica's te wijzigen.
+> * Het resource gebruik bewaken ten opzichte van maximum limieten van uw servicelaag.
 
-U ziet dat *upgrade* wordt niet vermeld als een beheertaak. Omdat resources worden toegewezen wanneer de service is ingericht, vereist verplaatsen naar een andere laag een nieuwe service. Zie voor meer informatie, [maken van een Azure Search-service](search-create-service-portal.md).
+U ziet dat de *upgrade* niet wordt weer gegeven als een beheer taak. Omdat resources worden toegewezen wanneer de service wordt ingericht, is een nieuwe service vereist voor het verplaatsen naar een andere laag. Zie [een Azure Search-service maken](search-create-service-portal.md)voor meer informatie.
 
 > [!Tip]
-> Zoeken naar Help-informatie over het zoeken in verkeer of query-prestaties analyseren? U kunt queryvolume voorwaarden mensen zoeken naar en zoeken hoe succesvol resultaten in specifieke documenten in uw index leidende klanten kunnen controleren. Zie voor meer informatie, [Search Traffic Analytics voor Azure Search](search-traffic-analytics.md), [controleren metrische gegevens over gebruik en query](search-monitor-usage.md), en [prestaties en optimalisatie](search-performance-optimization.md).
+> Zoekt u meer informatie over het analyseren van zoek verkeer of de prestaties van query's? U kunt het query volume bewaken, waarnaar wordt gezocht door personen, en hoe succes volle Zoek resultaten zijn in de GUID van klanten tot specifieke documenten in uw index. Zie [zoeken naar Traffic Analytics voor Azure Search](search-traffic-analytics.md), [metrische gegevens over gebruik en query's bewaken](search-monitor-usage.md), en [prestaties en optimalisatie](search-performance-optimization.md)voor meer informatie.
 
 <a id="admin-rights"></a>
 
-## <a name="administrator-rights"></a>Administrator-rechten
-Inrichting of buiten gebruik stellen van de service zelf kan worden gedaan door een Azure-abonnementbeheerder of CO-beheerder.
+## <a name="administrator-rights"></a>Beheerders rechten
+Het inrichten of buiten gebruik stellen van de service zelf kan worden uitgevoerd door een beheerder van een Azure-abonnement of een mede beheerder.
 
-Iedereen met toegang tot de service-URL en een admin api-sleutel heeft lees-/ schrijftoegang tot de service in een service. Lees-/ schrijftoegang biedt de mogelijkheid toevoegen, verwijderen of wijzigen van serverobjecten, met inbegrip van api-sleutels, indexen, indexeerfuncties, gegevensbronnen, schema's en roltoewijzingen geïmplementeerd via [RBAC gedefinieerde rollen](search-security-rbac.md).
+Binnen een service heeft iedereen die toegang heeft tot de service-URL en een beheer-API-sleutel, lees-/schrijftoegang tot de service. Lees-/schrijftoegang biedt de mogelijkheid om Server objecten toe te voegen, te verwijderen of te wijzigen, met inbegrip van API-sleutels, indexen, Indexeer functies, gegevens bronnen, planningen en roltoewijzingen zoals geïmplementeerd via door [RBAC gedefinieerde rollen](search-security-rbac.md).
 
-Alle gebruikersinteractie met Azure Search valt binnen een van deze modi: alleen-lezen toegang tot de service (administrator-rechten), of alleen-lezen toegang tot de service (query rights). Zie voor meer informatie, [beheren van de api-sleutels](search-security-api-keys.md).
+Alle gebruikers interactie met Azure Search valt binnen een van deze modi: lees-/schrijftoegang tot de service (beheerders rechten) of alleen-lezen toegang tot de service (query rechten). Zie [Manage the API-Keys (](search-security-api-keys.md)Engelstalig) voor meer informatie.
 
 <a id="sys-info"></a>
 
-## <a name="logging-and-system-information"></a>Registratie-en systeeminformatie
-Azure Search maakt geen logboekbestanden voor een afzonderlijke service via de portal of programmatische interfaces beschikbaar. Op de Basic-laag en hoger, Microsoft bewaakt alle Azure Search-services voor 99,9% beschikbaarheid per serviceovereenkomsten (SLA). De service is traag of doorvoer van aanvragen minder is dan drempelwaarden SLA, ondersteuningsteams Raadpleeg de logboekbestanden die voor hen beschikbaar als het probleem op te lossen.
+## <a name="logging-and-system-information"></a>Logboek registratie-en systeem gegevens
+Azure Search maakt geen logboek bestanden voor een afzonderlijke service beschikbaar via de portal-of programmatische interfaces. Op de basis-laag en hierboven bewaakt micro soft alle Azure Search Services voor 99,9% Beschik baarheid per service level agreements (SLA). Als de service traag is of de door Voer van een aanvraag onder de drempel waarde voor de SLA ligt, worden de beschik bare logboek bestanden door ondersteunings teams gecontroleerd en wordt het probleem opgelost.
 
-Wat betreft algemene informatie over uw service, kunt u informatie vinden in de volgende manieren:
+Voor algemene informatie over uw service kunt u op de volgende manieren informatie verkrijgen:
 
-* In de portal op het servicedashboard, door middel van meldingen, eigenschappen en statusberichten.
-* Met behulp van [PowerShell](search-manage-powershell.md) of de [Management REST API](https://docs.microsoft.com/rest/api/searchmanagement/) naar [ophalen van de service-eigenschappen](https://docs.microsoft.com/rest/api/searchmanagement/services), of de status op index Resourcegebruik.
-* Via [zoekverkeer](search-traffic-analytics.md), zoals eerder is aangegeven.
+* In de portal, op het service dashboard, via meldingen, eigenschappen en status berichten.
+* Gebruik [Power shell](search-manage-powershell.md) of het [Management rest API](https://docs.microsoft.com/rest/api/searchmanagement/) om [service-eigenschappen](https://docs.microsoft.com/rest/api/searchmanagement/services)of status van het gebruik van index bronnen op te halen.
+* Via [Search Traffic Analytics](search-traffic-analytics.md), zoals eerder is aangegeven.
 
 <a id="sub-5"></a>
 
-## <a name="monitor-resource-usage"></a>Monitor Resourcegebruik
-In het dashboard is controle van bronnen beperkt tot de informatie die wordt weergegeven in het dashboard en een aantal metrische gegevens die u krijgen kunt door het opvragen van de service. Op het dashboard, in de sectie gebruik, kunt u snel bepalen of partitie resource niveaus voldoende voor uw toepassing zijn. Als u wilt vastleggen en geregistreerde gebeurtenissen behouden, kunt u externe bronnen, zoals het Azure-bewaking, inrichten. Zie voor meer informatie, [bewaking Azure Search](search-monitor-usage.md).
+## <a name="monitor-resource-usage"></a>Resource gebruik bewaken
+In het dash board is bron bewaking beperkt tot de informatie die wordt weer gegeven in het service dashboard en enkele metrische gegevens die u kunt verkrijgen door de service te doorzoeken. In het service dashboard, in de sectie gebruik, kunt u snel bepalen of partitie bron niveaus voldoende zijn voor uw toepassing. U kunt externe resources, zoals Azure-bewaking, inrichten als u vastgelegde gebeurtenissen wilt vastleggen en persistent wilt maken. Zie [Monitoring Azure Search](search-monitor-usage.md)voor meer informatie.
 
-Met behulp van de Search Service REST API, krijgt u een aantal bestanden op documenten en indexen via een programma: 
+Met de Search Service REST API kunt u op een programmatische manier een aantal documenten en indexen ophalen: 
 
 * [Indexstatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Aantal documenten](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
-## <a name="disaster-recovery-and-service-outages"></a>Disaster recovery en service storingen
+## <a name="disaster-recovery-and-service-outages"></a>Herstel na nood gevallen en service storingen
 
-Hoewel we uw gegevens redden kunt, biedt Azure Search geen onmiddellijke failover van de service als er een storing op het niveau van het cluster of data center. Als een cluster in het datacenter is mislukt, wordt het operationele team detecteert en werken om de service te herstellen. U ondervindt uitvaltijd tijdens het terugzetten van de service, maar kunt u servicetegoeden om te compenseren voor de service niet beschikbaar zijn per aanvragen de [Service Level Agreement (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+Hoewel we uw gegevens kunnen bijvoegen, biedt Azure Search geen directe failover van de service als er sprake is van een storing op het niveau van het cluster of het Data Center. Als een cluster in het Data Center uitvalt, detecteert en werkt het operations-team de service te herstellen. U krijgt tijdens het herstellen van de service een uitval tijd, maar u kunt Service tegoed aanvragen om service niet-beschik baarheid per [Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)te compenseren. 
 
-Als continue service vereist in het geval van een onherstelbare fouten buiten de controle van Microsoft is, kunt u [inrichten van een extra service](search-create-service-portal.md) in een andere regio en het implementeren van een strategie voor geo-replicatie om ervoor te zorgen indexen zijn volledig redundante op alle services.
+Als continue service vereist is in het geval van fatale storingen buiten de controle van micro soft, kunt u [een extra service](search-create-service-portal.md) in een andere regio inrichten en een strategie voor geo-replicatie implementeren om ervoor te zorgen dat indexen volledig redundant zijn in alle services.
 
-Klanten die gebruikmaken van [indexeerfuncties](search-indexer-overview.md) wilt vullen en vernieuwen van indexen herstel na noodgevallen met geo-specifieke indexeerfuncties gebruik te maken van dezelfde gegevensbron kunnen verwerken. Twee services in verschillende regio's, elk uitvoeren van een indexeerfunctie kunnen dezelfde gegevensbron voor het bereiken van geo-redundantie indexeren. Als u uit gegevensbronnen die ook geografisch redundante indexeert, er rekening mee dat Azure Search-Indexeerfuncties kunnen alleen uitvoeren incrementele indexeren van de primaire replica's. In een failover, moet u opnieuw de indexeerfunctie verwijzen naar de nieuwe primaire replica. 
+Klanten die [Indexeer functies](search-indexer-overview.md) gebruiken om indexen in te vullen en te vernieuwen, kunnen herstel na nood gevallen afhandelen via geo-specifieke Indexeer functies die gebruikmaken van dezelfde gegevens bron. Twee services in verschillende regio's, elk waarop een Indexeer functie wordt uitgevoerd, kunnen dezelfde gegevens bron indexeren om geo-redundantie te garanderen. Als u gegevens bronnen indexeert die ook geo-redundant zijn, moet u er rekening mee houden dat Azure Search Indexeer functies alleen incrementele indexering van primaire replica's kunnen uitvoeren. Zorg er bij een failover-gebeurtenis voor dat u de Indexeer functie opnieuw naar de nieuwe primaire replica toewijst. 
 
-Als u indexeerfuncties niet gebruikt, gebruikt u de code van uw toepassing voor push-objecten en gegevens naar verschillende services tegelijk. Zie voor meer informatie, [prestaties en optimalisatie in Azure Search](search-performance-optimization.md).
+Als u geen Indexeer functies gebruikt, gebruikt u uw toepassings code om objecten en gegevens parallel naar verschillende zoek services te pushen. Zie [prestaties en optimalisatie in azure Search](search-performance-optimization.md)voor meer informatie.
 
 ## <a name="backup-and-restore"></a>Back-ups en herstellen
 
-Omdat Azure Search niet een oplossing voor primaire gegevens is, bieden we een formele mechanisme voor selfservice back-up en herstel. De code van uw toepassing gebruikt voor het maken en invullen van een index is de gebruikelijke optie voor terugzetten als u per ongeluk een index verwijdert. 
+Omdat Azure Search geen primaire oplossing voor gegevens opslag is, bieden we geen formeel mechanisme voor back-up en herstel van self-service. De toepassings code die wordt gebruikt voor het maken en vullen van een index, is de optie voor het terugzetten van de locatie als u per ongeluk een index verwijdert. 
 
-Als u wilt een index opnieuw maken, zou u verwijderen (ervan uitgaande dat deze bestaat), maakt u de index in de service opnieuw en opnieuw laden door het ophalen van gegevens van de primaire gegevensopslag.
+Als u een index opnieuw wilt samen stellen, verwijdert u deze (ervan uitgaande dat deze bestaat), maakt u de index opnieuw in de service en laadt u deze opnieuw door gegevens op te halen uit uw primaire gegevens opslag.
 
 
 <a id="scale"></a>
 
 ## <a name="scale-up-or-down"></a>Omhoog of omlaag schalen
-Elke search-service wordt gestart met een minimum van een van de replica en een partitie. Als u bent aangemeld voor een [laag waarmee toegewezen resources](search-limits-quotas-capacity.md), klikt u op de **schaal** tegel in het dashboard om aan te passen van Resourcegebruik.
+Elke zoek service begint met mini maal één replica en één partitie. Als u zich hebt geregistreerd voor een [laag die toegewezen resources biedt](search-limits-quotas-capacity.md), klikt u op de tegel **schaal** in het service dashboard om het resource gebruik aan te passen.
 
-Wanneer u de capaciteit tot en met een resource toevoegt, de service ze automatisch gebruikt. Er is geen verdere actie is vereist op het onderdeel, maar er is een lichte vertraging voordat de impact van de nieuwe resource wordt gerealiseerd. Het duurt 15 minuten of meer om aanvullende resources inricht.
+Wanneer u capaciteit toevoegt via een van de resources, gebruikt de service deze automatisch. Er is geen verdere actie vereist voor uw onderdeel, maar er is een lichte vertraging voordat de impact van de nieuwe resource wordt gerealiseerd. Het kan 15 minuten of langer duren om aanvullende resources in te richten.
 
  ![][10]
 
 ### <a name="add-replicas"></a>Replica's toevoegen
-Query's per seconde (QPS) verhogen of bereiken van maximale beschikbaarheid wordt uitgevoerd door het toevoegen van replica's. Elke replica heeft één exemplaar van een index, zodat het toevoegen van een meer van de replica wordt omgezet in een meer index beschikbaar voor de verwerking van query-serviceaanvragen. Een minimum van 3 replica's zijn vereist voor hoge beschikbaarheid (Zie [capaciteitsplanning](search-capacity-planning.md) voor meer informatie).
+Het verhogen van query's per seconde (QPS) of het bereiken van hoge Beschik baarheid geschiedt door het toevoegen van replica's. Elke replica heeft één exemplaar van een index, dus er wordt nog één replica omgezet in een meer index die beschikbaar is voor het verwerken van aanvragen voor service query's. Er zijn mini maal drie replica's vereist voor hoge Beschik baarheid (Zie [capaciteits planning](search-capacity-planning.md) voor meer informatie).
 
-Een service voor zoeken met meer replica's kan query van aanvragen verdelen over laden via een groter aantal indexen. Uitgaande van een niveau van de queryvolume, query-doorvoer is het verstandig om sneller wanneer er meer exemplaren van de index die beschikbaar zijn voor de aanvraag. Als u latentie van query ondervindt, kunt u een positieve invloed op de prestaties verwachten als de extra replica's online zijn.
+Een zoek service met meer replica's kan Load Balancing query-aanvragen over een groter aantal indexen. Op basis van een niveau van het query volume is de query doorvoer sneller wanneer er meer exemplaren van de index beschikbaar zijn voor de service van de aanvraag. Als u een query latentie ondervindt, kunt u een positieve invloed op de prestaties verwachten zodra de extra replica's online zijn.
 
-Query-doorvoer toeneemt als u replica's toevoegt, maar het niet nauwkeurig dubbele of drie replica's toevoegen aan uw service. Alle toepassingen zijn afhankelijk van externe factoren die van invloed op de prestaties van query's zijn kunnen. Zijn twee factoren die aan variaties in de reactietijden van de query bijdragen complexe query's en de netwerklatentie.
+Hoewel de query doorvoer tijdens het toevoegen van replica's wordt bereikt, is dit niet precies twee of drie maal wanneer u replica's aan uw service toevoegt. Alle zoek toepassingen zijn onderhevig aan externe factoren die de query prestaties kunnen impinge. Complexe query's en netwerk latentie zijn twee factoren die bijdragen aan variaties in de reactie tijden van query's.
 
 ### <a name="add-partitions"></a>Partities toevoegen
-De meeste servicetoepassingen hebben ingebouwde nodig meer replica's in plaats van partities. Voor gevallen waarin een aantal grotere documenten vereist is, kunt u partities toevoegen als u zich hebt geregistreerd voor de Standard-service. Basic-laag biedt geen voor aanvullende partities.
+De meeste service toepassingen hebben een ingebouwde nood zaak voor meer replica's in plaats van partities. In gevallen waarin een groter aantal documenten vereist is, kunt u partities toevoegen als u zich hebt geregistreerd voor de Standard-Service. De Basic-laag biedt geen extra partities.
 
-De Standard-laag, partities worden toegevoegd in veelvouden van 12 (met name 1, 2, 3, 4, 6 of 12). Dit is een artefact van sharding. Een index is gemaakt in 12 shards, die kunnen worden alle opgeslagen op 1 partitie of evenredig onderverdeeld in 2, 3, 4, 6 of 12 partities (één shard per partitie).
+In de laag standaard worden partities toegevoegd in veelvouden van 12 (met name 1, 2, 3, 4, 6 of 12). Dit is een artefact van sharding. Er wordt een index gemaakt in 12 Shards, die allemaal op één partitie kan worden opgeslagen of op dezelfde manier kan worden onderverdeeld in 2, 3, 4, 6 of 12 partities (één Shard per partitie).
 
 ### <a name="remove-replicas"></a>Replica's verwijderen
-Na de perioden van hoge query volumes, kunt u de schuifregelaar om te beperken van replica's nadat zoeken querybelasting zijn genormaliseerd (bijvoorbeeld, nadat de feestdagen verkoop staan). Er zijn geen verdere stappen vereist van uw kant. Het aantal replica's te verlagen, vervangen door virtuele machines in het datacenter. Uw query's en bewerkingen voor gegevensopname wordt nu uitgevoerd op minder VM's dan vóór. De minimale vereiste is een van de replica.
+Na Peri Oden van hoge query volumes kunt u de schuif regelaar gebruiken om replica's te reduceren nadat de geladen Zoek query's zijn genormaliseerd (bijvoorbeeld nadat de verkoop van de feest dagen is voltooid). Er zijn geen verdere stappen voor uw onderdeel vereist. Het aantal replica's relinquishes virtuele machines in het Data Center verlagen. Uw bewerkingen voor het opnemen van query's en gegevens worden nu op minder Vm's uitgevoerd dan voorheen. De minimum vereiste is één replica.
 
 ### <a name="remove-partitions"></a>Partities verwijderen
-Tegenstelling tot het verwijderen van replica's waarvoor geen extra inspanningen op het onderdeel is vereist, is mogelijk wat werk te doen als u meer opslag dan kunnen worden verlaagd. Bijvoorbeeld, als uw oplossing van drie partities gebruikmaakt, wordt downsizing aan één of twee partities een fout gegenereerd als de nieuwe opslagruimte kleiner is dan de vereiste voor het hosten van uw index. Als u had verwacht, wordt uw keuzes zijn om indexen of documenten in een gekoppeld index ruimte vrij of behoud de huidige configuratie te verwijderen.
+In tegens telling tot het verwijderen van replica's, waarvoor u geen extra moeite hoeft te doen, hebt u mogelijk werk nodig als u meer opslag gebruikt dan kan worden verkleind. Als uw oplossing bijvoorbeeld drie partities gebruikt, genereert Overweeg naar een of twee partities een fout als de nieuwe opslag ruimte minder is dan vereist is om uw index te hosten. Zoals u kunt verwachten, zijn uw keuzes het verwijderen van indexen of documenten binnen een gekoppelde index om ruimte vrij te maken of de huidige configuratie te houden.
 
-Er is geen detectiemethode die aangeeft welke index shards zijn opgeslagen op specifieke partities. Elke partitie biedt ongeveer 25 GB in de opslag, dus moet u opslag verminderen in een grootte die kan worden aangepast door het aantal partities die u hebt. Als u wilt terugkeren naar één partitie, moet alle 12 shards past.
+Er is geen detectie methode die aangeeft welke index Shards worden opgeslagen op specifieke partities. Elke partitie biedt ongeveer 25 GB opslag ruimte, dus u moet de opslag beperken tot een grootte die kan worden aangepast aan het aantal partities dat u hebt. Als u wilt terugkeren naar één partitie, moeten alle 12 Shards passen.
 
-Om u te helpen bij de planning voor de toekomst, wilt u mogelijk opslag controleren (met behulp van [indexstatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) om te zien hoeveel u daadwerkelijk gebruikt. 
+Als u hulp nodig hebt bij het plannen van de toekomst, wilt u mogelijk de opslag controleren (met behulp van [index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)) om te zien hoeveel u werkelijk hebt gebruikt. 
 
 <a id="advanced-deployment"></a>
 
-## <a name="best-practices-on-scale-and-deployment"></a>Best practices voor schalen en implementatie
-Deze video van 30 minuten worden aanbevolen procedures voor geavanceerde implementatiescenario's, waaronder geografisch gedistribueerde werkbelastingen. U kunt ook zien [prestaties en optimalisatie in Azure Search](search-performance-optimization.md) voor help-pagina's die betrekking hebben op de dezelfde punten.
+## <a name="best-practices-on-scale-and-deployment"></a>Best practices voor schalen en implementeren
+In deze video van 30 minuten worden aanbevolen procedures voor geavanceerde implementatie scenario's beschreven, met inbegrip van geografisch gedistribueerde werk belastingen. U kunt de [prestaties en Optima Lise ring ook bekijken in azure Search](search-performance-optimization.md) voor hulp pagina's die dezelfde punten beslaan.
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 
@@ -127,11 +127,11 @@ Deze video van 30 minuten worden aanbevolen procedures voor geavanceerde impleme
 <a id="next-steps"></a>
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u de concepten achter servicebeheer begrijpt, kunt u overwegen [PowerShell](search-manage-powershell.md) om taken te automatiseren.
+Wanneer u de concepten van het Service beheer begrijpt, kunt u [Power shell](search-manage-powershell.md) gebruiken om taken te automatiseren.
 
-Ook raadzaam de [prestaties en optimalisatie van het artikel](search-performance-optimization.md).
+We raden u ook aan het [artikel over prestaties en optimalisatie te](search-performance-optimization.md)bekijken.
 
-Een andere aanbeveling is om te bekijken van de video in de vorige sectie hebt genoteerd. Het biedt een uitgebreidere dekking van de technieken die in deze sectie.
+Een andere aanbeveling is de video te bekijken die in de vorige sectie wordt vermeld. Het biedt een diepere dekking van de technieken die in deze sectie worden genoemd.
 
 <!--Image references-->
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png

@@ -1,13 +1,13 @@
 ---
-title: Naslag OData - zoekopdracht in volledige tekst voor Azure Search
-description: OData zoeken in volledige tekst-functies, search.ismatch en search.ismatchscoring in Azure Search-query's.
+title: Referentie voor zoek functie in volledige tekst van OData-Azure Search
+description: OData-functies voor zoeken in volledige tekst, Search. ismatch en Search. ismatchscoring, in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,23 +19,23 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 158312a7afe88e7b9885376c5d28b01958acbbfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3b28c8799b09ddfe008df8539709c5a704ac6b4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079806"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648017"
 ---
-# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>OData zoeken in volledige tekst functies in Azure Search - `search.ismatch` en `search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>OData-functies voor zoeken in volledige tekst in `search.ismatch` Azure Search-en`search.ismatchscoring`
 
-Azure Search biedt ondersteuning voor zoeken in volledige tekst in de context van [OData-filterexpressies](query-odata-filter-orderby-syntax.md) via de `search.ismatch` en `search.ismatchscoring` functies. Deze functies kunnen u zoeken in volledige tekst worden gecombineerd met strikte Booleaanse filteren op een manier die niet mogelijk zijn alleen met behulp van het hoogste niveau `search` parameter van de [zoeken-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Azure Search ondersteunt zoeken in volledige tekst in de context van [OData-filter expressies](query-odata-filter-orderby-syntax.md) via `search.ismatch` de `search.ismatchscoring` functies en. Met deze functies kunt u Zoek opdrachten in volledige tekst combi neren met strikte Booleaanse filtering op manieren die niet mogelijk zijn alleen met behulp `search` van de para meter op het hoogste niveau van de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 > [!NOTE]
-> De `search.ismatch` en `search.ismatchscoring` functies worden alleen ondersteund in de filters in de [zoeken-API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Ze worden niet ondersteund in de [voorstellen](https://docs.microsoft.com/rest/api/searchservice/suggestions) of [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) API's.
+> De `search.ismatch` functies `search.ismatchscoring` en worden alleen ondersteund in filters in de [zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Ze worden niet ondersteund in de api's [suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) of [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) .
 
 ## <a name="syntax"></a>Syntaxis
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `search.ismatch` en `search.ismatchscoring` functies:
+De volgende ebnf ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van de `search.ismatch` functies `search.ismatchscoring` en:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -51,56 +51,56 @@ query_type ::= "'full'" | "'simple'"
 search_mode ::= "'any'" | "'all'"
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-### <a name="searchismatch"></a>Search.ismatch
+### <a name="searchismatch"></a>Search. ismatch
 
-De `search.ismatch` functie evalueert een query zoeken in volledige tekst als onderdeel van een filterexpressie. De documenten die overeenkomen met de zoekopdracht worden geretourneerd in de resultatenset. De volgende overloads van deze functie zijn beschikbaar:
+De `search.ismatch` functie evalueert een zoek opdracht in volledige tekst als onderdeel van een filter expressie. De documenten die overeenkomen met de zoek query worden geretourneerd in de resultatenset. De volgende Overloads van deze functie zijn beschikbaar:
 
 - `search.ismatch(search)`
 - `search.ismatch(search, searchFields)`
 - `search.ismatch(search, searchFields, queryType, searchMode)`
 
-De parameters zijn gedefinieerd in de volgende tabel:
+De para meters worden gedefinieerd in de volgende tabel:
 
-| Parameternaam | Type | Description |
+| Parameternaam | type | Description |
 | --- | --- | --- |
-| `search` | `Edm.String` | De zoekquery (in een [eenvoudige](query-simple-syntax.md) of [volledige](query-lucene-syntax.md) Lucene-querysyntaxis). |
-| `searchFields` | `Edm.String` | Door komma's gescheiden lijst met doorzoekbare velden om te zoeken. de standaardinstelling alle doorzoekbare velden in de index. Bij het gebruik van [fielded zoeken](query-lucene-syntax.md#bkmk_fields) in de `search` parameter, de specificaties van het veld in de query Lucene overschrijven alle velden die in deze parameter is opgegeven. |
-| `queryType` | `Edm.String` | `'simple'` of `'full'`; standaard ingesteld op `'simple'`. Hiermee geeft u op welke querytaal is gebruikt in de `search` parameter. |
-| `searchMode` | `Edm.String` | `'any'` of `'all'`, standaard ingesteld op `'any'`. Geeft aan of een of meer van de zoekopdracht voorwaarden de `search` parameter moet overeenkomen om op te tellen van het document als een overeenkomst. Wanneer u de [Lucene Booleaanse operators](query-lucene-syntax.md#bkmk_boolean) in de `search` parameter, ze voorrang krijgt boven deze parameter. |
+| `search` | `Edm.String` | De zoek query (in een [eenvoudige](query-simple-syntax.md) of [volledige](query-lucene-syntax.md) lucene-query syntaxis). |
+| `searchFields` | `Edm.String` | Een door komma's gescheiden lijst met Doorzoek bare velden waarnaar moet worden gezocht; wordt standaard ingesteld op alle Doorzoek bare velden in de index. Bij gebruik van een [Zoek opdracht](query-lucene-syntax.md#bkmk_fields) in `search` de para meter, overschrijven de veld aanduidingen in de Lucene-query alle velden die zijn opgegeven in deze para meter. |
+| `queryType` | `Edm.String` | `'simple'`of `'full'`; standaard ingesteld `'simple'`op. Hiermee geeft u op welke query taal in `search` de para meter is gebruikt. |
+| `searchMode` | `Edm.String` | `'any'`of `'all'`is standaard ingesteld `'any'`op. Hiermee wordt aangegeven of een of meer zoek termen in de `search` para meter moeten worden afgestemd om het document als een overeenkomst te tellen. Wanneer u de [lucene Booleaanse Opera tors](query-lucene-syntax.md#bkmk_boolean) in `search` de para meter gebruikt, hebben ze prioriteit boven deze para meter. |
 
-De bovenstaande parameters gelijk zijn aan de bijbehorende [aanvraagparameters zoeken in de Search-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Alle bovenstaande para meters zijn gelijk aan de overeenkomstige [para meters voor zoek aanvragen in de zoek-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-De `search.ismatch` functie retourneert een waarde van het type `Edm.Boolean`, waarmee u voor het opstellen van het met andere onderliggende filterexpressies met behulp van de Booleaanse waarde [logische operators](search-query-odata-logical-operators.md).
+De `search.ismatch` functie retourneert een waarde van het `Edm.Boolean`type, zodat u deze kunt samen stellen met andere filter subexpressies met behulp van de [logische booleaanse Opera tors](search-query-odata-logical-operators.md).
 
 > [!NOTE]
-> Azure Search biedt geen ondersteuning voor het gebruik `search.ismatch` of `search.ismatchscoring` binnen lambda-expressies. Dit betekent dat het is niet mogelijk is het schrijven van filters op verzamelingen van objecten die van zoeken in volledige tekst overeenkomsten met strikte filterovereenkomsten op hetzelfde object correleren kunnen. Zie voor meer informatie over deze beperking, evenals de voorbeelden [probleemoplossing filters voor bestandsverzameling in Azure Search](search-query-troubleshoot-collection-filters.md). Voor meer gedetailleerde informatie over waarom deze beperking bestaat, Zie [informatie over filters voor bestandsverzameling in Azure Search](search-query-understand-collection-filters.md).
+> Azure Search biedt geen ondersteuning voor `search.ismatch` het `search.ismatchscoring` gebruik van of binnen lambda-expressies. Dit betekent dat het niet mogelijk is om filters te schrijven over verzamelingen objecten die kunnen correleren met Zoek opdrachten in volledige tekst met strikte filter overeenkomsten voor hetzelfde object. Zie [problemen met verzamelings filters in azure Search oplossen](search-query-troubleshoot-collection-filters.md)voor meer informatie over deze beperking en voor beelden. Zie informatie over het [verzamelen van filters in azure Search](search-query-understand-collection-filters.md)voor meer gedetailleerde informatie over de redenen waarom deze beperking bestaat.
 
 
-### <a name="searchismatchscoring"></a>Search.ismatchscoring
+### <a name="searchismatchscoring"></a>Search. ismatchscoring
 
-De `search.ismatchscoring` functioneren, zoals de `search.ismatch` functioneren, retourneert `true` voor documenten die overeenkomen met de query van zoeken in volledige tekst als parameter doorgegeven. Het verschil is dat de relevantie score van documenten die overeenkomt met de `search.ismatchscoring` query dragen bij aan de totale score document, terwijl in het geval van `search.ismatch`, de document-score niet meer gewijzigd. De volgende overloads van deze functie zijn beschikbaar met parameters die identiek zijn aan die van `search.ismatch`:
+De `search.ismatchscoring` functie, zoals de `search.ismatch` functie, retourneert `true` voor documenten die overeenkomen met de query voor zoeken in volledige tekst, door gegeven als een para meter. Het verschil ertussen is dat de relevantie Score van documenten die overeenkomen `search.ismatchscoring` met de query, bijdraagt aan de totale document Score, in het `search.ismatch`geval van, de document score niet wordt gewijzigd. De volgende overbelastingen van deze functie zijn beschikbaar met para meters die identiek `search.ismatch`zijn aan die van:
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
 - `search.ismatchscoring(search, searchFields, queryType, searchMode)`
 
-Zowel de `search.ismatch` en `search.ismatchscoring` functies in de dezelfde filterexpressie kunnen worden gebruikt.
+Zowel de `search.ismatch` als `search.ismatchscoring` -functies kunnen in dezelfde filter expressie worden gebruikt.
 
 ## <a name="examples"></a>Voorbeelden
 
-Documenten met het woord "afgebakend" zoeken. Dit filterquery is gelijk aan een [zoekaanvraag](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront`.
+Vind documenten met het woord ' afgebakend '. Deze filter query is identiek aan een [Zoek opdracht](https://docs.microsoft.com/rest/api/searchservice/search-documents) met `search=waterfront`.
 
     search.ismatchscoring('waterfront')
 
-Documenten met het woord 'hostel' en waardering groter of gelijk zijn aan 4 of documenten met het woord "motel" en waardering gelijk is aan 5 zoeken. Opmerking: deze aanvraag kan niet worden weergegeven zonder de `search.ismatchscoring` functie.
+Vind documenten met het woord ' Hostel ' en classificatie groter of gelijk aan 4, of documenten met het woord ' Motel ' en de classificatie is gelijk aan 5. Opmerking: deze aanvraag kan niet worden aangegeven zonder de `search.ismatchscoring` functie.
 
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
@@ -108,19 +108,19 @@ Documenten zonder het woord "luxe" zoeken.
 
     not search.ismatch('luxury')
 
-Documenten met de woordgroep in de Indische Oceaan "view" of de classificatie die gelijk is aan 5 zoeken. De `search.ismatchscoring` query wordt uitgevoerd alleen op basis van velden `HotelName` en `Rooms/Description`.
+Documenten zoeken met de woord weer gave ' Oceaan ' of de classificatie gelijk aan 5. De `search.ismatchscoring` query wordt alleen uitgevoerd op velden `HotelName` en `Rooms/Description`.
 
-Documenten die overeenkomen met alleen de tweede component van de splitsing wordt geretourneerd te--hotels met `Rating` gelijk is aan 5. Om deze te maken dat deze documenten niet overeenkomt met een van de beoordeelde onderdelen van de expressie, wordt deze geretourneerd met score gelijk zijn aan nul wissen.
+Documenten die overeenkomen met alleen de tweede component van de schei ding, retour neren te veel- `Rating` Hotels met een waarde die gelijk is aan 5. Om het duidelijk te maken dat deze documenten niet overeenkomen met een van de gescoorde delen van de expressie, worden deze geretourneerd met een score die gelijk is aan nul.
 
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
 
-Zoeken naar documenten, waarbij de termen "Hotels" en "luchthaven" zijn binnen 5 woorden uit elkaar in de beschrijving van het hotel en waar soorten is niet toegestaan in ten minste enkele van de ruimten. Deze query gebruikt de [volledige Lucene-querytaal](query-lucene-syntax.md).
+Vind documenten waar de termen "Hotel" en "lucht haven" binnen vijf woorden van elkaar zijn genoteerd in de beschrijving van het hotel en wanneer roken niet in ten minste een deel van de kamers is toegestaan. Deze query maakt gebruik van de [volledige lucene-query taal](query-lucene-syntax.md).
 
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
 
 ## <a name="next-steps"></a>Volgende stappen  
 
 - [Filters in Azure Search](search-filters.md)
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

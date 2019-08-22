@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 80c90ceb0e2edac47d67b99e7fb7f03c1ab82fb1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5b3c65361f45c8ad5bdf3adf89dc3002c229d0d0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882358"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650411"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Veelgestelde vragen over SQL Server die worden uitgevoerd op virtuele Windows-machines in azure
 
@@ -87,7 +87,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
    Als u een gratis passieve licentie wilt voor een secundaire beschikbaarheids groep met een stand-by-of een failover-cluster, moet u voldoen aan de volgende criteria, zoals beschreven in de [licentie handleiding PDF](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf):
 
-   1. U hebt [licentie mobiliteit](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) via [Software Assurance](https://www.microsoft.comlicensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
+   1. U hebt [licentie mobiliteit](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) via [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
    1. Het passieve SQL Server-exemplaar is niet bedoeld voor het SQL Server van gegevens aan clients of het uitvoeren van actieve SQL Server-workloads. Het wordt alleen gebruikt om te synchroniseren met de primaire server en houdt anders de passieve data base in een warme stand-by-staat. Als het gaat om gegevens, zoals rapporten voor clients waarop actieve SQL Server werk belastingen worden uitgevoerd, of het uitvoeren van een werk, zoals aanvullende back-ups van de secundaire server, moet het een betaalde licentie SQL Server exemplaar zijn. 
    1. De actieve SQL Server-licentie wordt gedekt door Software Assurance en biedt **één** passieve secundaire SQL Server instantie, met Maxi maal dezelfde hoeveelheid reken kracht als de gelicentieerde actieve server. 
    1. De secundaire SQL Server-VM maakt gebruik van het BYOL- [licentie model](virtual-machines-windows-sql-ahb.md)(meebrengen van uw eigen licentie) of Azure Hybrid Benefit (AHB). 

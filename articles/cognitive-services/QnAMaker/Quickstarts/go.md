@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/13/2019
+ms.date: 08/20/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 38ed3b2e4b103e63d88b9ba3d250aa8c0b6bb9bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc1863795161342c05a5538e8f7e40e789ce695d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072039"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647106"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>Het gebruik van de QnA Maker REST-API met Go 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ In dit artikel leest u hoe u de [QnA Maker-API van Microsoft](../Overview/overvi
 - [Een knowledge base verwijderen.](#Delete)
 - [De huidige eindpuntsleutels ophalen.](#GetKeys)
 - [De huidige eindpuntsleutels opnieuw genereren.](#PutKeys)
-- [De huidige set wijzigingen voor niet-hoofdlettergevoelige word ophalen.](#GetAlterations)
-- [Vervang de huidige set met niet-hoofdlettergevoelige word wijzigingen.](#PutAlterations)
+- [De huidige set hoofdletter gevoelige woord wijzigingen ophalen.](#GetAlterations)
+- [De huidige set hoofdletter gevoelige woord wijzigingen vervangen.](#PutAlterations)
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 1e742c278b9356c7501964541802e0c96dc74b09
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358659"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872392"
 ---
 # <a name="model-interpretability-with-azure-machine-learning-service"></a>Modellen interpreteren met Azure Machine Learning-service
 
@@ -69,7 +69,7 @@ __Directe uitleg__ is afkomstig van geïntegreerde bibliotheken. De SDK verpakt 
 * **Belangrijkste uitleg**van de permutatie-functie: Het belang van de permutatie functie is een techniek die wordt gebruikt om classificatie-en regressie modellen te verklaren die zijn geïnspireerd op [het breiman van een wille keurige bossen](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (zie sectie 10). Op hoog niveau kan de manier waarop het werkt, worden uitgevoerd door in wille keurige volg orde gegevens één functie op te nemen voor de hele gegevensset en te berekenen hoeveel de prestatie metriek van de rente afneemt. Hoe groter de verandering, des te belang rijker deze functie is.
 
 * **Kalk-uitleg** (`contrib`): Op basis van kalk maakt kalk lichter gebruik van het algoritme van de geavanceerde, lokaal interpretable-neutraal verklaring (kalk) om lokale surrogaat modellen te maken. In tegens telling tot de globale surrogaat modellen, is kalk gericht op het trainen van lokale surrogaat modellen om afzonderlijke voor spellingen te verklaren.
-* **Han-tekst uitleg** (`contrib`): HAN-tekst uitleg er wordt gebruikgemaakt van een hiërarchische aandacht voor het verkrijgen van model verklaringen van tekst gegevens voor een gegeven zwart vak in een tekst model. We trainen het surrogaat model van het HAN op een bepaald docent model voor spelde uitvoer. Na de wereld wijde training over de tekst verzameling hebben we een nauw keurige stap toegevoegd voor een specifiek document, zodat de nauw keurigheid van de uitleg kan worden verbeterd. HAN maakt gebruik van een bidirectionele RNN met twee attentie lagen, voor de aandacht van zinnen en woorden. Zodra de DNN is getraind op het docenten model en op een specifiek document is afgestemd, kunnen we de woord urgentie uit de attentie lagen extra heren. We hebben een HAN gevonden om nauw keuriger te zijn dan kalk-of SHAP voor tekst gegevens, maar ook meer kosten in het kader van de trainings tijd. We hebben echter verbeteringen aangebracht in de trainings tijd door de gebruiker de optie te geven het netwerk te initialiseren met ondersteunt woord insluitingen, hoewel het nog steeds langzaam is. De trainings tijd kan aanzienlijk worden verbeterd door een HAN uit te voeren op een externe Azure GPU-VM. De implementatie van HAN wordt beschreven in ' hiërarchische aandacht netwerken voor document classificatie (Yang et al., 2016) '[https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)().
+* **Han-tekst uitleg** (`contrib`): HAN-tekst uitleg er wordt gebruikgemaakt van een hiërarchische aandacht voor het verkrijgen van model verklaringen van tekst gegevens voor een gegeven zwart vak in een tekst model. We trainen het surrogaat model van het HAN op een bepaald docent model voor spelde uitvoer. Na de wereld wijde training over de tekst verzameling hebben we een nauw keurige stap toegevoegd voor een specifiek document, zodat de nauw keurigheid van de uitleg kan worden verbeterd. HAN maakt gebruik van een bidirectionele RNN met twee attentie lagen, voor de aandacht van zinnen en woorden. Zodra de DNN is getraind op het docenten model en op een specifiek document is afgestemd, kunnen we de woord urgentie uit de attentie lagen extra heren. We hebben een HAN gevonden om nauw keuriger te zijn dan kalk-of SHAP voor tekst gegevens, maar ook meer kosten in het kader van de trainings tijd. We hebben echter verbeteringen aangebracht in de trainings tijd door de gebruiker de optie te geven het netwerk te initialiseren met ondersteunt woord insluitingen, hoewel het nog steeds langzaam is. De trainings tijd kan aanzienlijk worden verbeterd door een HAN uit te voeren op een externe Azure GPU-VM. De implementatie van HAN wordt beschreven in [' hiërarchische aandacht netwerken voor document classificatie (Yang et al., 2016) '](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification).
 
 
 __META uitlegers__ selecteren automatisch een geschikte directe uitleg en genereren de informatie over de beste uitleg op basis van de opgegeven model-en gegevens sets. De meta verklarende leden maken gebruik van alle bibliotheken (SHAP, kalk, naboot, enzovoort) die we hebben geïntegreerd of ontwikkeld. Hieronder vindt u de meta-uitleg die beschikbaar is in de SDK:

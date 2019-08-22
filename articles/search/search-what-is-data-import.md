@@ -1,26 +1,26 @@
 ---
-title: Gegevens importeren voor opname van gegevens naar een search-index - Azure Search
-description: Vul en gegevens uploaden naar een index in Azure Search uit externe gegevensbronnen.
+title: Gegevens importeren voor het opnemen van gegevens in een zoek index-Azure Search
+description: Gegevens vullen en uploaden naar een index in Azure Search van externe gegevens bronnen.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b56a31a58937ddbea08ff22c3d1c0c71942f47f1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 71ee63dfbe880cbf6018f3dd13d360850ed994f9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445402"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647336"
 ---
-# <a name="data-import-overview---azure-search"></a>Gegevens importeren overzicht - Azure Search
+# <a name="data-import-overview---azure-search"></a>Overzicht van het importeren van gegevens-Azure Search
 
-In Azure Search worden query's uitgevoerd over uw inhoud in geladen en opgeslagen in een [search-index](search-what-is-an-index.md). Dit artikel worden de twee basismethoden voor het invullen van een index behandeld: *push* uw gegevens in de index via een programma, of wijs een [Azure Search-indexeerfunctie](search-indexer-overview.md) op een ondersteunde gegevensbron om  *pull* in de gegevens.
+In Azure Search voeren query's uit over uw inhoud die is geladen in en opgeslagen in een [zoek index](search-what-is-an-index.md). In dit artikel worden de twee basis benaderingen besproken voor het vullen van een index: *Push* uw gegevens in de index via een programma, of wijs een [Azure Search indexer](search-indexer-overview.md) bij een ondersteunde gegevens bron in om de gegevens op te *halen* .
 
-Met beide benaderingen, het doel is het *gegevens laden* vanaf een externe gegevensbron in een Azure Search-index. Azure Search kunt u een lege index te maken, maar totdat u push- of gegevens in het ophalen, is het niet waarin u kunt zoeken.
+Met beide benaderingen is het doel om gegevens van een externe gegevens bron te *laden* in een Azure search index. Met Azure Search kunt u een lege index maken, maar totdat u er gegevens naar wilt pushen of verzamelen, is het niet mogelijk om een query uit te voeren.
 
 ## <a name="pushing-data-to-an-index"></a>Gegevens naar een index pushen
 Het pushmodel, dat wordt gebruikt voor het programmatisch verzenden van uw gegevens naar Azure Search, is de meest flexibele methode. Ten eerste heeft dit model geen beperkingen met betrekking tot het gegevensbrontype. Alle gegevenssets die bestaan uit JSON-documenten kunnen naar een Azure Search-index worden gepusht. Hierbij wordt ervan uitgegaan dat elk document in de gegevensset velden toewijst aan velden die in uw indexschema zijn gedefinieerd. Ten tweede heeft dit model geen beperkingen met betrekking tot de frequentie van de uitvoering. U kunt wijzigingen naar een index pushen zo vaak als u wilt. Voor toepassingen die een zeer lage latentie vereisen (bijvoorbeeld als zoekopdrachten gesynchroniseerd moeten zijn met dynamische inventarisatiedatabases) is het pushmodel de enige mogelijkheid.
@@ -36,28 +36,28 @@ U kunt de volgende API's gebruiken om één of meerdere documenten in een index 
 
 Er is momenteel geen ondersteuning voor het pushen van gegevens via de portal.
 
-Zie voor een inleiding tot elke methodologie [Quick Start: Maken van een Azure Search-index met behulp van PowerShell](search-create-index-rest-api.md) of [ C# Quick Start: Maken van een Azure Search-index met behulp van .NET SDK](search-get-started-dotnet.md).
+Voor een inleiding tot elke methodologie raadpleegt [u Quick Start: Een Azure search-index maken met](search-create-index-rest-api.md) behulp van Power shell of [ C# Quick Start: Maak een Azure Search-index met behulp van .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
-### <a name="indexing-actions-upload-merge-mergeorupload-delete"></a>Indexeren van acties: uploaden, samenvoegen, mergeOrUpload, verwijderen
+### <a name="indexing-actions-upload-merge-mergeorupload-delete"></a>Indexerings acties: uploaden, samen voegen, mergeOrUpload, verwijderen
 
-U kunt het type indexering actie op basis van per document beheren op te geven of het document moet worden geüpload in de volledige, samengevoegd met de bestaande inhoud van het document of verwijderd.
+U kunt het type indexerings actie per document bepalen, waarbij u opgeeft of het document volledig moet worden geüpload, wordt samengevoegd met de bestaande document inhoud of verwijderd.
 
-In de REST-API, geven u een HTTP POST-aanvragen met JSON-aanvraagtekst voor eindpunt-URL van uw Azure Search-index. Elk JSON-object in de matrix '' waarde '' sleutel van het document bevat en geeft aan of een indexeringsbewerking wordt toegevoegd, bijgewerkt of Hiermee verwijdert u de inhoud van het document. Zie voor een codevoorbeeld van [laden van documenten](search-get-started-dotnet.md#load-documents).
+Geef in het REST API HTTP POST-aanvragen met JSON-aanvraag instanties door aan de eind punt-URL van uw Azure Search-index. Elk JSON-object in de matrix ' value ' bevat de sleutel van het document en geeft aan of een indexerings actie document inhoud toevoegt, bijwerkt of verwijdert. Zie [documenten laden](search-get-started-dotnet.md#load-documents)voor een voor beeld van een code.
 
-In de .NET-SDK-pakket van uw gegevens in een `IndexBatch` object. Een `IndexBatch` bevat een verzameling van `IndexAction` objecten, die elk bevat een document en een eigenschap die Azure Search welke actie om uit te voeren voor het desbetreffende document. Zie voor een codevoorbeeld van de [ C# snelstartgids](search-get-started-dotnet.md).
+In de .NET SDK kunt u uw gegevens inpakken in `IndexBatch` een-object. `IndexBatch` Een`IndexAction` verzameling objecten die elk een document bevat en een eigenschap die aangeeft Azure Search welke actie moet worden uitgevoerd op dat document. Zie [ C# Quick](search-get-started-dotnet.md)start voor een code voorbeeld.
 
 
 | @search.action | Description | Vereiste velden voor elk document | Opmerkingen |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Een `upload`-actie is vergelijkbaar met een "upsert", waarbij het document wordt ingevoegd als het nieuw is en wordt bijgewerkt/vervangen als het al bestaat. |sleutel, plus andere velden die u wilt definiëren |Tijdens het bijwerken/vervangen van een bestaand document wordt elk veld dat niet is opgegeven in de aanvraag ingesteld op `null`. Dit gebeurt zelfs als het veld eerder is ingesteld op een niet-null-waarde. |
-| `merge` |Een bestaand document wordt bijgewerkt met de opgegeven velden. Als het document niet in de index bestaat, mislukt de samenvoeging. |sleutel, plus andere velden die u wilt definiëren |Alle velden die u in een samenvoeging opgeeft, vervangen de bestaande velden in het document, In de .NET SDK, die hieronder vallen velden van het type `DataType.Collection(DataType.String)`. In de REST-API, die hieronder vallen velden van het type `Collection(Edm.String)`. Als het document bijvoorbeeld een veld `tags` bevat met de waarde `["budget"]` en u een samenvoeging doet met de waarde `["economy", "pool"]` voor `tags`, wordt de uiteindelijke waarde van het veld `tags` `["economy", "pool"]`. Het wordt dus niet `["budget", "economy", "pool"]`. |
+| `merge` |Een bestaand document wordt bijgewerkt met de opgegeven velden. Als het document niet in de index bestaat, mislukt de samenvoeging. |sleutel, plus andere velden die u wilt definiëren |Alle velden die u in een samenvoeging opgeeft, vervangen de bestaande velden in het document, In de .NET SDK bevat dit velden van het type `DataType.Collection(DataType.String)`. In de REST API omvat dit velden van het type `Collection(Edm.String)`. Als het document bijvoorbeeld een veld `tags` bevat met de waarde `["budget"]` en u een samenvoeging doet met de waarde `["economy", "pool"]` voor `tags`, wordt de uiteindelijke waarde van het veld `tags` `["economy", "pool"]`. Het wordt dus niet `["budget", "economy", "pool"]`. |
 | `mergeOrUpload` |Deze bewerking gedraagt zich als `merge` wanneer een document met de opgegeven sleutel al in de index bestaat. Als het document niet bestaat, gedraagt deze bewerking zich als `upload` met een nieuw document. |sleutel, plus andere velden die u wilt definiëren |- |
 | `delete` |Het opgegeven document wordt uit de index verwijderd. |alleen sleutel |Alle andere velden worden genegeerd. Als u een afzonderlijk veld uit een document wilt verwijderen, gebruikt u `merge` en stelt u het veld expliciet in op null. |
 
 ## <a name="decide-which-indexing-action-to-use"></a>Bepalen welke indexeerbewerking u moet gebruiken
-Gegevens importeren met de .NET SDK, (uploaden, samenvoegen, verwijderen en mergeOrUpload). Afhankelijk van welke van de onderstaande bewerkingen u kiest, moet u slechts bepaalde velden voor elk document opnemen:
+Gegevens importeren met behulp van de .NET SDK, (uploaden, samen voegen, verwijderen en mergeOrUpload). Afhankelijk van welke van de onderstaande bewerkingen u kiest, moet u slechts bepaalde velden voor elk document opnemen:
 
 
 ### <a name="formulate-your-query"></a>Uw query formuleren
@@ -87,12 +87,12 @@ Functionaliteit van de indexeerfunctie wordt weergegeven in [Azure Portal](searc
 
 Een voordeel van het gebruik van de portal is dat Azure Search meestal een standaardindexschema voor u kan genereren door de metagegevens van de brongegevensset te lezen. U kunt de gegenereerde index wijzigen totdat de index wordt verwerkt. Daarna zijn alleen schemabewerkingen toegestaan waarvoor de index niet opnieuw gegenereerd hoeft te worden. Als de wijzigingen die u doorvoert, rechtstreeks invloed hebben op het schema, moet u de index opnieuw opbouwen. 
 
-## <a name="verify-data-import-with-search-explorer"></a>Gegevensimport met Search explorer controleren
+## <a name="verify-data-import-with-search-explorer"></a>Gegevens import controleren met Search Explorer
 
-Een snelle manier om uit te voeren van een voorlopige controle op het document uploaden, is met **Search explorer** in de portal. Met de explorer kunt u gegevens uit een index opvragen zonder code te schrijven. De zoekervaring is gebaseerd op standaardinstellingen, zoals de [eenvoudige syntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) en de standaard-queryparameter [searchMode](/rest/api/searchservice/search-documents). Resultaten worden geretourneerd in JSON, zodat u het hele document kunt inspecteren.
+Een snelle manier om een voor spelling controle uit te voeren op het uploaden van documenten is het gebruik van **Search Explorer** in de portal. Met de explorer kunt u gegevens uit een index opvragen zonder code te schrijven. De zoekervaring is gebaseerd op standaardinstellingen, zoals de [eenvoudige syntaxis](/rest/api/searchservice/simple-query-syntax-in-azure-search) en de standaard-queryparameter [searchMode](/rest/api/searchservice/search-documents). Resultaten worden geretourneerd in JSON, zodat u het hele document kunt inspecteren.
 
 > [!TIP]
-> Tal van [Azure Search-codevoorbeelden](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) bevatten ingesloten of kant-en-klare gegevenssets, zodat u gemakkelijk aan de slag kunt gaan. De portal bevat ook een voorbeeldindexeerfunctie en een gegevensbron, bestaande uit een kleine vastgoedgegevensset ('realestate-us-sample'). Wanneer u de vooraf geconfigureerde indexeerfunctie op de voorbeeld-gegevensbron uitvoert, wordt een index gemaakt en geladen met documenten die vervolgens kunnen worden doorzocht in Search explorer of met code die u schrijft.
+> Tal van [Azure Search-codevoorbeelden](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) bevatten ingesloten of kant-en-klare gegevenssets, zodat u gemakkelijk aan de slag kunt gaan. De portal bevat ook een voorbeeldindexeerfunctie en een gegevensbron, bestaande uit een kleine vastgoedgegevensset ('realestate-us-sample'). Wanneer u de vooraf geconfigureerde Indexeer functie uitvoert op de voorbeeld gegevens bron, wordt er een index gemaakt en geladen met documenten die vervolgens kunnen worden opgevraagd in Search Explorer of door de code die u schrijft.
 
 ## <a name="see-also"></a>Zie ook
 

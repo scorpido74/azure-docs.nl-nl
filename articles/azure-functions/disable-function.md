@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: 183056d01146194b2854a70df790802e1a0bb839
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782238"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650495"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
 
@@ -29,7 +29,7 @@ In dit artikel wordt uitgelegd hoe u een functie in Azure Functions kunt uitscha
 
 ## <a name="functions-2x---all-languages"></a>Functies 2. x-alle talen
 
-In functions 2. x, schakelt u een functie uit met behulp van een app `AzureWebJobs.<FUNCTION_NAME>.Disabled`-instelling in de indeling. U kunt deze instelling via een programma maken en wijzigen met behulp van de Azure CLI. U kunt dit ook doen op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
+In functions 2. x, schakelt u een functie uit met behulp van een app `AzureWebJobs.<FUNCTION_NAME>.Disabled`-instelling in de indeling. U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
 
 ### <a name="azure-cli"></a>Azure-CLI
 

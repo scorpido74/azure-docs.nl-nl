@@ -3,25 +3,25 @@ title: Azure VMware-oplossing door CloudSimple-CloudSimple onderhoud en updates
 description: Beschrijft het CloudSimple-service proces voor gepland onderhoud en updates
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6eeecbecc89995c25e687cc6808ed3b0c5dc5c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816215"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877933"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>Onderhoud en updates voor CloudSimple
 
-De privécloud is zodanig ontworpen dat deze geen Single Point of Failure heeft:
+De Privécloud is zodanig ontworpen dat deze geen Single Point of Failure heeft.
 
-* ESXi-clusters worden geconfigureerd met een hoge Beschik baarheid van vSphere. De clusters hebben een grootte van ten minste één reserve knooppunt voor tolerantie.
+* ESXi-clusters worden geconfigureerd met vSphere hoge Beschik baarheid (HA). De clusters hebben een grootte van ten minste één reserve knooppunt voor tolerantie.
 * Redundante primaire opslag wordt geleverd door vSAN, waarvoor ten minste drie knoop punten zijn vereist om beveiliging tegen één storing te bieden. vSAN kan worden geconfigureerd om hogere toleranties te bieden voor grotere clusters.
-* de virtuele machines van vCenter, PSC en NSX Manager zijn geconfigureerd met RAID-10-opslag beleid om te beschermen tegen opslag storingen. De virtuele machines worden beschermd tegen knoop punten/netwerk fouten door vSphere HA.
+* de virtuele machines van vCenter, PSC en NSX Manager zijn geconfigureerd met RAID-10-opslag om te beschermen tegen opslag storingen. De virtuele machines worden beschermd tegen knoop punten/netwerk fouten door vSphere HA.
 * ESXi-hosts hebben redundante ventilatoren en Nic's.
 * TOR-en spin-switches worden in HA-paren geconfigureerd om tolerantie te bieden.
 
@@ -44,7 +44,7 @@ CloudSimple controleert ook de volgende taken continu voor fouten:
 
 Als een schijf of knoop punt uitvalt, wordt er automatisch een nieuw knoop punt aan het betrokken VMware-cluster toegevoegd om de status onmiddellijk weer te geven.
 
-CloudSimple maakt een back-up, onderhoudt en werkt deze VMware-elementen bij in de privécloud:
+CloudSimple maakt een back-up, onderhoudt en werkt deze VMware-elementen bij in de Privécloud:
 
 * ESXi
 * vCenter-platform Services
@@ -52,14 +52,14 @@ CloudSimple maakt een back-up, onderhoudt en werkt deze VMware-elementen bij in 
 * vSAN
 * NSX
 
-## <a name="back-up-and-restore"></a>Back-ups maken en herstellen
+## <a name="back-up-and-restore"></a>Back-up en herstel
 
 CloudSimple back-up omvat:
 
 * Nacht incrementele back-ups van vCenter-, PSC-en DVS-regels.
-* Het gebruik van systeem eigen vCenter-Api's voor het maken van back-ups van onderdelen in de toepassingslaag.
+* systeem eigen Api's van vCenter voor het maken van back-ups van onderdelen in de toepassingslaag.
 * Automatische back-up vóór een update of upgrade van de VMware-beheer software.
-* Gegevens versleuteling op de bron, door vCenter, vóór gegevens overdracht via een met TLS 1.2 versleuteld kanaal naar Azure. De gegevens worden opgeslagen in een Azure-Blob waar ze worden gerepliceerd tussen regio's.
+* vCenter-gegevens versleuteling op de bron voordat gegevens worden overgebracht via een met TLS 1.2 versleuteld kanaal naar Azure. De gegevens worden opgeslagen in een Azure-Blob waar ze worden gerepliceerd tussen regio's.
 
 U kunt een terugzet bewerking aanvragen door een [ondersteuningsaanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)te openen.
 
@@ -91,7 +91,7 @@ Het is nu af en toe nood zakelijk om wijzigingen aan te brengen in de configurat
 
 ## <a name="updates-and-upgrades"></a>Updates en upgrades
 
-CloudSimple is verantwoordelijk voor het levenscyclus beheer van VMware-software (ESXi, vCenter, PSC en NSX) in de privécloud.
+CloudSimple is verantwoordelijk voor het levenscyclus beheer van VMware-software (ESXi, vCenter, PSC en NSX) in de Privécloud.
 
 Software-updates zijn onder andere:
 
@@ -99,10 +99,10 @@ Software-updates zijn onder andere:
 * **Updates**. Wijziging van de secundaire versie van een VMware-stack onderdeel.
 * **Upgrades**. Wijziging van de hoofd versie van een VMware-stack onderdeel.
 
-CloudSimple test een kritieke beveiligings patch zodra deze beschikbaar is in VMware. Per SLA implementeert CloudSimple de beveiligings patch naar privécloud binnen een week.
+CloudSimple test een kritieke beveiligings patch zodra deze beschikbaar is in VMware. Per SLA implementeert CloudSimple de beveiligings patch naar Privécloud binnen een week.
 
 CloudSimple biedt updates voor het driemaandelijkse onderhoud aan VMware-software onderdelen. Wanneer er een nieuwe belang rijke versie van VMware-software beschikbaar is, werkt CloudSimple samen met klanten om een geschikt onderhouds venster voor de upgrade te coördineren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Maak een back-up van werkbelasting machines met Veeam](https://docs.azure.cloudsimple.com/backup-workloads-veeam/).
+[Back-ups van workload Vm's maken met Veeam](backup-workloads-veeam.md)

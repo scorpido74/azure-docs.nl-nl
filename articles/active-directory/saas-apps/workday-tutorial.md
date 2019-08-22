@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 08/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 217a51c1032f946e8aaf377627f30aa4faa83a86
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542710"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891966"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met workday
 
@@ -227,7 +227,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     ![Configuratie van eenmalige aanmelding](./media/workday-tutorial/WorkdaySSOConfiguratio.png "Configuratie van eenmalige aanmelding")
 
-    a.  **Typ https://www.workday.com** in het tekstvak **service provider-id** .
+    a.  **Typ http://www.workday.com** in het tekstvak **service provider-id** .
 
     b. Selecteer **geen door SP geïnitieerde verificatie aanvraag**.
 

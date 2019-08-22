@@ -4,14 +4,14 @@ description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebru
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/06/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839252"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650416"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -634,7 +634,7 @@ Het vorige voorbeeld retourneert een object in de volgende indeling:
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 Retourneert de unieke id van een resource. U kunt deze functie gebruiken als de resourcenaam van de niet eenduidig of niet ingericht binnen dezelfde sjabloon is. 
 
@@ -646,43 +646,46 @@ Retourneert de unieke id van een resource. U kunt deze functie gebruiken als de 
 | resourceGroupName |Nee |string |Standaardwaarde is de huidige resourcegroep. Deze waarde opgeven wanneer u nodig hebt om op te halen van een resource in een andere resourcegroep. |
 | ResourceType |Ja |string |Het type resource, met inbegrip van de naamruimte van de resource-provider. |
 | resourceName1 |Ja |string |De naam van de resource. |
-| resourceName2 |Nee |string |Volgende resource naam segment als bron is genest. |
+| resourceName2 |Nee |string |Volgend resource naam segment, indien nodig. |
+
+Ga door met het toevoegen van resource namen als para meters wanneer het resource type meer segmenten bevat.
 
 ### <a name="return-value"></a>Retourwaarde
 
 De id wordt geretourneerd in de volgende indeling:
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+
 
 ### <a name="remarks"></a>Opmerkingen
 
-Wanneer u gebruikt met een [implementatie op abonnements niveau](deploy-to-subscription.md), `resourceId()` kan de functie alleen de id ophalen van resources die op dat niveau zijn geïmplementeerd. U kunt bijvoorbeeld de ID van een beleids definitie of roldefinitie ophalen, maar niet de ID van een opslag account. Voor implementaties naar een resource groep is het tegenovergestelde waar. U kunt de resource-ID van resources die zijn geïmplementeerd op abonnements niveau niet ophalen.
+Het aantal para meters dat u opgeeft, varieert op basis van het feit of de resource een bovenliggende of onderliggende resource is en of de resource zich in hetzelfde abonnement of dezelfde resource groep bevindt.
 
-De parameterwaarden die u opgeeft, is afhankelijk van of de resource in het hetzelfde abonnement en resourcegroep als de huidige implementatie is. Voor de resource-ID voor een opslagaccount in hetzelfde abonnement en resourcegroep, gebruikt u:
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-Voor de resource-ID voor een opslagaccount in hetzelfde abonnement maar een andere resourcegroep, gebruikt u:
+Als u de resource-ID voor een bovenliggende resource in hetzelfde abonnement en dezelfde resource groep wilt ophalen, geeft u het type en de naam van de resource op.
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Voor de resource-ID voor een opslagaccount in een ander abonnement en resourcegroep, gebruikt u:
+Als u de resource-ID voor een onderliggende resource wilt ophalen, moet u rekening best Eden aan het aantal segmenten in het resource type. Geef een resource naam op voor elk segment van het resource type. De naam van het segment komt overeen met de resource die bestaat voor dat deel van de hiërarchie.
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+Als u de resource-ID voor een resource in hetzelfde abonnement maar een andere resource groep wilt ophalen, geeft u de naam van de resource groep op.
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+Als u de resource-ID voor een resource in een ander abonnement en een andere resource groep wilt ophalen, geeft u de abonnements-ID en de naam van de resource groep op.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Voor de resource-ID voor een database in een andere resourcegroep, gebruikt u:
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+Wanneer u gebruikt met een [implementatie op abonnements niveau](deploy-to-subscription.md), `resourceId()` kan de functie alleen de id ophalen van resources die op dat niveau zijn geïmplementeerd. U kunt bijvoorbeeld de ID van een beleids definitie of roldefinitie ophalen, maar niet de ID van een opslag account. Voor implementaties naar een resource groep is het tegenovergestelde waar. U kunt de resource-ID van resources die zijn geïmplementeerd op abonnements niveau niet ophalen.
 
 Als u de resource-ID van een resource op abonnements niveau wilt ophalen bij het implementeren van het abonnements bereik, gebruikt u:
 

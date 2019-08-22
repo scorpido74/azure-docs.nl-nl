@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e3aaf943b5eecd9ec1853c09ea36156b98560d3d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884478"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648711"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Een Microsoft Azure Marketplace-installatiekopie gebruiken om een virtuele Terraform Linux-machine te maken met een beheerde identiteit voor Azure-resources
 
@@ -85,7 +85,7 @@ Met inzendermachtigingen kan MSI op de virtuele machine Terraform gebruiken om r
 
 `. ~/tfEnv.sh`
 
-In het vorige script werd het mechanisme [AZ CLI v 2.0 interactive log-in](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) gebruikt voor verificatie bij Azure en de toewijzing van de inzendermachtiging voor beheerde identiteiten van de virtuele machine op het hele abonnement. 
+In het vorige script werd het mechanisme [AZ CLI v 2.0 interactive log-in](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#sign-in-interactively) gebruikt voor verificatie bij Azure en de toewijzing van de inzendermachtiging voor beheerde identiteiten van de virtuele machine op het hele abonnement. 
 
  De virtuele machine heeft een Terraform-back-end met externe status. U kunt deze in uw Terraform-inrichting inschakelen door het bestand remoteState.tf in de map tfTemplate naar de hoofdmap van de Terraform-scripts te kopiëren.  
 

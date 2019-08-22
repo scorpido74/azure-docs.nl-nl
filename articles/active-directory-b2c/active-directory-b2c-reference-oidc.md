@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 36efdb7db57d3acfa7384d904e9be8faad4c6534
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 35abb84f92ed9a7295c45afc69b673a3be46be15
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622079"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874121"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webaanmelding met OpenID Connect Connect in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Azure AD B2C breidt het Standard OpenID Connect Connect-protocol uit voor meer d
 
 Wanneer uw webtoepassing de gebruiker moet verifiëren en een gebruikers stroom kan uitvoeren, kan deze de gebruiker naar het `/authorize` eind punt sturen. De gebruiker actie onderneemt afhankelijk van de gebruikers stroom.
 
-In deze aanvraag geeft de client aan welke machtigingen moeten worden verkregen van de gebruiker in de `scope` para meter en geeft u de gebruikers stroom op die moet worden uitgevoerd. In de volgende secties vindt u drie voor beelden (met regel einden voor de Lees baarheid), elk met een andere gebruikers stroom. Als u wilt weten hoe elke aanvraag werkt, kunt u de aanvraag in een browser plakken en deze uitvoeren. U kunt vervangen `fabrikamb2c` door de naam van uw Tenant als u er een hebt en een gebruikers stroom hebt gemaakt. U moet ook vervangen `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`. Vervang deze client-ID door de App-ID van de registratie van de toepassing die u hebt gemaakt. Wijzig ook de naam van het`{policy}`beleid () in de naam van het beleid dat u in uw Tenant `b2c_1_sign_in`hebt, bijvoorbeeld.
+In deze aanvraag geeft de client aan welke machtigingen moeten worden verkregen van de gebruiker in de `scope` para meter en geeft u de gebruikers stroom op die moet worden uitgevoerd. Als u wilt weten hoe de aanvraag werkt, kunt u de aanvraag in een browser plakken en deze uitvoeren. Vervang `{tenant}` door de naam van uw Tenant. Vervang `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` door de app-id van de toepassing die u eerder hebt geregistreerd in uw Tenant. Wijzig ook de naam van het`{policy}`beleid () in de naam van het beleid dat u in uw Tenant `b2c_1_sign_in`hebt, bijvoorbeeld.
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
@@ -48,7 +48,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Parameter | Vereist | Description |
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
-| verslaggev | Ja | De gebruikers stroom die wordt uitgevoerd. Dit is de naam van een gebruikers stroom die is gemaakt in uw Azure AD B2C-Tenant. De naam van de gebruikers stroom moet beginnen met `b2c_1_`. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of. `b2c_1_edit_profile` |
+| verslaggev | Ja | De gebruikers stroom die moet worden uitgevoerd. Geef de naam op van een gebruikers stroom die u hebt gemaakt in uw Azure AD B2C-Tenant. Bijvoorbeeld: `b2c_1_sign_in`, `b2c_1_sign_up`of. `b2c_1_edit_profile` |
 | client_id | Ja | De toepassings-ID die de [Azure Portal](https://portal.azure.com/) toegewezen aan uw toepassing. |
 | nonce | Ja | Een waarde die is opgenomen in de aanvraag (gegenereerd door de toepassing) die is opgenomen in de resulterende ID-token als claim. De toepassing kan vervolgens deze waarde verifiëren om token replay-aanvallen te verhelpen. De waarde is doorgaans een wille keurige unieke teken reeks die kan worden gebruikt om de oorsprong van de aanvraag te identificeren. |
 | response_type | Ja | Moet een ID-token voor OpenID Connect Connect bevatten. Als uw webtoepassing ook tokens nodig heeft voor het aanroepen van een web- `code+id_token`API, kunt u gebruiken. |
@@ -274,14 +274,14 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | --------- | -------- | ----------- |
 | bouw | Ja | De naam van uw Azure AD B2C-Tenant |
 | verslaggev | Ja | De gebruikers stroom die u wilt gebruiken voor het ondertekenen van de gebruiker uit uw toepassing. |
-| id_token_hint| Nee | Een eerder uitgegeven ID-token om aan het afmeldings eindpunt door te geven als hint voor de huidige geverifieerde sessie van de eind gebruiker met de client. |
-| post_logout_redirect_uri | Nee | De URL waarnaar de gebruiker wordt omgeleid na een geslaagde afmelding. Als deze niet is opgenomen, wordt in Azure AD B2C de gebruiker een Gene riek bericht weer gegeven. |
+| id_token_hint| Nee | Een eerder uitgegeven ID-token om aan het afmeldings eindpunt door te geven als hint voor de huidige geverifieerde sessie van de eind gebruiker met de client. Het `id_token_hint` zorgt ervoor dat `post_logout_redirect_uri` de URL van een geregistreerd antwoord in uw Azure AD B2C toepassings instellingen is. |
+| post_logout_redirect_uri | Nee | De URL waarnaar de gebruiker wordt omgeleid na een geslaagde afmelding. Als deze niet is opgenomen, wordt in Azure AD B2C de gebruiker een Gene riek bericht weer gegeven. Tenzij u een `id_token_hint`opgeeft, moet u deze URL niet als antwoord-URL registreren in uw Azure AD B2C toepassings instellingen. |
 | toestand | Nee | Als een `state` para meter in de aanvraag is opgenomen, moet dezelfde waarde in het antwoord worden weer gegeven. De toepassing moet controleren of de `state` waarden in de aanvraag en het antwoord identiek zijn. |
 
-### <a name="require-id-token-hint-in-logout-request"></a>ID-token Hint vereisen in afmeldings aanvraag
+### <a name="secure-your-logout-redirect"></a>Uw afmeldings omleiding beveiligen
 
 Na afmelden wordt de gebruiker omgeleid naar de URI die is opgegeven in `post_logout_redirect_uri` de para meter, ongeacht de antwoord-url's die zijn opgegeven voor de toepassing. Als er echter een geldig `id_token_hint` wordt door gegeven, wordt door Azure AD B2C gecontroleerd of de `post_logout_redirect_uri` waarde overeenkomt met een van de geconfigureerde omleidings-uri's van de toepassing voordat de omleiding wordt uitgevoerd. Als er geen overeenkomende antwoord-URL voor de toepassing is geconfigureerd, wordt een fout bericht weer gegeven en wordt de gebruiker niet omgeleid.
 
-### <a name="external-identity-provider-session"></a>Externe ID-provider sessie
+### <a name="external-identity-provider-sign-out"></a>Afmelding externe ID-provider
 
 Door de gebruiker naar het `end_session` eind punt te leiden, wordt een deel van de status voor eenmalige aanmelding van de gebruiker met Azure AD B2C gewist, maar de gebruiker wordt niet van de IDP-sessie (Social ID provider) ondertekend. Als de gebruiker tijdens een volgende aanmelding dezelfde IDP selecteert, worden deze opnieuw geverifieerd zonder hun referenties in te voeren. Als een gebruiker zich wil afmelden bij de toepassing, betekent dit niet noodzakelijkerwijs dat ze zich willen afmelden bij hun Facebook-account. Als lokale accounts echter worden gebruikt, wordt de sessie van de gebruiker op de juiste wijze beëindigd.

@@ -1,6 +1,6 @@
 ---
-title: Sluit uw werk of school-account in een niet-beheerde adreslijst - Azure Active Directory | Microsoft Docs
-description: Klik hier voor meer informatie over het sluiten van uw werk of school-account in een niet-beheerde Azure Active Directory.
+title: Sluit uw werk-of school account in een niet-beheerde map-Azure Active Directory | Microsoft Docs
+description: Uw werk-of school account sluiten in een onbeheerde Azure Active Directory.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -13,48 +13,48 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39b359ef7feeaec541ba17e98a5d1e9b74c6403a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0da4c6b1c1434dae564ab4876a3ab3f341a87097
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957998"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891958"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Sluit uw werk of school-account in een niet-beheerde adreslijst
+# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Uw werk-of school account sluiten in een niet-beheerde map
 
-Als u een gebruiker in de organisatie van een niet-beheerde Azure Active Directory (Azure AD), en u niet meer nodig hebt voor apps van die organisatie gebruiken of onderhouden van een koppeling met is, kunt u uw account op elk gewenst moment sluiten. Een niet-beheerde adreslijst beschikt niet over een globale beheerder. Gebruikers in een niet-beheerde adreslijst kunnen hun accounts op hun eigen, zonder dat een beheerder vragen sluiten.
+Als u een gebruiker in een niet-beheerde Azure Active Directory-organisatie (Azure AD) bent en u niet langer apps van die organisatie wilt gebruiken of een koppeling ermee wilt behouden, kunt u uw account op elk gewenst moment sluiten. Een onbeheerde map heeft geen globale beheerder. Gebruikers in een onbeheerde map kunnen hun eigen accounts ook op hun eigen account sluiten zonder dat ze contact hoeven op te nemen met een beheerder.
 
-Gebruikers in een niet-beheerde adreslijst worden vaak gemaakt tijdens selfservice aanmelding. Een voorbeeld is mogelijk een Informatiemedewerker in een organisatie die zich aanmeldt voor een gratis service. Zie voor meer informatie over de self-service-aanmelding, [wat is selfservice Meld u aan voor Azure Active Directory?](directory-self-service-signup.md).
+Gebruikers in een map die niet wordt beheerd, worden vaak gemaakt tijdens het aanmelden met een self-service. Een voor beeld hiervan is een informatie medewerker in een organisatie die zich aanmeldt voor een gratis service. Zie [Wat is self-service registratie voor Azure Active Directory?](directory-self-service-signup.md)voor meer informatie over selfservice registratie.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u uw account sluit kunt, moet u bevestigen dat de volgende items:
+Voordat u uw account kunt sluiten, moet u de volgende items bevestigen:
 
-* Zorg ervoor dat u een gebruiker bent van een niet-beheerde Azure AD-directory. U kunt uw account niet sluiten als u deel uitmaakt van een beheerde adreslijst. Als u deel uitmaken van een beheerde adreslijst en uw account wilt sluiten, moet u contact op met uw beheerder. Zie voor meer informatie over het bepalen of u werkzaam bent bij een niet-beheerde adreslijst [de gebruiker verwijderen uit niet-beheerde Tenant](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Zorg ervoor dat u een gebruiker bent van een onbeheerde Azure AD-adres lijst. U kunt uw account niet sluiten als u deel uitmaakt van een beheerde map. Als u deel uitmaakt van een beheerde map en u uw account wilt sluiten, neemt u contact op met uw beheerder. Zie [de gebruiker verwijderen uit een niet-beheerde Tenant](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)voor informatie over hoe u kunt bepalen of u tot een niet-beheerde Directory behoort.
 
-* Sla alle gegevens die u wilt behouden. Zie voor meer informatie over het indienen van een aanvraag voor exporteren [openen en exporteren van het systeem gegenereerde logboeken voor niet-beheerde Tenants](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
+* Sla de gegevens op die u wilt bewaren. Zie door het systeem gegenereerde logboeken voor niet- [beheerde tenants openen en exporteren](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)voor meer informatie over het verzenden van een aanvraag voor exporteren.
 
 > [!WARNING]
-> Sluit uw account is niet ongedaan worden gemaakt. Wanneer u uw account sluit, worden alle persoonlijke gegevens worden verwijderd. U hebt toegang tot uw account en gegevens die zijn gekoppeld aan uw account niet meer.
+> Het sluiten van uw account is onomkeerbaar. Wanneer u uw account sluit, worden alle persoonlijke gegevens verwijderd. U hebt geen toegang meer tot uw account en gegevens die aan uw account zijn gekoppeld.
 
-## <a name="close-your-account"></a>Uw account sluiten
+## <a name="close-your-account"></a>Je account sluiten
 
-Volg deze stappen een niet-beheerde werk- of schoolaccount om af te sluiten:
+Voer de volgende stappen uit om een niet-beheerd werk-of school account te sluiten:
 
-1. Aanmelden bij [uw account sluiten](https://go.microsoft.com/fwlink/?linkid=873123), met behulp van het account dat u wilt sluiten.
+1. Meld u aan om [uw account te sluiten](https://go.microsoft.com/fwlink/?linkid=873123)met het account dat u wilt sluiten.
 
-1. Op **mijn gegevensaanvragen**, selecteer **account sluiten**.
+1. Selecteer bij **mijn gegevens aanvragen** **account sluiten**.
 
-    ![Mijn gegevensaanvragen - account sluiten](./media/users-close-account/close-account.png)
+    ![Mijn gegevens aanvragen-account sluiten](./media/users-close-account/close-account.png)
 
-1. Controleer het bevestigingsbericht en selecteer vervolgens **Ja**.
+1. Controleer het bevestigings bericht en selecteer vervolgens **Ja**.
 
-    ![Mijn gegevensaanvragen - bevestigen afsluiten](./media/users-close-account/confirm-close.png)
+    ![Mijn gegevens aanvragen-sluiten bevestigen](./media/users-close-account/confirm-close.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is selfservice Meld u aan voor Azure Active Directory?](directory-self-service-signup.md)
-- [De gebruiker verwijderen uit niet-beheerde Tenant](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
-- [Toegang tot en het systeem gegenereerde logboeken exporteren voor niet-beheerde Tenants](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)
+- [Wat is een self-service registratie voor Azure Active Directory?](directory-self-service-signup.md)
+- [De gebruiker uit een niet-beheerde Tenant verwijderen](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [Door het systeem gegenereerde logboeken openen en exporteren voor onbeheerde tenants](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

@@ -1,7 +1,7 @@
 ---
 title: 'Python-zelf studie: Cognitive Services aanroepen in een pijp lijn met AI-verrijking-Azure Search'
 description: Bekijk een voor beeld van het uitpakken van gegevens, natuurlijke taal en afbeelding AI-verwerking in Azure Search met behulp van een Jupyter python-notebook. Geëxtraheerde gegevens worden geïndexeerd en eenvoudig geopend door de query.
-manager: cgronlun
+manager: nitinme
 author: LisaLeib
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: v-lilei
-ms.openlocfilehash: af355ec353e12c30723597927883cb23dfa31e71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cde1fe258d2caf7e7dc9d8ede582364f42c676b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840935"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648874"
 ---
 # <a name="python-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>Python-zelf studie: Cognitive Services-API's aanroepen in een Azure Search Indexing-pijp lijn
 

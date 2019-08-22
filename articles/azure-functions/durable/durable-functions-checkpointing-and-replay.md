@@ -1,6 +1,6 @@
 ---
-title: Controlepunten en herhaling in duurzame functies - Azure
-description: Meer informatie over hoe het plaatsen van controlepunten en antwoord werkt in de extensie duurzame functies voor Azure Functions.
+title: Controle punten en herhaling in Durable Functions-Azure
+description: Meer informatie over het werken met controle punten en antwoorden in de Durable Functions extensie voor Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,22 +10,22 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ed9e4aced7983cce10a577b38c1c170474cf83d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648496"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876864"
 ---
-# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Controlepunten en herhaling in duurzame functies (Azure Functions)
+# <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Controle punten en opnieuw afspelen in Durable Functions (Azure Functions)
 
-Een van de belangrijkste kenmerken van duurzame functies is **betrouwbare uitvoering**. Orchestrator-functies en activiteitsfuncties mogelijk op andere virtuele machines in een datacenter worden uitgevoerd en deze virtuele machines of de onderliggende netwerkinfrastructuur is niet 100% betrouwbaar.
+Een van de belangrijkste kenmerken van Durable Functions is **betrouw bare uitvoering**. Orchestrator-functies en-activiteit functies kunnen worden uitgevoerd op verschillende Vm's in een Data Center en deze Vm's of de onderliggende netwerk infrastructuur is niet 100% betrouwbaar.
 
-Duurzame functies zorgt er, betrouwbare uitvoering van indelingen. Dit gebeurt met behulp van storage-wachtrijen op station functieaanroepen en door regelmatig uitvoeringsgeschiedenis voor het plaatsen van controlepunten in opslagtabellen (met behulp van een cloud-ontwerppatroon wel [' Event sourcing '](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)). Die geschiedenis kan vervolgens opnieuw om de status in het geheugen van een orchestrator-functie automatisch opnieuw te worden afgespeeld.
+Ondanks deze methode zorgt Durable Functions voor een betrouw bare uitvoering van Orchestrations. Dit doet u door opslag wachtrijen te gebruiken voor het aanroepen van de functie en door regel matige controle van uitvoerings geschiedenis in opslag tabellen (met behulp van een Cloud ontwerp patroon bekend als [gebeurtenis bronnen](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)). Deze geschiedenis kan vervolgens opnieuw worden afgespeeld om de status in het geheugen van een Orchestrator-functie automatisch opnieuw samen te stellen.
 
 ## <a name="orchestration-history"></a>Orchestration-geschiedenis
 
-Stel dat u hebt de volgende orchestrator-functie:
+Stel dat u de volgende Orchestrator-functie hebt:
 
 ### <a name="c"></a>C#
 
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -61,75 +61,75 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Op elke `await` (C#) of `yield` instructie (JavaScript), de controlepunten duurzame taak Framework de uitvoeringsstatus van de functie table-opslag. Deze status is wat wordt aangeduid als de *orchestration geschiedenis*.
+Bij elke `await` (C#)- `yield` of (Java script)-instructie bewaart het duurzame taak raamwerk de uitvoerings status van de functie in tabel opslag. Deze status is wat de *Orchestration-geschiedenis*wordt genoemd.
 
-## <a name="history-table"></a>Tabel met de geschiedenis
+## <a name="history-table"></a>Geschiedenis tabel
 
-In het algemeen doet de duurzame taak Framework het volgende in bij elk controlepunt:
+Normaal gesp roken doet het duurzame taak raamwerk het volgende op elk controle punt:
 
-1. Slaat de uitvoeringsgeschiedenis in Azure Storage-tabellen.
-2. Enqueues berichten voor de orchestrator wil aanroepen.
-3. Enqueues berichten voor de orchestrator zelf &mdash; bijvoorbeeld timer voor duurzame berichten.
+1. Hiermee slaat u de uitvoerings geschiedenis op in Azure Storage tabellen.
+2. In-berichten voor functies die de Orchestrator wil aanroepen.
+3. In berichten voor de Orchestrator zelf &mdash; , bijvoorbeeld duurzame timer berichten.
 
-Zodra het controlepunt voltooid is, is de orchestrator-functie moet worden verwijderd uit het geheugen tot er meer werk te doen is gratis.
+Zodra het controle punt is voltooid, kan de Orchestrator-functie uit het geheugen worden verwijderd totdat er meer werk te doen.
 
 > [!NOTE]
-> Azure Storage biedt geen garanties transactionele tussen het opslaan van gegevens in table storage en wachtrijen. Voor het afhandelen van fouten, gebruikmaakt van de opslagprovider duurzame functies *uiteindelijke consistentie* patronen. Deze patronen Zorg ervoor dat er geen gegevens verloren gaan als er een crash of verlies van connectiviteit in het midden van een controlepunt.
+> Azure Storage biedt geen transactionele garanties tussen het opslaan van gegevens in tabel opslag en wacht rijen. Voor het afhandelen van fouten gebruikt de Durable Functions-opslag provider *uiteindelijke consistentie* patronen. Deze patronen zorgen ervoor dat er geen gegevens verloren gaan als er een storing optreedt in het midden van een controle punt.
 
-Na voltooiing de geschiedenis van de functie hierboven ziet er ongeveer als volgt in Azure Table-opslag (afgekort ter illustratie):
+Na voltooiing ziet de geschiedenis van de eerder weer gegeven functie er ongeveer als volgt uit in azure Table Storage (afgekort voor de afbeeldings doeleinden):
 
-| PartitionKey (InstanceId)                     | EventType             | Tijdstempel               | Invoer | Name             | Resultaat                                                    | Status |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Invoer | Name             | Resultaat                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hallo Tokio!" ""                                        |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Hallo Seattle!" ""                                      |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hallo Londen!" ""                                       |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | ' ["" Hallo Tokio!"", "" Hallo Seattle!"", "" Londen Hallo!""] ' | Voltooid           |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232 Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201 Z |       |                  | "" "Hallo Tokyo!" "                                        |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435 Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763 Z |       |                  | "" "Hallo Seattle!" ""                                      |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032 Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919 Z |       |                  | "" Hallo Londen! "" "                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Hallo Tokyo!" "," "Hallo Seattle!" "," "Hallo Londen!" "]" | Voltooid           |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044 Z |       |                  |                                                           |                     |
 
-Enkele opmerkingen bij de kolomwaarden:
+Enkele opmerkingen over de kolom waarden:
 
 * **PartitionKey**: Bevat de exemplaar-ID van de indeling.
-* **EventType**: Hiermee geeft u het type van de gebeurtenis. Mogelijk een van de volgende typen:
-  * **OrchestrationStarted**: De orchestrator-functie hervat vanaf een await of voor de eerste keer wordt uitgevoerd. De `Timestamp` kolom wordt gebruikt voor het vullen van de deterministische waarde voor de [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API.
-  * **ExecutionStarted**: De orchestrator-functie is gestart voor de eerste keer wordt uitgevoerd. Deze gebeurtenis bevat ook de functie-invoer in de `Input` kolom.
-  * **TaskScheduled**: Een functie van de activiteit is gepland. De naam van de functie van de activiteit is vastgelegd in de `Name` kolom.
-  * **TaskCompleted**: Een functie activiteit is voltooid. Het resultaat van de functie wordt in de `Result` kolom.
-  * **TimerCreated**: Een duurzame timer is gemaakt. De `FireAt` kolom bevat de geplande UTC-tijd waarop de timer verloopt.
+* Type **gebeurtenis**: Vertegenwoordigt het type van de gebeurtenis. Dit kan een van de volgende typen zijn:
+  * **OrchestrationStarted**: De Orchestrator-functie is hervat vanaf een wachtend of wordt voor de eerste keer uitgevoerd. De `Timestamp` kolom wordt gebruikt om de deterministische waarde voor de [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) -API in te vullen.
+  * **ExecutionStarted**: De Orchestrator-functie is voor de eerste keer gestart. Deze gebeurtenis bevat ook de functie-invoer in `Input` de kolom.
+  * **TaskScheduled**: Er is een activiteit functie gepland. De naam van de activiteit functie wordt vastgelegd in de `Name` kolom.
+  * **TaskCompleted**: De functie activity is voltooid. Het resultaat van de functie bevindt `Result` zich in de kolom.
+  * **TimerCreated**: Er is een duurzame Timer gemaakt. De `FireAt` kolom bevat de geplande UTC-tijd waarop de timer verloopt.
   * **TimerFired**: Een duurzame timer wordt geactiveerd.
-  * **EventRaised**: Een externe gebeurtenis is verzonden naar de orchestration-exemplaar. De `Name` kolom bevat de naam van de gebeurtenis en de `Input` kolom bevat de nettolading van de gebeurtenis.
-  * **OrchestratorCompleted**: De orchestrator-functie is gestopt.
-  * **ContinueAsNew**: De orchestrator-functie voltooid en zichzelf opnieuw gestart met de nieuwe status. De `Result` kolom bevat de waarde die wordt gebruikt als invoer in de sessie opnieuw gestart.
-  * **ExecutionCompleted**: De orchestrator-functie is tot voltooiing worden uitgevoerd (of mislukt). De uitvoer van de functie of de foutgegevens worden opgeslagen in de `Result` kolom.
-* **Tijdstempel**: De UTC-timestamp van de geschiedenisgebeurtenis.
-* **Naam**: De naam van de functie is aangeroepen.
-* **Invoer**: De JSON-indeling invoer van de functie.
-* **Resultaat**: De uitvoer van de functie. dat wil zeggen, de geretourneerde waarde.
+  * **EventRaised**: Er is een externe gebeurtenis verzonden naar het Orchestrator-exemplaar. De `Name` kolom bevat de naam van de gebeurtenis en de `Input` kolom legt de payload van de gebeurtenis vast.
+  * **OrchestratorCompleted**: De Orchestrator-functie is gewacht.
+  * **ContinueAsNew**: De Orchestrator-functie is voltooid en opnieuw opgestart met de nieuwe status. De `Result` kolom bevat de waarde, die wordt gebruikt als invoer in het opnieuw gestarte exemplaar.
+  * **ExecutionCompleted**: De Orchestrator-functie is voltooid (of mislukt). De uitvoer van de functie of de fout details worden opgeslagen in de `Result` kolom.
+* **Tijds tempel**: De UTC-tijds tempel van de geschiedenis gebeurtenis.
+* **Naam**: De naam van de functie die is aangeroepen.
+* **Invoer**: De invoer in JSON-indeling van de functie.
+* **Resultaat**: De uitvoer van de functie; dat wil zeggen de retour waarde.
 
 > [!WARNING]
-> Het is nuttig als u een hulpprogramma voor foutopsporing, nemen niet elke afhankelijkheid voor deze tabel. Het verschilt mogelijk als de extensie duurzame functies zich verder ontwikkelt.
+> Hoewel het handig is als een hulp programma voor fout opsporing, neemt u geen afhankelijkheid op in deze tabel. Dit kan veranderen als de Durable Functions extensie wordt ontwikkeld.
 
-Telkens wanneer de functie wordt geactiveerd vanuit een `await` (C#) of `yield` (JavaScript), het duurzame Framework van de taak opnieuw de orchestrator-functie helemaal. Op elke opnieuw uitvoeren die wordt de uitvoeringsgeschiedenis om te bepalen of de huidige asynchrone bewerking heeft genomen consults plaatsen.  Als de bewerking plaatsgevonden heeft, het framework de uitvoer van deze bewerking onmiddellijk opnieuw weergegeven en gaat verder met de volgende `await` (C#) of `yield` (JavaScript). Dit proces gaat door totdat de volledige geschiedenis is onderschept, waarna alle lokale variabelen in de orchestrator-functie zijn teruggezet naar de vorige waarden.
+Telkens wanneer de functie wordt hervat vanuit een `await` (C#) of `yield` (Java script), voert het duurzame taak raamwerk de Orchestrator-functie opnieuw uit. Bij elke opnieuw uitvoeren wordt de uitvoerings geschiedenis geraadpleegd om te bepalen of de huidige async-bewerking is uitgevoerd.  Als de bewerking is uitgevoerd, wordt de uitvoer van deze bewerking direct opnieuw afgespeeld en verplaatst naar de volgende `await` (C#) of `yield` (Java script). Dit proces wordt voortgezet totdat de volledige geschiedenis is herhaald, waarbij alle lokale variabelen in de Orchestrator-functie worden hersteld naar hun vorige waarden.
 
-## <a name="orchestrator-code-constraints"></a>Beperkingen voor orchestrator-code
+## <a name="orchestrator-code-constraints"></a>Orchestrator-code beperkingen
 
-Het gedrag voor opnieuw afspelen maakt beperkingen met betrekking tot het type van de code die kan worden geschreven in een orchestrator-functie:
+Het gedrag voor opnieuw afspelen maakt beperkingen voor het type code dat kan worden geschreven in een Orchestrator-functie:
 
-* Orchestrator-code moet **deterministische**. Het wordt meerdere keren opnieuw worden afgespeeld en hetzelfde resultaat telkens moet opleveren. Bijvoorbeeld, er zijn geen directe-aanroepen naar ophalen van de huidige datum en tijd, willekeurige nummers ophalen, genereren van willekeurige GUID's of aanroepen naar externe eindpunten.
+* Orchestrator-code moet **deterministisch**zijn. Het wordt meerdere keren herhaald en moet telkens hetzelfde resultaat opleveren. Er zijn bijvoorbeeld geen directe aanroepen om de huidige datum/tijd op te halen, wille keurige getallen op te halen, wille keurige GUID'S te genereren of externe eind punten aan te roepen.
 
-  Als de orchestrator-code nodig heeft om op te halen van de huidige datum en tijd, moet deze gebruiken de [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) of `currentUtcDateTime` (JavaScript) API, die veilig voor opnieuw afspelen is.
+  Als Orchestrator code de huidige datum/tijd moet verkrijgen, moet deze gebruikmaken van de API [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.net) of `currentUtcDateTime` (Java script), die veilig is voor replay.
 
-  Als er moet een orchestrator-code voor het genereren van een willekeurige GUID, moet deze gebruiken de [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET)-API, die veilig is voor opnieuw afspelen of GUID-generatie delegeren aan een functie van activiteit (JavaScript), zoals in dit voorbeeld:
+  Als de Orchestrator-code een wille keurige GUID moet genereren, moet deze de [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.net) API gebruiken, die veilig is voor opnieuw afspelen of de GUID-generatie delegeren naar een activiteit functie (Java script), zoals in dit voor beeld:
 
   ```javascript
   const uuid = require("uuid/v1");
@@ -139,37 +139,37 @@ Het gedrag voor opnieuw afspelen maakt beperkingen met betrekking tot het type v
   }
   ```
 
-  Niet-deterministisch bewerkingen moeten worden uitgevoerd in de activiteitsfuncties. Dit omvat elke interactie met andere invoer- of -bindingen. Dit zorgt ervoor dat alle niet-deterministisch waarden worden één keer op de eerste uitvoering worden gegenereerd en in de uitvoeringsgeschiedenis opgeslagen. Volgende uitvoeringen wordt automatisch de opgeslagen waarde gebruikt.
+  Niet-deterministische bewerkingen moeten worden uitgevoerd in de activiteit functies. Dit omvat alle interactie met andere invoer-of uitvoer bindingen. Dit zorgt ervoor dat alle niet-deterministische waarden eenmaal worden gegenereerd bij de eerste uitvoering en worden opgeslagen in de uitvoerings geschiedenis. Volgende uitvoeringen gebruiken de opgeslagen waarde vervolgens automatisch.
 
-* Orchestrator-code moet **niet-blokkerende**. Bijvoorbeeld: dit betekent dat geen i/o en er worden geen aanroepen naar `Thread.Sleep` (.NET) of vergelijkbare API's.
+* Orchestrator-code moet **niet worden geblokkeerd**. Dit betekent bijvoorbeeld dat er geen I/O-en geen- `Thread.Sleep` aanroepen naar (.net) of equivalente api's zijn.
 
-  Als een orchestrator uitstellen moet, kunt deze gebruiken de [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) of `createTimer` (JavaScript) API.
+  Als een Orchestrator moet worden uitgesteld, kan deze de [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.net) of `createTimer` (Java script) API gebruiken.
 
-* Orchestrator-code moet **nooit gestart een asynchrone bewerking** behalve met behulp van de [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API of `context.df` van object-API. Bijvoorbeeld: Nee `Task.Run`, `Task.Delay` of `HttpClient.SendAsync` in .NET of `setTimeout()` en `setInterval()` in JavaScript. De duurzame taak Framework orchestrator-code op een enkele thread wordt uitgevoerd en kan niet communiceren met andere threads die kunnen worden gepland door andere asynchrone API's.
+* De Orchestrator-code mag **nooit een asynchrone bewerking initiëren** , met uitzonde ring van `context.df` de [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) -API of de API van het object. Bijvoorbeeld Nee `Task.Run`, `Task.Delay` `setTimeout()` of `HttpClient.SendAsync` in .net of en`setInterval()` in Java script. Het duurzame taak raamwerk voert Orchestrator-code uit op één thread en kan niet communiceren met andere threads die kunnen worden gepland door andere async-Api's. Als dit gebeurt, `InvalidOperationException` wordt er een uitzonde ring gegenereerd.
 
-* **Oneindige lus moeten worden vermeden** in orchestrator-code. Omdat de duurzame Framework van de taak wordt de uitvoeringsgeschiedenis als de orchestration-functie vordert opgeslagen, kan een oneindige lus ervoor zorgen dat een orchestrator-exemplaar te weinig geheugen. Voor scenario's met oneindige lus, zoals API's gebruiken [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) of `continueAsNew` (JavaScript) opnieuw opstarten van de functie-uitvoering en vorige uitvoeringsgeschiedenis negeren.
+* **Oneindige lussen moeten worden** vermeden in Orchestrator-code. Omdat het duurzame taak raamwerk uitvoerings geschiedenis opslaat als de Orchestration-functie wordt uitgevoerd, kan een oneindige lus ertoe leiden dat een Orchestrator-exemplaar geen geheugen meer beschikbaar heeft. Voor oneindige lussen gebruikt u api's zoals [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.net) of `continueAsNew` (Java script) om de uitvoering van de functie opnieuw te starten en de vorige uitvoerings geschiedenis te verwijderen.
 
-* JavaScript orchestrator-functies kunnen niet worden `async`. Ze moeten worden gedeclareerd als synchrone generator-functies.
+* Java script Orchestrator-functies mogen `async`niet zijn. Ze moeten worden gedeclareerd als synchrone Generator functies.
 
-Terwijl deze beperkingen op eerst in de praktijk die ze niet moeilijk afschrikken kunnen te volgen. De duurzame taak Framework probeert te detecteren schendingen van de bovenstaande regels en genereert een `NonDeterministicOrchestrationException`. Dit gedrag detectie is best-effort echter en u mag niet afhankelijk zijn van deze.
+Hoewel deze beperkingen op het eerste gezicht lijken te zijn, kan het voor komen dat ze in de praktijk niet moeilijk te volgen zijn. Het duurzame taak raamwerk probeert schendingen van de bovenstaande regels te detecteren en genereert een `NonDeterministicOrchestrationException`. Dit detectie gedrag is echter het meest geschikt en u moet er niet op vertrouwen.
 
 > [!NOTE]
-> Alle regels gelden alleen voor de functies die zijn geactiveerd door de `orchestrationTrigger` binding. Activiteitsfuncties wordt geactiveerd door de `activityTrigger` binding en -functies die gebruikmaken van de `orchestrationClient` verbinding maakt, hebben geen dergelijke beperkingen.
+> Al deze regels zijn alleen van toepassing op functies die worden geactiveerd `orchestrationTrigger` door de binding. Activiteit functies die worden geactiveerd door `activityTrigger` de binding en functies die gebruikmaken van `orchestrationClient` de binding, hebben geen enkele beperking.
 
 ## <a name="durable-tasks-net"></a>Duurzame taken (.NET)
 
 > [!NOTE]
-> Deze sectie beschrijft interne implementatiegegevens van duurzame taak Framework. U kunt duurzame functies gebruiken zonder de wetenschap dat deze informatie. Dit is uitsluitend bedoeld om te begrijpen van het gedrag voor opnieuw afspelen.
+> In deze sectie worden de interne implementatie details van het duurzame taak raamwerk beschreven. U kunt Durable Functions gebruiken zonder dat u deze informatie hoeft te weten. Het is alleen bedoeld om u inzicht te geven in het replay-gedrag.
 
-Taken die veilig kunnen worden gestopt in de orchestrator-functies worden soms aangeduid als *duurzame taken*. Dit zijn taken die worden gemaakt en beheerd door de duurzame Framework van de taak. Voorbeelden zijn de taken die zijn geretourneerd door `CallActivityAsync`, `WaitForExternalEvent`, en `CreateTimer`.
+Taken die veilig kunnen worden gewacht in Orchestrator-functies, worden af en toe aangeduid als *duurzame taken*. Dit zijn taken die door het duurzame taak raamwerk worden gemaakt en beheerd. Voor beelden zijn de taken die `CallActivityAsync`worden `WaitForExternalEvent`geretourneerd door `CreateTimer`, en.
 
-Deze *duurzame taken* intern worden beheerd met behulp van een lijst van `TaskCompletionSource` objecten. Tijdens het opnieuw afspelen, worden deze taken gemaakt als onderdeel van orchestrator tot uitvoering van code en worden uitgevoerd als de functie voor berichtverzending de bijbehorende van geschiedenisgebeurtenissen inventariseert. Dit wordt gedaan synchroon met een enkele thread totdat de volledige geschiedenis is opnieuw is afgespeeld. Duurzame taken, die niet zijn voltooid door het einde van de geschiedenis opnieuw afspelen heeft de juiste acties worden uitgevoerd. Bijvoorbeeld mogelijk een bericht in de wachtrij voor het aanroepen van een functie van de activiteit.
+Deze *duurzame taken* worden intern beheerd met behulp van `TaskCompletionSource` een lijst met objecten. Tijdens het opnieuw afspelen worden deze taken gemaakt als onderdeel van de uitvoering van de Orchestrator-code en worden ze voltooid als de dispatcher de corresponderende geschiedenis gebeurtenissen inventariseert. Dit wordt allemaal synchroon uitgevoerd met één thread totdat alle geschiedenis is herhaald. Duurzame taken, die niet worden voltooid door het einde van de replay van de geschiedenis, hebben de juiste acties uitgevoerd. Zo kan een bericht in de wachtrij worden geplaatst om een activiteit functie aan te roepen.
 
-De hier beschreven werking voor uitvoering kunt u te begrijpen waarom orchestrator-functiecode moet nooit `await` een taak niet-duurzame: de dispatcher-thread niet kunt wachten op deze is voltooid en een retouraanroep door deze taak kan de tracering mogelijk beschadigd status van de orchestrator-functie. Aantal controles runtime zijn aanwezig om te proberen om dit te voorkomen.
+Het uitvoerings gedrag dat hier wordt beschreven, dient u te begrijpen waarom de functie code `await` van Orchestrator nooit een niet-duurzame taak mag hebben: de dispatcher-thread kan niet wachten totdat deze is voltooid en eventuele retour aanroepen voor deze taak kunnen het volgen mogelijk beschadigen de status van de Orchestrator-functie. Sommige runtime controles zijn aanwezig om dit te voor komen.
 
-Als u meer informatie wilt over hoe orchestrator-functies in de duurzame Framework van de taak wordt uitgevoerd, het beste om te raadplegen is de [duurzame taak broncode van GitHub](https://github.com/Azure/durabletask). In het bijzonder Zie [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) en [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
+Als u meer informatie wilt over hoe het duurzame taak raamwerk Orchestrator-functies uitvoert, kunt u het beste de [bron code van de duurzame taak op github](https://github.com/Azure/durabletask)raadplegen. Zie met name [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) en [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het beheer van exemplaar](durable-functions-instance-management.md)
+> [Meer informatie over instantie beheer](durable-functions-instance-management.md)

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e62a0c1363acfedc1f059ac0e56fce0df68298f8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532386"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874238"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Codes van verificatie- en autorisatiefouten
 
@@ -265,6 +265,7 @@ Zoeken naar informatie over de AADSTS-fout codes die worden geretourneerd door d
 | AADSTS700023 | InvalidResourcelessScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig bij het aanvragen van een toegangs token. |
 | AADSTS1000000 | UserNotBoundError-voor de BIND-API moet de Azure AD-gebruiker ook worden geverifieerd met een externe IDP, die nog niet heeft plaatsgevonden. |
 | AADSTS1000002 | BindCompleteInterruptError: de binding is voltooid, maar de gebruiker moet hiervan op de hoogte zijn. |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled-de toepassing is uitgeschakeld. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

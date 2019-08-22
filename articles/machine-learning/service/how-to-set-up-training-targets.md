@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990467"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872405"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Compute-doelen voor modeltraining instellen 
 
@@ -317,7 +317,7 @@ Als u de reken doelen voor uw werk ruimte wilt zien, gebruikt u de volgende stap
 1. Ga naar het [Azure Portal](https://portal.azure.com) en open uw werk ruimte. 
 1. Selecteer __berekenen__onder __toepassingen__.
 
-    ![Compute-tabblad weergave](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
+    [![Tabblad Compute weer geven](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Een reken doel maken
 
@@ -336,8 +336,6 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 
 1. Vul het formulier in. Geef waarden op voor de vereiste eigenschappen, met name voor de **VM-familie**, en het **maximum aantal knoop punten** dat moet worden gebruikt om de berekening uit te voeren.  
 
-    ![Formulier invullen](./media/how-to-set-up-training-targets/add-compute-form.png) 
-
 1. Selecteer __Maken__.
 
 
@@ -348,8 +346,6 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 1. Vervolgens ziet u de details van het berekenings doel: 
 
     ![De details van de computer doel weer geven](./media/how-to-set-up-training-targets/compute-target-details.png) 
-
-
 
 ### <a id="portal-reuse"></a>Reken doelen koppelen
 

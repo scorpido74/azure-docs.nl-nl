@@ -1,6 +1,6 @@
 ---
-title: Een apparaat DevKit verbinden met uw Azure IoT Central-toepassing | Microsoft Docs
-description: Leer hoe u een apparaat MXChip IoT DevKit verbinden met uw Azure IoT Central-toepassing als een apparaat-ontwikkelaar.
+title: Een DevKit-apparaat verbinden met uw Azure IoT Central-toepassing | Microsoft Docs
+description: Als ontwikkel aars van apparaten leert u hoe u een MXChip IoT DevKit-apparaat verbindt met uw Azure IoT Central-toepassing.
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/22/2019
@@ -8,68 +8,70 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81a355cc7c0d1190ee86fac6ed155380e6e5c0d1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235883"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877531"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een apparaat MXChip IoT DevKit verbinden met uw Azure IoT Central-toepassing
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
 
-Dit artikel wordt beschreven hoe u, als een apparaat-ontwikkelaar, een MXChip IoT DevKit (DevKit)-apparaat verbinden met uw Microsoft Azure IoT Central-toepassing.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
+In dit artikel wordt beschreven hoe als een ontwikkelaar van een apparaat een MXChip IoT DevKit (DevKit)-apparaat verbindt met uw Microsoft Azure IoT Central toepassing.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als u wilt de stappen in dit artikel hebt voltooid, moet u de volgende bronnen:
+U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
-1. Een Azure IoT Central-toepassing gemaakt op basis van de **voorbeeld Devkits** toepassingssjabloon. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
-1. Een apparaat DevKit. Als u wilt een apparaat DevKit kopen, gaat u naar [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
+1. Een Azure IoT Central-toepassing gemaakt op basis van de voor beeld-toepassings sjabloon **Devkits** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+1. Een DevKit-apparaat. Ga naar [MXChip IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)om een DevKit-apparaat aan te schaffen.
 
-## <a name="sample-devkits-application"></a>Voorbeeldtoepassing Devkits
+## <a name="sample-devkits-application"></a>Voor beeld van Devkits-toepassing
 
-Een toepassing gemaakt op basis van de **voorbeeld Devkits** toepassingssjabloon bevat een **MXChip** apparaat-sjabloon die de volgende kenmerken van apparaat definieert:
+Een toepassing die is gemaakt op basis van de voor **beeld-Devkits** -toepassings sjabloon bevat een **MXChip** -apparaatprofiel waarmee de volgende apparaateigenschappen worden gedefinieerd:
 
-- Telemetrie-metingen voor **vochtigheid**, **temperatuur**, **druk te verlichten**, **Magnetometer** (gemeten langs de X, Y, Z-as), **Versnellingsmeter** (gemeten langs de X, Y, Z-as), en **gyroscoop** (gemeten langs de X, Y, Z-as).
-- Status van de meting voor **Apparaatstatus**.
-- Meting van de gebeurtenis voor **B gedrukt**.
-- Instellingen voor **spanning**, **huidige**, **ventilatorsnelheid**, en een **IR** in-/ uitschakelen.
-- Apparaateigenschappen **die nummer** en **locatie van het apparaat**, dit is een locatie-eigenschap.
-- De eigenschap in de cloud **geproduceerd In**.
-- Opdrachten **Echo** en **aftelling**. Wanneer een echt apparaat ontvangt een **Echo** opdracht toont het de verzonden waarde op van het apparaat weergegeven. Wanneer een echt apparaat ontvangt een **aftelling** opdracht, de cycli LED via een patroon, en het apparaat verzendt aftelling waarden terug naar IoT Central.
+- Telemetrie-metingen voor **vochtigheid**, **Tempe ratuur**, **Druk**, **magnetometer** (gemeten langs x, y, z-as), **acceleratie meter** (gemeten in x, y, z-as) en **Gyroscope** (gemeten langs x, y, z-as).
+- Status meting voor **Apparaatstatus**.
+- Gebeurtenis meting voor **knop B**ingedrukt.
+- Instellingen voor **spanning**, **huidige**, **ventilator snelheid**en een **IR** -wissel knop.
+- De eigenschappen van het apparaat en de locatie van het **apparaat**. Dit is een locatie-eigenschap.
+- De eigenschap Cloud die is **geproduceerd in**.
+- **Echo** en aftellen van opdrachten. Wanneer een echt apparaat een **echo** opdracht ontvangt, wordt de verzonden waarde weer gegeven op het apparaat. Wanneer een echt apparaat een opdracht voor aftellen ontvangt, wordt de LED door een patroon geleid en verzendt het apparaat aftellings waarden terug naar IOT Central.
 
-Zie voor meer informatie over de configuratie [MXChip sjabloon Apparaatdetails](#mxchip-device-template-details)
+Zie Details van de [MXChip-Apparaatbeheer](#mxchip-device-template-details) voor volledige informatie over de configuratie.
 
 ## <a name="add-a-real-device"></a>Echt apparaat toevoegen
 
-### <a name="get-your-device-connection-details"></a>Uw apparaat Verbindingsdetails ophalen
+### <a name="get-your-device-connection-details"></a>De verbindings gegevens van uw apparaat ophalen
 
-Voeg in uw Azure IoT Central-toepassing een echt apparaat uit de **MXChip** apparaat sjabloon en maak een notitie van de verbindingsgegevens van apparaat: **Bereik-ID, apparaat-ID en primaire sleutel**:
+Voeg in uw Azure IoT Central-toepassing een echt apparaat toe uit de sjabloon **MXChip** en noteer de details van de apparaatgegevens: **Bereik-id, apparaat-id en primaire sleutel**:
 
-1. Voeg een **echt apparaat** Device Explorer, selecteer **+ Nieuw > echte** om toe te voegen een echt apparaat.
+1. Een **echt apparaat** toevoegen uit Device Explorer, selecteer **+ Nieuw > Real** om een echt apparaat toe te voegen.
 
-    * Voer een kleine **apparaat-ID**, of gebruik de voorgestelde **apparaat-ID**.
-    * Voer een **apparaatnaam**, of de voorgestelde naam gebruiken
+    * Voer een **apparaat-id**in kleine letters in of gebruik de voorgestelde **apparaat-id**.
+    * Voer een **naam**voor het apparaat in of gebruik de voorgestelde naam
 
     ![Apparaat toevoegen](media/howto-connect-devkit/add-device.png)
 
-1. Het apparaat verbinding om informatie te krijgen, **bereik-ID**, **apparaat-ID**, en **primaire sleutel**, selecteer **Connect** op de Apparaatpagina.
+1. Selecteer **verbinding maken** op de pagina apparaat om de verbindings Details van het apparaat, de **scope-id**, de **apparaat-id**en de **primaire sleutel**op te halen.
 
     ![Verbindingsdetails](media/howto-connect-devkit/device-connect.png)
 
-1. Maak een notitie van de verbindingsgegevens. U bent tijdelijk niet verbonden met het internet wanneer u uw apparaat DevKit in de volgende stap voorbereiden.
+1. Noteer de verbindings gegevens. U hebt tijdelijk geen verbinding meer met Internet wanneer u uw DevKit-apparaat voorbereidt in de volgende stap.
 
-### <a name="prepare-the-devkit-device"></a>Het apparaat DevKit voorbereiden
+### <a name="prepare-the-devkit-device"></a>Het DevKit-apparaat voorbereiden
 
-Als u het apparaat en de gewenste eerder gebruikt hebt deze voor het gebruik van een ander Wi-Fi-netwerk, de verbindingsreeks of het telemetrie meting opnieuw te configureren, drukt u op zowel de **A** en **B** knoppen op hetzelfde moment. Als dit niet werkt, drukt u op **opnieuw** knop en probeer het opnieuw.
+Als u het apparaat eerder hebt gebruikt en het opnieuw wilt configureren voor gebruik van een ander WiFi-netwerk, connection string of een telemetrie-meting, drukt u op de knoppen **a** en **B** op hetzelfde moment. Als het niet werkt, drukt u op de knop **opnieuw instellen** en probeert u het opnieuw.
 
-#### <a name="to-prepare-the-devkit-device"></a>Het apparaat DevKit voorbereiden
+#### <a name="to-prepare-the-devkit-device"></a>Het DevKit-apparaat voorbereiden
 
-1. Download de meest recente vooraf gebouwde Azure IoT Central firmware voor de MXChip uit de [releases](https://aka.ms/iotcentral-docs-MXChip-releases) pagina op GitHub.
-1. Verbind het apparaat DevKit naar uw ontwikkelmachine met behulp van een USB-kabel. In Windows, wordt een bestand explorer-venster geopend op een station dat is toegewezen aan de opslag op het apparaat DevKit. Bijvoorbeeld: het station kan worden aangeroepen **AZ3166 (D:)** .
-1. Sleep de **iotCentral.bin** -bestand op het station-venster. Wanneer het kopiëren voltooid is, wordt het apparaat opnieuw wordt opgestart met de nieuwe firmware.
+1. Down load de nieuwste vooraf ontwikkelde Azure IoT Central-firmware voor het MXChip op de pagina [releases](https://aka.ms/iotcentral-docs-MXChip-releases) op github.
+1. Verbind het DevKit-apparaat met de ontwikkel computer via een USB-kabel. In Windows wordt een bestand Verkenner-venster geopend op een station dat is toegewezen aan de opslag op het DevKit-apparaat. Het station kan bijvoorbeeld **AZ3166 (D:)** worden genoemd.
+1. Sleep het **iotCentral. bin** -bestand naar het station-venster. Wanneer het kopiëren is voltooid, wordt het apparaat opnieuw opgestart met de nieuwe firmware.
 
-1. Wanneer het apparaat DevKit opnieuw wordt opgestart, wordt het volgende scherm wordt weergegeven:
+1. Wanneer het DevKit-apparaat opnieuw wordt opgestart, wordt het volgende scherm weer gegeven:
 
     ```
     Connect HotSpot:
@@ -79,114 +81,114 @@ Als u het apparaat en de gewenste eerder gebruikt hebt deze voor het gebruik van
     ```
 
     > [!NOTE]
-    > Als het scherm wordt weergegeven iets anders, opnieuw instellen van het apparaat en druk op de **A** en **B** knoppen op het apparaat op hetzelfde moment opnieuw opstarten van het apparaat.
+    > Als op het scherm iets anders wordt weer gegeven, stelt u het apparaat opnieuw in en drukt u op de knoppen **A** en **B** op het apparaat tegelijk om het apparaat opnieuw op te starten.
 
-1. Het apparaat is nu in de toegangsmodus punt (AP). U kunt met dit Wi-Fi-toegangspunt voor het verbinden van uw computer of mobiel apparaat.
+1. Het apparaat bevindt zich nu in de toegangs punt modus (AP). U kunt verbinding maken met dit Wi-Fi-toegangs punt vanaf uw computer of mobiel apparaat.
 
-1. Op uw computer, telefoon of tablet verbinding maken met de naam van het Wi-Fi-netwerk op het scherm van het apparaat weergegeven. Wanneer u verbinding met dit netwerk maakt, hebt u geen toegang tot internet. Deze status wordt verwacht, en u bent alleen verbinding met dit netwerk voor een korte periode terwijl u het apparaat configureert.
+1. Op uw computer, telefoon of Tablet kunt u verbinding maken met de Wi-Fi-netwerk naam die wordt weer gegeven op het scherm van het apparaat. Wanneer u verbinding met dit netwerk maakt, hebt u geen toegang tot internet. Deze status wordt verwacht en u hebt gedurende korte tijd alleen verbinding met dit netwerk tijdens het configureren van het apparaat.
 
-1. Open uw webbrowser en navigeer naar [ http://192.168.0.1/start ](http://192.168.0.1/start). De volgende webpagina wordt weergegeven:
+1. Open uw webbrowser en ga naar [http://192.168.0.1/start](http://192.168.0.1/start). De volgende webpagina wordt weer gegeven:
 
-    ![De configuratiepagina van apparaat](media/howto-connect-devkit/configpage.png)
+    ![Configuratie pagina voor apparaten](media/howto-connect-devkit/configpage.png)
 
-    Voer op de pagina:
-    - De naam van uw Wi-Fi-netwerk
-    - het wachtwoord voor het Wi-Fi-netwerk
-    - De PIN-code die wordt weergegeven op de weergave van het apparaat
-    - Details van de verbinding **bereik-ID**, **apparaat-ID**, en **primaire sleutel** van uw apparaat (u moet al opgeslagen dit de stappen te volgen)
-    - Selecteer alle beschikbare telemetrie-metingen
+    Voer op de webpagina het volgende in:
+    - De naam van uw WiFi-netwerk
+    - Uw WiFi-netwerk wachtwoord
+    - De PIN-code die wordt weer gegeven op de weer gave van het apparaat
+    - De verbindings Details **bereik-id**, **apparaat-id**en **primaire sleutel** van uw apparaat (u moet dit al hebben opgeslagen door de stappen te volgen)
+    - Alle beschik bare telemetrie-metingen selecteren
 
-1. Nadat u hebt gekozen **apparaat configureren**, ziet u deze pagina:
+1. Nadat u **apparaat configureren**hebt gekozen, ziet u deze pagina:
 
     ![Apparaat is geconfigureerd](media/howto-connect-devkit/deviceconfigured.png)
 
-1. Druk op de **opnieuw** knop op uw apparaat.
+1. Druk op de knop **Reset** op het apparaat.
 
-## <a name="view-the-telemetry"></a>De telemetrie bekijken
+## <a name="view-the-telemetry"></a>De telemetrie weer geven
 
-Wanneer het apparaat DevKit opnieuw wordt opgestart, ziet u het scherm op het apparaat:
+Wanneer het DevKit-apparaat opnieuw wordt opgestart, wordt het scherm op het apparaat weer gegeven:
 
-* Het aantal berichten over telemetrie verzonden.
+* Het aantal telemetriegegevens dat is verzonden.
 * Het aantal fouten.
-* Het aantal gewenste eigenschappen die worden ontvangen en het aantal gerapporteerde eigenschappen die worden verzonden.
+* Het aantal gewenste eigenschappen dat is ontvangen en het aantal gerapporteerde eigenschappen dat is verzonden.
 
 > [!NOTE]
-> Als het apparaat wordt weergegeven als er wordt geprobeerd om verbinding te maken in een lus, controleert u of het apparaat is **geblokkeerd** in IoT Central, en **opheffen van blokkeringen** het apparaat, zodat deze verbinding met de app maken kan.
+> Als het apparaat wordt weer gegeven wanneer er wordt geprobeerd verbinding te maken, controleert u of het apparaat is **geblokkeerd** in IOT Central en **blokkeert** u het apparaat zodat het verbinding kan maken met de app.
 
-Schud het apparaat voor het verzenden van een gerapporteerde eigenschap. Het apparaat verzendt een willekeurig getal als de **Die nummer** apparaateigenschap.
+Schud het apparaat om een gerapporteerde eigenschap te verzenden. Het apparaat verzendt een wille keurig getal als de eigenschap van het Dobbelten- **nummer** .
 
-U kunt de telemetrie metingen en gerapporteerde eigenschapswaarden weergeven en configureren van instellingen in Azure IoT Central:
+U kunt de telemetrie-metingen en gerapporteerde eigenschaps waarden weer geven en instellingen configureren in azure IoT Central:
 
-1. Gebruik **Device Explorer** om te navigeren naar de **metingen** pagina voor het echte MXChip-apparaat dat u hebt toegevoegd:
+1. Gebruik **device Explorer** om te navigeren naar de pagina **metingen** voor het echte MXChip-apparaat dat u hebt toegevoegd:
 
-    ![Navigeer naar een echt apparaat](media/howto-connect-devkit/realdevicenew.png)
+    ![Naar echt apparaat navigeren](media/howto-connect-devkit/realdevicenew.png)
 
-1. Op de **metingen** pagina, kunt u de telemetrie die afkomstig zijn van het apparaat MXChip zien:
+1. Op de pagina **metingen** kunt u de telemetrie weer geven die afkomstig zijn van het MXChip-apparaat:
 
-    ![Telemetrie van een echt apparaat weergeven](media/howto-connect-devkit/devicetelemetrynew.png)
+    ![Telemetrie van een echt apparaat weer geven](media/howto-connect-devkit/devicetelemetrynew.png)
 
-1. Op de **eigenschappen** pagina vindt u de laatste nummer en de locatie van het apparaat gerapporteerd door het apparaat:
+1. Op de pagina **Eigenschappen** kunt u het laatste nummer van de dobbel steen bekijken en de locatie van het apparaat die wordt gerapporteerd door het apparaat:
 
-    ![Eigenschappen van apparaat weergeven](media/howto-connect-devkit/devicepropertynew.png)
+    ![Apparaateigenschappen weer geven](media/howto-connect-devkit/devicepropertynew.png)
 
-1. Op de **instellingen** pagina, kunt u de instellingen op het apparaat MXChip bijwerken:
+1. Op de pagina **instellingen** kunt u de instellingen op het MXChip-apparaat bijwerken:
 
-    ![Weergave-instellingen voor apparaten](media/howto-connect-devkit/devicesettingsnew.png)
+    ![Apparaatinstellingen weer geven](media/howto-connect-devkit/devicesettingsnew.png)
 
-1. Op de **opdrachten** pagina, roept u de **Echo** en **aftelling** opdrachten:
+1. Op de pagina **opdrachten** kunt u de opdrachten **echo** en aftellen aanroepen:
 
-    ![Aanroep van opdrachten](media/howto-connect-devkit/devicecommands.png)
+    ![Opdrachten oproepen](media/howto-connect-devkit/devicecommands.png)
 
-1. Op de **Dashboard** pagina, ziet u de locatie die is toegewezen
+1. Op de pagina **dash board** ziet u de locatie kaart
 
-    ![Apparaat-dashboard weergeven](media/howto-connect-devkit/devicedashboardnew.png)
+    ![Het dash board van het apparaat weer geven](media/howto-connect-devkit/devicedashboardnew.png)
 
-## <a name="download-the-source-code"></a>De broncode downloaden
+## <a name="download-the-source-code"></a>De bron code downloaden
 
-Als u wilt verkennen en te wijzigen van de apparaatcode, kunt u deze downloaden vanuit GitHub. Als u van plan bent om te wijzigen van de code, moet u deze instructies te volgen [de ontwikkelomgeving voorbereiden](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) voor uw besturingssysteem voor desktopcomputers.
+Als u de apparaatcode wilt verkennen en wijzigen, kunt u de code downloaden van GitHub. Als u van plan bent om de code te wijzigen, moet u deze instructies volgen om [de ontwikkelings omgeving](https://microsoft.github.io/azure-iot-developer-kit/docs/get-started/#step-5-prepare-the-development-environment) voor te bereiden voor het besturings systeem van uw bureau blad.
 
-Als u wilt de broncode downloaden, voer de volgende opdracht op uw computer:
+Als u de bron code wilt downloaden, voert u de volgende opdracht uit op de computer van het bureau blad:
 
 ```cmd/sh
 git clone https://github.com/Azure/iot-central-firmware
 ```
 
-De vorige opdracht downloadt de broncode naar een map met de naam `iot-central-firmware`.
+Met de vorige opdracht wordt de bron code gedownload naar een `iot-central-firmware`map met de naam.
 
 > [!NOTE]
-> Als **git** is niet geïnstalleerd in uw ontwikkelingsomgeving, u kunt dit ook downloaden via [ https://git-scm.com/download ](https://git-scm.com/download).
+> Als **Git** niet is geïnstalleerd in uw ontwikkel omgeving, kunt u het downloaden van [https://git-scm.com/download](https://git-scm.com/download).
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Visual Studio Code gebruiken om te openen de `MXCHIP/mxchip_advanced` map in de `iot-central-firmware` map:
+Gebruik Visual Studio code om de `MXCHIP/mxchip_advanced` map in de `iot-central-firmware` map te openen:
 
 ![Visual Studio Code](media/howto-connect-devkit/vscodeview.png)
 
-Als u wilt zien hoe de telemetrie wordt verzonden naar de toepassing Azure IoT Central, opent u de **telemetry.cpp** -bestand in de `src` map:
+Als u wilt zien hoe de telemetrie wordt verzonden naar de Azure IOT Central-toepassing, opent u het bestand telemetrie **. cpp** in de `src` map:
 
-- De functie `TelemetryController::buildTelemetryPayload` wordt gemaakt van de nettolading van de JSON-telemetrie met behulp van de gegevens van de sensoren op het apparaat.
+- De functie `TelemetryController::buildTelemetryPayload` maakt de JSON-telemetrie-nettolading met gegevens van de Sens oren op het apparaat.
 
-- De functie `TelemetryController::sendTelemetryPayload` aanroepen `sendTelemetry` in de **AzureIOTClient.cpp** de JSON-nettolading verzenden naar de IoT-Hub met uw Azure IoT Central-toepassing gebruikt.
+- De functie `TelemetryController::sendTelemetryPayload` roept `sendTelemetry` het **AzureIOTClient. cpp** om de JSON-Payload te verzenden naar de IOT hub uw Azure IOT Central-toepassing gebruikt.
 
-Als u wilt zien hoe eigenschapswaarden worden gerapporteerd aan de toepassing Azure IoT Central, opent u de **telemetry.cpp** -bestand in de `src` map:
+Als u wilt zien hoe eigenschaps waarden worden gerapporteerd aan de Azure IOT Central-toepassing, opent u het bestand telemetrie **. cpp** in de `src` map:
 
-- De functie `TelemetryController::loop` verzendt de **locatie** gerapporteerde eigenschap ongeveer elke 30 seconden. Hierbij de `sendReportedProperty` werken in de **AzureIOTClient.cpp** bronbestand.
+- De functie `TelemetryController::loop` verzendt de **locatie** gemelde eigenschap ongeveer elke 30 seconden. De `sendReportedProperty` functie wordt gebruikt in het bron bestand **AzureIOTClient. cpp** .
 
-- De functie `TelemetryController::loop` verzendt de **dieNumber** eigenschap gerapporteerd wanneer het apparaat versnellingsmeter een Dubbeltik detecteert. Hierbij de `sendReportedProperty` werken in de **AzureIOTClient.cpp** bronbestand.
+- De functie `TelemetryController::loop` verzendt de gerapporteerde eigenschap **dieNumber** wanneer de versnellings meter van het apparaat dubbel tikken detecteert. De `sendReportedProperty` functie wordt gebruikt in het bron bestand **AzureIOTClient. cpp** .
 
-Als u wilt zien hoe het apparaat reageert op opdrachten met de naam van de toepassing IoT Central, opent u de **registeredMethodHandlers.cpp** -bestand in de `src` map:
+Als u wilt zien hoe het apparaat reageert op opdrachten die worden aangeroepen vanuit de IOT Central toepassing, opent u het bestand `src` **registeredMethodHandlers. cpp** in de map:
 
-- De **dmEcho** functie is de handler voor de **echo** opdracht. Hier ziet u de **displayedValue** wordt ingediend in de nettolading van de op het scherm van het apparaat.
+- De functie **dmEcho** is de handler voor de **echo** opdracht. Hierin wordt de **displayedValue** vermeld die is opgeslagen in de payload op het scherm van het apparaat.
 
-- De **dmCountdown** functie is de handler voor de **aftelling** opdracht. Het wordt de kleur van LED van het apparaat en maakt gebruik van een gerapporteerde eigenschap voor het verzenden van de afteltijd terug naar de IoT Central-toepassing. De gerapporteerde eigenschap heeft dezelfde naam als de opdracht. De functie maakt gebruik van de `sendReportedProperty` werken in de **AzureIOTClient.cpp** bronbestand.
+- De functie **dmCountdown** is de handler voor de aftellings opdracht. Hiermee wordt de kleur van de LED van het apparaat gewijzigd en wordt een gerapporteerde eigenschap gebruikt om de aftellings waarde terug te sturen naar de IoT Central toepassing. De gerapporteerde eigenschap heeft dezelfde naam als de opdracht. De functie maakt gebruik `sendReportedProperty` van de functie in het bron bestand **AzureIOTClient. cpp** .
 
-De code in de **AzureIOTClient.cpp** bronbestand gebruikmaakt van functies van de [Microsoft Azure IoT SDK's en bibliotheken voor C](https://github.com/Azure/azure-iot-sdk-c) om te communiceren met IoT Hub.
+De code in het bron bestand **AzureIOTClient. cpp** maakt gebruik van functies uit de [Microsoft Azure IOT sdk's en bibliotheken voor C](https://github.com/Azure/azure-iot-sdk-c) om met IOT hub te communiceren.
 
-Zie voor meer informatie over het wijzigen, bouwen en de voorbeeldcode uploaden naar uw apparaat, de **readme.md** -bestand in de `MXCHIP/mxchip_advanced` map.
+Zie het **README.MD** -bestand in de `MXCHIP/mxchip_advanced` map voor meer informatie over het wijzigen, bouwen en uploaden van de voorbeeld code naar uw apparaat.
 
-## <a name="mxchip-device-template-details"></a>MXChip sjabloon Apparaatdetails
+## <a name="mxchip-device-template-details"></a>Details van MXChip-Apparaatbeheer
 
-Een toepassing gemaakt op basis van de sjabloon van de toepassing Devkits voorbeeld bevat een sjabloon voor het apparaat van MXChip met de volgende kenmerken:
+Een toepassing die is gemaakt op basis van de voor beeld-Devkits-toepassings sjabloon bevat een MXChip-apparaatprofiel met de volgende kenmerken:
 
 ### <a name="measurements"></a>Metingen
 
@@ -201,16 +203,16 @@ Een toepassing gemaakt op basis van de sjabloon van de toepassing Devkits voorbe
 | magnetometerY  | mgauss | -1000   | 1000    | 0              |
 | magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
-| accelerometerY | mg     | -2000   | 2000    | 0              |
+| versnellings meter | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>States 
-| Name          | `Display name`   | NORMAAL | LET OP | GEVAAR | 
+| Name          | `Display name`   | OPMAAKPROFIEL | VOORZICHTIG | GEVAAR | 
 | ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Apparaatstatus   | Groen  | Orange  | Rood    | 
+| DeviceState   | Apparaatstatus   | Groen  | Oranje  | Rood    | 
 
 #### <a name="events"></a>Events 
 | Name             | `Display name`      | 
@@ -223,31 +225,31 @@ Numerieke instellingen
 
 | `Display name` | Veldnaam | Eenheden | Aantal decimalen | Minimum | Maximum | Oorspronkelijk |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| Voltage      | setVoltage | Voltage | 0              | 0       | 240     | 0       |
-| Huidige      | setCurrent | Stroom  | 0              | 0       | 100     | 0       |
+| Verbruik      | setVoltage | Volt | 0              | 0       | 240     | 0       |
+| Huidige      | setCurrent | Amp  | 0              | 0       | 100     | 0       |
 | Snelheid van ventilator    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-Instellingen voor in-/ uitschakelen
+Instellingen in-/uitschakelen
 
-| `Display name` | Veldnaam | Van tekst | Uit tekst | Oorspronkelijk |
+| `Display name` | Veldnaam | In tekst | Uit tekst | Oorspronkelijk |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | AAN      | UIT      | Uit     |
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
-| Type            | `Display name` | Veldnaam | Gegevenstype |
+| type            | `Display name` | Veldnaam | Gegevenstype |
 | --------------- | ------------ | ---------- | --------- |
-| Apparaateigenschappen | Aantal die   | dieNumber  | getal    |
-| Apparaateigenschappen | Locatie van het apparaat   | location  | location    |
-| Text            | Geproduceerd In     | manufacturedIn   | N/A       |
+| Eigenschap apparaat | Aantal dobbelten   | dieNumber  | nummer    |
+| Eigenschap apparaat | Locatie van apparaat   | location  | location    |
+| Text            | Gefabriceerd in     | manufacturedIn   | N/A       |
 
 ### <a name="commands"></a>Opdrachten
 
-| `Display name` | Veldnaam | Retourtype | Weergavenaam invoerveld | Invoer veldnaam | Invoer veldtype |
+| `Display name` | Veldnaam | Retour type | Weergave naam van invoer veld | Naam van invoer veld | Type invoer veld |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| Echo         | echo       | text        | waarde weergeven         | displayedValue   | text             |
-| Aftelling    | Aftelling  | getal      | Geteld vanaf               | countFrom        | getal           |
+| Echo         | echo       | text        | weer te geven waarde         | displayedValue   | text             |
+| Geteld    | geteld  | nummer      | Aantal van               | countFrom        | nummer           |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u hebt geleerd hoe u een MXChip IoT DevKit verbinden met uw Azure IoT Central-toepassing, de voorgestelde volgende stap is te leren hoe u [instellen van een sjabloon aangepast apparaat](howto-set-up-template.md) voor uw eigen IoT-apparaat.
+Nu u hebt geleerd hoe u een MXChip IoT DevKit kunt verbinden met uw Azure IoT Central-toepassing, is de voorgestelde volgende stap informatie over het [instellen van een aangepaste apparaatprofiel](howto-set-up-template.md) voor uw eigen IOT-apparaat.

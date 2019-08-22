@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a5ced51eabe708dc7883fc91e5b6fa67f9211381
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b95affd08c989a9d1cdee53c0a4e6df16af106
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559639"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892038"
 ---
 # <a name="what-is-custom-speech"></a>Wat is Custom Speech?
 
-[Custom speech](https://aka.ms/custom-speech) is een set online-hulpprogram ma's waarmee u de nauw keurigheid van de spraak naar tekst van micro soft kunt evalueren en verbeteren voor uw toepassingen, hulpprogram ma's en producten. Alles wat u nodig hebt om aan de slag te gaan zijn een aantal test audio bestanden. Volg de onderstaande koppelingen om aan de slag te gaan met het maken van een aangepaste spraak-naar-tekst-ervaring.
+[Custom speech](https://aka.ms/customspeech) is een set online-hulpprogram ma's waarmee u de nauw keurigheid van de spraak naar tekst van micro soft kunt evalueren en verbeteren voor uw toepassingen, hulpprogram ma's en producten. Alles wat u nodig hebt om aan de slag te gaan zijn een aantal test audio bestanden. Volg de onderstaande koppelingen om aan de slag te gaan met het maken van een aangepaste spraak-naar-tekst-ervaring.
 
 ## <a name="whats-in-custom-speech"></a>Wat is er in Custom Speech?
 

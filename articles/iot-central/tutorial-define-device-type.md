@@ -9,14 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 54884728533aeff0472ed99660be00478227fbcd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056778"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875783"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Zelfstudie: Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Deze zelfstudie laat zien hoe u als bouwer een apparaatsjabloon kunt gebruiken om een nieuw apparaattype te definiëren in uw Microsoft Azure IoT Central-toepassing. Een apparaatsjabloon definieert de telemetrie, status, eigenschappen en instellingen voor uw apparaattype.
 
@@ -53,7 +55,7 @@ U hebt een Azure IoT Central-toepassing nodig om deze zelfstudie te voltooien. A
 
     ![Voer uw organisatieaccount in](./media/tutorial-define-device-type/sign-in.png)
 
-3. Als u wilt beginnen met het maken van een nieuwe Azure IoT Central-toepassing, selecteert u **nieuwe toepassing**:
+3. Selecteer **nieuwe toepassing**om te beginnen met het maken van een nieuwe Azure IOT Central-toepassing:
 
     ![Pagina Toepassingsbeheer van Azure IoT Central](./media/tutorial-define-device-type/iotcentralhome.png)
 
@@ -73,11 +75,11 @@ U hebt een Azure IoT Central-toepassing nodig om deze zelfstudie te voltooien. A
 
      Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template"></a>Een apparaat-sjabloon maken
+## <a name="create-a-device-template"></a>Een sjabloon voor een apparaat maken
 
 Als bouwer kunt u de apparaatsjablonen in uw toepassing maken en bewerken. Wanneer u een apparaatsjabloon maakt, genereert Azure IoT Central een gesimuleerd apparaat op basis van de sjabloon. Het gesimuleerde apparaat genereert telemetrie waarmee u het gedrag van uw toepassing kunt testen voordat u een echt apparaat aansluit.
 
-Als u een nieuwe apparaatsjabloon aan uw toepassing wilt toevoegen, gaat u naar de pagina **Apparaatsjablonen**. Om te doen, dus selecteer de **Apparaatsjablonen** in het navigatiemenu links.
+Als u een nieuwe apparaatsjabloon aan uw toepassing wilt toevoegen, gaat u naar de pagina **Apparaatsjablonen**. Hiertoe selecteert u de **Apparaatinstellingen** in het navigatie menu aan de linkerkant.
 
 ![De pagina Apparaatsjablonen](./media/tutorial-define-device-type/devicetemplates.png)
 
@@ -85,15 +87,15 @@ Als u een nieuwe apparaatsjabloon aan uw toepassing wilt toevoegen, gaat u naar 
 
 De volgende stappen laten zien hoe u een nieuwe apparaatsjabloon, **Verbonden airconditioner**, maakt voor apparaten die temperatuurtelemetrie naar uw toepassing verzenden:
 
-1. Op de **Apparaatsjablonen** weergeeft, schakelt **+ nieuw**:
+1. Selecteer op de pagina **Apparaatinstellingen** de optie **+ Nieuw**:
 
     ![De pagina Apparaatsjablonen, Apparaatsjabloon maken](./media/tutorial-define-device-type/newtemplate.png)
 
-2. De pagina ziet u de sjablonen die u kunt kiezen uit.
+2. Op de pagina ziet u de sjablonen waaruit u kunt kiezen.
 
-    ![Bibliotheek voor sjablonen van apparaat](./media/tutorial-define-device-type/devicetemplatelibrary.png)
+    ![Bibliotheek met Apparaatbeheer](./media/tutorial-define-device-type/devicetemplatelibrary.png)
 
-3. Selecteer de **aangepaste**, voer **airconditioner verbonden** als de naam van uw apparaat sjabloon en selecteer vervolgens **maken**. U kunt ook een afbeelding van uw apparaat uploaden die zichtbaar is voor operators in de apparatenverkenner:
+3. Selecteer de **aangepaste**optie **aangesloten lucht voorwaarde** als de naam van de sjabloon voor het apparaat en selecteer vervolgens **maken**. U kunt ook een afbeelding van uw apparaat uploaden die zichtbaar is voor operators in de apparatenverkenner:
 
     ![Aangepast apparaat](./media/tutorial-define-device-type/createcustomdevice.png)
 
@@ -114,9 +116,9 @@ De volgende stappen laten zien hoe u een nieuwe apparaatsjabloon, **Verbonden ai
      ![Airconditionermetingen](./media/tutorial-define-device-type/airconmeasurements.png)
 
      > [!NOTE]
-     > Als u de naam van de sjabloon van het apparaat, selecteert u de naam van de sjabloon aan de bovenkant van de pagina.
+     > Als u de naam van de sjabloon wilt wijzigen, selecteert u de naam van de sjabloon boven aan de pagina.
 
-5. Als u wilt toevoegen de meting van de telemetrie temperatuur, selecteer **+ nieuwe meting**. Kies vervolgens **Telemetrie** als het type meting:
+5. Als u de meting van de telemetrische Tempe ratuur wilt toevoegen, selecteert u **+ nieuwe meting**. Kies vervolgens **Telemetrie** als het type meting:
 
     ![Metingen aangesloten airconditioner](./media/tutorial-define-device-type/airconmeasurementsnew.png)
 
@@ -134,19 +136,19 @@ De volgende stappen laten zien hoe u een nieuwe apparaatsjabloon, **Verbonden ai
      | -------------------- | -----------   |
      | Weergavenaam         | Temperatuur   |
      | Veldnaam           | temperatuur   |
-     | Eenheden                | F             |
+     | Eenheden                | V             |
      | Min.                  | 60            |
      | Max.                  | 110           |
      | Aantal decimalen       | 0             |
 
-     U kunt ook een kleur kiezen voor de telemetrieweergave. Selecteren om op te slaan in de definitie van de telemetrie, **opslaan**:
+     U kunt ook een kleur kiezen voor de telemetrieweergave. Selecteer **Opslaan**om de definitie van de telemetrie op te slaan:
 
      ![Temperatuursimulatie configureren](./media/tutorial-define-device-type/temperaturesimulation.png)
 
 7. Na enige tijd ziet u op het tabblad **Metingen** een grafiek van de temperatuurtelemetrie van uw gesimuleerde aangesloten airconditioningapparaat. Gebruik de besturingselementen om de zichtbaarheid en aggregatie te beheren of de telemetriedefinitie te bewerken:
  
     > [!NOTE]
-    > Voor telemetrie, **gemiddelde** als het standaard aggregatietype is ingesteld. 
+    > Voor telemetrie wordt **gemiddeld** ingesteld als de standaard aggregatie. 
 
     ![Temperatuursimulatie bekijken](./media/tutorial-define-device-type/viewsimulation.png)
 
@@ -158,7 +160,7 @@ De volgende stappen laten zien hoe u een nieuwe apparaatsjabloon, **Verbonden ai
 
 Gebruik gebeurtenissen voor het definiëren van point-in-time-gegevens die door het apparaat verzonden wanneer er een gebeurtenis plaatsvindt, zoals een fout of een storing van een onderdeel. Azure IoT Central kan apparaatgebeurtenissen simuleren, zodat u het gedrag van uw toepassing kunt testen voordat u een echt apparaat aansluit. U definieert gebeurtenismetingen voor uw apparaatsjabloon in de weergave **Metingen**.
 
-1. Om toe te voegen de **ventilator Motor fout** gebeurtenis meting, selecteer **+ nieuwe meting**. Kies vervolgens **Gebeurtenis** als het type meting:
+1. Selecteer **+ nieuwe meting**om de meting van de fout gebeurtenis van de **ventilator motor** toe te voegen. Kies vervolgens **Gebeurtenis** als het type meting:
 
     ![Metingen aangesloten airconditioner](./media/tutorial-define-device-type/eventnew.png)
 
@@ -178,7 +180,7 @@ Gebruik gebeurtenissen voor het definiëren van point-in-time-gegevens die door 
      | Veldnaam           | storingventilatormotor       |
      | Severity             | Fout             |
 
-     Selecteren om op te slaan in de gebeurtenisdefinitie van de, **opslaan**:
+     Selecteer **Opslaan**om de gebeurtenis definitie op te slaan:
 
      ![Gebeurtenismeting configureren](./media/tutorial-define-device-type/eventconfiguration.png)
 
@@ -186,7 +188,7 @@ Gebruik gebeurtenissen voor het definiëren van point-in-time-gegevens die door 
 
     ![Gebeurtenissimulatie bekijken](./media/tutorial-define-device-type/eventview.png)
 
-1. Selecteer de gebeurtenis in de grafiek voor aanvullende informatie over de gebeurtenis:
+1. Als u meer informatie over de gebeurtenis wilt weer geven, selecteert u de gebeurtenis in de grafiek:
 
     ![Gebeurtenisdetails bekijken](./media/tutorial-define-device-type/eventviewdetail.png)
 
@@ -194,7 +196,7 @@ Gebruik gebeurtenissen voor het definiëren van point-in-time-gegevens die door 
 
 U kunt status gebruiken om de status van het apparaat of een onderdeel ervan in de loop van de tijd te definiëren en te visualiseren. Azure IoT Central kan een apparaatstatus simuleren, zodat u het gedrag van uw toepassing kunt testen voordat u een echt apparaat aansluit. U definieert statusmetingen voor uw apparaattype in de weergave **Metingen**.
 
-1. Om toe te voegen een **ventilator modus** meting staat, selecteer **+ nieuwe meting**. Kies vervolgens **Status** als het type meting:
+1. Selecteer **+ nieuwe meting**om een status meting voor de **ventilator modus** toe te voegen. Kies vervolgens **Status** als het type meting:
 
     ![Statusmetingen aangesloten airconditioner](./media/tutorial-define-device-type/statenew.png)
 
@@ -219,7 +221,7 @@ U kunt status gebruiken om de status van het apparaat of een onderdeel ervan in 
      | Value                | 0                 |
      | Weergavelabel        | Gestopt           |
 
-     Selecteren om op te slaan in de definitie van de meting staat, **opslaan**:
+     Selecteer **Opslaan**om de definitie van de status meting op te slaan:
 
      ![Statusmeting configureren](./media/tutorial-define-device-type/stateconfiguration.png)
 
@@ -227,7 +229,7 @@ U kunt status gebruiken om de status van het apparaat of een onderdeel ervan in 
 
     ![Statussimulatie bekijken](./media/tutorial-define-device-type/stateview.png)
 
-4. Als er binnen een korte tijdsduur te veel gegevenspunten door het apparaat worden verzonden, wordt de statusmeting weergegeven met een andere visualisatie. Selecteer de grafiek om te zien van dat alle gegevenspunten binnen deze periode worden weergegeven in chronologische volgorde. U kunt ook het tijdsbereik verkleinen, zodat de metingen gedetailleerder worden weergegeven.
+4. Als er binnen een korte tijdsduur te veel gegevenspunten door het apparaat worden verzonden, wordt de statusmeting weergegeven met een andere visualisatie. Selecteer de grafiek om alle gegevens punten binnen die tijds periode weer te geven in chronologische volg orde. U kunt ook het tijdsbereik verkleinen, zodat de metingen gedetailleerder worden weergegeven.
 
 ## <a name="settings-properties-and-commands"></a>Instellingen, eigenschappen en opdrachten
 
@@ -251,7 +253,7 @@ U gebruikt *instellingen* om een operator in staat te stellen configuratiegegeve
 
 1. Ga naar het tabblad **Instellingen** van uw apparaatsjabloon **Aangesloten airconditioner**.
 
-2. U kunt de instellingen maken van verschillende typen, zoals getallen of tekst. Selecteer **nummer** om toe te voegen van de instelling van een nummer op uw apparaat.
+2. U kunt de instellingen maken van verschillende typen, zoals getallen of tekst. Selecteer **getal** om een instelling voor een getal toe te voegen aan uw apparaat.
 
 3. Gebruik de informatie in de volgende tabel om uw instelling **Temperatuur instellen** te configureren:
 
@@ -259,14 +261,14 @@ U gebruikt *instellingen* om een operator in staat te stellen configuratiegegeve
     | -------------------- | -----------     |
     | Weergavenaam         | Temperatuur instellen |
     | Veldnaam           | temperatuurInstellen  |
-    | Meeteenheid      | F               |
-    | Aantal decimalen       | 1               |
-    | Minimumwaarde        | 20              |
-    | Maximumwaarde        | 200             |
-    | Initiële waarde        | 80              |
+    | Maateenheid      | V               |
+    | Decimaalposities       | 1               |
+    | Minimale waarde        | 20              |
+    | Maximale waarde        | 200             |
+    | Beginwaarde        | 80              |
     | Description          | De doeltemperatuur voor de airconditioner instellen |
 
-    Selecteer vervolgens **opslaan**:
+    Selecteer vervolgens **Opslaan**:
 
     ![Stel instelling Temperatuur instellen configureren](./media/tutorial-define-device-type/configuresetting.png)
 
@@ -287,9 +289,9 @@ U gebruikt *toepassingseigenschappen* om gegevens over uw apparaat in de toepass
 
     | Veld                | Value                |
     | -------------------- | -------------------- |
-    | Weergavenaam         | Locatie             |
+    | Weergavenaam         | Location             |
     | Veldnaam           | location             |
-    | Initiële waarde        | Seattle, WA          |
+    | Beginwaarde        | Seattle, WA          |
     | Description          | Locatie apparaat      |
 
     Laat andere velden op de standaardwaarde staan.
@@ -306,7 +308,7 @@ U gebruikt *toepassingseigenschappen* om gegevens over uw apparaat in de toepass
     | -------------------- | ----------------------- |
     | Weergavenaam         | Laatste servicedatum       |
     | Veldnaam           | Servicedatum             |
-    | Initiële waarde        | 1/1/2019                |
+    | Beginwaarde        | 1/1/2019                |
     | Description          | Laatste servicebeurt           |
 
     ![De apparaateigenschappen configureren](./media/tutorial-define-device-type/configureproperties2.png)
@@ -354,7 +356,7 @@ U kunt _opdrachten_ gebruiken om een operator in te schakelen om opdrachten rech
 
 1. Ga naar het tabblad **Opdrachten** van de apparaatsjabloon **Aangesloten airconditioner** om de sjabloon te bewerken.
 
-1. Selecteer **+ nieuwe opdracht** een opdracht toevoegen aan uw apparaat en beginnen met het configureren van uw nieuwe opdracht.
+1. Selecteer **+ nieuwe opdracht** om een opdracht aan uw apparaat toe te voegen en te beginnen met het configureren van de nieuwe opdracht.
 
 1. Gebruik de informatie in de volgende tabel om de nieuwe opdracht te configureren:
 
@@ -366,7 +368,7 @@ U kunt _opdrachten_ gebruiken om een operator in te schakelen om opdrachten rech
     | Weergavetype         | text            |
     | Description          | Apparaatopdracht  |  
 
-    U kunt aanvullende invoer aan de opdracht toevoegen door te selecteren **+** voor **invoer velden**.
+    U kunt extra invoer waarden toevoegen aan de opdracht door **+** te selecteren voor **invoer velden**.
 
     ![Toevoegen van een instelling voorbereiden](./media/tutorial-define-device-type/commandsecho1.png)
 
@@ -380,29 +382,29 @@ Nu u uw apparaatsjabloon **Aangesloten airconditioner** hebt gedefinieerd kunt u
 
 1. Ga naar het tabblad **Dashboard** van uw apparaatsjabloon **Aangesloten airconditioner**.
 
-1. Selecteer **lijndiagram** om toe te voegen van het onderdeel naar de **Dashboard**.
+1. Selecteer **lijn diagram** om het onderdeel aan het **dash board**toe te voegen.
 
 1. Configureer het onderdeel **​​Lijndiagram** met behulp van de informatie in de volgende tabel:
 
     | Instelling      | Value       |
     | ------------ | ----------- |
     | Titel        | Temperatuur |
-    | Tijdsbereik   | Afgelopen 30 minuten |
-    | Metingen     | Temperatuur (Selecteer **zichtbaarheid** naast **temperatuur**) |
+    | Tijdsbereik   | De afgelopen 30 minuten |
+    | Metingen     | Tempe ratuur (Selecteer **zicht baarheid** naast **Tempe ratuur**) |
 
     ![Lijndiagraminstellingen](./media/tutorial-define-device-type/linechartsettings.png)
 
     Selecteer vervolgens **Opslaan**.
 
-1. Selecteer de **gebeurtenissengeschiedenis** onderdeel met behulp van de informatie in de volgende tabel:
+1. Selecteer het onderdeel **gebeurtenis geschiedenis** met behulp van de informatie in de volgende tabel:
 
     | Instelling      | Value       |
     | ------------ | ----------- |
     | Titel        | Gebeurtenissen ventilatormotor |
-    | Tijdsbereik   | Afgelopen 30 minuten |
-    | Metingen     | Pas de Motor fout (Selecteer **zichtbaarheid** naast **ventilator Motor fout**) |
+    | Tijdsbereik   | De afgelopen 30 minuten |
+    | Metingen     | Fout in ventilator motor (Selecteer **zicht baarheid** naast **ventilator motor fout**) |
 
-    ![Instellingen van gebeurtenis](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
+    ![Instellingen voor gebeurtenis grafieken](./media/tutorial-define-device-type/dashboardeventchartsetting.png)
 
     Selecteer vervolgens **Opslaan**.
 
@@ -411,14 +413,14 @@ Nu u uw apparaatsjabloon **Aangesloten airconditioner** hebt gedefinieerd kunt u
     | Instelling      | Value       |
     | ------------ | ----------- |
     | Titel        | Ventilatormodus |
-    | Tijdsbereik   | Afgelopen 30 minuten |
-    | Metingen | Pas de modus (Selecteer **zichtbaarheid** naast **ventilator modus**) |
+    | Tijdsbereik   | De afgelopen 30 minuten |
+    | Metingen | Ventilator modus (Selecteer **zicht baarheid** naast **ventilator modus**) |
 
     ![Lijndiagraminstellingen](./media/tutorial-define-device-type/dashboardstatechartsetting.png)
 
     Selecteer vervolgens **Opslaan**.
 
-1. Kies **Instellingen en eigenschappen**  om de apparaatinstellingen en -eigenschappen aan het dashboard toe te voegen. Selecteer **toevoegen/verwijderen** om toe te voegen van de instellingen of eigenschappen die u graag zou willen zien in het dashboard.
+1. Kies **Instellingen en eigenschappen**  om de apparaatinstellingen en -eigenschappen aan het dashboard toe te voegen. Selecteer **toevoegen/verwijderen** om de instellingen of eigenschappen toe te voegen die u wilt zien in het dash board.
 
 1. Configureer het onderdeel **Instellingen en eigenschappen** met behulp van de informatie in de volgende tabel:
 

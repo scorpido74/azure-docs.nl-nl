@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb35cc99164cc8da047e8309d63bf7909abf4815
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 50297147d371898c35259bf4be59337eaa716579
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846032"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877869"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele SQL Server 2017-machine voor Windows maken in Azure Portal
 
@@ -42,16 +42,15 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw account.
 
-1. Selecteer in Azure Portal **Een resource maken**. 
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
+1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven** te selecteren op de tegel **virtuele SQL-machines** .
+1. Selecteer de installatiekopie met de naam **Gratis licentie voor SQL Server: SQL Server 2017 Developer op Windows Server 2016** -installatie kopie in de vervolg keuzelijst.
 
-1. Typ `SQL Server 2017 Developer on Windows Server 2016`in het zoek veld en druk op ENTER. Vouw de optie SQL Server 2017 voor Windows Server 2016 uit. 
-
-1. Selecteer de installatiekopie met de naam **Gratis licentie voor SQL Server: SQL Server 2017 Developer op Windows Server 2016**. In deze zelfstudie maken we gebruik van de Developer Edition omdat deze een complete versie van de SQL Server is die gratis gebruikt kan worden voor ontwikkelings-/testdoeleinden. U betaalt alleen voor de kosten van het uitvoeren van de virtuele machine. Raadpleeg [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Prijsrichtlijnen voor virtuele SQL Server-machines in Azure) voor uitgebreide prijsinformatie.
-
-   ![Nieuw zoekvenster](./media/quickstart-sql-vm-create-portal/newsearch.png)
-
+   ![Nieuw zoekvenster](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
 1. Selecteer **Maken**.
+
+   ![Nieuw zoekvenster](./media/quickstart-sql-vm-create-portal/create-sql-2017-vm-image.png)
 
 ## <a id="configure"></a> Algemene gegevens opgeven
 
@@ -68,11 +67,11 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
     1. Selecteer_in de lijst met **installatie kopieën** gratis SQL Server licentie: SQL Server 2017-ontwikkelaar op Windows Server_2016. 
     1. Kies voor het wijzigen van de **grootte** voor de **grootte** van de virtuele machine en selecteer de **a2 Basic** -aanbieding. Zorg ervoor dat u uw resources opschoont nadat u klaar bent met deze om te voor komen dat er onverwachte kosten in rekening worden gebracht. 
 
-   ![Exemplaar Details](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+   ![Exemplaardetails](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 1. Geef onder **Administrator-account**een gebruikers naam op, zoals _azureuser_ en een wacht woord. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-   ![Administrator-account](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
+   ![Beheerdersaccount](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
 1. Onder **Binnenkomende poort regels**kiest u **geselecteerde poorten toestaan** en selecteert u vervolgens **RDP (3389)** in de vervolg keuzelijst. 
 

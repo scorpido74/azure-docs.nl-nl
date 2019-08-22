@@ -1,8 +1,8 @@
 ---
-title: Met de syntaxis 'eenvoudige' search - Azure Search-queryvoorbeelden
-description: Voorbeelden van eenvoudige query voor zoeken in volledige tekst, filter, zoeken, geo zoeken, facetzoekopdrachten en andere queryreeksen gebruikt om te vragen van een Azure Search-index.
+title: Query voorbeelden met de eenvoudige Zoek syntaxis-Azure Search
+description: Eenvoudige query voorbeelden voor zoeken in volledige tekst, filteren op filters, geo-zoek acties, facet zoeken en andere query teken reeksen die worden gebruikt om een Azure Search index op te vragen.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
@@ -10,74 +10,74 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 6b7451371fe1562a6763643cd90e5646bd255018
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653526"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647623"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Met behulp van de zoeksyntaxis 'eenvoudige' in Azure Search-queryvoorbeelden
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Query voorbeelden met de eenvoudige Zoek syntaxis in Azure Search
 
-[Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) roept de queryparser standaard voor het uitvoeren van volledige-tekstquery's op basis van een Azure Search-index. De eenvoudige query analyzer is snel en veelvoorkomende scenario's in Azure Search, met inbegrip van zoeken in volledige tekst, gefilterd en meervoudige zoeken en geografische locaties zoeken verwerkt. In dit artikel wordt stapsgewijs door voorbeelden demonstreren querybewerkingen beschikbaar wanneer u de eenvoudige syntaxis.
+Met de [eenvoudige query syntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wordt de standaard query-parser aangeroepen voor het uitvoeren van zoek query's in volledige tekst voor een Azure search index. De eenvoudige query analyzer is snel en behandelt veelvoorkomende scenario's in Azure Search, inclusief zoeken in volledige tekst, gefilterde en facetten zoeken en geozoek opdrachten. In dit artikel wordt stapsgewijs uitgelegd hoe query bewerkingen worden weer gegeven die beschikbaar zijn bij het gebruik van de eenvoudige syntaxis.
 
-De alternatieve query-syntaxis is [volledige Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), zoals ondersteuning van meer complexe query-structuren, fuzzy en zoeken met jokertekens, wat extra tijd voor het verwerken van kan duren. Zie voor meer informatie en voorbeelden demonstreren van de volledige syntaxis [voorbeelden van Lucene-querysyntaxis](search-query-lucene-examples.md).
+De alternatieve query syntaxis is [volledige lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), waardoor complexere query structuren worden ondersteund, zoals fuzzy en zoek opdrachten met Joker tekens. Dit kan meer tijd kosten om te verwerken. Zie voor meer informatie en voor beelden met de volledige syntaxis een [voor beeld van de Lucene-syntaxis query](search-query-lucene-examples.md).
 
-## <a name="formulate-requests-in-postman"></a>Aanvragen in Postman formuleren
+## <a name="formulate-requests-in-postman"></a>Aanvragen formuleren in postman
 
-De volgende voorbeelden gebruikmaken van een NYC-Jobs search-index die bestaat uit functies die beschikbaar zijn op basis van een gegevensset die is geleverd door de [stad New York OpenData](https://nycopendata.socrata.com/) initiatief. Deze gegevens moet niet worden beschouwd als huidige of voltooid. De index is een sandboxservice van Microsoft, wat betekent dat u hoeft niet een Azure-abonnement of een Azure Search om te proberen deze query's.
+De volgende voor beelden maken gebruik van een NYC-zoek index voor taken die bestaat uit taken die beschikbaar zijn op basis van een gegevensset die wordt verschaft door de [stad New York open data](https://nycopendata.socrata.com/) Initiative. Deze gegevens mogen niet als actueel of volledig worden beschouwd. De index bevindt zich op een sandbox-service van micro soft. Dit betekent dat u geen Azure-abonnement of Azure Search nodig hebt om deze query's uit te proberen.
 
-Wat u moet is Postman of een gelijkwaardig hulpprogramma voor het uitgeven van HTTP-aanvraag voor ontvangen. Zie voor meer informatie, [verkennen met REST-clients](search-get-started-postman.md).
+Wat u nodig hebt, is postman of een gelijkwaardig hulp programma voor het uitgeven van een HTTP-aanvraag op GET. Zie [verkennen met rest-clients](search-get-started-postman.md)voor meer informatie.
 
-### <a name="set-the-request-header"></a>De aanvraagheader instellen
+### <a name="set-the-request-header"></a>De aanvraag header instellen
 
-1. Stel in de aanvraagheader **Content-Type** naar `application/json`.
+1. Stel in de aanvraag header het **inhouds type** in op `application/json`.
 
-2. Voeg een **api-sleutel**, en stel deze in op deze tekenreeks: `252044BE3886FE4A8E3BAA4F595114BB`. Dit is de querysleutel van een voor de sandbox-search-service die als host fungeert voor de index NYC-Jobs.
+2. Voeg een **API-sleutel**toe en stel deze in op deze teken `252044BE3886FE4A8E3BAA4F595114BB`reeks:. Dit is een query sleutel voor de sandbox-zoek service die als host fungeert voor de index van de NYC-taken.
 
-Nadat u de aanvraagheader opgeeft, u deze opnieuw kunt gebruiken voor alle van de query's in dit artikel wordt alleen simpelweg de **search =** tekenreeks. 
+Nadat u de aanvraag header hebt opgegeven, kunt u deze opnieuw gebruiken voor alle query's in dit artikel, zodat alleen de teken reeks **Search =** wordt uitgewisseld. 
 
   ![De aanvraagheader voor Postman](media/search-query-lucene-examples/postman-header.png)
 
 ### <a name="set-the-request-url"></a>De aanvraag-URL instellen
 
-De aanvraag is een GET-opdracht die is gekoppeld aan een URL met de tekenreeks die Azure Search-eindpunt en zoeken.
+Aanvraag is een GET-opdracht die wordt gekoppeld aan een URL met het Azure Search-eind punt en de zoek teken reeks.
 
   ![De aanvraagheader voor Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
-Samenstelling van de URL heeft de volgende elementen:
+URL-samen stelling heeft de volgende elementen:
 
-+ **`https://azs-playground.search.windows.net/`** een sandbox-zoekservice is onderhouden door het ontwikkelingsteam Azure Search. 
-+ **`indexes/nycjobs/`** is de index NYC-Jobs in de verzameling indexen van de betreffende service. De servicenaam en de index zijn vereist voor de aanvraag.
-+ **`docs`** de verzameling documenten is die alle doorzoekbare inhoud bevat. De query api-sleutel opgegeven in de aanvraagheader werkt alleen op leesbewerkingen die gericht is op de verzameling documenten.
-+ **`api-version=2019-05-06`** Hiermee stelt u de api-versie, is een vereiste parameter bij elke aanvraag.
-+ **`search=*`** de querytekenreeks, die in de eerste query null is is, de eerste 50 resultaten retourneren (standaard).
++ **`https://azs-playground.search.windows.net/`** is een zoek service in de sandbox die wordt onderhouden door het Azure Search Development team. 
++ **`indexes/nycjobs/`** is de index van de NYC-taken in de verzameling indexen van die service. Zowel de service naam als de index zijn vereist voor de aanvraag.
++ **`docs`** is de verzameling documenten die alle Doorzoek bare inhoud bevat. De query-API-sleutel die in de aanvraag header is gegeven, werkt alleen bij Lees bewerkingen die zijn gericht op de verzameling documenten.
++ **`api-version=2019-05-06`** Hiermee stelt u de API-versie in, een vereiste para meter voor elke aanvraag.
++ **`search=*`** is de query teken reeks, die in de eerste query null is, de eerste 50 resultaten retourneert (standaard).
 
 ## <a name="send-your-first-query"></a>Uw eerste query verzenden
 
-Als verificatiestap, plak de volgende aanvraag ophalen en klikt u op **verzenden**. Resultaten worden geretourneerd als uitgebreide JSON-documenten. Volledige-documenten worden geretourneerd, kunt u alle velden en alle waarden bekijken.
+Plak, als een verificatie stap, de volgende aanvraag in GET en klik op **verzenden**. Resultaten worden geretourneerd als uitgebreide JSON-documenten. Er worden volledige documenten geretourneerd, zodat u alle velden en alle waarden kunt weer geven.
 
-Plak deze URL in een REST-client als validatiestap en weer te geven van de documentstructuur.
+Plak deze URL in een REST-client als een validatie stap en om de document structuur weer te geven.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-De queryreeks **`search=*`** , is een niet-opgegeven zoekopdracht gelijk is aan null of leeg zijn zoeken. Het is niet met name nuttig, maar is de eenvoudigste zoeken die u kunt doen.
+De query teken reeks **`search=*`** ,, is een niet-opgegeven zoek opdracht die gelijk is aan Null of een lege zoek opdracht. Het is niet erg nuttig, maar dit is de eenvoudigste zoek actie die u kunt uitvoeren.
 
-U kunt desgewenst toevoegen **`$count=true`** naar de URL om een telling van de documenten die voldoen aan de zoekcriteria te retourneren. Op een lege zoekopdracht tekenreeks is is dat alle documenten in de index (ongeveer 2800 in het geval van NYC-Jobs).
+U kunt eventueel ook toevoegen **`$count=true`** aan de URL om een telling van de documenten te retour neren die overeenkomen met de zoek criteria. In een lege Zoek reeks zijn dit alle documenten in de index (ongeveer 2800 in het geval van NYC-taken).
 
-## <a name="how-to-invoke-simple-query-parsing"></a>Het parseren van eenvoudige query aanroepen
+## <a name="how-to-invoke-simple-query-parsing"></a>Eenvoudig parseren van query's aanroepen
 
-Voor interactieve query's, u hebt geen op te geven: eenvoudige is de standaardinstelling. In de code, als u eerder aangeroepen **queryType = full** voor volledige query-syntaxis, kan u de standaard opnieuw worden ingesteld **queryType = eenvoudige**.
+Voor interactieve query's hoeft u niets op te geven: eenvoudig is de standaard waarde. Als u in code eerder query **type = Full** hebt aangeroepen voor de volledige query syntaxis, kunt u de standaard waarde opnieuw instellen met **query type = Simple**.
 
-## <a name="example-1-field-scoped-query"></a>Voorbeeld 1: Veldgerelateerde query
+## <a name="example-1-field-scoped-query"></a>Voorbeeld 1: Query met veld bereik
 
-Het eerste voorbeeld is niet-parser-specifieke, maar we ermee leiden om te introduceren de eerste query fundamentele concept: containment. In dit voorbeeld scopes uitvoeren van query's en de reactie op een paar specifieke velden. Weten hoe u een leesbare JSON-antwoord is belangrijk bij het hulpprogramma Postman of Search explorer is. 
+Dit eerste voor beeld is geen parser-specifiek, maar we leiden ernaar om het eerste fundamentele query concept te introduceren: containment. In dit voor beeld wordt een query uitgevoerd op een aantal specifieke velden. Het is belang rijk dat u weet hoe u een lees bare JSON-respons structureert wanneer uw hulp programma postman of Search Explorer is. 
 
-Beknopt alternatief, gericht op de query alleen de *business_title* veld en geeft u alleen zakelijke titels worden geretourneerd. De syntaxis is **searchFields** om te beperken van de uitvoering van de query alleen het veld business_title en **Selecteer** om op te geven welke velden zijn opgenomen in het antwoord.
+Voor de boog is de query alleen gericht op het veld *business_title* en geeft u op dat er alleen zakelijke titels worden geretourneerd. De syntaxis is **searchFields** om de uitvoering van query's te beperken tot alleen het veld business_title en om op te geven welke velden in het antwoord moeten worden opgenomen.
 
-### <a name="partial-query-string"></a>Gedeeltelijke queryreeks
+### <a name="partial-query-string"></a>Gedeeltelijke query reeks
 
 ```http
 searchFields=business_title&$select=business_title&search=*
@@ -95,31 +95,31 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
-Antwoord voor deze query moet eruitzien als op de volgende schermafbeelding.
+Antwoord voor deze query moet er ongeveer uitzien als in de volgende scherm afbeelding.
 
-  ![Het voorbeeldantwoord postman](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Postman-voorbeeld antwoord](media/search-query-lucene-examples/postman-sample-results.png)
 
-U hebt mogelijk de zoekscore in het antwoord opgemerkt. Uniform scores van 1 optreden wanneer er is geen positie, ofwel omdat de zoekopdracht is niet zoeken in volledige tekst, of omdat er geen criteria is toegepast. Voor null search zonder criteria keert u rijen terug in willekeurige volgorde. Wanneer u de werkelijke criteria opgeeft, ziet u scores in zinvolle waarden ontwikkelen zoeken.
+Mogelijk hebt u de zoek Score in het antwoord gezien. Een uniforme Score van 1 treedt op als er geen positie is, omdat de zoek opdracht niet in volledige tekst is gezocht, of omdat er geen criteria zijn toegepast. Voor Null-Zoek opdrachten zonder criteria worden rijen in een wille keurige volg orde weer gegeven. Wanneer u werkelijke criteria opneemt, ziet u dat zoek scores worden weer geven in betekenis volle waarden.
 
-## <a name="example-2-look-up-by-id"></a>Voorbeeld 2: Zoeken op ID
+## <a name="example-2-look-up-by-id"></a>Voorbeeld 2: Opzoeken op basis van ID
 
-In dit voorbeeld is een en ander ongewone, maar bij het evalueren van zoekgedrag, kunt u de volledige inhoud van een bepaald document om te begrijpen waarom deze is opgenomen of uitgesloten van de resultaten controleren. Als één document in zijn geheel toe, gebruikt u een [opzoekfunctie](https://docs.microsoft.com/rest/api/searchservice/lookup-document) om door te geven in de document-ID.
+Dit voor beeld is een beetje ongewoon, maar bij het evalueren van het gedrag van de zoek actie wilt u mogelijk de volledige inhoud van een specifiek document inspecteren om te begrijpen waarom het is opgenomen of uitgesloten van de resultaten. Als u één document volledig wilt retour neren, gebruikt u een [opzoek bewerking](https://docs.microsoft.com/rest/api/searchservice/lookup-document) om de document-id door te geven.
 
-Alle documenten hebben een unieke id. Als u wilt uitproberen de syntaxis voor een lookup-query, eerst retourneert een lijst met document-id's zodat u er een vinden kunt om te gebruiken. Voor NYC-Jobs, de id's worden opgeslagen in de `id` veld.
+Alle documenten hebben een unieke id. Als u de syntaxis voor een opzoek query wilt uitproberen, moet u eerst een lijst met document-Id's retour neren, zodat u er een kunt vinden om te gebruiken. Voor NYC-taken worden de id's in het `id` veld opgeslagen.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
-Het volgende voorbeeld wordt een lookup-query retourneert een bepaald document op basis van `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", bovenaan in het vorige antwoord weergegeven. De volgende query retourneert het gehele document, niet alleen de geselecteerde velden. 
+Het volgende voor beeld is een opzoek query die een specifiek document retourneert `id` dat is gebaseerd op ' 9E1E3AF9-0660-4E00-AF51-9B654925A2D5 ', dat het eerst in het vorige antwoord voor komt. De volgende query retourneert het hele document, niet alleen de geselecteerde velden. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
-## <a name="example-3-filter-queries"></a>Voorbeeld 3: Filter-query 's
+## <a name="example-3-filter-queries"></a>Voorbeeld 3: Query's filteren
 
-[Filtersyntaxis](https://docs.microsoft.com/azure/search/search-query-odata-filter) is een OData-expressie die u met gebruiken kunt **zoeken** of door zelf. Een zelfstandige worden gefilterd, zonder een search-parameter is nuttig wanneer de filterexpressie in staat om volledig te kwalificeren documenten van belang is. Zonder een queryreeks geen lexicale of linguïstische analyse, er is geen scoren van (alle scores zijn 1), en er is geen classificatie. U ziet dat de zoektekenreeks is leeg.
+De [filter syntaxis](https://docs.microsoft.com/azure/search/search-query-odata-filter) is een OData-expressie die u kunt gebruiken met een **Zoek opdracht** of op zichzelf. Een zelfstandig filter, zonder een zoek parameter, is handig wanneer de filter expressie volledig kan kwalificeren op interessante documenten. Zonder een query reeks is er geen lexicale of linguïstische analyse, geen Score (alle scores zijn 1) en geen classificatie. U ziet dat de zoek teken reeks leeg is.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -131,31 +131,31 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     }
 ```
 
-Het filter eerst wordt toegepast op de gehele index samen worden gebruikt, en vervolgens de zoekopdracht wordt uitgevoerd op de resultaten van het filter. Filters zijn dus nuttig om de resultaten van de zoekopdracht te verbeteren, doordat het aantal documenten dat moet worden doorzocht, wordt verminderd.
+Samen gebruikt, wordt het filter eerst op de volledige index toegepast, waarna de zoek opdracht wordt uitgevoerd op de resultaten van het filter. Filters zijn dus nuttig om de resultaten van de zoekopdracht te verbeteren, doordat het aantal documenten dat moet worden doorzocht, wordt verminderd.
 
-  ![Filter-query-antwoord](media/search-query-simple-examples/filtered-query.png)
+  ![Query-antwoord filteren](media/search-query-simple-examples/filtered-query.png)
 
-Als u dit proberen in Postman met behulp van GET wilt, kunt u in deze reeks plakken:
+Als u dit in postman wilt proberen met behulp van GET, kunt u deze teken reeks plakken:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
-Een andere krachtige manier om te filteren en zoeken combineren, is via **`search.ismatch*()`** in een filterexpressie, waarbij u gebruik van een zoekopdracht in het filter maken kan. Dit filterexpressie wordt een jokerteken op *plan* selecteren business_title met inbegrip van de termijn plan, planner, planning, enzovoort.
+Een andere krachtige manier om filters en zoek opdrachten te **`search.ismatch*()`** combi neren, is via een filter expressie, waarin u een zoek query kunt gebruiken in het filter. Deze filter expressie maakt gebruik van een Joker teken op het *abonnement* om business_title te selecteren, zoals de term plan, planner, planning, enzovoort.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-Zie voor meer informatie over de functie [search.ismatch in "Filter voorbeelden"](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
+Zie [Search. ismatch in ' filter voorbeelden '](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples)voor meer informatie over de functie.
 
-## <a name="example-4-range-filters"></a>Voorbeeld 4: Bereikfilters
+## <a name="example-4-range-filters"></a>Voor beeld 4: Bereik filters
 
-Filteren op datumbereik is alleen beschikbaar via **`$filter`** expressies voor elk gegevenstype. De volgende voorbeelden zoeken over een tekenreeks en numerieke velden. 
+Bereik filtering wordt ondersteund **`$filter`** via expressies voor elk gegevens type. In de volgende voor beelden wordt gezocht naar numerieke en teken reeks velden. 
 
-Gegevenstypen zijn belangrijk in bereikfilters en werken het beste als numerieke gegevens in de numerieke velden en tekenreeksgegevens in tekenreeksvelden. Numerieke gegevens in de tekenreeksvelden is niet geschikt voor bereiken omdat numerieke tekenreeksen niet vergelijkbaar in Azure Search zijn. 
+Gegevens typen zijn belang rijk in bereik filters en werken het beste als numerieke gegevens zich in numerieke velden bevinden en teken reeks gegevens in teken reeks velden. Numerieke gegevens in teken reeks velden zijn niet geschikt voor bereiken, omdat numerieke teken reeksen niet vergelijkbaar zijn in Azure Search. 
 
-De volgende voorbeelden zijn in de POST-indeling voor de leesbaarheid (numeriek bereik, gevolgd door tekstbereik):
+De volgende voor beelden zijn in de indeling POST voor lees baarheid (numeriek bereik, gevolgd door tekst bereik):
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-  ![Bereikfilter voor numerieke bereiken](media/search-query-simple-examples/rangefilternumeric.png)
+  ![Bereik filter voor numerieke bereiken](media/search-query-simple-examples/rangefilternumeric.png)
 
 
 ```http
@@ -181,9 +181,9 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     }
 ```
 
-  ![Bereikfilter voor tekstbereiken](media/search-query-simple-examples/rangefiltertext.png)
+  ![Bereik filter voor tekstbereiken](media/search-query-simple-examples/rangefiltertext.png)
 
-U kunt deze ook proberen om in Postman met behulp van GET:
+U kunt dit ook uitproberen in postman met GET:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
@@ -194,13 +194,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ```
 
 > [!NOTE]
-> Onderverdeling via bereiken met waarden is een algemene vereiste voor search-toepassing. Zie voor meer informatie en voorbeelden voor het bouwen van filters voor facet navigatiestructuur ["Filter op basis van een bereik' in *facetnavigatie implementeren*](search-faceted-navigation.md#filter-based-on-a-range).
+> Facet overschrijding van bereik waarden is een algemene vereiste voor het zoeken van toepassingen. Zie [' filteren op basis van een bereik ' in *facet navigatie implementeren*](search-faceted-navigation.md#filter-based-on-a-range)voor meer informatie en voor beelden over het maken van filters voor facet navigatie structuren.
 
-## <a name="example-5-geo-search"></a>Voorbeeld 5: Op geografische locaties zoeken
+## <a name="example-5-geo-search"></a>Voor beeld 5: Op geografische locaties zoeken
 
-De voorbeeldindex bevat een veld geo_location met de breedtegraad en lengtegraad coördinaten. In dit voorbeeld wordt de [geo.distance functie](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) die filters op documenten in de omtrek van een beginpunt uit op een willekeurige afstand (in kilometer) die u opgeeft. De laatste waarde in de query (4) naar het gebied van de query vergroten of verkleinen, kunt u aanpassen.
+De voor beeld-index bevat een veld geo_location met de breedte graad en lengte graad. In dit voor beeld wordt de [functie geo. Distance](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) gebruikt waarmee wordt gefilterd op documenten in de omtrek van een begin punt, tot een wille keurige afstand (in kilo meters) die u opgeeft. U kunt de laatste waarde in de query (4) aanpassen om de surface area van de query te verkleinen of te verg Roten.
 
-Het volgende voorbeeld is in de POST-indeling voor de leesbaarheid:
+Het volgende voor beeld is in de bericht indeling voor de Lees baarheid:
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2019-05-06
@@ -211,90 +211,90 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
       "count": "true"
     }
 ```
-Zoekresultaten zijn voor een beter leesbare resultaten bijgesneden om op te nemen van een taak-ID, de functie en de werklocatie. De eerste coördinaten zijn verkregen vanuit een willekeurige document in de index (in dit geval voor een werklocatie op Staten eiland.
+Voor meer Lees bare resultaten worden Zoek resultaten afgekapt met een taak-ID, functie titel en de werk locatie. De begin coördinaten zijn verkregen van een wille keurig document in de index (in dit geval voor een werk locatie op Staten-eiland).
 
-U kunt dit ook proberen om in Postman met behulp van GET:
+U kunt dit ook uitproberen in postman met GET:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>Voorbeeld 6: De precisie zoeken
+## <a name="example-6-search-precision"></a>Voor beeld 6: Zoek precisie
 
-Term query's zijn enkelvoudige termen, mogelijk veel van deze, die onafhankelijk van elkaar worden geëvalueerd. Woordgroep query's tussen aanhalingstekens en geëvalueerd als een verbatim-tekenreeks. De nauwkeurigheid van de overeenkomst wordt bepaald door de operators en searchMode.
+Term query's zijn enkele termen, misschien veel hiervan, die onafhankelijk van elkaar worden geëvalueerd. Woordgroepen query's worden tussen aanhalings tekens geplaatst en geëvalueerd als een Verbatim teken reeks. De nauw keurigheid van de overeenkomst wordt bepaald door Opera tors en Search mode.
 
-Voorbeeld 1: **`&search=fire`** 150 resultaten geretourneerd waarbij alle komt overeen met de brand word ergens in het document bevatten.
+Voor beeld 1 **`&search=fire`** : retourneert 150 resultaten, waarbij alle overeenkomsten het woord ergens in het document hebben.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
-Voorbeeld 2: **`&search=fire department`** 2002 resultaten oplevert. Resultaten geretourneerd voor documenten die worden gestart of afdeling.
+Voor beeld 2 **`&search=fire department`** : retourneert 2002 resultaten. Er worden overeenkomsten geretourneerd voor documenten die hetzij brand of Department bevatten.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
-Voorbeeld 3: **`&search="fire department"`** 82 resultaten oplevert. De tekenreeks insluitende aanhalingstekens is een verbatim zoeken op beide termen, en overeenkomsten worden gevonden op tokens voorwaarden in de index die bestaat uit de gecombineerde voorwaarden. Dit verklaart waarom een zoekopdracht, zoals **`search=+fire +department`** komt niet overeen. Beide termen zijn vereist, maar onafhankelijk van elkaar worden gescand op. 
+Voor beeld 3 **`&search="fire department"`** : retourneert 82 resultaten. Het sluiten van de teken reeks tussen aanhalings tekens is een Verbatim zoek opdracht op beide termen en overeenkomsten worden gevonden op basis van tokens in de index die bestaat uit de gecombineerde termen. Dit legt uit waarom een zoek **`search=+fire +department`** actie als niet gelijk is. Beide termen zijn vereist, maar worden onafhankelijk gescand. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
-## <a name="example-7-booleans-with-searchmode"></a>Voorbeeld 7: Booleaanse waarden met searchMode
+## <a name="example-7-booleans-with-searchmode"></a>Voor beeld 7: Booleaanse waarden met Search mode
 
-Eenvoudige syntaxis ondersteunt Booleaanse operators in de vorm van tekens (`+, -, |`). De parameter searchMode informeert balans tussen de precisie en zoals eerder vermeld, met `searchMode=any` voorkeur intrekken (die overeenkomen met in elk criterium in aanmerking komt een document voor de resultatenset), en `searchMode=all` voorkeur precisie (alle criteria moeten worden vergeleken). De standaardwaarde is `searchMode=any`, die kunnen worden als u een query worden samengesteld met meerdere operators verwarrend en bredere in plaats van smaller resultaten ophalen. Dit geldt met name met niet, waarbij het resultaat van alle documenten "niet met" bevatten een bepaalde periode.
+Eenvoudige syntaxis ondersteunt Booleaanse Opera tors in de vorm van tekens`+, -, |`(). De para meter Search mode informeert de afwegingen tussen Precision `searchMode=any` en intrekken, met als voor keur intrekken (overeenkomt met een criterium dat in aanmerking `searchMode=all` komt voor een document voor de resultatenset), en om te voldoen aan de nauw keurigheid (alle criteria moeten overeenkomen). De standaard waarde `searchMode=any`is, wat verwarrend kan zijn als u een query stapelt met meerdere opera tors en brederere resultaten ophaalt. Dit is met name het geval bij niet, waarbij alle resultaten alle documenten bevatten die geen specifieke term zijn.
 
-Met behulp van de standaard searchMode die (willekeurig), 2800 documenten worden geretourneerd: met de meerdelige termijn 'afdeling worden gestart', plus alle documenten waarvoor geen de term 'Metrotech Center'.
+Met behulp van de standaard Search mode (alle) worden de 2800-documenten geretourneerd: die met de multifunctionele term "brand afdeling" en alle documenten die niet de term "Metrotech Center" hebben.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![modus elk zoeken](media/search-query-simple-examples/searchmodeany.png)
+  ![Zoek modus any](media/search-query-simple-examples/searchmodeany.png)
 
-Wijzigen van searchMode naar `all` dwingt een cumulatieve effect van criteria en retourneert een kleiner resultatenset - 21 documenten - bestaande van documenten die de hele woordgroep "fire-afdeling, min de deze taken op het adres Metrotech Center bevatten.
+Search mode wijzigen om `all` een cumulatief effect op criteria af te dwingen en een kleinere set resultaten te retour neren-21 documenten-die bestaan uit documenten met de volledige zin "brand Department", min die taken op het Metrotech Center-adres.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![alle zoekmodus](media/search-query-simple-examples/searchmodeall.png)
+  ![Zoek modus Alles](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>Voorbeeld 8: Structureren van resultaten
+## <a name="example-8-structuring-results"></a>Voor beeld 8: Resultaten structureren
 
-Aantal parameters bepalen welke velden worden in het zoekvak resulteert, het aantal geretourneerde documenten in elke batch, en de sorteervolgorde. In dit voorbeeld resurfaces enkele van de eerdere voorbeelden, beperken van resultaten op bepaalde velden met behulp van de **$select** instructie en verbatim zoekcriteria 82 overeenkomsten retourneren 
+Verschillende para meters bepalen welke velden worden weer gegeven in de zoek resultaten, het aantal geretourneerde documenten in elke batch en de sorteer volgorde. In dit voor beeld worden enkele van de voor gaande voor beelden opnieuw weer gegeven, waarbij de resultaten worden beperkt tot specifieke velden met behulp van de **$Select** instructie en Verbatim zoek criteria, 82 overeenkomsten retour neren 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
-Toegevoegd op het vorige voorbeeld, kunt u sorteren op de titel. Deze sorteren werkt omdat civil_service_title *sorteerbaar* in de index.
+In het vorige voor beeld kunt u sorteren op titel. Deze sortering werkt omdat civil_service_title in de index kan worden gesorteerd.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
-Resultaten pagineren is geïmplementeerd met behulp van de **$top** parameter, de top 5-documenten in dit geval retourneren:
+Paginerings resultaten worden geïmplementeerd met behulp van de para meter **$Top** , in dit geval de vijf beste documenten retour neren:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
-Overslaan als u de volgende 5, de eerste batch:
+Als u de volgende 5 wilt ophalen, slaat u de eerste batch over:
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Probeer de query's in uw code op te geven. De volgende koppelingen wordt uitgelegd hoe het instellen van zoekquery's voor .NET en de REST-API met behulp van de standaard eenvoudige syntaxis.
+Probeer query's in uw code op te geven. In de volgende koppelingen wordt uitgelegd hoe u zoek query's instelt voor zowel .NET als de REST API met behulp van de standaard eenvoudige syntaxis.
 
-* [Query uitvoeren op uw Azure Search-Index met de .NET SDK](search-query-dotnet.md)
-* [Query uitvoeren op uw Azure Search-Index met behulp van de REST-API](search-create-index-rest-api.md)
+* [Een query uitvoeren op uw Azure Search-index met behulp van de .NET SDK](search-query-dotnet.md)
+* [Een query uitvoeren op uw Azure Search-index met behulp van de REST API](search-create-index-rest-api.md)
 
-Naslaginformatie over aanvullende syntaxis voor query-architectuur en voorbeelden vindt u in de volgende koppelingen:
+Aanvullende Naslag informatie over syntaxis, query architectuur en voor beelden vindt u in de volgende koppelingen:
 
-+ [Voorbeelden van Lucene-querysyntaxis voor het bouwen van geavanceerde query 's](search-query-lucene-examples.md)
-+ [Hoe vol tekstzoekopdrachten werkt in Azure Search](search-lucene-query-architecture.md)
++ [Voor beelden van Lucene-syntaxis query's voor het maken van geavanceerde query's](search-query-lucene-examples.md)
++ [De manier waarop zoeken in volledige tekst werkt in Azure Search](search-lucene-query-architecture.md)
 + [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Volledige Lucene-query](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Syntaxis voor filteren en sorteren op](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Volledige lucene-query](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [De syntaxis filter en OrderBy](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)

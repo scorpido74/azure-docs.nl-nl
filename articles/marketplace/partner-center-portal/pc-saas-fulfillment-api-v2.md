@@ -2,17 +2,17 @@
 title: API voor SaaS-uitvoering v2 | Azure Marketplace
 description: In dit artikel wordt uitgelegd hoe u een SaaS-aanbieding maakt en beheert op de AppSource en Azure Marketplace met behulp van de bijbehorende fulfillment v2 Api's.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016048"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872793"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-fulfillment-Api's, versie 2 
 
@@ -108,7 +108,7 @@ Met het eind punt voor omzetten kan de uitgever een Marketplace-token omzetten i
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Inhoudstype      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-ms-requestid    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld:`Bearer <access_token>`"". |
@@ -134,13 +134,13 @@ Code: 400<br>
 Ongeldige aanvraag. x-MS-Marketplace-token ontbreekt, is ongeldig of is verlopen.
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.
+Interne server fout.
 
 ```json
 {
@@ -172,7 +172,7 @@ Een lijst met alle SaaS-abonnementen voor een uitgever.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-| Inhoudstype       |  `application/json`  |
+| Content-Type       |  `application/json`  |
 | x-ms-requestid     |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 | x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 | authorization      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -219,10 +219,10 @@ Nettolading van reactie:<br>
 Het vervolg token wordt alleen weer gegeven als er extra ' pagina's ' van de plannen zijn die moeten worden opgehaald. 
 
 Code: 403 <br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever. 
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever. 
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.
+Interne server fout.
 
 ```json
 {
@@ -250,7 +250,7 @@ Hiermee wordt het opgegeven SaaS-abonnement opgehaald. Gebruik deze aanroep om l
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Inhoudstype      |  `application/json`  |
+|  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -288,13 +288,13 @@ Response Body:
 ```
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.<br> 
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.<br>
+Interne server fout.<br>
 
 ```json
 {
@@ -320,7 +320,7 @@ Gebruik deze aanroep om te achterhalen of er privé-of open bare aanbiedingen vo
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Inhoudstype     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid  | Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld:`Bearer <access_token>`"". |
@@ -344,10 +344,10 @@ Code: 404<br>
 Niet gevonden.<br> 
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever. <br> 
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever. <br> 
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.<br>
+Interne server fout.<br>
 
 ```json
 { 
@@ -372,7 +372,7 @@ Er is een interne serverfout opgetreden.<br>
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Inhoudstype      | `application/json`  |
+|  Content-Type      | `application/json`  |
 |  x-ms-requestid    | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid  | Een unieke teken reeks waarde voor de bewerking op de client. Deze teken reeks correleert alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld:`Bearer <access_token>`"". |
@@ -395,13 +395,13 @@ Code: 400<br>
 Ongeldige aanvraag: validatie mislukt.
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.
+Interne server fout.
 
 ```json
 {
@@ -429,7 +429,7 @@ Werk het abonnement op de abonnementen bij.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Inhoudstype      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid  |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.    |
 | authorization      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -458,13 +458,13 @@ Code: 400<br>
 Ongeldige aanvraag: validatie mislukt.
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.
+Interne server fout.
 
 ```json
 {
@@ -495,7 +495,7 @@ Werk de hoeveelheid op het abonnement bij.
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Inhoudstype      | `application/json` |
+|  Content-Type      | `application/json` |
 |  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid  |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.    |
 | authorization      |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -525,13 +525,13 @@ Ongeldige aanvraag: validatie mislukt.
 
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.
+Interne server fout.
 
 ```json
 {
@@ -562,7 +562,7 @@ Meld u af en verwijder het opgegeven abonnement.
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Inhoudstype     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.   |
 |  x-MS-correlationid  |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.   |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -576,13 +576,13 @@ Code: 400<br>
 Verwijderen van een abonnement met **verwijderen** niet in `allowedCustomerOperations`.
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.
+Interne server fout.
 
 ```json
 {
@@ -615,7 +615,7 @@ Geeft een lijst van openstaande bewerkingen voor de huidige uitgever.
  
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Inhoudstype     |  `application/json` |
+|   Content-Type     |  `application/json` |
 |  x-ms-requestid    |  Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -644,13 +644,13 @@ Code: 400<br>
 Ongeldige aanvraag: validatie mislukt.
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.
 
 Code: 500<br>
-Er is een interne serverfout opgetreden.
+Interne server fout.
 
 ```json
 {
@@ -678,7 +678,7 @@ Hiermee kan de uitgever de status van de opgegeven geactiveerde async-bewerking 
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Inhoudstype      |  `application/json`   |
+|  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers.  |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app). Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -708,12 +708,12 @@ Code: 400<br>
 Ongeldige aanvraag: validatie mislukt.
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
  
 Code: 404<br>
 Niet gevonden.
 
-Code: 500<br> Er is een interne serverfout opgetreden.
+Code: 500<br> Interne server fout.
 
 ```json
 {
@@ -742,7 +742,7 @@ Werk de status van een bewerking bij om het slagen of mislukken van de geleverde
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|   Inhoudstype     | `application/json`   |
+|   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  x-MS-correlationid |  Een unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
 |  authorization     |  Het [JWT-Bearer-token (JSON Web token) ophalen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app).  Bijvoorbeeld:`Bearer <access_token>`"".  |
@@ -766,7 +766,7 @@ Code: 400<br>
 Ongeldige aanvraag: validatie mislukt.
 
 Code: 403<br>
-Niet gemachtigd. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
+Gasten. Het verificatie token is niet opgegeven of is ongeldig, of er wordt geprobeerd toegang te krijgen tot een overname die geen deel uitmaakt van de huidige uitgever.
 
 Code: 404<br>
 Niet gevonden.
@@ -774,7 +774,7 @@ Niet gevonden.
 Code: 409<br>
 Conflicteren. Er is bijvoorbeeld al aan een nieuwe trans actie voldaan.
 
-Code: 500<br> Er is een interne serverfout opgetreden.
+Code: 500<br> Interne server fout.
 
 ```json
 {
@@ -790,7 +790,6 @@ Code: 500<br> Er is een interne serverfout opgetreden.
 
 De uitgever moet een webhook in deze SaaS-service implementeren om gebruikers proactief te informeren over wijzigingen in de service. De SaaS-service wordt verwacht de operations API aan te roepen om te valideren en goed te keuren voordat een actie wordt ondernomen voor de webhook-melding.
 
-Micro soft bevat de Azure Active Directory JWT-token in de autorisatie-header als onderdeel van de aanroep om beveiligde communicatie te garanderen. SaaS-providers worden aangemoedigd om de JWT-token te valideren zoals beschreven in het [micro soft Identity platform Access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) -artikel om ervoor te zorgen dat alleen geldige aanroepen worden geaccepteerd.
 
 ```json
 {

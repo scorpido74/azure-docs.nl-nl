@@ -1,24 +1,21 @@
 ---
 title: Schaal en hosting Azure Functions | Microsoft Docs
 description: Meer informatie over hoe u kunt kiezen tussen het Azure Functions verbruiks abonnement en het Premium-abonnement.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure functions, functies, verbruiks abonnement, Premium-abonnement, gebeurtenis verwerking, webhooks, dynamische compute, serverloze architectuur
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdef1457254b6deb8a0b791b11c94154518b4301
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636441"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874938"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
 
@@ -143,9 +140,6 @@ Zie [Inleiding tot de Azure Storage services](../storage/common/storage-introduc
 In de verbruiks-en Premium-abonnementen schaalt de Azure Functions-infra structuur CPU-en geheugen bronnen door extra exemplaren van de functions-host toe te voegen op basis van het aantal gebeurtenissen waarvoor de functies zijn geactiveerd. Elk exemplaar van de functions-host in het verbruiks abonnement is beperkt tot 1,5 GB aan geheugen en één CPU.  Een exemplaar van de host is de volledige functie-app, wat betekent dat alle functies binnen een functie-app resources delen binnen een exemplaar en op hetzelfde moment kunnen worden geschaald. Functie-apps die hetzelfde verbruiks abonnement delen, worden onafhankelijk geschaald.  In het Premium-abonnement bepaalt de grootte van het abonnement het beschik bare geheugen en de CPU voor alle apps in dat exemplaar.  
 
 Functie code bestanden worden opgeslagen op Azure Files shares op het belangrijkste opslag account van de functie. Wanneer u het belangrijkste opslag account van de functie-app verwijdert, worden de functie code bestanden verwijderd en kunnen deze niet worden hersteld.
-
-> [!NOTE]
-> Wanneer u een BLOB-trigger in een verbruiks abonnement gebruikt, kan er een vertraging van 10 minuten zijn bij het verwerken van nieuwe blobs. Deze vertraging treedt op wanneer een functie-app niet actief is geweest. Nadat de functie-app is uitgevoerd, worden de blobs onmiddellijk verwerkt. Gebruik het Premium-abonnement of gebruik de [Event grid trigger](functions-bindings-event-grid.md)als u wilt voor komen dat de koude-start vertraging optreedt. Zie voor meer informatie [het artikel binding verwijzing BLOB-trigger](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Runtime schalen
 

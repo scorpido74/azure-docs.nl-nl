@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 8227aa366c8f5149d4212e6cdd00e2745db84814
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f2397c67b71cc370a0a98d44bb02e5ee77551afb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881961"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650652"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -86,7 +86,7 @@ U kunt de volgende methoden gebruiken om een uitbrei ding uit te voeren op basis
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-Azure VM-extensies kunnen worden uitgevoerd op basis van een bestaande virtuele machine met de opdracht [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) . In het volgende voor beeld wordt de aangepaste script extensie uitgevoerd op een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*. Vervang de naam van de resource groep, de VM-naam en het https://raw.githubusercontent.com/me/project/hello.sh) script die u wilt uitvoeren (met uw eigen gegevens. 
+Azure VM-extensies kunnen worden uitgevoerd op basis van een bestaande virtuele machine met de opdracht [AZ VM extension set](/cli/azure/vm/extension#az-vm-extension-set) . In het volgende voor beeld wordt de aangepaste script extensie uitgevoerd op een virtuele machine met de naam *myVM* in een resource groep met de naam *myResourceGroup*. Vervang de naam van de resource groep, de VM-naam en het script dat\/wordt uitgevoerd (https:/RAW.githubusercontent.com/me/project/Hello.sh) door uw eigen gegevens. 
 
 ```azurecli
 az vm extension set `

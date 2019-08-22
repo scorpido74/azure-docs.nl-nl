@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815719"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873073"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Afstemmen van hyperparameters voor uw model met Azure Machine Learning-service
 
@@ -325,11 +325,9 @@ U kunt ook de prestaties van elk van de wordt uitgevoerd als de voortgang van de
 
 Bovendien kunt u de correlatie tussen prestaties en de waarden van afzonderlijke hyperparameters met behulp van een parallelle coördineert tekenen visueel identificeren. 
 
-![hyperparameter parallelle coördinaten afstemmen](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
+[![parallelle coördinaten voor afstemming afstemmen](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 U kunt alle uw hyperparameter afstemmen wordt uitgevoerd in de Azure-web-portal kunt visualiseren. Zie voor meer informatie over het weergeven van een experiment in de webportal [bijhouden experimenten](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
-
-![hyperparameter afstemmen portal](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 
 ## <a name="find-the-best-model"></a>Het beste model zoeken
 

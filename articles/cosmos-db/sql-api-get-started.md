@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 25275aeb6637d50379b7c71e87be9ecffce269db
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ea3779ce7d4d77e6b0a55b8a00374b701a073b66
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614684"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876445"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Een .NET-console-app maken voor het beheren van gegevens in Azure Cosmos DB SQL-API-account
 
@@ -323,7 +323,7 @@ Selecteer **F5** om de toepassing uit te voeren.
 Gefeliciteerd! U hebt twee Azure Cosmos-items gemaakt.  
 
 ## <a id="Query"></a>Stap 7: Query's uitvoeren op Azure Cosmos DB-resources
-Azure Cosmos DB biedt ondersteuning voor uitgebreide [query's](sql-api-sql-query.md) op de JSON-documenten die zijn opgeslagen in elke verzameling. In de volgende voorbeeldcode ziet u hoe u een query uitvoert voor de items die u in de vorige stap hebt ingevoegd.
+Azure Cosmos DB biedt ondersteuning voor uitgebreide [query's](sql-api-sql-query.md) op JSON-documenten die zijn opgeslagen in elke container. In de volgende voorbeeldcode ziet u hoe u een query uitvoert voor de items die u in de vorige stap hebt ingevoegd.
 
 1. Kopieer en plak de methode **QueryItemsAsync** onder de methode **AddItemsToContainerAsync** .
 

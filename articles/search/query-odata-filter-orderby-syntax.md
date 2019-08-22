@@ -1,13 +1,13 @@
 ---
-title: Overzicht van OData taal - Azure Search
-description: Overzicht van de OData-taal voor filters, selecteer en volgorde door voor Azure Search-query's.
+title: Overzicht van OData-taal-Azure Search
+description: Overzicht van OData-taal voor filters, Select en order-by voor Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,34 +19,34 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 166c23088fe0388199ca51efde05153bb5697e38
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0bd446b0ffa97a758f68a0f85889b13da6e3d8b0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063704"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650038"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>Overzicht van de OData-taal voor `$filter`, `$orderby`, en `$select` in Azure Search
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>Overzicht van OData- `$filter`taal `$orderby`voor, `$select` en in azure Search
 
-Azure Search ondersteunt een subset van de syntaxis van de OData-expressie voor **$filter**, **$orderby**, en **$select** expressies. Filterexpressies worden geëvalueerd tijdens query parseren, zoeken naar specifieke velden beperken of toe te voegen overeenkomen met criteria die zijn gebruikt tijdens scans index. Order by-expressies worden toegepast als een stap na verwerking via een resultatenset voor het sorteren van de documenten die worden geretourneerd. Selecteer expressies te bepalen welke documentvelden u zijn opgenomen in de resultatenset. De syntaxis van deze expressies is hetzelfde als de [eenvoudige](query-simple-syntax.md) of [volledige](query-lucene-syntax.md) querysyntaxis die wordt gebruikt in de **zoeken** parameter, hoewel er een thema's besproken in de syntaxis voor verwijzen naar velden.
+Azure Search ondersteunt een subset van de syntaxis van de OData-expressie voor **$filter**, **$OrderBy**en **$Select** expressies. Filter expressies worden geëvalueerd tijdens het parseren van query's, het beperken van zoek opdrachten naar specifieke velden of het toevoegen van match criteria die worden gebruikt tijdens index scans. Order-by-expressies worden toegepast als een verwerkings stap van een resultaatset om de geretourneerde documenten te sorteren. Expressies selecteren bepalen welke document velden worden opgenomen in de resultatenset. De syntaxis van deze expressies verschilt van de [eenvoudige](query-simple-syntax.md) of [volledige](query-lucene-syntax.md) query syntaxis die wordt gebruikt in de **Zoek** parameter, hoewel er wel een overlap is in de syntaxis voor verwijzende velden.
 
-Dit artikel bevat een overzicht van de OData-expressietaal die wordt gebruikt in filters, order by en selecteer expressies. De taal die wordt gepresenteerd "beneden", beginnen met de belangrijkste elementen en het bouwen van op deze. De syntaxis van de op het hoogste niveau voor elke parameter wordt in een apart artikel beschreven:
+Dit artikel bevat een overzicht van de taal van de OData-expressie die wordt gebruikt in filters, order-by en expressies selecteren. De taal wordt ' bottom-up ' weer gegeven, te beginnen met de meest elementaire elementen en op basis hiervan te bouwen. De syntaxis op het hoogste niveau voor elke para meter wordt beschreven in een afzonderlijk artikel:
 
 - [$filter syntaxis](search-query-odata-filter.md)
 - [$orderby syntaxis](search-query-odata-orderby.md)
 - [$select syntaxis](search-query-odata-select.md)
 
-OData-expressies variëren van eenvoudige tot complexe, maar ze alle delen gemeenschappelijke elementen. De belangrijkste onderdelen van een OData-expressie in Azure Search zijn:
+OData-expressies variëren van eenvoudig tot zeer complex, maar ze hebben allemaal algemene elementen. De meest elementaire onderdelen van een OData-expressie in Azure Search zijn:
 
 - **Veld paden**, die verwijzen naar specifieke velden van uw index.
-- **Constanten**, letterlijke waarden van een bepaald gegevenstype zijn.
+- **Constanten**zijn letterlijke waarden van een bepaald gegevens type.
 
 > [!NOTE]
-> Belangrijkste termen in Azure Search wijkt af van de [OData-standaard](https://www.odata.org/documentation/) in een aantal manieren. Noemen we een **veld** in Azure Search heet een **eigenschap** in OData en op dezelfde manier voor **pad naar veld** versus **eigenschapspad**. Een **index** met **documenten** in Azure Search wordt genoemd in het algemeen in OData als een **entiteitsset** met **entiteiten**. De Azure Search-terminologie wordt overal in deze referentie gebruikt.
+> De terminologie in Azure Search wijkt op een paar manieren af van de [OData-standaard](https://www.odata.org/documentation/) . Het aanroepen van een **veld** in azure Search wordt een **eigenschap** genoemd in OData en op dezelfde manier als het **pad naar** een **eigenschap**. Een **index** met **documenten** in azure Search wordt in OData meer algemeen aangeduid als een **entiteitset** met **entiteiten**. De Azure Search terminologie wordt overal in deze referentie gebruikt.
 
 ## <a name="field-paths"></a>Veld paden
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica van veld paden.
+Met de volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) wordt de grammatica van veld paden gedefinieerd.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -56,62 +56,62 @@ field_path ::= identifier('/'identifier)*
 identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Het pad naar een veld bestaat uit een of meer **id's** gescheiden door slashes. Elke-id is een reeks tekens dat moet beginnen met een ASCII-letter of onderstrepingsteken en alleen ASCII-letters, cijfers of onderstrepingstekens bevatten. De letters mag hoofdletters of kleine letters.
+Een pad naar een veld bestaat uit een of meer **id's** , gescheiden door slashes. Elke id is een reeks tekens die moet beginnen met een ASCII-letter of onderstrepings teken en alleen ASCII-letters, cijfers of onderstrepings tekens bevatten. De letters kunnen in het hoofd of kleine letters worden getypt.
 
-Een id kan verwijzen naar de naam van een veld of naar een **bereik variabele** in de context van een [verzameling expressie](search-query-odata-collection-operators.md) (`any` of `all`) in een filter. Een variabele bereik is vergelijkbaar met een lusvariabele die staat voor de huidige element van de verzameling. Voor complexe verzamelingen vertegenwoordigt die variabele een object, dat is de reden waarom u veld paden gebruiken kunt om te verwijzen naar de onderliggende velden van de variabele. Dit is vergelijkbaar met puntnotatie in veel programmeertalen.
+Een id kan verwijzen naar de naam van een veld of naar een **bereik variabele** in de context van een verzamelings [expressie](search-query-odata-collection-operators.md) (`any` of `all`) in een filter. Een bereik variabele is een lus-variabele die het huidige element van de verzameling weergeeft. Voor complexe verzamelingen vertegenwoordigt die variabele een object. dat is de reden waarom u veld paden kunt gebruiken om te verwijzen naar subvelden van de variabele. Dit is vergelijkbaar met punt notatie in veel programmeer talen.
 
-Voorbeelden van veld paden worden weergegeven in de volgende tabel:
+Voor beelden van veld paden worden weer gegeven in de volgende tabel:
 
 | Pad naar veld | Description |
 | --- | --- |
 | `HotelName` | Verwijst naar een veld op het hoogste niveau van de index |
-| `Address/City` | Verwijst naar de `City` subplan veld van een complexe veld in de index; `Address` is van het type `Edm.ComplexType` in dit voorbeeld |
-| `Rooms/Type` | Verwijst naar de `Type` subplan veld van een verzameling complexe-veld in de index; `Rooms` is van het type `Collection(Edm.ComplexType)` in dit voorbeeld |
-| `Stores/Address/Country` | Verwijst naar de `Country` subplan veld van de `Address` subplan veld van een verzameling complexe-veld in de index; `Stores` is van het type `Collection(Edm.ComplexType)` en `Address` is van het type `Edm.ComplexType` in dit voorbeeld |
-| `room/Type` | Verwijst naar de `Type` subplan veld van de `room` bereik-variabele, bijvoorbeeld in de filterexpressie `Rooms/any(room: room/Type eq 'deluxe')` |
-| `store/Address/Country` | Verwijst naar de `Country` subplan veld van de `Address` subplan veld van de `store` bereik-variabele, bijvoorbeeld in de filterexpressie `Stores/any(store: store/Address/Country eq 'Canada')` |
+| `Address/City` | Verwijst naar het `City` subveld van een complex veld in de index. is van het `Edm.ComplexType` type in dit voor beeld `Address` |
+| `Rooms/Type` | Verwijst naar het `Type` subveld van een complex verzamelings veld in de index. is van het `Collection(Edm.ComplexType)` type in dit voor beeld `Rooms` |
+| `Stores/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van een complex verzamelings veld in de index. is van het `Collection(Edm.ComplexType)` type `Address` en is van `Edm.ComplexType` het type in dit voor beeld `Stores` |
+| `room/Type` | Verwijst naar het `Type` subveld van de `room` variabele Range, bijvoorbeeld in de filter expressie`Rooms/any(room: room/Type eq 'deluxe')` |
+| `store/Address/Country` | Verwijst naar het `Country` subveld van het `Address` subveld van de `store` bereik variabele, bijvoorbeeld in de filter expressie`Stores/any(store: store/Address/Country eq 'Canada')` |
 
-De betekenis van het pad naar een veld is afhankelijk van de context. In de filters, het pad naar een veld verwijst naar de waarde van een *één exemplaar* van een veld in het huidige document. In een andere context, zoals **$orderby**, **$select**, of in [fielded zoeken in de volledige Lucene-syntaxis](query-lucene-syntax.md#bkmk_fields), een pad naar veld verwijst naar het veld zelf. Dit verschil heeft enkele gevolgen voor hoe u een veld paden in filters gebruikt.
+De betekenis van een pad naar een veld verschilt, afhankelijk van de context. In filters verwijst een veld pad naar de waarde van *één exemplaar* van een veld in het huidige document. In andere contexten, zoals **$OrderBy**, **$Select**of in een [Zoek opdracht in de volledige lucene-syntaxis](query-lucene-syntax.md#bkmk_fields)verwijst een pad naar het veld zelf. Dit verschil heeft een aantal gevolgen voor de manier waarop u veld paden in filters gebruikt.
 
-Houd rekening met het pad naar veld `Address/City`. Dit verwijst naar een enkele plaats voor het huidige document, zoals "San Francisco" in een filter. Daarentegen `Rooms/Type` verwijst naar de `Type` lagere veld voor veel ruimten (zoals 'standaard' voor de eerste ruimte 'deluxe' voor de tweede ruimte, enzovoort). Aangezien `Rooms/Type` verwijst niet naar een *één exemplaar* van het onderliggende veld `Type`, deze rechtstreeks in een filter kan niet worden gebruikt. In plaats daarvan om te filteren op type ruimte, gebruikt u een [lambda-expressie](search-query-odata-collection-operators.md) met een bereik-variabele, als volgt:
+Overweeg het pad naar `Address/City`het veld. In een filter verwijst dit naar één plaats voor het huidige document, zoals ' San Francisco '. `Rooms/Type` Verwijst daarentegen naar het `Type` subveld voor veel kamers (zoals ' standaard ' voor de eerste kamer ' Deluxe ' voor de tweede kamer, enzovoort). Omdat `Rooms/Type` niet naar *één exemplaar* van het subveld `Type`verwijst, kan het niet rechtstreeks worden gebruikt in een filter. In plaats daarvan gebruikt u een [lambda-expressie](search-query-odata-collection-operators.md) met een bereik variabele, als u wilt filteren op room-type:
 
     Rooms/any(room: room/Type eq 'deluxe')
 
-In dit voorbeeld wordt de variabele bereik `room` wordt weergegeven in de `room/Type` pad naar veld. Op die manier `room/Type` verwijst naar het type van de huidige ruimte in het huidige document. Dit is slechts één exemplaar van de `Type` veld, zodat deze rechtstreeks in het filter kan worden gebruikt.
+In dit voor beeld wordt de variabele `room` Range weer gegeven `room/Type` in het veld pad. Op die manier `room/Type` verwijst naar het type van de huidige ruimte in het huidige document. Dit is één exemplaar van het `Type` subveld, zodat het rechtstreeks in het filter kan worden gebruikt.
 
-### <a name="using-field-paths"></a>Met behulp van de paden van veld
+### <a name="using-field-paths"></a>Veld paden gebruiken
 
-Veld paden worden gebruikt in veel parameters van de [Azure Search-API](https://docs.microsoft.com/rest/api/searchservice/). De volgende tabel geeft een lijst van alle locaties waar ze kunnen worden gebruikt, plus eventuele beperkingen van hun gebruik:
+Veld paden worden gebruikt in veel para meters van de [Azure Search-API](https://docs.microsoft.com/rest/api/searchservice/). De volgende tabel bevat alle locaties waar ze kunnen worden gebruikt, plus eventuele beperkingen op het gebruik ervan:
 
 | API | Parameternaam | Beperkingen |
 | --- | --- | --- |
-| [Maak](https://docs.microsoft.com/rest/api/searchservice/create-index) of [Update](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `suggesters/sourceFields` | Geen |
-| [Maak](https://docs.microsoft.com/rest/api/searchservice/create-index) of [Update](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `scoringProfiles/text/weights` | Kan alleen verwijzen naar **doorzoekbare** velden |
-| [Maak](https://docs.microsoft.com/rest/api/searchservice/create-index) of [Update](https://docs.microsoft.com/rest/api/searchservice/update-index) Index | `scoringProfiles/functions/fieldName` | Kan alleen verwijzen naar **Filterbaar** velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search` Wanneer `queryType` is `full` | Kan alleen verwijzen naar **doorzoekbare** velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Kan alleen verwijzen naar **geschikt voor facetten** velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Kan alleen verwijzen naar **doorzoekbare** velden |
-| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Kan alleen verwijzen naar **doorzoekbare** velden |
-| [Voorstellen](https://docs.microsoft.com/rest/api/searchservice/suggestions) en [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Kan alleen verwijzen naar velden die deel van uitmaken een [suggestie](index-add-suggesters.md) |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents), [voorstellen](https://docs.microsoft.com/rest/api/searchservice/suggestions), en [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Kan alleen verwijzen naar **Filterbaar** velden |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) en [voorstellen](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Kan alleen verwijzen naar **sorteerbaar** velden |
-| [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents), [voorstellen](https://docs.microsoft.com/rest/api/searchservice/suggestions), en [opzoeken](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Kan alleen verwijzen naar **ophaalbaar** velden |
+| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Geen |
+| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| Index [maken](https://docs.microsoft.com/rest/api/searchservice/create-index) of [bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Kan alleen verwijzen naar **filter** bare velden |
+| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`Wanneer `queryType` is`full` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Kan alleen verwijzen naar **facetbare** velden |
+| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Kan alleen verwijzen naar **Doorzoek** bare velden |
+| [Suggesties](https://docs.microsoft.com/rest/api/searchservice/suggestions) en [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Kan alleen verwijzen naar velden die deel uitmaken van een [suggestie](index-add-suggesters.md) |
+| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents), Voorst [Ellen](https://docs.microsoft.com/rest/api/searchservice/suggestions)en [automatisch aanvullen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Kan alleen verwijzen naar **filter** bare velden |
+| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents) en Voorst [Ellen](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Kan alleen verwijzen naar **Sorteer** bare velden |
+| [Zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents), Voorst [Ellen](https://docs.microsoft.com/rest/api/searchservice/suggestions)en [Opzoeken](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Kan alleen verwijzen naar ophaalbaar velden |
 
 ## <a name="constants"></a>Constanten
 
-Constanten in OData worden letterlijke waarden van een bepaalde [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDP)-type. Zie [ondersteunde gegevenstypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor een lijst met ondersteunde typen in Azure Search. Constanten van verzamelingtypen worden niet ondersteund.
+Constanten in OData zijn letterlijke waarden van een bepaald type [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM). Zie [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) voor een lijst met ondersteunde typen in azure Search. Constanten van verzamelings typen worden niet ondersteund.
 
-De volgende tabel ziet u voorbeelden van constanten voor elk van de gegevens die worden ondersteund door Azure Search:
+De volgende tabel bevat voor beelden van constanten voor elk van de gegevens typen die worden ondersteund door Azure Search:
 
-| Gegevenstype | Voorbeeld van de constanten |
+| Gegevenstype | Voorbeeld constanten |
 | --- | --- |
 | `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
@@ -122,7 +122,7 @@ De volgende tabel ziet u voorbeelden van constanten voor elk van de gegevens die
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor het merendeel van de constanten die worden weergegeven in de bovenstaande tabel. De grammatica voor geo-ruimtelijk typen kunt u vinden in [OData, georuimtelijke functies in Azure Search](search-query-odata-geo-spatial-functions.md).
+De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de meeste constanten die in de bovenstaande tabel worden weer gegeven. De grammatica voor geo-ruimtelijke typen vindt u in de [geo-ruimtelijke functies van OData in azure Search](search-query-odata-geo-spatial-functions.md).
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -184,21 +184,21 @@ exponent ::= 'e' sign? integer_literal
 boolean_literal ::= 'true' | 'false'
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-## <a name="building-expressions-from-field-paths-and-constants"></a>Building expressies van het veld paden en constanten
+## <a name="building-expressions-from-field-paths-and-constants"></a>Expressies maken op basis van veld paden en constanten
 
-Veld paden en constanten zijn het meest eenvoudige deel van een OData-expressie, maar ze al volledige expressies zelf. In feite de **$select** parameter in Azure Search is alleen een door komma's gescheiden lijst met paden veld, en **$orderby** is niet veel ingewikkelder dan **$select**. Als u een veld van het type `Edm.Boolean` in uw index, kunt u ook een filter dat niets, maar het pad van dat veld te schrijven. De constanten `true` en `false` worden eveneens geldig filters.
+Veld paden en constanten vormen het meest eenvoudige deel van een OData-expressie, maar ze zijn al volledige expressies zelf. In feite is de para meter **$Select** in azure Search niets, maar een door komma's gescheiden lijst met veld paden en **$OrderBy** niet veel ingewik kelder dan **$Select**. Als u een veld van het type `Edm.Boolean` in de index wilt hebben, kunt u zelfs een filter schrijven dat niets maar het pad van dat veld is. De constanten `true` en `false` zijn ook geldige filters.
 
-Echter, de meeste gevallen moet u meer complexe expressies die naar meer dan één veld en constante verwijzen. Deze expressies zijn gebouwd op verschillende manieren, afhankelijk van de parameter.
+In de meeste gevallen hebt u echter complexere expressies nodig die naar meer dan een veld en constante verwijzen. Deze expressies zijn op verschillende manieren gebouwd, afhankelijk van de para meter.
 
-De volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de **$filter**, **$orderby**, en **$select** parameters. Deze zijn gebouwd op basis van eenvoudiger expressies die naar paden veld en constanten verwijzen:
+De volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definieert de grammatica voor de para meters **$filter**, **$OrderBy**en **$Select** . Deze zijn gebaseerd op eenvoudige expressies die verwijzen naar veld paden en constanten:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -210,26 +210,26 @@ order_by_expression ::= order_by_clause(',' order_by_clause)*
 select_expression ::= '*' | field_path(',' field_path)*
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-De **$orderby** en **$select** parameters zijn beide met door komma's gescheiden lijsten zijn van eenvoudiger expressies. De **$filter** parameter is een Booleaanse expressie die is samengesteld, van de onderliggende expressies eenvoudiger. Deze onderliggende expressies worden gecombineerd met behulp van de logische operators zoals [ `and`, `or`, en `not` ](search-query-odata-logical-operators.md), vergelijkingsoperators zoals [ `eq`, `lt`, `gt`, enzovoort](search-query-odata-comparison-operators.md), en verzameling operatoren zoals [ `any` en `all` ](search-query-odata-collection-operators.md).
+De para meters **$OrderBy** en **$Select** zijn zowel door komma's gescheiden lijsten met eenvoudigere expressies. De para meter **$filter** is een booleaanse expressie die bestaat uit een eenvoudiger subexpressie. Deze subexpressies worden gecombineerd met behulp van logische Opera tors zoals [ `and`, `or` `not` ](search-query-odata-logical-operators.md), [ `eq` `lt` `gt`](search-query-odata-comparison-operators.md)en, vergelijkings operatoren zoals,,, enzovoort, en verzameling Opera tors zoals [ `any` en `all` ](search-query-odata-collection-operators.md).
 
-De **$filter**, **$orderby**, en **$select** parameters worden verkend gedetailleerd besproken in de volgende artikelen:
+De para meters **$filter**, **$OrderBy**en **$Select** worden uitgebreid beschreven in de volgende artikelen:
 
-- [Syntaxis voor OData $filter in Azure Search](search-query-odata-filter.md)
-- [Syntaxis voor OData $orderby in Azure Search](search-query-odata-orderby.md)
-- [Syntaxis voor OData $select in Azure Search](search-query-odata-select.md)
+- [OData-$filter syntaxis in Azure Search](search-query-odata-filter.md)
+- [OData-$orderby syntaxis in Azure Search](search-query-odata-orderby.md)
+- [OData-$select syntaxis in Azure Search](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Zie ook  
 
-- [Facetnavigatie in Azure Search](search-faceted-navigation.md)
+- [Facet navigatie in Azure Search](search-faceted-navigation.md)
 - [Filters in Azure Search](search-filters.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene-querysyntaxis](query-lucene-syntax.md)
-- [Vereenvoudigde querysyntaxis in Azure Search](query-simple-syntax.md)
+- [Eenvoudige query syntaxis in Azure Search](query-simple-syntax.md)

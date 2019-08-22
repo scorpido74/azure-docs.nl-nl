@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2d4d39cc7b330794094745851856365ef54b42f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828200"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877188"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub bericht routering gebruiken om apparaat-naar-Cloud-berichten te verzenden naar verschillende eind punten
 
@@ -39,7 +39,7 @@ U kunt standaard [Event hubs integratie en sdk's](iot-hub-devguide-messages-read
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub ondersteunt het schrijven van gegevens naar Azure Blob Storage in de [Apache Avro](https://avro.apache.org/) -indeling en in de JSON-indeling. De mogelijkheid om de JSON-indeling te coderen, is algemeen beschikbaar in alle regio's waar IoT Hub beschikbaar is. De standaard waarde is AVRO. De coderings indeling kan alleen worden ingesteld wanneer het eind punt van de Blob-opslag is geconfigureerd. De indeling kan niet worden bewerkt voor een bestaand eind punt. Wanneer u JSON-code ring gebruikt, moet u het content type instellen op JSON en contentEncoding naar UTF-8 in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Als deze niet is ingesteld, worden de berichten in IoT Hub geschreven in de indeling basis 64-code ring. U kunt de coderings indeling selecteren met behulp van de IoT Hub REST API maken of bijwerken, met name de [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), de Azure Portal, de [Azure cli](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)of de [Azure Power shell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). In het volgende diagram ziet u hoe u de coderings indeling kunt selecteren in de Azure Portal.
+IoT Hub ondersteunt het schrijven van gegevens naar Azure Blob Storage in de [Apache Avro](https://avro.apache.org/) -indeling en in de JSON-indeling. De mogelijkheid om de JSON-indeling te coderen, is algemeen beschikbaar in alle regio's waar IoT Hub beschikbaar is. De standaard waarde is AVRO. De coderings indeling kan alleen worden ingesteld wanneer het eind punt van de Blob-opslag is geconfigureerd. De indeling kan niet worden bewerkt voor een bestaand eind punt. Wanneer u JSON-code ring gebruikt, moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](iot-hub-devguide-routing-query-syntax.md#system-properties). Beide waarden zijn niet hoofdletter gevoelig. Als de inhouds codering niet is ingesteld, schrijft IoT Hub de berichten in de indeling basis 64-code ring. U kunt de coderings indeling selecteren met behulp van de IoT Hub REST API maken of bijwerken, met name de [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), de Azure Portal, de [Azure cli](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)of de [Azure Power shell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). In het volgende diagram ziet u hoe u de coderings indeling kunt selecteren in de Azure Portal.
 
 ![Eindpunt codering van Blob-opslag](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -53,7 +53,7 @@ IoT Hub batch berichten en schrijft gegevens naar een BLOB wanneer de batch een 
 
 U kunt elke bestands naam Conventie gebruiken, maar u moet alle vermelde tokens gebruiken. IoT Hub wordt naar een lege BLOB geschreven als er geen gegevens zijn om te schrijven.
 
-Bij het door sturen naar Blob-opslag wordt aangeraden om de blobs in te schrijven en vervolgens te herhalen, om ervoor te zorgen dat alle containers worden gelezen zonder dat er aannames van de partitie worden gemaakt. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door [micro soft geïnitieerde failover](iot-hub-ha-dr.md#microsoft-initiated-failover) of IOT hub [hand matige failover](iot-hub-ha-dr.md#manual-failover-preview). U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs op te sommen. Raadpleeg het volgende voor beeld als richt lijn.
+Bij het door sturen naar Blob-opslag wordt aangeraden om de blobs in te schrijven en vervolgens te herhalen, om ervoor te zorgen dat alle containers worden gelezen zonder dat er aannames van de partitie worden gemaakt. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door [micro soft geïnitieerde failover](iot-hub-ha-dr.md#microsoft-initiated-failover) of IOT hub [hand matige failover](iot-hub-ha-dr.md#manual-failover). U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs op te sommen. Raadpleeg het volgende voor beeld als richt lijn.
 
    ```csharp
         public void ListBlobsInContainer(string containerName, string iothub)
@@ -103,7 +103,7 @@ U kunt de terugval route in-of uitschakelen op de Blade voor de Azure Portal-> b
 
 ## <a name="non-telemetry-events"></a>Niet-telemetrie-gebeurtenissen
 
-Naast de telemetrie van apparaten kunnen berichten routering ook dubbele wijzigings gebeurtenissen en levens cyclus gebeurtenissen van apparaten verzenden. Als er bijvoorbeeld een route is gemaakt met een gegevens bron die is ingesteld op **dubbele wijzigings gebeurtenissen**van het apparaat, IOT hub stuurt berichten naar het eind punt dat de wijziging in het dubbele apparaat bevat. Als er een route is gemaakt met een gegevens bron die is ingesteld op **levens cyclus gebeurtenissen van apparaten**, stuurt IOT hub een bericht dat aangeeft of het apparaat is verwijderd of gemaakt. 
+Naast de telemetrie van apparaten kunnen ook bericht routering het verzenden van dubbele wijzigings gebeurtenissen, levens cyclus gebeurtenissen en gebeurtenissen voor digitale dubbele wijzigingen (in open bare preview). Als er bijvoorbeeld een route is gemaakt met een gegevens bron die is ingesteld op **dubbele wijzigings gebeurtenissen**van het apparaat, IOT hub stuurt berichten naar het eind punt dat de wijziging in het dubbele apparaat bevat. Als er een route is gemaakt met een gegevens bron die is ingesteld op **levens cyclus gebeurtenissen van apparaten**, IOT hub een bericht verzenden dat aangeeft of het apparaat is verwijderd of gemaakt. Ten slotte kan een ontwikkelaar, als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md), routes maken met een gegevens bron die is ingesteld op **digitale dubbele wijzigings gebeurtenissen** en IOT hub berichten verzendt wanneer een digitale dubbele [eigenschap](../iot-pnp/iot-plug-and-play-glossary.md) is ingesteld of gewijzigd, een [digitale dubbele ](../iot-pnp/iot-plug-and-play-glossary.md)wordt vervangen of wanneer een wijzigings gebeurtenis plaatsvindt voor het onderliggende apparaat dubbele.
 
 [IOT hub integreert ook met Azure Event grid](iot-hub-event-grid.md) voor het publiceren van faxgebeurtenissen om realtime integraties en automatisering van werk stromen te ondersteunen op basis van deze gebeurtenissen. Bekijk de belangrijkste [verschillen tussen bericht Routering en Event grid](iot-hub-event-grid-routing-comparison.md) om te leren welke het beste werkt voor uw scenario.
 

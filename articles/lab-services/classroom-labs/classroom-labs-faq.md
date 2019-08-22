@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2019
+ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 261f337ac72a28bc2e1c74e23731242cc3bd0075
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 411037dd97350d877aff4e2d094c3408f168f9fd
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68572028"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648580"
 ---
 # <a name="classroom-labs-in-azure-lab-services---frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services-Veelgestelde vragen (FAQ)
 Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs in Azure Lab Services. 
@@ -44,13 +44,13 @@ Als u bijvoorbeeld een blok van/19-10.0.0.0/19 hebt, is dit adres bereik geschik
 Abonneer u op de [Azure Lab Services blog](https://azure.microsoft.com/blog/tag/azure-lab-services/).
 
 ## <a name="update-notifications"></a>Meldingen bijwerken
-Abonneer u op de [updates van Lab Services](https://azure.microsoft.com/updates/?product=lab-services) om op de hoogte te blijven van nieuwe functies in DevTest Labs.
+Abonneer u op de [updates van Lab Services](https://azure.microsoft.com/updates/?product=lab-services) om op de hoogte te blijven van nieuwe functies in de test services.
 
 ## <a name="general"></a>Algemeen
 ### <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 Als uw vraag hier niet wordt vermeld, laat het ons dan weten, zodat we u kunnen helpen om een antwoord te vinden.
 
 - Plaats een vraag aan het einde van deze veelgestelde vragen. 
-- Als u een breder publiek wilt bereiken, plaatst u een vraag op het [MSDN-forum van Azure DevTest Labs](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). 
-- Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure DevTest Labs gebruikers stem](https://feedback.azure.com/forums/320373-azure-devtest-labs).
+- Als u een breder publiek wilt bereiken, plaatst u een vraag op het [Azure Lab Services-stack overflow-forum](https://stackoverflow.com/questions/tagged/azure-lab-services). 
+- Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure Lab Services-gebruikers stem](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

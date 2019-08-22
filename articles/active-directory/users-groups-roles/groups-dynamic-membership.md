@@ -1,6 +1,6 @@
 ---
-title: Dynamische automatische regels voor groepslidmaatschap - Azure Active Directory | Microsoft Docs
-description: Het maken van regels voor groepslidmaatschap voor het automatisch vullen van groepen, en een verwijzing naar de regel.
+title: Dynamische regels voor automatisch groepslid maatschap-Azure Active Directory | Microsoft Docs
+description: Lidmaatschaps regels maken voor het automatisch invullen van groepen en een verwijzing naar een regel.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,113 +9,119 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 08/12/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0e0508babdd9ae703e38d58b079ab5fa16f68c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66397886"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650229"
 ---
-# <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regels voor dynamisch lidmaatschap voor groepen in Azure Active Directory
+# <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
-In Azure Active Directory (Azure AD), kunt u complexe op kenmerken gebaseerde regels voor het inschakelen van dynamisch lidmaatschap voor groepen. Dynamisch groepslidmaatschap vermindert de administratieve overhead van het toevoegen en verwijderen van gebruikers. Dit artikel worden de eigenschappen en de syntaxis voor het maken van dynamische lidmaatschapsregels voor gebruikers of apparaten. U kunt een regel instellen voor dynamisch lidmaatschap voor beveiligingsgroepen of Office 365-groepen.
+In Azure Active Directory (Azure AD) kunt u complexe op kenmerken gebaseerde regels maken om dynamische lidmaatschappen voor groepen in te scha kelen. Dynamisch groepslid maatschap vermindert de administratieve overhead van het toevoegen en verwijderen van gebruikers. In dit artikel vindt u informatie over de eigenschappen en syntaxis voor het maken van dynamische lidmaatschaps regels voor gebruikers of apparaten. U kunt een regel instellen voor dynamisch lidmaatschap voor beveiligingsgroepen of Office 365-groepen.
 
-Wanneer kenmerken van een gebruiker of apparaat wijzigt, evalueert het systeem alle dynamische groepsregels in een map om te controleren of de wijziging wilt activeren, een groep toevoegt of verwijdert. Als een gebruiker of het apparaat voldoet aan een regel voor een groep, worden ze toegevoegd als lid van die groep. Als ze niet langer voldoen aan de regel, worden ze verwijderd. U kunt geen handmatig toevoegen of verwijderen van een lid van een dynamische groep.
+Wanneer een van de kenmerken van een gebruiker of apparaat wordt gewijzigd, evalueert het systeem alle dynamische groeps regels in een map om te zien of de wijziging een groep toevoegt of verwijdert. Als een gebruiker of apparaat voldoet aan een regel voor een groep, worden deze toegevoegd als lid van die groep. Als ze niet meer voldoen aan de regel, worden ze verwijderd. U kunt een lid van een dynamische groep niet hand matig toevoegen of verwijderen.
 
-* U kunt een dynamische groep voor apparaten of voor gebruikers maken, maar u kunt een regel waarmee gebruikers en apparaten bevat kan niet maken.
-* U kunt een groep apparaten op basis van kenmerken van de eigenaren van het apparaat kan niet maken. Regels voor groepslidmaatschap apparaat kunnen alleen verwijzen naar apparaatkenmerken.
+* U kunt een dynamische groep maken voor apparaten of voor gebruikers, maar u kunt geen regel maken die zowel gebruikers als apparaten bevat.
+* U kunt geen apparaatgroep maken op basis van de kenmerken van de apparaat-eigen aren. Regels voor lidmaatschap van apparaten kunnen alleen verwijzen naar kenmerken van het apparaat.
 
 > [!NOTE]
-> Deze functie is een Azure AD Premium P1-licentie vereist voor elke unieke gebruiker die lid is van een of meer dynamische groepen. U hebt geen licenties toewijzen aan gebruikers voor ze lid zijn van dynamische groepen, maar hebt u het minimale aantal licenties in de tenant om te kunnen krijgen alle gebruikers. Bijvoorbeeld, als u had een totaal van 1000 unieke gebruikers in alle dynamische groepen in uw tenant, dan moet u ten minste 1000 licenties voor Azure AD Premium P1 om te voldoen aan de licentievereiste.
+> Voor deze functie is een Azure AD Premium P1-licentie vereist voor elke unieke gebruiker die lid is van een of meer dynamische groepen. U hoeft geen licenties toe te wijzen aan gebruikers, zodat ze lid zijn van dynamische groepen, maar u moet het minimum aantal licenties in de Tenant hebben om al deze gebruikers te kunnen behandelen. Als u bijvoorbeeld in totaal 1.000 unieke gebruikers in alle dynamische groepen in uw Tenant hebt, moet u ten minste 1.000 licenties voor Azure AD Premium P1 hebben om te voldoen aan de licentie vereisten.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>De hoofdtekst van de regel voor een verzameling maken
+## <a name="constructing-the-body-of-a-membership-rule"></a>De hoofd tekst van een lidmaatschaps regel samen stellen
 
-Een lidmaatschapsregel dat automatisch wordt ingevuld een groep met gebruikers of apparaten is een binaire expressie die in een resultaat true of false resulteert. De drie onderdelen van een eenvoudige regel zijn:
+Een lidmaatschaps regel die automatisch een groep met gebruikers of apparaten vult, is een binaire expressie die resulteert in het resultaat True of false. De drie delen van een eenvoudige regel zijn:
 
 * Eigenschap
 * Operator
 * Value
 
-De volgorde van de onderdelen in een expressie zijn belangrijk om te voorkomen dat syntaxisfouten.
+De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis fouten te voor komen.
+
+### <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
+
+Azure AD biedt een regel bouwer om uw belang rijke regels sneller te maken en bij te werken. De regel functie biedt ondersteuning voor Maxi maal vijf regels. Als u een zesde en eventuele latere regel voorwaarden wilt toevoegen, moet u het tekstvak gebruiken. Zie [een dynamische groep bijwerken](groups-update-rule.md)voor meer stapsgewijze instructies.
+
+   ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
 
 ### <a name="rules-with-a-single-expression"></a>Regels met één expressie
 
-Één expressie is de eenvoudigste vorm van de regel voor een verzameling en heeft alleen de drie onderdelen die hierboven worden vermeld. Een regel met een enkele expressie ziet er ongeveer als volgt uit: `Property Operator Value`, waarbij de syntaxis voor de eigenschap de naam van object.property.
+Eén expressie is de eenvoudigste vorm van een lidmaatschaps regel en heeft alleen de drie onderdelen die hierboven worden genoemd. Een regel met één expressie ziet er ongeveer als volgt uit `Property Operator Value`:, waarbij de syntaxis voor de eigenschap de naam van object. Property is.
 
-Hier volgt een voorbeeld van een correct samengestelde lidmaatschapsregel met één expressie:
+Hier volgt een voor beeld van een goed opgebouwde lidmaatschaps regel met één expressie:
 
 ```
 user.department -eq "Sales"
 ```
 
-Haakjes zijn optioneel voor één expressie. De totale lengte van de hoofdtekst van het lidmaatschapsregel niet langer zijn dan 2048 tekens.
+Haakjes zijn optioneel voor één expressie. De totale lengte van de hoofd tekst van de lidmaatschaps regel mag niet langer zijn dan 2048 tekens.
 
 ## <a name="supported-properties"></a>Ondersteunde eigenschappen
 
-Er zijn drie typen eigenschappen die kunnen worden gebruikt om een lidmaatschapsregel samen te stellen.
+Er zijn drie soorten eigenschappen die kunnen worden gebruikt om een lidmaatschaps regel samen te stellen.
 
-* Boolean
-* String
-* Tekenreeks-verzameling
+* Boolean-waarde
+* Tekenreeks
+* Teken reeks verzameling
 
-Hieronder vindt u de eigenschappen van de gebruiker die u gebruiken kunt om een enkele expressie te maken.
+Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie te maken.
 
-### <a name="properties-of-type-boolean"></a>Eigenschappen van het type boolean
+### <a name="properties-of-type-boolean"></a>Eigenschappen van het type Boolean
 
-| Properties | Toegestane waarden | Gebruik |
+| properties | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| accountEnabled |waar onwaar |user.accountEnabled - eq true |
-| dirSyncEnabled |waar onwaar |user.dirSyncEnabled -eq true |
+| accountEnabled |waar onwaar |User. accountEnabled-EQ True |
+| dirSyncEnabled |waar onwaar |User. dirSyncEnabled-EQ True |
 
-### <a name="properties-of-type-string"></a>Eigenschappen van het typetekenreeks
+### <a name="properties-of-type-string"></a>Eigenschappen van het type teken reeks
 
-| Properties | Toegestane waarden | Gebruik |
+| properties | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| city |Een tekenreekswaarde of *null* |(user.city - eq "waarde") |
-| Land/regio |Een tekenreekswaarde of *null* |(zoals user.country - eq "waarde") |
-| companyName | Een tekenreekswaarde of *null* | (user.companyName -eq "value") |
-| Afdeling |Een tekenreekswaarde of *null* |(user.department -eq "value") |
-| displayName |een string-waarde |(user.displayName -eq "value") |
-| werknemer-id |een string-waarde |(user.employeeId -eq "value")<br>(user.employeeId - ne *null*) |
-| facsimileTelephoneNumber |Een tekenreekswaarde of *null* |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |Een tekenreekswaarde of *null* |(user.givenName -eq "value") |
-| Functie |Een tekenreekswaarde of *null* |(user.jobTitle -eq "value") |
-| mail |Een tekenreekswaarde of *null* (SMTP-adres van de gebruiker) |(user.mail - eq "waarde") |
-| mailNickName |Een string-waarde (e-mailalias van de gebruiker) |(user.mailNickName -eq "value") |
-| mobiele |Een tekenreekswaarde of *null* |(user.mobile - eq "waarde") |
-| object-id |GUID van het gebruikersobject |(user.objectId -eq "11111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | On-premises beveiligings-id (SID) voor gebruikers die zijn gesynchroniseerd van on-premises naar de cloud. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
-| passwordPolicies |Geen DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |Een tekenreekswaarde of *null* |(user.physicalDeliveryOfficeName -eq "value") |
-| Postcode |Een tekenreekswaarde of *null* |(user.postalCode - eq "waarde") |
-| preferredLanguage |ISO 639-1 code |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |Een tekenreekswaarde of *null* |(user.sipProxyAddress -eq "value") |
-| state |Een tekenreekswaarde of *null* |(user.state - eq "waarde") |
-| streetAddress |Een tekenreekswaarde of *null* |(user.streetAddress -eq "value") |
-| Achternaam |Een tekenreekswaarde of *null* |(user.surname - eq "waarde") |
-| telephoneNumber |Een tekenreekswaarde of *null* |(user.telephoneNumber -eq "value") |
-| usageLocation |Twee letters landcode |(user.usageLocation -eq "US") |
-| userPrincipalName |een string-waarde |(user.userPrincipalName -eq "alias@domain") |
-| userType |lid Gast *null* |(user.userType - eq "Lid") |
+| city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
+| regio |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
+| companyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
+| Afdeling |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
+| displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
+| employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
+| facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
+| Functie |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
+| mail |Een wille keurige teken reeks waarde of *Null* (SMTP-adres van de gebruiker) |(gebruiker. mail-EQ "waarde") |
+| mailNickName |Een wille keurige teken reeks waarde (e-mail alias van de gebruiker) |(user.mailNickName -eq "value") |
+| mobiele |Een wille keurige teken reeks waarde of *Null* |(gebruiker. Mobile-EQ "waarde") |
+| object-id |GUID van het gebruikers object |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | Een on-premises beveiligings-id (SID) voor gebruikers die zijn gesynchroniseerd van on-premises naar de Cloud. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| passwordPolicies |Geen DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
+| physicalDeliveryOfficeName |Een wille keurige teken reeks waarde of *Null* |(User. physicalDeliveryOfficeName-EQ "waarde") |
+| Postcode |Een wille keurige teken reeks waarde of *Null* |(gebruiker. post code-EQ "waarde") |
+| preferredLanguage |ISO 639-1-code |(user.preferredLanguage -eq "en-US") |
+| sipProxyAddress |Een wille keurige teken reeks waarde of *Null* |(User. sipProxyAddress-EQ "waarde") |
+| toestand |Een wille keurige teken reeks waarde of *Null* |(User. State-EQ "waarde") |
+| streetAddress |Een wille keurige teken reeks waarde of *Null* |(User. streetAddress-EQ "waarde") |
+| Achternaam |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
+| telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
+| usageLocation |Land code van twee letters |(user.usageLocation -eq "US") |
+| userPrincipalName |Wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
+| userType |*Null* voor leden gast |(User. User type-EQ "lid") |
 
-### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type tekenreeks-verzameling
+### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling
 
-| Properties | Toegestane waarden | Gebruik |
+| properties | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| otherMails |een string-waarde |(user.otherMails-bevat "alias@domain") |
-| proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses-bevat "SMTP: alias@domain") |
+| otherMails |Wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-bevat "SMTP: alias@domain") |
 
-Zie voor de eigenschappen voor regels voor apparaten gebruikt, [regels voor apparaten](#rules-for-devices).
+Zie [regels voor apparaten](#rules-for-devices)voor de eigenschappen die worden gebruikt voor apparaat regels.
 
-## <a name="supported-operators"></a>Ondersteunde operators
+## <a name="supported-operators"></a>Ondersteunde Opera tors
 
-De volgende tabel bevat de ondersteunde operators en de syntaxis voor één expressie. Operators kunnen worden gebruikt met of zonder het voorvoegsel van het koppelteken (-).
+De volgende tabel geeft een lijst van alle ondersteunde Opera tors en hun syntaxis voor één expressie. Opera tors kunnen worden gebruikt met of zonder het afbreek streepje (-).
 
 | Operator | Syntaxis |
 | --- | --- |
@@ -125,60 +131,60 @@ De volgende tabel bevat de ondersteunde operators en de syntaxis voor één expr
 | Begint met |-startsWith |
 | Bevat niet |-notContains |
 | bevat |-bevat |
-| Komt niet overeen met |-notMatch |
-| Overeenkomst |-overeen met |
+| Niet overeen |-notMatch |
+| Overeenkomst |-overeenkomst |
 | In | -in |
-| Niet In | -notIn |
+| Niet in | -notIn |
 
-### <a name="using-the--in-and--notin-operators"></a>Met behulp van de - in en - notIn operators
+### <a name="using-the--in-and--notin-operators"></a>De Opera tors-in en notIn gebruiken
 
-Als u wilt vergelijken van de waarde van een gebruikerskenmerk op basis van een aantal verschillende waarden kunt u de - in of notIn - operators. Gebruik van de symbolen haakje ' [' en '] ' om te beginnen en eindigen van de lijst met waarden.
+Als u de waarde van een gebruikers kenmerk wilt vergelijken met een aantal verschillende waarden, kunt u de Opera tors-in of-notIn gebruiken. Gebruik de vier Kante symbolen ' [' en '] ' om de lijst met waarden te starten en te beëindigen.
 
- In het volgende voorbeeld wordt resulteert de expressie in waar als de waarde van user.department gelijk is aan een van de waarden in de lijst:
+ In het volgende voor beeld wordt de expressie geëvalueerd als waar als de waarde van gebruiker. Department gelijk is aan een van de waarden in de lijst:
 
 ```
    user.department -in ["50001","50002","50003","50005","50006","50007","50008","50016","50020","50024","50038","50039","51100"]
 ```
 
 
-### <a name="using-the--match-operator"></a>Met behulp van de - match-operator 
-De **-overeenkomen met** operator wordt gebruikt voor die overeenkomt met een reguliere expressie. Voorbeelden:
+### <a name="using-the--match-operator"></a>De operator-match gebruiken 
+De operator **-match** wordt gebruikt voor het vergelijken van een reguliere expressie. Voorbeelden:
 
 ```
 user.displayName -match "Da.*"   
 ```
-Da, Dav, David resulteren in waar, aDa wordt geëvalueerd als onwaar.
+Da, DAV, David evalueert naar waar, aDa resulteert in ONWAAR.
 
 ```
 user.displayName -match ".*vid"
 ```
-David resulteert in waar, Da wordt geëvalueerd als onwaar.
+David evalueert naar waar, da resulteert in ONWAAR.
 
 ## <a name="supported-values"></a>Ondersteunde waarden
 
-De waarden die worden gebruikt in een expressie kunnen bestaan uit verschillende typen, met inbegrip van:
+De waarden die in een expressie worden gebruikt, kunnen bestaan uit verschillende typen, waaronder:
 
 * Tekenreeksen
-* Boolean-waarde: true, false
-* Getallen
-* Aantal array, string-matrix-arrays
+* Boolean – True, False
+* Rijnummers
+* Matrices – nummer matrix, teken reeks matrix
 
-Bij het opgeven van een waarde in een expressie is het belangrijk dat u de juiste syntaxis gebruiken om fouten te voorkomen. Er zijn enkele tips syntaxis:
+Wanneer u een waarde in een expressie opgeeft, is het belang rijk dat u de juiste syntaxis gebruikt om fouten te voor komen. Enkele syntaxis tips zijn:
 
-* Dubbele aanhalingstekens zijn optioneel, tenzij de waarde een tekenreeks is.
-* Bewerkingen voor tekenreeks en reguliere expressie zijn niet hoofdlettergevoelig.
-* Wanneer een string-waarde dubbele aanhalingstekens bevat, beide aanhalingstekens moeten worden weergegeven met behulp van de \` teken, bijvoorbeeld user.department - eq \`' Sales\`' de juiste syntaxis is als 'Verkoop' de waarde is.
-* U kunt ook uitvoeren Null-controles met null als een waarde, bijvoorbeeld `user.department -eq null`.
+* Dubbele aanhalings tekens zijn optioneel tenzij de waarde een teken reeks is.
+* Teken reeks-en regex-bewerkingen zijn niet hoofdletter gevoelig.
+* Wanneer een teken reeks waarde dubbele aanhalings tekens bevat, moeten beide aanhalings tekens \` worden geescapet met behulp van het teken \`, bijvoorbeeld\`User. Department-EQ "Sales" is de juiste syntaxis als "Sales" de waarde is.
+* U kunt ook null-controles uitvoeren, waarbij null als waarde wordt gebruikt, bijvoorbeeld `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Gebruik van Null-waarden
 
-Als u wilt een null-waarde opgeven in een regel, kunt u de *null* waarde. 
+Als u een null-waarde in een regel wilt opgeven, kunt u de *Null* -waarde gebruiken. 
 
-* -Eq of -ne gebruiken bij het vergelijken van de *null* waarde in een expressie.
-* Gebruik aanhalingstekens rond het woord *null* alleen als u wilt dat deze moeten worden geïnterpreteerd als een letterlijke tekenreeks-waarde.
-* -Geen operator kan niet worden gebruikt als een vergelijkende operator op null-waarden. Als u deze gebruikt, krijgt u een fout of u null gebruiken of $null.
+* Gebruik-EQ of-ne bij het vergelijken van de *Null* -waarde in een expressie.
+* Gebruik alleen aanhalings tekens rondom het woord *Null* als u wilt dat het wordt geïnterpreteerd als een letterlijke teken reeks waarde.
+* De operator-Not kan niet worden gebruikt als een vergelijkings operator voor Null. Als u het gebruikt, wordt er een fout bericht weer geven of u null of $null gebruikt.
 
-De juiste manier om te verwijzen naar de waarde null is als volgt:
+De juiste manier om te verwijzen naar de null-waarde is als volgt:
 
 ```
    user.mail –ne null
@@ -186,18 +192,18 @@ De juiste manier om te verwijzen naar de waarde null is als volgt:
 
 ## <a name="rules-with-multiple-expressions"></a>Regels met meerdere expressies
 
-Een regel voor groepslidmaatschap kan bestaan uit meer dan één één expressie die zijn verbonden met de - en- of en - niet logische operators. Logische operators kunnen ook worden gebruikt in combinatie. 
+Een regel voor groepslid maatschap kan bestaan uit meer dan één expressie die is verbonden door de Opera tors-en,-or en-not. Logische Opera tors kunnen ook worden gebruikt in combi natie. 
 
-Hier volgen enkele voorbeelden van correct samengestelde lidmaatschapsregels met meerdere expressies:
+Hier volgen enkele voor beelden van goed geconstrueerde lidmaatschaps regels met meerdere expressies:
 
 ```
 (user.department -eq "Sales") -or (user.department -eq "Marketing")
 (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 ```
 
-### <a name="operator-precedence"></a>Operatoren
+### <a name="operator-precedence"></a>Operator prioriteit
 
-Alle operators worden in volgorde van prioriteit van de hoogste naar laagste hieronder vermeld. Operators op dezelfde regel zijn van dezelfde prioriteit:
+Alle Opera tors worden hieronder weer gegeven in volg orde van prioriteit van hoog naar laag. Opera tors op dezelfde regel zijn gelijk aan de prioriteit:
 
 ```
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
@@ -207,13 +213,13 @@ Alle operators worden in volgorde van prioriteit van de hoogste naar laagste hie
 -any -all
 ```
 
-Hieronder volgt een voorbeeld van operatoren waarbij twee expressies worden geëvalueerd voor de gebruiker:
+Hier volgt een voor beeld van de prioriteit van Opera tors waarbij twee expressies worden geëvalueerd voor de gebruiker:
 
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
 
-Haakjes zijn alleen nodig wanneer prioriteit voldoet niet aan uw vereisten. Bijvoorbeeld, als u afdeling wilt moet eerst worden geëvalueerd, ziet hieronder u hoe haakjes kunnen worden gebruikt om volgorde te bepalen:
+Haakjes zijn alleen nodig wanneer de prioriteit niet voldoet aan uw vereisten. Als u bijvoorbeeld wilt dat de afdeling eerst wordt geëvalueerd, ziet u in het volgende voor beeld hoe haakjes kunnen worden gebruikt om de volg orde te bepalen:
 
 ```
    user.country –eq "US" –and (user.department –eq "Marketing" –or user.department –eq "Sales")
@@ -221,96 +227,96 @@ Haakjes zijn alleen nodig wanneer prioriteit voldoet niet aan uw vereisten. Bijv
 
 ## <a name="rules-with-complex-expressions"></a>Regels met complexe expressies
 
-De regel voor een verzameling kan bestaan uit complexe expressies waarbij de eigenschappen, operators en waarden voor complexere formulieren nemen. Expressies worden beschouwd als complexe als een van de volgende voorwaarden voldaan wordt:
+Een lidmaatschaps regel kan bestaan uit complexe expressies waarbij de eigenschappen, Opera tors en waarden meer complexe formulieren hebben. Expressies worden beschouwd als complex wanneer een van de volgende voor waarden waar is:
 
-* De eigenschap bestaat uit een verzameling waarden. met name eigenschappen met meerdere waarden
-* De expressies-een en -alle operators
-* De waarde van de expressie kan zelf zijn een of meer expressies
+* De eigenschap bestaat uit een verzameling waarden; met name eigenschappen met meerdere waarden
+* De expressies gebruiken de Opera tors-any en-all
+* De waarde van de expressie kan zelf een of meer expressies zijn
 
 ## <a name="multi-value-properties"></a>Eigenschappen van meerdere waarden
 
-Eigenschappen van meerdere waarden zijn verzamelingen van objecten van hetzelfde type. Ze kunnen worden gebruikt om te maken met behulp van regels voor groepslidmaatschap-een en -alle logische operators.
+Eigenschappen van meerdere waarden zijn verzamelingen van objecten van hetzelfde type. Ze kunnen worden gebruikt om lidmaatschaps regels te maken met behulp van de logische Opera tors-any en-all.
 
-| Properties | Waarden | Gebruik |
+| properties | Waarden | Gebruik |
 | --- | --- | --- |
-| assignedPlans | Elk object in de verzameling beschrijft de tekenreekseigenschappen van de volgende: capabilityStatus, service, servicePlanId |user.assignedPlans-een (assignedPlan.servicePlanId - eq "efb87545-963c-4e0d-99df-69c6916d9eb0"- en assignedPlan.capabilityStatus - eq "Ingeschakeld") |
-| proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses-een (\_ -bevat "contoso")) |
+| assignedPlans | Elk object in de verzameling bevat de volgende teken reeks eigenschappen: capabilityStatus, service, servicePlanId |User. assignedPlans-any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-en assignedPlan. capabilityStatus-EQ "enabled") |
+| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -bevat "Contoso")) |
 
-### <a name="using-the--any-and--all-operators"></a>Met behulp van de - een en -alle operators
+### <a name="using-the--any-and--all-operators"></a>De Opera tors-any en-all gebruiken
 
-U kunt gebruiken: een en -alle operators om toe te passen van een voorwaarde op een of meer van de items in de verzameling, respectievelijk.
+U kunt-alle Opera tors en gebruiken om een voor waarde toe te passen op een of alle items in de verzameling.
 
-* -een (voldaan wanneer ten minste één item in de verzameling komt overeen met de voorwaarde)
-* -alle (voldaan als de voorwaarde die overeenkomen met alle items in de verzameling)
+* -any (voldaan wanneer ten minste één item in de verzameling overeenkomt met de voor waarde)
+* -alle (voldaan wanneer alle items in de verzameling overeenkomen met de voor waarde)
 
 #### <a name="example-1"></a>Voorbeeld 1
 
-gebruikt u assignedPlans is een eigenschap met meerdere waarden met een lijst met alle service-abonnementen toegewezen aan de gebruiker. De volgende expressie wordt gebruikers met de Exchange Online (abonnement 2) service-plan (als een GUID-waarde) die ook in de ingeschakelde status geselecteerd:
+assignedPlans is een eigenschap met meerdere waarden waarmee alle service plannen worden weer gegeven die aan de gebruiker zijn toegewezen. Met de volgende expressie selecteert u gebruikers die het service plan Exchange Online (abonnement 2) hebben (als GUID-waarde) die ook de status ingeschakeld heeft:
 
 ```
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-Een regel zoals deze kan worden gebruikt voor het groeperen van alle gebruikers voor wie een Office 365 (of andere Microsoft Online Service) mogelijkheid is ingeschakeld. U kunt vervolgens aan de groep met een set beleidsregels toepassen.
+Een regel zoals deze kan worden gebruikt voor het groeperen van alle gebruikers voor wie een Office 365 (of een andere micro soft online service)-mogelijkheid is ingeschakeld. Vervolgens kunt u een set beleids regels Toep assen op de groep.
 
 #### <a name="example-2"></a>Voorbeeld 2
 
-De volgende expressie selecteert alle gebruikers die beschikken over een service-plan dat is gekoppeld aan de Intune-service (aangeduid met de naam van de service "SCO"):
+Met de volgende expressie worden alle gebruikers geselecteerd die een service plan hebben dat is gekoppeld aan de intune-service (geïdentificeerd door de service naam ' SCO '):
 
 ```
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore--syntax"></a>Met behulp van het onderstrepingsteken (\_) syntaxis
+### <a name="using-the-underscore-_-syntax"></a>De syntaxis van het\_onderstrepings teken () gebruiken
 
-Het onderstrepingsteken (\_) syntaxis komt overeen met een specifieke waarde in een van de eigenschappen van de tekenreeks met meerdere waarden verzameling gebruikers of apparaten toevoegen aan een dynamische groep. Deze wordt gebruikt met de - of - alle operators.
+De syntaxis van\_het onderstrepings teken () komt overeen met een specifieke waarde in een van de eigenschappen van teken reeks verzameling met meerdere waarden om gebruikers of apparaten aan een dynamische groep toe te voegen. Het wordt gebruikt met de Opera tors-any of-all.
 
-Hier volgt een voorbeeld van het gebruik van het onderstrepingsteken (\_) in een regel voor het toevoegen van leden op basis van user.proxyAddress (dit werkt hetzelfde voor user.otherMails). Deze regel wordt elke gebruiker met de proxy-adres met 'contoso' aan de groep toegevoegd.
+Hier volgt een voor beeld van het gebruik van\_het onderstrepings teken () in een regel om leden toe te voegen op basis van User. proxyAddress attribuut (de functie werkt hetzelfde voor User. otherMails). Met deze regel wordt een gebruiker met een proxy adres dat ' Contoso ' bevat aan de groep toegevoegd.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
 ```
 
-## <a name="other-properties-and-common-rules"></a>Andere eigenschappen en de algemene regels
+## <a name="other-properties-and-common-rules"></a>Andere eigenschappen en algemene regels
 
-### <a name="create-a-direct-reports-rule"></a>Maak een regel "Directe ondergeschikten"
+### <a name="create-a-direct-reports-rule"></a>Een regel voor directe rapporten maken
 
-U kunt een groep met alle direct ondergeschikten van een manager maken. Wanneer de manager van de direct ondergeschikten in de toekomst wijzigt, wordt het lidmaatschap van de groep automatisch aangepast.
+U kunt een groep maken met alle directe ondergeschikten van een manager. Wanneer de directe rapporten van de manager in de toekomst worden gewijzigd, wordt het lidmaatschap van de groep automatisch aangepast.
 
-De regel direct ondergeschikten is gebouwd met behulp van de volgende syntaxis:
+De regel voor directe rapporten is samengesteld met behulp van de volgende syntaxis:
 
 ```
 Direct Reports for "{objectID_of_manager}"
 ```
 
-Hier volgt een voorbeeld van een geldige regel waar '62e19b97-8b3d-4d4a-a106-4ce66896a863' de object-id van de manager is:
+Hier volgt een voor beeld van een geldige regel waarbij ' 62e19b97-8b3d-4d4a-A106-4ce66896a863 ' de objectID van de Manager is:
 
 ```
 Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 ```
 
-De volgende tips kunt u goed gebruik van de regel.
+Aan de hand van de volgende tips kunt u de regel op de juiste manier gebruiken.
 
-* De **Manager ID** is de object-ID van de manager. Het kan worden gevonden in de manager van de **profiel**.
-* Voor de regel om te werken, zorg ervoor dat de **Manager** eigenschap correct is ingesteld voor gebruikers in uw tenant. U kunt de huidige waarde van de gebruiker controleren **profiel**.
-* Deze regel ondersteunt alleen de manager van de direct ondergeschikten. Met andere woorden, u een groep kunt maken met de manager van de direct ondergeschikten *en* hun rapporten.
-* Deze regel kan niet worden gecombineerd met andere lidmaatschapsregels.
+* De **manager-id** is de object-id van de Manager. Dit kan worden gevonden in het **profiel**van de Manager.
+* Zorg ervoor dat de eigenschap **Manager** correct is ingesteld voor gebruikers in uw Tenant om de regel te laten werken. U kunt de huidige waarde in het **profiel**van de gebruiker controleren.
+* Deze regel ondersteunt alleen de directe ondergeschikten van de Manager. Met andere woorden, u kunt geen groep maken met de directe rapporten van de Manager *en* de bijbehorende rapporten.
+* Deze regel kan niet worden gecombineerd met andere lidmaatschaps regels.
 
-### <a name="create-an-all-users-rule"></a>Een regel voor 'Alle gebruikers' maken
+### <a name="create-an-all-users-rule"></a>Een regel voor ' alle gebruikers ' maken
 
-U kunt een groep met alle gebruikers in een tenant met behulp van de regel voor een verzameling kunt maken. Wanneer gebruikers worden toegevoegd of verwijderd uit de tenant in de toekomst, wordt het lidmaatschap van de groep wordt automatisch aangepast.
+U kunt een groep met alle gebruikers binnen een Tenant maken met behulp van een lidmaatschaps regel. Wanneer gebruikers in de toekomst worden toegevoegd of verwijderd uit de Tenant, wordt het lidmaatschap van de groep automatisch aangepast.
 
-De regel 'Alle gebruikers' is gebouwd met behulp van één expressie met behulp van de operator - ne en de null-waarde. Met deze regel wordt gebruikers van B2B-gasten, evenals lidgebruikers toegevoegd aan de groep.
+De regel ' alle gebruikers ' is gemaakt met behulp van een enkele expressie met behulp van de-ne-operator en de null-waarde. Deze regel voegt B2B-gast gebruikers toe, evenals gebruikers van leden aan de groep.
 
 ```
 user.objectid -ne null
 ```
 
-### <a name="create-an-all-devices-rule"></a>Een regel voor 'Alle apparaten' maken
+### <a name="create-an-all-devices-rule"></a>Een regel voor alle apparaten maken
 
-U kunt een groep met alle apparaten in een tenant met behulp van de regel voor een verzameling kunt maken. Wanneer apparaten worden toegevoegd of verwijderd uit de tenant in de toekomst, wordt het lidmaatschap van de groep wordt automatisch aangepast.
+U kunt een groep met alle apparaten binnen een Tenant maken met behulp van een lidmaatschaps regel. Wanneer apparaten in de toekomst worden toegevoegd of verwijderd uit de Tenant, wordt het lidmaatschap van de groep automatisch aangepast.
 
-De regel 'Alle apparaten' is gebouwd met behulp van één expressie met behulp van de operator - ne en de null-waarde:
+De regel ' alle apparaten ' is gemaakt met behulp van een enkele expressie met behulp van de-ne-operator en de null-waarde:
 
 ```
 device.objectid -ne null
@@ -318,54 +324,54 @@ device.objectid -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Extensie-eigenschappen en aangepaste extensie-eigenschappen
 
-Extensiekenmerken en aangepaste extensie-eigenschappen worden ondersteund als de eigenschappen van een verbindingsreeks in dynamisch-lidmaatschapregels. Extensiekenmerken vanuit on-premises Windows Server AD worden gesynchroniseerd en neemt de indeling van "ExtensionAttributeX", waarbij X gelijk is aan 1-15. Hier volgt een voorbeeld van een regel die gebruikmaakt van een extensiekenmerk als een eigenschap:
+Extensie kenmerken en aangepaste extensie-eigenschappen worden ondersteund als teken reeks eigenschappen in dynamische lidmaatschaps regels. Extensie kenmerken worden gesynchroniseerd vanaf de on-premises venster server AD en hebben de indeling ' ExtensionAttributeX ', waarbij X gelijk is aan 1-15. Hier volgt een voor beeld van een regel die gebruikmaakt van een uitbreidings kenmerk als een eigenschap:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Aangepaste extensie-eigenschappen zijn gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en zijn van de indeling van `user.extension_[GUID]__[Attribute]`, waarbij:
+Aangepaste extensie-eigenschappen worden gesynchroniseerd vanuit on-premises Windows Server AD of vanuit een verbonden SaaS-toepassing en hebben de indeling `user.extension_[GUID]__[Attribute]`van, waarbij:
 
-* [GUID] is de unieke id in Azure AD voor de toepassing die de eigenschap in Azure AD gemaakt
-* [Kenmerk] is de naam van de eigenschap zoals deze is gemaakt
+* [GUID] is de unieke id in azure AD voor de toepassing die de eigenschap heeft gemaakt in azure AD
+* [Kenmerk] is de naam van de eigenschap die is gemaakt
 
-Een voorbeeld van een regel die gebruikmaakt van een aangepaste extensie-eigenschap is:
+Een voor beeld van een regel die gebruikmaakt van een aangepaste extensie-eigenschap is:
 
 ```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Naam van de aangepaste eigenschap kan worden gevonden in de map door het opvragen van een gebruiker de eigenschap met behulp van Graph Explorer en te zoeken naar de eigenschapsnaam. Bovendien kunt u nu kiezen **aangepaste extensie-eigenschappen ophalen** koppeling in de opbouwfunctie voor dynamische gebruiker groep regel voor een unieke app-ID invoeren en ontvangen van de volledige lijst met aangepaste extensie-eigenschappen om te gebruiken bij het maken van een regel voor dynamisch lidmaatschap. Deze lijst kan ook worden vernieuwd om op te halen van alle nieuwe aangepaste extensie-eigenschappen voor die app.
+De naam van de aangepaste eigenschap kan worden gevonden in de map door de eigenschap Graph Explorer te gebruiken om een query uit te zoeken naar de eigenschaps naam. U kunt nu ook de koppeling **aangepaste extensie eigenschappen ophalen** selecteren in de opbouw functie voor de groep voor dynamische gebruikers om een unieke app-id in te voeren en de volledige lijst met aangepaste extensie-eigenschappen te ontvangen die moeten worden gebruikt bij het maken van een dynamische lidmaatschaps regel. Deze lijst kan ook worden vernieuwd om op te halen van alle nieuwe aangepaste extensie-eigenschappen voor die app.
 
 ## <a name="rules-for-devices"></a>Regels voor apparaten
 
-U kunt ook een regel waarmee apparaatobjecten voor lidmaatschap in een groep selecteert maken. U geen gebruikers en apparaten als leden van de beveiligingsgroep. De **organizationalUnit** kenmerk niet meer wordt weergegeven en mag niet worden gebruikt. Deze tekenreeks in bepaalde gevallen door Intune is ingesteld, maar wordt niet herkend door Azure AD, zodat er zijn geen apparaten zijn toegevoegd aan groepen op basis van dit kenmerk.
+U kunt ook een regel maken waarmee objecten worden geselecteerd voor lidmaatschap van een groep. U kunt niet zowel gebruikers als groeps leden hebben. Het kenmerk **organizationalUnit** wordt niet meer weer gegeven en mag niet worden gebruikt. Deze teken reeks wordt in specifieke gevallen door intune ingesteld, maar wordt niet herkend door Azure AD, zodat er geen apparaten worden toegevoegd aan groepen op basis van dit kenmerk.
 
-De volgende apparaatkenmerken kunnen worden gebruikt.
+De volgende kenmerken van apparaten kunnen worden gebruikt.
 
- Apparaatkenmerk  | Waarden | Voorbeeld
+ Kenmerk apparaat  | Waarden | Voorbeeld
  ----- | ----- | ----------------
- accountEnabled | waar onwaar | (device.accountEnabled - eq true)
- displayName | een string-waarde |(device.displayName -eq "Rob iPhone")
- deviceOSType | een string-waarde | (of device.deviceOSType - eq "iPad")- of (of device.deviceOSType - eq "iPhone")<br>(of device.deviceOSType-bevat "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
- deviceOSVersion | een string-waarde | (device.deviceOSVersion - eq "9.1")
- deviceCategory | een geldige naam van de apparaatcategorie | (device.deviceCategory - eq "BYOD")
- deviceManufacturer | een string-waarde | (device.deviceManufacturer -eq "Samsung")
- deviceModel | een string-waarde | (device.deviceModel -eq "iPad Air")
- deviceOwnership | Persoonlijk, bedrijf, onbekend | (device.deviceOwnership - eq 'Bedrijf')
- enrollmentProfileName | Naam van Apple-Inschrijvingsprofiel voor apparaten of Windows Autopilot-profiel | (device.enrollmentProfileName -eq "DEP iPhones")
- isRooted | waar onwaar | (device.isRooted -eq true)
- managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de Intune-PC-agent) | (device.managementType - eq 'MDM')
- deviceId | een geldige Azure AD-apparaat-ID | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- object-id | een geldige Azure AD-object-ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
- systemLabels | een willekeurige tekenreeks die overeenkomt met de eigenschap voor Intune voor apparaten van de moderne werkplek tagging | (device.systemLabels-bevat "M365Managed")
+ accountEnabled | waar onwaar | (Device. accountEnabled-EQ True)
+ displayName | wille keurige teken reeks waarde |(apparaat. displayName-EQ "Rob iPhone")
+ deviceOSType | wille keurige teken reeks waarde | (Device. deviceOSType-EQ "iPad")-of (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-bevat "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
+ deviceOSVersion | wille keurige teken reeks waarde | (Device. deviceOSVersion-EQ "9,1")
+ deviceCategory | een geldige naam voor een apparaatcategorie | (Device. deviceCategory-EQ "BYOD")
+ deviceManufacturer | wille keurige teken reeks waarde | (device.deviceManufacturer -eq "Samsung")
+ deviceModel | wille keurige teken reeks waarde | (Device. deviceModel-EQ "iPad-Air")
+ deviceOwnership | Persoonlijk, bedrijf, onbekend | (apparaat. deviceOwnership-EQ "bedrijf")
+ enrollmentProfileName | Naam van Apple Device Enrollment profile of Windows auto pilot-profiel | (apparaat. enrollmentProfileName-EQ "DEP iPhones")
+ isRooted | waar onwaar | (Device. isRooted-EQ True)
+ managementType | MDM (voor mobiele apparaten)<br>PC (voor computers die worden beheerd door de intune-PC-agent) | (Device. managementType-EQ "MDM")
+ deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ object-id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ systemLabels | een teken reeks die overeenkomt met de eigenschap van het intune-apparaat voor het labelen van moderne werkplek apparaten | (Device. systemLabels-bevat "M365Managed")
 
 > [!Note]  
-> Voor de deviceOwnership bij het maken van dynamische groepen voor apparaten moet u de waarde gelijk is aan 'Bedrijf' instellen. Het eigendom van het apparaat wordt in Intune in plaats daarvan weergegeven als Bedrijfseigendom. Raadpleeg [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) voor meer informatie. 
+> Voor de deviceOwnership bij het maken van dynamische groepen voor apparaten moet u de waarde instellen op ' bedrijf '. Op intune wordt het eigendom van het apparaat in plaats van het bedrijf weer gegeven. Raadpleeg [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze artikelen bevatten aanvullende informatie over groepen in Azure Active Directory.
+In deze artikelen vindt u aanvullende informatie over groepen in Azure Active Directory.
 
 * [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)

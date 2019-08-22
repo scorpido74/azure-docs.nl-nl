@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 04/29/2019
+ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee8af77ce8f3897fdf1cb3da9a125acca28f9419
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358709"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656327"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL gebruiken om een webservice te beveiligen via Azure Machine Learning
 
@@ -66,7 +66,7 @@ Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres 
 > Als de certificerings instantie het certificaat en de sleutel niet kan leveren als met PEM gecodeerde bestanden, kunt u een hulp programma zoals [openssl](https://www.openssl.org/) gebruiken om de indeling te wijzigen.
 
 > [!WARNING]
-> Gebruik  zelfondertekende certificaten alleen voor ontwikkeling. Gebruik deze niet in productie omgevingen. Zelfondertekende certificaten kunnen leiden tot problemen in uw client toepassingen. Zie de documentatie voor de netwerk bibliotheken die uw client toepassing gebruikt voor meer informatie.
+> Gebruik zelfondertekende certificaten alleen voor ontwikkeling. Gebruik deze niet in productie omgevingen. Zelfondertekende certificaten kunnen leiden tot problemen in uw client toepassingen. Zie de documentatie voor de netwerk bibliotheken die uw client toepassing gebruikt voor meer informatie.
 
 ## <a id="enable"></a>SSL inschakelen en implementeren
 
@@ -152,6 +152,107 @@ Vervolgens moet u uw DNS om te verwijzen naar de webservice bijwerken.
   Werk de DNS bij op het tabblad **configuratie** van het open bare IP-adres van het AKS-cluster. (Zie de volgende afbeelding.) Het open bare IP-adres is een resource type dat wordt gemaakt onder de resource groep die de AKS-agent knooppunten en andere netwerk bronnen bevat.
 
   ![Azure Machine Learning-service: Webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+
+## <a name="update-the-ssl-certificate"></a>Het SSL-certificaat bijwerken
+
+SSL-certificaten verlopen en moeten worden vernieuwd. Dit gebeurt meestal elk jaar. Gebruik de informatie in de volgende secties om uw certificaat bij te werken en te vernieuwen voor modellen die zijn geïmplementeerd in azure Kubernetes service:
+
+### <a name="update-a-microsoft-generated-certificate"></a>Een door micro soft gegenereerd certificaat bijwerken
+
+Als het certificaat oorspronkelijk is gegenereerd door micro soft (als u de *leaf_domain_label* gebruikt om de service te maken), gebruikt u een van de volgende voor beelden om het certificaat bij te werken:
+
+**De SDK gebruiken**
+
+```python
+from azureml.core.compute import AksCompute
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute.aks import SslConfiguration
+
+# Get the existing cluster
+aks_target = AksCompute(ws, clustername)
+
+# Update the existing certificate by referencing the leaf domain label
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+update_config = AksUpdateConfiguration(ssl_configuration)
+aks_target.update(update_config)
+```
+
+**De CLI gebruiken**
+
+```azurecli
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+```
+
+Zie voor meer informatie de volgende naslag documenten:
+
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+
+### <a name="update-custom-certificate"></a>Aangepast certificaat bijwerken
+
+Als het certificaat oorspronkelijk is gegenereerd door een certificerings instantie, gebruikt u de volgende stappen:
+
+1. Gebruik de documentatie van de certificerings instantie om het certificaat te vernieuwen. Met dit proces worden nieuwe certificaat bestanden gemaakt.
+
+1. Gebruik de SDK of CLI om de service bij te werken met het nieuwe certificaat:
+
+    **De SDK gebruiken**
+
+    ```python
+    from azureml.core.compute import AksCompute
+    from azureml.core.compute.aks import AksUpdateConfiguration
+    from azureml.core.compute.aks import SslConfiguration
+    
+    # Read the certificate file
+    def get_content(file_name):
+        with open(file_name, 'r') as f:
+            return f.read()
+
+    # Get the existing cluster
+    aks_target = AksCompute(ws, clustername)
+    
+    # Update cluster with custom certificate
+    ssl_configuration = SslConfiguration(cname="myaks", cert=get_content('cert.pem'), key=get_content('key.pem'))
+    update_config = AksUpdateConfiguration(ssl_configuration)
+    aks_target.update(update_config)
+    ```
+
+    **De CLI gebruiken**
+
+    ```azurecli
+    az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-cname "myaks"--ssl-cert-file "cert.pem" --ssl-key-file "key.pem"
+    ```
+
+Zie voor meer informatie de volgende naslag documenten:
+
+* [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
+* [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
+
+## <a name="disable-ssl"></a>SSL uitschakelen
+
+Als u SSL wilt uitschakelen voor een model dat is geïmplementeerd in azure Kubernetes service, kunt u de SDK of CLI gebruiken:
+
+**De SDK gebruiken**
+
+```python
+from azureml.core.compute import AksCompute
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute.aks import SslConfiguration
+
+# Get the existing cluster
+aks_target = AksCompute(ws, clustername)
+
+# Disable SSL
+ssl_configuration = SslConfiguration(status="Disabled")
+update_config = AksUpdateConfiguration(ssl_configuration)
+aks_target.update(update_config)
+```
+
+**De CLI gebruiken**
+
+```azurecli
+ az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 Leer hoe u het volgende doet:
