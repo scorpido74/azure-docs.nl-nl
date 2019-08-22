@@ -1,119 +1,119 @@
 ---
 title: Secure Azure Computing Architecture
-description: Deze referentiearchitectuur voor een architectuur op ondernemingsniveau-DMZ maakt gebruik van network virtual appliances en andere hulpprogramma's. Deze architectuur is ontworpen om te voldoen aan het Ministerie van defensie van Secure Cloud Computing-architectuur functionele vereisten. Deze kan ook worden gebruikt voor elke organisatie. Deze referentie bevat twee geautomatiseerde opties die gebruikmaken van Citrix of F5 apparaten.
+description: Deze referentie architectuur voor een DMZ-architectuur op bedrijfs niveau maakt gebruik van virtuele netwerk apparaten en andere hulpprogram ma's. Deze architectuur is ontworpen om te voldoen aan de functionele vereisten van het ministerie van defensie voor de veiligheid van Cloud Computing. Het kan ook worden gebruikt voor elke organisatie. Deze verwijzing bevat twee geautomatiseerde opties die gebruikmaken van Citrix-of F5-apparaten.
 author: jahender
 ms.author: jahender
 ms.date: 4/9/2019
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 017a26d5672f666d4d8eaf629a0f53fe0cfe517f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a27eac3d4609f1054b0ef6a9417fe2f1ca53ae4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963232"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656645"
 ---
 # <a name="secure-azure-computing-architecture"></a>Secure Azure Computing Architecture
 
-V.S. Ministerie van defensie (DoD)-klanten die workloads in Azure implementeren hebben gevraagd om informatie voor de beveiligde virtuele netwerken configureren en instellen van de beveiligingsprogramma's en services die worden bepaald door het Amerikaanse ministerie van defensie standaarden en procedures. 
+V.S. Klanten met een ministerie van defensie (DoD) die werk belastingen implementeren naar Azure, hebben gevraagd om veilige virtuele netwerken in te stellen en de beveiligings Programma's en-services te configureren die worden bepaald door de standaard instellingen en-prak tijken van DoD. 
 
-Defense Information System Agency (DISA) gepubliceerd de [Secure Cloud Computing-architectuur (SCCA) functionele vereisten Document (FRD)](https://iasecontent.disa.mil/stigs/pdf/SCCA_FRD_v2-9.pdf) in 2017. SCCA beschrijft de functionele doelstellingen voor het beveiligen van de Defense Information System van netwerk (DISN) en de commerciële cloud connection points van de provider. SCCA beschrijft ook hoe missie eigenaren van beveiligde toepassingen aan de grens van de verbinding in de cloud. Elke DoD-entiteit die verbinding met de commerciële cloud maakt moet de richtlijnen die zijn uiteengezet in de FRD SCCA volgen.
+De defensie Information System Agency (DISA) heeft het [document van de SCCA (Secure Cloud Computing Architecture) gepubliceerd (FRD)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/SCCA_FRD_v2-9.pdf) in 2017. SCCA beschrijft de functionele doel stellingen voor het beveiligen van de beveiligings punten van het defensie Information System-netwerk (DISN) en commerciële Cloud provider. SCCA beschrijft ook hoe missie-eigen aren Cloud toepassingen beveiligen tegen de grens van de verbinding. Elke DoD-entiteit die verbinding maakt met de commerciële Cloud moet voldoen aan de richt lijnen die zijn uiteengezet in de SCCA-FRD.
  
-De SCCA bestaat uit vier onderdelen:
+De SCCA heeft vier onderdelen:
  
-- Grens Cloud Access Point (BCAP)
-- Virtueel Datacenter Security-Stack (VDSS)
-- Virtueel Datacenter beheerde Service (VDM's)
-- Referentiebeheer vertrouwde Cloud (TCCM) 
+- Grens Cloud toegangs punt (BCAP)
+- Virtual Data Center Security stack (VDSS)
+- Virtual Data Center Managed Service (VDMS)
+- Trusted Cloud Credential Manager (TCCM) 
 
-Er is een oplossing die voldoet aan de SCCA voor zowel IL4 en IL5 workloads die worden uitgevoerd in Azure ontwikkeld. Deze Azure-specifieke oplossing wordt de beveiligde Azure Computing-architectuur (SACA) genoemd. Klanten die SACA implementeren zijn in overeenstemming met de FRD SCCA. Klanten DoD-werkbelastingen verplaatsen naar Azure, nadat ze zijn verbonden kan worden ingeschakeld.
+Micro soft heeft een oplossing ontwikkeld die voldoet aan de SCCA-vereisten voor zowel IL4-als IL5-workloads die in Azure worden uitgevoerd. Deze specifieke Azure-oplossing wordt de beveiligde Azure Computing Architecture (SACA) genoemd. Klanten die SACA implementeren, voldoen aan de SCCA-FRD. Ze kunnen klanten van DoD in staat stellen werk belastingen naar Azure te verplaatsen nadat ze zijn verbonden.
 
-SCCA richtlijnen en architecturen zijn specifiek voor het Amerikaanse ministerie van defensie klanten, maar de meest recente wijzigingen aan SACA help civiele klanten te voldoen aan de richtlijnen voor vertrouwde internet verbinding (TIC). De meest recente wijzigingen kunnen ook commerciële klanten die voor het implementeren van een beveiligd DMZ ter bescherming van hun Azure-omgevingen.
+SCCA-richt lijnen en-architecturen zijn specifiek voor klanten van DoD, maar de laatste revisies voor SACA die civiele klanten helpen te voldoen aan de richt lijnen voor de betrouw bare Internet verbinding (boter). Met de meest recente revisies kunnen commerciële klanten die een beveiligde DMZ willen implementeren, hun Azure-omgevingen beveiligen.
 
 
-## <a name="secure-cloud-computing-architecture-components"></a>Onderdelen van beveiligde Cloud Computing-architectuur
+## <a name="secure-cloud-computing-architecture-components"></a>Architectuur onderdelen van Cloud Computing beveiligen
 
 ### <a name="bcap"></a>BCAP
 
-Het doel van de BCAP is de DISN beschermen tegen aanvallen die afkomstig uit de cloudomgeving zijn. BCAP voert inbraakdetectie en preventie. het is ook gefilterd van niet-geautoriseerde verkeer. Dit onderdeel kan worden geplaatst met andere onderdelen van de SCCA. Het is raadzaam dat u dit onderdeel implementeren met behulp van de fysieke hardware. BCAP beveiligingsvereisten worden in de volgende tabel weergegeven.
+Het doel van de BCAP is om de DISN te beschermen tegen aanvallen die afkomstig zijn uit de cloud omgeving. BCAP voert detectie en preventie van indringers uit. ook wordt het niet-geautoriseerde verkeer gefilterd. Dit onderdeel kan zich op dezelfde locatie bevinden als andere onderdelen van de SCCA. U wordt aangeraden dit onderdeel te implementeren met behulp van fysieke hardware. De beveiligings vereisten voor BCAP worden in de volgende tabel weer gegeven.
 
-#### <a name="bcap-security-requirements"></a>BCAP voor beveiliging voldoen
+#### <a name="bcap-security-requirements"></a>Beveiligings vereisten voor BCAP
 
-![BCAP vereisten matrix](media/bcapreqs.png)
+![BCAP-vereisten matrix](media/bcapreqs.png)
 
 
 ### <a name="vdss"></a>VDSS
 
-Het doel van de VDSS is Amerikaanse ministerie van defensie eigenaar van essentiële toepassingen die worden gehost in Azure te beschermen. Het grootste deel van de beveiligingsbewerkingen voert VDSS in de SCCA. Het voert inspectie van verkeer voor het beveiligen van de toepassingen die worden uitgevoerd in Azure. Dit onderdeel kan worden opgegeven in uw Azure-omgeving.
+Het doel van de VDSS is om toepassingen voor de missie van het DoD-eigendom te beveiligen die worden gehost in Azure. VDSS voert het meren deel van de beveiligings bewerkingen uit in de SCCA. Het verkeer wordt geïnspecteerd om de toepassingen te beveiligen die worden uitgevoerd in Azure. Dit onderdeel kan worden opgenomen in uw Azure-omgeving.
 
-#### <a name="vdss-security-requirements"></a>VDSS voor beveiliging voldoen
+#### <a name="vdss-security-requirements"></a>Beveiligings vereisten voor VDSS
 
-![VDSS vereisten matrix](media/vdssreqs.png)
+![VDSS-vereisten matrix](media/vdssreqs.png)
 
 ### <a name="vdms"></a>VDMS
 
-Het doel van VDM's is voor de hostbeveiliging en gedeelde data center-services. De functies van VDM's kunnen uitvoeren in de hub van uw SCCA of de eigenaar van de essentiële onderdelen van het in hun eigen specifieke Azure-abonnement kunt implementeren. Dit onderdeel kan worden opgegeven in uw Azure-omgeving.
+Het doel van VDMS is het bieden van host Security en Shared Data Center Services. De functies van VDMS kunnen worden uitgevoerd in de hub van uw SCCA of de eigenaar van de missie kan delen van deze implementeren in hun eigen specifieke Azure-abonnement. Dit onderdeel kan worden opgenomen in uw Azure-omgeving.
 
-#### <a name="vdms-security-requirements"></a>VDM's voor beveiliging voldoen
+#### <a name="vdms-security-requirements"></a>Beveiligings vereisten voor VDMS
 
-![Matrix van VDM's-vereisten](media/vdmsreqs.png)
+![VDMS-vereisten matrix](media/vdmsreqs.png)
 
 
 ### <a name="tccm"></a>TCCM
 
-TCCM is een zakelijke rol. Deze persoon is verantwoordelijk voor het beheren van de SCCA. Hun taken zijn: 
+TCCM is een zakelijke rol. Deze persoon is verantwoordelijk voor het beheer van de SCCA. Hun taken zijn: 
 
-- Tot stand brengen plannen en beleidsregels voor toegang tot de cloudomgeving. 
-- Zorg ervoor dat identiteits-en goed functioneren. 
-- Plan voor de Cloud referentie onderhouden. 
+- Stel plannen en beleids regels in voor account toegang tot de cloud omgeving. 
+- Zorg ervoor dat identiteits-en toegangs beheer goed werkt. 
+- Onderhoud van het Cloud Credential management-plan. 
 
-Deze persoon is aangewezen door de autorisatie Official-kwalificatie. De BCAP, VDSS en VDM's bieden de mogelijkheden die de TCCM nodig heeft om uit te voeren hun taak.
+Deze persoon wordt benoemd door de geautoriseerde ambtenaar. De BCAP, VDSS en VDMS bieden de mogelijkheden die de TCCM nodig heeft om de taak uit te voeren.
 
-#### <a name="tccm-security-requirements"></a>TCCM voor beveiliging voldoen
+#### <a name="tccm-security-requirements"></a>Beveiligings vereisten voor TCCM
 
-![TCCM vereisten matrix](media/tccmreqs.png) 
+![TCCM-vereisten matrix](media/tccmreqs.png) 
 
-## <a name="saca-components-and-planning-considerations"></a>SACA onderdelen en overwegingen bij de planning 
+## <a name="saca-components-and-planning-considerations"></a>SACA-onderdelen en plannings overwegingen 
 
-De referentiearchitectuur SACA is ontworpen voor het implementeren van de onderdelen VDSS en VDM's in Azure en de TCCM inschakelen. Deze architectuur is modulaire. Alle benodigde onderdelen van VDSS en VDM's kunt bevinden zich in een centrale hub. Enkele van de besturingselementen aan kan worden voldaan in de ruimte van de eigenaar van de essentiële of zelfs on-premises. Microsoft raadt aan dat u de onderdelen VDSS en VDM's dezelfde aan een centrale virtuele netwerk dat alle essentiële eigenaren verbinding via maken kunnen plaatsen. Het volgende diagram ziet u deze architectuur: 
+De SACA-referentie architectuur is ontworpen om de VDSS-en VDMS-onderdelen in azure te implementeren en de TCCM in te scha kelen. Deze architectuur is modulair. Alle stukjes VDSS en VDMS kunnen in een gecentraliseerde hub wonen. Aan sommige van de besturings elementen kan worden voldaan in de ruimte van de missie-eigenaar of zelfs on-premises. Micro soft raadt u aan om de VDSS-en VDMS-onderdelen te verplaatsen naar een centraal virtueel netwerk waarmee alle eigenaar van de missie verbinding kunnen maken. In het volgende diagram ziet u deze architectuur: 
 
 
-![Diagram van SACA referentie-architectuur](media/sacav2generic.png)
+![Diagram van SACA-referentie architectuur](media/sacav2generic.png)
 
-Wanneer u uw strategie voor SCCA nalevingsbeleid en de technische architectuur plant, houd rekening met de volgende onderwerpen vanaf het begin omdat ze invloed hebben op elke klant. De volgende problemen zijn met DoD-klanten en meestal vertragen planning en uitvoering. 
+Houd bij het plannen van uw SCCA nalevings-strategie en de technische architectuur rekening met de volgende onderwerpen, omdat deze van invloed zijn op elke klant. De volgende problemen zijn beschikbaar voor klanten van DoD en hebben vaak de planning en uitvoering trager. 
 
-#### <a name="which-bcap-will-your-organization-use"></a>Welke BCAP gaat gebruiken in uw organisatie?
+#### <a name="which-bcap-will-your-organization-use"></a>Welke BCAP zal uw organisatie gebruiken?
    - DISA BCAP:
-        - DISA heeft twee operationele BCAPs op de vijfhoek en op Camp Dorner, CA. Een derde is aankomen online gepland. 
-        - De DISA BCAPs alle hebt Azure ExpressRoute-circuits naar Azure, die door het Amerikaanse ministerie van defensie klanten kan worden gebruikt voor connectiviteit. 
-        - DISA heeft een Microsoft-peeringsessie op ondernemingsniveau voor het Amerikaanse ministerie van defensie-klanten die willen abonneren op Microsoft-software als een service (SaaS)-hulpprogramma's, zoals Office 365. U kunt met behulp van de BCAP DISA connectiviteit en peering met uw exemplaar SACA inschakelen. 
-    - Bouw uw eigen BCAP:
-        - Deze optie moet u ruimte in een CO-datacenter van de lease en het instellen van een ExpressRoute-circuit naar Azure. 
-        - Deze optie is aanvullende goedkeuring vereist. 
-        - Vanwege de extra goedkeuring en een fysieke build-out wordt deze optie de meeste tijd. 
-    - U wordt aangeraden dat u de BCAP DISA. Deze optie direct beschikbaar is, is redundantie ingebouwd en klanten die worden uitgevoerd op het vandaag nog in de productieomgeving heeft.
-- Amerikaanse ministerie van defensie routeerbare IP-adresruimte:
-    - U moet DoD routeerbare IP-adresruimte aan de rand. De optie voor het gebruik van NAT verbinding maken die ruimten met particuliere IP-adresruimte in Azure is beschikbaar.
-    - Neem contact op met het Amerikaanse ministerie van defensie netwerk informatie Center (NIC) om op te halen van IP-adresruimte. U hebt deze nodig als onderdeel van uw inzending System/Network goedkeuring proces (module) met DISA. 
-    - Als u van plan bent te NAT gebruikt om privé-adresruimte in Azure verbinding te maken, moet u minimaal een/24 subnet van de adresruimte van de NIC voor elke regio waarin u van plan bent om te implementeren SACA toegewezen.
+        - DISA heeft twee operationele BCAPs op de vijf hoek en op Camp Roberts, CA. Een derde is gepland om binnenkort online te komen. 
+        - DISA van BCAPs hebben allemaal Azure ExpressRoute-circuits naar Azure, dat door klanten van DoD kan worden gebruikt voor connectiviteit. 
+        - DISA heeft een micro soft-peering-sessie op ondernemings niveau voor klanten die zich willen abonneren op micro soft-hulpprogram ma's voor software as a Service (SaaS), zoals Office 365. Met behulp van de DISA-BCAP kunt u connectiviteit en peering inschakelen voor uw SACA-exemplaar. 
+    - Uw eigen BCAP bouwen:
+        - Voor deze optie moet u ruimte vrijmaken in een gegevens centrum met co-locaties en een ExpressRoute-circuit instellen op Azure. 
+        - Voor deze optie is aanvullende goed keuring vereist. 
+        - Vanwege de extra goed keuring en een fysieke build is deze optie de meeste tijd. 
+    - U wordt aangeraden de DISA BCAP te gebruiken. Deze optie is eenvoudig beschikbaar, heeft ingebouwde redundantie en heeft klanten die vandaag in productie zijn.
+- DoD-Routeer bare IP-ruimte:
+    - U moet de IP-adres ruimte met DoD-Routeer aan uw rand gebruiken. De optie voor het gebruik van NAT om deze Spaces te verbinden met particuliere IP-ruimte in Azure is beschikbaar.
+    - Neem contact op met het DoD Network Information Center (NIC) om IP-ruimte te verkrijgen. U hebt deze nodig als onderdeel van de inzending van uw systeem/netwerk goedkeurings proces (module) met DISA. 
+    - Als u NAT wilt gebruiken om persoonlijke adres ruimte te verbinden in azure, moet u Mini maal een/24-subnet van de adres ruimte die is toegewezen vanuit de NIC voor elke regio waar u SACA wilt implementeren.
 - Redundantie:
-    - Implementeer een exemplaar van SACA in ten minste twee regio's. In de cloud voor Amerikaanse ministerie van defensie implementeert u deze in beide beschikbaar DoD-regio's.
-    - Verbinding maken met ten minste twee BCAPs via afzonderlijke ExpressRoute-circuits. Beide ExpressRoute-verbindingen kunnen vervolgens worden gekoppeld aan elke regio waarin SACA exemplaar. 
-- DoD-onderdeel-specifieke vereisten:
-    - Heeft uw organisatie specifieke vereisten buiten de SCCA-vereisten? Sommige organisaties hebben vereisten voor specifieke IP-Adressen.
+    - Implementeer een SACA-exemplaar op ten minste twee regio's. In de DoD-Cloud implementeert u deze in zowel beschik bare DoD-regio's.
+    - Maak verbinding met ten minste twee BCAPs via afzonderlijke ExpressRoute-circuits. Beide ExpressRoute-verbindingen kunnen vervolgens worden gekoppeld aan de SACA-instantie van elke regio. 
+- Onderdeel-specifieke vereisten voor DoD:
+    - Heeft uw organisatie specifieke vereisten buiten de SCCA-vereisten? Sommige organisaties hebben specifieke vereisten voor IP-adressen.
 - SACA is een modulaire architectuur:
     - Gebruik alleen de onderdelen die u nodig hebt voor uw omgeving. 
-        - Virtuele netwerkapparaten in één laag of meerdere lagen implementeren.
-        - Geïntegreerde IP-Adressen of bring-your-own IP-Adressen gebruiken.
-- Niveau van de DoD impact van uw toepassingen en gegevens:
-    - Als er mogelijkheid om toepassingen die worden uitgevoerd in Microsoft IL5 regio's, bouw uw exemplaar SACA in IL5. Het exemplaar kan worden gebruikt in het zicht van IL4 toepassingen en IL5. Een exemplaar IL4 SACA voor een toepassing IL5 waarschijnlijk ontvangt geen erkenning.
+        - Implementeer virtuele netwerk apparaten in één laag of met meerdere lagen.
+        - Gebruik geïntegreerde IP'S of uw eigen IP'S.
+- Het niveau van de DoD van uw toepassingen en gegevens:
+    - Als er sprake is van toepassingen die worden uitgevoerd in micro soft IL5-regio's, bouwt u uw SACA-exemplaar op in IL5. Het exemplaar kan worden gebruikt voor IL4-toepassingen en IL5. Een IL4 SACA-exemplaar vóór een IL5-toepassing ontvangt waarschijnlijk geen accreditatie.
 
-#### <a name="which-network-virtual-appliance-vendor-will-you-use-for-vdss"></a>Welke leverancier van het virtuele apparaat network zult u gebruiken voor VDSS?
-Zoals eerder vermeld, kunt u deze verwijzing SACA bouwen met behulp van verschillende apparaten en Azure-services. Microsoft heeft de sjablonen voor oplossingen voor het implementeren van de architectuur SACA met F5 en Citrix geautomatiseerd. Deze oplossingen worden behandeld in de volgende sectie.
+#### <a name="which-network-virtual-appliance-vendor-will-you-use-for-vdss"></a>Welke virtuele netwerk apparaat-leverancier gebruikt u voor VDSS?
+Zoals eerder vermeld, kunt u deze SACA-referentie samen stellen met behulp van verschillende apparaten en Azure-Services. Micro soft heeft geautomatiseerde oplossings sjablonen voor het implementeren van de SACA-architectuur met zowel F5 als Citrix. Deze oplossingen zijn opgenomen in de volgende sectie.
 
-#### <a name="which-azure-services-will-you-use"></a>Welke Azure-services wilt u gebruiken?
-- Er zijn Azure-services die voldoen aan de vereisten voor log analytics, host gebaseerde beveiliging en functionaliteit van de id's. Het is mogelijk dat bepaalde services algemeen beschikbaar in Microsoft IL5 regio's zijn. In dit geval moet u mogelijk gebruik van hulpprogramma's van derden als deze Azure-services kunnen niet voldoen aan uw vereisten. Bekijk de hulpprogramma's die u vertrouwd met bent en de haalbaarheid van het gebruik van Azure systeemeigen hulpprogramma.
-- U wordt aangeraden dat u net zoveel Azure systeemeigen-hulpprogramma's mogelijk. Ze zijn gebouwd met cloudbeveiliging in gedachten en naadloos integreren met de rest van het Azure-platform. Gebruik de Azure-systeemeigen hulpprogramma's in de volgende lijst om te voldoen aan verschillende eisen van SCCA:
+#### <a name="which-azure-services-will-you-use"></a>Welke Azure-Services wilt u gebruiken?
+- Er zijn Azure-Services die voldoen aan de vereisten voor log Analytics, beveiliging op basis van een host en ID'S. Het is mogelijk dat sommige services niet algemeen beschikbaar zijn in micro soft IL5 regions. In dit geval moet u mogelijk hulp middelen van derden gebruiken als deze Azure-Services niet voldoen aan uw vereisten. Bekijk de hulpprogram ma's waarmee u vertrouwd bent en de haal baarheid van het gebruik van Azure systeem eigen hulp middelen.
+- We raden u aan zo veel mogelijk Azure systeem eigen hulpprogram ma's te gebruiken. Ze zijn gebouwd op basis van Cloud beveiliging en kunnen naadloos worden geïntegreerd met de rest van het Azure-platform. Gebruik de systeem eigen hulp middelen van Azure in de volgende lijst om te voldoen aan verschillende vereisten van SCCA:
 
     - [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview )
     - [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) 
@@ -122,74 +122,74 @@ Zoals eerder vermeld, kunt u deze verwijzing SACA bouwen met behulp van verschil
     - [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
     - [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/overview)
     - [Azure Firewall](https://docs.microsoft.com/azure/firewall/overview) 
-    - [Azure Front Door](https://docs.microsoft.com/azure/frontdoor/front-door-overview)
-    - [Azure-beveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/security-overview)
+    - [Azure front deur](https://docs.microsoft.com/azure/frontdoor/front-door-overview)
+    - [Azure-beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview)
     - [Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
     - [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/overview)
 - Grootte aanpassen
-    - Een oefening grootte moet worden voltooid. Het aantal gelijktijdige verbindingen u via het SACA-exemplaar en de doorvoer netwerkvereisten hebt mogelijk bekijken. 
-    - Deze stap is cruciaal. Zo kunt u het formaat van de virtuele machines en de licenties die zijn vereist door de verschillende leveranciers die u in uw exemplaar SACA te identificeren. 
-    - Een goede kostenanalyse kan niet worden uitgevoerd zonder deze oefening grootte. Juiste formaat wordt ook kan voor de beste prestaties. 
+    - Een schaal oefening moet worden voltooid. Bekijk het aantal gelijktijdige verbindingen dat u mogelijk hebt via het SACA-exemplaar en de vereisten voor netwerk doorvoer. 
+    - Deze stap is essentieel. Het helpt om de grootte van de virtuele machines te wijzigen en te bepalen welke licenties zijn vereist voor de verschillende leveranciers die u in uw SACA-exemplaar gebruikt. 
+    - Er kan geen goede kosten analyse worden uitgevoerd zonder deze aanpassings oefening. Met de juiste grootte kunt u ook de beste prestaties. 
 
 
-## <a name="most-common-deployment-scenario"></a>Meest voorkomende implementatiescenario
+## <a name="most-common-deployment-scenario"></a>Meest voorkomende implementatie scenario
 
- Verschillende klanten van Microsoft zijn gebleven door de volledige implementatie of op minimaal de planningfase van hun omgevingen SACA. Inzicht in de meest voorkomende scenario voor implementaties van hun ervaringen aan het licht komt. Het volgende diagram toont de architectuur van de meest voorkomende: 
-
-
-![Diagram van SACA referentie-architectuur](media/sacav2commonscenario.png) 
+ Verschillende micro soft-klanten hebben de volledige implementatie door lopen of ten minste de plannings stadia van hun SACA-omgevingen. Hun ervaringen hebben inzicht in het meest voorkomende implementatie scenario. In het volgende diagram ziet u de meest voorkomende architectuur: 
 
 
-Zoals u in het diagram zien kunt, abonneren DoD klanten normaal gesproken op twee van de BCAPs DISA. Een van deze wordt toegevoegd aan de westkust en het andere leven op de oostkust. Een particuliere ExpressRoute-peer is ingeschakeld voor Azure op elke locatie DISA BCAP. Deze ExpressRoute-peers worden vervolgens gekoppeld aan de virtuele netwerkgateway in de DoD-Oost en DoD centraal Azure-regio's. Een exemplaar van SACA wordt geïmplementeerd in de DoD-Oost en DoD centraal Azure-regio's. Alle inkomende en uitgaande verkeer stroomt via deze naar en van de ExpressRoute-verbinding met de BCAP DISA.
+![Diagram van SACA-referentie architectuur](media/sacav2commonscenario.png) 
 
-Eigenaar van essentiële toepassingen kiest u de Azure-regio's waarin ze van plan bent om hun toepassingen te implementeren. Ze gebruik virtual network-peering voor het virtuele netwerk van hun toepassing verbinden met het virtuele netwerk van SACA. En ze force tunneling van hun verkeer via het VDSS-exemplaar.
 
-We raden deze architectuur omdat deze voldoet aan de vereisten SCCA. Het is maximaal beschikbaar en eenvoudig worden geschaald. Het vereenvoudigt ook implementatie en beheer.
+Zoals u kunt zien in het diagram, abonneren klanten meestal op twee van de DISA-BCAPs. Een van deze levens bevindt zich op de West kust en in het andere leven op de Oost kust. Een persoonlijke ExpressRoute-peer is op elke DISA BCAP-locatie ingeschakeld voor Azure. Deze ExpressRoute-peers worden vervolgens gekoppeld aan de gateway van het virtuele netwerk in de Azure-regio's DoD-Oost en DoD-centraal. Een SACA-exemplaar wordt geïmplementeerd in de Azure-regio's DoD-Oost en DoD-midden. Alle binnenkomend en uitgaand verkeer loopt door naar en van de ExpressRoute-verbinding met de DISA-BCAP.
 
-## <a name="automated-saca-deployment-options"></a>Automatische SACA implementatie-opties
+Doel-eigendoms toepassingen kiezen vervolgens de Azure-regio's waarin ze hun toepassingen willen implementeren. Ze maken gebruik van peering van het virtuele netwerk om het virtuele netwerk van de toepassing te verbinden met het virtuele SACA-netwerk. Vervolgens forceren ze het tunnelen van al hun verkeer via het VDSS-exemplaar.
 
- Zoals eerder vermeld, is Microsoft een partnerschap aangegaan met twee leveranciers te maken van een automatische SACA sjabloon. Beide sjablonen implementeren de volgende Azure-onderdelen: 
+We raden aan deze architectuur te voldoen omdat deze voldoet aan de vereisten voor SCCA. Het is Maxi maal beschikbaar en eenvoudig schaalbaar. Het vereenvoudigt de implementatie en het beheer.
 
-- Virtueel netwerk van SACA
-    - Beheersubnet
-        - Dit subnet is waar de beheer-VM's en services zijn geïmplementeerd, ook wel bekend als een sprong vakken.
-        - VDMS subnet
-            - Dit subnet is waar de virtuele machines en services die worden gebruikt voor VDM's worden geïmplementeerd.
-        - Niet-vertrouwde en betrouwbare subnetten
-            - Deze subnetten zijn waarop virtuele apparaten zijn geïmplementeerd.
+## <a name="automated-saca-deployment-options"></a>Opties voor automatische SACA-implementatie
+
+ Zoals eerder vermeld, heeft micro soft een geautomatiseerd SACA-infrastructuur sjabloon gekoppeld aan twee leveranciers. Beide sjablonen implementeren de volgende Azure-onderdelen: 
+
+- SACA virtueel netwerk
+    - Subnet van beheer
+        - In dit subnet worden beheer-Vm's en-Services geïmplementeerd, ook wel een Jump-vakje genoemd.
+        - VDMS-subnet
+            - In dit subnet worden virtuele machines en Services geïmplementeerd die worden gebruikt voor VDMS.
+        - Niet-vertrouwde en vertrouwde subnetten
+            - In deze subnetten worden virtuele apparaten geïmplementeerd.
         - Gatewaysubnet
-            - Dit subnet is waarop de ExpressRoute-Gateway wordt geïmplementeerd.
-- Korte inleiding in het virtuele beheermachines
+            - Dit subnet is de locatie van de ExpressRoute-gateway.
+- Virtuele machines voor het beheer van Jump box
     - Ze worden gebruikt voor out-of-band-beheer van de omgeving.
 - Virtuele netwerkapparaten
-    - Gebruik van een van beide Citrix of F5 op basis van welke sjabloon u implementeert.
+    - U gebruikt Citrix of F5 op basis van de sjabloon die u implementeert.
 - Openbare IP-adressen
-    - Ze worden gebruikt voor de front-end totdat ExpressRoute online wordt gebracht. Deze IP-adressen vertalen naar de back-end Azure privé-adresruimte.
+    - Ze worden gebruikt voor de front-end totdat ExpressRoute online wordt gebracht. Deze IP-adressen worden omgezet naar de back-end Azure privé-adres ruimte.
 - Routetabellen 
-    - Toegepast tijdens automation, deze tabellen geforceerde tunnel alle verkeer routeren via het virtuele apparaat.
-- Azure-load balancers - standaard-SKU
-    - Ze worden gebruikt om verkeer te verdelen over de apparaten.
+    - Deze route tabellen worden toegepast tijdens de automatisering en forceren alle verkeer via het virtuele apparaat.
+- Azure load balancers-standaard-SKU
+    - Ze worden gebruikt voor het verdelen van verkeer over de apparaten.
 - Netwerkbeveiligingsgroepen
-    - Ze worden gebruikt om te bepalen welke typen verkeer naar bepaalde eindpunten kunnen passeren.
+    - Ze worden gebruikt om te bepalen welke soorten verkeer kan passeren op bepaalde eind punten.
 
 
-### <a name="citrix-saca-deployment"></a>Implementatie van Citrix SACA
+### <a name="citrix-saca-deployment"></a>Citrix SACA-implementatie
 
-Een sjabloon voor de implementatie Citrix implementeert u twee lagen van de maximaal beschikbare Citrix ADC-apparaten. Deze architectuur voldoet aan de vereisten van VDSS. 
+Een Citrix-implementatie sjabloon implementeert twee lagen van Maxi maal beschik bare Citrix ADC-apparaten. Deze architectuur voldoet aan de vereisten van VDSS. 
 
-![Diagram van Citrix SACA](media/citrixsaca.png)
-
-
-Zie voor de Citrix-documentatie en een script voor implementatie, [deze link naar GitHub](https://github.com/citrix/netscaler-azure-templates/tree/master/templates/saca).
+![Citrix SACA-diagram](media/citrixsaca.png)
 
 
- ### <a name="f5-saca-deployment"></a>F5 SACA implementatie
+Zie [deze github-koppeling](https://github.com/citrix/netscaler-azure-templates/tree/master/templates/saca)voor de Citrix-documentatie en het implementatie script.
 
-Twee afzonderlijke F5 implementatiesjablonen betrekking hebben op twee verschillende architecturen. De eerste sjabloon heeft slechts één laag van F5-apparaten in een maximaal beschikbare actief-actief-configuratie. Deze architectuur voldoet aan de vereisten voor VDSS. De tweede sjabloon wordt een tweede beveiligingslaag van maximaal beschikbare actief-actief-F5s toegevoegd. Deze tweede laag kan klanten hun eigen IP-Adressen gescheiden van F5 tussen de lagen F5 toevoegen. Niet alle onderdelen van het Amerikaanse ministerie van defensie hebben specifieke IP-Adressen voorgeschreven voor gebruik. Als dit het geval is, werkt de één laag van F5 apparaten voor de meeste, omdat deze architectuur IP-Adressen op de F5-apparaten bevat.
 
-![Diagram van F5 SACA](media/f5saca.png)
+ ### <a name="f5-saca-deployment"></a>F5 SACA-implementatie
 
-Zie voor de F5-documentatie en een script voor implementatie, [deze link naar GitHub](https://github.com/f5devcentral/f5-azure-saca).
+Twee afzonderlijke F5-implementatie sjablonen beslaan twee verschillende architecturen. De eerste sjabloon bevat slechts één laag van F5-apparaten in een actief-actief Maxi maal beschik bare configuratie. Deze architectuur voldoet aan de vereisten voor VDSS. Met de tweede sjabloon wordt een tweede laag van actief-actief Maxi maal beschik bare F5s toegevoegd. Met deze tweede laag kunnen klanten hun eigen IP-adressen toevoegen, gescheiden van F5, tussen de F5-lagen. Niet alle onderdelen van DoD hebben specifieke IP'S die voor gebruik zijn voorgeschreven. Als dat het geval is, werkt de enkele laag van F5 toestellen het meest, omdat deze architectuur IP'S bevat op de F5-apparaten.
+
+![F5 SACA-diagram](media/f5saca.png)
+
+Zie [deze github-koppeling](https://github.com/f5devcentral/f5-azure-saca)voor de F5-documentatie en het implementatie script.
 
 
 

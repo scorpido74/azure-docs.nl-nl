@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: dc12d77e9a57938051300277940b6e5107e45496
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234484"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648462"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,21 +38,17 @@ Raadpleeg voor meer informatie de volgende artikelen:
 ### <a name="azure-storage-account"></a>Azure Storage-account
 In deze Snelstart gaat u een algemeen Azure Storage-account (en dan met name voor Blob Storage) gebruiken als zowel *bron-* als *doel*gegevensarchieven. Zie het artikel [Een opslagaccount maken](../articles/storage/common/storage-quickstart-create-account.md) als u geen Azure Storage-account hebt voor algemene doeleinden en er een wilt maken. 
 
-#### <a name="get-the-storage-account-name-and-account-key"></a>De naam en sleutel van een opslagaccount ophalen
-In deze snelstart gaat u de naam en sleutel van uw Azure Storage-account gebruiken. De volgende procedure bevat stappen waarmee u de naam en sleutel van uw opslagaccount kunt ophalen: 
+#### <a name="get-the-storage-account-name"></a>De naam van het opslag account ophalen
+U hebt de naam van uw Azure Storage-account nodig voor deze Quick Start. De volgende procedure bevat stappen voor het ophalen van de naam van uw opslag account: 
 
 1. Ga in een webbrowser naar de [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-gebruikers naam en-wacht woord.
 2. Selecteer **alle services** > **Storage** > -**opslag accounts**.
 3. Filter op de pagina **opslag accounts** op uw opslag account (indien nodig) en selecteer vervolgens uw opslag account. 
-4. Ga op de -   *\<pagina account naam >* zijbalk van het**opslag account** naar het label **instellingen** en selecteer **toegangs sleutels**.  -   *De\<account naam >* **toegangs sleutels** wordt weer gegeven.
-
-   ![De naam en sleutel van het opslagaccount ophalen](media/data-factory-quickstart-prerequisites/storage-account-name-key.png)
-5. Kopieer de waarden voor de vakken **Opslagaccountnaam** en **key1** naar het klembord. Plak deze in Kladblok of een andere editor en sla ze op. U gebruikt ze verderop in deze QuickStart.   
 
 #### <a name="create-a-blob-container"></a>Een blob-container maken
 In deze sectie maakt u in Azure Blob Storage een blobcontainer met de naam **adftutorial**.
 
-1. Selecteer - in de >    *\<Blade account naam >* zijbalk van pagina**toegangs sleutels** overzicht blobs.
+1. Selecteer op de pagina opslag account **overzicht** > **blobs**.
 2. Selecteer **container**in de werk balk van de  *\<pagina account naam >*  - **blobs** .
 3. Voer in het dialoogvenster **Nieuwe container** als naam **adftutorial** in en selecteer **OK**. De -   *\<pagina account naam >* blobs is bijgewerkt met **adftutorial** in de lijst met containers.
 
@@ -68,7 +64,7 @@ Jane, Doe
 
 Sla het bestand op in de map **C:\ADFv2QuickStartPSH** . (Als de map nog niet bestaat, maakt u deze.) Ga vervolgens terug naar de Azure Portal en voer de volgende stappen uit:
 
-1. Selecteer **adftutorial** in de lijst met bijgewerkte containers op de  *\<pagina account naam >*  - **blobs** waar u bent gestopt. (Als u het venster hebt gesloten of een andere pagina hebt bezocht, meldt u zich opnieuw aan bij de [Azure Portal](https://portal.azure.com) , selecteert u **alle services** > **Storage** > -**opslag accounts**, selecteert  u uw opslag account en selecteert u vervolgens blobs **adftutorial.** )  > 
+1. Selecteer **adftutorial** in de lijst met bijgewerkte containers op de  *\<pagina account naam >*  - **blobs** waar u bent gestopt. (Als u het venster hebt gesloten of een andere pagina hebt bezocht, meldt u zich opnieuw aan bij de [Azure Portal](https://portal.azure.com) , selecteert u **alle services** > **Storage** > -**opslag accounts**, selecteert u uw opslag account en selecteert u vervolgens blobs **adftutorial.** )  > 
 2. Selecteer **uploaden**op de werk balk van de pagina van de **adftutorial** -container.
 3. Selecteer op de pagina **BLOB uploaden** het vak **bestanden** , blader naar en selecteer het bestand **EMP. txt** .
 4. Vouw de kop **Geavanceerd** uit. De pagina wordt nu weer gegeven zoals weer gegeven:

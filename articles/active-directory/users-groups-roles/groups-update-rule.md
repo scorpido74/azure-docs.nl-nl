@@ -1,0 +1,76 @@
+---
+title: Een dynamische groeps regel bijwerken en beheren en problemen oplossen met lidmaatschap-Azure Active Directory | Microsoft Docs
+description: Een regel voor groepslid maatschap maken in de Azure Portal, status controleren.
+services: active-directory
+documentationcenter: ''
+author: curtand
+manager: mtillman
+ms.service: active-directory
+ms.workload: identity
+ms.subservice: users-groups-roles
+ms.topic: article
+ms.date: 08/12/2019
+ms.author: curtand
+ms.reviewer: krbain
+ms.custom: it-pro
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ce3bce5e2656efea0a4fc3d7aa6be46f1e6926ec
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69657344"
+---
+# <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Een dynamische groep bijwerken voor het beheren van lidmaatschappen in Azure Active Directory
+
+In Azure Active Directory (Azure AD) kunt u regels gebruiken om het groepslid maatschap te bepalen op basis van eigenschappen van gebruikers of apparaten. In dit artikel leest u hoe u een regel instelt voor een dynamische groep in de Azure Portal.
+Dynamische lidmaatschappen worden ondersteund voor beveiligings groepen of Office 365-groepen. Wanneer een regel voor groepslid maatschap wordt toegepast, worden de kenmerken van gebruikers en apparaten geëvalueerd voor overeenkomsten met de lidmaatschaps regel. Wanneer een kenmerk wordt gewijzigd voor een gebruiker of apparaat, worden alle regels voor de dynamische groep in de organisatie verwerkt voor wijzigingen in het lidmaatschap. Gebruikers en apparaten worden toegevoegd of verwijderd als ze voldoen aan de voor waarden voor een groep.
+
+Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en waarden voor een lidmaatschaps regel, [dynamische lidmaatschaps regels voor groepen in azure Active Directory](groups-dynamic-membership.md).
+
+## <a name="to-update-a-group-membership-rule"></a>Een regel voor groepslid maatschap bijwerken
+
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, intune-beheerder of gebruikers beheerder in de Tenant bevindt.
+1. Selecteer **groepen** > **alle groepen**.
+1. Selecteer een groep om het profiel ervan te openen.
+1. Selecteer op de profiel pagina voor de groep **dynamische lidmaatschaps regels**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u een zesde of volgende expressies wilt toevoegen, moet u het tekstvak gebruiken.
+
+   ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
+
+1. Voor een overzicht van de aangepaste extensie-eigenschappen die beschikbaar zijn voor uw lidmaatschaps regel:
+   1. **Eigenschappen van aangepaste uitbrei ding ophalen** selecteren
+   2. Voer de toepassings-ID in en selecteer vervolgens **Eigenschappen vernieuwen**.
+1. Nadat u de regel hebt bijgewerkt, selecteert u **Opslaan**.
+
+Als de regel die u hebt ingevoerd ongeldig is, wordt er een uitleg weer gegeven waarom de regel niet kan worden verwerkt in de Azure-melding in de portal. Lees het zorgvuldig om te begrijpen hoe u de regel kunt herstellen.
+
+## <a name="check-processing-status-for-a-rule"></a>De verwerkings status controleren voor een regel
+
+U kunt de verwerkings status van lidmaatschap en de datum van laatste update voor de groep zien.
+  
+  ![weer gave van de status van de dynamische groep](./media/groups-create-rule/group-status.png)
+
+De volgende status berichten kunnen worden weer gegeven voor de verwerkings status van lidmaatschappen:
+
+* **Evalueren**:  De groeps wijziging is ontvangen en de updates worden geëvalueerd.
+* **Verwerken**: De updates worden verwerkt.
+* **Update voltooid**: De verwerking is voltooid en alle toepasselijke updates zijn uitgevoerd.
+* **Verwerkings fout**:  De verwerking kan niet worden voltooid vanwege een fout bij het evalueren van de lidmaatschaps regel.
+* **Update onderbroken**: Updates voor dynamische lidmaatschaps regel zijn onderbroken door de beheerder. MembershipRuleProcessingState is ingesteld op ' paused '.
+
+De volgende status berichten kunnen worden weer gegeven voor het lidmaatschap van de **laatste bijgewerkte** status:
+
+* **Datum en tijd**: De laatste keer dat het lidmaatschap is bijgewerkt.
+* Wordt **uitgevoerd**: Updates worden momenteel uitgevoerd.
+* **Onbekend**: De tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
+
+Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er in behandeling zijnde dynamische lidmaatschaps updates voor alle groepen in de Tenant meer dan 24 uur kunnen worden verwerkt, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
+
+![fout bericht waarschuwingen verwerken](./media/groups-create-rule/processing-error.png)
+
+## <a name="next-steps"></a>Volgende stappen
+
+Deze artikelen bevatten aanvullende informatie over het werken met dynamische groepen in azure AD.
+
+* Zie de syntaxis van de [regel voor dynamische lidmaatschap](groups-dynamic-membership.md)voor een volledige verwijzing naar een dynamische regel structuur.
+* [Een statische lidmaatschaps groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md).

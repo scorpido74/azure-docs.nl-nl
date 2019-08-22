@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ede7167d570c7bd2ba7e04c3a9a703555efb35cd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 63c0a04a6d18d6af850b1492d2efa9df9aa65219
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698524"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877367"
 ---
 # <a name="set-up-a-device-template"></a>Een sjabloon van het apparaat instellen
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Een sjabloon voor een apparaat is een blauw druk die de kenmerken en het gedrag definieert van een type apparaat dat verbinding maakt met een Azure IoT Central-toepassing.
 
@@ -108,7 +110,7 @@ Als u een nieuwe status meting wilt toevoegen, selecteert u de knop **+ nieuwe m
 
 Geef de details op voor de **weergave naam**, de **veld naam**en de **waarden** van de status. Elke waarde kan ook een weergave naam hebben die wordt gebruikt wanneer de waarde wordt weer gegeven in grafieken en tabellen.
 
-U kunt bijvoorbeeld een nieuwe status voor de **ventilator modus** toevoegen die twee mogelijke waarden heeft die het apparaat kan **verzenden, gebruiken** en **stoppen**.
+U kunt bijvoorbeeld een nieuwe status voor de **ventilator modus** toevoegen die twee mogelijke waarden heeft die het apparaat kan verzenden, gebruiken en **stoppen**.
 
 | Weergavenaam | Veldnaam    |  Waarde 1   | Weergavenaam | Waarde 2    |Weergavenaam  |
 | -------------| ------------- |----------- | -------------| -----------| -------------|

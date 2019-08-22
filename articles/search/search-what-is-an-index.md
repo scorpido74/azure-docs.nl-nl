@@ -1,60 +1,60 @@
 ---
-title: Maak een definitie van de index en concepten - Azure Search
-description: Inleiding tot index termen en concepten in Azure Search, met inbegrip van onderdelen en de fysieke structuur.
+title: Een index definitie en concepten maken-Azure Search
+description: Inleiding tot index termen en concepten in Azure Search, inclusief onderdeel onderdelen en fysieke structuur.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 0a6a5b0e3957141b9ea17a378a7cbeff33a0124e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485203"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647373"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>Maak een eenvoudige index in Azure Search
+# <a name="create-a-basic-index-in-azure-search"></a>Een Basic-index maken in Azure Search
 
-In Azure Search, een *index* is een permanente opslag van *documenten* en andere constructies die worden gebruikt voor gefilterde en de volledige tekst zoekt naar een Azure Search-service. Conceptueel gezien is een document een eenheid die doorzoekbare gegevens in uw index. Een e-commercedetailhandel heeft bijvoorbeeld een document voor elk item dat wordt verkocht, een nieuwsbureau heeft een document voor elk artikel, enzovoort. Deze begrippen aan betrouwbaardere database-equivalenten toewijzen: een *index* lijkt conceptueel gezien op een *tabel* en *documenten* lijken ruwweg op *rijen* in een tabel.
+In Azure Search is een *index* een permanente opslag van *documenten* en andere constructies die worden gebruikt voor gefilterde en zoek opdrachten in de volledige tekst van een Azure Search-service. Een document is conceptueel gezien een enkele eenheid van Doorzoek bare gegevens in uw index. Een e-commercedetailhandel heeft bijvoorbeeld een document voor elk item dat wordt verkocht, een nieuwsbureau heeft een document voor elk artikel, enzovoort. Deze begrippen aan betrouwbaardere database-equivalenten toewijzen: een *index* lijkt conceptueel gezien op een *tabel* en *documenten* lijken ruwweg op *rijen* in een tabel.
 
-Wanneer u toevoegt of uploaden van een index, maakt Azure Search fysieke structuren op basis van het schema dat u opgeeft. Bijvoorbeeld, als een veld in de index is gemarkeerd als kan worden doorzocht, een omgekeerde index is gemaakt voor dat veld. Later, wanneer u toevoegt of uploadt documenten of naar Azure Search zoekopdrachten, verzendt u aanvragen naar een specifieke index in uw zoekservice. Het laden van velden met documentwaarden heet *indexeren* of opname van gegevens.
+Wanneer u een index toevoegt of uploadt, maakt Azure Search fysieke structuren op basis van het schema dat u opgeeft. Als een veld in uw index bijvoorbeeld als doorzoekbaar is gemarkeerd, wordt een omgekeerde index voor dat veld gemaakt. Wanneer u later documenten toevoegt of uploadt of zoek query's verzendt naar Azure Search, verzendt u aanvragen naar een specifieke index in uw zoek service. Het laden van velden met document waarden wordt indexering of gegevens opname genoemd.
 
-U kunt een index maken in de portal [REST-API](search-create-index-rest-api.md), of [.NET SDK](search-create-index-dotnet.md).
+U kunt een index maken in de portal, [rest API](search-create-index-rest-api.md)of [.NET SDK](search-create-index-dotnet.md).
 
-## <a name="recommended-workflow"></a>Aanbevolen workflow
+## <a name="recommended-workflow"></a>Aanbevolen werk stroom
 
-Die binnenkomen in de juiste index-ontwerp wordt normaal gesproken via meerdere pogingen bereikt. Met behulp van een combinatie van API's en hulpprogramma's, kunt u uw ontwerp snel voltooien.
+Het bereiken van het juiste index ontwerp wordt doorgaans bereikt via meerdere iteraties. Met een combi natie van hulpprogram ma's en Api's kunt u uw ontwerp snel volt ooien.
 
-1. Bepalen of u kunt een [indexeerfunctie](search-indexer-overview.md#supported-data-sources). Als uw externe gegevens een van de ondersteunde gegevensbronnen is, kunt u prototype en laden van een index met behulp van de [ **gegevens importeren** ](search-import-data-portal.md) wizard.
+1. Bepaal of u een [Indexeer functie](search-indexer-overview.md#supported-data-sources)kunt gebruiken. Als uw externe gegevens een van de ondersteunde gegevens bronnen zijn, kunt u een index maken en laden met behulp van de wizard [**gegevens importeren**](search-import-data-portal.md) .
 
-2. Als u niet kunt gebruiken **gegevens importeren**, kunt u nog steeds [een eerste index maken via de portal](search-create-index-portal.md), velden, gegevenstypen, toe te voegen en het toewijzen van kenmerken met behulp van besturingselementen op de **Index toevoegen** de pagina. De portal ziet u welke kenmerken beschikbaar zijn voor verschillende gegevenstypen. Dit is handig als u geen ervaring met index-ontwerp.
+2. Als u geen **import gegevens**kunt gebruiken, kunt u nog steeds [een initiële index maken in de portal](search-create-index-portal.md), velden en gegevens typen toevoegen en kenmerken toewijzen met behulp van de besturings elementen op de pagina **index toevoegen** . In de portal ziet u welke kenmerken beschikbaar zijn voor verschillende gegevens typen. Als u niet bekend bent met het ontwerp van de index, is dit nuttig.
 
-   ![Index-pagina toevoegen met de kenmerken van het gegevenstype](media/search-create-index-portal/field-attributes.png "kenmerken van het gegevenstype van de indexpagina toevoegen")
+   ![Index pagina met kenmerken op gegevens type toevoegen](media/search-create-index-portal/field-attributes.png "Index pagina met kenmerken op gegevens type toevoegen")
   
-   Wanneer u klikt op **maken**, alle van de fysieke structuren ondersteuning van uw index worden gemaakt in uw search-service.
+   Wanneer u op **maken**klikt, worden alle fysieke structuren die uw index ondersteunen, in uw zoek service gemaakt.
 
-3. Download de index schema met behulp [Index REST-API ophalen](https://docs.microsoft.com/rest/api/searchservice/get-index) en een web testen hulpprogramma zoals [Postman](search-get-started-postman.md). U hebt nu een JSON-weergave van de index die u hebt gemaakt in de portal. 
+3. Down load het index schema met [Get index rest API](https://docs.microsoft.com/rest/api/searchservice/get-index) en een hulp programma voor het testen van webtoepassingen zoals in het [bericht](search-get-started-postman.md). U hebt nu een JSON-weer gave van de index die u in de portal hebt gemaakt. 
 
-   U wordt op dit moment overschakelen naar een benadering op basis van code. De portal is niet geschikt voor herhaling omdat u niet bewerken, een index die al is gemaakt. Maar u kunt Postman en REST gebruiken voor de resterende taken.
+   U schakelt op dit punt over op code gebaseerde aanpak. De portal is niet geschikt voor herhaling omdat u geen index kunt bewerken die al is gemaakt. U kunt postman gebruiken en REST voor de resterende taken.
 
-4. [Laden van uw index met gegevens](search-what-is-data-import.md). Azure Search accepteert JSON-documenten. Voor het laden van uw gegevens via een programma, kunt u Postman gebruiken met JSON-documenten in de nettolading van de aanvraag. Als uw gegevens niet eenvoudig in JSON uitgedrukt is, is deze stap is het meest intensieve arbeid.
+4. [Laad uw index met gegevens](search-what-is-data-import.md). Azure Search accepteert JSON-documenten. Als u gegevens wilt laden via een programma, kunt u postman gebruiken met JSON-documenten in de aanvraag lading. Als uw gegevens niet eenvoudig kunnen worden uitgedrukt als JSON, is deze stap het meest arbeids intensief.
 
-5. Query uitvoeren in uw index, Bekijk resultaten en meer op het indexschema herhalen totdat u begint met de verwachte resultaten ziet. U kunt [ **Search explorer** ](search-explorer.md) of Postman query uitvoeren op uw index.
+5. Zoek uw index op, Bekijk de resultaten en herhaal verder naar het index schema totdat u begint met de resultaten die u verwacht. U kunt [**Search Explorer**](search-explorer.md) of postman gebruiken om de index op te vragen.
 
-6. Doorgaan met behulp van code om te herhalen uw ontwerp.  
+6. Ga door met het gebruik van code om het ontwerp te herhalen.  
 
-Omdat fysieke structuren zijn gemaakt in de service [verwijderen en opnieuw maken van indexen](search-howto-reindex.md) is noodzakelijk wanneer u er belangrijke wijzigingen in de definitie van een bestaande veld aanbrengen. Dit betekent dat tijdens de ontwikkeling, u van plan frequente opnieuw op te bouwen bent moet. U kunt overwegen werken met een subset van uw gegevens om te maken van opnieuw gebouwde go sneller. 
+Omdat er fysieke structuren in de service zijn gemaakt, worden de [indexen verwijderd en opnieuw gemaakt](search-howto-reindex.md) wanneer u belang rijke wijzigingen doorvoert in een bestaande veld definitie. Dit betekent dat u tijdens de ontwikkeling regel matig opnieuw bouwt. U kunt ook met een subset van uw gegevens werken om het opnieuw opbouwen sneller te laten verlopen. 
 
-Code, in plaats van een portal-benadering wordt aanbevolen voor terugkerende ontwerp. Als u zich op de portal voor de definitie van de index baseert, heeft u om de definitie van de index op elke opnieuw in te vullen. Als alternatief, hulpprogramma's zoals [Postman en de REST-API](search-get-started-postman.md) zijn handig voor het testen van proof of concept wanneer ontwikkelingsprojecten zich nog steeds in de eerste fasen. U kunt incrementele wijzigingen aanbrengen in de indexdefinitie van een in de hoofdtekst van de aanvraag, en vervolgens de aanvraag te verzenden naar uw service opnieuw maken van een index met behulp van een schema bijgewerkt.
+Code, in plaats van een portal-benadering, wordt aanbevolen voor iteratief ontwerp. Als u vertrouwt op de portal voor de index definitie, moet u de index definitie invullen voor elke opnieuw samen stellen. Als alternatief kunt u hulpprogram ma's zoals [postman en de rest API](search-get-started-postman.md) nuttig vinden bij het testen van het haalbaarheids test wanneer ontwikkel projecten nog steeds in vroege fasen zijn. U kunt incrementele wijzigingen aanbrengen in een index definitie in een aanvraag tekst en vervolgens de aanvraag verzenden naar uw service om een index opnieuw te maken met behulp van een bijgewerkt schema.
 
 ## <a name="components-of-an-index"></a>Onderdelen van een index
 
-Stroomschema, wordt een Azure Search-index bestaat uit de volgende elementen. 
+Schematisch, een Azure Search index bestaat uit de volgende elementen. 
 
-De [ *Veldenverzameling* ](#fields-collection) is doorgaans het grootste deel van een index, waarbij elk veld heet, getypt en toegeschreven met toegestane gedragingen die bepalen hoe deze wordt gebruikt. Andere elementen zijn [suggesties](#suggesters), [scoreprofielen](#scoring-profiles), [analyzers](#analyzers) met onderdelen op ondersteuning voor aanpassing, [CORS](#cors) en [versleutelingssleutel](#encryption-key) opties.
+De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van een index, waarbij elk veld een naam heeft, wordt getypt en is voorzien van een toegestaan gedrag dat bepaalt hoe het wordt gebruikt. Andere elementen omvatten [suggesties](#suggesters), [Score profielen](#scoring-profiles), [analyse](#analyzers) functies met onderdeel onderdelen ter ondersteuning van aanpassings-, [CORS](#cors) -en versleutelings [sleutel](#encryption-key) opties.
 
 ```json
 {
@@ -141,31 +141,31 @@ De [ *Veldenverzameling* ](#fields-collection) is doorgaans het grootste deel va
 
 <a name="fields-collection"></a>
 
-## <a name="fields-collection-and-field-attributes"></a>De kenmerken van de verzameling en veld van de velden
+## <a name="fields-collection-and-field-attributes"></a>Velden verzameling en veld kenmerken
 
 Bij het definiëren van het schema moet u de naam, het type en de kenmerken van elk veld in de index opgeven. Het veldtype classificeert de gegevens die in dat veld worden opgeslagen. Kenmerken worden ingesteld op afzonderlijke velden om op te geven hoe het veld wordt gebruikt. De volgende tabellen bevatten de typen en kenmerken die u kunt opgeven.
 
 ### <a name="data-types"></a>Gegevenstypen
-| Type | Description |
+| type | Description |
 | --- | --- |
-| *Edm.String* |De tekst die kan worden voorzien om zoeken in volledige tekst (woordafbreking, afleiding, enzovoort). |
+| *Edm.String* |Tekst die eventueel kan worden getokend voor Zoek opdrachten in volledige tekst (woord afbreking, stam bestand, enzovoort). |
 | *Collection(Edm.String)* |Een lijst met tekenreeksen die van tokens kan worden voorzien om te zoeken in de volledige tekst. Er is geen theoretische bovengrens voor het aantal items in een verzameling, maar de bovengrens van 16 MB voor de nettolading geldt voor alle verzamelingen. |
 | *Edm.Boolean* |Bevat de waarden waar/niet waar. |
 | *Edm.Int32* |32-bits waarden van een heel getal. |
 | *Edm.Int64* |64-bits waarden van een heel getal. |
 | *Edm.Double* |Numerieke gegevens met dubbele precisie. |
-| *Edm.DateTimeOffset* |Datum-en tijdwaarden weergegeven in de OData-V4-indeling (bijvoorbeeld `yyyy-MM-ddTHH:mm:ss.fffZ` of `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
+| *Edm.DateTimeOffset* |Datum en tijd waarden die worden weer gegeven in de OData v4- `yyyy-MM-ddTHH:mm:ss.fffZ` indeling `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`(bijvoorbeeld of). |
 | *Edm.GeographyPoint* |Een punt voor een geografische locatie op de wereld. |
 
 Gedetailleerdere informatie over ondersteunde Azure-Search[-gegevenstypen vindt u hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
-### <a name="index-attributes"></a>Indexkenmerken
+### <a name="index-attributes"></a>Index kenmerken
 
-Precies één veld in de index moet zijn aangewezen als een **sleutel** veld dat elk document wordt aangeduid.
+Er moet precies één veld in de index zijn opgegeven als een **sleutel** veld dat elk document uniek identificeert.
 
-Overige kenmerken bepalen hoe een veld in een toepassing wordt gebruikt. Bijvoorbeeld, de **doorzoekbare** kenmerk is toegewezen aan elk veld dat u in een zoekopdracht in volledige tekst opnemen wilt. 
+Andere kenmerken bepalen hoe een veld in een toepassing wordt gebruikt. Het kenmerk searchable wordt bijvoorbeeld toegewezen aan elk veld dat moet worden opgenomen in een zoek opdracht in volledige tekst. 
 
-De API's die u gebruikt om een index te maken hebben verschillende standaardgedrag. Voor de [REST-API's](https://docs.microsoft.com/rest/api/searchservice/Create-Index), meeste kenmerken zijn standaard ingeschakeld (bijvoorbeeld **doorzoekbare** en **ophaalbaar** ' True ' voor tekenreeksvelden zijn) en moet u vaak alleen in te stellen ze als wilt u deze uitschakelen. Het omgekeerde geldt voor de .NET SDK. Op elke eigenschap die u niet expliciet instelt, wordt de standaardwaarde is om uit te schakelen van de bijbehorende zoekgedrag tenzij expliciet inschakelt.
+De Api's die u gebruikt om een index te maken, hebben verschillende standaard gedragingen. Voor de [rest-api's](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zijn de meeste kenmerken standaard ingeschakeld (bijvoorbeeld **Doorzoek** bare en opgehaalde waarden zijn waar voor teken reeks velden). u hoeft ze vaak alleen in te stellen als u ze wilt uitschakelen. Voor de .NET SDK is het tegenovergestelde waar. Op elke eigenschap die u niet expliciet instelt, is de standaard instelling om het bijbehorende Zoek gedrag uit te scha kelen, tenzij u dit specifiek inschakelt.
 
 | Kenmerk | Description |
 | --- | --- |
@@ -177,55 +177,55 @@ De API's die u gebruikt om een index te maken hebben verschillende standaardgedr
 | `searchable` |Hiermee kunt u in dit veld in de volledige tekst zoeken. |
 
 
-## <a name="storage-implications"></a>Gevolgen van opslag
+## <a name="storage-implications"></a>Opslag implicaties
 
-De kenmerken die u selecteert hebben een invloed op opslag. De volgende schermafbeelding ziet u index opslag patronen die voortvloeien uit verschillende combinaties van kenmerken.
+De kenmerken die u selecteert, hebben invloed op de opslag. In de volgende scherm afbeelding ziet u de index opslag patronen die voortkomen uit verschillende combi Naties van kenmerken.
 
-De index is gebaseerd op de [ingebouwde onroerend goed voorbeeld](search-get-started-portal.md) gegevensbron, die u kunt de index en query's uitvoeren in de portal. Hoewel de index schema's zijn niet wordt weergegeven, kunt u de kenmerken op basis van de naam van de index kunt afleiden. Bijvoorbeeld, *onroerend goed doorzoekbaar* index heeft de **doorzoekbare** geselecteerd kenmerk en niets anders, *onroerend goed worden opgehaald* index heeft de  **ophalen mogelijk** geselecteerd kenmerk en niets anders, enzovoort.
+De index is gebaseerd op de [ingebouwde voorbeeld](search-get-started-portal.md) gegevens bron van onroerend goed, die u in de portal kunt indexeren en doorzoeken. Hoewel de index schema's niet worden weer gegeven, kunt u de kenmerken afleiden op basis van de naam van de index. *Realestate-Doorzoek bare* index heeft bijvoorbeeld het kenmerk dat kan worden doorzocht en niets anders, het ophalen **van** *realestate-* index heeft het kenmerk retrievable selected en niets anders, enzovoort.
 
-![Index-grootte op basis van kenmerk selectie](./media/search-what-is-an-index/realestate-index-size.png "Index-grootte op basis van kenmerk selectie")
+![Index grootte op basis van kenmerk selectie](./media/search-what-is-an-index/realestate-index-size.png "Index grootte op basis van kenmerk selectie")
 
-Hoewel deze index-varianten kunstmatige zijn, kunt we deze raadplegen voor brede vergelijkingen van de invloed van kenmerken op opslag. Instelling komt **ophaalbaar** index vergroten? Nee. Kiest, wordt er velden aan toe te voegen een **suggestie** index vergroten? Ja.
+Hoewel deze index varianten kunst matig zijn, kunnen we ernaar verwijzen naar een uitgebreidere vergelijking van de manier waarop kenmerken van opslag worden beïnvloed. Kan de indexerings grootte die kan worden **opgehaald** , worden ingesteld? Nee. Voegt velden toe aan een **suggestie** voor het verg Roten van index grootte? Ja.
 
-Indexen die ondersteuning bieden voor filteren en sorteren zijn proportioneel groter is dan de indexen die ondersteuning bieden voor zoeken in alleen volledige tekst. De reden is dat query filteren en sorteren op exacte overeenkomsten, zodat documenten intact worden opgeslagen. Doorzoekbare velden ondersteuning van volledige tekst en fuzzy zoeken daarentegen gebruik omgekeerde indexen, die worden ingevuld met tokens termen die minder ruimte dan de hele documenten gebruiken.
+Indexen die ondersteuning bieden voor filteren en sorteren, zijn proportioneel groter dan indexen die alleen zoeken in volledige tekst ondersteunen. De reden hiervoor is dat filter-en sorteer query op exacte overeenkomsten, zodat documenten intact worden opgeslagen. In tegens telling tot Doorzoek bare velden die ondersteuning bieden voor volledige tekst en fuzzy Search, worden omgekeerde indexen gebruikt. deze worden gevuld met tokens met een sleutel die minder ruimte in beslag neemt dan hele documenten.
 
 > [!Note]
-> Storage-architectuur wordt beschouwd als een implementatiedetail in Azure Search en kan zonder kennisgeving worden gewijzigd. Er is geen garantie dat de huidige gedrag in de toekomst blijven behouden.
+> Opslag architectuur wordt beschouwd als een implementatie details van Azure Search en kan zonder kennisgeving worden gewijzigd. Er is geen garantie dat het huidige gedrag in de toekomst blijft behouden.
 
 ## <a name="suggesters"></a>Suggesties
-Een suggestie is een gedeelte van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor de ondersteuning van automatisch aanvullen of automatisch aangevulde query's in zoekopdrachten. Normaal gesproken gedeeltelijke zoekreeksen worden verzonden naar de [suggesties (REST-API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) terwijl de gebruiker een zoekopdracht typen is en de API een set met voorgestelde zinnen retourneert. 
+Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor het ondersteunen van automatisch aanvullen of het type-ahead query's in Zoek opdrachten. Normaal gesp roken worden gedeeltelijke Zoek reeksen naar de [suggesties (rest API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) verzonden terwijl de gebruiker een zoek opdracht typt. de API retourneert een aantal voorgestelde woord groepen. 
 
-Velden worden toegevoegd aan een suggestie worden gebruikt voor het bouwen, automatisch aangevulde zoektermen. Alle van de zoektermen zijn gemaakt tijdens het indexeren en apart opgeslagen. Zie voor meer informatie over het maken van een structuur suggestie [toevoegen suggesties](index-add-suggesters.md).
+Velden die zijn toegevoegd aan een suggestie, worden gebruikt voor het bouwen van type-ahead zoek termen. Alle zoek termen worden tijdens het indexeren gemaakt en afzonderlijk opgeslagen. Zie Voorst [Ellen toevoegen](index-add-suggesters.md)voor meer informatie over het maken van een boom structuur.
 
-## <a name="scoring-profiles"></a>Scoreprofielen
+## <a name="scoring-profiles"></a>Scoringprofielen
 
-Een [scoringprofiel](index-add-scoring-profiles.md) is een gedeelte van het schema waarmee wordt gedefinieerd aangepast scoren gedrag waarmee kunt u bepalen welke items worden weergegeven op een hoger in de lijst met zoekresultaten. Scoreprofielen bestaan uit veldgewichten en functies. Voor het gebruik ervan, geeft u een profiel met de naam van de query-tekenreeks.
+Een [Score profiel](index-add-scoring-profiles.md) is een sectie van het schema waarmee aangepaste Score gedragingen worden gedefinieerd waarmee u kunt beïnvloeden welke items hoger worden weer gegeven in de zoek resultaten. Score profielen bestaan uit veld gewichten en-functies. Als u deze wilt gebruiken, geeft u een profiel op naam op voor de query teken reeks.
 
-Een standaard scoringprofiel is van invloed op de achtergrond voor het berekenen van een zoekscore voor elk item in een resultatenset. U kunt de interne naamloze scoringprofiel gebruiken. U kunt ook instellen **defaultScoringProfile** gebruik van een aangepast profiel als de standaard, aangeroepen wanneer er een aangepast profiel niet is opgegeven in de query-tekenreeks.
+Een standaard Score profiel werkt achter de schermen om een zoek score te berekenen voor elk item in een resultatenset. U kunt het interne, niet-genaamde Score profiel gebruiken. U kunt ook **defaultScoringProfile** instellen om een aangepast profiel te gebruiken als de standaard instelling, wanneer er geen aangepast profiel is opgegeven in de query reeks.
 
 ## <a name="analyzers"></a>Analyses
 
-Het element analyzers Hiermee stelt u de naam van de taal-analysefunctie moet worden gebruikt voor het veld. Zie voor meer informatie over het bereik van de analyzers die beschikbaar zijn voor u, [analyzers toe te voegen aan een Azure Search-index](search-analyzers.md). Analyse kunnen alleen worden gebruikt met doorzoekbare velden. Nadat de analyzer is toegewezen aan een veld, kan niet worden gewijzigd, tenzij u de index opnieuw opbouwen.
+Het element analyse functies stelt de naam in van de taal analyse die moet worden gebruikt voor het veld. Zie voor meer informatie over het bereik van analyse functies die voor u beschikbaar zijn, [analyses toevoegen aan een Azure search-index](search-analyzers.md). Analyseerers kunnen alleen worden gebruikt met Doorzoek bare velden. Zodra de analyse functie is toegewezen aan een veld, kan deze niet meer worden gewijzigd, tenzij u de index opnieuw opbouwt.
 
 ## <a name="cors"></a>CORS
 
-Client-side '-JavaScript kan niet alle API's aanroepen standaard omdat de browser voorkomen alle cross-origin-aanvragen dat wordt. Inschakelen als u cross-origin-query's naar uw index, CORS (Cross-Origin Resource Sharing) door in te stellen de **corsOptions** kenmerk. Alleen query's uit veiligheidsoverwegingen ondersteuning voor CORS. 
+Java script aan de client zijde kan standaard geen Api's aanroepen omdat de browser alle cross-Origin-aanvragen voor komt. Als u cross-Origin query's naar uw index wilt toestaan, schakelt u CORS (cross-Origin Resource Sharing) in door het kenmerk **corsOptions** in te stellen. Uit veiligheids overwegingen wordt alleen voor de query-Api's CORS ondersteund. 
 
 De volgende opties kunnen worden ingesteld voor CORS:
 
-+ **allowedOrigins** (vereist): Dit is een lijst met oorsprongen dat toegang tot uw index wordt verleend. Dit betekent dat alle JavaScript-code opgehaald uit deze oorsprongen mag worden query uitvoeren in uw index (ervan uitgaande dat het de juiste api-sleutel bevat). Elke oorsprong heeft meestal de vorm `protocol://<fully-qualified-domain-name>:<port>` Hoewel `<port>` vaak wordt weggelaten. Zie [Cross-origin resource sharing (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) voor meer informatie.
++ **allowedOrigins** (vereist): Dit is een lijst met oorsprongen waaraan toegang tot uw index wordt verleend. Dit betekent dat elke Java script-code die door deze oorsprongen wordt bediend, een query kan uitvoeren op uw index (ervan uitgaande dat deze de juiste API-sleutel bevat). Elke oorsprong is doorgaans van het formulier `protocol://<fully-qualified-domain-name>:<port>` Hoewel `<port>` deze vaak wordt wegge laten. Zie [Cross-Origin Resource Sharing (Wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) voor meer informatie.
 
-  Als u wilt toestaan toegang tot alle oorsprongen, `*` als één item in de **allowedOrigins** matrix. *Dit wordt niet aanbevolen voor productie-zoekservices* maar vaak is het handig is voor de ontwikkeling en foutopsporing.
+  Als u toegang tot alle oorsprongen wilt toestaan, neemt `*` u op als één item in de **allowedOrigins** -matrix. *Dit wordt niet aanbevolen voor productie Zoek Services* , maar het is vaak handig voor het ontwikkelen en opsporen van fouten.
 
-+ **maxAgeInSeconds** (optioneel): Browsers gebruiken deze waarde om te bepalen van de duur (in seconden) aan voorbereidende CORS-antwoorden cache. Dit moet een niet-negatief geheel getal zijn. Hoe groter deze waarde is, de prestaties beter, maar hoe langer het duurt voor CORS-beleidswijzigingen worden doorgevoerd. Als deze niet is ingesteld, wordt een standaardduur van 5 minuten worden gebruikt.
++ **maxAgeInSeconds** (optioneel): Browsers gebruiken deze waarde om de duur (in seconden) te bepalen voor het cachen van CORS Preflight-reacties. Dit moet een niet-negatief geheel getal zijn. Hoe groter deze waarde is, hoe beter de prestaties, maar hoe langer het duurt om de wijzigingen van het CORS-beleid van kracht te laten worden. Als deze niet is ingesteld, wordt een standaard duur van 5 minuten gebruikt.
 
-## <a name="encryption-key"></a>Coderingssleutel
+## <a name="encryption-key"></a>Versleutelings sleutel
 
-Terwijl alle Azure search-indexen standaard door Microsoft beheerde sleutels zijn versleuteld, indexen kunnen worden geconfigureerd om te worden versleuteld met **klant beheerde sleutels** in Key Vault. Zie voor meer informatie, [coderingssleutels opgeslagen in Azure Search beheren](search-security-manage-encryption-keys.md).
+Hoewel alle Azure Search-indexen standaard worden versleuteld met behulp van door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie versleutelings [sleutels beheren in azure Search](search-security-manage-encryption-keys.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt met een goed begrip van de samenstelling van de index blijven in de portal om uw eerste index te maken.
+Met een goed idee van index samenstelling kunt u door gaan in de portal om uw eerste index te maken.
 
 > [!div class="nextstepaction"]
-> [Toevoegen van een index (portal)](search-create-index-portal.md)
+> [Een index toevoegen (Portal)](search-create-index-portal.md)

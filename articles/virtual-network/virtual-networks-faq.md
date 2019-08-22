@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035332"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892028"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -29,9 +29,11 @@ Een Azure Virtual Network (VNet) is een weer gave van uw eigen netwerk in de Clo
 
 Gebruik VNets voor het volgende:
 
-* Voor het maken van een eigen privé-VNet met alleen een Cloud hebt u soms geen cross-premises configuratie nodig voor uw oplossing. Wanneer u een VNet maakt, kunnen uw services en virtuele machines binnen uw VNet rechtstreeks en veilig met elkaar communiceren in de Cloud. U kunt nog steeds eindpunt verbindingen configureren voor de Vm's en services waarvoor Internet communicatie is vereist, als onderdeel van uw oplossing.
-* Breid uw Data Center veilig uit met VNets, u kunt traditionele site-naar-site-Vpn's (S2S) bouwen om uw datacenter capaciteit veilig te schalen. S2S-Vpn's gebruiken IPSEC om een beveiligde verbinding te bieden tussen uw bedrijfs-VPN-gateway en Azure.
-* Het inschakelen van hybride Cloud scenario's VNets biedt u de flexibiliteit om een reeks hybride Cloud scenario's te ondersteunen. U kunt op een veilige manier Cloud toepassingen verbinden met elk type on-premises systeem, zoals mainframes en UNIX-systemen.
+* Maak een speciaal VNet voor de privécloud. Soms hebt u geen cross-premises configuratie nodig voor uw oplossing. Wanneer u een VNet maakt, kunnen uw services en virtuele machines binnen uw VNet rechtstreeks en veilig met elkaar communiceren in de Cloud. U kunt nog steeds eindpunt verbindingen configureren voor de Vm's en services waarvoor Internet communicatie is vereist, als onderdeel van uw oplossing.
+
+* Breid uw Data Center veilig uit. Met VNets kunt u traditionele site-naar-site-Vpn's (S2S) bouwen om de capaciteit van uw Data Center veilig te schalen. S2S-Vpn's gebruiken IPSEC om een beveiligde verbinding te bieden tussen uw bedrijfs-VPN-gateway en Azure.
+
+* Schakel hybride Cloud scenario's in. VNets biedt u de flexibiliteit om een reeks hybride Cloud scenario's te ondersteunen. U kunt op een veilige manier Cloud toepassingen verbinden met elk type on-premises systeem, zoals mainframes en UNIX-systemen.
 
 ### <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 Ga naar de documentatie van het [virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/) om aan de slag te gaan. Deze inhoud bevat overzichts-en implementatie-informatie voor alle VNet-functies.

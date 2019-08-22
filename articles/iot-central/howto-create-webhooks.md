@@ -1,6 +1,6 @@
 ---
-title: Webhooks maken van regels in Azure IoT Central | Microsoft Docs
-description: Webhooks maken in Azure IoT Central op andere toepassingen automatisch een melding wanneer de regels worden geactiveerd.
+title: Webhooks maken voor regels in azure IoT Central | Microsoft Docs
+description: Webhooks maken in azure IoT Central om andere toepassingen automatisch te waarschuwen wanneer regels worden gestart.
 author: viv-liu
 ms.author: viviali
 ms.date: 06/16/2019
@@ -8,40 +8,42 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: fdeefdc1ec5372d6ac17f0f985ee0c50ce902e56
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 508e8b4b3a909e87f538f67b1ad9a5efdbcd9551
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165327"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876027"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhookacties op regels in Azure IoT Central maken
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-acties maken voor regels in azure IoT Central
 
-*In dit onderwerp is van toepassing op builders en beheerders.*
+*Dit onderwerp is van toepassing op bouwers en beheerders.*
 
-Webhooks kunt u uw IoT Central-app verbinden met andere toepassingen en services voor externe bewaking en meldingen. Webhooks geven door andere toepassingen en services dat u verbinding maken wanneer een regel wordt geactiveerd in uw IoT Central-app automatisch aan. Wanneer een regel wordt geactiveerd, uw IoT Central-app een POST-aanvraag verzendt naar de HTTP-eindpunt van de andere toepassing. De nettolading bevat Apparaatdetails en de details van de regel-trigger.
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-## <a name="set-up-the-webhook"></a>Instellen van de webhook
+Met webhooks kunt u uw IoT Central-app verbinden met andere toepassingen en services voor externe controle en meldingen. Webhooks melden automatisch andere toepassingen en services die u maakt wanneer een regel wordt geactiveerd in uw IoT Central-app. De IoT Central-app verzendt een POST-aanvraag naar het HTTP-eind punt van de andere toepassing wanneer een regel wordt geactiveerd. De payload bevat details over het apparaat en de regel trigger.
 
-In dit voorbeeld verbinding u met RequestBin om te worden geïnformeerd wanneer regels worden geactiveerd met behulp van webhooks.
+## <a name="set-up-the-webhook"></a>De webhook instellen
+
+In dit voor beeld maakt u verbinding met RequestBin om een melding te ontvangen wanneer regels worden gestart met webhooks.
 
 1. Open [RequestBin](https://requestbin.net/).
 
-1. Maak een nieuwe RequestBin en kopieer de **Bin-URL**.
+1. Maak een nieuwe RequestBin en kopieer de **URL van de opslag locatie**.
 
-1. Maak een [telemetrie regel](howto-create-telemetry-rules.md) of een [gebeurtenis regel](howto-create-event-rules.md). De regel niet opslaan en voeg een nieuwe actie toe.
+1. Een telemetrie- [regel](howto-create-telemetry-rules.md) of een [gebeurtenis regel](howto-create-event-rules.md)maken. Sla de regel op en voeg een nieuwe actie toe.
 
-    ![Webhook maken van het scherm](media/howto-create-webhooks/webhookcreate.png)
+    ![Scherm webhook maken](media/howto-create-webhooks/webhookcreate.png)
 
-1. Kies de webhookactie en een weergavenaam invoeren en plakt u de Bin-URL als de Callback-URL.
+1. Kies de actie webhook en geef een weergave naam op en plak de URL van de opslag plaats als de URL voor terugbellen.
 
-1. De regel niet opslaan.
+1. Sla de regel op.
 
-Wanneer de regel wordt geactiveerd, ziet u nu een nieuwe aanvraag in RequestBin worden weergegeven.
+Wanneer de regel wordt geactiveerd, ziet u nu een nieuwe aanvraag wordt weer gegeven in RequestBin.
 
-## <a name="payload"></a>nettolading
+## <a name="payload"></a>Nettolading
 
-Wanneer een regel wordt geactiveerd, wordt een HTTP POST-aanvraag die naar de callback-URL met een json-payload met de metingen, apparaat, regel en toepassingsgegevens. Voor een regel telemetrie is de nettolading van de ziet er als volgt uit:
+Wanneer een regel wordt geactiveerd, wordt er een HTTP POST-aanvraag verzonden naar de call back-URL met een JSON-nettolading met de metingen, het apparaat, de regel en de toepassings gegevens. Voor een telemetrie-regel ziet de payload er als volgt uit:
 
 ```json
 {
@@ -91,10 +93,10 @@ Wanneer een regel wordt geactiveerd, wordt een HTTP POST-aanvraag die naar de ca
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 
-Er is momenteel geen programmatische manier van het abonnement/abonnement opzegt uit deze webhooks via een API.
+Er is momenteel geen programmatische manier om u te abonneren op of afmelden bij deze webhooks via een API.
 
-Als u ideeën voor het verbeteren van deze functie hebt, post u uw suggesties voor onze [Uservoice-forum](https://feedback.azure.com/forums/911455-azure-iot-central).
+Als u ideeën hebt voor het verbeteren van deze functie, plaatst u uw suggesties op ons [UserVoice-forum](https://feedback.azure.com/forums/911455-azure-iot-central).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u hebt geleerd hoe u kunt instellen en gebruiken van webhooks, de voorgestelde volgende stap is om te verkennen [het bouwen van werkstromen in Microsoft Flow](howto-add-microsoft-flow.md).
+Nu u hebt geleerd hoe u webhooks kunt instellen en gebruiken, is de voorgestelde volgende stap het [maken van werk stromen in Microsoft flow](howto-add-microsoft-flow.md)verkennen.

@@ -1,13 +1,13 @@
 ---
-title: OData-sorteren referentie - Azure Search
-description: Naslaggids voor OData-syntaxis, voor order in Azure Search-query's.
+title: OData-order-by-verwijzing-Azure Search
+description: Naslag informatie voor de OData-taal voor order-op-syntaxis in Azure Search query's.
 ms.date: 06/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1ced35dc73e6d596fbeda32590ab0b69df396c5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ee44549931100a1affa5e2bb9e5cda904c05ed1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079754"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647545"
 ---
-# <a name="odata-orderby-syntax-in-azure-search"></a>Syntaxis voor OData $orderby in Azure Search
+# <a name="odata-orderby-syntax-in-azure-search"></a>OData-$orderby syntaxis in Azure Search
 
- U kunt de [OData **$orderby** parameter](query-odata-filter-orderby-syntax.md) om toe te passen van een aangepaste sorteervolgorde voor zoekresultaten in Azure Search. In dit artikel beschrijft de syntaxis van **$orderby** in detail. Voor meer algemene informatie over hoe u **$orderby** wanneer zoekresultaten wordt gepresenteerd, Zie [over het werken met zoeken in Azure Search resultaten](search-pagination-page-layout.md).
+ U kunt de [OData- **$OrderBy** para meter](query-odata-filter-orderby-syntax.md) gebruiken om een aangepaste sorteer volgorde voor zoek resultaten in azure Search toe te passen. In dit artikel wordt de syntaxis van **$OrderBy** uitvoerig beschreven. Zie [How to use with the Search Results in azure Search](search-pagination-page-layout.md)voor meer algemene informatie over het gebruik van **$OrderBy** bij het presen teren van zoek resultaten.
 
 ## <a name="syntax"></a>Syntaxis
 
-De **$orderby** parameter accepteert een door komma's gescheiden lijst van maximaal 32 **order by-componenten**. De syntaxis van een component order by wordt beschreven door de volgende EBNF ([uitgebreid Backus Naur formulier](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
+De para meter **$OrderBy** accepteert een door komma's gescheiden lijst met maxi maal 32 **order by-componenten**. De syntaxis van een component order-by wordt beschreven door de volgende EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,45 +42,45 @@ order_by_clause ::= (field_path | sortable_function) ('asc' | 'desc')?
 sortable_function ::= geo_distance_call | 'search.score()'
 ```
 
-Een diagram van een interactieve syntaxis is ook beschikbaar:
+Er is ook een interactief syntaxis diagram beschikbaar:
 
 > [!div class="nextstepaction"]
-> [Diagram van de OData-syntaxis voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
+> [Syntaxis diagram van OData voor Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> Zie [naslaginformatie over expressiesyntaxis voor Azure Search OData](search-query-odata-syntax-reference.md) voor de volledige EBNF.
+> Zie de [syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md) voor de volledige ebnf.
 
-Elke component heeft sorteercriteria, eventueel gevolgd door een sorteerrichting (`asc` in oplopende volgorde of `desc` voor aflopende). Als u de richting niet opgeeft, wordt de standaard oplopende. De sorteercriteria kunnen het pad van een `sortable` veld of een aanroep van hetzij de [ `geo.distance` ](search-query-odata-geo-spatial-functions.md) of de [ `search.score` ](search-query-odata-search-score-function.md) functies.
+Elke component heeft Sorteer criteria, eventueel gevolgd door een sorteer richting (`asc` voor oplopend of `desc` aflopend). Als u geen richting opgeeft, wordt de standaard waarde Oplopend. De sorteer criteria kunnen het pad van een `sortable` veld zijn of een aanroep van de [`geo.distance`](search-query-odata-geo-spatial-functions.md) -of [`search.score`](search-query-odata-search-score-function.md) -functies.
 
-Als meerdere documenten dezelfde criteria sorteren hebben en de `search.score` functie wordt niet gebruikt (bijvoorbeeld, als u op een numerieke sorteren `Rating` veld en drie documenten hebt u een classificatie van 4), ties zullen niet werken op document score in aflopende volgorde. Wanneer het document scores dezelfde (bijvoorbeeld wanneer er geen query zoeken in volledige tekst is opgegeven in de aanvraag) zijn, klikt u vervolgens is de relatieve positie van de gebonden documenten onbepaald.
+Als meerdere documenten dezelfde Sorteer criteria hebben en de functie `search.score` niet wordt gebruikt (bijvoorbeeld als u op een numeriek `Rating` veld sorteert en drie documenten met een classificatie van vier), worden de punten door de document Score in aflopende volg orde afgebroken. Wanneer de document scores hetzelfde zijn (bijvoorbeeld wanneer er geen zoek opdracht voor volledige tekst in de aanvraag is opgegeven), is de relatieve volg orde van de gekoppelde documenten onbepaald.
 
-U kunt meerdere criteria voor sorteren opgeven. De volgorde van de expressies bepaalt de volgorde van de laatste sorteren. Bijvoorbeeld, de syntaxis van de zou zijn als u wilt sorteren op Aflopend op score, gevolgd door classificatie `$orderby=search.score() desc,Rating desc`.
+U kunt meerdere Sorteer criteria opgeven. De volg orde van expressies bepaalt de uiteindelijke sorteer volgorde. Als u bijvoorbeeld aflopend op Score wilt sorteren, gevolgd door classificatie, zou de syntaxis `$orderby=search.score() desc,Rating desc`zijn.
 
-De syntaxis voor `geo.distance` in **$orderby** is hetzelfde als het zich in **$filter**. Bij het gebruik van `geo.distance` in **$orderby**, het veld waarop deze van toepassing is moet van het type `Edm.GeographyPoint` en moet ook `sortable`.
+De syntaxis voor `geo.distance` in **$OrderBy** is hetzelfde als in **$filter**. Wanneer u `geo.distance` in **$OrderBy**gebruikt, moet het veld waarop het van toepassing is, `Edm.GeographyPoint` van het type zijn en `sortable`het moet ook zijn.
 
-De syntaxis voor `search.score` in **$orderby** is `search.score()`. De functie `search.score` parameters niet uitvoeren.
+De syntaxis voor `search.score` in **$OrderBy** is `search.score()`. De functie `search.score` voert geen para meters uit.
 
 ## <a name="examples"></a>Voorbeelden
 
-Hotels door basistarief Oplopend sorteren:
+Hotels sorteren oplopend op basis van base-rate:
 
     $orderby=BaseRate asc
 
-Sorteren door te beoordelen en vervolgens basistarief oplopende aflopende hotels (Houd er rekening mee dat de standaardinstelling oplopend is):
+Hotels sorteren aflopend op waardering en vervolgens oplopend per basis tarief (Houd er rekening mee dat oplopend is de standaard instelling):
 
     $orderby=Rating desc,BaseRate
 
-Hotels Aflopend op classificatie en klik vervolgens op afstand van de opgegeven coördinaten Oplopend sorteren:
+Hotels sorteren aflopend op waardering en vervolgens oplopend op afstand van de opgegeven coördinaten:
 
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
-Sorteren hotels in aflopende volgorde door search.score en classificatie en vervolgens van de opgegeven coördinaten in oplopende volgorde op afstand. Tussen twee hotels met identieke relevantie scores en beoordelingen, wordt de dichtstbijzijnde een eerste weergegeven:
+Sorteer hotels in aflopende volg orde door te zoeken. Score en waardering en vervolgens in oplopende volg orde op afstand van de opgegeven coördinaten. Tussen twee hotels met identieke relevantie scores en beoordelingen wordt het dichtstbijzijnde item als eerste weer gegeven:
 
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Over het werken met zoeken resulteert in Azure Search](search-pagination-page-layout.md)
-- [Overzicht van taal van OData-expressie voor Azure Search](query-odata-filter-orderby-syntax.md)
-- [Naslaginformatie over de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
-- [Documenten zoeken &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Werken met zoek resultaten in Azure Search](search-pagination-page-layout.md)
+- [Overzicht van de OData-expressie taal voor Azure Search](query-odata-filter-orderby-syntax.md)
+- [Verwijzing naar de syntaxis van de OData-expressie voor Azure Search](search-query-odata-syntax-reference.md)
+- [Zoeken naar &#40;documenten Azure Search service rest API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -1,51 +1,51 @@
 ---
-title: REST-API claims worden uitgewisseld - Azure Active Directory B2C
-description: Claims worden uitgewisseld REST-API toevoegen aan aangepaste beleidsregels in Active Directory B2C.
+title: REST API claim uitwisselingen-Azure Active Directory B2C
+description: REST API claims-uitwisselingen toevoegen aan aangepaste beleids regels in Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439001"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644913"
 ---
-# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Claims worden uitgewisseld REST-API toevoegen aan aangepaste beleidsregels in Azure Active Directory B2C
+# <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>REST API claim uitwisselingen toevoegen aan aangepast beleid in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-U kunt toevoegen interactie met een RESTful-API aan uw [aangepast beleid](active-directory-b2c-overview-custom.md) in Azure Active Directory (Azure AD) B2C. Dit artikel laat u het maken van een Azure AD B2C-gebruikersbeleving die communiceert met de RESTful-services.
+U kunt interactie met een REST-API toevoegen aan uw [aangepaste beleids regels](active-directory-b2c-overview-custom.md) in azure Active Directory (Azure AD) B2C. In dit artikel wordt beschreven hoe u een Azure AD B2C gebruikers traject maakt dat samenwerkt met de REST-services.
 
-De interactie bevat een claims uitwisselen van gegevens tussen de claims van de REST-API en Azure AD B2C. Claims worden uitgewisseld hebben de volgende kenmerken:
+De interactie bevat een claim uitwisseling van informatie tussen de REST API claims en Azure AD B2C. Claim uitwisselingen hebben de volgende kenmerken:
 
-- Kunnen worden ontworpen als een orchestration-stap.
-- Kan resulteren in een externe actie. Het kan bijvoorbeeld een gebeurtenis zich in een externe database.
-- Kan worden gebruikt om een waarde ophalen en vervolgens opslaan in de database.
-- Kan de stroom van de uitvoering van wijzigen.
+- Kan worden ontworpen als een indelings stap.
+- Kan een externe actie activeren. Het kan bijvoorbeeld een gebeurtenis registreren in een externe data base.
+- Kan worden gebruikt om een waarde op te halen en op te slaan in de gebruikers database.
+- Kan de stroom van de uitvoering wijzigen.
 
-Het scenario dat wordt weergegeven in dit artikel bevat de volgende acties:
+Het scenario dat in dit artikel wordt weer gegeven, omvat de volgende acties:
 
-1. De gebruiker opzoeken in een extern systeem.
-2. Haal de plaats waar de gebruiker is geregistreerd.
-3. Dit kenmerk terug naar de toepassing als een claim.
+1. Zoek de gebruiker op in een extern systeem.
+2. Haal de plaats op waar de gebruiker is geregistreerd.
+3. Retourneert dat kenmerk als een claim voor de toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de stappen in [aan de slag met aangepaste beleidsregels](active-directory-b2c-get-started-custom.md).
-- Een REST-API-eindpunt om te communiceren met. In dit artikel maakt gebruik van een eenvoudige Azure-functie als voorbeeld. Zie voor het maken van de Azure-functie, [uw eerste functie maken in Azure portal](../azure-functions/functions-create-first-azure-function.md).
+- Voer de stappen in aan de [slag met aangepast beleid](active-directory-b2c-get-started-custom.md).
+- Een REST API-eind punt om te communiceren. In dit artikel wordt een eenvoudige Azure-functie als voor beeld gebruikt. Zie [uw eerste functie maken in de Azure Portal](../azure-functions/functions-create-first-azure-function.md)om de Azure-functie te maken.
 
-## <a name="prepare-the-api"></a>Voorbereiden van de API
+## <a name="prepare-the-api"></a>De API voorbereiden
 
-In dit gedeelte bereidt u de Azure-functie voor het ontvangen van een waarde voor `email`, en vervolgens de waarde retourneren voor `city` die als een claim kan worden gebruikt door Azure AD B2C.
+In deze sectie bereidt u de Azure-functie voor op het ontvangen `email`van een waarde voor en retourneert u `city` de waarde voor die kan worden gebruikt door Azure AD B2C als een claim.
 
-Wijzigen van het bestand run.csx voor de Azure-functie die u hebt gemaakt voor het gebruik van de volgende code:
+Wijzig het bestand run. CSX voor de Azure-functie die u hebt gemaakt voor het gebruik van de volgende code:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -82,11 +82,11 @@ public class ResponseContent
 }
 ```
 
-## <a name="configure-the-claims-exchange"></a>De claimuitwisseling configureren
+## <a name="configure-the-claims-exchange"></a>De claim uitwisseling configureren
 
-Een technisch profiel biedt de configuratie voor de uitwisseling van de claim.
+Een technisch profiel biedt de configuratie voor de claim uitwisseling.
 
-Open de *TrustFrameworkExtensions.xml* -bestand en voeg de volgende **ClaimsProvider** XML-element in de **ClaimsProviders** element.
+Open het bestand *TrustFrameworkExtensions. XML* en voeg het volgende **ClaimsProvider** XML-element toe in het element **ClaimsProviders** .
 
 ```XML
 <ClaimsProvider>
@@ -97,8 +97,10 @@ Open de *TrustFrameworkExtensions.xml* -bestand en voeg de volgende **ClaimsProv
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -113,11 +115,13 @@ Open de *TrustFrameworkExtensions.xml* -bestand en voeg de volgende **ClaimsProv
 </ClaimsProvider>
 ```
 
-De **InputClaims** element wordt gedefinieerd voor de claims die worden verzonden naar de REST-service. In dit voorbeeld is de waarde van de claim `givenName` wordt verzonden naar de REST-service als de claim `email`. De **OutputClaims** element wordt gedefinieerd voor de claims die naar verwachting van de REST-service.
+Het **InputClaims** -element definieert de claims die naar de rest-service worden verzonden. In dit voor beeld wordt de waarde van de `givenName` claim verzonden naar de rest-service als claim `email`. Het **OutputClaims** -element definieert de claims die van de rest-service worden verwacht.
 
-## <a name="add-the-claim-definition"></a>De definitie van een claim toevoegen
+De opmerkingen hierboven `AuthenticationType` en `AllowInsecureAuthInProduction` Geef de wijzigingen op die u moet aanbrengen wanneer u overstapt naar een productie omgeving. Voor meer informatie over het beveiligen van uw REST-Api's voor productie raadpleegt u [beveiligde rest api's met basis verificatie](active-directory-b2c-custom-rest-api-netfw-secure-basic.md) en [beveiligde rest api's met certificaat verificatie](active-directory-b2c-custom-rest-api-netfw-secure-cert.md).
 
-Toevoegen van een definitie voor `city` binnen de **BuildingBlocks** element. U vindt dit element aan het begin van het bestand TrustFrameworkExtensions.xml.
+## <a name="add-the-claim-definition"></a>De claim definitie toevoegen
+
+Voeg een definitie voor `city` binnen het **BuildingBlocks** -element toe. U kunt dit element vinden aan het begin van het bestand TrustFrameworkExtensions. XML.
 
 ```XML
 <BuildingBlocks>
@@ -132,11 +136,11 @@ Toevoegen van een definitie voor `city` binnen de **BuildingBlocks** element. U 
 </BuildingBlocks>
 ```
 
-## <a name="add-an-orchestration-step"></a>Een orchestration-stap toevoegen
+## <a name="add-an-orchestration-step"></a>Een Orchestration-stap toevoegen
 
-Er zijn veel gebruik gevallen waar de REST-API-aanroep kan worden gebruikt als een orchestration-stap. Als een indelingsstap kan deze worden gebruikt als een update aan voor een extern systeem nadat een gebruiker een taak, zoals de registratie van de eerste keer met succes is voltooid of als de Profielupdate van een om gegevens gesynchroniseerd te houden. In dit geval wordt deze gebruikt om te verbeteren van de informatie die is opgegeven voor de toepassing nadat het profiel hebt bewerkt.
+Er zijn veel use-cases waarbij de aanroep van REST API kan worden gebruikt als een indelings stap. Als een indelings stap kan deze worden gebruikt als een update voor een extern systeem nadat een gebruiker een taak heeft voltooid, zoals de eerste registratie, of als een profiel update om de informatie gesynchroniseerd te laten worden. In dit geval wordt deze gebruikt om de informatie die is verstrekt aan de toepassing te verbeteren nadat het profiel is bewerkt.
 
-Een stap toevoegen aan de gebruikersbeleving profiel bewerken. Nadat de gebruiker is geverifieerd (orchestration stappen 1-4 in het volgende XML-bestand), en de gebruiker heeft de bijgewerkte profielgegevens (stap 5). Kopieer de profiel bewerken gebruiker reis XML-code uit de *TrustFrameworkBase.xml* van het bestand in uw *TrustFrameworkExtensions.xml* bestand in de **UserJourneys** element. Maak vervolgens de wijziging als stap 6.
+Een stap toevoegen aan het profiel gebruikers traject voor het bewerken van een gebruiker. Nadat de gebruiker is geverifieerd (indelings stappen 1-4 in de volgende XML) en de gebruiker de bijgewerkte profiel gegevens heeft verstrekt (stap 5). Kopieer de gebruikers traject XML-code van het profiel bewerken vanuit het bestand *TrustFrameworkBase. XML* naar uw *TrustFrameworkExtensions. XML-* bestand in het **UserJourneys** -element. Breng vervolgens de wijziging aan als stap 6.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -146,7 +150,7 @@ Een stap toevoegen aan de gebruikersbeleving profiel bewerken. Nadat de gebruike
 </OrchestrationStep>
 ```
 
-De laatste XML voor de gebruikersbeleving moet eruitzien als in dit voorbeeld:
+Het uiteindelijke XML-bestand voor de gebruikers reis moet er als volgt uitzien:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -206,9 +210,9 @@ De laatste XML voor de gebruikersbeleving moet eruitzien als in dit voorbeeld:
 
 ## <a name="add-the-claim"></a>De claim toevoegen
 
-Bewerk de *ProfileEdit.xml* bestand en voeg toe `<OutputClaim ClaimTypeReferenceId="city" />` naar de **OutputClaims** element.
+Bewerk het *ProfileEdit. XML-* bestand en `<OutputClaim ClaimTypeReferenceId="city" />` Voeg het toe aan het **OutputClaims** -element.
 
-Nadat u de nieuwe claim toegevoegd, is het technische profiel ziet eruit zoals in dit voorbeeld:
+Nadat u de nieuwe claim hebt toegevoegd, ziet het technische profiel er als volgt uit:
 
 ```XML
 <TechnicalProfile Id="PolicyProfile">
@@ -223,15 +227,15 @@ Nadat u de nieuwe claim toegevoegd, is het technische profiel ziet eruit zoals i
 </TechnicalProfile>
 ```
 
-## <a name="upload-your-changes-and-test"></a>Uw wijzigingen te uploaden en te testen
+## <a name="upload-your-changes-and-test"></a>Uw wijzigingen uploaden en testen
 
-1. (Optioneel:) Sla de bestaande versie (door downloaden) van de bestanden voordat u doorgaat.
-2. Upload de *TrustFrameworkExtensions.xml* en *ProfileEdit.xml* en selecteert u het bestaande bestand wilt overschrijven.
+1. Beschrijving Sla de bestaande versie op (door te downloaden) van de bestanden voordat u doorgaat.
+2. Upload *TrustFrameworkExtensions. XML* en *ProfileEdit. XML* en selecteer om het bestaande bestand te overschrijven.
 3. Selecteer **B2C_1A_ProfileEdit**.
-4. Voor **toepassing selecteren** op de overzichtspagina van het aangepaste beleid, selecteert u de web-App met de naam *webapp1* die u eerder hebt geregistreerd. Zorg ervoor dat de **antwoord-URL** is `https://jwt.ms`.
-4. Selecteer **nu uitvoeren**. Meld u aan met referenties van uw account en klikt u op **doorgaan**.
+4. Selecteer voor **Select-toepassing** op de pagina overzicht van het aangepaste beleid de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. Zorg ervoor dat de **antwoord** -URL `https://jwt.ms`is.
+4. Selecteer **nu uitvoeren**. Meld u aan met uw account referenties en klik op **door gaan**.
 
-Als u alles juist is ingesteld, het token bevat de nieuwe claim `city`, met de waarde `Redmond`.
+Als alles goed is ingesteld, bevat het token de nieuwe claim `city`met de waarde. `Redmond`
 
 ```JSON
 {
@@ -251,5 +255,13 @@ Als u alles juist is ingesteld, het token bevat de nieuwe claim `city`, met de w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- U kunt ook de interactie als een validatieprofiel ontwerpen. Zie voor meer informatie, [scenario: Integreer claims worden uitgewisseld REST-API in uw Azure AD B2C de gebruikersbeleving als validatie op gebruikersinvoer](active-directory-b2c-rest-api-validation-custom.md).
-- [Het bewerken van het profiel voor het verzamelen van aanvullende informatie van uw gebruikers wijzigen](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+U kunt de interactie ook als een validatie profiel ontwerpen. Zie [voor meer informatie overzicht: Integreer REST API claims-uitwisselingen in uw Azure AD B2C gebruikers als validatie op invoer](active-directory-b2c-rest-api-validation-custom.md)van de gebruiker.
+
+[Wijzig de profiel bewerking om aanvullende informatie van uw gebruikers te verzamelen](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+
+[Referentielaag Onderliggend technisch profiel](restful-technical-profile.md)
+
+Raadpleeg de volgende artikelen voor meer informatie over het beveiligen van uw Api's:
+
+* [Beveilig uw REST API met basis verificatie (gebruikers naam en wacht woord)](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [De REST-API beveiligen met client certificaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

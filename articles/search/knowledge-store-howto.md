@@ -1,7 +1,7 @@
 ---
 title: Aan de slag met Knowledge Store (preview)-Azure Search
 description: Meer informatie over de stappen voor het verzenden van verrijkte documenten die zijn gemaakt door pijp lijnen voor AI-indexering in Azure Search naar een kennis archief in uw Azure Storage-account. Vanuit deze weer gave kunt u verrijkte documenten in Azure Search en in andere toepassingen bekijken, opnieuw vorm geven en gebruiken.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: 7539481105e1c1fd3b6816778e31e6edde8842d3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d6cecdce9bc4f7fee9ec936ac73b6accc77084c4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840806"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648821"
 ---
 # <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Aan de slag met een Knowledge Store in Azure Search
 
