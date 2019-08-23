@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aae2270417e0bb3bdf0dd847e2e09e7cb1999d39
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624772"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972474"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Detectie van bedreigingen voor Azure-service lagen in Azure Security Center
 
@@ -50,6 +50,10 @@ Security Center Network-laag analyse zijn gebaseerd op voorbeeld [gegevens van I
 |**Er is een netwerk communicatie met een schadelijk adres gedetecteerd**|Voorbeeld analyse van netwerk verkeer heeft communicatie gedetecteerd die afkomstig is van een bron in uw implementatie met een mogelijke opdracht-en beheer server (C & C). Houd er rekening mee dat dit type activiteit ervoor kan zorgen dat uw IP-adres wordt gemarkeerd als kwaadaardig bij externe entiteiten.|
 
 Zie [heuristische DNS-detecties in azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)om te begrijpen hoe Security Center netwerk signalen kunt gebruiken om bedreigings beveiliging toe te passen.
+
+>[!NOTE]
+>Meldingen van de detectie van Azure-netwerk lagen, in Azure Security Center, worden niet gegenereerd tijdens het eerste uur nadat de virtuele machine is gemaakt.
+
 ## Azure Management Layer (Azure Resource Manager) (preview-versie)<a name ="management-layer"></a>
 
 >[!NOTE]

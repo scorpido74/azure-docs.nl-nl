@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302650"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972286"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>OPC van twee tot een bestaand project implementeren
 
@@ -56,7 +56,7 @@ cd azure-iiot-components
 
 ## <a name="troubleshooting-deployment-failures"></a>Implementatie fouten oplossen
 
-### <a name="resource-group-name"></a>Naam van de resourcegroep
+### <a name="resource-group-name"></a>Resourcegroepnaam
 
 Zorg ervoor dat u een korte en eenvoudige naam voor de resource groep gebruikt.  De naam wordt ook gebruikt om resources te noemen, omdat deze moeten voldoen aan de vereisten voor resource naamgeving.  
 
@@ -142,4 +142,4 @@ AAD-Tenant die moet worden gebruikt.
 Nu u hebt geleerd hoe u OPC twee kunt implementeren in een bestaand project, is dit de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Veilige communicatie van OPC-client en OPC PLC](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [Beveiligde communicatie van de OPC UA-client en de OPC UA PLC](howto-opc-vault-secure.md)

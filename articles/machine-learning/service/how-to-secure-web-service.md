@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656327"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897330"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL gebruiken om een webservice te beveiligen via Azure Machine Learning
 
@@ -149,9 +149,9 @@ Vervolgens moet u uw DNS om te verwijzen naar de webservice bijwerken.
   > [!WARNING]
   > Als u *leaf_domain_label* hebt gebruikt om de service te maken met behulp van een certificaat van micro soft, moet u de DNS-waarde voor het cluster niet hand matig bijwerken. De waarde moet automatisch worden ingesteld.
 
-  Werk de DNS bij op het tabblad **configuratie** van het open bare IP-adres van het AKS-cluster. (Zie de volgende afbeelding.) Het open bare IP-adres is een resource type dat wordt gemaakt onder de resource groep die de AKS-agent knooppunten en andere netwerk bronnen bevat.
+  Werk de DNS van het open bare IP-adres van de AKS-cluster op het tabblad **configuratie** onder **instellingen** in het linkerdeel venster. (Zie de volgende afbeelding.) Het open bare IP-adres is een resource type dat wordt gemaakt onder de resource groep die de AKS-agent knooppunten en andere netwerk bronnen bevat.
 
-  ![Azure Machine Learning-service: Webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  [![Azure Machine Learning-service: Webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Het SSL-certificaat bijwerken
 
@@ -230,9 +230,7 @@ Zie voor meer informatie de volgende naslag documenten:
 
 ## <a name="disable-ssl"></a>SSL uitschakelen
 
-Als u SSL wilt uitschakelen voor een model dat is geïmplementeerd in azure Kubernetes service, kunt u de SDK of CLI gebruiken:
-
-**De SDK gebruiken**
+Als u SSL wilt uitschakelen voor een model dat is geïmplementeerd in azure Kubernetes `SslConfiguration` service `status="Disabled"`, maakt u een met en voert u een update uit:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -246,12 +244,6 @@ aks_target = AksCompute(ws, clustername)
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
-```
-
-**De CLI gebruiken**
-
-```azurecli
- az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

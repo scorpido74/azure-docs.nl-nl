@@ -1,6 +1,6 @@
 ---
-title: Maken van een Azure-machineschaalset die gebruikmaakt van Beschikbaarheidszones | Microsoft Docs
-description: Informatie over het maken van virtuele Azure-machine-schaalsets met Beschikbaarheidszones voor verhoogde redundantie tegen storingen
+title: Maak een Azure-schaalset die gebruikmaakt van Beschikbaarheidszones | Microsoft Docs
+description: Meer informatie over het maken van schaal sets voor virtuele Azure-machines die gebruikmaken van Beschikbaarheidszones voor verhoogde redundantie tegen storingen
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,73 +15,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803260"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907984"
 ---
-# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Maken van een virtuele-machineschaalset die gebruikmaakt van Beschikbaarheidszones
+# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Een schaalset voor virtuele machines maken die gebruikmaakt van Beschikbaarheidszones
 
-Als u wilt voorkomen dat uw virtuele-machineschaalsets datacentrumniveau fouten, kunt u een schaalset in meerdere Beschikbaarheidszones. Azure-regio's die ondersteuning bieden voor Beschikbaarheidszones hebben een minimum van drie afzonderlijke zones, elk met hun eigen onafhankelijke voeding bron, het netwerk en koeling. Zie voor meer informatie, [overzicht van Beschikbaarheidszones](../availability-zones/az-overview.md).
+Als u de schaal sets van virtuele machines wilt beveiligen tegen fouten op Data Center-niveau, kunt u een schaalset maken over Beschikbaarheidszones. Azure-regio's die Beschikbaarheidszones ondersteunen, hebben mini maal drie afzonderlijke zones, elk met hun eigen onafhankelijke voedings bron, netwerk en koeling. Zie [overzicht van Beschikbaarheidszones](../availability-zones/az-overview.md)voor meer informatie.
 
 ## <a name="availability-considerations"></a>Beschikbaarheidsoverwegingen
 
-Bij het implementeren van een schaalset in een of meer zones vanaf API-versie *2017-12-01*, hebt u de mogelijkheid om te implementeren met 'maximale spreiding' of 'statische 5 fouttolerantie domein spreiden'. De schaalset verspreidt met maximale spreiding uw VM's op zoals veel mogelijk in elke zone foutdomeinen. Deze spreiden kan zijn in meer of minder dan vijf foutdomeinen per zone. Uw virtuele machines worden in de schaalset met "statische 5 fouttolerantie domein spreiden" verspreidt over exact vijf foutdomeinen per zone. Als de schaalset niet vijf verschillende foutdomeinen per zone om te voldoen aan de aanvraag voor geheugentoewijzing vinden, de aanvraag is mislukt.
+Wanneer u een schaalset implementeert in een of meer zones vanaf API-versie *2017-12-01*, hebt u de mogelijkheid om te implementeren met ' maximale sprei ding ' of ' statische ' fout domein verspreiding '. Met de maximale sprei ding is de schaalset uw Vm's verdeeld over zoveel mogelijk fout domeinen binnen elke zone. Deze verspreiding kan zich in meer of minder dan vijf fout domeinen per zone bevindt. Met ' statische ' sprei ding van fout domeinen ' spreiden de schaalset uw Vm's over precies vijf fout domeinen per zone. Als de schaalset geen vijf verschillende fout domeinen per zone kan vinden om te voldoen aan de toewijzings aanvraag, mislukt de aanvraag.
 
-**Het is raadzaam implementeren met maximale spreiding voor de meeste workloads**, zoals deze aanpak geeft u het beste verspreiden in de meeste gevallen. Als u replica's worden verdeeld over verschillende hardware isolatie-eenheden, we raden u aan te spreiden over Beschikbaarheidszones en gebruikmaken van maximale spreiding in elke zone.
+**We raden u aan om te implementeren met een maximale sprei ding voor de meeste werk belastingen**, omdat deze benadering de beste sprei ding biedt in de meeste gevallen. Als u replica's nodig hebt om te worden verdeeld over verschillende hardware-isolatie-eenheden, raden we u aan om te spreiden over Beschikbaarheidszones en maximale sprei ding binnen elke zone te gebruiken.
 
-Met maximale spreiding ziet u slechts één domein met fouten in de weergave scale set VM-exemplaar en de metagegevens van het exemplaar, ongeacht het aantal foutdomeinen die de virtuele machines worden verdeeld over. De spreiding in elke zone is impliciete.
+Met maximale sprei ding ziet u slechts één fout domein in de weer gave van de VM-instantie van de schaalset en in de meta gegevens van het exemplaar, ongeacht het aantal fout domeinen dat de Vm's zijn verdeeld. De sprei ding binnen elke zone is impliciet.
 
-Als u wilt gebruiken voor maximale spreiding, *platformFaultDomainCount* naar *1*. Voor het gebruik van statische vijf fouten-domain netwerkmappen, stel *platformFaultDomainCount* naar *5*. In API-versie *2017-12-01*, *platformFaultDomainCount* standaard ingesteld op *1* voor één zone en zoneoverschrijdende schaal wordt ingesteld. Op dit moment wordt alleen statische vijf foutdomeinen domein spreiding ondersteund voor regionale schaalsets.
+Als u de maximale sprei ding wilt gebruiken, stelt u *platformFaultDomainCount* in op *1*. Als u statische vijf verspreiding van fout domeinen wilt gebruiken, stelt u *platformFaultDomainCount* in op *5*. In API versie *2017-12-01* *platformFaultDomainCount* standaard ingesteld op *1* voor schaal sets met één zone en meerdere zones. Op dit moment worden alleen statische vijf verspreiding van fout domeinen ondersteund voor regionale schaal sets (niet-zonegebonden).
 
 ### <a name="placement-groups"></a>Plaatsingsgroepen
 
-Wanneer u een schaalset implementeert, hebt u ook de mogelijkheid om te implementeren met één [plaatsingsgroep](./virtual-machine-scale-sets-placement-groups.md) per binnen een Beschikbaarheidszone of met meerdere per zone. Voor regionale schaalsets is de keuze hebt van één plaatsingsgroep in de regio of meerdere in de regio. Voor de meeste workloads, wordt aangeraden meerdere plaatsingsgroepen, zodat voor grotere schaal. In API-versie *2017-12-01*, standaard-schaalsets naar meerdere plaatsingsgroepen voor één zone en zoneoverschrijdende schaalsets, maar worden standaard één plaatsingsgroep voor regionale schaalsets.
+Wanneer u een schaalset implementeert, hebt u ook de mogelijkheid om te implementeren met één [plaatsings groep](./virtual-machine-scale-sets-placement-groups.md) per beschikbaarheids zone of met meerdere per zone. Voor regionale schaal sets (niet-zonegebonden) is het keuze om één plaatsings groep in de regio te hebben of meerdere in de regio te hebben. Voor de meeste werk belastingen raden we u aan meerdere plaatsings groepen aan te bieden, waarmee u een grotere schaal kunt krijgen. In API-versie *2017-12-01*, schaal sets standaard ingesteld op meerdere plaatsings groepen voor schaal sets met één zone en meerdere zones, maar deze zijn standaard één plaatsings groep voor regionale (niet-zonegebonden) schaal sets.
 
 > [!NOTE]
-> Als u de maximale spreiding gebruikt, moet u meerdere plaatsingsgroepen.
+> Als u de maximale sprei ding gebruikt, moet u meerdere plaatsings groepen gebruiken.
 
-### <a name="zone-balancing"></a>Zone Netwerktaakverdeling
+### <a name="zone-balancing"></a>Zone-verdeling
 
-Ten slotte voor schaalsets geïmplementeerd in meerdere zones, hebt u ook de mogelijkheid van een "aanbevolen inspanning zone balance" of "strikte zonebalans" te kiezen. Een schaalset wordt beschouwd als 'met gelijke taakverdeling' als elke zone hetzelfde aantal virtuele machines of +\\-1 virtuele machine in andere zones voor de schaalset. Bijvoorbeeld:
+Ten slotte, voor schaal sets die zijn geïmplementeerd in meerdere zones, hebt u ook de mogelijkheid om "Best effort zone balances" of "strikte zone balans" te kiezen. Een schaalset wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal vm's of +\\-1 virtuele machines in alle andere zones voor de schaalset heeft. Bijvoorbeeld:
 
-- Een schaalset met 2 virtuele machines in zone 1, 3 VM's in zone 2 en 3 virtuele machines in zone 3 wordt beschouwd als met gelijke taakverdeling. Er is slechts één zone met een ander aantal voor VM's en is slechts 1 kleiner is dan de andere zones. 
-- Een schaalset instellen met 1 virtuele machine in zone 1, 3 VM's in zone 2 en 3 virtuele machines in zone 3 wordt beschouwd als niet-regelmatige. Zone 1 heeft 2 minder virtuele machines dan zones 2 en 3.
+- Een schaalset met 2 Vm's in zone 1, 3 Vm's in zone 2 en 3 virtuele machines in zone 3 wordt als evenwichtig beschouwd. Er is slechts één zone met een ander aantal VM'S en de waarde 1 is kleiner dan de andere zones. 
+- Een schaalset met 1 virtuele machine in zone 1, 3 Vm's in zone 2 en 3 Vm's in zone 3 wordt als niet-Balanced beschouwd. Zone 1 heeft twee virtuele machines dan zones 2 en 3.
 
-Het is mogelijk dat virtuele machines in de schaalset zijn gemaakt, maar niet voldoen aan-extensies op deze virtuele machines te implementeren. Deze VM's met extensies oplossen worden nog steeds geteld wanneer u bepaalt als een schaalset met gelijke taakverdeling. Bijvoorbeeld: een schaalset met 3 VM's in zone 1, 3 VM's in zone 2 en 3 VM's in zone 3 wordt beschouwd als met gelijke taakverdeling, zelfs als alle extensies is mislukt in zone 1 en alle extensies geslaagd in zones 2 en 3.
+Het is mogelijk dat de virtuele machines in de schaalset zijn gemaakt, maar dat de implementatie van de virtuele machines niet kan worden geïmplementeerd. Deze Vm's met uitbrei ding van fouten worden nog steeds geteld bij het bepalen of een schaalset is verdeeld. Zo wordt bijvoorbeeld een schaalset met drie Vm's in zone 1, 3 Vm's in zone 2 en 3 Vm's in zone 3 beschouwd als evenwichtig, zelfs als alle uitbrei dingen in zone 1 zijn mislukt en alle uitbrei dingen zijn geslaagd in zones 2 en 3.
 
-Met best-effort zonebalans schaalset de pogingen tot inschalen en uitschalen behoud verdelen. Echter, als voor een of andere reden dit niet mogelijk is (bijvoorbeeld, als één zone uitgeschakeld wordt, de schaalset kan niet maakt een nieuwe virtuele machine in de zone), de schaalset kunt tijdelijke imbalance met succes kunt in- of uitschalen. Op volgende pogingen tot scale-out, wordt de schaalset VM's toegevoegd voor zones die u hebt meer virtuele machines nodig voor de schaalset worden verdeeld. Op dezelfde manier op schaal van de volgende pogingen verwijdert de schaalset VM's van de zones die minder VM's nodig hebt voor de schaalset worden verdeeld. Met "strikte zonebalans" mislukt de schaalset elke poging om te schalen in- of uitgeschaald als dit leiden ongebalanceerde tot zou.
+Met een zone saldo van de hoogste inspanning probeert de schaalset in en uit te schalen terwijl het saldo wordt gehandhaafd. Als dit echter om een bepaalde reden niet mogelijk is (bijvoorbeeld als één zone uitvalt, kan de schaalset geen nieuwe virtuele machine in die zone maken), kan de schaalset tijdelijk onevenwichtig worden geschaald. Bij volgende scale-out-pogingen voegt de schaalset Vm's toe aan zones die meer Vm's nodig hebben voor de schaalset die moet worden verdeeld. Op de volgende schaal van pogingen verwijdert de schaalset ook Vm's uit zones die minder Vm's nodig hebben voor de schaalset die moet worden verdeeld. Met ' strikte zone balans ' kan de schaalset geen pogingen doen om in of uit te schalen als dat zo is, zou dit leiden tot onevenwichtigheid.
 
-Instellen voor het gebruik van best-effort zonebalans *zoneBalance* naar *false*. Dit is de standaardinstelling in API-versie *2017-12-01*. Instellen voor het gebruik van strikte zonebalans *zoneBalance* naar *waar*.
+Stel *zoneBalance* in op *False*als u de zone balans voor de beste inspanning wilt gebruiken. Deze instelling is de standaard waarde in API-versie *2017-12-01*. Als u strikte zone balans wilt gebruiken, stelt u *zoneBalance* in op *waar*.
 
-## <a name="single-zone-and-zone-redundant-scale-sets"></a>Één zone en zone-redundante schaalsets
+## <a name="single-zone-and-zone-redundant-scale-sets"></a>Enkelvoudige zone en zone-redundante schaal sets
 
-Wanneer u een virtuele-machineschaalset implementeert, kunt u kiezen om één Beschikbaarheidszone in een regio of meerdere zones te gebruiken.
+Wanneer u een schaalset voor virtuele machines implementeert, kunt u kiezen voor het gebruik van één beschikbaarheids zone in een regio of in meerdere zones.
 
-Wanneer u een schaalset maken in een enkele zone, u bepaalt welke zone alle deze VM-exemplaren in de uitgevoerd en de schaalset wordt beheerd en automatisch wordt geschaald alleen in deze zone. Een zone-redundante schaalset kunt u één schaalset die meerdere zones omvat maken. Als de VM-exemplaren zijn gemaakt, wordt standaard worden ze gelijkmatig verdeeld over zones. Moet een onderbreking optreedt op een van de zones, een schaalset wordt niet automatisch worden uitgebreid om capaciteit te vergroten. Een best practice is het configureren van regels voor automatisch schalen op basis van CPU-en geheugengebruik. De regels voor automatisch schalen kunnen de schaal die is ingesteld om te reageren op een verlies van de VM-exemplaren in een zone door nieuwe instanties in de resterende operationele zones uitschaling.
+Wanneer u een schaalset in één zone maakt, bepaalt u in welke zone alle VM-exemplaren worden uitgevoerd en wordt de schaalset alleen beheerd en automatisch geschaald in die zone. Een zone-redundante schaalset stelt u in staat om een enkele schaalset te maken die meerdere zones omspant. Als VM-exemplaren worden gemaakt, worden deze standaard gelijkmatig verdeeld over zones. Als er een onderbreking optreedt in een van de zones, wordt een schaalset niet automatisch uitgeschaald om de capaciteit te verg Roten. Een best practice is het configureren van regels voor automatisch schalen op basis van CPU-of geheugen gebruik. Met de regels voor automatisch schalen kunt u instellen dat de schaalset reageert op een verlies van de VM-exemplaren in die ene zone door nieuwe instanties in de resterende operationele zones te schalen.
 
-Als u wilt gebruiken voor Beschikbaarheidszones, moet uw schaalset worden gemaakt in een [ondersteunde Azure-regio](../availability-zones/az-overview.md#services-support-by-region). U kunt een schaalset die gebruikmaakt van Beschikbaarheidszones met een van de volgende manieren maken:
+Als u Beschikbaarheidszones wilt gebruiken, moet uw schaalset worden gemaakt in een [ondersteunde Azure-regio](../availability-zones/az-overview.md#services-support-by-region). U kunt een schaalset maken die gebruikmaakt van Beschikbaarheidszones met een van de volgende methoden:
 
-- [Azure Portal](#use-the-azure-portal)
+- [Azure-portal](#use-the-azure-portal)
 - Azure-CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Azure Resource Manager-sjablonen](#use-azure-resource-manager-templates)
+- [Azure Resource Manager sjablonen](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-Het proces voor het maken van een schaalset die gebruikmaakt van een Beschikbaarheidszone is hetzelfde als beschreven in de [aan de slag artikel](quick-create-portal.md). Wanneer u een ondersteunde Azure-regio selecteert, kunt u een schaalset in een of meer van de beschikbare zones maken zoals wordt weergegeven in het volgende voorbeeld:
+Het proces voor het maken van een schaalset die gebruikmaakt van een beschikbaarheids zone, is hetzelfde als de informatie in het [artikel aan](quick-create-portal.md)de slag. Wanneer u een ondersteunde Azure-regio selecteert, kunt u een schaalset maken in een of meer beschik bare zones, zoals wordt weer gegeven in het volgende voor beeld:
 
-![Een schaalset maken in één Beschikbaarheidszone](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
+![Een schaalset maken in één beschikbaarheids zone](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
 
-De schaalset en ondersteunende resources, zoals de Azure load balancer en het openbare IP-adressen worden gemaakt in de één zone die u opgeeft.
+De schaalset en ondersteunende resources, zoals de Azure load balancer en het open bare IP-adres, worden in de door u opgegeven zone gemaakt.
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
-Het proces voor het maken van een schaalset die gebruikmaakt van een Beschikbaarheidszone is hetzelfde als beschreven in de [aan de slag artikel](quick-create-cli.md). Als u wilt gebruiken voor Beschikbaarheidszones, moet u de schaalset in een ondersteunde Azure-regio maken.
+Het proces voor het maken van een schaalset die gebruikmaakt van een beschikbaarheids zone, is hetzelfde als de informatie in het [artikel aan](quick-create-cli.md)de slag. Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio.
 
-Toevoegen de `--zones` parameter voor de [az vmss maken](/cli/azure/vmss) opdracht en geeft u welke zone te gebruiken (zoals zone *1*, *2*, of *3*). Het volgende voorbeeld wordt een één zone schaalset met de naam *myScaleSet* in zone *1*:
+Voeg de `--zones` para meter toe aan de opdracht [AZ vmss Create](/cli/azure/vmss) en geef op welke zone moet worden gebruikt (bijvoorbeeld zone *1*, *2*of *3*). In het volgende voor beeld wordt een schaalset met één zone gemaakt met de naam *myScaleSet* in zone *1*:
 
 ```azurecli
 az vmss create \
@@ -94,13 +94,13 @@ az vmss create \
     --zones 1
 ```
 
-Voor een compleet voorbeeld van een schaalset met één zone en -netwerkbronnen, raadpleegt u [dit CLI-voorbeeldscript](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh)
+Zie voor een volledig voor beeld van een schaalset met één zone en netwerk bronnen [Dit cli-voorbeeld script](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh)
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Om te maken van een zone-redundante schaalset, gebruikt u een *Standard* SKU openbare IP-adres en de load balancer. Voor uitgebreide redundantie, de *Standard* SKU maakt zone-redundante netwerkbronnen. Zie voor meer informatie, [overzicht van Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md).
+Als u een zone-redundante schaalset wilt maken, gebruikt u een openbaar IP-adres en load balancer voor de *standaard* -SKU. Voor uitgebreide redundantie maakt de *standaard* -SKU zone-redundante netwerk bronnen. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
 
-Geef voor het maken van een zone-redundante schaalset meerdere zones met de `--zones` parameter. Het volgende voorbeeld wordt een zone-redundante schaalset met de naam *myScaleSet* in zones *1,2,3*:
+Als u een zone-redundante schaalset wilt maken, geeft u `--zones` meerdere zones op met de para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* voor de zones *1, 2, 3*:
 
 ```azurecli
 az vmss create \
@@ -113,13 +113,13 @@ az vmss create \
     --zones 1 2 3
 ```
 
-Het duurt enkele minuten om te maken en configureren van alle de schaalset VM's en resources in de zone (s) die u opgeeft. Voor een compleet voorbeeld van een zone-redundante schaalset ingesteld en netwerkbronnen, Zie [dit CLI-voorbeeldscript](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh)
+Het duurt enkele minuten om alle resources en virtuele machines van de schaalset te maken en te configureren in de zone (s) die u opgeeft. Zie voor een volledig voor beeld van een zone-redundante schaalset en netwerk bronnen [Dit cli-voorbeeld script](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh)
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-Als u wilt gebruiken voor Beschikbaarheidszones, moet u de schaalset in een ondersteunde Azure-regio maken. Toevoegen de `-Zone` parameter voor de [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) opdracht en geeft u welke zone te gebruiken (zoals zone *1*, *2*, of *3*).
+Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio. Voeg de `-Zone` para meter toe aan de opdracht [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) en geef op welke zone u wilt gebruiken (zoals zone *1*, *2*of *3*).
 
-Het volgende voorbeeld wordt een één zone schaalset met de naam *myScaleSet* in *VS-Oost 2* zone *1*. De Azure-netwerkresources voor het virtuele netwerk, het openbare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
+In het volgende voor beeld wordt een schaalset met één zone gemaakt met de naam *myScaleSet* in *VS-Oost 2* zone *1*. De Azure-netwerkresources voor het virtuele netwerk, het openbare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
 ```powershell
 New-AzVmss `
@@ -136,7 +136,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Geef voor het maken van een zone-redundante schaalset meerdere zones met de `-Zone` parameter. Het volgende voorbeeld wordt een zone-redundante schaalset met de naam *myScaleSet* via *VS-Oost 2* zones *1, 2, 3*. De zone-redundante Azure-netwerkresources voor virtueel netwerk, de openbare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
+Als u een zone-redundante schaalset wilt maken, geeft u `-Zone` meerdere zones op met de para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*. De zone-redundante Azure-netwerk resources voor het virtuele netwerk, het open bare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
 ```powershell
 New-AzVmss `
@@ -153,9 +153,9 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
-Het proces voor het maken van een schaalset die gebruikmaakt van een Beschikbaarheidszone is hetzelfde als in de aan de slag-artikel voor gedetailleerde [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). Als u wilt gebruiken voor Beschikbaarheidszones, moet u de schaalset in een ondersteunde Azure-regio maken. Toevoegen de `zones` eigenschap in op de *Microsoft.Compute/virtualMachineScaleSets* resource typt u in uw sjabloon en geef welke zone te gebruiken (zoals zone *1*, *2*, of *3*).
+Het proces voor het maken van een schaalset die gebruikmaakt van een beschikbaarheids zone, is hetzelfde als die wordt beschreven in het artikel aan de slag voor [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio. Voeg de `zones` eigenschap toe aan het resource type *micro soft. Compute/virtualMachineScaleSets* in uw sjabloon en geef op welke zone u wilt gebruiken (zoals zone *1*, *2*of *3*).
 
-Het volgende voorbeeld wordt een Linux één zone schaalset met de naam *myScaleSet* in *VS-Oost 2* zone *1*:
+In het volgende voor beeld wordt een Linux-schaalset met één zone gemaakt met de naam *myScaleSet* in *VS-Oost 2* zone *1*:
 
 ```json
 {
@@ -195,11 +195,11 @@ Het volgende voorbeeld wordt een Linux één zone schaalset met de naam *myScale
 }
 ```
 
-Voor een compleet voorbeeld van een schaalset met één zone en -netwerkbronnen, raadpleegt u [in dit voorbeeld Resource Manager-sjabloon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
+Zie voor een volledig voor beeld van een schaalset met één zone en netwerk bronnen [deze voorbeeld sjabloon voor Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Geef voor het maken van een zone-redundante schaalset meerdere waarden in de `zones` eigenschap voor de *Microsoft.Compute/virtualMachineScaleSets* resourcetype. Het volgende voorbeeld wordt een zone-redundante schaalset met de naam *myScaleSet* via *VS-Oost 2* zones *1,2,3*:
+Als u een zone-redundante schaalset wilt maken, geeft u `zones` meerdere waarden op in de eigenschap voor het resource type *micro soft. Compute/virtualMachineScaleSets* . In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*:
 
 ```json
 {
@@ -215,10 +215,10 @@ Geef voor het maken van een zone-redundante schaalset meerdere waarden in de `zo
 }
 ```
 
-Als u een openbaar IP-adres of een load balancer maakt, geeft u de *"sku": {"naam": 'Standaard'} '* eigenschap om zone-redundante netwerkresources te maken. U moet ook een Netwerkbeveiligingsgroep en regels om verkeer toe te maken. Zie voor meer informatie, [overzicht van Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md).
+Als u een openbaar IP-adres of een Load Balancer maakt, geeft *u de "SKU": {"name" op: De* eigenschap Standard} om zone-redundante netwerk bronnen te maken. U moet ook een netwerk beveiligings groep en-regels maken om verkeer toe te staan. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
 
-Voor een compleet voorbeeld van een zone-redundante schaalset ingesteld en netwerkbronnen, Zie [in dit voorbeeld Resource Manager-sjabloon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
+Zie voor een volledig voor beeld van een zone-redundante schaalset en netwerk bronnen [deze voorbeeld sjabloon voor Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u een schaalset in een Beschikbaarheidszone hebt gemaakt, leert u hoe u [toepassingen implementeren op de virtuele machine-schaalsets](tutorial-install-apps-cli.md) of [automatisch schalen gebruiken met virtuele-machineschaalsets](tutorial-autoscale-cli.md).
+Nu u een schaalset in een beschikbaarheids zone hebt gemaakt, kunt u meer informatie over het [implementeren van toepassingen op schaal sets voor virtuele machines](tutorial-install-apps-cli.md) of het [gebruik van automatisch schalen met virtuele-machine schaal sets](tutorial-autoscale-cli.md).

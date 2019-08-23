@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: da411bad9e690fc4053fdf2bb9fa7fc9f0c4eae4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9c7385d3457f3f5dbed2633c20445bb9ef0b1638
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968543"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906885"
 ---
-## <a name="prerequisites"></a>Vereisten
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-Voor deze snelstart zijn de volgende zaken vereist:
-
-* Python 2.7.x of 3.x
-* Een Azure-abonnementssleutel voor Translator Text
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
@@ -24,10 +21,7 @@ Maak een nieuw Python-project met uw favoriete IDE of editor. Kopieer dit codefr
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -35,27 +29,25 @@ import json
 
 Met de eerste opmerking laat u de Python-vertaler weten dat UTF-8-codering moet worden gebruikt. De vereiste modules worden dan geïmporteerd voor het lezen van uw abonnementssleutel uit een omgevingsvariabele, voor het opstellen van de HTTP-aanvraag, voor het maken van een unieke id en voor het verwerken van het JSON-antwoord dat door de Translator Text-API wordt geretourneerd.
 
-## <a name="set-the-subscription-key-base-url-and-path"></a>De abonnementssleutel, de basis-URL en het pad instellen
+## <a name="set-the-subscription-key-endpoint-and-path"></a>De abonnements sleutel, het eind punt en het pad instellen
 
-In dit voorbeeld laat u de Translator Text-abonnementssleutel ophalen uit de omgevingsvariabele `TRANSLATOR_TEXT_KEY`. Als u niet bekend bent met omgevingsvariabelen, kunt u `subscriptionKey` als tekenreeks instellen en een opmerking plaatsen in de voorwaardelijke instructie.
+In dit voor beeld wordt geprobeerd uw Translator text-abonnements sleutel en-eind punt te lezen `TRANSLATOR_TEXT_KEY` uit `TRANSLATOR_TEXT_ENDPOINT`de omgevings variabelen: en. Als u niet bekend bent met omgevings variabelen, kunt u `subscription_key` en `endpoint` als teken reeksen instellen en de voorwaardelijke instructies van commentaar voorzien.
 
 Kopieer deze code naar uw project:
 
 ```python
-# Checks to see if the Translator Text subscription key is available
-# as an environment variable. If you are setting your subscription key as a
-# string, then comment these lines out.
-if 'TRANSLATOR_TEXT_KEY' in os.environ:
-    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
-else:
-    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
-    exit()
-# If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
+key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
-Het globaal eindpunt voor de Translator Text is ingesteld als de `base_url`. Met `path` wordt de `breaksentence`-route ingesteld en wordt bepaald dat we versie 3 van de API willen gebruiken.
+Het globaal eindpunt voor de Translator Text is ingesteld als de `endpoint`. Met `path` wordt de `breaksentence`-route ingesteld en wordt bepaald dat we versie 3 van de API willen gebruiken.
 
 De `params` in dit voorbeeld worden gebruikt om de taal van de opgegeven tekst in te stellen. `params` zijn niet vereist voor de route `breaksentence`. Wanneer de taal niet is vermeld in de aanvraag, wordt geprobeerd om met de API de taal van de opgegeven tekst te detecteren, en in het antwoord deze informatie te bieden samen met een betrouwbaarheidsscore.
 
@@ -63,10 +55,9 @@ De `params` in dit voorbeeld worden gebruikt om de taal van de opgegeven tekst i
 > Meer informatie over eindpunten, routes en aanvraagparameters vindt u in [Translator Text-API 3.0: talen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence).
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/breaksentence?api-version=3.0'
 params = '&language=en'
-constructed_url = base_url + path + params
+constructed_url = endpoint + path + params
 ```
 
 ## <a name="add-headers"></a>Headers toevoegen
@@ -77,7 +68,7 @@ Kopieer dit codefragment naar uw project:
 
 ```python
 headers = {
-    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Ocp-Apim-Subscription-Key': subscription_key,
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
 }

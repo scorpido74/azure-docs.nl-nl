@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: a5fd376a6da70ed68baedf44fd4c2cc47e68d3cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872374"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897404"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 
@@ -108,11 +108,11 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
 
 1. Selecteer uw Azure Machine Learning-werk ruimte in de [Azure Portal](https://portal.azure.com). Gebruik in de sectie __overzicht__ de __register__ koppeling om toegang te krijgen tot de Azure container Registry voor de werk ruimte.
 
-    ![Scherm afbeelding van het overzicht voor de werk ruimte](media/how-to-deploy-app-service/workspace-overview.png)
+    [![Scherm afbeelding van het overzicht voor de werk ruimte](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
 
 2. Selecteer in de Azure Container Registry __opslag__plaatsen en selecteer vervolgens de naam van de __installatie kopie__ die u wilt implementeren. Voor de versie die u wilt implementeren, selecteert u de vermelding __...__ en implementeert __u deze in web app__.
 
-    ![Scherm opname van implementeren vanuit ACR naar een web-app](media/how-to-deploy-app-service/deploy-to-web-app.png)
+    [![Scherm opname van implementeren vanuit ACR naar een web-app](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
 
 3. Als u de Web-App wilt maken, geeft u een site naam, een abonnement, een resource groep op en selecteert u het app service-plan/de locatie. Selecteer tot slot __maken__.
 
@@ -122,7 +122,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
 
 Selecteer de web-app die u in de vorige stap hebt gemaakt in de [Azure Portal](https://portal.azure.com). Kopieer de __URL__in de sectie __overzicht__ . Deze waarde is de __basis-URL__ van de service.
 
-![Scherm afbeelding van het overzicht voor de web-app](media/how-to-deploy-app-service/web-app-overview.png)
+[![Scherm afbeelding van het overzicht voor de web-app](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
 
 De webservice die aanvragen doorgeeft aan het model, bevindt zich op `{baseurl}/score`. Bijvoorbeeld `https://mywebapp.azurewebsites.net/score`. De volgende python-code laat zien hoe u gegevens indient naar de URL en hoe de reactie wordt weer gegeven:
 

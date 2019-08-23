@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543719"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972344"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-onderdelen van de privécloud
 
-Een privécloud is een geïsoleerde VMware-stack (ESXi hosts, vCenter, vSAN en NSX) die worden beheerd door een vCenter-Server in een beheer domein.  Met de CloudSimple-service kunt u VMware systeem eigen implementeren op een Azure bare-metal infra structuur in azure-locaties.  Persoonlijke Clouds zijn geïntegreerd met de rest van de Azure-Cloud.  Een privécloud wordt geïmplementeerd met de volgende VMware stack-onderdelen:
+Een Privécloud is een geïsoleerde VMware-stack (ESXi hosts, vCenter, vSAN en NSX) die worden beheerd door een vCenter-Server in een beheer domein.  Met de CloudSimple-service kunt u VMware systeem eigen implementeren op een Azure bare-metal infra structuur in azure-locaties.  Persoonlijke Clouds zijn geïntegreerd met de rest van de Azure-Cloud.  Een privécloud wordt geïmplementeerd met de volgende VMware stack-onderdelen:
 
 * **VMware ESXi-** Hyper Visor op aan Azure toegewezen knoop punten
 * **VMware vCenter-** Apparaat voor gecentraliseerd beheer van de vSphere-omgeving in de privécloud
@@ -26,7 +26,7 @@ Een privécloud is een geïsoleerde VMware-stack (ESXi hosts, vCenter, vSAN en N
 
 ## <a name="vmware-component-versions"></a>Versies van VMware-onderdelen
 
-Een VMware-stack in de privécloud wordt geïmplementeerd met de volgende software versie.
+Een VMware-stack in de Privécloud wordt geïmplementeerd met de volgende software versie.
 
 | Onderdeel | Version | Versie met licentie |
 |-----------|---------|------------------|

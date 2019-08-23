@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: f1a1a8a6b32567a1571c70e76a4ae6c570d27ca5
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561398"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900573"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Veelgestelde vragen
 
@@ -36,12 +36,12 @@ De vragen en antwoorden zijn in de volgende categorieën onderverdeeld:
 A.  De service Azure Data Box is bedoeld voor offlinegegevensopname. Deze service beheert een scala aan producten met verschillende opslagcapaciteiten, die allemaal speciaal geschikt zijn voor gegevenstransport. 
 
 ### <a name="q-what-is-azure-data-box"></a>V. Wat is Azure Data Box?
-A. Azure Data Box kunt een snelle, voordelige, en een veilige overdracht van terabytes aan gegevens in Azure. U kunt het Data Box-apparaat bestellen via de Azure-portal. Microsoft verzendt een opslagapparaat met een bruikbare capaciteit van 80 TB via een regionale koerier. 
+A. De Azure Data Box biedt een snelle, goedkope en veilige overdracht van terabytes aan gegevens in Azure. U kunt het Data Box-apparaat bestellen via de Azure-portal. Microsoft verzendt een opslagapparaat met een bruikbare capaciteit van 80 TB via een regionale koerier. 
 
 Nadat u het apparaat hebt ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in de Azure-portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>V. Wanneer moet ik Data Box gebruiken?
-A. Als u 40-500 TB aan gegevens naar Azure wilt overdragen, hebt u baat bij het gebruik van Data Box. Gebruik Data Box-schijf voor gegevens grootten < 40 TB, en voor gegevens > 500 TB grootte, zich aanmelden voor [Data Box zware](data-box-heavy-overview.md).
+A. Als u 40-500 TB aan gegevens naar Azure wilt overdragen, hebt u baat bij het gebruik van Data Box. Voor gegevens grootte < 40 TB gebruikt u Data Box Disk en voor de grootte van gegevens > 500 TB, meldt u zich aan voor [Data Box Heavy](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>V. Wat kost Data Box?
 A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het productmodel selecteert terwijl u een bestelling in de Azure-portal maakt, zullen de kosten voor het apparaat worden weergegeven. De verzending is ook gratis, maar er zijn wel kosten verbonden aan de Azure-opslag. Ga voor meer informatie naar [Prijzen van Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -50,10 +50,10 @@ A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het p
 A. Data Box heeft een onbewerkte capaciteit van 100 TB en een bruikbare capaciteit van 80 TB. U kunt met Data Box maximaal 80 TB aan gegevens overdragen. Als u meer gegevens wilt overdragen, moet u meer apparaten bestellen.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>V. Hoe kan ik controleren of Data Box in mijn regio beschikbaar is? 
-A.  Voor informatie over welke landen/regio's in Data Box beschikbaar is, gaat u naar [beschikbaarheid in regio](data-box-overview.md#region-availability).  
+A.  Voor informatie over welke landen/regio's de Data Box beschikbaar is, gaat u naar beschik bare [regio's](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>V. In welke regio's kan ik gegevens opslaan met Data Box?
-A. Data Box wordt ondersteund voor alle regio's binnen de VS, West-Europa, Noord-Europa, Frankrijk, Verenigd Koninkrijk, Japan, Australië en Canada. Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.
+A. Data Box wordt ondersteund voor alle regio's in VS, Europa-west, Europa-noord, Frank rijk, UK, Japan, Australië en Canada. Ga naar [Beschikbaarheid in de regio](data-box-overview.md#region-availability) voor meer informatie.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>V. Met wie moet ik contact opnemen als ik een probleem krijg met Data Box?
 A. Neem bij problemen met Data Box contact op met [Microsoft Ondersteuning](data-box-disk-contact-microsoft-support.md).
@@ -183,8 +183,11 @@ A. Gebruik het apparaat niet als het beschadigd is gearriveerd of als er bewijs 
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>V. Kan ik mijn eigen koerier gebruiken om de Data Box te verzenden?
 A. Microsoft verzorgt de verzending van de Data Box van en naar het Azure-datacenter. U kunt de Azure Import/Export-service gebruiken als u uw eigen koerier wilt gebruiken. Ga voor meer informatie naar [Wat is Azure Import/Export-service](../storage/common/storage-import-export-service.md)?
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>V. Wordt mijn apparaten gegevens in meerdere land randen tijdens verzending?
-A. Alle Data Box-apparaten in hetzelfde land als hun bestemming worden verzonden en wordt niet overschreden door een land. De enige uitzondering hierop is voor bestellingen in de Europese Unie (EU), waarbij apparaten verzonden naar en van alle EU-landen worden kunnen. Dit geldt voor zowel de Data Box als de gegevens in het zware apparaten.
+### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>V. Worden de land grenzen van mijn Data Box-apparaten tijdens de verzen ding overschreden?
+A. Alle Data Box apparaten worden verzonden vanuit hetzelfde land als de bestemming en er worden geen internationale grenzen in rekening gebracht. De enige uitzonde ring hierop is voor orders in de Europese Unie (EU), waar apparaten kunnen worden verzonden naar en vanuit elk land van de EU. Dit geldt voor zowel de Data Box als de Data Box Heavy-apparaten.
+
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>V. Ik heb een Data Box in VS Oost besteld, maar ik heb een apparaat ontvangen dat is verzonden vanaf een locatie in VS West. Waar moet ik het apparaat retour neren?
+A. We proberen zo snel mogelijk een Data Box apparaat te verkrijgen. We geven een prioriteit aan de verzen ding van een Data Center dat het dichtst bij de locatie van uw opslag account ligt, maar verzendt een apparaat vanuit elk Azure-Data Center dat beschik bare inventaris. Uw Data Box moet worden teruggestuurd naar dezelfde locatie waar deze is verzonden, zoals wordt weer gegeven in het verzend label.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>V. Er wordt geen label voor retourzending weergegeven op het E-ink-display. Wat moet ik doen?
 A. Voer de volgende stappen uit als er geen label voor retourverzending wordt weergegeven op het E-ink-display:

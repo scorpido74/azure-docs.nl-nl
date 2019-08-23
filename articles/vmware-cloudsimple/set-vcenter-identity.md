@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6229e78958fdc4995153d99ad02a15804330f1b
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544563"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972655"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identiteits bronnen instellen voor het gebruik van Active Directory
 
@@ -63,7 +63,7 @@ Gebruik de informatie in de volgende tabel bij het instellen van uw Active Direc
 Wanneer u de gegevens in de vorige tabel hebt, kunt u uw on-premises Active Directory toevoegen als id-bron voor eenmalige aanmelding op vCenter.
 
 > [!TIP]
-> U vindt meer informatie over identiteits bronnen voor eenmalige aanmelding op de <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html" target="_blank">documentatie pagina van VMware</a>.
+> U vindt meer informatie over identiteits bronnen voor eenmalige aanmelding op de [documentatie pagina van VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Nieuwe Active Directory in een Privécloud instellen
 
@@ -83,7 +83,7 @@ Zie [een nieuwe Windows Server 2012 Active Directory-forest installeren](https:/
 
 Nadat u het Active Directory-forest en-domein hebt ingesteld, kunt u [een id-bron toevoegen aan vCenter](#add-an-identity-source-on-vcenter) voor uw nieuwe Active Directory.
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Nieuwe Active Directory-domein in een bestaand Active Directory-forest
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Nieuw Active Directory domein in een bestaand Active Directory-forest
 
 Als u een nieuw Active Directory domein wilt instellen in een bestaand Active Directory forest, hebt u het volgende nodig:
 

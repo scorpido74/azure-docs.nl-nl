@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9dbe1751ac77f370991af75ea161247c21700ff2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886986"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972820"
 ---
-# <a name="delete-nodes-from-vmware-solution-by-cloudsimple---azure"></a>Knoop punten verwijderen uit VMware-oplossing op basis van CloudSimple-Azure
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Knoop punten uit de Azure VMware-oplossing verwijderen door CloudSimple
 
-CloudSimple-knoop punten worden gemeten als ze eenmaal zijn gemaakt.  Knoop punten moeten worden verwijderd om het meten van de knoop punten te stoppen.  U verwijdert de knoop punten die niet van Azure Portal worden gebruikt. 
+CloudSimple-knoop punten worden gemeten als ze eenmaal zijn gemaakt.  Knoop punten moeten worden verwijderd om het meten van de knoop punten te stoppen.  U verwijdert de knoop punten die niet van Azure Portal worden gebruikt.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -25,7 +25,6 @@ Een knoop punt kan alleen worden verwijderd onder de volgende omstandigheden:
 
 * Een Privécloud die is gemaakt met de knoop punten wordt verwijderd.  Als u een Privécloud wilt verwijderen, raadpleegt u [een Azure VMware-oplossing verwijderen via CloudSimple Private Cloud](delete-private-cloud.md).
 * Het knoop punt is uit de privécloud verwijderd door de Privécloud te verkleinen.  Als u een Privécloud wilt verkleinen, raadpleegt u [Azure VMware-oplossing verkleinen door CloudSimple privécloud](shrink-private-cloud.md).
-
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

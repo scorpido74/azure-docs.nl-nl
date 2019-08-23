@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815257"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970372"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Taal-en regio ondersteuning voor de spraak Services
 
@@ -24,40 +24,40 @@ Verschillende talen worden ondersteund voor verschillende functies van spraak Se
 
 ## <a name="speech-to-text"></a>Spraak-naar-tekst
 
-Zowel de micro soft Speech Recognition SDK als de REST API ondersteunen de volgende talen (land instellingen). Verschillende niveaus van aanpassingen zijn beschikbaar voor elke taal.
+Zowel de micro soft Speech Recognition SDK als de REST API ondersteunen de volgende talen (land instellingen). Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van audio en Transcripten met menselijke labels of gerelateerde tekst: Zinnen.  Aanpassing van de uitspraak is momenteel alleen beschikbaar voor en-US en de-DE. Meer informatie over aanpassingen [vindt u hier](how-to-custom-speech.md).
 
-  Code | Taal | [Akoestische aanpassing](how-to-customize-acoustic-models.md) | [Aanpassing van taal](how-to-customize-language-model.md) | [Uitspraak van aanpassing](how-to-customize-pronunciation.md)
- ------|----------|---------------------|---------------------|-------------------------
- ar-bijvoorbeeld | Arabisch (Egypte), moderne standard | Nee | Ja | Nee
- CA-ES | Catalaans | Nee | Nee | Nee
- da-DK | Deens (Denemarken) | Nee | Nee | Nee
- de-DE | Duits (Duitsland) | Ja | Ja | Ja
- en-AU | Engels (Australië) | Nee | Ja | Nee
- NL-CA | Engels (Canada) | Nee | Ja | Nee
- en-GB | Engels (Verenigd Koninkrijk) | Nee | Ja | Nee
- NL-IN | English (India) | Ja | Ja | Nee
- NL-NZ | Engels (Nieuw-Zeeland) | Nee | Ja | Nee 
- en-US | Engels (Verenigde Staten) | Ja | Ja | Ja
- es-ES | Spaans (Spanje) | Ja | Ja | Nee
- es-MX | Spaans (Mexico) | Nee | Ja | Nee
- fi-FI | Fins (Finland) | Nee | Nee | Nee
- fr-CA | Frans (Canada) | Nee | Ja | Nee
- fr-FR | Frans (Frankrijk) | Ja | Ja | Nee
- hi-IN | Hindi (India) | Nee | Ja | Nee
- IT-IT | Italiaans (Italië) | Ja | Ja | Nee
- ja-JP | Japans (Japan) | Nee | Ja | Nee
- ko-KR | Koreaans (Korea) | Nee | Ja | Nee
- nb-NO | Noors (Bokmål) (Noorwegen) | Nee | Nee | Nee
- NL-NL | Nederlands (Nederland) | Nee | Ja | Nee
- pl-PL | Pools (Polen) | Nee | Nee | Nee
- pt-BR | Portugees (Brazilië) | Ja | Ja | Nee
- pt-PT | Portugees (Portugal) | Nee | Ja | Nee
- ru-RU | Russisch (Rusland) | Ja | Ja | Nee
- SV-SE | Zweeds (Zweden) | Nee | Nee | Nee
- zh-CN | Chinees (Mandarijn, vereenvoudigd) | Ja | Ja | Nee
- zh-HK | Chinees (Kantonees, traditioneel) | Nee | Ja | Nee
- zh-TW | Chinees (Taiwan Mandarijn) | Nee | Ja | Nee
- e-e | Thai (Thailand) | Nee | Nee | Nee
+  Code | Taal | Ondersteund | Aanpasbaar
+ ------|----------|---------------------|---------------------
+ ar-bijvoorbeeld | Arabisch (Egypte), moderne standard | Ja | Ja
+ CA-ES | Catalaans | Ja | Nee
+ da-DK | Deens (Denemarken) | Ja | Nee
+ de-DE | Duits (Duitsland) | Ja | Ja
+ en-AU | Engels (Australië) | Ja | Ja
+ NL-CA | Engels (Canada) | Ja | Ja
+ en-GB | Engels (Verenigd Koninkrijk) | Ja | Ja
+ NL-IN | English (India) | Ja | Ja
+ NL-NZ | Engels (Nieuw-Zeeland) | Ja | Ja
+ en-US | Engels (Verenigde Staten) | Ja | Ja
+ es-ES | Spaans (Spanje) | Ja | Ja
+ es-MX | Spaans (Mexico) | Ja | Ja
+ fi-FI | Fins (Finland) | Ja | Nee
+ fr-CA | Frans (Canada) | Ja | Ja
+ fr-FR | Frans (Frankrijk) | Ja | Ja
+ hi-IN | Hindi (India) | Ja | Ja
+ IT-IT | Italiaans (Italië) | Ja | Ja
+ ja-JP | Japans (Japan) | Ja | Ja
+ ko-KR | Koreaans (Korea) | Ja | Ja
+ nb-NO | Noors (Bokmål) (Noorwegen) | Ja | Nee
+ NL-NL | Nederlands (Nederland) | Ja | Ja
+ pl-PL | Pools (Polen) | Ja | Nee
+ pt-BR | Portugees (Brazilië) | Ja | Ja
+ pt-PT | Portugees (Portugal) | Ja | Ja
+ ru-RU | Russisch (Rusland) | Ja | Ja
+ SV-SE | Zweeds (Zweden) | Ja | Nee
+ zh-CN | Chinees (Mandarijn, vereenvoudigd) | Ja | Ja
+ zh-HK | Chinees (Kantonees, traditioneel) | Ja | Ja
+ zh-TW | Chinees (Taiwan Mandarijn) | Ja | Ja
+ e-e | Thai (Thailand) | Ja | Nee 
 
 
 ## <a name="text-to-speech"></a>Tekst naar spraak

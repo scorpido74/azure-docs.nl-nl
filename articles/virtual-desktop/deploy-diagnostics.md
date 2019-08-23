@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 356b430e0bb9170999398eb8eb68ad31f2d5eeb6
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017307"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899709"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Het diagnostische hulp programma implementeren
+# <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
 Het hulp programma voor diagnostische gegevens voor Windows Virtual Desktop kan voor u worden uitgevoerd:
 
@@ -106,7 +106,7 @@ U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
     -   Processor informatie (\*)\\processor tijd
     -   Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
 
-Meer informatie over de prestatie meter items [in Windows-en Linux-prestatie gegevens bronnen in azure monitor](/articles/azure-monitor/platform/data-sources-performance-counters.md).
+Meer informatie over de prestatie meter items [in Windows-en Linux-prestatie gegevens bronnen in azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
 >[!NOTE]
 >Alle extra tellers die u configureert, worden niet weer gegeven in het diagnostische hulp programma zelf. Als u deze wilt weer geven in het diagnostische hulp programma, moet u het configuratie bestand van het hulp programma configureren. Instructies voor het uitvoeren van een geavanceerd beheer vindt u op een later tijdstip in GitHub.
@@ -150,7 +150,7 @@ Als u de status van virtuele machines wilt kunnen bekijken, moet u de Log Analyt
 4. Selecteer de naam van de virtuele machine waarmee u verbinding wilt maken.
 5. Selecteer **Verbinden**.
 
-## <a name="deploy-the-diagnostics-tool"></a>Het diagnostische hulp programma implementeren
+## <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
 Voor het implementeren van de Azure resource management-sjabloon voor het diagnostische hulp programma:
 
@@ -189,7 +189,7 @@ De omleidings-URI instellen:
 
 Voordat u het hulp programma voor diagnostische gegevens beschikbaar maakt voor uw gebruikers, moet u ervoor zorgen dat ze over de volgende machtigingen beschikken:
 
-- Gebruikers hebben lees toegang nodig voor log Analytics. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md)voor meer informatie.
+- Gebruikers hebben lees toegang nodig voor log Analytics. Zie [aan de slag met rollen, machtigingen en beveiliging met Azure monitor](/azure/azure-monitor/platform/roles-permissions-security)voor meer informatie.
 -  Gebruikers hebben ook lees toegang nodig voor de Windows-Tenant voor virtueel bureau blad (functie voor RDS-lezer). Zie voor meer informatie [gedelegeerde toegang in Windows virtueel bureau blad preview](delegated-access-virtual-desktop.md).
 
 U moet uw gebruikers ook de volgende informatie geven:
@@ -229,22 +229,22 @@ U kunt ook communiceren met gebruikers op de sessiehost:
 - Logische schijf\*(\|)% beschik bare ruimte:
 
     - Hiermee wordt het percentage van de totale bruikbare ruimte op de logische schijf weer gegeven die vrij is.
-    - Drempelwaarde: Minder dan 20% is gemarkeerd als beschadigd.
+    - Spreek Minder dan 20% is gemarkeerd als beschadigd.
 
 - Logische schijf (C\\:) gem. Wachtrij lengte voor schijf:
 
     - Geeft de voor waarden van het opslag systeem aan.
-    - Drempelwaarde: Hoger dan 5 is gemarkeerd als beschadigd.
+    - Spreek Hoger dan 5 is gemarkeerd als beschadigd.
 
 - Beschik\*bare\\mega bytes () geheugen ():
 
     - Het beschik bare geheugen voor het systeem.
-    - Drempelwaarde: Minder dan 500 mega bytes gemarkeerd als beschadigd.
+    - Spreek Minder dan 500 mega bytes gemarkeerd als beschadigd.
 
 - Processor informatie (\*)\\processor tijd:
 
-    - Drempelwaarde: Meer dan 80% is gemarkeerd als beschadigd.
+    - Spreek Meer dan 80% is gemarkeerd als beschadigd.
 
 - [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Drempelwaarde: Meer dan 2000 MS is gemarkeerd als beschadigd.
+    - Spreek Meer dan 2000 MS is gemarkeerd als beschadigd.

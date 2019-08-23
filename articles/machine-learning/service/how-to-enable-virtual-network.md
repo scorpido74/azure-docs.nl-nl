@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: 05c5d42d3c20948df4f42db50dd93abd60288c00
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6e5ae4966a62c24594ec6efa9454d5e03f75c25b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639580"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971529"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 
-In dit artikel vindt u informatie over het beveiligen van experimenten/trainings taken en de functies voor het afwijzen en bepalen van problemen in Azure Machine Learning binnen een Azure Virtual Network (vnet). 
+In dit artikel vindt u informatie over het beveiligen van experimenten/trainings taken en de functies voor het afwijzen en bepalen van problemen in Azure Machine Learning binnen een Azure Virtual Network (vnet).
 
 Een **virtueel netwerk** fungeert als beveiligings grens en isoleert uw Azure-resources van het open bare Internet. U kunt ook een virtueel Azure-netwerk toevoegen aan uw on-premises netwerk. Door netwerken aan te koppelen, kunt u uw modellen veilig trainen en toegang verkrijgen tot uw geïmplementeerde modellen.
 
@@ -29,25 +29,25 @@ Dit artikel bevat ook gedetailleerde informatie over *Geavanceerde beveiligings 
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Een Azure Machine Learning Services- [werk ruimte](how-to-manage-workspace.md). 
++ Een Azure Machine Learning Services- [werk ruimte](how-to-manage-workspace.md).
 
-+ Algemene werk ervaring van zowel de [Azure Virtual Network-Service](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) als [IP-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
++ Algemene werk ervaring van zowel de [Azure Virtual Network-Service](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) als [IP-netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
 
-+ Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources. 
++ Een bestaand virtueel netwerk en subnet voor gebruik met uw reken resources.
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Een opslag account voor uw werk ruimte gebruiken
 
 Ga als volgt te werk om een Azure-opslag account te gebruiken voor de werkruimte in een virtueel netwerk:
 
-1. Maak een experimenten Compute-exemplaar (bijvoorbeeld een Machine Learning Compute exemplaar) achter een virtueel netwerk of koppel een Experimenteer Compute-instantie aan de werk ruimte (bijvoorbeeld een HDInsight-cluster of een virtuele machine). 
+1. Maak een experimenten Compute-exemplaar (bijvoorbeeld een Machine Learning Compute exemplaar) achter een virtueel netwerk of koppel een Experimenteer Compute-instantie aan de werk ruimte (bijvoorbeeld een HDInsight-cluster of een virtuele machine).
 
    Zie de secties ' een Machine Learning Compute exemplaar gebruiken ' en ' een virtuele machine of een HDInsight-cluster gebruiken ' in dit artikel voor meer informatie.
 
-1. Ga in het Azure Portal naar de opslag die is gekoppeld aan uw werk ruimte. 
+1. Ga in het Azure Portal naar de opslag die is gekoppeld aan uw werk ruimte.
 
-   ![De opslag die is gekoppeld aan de Azure Machine Learning service werkruimte](./media/how-to-enable-virtual-network/workspace-storage.png)
+   [![De opslag die is gekoppeld aan de Azure Machine Learning service werkruimte](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. Selecteer op de pagina **Azure Storage** __firewalls en virtuele netwerken__. 
+1. Selecteer op de pagina **Azure Storage** __firewalls en virtuele netwerken__.
 
    ![Het gebied firewalls en virtuele netwerken op de pagina Azure Storage in het Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
@@ -56,7 +56,12 @@ Ga als volgt te werk om een Azure-opslag account te gebruiken voor de werkruimte
     - Selecteer onder __virtuele netwerken__de koppeling __bestaande virtuele netwerk toevoegen__ . Met deze actie wordt het virtuele netwerk toegevoegd waar uw experimenten Compute-instantie zich bevindt (zie stap 1).
     - Schakel het selectie vakje __vertrouwde micro soft-Services toegang geven tot dit opslag account__ in.
 
-   ![Het deel venster firewalls en virtuele netwerken in de Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)
+    > [!IMPORTANT]
+    > Wanneer u werkt met de Azure Machine Learning SDK, moet uw ontwikkel omgeving verbinding kunnen maken met het Azure Storage-account. Wanneer het opslag account zich in een virtueel netwerk bevindt, moet de firewall toegang toestaan vanuit het IP-adres van de ontwikkel omgeving.
+    >
+    > Als u toegang tot het opslag account wilt inschakelen, gaat u naar de __firewalls en virtuele netwerken__ voor het opslag account *vanuit een webbrowser op de ontwikkelings-client*. Gebruik vervolgens het selectie vakje __uw client-IP-adres toevoegen__ om het IP-adres van de client toe te voegen aan het __adres bereik__. U kunt ook het veld __adres bereik__ gebruiken om hand matig het IP-adres van de ontwikkel omgeving in te voeren. Zodra het IP-adres voor de client is toegevoegd, heeft het toegang tot het opslag account met de SDK.
+
+   [![Het deel venster firewalls en virtuele netwerken in de Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
 1. Wanneer u het experiment uitvoert, wijzigt u in de code van het experiment het uitvoeren van de configuratie voor het gebruik van Azure Blob Storage:
 
@@ -65,9 +70,9 @@ Ga als volgt te werk om een Azure-opslag account te gebruiken voor de werkruimte
     ```
 
 > [!IMPORTANT]
-> U kunt het _standaard opslag account_ voor de Azure machine learning-service in een virtueel netwerk plaatsen _alleen voor experimenten_.
+> U kunt het _standaard opslag account_ voor de Azure machine learning-service in een virtueel netwerk plaatsen _alleen voor experimenten_. Het standaard opslag account wordt automatisch ingericht wanneer u een werk ruimte maakt.
 >
-> U kunt _niet-standaard opslag accounts_ in een virtueel netwerk plaatsen _voor alleen experimenten_.
+> U kunt _niet-standaard opslag accounts_ in een virtueel netwerk plaatsen _voor alleen experimenten_. Met `storage_account` de para meter in de [ `Workspace.create()` functie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) kunt u een aangepast opslag account opgeven op basis van de Azure-resource-id.
 >
 > Zowel de standaard-als niet-standaard opslag accounts die worden gebruikt voor het afgeven van de afleiding, moeten _onbeperkte toegang tot het opslag account_hebben.
 >
@@ -81,11 +86,11 @@ Het sleutel kluis-exemplaar dat is gekoppeld aan de werk ruimte wordt gebruikt d
 * Verbindings reeksen naar gegevens archieven
 
 Ga als volgt te werk om Azure Machine Learning experimenten te gebruiken met Azure Key Vault achter een virtueel netwerk:
-1. Ga naar de sleutel kluis die is gekoppeld aan de werk ruimte. 
+1. Ga naar de sleutel kluis die is gekoppeld aan de werk ruimte.
 
-   ![De sleutel kluis die is gekoppeld aan de Azure Machine Learning service-werk ruimte](./media/how-to-enable-virtual-network/workspace-key-vault.png)
+   [![De sleutel kluis die is gekoppeld aan de Azure Machine Learning service-werk ruimte](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
 
-1. Selecteer op de pagina **Key Vault** in het linkerdeel venster firewalls __en virtuele netwerken__. 
+1. Selecteer op de pagina **Key Vault** in het linkerdeel venster firewalls __en virtuele netwerken__.
 
    ![De sectie firewalls en virtuele netwerken in het deel venster Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
@@ -94,31 +99,25 @@ Ga als volgt te werk om Azure Machine Learning experimenten te gebruiken met Azu
     - Onder __virtuele netwerken__selecteert u __bestaande virtuele netwerken toevoegen__ om het virtuele netwerk toe te voegen waar uw experimenten Compute-instantie zich bevindt.
     - Onder __vertrouwde micro soft-Services toestaan deze firewall te omzeilen__, selecteert u __Ja__.
 
-   ![De sectie firewalls en virtuele netwerken in het deel venster Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)
+   [![De sectie firewalls en virtuele netwerken in het deel venster Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 
 ## <a name="use-a-machine-learning-compute-instance"></a>Een Machine Learning Compute-exemplaar gebruiken
 
-Als u een Azure Machine Learning Compute-exemplaar in een virtueel netwerk wilt gebruiken, moet u rekening houden met de volgende netwerk vereisten:
+Als u een Azure Machine Learning Compute-exemplaar in een virtueel netwerk wilt gebruiken, moet aan de volgende netwerk vereisten worden voldaan:
 
-- Het virtuele netwerk moet zich in hetzelfde abonnement en dezelfde regio bevinden als de Azure Machine Learning service-werk ruimte.
+> [!div class="checklist"]
+> * Het virtuele netwerk moet zich in hetzelfde abonnement en dezelfde regio bevinden als de Azure Machine Learning service-werk ruimte.
+> * Het subnet dat is opgegeven voor het berekenings cluster moet voldoende niet-toegewezen IP-adressen hebben om het aantal Vm's dat voor het cluster is bedoeld, te kunnen ondersteunen. Als het subnet onvoldoende niet-toegewezen IP-adressen heeft, wordt het cluster gedeeltelijk toegewezen.
+> * Controleer of het beveiligings beleid of de vergren delingen in het abonnement of de resource groep van het virtuele netwerk beperkt zijn tot de machtigingen voor het beheren van het virtuele netwerk. Als u het virtuele netwerk wilt beveiligen door verkeer te beperken, moet u sommige poorten voor de compute-service geopend laten. Zie de sectie [vereiste poorten](#mlcports) voor meer informatie.
+> * Als u meerdere reken clusters in één virtueel netwerk wilt plaatsen, moet u mogelijk een quotum verhoging aanvragen voor een of meer van uw resources.
 
-- Het subnet dat is opgegeven voor het berekenings cluster moet voldoende niet-toegewezen IP-adressen hebben om het aantal Vm's dat voor het cluster is bedoeld, te kunnen ondersteunen. Als het subnet onvoldoende niet-toegewezen IP-adressen heeft, wordt het cluster gedeeltelijk toegewezen.
+Het Machine Learning Compute-exemplaar wijst automatisch extra netwerk bronnen toe aan de resource groep die het virtuele netwerk bevat. Voor elk berekenings cluster wijst de service de volgende resources toe:
 
-- Als u het virtuele netwerk wilt beveiligen door verkeer te beperken, moet u sommige poorten voor de compute-service geopend laten. Zie de sectie [vereiste poorten](#mlcports) voor meer informatie.
+* Eén netwerk beveiligings groep
+* Eén openbaar IP-adres
+* Een load balancer
 
-- Controleer of het beveiligings beleid of de vergren delingen in het abonnement of de resource groep van het virtuele netwerk beperkt zijn tot de machtigingen voor het beheren van het virtuele netwerk.
-
-- Als u meerdere reken clusters in één virtueel netwerk wilt plaatsen, moet u mogelijk een quotum verhoging aanvragen voor een of meer van uw resources.
-
-    Het Machine Learning Compute-exemplaar wijst automatisch extra netwerk bronnen toe aan de resource groep die het virtuele netwerk bevat. Voor elk berekenings cluster wijst de service de volgende resources toe:
-
-    - Eén netwerk beveiligings groep
-
-    - Eén openbaar IP-adres
-
-    - Een load balancer
-
-  De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](https://docs.microsoft.com/azure/azure-subscription-service-limits) van het abonnement.
+De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](https://docs.microsoft.com/azure/azure-subscription-service-limits) van het abonnement.
 
 ### <a id="mlcports"></a>Vereiste poorten
 
@@ -140,7 +139,7 @@ U hoeft Nsg's niet op subnetniveau op te geven omdat de Azure Batch-service zijn
 
 De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende installatie kopieën:
 
-![De inkomende NSG-regels voor Machine Learning Compute](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)
+[![De inkomende NSG-regels voor Machine Learning Compute](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png)](./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png#lightbox)
 
 ![De regels voor uitgaande NSG voor Machine Learning Compute](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
@@ -157,7 +156,7 @@ Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u d
 
 De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende afbeelding:
 
-![De regels voor uitgaande NSG voor Machine Learning Compute](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)
+[![De regels voor uitgaande NSG voor Machine Learning Compute](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 ### <a name="user-defined-routes-for-forced-tunneling"></a>Door de gebruiker gedefinieerde routes voor geforceerde tunneling
 
@@ -282,13 +281,13 @@ Ga als volgt te werk als u een virtuele machine of een Azure HDInsight-cluster i
 Ga als volgt te werk om AKS in een virtueel netwerk toe te voegen aan uw werkruimte:
 
 > [!IMPORTANT]
-> Voordat u aan de volgende procedure begint, controleert u de vereisten en plant u de IP-adres sering voor uw cluster. Zie [geavanceerde netwerken configureren in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking)voor meer informatie.
+> Voordat u aan de volgende procedure begint, volgt u de vereisten in het onderdeel [geavanceerde netwerken configureren in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites) hoe de IP-adres sering voor uw cluster kan worden gepland.
 >
 > Het AKS-exemplaar en het virtuele Azure-netwerk moeten zich in dezelfde regio bevinden.
 
 1. Zorg er in het [Azure Portal](https://portal.azure.com)voor dat de NSG die het virtuele netwerk beheert, een binnenkomende regel heeft die is ingeschakeld voor de Azure machine learning-service door __AzureMachineLearning__ als **bron**te gebruiken.
 
-    ![Het deel venster reken Azure Machine Learning-service toevoegen](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)
+    [![Het deel venster reken Azure Machine Learning-service toevoegen](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
 
 1. Selecteer uw Azure Machine Learning service-werk ruimte.
 
@@ -315,8 +314,8 @@ Ga als volgt te werk om AKS in een virtueel netwerk toe te voegen aan uw werkrui
 1. Zorg ervoor dat de NSG-groep die het virtuele netwerk beheert, een binnenkomende beveiligings regel voor het Score-eind punt heeft ingeschakeld, zodat deze kan worden aangeroepen buiten het virtuele netwerk.
    > [!IMPORTANT]
    > Behoud de standaard regels voor uitgaande verbindingen voor de NSG. Zie de standaard beveiligings regels in [beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#default-security-rules)voor meer informatie.
-  
-   ![Een regel voor binnenkomende beveiliging](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)
+
+   [![Een regel voor binnenkomende beveiliging](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
 U kunt ook de Azure Machine Learning SDK gebruiken om de Azure Kubernetes-service toe te voegen aan een virtueel netwerk. Als u al een AKS-cluster in een virtueel netwerk hebt, koppelt u dit aan de werk ruimte, zoals wordt beschreven in [Deploying to aks](how-to-deploy-to-aks.md). Met de volgende code wordt een nieuw AKS-exemplaar `default` gemaakt in het subnet van een `mynetwork`virtueel netwerk met de naam:
 

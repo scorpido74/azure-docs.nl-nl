@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c6b526cdd317e8b075d28e0fb9018501148c731c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850325"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971298"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Fouten met runbooks oplossen
 
@@ -31,11 +31,23 @@ Wanneer er fouten zijn opgetreden bij het uitvoeren van runbooks in Azure Automa
    - **Syntaxis fouten**
    - **Logische fouten**
 
-2. **Zorg ervoor dat uw knoop punten en Automation-werk ruimte de vereiste modules hebben:** Als uw runbook modules importeert, controleert u of deze beschikbaar zijn in uw Automation-account met behulp van de stappen die worden beschreven in [modules importeren](../shared-resources/modules.md#import-modules). Zie [problemen met modules oplossen](shared-resources.md#modules)voor meer informatie.
+2. Onderzoek runbook-[foutstromen](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output) voor specifieke berichten en vergelijk ze met de onderstaande fouten.
+
+3. **Zorg ervoor dat uw knoop punten en Automation-werk ruimte de vereiste modules hebben:** Als uw runbook modules importeert, controleert u of deze beschikbaar zijn in uw Automation-account met behulp van de stappen die worden beschreven in [modules importeren](../shared-resources/modules.md#import-modules). Werk uw modules bij naar de meest recente versie door de instructies onder [Azure-modules bijwerken in azure Automation](..//automation-update-azure-modules.md)te volgen. Zie [problemen met modules oplossen](shared-resources.md#modules)voor meer informatie over probleem oplossing.
+
+### <a name="if-the-runbook-is-suspended-or-unexpectedly-failed"></a>Als het Runbook is onderbroken of onverwacht is mislukt
+
+Er kunnen verschillende redenen zijn waarom een runbook wordt onderbroken of mislukt:
+
+* [Taak statussen](https://docs.microsoft.com/azure/automation/automation-runbook-execution#job-statuses) definieert runbook-statussen en enkele mogelijke oorzaken.
+* [Voeg extra uitvoer](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) aan het runbook toe om te bepalen wat er gebeurt voordat het runbook wordt onderbroken.
+* [Alle uitzonde ringen verwerken](https://docs.microsoft.com/azure/automation/automation-runbook-execution#handling-exceptions) die door uw taak worden gegenereerd.
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Verificatie fouten bij het werken met Azure Automation runbooks
 
 ### <a name="login-azurerm"></a>Omstandigheden Aanmelding uitvoeren-AzureRMAccount om u aan te melden
+
+Deze fout kan optreden als u geen gebruik maakt van een RunAs-account of het RunAs-account is verlopen. Zie [Azure Automation runas-accounts beheren](https://docs.microsoft.com/azure/automation/manage-runas-account).
 
 #### <a name="issue"></a>Probleem
 
@@ -574,6 +586,97 @@ Er zijn twee manieren om deze fout op te lossen:
 * Als uw runbook dit fout bericht bevat, voert u dit uit op een Hybrid Runbook Worker
 
 Voor meer informatie over dit gedrag en ander gedrag van Azure Automation Runbooks raadpleegt u [Runbook Behavior](../automation-runbook-execution.md#runbook-behavior).
+
+## <a name="other"></a>: Mijn probleem komt niet hierboven voor in de lijst
+
+In de volgende secties worden andere veelvoorkomende fouten vermeld naast de ondersteunings documentatie om u te helpen bij het oplossen van uw probleem.
+
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Er worden geen taken uitgevoerd met Hybrid Runbook Worker, of Hybrid Runbook Worker reageert niet
+
+Als u taken uitvoert met een Hybrid worker in plaats van in Azure Automation, moet u mogelijk [de Hybrid worker zelf oplossen](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
+
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook mislukt met een melding over ontbrekende machtiging of een soortgelijke melding
+
+RunAs-accounts hebben mogelijk niet dezelfde machtigingen voor Azure-resources als uw huidige account. Zorg ervoor dat uw RunAs-account [toegangsmachtigingen heeft voor alle resources](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) die worden gebruikt in het script.
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooks werkten, maar zijn plotseling gestopt
+
+* Als runbooks eerder werden uitgevoerd, maar gestopt, [Controleer dan of het runas-account niet is verlopen](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
+* Als u gebruikmaakt van webhooks om runbooks te starten, [controleert u of de webhook niet is verlopen](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
+
+### <a name="issues-passing-parameters-into-webhooks"></a>Problemen bij het door geven van para meters in webhooks
+
+Zie [een Runbook starten vanuit een webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)voor hulp bij het door geven van para meters in webhooks.
+
+### <a name="issues-using-az-modules"></a>Problemen met AZ-modules
+
+Het gebruik van Az-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Raadpleeg [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules) voor meer informatie.
+
+### <a name="runbook-job-completed-but-with-unexpected-results-or-errors"></a>Runbook-taak is voltooid, maar met onverwachte resultaten of fouten
+
+Hieronder worden specifieke problemen en de bijbehorende oplossingen vermeld, maar we raden u ten zeerste aan om eerst deze twee stappen voor het oplossen van problemen uit te voeren:
+
+* Probeer [het runbook lokaal](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#runbook-fails) uit te voeren voordat u het in azure Automation uitvoert. Hierdoor wordt wellicht duidelijk of het probleem wordt veroorzaakt door een bug in het runbook of door een probleem in Azure Automation.
+* Onderzoek runbook-[foutstromen](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output) voor specifieke berichten en vergelijk ze met de onderstaande fouten.
+* Voeg [extra uitvoer](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) aan het runbook toe om te bepalen waar de fout optreedt.
+
+### <a name="inconsistent-behavior-in-runbooks"></a>Inconsistent gedrag in runbooks
+
+Volg de instructies in [Runbookuitvoering](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) om problemen te voorkomen met gelijktijdige taken, resources die meerdere keren worden gemaakt of andere timing-gevoelige logica in runbooks.
+
+### <a name="switching-between-multiple-subscriptions-in-a-runbook"></a>Schakelen tussen meerdere abonnementen in een runbook
+
+Volg de richt lijnen bij het [werken met meerdere abonnementen](https://docs.microsoft.com/azure/automation/automation-runbook-execution#working-with-multiple-subscriptions).
+
+### <a name="runbook-fails-with-error-the-subscription-cannot-be-found"></a>Runbook is mislukt met fout: Het abonnement is niet gevonden
+
+Dit probleem kan optreden wanneer het runbook niet gebruikmaakt van een RunAs-account voor toegang tot Azure-resources. Om dit op te lossen, volgt u de stappen in [Scenario: Kan het Azure-abonnement niet vinden](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#unable-to-find-subscription).
+
+### <a name="error-your-azure-credentials-have-not-been-set-up-or-have-expired-please-run-connect-azurermaccount-to-set-up-your-azure-credentials"></a>Fout: Uw Azure-referenties zijn niet ingesteld of verlopen. Voer Connect-azureRmAccount uit om uw Azure-referenties in te stellen
+
+Deze fout kan optreden als u geen gebruik maakt van een RunAs-account of het RunAs-account is verlopen. Zie [Azure Automation runas-accounts beheren](https://docs.microsoft.com/azure/automation/manage-runas-account).
+
+### <a name="error-run-login-azurermaccount-to-login"></a>Fout: Aanmelding uitvoeren-AzureRmAccount om u aan te melden
+
+Deze fout kan optreden als u geen gebruik maakt van een RunAs-account of het RunAs-account is verlopen. Zie [Azure Automation runas-accounts beheren](https://docs.microsoft.com/azure/automation/manage-runas-account).
+
+### <a name="runbook-fails-with-error-strong-authentication-enrollment-is-required"></a>Runbook is mislukt met fout: De inschrijving van sterke verificatie is vereist
+
+Zie [verificatie voor Azure is mislukt omdat multi-factor Authentication is ingeschakeld](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#auth-failed-mfa) in de hand leiding voor probleem oplossing voor Runbook.
+
+### <a name="runbook-fails-with-the-errors-no-permission-forbidden-403-or-some-variation"></a>Het Runbook is mislukt met de volgende fouten: Geen machtiging, verboden, 403 of enige variatie
+
+RunAs-accounts hebben mogelijk niet dezelfde machtigingen voor Azure-resources als uw huidige account. Zorg ervoor dat uw runas-account [machtigingen heeft voor toegang tot alle resources](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) die worden gebruikt in uw script.
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooks werkten, maar zijn plotseling gestopt
+
+* Als runbooks eerder werden uitgevoerd, maar gestopt, controleer dan of het runas-account [niet is verlopen](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
+* Als u webhooks gebruikt om runbooks te starten, zorgt u ervoor dat de webhook [niet is verlopen](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
+
+### <a name="passing-parameters-into-webhooks"></a>Parameters doorgeven aan webhooks
+
+Zie [een Runbook starten vanuit een webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)voor hulp bij het door geven van para meters in webhooks.
+
+### <a name="error-the-term-is-not-recognized"></a>Fout: De term wordt niet herkend
+
+Volg de stappen in [cmdlet wordt niet herkend](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#cmdlet-not-recognized) in de gids voor probleem oplossing voor runbook
+
+### <a name="errors-about-typedata"></a>Fouten met betrekking tot TypeData
+
+Als u fouten over TypeData ontvangt, dan voert u een PowerShell-werkstroom uit met modules die geen ondersteuning bieden voor de werkstroom. U moet het runbooktype wijzigen naar PowerShell. Zie [Runbook-typen](https://docs.microsoft.com/azure/automation/automation-runbook-types#powershell-runbooks) voor meer informatie.
+
+### <a name="using-az-modules"></a>Az-modules gebruiken
+
+Het gebruik van Az-modules en AzureRM-modules in hetzelfde Automation-account wordt niet ondersteund. Raadpleeg [AZ-modules in runbooks](https://docs.microsoft.com/azure/automation/az-modules) voor meer informatie.
+
+### <a name="using-self-signed-certificates"></a>Zelfondertekende certificaten gebruiken
+
+Als u zelfondertekende certificaten wilt gebruiken, moet u de hand leiding volgen bij het [maken van een nieuw certificaat](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
+
+## <a name="recommended-documents"></a>Aanbevolen documenten
+
+* [Een runbook starten in Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Uitvoering van runbooks in Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
 ## <a name="next-steps"></a>Volgende stappen
 

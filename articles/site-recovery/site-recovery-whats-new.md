@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717675"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972525"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -24,6 +24,27 @@ Als u suggesties hebt voor Site Recovery-functies, horen we graag [uw feedback](
 ## <a name="installing-updates"></a>Updates installeren
 
 [Lees dit artikel](service-updates-how-to.md) voor ondersteuning en instructies van site Recovery update.
+
+## <a name="updates-august-2019"></a>Updates (augustus 2019)
+
+### <a name="update-rollup-39"></a>Update pakket 39
+
+[Update pakket 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) bevat de volgende updates.
+
+**Update** | **Details**
+--- | ---
+**Providers en agents** | Updates voor Site Recovery agents en providers (zoals beschreven in de rollup)
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen (zoals beschreven in de rollup)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Herstel na nood gevallen voor Azure VM
+
+Nieuwe functies voor herstel na nood gevallen voor Azure VM worden in de tabel samenvatten.
+
+**Functie** | **Details**
+--- | ---
+**Versleuteling zonder Azure AD** | Versleuteling zonder Azure AD-app wordt nu ondersteund voor Azure VM-replicatie naar Managed disks met Windows.
+**Netwerk bronnen voor failover** | Wanneer een failover wordt uitgevoerd naar een andere regio, kunt u nu netwerk bron instellingen (Nsg's, taak verdeling, openbaar IP-adres) koppelen aan een virtuele machine. 
 
 ## <a name="updates-july-2019"></a>Updates (juli 2019)
 
@@ -118,7 +139,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Beheerde schijven** | De replicatie van on-premises virtuele VMware-machines en fysieke servers is nu rechtstreeks voor beheerde schijven in Azure. On-premises gegevens worden verzonden naar een cache-opslag account in Azure en er worden herstel punten gemaakt op beheerde schijven op de doel locatie. Dit zorgt ervoor dat u niet meerdere doel opslag accounts hoeft te beheren.
+**Azure Managed Disks** | De replicatie van on-premises virtuele VMware-machines en fysieke servers is nu rechtstreeks voor beheerde schijven in Azure. On-premises gegevens worden verzonden naar een cache-opslag account in Azure en er worden herstel punten gemaakt op beheerde schijven op de doel locatie. Dit zorgt ervoor dat u niet meerdere doel opslag accounts hoeft te beheren.
 **Configuratieserver** | Site Recovery ondersteunt nu configuratie servers met meerdere Nic's. Voeg extra adapters toe aan de configuratie Server-VM voordat u de configuratie server in de kluis registreert. Als u later toevoegt, moet u de server opnieuw registreren in de kluis.
 
 

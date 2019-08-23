@@ -3,16 +3,16 @@ title: Veelvoorkomende problemen oplossen
 description: Meer informatie over het oplossen van problemen met het uitvoeren van query's op Azure-resources met Azure resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480551"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900008"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problemen oplossen met Azure resource Graph
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>Omstandigheden Niet-ondersteunde content-type REST-header
+
+#### <a name="issue"></a>Probleem
+
+Klanten die een query uitvoeren op de Azure-resource grafiek REST API een _500_ -reactie ontvangen (interne server fout).
+
+#### <a name="cause"></a>Oorzaak
+
+De Azure resource Graph-rest API ondersteunt alleen `Content-Type` een van de **toepassingen/JSON**. Sommige REST-hulpprogram ma's of-agents worden standaard ingesteld op **tekst/normaal**, wat niet wordt ondersteund door de rest API.
+
+#### <a name="resolution"></a>Oplossing
+
+Controleer of het hulp programma of de agent die u gebruikt om een query uit te zoeken op `Content-Type` Azure resource Graph, de rest API-header is geconfigureerd voor **Application/JSON**.
+### <a name="rest-403"></a>Omstandigheden Geen lees machtiging voor alle abonnementen in de lijst
+
+#### <a name="issue"></a>Probleem
+
+Klanten die expliciet een lijst met abonnementen door geven met een query van een Azure-resource grafiek, krijgen een antwoord van _403_ (verboden).
+
+#### <a name="cause"></a>Oorzaak
+
+Als de klant geen lees machtiging heeft voor alle aangevraagde abonnementen, wordt de aanvraag geweigerd omdat de juiste beveiligings rechten ontbreken.
+
+#### <a name="resolution"></a>Oplossing
+
+Neem ten minste één abonnement op in de lijst met abonnementen die de klant die de query uitvoert, ten minste lees toegang heeft tot. Zie [machtigingen in azure resource Graph](../overview.md#permissions-in-azure-resource-graph)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

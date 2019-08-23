@@ -1,6 +1,6 @@
 ---
-title: Kies een Azure-oplossing voor de overdracht van | Microsoft Docs
-description: Meer informatie over het kiezen van een Azure-oplossing voor de overdracht van op basis van gegevensgroottes en de beschikbare netwerkbandbreedte in uw omgeving
+title: Een Azure-oplossing kiezen voor gegevens overdracht | Microsoft Docs
+description: Meer informatie over het kiezen van een Azure-oplossing voor gegevens overdracht op basis van de gegevens grootte en de beschik bare netwerk bandbreedte in uw omgeving
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,79 +8,79 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 56470c08f0ac940dae42821ae61846f1c86d52eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479509"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900393"
 ---
-# <a name="choose-an-azure-solution-for-data-transfer"></a>Kies een Azure-oplossing voor gegevensoverdracht
+# <a name="choose-an-azure-solution-for-data-transfer"></a>Een Azure-oplossing kiezen voor gegevens overdracht
 
-Dit artikel bevat een overzicht van enkele van de algemene Azure-gegevensoverdracht-oplossingen. Het artikel bevat ook koppelingen om naar de aanbevolen opties, afhankelijk van de bandbreedte van het netwerk in uw omgeving en de grootte van de gegevens die u van plan bent om over te dragen.
+Dit artikel bevat een overzicht van een aantal algemene oplossingen voor Azure-gegevens overdracht. Het artikel is ook gekoppeld aan de aanbevolen opties, afhankelijk van de netwerk bandbreedte in uw omgeving en de grootte van de gegevens die u wilt overdragen.
 
-## <a name="types-of-data-movement"></a>Typen verplaatsing van gegevens
+## <a name="types-of-data-movement"></a>Typen gegevens verplaatsing
 
-Overdracht van gegevens is offline of via de netwerkverbinding. Kies uw oplossing, afhankelijk van uw:
+Gegevens overdracht kan offline of via de netwerk verbinding zijn. Kies uw oplossing, afhankelijk van uw:
 
-- **Gegevensgrootte** -grootte van de gegevens die zijn bedoeld voor overdracht
-- **Frequentie Transfer** -eenmalig of periodieke gegevensopname en
-- **Netwerk** – bandbreedte die beschikbaar is voor gegevens overbrengen in uw omgeving.
+- **Gegevens grootte** : grootte van de gegevens die bestemd zijn voor overdracht,
+- **Overdrachts frequentie** -eenmalige of periodieke gegevens opname, en
+- **Netwerk** : band breedte die beschikbaar is voor gegevens overdracht in uw omgeving.
 
-De verplaatsing van gegevens kan zijn van de volgende typen:
+De gegevens verplaatsing kan van de volgende typen zijn:
 
-- **Offline overdracht met behulp van shippable apparaten** -fysieke shippable apparaten gebruiken als u wilt doen offline eenmalige grote hoeveelheden gegevens worden overgebracht. Microsoft stuurt u een schijf of op een veilige gespecialiseerde apparaat. U kunt ook aanschaffen en uw eigen schijven verzenden. U gegevens kopiëren naar het apparaat en klikt u vervolgens verzendt deze naar Azure waar de gegevens is geüpload.  De beschikbare opties in dit geval zijn Data Box-schijf, Data Box, gegevens in het zware en Import/Export (Gebruik uw eigen schijven).
+- **Offline overdracht met behulp van shippable-apparaten** : fysieke shippable-apparaten gebruiken wanneer u offline een eenmalige bulk gegevens overdracht wilt uitvoeren. Micro soft stuurt u een schijf of een beveiligd gespecialiseerd apparaat. U kunt ook uw eigen schijven kopen en verzenden. U kopieert gegevens naar het apparaat en verzendt het naar Azure waar de gegevens worden geüpload.  De beschik bare opties voor dit geval zijn Data Box Disk, Data Box, Data Box Heavy en importeren/exporteren (gebruik uw eigen schijven).
 
-- **Overdracht van het netwerk** -u uw gegevens overbrengen naar Azure via uw netwerkverbinding. Dit kan op veel verschillende manieren worden gedaan.
+- **Netwerk overdracht** : u brengt uw gegevens over naar Azure via uw netwerk verbinding. Dit kan op verschillende manieren worden gedaan.
 
-    - **Grafische interface** -als u af en toe enkele bestanden overbrengen en niet hoeft voor het automatiseren van de overdracht van gegevens, kunt u een grafische interface hulpprogramma zoals Azure Storage Explorer of een hulpprogramma voor het web gebaseerde verkennen in Azure portal.
-    - **Scripts of programmatische overdracht** -kunt u geoptimaliseerde softwaretools dat we bieden of het rechtstreeks aanroepen van onze REST API's / SDK's. De beschikbare scriptbare hulpprogramma's zijn AzCopy, Azure PowerShell en Azure CLI. Gebruik een van de SDK's voor de programma-interface voor .NET, Java, Python, Node/JS, C++, Go, PHP of Ruby.
-    - **On-premises apparaten** -geven We u een fysiek of virtueel apparaat dat deel uitmaakt van uw datacenter en optimaliseert de gegevens worden overgebracht via het netwerk. Deze apparaten bieden ook een lokale cache van veelgebruikte bestanden. Het fysieke apparaat is de Data Box-rand en het virtuele apparaat is de Data Box-Gateway. Beide permanent worden uitgevoerd in uw lokale en verbinding maken met Azure via het netwerk.
-    - **Beheerde gegevenspijplijn** -u kunt een pijplijn cloud zo instellen dat er regelmatig bestanden overbrengt tussen verschillende Azure-services, on-premises of een combinatie van twee. Gebruik Azure Data Factory instellen en beheren van gegevenspijplijnen, en verplaatsen en transformeren van gegevens voor analyse.
+    - **Grafische interface** : als u af en toe slechts enkele bestanden overbrengt en de gegevens overdracht niet hoeft te automatiseren, kunt u kiezen voor een grafisch interface programma zoals Azure Storage Explorer of een hulp programma voor het verkennen van het web in azure Portal.
+    - **Scripted of programmatische overdracht** : u kunt geoptimaliseerde software hulpprogramma's gebruiken die u rechtstreeks aanbiedt of aanroept. De beschik bare hulpprogram ma's die scriptbaar zijn, zijn AzCopy, Azure PowerShell en Azure CLI. Gebruik voor een programmatische interface een van de Sdk's voor .NET, Java, Python, node/JS C++,, go, PHP of Ruby.
+    - **On-premises apparaten** : we bieden u een fysiek of virtueel apparaat dat zich in uw Data Center bevindt en optimaliseert de gegevens overdracht via het netwerk. Deze apparaten bieden ook een lokale cache met veelgebruikte bestanden. Het fysieke apparaat is de Data Box Edge en het virtuele apparaat is de Data Box Gateway. Zowel in uw lokale als permanent worden uitgevoerd en via het netwerk verbinding maken met Azure.
+    - **Pijp lijn voor beheerde gegevens** : u kunt een Cloud pijplijn instellen om regel matig bestanden over te dragen tussen verschillende Azure-Services, on-premises of een combi natie van twee. Gebruik Azure Data Factory voor het instellen en beheren van gegevens pijplijnen en het verplaatsen en transformeren van gegevens voor analyse.
 
-De volgende visualisatie ziet u de richtlijnen voor het kiezen van de verschillende Azure-gegevensoverdracht hulpprogramma's, afhankelijk van de netwerkbandbreedte die beschikbaar zijn voor de overdracht, gegevensgrootte is bedoeld voor overdracht en frequentie van de overdracht.
+De volgende Visual illustreert de richt lijnen voor het kiezen van de verschillende hulpprogram ma's voor gegevens overdracht van Azure, afhankelijk van de beschik bare netwerk bandbreedte voor overdracht, gegevens grootte die is bedoeld voor overdracht en de frequentie van de overdracht.
 
-![Hulpprogramma's voor Azure gegevensoverdracht](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
+![Hulpprogram ma's voor Azure-gegevens overdracht](media/storage-choose-data-transfer-solution/azure-data-transfer-options-3.png)
 
-**De bovenste limieten van de overdracht van offline-apparaten - Data Box-schijf, Data Box en gegevens in het zware kunnen worden uitgebreid door meerdere bestellingen van een apparaattype.*
+**De maximale limieten van de apparaten voor offline overdracht-Data Box Disk, Data Box en Data Box Heavy kunnen worden uitgebreid door meerdere orders van het apparaattype te plaatsen.*
 
-## <a name="selecting-a-data-transfer-solution"></a>Selecteren van een oplossing voor overdracht
+## <a name="selecting-a-data-transfer-solution"></a>Een oplossing voor gegevens overdracht selecteren
 
-Beantwoord de volgende vragen om hulp bij selecteren van een oplossing voor overdracht:
+Beantwoord de volgende vragen om een oplossing voor gegevens overdracht te selecteren:
 
-- De beschikbare netwerkbandbreedte beperkt of niet-bestaande is en u wilt overbrengen van grote gegevenssets?
+- Is uw beschik bare netwerk bandbreedte beperkt of niet bestaande en wilt u grote gegevens sets overdragen?
   
-    Zo ja, Zie: [Scenario 1: Overdracht van grote gegevenssets zonder of met lage netwerkbandbreedte](storage-solution-large-dataset-low-network.md).
-- U wilt overbrengen van grote gegevenssets via netwerk en u hebt een gemiddeld naar hoogste netwerkbandbreedte?
+    Zo ja, zie: [Scenario 1: Overdracht van grote gegevens sets zonder of lage netwerk](storage-solution-large-dataset-low-network.md)bandbreedte.
+- Wilt u grote gegevens sets via het netwerk overdragen en hebt u een gemiddeld tot hoge netwerk bandbreedte?
 
-    Zo ja, Zie: [Scenario 2: Het overbrengen van grote gegevenssets met gemiddeld naar hoge netwerkbandbreedte](storage-solution-large-dataset-moderate-high-network.md).
-- Wilt u zo nu en dan een paar bestanden overdragen via het netwerk?
+    Zo ja, zie: [Scenario 2: Overzetten van grote gegevens sets met gemiddeld naar](storage-solution-large-dataset-moderate-high-network.md)hoge netwerk bandbreedte.
+- Wilt u af en toe slechts een paar bestanden overzetten via het netwerk?
 
-    Zo ja, Zie [Scenario 3: Kleine gegevenssets met beperkte dragen naar gemiddelde netwerkbandbreedte](storage-solution-small-dataset-low-moderate-network.md).
-- Zoekt u point-in-time-gegevensoverdracht met regelmatige tussenpozen?
+    Zo ja, Zie [scenario 3: De overdracht van kleine gegevens sets met een beperkt](storage-solution-small-dataset-low-moderate-network.md)aantal netwerk bandbreedte.
+- Zoekt u regel matig naar tijd gegevens overdracht?
 
-    Zo ja, gebruik van het script/programmatische opties die worden beschreven in [Scenario 4: Periodieke gegevensoverdracht](storage-solution-periodic-data-transfer.md).
-- Zoekt u continue, continue gegevensoverdracht?
+    Zo ja, gebruik dan de scripted/programmatische opties die worden [beschreven in scenario 4: Periodieke gegevens overdracht](storage-solution-periodic-data-transfer.md).
+- Bent u op zoek naar voortdurende, doorlopende gegevens overdracht?
 
-    Zo ja, gebruik de opties in [Scenario 4: Periodieke gegevensoverdracht](storage-solution-periodic-data-transfer.md).
+    Zo ja, gebruikt u de opties [in scenario 4: Periodieke gegevens overdracht](storage-solution-periodic-data-transfer.md).
  
 
-## <a name="data-transfer-feature-in-azure-portal"></a>Gegevensoverdracht-functie in Azure portal
+## <a name="data-transfer-feature-in-azure-portal"></a>Functie voor gegevens overdracht in Azure Portal
 
-U kunt ook gaan naar uw Azure Storage-account in Azure portal en selecteer de **gegevensoverdracht** functie. Geef de bandbreedte van het netwerk in uw omgeving, de grootte van de gegevens die u wilt overdragen, en de frequentie van de overdracht van gegevens. Hier ziet u de optimale oplossingen die overeenkomt met de informatie die u hebt opgegeven voor de gegevensoverdracht. 
+U kunt ook naar uw Azure Storage-account gaan in Azure Portal en de functie voor **gegevens overdracht** selecteren. Geef de netwerk bandbreedte op in uw omgeving, de grootte van de gegevens die u wilt overdragen en de frequentie van gegevens overdracht. U ziet de optimale oplossingen voor gegevens overdracht die overeenkomen met de informatie die u hebt verstrekt. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een inleiding tot Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
+- [Krijg een inleiding tot Azure Storage Explorer](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Lees een overzicht van AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).
 - [Azure PowerShell gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
 - [Azure CLI gebruiken met Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
 - Meer informatie over:
 
-    - [Azure Data Box, Azure Data Box-schijf en Azure Data Box zware voor offline-overdrachten](https://docs.microsoft.com/azure/databox/).
-    - [Azure Data Box-Gateway en Azure Data Box Edge voor online-overdrachten](https://docs.microsoft.com/azure/databox-online/).
-- [Ontdek wat is Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
-- De REST API's gebruikt voor het overbrengen van gegevens
+    - [Azure data box, Azure data Box disk en Azure data Box Heavy voor offline overdrachten](https://docs.microsoft.com/azure/databox/).
+    - [Azure data Box gateway en Azure data Box Edge voor online overdrachten](https://docs.microsoft.com/azure/databox-online/).
+- [Meer informatie over Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview).
+- De REST-Api's gebruiken om gegevens over te dragen
 
     - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage)

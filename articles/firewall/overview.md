@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/19/2019
+ms.date: 08/23/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 1349e07662504564fdf48a53f24525c4a16aa477
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f65b1d62a9c0e6835421c2ae796f9ea390407c9a
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326908"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971604"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -65,7 +65,7 @@ Met FQDN-tags kunt u eenvoudig bekend netwerkverkeer voor Azure-services toestaa
 
 Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt. U kunt geen eigen servicetag maken en opgeven welke IP-adressen zijn opgenomen in een tag. Microsoft beheert de adresvoorvoegsels die de servicetag omvat en werkt de servicetag automatisch bij wanneer adressen veranderen.
 
-## <a name="threat-intelligence"></a>Informatie over bedreigingen
+## <a name="threat-intelligence"></a>Bedreigingsinformatie
 
 Filteren op basis van bedreigingsinformatie kan voor uw firewall worden ingeschakeld voor waarschuwingen over of het weigeren van verkeer van en naar bekende kwaadaardige IP-adressen en domeinen. De IP-adressen en domeinen zijn afkomstig uit de feed Bedreigingsinformatie van Microsoft.
 
@@ -112,6 +112,7 @@ Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken nie
 |Beschikbaarheids zones kunnen alleen worden geconfigureerd tijdens de implementatie.|Beschikbaarheids zones kunnen alleen worden geconfigureerd tijdens de implementatie. U kunt Beschikbaarheidszones niet configureren nadat er een firewall is geïmplementeerd.|Dit is standaard.|
 |SNAT op binnenkomende verbindingen|Naast DNAT worden verbindingen via het open bare IP-adres van de firewall (inkomend) omgezet op een van de privé Ip's van de firewall. Deze vereiste is vandaag (ook voor actieve/actieve Nva's) om symmetrische route ring te garanderen.|Als u de oorspronkelijke bron voor HTTP/S wilt behouden, kunt u [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) -headers gebruiken. Gebruik bijvoorbeeld een service zoals [Azure front deur](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) voor de firewall. U kunt ook WAF toevoegen als onderdeel van Azure front deur en keten aan de firewall.
 |SQL FQDN-filtering alleen ondersteuning in proxy modus (poort 1433)|Voor Azure SQL Database, Azure SQL Data Warehouse en Azure SQL Managed instance:<br><br>Tijdens de preview wordt SQL FQDN-filtering alleen ondersteund in de proxy modus (poort 1433).<br><br>Voor Azure SQL IaaS:<br><br>Als u niet-standaard poorten gebruikt, kunt u die poorten opgeven in de toepassings regels.|Voor SQL in de omleidings modus, wat de standaard instelling is als u vanuit Azure verbinding maakt, kunt u in plaats daarvan de toegang filteren met behulp van de SQL-service-tag als onderdeel van Azure Firewall netwerk regels.
+|Uitgaand verkeer op TCP-poort 25 is niet toegestaan| Uitgaande SMTP-verbindingen die gebruikmaken van TCP-poort 25 worden geblokkeerd. Poort 25 wordt hoofd zakelijk gebruikt voor niet-geverifieerde e-mail bezorging. Dit is het standaard platform gedrag voor virtuele machines. Zie meer problemen [met uitgaande SMTP-connectiviteit oplossen in azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)voor meer informatie. Maar in tegens telling tot virtuele machines is het momenteel niet mogelijk om deze functionaliteit in te scha kelen op Azure Firewall.|Volg de aanbevolen methode voor het verzenden van e-mail zoals beschreven in het artikel problemen oplossen met SMTP. U kunt ook de virtuele machine uitsluiten waarvoor uitgaande SMTP-toegang is vereist van uw standaard route naar de firewall, en in plaats daarvan de uitgaande toegang rechtstreeks op Internet configureren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

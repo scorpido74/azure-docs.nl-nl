@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 853d7f7bf9950640a824eee4ae3e044265b518f7
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016967"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898346"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Een IoT-ruimtelijke analyse implementeren met behulp van Azure Maps
 
@@ -290,6 +290,10 @@ Zie voor meer informatie Azure Maps Api's die in deze zelf studie worden gebruik
 Zie voor een volledige lijst met Azure Maps REST-Api's:
 
 * [Azure Maps REST-Api's](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+
+Zie voor meer informatie over IoT Plug en Play:
+
+* [IoT-Plug en Play](https://docs.microsoft.com/azure/iot-pnp)
 
 Ga voor een lijst met apparaten die Azure Certified voor IoT zijn naar:
 

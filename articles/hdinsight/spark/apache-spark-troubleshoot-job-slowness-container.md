@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 07/29/2019
-ms.openlocfilehash: 78dff1b9d9db4e54ab1a8f7203088753e206c610
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 08/21/2019
+ms.openlocfilehash: 635b7adb8753b7e9490e8f14a0699c09297fdbbb
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641953"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899081"
 ---
 # <a name="scenario-apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Scenario: Apache Spark taak langzaam uitgevoerd wanneer de Azure storage-container veel bestanden in azure HDInsight bevat
 
@@ -26,8 +26,6 @@ Bij het uitvoeren van een HDInsight-cluster wordt de Apache Spark-taak die naar 
 Dit is een bekend Spark-probleem. De vertraging is afkomstig van de `ListBlob` - `GetBlobProperties` en-bewerkingen tijdens de uitvoering van Spark-taken.
 
 Voor het bijhouden van partities moet Spark een met `FileStatusCache` informatie over de directory-structuur onderhouden. Met deze cache kunnen Spark de paden parseren en op de hoogte zijn van de beschik bare partities. Het voor deel van het bijhouden van partities is dat Spark alleen de benodigde bestanden aanraakt wanneer u gegevens leest. Om deze informatie up-to-date te houden wanneer u nieuwe gegevens schrijft, moet Spark alle bestanden in de map weer geven en deze cache bijwerken.
-
-Telkens wanneer u de Directory bijwerkt in Spark 1,6, moet u (1) de cache wissen (2) recursief alle bestanden weer geven en (3) de volledige cache bijwerken. Dit leidt tot veel vermeldings bewerkingen.
 
 In Spark 2,1, terwijl de cache na elke schrijf bewerking niet hoeft te worden bijgewerkt, controleert Spark of een bestaande partitie kolom overeenkomt met de voor waarde die wordt voorgesteld in de huidige schrijf aanvraag, zodat deze ook aan het begin van elke schrijf bewerking wordt weer gegeven.
 

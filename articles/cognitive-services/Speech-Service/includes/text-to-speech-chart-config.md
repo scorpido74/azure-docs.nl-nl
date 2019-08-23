@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/22/2019
 ms.author: dapine
-ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c87132c3ae41dec82e3493f9a0ee2397455ff881
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67717252"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971305"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Tekst-naar-spraak (subdiagram: grafieken/textToSpeech)
 
-Als u het schema "paraplu" wilt overschrijven, voegt `textToSpeech.` u het voor voegsel toe aan een para meter om het meer specifiek te maken. Zo wordt de overeenkomstige para meter `textToSpeech.numberOfConcurrentRequest` `numberOfConcurrentRequest`bijvoorbeeld overschreven.
+Als u het schema "paraplu" wilt overschrijven, voegt `textToSpeech.` u het voor voegsel toe aan een para meter om het meer specifiek te maken. Hiermee wordt bijvoorbeeld de overeenkomstige para meter overschreven zoals `textToSpeech.numberOfConcurrentRequest` `numberOfConcurrentRequest`onderdrukkingen.
 
 |Parameter|Description|Standaard|
 | -- | -- | -- |
@@ -37,5 +37,6 @@ Als u het schema "paraplu" wilt overschrijven, voegt `textToSpeech.` u het voor 
 | `image.args.apikey`lang | Gebruikt voor het bijhouden van informatie over facturering. ||
 | `service.type` | Het Service type Kubernetes van de **tekst-naar-spraak** -service. Zie de [instructies voor het Kubernetes-Service type](https://kubernetes.io/docs/concepts/services-networking/service/) voor meer informatie en controleer de ondersteuning van cloud providers. | `LoadBalancer` |
 | `service.port`|  De poort van de service voor **tekst naar spraak** . | `80` |
+| `service.annotations` | De **tekst-naar-spraak** -aantekeningen voor de meta gegevens van de service. Annotaties zijn sleutel waardeparen. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | Hiermee wordt aangegeven of de horizontale pod-functie voor [automatisch schalen](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) is ingeschakeld. Als `true`, wordt `text-to-speech-autoscaler` de geïmplementeerd in het Kubernetes-cluster. | `true` |
 | `service.podDisruption.enabled` | Of het [pod](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) -verstorings budget is ingeschakeld. Als `true`, wordt `text-to-speech-poddisruptionbudget` de geïmplementeerd in het Kubernetes-cluster. | `true` |

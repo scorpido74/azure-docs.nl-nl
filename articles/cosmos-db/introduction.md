@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384121"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905292"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
@@ -23,6 +23,11 @@ U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosm
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/)
+
+U kunt ook het [Cosmos DB Boots trap programma](https://azurecosmosdb.github.io/CosmosBootstrap/) gebruiken om het bouwen of migreren van uw toepassingen op Azure Cosmos DB te versnellen. Wanneer u zich aanmeldt voor dit programma, worden de Azure Cosmos DB engineers toegewezen om u te helpen bij het project. ze kunnen u helpen bij het migreren van uw gegevens naar Azure Cosmos DB of bij het bouwen van nieuwe apps op Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Registreren voor het Cosmos DB Boots trap-programma](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ![Azure Cosmos DB is de service van Microsoft voor wereldwijd gedistribueerde databases met mogelijkheden voor elastisch uitschalen, een gegarandeerde lage latentie, vijf consistentiemodellen en uitgebreide, gegarandeerde SLA's](./media/introduction/azure-cosmos-db.png)
 

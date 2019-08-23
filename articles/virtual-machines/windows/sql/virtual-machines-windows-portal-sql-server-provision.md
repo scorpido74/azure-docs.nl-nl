@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: MT
+ms.openlocfilehash: c316e55700fc8a28ed39bea960a9fe2b2bbd4df1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774301"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900377"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele machine met Windows SQL Server inrichten in de Azure Portal
 
@@ -122,7 +122,7 @@ Configureer uw schijf opties op het tabblad **schijven** .
 * Onder **Geavanceerd**selecteert u **ja** onder gebruik **Managed disks**.
 
    > [!NOTE]
-   > Microsoft raadt Managed Disks aan voor SQL Server. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [overzicht van Azure Managed Disks] [voor meer informatie. /managed-disks-overview.md). Ga voor meer informatie over beheerde schijven in een beschikbaarheidsset naar [Managed disks gebruiken voor virtuele machines in de beschikbaarheidsset] (.. /manage-availability.md.
+   > Microsoft raadt Managed Disks aan voor SQL Server. Managed Disks verwerken de opslag achter de schermen. Bovendien distribueert Azure de opslagresources zodat voldoende redundantie wordt geboden wanneer virtuele machines met Managed Disks zich in dezelfde beschikbaarheidsset bevinden. Zie [overzicht van Azure Managed Disks] [voor meer informatie. /managed-disks-overview.md). Zie [Managed Disks gebruiken schijven voor virtuele machines in een beschikbaarheidsset](../manage-availability.md) voor meer informatie over Managed Disks in een beschikbaarheidsset.
 
 ![SQL-VM-schijf instellingen](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -275,7 +275,7 @@ Zie voor meer informatie [Automatische back-up voor SQL Server in Azure Virtual 
 U hebt de mogelijkheid om SQL Server R Services in te scha kelen [(geavanceerde analyse)](/sql/advanced-analytics/r/sql-server-r-services/). Met deze optie kunt u geavanceerde analyses gebruiken met SQL Server 2017. Selecteer **inschakelen** in het venster **SQL Server instellingen** .
 
 
-## <a name="4-review--create"></a>4. Beoordelen en maken
+## <a name="4-review--create"></a>4. Controleren en maken
 
 Bekijk op het tabblad **controleren en maken** de samen vatting en selecteer **maken** om SQL Server, resource groep en resources te maken die zijn opgegeven voor deze virtuele machine.
 

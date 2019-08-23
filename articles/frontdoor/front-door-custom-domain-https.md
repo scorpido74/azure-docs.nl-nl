@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 48733a8c2a554fc62c7731b6c0fb4ef5b8d45159
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450178"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907847"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Zelfstudie: HTTPS configureren in een aangepast Front Door-domein
 
@@ -79,13 +79,19 @@ U kunt uw eigen certificaat gebruiken voor het inschakelen van de HTTPS-functie.
 1. Azure Key Vault: u moet een Azure Key Vault-account hebben onder hetzelfde abonnement als de Front Door die u wilt inschakelen voor aangepaste HTTPS. Maak een Azure Key Vault-account als u er nog geen hebt.
 
 > [!WARNING]
-> Azure voordeur-Service ondersteunt momenteel alleen Key Vault-accounts in hetzelfde abonnement als de voordeur-configuratie. Als u een sleutelkluis kiest van een ander abonnement dan de Front Door, treedt er een fout op.
+> De Azure front-deur service ondersteunt momenteel alleen Key Vault accounts in hetzelfde abonnement als de front-deur configuratie. Als u een sleutelkluis kiest van een ander abonnement dan de Front Door, treedt er een fout op.
 
-2. Azure Key Vault-certificaten: als u al in het bezit bent van een certificaat, kunt u dit rechtstreeks uploaden naar uw Azure Key Vault-account of u kunt via Azure Key Vault direct een certificaat maken bij een van de partnercertificeringsinstanties waarmee Azure Key Vault is geïntegreerd.
+2. Azure Key Vault-certificaten: als u al in het bezit bent van een certificaat, kunt u dit rechtstreeks uploaden naar uw Azure Key Vault-account of u kunt via Azure Key Vault direct een certificaat maken bij een van de partnercertificeringsinstanties waarmee Azure Key Vault is geïntegreerd. Upload uw certificaat als een **certificaat** object in plaats van een **geheim**.
+
+> [!IMPORTANT]
+> U moet het certificaat in PFX-indeling uploaden **zonder** wachtwoord beveiliging.
 
 #### <a name="register-azure-front-door-service"></a>Azure Front Door Service registreren
 
 Registreer de service-principal voor Azure Front Door Service als een app in uw Azure Active Directory via PowerShell.
+
+> [!NOTE]
+> Deze actie hoeft slechts **één keer** per Tenant te worden uitgevoerd.
 
 1. Installeer zo nodig [Azure PowerShell](/powershell/azure/install-az-ps) in PowerShell op uw lokale computer.
 
@@ -95,18 +101,19 @@ Registreer de service-principal voor Azure Front Door Service als een app in uw 
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Azure Front Door Service toegang verlenen tot uw sleutelkluis
  
-Geef Azure Front Door Service toegang tot de certificaten onder Geheimen in uw Azure Key Vault-account.
+De Azure front-deur service machtiging verlenen voor toegang tot de certificaten in uw Azure Key Vault-account.
 
 1. Selecteer in uw Key Vault-account onder instellingen **Toegangsbeleid**, selecteer daarna **Nieuwe toevoegen** om een nieuw beleid te maken.
 
 2. Zoek bij **Principal selecteren** naar **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** en kies **Microsoft.Azure.Frontdoor**. Klik op **Selecteren**.
 
+3. Selecteer in **geheime machtigingen** **Get** om de voor deur toe te staan om het certificaat op te halen.
 
-3. Selecteer bij **Geheime machtigingen** de optie **Ophalen** om Front Door deze machtigingen te laten uitvoeren om de certificaten op te halen en weer te geven. 
+4. Selecteer in **certificaat machtigingen** **Get** om de voor deur toe te staan om het certificaat op te halen.
 
-4. Selecteer **OK**. 
+5. Selecteer **OK**. 
 
-    Azure Front Door Service heeft nu toegang tot deze sleutelkluis en de certificaten (geheimen) die in deze sleutelkluis zijn opgeslagen.
+    De Azure front-deur service heeft nu toegang tot deze Key Vault en de certificaten die zijn opgeslagen in deze Key Vault.
  
 #### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Het certificaat voor implementatie door Azure Front Door Service selecteren
  
@@ -146,7 +153,7 @@ Uw CNAME-record moet de volgende indeling hebben, waarbij *Naam* de naam van het
 
 Zie [Create the CNAME DNS record](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain) (De CNAME DNS-record maken) voor meer informatie over CNAME-records.
 
-Als de CNAME-record de juiste indeling heeft, wordt de naam van het aangepaste domein automatisch geverifieerd met DigiCert en wordt er een toegewezen certificaat voor uw domeinnaam gemaakt. U ontvangt via DigiCert geen verificatie-e-mail en u hoeft uw aanvraag niet goed te keuren. Het certificaat is één jaar geldig en is sjabloonuitbreiding voordat deze verloopt. Ga verder met [Wachten op doorgifte](#wait-for-propagation). 
+Als de CNAME-record de juiste indeling heeft, wordt de naam van het aangepaste domein automatisch geverifieerd met DigiCert en wordt er een toegewezen certificaat voor uw domeinnaam gemaakt. U ontvangt via DigiCert geen verificatie-e-mail en u hoeft uw aanvraag niet goed te keuren. Het certificaat is één jaar geldig en wordt automatisch vernieuwd voordat het verloopt. Ga verder met [Wachten op doorgifte](#wait-for-propagation). 
 
 Automatische validatie duurt meestal een paar minuten. Als het domein na een uur nog niet is gevalideerd, opent u een ondersteuningsticket.
 
@@ -169,7 +176,7 @@ webmaster@&lt;uw-domeinnaam.com&gt;
 hostmaster@&lt;uw-domeinnaam.com&gt;  
 postmaster@&lt;uw-domeinnaam.com&gt;  
 
-U ontvangt binnen enkele minuten een e-mailbericht, vergelijkbaar met het bericht in het volgende voorbeeld, waarin u wordt gevraagd om de aanvraag goed te keuren. Als u een spamfilter gebruikt, voegt admin@digicert.com aan de acceptatielijst. Als u na 24 uur nog geen e-mailbericht hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
+U ontvangt binnen enkele minuten een e-mailbericht, vergelijkbaar met het bericht in het volgende voorbeeld, waarin u wordt gevraagd om de aanvraag goed te keuren. Als u een spam filter gebruikt, voegt admin@digicert.com u toe aan de acceptatie lijst. Als u na 24 uur nog geen e-mailbericht hebt ontvangen, neemt u contact op met Microsoft Ondersteuning.
 
 Als u op de goedkeuringskoppeling klikt, wordt u naar een onlinegoedkeuringsformulier geleid. Volg de instructies op het formulier. U hebt twee verificatieopties:
 
@@ -177,7 +184,7 @@ Als u op de goedkeuringskoppeling klikt, wordt u naar een onlinegoedkeuringsform
 
 - U kunt alleen de specifieke hostnaam goedkeuren die wordt gebruikt in deze aanvraag. Voor volgende aanvragen is extra goedkeuring is vereist.
 
-Na goedkeuring wordt het certificaat voor de naam van het aangepaste domein met DigiCert voltooid. Het certificaat is één jaar geldig en is sjabloonuitbreiding voordat deze verloopt.
+Na goedkeuring wordt het certificaat voor de naam van het aangepaste domein met DigiCert voltooid. Het certificaat is één jaar geldig en wordt automatisch vernieuwd voordat het is verlopen.
 
 ## <a name="wait-for-propagation"></a>Wachten op doorgifte
 

@@ -3,30 +3,31 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 06/19/2019
+ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: ffa48d55703347883edf96a0a27ee52d19189976
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935014"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894161"
 ---
-In deze stap maakt u de resource groep en een Azure SQL Database afzonderlijke data base.
+In deze stap maakt u een Azure SQL Database afzonderlijke data base. 
 
 > [!IMPORTANT]
-> Zorg ervoor dat u firewall regels instelt voor het gebruik van het open bare IP-adres van de computer waarop u de stappen in dit artikel uitvoert. 
+> Zorg ervoor dat u firewall regels instelt voor het gebruik van het open bare IP-adres van de computer die u gebruikt om dit artikel te volt ooien.
 >
-> Zie voor meer informatie [een firewall regel op database niveau maken](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) of om het IP-adres te bepalen dat wordt gebruikt voor de firewall regel op server niveau voor uw computer Zie [een firewall op server niveau maken](../sql-database-server-level-firewall-rule.md).  
+> Zie een [firewall regel op database niveau maken](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) of het IP-adres bepalen dat wordt gebruikt voor de firewall regel op server niveau voor uw computer Zie [een firewall op server niveau maken](../sql-database-server-level-firewall-rule.md)voor meer informatie.  
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Maak uw resource groep en één data base met behulp van de Azure Portal.
 
-1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
-2. Selecteer **data bases** en selecteer vervolgens **SQL database** om de pagina **SQL database maken** te openen.
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
+2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
+3. Selecteer **maken**:
 
-   ![Individuele database maken](../media/sql-database-get-started-portal/create-database-1.png)
+   ![Individuele database maken](../media/sql-database-get-started-portal/create-single-database.png)
 
 3. Typ of selecteer de volgende waarden in het gedeelte **Project Details** van het tabblad **basis beginselen** :
 

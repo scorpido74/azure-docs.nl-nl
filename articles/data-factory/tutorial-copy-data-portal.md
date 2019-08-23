@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5174b46bae5bbcc18f5a2575fb68cce1305507a3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a1a97e7521e9772b1d13049d42e67d7ac318fffc
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826689"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907361"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Gegevens kopiëren van Azure Blob-opslag naar een SQL database met Azure Data Factory
 In deze zelfstudie maakt u een data factory met behulp van de Azure Data Factory-gebruikersinterface. Met de pijplijn in deze data factory worden gegevens gekopieerd van Azure Blob-opslag naar een SQL database. Het configuratiepatroon in deze zelfstudie geldt voor het kopiëren van een gegevensarchief op basis van bestanden naar een relationeel gegevensarchief. Zie de tabel [Ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink.
@@ -172,6 +172,9 @@ In deze zelfstudie begint u met het maken van de pijplijn. Vervolgens maakt u ge
 1. Ga naar het tabblad met de pijplijn en controleer bij **Sink-gegevensset** of **OutputSqlDataset** is geselecteerd.
 
     ![Tabblad Pijplijn](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+
+U kunt eventueel het schema van de bron toewijzen aan het bijbehorende schema van bestemming door de volgende [schema toewijzing te volgen in de Kopieer activiteit](copy-activity-schema-and-type-mapping.md)
+    
 ## <a name="validate-the-pipeline"></a>De pijplijn valideren
 Selecteer in de werkbalk **Valideren** om de pijplijn te valideren.
  

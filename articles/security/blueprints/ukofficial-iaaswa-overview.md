@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946530"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899945"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure-blauwdruk voor beveiliging en naleving-IaaS-webtoepassing met drie lagen voor UK-officiële
 
@@ -186,7 +186,7 @@ Deze VNets worden nog steeds beheerd als afzonderlijke resources, maar weer gege
 
 [Richt lijnen voor het implementeren van Windows Server-Active Directory op Azure virtual machines](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Integratie van Active Directory**: Als alternatief voor een speciale AD DS-architectuur kunnen klanten [Azure Active Directory](/azure/architecture/reference-architectures/identity.md) integratie of [Active Directory in azure gebruiken die zijn gekoppeld aan een on-premises forest](/azure/architecture/reference-architectures/identity.md).
+**Integratie van Active Directory**: Als alternatief voor een speciale AD DS-architectuur kunnen klanten [Azure Active Directory](/azure/architecture/reference-architectures/identity) integratie of [Active Directory in azure gebruiken die zijn gekoppeld aan een on-premises forest](/azure/architecture/reference-architectures/identity).
 
 ### <a name="security"></a>Beveiliging
 
@@ -200,9 +200,9 @@ Klanten kunnen ook overwegen een [verbeterd beveiligings beheer model](https://t
 
 **IP-bereiken**: De IP-bereiken in de architectuur zijn voorgestelde bereiken. Klanten wordt aangeraden hun eigen omgeving te overwegen en de juiste bereiken te gebruiken.
 
-**Hybride connectiviteit**: De op de cloud gebaseerde workloads zijn verbonden met het on-premises Data Center via IPSEC VPN met behulp van de Azure-VPN Gateway. Klanten moeten ervoor zorgen dat ze een geschikte VPN Gateway gebruiken om verbinding te maken met Azure. Voor beeld- [VPN gateway Resource Manager-sjabloon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Klanten die grootschalige, bedrijfskritische workloads met big data vereisten uitvoeren, willen wellicht een hybride netwerk architectuur overwegen met [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) voor de connectiviteit van particuliere netwerken met micro soft-Cloud Services.
+**Hybride connectiviteit**: De op de cloud gebaseerde workloads zijn verbonden met het on-premises Data Center via IPSEC VPN met behulp van de Azure-VPN Gateway. Klanten moeten ervoor zorgen dat ze een geschikte VPN Gateway gebruiken om verbinding te maken met Azure. Voor beeld- [VPN gateway Resource Manager-sjabloon](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Klanten die grootschalige, bedrijfskritische workloads met big data vereisten uitvoeren, willen wellicht een hybride netwerk architectuur overwegen met [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) voor de connectiviteit van particuliere netwerken met micro soft-Cloud Services.
 
-**Schei ding van de bezorgdheid**: Deze referentie architectuur scheidt de VNets voor beheer bewerkingen en bedrijfs bewerkingen. Met afzonderlijke VNets en subnetten is verkeer beheer mogelijk, met inbegrip van binnenkomend verkeer en uitwijkings beperkingen, met behulp van Nsg's tussen netwerk segmenten die volgen op de [micro soft-Cloud Services en](/azure/architecture/vdc/networking-virtual-datacenter.md) aanbevolen procedures voor netwerk beveiliging.
+**Schei ding van de bezorgdheid**: Deze referentie architectuur scheidt de VNets voor beheer bewerkingen en bedrijfs bewerkingen. Met afzonderlijke VNets en subnetten is verkeer beheer mogelijk, met inbegrip van binnenkomend verkeer en uitwijkings beperkingen, met behulp van Nsg's tussen netwerk segmenten die volgen op de [micro soft-Cloud Services en](/azure/architecture/vdc/networking-virtual-datacenter) aanbevolen procedures voor netwerk beveiliging.
 
 **Resource beheer**: Azure-resources, zoals Vm's, VNets en load balancers, worden beheerd door ze samen te groeperen in [Azure-resource groepen](../../azure-resource-manager/resource-group-overview.md). Op resources gebaseerde Access Control rollen kunnen vervolgens worden toegewezen aan elke resource groep om de toegang tot alleen gemachtigde gebruikers te beperken.
 

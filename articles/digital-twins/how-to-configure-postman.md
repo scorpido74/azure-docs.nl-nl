@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/21/2019
 ms.author: v-adgera
-ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873659"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904298"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -35,9 +35,9 @@ Met de Postman-client kunnen ontwikkel aars van oplossingen het type HTTP-aanvra
 
 Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings stroom te gebruiken.
 
-1. Volg de stappen in [deze Snelstartgids](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) om een Azure AD-toepassing van het type systeem eigen te maken. U kunt ook een bestaande registratie van de systeem eigen app opnieuw gebruiken.
+1. Volg de stappen in [onze Snelstartgids](./quickstart-view-occupancy-dotnet.md) om een Azure AD-toepassing te maken. U kunt ook een [systeem eigen app maken met behulp van de oude Aad](./how-to-use-legacy-aad.md)-Blade.
 
-1. Selecteer onder **vereiste machtigingen**de optie **toevoegen** en voer **Azure Digital apparaatdubbels** in onder API- **toegang toevoegen**. Als de API met uw zoekopdracht niet wordt gevonden, zoekt u in plaats daarvan **Azure Smart Spaces**. Selecteer vervolgens **machtigingen verlenen > gedelegeerde machtigingen** en **gereed**.
+1. Selecteer **een machtiging toevoegen**onder **API-machtigingen**. Vervolgens maakt **Azure Digital apparaatdubbels** onder **api's mijn organisatie gebruik**van. Als de API met uw zoekopdracht niet wordt gevonden, zoekt u in plaats daarvan **Azure Smart Spaces**. Selecteer vervolgens **gedelegeerde machtigingen**, **Lees** > **lezen. schrijven**en **machtigingen toevoegen**.
 
     [![API-registraties toevoegen Azure Active Directory app](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 

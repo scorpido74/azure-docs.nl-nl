@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1478e8f44db2e6a1d52d069d2f52830c265b2641
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7cda51870a98b2606a0133a61ad6f786e7e9324a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036824"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900142"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een nieuw Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding
 
@@ -82,27 +82,11 @@ Selecteer een van de volgende opties:
 
 ## <a name="connect-lead-management"></a>Lead beheer verbinden
 
-Maak rechtstreeks verbinding met klanten door het CRM-systeem (Customer Relationship Management) te koppelen. Wanneer u dit doet, ontvangt u contact gegevens van de klant wanneer een klant rente inneemt of uw product implementeert.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-Selecteer **verbinding maken**om verbinding te maken met uw CRM-systeem.
+Zie [overzicht Lead beheer](./commercial-marketplace-get-customer-leads.md) voor meer informatie.
 
-### <a name="choose-a-lead-destination"></a>Kies een doel voor een potentiële klant
-
-Nadat u **verbinding maken**hebt geselecteerd, ziet u een vervolg keuzelijst waar u uw CRM-systeem kunt selecteren en vervolgens de verbindings Details opgeven.
-
-Het partner Centrum ondersteunt de volgende CRM-systemen voor lead beheer. Selecteer de koppeling voor installatie-instructies.
-
-- [Azure-tabel](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) : Geef uw opslag account op Connection String. 
-- [Dynamics 365 voor klant betrokkenheid (voorheen Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) : Geef de URL van uw Dynamics 365-exemplaar en de verificatie modus op (Office 365 of Azure Active Directory).
-- [Https-eind punt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) : Geef de URL van uw https-eind punt op. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) : Geef uw server-id, Munchkin-account-id en formulier-id op.
-- [Sales Force](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) : Geef uw organisatie-id op. 
-
-#### <a name="additional-lead-management-resources"></a>Aanvullende resources voor lead beheer
-
-- [Veelgestelde vragen over Lead beheer](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Veelvoorkomende fouten bij de configuratie van de lead](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Overzicht Lead beheer één pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
 ## <a name="properties"></a>properties
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296481"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905344"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Identiteit en toegang bewaken in Azure Security Center (preview-versie)
 In dit artikel leest u hoe u Azure Security Center kunt gebruiken om de identiteit en toegangsactiviteiten van gebruikers te bewaken.
@@ -119,7 +119,7 @@ Gebruik de onderstaande tabel als referentie om inzicht te krijgen in de beschik
 |Subscription|5|Afgeschafte accounts moeten worden verwijderd uit uw abonnement|Verouderde accounts uit uw abonnementen verwijderen om alleen de huidige gebruikers toegang te geven. |
 |Subscription|5|Er moet meer dan één eigenaar aan uw abonnement zijn toegewezen|Wijs meer dan een eigenaar van het abonnement aan om beheerders toegang te laten hebben.|
 |Subscription|5|Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement|Wijs minder dan 3 abonnements eigenaren toe om de kans op schending door een verzwakte eigenaar te verminderen.|
-|Key Vault|5|Diagnostische logboeken in Key Vault moeten worden ingeschakeld|Logboeken inschakelen en ze maximaal een jaar bewaren. Hiermee kunt u activiteit sporen onderzoek opnieuw maken wanneer een beveiligingsincident voordoet of uw netwerk is gecompromitteerd. |
+|Sleutelkluis|5|Diagnostische logboeken in Key Vault moeten worden ingeschakeld|Logboeken inschakelen en ze maximaal een jaar bewaren. Hiermee kunt u activiteit sporen onderzoek opnieuw maken wanneer een beveiligingsincident voordoet of uw netwerk is gecompromitteerd. |
 |Subscription|15|Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement|Verwijder externe accounts met lees rechten van uw abonnement om onbewaakte toegang te voor komen.| 
 
 > [!NOTE]
@@ -128,7 +128,7 @@ Gebruik de onderstaande tabel als referentie om inzicht te krijgen in de beschik
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende onderwerpen voor meer informatie over aanbevelingen die betrekking hebben op andere typen Azure-resources:
 
-- [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 - [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
 - [Uw Azure SQL-service en-gegevens beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)
 

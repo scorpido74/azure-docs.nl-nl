@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 31e59f913fa29c92bc1b97029d8712bbd9b68ab8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934666"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899827"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
 
-[Azure-operationele beveiliging] (/Azure/Security/Fundamentals/Operational-Security verwijst naar de services, besturings elementen en functies die beschikbaar zijn voor gebruikers voor het beveiligen van hun gegevens, toepassingen en andere assets in Microsoft Azure. Het is een framework dat de kennis bevat die is opgedaan via verschillende mogelijkheden die uniek zijn voor micro soft. Deze mogelijkheden zijn onder andere de micro soft Security Development Lifecycle (SDL), het micro soft Security Response Center-programma en het diepe bewustzijn van de Cyber beveiliging Threat landschap.
+[Azure Operational Security](/azure/security/fundamentals/operational-security) heeft betrekking op de services, besturings elementen en functies die beschikbaar zijn voor gebruikers voor het beveiligen van hun gegevens, toepassingen en andere assets in Microsoft Azure. Het is een framework dat de kennis bevat die is opgedaan via verschillende mogelijkheden die uniek zijn voor micro soft. Deze mogelijkheden zijn onder andere de micro soft Security Development Lifecycle (SDL), het micro soft Security Response Center-programma en het diepe bewustzijn van de Cyber beveiliging Threat landschap.
 
 ## <a name="azure-management-services"></a>Azure-beheer Services
 

@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019681"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897004"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory authenticatie gebruiken voor verificatie met SQL
 
@@ -116,8 +116,9 @@ Als u een Inge sloten database gebruiker wilt maken in Azure SQL Database, een b
 
 Azure Active Directory-verificatie ondersteunt de volgende methoden om verbinding te maken met een Data Base met behulp van Azure AD-identiteiten:
 
-- Geïntegreerde Windows-verificatie gebruiken
-- Een Azure AD Principal-naam en een wacht woord gebruiken
+- Azure Active Directory wacht woord
+- Azure Active Directory geïntegreerd
+- Azure Active Directory Universal met MFA
 - Verificatie van toepassings token gebruiken
 
 De volgende verificatie methoden worden ondersteund voor Azure AD server-principals (aanmeldingen) (**open bare preview**):
@@ -125,7 +126,6 @@ De volgende verificatie methoden worden ondersteund voor Azure AD server-princip
 - Azure Active Directory wacht woord
 - Azure Active Directory geïntegreerd
 - Azure Active Directory Universal met MFA
-- Azure Active Directory interactief
 
 
 ### <a name="additional-considerations"></a>Aanvullende overwegingen

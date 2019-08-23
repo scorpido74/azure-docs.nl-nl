@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878010"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907355"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Zelfstudie: Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -90,11 +90,11 @@ De volgende stappen laten zien hoe u het capaciteits model voor een **omgevings 
 
 1. Als u een nieuwe sjabloon voor het apparaat wilt toevoegen, selecteert u **+ Nieuw** op de pagina **Apparaatinstellingen** .
 
-1. Kies **aangepast** in de lijst met hulp modellen voor apparaten.
+1. Kies **aangepast** in de lijst met sjablonen.
 
 1. Voer een **omgevings sensor** in als de naam van de sjabloon voor het apparaat.
 
-1. Kies **model importeren** om een nieuw mogelijkheidsprofiel te maken op basis van een JSON-bestand. Navigeer naar de map waar u het bestand **EnvironmentalSensorInline. capabilitymodel. json** hebt opgeslagen op de lokale computer. Selecteer het bestand **EnvironmentalSensorInline. capabilitymodel. json** en selecteer vervolgens importeren. Het model voor de omgevings sensor bevat de interfaces voor omgevings sensors en **apparaatgegevens** :
+1. Kies **model importeren** om een nieuw mogelijkheidsprofiel te maken op basis van een JSON-bestand. Navigeer naar de map waar u het bestand **EnvironmentalSensorInline. capabilitymodel. json** hebt opgeslagen op de lokale computer. Selecteer het bestand **EnvironmentalSensorInline. capabilitymodel. json** en selecteer vervolgens **openen**. Het model voor de omgevings sensor bevat de interfaces voor omgevings sensors en **apparaatgegevens** :
 
     ![Functionaliteits model voor omgevings sensor apparaten](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ Nadat u **Standaard weergaven genereren**hebt geselecteerd, worden ze automatisc
 
 Met een dash board van een apparaat kan een operator een apparaat visualiseren met behulp van grafieken en metrische gegevens. Als systeembouwer kunt u bepalen welke informatie in een apparaatdashboard wordt weergegeven. U kunt meerdere Dash boards voor apparaten definiëren. Als u een dash board wilt maken om de telemetrie van de omgevings sensor te visualiseren, selecteert u **weer gaven** en vervolgens **het apparaat visualiseren**:
 
-1. Alle apparaateigenschappen, eigenschappen van de Cloud, telemetrie en statische opties worden weer gegeven in het deel venster aan de rechter kant. U kunt deze items slepen en neerzetten in de weer gave. Sleep een eigenschap naar de weer gave. U kunt de tegel configureren met het tandwiel pictogram.
+1. Alle eigenschappen van het apparaat, eigenschappen van de Cloud, telemetrie en statische opties worden weer gegeven onder **Eigenschappen**. U kunt deze items slepen en neerzetten in de weer gave. Sleep de eigenschap **helderheids niveau** naar de weer gave. U kunt de tegel configureren met het tandwiel pictogram.
 
-1. Als u een grafiek wilt toevoegen waarin telemetrie wordt getekend, selecteert u **vochtigheid** en **Tempe ratuur**en selecteert u vervolgens **combi neren**. Als u deze grafiek in een andere indeling, zoals een cirkel diagram of staaf diagram, wilt weer geven, selecteert u de knop **visualisatie wijzigen** boven aan de tegel.
+1. Als u een grafiek wilt toevoegen waarin telemetrie wordt getekend, selecteert u **vochtigheid** en **Tempe ratuur**en selecteert u vervolgens **combi neren**. Als u dit diagram wilt weer geven in een andere indeling, zoals een cirkel diagram of staaf diagram, selecteert u de knop **visualisatie wijzigen** boven aan de tegel.
 
 1. Selecteer **Opslaan** om uw weer gave op te slaan:
 
@@ -161,7 +161,7 @@ Met een formulier van een apparaat kan een operator Beschrijf bare apparaateigen
 
 Een formulier maken voor het weer geven en bewerken van eigenschappen van de omgevings sensor:
 
-1. Selecteer de tegel **apparaat en Cloud gegevens bewerken** .
+1. Navigeer naar **weer gaven** in de sjabloon voor de **omgevings sensor** . Selecteer de tegel **apparaat en Cloud gegevens bewerken** om een nieuwe weer gave toe te voegen.
 
 1. Voer de naam van de **omgevings sensor**van het formulier in.
 
@@ -169,10 +169,9 @@ Een formulier maken voor het weer geven en bewerken van eigenschappen van de omg
 
 1. Selecteer het **helderheids niveau** en de apparaateigenschappen. Selecteer vervolgens **sectie toevoegen**. Bewerk de titel van de sectie in de **sensor eigenschappen**. Selecteer **Toepassen**.
 
-1. Selecteer het **resterende accu niveau**, het model van het **apparaat**, de **firmware versie**, de **fabrikant**en het **serie nummer** van de apparaat-eigenschappen. Selecteer vervolgens **sectie toevoegen**. Bewerk de titel van de sectie in eigenschappen van het **apparaat**. Selecteer **Toepassen**.
+1. Selecteer het **apparaat model**, de **Software versie**, de **fabrikant**en de apparaateigenschappen van de **Processor fabrikant** . Selecteer vervolgens **sectie toevoegen**. Bewerk de titel van de sectie in eigenschappen van het **apparaat**. Selecteer **Toepassen**.
 
 1. Selecteer **Opslaan** om de weer gave op te slaan.
-
 
 ## <a name="publish-device-template"></a>Device-sjabloon publiceren
 

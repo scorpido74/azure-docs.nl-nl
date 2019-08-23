@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7f90c5ecb3c53792ca819eeba98b5f21f548473
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 973b097224b639a70d0904f1f82f2d95e3786d1f
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987488"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969574"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Azure Analysis Services
 
@@ -66,7 +66,7 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
 
  ADOMD.NET is een beheerde gegevens-client bibliotheek die wordt gebruikt voor het opvragen van Analysis Services gegevens. Het wordt geïnstalleerd en gebruikt door hulpprogram ma's en client toepassingen. 
   
- Wanneer u verbinding maakt met een Data Base, zijn de connection string eigenschappen voor de drie bibliotheken vergelijkbaar. Bijna alle connection string die u definieert voor ADOMD.NET met behulp van [micro soft. AnalysisServices. AdomdClient. AdomdConnection. Connections Tring](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) , werkt ook voor AMO en de ANALYSIS Services OLE DB-provider (MSOLAP). Zie [eigenschappen &#40;van verbindings reeks Analysis Services&#41;](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-servicess)voor meer informatie.  
+ Wanneer u verbinding maakt met een Data Base, zijn de connection string eigenschappen voor de drie bibliotheken vergelijkbaar. Bijna alle connection string die u definieert voor ADOMD.NET met behulp van [micro soft. AnalysisServices. AdomdClient. AdomdConnection. Connections Tring](/dotnet/api/microsoft.analysisservices.adomdclient.adomdconnection.connectionstring#Microsoft_AnalysisServices_AdomdClient_AdomdConnection_ConnectionString) , werkt ook voor AMO en de ANALYSIS Services OLE DB-provider (MSOLAP). Zie [eigenschappen &#40;van verbindings reeks Analysis Services&#41;](https://docs.microsoft.com/analysis-services/instances/connection-string-properties-analysis-services)voor meer informatie.  
 
   
 ##  <a name="bkmk_LibUpdate"></a>De versie van de client bibliotheek bepalen   

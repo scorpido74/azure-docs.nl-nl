@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3946690b24ec4123df1bb19deb05143189fd5aa5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596040"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898141"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelfstudie: Status controle gebruiken in azure Deployment Manager (open bare preview)
 
@@ -90,7 +90,7 @@ Controleren en testen van de Azure-functie:
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Vervang `{healthStatus}` in de URL door de status code. In deze zelf studie gebruikt u een **slechte status** om het scenario met een slechte status te testen. u kunt het scenario in **orde of** **waarschuwing** gebruiken om het probleem in orde te testen. Maak twee Url's, een met de status slecht en de andere met de status in orde. Voor voor beelden:
+    Vervang `{healthStatus}` in de URL door de status code. In deze zelf studie gebruikt u een **slechte status** om het scenario met een slechte status te testen. u kunt het scenario in orde of **waarschuwing** gebruiken om het probleem in orde te testen. Maak twee Url's, een met de status slecht en de andere met de status in orde. Voor voor beelden:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
@@ -187,7 +187,7 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
     ],
     ```
 
-1. Werk **stepGroups** bij met de status controle stap. De **healthCheckStep** wordt aangeroepen in **postDeploymentSteps** van **stepGroup2**. **stepGroup3** en **stepGroup4** worden alleen geïmplementeerd als de status in orde is *of* een *waarschuwing*is.
+1. Werk **stepGroups** bij met de status controle stap. De **healthCheckStep** wordt aangeroepen in **postDeploymentSteps** van **stepGroup2**. **stepGroup3** en **stepGroup4** worden alleen geïmplementeerd als de status in orde is of een *waarschuwing*is.
 
     ```json
     "stepGroups": [
@@ -235,8 +235,8 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
 
 Om de zelf studie te vereenvoudigen, worden de topologie sjabloon en artefacten gedeeld op de volgende locaties, zodat u niet uw eigen kopie hoeft voor te bereiden. Als u uw eigen wilt gebruiken, volgt u de instructies in [de zelf studie: Gebruik Azure Deployment Manager met Resource Manager-](./deployment-manager-tutorial.md)sjablonen.
 
-* Topologie sjabloon: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
-* Opslag voor artefacten: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Topologie sjabloon:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
+* Opslag voor artefacten:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
 
 Als u de topologie wilt implementeren, selecteert u **proberen** om de Cloud shell te openen en plakt u het Power shell-script.
 
@@ -265,8 +265,8 @@ Controleer of de servicetopologie en de onderstreepte resources zijn gemaakt met
 
 Om de zelf studie te vereenvoudigen, wordt de gereviseerde implementatie sjabloon gedeeld op de volgende locaties, zodat u niet uw eigen kopie hoeft voor te bereiden. Als u uw eigen wilt gebruiken, volgt u de instructies in [de zelf studie: Gebruik Azure Deployment Manager met Resource Manager-](./deployment-manager-tutorial.md)sjablonen.
 
-* Topologie sjabloon: \ https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
-* Opslag voor artefacten: \ https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
+* Topologie sjabloon:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
+* Opslag voor artefacten:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
 
 Gebruik de status van de slechte URL die u hebt gemaakt in [een Health Check-service Simulator maken](#create-a-health-check-service-simulator). Zie [de door de gebruiker toegewezen beheerde identiteit maken](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity)voor **managedIdentityID**.
 

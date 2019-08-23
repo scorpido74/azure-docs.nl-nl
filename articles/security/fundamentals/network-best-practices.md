@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bc4e8e02c5b44c63ee531a295f2b59e91c056bd
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934711"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900469"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Aanbevolen procedures voor Azure voor netwerk beveiliging
 In dit artikel wordt een verzameling van aanbevolen procedures voor Azure beschreven om uw netwerk beveiliging te verbeteren. Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure-netwerken en de ervaringen van klanten, zoals uzelf.
@@ -114,7 +114,7 @@ Azure-netwerk beveiligings apparaten kunnen betere beveiliging bieden dan bij we
 Ga naar [Azure Marketplace](https://azure.microsoft.com/marketplace/) en zoek naar ' Beveiliging ' en ' netwerk beveiliging ' om beschik bare Azure Virtual Network-beveiligings apparaten te vinden.
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Perimeter netwerken voor beveiligings zones implementeren
-Een [perimeter netwerk](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (ook wel DMZ genoemd) is een fysiek of logisch netwerk segment dat een extra beveiligingslaag vormt tussen uw assets en Internet. Gespecialiseerde apparaten voor netwerk toegangs beheer aan de rand van een perimeter netwerk bieden alleen gewenst verkeer in uw virtuele netwerk.
+Een [perimeter netwerk](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (ook wel DMZ genoemd) is een fysiek of logisch netwerk segment dat een extra beveiligingslaag vormt tussen uw assets en Internet. Gespecialiseerde apparaten voor netwerk toegangs beheer aan de rand van een perimeter netwerk bieden alleen gewenst verkeer in uw virtuele netwerk.
 
 Perimeter netwerken zijn handig omdat u zich kunt richten op het beheer, de bewaking, logboek registratie en rapportage van uw netwerk toegang op de apparaten aan de rand van uw virtuele Azure-netwerk. Een perimeter netwerk is de locatie waar u normaal gesp roken DDoS-preventie (Distributed Denial of service), inbreuk detectie/indringings systemen (ID'S/IP'S), firewall regels en-beleids regels, webfiltering, antimalware van het netwerk, en meer inschakelt. De netwerk beveiligings apparaten bevinden zich tussen internet en uw virtuele Azure-netwerk en hebben een interface op beide netwerken.
 

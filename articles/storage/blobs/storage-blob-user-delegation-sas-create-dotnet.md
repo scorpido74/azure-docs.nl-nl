@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990687"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900429"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Een gebruikers delegering SA'S maken voor een container of BLOB met .NET (preview)
 
@@ -44,7 +44,7 @@ Als u wilt verifiëren met Azure AD-referenties via de client bibliotheek van Az
 
 Roep de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) om een service-principal te maken met Azure CLI en een RBAC-rol toe te wijzen. Geef een Azure Storage rol voor gegevens toegang op om toe te wijzen aan de nieuwe service-principal. De rol moet de actie **micro soft. Storage/Storage accounts/blobServices/generateUserDelegationKey** bevatten. Zie [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md)voor meer informatie over de ingebouwde rollen voor Azure Storage.
 
-Daarnaast kunt u het bereik voor de roltoewijzing opgeven. De Service-Principal maakt de gebruikers delegerings sleutel. Dit is een bewerking die wordt uitgevoerd op het niveau van het opslag account, zodat de roltoewijzing moet worden ingedeeld op het niveau van het opslag account, de resource groep of het abonnement. Voor meer informatie over RBAC-machtigingen voor het maken van een SA'S voor het delegeren van gebruikers, zie de sectie **machtigingen toewijzen met RBAC** in [een gebruikers delegatie maken (rest API)](/rest/api/storageservices/create-a-user-delegation-sas).
+Daarnaast kunt u het bereik voor de roltoewijzing opgeven. De Service-Principal maakt de gebruikers delegerings sleutel. Dit is een bewerking die wordt uitgevoerd op het niveau van het opslag account, zodat de roltoewijzing moet worden ingedeeld op het niveau van het opslag account, de resource groep of het abonnement. Voor meer informatie over RBAC-machtigingen voor het maken van een SA'S voor het delegeren van gebruikers, zie de sectie **machtigingen toewijzen met RBAC** in [een gebruikers delegatie maken (rest API)](/rest/api/storageservices/create-user-delegation-sas).
 
 Als u onvoldoende machtigingen hebt om een rol toe te wijzen aan de Service-Principal, moet u mogelijk de eigenaar van het account of de beheerder vragen de roltoewijzing uit te voeren.
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>Zie ook
 
 - [Sleutel bewerking voor gebruikers overdracht ophalen](/rest/api/storageservices/get-user-delegation-key)
-- [Een SAS (REST API) voor gebruikers overdracht maken](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Een SAS (REST API) voor gebruikers overdracht maken](/rest/api/storageservices/create-user-delegation-sas)

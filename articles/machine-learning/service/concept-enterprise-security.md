@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946393"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897889"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Enter prise Security voor Azure Machine Learning-service
 
@@ -31,7 +31,7 @@ Multi factor Authentication wordt ondersteund als Azure Active Directory (Azure 
 * Client presenteert token om alle Azure Machine Learning Services te Azure Resource Manager &
 * Azure Machine Learning-service levert een Azure Machine Learning-token aan de gebruiker die wordt berekend. Bijvoorbeeld Machine Learning Compute. Dit token wordt gebruikt door de gebruikers Compute om terug te bellen naar Azure Machine Learning service (limieten voor de werk ruimte) nadat de uitvoering is voltooid.
 
-![Scherm afbeelding die laat zien hoe verificatie werkt in Azure Machine Learning service](./media/enterprise-readiness/authentication.png)
+[![Scherm afbeelding die laat zien hoe verificatie werkt in Azure Machine Learning service](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Verificatie voor de implementatie van de webservice
 
@@ -185,7 +185,7 @@ Elke werk ruimte heeft een aan het systeem toegewezen beheerde identiteit (met d
 
 Azure Monitor metrieken kunnen worden gebruikt om metrische gegevens weer te geven en te bewaken voor uw Azure Machine Learning service-werk ruimte. Selecteer in de [Azure Portal](https://portal.azure.com)uw werk ruimte en gebruik vervolgens de koppeling __metrische gegevens__ .
 
-![Scherm opname van voor beelden van metrische gegevens voor een werk ruimte](./media/enterprise-readiness/workspace-metrics.png)
+[![Scherm opname van voor beelden van metrische gegevens voor een werk ruimte](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 Metrische gegevens bevatten informatie over uitvoeringen, implementaties en registraties.
 
@@ -197,7 +197,7 @@ U ziet het activiteiten logboek onder de werk ruimte om verschillende bewerkinge
 
 De volgende scherm afbeelding toont het activiteiten logboek voor een werk ruimte:
 
-![Scherm opname met activiteiten logboek onder een werk ruimte](./media/enterprise-readiness/workspace-activity-log.png)
+[![Scherm opname met activiteiten logboek onder een werk ruimte](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Details van Score aanvragen worden opgeslagen in Application Insight, dat wordt gemaakt in het abonnement van de gebruiker tijdens het maken van de werk ruimte. Geregistreerde gegevens zijn onder andere velden als HTTPMethod, User agent, ComputeType, RequestUrl, status code, aanvraag code, duur, enzovoort.
 
@@ -220,14 +220,14 @@ Gebruiker meldt zich aan bij Azure AD vanuit een van de ondersteunde Azure Machi
 
 Andere reken processen die zijn gekoppeld aan een werk ruimte (Azure Kubernetes service, VM enzovoort) kunnen ook worden ingericht door klanten als dat nodig is.
 
-![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/create-workspace.png)
+[![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Bron code opslaan (trainings scripts)
 
 In het volgende diagram ziet u de werk stroom voor code momentopnamen.
 Gekoppeld aan een Azure Machine Learning service werkruimte zijn mappen (experimenten), die de bron code (trainings scripts) bevatten.  Deze scripts worden opgeslagen op de lokale computer van de klant en in de Cloud (in de Azure-Blob Storage onder het abonnement van de klant). De code momentopnamen worden gebruikt voor uitvoering of inspectie voor historische controle.
 
-![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/code-snapshot.png)
+[![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Training
 
@@ -253,7 +253,7 @@ In het volgende diagram ziet u de werk stroom training.
 
 Deze stap wordt weer gegeven in de stroom waar de cursus Compute de *metrische gegevens* van de uitvoering naar de Azure machine learning-service schrijft, waar deze wordt opgeslagen in de Cosmos db. Clients kunnen Azure Machine Learning-service aanroepen die op hun beurt de metrische gegevens van de Cosmos DB ophaalt en weer terugstuurt naar de client.
 
-![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/training-and-metrics.png)
+[![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Webservices maken
 
@@ -267,7 +267,7 @@ Zie de details hieronder:
 * Details van Score aanvragen worden opgeslagen in Application Insight, dat zich in het abonnement van de gebruiker bevindt
 * Telemetrie wordt ook gepusht naar micro soft/Azure-abonnement
 
-![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/inferencing.png)
+[![Scherm opname van werk stroom werk ruimte maken](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 015318b1695f76121662b82e94b37de1ddb63b1b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952941"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970446"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Resources in uw Data Center of Cloud automatiseren met behulp van Hybrid Runbook Worker
 
@@ -47,6 +47,7 @@ Als u een Windows-Hybrid Runbook Worker wilt installeren en configureren, kunt u
 Bekijk de [informatie voor het plannen van uw netwerk](#network-planning) voordat u begint met de implementatie van een Hybrid Runbook Worker. Nadat u de werk nemer hebt geïmplementeerd, raadpleegt u [Runbooks uitvoeren op een Hybrid Runbook worker](automation-hrw-run-runbooks.md) voor meer informatie over het configureren van runbooks voor het automatiseren van processen in uw on-premises Data Center of een andere cloud omgeving.
 
 De computer kan worden toegevoegd aan een Hybrid Runbook Worker groep in uw Automation-account ter ondersteuning van Automation-runbooks zolang u hetzelfde account gebruikt voor zowel de oplossing als het lidmaatschap van de Hybrid Runbook Worker-groep. Deze functionaliteit is toegevoegd aan versie 7.2.12024.0 van de Hybrid Runbook Worker.
+
 ## <a name="remove-a-hybrid-runbook-worker"></a>Een Hybrid Runbook Worker verwijderen
 
 U kunt een of meer Hybrid Runbook Workers verwijderen uit een groep of u kunt de groep verwijderen, afhankelijk van uw vereisten. Als u een Hybrid Runbook Worker van een on-premises computer wilt verwijderen, gebruikt u de volgende stappen:
@@ -106,7 +107,7 @@ Als u een proxy server gebruikt voor communicatie tussen de agent en de Azure Au
 
 De volgende poort en Url's zijn vereist voor de Hybrid Runbook Worker rol om te communiceren met Automation:
 
-* Poort: Alleen TCP 443 is vereist voor uitgaande internet toegang.
+* Importeer Alleen TCP 443 is vereist voor uitgaande internet toegang.
 * Globale URL: *. azure-automation.net
 * Globale URL van US Gov-Virginia: *. azure-automation.us
 * Agent service: https://\<workspaceId\>. agentsvc.Azure-Automation.net

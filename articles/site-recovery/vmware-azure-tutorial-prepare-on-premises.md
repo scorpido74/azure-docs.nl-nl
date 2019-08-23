@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7a61edc01a87be8996b4d7dd5093f9d3554e6585
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 315d4daf7155bc33235507f39b5cce8869db5aa6
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417764"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972161"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>On-premises VMware-servers voorbereiden op herstel naar Azure na een noodgeval
 
-In dit artikel wordt beschreven hoe u on-premises VMware-servers voorbereiden voor herstel na noodgevallen naar Azure met de [Azure Site Recovery](site-recovery-overview.md) services. 
+In dit artikel wordt beschreven hoe u on-premises VMware-servers voorbereidt op herstel na nood geval met behulp van de [Azure site Recovery](site-recovery-overview.md) Services. 
 
 Dit is de tweede zelfstudie in een reeks waarin u ziet hoe u herstel na noodgeval kunt instellen voor Azure voor on-premises VMware-VM’s. In de eerste zelfstudie hebben we de [Azure-onderdelen ingesteld](tutorial-prepare-azure.md) die nodig zijn voor VMware-noodherstel.
 
@@ -26,17 +26,17 @@ Dit is de tweede zelfstudie in een reeks waarin u ziet hoe u herstel na noodgeva
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Een account voorbereiden op de vCenter-server of vSphere ESXi-host voor het automatiseren van VM-detectie.
-> * Een account voorbereiden voor automatische installatie van de Mobility-service op virtuele VMware-machines.
-> * Controleer de VMware-server en VM-vereisten en ondersteuning.
-> * Verbinding maken met Azure-VM's na failover voorbereiden.
+> * Bereid een account voor op de vCenter-Server of vSphere ESXi-host om de VM-detectie te automatiseren.
+> * Een account voorbereiden voor automatische installatie van de Mobility-service op VMware-Vm's.
+> * Bekijk de vereisten en ondersteuning voor VMware-servers en-VM'S.
+> * Voorbereiden om verbinding te maken met virtuele Azure-machines na een failover.
 
 > [!NOTE]
-> Zelfstudies ziet u het meest eenvoudige implementatie-pad voor een scenario. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Lees het artikel in de sectie How To van de Site Recovery inhoudsopgave voor gedetailleerde instructies.
+> Zelf studies laten u de eenvoudigste implementatie traject voor een scenario zien. Waar mogelijk wordt gebruikgemaakt van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Raadpleeg het artikel in het gedeelte How to van de inhouds opgave van Site Recovery voor gedetailleerde instructies.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Zorg ervoor dat u hebt voorbereid Azure zoals wordt beschreven in de [eerste zelfstudie in deze reeks](tutorial-prepare-azure.md).
+Zorg ervoor dat u Azure hebt voor bereid zoals beschreven in de [eerste zelf studie in deze serie](tutorial-prepare-azure.md).
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Een account voorbereiden voor automatische detectie
 
@@ -82,7 +82,7 @@ Controleer of de VMware-servers en VM's aan de vereisten voldoen.
 3. Controleer de ondersteuning voor het on-premises [netwerk](vmware-physical-azure-support-matrix.md#network) en de [opslag](vmware-physical-azure-support-matrix.md#storage). 
 4. Controleer wat er na failover wordt ondersteund voor [Azure-netwerken](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [-opslag](vmware-physical-azure-support-matrix.md#azure-storage) en [-rekenkracht](vmware-physical-azure-support-matrix.md#azure-compute).
 5. De on-premises VM's die u voor Azure repliceert, moeten overeenstemmen met [Azure VM-vereisten](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-6. Op een virtuele Linux-machine moet de naam van het apparaat of koppelpunt uniek zijn. Zorg ervoor dat twee apparaten/koppelpunten nooit dezelfde naam hebben. Houd er rekening mee dat de naam zijn niet hoofdlettergevoelig. Zo is het bijvoorbeeld niet toegestaan om twee apparaten voor dezelfde VM _device1_ en _Device1_ te noemen.
+6. Op een virtuele Linux-machine moet de naam van het apparaat of koppelpunt uniek zijn. Zorg ervoor dat twee apparaten/koppelpunten nooit dezelfde naam hebben. Houd er rekening mee dat de naam niet hoofdletter gevoelig is. Zo is het bijvoorbeeld niet toegestaan om twee apparaten voor dezelfde VM _device1_ en _Device1_ te noemen.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Voorbereiden op het verbinden met virtuele Azure-machines na een failover
@@ -96,7 +96,7 @@ Als u na een failover verbinding wilt maken met Windows-VM’s met behulp van RD
     - Schakel vóór een failover RDP in op de on-premises VM.
     - RDP moet toegestaan zijn in de **Windows Firewall** -> **Toegestane apps en onderdelen** voor **Domein en Privé**-netwerken.
     - Controleer of het SAN-beleid van het besturingssysteem is ingesteld op **OnlineAll**. [Meer informatie](https://support.microsoft.com/kb/3031135).
-- Er mogen geen Windows-updates in behandeling zijn op de VM wanneer u een failover activeert. Als er, kunt u zich niet aanmelden bij de virtuele machine totdat de update is voltooid.
+- Er mogen geen Windows-updates in behandeling zijn op de VM wanneer u een failover activeert. Als dat het geval is, kunt u zich niet aanmelden bij de virtuele machine totdat de update is voltooid.
 - Controleer na een failover **Diagnostische gegevens over opstarten** op de Windows Azure VM om een schermopname van de VM weer te geven. Als u geen verbinding kunt maken, controleer dan of de VM actief is en bekijk deze [tips voor het oplossen van problemen](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Als u na een failover verbinding wilt maken met Linux-VM’s met behulp van SSH, doet u het volgende:
@@ -109,13 +109,13 @@ Als u na een failover verbinding wilt maken met Linux-VM’s met behulp van SSH,
 
 
 ## <a name="failback-requirements"></a>Vereisten voor failback
-Als u van plan een failback uitvoeren naar uw on-premises site bent, er zijn een aantal [vereisten voor failback](vmware-azure-reprotect.md##before-you-begin). U kunt deze nu voorbereiden, maar u hoeft niet te. U kunt voorbereiden wanneer u een failover naar Azure.
+Als u van plan bent om terug te gaan naar uw on-premises site, zijn er een aantal [vereisten voor failback](vmware-azure-reprotect.md##before-you-begin). U kunt deze nu voorbereiden, maar u hoeft dit niet te doen. U kunt voorbereiden nadat u een failover hebt uitgevoerd naar Azure.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Herstel na noodgevallen instellen. Als u meerdere VM's repliceert, plan capaciteit.
+Herstel na nood gevallen instellen. Als u meerdere virtuele machines repliceert, plan capaciteit.
 > [!div class="nextstepaction"]
-> [Herstel na noodgevallen naar Azure instellen voor VMware-VM's](vmware-azure-tutorial.md)
-> [capaciteitsplanning](site-recovery-deployment-planner.md).
+> [Herstel na nood geval instellen op Azure voor VMware-vm's](vmware-azure-tutorial.md)
+> [capaciteits planning uitvoeren](site-recovery-deployment-planner.md).

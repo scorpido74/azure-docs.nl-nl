@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 288a05fc09e0c59a01a8d4c9940c0d51cabdd28f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640950"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972335"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-versleuteling configureren voor de Privécloud van CloudSimple
 
 U kunt de functie voor het versleutelen van vSAN-software configureren zodat uw persoonlijke cloud van CloudSimple kan worden gebruikt in combi natie met een sleutel beheer server die wordt uitgevoerd in uw virtuele Azure-netwerk.
 
-VMware vereist een extern KMIP 1,1-compatibel KMS-hulp programma (Key Management Server) van derden bij het gebruik van vSAN-versleuteling. U kunt gebruikmaken van alle ondersteunde KMS die door VMware is gecertificeerd en die beschikbaar is voor Azure. 
+VMware vereist een extern KMIP 1,1-compatibel KMS-hulp programma (Key Management Server) van derden bij het gebruik van vSAN-versleuteling. U kunt gebruikmaken van alle ondersteunde KMS die door VMware is gecertificeerd en die beschikbaar is voor Azure.
 
 In deze hand leiding wordt beschreven hoe u HyTrust-besturings element KMS kunt gebruiken in een virtueel Azure-netwerk. Een soort gelijke benadering kan worden gebruikt voor elke andere certificerings oplossing van een derde van derden voor vSAN.
 

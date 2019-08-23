@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: e8241069a8671919b70dfbe44fe28c99a05358c5
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b06fe477f551977b1357f3b1b185cb340a948052
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489735"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905498"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Azure Monitor voor VM's inschakelen (preview) voor een hybride omgeving
 
@@ -42,6 +42,9 @@ De stappen om deze taak te volt ooien, zijn als volgt samenvatten:
 3. Schakel het verzamelen van prestatiemeteritems.
 
 4. Implementeren met Azure Monitor voor virtuele machines.
+
+>[!NOTE]
+>De informatie die in dit artikel wordt beschreven voor het implementeren van de afhankelijkheids agent, is ook van toepassing op de [servicetoewijzing oplossing](service-map.md).  
 
 ## <a name="install-the-dependency-agent-on-windows"></a>De afhankelijkheidsagent installeren op Windows
 

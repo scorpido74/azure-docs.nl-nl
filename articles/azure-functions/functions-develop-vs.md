@@ -1,21 +1,19 @@
 ---
 title: Azure Functions ontwikkelen met behulp van Visual Studio | Microsoft Docs
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van Azure Functions-Hulpprogram Ma's voor Visual Studio 2019.
-services: functions
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593249"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905686"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions ontwikkelen met Visual Studio  
 
@@ -212,6 +210,9 @@ Hiermee wordt het dialoog venster **Toepassings instellingen** weer gegeven voor
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
 **Local** vertegenwoordigt een instellings waarde in het bestand local. settings. json, en **Remote** is de huidige instelling in de functie-app in Azure.  Kies **instelling toevoegen** om een nieuwe app-instelling te maken. Gebruik de **waarde invoegen uit lokale** koppeling om een instellings waarde naar het **externe** veld te kopiëren. Wijzigingen in behandeling worden naar het lokale instellingen bestand en de functie-app geschreven wanneer u **OK**selecteert.
+
+> [!NOTE]
+> Standaard is het bestand local. settings. json niet ingecheckt in broncode beheer. Dit betekent dat wanneer u een project van een lokale functie kloont van broncode beheer, het project geen lokaal. settings. JSON-bestand heeft. In dit geval moet u het bestand local. settings. json hand matig maken in de hoofdmap van het project, zodat het dialoog venster **Toepassings instellingen** werkt zoals verwacht. 
 
 U kunt ook toepassings instellingen op een van de volgende manieren beheren:
 

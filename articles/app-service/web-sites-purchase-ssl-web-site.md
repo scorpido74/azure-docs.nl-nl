@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8f55e2eb3ac7fe2e869b6b1061f6d45d11894ccf
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019140"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905942"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Een SSL-certificaat voor Azure App Service kopen en configureren
 
@@ -139,7 +139,7 @@ Zodra de bewerking voor opnieuw genereren is voltooid, klikt u op **synchroniser
 
 ## <a name="renew-certificate"></a>Certificaat vernieuwen
 
-Als u de automatische verlenging van uw certificaat op elk gewenst moment wilt inschakelen, selecteert u het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klikt u vervolgens op **instellingen voor automatisch verlengen** in het linkernavigatievenster.
+Als u de automatische verlenging van uw certificaat op elk gewenst moment wilt inschakelen, selecteert u het certificaat op de pagina [app service certificaten](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) en klikt u vervolgens op **instellingen voor automatisch verlengen** in het linkernavigatievenster. App Service certificaten hebben standaard een geldigheids periode van 1 jaar.
 
 Selecteer **aan** en klik op **Opslaan**. Certificaten kunnen 60 dagen vóór de verval datum automatisch worden vernieuwd als u automatische verlenging hebt ingeschakeld.
 

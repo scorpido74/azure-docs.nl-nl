@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e78dd093c4bbf0cf1bdbd5280ffaa63286e585d4
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 52ccaa17b9994751bb9dfd54848e20aef90146c3
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537138"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905883"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Snelstart: Een serverfirewall configureren - Portal
 
@@ -23,6 +23,7 @@ Deze snelstart helpt u bij het configureren van een firewall voor uw Azure Analy
 
 - Een Azure Analysis Services-server in uw abonnement. Raadpleeg voor meer informatie [Snelstart: Een server maken - Portal](analysis-services-create-server.md) of [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md)
 - Een of meer IP-adresbereiken voor clientcomputers (indien nodig).
+- Houd er rekening mee dat het importeren van een scenario van Power BI Premium momenteel niet wordt ondersteund.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal 
 
@@ -33,7 +34,7 @@ Deze snelstart helpt u bij het configureren van een firewall voor uw Azure Analy
 1. Klik op de server om de overzichtspagina te openen. 
 2. Klik in **INSTELLINGEN** > **Firewall** > **Firewall inschakelen** op **Aan**.
 3. Klik op **Aan** bij **Toegang toestaan vanuit Power BI** om toegang tot DirectQuery toe te staan vanuit Power BI-service.  
-4. (Optioneel) Geef een of meer IP-adresbereiken op. Typ een naam, begin- en eind-IP-adressen voor elk bereik. Naam van de firewallregel moet beperkt tot 128 tekens en mag alleen hoofdletters, kleine letters, cijfers, onderstrepingstekens en afbreekstreepjes bevatten. Alleen uit spaties bestaan en andere speciale tekens zijn niet toegestaan.
+4. (Optioneel) Geef een of meer IP-adresbereiken op. Typ een naam, begin- en eind-IP-adressen voor elk bereik. De naam van de firewall regel mag Maxi maal 128 tekens lang zijn en mag alleen bestaan uit hoofd letters, kleine letters, cijfers, onderstrepings tekens en afbreek streepjes. Spaties en andere speciale tekens zijn niet toegestaan.
 5. Klik op **Opslaan**.
 
      ![Firewallinstellingen](./media/analysis-services-qs-firewall/aas-qs-firewall.png)

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 22a27ba19670344f351205b6a4865bf85daf0bab
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976852"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900263"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabel .NET Standard API: Down load en release-opmerkingen
 > [!div class="op_single_selector"]
@@ -34,6 +34,9 @@ ms.locfileid: "68976852"
 |**Probleem melden**|[Probleem melden](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
+* Opgeloste fouten
 
 ### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
 * Opgeloste fouten
@@ -76,9 +79,10 @@ In deze platformoverschrijdende .NET Standard-bibliotheek [micro soft. Azure. Co
 
 | Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
+| [1.0.5-preview](#1.0.5-preview) |Auguest 20, 2019 |--- |
 | [1.0.4](#1.0.4) |Auguest 12, 2019 |--- |
 | [1.0.4-preview](#1.0.4-preview) |26 juli 2019 |--- |
-| 1.0.2-voorbeeld |2 mei 2019 |--- |
+| 1.0.2-Preview |2 mei 2019 |--- |
 | [1.0.1](#1.0.1) |19 april 2019 |--- |
 | [1.0.0](#1.0.0) |13 maart 2019 |--- |
 | [0.11.0-preview](#0.11.0-preview) |5 maart 2019 |--- |

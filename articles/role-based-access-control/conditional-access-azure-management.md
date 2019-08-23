@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 3aa24fdfc156c0197d724fd57729f5b11fa908ee
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278144"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899713"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Toegang tot beheer van Azure beheren met voorwaardelijke toegang
 
@@ -40,6 +40,7 @@ Het beleid dat u maakt, is van toepassing op alle Azure Management-eind punten, 
 - Azure PowerShell
 - Beheerders portal voor Visual Studio-abonnementen
 - Azure DevOps
+- Azure Data Factory Portal
 
 Houd er rekening mee dat het beleid van toepassing is op Azure PowerShell, waarmee de Azure Resource Manager-API wordt aangeroepen. Het is niet van toepassing op [Azure AD Power shell](/powershell/azure/active-directory/install-adv2), die Microsoft Graph aanroept.
 

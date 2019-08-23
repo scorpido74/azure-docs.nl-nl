@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68489775"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905722"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing-oplossing gebruiken in azure
-Serviceoverzicht ontdekt automatisch toepassingsonderdelen op Windows- en Linux-systemen en wijst de communicatie tussen services toe. Met Servicetoewijzing kun u uw servers weergeven op de manier waarop ze hun waarde voor u hebben: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
+
+Serviceoverzicht ontdekt automatisch toepassingsonderdelen op Windows- en Linux-systemen en wijst de communicatie tussen services toe. Met Servicetoewijzing kunt u uw servers weergeven op de manier zoals u ze ziet: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
 
 In dit artikel worden de details van het voorbereiden en gebruiken van Servicetoewijzing beschreven. Zie [het overzicht van Azure monitor voor VM's inschakelen](vminsights-enable-overview.md#prerequisites)voor meer informatie over het configureren van de vereisten voor deze oplossing. Als u wilt samenvatten, hebt u het volgende nodig:
 
@@ -407,7 +408,7 @@ Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis
 | `ReportReferenceLink` |Koppelingen naar rapporten die zijn gerelateerd aan een gegeven waarneembaar. |
 | `AdditionalInformation` |Biedt aanvullende informatie, indien van toepassing, over de waargenomen bedreiging. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL records
 
 Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor servers met servicetoewijzing-agents. Deze records hebben de eigenschappen in de volgende tabel:
 
@@ -433,7 +434,7 @@ Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor ser
 | `VirtualMachineName_s` | De naam van de virtuele machine |
 | `BootTime_t` | De opstart tijd |
 
-### <a name="servicemapprocesscl-type-records"></a>Records van het type ServiceMapProcess_CL
+### <a name="servicemapprocess_cl-type-records"></a>Records van het type ServiceMapProcess_CL
 
 Records met een type *ServiceMapProcess_CL* hebben inventaris gegevens voor met TCP verbonden processen op servers met servicetoewijzing agents. Deze records hebben de eigenschappen in de volgende tabel:
 
@@ -554,16 +555,57 @@ Microsoft verzamelt automatisch gebruiks- en prestatiegegevens gegevens via uw g
 
 Zie voor meer informatie over het verzamelen van gegevens en het gebruik, de [privacyverklaring van Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over [Zoek opdrachten](../../azure-monitor/log-query/log-query-overview.md) in Logboeken in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
 
-
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Zie de [sectie probleem oplossing van het servicetoewijzing-document configureren]( service-map-configure.md#troubleshooting).
+Als er geen problemen installeren of uitvoeren van de Service Map, kunt in deze sectie u. Als u uw probleem nog steeds niet kunt oplossen, neem contact op met Microsoft Support.
 
+### <a name="dependency-agent-installation-problems"></a>Problemen met de installatie van de afhankelijkheid agents
+
+#### <a name="installer-prompts-for-a-reboot"></a>Installatieprogramma wordt u gevraagd om een opnieuw opstarten
+Bij de installatie of het verwijderen van de afhankelijkheids agent is *over het algemeen* geen herstart vereist. In sommige zeldzame gevallen vereist Windows Server echter opnieuw worden opgestart om door te gaan met een installatie. Dit gebeurt wanneer een afhankelijkheid, doorgaans de herdistribueerbare micro soft Visual C++ Redistributable-bibliotheek, opnieuw moet worden opgestart vanwege een vergrendeld bestand.
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Bericht ' kan de afhankelijkheids agent niet installeren: Kan Visual Studio runtime-bibliotheken niet installeren (code = [code_number]) ' wordt weer gegeven
+
+De agent voor Microsoft Dependency is gebouwd op de runtime-bibliotheken voor Microsoft Visual Studio. U krijgt een bericht als er een probleem tijdens de installatie van de bibliotheken. 
+
+De runtime-bibliotheek installatieprogramma's maken Logboeken in de map %LOCALAPPDATA%\temp. Het bestand is `dd_vcredist_arch_yyyymmddhhmmss.log`, waarbij *Arch* `x86` of `amd64` / *jjjjmmdduummss* de datum en tijd (24-uurs klok) is wanneer het logboek is gemaakt. Het logboek bevat informatie over het probleem dat wordt geblokkeerd door de installatie.
+
+Het kan handig zijn om eerst de [meest recente runtime-bibliotheken](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) te installeren.
+
+De volgende tabel bevat de codenummers en voorgestelde oplossingen.
+
+| Code | Description | Oplossing |
+|:--|:--|:--|
+| 0x17 | Het installatieprogramma bibliotheek vereist een Windows-update die is niet geïnstalleerd. | Zoek in de meest recente bibliotheek installer-logboekbestand.<br><br>Als een verwijzing naar `Windows8.1-KB2999226-x64.msu` wordt gevolgd door een regel `Error 0x80240017: Failed to execute MSU package,` , hebt u niet de vereiste onderdelen om KB2999226 te installeren. Volg de instructies in de sectie vereisten in [Universal C runtime in het Windows](https://support.microsoft.com/kb/2999226) -artikel. Mogelijk moet u Windows Update uitvoeren en meerdere keren opnieuw om de vereiste onderdelen installeren.<br><br>Voer het installatieprogramma van Microsoft Dependency agent opnieuw uit. |
+
+### <a name="post-installation-issues"></a>Na de installatie problemen
+
+#### <a name="server-doesnt-appear-in-service-map"></a>Server niet wordt weergegeven in het Serviceoverzicht
+
+Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer niet ziet in de Servicetoewijzing oplossing:
+* Is de agent voor afhankelijkheden zijn geïnstalleerd? U kunt dit controleren door te controleren of de service is geïnstalleerd en uitgevoerd.<br><br>
+**Windows**: Zoek de service met de naam **micro soft dependency agent**.
+**Linux**: Zoek naar het actieve proces **micro soft-dependency-agent**.
+
+* Bevindt u zich op de [laag log Analytics gratis](https://azure.microsoft.com/pricing/details/monitor/)? Met het gratis abonnement kunnen Maxi maal vijf unieke Servicetoewijzing machines worden gemaakt. Alle volgende computers worden niet weer gegeven in Servicetoewijzing, zelfs niet als de voor gaande vijf geen gegevens meer verzenden.
+
+* Verzendt uw server logboek-en prestatie gegevens naar Azure Monitor logboeken? Ga naar Azure Monitor\Logs en voer de volgende query uit voor uw computer: 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+Krijgt u een aantal gebeurtenissen in de resultaten? Zijn de gegevens recente? Als dit het geval is, wordt uw Log Analytics-agent correct uitgevoerd en communiceert deze met de werk ruimte. Als dat niet het geval is, controleert u de agent op uw computer: [Log Analytics agent voor Windows probleem oplossing](../platform/agent-windows-troubleshoot.md) of [log Analytics agent voor Linux-probleem oplossing](../platform/agent-linux-troubleshoot.md).
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server wordt weergegeven in het Serviceoverzicht, maar er zijn geen processen is
+
+Als uw machine in Servicetoewijzing wordt weer gegeven, maar er geen proces-of verbindings gegevens zijn, geeft dat aan dat de afhankelijkheids agent is geïnstalleerd en wordt uitgevoerd, maar het kernel-stuur programma is niet geladen. 
+
+Controleer de `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) of `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). De laatste regels van het bestand aangeven waarom de kernel niet laden. De kernel kan bijvoorbeeld niet worden ondersteund op Linux als u de kernel wordt bijgewerkt.
 
 ## <a name="feedback"></a>Feedback
 

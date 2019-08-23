@@ -1,7 +1,7 @@
 ---
-title: Modellen implementeren met behulp van een aangepaste docker-installatie kopie
+title: Modellen implementeren met een aangepaste docker-basis installatie kopie
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van een aangepaste docker-installatie kopie bij het implementeren van uw Azure Machine Learning-service modellen. Bij het implementeren van een getraind model wordt een docker-installatie kopie gemaakt voor het hosten van de installatie kopie, webserver en andere onderdelen die nodig zijn om de service uit te voeren. Hoewel Azure Machine Learning service een standaard installatie kopie voor u biedt, kunt u ook uw eigen installatie kopie gebruiken.
+description: Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van uw Azure Machine Learning-service modellen. Bij het implementeren van een getraind model wordt een basis container installatie kopie geïmplementeerd om uw model uit te voeren. Hoewel Azure Machine Learning service een standaard basis installatie kopie voor u biedt, kunt u ook uw eigen basis installatie kopie gebruiken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/11/2019
-ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/22/2019
+ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990534"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971522"
 ---
-# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Een model implementeren met behulp van een aangepaste docker-installatie kopie
+# <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 
-Meer informatie over het gebruik van een aangepaste docker-installatie kopie wanneer u getrainde modellen met de Azure Machine Learning-service implementeert.
+Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van getrainde modellen met de Azure Machine Learning-service.
 
-Wanneer u een getraind model implementeert voor een webservice of IoT Edge apparaat, wordt een docker-installatie kopie gemaakt. Deze installatie kopie bevat het model, de Conda-omgeving en de activa die nodig zijn voor het gebruik van het model. Het bevat ook een webserver voor het verwerken van binnenkomende aanvragen wanneer deze zijn geïmplementeerd als een webservice en onderdelen die nodig zijn om te werken met Azure IoT Hub.
+Wanneer u een getraind model implementeert voor een webservice of IoT Edge apparaat, wordt er een pakket gemaakt met een webserver voor het verwerken van binnenkomende aanvragen.
 
-Azure Machine Learning-service biedt een standaard-docker-installatie kopie, zodat u zich geen zorgen hoeft te maken dat u er een maakt. U kunt ook een aangepaste installatie kopie gebruiken die u als _basis installatie kopie_maakt. Een basis installatie kopie wordt gebruikt als uitgangs punt wanneer er een installatie kopie voor een implementatie wordt gemaakt. Het biedt het onderliggende besturings systeem en onderdelen. Het implementatie proces voegt vervolgens extra onderdelen, zoals uw model, Conda-omgeving en andere assets, toe aan de installatie kopie voordat u deze implementeert.
+Azure Machine Learning-service biedt een standaard installatie kopie van docker, zodat u zich geen zorgen hoeft te maken dat u er een maakt. U kunt ook een aangepaste basis installatie kopie gebruiken die u als _basis installatie kopie_maakt. 
 
-Normaal gesp roken maakt u een aangepaste installatie kopie wanneer u de versie van het onderdeel wilt beheren of tijdens de implementatie tijd wilt besparen. U kunt bijvoorbeeld standaardiseren op een specifieke versie van python, Conda of een ander onderdeel. Het is ook mogelijk dat u software wilt installeren die vereist is voor uw model, waarbij het installatie proces veel tijd in beslag neemt. Het installeren van de software bij het maken van de basis installatie kopie betekent dat u deze niet voor elke implementatie hoeft te installeren.
+Een basis installatie kopie wordt gebruikt als uitgangs punt wanneer er een installatie kopie voor een implementatie wordt gemaakt. Het biedt het onderliggende besturings systeem en onderdelen. Het implementatie proces voegt vervolgens extra onderdelen, zoals uw model, Conda-omgeving en andere assets, toe aan de installatie kopie voordat u deze implementeert.
+
+Normaal gesp roken maakt u een aangepaste basis installatie kopie wanneer u docker wilt gebruiken voor het beheren van uw afhankelijkheden, het behoud van de controle over onderdeel versies en het besparen van tijd tijdens de implementatie. U kunt bijvoorbeeld standaardiseren op een specifieke versie van python, Conda of een ander onderdeel. Het is ook mogelijk dat u software wilt installeren die vereist is voor uw model, waarbij het installatie proces veel tijd in beslag neemt. Het installeren van de software bij het maken van de basis installatie kopie betekent dat u deze niet voor elke implementatie hoeft te installeren.
 
 > [!IMPORTANT]
 > Wanneer u een model implementeert, kunt u de kern onderdelen, zoals de webserver of de IoT Edge onderdelen, niet overschrijven. Deze onderdelen bieden een bekende werk omgeving die wordt getest en ondersteund door micro soft.
@@ -35,8 +37,8 @@ Normaal gesp roken maakt u een aangepaste installatie kopie wanneer u de versie 
 
 Dit document is onderverdeeld in twee secties:
 
-* Een aangepaste installatie kopie maken: Biedt informatie aan beheerders en DevOps over het maken van een aangepaste installatie kopie en het configureren van verificatie voor een Azure Container Registry met behulp van de Azure CLI en Machine Learning CLI.
-* Een aangepaste installatie kopie gebruiken: Bevat informatie over gegevens wetenschappers en DevOps/MLOps over het gebruik van aangepaste installatie kopieën bij het implementeren van een getraind model vanuit de python-SDK of ML CLI.
+* Een aangepaste basis installatie kopie maken: Biedt informatie aan beheerders en DevOps over het maken van een aangepaste installatie kopie en het configureren van verificatie voor een Azure Container Registry met behulp van de Azure CLI en Machine Learning CLI.
+* Een model implementeren met behulp van een aangepaste basis installatie kopie: Bevat informatie over gegevens wetenschappers en DevOps/ML-ingenieurs over het gebruik van aangepaste installatie kopieën bij het implementeren van een getraind model vanuit de python-SDK of ML CLI.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,7 +49,7 @@ Dit document is onderverdeeld in twee secties:
 * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster dat toegankelijk is op internet.
 * Bij de stappen in dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van een inkomend __configuratie__ object als onderdeel van de implementatie van het model. Zie voor meer informatie de sectie ' voor bereiding implementeren ' van [waar u wilt implementeren en hoe](how-to-deploy-and-where.md#prepare-to-deploy).
 
-## <a name="create-a-custom-image"></a>Een aangepaste installatiekopie maken
+## <a name="create-a-custom-base-image"></a>Een aangepaste basis installatie kopie maken
 
 In de informatie in deze sectie wordt ervan uitgegaan dat u een Azure Container Registry gebruikt voor het opslaan van docker-installatie kopieën. Gebruik de volgende controle lijst bij het plannen van het maken van aangepaste installatie kopieën voor de Azure Machine Learning-service:
 
@@ -109,7 +111,7 @@ Als u al modellen hebt getraind of geïmplementeerd met behulp van de Azure Mach
 
     De `<registry_name>` waarde is de naam van de Azure container Registry voor uw werk ruimte.
 
-### <a name="build-a-custom-image"></a>Een aangepaste installatie kopie bouwen
+### <a name="build-a-custom-base-image"></a>Een aangepaste basis installatie kopie bouwen
 
 Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-installatie kopie maakt in uw Azure Container Registry.
 
@@ -162,7 +164,7 @@ Zie [een container installatie kopie bouwen en uitvoeren met Azure container Reg
 
 Zie [uw eerste installatie kopie naar een privé-docker-container register pushen](/azure/container-registry/container-registry-get-started-docker-cli)voor meer informatie over het uploaden van bestaande installatie kopieën naar een Azure container Registry.
 
-## <a name="use-a-custom-image"></a>Een aangepaste installatiekopie gebruiken
+## <a name="use-a-custom-base-image"></a>Een aangepaste basis installatie kopie gebruiken
 
 Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende informatie nodig:
 
@@ -174,7 +176,7 @@ Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende inform
 
     Als u deze informatie niet hebt, neemt u contact op met de beheerder voor de Azure Container Registry die uw installatie kopie bevat.
 
-### <a name="publicly-available-images"></a>Openbaar beschik bare installatie kopieën
+### <a name="publicly-available-base-images"></a>Openbaar beschik bare basis installatie kopieën
 
 Micro soft biedt verschillende docker-installatie kopieën op een openbaar toegankelijke opslag plaats die kan worden gebruikt met de stappen in deze sectie:
 

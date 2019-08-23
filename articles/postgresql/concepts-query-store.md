@@ -1,182 +1,183 @@
 ---
-title: Query Store in Azure Database for PostgreSQL - één Server
-description: Dit artikel beschrijft de functie voor Query Store in Azure Database voor PostgreSQL - één Server.
+title: Query Store in Azure Database for PostgreSQL-één server
+description: In dit artikel wordt de functie query Store in Azure Database for PostgreSQL-één server beschreven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: b622de3e21d26676bb11d81a6facf8fea18cabc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: 5ddbff62421d97b1105a997bd084e1fe5b44cf12
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067187"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907421"
 ---
-# <a name="monitor-performance-with-the-query-store"></a>Prestaties bijhouden met de Query Store
+# <a name="monitor-performance-with-the-query-store"></a>Prestaties bewaken met de query Store
 
-**Van toepassing op:** Azure Database for PostgreSQL - servergegevens 9.6 en 10
+**Van toepassing op:** Azure Database for PostgreSQL-één server 9,6 en 10
 
-De functie voor Query Store in Azure Database for PostgreSQL biedt een manier voor het bijhouden van prestaties van query's na verloop van tijd. Query Store vereenvoudigt het door u te helpen snel problemen met prestaties vinden het langst lopende en meest resource-intensieve query's. Query Store automatisch een geschiedenis van query's en runtime-statistieken worden vastgelegd en behoudt hij ze controleren. Deze scheidt gegevens door tijdvensters zodat u databasegebruikspatronen kunt zien. Gegevens voor alle gebruikers, databases en query's worden opgeslagen in een database met de naam **azure_sys** in de Azure Database for PostgreSQL-exemplaar.
+De functie query Store in Azure Database for PostgreSQL biedt een manier om query prestaties na verloop van tijd bij te houden. Query Store vereenvoudigt het oplossen van prestaties, omdat u snel de langste en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in een Data Base met de naam **azure_sys** in het Azure database for PostgreSQL-exemplaar.
 
 > [!IMPORTANT]
-> Wijzig niet de **azure_sys** database of de schema's. In dat geval wordt voorkomen dat prestaties gerelateerd aan functies en Query Store goed werkt.
+> Wijzig de **azure_sys** -data base of de bijbehorende schema's niet. Dit zorgt ervoor dat query Store en gerelateerde prestatie functies niet goed werken.
 
 ## <a name="enabling-query-store"></a>Query Store inschakelen
-Query Store is een functie opt-in, zodat deze niet standaard op een server actief is. Het archief is ingeschakeld of uitgeschakeld wereldwijd voor alle databases op een bepaalde server en kan niet worden ingeschakeld in- of uitschakelen per database.
+Query Store is een opt-in-functie, waardoor deze niet standaard actief is op een server. De Store is globaal ingeschakeld of uitgeschakeld voor alle data bases op een bepaalde server en kan niet worden in-of uitgeschakeld per data base.
 
-### <a name="enable-query-store-using-the-azure-portal"></a>Query Store met behulp van de Azure-portal inschakelen
-1. Meld u aan bij Azure portal en selecteer uw Azure Database for PostgreSQL-server.
-2. Selecteer **serverparameters** in de **instellingen** gedeelte van het menu.
-3. Zoek de `pg_qs.query_capture_mode` parameter.
-4. Stel de waarde voor `TOP` en **opslaan**.
+### <a name="enable-query-store-using-the-azure-portal"></a>Query Store inschakelen met behulp van de Azure Portal
+1. Meld u aan bij de Azure Portal en selecteer uw Azure Database for PostgreSQL-server.
+2. Selecteer **server parameters** in de sectie **instellingen** van het menu.
+3. Zoek de `pg_qs.query_capture_mode` para meter.
+4. Stel de waarde in `TOP` op en **Sla**deze op.
 
-Statistieken voor de wachttijd in uw Query Store inschakelen: 
-1. Zoek de `pgms_wait_sampling.query_capture_mode` parameter.
-1. Stel de waarde voor `ALL` en **opslaan**.
+Wachtende statistieken in het query archief inschakelen: 
+1. Zoek de `pgms_wait_sampling.query_capture_mode` para meter.
+1. Stel de waarde in `ALL` op en **Sla**deze op.
 
 
-U kunt ook instellen dat deze parameters met de Azure CLI.
+U kunt deze para meters ook instellen met behulp van de Azure CLI.
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
 az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
 ```
 
-Maximaal 20 minuten voor de eerste batch van gegevens om vast te leggen in de database azure_sys toestaan.
+Maxi maal 20 minuten toestaan dat de eerste batch met gegevens in de azure_sys-data base blijft.
 
-## <a name="information-in-query-store"></a>Gegevens in Query Store
-Query Store heeft twee stores:
-- Een runtime-statistieken-archief voor het opslaan van de statistische gegevens van de query kan worden uitgevoerd.
-- Een ogenblik geduld statistieken store voor het opslaan van statistische gegevens wacht.
+## <a name="information-in-query-store"></a>Informatie in query Store
+Het query archief heeft twee winkels:
+- Een runtime-statistieken opslag voor het persistent maken van de statistieken voor query-uitvoering.
+- Een wacht statistieken opslag voor permanente wacht statistieken.
 
-Algemene scenario's voor het gebruik van de Query Store zijn onder andere:
-- Bepalen van het aantal keren dat is een query uitgevoerd in een opgegeven periode
-- De gemiddelde uitvoeringstijd van een query vergelijken voor tijdvensters om te zien van grote delta 's
-- Identificeren van de langste uitvoeren van query's in het verleden X uur
-- Top N-query's die op resources wachten identificeren
-- Understanding wacht aard voor een bepaalde query
+Veelvoorkomende scenario's voor het gebruik van query Store zijn onder andere:
+- Bepalen hoe vaak een query in een bepaald tijd venster is uitgevoerd
+- De gemiddelde uitvoerings tijd van een query vergelijken in tijd Vensters om grote verschillen te bekijken
+- Langst uitgevoerde query's in de afgelopen X uur identificeren
+- Eerste N query's identificeren die op resources wachten
+- Wat is de wacht aard van een bepaalde query?
 
-Om te beperken gebruik van schijfruimte, worden de runtime-statistieken voor uitvoering in het archief van de runtime-statistieken voor een vaste en configureerbare periode geaggregeerd. De informatie in deze archieven is zichtbaar door het opvragen van de query store-weergaven.
+Om ruimte gebruik te minimaliseren, worden de runtime uitvoerings statistieken in de runtime-statistieken opslag geaggregeerd over een vast, configureerbaar tijd venster. De informatie in deze archieven is zichtbaar door query's uit te geven op de query Store-weer gaven.
 
-De volgende query retourneert informatie over query's in Query Store:
+De volgende query retourneert informatie over query's in query Store:
 ```sql
 SELECT * FROM query_store.qs_view; 
 ``` 
 
-Of deze query voor Wachtstatistieken voor:
+Of deze query voor wachtende statistieken:
 ```sql
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
 
-## <a name="finding-wait-queries"></a>Zoeken naar wait-query 's
-Wacht gebeurtenistypen combineren verschillende wacht gebeurtenissen in buckets die vergelijkbaar zijn. Query Store biedt het gebeurtenistype wachten, gebeurtenisnaam specifieke wachten en de query in kwestie. Dat kunnen correleren van deze informatie wachten met de query-runtime statistieken betekent dat u een beter inzicht in wat draagt bij aan de prestatiekenmerken van de query kan krijgen.
+## <a name="finding-wait-queries"></a>Wacht query's zoeken
+Wacht gebeurtenis typen combi neren verschillende wacht gebeurtenissen in buckets op vergelijk bare wijze. Het query archief bevat het type wacht gebeurtenis, specifieke wacht gebeurtenis naam en de query in kwestie. Als u deze wacht gegevens wilt correleren met de statistieken voor de runtime van query's, betekent dit dat u meer inzicht krijgt in wat bijdragen aan de prestatie kenmerken van de query.
 
-Hier volgen enkele voorbeelden van hoe u krijgt meer inzicht in uw workload met behulp van de statistieken wacht in Query Store:
+Hier volgen enkele voor beelden van hoe u meer inzicht kunt krijgen in uw werk belasting met behulp van de wacht statistieken in query Store:
 
-| **Observatie van** | **Actie** |
+| **Observ** | **Actie** |
 |---|---|
-|Hoge vergrendeling moet wachten | Controleer de tekst van de query voor de betrokken query's en identificeren van de doel-entiteiten. Zoek in de Query Store naar andere query's bij het wijzigen van dezelfde entiteit, die vaak wordt uitgevoerd en/of maximale duur hebben. Nadat u deze query's, kunt u overwegen de toepassingslogica ter verbetering van gelijktijdigheid wijzigen of een minder beperkend isolatieniveau gebruiken.|
-| Hoge i/o-Buffer wacht | De query's met een groot aantal fysieke leesbewerkingen in Query Store vinden. Als ze overeenkomen met de query's met hoge i/o-wachttijd, houd rekening met de introductie van een index voor de onderliggende entiteit hiervoor zoekt in plaats van scans. Dit zou de i/o-overhead van de query's beperken. Controleer de **aanbevelingen voor prestaties** voor uw server in de portal om te zien of er indexaanbevelingen voor deze server die u zou de query's optimaliseren.|
-| Hoge geheugen moet wachten | Het bovenste geheugen verbruikt query's in Query Store vinden. Deze query's zijn waarschijnlijk vertragen verder voortgang van de betrokken query's. Controleer de **aanbevelingen voor prestaties** voor uw server in de portal om te zien of er indexaanbevelingen die zou deze query's optimaliseren.|
+|Wacht tijden met hoge vergren deling | Controleer de query teksten voor de betrokken query's en Identificeer de doel entiteiten. Zoek in query Store naar andere query's die dezelfde entiteit wijzigen, die regel matig wordt uitgevoerd en/of een hoge duur hebben. Nadat u deze query's hebt geïdentificeerd, kunt u overwegen om de toepassings logica te wijzigen om gelijktijdig gebruik te kunnen verbeteren of een minder beperkend isolatie niveau te gebruiken.|
+| Hoge buffer-IO-wacht tijden | Zoek de query's met een groot aantal fysieke Lees bewerkingen in query Store. Als ze overeenkomen met de query's met hoge i/o-wacht tijden, kunt u overwegen een index voor de onderliggende entiteit te introduceren, om te zoeken in plaats van scans. Hierdoor worden de i/o-overhead van de query's geminimaliseerd. Controleer de **prestatie aanbevelingen** voor uw server in de portal om te zien of er index aanbevelingen voor deze server zijn die de query's optimaliseren.|
+| Hoog geheugen wacht tijden | Zoek het hoogste geheugen gebruik query's in query Store. Deze query's vertragen waarschijnlijk verdere voortgang van de betrokken query's. Controleer de **prestatie aanbevelingen** voor uw server in de portal om te zien of er index aanbevelingen zijn waarmee deze query's kunnen worden geoptimaliseerd.|
 
 ## <a name="configuration-options"></a>Configuratie-opties
-Als de Query Store is ingeschakeld worden gegevens opgeslagen in windows voor aggregatie van 15 minuten, maximaal 500 afzonderlijke query's per tijdvenster van. 
+Wanneer query Store is ingeschakeld, worden gegevens opgeslagen in een periode van 15 minuten voor aggregatie van Maxi maal 500 DISTINCT-query's per venster. 
 
-De volgende opties zijn beschikbaar voor Query Store-parameters configureren.
-
-| **Parameter** | **Beschrijving** | **Standaard** | **Range**|
-|---|---|---|---|
-| pg_qs.query_capture_mode | Hiermee stelt u welke instructies worden bijgehouden. | Geen | None, top, alle |
-| pg_qs.max_query_text_length | Hiermee stelt u de maximale lengte die kan worden opgeslagen. Meer query's worden afgekapt. | 6000 | 100 - 10K |
-| pg_qs.retention_period_in_days | Hiermee stelt u de bewaarperiode. | 7 | 1 - 30 |
-| pg_qs.track_utility | Wordt ingesteld of hulpprogramma opdrachten worden bijgehouden | op | op uitgeschakeld |
-
-De volgende opties gelden specifiek voor het wachten van statistieken.
+De volgende opties zijn beschikbaar voor het configureren van query Store-para meters.
 
 | **Parameter** | **Beschrijving** | **Standaard** | **Range**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Sets die instructies worden bijgehouden voor wachten statistieken. | Geen | geen, alle|
-| Pgms_wait_sampling.history_period | Stel de frequentie, in milliseconden, op welke wacht gebeurtenissen worden vastgelegd. | 100 | 1-600000 |
+| pg_qs.query_capture_mode | Hiermee stelt u in welke instructies worden bijgehouden. | geen | geen, boven, alle |
+| pg_qs.max_query_text_length | Hiermee stelt u de maximale query lengte in die kan worden opgeslagen. Langere query's worden afgekapt. | 6000 | 100-10K |
+| pg_qs.retention_period_in_days | Hiermee stelt u de Bewaar periode. | 7 | 1 - 30 |
+| pg_qs.track_utility | Hiermee wordt ingesteld of hulp opdrachten worden bijgehouden | op | aan, uit |
+
+De volgende opties zijn specifiek van toepassing op wacht statistieken.
+
+| **Parameter** | **Beschrijving** | **Standaard** | **Range**|
+|---|---|---|---|
+| pgms_wait_sampling.query_capture_mode | Hiermee wordt ingesteld welke instructies worden bijgehouden voor wachtende statistieken. | geen | geen, alle|
+| Pgms_wait_sampling.history_period | Stel de frequentie in milliseconden in waarop wacht gebeurtenissen worden bemonsterd. | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** vervangt **pgms_wait_sampling.query_capture_mode**. Als pg_qs.query_capture_mode ingesteld op geen is, heeft de instelling pgms_wait_sampling.query_capture_mode geen effect.
+> **pg_qs. query_capture_mode** vervangt **pgms_wait_sampling. query_capture_mode**. Als pg_qs. query_capture_mode geen is, heeft de instelling pgms_wait_sampling. query_capture_mode geen effect.
 
 
-Gebruik de [Azure-portal](howto-configure-server-parameters-using-portal.md) of [Azure CLI](howto-configure-server-parameters-using-cli.md) ophalen of instellen van een andere waarde voor een parameter.
+Gebruik de [Azure Portal](howto-configure-server-parameters-using-portal.md) of [Azure cli](howto-configure-server-parameters-using-cli.md) om een andere waarde voor een para meter op te halen of in te stellen.
 
-## <a name="views-and-functions"></a>Weergaven en functies
-Weergeven en beheren van de Query Store met behulp van de volgende functies en weergaven. Iedereen in de openbare rol PostgreSQL kunt deze weergaven gebruiken om de gegevens in Query Store te zien. Deze weergaven zijn alleen beschikbaar in de **azure_sys** database.
+## <a name="views-and-functions"></a>Weer gaven en functies
+Bekijk en beheer query Store met behulp van de volgende weer gaven en functies. Iedereen in de open bare rol PostgreSQL kan deze weer gaven gebruiken om de gegevens in query Store te bekijken. Deze weer gaven zijn alleen beschikbaar in de **azure_sys** -data base.
 
-Query's zijn genormaliseerd door te kijken de structuur ervan na het verwijderen van letterlijke waarden en constanten. Als twee query's, met uitzondering van letterlijke waarden identiek zijn, hebben ze dezelfde hash.
+Query's worden genormaliseerd door de structuur te bekijken na het verwijderen van letterlijke waarden en constanten. Als twee query's identiek zijn, met uitzonde ring van letterlijke waarden, hebben ze dezelfde hash.
 
-### <a name="querystoreqsview"></a>query_store.qs_view
-In deze weergave retourneert alle gegevens in Query Store. Er is één rij voor elke afzonderlijke database-ID, gebruikers-ID en query-ID. 
+### <a name="query_storeqs_view"></a>query_store.qs_view
+In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID en query-ID. 
 
-|**Naam**   |**Type** | **Verwijzingen**  | **Beschrijving**|
+|**Name**   |**Type** | **Referentie**  | **Beschrijving**|
 |---|---|---|---|
-|runtime_stats_entry_id |bigint | | ID van de tabel runtime_stats_entries|
-|user_id    |oid    |pg_authid.oid  |OID van de gebruiker heeft de instructie uitgevoerd|
-|db_id  |oid    |pg_database.oid    |OID van database waarin de instructie is uitgevoerd|
-|query_id   |bigint  || Interne hash-code, berekend vanaf parseringsstructuur van de instructie|
-|query_sql_text |Varchar(10000)  || Tekst van een representatieve instructie. Verschillende query's met dezelfde structuur zijn samen; geclusterd Deze tekst is de tekst voor de eerste dag van de query's in het cluster.|
-|plan_id    |bigint |   |ID van het abonnement nog overeenkomt met deze query is niet beschikbaar|
-|start_time |timestamp  ||  Query's worden samengevoegd per keer buckets - de tijdsduur van een bucket is 15 minuten standaard. Dit is de begintijd die overeenkomt met het tijdsinterval voor deze vermelding.|
-|end_time   |timestamp  ||  De eindtijd die overeenkomt met het tijdsinterval voor deze vermelding.|
-|aanroepen  |bigint  || Aantal keren dat de query wordt uitgevoerd|
-|total_time |dubbele precisie   ||  Totaal aantal query uitvoeringstijd, in milliseconden|
-|min_time   |dubbele precisie   ||  Minimale query uitvoeringstijd, in milliseconden|
-|max_time   |dubbele precisie   ||  Maximale uitvoeringstijd, in milliseconden|
-|mean_time  |dubbele precisie   ||  Gemiddelde uitvoeringstijd van de query, in milliseconden|
-|stddev_time|   dubbele precisie    ||  Standaarddeviatie van de tijd van de query kan worden uitgevoerd in milliseconden |
-|rijen   |bigint ||  Totale aantal rijen opgehaald of beïnvloed door de instructie|
-|shared_blks_hit|   bigint  ||  Totaal aantal treffers in cache en gedeelde blokkeren door de instructie|
-|shared_blks_read|  bigint  ||  Totale aantal gedeelde blokken gelezen door de instructie|
-|shared_blks_dirtied|   bigint   || Totale aantal gedeelde blokken dirtied door de instructie |
-|shared_blks_written|   bigint  ||  Totale aantal gedeelde blokken die zijn geschreven door de instructie|
-|local_blks_hit|    bigint ||   Totaal aantal treffers in cache en lokale blokkeren door de instructie|
-|local_blks_read|   bigint   || Totaal aantal lokale blokken gelezen door de instructie|
+|runtime_stats_entry_id |bigint | | ID uit de runtime_stats_entries-tabel|
+|user_id    |oid    |pg_authid.oid  |OID van de gebruiker die de instructie heeft uitgevoerd|
+|db_id  |oid    |pg_database.oid    |De OID van de Data Base waarin de instructie is uitgevoerd|
+|query_id   |bigint  || Interne hash-code, berekend op basis van de ontledings structuur van de instructie|
+|query_sql_text |Varchar (10000)  || De tekst van een representatieve verklaring. Verschillende query's met dezelfde structuur worden samen geclusterd. deze tekst is de tekst voor de eerste van de query's in het cluster.|
+|plan_id    |bigint |   |De ID van het abonnement dat is gekoppeld aan deze query en die nog niet beschikbaar is|
+|start_time |timestamp  ||  Query's worden geaggregeerd op tijd-buckets: de tijds panne van een Bucket is standaard 15 minuten. Dit is de begin tijd die overeenkomt met het tijds interval voor deze vermelding.|
+|end_time   |timestamp  ||  De eind tijd die overeenkomt met het tijds interval voor deze vermelding.|
+|oproepen  |bigint  || Aantal keren dat de query is uitgevoerd|
+|total_time |dubbele precisie   ||  Totale uitvoerings tijd van de query, in milliseconden|
+|min_time   |dubbele precisie   ||  Minimale uitvoerings tijd van de query, in milliseconden|
+|max_time   |dubbele precisie   ||  Maximale uitvoerings tijd van de query, in milliseconden|
+|mean_time  |dubbele precisie   ||  Gemiddelde uitvoerings tijd van query's, in milliseconden|
+|stddev_time|   dubbele precisie    ||  Standaard afwijking van de uitvoerings tijd van de query, in milliseconden |
+|rijen   |bigint ||  Totaal aantal rijen dat is opgehaald of beïnvloed door de instructie|
+|shared_blks_hit|   bigint  ||  Totaal aantal gedeelde blok cache treffers per instructie|
+|shared_blks_read|  bigint  ||  Totaal aantal gedeelde blokken dat is gelezen door de instructie|
+|shared_blks_dirtied|   bigint   || Totaal aantal gedeelde blokken dirtied door de instructie |
+|shared_blks_written|   bigint  ||  Totaal aantal gedeelde blokken dat is geschreven door de instructie|
+|local_blks_hit|    bigint ||   Totaal aantal lokale blok cache treffers per instructie|
+|local_blks_read|   bigint   || Totaal aantal lokale blokken dat door de instructie is gelezen|
 |local_blks_dirtied|    bigint  ||  Totaal aantal lokale blokken dirtied door de instructie|
-|local_blks_written|    bigint  ||  Totaal aantal lokale blokken die zijn geschreven door de instructie|
-|temp_blks_read |bigint  || Totaal aantal tijdelijke blokken gelezen door de instructie|
-|temp_blks_written| bigint   || Totaal aantal tijdelijke blokken die zijn geschreven door de instructie|
-|blk_read_time  |dubbele precisie    || Totale tijd dat de instructie dat is besteed aan blokken bij het lezen, in milliseconden (als track_io_timing is ingeschakeld, anders nul)|
-|blk_write_time |dubbele precisie    || Totale tijd dat de instructie dat is besteed aan blokken bij het schrijven, in milliseconden (als track_io_timing is ingeschakeld, anders nul)|
+|local_blks_written|    bigint  ||  Totaal aantal lokale blokken dat is geschreven door de instructie|
+|temp_blks_read |bigint  || Totaal aantal tijdelijke blokken dat is gelezen door de instructie|
+|temp_blks_written| bigint   || Totaal aantal tijdelijke blokken dat is geschreven door de instructie|
+|blk_read_time  |dubbele precisie    || De totale tijd die de instructie heeft besteed aan het lezen van blokken, in milliseconden (als track_io_timing is ingeschakeld, anders nul)|
+|blk_write_time |dubbele precisie    || De totale tijd die de instructie heeft besteed aan het schrijven van blokken, in milliseconden (als track_io_timing is ingeschakeld, anders nul)|
     
-### <a name="querystorequerytextsview"></a>query_store.query_texts_view
-In deze weergave retourneert tekst querygegevens in Query Store. Er is één rij voor elke afzonderlijke query_text.
+### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
+Deze weer gave retourneert query tekst gegevens in query Store. Er is één rij voor elke afzonderlijke query_text.
 
-|**Naam**|  **Type**|   **Beschrijving**|
+|**Name**|  **Type**|   **Beschrijving**|
 |---|---|---|
-|query_text_id  |bigint     |ID van de tabel query_texts|
-|query_sql_text |Varchar(10000)     |Tekst van een representatieve instructie. Verschillende query's met dezelfde structuur zijn samen; geclusterd Deze tekst is de tekst voor de eerste dag van de query's in het cluster.|
+|query_text_id  |bigint     |ID voor de query_texts-tabel|
+|query_sql_text |Varchar (10000)     |De tekst van een representatieve verklaring. Verschillende query's met dezelfde structuur worden samen geclusterd. deze tekst is de tekst voor de eerste van de query's in het cluster.|
 
-### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
-In deze weergave retourneert gegevens van statuswijzigingsgebeurtenissen in Query Store wachten. Er is één rij voor elke afzonderlijke database-ID, de gebruikers-ID, de query-ID en de gebeurtenis.
+### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
+Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 
-|**Naam**|  **Type**|   **Verwijzingen**| **Beschrijving**|
+|**Name**|  **Type**|   **Referentie**| **Beschrijving**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |OID van de gebruiker heeft de instructie uitgevoerd|
-|db_id  |oid    |pg_database.oid    |OID van database waarin de instructie is uitgevoerd|
-|query_id   |bigint     ||Interne hash-code, berekend vanaf parseringsstructuur van de instructie|
-|event_type |text       ||Het type gebeurtenis waarvoor de back-end is in afwachting|
-|gebeurtenis  |text       ||De naam van de wachttijd als back-end is momenteel in afwachting|
-|aanroepen  |Geheel getal        ||Aantal dezelfde gebeurtenis vastgelegd|
+|user_id    |oid    |pg_authid.oid  |OID van de gebruiker die de instructie heeft uitgevoerd|
+|db_id  |oid    |pg_database.oid    |De OID van de Data Base waarin de instructie is uitgevoerd|
+|query_id   |bigint     ||Interne hash-code, berekend op basis van de ontledings structuur van de instructie|
+|event_type |text       ||Het type gebeurtenis waarvoor de back-end wacht|
+|gebeurtenis  |text       ||De wacht gebeurtenis naam als de back-end momenteel wacht|
+|oproepen  |Integer        ||Nummer van dezelfde gebeurtenis vastgelegd|
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Functies
 Query_store.qs_reset() returns void
 
-`qs_reset` Hiermee verwijdert alle statistische gegevens die tot nu toe door de Query Store worden verzameld. Deze functie kan alleen worden uitgevoerd door de rol van de server-beheerder.
+`qs_reset` Hiermee worden alle statistische gegevens verwijderd die tot nu toe zijn verzameld door de query Store. Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
 
 Query_store.staging_data_reset() returns void
 
-`staging_data_reset` Hiermee verwijdert alle statistische gegevens die in het geheugen worden verzameld door de Query Store (dat wil zeggen, de gegevens in het geheugen dat niet is verwijderd, maar met de database). Deze functie kan alleen worden uitgevoerd door de rol van de server-beheerder.
+`staging_data_reset` Hiermee worden alle statistieken die in het geheugen zijn verzameld, verwijderd door de query Store (dat wil zeggen, de gegevens in het geheugen die nog niet zijn leeg gemaakt voor de data base). Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
-- Als een PostgreSQL-server heeft de parameter-default_transaction_read_only op, kan geen gegevens vastleggen in Query Store.
-- Query Store functionaliteit kan worden onderbroken als er lange Unicode-query's (> = 6000 bytes).
+- Als een PostgreSQL-server de para meter default_transaction_read_only heeft in, kan de query Store geen gegevens vastleggen.
+- De functionaliteit van het query archief kan worden onderbroken als er lange Unicode-query's worden aangetroffen (> = 6000 bytes).
+- [Replica's lezen](concepts-read-replicas.md) query's opslaan gegevens van de hoofd server repliceren. Dit betekent dat het query archief van een lees replica geen statistieken biedt over query's die worden uitgevoerd op de Lees replica.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [scenario's waarbij Query Store met name handig zijn kan](concepts-query-store-scenarios.md).
-- Meer informatie over [aanbevolen procedures voor het gebruik van de Query Store](concepts-query-store-best-practices.md).
+- Meer informatie over [scenario's waarin query Store bijzonder nuttig kan zijn](concepts-query-store-scenarios.md).
+- Meer informatie over [Best practices voor het gebruik van query Store](concepts-query-store-best-practices.md).

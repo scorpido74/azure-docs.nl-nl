@@ -4,14 +4,14 @@ description: Gebruik Azure Resource Manager en Azure CLI om resources te impleme
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/12/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853832"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971018"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resources implementeren met Resource Manager-sjablonen en Azure CLI
 
@@ -133,7 +133,7 @@ De opgegeven implementatie moet zijn geslaagd.
 
 ## <a name="parameters"></a>Parameters
 
-Als u parameter waarden wilt door geven, kunt u inline-para meters of een parameter bestand gebruiken. In de voor gaande voor beelden in dit artikel worden inline-para meters weer gegeven.
+Als u parameter waarden wilt door geven, kunt u inline-para meters of een parameter bestand gebruiken.
 
 ### <a name="inline-parameters"></a>Inline-para meters
 
@@ -172,23 +172,7 @@ De indeling arrayContent. json is:
 
 In plaats van para meters als inline waarden door te geven in uw script, is het wellicht eenvoudiger een JSON-bestand te gebruiken dat de parameter waarden bevat. Het parameter bestand moet een lokaal bestand zijn. Externe parameter bestanden worden niet ondersteund met Azure CLI.
 
-Het parameter bestand moet de volgende indeling hebben:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-U ziet dat de sectie para meters een parameter naam bevat die overeenkomt met de para meter die is gedefinieerd in uw sjabloon (storageAccountType). Het parameter bestand bevat een waarde voor de para meter. Deze waarde wordt tijdens de implementatie automatisch door gegeven aan de sjabloon. U kunt meer dan één parameter bestand maken en vervolgens door geven in het juiste parameter bestand voor het scenario. 
-
-Kopieer het vorige voor beeld en sla dit op als een `storage.parameters.json`bestand met de naam.
+Zie voor meer informatie over het parameter bestand [Resource Manager-parameter bestand maken](resource-manager-parameter-files.md).
 
 Als u een lokaal parameter bestand wilt door `@` geven, gebruikt u om een lokaal bestand met de naam Storage. para meters. json op te geven.
 
@@ -198,18 +182,6 @@ az group deployment create \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json
-```
-
-### <a name="parameter-precedence"></a>Parameter prioriteit
-
-U kunt inline-para meters en een lokaal parameter bestand gebruiken in dezelfde implementatie bewerking. U kunt bijvoorbeeld een aantal waarden opgeven in het lokale parameter bestand en andere waarden inline toevoegen tijdens de implementatie. Als u waarden opgeeft voor een para meter in zowel het lokale parameter bestand als inline, heeft de inline-waarde prioriteit.
-
-```azurecli
-az group deployment create \
-  --resource-group testgroup \
-  --template-file demotemplate.json \
-  --parameters @demotemplate.parameters.json \
-  --parameters exampleArray=@arrtest.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Een sjabloon implementatie testen

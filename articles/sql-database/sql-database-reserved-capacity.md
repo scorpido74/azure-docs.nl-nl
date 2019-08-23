@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781305"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972553"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vooruitbetalen voor het SQL Database Compute-resources met Azure SQL Database gereserveerde capaciteit
 
@@ -70,6 +70,10 @@ U kunt reserve ringen annuleren, vervangen of terugbetalen met bepaalde beperkin
 ## <a name="vcore-size-flexibility"></a>flexibiliteit van vCore-grootte
 
 met de flexibiliteit van vCore-grootte kunt u binnen een prestatie-laag en-regio omhoog of omlaag schalen zonder verlies van het voor deel van de gereserveerde capaciteit. SQL Database gereserveerde capaciteit biedt u de flexibiliteit om uw dynamische data bases tijdelijk te verplaatsen tussen Pools en individuele data bases als onderdeel van uw normale bewerkingen (binnen dezelfde regio en prestatie-laag) zonder de gereserveerde capaciteit te verliezen handig. Door een niet-toegepaste buffer in uw reserve ring te bewaren, kunt u de prestatie pieken effectief beheren zonder uw budget te overschrijden.
+
+## <a name="limitation"></a>Beperking
+
+U kunt geen op DTU gebaseerde (Basic, Standard of Premium) SQL-data bases reserveren.
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
 

@@ -1,26 +1,26 @@
 ---
-title: Veelgestelde vragen over de Firewall van Azure
-description: Veelgestelde vragen over de Firewall van Azure
+title: Veelgestelde vragen over Azure Firewall
+description: Veelgestelde vragen over Azure Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 08/23/2019
 ms.author: victorh
-ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: ebe02e8bf3fecc03c46bb66c9ab178e4f277e6e4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304601"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971624"
 ---
-# <a name="azure-firewall-faq"></a>Veelgestelde vragen over de Firewall van Azure
+# <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
 ## <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
-Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall-as-a-service met de ingebouwde hoge beschikbaarheid en cloudschaalbaarheid van de onbeperkte. U kunt beleid voor toepassings- en netwerkconnectiviteit centraal maken, afdwingen en registreren voor abonnementen en virtuele netwerken.
+Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall-as-a-service met ingebouwde hoge Beschik baarheid en een onbeperkte Cloud schaalbaarheid. U kunt beleid voor toepassings- en netwerkconnectiviteit centraal maken, afdwingen en registreren voor abonnementen en virtuele netwerken.
 
-## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Welke mogelijkheden worden ondersteund in de Firewall van Azure?
+## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Welke mogelijkheden worden er in Azure Firewall ondersteund?
 
 * Stateful firewall als een service
 * Ingebouwde hoge beschikbaarheid met onbeperkte cloudschaalbaarheid
@@ -29,64 +29,64 @@ Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die u
 * Regels voor het filteren van netwerkverkeer
 * Ondersteuning voor uitgaande SNAT
 * Ondersteuning voor inkomende DNAT
-* Centraal maken, afdwingen en meld u beleid van toepassing en netwerk connectiviteit tussen Azure-abonnementen en VNETs
+* Toepassingen en beleids regels voor netwerk verbindingen centraal maken, afdwingen en registreren in azure-abonnementen en VNETs
 * Volledig geïntegreerd met Azure Monitor voor registratie en analyses
 
-## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Wat is het typische implementatiemodel voor de Firewall van Azure?
+## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Wat is het typische implementatie model voor Azure Firewall?
 
-U kunt de Firewall van Azure implementeren op een virtueel netwerk, maar klanten doorgaans implementeren op een centrale virtueel netwerk en andere virtuele netwerken toe in een hub en spoke-model. Vervolgens stelt u de standaardroute uit de gekoppelde virtuele netwerken om te verwijzen naar dit centrale firewall virtuele netwerk. Wereldwijde VNet-peering wordt ondersteund, maar dit wordt niet aanbevolen vanwege mogelijke prestaties en latentieproblemen met tussen regio's. Voor de beste prestaties, implementeert u een firewall per regio.
+U kunt Azure Firewall op elk virtueel netwerk implementeren, maar klanten implementeren dit doorgaans op een centraal virtueel netwerk en andere virtuele netwerken op de peer in een hub-en-spoke-model. U kunt vervolgens de standaard route van de gekoppelde virtuele netwerken instellen om naar dit virtuele netwerk met centrale firewall te verwijzen. Wereld wijde VNet-peering wordt ondersteund, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de prestaties en latentie tussen regio's. Voor de beste prestaties moet u één firewall per regio implementeren.
 
-Het voordeel van dit model is de mogelijkheid om een centraal beheer van meerdere knooppunt VNETs in verschillende abonnementen. Er zijn ook kosten te besparen als u niet nodig een firewall in elk VNet afzonderlijk implementeren. De kosten te besparen moeten worden gemeten en de koppelen peering kosten op basis van de verkeerspatronen van de klant.
+Het voor deel van dit model is de mogelijkheid om centraal controle te uitoefenen op meerdere spoke-VNETs in verschillende abonnementen. Er zijn ook kosten besparingen, omdat u niet afzonderlijk een firewall in elk VNet hoeft te implementeren. De kosten besparingen moeten worden gemeten tegenover de kosten voor het koppelen van de peering op basis van de verkeers patronen van de klant.
 
-## <a name="how-can-i-install-the-azure-firewall"></a>Hoe kan ik de Azure-Firewall installeren?
+## <a name="how-can-i-install-the-azure-firewall"></a>Hoe kan ik de Azure Firewall installeren?
 
-U kunt Azure Firewall instellen met behulp van de Azure portal, PowerShell, REST-API of met behulp van sjablonen. Zie [zelfstudie: Implementeren en configureren van de Firewall van Azure met behulp van de Azure-portal](tutorial-firewall-deploy-portal.md) voor stapsgewijze instructies.
+U kunt Azure Firewall instellen met behulp van de Azure Portal, Power shell, REST API of door sjablonen te gebruiken. Zie [zelf studie: Implementeer en configureer Azure Firewall met behulp](tutorial-firewall-deploy-portal.md) van de Azure portal voor stapsgewijze instructies.
 
-## <a name="what-are-some-azure-firewall-concepts"></a>Wat zijn enkele concepten Firewall van Azure?
+## <a name="what-are-some-azure-firewall-concepts"></a>Wat zijn enkele Azure Firewall concepten?
 
-Firewall van Azure biedt ondersteuning voor regels en regelverzamelingen. Verzameling van een regel is een reeks regels die de dezelfde volgorde en prioriteit delen. Regelverzamelingen worden uitgevoerd in de volgorde van hun prioriteit. Netwerk regelverzamelingen hogere prioriteit dan de regelverzamelingen van toepassing zijn, en alle regels worden beëindigd.
+Azure Firewall ondersteunt regels en regel verzamelingen. Een regel verzameling is een set regels die dezelfde volg orde en prioriteit hebben. Regel verzamelingen worden uitgevoerd op volg orde van prioriteit. Netwerk regel verzamelingen hebben een hogere prioriteit dan toepassings regel verzamelingen en alle regels worden beëindigd.
 
-Er zijn drie typen regelverzamelingen:
+Er zijn drie typen regel verzamelingen:
 
-* *Regels voor Application*: Volledig gekwalificeerde domeinnamen (FQDN's) die kunnen worden benaderd vanaf een subnet configureren.
-* *Regels voor*: Configureer regels die bronadressen, protocollen, doelpoorten en doeladressen bevatten.
-* *NAT-regels*: DNAT regels voor binnenkomende verbindingen configureren.
+* *Toepassings regels*: Configureer FQDN-namen (Fully Qualified Domain names) die toegankelijk zijn vanuit een subnet.
+* *Netwerk regels*: Configureer regels die bron adressen, protocollen, doel poorten en doel adressen bevatten.
+* *NAT-regels*: Configureer DNAT-regels om binnenkomende verbindingen toe te staan.
 
-## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Biedt Azure Firewall ondersteuning voor binnenkomend verkeer filteren?
+## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Ondersteunt Azure Firewall het filteren van inkomend verkeer?
 
-Firewall van Azure biedt ondersteuning voor binnenkomend en uitgaand filteren. Binnenkomende beveiliging is voor niet-HTTP/S-protocollen. Bijvoorbeeld RDP, SSH en FTP-protocollen.
+Azure Firewall ondersteunt filters voor inkomend en uitgaand verkeer. Inkomende beveiliging is voor niet-HTTP/S-protocollen. Bijvoorbeeld RDP-, SSH-en FTP-protocollen.
 
-## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welke services logboekregistratie en analyse worden ondersteund door de Firewall van Azure?
+## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welke logboek registratie en analyse services worden ondersteund door de Azure Firewall?
 
-Firewall van Azure is geïntegreerd met Azure Monitor voor het weergeven en analyseren van de firewall-Logboeken. Logboeken kunnen worden verzonden naar Log Analytics, Azure Storage of Event Hubs. Ze kunnen worden geanalyseerd in Log Analytics of met verschillende hulpprogramma's zoals Excel en Power BI. Zie [Zelfstudie: Azure-Firewall-logboeken bewaken](tutorial-diagnostics.md).
+Azure Firewall is geïntegreerd met Azure Monitor voor het weer geven en analyseren van Firewall Logboeken. Logboeken kunnen worden verzonden naar Log Analytics, Azure Storage of Event Hubs. Ze kunnen worden geanalyseerd in Log Analytics of door verschillende hulpprogram ma's zoals Excel en Power BI. Zie [Zelfstudie: Azure Firewall logboeken](tutorial-diagnostics.md)bewaken.
 
-## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hoe Azure Firewall werkt anders van bestaande services zoals NVA's in de marketplace?
+## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hoe werkt Azure Firewall anders dan bestaande services zoals Nva's in de Marketplace?
 
-Firewall van Azure is een eenvoudige firewall-service die in bepaalde scenario's van klanten voorzien kan. Verwacht wordt dat u een combinatie van de NVA's van derden en de Firewall van Azure hebt. Samen beter is een prioriteit core.
+Azure Firewall is een eenvoudige firewall service die bepaalde klant scenario's kan oplossen. Er wordt naar verwachting een combi natie van Nva's en Azure Firewall van derden. Een goede samen werking is een kern prioriteit.
 
-## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Wat is het verschil tussen de Application Gateway WAF- en firewallinstellingen van Azure?
+## <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Wat is het verschil tussen Application Gateway WAF en Azure Firewall?
 
-De Web Application Firewall (WAF) is een functie van Application Gateway die gecentraliseerde binnenkomende beveiliging van uw webtoepassingen tegen algemene aanvallen en beveiligingsproblemen biedt. Firewall van Azure biedt binnenkomende beveiliging voor niet-HTTP/S-protocollen (bijvoorbeeld RDP, SSH, FTP), uitgaande op netwerkniveau beveiliging voor alle poorten en protocollen en de beveiliging op toepassingsniveau voor uitgaande HTTP/S.
+De Web Application firewall (WAF) is een functie van Application Gateway die gecentraliseerde inkomende beveiliging biedt voor uw webtoepassingen van veelvoorkomende aanvallen en beveiligings problemen. Azure Firewall biedt inkomende beveiliging voor niet-HTTP/S-protocollen (bijvoorbeeld RDP, SSH, FTP), uitgaande beveiliging op netwerk niveau voor alle poorten en protocollen en beveiliging op toepassings niveau voor uitgaande HTTP/S.
 
-## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Wat is het verschil tussen Netwerkbeveiligingsgroepen (nsg's) en de Firewall van Azure?
+## <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Wat is het verschil tussen netwerk beveiligings groepen (Nsg's) en Azure Firewall?
 
-De Firewall van de Azure-service is een aanvulling op network security group functionaliteit. Samen bieden ze beter 'verdediging in de diepte' netwerkbeveiliging. Netwerkbeveiligingsgroepen bevatten gedistribueerde laag filteren van netwerkverkeer om te beperken van verkeer naar resources in virtuele netwerken in elk abonnement. Firewall van Azure is een volledig stateful, gecentraliseerde netwerk firewall as-a-service, waarmee de netwerk - en -beveiliging op toepassingsniveau in verschillende abonnementen en virtuele netwerken.
+De Azure Firewall-service is een aanvulling op de functionaliteit van de netwerk beveiligings groep. Samen bieden ze een betere "ingrijpende" netwerk beveiliging. Netwerk beveiligings groepen bieden gedistribueerde filters voor het filteren van netwerk lagen om het verkeer te beperken tot bronnen in virtuele netwerken in elk abonnement. Azure Firewall is een volledig stateful, gecentraliseerd netwerk firewall as-a-service, die beveiliging op netwerk-en toepassings niveau biedt voor verschillende abonnementen en virtuele netwerken.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Netwerkbeveiligingsgroepen (nsg's) is worden ondersteund op het subnet van de Firewall van Azure?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Worden netwerk beveiligings groepen (Nsg's) ondersteund op het subnet van de Azure Firewall?
 
-Firewall van Azure is een beheerde service met meerdere lagen van de beveiliging, met inbegrip van de platform-beveiliging met NIC niveau Nsg (niet zichtbaar).  Nsg's op subnetniveau zijn niet vereist op de Firewall van Azure-subnet en zijn uitgeschakeld om te controleren of er geen service wordt onderbroken.
+Azure Firewall is een beheerde service met meerdere beveiligings lagen, waaronder platform beveiliging met NIC-niveau Nsg's (niet zichtbaar).  Nsg's op subnetniveau zijn niet vereist op het Azure Firewall subnet en zijn uitgeschakeld om te voor komen dat de service wordt onderbroken.
 
-## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hoe stel ik Azure-Firewall in met de service-eindpunten?
+## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hoe kan ik Azure Firewall met mijn service-eind punten instellen?
 
-Voor beveiligde toegang tot PaaS-services raden wij service-eindpunten. U kunt de service-eindpunten in de Firewall van Azure-subnet inschakelen en uitschakelen verbonden spoke-netwerken. Op deze manier die u profiteren van functies, service-eindpunt beveiligings- en centrale logboekregistratie voor al het verkeer.
+Voor beveiligde toegang tot PaaS Services wordt service-eind punten aanbevolen. U kunt ervoor kiezen om service-eind punten in te scha kelen in het subnet Azure Firewall en ze uit te scha kelen in de verbonden spoke-netwerken. Op deze manier profiteert u van beide functies: service Endpoint Security en centrale logboek registratie voor al het verkeer.
 
-## <a name="what-is-the-pricing-for-azure-firewall"></a>Wat zijn de prijzen voor de Firewall van Azure?
+## <a name="what-is-the-pricing-for-azure-firewall"></a>Wat is de prijs voor Azure Firewall?
 
-Zie [Firewall van Azure-prijzen](https://azure.microsoft.com/pricing/details/azure-firewall/).
+Zie [Azure firewall prijzen](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
-## <a name="how-can-i-stop-and-start-azure-firewall"></a>Hoe kan ik stoppen en starten van de Firewall van Azure?
+## <a name="how-can-i-stop-and-start-azure-firewall"></a>Hoe kan ik Azure Firewall stoppen en starten?
 
-U kunt Azure PowerShell gebruiken *toewijzing* en *toewijzen* methoden.
+U kunt Azure PowerShell *toewijzings* -en *toewijzings* methoden gebruiken.
 
 Bijvoorbeeld:
 
@@ -109,44 +109,48 @@ Set-AzFirewall -AzureFirewall $azfw
 ```
 
 > [!NOTE]
-> U moet een firewall en een openbaar IP-adres toewijzen aan de oorspronkelijke resourcegroep en het abonnement.
+> U moet een firewall en een openbaar IP-adres toewijzen aan de oorspronkelijke resource groep en dit abonnement.
 
-## <a name="what-are-the-known-service-limits"></a>Wat zijn de bekende servicebeperkingen?
+## <a name="what-are-the-known-service-limits"></a>Wat zijn de bekende service limieten?
 
-Zie voor de Firewall van Azure-Servicelimieten, [Azure-abonnement en Servicelimieten, quotums en beperkingen](../azure-subscription-service-limits.md#azure-firewall-limits).
+Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md#azure-firewall-limits)voor Azure Firewall service limieten.
 
-## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Firewall van Azure kunnen in een hub-netwerk doorsturen en filteren van netwerkverkeer tussen twee virtuele spoke-netwerken?
+## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Kan Azure Firewall in een hub virtueel netwerk netwerk verkeer door sturen en filteren tussen twee spoke-virtuele netwerken?
 
-Ja, kunt u Azure-Firewall in een hub-netwerk te routeren en filteren verkeer tussen twee spoke virtueel netwerk. Subnetten in elk van de virtuele spoke-netwerken beschikken over UDR die verwijst naar de Firewall van Azure als een standaard-gateway voor dit scenario goed te laten werken.
+Ja, u kunt Azure Firewall in een hub-virtueel netwerk gebruiken om verkeer tussen twee spoke-netwerken te routeren en te filteren. Subnetten in elk van de spoke virtuele netwerken moeten UDR de Azure Firewall als standaard gateway voor dit scenario goed kunnen gebruiken.
 
-## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Kan Azure Firewall doorsturen en filteren van netwerkverkeer tussen subnetten in het hetzelfde virtuele netwerk of de gekoppelde virtuele netwerken?
+## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Kan Azure Firewall netwerk verkeer tussen subnetten in hetzelfde virtuele netwerk of gekoppelde virtuele netwerken door sturen en filteren?
 
-Ja. Configureren van de udr's als u wilt omleiden van verkeer tussen subnetten in hetzelfde VNET vereist echter extra aandacht. Tijdens het gebruik van de VNET-adresbereik als een doel-voorvoegsel voor de UDR voldoende is, stuurt deze ook al het verkeer van één machine naar een andere computer in hetzelfde subnet via de Firewall van Azure-instantie. Om dit te voorkomen, neem er een route voor het subnet in de UDR met een volgend hoptype van **VNET**. Beheren van deze routes, kan omslachtig en foutgevoelige klus zijn. De aanbevolen methode voor de segmentering van het interne netwerk is het gebruik van Netwerkbeveiligingsgroepen, die geen udr's is vereist.
+Ja. Het configureren van de Udr's voor het omleiden van verkeer tussen subnetten in hetzelfde VNET vereist echter extra aandacht. Wanneer het VNET-adres bereik als een doel voorvoegsel voor de UDR wordt gebruikt, stuurt dit ook alle verkeer van de ene machine naar een andere machine in hetzelfde subnet via de Azure Firewall-instantie. Als u dit wilt voor komen, moet u een route voor het subnet in de UDR toevoegen met het volgende hop-type **VNET**. Het beheer van deze routes kan omslachtig zijn en gevoelig voor fouten. De aanbevolen methode voor het segmenteren van interne netwerken is het gebruik van netwerk beveiligings groepen. hiervoor is geen Udr's vereist.
 
-## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Biedt Azure Firewall uitgaande SNAT tussen particuliere netwerken?
+## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall uitgaande SNAT tussen particuliere netwerken?
 
-Firewall van Azure SNAT niet wanneer het doel-IP-adres een privé-IP-adresbereik per is [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Als uw organisatie gebruikmaakt van een openbare IP-adresbereik voor particuliere netwerken, wordt Azure Firewall SNATs het verkeer naar een van de firewall privé-IP adressen in AzureFirewallSubnet.
+Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet.
 
-## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Geforceerde tunneling/koppelen aan een virtueel netwerkapparaat ondersteund?
+## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wordt geforceerde tunneling/keten van een virtueel netwerk apparaat ondersteund?
 
-Geforceerde tunneling wordt niet ondersteund door standaard, maar deze kan worden ingeschakeld met behulp van ondersteuning.
+Geforceerde tunneling wordt niet standaard ondersteund, maar kan wel worden ingeschakeld met Help van ondersteuning.
 
-Firewall van Azure moet directe verbinding met Internet hebben. Als uw AzureFirewallSubnet een standaardroute naar uw on-premises netwerk via BGP achterhaalt, moet u deze overschrijven met een UDR 0.0.0.0/0 met de **NextHopType** waarde ingesteld als **Internet** direct onderhouden Verbinding met Internet. Standaard, dienen de Firewall van Azure biedt geen ondersteuning voor een geforceerde tunneling naar een on-premises netwerk.
+Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden. Standaard biedt Azure Firewall geen ondersteuning voor geforceerde tunneling naar een on-premises netwerk.
 
-Echter, als uw configuratie geforceerde tunneling naar een on-premises netwerk vereist, Microsoft wordt hiervoor ondersteuning bieden op basis van per geval. Neem contact op met ondersteuning voor zodat we uw aanvraag kunt controleren. Als geaccepteerd, we uw abonnement en zorg ervoor dat de internetverbinding vereist firewall wordt onderhouden.
+Als uw configuratie echter geforceerde tunneling voor een on-premises netwerk vereist, zal micro soft deze in het geval per geval ondersteunen. Neem contact op met de ondersteuning zodat we uw aanvraag kunnen controleren. Als u dit hebt geaccepteerd, wordt uw abonnement toegestaan en wordt de vereiste Firewall Internet connectiviteit onderhouden.
 
-## <a name="are-there-any-firewall-resource-group-restrictions"></a>Zijn er firewall beperkingen van de resource?
+## <a name="are-there-any-firewall-resource-group-restrictions"></a>Zijn er beperkingen voor de resource groep van de firewall?
 
-Ja. De firewall, subnet, VNet en het openbare IP-adres moeten zich in dezelfde resourcegroep bevinden.
+Ja. De firewall, het subnet, het VNet en het open bare IP-adres moeten zich in dezelfde resource groep bevinden.
 
-## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Bij het configureren van DNAT voor binnenkomend netwerkverkeer, heb ik ook nodig om te configureren van een regel voor de bijbehorende als u wilt toestaan dat dit verkeer?
+## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Moet ik ook een bijbehorende netwerk regel configureren om dat verkeer toe te staan bij het configureren van DNAT voor binnenkomend netwerk verkeer?
 
-Nee. NAT-regels toevoegen impliciet een overeenkomende regel om de vertaalde verkeer te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer. Zie [Verwerkingslogica voor Azure Firewall-regels](rule-processing.md) voor meer informatie over de verwerkingslogica voor Azure Firewall-regels.
+Nee. NAT-regels voegen impliciet een bijbehorende netwerk regel toe om het vertaalde verkeer toe te staan. U kunt dit gedrag overschrijven door expliciet een verzameling netwerkregels toe te voegen met regels voor weigeren die overeenkomen met het omgezette verkeer. Zie [Verwerkingslogica voor Azure Firewall-regels](rule-processing.md) voor meer informatie over de verwerkingslogica voor Azure Firewall-regels.
 
-## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hoe werken jokertekens in het doel in een toepassing-regel FQDN?
+## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Hoe werken joker tekens in een toepassings regel doel-FQDN?
 
-Als u configureert * **. contoso.com**, hierdoor *anyvalue*. contoso.com, maar niet contoso.com (het toppunt van de domein). Als u toestaan dat het toppunt van het domein wilt, moet u deze expliciet configureren als een doel-FQDN.
+Als u * **. contoso.com**configureert, is *anyvalue*. contoso.com, maar niet contoso.com (het domein Apex) toegestaan. Als u het domein Apex wilt toestaan, moet u het expliciet configureren als een doel-FQDN.
 
-## <a name="what-does-provisioning-state-failed-mean"></a>Wat doet *Inrichtingsstatus: Kan geen* betekent?
+## <a name="what-does-provisioning-state-failed-mean"></a>*De inrichtings status: Mislukt* gemiddelde?
 
-Wanneer een wijziging in de configuratie is toegepast, probeert de Firewall van Azure om bij te werken van de onderliggende back-end-exemplaren. In zeldzame gevallen, een van deze back-end-instanties om bij te werken met de nieuwe configuratie kan mislukken en het updateproces stopt met een mislukte Inrichtingsstatus. Uw Azure-Firewall nog steeds operationeel is, maar de configuratie van de toegepaste mogelijk in een inconsistente status, waar sommige exemplaren beschikken over de vorige configuratie waarin anderen de bijgewerkte regelset hebben. Als dit het geval is, probeert u het bijwerken van de configuratie nog een keer totdat de bewerking is geslaagd en uw Firewall wordt een *geslaagd* Inrichtingsstatus.
+Wanneer een configuratie wijziging wordt toegepast, probeert Azure Firewall alle onderliggende back-end-exemplaren bij te werken. In zeldzame gevallen kan een van deze backend-exemplaren niet worden bijgewerkt met de nieuwe configuratie en wordt het update proces gestopt met een mislukte inrichtings status. Uw Azure Firewall is nog steeds operationeel, maar de toegepaste configuratie kan een inconsistente status hebben, waarbij sommige instanties de vorige configuratie hebben, waarbij anderen de bijgewerkte regelset hebben. Als dit het geval is, kunt u proberen om de configuratie nog een keer bij te werken totdat de bewerking is geslaagd en uw firewall een geslaagde inrichtings status heeft.
+
+## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Is er een maximum aantal tekens voor een firewall naam?
+
+Ja. Er is een limiet van 50 tekens voor de naam van een firewall. 

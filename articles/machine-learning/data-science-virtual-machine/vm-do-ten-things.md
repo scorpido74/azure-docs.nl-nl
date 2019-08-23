@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: MT
+ms.openlocfilehash: cd4acdd4009a94b51807a536c28b138b86d2aced
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575105"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971819"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u dit op de Windows Data Science Virtual Machine doen kunt
 
@@ -64,10 +64,6 @@ Voor Python, kunt u een IDE zoals Visual Studio Community Edition, met Python To
 * Aangepaste omgevingen voor elke versie maken door te navigeren naar **extra** -> **Python Tools** -> **Python-omgevingen** en vervolgens te klikken op ' **+ Aangepast**'in de Visual Studio Community-versie
 * Geef een beschrijving en het pad van het voorvoegsel omgeving als *c:\anaconda\envs\python2* voor Anaconda Python 2.7
 * Klik op **automatisch detecteren** en vervolgens **toepassen** om op te slaan van de omgeving.
-
-Hier ziet u hoe de installatie van de aangepaste omgeving eruitziet in Visual Studio.
-
-![Schermopname van Visual Studio met Python Tools for Visual Studio geselecteerd](./media/vm-do-ten-things/PTVSSetup.png)
 
 Zie de [documentatie bij PTVS](https://aka.ms/ptvsdocs) voor meer informatie over het maken van de Python-omgevingen.
 
@@ -219,7 +215,7 @@ Als u uw Azure-abonnement en cloud resources wilt beheren, hebt u twee opties:
 + **Azure Power shell**: Windows Power shell-scripts gebruiken. Voer Azure Power shell uit vanuit een snelkoppeling op het bureau blad of vanuit het menu Start met de titel Microsoft Azure Power shell. Raadpleeg de [Microsoft Azure Power shell-documentatie](../../powershell-azure-resource-manager.md) voor volledige informatie. 
 
 ## <a name="5-extend-storage-with-shared-file-systems"></a>5. Opslag uitbreiden met gedeelde bestands systemen
-Gegevenswetenschappers kunnen delen grote gegevenssets, code of andere resources in het team. De DSVM zelf heeft ongeveer 45GB beschikbare ruimte. Om uit te breiden van uw opslag, kunt u de Azure File-Service en een op een of meer exemplaren van de DSVM koppelen of openen via een REST-API.  U kunt ook [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) of gebruik [Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) om toe te voegen extra toegewezen gegevensschijven. 
+Gegevenswetenschappers kunnen delen grote gegevenssets, code of andere resources in het team. De DSVM zelf heeft ongeveer 45GB beschikbare ruimte. Om uit te breiden van uw opslag, kunt u de Azure File-Service en een op een of meer exemplaren van de DSVM koppelen of openen via een REST-API.  U kunt ook [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) gebruiken of gebruikmaken van [Azure Power shell](../../virtual-machines/windows/attach-disk-ps.md) om extra toegewezen gegevens schijven toe te voegen. 
 
 > [!NOTE]
 > De maximale ruimte van de share Azure File-Service is 5 TB en afzonderlijke maximumbestandsgrootte is 1 TB. 
@@ -295,8 +291,6 @@ Om gegevens te verplaatsen tussen uw lokale bestanden en blob-opslag, kunt u AzC
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
 Vervang **C:\myfolder** naar het pad waar het bestand wordt opgeslagen, **mystorageaccount** naar uw blob storage-accountnaam **mycontainer** aan de containernaam **opslagaccountsleutel** naar de toegangssleutel voor uw blob-opslag. U vindt uw opslagaccountreferenties in [Azure-portal](https://portal.azure.com).
-
-![Schermopname van de sleutels voor het Opslagaccount en container-gegevens in de Azure portal](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 AzCopy-opdracht uitvoeren in PowerShell of vanaf een opdrachtprompt. Hier volgt voorbeeldgebruik van AzCopy-opdracht:
 
@@ -393,9 +387,7 @@ Azure Data Lake Storage is een zeer grote opslagruimte voor big data analytics-w
 
 **Verplaats gegevens van VM naar Data Lake: Azure Data Lake Explorer**
 
-U kunt **Azure Data Lake Explorer** om gegevens uit de lokale bestanden in uw virtuele Machine naar Data Lake-opslag te uploaden.
-
-![Schermafbeelding van het gebruik van Data Lake Explorer om bestanden te uploaden](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+U kunt **Azure data Lake Explorer** gebruiken om [gegevens te uploaden van de lokale bestanden in uw virtuele machine naar Data Lake opslag](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
 U kunt ook een pijplijn om uw verplaatsing van gegevens naar of van het gebruik van Azure Data Lake operationeel te maken de [Azure gegevens Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Verwijzen naar dit [artikel](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) pijplijnen om u te begeleiden u bij de stappen voor het bouwen van de gegevens.
 
@@ -406,8 +398,6 @@ Als uw gegevens zich in Azure Blob-opslag bevinden, kunt u gegevens rechtstreeks
 ![Schermopname van het dialoogvenster gegevensbron toevoegen](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 In Visual Studio, kunt u gegevens lezen van blob-opslag, doen enkele gegevens manipuleren, functie-engineering en voert u de resulterende gegevens naar Azure Data Lake of Azure Blob Storage. Wanneer u verwijst naar de gegevens in blob-opslag, gebruikt u **wasb: / /** ; wanneer u verwijst naar de gegevens in Azure Data Lake, gebruik **swbhdfs: / /**
-
-![Schermafbeelding van de query met de WASB-vermelding is gemarkeerd](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 U kunt de volgende U-SQL-query's in Visual Studio:
 
@@ -486,7 +476,7 @@ Azure HDInsight is een beheerde Apache Hadoop, Spark, HBase en Storm-service in 
 
 ![Externe toegang tot het HDInsight-cluster](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Een Azure Machine Learning-werkruimte maken. Uw Machine Learning-experimenten worden opgeslagen in deze Machine Learning-werkruimte. Selecteer de gemarkeerde opties in de Portal zoals wordt weergegeven in de volgende schermafbeelding:
+* Een Azure Machine Learning-werkruimte maken. Uw Machine Learning-experimenten worden opgeslagen in deze Machine Learning-werkruimte. Selecteer de gemarkeerde opties in de portal, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
 ![Een Azure Machine Learning-werkruimte maken](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
@@ -880,9 +870,7 @@ U hebt nu de gegevens in uw Power BI-gegevensmodel. Uw Power BI desktop moet er 
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-U kunt beginnen het bouwen van rapporten en visualisaties met behulp van het gegevensmodel. U kunt de stappen in deze [Power BI-artikel](../../cosmos-db/powerbi-visualize.md#build-the-reports) om een rapport te maken. De uitvoer is een rapport dat lijkt op het volgende.
-
-![Power BI Desktop rapportweergave - Power BI-connector](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
+U kunt beginnen het bouwen van rapporten en visualisaties met behulp van het gegevensmodel. U kunt de stappen in deze [Power BI-artikel](../../cosmos-db/powerbi-visualize.md#build-the-reports) om een rapport te maken.
 
 ## <a name="9-dynamic-dsvm-scaling"></a>9. Dynamische DSVM-schaling 
 U kunt de schaal omhoog en omlaag de DSVM om te voldoen aan de projectbehoeften van uw. Als u niet nodig hebt voor het gebruik van de virtuele machine in het weekend of 's avonds, u kunt alleen de virtuele machine af van de [Azure-portal](https://portal.azure.com).
@@ -894,9 +882,7 @@ U kunt de schaal omhoog en omlaag de DSVM om te voldoen aan de projectbehoeften 
 
 Als u wilt verwerken van een grootschalige analyse en meer CPU en/of geheugen en/of schijf capaciteit nodig hebt, kunt u een grote keuze van de VM-grootten in termen van CPU-kernen, op basis van GPU-exemplaren vinden voor deep learning, geheugencapaciteit en schijftypen (met inbegrip van de SSD-schijven) die voldoen aan uw compute- en budgettaire behoeften. De volledige lijst met virtuele machines samen met de prijzen per uur compute vindt u op de [prijzen voor Azure Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/) pagina.
 
-Op dezelfde manier als uw behoeften voor de verwerkingscapaciteit van de virtuele machine wordt verkleind (bijvoorbeeld: u hebt een grote workload verplaatst naar een Hadoop- of een Spark-cluster), kunt u de schaal in het cluster op basis van de [Azure-portal](https://portal.azure.com) en Ga naar de instellingen van uw VM-exemplaar. Hier volgt een schermopname.
-
-![Instellingen voor VM-instanties](./media/vm-do-ten-things/VMScaling.PNG)
+Op dezelfde manier als uw behoeften voor de verwerkingscapaciteit van de virtuele machine wordt verkleind (bijvoorbeeld: u hebt een grote workload verplaatst naar een Hadoop- of een Spark-cluster), kunt u de schaal in het cluster op basis van de [Azure-portal](https://portal.azure.com) en Ga naar de instellingen van uw VM-exemplaar. 
 
 ## <a name="10-add-more-tools"></a>10. Meer hulp middelen toevoegen
 Er zijn verschillende hulpprogramma's die vooraf zijn ingebouwd in de DSVM die veel van de algemene gegevens analytics moet kunt oplossen. Dit bespaart u tijd doordat hoeft te installeren en configureren uw omgevingen één voor één en u geld besparen door betaalt alleen voor resources die u gebruikt.

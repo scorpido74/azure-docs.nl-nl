@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934838"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899957"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Een wereld zonder wacht woorden met Azure Active Directory
 
@@ -123,7 +123,7 @@ Met de Microsoft Authenticator-app kunnen gebruikers hun identiteit verifiëren 
 
 Vereisten voor het gebruik van de Microsoft Authenticator-app voor het uitvoeren van wacht woordloze aanmelding bij Azure AD bevatten het volgende:
 
-* Eind gebruikers zijn ingeschakeld voor Azure multi-factor Authentication
+* Eind gebruikers zijn ingeschakeld voor Azure Multi-Factor Authentication
 
 * Gebruikers worden aanbevolen hun apparaten te registreren met behulp van Microsoft Intune of Mobile Device Management een MDM-oplossing van derden om de implementatie van de app te vereenvoudigen
 
@@ -226,7 +226,7 @@ We raden u ook aan om in elke organisatie een protocol te maken voor gebruikers 
 
 #### <a name="user-sets-up-fido2-security-key"></a>Gebruiker stelt FIDO2-beveiligings sleutel in
 
-Beheerders kunnen [hand matig sleutels inrichten](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) en deze distribueren naar eind gebruikers, het inrichten en inschakelen van de FIDO2-referentie provider op het vergrendelings scherm van Windows 10 [](https://docs.microsoft.com/intune/windows-enrollment-methods)worden ondersteund via intune. Beheerders moeten ook de [Azure Portal](https://portal.azure.com/) gebruiken om hardware-token-apparaten in te scha kelen als een verificatie methode zonder wacht woord.
+Beheerders kunnen [hand matig sleutels inrichten](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) en deze distribueren naar eind gebruikers, het inrichten en inschakelen van de FIDO2-referentie provider op het vergrendelings scherm van Windows 10 [](https://docs.microsoft.com/intune/windows-enrollment-methods)worden ondersteund via intune. Beheerders moeten ook de [Azure Portal](https://portal.azure.com/) gebruiken om hardware-token-apparaten in te scha kelen als een verificatie methode zonder wacht woord.
 
 Voor het implementeren van FIDO2-beveiligings sleutels moeten gebruikers hun sleutels ook registreren via [gecombineerde registratie](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Met gecombineerde registratie kunnen gebruikers eenmaal registreren en profiteren van de voor delen van Azure multi-factor Authentication en eenmalige aanmelding (SSPR).
 
@@ -343,4 +343,4 @@ De invoering van moderne multi-factor Authentication-technologieën, zoals biome
 ## <a name="next-steps"></a>Volgende stappen
 
 * Een overzicht van [Wat is een wacht woord?](../../active-directory/authentication/concept-authentication-passwordless.md)
-* [Wacht woord in azure AD inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [Wacht woord in azure AD inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

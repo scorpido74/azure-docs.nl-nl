@@ -1,151 +1,150 @@
 ---
-title: Capaciteit plannen voor Hyper-V-noodherstel met Azure Site Recovery | Microsoft Docs
-description: Gebruik dit artikel kunt u schatten capaciteit bij het instellen van herstel na noodgeval met de Azure Site Recovery-service.
+title: Capaciteit plannen voor herstel na nood geval met Azure Site Recovery | Microsoft Docs
+description: Gebruik dit artikel voor het schatten van de capaciteit bij het instellen van herstel na nood gevallen met de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036647"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972575"
 ---
-# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Capaciteit plannen voor noodherstel van Hyper-V-VM 
+# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Capaciteit plannen voor herstel na nood gevallen voor Hyper-V-VM'S 
 
-Een nieuwe, verbeterde versie van [Azure Site Recovery Deployment Planner voor Hyper-V naar Azure-implementatie](site-recovery-hyper-v-deployment-planner.md) is nu beschikbaar. Dit vervangt de oude hulpprogramma. Het nieuwe hulpprogramma gebruiken voor het plannen van uw implementatie.
-Het hulpprogramma biedt de volgende richtlijnen:
+De implementatie van [Azure Site Recovery Deployment Planner] (site-recovery-hyper-v-deployment-planner.md) voor Hyper-V naar Azure biedt het volgende:
 
-* Beoordeling van geschiktheid van virtuele machine, op basis van het aantal schijven, schijfgrootte, IOPS, verloop en een aantal VM-eigenschappen
-* Netwerkbandbreedte versus RPO-evaluatie
-* Vereisten voor Azure-infrastructuur
-* On-premises infrastructuurvereisten
-* Initiële replicatie via batchverwerking richtlijnen
-* Geschatte kosten van herstel na noodgevallen naar Azure
+* Beoordeling van de geschiktheid van de VM, op basis van het aantal schijven, schijf grootte, IOPS, verloop en enkele VM-kenmerken
+* Behoefte aan netwerk bandbreedte versus RPO-evaluatie
+* Vereisten voor Azure-infra structuur
+* Vereisten voor on-premises infra structuur
+* Richt lijnen voor de eerste replicatie batch
+* Geschatte totale kosten voor herstel na nood geval naar Azure
 
 
-Azure Site Recovery Capacity Planner kunt u uw capaciteitsvereisten bepalen wanneer u Hyper-V-machines met Azure Site Recovery repliceert.
+Azure Site Recovery Capacity Planner helpt u bij het bepalen van de capaciteits vereisten wanneer u virtuele Hyper-V-machines repliceert met Azure Site Recovery.
 
-Gebruik Site Recovery Capacity Planner voor het analyseren van uw bronomgeving en werkbelastingen. Hiermee kunt u schatten bandbreedtebehoeften, de server-bronnen die u nodig hebt voor de bronlocatie, en de resources (zoals virtuele machines en opslag) moet u op de doellocatie.
+Gebruik Site Recovery Capacity Planner om uw bron omgeving en workloads te analyseren. Het helpt u bij het schatten van bandbreedte behoeften, de Server bronnen die u nodig hebt voor de bron locatie en de resources (zoals Vm's en opslag) die u nodig hebt op de doel locatie.
 
-U kunt het hulpprogramma uitvoeren in twee modi:
+U kunt het hulp programma uitvoeren in twee modi:
 
-* **Planning voor snelle**: Biedt de netwerk- en projecties op basis van een gemiddelde aantal virtuele machines, schijven, opslag en de wijzigingssnelheid.
-* **Gedetailleerde planning**: Geeft de details van elke werkbelasting op het niveau van de virtuele machine. VM-compatibiliteit analyseren en netwerk- en projecties ophalen.
+* **Snelle planning**: Voorziet in netwerk-en server projectie op basis van een gemiddeld aantal Vm's, schijven, opslag en wijzigings frequentie.
+* **Gedetailleerde planning**: Geeft details van elke werk belasting op het niveau van de virtuele machine. Analyseer de compatibiliteit van de virtuele machine en haal netwerk-en server projecties op.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-* Gegevens verzamelen over uw omgeving, met inbegrip van virtuele machines, schijven per virtuele machine, opslag per schijf.
-* Identificeer uw dagtarief wijzigen (verloop) voor gerepliceerde gegevens. Download de [Hyper-V-hulpprogramma voor capaciteitsplanning](https://www.microsoft.com/download/details.aspx?id=39057) om op te halen van de snelheid waarmee u wijzigt. [Meer informatie](site-recovery-capacity-planning-for-hyper-v-replication.md) over dit hulpprogramma. Het is raadzaam dat u dit hulpprogramma uitvoeren in een week om vast te leggen gemiddelden.
+* Verzamel informatie over uw omgeving, met inbegrip van Vm's, schijven per VM, opslag per schijf.
+* Bepaal uw dagelijkse wijzigings frequentie (verloop) voor gerepliceerde gegevens. Down load het [hulp programma voor capaciteits planning voor Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) om de wijzigings frequentie te verkrijgen. [Meer informatie](site-recovery-capacity-planning-for-hyper-v-replication.md) over dit hulpprogramma. U wordt aangeraden dit hulp programma over een week uit te voeren om de gemiddelden vast te leggen.
 
 
-## <a name="run-the-quick-planner"></a>De snelle Planner uitvoeren
-1. Downloaden en openen [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). U moet uitvoeren van macro's. Wanneer u wordt gevraagd, moet u selecties inschakelen bewerken en inhoud.
+## <a name="run-the-quick-planner"></a>De snelle planner uitvoeren
+1. Down load en open [Site Recovery capacity planner](https://aka.ms/asr-capacity-planner-excel). U moet macro's uitvoeren. Wanneer u hierom wordt gevraagd, selecteert u selecties om bewerken en inhoud in te scha kelen.
 
-2. In de **een planner-type selecteren** keuzelijst, selecteer **snelle Planner**.
+2. Selecteer in de keuze lijst **een planner type selecteren** de optie **snelle planner**.
 
    ![Aan de slag](./media/site-recovery-capacity-planner/getting-started.png)
 
-3. Op de **Capacity Planner** werkblad, voer de vereiste informatie. Vul alle velden in de volgende schermafbeelding met rood omcirkeld:
+3. Voer de vereiste gegevens in op het werk blad **capacity planner** . Vul alle velden in die rood in de volgende scherm afbeelding worden omcirkeld:
 
-   a. In **selecteert u uw scenario**, kiest u **Hyper-V naar Azure** of **VMware/fysieke machines naar Azure**.
+   a. In **Selecteer uw scenario**kiest u **Hyper-V naar Azure** of **VMware/fysiek naar Azure**.
 
-   b. In **gemiddelde dagelijkse gegevenswijzigingssnelheid (%)** , voert u de gegevens die u via verzamelt de [Hyper-V-hulpprogramma voor capaciteitsplanning](site-recovery-capacity-planning-for-hyper-v-replication.md) of [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md).
+   b. Geef de **gemiddelde dagelijkse gegevens wijzigings frequentie (%)** op door de gegevens die u verzamelt met het [hulp programma voor capaciteits planning voor Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) of [site Recovery Deployment planner](./site-recovery-deployment-planner.md).
 
-   c. De **compressie** instelling wordt niet gebruikt wanneer u Hyper-V-machines naar Azure repliceren. Voor compressie, gebruikt u een apparaat van derden, bijvoorbeeld middels Riverbed.
+   c. De **compressie** -instelling wordt niet gebruikt wanneer u virtuele Hyper-V-machines naar Azure repliceert. Gebruik voor compressie een apparaat van derden, zoals Riverbed.
 
-   d. In **bewaartermijn in dagen**, opgeven in dagen hoelang de behouden replica's.
+   d. In **dagen**bewaren geeft u in dagen op hoe lang replica's moeten worden bewaard.
 
-   e. In **aantal uren op waarvoor de initiële replicatie voor de batch virtuele machines moet worden voltooid** en **aantal virtuele machines per batch van de initiële replicatie**, voer de instellingen die worden gebruikt om te berekenen vereisten voor initiële replicatie. Wanneer Site Recovery wordt geïmplementeerd, wordt de volledige initiële gegevensset is geüpload.
+   e. In het **aantal uren waarin de initiële replicatie voor de batch van virtuele machines moet worden voltooid** en het **aantal virtuele machines per initiële replicatie batch**, voert u de instellingen in die worden gebruikt voor het berekenen van de initiële replicatie vereisten. Wanneer Site Recovery is geïmplementeerd, wordt de volledige initiële gegevensset geüpload.
 
    ![Invoer](./media/site-recovery-capacity-planner/inputs.png)
 
-4. Nadat u de waarden voor de bronomgeving hebt ingevoerd, bevat de uitvoer weergegeven:
+4. Nadat u de waarden voor de bron omgeving hebt opgegeven, bevat de weer gegeven uitvoer:
 
-   * **Bandbreedte die is vereist voor replicatie van verschillen (in Megabits per seconde)** : Netwerkbandbreedte voor replicatie van verschillen wordt voor de gemiddelde dagelijkse veranderingssnelheid van gegevens berekend.
-   * **Bandbreedte die is vereist voor de initiële replicatie (in Megabits per seconde)** : Netwerkbandbreedte voor de initiële replicatie wordt berekend op basis van de initiële replicatie waarden die u invoert.
-   * **Opslag die is vereist (in GB)** : De totale Azure opslagruimte vereist.
-   * **Totaal aantal IOP's op Standard-opslag**: Het getal wordt berekend op basis van de grootte van 8 kB IOPS op de totale standard storage-accounts. Het getal wordt berekend op basis van de schijven voor de virtuele machine bron en de dagelijkse gegevenswijzigingssnelheid voor de snelle Planner. Voor de gedetailleerde Planner, het getal wordt berekend op basis van het totale aantal virtuele machines die zijn toegewezen aan de standaard Azure-VM's en de gegevenswijzigingssnelheid op deze virtuele machines.
-   * **Aantal vereiste accounts voor standaardopslag**: Het totale aantal standard storage-accounts nodig voor het beveiligen van de virtuele machines. Een standard storage-account kan maximaal 20.000 IOP's bevatten voor alle virtuele machines in de standard-opslag. Maximaal 500 IOP's wordt per schijf ondersteund.
-   * **Aantal vereiste schijven voor Blob**: Het aantal schijven die zijn gemaakt op Azure-opslag.
-   * **Het aantal vereiste accounts voor premium**: Het totale aantal premium storage-accounts nodig voor het beveiligen van de virtuele machines. Een bron-VM met hoge IOPS (groter dan 20.000) moet een premium storage-account. Premium storage-account kan maximaal 80.000 IOP's bevatten.
-   * **Totaal aantal IOP's op Premium Storage**: Het getal wordt berekend op basis van de grootte van 256 kB IOPS op de totale premium storage-accounts. Het getal wordt berekend op basis van de schijven voor de virtuele machine bron en de dagelijkse gegevenswijzigingssnelheid voor de snelle Planner. Het getal wordt berekend op basis van het totale aantal virtuele machines die zijn toegewezen aan premium Azure-VM's (DS- en GS-serie) voor de gedetailleerde Planner en veranderingssnelheid van de gegevens op deze virtuele machines.
-   * **Het aantal configuratieservers vereist**: Geeft het aantal configuratieservers zijn vereist voor de implementatie.
-   * **Aantal extra processervers vereist**: Geeft aan of extra processervers zijn vereist, naast de processerver die standaard op de configuratieserver wordt uitgevoerd.
-   * **Extra opslag van 100% op de broncomputer**: Geeft aan of extra opslag in de bronlocatie vereist is.
+   * **Band breedte vereist voor replicatie van verschillen (in megabits per seconde)** : De netwerk bandbreedte voor Delta replicatie wordt berekend op basis van de gemiddelde dagelijkse wijzigings frequentie van gegevens.
+   * **Band breedte die is vereist voor de initiële replicatie (in megabits per seconde)** : De netwerk bandbreedte voor de initiële replicatie wordt berekend op basis van de initiële replicatie waarden die u invoert.
+   * **Opslag vereist (in GB)** : De totale Azure-opslag is vereist.
+   * **Totaal aantal IOPS op standaard opslag**: Het getal wordt berekend op basis van de 8K IOPS-eenheids grootte op de totale standaard opslag accounts. Voor de snelle planner wordt het getal berekend op basis van alle schijven van de bron-VM en de wijzigings frequentie voor dagelijkse gegevens. Voor de gedetailleerde planner wordt het getal berekend op basis van het totale aantal virtuele machines dat is toegewezen aan standaard virtuele machines van Azure en de gegevens wijzigings frequentie voor deze Vm's.
+   * **Aantal vereiste standaard opslag accounts**: Het totale aantal standaard opslag accounts dat nodig is om de virtuele machines te beveiligen. Een standaard opslag account kan Maxi maal 20.000 IOPS bevatten voor alle virtuele machines in de standaard opslag. Er wordt Maxi maal 500 IOPS per schijf ondersteund.
+   * **Aantal vereiste BLOB-schijven**: Het aantal schijven dat is gemaakt in azure Storage.
+   * **Aantal vereiste Premium-accounts**: Het totale aantal Premium-opslag accounts dat nodig is om de virtuele machines te beveiligen. Voor een bron-VM met hoge IOPS (groter dan 20.000) is een Premium-opslag account vereist. Een Premium-opslag account kan Maxi maal 80.000 IOPS bevatten.
+   * **Totaal aantal IOPS op Premium Storage**: Het getal wordt berekend op basis van de grootte van 256 KB IOPS-eenheid op de totale Premium-opslag accounts. Voor de snelle planner wordt het getal berekend op basis van alle schijven van de bron-VM en de wijzigings frequentie voor dagelijkse gegevens. Voor de gedetailleerde planner wordt het getal berekend op basis van het totale aantal virtuele machines dat is toegewezen aan de Premium Azure-Vm's (DS-en GS-serie) en de gegevens wijzigings frequentie voor deze Vm's.
+   * **Aantal vereiste configuratie servers**: Laat zien hoeveel configuratie servers vereist zijn voor de implementatie.
+   * **Aantal vereiste extra proces servers**: Hier wordt weer gegeven of extra proces servers vereist zijn, naast de proces server die standaard op de configuratie server wordt uitgevoerd.
+   * **100% extra opslag ruimte op de bron**: Geeft aan of extra opslag ruimte vereist is op de bron locatie.
 
-      ![Uitvoer](./media/site-recovery-capacity-planner/output.png)
+      ![Output](./media/site-recovery-capacity-planner/output.png)
 
-## <a name="run-the-detailed-planner"></a>De gedetailleerde Planner uitvoeren
+## <a name="run-the-detailed-planner"></a>De gedetailleerde planner uitvoeren
 
-1. Downloaden en openen [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). U moet uitvoeren van macro's. Wanneer u wordt gevraagd, moet u selecties inschakelen bewerken en inhoud.
+1. Down load en open [Site Recovery capacity planner](https://aka.ms/asr-capacity-planner-excel). U moet macro's uitvoeren. Wanneer u hierom wordt gevraagd, selecteert u selecties om bewerken en inhoud in te scha kelen.
 
-2. In **een planner-type selecteren**, selecteer **gedetailleerde Planner** uit de lijst.
+2. Selecteer in **Selecteer een planner type** **gedetailleerde planner** in de keuze lijst.
 
    ![Introductiehandleiding](./media/site-recovery-capacity-planner/getting-started-2.png)
 
-3. Op de **werkbelasting kwalificatie** werkblad, voer de vereiste informatie. U moet de gemarkeerde velden invullen.
+3. Voer de vereiste gegevens in op het werk blad **kwalificaties werk belasting** . U moet alle velden die zijn gemarkeerd invullen.
 
-   a. In **processorkernen**, het totale aantal kernen op een bronserver opgeven.
+   a. Geef in **processor cores**het totale aantal kernen op een bron server op.
 
-   b. In **toewijzing van geheugen (in MB/s)** , de grootte van het RAM-geheugen van een bronserver opgeven.
+   b. Geef in **geheugen toewijzing (in MB)** de RAM-grootte op van een bron server.
 
-   c. In **nummer van de NIC's**, geef het aantal netwerkadapters op een bronserver.
+   c. Geef in **aantal nic's**het aantal netwerk adapters op een bron server op.
 
-   d. In **totale opslag (in GB)** , geef de totale grootte van de VM-opslag. Bijvoorbeeld, als de bronserver drie schijven met 500 GB heeft, is de grootte van de totale opslag 1500 GB.
+   d. Geef in **totale opslag (in GB)** de totale grootte van de VM-opslag op. Als de bron server bijvoorbeeld drie schijven heeft met elk 500 GB, is de totale opslag grootte 1.500 GB.
 
-   e. In **aantal schijven die zijn gekoppeld**, geeft u het totale aantal schijven van een bronserver.
+   e. Geef bij **aantal gekoppelde schijven**het totale aantal schijven van een bron server op.
 
-   f. In **schijf verbruik (%) van de opslagcapaciteit**, geef het gemiddelde gebruik.
+   f. Geef het gemiddelde gebruik op in **schijf capaciteits gebruik (%)** .
 
-   g. In **dagelijkse gegevenswijzigingssnelheid (%)** , veranderingssnelheid van de dagelijkse gegevens van een bronserver opgeven.
+   g. In **dagelijkse gegevens wijzigings percentage (%)** geeft u de dagelijkse gegevens wijzigings frequentie van een bron server op.
 
-   h. In **toewijzing van Azure VM-grootte**, geef de Azure-VM-grootte die u wilt toewijzen. Als u niet dat dit handmatig doen wilt, selecteert u **IaaS-VM's Compute**. Als u een handmatige instelling invoer en selecteer vervolgens **IaaS-VM's Compute**, de instelling van de handmatige, kan worden overschreven. Het proces compute identificeert automatisch de beste overeenkomst op Azure VM-grootte.
+   h. Voer in **Azure VM-grootte toewijzen**de Azure VM-grootte in die u wilt toewijzen. Als u dit niet hand matig wilt doen, selecteert u **Compute IaaS vm's**. Als u een hand matige instelling invoert en vervolgens **Compute IaaS vm's**selecteert, kan de hand matige instelling worden overschreven. Het reken proces identificeert automatisch de beste overeenkomst op de Azure VM-grootte.
 
-   ![Werkblad voor werkbelasting-kwalificatie](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![Werk blad kwalificaties werk belasting](./media/site-recovery-capacity-planner/workload-qualification.png)
 
-4. Als u selecteert **IaaS-VM's Compute**, dit is wat het doet:
+4. Als u **Compute IaaS vm's**selecteert, doet u het volgende:
 
    * Valideert de verplichte invoer.
-   * Berekent de IOPS en stelt het meest geschikt is Azure VM-grootte voor elke virtuele machine die in aanmerking komt voor replicatie naar Azure. Als een geschikte grootte die virtuele Azure-machine kan niet worden gedetecteerd, wordt er een fout weergegeven. Als het aantal schijven die zijn gekoppeld 65 is een fout wordt weergegeven omdat de grootte van de hoogste voor een Azure-VM 64 is is.
-   * Stelt een storage-account dat kan worden gebruikt voor een Azure-VM.
-   * Berekent het totale aantal standard storage-accounts en premium storage-accounts vereist voor de werkbelasting. Schuif omlaag om het type Azure-opslag en het opslagaccount dat kan worden gebruikt voor een bronserver weer te geven.
-   * Is voltooid en sorteert de rest van de tabel op basis van het vereiste opslagtype (standard of premium) toegewezen voor een virtuele machine en het aantal schijven die zijn gekoppeld. Voor alle virtuele machines die voldoen aan de vereisten voor Azure, de kolom **Is VM gekwalificeerde?** bevat **Ja**. Als een virtuele machine kan niet een back-up naar Azure, wordt er een fout weergegeven.
+   * Berekent IOPS en stelt de beste overeenkomst van de Azure VM-grootte voor elke VM die in aanmerking komt voor replicatie naar Azure. Als er geen geschikte grootte voor Azure VM kan worden gedetecteerd, wordt een fout weer gegeven. Als bijvoorbeeld het aantal gekoppelde schijven 65 is, wordt er een fout weer gegeven omdat de hoogste grootte voor een virtuele machine van Azure 64 is.
+   * Hiermee wordt een opslag account voorgesteld dat kan worden gebruikt voor een virtuele Azure-machine.
+   * Berekent het totale aantal standaard opslag accounts en Premium Storage-accounts die zijn vereist voor de werk belasting. Schuif omlaag om het Azure-opslag type en het opslag account dat kan worden gebruikt voor een bron server weer te geven.
+   * Hiermee wordt de rest van de tabel voltooid en gesorteerd op basis van het vereiste opslag type (Standard of Premium) dat is toegewezen aan een virtuele machine en het aantal gekoppelde schijven. Voor alle virtuele machines die voldoen aan de vereisten voor Azure, wordt de kolom aangeduid als een **virtuele machine?** bevat **Ja**. Als er geen back-up van een virtuele machine kan worden gemaakt naar Azure, wordt een fout weer gegeven.
 
-Kolommen AA AE worden uitgevoerd en geef informatie voor elke virtuele machine.
+Kolommen AA tot en met AE zijn uitvoer en geven informatie voor elke VM.
 
-![Uitvoerkolommen AA AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![Uitvoer kolommen AA tot en met AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>Voorbeeld
-Als voorbeeld voor zes VM's met de waarden in de tabel, het hulpprogramma berekent en wijst het meest geschikt voor de virtuele machine van Azure en de vereisten voor Azure storage.
+Als voor beeld: voor zes Vm's met de waarden die in de tabel worden weer gegeven, worden met het hulp programma de beste overeenkomst voor Azure-VM'S en de vereisten voor Azure Storage berekend en toegewezen.
 
-![Toewijzingen voor werkbelasting-kwalificatie](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![Toewijzing van werk belasting kwalificaties](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
-* Let op het volgende in de voorbeelduitvoer:
+* Let op het volgende in de voorbeeld uitvoer:
 
-  * De eerste kolom is een kolom validatie voor de virtuele machines, schijven en gegevensverloop.
-  * Twee standard storage-accounts en een premium storage-account nodig zijn voor vijf virtuele machines.
-  * VM3 niet in aanmerking voor beveiliging, omdat een of meer schijven meer dan 1 TB zijn.
-  * VM1 en VM2 kunt het eerste standard storage-account gebruiken
-  * VM4 kunt de tweede standard storage-account gebruiken.
-  * VM5 en VM6 moet een premium storage-account, en beide één account kunnen gebruiken.
+  * De eerste kolom is een validatie kolom voor de Vm's, schijven en het verloop.
+  * Er zijn twee standaard opslag accounts en één Premium-opslag account nodig voor vijf Vm's.
+  * VM3 komt niet in aanmerking voor beveiliging omdat een of meer schijven meer dan 1 TB zijn.
+  * VM1 en VM2 kunnen het eerste standaard opslag account gebruiken
+  * VM4 kan gebruikmaken van het tweede standaard opslag account.
+  * VM5 en VM6 hebben een Premium-opslag account nodig en beide kunnen één account gebruiken.
 
     > [!NOTE]
-    > IOP's op standard en premium storage worden berekend op het niveau van de virtuele machine en niet op het schijfniveau van de. Een standaard virtuele machine kan maximaal 500 IOP's per schijf worden verwerkt. Als de IOPS voor een schijf groter zijn dan 500, moet u premium-opslag. Als IOPS aan voor een schijf is meer dan 500 IOPS aan voor de totale VM-schijven zijn binnen de grenzen van ondersteuning voor standaard Azure-VM, kiest de planner een standaard virtuele machine en niet de DS- of GS-serie. (De virtuele machine van Azure-limieten zijn VM-grootte, het aantal schijven, het aantal adapters, CPU en geheugen). U moet handmatig bijwerken van de toewijzing van Azure-grootte cel met de juiste DS of GS-serie VM.
+    > IOPS op standaard-en Premium-opslag wordt berekend op het niveau van de virtuele machine en niet op schijf niveau. Een standaard-VM kan Maxi maal 500 IOPS per schijf verwerken. Als IOPS voor een schijf groter is dan 500, hebt u Premium Storage nodig. Als IOPS voor een schijf groter is dan 500, maar IOPS voor de totale VM-schijven binnen de ondersteunde limieten voor Azure-VM'S liggen, kiest de planner een standaard-VM en niet de DS-of GS-serie. (De limieten voor Azure VM zijn VM-grootte, het aantal schijven, het aantal adapters, de CPU en het geheugen.) U moet de cel toewijzing Azure size hand matig bijwerken met de juiste VM van de DS-of GS-serie.
 
 
-Nadat u alle informatie die is ingevoerd, selecteert u **gegevens verzenden naar de tool voor implementatieplanning** Capacity Planner openen. Workloads zijn gemarkeerd als u wilt weergeven of ze in aanmerking komen voor beveiliging.
+Nadat alle gegevens zijn ingevoerd, selecteert **u gegevens verzenden naar het hulp programma planner** om capacity planner te openen. Werk belastingen zijn gemarkeerd om aan te tonen of ze in aanmerking komen voor beveiliging.
 
-### <a name="submit-data-in-capacity-planner"></a>Verzenden van gegevens in de Capacity Planner
-1. Wanneer u opent de **Capacity Planner** werkblad, wordt dit ingevuld op basis van de instellingen die u hebt opgegeven. Het woord 'Werkbelasting' wordt weergegeven in de **Infra invoer bron** cel om weer te geven dat de invoer is de **werkbelasting kwalificatie** werkblad.
+### <a name="submit-data-in-capacity-planner"></a>Gegevens verzenden in Capacity Planner
+1. Wanneer u het werk blad **capacity planner** opent, wordt het ingevuld op basis van de instellingen die u hebt opgegeven. Het woord ' workload ' wordt weer gegeven in de bron cel voor **infra structuur invoer** om aan te geven dat de invoer het werk blad voor **werk belasting kwalificaties** is.
 
-2. Als u wijzigingen aanbrengen wilt, moet u wijzigen de **werkbelasting kwalificatie** werkblad. Selecteer vervolgens **gegevens verzenden naar de tool voor implementatieplanning** opnieuw.
+2. Als u wijzigingen wilt aanbrengen, moet u het werk blad **kwalificaties werk belasting** wijzigen. Selecteer vervolgens opnieuw **gegevens verzenden naar het hulp programma planner** .
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-[Leer hoe u uitvoert](site-recovery-capacity-planning-for-hyper-v-replication.md) het hulpprogramma voor capaciteitsplanning.
+[Meer informatie over het uitvoeren](site-recovery-capacity-planning-for-hyper-v-replication.md) van het hulp programma capaciteits planning.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519995"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906039"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Zelfstudie: Signagelive configureren voor automatische gebruikers inrichting
 
@@ -56,8 +56,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 Voordat u Signagelive configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Signagelive.
 
-1.  Neem contact op met [Signagelive](mailto:development@signagelive.com) om het geheime token te verkrijgen dat nodig is voor het configureren van scim-inrichting.
-
+  Neem contact op met [Signagelive](mailto:development@signagelive.com) om het geheime token te verkrijgen dat nodig is voor het configureren van scim-inrichting.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Signagelive toevoegen vanuit de galerie
 
@@ -86,7 +85,7 @@ Als u Signagelive wilt configureren voor het automatisch inrichten van gebruiker
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Signagelive te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
->  U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor BitaBIZ, gevolgd door de instructies in de [Signagelive-zelf studie voor eenmalige aanmelding](Signagelive-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+>  U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Signagelive, gevolgd door de instructies in de [Signagelive-zelf studie voor eenmalige aanmelding](Signagelive-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Signagelive in azure AD:
 
@@ -106,7 +105,8 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie beheerders referenties de ` https://samlapi.signagelive.com/scim/v2` invoer in de **Tenant-URL**. Voer in het veld **geheim token** de waarde van de Bearer- **token** in die is opgegeven door het Engineering Development-team. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Signagelive. Als de verbinding mislukt, zorg er dan voor dat uw Signagelive-account beheerders ![machtigingen heeft en probeer het opnieuw met de Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+5. Selecteer in de sectie beheerders referenties de ` https://samlapi.signagelive.com/scim/v2` invoer in de **Tenant-URL**. Voer in het veld **geheim token** de waarde van de Bearer- **token** in die is opgegeven door het Engineering Development-team. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Signagelive. Als de verbinding mislukt, zorg er dan voor dat uw Signagelive-account beheerders machtigingen heeft en probeer het opnieuw.
+    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
@@ -144,9 +144,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Signagelive.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers en/of groepen, raadpleegt u [hoe lang het duurt om gebruikers](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)in te richten. 
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Signagelive. Zie [de status van gebruikers inrichten controleren](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

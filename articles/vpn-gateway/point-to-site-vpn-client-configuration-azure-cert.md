@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 79e7027d308d389aa672d164de91df61b1142e32
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 07d48ed195f74c9aef5d34de1925ab8fc2a3ae21
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534167"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899877"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-client configuratie bestanden maken en installeren voor systeem eigen Azure-certificaat verificatie P2S-configuraties
 
@@ -133,13 +133,13 @@ De volgende instructies zijn gemaakt op Ubuntu 18.0.4. Ubuntu 16.0.10 biedt geen
    ```
    sudo apt install network-manager-strongswan
    ```
-2. Selecteer het pictogram **netwerk beheerder** (pijl-omhoog en pijl-omlaag) en selecteer vervolgens **verbindingen bewerken**.
+2. Selecteer **instellingen** en selecteer vervolgens **netwerk**.
 
    ![verbindingen bewerken](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. Klik op de knop **toevoegen** om een nieuwe verbinding te maken.
+3. Klik op **+** de knop om een nieuwe verbinding te maken.
 
    ![een verbinding toevoegen](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
-4. Selecteer **IPSec/IKEv2 (strongswan)** in de vervolg keuzelijst en klik vervolgens op **maken**. In deze stap kunt u de naam van de verbinding wijzigen.
+4. Selecteer **IPSec/IKEv2 (strongswan)** in het menu en dubbel klik op. In deze stap kunt u de naam van uw verbinding wijzigen.
 
    ![Kies een verbindings type](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
 5. Open het **VpnSettings. XML-** bestand in de **algemene** map die zich in de gedownloade client configuratie bestanden bevindt. Zoek het label **VpnServer** en kopieer de naam, te beginnen met ' azuregateway ' en eindigt met '. cloudapp.net '.
@@ -148,8 +148,8 @@ De volgende instructies zijn gemaakt op Ubuntu 18.0.4. Ubuntu 16.0.10 biedt geen
 6. Plak deze naam in het **adres** veld van uw nieuwe VPN-verbinding in de sectie **Gateway** . Selecteer vervolgens het mappictogram aan het einde van het veld **certificaat** , blader naar de **algemene** map en selecteer het **VpnServerRoot** -bestand.
 7. Selecteer in het gedeelte **client** van de verbinding voor **verificatie**de optie **certificaat/persoonlijke sleutel**. Voor het **certificaat** en de **persoonlijke sleutel**kiest u het certificaat en de persoonlijke sleutel die u eerder hebt gemaakt. Selecteer bij **Opties** **een intern IP-adres aanvragen**. Klik vervolgens op **toevoegen**.
 
-   ![een intern IP-adres aanvragen](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
-8. Klik op het pictogram **Network Manager** (pijl-omhoog/pijl-omlaag) en beweeg de muis aanwijzer over **VPN-verbindingen**. U ziet de VPN-verbinding die u hebt gemaakt. Klik om de verbinding te initiëren.
+   ![een intern IP-adres aanvragen](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
+8. Zet de verbinding **aan**.
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 

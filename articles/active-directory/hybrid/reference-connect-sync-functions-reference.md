@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-synchronisatie: Naslaginformatie over functies | Microsoft Docs'
-description: Verwijzing van declaratieve inrichtingsexpressies in Azure AD Connect-synchronisatie.
+title: 'Azure AD Connect synchronisatie: Naslag informatie over functies | Microsoft Docs'
+description: Verwijzing van declaratieve inrichtings expressies in Azure AD Connect-synchronisatie.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,39 +16,39 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b21c5f8630598a4b7117d23ad7c8da46de07d2fa
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204502"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900044"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-synchronisatie: Functieverwijzing
-In Azure AD Connect, worden functies gebruikt voor het bewerken van een kenmerkwaarde tijdens de synchronisatie.  
-De syntaxis van de functies wordt uitgedrukt in de volgende notatie:  
+# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect synchronisatie: Functieverwijzing
+In Azure AD Connect worden functies gebruikt voor het bewerken van een kenmerk waarde tijdens de synchronisatie.  
+De syntaxis van de functies wordt weer gegeven in de volgende indeling:  
 `<output type> FunctionName(<input type> <position name>, ..)`
 
-Als een functie is overbelast en meerdere parameters accepteert, worden alle geldige syntaxis weergegeven.  
-De functies zijn sterk getypeerd en ze controleren of het doorgegeven type komt overeen met de gedocumenteerde type.  
-Als het type niet overeenkomt, wordt een fout opgetreden.
+Als een functie overbelast is en meerdere syntaxis accepteert, worden alle geldige syntaxis weer gegeven.  
+De functies zijn sterk getypeerd en er wordt gecontroleerd of het type dat is door gegeven, overeenkomt met het gedocumenteerde type.  
+Als het type niet overeenkomt, wordt er een fout gegenereerd.
 
-De typen worden uitgedrukt met de volgende syntaxis:
+De typen worden weer gegeven met de volgende syntaxis:
 
-* **bIn** : binaire
-* **BOOL** – Booleaanse
-* **DT** – UTC-datum/tijd
-* **Enum** – opsomming van de bekende constanten
-* **EXP** -expressie die wordt verwacht te laten resulteren in een Booleaanse waarde
-* **mvbin** – Multi-Valued Binary
-* **mvstr** – meerwaardige tekenreeks
-* **mvref** – meerwaardige verwijzing
-* **num** – Numeric
-* **REF** -verwijzing
-* **Str** : tekenreeks
-* **VAR** : een variant van (bijna) alle andere type
-* **ongeldig** – geen waarde als resultaat
+* **bin** – binary
+* **BOOL** -Boole
+* **DT** – UTC-datum/-tijd
+* **Enum** -opsomming van bekende constanten
+* **exp** -expressie, waarvan wordt verwacht dat deze naar een Booleaanse waarde wordt geëvalueerd
+* **mvbin** : meerdere binaire waarden
+* **mvstr** : teken reeks met meerdere waarden
+* **mvref** : Naslag informatie over meerdere waarden
+* **num** -numeriek
+* **Ref** -verwijzing
+* **Str** : teken reeks
+* **var** : een variant van (bijna) elk ander type
+* **void** : retourneert geen waarde
 
-De functies met de typen **mvbin**, **mvstr**, en **mvref** kan alleen worden gebruikt voor kenmerken met meerdere waarden. Functies met **bin**, **str**, en **ref** werk op zowel één waarde als meerwaardige kenmerken.
+De functies met de typen **mvbin**, **mvstr**en **mvref** kunnen alleen worden gebruikt voor kenmerken met meerdere waarden. Functies met **bin**, **Str**en **Ref** werken zowel op kenmerken met één waarde als met meerdere waarden.
 
 ## <a name="functions-reference"></a>Functieverwijzing
 
@@ -61,417 +61,417 @@ De functies met de typen **mvbin**, **mvstr**, en **mvref** kan alleen worden ge
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
 | [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
 [CertVersion](#certversion) |[IsCert](#iscert) | | | |
-| **Conversie** | | | | |
+| **Factor** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
 | [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
-| **Datum / tijd** | | | | |
-| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[nu](#now) | |
+| **Datum en tijd** | | | | |
+| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Hierna](#now) | |
 | [NumFromDate](#numfromdate) | | | | |
-| **Directory** | | | | |
+| **Uitvoermap** | | | | |
 | [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
-| **Evaluatie** | | | | |
+| **Raming** | | | | |
 | [IsBitSet](#isbitset) |[IsDate](#isdate) |[IsEmpty](#isempty) |[IsGuid](#isguid) | |
 | [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[IsPresent](#ispresent) | |
 | [IsString](#isstring) | | | | |
-| **Math** | | | | |
+| **Kundig** | | | | |
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **Meerdere waarden** | | | | |
-| [bevat](#contains) |[Aantal](#count) |[Item](#item) |[ItemOrNull](#itemornull) | |
-| [Koppelen](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
-| **Program Flow** | | | | |
-| [Fout](#error) |[IIF](#iif) |[Selecteren](#select) |[Switch](#switch) | |
-| [waar](#where) |[met](#with) | | | |
-| **Tekst** | | | | |
-| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
+| [Daarin](#contains) |[Aantal](#count) |[Item](#item) |[ItemOrNull](#itemornull) | |
+| [Koppelen](#join) |[RemoveDuplicates](#removeduplicates) |[Delen](#split) | | |
+| **Programma stroom** | | | | |
+| [Optreedt](#error) |[IIF](#iif) |[Selecteren](#select) |[/Tijdnotatie](#switch) | |
+| [Positie](#where) |[Met](#with) | | | |
+| **Text** | | | | |
+| [GPT](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Links](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[vervangen](#replace) | |
-| [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Vervangen](#replace) | |
+| [ReplaceChars](#replacechars) |[Onder](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
 ---
 ### <a name="bitand"></a>BitAnd
 **Beschrijving:**  
-De functie BitAnd wordt opgegeven bits ingesteld op een waarde.
+De functie BitAnd stelt opgegeven bits in op een waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `num BitAnd(num value1, num value2)`
 
-* waarde1, waarde2: numerieke waarden die functiesleutels moeten samen worden
+* waarde1, waarde2: numerieke waarden die samen moeten worden AND'ed
 
-**Opmerking:**  
-Deze functie worden beide parameters geconverteerd naar een binaire indeling en iets op:
+**Opmerkingen**  
+Deze functie converteert beide para meters naar de binaire weer gave en stelt een bit in op:
 
-* 0 - als één of beide van de bijbehorende bits in *masker* en *vlag* 0 zijn
-* 1 - als beide van de bijbehorende bits 1 zijn.
+* 0: als een of beide van de corresponderende bits in *waarde1* en *Value2* 0 zijn
+* 1: als beide corresponderende bits 1 zijn.
 
-Met andere woorden, retourneert 0 in alle gevallen, behalve wanneer de bijbehorende bits van beide parameters 1.
+Met andere woorden: het retourneert 0 in alle gevallen, behalve wanneer de overeenkomstige bits van beide para meters 1 zijn.
 
 **Voorbeeld:**  
 `BitAnd(&HF, &HF7)`  
-Retourneert 7 omdat hexadecimale "F" en "F7" evalueren met deze waarde.
+Retourneert 7 omdat de hexadecimale waarde "F" en "F7" resulteren in deze waarden.
 
 ---
 ### <a name="bitor"></a>BitOr
 **Beschrijving:**  
-De functie BitOr wordt opgegeven bits ingesteld op een waarde.
+De functie BitOr stelt opgegeven bits in op een waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `num BitOr(num value1, num value2)`
 
-* waarde1, waarde2: numerieke waarden die bij elkaar worden moeten
+* waarde1, waarde2: numerieke waarden die samen moeten worden OR'ed
 
-**Opmerking:**  
-Deze functie beide parameters converteert naar een binaire indeling en iets op 1 als een of beide van de bijbehorende bits masker en vlag liggen tussen 1 en ingesteld op 0 als beide van de bijbehorende bits 0 zijn. Met andere woorden, retourneert 1 in alle gevallen, behalve wanneer de bijbehorende bits van beide parameters zijn aan 0.
+**Opmerkingen**  
+Met deze functie worden beide para meters geconverteerd naar de binaire weer gave en wordt een bit ingesteld op 1 als een van beide of beide corresponderende bits in het masker en de vlag 1 zijn, en 0 als beide corresponderende bits 0 zijn. Met andere woorden: het retourneert 1 in alle gevallen, behalve wanneer de overeenkomstige bits van beide para meters 0 zijn.
 
 ---
 ### <a name="cbool"></a>CBool
 **Beschrijving:**  
 De functie CBool retourneert een Booleaanse waarde op basis van de geëvalueerde expressie
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool CBool(exp Expression)`
 
-**Opmerking:**  
-Als resultaat van de expressie naar een andere waarde dan nul, en vervolgens CBool resulteert in waar, anders wordt onwaar retourneert.
+**Opmerkingen**  
+Als de expressie resulteert in een waarde die niet gelijk is aan nul, retourneert CBool True, anders wordt false geretourneerd.
 
 **Voorbeeld:**  
 `CBool([attrib1] = [attrib2])`  
 
-Retourneert ' True ' wanneer beide kenmerken hebben dezelfde waarde.
+Retourneert waar als beide kenmerken dezelfde waarde hebben.
 
 ---
 ### <a name="cdate"></a>CDate
 **Beschrijving:**  
-De functie CDate retourneert een UTC-datum-/ van een tekenreeks. Datum/tijd is niet een systeemeigen kenmerktype gesynchroniseerd, maar wordt gebruikt door sommige functies.
+De functie CDate retourneert een UTC-datum/tijd van een teken reeks. DateTime is geen systeem eigen kenmerk type in sync, maar wordt door sommige functies gebruikt.
 
-**Syntaxis:**  
+**Syntaxis**  
 `dt CDate(str value)`
 
-* Waarde: Een tekenreeks zijn met een datum, tijd en eventueel tijdzone
+* Waarde: Een teken reeks met een datum, tijd en optioneel tijd zone
 
-**Opmerking:**  
-De tekenreeks wordt geretourneerd is altijd ingesteld op UTC.
+**Opmerkingen**  
+De geretourneerde teken reeks is altijd in UTC.
 
 **Voorbeeld:**  
 `CDate([employeeStartTime])`  
-Retourneert die een datum/tijd op basis van de werknemer begintijd
+Retourneert een datum/tijd op basis van de begin tijd van de werk nemer
 
 `CDate("2013-01-10 4:00 PM -8")`  
-Retourneert een datum/tijd die "2013-01-11-12:00 AM"
+Retourneert een datum/tijd die "2013-01-11 12:00 AM" vertegenwoordigt
 
 
 ---
 ### <a name="certextensionoids"></a>CertExtensionOids
 **Beschrijving:**  
-Retourneert de waarden van de Oid van de kritieke uitbreidingen van een certificaatobject.
+Retourneert de OID-waarden van alle kritieke uitbrei dingen van een certificaat object.
 
-**Syntaxis:**  
+**Syntaxis**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certformat"></a>CertFormat
 **Beschrijving:**  
-Retourneert de naam van de indeling van deze X.509v3-certificaat.
+Retourneert de naam van de indeling van dit X. 509v3-certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certfriendlyname"></a>CertFriendlyName
 **Beschrijving:**  
 Retourneert de bijbehorende alias voor een certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certhashstring"></a>CertHashString
 **Beschrijving:**  
-Retourneert de SHA1-hash-waarde voor de X.509v3-certificaat als een hexadecimale tekenreeks.
+Retourneert de SHA1-hashwaarde voor het X. 509v3-certificaat als een hexadecimale teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certissuer"></a>CertIssuer
 **Beschrijving:**  
-Retourneert de naam van de certificeringsinstantie die het X.509v3-certificaat heeft uitgegeven.
+Retourneert de naam van de certificerings instantie die het X. 509v3-certificaat heeft uitgegeven.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certissuerdn"></a>CertIssuerDN
 **Beschrijving:**  
-Retourneert de DN-naam van de uitgever van het certificaat.
+Retourneert de DN-naam van de certificaat Uitgever.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certissueroid"></a>CertIssuerOid
 **Beschrijving:**  
-Retourneert de Oid van de uitgever van het certificaat.
+Retourneert de OID van de certificaat Uitgever.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **Beschrijving:**  
-Retourneert de algoritme van sleutel-informatie voor deze X.509v3-certificaat als een tekenreeks.
+Retourneert de sleutel algoritme-informatie voor dit X. 509v3-certificaat als een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **Beschrijving:**  
-Retourneert de algoritme van sleutel-parameters voor de X.509v3-certificaat als een hexadecimale tekenreeks.
+Retourneert de sleutel algoritme parameters voor het X. 509v3-certificaat als een hexadecimale teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certnameinfo"></a>CertNameInfo
 **Beschrijving:**  
-Retourneert het onderwerp en de verlener namen van een certificaat.
+Retourneert de namen van het onderwerp en de verlener van een certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
-*   X509NameType: De waarde X509NameType voor het onderwerp.
-*   includesIssuerName: waar om op te nemen van de naam van de certificaatverlener; anders wordt onwaar.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
+*   X509NameType: De X509NameType-waarde voor het onderwerp.
+*   includesIssuerName: True als u de naam van de verlener wilt toevoegen; anders false.
 
 ---
 ### <a name="certnotafter"></a>CertNotAfter
 **Beschrijving:**  
-Retourneert de datum in plaatselijke tijd waarna een certificaat niet meer geldig is.
+Retourneert de datum in de lokale tijd waarna een certificaat niet meer geldig is.
 
-**Syntaxis:**  
+**Syntaxis**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certnotbefore"></a>CertNotBefore
 **Beschrijving:**  
-Retourneert de datum in plaatselijke tijd waarop een certificaat geldig wordt.
+Retourneert de datum in de lokale tijd waarop een certificaat geldig wordt.
 
-**Syntaxis:**  
+**Syntaxis**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
 **Beschrijving:**  
-Retourneert de Oid van de openbare sleutel voor de X.509v3-certificaat.
+Retourneert de OID van de open bare sleutel voor het X. 509v3-certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **Beschrijving:**  
-Retourneert de Oid van de openbare sleutel parameters voor de X.509v3-certificaat.
+Retourneert de OID van de para meters voor de open bare sleutel voor het X. 509v3-certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certserialnumber"></a>CertSerialNumber
 **Beschrijving:**  
-Retourneert het serienummer van het X.509v3-certificaat.
+Retourneert het serie nummer van het X. 509v3-certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **Beschrijving:**  
-Retourneert de Oid van het algoritme voor het maken van de handtekening van een certificaat.
+Retourneert de OID van de algoritme die wordt gebruikt om de hand tekening van een certificaat te maken.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certsubject"></a>CertSubject
 **Beschrijving:**  
-Hiermee haalt u de DN-naam van een certificaat.
+Hiermee wordt de DN-naam van het onderwerp opgehaald uit een certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **Beschrijving:**  
-Retourneert de DN-naam van een certificaat.
+Retourneert de DN-naam van het onderwerp van een certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **Beschrijving:**  
-Retourneert de Oid van de onderwerpnaam van een certificaat.
+Retourneert de OID van de onderwerpnaam van een certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certthumbprint"></a>CertThumbprint
 **Beschrijving:**  
-Retourneert de vingerafdruk van een certificaat.
+Retourneert de vinger afdruk van een certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="certversion"></a>CertVersion
 **Beschrijving:**  
-Retourneert de versie van de x.509-indeling van een certificaat.
+Retourneert de versie van de X. 509-indeling van een certificaat.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 
 ---
 ### <a name="cguid"></a>CGuid
 **Beschrijving:**  
-De functie CGuid converteert de tekenreeksweergave van een GUID naar de binaire indeling.
+De functie CGuid converteert de teken reeks representatie van een GUID naar de binaire weer gave.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bin CGuid(str GUID)`
 
-* Een tekenreeks die is opgemaakt in dit patroon: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx of {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+* Een teken reeks die is ingedeeld in dit patroon: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX of {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
 
 ---
 ### <a name="contains"></a>bevat
 **Beschrijving:**  
-De functie Contains zoekt u naar een tekenreeks binnen een kenmerk met meerdere waarden
+De functie contains vindt een teken reeks in een kenmerk met meerdere waarden
 
-**Syntaxis:**  
-`num Contains (mvstring attribute, str search)` -hoofdlettergevoelig  
+**Syntaxis**  
+`num Contains (mvstring attribute, str search)`-hoofdletter gevoelig  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)` -hoofdlettergevoelig
+`num Contains (mvref attribute, str search)`-hoofdletter gevoelig
 
-* kenmerk: het kenmerk met meerdere waarden om te zoeken.
-* Search: tekenreeks die moet worden gevonden in het kenmerk.
+* kenmerk: het kenmerk met meerdere waarden waarnaar moet worden gezocht.
+* Search: teken reeks die moet worden gevonden in het kenmerk.
 * Casetype: CaseInsensitive of CaseSensitive.
 
-Retourneert de index in het kenmerk met meerdere waarden waarin de tekenreeks is gevonden. 0 wordt geretourneerd als de tekenreeks is niet gevonden.
+Retourneert een index in het kenmerk met meerdere waarden waar de teken reeks is gevonden. 0 wordt geretourneerd als de teken reeks niet wordt gevonden.
 
-**Opmerking:**  
-Voor meerdere waarden tekenreekskenmerken, subtekenreeksen gezocht in de waarden.  
-Voor verwijzingskenmerken, moet de doorzochte tekenreeks exact overeenkomen met de waarde om te worden beschouwd als een overeenkomst.
+**Opmerkingen**  
+Voor teken reeks kenmerken met meerdere waarden zoekt de zoek opdracht naar subtekenreeksen in de waarden.  
+Voor referentie kenmerken moet de gezochte teken reeks exact overeenkomen met de waarde om als een overeenkomst te worden beschouwd.
 
 **Voorbeeld:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
-Als het proxyAddresses-kenmerk een primaire e-mailadres heeft (aangegeven door hoofdletters ' SMTP: "), retourneert de proxyAddress-kenmerk, anders retourneert een fout.
+Als het kenmerk proxyAddresses een primair e-mail adres heeft (aangeduid met hoofd letters ' SMTP: '), vervolgens het kenmerk proxyAddress attribuut retourneert, retourneert else een fout.
 
 ---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **Beschrijving:**  
-De functie ConvertFromBase64 zet de waarde van de opgegeven base64-gecodeerd om een normale tekenreeks.
+De functie ConvertFromBase64 converteert de opgegeven base64-gecodeerde waarde naar een reguliere teken reeks.
 
-**Syntaxis:**  
-`str ConvertFromBase64(str source)` -wordt ervan uitgegaan dat Unicode voor encoding  
+**Syntaxis**  
+`str ConvertFromBase64(str source)`-gaat ervan uit dat Unicode voor coderen  
 `str ConvertFromBase64(str source, enum Encoding)`
 
-* Bron: Base64-gecodeerde tekenreeks  
-* Encoding: Unicode, ASCII, UTF8
+* Bron Base64-gecodeerde teken reeks  
+* Gecodeerd Unicode, ASCII, UTF8
 
 **Voorbeeld**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-Beide voorbeelden retourneren '*Hallo wereld!* "
+Beide voor beelden retour neren '*Hello World!* '
 
 ---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **Beschrijving:**  
-De functie ConvertFromUTF8Hex converteert de opgegeven UTF8 hexadecimaal gecodeerde waarde naar een tekenreeks.
+De functie ConvertFromUTF8Hex converteert de opgegeven UTF8 hexadecimale waarde die is gecodeerd naar een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str ConvertFromUTF8Hex(str source)`
 
-* Bron: UTF8-2-bytes gecodeerde String
+* Bron UTF8-gecodeerde 2-byte-Sting
 
-**Opmerking:**  
-Het verschil tussen deze functie en ConvertFromBase64([],UTF8) in die het resultaat is beschrijvende voor het kenmerk DN-naam.  
-Deze indeling wordt gebruikt door Azure Active Directory als de DN-naam.
+**Opmerkingen**  
+Het verschil tussen deze functie en ConvertFromBase64 ([], UTF8) in dat het resultaat vriendelijk is voor het kenmerk DN.  
+Deze indeling wordt door Azure Active Directory als DN gebruikt.
 
 **Voorbeeld:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-Retourneert '*Hallo wereld!* "
+Retourneert "*Hello World!* "
 
 ---
 ### <a name="converttobase64"></a>ConvertToBase64
 **Beschrijving:**  
-De functie ConvertToBase64 converteert een tekenreeks naar een met base64 Unicode-tekenreeks.  
-De waarde van een matrix van gehele getallen converteert naar de equivalente tekenreeksweergave die is gecodeerd met base64 cijfers.
+De functie ConvertToBase64 converteert een teken reeks naar een Unicode base64-teken reeks.  
+Hiermee wordt de waarde van een matrix met gehele getallen geconverteerd naar de equivalente teken reeks weergave die is gecodeerd met base-64 cijfers.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str ConvertToBase64(str source)`
 
 **Voorbeeld:**  
 `ConvertToBase64("Hello world!")`  
-Returns "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
+Retourneert "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **Beschrijving:**  
-De functie ConvertToUTF8Hex converteert een tekenreeks naar een UTF8 hexadecimaal gecodeerde waarde.
+De functie ConvertToUTF8Hex converteert een teken reeks naar een UTF8 hexadecimale waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str ConvertToUTF8Hex(str source)`
 
-**Opmerking:**  
-De indeling van de uitvoer van deze functie wordt gebruikt door Azure Active Directory als de indeling van het kenmerk DN-naam.
+**Opmerkingen**  
+De uitvoer indeling van deze functie wordt gebruikt door Azure Active Directory als DN-kenmerk indeling.
 
 **Voorbeeld:**  
 `ConvertToUTF8Hex("Hello world!")`  
-Returns 48656C6C6F20776F726C6421
+Retourneert 48656C6C6F20776F726C6421
 
 ---
 ### <a name="count"></a>Count
 **Beschrijving:**  
 De functie Count retourneert het aantal elementen in een kenmerk met meerdere waarden
 
-**Syntaxis:**  
+**Syntaxis**  
 `num Count(mvstr attribute)`
 
 ---
 ### <a name="cnum"></a>CNum
 **Beschrijving:**  
-De functie CNum neemt van een tekenreeks en retourneert een numeriek gegevenstype.
+De functie CNum neemt een teken reeks en retourneert een numeriek gegevens type.
 
-**Syntaxis:**  
+**Syntaxis**  
 `num CNum(str value)`
 
 ---
 ### <a name="cref"></a>CRef
 **Beschrijving:**  
-Converteert een tekenreeks naar een verwijzingskenmerk
+Converteert een teken reeks naar een verwijzings kenmerk
 
-**Syntaxis:**  
+**Syntaxis**  
 `ref CRef(str value)`
 
 **Voorbeeld:**  
@@ -480,205 +480,205 @@ Converteert een tekenreeks naar een verwijzingskenmerk
 ---
 ### <a name="cstr"></a>CStr
 **Beschrijving:**  
-De functie CStr converteert naar een tekenreeks-gegevenstype.
+De functie CStr wordt geconverteerd naar een teken reeks gegevens type.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str CStr(num value)`  
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* Waarde: Mag bestaan uit een numerieke waarde, verwijzingskenmerk of Booleaanse waarde.
+* Value Dit kan een numerieke waarde, een referentie kenmerk of een Boolean zijn.
 
 **Voorbeeld:**  
 `CStr([dn])`  
-Kan retourneren "cn = Joe, dc = contoso, dc = com"
+Kan ' CN = Joe, DC = contoso, DC = com ' retour neren
 
 ---
 ### <a name="dateadd"></a>DateAdd
 **Beschrijving:**  
-Retourneert een datum met een datum waarop een opgegeven tijdsinterval is toegevoegd.
+Retourneert een datum met een datum waaraan een opgegeven tijds interval is toegevoegd.
 
-**Syntaxis:**  
+**Syntaxis**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* interval: Tekenreeksexpressie die het tijdsinterval is dat u wilt toevoegen. De tekenreeks moet een van de volgende waarden hebben:
+* bereik Een teken reeks expressie die de tijds interval is die u wilt toevoegen. De teken reeks moet een van de volgende waarden hebben:
   * JJJJ jaar
-  * q kwartaal
+  * q Quarter
   * m maand
-  * y-dag van jaar
+  * y dag van jaar
   * d dag
-  * w Weekday
-  * ww Week
+  * w-weekdag
+  * WW-week
   * h uur
   * n minuut
-  * s tweede
-* Waarde: Het aantal eenheden dat u wilt toevoegen. Het kan zijn (voor datums in de toekomst) positief of negatief (voor datums in het verleden).
-* datum: Datum en tijd vertegenwoordigt waarop het interval wordt toegevoegd.
+  * s seconde
+* Value Het aantal eenheden dat u wilt toevoegen. Dit kan positief zijn (om datums in de toekomst op te halen) of negatief (om datums in het verleden op te halen).
+* vallen Datum/tijd waarmee het interval wordt toegevoegd.
 
 **Voorbeeld:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
-Drie maanden wordt toegevoegd en retourneert een datum/tijd die '2001-04-01'.
+Telt drie maanden en retourneert een datum/tijd die ' 2001-04-01 ' vertegenwoordigt.
 
 ---
 ### <a name="datefromnum"></a>DateFromNum
 **Beschrijving:**  
-De functie DateFromNum zet een waarde in de AD-datum op het type datum/tijd opmaken.
+Met de functie DateFromNum wordt een waarde in de datum notatie van AD geconverteerd naar een DateTime-type.
 
-**Syntaxis:**  
+**Syntaxis**  
 `dt DateFromNum(num value)`
 
 **Voorbeeld:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
-Retourneert een datum/tijd die 01-01-2012 23:00:00 uur
+Retourneert een datum/tijd die 2012-01-01 23:00:00 vertegenwoordigt
 
 ---
 ### <a name="dncomponent"></a>DNComponent
 **Beschrijving:**  
-De functie DNComponent retourneert de waarde van een opgegeven DN-component die van links.
+De functie DNComponent retourneert de waarde van een opgegeven DN-onderdeel van links.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
-* DN-naam: het verwijzingskenmerk interpreteren
-* ComponentNumber: Het onderdeel in de DN-naam om terug te keren
+* DN: het referentie kenmerk dat moet worden geïnterpreteerd
+* ComponentNumber: Het onderdeel in de DN dat moet worden geretourneerd
 
 **Voorbeeld:**  
 `DNComponent(CRef([dn]),1)`  
-Als DN-naam is "cn Jan, ou = =...," Jaap geretourneerd
+Als DN "CN = Joe, OE =...," retourneert Joe
 
 ---
 ### <a name="dncomponentrev"></a>DNComponentRev
 **Beschrijving:**  
-De functie DNComponentRev retourneert de waarde van een opgegeven DN-component die van rechts (einde).
+De functie DNComponentRev retourneert de waarde van een opgegeven DN-onderdeel van rechts (het einde).
 
-**Syntaxis:**  
+**Syntaxis**  
 `str DNComponentRev(ref dn, num ComponentNumber)`  
 `str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
 
-* DN-naam: het verwijzingskenmerk interpreteren
-* ComponentNumber - het onderdeel in de DN-naam om terug te keren
-* Opties: DC-negeert alle onderdelen met "dc ="
+* DN: het referentie kenmerk dat moet worden geïnterpreteerd
+* ComponentNumber: het onderdeel in de DN dat moet worden geretourneerd
+* Opties: DC: alle onderdelen negeren met DC =
 
 **Voorbeeld:**  
-Als DN-naam is "cn Jan, ou = Atlanta, ou = algemene beschikbaarheid, ou = = US, dc = contoso, dc = com" vervolgens  
+Als DN "CN = Joe, OE = Atlanta, OE = GA, OE = US, DC = contoso, DC = com" then  
 `DNComponentRev(CRef([dn]),3)`  
 `DNComponentRev(CRef([dn]),1,"DC")`  
-Beide retourneren ons.
+Beide retour neren ons.
 
 ---
 ### <a name="error"></a>Fout
 **Beschrijving:**  
-De fout-functie wordt gebruikt om een aangepaste fout geretourneerd.
+De functie Error wordt gebruikt om een aangepaste fout te retour neren.
 
-**Syntaxis:**  
+**Syntaxis**  
 `void Error(str ErrorMessage)`
 
 **Voorbeeld:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
-Als de kenmerk-accountnaam niet aanwezig is, genereert u een fout op het object.
+Als het kenmerk AccountName niet aanwezig is, genereert een fout op het object.
 
 ---
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **Beschrijving:**  
-De EscapeDNComponent-functie gebruikt een onderdeel van een DN-naam en verwijdert deze, zodat deze kan worden weergegeven in LDAP.
+De functie EscapeDNComponent neemt één onderdeel van een DN-naam en verescapet deze zodat het in LDAP kan worden weer gegeven.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str EscapeDNComponent(str value)`
 
 **Voorbeeld:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
-Zorgt ervoor dat het object kan worden gemaakt in een LDAP-adreslijst, zelfs als het kenmerk displayName bevat tekens die moeten worden weergegeven in LDAP.
+Hiermee zorgt u ervoor dat het object kan worden gemaakt in een LDAP-Directory, zelfs als het kenmerk displayName tekens bevat die moeten worden ontsnapt in LDAP.
 
 ---
 ### <a name="formatdatetime"></a>formatDateTime
 **Beschrijving:**  
-De functie FormatDateTime wordt gebruikt om de opmaak van een datum/tijd naar een tekenreeks met een opgegeven indeling
+De functie FormatDateTime wordt gebruikt om een datum/tijd te Format teren in een teken reeks met een opgegeven notatie
 
-**Syntaxis:**  
+**Syntaxis**  
 `str FormatDateTime(dt value, str format)`
 
-* waarde: een waarde in de datum-/ tijdindeling
-* indeling: een tekenreeks voor de indeling moet worden geconverteerd naar.
+* waarde: een waarde in de datum/tijd notatie
+* indeling: een teken reeks waarmee de indeling wordt aangegeven waarnaar moet worden geconverteerd.
 
-**Opmerking:**  
-De mogelijke waarden voor de indeling vindt u hier: [Aangepaste datum en tijd indelingen voor de functie FORMAT](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+**Opmerkingen**  
+De mogelijke waarden voor de indeling vindt u hier: [Aangepaste datum-en tijd notaties voor de functie Format](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Voorbeeld:**  
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
-De resultaten in '2007-12-25'.
+Resulteert in "2007-12-25".
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
-Kan leiden tot "20140905081453.0Z"
+Kan resulteren in "20140905081453.0 Z"
 
 ---
 ### <a name="guid"></a>Guid
 **Beschrijving:**  
-De Guid van de functie genereert een nieuwe willekeurige GUID
+De functie-GUID genereert een nieuwe wille keurige GUID
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Guid()`
 
 ---
 ### <a name="iif"></a>IIF
 **Beschrijving:**  
-De functie IIF retourneert een van de mogelijke waarden op basis van een opgegeven voorwaarde.
+De functie IIF retourneert een van een set mogelijke waarden op basis van een opgegeven voor waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
-* voorwaarde: een waarde of expressie die kan worden geëvalueerd op waar of ONWAAR.
-* valueIfTrue: Als de voorwaarde is geëvalueerd als waar, de geretourneerde waarde.
-* WaardeAlsOnwaar: Als de voorwaarde wordt geëvalueerd op false, de geretourneerde waarde.
+* voor waarde: elke waarde of expressie die als waar of ONWAAR kan worden geëvalueerd.
+* valueIfTrue: Als de voor waarde wordt geëvalueerd als waar, wordt de geretourneerde waarde.
+* valueIfFalse: Als de voor waarde wordt geëvalueerd als onwaar, wordt de geretourneerde waarde.
 
 **Voorbeeld:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
- Als de gebruiker een intern is, retourneert de alias van een gebruiker met 't-' toegevoegd aan het begin van deze anders retourneert de alias van de gebruiker is.
+ Als de gebruiker een interne is, retourneert de alias van een gebruiker waaraan ' t-' is toegevoegd. anders wordt de alias van de gebruiker geretourneerd.
 
 ---
 ### <a name="instr"></a>InStr
 **Beschrijving:**  
-De functie InStr Hiermee zoekt u het eerste exemplaar van een subtekenreeks in een tekenreeks
+De functie InStr zoekt het eerste exemplaar van een subtekenreeks in een teken reeks
 
-**Syntaxis:**  
+**Syntaxis**  
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
 `num InStr(str stringcheck, str stringmatch, num start , enum compare)`
 
-* reekscontroleren: tekenreeks die moet worden gezocht
-* reeksvergelijken: tekenreeks die moet worden gevonden
-* Start: vanaf positie als u wilt de subtekenreeks
-* Vergelijk: vbTextCompare of vbBinaryCompare
+* stringcheck: teken reeks die moet worden doorzocht
+* stringmatch: teken reeks die moet worden gevonden
+* starten: begin positie om de subtekenreeks te zoeken
+* Compare: vbTextCompare of vbBinaryCompare
 
-**Opmerking:**  
-Retourneert de positie waar de subtekenreeks is gevonden of 0 als niet is gevonden.
+**Opmerkingen**  
+Retourneert de positie waar de subtekenreeks is gevonden of 0 als deze niet is gevonden.
 
 **Voorbeeld:**  
 `InStr("The quick brown fox","quick")`  
-Evalues tot en met 5
+Evalues tot 5
 
 `InStr("repEated","e",3,vbBinaryCompare)`  
-Evalueert tot en met 7
+Evalueert tot 7
 
 ---
 ### <a name="instrrev"></a>InStrRev
 **Beschrijving:**  
-De functie InStrRev Hiermee zoekt u het laatste exemplaar van een subtekenreeks in een tekenreeks
+De functie InStrRev vindt het laatste exemplaar van een subtekenreeks in een teken reeks
 
-**Syntaxis:**  
+**Syntaxis**  
 `num InstrRev(str stringcheck, str stringmatch)`  
 `num InstrRev(str stringcheck, str stringmatch, num start)`  
 `num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
 
-* reekscontroleren: tekenreeks die moet worden gezocht
-* reeksvergelijken: tekenreeks die moet worden gevonden
-* Start: vanaf positie als u wilt de subtekenreeks
-* Vergelijk: vbTextCompare of vbBinaryCompare
+* stringcheck: teken reeks die moet worden doorzocht
+* stringmatch: teken reeks die moet worden gevonden
+* starten: begin positie om de subtekenreeks te zoeken
+* Compare: vbTextCompare of vbBinaryCompare
 
-**Opmerking:**  
-Retourneert de positie waar de subtekenreeks is gevonden of 0 als niet is gevonden.
+**Opmerkingen**  
+Retourneert de positie waar de subtekenreeks is gevonden of 0 als deze niet is gevonden.
 
 **Voorbeeld:**  
 `InStrRev("abbcdbbbef","bb")`  
@@ -687,124 +687,124 @@ Retourneert 7
 ---
 ### <a name="isbitset"></a>IsBitSet
 **Beschrijving:**  
-De functie IsBitSet netwerktests als een bit is ingesteld of niet
+De functie IsBitSet test of een bit is ingesteld
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsBitSet(num value, num flag)`
 
-* waarde: een numerieke waarde die is evaluated.flag: een numerieke waarde die is van de bit moet worden geëvalueerd
+* waarde: een numerieke waarde die wordt geëvalueerd. vlag: een numerieke waarde die de bit bevat die moet worden geëvalueerd
 
 **Voorbeeld:**  
 `IsBitSet(&HF,4)`  
-Retourneert ' True ' omdat "4"-bit is ingesteld in de hexadecimale waarde 'F'
+Retourneert True omdat bit 4 is ingesteld in de hexadecimale waarde "F"
 
 ---
 ### <a name="isdate"></a>IsDate
 **Beschrijving:**  
-Als de expressie kan worden geëvalueerd als een DateTime-type, en vervolgens de functie IsDate in waar resulteert.
+Als de expressie kan worden geëvalueerd als een DateTime-type, wordt de functie IsDate geëvalueerd als True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsDate(var Expression)`
 
-**Opmerking:**  
-Gebruikt om te bepalen als CDate() uitgevoerd worden kan.
+**Opmerkingen**  
+Wordt gebruikt om te bepalen of CDate () kan worden geslaagd.
 
 ---
 ### <a name="iscert"></a>IsCert
 **Beschrijving:**  
-Retourneert waar als de onbewerkte gegevens kunnen worden geserialiseerd in .NET X509Certificate2 certificaat-object.
+Retourneert waar als de onbewerkte gegevens kunnen worden geserialiseerd in het .NET X509Certificate2-certificaat object.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: Byte matrix representatie van een X.509-certificaat. De bytematrix kan binair (DER), gecodeerd of Base64-gecodeerd x.509-gegevens zijn.
+*   certificateRawData: Byte matrix representatie van een X. 509-certificaat. De byte matrix kan binaire (DER) gecodeerde of met base64 gecodeerde X. 509-gegevens zijn.
 ---
 ### <a name="isempty"></a>IsEmpty
 **Beschrijving:**  
-Als het kenmerk aanwezig in de CS of MV is, maar in een lege tekenreeks resulteert, klikt u vervolgens resulteert de functie IsEmpty in waar.
+Als het kenmerk aanwezig is in CS of MV, maar een lege teken reeks evalueert, evalueert de functie IsEmpty op True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsEmpty(var Expression)`
 
 ---
 ### <a name="isguid"></a>IsGuid
 **Beschrijving:**  
-Als de tekenreeks kan worden geconverteerd naar een GUID, vervolgens de functie IsGuid geëvalueerd op waar.
+Als de teken reeks kan worden geconverteerd naar een GUID, wordt de functie IsGuid geëvalueerd op True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsGuid(str GUID)`
 
-**Opmerking:**  
-Een GUID wordt gedefinieerd als een tekenreeks een van deze patronen te volgen: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx of {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+**Opmerkingen**  
+Een GUID wordt gedefinieerd als een teken reeks na een van deze patronen: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX of {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
 
-Gebruikt om te bepalen als CGuid() uitgevoerd worden kan.
+Wordt gebruikt om te bepalen of CGuid () kan worden geslaagd.
 
 **Voorbeeld:**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
-Als de StrAttribute een GUID-indeling heeft, retourneert een binaire weergave, anders retourneert een null-waarde.
+Als de StrAttribute een GUID-indeling heeft, retourneert u een binaire weer gave, anders retourneert u een null-waarde.
 
 ---
 ### <a name="isnull"></a>IsNull
 **Beschrijving:**  
-Als de expressie wordt geëvalueerd op Null, zijn de IsNull-functie retourneert ' True '.
+Als de expressie resulteert in null, retourneert de functie IsNull de waarde True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsNull(var Expression)`
 
-**Opmerking:**  
-Voor een kenmerk is een null-waarde door het ontbreken van het kenmerk uitgedrukt.
+**Opmerkingen**  
+Voor een kenmerk wordt een null-waarde uitgedrukt door het ontbreken van het kenmerk.
 
 **Voorbeeld:**  
 `IsNull([displayName])`  
-Retourneert waar als het kenmerk niet aanwezig in de CS of MV is.
+Retourneert waar als het kenmerk niet aanwezig is in de CS of MV.
 
 ---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **Beschrijving:**  
-Als de expressie null of een lege tekenreeks is, zijn de IsNullOrEmpty functie retourneert ' True '.
+Als de expressie Null of een lege teken reeks is, retourneert de functie IsNullOrEmpty ' True '.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsNullOrEmpty(var Expression)`
 
-**Opmerking:**  
-Voor een kenmerk evalueren dit op True als het kenmerk is niet aanwezig of aanwezig is, maar een lege tekenreeks is.  
-De omgekeerde waarde van deze functie heet IsPresent.
+**Opmerkingen**  
+Voor een-kenmerk resulteert dit in waar als het kenmerk ontbreekt of aanwezig is, maar een lege teken reeks is.  
+De inverse van deze functie heeft de naam IsPresent.
 
 **Voorbeeld:**  
 `IsNullOrEmpty([displayName])`  
-Retourneert waar als het kenmerk niet aanwezig is of een lege tekenreeks in de CS of MV is.
+Retourneert waar als het kenmerk niet aanwezig is of een lege teken reeks in de CS of MV is.
 
 ---
 ### <a name="isnumeric"></a>IsNumeric
 **Beschrijving:**  
-De functie IsNumeric retourneert een Booleaanse waarde die aangeeft of een expressie kan worden geëvalueerd als een getal-type.
+De functie IsNumeric retourneert een Booleaanse waarde die aangeeft of een expressie kan worden geëvalueerd als een numeriek type.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsNumeric(var Expression)`
 
-**Opmerking:**  
-Gebruikt om te bepalen als CNum() uitgevoerd worden kan op de expressie niet parseren.
+**Opmerkingen**  
+Wordt gebruikt om te bepalen of CNum () kan worden geslaagd voor het parseren van de expressie.
 
 ---
 ### <a name="isstring"></a>IsString
 **Beschrijving:**  
-Als de expressie kan worden beoordeeld op het type string, klikt u vervolgens resulteert de functie IsString in waar.
+Als de expressie kan worden geëvalueerd als een teken reeks type, wordt de functie IsString geëvalueerd als True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsString(var expression)`
 
-**Opmerking:**  
-Gebruikt om te bepalen als CStr() uitgevoerd worden kan op de expressie niet parseren.
+**Opmerkingen**  
+Wordt gebruikt om te bepalen of CStr () kan worden uitgevoerd om de expressie te parseren.
 
 ---
 ### <a name="ispresent"></a>IsPresent
 **Beschrijving:**  
-Als de expressie in een tekenreeks die niet Null is en niet leeg zijn resulteert, zijn de IsPresent functie retourneert ' True '.
+Als de expressie resulteert in een teken reeks die niet null en niet leeg is, retourneert de functie IsPresent de waarde True.
 
-**Syntaxis:**  
+**Syntaxis**  
 `bool IsPresent(var expression)`
 
-**Opmerking:**  
-De omgekeerde waarde van deze functie heet IsNullOrEmpty.
+**Opmerkingen**  
+De inverse van deze functie heeft de naam IsNullOrEmpty.
 
 **Voorbeeld:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -812,100 +812,100 @@ De omgekeerde waarde van deze functie heet IsNullOrEmpty.
 ---
 ### <a name="item"></a>Item
 **Beschrijving:**  
-De functie Item retourneert één item uit een tekenreeks/het kenmerk met meerdere waarden.
+De functie item retourneert één item uit een teken reeks/kenmerk met meerdere waarden.
 
-**Syntaxis:**  
+**Syntaxis**  
 `var Item(mvstr attribute, num index)`
 
 * kenmerk: kenmerk met meerdere waarden
-* index: index van een item in de tekenreeks die meerdere waarden.
+* index: index naar een item in de teken reeks met meerdere waarden.
 
-**Opmerking:**  
-De functie Item is nuttig, samen met de functie Contains sinds de laatste functie geeft als de index een item in het kenmerk met meerdere waarden resultaat.
+**Opmerkingen**  
+De functie item is handig in combi natie met de functie contains, aangezien de laatste functie de index retourneert naar een item in het kenmerk met meerdere waarden.
 
-Genereert een fout als de index is buiten het bereik.
+Genereert een fout als de index buiten het bereik valt.
 
 **Voorbeeld:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
-Retourneert het primaire e-mailadres.
+Retourneert het primaire e-mail adres.
 
 ---
 ### <a name="itemornull"></a>ItemOrNull
 **Beschrijving:**  
-De functie ItemOrNull retourneert één item uit een tekenreeks/het kenmerk met meerdere waarden.
+De functie ItemOrNull retourneert één item uit een teken reeks/kenmerk met meerdere waarden.
 
-**Syntaxis:**  
+**Syntaxis**  
 `var ItemOrNull(mvstr attribute, num index)`
 
 * kenmerk: kenmerk met meerdere waarden
-* index: index van een item in de tekenreeks die meerdere waarden.
+* index: index naar een item in de teken reeks met meerdere waarden.
 
-**Opmerking:**  
-De functie ItemOrNull is nuttig, samen met de functie Contains sinds de laatste functie geeft als de index een item in het kenmerk met meerdere waarden resultaat.
+**Opmerkingen**  
+De functie ItemOrNull is nuttig in combi natie met de functie contains, omdat de laatste functie de index retourneert naar een item in het kenmerk met meerdere waarden.
 
-Als de index ligt buiten het bereik valt, retourneert vervolgens een Null-waarde.
+Als de index buiten het bereik valt, wordt een null-waarde geretourneerd.
 
 ---
-### <a name="join"></a>Deelnemen
+### <a name="join"></a>Koppelen
 **Beschrijving:**  
-De Join-functie een tekenreeks met meerdere waarden en retourneert een tekenreeks met één waarde met opgegeven scheidingsteken ingevoegd tussen elk item.
+De functie samen voegen gebruikt een teken reeks met meerdere waarden en retourneert een teken reeks met één waarde met een opgegeven scheidings teken tussen elk item.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* kenmerk: Kenmerk met meerdere waarden met tekenreeksen die moeten worden toegevoegd.
-* scheidingsteken: Een tekenreeks, die wordt gebruikt voor het scheiden van de subtekenreeksen in de geretourneerde tekenreeks. Als u dit weglaat, wordt de spatie ("") wordt gebruikt. Als scheidingsteken een tekenreeks met een lengte van nul is ("") of niets, alle items in de lijst worden samengevoegd met zonder scheidingstekens.
+* geschreven Kenmerk met meerdere waarden met teken reeksen die moeten worden samengevoegd.
+* vorm Een wille keurige teken reeks die wordt gebruikt om de subtekenreeksen in de geretourneerde teken reeks te scheiden. Als u dit weglaat, wordt het spatie teken ("") gebruikt. Als scheidings teken een teken reeks met lengte nul ("") of niets is, worden alle items in de lijst samengevoegd zonder scheidings tekens.
 
 **Opmerkingen**  
-Er is pariteit tussen de functies voor lid worden en splitsen. De Join-functie wordt een matrix met tekenreeksen en maakt ze met behulp van een scheidingstekentekenreeks om terug te keren een enkele tekenreeks lid. De functie Split neemt een tekenreeks en onderscheid te maken op het scheidingsteken, om te retourneren van een matrix met tekenreeksen. Een belangrijk verschil is echter dat Join kan tekenreeksen met een willekeurige scheidingstekentekenreeks, Split kunt alleen afzonderlijke tekenreeksen met een scheidingsteken voor één teken.
+Er is een pariteit tussen de functies samen voegen en splitsen. De functie samen voegen gebruikt een matrix met teken reeksen en voegt deze toe met behulp van een scheidings teken reeks, om één teken reeks te retour neren. De Splits functie neemt een teken reeks en scheidt deze bij het scheidings teken, om een matrix met teken reeksen te retour neren. Een belang rijk verschil is dat samen voegen teken reeksen kunnen samen voegen met een wille keurige teken reeks, terwijl Split alleen teken reeksen kan scheiden met één teken scheiding.
 
 **Voorbeeld:**  
 `Join([proxyAddresses],",")`  
-Kan retourneren: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
+KanSMTP:john.doe@contoso.comworden geretourneerd:,smtp:jd@contoso.com
 
 ---
 ### <a name="lcase"></a>LCase
 **Beschrijving:**  
-De functie LCase converteert alle tekens in een tekenreeks naar kleine letters.
+Met de functie LCase worden alle tekens in een teken reeks geconverteerd naar kleine letters.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str LCase(str value)`
 
 **Voorbeeld:**  
 `LCase("TeSt")`  
-Retourneert 'test'.
+Retourneert ' test '.
 
 ---
 ### <a name="left"></a>Links
 **Beschrijving:**  
-De functie links retourneert een opgegeven aantal tekens vanaf de linkerkant van een tekenreeks.
+De functie Left retourneert een opgegeven aantal tekens vanaf de linkerkant van een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Left(str string, num NumChars)`
 
-* tekenreeks: de tekenreeks om terug te keren tekens uit
-* NumChars: een nummer van het aantal tekens retourneren vanaf het begin (links) van de tekenreeks
+* teken reeks: de teken reeks waaruit tekens moeten worden opgehaald
+* NumChars: een nummer dat het aantal tekens aangeeft dat moet worden geretourneerd vanaf het begin (links) van de teken reeks
 
-**Opmerking:**  
-Een tekenreeks met de eerste numChars tekens in tekenreeks:
+**Opmerkingen**  
+Een teken reeks met de eerste numChars tekens in de teken reeks:
 
-* Als numChars = 0, lege tekenreeks als resultaat.
-* Als de invoertekenreeks numChars < 0, worden geretourneerd.
-* Als null-tekenreeks is, retourneert u de lege tekenreeks.
+* Als numChars = 0, retourneert u een lege teken reeks.
+* Als numChars < 0, wordt de invoer teken reeks geretourneerd.
+* Als teken reeks null is, retourneert een lege teken reeks.
 
-Als de tekenreeks bevat minder tekens dan het aantal opgegeven in numChars, wordt een tekenreeks die identiek is aan de tekenreeks (die is, met alle tekens in parameter 1) geretourneerd.
+Als teken reeks minder tekens bevat dan het getal dat is opgegeven in numChars, wordt een teken reeks geretourneerd die identiek is aan de teken reeks (dat wil zeggen, met alle tekens in para meter 1).
 
 **Voorbeeld:**  
 `Left("John Doe", 3)`  
-Retourneert 'Joh'.
+Retourneert "Joh".
 
 ---
 ### <a name="len"></a>Len
 **Beschrijving:**  
-De functie Len retourneert het aantal tekens in een tekenreeks.
+De functie Len retourneert een aantal tekens in een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `num Len(str value)`
 
 **Voorbeeld:**  
@@ -915,60 +915,60 @@ Retourneert 8
 ---
 ### <a name="ltrim"></a>LTrim
 **Beschrijving:**  
-De functie LTrim verwijdert voorloopspaties wit uit een tekenreeks.
+De functie LTrim verwijdert voorloop spaties uit een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str LTrim(str value)`
 
 **Voorbeeld:**  
 `LTrim(" Test ")`  
-Retourneert 'Test'
+Retourneert "test"
 
 ---
 ### <a name="mid"></a>Mid
 **Beschrijving:**  
-De functie deel retourneert een opgegeven aantal tekens van een opgegeven positie in een tekenreeks.
+De functie Mid retourneert een opgegeven aantal tekens uit een opgegeven positie in een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Mid(str string, num start, num NumChars)`
 
-* tekenreeks: de tekenreeks om terug te keren tekens uit
-* Start: een nummer voor de eerste positie in de tekenreeks die moet worden geretourneerd van de tekens uit
-* NumChars: een nummer van het aantal tekens moet worden geretourneerd door de positie in tekenreeks
+* teken reeks: de teken reeks waaruit tekens moeten worden opgehaald
+* begin: een getal dat de begin positie in de teken reeks aangeeft waaruit tekens moeten worden opgehaald
+* NumChars: een nummer dat het aantal tekens aangeeft dat moet worden geretourneerd op basis van de positie in de teken reeks
 
-**Opmerking:**  
-Geretourneerde numChars tekens vanaf positie start in de tekenreeks.  
-Een tekenreeks met numChars tekens vanaf het begin van de positie in tekenreeks:
+**Opmerkingen**  
+NumChars tekens retour neren vanaf positie begin in teken reeks.  
+Een teken reeks met numChars tekens van de positie begin in teken reeks:
 
-* Als numChars = 0, lege tekenreeks als resultaat.
-* Als de invoertekenreeks numChars < 0, worden geretourneerd.
-* Als start > de lengte van tekenreeks, invoerreeks retourneren.
-* Als start < = 0, invoerreeks retourneren.
-* Als null-tekenreeks is, retourneert u de lege tekenreeks.
+* Als numChars = 0, retourneert u een lege teken reeks.
+* Als numChars < 0, wordt de invoer teken reeks geretourneerd.
+* Als begin > de lengte van de teken reeks is, wordt de invoer teken reeks geretourneerd.
+* Als start < = 0, wordt de invoer teken reeks geretourneerd.
+* Als teken reeks null is, retourneert een lege teken reeks.
 
-Als er niet numChar tekens worden resterend in tekenreeks vanaf het begin van de positie, zo veel mogelijk tekens mogelijk geretourneerd.
+Als er nog geen numChar-tekens in de teken reeks van de begin positie staan, worden er zoveel mogelijk tekens geretourneerd.
 
 **Voorbeeld:**  
 `Mid("John Doe", 3, 5)`  
-Retourneert "hn doen".
+Retourneert "HN do".
 
 `Mid("John Doe", 6, 999)`  
-Retourneert "Doe"
+Retourneert "Splinter"
 
 ---
-### <a name="now"></a>nu
+### <a name="now"></a>Nu
 **Beschrijving:**  
-De functie nu retourneert een datum/tijd op te geven van de huidige datum en tijd, op basis van datum en tijd van de computer.
+De functie Now retourneert een datum/tijd op basis van de datum en tijd van de computer.
 
-**Syntaxis:**  
+**Syntaxis**  
 `dt Now()`
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
 **Beschrijving:**  
-De functie NumFromDate retourneert een datum in de datumnotatie van AD.
+De functie NumFromDate retourneert een datum in de datum notatie van AD.
 
-**Syntaxis:**  
+**Syntaxis**  
 `num NumFromDate(dt value)`
 
 **Voorbeeld:**  
@@ -976,147 +976,147 @@ De functie NumFromDate retourneert een datum in de datumnotatie van AD.
 Retourneert 129699324000000000
 
 ---
-### <a name="padleft"></a>padLeft
+### <a name="padleft"></a>PadLeft
 **Beschrijving:**  
-De PadLeft functie left-buiten een tekenreeks aan een opgegeven lengte met behulp van een opgegeven opvulteken.
+Met de functie PadLeft wordt een teken reeks naar een opgegeven lengte geschreven met behulp van een opgegeven opvullings teken.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str PadLeft(str string, num length, str padCharacter)`
 
-* tekenreeks: de tekenreeks die moet worden opgevuld.
-* lengte van: Een geheel getal dat de gewenste lengte van tekenreeks vertegenwoordigt.
-* padCharacter: Een tekenreeks die bestaat uit een enkel teken te gebruiken als de pad-teken
+* teken reeks: de teken reeks die moet worden gevuld.
+* lange Een geheel getal dat de gewenste lengte van de teken reeks voor stelt.
+* padCharacter: Een teken reeks die bestaat uit één teken dat moet worden gebruikt als pad voor de spatie
 
-**Opmerking:**
+**Opmerkingen**
 
-* Als de lengte van tekenreeks kleiner dan de lengte is, klikt u vervolgens padCharacter herhaaldelijk toegevoegd aan het begin (links) van de tekenreeks wanneer dat nodig is een lengte die gelijk zijn aan lengte.
-* PadCharacter kan een spatie, maar mag niet een null-waarde.
-* Als de lengte van de tekenreeks gelijk aan of groter is dan de lengte is, tekenreeks geretourneerd ongewijzigd.
-* Als de tekenreeks een lengte die groter zijn dan of gelijk zijn aan lengte heeft, wordt een tekenreeks die identiek is aan de tekenreeks geretourneerd.
-* Als de lengte van tekenreeks kleiner dan de lengte is, wordt een nieuwe tekenreeks van de gewenste lengte met tekenreeks die is opgevuld met een padCharacter geretourneerd.
-* Als null-tekenreeks is, retourneert de functie een lege tekenreeks.
+* Als de lengte van de teken reeks kleiner is dan de lengte, wordt padCharacter herhaaldelijk toegevoegd aan het begin (links) van de teken reeks totdat de lengte gelijk is aan de lengte.
+* PadCharacter kan een spatie zijn, maar kan geen null-waarde zijn.
+* Als de lengte van de teken reeks gelijk is aan of groter is dan length, wordt de teken reeks ongewijzigd geretourneerd.
+* Als de teken reeks een lengte heeft die groter is dan of gelijk is aan length, wordt een teken reeks geretourneerd die identiek is aan de teken reeks.
+* Als de lengte van de teken reeks kleiner is dan de lengte, wordt een nieuwe teken reeks van de gewenste lengte geretourneerd met de teken reeks opgevuld met een padCharacter.
+* Als de teken reeks null is, retourneert de functie een lege teken reeks.
 
 **Voorbeeld:**  
 `PadLeft("User", 10, "0")`  
-Retourneert '000000User'.
+Retourneert "000000User".
 
 ---
 ### <a name="padright"></a>PadRight
 **Beschrijving:**  
-De PadRight functie rechts-buiten een tekenreeks aan een opgegeven lengte met behulp van een opgegeven opvulteken.
+Met de functie PadRight kunt u een teken reeks naar een opgegeven lengte wegmaken met behulp van een opgegeven opvullings teken.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str PadRight(str string, num length, str padCharacter)`
 
-* tekenreeks: de tekenreeks die moet worden opgevuld.
-* lengte van: Een geheel getal dat de gewenste lengte van tekenreeks vertegenwoordigt.
-* padCharacter: Een tekenreeks die bestaat uit een enkel teken te gebruiken als de pad-teken
+* teken reeks: de teken reeks die moet worden gevuld.
+* lange Een geheel getal dat de gewenste lengte van de teken reeks voor stelt.
+* padCharacter: Een teken reeks die bestaat uit één teken dat moet worden gebruikt als pad voor de spatie
 
-**Opmerking:**
+**Opmerkingen**
 
-* Als de lengte van tekenreeks kleiner dan de lengte is, is klikt u vervolgens padCharacter herhaaldelijk toegevoegd aan het einde (rechts) van de tekenreeks totdat het heeft een lengte die gelijk zijn aan lengte.
-* PadCharacter kan een spatie, maar mag niet een null-waarde.
-* Als de lengte van de tekenreeks gelijk aan of groter is dan de lengte is, tekenreeks geretourneerd ongewijzigd.
-* Als de tekenreeks een lengte die groter zijn dan of gelijk zijn aan lengte heeft, wordt een tekenreeks die identiek is aan de tekenreeks geretourneerd.
-* Als de lengte van tekenreeks kleiner dan de lengte is, wordt een nieuwe tekenreeks van de gewenste lengte met tekenreeks die is opgevuld met een padCharacter geretourneerd.
-* Als null-tekenreeks is, retourneert de functie een lege tekenreeks.
+* Als de lengte van de teken reeks kleiner is dan de lengte, wordt padCharacter herhaaldelijk toegevoegd aan het einde (rechts) van de teken reeks totdat de lengte gelijk is aan de lengte.
+* padCharacter kan een spatie zijn, maar kan geen null-waarde zijn.
+* Als de lengte van de teken reeks gelijk is aan of groter is dan length, wordt de teken reeks ongewijzigd geretourneerd.
+* Als de teken reeks een lengte heeft die groter is dan of gelijk is aan length, wordt een teken reeks geretourneerd die identiek is aan de teken reeks.
+* Als de lengte van de teken reeks kleiner is dan de lengte, wordt een nieuwe teken reeks van de gewenste lengte geretourneerd met de teken reeks opgevuld met een padCharacter.
+* Als de teken reeks null is, retourneert de functie een lege teken reeks.
 
 **Voorbeeld:**  
 `PadRight("User", 10, "0")`  
-Retourneert 'User000000'.
+Retourneert "User000000".
 
 ---
 ### <a name="pcase"></a>PCase
 **Beschrijving:**  
-De functie PCase converteert het eerste teken van elk woord door spaties gescheiden in een tekenreeks naar hoofdletters, en alle overige tekens worden geconverteerd naar kleine letters.
+De functie PCase converteert het eerste teken van elke spatie gescheiden woord in een teken reeks naar hoofd letters, en alle andere tekens worden omgezet in kleine letters.
 
-**Syntaxis:**  
+**Syntaxis**  
 `String PCase(string)`
 
-**Opmerking:**
+**Opmerkingen**
 
-* Deze functie biedt momenteel geen juiste hoofdlettergebruik als u wilt converteren van een woord dat is volledig hoofdletters, zoals een acroniem.
+* Deze functie biedt momenteel niet de juiste behuizing voor het converteren van een woord dat volledig hoofd letters is, zoals een acroniem.
 
 **Voorbeeld:**  
 `PCase("TEsT")`  
-Retourneert 'Test'.
+Retourneert ' test '.
 
 `PCase(LCase("TEST"))`  
-Retourneert 'Test'
+Retourneert "test"
 
 ---
 ### <a name="randomnum"></a>RandomNum
 **Beschrijving:**  
-De functie RandomNum retourneert een willekeurig getal tussen een opgegeven interval.
+De functie RandomNum retourneert een wille keurig getal tussen een opgegeven interval.
 
-**Syntaxis:**  
+**Syntaxis**  
 `num RandomNum(num start, num end)`
 
-* Start: een nummer voor het genereren van de ondergrens van een willekeurige waarde
-* einde: een nummer voor het genereren van de bovengrens van de willekeurige waarde
+* begin: een nummer dat de ondergrens van de wille keurige waarde aangeeft die moet worden gegenereerd
+* End: een nummer dat de bovengrens aangeeft van de wille keurige waarde die moet worden gegenereerd
 
 **Voorbeeld:**  
 `Random(100,999)`  
-Kan 734 retourneren.
+Kan 734 retour neren.
 
 ---
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **Beschrijving:**  
-De functie RemoveDuplicates neemt een tekenreeks met meerdere waarden en zorg ervoor dat elke waarde is uniek.
+De functie RemoveDuplicates gebruikt een teken reeks met meerdere waarden en zorg ervoor dat elke waarde uniek is.
 
-**Syntaxis:**  
+**Syntaxis**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
 **Voorbeeld:**  
 `RemoveDuplicates([proxyAddresses])`  
-Retourneert een opgeschoonde proxyAddress-kenmerk waar alle dubbele waarden zijn verwijderd.
+Retourneert een gezuiverd proxyAddress attribuut-kenmerk waarbij alle dubbele waarden zijn verwijderd.
 
 ---
 ### <a name="replace"></a>Vervangen
 **Beschrijving:**  
-De functie vervangen vervangt alle instanties van een tekenreeks naar een andere tekenreeks.
+De functie Replace vervangt alle instanties van een teken reeks door een andere teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* tekenreeks: Een tekenreeks die moet worden vervangen door waarden in.
-* OldValue: De tekenreeks die moet worden gezocht en te vervangen.
-* NewValue: De tekenreeks die moet worden vervangen.
+* tekenreeksexpressie Een teken reeks om waarden in te vervangen.
+* OldValue De teken reeks die moet worden gezocht en vervangen.
+* NewValue De teken reeks die moet worden vervangen.
 
-**Opmerking:**  
+**Opmerkingen**  
 De functie herkent de volgende speciale monikers:
 
-* \n – New Line
-* \r – regelterugloop
+* \n – nieuwe regel
+* \r – regel terugloop
 * \t – tabblad
 
 **Voorbeeld:**  
 `Replace([address],"\r\n",", ")`  
-CRLF vervangen door een komma en een spatie, en kan leiden tot "Één Microsoft manier, Redmond, WA, VS"
+Vervangt CRLF door een komma en een spatie. Dit kan leiden tot "One micro soft Way, Redmond, WA, USA"
 
 ---
 ### <a name="replacechars"></a>ReplaceChars
 **Beschrijving:**  
-De functie ReplaceChars vervangt alle instanties van tekens in de tekenreeks ReplacePattern gevonden.
+De functie ReplaceChars vervangt alle instanties van tekens die in de teken reeks ReplacePattern zijn gevonden.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* tekenreeks: Een tekenreeks die moet worden vervangen door de tekens in.
-* ReplacePattern: een tekenreeks met een woordenlijst met de tekens wilt vervangen.
+* tekenreeksexpressie Een teken reeks om tekens in te vervangen.
+* ReplacePattern: een teken reeks met een woorden lijst met te vervangen tekens.
 
-De indeling {bron1} is: {target1}, {bron2}: {target2}, {bronN}, {targetN} bron is waar het teken om te zoeken en het doel van de tekenreeks die moet worden vervangen.
+De indeling is {source1}: {target1}, {source2}: {TARGET2}, {sourcen}, {targetee} waarbij source het teken is dat moet worden gevonden en richt de teken reeks die moet worden vervangen.
 
-**Opmerking:**
+**Opmerkingen**
 
-* De functie heeft elk exemplaar van de gedefinieerde bronnen en vervangt deze door de doelen.
-* De bron moet precies één teken voor (unicode).
-* De bron kan niet leeg of langer is dan één teken (parseerfout).
-* Het doel kan meerdere tekens, bijvoorbeeld ö:oe, β:ss hebben.
-* Het doel mag leeg zijn die aangeeft dat het teken moet worden verwijderd.
-* De bron is hoofdlettergevoelig en moet exact overeenkomen.
-* De (door komma's) en: (dubbele punt) gereserveerde tekens zijn en met behulp van deze functie kan niet worden vervangen.
-* Spaties en andere wit tekens in de ReplacePattern tekenreeks worden genegeerd.
+* De functie neemt elk exemplaar van gedefinieerde bronnen in en vervangt deze door de doelen.
+* De bron moet precies één Unicode-teken zijn.
+* De bron mag niet leeg zijn of niet langer zijn dan één teken (Parseerfout).
+* Het doel kan uit meerdere tekens bestaan, bijvoorbeeld ö: OE, β: SS.
+* Het doel kan leeg zijn om aan te geven dat het teken moet worden verwijderd.
+* De bron is hoofdletter gevoelig en moet exact overeenkomen.
+* De, (komma) en: (dubbele punt) zijn gereserveerde tekens en kunnen niet worden vervangen met deze functie.
+* Spaties en andere witte tekens in de teken reeks ReplacePattern worden genegeerd.
 
 **Voorbeeld:**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
@@ -1125,217 +1125,217 @@ De indeling {bron1} is: {target1}, {bron2}: {target2}, {bronN}, {targetN} bron i
 Retourneert Raksmorgas
 
 `ReplaceChars("O’Neil",%ReplaceString%)`  
-Retourneert 'ONeil', de één tick is gedefinieerd om te worden verwijderd.
+Retourneert "ONeil", de enkele Tick is gedefinieerd om te worden verwijderd.
 
 ---
 ### <a name="right"></a>Rechts
 **Beschrijving:**  
-De juiste functie retourneert een opgegeven aantal tekens vanaf de rechterkant (einde) van een tekenreeks.
+De functie Right retourneert een opgegeven aantal tekens vanaf het begin van een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Right(str string, num NumChars)`
 
-* tekenreeks: de tekenreeks om terug te keren tekens uit
-* NumChars: een nummer van het aantal tekens retourneren vanaf het einde (rechts) van de tekenreeks
+* teken reeks: de teken reeks waaruit tekens moeten worden opgehaald
+* NumChars: een nummer dat het aantal tekens aangeeft dat moet worden geretourneerd vanaf het einde (rechts) van de teken reeks
 
-**Opmerking:**  
-NumChars tekens worden vanaf de laatste positie van de tekenreeks geretourneerd.
+**Opmerkingen**  
+NumChars tekens worden geretourneerd vanaf de laatste positie van de teken reeks.
 
-Een tekenreeks met de laatste numChars tekens in tekenreeks:
+Een teken reeks met de laatste numChars tekens in de teken reeks:
 
-* Als numChars = 0, lege tekenreeks als resultaat.
-* Als de invoertekenreeks numChars < 0, worden geretourneerd.
-* Als null-tekenreeks is, retourneert u de lege tekenreeks.
+* Als numChars = 0, retourneert u een lege teken reeks.
+* Als numChars < 0, wordt de invoer teken reeks geretourneerd.
+* Als teken reeks null is, retourneert een lege teken reeks.
 
-Als de tekenreeks bevat minder tekens dan het aantal opgegeven in NumChars, wordt een tekenreeks die identiek is aan de tekenreeks geretourneerd.
+Als teken reeks minder tekens bevat dan het getal dat is opgegeven in NumChars, wordt een teken reeks geretourneerd die identiek is aan de teken reeks.
 
 **Voorbeeld:**  
 `Right("John Doe", 3)`  
-Retourneert "Doe".
+Retourneert "Jansen".
 
 ---
 ### <a name="rtrim"></a>RTrim
 **Beschrijving:**  
-De functie RTrim verwijdert de afsluitende spaties uit een tekenreeks.
+De functie RTrim verwijdert de Volg spaties uit een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str RTrim(str value)`
 
 **Voorbeeld:**  
 `RTrim(" Test ")`  
-Retourneert 'Test'.
+Retourneert ' test '.
 
 ---
-### <a name="select"></a>Selecteer
+### <a name="select"></a>Selecteren
 **Beschrijving:**  
-Het proces alle waarden in een meerdere waarden kenmerk (of uitvoer van een expressie) op basis van functie worden opgegeven.
+Alle waarden in een kenmerk met meerdere waarden (of uitvoer van een expressie) verwerken op basis van de opgegeven functie.
 
-**Syntaxis:**  
+**Syntaxis**  
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* item: Hiermee geeft u een element in het kenmerk met meerdere waarden
+* item Vertegenwoordigt een-element in het kenmerk met meerdere waarden
 * kenmerk: het kenmerk met meerdere waarden
-* expressie: een expressie waarmee een verzameling waarden wordt geretourneerd
-* voorwaarde: een functie waarmee een item in het kenmerk kan worden verwerkt.
+* expressie: een expressie die een verzameling waarden retourneert
+* voor waarde: een functie die een item in het kenmerk kan verwerken
 
 **Voorbeelden:**  
 `Select($item,[otherPhone],Replace($item,"-",""))`  
-Alle waarden in de otherPhone kenmerk met meerdere waarden retourneren nadat afbreekstreepjes (-) zijn verwijderd.
+Retourneert alle waarden in het kenmerk otherPhone met meerdere waarden nadat afbreek streepjes (-) zijn verwijderd.
 
 ---
-### <a name="split"></a>splitsen
+### <a name="split"></a>Splitsen
 **Beschrijving:**  
-De functie Split een tekenreeks van elkaar gescheiden met een scheidingsteken en maakt het een tekenreeks met meerdere waarden.
+De Splits functie gebruikt een teken reeks die is gescheiden met een scheidings teken en maakt deze een reeks met meerdere waarden.
 
-**Syntaxis:**  
+**Syntaxis**  
 `mvstr Split(str value, str delimiter)`  
 `mvstr Split(str value, str delimiter, num limit)`
 
-* waarde: de tekenreeks met een scheidingsteken om te scheiden.
-* scheidingsteken: Eén teken moet worden gebruikt als het scheidingsteken.
-* limiet: maximum aantal waarden die kunnen retourneren.
+* waarde: de teken reeks met een scheidings teken dat moet worden gescheiden.
+* scheidings teken: één tekens die moeten worden gebruikt als het scheidings teken.
+* limiet: maximum aantal waarden dat kan worden geretourneerd.
 
 **Voorbeeld:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
-Retourneert een tekenreeks met meerdere waarden met 2 elementen nuttig voor het proxyAddress-kenmerk.
+Retourneert een teken reeks met meerdere waarden met twee elementen die geschikt zijn voor het kenmerk proxyAddress attribuut.
 
 ---
 ### <a name="stringfromguid"></a>StringFromGuid
 **Beschrijving:**  
-De functie StringFromGuid wordt een binaire GUID en geconverteerd naar een tekenreeks
+De functie StringFromGuid gebruikt een binaire GUID en converteert deze naar een teken reeks
 
-**Syntaxis:**  
+**Syntaxis**  
 `str StringFromGuid(bin GUID)`
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
 **Beschrijving:**  
-De functie StringFromSid converteert een bytematrix die een beveiligings-id naar een tekenreeks.
+Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgezet in een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str StringFromSid(bin ObjectSID)`  
 
 ---
 ### <a name="switch"></a>Switch
 **Beschrijving:**  
-De functie Switch wordt gebruikt om op basis van geëvalueerde voorwaarden één waarde retourneren.
+De functie switch wordt gebruikt om één waarde te retour neren op basis van de geëvalueerde voor waarden.
 
-**Syntaxis:**  
+**Syntaxis**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* expr: Variant-expressie die u wilt evalueren.
-* Waarde: De waarde die worden geretourneerd als de bijbehorende expressie waar is.
+* expressie De variant expressie die u wilt evalueren.
+* Value De waarde die moet worden geretourneerd als de bijbehorende expressie waar is.
 
-**Opmerking:**  
-De lijst met argumenten functie Switch bestaat uit combinaties van expressies en waarden. De expressies worden van links naar rechts geëvalueerd en wordt de waarde die is gekoppeld aan de eerste expressie die moet worden geëvalueerd tot ' True ' geretourneerd. Als de onderdelen zijn niet goed gekoppeld, wordt er een runtime-fout optreedt.
+**Opmerkingen**  
+De lijst met argumenten van de functie Switch bestaat uit paren expressies en waarden. De expressies worden van links naar rechts geëvalueerd en de waarde die is gekoppeld aan de eerste expressie die moet worden geëvalueerd als waar, wordt geretourneerd. Als de onderdelen niet op de juiste manier zijn gekoppeld, treedt er een runtime fout op.
 
-Bijvoorbeeld, als expr1 waar is, retourneert Switch value1. Als markering-1 ingesteld op False is, maar de markering-2 True is, retourneert de Switch waarde 2, enzovoort.
+Als Expr1 bijvoorbeeld waar is, retourneert switch waarde1. Als expr-1 False is, maar expr-2 True is, retourneert switch waarde-2, enzovoort.
 
-Switch een waarbij niets wordt geretourneerd als:
+De schakel optie retourneert niets als:
 
-* Geen van de expressies zijn True.
-* De eerste expressie die de waarde True heeft een overeenkomende waarde die Null is.
+* Geen van de expressies is waar.
+* De eerste echte expressie heeft een overeenkomende waarde die Null is.
 
-Switch evalueert alle expressies, zelfs als er slechts één provider retourneert. Daarom moet u bekijken op neveneffecten. Als de evaluatie van een expressie in een deling door nul-fout resulteert, wordt bijvoorbeeld een fout optreedt.
+Met de switch worden alle expressies geëvalueerd, zelfs als deze slechts een van beide worden geretourneerd. Daarom moet u letten op ongewenste neven effecten. Als de evaluatie van een expressie bijvoorbeeld resulteert in een deling door nul fout, treedt er een fout op.
 
-Waarde kan ook worden de functie fout, die een aangepaste tekenreeks geretourneerd.
+De waarde kan ook de fout functie zijn, waarmee een aangepaste teken reeks zou worden geretourneerd.
 
 **Voorbeeld:**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
-Retourneert de gesproken taal in sommige steden, anders wordt een fout geretourneerd.
+Retourneert de taal die in enkele grote steden gesp roken wordt, anders retourneert een fout.
 
 ---
-### <a name="trim"></a>Trim
+### <a name="trim"></a>Omloopspaties wissen
 **Beschrijving:**  
-De functie spaties verwijdert voorloopspaties en afsluitende spaties uit een tekenreeks.
+De functie Trim verwijdert voor loop-en volg spaties uit een teken reeks.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Trim(str value)`  
 
 **Voorbeeld:**  
 `Trim(" Test ")`  
-Retourneert 'Test'.
+Retourneert ' test '.
 
 `Trim([proxyAddresses])`  
-Verwijdert voorloopspaties en afsluitende spaties voor elke waarde in het proxyAddress-kenmerk.
+Hiermee verwijdert u voor loop-en volg spaties voor elke waarde in het kenmerk proxyAddress attribuut.
 
 ---
 ### <a name="ucase"></a>UCase
 **Beschrijving:**  
-De functie UCase converteert alle tekens in een tekenreeks naar hoofdletters.
+De functie UCase converteert alle tekens in een teken reeks naar hoofd letters.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str UCase(str string)`
 
 **Voorbeeld:**  
 `UCase("TeSt")`  
-Returns "TEST".
+Retourneert ' TEST '.
 
 ---
 ### <a name="where"></a>Waar
 
 **Beschrijving:**  
-Retourneert een subset van waarden in een meerdere waarden kenmerk (of een uitvoer van een expressie) op basis van specifieke voorwaarde.
+Retourneert een subset waarden van een kenmerk met meerdere waarden (of uitvoer van een expressie) op basis van een specifieke voor waarde.
 
-**Syntaxis:**  
+**Syntaxis**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* item: Hiermee geeft u een element in het kenmerk met meerdere waarden
+* item Vertegenwoordigt een-element in het kenmerk met meerdere waarden
 * kenmerk: het kenmerk met meerdere waarden
-* voorwaarde: een expressie die kan worden geëvalueerd op waar of ONWAAR
-* expressie: een expressie waarmee een verzameling waarden wordt geretourneerd
+* voor waarde: een expressie die als waar of ONWAAR kan worden geëvalueerd
+* expressie: een expressie die een verzameling waarden retourneert
 
 **Voorbeeld:**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
-Retourneert de certificaatwaarden in het kenmerk met meerdere waarden userCertificate die niet zijn verlopen.
+Retour neer de certificaat waarden in het kenmerk met meerdere waarden userCertificate die niet zijn verlopen.
 
 ---
 ### <a name="with"></a>Met
 **Beschrijving:**  
-De With-functie biedt een manier om een complexe expressie vereenvoudigen met behulp van een variabele om weer te geven van een subexpressie die wordt weergegeven een of meer keer in de complexe expressie.
+Met de functie with kunt u een complexe expressie vereenvoudigen door een variabele te gebruiken om een subexpressie weer te geven die een of meer keren voor komt in de complexe expressie.
 
-**Syntaxis:** 
+**Syntaxis**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* variabele: Hiermee geeft u de subexpressie.
-* Subexpressie: subexpressie vertegenwoordigd door de variabele.
+* variabeletype Hiermee wordt de subexpressie aangeduid.
+* subexpressie: subexpressie vertegenwoordigd door variabele.
 * complexExpression: Een complexe expressie.
 
 **Voorbeeld:**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
-Is functioneel equivalent met:  
+Is functioneel equivalent aan:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
-Die retourneert alleen de waarden voor niet-verlopen certificaten in het kenmerk userCertificate.
+Hiermee worden alleen niet-verlopen certificaat waarden in het kenmerk userCertificate geretourneerd.
 
 
 ---
 ### <a name="word"></a>Word
 **Beschrijving:**  
-De functie woord retourneert een woord dat is opgenomen in een tekenreeks, op basis van parameters met een beschrijving van de scheidingstekens moeten worden gebruikt en het aantal word om terug te keren.
+De functie Word retourneert een woord dat deel uitmaakt van een teken reeks, op basis van para meters die de scheidings tekens beschrijven die moeten worden gebruikt en het woord nummer dat moet worden geretourneerd.
 
-**Syntaxis:**  
+**Syntaxis**  
 `str Word(str string, num WordNumber, str delimiters)`
 
-* tekenreeks: de tekenreeks die moet worden geretourneerd van een woord uit.
-* WordNumber: een getal dat aangeeft welke word-nummer moet worden geretourneerd.
-* scheidingstekens: een tekenreeks voor de scheidingstekens dat moet worden gebruikt voor het identificeren van woorden
+* teken reeks: de teken reeks waaruit een woord moet worden geretourneerd.
+* WordNumber: een getal dat aangeeft welk woord nummer moet worden geretourneerd.
+* scheidings tekens: een teken reeks die de af te schrijven (en) voor het identificeren van woorden aangeeft
 
-**Opmerking:**  
-Elke reeks tekens in een tekenreeks van elkaar gescheiden door een van de tekens in scheidingstekens worden aangeduid als woorden:
+**Opmerkingen**  
+Elke teken reeks in een teken reeks gescheiden door de tekens van de spaties wordt aangeduid als woorden:
 
-* Als getal < 1, het resultaat een lege tekenreeks.
-* Als null-tekenreeks is, retourneert de lege tekenreeks.
+* Als getal < 1 retourneert een lege teken reeks.
+* Als de teken reeks null is, wordt een lege teken reeks geretourneerd.
 
-Als de tekenreeks bevat minder dan het aantal woorden of tekenreeks bevat geen woorden aangeduid met scheidingstekens, wordt een lege tekenreeks geretourneerd.
+Als teken reeks minder dan cijfer woorden bevat, of teken reeks geen woorden die zijn geïdentificeerd door scheidings tekens, wordt een lege teken reeks geretourneerd.
 
 **Voorbeeld:**  
 `Word("The quick brown fox",3," ")`  
-Retourneert 'brown'
+Retourneert ' bruin '
 
 `Word("This,string!has&many separators",3,",!&#")`  
-Retourneert 'is'
+Retourneert ' has '
 
 ## <a name="additional-resources"></a>Aanvullende resources
-* [Inzicht in verklarende Inrichtingsexpressies](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect Sync: Synchronisatieopties aanpassen](how-to-connect-sync-whatis.md)
+* [Uitleg over declaratieve inrichtings expressies](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect Sync: Synchronisatie opties aanpassen](how-to-connect-sync-whatis.md)
 * [Uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md)

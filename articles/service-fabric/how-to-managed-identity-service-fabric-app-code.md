@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 8e535fc581e186abd032206c2bbf78623d95967f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656627"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899773"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services (preview)
 
@@ -23,7 +23,7 @@ Service Fabric toepassingen kunnen beheerde identiteiten gebruiken om toegang te
 > Een beheerde identiteit vertegenwoordigt de koppeling tussen een Azure-resource en een Service-Principal in de bijbehorende Azure AD-Tenant die is gekoppeld aan het abonnement dat de resource bevat. In de context van Service Fabric worden beheerde identiteiten alleen ondersteund voor toepassingen die als Azure-resources worden geïmplementeerd. 
 
 > [!IMPORTANT]
-> Voordat de beheerde identiteit van een Service Fabric toepassing wordt gebruikt, moet aan de client toepassing toegang worden verleend tot de beveiligde bron. Raadpleeg de lijst met Azure- [Services die ondersteuning bieden voor Azure AD-verificatie](/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) om te controleren op ondersteuning en vervolgens naar de documentatie van de betreffende service voor specifieke stappen voor het verlenen van identiteits toegang tot belang rijke bronnen. 
+> Voordat de beheerde identiteit van een Service Fabric toepassing wordt gebruikt, moet aan de client toepassing toegang worden verleend tot de beveiligde bron. Raadpleeg de lijst met Azure- [Services die ondersteuning bieden voor Azure AD-verificatie](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) om te controleren op ondersteuning en vervolgens naar de documentatie van de betreffende service voor specifieke stappen voor het verlenen van identiteits toegang tot belang rijke bronnen. 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Een toegangs Token ophalen met behulp van REST API
 In clusters waarvoor een beheerde identiteit is ingeschakeld, maakt de Service Fabric-runtime gebruik van een localhost-eind punt dat toepassingen kunnen gebruiken om toegangs tokens te verkrijgen. Het eind punt is beschikbaar op elk knoop punt van het cluster en is toegankelijk voor alle entiteiten op het knoop punt. Geautoriseerde bellers kunnen toegangs tokens verkrijgen door dit eind punt aan te roepen en een verificatie code te presen teren. de code wordt gegenereerd door de Service Fabric runtime voor elke afzonderlijke activering van service code-pakket en is gebonden aan de levens duur van het proces dat als host fungeert voor het service code pakket.

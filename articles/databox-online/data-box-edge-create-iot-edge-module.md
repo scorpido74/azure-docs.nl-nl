@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 734ad263356ab9f91c7cb92ab174a14e0c5dd867
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775179"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900637"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Een C# IOT Edge module ontwikkelen om bestanden te verplaatsen op Data Box Edge
 
@@ -127,8 +127,10 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 2. Voeg boven aan de **naam ruimte FileCopyModule**de volgende using-instructies toe voor typen die later worden gebruikt. **Micro soft. Azure. devices. client. Trans Port. Mqtt** is een protocol voor het verzenden van berichten naar IOT Edge hub.
 
     ```
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using Newtonsoft.Json;
+    namespace FileCopyModule
+    {
+        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
+        using Newtonsoft.Json;
     ```
 3. Voeg de variabele **InputFolderPath** en **OutputFolderPath** toe aan de klasse Program.
 
@@ -140,7 +142,7 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Voeg de **FileEvent** -klasse toe om de hoofd tekst van het bericht te definiëren.
+4. Voeg direct na de vorige stap de klasse **FileEvent** toe om de hoofd tekst van het bericht te definiëren.
 
     ```
     /// <summary>
@@ -156,7 +158,7 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
     }
     ```
 
-5. In de methode **Init** wordt met de code een object **ModuleClient** gemaakt en geconfigureerd. Met dit object kan de module verbinding maken met de lokale Azure IoT Edge runtime met behulp van het MQTT-protocol om berichten te verzenden en te ontvangen. De connection string die in de init-methode wordt gebruikt, wordt door de IoT Edge-runtime aan de module geleverd. Met de code wordt een FileCopy-call back geregistreerd voor het ontvangen van berichten van een IoT Edge hub via het **input1** -eind punt.
+5. In de **init-methode**maakt en configureert de code een **ModuleClient** -object. Met dit object kan de module verbinding maken met de lokale Azure IoT Edge runtime met behulp van het MQTT-protocol om berichten te verzenden en te ontvangen. De connection string die in de init-methode wordt gebruikt, wordt door de IoT Edge-runtime aan de module geleverd. Met de code wordt een FileCopy-call back geregistreerd voor het ontvangen van berichten van een IoT Edge hub via het **input1** -eind punt. Vervang de **init-methode** door de volgende code.
 
     ```
     /// <summary>
@@ -178,11 +180,11 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
     }
     ```
 
-6. Voeg de code voor **FileCopy**in.
+6. Verwijder de code voor de **pipe-bericht methode** en voer de code voor **FileCopy**in.
 
     ```
         /// <summary>
-        /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
+        /// This method is called whenever the module is sent a message from the IoT Edge Hub.
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
         /// </summary>
@@ -236,6 +238,7 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
     ```
 
 7. Sla dit bestand op.
+8. U kunt ook [een bestaand code voorbeeld](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) voor dit project downloaden. U kunt vervolgens het bestand dat u hebt opgeslagen in het **Program.cs** -bestand valideren in dit voor beeld.
 
 ## <a name="build-your-iot-edge-solution"></a>Uw eigen IoT Edge-oplossing bouwen
 
@@ -246,7 +249,7 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Gebruik de aanmeldings server en de gebruikers naam die u hebt gekopieerd uit het container register. 
+    Gebruik de aanmeldings server en de gebruikers naam die u hebt gekopieerd uit het container register.
 
     ![IoT Edge oplossing bouwen en pushen](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 

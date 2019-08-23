@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228931"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905229"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -211,8 +211,8 @@ Als u afhankelijkheids visualisatie wilt gebruiken, koppelt u een Log Analytics-
 Nadat u een werk ruimte hebt geconfigureerd, downloadt en installeert u agents op elke on-premises computer die u wilt evalueren. Als u bovendien computers hebt zonder Internet verbinding, moet u de [log Analytics-gateway](../azure-monitor/platform/gateway.md) hierop downloaden en installeren.
 
 1. Klik in **overzicht**op**machines** **beheren** > en selecteer de gewenste computer.
-2. Klik in  de kolom afhankelijkheden op **agents installeren**.
-3. Down load  en installeer micro soft Monitoring Agent (MMA) en de afhankelijkheids agent op elke virtuele machine die u wilt beoordelen op de pagina afhankelijkheden.
+2. Klik in de kolom afhankelijkheden op **agents installeren**.
+3. Down load en installeer micro soft Monitoring Agent (MMA) en de afhankelijkheids agent op elke virtuele machine die u wilt beoordelen op de pagina afhankelijkheden.
 4. Kopieer de werkruimte-id en -sleutel. U hebt deze nodig wanneer u de MMA installeert op de on-premises machine.
 
 > [!NOTE]
@@ -244,8 +244,7 @@ Meer [informatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-c
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>De MMA-agent installeren op een computer die wordt bewaakt door Operations Manager
 
-Voor computers die worden bewaakt door System Center Operations Manager 2012 R2 of hoger, hoeft u de MMA-agent niet te installeren. Servicetoewijzing integreert met de Operations Manager MMA om de benodigde afhankelijkheids gegevens te verzamelen. [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). De afhankelijkheids agent moet worden geïnstalleerd.
-
+Voor computers die worden bewaakt met System Center Operations Manager 2012 R2 of hoger is het niet nodig om de MMA-agent te installeren. Servicetoewijzing integreert met de Operations Manager MMA om de benodigde afhankelijkheids gegevens te verzamelen. [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). De afhankelijkheids agent moet worden geïnstalleerd.
 
 ### <a name="install-the-dependency-agent"></a>De afhankelijkheidsagent installeren
 
@@ -254,15 +253,17 @@ Voor computers die worden bewaakt door System Center Operations Manager 2012 R2 
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Meer informatie over de ondersteuning van de afhankelijkheids agent voor de [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) -en [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) -besturings systemen.
-- Meer [informatie](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheids agent te installeren.
+- Meer informatie over de [ondersteuning van de afhankelijkheids agent](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) voor de Windows-en Linux-besturings systemen.
+- Meer [informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheids agent te installeren.
 
+>[!NOTE]
+> Het Azure Monitor voor VM's artikel waarnaar wordt verwezen om een overzicht te geven van de systeem vereisten en-methoden voor het implementeren van de afhankelijkheids agent, zijn ook van toepassing op de Servicetoewijzing oplossing.
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Een groep met afhankelijkheids toewijzing maken
 
 1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op**machines** **beheren** > .
 2. Zoek naar de computer waarop u de agents hebt geïnstalleerd.
-3. De  kolom afhankelijkheden voor de machine moet nu als **weergave afhankelijkheden**worden weer gegeven. Klik op de kolom om de afhankelijkheden van de machine weer te geven.
+3. De kolom afhankelijkheden voor de machine moet nu als **weergave afhankelijkheden**worden weer gegeven. Klik op de kolom om de afhankelijkheden van de machine weer te geven.
 4. De afhankelijkheids toewijzing voor de machine bevat de volgende details:
     - Inkomende (clients) en uitgaande (servers) TCP-verbindingen van de computer
         - De afhankelijke computers waarop geen MMA en een afhankelijkheids agent is geïnstalleerd, worden gegroepeerd op poort nummers.

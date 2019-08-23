@@ -2,19 +2,18 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a6ceee0f7db4b7b368dce1a28c8edc0b2b11180
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176677"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900616"
 ---
-Voor gegevens in rust:
+Voor Data-at-rest:
 
-- BitLocker XTS-AES 256-bits versleuteling wordt gebruikt om lokale gegevens te beveiligen.
-- Toegang tot gegevens die zijn opgeslagen in bestandsshares wordt beperkt.
+- Toegang tot gegevens die zijn opgeslagen in shares is beperkt.
 
-    - SMB-clients die toegang hebben tot gegevens delen, moet de referenties van de gebruiker die is gekoppeld aan de share. Deze referenties worden gedefinieerd als de share is gemaakt.
-    - IP-adressen van de NFS-clients die toegang hebben tot een share moeten worden toegevoegd wanneer de share is gemaakt.
+    - SMB-clients die toegang hebben tot share gegevens hebben gebruikers referenties nodig die aan de share zijn gekoppeld. Deze referenties worden gedefinieerd wanneer de share wordt gemaakt.
+    - De IP-adressen van NFS-clients die toegang hebben tot een share moeten worden toegevoegd wanneer de share wordt gemaakt.

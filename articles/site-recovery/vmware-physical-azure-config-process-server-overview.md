@@ -1,55 +1,55 @@
 ---
-title: Over de Azure Site Recovery-configuratie, proces en hoofddoelservers | Microsoft Docs
-description: In dit artikel biedt een overzicht van de configuratie, proces en hoofddoelservers gebruiken bij het instellen van herstel na noodgevallen van on-premises VMware-machines naar Azure met Azure Site Recovery
+title: Over de Azure Site Recovery configuratie, het proces en de hoofddoel servers | Microsoft Docs
+description: Dit artikel bevat een overzicht van de configuratie, het proces en de hoofddoel servers die worden gebruikt bij het instellen van herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 8b3815fc9dc44484779a70b51ebff4802265d53a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417739"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972148"
 ---
-# <a name="about-site-recovery-components-configuration-process-master-target"></a>Over Site Recovery-onderdelen (configuratie, proces, hoofddoel)
+# <a name="about-site-recovery-components-configuration-process-master-target"></a>Over Site Recovery-onderdelen (configuratie, proces, hoofd doel)
 
-In dit artikel beschrijft de configuratie, proces en hoofddoelservers gebruikt bij het repliceren van virtuele VMware-machines en fysieke servers naar Azure met de [Site Recovery](site-recovery-overview.md) service.
+In dit artikel worden de configuratie, het proces en de hoofddoel servers beschreven die worden gebruikt bij het repliceren van virtuele VMware-machines en fysieke servers naar Azure met de [site Recovery](site-recovery-overview.md) -service.
 
 ## <a name="configuration-server"></a>Configuratieserver
 
-Voor herstel na noodgevallen van on-premises VMware-machines en fysieke servers, moet u een Site Recovery on-premises configuratieserver geïmplementeerd.
+Voor herstel na nood gevallen van on-premises virtuele VMware-machines en fysieke servers hebt u een Site Recovery configuratie server die on-premises is geïmplementeerd.
 
-**Instelling** | **Details** | **Koppelingen**
+**Instelling** | **Details** | **Koppelen**
 --- | --- | ---
-**Onderdelen**  | De configuratie van server-machine voert alle on-premises Site Recovery-onderdelen, waaronder de configuratieserver, processerver en hoofddoelserver.<br/><br/> Bij het instellen van de configuratieserver, worden alle onderdelen automatisch geïnstalleerd. | [Lezen](vmware-azure-common-questions.md#configuration-server) de configuratieserver Veelgestelde vragen over.
-**Rol** | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie. | Meer informatie over de architectuur voor [VMware](vmware-azure-architecture.md) en [fysieke server](physical-azure-architecture.md) herstel na noodgevallen naar Azure.
-**Vereisten voor VMware** | U moet installeren en uitvoeren van de configuratieserver als een on-premises, maximaal beschikbare VMware-VM voor herstel na noodgevallen van on-premises VMware-VM's. | [Meer informatie over](vmware-azure-deploy-configuration-server.md#prerequisites) de vereisten.
-**VMware-implementatie** | Het is raadzaam dat u de configuratieserver met behulp van een gedownloade OVA-sjabloon implementeert. Deze methode biedt een eenvoudig manier voor het instellen van een configuratieserver die aan alle vereisten en voorwaarden voldoet.<br/><br/> Als voor een of andere reden lukt een VMware-VM met behulp van een OVA-sjabloon implementeren, kunt u de configuratie van server-machines handmatig, zoals hieronder beschreven voor noodherstel van fysieke machine instellen. | [Implementeer](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) met behulp van een OVA-sjabloon.
-**Vereisten voor fysieke servers** | Voor herstel na noodgevallen voor on-premises fysieke servers implementeert u de configuratieserver handmatig. | [Meer informatie over](physical-azure-set-up-source.md#prerequisites) de vereisten.
-**Fysieke server-implementatie** | Als deze kan niet worden geïnstalleerd als een VMware-VM, kunt u deze installeren op een fysieke server. | [Implementeer](physical-azure-set-up-source.md#set-up-the-source-environment) de configuratieserver handmatig.
+**Materialen**  | Op de computer met de configuratie server worden alle on-premises Site Recovery onderdelen uitgevoerd, waaronder de configuratie server, de proces server en de hoofddoel server.<br/><br/> Wanneer u de configuratie server instelt, worden alle onderdelen automatisch geïnstalleerd. | [Lees](vmware-azure-common-questions.md#configuration-server) de veelgestelde vragen over de configuratie server.
+**Rol** | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie. | Meer informatie over de architectuur voor de nood herstel van [VMware](vmware-azure-architecture.md) en [fysieke servers](physical-azure-architecture.md) naar Azure.
+**VMware-vereisten** | Voor herstel na nood gevallen van on-premises virtuele VMware-machines moet u de configuratie server installeren en uitvoeren als een on-premises, Maxi maal beschik bare VMware VM. | [Meer informatie over](vmware-azure-deploy-configuration-server.md#prerequisites) de vereisten.
+**VMware-implementatie** | We raden u aan de configuratie server te implementeren met behulp van een gedownloade eicellen-sjabloon. Deze methode biedt een eenvoudige manier om een configuratie server in te stellen die voldoet aan alle vereisten en voor waarden.<br/><br/> Als u om een of andere reden geen virtuele VMware-machine kunt implementeren met behulp van een sjabloon van de eicellen, stelt u de configuratie Server-computers hand matig in, zoals hieronder wordt beschreven voor nood herstel van een fysieke machine. | [Implementeren](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) met een eicellen-sjabloon.
+**Vereisten voor fysieke servers** | Voor herstel na nood gevallen op fysieke servers op locatie, implementeert u de configuratie server hand matig. | [Meer informatie over](physical-azure-set-up-source.md#prerequisites) de vereisten.
+**Fysieke server implementatie** | Als deze niet kan worden geïnstalleerd als een virtuele VMware-machine, kunt u deze installeren op een fysieke server. | [Implementeer](physical-azure-set-up-source.md#set-up-the-source-environment) de configuratie server hand matig.
 
 
 ## <a name="process-server"></a>Processerver
 
-**Instelling** | **Details** | **Koppelingen**
+**Instelling** | **Details** | **Koppelen**
 --- | --- | ---
-**Implementatie**  | Voor herstel na noodgevallen en replicatie van on-premises VMware-machines en fysieke servers, moet u een processerver on-premises. De processerver is standaard geïnstalleerd op de configuratieserver bij het implementeren. | [Meer informatie](vmware-azure-architecture.md?#architectural-components).
-**Rol (on-premises** | -Ontvangt gegevens van replicatie van machines is ingeschakeld voor replicatie.<br/> -Optimaliseert replicatiegegevens met caching, compressie en codering, en verzendt ze naar Azure Storage.<br/> -Voert een push-installatie van de Site Recovery Mobility Service op de on-premises VMware-machines en fysieke servers die u wilt repliceren.<br/> -Voert automatische detectie van on-premises computers. | [Meer informatie](vmware-physical-azure-config-process-server-overview.md#process-server). 
-**Rol (failback van Azure)** | Na de failover van uw on-premises site instellen u een processerver in Azure, als een Azure-VM voor het afhandelen van failback naar uw on-premises locatie.<br/><br/> De processerver in Azure is tijdelijk. De Azure-VM kan worden verwijderd nadat de failback is voltooid. | [Meer informatie](vmware-azure-set-up-process-server-azure.md).
-**Schalen** | Voor grotere implementaties, on-premises kunt u aanvullende, scale-out processervers instellen. Extra servers scale-out-capaciteit, doordat ze de grotere aantallen repliceren van machines en grotere hoeveelheden replicatieverkeer.<br/><br/> U kunt machines verplaatsen tussen twee processervers, als u wilt laden saldo replicatieverkeer. | [Meer informatie](vmware-azure-set-up-process-server-scale.md),
+**Implementatie**  | Voor herstel na nood gevallen en replicatie van on-premises virtuele VMware-machines en fysieke servers hebt u een proces server on-premises nodig. De proces server wordt standaard geïnstalleerd op de configuratie server wanneer u deze implementeert. | [Meer informatie](vmware-azure-architecture.md?#architectural-components).
+**Rol (on-premises** | -Ontvangt replicatie gegevens van machines die zijn ingeschakeld voor replicatie.<br/> -Hiermee optimaliseert u de replicatie gegevens met caching, compressie en versleuteling, en verzendt u deze naar Azure Storage.<br/> -Voert een push-installatie van de Site Recovery Mobility-service uit op on-premises VMware-Vm's en fysieke servers die u wilt repliceren.<br/> -Voert automatische detectie van on-premises machines uit. | [Meer informatie](vmware-physical-azure-config-process-server-overview.md#process-server). 
+**Rol (failback vanuit Azure)** | Na een failover vanaf uw on-premises site stelt u een proces server in Azure in als een Azure-VM om de failback naar uw on-premises locatie af te handelen.<br/><br/> De proces server in Azure is tijdelijk. De Azure-VM kan worden verwijderd nadat de failback is voltooid. | [Meer informatie](vmware-azure-set-up-process-server-azure.md).
+**Schalen** | Voor grotere implementaties kunt u on-premises extra, scale-out proces servers instellen. Extra servers hebben een uitbrei ding van de capaciteit, door het verwerken van grotere aantallen replicerende machines en grotere volumes van replicatie verkeer.<br/><br/> U kunt computers verplaatsen tussen twee proces servers, om het replicatie verkeer te verdelen. | Meer [informatie](vmware-azure-set-up-process-server-scale.md),
 
 
-## <a name="master-target-server"></a>Hoofddoelserver
+## <a name="master-target-server"></a>Hoofddoel server
 
 Op de hoofddoelserver worden de replicatiegegevens tijdens de failback vanuit Azure afgehandeld.
 
-- Deze wordt standaard geïnstalleerd op de configuratieserver.
-- U kunt een afzonderlijke hoofddoelserver voor failback toevoegen voor grote implementaties.
+- Het wordt standaard geïnstalleerd op de configuratie server.
+- Voor grote implementaties kunt u een extra, afzonderlijke Master doel server toevoegen voor failback.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Controleer de [architectuur](vmware-azure-architecture.md) voor herstel na noodgevallen van virtuele VMware-machines en fysieke servers.
-- Controleer de [vereisten en voorwaarden](vmware-physical-azure-support-matrix.md) voor herstel na noodgevallen van virtuele VMware-machines en fysieke servers naar Azure. 
+- Bekijk de [architectuur](vmware-azure-architecture.md) voor nood herstel van virtuele VMware-machines en fysieke servers.
+- Bekijk de [vereisten en voor waarden](vmware-physical-azure-support-matrix.md) voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure. 

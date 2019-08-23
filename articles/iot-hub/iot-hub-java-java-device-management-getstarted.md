@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 08/08/2017
-ms.openlocfilehash: 87e6f69c06fb9f8bc03d184cfe160964403e7a2a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/20/2019
+ms.openlocfilehash: 7fed6caa719824dd51b19789a7066ffaea13d336
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780872"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907825"
 ---
 # <a name="get-started-with-device-management-java"></a>Aan de slag met Apparaatbeheer (Java)
 
@@ -51,11 +51,13 @@ Aan het einde van deze zelf studie hebt u twee Java Console-apps:
 > [!NOTE]
 > Voor informatie over de Sdk's die u kunt gebruiken om toepassingen te bouwen die worden uitgevoerd op apparaten en de back-end van uw oplossing, raadpleegt u [Azure IOT sdk's](iot-hub-devguide-sdks.md).
 
+## <a name="prerequisites"></a>Vereisten
+
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Java SE 8. <br/> [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) hierin wordt beschreven hoe u Java voor deze zelf studie installeert in Windows of Linux.
+* Java SE 8. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) hierin wordt beschreven hoe u Java voor deze zelf studie installeert in Windows of Linux.
 
-* Maven 3.  <br/> [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) in dit artikel wordt beschreven hoe u [maven](https://maven.apache.org/what-is-maven.html) voor deze zelf studie installeert op Windows of Linux.
+* Maven 3. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) in dit artikel wordt beschreven hoe u [maven](https://maven.apache.org/what-is-maven.html) voor deze zelf studie installeert op Windows of Linux.
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
@@ -85,21 +87,23 @@ In deze sectie maakt u een Java-Console-app die:
 
 Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan te roepen en de gerapporteerde eigenschappen te lezen.
 
-1. Maak een lege map met de naam DM-Get-started.
+1. Maak een lege map met de naam **DM-Get-Started**.
 
-2. Maak in de map DM-Get-Started een Maven-project met de naam **trigger-reboot** met de volgende opdracht bij de opdracht prompt. Hieronder ziet u een enkele, lange opdracht:
+2. Maak in de map **DM-Get-Started** een Maven-project met de naam **trigger-reboot** met de volgende opdracht bij de opdracht prompt:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+    ```cmd/sh
+    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    ```
 
-3. Ga bij de opdracht prompt naar de map trigger-reboot.
+3. Ga bij de opdracht prompt naar de map **trigger-reboot** .
 
-4. Open met een tekst editor het bestand pom. XML in de map trigger-reboot en voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
+4. Open met een tekst editor het bestand **pom. XML** in de map **trigger-reboot** en voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.7.23</version>
+      <version>1.17.1</version>
       <type>jar</type>
     </dependency>
     ```
@@ -125,9 +129,9 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
     </build>
     ```
 
-6. Sla het bestand pom.xml op en sluit het af.
+6. Sla het bestand **pom. XML** op en sluit het.
 
-7. Open met een tekst editor het bron bestand trigger-reboot\src\main\java\com\mycompany\app\App.java.
+7. Open met een tekst editor het bron bestand **trigger-reboot\src\main\java\com\mycompany\app\App.java** .
 
 8. Voeg de volgende **import**instructies toe aan het bestand:
 
@@ -182,7 +186,7 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
     public static void main(String[] args) throws IOException
     ```
 
-12. Voeg de volgende code toe aan de methode **Main** om de directe methode voor opnieuw opstarten op het gesimuleerde apparaat aan te roepen:
+12. Als u de methode voor het opnieuw opstarten direct wilt aanroepen op het gesimuleerde apparaat, vervangt u de code in de methode **Main** door de volgende code:
 
     ```java
     System.out.println("Starting sample...");
@@ -224,36 +228,50 @@ Met deze console-app maakt u verbinding met uw IoT Hub om de directe methode aan
     System.out.println("Shutting down sample...");
     ```
 
-15. Sla het trigger-reboot\src\main\java\com\mycompany\app\App.java-bestand op en sluit het.
+15. Sla het **trigger-reboot\src\main\java\com\mycompany\app\App.java** -bestand op en sluit het.
 
-16. Bouw de back-end-app voor het starten van de **trigger** en corrigeer eventuele fouten. Ga bij de opdracht prompt naar de map trigger-reboot en voer de volgende opdracht uit:
+16. Bouw de back-end-app voor het starten van de **trigger** en corrigeer eventuele fouten. Ga bij de opdracht prompt naar de map **trigger-reboot** en voer de volgende opdracht uit:
 
-    `mvn clean package -DskipTests`
+    ```cmd/sh
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="create-a-simulated-device-app"></a>Een gesimuleerde apparaattoepassing maken
 
 In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app luistert naar de herstart directe methode aanroep van uw IoT-hub en reageert onmiddellijk op die aanroep. De app wordt vervolgens gedurende een tijdje geslapen om het opstart proces te simuleren voordat er een gerapporteerde eigenschap wordt gebruikt om de back-end-app voor het starten van de **trigger** te melden dat de computer opnieuw moet worden opgestart.
 
-1. Maak in de map DM-Get-Started een Maven-project met de naam gesimuleerd **apparaat** met behulp van de volgende opdracht bij de opdracht prompt. Het volgende is een enkele, lange opdracht:
+1. Maak in de map **DM-Get-Started** een Maven-project met de naam gesimuleerd **apparaat** met behulp van de volgende opdracht bij de opdracht prompt:
 
-    `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
+    ```cmd/sh
+    mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+    ```
 
-2. Navigeer vanuit het opdrachtvenster naar de map simulated-device.
+2. Ga bij de opdracht prompt naar de map **met gesimuleerde apparaten** .
 
-3. Open met een tekst editor het bestand pom. XML in de map gesimuleerde apparaten en voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
+3. Open met een tekst editor het bestand **pom. XML** in de map **gesimuleerde apparaten** en voeg de volgende afhankelijkheden toe aan het knoop punt **afhankelijkheden** . Met deze afhankelijkheid kunt u het IOT-service-client-pakket in uw app gebruiken om te communiceren met uw IoT-hub:
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.32</version>
+      <version>1.17.5</version>
     </dependency>
     ```
 
     > [!NOTE]
     > U kunt de meest recente versie van **IOT-Device-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
+4. Voeg de volgende afhankelijkheden toe aan het knoop punt afhankelijkheden. Met deze afhankelijkheid wordt een NOP geconfigureerd voor de Apache [SLF4J](https://www.slf4j.org/) logging-gevel, die wordt gebruikt door de client-SDK voor het implementeren van logboek registratie. Deze configuratie is optioneel, maar als u deze weglaat, wordt er mogelijk een waarschuwing weer gegeven in de console wanneer u de app uitvoert. Zie [logboek registratie](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) in de *voor beelden voor het* leesmij-bestand voor Azure IOT Device SDK voor Java voor meer informatie over logboek registratie in de client-SDK.
+
+    ```xml
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.28</version>
+    </dependency>
+    ```
+
+5. Voeg het volgende **Build** -knoop punt toe na het knoop punt afhankelijkheden. Deze configuratie zorgt ervoor dat maven Java 1,8 wordt gebruikt om de app te bouwen:
 
     ```xml
     <build>
@@ -271,11 +289,11 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     </build>
     ```
 
-5. Sla het bestand pom.xml op en sluit het af.
+6. Sla het bestand **pom. XML** op en sluit het.
 
-6. Open met een tekst editor het bron bestand simulated-device\src\main\java\com\mycompany\app\App.java.
+7. Open met een tekst editor het bron bestand **simulated-device\src\main\java\com\mycompany\app\App.java** .
 
-7. Voeg de volgende **import**instructies toe aan het bestand:
+8. Voeg de volgende **import**instructies toe aan het bestand:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -289,7 +307,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     import java.util.HashSet;
     ```
 
-7. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat Connection String u hebt genoteerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
+9. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{yourdeviceconnectionstring}` door het apparaat Connection String u hebt genoteerd in het gedeelte [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub) :
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -300,7 +318,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     private static DeviceClient client;
     ```
 
-8. Als u een call back-handler voor directe methode status gebeurtenissen wilt implementeren, voegt u de volgende geneste klasse toe aan de **app** -klasse:
+10. Als u een call back-handler voor directe methode status gebeurtenissen wilt implementeren, voegt u de volgende geneste klasse toe aan de **app** -klasse:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
@@ -312,7 +330,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     }
     ```
 
-9. Als u een call back-handler wilt implementeren voor gebeurtenis gebeurtenissen met een dubbele status, voegt u de volgende geneste klasse toe aan de **app** -klasse:
+11. Als u een call back-handler wilt implementeren voor gebeurtenis gebeurtenissen met een dubbele status, voegt u de volgende geneste klasse toe aan de **app** -klasse:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
@@ -324,7 +342,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     }
     ```
 
-10. Als u een call back-handler voor eigenschaps gebeurtenissen wilt implementeren, voegt u de volgende geneste klasse toe aan de **app** -klasse:
+12. Als u een call back-handler voor eigenschaps gebeurtenissen wilt implementeren, voegt u de volgende geneste klasse toe aan de **app** -klasse:
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -337,7 +355,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     }
     ```
 
-11. Als u een thread wilt implementeren om het opnieuw opstarten van het apparaat te simuleren, voegt u de volgende geneste klasse toe aan de **app** -klasse. De thread slaapt vijf seconden en stelt vervolgens de gerapporteerde eigenschap **lastReboot** in:
+13. Als u een thread wilt implementeren om het opnieuw opstarten van het apparaat te simuleren, voegt u de volgende geneste klasse toe aan de **app** -klasse. De thread slaapt vijf seconden en stelt vervolgens de gerapporteerde eigenschap **lastReboot** in:
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -358,7 +376,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     }
     ```
 
-12. Als u de directe methode op het apparaat wilt implementeren, voegt u de volgende geneste klasse toe aan de **app** -klasse. Wanneer de gesimuleerde app een aanroep van de direct-methode voor **opnieuw opstarten** ontvangt, wordt er een bevestiging voor de aanroeper geretourneerd en wordt vervolgens een thread gestart voor het verwerken van de herstart:
+14. Als u de directe methode op het apparaat wilt implementeren, voegt u de volgende geneste klasse toe aan de **app** -klasse. Wanneer de gesimuleerde app een aanroep van de direct-methode voor **opnieuw opstarten** ontvangt, wordt er een bevestiging voor de aanroeper geretourneerd en wordt vervolgens een thread gestart voor het verwerken van de herstart:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -390,20 +408,20 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     }
     ```
 
-13. Wijzig de hand tekening van de methode **Main** om de volgende uitzonde ringen te genereren:
+15. Wijzig de hand tekening van de methode **Main** om de volgende uitzonde ringen te genereren:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-14. Als u een **DeviceClient**wilt instantiëren, voegt u de volgende code toe aan de methode **Main** :
+16. Als u een **DeviceClient**wilt instantiëren, vervangt u de code in de methode **Main** door de volgende code:
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-15. Als u wilt Luis teren naar directe-methode aanroepen, voegt u de volgende code toe aan de methode **Main** :
+17. Als u wilt Luis teren naar directe-methode aanroepen, voegt u de volgende code toe aan de methode **Main** :
 
     ```java
     try
@@ -421,7 +439,7 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     }
     ```
 
-16. Als u de Device Simulator wilt afsluiten, voegt u de volgende code toe aan de methode **Main** :
+18. Als u de Device Simulator wilt afsluiten, voegt u de volgende code toe aan de methode **Main** :
 
     ```java
     System.out.println("Press any key to exit...");
@@ -432,25 +450,31 @@ In deze sectie maakt u een Java-Console-app die een apparaat simuleert. De app l
     System.out.println("Shutting down...");
     ```
 
-17. Sla het simulated-device\src\main\java\com\mycompany\app\App.java-bestand op en sluit het.
+19. Sla het simulated-device\src\main\java\com\mycompany\app\App.java-bestand op en sluit het.
 
-18. Bouw de gesimuleerde back-end-app van het **apparaat** en corrigeer eventuele fouten. Ga bij de opdracht prompt naar de map gesimuleerd apparaat en voer de volgende opdracht uit:
+20. Bouw de **gesimuleerde apparaat-** app op en corrigeer eventuele fouten. Ga bij de opdracht prompt naar de map **gesimuleerd apparaat** en voer de volgende opdracht uit:
 
-    `mvn clean package -DskipTests`
+    ```cmd/sh
+    mvn clean package -DskipTests
+    ```
 
 ## <a name="run-the-apps"></a>De apps uitvoeren
 
-U kunt nu de apps uitvoeren.
+U bent nu klaar om de apps uit te voeren.
 
-1. Voer bij een opdracht prompt in de map met gesimuleerde apparaten de volgende opdracht uit om te beginnen met Luis teren naar de aanroepen van de methode reboot van uw IoT-hub:
+1. Voer bij een opdracht prompt in de map met gesimuleerde **apparaten** de volgende opdracht uit om te beginnen met Luis teren naar de aanroepen van de methode reboot van uw IOT-hub:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+    ```cmd/sh
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
 
     ![Java IoT Hub gesimuleerde apparaat-app om te Luis teren naar directe methode aanroepen voor opnieuw opstarten](./media/iot-hub-java-java-device-management-getstarted/launchsimulator.png)
 
-2. Voer bij een opdracht prompt in de map trigger-reboot de volgende opdracht uit om de methode voor opnieuw opstarten aan te roepen op uw gesimuleerde apparaat vanuit uw IoT-hub:
+2. Voer bij een opdracht prompt in de map **trigger-reboot** de volgende opdracht uit om de methode voor opnieuw opstarten aan te roepen op uw gesimuleerde apparaat vanuit uw IOT-hub:
 
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+    ```cmd/sh
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
+    ```
 
     ![Java IoT Hub service-app voor het aanroepen van de methode voor opnieuw opstarten direct](./media/iot-hub-java-java-device-management-getstarted/triggerreboot.png)
 

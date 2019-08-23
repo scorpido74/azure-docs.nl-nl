@@ -1,10 +1,10 @@
 ---
-title: Verificatiefouten oplossen wanneer u verbinding maken met virtuele Azure-machine met RDP | Microsoft Docs
+title: Problemen met verificatie fouten oplossen wanneer u RDP gebruikt om verbinding te maken met Azure VM | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: cshepard,csscontent
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,83 +14,83 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68037ab55918a76567f2dfee7cbda1d84d0c442e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594928"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69908006"
 ---
-# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Verificatiefouten oplossen wanneer u verbinding maken met virtuele Azure-machine met RDP
+# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Problemen met verificatie fouten oplossen wanneer u RDP gebruikt om verbinding te maken met Azure VM
 
-In dit artikel kunt u verificatie oplossen die zich voordoen wanneer u Remote Desktop Protocol (RDP)-verbinding om verbinding met een Azure-machine (VM) te gebruiken.
+In dit artikel vindt u informatie over het oplossen van verificatie fouten die zich voordoen wanneer u Remote Desktop Protocol (RDP)-verbinding gebruikt om verbinding te maken met een virtuele machine van Azure (VM).
 
 ## <a name="symptoms"></a>Symptomen
 
-Vastleggen van een schermopname van een Azure-VM die het welkomstscherm wordt weergegeven en geeft aan dat het besturingssysteem wordt uitgevoerd. Echter ontvangt, wanneer u probeert verbinding maken met de virtuele machine met behulp van de verbinding met extern bureaublad, u een van de volgende foutberichten weergegeven.
+U legt een scherm opname van een virtuele Azure-machine vast waarin het welkomst scherm wordt weer gegeven en geeft aan dat het besturings systeem wordt uitgevoerd. Wanneer u echter verbinding probeert te maken met de virtuele machine met behulp van Verbinding met extern bureaublad, wordt een van de volgende fout berichten weer gegeven.
 
-### <a name="error-message-1"></a>Foutbericht 1
+### <a name="error-message-1"></a>Fout bericht 1
 
-**Er is een verificatiefout opgetreden. Kan geen verbinding worden gemaakt met de lokale certificeringsinstantie.**
+**Er is een verificatie fout opgetreden. Kan geen verbinding maken met de lokale beveiligings autoriteit.**
 
-### <a name="error-message-2"></a>Foutbericht 2
+### <a name="error-message-2"></a>Fout bericht 2
 
-**De externe computer die u wilt verbinding maken met het netwerk Level Authentication (NLA) is vereist, maar uw Windows-domeincontroller niet bereikbaar om uit te voeren NLA. Als u een beheerder zijn op de externe computer, kunt u NLA uitschakelen met behulp van de opties op het tabblad Extern in het dialoogvenster Systeemeigenschappen.**
+**Op de externe computer waarmee u verbinding wilt maken, is verificatie op netwerkniveau (NLA) vereist, maar er kan geen contact worden gemaakt met de Windows-domein controller om NLA uit te voeren. Als u een beheerder bent op de externe computer, kunt u NLA uitschakelen met behulp van de opties op het tabblad Extern van het dialoog venster systeem eigenschappen.**
 
-### <a name="error-message-3-generic-connection-error"></a>Foutbericht 3 (algemene verbindingsfout)
+### <a name="error-message-3-generic-connection-error"></a>Fout bericht 3 (algemene verbindings fout)
 
-**Deze computer kan geen verbinding maken met de externe computer. Probeer het opnieuw, verbinding te maken als het probleem zich blijft voordoen, neem contact op met de eigenaar van de externe computer of uw netwerkbeheerder.**
+**Deze computer kan geen verbinding maken met de externe computer. Probeer opnieuw verbinding te maken. als het probleem zich blijft voordoen, neemt u contact op met de eigenaar van de externe computer of uw netwerk beheerder.**
 
 ## <a name="cause"></a>Oorzaak
 
-Er zijn meerdere redenen waarom NLA de RDP-toegang tot een virtuele machine blokkeert.
+Er zijn verschillende redenen waarom NLA de RDP-toegang tot een virtuele machine kan blok keren.
 
 ### <a name="cause-1"></a>Oorzaak 1
 
-De virtuele machine kan niet communiceren met de domeincontroller (DC). Dit probleem kan voorkomen dat een RDP-sessie openen van een virtuele machine met behulp van domeinreferenties. Echter, u zou nog steeds kunnen aanmelden met behulp van de lokale Administrator-referenties. Dit probleem kan optreden in de volgende situaties:
+De virtuele machine kan niet communiceren met de domein controller (DC). Dit probleem kan verhinderen dat een RDP-sessie toegang kan krijgen tot een virtuele machine met behulp van domein referenties. U kunt zich echter wel aanmelden met de referenties van de lokale beheerder. Dit probleem kan optreden in de volgende situaties:
 
-1. De Active Directory-beveiligingskanaal tussen deze virtuele machine en de domeincontroller is verbroken.
+1. Het Active Directory beveiligings kanaal tussen deze virtuele machine en de domein controller is verbroken.
 
-2. De virtuele machine heeft een oude versie van het accountwachtwoord en de domeincontroller heeft een nieuwe kopie.
+2. De virtuele machine heeft een oude kopie van het account wachtwoord en de domein controller heeft een nieuwere kopie.
 
-3. De domeincontroller die deze virtuele machine verbinding met maakt is beschadigd.
+3. De domein controller waarmee deze VM verbinding maakt, is beschadigd.
 
 ### <a name="cause-2"></a>Oorzaak 2
 
-Het versleutelingsniveau van de virtuele machine is hoger dan de versie die wordt gebruikt door de clientcomputer.
+Het versleutelings niveau van de virtuele machine is hoger dan de naam die wordt gebruikt door de client computer.
 
 ### <a name="cause-3"></a>Oorzaak 3
 
-De TLS 1.0, 1.1 of 1.2 (server)-protocollen zijn uitgeschakeld op de virtuele machine.
+De protocollen TLS 1,0, 1,1 of 1,2 (Server) zijn uitgeschakeld op de virtuele machine.
 
 ### <a name="cause-4"></a>Oorzaak 4
 
-De virtuele machine is ingesteld om uit te schakelen met behulp van domeinreferenties aanmelden en de Local Security Authority (LSA) is niet correct ingesteld.
+De virtuele machine is ingesteld om het aanmelden met behulp van domein referenties uit te scha kelen en de lokale beveiligings autoriteit (LSA) is onjuist ingesteld.
 
 ### <a name="cause-5"></a>Oorzaak 5
 
-De virtuele machine is ingesteld voor het accepteren van alleen Federal Information Processing Standard (FIPS)-compatibele algoritme verbindingen. Dit gebeurt meestal met behulp van Active Directory-beleid. Dit is een zeldzame configuratie, maar FIPS kan worden afgedwongen voor extern bureaublad-verbindingen.
+De virtuele machine is ingesteld voor het accepteren van alleen algoritme-verbindingen die voldoen aan de Federal Information Processing Standard (FIPS). Dit gebeurt meestal met behulp van Active Directory-beleid. Dit is een zeldzame configuratie, maar FIPS kan alleen worden afgedwongen voor Extern bureaublad verbindingen.
 
-## <a name="before-you-troubleshoot"></a>Voordat u oplossen
+## <a name="before-you-troubleshoot"></a>Voordat u problemen oplossen
 
-### <a name="create-a-backup-snapshot"></a>Een momentopname van een back-up maken
+### <a name="create-a-backup-snapshot"></a>Een back-upmomentopname maken
 
-Volg de stappen in voor het maken van een back-upmomentopname [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
+Als u een back-upmomentopname wilt maken, volgt u de stappen in [een moment opname van een schijf](../windows/snapshot-copy-managed-disk.md).
 
-### <a name="connect-to-the-vm-remotely"></a>Verbinding maken met de virtuele machine op afstand
+### <a name="connect-to-the-vm-remotely"></a>Extern verbinding maken met de virtuele machine
 
-Voor verbinding met de virtuele machine op afstand, gebruikt u een van de methoden in [externe hulpprogramma's gebruiken om problemen met virtuele Azure-machine te](remote-tools-troubleshoot-azure-vm-issues.md).
+Als u extern verbinding wilt maken met de virtuele machine, gebruikt u een van de methoden in [het gebruik van externe hulpprogram ma's voor het oplossen van problemen met Azure-vm's](remote-tools-troubleshoot-azure-vm-issues.md).
 
-### <a name="group-policy-client-service"></a>Group policy client-service
+### <a name="group-policy-client-service"></a>Group Policy client-service
 
-Als dit een VM domein is, moet u eerst de Group Policy Client-service om te voorkomen dat een Active Directory-beleid van het overschrijven van de wijzigingen stoppen. U doet dit door de volgende opdracht uitvoeren:
+Als dit een virtuele machine in een domein is, moet u eerst de groepsbeleid-client service stoppen om te voor komen dat Active Directory beleid de wijzigingen overschrijft. U doet dit door de volgende opdracht uitvoeren:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
 REG add "HKLM\SYSTEM\CurrentControlSet\Services\gpsvc" /v Start /t REG_DWORD /d 4 /f
 ```
 
-Nadat het probleem is opgelost, herstelt u de mogelijkheid van deze virtuele machine om contact op met het domein om op te halen van de meest recente GPO uit het domein. Voer hiervoor de volgende opdrachten:
+Nadat het probleem is opgelost, herstelt u de mogelijkheid van deze VM om contact op te nemen met het domein om het meest recente groeps beleidsobject van het domein op te halen. U kunt dit doen door de volgende opdrachten uit te voeren:
 
 ```cmd
 sc config gpsvc start= auto
@@ -99,11 +99,11 @@ sc start gpsvc
 gpupdate /force
 ```
 
-Als de wijziging is hersteld, betekent dit dat het probleem wordt veroorzaakt door een Active Directory-beleid. 
+Als de wijziging wordt teruggedraaid, betekent dit dat het probleem wordt veroorzaakt door een Active Directory beleid. 
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 
-U kunt dit probleem omzeilen, voer de volgende opdrachten in het opdrachtvenster NLA uitschakelen:
+U kunt dit probleem omzeilen door de volgende opdrachten uit te voeren in het opdracht venster om NLA uit te scha kelen:
 
 ```cmd
 REM Disable the Network Level Authentication
@@ -112,9 +112,9 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 0
 ```
 
-Start de virtuele machine.
+Start vervolgens de VM opnieuw op.
 
-NLA opnieuw in te schakelen, voert u de volgende opdracht uit en start de virtuele machine opnieuw op:
+Als u NLA opnieuw wilt inschakelen, voert u de volgende opdracht uit en start u de VM opnieuw op:
 
 ```cmd
 REG add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds /t REG_DWORD /d 0 /f
@@ -126,101 +126,101 @@ REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-### <a name="for-domain-joined-vms"></a>Voor domein-VM 's
+### <a name="for-domain-joined-vms"></a>Voor Vm's die lid zijn van een domein
 
-Als u wilt dit probleem op te lossen, Controleer eerst of de virtuele machine verbinding met een domeincontroller maken kan, en of de domeincontroller de status 'gezond heeft' en kan worden verwerkt-van de virtuele machine aanvragen.
+Om dit probleem op te lossen, controleert u eerst of de virtuele machine verbinding kan maken met een domein controller en of de domein controller de status ' in orde ' heeft en aanvragen van de virtuele machine kan verwerken.
 
 >[!Note] 
->Als u wilt testen van de DC-status, kunt u een andere virtuele machine in hetzelfde VNET en Subnet die dezelfde aanmeldingsserver delen.
+>Als u de status van de domein controller wilt testen, kunt u een andere virtuele machine gebruiken op hetzelfde VNET en subnet die dezelfde aanmeldings server delen.
 
-Als u verbinding maken met de virtuele machine waarop het probleem met behulp van de seriële console, externe CMD of externe PowerShell, op basis van de stappen in de sectie 'Verbinding maken met de virtuele machine op afstand'.
+Maak verbinding met de virtuele machine met behulp van Seriële console, externe CMD of externe Power shell, volgens de stappen in de sectie ' verbinding maken met de virtuele machine op afstand '.
 
-Om te bepalen welke de virtuele machine verbinding met maakt DC, voer de volgende opdracht in de console: 
+Als u wilt bepalen met welke domein controller verbinding wordt gemaakt, voert u de volgende opdracht uit in de-console: 
 
 ```cmd
 set | find /i "LOGONSERVER"
 ```
 
-Controleer de status van het beveiligde kanaal tussen de virtuele machine en de domeincontroller. U doet dit door de volgende opdracht uit in een verhoogde PowerShell-sessie worden uitgevoerd. Met deze opdracht retourneert een Booleaanse vlag die aangeeft of het beveiligde kanaal actief is:
+Controleer vervolgens de status van het beveiligde kanaal tussen de virtuele machine en de domein controller. U doet dit door de volgende opdracht uit te voeren in een Power shell-exemplaar met verhoogde bevoegdheden. Met deze opdracht wordt een Booleaanse vlag geretourneerd die aangeeft of het beveiligde kanaal actief is:
 
 ```powershell
 Test-ComputerSecureChannel -verbose
 ```
 
-Nadat het kanaal verbroken is, voer de volgende opdracht uit om deze te herstellen:
+Als het kanaal is beschadigd, voert u de volgende opdracht uit om het te herstellen:
 
 ```powershell
 Test-ComputerSecureChannel -repair
 ```
 
-Zorg ervoor dat het wachtwoord van computeraccount in Active Directory is bijgewerkt op de virtuele machine en de domeincontroller:
+Zorg ervoor dat het wacht woord voor het computer account in Active Directory wordt bijgewerkt op de VM en de domein controller:
 
 ```powershell
 Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDENTIAL WITH DOMAIN ADMIN LEVEL>
 ```
 
-Als de communicatie tussen de domeincontroller en de virtuele machine goed is, maar de domeincontroller is niet goed genoeg is om een RDP-sessie te openen, kunt u proberen om opnieuw te starten van de domeincontroller.
+Als de communicatie tussen de domein controller en de VM goed is, maar de domein controller niet in orde is om een RDP-sessie te openen, kunt u proberen om de domein controller opnieuw op te starten.
 
-Als de voorgaande opdrachten niet het communicatieprobleem bij het domein opgelost is, kunt u zich weer aanmelden bij deze virtuele machine aan het domein. Voer de volgende stappen uit om dit te doen:
+Als de voor gaande opdrachten het communicatie probleem met het domein niet hebben opgelost, kunt u deze VM opnieuw toevoegen aan het domein. Voer de volgende stappen uit om dit te doen:
 
-1. Maken van een script met de naam Unjoin.ps1 met behulp van de volgende inhoud en klikt u vervolgens het script te implementeren als een extensie voor aangepaste scripts op de Azure-portal:
+1. Maak een script met de naam unjoin's. ps1 met behulp van de volgende inhoud en implementeer vervolgens het script als een aangepaste script extensie op de Azure Portal:
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
     
-    Met dit script geforceerd wordt van de virtuele machine buiten het domein en start deze 10 seconden later opnieuw. Hebt u voor het opschonen van het computerobject aan het domein.
+    Dit script neemt de virtuele machine uit het domein geforceerd en start deze 10 seconden later opnieuw op. Vervolgens moet u het computer object op het domein opschonen.
 
-2.  Nadat het opschonen is voltooid, opnieuw lid worden van deze virtuele machine aan het domein. Om dit te doen, maakt u een script met de naam JoinDomain.ps1 met behulp van de volgende inhoud en klikt u vervolgens het script te implementeren als een extensie voor aangepaste scripts op de Azure-portal: 
+2.  Nadat het opschonen is voltooid, wordt deze VM opnieuw lid van het domein. Als u dit wilt doen, maakt u een script met de naam JoinDomain. ps1 met behulp van de volgende inhoud en implementeert u het script als een aangepaste script extensie op de Azure Portal: 
 
     ```cmd
     cmd /c "netdom join <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10"
     ```
 
     >[!Note] 
-    >Dit lid wordt van de virtuele machine op het domein met behulp van de opgegeven referenties.
+    >Hiermee wordt de virtuele machine in het domein gekoppeld met behulp van de opgegeven referenties.
 
-Als het Active Directory-kanaal in orde is, het computerwachtwoord wordt bijgewerkt en de domeincontroller naar behoren werkt, probeert u de volgende stappen uit.
+Als het Active Directory kanaal in orde is, wordt het computer wachtwoord bijgewerkt en wordt de domein controller op de verwachte wijze uitgevoerd. Probeer de volgende stappen uit te voeren.
 
-Als het probleem zich blijft voordoen, controleert u of de domeinreferentie is uitgeschakeld. U doet dit door een opdrachtpromptvenster te openen en voer de volgende opdracht om te bepalen of de virtuele machine is ingesteld voor het uitschakelen van domeinaccounts voor aanmelden bij de virtuele machine:
+Als het probleem zich blijft voordoen, controleert u of de domein referentie is uitgeschakeld. Hiervoor opent u een opdracht prompt venster met verhoogde bevoegdheid en voert u de volgende opdracht uit om te bepalen of de virtuele machine is ingesteld om domein accounts uit te scha kelen voor aanmelding bij de virtuele machine:
 
 ```cmd
 REG query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds
 ```
 
-Als de sleutel is ingesteld op **1**, dit betekent dat de server is ingesteld niet tot de domeinreferenties toestaan. Deze sleutel te wijzigen **0**.
+Als de sleutel is ingesteld op **1**, betekent dit dat de server is ingesteld op het niet toestaan van domein referenties. Wijzig deze sleutel in **0**.
 
-### <a name="for-standalone-vms"></a>Bij zelfstandige virtuele machines
+### <a name="for-standalone-vms"></a>Voor zelfstandige Vm's
 
 #### <a name="check-minencryptionlevel"></a>MinEncryptionLevel controleren
 
-In een CMD-exemplaar, kunt u de volgende opdracht uitvoeren op de query de **MinEncryptionLevel** registerwaarde:
+Voer in een CMD-exemplaar de volgende opdracht uit om een query uit te voeren op de register waarde **MinEncryptionLevel** :
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-Op basis van de registerwaarde, als volgt te werk:
+Voer de volgende stappen uit op basis van de register waarde:
 
-* 4 (FIPS): Ga naar [controleren FIPs-compatibele algoritmes verbindingen](#fips-compliant).
+* 4 (FIPS): Ga naar [FIPs-compatibele algoritmes-verbindingen controleren](#fips-compliant).
 
-* 3 (128-bits codering): De ernst ingesteld op **2** door het uitvoeren van de volgende opdracht uit:
+* 3 (128-bits versleuteling): Stel de ernst in op **2** door de volgende opdracht uit te voeren:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (hoogste versleuteling mogelijk, zoals bepaald door de client): U kunt proberen om in te stellen de versleuteling aan de minimale waarde van **1** door het uitvoeren van de volgende opdracht uit:
+* 2 (hoogste versleuteling mogelijk, zoals bepaald door de client): U kunt proberen om de versleuteling in te stellen op de minimum waarde **1** door de volgende opdracht uit te voeren:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f
     ```
     
-Start de VM opnieuw zodat de wijzigingen in het register van kracht.
+Start de VM opnieuw op zodat de wijzigingen in het REGI ster van kracht worden.
 
 #### <a name="tls-version"></a>TLS-versie
 
-Afhankelijk van het systeem gebruikt RDP het protocol TLS 1.0, 1.1 of 1.2 (server). Open een CMD-exemplaar om te vragen hoe deze protocollen zijn ingesteld op de virtuele machine, en voer de volgende opdrachten:
+Afhankelijk van het systeem maakt RDP gebruik van het protocol TLS 1,0, 1,1 of 1,2 (Server). Als u wilt opvragen hoe deze protocollen zijn ingesteld op de virtuele machine, opent u een CMD-exemplaar en voert u de volgende opdrachten uit:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled
@@ -228,7 +228,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled
 ```
 
-Als de geretourneerde waarden niet alle **1**, dit betekent dat het protocol is uitgeschakeld. Als u deze protocollen, voert u de volgende opdrachten:
+Als de geretourneerde waarden niet allemaal **1**zijn, betekent dit dat het protocol is uitgeschakeld. Voer de volgende opdrachten uit om deze protocollen in te scha kelen:
 
 ```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
@@ -236,7 +236,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protoc
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
 ```
 
-U kunt de volgende opdrachten uitvoeren voor andere protocolversies:
+Voor andere protocol versies kunt u de volgende opdrachten uitvoeren:
 
 <pre lang="bat">
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS <i>x.x</i>\Server" /v Enabled
@@ -244,40 +244,40 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 </pre>
 
 > [!Note]
-> De SSH/TLS-versie x.x ophalen van Logboeken voor het gastbesturingssysteem op de SCHANNEL-fouten.
+> De SSH/TLS-versie x. x ophalen uit het gast besturingssysteem Logboeken in de SCHANNEL-fouten.
 
-#### <a name="fips-compliant"></a> FIPs-compatibele algoritmes verbindingen controleren
+#### <a name="fips-compliant"></a>FIPs-compatibele algoritme-verbindingen controleren
 
-Extern bureaublad kan worden afgedwongen voor het gebruik van alleen FIPs-compatibele algoritme voor verbindingen. Dit kan worden ingesteld met behulp van een registersleutel. U doet dit door een opdrachtpromptvenster open en vervolgens query uitvoeren op de volgende sleutels:
+Extern bureau blad kan worden afgedwongen om alleen FIPs-compatibele algoritme verbindingen te gebruiken. Dit kan worden ingesteld met behulp van een register sleutel. Hiervoor opent u een opdracht prompt venster met verhoogde bevoegdheid en voert u een query uit op de volgende sleutels:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled
 ```
 
-Als de opdracht retourneert **1**, wijzig de registerwaarde in **0**.
+Als de opdracht **1**retourneert, wijzigt u de register waarde in **0**.
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled /t REG_DWORD /d 0
 ```
 
-Controleer welke de huidige MinEncryptionLevel op de virtuele machine is:
+Controleer wat het huidige MinEncryptionLevel is op de virtuele machine:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-Als de opdracht retourneert **4**, wijzig de registerwaarde in **2**
+Als de opdracht **4**retourneert, wijzigt u de register waarde in **2**
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2
 ```
 
-Start de VM opnieuw zodat de wijzigingen in het register van kracht.
+Start de VM opnieuw op zodat de wijzigingen in het REGI ster van kracht worden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[SetEncryptionLevel-methode van de klasse Win32_TSGeneralSetting](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
+[Methode SetEncryptionLevel van de klasse Win32_TSGeneralSetting](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
 
-[Server-verificatie en versleutelingsniveaus configureren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
+[Server authenticatie-en versleutelings niveaus configureren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
 
-[Win32_TSGeneralSetting klasse](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)
+[Klasse Win32_TSGeneralSetting](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: 928a85c9d03148198fe3e965636740812ce732f7
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: 0884120c15b2e48566d1889400197e316bac9021
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976286"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907451"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -120,9 +120,25 @@ U kunt de replicatie tussen een Master en een replica stoppen. De actie stoppen 
 > De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
 > Voordat u de replicatie op een lees replica stopt, moet u ervoor zorgen dat de replica over alle gegevens beschikt die u nodig hebt.
 
-Wanneer u de replicatie stopt, verliest de replica alle koppelingen naar het vorige hoofd en andere replica's. Er is geen automatische failover tussen een hoofd database en een replica. 
+Wanneer u de replicatie stopt, verliest de replica alle koppelingen naar het vorige hoofd en andere replica's.
 
 Meer informatie over het [stoppen van replicatie naar een replica](howto-read-replicas-portal.md).
+
+## <a name="fail-over"></a>Failover
+Er is geen automatische failover tussen hoofd-en replica servers. 
+
+Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de Master en de replica. De hoeveelheid vertraging is afhankelijk van hoe zwaar de werk belasting wordt uitgevoerd op de hoofd server. In de meeste gevallen variëren de replica vertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
+
+> [!Tip]
+> Als u een failover naar de replica maakt, geeft de vertraging aan op het moment dat u de replica loskoppelt van de Master, en wordt aangegeven hoeveel gegevens er verloren zijn gegaan.
+
+Zodra u hebt vastgesteld dat u een failover wilt uitvoeren naar een replica, 
+
+1. Replicatie naar de replica stoppen deze stap is nodig om de replica-server in staat te stellen schrijf bewerkingen te accepteren. Als onderdeel van dit proces wordt de replica server opnieuw opgestart en ontkoppeld van het hoofd bestand. Zodra u stopt met de replicatie, duurt het back-end doorgaans ongeveer twee minuten om te volt ooien. Meer informatie over het [stoppen van replicatie](#stop-replication).
+    
+2. Sluit uw toepassing naar de (voormalige) replica van elke server heeft een unieke connection string. Werk uw toepassing bij zodat deze verwijst naar de (voormalige) replica in plaats van het hoofd bestand.
+    
+Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failover voltooid. De uitval tijd van uw toepassings ervaring is afhankelijk van wanneer u een probleem detecteert en de stappen 1 en 2 hierboven uitvoert.
 
 
 ## <a name="considerations"></a>Overwegingen
@@ -136,17 +152,17 @@ Voordat u een lees replica maakt, moet `azure.replication_support` de para meter
 Er wordt een lees replica gemaakt als een nieuwe Azure Database for PostgreSQL-server. Een bestaande server kan niet worden gemaakt in een replica. Het is niet mogelijk om een replica van een andere Lees replica te maken.
 
 ### <a name="replica-configuration"></a>Replica configuratie
-Een replica wordt gemaakt met behulp van dezelfde server configuratie als de Master. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
+Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
 
 > [!IMPORTANT]
-> Voordat een configuratie van een hoofd server wordt bijgewerkt naar nieuwe waarden, moet u de replica configuratie bijwerken naar de waarden gelijk of hoger. Met deze actie zorgt u ervoor dat de replica alle wijzigingen kan aanbrengen die in de master zijn aangebracht.
+> Voordat een Master-instelling wordt bijgewerkt naar een nieuwe waarde, moet u de replica configuratie bijwerken naar een gelijke of hogere waarde. Met deze actie zorgt u ervoor dat de replica alle wijzigingen kan aanbrengen die in de master zijn aangebracht.
 
 PostgreSQL vereist dat de waarde van `max_connections` de para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. In azure database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU. Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
 
 Als u de server waarden probeert bij te werken, maar niet aan de limieten voldoet, wordt er een fout bericht weer gegeven.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[Postgresql vereist](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) dat de waarde van `max_prepared_transactions` de para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. Als u wijzigingen wilt aanbrengen `max_prepared_transactions` op de Master, wijzigt u deze eerst op de replica's.
+[Postgresql vereist](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) dat de waarde van `max_prepared_transactions` de para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. Als u wijzigingen wilt aanbrengen `max_prepared_transactions` op de Master, wijzigt u deze eerst op de replica's.
 
 ### <a name="stopped-replicas"></a>Gestopte replica's
 Als u de replicatie tussen een hoofd server en een lees replica stopt, wordt de replica opnieuw gestart om de wijziging toe te passen. De gestopte replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen accepteert. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
@@ -155,4 +171,5 @@ Als u de replicatie tussen een hoofd server en een lees replica stopt, wordt de 
 Wanneer een master-server wordt verwijderd, worden alle bijbehorende Lees replica's zelfstandige servers. De replica's worden opnieuw gestart om deze wijziging weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [het maken en beheren van Lees replica's in de Azure Portal](howto-read-replicas-portal.md).
+* Meer informatie over [het maken en beheren van Lees replica's in de Azure Portal](howto-read-replicas-portal.md).
+* Meer informatie over het [maken en beheren van Lees replica's in azure cli](howto-read-replicas-cli.md).

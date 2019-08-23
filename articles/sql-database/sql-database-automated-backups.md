@@ -10,13 +10,14 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 06/27/2019
-ms.openlocfilehash: 1afe8a2e9179c768fd639b4a208de98b0789a53f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+manager: craigg
+ms.date: 08/22/2019
+ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569450"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904327"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
@@ -32,10 +33,10 @@ U kunt deze back-ups gebruiken voor het volgende:
 
 - **Een bestaande data base in het verleden herstellen naar een bepaald tijdstip** binnen de retentie periode met behulp van de Azure Portal, Azure PowerShell, Azure CLI of rest API. In één data base en elastische Pools wordt met deze bewerking een nieuwe data base gemaakt op dezelfde server als de oorspronkelijke data base. In het beheerde exemplaar kan deze bewerking een kopie maken van de data base of een ander beheerd exemplaar onder hetzelfde abonnement.
   - **[Wijzig de Bewaar periode voor back-ups](#how-to-change-the-pitr-backup-retention-period)** tussen 7 en 35 dagen om uw back-upbeleid te configureren.
-  - **Wijzig het Bewaar beleid voor lange termijn Maxi maal tien jaar** op individuele database en elastische Pools met behulp van [de Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) of [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups).
+  - **Wijzig het Bewaar beleid voor lange termijn Maxi maal tien jaar** op individuele database en elastische Pools met behulp van [de Azure Portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) of [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups).
 - **Een verwijderde data base herstellen op het moment dat deze is verwijderd** of op elk moment binnen de retentie periode. De verwijderde data base kan alleen worden hersteld in de logische server of het beheerde exemplaar waarin de oorspronkelijke Data Base is gemaakt.
 - **Een Data Base terugzetten naar een andere geografische regio**. Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw server en data base. Er wordt overal ter wereld een nieuwe data base gemaakt op elke bestaande server.
-- **Een Data Base herstellen vanaf een specifieke lange termijn back-up** op Individuele database of elastische pool als de data base is geconfigureerd met een lange termijn retentie beleid (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) of [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](sql-database-long-term-retention.md) voor meer informatie.
+- **Een Data Base herstellen vanaf een specifieke lange termijn back-up** op Individuele database of elastische pool als de data base is geconfigureerd met een lange termijn retentie beleid (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) of [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](sql-database-long-term-retention.md) voor meer informatie.
 - Zie [Data Base terugzetten van back-ups](sql-database-recovery-using-backups.md)om een herstel bewerking uit te voeren.
 
 > [!NOTE]
@@ -46,7 +47,7 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
 | Retentie van back-ups wijzigen | [Individuele database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Beheerd exemplaar](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [Individuele database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Lange termijn retentie van back-ups wijzigen | [Individuele database](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Beheerd exemplaar-N.v.t.  | [Individuele database](sql-database-long-term-backup-retention-configure.md#use-powershell-to-configure-long-term-retention-policies-and-restore-backups)<br/>Beheerd exemplaar-N.v.t.  |
+| Lange termijn retentie van back-ups wijzigen | [Individuele database](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Beheerd exemplaar-N.v.t.  | [Individuele database](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Beheerd exemplaar-N.v.t.  |
 | Data base terugzetten vanaf een bepaald tijdstip | [Individuele database](sql-database-recovery-using-backups.md#point-in-time-restore) | [Individuele database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Verwijderde database herstellen | [Individuele database](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [Individuele database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Data base terugzetten vanuit Azure Blob Storage | Eén data base-N.v.t. <br/>Beheerd exemplaar-N.v.t.  | Eén data base-N.v.t. <br/>[Beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
@@ -81,7 +82,7 @@ Net als PITR zijn de LTR-back-ups geo-redundant en worden beveiligd door [Azure 
 Zie [lange termijn retentie van back-ups](sql-database-long-term-retention.md)voor meer informatie.
 
 ## <a name="storage-costs"></a>Opslagkosten
-Zeven dagen aan geautomatiseerde back-ups van uw databases worden standaard naar RA-GRS-standaardblobopslag gekopieerd. De opslag wordt gebruikt voor wekelijkse volledige back-ups, dagelijkse differentiële back-ups en back-ups van transactielogboeken die om de vijf minuten worden gekopieerd. De grootte van het transactie logboek is afhankelijk van de frequentie waarmee de data base wordt gewijzigd. U kunt gratis gebruik maken van opslagruimte ter waarde van 100% van de databasegrootte. Voor aanvullend verbruik van back-upopslag worden GB/maand berekend.
+Voor afzonderlijke data bases geldt een minimum hoeveelheid voor back-upopslag die gelijk is aan 100% van de database grootte, zonder extra kosten. Voor elastische Pools worden er geen extra kosten in rekening gebracht voor een minimale back-upopslag die gelijk is aan 100% van de toegewezen gegevens opslag voor de pool. Voor aanvullend verbruik van back-upopslag worden GB/maand berekend. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases.
 
 Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over opslag prijzen. 
 
@@ -155,7 +156,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 #### <a name="sample-response"></a>Voorbeeldantwoord
 
-Statuscode: 200
+Status code: 200
 
 ```json
 {

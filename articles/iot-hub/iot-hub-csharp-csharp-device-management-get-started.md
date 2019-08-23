@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558787"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904466"
 ---
 # <a name="get-started-with-device-management-net"></a>Aan de slag met Apparaatbeheer (.NET)
 
@@ -34,7 +34,9 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 * **TriggerReboot**. Met deze app wordt een directe methode aangeroepen in de gesimuleerde apparaat-app, wordt het antwoord weer gegeven en worden de bijgewerkte gerapporteerde eigenschappen weer gegeven.
 
-Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden voldaan:
+## <a name="prerequisites"></a>Vereisten
+
+Voor deze zelfstudie hebt u het volgende nodig:
 
 * Visual Studio.
 
@@ -81,7 +83,7 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding door de IoT Hub connection string u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijkeaanduidingdoordeIOThubConnectionStringueerderhebtgekopieerdindeIOThub-ConnectionStringophalen.`{iot hub connection string}` [](#get-the-iot-hub-connection-string)
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
 
 ## <a name="create-a-simulated-device-app"></a>Een gesimuleerde apparaattoepassing maken
 
-In deze sectie voert u de volgende acties uit:
+In deze sectie doet u het volgende:
 
 * Maak een .NET-console-app die reageert op een directe methode die wordt aangeroepen door de Cloud.
 
@@ -164,11 +166,10 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding door het apparaat connection string dat u in de vorige sectie hebt genoteerd.
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de `{device connection string}` waarde van de tijdelijke aanduiding door de Connection String van het apparaat die u eerder hebt genoteerd in [een nieuw apparaat registreren bij de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
    }
    ```
 
-1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**. 
+1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
 
 1. Selecteer **één opstart project**voor **algemene eigenschappen** > voor het opstarten van het**project**en selecteer vervolgens het project **SimulateManagedDevice** . Selecteer **OK** om uw wijzigingen op te slaan.
 
@@ -244,7 +245,7 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
 
 ## <a name="run-the-apps"></a>De apps uitvoeren
 
-U kunt nu de apps uitvoeren.
+U bent nu klaar om de apps uit te voeren.
 
 1. Als u de .NET- **SimulateManagedDevice**wilt uitvoeren, klikt u in Solution Explorer met de rechter muisknop op het project **SimulateManagedDevice** , selecteert u **fout opsporing**en selecteert u vervolgens **nieuw exemplaar starten**. De app moet beginnen met Luis teren naar methode aanroepen vanuit uw IoT-hub.
 

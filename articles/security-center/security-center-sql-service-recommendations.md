@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: c2adf9bff4c3d91305e71a7688740fa0268ad7b9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0704db7444756fb44c5587ae8e8e743f671c9dcc
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69531477"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907952"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure-gegevens-en-opslag Services beveiligen in Azure Security Center
 In dit onderwerp wordt beschreven hoe u beveiligings aanbevelingen voor gegevens en opslag resources weergeeft en implementeert. Deze aanbevelingen Azure Security Center gevonden bij het analyseren van de beveiligings status van uw Azure-resources.
@@ -32,7 +32,7 @@ In dit onderwerp wordt beschreven hoe u beveiligings aanbevelingen voor gegevens
 
     De pagina **gegevens beveiliging** wordt geopend met aanbevelingen voor gegevens bronnen.
 
-     ![Gegevensbronnen](./media/security-center-monitoring/sql-overview.png)
+     ![Gegevensresources](./media/security-center-monitoring/sql-overview.png)
 
 Op deze pagina kunt u het volgende doen:
 
@@ -65,19 +65,19 @@ Op deze pagina kunt u het volgende doen:
 |----|----|----|----|
 |Storage-account|20|Beveiligde overdracht naar opslag accounts moet zijn ingeschakeld|Beveiligde overdracht is een optie die ervoor zorgt dat uw opslag account alleen aanvragen van beveiligde verbindingen (HTTPS) accepteert. HTTPS zorgt voor verificatie tussen de-server en de service en beveiligt de door Voer van gegevens via netwerklaag aanvallen, zoals man-in-the-Middle, inkomend en inkomend en sessie overname.|
 |Redis|20|Alleen beveiligde verbindingen met uw Redis Cache moeten worden ingeschakeld|Schakel alleen verbindingen via SSL naar Azure cache in voor redis. Gebruik van beveiligde verbindingen zorgt voor verificatie tussen de server en de service en beveiligt de door Voer van gegevens via netwerklaag aanvallen, zoals man-in-the-Middle, inkomend en inkomend en sessie overname.|
-|SQL|15|Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld|Transparante gegevensversleuteling inschakelen om data-at-rest te beveiligen en de vereisten na te leven.|
+|SQL|15|Transparent Data Encryption voor SQL-data bases moet zijn ingeschakeld|Schakel transparante gegevens versleuteling in om gegevens op rest te beveiligen en te voldoen aan nalevings vereisten.|
 |SQL|15|SQL Server-controle moet zijn ingeschakeld|Schakel controle in voor Azure SQL-servers. (Alleen Azure SQL-service. Bevat geen SQL die wordt uitgevoerd op uw virtuele machines.)|
 |Data Lake Analytics|5|Diagnostische logboeken in Data Lake Analytics moeten worden ingeschakeld|Logboeken inschakelen en ze maximaal een jaar bewaren. Hiermee kunt u activiteit sporen onderzoek opnieuw maken wanneer een beveiligingsincident voordoet of uw netwerk is gecompromitteerd. |
 |Data Lake Store|5|Diagnostische logboeken in Azure Data Lake Store moeten worden ingeschakeld|Logboeken inschakelen en ze maximaal een jaar bewaren. Hiermee kunt u activiteit sporen onderzoek opnieuw maken wanneer een beveiligingsincident voordoet of uw netwerk is gecompromitteerd. |
 |SQL|30|Beveiligings problemen voor uw SQL-data bases moeten worden hersteld|Met evaluatie van SQL-beveiligings problemen wordt uw data base gescand op beveiligings lekken en worden eventuele afwijkingen van aanbevolen procedures, zoals onjuiste configuratie, buitensporige machtigingen en onbeveiligde gevoelige gegevens, weer gegeven. Door de gevonden beveiligings problemen op te lossen, kunt u uw data base Security stature aanzienlijk verbeteren.|
-|SQL|20|Een Azure AD-beheerder voor SQL Server inrichten|Richt een Azure AD-beheerder in voor uw SQL-Server om Azure AD-verificatie in te scha kelen. Met Azure AD-verificatie kunt u eenvoudig beheer van machtigingen en gecentraliseerd identiteits beheer van database gebruikers en andere micro soft-Services.|
+|SQL|20|Een Azure AD-beheerder voor SQL server inrichten|Richt een Azure AD-beheerder in voor uw SQL-Server om Azure AD-verificatie in te scha kelen. Met Azure AD-verificatie kunt u eenvoudig beheer van machtigingen en gecentraliseerd identiteits beheer van database gebruikers en andere micro soft-Services.|
 |Storage-account|15|Toegang tot opslag accounts met firewall-en virtuele-netwerk configuraties moet worden beperkt|Controleer onbeperkte netwerk toegang in de firewall-instellingen van uw opslag account. In plaats daarvan configureert u netwerk regels zodat alleen toepassingen van toegestane netwerken toegang hebben tot het opslag account. Als u verbindingen van specifieke internet-of on-premises clients wilt toestaan, kunt u toegang verlenen tot verkeer van specifieke Azure Virtual Networks of voor open bare IP-adresbereiken voor Internet.|
 |Storage-account|1|Opslag accounts moeten worden gemigreerd naar nieuwe Azure Resource Manager-resources|Gebruik nieuwe Azure Resource Manager V2 voor uw opslag accounts om beveiligings uitbreidingen te bieden zoals: sterker toegangs beheer (RBAC), betere controle, implementatie en beheer op basis van Resource Manager, toegang tot beheerde identiteiten, toegang tot de sleutel kluis voor geheimen en Azure AD-gebaseerde verificatie en ondersteuning voor Tags en resource groepen voor eenvoudiger beveiligings beheer.|
 
 ## <a name="see-also"></a>Zie ook
 Zie de volgende onderwerpen voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
 
-* [Protecting your virtual machines in Azure Security Center](security-center-virtual-machine-recommendations.md) (Uw virtuele machines beveiligen in Azure Security Center)
+* [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 * [Protecting your applications in Azure Security Center](security-center-application-recommendations.md) (Uw toepassingen beveiligen in Azure Security Center)
 * [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
 

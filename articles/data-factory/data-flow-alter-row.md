@@ -1,48 +1,57 @@
 ---
-title: Azure Data Factory gegevenstransformatie stroom Alter rij toewijzen
-description: Het bijwerken van database-doelserver met behulp van Azure Data Factory toewijzing Flow Alter rij gegevenstransformatie
+title: Azure Data Factory toewijzing van gegevens stroom Alter Row trans formatie
+description: Data base-doel bijwerken met Azure Data Factory toewijzing gegevens stroom Alter Row trans formatie
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: f0ac5bb36079983b10e4d86cc776bd4e5ee6817d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e2cd69d5977b8ad1d9be2a71a006579fe3abfd23
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65520151"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971253"
 ---
-# <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter rij transformatie
+# <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter Row Transform
 
-Gebruik de transformatie Alter rij invoegen, verwijderen, bijwerken en upsert beleid instellen op rijen. U kunt een-op-veel voorwaarden toevoegen als een expressie. Elk van deze voorwaarden kan resulteren in een rij (of rijen) wordt ingevoegd, bijgewerkt, verwijderd of upsert. ALTER rij kan leiden tot zowel DDL & DML-acties voor uw database.
+Gebruik de Alter Row trans formatie om INSERT-, Delete-, update-en upsert-beleid in te stellen op rijen. U kunt één-op-veel-voor waarden toevoegen als expressies. Deze voor waarden moeten in volg orde van prioriteit worden opgegeven, aangezien elke rij wordt gemarkeerd met het beleid dat overeenkomt met de eerste-overeenkomende expressie. Elk van deze voor waarden kan resulteren in een rij (of rijen) die wordt ingevoegd, bijgewerkt, verwijderd of upserted. Alter Row kan zowel DDL-& DML-acties op uw data base produceren.
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Instellingen van de rij wijzigen](media/data-flow/alter-row1.png "rij-instellingen wijzigen")
+![Rij-instellingen wijzigen](media/data-flow/alter-row1.png "Rij-instellingen wijzigen")
 
 > [!NOTE]
-> Database sinks in de gegevensstroom wordt alleen ALTER rij transformaties uitgevoerd. De acties die u aan rijen (insert, update, delete, upsert toewijst) wordt niet uitgevoerd tijdens de foutopsporing sessies. U moet een taak uitvoeren gegevensstroom toevoegen aan een pijplijn en gebruik van pijplijn foutopsporing of triggers op te nemen van de beleidsregels van de rij wijzigen op uw database-tabellen.
+> Alter Row-trans formaties worden alleen toegepast op data base-sinks in uw gegevens stroom. De acties die u toewijst aan rijen (invoegen, bijwerken, verwijderen, upsert) worden niet uitgevoerd tijdens foutopsporingssessie. U moet een taak stroom voor het uitvoeren van gegevens toevoegen aan een pijp lijn en de fout opsporing of triggers voor pijp lijn gebruiken om de Alter Row-beleids regels in uw database tabellen te bepalen.
 
-## <a name="view-policies"></a>Beleid weergeven
+## <a name="indicate-a-default-row-policy"></a>Een standaard beleid voor rijen aangeven
 
-Overschakelen van de gegevens stromen foutopsporingsmodus bij en bekijk vervolgens de resultaten van uw beleid van de rij wijzigen in het voorbeeld van gegevens. Uitvoeren van een rij wijzigen in gegevens Flow foutopsporingsmodus produceert DDL of DML acties op basis van het doel niet. Om deze acties optreden, voert u de gegevensstroom in een activiteit gegevensstroom uitvoeren binnen een pijplijn.
+Een alter Row trans formatie maken en een rij-beleid met een voor `true()`waarde van opgeven. Elke rij die niet aan een van de eerder gedefinieerde expressies voldoet, wordt gemarkeerd voor het opgegeven beleid voor de rij. Standaard wordt elke rij die niet aan een voorwaardelijke expressie voldoet, gemarkeerd voor `Insert`.
 
-![Rij beleid ALTER](media/data-flow/alter-row3.png "rij beleid wijzigen")
+![Rij één beleids regel wijzigen](media/data-flow/alter-row4.png "Rij één beleids regel wijzigen")
 
-Hierdoor kunt u om te controleren en de status van elke rij op basis van uw voorwaarden weergeven. Er zijn pictogram vertegenwoordigt voor elke insert, update, delete en upsert actie die wordt uitgevoerd in de gegevensstroom, die aangeeft welke actie zal plaatsvinden tijdens het uitvoeren van de gegevensstroom binnen een pijplijn.
+> [!NOTE]
+> Als u alle rijen met één beleid wilt markeren, kunt u een voor waarde voor dat beleid maken en de `true()`voor waarde als opgeven.
+
+## <a name="view-policies"></a>Inhoudbeleidsregels weergeven
+
+Schakel de modus voor fout opsporing van gegevens stromen in om de resultaten van de Alter Row-beleids regels weer te geven in het deel venster voor gegevens voorbeeld. Bij het uitvoeren van een alter Row in de modus voor fout opsporing van gegevens stromen worden geen DDL-of DML-acties op uw doel gemaakt. Als u deze acties wilt uitvoeren, voert u de gegevens stroom in een activiteit gegevens stroom uitvoeren binnen een pijp lijn uit.
+
+![ALTER Row policies](media/data-flow/alter-row3.png "ALTER Row policies")
+
+Hiermee kunt u de status van elke rij controleren en weer geven op basis van uw voor waarden. Er zijn pictogrammen voor elke insert-, update-, DELETE-en upsert-actie die wordt uitgevoerd in uw gegevens stroom, waarmee wordt aangegeven welke actie wordt uitgevoerd wanneer u de gegevens stroom in een pijp lijn uitvoert.
 
 ## <a name="sink-settings"></a>Sink-instellingen
 
-U moet een sink-type voor rij werken Alter database hebben. In de sink-instellingen, moet u elke actie moet worden toegestaan instellen.
+U moet een type data base-Sink hebben voor Alter Row to work. In de Sink-instellingen moet u elke actie instellen die overeenkomt met uw Alter Row-voor waarden.
 
-![Rij sink ALTER](media/data-flow/alter-row2.png "Sink van rij wijzigen")
+![Rij-Sink wijzigen](media/data-flow/alter-row2.png "Rij-Sink wijzigen")
 
-Het standaardgedrag in ADF gegevensstroom met database sinks is het invoegen van rijen. Als u toestaan van updates, upsert-bewerking en ook worden verwijderd wilt, moet u ook deze vakken in de sink om toe te staan de acties controleren.
+Het standaard gedrag van de ADF-gegevens stroom met data base-sinks is het invoegen van rijen. Als u ook updates, upsert en verwijderingen wilt toestaan, moet u ook deze selectie vakjes in de Sink inschakelen om de acties toe te staan.
 
 > [!NOTE]
-> Als uw toevoegingen, updates of upsert-bewerking wijzigt het schema van de doeltabel in de sink, mislukken de gegevensstroom. Als u wilt het doelschema in uw database wijzigen, moet u de optie 'Maak de tabel' in de sink. Dit verwijderen en opnieuw maken van de tabel met de nieuwe schemadefinitie.
+> Als uw invoeg-, update-of upsert het schema van de doel tabel in de Sink wijzigt, mislukt de gegevens stroom. Als u het doel schema in uw Data Base wilt wijzigen, moet u de optie ' opnieuw maken ' in de Sink selecteren. Hiermee wordt de tabel verwijderd en opnieuw gemaakt met de nieuwe schema definitie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Na de transformatie Alter rij, kunt u [sink van uw gegevens naar een doelgegevensarchief](data-flow-sink.md).
+Na de Alter Row trans formatie wilt u mogelijk [uw gegevens in een doel gegevens archief opvangen](data-flow-sink.md).

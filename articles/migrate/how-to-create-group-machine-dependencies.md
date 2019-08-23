@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598945"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906377"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Afhankelijkheids visualisatie instellen voor evaluatie
 
@@ -37,9 +37,9 @@ Meer [informatie](concepts-dependency-visualization.md#how-does-it-work) over de
 **Functies** | **Opmerking**
 --- | ---
 Beschikbaarheid | Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.
-Service Map | Bij een afhankelijkheids visualisatie wordt Servicetoewijzing oplossing in Azure Monitor-logboeken gebruikt. [Servicetoewijzing](../azure-monitor/insights/service-map-configure.md) detecteert en toont automatisch verbindingen tussen servers.
-Agents | Als u afhankelijkheids visualisatie wilt gebruiken, installeert u een aantal agents op de computers die u wilt toewijzen:<br/> - [Azure log Analytics](../azure-monitor/platform/log-analytics-agent.md) -agent (voorheen micro soft Monitoring Agent (MMA) genoemd.<br/> -Servicetoewijzing-afhankelijkheids agent.<br/><br/> Als u de installatie van de agent wilt automatiseren, kunt u een implementatie hulpprogramma, zoals System Center Configuration Manager of een partner programma zoals [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), gebruiken dat een agent implementatie oplossing voor Azure migrate heeft.
-Dependency Agent | Controleer de ondersteuning voor de afhankelijkheids agent voor [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) en [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).<br/><br/> Meer [informatie](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) over het gebruik van scripts voor het installeren van de afhankelijkheids agent.
+Service Map | Bij een afhankelijkheids visualisatie wordt Servicetoewijzing oplossing in Azure Monitor. [Servicetoewijzing](../azure-monitor/insights/service-map.md) detecteert en toont automatisch verbindingen tussen servers.
+Agents | Als u afhankelijkheids visualisatie wilt gebruiken, installeert u de volgende agents op de computers die u wilt toewijzen:<br/> - [Log Analytics agent](../azure-monitor/platform/log-analytics-agent.md) agent (voorheen micro soft Monitoring Agent (MMA) genoemd.<br/> - [Servicetoewijzing-afhankelijkheids agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Als u de installatie van de agent wilt automatiseren, kunt u een implementatie hulpprogramma, zoals System Center Configuration Manager of een partner programma zoals [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), gebruiken dat een agent implementatie oplossing voor Azure migrate heeft.
+Dependency Agent | Controleer de ondersteuning voor de [afhankelijkheids agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) voor Windows en Linux.<br/><br/> Meer [informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over het gebruik van scripts voor het installeren van de afhankelijkheids agent.
 Log Analytics-agent (MMA) | Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) over MMA-installatie methoden.<br/><br/> Voor computers die worden bewaakt door System Center Operations Manager 2012 R2 of hoger, hoeft u de MMA-agent niet te installeren. Servicetoewijzing integreert met Operations Manager. U kunt de integratie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)inschakelen met behulp van de richt lijnen. Houd er echter rekening mee dat de afhankelijkheids agent moet worden geïnstalleerd op deze computers.<br/><br/> [Controleer](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) de Linux-besturings systemen die worden ondersteund door de log Analytics-agent.
 Beoordelings groepen | Groepen waarvoor u afhankelijkheden wilt visualiseren, mogen niet meer dan 10 machines bevatten. Als u meer dan 10 computers hebt, splitst u deze in kleinere groepen om afhankelijkheden te visualiseren.
 

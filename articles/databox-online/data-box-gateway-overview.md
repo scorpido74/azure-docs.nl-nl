@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 07/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 1b749df7c5b3badbc6e7eccd885cb953ab3d0afa
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8c6b4085f56bc12b67bf87177ba33b82c6a6db9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277391"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900593"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Wat is Azure Data Box Gateway?
 
@@ -57,7 +57,6 @@ Data Box Gateway biedt de volgende mogelijkheden:
 |Snelle toegang     | Lokale cache op het apparaat voor snelle toegang tot laatst gebruikte bestanden.|
 |Offline upload     | Modus zonder verbinding ondersteunt scenario’s voor offline uploaden.|
 |Gegevensvernieuwing     | Mogelijkheid om lokale bestanden te vernieuwen met de meest recente uit de cloud.|
-|Versleuteling    | BitLocker-ondersteuning om gegevens lokaal te versleutelen en de gegevensoverdracht naar de cloud via *HTTPS* te beveiligen       |
 |Flexibiliteit     | Ingebouwde netwerkflexibiliteit        |
 
 

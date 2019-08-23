@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535215"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982329"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
@@ -65,7 +65,7 @@ Over het algemeen zijn de doel groepen verschillend:
 
 Een cognitieve service biedt een getraind model voor u. Dit brengt gegevens en een algoritme samen die beschikbaar zijn via een REST API (s) of SDK. U kunt deze service binnen enkele minuten implementeren, afhankelijk van uw scenario.  Een cognitieve service biedt antwoorden op algemene problemen, zoals sleutel zinnen in tekst-of item identificatie in afbeeldingen. 
 
-Machine learning is een proces dat doorgaans een langere periode nodig heeft om te implementeren. Deze tijd wordt besteed aan het verzamelen van gegevens, het opschonen, transformeren, het selecteren van algoritmen, model trainingen en implementaties om te profiteren van hetzelfde functionaliteits niveau dat wordt verschaft door een cognitieve service. Met machine learning kunt u antwoorden geven op elk soort probleem, met inbegrip van zeer gespecialiseerde of specifieke problemen. Deze machine learning-problemen moeten vertrouwd zijn met een of meer van de volgende zaken: onderwerp, machine learning, data Science.
+Machine learning is een proces dat doorgaans een langere periode nodig heeft om te implementeren. Deze tijd wordt besteed aan het verzamelen van gegevens, het opschonen, transformeren, het selecteren van algoritmen, model trainingen en implementaties om te profiteren van hetzelfde functionaliteits niveau dat wordt verschaft door een cognitieve service. Met machine learning kunt u antwoorden geven op zeer gespecialiseerde en/of specifieke problemen. Voor machine learning-problemen moet u vertrouwd zijn met het specifieke onderwerp en de gegevens van het probleem dat wordt onderzocht, evenals de expertise van de gegevens wetenschap.
 
 ## <a name="what-kind-of-data-do-you-have"></a>Wat voor soort gegevens hebt u?
 

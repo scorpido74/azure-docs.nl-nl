@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: bd506bf1210692feb017f3b526c3b6d4bca36004
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c8fd5309f50cfc024083cb8a05d679d04bf112dc
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877426"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972269"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Een Raspberry Pi verbinden met uw Azure IoT Central-toepassing (python)
 
@@ -29,6 +29,9 @@ U hebt de volgende onderdelen nodig om de stappen in dit artikel uit te voeren:
 
 * Een Azure IoT Central-toepassing gemaakt op basis van de voor beeld-toepassings sjabloon **Devkits** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
 * Een Raspberry Pi-apparaat met het Raspbian-besturings systeem. De Raspberry Pi moet verbinding kunnen maken met internet. Zie [uw Raspberry Pi instellen](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)voor meer informatie.
+
+> [!TIP]
+> Ga aan de [slag met Raspberry Pi](https://projects.raspberrypi.org/en/pathways/getting-started-with-raspberry-pi) voor meer informatie over het instellen en verbinding maken met een Raspberry Pi-apparaat.
 
 ## <a name="sample-devkits-application"></a>Voor **beeld van Devkits** -toepassing
 
@@ -63,12 +66,37 @@ In de volgende stappen wordt beschreven hoe u de voor beeld-python-toepassing do
 * Verzendt telemetrie en eigenschaps waarden naar Azure IoT Central.
 * Reageert op het instellen van wijzigingen die zijn aangebracht in azure IoT Central.
 
-Als u het apparaat wilt configureren, [volgt u de stapsgewijze instructies op github](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md).
+1. Maak verbinding met een shell-omgeving op uw Raspberry Pi, hetzij via het bureau blad van Raspberry Pi of op afstand via SSH.
 
-1. Wanneer het apparaat is geconfigureerd, wordt het verzenden van telemetrie-metingen naar Azure IoT Central gestart op het apparaat.
+1. Voer de volgende opdracht uit om de IoT Central python-client te installeren:
+
+    ```sh
+    pip install iotc
+    ```
+
+1. Down load de voor beeld-python-code:
+
+    ```sh
+    curl -O https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
+    ```
+
+1. Bewerk het `app.py` bestand dat u hebt gedownload en `DEVICE_ID`Vervang `SCOPE_ID`de tijdelijke `PRIMARY/SECONDARY device KEY` aanduidingen,, en door de verbindings waarden die u eerder hebt genoteerd. Sla uw wijzigingen op.
+
+    > [!TIP]
+    > In de shell op de Raspberry Pi kunt u de **nano** -of **VI** -tekst editors gebruiken.
+
+1. Gebruik de volgende opdracht om het voor beeld uit te voeren:
+
+    ```sh
+    python app.py
+    ```
+
+    Uw Raspberry Pi begint met het verzenden van telemetrie-metingen naar Azure IoT Central.
+
 1. In uw Azure IoT Central-toepassing kunt u zien hoe de code die wordt uitgevoerd op de Raspberry Pi communiceert met de toepassing:
 
     * Op de pagina **metingen** voor uw echte apparaat ziet u de telemetrie die is verzonden vanuit de Raspberry pi.
+    * Op de pagina **Eigenschappen** ziet u de eigenschap van het **aantal dobbelten** van het apparaat.
     * Op de pagina **instellingen** kunt u de instellingen wijzigen op de Raspberry Pi, zoals spanning en ventilator snelheid. Wanneer de Raspberry Pi de wijziging bevestigt, wordt de instelling weer gegeven als **gesynchroniseerd**.
 
 ## <a name="raspberry-pi-device-template-details"></a>Details van Raspberry Pi-apparaatprofiel

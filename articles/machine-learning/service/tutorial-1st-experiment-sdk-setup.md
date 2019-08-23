@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: cc16f3c8ea287e78d7b7b4d9a56f5a2e82c26f01
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 54fc87f02ca058e17de3a65627bc76fd7d9cac11
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515340"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971557"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment
 
@@ -73,7 +73,9 @@ Nadat de virtuele machine is uitgevoerd, gebruikt u de sectie voor **laptop-vm's
     > [!TIP]
     > Deze map bevindt zich in de [opslag container](concept-workspace.md#resources) in uw werk ruimte, in plaats van op de VM van de notebook zelf.  U kunt de VM van het notitie blok verwijderen en toch al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
 
-1. Open de `samples-*` submap en open `tutorials/tutorial-1st-experiment-sdk-train.ipynb` om **deel twee** van de zelf studie uit te voeren.
+1. Open de `samples-*` submap en open vervolgens`tutorials/tutorial-1st-experiment-sdk-train.ipynb` 
+
+In **deel twee** van de zelf studie voert u de code `tutorial-1st-experiment-sdk-train.ipynb` in om een machine learning model te trainen.
 
 ## <a name="end"></a>Resources opschonen
 

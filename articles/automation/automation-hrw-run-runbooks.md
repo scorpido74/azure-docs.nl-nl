@@ -9,18 +9,20 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f41263bfb930d3aab41fd8ace86cd6afb0ace26
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c10262e50fff2903d7caf242304145a2ab93dbcd
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850574"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970621"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
 Er is geen verschil in de structuur van runbooks die worden uitgevoerd in Azure Automation en runbooks die worden uitgevoerd op een Hybrid Runbook Worker. Runbooks die u gebruikt met elke waarschijnlijke verschillen aanzienlijk. Dit verschil is omdat runbooks die gericht zijn op een Hybrid Runbook Worker meestal resources op de lokale computer zelf of op basis van resources in de lokale omgeving beheert waar deze worden geïmplementeerd. Runbooks in Azure Automation beheren resources doorgaans in de Azure-Cloud.
 
-Wanneer u runbooks ontwerpt om uit te voeren op een Hybrid Runbook Worker, moet u de runbooks bewerken en testen op de computer die als host fungeert voor de Hybrid Worker. De hostcomputer heeft alle Power shell-modules en netwerk toegang die u nodig hebt voor het beheren en openen van de lokale resources. Zodra een runbook is getest op de Hybrid worker-machine, kunt u deze uploaden naar de Azure Automation omgeving waar deze beschikbaar is voor uitvoering in de Hybrid Worker. Het is belang rijk om te weten dat taken die worden uitgevoerd onder het lokale systeem account voor Windows of een `nxautomation` speciaal gebruikers account op Linux. Dit gedrag kan subtiele verschillen veroorzaken bij het ontwerpen van runbooks voor een Hybrid Runbook Worker. Deze wijzigingen moeten worden gecontroleerd wanneer u uw runbooks schrijft.
+Wanneer u runbooks ontwerpt om uit te voeren op een Hybrid Runbook Worker, moet u de runbooks bewerken en testen op de computer die als host fungeert voor de Hybrid Worker. De hostcomputer heeft alle Power shell-modules en netwerk toegang die u nodig hebt voor het beheren en openen van de lokale resources. Zodra een runbook is getest op de Hybrid worker-machine, kunt u deze uploaden naar de Azure Automation omgeving waar deze beschikbaar is voor uitvoering in de Hybrid Worker. Het is belang rijk om te weten dat taken die worden uitgevoerd onder het lokale systeem account voor Windows of een `nxautomation` speciaal gebruikers account op Linux. In Linux betekent dit dat u moet controleren of het `nxautomation` account toegang heeft tot de locatie waar u de modules opslaat. Wanneer u de cmdlet [install-module]() gebruikt, geeft u **ALLUSERS** op `-Scope` voor de para meter om `naxautomation` te bevestigen dat het account toegang heeft.
+
+Zie voor meer informatie over Power shell op Linux [bekende problemen voor Power shell op niet-Windows-platforms](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Een runbook starten op Hybrid Runbook Worker
 

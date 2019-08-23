@@ -1,46 +1,49 @@
 ---
-title: Query Performance Insight in Azure Database for PostgreSQL - één Server
-description: Dit artikel beschrijft de Query Performance Insight-functie in Azure Database voor PostgreSQL - één Server.
+title: Query Performance Insight in Azure Database for PostgreSQL-één server
+description: In dit artikel wordt de functie Query Performance Insight van Azure Database for PostgreSQL-één-server beschreven.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: d45b79e2ca3b3d478102bebdcff3c8892bef2cb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: cd07656ab4e6e0f684eecf35d241eac539b7a552
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067545"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907475"
 ---
-# <a name="query-performance-insight"></a>Inzicht in queryprestaties 
+# <a name="query-performance-insight"></a>Query Performance Insight 
 
-**Van toepassing op:** Azure Database for PostgreSQL - servergegevens 9.6 en 10
+**Van toepassing op:** Azure Database for PostgreSQL-één server 9,6 en 10
 
-Query Performance Insight kunt u snel vinden wat uw langst lopende query's zijn, hoe ze na verloop van tijd veranderen en welke wacht van invloed zijn op deze.
+Query Performance Insight helpt u snel te identificeren wat uw langste query's zijn, hoe ze in de loop van de tijd veranderen en welke wacht tijden van invloed zijn op deze.
 
 ## <a name="permissions"></a>Machtigingen
 De machtigingen **Eigenaar** of **Inzender** zijn vereist om de tekst van de query's weer te geven in Query Performance Insight. Met de machtiging **Lezer** kunt u grafieken en tabellen weergeven maar geen tekst opvragen.
 
 ## <a name="prerequisites"></a>Vereisten
-Voor Query Performance Insight functie, gegevens moeten aanwezig zijn in de [Query Store](concepts-query-store.md).
+Query Performance Insight werkt alleen als de gegevens in het [query archief](concepts-query-store.md)aanwezig zijn.
 
-## <a name="viewing-performance-insights"></a>Prestatie-inzichten weergeven
+## <a name="viewing-performance-insights"></a>Prestatie inzichten weer geven
 De weergave [Query Performance Insight](concepts-query-performance-insight.md) in de Azure Portal toont visualisaties van belangrijke informatie uit de Query Store. 
 
-Selecteer in de portal-pagina van uw Azure Database for PostgreSQL-server, **Query performance Insight** onder de **intelligente prestaties** sectie van de in de menubalk.
+Selecteer op de pagina Portal van uw Azure Database for PostgreSQL-server **query prestaties inzicht** onder de sectie **intelligente prestaties** van de menu balk.
 
-![Query Performance Insight langlopende query 's](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+![Langlopende query's Query Performance Insight](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-De **langlopende query's** tabblad toont de top vijf query's door de gemiddelde duur per uitvoering, samengevoegd in intervallen van 15 minuten. U kunt meer query's weergeven door een optie te selecteren in de vervolgkeuzelijst **Aantal query's**. Het is mogelijk dat de grafiekkleuren voor een specifieke query-id verschillen wanneer u dit doet.
+Op het tabblad **langlopende query's** worden de vijf meest voorkomende query's weer gegeven op gemiddelde duur per uitvoering, samengevoegd in intervallen van 15 minuten. U kunt meer query's weergeven door een optie te selecteren in de vervolgkeuzelijst **Aantal query's**. Het is mogelijk dat de grafiekkleuren voor een specifieke query-id verschillen wanneer u dit doet.
 
-U kunt in de grafiek klikken en slepen om de tijdspanne te beperken tot een specifiek tijdvenster. Het zoomniveau in- en pictogrammen ook gebruiken om respectievelijk een kleiner of groter periode weer te geven.
+U kunt in de grafiek klikken en slepen om de tijdspanne te beperken tot een specifiek tijdvenster. U kunt ook de pictogrammen in-en uitzoomen gebruiken om respectievelijk een kleinere of grotere periode weer te geven.
 
-In de tabel onder de grafiek geeft meer informatie over de langlopende query's in dat tijdvenster.
+De tabel onder de grafiek bevat meer informatie over de langlopende query's in dat tijd venster.
 
 Selecteer het tabblad **Wachtstatistieken** om de bijbehorende visualisaties voor wachttijden in de server weer te geven.
 
-![Query Performance Insight wacht statistieken](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Query Performance Insight wacht op statistieken](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+
+## <a name="considerations"></a>Overwegingen
+* Query Performance Insight is niet beschikbaar voor het [lezen van replica's](concepts-read-replicas.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [bewaking en afstemming](concepts-monitoring.md) in Azure Database for PostgreSQL.

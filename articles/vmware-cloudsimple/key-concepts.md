@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e434065feb218b0a46220b95cc6bfd9a7033de30
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 120ab94ce62010acf4e742bd5220405961dad6db
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816107"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972731"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solution-by-cloudsimple"></a>Belangrijkste concepten voor het beheer van de Azure VMware-oplossing door CloudSimple
 
@@ -34,7 +34,6 @@ Meer informatie over de [CloudSimple-service](cloudsimple-service.md).
 ## <a name="cloudsimple-node"></a>CloudSimple-knoop punt
 
 Een CloudSimple-knoop punt is een speciale, Bare-Metal, hypergeconvergeerd Compute-en opslag host waarop de VMware ESXi Hyper Visor is geïmplementeerd. Dit knoop punt wordt vervolgens opgenomen in de VMware vSphere-, vCenter-, vSAN-en NSX-platforms. CloudSimple Network Services en Edge Network Services zijn ook ingeschakeld. Elk knoop punt fungeert als een eenheid voor reken-en opslag capaciteit die u kunt inrichten voor het maken van [CloudSimple-persoonlijke Clouds](cloudsimple-private-cloud.md). U kunt knoop punten inrichten of reserveren in een regio waar de CloudSimple-service beschikbaar is.
-
 
 Meer informatie over [CloudSimple-knoop punten](cloudsimple-node.md).
 

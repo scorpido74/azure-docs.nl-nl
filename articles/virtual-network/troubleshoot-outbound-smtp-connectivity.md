@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e21788dbf30b6fa3b37f84dd07d54b89bc91f17f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935377"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972483"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Problemen met uitgaande SMTP-connectiviteit in azure oplossen
 
@@ -38,7 +38,7 @@ Als u vóór 15 november 2017 bent aangemeld voor de aanbiedingen voor betalen n
 
 Voor betalen per gebruik-of Microsoft Partner Network-abonnementen die zijn gemaakt na 15 november 2017, worden er technische beperkingen gegeven voor het blok keren van e-mail die rechtstreeks vanuit de virtuele machines in deze abonnementen wordt verzonden. Als u de mogelijkheid wilt om e-mail van Azure-Vm's rechtstreeks naar externe e-mail providers te verzenden (niet via een geverifieerde SMTP-relay), kunt u een aanvraag indienen om de beperking te verwijderen. Aanvragen worden op de keuze van micro soft beoordeeld en goedgekeurd en worden alleen verleend nadat er aanvullende fraude controles zijn uitgevoerd. Als u een aanvraag wilt indienen, opent u een ondersteunings aanvraag met behulp van het volgende probleem type: **Technische** > **Virtual Network**connectiviteitkan > geen e-mail verzenden (SMTP/poort 25). >  Zorg ervoor dat u gegevens toevoegt over waarom uw implementatie e-mail rechtstreeks naar e-mail providers moet verzenden in plaats van een geverifieerde relay te gebruiken.
 
-Nadat een betalen per gebruik-of Microsoft Partner Network-abonnement is uitgesloten en de Vm's zijn ' gestopt ' & ' gestart ' vanuit de Azure Portal, worden alle Vm's in dat abonnement verder uitgesloten. De uitzonde ring is alleen van toepassing op het aangevraagde abonnement.
+Nadat een betalen per gebruik-of Microsoft Partner Network-abonnement is uitgesloten en de Vm's zijn ' gestopt ' & ' gestart ' vanuit de Azure Portal, worden alle Vm's in dat abonnement verder uitgesloten. De uitzonde ring is alleen van toepassing op het aangevraagde abonnement en is alleen van toepassing op verkeer van de virtuele machine rechtstreeks naar Internet. Routerings poort 25 verkeer via Azure PaaS services zoals [Azure firewall](https://azure.microsoft.com/services/azure-firewall/) wordt niet ondersteund.
 
 > [!NOTE]
 > Micro soft behoudt zich het recht voor deze uitzonde ring in te trekken als wordt vastgesteld dat er een schending van de service voorwaarden is opgetreden.

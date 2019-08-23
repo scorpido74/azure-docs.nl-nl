@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c83648124f616670423b2ef459530c191d7e17e4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 044b74e1a8683c6beb0220c1cf9fb97403286a95
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325764"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972251"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances en container Orchestrator
 
-Vanwege hun geringe grootte en toepassings stand zijn containers geschikt voor flexibele bezorgings omgevingen en architecturen op basis van micro Services. De taak van het automatiseren en beheren van een groot aantal containers en hoe deze communiceren, wordt bekend *als indeling*. Populaire container-Orchestrator zijn onder andere Kubernetes, DC/OS en docker Swarm.
+Vanwege hun geringe grootte en toepassings stand zijn containers geschikt voor flexibele bezorgings omgevingen en architecturen op basis van micro Services. De taak van het automatiseren en beheren van een groot aantal containers en hoe deze communiceren, wordt bekendals indeling. Populaire container-Orchestrator zijn onder andere Kubernetes, DC/OS en docker Swarm.
 
 Azure Container Instances biedt een aantal basis mogelijkheden voor het plannen van Orchestration-platforms. En hoewel het geen betrekking heeft op de services met hogere waarden die deze platformen bieden, kan Azure Container Instances complementair zijn. In dit artikel wordt het bereik beschreven van wat Azure Container Instances ingangen, en hoe de volledige container Orchestrator ermee kan werken.
 
@@ -72,6 +72,6 @@ Maak uw eerste container met Azure Container Instances met behulp van de [Snelst
 <!-- IMAGES -->
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
+[aci-connector-k8s]: https://github.com/virtual-kubelet/azure-aci
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

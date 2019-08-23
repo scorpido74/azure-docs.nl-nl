@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 902187c3462c54f728519aa1e6e60fbcc1eab20f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.date: 08/21/2019
+ms.openlocfilehash: a7e7beb3cdef7551a1bce2a693b8044ea6ed8946
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876315"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907685"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure Portal
 
@@ -45,9 +45,12 @@ Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
     ![Azure Database for MariaDB-replica naam](./media/howto-read-replica-portal/replica-name.png)
 
-6. Selecteer de locatie voor de replica server. U kunt een replica in een Azure-regio maken. De standaard locatie is dezelfde als die van de hoofd server.
+6. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de hoofd server.
 
     ![Azure Database for MariaDB-replica locatie](./media/howto-read-replica-portal/replica-location.png)
+
+   > [!NOTE]
+   > Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
 
 7. Selecteer **OK** om te bevestigen dat u de replica wilt maken.
 

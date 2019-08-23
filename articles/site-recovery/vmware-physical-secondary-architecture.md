@@ -1,23 +1,23 @@
 ---
-title: Architectuur voor noodherstel van VMware/fysieke server naar een secundaire site met Azure Site Recovery | Microsoft Docs
-description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens het herstel na noodgevallen van on-premises VMware-machines of fysieke Windows/Linux-servers naar een secundaire VMware-site met Azure Site Recovery.
+title: Architectuur voor nood herstel van VMware/fysieke servers naar een secundaire site met Azure Site Recovery | Microsoft Docs
+description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens het herstel na nood gevallen van on-premises virtuele VMware-machines of fysieke Windows/Linux-servers naar een secundaire VMware-site met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 171a88045531f1fdc01d7046ef0ad8157859d28c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418263"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972115"
 ---
-# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architectuur voor VMware-/ fysieke servers repliceren naar een secundaire on-premises site
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architectuur voor de replicatie van VMware/fysieke servers naar een secundaire on-premises site
 
-Dit artikel beschrijft de architectuur en processen die worden gebruikt bij het instellen van disaster recovery-replicatie, failover en herstel van on-premises VMware-machines (VM's) of fysieke Windows/Linux-servers naar een secundaire VMware site met [Azure Site Recovery](site-recovery-overview.md).
+In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij het instellen van herstel na nood gevallen, failover en het herstel van on-premises virtuele VMware-machines (Vm's) of fysieke Windows/Linux-servers naar een secundaire VMware-site met behulp van [Azure site Recovery ](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
@@ -38,7 +38,7 @@ Dit artikel beschrijft de architectuur en processen die worden gebruikt bij het 
 2. Na de initiële replicatie verzendt de agent op elke machine deltareplicatiewijzigingen naar de processerver.
 3. De processerver optimaliseert de gegevens en brengt deze over naar de hoofddoelserver op de secundaire site. De configuratieserver beheert het replicatieproces.
 
-**Afbeelding 6: VMware naar VMware-replicatie**
+**Afbeelding 6: Replicatie van VMware naar VMware**
 
 ![VMware naar VMware](./media/site-recovery-components/vmware-to-vmware.png)
 
@@ -46,4 +46,4 @@ Dit artikel beschrijft de architectuur en processen die worden gebruikt bij het 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Instellen van](vmware-physical-secondary-disaster-recovery.md) herstel na noodgevallen van virtuele VMware-machines en fysieke servers naar een secundaire site.
+[Stel](vmware-physical-secondary-disaster-recovery.md) herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar een secundaire site.

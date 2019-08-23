@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927843"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907916"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -270,6 +270,7 @@ Web Application firewall is een functie van [Azure-toepassing gateway](../../app
 
 
 Een gecentraliseerde Web Application Firewall ter bescherming tegen aanvallen via internet maakt het beveiligingsbeheer veel eenvoudiger en biedt de toepassing meer veiligheid tegen de bedreigingen van indringers. Een WAF-oplossing kan ook sneller reageren op een beveiligingsrisico door een patch voor een bekend beveiligingsprobleem toe te passen op een centrale locatie in plaats van elke afzonderlijke webtoepassing te beveiligen. Bestaande toepassingsgateways kunnen eenvoudig worden geconverteerd naar een toepassingsgateway met Web Application Firewall.
+
 ### <a name="traffic-manager"></a>Traffic Manager
 Met micro soft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) kunt u de distributie van gebruikers verkeer voor service-eind punten in verschillende data centers beheren. Service-eind punten die worden ondersteund door Traffic Manager zijn onder andere Azure-Vm's, Web Apps en Cloud Services. U kunt Traffic Manager ook gebruiken met externe eindpunten die niet van Azure zijn. Traffic Manager gebruikt de Domain Name System (DNS) om client aanvragen door te sturen naar het meest geschikte eind punt op basis van een [routerings methode voor verkeer](../../traffic-manager/traffic-manager-routing-methods.md) en de status van de eind punten.
 
@@ -295,18 +296,8 @@ U kunt de volgende diagnostische logboek categorieën inschakelen voor Nsg's:
 -   Item regels: Bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan.
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Security Center helpt u bedreigingen te voor komen, te detecteren en erop te reageren, en biedt u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligings bewaking en beleids beheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en werkt met een uitgebreid ecosysteem van beveiligings oplossingen. Netwerk aanbevelingen centrum rond firewalls, netwerk beveiligings groepen, configureren van regels voor binnenkomend verkeer en meer.
 
-Beschik bare aanbevelingen voor het netwerk zijn als volgt:
-
--   [Een firewall van de volgende generatie toevoegen](../../security-center/security-center-add-next-generation-firewall.md) Hiermee wordt aanbevolen dat u een Next Generation firewall (NGFW) toevoegt van een micro soft-partner om uw beveiligings beveiliging te verhogen
-
--   [Verkeer alleen via NGFW routeren](../../security-center/security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) Hiermee wordt aanbevolen dat u NSG-regels (netwerk beveiligings groep) configureert waarmee inkomend verkeer naar uw virtuele machine wordt afgedwongen via uw NGFW.
-
--   [Netwerk beveiligings groepen inschakelen op subnetten of virtuele machines](../../security-center/security-center-enable-network-security-groups.md) Hiermee wordt aanbevolen om Nsg's in te scha kelen op subnetten of Vm's.
-
--   [Toegang via Internet gericht eind punt beperken](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md) Raadt u aan om regels voor binnenkomend verkeer voor Nsg's te configureren.
-
+[Azure Security Center](../../security-center/security-center-intro.md) de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er [aanbevelingen](../../security-center/security-center-recommendations.md) gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
 
 ## <a name="compute"></a>Compute
 
@@ -352,7 +343,7 @@ Het beveiligen van systemen, toepassingen en gegevens begint met toegangs beheer
 
 ### <a name="secure-identity"></a>Beveiligde identiteit
 Micro soft maakt gebruik van meerdere beveiligings procedures en-technologieën in de producten en services voor het beheren van identiteit en toegang.
--   [Multi-factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) vereist dat gebruikers meerdere methoden gebruiken voor toegang, on-premises en in de Cloud. Het biedt krachtige verificatie met diverse eenvoudige verificatie opties, terwijl gebruikers een eenvoudig aanmeldings proces kunnen uitvoeren.
+-   [Multi-factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) moeten gebruikers meerdere methoden gebruiken voor toegang, on-premises en in de Cloud. Het biedt krachtige verificatie met diverse eenvoudige verificatie opties, terwijl gebruikers een eenvoudig aanmeldings proces kunnen uitvoeren.
 
 -   [Microsoft Authenticator](https://aka.ms/authenticator) biedt een gebruikers vriendelijke multi-factor Authentication-ervaring die werkt met zowel Microsoft Azure Active Directory-als micro soft-accounts, en biedt ondersteuning voor goed keuringen op basis van wearables en vinger afdruk.
 
@@ -387,7 +378,7 @@ Micro soft maakt gebruik van meerdere beveiligings procedures en-technologieën 
 - [Azure Active Directory-toepassingsproxy](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) biedt SSO en beveiligde externe toegang voor webtoepassingen die on-premises worden gehost.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Aan de slag met Microsoft Azure beveiliging](./https://docs.microsoft.com/azure/security)
+- [Aan de slag met Microsoft Azure beveiliging](https://docs.microsoft.com/azure/security)
 
 Azure-services en -functies die u kunt gebruiken voor het beveiligen van uw services en gegevens binnen Azure
 

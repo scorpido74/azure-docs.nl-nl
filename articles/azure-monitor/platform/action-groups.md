@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/22/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405646"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898157"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -76,6 +76,11 @@ Nadat u een actie groep hebt gemaakt, wordt deze weer gegeven in de sectie **act
 > [!NOTE]
 > Zie [limieten voor abonnements Services voor controle](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) op numerieke limieten voor elk van de onderstaande items.  
 
+### <a name="automation-runbook"></a>Automation-runbook
+Raadpleeg de service limieten van het [Azure-abonnement](../../azure-subscription-service-limits.md) voor limieten voor nettoladingen van het Runbook.
+
+Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep. 
+
 ### <a name="azure-app-push-notifications"></a>Pushmeldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
@@ -87,6 +92,16 @@ E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-
 
 Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
+### <a name="email-azure-resource-manager-role"></a>E-mailadres voor Azure Resource Manager-rol
+E-mail verzenden naar de leden van de rol van het abonnement.
+
+Mogelijk hebt u een beperkt aantal e-mail acties in een actie groep. Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+### <a name="function"></a>Function
+De functie sleutels voor functie-apps die zijn geconfigureerd als acties, worden gelezen via de functions-API, die momenteel v2-functie-apps vereist voor het configureren van de app-instelling ' AzureWebJobsSecretStorageType ' in ' files '. Zie [wijzigingen in sleutel beheer in functions v2]( https://aka.ms/funcsecrets)voor meer informatie.
+
+Mogelijk hebt u een beperkt aantal functie acties in een actie groep.
+
 ### <a name="itsm"></a>ITSM
 Voor de actie ITSM is een ITSM-verbinding vereist. Meer informatie over het maken van een [ITSM-verbinding](../../azure-monitor/platform/itsmc-overview.md).
 
@@ -95,51 +110,7 @@ Mogelijk hebt u een beperkt aantal ITSM-acties in een actie groep.
 ### <a name="logic-app"></a>Logische app
 Mogelijk hebt u een beperkt aantal logische app-acties in een actie groep.
 
-### <a name="function"></a>Function
-De functie sleutels voor functie-apps die zijn geconfigureerd als acties, worden gelezen via de functions-API, die momenteel v2-functie-apps vereist voor het configureren van de app-instelling ' AzureWebJobsSecretStorageType ' in ' files '. Zie [wijzigingen in sleutel beheer in functions v2]( https://aka.ms/funcsecrets)voor meer informatie.
-
-Mogelijk hebt u een beperkt aantal functie acties in een actie groep.
-
-### <a name="automation-runbook"></a>Automation-runbook
-Raadpleeg de service limieten van het [Azure-abonnement](../../azure-subscription-service-limits.md) voor limieten voor nettoladingen van het Runbook.
-
-Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep. 
-
-### <a name="sms"></a>SMS
-Zie de [informatie over het beperken](./../../azure-monitor/platform/alerts-rate-limiting.md) van de frequentie en het [gedrag van SMS-berichten](../../azure-monitor/platform/alerts-sms-behavior.md) voor aanvullende belang rijke informatie.
-
-Mogelijk hebt u een beperkt aantal SMS-acties in een actie groep.  
-
-### <a name="voice"></a>Spraak
-Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
-
-Mogelijk hebt u een beperkt aantal spraak acties in een actie groep.
-
-### <a name="webhook"></a>Webhook
-Webhooks worden opnieuw geprobeerd met de volgende regels. De webhook-aanroep wordt Maxi maal twee keer opnieuw geprobeerd wanneer de volgende HTTP-status codes worden geretourneerd: 408, 429, 503, 504 of het HTTP-eindpunt reageert niet. De eerste poging vindt plaats na 10 seconden. De tweede nieuwe poging gebeurt na 100 seconden. Na twee storingen wordt het eind punt gedurende 30 minuten niet door een actie groep aangeroepen. 
-
-IP-adresbereiken van bron
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
-
-Als u updates wilt ontvangen over wijzigingen in deze IP-adressen, raden we u aan een Service Health-waarschuwing te configureren, waarmee wordt gecontroleerd op informatieve meldingen over de service voor de actie groep.
-
-Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
-
-#### <a name="secure-webhook"></a>Beveiligde webhook
+### <a name="secure-webhook"></a>Beveiligde webhook
 **De functionaliteit van de beveiligde webhook is momenteel beschikbaar als preview-versie.**
 
 Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om de verbinding tussen uw actie groep en de beveiligde web-API (webhook-eind punt) te beveiligen. De algemene werk stroom voor het gebruik van deze functionaliteit wordt hieronder beschreven. Zie [overzicht van micro soft Identity platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)voor een overzicht van Azure AD-toepassingen en-service-principals.
@@ -156,12 +127,12 @@ Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om d
     - De variabele $myAzureADApplicationObjectId van het Power shell-script wijzigen om de object-ID van uw Azure AD-toepassing te gebruiken
     - Voer het gewijzigde script uit.
     
-1. Configureer de actie groep webhook.
+1. Configureer de actie groep beveiligde webhooks.
     - Kopieer de waarde $myApp. ObjectId uit het script en voer deze in het veld toepassings object-ID in de actie definitie van webhook in.
     
     ![Actie beveiligde webhook](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>Power shell-script voor beveiligde webhook
+#### <a name="secure-webhook-powershell-script"></a>Power shell-script voor beveiligde webhook
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -229,6 +200,41 @@ Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
 Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
+
+### <a name="sms"></a>SMS
+Zie de [informatie over het beperken](./../../azure-monitor/platform/alerts-rate-limiting.md) van de frequentie en het [gedrag van SMS-berichten](../../azure-monitor/platform/alerts-sms-behavior.md) voor aanvullende belang rijke informatie.
+
+Mogelijk hebt u een beperkt aantal SMS-acties in een actie groep.  
+
+### <a name="voice"></a>Spraak
+Zie het artikel [informatie over de frequentie beperking](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+Mogelijk hebt u een beperkt aantal spraak acties in een actie groep.
+
+### <a name="webhook"></a>Webhook
+Webhooks worden opnieuw geprobeerd met de volgende regels. De webhook-aanroep wordt Maxi maal twee keer opnieuw geprobeerd wanneer de volgende HTTP-status codes worden geretourneerd: 408, 429, 503, 504 of het HTTP-eindpunt reageert niet. De eerste poging vindt plaats na 10 seconden. De tweede nieuwe poging gebeurt na 100 seconden. Na twee storingen wordt het eind punt gedurende 30 minuten niet door een actie groep aangeroepen. 
+
+IP-adresbereiken van bron
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 13.106.57.197
+ - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
+ - 51.4.138.199
+ - 51.5.148.86
+ - 51.5.149.19
+
+Als u updates wilt ontvangen over wijzigingen in deze IP-adressen, raden we u aan een Service Health-waarschuwing te configureren, waarmee wordt gecontroleerd op informatieve meldingen over de service voor de actie groep.
+
+Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

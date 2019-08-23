@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881851"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906338"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Naslag informatie Bing Local Business Search API V7
 
@@ -75,7 +76,7 @@ De aanvraag kan de volgende query parameters bevatten. Zie de vereiste kolom voo
 |<a name="count" />aantal|Het aantal resultaten dat moet worden geretourneerd, te beginnen met de index die `offset` is opgegeven door de para meter.|Tekenreeks|Nee|   
 |<a name="localCategories" />localCategories|Lijst met opties waarmee zoek acties op bedrijfs categorie worden gedefinieerd.  Zie [lokale bedrijfs categorieën zoeken](local-categories.md)|Tekenreeks|Nee|  
 |<a name="mkt" />mkt|De markt waaruit de resultaten afkomstig zijn. <br /><br />Zie markt codes voor een lijst met mogelijke markt waarden.<br /><br /> **OPMERKING:** De lokale Business Search-API ondersteunt momenteel alleen de markt en taal van de VS.<br /><br />|Tekenreeks|Ja|
-|<a name="offset"/>offset|De index voor het starten van de resultaten `count` die zijn opgegeven met de para meter.|Geheel getal|Nee|  
+|<a name="offset"/>offset|De index voor het starten van de resultaten `count` die zijn opgegeven met de para meter.|Integer|Nee|  
 |<a name="query" />q|De zoek term van de gebruiker.|Tekenreeks|Nee|  
 |<a name="responseformat" />responseFormat|Het media type dat voor het antwoord moet worden gebruikt. Hier volgen de mogelijke niet-hoofdletter gevoelige waarden.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> De standaard waarde is JSON. Zie [Response Objects](#response-objects)(Engelstalig) voor informatie over de JSON-objecten die het antwoord bevat.<br /><br />  Als u JsonLd opgeeft, bevat de antwoord tekst JSON-LD objecten die de zoek resultaten bevatten. Zie [JSON-LD](https://json-ld.org/)voor meer informatie over de JSON-ld.|Tekenreeks|Nee|  
 |<a name="safesearch" />safeSearch|Een filter dat wordt gebruikt voor het filteren van inhoud voor volwassenen. Hier volgen de mogelijke niet-hoofdlettergevoelige filterwaarden.<br /><ul><li>Off&mdash;webpagina's retour neren met tekst, afbeeldingen of Video's voor volwassenen.<br /><br/></li><li>Gemiddeld&mdash;webpaginas retour neren met volwassene tekst, maar geen installatie kopieën of Video's voor volwassenen.<br /><br/></li><li>&mdash;Geen webpagina's retour neren met tekst, afbeeldingen of Video's voor volwassenen.</li></ul><br /> De standaardwaarde is Moderate.<br /><br /> **OPMERKING:** Als de aanvraag afkomstig `safeSearch` is van een markt waarvoor het volwassen beleid van Bing is ingesteld op strikt, negeert Bing de `safeSearch` waarde en wordt strikt gebruikt.<br/><br/>**OPMERKING:** Als u de `site:` operator query gebruikt, is het mogelijk dat het antwoord inhoud voor volwassenen bevat, ongeacht de `safeSearch` query parameter is ingesteld op. Gebruik `site:` alleen als u zich bewust bent van de inhoud op de site en uw scenario de mogelijkheid van inhoud voor volwassenen ondersteunt. |Tekenreeks|Nee|  
@@ -190,7 +191,7 @@ Hiermee wordt een item in de zoek resultaten gedefinieerd dat moet worden weer g
 
 |Name|Value|type|  
 |-------------|-----------------|----------|
-|resultIndex|Een op nul gebaseerde index van het item in het antwoord dat moet worden weer gegeven. Als het item dit veld niet bevat, geeft u alle items in het antwoord weer. U kunt bijvoorbeeld alle nieuws artikelen in het nieuws antwoord weer geven.|Geheel getal|
+|resultIndex|Een op nul gebaseerde index van het item in het antwoord dat moet worden weer gegeven. Als het item dit veld niet bevat, geeft u alle items in het antwoord weer. U kunt bijvoorbeeld alle nieuws artikelen in het nieuws antwoord weer geven.|Integer|
 |answerType|Het antwoord dat het item bevat dat moet worden weer gegeven. Bijvoorbeeld nieuws.<br /><br />Gebruik het type om het antwoord te vinden in het SearchResponse-object. Het type is de naam van een SearchResponse-veld.<br /><br /> Gebruik echter alleen het antwoord type als dit object het veld waarde bevat. anders negeert u deze.|Tekenreeks|
 |textualIndex|De index van het antwoord in textualAnswers dat moet worden weer gegeven.| Niet-ondertekend geheel getal|
 |value|De ID waarmee een antwoord wordt weer gegeven of een item van een antwoord dat moet worden weer gegeven. Als de ID een antwoord identificeert, geeft u alle items van het antwoord weer.|Persoonlijke|
@@ -222,7 +223,7 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   
 |Statuscode|Description|  
 |-----------------|-----------------|  
-|200|Voltooid.|  
+|200|Geslaagd.|  
 |400|Een van de query parameters ontbreekt of is ongeldig.|  
 |401|De abonnements sleutel ontbreekt of is ongeldig.|  
 |403|De gebruiker is geverifieerd (bijvoorbeeld omdat er een geldige abonnements sleutel is gebruikt), maar ze hebben geen machtiging voor de aangevraagde resource.<br /><br /> Bing kan ook deze status retour neren als de aanroeper het quotum voor query's per maand heeft overschreden.|  

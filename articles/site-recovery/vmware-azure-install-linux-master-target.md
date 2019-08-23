@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261421"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904402"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Een Linux-hoofddoel server installeren voor failback
 Nadat u uw virtuele machines naar Azure hebt gefailovert, kunt u een failback uitvoeren voor de virtuele machines naar de on-premises site. Als u een failback wilt uitvoeren, moet u de virtuele machine opnieuw beveiligen van Azure naar de on-premises site. Voor dit proces hebt u een on-premises Master doel server nodig om het verkeer te ontvangen. 
@@ -214,12 +214,11 @@ Als u het programma wilt downloaden met Linux, typt u:
 
 ### <a name="apply-custom-configuration-changes"></a>Aangepaste configuratie wijzigingen Toep assen
 
-Als u aangepaste configuratie wijzigingen wilt Toep assen, moet u de volgende stappen uitvoeren:
-
+Als u aangepaste configuratie wijzigingen wilt Toep assen, gebruikt u de volgende stappen als hoofd gebruiker:
 
 1. Voer de volgende opdracht uit om het binaire bestand untar.
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![Scherm opname van de opdracht die moet worden uitgevoerd](./media/vmware-azure-install-linux-master-target/image16.png)
 
@@ -341,7 +340,7 @@ Voer het installatie programma uit. Er wordt automatisch gedetecteerd dat de age
 `cat /usr/local/.vx_version`
 
 
-U ziet dat het versie **veld het** versie nummer van het hoofd doel bevat.
+U ziet dat het versie veld het versie nummer van het hoofd doel bevat.
 
 ## <a name="common-issues"></a>Algemene problemen
 

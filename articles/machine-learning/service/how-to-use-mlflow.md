@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881998"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900184"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Houd metrische gegevens bij en implementeer modellen met MLflow en Azure Machine Learning service (preview)
 
@@ -27,6 +27,8 @@ In dit artikel wordt beschreven hoe u de tracerings-URI en logboek registratie-A
 + Implementeer uw MLflow-experimenten als een Azure Machine Learning-webservice. Door te implementeren als een webservice, kunt u de Azure Machine Learning bewaking en de functionaliteit voor de detectie van gegevens drift Toep assen op uw productie modellen. 
 
 [MLflow](https://www.mlflow.org) is een open-source bibliotheek voor het beheren van de levens cyclus van uw machine learning experimenten. MLFlow tracking is een onderdeel van MLflow waarmee u de metrische gegevens en model artefacten van uw training kunt vastleggen en bijhouden, ongeacht de omgeving van uw experiment, lokaal, op een virtuele machine, een extern reken cluster, zelfs op Azure Databricks.
+
+In het volgende diagram ziet u dat er met MLflow-tracking een experiment kan worden uitgevoerd, ongeacht of het zich op een extern Compute-doel bevindt op een virtuele machine, lokaal op uw computer of op een Azure Databricks cluster, en hoe u de uitvoerings metrieken en model artefacten van het archief kunt volgen in uw Azure Machine Learning-werk ruimte.
 
 ![mlflow met Azure machine learning diagram](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -139,9 +141,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks uitvoeringen bijhouden
 
-MLflow tracking with Azure Machine Learning service kunt u de vastgelegde metrische gegevens en artefacten opslaan vanuit uw Databrick worden uitgevoerd in uw Azure Machine Learning-werk ruimte.
+MLflow tracking with Azure Machine Learning service kunt u de vastgelegde metrische gegevens en artefacten opslaan vanuit uw Databricks-uitvoeringen in uw Azure Machine Learning-werk ruimte.
 
-Als u uw Mlflow experimenten met Azure Databricks wilt uitvoeren, moet u eerst een [Azure Databricks-werk ruimte en-cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)maken. Zorg er in het cluster voor dat u de *azureml-mlflow-* bibliotheek van PyPi installeert om ervoor te zorgen dat uw cluster toegang heeft tot de benodigde functies en klassen.
+Als u uw Mlflow experimenten met Azure Databricks wilt uitvoeren, moet u eerst een [Azure Databricks-werk ruimte en-cluster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) maken
+
+Zorg er in het cluster voor dat u de *azureml-mlflow-* bibliotheek van PyPi installeert om ervoor te zorgen dat uw cluster toegang heeft tot de benodigde functies en klassen.
 
 ### <a name="install-libraries"></a>Bibliotheken installeren
 
@@ -210,9 +214,12 @@ ws.get_details()
 
 Als u uw MLflow experimenten als een Azure Machine Learning-webservice implementeert, kunt u gebruikmaken van Azure Machine Learning de mogelijkheden voor model beheer en detectie van gegevens drift en deze Toep assen op uw productie modellen.
 
+In het volgende diagram ziet u dat met de API voor MLflow implementeren uw bestaande MLflow-modellen kunnen worden geïmplementeerd als een Azure Machine Learning-webservice, ondanks hun Frameworks--PyTorch, tensor flow, scikit-leren, ONNX, enzovoort, en uw productie modellen beheren in uw werk ruimte.
+
 ![mlflow met Azure machine learning diagram](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>Uw model registreren
+
 Voordat u kunt implementeren, moet u ervoor zorgen dat uw model wordt opgeslagen, zodat u ernaar kunt verwijzen en de bijbehorende pad-locatie voor de implementatie. In uw trainings script moet code vergelijkbaar zijn met de volgende methode [mlflow. sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) waarmee uw model wordt opgeslagen in de opgegeven uitvoer Directory. 
 
 ```python
@@ -227,7 +234,7 @@ mlflow.sklearn.log_model(regression_model, model_save_path)
 
 ### <a name="retrieve-model-from-previous-run"></a>Model ophalen uit vorige uitvoering
 
-Als u de gewenste uitvoering wilt ophalen, moeten de run-ID en het pad in de uitvoerings geschiedenis van waar het model is opgeslagen, zijn. 
+Als u de gewenste uitvoering wilt ophalen, moet u de run-ID en het pad opgeven in de uitvoerings geschiedenis van waar het model is opgeslagen. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -244,7 +251,7 @@ model_save_path = 'model'
 
 De `mlflow.azureml.build_image()` functie bouwt een docker-installatie kopie van het opgeslagen model op een framework bewuste manier. Er wordt automatisch een bedrijfsspecifieke wrapper-code voor het decoderen van het Framework gemaakt en er worden pakket afhankelijkheden voor u opgegeven. Geef het pad naar het model, de werk ruimte, de run-ID en andere para meters op.
 
-In de volgende code bouwt we een docker-installatie kopie met behulp van *uitvoeringen:/< run. id >/model* als het model_uri-pad voor een Scikit-leer experiment.
+Met de volgende code wordt een docker-installatie kopie gemaakt met *uitvoering van:/< run. id >/model* als het model_uri-pad voor een Scikit-leer experiment.
 
 ```python
 import mlflow.azureml
@@ -290,9 +297,9 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>Implementeren naar AKS
 
-Als u wilt implementeren in AKS, moet u een AKS-cluster maken en de docker-installatie kopie die u wilt implementeren. In dit voor beeld nemen we de eerder gemaakte installatie kopie uit de ACI-implementatie.
+Als u wilt implementeren in AKS, moet u een AKS-cluster maken en de docker-installatie kopie die u wilt implementeren. Voor dit voor beeld gaat u naar de eerder gemaakte installatie kopie van de ACI-implementatie.
 
-Als u de installatie kopie wilt ophalen uit de vorige ACI-implementatie, gebruiken we de klasse [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) . 
+Gebruik de klasse [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) om de installatie kopie van de vorige ACI-implementatie te verkrijgen. 
 
 ```python
 from azureml.core.image import Image

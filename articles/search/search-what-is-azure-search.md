@@ -6,25 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/13/2019
+ms.date: 08/21/2019
 ms.author: heidist
-ms.openlocfilehash: 1f3e4d69d3fdba8eba2e7d3cadc3c29703bffcaf
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558607"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899688"
 ---
 # <a name="what-is-azure-search"></a>Wat is Azure Search?
 
-Azure Search is een Cloud oplossing op basis van een zoek opdracht als service die ontwikkel aars Api's en hulpprogram ma's biedt voor het toevoegen van een uitgebreide zoek ervaring via persoonlijke, heterogene inhoud in web-, mobiele en zakelijke toepassingen. Met uw aangepaste code wordt gegevens opname (indexering) aangeroepen, worden query aanvragen uitgevoerd en worden antwoorden verwerkt. De zoek ervaring wordt gedefinieerd in uw client code met behulp van de functionaliteit van Azure Search, waarbij de query wordt uitgevoerd via een persistente index die u maakt, eigenaar en opslaat op Azure Search.
+Azure Search is een Cloud oplossing op basis van een zoek opdracht als service die ontwikkel aars Api's en hulpprogram ma's biedt voor het toevoegen van een uitgebreide zoek ervaring via persoonlijke, heterogene inhoud in web-, mobiele en zakelijke toepassingen. Met uw aangepaste code wordt gegevens opname (indexering) aangeroepen om een index te maken en te laden. Aan de andere kant worden met de toepassings code query aanvragen aangevraagd en worden antwoorden verwerkt. De zoek ervaring wordt gedefinieerd in uw client met behulp van de functionaliteit van Azure Search, waarbij de query wordt uitgevoerd via een persistente index die u maakt, eigenaar en opslaat op Azure Search.
 
 ![Azure Search architectuur](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search architectuur")
-
-<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
-+ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
-+ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
-+ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 Functionaliteit wordt beschikbaar gemaakt via een eenvoudige [REST API](/rest/api/searchservice/) of [.NET SDK](search-howto-dotnet-sdk.md) waarmee de inherente complexiteit van het ophalen van gegevens wordt gemaskeerd. Naast API’s biedt Azure Portal ondersteuning voor administratie- en inhoudsbeheer met hulpprogramma’s voor het ontwikkelen van prototypen en het doorzoeken van indexen. Omdat de service wordt uitgevoerd in de cloud, worden de infrastructuur en beschikbaarheid beheerd met Microsoft.
 
@@ -36,7 +31,7 @@ Azure Search is heel geschikt voor de volgende toepassings scenario's:
 
 + Eenvoudige implementatie van zoek functies. Azure Search-Api's vereenvoudigen de constructie van query's, facet navigatie, filters (inclusief georuimtelijke Zoek opdrachten), synoniemen toewijzing, typeahead query's en relevantie afstemmen. Door ingebouwde functies te gebruiken, kunt u aan eind gebruikers verwachtingen voldoen voor een zoek ervaring die vergelijkbaar is met webzoekmachines.
 
-+ Het indexeren van ongestructureerde tekst of het extra heren van tekst en informatie uit afbeeldings bestanden. De cognitieve zoek functie van Azure Search voegt AI-verwerking toe aan een Indexing-pijp lijn. Enkele veelvoorkomende toepassingen zijn onder andere OCR via gescande documenten, herkenning van entiteiten en het uitpakken van sleutel zinnen over grote documenten, taal detectie en tekst omzetting en sentiment analyse.
++ Het indexeren van ongestructureerde tekst of het extra heren van tekst en informatie uit afbeeldings bestanden. De [cognitieve Zoek](cognitive-search-concept-intro.md) functie van Azure Search voegt AI-verwerking toe aan een Indexing-pijp lijn. Enkele veelvoorkomende toepassingen zijn onder andere OCR via gescande documenten, herkenning van entiteiten en het uitpakken van sleutel zinnen over grote documenten, taal detectie en tekst omzetting en sentiment analyse.
 
 + Er zijn taal vereisten die voldoen aan de aangepaste en taal analyse functies van Azure Search. Als u niet-Engelse inhoud hebt, ondersteunt Azure Search zowel de Lucene-analyse functies als de natuurlijke taal-processors van micro soft. U kunt analyse functies ook configureren voor het uitvoeren van gespecialiseerde verwerking van onbewerkte inhoud, zoals het filteren van diakritische tekens.
 
@@ -93,7 +88,9 @@ Met het pull-model worden gegevens opgehaald uit externe gegevensbronnen. Het mo
 Het push-model wordt geboden via de SDK of REST API’s, en gebruikt om bijgewerkte documenten naar een index te verzenden. U kunt gegevens uit nagenoeg elke gegevensset pushen met behulp van de JSON-indeling. Zie [Add, update, or delete Documents](/rest/api/searchservice/addupdate-or-delete-documents) (Documenten toevoegen, bijwerken of verwijderen) of [How to use the .NET SDK](search-howto-dotnet-sdk.md) (De .NET SDK gebruiken) voor informatie over het laden van gegevens.
 
 ### <a name="step-4-search"></a>Stap 4: Search
-Nadat u een index hebt gevuld, kunt u [zoekquery’s verzenden](/rest/api/searchservice/Search-Documents) naar het service-eindpunt met behulp van eenvoudige HTTP-aanvragen met REST API of de .NET SDK.
+Nadat u een index hebt gevuld, kunt u [Zoek query's](search-query-overview.md) naar uw service-eind punt verzenden met behulp van eenvoudige HTTP-aanvragen met [rest API](/rest/api/searchservice/Search-Documents) of de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations).
+
+U kunt door gaan met [het maken van uw eerste Zoek-app](tutorial-csharp-create-first-app.md) om een webpagina te bouwen en vervolgens uit te breiden waarmee gebruikers invoer wordt verzameld en resultaten worden verwerkt. U kunt postman ook gebruiken [voor interactieve rest](search-get-started-postman.md) -aanroepen of de ingebouwde [zoek Verkenner](search-explorer.md) in azure Portal om een bestaande index op te vragen.
 
 ## <a name="how-it-compares"></a>Vergelijking
 

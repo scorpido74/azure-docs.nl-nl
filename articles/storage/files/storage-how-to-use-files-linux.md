@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8d0de6c68800b1a37e57aa259fd6884ee91752b5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9674df346ff0b5c046df26fe85bf7ba0bbb802e6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699566"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900312"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
 
@@ -40,9 +40,11 @@ ms.locfileid: "68699566"
 | Ubuntu Server | 14.04 + | 16.04 + |
 | RHEL | 7+ | 7.5 + |
 | CentOS | 7+ |  7.5 + |
-| Debian | 8 + |   |
+| Debian | 8 + | 9 +<sup>*</sup> |
 | openSUSE | 13.2 + | 42.3 + |
 | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
+
+<sup>*</sup>Het gebruik van een Backported-kernel is mogelijk vereist. U kunt deze installeren met `sudo apt-get install linux-image-cloud-amd64`.
 
 Als uw Linux-distributie hier niet wordt vermeld, kunt u controleren of de versie van de Linux-kernel wordt weer gegeven met de volgende opdracht:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 50d896f2a835136316945b26a3191861125faa25
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0ed7fbf5e2b4f7f9b554f718d88c62e7a266f4ad
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68306090"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903896"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Ondersteunde distributies en stuurprogramma 's
 
@@ -34,7 +34,7 @@ Micro soft distribueert installatie Programma's voor NVIDIA-raster stations voor
 
 | Distributie | Stuurprogramma |
 | --- | -- |
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,0 tot 7,6<br/><br/>CentOS op basis van 7,0 tot 7,6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA-raster 9,0, R430 van het stuur programma|
+|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,0 tot 7,6<br/><br/>CentOS op basis van 7,0 tot 7,6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA-raster 9,0, R430 van het stuur programma|
 
 > [!WARNING] 
 > Installatie van software van derden in Red Hat-producten kan invloed hebben op de ondersteuningsvoorwaarden van Red Hat. Zie het [Knowledge Base-artikel over Red Hat](https://access.redhat.com/articles/1067).

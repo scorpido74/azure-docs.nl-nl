@@ -1,21 +1,21 @@
 ---
-title: Meer informatie over de werking van Azure SQL Data Warehouse | Microsoft Docs
+title: Meer informatie over Azure SQL Data Warehouse bewerkingen | Microsoft Docs
 description: "In SQL Data Warehouse kunt u de rekencapaciteit naar wens vergroten, verkleinen of onderbreken door het aantal DWU's (Data Warehouse Units) aan te passen met een schuifregelaar. In dit artikel wordt beschreven welke datawarehouse-metrieken er zijn en hoe deze in verhouding staan tot het aantal DWU's. "
 services: sql-data-warehouse
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47e04cb6b58a185e84120fe73a8468834d2e57fd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531186"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907929"
 ---
 # <a name="data-warehouse-workload"></a>Datawarehouse-workload
 De workload van een datawarehouse wordt gevormd door alle bewerkingen die op het desbetreffende datawarehouse worden uitgevoerd. De datawarehouse-workload omvat het hele proces van het laden van gegevens in het warehouse tot het uitvoeren van analyses en rapporten met betrekking tot het datawarehouse, het beheren van de gegevens in het datawarehouse en het exporteren van gegevens uit het datawarehouse. De omvang en complexiteit van dergelijke bewerkingen zijn vaak evenredig met de uitgebreidheid van het datawarehouse.
@@ -62,7 +62,7 @@ Een manier om gegevens beschikbaar te maken voor analyse en rapportage is om geg
 * Voor analyses kunt u een analysekubus van het datawarehouse maken en analyses op het datawarehouse uitvoeren, of gegevens vooraf verwerken en naar de analyseserver exporteren voor verdere analyse.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u een en ander weet over SQL Data Warehouse, kunt u leren hoe u snel [een SQL Data Warehouse maakt][create a SQL Data Warehouse] en [voorbeeldgegevens laadt][load sample data].
+Nu u een en ander weet over SQL Data Warehouse, kunt u leren hoe u snel [een SQL Data Warehouse maakt][create a SQL Data Warehouse] en [voorbeeldgegevens laden][load sample data].
 
 <!--Image references-->
 

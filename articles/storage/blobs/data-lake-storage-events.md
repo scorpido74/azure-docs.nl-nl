@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: ce132c6a6859156b209a26b5950eb6a509f446fc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657595"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904664"
 ---
 # <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>Zelfstudie: Azure Data Lake Storage Gen2 gebeurtenissen gebruiken om een Databricks Delta tabel bij te werken
 
@@ -140,10 +140,9 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
     spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId")
+    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId>")
     spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
     spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant>/oauth2/token")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
 
     adlsPath = 'abfss://data@contosoorders.dfs.core.windows.net/'
     inputPath = adlsPath + dbutils.widgets.get('source_file')
@@ -151,6 +150,9 @@ Zie [Een Spark-cluster maken in Azure Databricks](https://docs.azuredatabricks.n
     ```
 
     Met deze code wordt een widget gemaakt met de naam **source_file**. Later gaat u een Azure-functie maken die deze code aanroept en een bestandspad naar die widget door gegeven.  Deze code verifieert ook uw service-principal met het opslag account en maakt enkele variabelen die u in andere cellen gebruikt.
+
+    > [!NOTE]
+    > In een productieomgeving kunt u de verificatiesleutel eventueel in Azure Databricks opslaan. Vervolgens voegt u een opzoeksleutel toe aan uw codeblok in plaats van de verificatiesleutel. <br><br>In plaats van deze regel code te gebruiken: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`, gebruikt u bijvoorbeeld de volgende regel code:. `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` <br><br>Nadat u deze zelf studie hebt voltooid, raadpleegt u het artikel [Azure data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) op de Azure Databricks-website om voor beelden van deze benadering te bekijken.
 
 2. Druk op de toetsen **Shift + Enter** om de code in dit blok uit te voeren.
 
@@ -309,7 +311,7 @@ Maak een Azure-functie waarmee de taak wordt uitgevoerd.
         log.LogInformation(eventGridEvent.Data.ToString());
 
         if (eventGridEvent.EventType == "Microsoft.Storage.BlobCreated" | | eventGridEvent.EventType == "Microsoft.Storage.FileRenamed") {
-            var fileData = ((JObject)(eventGridEvent.Data)) .ToObject<StorageBlobCreatedEventData>();
+            var fileData = ((JObject)(eventGridEvent.Data)).ToObject<StorageBlobCreatedEventData>();
             if (fileData.Api == "FlushWithClose") {
                 log.LogInformation("Triggering Databricks Job for file: " + fileData.Url);
                 var fileUrl = new Uri(fileData.Url);
@@ -382,6 +384,27 @@ In deze sectie maakt u een Event Grid-abonnement dat de Azure-functie aanroept w
    De geretourneerde tabel bevat de meest recente record.
 
    De ![meest recente record wordt weer gegeven in de tabel] De (./media/data-lake-storage-events/final_query.png "meest recente record wordt weer gegeven in de tabel")
+
+6. Als u deze record wilt bijwerken, maakt u `customer-order-update.csv`een bestand met de naam, plakt u de volgende gegevens in dat bestand en slaat u het op uw lokale computer op.
+
+   ```
+   InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
+   536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
+   ```
+
+   Dit CSV-bestand is bijna identiek aan het vorige, behalve dat de hoeveelheid van de order wordt `228` gewijzigd `22`van naar.
+
+7. Upload dit bestand in Storage Explorer naar de map **invoer** van uw opslag account.
+
+8. Voer de `select` query opnieuw uit om de bijgewerkte Delta tabel weer te geven.
+
+   ```
+   %sql select * from customer_data
+   ```
+
+   De geretourneerde tabel toont de bijgewerkte record.
+
+   De ![bijgewerkte record wordt weer gegeven in de tabel] De (./media/data-lake-storage-events/final_query-2.png "bijgewerkte record wordt weer gegeven in de tabel")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

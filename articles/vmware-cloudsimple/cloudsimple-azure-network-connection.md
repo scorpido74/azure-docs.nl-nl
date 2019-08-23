@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69625041"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972947"
 ---
 # <a name="azure-network-connections-overview"></a>Overzicht van Azure-netwerk verbindingen
 
@@ -44,7 +44,6 @@ Persoonlijke Clouds kunnen worden verbonden met uw Azure-resources met behulp va
 U kunt uw bestaande Azure ExpressRoute-circuit aansluiten op uw CloudSimple-regio. De functie ExpressRoute Global Reach wordt gebruikt om de twee circuits met elkaar te verbinden.  Er wordt een verbinding tot stand gebracht tussen de on-premises en CloudSimple ExpressRoute-circuits.  Deze verbinding stelt u in staat om uw on-premises netwerken uit te breiden naar een particulier Cloud netwerk. Routes van uw CloudSimple-netwerk worden uitgewisseld via BGP met uw on-premises netwerk.
 
 ![On-premises ExpressRoute-verbinding-Global Reach](media/cloudsimple-global-reach-connection.png)
-
 
 ## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>Verbinding met een on-premises netwerk en een virtueel Azure-netwerk
 

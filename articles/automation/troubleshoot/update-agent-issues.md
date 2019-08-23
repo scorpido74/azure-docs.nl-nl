@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: bbccb9beab374a4a514d527c22b3861f0752d5fd
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782388"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971280"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Inzicht in de resultaten van de Windows agent-controle in Updatebeheer
 
@@ -107,7 +107,9 @@ De toegangs controle voor de cryptografie mappen bepaalt of het lokale systeem a
 
 ## <a name="troubleshoot-offline"></a>Problemen met offline oplossen
 
-U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. U kunt het script, [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), ophalen in de PowerShell Gallery. De uitvoer van dit script ziet eruit als in het volgende voor beeld:
+U kunt de probleem Oplosser op een Hybrid Runbook Worker offline gebruiken door het script lokaal uit te voeren. U kunt het script, [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), ophalen in de PowerShell Gallery. U moet WMF 4,0 of hoger hebben geïnstalleerd om het script uit te voeren. Zie [verschillende versies van Power Shell installeren](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell)voor informatie over het downloaden van de meest recente versie van Power shell.
+
+De uitvoer van dit script ziet eruit als in het volgende voor beeld:
 
 ```output
 RuleId                      : OperatingSystemCheck
