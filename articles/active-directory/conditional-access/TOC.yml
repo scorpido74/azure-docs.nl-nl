@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: Aanbevolen procedures
       href: best-practices.md
-    - name: Algemene beleidssjablonen
+    - name: Algemeen beleid voor voorwaardelijke toegang
       items:
         - name: MFA vereisen voor beheerders
           href: howto-conditional-access-policy-admin-mfa.md
