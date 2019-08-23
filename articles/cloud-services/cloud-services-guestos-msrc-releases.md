@@ -10,17 +10,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/2/2019
+ms.date: 8/19/2019
 ms.author: raiye
-ms.openlocfilehash: 6f7fc27674ad26d8de8dd5d0c6c801b269b0e686
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c27438dbbeffc0837c3d71d9bb532803655538b8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941712"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637537"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
+
+
+## <a name="august-2019-guest-os"></a>Augustus 2019-gast besturingssysteem
+
+>[!NOTE]
+>Het gast besturingssysteem van augustus wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het gast besturingssysteem van augustus. Deze lijst is onderhevig aan wijzigingen.
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 19-08   |  [4512482]  |  Windows-beveiliging   |  3,76  |  13 augustus 2019  |
+|  Rel 19-08   |  [4494175]  |  Micro code-update   |  5,34  |  18 juni 2019  |
+|  Rel 19-08   |  [4512517]  |  Meest recente cumulatieve update   |  5,34  |  13 augustus 2019  |
+|  Rel 19-08   |  [4494174]  |  Micro code-update   |  6.1  |  18 juni 2019  |
+|  Rel 19-08   |  [4511553]  |  Meest recente cumulatieve update   |  6.1  |  13 augustus 2019  |
+|  Rel 19-08   |  [4512486]  |  Windows-beveiliging   |  2,89  |  13 augustus 2019  |
+|  Rel 19-08   |  [4512489]  |  Windows-beveiliging   |  4,69  |  13 augustus 2019  |
+|  Rel 19-08   |  [4511872]  |  Internet Explorer    |  2,89, 3,76, 4,69  |  15 augustus 2019  |
+|  Rel 19-08   |  [4507449]  |  Niet-beveiliging   |  2,89  |  9 juli 2019  |
+|  Rel 19-08   |  [4507000]  |  .NET 4.5.2 niet-beveiliging   |  3,76  |  12 augustus 2019  |
+|  Rel 19-08   |  [4507002]  |  .NET 3,5 niet-beveiliging   |  3,76  |  12 augustus 2019  |
+|  Rel 19-08   |  [4507462]  |  Niet-beveiliging   |  3,76  |  9 juli 2019  |
+|  Rel 19-08   |  [4506999]  |  .NET 4.5.2 niet-beveiliging    |  4,69  |  12 augustus 2019  |
+|  Rel 19-08   |  [4507005]  |  .NET 3,5 niet-beveiliging    |  4,69  |  12 augustus 2019  |
+|  Rel 19-08   |  [4507448]  |  Niet-beveiliging   |  4,69  |  9 juli 2019  |
+|  Rel 19-08   |  [4509091]  |  Onderhouds stack-update   |  5,34  |  9 juli 2019  |
+|  Rel 19-08   |  [4509095]  |  Onderhouds stack-update   |  6.1  |  9 juli 2019  |
+|  Rel 19-08   |  [4512937]  |  Onderhouds stack-update   |  6.1  |  29 juli 2019  |
+|  Rel 19-08   |  [4507004]  |  .NET 3.5.1 niet-beveiliging    |  2,89  |  12 augustus 2019  |
+|  Rel 19-08   |  [4504418]  |  Onderhouds stack-update   |  3,76, 4,69  |  11 juli 2019  |
+|  Rel 19-08   |  [4507001]  |  .NET 4.5.2 niet-beveiliging   |  2,89  |  12 augustus 2019  |
+|  Rel 19-08   |  [4507704]  |  DST-instelling in Windows voor Brazilië en Marokko   |  2,89, 3,76, 4,69, 5,34  |  13 augustus 2019  |
+
+[4512482]: https://support.microsoft.com/kb/4512482
+[4494175]: https://support.microsoft.com/kb/4494175
+[4512517]: https://support.microsoft.com/kb/4512517
+[4494174]: https://support.microsoft.com/kb/4494174
+[4511553]: https://support.microsoft.com/kb/4511553
+[4512486]: https://support.microsoft.com/kb/4512486
+[4512489]: https://support.microsoft.com/kb/4512489
+[4511872]: https://support.microsoft.com/kb/4511872
+[4507449]: https://support.microsoft.com/kb/4507449
+[4507000]: https://support.microsoft.com/kb/4507000
+[4507002]: https://support.microsoft.com/kb/4507002
+[4507462]: https://support.microsoft.com/kb/4507462
+[4506999]: https://support.microsoft.com/kb/4506999
+[4507005]: https://support.microsoft.com/kb/4507005
+[4507448]: https://support.microsoft.com/kb/4507448
+[4509091]: https://support.microsoft.com/kb/4509091
+[4509095]: https://support.microsoft.com/kb/4509095
+[4512937]: https://support.microsoft.com/kb/4512937
+[4507004]: https://support.microsoft.com/kb/4507004
+[4504418]: https://support.microsoft.com/kb/4504418
+[4507001]: https://support.microsoft.com/kb/4507001
+[4507704]: https://support.microsoft.com/kb/4507704
+
 
 ## <a name="july-2019-guest-os"></a>2019 juli-gast besturingssysteem
 
