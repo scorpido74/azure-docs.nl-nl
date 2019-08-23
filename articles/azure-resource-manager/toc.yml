@@ -97,9 +97,6 @@
         - name: Sjablonen modulair maken
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
-        - name: Geheimen beheren
-          displayname: key vault
-          href: resource-manager-keyvault-parameter.md
         - name: Meerdere exemplaren maken
           href: resource-group-create-multiple.md
         - name: Sjabloonextensies gebruiken
@@ -124,6 +121,13 @@
           href: secure-template-with-sas-token.md
         - name: Implementeren naar meerdere resourcegroepen of abonnementen
           href: resource-manager-cross-resource-group-deployment.md
+    - name: Parameters opgeven
+      items:
+        - name: Parameterbestand maken
+          href: resource-manager-parameter-files.md
+        - name: Gevoelige waarden doorgeven
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
     - name: CI/CD
       items:
         - name: VS-project met pijplijnen

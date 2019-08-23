@@ -251,6 +251,8 @@
           href: mitigate-se.md
         - name: Geplande gebeurtenissen
           href: scheduled-events.md
+        - name: Geplande gebeurtenissen bewaken
+          href: scheduled-event-service.md
         - name: Metagegevens bewaken
           href: instance-metadata-service.md
         - name: Geneste virtualisatie inschakelen

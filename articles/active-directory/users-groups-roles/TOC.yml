@@ -102,7 +102,9 @@
           items:
             - name: Een dynamische groep maken
               href: groups-create-rule.md
-            - name: Regels voor dynamische groepen
+            - name: Lidmaatschapsregel bijwerken
+              href: groups-update-rule.md
+            - name: Regels en syntaxis voor dynamische groepen
               href: groups-dynamic-membership.md
             - name: Type groepslidmaatschap wijzigen
               href: groups-change-type.md

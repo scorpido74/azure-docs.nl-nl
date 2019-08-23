@@ -104,6 +104,10 @@
           items:
             - name: Leslokaallabs openen
               href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Verbinding met Extern bureaublad gebruiken voor Linux-VM's
+              href: classroom-labs/how-to-use-remote-desktop-linux-student.md
+            - name: Wachtwoorden voor virtuele machines instellen of opnieuw instellen
+              href: classroom-labs/how-to-set-virtual-machine-passwords-student.md
     - name: DevTest Labs
       items:
         - name: Een lab configureren

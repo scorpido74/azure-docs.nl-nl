@@ -1,35 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over Azure AD-apparaatidentiteit
+summary: Informatie over hoe u apparaatidentiteiten configureert en beheert in Azure AD.
 metadata:
-  document_id: null
-  title: 'Documentatie over het beheer van Azure AD-apparaatidentiteiten - Zelfstudies, concepten, naslaginformatie | Microsoft Docs'
+  title: Documentatie over Azure AD-apparaatidentiteit
   description: Informatie over hoe u apparaatidentiteiten configureert en beheert in Azure AD.
   services: active-directory
-  ms.subservice: devices
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Uw gebruikers krijgen via apparaten in Azure AD toegang tot uw zakelijke assets. Als u als ICT-beheerder uw bedrijfsmiddelen wilt beschermen, moet u deze apparaatidentiteiten beschermen in Azure AD. Zo kunt u ervoor zorgen dat uw gebruikers toegang tot uw bronnen hebben vanaf apparaten die voldoen aan uw normen voor beveiliging en naleving.<br>Apparaatidentiteitsbeheer vormt ook de basis voor scenario''s met apparaatgebaseerde voorwaardelijke toegang. Met apparaatgebaseerde voorwaardelijke toegang kunt u ervoor zorgen dat toegang tot resources in uw omgeving alleen mogelijk is via beheerde apparaten.'
-sections:
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Leer hoe u apparaten die aan uw on-premises AD-omgeving zijn gekoppeld kunt integreren met Azure AD.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Beheerde domeinen
-            href: hybrid-azuread-join-managed-domains.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Federatieve domeinen
-            href: hybrid-azuread-join-federated-domains.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: e26be2206ba63fa4721ced7ed1a2f35ddc63a5fd
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69648924"
+landingContent:
+- title: Over apparaat-id
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is een apparaat-id?
+      url: overview.md
+    - text: Wat is Enterprise State Roaming?
+      url: enterprise-state-roaming-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure AD-geregistreerde apparaten
+      url: concept-azure-ad-register.md
+    - text: Azure AD-gekoppelde apparaten
+      url: concept-azure-ad-join.md
+    - text: Hybride Azure AD-gekoppelde apparaten
+      url: concept-azure-ad-join-hybrid.md
+    - text: Eenmalige aanmelding voor on-premises resources
+      url: azuread-join-sso.md
+    - text: Primaire vernieuwingstokens
+      url: concept-primary-refresh-token.md
+- title: Azure AD-gekoppelde apparaten configureren en beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uw implementatie van Azure AD-deelname plannen
+      url: azureadjoin-plan.md
+    - text: De lokale beheerdersgroep beheren in Azure AD-gekoppelde apparaten
+      url: assign-local-admin.md
+    - text: Verlopen apparaten zoeken en beheren in Azure AD
+      url: manage-stale-devices.md
+- title: Hybride Azure AD-gekoppelde apparaten configureren en beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uw implementatie van hybride Azure AD-deelname plannen
+      url: hybrid-azuread-join-plan.md
+    - text: Problemen met hybride Azure AD-gekoppelde apparaten oplossen
+      url: troubleshoot-hybrid-join-windows-current.md

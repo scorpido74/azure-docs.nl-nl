@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557829"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650376"
 landingContent:
 - title: Over de Data Box-serie
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: Voor Data Box
       url: data-box-system-requirements.md
-    - text: Voor Data Box-blobopslag
-      url: data-box-system-requirements-rest.md
     - text: Voor Data Box Disk
       url: data-box-disk-system-requirements.md
     - text: Voor Data Box Heavy
       url: data-box-heavy-system-requirements.md
-- title: Data Box implementeren
+- title: Bestellen, instellen, kopiëren, retourneren
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Bestellen
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: Kabels aansluiten
-      url: data-box-deploy-set-up.md
-    - text: Verbinden, gegevens kopiëren via SMB
-      url: data-box-deploy-copy-data.md
-    - text: Terugsturen, uploaden, Azure-gegevens controleren
-      url: data-box-deploy-picked-up.md
-- title: Data Box Disk implementeren
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Bestellen
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: Ontgrendelen en verbinding maken
-      url: data-box-disk-deploy-set-up.md
-    - text: Kopiëren, gegevens valideren
-      url: data-box-disk-deploy-copy-data.md
-    - text: Terugsturen, uploaden, Azure-gegevens controleren
-      url: data-box-disk-deploy-picked-up.md
-- title: Data Box Heavy implementeren
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Bestellen
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: Kabels aansluiten
-      url: data-box-heavy-deploy-set-up.md
-    - text: Verbinden, gegevens kopiëren via SMB
-      url: data-box-heavy-deploy-copy-data.md
-    - text: Terugsturen, uploaden, Azure-gegevens controleren
-      url: data-box-heavy-deploy-picked-up.md
 - title: Apparaten beheren
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box, Data Box Heavy in Azure
+    - text: Data Box in Azure
       url: data-box-portal-admin.md
-    - text: Data Box, Data Box Heavy via lokale gebruikersinterface
-      url: data-box-local-web-ui-admin.md
     - text: Data Box Disk in Azure
       url: data-box-portal-ui-admin.md
-- title: Veelgestelde vragen
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Veelgestelde vragen over Data Box
-      url: data-box-faq.md
-    - text: Veelgestelde vragen over Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Data Box Heavy in Azure
+      url: data-box-portal-admin.md
 - title: Problemen oplossen
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box, Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Data Box-blobopslag
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Veelgestelde vragen via Data Box
+      url: data-box-faq.md
+    - text: Veelgestelde vragen via Data Box Disk
+      url: data-box-disk-faq.md
     - text: Ondersteuningsticket openen
       url: data-box-disk-contact-microsoft-support.md

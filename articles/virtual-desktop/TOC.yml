@@ -34,8 +34,10 @@
       href: create-host-pools-powershell.md
     - name: Windows-licentie toepassen op Windows Virtual Desktop-sessiehosts
       href: apply-windows-license.md
-    - name: Een gebruikersprofielshare instellen voor een hostpool
+    - name: Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
       href: create-host-pools-user-profile.md
+    - name: Een profielcontainer maken voor een hostpool met behulp van Azure NetApp Files
+      href: create-fslogix-profile-container.md
     - name: De taakverdelingsmethode voor Windows Virtual Desktop configureren
       href: configure-host-pool-load-balancing.md
     - name: Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen

@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Documentatie over IoT Plug en Play (preview)
+metadata:
+  title: 'Documentatie over IoT Plug en Play (preview): zelfstudies, API-naslag | Microsoft Docs'
+  description: 'Meer informatie over het gebruik van IoT Plug en Play met behulp van zelfstudies, API-naslaginformatie, video''s en overige documentatie.'
+  author: dominicbetts
+  manager: philmea
+  ms.service: iot-pnp
+  services: iot-pnp
+  ms.topic: landing-page
+  ms.date: 07/23/2019
+  ms.author: dobett
+abstract:
+  description: 'Meer informatie over het gebruik van IoT Plug en Play (preview) voor het definiëren van een apparaatmodel waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee werken, zonder dat u apparaatcode hoeft te schrijven. Aan de hand van zelfstudies, API-naslaginformatie, video''s en overige documentatie leert u apparaten verbinden met cloudoplossingen, zoals Azure IoT Central of partnertoepassingen.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/index/video-thumb-pnp-introduction.png
+      width: 250
+    title: 'Inleiding tot IoT Plug en Play. (11:54)'
+    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
+    width: 250
+sections:
+  - title: QuickStarts van vijf minuten
+    items:
+      - type: paragraph
+        text: Meer informatie over <a href="quickstart-create-pnp-device">het gebruik van een model voor apparaatondersteuning om een apparaat te maken</a>.
+      - type: paragraph
+        text: Meer informatie over <a href="quickstart-connect-pnp-device-solution">hoe u een apparaat verbindt met uw oplossing</a>.
+  - title: Zelfstudies met stapsgewijze instructies
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-pnp-visual-studio-code">Een apparaat maken met Visual Studio Code</a>
+          - html: <a href="tutorial-build-device-certification">Een apparaat bouwen dat gereed is voor certificering</a>
+          - html: <a href="tutorial-certification-test">Uw apparaat certificeren</a>

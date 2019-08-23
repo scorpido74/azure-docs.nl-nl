@@ -179,12 +179,14 @@
   items:
     - name: Geen abonnementen gevonden
       href: billing-no-subscriptions-found.md
+    - name: Betalingsproblemen
+      href: billing-troubleshoot-azure-payment-issues.md
     - name: Geweigerde kaart
-      href: 'https://support.microsoft.com/en-us/help/4042960'
+      href: billing-troubleshoot-declined-card.md
     - name: Problemen met aanmelden
-      href: 'https://support.microsoft.com/en-us/help/4042959'
-    - name: Problemen met aanmelden
-      href: 'https://support.microsoft.com/en-us/help/4042961'
+      href: billing-troubleshoot-azure-sign-up.md
+    - name: Aanmeldingsproblemen voor abonnementen
+      href: billing-troubleshoot-sign-in-issue.md
     - name: Weergave voor bedrijfskosten is uitgeschakeld
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Contact opnemen met ondersteuning

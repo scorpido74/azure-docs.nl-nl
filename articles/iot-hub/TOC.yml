@@ -406,14 +406,16 @@
   items:
     - name: Oplossingen
       items:
-        - name: IoT-oplossingsversnellers
-          href: /azure/iot-accelerators
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT-oplossingsversnellers
+          href: /azure/iot-accelerators
     - name: Platformservices
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug en Play
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT Service-SDK's

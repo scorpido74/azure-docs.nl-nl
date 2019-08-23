@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: Een AppSource- en Azure Marketplace-vermelding inschakelen met behulp van Azure Active Directory
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: Geïntegreerde oplossingen
+              href: ./integrated-solutions-for-publishers.md
         - name: Best practices voor marketing
           href: ./gtm-marketing-best-practices.md
           items:

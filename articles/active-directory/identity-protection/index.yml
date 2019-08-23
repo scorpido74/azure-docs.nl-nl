@@ -1,40 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure AD-identiteitsbeveiliging
+### YamlMime:Landing
+title: Documentatie voor Azure AD Identity Protection
+summary: Meer informatie over hoe u Identity Protection kunt gebruiken om identiteitsrisico's in uw organisatie te identificeren en op te lossen
 metadata:
-  document_id: null
-  title: 'Documentatie over Azure Active Directory Identity Protection - Snelstartgidsen, concepten, naslaginformatie | Microsoft Docs'
-  description: Leer hoe u Azure Active Directory Identity Protection kunt configureren en testen.
+  title: Documentatie voor Azure AD Identity Protection
+  description: Meer informatie over hoe u Identity Protection kunt gebruiken om identiteitsrisico's in uw organisatie te identificeren en op te lossen
   services: active-directory
-  ms.subservice: identity-protection
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: identity-protection
   ms.topic: landing-page
-  ms.date: 09/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 'Kom erachter hoe het detecteren van mogelijk verdachte identiteiten werkt en hoe u automatische reacties kunt implementeren om deze aan te pakken. Azure Active Directory Identity Protection is een functie van de Premium P2-versie van Azure AD, waarmee u de volgende zaken kunt doen:<ul><li>Mogelijke beveiligingsproblemen detecteren met betrekking tot de identiteiten van uw organisatie</li><li>Beleid voor voorwaardelijke toegang configureren, waarbij automatisch wordt gereageerd op verdachte activiteit die is gerelateerd aan de identiteiten van uw organisatie</li><li>Verdachte incidenten onderzoeken en gepaste maatregelen treffen om deze problemen op te lossen</li></ul><br> Met de volgende bronnen kunt u snel aan de slag.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Inleiding voor Azure AD Identity Protection
-    href: 'https://www.youtube.com/watch?v=zI3jn_G0_Ns'
-    width: 246
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer hoe u beleid voor aanmeldingsrisico's configureert voor veelvoorkomende toegangsscenario's.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: Toegang blokkeren wanneer er een sessierisico wordt gedetecteerd
-            href: quickstart-sign-in-risk-policy.md
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 5f69dff8568c308d7a8eb9d80e247ef7cfc58acd
+  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/21/2019
+  ms.locfileid: "69874116"
+landingContent:
+- title: Info over Identity Protection
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Identity Protection?
+      url: overview-v2.md
+    - text: 'Beveiligingsoverzicht: inleiding'
+      url: security-overview.md
+- title: Risicogebeurtenissen onderzoeken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Risicobeleid configureren
+      url: howto-configure-risk-policies.md
+    - text: Riskante gebruikers en aanmeldingen onderzoeken
+      url: howto-investigate-risky-users-signins.md
+  - linkListType: reference
+    links:
+    - text: Typen gebeurtenissen
+      url: risk-events-reference.md
+- title: Identity Protection ervaren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Aanmeldingservaring
+      url: flows.md
+  - linkListType: how-to-guide
+    links:
+    - text: Risicogebeurtenissen simuleren
+      url: playbook.md
+  - linkListType: quickstart
+    links:
+    - text: Toegang blokkeren wanneer er een sessierisico wordt gedetecteerd
+      url: quickstart-sign-in-risk-policy.md

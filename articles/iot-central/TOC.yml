@@ -135,20 +135,22 @@
   items:
     - name: Oplossingen
       items:
-        - name: IoT-oplossingsversnellers
-          href: /azure/iot-suite
         - name: IoT Central
-          href: /microsoft-iot-central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT-oplossingsversnellers
+          href: /azure/iot-accelerators
     - name: Platformservices
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug en Play
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
-        - name: Service-SDK's
+        - name: IoT Service-SDK's
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Kaarten
+          href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
     - name: IoT Edge

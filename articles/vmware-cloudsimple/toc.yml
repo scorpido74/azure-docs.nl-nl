@@ -104,8 +104,8 @@
               href: account.md
             - name: De gebruikerslijst weergeven
               href: users.md
-            - name: Een virtuele netwerkverbinding voor de privécloud instellen
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+            - name: Een virtuele netwerkverbinding naar de privécloud instellen
+              href: virtual-network-connection.md
             - name: Uw gebruikersprofiel bewerken
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Virtuele VMware-machines instellen voor de privécloud
@@ -124,11 +124,11 @@
               href: escalate-privileges.md
             - name: Workload DNS en DHCP instellen
               href: dns-dhcp-setup.md
-            - name: VPN met NSX-laag 2 voor migratie
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: Workloads migreren met behulp van uitgerekte netwerken van Laag 2
+              href: migration-layer-2-vpn.md
         - name: Privécloudnetwerken
           items:
-            - name: VPN-verbinding tussen on-premises en privécloud
+            - name: VPN-verbinding tussen de on-premises omgeving en de privécloud
               href: set-up-vpn.md
             - name: On-premises netwerkverbinding met ExpressRoute
               href: on-premises-connection.md
@@ -142,27 +142,31 @@
               href: set-vcenter-identity.md
             - name: Azure Application Gateway met VMware-VM's
               href: azure-application-gateway.md
-            - name: vCenter-server van privécloud als vRealize-automatiseringseindpunt configureren
+            - name: vCenter-server van privécloud configureren als vRealize-automatiseringseindpunt
               href: configure-server-vrealize-automation-endpoint.md
-            - name: Workload-VM's naar een privécloud migreren
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+            - name: Workload-VM's migreren naar een privécloud
+              href: migrate-workloads.md
             - name: Hoge toepassingsbeschikbaarheid in VMware in Azure garanderen
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: Een taakverdelingsoplossing kiezen
+              href: load-balancers.md
         - name: VMware-ecosysteem
           items:
             - name: Back-up maken van workload van virtuele machines
               href: backup-workloads-veeam.md
+            - name: 'Privécloud configureren als site voor herstel na noodgeval, met behulp van Zerto'
+              href: disaster-recovery-zerto.md
             - name: VMware Horizon-oplossingsgids
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
-            - name: vSAN-versleuteling voor uw privécloud configureren
+            - name: vSAN-versleuteling configureren voor de privécloud
               href: vsan-encryption.md
-            - name: Oracle RAC-implementatie in de CloudSimple-privécloud
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: De privécloud optimaliseren voor Oracle RAC
+              href: oracle-real-application-clusters.md
         - name: Integratie van Azure-kern
           items:
             - name: Azure AD-identiteitsbron in vCenter van privécloud
               href: azure-ad.md
             - name: On-premises netwerkverbinding met ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: Azure-netwerkverbinding met ExpressRoute
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

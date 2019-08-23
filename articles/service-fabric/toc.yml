@@ -356,6 +356,8 @@
       href: service-fabric-concept-resource-model.md
     - name: Beheerde identiteit (preview)
       href: concepts-managed-identity.md
+    - name: Referenties voor containeropslagplaats configureren
+      href: configure-container-repository-credentials.md
 - name: Handleidingen
   items:
     - name: De ontwikkelomgeving instellen
