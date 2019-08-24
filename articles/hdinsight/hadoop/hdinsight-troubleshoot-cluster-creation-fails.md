@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/06/2019
-ms.openlocfilehash: c7092b2cbcef01ef71261b6f5498cde56a40c358
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/22/2019
+ms.openlocfilehash: 476b8cff23d09d81fe356a6445e27794b267d9a2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68857246"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998112"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Problemen met het maken van clusters oplossen met Azure HDInsight
 
@@ -29,7 +29,7 @@ De volgende problemen zijn de meest voorkomende oorzaken voor het maken van een 
 
 ## <a name="permissions-issues"></a>Problemen met machtigingen
 
-Als u Data Lake Storage gen 2 gebruikt, moet u ervoor zorgen dat de door de gebruiker toegewezen beheerde identiteit die aan uw HDInsight-cluster is toegewezen, zich in de rol van de BLOB voor de **gegevens verzamelaar** van de blobopslag bevindt of in de **gebruikersrol Storage BLOB-gegevens eigenaar**. Zie [Azure data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor het volt ooien van de installatie-instructies.
+Als u Azure Data Lake Storage gen 2 gebruikt en de fout melding ' deze aanvraag is niet gemachtigd om deze bewerking uit te voeren met deze machtiging ' wordt weer gegeven, opent u de Azure Portal, gaat u naar uw opslag account en klikt u onder Access Control (IAM), controleert u of de **opslag-BLOB Data bijdrager** of de **rol BLOB gegevens eigenaar van opslag** heeft toegang toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
 
 Als u Data Lake Storage gen 1 gebruikt, raadpleegt u de installatie-en configuratie-instructies [hier](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage gen 1 wordt niet ondersteund voor HBase-clusters en wordt niet ondersteund in HDInsight-versie 4,0.
 
@@ -73,6 +73,8 @@ Zorg ervoor dat u een [ondersteunde versie van Azure HDInsight](../hdinsight-com
 ## <a name="storage-account-name-restrictions"></a>Naam beperkingen van opslag account
 
 Namen van opslag accounts mogen niet langer zijn dan 24 tekens en mogen geen speciaal teken bevatten. Deze beperkingen zijn ook van toepassing op de standaardnaam voor containers in het opslagaccount.
+
+Andere naamgevings beperkingen zijn ook van toepassing op het maken van een cluster. Zie [beperkingen voor cluster namen](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)voor meer informatie.
 
 ## <a name="service-outages"></a>Service storingen
 

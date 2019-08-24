@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624973"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981375"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelfstudie: Een door SQL Database beheerd exemplaar toevoegen aan een failovergroep
 
@@ -47,7 +47,7 @@ In deze stap maakt u de resource groep en het primaire beheerde exemplaar voor u
 1. Selecteer **maken** om de pagina **SQL Managed instance** maken te starten. 
 1. Op het tabblad **basis beginselen** op de pagina **Azure SQL database beheerde instantie maken**
     1. Selecteer uw **abonnement** in de vervolg keuzelijst onder **Project Details**en kies vervolgens nieuwe resource groep **maken** . Typ een naam voor de resource groep, zoals `myResourceGroup`. 
-    1. Geef onder **Details van beheerd exemplaar**de naam op van uw beheerde exemplaar en de regio waar u uw beheerde exemplaar wilt implementeren. Zorg ervoor dat u een regio met een [gekoppelde regio](/azure/best-practices-availability-paired-regions)selecteert. De **berekening en opslag** op standaard waarden behouden. 
+    1. Geef onder **Details van beheerd exemplaar**de naam op van uw beheerde exemplaar en de regio waar u uw beheerde exemplaar wilt implementeren. De **berekening en opslag** op standaard waarden behouden. 
     1. Geef onder **Administrator-account**een beheerders aanmelding op, zoals `azureuser`en een complex beheerders wachtwoord. 
 
     ![Primaire MI maken](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +79,7 @@ Voer de volgende stappen uit om een virtueel netwerk te maken:
     | **Name** |  De naam van het virtuele netwerk dat moet worden gebruikt door het secundaire beheerde exemplaar, zoals `vnet-sql-mi-secondary`. |
     | **Adresruimte** | De adres ruimte voor het virtuele netwerk, zoals `10.128.0.0/16`. | 
     | **Abonnement** | Het abonnement waar uw primaire beheerde instantie en resource groep zich bevinden. |
-    | **Regio** | De locatie waar u uw secundaire beheerde exemplaar gaat implementeren. Dit moet zich in een [gekoppeld gebied](/azure/best-practices-availability-paired-regions) bevinden voor het primaire beheerde exemplaar.  |
+    | **Regio** | De locatie waar u uw secundaire beheerde exemplaar gaat implementeren. |
     | **Subnet** | De naam voor het subnet. `default`is standaard voor u bestemd. |
     | **Adresbereik**| Het adres bereik voor uw subnet. Dit moet verschillen van het adres bereik van het subnet dat wordt gebruikt door het virtuele netwerk van uw primaire beheerde instantie `10.128.0.0/24`, zoals.  |
     | &nbsp; | &nbsp; |
@@ -92,7 +92,6 @@ In deze stap maakt u een tweede beheerde instantie in de Azure Portal, waarmee o
 
 Uw tweede beheerde exemplaar moet:
 - Leeg zijn. 
-- Bevinden zich in een [gekoppelde regio](/azure/best-practices-availability-paired-regions) met het primaire beheerde exemplaar van de instantie. 
 - Hebben een ander subnet en IP-bereik dan het primaire beheerde exemplaar. 
 
 Voer de volgende stappen uit om uw secundaire beheerde exemplaar te maken: 
@@ -108,7 +107,7 @@ Voer de volgende stappen uit om uw secundaire beheerde exemplaar te maken:
     | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
     | **Resourcegroep**| De resource groep waar uw primaire beheerde instantie zich bevindt. |
     | **Naam van het beheerde exemplaar** | De naam van het nieuwe, secundaire beheerde exemplaar, zoals`sql-mi-secondary`  | 
-    | **Regio**| De [gekoppelde regio](/azure/best-practices-availability-paired-regions) locatie voor uw secundaire beheerde exemplaar.  |
+    | **Regio**| De locatie voor uw secundaire beheerde exemplaar.  |
     | **Beheerdersaanmeldgegevens voor het beheerde exemplaar** | De aanmelding die u wilt gebruiken voor uw nieuwe, secundaire beheerde exemplaar, zoals `azureuser`. |
     | **Wachtwoord** | Een complex wacht woord dat wordt gebruikt door de beheerders aanmelding voor het nieuwe secundaire beheerde exemplaar.  |
     | &nbsp; | &nbsp; |

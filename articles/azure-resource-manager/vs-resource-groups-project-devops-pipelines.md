@@ -1,65 +1,65 @@
 ---
-title: CI/CD met Azure-pijplijnen en Resource Manager-sjablonen
-description: Beschrijft het instellen van continue integratie in Azure pijplijnen met behulp van Azure Resource Group deployment projecten in Visual Studio om Resource Manager-sjablonen te implementeren.
+title: CI/CD met Azure-pijp lijnen en Resource Manager-sjablonen
+description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp lijnen instelt met behulp van implementatie projecten van Azure-resource groepen in Visual Studio voor het implementeren van Resource Manager-sjablonen.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b70b38904c0373c53c3731dd0442511116d9c4de
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191458"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982444"
 ---
-# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Resource Manager-sjablonen integreren met Azure-pijplijnen
+# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Resource Manager-sjablonen integreren met Azure-pijp lijnen
 
-Visual Studio biedt het Azure-resourcegroep-project voor het maken van sjablonen en ze worden geïmplementeerd op uw Azure-abonnement. U kunt dit project integreren met Azure-pijplijnen voor continue integratie en continue implementatie (CI/CD).
+Visual Studio biedt het project van de Azure-resource groep voor het maken van sjablonen en het implementeren ervan in uw Azure-abonnement. U kunt dit project integreren met Azure-pijp lijnen voor continue integratie en continue implementatie (CI/CD).
 
-Er zijn twee manieren om sjablonen met Azure-pijplijnen te implementeren:
+Er zijn twee manieren om sjablonen met Azure-pijp lijnen te implementeren:
 
-* **Taak met een Azure PowerShell-script toevoegen**. Deze optie heeft het voordeel van de consistentie worden gedurende de levenscyclus van ontwikkeling, omdat u gebruikt hetzelfde script dat is opgenomen in de Visual Studio-project (implementeren-AzureResourceGroup.ps1). De script fasen artefacten van uw project een storage-account dat toegang heeft tot Resource Manager. Artefacten zijn de items in uw project, gekoppelde sjablonen, scripts en binaire waarden van toepassingen. Het script implementeert vervolgens de sjabloon.
+* **Voeg een taak toe die een Azure PowerShell script uitvoert**. Deze optie biedt het voor deel dat u binnen de levens cyclus van de ontwikkeling consistentie kunt bieden, omdat u hetzelfde script gebruikt dat is opgenomen in het Visual Studio-project (Deploy-AzureResourceGroup. ps1). Het script faseert artefacten van uw project naar een opslag account dat door Resource Manager kan worden geopend. Artefacten zijn items in uw project, zoals gekoppelde sjablonen, scripts en binaire bestanden voor toepassingen. Vervolgens implementeert het script de sjabloon.
 
-* **Taken voor het kopiëren en implementeren van taken toevoegen**. Deze optie biedt een alternatief voor het project-script. U configureren twee taken in de pijplijn. Een taak bereidt de artefacten en de andere taak implementeert u de sjabloon.
+* **Voeg taken toe om taken te kopiëren en te implementeren**. Deze optie biedt een handig alternatief voor het project script. U configureert twee taken in de pijp lijn. Met een taak worden de artefacten en de andere taak in de sjabloon geïmplementeerd.
 
-In dit artikel bevat beide methoden.
+In dit artikel worden beide benaderingen beschreven.
 
-## <a name="prepare-your-project"></a>Voorbereiden van uw project
+## <a name="prepare-your-project"></a>Uw project voorbereiden
 
-In dit artikel wordt ervan uitgegaan dat uw Visual Studio-project en Azure DevOps-organisatie gereed zijn voor het maken van de pijplijn. De volgende stappen laten zien hoe om te controleren of dat u klaar bent:
+In dit artikel wordt ervan uitgegaan dat uw Visual Studio-project en Azure DevOps-organisatie klaar zijn voor het maken van de pijp lijn. De volgende stappen laten zien hoe u ervoor kunt zorgen dat u klaar bent:
 
-* U hebt een Azure DevOps-organisatie. Als u nog geen hebt, [maakt u er een gratis](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Als uw team al een Azure DevOps-organisatie, zorg ervoor dat u een beheerder bent van het Azure DevOps-project dat u wilt gebruiken.
+* U hebt een Azure DevOps-organisatie. Als u er nog geen hebt, [maakt u er gratis een](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Als uw team al een Azure DevOps-organisatie heeft, zorg er dan voor dat u een beheerder bent van het Azure DevOps-project dat u wilt gebruiken.
 
-* U hebt geconfigureerd een [met de service](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) aan uw Azure-abonnement. De taken in de pijplijn wordt uitgevoerd onder de identiteit van de service-principal. Zie voor stappen voor het maken van de verbinding, [maken van een DevOps-project](resource-manager-tutorial-use-azure-pipelines.md#create-a-devops-project).
+* U hebt een [service verbinding](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) met uw Azure-abonnement geconfigureerd. De taken in de pijp lijn worden uitgevoerd onder de identiteit van de Service-Principal. Zie [een DevOps-project maken](resource-manager-tutorial-use-azure-pipelines.md#create-a-devops-project)voor de stappen voor het maken van de verbinding.
 
-* U hebt een Visual Studio-project dat is gemaakt op basis van de **Azure-resourcegroep** starter-sjabloon. Zie voor meer informatie over het maken van dat type project [maken en implementeren van Azure-resourcegroepen met Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* U hebt een Visual Studio-project dat is gemaakt op basis van de starter-sjabloon van de **Azure-resource groep** . Zie voor meer informatie over het maken van dit type project [Azure-resource groepen maken en implementeren via Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
-* Visual Studio-project is [verbonden met een Azure DevOps-project](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
+* Uw Visual Studio-project is [verbonden met een Azure DevOps-project](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
 
 ## <a name="create-pipeline"></a>Pijplijn maken
 
-1. Als u een pijplijn nog niet eerder hebt toegevoegd, moet u een nieuwe pijplijn. Selecteer in uw organisatie Azure DevOps **pijplijnen** en **nieuwe pijplijn**.
+1. Als u nog geen pijp lijn hebt toegevoegd, moet u een nieuwe pijp lijn maken. Selecteer in uw Azure DevOps-organisatie **pijp lijnen** en **nieuwe pijp lijn**.
 
-   ![Toevoegen van nieuwe pijplijn](./media/vs-resource-groups-project-devops-pipelines/new-pipeline.png)
+   ![Nieuwe pijp lijn toevoegen](./media/vs-resource-groups-project-devops-pipelines/new-pipeline.png)
 
-1. Geef op waar uw code is opgeslagen. De volgende afbeelding ziet u **Azure opslagplaatsen Git**.
+1. Geef op waar de code wordt opgeslagen. In de volgende afbeelding ziet u hoe u **Azure opslag plaatsen Git**selecteert.
 
-   ![Code-bron selecteren](./media/vs-resource-groups-project-devops-pipelines/select-source.png)
+   ![Code bron selecteren](./media/vs-resource-groups-project-devops-pipelines/select-source.png)
 
-1. Selecteer de opslagplaats met de code voor uw project in die bron.
+1. Selecteer de opslag plaats met de code voor het project uit de bron.
 
-   ![Opslagplaats selecteren](./media/vs-resource-groups-project-devops-pipelines/select-repo.png)
+   ![Opslag plaats selecteren](./media/vs-resource-groups-project-devops-pipelines/select-repo.png)
 
-1. Selecteer het type van de pijplijn te maken. U kunt selecteren **Starter pijplijn**.
+1. Selecteer het type pijp lijn dat u wilt maken. U kunt een **starter pijp lijn**selecteren.
 
-   ![Selecteer pijplijn](./media/vs-resource-groups-project-devops-pipelines/select-pipeline.png)
+   ![Pijp lijn selecteren](./media/vs-resource-groups-project-devops-pipelines/select-pipeline.png)
 
-U kunt ofwel een taak met Azure PowerShell of het bestand kopiëren toevoegen en implementeren van taken.
+U kunt een Azure PowerShell-taak of het kopieer bestand toevoegen en taken implementeren.
 
-## <a name="azure-powershell-task"></a>Azure PowerShell-taak
+## <a name="azure-powershell-task"></a>Azure PowerShell taak
 
-Deze sectie wordt beschreven hoe u continue implementatie configureren met behulp van een enkele taak die wordt uitgevoerd het PowerShell-script in uw project. Hiermee maakt u de volgende YAML-bestand een [Azure PowerShell-taak](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops):
+In deze sectie wordt uitgelegd hoe u doorlopende implementatie kunt configureren met één taak die het Power shell-script in uw project uitvoert. Met het volgende YAML-bestand wordt een [Azure PowerShell taak](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops)gemaakt:
 
 ```yaml
 pool:
@@ -75,41 +75,41 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Als u de taak instelt op `AzurePowerShell@3`, de pijplijn worden opdrachten van de AzureRM-module gebruikt om de verbinding te verifiëren. Het PowerShell-script in de Visual Studio-project maakt standaard gebruik van de AzureRM-module. Als u uw script te gebruiken hebt bijgewerkt de [Az module](/powershell/azure/new-azureps-module-az), de taak ingesteld op `AzurePowerShell@4`.
+Wanneer u de taak instelt op `AzurePowerShell@3`, gebruikt de pijp lijn opdrachten uit de AzureRM-module om de verbinding te verifiëren. Het Power shell-script in het Visual Studio-project maakt standaard gebruik van de AzureRM-module. Als u uw script hebt bijgewerkt voor het gebruik van de [AZ-module](/powershell/azure/new-azureps-module-az), stelt `AzurePowerShell@4`u de taak in op.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-Voor `azureSubscription`, geeft u de naam van de serviceverbinding die u hebt gemaakt.
+Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Voor `scriptPath`, geef het relatieve pad van de pijplijn-bestand voor uw script. U kunt zoeken in uw opslagplaats om te zien van het pad.
+Geef `scriptPath`voor het relatieve pad van het pijplijn bestand naar het script op. U kunt het pad bekijken in uw opslag plaats.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-Als u niet te fase artefacten hoeft, geeft de naam en locatie van een resourcegroep te gebruiken voor implementatie. Het Visual Studio-script wordt de resourcegroep gemaakt als deze nog niet bestaat.
+Als u artefacten niet nodig hebt, geeft u gewoon de naam en locatie van een resource groep door om te gebruiken voor de implementatie. Met het Visual Studio-script wordt de resource groep gemaakt als deze nog niet bestaat.
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
 ```
 
-Als u fase-artefacten naar een bestaand opslagaccount wilt, gebruikt:
+Als u artefacten naar een bestaand opslag account moet faseren, gebruikt u:
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
 ```
 
-Nu, dat u hoe u de taak maakt begrijpt, we gaan door de stappen voor het bewerken van de pijplijn.
+Nu u begrijpt hoe u de taak maakt, gaan we de stappen door lopen om de pijp lijn te bewerken.
 
-1. Open uw pijplijn en vervang de inhoud door uw YAML:
+1. Open de pijp lijn en vervang de inhoud door uw YAML:
 
    ```yaml
    pool:
@@ -129,19 +129,19 @@ Nu, dat u hoe u de taak maakt begrijpt, we gaan door de stappen voor het bewerke
 
    ![Pijplijn opslaan](./media/vs-resource-groups-project-devops-pipelines/save-pipeline.png)
 
-1. Voeg een bericht voor het doorvoeren en wijzigingen rechtstreeks doorvoeren **master**.
+1. Geef een bericht op dat moet worden doorgevoerd en rechtstreeks door te voeren naar de **hoofd server**.
 
-1. Wanneer u selecteert **opslaan**, de build-pijplijn wordt automatisch uitgevoerd. Ga terug naar de samenvatting van uw build-pijplijn en bekijk de status.
+1. Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
 
    ![Resultaten weergeven](./media/vs-resource-groups-project-devops-pipelines/view-results.png)
 
-U kunt de pijplijn die momenteel worden uitgevoerd om details over de taken te bekijken. Wanneer deze is voltooid, ziet u de resultaten voor elke stap.
+U kunt de pijp lijn die momenteel wordt uitgevoerd selecteren om details over de taken weer te geven. Wanneer deze is voltooid, ziet u de resultaten voor elke stap.
 
-## <a name="copy-and-deploy-tasks"></a>Kopieer en implementeren van taken
+## <a name="copy-and-deploy-tasks"></a>Taken kopiëren en implementeren
 
-Deze sectie wordt beschreven hoe u continue implementatie configureren met behulp van een twee taken om te zetten van de artefacten en de sjabloon te implementeren. 
+In deze sectie wordt beschreven hoe u doorlopende implementatie kunt configureren met behulp van een twee taken voor het faseren van de artefacten en het implementeren van de sjabloon. 
 
-De volgende YAML-bevat de [kopieertaak van Azure bestand](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
+In de volgende YAML wordt de [Azure File Copy-taak](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)weer gegeven:
 
 ```yaml
 - task: AzureFileCopy@3
@@ -157,26 +157,26 @@ De volgende YAML-bevat de [kopieertaak van Azure bestand](/azure/devops/pipeline
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Er zijn verschillende onderdelen van deze taak te wijzigen voor uw omgeving. De `SourcePath` geeft de locatie van de artefacten ten opzichte van de pijplijn-bestand. In dit voorbeeld worden de bestanden bestaan in een map met de naam `AzureResourceGroup1` waarvan de naam van het project is.
+Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. `SourcePath` Hiermee wordt de locatie van de artefacten ten opzichte van het pijplijn bestand aangegeven. In dit voor beeld bestaan de bestanden in een map `AzureResourceGroup1` met de naam.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-Voor `azureSubscription`, geeft u de naam van de serviceverbinding die u hebt gemaakt.
+Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
 ```
 
-Voor opslag en de container en geeft u de namen van de storage-account en een container die u gebruiken wilt voor het opslaan van de artefacten. Het opslagaccount moet bestaan.
+Geef voor opslag en container naam de namen op van het opslag account en de container die u wilt gebruiken voor het opslaan van de artefacten. Het opslag account moet bestaan.
 
 ```yaml
 storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-De volgende YAML-bevat de [taak voor implementatie van Azure resource group](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops):
+In de volgende YAML wordt de [implementatie taak voor de Azure-resource groep](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops)weer gegeven:
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
@@ -191,24 +191,24 @@ De volgende YAML-bevat de [taak voor implementatie van Azure resource group](/az
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
 ```
 
-Er zijn verschillende onderdelen van deze taak te wijzigen voor uw omgeving. Voor `azureSubscription`, geeft u de naam van de serviceverbinding die u hebt gemaakt.
+Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. Geef `azureSubscription`voor de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
 ```
 
-Voor `resourceGroupName` en `location`, geef de naam en locatie van de resourcegroep die u implementeren wilt op. De taak wordt de resourcegroep gemaakt als deze nog niet bestaat.
+Geef `resourceGroupName` voor `location`en de naam en de locatie van de resource groep op die u wilt implementeren. Met de taak wordt de resource groep gemaakt als deze nog niet bestaat.
 
 ```yaml
 resourceGroupName: '<resource-group-name>'
 location: '<location>'
 ```
 
-De implementatie van taak is gekoppeld aan een sjabloon met de naam `WebSite.json` en een parameterbestand met de naam WebSite.parameters.json. Gebruik de namen van uw sjabloon en de parameter-bestanden.
+De implementatie taak is gekoppeld aan een sjabloon `WebSite.json` met de naam en een para meters-bestand, genaamd website. para meters. json. Gebruik de namen van uw sjabloon en parameter bestanden.
 
-Nu, dat u hoe u de taken maakt begrijpt, we gaan door de stappen voor het bewerken van de pijplijn.
+Nu u begrijpt hoe u de taken maakt, gaan we de stappen door lopen om de pijp lijn te bewerken.
 
-1. Open uw pijplijn en vervang de inhoud door uw YAML:
+1. Open de pijp lijn en vervang de inhoud door uw YAML:
 
    ```yaml
    pool:
@@ -240,14 +240,14 @@ Nu, dat u hoe u de taken maakt begrijpt, we gaan door de stappen voor het bewerk
 
 1. Selecteer **Opslaan**.
 
-1. Voeg een bericht voor het doorvoeren en wijzigingen rechtstreeks doorvoeren **master**.
+1. Geef een bericht op dat moet worden doorgevoerd en rechtstreeks door te voeren naar de **hoofd server**.
 
-1. Wanneer u selecteert **opslaan**, de build-pijplijn wordt automatisch uitgevoerd. Ga terug naar de samenvatting van uw build-pijplijn en bekijk de status.
+1. Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
 
    ![Resultaten weergeven](./media/vs-resource-groups-project-devops-pipelines/view-results.png)
 
-U kunt de pijplijn die momenteel worden uitgevoerd om details over de taken te bekijken. Wanneer deze is voltooid, ziet u de resultaten voor elke stap.
+U kunt de pijp lijn die momenteel wordt uitgevoerd selecteren om details over de taken weer te geven. Wanneer deze is voltooid, ziet u de resultaten voor elke stap.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor stapsgewijze procedure over het gebruik van Azure-pijplijnen met Resource Manager-sjablonen [zelfstudie: Continue integratie van Azure Resource Manager-sjablonen met Azure-pijplijnen](resource-manager-tutorial-use-azure-pipelines.md).
+Zie [zelf studie voor stapsgewijze instructies voor het gebruik van Azure-pijp lijnen met Resource Manager-sjablonen: Continue integratie van Azure Resource Manager sjablonen met Azure-pijp](resource-manager-tutorial-use-azure-pipelines.md)lijnen.

@@ -6,23 +6,23 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 08/22/2019
+ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623846"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983021"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 
-We introduceren enkele belang rijke wijzigingen ter ondersteuning van meer verfijnde op rollen gebaseerde toegang om gevoelige informatie te verkrijgen. Als onderdeel van deze wijzigingen is het mogelijk dat er een bepaalde **actie vereist** is als u een van de [betrokken entiteiten/scenario's](#am-i-affected-by-these-changes)gebruikt.
+We introduceren enkele belang rijke wijzigingen ter ondersteuning van meer verfijnde op rollen gebaseerde toegang om gevoelige informatie te verkrijgen. Als onderdeel van deze wijzigingen is het mogelijk dat er **op 3 September 2019** een bepaalde actie is vereist als u een van de [betrokken entiteiten/scenario's](#am-i-affected-by-these-changes)gebruikt.
 
 ## <a name="what-is-changing"></a>Wat wordt er gewijzigd?
 
 Voorheen kunnen geheimen worden verkregen via de HDInsight API door cluster gebruikers die beschikken over de [rol](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)van eigenaar, bijdrager of lezer, aangezien ze beschikbaar zijn voor iedereen met de `*/read` machtiging. Geheimen worden gedefinieerd als waarden die kunnen worden gebruikt om meer verhoogde toegang te verkrijgen dan de rol van een gebruiker moet toestaan. Dit zijn onder andere waarden zoals de HTTP-referenties van de cluster gateway, sleutels voor opslag accounts en database referenties.
 
-Als u toegang wilt krijgen tot deze geheimen, `Microsoft.HDInsight/clusters/configurations/action` is de machtiging vereist, wat betekent dat gebruikers niet langer toegang hebben tot de rol van lezer. De functies die deze machtiging hebben, zijn Inzender, eigenaar en de nieuwe rol HDInsight-cluster operator (meer hierover).
+Vanaf 3 september 2019 heeft toegang tot deze geheimen de `Microsoft.HDInsight/clusters/configurations/action` machtiging nodig, wat betekent dat gebruikers niet langer toegang hebben tot de rol van lezer. De functies die deze machtiging hebben, zijn Inzender, eigenaar en de nieuwe rol HDInsight-cluster operator (meer hierover).
 
 We introduceren ook een nieuwe rol van een [HDInsight-cluster operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) die geheimen kan ophalen zonder dat de beheerders machtigingen van Inzender of eigenaar worden toegewezen. Samenvatten:
 
@@ -59,13 +59,13 @@ De volgende Api's worden gewijzigd of afgeschaft:
 
 - [ **/Configurations/{configurationName} ophalen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (gevoelige informatie verwijderd)
     - Eerder gebruikt om afzonderlijke configuratie typen (inclusief geheimen) op te halen.
-    - Deze API-aanroep retourneert nu afzonderlijke configuratie typen waarvoor geheimen zijn wegge laten. Gebruik de nieuwe aanroep POST/configurations om alle configuraties, inclusief geheimen, te verkrijgen. Als u alleen gateway-instellingen wilt ophalen, gebruikt u de nieuwe aanroep POST/getGatewaySettings.
+    - Vanaf 3 september 2019 retourneert deze API-aanroep nu afzonderlijke configuratie typen waarvoor geheimen zijn wegge laten. Gebruik de nieuwe aanroep POST/configurations om alle configuraties, inclusief geheimen, te verkrijgen. Als u alleen gateway-instellingen wilt ophalen, gebruikt u de nieuwe aanroep POST/getGatewaySettings.
 - [ **/Configurations ophalen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) keur
     - Eerder gebruikt om alle configuraties te verkrijgen (inclusief geheimen)
-    - Deze API-aanroep wordt niet meer ondersteund. Gebruik de nieuwe aanroep POST/configurations om alle configuraties te verkrijgen die verder gaan. Voor het verkrijgen van configuraties met gevoelige para meters, gebruikt u de aanroep GET/configurations/{configurationName}.
+    - Vanaf 3 september 2019 wordt deze API-aanroep afgeschaft en wordt deze niet meer ondersteund. Gebruik de nieuwe aanroep POST/configurations om alle configuraties te verkrijgen die verder gaan. Voor het verkrijgen van configuraties met gevoelige para meters, gebruikt u de aanroep GET/configurations/{configurationName}.
 - [ **/Configurations/{configurationName} plaatsen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) keur
     - Eerder gebruikt om de gateway referenties bij te werken.
-    - Deze API-aanroep wordt afgeschaft en wordt niet meer ondersteund. Gebruik in plaats daarvan de nieuwe POST-/updateGatewaySettings.
+    - Vanaf 3 september 2019 wordt deze API-aanroep afgeschaft en wordt deze niet meer ondersteund. Gebruik in plaats daarvan de nieuwe POST-/updateGatewaySettings.
 
 De volgende vervangings-Api's zijn toegevoegd:</span>
 
@@ -201,7 +201,7 @@ Als dit nog steeds niet werkt, neemt u contact op met uw AAD-beheerder om de jui
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Wat gebeurt er als er geen actie wordt ondernomen?
 
-De `GET /configurations` - `POST /configurations/gateway` en-aanroepen geven geen informatie meer weer `GET /configurations/{configurationName}` en de aanroep zal niet langer gevoelige para meters retour neren, zoals sleutels voor het opslag account of het wacht woord van het cluster. Hetzelfde geldt voor de bijbehorende SDK-methoden en Power shell-cmdlets.
+Vanaf 3 september 2019 `GET /configurations` en `POST /configurations/gateway` oproepen worden geen gegevens meer geretourneerd en de `GET /configurations/{configurationName}` aanroep zal niet langer gevoelige para meters retour neren, zoals sleutels van het opslag account of het wacht woord van het cluster. Hetzelfde geldt voor de bijbehorende SDK-methoden en Power shell-cmdlets.
 
 Als u een oudere versie gebruikt van een van de hulpprogram ma's voor Visual Studio, VSCode, IntelliJ of eclips die hierboven worden genoemd, werken ze niet meer totdat u deze bijwerkt.
 

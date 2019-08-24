@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 255d1be1c8cfaec366aee6964e41537f6b6c50d8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576613"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990520"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Voorwaardelijke toegang: Compatibele apparaten vereisen
 
@@ -55,4 +55,4 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
 
 [Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
 
-[Nalevings beleid voor apparaten werkt met Azure AD](/intune/device-compliance-get-started.md#device-compliance-policies-work-with-azure-ad)
+[Nalevings beleid voor apparaten werkt met Azure AD](https://docs.microsoft.com/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)

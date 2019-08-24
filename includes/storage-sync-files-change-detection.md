@@ -4,13 +4,20 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: beb08c29587e4ce522131142fd61925b5af45fa9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 59adee2f1d6a99a0a984b9b63c7201266b6381d4
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176105"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69984531"
 ---
-Wijzigingen in de Azure-bestandsshare met behulp van de Azure portal of SMB worden niet direct gedetecteerd en gerepliceerd, zoals wijzigingen in het servereindpunt. Azure Files heeft nog geen meldingen voor wachtwoordwijzigingen of logboekregistratie, dus er is geen manier voor het automatisch starten van een synchronisatiesessie wanneer bestanden worden gewijzigd. Op Windows Server, Azure File Sync gebruikt [Windows USN-logboek](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) automatisch een om synchronisatiesessie te starten wanneer bestanden worden gewijzigd.<br /><br /> Voor het detecteren van wijzigingen in de Azure-bestandsshare, Azure File Sync een geplande taak met de naam is een *detectie taak wijzigen*. Een taak van de detectie van wijziging inventariseren van alle bestanden in de bestandsshare en vergelijkt deze naar de synchronisatieversie voor dat bestand. Wanneer de taak wijzigen-detectie wordt vastgesteld dat er bestanden zijn gewijzigd, wordt een synchronisatiesessie gestart in Azure File Sync. De wijziging detectie-taak wordt gestart om de 24 uur. Omdat deze wijziging detectie werkt met het inventariseren van alle bestanden in de Azure-bestandsshare, is de detectie van de wijziging duurt langer in grotere naamruimten dan in kleinere naamruimten. Voor grote naamruimten duurt het langer dan elke 24 uur om te bepalen welke bestanden zijn gewijzigd.<br /><br />
-Opmerking, wijzigingen aangebracht in een Azure-bestandsshare met behulp van REST komt niet voor update van die de SMB tijdstip laatst gewijzigd en zal niet worden gezien als een wijziging door synchronisatie. <br /><br />
-We zijn toe te voegen wijziging detectie voor een Azure-bestandsshare die vergelijkbaar is met USN voor volumes verkennen op Windows Server. Help ons prioriteren van deze functie voor de ontwikkeling van toekomstige stem voor via [Azure bestanden UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
+Wijzigingen die zijn aangebracht in de Azure-bestands share met behulp van de Azure Portal of SMB worden niet onmiddellijk gedetecteerd en gerepliceerd zoals wijzigingen in het server eindpunt. Azure Files hebt nog geen wijzigings meldingen of Logboeken, dus is er geen manier om automatisch een synchronisatie sessie te initiëren wanneer bestanden worden gewijzigd. Op Windows Server maakt Azure File Sync gebruik van [Windows USN](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) -Logboeken om automatisch een synchronisatie sessie te initiëren wanneer bestanden worden gewijzigd.
+
+Om wijzigingen in de Azure-bestands share te detecteren, heeft Azure File Sync een geplande taak die een *wijzigings detectie taak*wordt genoemd. Een wijzigings detectie taak inventariseert elk bestand in de bestands share en vergelijkt deze met de synchronisatie versie voor dat bestand. Wanneer de wijzigings detectie taak bepaalt dat bestanden zijn gewijzigd, Azure File Sync initieert een synchronisatie sessie. De wijzigings detectie taak wordt elke 24 uur geïnitieerd. Omdat de wijzigings detectie taak werkt door elk bestand in de Azure-bestands share te inventariseren, neemt de detectie van wijzigingen langer deel uit van grotere naam ruimten dan in kleinere naam ruimten. Voor grote naam ruimten kan het langer dan eenmaal per 24 uur duren om te bepalen welke bestanden zijn gewijzigd.
+
+Om bestanden direct te synchroniseren die in de Azure-bestands share zijn gewijzigd, kan de Power shell **-cmdlet invoke-AzStorageSyncChangeDetection** worden gebruikt om de detectie van wijzigingen in de Azure-bestands share hand matig te initiëren. Deze cmdlet is bedoeld voor scenario's waarbij een type geautomatiseerd proces wijzigingen aanbrengt in de Azure-bestands share of de wijzigingen worden uitgevoerd door een beheerder (zoals het verplaatsen van bestanden en mappen naar de share). Voor wijzigingen van de eind gebruiker is het aanbeveling om de Azure File Sync-agent te installeren in een IaaS-VM en eind gebruikers hebben toegang tot de bestands share via de IaaS-VM. Op deze manier worden alle wijzigingen snel gesynchroniseerd met andere agents zonder dat u de cmdlet invoke-AzStorageSyncChangeDetection hoeft te gebruiken. Zie de documentatie voor [invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) voor meer informatie.
+
+>[!NOTE]
+>Wijzigingen die zijn aangebracht in een Azure-bestands share met REST, werken de SMB laatst gewijzigd tijd niet bij en worden niet gezien als een wijziging door synchronisatie.
+
+We gaan de detectie van wijzigingen voor een Azure-bestands share toevoegen vergelijkbaar met de USN voor volumes op Windows Server. Help ons de prioriteit van deze functie voor toekomstige ontwikkeling aan te geven op [Azure files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014508"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991926"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Fout opsporings modus gegevens stroom toewijzen
 
@@ -53,7 +53,14 @@ Met fout opsporing in wordt het tabblad voor beeld van gegevens lichter op het o
 
 ![Voor beeld van gegevens](media/data-flow/datapreview.png "Voor beeld van gegevens")
 
+> [!NOTE]
+> Bestands bronnen beperken alleen de rijen die u ziet, niet de rijen die worden gelezen. Voor zeer grote gegevens sets wordt u aangeraden een klein deel van het bestand te maken en dit te gebruiken voor uw test doeleinden. U kunt een tijdelijk bestand selecteren in instellingen voor fout opsporing voor elke bron die een bestands gegevensset type is.
+
 Wanneer de foutopsporingsmodus in de gegevens stroom wordt uitgevoerd, worden uw gegevens niet naar de Sink-trans formatie geschreven. Een foutopsporingssessie is bedoeld om te fungeren als een test harnas voor uw trans formaties. Sinks zijn niet vereist tijdens fout opsporing en worden genegeerd in uw gegevens stroom. Als u het schrijven van de gegevens in uw Sink wilt testen, voert u de gegevens stroom uit vanuit een Azure Data Factory pijp lijn en gebruikt u de uitvoering van de fout opsporing vanuit een pijp lijn.
+
+### <a name="testing-join-conditions"></a>Voor waarden voor samen voegen testen
+
+Wanneer eenheids testen samen voegen, bestaan of trans formaties opzoeken, moet u ervoor zorgen dat u een kleine set bekende gegevens gebruikt voor uw test. U kunt de optie instellingen voor fout opsporing hierboven gebruiken om een tijdelijk bestand in te stellen dat moet worden gebruikt voor het testen. Dit is nodig omdat bij het beperken of bemonsteren van rijen uit een grote gegevensset u niet kunt voors pellen welke rijen en welke sleutels in de stroom worden gelezen om te testen. Het resultaat is niet-deterministisch, wat betekent dat uw samenvoegings voorwaarden kunnen mislukken.
 
 ### <a name="quick-actions"></a>Snelle acties
 

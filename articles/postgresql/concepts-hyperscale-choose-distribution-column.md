@@ -1,78 +1,78 @@
 ---
-title: Distributiekolommen kiezen in Azure Database voor PostgreSQL – grootschalige (Citus) (preview)
-description: Goede keuze voor van distributiekolommen in veelvoorkomende scenario's voor grootschalig
+title: Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
+description: Goede keuzes voor distributie kolommen in algemene grootschalige-scenario's
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: e9fba14b8979f739fd29bc277e32fb544221d08a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65078983"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998196"
 ---
-# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Distributiekolommen kiezen in Azure Database voor PostgreSQL – grootschalige (Citus) (preview)
+# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
 
-Het kiezen van de distributie van elke tabelkolom is **een van de belangrijkste** beslissingen modelleren. Zeer grootschalige slaat rijen in shards op basis van de waarde van de rijen in de distributie-kolom.
+Het kiezen van de distributie kolom van elke tabel is een van de belangrijkste beslissingen die u kunt nemen. Azure Database for PostgreSQL – grootschalige (Citus)-voor beeld slaat rijen op in Shards op basis van de waarde van de kolom distributie kolommen.
 
-De juiste keuzegroepen gerelateerde gegevens bij elkaar op dezelfde fysieke knooppunten, waardoor snelle en toe te voegen ondersteuning voor alle SQL-functies vraagt. Een onjuiste keuze maakt het systeem langzaam wordt uitgevoerd, en alle SQL-functies op knooppunten niet wordt ondersteund.
+De juiste keuze groepen hebben gerelateerde gegevens samen op dezelfde fysieke knoop punten, waardoor query's snel worden gemaakt en ondersteuning wordt toegevoegd voor alle SQL-functies. Een onjuiste keuze maakt het systeem langzaam en wordt niet alle SQL-functies op verschillende knoop punten ondersteund.
 
-In deze sectie geeft distributie kolom tips voor de twee meest voorkomende grootschalige scenario's.
+In dit artikel vindt u de kolom tips voor de twee meest voorkomende grootschalige (Citus).
 
-### <a name="multi-tenant-apps"></a>Apps met meerdere Tenants
+### <a name="multi-tenant-apps"></a>Apps met meerdere tenants
 
-Een vorm van hiërarchische database modelleren voor het distribueren van query's op knooppunten in de servergroep maakt gebruik van de architectuur met meerdere tenants.  De bovenkant van de hiërarchie van gegevens wordt ook wel de *tenant-ID*, en moeten worden opgeslagen in een kolom in elke tabel.
+De architectuur met meerdere tenants maakt gebruik van een hiërarchische indeling voor het distribueren van query's tussen knoop punten in de Server groep. De bovenkant van de gegevens hiërarchie staat bekend als de *Tenant-id* en moet worden opgeslagen in een kolom op elke tabel.
 
-Zeer grootschalige inspecteert query's om te zien welke tenant-ID ze betrekking hebben op, en de overeenkomende tabel shard worden gevonden. Deze stuurt de query naar een enkele worker-knooppunt met de shard. Een query uitvoeren met alle relevante gegevens op hetzelfde knooppunt worden geplaatst, wordt de plaatsing genoemd.
+Grootschalige (Citus) inspecteert query's om te zien welke Tenant-ID ze hebben en vindt de overeenkomende tabel Shard. De query wordt doorgestuurd naar één worker-knoop punt dat de Shard bevat. Het uitvoeren van een query waarbij alle relevante gegevens op hetzelfde knoop punt worden geplaatst, wordt de locatie ' uplocation ' genoemd.
 
-Het volgende diagram illustreert CO-locatie in het gegevensmodel van meerdere tenants. Deze twee tabellen, Accounts en campagnes bevat, elk gedistribueerd door `account_id`. De grijze vakken vertegenwoordigen shards, elk waarvan de kleur vertegenwoordigt welke worker-knooppunt bevat. Groen shards worden samen opgeslagen op een worker-knooppunt en blauw op een andere. U ziet hoe een joinquery tussen Accounts en campagnes zouden hebben de benodigde gegevens samen op één knooppunt wanneer beide tabellen beperken tot hetzelfde account\_id.
+In het volgende diagram ziet u de co-locatie in het gegevens model met meerdere tenants. Het bevat twee tabellen, accounts en campagnes, die elk worden `account_id`gedistribueerd door. De gearceerde vakken vertegenwoordigen Shards. Groene Shards worden samen op één werk knooppunt opgeslagen en blauwe Shards worden opgeslagen op een ander worker-knoop punt. U ziet hoe een koppelings query tussen accounts en campagnes alle benodigde gegevens op één knoop punt heeft wanneer beide tabellen zijn beperkt tot dezelfde account\_-id.
 
-![multitenant CO-locatie](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
+![Multi tenant-co-locatie](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Om toe te passen dit ontwerp in uw eigen schema, Identificeer wat wordt verstaan onder een tenant in uw toepassing. Algemene instanties omvatten een bedrijf, account, organisatie of de klant. Naam van de kolom worden er ongeveer als `company_id` of `customer_id`. Een toelichting van elk van uw query's en u zich afvragen: zou dit werkt als er extra WHERE-componenten te beperken van alle tabellen die zijn betrokken tot rijen met dezelfde tenant-ID?
-Query's in het model met meerdere tenants zijn gericht op een tenant, bijvoorbeeld query's op de verkoop- of -inventaris zou worden binnen het bereik van binnen een bepaalde store.
+Als u dit ontwerp wilt Toep assen in uw eigen schema, identificeert u wat een Tenant in uw toepassing vormt. Algemene instanties zijn onder andere bedrijf, account, organisatie of klant. De naam van de kolom is bijvoorbeeld `company_id` of `customer_id`. Onderzoek elk van uw query's en vraag uzelf, zou het werken als er aanvullende WHERE-componenten zijn die alle tabellen met dezelfde Tenant-ID kunnen beperken.
+Query's in het model met meerdere tenants zijn scoped voor een Tenant. Query's over de verkoop of de inventaris zijn bijvoorbeeld binnen een bepaald archief.
 
-#### <a name="best-practices"></a>Beste praktijken
+#### <a name="best-practices"></a>Aanbevolen procedures
 
--   **Partitie gedistribueerde tabellen door een algemene tenant\_id-kolom.** Bijvoorbeeld in een SaaS-toepassing waarbij tenants bedrijven, de tenant zijn\_-id waarschijnlijk bedrijf\_id.
--   **Kleine cross-tenant-tabellen omzetten in referentietabellen.** Wanneer u meerdere tenants delen een kleine tabel met gegevens, kunt u deze als een tabel distribueren.
--   **Filter toepassing op alle query's door de tenant beperken\_id.** Elke query moet gegevens voor één tenant per keer aanvragen.
+-   **Gedistribueerde tabellen partitioneren op\_basis van een gemeen schappelijke Tenant-id kolom.** In een SaaS-toepassing waarbij tenants bijvoorbeeld bedrijven zijn, is de Tenant\_-id waarschijnlijk de bedrijfs\_-id.
+-   **Converteer kleine tabellen met meerdere tenants naar verwijzings tabellen.** Wanneer meerdere tenants een kleine tabel met gegevens delen, distribueer deze dan als een verwijzings tabel.
+-   **Filter voor alle toepassings query's beperken op\_Tenant-id.** Elke query moet informatie voor één Tenant tegelijk aanvragen.
 
-Lees de [multitenant zelfstudie](./tutorial-design-database-hyperscale-multi-tenant.md) voor een voorbeeld van het bouwen van dit type toepassing.
+Lees de [multi tenant-zelf studie](./tutorial-design-database-hyperscale-multi-tenant.md) voor een voor beeld van hoe u dit type toepassing kunt bouwen.
 
-### <a name="real-time-apps"></a>Realtime-Apps
+### <a name="real-time-apps"></a>Real-time apps
 
-De architectuur met meerdere tenants introduceert een hiërarchische structuur en maakt gebruik van collocatie gegevens op route-query's per tenant. Realtime-architecturen is daarentegen, afhankelijk van specifieke distributie-eigenschappen van hun gegevens voor uiterst parallelle verwerking.
+De architectuur met meerdere tenants introduceert een hiërarchische structuur en maakt gebruik van gegevens verplaatsing voor het routeren van query's per Tenant. Real-time architecturen zijn daarentegen afhankelijk van specifieke distributie-eigenschappen van hun gegevens voor zeer parallelle verwerking.
 
-In dat geval gebruiken we 'entiteit-ID' in als een term voor van distributiekolommen in het realtime model. Typische entiteiten zijn gebruikers, hosts of apparaten.
+We gebruiken ' Entiteits-ID ' als een term voor distributie kolommen in het real-time model. Typische entiteiten zijn gebruikers, hosts of apparaten.
 
-Realtime query's doorgaans om vragen numerieke statistische functies die zijn gegroepeerd op datum of categorie. Zeer grootschalige verzendt deze query's naar elke shard voor gedeeltelijke resultaten en het definitieve antwoord op het coördinatorknooppunt ophaalprotocol. Query's uitgevoerd snelste wanneer als veel knooppunten mogelijk bijdragen, en dat geen één knooppunt moet een onevenredige hoeveelheid werk doen.
+Realtime query's vragen meestal naar numerieke aggregaten gegroepeerd op datum of categorie. Grootschalige (Citus) verzendt deze query's naar elke Shard voor gedeeltelijke resultaten en assembleert het definitieve antwoord op het coördinator knooppunt. Query's worden het snelst uitgevoerd wanneer het mogelijk is om een aantal knoop punten uit te voeren en wanneer er geen onevenredige hoeveelheid werk voor een knoop punt nodig is.
 
-#### <a name="best-practices"></a>Beste praktijken
+#### <a name="best-practices"></a>Aanbevolen procedures
 
--   **Kies een kolom met hoge kardinaliteit, als de distributiekolom.** Ter vergelijking: een \"status\" veld in een tabel met de waarden "new", "betaalde" en "verzonden" is een slechte keuze van een distributiekolom. Wordt ervan uitgegaan dat alleen de enkele waarden, die beperkt het aantal shards die de gegevens kan bevatten, en het aantal knooppunten die kunnen worden verwerkt. Tussen de kolommen met hoge kardinaliteit is het handig ook kiezen die vaak worden gebruikt in group by-componenten of als lid worden van sleutels.
--   **Kies een kolom met gelijke verdeling.** Als u een tabel in een kolom die aan bepaalde algemene waarden ook ongelijkmatig distribueert, vaak gegevens in de tabel om te worden verzameld in bepaalde shards. De knooppunten die deze shards uiteindelijk meer werk dan andere knooppunten.
--   **Distribueren van feiten- en dimensietabellen tabellen op hun gemeenschappelijke kolommen.**
-    De feitentabel kan slechts één distributiesleutel hebben. Tabellen die deelnemen aan op een andere sleutel zijn zich niet op dezelfde locatie bevindt als de feitentabel. Kies één dimensie plaatsen op basis van hoe vaak deze is gekoppeld en de grootte van de gekoppelde rijen.
--   **Wijzig de sommige dimensietabellen in referentietabellen.** Als een dimensietabel niet kan geplaatst met de feitentabel worden, kunt u de prestaties van query's verbeteren door het distribueren van kopieën van de dimensietabel op alle knooppunten in de vorm van een tabel.
+-   **Kies een kolom met een hoge kardinaliteit als de kolom distributie.** Ter vergelijking is een status veld in een order tabel met de waarden nieuw, betaald en verzonden een slechte keuze kolom voor distributie. Hierbij wordt ervan uitgegaan dat er slechts enkele waarden zijn, die het aantal Shards beperken dat de gegevens kan bevatten, en het aantal knoop punten dat deze kan verwerken. Onder kolommen met een hoge kardinaliteit is het ook handig om deze kolommen te kiezen die veelvuldig worden gebruikt in Group-by-componenten of als lid-toets.
+-   **Kies een kolom met een gelijkmatige verdeling.** Als u een tabel distribueert in een kolom die is schuingetrokken tot bepaalde algemene waarden, worden de gegevens in de tabel doorgaans verzameld in bepaalde Shards. De knoop punten die de Shards beëindigen, doen meer werk dan andere knoop punten.
+-   **Feiten-en dimensie tabellen verdelen over de gemeen schappelijke kolommen.**
+    Uw feiten tabel mag slechts één distributie sleutel hebben. Tabellen die worden toegevoegd aan een andere sleutel, worden niet naast de feiten tabel geplaatst. Kies één dimensie om te zoeken op basis van de frequentie waarmee deze is gekoppeld en de grootte van de rijen die u samenvoegt.
+-   **Wijzig enkele dimensie tabellen in verwijzings tabellen.** Als een dimensie tabel niet kan worden gekoppeld aan de feiten tabel, kunt u de query prestaties verbeteren door kopieën van de dimensie tabel te distribueren naar alle knoop punten in de vorm van een verwijzings tabel.
 
-Lees de [realtime dashboard zelfstudie](./tutorial-design-database-hyperscale-realtime.md) voor een voorbeeld van het bouwen van dit type toepassing.
+Lees de [zelf studie over realtime-Dash boards](./tutorial-design-database-hyperscale-realtime.md) voor een voor beeld van hoe u dit type toepassing kunt bouwen.
 
-### <a name="timeseries-data"></a>Tijdseriegegevens
+### <a name="time-series-data"></a>Gegevens van de tijd reeks
 
-In een time series-workload query toepassingen recente informatie bij het archiveren van oude gegevens.
+In een werk belasting voor een time-serie worden de recente gegevens door toepassingen opgevraagd terwijl de oude gegevens worden gearchiveerd.
 
-De meest voorkomende fout in het modelleren van timeseries-gegevens in grootschalige maakt gebruik van de tijdstempel zelf als een kolom van het distributiepunt. Een hash-distributiepunt op basis van tijd wilt distribueren tijden schijnbaar willekeurig in verschillende shards in plaats van bereik van de tijd in shards samen blijven. Query's met betrekking tot tijd algemeen verwijzen naar de adresbereiken van tijd (bijvoorbeeld de meest recente gegevens), zodat deze een hash-distributiepunt zou leiden tot het netwerk overhead.
+De meest voorkomende fout in informatie over het model leren van time-series in grootschalige (Citus) is het gebruik van de tijds tempel zelf als een distributie kolom. Een hash-distributie op basis van tijd verdeelt tijden in wille keurige volg orde in verschillende Shards in plaats van het bereik van tijd bij Shards te houden. Query's met een tijd in het algemeen verwijzen naar tijd, bijvoorbeeld de meest recente gegevens. Dit type hash-distributie leidt tot netwerk overhead.
 
-#### <a name="best-practices"></a>Beste praktijken
+#### <a name="best-practices"></a>Aanbevolen procedures
 
--   **Kies een tijdstempel wordt als niet als de distributiekolom.** Kies een ander distributiepunt-kolom. Gebruik de tenant-ID in een multitenant-app of in een realtime-app gebruikt de entiteit-ID.
--   **Gebruik PostgreSQL tabel voor het partitioneren van tijd in plaats daarvan.** Gebruik tabellen partitioneren om een grote tabel van de tijd geordende opeenvolgende gegevens in meerdere overgenomen tabellen met elk met verschillende tijdsbereik.  Distribueren van een Postgres-gepartitioneerde tabel in grootschalige maakt shards voor de overgenomen tabellen.
+-   **Kies geen tijds tempel als de kolom distributie.** Kies een andere distributie kolom. Gebruik in een app met meerdere tenants de Tenant-ID of in een realtime-app de entiteit-ID gebruiken.
+-   **Gebruik in plaats daarvan PostgreSQL-tabel partitionering voor tijd.** Gebruik tabel partities voor het opsplitsen van een grote tabel tijdgesorteerde gegevens in meerdere overgenomen tabellen met elke tabel die verschillende Peri Oden bevat. Als u een post gres-gepartitioneerde tabel in grootschalige (Citus) distribueert, wordt Shards gemaakt voor de overgenomen tabellen.
 
-Lees de [timeseries zelfstudie](https://aka.ms/hyperscale-tutorial-timeseries) voor een voorbeeld van het bouwen van dit type toepassing.
+Lees de [zelf studie over de time-serie](https://aka.ms/hyperscale-tutorial-timeseries) voor een voor beeld van hoe u dit type toepassing kunt bouwen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Informatie over hoe [CO](concepts-hyperscale-colocation.md) tussen gedistribueerde gegevens kunnen query's snel worden uitgevoerd
+- Meer informatie over hoe u met de co- [locatie](concepts-hyperscale-colocation.md) tussen gedistribueerde gegevens query's snel kunt uitvoeren.

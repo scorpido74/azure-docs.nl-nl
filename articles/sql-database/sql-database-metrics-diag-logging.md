@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567261"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998227"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrische gegevens en logboek registratie van diagnostische gegevens
 
@@ -94,7 +94,7 @@ U kunt een resource voor een elastische pool instellen om de volgende diagnostis
 | :------------------- | ------------------- |
 | **Elastische pool** | [Basis metrieken](sql-database-metrics-diag-logging.md#basic-metrics) bevatten EDTU/CPU-percentage, EDTU/CPU-limiet, fysiek gegevens Lees percentage, logboek schrijf percentage, sessie percentage, werk nemer-percentage, opslag, opslag percentage, opslag limiet en XTP opslag percentage. |
 
-Als u streaming-telemetrie voor elastische Pools en data bases in elastische Pools wilt configureren, moet u de volgende gegevens **afzonderlijk configureren:**
+Als u streaming-telemetrie voor elastische Pools en data bases in elastische Pools wilt configureren, moet u de volgende gegevens afzonderlijk configureren:
 
 - Streaming van diagnostische gegevens over de telemetrie inschakelen voor een elastische pool **en**
 - Streaming van diagnostische gegevens over de telemetrie inschakelen voor elke data base in elastische pool
@@ -156,7 +156,7 @@ U kunt een beheerde exemplaar bron instellen om de volgende diagnostische teleme
 | :------------------- | ------------------- |
 | **Beheerd exemplaar** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) bevat vCores aantal, gemiddeld CPU-percentage, i/o-aanvragen, lees-en schrijf bewerkingen in bytes, gereserveerde opslag ruimte en gebruikte opslag ruimte. |
 
-Voor het configureren van streaming van diagnostische gegevens over de telemetrie voor beheerde exemplaar-en exemplaar databases, moet u de volgende onderdelen **afzonderlijk configureren:**
+Voor het configureren van streaming van diagnostische gegevens over de telemetrie voor beheerde exemplaar-en exemplaar databases , moet u de volgende onderdelen afzonderlijk configureren:
 
 - Streaming-telemetrie van diagnostische gegevens inschakelen voor een beheerd exemplaar **en**
 - Streaming van diagnostische gegevens over de telemetrie inschakelen voor elke exemplaar database
@@ -344,9 +344,12 @@ De eenvoudigste manier om te configureren waar de metrische gegevens van data ba
 
 Als u gebruikmaakt van elastische Pools of beheerde instanties, moet u ook diagnostische instellingen in deze bronnen configureren om de diagnostische telemetrie in te scha kelen voor het streamen van de werk ruimte.
 
-### <a name="use-the-sql-analytics-solution"></a>De SQL Analytics-oplossing gebruiken
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>De SQL Analytics-oplossing gebruiken voor bewaking en waarschuwingen
 
-U kunt SQL Analytics als hiërarchisch dash board gebruiken om uw SQL Database-resources weer te geven. Zie [SQL database bewaken met behulp van de SQL Analytics-oplossing](../log-analytics/log-analytics-azure-sql.md)voor meer informatie over het gebruik van de SQL Analytics-oplossing.
+U kunt SQL Analytics als hiërarchisch dash board gebruiken om uw SQL Database-resources weer te geven.
+
+- Zie [SQL database bewaken met behulp van de SQL Analytics-oplossing](../log-analytics/log-analytics-azure-sql.md)voor meer informatie over het gebruik van de SQL Analytics-oplossing.
+- Zie voor meer informatie over het instellen van waarschuwingen voor SQL Database en beheerde exemplaren op basis van SQL Analytics [waarschuwingen maken voor SQL database en een beheerd exemplaar](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
 
 ## <a name="stream-into-event-hubs"></a>Streamen in Event Hubs
 
@@ -715,3 +718,7 @@ Lees voor meer informatie over Event Hubs:
 
 - [Wat is Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Aan de slag met Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+Voor meer informatie over het instellen van waarschuwingen op basis van telemetrie in log Analytics raadpleegt u:
+
+- [Waarschuwingen voor SQL Database en een beheerd exemplaar maken](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

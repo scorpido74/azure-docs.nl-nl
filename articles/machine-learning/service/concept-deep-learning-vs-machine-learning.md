@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot diep gaande informatie versus machine learning
+title: Diep gaande informatie versus machine learning
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over de relatie tussen uitgebreide kennis versus machine learning en hoe ze in de categorie van kunst matige intelligentie passen. In dit artikel wordt beschreven hoe u met uitgebreid leren scenario's kunt oplossen, zoals fraude detectie, spraak-en gezichts herkenning, sentiment Analytics en time series-prognoses.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934278"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982810"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>Inleiding tot diep gaande informatie versus machine learning
+# <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
 
 Dit artikel helpt u bij het begrijpen van de relatie tussen uitgebreide kennis en machine learning. U leert hoe de twee concepten worden vergeleken en hoe ze in de bredere categorie van kunst matige intelligentie passen. Ten slotte wordt in het artikel beschreven hoe diep leren kan worden toegepast op praktijk scenario's, zoals fraude detectie, spraak-en gezichts herkenning, sentiment Analytics en time series-prognoses.
 

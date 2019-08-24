@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233964"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991950"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Gegevens uit uw Event Hub verwerken met behulp van Azure Stream Analytics (preview)
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Gegevens uit uw Event Hub verwerken met Azure Stream Analytics 
 De Azure Stream Analytics-service maakt het eenvoudig om streaminggegevens van Azure Event Hubs op te nemen, te verwerken en te analyseren, waardoor het mogelijk is om in real-time acties in realtime te maken. Met deze integratie kunt u snel een analytische hotspot-pijp lijn maken. U kunt de Azure Portal gebruiken om binnenkomende gegevens te visualiseren en een Stream Analytics query te schrijven. Als uw query klaar is, kunt u deze in slechts enkele klikken naar productie verplaatsen. 
-
-> [!NOTE]
-> Deze functie is momenteel beschikbaar als preview-product. 
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
 Dit zijn de belangrijkste voor delen van Azure Event Hubs en Azure Stream Analytics integratie: 

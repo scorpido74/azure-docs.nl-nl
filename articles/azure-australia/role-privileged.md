@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571495"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982666"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>Op rollen gebaseerde Access Control (RBAC) en Privileged Identity Management (PIM)
 
@@ -27,7 +27,7 @@ Op hoog niveau zijn voor het implementeren van RBAC drie onderdelen vereist:
 
 ![RBAC-overzicht](media/rbac-overview.png)
 
-* **Beveiligings**-principals: Een beveiligingsprincipal kan een van de volgende zijn: een gebruiker, een groep, [Service-principals of een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Aan beveiligings-principals moeten bevoegdheden worden toegewezen met behulp van Azure Active Directory groepen.
+* **Beveiligings**-principals: Een beveiligingsprincipal kan een van de volgende zijn: een gebruiker, een groep, [service](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)-principals of een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Aan beveiligings-principals moeten bevoegdheden worden toegewezen met behulp van Azure Active Directory groepen.
 
 * **Roldefinities**: Een roldefinitie, ook wel rol genoemd, is een verzameling machtigingen. Deze machtigingen definiëren de bewerkingen die kunnen worden uitgevoerd door de beveiligings-principals die zijn toegewezen aan de roldefinitie. Deze functionaliteit wordt verschaft door Azure-resource rollen en Azure Active Directory beheerders rollen. Azure wordt geleverd met een set ingebouwde rollen (koppeling) die kan worden uitgebreid met aangepaste rollen.
 

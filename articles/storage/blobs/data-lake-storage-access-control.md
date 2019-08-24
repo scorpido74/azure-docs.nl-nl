@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847351"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991915"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangs beheer in Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Zie voor meer informatie over het toewijzen van rollen aan beveiligings-principa
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>De impact van roltoewijzingen op het niveau van toegangs beheer lijsten op bestands-en mapniveau
 
-Hoewel het gebruik van RBAC-roltoewijzingen een krachtig mechanisme is om toegangs machtigingen te beheren, is het een zeer grof mechanisme dat relatief is ten opzichte van Acl's. De kleinste granulatie voor RBAC bevindt zich op het niveau van het bestands systeem en deze wordt geëvalueerd met een hogere prioriteit dan Acl's. Als u een rol toewijst aan een beveiligingsprincipal in het bereik van een bestands systeem, heeft die beveiligings-principal daarom het autorisatie niveau dat aan die rol is gekoppeld voor alle mappen en bestanden in dat bestands systeem, ongeacht de ACL-toewijzingen.
+Hoewel het gebruik van RBAC-roltoewijzingen een krachtig mechanisme is om toegangs machtigingen te beheren, is het een zeer grof mechanisme dat relatief is ten opzichte van Acl's. De kleinste granulatie voor RBAC bevindt zich op het niveau van de container en deze wordt geëvalueerd met een hogere prioriteit dan Acl's. Als u een rol toewijst aan een beveiligingsprincipal in het bereik van een container, heeft die beveiligings-principal daarom het autorisatie niveau dat aan die rol is gekoppeld voor alle mappen en bestanden in die container, ongeacht de toewijzing van de toegangs beheer lijst.
 
 Wanneer aan een beveiligingsprincipal RBAC-gegevens machtigingen worden verleend via een [ingebouwde rol](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)of via een aangepaste rol, worden deze machtigingen eerst geëvalueerd op basis van de autorisatie van een aanvraag. Als de aangevraagde bewerking wordt geautoriseerd door de RBAC-toewijzingen van de beveiligingsprincipal, wordt de autorisatie onmiddellijk opgelost en worden er geen extra ACL-controles uitgevoerd. Als de beveiligingsprincipal geen RBAC-toewijzing heeft of de bewerking van de aanvraag niet overeenkomt met de toegewezen machtiging, worden er ook ACL'S-controles uitgevoerd om te bepalen of de beveiligings-principal gemachtigd is om de aangevraagde bewerking uit te voeren.
 
@@ -81,7 +81,7 @@ Zowel toegangs-Acl's als standaard-Acl's hebben dezelfde structuur.
 
 ### <a name="levels-of-permission"></a>Machtigings niveaus
 
-De machtigingen voor een bestandssysteem object zijn **lezen**, **schrijven**en **uitvoeren**, en ze kunnen worden gebruikt voor bestanden en mappen zoals weer gegeven in de volgende tabel:
+De machtigingen voor een container object zijn **lezen**, **schrijven**en **uitvoeren**en kunnen worden gebruikt voor bestanden en mappen, zoals wordt weer gegeven in de volgende tabel:
 
 |            |    File     |   Directory |
 |------------|-------------|----------|
@@ -90,7 +90,7 @@ De machtigingen voor een bestandssysteem object zijn **lezen**, **schrijven**en 
 | **Uitvoeren (U)** | Betekent niets in de context van Data Lake Storage Gen2 | Vereist om de onderliggende items van een map door te bladeren |
 
 > [!NOTE]
-> Als u machtigingen verleent met behulp van alleen Acl's (geen RBAC) en vervolgens een Service-Principal Lees-of schrijf toegang tot een bestand verleent, moet u de Service-Principal **uitvoer** machtigingen verlenen aan het bestands systeem en aan elke map in de hiërarchie van mappen die leiden naar het bestand.
+> Als u machtigingen verleent met behulp van alleen Acl's (geen RBAC) en u een Service-Principal Lees-of schrijf toegang tot een bestand verleent, moet u de Service-Principal **uitvoer** machtigingen verlenen aan de container en aan elke map in de hiërarchie van mappen die leiden naar het bestand.
 
 #### <a name="short-forms-for-permissions"></a>Korte formulieren voor machtigingen
 
@@ -154,7 +154,7 @@ In de POSIX Acl's is elke gebruiker gekoppeld aan een *primaire groep*. Bijvoorb
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>De groep die eigenaar is toewijzen aan een nieuw bestand of nieuwe map
 
-* Voor **Beeld 1**: De hoofdmap '/'. Deze map wordt gemaakt wanneer een Data Lake Storage Gen2 bestands systeem wordt gemaakt. In dit geval wordt de groep die eigenaar is ingesteld op de gebruiker die het bestands systeem heeft gemaakt als dit is gedaan met behulp van OAuth. Als het bestands systeem is gemaakt met behulp van gedeelde sleutel, een account-SAS of een service-SA'S, worden de eigenaar en de groep die eigenaar is, ingesteld op **$superuser**.
+* Voor **Beeld 1**: De hoofdmap '/'. Deze map wordt gemaakt wanneer een Data Lake Storage Gen2-container wordt gemaakt. In dit geval wordt de groep die eigenaar is ingesteld op de gebruiker die de container heeft gemaakt als deze is uitgevoerd met behulp van OAuth. Als de container is gemaakt met behulp van gedeelde sleutel, een account-SAS of een service-SA'S, wordt de groep eigenaar en eigenaar ingesteld op **$superuser**.
 * **Case 2** (Elk ander geval): Wanneer een nieuw item wordt gemaakt, wordt de groep die eigenaar is, gekopieerd van de bovenliggende map.
 
 ##### <a name="changing-the-owning-group"></a>De groep die eigenaar is wijzigen
@@ -216,13 +216,13 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 Zoals geïllustreerd in het algoritme voor toegangs controle, beperkt het masker de toegang voor benoemde gebruikers, de groep die eigenaar is en benoemde groepen.  
 
 > [!NOTE]
-> Voor een nieuw Data Lake Storage Gen2 bestands systeem wordt het masker voor de toegangs-ACL van de hoofdmap (/) standaard ingesteld op 750 voor directory's en 640 voor bestanden. Bestanden ontvangen niet de X-bit omdat deze niet van toepassing is op bestanden in een alleen-opslag systeem.
+> Voor een nieuwe Data Lake Storage Gen2-container wordt het masker voor de toegangs-ACL van de hoofdmap (/) standaard ingesteld op 750 voor directory's en 640 voor bestanden. Bestanden ontvangen niet de X-bit omdat deze niet van toepassing is op bestanden in een alleen-opslag systeem.
 >
 > Het masker kan worden opgegeven per oproep. Hierdoor kunnen verschillende verbruiks systemen, zoals clusters, verschillende efficiënte maskers hebben voor de bestands bewerkingen. Als voor een bepaalde aanvraag een masker is opgegeven, wordt het standaard masker volledig overschreven.
 
 #### <a name="the-sticky-bit"></a>De vergrendelde bit
 
-De sticky bit is een geavanceerdere functie van een POSIX-bestands systeem. In de context van Data Lake Storage Gen2 is het niet waarschijnlijk dat de sticky-bit nodig is. Als de sticky bit is ingeschakeld in een directory, kan een onderliggend item alleen worden verwijderd of hernoemd door de gebruiker die eigenaar is van het onderliggende item.
+De sticky bit is een meer geavanceerde functie van een POSIX-container. In de context van Data Lake Storage Gen2 is het niet waarschijnlijk dat de sticky-bit nodig is. Als de sticky bit is ingeschakeld in een directory, kan een onderliggend item alleen worden verwijderd of hernoemd door de gebruiker die eigenaar is van het onderliggende item.
 
 De sticky bit wordt niet weer gegeven in de Azure Portal.
 
@@ -291,7 +291,7 @@ of
 
 ### <a name="who-is-the-owner-of-a-file-or-directory"></a>Wie is de eigenaar van een bestand of map?
 
-De maker van een bestand of map wordt de eigenaar. In het geval van de hoofdmap is dit de identiteit van de gebruiker die het bestands systeem heeft gemaakt.
+De maker van een bestand of map wordt de eigenaar. In het geval van de hoofdmap is dit de identiteit van de gebruiker die de container heeft gemaakt.
 
 ### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Welke groep wordt ingesteld als de groep die eigenaar is van een bestand of map bij het maken?
 
@@ -320,7 +320,7 @@ Wanneer u de juiste OID voor de Service-Principal hebt, gaat u naar de Storage E
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Ondersteunt Data Lake Storage Gen2 overname van Acl's?
 
-De toewijzingen van Azure RBAC nemen toe. Toewijzingen lopen van de gegevens van het abonnement, de resource groep en het opslag account naar de bestandssysteem bron.
+De toewijzingen van Azure RBAC nemen toe. Toewijzingen stroomt van de resources van het abonnement, de resource groep en het opslag account naar de container resource.
 
 Acl's nemen niet over. Standaard-Acl's kunnen echter worden gebruikt om Acl's in te stellen voor onderliggende submappen en bestanden die zijn gemaakt in de bovenliggende map. 
 

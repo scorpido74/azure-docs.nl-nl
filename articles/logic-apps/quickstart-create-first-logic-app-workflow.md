@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: 2f39678e9fa0ed665863a94767240e2e37eace39
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
-ms.translationtype: HT
+ms.openlocfilehash: f0d63b9e01b7e39b03e6a3b1e310b5fae0f8d25f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906140"
+ms.locfileid: "69982854"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Quickstart: uw eerste geautomatiseerde werkstroom maken met Azure Logic Apps - Azure-portal
 
@@ -43,7 +43,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Name** | <*logic-app-name*> | De naam van de logische app, die alleen letters, cijfers, of de `-` `)`, `(`,, `_` `.` , tekens kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
+   | **Name** | <*logic-app-name*> | De naam van de logische app, die alleen letters, cijfers, afbreek streepjes`-`(), onderstrepings tekens`_`(), haakjes`(`( `)`,) en punten (`.`) kan bevatten. In dit voor beeld wordt ' mijn-eerste logica-app ' gebruikt. |
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | <*Azure-resource-group-name*> | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' My-First-LA-RG ' gebruikt. |
    | **Location** | <*Azure-regio*> | De regio waar u de gegevens van uw logische app opslaat. In dit voor beeld wordt ' West US ' gebruikt. |

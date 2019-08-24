@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855447"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992266"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Zelfstudie: Toegang tot Data Lake Storage Gen2-gegevens met Azure Databricks met behulp van Apache Spark
 
@@ -124,20 +124,20 @@ Gebruik AzCopy om gegevens uit uw *csv*-bestand te kopiëren naar uw Data Lake S
 2. Voer de volgende opdracht in om gegevens kopiëren vanuit het *csv*-account.
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * Vervang de `<csv-folder-path>` waarde van de tijdelijke aanduiding door het pad naar het *CSV* -bestand.
 
    * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-   * Vervang de tijdelijke aanduiding `<file-system-name>` door de naam die u aan uw bestandssysteem wilt geven.
+   * Vervang de `<container-name>` tijdelijke aanduiding door een wille keurige naam die u wilt toewijzen aan de container.
 
-## <a name="create-a-file-system-and-mount-it"></a>Een bestandssysteem maken en koppelen
+## <a name="create-a-container-and-mount-it"></a>Een container maken en koppelen
 
-In deze sectie maakt u een bestandssysteem en een map in uw opslagaccount.
+In deze sectie maakt u een container en een map in uw opslag account.
 
-1. Ga in de [Microsoft Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
+1. Ga in de [Azure-portal](https://portal.azure.com) naar de Azure Databricks-service die u hebt gemaakt en selecteer **Werkruimte starten**.
 
 2. Selecteer aan de linkerkant **Werkruimte**. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
@@ -158,12 +158,12 @@ In deze sectie maakt u een bestandssysteem en een map in uw opslagaccount.
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang de `file-system-name` waarde van de tijdelijke aanduiding door de naam die u in de vorige stap hebt opgegeven voor het ADLS-bestands systeem.
+18. In dit codeblok vervangt u de tijdelijke aanduidingen `appId`, `password`, `tenant` en `storage-account-name` door de waarden die u hebt verzameld bij het uitvoeren van de vereiste stappen voor deze zelfstudie. Vervang de `container-name` waarde van de tijdelijke aanduiding door de naam die u in de vorige stap aan de container hebt door gegeven.
 
 Gebruik deze waarden om de vermelde tijdelijke aanduidingen te vervangen.
 
@@ -173,7 +173,7 @@ Gebruik deze waarden om de vermelde tijdelijke aanduidingen te vervangen.
 
    * De tijdelijke aanduiding `storage-account-name` is de naam van uw Azure Data Lake Storage Gen2-opslagaccount.
 
-   * Vervang de tijdelijke aanduiding `file-system-name` door de naam die u aan uw bestandssysteem wilt geven.
+   * Vervang de `container-name` tijdelijke aanduiding door een wille keurige naam die u wilt toewijzen aan de container.
 
    > [!NOTE]
    > In een productie-instelling kunt u uw wacht woord opslaan in Azure Databricks. Voeg vervolgens een zoek sleutel toe aan uw code blok in plaats van het wacht woord. Nadat u deze quickstart hebt afgerond, raadpleegt u het artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) (Engelstalig) op de website van Azure Databricks voor voorbeelden van deze methode.

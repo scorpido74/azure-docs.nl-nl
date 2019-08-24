@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b08358680793ccdadca27c5f2aa57fbffe89b53a
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f35836f60fae11c0955c128e96a4cea188681942
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973790"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997667"
 ---
-# <a name="how-to-run-the-opc-ua-certificate-management-service-securely"></a>De OPC UA Certificate Management-service veilig uitvoeren
+# <a name="how-to-run-the-opc-vault-certificate-management-service-securely"></a>De OPC kluis Certificate Management-service veilig uitvoeren
 
-In dit artikel wordt uitgelegd hoe u de OPC UA Certificate Management-service veilig kunt uitvoeren in Azure en andere beveiligings richtlijnen waarmee u rekening moet houden.
+In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service veilig kunt uitvoeren in Azure en andere beveiligings richtlijnen waarmee u rekening moet houden.
 
 ## <a name="roles"></a>Rollen
 
@@ -32,7 +32,7 @@ De OPC kluis micro service is zo geconfigureerd dat afzonderlijke rollen toegang
 
 ### <a name="certificate-management-service-roles"></a>Service rollen voor certificaat beheer
 
-De micro service definieert de volgende rollen:
+De OPC-kluis micro service definieert de volgende rollen:
 
 - **Lezer**: Een geverifieerde gebruiker in de Tenant heeft standaard lees toegang. 
   - Lees toegang tot toepassingen en certificaat aanvragen. Kan toepassingen en certificaat aanvragen weer geven en er query's op uitvoeren. Detectie gegevens van apparaten en open bare certificaten zijn ook toegankelijk met lees toegang.
@@ -132,14 +132,14 @@ Voor de IoT Edge apparaten moeten de hostnamen en IP-adressen worden gedocumente
 
 De documentatie van de CA-hiërarchie moet alle gehoste Ca's bevatten, inclusief alle gerelateerde onderliggende ca's, bovenliggende Ca's en basis certificerings instanties, zelfs wanneer deze niet door de service worden beheerd. Er kan een volledige set van alle niet-verlopen CA-certificaten worden opgegeven in plaats van formele documentatie.
 
-> [!IMPORTANT]
+> [!NOTE]
 > De OPC-kluis voorbeeld toepassing ondersteunt het downloaden van alle certificaten die in de service voor documentatie worden gebruikt en gemaakt.
 
 ### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>De verleende certificaten documenteren door alle certificerings instanties (Ca's)
 
 Voor documentatie moet een volledige set van alle certificaten worden verstrekt die in de afgelopen twaalf maanden zijn uitgegeven.
 
-> [!IMPORTANT]
+> [!NOTE]
 > De OPC-kluis voorbeeld toepassing ondersteunt het downloaden van alle certificaten die in de service voor documentatie worden gebruikt en gemaakt.
 
 ### <a name="document-the-sop-for-securely-deleting-cryptographic-keys"></a>De VKA documenteren voor het veilig verwijderen van cryptografische sleutels
@@ -220,7 +220,7 @@ De OPC kluis micro service VKA wordt beschreven in het [overzicht](overview-opc-
 
 Het intrekkings proces voor certificaten wordt beschreven in het [overzicht](overview-opc-vault-architecture.md) en de [manier waarop documenten worden beheerd](howto-opc-vault-manage.md) .
     
-### <a name="document-certification-authority-key-generation-ceremony"></a>Ceremonie voor het genereren van certificerings instanties 
+### <a name="document-certification-authority-ca-key-generation-ceremony"></a>Ceremonie voor het genereren van certificerings instanties (CA) 
 
 De CA-sleutel van de certificerings instantie die wordt gegenereerd in de OPC-kluis micro service, wordt vereenvoudigd door de beveiligde opslag in azure-sleutel kluis en wordt beschreven in de documentatie [over het beheren](howto-opc-vault-manage.md) van het beheer.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b5c0a045fe932db38666559ee415d7b27aa11e4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614185"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996450"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Gids voor de prestaties en schaal baarheid van de Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
@@ -41,30 +41,30 @@ Na het lezen van dit artikel, kunt u zich de volgende vragen beantwoorden:
 
 ADF biedt een serverloze architectuur die parallellisme op verschillende niveaus mogelijk maakt, zodat ontwikkel aars pijp lijnen kunnen bouwen om uw netwerk bandbreedte en opslag-IOPS en band breedte optimaal te benutten voor de door Voer van gegevens verplaatsing voor uw omgeving.  Dit betekent dat de door u gewenste door Voer kan worden geschat door de minimale door voer te meten die wordt aangeboden door de brongegevens opslag, het doel gegevens archief en de netwerk bandbreedte tussen de bron en de bestemming.  In de volgende tabel wordt de duur van de kopie berekend op basis van de gegevens grootte en de bandbreedte limiet voor uw omgeving. 
 
-| Gegevens grootte \ band breedte | 50 Mbps    | 100 Mbps  | 200 Mbps  | 500 Mbps  | 1 Gbps   | 10 Gbps  |
-| --------------------- | ---------- | --------- | --------- | --------- | -------- | -------- |
-| 1 GB                  | 2,7 minuten    | 1,4 minuten   | 0,7 minuten   | 0,3 minuten   | 0,1 minuten  | 0,0 minuten  |
-| 10 GB                 | 27,3 minuten   | 13,7 minuten  | 6,8 minuten   | 2,7 minuten   | 1,3 minuten  | 0,1 minuten  |
-| 100 GB                | 4,6 uur    | 2,3 uur   | 1,1 uur   | 0,5 uur   | 0,2 uur  | 0,0 uur  |
-| 1 TB                  | 46,6 uur   | 23,3 uur  | 11,7 uur  | 4,7 uur   | 2,3 uur  | 0,2 uur  |
-| 10 TB                 | 19,4 dagen  | 9,7 dagen  | 4,9 dagen  | 1,9 dagen  | 0,9 dagen | 0,1 dagen |
-| 100 TB                | 194,2 dagen | 97,1 dagen | 48,5 dagen | 19,4 dagen | 9,5 dagen | 0,9 dagen |
-| 1 PB                  | 64,7 mo    | 32,4 mo   | 16,2 mo   | 6,5 mo    | 3,2 mo   | 0,3 mo   |
-| 10 PB                 | 647,3 mo   | 323,6 mo  | 161,8 mo  | 64,7 mo   | 31,6 mo  | 3,2 mo   |
+| Gegevens grootte/ <br/> bandbreedte | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
+| --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
+| **1 GB**                    | 2,7 minuten    | 1,4 minuten   | 0,3 minuten   | 0,1 minuten  | 0,03 minuten | 0,01 minuten | 0,0 minuten   |
+| **10 GB**                   | 27,3 minuten   | 13,7 minuten  | 2,7 minuten   | 1,3 minuten  | 0,3 minuten  | 0,1 minuten  | 0,03 minuten  |
+| **100 GB**                  | 4,6 uur    | 2,3 uur   | 0,5 uur   | 0,2 uur  | 0,05 uur | 0,02 uur | 0,0 uur   |
+| **1 TB**                    | 46,6 uur   | 23,3 uur  | 4,7 uur   | 2,3 uur  | 0,5 uur  | 0,2 uur  | 0,05 uur  |
+| **10 TB**                   | 19,4 dagen  | 9,7 dagen  | 1,9 dagen  | 0,9 dagen | 0,2 dagen | 0,1 dagen | 0,02 dagen |
+| **100 TB**                  | 194,2 dagen | 97,1 dagen | 19,4 dagen | 9,7 dagen | 1,9 dagen | 1 dagen   | 0,2 dagen  |
+| **1 PB**                    | 64,7 mo    | 32,4 mo   | 6,5 mo    | 3,2 mo   | 0,6 mo   | 0,3 mo   | 0,06 mo   |
+| **10 PB**                   | 647,3 mo   | 323,6 mo  | 64,7 mo   | 31,6 mo  | 6,5 mo   | 3,2 mo   | 0,6 mo    |
 
 ADF-kopie is schaalbaar op verschillende niveaus:
 
 ![de schaal van ADF kopiëren](media/copy-activity-performance/adf-copy-scalability.png)
 
-- Eén Kopieer activiteit kan profiteren van schaal bare reken bronnen: wanneer u Azure Integration Runtime gebruikt, kunt u [Maxi maal 256 DIUs](#data-integration-units) voor elke Kopieer activiteit op serverloze wijze opgeven. Wanneer u zelf-hostende Integration Runtime gebruikt, kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal 4 knoop punten](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), en met één Kopieer activiteit wordt de bestands set gepartitioneerd op alle knoop punten.
-- Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads.
 - De controle stroom van ADF kan meerdere Kopieer activiteiten parallel starten, bijvoorbeeld [voor elke lus](control-flow-for-each-activity.md).
+- Eén Kopieer activiteit kan profiteren van schaal bare reken bronnen: wanneer u Azure Integration Runtime gebruikt, kunt u [Maxi maal 256 DIUs](#data-integration-units) voor elke Kopieer activiteit op serverloze wijze opgeven. Wanneer u zelf-hostende Integration Runtime gebruikt, kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal 4 knoop punten](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), en met één Kopieer activiteit wordt de bestands set gepartitioneerd op alle knoop punten.
+- Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads [parallel](#parallel-copy).
 
 ## <a name="performance-tuning-steps"></a>Prestaties afstemmen stappen
 
 Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service af te stemmen met de Kopieer activiteit.
 
-1. **Een basis lijn vaststellen.** Test uw pijp lijn tijdens de ontwikkelings fase met behulp van de Kopieer activiteit op basis van een representatief gegevens voorbeeld. Verzamel Details van de uitvoerings gegevens en prestatie kenmerken na het controleren van de [activiteit](copy-activity-overview.md#monitoring).
+1. **Haal een test gegevensset op en stel een basis lijn in.** Test uw pijp lijn tijdens de ontwikkelings fase met behulp van de Kopieer activiteit op basis van een representatief gegevens voorbeeld. De gegevensset die u kiest, moet uw typische gegevens patronen vertegenwoordigen (mapstructuur, bestands patroon, gegevens schema enzovoort) en is groot genoeg om de Kopieer prestaties te evalueren, bijvoorbeeld omdat het 10 minuten of langer duurt voordat de Kopieer activiteit is voltooid. Verzamel Details van de uitvoerings gegevens en prestatie kenmerken na het controleren van de [activiteit](copy-activity-overview.md#monitoring).
 
 2. **De prestaties van één Kopieer activiteit maximaliseren**:
 
@@ -78,19 +78,19 @@ Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service 
 
    De Kopieer activiteit moet bijna perfect worden geschaald wanneer u de instelling DIU verhoogt.  Als u de DIU-instelling die u niet ziet de door Voer dubbelklikt, kunnen er twee dingen gebeuren:
 
-   - Het specifieke Kopieer patroon dat u uitvoert, heeft geen voor deel om meer DIUs toe te voegen.  Hoewel u een grotere DIU-waarde hebt opgegeven, heeft het gebruikte werkelijke DIU hetzelfde gebleven. Daarom krijgt u dezelfde door Voer als voorheen.  Als dit het geval is, gaat u naar stap #3
+   - Het specifieke Kopieer patroon dat u uitvoert, heeft geen voor deel om meer DIUs toe te voegen.  Hoewel u een grotere DIU-waarde hebt opgegeven, heeft het gebruikte werkelijke DIU hetzelfde gebleven. Daarom krijgt u dezelfde door Voer als voorheen.  Als dit het geval is, maximaliseert u de cumulatieve door voer door meerdere exemplaren gelijktijdig te verwijzen naar stap 3.
    - Door meer DIUs toe te voegen (meer paarden kracht) en zo een hogere snelheid van gegevens extractie, overdracht en laden te hebben, kan het brongegevens archief, het netwerk tussen of het doel gegevens archief het knel punt hebben bereikt en mogelijk wordt beperkt.  Als dit het geval is, neemt u contact op met de beheerder van uw gegevens opslag of uw netwerk beheerder om de bovengrens in te stellen, of door de DIU-instelling te verlagen totdat de beperking stopt.
 
    **Als de Kopieer activiteit wordt uitgevoerd op een zelf-hostende Integration Runtime:**
 
-   U wordt aangeraden een toegewezen computer gescheiden te gebruiken van de server die als host fungeert voor de gegevens opslag voor de integratie-runtime
+   U kunt het beste een toegewezen computer gebruiken die onafhankelijk is van de server die als host fungeert voor de gegevens opslag voor de integratie-runtime.
 
    Begin met de standaard waarden voor de instelling voor [parallelle kopieën](#parallel-copy) en gebruik één knoop punt voor de zelf-hostende IR.  Voer een prestatie test uit en Bekijk de bereikte prestaties.
 
    Als u een hogere door voer wilt doen, kunt u de zelf-hostende IR schalen of uitschalen:
 
    - Als de CPU en het beschik bare geheugen op het zelf-hostende IR-knoop punt niet volledig worden gebruikt, maar de uitvoering van gelijktijdige taken de limiet bereikt, moet u omhoog schalen door het aantal gelijktijdige taken dat kan worden uitgevoerd op een knoop punt te verhogen.  Zie [hier](create-self-hosted-integration-runtime.md#scale-up) voor instructies.
-   - Als de CPU daarentegen hoog is op het zelf-hostende IR-knoop punt en het beschik bare geheugen laag is, kunt u een nieuw knoop punt toevoegen om de belasting over meerdere knoop punten te verg Roten.  Zie [hier](create-self-hosted-integration-runtime.md#high-availability-and-scalability) voor instructies.
+   - Als de CPU daarentegen hoog is op het zelf-hostende IR-knoop punt of het beschik bare geheugen is laag, kunt u een nieuw knoop punt toevoegen om de belasting over meerdere knoop punten te verg Roten.  Zie [hier](create-self-hosted-integration-runtime.md#high-availability-and-scalability) voor instructies.
 
    Wanneer u de capaciteit van de zelf-hostende IR opschaalt of uitbreidt, herhaalt u de uitvoering van de prestatie test om te zien of u een betere door Voer krijgt.  Als de door Voer niet meer wordt verbeterd, is het mogelijk dat het brongegevens archief, het netwerk tussen of het doel gegevens archief het knel punt heeft bereikt en het proces kan worden vertraagd. Als dit het geval is, neemt u contact op met de beheerder van uw gegevens opslag of uw netwerk beheerder om de bovengrens te verhogen, of gaat u terug naar de vorige schaal instelling voor de zelf-hostende IR. 
 
@@ -98,9 +98,7 @@ Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service 
 
    Nu u de prestaties van één Kopieer activiteit hebt gemaximaliseerd, kunt u, als u nog niet de bovengrens voor door Voer van uw omgeving hebt bereikt: netwerk, brongegevens archief en doel gegevens opslag, meerdere Kopieer activiteiten tegelijk uitvoeren met behulp van ADF controle stroom constructies zoals [voor elke lus](control-flow-for-each-activity.md).
 
-4. **Prestaties diagnosticeren en optimaliseren.** Als de prestaties die u ziet niet voldoen aan uw verwachtingen, identificeert u prestatie knelpunten. Vervolgens prestaties als u wilt verwijderen of het effect van knelpunten te optimaliseren.
-
-   In sommige gevallen ziet u, wanneer u een Kopieer activiteit uitvoert in Azure Data Factory, het bericht ' prestatie afstemmings tips ' boven op de bewaking van de [Kopieer activiteit](copy-activity-overview.md#monitor-visually), zoals wordt weer gegeven in het volgende voor beeld. Het bericht vertelt u het knel punt dat is geïdentificeerd voor de opgegeven kopie-uitvoering. Ook wordt u begeleid bij het verbeteren van de door Voer van de Kopieer capaciteit. De tips voor het afstemmen van de prestaties bieden momenteel suggesties als:
+4. **Tips voor het afstemmen van prestaties en optimaliserings functies.** In sommige gevallen ziet u, wanneer u een Kopieer activiteit uitvoert in Azure Data Factory, het bericht ' prestatie afstemmings tips ' boven op de bewaking van de [Kopieer activiteit](copy-activity-overview.md#monitor-visually), zoals wordt weer gegeven in het volgende voor beeld. Het bericht vertelt u het knel punt dat is geïdentificeerd voor de opgegeven kopie-uitvoering. Ook wordt u begeleid bij het verbeteren van de door Voer van de Kopieer capaciteit. De tips voor het afstemmen van de prestaties bieden momenteel suggesties als:
 
    - Gebruik poly Base als u gegevens naar Azure SQL Data Warehouse kopieert.
    - Verg root Azure Cosmos DB aanvraag eenheden of Azure SQL Database Dtu's (data base-doorvoer eenheden) wanneer de resource aan de kant van het gegevens archief het knel punt is.
@@ -114,12 +112,11 @@ Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service 
 
    ![Bewaking met tips voor het afstemmen van prestaties kopiëren](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-   Daarnaast volgen hier enkele algemene overwegingen. Een volledige beschrijving van de prestatie diagnose valt buiten het bereik van dit artikel.
+   Daarnaast moet u rekening houden met de volgende functies van prestatie optimalisatie:
 
-   - Prestatie optimalisatie functies:
-     - [Parallelle kopiëren](#parallel-copy)
-     - [Eenheden voor gegevensintegratie](#data-integration-units)
-     - [Gefaseerd kopiëren](#staged-copy)
+   - [Parallelle kopiëren](#parallel-copy)
+   - [Eenheden voor gegevensintegratie](#data-integration-units)
+   - [Gefaseerd kopiëren](#staged-copy)
    - [Schaal baarheid van zelf-hostende Integration runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **Breid de configuratie uit naar uw volledige gegevensset.** Wanneer u tevreden bent met de resultaten en prestaties van de uitvoering, kunt u de definitie en pijp lijn uitvouwen om uw hele gegevensset te bedekken.
@@ -136,7 +133,9 @@ Azure Data Factory biedt de volgende functies voor prestatie optimalisatie:
 
 Een gegevens integratie-eenheid is een meting die de kracht vertegenwoordigt (een combi natie van CPU, geheugen en netwerk bron toewijzing) van één eenheid in Azure Data Factory. De gegevens integratie-eenheid is alleen van toepassing op [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime), maar niet [zelf-hostende Integration runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-De toegestane DIUs om de uitvoering van een Kopieer activiteit te stimuleren, ligt tussen 2 en 256. Indien niet opgegeven, bevat de volgende tabel de standaard-DIUs gebruikt in scenario's voor verschillende kopiëren:
+Er wordt een bedrag in rekening gebracht **met \* de gebruikte \* DIUs kopie duur eenheids prijs/DIU-uur**. Bekijk [hier](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)de huidige prijzen. Lokale valuta en afzonderlijke korting kunnen per abonnements type worden toegepast.
+
+De toegestane DIUs om de uitvoering van een Kopieer activiteit te stimuleren, ligt **tussen 2 en 256**. Als u dit niet opgeeft of als u ' automatisch ' kiest in de gebruikers interface, Data Factory de optimale DIU-instelling dynamisch Toep assen op basis van uw combi natie van bron-Sink en gegevens patroon. De volgende tabel bevat de standaard DIUs die worden gebruikt in verschillende Kopieer scenario's:
 
 | Scenario kopiëren | Standaard DIUs bepaald door de service |
 |:--- |:--- |
@@ -151,7 +150,7 @@ U kunt de DIUs die wordt gebruikt voor elke Kopieer bewerking zien in de uitvoer
 > [!NOTE]
 > De instelling van DIUs die groter is dan vier, is momenteel alleen van toepassing als u meerdere bestanden kopieert van Azure Storage, Azure Data Lake Storage, Amazon S3, Google Cloud Storage, Cloud FTP of Cloud SFTP naar andere gegevens archieven in de Cloud.
 
-**Voorbeeld**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -173,10 +172,6 @@ U kunt de DIUs die wordt gebruikt voor elke Kopieer bewerking zien in de uitvoer
 ]
 ```
 
-#### <a name="data-integration-units-billing-impact"></a>Data-integratie eenheden facturering impact
-
-Houd er rekening mee dat u wordt gefactureerd op basis van de totale tijd van de Kopieer bewerking. De totale duur die wordt gefactureerd voor het verplaatsen van gegevens is de som van de duur in DIUs. Als een kopieertaak voorheen een uur duren voordat met twee cloudeenheden en nu wordt 15 minuten met acht cloudeenheden, blijft de totale factuur bijna hetzelfde.
-
 ### <a name="parallel-copy"></a>Parallelle kopie
 
 U kunt de eigenschap **parallelCopies** gebruiken om aan te geven in welke parallellisme u de Kopieer activiteit wilt gebruiken. U kunt deze eigenschap beschouwen als het maximum aantal threads in de Kopieer activiteit dat kan worden gelezen vanuit uw bron of naar uw Sink-gegevens opslag kunt schrijven, parallel.
@@ -193,6 +188,15 @@ Voor elke uitvoering van de Kopieer activiteit bepaalt Azure Data Factory het aa
 > Wanneer u gegevens kopieert tussen archieven op basis van bestanden, biedt het standaard gedrag doorgaans de beste door voer. Het standaard gedrag wordt automatisch bepaald op basis van het patroon van het bron bestand.
 
 Als u de belasting wilt beheren op machines die uw gegevens archieven hosten, of als u de Kopieer prestaties wilt afstemmen, kunt u de standaard waarde overschrijven en een waarde opgeven voor de eigenschap **parallelCopies** . De waarde moet een geheel getal groter dan of gelijk aan 1 zijn. Tijdens runtime gebruikt de Kopieer activiteit een waarde die kleiner is dan of gelijk is aan de waarde die u hebt ingesteld.
+
+**Punten om te noteren:**
+
+- Wanneer u gegevens kopieert tussen archieven op basis van bestanden, bepaalt **parallelCopies** de parallelle factor op bestands niveau. De Chunking binnen één bestand vindt onder automatisch en transparant plaats. Het is ontworpen om de beste geschikte segment grootte te gebruiken voor een bepaald type brongegevens opslag om gegevens parallel en rechthoekig naar **parallelCopies**te laden. Het werkelijke aantal parallelle exemplaren data movement service wordt gebruikt voor de kopieerbewerking tijdens runtime is niet meer dan het aantal bestanden dat u hebt. Als het Kopieer gedrag **mergeFile**is, kan de Kopieer activiteit niet profiteren van parallellisme op bestands niveau.
+- Wanneer u gegevens kopieert uit winkels die niet op bestanden zijn gebaseerd (met uitzonde ring van [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) -connector als bron waarvoor partitionering van gegevens is ingeschakeld) voor archieven die zijn gebaseerd op bestand, de service voor gegevens verplaatsing Hiermee wordt de eigenschap **parallelCopies** genegeerd. Zelfs als parallelle uitvoering is opgegeven, wordt deze niet toegepast in dit geval.
+- De eigenschap **parallelCopies** is rechthoekig naar **dataIntegrationUnits**. De eerste wordt in de eenheden voor de integratie van gegevens geteld.
+- Wanneer u een waarde voor de eigenschap **parallelCopies** opgeeft, moet u rekening houden met de toename van de belasting van uw bron-en Sink-gegevens opslag. Houd ook rekening met de toename van de belasting voor de zelf-hostende Integration runtime als de Kopieer activiteit hiervoor is gemachtigd, bijvoorbeeld voor hybride kopieën. Deze belasting toename treedt vooral op wanneer u meerdere activiteiten of gelijktijdige uitvoeringen hebt van dezelfde activiteiten die worden uitgevoerd op hetzelfde gegevens archief. Als u merkt dat het gegevens archief of de zelf-hostende Integration runtime wordt overspoeld met de belasting, verlaagt u de **parallelCopies** -waarde om de belasting te ontlasten.
+
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -213,13 +217,6 @@ Als u de belasting wilt beheren op machines die uw gegevens archieven hosten, of
     }
 ]
 ```
-
-**Punten om te noteren:**
-
-* Wanneer u gegevens kopieert tussen archieven op basis van bestanden, bepaalt **parallelCopies** de parallelle factor op bestands niveau. De Chunking binnen één bestand vindt onder automatisch en transparant plaats. Het is ontworpen om de beste geschikte segment grootte te gebruiken voor een bepaald type brongegevens opslag om gegevens parallel en rechthoekig naar **parallelCopies**te laden. Het werkelijke aantal parallelle exemplaren data movement service wordt gebruikt voor de kopieerbewerking tijdens runtime is niet meer dan het aantal bestanden dat u hebt. Als het Kopieer gedrag **mergeFile**is, kan de Kopieer activiteit niet profiteren van parallellisme op bestands niveau.
-* Wanneer u gegevens kopieert uit winkels die niet op bestanden zijn gebaseerd (met uitzonde ring van [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) -connector als bron waarvoor partitionering van gegevens is ingeschakeld) voor archieven die zijn gebaseerd op bestand, de service voor gegevens verplaatsing Hiermee wordt de eigenschap **parallelCopies** genegeerd. Zelfs als parallelle uitvoering is opgegeven, wordt deze niet toegepast in dit geval.
-* De eigenschap **parallelCopies** is rechthoekig naar **dataIntegrationUnits**. De eerste wordt in de eenheden voor de integratie van gegevens geteld.
-* Wanneer u een waarde voor de eigenschap **parallelCopies** opgeeft, moet u rekening houden met de toename van de belasting van uw bron-en Sink-gegevens opslag. Houd ook rekening met de toename van de belasting voor de zelf-hostende Integration runtime als de Kopieer activiteit hiervoor is gemachtigd, bijvoorbeeld voor hybride kopieën. Deze belasting toename treedt vooral op wanneer u meerdere activiteiten of gelijktijdige uitvoeringen hebt van dezelfde activiteiten die worden uitgevoerd op hetzelfde gegevens archief. Als u merkt dat het gegevens archief of de zelf-hostende Integration runtime wordt overspoeld met de belasting, verlaagt u de **parallelCopies** -waarde om de belasting te ontlasten.
 
 ### <a name="staged-copy"></a>Gefaseerd kopiëren
 
@@ -305,5 +302,5 @@ Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal onde
 Zie de andere artikelen over Kopieer activiteiten:
 
 - [Overzicht kopieeractiviteit](copy-activity-overview.md)
-- [Schema toewijzing van Kopieer activiteit](copy-activity-schema-and-type-mapping.md)
-- [Fouttolerantie van activiteit kopiëren](copy-activity-fault-tolerance.md)
+- [Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure](data-migration-guidance-overview.md)
+- [Gegevens migreren van Amazon S3 naar Azure Storage](data-migration-guidance-s3-azure-storage.md)

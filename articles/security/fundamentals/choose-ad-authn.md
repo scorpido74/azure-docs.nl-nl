@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928035"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997818"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing 
 
@@ -67,6 +67,9 @@ In het volgende gedeelte kunt u bepalen welke verificatie methode het meest gesc
 
 ## <a name="decision-tree"></a>Beslissingsstructuur
 
+> [!NOTE]
+> PTA werkt alleen met een alternatieve ID wanneer UserPrincipalName als alternatieve ID is gekozen. Alleen dan wordt de on-premises UserPrincipalName gesynchroniseerd van AD naar AAD. Zie [Pass Through-verificatie ondersteunen "alternatieve id" als gebruikers naam in plaats van "userPrincipalName"](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)voor meer informatie.
+
 ![Beslissings structuur voor Azure AD-verificatie](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 Details over beslissings vragen:
@@ -118,7 +121,7 @@ Raadpleeg de implementatie van [wacht woord-hash synchronisatie](../../active-di
 
 * **Geavanceerde scenario's**. Pass-Through-verificatie dwingt het on-premises account beleid af op het moment dat u zich aanmeldt. Bijvoorbeeld: de toegang wordt geweigerd wanneer de account status van een on-premises gebruiker is uitgeschakeld, vergrendeld of het [wacht woord is verlopen](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) of buiten het uur valt waarop de gebruiker zich mag aanmelden. 
 
-    Organisaties waarvoor multi-factor Authentication met Pass Through-verificatie is vereist, moeten gebruikmaken van de [aangepaste besturings elementen](../../active-directory/conditional-access/controls.md#custom-controls-preview)Azure multi-actor Authentication (MFA) of voorwaardelijke toegang. Deze organisaties kunnen een multi-factor-verificatie methode van derden of een lokale meervoudige authenticatie gebruiken die afhankelijk is van Federatie. Geavanceerde functies vereisen dat wachtwoord-hash-synchronisatie wordt geïmplementeerd, ongeacht of u Pass-Through-verificatie kiest. Een voor beeld is het rapport met gelekte referenties van identiteits beveiliging.
+    Organisaties waarvoor multi-factor Authentication met Pass Through-verificatie is vereist, moeten gebruikmaken van Azure Multi-Factor Authentication (MFA) of [aangepaste besturings elementen voor voorwaardelijke toegang](../../active-directory/conditional-access/controls.md#custom-controls-preview). Deze organisaties kunnen een multi-factor-verificatie methode van derden of een lokale meervoudige authenticatie gebruiken die afhankelijk is van Federatie. Geavanceerde functies vereisen dat wachtwoord-hash-synchronisatie wordt geïmplementeerd, ongeacht of u Pass-Through-verificatie kiest. Een voor beeld is het rapport met gelekte referenties van identiteits beveiliging.
 
 * **Bedrijfs continuïteit**. We raden u aan om twee extra Pass-Through-verificatie agenten te implementeren. Deze extra's bevinden zich in aanvulling op de eerste agent op de Azure AD Connect-server. Deze extra implementatie zorgt voor een hoge Beschik baarheid van verificatie aanvragen. Wanneer er drie agents zijn geïmplementeerd, kan een agent nog steeds mislukken wanneer een andere agent niet beschikbaar is voor onderhoud. 
 

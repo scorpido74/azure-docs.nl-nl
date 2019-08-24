@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 90a9c67a11b54490b801ec65f691b4ae853ab4f2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972217"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997891"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator gebruiken voor lokale ontwikkeling en tests
 
@@ -254,11 +254,11 @@ Typ `CosmosDB.Emulator.exe /?` bij de opdrachtprompt om een lijst met opties te 
 |EnableTableEndpoint | Hiermee schakelt u Azure Table-API | CosmosDB. emulator. exe/EnableTableEndpoint | |
 |TablePort | Het poort nummer dat moet worden gebruikt voor het Azure-tabel eindpunt. De standaard waarde is 8902. | CosmosDB. emulator. exe/TablePort =\<poort\> | \<poort\>: Enkel poortnummer|
 | KeyFile | Lees de autorisatie sleutel van het opgegeven bestand. De/GenKeyFile-optie gebruiken om een keyfile te genereren | CosmosDB. emulator. exe/keyfile =\<bestands naam\> | \<bestands\>naam: Pad naar het bestand |
-| ResetDataPath | Verwijdert recursief alle bestanden in het opgegeven pad. Als u geen pad opgeeft, wordt standaard%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. emulator. exe/ResetDataPath [=\<pad >] | \<pad\>: Pad naar bestand  |
+| ResetDataPath | Verwijdert recursief alle bestanden in het opgegeven pad. Als u geen pad opgeeft, wordt standaard%LOCALAPPDATA%\CosmosDbEmulator | CosmosDB. emulator. exe/ResetDataPath =\<pad > | \<pad\>: Pad naar bestand  |
 | StartTraces  |  Verzamelen van traceer logboeken voor fout opsporing starten. | CosmosDB. emulator. exe/StartTraces | |
 | StopTraces     | Stoppen met het verzamelen van traceer logboeken voor fout opsporing. | CosmosDB. emulator. exe/StopTraces  | |
 |FailOnSslCertificateNameMismatch | Standaard genereert de emulator het zelfondertekende SSL-certificaat opnieuw als het SAN van het certificaat niet de domein naam van de emulator host, het lokale IPv4-adres, ' localhost ' en ' 127.0.0.1 ' bevat. Als deze optie is ingeschakeld, mislukt de emulator bij het opstarten. Vervolgens moet u de/GenCert-optie gebruiken om een nieuw zelfondertekend SSL-certificaat te maken en te installeren. | CosmosDB. emulator. exe/FailOnSslCertificateNameMismatch  | |
-| GenCert | Genereer en installeer een nieuw zelfondertekend SSL-certificaat. u kunt eventueel een door komma's gescheiden lijst met extra DNS-namen gebruiken om toegang te krijgen tot de emulator via het netwerk. | CosmosDB. emulator. exe/GenCert [ \<door komma's gescheiden lijst met extra DNS-namen\>] | |
+| GenCert | Genereer en installeer een nieuw zelfondertekend SSL-certificaat. u kunt eventueel een door komma's gescheiden lijst met extra DNS-namen gebruiken om toegang te krijgen tot de emulator via het netwerk. | CosmosDB. emulator. exe/GenCert =\<DNS-namen\> |\<DNS-namen\>: Optionele, door komma's gescheiden lijst met extra DNS-namen  |
 | DirectPorts |Specificeert de poorten die worden gebruikt voor rechtstreekse connectiviteit. Standaardwaarden zijn 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>: Door komma's gescheiden lijst met 4 poorten |
 | Sleutel |De autorisatiesleutel voor de emulator. De sleutel moet de base 64-codering zijn van een 64-byte-vector. | CosmosDB.Emulator.exe /Key:\<sleutel\> | \<sleutel\>: De sleutel moet de base 64-codering zijn van een 64-byte-vector|
 | EnableRateLimiting | Geeft aan dat het beperkingsgedrag van de aanvraagsnelheid is ingeschakeld. |CosmosDB.Emulator.exe /EnableRateLimiting | |

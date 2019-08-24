@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640878"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990546"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center aanbevelingen gebruiken om de beveiliging te verbeteren
 U kunt de kans op een belang rijke beveiligings gebeurtenis verminderen door een beveiligings beleid te configureren en vervolgens de aanbevelingen te implementeren die door Azure Security Center worden gegeven. In dit artikel leest u hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. 
@@ -75,6 +75,6 @@ Als u aanbevelingen in Security Center bewaken, kunt u beveiligings problemen el
 ## <a name="next-steps"></a>Volgende stappen
 Zorg ervoor dat u een controle proces hebt, waarin u regel matig de aanbevelingen in Security Center controleert, zodat u ervoor kunt zorgen dat uw resources in de loop van de tijd veilig blijven.
 
-In dit scenario wordt uitgelegd hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen. Raadpleeg het [scenario voor reactie](security-center-incident-response.md) op incidenten voor meer informatie over hoe u een reactie plan voor incidenten hebt voordat een aanval plaatsvindt.
+In dit scenario wordt uitgelegd hoe u beveiligings beleid en aanbevelingen in Security Center kunt gebruiken om een beveiligings aanval te verhelpen.
 
-Meer informatie over hoe u kunt reageren op bedreigingen met [reactie](security-center-incident-response.md)op incidenten.
+Meer informatie over hoe u kunt reageren op bedreigingen met [beveiligings waarschuwingen beheren en erop reageren](security-center-managing-and-responding-alerts.md).

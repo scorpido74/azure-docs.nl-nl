@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640363"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981737"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Advanced Threat Protection voor Azure Cosmos DB
 
 Advanced Threat Protection voor Azure Cosmos DB biedt een extra beveiligingslaag die ongebruikelijke en mogelijk schadelijke pogingen detecteert om Azure Cosmos DB accounts te openen of misbruik te maken. Met deze beveiligingslaag kunt u bedreigingen aanpakken, zelfs zonder een beveiligings expert, en ze integreren met centrale beveiligings bewakings systemen.
 
-Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met  [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en oplossen van de bedreigingen.
+Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en oplossen van de bedreigingen.
 
 > [!NOTE]
 >
@@ -31,16 +31,16 @@ Voor een volledige onderzoek van de beveiligings waarschuwingen, is het aanbevol
 
 ### <a name="set-up-atp-using-the-portal"></a>ATP instellen met behulp van de portal
 
-1. Start de Azure Portal op  [https://portal.azure.com](https://portal.azure.com/).
+1. Start de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
 
 2. Selecteer vanuit het Azure Cosmos DB-account in het menu **instellingen** de optie **geavanceerde beveiliging**.
 
     ![ATP instellen](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
 
-3. Op de Blade **Geavanceerde beveiligings** configuratie:
+3. Op de Blade **Geavanceerde beveiligings** configuratie:
 
     * Klik op de optie **geavanceerde beveiliging tegen bedreigingen** om deze **in**te stellen op aan.
-    * Klik op **Opslaan** om het nieuwe of bijgewerkte geavanceerde beveiligings beleid voor bedreigingen op te slaan.   
+    * Klik op **Opslaan** om het nieuwe of bijgewerkte geavanceerde beveiligings beleid voor bedreigingen op te slaan.   
 
 ### <a name="set-up-atp-using-rest-api"></a>ATP instellen met behulp van REST API
 
@@ -75,5 +75,5 @@ Er wordt ook een e-mail melding met de waarschuwings Details en aanbevolen actie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Diagnostische logboek registratie in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
-* Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* Meer informatie over [Diagnostische logboek registratie in azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
+* Meer informatie over [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

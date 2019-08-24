@@ -1,5 +1,5 @@
 ---
-title: Kennisgeving van Gateway migratie voor Azure SQL Database van Gen2 naar Gen3 | Microsoft Docs
+title: Kennisgeving van migratie van Gateway verkeer voor Azure SQL Database | Microsoft Docs
 description: Artikel geeft gebruikers informatie over de migratie van IP-adressen van Azure SQL Database gateways
 services: sql-database
 ms.service: sql-database
@@ -10,23 +10,23 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 85691464684ff327c01a85bf357514f447564dd7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568120"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981294"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 
-Naarmate de Azure-infra structuur wordt verbeterd, zal micro soft hardware periodiek vernieuwen om ervoor te zorgen dat we de best mogelijke klant ervaring bieden. In de komende maanden kunnen we gateways toevoegen die zijn gebouwd op nieuwere hardware en gateways uit bedrijf nemen die op oudere hardware in sommige regio's zijn gebouwd.  
+Naarmate de Azure-infra structuur wordt verbeterd, zal micro soft hardware periodiek vernieuwen om ervoor te zorgen dat we de best mogelijke klant ervaring bieden. In de komende maanden kunnen we gateways toevoegen die zijn gebouwd op nieuwere hardware-generaties, verkeer naar hen migreren en uiteindelijk buiten gebruik stellen van gateways die zijn gebouwd op oudere hardware in sommige regio's.  
 
 Klanten worden op de hoogte gesteld via e-mail en in het Azure Portal goed van elke wijziging aan gateways die beschikbaar zijn in elke regio. De meest recente informatie wordt bewaard in de tabel met [IP-adressen van de Azure SQL database gateway](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) .
 
 ## <a name="impact-of-this-change"></a>Impact van deze wijziging
 
-De eerste ronde van gateway buiten gebruik stellen is gepland voor 1 september 2019 in de volgende regio's:
-
+De eerste afronding van verkeer migratie naar nieuwere gateways is gepland voor **14 oktober 2019** in de volgende regio's:
+- Brazilië - zuid
 - US - west
 - Europa -west
 - East US
@@ -40,12 +40,14 @@ De eerste ronde van gateway buiten gebruik stellen is gepland voor 1 september 2
 - US - oost 2
 - Azië - oost
 
-Het buiten gebruik gestelde IP-adres stopt met het accepteren van verkeer en eventuele nieuwe verbindings pogingen worden doorgestuurd naar een van de gateways in de regio.
+Bij de migratie van verkeer wordt het open bare IP-adres gewijzigd dat DNS voor uw SQL Database verhelpt.
+U hebt de gevolgen
+- Het IP-adres voor een bepaalde gateway in uw on-premises firewall is vastgelegd.
+- Subnetten die gebruikmaken van micro soft. SQL als een service-eind punt, maar niet kunnen communiceren met de IP-adressen van de gateway
 
-De impact van deze wijziging wordt niet weer geven:
-
-- Klanten die gebruikmaken van omleiding als verbindings beleid zien geen gevolgen.
-- Verbindingen met SQL Database van binnen Azure en het gebruik van service tags worden niet beïnvloed.
+U hebt geen invloed op 
+- Omleiding als verbindings beleid
+- Verbindingen met SQL Database van binnen Azure en met behulp van service Tags
 - Verbindingen die zijn gemaakt met ondersteunde versies van het JDBC-stuur programma voor SQL Server, zien geen invloed. Zie [micro soft JDBC-stuur programma voor SQL Server downloaden](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)voor een ondersteunde versie van JDBC.
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>Wat u moet doen als dit van invloed is

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557863"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996571"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Gegevens uit Teradata kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -189,7 +189,7 @@ Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de Ter
 ### <a name="teradata-as-source"></a>Teradata als bron
 
 >[!TIP]
->Zie de sectie [parallelle kopie van Teradata](#parallel-copy-from-teradata) voor informatie over het efficiënt laden van gegevens met behulp van gegevens partitioneren.
+>Als u gegevens op efficiënte wijze wilt laden met behulp van gegevens partitioneren, kunt u meer informatie vinden in het gedeelte [parallel kopiëren vanuit Teradata](#parallel-copy-from-teradata) .
 
 Als u gegevens wilt kopiëren uit Teradata, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
 
@@ -245,9 +245,9 @@ De Data Factory Teradata-connector biedt ingebouwde gegevens partities voor het 
 
 ![Scherm opname van partitie opties](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit op uw Teradata-bron om gegevens op partities te laden. De parallelle graad wordt bepaald door de [`parallelCopies`](copy-activity-performance.md#parallel-copy) instelling in de Kopieer activiteit. Als u bijvoorbeeld op vier hebt `parallelCopies` ingesteld, worden met Data Factory gelijktijdig vier query's gegenereerd en uitgevoerd op basis van de opgegeven partitie optie en instellingen. Elke query haalt een deel van de gegevens op uit de Teradata-data base.
+Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit op uw Teradata-bron om gegevens op partities te laden. De parallelle graad wordt bepaald door de [`parallelCopies`](copy-activity-performance.md#parallel-copy) instelling in de Kopieer activiteit. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, worden met Data Factory gelijktijdig vier query's gegenereerd en uitgevoerd op basis van uw opgegeven partitie optie en instellingen, en elke query haalt een deel van de gegevens op uit de Teradata-data base.
 
-Het is een goed idee om parallelle kopieën in te scha kelen met gegevenspartitionering, met name wanneer u grote hoeveel heden gegevens uit uw Teradata-data base laadt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's:
+Het is een goed idee om parallelle kopieën in te scha kelen met gegevenspartitionering, met name wanneer u grote hoeveel heden gegevens uit uw Teradata-data base laadt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval is de prestaties beter dan het schrijven naar één bestand.
 
 | Scenario                                                     | Voorgestelde instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

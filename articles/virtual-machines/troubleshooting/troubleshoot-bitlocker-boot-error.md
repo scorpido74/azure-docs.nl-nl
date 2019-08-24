@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 27a675982711f8d8f0b36ea0cc2600de45e97a6e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c96c8ef5e5bd9758cf270946da1e90bb12e8bca0
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348456"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998009"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-opstart fouten op een virtuele Azure-machine
 
@@ -127,26 +127,27 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
     ```
     In dit voor beeld is de gekoppelde besturingssysteem schijf station F. Zorg ervoor dat u de juiste stationsletter gebruikt. 
 
-    - Als de schijf is ontgrendeld met behulp van de BEK-sleutel. u kunt het BitLocker-probleem ook laten oplossen. 
+8. Nadat de schijf is ontgrendeld met behulp van de BEK-sleutel, ontkoppelt u de schijf van de virtuele machine voor herstel en maakt u de virtuele machine opnieuw met behulp van deze nieuwe besturingssysteem schijf.
 
-    - Als de schijf niet wordt ontgrendeld met behulp van de BEK-sleutel, kunt u beveiliging voor onderbrekingen gebruiken om BitLocker tijdelijk uit te scha kelen door de volgende opdracht uit te voeren
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Als u de virtuele machine opnieuw wilt bouwen met behulp van de dytem-schijf, moet u het station volledig ontsleutelen. U doet dit door de volgende opdracht uitvoeren:
+    > [!NOTE]
+    > Het wisselen van de besturingssysteem schijf wordt niet ondersteund voor Vm's die gebruikmaken van schijf versleuteling.
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  Ontkoppel de schijf van de herstel-VM en koppel de schijf vervolgens opnieuw aan de betrokken VM als een systeem schijf. Zie [problemen met een Windows-VM oplossen door de besturingssysteem schijf aan een herstel-VM te koppelen](troubleshoot-recovery-disks-windows.md)voor meer informatie.
+9. Als de nieuwe virtuele machine nog steeds niet normaal kan worden opgestart, voert u een van de volgende stappen uit nadat u het station hebt ontgrendeld:
+
+    - Stop de beveiliging om BitLocker tijdelijk uit te scha kelen door het volgende uit te voeren:
+
+                    manage-bde -protectors -disable F: -rc 0
+           
+    - Het station volledig ontsleutelen. U doet dit door de volgende opdracht uitvoeren:
+
+                    manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>Key Encryption Key-scenario
 
 Voer de volgende stappen uit voor een Key Encryption Key-scenario:
 
 1. Zorg ervoor dat voor het aangemelde gebruikers account de machtiging ' onverpakt ' is vereist in het Key Vault toegangs beleid in de **gebruiker | Sleutel machtigingen | Cryptografische bewerkingen | De sleutel**voor uitpakken.
-2. Sla de volgende scripts op in een. PS1-bestand:
+2. Sla het volgende script op in een. PS1-bestand:
 
     ```powershell
     #Set the Parameters for the script
@@ -184,6 +185,7 @@ Voer de volgende stappen uit voor een Key Encryption Key-scenario:
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -231,7 +233,7 @@ Voer de volgende stappen uit voor een Key Encryption Key-scenario:
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. Stel de para meters in. Het script verwerkt het KEK-geheim voor het maken van de BEK-sleutel en slaat deze vervolgens op in een lokale map op de virtuele machine voor herstel.
+3. Stel de para meters in. Het script verwerkt het KEK-geheim voor het maken van de BEK-sleutel en slaat deze vervolgens op in een lokale map op de virtuele machine voor herstel. Als er fouten optreden wanneer u het script uitvoert, raadpleegt u de sectie [script Troubleshooting](#script-troubleshooting) (Engelstalig).
 
 4. U ziet de volgende uitvoer wanneer het script begint:
 
@@ -254,17 +256,38 @@ Voer de volgende stappen uit voor een Key Encryption Key-scenario:
     ```
     In dit voor beeld is de gekoppelde besturingssysteem schijf station F. Zorg ervoor dat u de juiste stationsletter gebruikt. 
 
-    - Als de schijf is ontgrendeld met behulp van de BEK-sleutel. u kunt het BitLocker-probleem ook laten oplossen. 
+6. Nadat de schijf is ontgrendeld met behulp van de BEK-sleutel, ontkoppelt u de schijf van de virtuele machine voor herstel en maakt u de virtuele machine opnieuw met behulp van deze nieuwe besturingssysteem schijf. 
 
-    - Als de schijf niet wordt ontgrendeld met behulp van de BEK-sleutel, kunt u beveiliging voor onderbrekingen gebruiken om BitLocker tijdelijk uit te scha kelen door de volgende opdracht uit te voeren
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Als u de virtuele machine opnieuw wilt bouwen met behulp van de dytem-schijf, moet u het station volledig ontsleutelen. U doet dit door de volgende opdracht uitvoeren:
+    > [!NOTE]
+    > Het wisselen van de besturingssysteem schijf wordt niet ondersteund voor Vm's die gebruikmaken van schijf versleuteling.
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. Als de nieuwe virtuele machine nog steeds niet normaal kan worden opgestart, voert u een van de volgende stappen uit nadat u het station hebt ontgrendeld:
 
-6. Ontkoppel de schijf van de herstel-VM en koppel de schijf vervolgens opnieuw aan de betrokken VM als een systeem schijf. Zie [problemen met een Windows-VM oplossen door de besturingssysteem schijf aan een herstel-VM te koppelen](troubleshoot-recovery-disks-windows.md)voor meer informatie.
+    - Stop de beveiliging om BitLocker tijdelijk uit te scha kelen door de volgende opdracht uit te voeren:
+
+             manage-bde -protectors -disable F: -rc 0
+           
+    - Het station volledig ontsleutelen. U doet dit door de volgende opdracht uitvoeren:
+
+                    manage-bde -off F:
+## <a name="script-troubleshooting"></a>Script problemen oplossen
+
+**Fout: Kan bestand of assembly niet laden**
+
+Deze fout treedt op omdat de paden van de ADAL-Assembly's onjuist zijn. Als de AZ-module alleen is geïnstalleerd voor de huidige gebruiker, zijn de ADAL-Assembly's te `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`vinden in.
+
+U kunt ook zoeken `Az.Accounts` naar een map om het juiste pad te vinden.
+
+**Fout: Get-AzKeyVaultSecret of Get-AzKeyVaultSecret wordt niet herkend als de naam van een cmdlet**
+
+Als u de oude AZ Power shell-module gebruikt, moet u de twee opdrachten wijzigen `Get-AzureKeyVaultSecret` in `Get-AzureKeyVaultSecret`en.
+
+**Voor beelden van para meters**
+
+| Parameters  | Voor beeld van waarde  |Opmerkingen   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | De naam van de sleutel kluis die de sleutel opslaat |
+|$kekName   |mykey   | De naam van de sleutel die wordt gebruikt om de virtuele machine te versleutelen|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | De naam van het geheim van de VM-sleutel|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. BEK |Het pad voor het schrijven van BEK-bestand.|
+|$adTenant  |contoso.onmicrosoft.com   | FQDN of GUID van uw Azure Active Directory die als host fungeert voor de sleutel kluis |

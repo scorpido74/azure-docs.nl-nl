@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013651"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997921"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatische ML experimenten configureren in python
 
@@ -206,6 +206,8 @@ De drie verschillende `task` parameter waarden bepalen de lijst met algoritmen d
 
 ### <a name="primary-metric"></a>Primaire metrische gegevens
 Primaire metriek; zoals wordt weer gegeven in de bovenstaande voor beelden, bepaalt u de metrische gegevens die moeten worden gebruikt tijdens de model training voor Optima Lise ring. De primaire metriek die u kunt selecteren, wordt bepaald door het taak type dat u kiest. Hieronder vindt u een lijst met beschik bare metrische gegevens.
+
+Meer informatie over de specifieke definities van deze in [inzicht in geautomatiseerde machine learning resultaten](how-to-understand-automated-ml.md).
 
 |Classificatie | Regressie | Tijd reeks prognose
 |-- |-- |--

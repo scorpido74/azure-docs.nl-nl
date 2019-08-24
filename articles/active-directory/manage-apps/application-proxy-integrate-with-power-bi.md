@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9073e00f5c3702e43665541bd8ff9e66c2bc505b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968499"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991115"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI-Mobiel met Azure AD-toepassingsproxy inschakelen
 
@@ -103,25 +103,28 @@ U bent nu klaar om Azure AD-toepassingsproxy te configureren.
 
 Ga naar **de sectie gebruikers en groepen** en wijs gebruikers toe om toegang te krijgen tot deze toepassing om het instellen van uw toepassing te volt ooien.
 
-## <a name="step-3-register-the-native-app-and-grant-access-to-the-api"></a>Stap 3: De systeem eigen app registreren en toegang verlenen tot de API
+## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>Stap 3: Power BI-Mobiel toegang verlenen tot rapport Services
 
-Systeem eigen apps zijn Program ma's die zijn ontwikkeld om te worden gebruikt op een platform of apparaat. Voordat de Power BI mobiele app verbinding kan maken en een API kan openen, moet u deze registreren in azure AD.  
+Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot Report Services, moet u zich op de juiste wijze registreren in azure AD.  
 
-1. Registreer de toepassing in azure AD door [stap 2 te volgen in het inschakelen van systeem eigen client toepassingen om te communiceren met proxy toepassingen](application-proxy-configure-native-client-application.md#step-2-register-your-native-application).
+1. Selecteer op de pagina **overzicht** van Azure Active Directory **app-registraties**.
+2. Zoek op het tabblad **alle toepassingen** naar de toepassing die u in stap 2 hebt gemaakt.
+3. Selecteer de toepassing en selecteer vervolgens **verificatie**.
+4. Voeg de volgende omleidings-Uri's toe op basis van het platform dat u gebruikt.
 
-   Wanneer u de app registreert voor Power BI-Mobiel **IOS**, voegt u de volgende omleidings-uri's toe:
+   Wanneer u de app registreert voor Power BI-Mobiel **IOS**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Wanneer u de app registreert voor Power BI-Mobiel **Android**, voegt u de volgende omleidings-uri's toe:
+   Wanneer u de app registreert voor Power BI-Mobiel **Android**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
    - `urn:ietf:wg:oauth:2.0:oob`
 
    > [!IMPORTANT]
-   > De omleidings-Uri's moeten worden toegevoegd om de toepassing correct te laten werken.
+   > De omleidings-Uri's moeten worden toegevoegd om de toepassing correct te laten werken. Als u dit configureert voor zowel iOS als Android, hoeft u slechts **één** toepassing te registreren en de omleidings-uri's voor zowel IOS als Android toe te voegen. Als u voor elk platform afzonderlijke toepassingen nodig hebt, moet u de omleidings-URI `mspbi-adal://com.microsoft.powerbimobile` gebruiken: voor beide apps.
 
-Nu u uw systeem eigen toepassing hebt geregistreerd, kunt u deze toegang verlenen tot andere toepassingen in uw Directory. in dit geval hebt u toegang tot Report Services die zijn gepubliceerd via toepassings proxy. Volg de stappen in [stap 3: Verleen toegang tot uw proxy](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)toepassing.
+2. Nu u uw systeem eigen toepassing hebt geregistreerd, kunt u deze toegang verlenen tot andere toepassingen in uw Directory. in dit geval hebt u toegang tot Report Services die zijn gepubliceerd via toepassings proxy. Volg de stappen in [stap 3: Verleen toegang tot uw proxy](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)toepassing.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>Stap 4: Verbinding maken vanuit de Power BI-Mobiel-app
 

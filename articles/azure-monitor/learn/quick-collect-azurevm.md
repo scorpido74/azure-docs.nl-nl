@@ -1,5 +1,5 @@
 ---
-title: Gegevens verzamelen over Azure Virtual Machines | Microsoft Docs
+title: Gegevens verzamelen van een virtuele machine van Azure met Azure Monitor | Microsoft Docs
 description: Hier vindt u informatie over hoe u de extensie van de Log Analytics-agent-VM en het verzamelen van gegevens van de Azure-VM's met Log Analytics inschakelt.
 services: log-analytics
 documentationcenter: log-analytics
@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 1a61c0f96f62712bbd2500b2e80fd08565990bbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874884"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992153"
 ---
-# <a name="collect-data-about-azure-virtual-machines"></a>Gegevens verzamelen over Azure virtual machines
+# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Gegevens verzamelen van een virtuele machine van Azure met Azure Monitor
 
-[Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) kan gegevens rechtstreeks vanuit uw Azure-VM’s en andere bronnen in uw omgeving verzamelen en onderbrengen in één opslagplaats voor gedetailleerde analyse en correlatie. In deze Quick Start wordt beschreven hoe u met een paar eenvoudige stappen gegevens van uw Azure Linux- of Windows-VM’s configureert en verzamelt.  
+[Azure monitor](../overview.md) kunt gegevens rechtstreeks van uw virtuele machines in azure verzamelen in een log Analytics-werk ruimte voor gedetailleerde analyse en correlatie. Door de Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) en [Linux](../../virtual-machines/extensions/oms-linux.md) te installeren, kan Azure monitor gegevens verzamelen van uw Azure-vm's. In deze Quick start ziet u hoe u met een paar eenvoudige stappen gegevens van uw Azure Linux-of Windows-Vm's kunt configureren en verzamelen met behulp van de VM-extensie.  
  
 In deze Quick Start wordt ervan uitgegaan dat u een bestaande Azure-VM hebt. Als u geen [Windows-VM](../../virtual-machines/windows/quick-create-portal.md) of [Linux-VM](../../virtual-machines/linux/quick-create-cli.md) kunt maken, raadpleeg dan onze Quick Starts voor VM’s.
 
@@ -33,7 +33,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-1. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics**.
+1. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 
     ![Azure Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
 
@@ -55,7 +55,7 @@ Terwijl de gegevens worden geverifieerd en de werkruimte wordt gemaakt, kunt u d
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Voor Windows- en Linux-VM’s die al zijn geïmplementeerd in Azure, installeert u de Log Analytics-agent met de VM-extensie van Log Analytics. De extensie vereenvoudigt het installatieproces en configureert automatisch de agent voor het verzenden van gegevens naar de Log Analytics-werkruimte die u opgeeft. De agent wordt bovendien automatisch bijgewerkt, zodat u over de nieuwste functies en correcties beschikt. Controleer voordat u verdergaat of de VM wordt uitgevoerd, anders mislukt het proces.  
+Voor Windows- en Linux-VM’s die al zijn geïmplementeerd in Azure, installeert u de Log Analytics-agent met de VM-extensie van Log Analytics. De extensie vereenvoudigt het installatieproces en configureert automatisch de agent voor het verzenden van gegevens naar de Log Analytics-werkruimte die u opgeeft. De agent wordt ook automatisch bijgewerkt wanneer er een nieuwere versie wordt uitgebracht, zodat u over de nieuwste functies en oplossingen beschikt. Controleer voordat u verdergaat of de VM wordt uitgevoerd, anders mislukt het proces.  
 
 >[!NOTE]
 >De Log Analytics-agent voor Linux kan niet worden geconfigureerd om aan meer dan één Log Analytics-werkruimte te rapporteren. 
@@ -74,7 +74,7 @@ Voor Windows- en Linux-VM’s die al zijn geïmplementeerd in Azure, installeert
 
 ## <a name="collect-event-and-performance-data"></a>Gebeurtenis- en prestatiegegevens verzamelen
 
-Log Analytics kan gebeurtenissen uit de Windows-gebeurtenislogboeken of de Linux Syslog en prestatiemeteritems verzamelen die u opgeeft voor langetermijnanalyses en -rapportages en kan actie ondernemen wanneer een bepaalde voorwaarde wordt gedetecteerd. Volg deze stappen voor het verzamelen van gebeurtenissen uit het Windows-gebeurtenislogboek en de Linux Syslog en diverse algemene prestatiemeters om mee te beginnen.  
+Azure Monitor kunt gebeurtenissen verzamelen uit de Windows-gebeurtenis Logboeken of Linux syslog en prestatie meter items die u opgeeft voor langere termijn analyse en rapportage, en actie ondernemen wanneer een bepaalde voor waarde wordt gedetecteerd. Volg deze stappen voor het verzamelen van gebeurtenissen uit het Windows-gebeurtenislogboek en de Linux Syslog en diverse algemene prestatiemeters om mee te beginnen.  
 
 ### <a name="data-collection-from-windows-vm"></a>Gegevens verzamelen van virtuele Windows-machines
 
@@ -124,15 +124,15 @@ Log Analytics kan gebeurtenissen uit de Windows-gebeurtenislogboeken of de Linux
 
 Nu u gegevensverzameling hebt ingeschakeld, geven we een voorbeeld van een eenvoudige zoekopdracht in logboeken om enkele gegevens afkomstig van de doel-VM’s weer te geven.  
 
-1. Navigeer in Azure Portal naar Log Analytics en selecteer de werkruimte die u eerder hebt gemaakt.
+1. Selecteer Logboeken in het linkerdeel venster van de geselecteerde werk ruimte.
 
-2. Selecteer de tegel **zoeken** in Logboeken en in het deel venster zoeken in Logboeken in `Perf` het veld type query en druk vervolgens op ENTER of selecteer de zoek knop rechts van het query veld.
+2. Typ `Perf` op de pagina logboek registratie de query-editor en selecteer **uitvoeren**.
 
-    ![Voorbeeld van zoeken in logboeken in Log Analytics](./media/quick-collect-azurevm/log-analytics-portal-perf-query.png) 
+    ![Voorbeeld van zoeken in logboeken in Log Analytics](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
-Zo heeft de query in de volgende afbeelding 735 prestatierecords als resultaat.  Uw resultaat zal aanzienlijk kleiner zijn.
+    De query in de volgende afbeelding heeft bijvoorbeeld 10.000 prestatie records geretourneerd. Uw resultaat zal aanzienlijk kleiner zijn.
 
-![Zoekresultaat uit Log Analytics-logboeken](media/quick-collect-azurevm/log-analytics-search-perf.png)
+    ![Zoekresultaat uit Log Analytics-logboeken](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

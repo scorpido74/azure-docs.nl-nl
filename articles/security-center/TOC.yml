@@ -39,8 +39,6 @@
       href: security-center-managing-and-responding-alerts.md
     - name: Beveiligingsincidenten
       href: security-center-incident.md
-    - name: Reageren op incidenten
-      href: security-center-incident-response.md
     - name: Beheer in meerdere tenants
       href: security-center-cross-tenant-management.md
     - name: Waarschuwingen voor dreigingsdetectie
@@ -129,8 +127,6 @@
           href: security-center-apply-system-updates.md
         - name: Eindpuntbeveiliging installeren
           href: security-center-install-endpoint-protection.md
-        - name: Opnieuw opstarten na systeemupdates
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
         - name: Beoordeling van beveiligingslekken is niet geïnstalleerd
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Netwerkbeveiligingsgroepen inschakelen

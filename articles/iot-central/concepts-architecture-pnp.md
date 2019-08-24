@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: abc09ac1a13537c31fe96fae14edefd0d06b6aef
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fab65828228bdea8f0367f8928b83934bf0a7a4f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880252"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995877"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central-architectuur (preview-functies)
 
@@ -73,7 +73,7 @@ In een Azure IoT Central-toepassing worden met Apparaatinstellingen het gedrag e
 
 In een IoT Central voorbeeld sjabloon voor een toepassings apparaat:
 
-- Met **hulp modellen voor apparaten** kunt u de mogelijkheden van een apparaat opgeven, zoals de telemetrie die het verzendt, de eigenschappen die de status van het apparaat definiëren en de opdrachten waarop het apparaat reageert. De mogelijkheden van het apparaat zijn ingedeeld in een of meer interfaces. Zie de [IoT Plug en Play](https://aka.ms/iot-pnp-docs) -documentatie voor meer informatie over de mogelijkheden van apparaten.
+- Met **hulp modellen voor apparaten** kunt u de mogelijkheden van een apparaat opgeven, zoals de telemetrie die het verzendt, de eigenschappen die de status van het apparaat definiëren en de opdrachten waarop het apparaat reageert. De mogelijkheden van het apparaat zijn ingedeeld in een of meer interfaces. Zie de [IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) -documentatie voor meer informatie over de mogelijkheden van apparaten.
 - Met **Cloud eigenschappen** geeft u de eigenschappen op IOT Central winkels voor een apparaat. Deze eigenschappen worden alleen opgeslagen in IoT Central en worden nooit naar een apparaat verzonden.
 - Met **weer gaven** worden de Dash boards en formulieren opgegeven die de opbouw functie maakt, zodat de operator de apparaten kan controleren en beheren.
 - Met **aanpassingen** kunnen de opbouw functie enkele van de definities in het hulp model van het apparaat overschrijven zodat deze relevanter worden voor de IOT Central-toepassing.

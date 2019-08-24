@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 21720ead788a505f86c4d35eb5a39943ff4a2e12
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742582"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981007"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Een Linux-VHD downloaden vanuit Azure
 
@@ -58,9 +58,9 @@ Voer de volgende stappen uit om de VHD als een installatie kopie te gebruiken om
 Voer de volgende stappen uit om de VHD als schijf te gebruiken voor een nieuw exemplaar van een bestaande virtuele machine of gegevens schijf:
 
 1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2.  Klik in het menu Hub op **Virtuele machines**.
+2.  Selecteer **virtual machines**in het linkermenu.
 3.  Selecteer de virtuele machine in de lijst.
-4.  Klik op de Blade voor de virtuele machine op **stoppen**.
+4.  Selecteer op de pagina voor de virtuele machine **stoppen**.
 
     ![VM stoppen](./media/download-vhd/export-stop.png)
 
@@ -68,21 +68,21 @@ Voer de volgende stappen uit om de VHD als schijf te gebruiken voor een nieuw ex
 
 Als u het VHD-bestand wilt downloaden, moet u een [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) genereren. Wanneer de URL wordt gegenereerd, wordt een verloop tijd toegewezen aan de URL.
 
-1.  Klik in het menu van de Blade voor de virtuele machine op **schijven**.
-2.  Selecteer de schijf met het besturings systeem voor de virtuele machine en klik vervolgens op **schijf exporteren**.
-3.  Klik op **URL genereren**.
+1.  Selecteer **schijven**in het menu van de pagina voor de virtuele machine.
+2.  Selecteer de schijf met het besturings systeem voor de virtuele machine en selecteer vervolgens **schijf exporteren**.
+3.  Selecteer **URL genereren**.
 
     ![URL genereren](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>VHD downloaden
 
-1.  Klik onder de gegenereerde URL op het VHD-bestand downloaden.
-
+1.  Selecteer onder de gegenereerde URL **het VHD-bestand downloaden**.
+**
     ![VHD downloaden](./media/download-vhd/export-download.png)
 
-2.  Mogelijk moet u in de browser op **Opslaan** klikken om het downloaden te starten. De standaard naam voor het VHD-bestand is *ABCD*.
+2.  Mogelijk moet u **Opslaan** in de browser selecteren om het downloaden te starten. De standaard naam voor het VHD-bestand is *ABCD*.
 
-    ![Klik op opslaan in de browser](./media/download-vhd/export-save.png)
+    ![Selecteer opslaan in de browser](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

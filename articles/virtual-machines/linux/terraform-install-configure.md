@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c7251b24ccd15971a704b6b47288f49168b27039
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876344"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980879"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Terraform installeren en configureren voor het inrichten van Vm's en andere infra structuur in azure
  
@@ -47,10 +47,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 Om terraform in te scha kelen voor het inrichten van resources in azure, maakt u een [Azure AD-Service-Principal](/cli/azure/create-an-azure-service-principal-azure-cli). De Service-Principal verleent uw terraform-scripts voor het inrichten van resources in uw Azure-abonnement.
 
-Als u meerdere Azure-abonnementen hebt, moet u eerst een query uitvoeren op uw account met [AZ account show](/cli/azure/account#az-account-show) om een lijst met abonnements-id en Tenant-id-waarden op te halen:
+Als u meerdere Azure-abonnementen hebt, moet u eerst een query uitvoeren op uw account met [AZ account list](/cli/azure/account#az-account-list) om een lijst met abonnements-id en Tenant-id-waarden op te halen:
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 Als u een geselecteerd abonnement wilt gebruiken, stelt u het abonnement voor deze sessie in met [AZ account set](/cli/azure/account#az-account-set). Stel de `SUBSCRIPTION_ID` omgevings variabele in op de waarde van het `id` geretourneerde veld van het abonnement dat u wilt gebruiken:

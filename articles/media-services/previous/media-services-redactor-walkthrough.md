@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014930"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997679"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Gezichten met Azure Media Analytics-Overzicht redigeren
 
@@ -40,7 +40,7 @@ De eenvoudigste manier om aan de slag te gaan met Redactor is het gebruik van he
 
 ### <a name="download-and-setup"></a>Downloaden en instellen
 
-1. Down load [hier](https://github.com/Azure/Azure-Media-Services-Explorer)het AMSE-hulp programma.
+1. Down load [hier](https://aka.ms/amseforv2)het AMSE for AMS v2-hulp programma.
 1. Meld u aan bij uw Media Services-account met behulp van uw service sleutel.
 
     Voor het verkrijgen van de accountnaam en sleutelinformatie gaat u naar de [Azure Portal](https://portal.azure.com/) en selecteert u uw AMS-account. Selecteer vervolgens instellingen > sleutels. In het venster Sleutels beheren worden de accountnaam en de primaire en secundaire sleutel weergegeven. Kopieer de waarden van de accountnaam en de primaire sleutel.

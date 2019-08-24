@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9c27b81717c32ccf4c78143a3d3d31de7181c5fe
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966465"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996630"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Oracle met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -64,7 +64,7 @@ De gekoppelde Oracle-Service ondersteunt de volgende eigenschappen:
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **Oracle**. | Ja |
+| Type | De eigenschap type moet worden ingesteld op **Oracle**. | Ja |
 | connectionString | Hiermee geeft u de gegevens op die nodig zijn om verbinding te maken met het Oracle Database-exemplaar. <br/>Markeer dit veld als een `SecureString` om het veilig op te slaan in Data Factory. U kunt ook een wacht woord in azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. <br><br>**Ondersteund verbindings type**: U kunt de **Oracle-sid** of de **Oracle-Service naam** gebruiken om uw data base te identificeren:<br>-Als u SID gebruikt:`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>-Als u de service naam gebruikt:`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
 | connectVia | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Indien niet opgegeven, wordt de standaard Azure Integration Runtime wordt gebruikt. |Nee |
 
@@ -169,7 +169,7 @@ Als u gegevens wilt kopiëren van en naar Oracle, stelt u de eigenschap type van
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de DataSet moet worden ingesteld op `OracleTable`. | Ja |
+| Type | De eigenschap type van de DataSet moet worden ingesteld op `OracleTable`. | Ja |
 | tableName |De naam van de tabel in de Oracle-data base waarnaar de gekoppelde service verwijst. | Ja |
 
 **Voorbeeld:**
@@ -198,13 +198,13 @@ In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door d
 ### <a name="oracle-as-source"></a>Oracle als bron
 
 >[!TIP]
->Zie [parallelle kopie van Oracle](#parallel-copy-from-oracle)om gegevens van Oracle efficiënt te laden door gebruik te maken van gegevens partities.
+>Als u gegevens van Oracle efficiënt wilt laden met behulp van gegevens partitioneren, kunt u meer informatie uit een [parallelle kopie van Oracle](#parallel-copy-from-oracle)gebruiken.
 
 Als u gegevens van Oracle wilt kopiëren, stelt u het bron type in de `OracleSource`Kopieer activiteit in op. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **bron** sectie.
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden `OracleSource`ingesteld op. | Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet worden `OracleSource`ingesteld op. | Ja |
 | oracleReaderQuery | Gebruik de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `"SELECT * FROM MyTable"`.<br>Wanneer u gepartitioneerde belasting inschakelt, moet u alle bijbehorende ingebouwde partitie parameters in uw query koppelen. Zie de sectie [parallelle kopie van Oracle](#parallel-copy-from-oracle) voor voor beelden. | Nee |
 | partitionOptions | Hiermee geeft u de opties voor gegevens partities op die worden gebruikt voor het laden van gegevens van Oracle. <br>Toegestane waarden zijn: **Geen** (standaard), **PhysicalPartitionsOfTable** en **DynamicRange**.<br>Wanneer een partitie optie is ingeschakeld (dat wil zeggen niet `None`), configureert u ook [`parallelCopies`](copy-activity-performance.md#parallel-copy) de instelling op de Kopieer activiteit. Hiermee bepaalt u de parallelle mate van het gelijktijdig laden van gegevens uit een Oracle-data base. U kunt dit bijvoorbeeld instellen op 4. | Nee |
 | partitionSettings | Geef de groep van de instellingen voor het partitioneren van gegevens op. <br>Toep assen wanneer de partitie optie `None`niet is. | Nee |
@@ -251,7 +251,7 @@ Als u gegevens wilt kopiëren naar Oracle, stelt u het sink-type in `OracleSink`
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld `OracleSink`op. | Ja |
+| Type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld `OracleSink`op. | Ja |
 | writeBatchSize | Voegt gegevens in de SQL-tabel in wanneer de buffer `writeBatchSize`grootte bereikt.<br/>Toegestane waarden zijn integer (aantal rijen). |Nee (de standaard waarde is 10.000) |
 | writeBatchTimeout | De wacht tijd voor het volt ooien van de batch INSERT-bewerking voordat er een time-out optreedt.<br/>Toegestane waarden zijn time span. Een voor beeld is 00:30:00 (30 minuten). | Nee |
 | preCopyScript | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit die moet worden uitgevoerd voordat er in elke uitvoering gegevens naar Oracle worden geschreven. U kunt deze eigenschap gebruiken om de vooraf geladen gegevens op te schonen. | Nee |
@@ -293,9 +293,9 @@ De Data Factory Oracle-Connector biedt ingebouwde gegevenspartitionering voor he
 
 ![Scherm opname van partitie opties](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit op de Oracle-bron om gegevens te laden per partitie. De parallelle graad wordt bepaald door de [`parallelCopies`](copy-activity-performance.md#parallel-copy) instelling in de Kopieer activiteit. Als u bijvoorbeeld op vier hebt `parallelCopies` ingesteld, worden met Data Factory gelijktijdig vier query's gegenereerd en uitgevoerd op basis van de opgegeven partitie optie en instellingen. Elke query haalt een deel van de gegevens op uit de Oracle-data base.
+Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit op de Oracle-bron om gegevens te laden per partitie. De parallelle graad wordt bepaald door de [`parallelCopies`](copy-activity-performance.md#parallel-copy) instelling in de Kopieer activiteit. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, worden met Data Factory gelijktijdig vier query's gegenereerd en uitgevoerd op basis van uw opgegeven partitie optie en instellingen, en elke query haalt een deel van de gegevens op uit de Oracle-data base.
 
-Het is een goed idee om parallelle kopieën in te scha kelen met gegevenspartitionering, met name wanneer u grote hoeveel heden gegevens uit uw Oracle-data base laadt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's:
+Het is een goed idee om parallelle kopieën in te scha kelen met gegevenspartitionering, met name wanneer u grote hoeveel heden gegevens uit uw Oracle-data base laadt. Hieronder vindt u de aanbevolen configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval is de prestaties beter dan het schrijven naar één bestand.
 
 | Scenario                                                     | Voorgestelde instellingen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

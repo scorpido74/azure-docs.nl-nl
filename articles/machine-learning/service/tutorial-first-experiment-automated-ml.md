@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534422"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982764"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelfstudie: Uw eerste classificatie model maken met geautomatiseerde machine learning
 
 In deze zelf studie leert u hoe u uw eerste geautomatiseerde machine learning experiment maakt in de Azure Portal (preview) zonder dat u een regel code hoeft te schrijven. In dit voor beeld wordt een classificatie model gemaakt om te voors pellen of een client zich abonneert op een vaste termijn storting met een financiële instelling.
 
-Door gebruik te maken van de geautomatiseerde machine learning mogelijkheden van de Azure Machine Learning-service en de Azure Portal, begint u met het geautomatiseerde machine learning proces. De algoritme selectie en afstemming afstemming voor u worden uitgevoerd. De techniek van geautomatiseerde machine learning doorloopt of itereert allerlei combinaties van algoritmen en hyperparameters totdat het beste model wordt gevonden op basis van uw criterium.
+Met geautomatiseerde machine learning kunt u tijdrovende taken automatiseren. Automatische machine learning snel door lopen met veel combi Naties van algoritmen en Hyper parameters om u te helpen het beste model te vinden op basis van een succes volle waarde van uw keuze.
 
-In deze zelfstudie leert u het volgende:
+In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Een werkruimte configureren in Azure Machine Learning Service
-> * Een experiment maken.
-> * Een classificatie model automatisch trainen.
-> * Details van de trainings uitvoering weer geven.
+> * Maak een Azure Machine Learning service-werk ruimte.
+> * Voer een geautomatiseerd machine learning experiment uit.
+> * Experiment details weer geven.
 > * Het model implementeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://aka.ms/AMLFree).
 
-* Down load het gegevens bestand [ **bankmarketing_train. CSV** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . De **y** -kolom geeft aan of een klant zich heeft geabonneerd op een vaste termijn storting, die later wordt aangeduid als de doel kolom voor voor spellingen in deze zelf studie. 
+* Down load het gegevens bestand [**bankmarketing_train. CSV**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . De **y** -kolom geeft aan of een klant zich heeft geabonneerd op een vaste termijn storting, die later wordt aangeduid als de doel kolom voor voor spellingen in deze zelf studie. 
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>Een experiment maken
+## <a name="create-and-run-the-experiment"></a>Het experiment maken en uitvoeren
 
 In deze stappen wordt uitgelegd hoe u een experiment kunt instellen op basis van gegevens selectie om uw primaire metrische gegevens en het model type te kiezen. 
 
@@ -50,8 +49,6 @@ In deze stappen wordt uitgelegd hoe u een experiment kunt instellen op basis van
 U ziet het scherm **Welkom bij automatisch machine learning** , want dit is uw eerste experiment met automatische machine learning.
 
     ![Navigatie deel venster Azure Portal](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. Selecteer **experiment maken**. Voer vervolgens **mijn-1ste-automl-experiment** in als experiment naam.
 
@@ -72,14 +69,11 @@ U ziet het scherm **Welkom bij automatisch machine learning** , want dit is uw e
 
 1. Selecteer **uploaden** en kies het bestand **bankmarketing_train. CSV** van uw lokale computer om het te uploaden naar de standaard container. Open bare preview ondersteunt alleen lokale bestands uploads en Azure Blob Storage-accounts. Wanneer het uploaden is voltooid, selecteert u het bestand in de lijst. 
 
-    [![Gegevens bestand selecteren](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. Op het tabblad **Preview** kunnen we onze gegevens voor dit experiment verder configureren.
 
     Op het tabblad **voor beeld** geeft u aan dat de gegevens kopteksten bevatten. De standaard waarden voor de service zijn alle functies (columns) voor training. Voor dit voor beeld schuift u naar rechts en negeert u de functie **day_of_week** .
 
     ![Configuratie van het tabblad voor beeld](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > Gegevens profilering is niet beschikbaar voor berekeningen met minimale knoop punten van nul.
@@ -103,9 +97,7 @@ U ziet het scherm **Welkom bij automatisch machine learning** , want dit is uw e
 
 1. Selecteer **starten** om het experiment uit te voeren.
 
-   Wanneer het experiment wordt gestart, ziet u een leeg **detail** scherm met de volgende status boven. 
-
-      ![Voor bereiding uitvoeren](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   Wanneer het experiment wordt gestart, ziet u een leeg **detail** scherm met de volgende status boven.
       
 Het experiment voorbereidende proces duurt enkele minuten. Wanneer het proces is voltooid, wordt de status bericht wijzigingen worden **uitgevoerd**.
 
@@ -137,11 +129,9 @@ In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op bas
     
 1. Selecteer **Implementeren**.
 
-    Het volgende bericht wordt weer gegeven wanneer de implementatie is voltooid:
-
-    ![Implementatie voltooid](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    Het bericht implementatie voltooid wordt weer gegeven wanneer de implementatie is voltooid.
     
-    U hebt nu een Operational web service voor het genereren van voor spellingen.
+U hebt nu een Operational web service voor het genereren van voor spellingen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -167,7 +157,6 @@ In deze zelf studie voor automatisch machine learning hebt u de Azure Portal geb
 
 > [!div class="nextstepaction"]
 > [Een webservice gebruiken](how-to-consume-web-service.md)
-
 
 + Meer informatie over voor [verwerking](how-to-create-portal-experiments.md#preprocess).
 + Meer informatie over [gegevens profilering](how-to-create-portal-experiments.md#profile).

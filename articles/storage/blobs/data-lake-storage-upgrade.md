@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016379"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992241"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgrade uw big data Analytics-oplossingen van Azure Data Lake Storage Gen1 naar Azure Data Lake Storage Gen2
 
@@ -235,7 +235,7 @@ Houd er rekening mee dat er derden zijn die de Data Lake Storage Gen1 op Data La
 
 * Als u een hulpprogramma dat ACL's niet kopiëren of u niet wilt kopiëren via de ACL's, klikt u vervolgens moet u om in te stellen de ACL's op de doelcomputer handmatig op het juiste hoogste niveau. U kunt dat doen met behulp van Storage Explorer. Zorg ervoor dat de ACL's de standaard-ACL's zodanig in dat de bestanden en mappen die u via kopiëren overnemen.
 
-* In Data Lake Storage Gen1 is het hoogste niveau, kunt u instellen dat ACL's in de hoofdmap van het account. In Data Lake Storage Gen2 echter het hoogste niveau dat u Acl's kunt instellen bevindt zich in de hoofdmap van een bestands systeem, niet op het hele account. Dus als u wilt de standaard-ACL's op accountniveau ingesteld, u dubbele servers in het bestandssysteem in uw Data Lake Storage Gen2-account moet.
+* In Data Lake Storage Gen1 is het hoogste niveau, kunt u instellen dat ACL's in de hoofdmap van het account. In Data Lake Storage Gen2 echter het hoogste niveau dat u Acl's kunt instellen bevindt zich in de hoofdmap van een container, niet op het hele account. Dus als u wilt de standaard-ACL's op accountniveau ingesteld, u dubbele servers in het bestandssysteem in uw Data Lake Storage Gen2-account moet.
 
 * Bestand naamsbeperkingen verschillen tussen de twee opslagsystemen. Deze verschillen zijn met name wanneer betreffende kopiëren van Data Lake Storage Gen2 naar Data Lake Storage Gen1 sinds de laatste meer beperkingen beperkte heeft.
 

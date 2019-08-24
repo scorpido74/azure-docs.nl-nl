@@ -1,6 +1,6 @@
 ---
-title: Verzenden en ontvangen van berichten met Azure Service Bus - Azure Logic Apps | Microsoft Docs
-description: Instellen van enterprise cloud-berichten met Azure Service Bus in Azure Logic Apps
+title: Berichten verzenden en ontvangen met Azure Service Bus-Azure Logic Apps | Microsoft Docs
+description: Enter prise Cloud Messa ging met Azure Service Bus in Azure Logic Apps instellen
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,137 +11,132 @@ ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 944bac44c1fc6504dfe1a93df5760ccf4ee46fa0
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105577"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982213"
 ---
-# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Exchange-berichten in de cloud met Azure Service Bus en Azure Logic Apps
+# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Berichten uitwisselen in de Cloud met Azure Service Bus en Azure Logic Apps
 
-Met Azure Logic Apps en de Azure Service Bus-connector, kunt u geautomatiseerde taken en werkstromen voor het overbrengen van gegevens, zoals verkoop en inkooporders, tijdschriften, en inventaris verplaatsingen van het type voor toepassingen voor uw organisatie maken. De connector niet alleen bewaakt, verzendt, en beheert van berichten, maar voert ook de acties met wachtrijen, -sessies, onderwerpen, abonnementen, enzovoort, bijvoorbeeld:
+Met Azure Logic Apps en de Azure Service Bus-connector kunt u geautomatiseerde taken en werkstromen maken voor het overdragen van gegevens, zoals verkoop- en inkooporders, journalen en voorraadverplaatsingen tussen toepassingen voor uw organisatie. Met de connector worden berichten niet alleen bewaakt, verzonden en beheerd, maar worden ook acties uitgevoerd met wacht rijen, sessies, onderwerpen, abonnementen, enzovoort, bijvoorbeeld:
 
-* Monitor wanneer berichten binnenkomen (automatisch voltooien) of ontvangen (peek-lock) in wachtrijen, onderwerpen en onderwerpabonnementen zijn. 
-* Berichten worden verzonden.
-* Maak en verwijder berichtabonnementen.
-* Berichten in wachtrijen en onderwerpabonnementen beheren, bijvoorbeeld: get, uitgesteld ophalen, voltooid, uitstellen, dit en dead-letter uitvoeren.
-* Vergrendelingen op berichten en sessies in wachtrijen en onderwerpabonnementen vernieuwen.
-* Sluit sessies in wachtrijen en onderwerpen.
+* Bewaken wanneer berichten binnenkomen (automatisch volt ooien) of ontvangen (kort weer geven) in wacht rijen, onderwerpen en onderwerp-abonnementen. 
+* Berichten verzenden.
+* Onderwerp-abonnementen maken en verwijderen.
+* Het beheren van berichten in wacht rijen en onderwerp abonnementen, bijvoorbeeld ophalen, ophalen, volt ooien, uitstellen, afwijzen, afwijzen en onbestelbare letters.
+* Verleng de vergren delingen van berichten en sessies in wacht rijen en onderwerp abonnementen.
+* Sluit sessies in wacht rijen en onderwerpen.
 
-U kunt triggers die te antwoorden krijgen van Service Bus en de uitvoer beschikbaar voor andere acties in uw logische apps gebruiken. U kunt ook andere acties waarmee de uitvoer van de Service Bus-acties hebben. Als u geen ervaring met Service Bus en Logic Apps, raadpleegt u [wat is Azure Service Bus?](../service-bus-messaging/service-bus-messaging-overview.md) en [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
+U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer beschikbaar maken voor andere acties in uw Logic apps. U kunt ook andere acties uitvoeren met de uitvoer van Service Bus acties. Als u niet bekend bent met Service Bus en Logic Apps, raadpleegt u [Wat is Azure service bus?](../service-bus-messaging/service-bus-messaging-overview.md) en [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Een Service Bus-naamruimte en een Berichtentiteit, zoals een wachtrij. Als u deze items niet hebt, krijgt u informatie over het [uw Service Bus-naamruimte en een wachtrij maken](../service-bus-messaging/service-bus-create-namespace-portal.md). 
+* Een Service Bus naam ruimte en bericht entiteit, zoals een wachtrij. Als u deze items niet hebt, leert u hoe u [uw service bus naam ruimte en een wachtrij kunt maken](../service-bus-messaging/service-bus-create-namespace-portal.md). 
 
-  Deze items moeten zich in hetzelfde Azure-abonnement als uw logische apps die gebruikmaken van deze items.
+  Deze items moeten zich in hetzelfde Azure-abonnement bevinden als uw logische apps die gebruikmaken van deze items.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u Service Bus gebruiken. Uw logische app moet zich in hetzelfde Azure-abonnement als uw servicebus. Om te beginnen met een Service Bus-trigger, [maken van een lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor het gebruik van een Service Bus-bewerking beginnen uw logische app met een andere trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waar u Service Bus wilt gebruiken. Uw logische app moet zich in hetzelfde Azure-abonnement als uw service bus bevinden. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een service bus trigger. Als u een Service Bus actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions"></a>Controleer de machtigingen
+## <a name="check-permissions"></a>Machtigingen controleren
 
-Controleer of uw logische app machtigingen voor toegang tot uw Service Bus-naamruimte heeft. 
+Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Service Bus-naam ruimte. 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
-2. Ga naar uw Service Bus *naamruimte*. Op de pagina naamruimte onder **instellingen**, selecteer **beleid voor gedeelde toegang**. Onder **Claims**, Controleer of u hebt **beheren** machtigingen voor die naamruimte
+2. Ga naar uw Service Bus *naam ruimte*. Selecteer op de pagina naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt
 
-   ![Machtigingen beheren voor uw Service Bus-naamruimte](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
+   ![Machtigingen voor uw Service Bus-naam ruimte beheren](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. De verbindingsreeks voor uw Service Bus-naamruimte ophalen. U hebt deze tekenreeks nodig wanneer u uw verbindingsgegevens in uw logische app invoeren.
+3. Haal de connection string voor uw Service Bus naam ruimte op. U hebt deze teken reeks nodig wanneer u de verbindings gegevens invoert in uw logische app.
 
    1. Selecteer **RootManageSharedAccessKey**. 
    
-   1. Kies de knop kopiëren naast uw primaire verbindingsreeks. De verbindingsreeks voor later gebruik opslaan.
+   1. Klik naast uw primaire connection string op de knop kopiëren. Sla de connection string op voor later gebruik.
 
-      ![Service Bus-naamruimte-verbindingsreeks kopiëren](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
+      ![Service Bus naam ruimte connection string kopiëren](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Zoeken om te controleren of de verbindingsreeks gekoppeld aan uw Service Bus-naamruimte of een Berichtentiteit, zoals een wachtrij is, de verbindingsreeks voor de `EntityPath`  parameter. Als u deze parameter kunt vinden, de verbindingsreeks is voor een specifieke entiteit en is niet de juiste tekenreeks die moet worden gebruikt met uw logische app.
+   > Als u wilt controleren of uw Connection String is gekoppeld aan uw service bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de `EntityPath`Connection String voor de  para meter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
 
 ## <a name="add-trigger-or-action"></a>Trigger of actie toevoegen
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Om toe te voegen een *trigger* naar een lege, logische app, in het zoekvak 'Azure Service Bus' Voer als filter. Selecteer de gewenste trigger onder de lijst met triggers. 
+1. Als u een *trigger* wilt toevoegen aan een lege logische app, voert u in het zoekvak ' Azure service bus ' in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers. 
 
-   Selecteer bijvoorbeeld voor het activeren van uw logische app wanneer een nieuw item wordt verzonden naar een Service Bus-wachtrij, deze trigger: **Wanneer een bericht wordt ontvangen in een wachtrij (automatisch voltooien)**
+   Als u bijvoorbeeld uw logische app wilt activeren wanneer een nieuw item wordt verzonden naar een Service Bus wachtrij, selecteert u deze trigger: **Wanneer een bericht wordt ontvangen in een wachtrij (automatisch voltooid)**
 
-   ![Service Bus-trigger selecteren](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
+   ![Service Bus trigger selecteren](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > Sommige triggers als resultaat geven of berichten, bijvoorbeeld de trigger **als een of meer berichten aankomen in een wachtrij (automatisch voltooien)** . Wanneer deze triggers worden geactiveerd, retourneren ze tussen één en het aantal berichten dat is opgegeven door een van de trigger **bericht maximumaantal** eigenschap.
+   > Sommige triggers kunnen een of meer berichten retour neren, bijvoorbeeld de trigger, **Wanneer een of meer berichten binnenkomen in een wachtrij (automatisch volt ooien)** . Wanneer deze triggers worden geactiveerd, retour neren ze tussen één en het aantal berichten dat is opgegeven door de eigenschap **maximum aantal** berichten van de trigger.
 
-   *Alle Service Bus-triggers zijn long-polling triggers*, wat betekent dat wanneer de trigger wordt geactiveerd, wordt de trigger alle berichten worden verwerkt en wordt vervolgens gewacht 30 seconden voor meer berichten worden weergegeven in het abonnement wachtrij of onderwerp. 
-   Als er geen berichten in 30 seconden weergegeven, wordt de trigger uitvoeren wordt overgeslagen. 
-   Anders, blijft de trigger berichten lezen, totdat het abonnement wachtrij of onderwerp leeg is. De volgende trigger poll is gebaseerd op het terugkeerpatroon die is opgegeven in de eigenschappen van de trigger.
+   *Alle service bus triggers zijn lange polling triggers*, wat betekent dat wanneer de trigger wordt geactiveerd, de trigger alle berichten verwerkt en vervolgens 30 seconden wacht totdat er meer berichten worden weer gegeven in de wachtrij of het onderwerp. 
+   Als er gedurende 30 seconden geen berichten worden weer gegeven, wordt de trigger wordt uitgevoerd. 
+   Anders wordt het lezen van berichten voortgezet totdat de wachtrij of het onderwerp leeg is. De volgende trigger poll is gebaseerd op het interval van het terugkeer patroon dat is opgegeven in de eigenschappen van de trigger.
 
-1. Om toe te voegen een *actie* aan een bestaande logische app, als volgt te werk: 
+1. Voer de volgende stappen uit om een *actie* toe te voegen aan een bestaande logische app: 
 
-   1. Kies onder de laatste stap waar u een actie toevoegen, **nieuwe stap**. 
+   1. Kies **nieuwe stap**onder de laatste stap waarin u een actie wilt toevoegen. 
 
-      Als u wilt toevoegen een actie tussen fasen, de aanwijzer over de pijl tussen fasen. 
-      Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+      Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+      Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-   1. Typ 'Azure Service Bus' als filter in het zoekvak. 
-   Selecteer de actie die u wilt onder de lijst met acties. 
+   1. Voer in het zoekvak ' Azure Service Bus ' in als uw filter. 
+   Selecteer in de lijst acties de gewenste actie. 
  
-      Bijvoorbeeld: Selecteer deze actie: **Bericht verzenden**
+      Selecteer bijvoorbeeld deze actie: **Bericht verzenden**
 
-      ![Service Bus-actie selecteren](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+      ![Service Bus actie selecteren](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
-1. Als u uw logische app naar uw Service Bus-naamruimte voor de eerste keer verbinding, vraagt de ontwerper van logische App nu u om uw verbindingsgegevens. 
+1. Als u de logische app voor het eerst verbindt met uw Service Bus-naam ruimte, wordt u door de ontwerp functie voor logische apps gevraagd om uw verbindings gegevens. 
 
-   1. Geef een naam op voor uw verbinding en selecteer uw Service Bus-naamruimte.
+   1. Geef een naam op voor de verbinding en selecteer uw Service Bus naam ruimte.
 
-      ![Service Bus-verbinding, deel 1 maken](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+      ![Service Bus verbinding maken, deel 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
 
-      Om door te voeren in plaats daarvan de connection string, kies **handmatig verbindingsgegevens invoeren**. 
-      Als u de verbindingsreeks hebt, krijgt u informatie [over het vinden van de verbindingsreeks](#permissions-connection-string).
+      Als u de connection string in plaats daarvan hand matig wilt invoeren, kiest u **hand matig verbindings gegevens invoeren**. 
+      Als u uw connection string niet hebt, kunt u hier meer informatie [vinden over uw Connection String](#permissions-connection-string).
 
    1. Selecteer nu uw Service Bus-beleid en kies vervolgens **maken**.
 
-      ![Service Bus-verbinding, deel 2 maken](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
+      ![Service Bus verbinding maken, deel 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
 
-1. Selecteer voor dit voorbeeld wordt de Berichtentiteit die u, zoals een wachtrij of onderwerp wilt. In dit voorbeeld selecteert u uw Service Bus-wachtrij. 
+1. Selecteer voor dit voor beeld de gewenste Messa ging-entiteit, zoals een wachtrij of onderwerp. Selecteer in dit voor beeld uw Service Bus wachtrij. 
    
-   ![Service Bus-wachtrij selecteren](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
+   ![Service Bus wachtrij selecteren](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
 
-1. Geef de benodigde informatie voor uw trigger of actie. In dit voorbeeld gaat u als volgt de relevante stappen uit voor uw trigger of actie: 
+1. Geef de benodigde gegevens op voor de trigger of actie. Voor dit voor beeld voert u de relevante stappen uit voor de trigger of actie: 
 
-   * **Voor de voorbeeld-trigger**: Stel de polling-interval en frequentie voor het controleren van de wachtrij.
+   * **Voor de voorbeeld trigger**: Stel het polling-interval en de frequentie voor het controleren van de wachtrij in.
 
      ![Polling-interval instellen](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-     Wanneer u klaar bent, doorgaan met het ontwikkelen van uw logische app-werkstroom door toe te voegen van de acties die u wilt. U kunt bijvoorbeeld een actie die e-mail wordt verzonden zodra een nieuw bericht binnenkomt toevoegen.
-     Wanneer de trigger wordt de wachtrij gecontroleerd en wordt een nieuw bericht gevonden, wordt de geselecteerde acties voor het bericht gevonden in uw logische app uitgevoerd.
+     Wanneer u klaar bent, kunt u door gaan met het bouwen van de werk stroom van uw logische app door de gewenste acties toe te voegen. U kunt bijvoorbeeld een actie toevoegen waarmee een e-mail wordt verzonden wanneer er een nieuw bericht binnenkomt.
+     Als uw trigger uw wachtrij controleert en er een nieuw bericht vindt, voert uw logische app de geselecteerde acties uit voor het gevonden bericht.
 
-   * **Voor de actie voorbeeld**: Voer de inhoud van het bericht en andere details. 
+   * **Voor de voorbeeld actie**: Voer de bericht inhoud en eventuele andere gegevens in. 
 
-     ![Geef de inhoud van het bericht en details](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+     ![Bericht inhoud en-Details opgeven](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
-     Wanneer u klaar bent, doorgaan met het ontwikkelen van uw logische app-werkstroom door toe te voegen van eventuele andere vereiste acties die u wilt. U kunt bijvoorbeeld een actie die wordt verzonden e-mailbericht waaruit blijkt dat het bericht is verzonden toevoegen.
+     Wanneer u klaar bent, kunt u door gaan met het bouwen van de werk stroom van uw logische app door de gewenste acties toe te voegen. U kunt bijvoorbeeld een actie toevoegen die een e-mail verzendt waarin wordt bevestigd dat uw bericht is verzonden.
 
 1. Sla uw logische app op. Kies **Opslaan** op de werkbalk van de ontwerper.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/servicebus/).
-
-## <a name="get-support"></a>Ondersteuning krijgen
-
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
+De Service Bus-Connector kan Maxi maal 1.500 unieke sessies tegelijk van een service bus naar de connector cache opslaan. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Raadpleeg de [referentie pagina](/connectors/servicebus/)van de connector voor andere technische informatie over triggers, acties en limieten die worden beschreven door de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515792"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995842"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tips voor Azure SQL Data Warehouse
 Dit overzicht biedt nuttige tips en best practices voor het maken van uw Azure SQL Data Warehouse-oplossingen. Voordat u begint, kunt u gedetailleerde informatie over elke stap lezen in [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) (Patronen en anti-patronen voor workloads van Microsoft Azure SQL Data Warehouse), waarin wordt uitgelegd wat SQL Data Warehouse is.
@@ -37,12 +37,12 @@ Als u de typen bewerkingen van tevoren kent, kunt u het ontwerp van uw tabellen 
 
 Laad uw gegevens eerst in [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) of Azure Blob-opslag. Gebruik vervolgens PolyBase om uw gegevens in SQL Data Warehouse in een faseringstabel te laden. Gebruik de volgende configuratie:
 
-| Ontwerp | Aanbeveling |
+| Ontwerpen | Aanbeveling |
 |:--- |:--- |
 | Distributie | Round robin |
 | Indexeren | Heap |
 | Partitionering | Geen |
-| Resourceklasse | largerc of xlargerc |
+| Bronklasse | largerc of xlargerc |
 
 Meer informatie over [gegevensmigratie], [gegevens laden], en het [ELT-proces (extraheren, laden en transformeren)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
 
@@ -50,7 +50,7 @@ Meer informatie over [gegevensmigratie], [gegevens laden], en het [ELT-proces (e
 
 Gebruik de volgende strategieën, afhankelijk van de eigenschappen van de tabel:
 
-| Type | Zeer geschikt voor...| Kijk uit met...|
+| type | Zeer geschikt voor...| Kijk uit met...|
 |:--- |:--- |:--- |
 | Gerepliceerd | • Kleine dimensietabellen in een stervormig schema met minder dan 2 GB aan opslagruimte na compressie (ca. 5x compressie) |• Veel schijftransacties voor de tabel (zoals invoegen, upsert, verwijderen, bijwerken)<br></br>• Data Warehouse Units (DWU) die u vaak opnieuw inricht<br></br>• U gebruikt maar twee of drie kolommen terwijl de tabel veel kolommen heeft<br></br>• U indexeert een gerepliceerde tabel |
 | Round robin (standaard) | • Tijdelijke/faseringstabel<br></br> • Geen duidelijke samenvoegsleutel of goede kandidaatkolom |•   Trage prestaties vanwege een gegevensverplaatsing |
@@ -70,7 +70,7 @@ Meer informatie over [gerepliceerde tabellen] en [gedistribueerde tabellen].
 
 Indexeren is handig voor het snel lezen van tabellen. Er bestaat een unieke reeks technologieën die u op basis van uw behoeften kunt gebruiken:
 
-| Type | Zeer geschikt voor... | Kijk uit met...|
+| type | Zeer geschikt voor... | Kijk uit met...|
 |:--- |:--- |:--- |
 | Heap | • Faseringstabel/tijdelijke tabel<br></br>• Kleine tabellen met kleine zoekacties |• Elke zoekopdracht scant de volledige tabel |
 | Geclusterde index | • Tabellen met maximaal 100 miljoen rijen<br></br>• Grote tabellen (meer dan 100 miljoen rijen) waarin slechts één of twee kolommen intensief worden gebruikt |• Gebruikt in een gerepliceerde tabel<br></br>•    U hebt complexe query's met betrekking tot meerdere Samenvoegen- en Groeperen op-bewerkingen<br></br>•  U maakt updates op de geïndexeerde kolommen: het neemt geheugen in beslag |
@@ -96,9 +96,11 @@ Meer informatie over [partities].
 
 ## <a name="incremental-load"></a>Incrementeel laden
 
-Als u uw gegevens incrementeel laadt, moet u eerst grotere resourceklassen toewijzen voor het laden van uw gegevens. We raden u aan PolyBase en ADF V2 te gebruiken voor het automatiseren van uw ELT-pijplijnen in SQL Data Warehouse.
+Als u uw gegevens incrementeel laadt, moet u eerst grotere resourceklassen toewijzen voor het laden van uw gegevens.  Dit is vooral belang rijk bij het laden in tabellen met geclusterde column Store-indexen.  Zie [resource klassen](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) voor meer informatie.  
 
-Voor een grote batch updates in uw historische gegevens, moet u eerst de betreffende gegevens verwijderen. Maak vervolgens een bulkinvoeging van de nieuwe gegevens. Deze benadering met twee stappen is efficiënter.
+We raden u aan PolyBase en ADF V2 te gebruiken voor het automatiseren van uw ELT-pijplijnen in SQL Data Warehouse.
+
+Voor een grote batch met updates in uw historische gegevens kunt u een [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) gebruiken voor het schrijven van de gegevens die u in een tabel wilt houden, in plaats van INSERT, update en DELETE te gebruiken.
 
 ## <a name="maintain-statistics"></a>Statistieken bijhouden
  Tot automatische statistieken algemeen beschikbaar zijn, vereist SQL Data Warehouse handmatig onderhoud van statistieken. Het is belangrijk om uw statistieken bij te werken wanneer er *significante* wijzigingen optreden in uw gegevens. Dit helpt u om uw queryplannen te optimaliseren. Als u vindt dat het onderhouden van al uw statistieken te lang duurt, kunt u selectiever zijn over welke kolommen statistieken bevatten. 
@@ -157,7 +159,7 @@ Met één muisklik uw spokes van SQL Data Warehouse naar SQL databases implement
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[gegevensmigratie]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+[gegevensmigratie]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

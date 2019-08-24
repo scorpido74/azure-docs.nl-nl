@@ -1,90 +1,115 @@
 ---
-title: "Azure Active Directory Domain Services: Implementatiescenario's | Microsoft Docs"
-description: Implementatiescenario's voor Azure AD Domain Services
+title: Algemene implementatie scenario's voor Azure AD Domain Services | Microsoft Docs
+description: Meer informatie over een aantal algemene scenario's en use-cases voor Azure Active Directory Domain Services om waarde te bieden en te voldoen aan de behoeften van uw bedrijf.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/21/2017
+ms.date: 08/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 9e8ac5e83fa3cc9b1e266a9009bad86f41233ed8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6f81bc2ccf11cbcc3621dc1149879864c88cf0cf
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472652"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980505"
 ---
-# <a name="deployment-scenarios-and-use-cases"></a>Implementatiescenario's en gebruik
-In deze sectie kijken we enkele scenario's en use cases die baat bij Azure Active Directory (AD) Domain Services hebben.
+# <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Veelvoorkomend gebruik: cases en scenario's voor Azure Active Directory Domain Services
 
-## <a name="secure-easy-administration-of-azure-virtual-machines"></a>Veilig en eenvoudig beheer van virtuele machines van Azure
-U kunt Azure Active Directory Domain Services gebruiken voor het beheren van uw Azure virtual machines op een gestroomlijnde manier. Virtuele machines van Azure kunnen worden toegevoegd aan het beheerde domein, zodat u uw zakelijke AD-referenties gebruiken om aan te melden. Deze aanpak helpt te voorkomen dat referentie management gedoe zoals het beheren van lokale administrator-accounts op elk van uw Azure virtual machines.
+Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP en Kerberos/NTLM-verificatie. Azure AD DS is geïntegreerd met uw bestaande Azure AD-Tenant, waardoor gebruikers zich kunnen aanmelden met hun bestaande referenties. U gebruikt deze domein Services zonder dat u domein controllers in de Cloud hoeft te implementeren, beheren en te patchen. Dit biedt een soepelere lift-en-verschuiving van on-premises resources naar Azure.
 
-Server virtuele machines die zijn gekoppeld aan het beheerde domein kunnen ook worden beheerd en beveiligd met behulp van Groepsbeleid. U kunt de vereiste basislijnen toepassen op uw Azure virtual machines en vergrendelen in overeenstemming met de richtlijnen voor zakelijke beveiliging. Bijvoorbeeld, kunt u mogelijkheden voor groepsbeheer beleid om te beperken de typen toepassingen die kunnen worden gestart op deze virtuele machines.
+In dit artikel vindt u een overzicht van een aantal algemene bedrijfs scenario's waarbij Azure AD DS een waarde biedt en aan die behoeften voldoet.
 
-![Gestroomlijnd beheer van virtuele machines van Azure](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
+## <a name="secure-administration-of-azure-virtual-machines"></a>Veilig beheer van virtuele Azure-machines
 
-Zoals servers en andere infrastructuur einde van de levenscyclus is bereikt, is Contoso verplaatsen van veel toepassingen die momenteel on-premises naar de cloud worden gehost. De huidige IT-standaard mandaten dat de servers die als host fungeert voor zakelijke toepassingen zijn moeten domein en beheerd via Groepsbeleid. Contoso domein lid worden van virtuele machines die zijn geïmplementeerd in Azure, IT-beheerder liever beheer te vereenvoudigen. Als gevolg hiervan, beheerders en gebruikers kunnen zich aanmelden met hun bedrijfsreferenties. Machines op hetzelfde moment, kunnen worden geconfigureerd om te voldoen aan de vereiste basislijnen met behulp van Groepsbeleid. Contoso zou liever niet hoeft te implementeren, bewaken en beheren van domeincontrollers in Azure voor het beveiligen van virtuele machines van Azure. Azure AD Domain Services is daarom uitstek geschikt voor deze use case.
+Als u één set AD-referenties wilt gebruiken, kunnen virtuele Azure-machines (Vm's) worden toegevoegd aan een door Azure AD DS beheerd domein. Deze aanpak vermindert problemen met het beheer van referenties, zoals het onderhouden van lokale beheerders accounts op elke virtuele machine of het scheiden van accounts en wacht woorden tussen omgevingen.
 
-**Opmerkingen bij de implementatie**
+Vm's die zijn gekoppeld aan een door Azure AD DS beheerd domein kunnen ook worden beheerd en beveiligd met behulp van groepsbeleid. Vereiste beveiligings basislijnen kunnen worden toegepast op Vm's om ze te vergren delen in overeenstemming met de beveiligings richtlijnen van het bedrijf. U kunt bijvoorbeeld de mogelijkheden van groeps beleids beheer gebruiken om de typen toepassingen te beperken die kunnen worden gestart op de virtuele machine.
 
-Houd rekening met de volgende belangrijke punten voor deze implementatiescenario:
+![Gestroomlijnd beheer van virtuele Azure-machines](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-* Beheerde domeinen die worden geleverd door Azure AD Domain Services bieden een enkele platte OU (organisatie-eenheid) structuur standaard. Alle domein-machines zich bevinden in een enkele platte organisatie-eenheid. U kunt echter aangepaste OE's maken.
-* Azure AD Domain Services biedt ondersteuning voor eenvoudige Groepsbeleid in de vorm van een ingebouwde GPO elke voor de gebruikers en computers containers. U kunt aangepaste GPO's maken en toepast op aangepaste organisatie-eenheden.
-* Azure AD Domain Services biedt ondersteuning voor de basis AD computer-object-schema. U kunt het computerobject schema niet uitbreiden.
+Laten we eens kijken naar een gemeen schappelijk voorbeeld scenario. Als servers en andere infra structuur het einde van de levens duur bereiken, wil Contoso toepassingen die momenteel on-premises worden gehost, verplaatsen naar de Cloud. Het huidige IT-standaard mandaat dat servers die bedrijfs toepassingen hosten, moeten lid zijn van een domein en worden beheerd met groeps beleid. De IT-beheerder van Contoso zou de voor keur geven aan Vm's die in azure zijn geïmplementeerd om het beheer eenvoudiger te maken, terwijl gebruikers zich kunnen aanmelden met hun bedrijfs referenties. Bij het lid van een domein kunnen Vm's ook worden geconfigureerd om te voldoen aan de vereiste beveiligings basislijnen met behulp van groepsbeleid. Contoso zou het voor keur hebben om hun eigen domein controllers in azure te implementeren, te controleren en te beheren.
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-to-azure-infrastructure-services"></a>Lift-and-shift een on-premises toepassing die gebruikmaakt van LDAP-binding voor verificatie met Azure Infrastructure Services
+Azure AD DS is in het bijzonder geschikt voor deze gebruiks case. Met een beheerd domein van Azure AD DS kunt u virtuele machines koppelen, een enkele set referenties gebruiken en groeps beleid Toep assen. Als een beheerd domein hoeft u de domein controllers niet zelf te configureren en te onderhouden.
+
+### <a name="deployment-notes"></a>Implementatie opmerkingen
+
+De volgende overwegingen met betrekking tot de implementatie zijn van toepassing op dit voor beeld-Case:
+
+* In azure AD DS Managed domains worden standaard één platte organisatie-eenheid (OE) gebruikt. Alle virtuele machines die lid zijn van een domein, bevinden zich in één organisatie-eenheid. U kunt desgewenst aangepaste organisatie-eenheden maken.
+* Azure AD DS maakt gebruik van een ingebouwde GPO voor de containers gebruikers en computers. Voor extra besturings elementen kunt u aangepaste groeps beleidsobjecten maken en deze op aangepaste organisatie-eenheden richten.
+* Azure AD DS ondersteunt het basis-schema voor AD-computer objecten. U kunt het schema van het computer object niet uitbreiden.
+
+## <a name="lift-and-shift-on-premises-applications-that-use-ldap-bind-authentication"></a>On-premises toepassingen gebruiken die gebruikmaken van LDAP-bindings verificatie
+
+Als voorbeeld scenario heeft Contoso een on-premises toepassing die veel jaren geleden van een ISV is gekocht. De toepassing bevindt zich momenteel in de onderhouds modus door de ISV en het aanvragen van wijzigingen aan de toepassing is prohibitively duur. Deze toepassing heeft een webfrontend waarmee gebruikers referenties worden verzameld met behulp van een webformulier en vervolgens gebruikers verifieert door een LDAP-binding uit te voeren op de on-premises AD DS omgeving.
+
 ![LDAP bind](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
-Contoso heeft een on-premises toepassing die is aangeschaft via een ISV jaren geleden. De toepassing is op dit moment in de onderhoudsmodus bevindt door de ISV en aanvragen van wijzigingen in de toepassing is beperkend duur voor Contoso. Deze toepassing is een webgebaseerde frontend die worden verzameld met behulp van een webformulier gebruikersreferenties en vervolgens gebruikers worden geverifieerd door het uitvoeren van een LDAP-binding aan de zakelijke Active Directory. Contoso wilt migreren van deze toepassing met Azure Infrastructure Services. Is het wenselijk dat de toepassing is, zonder wijzigingen werkt. Daarnaast gebruikers kunt verifiëren met hun bestaande bedrijfsreferenties moet hoeven gebruikers handelingen anders trainen. Met andere woorden, eindgebruikers moet oblivious van waar de toepassing wordt uitgevoerd en de migratie moet worden transparant voor hen.
+Contoso wil deze toepassing migreren naar Azure. De toepassing moet blijven werken, zonder dat u wijzigingen hoeft aan te brengen. Daarnaast moeten gebruikers zich kunnen verifiëren met hun bestaande bedrijfs referenties en zonder extra training. Het moet transparant zijn voor eind gebruikers waarop de toepassing wordt uitgevoerd.
 
-**Opmerkingen bij de implementatie**
+Voor dit scenario kunnen toepassingen met Azure AD DS LDAP-bindingen uitvoeren als onderdeel van het verificatie proces. Bestaande on-premises toepassingen kunnen in azure overstappen en verschuiven en kunnen gebruikers naadloos verifiëren zonder enige wijziging in de configuratie of gebruikers ervaring.
 
-Houd rekening met de volgende belangrijke punten voor deze implementatiescenario:
+### <a name="deployment-notes"></a>Implementatie opmerkingen
 
-* Zorg ervoor dat de toepassing hoeft niet te wijzigen/schrijven naar de map. LDAP-schrijftoegang tot de beheerde domeinen die worden geleverd door Azure AD Domain Services wordt niet ondersteund.
-* U kunt wachtwoorden rechtstreeks aan de hand van het beheerde domein niet wijzigen. Eindgebruikers kunnen hun wachtwoord kunt wijzigen met behulp van Azure AD-mechanisme voor self-service voor wachtwoord wijzigen of op basis van de on-premises directory. Deze wijzigingen worden automatisch gesynchroniseerd en beschikbaar zijn in het beheerde domein.
+De volgende overwegingen met betrekking tot de implementatie zijn van toepassing op dit voor beeld-Case:
 
-## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-read-to-access-the-directory-to-azure-infrastructure-services"></a>Lift-and-shift een on-premises toepassing die gebruikmaakt van LDAP lezen voor toegang tot de map met Azure Infrastructure Services
-Contoso heeft een on-premises line-of-business (LOB)-toepassing die bijna een decennium geleden is ontwikkeld. Deze toepassing is op de hoogte-map en is ontworpen voor gebruik met Windows Server AD. De toepassing gebruikt LDAP (Lightweight Directory Access Protocol) te lezen van gegevens/kenmerken voor gebruikers uit Active Directory. De toepassing niet wijzigen van kenmerken of anderszins in de map schrijven. Contoso wilt migreren van deze toepassing met Azure Infrastructure Services en de ouderdom on-premises hardware momenteel die als host fungeert van deze toepassing buiten gebruik stellen. De toepassing kan niet worden herschreven voor het gebruik van moderne directory API's, zoals de Azure AD Graph REST gebaseerde API. Daarom is een optie voor lift-and-shift gewenste waarbij de toepassing kan worden gemigreerd om uit te voeren in de cloud, zonder code te wijzigen of het herschrijven van de toepassing.
+* Zorg ervoor dat de toepassing niet aan de directory hoeft te wijzigen/schrijven. LDAP-schrijf toegang tot een beheerd domein van Azure AD DS wordt niet ondersteund.
+* U kunt wacht woorden niet rechtstreeks wijzigen voor een beheerd domein van Azure AD DS. Eind gebruikers kunnen hun wacht woord wijzigen met behulp van de self-service voor wachtwoord wijziging van Azure AD of de on-premises Directory. Deze wijzigingen worden vervolgens automatisch gesynchroniseerd en beschikbaar in het door Azure AD DS beheerde domein.
 
-**Opmerkingen bij de implementatie**
+## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>On-premises toepassingen die gebruikmaken van LDAP, gebruiken om toegang te krijgen tot de adres lijst
 
-Houd rekening met de volgende belangrijke punten voor deze implementatiescenario:
+Net als bij het vorige voorbeeld scenario gaan we ervan uitgaan dat contoso een on-premises LOB-toepassing (line-of-Business) heeft die bijna een jaar geleden is ontwikkeld. Deze toepassing is Directory-Aware en is ontworpen voor het gebruik van LDAP (Lightweight Directory Access Protocol) om informatie/kenmerken over gebruikers van AD DS te lezen. De toepassing wijzigt geen kenmerken of op een andere manier naar de map schrijven.
 
-* Zorg ervoor dat de toepassing hoeft niet te wijzigen/schrijven naar de map. LDAP-schrijftoegang tot de beheerde domeinen die worden geleverd door Azure AD Domain Services wordt niet ondersteund.
-* Zorg ervoor dat de toepassing hoeft niet een aangepaste/uitgebreide Active Directory-schema. Schema-uitbreidingen worden niet ondersteund in Azure AD Domain Services.
+Contoso wil deze toepassing migreren naar Azure en buiten gebruik stellen op de lokale hardware die momenteel als host fungeert voor deze toepassing. De toepassing kan niet worden herschreven voor het gebruik van moderne Directory-Api's, zoals de op REST gebaseerde Azure AD-Graph API. Er is een lift-en Shift-optie gewenst waarbij de toepassing kan worden gemigreerd om te worden uitgevoerd in de Cloud, zonder code te wijzigen of de toepassing te herschrijven.
 
-## <a name="migrate-an-on-premises-service-or-daemon-application-to-azure-infrastructure-services"></a>Een on-premises service of -daemon-toepassing met Azure Infrastructure Services migreren
-Sommige toepassingen bestaan uit meerdere lagen, waar een van de lagen moet zijn om uit te voeren geverifieerde aanroepen naar een back endlaag, zoals een database-laag. Active Directory-service-accounts worden vaak gebruikt voor deze use cases. U kunt lift-and-shift dergelijke toepassingen op Azure Infrastructure Services en het gebruik van Azure AD Domain Services voor de behoeften van de identiteit van deze toepassingen. U kunt dezelfde serviceaccount die is gesynchroniseerd vanuit uw on-premises directory met Azure AD gebruiken. U kunt ook eerst een aangepaste organisatie-eenheid maken en maak vervolgens een afzonderlijk serviceaccount in die organisatie-eenheid, om deze toepassingen te implementeren.
+Om u te helpen bij dit scenario kunnen toepassingen met Azure AD DS LDAP-lees bewerkingen uitvoeren op het beheerde domein om de benodigde kenmerk gegevens op te halen. De toepassing hoeft niet opnieuw te worden geschreven, dus met een lift-en-verschuiving in azure kunnen gebruikers de app blijven gebruiken zonder dat er sprake is van een wijziging in de locatie waar deze wordt uitgevoerd.
 
-![Met behulp van WIA-serviceaccount](./media/active-directory-domain-services-scenarios/wia-service-account.png)
+### <a name="deployment-notes"></a>Implementatie opmerkingen
 
-Contoso heeft een op maat gemaakte software kluis-toepassing die bestaat uit een webfront-end, een SQL-server en een back-FTP-endserver. Geïntegreerde Windows-verificatie van service-accounts wordt gebruikt voor verificatie van de web-front-end met de FTP-server. De web-front-end is ingesteld om uit te voeren als een service-account. De back-endserver is geconfigureerd voor het toestaan van toegang van het serviceaccount voor de web-front-end. Contoso liever niet te implementeren van een domein netwerkcontroller-VM in de cloud om deze toepassing met Azure Infrastructure Services te verplaatsen. Het Contoso IT-beheerder de servers die als host fungeert voor de web-front-end, SQL server en de FTP-server op virtuele machines van Azure kunt implementeren. Deze machines zijn vervolgens gekoppeld aan een beheerd domein van Azure AD Domain Services. Vervolgens kunnen ze hetzelfde serviceaccount gebruiken in hun on-premises directory voor verificatie van de app. Deze serviceaccount wordt gesynchroniseerd met de Azure AD Domain Services beheerde domein en is beschikbaar voor gebruik.
+De volgende overwegingen met betrekking tot de implementatie zijn van toepassing op dit voor beeld-Case:
 
-**Opmerkingen bij de implementatie**
+* Zorg ervoor dat de toepassing niet aan de directory hoeft te wijzigen/schrijven. LDAP-schrijf toegang tot een beheerd domein van Azure AD DS wordt niet ondersteund.
+* Zorg ervoor dat de toepassing geen aangepast/uitgebreid Active Directory schema nodig heeft. Schema-uitbrei dingen worden niet ondersteund in azure AD DS.
 
-Houd rekening met de volgende belangrijke punten voor deze implementatiescenario:
+## <a name="migrate-an-on-premises-service-or-daemon-application-to-azure"></a>Een on-premises service of daemon-toepassing migreren naar Azure
 
-* Zorg ervoor dat de toepassing maakt gebruik van gebruikersnaam en wachtwoord voor verificatie. Certificaat/Smartcard op basis van verificatie wordt niet ondersteund door Azure AD Domain Services.
-* U kunt wachtwoorden rechtstreeks aan de hand van het beheerde domein niet wijzigen. Eindgebruikers kunnen hun wachtwoord kunt wijzigen met behulp van Azure AD-mechanisme voor self-service voor wachtwoord wijzigen of op basis van de on-premises directory. Deze wijzigingen worden automatisch gesynchroniseerd en beschikbaar zijn in het beheerde domein.
+Sommige toepassingen bevatten meerdere lagen, waarbij een van de lagen een geauthenticeerde aanroep naar een backend-laag, zoals een Data Base, moet uitvoeren. AD-service accounts worden vaak gebruikt in deze scenario's. Wanneer u toepassingen in azure opneemt, kunt u met Azure AD DS de service accounts op dezelfde manier blijven gebruiken. U kunt ervoor kiezen om hetzelfde service account te gebruiken dat is gesynchroniseerd vanuit uw on-premises Directory naar Azure AD of een aangepaste organisatie-eenheid te maken en vervolgens een afzonderlijk service account in die organisatie-eenheid te maken. Met beide benaderingen blijven toepassingen op dezelfde manier werken om geverifieerde aanroepen naar andere lagen en services te maken.
 
-## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Windows Server extern bureaublad-services-implementaties in Azure
-U kunt Azure AD Domain Services gebruiken voor beheerde AD domain services voor uw extern bureaublad-servers geïmplementeerd in Azure.
+![Service account met behulp van WIA](./media/active-directory-domain-services-scenarios/wia-service-account.png)
 
-Zie voor meer informatie over dit implementatiescenario, hoe u [Azure AD Domain Services integreren met uw implementatie van extern bureaublad-services](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-azure-adds).
+In dit voorbeeld scenario heeft Contoso een aangepaste software kluis toepassing die een web-front-end, een SQL-Server en een back-end-FTP-server bevat. Geïntegreerde Windows-verificatie met Service accounts verifieert de web-front-end naar de FTP-server. De web-front-end is ingesteld om te worden uitgevoerd als een service account. De back-endserver is geconfigureerd om toegang te verlenen van het service account voor de web-front-end. Contoso wil niet dat hun eigen domein controller-Vm's in de cloud worden geïmplementeerd en beheerd om deze toepassing naar Azure te verplaatsen.
 
+Voor dit scenario kunnen de servers die als host fungeren voor de web-front-end, SQL Server en de FTP-server worden gemigreerd naar Azure-Vm's en lid worden van een door Azure AD DS beheerd domein. De Vm's kunnen vervolgens hetzelfde service account in hun on-premises Directory gebruiken voor de verificatie doeleinden van de app, die wordt gesynchroniseerd via Azure AD met behulp van Azure AD Connect.
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>Aan domein gekoppelde HDInsight-clusters (Preview)
-U kunt een Azure HDInsight-cluster dat is gekoppeld aan een beheerd domein van Azure AD Domain Services met Apache Ranger ingeschakeld instellen. Maken en toepassen via Apache Ranger Hive-beleid en toestaan dat gebruikers (bijvoorbeeld gegevenswetenschappers) verbinding maken met Hive ODBC-hulpprogramma's, zoals Excel, Tableau enzovoort gebruiken. Microsoft is bezig met toevoegen van andere werkbelastingen, zoals HBase en Spark, Storm, aan Domain-joined HDInsight binnenkort.
+### <a name="deployment-notes"></a>Implementatie opmerkingen
 
-Zie voor meer informatie over dit implementatiescenario, hoe u [aan domein gekoppelde HDInsight-clusters configureren](../hdinsight/domain-joined/apache-domain-joined-configure.md)
+De volgende overwegingen met betrekking tot de implementatie zijn van toepassing op dit voor beeld-Case:
+
+* Zorg ervoor dat de toepassingen een gebruikers naam en wacht woord voor verificatie gebruiken. Verificatie op basis van een certificaat of Smart Card wordt niet ondersteund door Azure AD DS.
+* U kunt wacht woorden niet rechtstreeks wijzigen voor een beheerd domein van Azure AD DS. Eind gebruikers kunnen hun wacht woord wijzigen met behulp van de self-service voor wachtwoord wijziging van Azure AD of de on-premises Directory. Deze wijzigingen worden vervolgens automatisch gesynchroniseerd en beschikbaar in het door Azure AD DS beheerde domein.
+
+## <a name="windows-server-remote-desktop-services-deployments-in-azure"></a>Windows Server-implementaties van extern bureau blad-Services in azure
+
+U kunt Azure AD DS gebruiken om beheerde domein services te bieden aan extern bureau blad-servers die zijn geïmplementeerd in Azure. Zie [Azure AD Domain Services integreren met uw RDS-implementatie][windows-rds]voor meer informatie over dit implementatie scenario.
+
+## <a name="domain-joined-hdinsight-clusters-preview"></a>HDInsight-clusters die zijn gekoppeld aan een domein (preview-versie)
+
+U kunt een Azure HDInsight-cluster instellen dat is gekoppeld aan een door Azure AD DS beheerd domein waarvoor Apache zwerver is ingeschakeld. Deze functie is momenteel beschikbaar als preview-product. U kunt Hive-beleid maken en Toep assen via Apache zwerver, en gebruikers, zoals gegevens wetenschappers, toestaan verbinding te maken met hive met behulp van ODBC-hulpprogram ma's zoals Excel of tableau. We blijven werken om andere workloads, zoals HBase, Spark en Storm, toe te voegen aan HDInsight die lid is van een domein.
+
+Zie [HDInsight-clusters die zijn gekoppeld aan een domein configureren][hdinsight] voor meer informatie over dit implementatie scenario.
+
+## <a name="next-steps"></a>Volgende stappen
+
+[Een Azure Active Directory Domain Services-exemplaar maken en configureren][tutorial-create-instance] om aan de slag te gaan
+
+<!-- INTERNAL LINKS -->
+[hdinsight]: ../hdinsight/domain-joined/apache-domain-joined-configure.md
+[tutorial-create-instance]: tutorial-create-instance.md
+
+<!-- EXTERNAL LINKS -->
+[windows-rds]: /windows-server/remote/remote-desktop-services/rds-azure-adds

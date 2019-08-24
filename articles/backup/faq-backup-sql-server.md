@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737063"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982440"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -37,9 +37,10 @@ In sommige gevallen worden herstel back-ups door de Azure Backup-service geactiv
 Automatisch herstellen als een mogelijkheid is standaard ingeschakeld voor alle gebruikers. Als u er echter voor kiest om dit te doen, voert u de onderstaande stappen uit:
 
   * Op het SQL Server-exemplaar in de map *C:\Program Files\Azure workload Backup\bin* maakt of bewerkt u het bestand **ExtensionSettingsOverrides. json** .
-  * Stel *{"EnableAutoHealer": False}* in in **ExtensionSettingsOverrides. json**.
+  * Stel *{"EnableAutoHealer": False}* in in **ExtensionSettingsOverrides. json**.
   * Sla de wijzigingen op en sluit het bestand.
-  * Open op het SQL Server-exemplaar **taak beheer** en start de **AzureWLBackupCoordinatorSvc** -service vervolgens opnieuw.  
+  * Open op het SQL Server-exemplaar **taak beheer** en start de **AzureWLBackupCoordinatorSvc** -service vervolgens opnieuw.
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Kan ik bepalen hoeveel gelijktijdige back-ups er worden uitgevoerd op de SQL Server?
 
@@ -71,12 +72,12 @@ Nee. Succesvolle back-uptaken maken geen waarschuwingen. Er worden alleen waarsc
 In het menu **back-uptaak** worden alleen ad-hoc back-uptaken weer gegeven. Gebruik voor een geplande taak [bewaking met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Worden toekomstige data bases automatisch toegevoegd voor back-up?
-Ja, u kunt deze mogelijkheid met [automatische beveiliging](backup-sql-server-database-azure-vms.md#enable-auto-protection)krijgen.  
+Ja, u kunt deze mogelijkheid met [automatische beveiliging](backup-sql-server-database-azure-vms.md#enable-auto-protection)krijgen.  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Wat gebeurt er met de back-ups als ik een Data Base uit een automatisch beveiligde exemplaar Verwijder?
 Als een Data Base uit een niet-beveiligd exemplaar wordt verwijderd, worden er nog steeds back-ups van de data base geprobeerd. Dit betekent dat de verwijderde data base wordt weer gegeven als beschadigd onder **back-** upitems en nog steeds is beveiligd.
 
-De juiste manier om de beveiliging van deze data base te stoppen, is het stoppen van de **back-up** met het **verwijderen van gegevens** in deze data base.  
+De juiste manier om de beveiliging van deze data base te stoppen, is het stoppen van de **back-up** met het **verwijderen van gegevens** in deze data base.  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Als ik de back-upbewerking van een automatisch beveiligde data base stop, wat is dan het gedrag?
 Als u **back-up met behoud van gegevens stopt**, zullen er geen back-ups meer worden gemaakt en worden de bestaande herstel punten intact gelaten. De data base wordt nog steeds beschouwd als beveiligd en wordt weer gegeven onder de **back-** upitems.

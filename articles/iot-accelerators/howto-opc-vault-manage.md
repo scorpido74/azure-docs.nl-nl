@@ -1,5 +1,5 @@
 ---
-title: De OPC kluis Certificate Management-service beheren-Azure | Microsoft Docs
+title: De OPC-kluis certificaat service beheren-Azure | Microsoft Docs
 description: De OPC-kluis basis-CA-certificaten en-gebruikers machtigingen beheren.
 author: mregen
 ms.author: mregen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6e53914b16bc126cdab7300d918dbb7b6b868728
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4420e5b0d895f8ea30dbd39fc50dd7480d57d086
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973803"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996001"
 ---
-# <a name="how-to-manage-the-opc-ua-certificate-service"></a>De OPC UA-certificaat service beheren
+# <a name="how-to-manage-the-opc-vault-certificate-service"></a>De OPC-kluis certificaat service beheren
 
-Dit artikel bevat informatie over de beheer taken voor de OPC UA Certificate Management-service in azure, het vernieuwen van CA-certificaten van uitgevers, het vernieuwen van de certificaatintrekkingslijst (CRL) en het verlenen en intrekken van gebruikers toegang.
+In dit artikel worden de beheer taken voor de OPC kluis Certificate Management-service in azure beschreven, het vernieuwen van CA-certificaten voor uitgevers, het vernieuwen van de certificaatintrekkingslijst (CRL) en het verlenen en intrekken van gebruikers toegang.
 
 ## <a name="create-or-renew-the-root-ca-certificate"></a>Het basis-CA-certificaat maken of vernieuwen
 
@@ -56,7 +56,7 @@ In de volgende werk stroom worden alle certificaat aanvragen in de verwijderde s
 4. Klik op de `Update CRL Revocation List(CRL)` knop om een bijgewerkte CRL uit te geven voor alle actieve certificaat verlener in de OPC-kluis opslag.
 5. Na een paar seconden worden `Certificate Details` de weer gegeven. Druk `Issuer` op `Crl` of down load het nieuwste CA-certificaat en de CRL voor distributie naar uw OPC UA-toepassingen.
 
-## <a name="manage-user-roles"></a>Gebruikers rollen beheren
+## <a name="manage-user-roles"></a>Gebruikersrollen beheren
 
 Gebruikers rollen voor de OPC-kluis micro service worden beheerd in de Azure Active Directory Enter prise-toepassing.
 

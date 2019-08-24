@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 0884120c15b2e48566d1889400197e316bac9021
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 82c286ce60751775308d0f2c197d86785c4f0a14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907451"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991587"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -45,7 +45,7 @@ Australië-oost, Australië-zuidoost, centraal VS, Azië-oost, VS-Oost, VS-Oost 
 
 
 ### <a name="paired-regions"></a>Gekoppelde regio's
-Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van uw hoofd server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Naast de universele replica regio's, kunt u een lees replica maken in het gekoppelde Azure-gebied van uw hoofd server. Als u het paar van uw regio niet weet, kunt u meer informatie vinden in het [artikel gekoppelde regio's in azure](../best-practices-availability-paired-regions.md).
 
 Als u verschillende regio's replica's gebruikt voor het plannen van herstel na nood gevallen, raden we u aan om de replica in het gekoppelde gebied te maken in plaats van een van de andere regio's. Gekoppelde regio's vermijden gelijktijdige updates en geven geen prioriteiten voor fysieke isolatie en gegevens locatie.  
 
@@ -124,19 +124,21 @@ Wanneer u de replicatie stopt, verliest de replica alle koppelingen naar het vor
 
 Meer informatie over het [stoppen van replicatie naar een replica](howto-read-replicas-portal.md).
 
-## <a name="fail-over"></a>Failover
+## <a name="failover"></a>Failover
 Er is geen automatische failover tussen hoofd-en replica servers. 
 
-Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de Master en de replica. De hoeveelheid vertraging is afhankelijk van hoe zwaar de werk belasting wordt uitgevoerd op de hoofd server. In de meeste gevallen variëren de replica vertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
+Omdat replicatie asynchroon is, is er sprake van een vertraging tussen de Master en de replica. De hoeveelheid vertraging kan worden beïnvloed door een aantal factoren, zoals hoe zwaar de werk belasting die wordt uitgevoerd op de master server en de latentie tussen data centers. In de meeste gevallen variëren de replica vertraging tussen enkele seconden en een paar minuten. U kunt uw werkelijke replicatie vertraging bijhouden met behulp van de metrische *replica vertraging*, die beschikbaar is voor elke replica. Met deze metriek wordt de tijd weer gegeven sinds de laatste geplayte trans actie. U wordt aangeraden om te bepalen wat uw gemiddelde vertraging is door uw replica vertraging te bestuderen gedurende een bepaalde periode. U kunt een waarschuwing instellen voor replica vertraging, zodat u actie kunt ondernemen als deze buiten het verwachte bereik komt.
 
 > [!Tip]
-> Als u een failover naar de replica maakt, geeft de vertraging aan op het moment dat u de replica loskoppelt van de Master, en wordt aangegeven hoeveel gegevens er verloren zijn gegaan.
+> Als u een failover naar de replica doorzoekt, geeft de vertraging op het moment dat u de replica loskoppelt van de Master aan hoeveel gegevens er verloren zijn gegaan.
 
-Zodra u hebt vastgesteld dat u een failover wilt uitvoeren naar een replica, 
+Zodra u hebt vastgesteld dat u een failover naar een replica wilt uitvoeren, 
 
-1. Replicatie naar de replica stoppen deze stap is nodig om de replica-server in staat te stellen schrijf bewerkingen te accepteren. Als onderdeel van dit proces wordt de replica server opnieuw opgestart en ontkoppeld van het hoofd bestand. Zodra u stopt met de replicatie, duurt het back-end doorgaans ongeveer twee minuten om te volt ooien. Meer informatie over het [stoppen van replicatie](#stop-replication).
+1. Replicatie naar de replica stoppen<br/>
+   Deze stap is nodig om de replica-server in staat te stellen schrijf bewerkingen te accepteren. Als onderdeel van dit proces wordt de replica server opnieuw opgestart en ontkoppeld van het hoofd bestand. Zodra u stopt met de replicatie, duurt het back-end doorgaans ongeveer twee minuten om te volt ooien. Zie de sectie [Replicatie stoppen](#stop-replication) in dit artikel voor meer informatie over de implicaties van deze actie.
     
-2. Sluit uw toepassing naar de (voormalige) replica van elke server heeft een unieke connection string. Werk uw toepassing bij zodat deze verwijst naar de (voormalige) replica in plaats van het hoofd bestand.
+2. Uw toepassing naar de (voormalige) replica laten wijzen<br/>
+   Elke server heeft een unieke connection string. Werk uw toepassing bij zodat deze verwijst naar de (voormalige) replica in plaats van het hoofd bestand.
     
 Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failover voltooid. De uitval tijd van uw toepassings ervaring is afhankelijk van wanneer u een probleem detecteert en de stappen 1 en 2 hierboven uitvoert.
 

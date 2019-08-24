@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2fd9ccff68eb368107a299af02a54ae6fc6cc0e2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: edb9e50cceed95d8ca77567e7c1228704b5f177d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946151"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982369"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Quickstart: Een afbeeldingsclassificatieproject maken met de Node.js-SDK van Custom Vision
 
@@ -45,7 +45,7 @@ Maak een nieuw bestand met de naam *sample.js* in uw projectmap.
 
 ### <a name="create-the-custom-vision-service-project"></a>Het Custom Vision Service-project maken
 
-Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in.
+Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnements sleutels in de juiste definities in en stel de sampleDataRoot in op het pad naar de map met installatie kopieën. Zorg ervoor dat de eindpunt waarde overeenkomt met de trainings-en Voorspellings eindpunten die u hebt gemaakt op [Customvision.ai](https://www.customvision.ai/).
 
 ```javascript
 const util = require('util');

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cafe761d2b566a7bddce503765c11bf9f8e00f2a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2954f0bfcfe78243c2df12182f45034f46c8391d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847442"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991899"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Azure Data Lake Storage Gen2 gebruiken voor big data vereisten
 
@@ -25,7 +25,7 @@ Er zijn vier belang rijke fasen in het big data verwerken:
 > * De gegevens downloaden
 > * De gegevens visualiseren
 
-Maak eerst een opslag account en een bestands systeem. Verleen vervolgens toegang tot de gegevens. De eerste gedeelten van dit artikel helpen u bij het uitvoeren van deze taken. In de overige secties worden de opties en hulpprogram ma's voor elke verwerkings fase gemarkeerd.
+Maak eerst een opslag account en een container. Verleen vervolgens toegang tot de gegevens. De eerste gedeelten van dit artikel helpen u bij het uitvoeren van deze taken. In de overige secties worden de opties en hulpprogram ma's voor elke verwerkings fase gemarkeerd.
 
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Een Data Lake Storage Gen2-account maken
 
@@ -33,16 +33,16 @@ Een Data Lake Storage Gen2 account is een opslag account met een hiërarchische 
 
 Als u er een wilt [maken, raadpleegt u Quick Start: Maak een Azure Data Lake Storage Gen2 Storage-](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)account.
 
-## <a name="create-a-file-system"></a>Een bestandssysteem maken
+## <a name="create-a-container"></a>Een container maken
 
-Een *Bestands systeem* is een container voor mappen en bestanden. U hebt mini maal een van beide nodig om gegevens op te nemen in uw opslag account.  Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om ze te maken.
+Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om een container voor uw bestanden te maken.
 
 |Hulpprogramma | Richtlijnen |
 |---|--|
-|Azure Opslagverkenner | [Een bestands systeem maken met behulp van Storage Explorer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|Azure Opslagverkenner | [Een container maken met behulp van Storage Explorer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
 |AzCopy | [Een BLOB-container of-bestands share maken met behulp van AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Hadoop File System (HDFS) opdracht regel interface (CLI) met HDInsight |[Een bestands systeem maken met behulp van HDFS met HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
-|Code in een Azure Databricks notitie blok|[Een bestands systeem voor opslag accounts maken (scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Een bestands systeem maken en koppelen (python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
+|Hadoop-container (HDFS) opdracht regel interface (CLI) met HDInsight |[Een container maken met behulp van HDFS met HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
+|Code in een Azure Databricks notitie blok|[Een opslag account container maken (scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Een container maken en koppelen (python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
 
 Het is eenvoudig om bestands systemen te maken met behulp van Storage Explorer of AzCopy. Het is wat meer werk om bestands systemen te maken met behulp van HDInsight en Databricks. Als u echter van plan bent HDInsight-of Databricks-clusters te gebruiken om uw gegevens toch te verwerken, kunt u eerst uw clusters maken en de HDFS CLI gebruiken voor het maken van bestands systemen.  
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: f2f7e26e2f32ba02db9afc0676a99003717ff585
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717287"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991080"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Wat is Azure Active Directory Identity Protection (vernieuwd)?
 
@@ -49,19 +49,19 @@ Azure AD Identity Protection detecteert de volgende risico gebeurtenissen:
 | Type risicogebeurtenis | Description | Detectietype |
 | --- | --- | --- |
 | Ongewoon traject | Meld u vanaf een ongewoone locatie aan op basis van de recente aanmeldingen van de gebruiker. | Offline |
-| Anoniem IP-adres | Meld u aan vanaf een anoniem IP-adres (bijvoorbeeld: Tor-browser, Anonymizer Vpn's). | Realtime |
-| Onbekende aanmeldingseigenschappen | Meld u aan met de eigenschappen die niet recent voor de gegeven gebruiker zijn weer gegeven. | Realtime |
+| Anoniem IP-adres | Meld u aan vanaf een anoniem IP-adres (bijvoorbeeld: Tor-browser, Anonymizer Vpn's). | Real-time |
+| Onbekende aanmeldings eigenschappen | Meld u aan met de eigenschappen die niet recent voor de gegeven gebruiker zijn weer gegeven. | Real-time |
 | Aan malware gekoppeld IP-adres | Meld u aan bij een IP-adres dat is gekoppeld aan malware | Offline |
-| Gelekte referenties | Deze risicogebeurtenis duidt erop dat de geldige referenties van de gebruiker zijn gelekt | Offline |
+| Gelekte referenties | Deze risico gebeurtenis geeft aan dat de geldige referenties van de gebruiker zijn gelekt | Offline |
 
 ## <a name="types-of-risk"></a>Risico typen 
 
 Identiteits beveiliging is gebaseerd op twee risico typen:
 
-- Aanmeldingsrisico
+- Aanmeldings risico
 - Gebruikersrisico
 
-### <a name="sign-in-risk"></a>Aanmeldingsrisico
+### <a name="sign-in-risk"></a>Aanmeldings risico
 
 Een aanmeldings risico duidt op de kans dat een bepaalde verificatie aanvraag niet is geautoriseerd door de eigenaar van de identiteit.
 
@@ -79,7 +79,7 @@ Een gebruikers risico duidt op de kans dat een bepaalde identiteit is aangetast.
 
 Het gebruikers risico wordt berekend door alle Risico's te overwegen die aan de gebruiker zijn gekoppeld:
 
-- Alle riskante aanmeldingen
+- Alle Risk ante aanmeldingen
 - Alle risico gebeurtenissen die niet zijn gekoppeld aan een aanmelding
 - Het huidige gebruikers risico
 - Eventuele door de gebruiker geherstelde of afsluitings acties die worden uitgevoerd op de gebruikers datum
@@ -145,13 +145,17 @@ Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-role
 >[!NOTE]
 > Tijdens de open bare preview van identiteits beveiliging (vernieuwd) hebben alleen Azure AD Premium P2-klanten toegang tot het rapport Risk ante gebruikers en Risk ante aanmeldingen.
 
-| Mogelijkheid | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/gratis |
-| --- | --- | --- | --- |
-| Beleid voor gebruikersrisico's | Ja | Nee | Nee |
-| Beleid voor aanmeldingsrisico's | Ja | Nee | Nee |
-| Rapport over riskante gebruikers | Volledige toegang | Beperkte informatie | Beperkte informatie |
-| Rapport Riskante aanmeldingen | Volledige toegang | Beperkte informatie | Beperkte informatie |
-| MFA-registratiebeleid | Ja | Nee | Nee |
+| Mogelijkheid | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/gratis |
+| --- | --- | --- | --- | --- |
+| Risico beleid | Beleid voor gebruikers risico's (via identiteits beveiliging) | Ja | Nee | Nee |
+| Risico beleid | Beleid voor aanmeldings risico's (via identiteits beveiliging of voorwaardelijke toegang) | Ja | Nee | Nee |
+| Beveiligingsrapporten | Overzicht | Ja | Nee | Nee |
+| Beveiligingsrapporten | Risk ante gebruikers | Volledige toegang | Beperkte informatie | Beperkte informatie |
+| Beveiligingsrapporten | Riskante aanmeldingen | Volledige toegang | Beperkte informatie | Beperkte informatie |
+| Beveiligingsrapporten | Risico detecties | Volledige toegang | Beperkte informatie | Nee |
+| Meldingen | Waarschuwingen bij Gebruikers die risico lopen gedetecteerd | Ja | Nee | Nee |
+| Meldingen | Wekelijkse samenvatting | Ja | Nee | Nee |
+| | MFA-registratiebeleid | Ja | Nee | Nee |
 
 ## <a name="next-steps"></a>Volgende stappen 
 

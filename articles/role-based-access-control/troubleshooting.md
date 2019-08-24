@@ -1,6 +1,6 @@
 ---
-title: RBAC voor Azure-resources oplossen | Microsoft Docs
-description: Problemen oplossen met op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources.
+title: Problemen met RBAC voor Azure-resources oplossen | Microsoft Docs
+description: Problemen oplossen met op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -11,52 +11,52 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 59ece9c37a563efba6329a30c06c1b596b1a5d57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c3ca873cb4dd49d77ba818b3d05c3aa41e89276f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058152"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982728"
 ---
-# <a name="troubleshoot-rbac-for-azure-resources"></a>RBAC voor Azure-resources oplossen
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Problemen met RBAC voor Azure-resources oplossen
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources, zodat u wat weet u kunt verwachten wanneer u de rollen in de Azure-portal en kan problemen met toegang.
+In dit artikel vindt u antwoorden op algemene vragen over op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources, zodat u weet wat u kunt verwachten bij het gebruik van de functies in de Azure Portal en kunt u toegangs problemen oplossen.
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problemen met RBAC-roltoewijzingen
 
-- Als u zich niet op toe te voegen een roltoewijzing in de Azure-portal **toegangsbeheer (IAM)** omdat de **toevoegen** > **roltoewijzing toevoegen** optie is uitgeschakeld of omdat u krijgt de Machtigingsfout 'de client met object-id is niet gemachtigd om uit te voeren actie', controleert u of u momenteel bent aangemeld bij een gebruiker die een rol heeft die is toegewezen de `Microsoft.Authorization/roleAssignments/write` machtiging zoals [eigenaar](built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](built-in-roles.md#user-access-administrator) bij het bereik dat u wilt de rol toe te wijzen.
-- Als u het foutbericht ' kunnen geen roltoewijzingen meer worden gemaakt (code: RoleAssignmentLimitExceeded)' optreedt, vermindert u het aantal roltoewijzingen door in plaats hiervan rollen toe te wijzen aan groepen. Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement.
+- Als u geen roltoewijzing kunt toevoegen in de Azure Portal op **toegangs beheer (IAM),** omdat de > optie**toewijzing van roltoewijzing** toevoegen is uitgeschakeld of omdat u de machtigingen fout krijgt, is de client met object-id niet autorisatie voor het uitvoeren van de actie ', Controleer of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen `Microsoft.Authorization/roleAssignments/write` die de machtiging heeft, zoals [eigenaar](built-in-roles.md#owner) of [gebruikers toegangs beheerder](built-in-roles.md#user-access-administrator) in het bereik dat u probeert toe te wijzen aan de rol.
+- Als u het fout bericht ' er kunnen geen roltoewijzingen meer worden gemaakt ' weer gegeven (code: RoleAssignmentLimitExceeded)' optreedt, vermindert u het aantal roltoewijzingen door in plaats hiervan rollen toe te wijzen aan groepen. Azure ondersteunt maximaal **2000** roltoewijzingen per abonnement.
 
 ## <a name="problems-with-custom-roles"></a>Problemen met aangepaste rollen
 
-- Als u stappen voor het maken van een aangepaste rol nodig hebt, raadpleegt u de aangepaste rol zelfstudies met behulp van [Azure PowerShell](tutorial-custom-role-powershell.md) of [Azure CLI](tutorial-custom-role-cli.md).
-- Als u zich niet aan een bestaande aangepaste rol bijwerken, controleert u of u momenteel bent aangemeld bij een gebruiker die een rol heeft die is toegewezen de `Microsoft.Authorization/roleDefinition/write` machtiging zoals [eigenaar](built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](built-in-roles.md#user-access-administrator).
+- Als u stappen nodig hebt voor het maken van een aangepaste rol, raadpleegt u de zelf studies voor aangepaste rollen met behulp van [Azure PowerShell](tutorial-custom-role-powershell.md) of [Azure cli](tutorial-custom-role-cli.md).
+- Als u een bestaande aangepaste rol niet kunt bijwerken, controleert u of u momenteel bent aangemeld met een gebruiker aan wie een rol is toegewezen die de `Microsoft.Authorization/roleDefinition/write` machtiging heeft, zoals [eigenaar](built-in-roles.md#owner) of [beheerder van gebruikers toegang](built-in-roles.md#user-access-administrator).
 - Als het u niet lukt om een aangepaste rol te verwijderen en het foutbericht 'There are existing role assignments referencing role (code: RoleDefinitionHasAssignments)' (Er zijn bestaande roltoewijzingen die aan een rol refereren (code: RoleDefinitionHasAssignments)) verschijnt, dan zijn er roltoewijzingen die nog altijd de aangepaste rol gebruiken. Verwijder deze roltoewijzingen en probeer de aangepaste rol opnieuw te verwijderen.
-- Als tijdens het maken van een nieuwe aangepaste rol het foutbericht 'Role definition limit exceeded. No more role definitions can be created (RoleDefinitionLimitExceeded)' Geen roldefinities meer kunnen worden gemaakt (code: RoleDefinitionLimitExceeded) ' wanneer u probeert te maken van een nieuwe aangepaste rol, verwijdert u eventuele aangepaste rollen die niet worden gebruikt. Azure biedt ondersteuning voor maximaal **5000** aangepaste rollen in een tenant. (Voor speciale clouds, zoals Azure Government, Azure Duitsland en Azure China 21Vianet, is de limiet 2000 aangepaste rollen.)
-- Als u een fout optreedt die vergelijkbaar is met het "de client is gemachtigd om uit te voeren actie 'Microsoft.Authorization/roleDefinitions/write' over scope '/ subscriptions / {subscriptionid}', maar het gekoppelde abonnement is niet gevonden" wanneer u probeert een aangepaste rol bijwerken, controleren of een of meer [toewijsbare bereiken](role-definitions.md#assignablescopes) in de tenant is verwijderd. Als het bereik is verwijderd, maakt u een ondersteuningsticket, aangezien hiervoor op dit moment geen selfserviceoplossing beschikbaar is.
+- Als tijdens het maken van een nieuwe aangepaste rol het foutbericht 'Role definition limit exceeded. No more role definitions can be created (RoleDefinitionLimitExceeded)' Er kunnen geen roldefinities meer worden gemaakt (code: RoleDefinitionLimitExceeded) "wanneer u probeert een nieuwe aangepaste rol te maken, verwijdert u alle aangepaste rollen die niet worden gebruikt. Azure biedt ondersteuning voor Maxi maal **5000** aangepaste rollen in een Tenant. (Voor speciale clouds, zoals Azure Government, Azure Duitsland en Azure China 21Vianet, is de limiet 2000 aangepaste rollen.)
+- Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met de machtiging ' de client is gemachtigd voor het uitvoeren van de actie ' micro soft. Authorization/roleDefinitions/write ' op het bereik '/Subscriptions/{subscriptionid} ', is het gekoppelde abonnement niet gevonden ' wanneer u een aangepaste rol probeert bij te werken, raadpleegt u Hiermee wordt aangegeven of een of meer [toewijs bare bereiken](role-definitions.md#assignablescopes) zijn verwijderd in de Tenant. Als het bereik is verwijderd, maakt u een ondersteuningsticket, aangezien hiervoor op dit moment geen selfserviceoplossing beschikbaar is.
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>RBAC herstellen als abonnementen tussen tenants zijn verplaatst
 
-- Als u de stappen voor het overdragen van een abonnement moet naar een andere Azure AD-tenant, Zie [eigendom van een Azure-abonnement naar een ander account overdragen](../billing/billing-subscription-transfer.md).
-- Als u een abonnement verplaatst naar een ander Azure AD-tenant, worden alle roltoewijzingen permanent verwijderd uit de Azure AD-brontenant en worden deze niet gemigreerd naar de Azure AD-doeltenant. U moet uw roltoewijzingen opnieuw maken in de doel-tenant. U moet ook handmatig opnieuw maken van beheerde identiteiten voor Azure-resources. Zie voor meer informatie, [Veelgestelde vragen en bekende problemen met beheerde identiteiten](../active-directory/managed-identities-azure-resources/known-issues.md).
-- Als u een Azure AD-hoofdbeheerder en u geen toegang hebt tot een abonnement nadat deze is verplaatst tussen tenants, gebruikt u de **Access management voor Azure-resources** in-/ uitschakelen tijdelijk [toegangsrechten](elevate-access-global-admin.md) toegang te krijgen tot het abonnement.
+- Zie het [eigendom van een Azure-abonnement overdragen aan een ander account](../billing/billing-subscription-transfer.md)als u stappen nodig hebt voor het overdragen van een abonnement naar een andere Azure AD-Tenant.
+- Als u een abonnement verplaatst naar een ander Azure AD-tenant, worden alle roltoewijzingen permanent verwijderd uit de Azure AD-brontenant en worden deze niet gemigreerd naar de Azure AD-doeltenant. U moet uw roltoewijzingen opnieuw maken in de doel-tenant. U moet ook hand matig beheerde identiteiten voor Azure-resources maken. Zie [Veelgestelde vragen en bekende problemen met beheerde identiteiten](../active-directory/managed-identities-azure-resources/known-issues.md)voor meer informatie.
+- Als u een globale Azure AD-beheerder bent en u geen toegang hebt tot een abonnement nadat het is verplaatst tussen tenants, gebruikt u de wissel knop **voor het toegangs beheer voor Azure** om de toegang tot het abonnement tijdelijk te [verhogen](elevate-access-global-admin.md) .
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problemen met servicebeheerders of co-beheerders
 
-- Als u problemen met de servicebeheerder of CO-beheerders ondervindt, Zie [toevoegen of wijzigen Azure-abonnementbeheerders](../billing/billing-add-change-azure-subscription-administrator.md) en [klassiek abonnement beheerder functies, Azure RBAC-rollen en Azure AD beheerdersrollen](rbac-and-directory-admin-roles.md).
+- Als u problemen ondervindt met Service beheerder of mede beheerders, raadpleegt u Azure-abonnements beheerders en [klassieke beheerders rollen voor abonnementen, Azure RBAC-rollen en Azure AD-beheerders rollen](rbac-and-directory-admin-roles.md) [toevoegen of wijzigen](../billing/billing-add-change-azure-subscription-administrator.md) .
 
-## <a name="access-denied-or-permission-errors"></a>Toegang geweigerd of machtiging fouten
+## <a name="access-denied-or-permission-errors"></a>Toegang geweigerd of machtigings fouten
 
 - Als de machtigingsfout 'Client met object-id is niet gemachtigd om actie uit te voeren over bereik (code: AuthorizationFailed)' wanneer u een resource wilt maken, controleert u of u momenteel bent aangemeld met een gebruiker die een rol heeft met schrijfrechten voor de resource in het geselecteerde bereik. Als u bijvoorbeeld virtuele machines in een resourcegroep wilt beheren, moet u de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) toewijzen aan de resourcegroep (of bovenliggend bereik). Voor een lijst met machtigingen voor elke ingebouwde rol, raadpleegt u [Ingebouwde rollen voor Azure-resources](built-in-roles.md).
-- Als u de Machtigingsfout 'U bent niet gemachtigd om te maken van een ondersteuningsaanvraag' wanneer u probeert te maken of bijwerken van een ondersteuningsticket, controleert u of u momenteel bent aangemeld bij een gebruiker die een rol heeft die is toegewezen de `Microsoft.Support/supportTickets/write` machtiging, zoals [Ondersteunen bijdrager voor ondersteuningsaanvragen](built-in-roles.md#support-request-contributor).
+- Als u de machtiging fout ' u bent niet gemachtigd om een ondersteunings aanvraag te maken ' krijgt wanneer u een ondersteunings ticket probeert te maken of bij te werken, controleert u of u momenteel bent aangemeld met een gebruiker aan `Microsoft.Support/supportTickets/write` wie een rol is toegewezen, zoals [ Inzender](built-in-roles.md#support-request-contributor)voor ondersteunings aanvragen.
 
-## <a name="role-assignments-without-a-security-principal"></a>Roltoewijzingen zonder een beveiligings-principal
+## <a name="role-assignments-without-a-security-principal"></a>Roltoewijzingen zonder beveiligings-principal
 
-Wanneer u uw roltoewijzingen met behulp van Azure PowerShell, ziet u mogelijk toewijzingen met een lege `DisplayName` en een `ObjectType` ingesteld op onbekend. Bijvoorbeeld, [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert een roltoewijzing die vergelijkbaar is met het volgende:
+Wanneer u uw roltoewijzingen op basis van Azure PowerShell vermeld, ziet u mogelijk toewijzingen met een `DisplayName` lege en `ObjectType` een ingesteld op onbekend. [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) retourneert bijvoorbeeld een roltoewijzing die er ongeveer als volgt uitziet:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -70,7 +70,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Evenzo, wanneer u uw roltoewijzingen met behulp van Azure CLI, ziet u mogelijk toewijzingen met een lege `principalName`. Bijvoorbeeld, [lijst van zonetoewijzingen rol az](/cli/azure/role/assignment#az-role-assignment-list) retourneert een roltoewijzing die vergelijkbaar is met het volgende:
+En wanneer u uw roltoewijzingen met Azure CLI vermeld, ziet u mogelijk toewijzingen met een leeg `principalName`. Bijvoorbeeld, de [lijst AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-list) retourneert een roltoewijzing die er ongeveer als volgt uitziet:
 
 ```azurecli
 {
@@ -86,11 +86,11 @@ Evenzo, wanneer u uw roltoewijzingen met behulp van Azure CLI, ziet u mogelijk t
 }
 ```
 
-Deze roltoewijzingen optreden wanneer u een rol aan een beveiligings-principal (gebruiker, groep, service-principal of beheerde identiteit toewijzen) en u later deze beveiligings-principal verwijderen. Deze roltoewijzingen worden niet weergegeven in de Azure-portal en dat niet zo is een probleem te laten. Echter, als u dat wilt, kunt u deze roltoewijzingen.
+Deze roltoewijzingen worden uitgevoerd wanneer u een rol toewijst aan een beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) en u de beveiligings-principal later verwijdert. Deze roltoewijzingen worden niet weer gegeven in de Azure Portal en het is geen probleem om ze te verlaten. U kunt deze functie toewijzingen echter wel verwijderen.
 
-U kunt deze roltoewijzingen verwijderen met de [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) of [az-roltoewijzing verwijderen](/cli/azure/role/assignment#az-role-assignment-delete) opdrachten.
+Als u deze roltoewijzingen wilt verwijderen, gebruikt u de Verwijder opdrachten [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) of [AZ Role Assignment](/cli/azure/role/assignment#az-role-assignment-delete) .
 
-In PowerShell, als u probeert te verwijderen van de roltoewijzingen met behulp van de object-ID en naam van de definitie rol en meer dan één roltoewijzing komt overeen met de parameters, krijgt u het foutbericht weergegeven: 'De opgegeven informatie is niet gekoppeld aan een roltoewijzing'. Hier volgt een voorbeeld van het foutbericht:
+Als u in Power shell probeert de roltoewijzingen te verwijderen met de naam van de object-ID en roldefinitie en er meer dan één roltoewijzing overeenkomt met de para meters, wordt het volgende fout bericht weer gegeven: "De verstrekte informatie is niet toegewezen aan een roltoewijzing". Hieronder ziet u een voor beeld van het fout bericht:
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -103,85 +103,85 @@ At line:1 char:1
 + FullyQualifiedErrorId : Microsoft.Azure.Commands.Resources.RemoveAzureRoleAssignmentCommand
 ```
 
-Als u dit foutbericht ontvangt, controleert u of u ook opgeven de `-Scope` of `-ResourceGroupName` parameters.
+Als u dit fout bericht ontvangt, moet u ook de `-Scope` para meters of `-ResourceGroupName` opgeven.
 
 ```Example
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor" - Scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC wijzigingen worden niet wordt gedetecteerd.
+## <a name="rbac-changes-are-not-being-detected"></a>RBAC-wijzigingen worden niet gedetecteerd
 
-Azure Resource Manager slaat soms configuraties en gegevens om prestaties te verbeteren. Bij het maken of verwijderen van roltoewijzingen, kan het wijzigingen van kracht tot 30 minuten duren voordat. Als u de Azure portal, Azure PowerShell of Azure CLI gebruikt, kunt u een vernieuwing van uw wijzigingen aan toewijzingen van rol forceren door afmelden en aanmelden. Als u wijzigingen aan toewijzingen van rol met REST API-aanroepen, kunt u een vernieuwing afdwingen door het vernieuwen van uw toegangstoken.
+Azure Resource Manager worden soms configuraties en gegevens in de cache opgeslagen om de prestaties te verbeteren. Wanneer u roltoewijzingen maakt of verwijdert, kan het tot 30 minuten duren voordat de wijzigingen van kracht worden. Als u de Azure Portal, Azure PowerShell of Azure CLI gebruikt, kunt u het vernieuwen van uw roltoewijzingen afdwingen door u af te melden en u aan te melden. Als u wijzigingen aanbrengt in de roltoewijzing met REST API-aanroepen, kunt u een vernieuwing afdwingen door uw toegangs token te vernieuwen.
 
-## <a name="web-app-features-that-require-write-access"></a>Web-appfuncties waarvoor schrijftoegang is vereist
+## <a name="web-app-features-that-require-write-access"></a>Functies van web-apps waarvoor schrijf toegang is vereist
 
-Als u een gebruiker alleen-lezen toegang tot één web-app toewijst, worden sommige functies zijn uitgeschakeld dat u niet had verwacht. De volgende beheermogelijkheden vereisen **schrijven** toegang tot een web-app (Inzender of eigenaar) en niet beschikbaar zijn in elk scenario alleen-lezen.
+Als u een gebruiker alleen-lezen toegang verleent tot één web-app, worden sommige functies uitgeschakeld die u mogelijk niet verwacht. De volgende beheer functies vereisen **Schrijf** toegang tot een web-app (Inzender of eigenaar) en zijn niet beschikbaar in een alleen-lezen scenario.
 
 * Opdrachten (zoals starten, stoppen, enz.)
-* Wijzigen van de instellingen zoals de algemene configuratie, instellingen, back-upinstellingen en controle-instellingen
-* Toegang tot publicatiereferenties en andere geheimen zoals app-instellingen en verbindingsreeksen
+* Instellingen wijzigen, zoals algemene configuratie, schaal instellingen, back-upinstellingen en controle-instellingen
+* Toegang tot publicatie referenties en andere geheimen, zoals app-instellingen en verbindings reeksen
 * Streaminglogboeken
-* Configuratie van diagnostische logboeken
-* Console (opdrachtprompt)
-* Actieve en recente implementaties (voor lokale git continue implementatie)
-* Geschatte uitgaven
+* Configuratie van Diagnostische logboeken
+* Console (opdracht prompt)
+* Actieve en recente implementaties (voor lokale Git-continue implementatie)
+* Geschatte besteding
 * Webtests
-* Virtueel netwerk (alleen zichtbaar voor een lezer als er eerder een virtueel netwerk is geconfigureerd door een gebruiker met schrijftoegang).
+* Virtueel netwerk (alleen zichtbaar voor een lezer als een virtueel netwerk eerder is geconfigureerd door een gebruiker met schrijf toegang).
 
-Als u geen toegang een van deze tegels tot, moet u uw beheerder vragen voor Inzender-toegang tot de web-app.
+Als u geen toegang hebt tot deze tegels, moet u de beheerder vragen om de toegang tot de web-app te verlenen.
 
-## <a name="web-app-resources-that-require-write-access"></a>Web app-resources waarvoor de toegang voor schrijven
+## <a name="web-app-resources-that-require-write-access"></a>Web-app-resources waarvoor schrijf toegang is vereist
 
-Web-apps worden door de aanwezigheid van een paar verschillende bronnen die wisselwerking tussen diagrammen ingewikkeld. Hier volgt een typische resourcegroep met een paar van websites:
+Web-apps zijn gecompliceerd door de aanwezigheid van een aantal verschillende resources die Interplay. Hier volgt een typische resource groep met een aantal websites:
 
-![Resourcegroep voor web-app](./media/troubleshooting/website-resource-model.png)
+![Resource groep voor web-app](./media/troubleshooting/website-resource-model.png)
 
-Als gevolg hiervan, als u iemand toegang tot alleen de web-app veel van de functies op de websiteblade in Azure portal is uitgeschakeld.
+Als u iemand toegang verleent tot alleen de web-app, is veel van de functionaliteit op de Blade website in de Azure Portal uitgeschakeld.
 
-Deze items nodig **schrijven** toegang tot de **App Service-plan** die overeenkomt met uw website:  
+Voor deze items is **Schrijf** toegang vereist voor het **app service abonnement** dat overeenkomt met uw website:  
 
-* Weergeven van de WebApp de prijscategorie (gratis of Standard)  
-* Configuratie van de schaal (aantal exemplaren, de grootte van virtuele machine, de instellingen voor automatisch schalen)  
-* Quota's (storage, bandbreedte, CPU)  
+* De prijs categorie van de web-app weer geven (gratis of standaard)  
+* Configuratie schalen (aantal exemplaren, grootte van de virtuele machine, instellingen voor automatisch schalen)  
+* Quota (opslag, band breedte, CPU)  
 
-Deze items nodig **schrijven** toegang tot het geheel **resourcegroep** waarin uw website:  
+Deze items hebben **Schrijf** toegang tot de hele **resource groep** die uw website bevat:  
 
-* SSL-certificaten en -bindingen (SSL-certificaten kunnen worden gedeeld tussen sites in dezelfde resourcegroep bevinden en geo-locatie)  
+* SSL-certificaten en-bindingen (SSL-certificaten kunnen worden gedeeld tussen sites in dezelfde resource groep en geografische locatie)  
 * Waarschuwingsregels  
 * Instellingen voor automatisch schalen  
-* Application insights-onderdelen  
+* Application Insights-onderdelen  
 * Webtests  
 
-## <a name="virtual-machine-features-that-require-write-access"></a>Functies van virtuele machines die toegang voor schrijven vereisen
+## <a name="virtual-machine-features-that-require-write-access"></a>Functies van virtuele machines waarvoor schrijf toegang is vereist
 
-Net als bij de web-apps, vereisen sommige functies op de blade van de virtuele machine toegang voor schrijven naar de virtuele machine of naar andere resources in de resourcegroep.
+Net als web apps vereist sommige functies op de Blade van de virtuele machine schrijf toegang tot de virtuele machine of andere resources in de resource groep.
 
-Virtuele machines zijn gerelateerd aan het domein namen, virtuele netwerken, opslagaccounts en regels voor waarschuwingen.
+Virtuele machines zijn gerelateerd aan domein namen, virtuele netwerken, opslag accounts en waarschuwings regels.
 
-Deze items nodig **schrijven** toegang tot de **virtuele machine**:
+Voor deze items is **Schrijf** toegang tot de **virtuele machine**vereist:
 
 * Eindpunten  
 * IP-adressen  
 * Disks  
 * Extensies  
 
-Hiervoor is **schrijven** toegang tot zowel de **virtuele machine**, en de **resourcegroep** (samen met de naam van het domein) dat zich in:  
+Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine**als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  
 
 * Beschikbaarheidsset  
 * Set met gelijke taakverdeling  
 * Waarschuwingsregels  
 
-Als u geen toegang een van deze tegels tot, vraagt u uw beheerder voor Inzender-toegang tot de resourcegroep.
+Als u geen toegang hebt tot deze tegels, vraagt u uw beheerder om toegang tot de resource groep te krijgen.
 
-## <a name="azure-functions-and-write-access"></a>Azure Functions en toegang voor schrijven
+## <a name="azure-functions-and-write-access"></a>Azure Functions en schrijf toegang
 
-Sommige functies van [Azure Functions](../azure-functions/functions-overview.md) schrijven toegang nodig hebben. Bijvoorbeeld, als een gebruiker kan de rol van lezer is toegewezen, wordt dat niet meer mogelijk om de functies in een functie-app weer te geven. De portal wordt weergegeven **(geen toegang)** .
+Voor sommige functies van [Azure functions](../azure-functions/functions-overview.md) is schrijf toegang vereist. Als een gebruiker bijvoorbeeld de rol [lezer](built-in-roles.md#reader) krijgt toegewezen, kunnen ze de functies in een functie-app niet weer geven. De portal wordt weer gegeven **(geen toegang)** .
 
-![Functie-apps geen toegang](./media/troubleshooting/functionapps-noaccess.png)
+![Functie-apps zonder toegang](./media/troubleshooting/functionapps-noaccess.png)
 
-Een lezer kunt klikken op de **platformfuncties** tabblad en klik vervolgens op **alle instellingen** om bepaalde instellingen weer te geven met betrekking tot een functie-app (vergelijkbaar met een web-app), maar ze kunnen een van deze instellingen niet wijzigen.
+Een lezer kan op het tabblad **platform functies** klikken en vervolgens op **alle instellingen** klikken om enkele instellingen te bekijken die betrekking hebben op een functie-app (vergelijkbaar met een web-app), maar ze kunnen geen van deze instellingen wijzigen. U hebt de rol [Inzender](built-in-roles.md#contributor) nodig om toegang te krijgen tot deze functies.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](role-assignments-portal.md)
-* [Activiteitenlogboeken bekijken voor RBAC-wijzigingen in de Azure-resources](change-history-report.md)
+* [Activiteiten logboeken voor RBAC-wijzigingen in azure-resources weer geven](change-history-report.md)
 

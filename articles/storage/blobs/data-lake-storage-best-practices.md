@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016057"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991876"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Aanbevolen procedures voor het gebruik van Azure Data Lake Storage Gen2
 
@@ -31,11 +31,11 @@ Als aan een beveiligings groep machtigingen zijn toegewezen, moeten er geen upda
 
 ### <a name="security-for-groups"></a>Beveiliging voor groepen
 
-Wanneer u of uw gebruikers toegang nodig hebben tot gegevens in een opslag account waarvoor een hiërarchische naam ruimte is ingeschakeld, kunt u het beste Azure Active Directory-beveiligings groepen gebruiken. Een aantal aanbevolen groepen om te starten met kan **ReadOnlyUsers**, **WriteAccessUsers**en **FullAccessUsers** zijn voor de hoofdmap van het bestands systeem en zelfs voor sleutel submappen. Als er andere groepen gebruikers zijn die later kunnen worden toegevoegd, maar die nog niet zijn geïdentificeerd, kunt u overwegen om dummy beveiligings groepen te maken die toegang tot bepaalde mappen hebben. Door gebruik te maken van een beveiligings groep, zorgt u ervoor dat u lange verwerkings tijd kunt voor komen bij het toewijzen van nieuwe machtigingen aan duizenden bestanden.
+Wanneer u of uw gebruikers toegang nodig hebben tot gegevens in een opslag account waarvoor een hiërarchische naam ruimte is ingeschakeld, kunt u het beste Azure Active Directory-beveiligings groepen gebruiken. Enkele aanbevolen groepen om te beginnen met kunnen **ReadOnlyUsers**, **WriteAccessUsers**en **FullAccessUsers** zijn voor de hoofdmap van de container, en zelfs voor sleutel submappen. Als er andere groepen gebruikers zijn die later kunnen worden toegevoegd, maar die nog niet zijn geïdentificeerd, kunt u overwegen om dummy beveiligings groepen te maken die toegang tot bepaalde mappen hebben. Door gebruik te maken van een beveiligings groep, zorgt u ervoor dat u lange verwerkings tijd kunt voor komen bij het toewijzen van nieuwe machtigingen aan duizenden bestanden.
 
 ### <a name="security-for-service-principals"></a>Beveiliging voor service-principals
 
-Azure Active Directory service-principals worden meestal gebruikt door services als Azure Databricks om toegang te krijgen tot gegevens in Data Lake Storage Gen2. Voor veel klanten kan een enkele Azure Active Directory Service-Principal voldoende zijn en kan deze volledige machtigingen hebben in de hoofdmap van het Data Lake Storage Gen2 bestands systeem. Andere klanten hebben mogelijk meerdere clusters met verschillende service-principals, waarbij één cluster volledige toegang tot de gegevens heeft, en een ander cluster met alleen lees toegang. 
+Azure Active Directory service-principals worden meestal gebruikt door services als Azure Databricks om toegang te krijgen tot gegevens in Data Lake Storage Gen2. Voor veel klanten kan een enkele Azure Active Directory Service-Principal voldoende zijn en kan deze volledige machtigingen hebben in de hoofdmap van de Data Lake Storage Gen2-container. Andere klanten hebben mogelijk meerdere clusters met verschillende service-principals, waarbij één cluster volledige toegang tot de gegevens heeft, en een ander cluster met alleen lees toegang. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>De Data Lake Storage Gen2 firewall inschakelen met toegang tot de Azure-service
 

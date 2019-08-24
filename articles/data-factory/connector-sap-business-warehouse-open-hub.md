@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967425"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996641"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Gegevens kopiëren van SAP Business Warehouse via open hub met behulp van Azure Data Factory
 
@@ -98,7 +98,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van SAP 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SapOpenHub** | Ja |
+| Type | De eigenschap type moet worden ingesteld op: **SapOpenHub** | Ja |
 | server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | Ja |
 | systemNumber | Systeem nummer van het SAP BW systeem.<br/>Toegestane waarde: decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Ja |
 | clientId | Client-ID van de client in het SAP W-systeem.<br/>Toegestane waarde: decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Ja |
@@ -140,7 +140,7 @@ Als u gegevens wilt kopiëren van en naar SAP BW geopende hub, stelt u de eigens
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **SapOpenHubTable**.  | Ja |
+| Type | De eigenschap type moet worden ingesteld op **SapOpenHubTable**.  | Ja |
 | openHubDestinationName | De naam van het open hub-doel waaruit de gegevens moeten worden gekopieerd. | Ja |
 | excludeLastRequest | Hiermee wordt aangegeven of de records van de laatste aanvraag moeten worden uitgesloten. | Nee (de standaardwaarde is **true**) |
 | baseRequestId | De ID van de aanvraag voor het laden van verschillen. Als deze eenmaal is ingesteld, worden alleen gegevens opgehaald met de waarde-naam **groter dan** die van deze eigenschap.  | Nee |
@@ -174,7 +174,7 @@ Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zij
 
 Als u gegevens wilt kopiëren van SAP BW geopende hub, stelt u het bron type in de Kopieer activiteit in op **SapOpenHubSource**. Er zijn geen aanvullende typespecifieke eigenschappen nodig in de sectie **bron** van de Kopieer activiteit.
 
-Als u het laden van gegevens wilt versnellen, kunt [`parallelCopies`](copy-activity-performance.md#parallel-copy) u de Kopieer activiteit zo instellen dat gegevens van SAP BW hub parallel worden geladen. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, Data Factory gelijktijdig vier rfc's-aanroepen uitvoeren en elke RFC-aanroep haalt een deel van de gegevens op uit uw SAP BW open hub Table gepartitioneerd door de DTP-aanvraag-id en de pakket-id. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + pakket-ID groter is dan de `parallelCopies`waarde van.
+Als u het laden van gegevens wilt versnellen, kunt [`parallelCopies`](copy-activity-performance.md#parallel-copy) u de Kopieer activiteit zo instellen dat gegevens van SAP BW hub parallel worden geladen. Als u bijvoorbeeld hebt ingesteld `parallelCopies` op vier, Data Factory gelijktijdig vier rfc's-aanroepen uitvoeren en elke RFC-aanroep haalt een deel van de gegevens op uit uw SAP BW open hub Table gepartitioneerd door de DTP-aanvraag-id en de pakket-id. Dit geldt wanneer het aantal unieke DTP-aanvraag-ID + pakket-ID groter is dan de `parallelCopies`waarde van. Bij het kopiëren van gegevens naar gegevens opslag op basis van een bestand, is het ook opnieuw opdracht om naar een map te schrijven als meerdere bestanden (Geef alleen de mapnaam op). in dat geval zijn de prestaties beter dan het schrijven naar één bestand.
 
 **Voorbeeld:**
 

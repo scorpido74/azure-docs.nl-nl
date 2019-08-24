@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/19/2019
+ms.date: 08/22/2019
 ms.author: dalek
-ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624402"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982620"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -65,30 +65,43 @@ Application Insights kosten worden toegevoegd aan uw Azure-factuur. U kunt de de
 
 ![Selecteer in het menu links facturering](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>Gegevens snelheden
-De hoeveelheid gegevens die u verzendt, is op drie manieren beperkt:
+## <a name="managing-your-data-volume"></a>Uw gegevens volume beheren 
 
-* **Steek proeven**: U kunt steek proeven gebruiken om de hoeveelheid telemetrie te verminderen die wordt verzonden vanaf uw server-en client-apps, met minimale verstoring van metrische gegevens. Steek proeven zijn het primaire hulp programma dat u kunt gebruiken om de hoeveelheid gegevens die u verzendt af te stemmen. Meer informatie over [sampling-functies](../../azure-monitor/app/sampling.md). 
-* **Dagelijks Cap**: Wanneer u een Application Insights resource maakt in de Azure Portal, wordt het dagelijks kapje ingesteld op 100 GB per dag. Wanneer u een Application Insights resource maakt in Visual Studio, is de standaard klein (slechts 32,3 MB/dag). De standaard waarde voor dagelijks Cap is ingesteld om testen te vergemakkelijken. De bedoeling is dat de gebruiker de dagelijkse limiet verhoogt voordat de app in de productie omgeving wordt geïmplementeerd. 
-
-    De maximale limiet is 1.000 GB/dag, tenzij u een hoger maximum voor een toepassing met een hoog verkeer opvraagt. 
-
-    Wees voorzichtig wanneer u het dagelijks kapje instelt. Het is uw bedoeling om *nooit het dagelijkse kapje*te bereiken. Als u de dagelijkse limiet bereikt, verliest u gegevens voor de rest van de dag en kunt u uw toepassing niet bewaken. Als u de dagelijkse limiet wilt wijzigen, gebruikt u de optie **dagelijks volume limiet** . U kunt deze optie gebruiken in het deel venster **gebruik en geraamde kosten** (dit wordt verderop in het artikel meer gedetailleerder beschreven).
-    We hebben de beperking verwijderd voor sommige abonnements typen waarvoor een tegoed is dat niet kan worden gebruikt voor Application Insights. Als er eerder een bestedings limiet voor het abonnement is, is het dialoog venster voor de dagelijkse Cap instructies om de bestedings limiet te verwijderen en het dagelijks kapje te activeren dat groter is dan 32,3 MB/dag.
-* **Beperking**: Met beperking wordt de gegevens snelheid beperkt tot 32.000 gebeurtenissen per seconde, gemiddeld meer dan 1 minuut per instrumentatie sleutel.
-
-*Wat gebeurt er als mijn app de beperkings snelheid overschrijdt?*
-
-* Het gegevens volume dat door uw app wordt verzonden, wordt elke minuut beoordeeld. Als het per seconde gemiddeld rente overschrijdt gedurende de minuut, worden sommige aanvragen door de server geweigerd. De SDK buffert de gegevens en probeert deze opnieuw te verzenden. Er wordt een piek van enkele minuten gespreid. Als uw app op consistente wijze gegevens verzendt met meer dan de beperkings snelheid, worden sommige gegevens verwijderd. (De ASP.NET-, Java-en Java script-Sdk's proberen gegevens op deze manier opnieuw te verzenden; andere Sdk's kunnen gewoon vertraagde gegevens verwijderen.) Als er sprake is van beperking, wordt er een melding weer gegeven dat dit is gebeurd.
-
-*Hoe kan ik weet u hoeveel gegevens mijn app verzendt?*
-
-U kunt een van de volgende opties gebruiken om te zien hoeveel gegevens uw app verzendt:
+Als u wilt weten hoeveel gegevens uw app verzendt, kunt u het volgende doen:
 
 * Ga naar het deel venster **gebruik en geraamd kosten** om de grafiek met het dagelijkse gegevens volume weer te geven. 
 * Voeg in Metrics Explorer een nieuwe grafiek toe. Voor de grafiek metriek selecteert u **gegevens punt volume**. Schakel **groeperen**in en groepeer vervolgens op **gegevens type**.
+* Gebruik het `systemEvents` gegevens type. Als u bijvoorbeeld wilt zien welk gegevens volume in de laatste dag is opgenomen, zou de query het volgende zijn:
 
-## <a name="reduce-your-data-rate"></a>Uw gegevens frequentie verlagen
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+Deze query kan worden gebruikt in een [Azure-logboek waarschuwing](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) om waarschuwingen op gegevens volumes in te stellen. 
+
+Het volume van de gegevens dat u verzendt, kan op drie manieren worden beheerd:
+
+* **Steek proeven**: U kunt steek proeven gebruiken om de hoeveelheid telemetrie te verminderen die wordt verzonden vanaf uw server-en client-apps, met minimale verstoring van metrische gegevens. Steek proeven zijn het primaire hulp programma dat u kunt gebruiken om de hoeveelheid gegevens die u verzendt af te stemmen. Meer informatie over [sampling-functies](../../azure-monitor/app/sampling.md).
+ 
+* **Dagelijks Cap**: Wanneer u een Application Insights resource maakt in de Azure Portal, wordt het dagelijks kapje ingesteld op 100 GB per dag. Wanneer u een Application Insights resource maakt in Visual Studio, is de standaard klein (slechts 32,3 MB/dag). De standaard waarde voor dagelijks Cap is ingesteld om testen te vergemakkelijken. De bedoeling is dat de gebruiker de dagelijkse limiet verhoogt voordat de app in de productie omgeving wordt geïmplementeerd. 
+
+    De maximale limiet is 1.000 GB/dag, tenzij u een hoger maximum voor een toepassing met een hoog verkeer opvraagt. 
+    
+    Waarschuwings-e-mails over de dagelijkse limiet worden verzonden naar accounts die lid zijn van deze rollen voor uw Application Insights-resource: "ServiceAdmin", "AccountAdmin", "coadmin", "eigenaar".
+
+    Wees voorzichtig wanneer u het dagelijks kapje instelt. Het is uw bedoeling om *nooit het dagelijkse kapje*te bereiken. Als u de dagelijkse limiet bereikt, verliest u gegevens voor de rest van de dag en kunt u uw toepassing niet bewaken. Als u de dagelijkse limiet wilt wijzigen, gebruikt u de optie **dagelijks volume limiet** . U kunt deze optie gebruiken in het deel venster **gebruik en geraamde kosten** (dit wordt verderop in het artikel meer gedetailleerder beschreven).
+    
+    We hebben de beperking verwijderd voor sommige abonnements typen waarvoor een tegoed is dat niet kan worden gebruikt voor Application Insights. Als er eerder een bestedings limiet voor het abonnement is, is het dialoog venster voor de dagelijkse Cap instructies om de bestedings limiet te verwijderen en het dagelijks kapje te activeren dat groter is dan 32,3 MB/dag.
+    
+* **Beperking**: Met beperking wordt de gegevens snelheid beperkt tot 32.000 gebeurtenissen per seconde, gemiddeld meer dan 1 minuut per instrumentatie sleutel. Het gegevens volume dat door uw app wordt verzonden, wordt elke minuut beoordeeld. Als het per seconde gemiddeld rente overschrijdt gedurende de minuut, worden sommige aanvragen door de server geweigerd. De SDK buffert de gegevens en probeert deze opnieuw te verzenden. Er wordt een piek van enkele minuten gespreid. Als uw app op consistente wijze gegevens verzendt met meer dan de beperkings snelheid, worden sommige gegevens verwijderd. (De ASP.NET-, Java-en Java script-Sdk's proberen gegevens op deze manier opnieuw te verzenden; andere Sdk's kunnen gewoon vertraagde gegevens verwijderen.) Als er sprake is van beperking, wordt er een melding weer gegeven dat dit is gebeurd.
+
+## <a name="reduce-your-data-volume"></a>Uw gegevens volume verminderen
+
 Hier volgen enkele dingen die u kunt doen om uw gegevens volume te verminderen:
 
 * Gebruik [steek proeven](../../azure-monitor/app/sampling.md). Deze technologie vermindert uw gegevens verhouding zonder dat u uw metrieke waarden hoeft te hellen. U verliest niet de mogelijkheid om te navigeren tussen verwante items in de zoek opdracht. In server-apps werkt de steek proef automatisch.

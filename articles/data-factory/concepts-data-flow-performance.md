@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404607"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992352"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -117,6 +117,10 @@ Als u op dit pictogram klikt, wordt het uitvoerings plan en het volgende prestat
 * U kunt bepalen hoeveel partities met ADF moeten worden gebruikt. Op elke bron-& Sink-trans formatie, evenals elke afzonderlijke trans formatie, kunt u een partitie schema instellen. Voor kleinere bestanden kan het selecteren van ' enkele partitie ' soms beter en sneller werken dan wanneer Spark wordt gevraagd om uw kleine bestanden te partitioneren.
 * Als u niet voldoende informatie over de bron gegevens hebt, kunt u Round Robin kiezen en het aantal partities instellen.
 * Als u uw gegevens verkent en weet dat u kolommen hebt die goede hash-sleutels kunnen zijn, gebruikt u de optie voor hash-partitionering.
+* Als u fouten opspoort in de voorbeeld weergave van gegevens en de fout opsporing voor de pijp lijn, moet u er rekening mee houden dat de limiet en sampling grootte voor bron gegevens sets op basis van bestanden alleen van toepassing zijn op het aantal geretourneerde rijen, niet het aantal rijen dat Dit is belang rijk om aan te geven dat het de prestaties van uw debug-uitvoeringen kan beïnvloeden, waardoor de stroom mogelijk mislukt.
+* Houd er rekening mee dat debug-clusters standaard kleine clusters met één knoop punt zijn, dus gebruik tijdelijke kleine bestanden voor fout opsporing. Ga naar instellingen voor fout opsporing en wijs een kleine subset van uw gegevens aan met behulp van een tijdelijk bestand.
+
+![Instellingen voor fout opsporing](media/data-flow/debugsettings3.png "Instellingen voor fout opsporing")
 
 ### <a name="file-naming-options"></a>Opties voor bestands naamgeving
 

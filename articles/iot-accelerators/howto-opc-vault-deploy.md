@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b626f906738e3a6e65053408cfdc2002d459a6e2
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
-ms.translationtype: MT
+ms.openlocfilehash: 347e7c2aa2ff4fb4f188847b81d03006c1909166
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973855"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997650"
 ---
-# <a name="build-and-deploy-the-opc-ua-certificate-management-service"></a>De OPC UA Certificate Management-service bouwen en implementeren
+# <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC kluis Certificate Management-service bouwen en implementeren
 
-In dit artikel wordt uitgelegd hoe u de OPC UA Certificate Management-service in azure implementeert.
+In dit artikel wordt uitgelegd hoe u de OPC kluis Certificate Management-service in azure implementeert.
 
 > [!NOTE]
 > Zie de GitHub [OPC kluis-opslag plaats](https://github.com/Azure/azure-iiot-opc-vault-service)voor meer informatie over de implementatie details en instructies.
@@ -59,20 +59,20 @@ of voer een volledige opdracht regel in:
 7. Als u van plan bent om met deze implementatie te `-development 1` ontwikkelen, voegt u toe om de Swagger-gebruikers interface in te scha kelen en om fout opsporing te implementeren.
 6. Volg de instructies in het script om u aan te melden bij uw abonnement en om aanvullende informatie te geven.
 9. Nadat de bewerking is voltooid, wordt het volgende bericht weer gegeven:
+   ```
+   To access the web client go to:
+   https://myResourceGroup.azurewebsites.net
 
-```
-To access the web client go to:
-https://myResourceGroup.azurewebsites.net
+   To access the web service go to:
+   https://myResourceGroup-service.azurewebsites.net
 
-To access the web service go to:
-https://myResourceGroup-service.azurewebsites.net
+   To start the local docker GDS server:
+   .\myResourceGroup-dockergds.cmd
 
-To start the local docker GDS server:
-.\myResourceGroup-dockergds.cmd
+   To start the local dotnet GDS server:
+   .\myResourceGroup-gds.cmd
+   ```
 
-To start the local dotnet GDS server:
-.\myResourceGroup-gds.cmd
-```
 Volg de [onderstaande](#troubleshooting-deployment-failures)stappen voor het geval u problemen ondervindt.
 
 8. Open uw favoriete browser en open de toepassings pagina:`https://myResourceGroup.azurewebsites.net`
@@ -86,7 +86,7 @@ Het is ook mogelijk alleen de binaire bestanden van de web-app te implementeren.
 
 Nadat de implementatie is voltooid, kunt u beginnen met het gebruik van de services: [De OPC-kluis certificaat beheer service beheren](howto-opc-vault-manage.md)
 
-## <a name="delete-the-certificate-management-services-from-the-subscription"></a>De Certificate Management Services verwijderen uit het abonnement
+## <a name="delete-the-certificate-management-service-from-the-subscription"></a>De certificaat beheer service verwijderen uit het abonnement
 
 1. Meld u aan bij de Azure Portal `https://portal.azure.com`:.
 2. Ga naar de resource groep waarin de service is geïmplementeerd.

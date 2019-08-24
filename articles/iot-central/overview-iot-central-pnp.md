@@ -9,19 +9,19 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0675be988e7e9560560dd07338563c9fa22fcb4c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878290"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997742"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Wat is Azure IoT Central (preview-functies)?
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> De [IoT Plug en Play](https://aka.ms/iot-pnp-docs) -mogelijkheden in azure IOT Central zijn momenteel beschikbaar als open bare preview. Gebruik geen IoT Plug en Play ingeschakelde IoT Central toepassing voor werk belastingen voor de productie. Voor productie omgevingen wordt een IoT Central-toepassing gebruikt die is gemaakt op basis van een huidige, algemeen beschik bare, toepassings sjabloon.
+> De [IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) -mogelijkheden in azure IOT Central zijn momenteel beschikbaar als open bare preview. Gebruik geen IoT Plug en Play ingeschakelde IoT Central toepassing voor werk belastingen voor de productie. Voor productie omgevingen wordt een IoT Central-toepassing gebruikt die is gemaakt op basis van een huidige, algemeen beschik bare, toepassings sjabloon.
 
 Azure IoT Central is een volledig beheerde IoT-software-as-a-service-oplossing waarmee u eenvoudig producten kunt maken die de fysieke en digitale werelden verbinden. U kunt uw productvisie voor verbonden apparaten als volgt tot leven wekken door:
 
@@ -95,7 +95,7 @@ Deze sjabloon voor apparaten omvat:
 
 ### <a name="create-device-templates"></a>Device-sjablonen maken
 
-[IoT Plug en Play](https://aka.ms/iot-pnp-docs) maakt het IOT Central mogelijk om apparaten te integreren zonder dat u een Inge sloten apparaatcode hoeft te schrijven. De kern van IoT Plug en Play is een schema voor het capaciteits model van het apparaat dat de mogelijkheden van apparaten beschrijft. In een IoT Central preview-toepassing gebruiken Device-sjablonen deze IoT Plug en Play-mogelijkheden voor het apparaat.
+[IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) maakt het IOT Central mogelijk om apparaten te integreren zonder dat u een Inge sloten apparaatcode hoeft te schrijven. De kern van IoT Plug en Play is een schema voor het capaciteits model van het apparaat dat de mogelijkheden van apparaten beschrijft. In een IoT Central preview-toepassing gebruiken Device-sjablonen deze IoT Plug en Play-mogelijkheden voor het apparaat.
 
 Als opbouw functie hebt u verschillende opties voor het maken van Apparaatinstellingen:
 
@@ -151,4 +151,4 @@ Nu u een overzicht van Azure IoT Central hebt, zijn dit mogelijke volgende stapp
   - [Als maker regels toevoegt om uw oplossing te automatiseren](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Als operator uw apparaten bewaakt](tutorial-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Als operator kunt u een apparaat aan uw oplossing toevoegen](tutorial-add-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
-- Meer informatie over [IoT Plug en Play](https://aka.ms/iot-pnp-docs)
+- Meer informatie over [IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md)

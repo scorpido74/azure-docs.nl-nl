@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898863"
+ms.locfileid: "69982700"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in azure Kubernetes service (AKS)
 
@@ -30,7 +30,6 @@ Kubernetes maakt gebruik van het standaard versie beheer schema van [semantische
 Example:
   1.12.14
   1.12.15
-  1.13.7
 ```
 
 Elk nummer in de versie geeft algemene compatibiliteit met de vorige versie aan:
@@ -39,7 +38,7 @@ Elk nummer in de versie geeft algemene compatibiliteit met de vorige versie aan:
 * Secundaire versies worden gewijzigd wanneer er wijzigingen in de functionaliteit worden aangebracht die achterwaarts compatibel zijn met de andere secundaire releases.
 * Patch versies worden gewijzigd wanneer er achterwaarts compatibele fout oplossingen worden uitgevoerd.
 
-Over het algemeen moeten gebruikers de nieuwste patch release van de secundaire versie uitvoeren, bijvoorbeeld als uw productie cluster op *1.13.6* is en *1.13.7* de meest recente beschik bare patch versie beschikbaar is voor de *1,13* -serie. u moet een upgrade uitvoeren naar *1.13.7* zodra u er zeker van kunt zijn dat uw cluster volledig wordt gerepareerd en ondersteund.
+Over het algemeen moeten gebruikers de nieuwste patch release van de secundaire versie uitvoeren, bijvoorbeeld als uw productie cluster op *1.12.14* is en *1.12.15* de meest recente beschik bare patch versie beschikbaar is voor de *1,12* -serie , moet u een upgrade uitvoeren naar *1.12.15* zodra u kunt controleren of uw cluster volledig wordt gerepareerd en ondersteund.
 
 ## <a name="kubernetes-version-support-policy"></a>Beleid voor ondersteuning van Kubernetes-versies
 

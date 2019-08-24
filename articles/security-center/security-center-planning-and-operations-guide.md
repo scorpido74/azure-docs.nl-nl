@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/11/2019
+ms.date: 08/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a8033448c2db2ca30ece54b3367ecb60ecf12c3d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706242"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990711"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Plannings- en bedieningsgids voor Azure Security Center
 Deze gids is bedoeld voor IT-specialisten, IT-architecten, gegevensbeveiligingsanalisten en cloudbeheerders die willen gaan werken met Azure Security Center.
@@ -87,21 +87,21 @@ Wanneer gebruik wordt gemaakt van de personen in het vorige diagram, zou de volg
 
 **Jeff (eigenaar van workload)**
 
-* Resourcegroep eigenaar/medewerker
+* Eigenaar/bijdrager van resource groep
 
 **David (IT-beveiliging)**
 
-* Abonnement eigenaar/medewerker of beveiligingsbeheerder
+* Abonnements eigenaar/mede werker of beveiligings beheerder
 
 **Judy (beveiligingsbewerkingen)**
 
 * Abonnementslezer of beveiligingslezer voor het bekijken van waarschuwingen
-* Abonnement eigenaar/medewerker of beveiligingsbeheerder vereist voor het verwijderen van waarschuwingen
+* Abonnements eigenaar/mede werker of beveiligings beheerder vereist voor het negeren van waarschuwingen
 
 **Sam (beveiligingsanalist)**
 
 * Abonnementslezer voor het bekijken van waarschuwingen
-* Abonnement eigenaar/medewerker die zijn vereist voor het verwijderen van waarschuwingen
+* Abonnements eigenaar/mede werker die vereist is voor het negeren van waarschuwingen
 * Toegang tot de werkruimte is mogelijk vereist
 
 Andere belangrijke informatie om rekening mee te houden:
@@ -121,7 +121,7 @@ Een beveiligingsbeleid definieert de gewenste configuratie van uw workloads en h
 
 Beleidsregels van Security Center bevatten de volgende onderdelen:
 - [Gegevensverzameling](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): instellingen voor configuratie van agent en verzamelen van gegevens.
-- [Beveiligingsbeleid](https://docs.microsoft.com/azure/security-center/security-center-policies): een [Azure Policy](../governance/policy/overview.md) waarmee wordt bepaald welke besturingselementen worden bewaakt en aanbevolen door Security Center of Azure-beleid gebruiken voor het maken van nieuwe definities, het definiëren van extra beleidsregels en het beleid toe te wijzen binnen beheergroepen.
+- [Beveiligings beleid](https://docs.microsoft.com/azure/security-center/security-center-policies): een [Azure Policy](../governance/policy/overview.md) dat bepaalt welke besturings elementen worden bewaakt en aanbevolen door Security Center, of gebruik Azure Policy om nieuwe definities te maken, aanvullende beleids regels te definiëren en beleid toe te wijzen aan verschillende beheer groepen.
 - [E-mailmeldingen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): instellingen voor contactpersonen en meldingen voor beveiliging.
 - [Prijscategorie](https://docs.microsoft.com/azure/security-center/security-center-pricing): keuze uit de prijscategorie Gratis of Standaard, die bepaalt welke functies van Security Center beschikbaar zijn voor resources binnen het bereik (kan worden opgegeven voor abonnementen, resourcegroepen en werkruimten).
 
@@ -134,7 +134,7 @@ In Security Center wordt voor elk van uw Azure-abonnementen automatisch een stan
 Voordat u beleidsregels voor veiligheid configureert, moet u elk van de [aanbevelingen voor beveiliging](https://docs.microsoft.com/azure/security-center/security-center-recommendations) controleren en bepalen of deze beleidsregels geschikt zijn voor uw verschillende abonnementen en resourcegroepen. Het is ook belangrijk om te begrijpen welke actie moet worden ondernomen om aan de slag te gaan met beveiligingsaanbevelingen en wie in uw organisatie verantwoordelijk is voor het controleren op nieuwe aanbevelingen en het nemen van de benodigde stappen.
 
 ## <a name="data-collection-and-storage"></a>Gegevensverzameling en -opslag
-Azure Security Center maakt gebruik van de Microsoft Monitoring Agent – dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service voor het verzamelen van beveiligingsgegevens van uw virtuele machines. [Gegevens die worden verzameld](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) van deze agent worden opgeslagen in uw Log Analytics-werkruimte(n).
+Azure Security Center maakt gebruik van micro soft monitoring agent. Dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service: om beveiligings gegevens van uw virtuele machines te verzamelen. [Gegevens die worden verzameld](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) van deze agent worden opgeslagen in uw Log Analytics-werkruimte(n).
 
 ### <a name="agent"></a>Agent
 
@@ -156,7 +156,7 @@ Gegevens die (namens Azure Security Center) via de Microsoft Monitoring Agent wo
 
 In Azure Portal kunt u bladeren om een overzicht te zien van uw Log Analytics-werkruimten, inclusief alle werkruimten die door Azure Security Center zijn gemaakt. Er wordt een gerelateerde resourcegroep gemaakt voor nieuwe werkruimten. Beide volgen deze naamconventie:
 
-* Werkruimte: *DefaultWorkspace-[subscription-ID]-[geo]*
+* Werk ruimte *DefaultWorkspace-[abonnement-ID]-[geo]*
 * Resourcegroep: *DefaultResourceGroup-[geo]*
 
 Voor werkruimten die zijn gemaakt door Azure Security Center worden gegevens 30 dagen bewaard. Voor bestaande werkruimten is de bewaarperiode gebaseerd op de prijscategorie van de werkruimte. Als u wilt, kunt u ook een bestaande werkruimte gebruiken.
@@ -246,7 +246,7 @@ Wanneer u het geïnfecteerde systeem hebt geïdentificeerd, kunt u [beveiligings
 In de video [Reageren op incidenten met Azure Security Center & Microsoft Operations Management Suite](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) ziet u enkele demonstraties waarmee u kunt begrijpen hoe Security Center kan worden gebruikt in elk van deze fasen.
 
 > [!NOTE]
-> Lees [Azure Security Center gebruiken voor reacties op incidenten](security-center-incident-response.md) voor meer informatie over hoe u Security Center kunt gebruiken wanneer u reageert op incidenten.
+> Lees de [beveiligings waarschuwingen beheren en erop reageren in azure Security Center](security-center-managing-and-responding-alerts.md) voor meer informatie over het gebruik van Security Center mogelijkheden om u te helpen tijdens het respons proces van uw incident.
 >
 >
 

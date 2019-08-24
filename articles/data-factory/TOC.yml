@@ -110,6 +110,19 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
+    - name: Data Lake Storage Gen2 laden
+      href: load-azure-data-lake-storage-gen2.md
+      items:
+        - name: Kopiëren vanuit Data Lake Storage Gen1
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+    - name: Azure SQL Data Warehouse laden
+      href: load-azure-sql-data-warehouse.md
+    - name: Data Lake Storage Gen1 laden
+      href: load-azure-data-lake-store.md
+    - name: SAP BW-gegevens laden
+      href: load-sap-bw-data.md
+    - name: Office 365-gegevens laden
+      href: load-office-365-data.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
@@ -358,29 +371,14 @@
           href: delete-activity.md
         - name: Hulpprogramma voor het kopiëren van gegevens
           href: copy-data-tool.md
-        - name: Data Lake Storage Gen2 laden
-          href: load-azure-data-lake-storage-gen2.md
-          items:
-            - name: Kopiëren vanuit Data Lake Storage Gen1
-              href: load-azure-data-lake-storage-gen2-from-gen1.md
-        - name: Azure SQL Data Warehouse laden
-          href: load-azure-sql-data-warehouse.md
-        - name: Data Lake Storage Gen1 laden
-          href: load-azure-data-lake-store.md
-        - name: SAP BW-gegevens laden
-          href: load-sap-bw-data.md
-        - name: Office 365-gegevens laden
-          href: load-office-365-data.md
-        - name: Gepartitioneerde gegevens lezen of schrijven
-          href: how-to-read-write-partitioned-data.md
+        - name: Prestaties en afstemmen
+          href: copy-activity-performance.md
         - name: Ondersteuning voor indeling en compressie
           href: supported-file-formats-and-compression-codecs.md
         - name: Toewijzing van schema en type
           href: copy-activity-schema-and-type-mapping.md
         - name: Fouttolerantie
           href: copy-activity-fault-tolerance.md
-        - name: Prestaties en afstemmen
-          href: copy-activity-performance.md
     - name: Gegevens transformeren
       href: transform-data.md
       items:

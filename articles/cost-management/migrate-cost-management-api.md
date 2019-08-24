@@ -1,6 +1,6 @@
 ---
-title: Migreren van Enterprise Agreement naar de klant van Microsoft-overeenkomst API's - Azure | Microsoft Docs
-description: In dit artikel krijgt u inzicht in de gevolgen van de migratie van een Microsoft Enterprise Agreement (EA) naar een KLANTOVEREENKOMST van Microsoft.
+title: Migreren van Enterprise Agreement naar Api's voor micro soft-gebruikers overeenkomsten-Azure | Microsoft Docs
+description: Dit artikel helpt u inzicht te krijgen in de gevolgen van het migreren van een micro soft Enterprise Agreement (EA) naar een micro soft-klant overeenkomst.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -10,140 +10,140 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: c3fb1f430076b26f7b5dd83e167371ac6d957ac4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c2041984ffa2c455ea4d60a756fcb4142219d91
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967234"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981444"
 ---
-# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migreren van Enterprise Agreement naar de klant van Microsoft-overeenkomst API 's
+# <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migreren van Enterprise Agreement naar Api's voor micro soft-gebruikers overeenkomsten
 
-In dit artikel krijgt u inzicht in de gegevensstructuur, API en andere system integration verschillen tussen Enterprise Agreement (EA) en de overeenkomst voor Microsoft-klanten (MCA). Kostenbeheer van Azure biedt ondersteuning voor API's voor beide accounttypen. Controleer de [factureringsaccount voor Setup](../billing/billing-mca-setup-account.md) KLANTOVEREENKOMST van Microsoft-artikel voordat u doorgaat.
+Dit artikel helpt u bij het begrijpen van de gegevens structuur, API en andere verschillen tussen de systeem integratie tussen de Enterprise Agreement (EA) en de micro soft Customer Agreement (MCA)-accounts. Azure Cost Management ondersteunt Api's voor beide account typen. Bekijk het micro soft-artikel [voor het instellen van het facturerings account voor](../billing/billing-mca-setup-account.md) de klant overeenkomst voordat u doorgaat.
 
-Organisaties met een bestaande EA-account moeten in dit artikel in combinatie met het instellen van een account MCA controleren. Eerder, een EA-account vernieuwen vereist minimale werk te verplaatsen van een oude inschrijving naar een nieuwe. Migreren naar een MCA-account vereist echter extra moeite. Er is een extra moeite vanwege wijzigingen in de onderliggende facturering subsysteem, die invloed hebben op alle kosten met betrekking tot API's en service-aanbiedingen.
+Organisaties met een bestaand EA-account moeten dit artikel raadplegen in combi natie met het instellen van een MCA-account. Voorheen moest het vernieuwen van een EA-account een minimale hoeveelheid werk hebben om van een oude inschrijving naar een nieuw item te gaan. Voor de migratie naar een MCA-account is echter extra inspanning vereist. Verdere inspanningen zijn vanwege wijzigingen in het onderliggende subsysteem voor facturering, wat van invloed is op alle kosten-gerelateerde Api's en service aanbiedingen.
 
-## <a name="mca-apis-and-integration"></a>MCA API's en integratie
+## <a name="mca-apis-and-integration"></a>MCA Api's en integratie
 
-MCA API's en nieuwe integratie kunnen u:
+Met MCA Api's en nieuwe integratie kunt u:
 
-- Volledige API-beschikbaarheid door middel van systeemeigen Azure-API's hebben.
-- Meerdere facturen in een enkele factureringsaccount configureren.
-- Toegang tot een gecombineerde API met gebruik van de Azure-service van derden Marketplace en het gebruik Marketplace-aankopen.
-- Kosten weergeven via facturering profielen (hetzelfde als inschrijvingen) met behulp van Azure Cost Management.
-- Toegang tot nieuwe API's weer te geven van de kosten, een melding ontvangen wanneer kosten vooraf gedefinieerde drempelwaarden overschrijden en automatisch de onbewerkte gegevens exporteren.
+- Volledige API-Beschik baarheid via systeem eigen Azure-Api's.
+- Meerdere facturen configureren in één facturerings account.
+- Krijg toegang tot een gecombineerde API met Azure-service gebruik, gebruik van Marketplace van derden en Marketplace-aankopen.
+- Bekijk de kosten voor de facturerings profielen (hetzelfde als inschrijvingen) met behulp van Azure Cost Management.
+- Open nieuwe Api's om kosten weer te geven, ontvang een melding wanneer de kosten de vooraf gedefinieerde drempel waarden overschrijden en onbewerkte gegevens automatisch exporteren.
 
-## <a name="migration-checklist"></a>Controlelijst voor migratie
+## <a name="migration-checklist"></a>Migratie Controlelijst
 
-De volgende items help die u overgaan op MCA API's.
+Met de volgende items kunt u overstappen naar MCA-Api's.
 
-- Maak uzelf bekend met de nieuwe [Microsoft KLANTOVEREENKOMST facturering account](../billing/billing-mca-overview.md).
-- Bepalen welke API's die u gebruikt en zien welke wordt vervangen in de volgende sectie.
-- Maak uzelf vertrouwd met [Azure Resource Manager REST API's](/rest/api/azure).
-- Als u niet al van Azure Resource Manager-API's gebruikmaakt [uw client-app registreren bij Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad).
-- Bijwerken van elke programmacode aan [gebruik Azure AD-verificatie](/rest/api/azure/#create-the-request).
-- Werk elke programmacode ter vervanging van EA API-aanroepen met MCA API-aanroepen.
-- Fout bij het verwerken van voor het gebruik van nieuwe foutcodes bijwerken.
-- Bekijk meer integratie-aanbiedingen, zoals Cloudyn en Power BI, voor andere actie nodig.
+- Meer vertrouwd zijn met het nieuwe [micro soft-account voor klant overeenkomsten](../billing/billing-mca-overview.md).
+- Bepaal welke Api's u gebruikt en hoe deze worden vervangen in de volgende sectie.
+- Raadpleeg de [Azure Resource Manager rest api's](/rest/api/azure).
+- Als u Azure Resource Manager-Api's nog niet gebruikt, moet u [uw client-app registreren bij Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad).
+- Werk de programma code bij voor het [gebruik van Azure AD-verificatie](/rest/api/azure/#create-the-request).
+- Werk elke programmerings code bij om EA API-aanroepen te vervangen door MCA API-aanroepen.
+- Fout afhandeling bijwerken om nieuwe fout codes te gebruiken.
+- Bekijk aanvullende integratie aanbiedingen, zoals Cloudyn en Power BI, voor andere benodigde actie.
 
-## <a name="ea-apis-replaced-with-mca-apis"></a>EA API's vervangen door MCA API 's
+## <a name="ea-apis-replaced-with-mca-apis"></a>EA Api's vervangen door MCA Api's
 
-EA API's gebruiken een API-sleutel voor verificatie en autorisatie. MCA API's gebruiken Azure AD-verificatie.
+EA-Api's gebruiken een API-sleutel voor verificatie en autorisatie. MCA Api's gebruiken Azure AD-verificatie.
 
-| Doel | EA API | MCA API |
+| Doel | EA-API | MCA API |
 | --- | --- | --- |
-| Saldo en het tegoed | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft.Billing/billingAccounts/billingProfiles/availableBalanceussae |
-| Gebruik (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Gebruik (CSV) | [/usagedetails/download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Marketplace-verbruik (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Facturering-punten | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
-| Prijzenoverzicht | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/default/download format=json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/Download indeling = json|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
-| Aankopen in de reservering | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
-| Reservering-aanbevelingen | [/ SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
-| Gebruik van de reservering | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| Saldo en tegoed | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft.Billing/billingAccounts/billingProfiles/availableBalanceussae |
+| Gebruik (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) [/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Gebruik (CSV) | [/usagedetails/Download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) [/usagedetails/Submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Marketplace-gebruik (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) [/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Facturerings perioden | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
+| Prijzenoverzicht | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Micro soft. Bill/billingAccounts/billingProfiles/prijzen overzicht/default/load format = json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/Download-indeling = JSON|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
+| Reserverings aankopen | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
+| Aanbevelingen voor reserve ring | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)[SingleReservationRecommendations/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)[](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Micro soft. verbruik/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
+| Reserverings gebruik | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details) [/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
-<sup>1</sup> azure-service en van derden Marketplace gebruik zijn beschikbaar in de [Usage Details API](/rest/api/consumption/usagedetails).
+<sup>1</sup> Azure-service en het gebruik van Marketplace van derden zijn beschikbaar met de [gebruiks Details-API](/rest/api/consumption/usagedetails).
 
-De volgende API's zijn beschikbaar voor MCA facturering accounts:
+De volgende Api's zijn beschikbaar voor MCA-facturerings accounts:
 
-| Doel | Klant van Microsoft-overeenkomst (MCA) API |
+| Doel | Micro soft Customer Agreement (MCA) API |
 | --- | --- |
-| Facturering-accounts<sup>2</sup> | Microsoft.Billing/billingAccounts |
-| Facturering profielen<sup>2</sup> | Microsoft.Billing/billingAccounts/billingProfiles |
+| Facturerings accounts<sup>2</sup> | Microsoft.Billing/billingAccounts |
+| Facturerings profielen<sup>2</sup> | Microsoft.Billing/billingAccounts/billingProfiles |
 | Factuur secties<sup>2</sup> | Microsoft.Billing/billingAccounts/invoiceSections |
 | Facturen | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
-| Facturering-abonnementen | {scope}/billingSubscriptions |
+| Facturerings abonnementen | {scope}/billingSubscriptions |
 
-<sup>2</sup> API's geven een lijst met objecten, die bereiken, waarbij ervaringen met Cost Management in Azure portal en API's gebruiken. Zie voor meer informatie over het bereiken van Cost Management [begrijpen en werk met een bereik](understand-work-scopes.md).
+<sup>2</sup> api's retour neren lijsten met objecten, die bereiken zijn, waarbij Cost Management ervaringen in de Azure Portal en api's worden toegepast. Zie voor meer informatie over Cost Management scopes [begrijpen en werken met scopes](understand-work-scopes.md).
 
-Als u een bestaande EA-API's gebruikt, moet u deze ter ondersteuning van MCA facturering accounts kunnen worden bijgewerkt. De volgende tabel ziet u andere integratiewijzigingen:
+Als u bestaande EA-Api's gebruikt, moet u deze bijwerken voor ondersteuning van MCA-facturerings accounts. De volgende tabel bevat andere wijzigingen in de integratie:
 
-| Doel | Oude aanbieding | Nieuw aanbod |
+| Doel | Oude aanbieding | Nieuwe aanbieding |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) en-connector | [Microsoft Azure Consumption Insights-Power BI-app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) en [Azure Consumption Insights-connector](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Micro soft consumptie Insights](/power-bi/desktop-connect-azure-consumption-insights) -inhouds pakket en-connector | [Microsoft Azure Consumption Insights Power bi app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) en [Azure consumption Insights connector](/power-bi/desktop-connect-azure-consumption-insights) |
 
-## <a name="apis-to-get-balance-and-credits"></a>API's voor het saldo en het tegoed ophalen
+## <a name="apis-to-get-balance-and-credits"></a>Api's om saldo en tegoeden te verkrijgen
 
-De [saldo-overzicht ophalen](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) -API biedt een maandelijkse samenvatting van:
+De overzichts-API [ophalen](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) geeft een maandelijks overzicht van:
 
 - Tegoeden
 - Nieuwe aankopen
-- Azure Marketplace-kosten voor service
+- Kosten voor Azure Marketplace-service
 - Aanpassingen
-- Service-overschrijdingskosten
+- Serviceoverschrijdingskosten
 
-Alle API's voor verbruik worden vervangen door systeemeigen Azure-API's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie voor meer informatie over de aanroepende Azure REST API's, [aan de slag met REST](/rest/api/azure/#create-the-request).
+Alle verbruiks-Api's worden vervangen door systeem eigen Azure-Api's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie aan de slag [met rest](/rest/api/azure/#create-the-request)voor meer informatie over het aanroepen van Azure rest api's.
 
-De API ophalen saldo samenvatting wordt vervangen door de Microsoft.Billing/billingAccounts/billingProfiles/availableBalance-API.
+De API Get Balanced Summary wordt vervangen door de API micro soft. billing/billingAccounts/billingProfiles/availableBalance.
 
-Ophalen van beschikbare tegoeden bij de beschikbare saldo-API:
+Beschik bare saldi ophalen met de API beschik bare saldo:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/availableBalances?api-version=2018-11-01-preview` |
 
-## <a name="apis-to-get-cost-and-usage"></a>API's om de kosten- en gebruiksgegevens ophalen
+## <a name="apis-to-get-cost-and-usage"></a>Api's om kosten en gebruik te verkrijgen
 
-Kosten per dag opgesplitst ophalen uit Azure-servicegebruik, van derden Marketplace gebruik en andere Marketplace-aankopen met de volgende API's. De volgende afzonderlijke API's zijn voor Azure-services en Marketplace-gebruik van derden samengevoegd. De oude API's zijn vervangen door de [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails) API. Marketplace-aankopen zijn eerder alleen wordt weergegeven in het saldo samenvatting op datum wordt toegevoegd.
+Ontvang een dagelijkse uitsplitsing van de kosten van Azure-service gebruik, gebruik van Marketplace van derden en andere Marketplace-aankopen met de volgende Api's. De volgende afzonderlijke Api's zijn samengevoegd voor Azure-Services en het gebruik van Marketplace van derden. De oude Api's worden vervangen door de API [micro soft. verbruik/usageDetails](/rest/api/consumption/usagedetails) . Marketplace-aankopen worden toegevoegd, die eerder alleen werden weer gegeven in de saldo samenvatting tot nu toe.
 
-- [Gebruik details/downloaden ophalen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [Gedetailleerd gebruik/indienen ophalen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
-- [Gebruik details/usagedetails ophalen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
-- [Gebruik details/usagedetailsbycustomdate ophalen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
-- [Marketplace store kosten in rekening gebracht/marketplacecharges ophalen](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
-- [Marketplace store kosten in rekening gebracht/marketplacechargesbycustomdate ophalen](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Details van gebruik ophalen/downloaden](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Details van gebruik/verzenden ophalen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)
+- [Details van gebruik/usagedetails ophalen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
+- [Details van gebruik/usagedetailsbycustomdate ophalen](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)
+- [Kosten-marketplacecharges voor Marketplace Store ophalen](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
+- [Kosten-marketplacechargesbycustomdate voor Marketplace Store ophalen](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)
 
-Alle API's voor verbruik worden vervangen door systeemeigen Azure-API's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie voor meer informatie over de aanroepende Azure REST API's, [aan de slag met REST](/rest/api/azure/#create-the-request).
+Alle verbruiks-Api's worden vervangen door systeem eigen Azure-Api's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie aan de slag [met rest](/rest/api/azure/#create-the-request)voor meer informatie over het aanroepen van Azure rest api's.
 
-De voorgaande API's worden vervangen door de API van de Details van hun/verbruik.
+Alle voor gaande Api's worden vervangen door de details van de API voor verbruik/gebruik.
 
-Ophalen van informatie over het gebruik met de API van de Details van gebruik:
+Gebruiks Details ophalen met de API gebruiks gegevens:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?api-version=2019-01-01` |
 
-De Usage-Details-API, is net als bij alle kosten Management-API's, beschikbaar op meerdere scopes. Voor gefactureerde kosten, zoals u traditioneel op het inschrijvingsniveau van een ontvangen zou, gebruikt u de facturering profiel bereik.  Zie voor meer informatie over het bereiken van Cost Management [begrijpen en werk met een bereik](understand-work-scopes.md).
+De gebruiks Details-API, net als bij alle Cost Management Api's, is beschikbaar op meerdere bereiken. Gebruik voor gefactureerde kosten, net als bij een inschrijvings niveau, het bereik van het facturerings profiel.  Zie voor meer informatie over Cost Management scopes [begrijpen en werken met scopes](understand-work-scopes.md).
 
-| Type | De indeling-ID |
+| type | ID-indeling |
 | --- | --- |
 | Factureringsaccount | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
-| Facturering-profiel | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
-| Abonnement | `/subscriptions/{subscriptionId}` |
-| Resourcegroep | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
+| Factureringsprofiel | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
+| Subscription | `/subscriptions/{subscriptionId}` |
+| Resource group | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
-De volgende querystring-parameters gebruiken om te werken van elke programmacode.
+Gebruik de volgende query string-para meters om programma code bij te werken.
 
-| Oude parameters | Nieuwe parameters |
+| Oude para meters | Nieuwe para meters |
 | --- | --- |
 | `billingPeriod={billingPeriod}` | Niet ondersteund |
 | `endTime=yyyy-MM-dd` | `endDate=yyyy-MM-dd` |
 | `startTime=yyyy-MM-dd` | `startDate=yyyy-MM-dd` |
 
-De hoofdtekst van het antwoord is ook gewijzigd.
+De hoofd tekst van het antwoord is ook gewijzigd.
 
-Oude antwoordtekst:
+Hoofd tekst van oud bericht:
 
 ```
 {
@@ -153,7 +153,7 @@ Oude antwoordtekst:
 }
 ```
 
-Nieuwe antwoordtekst:
+Nieuwe antwoord tekst:
 
 ```
 {
@@ -168,144 +168,144 @@ Nieuwe antwoordtekst:
 }
 ```
 
-De naam van de eigenschap die de matrix van gebruiksrecords gewijzigd van gegevens naar _waarden_. Elke record die wordt gebruikt om een lijst met gedetailleerde eigenschappen. Maar elke record nu alle gegevens nu in een geneste eigenschap met de naam zijn _eigenschappen_, met uitzondering van tags. De nieuwe structuur is consistent met andere Azure-API's. De namen van sommige eigenschappen zijn gewijzigd. De volgende tabel toont de bijbehorende eigenschappen.
+De naam van de eigenschap met de matrix met gebruiks records is gewijzigd van gegevens in _waarden_. Elke record die wordt gebruikt om een lijst met gedetailleerde eigenschappen te gebruiken. Elke record bevat nu echter alle details in een geneste eigenschap met de naam _Eigenschappen_, met uitzonde ring van tags. De nieuwe structuur is consistent met andere Azure-Api's. Sommige eigenschapnamen zijn gewijzigd. In de volgende tabel worden de bijbehorende eigenschappen weer gegeven.
 
-| Oude eigenschap | Nieuwe eigenschap | Opmerkingen |
+| Eigenschap Old | Nieuwe eigenschap | Opmerkingen |
 | --- | --- | --- |
-| AccountId | N/A | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionId (hetzelfde als DepartmentID gemeenschappelijk hebben). |
-| AccountNameAccountOwnerId en AccountOwnerEmail | N/A | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionName (hetzelfde als departmentName). |
-| Aanvullende informatie | Aanvullende informatie | &nbsp;  |
-| ChargesBilledSeparately | isAzureCreditEligible | Houd er rekening mee dat deze eigenschappen opposites zijn. Als isAzureCreditEnabled true is, zou ChargesBilledSeparately ONWAAR zijn. |
-| ConsumedQuantity | Hoeveelheid | &nbsp; |
-| ConsumedService | consumedService | Exacte tekenreekswaarden verschillen. |
+| AccountId | N/A | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionId (zelfde als departmentId). |
+| AccountNameAccountOwnerId en AccountOwnerEmail | N/A | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionName (hetzelfde als afdelings). |
+| Extra informatie | additionalInfo | &nbsp;  |
+| ChargesBilledSeparately | isAzureCreditEligible | Houd er rekening mee dat deze eigenschappen tegenovergesteld zijn. Als isAzureCreditEnabled is ingesteld op True, is ChargesBilledSeparately false. |
+| Verbruikte hoeveelheid | quantity | &nbsp; |
+| Verbruikte service | consumedService | De exacte teken reeks waarden kunnen verschillen. |
 | ConsumedServiceId | Geen | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
-| De datum en het usageStartDate | date | &nbsp;  |
-| Dag | Geen | Dag vanaf datum worden geparseerd. |
-| DepartmentId | invoiceSectionId | Exacte waarden verschillen. |
-| Naam van de afdeling | invoiceSectionName | Exacte tekenreekswaarden verschillen. Configureer factuur secties zodat deze overeenkomt met de afdelingen, indien nodig. |
+| Datum en usageStartDate | date | &nbsp;  |
+| Dag | Geen | De datum van de dag wordt geparseerd. |
+| Afdelings-id | invoiceSectionId | De exacte waarden verschillen. |
+| Naam van de afdeling | invoiceSectionName | De exacte teken reeks waarden kunnen verschillen. Zo nodig kunt u factuur secties configureren zodat deze overeenkomen met afdelingen. |
 | ExtendedCost en kosten | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
 | Terugkerende kosten | Geen | &nbsp;  |
-| Locatie | location | &nbsp;  |
-| MeterCategory | meterCategory | Exacte tekenreekswaarden verschillen. |
-| Meter-id | meterId | Exacte tekenreekswaarden verschillen. |
-| MeterName | meterName | Exacte tekenreekswaarden verschillen. |
-| MeterRegion | meterRegion | Exacte tekenreekswaarden verschillen. |
-| MeterSubCategory | meterSubCategory | Exacte tekenreekswaarden verschillen. |
-| Maand | Geen | Maand van datum worden geparseerd. |
-| Naam van aanbieding: | Geen | PublisherName en productOrderName gebruiken. |
+| Location | location | &nbsp;  |
+| Metercategorie | meterCategory | De exacte teken reeks waarden kunnen verschillen. |
+| Meter-id | meterId | De exacte teken reeks waarden verschillen. |
+| MeterName | meterName | De exacte teken reeks waarden kunnen verschillen. |
+| Meterregio | meterRegion | De exacte teken reeks waarden kunnen verschillen. |
+| MeterSubCategory | meterSubCategory | De exacte teken reeks waarden kunnen verschillen. |
+| Maand | Geen | De datum van de maand wordt geparseerd. |
+| Naam van aanbieding | Geen | Gebruik publishernaam en productOrderName. |
 | OfferId | Geen | &nbsp;  |
 | Ordernummer | Geen | &nbsp;  |
-| PartNumber | Geen | MeterId en productOrderName gebruiken voor het aanduiden van prijzen. |
+| PartNumber | Geen | Gebruik meterId en productOrderName om prijzen uniek te identificeren. |
 | Naam van het plan | productOrderName | &nbsp;  |
 | Product | Product |   |
-| ProductId | productId | Exacte tekenreekswaarden verschillen. |
-| De naam van uitgever | publisherName | &nbsp;  |
+| ProductId | productId | De exacte teken reeks waarden verschillen. |
+| Naam van de uitgever | publisherName | &nbsp;  |
 | ResourceGroup | resourceGroupName | &nbsp;  |
-| Resource-GUID | meterId | Exacte tekenreekswaarden verschillen. |
-| resourceLocation | resourceLocation | &nbsp;  |
+| ResourceGuid | meterId | De exacte teken reeks waarden verschillen. |
+| Resourcelocatie | resourceLocation | &nbsp;  |
 | ResourceLocationId | Geen | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
 | ServiceAdministratorId | N/A | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
 | ServiceInfo2 | serviceInfo2 | &nbsp;  |
-| ServiceName | meterCategory | Exacte tekenreekswaarden verschillen. |
-| ServiceTier | meterSubCategory | Exacte tekenreekswaarden verschillen. |
+| ServiceName | meterCategory | De exacte teken reeks waarden kunnen verschillen. |
+| ServiceTier | meterSubCategory | De exacte teken reeks waarden kunnen verschillen. |
 | StoreServiceIdentifier | N/A | &nbsp;  |
-| subscriptionGuid | subscriptionId | &nbsp;  |
+| GUID van het abonnement | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
-| subscriptionName | subscriptionName | &nbsp;  |
-| Tags | codes | De eigenschap tags is van toepassing op hoofdobject, niet aan de eigenschappen van geneste eigenschap. |
-| unitOfMeasure | unitOfMeasure | Exacte tekenreekswaarden verschillen. |
+| Abonnementsnaam | subscriptionName | &nbsp;  |
+| Labels | codes | De eigenschap Tags is van toepassing op het hoofd object, niet op de eigenschap geneste eigenschappen. |
+| Maateenheid | unitOfMeasure | De exacte teken reeks waarden verschillen. |
 | usageEndDate | date | &nbsp;  |
-| Jaar | Geen | Jaar na de aanmaakdatum worden geparseerd. |
-| (nieuw) | billingCurrency | Valuta die wordt gebruikt voor de kosten in rekening gebracht. |
-| (nieuw) | billingProfileId | De unieke ID voor de facturering-profiel (hetzelfde als inschrijven). |
-| (nieuw) | billingProfileName | Naam van de facturering profiel (hetzelfde als inschrijven). |
-| (nieuw) | chargeType | Gebruiken om u te onderscheiden van de Azure-servicegebruik, het gebruik van Marketplace en aankopen. |
-| (nieuw) | invoiceId | De unieke ID voor de factuur. Leeg voor de huidige, open maand. |
-| (nieuw) | publisherType | Het type van de uitgever voor aankopen. Leeg zijn voor gebruik. |
-| (nieuw) | serviceFamily | Het type van aankoop. Leeg zijn voor gebruik. |
-| (nieuw) | servicePeriodEndDate | Einddatum voor de aangeschafte-service. |
-| (nieuw) | servicePeriodStartDate | Begindatum van de aangeschafte-service. |
+| Jaar | Geen | De datum van het jaar wordt geparseerd. |
+| ander | billingCurrency | De valuta die wordt gebruikt voor de kosten. |
+| ander | billingProfileId | De unieke ID voor het facturerings Profiel (hetzelfde als inschrijving). |
+| ander | billingProfileName | De naam van het facturerings Profiel (hetzelfde als inschrijving). |
+| ander | chargeType | Gebruiken om onderscheid te maken tussen Azure-service gebruik, Marketplace-gebruik en aankopen. |
+| ander | invoiceId | De unieke ID voor de factuur. Leeg voor de huidige, open maand. |
+| ander | publisherType | Het type Uitgever voor aankopen. Leeg voor gebruik. |
+| ander | serviceFamily | Het type aankoop. Leeg voor gebruik. |
+| ander | servicePeriodEndDate | Eind datum voor de aangeschafte service. |
+| ander | servicePeriodStartDate | Begin datum voor de aangeschafte service. |
 
-## <a name="billing-periods-api-replaced-by-invoices-api"></a>Facturatie-API van punten vervangen door de API voor facturen
+## <a name="billing-periods-api-replaced-by-invoices-api"></a>API voor facturerings periodes vervangen door facturen API
 
-Facturering accounts MCA gebruik geen factureringsperioden. In plaats daarvan gebruiken ze facturen bereik van kosten op specifieke factureringsperioden. De [Billing perioden API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) wordt vervangen door de API voor facturen. Alle API's voor verbruik worden vervangen door systeemeigen Azure-API's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie voor meer informatie over de aanroepende Azure REST API's, [aan de slag met REST](/rest/api/azure/#create-the-request).
+MCA-facturerings accounts gebruiken geen facturerings perioden. In plaats daarvan gebruiken ze facturen om de kosten te beperken tot specifieke facturerings perioden. De [API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) voor facturerings perioden wordt vervangen door de factuur-API. Alle verbruiks-Api's worden vervangen door systeem eigen Azure-Api's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie aan de slag [met rest](/rest/api/azure/#create-the-request)voor meer informatie over het aanroepen van Azure rest api's.
 
-Facturen met de API voor facturen ophalen:
+Facturen ophalen met de API voor facturen:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoices?api-version=2018-11-01-preview` |
 
-## <a name="price-sheet-apis"></a>Prijs blad API 's
+## <a name="price-sheet-apis"></a>Prijzen lijst-Api's
 
-Deze sectie wordt besproken bestaande prijs blad-API's en bevat aanbevelingen om u te verplaatsen naar de prijs blad-API van Microsoft-klant-overeenkomsten. Ook wordt de prijs blad-API voor Microsoft-klant overeenkomsten beschreven en wordt uitgelegd velden in de prijzenoverzichten. De [prijslijst Enterprise ophalen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) en [Enterprise ophalen factureringsperioden](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) API's zijn vervangen door de prijs blad-API voor Microsoft-klant-overeenkomsten (Microsoft.Billing/billingAccounts/billingProfiles / prijslijst). De nieuwe API biedt ondersteuning voor JSON- en CSV-indelingen in asynchrone REST-indelingen. Alle API's voor verbruik worden vervangen door systeemeigen Azure-API's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie voor meer informatie over de aanroepende Azure REST API's, [aan de slag met REST](/rest/api/azure/#create-the-request).
+In deze sectie worden de bestaande prijzen voor prijs modellen besproken en worden aanbevelingen gedaan om over te stappen op de prijzen lijst-API voor micro soft-klant overeenkomsten. Ook wordt de prijs lijst-API voor micro soft-klant overeenkomsten beschreven en worden de velden in de prijs lijsten uitgelegd. De [Enter prise prijs lijst voor prijzen ophalen](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) en [Enter prise](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) -facturerings periodes worden vervangen door de prijs lijst-API voor micro soft-klant overeenkomsten (micro soft. billing/billingAccounts/billingProfiles/prijzen overzicht). De nieuwe API ondersteunt zowel JSON-als CSV-indelingen, in asynchrone REST-indelingen. Alle verbruiks-Api's worden vervangen door systeem eigen Azure-Api's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie aan de slag [met rest](/rest/api/azure/#create-the-request)voor meer informatie over het aanroepen van Azure rest api's.
 
-### <a name="billing-enterprise-apis"></a>Facturering Enterprise-API 's
+### <a name="billing-enterprise-apis"></a>API voor Enter prise-Services
 
-Waarmee u facturerings Enterprise-API's met Enterprise-inschrijvingen prijs- en informatie over facturering periode. Verificatie en autorisatie gebruikt Azure Active Directory webtokens.
+U hebt facturering-Api's voor ondernemingen gebruikt met inschrijvingen voor de prijs en de facturerings periode. Verificatie en autorisatie die worden gebruikt Azure Active Directory webtokens.
 
-Prijzen van toepassing voor de opgegeven Enterprise-inschrijving met de prijslijst en facturering periode API's ophalen:
+Voor het verkrijgen van toepasselijke prijzen voor de opgegeven Enter prise-inschrijving met het prijzen overzicht en de facturerings periode-Api's:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet` |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet` |
 
-### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>Prijs blad API voor klant van Microsoft-overeenkomsten
+### <a name="price-sheet-api-for-microsoft-customer-agreements"></a>Prijs lijst-API voor micro soft-klant overeenkomsten
 
-De prijs blad-API voor Microsoft-klant-overeenkomsten gebruiken om de prijzen voor alle Azure-verbruik en de Marketplace-verbruik services weer te geven. De prijzen weergegeven voor de factureringsprofiel gelden voor alle abonnementen die deel uitmaken van het profiel voor facturering.
+Gebruik de prijs lijst-API voor micro soft-klanten overeenkomsten om de prijzen voor alle verbruiks services van Azure en Marketplace te bekijken. De prijzen die voor het facturerings profiel worden weer gegeven, zijn van toepassing op alle abonnementen die deel uitmaken van het facturerings profiel.
 
-De prijs blad-API gebruiken voor het weergeven van alle Azure-verbruik services prijslijst-gegevens in CSV-indeling:
+Gebruik de prijs lijst-API voor het weer geven van alle prijzen lijst gegevens van Azure consumptie Services in CSV-indeling:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
 
-De prijs blad-API gebruiken voor het weergeven van alle Azure-verbruik services prijslijst-gegevens in JSON-indeling:
+Gebruik de prijs lijst-API voor het weer geven van alle prijzen lijst gegevens van het Azure-verbruiks Services in JSON-indeling:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-Met behulp van de API retourneert de prijslijst voor het gehele account. U kunt echter ook een verkorte versie van het Prijzenoverzicht ophalen in PDF-indeling. De samenvatting omvat Azure Consumption and Marketplace-verbruik-services die in rekening voor een specifieke factuur gebracht worden. De factuur wordt geïdentificeerd door {invoiceId}, dit is hetzelfde als de **factuurnummer** wordt weergegeven in de factuur samenvatting PDF-bestanden. Hier volgt een voorbeeld.
+Met de API wordt het prijs overzicht voor het hele account geretourneerd. U kunt echter ook een verkorte versie van het prijzen overzicht in PDF-indeling krijgen. Het overzicht bevat Azure-verbruik en services voor het gebruik van Marketplace die voor een specifieke factuur worden gefactureerd. De factuur wordt geïdentificeerd door {invoiceId}. Dit is hetzelfde als het **factuur nummer** dat wordt weer gegeven in de PDF-bestanden met factuur overzichten. Hier volgt een voor beeld.
 
-![Van de voorbeeldafbeelding met het nummer van de factuur die overeenkomt met aan de InvoiceId](./media/migrate-cost-management-api/invoicesummary.png)
+![Voorbeeld afbeelding met het factuur nummer dat overeenkomt met de InvoiceId](./media/migrate-cost-management-api/invoicesummary.png)
 
-Om factuurinformatie te bekijken met de prijs blad-API in CSV-indeling:
+Factuur gegevens weer geven met de API voor het prijzen overzicht in CSV-indeling:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-Om factuurinformatie te bekijken met de prijs blad-API in JSON-indeling:
+Factuur gegevens weer geven met de API voor het prijzen overzicht in JSON-indeling:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-U ziet ook geschatte prijzen voor elke Azure-verbruik of Marketplace-verbruik-service in de huidige factureringscyclus openen of de service-punt.
+U kunt ook geschatte prijzen bekijken voor elke service voor Azure-verbruik of Marketplace-verbruik in de huidige openstaande facturerings cyclus of service periode.
 
-Geschatte prijzen voor verbruik services met de API van de prijs blad in CSV-indeling om weer te geven:
+U kunt als volgt geschatte prijzen voor verbruiks services weer geven met de API voor het prijzen overzicht in CSV-indeling:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
-Geschatte prijzen voor verbruik services met de API van de prijs blad in JSON-indeling om weer te geven:
+U kunt als volgt geschatte prijzen voor verbruiks services weer geven met de API voor het prijzen overzicht in JSON-indeling:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
-De Microsoft-overeenkomst prijs blad API's van klanten zijn *asynchrone REST-API's*. De antwoorden voor de API's gewijzigd van de oudere synchrone API's. De hoofdtekst van de API-reactie ook gewijzigd.
+De micro soft-licentie voor prijzen lijst van klanten is *ASYNCHRONE rest api's*. De antwoorden voor de Api's zijn gewijzigd ten opzichte van de oudere synchrone Api's. De hoofd tekst van de API-reactie is ook gewijzigd.
 
-#### <a name="old-response-body"></a>Oude antwoordtekst
+#### <a name="old-response-body"></a>Hoofd tekst van oud antwoord
 
-Hier volgt een voorbeeld van de synchrone REST-API-reactie:
+Hier volgt een voor beeld van het synchrone REST API antwoord:
 
 ```
 [
@@ -324,9 +324,9 @@ Hier volgt een voorbeeld van de synchrone REST-API-reactie:
     ]
 ```
 
-#### <a name="new-response-body"></a>Nieuwe antwoordtekst
+#### <a name="new-response-body"></a>Nieuwe antwoord tekst
 
-De API's ondersteunen de [Azure REST asynchrone](../azure-resource-manager/resource-manager-async-operations.md) indeling. Roep de API met behulp van ophalen en u het volgende antwoord ontvangen:
+De Api's bieden ondersteuning voor de [asynchrone Azure rest](../azure-resource-manager/resource-manager-async-operations.md) -indeling. Roep de API aan met GET en ontvang het volgende antwoord:
 
 ```
 No Response Body
@@ -334,7 +334,7 @@ No Response Body
 HTTP Status 202 Accepted
 ```
 
-De volgende headers worden verzonden door de locatie van de uitvoer:
+De volgende headers worden verzonden met de locatie van de uitvoer:
 
 ```
 Location:https://management.azure.com/providers/Microsoft.Consumption/operationresults/{operationId}?sessiontoken=XZDFSnvdkbkdsb==
@@ -347,7 +347,7 @@ OData-EntityId: {operationId}
 
 ```
 
-Maken van een andere GET aanroepen naar de locatie. Het antwoord op de GET-aanroep is hetzelfde totdat de bewerking is voltooid of mislukt status bereikt. Wanneer dit is voltooid, retourneert het antwoord naar de locatie van de GET-aanroep van de download-URL. Net als de bewerking is uitgevoerd op hetzelfde moment. Hier volgt een voorbeeld:
+Maak een andere GET-aanroep naar de locatie. Het antwoord op de GET-aanroep is hetzelfde als de bewerking is voltooid of mislukt. Wanneer dit is voltooid, wordt de download-URL door de reactie op de aanroep locatie ophalen geretourneerd. Net alsof de bewerking op hetzelfde moment is uitgevoerd. Hier volgt een voorbeeld:
 
 ```
 HTTP Status 200
@@ -363,155 +363,155 @@ HTTP Status 200
                      }
 ```
 
-De client ook een GET-aanroep kunt maken voor de `Azure-AsyncOperation`. Het eindpunt wordt de status voor de bewerking.
+De client kan ook een GET-aanroep voor de `Azure-AsyncOperation`maken. Het eind punt retourneert de status voor de bewerking.
 
-De volgende tabel bevat de velden in de oudere Enterprise ophalen prijs blad API. Het bevat bijbehorende velden in de nieuwe prijslijst voor Microsoft-klant overeenkomsten:
+De volgende tabel bevat velden in de oudere onderneming prijs lijst-API ophalen. Het bevat overeenkomende velden in het nieuwe prijzen overzicht voor micro soft-klant overeenkomsten:
 
-| Oude eigenschap | Nieuwe eigenschap | Opmerkingen |
+| Eigenschap Old | Nieuwe eigenschap | Opmerkingen |
 | --- | --- | --- |
-| billingPeriodId  | _Niet van toepassing_ | Niet van toepassing. Voor Microsoft-klant-overeenkomsten, wordt het concept van billingPeriodId vervangen door de factuur en de bijbehorende prijslijst. |
+| billingPeriodId  | _Niet van toepassing_ | Niet van toepassing. Voor klanten overeenkomsten van micro soft is het concept van billingPeriodId vervangen door de factuur en het bijbehorende prijs overzicht. |
 | meterId  | meterId | &nbsp;  |
-| unitOfMeasure  | unitOfMeasure | Exacte tekenreekswaarden verschillen. |
-| includedQuantity  | includedQuantity | Niet van toepassing voor services in Microsoft-klant-overeenkomsten. |
-| PartNumber  | _Niet van toepassing_ | Gebruik in plaats daarvan een combinatie van productOrderName (hetzelfde als offerId) en meterid. |
-| unitPrice  | unitPrice | Prijs per eenheid is van toepassing voor services die worden gebruikt in Microsoft-klant-overeenkomsten. |
-| currencyCode  | pricingCurrency | Microsoft Customer overeenkomsten hebben prijs voorstellingen in valuta prijzen en facturering. De currencyCode komt overeen met de pricingCurrency in Microsoft-klant-overeenkomsten. |
-| offerId | productOrderName | In plaats van OfferId, u kunt productOrderName maar is niet hetzelfde als OfferId. Echter bepalen productOrderName en meter prijzen in de Microsoft-klant overeenkomsten met betrekking tot meterId en Offerid in verouderde inschrijvingen. |
+| unitOfMeasure  | unitOfMeasure | De exacte teken reeks waarden kunnen verschillen. |
+| includedQuantity  | includedQuantity | Niet van toepassing op Services in micro soft-klant overeenkomsten. |
+| partNumber  | _Niet van toepassing_ | Gebruik in plaats daarvan een combi natie van productOrderName (hetzelfde als offerId) en meterid. |
+| unitPrice  | unitPrice | Eenheids prijs is van toepassing op Services die worden gebruikt in micro soft-klant overeenkomsten. |
+| currencyCode  | pricingCurrency | Micro soft-klant overeenkomsten hebben prijs representaties in de prijs-en facturerings valuta. De currencyCode komt overeen met de pricingCurrency in micro soft-klant overeenkomsten. |
+| offerId | productOrderName | In plaats van OfferId kunt u productOrderName gebruiken, maar dit is niet hetzelfde als OfferId. ProductOrderName en meter bepalen prijzen in micro soft-klanten overeenkomsten met betrekking tot meterId en Offerid in verouderde inschrijvingen. |
 
-## <a name="consumption-price-sheet-api-operations"></a>Verbruik prijs blad API-bewerkingen
+## <a name="consumption-price-sheet-api-operations"></a>API-bewerkingen voor verbruik prijzen overzicht
 
-Voor Enterprise-overeenkomsten, gebruikt u de API-verbruik prijs blad [ophalen](/rest/api/consumption/pricesheet/get) en [ophalen door factureringsperiode](/rest/api/consumption/pricesheet/getbybillingperiod) bewerkingen voor een bereik op abonnements-id of een factureringsperiode. De API maakt gebruik van Azure Resource Management-verificatie.
+Voor Enter prise agreements hebt u de verbruikte prijs lijst API [Get](/rest/api/consumption/pricesheet/get) en [Get by](/rest/api/consumption/pricesheet/getbybillingperiod) trans acties van de facturerings periode gebruikt voor een scope van subscriptionId of een facturerings periode. De API maakt gebruik van Azure resource management-verificatie.
 
-Voor de prijslijst-informatie voor een bereik met de prijs blad-API:
+De prijslijst informatie voor een bereik met de API voor prijzen overzicht ophalen:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-Prijslijst informatie ophalen van de factureringsperiode met de prijs blad-API:
+Prijslijst informatie ophalen per facturerings periode met de prijs lijst-API:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
-Gebruik de volgende query voor Microsoft-klant overeenkomsten in plaats van de bovenstaande API-eindpunten:
+Gebruik in plaats van de bovenstaande API-eind punten de volgende voor micro soft-klant overeenkomsten:
 
-**Prijs blad API voor Microsoft-klant-overeenkomsten (asynchrone REST-API)**
+**Prijs lijst-API voor micro soft-klant overeenkomsten (asynchroon REST API)**
 
-Deze API is voor Microsoft-klant-overeenkomsten en biedt aanvullende kenmerken.
+Deze API is voor micro soft-klanten overeenkomsten en biedt extra kenmerken.
 
-**Prijslijst voor een scope facturering profiel in een factureringsaccount**
+**Prijzen overzicht voor een facturerings profiel bereik in een facturerings account**
 
-Deze API is de bestaande API. Het is bijgewerkt zodat de prijslijst voor een profiel voor facturering in factureringsaccount.
+Deze API is de bestaande API. Het is bijgewerkt om het prijs overzicht voor een facturerings profiel in een facturerings account op te geven.
 
-## <a name="price-sheet-for-a-scope-by-billing-account"></a>Prijslijst voor een bereik van facturering van account
+## <a name="price-sheet-for-a-scope-by-billing-account"></a>Prijs lijst voor een bereik per facturerings account
 
-Azure Resource Manager-verificatie wordt gebruikt wanneer u het Prijzenoverzicht bij het bereik van de inschrijving in een rekening ontvangt.
+Azure Resource Manager-verificatie wordt gebruikt wanneer u het prijzen overzicht in het inschrijvings bereik in een facturerings account ophaalt.
 
-Om het Prijzenoverzicht bij de apparaatregistratie-account in een factureringsaccount:
+Het prijzen overzicht ophalen bij het inschrijvings account in een facturerings account:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/65085863/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-Gebruik de informatie in de volgende sectie voor een overeenkomst van de klant Microsoft. Het biedt de eigenschappen die worden gebruikt voor Microsoft Customer overeenkomsten.
+Voor een micro soft-klant overeenkomst gebruikt u de informatie in de volgende sectie. Deze bevat de veld eigenschappen die worden gebruikt voor micro soft-klant overeenkomsten.
 
-### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>Prijslijst voor een facturering profiel scope in factureringsaccount
+### <a name="price-sheet-for-a-billing-profile-scope-in-a-billing-account"></a>Prijzen overzicht voor een facturerings profiel bereik in een facturerings account
 
-De bijgewerkte prijslijst door factureringsaccount API haalt de prijslijst in CSV-indeling. Om het Prijzenoverzicht bij facturering profiel voor het bereik van een MCA:
+Het bijgewerkte prijzen overzicht per facturerings account-API haalt het prijs overzicht op in CSV-indeling. U kunt als volgt het prijs overzicht voor het profiel van de facturerings bereik voor een MCA ophalen:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/28ae4b7f-41bb-581e-9fa4-8270c857aa5f/billingProfiles/ef37facb-cd6f-437a-9261-65df15b673f9/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
-In het bereik van de EA-inschrijving zijn de API-reactie en eigenschappen identiek. De eigenschappen overeenkomen met de dezelfde MCA-eigenschappen.
+Bij het inschrijvings bereik van EA zijn de API-reactie en eigenschappen identiek. De eigenschappen komen overeen met dezelfde MCA-eigenschappen.
 
-De oudere eigenschappen voor [API's van Azure Resource Manager prijs blad](/rest/api/consumption/pricesheet) en dezelfde nieuwe eigenschappen zijn in de volgende tabel.
+De oudere eigenschappen voor [Azure Resource Manager prijs lijst-api's](/rest/api/consumption/pricesheet) en dezelfde nieuwe eigenschappen bevinden zich in de volgende tabel.
 
-| Oude Azure Resource Manager-prijs blad API-eigenschap  | Nieuwe Microsoft Customer overeenkomst prijs blad API-eigenschap   | Description |
+| Verouderde Azure Resource Manager prijs lijst API-eigenschap  | Nieuwe micro soft-gebruikers overeenkomst prijs lijst API-eigenschap   | Description |
 | --- | --- | --- |
-| Id van de meter | _meterId_ | De unieke id voor de meter. Hetzelfde als meterId. |
-| Meternaam | meterName | De naam van de meter. Meter vertegenwoordigt het implementeerbare resource zorgen Azure-service. |
-| Metercategorie  | service | De naam van de classificatiecategorie voor de meter. Hetzelfde als de service in de Microsoft Customer Agreement-prijslijst. Exacte tekenreekswaarden verschillen. |
-| Subcategorie van de meter | meterSubCategory | De naam van de meter subclassificatie categorie. Op basis van de indeling van de functies op hoog niveau set differentiatie in de service. Bijvoorbeeld: Basic SQL DB vs standaard SQL-database. |
+| Meter-id | _meterId_ | De unieke id voor de meter. Hetzelfde als meterId. |
+| Meternaam | meterName | De naam van de meter. Meter vertegenwoordigt de resource die kan worden geïmplementeerd voor de Azure-service. |
+| Metercategorie  | service | De naam van de classificatie categorie voor de meter. Hetzelfde als de service in het prijzen overzicht van de micro soft-klanten overeenkomst. De exacte teken reeks waarden verschillen. |
+| Subcategorie van de meter | meterSubCategory | De naam van de categorie voor de subclassificatie van de meter. Op basis van de classificatie van de functie set-differentiatie op hoog niveau in de service. Bijvoorbeeld Basic SQL DB versus Standard SQL DB. |
 | Meterregio | meterRegion | &nbsp;  |
-| Eenheid | _Niet van toepassing_ | Kan worden geparseerd uit unitOfMeasure. |
-| Meeteenheid | unitOfMeasure | &nbsp;  |
-| Onderdeelnummer | _Niet van toepassing_ | Gebruik in plaats van partNumber, productOrderName en MeterId voor het aanduiden van de prijs voor een profiel voor facturering. Velden worden weergegeven op de factuur MCA in plaats van de partNumber in MCA facturen. |
-| Prijs per eenheid | unitPrice | Prijs per eenheid KLANTOVEREENKOMST van Microsoft. |
-| Valutacode | pricingCurrency | Microsoft Customer overeenkomsten vertegenwoordigen de prijzen in de valuta-prijzen en facturering valuta. Valutacode is hetzelfde als de pricingCurrency in Microsoft-klant-overeenkomsten. |
-| Inbegrepen hoeveelheid | includedQuantity | Niet van toepassing op services in de Microsoft-klant-overeenkomsten. Weergeven met de waarden gelijk is aan nul. |
-|  Aanbiedings-Id  | productOrderName | Gebruik in plaats van OfferId, productOrderName. Niet gelijk zijn aan OfferId, maar de productOrderName en meter bepalen prijzen in de Microsoft-klant-overeenkomsten. Met betrekking tot meterId en Offerid in verouderde inschrijvingen. |
+| Eenheid | _Niet van toepassing_ | Kan worden geparseerd vanuit unitOfMeasure. |
+| Maateenheid | unitOfMeasure | &nbsp;  |
+| Onderdeelnummer | _Niet van toepassing_ | Gebruik in plaats van partNumber productOrderName en MeterId om de prijs van een facturerings profiel uniek te identificeren. Velden worden weer gegeven op de MCA-factuur in plaats van de partNumber in MCA-facturen. |
+| Eenheidsprijs | unitPrice | Eenheids prijs van de klant overeenkomst van micro soft. |
+| Valutacode | pricingCurrency | Micro soft-klanten overeenkomsten vertegenwoordigen prijzen in de prijs-en facturerings valuta. De valuta code is hetzelfde als de pricingCurrency in micro soft-klant overeenkomsten. |
+| Inbegrepen hoeveelheid | includedQuantity | Niet van toepassing op Services in micro soft-klant overeenkomsten. Weer geven met waarden van nul. |
+|  Aanbiedings-id  | productOrderName | Gebruik productOrderName in plaats van OfferId. Niet hetzelfde als OfferId, maar de productOrderName en meter bepalen prijzen in micro soft-klant overeenkomsten. Gerelateerd aan meterId en Offerid bij verouderde inschrijvingen. |
 
-De prijs voor overeenkomsten voor Microsoft-klanten is anders dan Enterprise agreements gedefinieerd. De prijs voor services in de Enterprise-inschrijving is uniek voor product, PartNumber, meter en aanbieding. De PartNumber niet wordt gebruikt in Microsoft-klant-overeenkomsten.
+De prijs voor klant overeenkomsten van micro soft is anders gedefinieerd dan Enter prise Agreements. De prijs voor services in de Enter prise-inschrijving is uniek voor product, PartNumber, meter en aanbieding. De PartNumber wordt niet gebruikt in micro soft-klant overeenkomsten.
 
-De prijs van Azure-verbruik-service die deel uitmaakt van een Microsoft-KLANTOVEREENKOMST is uniek voor productOrderName en meterId. Ze vertegenwoordigen de meter service en de product-plan.
+De prijs van de Azure-verbruiks service die deel uitmaakt van een micro soft-klant overeenkomst is uniek voor productOrderName en meterId. Ze vertegenwoordigen de service meter en het product plan.
 
-Om af te stemmen tussen de prijslijst en het gebruik in de API van de Details van gebruik, kunt u de productOrderName en meterId.
+Als u wilt afstemmen tussen het prijs overzicht en het gebruik in de API gebruiks Details, kunt u de productOrderName en meterId gebruiken.
 
-Gebruikers die beschikken over facturering profileren van eigenaar, Inzender, lezer en factureren manager rechten kunnen downloaden van de prijslijst.
+Gebruikers met de rechten van de facturerings profiel eigenaar, Inzender, lezer en factuur Manager kunnen het prijzen overzicht downloaden.
 
-Het Prijzenoverzicht bevat prijzen voor services waarvan de prijs is gebaseerd op gebruik. De services zijn Azure-verbruik en Marketplace-verbruik. De meest recente prijzen aan het einde van elke serviceperiode van de is vergrendeld en toegepast op gebruik in een periode van één service. Voor services van Azure-verbruik is de service duurt meestal een kalendermaand.
+Het prijzen overzicht bevat prijzen voor services waarvoor de prijs is gebaseerd op gebruik. De services omvatten Azure-verbruik en Marketplace-verbruik. De laatste prijs aan het einde van elke service periode is vergrendeld en toegepast op gebruik in één service periode. Voor Azure-verbruiks Services is de service periode doorgaans een kalender maand.
 
-### <a name="retired-price-sheet-api-fields"></a>Buiten gebruik gestelde prijs blad API-velden
+### <a name="retired-price-sheet-api-fields"></a>Buiten gebruik gesteld prijs lijst-API-velden
 
-De volgende velden zijn niet beschikbaar in API's van Microsoft klanten overeenkomst prijs blad of dezelfde velden.
+De volgende velden zijn niet beschikbaar in de micro soft-tarieven voor prijzen lijst van klanten of hebben dezelfde velden.
 
-|Buiten gebruik gestelde veld| Description|
+|Buiten gebruik gesteld veld| Description|
 |---|---|
 | billingPeriodId | Niet van toepassing. Komt overeen met InvoiceId voor MCA. |
 | offerId | Niet van toepassing. Komt overeen met productOrderName in MCA. |
-| meterCategory  | Niet van toepassing. Komt overeen met de Service in MCA. |
-| Eenheid | Niet van toepassing. Kan worden geparseerd uit unitOfMeasure. |
+| meterCategory  | Niet van toepassing. Komt overeen met de service in MCA. |
+| eenheid | Niet van toepassing. Kan worden geparseerd vanuit unitOfMeasure. |
 | currencyCode | Hetzelfde als de pricingCurrency in MCA. |
 | meterLocation | Hetzelfde als de meterRegion in MCA. |
-| partNumber partnumber | Niet van toepassing omdat het onderdeelnummer niet wordt weergegeven in MCA facturen. In plaats van partnumber, gebruikt u de combinatie van meterId en productOrderName voor het aanduiden van prijzen. |
+| partNumber partnumber | Niet van toepassing omdat het onderdeel nummer niet wordt vermeld in MCA-facturen. Gebruik in plaats van partnumber de combi natie van meterId en productOrderName om prijzen uniek te identificeren. |
 | totalIncludedQuantity | Niet van toepassing. |
 | pretaxStandardRate  | Niet van toepassing. |
 
-## <a name="reservation-instance-charge-api-replaced"></a>Reservering-exemplaar kosten in rekening gebracht API vervangen
+## <a name="reservation-instance-charge-api-replaced"></a>API voor reserverings instantie is vervangen
 
-U kunt ophalen facturering transacties voor aankopen in de reservering met de [gereserveerde instantie kosten in rekening gebracht API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). De nieuwe API omvat alle aankopen, met inbegrip van Marketplace-aankopen van derden. Alle API's voor verbruik worden vervangen door systeemeigen Azure-API's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie voor meer informatie over de aanroepende Azure REST API's, [aan de slag met REST](/rest/api/azure/#create-the-request). De gereserveerde instantie kosten in rekening gebracht API wordt vervangen door de API-transacties.
+U kunt facturerings transacties voor reserverings aankopen ontvangen met de [API voor gereserveerde instantie kosten](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges). De nieuwe API omvat alle aankopen, inclusief Marketplace-aanbiedingen van derden. Alle verbruiks-Api's worden vervangen door systeem eigen Azure-Api's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie aan de slag [met rest](/rest/api/azure/#create-the-request)voor meer informatie over het aanroepen van Azure rest api's. De API voor gereserveerde instantie kosten wordt vervangen door de trans actions-API.
 
-Reservering kopen transacties met de API-transacties ophalen:
+Reserve ring van inkoop transacties ophalen met de trans actions-API:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/transactions?api-version=2018-11-01-preview` |
 
-## <a name="recommendations-apis-replaced"></a>Aanbevelingen voor API's vervangen
+## <a name="recommendations-apis-replaced"></a>Aanbevelingen-Api's vervangen
 
-Gereserveerde instantie aankoop Recommendations-API's bieden VM-gebruik gedurende de laatste 7, 30 en 60 dagen. API's bieden ook aanschafaanbevelingen reservering. Ze omvatten:
+Gereserveerde instanties kopen aanbevelingen voor het gebruik van virtuele machines in de afgelopen 7, 30 of 60 dagen. Api's bieden ook aanbevelingen voor reserverings aankopen. Deze omvatten:
 
-- [Gedeelde gereserveerde instantie aanbeveling API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
-- [Één gereserveerde instantie Recommendations-API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
+- [Aanbevolen API voor gedeeld gereserveerde instanties](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
+- [API voor enkelvoudige gereserveerde instanties](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
 
-Alle API's voor verbruik worden vervangen door systeemeigen Azure-API's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie voor meer informatie over de aanroepende Azure REST API's, [aan de slag met REST](/rest/api/azure/#create-the-request). De reservering aanbevelingen die eerder is vermeld, API's zijn vervangen door de [Microsoft.Consumption/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) API.
+Alle verbruiks-Api's worden vervangen door systeem eigen Azure-Api's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie aan de slag [met rest](/rest/api/azure/#create-the-request)voor meer informatie over het aanroepen van Azure rest api's. De eerder genoemde reserverings aanbevelingen worden vervangen door de API [micro soft. verbruik/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) .
 
-Reservering-aanbevelingen met de reservering Recommendations-API ophalen:
+Reserverings aanbevelingen ophalen met de reserverings aanbevelingen API:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationRecommendations?api-version=2019-01-01` |
 
-## <a name="reservation-usage-apis-replaced"></a>Reservering gebruik API's vervangen
+## <a name="reservation-usage-apis-replaced"></a>Gebruiks-Api's voor reserve ring zijn vervangen
 
-Gebruik van de reservering krijgt u bij een inschrijving met de API voor gebruik van gereserveerde instantie. Als er meer dan één gereserveerde instantie in een registratiegroep, krijgt u ook het gebruik van alle de gereserveerde instantie koopt met behulp van deze API.
+U kunt reserverings gebruik ophalen in een inschrijving met de Gebruik gereserveerde instanties-API. Als er meer dan één gereserveerde instantie is in een registratie, kunt u ook het gebruik van alle gereserveerde exemplaar aankopen ophalen met deze API.
 
-Ze omvatten:
+Deze omvatten:
 
-- [Informatie over het gebruik gereserveerde instanties](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)
-- [Samenvatting van gebruik van gereserveerde instanties](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
+- [Gebruik gereserveerde instanties Details](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
+- [Gebruik gereserveerde instanties overzicht](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
 
-Alle API's voor verbruik worden vervangen door systeemeigen Azure-API's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie voor meer informatie over de aanroepende Azure REST API's, [aan de slag met REST](/rest/api/azure/#create-the-request). De reservering aanbevelingen die eerder is vermeld, API's zijn vervangen door de [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails) en [Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) API's.
+Alle verbruiks-Api's worden vervangen door systeem eigen Azure-Api's die gebruikmaken van Azure AD voor verificatie en autorisatie. Zie aan de slag [met rest](/rest/api/azure/#create-the-request)voor meer informatie over het aanroepen van Azure rest api's. De eerder genoemde reserverings aanbevelingen worden vervangen door de api's [micro soft. verbruik/reservationDetails](/rest/api/consumption/reservationsdetails) en [micro soft. verbruik/reservationSummaries](/rest/api/consumption/reservationssummaries) .
 
-Details van de reservering met de API voor reservering Details ophalen:
+Reserverings Details ophalen met de reserverings details API:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationDetails?api-version=2019-01-01` |
 
-Samenvattingen van de reservering met de reservering samenvattingen van de API ophalen:
+Reserverings overzichten ophalen met de API reserverings overzichten:
 
 | Methode | Aanvraag-URI |
 | --- | --- |
@@ -519,32 +519,32 @@ Samenvattingen van de reservering met de reservering samenvattingen van de API o
 
 
 
-## <a name="move-from-cloudyn-to-cost-management"></a>Verplaatsen van Cloudyn naar kostenbeheer
+## <a name="move-from-cloudyn-to-cost-management"></a>Van Cloudyn naar Cost Management verplaatsen
 
-Organisaties met behulp van [Cloudyn](https://cloudyn.com) moet beginnen met behulp van [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) voor de behoeften van cost management. Kostenbeheer is beschikbaar in de Azure portal met geen onboarding en een latentie van acht uur. Zie voor meer informatie de [Cost Management documentatie](index.yml).
+Organisaties die [Cloudyn](https://cloudyn.com) gebruiken, moeten gebruikmaken van [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) voor kosten beheer behoeften. Cost Management is beschikbaar in het Azure Portal zonder onboarding en een latentie van acht uur. Zie de [Cost Management-documentatie](index.yml)voor meer informatie.
 
 Met Azure Cost Management kunt u het volgende doen:
 
-- Kosten weergeven na verloop van tijd ten opzichte van een vooraf gedefinieerde budget. Analyseer dagelijkse kosten patronen identificeren en te stoppen voor de uitgavelimiet afwijkingen. Kosten per tags, de resourcegroep, de service en de locatie opsplitsen.
-- Budgetten voor een limiet instellen voor gebruik en kosten en ontvang een melding wanneer belangrijke drempelwaarden zijn genaderd maken. Instellen van automatisering met actiegroepen aangepaste gebeurtenissen activeren en afdwingen van de vaste limieten op uw eigen voorwaarden.
-- Optimaliseer kosten en gebruik met aanbevelingen van Azure Advisor. Aankoop optimalisaties met reserveringen detecteren, krimpen onderbezette virtuele machines en verwijderen van niet-gebruikte resources om binnen budgetten te blijven.
-- Plan een kosten en gebruik gegevens exporteren naar een CSV-bestand dagelijks publiceren naar uw opslagaccount. Automatiseer integratie met externe systemen voor facturering gegevens gesynchroniseerd en up-to-date te houden.
+- Kosten gedurende een periode op basis van een vooraf gedefinieerd budget weer geven. Analyseer dagelijkse kosten patronen om afwijkingen van de uitgave te identificeren en te stoppen. Onderbreek de kosten per label, resource groep, service en locatie.
+- Maak budgetten om limieten in te stellen voor het gebruik en de kosten en ontvang een melding wanneer er belang rijke drempel waarden worden bereikt. Stel Automation in met actie groepen om aangepaste gebeurtenissen te activeren en vaste limieten op uw voor waarden af te dwingen.
+- Optimaliseer kosten en gebruik met aanbevelingen van Azure Advisor. Analyseer aankoop optimalisaties met reserve ringen, krimpen-ondergebruikte virtuele machines en Verwijder ongebruikte resources om binnen budgetten te blijven.
+- Plan een kosten-en gebruiks gegevens export om dagelijks een CSV-bestand naar uw opslag account te publiceren. Automatiseer de integratie met externe systemen om facturerings gegevens synchroon en up-to-date te houden.
 
 ## <a name="power-bi-integration"></a>Integratie met Power BI
 
-Als u Power BI voor het melden van kosten gebruikt, moet u overstappen op het volgende:
+Als u Power BI gebruikt voor kosten rapportage, moet u overstappen naar het volgende:
 
-- Microsoft Azure Consumption Insights-Power BI-app
-- Azure Consumption Insights-desktop-connector
+- Microsoft Azure Consumption Insights Power BI-app
+- Azure Consumption Insights bureau blad-connector
 
 
-De connector wordt aanbevolen voor organisaties die de meeste flexibiliteit. De Power BI-app is echter ook beschikbaar voor snelle installatie.
+De connector wordt aanbevolen voor organisaties die de meeste flexibiliteit willen. De Power BI-app is echter ook beschikbaar voor snelle installatie.
 
-- Installeer de [Microsoft Azure Consumption Insights-Power BI-app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)
+- De [Microsoft Azure Consumption Insights Power bi-app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) installeren
 - [Verbinding maken met de Azure Consumption Insights-connector](/power-bi/desktop-connect-azure-consumption-insights)
 
-De oudere Consumption Insights-inhoudspakket en connector werkte op het inschrijvingsniveau van. Het vereist minimaal leestoegang. De nieuwe Consumption Insights-Power BI-app en de nieuwe Azure Consumption Insights-connector zijn beschikbaar voor profielgebruikers van facturering. Teams die extra opties voor het controleren van kosten of kosten bekijken in de facturering van profielen nodig te gebruiken in [Cost analysis](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) de Azure-portal.
+Het oudere inhouds pakket voor het gebruik van inzichten en de connector werkte op inschrijvings niveau. Het vereist ten minste lees toegang. De nieuwe Power BI-app voor het gebruik van inzichten en de nieuwe Azure Consumption Insights-connector zijn beschikbaar voor gebruikers van een facturerings profiel. Teams die extra opties nodig hebben voor het controleren van de kosten of voor het weer geven van de kosten in de facturerings profielen, moeten de Azure Portal gebruiken voor de [kosten analyse](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de [Cost Management documentatie](index.yml) voor informatie over het bewaken en beheren van Azure-uitgaven. Of, als u wilt optimaliseren gebruik van de resource met Cost Management.
+- Lees de [Cost Management documentatie](index.yml) voor meer informatie over het bewaken en beheren van Azure-uitgaven. Of als u het resource gebruik wilt optimaliseren met Cost Management.

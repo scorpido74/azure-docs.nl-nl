@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: bbbb570cc042d5faa16b66c42aef9792b24fdb12
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: dc9f59894da071e956283591cf7206bc371650b7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854057"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991435"
 ---
 # <a name="pre-filtering-manifests-by-using-dynamic-packager"></a>Manifesten vooraf filteren met behulp van dynamische pakket
 
@@ -107,7 +107,7 @@ Hier ziet u de gefilterde activa:
 
 ## <a name="adjusting-the-presentation-window-dvr"></a>Het presentatie venster (DVR) aanpassen
 
-Azure Media Services biedt momenteel een circulair archief waarbij de duur tussen 5 minuten en 25 uur kan worden geconfigureerd. Het filteren van manifesten kan worden gebruikt voor het maken van een voortschrijdend DVR-venster boven aan het archief, zonder dat er media worden verwijderd. Er zijn veel scenario's waarbij broadcasters een beperkt DVR-venster willen aanbieden om met de Live Edge te verplaatsen en tegelijkertijd een groter archiverings venster te gebruiken. Een omroep gebruiker kan de gegevens uit het DVR-venster gebruiken om clips te markeren, of ze willen mogelijk verschillende DVR-Vensters voor verschillende apparaten opgeven. De meeste mobiele apparaten verwerken bijvoorbeeld geen grote DVR-Windows (u kunt een DVR-venster van 2 minuten hebben voor mobiele apparaten en één uur voor desktop-clients).
+Op dit moment biedt Azure Media Services een circulair archief waarin de duur kan worden geconfigureerd tussen 1 minuut en 25 uur. Het filteren van manifesten kan worden gebruikt voor het maken van een voortschrijdend DVR-venster boven aan het archief, zonder dat er media worden verwijderd. Er zijn veel scenario's waarbij broadcasters een beperkt DVR-venster willen aanbieden om met de Live Edge te verplaatsen en tegelijkertijd een groter archiverings venster te gebruiken. Een omroep gebruiker kan de gegevens uit het DVR-venster gebruiken om clips te markeren, of ze willen mogelijk verschillende DVR-Vensters voor verschillende apparaten opgeven. De meeste mobiele apparaten verwerken bijvoorbeeld geen grote DVR-Windows (u kunt een DVR-venster van 2 minuten hebben voor mobiele apparaten en één uur voor desktop-clients).
 
 ![DVR-venster][dvr_filter]
 

@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 98b97abf9fe0d8e71f93022dcbfeff0a5339d5a1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826912"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983087"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
 
@@ -51,7 +51,7 @@ Volg deze stappen om de Hive-Warehouse connector in te stellen tussen een Spark 
 
         ![Configuratie van Spark2 Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. Stel `spark.hadoop.hive.llap.daemon.service.hosts` in op dezelfde waarde als de eigenschap **LLAP app name** onder **Advanced component-Interactive-env**. Bijvoorbeeld: `llap0`
+    1. Stel `spark.hadoop.hive.llap.daemon.service.hosts` in op dezelfde waarde als de **component Property. llap. daemon. service. hosts** onder * * Advanced component-Interactive-site * *. Bijvoorbeeld: `@llap0`
 
     1. Ingesteld `spark.sql.hive.hiveserver2.jdbc.url` op de JDBC-Connection String, die verbinding maakt met Hiveserver2 op het interactieve query cluster. De connection string voor uw cluster ziet er ongeveer als volgt uit. `CLUSTERNAME`is de naam van uw Spark-cluster en `user` de `password` para meters en zijn ingesteld op de juiste waarden voor uw cluster.
 

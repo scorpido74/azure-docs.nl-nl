@@ -1,24 +1,86 @@
 ---
 title: 'Verwijderen van de resourcegroep en resources: Azure Resource Manager'
-description: Hierin wordt beschreven hoe Azure Resource Manager de verwijdering van resources orders wanneer een resourcegroep wordt verwijderd. Beschrijft de responscodes en hoe Resource Manager worden verwerkt om te bepalen of de verwijdering is geslaagd.
+description: Hierin wordt beschreven hoe u resource groepen en-resources verwijdert. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources ordent bij het verwijderen van een resource groep. Beschrijft de responscodes en hoe Resource Manager worden verwerkt om te bepalen of de verwijdering is geslaagd.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 08/22/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 18990b51b5ff2184197db48fd139d63750626663
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 75cdeb88a68dece59d6b037592f7212fa895e821
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204205"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991689"
 ---
-# <a name="azure-resource-manager-resource-group-deletion"></a>Azure Resource Manager resource verwijderen
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager resource groep en verwijderen van resources
 
-Dit artikel wordt beschreven hoe Azure Resource Manager de verwijdering van resources orders wanneer u een resourcegroep verwijderen.
+In dit artikel wordt uitgelegd hoe u resource groepen en-resources kunt verwijderen. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources ordent bij het verwijderen van een resource groep.
 
-## <a name="determine-order-of-deletion"></a>Bepaalt de volgorde van verwijdering
+## <a name="delete-resource-group"></a>Resourcegroep verwijderen
+
+Gebruik een van de volgende methoden om de resource groep te verwijderen.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name <resource-group-name>
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az group delete --name <resource-group-name>
+```
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+1. Selecteer in de [Portal](https://portal.azure.com)de resource groep die u wilt verwijderen.
+
+1. Selecteer **Resourcegroep verwijderen**.
+
+   ![Resourcegroep verwijderen](./media/resource-group-delete/delete-group.png)
+
+1. Om het verwijderen te bevestigen, typt u de naam van de resource groep
+
+---
+
+## <a name="delete-resource"></a>Bron verwijderen
+
+Gebruik een van de volgende methoden om een resource te verwijderen.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResource `
+  -ResourceGroupName ExampleResourceGroup `
+  -ResourceName ExampleVM `
+  -ResourceType Microsoft.Compute/virtualMachines
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az resource delete \
+  --resource-group ExampleResourceGroup \
+  --name ExampleVM \
+  --resource-type "Microsoft.Compute/virtualMachines"
+```
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+1. Selecteer in de [Portal](https://portal.azure.com)de resource die u wilt verwijderen.
+
+1. Selecteer **Verwijderen**. Op de volgende scherm afbeelding ziet u de beheer opties voor een virtuele machine.
+
+   ![Bron verwijderen](./media/resource-group-delete/delete-resource.png)
+
+1. Bevestig de verwijdering als u daarom wordt gevraagd.
+
+---
+
+## <a name="how-order-of-deletion-is-determined"></a>Hoe volg orde van verwijderen wordt bepaald
 
 Wanneer u een resourcegroep verwijdert, Resource Manager de bepaalt de volgorde om resources te verwijderen. Hierbij de volgende volgorde:
 
@@ -27,8 +89,6 @@ Wanneer u een resourcegroep verwijdert, Resource Manager de bepaalt de volgorde 
 2. Resources die andere resources beheren, worden vervolgens verwijderd. Een resource kan hebben de `managedBy` eigenschap is ingesteld om aan te geven dat een andere resource deze beheert. Als deze eigenschap is ingesteld, worden de resource die wordt beheerd van de andere resource wordt verwijderd voordat de andere resources.
 
 3. De resterende resources zijn verwijderd na de vorige twee categorieën.
-
-## <a name="resource-deletion"></a>Verwijderen van resource
 
 Nadat de volgorde is bepaald, problemen met Resource Manager een verwijderbewerking voor elke resource. Wacht voor eventuele afhankelijkheden om te voltooien voordat u doorgaat.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 4a37345cf33cbb02a6bd9a70b0253a55ee4c9478
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035589"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69989924"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Grote berichten verwerken met Chunking in Azure Logic Apps
 
@@ -128,7 +128,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
    | Veld koptekst eindpunt reactie | type | Vereist | Description |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nee | De voorgestelde segment grootte in bytes |
-   | **Location** | Tekenreeks | Nee | De URL-locatie waarnaar de HTTP-PATCH berichten moeten worden verzonden |
+   | **Location** | Tekenreeks | Ja | De URL-locatie waarnaar de HTTP-PATCH berichten moeten worden verzonden |
    ||||
 
 3. In uw logische app worden opvolge HTTP-PATCH berichten gemaakt en verzonden, met de volgende gegevens:
@@ -148,7 +148,7 @@ In deze stappen wordt het gedetailleerde proces beschreven Logic Apps gebruikt v
 
    | Veld koptekst eindpunt reactie | type | Vereist | Description |
    |--------------------------------|------|----------|-------------|
-   | **Bereik** | Tekenreeks | Ja | Het bereik van de bytes voor inhoud die door het eind punt is ontvangen, bijvoorbeeld: "bytes = 0-1023" |   
+   | **Range** | Tekenreeks | Ja | Het bereik van de bytes voor inhoud die door het eind punt is ontvangen, bijvoorbeeld: "bytes = 0-1023" |   
    | **x-ms-chunk-size** | Integer | Nee | De voorgestelde segment grootte in bytes |
    ||||
 

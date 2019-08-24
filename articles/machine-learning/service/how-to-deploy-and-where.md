@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897695"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997942"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Implementeer modellen met de Azure Machine Learning-service
 
@@ -416,7 +416,20 @@ def run(request):
 
 De configuratie voor afnemen beschrijft hoe u het model configureert om voor spellingen te maken. Deze configuratie maakt geen deel uit van het script voor de invoer. het verwijst naar uw invoer script en wordt gebruikt voor het zoeken van alle resources die vereist zijn voor de implementatie. Dit wordt later gebruikt bij het implementeren van het model.
 
-In het volgende voor beeld ziet u hoe u een configuratie voor het afwijzen van een interferentie maakt. Deze configuratie specificeert de runtime, het vermeldings script en (optioneel) het Conda-omgevings bestand:
+De configuratie voor het afwijzen van een Dede ring kan gebruikmaken van Azure Machine Learning omgevingen om de vereiste software afhankelijkheden voor uw implementatie te definiëren. Met omgevingen kunt u de software-afhankelijkheden maken, beheren en opnieuw gebruiken die zijn vereist voor training en implementatie. In het volgende voor beeld ziet u hoe u een omgeving laadt vanuit uw werk ruimte en deze vervolgens gebruikt met de configuratie voor inschakeling:
+
+```python
+from azureml.core import Environment
+from azureml.core.model import InferenceConfig
+
+deploy_env = Environment.get(workspace=ws,name="myenv",version="1")
+inference_config = InferenceConfig(entry_script="x/y/score.py",
+                                   environment=deploy_env)
+```
+
+Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over omgevingen.
+
+U kunt ook rechtstreeks de afhankelijkheden opgeven zonder een omgeving te gebruiken. In het volgende voor beeld ziet u hoe u een configuratie voor het afwijzen van een interferentie maakt waarmee software-afhankelijkheden worden geladen vanuit een Conda-bestand:
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -468,10 +481,40 @@ Elk van deze klassen voor lokale, ACI-en AKS-webservices kan worden `azureml.cor
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-> [!TIP]
-> Voordat u uw model als een service implementeert, kunt u het beste een profiel gebruiken om de optimale CPU-en geheugen vereisten te bepalen. U kunt uw model profileren met behulp van de SDK of CLI. Voor meer informatie raadpleegt u de verwijzing [Profiel ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) en [AZ ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) .
->
-> Model profilerings resultaten worden verzonden als een `Run` object. Zie voor meer informatie de [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) -klasse verwijzing.
+#### <a name="profiling"></a>Profileren
+
+Voordat u uw model als een service implementeert, kunt u het beste een profiel gebruiken om de optimale CPU-en geheugen vereisten te bepalen. U kunt uw model profileren met behulp van de SDK of CLI. In de volgende voor beelden ziet u hoe u profileren kunt gebruiken vanuit de SDK:
+
+> [!IMPORTANT]
+> Bij het gebruik van profileren, kan de configuratie van de deinterferentie die u opgeeft niet verwijzen naar een Azure Machine Learning omgeving. Definieer in plaats daarvan de software afhankelijkheden `conda_file` met behulp `InferenceConfig` van de para meter van het object.
+
+```python
+import json
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10]
+]})
+
+profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
+profile.wait_for_profiling(true)
+profiling_results = profile.get_results()
+print(profiling_results)
+```
+
+Met deze code wordt een resultaat weer gegeven dat vergelijkbaar is met de volgende tekst:
+
+```python
+{'cpu': 1.0, 'memoryInGB': 0.5}
+```
+
+Model profilerings resultaten worden verzonden als een `Run` object.
+
+Zie [AZ ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile)(Engelstalig) voor meer informatie over het gebruik van profile ring van de cli.
+
+Zie de volgende naslag documenten voor meer informatie:
+
+* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
+* [Profiel ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--model~s--inference-config--input-data-)
+* [Schema voor de configuratie van het Afleidings bestand](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Implementeren naar doel
 
@@ -742,7 +785,136 @@ Voor meer voorbeeld projecten en voor beelden raadpleegt u de volgende voorbeeld
 * [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="package-models"></a>Pakket modellen
+
+In sommige gevallen wilt u mogelijk een docker-installatie kopie maken zonder het model te implementeren. Bijvoorbeeld wanneer u van plan bent [om te implementeren in azure app service](how-to-deploy-app-service.md). Of u wilt de installatie kopie downloaden en uitvoeren op een lokale docker-installatie. Mogelijk wilt u de bestanden die worden gebruikt om de installatie kopie te maken, ook downloaden, bekijken, wijzigen en hand matig bouwen.
+
+Met model pakketten kunt u beide doen. Alle assets die nodig zijn om een model als een webservice te hosten, worden verpakt en u kunt een volledig gebouwde docker-installatie kopie of de bestanden die nodig zijn om er een te maken. Er zijn twee manieren om model pakketten te gebruiken:
+
+* __Pakket model downloaden__: U downloadt een docker-installatie kopie die het model en andere bestanden bevat die nodig zijn om het als een webservice te hosten.
+* __Dockerfile genereren__: U downloadt het dockerfile, model, het invoer script en andere assets die nodig zijn om een docker-installatie kopie te bouwen. U kunt de bestanden vervolgens controleren of wijzigingen aanbrengen voordat u de installatie kopie lokaal bouwt.
+
+Beide pakketten kunnen worden gebruikt voor het ophalen van een lokale docker-installatie kopie. 
+
+> [!TIP]
+> Het maken van een pakket is vergelijkbaar met het implementeren van een model, omdat het een geregistreerd model en een Afleidings configuratie gebruikt.
+
+> [!IMPORTANT]
+> De functionaliteit, zoals het downloaden van een volledig samengestelde installatie kopie of het maken van [](https://www.docker.com) een installatie kopie, vereist een werkende docker-installatie in uw ontwikkel omgeving.
+
+### <a name="download-a-packaged-model"></a>Een verpakt model downloaden
+
+In het volgende voor beeld ziet u hoe u een installatie kopie bouwt die is geregistreerd in de Azure Container Registry voor uw werk ruimte:
+
+```python
+package = Model.package(ws, [model], inference_config)
+package.wait_for_creation(show_output=True)
+```
+
+Nadat u een pakket hebt gemaakt, kunt `package.pull()` u gebruiken om de installatie kopie naar uw lokale docker-omgeving te halen. Met de uitvoer van deze opdracht wordt de naam van de afbeelding weer gegeven. Bijvoorbeeld `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. Na het downloaden gebruikt u `docker images` de opdracht om de lokale installatie kopieën weer te geven:
+
+```text
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+```
+
+Als u een lokale container wilt starten met behulp van deze installatie kopie, gebruikt u de volgende opdracht om een benoemde container te starten vanuit de shell of de opdracht regel. Vervang de `<imageid>` waarde door de afbeeldings-id die `docker images` wordt geretourneerd door de opdracht:
+
+```bash
+docker run -p 6789:5001 --name mycontainer <imageid>
+```
+
+Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarnaar de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor het eenvoudiger wordt om te stoppen. Zodra het is gestart, kunt u aanvragen `http://localhost:6789/score`verzenden naar.
+
+### <a name="generate-dockerfile-and-dependencies"></a>Dockerfile en afhankelijkheden genereren
+
+In het volgende voor beeld ziet u hoe u het dockerfile, model en andere assets downloadt die nodig zijn om de installatie kopie lokaal te bouwen. De `generate_dockerfile=True` para meter geeft aan dat de bestanden, niet een volledig gebouwde installatie kopie, moeten worden gemaakt:
+
+```python
+package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
+package.wait_for_creation(show_output=True)
+# Download the package
+package.save("./imagefiles")
+# Get the Azure Container Registry that the model/dockerfile uses
+acr=package.get_container_registry()
+print("Address:", acr.address)
+print("Username:", acr.username)
+print("Password:", acr.password)
+```
+
+Met deze code worden de bestanden gedownload die nodig zijn om de `imagefiles` installatie kopie te bouwen in de Directory. De dockerfile die zijn opgenomen in de opslag bestanden verwijzen naar een basis installatie kopie die is opgeslagen in een Azure Container Registry. Wanneer u de installatie kopie op uw lokale docker-installatie bouwt, moet u het adres, de gebruikers naam en het wacht woord voor verificatie bij dit REGI ster gebruiken. Gebruik de volgende stappen om de installatie kopie te bouwen met een lokale docker-installatie:
+
+1. Gebruik vanuit een shell of opdracht regel sessie de volgende opdracht om docker te verifiëren met de Azure Container Registry. Vervang `<address>`, `<username>`, `package.get_container_registry()`en `<password>` door de waarden die zijn opgehaald met:
+
+    ```bash
+    docker login <address> -u <username> -p <password>
+    ```
+
+2. Gebruik de volgende opdracht om de installatie kopie te maken. Vervang `<imagefiles>` door het pad naar de map waarin `package.save()` de bestanden zijn opgeslagen:
+
+    ```bash
+    docker build --tag myimage <imagefiles>
+    ```
+
+    Met deze opdracht wordt de naam van `myimage`de installatie kopie ingesteld op.
+
+Gebruik de `docker images` opdracht om te controleren of de installatie kopie is gemaakt. U ziet de `myimage` afbeelding in de lijst:
+
+```text
+REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
+myimage         latest              739f22498d64        3 minutes ago       1.43GB
+```
+
+Als u een nieuwe container wilt starten op basis van deze installatie kopie, gebruikt u de volgende opdracht:
+
+```bash
+docker run -p 6789:5001 --name mycontainer myimage:latest
+```
+
+Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarnaar de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor het eenvoudiger wordt om te stoppen. Zodra het is gestart, kunt u aanvragen `http://localhost:6789/score`verzenden naar.
+
+### <a name="example-client-to-test-the-local-container"></a>Voor beeld-client om de lokale container te testen
+
+De volgende code is een voor beeld van een python-client die met de container kan worden gebruikt:
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = 'http://localhost:6789/score'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [ 1,2,3,4,5,6,7,8,9,10 ],
+            [ 10,9,8,7,6,5,4,3,2,1 ]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+Zie [modellen gebruiken die zijn geïmplementeerd als](how-to-consume-web-service.md)webservices voor meer voor beelden van clients in andere programmeer talen.
+
+### <a name="stop-the-docker-container"></a>De docker-container stoppen
+
+Als u de container wilt stoppen, gebruikt u de volgende opdracht uit een andere shell of opdracht regel:
+
+```bash
+docker kill mycontainer
+```
+
 ## <a name="clean-up-resources"></a>Resources opschonen
+
 Als u wilt verwijderen van een geïmplementeerde webservice, gebruikt u `service.delete()`.
 Als u wilt een geregistreerde model verwijderen, gebruikt u `model.delete()`.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: cb82d47be11570baf7865468c804162a20a7685f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 59574f0a07f4ecc145f2b0efd430e65cbdebcc65
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855468"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991562"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Gegevens in Azure Data Lake Storage Gen2 analyseren met behulp van Power BI
 
@@ -39,7 +39,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
     ![Pagina gegevens ophalen](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. In het dialoog venster **Azure data Lake Storage Gen2** kunt u de URL naar uw Azure data Lake Storage Gen2-account, bestands systeem of submap opgeven met de indeling van het bestandssysteem eindpunt. Url's voor data Lake Storage Gen2 hebben het volgende patroon `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` en klik vervolgens op **OK**.
+4. In het dialoog venster **Azure data Lake Storage Gen2** kunt u de URL naar uw Azure data Lake Storage Gen2 account, bestands systeem of submap, met de indeling van het container eindpunt opgeven. Url's voor data Lake Storage Gen2 hebben het volgende patroon `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` en klik vervolgens op **OK**.
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 

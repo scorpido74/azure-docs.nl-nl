@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0ad01d76e93c731ed5faed268a0537cada787952
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321676"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996816"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast domein van Azure CDN configureren
 
@@ -130,7 +130,7 @@ Geef Azure CDN toegang tot de certificaten (geheimen) in uw Azure Key Vault-acco
 
     ![Instellingen voor toegangsbeleid](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. Selecteer in **Geheime machtigingen** de optie **Ophalen** om CDN deze machtigingen te laten uitvoeren om certificaten op te halen en in een lijst op te nemen. 
+3. Selecteer **geheime machtigingen ophalen** en vervolgens **certificaat machtigingen** ophalen en weer geven zodat CDN deze machtigingen kan uitvoeren om de certificaten op te halen en weer te geven. 
 
 4. Selecteer **OK**. 
 
@@ -174,7 +174,7 @@ Als u uw eigen certificaat gebruikt, is domeinvalidatie niet nodig.
 
 Uw CNAME-record moet de volgende indeling hebben, waarbij *Naam* de naam van het aangepaste domein is, en *Waarde* de hostnaam van het CDN-eindpunt:
 
-| Naam            | Type  | Waarde                 |
+| Naam            | Type  | Value                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

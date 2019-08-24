@@ -1,5 +1,5 @@
 ---
-title: Overzicht van tokens - Azure Active Directory B2C | Microsoft Docs
+title: Overzicht van tokens-Azure Active Directory B2C
 description: Meer informatie over de tokens die worden gebruikt in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,109 +7,109 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/23/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b0a5eca4823bd6ec7d1197adb205f7fb98f8d67e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c347a5740a13d071d4bb06daf43463f974198e5d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509084"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980803"
 ---
-# <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van de tokens in Azure Active Directory B2C
+# <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD) B2C verzendt verschillende typen beveiligingstokens tijdens de verwerking van elk [verificatiestroom](active-directory-b2c-apps.md). Dit document beschrijft de indeling, de beveiligingskenmerken en de inhoud van elk type token.
+Azure Active Directory B2C (Azure AD) B2C, worden verschillende typen beveiligings tokens meegegeven wanneer elke [verificatie stroom](active-directory-b2c-apps.md)wordt verwerkt. In dit document worden de indeling, de beveiligings kenmerken en de inhoud van elk type token beschreven.
 
-## <a name="token-types"></a>Typen van token
+## <a name="token-types"></a>Token typen
 
-Azure AD B2C ondersteunt de [OAuth 2.0 en OpenID Connect-protocollen](active-directory-b2c-reference-protocols.md), welke maakt gebruik van tokens voor verificatie en beveiligde toegang tot bronnen. Alle tokens die worden gebruikt in Azure AD B2C zijn [JSON webtokens (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) die asserties van informatie over het bearer- en het onderwerp van het token bevatten.
+Azure AD B2C ondersteunt de [OAuth 2,0-en OpenID Connect Connect-protocollen](active-directory-b2c-reference-protocols.md), die gebruikmaken van tokens voor verificatie en beveiligde toegang tot bronnen. Alle tokens die in Azure AD B2C worden gebruikt, zijn JSON-webtokens [(JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) die bevestigingen van informatie over de Bearer en het onderwerp van het token bevatten.
 
-De volgende tokens worden gebruikt in de communicatie met Azure AD B2C:
+De volgende tokens worden gebruikt in communicatie met Azure AD B2C:
 
-- *ID-token* -een JWT met claims die u gebruiken kunt om gebruikers in uw toepassing te identificeren. Dit token wordt veilig in HTTP-aanvragen voor de communicatie tussen de twee onderdelen van de dezelfde toepassing of service verzonden. U kunt de claims in een ID-token dat wens naar. Ze worden vaak gebruikt om gegevens weer te geven of beslissingen over toegangsbeheer in een toepassing. ID-tokens zijn ondertekend, maar ze zijn niet versleuteld. Wanneer uw toepassing of de API ontvangt een ID-token, moet de handtekening om te bewijzen dat het token authentiek is worden gevalideerd. Uw toepassing of de API moet ook valideren voor een aantal claims in het token om te bewijzen dat deze geldig is. De claims die zijn gevalideerd door een toepassing kunnen variëren, afhankelijk van de scenariovereisten, maar uw toepassing moet enkele algemene claim validaties in elk scenario uitvoeren.
-- *Toegangstoken* -een JWT met claims die u gebruiken kunt voor het identificeren van de toegekende machtigingen aan uw API's. Toegangstokens zijn ondertekend, maar ze worden niet versleuteld. Toegangstokens worden gebruikt voor toegang tot API's en resource-servers.  Wanneer uw API een toegangstoken ontvangt, moet de handtekening om te bewijzen dat het token authentiek is worden gevalideerd. Uw API moet ook een aantal claims in het token om te bewijzen dat deze geldig is gevalideerd. De claims die zijn gevalideerd door een toepassing kunnen variëren, afhankelijk van de scenariovereisten, maar uw toepassing moet enkele algemene claim validaties in elk scenario uitvoeren.
-- *Token vernieuwen* -vernieuwingstokens worden gebruikt voor het verkrijgen van de nieuwe ID-tokens en tokens in een stroom voor OAuth 2.0 openen. Ze opgeven uw toepassing op de lange termijn toegang tot resources namens gebruikers zonder interactie met die gebruikers. Vernieuwen van tokens zijn niet transparant voor uw toepassing. Ze kunnen zijn uitgegeven door Azure AD B2C en worden gecontroleerd en geïnterpreteerd alleen door Azure AD B2C. Ze zijn lange levensduur hebben, maar uw toepassing mag niet worden geschreven met de verwachting dat een vernieuwingstoken voor een bepaalde periode duurt. Vernieuwingstokens kunnen op elk moment voor een aantal redenen zijn ongeldig. De enige manier om uw toepassing om te weten of een vernieuwingstoken geldig is, is om te je deze door een aanvraag voor een toegangstoken aan Azure AD B2C. Wanneer u een vernieuwingstoken voor een nieuw token inwisselen, ontvangt u een nieuwe vernieuwingstoken in het token antwoord. Sla de nieuwe vernieuwingstoken. Het vernieuwingstoken dat u eerder hebt gebruikt in de aanvraag wordt vervangen. Deze actie kunt garanderen dat uw vernieuwingstokens geldig voor zo lang mogelijk blijven. 
+- *Id-token* : een JWT die claims bevat die u kunt gebruiken om gebruikers in uw toepassing te identificeren. Dit token wordt veilig verzonden in HTTP-aanvragen voor communicatie tussen twee onderdelen van dezelfde toepassing of service. U kunt de claims in een ID-token gebruiken zoals u dat wilt. Ze worden vaak gebruikt voor het weer geven van account gegevens of het maken van beslissingen voor toegangs beheer in een toepassing. ID-tokens zijn ondertekend, maar niet versleuteld. Wanneer uw toepassing of API een ID-token ontvangt, moet de hand tekening worden gevalideerd om aan te tonen dat het token authentiek is. Uw toepassing of API moet ook een aantal claims in het token valideren om er zeker van te zijn dat deze geldig is. Afhankelijk van de scenario vereisten kunnen de claims die door een toepassing worden gevalideerd, verschillen, maar moet uw toepassing enkele algemene claim validaties uitvoeren in elk scenario.
+- *Toegangs token* : een JWT die claims bevat die u kunt gebruiken om de verleende machtigingen voor uw api's te identificeren. Toegangs tokens zijn ondertekend, maar ze zijn niet versleuteld. Toegangs tokens worden gebruikt om toegang te bieden tot Api's en resource servers.  Wanneer uw API een toegangs token ontvangt, moet deze de hand tekening valideren om te bewijzen dat het token authentiek is. Uw API moet ook een aantal claims in het token valideren om er zeker van te zijn dat deze geldig is. Afhankelijk van de scenario vereisten kunnen de claims die door een toepassing worden gevalideerd, verschillen, maar moet uw toepassing enkele algemene claim validaties uitvoeren in elk scenario.
+- Vernieuwings tokens *vernieuwen* tokens worden gebruikt om nieuwe id-tokens en toegangs tokens in een OAuth 2,0-stroom te verkrijgen. Ze bieden uw toepassing lange termijn toegang tot resources namens gebruikers zonder dat hiervoor interactie met deze gebruikers nodig is. Vernieuwings tokens zijn dekkend voor uw toepassing. Ze worden uitgegeven door Azure AD B2C en kunnen alleen worden geïnspecteerd en geïnterpreteerd door Azure AD B2C. Ze zijn lange tijd, maar uw toepassing mag niet worden geschreven met de verwachting dat een vernieuwings token voor een bepaalde periode wordt verlengd. Vernieuwings tokens kunnen om verschillende redenen ongeldig worden gemaakt. De enige manier om ervoor te zorgen dat uw toepassing weet of een vernieuwings token geldig is, is door een token aanvraag in te Azure AD B2C. Wanneer u een vernieuwings token inwisselt voor een nieuw token, ontvangt u een nieuw vernieuwings token in het token antwoord. Sla het nieuwe vernieuwings token op. Het vervangt het vernieuwings token dat u eerder in de aanvraag hebt gebruikt. Met deze actie kan worden gegarandeerd dat de vernieuwings tokens zo lang mogelijk geldig blijven.
 
 ## <a name="endpoints"></a>Eindpunten
 
-Een [toepassing geregistreerd](tutorial-register-applications.md) tokens ontvangt en communiceert met Azure AD B2C door het verzenden van aanvragen naar deze eindpunten:
+Een [geregistreerde toepassing](tutorial-register-applications.md) ontvangt tokens en communiceert met Azure AD B2C door aanvragen naar deze eind punten te verzenden:
 
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-Beveiligingstokens die uw toepassing van Azure AD B2C ontvangt kunnen afkomstig zijn uit de `/authorize` of `/token` eindpunten. Wanneer ID-tokens worden verkregen via de `/authorize` eindpunt, ze worden gedaan met behulp van de [impliciete stroom](active-directory-b2c-reference-spa.md), die vaak wordt gebruikt voor gebruikers die zich in op basis van de javascript web-apps. Wanneer ID-tokens worden verkregen via de `/token` eindpunt, ze worden gedaan met behulp van de [vertrouwelijke codestroom](active-directory-b2c-reference-oidc.md), die het token dat is verborgen in de browser houdt.
+Beveiligings tokens die uw toepassing ontvangt van Azure AD B2C kunnen afkomstig zijn van `/authorize` de `/token` -of-eind punten. Wanneer id-tokens worden verkregen van `/authorize` het eind punt, worden ze uitgevoerd met behulp van de [impliciete stroom](active-directory-b2c-reference-spa.md). dit wordt vaak gebruikt voor gebruikers die zich aanmelden bij webtoepassingen op basis van Java script. Wanneer id-tokens worden verkregen van `/token` het eind punt, worden ze uitgevoerd met behulp van de [code stroom vertrouwelijk](active-directory-b2c-reference-oidc.md), waardoor het token in de browser verborgen blijft.
 
 ## <a name="claims"></a>Claims
 
-Wanneer u Azure AD B2C gebruikt, hebt u heel nauwkeurig bepalen de inhoud van uw tokens. U kunt configureren [gebruikersstromen](active-directory-b2c-reference-policies.md) en [aangepast beleid](active-directory-b2c-overview-custom.md) voor het verzenden van bepaalde verzamelingen van gebruikersgegevens in de claims die vereist voor uw toepassing zijn. Deze claims kunnen bevatten standaardeigenschappen als **displayName** en **emailAddress**. Uw toepassingen kunnen deze claims gebruiken om veilige verificatie van gebruikers en aanvragen. 
+Wanneer u Azure AD B2C gebruikt, hebt u nauw keurige controle over de inhoud van uw tokens. U kunt [gebruikers stromen](active-directory-b2c-reference-policies.md) en [aangepaste beleids regels](active-directory-b2c-overview-custom.md) configureren voor het verzenden van bepaalde sets gebruikers gegevens in claims die vereist zijn voor uw toepassing. Deze claims kunnen standaard eigenschappen zoals **DisplayName** en **emailAddress**bevatten. Uw toepassingen kunnen deze claims gebruiken om gebruikers en aanvragen veilig te verifiëren.
 
-De claims in het ID-tokens worden niet geretourneerd in een bepaalde volgorde. Nieuwe claims kunnen worden ingevoerd in het ID-tokens op elk gewenst moment. Uw toepassing mag niet worden verbroken wanneer nieuwe claims binnenkomen. U kunt ook opnemen [aangepaste gebruikerskenmerken](active-directory-b2c-reference-custom-attr.md) in de claims.
+De claims in ID-tokens worden niet in een bepaalde volg orde geretourneerd. Nieuwe claims kunnen op elk gewenst moment worden geïntroduceerd in ID-tokens. Uw toepassing mag niet worden onderbroken als nieuwe claims worden geïntroduceerd. U kunt ook [aangepaste gebruikers kenmerken](active-directory-b2c-reference-custom-attr.md) in uw claims toevoegen.
 
-De volgende tabel bevat de claims die u kunt verwachten in de ID-tokens en tokens die zijn uitgegeven door Azure AD B2C toegang.
+De volgende tabel geeft een lijst van de claims die u kunt verwachten in ID-tokens en toegangs tokens die zijn uitgegeven door Azure AD B2C.
 
 | Name | Claim | Voorbeeldwaarde | Description |
 | ---- | ----- | ------------- | ----------- |
-| Doelgroep | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Hiermee geeft u de beoogde ontvanger van het token. Voor Azure AD B2C is de doelgroep de toepassings-ID. Uw toepassing moet deze waarde te valideren en het token te negeren als deze niet overeenkomt met. Doelgroep is gelijk aan de resource. |
-| Verlener | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identificeert de beveiligingstokenservice (STS) die wordt gemaakt en het token retourneert. Het identificeert ook de map waarin de gebruiker is geverifieerd. Uw toepassing moet de claim van verlener om ervoor te zorgen dat het token afkomstig van het juiste eindpunt is valideren. |
-| Uitgegeven op | `iat` | `1438535543` | De tijd waarop het token is uitgegeven, weergegeven in epoche-tijd. |
-| Verlooptijd | `exp` | `1438539443` | De tijd waarop het token ongeldig is, wordt weergegeven in epoche-tijd. Deze claim moet in uw toepassing gebruiken om te controleren of de geldigheid van de levensduur van tokens. |
-| Niet voor | `nbf` | `1438535543` | De tijd waarop het token geldig is, wordt weergegeven in epoche-tijd. Deze tijd is meestal hetzelfde als de tijd die het token is uitgegeven. Deze claim moet in uw toepassing gebruiken om te controleren of de geldigheid van de levensduur van tokens. |
-| Version | `ver` | `1.0` | De versie van de ID-token, zoals gedefinieerd door Azure AD B2C. |
-| Code-hash | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een code-hash is opgenomen in een ID-token dat alleen wanneer het token is uitgegeven, samen met een OAuth 2.0-autorisatiecode. Een code-hash kan worden gebruikt om te valideren de echtheid van een autorisatiecode. Zie voor meer informatie over het uitvoeren van deze validatie de [OpenID Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html).  |
-| Access token-hash | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een access token-hash opgenomen in een ID-token dat alleen wanneer het token is uitgegeven, samen met een OAuth 2.0-toegangstoken. Een access token-hash kan worden gebruikt om te valideren de echtheid van een toegangstoken. Zie voor meer informatie over het uitvoeren van deze validatie de [OpenID Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html)  |
-| nonce | `nonce` | `12345` | Een nonce is een strategie gebruikt voor het beperken van token opnieuw afspelen aanvallen. Uw toepassing een nonce kunt opgeven in een autorisatieaanvraag met behulp van de `nonce` queryparameter. De waarde die u in de aanvraag opgeeft is verzonden niet gewijzigd de `nonce` claimen van een ID-token dat alleen. Deze claim kan uw toepassing om te controleren of de waarde op basis van de waarde die is opgegeven in de aanvraag. Uw toepassing moeten deze validatie tijdens de validatie van tokens proces-ID worden uitgevoerd. |
-| Subject | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | De principal waarover het token worden bevestigd met gegevens, zoals de gebruiker van een toepassing. Deze waarde is onveranderbaar en kan niet worden toegewezen of opnieuw gebruikt. Het kan worden gebruikt voor autorisatie controles veilig uitvoeren, zoals wanneer het token wordt gebruikt voor toegang tot een resource. Standaard wordt de claim onderwerp gevuld met de object-ID van de gebruiker in de map. |
-| Authentication context class reference | `acr` | Niet van toepassing | Alleen gebruikt met oudere beleid. |
-| Framework vertrouwensbeleid | `tfp` | `b2c_1_signupsignin1` | De naam van het beleid dat is gebruikt om de ID-token te verkrijgen. |
-| Verificatie-tijd | `auth_time` | `1438535543` | De tijd die een gebruiker laatste referenties ingevoerd weergegeven in epoche-tijd. |
-| Scope | `scp` | `Read`| De machtigingen verleend aan de resource voor een toegangstoken. Meerdere toegekende machtigingen worden gescheiden door een spatie. |
-| Geautoriseerde partij | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | De **toepassings-ID** van de clienttoepassing die de aanvraag wordt gestart. |
+| Doelgroep | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identificeert de beoogde ontvanger van het token. Voor Azure AD B2C is de doel groep de toepassings-ID. Uw toepassing moet deze waarde valideren en het token afwijzen als het niet overeenkomt. De doel groep is synoniemen met resources. |
+| Certificaatverlener | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identificeert de Security Token Service (STS) die het token bouwt en retourneert. Ook wordt de map geïdentificeerd waarin de gebruiker is geverifieerd. Uw toepassing moet de Issuer claim valideren om er zeker van te zijn dat het token afkomstig is van het juiste eind punt. |
+| Verleend op | `iat` | `1438535543` | Het tijdstip waarop het token is uitgegeven, uitgedrukt in de epoche-tijd. |
+| Vervaltijd | `exp` | `1438539443` | Het tijdstip waarop het token ongeldig wordt, uitgedrukt in de epoche-tijd. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. |
+| Niet voor | `nbf` | `1438535543` | Het tijdstip waarop het token geldig wordt, uitgedrukt in de epoche-tijd. Deze tijd is doorgaans hetzelfde als het tijdstip waarop het token is uitgegeven. Uw toepassing moet deze claim gebruiken om de geldigheid van de levens duur van het token te controleren. |
+| Version | `ver` | `1.0` | De versie van het ID-token, zoals gedefinieerd door Azure AD B2C. |
+| Code-hash | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een code-hash die is opgenomen in een ID-token wanneer het token wordt uitgegeven met een OAuth 2,0-autorisatie code. Een code-hash kan worden gebruikt om de authenticiteit van een autorisatie code te valideren. Zie de [OpenID Connect Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html)voor meer informatie over het uitvoeren van deze validatie.  |
+| Toegangs token-hash | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Een toegangs token-hash opgenomen in een ID-token wanneer het token wordt uitgegeven met een OAuth 2,0-toegangs token. Een toegangs token-hash kan worden gebruikt om de authenticiteit van een toegangs token te valideren. Zie de [OpenID Connect Connect-specificatie](https://openid.net/specs/openid-connect-core-1_0.html) voor meer informatie over het uitvoeren van deze validatie.  |
+| Nonce | `nonce` | `12345` | Een nonce is een strategie die wordt gebruikt om token replay-aanvallen te verhelpen. Uw toepassing kan een nonce in een autorisatie aanvraag opgeven met behulp `nonce` van de query parameter. De waarde die u in de aanvraag opgeeft, wordt niet gewijzigd in de `nonce` claim van een id-token. Met deze claim kan uw toepassing de waarde verifiëren op basis van de waarde die is opgegeven voor de aanvraag. Uw toepassing moet deze validatie uitvoeren tijdens het validatie proces van het ID-token. |
+| Subject | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | De principal over welke het token informatie bedient, zoals de gebruiker van een toepassing. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt voor toegang tot een bron. Standaard wordt de subject claim gevuld met de object-ID van de gebruiker in de Directory. |
+| Naslag informatie over verificatie context klassen | `acr` | Niet van toepassing | Wordt alleen gebruikt met oudere beleids regels. |
+| Vertrouwens raamwerk beleid | `tfp` | `b2c_1_signupsignin1` | De naam van het beleid dat is gebruikt om het ID-token op te halen. |
+| Verificatie tijd | `auth_time` | `1438535543` | Het tijdstip waarop de laatste ingevoerde referenties door een gebruiker worden weer gegeven in de epoche-tijd. Er is geen discriminatie tussen deze verificatie een nieuwe aanmelding, een eenmalige aanmelding (SSO)-sessie of een ander aanmeldings type. De `auth_time` is de laatste keer dat de toepassing (of gebruiker) een verificatie poging heeft gestart op basis van Azure AD B2C. De methode die wordt gebruikt om te verifiëren, is niet gedifferentieerd. |
+| Scope | `scp` | `Read`| De machtigingen die zijn verleend aan de resource voor een toegangs token. Meerdere verleende machtigingen worden gescheiden door een spatie. |
+| Gemachtigde partij | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | De **toepassings-id** van de client toepassing die de aanvraag heeft gestart. |
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende eigenschappen worden gebruikt om [beheren van de levensduur van beveiligingstokens](configure-tokens.md) gegenereerd door Azure AD B2C:
+De volgende eigenschappen worden gebruikt voor het [beheren van de levens duur van beveiligings tokens](configure-tokens.md) die worden gegenereerd door Azure AD B2C:
 
-- **Toegang en ID-token levensduur (minuten)** - de levensduur van het OAuth 2.0-bearer-token gebruikt voor toegang tot een beveiligde resource. De standaardwaarde is 60 minuten. De (inclusieve) minimumwaarde is 5 minuten. Het maximum (inclusief) is 1440 minuten.
+- **Toegangs & ID-token levensduur (minuten)** : de levens duur van het OAuth 2,0 Bearer-token dat wordt gebruikt om toegang te krijgen tot een beveiligde bron. De standaard waarde is 60 minuten. Het minimale (inclusief) is 5 minuten. Het maximum (inclusief) is 1440 minuten.
 
-- **Levensduur van vernieuwingstoken (dagen)** : de maximale periode waarbinnen een vernieuwingstoken kan worden gebruikt om een nieuwe toegang of de ID-token verkrijgen. De periode geldt ook voor een nieuwe vernieuwingstoken ophalen als uw toepassing is verleend de `offline_access` bereik. De standaardwaarde is 14 dagen. De minimale (inclusief) is één dag. Het maximum (inclusief) is 90 dagen.
+- **Levens duur van het vernieuwings token (dagen)** : de maximale tijds duur waarna een vernieuwings token kan worden gebruikt om een nieuw toegangs-of id-token te verkrijgen. De tijds periode heeft ook betrekking op het ophalen van een nieuw vernieuwings token als uw `offline_access` toepassing het bereik heeft gekregen. De standaard waarde is 14 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 90 dagen.
 
-- **Levensduur van sliding window token vernieuwen (dagen)** - na deze tijd is verstreken periode de gebruiker wordt gedwongen om te verifiëren, ongeacht de geldigheidsperiode van de meest recente vernieuwingstoken verkregen door de toepassing. Kan alleen worden opgegeven als de switch is ingesteld op **gebonden**. Het moet groter zijn dan of gelijk zijn aan de **levensduur van vernieuwingstoken (dagen)** waarde. Als de switch is ingesteld op **Unbounded**, u niet een bepaalde waarde opgeven. De standaardwaarde is 90 dagen. De minimale (inclusief) is één dag. Het maximum (inclusief) is 365 dagen.
+- **Vernieuwings token sliding window levens duur (dagen)** : na deze periode is verstreken dat de gebruiker opnieuw moet worden geverifieerd, ongeacht de geldigheids periode van het meest recente vernieuwings token dat is verkregen door de toepassing. Deze kan alleen worden opgegeven als de schakel optie is ingesteld op **beperkt**. Deze moet groter dan of gelijk zijn aan de waarde voor de levens duur van het vernieuwings **token (dagen)** . Als de schakel optie is ingesteld op niet- **gebonden**, kunt u geen specifieke waarde opgeven. De standaard waarde is 90 dagen. Het minimale (inclusief) is één dag. Het maximum (inclusief) is 365 dagen.
 
-De volgende gevallen gebruik worden ingeschakeld met behulp van deze eigenschappen:
+De volgende use cases zijn ingeschakeld met behulp van deze eigenschappen:
 
-- Toestaan dat een gebruiker aangemeld bij een mobiele toepassing blijven voor onbepaalde tijd, zolang de gebruiker op de toepassing voortdurend actief is. U kunt instellen **Refresh token levensduur van sliding window (dagen)** naar **Unbounded** in uw gebruikersstroom aanmelden.
-- Voldoen aan uw toonaangevende beveiligings- en nalevingsvereisten door in te stellen van de levensduur van de juiste toegang-tokens.
+- Een gebruiker in staat stellen om voor onbepaalde tijd aangemeld te blijven bij een mobiele toepassing, zolang de gebruiker voortdurend actief is op de toepassing. U kunt het **vernieuwings token sliding window levens duur (dagen)** instellen op **niet-gebonden** in de stroom van uw aanmeldings gebruiker.
+- Voldoen aan de beveiligings-en nalevings vereisten van uw branche door de juiste levens duur van het toegangs token in te stellen.
 
-Deze instellingen zijn niet beschikbaar voor wachtwoord opnieuw instellen van gebruikersstromen. 
+Deze instellingen zijn niet beschikbaar voor gebruikers stromen voor wacht woord opnieuw instellen.
 
 ## <a name="compatibility"></a>Compatibiliteit
 
-De volgende eigenschappen worden gebruikt om [tokencompatibiliteit beheren](configure-tokens.md):
+De volgende eigenschappen worden gebruikt voor het [beheren van token compatibiliteit](configure-tokens.md):
 
-- **Claim van verlener (iss)** -deze eigenschap geeft u de Azure AD B2C-tenant die het token is uitgegeven. De standaardwaarde is `https://<domain>/{B2C tenant GUID}/v2.0/`. De waarde van `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` id's bevat voor zowel de Azure AD B2C-tenant en de gebruikersstroom die is gebruikt in het token aan te vragen. Als uw toepassing of de tapewisselaar moet Azure AD B2C om te voldoen aan de [OpenID Connect Discovery 1.0-specificatie](https://openid.net/specs/openid-connect-discovery-1_0.html), gebruikt deze waarde.
+- **Claim verlener (ISS)** : met deze eigenschap wordt de Azure AD B2C Tenant geïdentificeerd waarmee het token is uitgegeven. De standaardwaarde is `https://<domain>/{B2C tenant GUID}/v2.0/`. De waarde van `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` bevat zowel de Azure AD B2C-Tenant als de gebruikers stroom die in de token aanvraag is gebruikt. Als uw toepassing of bibliotheek Azure AD B2C moet voldoen aan de specificatie van de [OpenID Connect Connect-detectie 1,0](https://openid.net/specs/openid-connect-discovery-1_0.html), moet u deze waarde gebruiken.
 
-- **Onderwerp (sub) claim** -deze eigenschap geeft u de entiteit die het token worden bevestigd met informatie. De standaardwaarde is **ObjectID**, die vult de `sub` claim in het token met de object-ID van de gebruiker. De waarde van **niet ondersteund** wordt alleen aangeboden voor achterwaartse compatibiliteit. Het wordt aanbevolen dat u naar overschakelt **ObjectID** zodra u zich kunt.
+- **Subject (sub-claim)** : deze eigenschap identificeert de entiteit waarvoor het token gegevens bevestigingen. De standaard waarde is **ObjectID**, waarmee de `sub` claim in het token wordt gevuld met de object-id van de gebruiker. De waarde van **niet-ondersteund** wordt alleen gegeven voor achterwaartse compatibiliteit. Het is raadzaam om zo snel mogelijk naar **ObjectID** te scha kelen.
 
-- **Claim voor beleids-ID** -deze eigenschap geeft het claimtype waarin de naam van het beleid wordt gebruikt in de aanvraag van het token is gevuld. De standaardwaarde is `tfp`. De waarde van `acr` wordt alleen aangeboden voor achterwaartse compatibiliteit.
+- **Claim die de beleids-id vertegenwoordigt** : deze eigenschap geeft het claim type aan waarin de beleids naam die wordt gebruikt in de token aanvraag is ingevuld. De standaardwaarde is `tfp`. De waarde van `acr` wordt alleen gegeven voor achterwaartse compatibiliteit.
 
 ## <a name="pass-through"></a>Pass-through
 
-Wanneer een gebruikersbeleving wordt gestart, Azure AD B2C, een toegangstoken ontvangt van een id-provider. Azure AD B2C gebruikt dit token voor het ophalen van informatie over de gebruiker. U [Schakel een claim in de gebruikersstroom](idp-pass-through-user-flow.md) of [definiëren van een claim in het aangepaste beleid](idp-pass-through-custom.md) om het token door naar de toepassingen die u in Azure AD B2C registreert. Uw toepassing moet gebruikmaken van een [v2 gebruikersstroom](user-flow-versions.md) om te profiteren van het token wordt doorgegeven als een claim.
+Wanneer het traject van een gebruiker wordt gestart, ontvangt Azure AD B2C een toegangs token van een id-provider. Azure AD B2C gebruikt dat token om informatie over de gebruiker op te halen. U [schakelt een claim in uw gebruikers stroom](idp-pass-through-user-flow.md) in of [definieert een claim in uw aangepaste beleid](idp-pass-through-custom.md) om het token door te geven aan de toepassingen die u registreert in azure AD B2C. Uw toepassing moet een v2- [gebruikers stroom](user-flow-versions.md) gebruiken om te profiteren van het door geven van het token als een claim.
 
-Azure AD B2C ondersteunt momenteel alleen het doorgeven van het toegangstoken van OAuth 2.0-identiteitsproviders, waaronder Facebook en Google. Voor alle andere id-providers, wordt de claim leeg geretourneerd. 
+Azure AD B2C biedt momenteel alleen ondersteuning voor het door geven van het toegangs token van OAuth 2,0-id-providers, zoals Facebook en Google. Voor alle andere id-providers wordt de claim leeg geretourneerd.
 
 ## <a name="validation"></a>Validatie
 
-Voor het valideren van een token, moet uw toepassing controleren de handtekening en de claims van het token. Aantal open source-bibliotheken zijn beschikbaar voor het valideren van JWTs, afhankelijk van de taal van uw voorkeur. Het verdient aanbeveling dat u deze opties verkennen in plaats van uw eigen validatielogica implementeren.
+Voor het valideren van een token moet uw toepassing zowel de hand tekening als de claims van het token controleren. Er zijn veel open source-bibliotheken beschikbaar voor het valideren van JWTs, afhankelijk van de taal van uw voor keur. Het is raadzaam deze opties te verkennen in plaats van uw eigen validatie logica te implementeren.
 
-### <a name="validate-signature"></a>Handtekening valideren
+### <a name="validate-signature"></a>Hand tekening valideren
 
-Een JWT bevat drie segmenten, een *header*, een *hoofdtekst*, en een *handtekening*. Het segment handtekening kan worden gebruikt om te valideren de echtheid van het token, zodat deze kan worden vertrouwd door uw toepassing. Azure AD B2C-tokens zijn ondertekend met behulp van asymmetrische codering van industriestandaard-algoritmen, zoals RSA-256. 
+Een JWT bevat drie segmenten, een *koptekst*, een *hoofd tekst*en een *hand tekening*. Het handtekening segment kan worden gebruikt om de echtheid van het token te valideren, zodat het kan worden vertrouwd door uw toepassing. Azure AD B2C-tokens worden ondertekend met behulp van standaard algoritmen voor asymmetrische versleuteling van de industrie, zoals RSA 256.
 
-De header van het token bevat informatie over de sleutel en -versleuteling-methode gebruikt voor het ondertekenen van het token:
+De header van het token bevat informatie over de sleutel en versleutelings methode die wordt gebruikt om het token te ondertekenen:
 
 ```
 {
@@ -119,37 +119,37 @@ De header van het token bevat informatie over de sleutel en -versleuteling-metho
 }
 ```
 
-De waarde van de **alg** claim is het algoritme dat is gebruikt voor het ondertekenen van het token. De waarde van de **kind** claim wordt de openbare sleutel die is gebruikt voor het ondertekenen van het token. Azure AD B2C kunt een token ondertekenen met behulp van een van een set van paren van openbare en persoonlijke sleutels op een bepaald moment. Azure AD B2C wordt periodiek de mogelijke set sleutels draait. Uw toepassing moet worden geschreven om af te handelen die belangrijke wijzigingen automatisch. Een redelijke frequentie om te controleren op updates voor de openbare sleutels die worden gebruikt door Azure AD B2C wordt elke 24 uur.
+De waarde van de claim **alg** is het algoritme dat is gebruikt voor het ondertekenen van het token. De waarde van de **Kid** -claim is de open bare sleutel die is gebruikt voor het ondertekenen van het token. Azure AD B2C kunt op elk gewenst moment een token ondertekenen met een van de combi Naties van open bare en persoonlijke sleutels. Azure AD B2C roteert de mogelijke set sleutels regel matig. Uw toepassing moet worden geschreven om deze sleutel wijzigingen automatisch te kunnen verwerken. Een redelijke frequentie om te controleren op updates voor de open bare sleutels die worden gebruikt door Azure AD B2C elke 24 uur.
 
-Azure AD B2C is een eindpunt van de metagegevens OpenID Connect. Dit eindpunt, toepassingen, kunnen aanvragen informatie over Azure AD B2C tijdens runtime. Deze informatie omvat eindpunten, de inhoud van tokens en voor token-ondertekening van sleutels. Uw Azure AD B2C-tenant bevat een JSON-metagegevensdocument voor elk beleid. De metadata-document is een JSON-object dat handig stukjes informatie bevat. De metagegevens bevat **jwks_uri**, waardoor de locatie van de set met openbare sleutels die worden gebruikt voor het ondertekenen van tokens. Aanbevolen voor het ophalen van de locatie dynamisch met behulp van het document met metagegevens en parseren van die locatie is die hier beschikbaar zijn, maar de **jwks_uri**:
+Azure AD B2C heeft een OpenID Connect voor het verbinden van meta gegevens. Met dit eind punt kunnen toepassingen informatie opvragen over Azure AD B2C tijdens runtime. Deze informatie omvat eind punten, token inhoud en sleutels voor token-ondertekening. Uw Azure AD B2C-Tenant bevat een JSON-meta gegevens document voor elk beleid. Het meta gegevens document is een JSON-object dat verschillende nuttige informatie bevat. De meta gegevens bevatten **jwks_uri**, die de locatie van de set open bare sleutels die worden gebruikt voor het ondertekenen van tokens. Deze locatie wordt hier weer gegeven, maar het is raadzaam om de locatie dynamisch op te halen met behulp van het meta gegevens document en **jwks_uri**te parseren:
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_signupsignin1
 ```
-Het JSON-document zich op de volgende URL bevat alle openbare sleutels informatie wordt gebruikt op een bepaald moment. Uw app kan gebruiken de `kid` claim in de JWT-header de openbare sleutel in de JSON-document dat wordt gebruikt voor het ondertekenen van een bepaalde token selecteren. Deze kan vervolgens handtekeningvalidatie uitvoeren met behulp van de juiste openbare sleutel en het opgegeven algoritme.
+Het JSON-document op deze URL bevat alle informatie over de open bare sleutel die op een bepaald moment in gebruik is. Uw app kan de `kid` claim in de JWT-header gebruiken om de open bare sleutel in het JSON-document te selecteren die wordt gebruikt om een bepaald token te ondertekenen. Vervolgens kan de hand tekening worden gevalideerd door gebruik te maken van de juiste open bare sleutel en het aangegeven algoritme.
 
-Het document met metagegevens voor de `B2C_1_signupsignin1` beleid in de `contoso.onmicrosoft.com` tenant bevindt zich in:
+Het meta gegevens document voor `B2C_1_signupsignin1` het beleid in `contoso.onmicrosoft.com` de Tenant bevindt zich in:
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1
 ```
 
-Om te bepalen welk beleid is gebruikt voor het ondertekenen van een token (en waar u om aan te vragen van de metagegevens), hebt u twee opties. Ten eerste de naam van het beleid is opgenomen in de `acr` claim in het token. U kunt claims uit de hoofdtekst van het JWT parseren met base 64-decodering van de instantie en bij het deserialiseren van de JSON-tekenreeks die het resultaat. De `acr` claim is de naam van het beleid dat is gebruikt voor het uitgeven van het token. De andere mogelijkheid is het coderen van het beleid in de waarde van de `state` parameter wanneer u de aanvraag uitgeven, en vervolgens worden ontsleuteld om te controleren welk beleid is gebruikt. Een van beide methoden is geldig.
+U hebt twee opties om te bepalen welk beleid is gebruikt voor het ondertekenen van een token (en waar u de meta gegevens kunt aanvragen). Eerst wordt de naam van het beleid opgenomen in `acr` de claim in het token. U kunt claims uit de hoofd tekst van de JWT parseren door base-64 het decoderen van de hoofd tekst en het deserialiseren van de JSON-teken reeks die de resultaten oplevert. De `acr` claim is de naam van het beleid dat is gebruikt voor het uitgeven van het token. De andere optie is om het beleid te coderen in de waarde van `state` de para meter wanneer u de aanvraag verzendt en vervolgens te decoderen om te bepalen welk beleid is gebruikt. Beide methoden zijn geldig.
 
-Een beschrijving van het uitvoeren van handtekeningvalidatie valt buiten het bereik van dit document. Er zijn veel open source-bibliotheken beschikbaar waarmee u een token te valideren.
+Een beschrijving van het uitvoeren van handtekening validatie valt buiten het bereik van dit document. Er zijn veel open-source bibliotheken beschikbaar om u te helpen bij het valideren van een token.
 
-### <a name="validate-claims"></a>Valideren van claims
+### <a name="validate-claims"></a>Claims valideren
 
-Wanneer uw toepassingen of API ontvangt een ID-token, moet deze ook verschillende controles op basis van de claims in het ID-token uitvoeren. De volgende claims moeten worden gecontroleerd:
+Wanneer uw toepassingen of API een ID-token ontvangen, moet er ook een aantal controles worden uitgevoerd op basis van de claims in het ID-token. De volgende claims moeten worden gecontroleerd:
 
-- **doelgroep** -controleert of dat de ID-token dat is bedoeld om u te krijgen tot uw toepassing.
-- **niet voor** en **verlooptijd** -controleert of dat de ID-token dat nog niet is verlopen.
-- **verlener** -controleert of het token is uitgegeven voor uw toepassing door Azure AD B2C.
-- **nonce** -een strategie voor het token opnieuw afspelen netwerkaanval.
+- **doel groep** : verifieert of het id-token is bedoeld om aan uw toepassing te worden toegewezen.
+- **niet vóór** en **verloop tijd** : controleert of het id-token niet is verlopen.
+- **verlener** : verifieert of het token is uitgegeven door Azure AD B2C voor uw toepassing.
+- **nonce** -A-strategie voor het beperken van de aanval van token replay.
 
-Voor een volledige lijst van validaties uw toepassing moeten worden uitgevoerd, raadpleegt u de [OpenID Connect-specificatie](https://openid.net).  
+Raadpleeg de [OpenID Connect Connect-specificatie](https://openid.net)voor een volledige lijst met validaties die door de toepassing moeten worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [toegangstokens gebruiken](active-directory-b2c-access-tokens.md).
+Meer informatie over het [gebruik van toegangs tokens](active-directory-b2c-access-tokens.md).
 

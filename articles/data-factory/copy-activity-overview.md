@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 59ac4b36a4bc2b3ff454b3a2ae98ce60f6bfcb5f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614262"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996613"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>De Kopieeractiviteit in Azure Data Factory
 
@@ -263,9 +263,6 @@ In dit voor beeld maakt ADF tijdens het uitvoeren van een Kopieer bewerking dat 
 
 ## <a name="incremental-copy"></a>Incrementele kopie
 Data Factory ondersteunt scenario's voor het incrementeel kopiëren van Delta gegevens uit een brongegevens archief naar een Sink-gegevens archief. Zie [zelfstudie: gegevens stapsgewijs kopiëren](tutorial-incremental-copy-overview.md).
-
-## <a name="read-and-write-partitioned-data"></a>Gepartitioneerde gegevens lezen en schrijven
-Azure Data Factory ondersteund in versie 1, lezen of schrijven van gepartitioneerde gegevens met behulp van de slicestart-waarde/SliceEnd/WindowStart/WindowEnd systeemvariabelen. In de huidige versie, kunt u dit gedrag bewerkstelligen met behulp van een pijplijnparameter en de tijd/geplande begintijd van trigger als een waarde van de parameter. Zie voor meer informatie, [lezen of schrijven gegevens gepartitioneerd](how-to-read-write-partitioned-data.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende snelstartgidsen, zelfstudies en voorbeelden:

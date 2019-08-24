@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 29ad95e33381aa03dc647e077cea56022f35a8db
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385409"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982845"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Quickstart: Geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
 
@@ -82,6 +82,8 @@ Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manag
    ![Een Azure-resourcegroepproject maken](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
+   > Namen van resource groepen mogen alleen letters, cijfers, punten (`.`), onderstrepings tekens (`_`), afbreek streepjes`-`() en haakjes (`(`, `)`) bevatten, maar mogen niet *eindigen* op`.`een punt ().
+   >
    > Als de **Cloud** of **Azure-resource groep** niet wordt weer gegeven, moet u de Azure SDK voor Visual Studio installeren.
 
    Als u Visual Studio 2019 gebruikt, voert u de volgende stappen uit:

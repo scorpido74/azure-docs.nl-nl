@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b0c9d55846a0240dde92de16ea17e9403a112c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699220"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997789"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Bulk gegevens migreren naar Azure File Sync
 U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:
@@ -22,9 +22,10 @@ U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:
 
 In dit artikel wordt uitgelegd hoe u bestanden offline kunt migreren op een manier die compatibel is met Azure File Sync. Volg deze instructies om bestands conflicten te voor komen en de toegangs beheer lijsten (Acl's) en tijds tempels van het bestand en de map te bewaren nadat de synchronisatie is ingeschakeld.
 
-## <a name="online-migration-tools"></a>Hulpprogram ma's voor online migratie
-Het proces dat in dit artikel wordt beschreven, werkt niet alleen voor Data Box, maar ook voor andere hulpprogram ma's voor offline migratie. Het werkt ook voor online-hulpprogram ma's zoals AzCopy, Robocopy of partner tools en-services. U kunt de eerste upload vraag echter oplossen door de stappen in dit artikel te volgen om deze hulpprogram ma's te gebruiken op een manier die compatibel is met Azure File Sync.
+## <a name="migration-tools"></a>Hulpprogramma's voor migratie
+Het proces dat in dit artikel wordt beschreven, werkt niet alleen voor Data Box, maar ook voor andere hulpprogram ma's voor offline migratie. Het werkt ook voor hulpprogram ma's zoals AzCopy, Robocopy of partner tools en-services die rechtstreeks op Internet werken. U kunt de eerste upload vraag echter oplossen door de stappen in dit artikel te volgen om deze hulpprogram ma's te gebruiken op een manier die compatibel is met Azure File Sync.
 
+In sommige gevallen moet u overstappen van de ene Windows-Server naar een andere Windows-Server voordat u Azure File Sync doorneemt. [Opslag migratie service](https://aka.ms/storagemigrationservice) (SMS) kan u hierbij helpen. Of u moet migreren naar een versie van het besturings systeem van de server die wordt ondersteund door Azure File Sync (Windows Server 2012R2 en up) of u hoeft alleen maar te migreren omdat u een nieuw systeem voor Azure File Sync koopt, heeft SMS talrijke functies en voor delen waarmee u uw MIGR kunt helpen de atie is soepel uitgevoerd.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Voor delen van het gebruik van een hulp programma om gegevens offline over te dragen
 Dit zijn de belangrijkste voor delen van het gebruik van een hulp programma voor het overzetten van een overdracht, zoals Data Box voor offline migratie:

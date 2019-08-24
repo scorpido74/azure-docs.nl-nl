@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849203"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997691"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -105,26 +105,26 @@ De Azure Key Vault oplossing analyseert records die een type sleutel **kluizen**
 
 | Eigenschap | Description |
 |:--- |:--- |
-| type |*AzureDiagnostics* |
-| SourceSystem |*Azure* |
-| CallerIpAddress |IP-adres van de client die de aanvraag heeft ingediend |
-| Categorie | *Audit event* |
-| CorrelationId |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
-| DurationMs |De tijd die nodig was om de REST-API-aanvraag af te handelen in milliseconden. Deze tijd omvat geen netwerk latentie, waardoor de tijd die u aan de client zijde meet mogelijk niet overeenkomt met deze tijd. |
-| httpStatusCode_d |De HTTP-status code die wordt geretourneerd door de aanvraag (bijvoorbeeld *200*) |
-| id_s |Unieke ID van de aanvraag |
-| identity_claim_appid_g | GUID voor de toepassings-ID |
-| OperationName |De naam van de bewerking, zoals beschreven in [Azure Key Vault logboek registratie](../../key-vault/key-vault-logging.md) |
-| OperationVersion |REST API versie die door de client is aangevraagd (bijvoorbeeld *2015-06-01*) |
-| requestUri_s |URI van de aanvraag |
-| Resource |De naam van de sleutel kluis |
-| ResourceGroup |Resource groep van de sleutel kluis |
-| ResourceId |Azure Resource Manager-resource-id. Voor Key Vault-Logboeken is dit de Key Vault Resource-ID. |
-| ResourceProvider |*MICROSOFT.KEYVAULT* |
-| ResourceType | *VAULTS* |
-| ResultSignature |HTTP-status (bijvoorbeeld *OK*) |
-| ResultType |Resultaat van REST API aanvraag (bijvoorbeeld *geslaagd*) |
-| SubscriptionId |Azure-abonnements-ID van het abonnement met de Key Vault |
+| `Type` |*AzureDiagnostics* |
+| `SourceSystem` |*Azure* |
+| `CallerIpAddress` |IP-adres van de client die de aanvraag heeft ingediend |
+| `Category` | *Audit event* |
+| `CorrelationId` |Een optionele GUID die de client kan doorgeven om de logboeken aan de clientzijde te relateren aan (Sleutelkluis-)logboeken aan de servicezijde. |
+| `DurationMs` |De tijd die nodig was om de REST-API-aanvraag af te handelen in milliseconden. Deze tijd omvat geen netwerk latentie, waardoor de tijd die u aan de client zijde meet mogelijk niet overeenkomt met deze tijd. |
+| `httpStatusCode_d` |De HTTP-status code die wordt geretourneerd door de aanvraag (bijvoorbeeld *200*) |
+| `id_s` |Unieke ID van de aanvraag |
+| `identity_claim_appid_g` | GUID voor de toepassings-ID |
+| `OperationName` |De naam van de bewerking, zoals beschreven in [Azure Key Vault logboek registratie](../../key-vault/key-vault-logging.md) |
+| `OperationVersion` |REST API versie die door de client is aangevraagd (bijvoorbeeld *2015-06-01*) |
+| `requestUri_s` |URI van de aanvraag |
+| `Resource` |De naam van de sleutel kluis |
+| `ResourceGroup` |Resource groep van de sleutel kluis |
+| `ResourceId` |Azure Resource Manager-resource-id. Voor Key Vault-Logboeken is dit de Key Vault Resource-ID. |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *VAULTS* |
+| `ResultSignature` |HTTP-status (bijvoorbeeld *OK*) |
+| `ResultType` |Resultaat van REST API aanvraag (bijvoorbeeld *geslaagd*) |
+| `SubscriptionId` |Azure-abonnements-ID van het abonnement met de Key Vault |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Migreren van de oude Key Vault-oplossing
 In januari 2017 wordt de ondersteunde manier voor het verzenden van logboeken van Key Vault naar Log Analytics gewijzigd. Deze wijzigingen bieden de volgende voor delen:

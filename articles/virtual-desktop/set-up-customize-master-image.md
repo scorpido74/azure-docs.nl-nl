@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: abde79ab131719fe4f2963db98c7a6daa3419424
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876842"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981080"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
 
@@ -112,7 +112,7 @@ Beleid voor externe sessies configureren:
 1. Navigeer naar **Beheersjablonen** > **Windows** > -onderdelenexternbureaublad-services > de limieten voor**sessies**van**extern bureaublad sessie**- > sessiehost.
 2. Selecteer in het deel venster aan de rechter kant het beleid **tijds limiet instellen voor actieve maar niet-actieve Extern bureaublad-services sessies** .
 3. Nadat het modale venster wordt weer gegeven, wijzigt u de beleids optie van **niet geconfigureerd** in **ingeschakeld** om het beleid te activeren.
-4. Stel de hoeveelheid tijd in het vervolg keuzemenu onder de beleids optie in op **4 uur**.
+4. Stel de hoeveelheid tijd in het vervolg keuzemenu onder de beleids optie in op **3 uur**.
 
 U kunt beleid voor externe sessies ook hand matig configureren door de volgende opdrachten uit te voeren:
 
@@ -122,7 +122,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fRese
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Tijd zone-omleiding instellen

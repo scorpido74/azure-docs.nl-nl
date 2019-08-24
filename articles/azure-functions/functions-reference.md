@@ -1,23 +1,20 @@
 ---
 title: Hulp bij het ontwikkelen van Azure Functions | Microsoft Docs
 description: Meer informatie over de Azure Functions-concepten en-technieken die u nodig hebt voor het ontwikkelen van functies in azure, in alle programmeer talen en bindingen.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: ontwikkelaars handleiding, Azure functions, functies, gebeurtenis verwerking, webhooks, dynamische compute, serverloze architectuur
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 2715aeae5d10241703fa876557d1edcea1723874
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874957"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982635"
 ---
 # <a name="azure-functions-developers-guide"></a>Hand leiding Azure Functions ontwikkel aars
 In Azure Functions delen specifieke functies enkele kern technische concepten en onderdelen, ongeacht de taal of binding die u gebruikt. Lees de informatie in dit overzicht die van toepassing is op alle voor waarden, voordat u naar een bepaalde taal of binding gaat gaan.
@@ -44,7 +41,7 @@ Het bestand function. json definieert de trigger, bindingen en andere configurat
 }
 ```
 
-Zie voor meer voor beelden [Function. json wiki page](https://github.com/Azure/azure-functions-host/wiki/function.json).
+Zie [Azure functions triggers en bindingen concepten](functions-triggers-bindings.md)voor meer informatie.
 
 De `bindings` eigenschap is waar u zowel triggers als bindingen configureert. Elke binding deelt enkele algemene instellingen en enkele instellingen die specifiek zijn voor een bepaald type binding. Voor elke binding zijn de volgende instellingen vereist:
 
@@ -55,7 +52,7 @@ De `bindings` eigenschap is waar u zowel triggers als bindingen configureert. El
 | `name` |string |De naam die wordt gebruikt voor de afhankelijke gegevens in de functie. Voor C#is dit de naam van een argument; voor Java script is het de sleutel in een lijst met sleutel/waarden. |
 
 ## <a name="function-app"></a>Function App
-Een functie-app biedt een uitvoerings context in azure waarin uw functies worden uitgevoerd. Een functie-app bestaat uit een of meer afzonderlijke functies die met elkaar worden beheerd, geïmplementeerd en geschaald. Alle functies in een functie-app delen hetzelfde prijs plan, doorlopende implementatie en runtime versie. U kunt een functie-app beschouwen als een manier om uw functies te organiseren en gezamenlijk te beheren. 
+Een functie-app biedt een uitvoerings context in azure waarin uw functies worden uitgevoerd. Zo is het de implementatie-en beheer eenheid voor uw functies. Een functie-app bestaat uit een of meer afzonderlijke functies die met elkaar worden beheerd, geïmplementeerd en geschaald. Alle functies in een functie-app delen hetzelfde prijs plan, dezelfde implementatie methode en dezelfde runtime versie. U kunt een functie-app beschouwen als een manier om uw functies te organiseren en gezamenlijk te beheren. Zie [een functie-app beheren](functions-how-to-use-azure-function-app-settings.md)voor meer informatie. 
 
 > [!NOTE]
 > Alle functies in een functie-app moeten in dezelfde taal zijn geschreven. In [eerdere versies](functions-versions.md) van de Azure functions runtime is dit niet vereist.

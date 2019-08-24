@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 5991aec681b00583a9c66328aed601593c864c63
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: ce663dec47f99b6ba4751e23e7ac7f13de866a5d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517201"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982983"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -67,7 +67,7 @@ Wanneer u een ISE met een bestaand virtueel netwerk gebruikt, heeft een veelvoor
 
 Als u een nieuw virtueel netwerk en een subnet zonder beperkingen hebt gemaakt, hoeft u geen [netwerk beveiligings groepen (nsg's)](../virtual-network/security-overview.md) in te stellen in uw virtuele netwerk, zodat u verkeer tussen subnets kunt beheren. Voor een bestaand virtueel netwerk kunt u *optioneel* nsg's instellen door [netwerk verkeer te filteren](../virtual-network/tutorial-filter-network-traffic.md)op subnetten. Als u deze route kiest, moet u ervoor zorgen dat uw ISE specifieke poorten opent, zoals beschreven in de volgende tabel, op het virtuele netwerk met de Nsg's. Voor bestaande Nsg's of firewalls in uw virtuele netwerk, moet u er dus voor zorgen dat deze poorten worden geopend. Op die manier blijft uw ISE toegankelijk en werkt deze goed, zodat u geen toegang meer hebt tot uw ISE. Als de vereiste poorten niet beschikbaar zijn, werkt uw ISE niet meer.
 
-In deze tabel vindt u een beschrijving van de poorten in het virtuele netwerk dat uw ISE gebruikt en de locatie waar deze poorten worden gebruikt. De [Resource Manager-service Tags](../virtual-network/security-overview.md#service-tags) vertegenwoordigen een groep IP-adres voorvoegsels die de complexiteit helpen beperken bij het maken van beveiligings regels.
+In deze tabel worden de poorten in het virtuele netwerk beschreven die uw ISE gebruikt en waar deze poorten worden gebruikt. De [Resource Manager-service Tags](../virtual-network/security-overview.md#service-tags) vertegenwoordigen een groep IP-adres voorvoegsels die de complexiteit helpen beperken bij het maken van beveiligings regels.
 
 > [!IMPORTANT]
 > Voor interne communicatie binnen uw subnetten vereist ISE dat u alle poorten in die subnetten opent.
@@ -117,7 +117,7 @@ In het zoekvak voert u "Integration service Environment" in als uw filter.
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Azure-subscription-name*> | Het Azure-abonnement dat u wilt gebruiken voor uw omgeving |
    | **Resourcegroep** | Ja | <*Azure-resource-group-name*> | De Azure-resource groep waar u uw omgeving wilt maken |
-   | **Integratieserviceomgeving naam** | Ja | <*omgeving-naam*> | De naam om uw omgeving te geven |
+   | **Naam van de integratie service omgeving** | Ja | <*omgeving-naam*> | De naam van uw ISE, die alleen letters, cijfers, afbreek streepjes`-`(), onderstrepings tekens`_`() en punten (`.`) kan bevatten. |
    | **Location** | Ja | <*Azure-datacenter-region*> | De Azure Data Center-regio waar u uw omgeving kunt implementeren |
    | **SKU** | Ja | **Premium** of **ontwikkelaar (geen sla)** | De ISE-SKU die u wilt maken en gebruiken. Zie [ISE sku's](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)(Engelstalig) voor verschillen tussen deze sku's. <p><p>**Belang rijk**: Deze optie is alleen beschikbaar bij het maken van ISE en kan later niet worden gewijzigd. |
    | **Extra capaciteit** | Premium: <br>Ja <p><p>Developer: <br>Niet van toepassing | Premium: <br>0 tot 10 <p><p>Developer: <br>Niet van toepassing | Het aantal extra verwerkings eenheden dat voor deze ISE-resource moet worden gebruikt. Zie [ISE-capaciteit toevoegen](#add-capacity)om capaciteit toe te voegen na het maken. |
@@ -136,7 +136,7 @@ In het zoekvak voert u "Integration service Environment" in als uw filter.
 
    * Maakt gebruik van de [CIDR-notatie (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) en een klasse B-adres ruimte.
 
-   * Gebruikt ten minste a `/27` in de adres ruimte, omdat elk subnet *ten minste* 32 adressen moet *hebben.* Bijvoorbeeld:
+   * Gebruikt ten minste a `/27` in de adres ruimte, omdat elk subnet *ten minste* 32 adressen moet hebben. Bijvoorbeeld:
 
      * `10.0.0.0/27`heeft 32 adressen omdat 2<sup>(32-27)</sup> 2<sup>5</sup> of 32 is.
 

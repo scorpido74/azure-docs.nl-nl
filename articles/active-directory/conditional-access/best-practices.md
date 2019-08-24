@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963453"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980501"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory
 
@@ -87,7 +87,9 @@ Voor elke aanmelding evalueert Azure Active Directory alle beleids regels en zor
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Werkt voorwaardelijke toegang met Exchange ActiveSync?
 
-Ja, u kunt Exchange ActiveSync in een beleid voor voorwaardelijke toegang gebruiken met enkele [beperkingen](block-legacy-authentication.md). 
+Ja, u kunt Exchange ActiveSync gebruiken in een beleid voor voorwaardelijke toegang.
+
+Sommige Cloud-apps, zoals share point online en Exchange Online ondersteunen ook oudere verificatie protocollen. Wanneer een client-app een verouderd verificatie protocol kan gebruiken om toegang te krijgen tot een Cloud-app, kan Azure AD geen beleid voor voorwaardelijke toegang voor deze toegangs poging afdwingen. Als u wilt voor komen dat een client-app het afdwingen van beleid overs laat, moet u controleren of het mogelijk is om alleen moderne authenticatie in te scha kelen voor de betrokken Cloud-apps.
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Hoe moet u voorwaardelijke toegang configureren met Office 365-apps?
 

@@ -1,56 +1,57 @@
 ---
-title: Gedistribueerde gegevens in Azure Database voor PostgreSQL – grootschalige (Citus) (preview)
-description: Tabellen en shards verdeeld in de servergroep.
+title: Gedistribueerde gegevens in Azure Database for PostgreSQL – grootschalige (Citus)
+description: Tabellen en Shards gedistribueerd in de Server groep.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 9020ee690d93a1b477471fac4a482a909fca5935
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077333"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998028"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Gedistribueerde gegevens in Azure Database voor PostgreSQL – grootschalige (Citus) (preview)
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Gedistribueerde gegevens in Azure Database for PostgreSQL – grootschalige (Citus)
 
-In dit artikel bevat een overzicht van de drie tabeltypen in grootschalige (Citus).
-U ziet hoe gedistribueerde tabellen worden opgeslagen als shards en de manier waarop shards worden geplaatst op knooppunten.
+In dit artikel wordt een overzicht gegeven van de drie tabel typen in Azure Database for PostgreSQL – grootschalige (Citus) Preview.
+U ziet hoe gedistribueerde tabellen worden opgeslagen als Shards en hoe Shards op knoop punten worden geplaatst.
 
-## <a name="table-types"></a>Tabeltypen
+## <a name="table-types"></a>Tabel typen
 
-Er zijn drie typen van tabellen in een grootschalige-servergroep, elk voor verschillende doeleinden gebruikt.
+Er zijn drie typen tabellen in een grootschalige-Server groep (Citus), die voor verschillende doel einden worden gebruikt.
 
-### <a name="type-1-distributed-tables"></a>Type 1: gedistribueerde tabellen
+### <a name="type-1-distributed-tables"></a>Type 1: Gedistribueerde tabellen
 
-Is het eerste type en de meest voorkomende *gedistribueerde* tabellen. Ze normale tabellen met SQL-instructies worden weergegeven, maar worden horizontaal *gepartitioneerde* voor worker-knooppunten. Dit betekent dat de rijen van de tabel zijn opgeslagen op verschillende knooppunten, in fragment tabellen met de naam *shards*.
+Het eerste type, de meest voorkomende, is gedistribueerde tabellen. Ze lijken normale tabellen te zijn voor SQL-instructies, maar ze zijn horizon taal gepartitioneerd tussen werk knooppunten. Dit betekent dat de rijen van de tabel worden opgeslagen op verschillende knoop punten, in fragment tabellen met de naam Shards.
 
-Zeer grootschalige niet alleen SQL wordt uitgevoerd, maar DDL-componenten in een cluster, waardoor het wijzigen van het schema van een distributietabel trapsgewijs om bij te werken van de tabel shards voor werknemers.
+Grootschalige (Citus) voert niet alleen SQL maar DDL-instructies uit in een cluster.
+Als u het schema van een gedistribueerde tabel trapsgewijs wijzigt, worden de Shards van de tabel bijgewerkt voor alle werk nemers.
 
-#### <a name="distribution-column"></a>Distributiekolom
+#### <a name="distribution-column"></a>Distributie kolom
 
-Zeer grootschalige maakt gebruik van algoritmische sharding rijen toewijzen aan shards. De toewijzing wordt gemaakt deterministische wijze op basis van de waarde van de kolom in een tabel met de naam de *distributiekolom.* De Clusterbeheerder moet deze kolom opgeven tijdens het distribueren van een tabel.
-Maken van de juiste keuze is belangrijk voor prestaties en functionaliteit.
+Grootschalige (Citus) maakt gebruik van een algoritme sharding om rijen aan Shards toe te wijzen. De toewijzing wordt deterministisch gemaakt op basis van de waarde van een tabel kolom die de kolom distributie heet. De Cluster beheerder moet deze kolom aanwijzen bij het distribueren van een tabel.
+Het is belang rijk dat u de juiste keuze maakt voor prestaties en functionaliteit.
 
-### <a name="type-2-reference-tables"></a>Type 2: tabellen
+### <a name="type-2-reference-tables"></a>Type 2: Verwijzings tabellen
 
-Een tabel is een type tabel waarvan de volledige inhoud in een enkele shard zijn geconcentreerd. De shard wordt gerepliceerd op elke worker, waardoor query's op elke worker toegang heeft tot de referentie-informatie lokaal, zonder de overhead van het netwerk voor het aanvragen van rijen uit een ander knooppunt. Tabellen hebben geen distributiekolom omdat niet hoeft te onderscheiden van afzonderlijke shards per rij.
+Een verwijzings tabel is een type gedistribueerde tabel waarvan de volledige inhoud in één Shard is geconcentreerd. De Shard wordt gerepliceerd op elke werk nemer. Query's op elke werk nemer hebben lokaal toegang tot de referentie gegevens, zonder de netwerk belasting van het aanvragen van rijen van een ander knoop punt. Verwijzings tabellen hebben geen distributie kolom, omdat er geen onderscheid hoeft te worden gemaakt tussen afzonderlijke Shards per rij.
 
-Tabellen zijn meestal klein en worden gebruikt voor het opslaan van gegevens die relevant is voor query's die worden uitgevoerd op elke worker-knooppunt. Bijvoorbeeld, waarden, zoals statussen of productcategorieën geïnventariseerd.
+Verwijzings tabellen zijn doorgaans klein en worden gebruikt voor het opslaan van gegevens die relevant zijn voor query's die worden uitgevoerd op een worker-knoop punt. Een voor beeld is opsommings waarden, zoals order statussen of product categorieën.
 
-### <a name="type-3-local-tables"></a>Type 3: lokale tabellen van het
+### <a name="type-3-local-tables"></a>Type 3: Lokale tabellen
 
-Wanneer u grootschalige, is het coördinatorknooppunt dat u verbinding met maakt een reguliere PostgreSQL-database. U kunt gewone tabellen maken op de coördinator en ervoor kiest geen te shard ze.
+Wanneer u grootschalige (Citus) gebruikt, is het coördinator knooppunt waarmee u verbinding maakt, een normale PostgreSQL-data base. U kunt gewone tabellen maken op de coördinator en ervoor kiezen deze niet te Shard.
 
-Een goede kandidaat voor lokale tabellen worden kleine administratieve tabellen die geen deel uitmaken van join-query's. Bijvoorbeeld, een tabel met gebruikers voor toepassing aanmelding en verificatie.
+Een goede kandidaat voor lokale tabellen is kleine beheer tabellen die geen deel uitmaken van samenvoeg query's. Een voor beeld is een tabel met gebruikers voor het aanmelden en verifiëren van toepassingen.
 
 ## <a name="shards"></a>Shards
 
-De vorige sectie wordt beschreven hoe gedistribueerde tabellen worden opgeslagen als shards op worker-knooppunten. In dit gedeelte wordt meer in de technische details.
+In de vorige sectie wordt beschreven hoe gedistribueerde tabellen worden opgeslagen als Shards op worker-knoop punten. In deze sectie worden meer technische details besproken.
 
-De `pg_dist_shard` metagegevenstabel op de coördinator bevat een rij voor elke shard van elke tabel in het systeem. De rij overeenkomt met een shard-ID met een bereik van gehele getallen in een hash-ruimte (shardminvalue, shardmaxvalue):
+De `pg_dist_shard` meta gegevens tabel in de coördinator bevat een rij voor elk Shard van elke gedistribueerde tabel in het systeem. De rij komt overeen met een Shard-ID met een bereik van gehele getallen in een hash-ruimte (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -63,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Als het coördinatorknooppunt wil bepalen welke shard bevat een rij met `github_events`, de waarde van de distributiekolom in de rij-hashes en controleert welke shard\'s bereik bevat de hash-waarde. (De bereiken ligt die zijn gedefinieerd, zodat de installatiekopie van de hash-functie de niet-aaneengesloten vereniging is.)
+Als het coördinator knooppunt wil bepalen welke Shard een rij `github_events`bevat, wordt de waarde van de kolom Distribution in de rij hashes. Vervolgens controleert het knoop punt welk\'Shard s-bereik de gehashte waarde bevat. De bereiken worden gedefinieerd zodat de afbeelding van de hash-functie de niet-aaneengesloten samen voeging is.
 
-### <a name="shard-placements"></a>Shard-plaatsingen
+### <a name="shard-placements"></a>Shard plaatsen
 
-Stel dat shard 102027 is gekoppeld aan de betreffende rij. De rij worden gelezen of geschreven in een tabel met de naam `github_events_102027` in een van de werknemers. Welke werknemer? Die wordt bepaald volledig door de van metagegevenstabellen en de toewijzing van shard werknemer staat bekend als de shard *plaatsing*.
+Stel dat Shard 102027 is gekoppeld aan de betreffende rij. De rij wordt in een tabel met de naam `github_events_102027` in een van de werk rollen gelezen of geschreven. Welke werk nemer? Dat wordt volledig bepaald door de meta gegevens tabellen. De toewijzing van Shard aan worker wordt de Shard-plaatsing genoemd.
 
-Het coördinatorknooppunt herschrijft query's in fragmenten die naar de specifieke tabellen, zoals verwijzen `github_events_102027`, en deze fragmenten worden uitgevoerd op de juiste werknemers. Hier volgt een voorbeeld van een query uitvoeren op de achtergrond op het knooppunt waarop de shard-ID 102027 vinden.
+Het coördinator knooppunt schrijft query's opnieuw in fragmenten die verwijzen naar de specifieke tabellen zoals `github_events_102027` en voert deze fragmenten uit op de juiste werk rollen. Hier volgt een voor beeld van een query die wordt uitgevoerd achter de schermen om het knoop punt te vinden dat Shard ID 102027.
 
 ```sql
 SELECT
@@ -90,4 +91,4 @@ WHERE shardid = 102027;
     └─────────┴───────────┴──────────┘
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [kiezen van een distributiekolom](concepts-hyperscale-choose-distribution-column.md) voor gedistribueerde tabellen
+- Meer informatie over het [kiezen van een distributie kolom](concepts-hyperscale-choose-distribution-column.md) voor gedistribueerde tabellen.

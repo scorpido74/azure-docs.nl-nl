@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614118"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996680"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure SQL Data Warehouse met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -430,13 +430,15 @@ Als aan de vereisten zijn niet voldaan, wordt Azure Data Factory controleert of 
 
 2. De **indeling van de bron gegevens** is van **Parquet**, **Orc**of tekst met **scheidings tekens**, met de volgende configuraties:
 
-   1. Mappad bevat geen joker filter.
-   2. Bestands naam verwijst naar één bestand of is `*` of. `*.*`
-   3. `rowDelimiter` moet **\n**.
-   4. `nullValue` is een ingesteld op **lege tekenreeks** ("") of als standaard, links en `treatEmptyAsNull` als standaard links of ingesteld op true.
-   5. `encodingName` is ingesteld op **utf-8**, dit is de standaardwaarde.
+   1. Mappad bevat geen filter voor joker tekens.
+   2. De bestands naam is leeg of verwijst naar één bestand. Als u de naam van het Joker teken opgeeft in de Kopieer activiteit, `*` kan `*.*`deze alleen zijn of.
+   3. `rowDelimiter`is **standaard**, **\n**, **\r\n**of **\r**.
+   4. `nullValue`is standaard ingesteld op ' "' ('"), en `treatEmptyAsNull` wordt als standaard waarde ingevuld of ingesteld op True.
+   5. `encodingName`is standaard ingesteld op **UTF-8**.
    6. `quoteChar`, `escapeChar` en`skipLineCount` niet opgegeven. Ondersteuning voor PolyBase overslaan rij met koppen die kan worden geconfigureerd als `firstRowAsHeader` in ADF.
    7. `compression` kan **geen compressie**, **GZip**, of **Deflate**.
+
+3. Als uw bron een map is, `recursive` moet u de Kopieer activiteit instellen op True.
 
 ```json
 "activities":[
@@ -445,7 +447,7 @@ Als aan de vereisten zijn niet voldaan, wordt Azure Data Factory controleert of 
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "BlobDataset",
+                "referenceName": "ParquetDataset",
                 "type": "DatasetReference"
             }
         ],
@@ -457,7 +459,11 @@ Als aan de vereisten zijn niet voldaan, wordt Azure Data Factory controleert of 
         ],
         "typeProperties": {
             "source": {
-                "type": "BlobSource",
+                "type": "ParquetSource",
+                "storeSettings":{
+                    "type": "AzureBlobStorageReadSetting",
+                    "recursive": true
+                }
             },
             "sink": {
                 "type": "SqlDWSink",

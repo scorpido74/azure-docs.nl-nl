@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: dadc394e9c9ddb152923095de10b8f727310d3f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eeab0433310892f27b9cb2d2eb6f64e17e6f14ef
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554803"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991729"
 ---
 #  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Een CI/CD-pijplijn voor Node.js maken met Azure DevOps Projects 
 
@@ -54,9 +54,9 @@ In DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt e
 
 1. Maak een nieuwe Azure DevOps-organisatie of kies een bestaande organisatie. 
 
-    a. Kies een naam voor het project. 
+    a. Voer een naam in voor het project.
 
-    b. Selecteer uw Azure-abonnement en locatie, kies een naam voor de toepassing en selecteer vervolgens **Gereed**.  
+    b. Selecteer uw Azure-abonnement en locatie, voer een naam in voor de toepassing en selecteer **Gereed**.  
     Na enkele minuten wordt het DevOps Projects-dashboard weergegeven in de Azure-portal. Er wordt een voorbeeldtoepassing ingesteld in een opslagplaats in uw Azure DevOps-organisatie, er wordt een build uitgevoerd en de toepassing wordt geïmplementeerd in Azure. Dit dashboard biedt meer inzicht in uw codeopslagplaats, CI/CD-pijplijn en toepassing in Azure.
      
 3. Selecteer **Bladeren** om de actieve toepassing weer te geven.
@@ -78,7 +78,7 @@ Met deze koppeling opent u een weergave in de zojuist gemaakte Git-opslagplaats.
 1. Ga aan de linkerkant van de browser naar het bestand **views/index.pug**.
 
 1. Selecteer **Bewerken** en breng vervolgens een wijziging aan in de h2-kop.  
-    Typ bijvoorbeeld **Meteen aan de slag met het Azure DevOps-project** of maak een andere wijziging.
+    Voer bijvoorbeeld meteen aan de **slag met Azure DevOps projects** of breng een andere wijziging aan.
 
 1. Selecteer **Doorvoeren** en sla de wijzigingen op.
 

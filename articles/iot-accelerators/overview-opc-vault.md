@@ -1,6 +1,6 @@
 ---
-title: Wat is er OPC-kluis - Azure | Microsoft Docs
-description: Overzicht van de OPC-kluis
+title: Wat is OPC kluis-Azure | Microsoft Docs
+description: Overzicht van OPC-kluis
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,25 +8,32 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 40a9016ac7a10175b51f0fb6f072dd089bde3a51
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606281"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997310"
 ---
-# <a name="what-is-opc-vault"></a>Wat is de OPC-kluis?
+# <a name="what-is-opc-vault"></a>Wat is OPC kluis?
 
-OPC-kluis is een microservice die u kunt configureren, te registreren en beheren van de levenscyclus van het certificaat voor OPC UA-server en clienttoepassingen in de cloud. Dit artikel beschrijft de eenvoudige gebruiksvoorbeelden van de OPC-kluis.
+OPC-kluis is een micro service die de levens cyclus van de certificaten voor OPC UA-server en client toepassingen in de cloud kan configureren, registreren en beheren. In dit artikel worden de eenvoudige gebruiks voorbeelden van de OPC-kluis beschreven.
 
 ## <a name="certificate-management"></a>Certificaatbeheer
 
-Bijvoorbeeld, moet een productiebedrijf verbinding maken met de OPC UA-server-machine naar de zojuist gemaakte clienttoepassing. Wanneer de fabrikant van de eerste toegang tot de server-machine maakt, wordt onmiddellijk een foutbericht weergegeven op de OPC UA-server-toepassing om aan te geven dat de clienttoepassing niet beveiligd is. Dit mechanisme is ingebouwd in de OPC UA-server-machine om te voorkomen dat een niet-geautoriseerde toegang tot toepassingen, waarmee wordt voorkomen dat gemene hacken op de werkvloer.
+Zo moet een productie bedrijf de OPC UA-server machine verbinden met de nieuwe client toepassing. Wanneer de fabrikant de eerste toegang tot de Server computer maakt, wordt er onmiddellijk een fout bericht weer gegeven op de OPC UA-server toepassing om aan te geven dat de client toepassing niet beveiligd is. Dit mechanisme is gebaseerd op de OPC UA-server machine om te voor komen dat onbevoegde toegang tot toepassingen wordt gekraakt, waardoor vicieuze niet op de werk vloer kan worden gehackt.
 
-## <a name="application-security-management"></a>Beveiliging van Toepassingsbeheer
-Een professionele beveiliging maakt gebruik van OPC kluis microservice OPC UA-server om te communiceren met elke clienttoepassing eenvoudig inschakelen omdat OPC kluis alle functies voor het register van de certificaat-, opslag- en levenscyclusbeheer heeft. OPC UA-server is nu veilig verbonden, kan het communiceren met de zojuist gemaakte clienttoepassing
+## <a name="application-security-management"></a>Beheer van toepassings beveiliging
+Een beveiligings Professional gebruikt OPC-kluis micro service om de OPC UA-server eenvoudig in te scha kelen voor communicatie met elke client toepassing, omdat OPC-kluis beschikt over alle functies voor certificaat register, opslag en levenscyclus beheer. De OPC UA-server is nu veilig verbonden en kan communiceren met de zojuist opgebouwde client toepassing
 
-## <a name="the-complete-opc-vault-architecture"></a>De volledige OPC-kluis-architectuur
-Het volgende diagram illustreert de volledige OPC-kluis-architectuur.
+## <a name="the-complete-opc-vault-architecture"></a>De volledige OPC-kluis architectuur
+In het volgende diagram ziet u de volledige OPC-kluis architectuur.
 
-![Architectuur van de OPC-kluis](media/overview-opc-vault-architecture/opc-vault.png)
+![OPC-kluis architectuur](media/overview-opc-vault-architecture/opc-vault.png)
+
+## <a name="next-steps"></a>Volgende stappen
+
+Nu u hebt geleerd over OPC-kluis en het gebruik ervan, is dit de voorgestelde volgende stap:
+
+> [!div class="nextstepaction"]
+> [OPC-kluis architectuur](overview-opc-vault-architecture.md)

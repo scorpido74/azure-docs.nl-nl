@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
-ms.translationtype: MT
+ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017795"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981417"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Opslag wachtrijen en Service Bus wacht rijen-vergeleken en daarentegen
 In dit artikel worden de verschillen en overeenkomsten geanalyseerd tussen de twee typen wacht rijen die momenteel worden aangeboden door Microsoft Azure: Opslag wachtrijen en wacht rijen voor Service Bus. U kunt deze informatie gebruiken om de verschillende technologieën te vergelijken en tegen elkaar af te zetten zodat u een weloverwogen beslissing kunt nemen en de oplossing kiest die beste voldoet aan uw behoeften.
@@ -68,7 +68,7 @@ In deze sectie worden enkele van de fundamentele wachtrij mogelijkheden van opsl
 | Vergelijkings criteria | Opslagwachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
 | Garantie best Ellen |**Nee** <br/><br>Zie de eerste opmerking in de sectie ' aanvullende informatie ' voor meer informatie.</br> |**Ja, eerst-in-first-out (FIFO)**<br/><br>(door het gebruik van Messa ging-sessies) |
-| Leverings garantie |**Mini maal één keer** |**Mini maal één keer**<br/><br/>**Mini maal één keer** |
+| Leverings garantie |**Mini maal één keer** |**Mini maal één keer** (met behulp van de PeekLock-ontvangst modus-dit is de standaard instelling) <br/><br/>**Mini maal één keer** (met behulp van de ReceiveAndDelete-ontvangst modus) <br/> <br/> Meer informatie over verschillende [ontvangst modi](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Ondersteuning voor atomische bewerkingen |**Nee** |**Ja**<br/><br/> |
 | Gedrag ontvangen |**Niet blok keren**<br/><br/>(wordt direct uitgevoerd als er geen nieuw bericht wordt gevonden) |**Blok keren met/zonder time-out**<br/><br/>(biedt lange polling of de [' Comet-techniek '](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Niet blok keren**<br/><br/>(alleen met behulp van .NET Managed API) |
 | Push-stijl-API |**Nee** |**Ja**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) -en **OnMessage** -sessies .net API. |

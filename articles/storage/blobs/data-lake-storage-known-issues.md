@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950683"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991816"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -32,7 +32,7 @@ Blob Storage-Api's zijn uitgeschakeld om problemen met de functie operability te
 
 Als een van deze BLOB-Api's gebruikt en u deze wilt gebruiken om te werken met alle inhoud die u uploadt naar uw account, hebt u twee opties.
 
-* **Optie 1**: Schakel geen hiërarchische naam ruimte in op uw Blob Storage-account totdat de BLOB-Api's interoperabel raken met Azure Data Lake Gen2-Api's. Als u een opslag account zonder een hiërarchische naam ruimte gebruikt, hebt u dan geen toegang tot Data Lake Storage Gen2 specifieke functies, zoals de Directory-en bestandssysteem toegangs beheer lijsten.
+* **Optie 1**: Schakel geen hiërarchische naam ruimte in op uw Blob Storage-account totdat de BLOB-Api's interoperabel raken met Azure Data Lake Gen2-Api's. Als u een opslag account zonder een hiërarchische naam ruimte gebruikt, hebt u dan geen toegang tot Data Lake Storage Gen2 specifieke functies, zoals de toegangs beheer lijsten voor mappen en containers.
 
 * **Optie 2**: Schrijf u in voor de open bare preview van [toegang tot meerdere protocollen op Data Lake Storage](data-lake-storage-multi-protocol-access.md). Hulpprogram ma's en toepassingen die BLOB-Api's aanroepen, en Blob Storage-functies, zoals Diagnostische logboeken, kunnen werken met accounts die een hiërarchische naam ruimte hebben.
 

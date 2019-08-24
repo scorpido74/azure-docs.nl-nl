@@ -1,55 +1,109 @@
 ---
-title: Testen van een Azure Stream Analytics-taak met voorbeeldgegevens
-description: In dit artikel wordt beschreven hoe u Azure portal gebruiken voor het testen van een Azure Stream Analytics-taak, een van Voorbeeldinvoer en voorbeeldgegevens uploaden.
+title: Een Azure Stream Analytics-taak testen met voorbeeld gegevens
+description: In dit artikel wordt beschreven hoe u met behulp van de Azure Portal een Azure Stream Analytics-taak, voorbeeld invoer en het uploaden van voorbeeld gegevens kunt testen.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: ad0e0ca75bf3d3a8d9d1029d42f8609b3c4c627b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b8670fc7958e66e7c25e27bb3a22429ab20b2514
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620830"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991040"
 ---
-# <a name="test-a-stream-analytics-query-with-sample-data"></a>Testen van een Stream Analytics-query met voorbeeldgegevens
+# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Een Azure Stream Analytics-taak testen met voorbeeld gegevens
 
-U kunt met behulp van Azure Stream Analytics, sample van gegevens uit de invoer of uploaden van voorbeeldgegevens voor het testen van query's in Azure portal zonder te starten of stoppen van een taak.
+In Azure Stream Analytics kunt u uw query testen zonder de taak te starten of te stoppen. U kunt query's testen op binnenkomende gegevens uit uw invoer sink of voorbeeld gegevens uit een lokaal bestand uploaden.
 
-## <a name="upload-or-sample-data-from-a-live-source-to-test-the-query"></a>Het uploaden of voorbeeldgegevens van een live bron om te testen van de query
+## <a name="sample-incoming-data-from-input"></a>Voor beeld van binnenkomende gegevens van invoer
 
-1. Meld u aan bij Azure Portal. 
+Azure Stream Analytics worden automatisch gebeurtenissen opgehaald uit de invoer van streams. U kunt query's uitvoeren op het standaard voorbeeld of een specifiek tijds bestek instellen voor het voor beeld.
 
+1. Meld u aan bij Azure Portal.
+
+2. Zoek en selecteer uw bestaande Stream Analytics-taak.
+
+3. Selecteer op de pagina Stream Analytics taak onder de kop **taak topologie** de optie **query** om het venster query-editor te openen. 
+
+4. Als u een voor beeld van een lijst met binnenkomende gebeurtenissen wilt zien, selecteert u het pictogram invoer met bestand en worden de voorbeeld gebeurtenissen automatisch weer gegeven in de **invoer voorbeeld**. 
+
+   a. Het type serialisatie voor uw gegevens wordt automatisch gedetecteerd als de JSON of CSV. U kunt dit ook hand matig wijzigen in JSON, CSV, AVRO door de optie in het vervolg keuzemenu te wijzigen.
+    
+   b. Gebruik de selector om uw gegevens in **tabel** -of **RAW** -indeling weer te geven.
+    
+   c. Als uw weer gegeven gegevens niet actueel zijn, selecteert u **vernieuwen** om de meest recente gebeurtenissen te bekijken.
+
+   De volgende tabel bevat een voor beeld van gegevens in de **tabel indeling**:
+
+   ![Voorbeeld invoer in tabel indeling Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-table.png)
+
+   De volgende tabel bevat een voor beeld van de gegevens in **RAW-indeling**:
+
+   ![Voorbeeld invoer Azure Stream Analytics in RAW-indeling](./media/stream-analytics-test-query/asa-sample-raw.png)
+
+5. Als u uw query wilt testen met inkomende gegevens, selecteert u **query testen**. Resultaten worden weer gegeven op het tabblad **test resultaten** . U kunt ook **Download resultaten** selecteren om de resultaten te downloaden.
+
+   ![Voorbeeld query resultaten Azure Stream Analytics test](./media/stream-analytics-test-query/asa-test-query.png)
+
+6. Selecteer **tijds bereik selecteren**om uw query te testen op een specifiek tijds bereik van binnenkomende gebeurtenissen.
+   
+   ![Azure Stream Analytics tijds bereik voor binnenkomende voorbeeld gebeurtenissen](./media/stream-analytics-test-query/asa-select-time-range.png)
+
+7. Stel het tijds bereik in van de gebeurtenissen die u wilt gebruiken om uw query te testen en selecteer voor **beeld**. Binnen dat tijds bestek kunt u Maxi maal 1000 gebeurtenissen of 1 MB ophalen, afhankelijk van wat het eerste komt.
+
+   ![Azure Stream Analytics het tijds bereik voor binnenkomende voorbeeld gebeurtenissen instellen](./media/stream-analytics-test-query/asa-set-time-range.png)
+
+8. Zodra de gebeurtenissen voor het geselecteerde tijds bereik worden bemonsterd, worden ze weer gegeven op het tabblad **invoer voorbeeld** .
+
+   ![Test resultaten Azure Stream Analytics weer geven](./media/stream-analytics-test-query/asa-view-test-results.png)
+
+9. Selecteer **opnieuw instellen** om de voorbeeld lijst met binnenkomende gebeurtenissen weer te geven. Als u **opnieuw instellen**selecteert, gaat de selectie van het tijds bereik verloren. Selecteer **test query** om uw query te testen en Bekijk de resultaten op het tabblad **test resultaten** .
+
+10. Wanneer u wijzigingen aanbrengt in uw query, selecteert u **query opslaan** om de nieuwe query logica te testen. Hierdoor kunt u de query iteratief wijzigen en opnieuw testen om te zien hoe de uitvoer verandert.
+
+11. Nadat u de resultaten hebt gecontroleerd die in de browser worden weer gegeven, bent u klaar om de taak te **starten** .
+
+## <a name="upload-sample-data-from-a-local-file"></a>Voorbeeld gegevens uploaden uit een lokaal bestand
+
+In plaats van live data te gebruiken, kunt u voorbeeld gegevens uit een lokaal bestand gebruiken om uw Azure Stream Analytics-query te testen.
+
+1. Meld u aan bij Azure Portal.
+   
 2. Zoek uw bestaande Stream Analytics-taak en selecteert u deze.
 
-3. Op de Stream Analytics job pagina, onder de **Taaktopologie** kop, selecteer **Query** het Query-editor-venster te openen. 
+3. Selecteer op de pagina Stream Analytics taak onder de kop **taak topologie** de optie **query** om het venster query-editor te openen.
 
-4. Om uw query te testen kunt u gegevens uit een live invoer of uploaden van een bestand vervolgens een steekproef. De gegevens moeten worden geserialiseerd in JSON, CSV of AVRO. Van Voorbeeldinvoer moet worden gecodeerd in UTF-8- en niet gecomprimeerd. Alleen de scheidingsteken komma (,) wordt ondersteund voor het testen van CSV-invoer voor de portal.
+4. Als u uw query wilt testen met een lokaal bestand, selecteert u **voorbeeld invoer uploaden** op het tabblad **invoer voorbeeld** . 
 
-    1. Met behulp van live invoer: met de rechtermuisknop op een van uw invoer. Selecteer vervolgens **voorbeeldgegevens van uitvoer**. In het volgende scherm stelt u de duur van het voorbeeld. Gebeurtenissen van een live bron steekproeven worden opgehaald maximaal 1000 gebeurtenissen of 1 MB (afhankelijk van wat het eerste komt), zodat de gegevens een steekproef genomen niet met het opgegeven fulltime-interval overeen mogelijk.
+   ![Voorbeeld bestand Azure Stream Analytics uploaden](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-    1. Met behulp van bestand: met de rechtermuisknop op een van uw invoer. Selecteer vervolgens **voorbeeldgegevens uit het bestand uploaden**. 
+5. Upload uw lokale bestand om de query te testen. U kunt alleen bestanden uploaden met de indelingen JSON, CSV of AVRO. Selecteer **OK**.
 
-    ![Stream analytics query-editor testovat dotaz](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
+   ![Voorbeeld bestand Azure Stream Analytics uploaden](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-5. Nadat de steekproeven te nemen of het uploaden voltooid is, selecteert u **testen** voor het testen van deze query op de voorbeeldgegevens die u hebt opgegeven.
+6. Zodra u het bestand uploadt, kunt u ook de bestands inhoud in het formulier zien als een tabel of in de RAW-indeling. Als u **opnieuw instellen**selecteert, worden de voorbeeld gegevens weer gegeven in de binnenkomende invoer gegevens die in de vorige sectie zijn beschreven. U kunt elk ander bestand uploaden om de query op elk gewenst moment te testen.
 
-    ![Stream analytics-query editor test voorbeeldgegevens](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
+7. Selecteer **test query** om uw query te testen op het geüploade voorbeeld bestand.
 
-6. Als u de testuitvoer voor later gebruik, wordt de uitvoer van de query in de browser met een koppeling naar de downloadresultaten weergegeven. 
+8. Test resultaten worden weer gegeven op basis van uw query. U kunt uw query wijzigen en **query opslaan** selecteren om de nieuwe query logica te testen. Hierdoor kunt u de query iteratief wijzigen en opnieuw testen om te zien hoe de uitvoer verandert.
 
-7. Iteratief pas uw query en test deze opnieuw uit om te zien hoe de uitvoer verandert.
+9. Wanneer u meerdere uitvoer in de query gebruikt, worden de resultaten weer gegeven op basis van de geselecteerde uitvoer. 
 
-   ![Voorbeelduitvoer van Stream Analytics query-editor](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
+   ![Geselecteerde uitvoer Azure Stream Analytics](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
-   Wanneer u meerdere uitvoer in een query, worden de resultaten op een afzonderlijk tabblad weergegeven en u gemakkelijk kunt schakelen tussen beide.
-
-8. Nadat u hebt gecontroleerd dat de resultaten weergegeven in de browser **opslaan** uw query. Vervolgens **Start** de taak en laat het verwerken van de binnenkomende gebeurtenissen.
+10. Nadat u de resultaten hebt gecontroleerd die in de browser worden weer gegeven, kunt u de taak **starten** .
 
 ## <a name="next-steps"></a>Volgende stappen
-> [!div class="nextstepaction"]
-> [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+
+* [Naslaggids voor Azure Stream Analytics Query](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+
+* [Query voorbeelden voor algemene Stream Analytics gebruiks patronen](stream-analytics-stream-analytics-query-patterns.md)
+
+* [Wat is invoer van Azure Stream Analytics?](stream-analytics-add-inputs.md)
+
+* [Inzicht in de uitvoer van Azure Stream Analytics](stream-analytics-define-outputs.md)

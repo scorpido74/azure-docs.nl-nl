@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c6a76f4188ecbf6ca778fdbcd23ac9fed2f60dde
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534659"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982691"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Problemen met Updatebeheer oplossen
 
@@ -339,7 +339,7 @@ Als u een probleem met een patches niet kunt oplossen, maakt u een kopie van het
 ### <a name="machines-do-not-install-updates"></a>Machines installeren geen updates
 
 * Voer de updates rechtstreeks op de machine uit. Als de machine niet kan worden bijgewerkt, raadpleegt u de [lijst met potentiële fouten in de gids voor probleemoplossing](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
-* Als updates lokaal worden uitgevoerd, verwijdert u de agent en installeert u deze opnieuw op de machine met behulp van de volgende instructies in [Een VM verwijderen uit Updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-for-update-management).
+* Als updates lokaal worden uitgevoerd, verwijdert u de agent en installeert u deze opnieuw op de machine met behulp van de volgende instructies in [Een VM verwijderen uit Updatebeheer](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management).
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Ik weet dat er updates beschikbaar zijn, maar ze worden niet naar wens weer gegeven op mijn computers
 

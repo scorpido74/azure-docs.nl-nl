@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 3c4811d990cfe107bc3bc4e6d359659b1935c6a4
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 9d611717ad8fee5f810a8d0876f1ebd5995249a7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297206"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996794"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continue implementatie naar Azure App Service
 
@@ -28,13 +28,11 @@ ms.locfileid: "68297206"
 
 Zie [Een repo maken (GitHub)], [Een repo maken (BitBucket)]maken of [een nieuwe Git-opslag plaats maken (Azure opslag plaatsen)]voor meer informatie over de bron beheer Services.
 
-Zie [continue implementatie instellen met behulp van hand matige stappen](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)voor het hand matig configureren van een continue implementatie vanuit een opslag plaats in de cloud die niet rechtstreeks wordt ondersteund door de portal, zoals [GitLab](https://gitlab.com/).
-
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="authorize-azure-app-service"></a>Azure App Service autoriseren 
 
-Als u Azure opslag plaatsen wilt gebruiken, moet u ervoor zorgen dat uw Azure DevOps-organisatie is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)voor meer informatie.
+Als u Azure opslag plaatsen wilt gebruiken, moet u ervoor zorgen dat uw Azure DevOps-organisatie is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)voor meer informatie.
 
 Autoriseer Azure App Service voor bitbucket of GitHub om verbinding te maken met uw opslag plaats. U hoeft slechts één keer te autoriseren met een broncode beheer service. 
 
@@ -63,7 +61,7 @@ U kunt de ingebouwde kudu-App Service build-server gebruiken om voortdurend te i
 1. Selecteer uw geautoriseerde broncode beheer provider op de pagina **implementatie centrum** en selecteer **door gaan**. Voor GitHub of bitbucket kunt u ook **account wijzigen** selecteren om het geautoriseerde account te wijzigen. 
    
    > [!NOTE]
-   > Als u Azure opslag plaatsen wilt gebruiken, moet u ervoor zorgen dat uw Azure DevOps Services-organisatie is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)voor meer informatie.
+   > Als u Azure opslag plaatsen wilt gebruiken, moet u ervoor zorgen dat uw Azure DevOps Services-organisatie is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)voor meer informatie.
    
 1. Voor GitHub of Azure opslag plaatsen selecteert u op de pagina **Build** -provider **app service build-service**en selecteert u vervolgens **door gaan**. Bitbucket maakt altijd gebruik van de App Service build-service.
    
@@ -81,7 +79,7 @@ U kunt de ingebouwde kudu-App Service build-server gebruiken om voortdurend te i
    - Selecteer voor Azure opslag plaatsen de **Azure DevOps-organisatie**, **het project**, de **opslag plaats**en de **vertakking** die u continu wilt implementeren.
      
      > [!NOTE]
-     > Als uw Azure DevOps-organisatie niet wordt weer gegeven, controleert u of deze is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)voor meer informatie.
+     > Als uw Azure DevOps-organisatie niet wordt weer gegeven, controleert u of deze is gekoppeld aan uw Azure-abonnement. Zie [een Azure DevOps Services-account instellen zodat het kan worden geïmplementeerd in een web-app](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)voor meer informatie.
      
 1. Selecteer **Doorgaan**.
    
@@ -149,6 +147,10 @@ Als u continue implementatie wilt uitschakelen, selecteert u de **verbinding ver
 ![Continue implementatie uitschakelen](media/app-service-continuous-deployment/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
+
+## <a name="use-unsupported-repos"></a>Niet-ondersteunde opslag plaatsen gebruiken
+
+Voor Windows-apps kunt u een continue implementatie hand matig configureren vanuit een Git-of mecurial-opslag plaats in de cloud die niet rechtstreeks wordt ondersteund door de portal, zoals [GitLab](https://gitlab.com/). U doet dit door het externe vak op de pagina **implementatie centrum** te kiezen. Zie [continue implementatie instellen met behulp van hand matige stappen](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)voor meer informatie.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

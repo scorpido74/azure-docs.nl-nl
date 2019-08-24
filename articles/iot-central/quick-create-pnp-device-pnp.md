@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 152e373f3a340a8abe3d8bc54d6515296d95efba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48161f56a8885239525587b764c4a116ffc8539f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878318"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997736"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Quickstart: Een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken en dit te verbinden met uw IoT Central toepassing
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-Een _mogelijkheidsprofiel_ (DCM) beschrijft de mogelijkheden van een [IOT Plug en Play](https://aka.ms/iot-pnp-docs) -apparaat. IoT Central kunt een DCM gebruiken om een sjabloon en visualisaties voor een apparaat te maken wanneer het apparaat voor de eerste keer verbinding maakt. In deze snelstartgids leert u het volgende:
+Een _mogelijkheidsprofiel_ (DCM) beschrijft de mogelijkheden van een [IOT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) -apparaat. IoT Central kunt een DCM gebruiken om een sjabloon en visualisaties voor een apparaat te maken wanneer het apparaat voor de eerste keer verbinding maakt. In deze snelstartgids leert u het volgende:
 
 * Gebruik Visual Studio code om een IoT Plug en Play-apparaat te maken met een DCM.
 * Voer de apparaatcode in Windows uit en zie verbinding maken met uw IoT Central-toepassing.

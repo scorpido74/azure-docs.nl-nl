@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612290"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990577"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Een virtuele Ubuntu-machine in azure toevoegen aan een beheerd domein
 In dit artikel wordt beschreven hoe u een Ubuntu Linux virtuele machine kunt koppelen aan een Azure AD Domain Services beheerd domein.
@@ -88,7 +88,7 @@ Installeer vervolgens pakketten die vereist zijn voor domein deelname op de virt
 3. Tijdens de installatie van Kerberos wordt een roze scherm weer gegeven. De installatie van het pakket ' krb5-gebruiker ' vraagt naar de realm-naam (in alle hoofd letters). De installatie schrijft de secties [realm] en [domain_realm] in/etc/krb5.conf.
 
     > [!TIP]
-    > Als de naam van uw beheerde domein contoso.com is, voert u contoso.COM in als de realm. Houd er rekening mee dat de realm-naam in hoofd letters moet worden opgegeven.
+    > Als de naam van uw beheerde domein contoso.com is, voert u CONTOSO.COM in als de realm. Houd er rekening mee dat de realm-naam in hoofd letters moet worden opgegeven.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Configureer de NTP-instellingen (Network Time Protocol) op de virtuele Linux-machine
@@ -121,7 +121,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
 1. Ontdek het door AAD Domain Services beheerde domein. Typ de volgende opdracht in uw SSH-terminal:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Voeg de computer toe aan het domein. Typ de volgende opdracht in uw SSH-terminal:
@@ -149,7 +149,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de virtuele Linux-machine, moet 
     > Als uw virtuele machine geen lid kan worden van het domein, moet u ervoor zorgen dat uitgaande Kerberos-verkeer op TCP + UDP-poort 464 naar het subnet van het virtuele netwerk voor uw door Azure AD DS beheerd domein is toegestaan voor de netwerk beveiligings groep van de virtuele machine.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 U moet een bericht ontvangen (de computer is geregistreerd bij realm) wanneer de computer is toegevoegd aan het beheerde domein.
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Domein deelname verifiëren
 Controleer of de computer is toegevoegd aan het beheerde domein. Maak verbinding met het domein dat is gekoppeld aan Ubuntu VM met een andere SSH-verbinding. Gebruik een domein gebruikers account en controleer of het gebruikers account correct is opgelost.
 
-1. Typ in de SSH-terminal de volgende opdracht om verbinding te maken met het domein dat is gekoppeld aan de virtuele Ubuntu-machine via SSH. Gebruik een domein account dat tot het beheerde domein behoort (bijvoorbeeld 'bob@contoso.COM' in dit geval).
+1. Typ in de SSH-terminal de volgende opdracht om verbinding te maken met het domein dat is gekoppeld aan de virtuele Ubuntu-machine via SSH. Gebruik een domein account dat tot het beheerde domein behoort (bijvoorbeeld 'bob@CONTOSO.COM' in dit geval).
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. Typ in de SSH-terminal de volgende opdracht om te controleren of de basismap juist is geïnitialiseerd.

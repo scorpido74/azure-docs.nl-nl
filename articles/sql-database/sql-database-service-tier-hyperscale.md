@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566719"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981167"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Grootschalige-servicelaag voor Maxi maal 100 TB
 
@@ -110,7 +110,7 @@ Met de mogelijkheid om snel extra alleen-lezen Compute-knoop punten in te zetten
 
 Een grootschalige-data base kan worden gemaakt met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Grootschalige-data bases zijn alleen beschikbaar via het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md).
 
-Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in `CREATE DATABASE` de instructie. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier) voor een lijst met geldige service doelstellingen.
+Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in `CREATE DATABASE` de instructie. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) voor een lijst met geldige service doelstellingen.
 
 ```sql
 -- Create a HyperScale Database
@@ -232,7 +232,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
 | Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. De enige manier om een Data Base van grootschalige naar niet-grootschalige te migreren, is door een BACPAC-bestand te exporteren/importeren.|
 | Migratie van data bases met persistente in-Memory objecten | Grootschalige ondersteunt alleen niet-permanente objecten in het geheugen (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die geen deel uitmaken van het geheugen voordat een Data Base naar de service tier grootschalige wordt gemigreerd.|
-| Gegevens bijhouden wijzigen | U kunt Change Data tracking niet gebruiken voor grootschalige-data bases. |
+| Tracering wijzigen | U kunt Wijzigingen bijhouden niet gebruiken met grootschalige-data bases. |
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren.  U kunt geografische herstel bewerkingen uitvoeren (de data base in een andere geografie herstellen, voor DR-of andere doel einden) |
 | TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (ook wel uw eigen sleutel of BYOK genoemd) wordt nog niet ondersteund voor Azure SQL Database grootschalige, maar TDE met door service beheerde sleutels wordt volledig ondersteund. |
 |Intelligente database functies | 1. Index maken, verhalen index adviserende modellen zijn niet getraind voor grootschalige Db's. <br/>2. Schema probleem, DbParameterization-recent toegevoegde advises worden niet ondersteund voor de grootschalige-data base.|
