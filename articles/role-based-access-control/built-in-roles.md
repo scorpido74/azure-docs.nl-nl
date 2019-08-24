@@ -15,12 +15,12 @@ ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899743"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013379"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -54,15 +54,15 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 | [Automation-Runbook-operator](#automation-runbook-operator) | Runbook-eigenschappen lezen: om taken van het Runbook te kunnen maken. |
 | [AVERE-bijdrager](#avere-contributor) | Kan een avere vFXT-cluster maken en beheren. |
 | [AVERE-operator](#avere-operator) | Wordt gebruikt door het avere vFXT-cluster voor het beheren van het cluster |
-| [Azure Event Hubs-gegevens eigenaar (preview-versie)](#azure-event-hubs-data-owner-preview) | Hiermee krijgt u volledige toegang tot Azure Event Hubs-resources. |
-| [Gegevens ontvanger van Azure Event Hubs (preview-versie)](#azure-event-hubs-data-receiver-preview) | Hiermee krijgt u toegang tot Azure Event Hubs-resources. |
-| [Afzender van Azure Event Hubs gegevens (preview)](#azure-event-hubs-data-sender-preview) | Hiermee wordt toegang tot Azure Event Hubs-resources verzonden. |
+| [Eigenaar van Azure Event Hubs-gegevens](#azure-event-hubs-data-owner) | Hiermee krijgt u volledige toegang tot Azure Event Hubs-resources. |
+| [Gegevens ontvanger van Azure Event Hubs](#azure-event-hubs-data-receiver) | Hiermee krijgt u toegang tot Azure Event Hubs-resources. |
+| [Afzender van Azure Event Hubs gegevens](#azure-event-hubs-data-sender) | Hiermee wordt toegang tot Azure Event Hubs-resources verzonden. |
 | [Rol van Cluster beheerder voor Azure Kubernetes-service](#azure-kubernetes-service-cluster-admin-role) | Lijst met actie voor cluster beheer referenties. |
 | [Gebruikersrol Azure Kubernetes service-cluster](#azure-kubernetes-service-cluster-user-role) | Geef een lijst actie voor de gebruikers referenties van het cluster op. |
 | [Azure Maps gegevens lezer (preview-versie)](#azure-maps-data-reader-preview) | Hiermee wordt toegang verleend om gerelateerde gegevens te lezen vanuit een Azure Maps-account. |
-| [Azure Service Bus gegevens eigenaar (preview-versie)](#azure-service-bus-data-owner-preview) | Hiermee krijgt u volledige toegang tot Azure Service Bus-resources. |
-| [Azure Service Bus gegevens ontvanger (preview-versie)](#azure-service-bus-data-receiver-preview) | Hiermee krijgt u toegang tot Azure Service Bus-resources. |
-| [Afzender van Azure Service Bus gegevens (preview-versie)](#azure-service-bus-data-sender-preview) | Hiermee kunt u toegang tot Azure Service Bus resources verzenden. |
+| [Gegevens eigenaar Azure Service Bus](#azure-service-bus-data-owner) | Hiermee krijgt u volledige toegang tot Azure Service Bus-resources. |
+| [Gegevens ontvanger Azure Service Bus](#azure-service-bus-data-receiver) | Hiermee krijgt u toegang tot Azure Service Bus-resources. |
+| [Afzender van Azure Service Bus gegevens](#azure-service-bus-data-sender) | Hiermee kunt u toegang tot Azure Service Bus resources verzenden. |
 | [Registratie-eigenaar Azure Stack](#azure-stack-registration-owner) | Hiermee kunt u Azure Stack registraties beheren. |
 | [Back-upinzender](#backup-contributor) | Hiermee kunt u de back-upservice beheren, maar geen kluizen maken en anderen toegang verlenen |
 | [Back-upoperator](#backup-operator) | Hiermee kunt u back-upservices beheren, behalve het verwijderen van back-ups, het maken van een kluis en het verlenen van toegang |
@@ -556,7 +556,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Azure Event Hubs-gegevens eigenaar (preview-versie)
+## <a name="azure-event-hubs-data-owner"></a>Eigenaar van Azure Event Hubs-gegevens
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,7 +571,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Gegevens ontvanger van Azure Event Hubs (preview-versie)
+## <a name="azure-event-hubs-data-receiver"></a>Gegevens ontvanger van Azure Event Hubs
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -586,7 +586,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Afzender van Azure Event Hubs gegevens (preview)
+## <a name="azure-event-hubs-data-sender"></a>Afzender van Azure Event Hubs gegevens
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -646,7 +646,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Azure Service Bus gegevens eigenaar (preview-versie)
+## <a name="azure-service-bus-data-owner"></a>Gegevens eigenaar Azure Service Bus
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -661,7 +661,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure Service Bus gegevens ontvanger (preview-versie)
+## <a name="azure-service-bus-data-receiver"></a>Gegevens ontvanger Azure Service Bus
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -678,7 +678,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | **NotDataActions** |  |
 > | *geen* |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Afzender van Azure Service Bus gegevens (preview-versie)
+## <a name="azure-service-bus-data-sender"></a>Afzender van Azure Service Bus gegevens
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

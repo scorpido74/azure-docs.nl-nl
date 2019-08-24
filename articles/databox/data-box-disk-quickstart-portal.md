@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
+ms.localizationpriority: high
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 983edcc19a27b91599ea1e312268934b37f8b0ca
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477789"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012880"
 ---
 ::: zone target="docs"
 
@@ -24,7 +25,7 @@ ms.locfileid: "67477789"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Aan de slag met Azure Data Box-schijf met behulp van Azure portal
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Aan de slag met Azure Data Box Disk met behulp van Azure Portal
 
 ::: zone-end
 
@@ -40,7 +41,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ::: zone target="chromeless"
 
-In deze quickstart wordt beschreven hoe u de Azure Data Box Disk implementeert met de Azure-portal. De stappen zijn onder andere vereisten controleren, de schijven te ontgrendelen, verbinding maken met en gegevens kopiëren naar de schijven, zodat die wordt geüpload naar Azure.
+In deze quickstart wordt beschreven hoe u de Azure Data Box Disk implementeert met de Azure-portal. De stappen omvatten het controleren van vereisten, het ontgrendelen van de schijven, verbinding maken en kopiëren van gegevens naar de schijven, zodat deze naar Azure worden geüpload.
 
 ::: zone-end
 
@@ -62,12 +63,12 @@ Meld u aan bij de Azure Portal op [https://aka.ms/azuredataboxfromdiskdocs](http
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U hebt uw order voor het gebruik van Data Box-schijf geplaatst de [zelfstudie: Azure Data Box Disk bestellen](data-box-disk-deploy-ordered.md).
+- U hebt uw bestelling voor data Box disk geplaatst met behulp van de [zelf studie: Azure Data Box Disk bestellen](data-box-disk-deploy-ordered.md).
 - U hebt uw schijven ontvangen en de taakstatus in de portal is bijgewerkt naar **Geleverd**.
 - U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
 
-    - Voer een [ondersteund besturingssysteem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Hebben [andere vereiste software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) als het een Windows-client is geïnstalleerd.
+    - Een [ondersteund besturings systeem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)uitvoeren.
+    - [Andere vereiste software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) is geïnstalleerd als dit een Windows-client is.
 
 ::: zone-end
 
@@ -110,18 +111,18 @@ Deze stap neemt ongeveer 5 minuten in beslag.
 
 De duur van deze bewerking hangt af van de hoeveelheid gegevens.
 
-1. Het station bevat *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*, en *DataBoxDiskImport* mappen. De gegevens die als blok-blobs moeten worden geïmporteerd in de *BlockBlob*-map, kunt u slepen en neerzetten om ze te kopiëren. Op deze manier slepen en neerzetten van gegevens, zoals VHD-/ VHDX op *PageBlob* map en de juiste gegevens *AzureFile*. Kopieer de VHD's die u wilt uploaden als beheerde schijven naar een map onder *ManagedDisk*.
+1. Het station bevat *PageBlob*-, *BlockBlob*-, *AzureFile*-, *ManagedDisk*-en *DataBoxDiskImport* -mappen. De gegevens die als blok-blobs moeten worden geïmporteerd in de *BlockBlob*-map, kunt u slepen en neerzetten om ze te kopiëren. U kunt ook gegevens slepen en neerzetten, zoals VHD/VHDX naar *PageBlob* map en de juiste gegevens naar *AzureFile*. Kopieer de Vhd's die u wilt uploaden als beheerde schijven naar een map onder *ManagedDisk*.
 
-    Er wordt voor elke submap onder de *BlockBlob*- en *PageBlob*-map een container gemaakt in het Azure-opslagaccount. Een bestandsshare is gemaakt voor een submap onder *AzureFile*.
+    Er wordt voor elke submap onder de *BlockBlob*- en *PageBlob*-map een container gemaakt in het Azure-opslagaccount. Er wordt een bestands share gemaakt voor een submap onder *AzureFile*.
 
-    Alle bestanden onder de mappen *BlockBlob* en *PageBlob* worden naar een standaardcontainer `$root` onder het Azure-opslagaccount gekopieerd. Kopieer bestanden naar een map in *AzureFile*. Alle bestanden gekopieerd rechtstreeks naar de *AzureFile* map mislukken en worden geüpload als blok-blobs.
+    Alle bestanden onder de mappen *BlockBlob* en *PageBlob* worden naar een standaardcontainer `$root` onder het Azure-opslagaccount gekopieerd. Bestanden kopiëren naar een map in *AzureFile*. Bestanden die rechtstreeks naar de *AzureFile* -map worden gekopieerd, mislukken en worden geüpload als blok-blobs.
 
     > [!NOTE]
-    > - Alle containers, blobs en -bestanden moeten voldoen aan [Azure naamgevingsregels](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Als u zich niet aan deze regels houdt, mislukt de gegevensupload naar Azure.
-    > - Zorg ervoor dat bestanden niet groter zijn dan ~4.75 TiB voor blok-blobs, ~ 8 TiB voor pagina-blobs en ~ 1 TiB voor Azure Files.
+    > - Alle containers, blobs en bestanden moeten voldoen aan Azure- [naamgevings conventies](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Als u zich niet aan deze regels houdt, mislukt de gegevensupload naar Azure.
+    > - Zorg ervoor dat bestanden niet groter zijn dan ~ 4,75 TiB voor blok-blobs, ~ 8 TiB voor pagina-blobs en ~ 1 TiB voor Azure Files.
 
-2. **(Optioneel maar aanbevolen)**  Nadat de kopie voltooid is, wordt aangeraden ten minste uit te voeren de `DataBoxDiskValidation.cmd` opgegeven in de *DataBoxDiskImport* map en selecteer optie 1 tot en met de bestanden te valideren. We raden ook aan dat u voldoende tijd hebt, u optie 2 gebruiken voor het genereren van controlesommen voor validatie ook (tijd kan duren, afhankelijk van de grootte van de gegevens). Deze stappen beperken de kans op fouten bij het uploaden van de gegevens naar Azure.
-3. Veilig verwijderen van het station.
+2. **(Optioneel, maar aanbevolen)** Nadat de kopie is voltooid, raden we u ten zeerste aan dat u ten `DataBoxDiskValidation.cmd` minste de waarde in de map *DataBoxDiskImport* hebt uitgevoerd en optie 1 selecteert om de bestanden te valideren. We raden u ook aan om gebruik te maken van optie 2 om ook controle sommen voor validatie te genereren (er kan enige tijd in beslag worden nemen afhankelijk van de grootte van de gegevens). Deze stappen verminderen de kans op fouten bij het uploaden van de gegevens naar Azure.
+3. Verwijder het station veilig.
 
 ## <a name="ship-to-azure"></a>Verzenden naar Azure
 

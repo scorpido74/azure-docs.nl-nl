@@ -1,5 +1,5 @@
 ---
-title: Een IPv6-toepassing met dubbele stack implementeren in het virtuele netwerk van Azure-CLI
+title: Een IPv6-toepassing met dubbele stack implementeren met behulp van basis Load Balancer in azure-CLI
 titlesuffix: Azure Virtual Network
 description: In dit artikel wordt beschreven hoe u een IPv6 Dual stack-toepassing implementeert in een virtueel Azure-netwerk met behulp van Azure CLI.
 services: virtual-network
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 75af2012c4e6287a2fbe76098c2a325e6c9ae2ef
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 265a14fa216741a5a5994389e671e7558a527261
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640679"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013717"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Een IPv6-toepassing met dubbele stack implementeren in het virtuele netwerk van Azure-CLI (preview)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Een IPv6-toepassing met dubbele stack implementeren met behulp van Basic Load Balancer-CLI (preview)
 
-In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert in azure met een virtueel netwerk met twee stacks met een dual stack-subnet, een load balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, Dual Network-beveiligings groeps regels en dubbele open bare Ip's.
+In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert met een basis Load Balancer met behulp van Azure CLI met een dual stack virtueel netwerk met een dual stack-subnet, een basis Load Balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, twee regels voor netwerk beveiligings groepen en dubbele open bare Ip's.
+
+Als u een toepassing met dubbele stack (IPV4 + IPv6) wilt implementeren met behulp van Standard Load Balancer, gaat u naar [een IPv6-toepassing met dubbele stack implementeren met Standard Load Balancer met behulp van Azure cli](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
 
 > [!Important]
 > De IPv6-dubbele stack voor Azure Virtual Network is momenteel beschikbaar als open bare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

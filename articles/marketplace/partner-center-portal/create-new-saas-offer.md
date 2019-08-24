@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900120"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013094"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -79,25 +79,29 @@ Als u SaaS-aanbiedingen (Software as a Service) met commerciële Marketplace op 
 - Uw aanbieding moet SaaS-fulfillment- [api's](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) gebruiken voor integratie met Azure Marketplace.
 - Zie de inleidende [hand leiding voor SaaS-aanbiedingen](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)voor uitgebreidere vereisten.
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>SaaS op de kosten van de facturerings infrastructuur van Azure
-Als de SaaS-aanbieding wordt gehost in azure, moet u, als uitgever, rekening met de gebruiks kosten voor Azure-infra structuur en software licentie kosten als één kosten item. Deze kosten worden weer gegeven als een vast maand bedrag voor de klant. Het gebruik van de infra structuur van Azure wordt beheerd en wordt gefactureerd aan u, de partner, direct. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers willen doorgaans de gebruiks kosten voor Azure-infra structuur bundelen in hun prijzen voor software licenties. 
+#### <a name="saas-pricing-and-billing-options"></a>SaaS-prijzen en facturerings opties
+Met SaaS-oplossingen die worden uitgevoerd in het Azure-abonnement van de uitgever, zijn de kosten van de infra structuur waarop de software wordt geïmplementeerd, inbegrepen in de licentie kosten die door klanten worden betaald. Het gebruik van de infra structuur van Azure wordt beheerd en wordt gefactureerd aan u, de partner, direct. De werkelijke gebruiks kosten voor de infra structuur zijn niet zichtbaar voor de klant. Uitgevers moeten gebruiks kosten voor Azure-infra structuur in hun software licentie prijzen bundelen. 
 
-Software licentie kosten worden gepresenteerd als een maandelijks, terugkerend, periodiek op site gebaseerd abonnement en worden niet gemeten of verbruikt.
+SaaS biedt ondersteuning voor maandelijkse of jaarlijkse facturering op basis van een vast bedrag, per gebruiker of verbruiks kosten met behulp van de service voor facturering via data limiet. De commerciële Marketplace van micro soft werkt op een agentuur model, waardoor uitgevers prijzen instellen, micro soft billt klanten en micro soft betaalt de inkomsten aan de uitgever terwijl er kosten in rekening worden gebracht.
+
+De volgende tabel toont een voor beeld van de kosten en uitbetalingen om het model van de instantie te demonstreren.
 
 |**De licentie kosten**|**$100 per maand**|
 |:---|:---|
 |Kosten voor Azure-gebruik (D1/1-core)|Rechtstreeks aan de uitgever gefactureerd, niet de klant|
 |Klant wordt gefactureerd door micro soft|$100,00 per maand (uitgever moet rekening worden gehouden met de kosten voor het ontstaan of door geven van infra structuur in de licentie kosten)|
 
-- In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt $80,00 op de Publisher uitgewisseld.
+|**Micro soft-facturen**|**$100 per maand**|
+|:---|:---|
+|Micro soft betaalt u 80% van uw licentie kosten <br>**Voor gekwalificeerde SaaS-apps betaalt micro soft 90% van uw licentie kosten*|$80,00 per maand <br>*$* 90,00 per maand *|
+
+- In dit voor beeld wordt micro soft billt $100,00 aan de klant voor uw software licentie en betaalt $80,00 de uitgever.
 - Partners die in aanmerking komen voor de **lagere kosten voor Marketplace-service** , zien een gereduceerde transactie kosten voor de SaaS-aanbiedingen van mei 2019 tot juni 2020. In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt $90,00 op de Publisher uitgewisseld.
 
 > [!NOTE]
 > **Lagere kosten voor Marketplace-service**: Voor bepaalde SaaS-aanbiedingen die u hebt gepubliceerd op onze commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Om uw aanbieding in aanmerking te komen, moet u ten minste één van uw aanbiedingen hebben aangewezen door micro soft als IP-mede-verkoop gereed of IP co-sell priority.  Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om dit gereduceerde service-tarief voor de maand te ontvangen.  De lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via onze commerciële Marketplace.  De lagere kosten voor Marketplace-service zijn alleen beschikbaar voor aanbiedingen met een licentie die door micro soft zijn verzameld tussen 1 mei 2019 en 30 juni 2020.  Na deze periode wordt de kosten voor de Marketplace-service weer gegeven in het normale bedrag. 
 
-|**Micro soft-facturen**|**$100 per maand**|
-|:---|:---|
-|Micro soft betaalt u 80% van uw licentie kosten <br>**Voor gekwalificeerde SaaS-apps betaalt micro soft 90% van uw licentie kosten*|$80,00 per maand <br>*$* 90,00 per maand *|
+
 
 
 #### <a name="csp-program-opt-in"></a>Opt-in voor het CSP-programma
@@ -153,9 +157,23 @@ Als u test drive inschakelt, wordt u gevraagd om een demonstratie omgeving te co
 
 ## <a name="connect-lead-management"></a>Lead beheer verbinden
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+Maak rechtstreeks verbinding met klanten door uw aanbieding in de Marketplace te vermelden en uw CRM-systeem (Customer Relationship Management) te koppelen, zodat u de contact gegevens van de klant direct nadat een klant rente heeft gegeven of implementeert. voortplant.
 
-Zie [overzicht Lead beheer](./commercial-marketplace-get-customer-leads.md) voor meer informatie.
+- **Kies een doel voor een potentiële klant** (vervolg keuzelijst): Geef verbindings Details op voor het CRM-systeem waar u leads voor klanten wilt verzenden. 
+
+Het partner Centrum ondersteunt de volgende CRM-systemen voor lead beheer. Selecteer de koppeling voor installatie-instructies.
+
+- Azure-Blob: Geef contact-e-mail, container naam en opslag account op connection string. 
+- [Azure-tabel](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) : Geef het e-mail adres en het Connection String voor het opslag account op. 
+- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) : bieden contact-e-mail, URL en verificatie modus (Office 365 of Azure Active Directory).
+- [Https-eind punt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) : Geef het e-mail adres en het HTTPS-eind punt op. 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) : Geef contact-e-mail, de formulier-id, de Munchkin-account-id en de server-id op.
+- [Sales Force](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) : Geef contact-e-mail en organisatie-id op. 
+
+#### <a name="additional-lead-management-resources"></a>Aanvullende resources voor lead beheer
+- [Veelgestelde vragen over Lead beheer](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [Veelvoorkomende fouten bij de configuratie van de lead](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Overzicht Lead beheer één pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 

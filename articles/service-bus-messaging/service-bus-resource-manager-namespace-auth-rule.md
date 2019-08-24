@@ -1,6 +1,6 @@
 ---
-title: Maken van een Service Bus-autorisatieregel met behulp van Azure Resource Manager-sjabloon | Microsoft Docs
-description: Een Service Bus-autorisatieregel voor naamruimte en wachtrij met behulp van Azure Resource Manager-sjabloon maken
+title: Een Service Bus autorisatie regel maken met Azure Resource Manager sjabloon | Microsoft Docs
+description: Een Service Bus autorisatie regel voor een naam ruimte en een wachtrij maken met behulp van Azure Resource Manager sjabloon
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: f2c82c8ff353889f06dfc1c2ff5c3f316013c54b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8769979fe3e5107e4ca788f65ff1e721b266776b
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171247"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013064"
 ---
-# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Een Service Bus-autorisatieregel voor naamruimte en wachtrij met een Azure Resource Manager-sjabloon maken
+# <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Een Service Bus autorisatie regel voor een naam ruimte en een wachtrij maken met behulp van een Azure Resource Manager sjabloon
 
-In dit artikel ziet u hoe u een Azure Resource Manager-sjabloon maakt u een [autorisatieregel](service-bus-authentication-and-authorization.md#shared-access-signature-authentication) voor een Service Bus-naamruimte en wachtrij. Het artikel wordt uitgelegd hoe om op te geven welke resources worden geïmplementeerd en over het definiëren van parameters die zijn opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
+In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon gebruikt waarmee een [autorisatie regel](service-bus-authentication-and-authorization.md#shared-access-signature) voor een service bus naam ruimte en wachtrij wordt gemaakt. In het artikel wordt uitgelegd hoe u kunt opgeven welke resources worden geïmplementeerd en hoe para meters moeten worden gedefinieerd die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
 
-Zie voor meer informatie over het maken van sjablonen, [Authoring Azure Resource Manager-sjablonen][Authoring Azure Resource Manager templates].
+Zie [Azure Resource Manager sjablonen ontwerpen][Authoring Azure Resource Manager templates]voor meer informatie over het maken van sjablonen.
 
-Zie voor de volledige sjabloon, de [regelsjabloon voor Service Bus-autorisatie] [ Service Bus auth rule template] op GitHub.
+Zie voor de volledige sjabloon de [Service Bus-autorisatie regel sjabloon][Service Bus auth rule template] op github.
 
 > [!NOTE]
-> De volgende Azure Resource Manager-sjablonen zijn beschikbaar voor downloaden en implementeren.
+> De volgende Azure Resource Manager sjablonen zijn beschikbaar voor downloaden en implementeren.
 > 
-> * [Een Service Bus-naamruimte maken](service-bus-resource-manager-namespace.md)
-> * [Een Service Bus-naamruimte met een wachtrij maken](service-bus-resource-manager-namespace-queue.md)
-> * [Een Service Bus-naamruimte maken met een onderwerp en abonnement](service-bus-resource-manager-namespace-topic.md)
-> * [Een Service Bus-naamruimte maken met een onderwerp, abonnement en regel](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Een Service Bus naam ruimte maken](service-bus-resource-manager-namespace.md)
+> * [Een Service Bus naam ruimte maken met wachtrij](service-bus-resource-manager-namespace-queue.md)
+> * [Een Service Bus naam ruimte met een onderwerp en een abonnement maken](service-bus-resource-manager-namespace-topic.md)
+> * [Een Service Bus naam ruimte maken met een onderwerp, een abonnement en een regel](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> Om te controleren of de meest recente sjablonen, gaat u naar de [Azure-Snelstartsjablonen] [ Azure Quickstart Templates] galerie en zoek naar **Service Bus**.
+> Als u de meest recente sjablonen wilt controleren, gaat u naar de galerie met [Azure Quick Start sjablonen][Azure Quickstart Templates] en zoekt u naar **Service Bus**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-will-you-deploy"></a>Wat wilt u implementeren?
 
-Met deze sjabloon kunt implementeren u een Service Bus-autorisatieregel voor een naamruimte en een Berichtentiteit (in dit geval een wachtrij).
+Met deze sjabloon implementeert u een Service Bus autorisatie regel voor een naam ruimte en een bericht entiteit (in dit geval een wachtrij).
 
-Deze sjabloon maakt gebruik van [Shared Access Signature (SAS)](service-bus-sas.md) voor verificatie. SAS kunt toepassingen voor de verificatie bij Service Bus met behulp van een toegangssleutel die is geconfigureerd op de naamruimte of op de Berichtentiteit (wachtrij of onderwerp) waaraan de specifieke rechten zijn gekoppeld. U kunt vervolgens deze sleutel gebruiken voor het genereren van een SAS-token die clients op zijn beurt gebruiken kunnen om te verifiëren met Service Bus.
+Deze sjabloon maakt gebruik van [Shared Access Signature (SAS)](service-bus-sas.md) voor verificatie. Met SAS kunnen toepassingen worden geverifieerd bij Service Bus met behulp van een toegangs sleutel die is geconfigureerd op de naam ruimte of op de Messa ging-entiteit (wachtrij of onderwerp) waaraan specifieke rechten zijn gekoppeld. U kunt deze sleutel vervolgens gebruiken om een SAS-token te genereren dat clients in hun eigen verificatie kunnen gebruiken om zich te verifiëren bij Service Bus.
 
 Klik op de volgende knop om de implementatie automatisch uit te voeren:
 
@@ -53,12 +53,12 @@ Klik op de volgende knop om de implementatie automatisch uit te voeren:
 
 ## <a name="parameters"></a>Parameters
 
-Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie met de naam `Parameters` die alle parameterwaarden bevat. U moet een parameter voor de waarden die variëren op basis van het project dat u wilt implementeren of op basis van de omgeving die u om te implementeren wilt definiëren. Definieer geen parameters voor waarden die worden altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd.
+Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie met `Parameters` de naam die alle parameter waarden bevat. U moet een para meter definiëren voor die waarden die variëren op basis van het project dat u implementeert of op basis van de omgeving waarin u implementeert. Definieer geen para meters voor waarden die altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd.
 
 De sjabloon definieert de volgende parameters.
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-De naam van de Service Bus-naamruimte te maken.
+De naam van de Service Bus naam ruimte die moet worden gemaakt.
 
 ```json
 "serviceBusNamespaceName": {
@@ -67,7 +67,7 @@ De naam van de Service Bus-naamruimte te maken.
 ```
 
 ### <a name="namespaceauthorizationrulename"></a>namespaceAuthorizationRuleName
-De naam van de autorisatieregel voor de naamruimte.
+De naam van de autorisatie regel voor de naam ruimte.
 
 ```json
 "namespaceAuthorizationRuleName ": {
@@ -76,7 +76,7 @@ De naam van de autorisatieregel voor de naamruimte.
 ```
 
 ### <a name="servicebusqueuename"></a>serviceBusQueueName
-De naam van de wachtrij in de Service Bus-naamruimte.
+De naam van de wachtrij in de Service Bus naam ruimte.
 
 ```json
 "serviceBusQueueName": {
@@ -85,7 +85,7 @@ De naam van de wachtrij in de Service Bus-naamruimte.
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-De Service Bus-API-versie van de sjabloon.
+De API-versie van de Service Bus van de sjabloon.
 
 ```json
 "serviceBusApiVersion": { 
@@ -97,7 +97,7 @@ De Service Bus-API-versie van de sjabloon.
 ```
 
 ## <a name="resources-to-deploy"></a>Resources om te implementeren
-Hiermee maakt u een standard Service Bus-naamruimte van het type **Messaging**, en een Service Bus-autorisatieregel voor naamruimte en de entiteit.
+Hiermee maakt u een standaard Service Bus naam ruimte van het type **Messa ging**en een service bus autorisatie regel voor de naam ruimte en de entiteit.
 
 ```json
 "resources": [
@@ -149,7 +149,7 @@ Hiermee maakt u een standard Service Bus-naamruimte van het type **Messaging**, 
     ]
 ```
 
-Zie voor JSON-syntaxis en eigenschappen [naamruimten](/azure/templates/microsoft.servicebus/namespaces), [wachtrijen](/azure/templates/microsoft.servicebus/namespaces/queues), en [AuthorizationRules](/azure/templates/microsoft.servicebus/namespaces/authorizationrules).
+Zie [naam ruimten](/azure/templates/microsoft.servicebus/namespaces), [wacht rijen](/azure/templates/microsoft.servicebus/namespaces/queues)en [AuthorizationRules](/azure/templates/microsoft.servicebus/namespaces/authorizationrules)voor de JSON-syntaxis en-eigenschappen.
 
 ## <a name="commands-to-run-deployment"></a>Opdrachten om implementatie uit te voeren
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
@@ -167,11 +167,11 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu dat u hebt gemaakt en geïmplementeerd resources met behulp van Azure Resource Manager, meer informatie over het beheren van deze bronnen hiervoor deze artikelen:
+Nu u resources hebt gemaakt en geïmplementeerd met behulp van Azure Resource Manager, leert u hoe u deze resources kunt beheren door de volgende artikelen te bekijken:
 
 * [Service Bus met PowerShell beheren](service-bus-powershell-how-to-provision.md)
 * [Service Bus-resources beheren met de Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
-* [Service Bus-verificatie en autorisatie](service-bus-authentication-and-authorization.md)
+* [Verificatie en autorisatie Service Bus](service-bus-authentication-and-authorization.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus

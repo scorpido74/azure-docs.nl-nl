@@ -4,7 +4,6 @@ description: Overzicht van Service Bus toegangs beheer met behulp van hand teken
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
@@ -12,20 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2018
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: d2cd7c8e24571f66fa73ceaa9a70ce33d6105e9c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: ac240fee9a71714f2c7368b43e60f4e6c5d7093d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017742"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013056"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
 *Shared Access signatures* (SAS) vormen het primaire beveiligings mechanisme voor Service Bus berichten. In dit artikel worden SA'S beschreven, hoe ze werken en hoe u ze op een platform neutraal manier kunt gebruiken.
 
 SAS-beveiligingen hebben toegang tot Service Bus op basis van autorisatie regels. Deze worden geconfigureerd op een naam ruimte of een bericht entiteit (relay, wachtrij of onderwerp). Een autorisatie regel heeft een naam, is gekoppeld aan specifieke rechten en bevat een paar cryptografische sleutels. U gebruikt de naam en sleutel van de regel via de Service Bus SDK of uw eigen code om een SAS-token te genereren. Een client kan vervolgens het token door geven aan Service Bus om autorisatie voor de aangevraagde bewerking te bewijzen.
+
+> [!NOTE]
+> Azure Service Bus ondersteunt het toestaan van toegang tot een Service Bus naam ruimte en de bijbehorende entiteiten met behulp van Azure Active Directory (Azure AD). Het autoriseren van gebruikers of toepassingen die gebruikmaken van het OAuth 2,0-token dat wordt geretourneerd door Azure AD, biedt een superieure beveiliging en gebruiks vriendelijk gebruik van Shared Access signatures (SAS). Met Azure AD hoeft u geen tokens op te slaan in uw code en mogelijke beveiligings problemen met Risico's.
+>
+> Micro soft raadt u aan Azure AD te gebruiken met uw Azure Service Bus-toepassingen wanneer dat mogelijk is. Raadpleeg voor meer informatie de volgende artikelen:
+> - [Verifieer en autoriseer een toepassing met Azure Active Directory om toegang te krijgen tot Azure service bus entiteiten](authenticate-application.md).
+> - [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure Service Bus bronnen](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>Overzicht van SAS
 
@@ -57,7 +63,7 @@ Wanneer u een Service Bus naam ruimte maakt, wordt automatisch een beleids regel
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Configuratie voor Shared Access Signature-verificatie
 
-U kunt de [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -regel configureren voor service bus naam ruimten, wacht rijen of onderwerpen. Het configureren van een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) op een service bus-abonnement wordt momenteel niet ondersteund, maar u kunt regels die zijn geconfigureerd in een naam ruimte of onderwerp, gebruiken om de toegang tot abonnementen te beveiligen. Zie het voor beeld voor het [beheren van Azure service bus wachtrijen](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule) voor een werk voorbeeld waarin deze procedure wordt geïllustreerd.
+U kunt de [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -regel configureren voor service bus naam ruimten, wacht rijen of onderwerpen. Het configureren van een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) op een service bus-abonnement wordt momenteel niet ondersteund, maar u kunt regels die zijn geconfigureerd in een naam ruimte of onderwerp, gebruiken om de toegang tot abonnementen te beveiligen. Zie voor een werk voorbeeld waarin deze procedure wordt geïllustreerd het voor beeld van het [gebruik van Shared Access Signature (SAS) met Service Bus abonnementen](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) .
 
 ![GEBASEERD](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -88,7 +94,7 @@ Het token bevat de niet-gehashte waarden, zodat de ontvanger de hash opnieuw kan
 
 De resource-URI is de volledige URI van de Service Bus resource waarmee de toegang wordt geclaimd. Bijvoorbeeld, `http://<namespace>.servicebus.windows.net/<entityPath>` of `sb://<namespace>.servicebus.windows.net/<entityPath>`; `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`... 
 
-**De URI moet een [percentage zijn gecodeerd](/dotnet/api/system.web.httputility.urlencode?view=netframework-4.8).**
+**De URI moet een [percentage zijn gecodeerd](https://msdn.microsoft.com/library/4fkewx0t.aspx).**
 
 De gedeelde toegangs autorisatie regel die wordt gebruikt voor ondertekening moet worden geconfigureerd voor de entiteit die door deze URI wordt opgegeven of door een van de hiërarchische bovenliggende items. Bijvoorbeeld `http://contoso.servicebus.windows.net/contosoTopics/T1` of`http://contoso.servicebus.windows.net` in het vorige voor beeld.
 
@@ -104,8 +110,8 @@ Als u weet of vermoedt dat een sleutel is aangetast en u de sleutels moet intrek
 
 De scenario's die hieronder worden beschreven, zijn onder andere het configureren van autorisatie regels, het genereren van SAS-tokens en client autorisatie.
 
-Zie het volgende voor beeld in onze GitHub-opslag plaats voor een volledig werkend voor beeld van een Service Bus-toepassing die de configuratie illustreert en gebruikmaakt van SAS-autorisatie: [Azure service bus wachtrijen beheren](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule).
- 
+Zie [Shared Access Signature Authentication with Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)voor een volledig werkend voor beeld van een service bus toepassing die de configuratie illustreert en gebruikmaakt van SAS-autorisatie. Hier volgt een voor beeld van het gebruik van SAS-autorisatie regels die zijn geconfigureerd op naam ruimten of onderwerpen voor het beveiligen van Service Bus abonnementen: De [verificatie van Shared Access Signature (SAS) met Service Bus-abonnementen gebruiken](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Toegang tot de autorisatie regels voor gedeelde toegang voor een entiteit
 
 Met Service Bus .NET Framework bibliotheken hebt u toegang tot een [micro soft. ServiceBus. Messa ging. SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -object dat is geconfigureerd in een service bus wachtrij of onderwerp via de verzameling [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) in de bijbehorende [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) of [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription).

@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699321"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013525"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
-Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Azure File Sync transformeert Windows Server in een snelle cache van uw Azure-bestands share. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
+Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
 
 In dit artikel worden belang rijke aandachtspunten voor een Azure File Sync-implementatie beschreven. Het is raadzaam om ook [een Azure files implementatie](storage-files-planning.md)te lezen. 
 
@@ -149,7 +149,7 @@ De resultaten weer geven in CSV:
 | \\SyncShareState | Map voor synchronisatie |
 
 ### <a name="failover-clustering"></a>Failover Clustering
-Windows Server Failover Clustering wordt ondersteund door Azure File Sync voor de implementatie optie ' Bestands server voor algemeen gebruik '. Failover Clustering wordt niet ondersteund op ' scale-out Bestands server voor toepassings gegevens ' (SOFS) of op geclusterde gedeelde volumes (Csv's).
+Windows Server Failover Clustering wordt ondersteund door Azure File Sync voor de implementatie optie ' Bestands server voor algemeen gebruik '. Failover Clustering wordt niet ondersteund op Scale-out bestandsserver voor toepassings gegevens (SOFS) of op geclusterde gedeelde volumes (Csv's).
 
 > [!Note]  
 > De Azure File Sync-agent moet worden geïnstalleerd op elk knoop punt in een failovercluster zodat synchronisatie goed kan worden uitgevoerd.
@@ -254,12 +254,15 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | East US | Virginia |
 | US - oost 2 | Virginia |
 | Frankrijk - centraal | Parijs |
-| Korea - centraal| Seoul |
-| Korea - zuid| Busan |
+| Frankrijk-zuid * | Marseille |
+| Korea - centraal | Seoul |
+| Korea - zuid | Busan |
 | Japan - oost | Tokyo, Saitama |
 | Japan - west | Osaka |
 | US - noord-centraal | Illinois |
 | Europa - noord | Ierland |
+| Zuid-Afrika - noord | Johannesburg |
+| Zuid-Afrika-west * | Kaapstad |
 | US - zuid-centraal | Texas |
 | India - zuid | Chennai |
 | Azië - zuidoost | Singapore |
@@ -274,6 +277,8 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | US - west 2 | Washington |
 
 Azure File Sync ondersteunt alleen synchronisatie met een Azure-bestands share die zich in dezelfde regio bevinden als de opslag synchronisatie service.
+
+Voor de regio's die zijn gemarkeerd met sterretjes, moet u contact opnemen met de ondersteuning van Azure om toegang aan te vragen tot Azure Storage in die regio's. Het proces wordt beschreven in [dit document](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ### <a name="azure-disaster-recovery"></a>Herstel na nood gevallen voor Azure
 Om te beschermen tegen verlies van een Azure-regio, wordt Azure File Sync geïntegreerd met de optie [geo-redundante opslag redundantie](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS-opslag werkt met behulp van asynchrone blok replicatie tussen opslag in de primaire regio, waarmee u normaal gesp roken communiceert en opslag in de gekoppelde secundaire regio. In het geval van een ramp die ervoor zorgt dat een Azure-regio tijdelijk of permanent offline gaat, wordt de opslag van micro soft overgezet naar de gekoppelde regio. 
@@ -296,12 +301,15 @@ Ter ondersteuning van de failover-integratie tussen geo-redundante opslag en Azu
 | East US             | US - west            |
 | US - oost 2           | US - centraal         |
 | Frankrijk - centraal      | Frankrijk - zuid       |
+| Frankrijk - zuid        | Frankrijk - centraal     |
 | Japan - oost          | Japan - west         |
 | Japan - west          | Japan - oost         |
 | Korea - centraal       | Korea - zuid        |
 | Korea - zuid         | Korea - centraal      |
 | Europa - noord        | Europa -west        |
 | US - noord-centraal    | US - zuid-centraal   |
+| Zuid-Afrika - noord  | Zuid-Afrika - west  |
+| Zuid-Afrika - west   | Zuid-Afrika - noord |
 | US - zuid-centraal    | US - noord-centraal   |
 | India - zuid         | India - centraal      |
 | Azië - zuidoost      | Azië - oost          |

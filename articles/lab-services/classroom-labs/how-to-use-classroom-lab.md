@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644990"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012240"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
 In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 
@@ -55,11 +55,38 @@ In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, al
 2. Voer een van de volgende stappen uit: 
     1. Sla het **RDP** -bestand op de harde schijf op voor virtuele **Windows** -machines. Open het RDP-bestand om verbinding te maken met de virtuele machine. Gebruik de **gebruikers naam** en het **wacht woord** die u van uw docent/docent krijgt om u aan te melden bij de computer. 
     3. Voor virtuele **Linux** -machines kunt u **SSH** of **RDP** gebruiken (als deze is ingeschakeld) om er verbinding mee te maken. Zie [verbinding met extern bureau blad inschakelen voor Linux-machines](how-to-enable-remote-desktop-linux.md)voor meer informatie. 
+    1. Als u een **Mac** gebruikt om verbinding te maken met de VM van het lab, volgt u de instructies in de volgende sectie. 
+
+## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Verbinding maken met de gebruikers interface van een virtuele machine met behulp van RDP op een Mac
+In deze sectie wordt uitgelegd hoe een student via RDP verbinding kan maken met de gebruikers interface (UI) van een virtuele machine via een Mac. Hier volgen de snelle stappen, gevolgd door Details: 
+
+1. Installeer Microsoft Extern bureaublad op uw Mac.
+2. Verbinding maken met een VM-gebruikers interface vanuit uw Mac met behulp van RDP. 
+
+### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Microsoft Extern bureaublad installeren op een Mac
+1. Open de App Store op uw Mac en zoek naar **Microsoft extern bureaublad**.
+
+    ![Microsoft Extern bureaublad](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
+1. Installeer de meest recente versie van Microsoft Extern bureaublad. 
+
+### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>Toegang tot de gebruikers interface van de virtuele machine vanaf uw Mac met RDP
+1. Open het **RDP** -bestand dat op uw computer is gedownload met **Microsoft extern bureaublad** geïnstalleerd. Het moet beginnen met het maken van verbinding met de virtuele machine. 
+
+    ![Verbinding maken met de VM-gebruikers interface](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Selecteer **door gaan** als u de volgende fout melding ontvangt. 
+
+    ![Certificaat fout](../media/how-to-use-classroom-lab/certificate-error.png)
+1. De gebruikers interface van de VM moet worden weer geven. 
+
+    > [!NOTE]
+    > Het volgende voor beeld is voor een CentOS Linux-VM. 
+
+    ![VM-GEBRUIKERS INTERFACE](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>Voortgangsbalk 
 De voortgangs balk op de tegel toont het aantal uren dat is gebruikt voor het aantal aan u toegewezen [quota-uren](how-to-configure-student-usage.md#set-quotas-for-users) . Deze tijd is de extra tijd die aan u is toegewezen, naast de geplande tijd voor het lab. De kleur van de voortgangs balk en de tekst onder de voortgangs balk varieert per van de volgende scenario's:
 
-- Als een klasse wordt uitgevoerd (binnen de planning van de klasse), wordt de voortgangs balk grijs weer gegeven om de quota uren niet te gebruiken. 
+- Als een klasse wordt uitgevoerd (binnen de planning van de klasse), wordt de voortgangs balk grijs weer gegeven om aan te geven dat de quota uren niet worden gebruikt. 
 
     ![Voortgangs balk in grijze kleur](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-class-in-progress.png)
 - Als er geen quotum is toegewezen (nul uur), wordt de tekst die **beschikbaar is tijdens klassen alleen** weer gegeven in plaats van de voortgangs balk. 

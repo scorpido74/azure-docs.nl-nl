@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981417"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013226"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Opslag wachtrijen en Service Bus wacht rijen-vergeleken en daarentegen
 In dit artikel worden de verschillen en overeenkomsten geanalyseerd tussen de twee typen wacht rijen die momenteel worden aangeboden door Microsoft Azure: Opslag wachtrijen en wacht rijen voor Service Bus. U kunt deze informatie gebruiken om de verschillende technologieën te vergelijken en tegen elkaar af te zetten zodat u een weloverwogen beslissing kunt nemen en de oplossing kiest die beste voldoet aan uw behoeften.
@@ -52,7 +52,9 @@ Als oplossings architect/ontwikkelaar **kunt u overwegen service bus-wacht rijen
 * U wilt dat uw toepassing berichten verwerkt als parallelle, langlopende streams (berichten worden gekoppeld aan een stroom met behulp van de eigenschap [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) in het bericht). In dit model maakt elk knoop punt in de verbruiks toepassing concurrentie voor streams, in tegens telling tot berichten. Wanneer een stroom aan een verbruikt knoop punt wordt gegeven, kan het knoop punt de status van de status van de toepassings stroom controleren met behulp van trans acties.
 * Uw oplossing vereist transactie gedrag en atomiciteit bij het verzenden of ontvangen van meerdere berichten vanuit een wachtrij.
 * Uw toepassing verwerkt berichten die 64 KB kunnen overschrijden, maar niet waarschijnlijk de limiet van 256 KB.
-* U hebt een vereiste voor het leveren van een op rollen gebaseerd toegangs model voor de wacht rijen en andere rechten/machtigingen voor afzenders en ontvangers. Zie [Active Directory op rollen gebaseerd Access Control (preview-versie)](service-bus-role-based-access-control.md) voor meer informatie.
+* U hebt een vereiste voor het leveren van een op rollen gebaseerd toegangs model voor de wacht rijen en andere rechten/machtigingen voor afzenders en ontvangers. Raadpleeg voor meer informatie de volgende artikelen:
+    - [Verifiëren met beheerde identiteiten](service-bus-managed-service-identity.md)
+    - [Verifiëren vanuit een toepassing](authenticate-application.md)
 * De grootte van de wachtrij kan niet groter zijn dan 80 GB.
 * U wilt het AMQP 1,0-standaard berichten protocol gebruiken. Zie [Service Bus overzicht van AMQP](service-bus-amqp-overview.md)voor meer informatie over AMQP.
 * U kunt een mogelijke migratie van punt-naar-punt-communicatie op basis van een wachtrij voors telling tot een uitwisselings patroon van berichten dat een naadloze integratie van extra ontvangers (abonnees) mogelijk maakt, waarbij elk een onafhankelijke kopie van ofwel een of alle wordt ontvangen. berichten die naar de wachtrij worden verzonden. De laatste verwijst naar de functie voor publiceren/abonneren, die standaard wordt verschaft door Service Bus.

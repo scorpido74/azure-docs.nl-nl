@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e56be394bc7667dfca9a0b417593e8e587073712
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699653"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013565"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Een bestandsshare maken in Azure Files
 U kunt Azure-bestandsshares maken met de  [Azure-portal](https://portal.azure.com/), de PowerShell-cmdlets van Azure Storage, de clientbibliotheken van Azure Storage of de REST API van Azure Storage. In deze zelfstudie leert u het volgende:
@@ -41,24 +41,25 @@ Voor het maken van een Azure-bestandsshare kunt u een opslagaccount gebruiken da
 
 
 ## <a name="create-file-share-through-powershell"></a>Een bestandsshare via de PowerShell maken
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-U bereidt het gebruik van PowerShell voor door de Azure PowerShell-cmdlets te downloaden en te installeren. Zie  [Azure PowerShell installeren en configureren](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) voor het installatiepunt en de installatie-instructies.
+U bereidt het gebruik van PowerShell voor door de Azure PowerShell-cmdlets te downloaden en te installeren. Zie  [Azure PowerShell installeren en configureren](https://docs.microsoft.com/powershell/azure/overview) voor het installatiepunt en de installatie-instructies.
 
 > [!Note]  
 > Het wordt aanbevolen om de meest recente Azure PowerShell-module te downloaden en te installeren, of hiernaar te upgraden.
 
-1. **Een context maken voor uw opslagaccount en sleutel** De context bevat de naam van het opslagaccount en de accountsleutel. Zie  [Storage account access keys](../common/storage-account-manage.md#access-keys) (Toegangssleutels voor Azure Storage-accounts) voor instructies voor het kopiëren van de accountsleutel uit de  [Azure-portal](https://portal.azure.com/).
+1. **Een nieuw opslag account maken:** Een opslag account is een gedeelde opslag groep waarin u Azure-bestands shares en andere opslag resources, zoals blobs of wacht rijen, kunt implementeren.
 
-    ```powershell
-    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
+    ```PowerShell
+    $resourceGroup = "myresourcegroup"
+    $storAcctName = "myuniquestorageaccount"
+    $region = "westus2"
+    $storAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storAcctName -SkuName Standard_LRS -Location $region -Kind StorageV2
     ```
-    
+
 2. **Maak een nieuwe bestandsshare**:    
     
     ```powershell
-    $share = New-AzStorageShare logs -Context $storageContext
+    $shareName = "myshare"
+    $share = New-AzStorageShare -Context $storAcct.Context -Name $shareName
     ```
 
 > [!Note]  

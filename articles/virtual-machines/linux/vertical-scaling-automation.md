@@ -1,6 +1,6 @@
 ---
-title: Verticaal schalen van Azure-machine met Azure Automation | Microsoft Docs
-description: Verticaal schalen van een virtuele Linux-Machine in reactie op waarschuwingen met Azure Automation
+title: Virtuele machine van Azure verticaal schalen met Azure Automation | Microsoft Docs
+description: Een virtuele Linux-machine verticaal schalen als reactie op het controleren van waarschuwingen met Azure Automation
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -16,35 +16,36 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0317344fd8ee1eb415b61d4f5035219e649b18d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f4f49030d479e85b749db28c59fd2e2462ff405f
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695482"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013586"
 ---
-# <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Verticaal schalen Azure Linux-machine met Azure Automation
-Verticaal schalen is het proces van vergroten of verkleinen van de resources van een virtuele machine in reactie op de workload. In Azure kunt dit doen door de grootte van de virtuele Machine te wijzigen. Dit kan helpen in de volgende scenario 's
+# <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Virtuele machine van Azure Linux verticaal schalen met Azure Automation
+Verticaal schalen is het proces van het verg Roten of verkleinen van de resources van een machine als reactie op de werk belasting. In azure kunt u dit doen door de grootte van de virtuele machine te wijzigen. Dit kan helpen in de volgende scenario's:
 
-* Als de virtuele Machine is niet vaak worden gebruikt, kunt u het formaat tot een kleinere om uw maandelijkse kosten te verlagen
-* Als de virtuele Machine een piekbelasting ziet is, kan het worden gewijzigd in een groter formaat om de capaciteit te vergroten
+* Als de virtuele machine niet regel matig wordt gebruikt, kunt u het formaat verlagen tot een kleinere grootte om uw maandelijkse kosten te reduceren
+* Als de virtuele machine een piek belasting krijgt, kan de grootte worden gewijzigd in een grotere grootte om de capaciteit te verg Roten
 
-Het overzicht voor de stappen om dit te doen is als hieronder
+Het overzicht voor de stappen die u moet uitvoeren, is als volgt:
 
-1. Azure Automation voor toegang tot uw virtuele Machines instellen
-2. De verticale schaalbaarheid van Azure Automation-runbooks in uw abonnement importeren
+1. Setup Azure Automation om toegang te krijgen tot uw Virtual Machines
+2. De Azure Automation verticale schaal van runbooks importeren in uw abonnement
 3. Een webhook toevoegen aan uw runbook
-4. Een waarschuwing toevoegen aan uw virtuele Machine
+4. Een waarschuwing toevoegen aan uw virtuele machine
 
-## <a name="scale-limitations"></a>Beperkingen van de schaal
 
-Vanwege de grootte van de eerste virtuele Machine, de grootte die het kan worden geschaald, mogelijk beperkt omdat de beschikbaarheid van de andere grootten in het cluster die in huidige virtuele Machine is geïmplementeerd. In de gepubliceerde automation-runbooks die worden gebruikt in dit artikel we in dit geval regelt en alleen schalen binnen de hieronder paren van VM-grootte. Dit betekent dat een Standard_D1v2 virtuele Machine niet plotseling worden opgeschaald naar Standard_G5 of omlaag worden geschaald naar Basic_A0. Ook wordt beperkte virtuele Machine grootten omhoog/omlaag schalen niet ondersteund. 
+## <a name="scale-limitations"></a>Schaal beperkingen
 
-U kunt kiezen om te schalen tussen de volgende sets grootten:
+Omdat de grootte van de eerste virtuele machine kan worden geschaald, kan de grootte worden beperkt door de beschik baarheid van de andere grootten in de cluster huidige virtuele machine wordt geïmplementeerd in. In de gepubliceerde Automation-runbooks die in dit artikel worden gebruikt, wordt dit geval in rekening gebracht en schaalt deze alleen binnen de onderstaande VM-grootte paren. Dit betekent dat een virtuele machine van Standard_D1v2 niet plotseling kan worden geschaald naar Standard_G5 of omlaag geschaald naar Basic_A0. Ook omhoog/omlaag schalen van beperkte virtuele machines wordt niet ondersteund. 
+
+U kunt kiezen tussen de volgende combi Naties van grootten:
 
 * [A-serie](#a-series)
 * [B-serie](#b-series)
-* [Uit de D-serie](#d-series)
+* [D-serie](#d-series)
 * [E-serie](#e-series)
 * [F-serie](#f-series)
 * [G-serie](#g-series)
@@ -55,7 +56,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="a-series"></a>A-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Basic_A0 | Basic_A1 |
 | Basic_A1 | Basic_A2 |
@@ -77,7 +78,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="b-series"></a>B-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_B1s | Standard_B2s |
 | Standard_B1ms | Standard_B2ms |
@@ -86,7 +87,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="d-series"></a>D-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_D1 | Standard_D2 |
 | Standard_D2 | Standard_D3 |
@@ -128,7 +129,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="e-series"></a>E-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_E2_v3 | Standard_E4_v3 |
 | Standard_E4_v3 | Standard_E8_v3 |
@@ -145,7 +146,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="f-series"></a>F-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_F1 | Standard_F2 |
 | Standard_F2 | Standard_F4 |
@@ -164,7 +165,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="g-series"></a>G-reeks
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_G1 | Standard_G2 |
 | Standard_G2 | Standard_G3 |
@@ -177,14 +178,14 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="h-series"></a>H-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_H8 | Standard_H16 |
 | Standard_H8m | Standard_H16m |
 
 ### <a name="l-series"></a>L-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_L4s | Standard_L8s |
 | Standard_L8s | Standard_L16s |
@@ -196,7 +197,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="m-series"></a>M-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_M8ms | Standard_M16ms |
 | Standard_M16ms | Standard_M32ms |
@@ -209,7 +210,7 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 
 ### <a name="n-series"></a>N-serie
 
-| Oorspronkelijke grootte | Grootte opschalen | 
+| Begin grootte | Grootte omhoog schalen | 
 | --- | --- |
 | Standard_NC6 | Standard_NC12 |
 | Standard_NC12 | Standard_NC24 |
@@ -223,39 +224,41 @@ U kunt kiezen om te schalen tussen de volgende sets grootten:
 | Standard_NV12 | Standard_NV24 |
 | Standard_NV6s_v2 | Standard_NV12s_v2 |
 | Standard_NV12s_v2 | Standard_NV24s_v2 |
+| Standard_NV12s_v3 |Standard_NV48s_v3 |
 
-## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Azure Automation voor toegang tot uw virtuele Machines instellen
-Het eerste wat dat u moet doen is maken van een Azure Automation-account dat als voor de runbooks die worden gebruikt host fungeert voor het schalen van de VM-Schaalset instanties. Onlangs toegevoegd de Automation-service de 'Uitvoeren als-account'-functie die is het instellen van de Service-Principal voor het automatisch uitvoeren van de runbooks namens de gebruiker heel eenvoudig. U kunt meer lezen over deze in het onderstaande artikel:
+
+## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Setup Azure Automation om toegang te krijgen tot uw Virtual Machines
+Het eerste wat u moet doen, is een Azure Automation-account maken dat als host fungeert voor de runbooks die worden gebruikt om de instanties van de VM-Schaalset te schalen. De Automation-Service heeft onlangs de functie ' uitvoeren als-account ' geïntroduceerd waarmee de service-principal wordt ingesteld voor het automatisch uitvoeren van runbooks in de gebruikers. Meer informatie hierover vindt u in het volgende artikel:
 
 * [Runbooks verifiëren met een Azure Uitvoeren als-account](../../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>De verticale schaalbaarheid van Azure Automation-runbooks in uw abonnement importeren
-De runbooks die nodig zijn voor het verticaal schalen van uw virtuele Machine zijn al gepubliceerd in de Azure Automation Runbook Gallery. U moet ze importeren in uw abonnement. U kunt informatie over het importeren van runbooks met het lezen van het volgende artikel.
+## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>De Azure Automation verticale schaal van runbooks importeren in uw abonnement
+De runbooks die nodig zijn voor het verticaal schalen van uw virtuele machine, worden al gepubliceerd in de galerie met Azure Automation Runbook. U moet deze importeren in uw abonnement. Lees het volgende artikel voor meer informatie over het importeren van runbooks.
 
 * [Runbook- en modulegalerieën voor Azure Automation](../../automation/automation-runbook-gallery.md)
 
-De runbooks die moeten worden geïmporteerd worden in de onderstaande afbeelding weergegeven
+De runbooks die moeten worden geïmporteerd, worden weer gegeven in de onderstaande afbeelding
 
 ![Runbooks importeren](./media/vertical-scaling-automation/scale-runbooks.png)
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Een webhook toevoegen aan uw runbook
-Nadat u hebt geïmporteerd toevoegen de runbooks u moet, een webhook aan het runbook, zodat deze kan worden geactiveerd door een waarschuwing van een virtuele Machine. De details van het maken van een webhook voor het Runbook kunnen hier worden gelezen.
+Wanneer u de runbooks hebt geïmporteerd, moet u een webhook toevoegen aan het runbook zodat deze kan worden geactiveerd door een waarschuwing van een virtuele machine. De details van het maken van een webhook voor uw Runbook kunnen hier worden gelezen
 
-* [Azure Automation-webhooks](../../automation/automation-webhooks.md)
+* [Azure Automation webhooks](../../automation/automation-webhooks.md)
 
-Zorg ervoor dat u de webhook kopiëren voordat de webhook-dialoogvenster te sluiten als u dit in de volgende sectie moet.
+Zorg ervoor dat u de webhook kopieert voordat u het dialoog venster webhook sluit wanneer u dit nodig hebt in de volgende sectie.
 
-## <a name="add-an-alert-to-your-virtual-machine"></a>Een waarschuwing toevoegen aan uw virtuele Machine
-1. Instellingen voor virtuele machines selecteren
-2. Selecteer "Waarschuwingsregels"
-3. Selecteer 'Waarschuwing toevoegen'
-4. Selecteer een metrische waarde voor de waarschuwing geactiveerd op
-5. Selecteer een voorwaarde die bij wordt voldaan ertoe leiden dat de waarschuwing moet worden gestart
-6. Selecteer een drempelwaarde voor de voorwaarde in stap 5. moet worden voldaan
-7. Selecteer een periode waarover de bewakingsservice wordt gecontroleerd voor de voorwaarde en drempelwaarde in stap 5 en 6
+## <a name="add-an-alert-to-your-virtual-machine"></a>Een waarschuwing toevoegen aan uw virtuele machine
+1. Instellingen voor virtuele machine selecteren
+2. Selecteer waarschuwings regels
+3. Selecteer Waarschuwing toevoegen
+4. Selecteer een metrische waarde om de waarschuwing te activeren
+5. Selecteer een voor waarde, die tijdens de afronding tot gevolg heeft dat de waarschuwing wordt geactiveerd
+6. Selecteer in stap 5 een drempel waarde voor de voor waarde. te voldoen
+7. Selecteer een periode gedurende welke de bewakings service zal controleren op de voor waarde en drempel waarde in stap 5 & 6
 8. Plak de webhook die u hebt gekopieerd uit de vorige sectie.
 
-![Waarschuwing toevoegen aan de virtuele Machine 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
+![Waarschuwing toevoegen aan virtuele machine 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Waarschuwing toevoegen aan de virtuele Machine 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
+![Waarschuwing toevoegen aan virtuele machine 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
 

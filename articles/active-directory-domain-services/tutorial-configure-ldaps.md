@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: f575dd882c217badb3320b85229149d9793ceb5f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619262"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011352"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een beveiligd LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
 
@@ -286,7 +286,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Beveiligde LDAP binden en testen voor een door Azure AD DS beheerd domein
 
 > [!div class="nextstepaction"]
-> [Meer informatie over hoe synchronisatie werkt in een Azure AD Domain Services beheerd domein](synchronization.md)
+> [Wachtwoord-hash-synchronisatie configureren voor een hybride Azure AD-omgeving](tutorial-configure-password-hash-sync.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

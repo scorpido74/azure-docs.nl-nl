@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 9a7baa6385e0130b784b264a4c53c232ae8a1b50
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980462"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011279"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Hoe objecten en referenties worden gesynchroniseerd in een Azure AD Domain Services beheerd domein
 
@@ -127,7 +127,7 @@ Wanneer u Azure AD DS inschakelt, zijn verouderde wachtwoord hashes voor NTLM + 
 
 Voor Azure AD-omgevingen in de Cloud [moeten gebruikers hun wacht woord opnieuw instellen/wijzigen](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) om ervoor te zorgen dat de vereiste wacht woord-hashes worden gegenereerd en opgeslagen in azure AD. Voor alle Cloud gebruikers accounts die zijn gemaakt in azure AD na het inschakelen van Azure AD Domain Services, worden de wacht woord-hashes gegenereerd en opgeslagen in de NTLM-en Kerberos-compatibele indelingen. Het wacht woord voor deze nieuwe accounts hoeft u niet opnieuw in te stellen of te wijzigen. de oude wacht woord-hashes worden gegenereerd.
 
-Voor hybride gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met Azure AD Connect, moet u [Azure AD Connect configureren voor het synchroniseren van wacht woord-hashes in de indelingen NTLM en Kerberos-compatibel](active-directory-ds-getting-started-password-sync-synced-tenant.md).
+Voor hybride gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met Azure AD Connect, moet u [Azure AD Connect configureren voor het synchroniseren van wacht woord-hashes in de indelingen NTLM en Kerberos-compatibel](tutorial-configure-password-hash-sync.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

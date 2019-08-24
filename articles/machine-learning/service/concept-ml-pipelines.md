@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 160be4224e31793b5bb172f5b913c364ae2c8a59
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951802"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013043"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Wat zijn ML-pijp lijnen in Azure Machine Learning service?
 
@@ -69,7 +69,7 @@ De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine lear
 
 ## <a name="the-python-sdk-for-pipelines"></a>De Python-SDK voor pijplijnen
 
-[Gebruik de python-SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) om uw ml-pijp lijnen te maken in uw favoriete IDE-of Jupyter-notebooks. De SDK van Azure Machine Learning biedt imperatieve constructies voor sequentiëren en gebruik de stappen in uw pijplijnen wanneer niet afhankelijk van de gegevens aanwezig is. 
+[Gebruik de python-SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) om uw ml-pijp lijnen te maken in uw favoriete Integrated Development Environment (IDE) of Jupyter-notebooks. De SDK van Azure Machine Learning biedt imperatieve constructies voor sequentiëren en gebruik de stappen in uw pijplijnen wanneer niet afhankelijk van de gegevens aanwezig is. 
 
 Met behulp van declaratieve gegevensafhankelijkheden, kunt u uw taken optimaliseren. De SDK bevat een Framework met vooraf ontwikkelde modules voor algemene taken, zoals gegevens overdracht en model publicatie. U kunt het framework uitbreiden om uw eigen conventies te model leren door aangepaste stappen te implementeren die opnieuw kunnen worden gebruikt in pijp lijnen. U kunt ook Compute-doelen en opslag bronnen rechtstreeks vanuit de SDK beheren.
 

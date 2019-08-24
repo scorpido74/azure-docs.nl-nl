@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 9ea22dfc83883238923de06a764d7ef1f11cb475
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 818bebdb7555d1b515a5c4a3439d11d4a4766e56
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992989"
+ms.locfileid: "70011973"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Een toepassing verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs resources
 Microsoft Azure biedt geïntegreerde toegangsbeheer voor bronnen en toepassingen op basis van Azure Active Directory (Azure AD). Een belang rijk voor deel van het gebruik van Azure AD met Azure Event Hubs is dat u uw referenties niet meer hoeft op te slaan in de code. In plaats daarvan kunt u een OAuth 2,0-toegangs token aanvragen bij het micro soft Identity-platform. Azure AD verifieert de beveiligingsprincipal (een gebruiker, groep of Service-Principal) die de toepassing uitvoert. Als de verificatie slaagt, retourneert Azure AD een toegangs token voor de toepassing en kan de toepassing vervolgens het toegangs token gebruiken om een aanvraag voor Azure Event Hubs-resources te autoriseren.
@@ -26,9 +26,9 @@ Wanneer een rol is toegewezen aan een Azure AD-beveiligings-principal, verleent 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Ingebouwde rollen voor Azure Event Hubs
 Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot Event Hubs gegevens met behulp van Azure AD en OAuth:
 
-- [Eigenaar van Azure Event hubs-gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview): Gebruik deze rol om volledige toegang tot Event Hubs resources te geven.
-- [Afzender van Azure Event hubs gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender-preview): Gebruik deze rol om toegang te krijgen tot Event Hubs-resources.
-- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver-preview): Gebruik deze rol om toegang te krijgen tot Event Hubs-resources.   
+- [Eigenaar van Azure Event hubs-gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Gebruik deze rol om volledige toegang tot Event Hubs resources te geven.
+- [Afzender van Azure Event hubs gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Gebruik deze rol om toegang te krijgen tot Event Hubs-resources.
+- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Gebruik deze rol om toegang te krijgen tot Event Hubs-resources.   
 
 > [!IMPORTANT]
 > De preview-versie ondersteunt het toevoegen van Event Hubs rechten voor gegevens toegang aan de rol eigenaar of bijdrager. De bevoegdheden voor gegevens toegang voor de rol eigenaar en Inzender worden echter niet meer nageleefd. Als u de rol eigenaar of Inzender gebruikt, schakelt u over naar het gebruik van de functie Azure Event Hubs-gegevens eigenaar.

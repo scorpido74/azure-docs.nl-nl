@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 8/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: feaefef23b433a296d25cc11b5cd89d86acd280f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 34b4192a75978e90ded7554491a522387f6c663f
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650191"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013648"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele Linux-machine maken in de Azure Portal
 
@@ -110,7 +110,7 @@ Wanneer u klaar bent, typt u `exit` om de SSH-sessie te verlaten.
 
 Gebruik een webbrowser naar keuze om de standaard NGINX-welkomstpagina weer te geven. Typ het open bare IP-adres van de virtuele machine als Internet adres. Het openbare IP-adres kan worden gevonden op de overzichtspagina van de virtuele machine of als onderdeel van de SSH-verbindingsreeks die u eerder hebt gebruikt.
 
-![Standaardsite van NGINX](./media/quick-create-cli/nginx.png)
+![Standaardsite van NGINX](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -1,57 +1,30 @@
 ---
-title: Voeg informatie over de bank en belasting | Azure Marketplace
-description: Bank en btw-gegevens toevoegen aan uw Dev Center-account.
+title: Bank-en belasting gegevens toevoegen | Azure Marketplace
+description: Bank-en belasting gegevens toevoegen aan uw ontwikkelaars centrum-account.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: b435260edcbb132adc19f65b6bfcab7edd3afb9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: blevens
+ms.openlocfilehash: 469268637db0b3118b2db8190e9eaf2043662dea
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935679"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011484"
 ---
-# <a name="add-bank-and-tax-information"></a>Voeg informatie over de bank en belasting  
-De bank en btw-informatie is vereist voor alle commerciële aanbiedingen met behulp van het type aanbieding transact.  
-*   Als u commerciële aanbiedingen voor aankoop publiceren wilt, moet klikt u vervolgens u toevoegen betalings- en btw-gegevens en Aanvraagvalidatie in Dev Center.  
-    >[!IMPORTANT]
-    >Voor commerciële-aanbiedingen (transact), moet u de bank en btw-gegevens voltooien voordat u kunt uw aanbiedingen sturen naar productie zijn.  
+# <a name="add-bank-and-tax-information"></a>Bank-en belasting gegevens toevoegen  
 
-*   Als u publicatie alleen gratis of BYOL-aanbiedingen, klikt u bent niet verplicht om toe te voegen van de gegevens. U kunt de informatie later toevoegen, maar de validatie van de btw-gegevens het duurt enige tijd. Als u van plan bent te bieden van commerciële aanbiedingen voor aankoop, moet u de gegevens zo snel mogelijk toevoegen.  
+De Bank-en belasting informatie is vereist voor alle commerciële aanbiedingen met het transactie vermeldings type.  
 
-## <a name="add-bank-information"></a>Voeg informatie over de bank  
-1.  Meld u aan bij Dev Center met uw Microsoft-ID.  
-    *   Als u wilt aanmelden bij Dev Center, gaat u naar de pagina te op het vinden Windows-ontwikkelaarscentrum [dev.windows.com](https://dev.windows.com).  
-2.  Selecteer betalings-account in het menu links.
-3.  Op de `Choose payment method` weergeeft, schakelt `Bank account` of `PayPal`.  
-    >[!IMPORTANT]
-    >Hebt u commerciële klanten kopen aanbiedingen op Marketplace, is uw betalings-account waar u payout voor het aankopen ontvangen.  
+## <a name="partner-center"></a>Partnercentrum
 
-4.  De betaalgegevens invoeren. Nadat u hebt gecontroleerd of de informatie juist is, klikt u op de knop opslaan.  
-    >[!IMPORTANT]
-    >Als u bijwerken of wijzigen van uw betalings-account, moet u de huidige gegevens vervangen door de nieuwe informatie dezelfde stappen volgen. Wijzigingen in uw betalings-account mogelijk vertraagd betalingen tot één betalingscyclus. Deze vertraging treedt op omdat Microsoft moet controleren of het account wijzigen, is dit hetzelfde als wanneer u eerste configuratie uw betalings-account. U kunt het volledige bedrag te verkopen, nadat uw account is geverifieerd. Alle betalingen vervaldatum van de huidige betaling cyclus worden toegevoegd aan de volgende cyclus.  
+Bank-en belasting gegevens worden nu beheerd in het partner centrum. Instructies voor het configureren van deze instellingen vindt u in de sectie ' financiële gegevens ' van [uw partner centrum-account beheren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
 
-4.  Klik op de knop Volgende. 
-
----
-
-## <a name="add-tax-information"></a>BTW-gegevens toevoegen  
-1.  Meld u aan bij Dev Center met uw Microsoft-ID.  
-    *   Als u wilt aanmelden bij Dev Center, gaat u naar de pagina te op het vinden Windows-ontwikkelaarscentrum [dev.windows.com](https://dev.windows.com).  
-2.  Selecteer de btw-profiel in het menu links. 
-3.  Op de `Set up your tax form` pagina, selecteert u het land of regio waarin u werkt met permanente gegevensopslag.  
-    
-    Selecteer het land of regio waarin u de primaire citizenship houdt.  
-    
-    Klik op de knop Volgende. 
-4.  Voer uw btw-gegevens.  
-5.  Klik op de knop Volgende.  
 
 ## <a name="next-steps"></a>Volgende stappen
-*   Ga naar de [Azure Marketplace en AppSource Uitgevershandleiding voor](./marketplace-publishers-guide.md) pagina.  
+*   Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](./marketplace-publishers-guide.md) .  
  
 ---

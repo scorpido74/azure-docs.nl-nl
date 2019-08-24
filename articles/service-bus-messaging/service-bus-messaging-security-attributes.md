@@ -4,17 +4,16 @@ description: Een controle lijst met beveiligings kenmerken voor het evalueren va
 services: service-bus-messaging
 ms.service: service-bus-messaging
 documentationcenter: ''
-author: msmbaldwin
-manager: barbkess
+author: axisc
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 0e1d6e041b47a261b549fb8b608cf09d0d6362dd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.author: aschhab
+ms.openlocfilehash: 875754282f9e7a2b8dd92b0eb2d7e277ac842696
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443902"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013111"
 ---
 # <a name="security-attributes-for-azure-service-bus-messaging"></a>Beveiligings kenmerken voor Azure Service Bus berichten
 
@@ -52,7 +51,7 @@ In dit artikel worden de beveiligings kenmerken gedocumenteerd die zijn ingebouw
 | Beveiligings kenmerk | Ja/Nee | Opmerkingen|
 |---|---|--|
 | Authentication| Ja | Beheerd via [Azure Active Directory Managed Service Identity](service-bus-managed-service-identity.md); Zie [Service Bus verificatie en autorisatie](service-bus-authentication-and-authorization.md).|
-| Authorization| Ja | Ondersteunt autorisatie via [RBAC](service-bus-role-based-access-control.md) (preview) en SAS-token; Zie [Service Bus verificatie en autorisatie](service-bus-authentication-and-authorization.md). |
+| Authorization| Ja | Ondersteunt verificatie via [RBAC](authenticate-application.md) en SAS-token; Zie [Service Bus verificatie en autorisatie](service-bus-authentication-and-authorization.md). |
 
 
 

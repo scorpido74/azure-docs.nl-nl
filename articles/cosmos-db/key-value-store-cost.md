@@ -4,29 +4,29 @@ description: Meer informatie over de kosten van de eenheid aanvraag van Azure Co
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3758766b1051acb9321ec67727eecef249971065
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3a79db11ff05bcc9d18619c7f508a9864c17c3b8
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615094"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012800"
 ---
-# <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als een opslag met sleutelwaarden – kosten-overzicht
+# <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als sleutel waarde-archief – kosten overzicht
 
-Azure Cosmos DB is een wereldwijd gedistribueerde, multi-model databaseservice voor het bouwen van maximaal beschikbare, grootschalige toepassingen eenvoudig. Azure Cosmos DB indexeert automatisch alle gegevens, efficiënt neemt standaard. Hiermee maakt u snel en consistent [SQL](how-to-sql-query.md) (en [JavaScript](stored-procedures-triggers-udfs.md))-query's op elk soort gegevens. 
+Azure Cosmos DB is een wereldwijd gedistribueerde, multi-model databaseservice voor het bouwen van maximaal beschikbare, grootschalige toepassingen eenvoudig. Azure Cosmos DB standaard automatisch en efficiënt alle opgenomen gegevens worden geïndexeerd. Dit maakt snelle en consistente [SQL](how-to-sql-query.md) -query's (en [Java script](stored-procedures-triggers-udfs.md)) mogelijk voor de gegevens. 
 
-Dit artikel worden de kosten van Azure Cosmos DB voor eenvoudige schrijven en bewerkingen lezen wanneer deze wordt gebruikt als een sleutel/waarde-archief. Voorbeelden van bewerkingen zijn ingevoegd, vervangt, verwijderingen en upsert-bewerking van documenten worden geschreven. Behalve een SLA van 99,99% Beschik baarheid voor alle accounts voor één regio en alle accounts voor meerdere regio's met beperkte consistentie en 99,999% Lees Beschik baarheid voor alle database accounts met meerdere regio's, Azure Cosmos DB biedt gegarandeerde < 10-MS-latentie voor leest en voor de (geïndexeerde) schrijf bewerkingen respectievelijk op het 99e percentiel. 
+Dit artikel worden de kosten van Azure Cosmos DB voor eenvoudige schrijven en bewerkingen lezen wanneer deze wordt gebruikt als een sleutel/waarde-archief. Schrijf bewerkingen zijn onder andere invoegen, vervangen, verwijderen en upsert van gegevens items. Naast het garanderen van een SLA van 99,999% Beschik baarheid voor alle accounts met meerdere regio's, biedt Azure Cosmos DB gegarandeerde < 10-MS-latentie voor lees bewerkingen en voor de (geïndexeerde) schrijf bewerkingen in het 99e percentiel. 
 
 ## <a name="why-we-use-request-units-rus"></a>Waarom we Aanvraageenheden (ru's) gebruiken
 
-Azure Cosmos DB-prestaties is gebaseerd op het bedrag van de ingerichte [Aanvraageenheden](request-units.md) (RU) voor de partitie. De inrichting is op een tweede granulariteit en wordt aangeschaft in ru's per seconde ([niet te verwarren met de facturering per uur](https://azure.microsoft.com/pricing/details/cosmos-db/)). RU's moeten worden beschouwd als een valuta die vereenvoudigt het inrichten van de vereiste doorvoer voor de toepassing. Onze klanten hoeft niet te beschouwen verschillen tussen lezen en schrijven van capaciteitseenheden. Het model voor één valuta ru's maakt efficiëntie voor het delen van de ingerichte capaciteit tussen de lees- en schrijfbewerkingen. Dit model ingerichte capaciteit kan de service voor een voorspelbare en consistente doorvoer, gegarandeerde lage latentie en hoge beschikbaarheid. Ten slotte RU doorvoer voor het model worden gebruikt, maar elke ingerichte RU heeft ook een vooraf bepaalde hoeveelheid resources (geheugen, Core). RU/sec. is niet alleen IOPS.
+Azure Cosmos DB prestaties zijn gebaseerd op de hoeveelheid ingerichte door Voer uitgedrukt in [aanvraag eenheden](request-units.md) (ru/s). Het inrichten bevindt zich in een tweede granulatie en wordt aangeschaft in RU/s ([niet worden verward met de facturering per uur](https://azure.microsoft.com/pricing/details/cosmos-db/)). RUs moet worden beschouwd als een logische abstractie (een valuta) waarmee het inrichten van de vereiste door Voer voor de toepassing wordt vereenvoudigd. Gebruikers hoeven geen onderscheid te maken tussen lees-en schrijf doorvoer. Het model voor één valuta ru's maakt efficiëntie voor het delen van de ingerichte capaciteit tussen de lees- en schrijfbewerkingen. Met dit model met ingerichte capaciteit kan de service een **voorspel bare en consistente door Voer, een gegarandeerde lage latentie en hoge Beschik baarheid**bieden. Ten slotte, terwijl RU-model wordt gebruikt voor de door Voer, heeft elke ingerichte RU ook een gedefinieerde hoeveelheid resources (bijvoorbeeld geheugen, kernen/CPU en IOPS).
 
-Als een wereldwijd gedistribueerde databasesysteem is Cosmos DB het alleen Azure-service een SLA voor latentie, doorvoer en consistentie naast de hoge beschikbaarheid biedt. De door u ingerichte door Voer wordt toegepast op elk van de regio's die zijn gekoppeld aan uw Cosmos-database account. Voor leesbewerkingen, Cosmos DB biedt meerdere, duidelijk gedefinieerde [consistentieniveaus](consistency-levels.md) voor u om uit te kiezen. 
+Als wereld wijd gedistribueerd database systeem is Cosmos DB de enige Azure-service die voorziet in uitgebreide Sla's met betrekking tot latentie, door Voer, consistentie en hoge Beschik baarheid. De door u ingerichte door Voer wordt toegepast op elk van de regio's die zijn gekoppeld aan uw Cosmos-account. Voor leesbewerkingen, Cosmos DB biedt meerdere, duidelijk gedefinieerde [consistentieniveaus](consistency-levels.md) voor u om uit te kiezen. 
 
-De volgende tabel ziet u het aantal ru's die zijn vereist voor het uitvoeren van lezen en schrijven van transacties op basis van de grootte van het document van 1 KB en 100 kB's.
+In de volgende tabel ziet u het aantal dat is vereist om Lees-en schrijf bewerkingen uit te voeren op basis van een gegevens item met een grootte van 1 KB en 100 Kb's.
 
 |Grootte van item|1 lezen|1 schrijven|
 |-------------|------|-------|
@@ -35,17 +35,17 @@ De volgende tabel ziet u het aantal ru's die zijn vereist voor het uitvoeren van
 
 ## <a name="cost-of-reads-and-writes"></a>Kosten van lees- en schrijfbewerkingen
 
-Als u 1000 inricht RU/sec., deze hoeveelheden 3.6-m RU/uur en worden kosten $0,08 voor het uur (in de Verenigde Staten en Europa). Voor een document van 1 KB grootte, dit betekent dat 3.6-m leesbewerkingen kunnen worden gebruikt of 0,72-m schrijft (3.6-m RU / 5) met behulp van de ingerichte doorvoer. Genormaliseerd voor miljoen lees- en schrijfbewerkingen, zijn de kosten $0,022 /m leesbewerkingen ($0,08 / 3.6) en $0.111/ m schrijft ($0,08 / 0,72). De kosten per miljoen wordt minimale zoals wordt weergegeven in de onderstaande tabel.
+Als u 1.000 RU/s inricht, is dit een bedrag van 3.600.000 RU/uur en kost het $0,08 voor het uur (in de VS en Europa). Voor een gegevens item van 1 KB, betekent dit dat u 3.600.000 Lees-of 720.000-schrijf bewerkingen (3.600.000 RU/5) kunt gebruiken met behulp van de ingerichte door voer. De kosten zijn genormaliseerd tot miljoen Lees-en schrijf bewerkingen en zijn $0,022/miljoen van Lees bewerkingen ($0,08/3,6) en $0.111/miljoen schrijf bewerkingen ($0,08/0,72). De kosten per miljoen wordt minimale zoals wordt weergegeven in de onderstaande tabel.
 
-|Grootte van item|1-m lezen|1 m schrijven|
+|Grootte van item|Kosten van 1.000.000 Lees bewerkingen|Kosten van 1.000.000 schrijf bewerkingen|
 |-------------|-------|--------|
 |1 KB|$0.022|$0.111|
 |100 KB|$0.222|$1.111|
 
 
-De meeste van de standaard blob of het object winkels services kosten $0,40 per miljoen lezen transactie en $5 per miljoen Schrijf-transactie. Als u optimaal gebruikt, kan de Cosmos DB 98% goedkoper dan deze andere oplossingen (voor transacties van 1 KB) zijn.
+De meeste van de standaard blob of het object winkels services kosten $0,40 per miljoen lezen transactie en $5 per miljoen Schrijf-transactie. Als Cosmos DB optimaal wordt gebruikt, kan het tot 98% goed koper zijn dan deze andere oplossingen (voor 1 KB trans acties).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Blijf ons volgen voor nieuwe artikelen over het optimaliseren van de inrichting van Azure Cosmos DB-resources. In de tussentijd kunt u gratis gebruik van onze [RU calculator](https://www.documentdb.com/capacityplanner).
+* Gebruik [ru Calculator](https://cosmos.azure.com/capacitycalculator/) om een schatting te maken van de door Voer voor uw workloads.
 

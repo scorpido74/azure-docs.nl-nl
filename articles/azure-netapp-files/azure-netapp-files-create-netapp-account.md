@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e60f5251f911ffe2b917dcc30e433e0a960823e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522817"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012573"
 ---
 # <a name="create-a-netapp-account"></a>Een NetApp-account maken
 Als u een NetApp-account maakt, kunt u een capaciteitspool instellen en vervolgens een volume maken. U gebruikt de Azure NetApp Files-blade om een nieuw NetApp-account te maken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Moet dat u een e-mailbericht hebt ontvangen van het team van Azure NetApp bestanden waaruit blijkt dat u toegang tot de service hebt gekregen. Zie [een wachtlijst indienen voor toegang tot de service](azure-netapp-files-register.md#waitlist).
+U moet een e-mail adres hebben ontvangen van het Azure NetApp Files team bevestigen dat u toegang hebt gekregen tot de service. Zie [een Waitlist-aanvraag indienen voor toegang tot de service](azure-netapp-files-register.md#waitlist).
 
-U moet hebt uw abonnement voor het gebruik van de Resourceprovider NetApp ook geregistreerd. Zie [Registreer de Resourceprovider van NetApp](azure-netapp-files-register.md#resource-provider).
+U moet uw abonnement ook hebben geregistreerd voor het gebruik van de NetApp-resource provider. Zie [de NetApp-resource provider registreren](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Stappen 
 
@@ -58,11 +58,12 @@ U moet hebt uw abonnement voor het gebruik van de Resourceprovider NetApp ook ge
    Het NetApp-account dat u hebt gemaakt, verschijnt nu in de Azure NetApp Files-blade. 
 
 > [!NOTE] 
-> Als u hebt geen toegang verleend aan de service Azure NetApp bestanden, ontvangt u de volgende fout wanneer u probeert te maken van het eerste NetApp-account:  
+> Als u geen toegang hebt gekregen tot de Azure NetApp Files-service, wordt de volgende fout weer gegeven wanneer u probeert om het eerste NetApp-account te maken:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-[Een capaciteitspool instellen](azure-netapp-files-set-up-capacity-pool.md)
+* [Een capaciteitspool instellen](azure-netapp-files-set-up-capacity-pool.md)
+* [Azure NetApp Files-resources beheren met behulp van Azure CLI](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)
 

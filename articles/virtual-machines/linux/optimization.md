@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ad512baad86133cc1aad80438a6b68d2a31a6cc6
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640757"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013596"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Uw Linux VM optimaliseren voor Azure
 Het maken van een virtuele Linux-machine (VM) is eenvoudig vanuit de opdracht regel of vanuit de portal. In deze zelf studie ziet u hoe u ervoor kunt zorgen dat u deze hebt ingesteld om de prestaties van het Microsoft Azure platform te optimaliseren. In dit onderwerp wordt een Ubuntu-Server-VM gebruikt, maar u kunt ook virtuele Linux-machine maken met behulp van [uw eigen installatie kopieën als sjablonen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -53,7 +53,7 @@ Bij het verwerken van werk belastingen met hoge IOps en als u standaard opslag v
 ## <a name="your-vm-temporary-drive"></a>Het tijdelijke VM-station
 Wanneer u een virtuele machine maakt, biedt Azure standaard een besturingssysteem schijf ( **/dev/sda**) en een tijdelijke schijf ( **/dev/sdb**).  Alle extra schijven die u toevoegt, worden weer gegeven als **/dev/SDC**, **/dev/sdd**, **/dev/SDE** , enzovoort. Alle gegevens op de tijdelijke schijf ( **/dev/sdb**) zijn niet duurzaam en kunnen verloren gaan als voor specifieke gebeurtenissen, zoals het wijzigen van de grootte van de VM, opnieuw implementeren of onderhoud, het opnieuw opstarten van uw VM wordt afgedwongen.  De grootte en het type van de tijdelijke schijf zijn gerelateerd aan de VM-grootte die u tijdens de implementatie hebt gekozen. Alle virtuele machines van de Premium-grootte (DS-, G-en DS_V2-serie) het tijdelijke station worden ondersteund door een lokale SSD voor extra prestaties van Maxi maal 48k IOps. 
 
-## <a name="linux-swap-file"></a>Linux-wissel bestand
+## <a name="linux-swap-partition"></a>Linux-wisselende partitie
 Als uw Azure-VM afkomstig is van een Ubuntu-of CoreOS-installatie kopie, kunt u CustomData gebruiken om een Cloud-config naar Cloud-init te verzenden. Als u [een aangepaste Linux-installatie kopie hebt geüpload](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) die gebruikmaakt van Cloud-init, kunt u ook swap-partities configureren met Cloud-init.
 
 In Ubuntu-Cloud installatie kopieën moet u Cloud-init gebruiken om de swap-partitie te configureren. Zie [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)voor meer informatie.
@@ -127,6 +127,8 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Software-RAID gebruiken om hogere I/ops te krijgen
 Als uw werk belasting meer IOps vereist dan één schijf kan bieden, moet u een software matige RAID-configuratie van meerdere schijven gebruiken. Omdat Azure schijf tolerantie al uitvoert op de lokale Fabric-laag, bereikt u het hoogste prestatie niveau van een RAID-0-Stripe-configuratie.  U kunt schijven inrichten en maken in de Azure-omgeving en deze koppelen aan uw virtuele Linux-machine voordat u partitioneert, de schijven formatteert en koppelt.  Meer informatie over het configureren van een software-RAID-installatie op uw virtuele Linux-machine in azure vindt u in het document **[Software RAID in Linux configureren](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
+
+Als alternatief voor een traditionele RAID-configuratie kunt u er ook voor kiezen om Logical Volume Manager (LVM) te installeren om een aantal fysieke schijven te configureren in één gestripte logische opslag volume. In deze configuratie worden lees-en schrijf bewerkingen gedistribueerd naar meerdere schijven in de volume groep (vergelijkbaar met RAID0). Uit het oogpunt van prestaties is het waarschijnlijk dat u uw logische volumes wilt verwijderen zodat Lees-en schrijf bewerkingen gebruikmaken van alle gekoppelde gegevens schijven.  Meer informatie over het configureren van een gesegmenteerd logisch volume op uw virtuele Linux-machine in azure vindt u in de **[LVM configureren op een virtuele Linux-machine in azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** document.
 
 ## <a name="next-steps"></a>Volgende stappen
 Houd er rekening mee dat, net als bij alle optimalisatie-discussies, tests moeten worden uitgevoerd voor en na elke wijziging om de impact van de wijziging te meten.  Optimalisatie is een stapsgewijs proces dat verschillende resultaten heeft op verschillende computers in uw omgeving.  Wat werkt voor één configuratie, werkt mogelijk niet voor anderen.

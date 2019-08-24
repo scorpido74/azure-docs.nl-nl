@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774662"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012596"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Betalen voor uw Azure-abonnement per factuur
 
@@ -24,7 +24,8 @@ Als u overschakelt naar betalen per factuur, betekent dit dat u uw factuur binne
 
 > [!IMPORTANT]
 > * Factuur betalen (cheque/overschrijving) is alleen beschikbaar voor zakelijke accounts.
-> * U moet alle openstaande kosten betalen voordat u overschakelt naar factuur betalen.
+> * Betaal alle openstaande kosten voordat u overschakelt naar factuur betalen.
+> * Factuur betaling wordt momenteel niet ondersteund voor wereld wijd Azure in China.
 
 ## <a name="request-to-pay-by-invoice"></a>Aanvraag om per factuur te betalen
 
@@ -64,7 +65,7 @@ Als u overschakelt naar betalen per factuur, betekent dit dat u uw factuur binne
          Specific region & series of Subscription:
 
     - De **Bedrijfs naam** en het **bedrijfs adres** moeten overeenkomen met de informatie die u hebt opgegeven voor het Azure-account. Als u de informatie wilt weer geven of bijwerken, raadpleegt u [de profiel gegevens van uw Azure-account wijzigen](billing-how-to-change-azure-account-profile.md).
-    - U moet uw contact gegevens voor uw facturering toevoegen in de Azure Portal voordat de krediet limiet kan worden goedgekeurd. De contact gegevens zijn gerelateerd aan de leveranciers van het bedrijf of de financiële afdeling. Als u de contact gegevens van de facturering wilt bijwerken, gaat u naar [Azure-Accountcentrum](https://account.azure.com/Profile).
+    - Voeg uw factuur contact gegevens toe aan de Azure Portal voordat de krediet limiet kan worden goedgekeurd. De contact gegevens zijn gerelateerd aan de leveranciers van het bedrijf of de financiële afdeling. Als u de contact gegevens van de facturering wilt bijwerken, gaat u naar [Azure-Accountcentrum](https://account.azure.com/Profile).
 
 6. Controleer uw contactgegevens en de voorkeurscontactmethode en klik vervolgens op **Maken**.
 
@@ -74,7 +75,7 @@ Als we een krediet controle moeten uitvoeren vanwege de hoeveelheid tegoed die u
 
 Zodra u bent goedgekeurd voor betaling per factuur, kunt u overschakelen naar factuur betalen (cheque/overschrijving) in de Azure Portal.
 
-Als u een micro soft Online Services-programma account hebt, kunt u uw Azure-abonnement overschakelen op cheque/Wire-overdracht. Als u een micro soft-klant overeenkomst hebt, kunt u uw facturerings profiel overschakelen op cheque/bedrading. [Meer informatie over het controleren van uw account type](#check-access-to-a-microsoft-customer-agreement).
+Als u een micro soft Online Services-programma account hebt, kunt u uw Azure-abonnement overschakelen op cheque/Wire-overdracht. Met een klant overeenkomst van micro soft kunt u uw facturerings profiel overschakelen op cheque/bedrading. [Meer informatie over het controleren van uw account type](#check-access-to-a-microsoft-customer-agreement).
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure-abonnement overschakelen op cheque/bedrading
 
@@ -93,7 +94,7 @@ Volg de onderstaande stappen om uw Azure-abonnement te wijzigen in betalen per f
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Facturerings profiel overschakelen op cheque/bedrading
 
-Volg de onderstaande stappen om een facturerings profiel over te scha kelen naar een cheque/overschrijving. Houd er rekening mee dat alleen de persoon die zich heeft aangemeld voor Azure, de standaard betalings methode van een facturerings profiel kan wijzigen.
+Volg de onderstaande stappen om een facturerings profiel over te scha kelen naar een cheque/overschrijving. Alleen de persoon die zich heeft aangemeld voor Azure kan de standaard Betalings wijze van een facturerings profiel wijzigen.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Zoeken op **kosten Management en facturering**.
@@ -106,7 +107,7 @@ Volg de onderstaande stappen om een facturerings profiel over te scha kelen naar
 
    ![Scherm opname waarin de betalings wijzen in het menu worden weer gegeven](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
 
-1. Klik op de blauwe banner met de tekst dat u in aanmerking komt voor betaling per cheque/overschrijving.
+1. Klik op de blauwe banner waarin staat dat u in aanmerking komt voor betaling per cheque/overschrijving.
 
     ![Scherm afbeelding met een blauwe banner om over te scha kelen naar check/Wire](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
 

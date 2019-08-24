@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562117"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011674"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: Uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -87,11 +87,13 @@ Als u afhankelijk bent van het hulp programma voor systeem voorbereiding (Syspre
 
 Als u een moment opname van een virtuele machine (VM) vertrouwt om extra Vm's te maken, moet u ervoor zorgen dat de moment opname niet afkomstig is van een VM die al is geregistreerd bij Azure AD als hybride Azure AD-deelname.
 
-Als uw Windows 10-domein aangesloten apparaten al door [Azure AD zijn geregistreerd](overview.md#getting-devices-in-azure-ad) bij uw Tenant, raden we u aan deze status te verwijderen voordat u hybride Azure AD join inschakelt. In Windows 10 1809 release zijn de volgende wijzigingen aangebracht om deze dubbele status te voor komen:
+Als uw Windows 10-domein aangesloten apparaten zijn die zijn [geregistreerd](overview.md#getting-devices-in-azure-ad) bij uw Tenant, kan dit leiden tot een dubbele status van hybride Azure AD join en Azure AD geregistreerd apparaat. U wordt aangeraden om een upgrade uit te voeren naar Windows 10 1803 (met KB4489894 toegepast) of hoger om dit scenario automatisch te verhelpen. In versies van vóór 1803 moet u de Azure AD-status geregistreerd hand matig verwijderen voordat u hybride deelname van Azure AD inschakelt. In 1803 en hoger releases zijn de volgende wijzigingen aangebracht om deze dubbele status te voor komen:
 
-- Alle bestaande Azure AD-geregistreerde statussen worden automatisch verwijderd nadat het apparaat is toegevoegd aan hybride Azure AD.
+- Alle bestaande Azure AD-geregistreerde statussen worden automatisch verwijderd <i>nadat het apparaat is toegevoegd aan hybride Azure AD</i>.
 - U kunt voor komen dat uw domein dat lid is van Azure AD, wordt geregistreerd door de register sleutel HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, ' BlockAADWorkplaceJoin ' = DWORD: 00000001 toe te voegen.
-- Deze wijziging is nu beschikbaar voor Windows 10 1803-release met KB4489894 toegepast. Als u echter Windows hello voor bedrijven hebt geconfigureerd, is de gebruiker verplicht Windows hello voor bedrijven opnieuw in te stellen na het opschonen van de dubbele status.
+- Als u Windows hello voor bedrijven hebt geconfigureerd in Windows 10 1803, moet de gebruiker Windows hello voor bedrijven opnieuw instellen na het opschonen van de dubbele status. Dit probleem is opgelost met KB4512509
+
+
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname controleren
 

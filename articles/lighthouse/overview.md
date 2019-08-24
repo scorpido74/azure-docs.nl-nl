@@ -1,46 +1,49 @@
 ---
-
-title: Wat is Azure naar?
-
+title: Wat is Azure Lighthouse?
 description: Met Azure Lighthouse kunnen serviceproviders beheerde services voor hun klanten met een hogere automation en efficiëntie leveren op schaal.
 author: JnHs
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: eb55af5a1121eb193bb76efc9f9e0b833f4b5a1f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809818"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011909"
 ---
 # <a name="what-is-azure-lighthouse"></a>Wat is Azure Lighthouse?
 
-Azure Lighthouse biedt serviceproviders één besturingsvlak waarin ze Azure voor al hun klanten kunnen weergeven en beheren met een verbeterde automatisering, schaal en beheer. Met Azure Lighthouse kunnen serviceproviders beheerde services leveren met behulp van uitgebreide en krachtige beheertools die zijn ingebouwd in het Azure-platform. Azure Lighthouse biedt ook voordelen voor grote IT-organisaties die resources voor meerdere tenants beheren.
+Azure Lighthouse biedt service providers één besturings vlak voor het weer geven en beheren van Azure voor al hun klanten met meer automatisering, schaal baarheid en verbeterd governance. Met Azure Lighthouse kunnen service providers beheerde services leveren met behulp van uitgebreid en krachtig beheer programma dat is ingebouwd in het Azure-platform. Deze aanbieding kan ook profiteren van zakelijke IT-organisaties die resources over meerdere tenants beheren.
 
-![Overzichtsdiagram van Azure naar](media/azure-lighthouse-overview.jpg)
+![Overzichts diagram van Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 
 ## <a name="benefits"></a>Voordelen
 
-Met Azure Lighthouse kunt u beheerde services op een rendabele en efficiënte manier ontwikkelen en leveren aan uw klanten. U profiteert van de volgende voordelen:
+Met Azure Lighthouse kunt u op winstgevende en efficiënte wijze beheerde services bouwen en leveren voor uw klanten. De voor delen zijn onder andere:
 
-- **Beheer op grote schaal**: Customer engagement en levenscyclus van bewerkingen voor het beheren van resources van de klant zijn eenvoudiger en beter schaalbaar.
-- **Meer zichtbaarheid van en precisie voor klanten**: Klanten waarvan bronnen die u beheert wordt meer inzicht in uw acties en nauwkeurige controle over het bereik hebben ze delegeren voor beheer, terwijl uw IP-adres behouden blijft.
-- **Platform met uitgebreide en geïntegreerde tooling**: Onze ervaring voor hulpprogramma's adressen sleutel serviceprovider-scenario's, met inbegrip van meerdere licentiemodellen zoals EA, CSP en betalen per gebruik. De nieuwe mogelijkheden werken met bestaande hulpprogramma's en API's, modellen, licentieverlening en programma's van partners, zoals de [programma Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview). De Azure-naar-opties die u kiest in uw bestaande werkstromen en toepassingen kunnen worden geïntegreerd, en kunt u uw invloed op klant-engagements door bijhouden [uw partner-ID koppelen](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+- **Beheer op schaal**: Klant betrokkenheid en levenscyclus bewerkingen voor het beheer van klant resources zijn eenvoudiger en schaalbaar.
+- **Meer inzicht en nauw keurigheid voor klanten**: Klanten van wie de resources die u beheert, hebben meer inzicht in uw acties en nauw keurige controle over het bereik dat ze overdragen voor beheer, terwijl uw IP-adres behouden blijft.
+- **Uitgebreide en Unified platform-hulp middelen**: Onze ervaring met Program ma's heeft betrekking op belang rijke service provider scenario's, met inbegrip van meerdere licentie modellen, zoals EA, CSP en betalen naar gebruik. De nieuwe mogelijkheden werken met bestaande hulpprogram ma's en Api's, licentie modellen en partner Programma's, zoals het [Cloud Solution Provider-programma (CSP)](https://docs.microsoft.com/partner-center/csp-overview). De Azure Lighthouse-opties die u kiest, kunnen worden geïntegreerd in uw bestaande werk stromen en toepassingen, en u kunt uw impact op klant afspraken bijhouden door [uw partner-id te koppelen](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
 
-Er zijn geen extra kosten die zijn gekoppeld aan uw klanten Azure-resources beheren met behulp van Azure naar.
+Er zijn geen extra kosten verbonden aan het gebruik van Azure Lighthouse voor het beheren van de Azure-resources van uw klanten.
 
-## <a name="capabilities"></a>Functionaliteit
+## <a name="capabilities"></a>Mogelijkheden
 
-Azure Lighthouse biedt meerdere manieren waarop u de klantbetrokkenheid en het klantenbeheer kunt stroomlijnen.
+Azure Lighthouse bevat meerdere manieren om klant betrokkenheid en-beheer te stroom lijnen:
 
-- **Azure Resourcemanagement overgedragen**: Beheren van uw klanten Azure-resources veilig binnen uw eigen tenant zonder om over te schakelen van context en controle vlakken. Zie voor meer informatie, [Azure Resourcemanagement overgedragen](./concepts/azure-delegated-resource-management.md).
-- **Nieuwe Azure-portal ervaringen**: Cross-tenant-gegevens weergeven in de nieuwe **mijn klanten** pagina in de [Azure-portal](https://portal.azure.com). Een bijbehorende **serviceproviders** blade kan uw klanten weergeven en beheren van toegang tot de service-provider. Zie voor meer informatie, [weergeven en beheren van klanten](./how-to/view-manage-customers.md) en [weergeven en beheren van serviceproviders](./how-to/view-manage-service-providers.md).
-- **Azure Resource Manager-sjablonen**: Gemakkelijker beheertaken uitvoeren, met inbegrip van onboarding van klanten voor Azure Resourcemanagement overgedragen. Zie voor meer informatie onze [voorbeelden opslagplaats](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) en [onboarding een klant naar Azure Resourcemanagement overgedragen](how-to/onboard-customer.md).
-- **Beheerde Services aanbiedingen op Azure Marketplace**: Uw services te bieden aan klanten via persoonlijke of openbare aanbiedingen, en deze automatisch toegevoegd aan Azure-gedelegeerde resource-beheer, als alternatief voor onboarding met behulp van Azure Resource Manager-sjablonen. Zie voor meer informatie, [Managed services-aanbiedingen op Azure Marketplace](./concepts/managed-services-offers.md).
-- **Azure beheerde toepassingen**: Pakket- en ontwikkelteams toepassingen eenvoudig voor uw klanten te implementeren en gebruiken in hun eigen abonnementen. De toepassing wordt geïmplementeerd in een brongroep of u toegang hebt tot uit uw tenant, zodat u de service beheren als onderdeel van de algemene Azure-naar-ervaring. Zie voor meer informatie, [Azure beheerde toepassingen-overzicht](https://docs.microsoft.com/azure/managed-applications/overview).
+- **Beheer van Azure-gedelegeerde resources**: Beheer de Azure-resources van uw klanten veilig vanuit uw eigen Tenant, zonder dat u context-en besturings plannen hoeft te scha kelen. Zie [Azure delegated resource management](./concepts/azure-delegated-resource-management.md)voor meer informatie.
+- **Nieuwe Azure Portal-ervaring**: Bekijk informatie over meerdere tenants op de pagina nieuwe **mijn klanten** in de [Azure Portal](https://portal.azure.com). Met een bijbehorende Blade **service providers** kunnen uw klanten toegang tot de service provider weer geven en beheren. Zie [klanten weer geven en beheren](./how-to/view-manage-customers.md) en [service providers weer geven en beheren](./how-to/view-manage-service-providers.md)voor meer informatie.
+- **Azure Resource Manager sjablonen**: Beheer taken gemakkelijker uit te voeren, met inbegrip van onboarding van klanten voor het beheer van gedelegeerde resources van Azure. Voor meer informatie raadpleegt u onze voor [beelden opslag plaats](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) en maakt [u een klant onboarding van Azure gedelegeerde resource beheer](how-to/onboard-customer.md).
+- **Aanbiedingen voor beheerde services in azure Marketplace**: Bied uw services aan klanten aan via privé-of open bare aanbiedingen en laat deze automatisch onboarding uitvoeren op Azure delegated resource management, als alternatief voor onboarding met Azure Resource Manager sjablonen. Zie [Managed Services aanbiedingen in azure Marketplace](./concepts/managed-services-offers.md)voor meer informatie.
+- Door **Azure beheerde toepassingen**: Verpakken en verzenden van toepassingen die eenvoudig zijn voor uw klanten in hun eigen abonnementen. De toepassing wordt geïmplementeerd in een resource groep waartoe u toegang hebt via uw Tenant, zodat u de service kunt beheren als onderdeel van de algehele Azure Lighthouse-ervaring. Zie overzicht van door [Azure beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/overview)voor meer informatie.
 
 > [!NOTE]
-> De mogelijkheden die hierboven worden beschreven zijn momenteel beschikbaar in openbare clouds. Zie voor de regionale beschikbaarheid van afzonderlijke services [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/).
+> De mogelijkheden die hierboven worden beschreven, zijn momenteel beschikbaar in open bare Clouds. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/)voor regionale Beschik baarheid van afzonderlijke services.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over [gedelegeerd Azure-resourcebeheer](concepts/azure-delegated-resource-management.md).
+- Meer informatie over de [ervaring op het beheer van cross-tenants](concepts/cross-tenant-management-experience.md).

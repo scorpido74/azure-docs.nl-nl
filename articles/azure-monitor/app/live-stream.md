@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359415"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012740"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Controleren & diagnose met een latentie van 1 seconde
 
@@ -107,7 +107,12 @@ Als u een bepaalde serverrol wilt bewaken, kunt u filteren op server.
 ![Voorbeeld Live-fouten](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>SDK-vereisten
+
+### <a name="net"></a>.NET
 Aangepaste Live Metrics Stream is beschikbaar met versie 2.4.0-beta2 of hoger van [Application INSIGHTS SDK voor Internet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/). Vergeet niet om de optie ' include Prerelease ' te selecteren in NuGet Package Manager.
+
+### <a name="nodejs"></a>Node.js
+Live Metrics Stream is beschikbaar met versie 1.3.0 of hoger van de [Application INSIGHTS SDK voor node. js](https://npmjs.com/package/applicationinsights). Vergeet niet om `setSendLiveMetrics(true)` te gebruiken tijdens het configureren van de SDK in uw code.
 
 ## <a name="secure-the-control-channel"></a>Het besturings kanaal beveiligen
 De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel naast de instrumentatie sleutel.

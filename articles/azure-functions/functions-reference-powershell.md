@@ -1,6 +1,6 @@
 ---
-title: PowerShell-referentie voor ontwikkelaars voor Azure Functions
-description: Lees hoe u voor het ontwikkelen van functies met behulp van PowerShell.
+title: Naslag informatie over Power shell-ontwikkel aars voor Azure Functions
+description: Meer informatie over het ontwikkelen van functies met behulp van Power shell.
 services: functions
 documentationcenter: na
 author: tylerleonhardt
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706402"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012717"
 ---
-# <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions-PowerShell
+# <a name="azure-functions-powershell-developer-guide"></a>Azure Functions Power shell-ontwikkelaars handleiding
 
-In dit artikel bevat informatie over hoe u Azure Functions met behulp van PowerShell schrijven.
+In dit artikel vindt u informatie over hoe u Azure Functions schrijft met behulp van Power shell.
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-Een PowerShell Azure-functie (functie) wordt weergegeven als een PowerShell-script dat wordt uitgevoerd wanneer geactiveerd. Elke functie script heeft een bijbehorende `function.json` -bestand dat hoe de functie zich gedraagt definieert, zoals hoe deze wordt geactiveerd en de bijbehorende invoer- en -parameters. Zie voor meer informatie, de [Triggers en binding artikel](functions-triggers-bindings.md). 
+Een Power shell Azure-functie (functie) wordt weer gegeven als een Power shell-script dat wordt uitgevoerd wanneer het wordt geactiveerd. Elk functie script heeft een gerelateerd `function.json` bestand dat definieert hoe de functie zich gedraagt, zoals hoe deze wordt geactiveerd en de invoer-en uitvoer parameters. Zie het [artikel triggers en binding](functions-triggers-bindings.md)voor meer informatie. 
 
-Net als andere soorten functies, functies voor PowerShell-script uitvoeren in de parameters die overeenkomen met de namen van alle invoerbindingen gedefinieerd in de `function.json` bestand. Een `TriggerMetadata` parameter wordt ook doorgegeven die bevat aanvullende informatie over de trigger die de functie gestart.
+Net als andere soorten functies voeren Power shell-script functies in para meters die overeenkomen met de namen van alle invoer bindingen die in het `function.json` bestand zijn gedefinieerd. Er `TriggerMetadata` wordt ook een para meter door gegeven met aanvullende informatie over de trigger die de functie heeft gestart.
 
-In dit artikel wordt ervan uitgegaan dat u al hebt gelezen de [referentie voor ontwikkelaars van Azure Functions](functions-reference.md). U moet ook hebben voltooid de [Functions-Snelstartgids voor PowerShell](functions-create-first-function-powershell.md) om uw eerste PowerShell-functie te maken.
+In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. U moet ook de Quick Start [van functions voor Power shell](functions-create-first-function-powershell.md) hebben voltooid om uw eerste Power shell-functie te maken.
 
-## <a name="folder-structure"></a>mapstructuur
+## <a name="folder-structure"></a>Mapstructuur
 
-De vereiste mapstructuur voor een PowerShell-project ziet er als volgt uit. Deze standaardinstelling kan worden gewijzigd. Zie voor meer informatie de [scriptbestand](#configure-function-scriptfile) onderstaande sectie.
+De vereiste mapstructuur voor een Power Shell-project ziet er als volgt uit. Deze standaard instelling kan worden gewijzigd. Zie het gedeelte [script](#configure-function-scriptfile) voor meer informatie.
 
 ```
 PSFunctionApp
@@ -57,26 +57,26 @@ PSFunctionApp
  | - bin
 ```
 
-In de hoofdmap van het project, er is een gedeelde [ `host.json` ](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een map met een eigen codebestand (.ps1) en het configuratiebestand van de binding (`function.json`). De naam van de bovenliggende map van de function.json-bestand is altijd de naam van uw functie.
+In de hoofdmap van het project is er een gedeeld [`host.json`](functions-host-json.md) bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een map met een eigen code bestand (. ps1) en een bindings configuratie`function.json`bestand (). De naam van de bovenliggende map van de functie. JSON-bestand is altijd de naam van uw functie.
 
-Bepaalde bindingen vereist de aanwezigheid van een `extensions.csproj` bestand. Binding-extensies, vereist in [versie 2.x](functions-versions.md) van de Functions-runtime, zijn gedefinieerd in de `extensions.csproj` bestand met de werkelijke dll-bestanden in de `bin` map. Als u lokaal ontwikkelt, moet u [bindinguitbreidingen registreren](functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in Azure portal, geldt deze registratie voor u.
+Voor bepaalde bindingen moet een `extensions.csproj` bestand aanwezig zijn. Bindings uitbreidingen, vereist in [versie 2. x](functions-versions.md) van de functions runtime, worden gedefinieerd `extensions.csproj` in het bestand met de daad werkelijke bibliotheek bestanden `bin` in de map. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
 
-In PowerShell-functie-Apps kan eventueel hebt u een `profile.ps1` die wordt uitgevoerd wanneer een functie-app begint te lopen (anders weten als een  *[koude start](#cold-start)* . Zie voor meer informatie, [PowerShell profiel](#powershell-profile).
+In de Power shell-functie-apps kunt u eventueel `profile.ps1` een van de uitvoeringen uitvoeren wanneer een functie-app wordt gestart (anders weet u als een *[koude start](#cold-start)* . Zie [Power shell profile](#powershell-profile)(Engelstalig) voor meer informatie.
 
-## <a name="defining-a-powershell-script-as-a-function"></a>Een PowerShell-script definiëren als een functie
+## <a name="defining-a-powershell-script-as-a-function"></a>Een Power shell-script als functie definiëren
 
-Standaard de Functions-runtime zoekt de functie in `run.ps1`, waarbij `run.ps1` deelt dezelfde bovenliggende map als het bijbehorende `function.json`.
+De functies runtime zoekt standaard naar uw functie in `run.ps1`, waarbij `run.ps1` dezelfde bovenliggende map wordt gedeeld als de bijbehorende `function.json`.
 
-Het script wordt een aantal argumenten doorgegeven op worden uitgevoerd. Voor het afhandelen van deze parameters toevoegen een `param` blok aan het begin van het script zoals in het volgende voorbeeld:
+Het script heeft een aantal argumenten door gegeven bij de uitvoering. Als u deze para meters wilt `param` afhandelen, voegt u een blok toe aan de bovenkant van uw script, zoals in het volgende voor beeld:
 
 ```powershell
 # $TriggerMetadata is optional here. If you don't need it, you can safely remove it from the param block
 param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 ```
 
-### <a name="triggermetadata-parameter"></a>TriggerMetadata parameter
+### <a name="triggermetadata-parameter"></a>TriggerMetadata-para meter
 
-De `TriggerMetadata` parameter wordt gebruikt voor het leveren van meer informatie over de trigger. Binding binding is afhankelijk van de aanvullende metagegevens, maar ze alle bevatten een `sys` eigenschap met de volgende gegevens:
+De `TriggerMetadata` para meter wordt gebruikt om aanvullende informatie over de trigger op te geven. De aanvullende meta gegevens zijn afhankelijk van binding met binding, maar ze `sys` bevatten allemaal een eigenschap die de volgende gegevens bevat:
 
 ```powershell
 $TriggerMetadata.sys
@@ -84,29 +84,29 @@ $TriggerMetadata.sys
 
 | Eigenschap   | Description                                     | type     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Wanneer de functie in UTC, is geactiveerd        | Datetime |
+| UtcNow     | Wanneer, in UTC, de functie is geactiveerd        | DateTime |
 | MethodName | De naam van de functie die is geactiveerd     | string   |
-| RandGuid   | een unieke guid voor deze uitvoering van de functie | string   |
+| RandGuid   | een unieke GUID voor deze uitvoering van de functie | string   |
 
-Elk triggertype heeft een andere set metagegevens. Bijvoorbeeld, de `$TriggerMetadata` voor `QueueTrigger` bevat de `InsertionTime`, `Id`, `DequeueCount`, onder andere. Voor meer informatie over de metagegevens van de wachtrijtrigger, gaat u naar de [officiële documentatie voor queue-triggers](functions-bindings-storage-queue.md#trigger---message-metadata). Raadpleeg de documentatie op de [triggers](functions-triggers-bindings.md) u samenwerkt om te zien wat in de metagegevens van de trigger wordt geleverd.
+Elk trigger type heeft een andere set meta gegevens. Bijvoorbeeld `$TriggerMetadata` : de for `InsertionTime` `Id`bevat de ,`DequeueCount`,, onder andere. `QueueTrigger` Ga naar de [officiële documentatie voor wachtrij Triggers](functions-bindings-storage-queue.md#trigger---message-metadata)voor meer informatie over de meta gegevens van de trigger van de wachtrij. Raadpleeg de documentatie op de [Triggers](functions-triggers-bindings.md) waarmee u werkt om te zien wat er in de meta gegevens van de trigger zit.
 
 ## <a name="bindings"></a>Bindingen
 
-In PowerShell [bindingen](functions-triggers-bindings.md) zijn geconfigureerd en gedefinieerd in de function.json van een functie. Functies werken met bindingen een aantal manieren.
+In Power shell [](functions-triggers-bindings.md) worden bindingen geconfigureerd en gedefinieerd in de functie Function. json van een functie. Functies werken op een aantal manieren met bindingen.
 
-### <a name="reading-trigger-and-input-data"></a>Trigger voor lezen en invoergegevens
+### <a name="reading-trigger-and-input-data"></a>Trigger-en invoer gegevens lezen
 
-Trigger en invoerbindingen worden gelezen als parameters doorgegeven aan uw functie. Invoerbindingen hebben een `direction` ingesteld op `in` in function.json. De `name` -eigenschap worden gedefinieerd `function.json` is de naam van de parameter in de `param` blokkeren. Omdat PowerShell benoemde parameters voor binding gebruikt, kan de volgorde van de parameters maakt niet uit. Het is echter een aanbevolen procedure te volgen van de volgorde van de bindingen die is gedefinieerd de `function.json`.
+Trigger-en invoer bindingen worden gelezen als para meters die zijn door gegeven aan de functie. Invoer bindingen hebben een `direction` ingesteld op `in` in function. json. De `name` eigenschap die is `function.json` gedefinieerd in, is de naam van de para `param` meter in het blok. Aangezien Power shell benoemde para meters voor binding gebruikt, is de volg orde van de para meters niet van belang. Het is echter een best practice om de volg orde te volgen van de bindingen die zijn `function.json`gedefinieerd in de.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
 ```
 
-### <a name="writing-output-data"></a>Uitvoer schrijven van gegevens
+### <a name="writing-output-data"></a>Uitvoer gegevens schrijven
 
-In de functies, een Uitvoerbinding heeft een `direction` ingesteld op `out` in de function.json. U kunt schrijven naar een Uitvoerbinding met behulp van de `Push-OutputBinding` cmdlet die beschikbaar is op de Functions-runtime. In alle gevallen moet de `name` eigenschap van de binding zoals gedefinieerd in `function.json` komt overeen met de `Name` parameter van de `Push-OutputBinding` cmdlet.
+In functions is `direction` een uitvoer binding ingesteld op `out` in de function. json. U kunt schrijven naar een uitvoer binding met behulp `Push-OutputBinding` van de-cmdlet, die beschikbaar is voor de functions-runtime. In alle gevallen is de `name` eigenschap van de binding zoals gedefinieerd in `function.json` overeenkomt met `Name` de para meter `Push-OutputBinding` van de cmdlet.
 
-Hieronder ziet u hoe u aan te roepen `Push-OutputBinding` in uw functie-script:
+Hieronder ziet u hoe u een `Push-OutputBinding` functie script aanroept:
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -114,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Push-OutputBinding -Name myQueue -Value $myValue
 ```
 
-U kunt ook een waarde doorgeven voor een specifieke binding via de pijplijn.
+U kunt ook een waarde voor een specifieke binding door geven via de pijp lijn.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -122,25 +122,25 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding` gedraagt zich anders op basis van de opgegeven waarde voor `-Name`:
+`Push-OutputBinding`gedraagt zich anders op basis van de waarde `-Name`die is opgegeven voor:
 
-* Wanneer de opgegeven naam kan niet worden omgezet naar een geldige Uitvoerbinding, is een fout opgetreden.
+* Als de opgegeven naam niet kan worden omgezet in een geldige uitvoer binding, wordt een fout gegenereerd.
 
-* Wanneer de Uitvoerbinding een verzameling waarden accepteert, u kunt aanroepen `Push-OutputBinding` herhaaldelijk om meerdere waarden.
+* Wanneer de uitvoer binding een verzameling waarden accepteert, kunt u herhaaldelijk aanroepen `Push-OutputBinding` om meerdere waarden te pushen.
 
-* Wanneer de Uitvoerbinding alleen een singleton-waarde accepteert, aanroepen van `Push-OutputBinding` een tweede keer wordt een fout gegenereerd.
+* Wanneer de uitvoer binding alleen een singleton waarde accepteert en een `Push-OutputBinding` tweede keer aanroept, treedt er een fout op.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` Syntaxis
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`syntaxis
 
-Hieronder vindt u geldige parameters op voor het aanroepen `Push-OutputBinding`:
+De volgende para meters zijn geldig `Push-OutputBinding`voor het aanroepen van:
 
 | Name | type | Positie | Description |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Tekenreeks | 1 | De naam van de Uitvoerbinding die u wilt instellen. |
-| **`-Value`** | Object | 2 | De waarde van de Uitvoerbinding u wilt instellen, dat wordt geaccepteerd vanuit de pipeline ByValue. |
-| **`-Clobber`** | SwitchParameter | met de naam | (Optioneel) Als u opgeeft, zorgt ervoor dat de waarde die moet worden ingesteld voor een opgegeven Uitvoerbinding. | 
+| **`-Name`** | Tekenreeks | 1 | De naam van de uitvoer binding die u wilt instellen. |
+| **`-Value`** | Object | 2 | De waarde van de uitvoer binding die u wilt instellen, die wordt geaccepteerd vanuit de pipeline-ByValue. |
+| **`-Clobber`** | SwitchParameter | Beveiligingscommunity | Beschrijving Indien opgegeven, dwingt de waarde voor een opgegeven uitvoer binding te worden ingesteld. | 
 
-De volgende algemene parameters worden ook ondersteund: 
+De volgende algemene para meters worden ook ondersteund: 
 * `Verbose`
 * `Debug`
 * `ErrorAction`
@@ -151,11 +151,11 @@ De volgende algemene parameters worden ook ondersteund:
 * `PipelineVariable`
 * `OutVariable` 
 
-Zie voor meer informatie, [over CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie [about CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)(Engelstalig) voor meer informatie.
 
-#### <a name="push-outputbinding-example-http-responses"></a>Voorbeeld van de push-OutputBinding: HTTP-antwoorden
+#### <a name="push-outputbinding-example-http-responses"></a>Voor beeld van push-OutputBinding: HTTP-antwoorden
 
-Een HTTP-trigger retourneert een antwoord met behulp van een Uitvoerbinding die met de naam `response`. In het volgende voorbeeld wordt de Uitvoerbinding van `response` heeft de waarde van "uitvoer #1":
+Een HTTP-trigger retourneert een antwoord met behulp van `response`een uitvoer binding met de naam. In het volgende voor beeld heeft de uitvoer binding `response` van de waarde "uitvoer #1":
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -164,7 +164,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Omdat de uitvoer tot HTTP, die alleen een singleton-waarde accepteert is, wordt er een fout gegenereerd wanneer `Push-OutputBinding` heet een tweede keer.
+Omdat de uitvoer naar http gaat, waardoor alleen een singleton waarde wordt geaccepteerd, wordt een fout gegenereerd `Push-OutputBinding` wanneer een tweede keer wordt aangeroepen.
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -173,7 +173,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Voor uitvoer die voor singleton-waarden alleen accepteren, kunt u de `-Clobber` parameter voor de onderdrukking van de oude waarde in plaats van probeert toe te voegen aan een verzameling. Het volgende voorbeeld wordt ervan uitgegaan dat u al een waarde hebt toegevoegd. Met behulp van `-Clobber`, overschrijft de bestaande waarde om terug te keren een waarde van "uitvoer #3" van het antwoord van het volgende voorbeeld:
+Voor uitvoer die alleen Singleton-waarden accepteert, kunt u de `-Clobber` para meter gebruiken om de oude waarde te overschrijven in plaats van toe te voegen aan een verzameling. In het volgende voor beeld wordt ervan uitgegaan dat u al een waarde hebt toegevoegd. Met behulp `-Clobber`van de reactie van het volgende voor beeld wordt de bestaande waarde overschreven om de waarde ' output #3 ' te retour neren:
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -182,33 +182,33 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Voorbeeld van de push-OutputBinding: Queue Storage-Uitvoerbinding
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Voor beeld van push-OutputBinding: Uitvoer binding wachtrij
 
-`Push-OutputBinding` wordt gebruikt om gegevens te verzenden naar uitvoerbindingen, zoals een [Azure Queue storage-Uitvoerbinding](functions-bindings-storage-queue.md#output). In het volgende voorbeeld wordt heeft het bericht is geschreven naar de wachtrij de waarde "uitvoer #1":
+`Push-OutputBinding`wordt gebruikt voor het verzenden van gegevens naar uitvoer bindingen, zoals een [Azure Queue Storage-uitvoer binding](functions-bindings-storage-queue.md#output). In het volgende voor beeld heeft het bericht dat naar de wachtrij is geschreven de waarde "uitvoer #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
 ```
 
-De Uitvoerbinding voor een opslagwachtrij accepteert meerdere uitvoerwaarden. In dit geval wordt het volgende voorbeeld aanroepen nadat de eerste naar de wachtrij een lijst met twee items schrijft: "uitvoer #1" en 'uitvoer #2'.
+De uitvoer binding voor een opslag wachtrij accepteert meerdere uitvoer waarden. In dit geval moet u het volgende voor beeld aanroepen nadat de eerste keer naar de wachtrij is geschreven een lijst met twee items: "uitvoer #1" en "uitvoer #2".
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #2"
 ```
 
-Het volgende voorbeeld, wanneer aangeroepen na de vorige twee voegt twee meer waarden voor de verzameling uitvoer:
+In het volgende voor beeld, wanneer aangeroepen na de vorige twee, worden twee meer waarden toegevoegd aan de uitvoer verzameling:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 ```
 
-Wanneer geschreven naar de wachtrij, het bericht bevat deze vier waarden: "uitvoer #1", "uitvoer #2", "uitvoer #3" en 'uitvoer #4'.
+Wanneer het bericht naar de wachtrij wordt geschreven, bevat deze vier waarden: "uitvoer #1", "uitvoer #2", "uitvoer #3" en "uitvoer #4".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` Cmdlet
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`cmdlet
 
-U kunt de `Get-OutputBinding` cmdlet voor het ophalen van de waarden die momenteel is ingesteld voor uw uitvoerbindingen. Dit smdlet haalt een hash-tabel die de namen van de uitvoerbindingen met de bijbehorende waarden bevat. 
+U kunt de `Get-OutputBinding` cmdlet gebruiken om de waarden op te halen die momenteel zijn ingesteld voor uw uitvoer bindingen. Met deze cmdlet wordt een hashtabel opgehaald die de namen van de uitvoer bindingen met hun respectieve waarden bevat. 
 
-Hier volgt een voorbeeld van het gebruik van `Get-OutputBinding` om huidige binding waarden te retourneren:
+Hier volgt een voor beeld van het `Get-OutputBinding` gebruik van om huidige bindings waarden te retour neren:
 
 ```powershell
 Get-OutputBinding
@@ -221,7 +221,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding` bevat ook een parameter met de naam `-Name`, die kan worden gebruikt voor het filteren van de geretourneerde binding, zoals in het volgende voorbeeld:
+`Get-OutputBinding`bevat ook een para meter `-Name`met de naam, die kan worden gebruikt voor het filteren van de geretourneerde binding, zoals in het volgende voor beeld:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -233,30 +233,30 @@ Name                           Value
 MyQueue                        myData
 ```
 
-Jokertekens (*) worden ondersteund in `Get-OutputBinding`.
+Joker tekens (*) worden ondersteund in `Get-OutputBinding`.
 
 ## <a name="logging"></a>Logboekregistratie
 
-Logboekregistratie in de PowerShell-functies, zoals logboekregistratie van reguliere PowerShell werkt. U kunt de cmdlets van logboekregistratie van gebruiken om te schrijven naar de uitvoerstroom. Elke cmdlet wordt toegewezen aan een logboek-niveau die worden gebruikt door de functies.
+Logboek registratie in Power shell-functies werkt zoals bij normale Power shell-logboek registratie. U kunt de logboek registratie-cmdlets gebruiken om naar elke uitvoer stroom te schrijven. Elke cmdlet wordt toegewezen aan een logboek niveau dat wordt gebruikt door-functies.
 
-| Functies die het niveau van logboekregistratie | Cmdlet voor logboekregistratie |
+| Niveau van de functie logboek registratie | Logboek registratie-cmdlet |
 | ------------- | -------------- |
 | Fout | **`Write-Error`** |
 | Waarschuwing | **`Write-Warning`**  | 
-| Informatie | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informatie | Schrijft naar _informatie_ logboekregistratie op. |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Schrijft naar logboek registratie op _informatie_ niveau. |
 | fouten opsporen | **`Write-Debug`** |
-| Tracering | **`Write-Progress`** <br /> **`Write-Verbose`** |
+| Trace | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
-Naast deze cmdlets iets geschreven naar de pijplijn wordt omgeleid naar de `Information` log niveau en weergegeven met de standaardopmaak PowerShell.
+Naast deze cmdlets wordt alles wat naar de pijp lijn is geschreven, omgeleid naar het `Information` logboek niveau en weer gegeven met de standaard Power shell-opmaak.
 
 > [!IMPORTANT]
-> Met behulp van de `Write-Verbose` of `Write-Debug` cmdlets is niet genoeg om te zien uitgebreide en niveau van logboekregistratie voor foutopsporing. U moet ook de logboek niveau drempelwaarde, verklaart welk niveau van de logboeken die u daadwerkelijk interessante configureren. Zie voor meer informatie, [configureren van het logboek-niveau van de functie-app](#configure-the-function-app-log-level).
+> Het gebruik `Write-Verbose` van `Write-Debug` de cmdlets of is niet voldoende om de logboek registratie voor uitgebreid en fout opsporing te controleren. U moet ook de drempel voor het niveau van het logboek configureren, waarmee wordt aangegeven welk niveau van Logboeken u eigenlijk vindt. Zie [het logboek niveau van de functie-app configureren](#configure-the-function-app-log-level)voor meer informatie.
 
-### <a name="configure-the-function-app-log-level"></a>Het logboek-niveau van de functie-app configureren
+### <a name="configure-the-function-app-log-level"></a>Het logboek niveau van de functie-app configureren
 
-Azure Functions kunt u bij het definiëren van de drempelwaarde voor het gemakkelijk om te bepalen de manier waarop functies worden geschreven naar de logboeken. Als u wilt dat de drempelwaarde voor alle traceringen geschreven naar de console, gebruikt u de `logging.logLevel.default` eigenschap in de [ `host.json` bestand][naslaginformatie voor host.json]. Deze instelling geldt voor alle functies in uw functie-app.
+Met Azure Functions kunt u het drempel niveau definiëren, zodat de manier waarop functies naar de logboeken worden geschreven eenvoudig kan worden beheerd. Als u de drempel waarde wilt instellen voor alle traceringen die naar de- `logging.logLevel.default` console worden geschreven, gebruikt u de eigenschap in de [ `host.json` ]JSON-verwijzing voor de bestands[host.] Deze instelling is van toepassing op alle functies in uw functie-app.
 
-Het volgende voorbeeld wordt de drempel voor het inschakelen van uitgebreide logboekregistratie in voor alle functies, maar Hiermee stelt u de drempel voor het inschakelen van logboekregistratie voor foutopsporing voor een functie met de naam `MyFunction`:
+In het volgende voor beeld wordt de drempel ingesteld om uitgebreide logboek registratie in te scha kelen voor alle functies, maar wordt de drempel ingesteld op `MyFunction`het inschakelen van logboek registratie voor fout opsporing voor een functie met de naam:
 
 ```json
 {
@@ -269,21 +269,21 @@ Het volgende voorbeeld wordt de drempel voor het inschakelen van uitgebreide log
 }  
 ```
 
-Zie voor meer informatie, [naslaginformatie voor host.JSON].
+Zie voor meer informatie [Naslag informatie over host. json].
 
-### <a name="viewing-the-logs"></a>De logboeken bekijken
+### <a name="viewing-the-logs"></a>De logboeken weer geven
 
-Als uw functie-App in Azure wordt uitgevoerd, kunt u Application Insights gebruiken om te controleren. Lezen [controlefuncties van Azure](functions-monitoring.md) voor meer informatie over het weergeven en uitvoeren van query's functielogboeken.
+Als uw functie-app wordt uitgevoerd in azure, kunt u Application Insights gebruiken om het te controleren. Lees de [controle Azure functions](functions-monitoring.md) voor meer informatie over het weer geven en opvragen van functie Logboeken.
 
-Als u uw functie-App voor de ontwikkeling van lokaal uitvoert, registreert standaard naar het bestandssysteem. Als u wilt zien in de logboekbestanden in de console, stelt de `AZURE_FUNCTIONS_ENVIRONMENT` omgevingsvariabele `Development` voordat u begint met de functie-App.
+Als u uw functie-app lokaal uitvoert voor ontwikkeling, registreert de standaard instellingen voor het bestands systeem. Als u de logboeken wilt weer geven in de `AZURE_FUNCTIONS_ENVIRONMENT` -console, `Development` stelt u de omgevings variabele in op voordat u begint met de functie-app.
 
-## <a name="triggers-and-bindings-types"></a>Triggers en bindingen typen
+## <a name="triggers-and-bindings-types"></a>Typen triggers en bindingen
 
-Er zijn een aantal triggers en bindingen beschikbaar voor gebruik met uw functie-app. De volledige lijst met triggers en bindingen [vindt u hier](functions-triggers-bindings.md#supported-bindings).
+Er zijn een aantal triggers en bindingen die u kunt gebruiken met uw functie-app. De volledige lijst met triggers en bindingen vindt u [hier](functions-triggers-bindings.md#supported-bindings).
 
-Alle triggers en bindingen worden weergegeven in de code als een paar echte gegevenstypen:
+Alle triggers en bindingen worden in code weer gegeven als enkele echte gegevens typen:
 
-* Hash-tabel
+* Hashtabel
 * string
 * byte[]
 * int
@@ -291,45 +291,45 @@ Alle triggers en bindingen worden weergegeven in de code als een paar echte gege
 * HttpRequestContext
 * HttpResponseContext
 
-De eerste vijf typen in deze lijst zijn standaard .NET-typen. De laatste twee alleen worden gebruikt de [HttpTrigger trigger](#http-triggers-and-bindings).
+De eerste vijf typen in deze lijst zijn standaard .NET-typen. De laatste twee worden alleen gebruikt door de [trigger http trigger](#http-triggers-and-bindings).
 
-Elke bindingsparameter in uw functies moet een van de volgende typen.
+Elke bindings parameter in uw functies moet een van deze typen zijn.
 
-### <a name="http-triggers-and-bindings"></a>HTTP-triggers en bindingen
+### <a name="http-triggers-and-bindings"></a>HTTP-triggers en-bindingen
 
-HTTP- en webhook-triggers en HTTP-output bindingen met de aanvraag en respons objecten vertegenwoordigen de HTTP-berichten.
+HTTP-en webhook-triggers en HTTP-uitvoer bindingen gebruiken aanvraag-en antwoord objecten om de HTTP-berichten te vertegenwoordigen.
 
-#### <a name="request-object"></a>Request-object
+#### <a name="request-object"></a>Aanvraag object
 
-De Aanvraagobject dat wordt doorgegeven in het script is van het type `HttpRequestContext`, heeft de volgende eigenschappen:
+Het object Request dat is door gegeven aan het script, is van `HttpRequestContext`het type, dat de volgende eigenschappen heeft:
 
 | Eigenschap  | Description                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Een object dat de hoofdtekst van de aanvraag bevat. `Body` in het beste type op basis van de gegevens is geserialiseerd. Bijvoorbeeld, als de gegevens JSON is, wordt doorgegeven als een hash-tabel. Als de gegevens een tekenreeks is, wordt deze doorgegeven als een tekenreeks. | object |
-| **`Headers`** | Een woordenlijst met de aanvraagheaders.                | Dictionary < string, string ><sup>*</sup> |
+| **`Body`**    | Een object dat de hoofd tekst van de aanvraag bevat. `Body`wordt geserialiseerd in het beste type op basis van de gegevens. Als de gegevens bijvoorbeeld JSON zijn, wordt deze als een hashtabel door gegeven. Als de gegevens een teken reeks is, wordt deze als een teken reeks door gegeven. | object |
+| **`Headers`** | Een woorden lijst die de aanvraag headers bevat.                | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
 | **`Method`** | De HTTP-methode van de aanvraag.                                | string                    |
-| **`Params`**  | Een object dat de routering parameters van de aanvraag bevat. | Dictionary < string, string ><sup>*</sup> |
-| **`Query`** | Een object met de queryparameters.                  | Dictionary < string, string ><sup>*</sup> |
+| **`Params`**  | Een object dat de routerings parameters van de aanvraag bevat. | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
+| **`Query`** | Een object dat de query parameters bevat.                  | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
 | **`Url`** | De URL van de aanvraag.                                        | string                    |
 
-<sup>*</sup> Alle `Dictionary<string,string>` sleutels zijn niet hoofdlettergevoelig.
+<sup>*</sup>Alle `Dictionary<string,string>` sleutels zijn niet hoofdletter gevoelig.
 
 #### <a name="response-object"></a>Responsobject
 
-De antwoordobject dat u moet terugsturen is van het type `HttpResponseContext`, heeft de volgende eigenschappen:
+Het antwoord object dat u moet terugsturen, is van het `HttpResponseContext`type, dat de volgende eigenschappen heeft:
 
 | Eigenschap      | Description                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Een object dat de hoofdtekst van het antwoord bevat.           | object                    |
-| **`ContentType`** | Een korte hand voor het instellen van het type inhoud voor het antwoord. | string                    |
-| **`Headers`** | Een object met de antwoordheaders.               | Woordenlijst of hash-tabel   |
-| **`StatusCode`**  | De HTTP-statuscode van het antwoord.                       | tekenreeks of int             |
+| **`Body`**  | Een object dat de hoofd tekst van het antwoord bevat.           | object                    |
+| **`ContentType`** | Een korte hand voor het instellen van het inhouds type voor de reactie. | string                    |
+| **`Headers`** | Een object dat de antwoord headers bevat.               | Woorden lijst of hashtabel   |
+| **`StatusCode`**  | De HTTP-status code van het antwoord.                       | teken reeks of int             |
 
-#### <a name="accessing-the-request-and-response"></a>Toegang tot de aanvraag en respons
+#### <a name="accessing-the-request-and-response"></a>De aanvraag en het antwoord openen
 
-Wanneer u met HTTP-triggers werkt, kunt u de HTTP-aanvraag de dezelfde manier als met andere Invoerbinding openen. Het is in de `param` blokkeren.
+Wanneer u met HTTP-triggers werkt, kunt u de HTTP-aanvraag op dezelfde manier benaderen als andere invoer bindingen. Het is in het `param` blok.
 
-Gebruik een `HttpResponseContext` object om terug te keren een antwoord, zoals wordt weergegeven in het volgende:
+Gebruik een `HttpResponseContext` object om een antwoord te retour neren, zoals wordt weer gegeven in het volgende:
 
 `function.json`
 
@@ -362,50 +362,50 @@ Push-OutputBinding -Name res -Value ([HttpResponseContext]@{
 })
 ```
 
-Het resultaat van het aanroepen van deze functie zijn:
+Het resultaat van het aanroepen van deze functie zou zijn:
 
 ```
 PS > irm http://localhost:5001?Name=Functions
 Hello Functions!
 ```
 
-### <a name="type-casting-for-triggers-and-bindings"></a>Type-casten voor triggers en bindingen
+### <a name="type-casting-for-triggers-and-bindings"></a>Type-cast voor triggers en bindingen
 
-Voor bepaalde bindingen, zoals de blob-binding, kunt u het type van de parameter op te geven.
+U kunt voor bepaalde bindingen, zoals de BLOB-binding, het type van de para meter opgeven.
 
-Bijvoorbeeld, als u gegevens uit Blob storage is opgegeven als een tekenreeks, toevoegen de volgende typen cast-conversie uitvoeren naar mijn `param` blokkeren:
+Als u bijvoorbeeld gegevens uit Blob Storage wilt opgeven als een teken reeks, voegt u het volgende type cast toe `param` aan mijn blok:
 
 ```powershell
 param([string] $myBlob)
 ```
 
-## <a name="powershell-profile"></a>PowerShell-profiel
+## <a name="powershell-profile"></a>Power shell-profiel
 
-In PowerShell wordt het concept van een PowerShell-profiel. Als u niet bekend met PowerShell-profielen bent, Zie [over profielen](/powershell/module/microsoft.powershell.core/about/about_profiles).
+In Power shell is het concept van een Power shell-profiel. Zie [about](/powershell/module/microsoft.powershell.core/about/about_profiles)Profiles (Engelstalig) als u niet bekend bent met Power shell-profielen.
 
-PowerShell-functies, het profiel script wordt uitgevoerd wanneer de functie-app wordt gestart. Functie-apps starten als eerste geïmplementeerd in de en na wordt inactief sinds ([koude start](#cold-start)).
+In Power shell-functies wordt het profiel script uitgevoerd wanneer de functie-app wordt gestart. Functie-apps worden gestart wanneer deze voor het eerst worden geïmplementeerd en na een inactiviteit van het systeem ([koude start](#cold-start)).
 
-Wanneer u een functie-app met behulp van hulpprogramma's, zoals Visual Studio Code en Azure Functions Core Tools, een standaard maakt `profile.ps1` wordt voor u gemaakt. Het standaardprofiel wordt bijgehouden [Core Tools GitHub-opslagplaats](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) en bevat:
+Wanneer u een functie-app maakt met behulp van hulpprogram ma's, zoals Visual Studio code en `profile.ps1` Azure functions core tools, wordt er een standaard voor u gemaakt. Het standaard profiel wordt beheerd [op basis van de kern Hulpprogramma's github-opslag plaats](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) en bevat:
 
-* Automatische MSI-verificatie in Azure.
-* De mogelijkheid om in te schakelen op de Azure PowerShell `AzureRM` PowerShell aliassen als u wilt.
+* Automatische MSI-verificatie naar Azure.
+* De mogelijkheid om de Azure PowerShell `AzureRM` Power shell-aliassen in te scha kelen als u dat wilt.
 
-## <a name="powershell-version"></a>PowerShell-versie
+## <a name="powershell-version"></a>Power shell-versie
 
-De volgende tabel ziet u de PowerShell-versie die wordt gebruikt door elke primaire versie van de runtime van Functions:
+In de volgende tabel ziet u de Power shell-versie die wordt gebruikt door elke primaire versie van de functions runtime:
 
-| Versie van de functies | PowerShell-versie                             |
+| Functie versie | Power shell-versie                             |
 |-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 (vergrendeld door de runtime) |
-| 2.x               | PowerShell Core 6                              |
+| 1.x               | Windows Power shell 5,1 (vergrendeld door de runtime) |
+| 2.x               | Power shell Core 6                              |
 
-U kunt de huidige versie zien door te drukken `$PSVersionTable` van elke functie.
+U kunt de huidige versie bekijken door af `$PSVersionTable` te drukken vanuit een functie.
 
 ## <a name="dependency-management"></a>Beheer van afhankelijkheden
 
-PowerShell-functies ondersteuning voor het beheren van Azure-modules door de service. Door de host.json wijzigen en de managedDependency ingeschakeld-eigenschap instelt op true, wordt het bestand requirements.psd1 worden verwerkt. De meest recente Azure-modules worden automatisch gedownload en beschikbaar gesteld aan de functie.
+Power shell-functies ondersteunen het beheer van Azure-modules door de service. Door het wijzigen van de host. json en het instellen van de eigenschap managedDependency enabled op True, wordt het bestand requirements. psd1 verwerkt. De meest recente Azure-modules worden automatisch gedownload en beschikbaar gesteld voor de functie.
 
-host.json
+host. json
 ```json
 {
     "managedDependency": {
@@ -422,27 +422,27 @@ requirements.psd1
 }
 ```
 
-Gebruik te maken van uw eigen aangepaste modules of modules van de [PowerShell Gallery](https://powershellgallery.com) is enigszins anders dan hoe u het normaal zou doen.
+Het gebruik van uw eigen aangepaste modules of modules van de [PowerShell Gallery](https://powershellgallery.com) is iets anders dan normaal.
 
-Wanneer u de module op uw lokale computer installeert, de oplossing gaat in een van de algemeen beschikbare mappen in uw `$env:PSModulePath`. Omdat de functie wordt uitgevoerd in Azure, u geen toegang heeft tot de modules die op uw computer geïnstalleerd. Dit vereist dat de `$env:PSModulePath` voor een PowerShell-functie app wijkt af van `$env:PSModulePath` in een reguliere PowerShell-script.
+Wanneer u de module op uw lokale computer installeert, wordt deze in een van de wereld wijd beschik bare `$env:PSModulePath`mappen in uw weer. Omdat uw functie wordt uitgevoerd in azure, hebt u geen toegang tot de modules die op uw computer zijn geïnstalleerd. Hiervoor moet de `$env:PSModulePath` for a Power shell-functie-app afwijken `$env:PSModulePath` van een normaal Power shell-script.
 
-In de functies, `PSModulePath` bevat twee paden:
+In functions `PSModulePath` bevat twee paden:
 
-* Een `Modules` map aanwezig is in de hoofdmap van uw functie-App.
-* Een pad naar een `Modules` map die zich in de PowerShell-taal werknemer.
+* Een `Modules` map die zich in de hoofdmap van uw functie-app bevindt.
+* Een pad naar een `Modules` map die zich in de Power shell-werk nemer bevindt.
 
-### <a name="function-app-level-modules-folder"></a>Op de functie app-niveau `Modules` map
+### <a name="function-app-level-modules-folder"></a>Functie app-niveau `Modules` -map
 
-Voor het gebruik van aangepaste modules of PowerShell-modules van de PowerShell Gallery, kunt u plaatsen van modules die uw functies afhankelijk zijn in een `Modules` map. Vanuit deze map worden modules automatisch beschikbaar voor de functions-runtime. Een functie in de functie-app kunnen deze modules worden gebruikt.
+Als u aangepaste modules of Power shell-modules van de PowerShell Gallery wilt gebruiken, kunt u modules plaatsen waarvoor uw functies `Modules` afhankelijk zijn van een map. Vanuit deze map zijn modules automatisch beschikbaar voor de functions-runtime. Elke functie in de functie-app kan deze modules gebruiken.
 
-Als u wilt profiteren van deze functie, maak een `Modules` map in de hoofdmap van uw functie-app. De modules die u wilt gebruiken in uw functies in deze locatie opslaan.
+Als u deze functie wilt gebruiken, maakt u `Modules` een map in de hoofdmap van de functie-app. Sla de modules op die u wilt gebruiken in uw functies op deze locatie.
 
 ```powershell
 mkdir ./Modules
 Save-Module MyGalleryModule -Path ./Modules
 ```
 
-Gebruik `Save-Module` opslaan van alle modules in uw functies gebruiken of uw eigen aangepaste modules te kopiëren de `Modules` map. Uw functie-app moet de volgende mapstructuur hebben met een map Modules:
+Gebruik `Save-Module` dit om alle modules op te slaan die uw functies gebruiken of uw eigen aangepaste modules naar de `Modules` map te kopiëren. Met een modules-map moet uw functie-app de volgende mapstructuur hebben:
 
 ```
 PSFunctionApp
@@ -457,22 +457,22 @@ PSFunctionApp
  | - host.json
 ```
 
-Wanneer u uw functie-app start, de PowerShell-taal werknemer voegt dit `Modules` map die u wilt de `$env:PSModulePath` zodat u vertrouwen op de module autoloading, kunt net zoals u zou in een reguliere PowerShell-script doen.
+Wanneer u de functie-app start, voegt de Power shell- `Modules` taal werk nemer `$env:PSModulePath` deze map toe aan de zodat u kunt vertrouwen op het automatisch laden van module, net zoals u dat zou doen in een gewoon Power shell-script.
 
-### <a name="language-worker-level-modules-folder"></a>Taal worker niveau `Modules` map
+### <a name="language-worker-level-modules-folder"></a>Map language worker level `Modules`
 
-Meerdere modules worden vaak gebruikt door de werkrol PowerShell-taal. Deze modules zijn gedefinieerd in de laatste positie van `PSModulePath`. 
+Diverse modules worden vaak gebruikt door de Power shell-werk nemer. Deze modules worden gedefinieerd op de laatste positie van `PSModulePath`. 
 
 De huidige lijst met modules is als volgt:
 
-* [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): module gebruikt voor het werken met archieven, zoals `.zip`, `.nupkg`, enzovoort.
-* **ThreadJob**: Een implementatie op basis van een thread van de taak PowerShell API's.
+* [Micro soft. Power shell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): module die wordt gebruikt voor het `.zip`werken `.nupkg`met archieven, zoals, en anderen.
+* **ThreadJob**: Een op thread gebaseerde implementatie van de Power shell-taak-Api's.
 
-De meest recente versie van deze modules wordt gebruikt door de functies. Voor het gebruik van een specifieke versie van deze modules kunt u de specifieke versie opnemen in de `Modules` map van uw functie-app.
+De meest recente versie van deze modules wordt gebruikt door-functies. Als u een specifieke versie van deze modules wilt gebruiken, kunt u de specifieke versie in `Modules` de map van uw functie-app plaatsen.
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-In de functies, [app-instellingen](functions-app-settings.md), zoals serviceverbinding tekenreeksen, worden weergegeven als omgevingsvariabelen tijdens de uitvoering. U hebt toegang tot deze instellingen met behulp van `$env:NAME_OF_ENV_VAR`, zoals wordt weergegeven in het volgende voorbeeld:
+In functions worden [app-instellingen](functions-app-settings.md), zoals teken reeksen voor service verbindingen, weer gegeven als omgevings variabelen tijdens de uitvoering. U kunt deze instellingen openen met `$env:NAME_OF_ENV_VAR`, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```powershell
 param($myTimer)
@@ -484,46 +484,46 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Bij lokale uitvoering, app-instellingen worden gelezen uit de [local.settings.json](functions-run-local.md#local-settings-file) projectbestand.
+Wanneer u lokaal uitvoert, worden de app-instellingen gelezen uit het bestand [Local. settings. json](functions-run-local.md#local-settings-file) project.
 
 ## <a name="concurrency"></a>Gelijktijdigheid
 
-De runtime van Functions PowerShell standaard kan alleen één aanroep van een functie tegelijk verwerken. Maar dit niveau gelijktijdigheid van taken mogelijk niet voldoende in de volgende situaties:
+De functies van Power shell runtime kunnen standaard slechts één aanroep van een functie tegelijk verwerken. Dit gelijktijdigheids niveau is echter mogelijk niet voldoende in de volgende situaties:
 
-* Wanneer u probeert om af te handelen van een groot aantal aanroepen op hetzelfde moment.
-* Wanneer u hebt functies die andere functies in dezelfde functie-app aanroepen.
+* Wanneer u een groot aantal aanroepen tegelijk probeert af te handelen.
+* Wanneer u functies hebt die andere functies binnen dezelfde functie-app aanroepen.
 
-U kunt dit gedrag wijzigen door de volgende omgevingsvariabele in te stellen op een geheel getal:
+U kunt dit gedrag wijzigen door de volgende omgevings variabele in te stellen op een geheel getal:
 
 ```
 PSWorkerInProcConcurrencyUpperBound
 ```
 
-U deze omgevingsvariabele instellen in de [app-instellingen](functions-app-settings.md) van uw functie-App.
+U stelt deze omgevings variabele in de [app-instellingen](functions-app-settings.md) van uw functie-app in.
 
 ### <a name="considerations-for-using-concurrency"></a>Overwegingen voor het gebruik van gelijktijdigheid
 
-PowerShell is een _één thread_ scripttaal standaard. Gelijktijdigheid kan echter worden toegevoegd met behulp van meerdere PowerShell runspaces in hetzelfde proces. Deze functie is de werking van de PowerShell voor Azure Functions-runtime.
+Power shell is standaard een script taal met _één thread_ . Gelijktijdigheid kan echter worden toegevoegd met behulp van meerdere Power shell-runspaces in hetzelfde proces. Deze functie is de manier waarop de Azure Functions Power shell-runtime werkt.
 
-Er zijn enkele nadelen met deze methode.
+Deze aanpak bevat enkele nadelen.
 
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Gelijktijdigheid is alleen nuttig als de machine waarop het wordt uitgevoerd
+#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Gelijktijdigheid is slechts net zo goed als de machine waarop deze wordt uitgevoerd
 
-Als uw functie-app wordt uitgevoerd op een [App Service-plan](functions-scale.md#app-service-plan) die alleen ondersteuning biedt voor een enkele kern, en vervolgens gelijktijdigheid wordt niet te veel. Dat komt doordat er zijn geen extra cores te verdelen over de belasting. Prestaties kan in dit geval verschillen wanneer één kern heeft met context-switch tussen runspaces genoemd.
+Als uw functie-app wordt uitgevoerd op een [app service-abonnement](functions-scale.md#app-service-plan) dat alleen ondersteuning biedt voor één kern, is het niet veel meer. Dat komt omdat er geen extra kernen zijn om de belasting te verdelen. In dit geval kan de prestaties variëren wanneer de enkelvoudige kern een context schakelaar heeft tussen runspaces.
 
-De [verbruiksabonnement](functions-scale.md#consumption-plan) wordt uitgevoerd met behulp van slechts één core, zodat u kunt geen gebruikmaken van gelijktijdigheid. Als u profiteren van gelijktijdigheid van taken wilt, in plaats daarvan implementeert uw functies aan een functie-app die wordt uitgevoerd op een toegewezen App Service-plan met voldoende kernen.
+Het [verbruiks abonnement](functions-scale.md#consumption-plan) wordt uitgevoerd met slechts één kern, zodat u geen gelijktijdigheid kunt gebruiken. Als u optimaal gebruik wilt maken van gelijktijdigheid, kunt u in plaats daarvan uw functies implementeren in een functie-app die wordt uitgevoerd op een speciaal App Service plan met voldoende kern geheugens.
 
-#### <a name="azure-powershell-state"></a>De status van Azure PowerShell
+#### <a name="azure-powershell-state"></a>Azure PowerShell status
 
-Azure PowerShell maakt gebruik van sommige _procesniveau_ context en status om te besparen u overtollige typen. Echter, als u gelijktijdigheid in uw functie-app inschakelen en acties die in een statuswijziging aanroepen, u den racevoorwaarden. Deze racevoorwaarden zijn moeilijk op te lossen omdat één aanroep is afhankelijk van een bepaalde status en het andere aanroepen heeft de status gewijzigd.
+Azure PowerShell maakt gebruik van bepaalde contexten op _proces niveau_ en de status om u te helpen bij het besparen van het overschrijven van typen. Als u echter gelijktijdig gebruik in uw functie-app inschakelt en acties aanroept die de status wijzigen, kunt u de timing van race problemen beëindigen. Deze race voorwaarden zijn moeilijk te debuggen omdat een aanroep afhankelijk is van een bepaalde status en de andere aanroep de status heeft gewijzigd.
 
-Er is gigantische waarde in gelijktijdigheid met Azure PowerShell, omdat bepaalde bewerkingen kunnen een aanzienlijke hoeveelheid tijd duren. U moet echter doorgaan met de waarschuwing. Als u vermoedt dat u een zeldzame situatie ondervindt, stel de waarde voor concurrency terug naar `1` en probeer de aanvraag opnieuw.
+Er is een enorme waarde in gelijktijdigheid met Azure PowerShell, omdat sommige bewerkingen veel tijd in beslag kunnen nemen. U moet echter wel voorzichtig door gaan. Als u vermoedt dat u een race voorwaarde ondervindt, stelt u de PSWorkerInProcConcurrencyUpperBound `1` -app-instelling in op en gebruikt u in plaats daarvan [taal werk proces niveau isolatie](functions-app-settings.md#functions_worker_process_count) voor gelijktijdigheid.
 
-## <a name="configure-function-scriptfile"></a>Functie configureren `scriptFile`
+## <a name="configure-function-scriptfile"></a>Functie configureren`scriptFile`
 
-Een PowerShell-functie wordt standaard uitgevoerd vanuit `run.ps1`, een bestand met dezelfde bovenliggende map als het bijbehorende gedeelde `function.json`.
+Standaard wordt een Power shell-functie uitgevoerd vanuit `run.ps1`, een bestand dat dezelfde bovenliggende map als de corresponderende `function.json`Directory deelt.
 
-De `scriptFile` eigenschap in de `function.json` kan worden gebruikt om op te halen van een mapstructuur die lijkt op het volgende voorbeeld:
+De `scriptFile` eigenschap in de `function.json` kan worden gebruikt om een mapstructuur te verkrijgen die eruitziet als in het volgende voor beeld:
 
 ```
 FunctionApp
@@ -534,7 +534,7 @@ FunctionApp
  | | - PSFunction.ps1
 ```
 
-In dit geval de `function.json` voor `myFunction` bevat een `scriptFile` eigenschap verwijst naar het bestand met de geëxporteerde functie om uit te voeren.
+In dit geval bevat de `function.json` voor `myFunction` een `scriptFile` -eigenschap die verwijst naar het bestand met de geëxporteerde functie om uit te voeren.
 
 ```json
 {
@@ -545,12 +545,12 @@ In dit geval de `function.json` voor `myFunction` bevat een `scriptFile` eigensc
 }
 ```
 
-## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>PowerShell-modules gebruiken bij het configureren van een ingangspunt
+## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>Power shell-modules gebruiken door een ingangs punt te configureren
 
-In dit artikel heeft laten zien van PowerShell-functies in de standaard `run.ps1` scriptbestand die worden gegenereerd door de sjablonen.
-U kunt echter ook uw functies opnemen in de PowerShell-modules. U kunt verwijzen naar de code van uw specifieke functie in de module met behulp van de `scriptFile` en `entryPoint` velden in de function.json' configuratiebestand.
+In dit artikel worden Power shell-functies weer `run.ps1` gegeven in het standaard script bestand dat door de sjablonen wordt gegenereerd.
+U kunt echter ook uw functies in Power shell-modules toevoegen. U kunt verwijzen naar uw specifieke functie code in de module met behulp `entryPoint` van de `scriptFile` velden en in het configuratie bestand function. json.
 
-In dit geval `entryPoint` is de naam van een functie of cmdlet in de PowerShell-module waarnaar wordt verwezen in `scriptFile`.
+In dit geval `entryPoint` is de naam van een functie of cmdlet in de Power shell-module waarnaar wordt `scriptFile`verwezen in.
 
 Houd rekening met de volgende mapstructuur:
 
@@ -575,7 +575,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-In dit voorbeeld wordt de configuratie voor `myFunction` bevat een `scriptFile` eigenschap die verwijst naar `PSFunction.psm1`, dit is een PowerShell-module in een andere map.  De `entryPoint` eigenschap verwijst naar de `Invoke-PSTestFunc` functie, die het toegangspunt in de module is.
+In dit voor beeld bevat de configuratie `myFunction` voor een `scriptFile` eigenschap die verwijst `PSFunction.psm1`naar een Power shell-module in een andere map.  De `entryPoint` eigenschap verwijst naar `Invoke-PSTestFunc` de functie. Dit is het toegangs punt in de module.
 
 ```json
 {
@@ -587,19 +587,19 @@ In dit voorbeeld wordt de configuratie voor `myFunction` bevat een `scriptFile` 
 }
 ```
 
-Met deze configuratie de `Invoke-PSTestFunc` wordt uitgevoerd als een `run.ps1` zou.
+Met deze configuratie worden de `Invoke-PSTestFunc` bewerkingen precies uitgevoerd als een `run.ps1` zou.
 
-## <a name="considerations-for-powershell-functions"></a>Overwegingen voor het PowerShell-functies
+## <a name="considerations-for-powershell-functions"></a>Overwegingen voor Power shell-functies
 
-Wanneer u met PowerShell-functies werkt, worden op de hoogte van de overwegingen met betrekking tot in de volgende secties.
+Wanneer u werkt met Power shell-functies, moet u rekening houden met de overwegingen in de volgende secties.
 
-### <a name="cold-start"></a>Koude Start
+### <a name="cold-start"></a>Koude start
 
-Bij het ontwikkelen van Azure Functions in de [serverloze hostingmodel](functions-scale.md#consumption-plan), koude starts worden realiteit. *Koude start* verwijst naar bepaalde tijd het duurt voor uw functie-app wilt uitvoeren om een aanvraag te verwerken. Koude start gebeurt vaak in meer het verbruik van plan bent omdat uw functie-app wordt afgesloten tijdens perioden van inactiviteit.
+Bij het ontwikkelen van Azure Functions in het [serverloze hosting model](functions-scale.md#consumption-plan)is koude start een werkelijkheid. *Koude start* verwijst naar de tijd die nodig is om de functie-app uit te voeren om een aanvraag te verwerken. Koude start treedt vaker op in het verbruiks abonnement, omdat uw functie-app wordt afgesloten tijdens peri Oden van inactiviteit.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Bundel modules in plaats van `Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Bundel modules in plaats van gebruik te maken van`Install-Module`
 
-Het script wordt uitgevoerd op elke aanroep. Vermijd het gebruik van `Install-Module` in uw script. Gebruik in plaats daarvan `Save-Module` vóór publicatie, zodat uw functie niet kwijt aan het downloaden van de module. Als koude starts van invloed zijn op uw functies, kunt u overwegen uw functie-app implementeren een [App Service-plan](functions-scale.md#app-service-plan) ingesteld op *AlwaysOn* of naar een [Premium-abonnement](functions-scale.md#premium-plan).
+Uw script wordt uitgevoerd op elke aanroep. Vermijd het `Install-Module` gebruik in uw script. Gebruik `Save-Module` in plaats daarvan vóór het publiceren zodat uw functie geen tijd verspilde bij het downloaden van de module. Als koude start invloed heeft op uw functies, kunt u overwegen om uw functie-app te implementeren in een [app service plan](functions-scale.md#app-service-plan) dat is ingesteld op *altijd* of op een [Premium-abonnement](functions-scale.md#premium-plan).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -607,6 +607,6 @@ Zie de volgende bronnen voor meer informatie:
 
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
-* [Azure Functions-triggers en bindingen](functions-triggers-bindings.md)
+* [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
 
-[naslaginformatie voor host.JSON]: functions-host-json.md
+[Naslag informatie over host. json]: functions-host-json.md

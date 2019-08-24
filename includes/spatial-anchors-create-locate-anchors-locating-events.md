@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: c4339aa8548ef66c862200ad61b6aaca90332ad0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f478956c3a220ea4435c4f6e8b1096a1e9fdcadf
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175754"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70014757"
 ---
-Nadat de watcher is gemaakt, de `AnchorLocated` gebeurtenis wordt voor elke anker aangevraagd. Deze gebeurtenis wordt geactiveerd wanneer een anker zich bevindt, of als het anker kan niet worden gevonden. Als deze situatie, wordt de reden worden vermeld in de status. Nadat alle ankers voor een watcher worden verwerkt, gevonden of niet wordt gevonden, dan zal de `LocateAnchorsCompleted` gebeurtenis wordt geactiveerd.
+Nadat uw Watcher is gemaakt, wordt `AnchorLocated` de gebeurtenis geactiveerd voor elk aangevraagde anker. Deze gebeurtenis wordt gestart wanneer een anker zich bevindt of als het anker niet kan worden gevonden. Als dit het geval is, wordt de reden aangegeven in de status. Nadat alle ankers voor een Watcher zijn verwerkt, gevonden of niet gevonden, wordt de `LocateAnchorsCompleted` gebeurtenis geactiveerd. Er geldt een limiet van 35 id's per Watcher. 

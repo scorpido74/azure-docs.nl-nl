@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 08/06/2019
 ms.author: diberry
-ms.openlocfilehash: 686bdf834efd637db49a7b51dc2bf7effa1eb4cb
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2902e63f65db3883d6d8f442db273d19f60e82a8
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839980"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012778"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>Quickstart: QnA Maker-client bibliotheek voor .NET
 
@@ -186,7 +186,7 @@ Voer de toepassing uit met de `run` opdracht DotNet in de map van de toepassing.
 dotnet run
 ```
 
-De [bron code voor deze Quick](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.css) start is beschikbaar in de C# GitHub-opslag plaats QnA Maker-voor beelden.
+De [bron code voor deze Quick](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/blob/master/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs) start is beschikbaar in de C# GitHub-opslag plaats QnA Maker-voor beelden.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

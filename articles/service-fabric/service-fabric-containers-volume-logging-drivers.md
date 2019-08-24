@@ -1,5 +1,5 @@
 ---
-title: Service Fabric Azure Files-volume stuur programma (preview) | Microsoft Docs
+title: Service Fabric Azure Files-volume stuur programma (GA) | Microsoft Docs
 description: Service Fabric ondersteunt het gebruik van Azure Files voor het maken van back-upvolumes in de container. Dit is momenteel beschikbaar als preview-versie.
 services: service-fabric
 author: athinanthny
@@ -9,18 +9,20 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.author: atsenthi
-ms.openlocfilehash: eb45dda9886450d217355d876ae35af954d99845
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 70784e2c8c91d39c34ba503cc3ebfcf3469939d9
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955601"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013503"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files-volume stuur programma
-De Azure Files-invoeg toepassing voor volumes is een [docker volume-invoeg toepassing](https://docs.docker.com/engine/extend/plugins_volume/) die op [Azure files](/azure/storage/files/storage-files-introduction) gebaseerde volumes biedt voor docker-containers. Deze volume-invoegtoepassing voor Docker is verpakt als een Service Fabric-toepassing die kan worden geïmplementeerd in Service Fabric-clusters. Het doel is om Azure Files volumes te bieden voor andere Service Fabric container toepassingen die op het cluster worden geïmplementeerd.
+De Azure Files volume-invoeg toepassing, een [docker volume-invoeg toepassing](https://docs.docker.com/engine/extend/plugins_volume/) die op [Azure files](/azure/storage/files/storage-files-introduction) gebaseerde volumes biedt voor docker-containers is nu **beschikbaar (algemeen verkrijgbaar)** .
+
+Deze volume-invoegtoepassing voor Docker is verpakt als een Service Fabric-toepassing die kan worden geïmplementeerd in Service Fabric-clusters. Het doel is om Azure Files volumes te bieden voor andere Service Fabric container toepassingen die op het cluster worden geïmplementeerd.
 
 > [!NOTE]
-> Versie 6.5.516.9494 van de invoeg toepassing voor het Azure Files-volume is een preview-versie die beschikbaar is in dit document. Als preview-versie wordt het **niet** ondersteund voor gebruik in productie omgevingen.
+> Versie 6.5.661.9590 van de invoeg toepassing volume van Azure Files is een GA (algemeen beschikbaar) release. 
 >
 
 ## <a name="prerequisites"></a>Vereisten
@@ -119,11 +121,11 @@ De Service Fabric-toepassing die de volumes voor uw containers levert, kan worde
 4. Maak de toepassing en betaal de waarde voor de **ListenPort** -toepassings parameter. Deze waarde is de poort waarop de Azure Files-invoeg toepassing van het volume luistert naar aanvragen van de docker-daemon. Zorg ervoor dat de poort die aan de toepassing is gegeven, overeenkomt met de VolumePluginPorts in de ClusterManifest en niet in strijd is met een andere poort die door het cluster of uw toepassingen wordt gebruikt.
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494  -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -136,11 +138,11 @@ Volg de stappen 1-3 van de [bovenstaande.](/azure/service-fabric/service-fabric-
  Het standaard aantal service-exemplaren voor de Azure Files volume plugin-toepassing is-1, wat betekent dat er een exemplaar van de service op elk knoop punt in het cluster is geïmplementeerd. Bij het implementeren van de Azure Files volume plugin-toepassing op een lokaal ontwikkel cluster, moet het aantal service-exemplaren echter worden opgegeven als 1. Dit kan worden gedaan via de para meter **InstanceCount** -toepassing. Daarom is de opdracht voor het maken van de Azure Files volume plugin-toepassing op een lokaal ontwikkel cluster:
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
 ## <a name="configure-your-applications-to-use-the-volume"></a>Uw toepassingen configureren voor het gebruik van het volume

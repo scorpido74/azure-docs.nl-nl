@@ -4,15 +4,15 @@ description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934321"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012065"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -20,7 +20,7 @@ In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan opstur
 
 U kunt dit proces herhalen als u resources beheert voor meerdere klanten. Wanneer een geautoriseerde gebruiker zich aanmeldt bij uw Tenant, kan die gebruiker worden geautoriseerd door de klant pacht bereiken om beheer bewerkingen uit te voeren zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
 
-U kunt uw Microsoft Partner Network-ID (MPN) koppelen aan uw kant-en-Board abonnementen om de invloed van de klant afspraken bij te houden. Zie [een partner-id koppelen aan uw Azure-accounts](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)voor meer informatie.
+U kunt uw Microsoft Partner Network-ID (MPN) koppelen aan uw kant-en-Board abonnementen om de gevolgen voor klant afspraken bij te houden en herkenning te ontvangen. Zie [een partner-id koppelen aan uw Azure-accounts](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)voor meer informatie. Houd er rekening mee dat u deze koppeling afzonderlijk moet uitvoeren voor elke Tenant van de klant waarvoor u resources beheert. 
 
 > [!NOTE]
 > Klanten kunnen automatisch worden vrijgegeven wanneer ze een Managed Services-aanbieding (openbaar of privé) aanschaffen die u naar Azure Marketplace hebt gepubliceerd. Zie [Managed Services aanbiedingen to Azure Marketplace](publish-managed-services-offers.md)(Engelstalig) voor meer informatie. U kunt ook het voorbereidings proces dat hier wordt beschreven, gebruiken met een aanbieding die is gepubliceerd op Azure Marketplace.
@@ -71,7 +71,7 @@ De klant kan bevestigen dat het abonnement gereed is voor onboarding op een van 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Selecteer in de Azure Portal het abonnement.
-1. **Resource providers**selecteren.
+1. Selecteer **Resourceproviders**.
 1. Controleer of **micro soft. ManagedServices** als **geregistreerd**wordt weer gegeven.
 
 ### <a name="powershell"></a>PowerShell

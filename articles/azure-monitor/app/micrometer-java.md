@@ -1,6 +1,6 @@
 ---
-title: Micrometer gebruiken met Azure Application Insights Java SDK | Microsoft Docs
-description: 'Een stapsgewijze handleiding voor het gebruik van Micrometer met uw Application Insights Spring Boot- en Spring Boot-toepassingen. '
+title: Micrometer gebruiken met Azure-toepassing Insights-Java-SDK | Microsoft Docs
+description: 'Een stapsgewijze hand leiding voor het gebruik van micrometer met uw Application Insights Spring-en non-veer boot-toepassingen. '
 services: application-insights
 documentationcenter: java
 author: lgayhardt
@@ -12,26 +12,26 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1074495f5ac9112b6ce4f67ad2d81ee57b28e720
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699134"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012695"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure Application Insights-SDK voor Java
-Micrometer bewaking metingen metrische toepassingsgegevens voor JVM-gebaseerde toepassing code en kunt u de gegevens exporteren naar uw favoriete bewakingssystemen. In dit artikel leert u hoe u Micrometer met Application Insights voor zowel Spring Boot en Spring Boot-toepassingen.
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
+Met de micrometer-toepassings bewaking worden metrische gegevens gemeten voor op JVM gebaseerde toepassings code en kunt u deze exporteren naar uw favoriete bewakings systemen. In dit artikel leert u hoe u micrometer kunt gebruiken met Application Insights voor zowel veer boot-als niet-veer boot-toepassingen.
 
-## <a name="using-spring-boot-15x"></a>Met behulp van de Spring 1,5 x opstarten
-De volgende afhankelijkheden toe aan het bestand pom.xml of build.gradle toevoegen: 
-* [Application Insights spring boot-starter-](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-BETA of hoger
+## <a name="using-spring-boot-15x"></a>Lente boot gebruiken 1,5 x
+Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand: 
+* [Application Insights lente-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)1.1.0-bèta of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
-* [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 of hoger (deze backports de autoconfig-code in de Spring-framework).
+* [Micrometer lente](https://micrometer.io/docs/ref/spring/1.5) verouderde 1.1.0 of hoger (dit backports de AutoConfig-code in het lente-Framework).
 * [ApplicationInsights Resource](../../azure-monitor/app/create-new-resource.md )
 
 Stappen
 
-1. Werk het pom.xml-bestand van de Spring Boot-toepassing en voeg de volgende afhankelijkheden toe in het:
+1. Werk het bestand pom. XML van de Spring boot-toepassing bij en voeg de volgende afhankelijkheden toe:
 
     ```XML
     <dependency>
@@ -53,84 +53,84 @@ Stappen
     </dependency>
 
     ```
-2. Het bestand application.properties of yml bijwerken met de instrumentatiesleutel van Application Insights met behulp van de volgende eigenschap:
+2. Werk het bestand Application. Properties of yml bij met de Application Insights instrumentatie sleutel met behulp van de volgende eigenschap:
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Uw toepassing bouwen en uitvoeren
-2. De bovenstaande moet aan de slag en uitgevoerd met vooraf samengevoegde metrische gegevens automatisch verzameld naar Azure Monitor. Voor meer informatie over het afstemmen van de Application Insights Spring Boot starter naar verwijzen de [Leesmij-bestand op GitHub](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md).
+2. Hierboven kunt u aan de slag met vooraf geaggregeerde metrische gegevens die automatisch worden verzameld voor Azure Monitor. Raadpleeg het [Leesmij-bestand op github](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md)voor meer informatie over het afstemmen van Application Insights Spring boot starter.
 
-## <a name="using-spring-2x"></a>Met behulp van Spring 2.x
+## <a name="using-spring-2x"></a>Met lente 2. x
 
-De volgende afhankelijkheden toe aan het bestand pom.xml of build.gradle toevoegen:
+Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
 
-* Application Insights Spring boot starter 2.1.2 of hoger
-* Azure-spring-opstart-metrics-starters 2.0.7 of hoger  
-* [Application Insights-Resource](../../azure-monitor/app/create-new-resource.md )
+* Application Insights veer boot-starter 2.1.2 of hoger
+* Azure-veer-boot-metrische gegevens-starters 2.1.5 of hoger  
+* [Application Insights resource](../../azure-monitor/app/create-new-resource.md )
 
 Stappen:
 
-1. Werk het pom.xml-bestand van de Spring Boot-toepassing en voeg de volgende afhankelijkheden toe in het:
+1. Werk het pom. XML-bestand van de Spring boot-toepassing bij en voeg de volgende afhankelijkheden toe:
 
     ```XML
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
-          <version>2.0.7</version>
+          <version>2.1.6</version>
     </dependency>
     ```
-1. Het bestand application.properties of yml bijwerken met de instrumentatiesleutel van Application Insights met behulp van de volgende eigenschap:
+1. Werk het bestand Application. Properties of yml bij met de Application Insights instrumentatie sleutel met behulp van de volgende eigenschap:
 
-     `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
+     `management.metrics.export.azuremonitor.instrumentation-key=<your-instrumentation-key-here>`
 3. Uw toepassing bouwen en uitvoeren
-4. De bovenstaande krijgt u uitgevoerd met vooraf samengevoegde metrische gegevens automatisch verzameld naar Azure Monitor. Voor meer informatie over het afstemmen van de Application Insights Spring Boot starter naar verwijzen de [Leesmij-bestand op GitHub](https://github.com/Microsoft/azure-spring-boot/releases/latest).
+4. In het bovenstaande wordt weer gegeven met vooraf geaggregeerde metrische gegevens die automatisch worden verzameld voor Azure Monitor. Raadpleeg het [Leesmij-bestand op github](https://github.com/Microsoft/azure-spring-boot/releases/latest)voor meer informatie over het afstemmen van Application Insights Spring boot starter.
 
 Standaard metrische gegevens:
 
-*    Metrische gegevens automatisch geconfigureerd voor Tomcat, JVM, Logback metrische gegevens, Log4J metrische gegevens, actieve tijdsduur van metrische gegevens, metrische gegevens voor Processor, FileDescriptorMetrics.
-*    Bijvoorbeeld, krijgen we deze metrische gegevens ook als de netflix hystrix in klassepad aanwezig is. 
-*    De volgende metrische gegevens kan door toe te voegen van de respectieve bonen beschikbaar zijn. 
+*    Automatisch geconfigureerde metrische gegevens voor Tomcat, JVM, logback meet waarden, Log4J Metrics, metrische gegevens over tijds duur, metrische gegevens over processors, FileDescriptorMetrics.
+*    Bijvoorbeeld, als de Netflix Hystrix aanwezig is in het pad naar de klasse, worden deze metrische gegevens ook weer gegeven. 
+*    De volgende metrische gegevens kunnen beschikbaar zijn door het toevoegen van respectieve bonen. 
         - CacheMetrics (CaffeineCache, EhCache2, GuavaCache, HazelcaseCache, Jcache)     
         - DataBaseTableMetrics 
         - HibernateMetrics 
         - JettyMetrics 
-        - OkHttp3 metrische gegevens 
+        - Metrische gegevens van OkHttp3 
         - Metrische gegevens van Kafka 
 
  
 
-Het inschakelen van automatische metrische gegevens verzamelen uit: 
+De automatische metrische gegevens verzameling uitschakelen: 
  
 - JVM metrische gegevens: 
-    - management.metrics.binders.jvm.enabled=false 
+    - Management. Metrics. Binders. JVM. Enabled = False 
 - Logback metrische gegevens: 
-    - management.metrics.binders.logback.enabled=false
-- Actieve tijdsduur van metrische gegevens: 
-    - management.metrics.binders.uptime.enabled=false 
-- Processor metrische gegevens:
-    -  management.metrics.binders.processor.enabled=false 
+    - Management. Metrics. Binders. logback. Enabled = False
+- Metrische gegevens over tijds duur: 
+    - Management. Metrics. Binders. uptime. Enabled = False 
+- Metrische gegevens van processor:
+    -  Management. Metrics. Binders. processor. Enabled = False 
 - FileDescriptorMetrics:
-    - management.metrics.binders.files.enabled=false 
-- Hystrix metrische gegevens als bibliotheek op het klassepad van: 
-    - management.metrics.binders.hystrix.enabled=false 
-- AspectJ metrische gegevens als bibliotheek op het klassepad van: 
+    - Management. Metrics. Binders. files. Enabled = False 
+- Hystrix metrische gegevens als bibliotheek op klassenpad: 
+    - Management. Metrics. Binders. Hystrix. Enabled = False 
+- AspectJ metrische gegevens als bibliotheek op klassenpad: 
     - spring.aop.enabled=false 
 
 > [!NOTE]
-> Geef de eigenschappen boven in de application.properties of application.yml-bestand van de Spring Boot-toepassing
+> Geef de bovenstaande eigenschappen op in het bestand Application. Properties of Application. yml van de Spring boot-toepassing
 
-## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Gebruik Micrometer met Spring Boot-webtoepassingen
+## <a name="use-micrometer-with-non-spring-boot-web-applications"></a>Micrometer gebruiken met niet-veer boot-webtoepassingen
 
-De volgende afhankelijkheden toe aan het bestand pom.xml of build.gradle toevoegen:
+Voeg de volgende afhankelijkheden toe aan uw pom. XML-of build. gradle-bestand:
  
 * [Application Insight Core 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.2.0) of hoger
-* [Application Insights Web 2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) of hoger
+* [Application Insights Web-2.2.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/2.2.0) of hoger
 * [Webfilter registreren](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * Micrometer Azure Registry 1.1.0 of hoger
-* [Application Insights-Resource](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights resource](../../azure-monitor/app/create-new-resource.md )
 
 Stappen:
 
-1. Voeg de volgende afhankelijkheden toe in uw pom.xml of build.gradle-bestand:
+1. Voeg de volgende afhankelijkheden toe aan het bestand pom. XML of build. gradle:
 
     ```XML
         <dependency>
@@ -146,9 +146,9 @@ Stappen:
         </dependency
      ```
 
-2. Toepassing Insights.xml plaatsen in de map bronnen
+2. Application Insights. XML in de map Resources plaatsen
 
-    Voorbeeld Servlet-klasse (verzendt een timer metrische waarde):
+    Voor beeld van een servlet-klasse (een metrische waarde voor een timer):
 
     ```Java
         @WebServlet("/hello")
@@ -187,7 +187,7 @@ Stappen:
     
     ```
 
-      Voorbeeld configuratieklasse:
+      Voorbeeld configuratie klasse:
 
     ```Java
          @WebListener
@@ -226,15 +226,15 @@ Stappen:
          }
     ```
 
-Raadpleeg voor meer informatie over metrische gegevens, de [Micrometer documentatie](https://micrometer.io/docs/).
+Raadpleeg de [micrometer-documentatie](https://micrometer.io/docs/)voor meer informatie over metrische gegevens.
 
-Andere voorbeeldcode voor het maken van verschillende soorten metrische gegevens kunt u vinden in[de officiële Micrometer GitHub-opslagplaats](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
+Andere voorbeeld code voor het maken van verschillende soorten metrische gegevens vindt u in[de officiële micrometer github opslag plaats](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
 
-## <a name="how-to-bind-additional-metrics-collection"></a>Het koppelen van aanvullende metrische gegevens verzamelen
+## <a name="how-to-bind-additional-metrics-collection"></a>Een extra metrische verzameling maken
 
-### <a name="springbootspring"></a>SpringBoot/Spring
+### <a name="springbootspring"></a>SpringBoot/lente
 
-Maak een bean van de respectieve metrische categorie. Stel dat we Guava moeten metrische gegevens in de cache:
+Maak een bonen van de betreffende meet categorie. Stel dat we guava-cache gegevens nodig hebben:
 
 ```Java
     @Bean
@@ -242,15 +242,15 @@ Maak een bean van de respectieve metrische categorie. Stel dat we Guava moeten m
         Return new GuavaCacheMetrics();
     }
 ```
-Er zijn verschillende metrische gegevens die niet standaard zijn ingeschakeld, maar in de bovenstaande wijze kan worden gebonden. Raadpleeg voor een volledige lijst [de officiële Micrometer GitHub-opslagplaats](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
+Er zijn diverse metrische gegevens die niet standaard zijn ingeschakeld, maar kunnen op de bovenstaande manier worden gebonden. Raadpleeg [de officiële micrometer github opslag plaats](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder )voor een volledige lijst.
 
-### <a name="non-spring-apps"></a>Niet-Spring-apps
-Voeg de volgende bindingcode voor het configuratiebestand:
+### <a name="non-spring-apps"></a>Niet-lente-apps
+Voeg de volgende bindings code toe aan het configuratie bestand:
 ```Java 
     New GuavaCacheMetrics().bind(registry);
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor meer informatie over Micrometer verwijzen naar de officiële [Micrometer documentatie](https://micrometer.io/docs).
-* Voor meer informatie over Spring op Azure verwijzen naar de officiële [Spring op Azure-documentatie](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable).
+* Raadpleeg de officiële [micrometer-documentatie](https://micrometer.io/docs)voor meer informatie over micrometer.
+* Raadpleeg de officiële [lente op de Azure-documentatie](https://docs.microsoft.com/java/azure/spring-framework/?view=azure-java-stable)voor meer informatie over de lente in Azure.

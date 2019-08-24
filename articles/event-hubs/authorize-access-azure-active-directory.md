@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 569399b2b5f676e11cd6540126e0b26dc0d26198
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 1a42843cc81070cc284863b3736549576e32cb17
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992859"
+ms.locfileid: "70011880"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
 Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -38,9 +38,9 @@ Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verl
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Ingebouwde RBAC-rollen voor Azure Event Hubs
 Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot Event Hubs gegevens met behulp van Azure AD en OAuth:
 
-- [Eigenaar van Azure Event hubs-gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview): Gebruik deze rol om volledige toegang tot Event Hubs resources te geven.
-- [Afzender van Azure Event hubs gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver-preview): Gebruik deze rol om de toegang tot Event Hubs resources te verlenen.
-- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender-preview): Gebruik deze rol om de verbruiks-en ontvangst toegang tot Event Hubs resources te verlenen.
+- [Eigenaar van Azure Event hubs-gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Gebruik deze rol om volledige toegang tot Event Hubs resources te geven.
+- [Afzender van Azure Event hubs gegevens](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Gebruik deze rol om de toegang tot Event Hubs resources te verlenen.
+- [Gegevens ontvanger van Azure Event hubs](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Gebruik deze rol om de verbruiks-en ontvangst toegang tot Event Hubs resources te verlenen.
 
 ## <a name="resource-scope"></a>Bron bereik 
 Voordat u een RBAC-rol toewijst aan een beveiligingsprincipal, bepaalt u het bereik van toegang dat de beveiligingsprincipal moet hebben. Aanbevolen procedures bepalen dat het altijd het beste is om alleen het smalle mogelijke bereik toe te kennen.

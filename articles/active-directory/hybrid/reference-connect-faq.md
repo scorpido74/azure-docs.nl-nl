@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014198"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011301"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -270,3 +270,7 @@ Als u hulp nodig hebt bij het upgraden naar een nieuwere versie van Azure AD Con
 * Zoek technische vragen en antwoorden of vraag uw eigen vragen door naar [de Azure AD-Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)te gaan.
 
 [Ondersteuning voor Azure AD ontvangen](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**V: Waarom worden de gebeurtenissen 6311 en 6401 weer gegeven na een fouten in de synchronisatie stap?**
+
+De gebeurtenissen 6311- **de server heeft een onverwachte fout aangetroffen tijdens het uitvoeren van een call back** en 6401- **de beheer agent controller heeft een onverwachte fout aangetroffen. deze** worden altijd geregistreerd na een fout in de synchronisatie stap. Om deze fouten op te lossen, moet u de fouten in de synchronisatie stap opschonen.  Zie [problemen oplossen tijdens synchronisatie](tshoot-connect-sync-errors.md) en [problemen met object synchronisatie oplossen met Azure AD Connect Sync](/tshoot-connect-objectsync.md) voor meer informatie.

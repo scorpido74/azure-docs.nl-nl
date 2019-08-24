@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 07/16/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9481263773cc919fecacce80191cf209ec2a1282
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359242"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012477"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Controleren op groeps-en knooppunt fouten
 
@@ -64,7 +64,7 @@ Batch stelt de [groeps status](https://docs.microsoft.com/rest/api/batchservice/
 
 ## <a name="pool-compute-node-errors"></a>Fouten bij het berekenen van het groeps knooppunt
 
-Zelfs wanneer de batch knoop punten in een groep heeft toegewezen, kunnen verschillende problemen ertoe leiden dat sommige van de knoop punten niet meer in orde zijn en taken niet kunnen uitvoeren. Voor deze knoop punten zijn nog steeds kosten in rekening gebracht. het is dus belang rijk om problemen op te sporen om te voor komen dat er geen knoop punten kunnen worden gebruikt.
+Zelfs wanneer de batch knoop punten in een groep heeft toegewezen, kunnen verschillende problemen ertoe leiden dat sommige van de knoop punten niet meer in orde zijn en taken niet kunnen uitvoeren. Voor deze knoop punten zijn nog steeds kosten in rekening gebracht. het is dus belang rijk om problemen op te sporen om te voor komen dat er geen knoop punten kunnen worden gebruikt. Naast algemene knooppunt fouten is de huidige [taak status](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate) nuttig voor het oplossen van problemen.
 
 ### <a name="start-task-failures"></a>Fouten bij starten van taken
 
@@ -84,7 +84,7 @@ Start taken moeten worden herhaald, omdat het mogelijk is dat de begin taak meer
 
 U kunt een of meer toepassings pakketten voor een groep opgeven. Batch downloadt de opgegeven pakket bestanden naar elk knoop punt en decomprimeert de bestanden nadat het knoop punt is gestart, maar voordat taken worden gepland. Het is gebruikelijk om een opdracht regel voor starten van de taak te gebruiken in combi natie met toepassings pakketten. Bijvoorbeeld om bestanden te kopiëren naar een andere locatie of om Setup uit te voeren.
 
-De eigenschap knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) rapporteert een fout bij het downloaden en het ongedaan maken van de compressie van een toepassings pakket; de status van het knoop punt is ingesteld op onbruikbaar.
+De eigenschap knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) rapporteert een fout bij het downloaden en het ongedaan maken van de compressie van een toepassings pakket; de status van het knoop puntis ingesteld op onbruikbaar.
 
 ### <a name="container-download-failure"></a>Fout bij downloaden van container
 
@@ -92,9 +92,9 @@ U kunt een of meer container verwijzingen opgeven voor een groep. Batch download
 
 ### <a name="node-in-unusable-state"></a>Het knoop punt kan niet worden gebruikt
 
-Azure Batch kan de status van het [knoop punt](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) om een groot aantal redenen worden ingesteld op onbruikbaar. Als de status van het knoop punt is ingesteld op onbruikbaar, kunnen taken niet worden gepland voor het knoop punt, maar worden er nog steeds kosten in rekening gebracht.
+Azure Batch kan de status van het [knoop punt](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) om een groot aantal redenen worden ingesteld op onbruikbaar. Als de status van het knooppunt is ingesteld op onbruikbaar, kunnen taken niet worden gepland voor het knoop punt, maar worden er nog steeds kosten in rekening gebracht.
 
-Knoop punten in een niet- **bruikbare** status, maar zonder [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) betekent dat de batch niet kan communiceren met de virtuele machine. In dit geval probeert batch altijd de virtuele machine te herstellen. Er wordt niet automatisch geprobeerd om Vm's te herstellen waarvoor geen toepassings pakketten of containers konden worden geïnstalleerd, ook al is de status onbruikbaar.
+Knoop punten in een niet- **bruikbare** status, maar zonder [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) betekent dat de batch niet kan communiceren met de virtuele machine. In dit geval probeert batch altijd de virtuele machine te herstellen. Er wordt niet automatisch geprobeerd om Vm's te herstellen waarvoor geen toepassings pakketten of containers konden worden geïnstalleerd, ook alis de status onbruikbaar.
 
 Als batch de oorzaak kan bepalen, wordt deze door de eigenschap voor knooppunt [fouten](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) gerapporteerd.
 
@@ -118,7 +118,7 @@ Het batch agent-proces dat wordt uitgevoerd op elk pool knooppunt, kan logboek b
 
 ### <a name="node-disk-full"></a>De schijf van het knoop punt is vol
 
-Het tijdelijke station voor een groeps knooppunt-VM wordt gebruikt door batch voor taak bestanden, taak bestanden en gedeelde bestanden. 
+Het tijdelijke station voor een groeps knooppunt-VM wordt gebruikt door batch voor taak bestanden, taak bestanden en gedeelde bestanden.
 
 - Bestanden van toepassings pakketten
 - Resourcebestanden voor taak

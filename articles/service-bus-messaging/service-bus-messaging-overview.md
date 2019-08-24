@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988495"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013121"
 ---
 # <a name="what-is-azure-service-bus"></a>Wat is Azure Service Bus?
 
@@ -39,7 +39,7 @@ Berichten worden verzonden naar en ontvangen van *wachtrijen*. Wachtrijen maken 
 
 ![Wachtrij](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Messages in queues are ordered and timestamped on arrival. Als een bericht is geaccepteerd, wordt het veilig ondergebracht in redundante opslag. Berichten worden geleverd *pull* modus, die voorziet in een berichten op aanvraag.
+Berichten in wacht rijen worden besteld en getimed op aankomst. Als een bericht is geaccepteerd, wordt het veilig ondergebracht in redundante opslag. Berichten worden bezorgd in de *pull* -modus, waarmee berichten op aanvraag worden geleverd.
 
 ## <a name="topics"></a>Onderwerpen
 
@@ -97,7 +97,7 @@ Als er een fout optreedt die tot gevolg heeft dat er bij de client twijfel is ov
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC en beheerde identiteiten voor Azure-resources
 
-Service Bus biedt ondersteuning voor beveiligingsprotocollen zoals [SAS](service-bus-sas.md) (Shared Access Signatures), [RBAC](service-bus-role-based-access-control.md) (op rollen gebaseerd toegangsbeheer) en [MSI](service-bus-managed-service-identity.md) (Managed Service Identity) voor Azure-resources.
+Service Bus biedt ondersteuning voor beveiligingsprotocollen zoals [SAS](service-bus-sas.md) (Shared Access Signatures), [RBAC](authenticate-application.md) (op rollen gebaseerd toegangsbeheer) en [MSI](service-bus-managed-service-identity.md) (Managed Service Identity) voor Azure-resources.
 
 ### <a name="geo-disaster-recovery"></a>Geo-noodherstel
 
