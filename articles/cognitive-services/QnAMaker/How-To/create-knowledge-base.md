@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967717"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012815"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Quickstart: Een kennis database maken met behulp van de QnA Maker-API-Service Portal
 
@@ -45,24 +45,21 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
     ![Set-gegevensbronnen](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - Geef de service een **naam.** Dubbele namen en speciale tekens worden ondersteund.
-    - URL's voor gegevens die u uitgepakte wilt toevoegen. Zie voor meer informatie over de verschillende typen gegevensbronnen ondersteund [hier](../Concepts/data-sources-supported.md).
-    - Uploaden van bestanden voor gegevens die u opgehaald wilt. Zie de [informatie over de prijzen](https://aka.ms/qnamaker-pricing) om te zien hoeveel documenten kunnen toevoegen.
-    - Als u vragen en antwoorden supereenvoudig handmatig toevoegen wilt, kunt u overslaan **stap 4** weergegeven in de vorige afbeelding.
+1. Geef uw service een **naam** zoals `my first kb`. Dubbele namen en speciale tekens worden ondersteund.
 
-1. Voeg **Chit chat** aan uw KB. Kies uit een van de persoonlijke wensen om chit-chat ondersteuning toe te voegen voor uw bot. 
+1. Voeg de pagina voor het oplossen van problemen QnA Maker `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`toe als URL `+ Add URL`: en selecteer deze. Zie voor meer informatie over de verschillende typen gegevensbronnen ondersteund [hier](../Concepts/data-sources-supported.md). Voor deze Snelstartgids uploadt u **geen bestanden** voor gegevens die u wilt extra heren. Zie de [informatie over de prijzen](https://aka.ms/qnamaker-pricing) om te zien hoeveel documenten kunnen toevoegen.
 
-    ![Chit-Chat toevoegen aan KB](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. Voeg  **_professionele_ Chit-Chat** toe aan uw KB. 
 
 1. Selecteer **maken uw KB**.
 
     ![KB maken](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. Het duurt enkele minuten duren voordat gegevens worden geëxtraheerd.
+1. Het kan enkele minuten duren voordat gegevens worden geëxtraheerd.
 
     ![Extractie](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. Wanneer uw Knowledge Base is gemaakt, wordt u omgeleid naar de **Knowledge base** pagina.
+1. Wanneer uw Knowledge Base is gemaakt, wordt u omgeleid naar de pagina **Knowledge Base** .
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
