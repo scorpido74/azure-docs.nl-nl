@@ -327,6 +327,8 @@
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
         - name: Apache Spark-gebeurtenislogboek - RequestBodyTooLarge
           href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
+        - name: Quorum voor Apache ZooKeeper mislukt
+          href: ./zookeeper-troubleshoot-quorum-fails.md
 - name: Naslaginformatie
   items:
     - name: Codevoorbeelden

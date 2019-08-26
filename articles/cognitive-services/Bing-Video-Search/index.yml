@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Documentatie voor Bing Video's zoeken-API
 metadata:
-  title: 'Documentatie voor Bing Video''s zoeken-API - zelfstudies, quickstarts, API-verwijzingen | Microsoft Docs'
+  title: 'Documentatie voor Bing Video''s zoeken-API - zelfstudies, quickstarts, API-verwijzingen'
+  titleSuffix: Azure Cognitive Services
   description: Informatie over het gebruik van de Bing Video's zoeken-API en het zoeken van video's op internet.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

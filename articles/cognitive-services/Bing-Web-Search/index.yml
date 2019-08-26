@@ -3,15 +3,14 @@ documentType: LandingData
 title: Documentatie over de Bing Webzoekopdrachten-API
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
-  title: 'Documentatie over de Bing Webzoekopdrachten-API - zelfstudies, snelstarts, API-verwijzingen | Microsoft Docs'
+  title: 'Documentatie voor de Bing Webzoekopdrachten-API - zelfstudies, quickstarts, API-verwijzingen'
+  titleSuffix: Azure Cognitive Services
   description: 'Informatie over het gebruik van de Bing webzoekopdrachten-API om op internet te zoeken naar webpagina''s, afbeeldingen, video''s, nieuws en meer.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 7/25/2019
   ms.author: nitinme

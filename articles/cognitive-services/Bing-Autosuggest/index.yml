@@ -3,15 +3,14 @@ documentType: LandingData
 title: Documentatie voor Bing Automatische suggesties
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Documentatie voor Bing Automatische suggesties - zelfstudies, snelstarts, API-verwijzingen | Microsoft Docs'
+  title: 'Documentatie voor Bing Automatische suggesties - zelfstudies, quickstarts, API-verwijzingen'
+  titleSuffix: Azure Cognitive Services
   description: Meer informatie over het gebruik van Bing Automatische suggesties voor voorgestelde query’s op basis van een gedeeltelijke query. Zelfstudies laten zien hoe u apps maakt die gebruikmaken van de service.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

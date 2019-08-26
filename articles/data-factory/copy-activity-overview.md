@@ -130,7 +130,7 @@ De volgende sjabloon van een kopieeractiviteit bevat een uitgebreide lijst met o
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van een Kopieer activiteit moet worden ingesteld op: **Kopieer** | Ja |
+| Type | De eigenschap type van een Kopieer activiteit moet worden ingesteld op: **Copy** | Ja |
 | inputs | Geef op de gegevensset die u hebt gemaakt die verwijst naar de brongegevens. Kopieeractiviteit ondersteunt alleen een één invoer. | Ja |
 | outputs | Geef op de gegevensset die u hebt gemaakt die verwijst naar de sink-gegevens. Kopieeractiviteit ondersteunt slechts één uitvoer. | Ja |
 | typeProperties | Een groep met eigenschappen te configureren van de kopieeractiviteit. | Ja |

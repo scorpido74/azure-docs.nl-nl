@@ -3,15 +3,14 @@ documentType: LandingData
 title: API-documentatie voor Bing Visual Search
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: 'Documentatie voor Bing Visual Search-API -zelfstudies, quickstarts, API-verwijzingen | Microsoft Docs'
+  title: 'Documentatie voor Bing Visual Search-API -zelfstudies, quickstarts, API-verwijzingen'
+  titleSuffix: Azure Cognitive Services
   description: Meer informatie over het gebruik van de Bing Visual Search-API om inzichten over een afbeelding te verkrijgen.
   services: cognitive-services
   author: swhite-msft
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
   ms.author: scottwhi

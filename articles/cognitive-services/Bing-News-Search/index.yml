@@ -1,17 +1,15 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
 title: Documentatie voor Bing Nieuws zoeken-API
-titleSuffix: Azure Cognitive Services
 metadata:
-  title: 'Documentatie voor Bing Nieuws zoeken-API -zelfstudies, quickstarts, API-verwijzingen | Microsoft Docs'
+  title: 'Documentatie voor Bing Nieuws zoeken-API -zelfstudies, quickstarts, API-verwijzingen'
+  titleSuffix: Azure Cognitive Services
   description: Lees hoe u de Bing Nieuws zoeken-API gebruikt om op internet te zoeken naar nieuws.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-video-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

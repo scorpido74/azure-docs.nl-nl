@@ -3,15 +3,14 @@ documentType: LandingData
 title: Documentatie voor Bing Spellingcontrole-API
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Documentatie voor de Bing Spellingcontrole-API - zelfstudies, API-verwijzing - Azure Cognitive Services  | Microsoft Docs'
+  title: 'Documentatie voor Bing Spellingcontrole-API - zelfstudies, API-verwijzing'
+  titleSuffix: Azure Cognitive Services
   description: Informatie over het gebruik van de Bing Spellingcontrole-API voor voorgestelde verbeteringen voor tekstdocumenten. Zelfstudies laten zien hoe u apps maakt die gebruikmaken van de API.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

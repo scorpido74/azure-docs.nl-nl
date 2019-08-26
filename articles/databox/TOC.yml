@@ -95,8 +95,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 - Kopiëren en valideren
               href: data-box-disk-deploy-copy-data.md
-            - name: '4 - Terugsturen, uploaden, controleren'
+            - name: 4 - Retourneren
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 - De upload controleren
+              href: data-box-disk-deploy-upload-verify.md
         - name: Concepten
           items:
             - name: Vereisten beoordelen

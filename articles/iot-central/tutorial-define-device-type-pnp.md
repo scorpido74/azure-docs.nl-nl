@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 877769041d1587c6c1b0f4dbaff51d5a1a7924b5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907355"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997716"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Zelfstudie: Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -70,7 +70,7 @@ Een nieuwe Azure IoT Central-toepassing maken die gebruikmaakt van preview-funct
 
     Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
-U hebt ook een lokale kopie van het **EnvironmentalSensorInline. capabilitymodel. json** -bestand nodig dat de [IOT Plug en Play](https://aka.ms/iot-pnp-docs) device capability model bevat. U kunt deze [hier](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)downloaden. Klik met de rechter muisknop op de pagina en selecteer **Opslaan als**.
+U hebt ook een lokale kopie van het **EnvironmentalSensorInline. capabilitymodel. json** -bestand nodig dat de [IOT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) device capability model bevat. U kunt deze [hier](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)downloaden. Klik met de rechter muisknop op de pagina en selecteer **Opslaan als**.
 
 Nadat u het bestand hebt gedownload, opent u het in een tekst editor en vervangt u de twee `<YOUR_COMPANY_NAME_HERE>` exemplaren van met uw naam. Gebruik alleen de tekens a-z, A-Z, 0-9 en onderstrepen.
 

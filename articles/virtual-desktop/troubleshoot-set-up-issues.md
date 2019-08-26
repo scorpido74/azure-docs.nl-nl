@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: efc721f7852d50e431be38f52e27d72ad7f3ae76
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877575"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981097"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -53,7 +53,7 @@ Voor beeld van onbewerkte fout:
 
 **Wordt** De gebruiker die zich heeft aangemeld, is niet toegewezen aan de TenantCreator-rol in hun Azure Active Directory.
 
-**Fix:** Volg de instructies in [De toepassingsrol van de TenantCreator toewijzen aan een gebruiker in uw Azure Active Directory-Tenant](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant). Nadat u de instructies hebt gevolgd, hebt u een gebruiker toegewezen aan de TenantCreator-rol.
+**Fix:** Volg de instructies in [De toepassingsrol van de TenantCreator toewijzen aan een gebruiker in uw Azure Active Directory-Tenant](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Nadat u de instructies hebt gevolgd, hebt u een gebruiker toegewezen aan de TenantCreator-rol.
 
 ![Scherm opname van TenantCreator rol toegewezen.](media/TenantCreatorRoleAssigned.png)
 
@@ -314,9 +314,9 @@ Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName “RDS Contributor” -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Fout: Gebruiker vereist Azure multi-factor Authentication (MFA)
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Fout: Gebruiker vereist Azure Multi-Factor Authentication (MFA)
 
-![Scherm opname van de implementatie is mislukt vanwege een gebrek aan multi-factor Authentication (MFA)](media/MFARequiredError.png)
+![Scherm opname van de implementatie is mislukt vanwege een gebrek aan Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
 
 Voor beeld van onbewerkte fout:
 
@@ -324,7 +324,7 @@ Voor beeld van onbewerkte fout:
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**Wordt** Voor de opgegeven Tenant beheerder van het Windows-bureau blad is Azure multi-factor Authentication (MFA) vereist om u aan te melden.
+**Wordt** De opgegeven Tenant beheerder voor Windows Virtual Desktop vereist Azure Multi-Factor Authentication (MFA) om u aan te melden.
 
 **Fix:** Maak een Service-Principal en wijs hieraan een rol toe voor uw Windows Virtual Desktop-Tenant door de [stappen in de volgende zelf studie uit te voeren: Service-principals en roltoewijzingen maken met Power](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)shell. Nadat u hebt gecontroleerd of u zich kunt aanmelden bij het virtuele bureau blad van Windows met de Service-Principal, voert u de Azure Marketplace-aanbieding of de GitHub Azure Resource Manager-sjabloon uit, afhankelijk van de methode die u gebruikt. Volg de onderstaande instructies om de juiste para meters voor uw methode op te geven.
 

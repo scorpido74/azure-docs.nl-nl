@@ -79,10 +79,6 @@
       href: service-bus-samples.md
 - name: Concepten
   items:
-    - name: Beheerde identiteiten voor Azure-resources
-      href: service-bus-managed-service-identity.md
-    - name: Op rollen gebaseerd toegangsbeheer (preview)
-      href: service-bus-role-based-access-control.md
     - name: Premium Messaging
       href: service-bus-premium-messaging.md
     - name: Azure Queues en Service Bus-wachtrijen vergelijken
@@ -95,8 +91,25 @@
       href: service-bus-async-messaging.md
     - name: Uitval en -noodgevallen afhandelen
       href: service-bus-outages-disasters.md
-    - name: Algemene Azure-beveiligingskenmerken
-      href: service-bus-messaging-security-attributes.md
+    - name: Beveiliging
+      items:
+        - name: Verificatie en autorisatie
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Shared access signatures gebruiken
+              items:
+                - name: Van ACS naar SAS migreren
+                  href: service-bus-migrate-acs-sas.md
+                - name: Verificatie met Shared Access Signatures
+                  href: service-bus-sas.md
+            - name: Azure Active Directory gebruiken
+              items:
+                - name: Verifiëren met beheerde identiteiten voor Azure-resources
+                  href: service-bus-managed-service-identity.md
+                - name: Verifiëren vanuit een toepassing
+                  href: authenticate-application.md
+        - name: Algemene Azure-beveiligingskenmerken
+          href: service-bus-messaging-security-attributes.md
 - name: Handleidingen
   items:
     - name: Een naamruimte maken
@@ -119,13 +132,6 @@
               href: service-bus-to-event-grid-integration-concept.md
             - name: Voorbeelden van Azure Event Grid
               href: service-bus-to-event-grid-integration-example.md
-        - name: Verificatie en autorisatie
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: Van ACS naar SAS migreren
-              href: service-bus-migrate-acs-sas.md
-            - name: Verificatie met Shared Access Signatures
-              href: service-bus-sas.md
         - name: Onderwerpfilters en acties
           href: topic-filters.md
         - name: Migreren van Standard- naar Premium-naamruimten

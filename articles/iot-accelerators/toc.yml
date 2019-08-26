@@ -149,6 +149,8 @@
       items:
         - name: OPC Twin-architectuur
           href: overview-opc-twin-architecture.md
+        - name: OPC Vault-architectuur
+          href: overview-opc-vault-architecture.md
     - name: Handleidingen
       items:
         - name: Verbonden factory
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC Vault
           items:
-            - name: OPC Vault implementeren naar een bestaand project
-              items:
-                - name: Communicatie van OPC-client en OPC PLC beveiligen
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: OPC UA-client en OPC UA-servertoepassing beveiligen
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: OPC Vault helemaal vanaf het begin implementeren
-              href: howto-opc-vault-deploy-scratch.md
+            - name: OPC Vault-service implementeren
+              href: howto-opc-vault-deploy.md
+            - name: OPC Vault-service beheren
+              href: howto-opc-vault-manage.md
+            - name: OPC UA-apparaatcommunicatie beveiligen met OPC Vault
+              href: howto-opc-vault-secure.md
+            - name: De OPC Vault-service veilig gebruiken
+              href: howto-opc-vault-secure-ca.md
         - name: OPC Publisher
           items:
             - name: OPC Publisher configureren

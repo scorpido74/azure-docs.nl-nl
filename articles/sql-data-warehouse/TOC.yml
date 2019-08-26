@@ -253,14 +253,20 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Verbindingsreeksen
           href: sql-data-warehouse-connection-strings.md
-        - name: Visual Studio SSDT installeren
-          href: sql-data-warehouse-install-visual-studio.md
-        - name: Query's uitvoeren bij Visual Studio SSDT
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Query's uitvoeren met SSMS
-          href: sql-data-warehouse-query-ssms.md
-        - name: Verbinding maken en query's uitvoeren met sqlcmd
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Wijzigingsbeheer en implementatie
+          items:
+            - name: Visual Studio SSDT installeren
+              href: sql-data-warehouse-install-visual-studio.md
+            - name: Integratie van bronbeheer
+              href: sql-data-warehouse-source-control-integration.md
+        - name: Verbinding maken en query's uitvoeren
+          items:
+            - name: Visual Studio SSDT
+              href: sql-data-warehouse-query-visual-studio.md
+            - name: SSMS
+              href: sql-data-warehouse-query-ssms.md
+            - name: sqlcmd
+              href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: Werklastbeheer
       items:
         - name: Uw workload analyseren

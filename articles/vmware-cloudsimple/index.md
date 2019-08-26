@@ -1,36 +1,87 @@
 ---
 title: Azure VMware-oplossing van CloudSimple
-description: Meer informatie over Azure VMware-oplossingen van CloudSimple
+description: Documentatie-portal voor Azure VMware-oplossing van CloudSimple.
 author: sharaths-cs
-ms.author: dikamath
-ms.date: 04/23/2019
+ms.author: b-mashar
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13d2b3cccdcba6b8e8d7459db94d3c57a607c222
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812167"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972745"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware-oplossing van CloudSimple
 
-Welkom bij de Azure VMware-oplossing van CloudSimple. Hier vindt u meer informatie over het gebruik van CloudSimple en over het inschakelen van oplossingen in de service. Artikelen of de inhoudsopgave zoeken.
+Welkom bij de portal voor complete hulp met de Azure VMware-oplossing van CloudSimple.
+Op deze documentatiesite vindt u meer informatie over de volgende onderwerpen:
 
-- Bekijk het [overzicht](cloudsimple-vmware-solutions-overview.md) voor meer informatie over de Azure VMware-oplossing van CloudSimple.
-- Selecteer [CloudSimple private cloud overview](cloudsimple-private-cloud.md) voor meer informatie over de CloudSimple-oplossing voor privéclouds.
-- Selecteer [Nodes](cloudsimple-node.md) voor meer informatie over CloudSimple-knooppunten.
-- Selecteer [Initialiseren en inrichten](quickstart-create-cloudsimple-service.md) om aan de slag te gaan met de Azure VMware-oplossing van CloudSimple.
+## <a name="overview"></a>Overzicht
 
-| Concepten in één oogopslag     | Resource                    | Doel                                                                       | Beheer         |
-|--------------------------|-----------------------------|-------------------------------------------------------------------------------|--------------------|
-| **Service maken**     | CloudSimple-service         | Het Edge-netwerk van de CloudSimple-service configureren                                    | Azure Portal       |
-|                          | CloudSimple-knooppunt            | Capaciteit inrichten om in de CloudSimple-service te gebruiken                          | Azure Portal       |
-| **Serviceverbruik**  | Privécloud               | VMware-omgevingen maken                                                    | CloudSimple-portal |
-|                          | VLAN/Subnet                 | Onderliggende netwerken maken voor VMware-verbruik                               | CloudSimple-portal |
-|                          | Firewall-tabel              | Noord/zuid- en Oost/west-beveiligingsregels configureren in onderliggende netwerken | CloudSimple-portal |
-|                          | Openbaar IP-adres           | Openbare adressen voor VMware-workloads verkrijgen                           | CloudSimple-portal |
-|                          | Azure-verbinding            | Connectiviteit naar on-premises of virtuele netwerken maken in Azure         | CloudSimple-portal |
-| **Geïntegreerd beheer**   | Virtuele CloudSimple-machine | Virtuele VMware-machines beheren in de Azure-portal                                | Azure Portal       |
+Meer informatie over de Azure VMware-oplossing van CloudSimple
+
+* Meer informatie over de functies, voordelen en gebruiksscenario's in [Wat is de Azure VMware-oplossing van CloudSimple?](cloudsimple-vmware-solutions-overview.md)
+* Meer informatie over de [belangrijkste concepten voor beheer](key-concepts.md)
+
+## <a name="quickstart"></a>Snelstartgids
+
+Meer informatie over hoe u aan de slag kunt met de oplossing
+
+* Meer informatie over [het initialiseren van de service en het kopen van capaciteit](quickstart-create-cloudsimple-service.md)
+* Meer informatie over het maken van een nieuwe VMware-omgeving in [Een privécloudomgeving configureren](quickstart-create-private-cloud.md)
+* Meer informatie over hoe u het beheer van VMware en Azure kunt samenbrengen in het artikel [VMware-VM's in Azure gebruiken](quickstart-create-vmware-virtual-machine.md)
+
+## <a name="concepts"></a>Concepten
+
+Meer informatie over de volgende concepten
+
+* Een [CloudSimple-service](cloudsimple-service.md) (ook wel 'Azure VMware-oplossing van CloudSimple - service' genoemd). Deze resource moet eenmaal per regio worden gemaakt.
+* Koop capaciteit voor uw omgeving door een of meer [CloudSimple-knooppuntresources](cloudsimple-node.md) te maken. Deze resources worden ook wel 'Azure VMware-oplossing van CloudSimple - node' genoemd.
+* Initialiseer en configureer uw VMware-omgeving met behulp van [privéclouds](cloudsimple-private-cloud.md).
+* Breng uw beheer samen met [Virtuele CloudSimple-machines](cloudsimple-virtual-machines.md) (ook wel 'Azure VMware-oplossing door CloudSimple - virtuele machine' genoemd).
+* Ontwerp het onderliggende netwerk met behulp van [VLAN's/subnetten](cloudsimple-vlans-subnets.md).
+* Segmenteer en beveilig uw onderliggende netwerk met behulp van de resource [Firewall-tabel](cloudsimple-firewall-tables.md).
+* Krijg beveiligde toegang tot uw VMware-omgevingen via het WAN met behulp van [VPN-gateways](cloudsimple-vpn-gateways.md).
+* Schakel openbare toegang voor workloads in met behulp van [openbare IP-adressen](cloudsimple-public-ip-address.md).
+* Maak verbinding met virtuele Azure-netwerken en on-premises netwerken met behulp van een [Azure-netwerkverbinding.](cloudsimple-azure-network-connection.md)
+* Configureer doelen voor waarschuwingse-mails met behulp van [Accountbeheer](cloudsimple-account.md).
+* Bekijk logboeken van gebruikers-en systeemactiviteiten met behulp van weergaven van [Activiteitenbeheer](cloudsimple-activity.md).
+* Krijg inzicht in de verschillende [VMware-onderdelen](vmware-components.md).
+
+## <a name="tutorials"></a>Zelfstudies
+
+Leer hoe u algemene taken kunt uitvoeren, zoals:
+
+* [Een CloudSimple-service maken](create-cloudsimple-service.md), eenmaal per regio waar u VMware-omgevingen wilt implementeren.
+* Kernfunctionaliteit van de service beheren in de [CloudSimple-portal](access-cloudsimple-portal.md).
+* Capaciteit inschakelen en facturering optimaliseren voor uw infrastructuur door [CloudSimple-knooppunten te kopen](create-nodes.md).
+* Configuraties voor VMware-omgevingen beheren met behulp van privéclouds. U kunt privéclouds [maken](create-private-cloud.md), [beheren](manage-private-cloud.md), [uitbreiden](expand-private-cloud.md) of [verkleinen](shrink-private-cloud.md).
+* Gecombineerd beheer inschakelen door [Azure-abonnementen toe te wijzen](azure-subscription-mapping.md).
+* Gebruikers- en systeemactiviteiten bewaken met behulp van de [activiteitenpagina's](monitor-activity.md).
+* Netwerken voor uw omgevingen configureren door [subnetten te maken en beheren](create-vlan-subnet.md).
+* Uw omgeving segmenteren en beveiligen met behulp van [firewall-tabellen en -regels](firewall.md).
+* Binnenkomende internettoegang inschakelen voor workloads door [openbare IP-adressen toe te wijzen](public-ips.md).
+* Connectiviteit van uw interne netwerken of clientwerkstations inschakelen door [een VPN in te stellen](vpn-gateway.md).
+* Communicatie van uw [on-premises omgevingen](on-premises-connection.md) en [Azure Virtual Networks](virtual-network-connection.md) inschakelen.
+* Waarschuwingsdoelen configureren en de totale aangeschafte capaciteit weergeven in de [accountsamenvatting](account.md)
+* [Gebruikers](users.md) weergeven die de CloudSimple-portal hebben geopend.
+* Virtuele VMware-machines beheren vanuit de Azure-portal:
+    * [Virtuele machines maken](azure-create-vm.md) in de Azure-portal.
+    * [Virtuele machines beheren](azure-manage-vm.md) die u hebt gemaakt.
+
+## <a name="how-to-guides"></a>Handleidingen
+
+Deze handleidingen beschrijven oplossingen voor doelstellingen, zoals:
+
+* [Uw omgeving beveiligen](private-cloud-secure.md)
+* Hulpprogramma's van derden installeren, aanvullende gebruikers inschakelen en externe verificatiebronnen gebruiken in vSphere met behulp van [escalatie van bevoegdheden](escalate-privileges.md).
+* De toegang tot verschillende VMware-services configureren met behulp van [on-premises DNS](on-premises-dns-setup.md).
+* Naam- en adrestoewijzing inschakelen voor uw workloads door [workload-DNS en -DHCP te configureren](dns-dhcp-setup.md).
+* Inzicht krijgen in hoe de service de beveiliging en functionaliteit van uw platform waarborgt met behulp van [service-updates en -upgrades](vmware-components.md#updates-and-upgrades).
+* TCO van back-ups verlagen door een voorbeeldarchitectuur voor back-ups te maken met behulp van [back-upsoftware van derden, zoals Veeam](backup-workloads-veeam.md).
+* Een beveiligde omgeving maken door versleuteling in rust in te schakelen met behulp van [KMS-versleutelingssoftware van derden](vsan-encryption.md).
+* Beheer van Azure Active Directory (Azure AD) uitbreiden naar VMware door de [Azure AD-identiteitsbron](azure-ad.md) te configureren.

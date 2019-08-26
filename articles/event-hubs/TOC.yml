@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: Beveiliging
       items:
-        - name: Beheerde identiteit voor Azure-resources
-          href: event-hubs-managed-service-identity.md
-        - name: Op rollen gebaseerd toegangsbeheer (preview)
-          href: event-hubs-role-based-access-control.md
-        - name: Overzicht van authenticatie- en beveiligingsmodellen
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Autorisatie
+          items:
+            - name: Toegang tot Azure Event Hubs autoriseren
+              href: authorize-access-event-hubs.md
+            - name: Toegang autoriseren met behulp van Azure Active Directory
+              href: authorize-access-azure-active-directory.md
+            - name: Toegang autoriseren met behulp van een Shared Access Signature
+              href: authorize-access-shared-access-signature.md
+        - name: Verificatie
+          items:
+            - name: Verifiëren bij Azure Active Directory
+              items:
+                - name: Verifiëren met een beheerde identiteit
+                  href: authenticate-managed-identity.md
+                - name: Verifiëren vanuit een toepassing
+                  href: authenticate-application.md
+            - name: Verifiëren met een Shared Access Signature
+              href: authenticate-shared-access-signature.md
         - name: Beveiligingskenmerken
           href: event-hubs-security-attributes.md
     - name: AMQP 1.0-protocolhandleiding
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: Integratie van virtuele netwerken en firewalls inschakelen in Event Hubs-naamruimte
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: Door de klant beheerde sleutels configureren voor versleuteling van data-at-rest
+          href: configure-customer-managed-key.md
     - name: Problemen oplossen
       items:
         - name: Uitzonderingen

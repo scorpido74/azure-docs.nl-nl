@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Documentatie voor Bing Aangepaste zoekopdrachten
 metadata:
-  title: 'Documentatie voor Bing Aangepaste zoekopdrachten-API - zelfstudies, quickstarts, API-verwijzing - Microsoft Cognitive Services | Microsoft Docs'
+  title: 'Documentatie voor Bing Aangepaste zoekopdrachten - zelfstudies, quickstarts, API-verwijzingen'
+  titleSuffix: Azure Cognitive Services
   description: Meer informatie over het gebruik van het Bing Aangepaste zoekopdrachtenportaal en de API om een aangepaste zoekervaring te maken
   services: cognitive-services
   author: v-deken
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: v-deken

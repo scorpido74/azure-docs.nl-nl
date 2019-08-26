@@ -1,60 +1,64 @@
 ---
-title: Inzicht in de volgorde van de implementatie
-description: Meer informatie over de levenscyclus dat een blauwdrukdefinitie wordt verstuurd via en details over elke fase.
+title: Meer informatie over de volg orde van de implementatie volgorde
+description: Meer informatie over de levens cyclus die door de definitie van een blauw druk wordt doorgeleid en informatie over elke fase.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/25/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71584c9a69ebab6583973003aa51e94a1afe1b14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721283"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991998"
 ---
-# <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Inzicht in de implementatievolgorde van de in Azure blauwdrukken
+# <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Meer informatie over de implementatie volgorde in azure-blauw drukken
 
-Azure maakt gebruik van blauwdrukken een **volgorde** om te bepalen van de volgorde van de resources worden gemaakt bij het verwerken van de toewijzing van de blauwdrukdefinitie van een. In dit artikel worden de volgende concepten:
+Azure-blauw drukken maakt gebruik van een **sequentiëren** voor het bepalen van de volg orde van het maken van resources bij het verwerken van de toewijzing van een definitie van een blauw druk. In dit artikel worden de volgende concepten uitgelegd:
 
-- De volgorde van de standaard die wordt gebruikt
-- Over het aanpassen van de volgorde
-- Hoe de aangepaste bestelling is verwerkt
+- De standaard volgorde voor sequentiëren die wordt gebruikt
+- De volg orde aanpassen
+- Hoe de aangepaste volg orde wordt verwerkt
 
-Er zijn variabelen in de JSON-voorbeelden die u nodig hebt om te vervangen door uw eigen waarden:
+De JSON-voor beelden bevatten variabelen die u moet vervangen door uw eigen waarden:
 
 - Vervang `{YourMG}` door de naam van uw beheergroep
 
-## <a name="default-sequencing-order"></a>Standaard-volgorde
+## <a name="default-sequencing-order"></a>Standaard volgorde voor sequentiëren
 
-Als de blauwdrukdefinitie van de geen richtlijn voor het bevat implementeren van artefacten of de richtlijn null is, wordt de volgende volgorde gebruikt:
+Als de definitie van de blauw druk geen instructie bevat voor het implementeren van artefacten of als de instructie null is, wordt de volgende volg orde gebruikt:
 
-- Abonnementsniveau **roltoewijzing** artefacten die zijn gesorteerd op naam van het assemblyartefact
-- Abonnementsniveau **beleidstoewijzing** artefacten die zijn gesorteerd op naam van het assemblyartefact
-- Abonnementsniveau **Azure Resource Manager-sjabloon** artefacten die zijn gesorteerd op naam van het assemblyartefact
-- **Resourcegroep** artefacten (inclusief onderliggende artefacten) gesorteerd op naam van de tijdelijke aanduiding
+- Artefact niveau **roltoewijzingen van rol** , gesorteerd op artefact naam
+- **Beleids toewijzings** artefacten op abonnements niveau gesorteerd op artefact naam
+- Abonnements niveau **Azure Resource Manager sjabloon** artefacten gesorteerd op artefact naam
+- **Bron groeps** artefacten (inclusief onderliggende artefacten) gesorteerd op naam van tijdelijke aanduiding
 
-Binnen elk **resourcegroep** artefact, de volgende volgorde wordt gebruikt voor artefacten moet worden gemaakt in die resourcegroep:
+Binnen elk **bron groeps** artefact wordt de volgende volg orde gebruikt voor artefacten die in die resource groep moeten worden gemaakt:
 
-- Resource group onderliggende **roltoewijzing** artefacten die zijn gesorteerd op naam van het assemblyartefact
-- Resource group onderliggende **beleidstoewijzing** artefacten die zijn gesorteerd op naam van het assemblyartefact
-- Resource group onderliggende **Azure Resource Manager-sjabloon** artefacten die zijn gesorteerd op naam van het assemblyartefact
+- Artefacten van onderliggende **roltoewijzingen** van resource groep gesorteerd op artefact naam
+- Artefacten van onderliggende **beleids toewijzing** van resource groep gesorteerd op artefact naam
+- Artefacten van onderliggende **Azure Resource Manager sjabloon** van resource groep gesorteerd op artefact naam
 
 > [!NOTE]
-> Het gebruik van [artifacts()](../reference/blueprint-functions.md#artifacts) afhankelijk van een impliciete maakt op het artefact waarnaar wordt verwezen.
+> Het gebruik van [artefacten ()](../reference/blueprint-functions.md#artifacts) maakt een impliciete afhankelijkheid van het artefact waarnaar wordt verwezen.
 
-## <a name="customizing-the-sequencing-order"></a>De volgorde aan te passen
+## <a name="customizing-the-sequencing-order"></a>De volg orde van sequentiëren aanpassen
 
-Wanneer u grote blauwdrukdefinities, is het mogelijk nodig zijn voor resources in een bepaalde volgorde worden gemaakt. De meest voorkomende gebruikspatroon van dit scenario is wanneer de blauwdrukdefinitie van een verschillende Azure Resource Manager-sjablonen bevat. Dit patroon blauwdrukken verwerkt door de volgorde te worden gedefinieerd.
+Bij het opstellen van grote blauw drukken-definities kan het nodig zijn om resources in een specifieke volg orde te maken. Het meest voorkomende patroon van dit scenario is wanneer een blauw druk definitie verschillende Azure Resource Manager sjablonen bevat. Blauw drukken behandelt dit patroon door de volg orde van sequentiëren te definiëren.
 
-De volgorde wordt bereikt door het definiëren van een `dependsOn` eigenschap in de JSON. De blauwdrukdefinitie van de ondersteuning voor deze eigenschap voor resourcegroepen en artefact-objecten. `dependsOn` is een string-matrix van artefactnamen die het artefact name worden gemaakt moet voordat deze gemaakt.
+De volg orde wordt bereikt door een `dependsOn` eigenschap in de JSON te definiëren. De definitie van de blauw druk, voor resource groepen en artefact objecten ondersteunen deze eigenschap. `dependsOn`is een teken reeks matrix van artefact namen waarvan het specifieke artefact moet worden gemaakt voordat deze wordt gemaakt.
 
-### <a name="example---ordered-resource-group"></a>Voorbeeld: besteld resourcegroep
+> [!NOTE]
+> Wanneer u blauw drukken-objecten maakt, haalt elke artefact bron de naam van de bestands naam, indien [Power shell](/powershell/module/az.blueprint/new-azblueprintartifact)of het URL-eind punt wordt gebruikt als [rest API](/rest/api/blueprints/artifacts/createorupdate).
+> _resourceGroup_ verwijzingen in artefacten moeten overeenkomen met die in de definitie van de blauw druk.
 
-In dit voorbeeld van de blauwdrukdefinitie is een resourcegroep die een aangepaste volgorde is gedefinieerd door op te geven van een waarde voor `dependsOn`, samen met een standaard-resourcegroep. In dit geval het artefact met de naam **assignPolicyTags** worden verwerkt voor de **besteld-rg** resourcegroep.
-**Standard-rg** per de standaard-volgorde worden verwerkt.
+### <a name="example---ordered-resource-group"></a>Voor beeld-bestelde resource groep
+
+Deze voor beeld-blauw druk definitie bevat een resource groep waarvoor een aangepaste volgorde voor volgorde bepaling is gedefinieerd door een `dependsOn`waarde voor te declareren, samen met een standaard resource groep. In dit geval wordt het artefact met de naam **assignPolicyTags** verwerkt vóór de **bestelde-RG-** resource groep.
+**Standard-RG** wordt verwerkt volgens de standaard volgorde voor sequentiëren.
 
 ```json
 {
@@ -77,15 +81,13 @@ In dit voorbeeld van de blauwdrukdefinitie is een resourcegroep die een aangepas
         },
         "targetScope": "subscription"
     },
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint",
-    "type": "Microsoft.Blueprint/blueprints",
-    "name": "mySequencedBlueprint"
+    "type": "Microsoft.Blueprint/blueprints"
 }
 ```
 
-### <a name="example---artifact-with-custom-order"></a>Voorbeeld - artefact met aangepaste volgorde
+### <a name="example---artifact-with-custom-order"></a>Voor beeld-artefact met aangepaste volg orde
 
-In dit voorbeeld is een beleid artefact die afhankelijk zijn van een Azure Resource Manager-sjabloon. Standaard bestellen, zou een artefact beleid worden gemaakt voordat u de Azure Resource Manager-sjabloon. Deze volgorde, kunt het beleid artefact na afloop van de Azure Resource Manager-sjabloon moet worden gemaakt.
+Dit voor beeld is een beleids artefact dat afhankelijk is van een Azure Resource Manager sjabloon. Standaard wordt een beleids artefact gemaakt vóór de Azure Resource Manager sjabloon. Met deze ordening kan de beleids artefact wachten tot de Azure Resource Manager sjabloon is gemaakt.
 
 ```json
 {
@@ -98,15 +100,13 @@ In dit voorbeeld is een beleid artefact die afhankelijk zijn van een Azure Resou
         ]
     },
     "kind": "policyAssignment",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
-    "type": "Microsoft.Blueprint/artifacts",
-    "name": "assignPolicyTags"
+    "type": "Microsoft.Blueprint/artifacts"
 }
 ```
 
-### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Voorbeeld - abonnement niveau sjabloon artefact, afhankelijk van een resourcegroep
+### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Voor beeld: sjabloon artefact op abonnements niveau, afhankelijk van een resource groep
 
-In dit voorbeeld is voor een Resource Manager-sjabloon geïmplementeerd op het abonnementsniveau afhankelijk is van een resourcegroep. In volgorde, zouden de artefacten voor het niveau van abonnement worden gemaakt voordat alle resourcegroepen en de onderliggende artefacten in deze resourcegroepen. De resourcegroep is gedefinieerd in de blauwdrukdefinitie van de als volgt:
+Dit voor beeld is voor een resource manager-sjabloon die is geïmplementeerd op abonnements niveau, afhankelijk van een resource groep. In de standaard volgorde worden de artefacten van het abonnements niveau gemaakt vóór alle resource groepen en onderliggende artefacten in deze resource groepen. De resource groep wordt in de definitie van de blauw druk als volgt gedefinieerd:
 
 ```json
 "resourceGroups": {
@@ -118,7 +118,7 @@ In dit voorbeeld is voor een Resource Manager-sjabloon geïmplementeerd op het a
 }
 ```
 
-Het abonnement niveau sjabloon artefact afhankelijk van de **wait-voor-me** resourcegroep is gedefinieerd als volgt:
+Het sjabloon artefact op abonnements niveau, afhankelijk van de resource groep **wacht op mijzelf** , is als volgt gedefinieerd:
 
 ```json
 {
@@ -134,17 +134,15 @@ Het abonnement niveau sjabloon artefact afhankelijk van de **wait-voor-me** reso
         "description": ""
     },
     "kind": "template",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
-    "type": "Microsoft.Blueprint/blueprints/artifacts",
-    "name": "subtemplateWaitForRG"
+    "type": "Microsoft.Blueprint/blueprints/artifacts"
 }
 ```
 
-## <a name="processing-the-customized-sequence"></a>Verwerking van de aangepaste takenreeks
+## <a name="processing-the-customized-sequence"></a>De aangepaste volg orde verwerken
 
-Tijdens het proces voor het maken, wordt een topologische sorteren om te maken van de afhankelijkheidsgrafiek voor de artefacten blauwdrukken gebruikt. De controle zorgt ervoor dat elk niveau van afhankelijkheid tussen resourcegroepen en artefacten wordt ondersteund.
+Tijdens het maken wordt een topologische sortering gebruikt voor het maken van de afhankelijkheids grafiek van de blauw drukken-artefacten. De controle zorgt ervoor dat elk niveau van afhankelijkheid tussen resource groepen en artefacten wordt ondersteund.
 
-Er is geen wijziging wordt aangebracht als een afhankelijkheid artefact wordt aangegeven dat de standaardvolgorde wouldn't alter. Een voorbeeld is een resourcegroep die afhankelijk zijn van een beleid op abonnementsniveau. Een ander voorbeeld is een resource group 'standaard-rg' onderliggende beleidstoewijzing die afhankelijk zijn van de roltoewijzing voor onderliggende resource group 'standaard-rg'. In beide gevallen wordt de `dependsOn` wouldn't hebt gewijzigd in de standaard volgorde en er zijn geen wijzigingen zouden worden gesteld.
+Als een artefact afhankelijkheid is gedeclareerd en de standaard volgorde niet zou wijzigen, wordt er geen wijziging aangebracht. Een voor beeld is een resource groep die afhankelijk is van een beleid op abonnements niveau. Een ander voor beeld is een onderliggende beleids toewijzing van een resource groep, die afhankelijk is van de resource groep Standard-RG, de toewijzing van onderliggende rollen. In beide gevallen `dependsOn` is de standaard volgorde voor sequentiëren niet gewijzigd en worden er geen wijzigingen aangebracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

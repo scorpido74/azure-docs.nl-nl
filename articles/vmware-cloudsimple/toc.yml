@@ -54,7 +54,7 @@
           href: cloudsimple-faq.md
     - name: Zelfstudies
       items:
-        - name: CloudSimple-service maken
+        - name: De CloudSimple-service maken
           href: create-cloudsimple-service.md
         - name: Toegang tot de CloudSimple-portal
           href: access-cloudsimple-portal.md
@@ -106,8 +106,6 @@
               href: users.md
             - name: Een virtuele netwerkverbinding naar de privécloud instellen
               href: virtual-network-connection.md
-            - name: Uw gebruikersprofiel bewerken
-              href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Virtuele VMware-machines instellen voor de privécloud
           items:
             - name: Een VM in Azure maken
@@ -147,7 +145,7 @@
             - name: Workload-VM's migreren naar een privécloud
               href: migrate-workloads.md
             - name: Hoge toepassingsbeschikbaarheid in VMware in Azure garanderen
-              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+              href: ensuring-high-availability.md
             - name: Een taakverdelingsoplossing kiezen
               href: load-balancers.md
         - name: VMware-ecosysteem
@@ -156,8 +154,10 @@
               href: backup-workloads-veeam.md
             - name: 'Privécloud configureren als site voor herstel na noodgeval, met behulp van Zerto'
               href: disaster-recovery-zerto.md
+            - name: 'Privécloud configureren als site voor herstel na noodgeval, met behulp van VMware SRM'
+              href: disaster-recovery-site-recovery-manager.md
             - name: VMware Horizon-oplossingsgids
-              href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
+              href: horizon-guide.md
             - name: vSAN-versleuteling configureren voor de privécloud
               href: vsan-encryption.md
             - name: De privécloud optimaliseren voor Oracle RAC

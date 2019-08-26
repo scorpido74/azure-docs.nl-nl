@@ -473,6 +473,21 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS-uitvoerings-API's - Veelgestelde vragen
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+        - name: Overzicht van leadbeheer
+          href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+          items:
+            - name: Azure Blob
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
+            - name: Azure Table
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
+            - name: Dynamics 365 for Customer Engagement
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
+            - name: HTTPS-eindpunt
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
+            - name: Marketo
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
+            - name: SalesForce
+              href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Test drive uw aanbieding
           href: ./partner-center-portal/test-drive.md
     - name: Publicatiestatus

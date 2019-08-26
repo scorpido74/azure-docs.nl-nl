@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Documentatie voor Bing Entiteiten zoeken
 metadata:
-  title: 'Documentatie voor Bing Entiteiten zoeken-API - zelfstudies, snelstarts, API-verwijzingen | Microsoft Docs'
+  title: 'Documentatie voor Bing Entiteiten zoeken-API - zelfstudies, quickstarts, API-verwijzingen'
+  titleSuffix: Azure Cognitive Services
   description: 'Informatie over het gebruik van Bing Entiteiten zoeken-API om gegevens te verkrijgen over mensen, plaatsen of andere gedefinieerde onderwerpen. In zelfstudies wordt uitgelegd hoe u apps maakt die gebruikmaken van de service.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-entity-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

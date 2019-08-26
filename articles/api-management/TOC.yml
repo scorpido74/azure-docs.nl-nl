@@ -193,6 +193,8 @@
           href: api-management-howto-create-groups.md
         - name: Implementeren naar meerdere Azure-regio's
           href: api-management-howto-deploy-multi-region.md
+        - name: IP-adressen ophalen
+          href: api-management-howto-ip-addresses.md
         - name: Gebeurtenissen registreren bij Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
         - name: Aanvragen registreren met Azure Application Insights
