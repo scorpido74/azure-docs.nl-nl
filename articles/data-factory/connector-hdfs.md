@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: e1b8da52870af80b2f9e34ee26d80d9b71d39851
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c25a1deb08c816088e9d5811a73bb19890657a43
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839824"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966517"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Gegevens kopiëren van HDFS met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -41,7 +41,7 @@ Deze HDFS-connector ondersteunt met name:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u gegevens wilt kopiëren van een HDFS die niet openbaar toegankelijk is, moet u een zelf-hostende Integration Runtime instellen. Zie [zelf-hostende Integration runtime](concepts-integration-runtime.md) artikel voor meer informatie.
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
 > Zorg ervoor dat de Integration Runtime toegang heeft tot **alle** [naam knooppunt server]: [naam knooppunt poort] en [gegevens knooppunt Servers]: [Data knoop punt poort] van het Hadoop-cluster. De standaard poort voor [naam knooppunt] is 50070 en de standaard poort van het gegevens knooppunt is 50075.
@@ -63,7 +63,7 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van HDFS
 | authenticationType | Toegestane waarden zijn: **Anoniem**of **Windows**. <br><br> Als u **Kerberos-verificatie** wilt gebruiken voor HDFS-connector, raadpleegt u [deze sectie](#use-kerberos-authentication-for-hdfs-connector) om uw on-premises omgeving dienovereenkomstig in te stellen. |Ja |
 | userName |Gebruikers naam voor Windows-verificatie. Voor Kerberos-verificatie geeft `<username>@<domain>.com`u op. |Ja (voor Windows-verificatie) |
 | password |Wacht woord voor Windows-verificatie. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja (voor Windows-verificatie) |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt de zelfgehoste Cloudintegratieruntime of Azure Integration Runtime gebruiken (als uw gegevensarchief openbaar toegankelijk zijn is). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
 **Voor beeld: anonieme verificatie gebruiken**
 
