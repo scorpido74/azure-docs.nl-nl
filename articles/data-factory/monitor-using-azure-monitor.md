@@ -106,11 +106,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Eigenschap | Type | Description |
 | --- | --- | --- |
 | storageAccountId |Tekenreeks | De resource-ID van het opslag account waarnaar u Diagnostische logboeken wilt verzenden |
-| serviceBusRuleId |Reeks | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de volgende indeling: {Service Bus Resource ID}/authorizationrules/{key name}.|
+| serviceBusRuleId |String | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de volgende indeling: {Service Bus Resource ID}/authorizationrules/{key name}.|
 | workspaceId | Complex type | Matrix van metrische tijd korrels en het Bewaar beleid. Deze eigenschap is momenteel leeg. |
 |metrics| Parameter waarden van de pijplijn uitvoering worden door gegeven aan de aangeroepen pijp lijn| Een JSON-object parameter namen toewijzen aan argument waarden |
 | logs| Complex type| Naam van een diagnostische logboek categorie voor een resource type. Als u de lijst met diagnostische logboek categorieën voor een resource wilt ophalen, moet u eerst een bewerking Diagnostische instellingen ophalen uitvoeren. |
-| category| Tekenreeks| Matrix met logboek categorieën en het Bewaar beleid |
+| category| String| Matrix met logboek categorieën en het Bewaar beleid |
 | timeGrain | String | De granulatie van metrische gegevens die zijn vastgelegd in de ISO 8601-duur notatie. Moet PT1M (één minuut)|
 | enabled| Boolean-waarde | Hiermee wordt aangegeven of de verzameling van deze metrische waarde of logboek categorie is ingeschakeld voor deze resource|
 | retentionPolicy| Complex type| Hierin wordt het Bewaar beleid voor een metrische of logboek categorie beschreven. Wordt alleen gebruikt voor de optie voor het opslag account.|
