@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609990"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020242"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema's en gegevens aggregatie in Traffic Analytics
 
@@ -32,7 +32,7 @@ Traffic Analytics is een Cloud oplossing die inzicht geeft in de activiteit van 
 
 ### <a name="data-aggregation"></a>Gegevens aggregatie
 
-1. Alle stroom Logboeken in een NSG tussen ' FlowIntervalStartTime_t ' en ' FlowIntervalEndTime_t ' worden vastgelegd met een interval van één minuut in het opslag account als blobs voordat ze worden verwerkt door Traffic Analytics. 
+1. Alle stroom Logboeken in een NSG tussen ' FlowIntervalStartTime_t ' en ' FlowIntervalEndTime_t ' worden vastgelegd met een interval van één minuut in het opslag account als blobs voordat ze worden verwerkt door Traffic Analytics.
 2. Het standaard verwerkings interval van Traffic Analytics is 60 minuten. Dit betekent dat elke 60 minuten Traffic Analytics blobs uit opslag voor aggregatie pickt. Als er een verwerkings interval van 10 minuten is gekozen, worden er na elke 10 minuten blobs uit het opslag account gekozen Traffic Analytics.
 3. Stromen met dezelfde bron-IP, doel-IP, doel poort, NSG naam, NSG-regel, stroom richting en trans port Layer Protocol (TCP of UDP) (Opmerking: De bron poort wordt uitgesloten voor aggregatie) geregeld in één stroom door Traffic Analytics
 4. Deze enkele record wordt gedecoreerd (Details in de onderstaande sectie) en opgenomen in Log Analytics door Traffic Analytics. dit proces kan Maxi maal 1 uur duren.
@@ -85,6 +85,12 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 ```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>Velden die in Traffic Analytics schema worden gebruikt
+  > [!IMPORTANT]
+  > Het Traffic Analytics schema is bijgewerkt op 22 augustus 2019. Het nieuwe schema biedt bron-en doel-Ip's die afzonderlijk moeten worden verwijderd FlowDirection veld moet worden geparseerd om query's eenvoudiger te maken. </br>
+  > FASchemaVersion_s bijgewerkt van 1 naar 2. </br>
+  > Afgeschafte velden: VMIP_s, Subscription_s, Region_s, NSGRules_s, Subnet_s, VM_s, NIC_s, PublicIPs_s, FlowCount_d </br>
+  > Nieuwe velden: SrcPublicIPs_s, DestPublicIPs_s, NSGRule_s </br>
+  > Afgeschafte velden zijn beschikbaar tot 22 november 2019.
 
 Traffic Analytics is gebaseerd op Log Analytics, zodat u aangepaste query's kunt uitvoeren op gegevens die zijn gedecoreerd door Traffic Analytics en op dezelfde manier waarschuwingen instellen.
 
@@ -94,7 +100,7 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Tabel voor Traffic Analytics gegevens
 | SubType_s | NSF | Subtype voor de stroom Logboeken. Alleen "NSF" gebruiken, andere waarden van SubType_s zijn voor interne werk van het product |
-| FASchemaVersion_s |   1   | Schema versie. Weerspiegelt niet de versie van het NSG-stroom logboek |
+| FASchemaVersion_s |   2   | Schema versie. Weerspiegelt niet de versie van het NSG-stroom logboek |
 | TimeProcessed_t   | Datum en tijd in UTC  | Tijdstip waarop de Traffic Analytics de onbewerkte stroom logboeken van het opslag account heeft verwerkt |
 | FlowIntervalStartTime_t | Datum en tijd in UTC |  Begin tijd van het verwerkings interval van het stroom logboek. Dit is het tijdstip waarop het stroom interval wordt gemeten |
 | FlowIntervalEndTime_t | Datum en tijd in UTC | Eind tijd van het verwerkings interval van het stroom logboek |
@@ -111,7 +117,8 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | FlowDirection_s | * I = inkomend<br> * O = uitgaande | Richting van de stroom in/uit NSG met per stroom logboek |
 | FlowStatus_s  | * A = toegestaan door de regel NSG <br> * D = geweigerd door de NSG-regel  | Status van de stroom die is toegestaan/nblocked door NSG volgens het stroom logboek |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | De netwerk beveiligings groep (NSG) die aan de stroom is gekoppeld |
-| NSGRules_s | \<Index waarde 0) > < NSG_RULENAME >\<stroom richting >\<stroom status >\<FlowCount ProcessedByRule > |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
+| NSGRules_s | \<Index waarde 0) >\|\<NSG_RULENAME >\|\<stroom richting >\|stroomstatus\|>\<FlowCountProcessedByRule>\< |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
+| NSGRule_s | NSG_RULENAME |  NSG-regel die deze stroom heeft toegestaan of geweigerd |
 | NSGRuleType_s | * Door de gebruiker gedefinieerd * standaard |   Het type NSG-regel dat door de stroom wordt gebruikt |
 | MACAddress_s | MAC-adres | MAC-adres van de NIC waarop de stroom is vastgelegd |
 | Subscription_s | Het abonnement van het virtuele netwerk van Azure/de netwerk interface/virtuele machine is ingevuld in dit veld | Alleen van toepassing op de stroom typen FlowType = S2S, P2S, AzurePublic, ExternalPublic, MaliciousFlow en UnknownPrivate (stroom typen waarbij slechts één zijde van Azure is) |
@@ -151,6 +158,8 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | OutboundBytes_d | Verzonden bytes zoals vastgelegd op de netwerk interface waarop NSG regel is toegepast | Dit wordt alleen ingevuld voor het schema van versie 2 van het NSG-stroom logboek |
 | CompletedFlows_d  |  | Dit wordt alleen ingevuld met een waarde die niet gelijk is aan nul voor het schema van versie 2 van het NSG-stroom logboek |
 | PublicIPs_s | < PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS >\|\<\<\| \<OUTBOUND_BYTES>\|INBOUND_BYTES>\< | Vermeldingen gescheiden door balken |
+| SrcPublicIPs_s | < SOURCE_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_PACKETS\|\<\< >\|OUTBOUND_BYTES\<>\|INBOUND_BYTES>\< | Vermeldingen gescheiden door balken |
+| DestPublicIPs_s | < DESTINATION_PUBLIC_IP >\|\<FLOW_STARTED_COUNT >\|FLOW_ENDED_COUNT>\|OUTBOUND_PACKETS>\<INBOUND_\|\<\< PAKKETTEN >\|\<OUTBOUND_BYTES >\|INBOUND_BYTES\<> | Vermeldingen gescheiden door balken |
 
 ### <a name="notes"></a>Opmerkingen
 
@@ -165,7 +174,7 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 1. MaliciousFlow: een van de IP-adressen maakt deel uit van het virtuele Azure-netwerk, terwijl het andere IP-adres een open bare IP is die zich niet in azure bevindt en wordt gerapporteerd als schadelijk in de ASC-feeds die Traffic Analytics verbruikt voor het verwerkings interval tussen ' FlowIntervalStartTime_t ' en ' FlowIntervalEndTime_t '.
 1. UnknownPrivate: een van de IP-adressen bevindt zich in azure Virtual Network, terwijl het andere IP-adres deel uitmaakt van het privé-IP-bereik zoals gedefinieerd in RFC 1918 en kan niet worden toegewezen door Traffic Analytics aan een site die eigendom is van de klant of Azure Virtual Network.
 1. Onbekend: kan de IP-adressen in de stromen niet toewijzen met de klant topologie in Azure en on-premises (site).
-1. Sommige veld namen worden toegevoegd met _S of _d. Deze duiden niet op de bron en het doel.
+1. Sommige veld namen worden toegevoegd met \_s of \_d. Deze geven niet de bron en het doel aan, maar wijzen de teken reeks en decimaal van het gegevens type aan.
 
 ### <a name="next-steps"></a>Volgende stappen
 Voor antwoorden op veelgestelde vragen raadpleegt u veelgestelde vragen over [Traffic Analytics](traffic-analytics-faq.md) voor meer informatie over functionaliteit, raadpleegt u de [documentatie van Traffic Analytics](traffic-analytics.md)

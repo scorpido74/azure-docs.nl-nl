@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036249"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019115"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Release opmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -71,6 +71,12 @@ De volgende release opmerkingen zijn voor versie 7.0.0.0 van de Azure File Sync-
 
 - Ondersteuning voor grotere grootte van bestands shares
     - Met de preview-versie van grotere Azure-bestands shares verhogen we ook onze ondersteunings limieten voor bestands synchronisatie. In deze eerste stap ondersteunt Azure File Sync nu Maxi maal 25TB-en 50million-bestanden in één synchronisatie naam ruimte. Vul dit formulier https://aka.ms/azurefilesatscalesurvey in om het voor beeld van een grote bestands share te gebruiken. 
+- Ondersteuning voor Firewall en virtuele netwerk instelling voor opslag accounts
+    - Azure File Sync ondersteunt nu de instelling Firewall en virtueel netwerk voor opslag accounts. Zie [instellingen voor Firewall en virtueel netwerk configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)om uw implementatie te configureren voor gebruik met de instelling Firewall en virtueel netwerk.
+- Power shell-cmdlet voor het direct synchroniseren van bestanden die zijn gewijzigd in de Azure-bestands share
+    - Om bestanden direct te synchroniseren die in de Azure-bestands share zijn gewijzigd, kan de Power shell-cmdlet invoke-AzStorageSyncChangeDetection worden gebruikt om de detectie van wijzigingen in de Azure-bestands share hand matig te initiëren. Deze cmdlet is bedoeld voor scenario's waarbij een type geautomatiseerd proces wijzigingen aanbrengt in de Azure-bestands share of de wijzigingen worden uitgevoerd door een beheerder (zoals het verplaatsen van bestanden en mappen naar de share). Voor wijzigingen van de eind gebruiker is het aanbeveling om de Azure File Sync-agent te installeren in een IaaS-VM en eind gebruikers hebben toegang tot de bestands share via de IaaS-VM. Op deze manier worden alle wijzigingen snel gesynchroniseerd met andere agents zonder dat u de cmdlet invoke-AzStorageSyncChangeDetection hoeft te gebruiken. Zie de documentatie voor [invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) voor meer informatie.
+- Verbeterde portal ervaring als u bestanden tegen komt die niet worden gesynchroniseerd
+    - Als u bestanden hebt die niet kunnen worden gesynchroniseerd, worden er nu onderscheid gemaakt tussen tijdelijke en permanente fouten in de portal. Tijdelijke fouten worden meestal vanzelf opgelost zonder dat de beheerder actie hoeft te ondernemen. Een bestand dat momenteel in gebruik is, wordt pas gesynchroniseerd nadat de bestands ingang is gesloten. Voor permanente fouten wordt nu het aantal bestanden weer gegeven dat wordt beïnvloed door elke fout. Het aantal permanente fouten wordt ook weer gegeven in de kolom bestanden niet synchroniseren van alle server eindpunten in een synchronisatie groep.
 - Verbeterd Azure Backup herstel op bestands niveau
     - Afzonderlijke bestanden die zijn hersteld met behulp van Azure Backup, worden nu sneller gedetecteerd en gesynchroniseerd met het server eindpunt.
 - Verbeterde betrouw baarheid van Cloud lagen intrekken van cmdlet 

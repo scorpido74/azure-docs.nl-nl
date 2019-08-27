@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: aecad80bb1b1e95b07b9df4105547406ff76b84c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991542"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018785"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>De invoer processor wijzigen in Azure Cosmos DB 
 
@@ -76,7 +76,9 @@ Zoals vermeld tijdens de introductie, kan de wijzigings verwerkings processor de
 
 Als deze drie voor waarden van toepassing zijn, wordt met behulp van een even distributie algoritme alle leases in de lease-container gedistribueerd op alle actieve instanties en parallelliseren compute. Een lease kan alleen eigendom zijn van één exemplaar op een bepaald moment, waardoor het maximum aantal exemplaren gelijk is aan het aantal leases.
 
-De exemplaren kunnen groeien en krimpen, en de wijzigings processor past de belasting dynamisch aan door dienovereenkomstig te distribueren.
+Het aantal exemplaren kan worden verg root of verkleind, en de wijzigings processor past de belasting dynamisch aan door dienovereenkomstig te distribueren.
+
+Daarnaast kan de wijzigings processor van de feed dynamisch worden aangepast aan de schaal van containers als gevolg van de door Voer of opslag toeneemt. Wanneer uw container groeit, verwerkt de wijzigings verwerkings processor deze scenario's transparant door de leases dynamisch te verhogen en de nieuwe leases te verdelen over bestaande instanties.
 
 ## <a name="change-feed-and-provisioned-throughput"></a>Feed en ingerichte door Voer wijzigen
 

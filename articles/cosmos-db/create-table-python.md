@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 2425d14e43abd98d80bef8ce01e1c1c5f73a78a0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833068"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020141"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Snelstartgids: Een Table-API compileren met Python en Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Mic
 
 Daarnaast:
 
-* Als u Visual Studio 2019 geïnstalleerd nog geen hebt, kunt u downloaden en gebruiken de **gratis** [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/). Zorg dat u tijdens de installatie van Visual Studio de workloads **Azure-ontwikkeling** en **Python-ontwikkeling** selecteert.
+* Als Visual Studio 2019 nog niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg dat u tijdens de installatie van Visual Studio de workloads **Azure-ontwikkeling** en **Python-ontwikkeling** selecteert.
 * Selecteer ook de optie Python 2 in de workload **Python-ontwikkeling** of download Python 2.7 van [python.org](https://www.python.org/downloads/release/python-2712/).
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
@@ -82,7 +82,7 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. Hierdoor kan de app communiceren met de gehoste database. 
 
-1. Klik in [Azure Portal](https://portal.azure.com/) op **Verbindingsreeks**. 
+1. Selecteer **Verbindingsreeks** in de [Azure-portal](https://portal.azure.com/). 
 
     ![De CONNECTION STRING in het deelvenster Verbindingsreeks weergeven en kopiëren](./media/create-table-python/connection-string.png)
 
@@ -100,7 +100,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Klik in Visual Studio met de rechtermuisknop op het project in **Solution Explorer**, selecteer de huidige Python-omgeving en klik er met de rechtermuisknop op.
 
-2. Selecteer Python-pakket installeren en typ vervolgens **azure-storage-table**
+2. Selecteer python-pakket installeren en voer vervolgens de **Azure-opslag tabel** in
 
 3. Druk op F5 om de toepassing uit te voeren. Uw app wordt in uw browser weergegeven. 
 

@@ -1,59 +1,59 @@
 ---
-title: Genereren van een apparaat-verbindingsreeks voor Azure IoT Central | Microsoft Docs
-description: Als de ontwikkelaar van een apparaat, hoe ik genereren een verbindingsreeks voor apparaten die verbinding maken met een IoT Central-toepassing moet?
+title: Een apparaat genereren connection string voor Azure IoT Central | Microsoft Docs
+description: Hoe kan ik als ontwikkel aars van een apparaat een connection string genereren voor apparaten die verbinding moeten maken met een IoT Central-toepassing?
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f302cbfa7152ae30be434f560c0c39056d40f9f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97c0332656b75c3c8d0cddecb41c7a15ac2f218c
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60885619"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019783"
 ---
-# <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Genereren van een apparaatverbindingsreeks verbinding maakt met een Azure IoT Central-toepassing
+# <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Een apparaat genereren connection string om verbinding te maken met een Azure IoT Central-toepassing
 
-Dit artikel wordt beschreven hoe u als ontwikkelaar apparaat voor het genereren van een verbindingsreeks voor een apparaat dat u moet verbinding maken met een IoT Central-toepassing. De procedure in dit artikel wordt beschreven hoe u snel verbinding maken met een enkel apparaat met behulp van een shared access signature (SAS). Deze methode is nuttig wanneer u experimenteren met IoT Central of testen van apparaten. Zie voor alternatieve methoden voor het gebruik in een productieomgeving [verbindingsmogelijkheden voor apparaten in Azure IoT Central](concepts-connectivity.md).
+In dit artikel wordt beschreven hoe als ontwikkel aars van een apparaat een connection string kunnen genereren voor apparaten die verbinding moeten maken met een IoT Central toepassing. De procedure in dit artikel laat u zien hoe u snel één apparaat verbindt met behulp van een Shared Access Signature (SAS). Deze aanpak is nuttig wanneer u experimenteert met IoT Central of apparaten testen. Zie [connectiviteit van apparaten in Azure IOT Central](concepts-connectivity.md)voor alternatieve benaderingen voor gebruik in een productie omgeving.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om de stappen in dit artikel uit te voeren:
 
 - Een Azure IoT Central-toepassing. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
-- Een ontwikkelcomputer met [Node.js](https://nodejs.org/) versie 8.0.0 of hoger is geïnstalleerd. U kunt uitvoeren `node --version` vanaf de opdrachtregel om uw versie te controleren. Node.js is beschikbaar voor een groot aantal verschillende besturingssystemen.
+- Een ontwikkelings machine waarop de [node. js](https://nodejs.org/) -versie 8.0.0 of hoger is geïnstalleerd. U kunt uitvoeren `node --version` op de opdracht regel om uw versie te controleren. Node.js is beschikbaar voor een groot aantal verschillende besturingssystemen.
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 
-De volgende stappen wordt beschreven hoe u aan de informatie die u nodig hebt voor het genereren van een SAS-verbindingsreeks voor een apparaat:
+In de volgende stappen wordt beschreven hoe u de informatie krijgt die u nodig hebt om een SAS-connection string te genereren voor een apparaat:
 
-1. In de **Device Explorer**, het echte apparaat dat u wilt verbinding maken met uw toepassing niet vinden:
+1. Zoek in het **device Explorer**het apparaat dat u wilt verbinden met uw toepassing:
 
-    ![Selecteer een echt apparaat](media/howto-generate-connection-string/real-devices.png)
+    ![Een echt apparaat selecteren](media/howto-generate-connection-string/real-devices.png)
 
-1. Op de **apparaat** weergeeft, schakelt **Connect**:
+1. Selecteer op de pagina **apparaat** de optie **verbinding maken**:
 
-    ![Selecteer verbinding maken](media/howto-generate-connection-string/connect.png)
+    ![Verbinding maken selecteren](media/howto-generate-connection-string/connect.png)
 
-1. Noteer de details van de verbinding, **bereik-ID**, **apparaat-ID**, en **apparaat primaire sleutel**moeten worden gebruikt in de volgende stappen uit:
+1. Noteer de verbindings gegevens, de **Scope-** id, de **apparaat-id**en de **primaire sleutel**van het apparaat om de volgende stappen uit te voeren:
 
     ![Verbindingsdetails](media/howto-generate-connection-string/device-connect.png)
 
-    U kunt de waarden kopiëren vanaf deze pagina om op te slaan.
+    U kunt de waarden van deze pagina kopiëren om op te slaan.
 
-## <a name="generate-the-connection-string"></a>De verbindingsreeks genereren
+## <a name="generate-the-connection-string"></a>De connection string genereren
 
 [!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u een verbindingsreeks voor een echt apparaat verbinden met uw Azure IoT Central-toepassing hebt gegenereerd, worden hier de voorgestelde volgende stappen:
+Nu u een connection string hebt gegenereerd voor een echt apparaat om verbinding te maken met uw Azure IoT Central-toepassing, kunt u de volgende stappen volgen:
 
-* [Voorbereiden en verbinding maken met een apparaat DevKit (C)](howto-connect-devkit.md)
-* [Voorbereiden en verbinding maken met een Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
-* [Voorbereiden en verbinding maken met een Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
-* [Voorbereiden en verbinding maken met een Windows 10 IoT core-apparaat (C#)](howto-connect-windowsiotcore.md)
+* [Een DevKit-apparaat voorbereiden en aansluiten (C)](howto-connect-devkit.md)
+* [Een Raspberry PI (python) voorbereiden en er verbinding mee maken](howto-connect-raspberry-pi-python.md)
+* [Een Raspberry PI (C#) voorbereiden en verbinden](howto-connect-raspberry-pi-csharp.md)
+* [Een Windows 10 IoT core-apparaat (C#) voorbereiden en verbinden](howto-connect-windowsiotcore.md)
 * [Een generieke Node.js-client verbinden met uw Azure IoT Central-toepassing](howto-connect-nodejs.md)

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
-ms.openlocfilehash: b1d8d2539ae89dfdb8feb2e38f00bf4440411d8a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9824e1468604763834e37abe94290d68d81077ab
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815149"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020116"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Zelfstudie: Een ASP.NET Core MVC-webtoepassing met Azure Cosmos DB ontwikkelen met behulp van .NET SDK 
 
@@ -120,22 +120,6 @@ U kunt nu de modellen, weergaven en controllers toevoegen aan deze MVC-toepassin
    
    De gegevens die in Azure Cosmos DB zijn opgeslagen, worden doorgegeven via de kabel en opgeslagen als JSON. Als u wilt bepalen hoe uw objecten worden geserialiseerd/gedeserialiseerd door JSON.NET, kunt u het kenmerk **JsonProperty** gebruiken zoals wordt gedemonstreerd in de **item** klasse die u hebt gemaakt. U kunt niet alleen de indeling bepalen van de naam van de eigenschap die naar JSON gaat, maar u kunt ook de naam van uw .NET-eigenschappen wijzigen, net als bij de eigenschap **voltooid** . 
 
-### <a name="add-a-controller"></a>Een controller toevoegen
-
-1. Klik in **Solution Explorer** met de rechtermuisknop op de map **Controllers** en selecteer achtereenvolgens **Toevoegen** en **Controller**. Het dialoogvenster **Add Scaffold** (Scaffold toevoegen) wordt weergegeven.
-
-1. Selecteer **MVC-controller-leeg** en selecteer **toevoegen**.
-
-   ![Scherm afbeelding van het dialoog venster basis toevoegen met de MVC-controller: de optie Empty is gemarkeerd](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
-
-1. Geef de nieuwe controller een naam, **item controller**en vervang de code in dat bestand door de volgende code:
-
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
-
-   Het kenmerk **ValidateAntiForgeryToken** wordt hier gebruikt om deze toepassing te beschermen tegen aanvallen via aanvraagvervalsing op meerdere sites. Het volstaat echter niet om dit kenmerk alleen toe te voegen. Uw weergaven moeten ook samenwerken met dit anti-vervalsingstoken. Zie voor [komen van aanvraag vervalsing op meerdere sites][Preventing Cross-Site Request Forgery]voor meer informatie over het onderwerp en voor beelden van een juiste implementatie. De broncode op [GitHub][GitHub] beschikt over de volledige implementatie.
-
-   We gebruiken ook het kenmerk **Bind** voor de methodeparameter om u te beschermen tegen over-postingaanvallen. Zie voor meer informatie [basis ruwe bewerkingen in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
-
 ### <a name="add-views"></a>Weergaven toevoegen
 
 Vervolgens gaat u de volgende drie weergaven maken: 
@@ -190,6 +174,22 @@ En tot slot voegt u een weergave voor het bewerken van items toe met de volgende
    * Selecteer **Toevoegen**.
 
 Zodra dit is gebeurd, sluit u alle cshtml-documenten in Visual Studio. U keert later naar deze weergaven terug.
+
+### <a name="add-a-controller"></a>Een controller toevoegen
+
+1. Klik in **Solution Explorer** met de rechtermuisknop op de map **Controllers** en selecteer achtereenvolgens **Toevoegen** en **Controller**. Het dialoogvenster **Add Scaffold** (Scaffold toevoegen) wordt weergegeven.
+
+1. Selecteer **MVC-controller-leeg** en selecteer **toevoegen**.
+
+   ![Scherm afbeelding van het dialoog venster basis toevoegen met de MVC-controller: de optie Empty is gemarkeerd](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+
+1. Geef de nieuwe controller een naam, **item controller**en vervang de code in dat bestand door de volgende code:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+
+   Het kenmerk **ValidateAntiForgeryToken** wordt hier gebruikt om deze toepassing te beschermen tegen aanvallen via aanvraagvervalsing op meerdere sites. Het volstaat echter niet om dit kenmerk alleen toe te voegen. Uw weergaven moeten ook samenwerken met dit anti-vervalsingstoken. Zie voor [komen van aanvraag vervalsing op meerdere sites][Preventing Cross-Site Request Forgery]voor meer informatie over het onderwerp en voor beelden van een juiste implementatie. De broncode op [GitHub][GitHub] beschikt over de volledige implementatie.
+
+   We gebruiken ook het kenmerk **Bind** voor de methodeparameter om u te beschermen tegen over-postingaanvallen. Zie voor meer informatie [basis ruwe bewerkingen in ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
 
 ## <a name="connect-to-cosmosdb"></a>Stap 5: Verbinding maken met Azure Cosmos DB 
 

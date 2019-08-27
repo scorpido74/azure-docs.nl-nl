@@ -4,16 +4,16 @@ description: Een overzicht van de ondersteunings instellingen en beperkingen voo
 services: backup
 author: rayne-wiselman
 manager: carmonm
-ms.service: backup
+ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 70107311b189e1692b902812c4ccbbd91c3695a1
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952117"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018135"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Ondersteuningsmatrix voor VMware-evaluatie en -migratie
 
@@ -332,7 +332,7 @@ Processerver | De proces server ontvangt replicatie gegevens, optimaliseert en v
 
 Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de vereisten voor de Azure-VM die in deze tabel worden samenvatten. Wanneer Site Recovery een controle op vereisten uitvoert voor replicatie, mislukt de controle als aan sommige vereisten niet wordt voldaan.
 
-**Onderdeel** | **Vereiste** | **Details**
+**Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
 Gast besturingssysteem | Controleer de ondersteunde besturings systemen voor [VMware-vm's met replicatie zonder agent](#agentless-migration-vmware-vm-requirements)en voor [virtuele VMware-machines met replicatie op basis](#agent-based-migration-vmware-vm-requirements)van een agent.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.

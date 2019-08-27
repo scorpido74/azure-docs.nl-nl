@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 6bafd5ed5f2d7080b0f2a2db71ac96e4f97a1f76
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774943"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018238"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Een Azure API Management-exemplaar bijwerken en schalen  
 
@@ -53,8 +53,11 @@ Met de **Premium** -laag kunt u één Azure API Management-exemplaar distribuere
 
 U kunt een upgrade en downgrade uitvoeren naar een wille keurige laag. Houd er rekening mee dat het bijwerken of downgradeen van sommige functies kan worden verwijderd, bijvoorbeeld VNETs of implementatie met meerdere regio's, wanneer u naar de standaard-of basis versie van de Premium-laag wilt downgradeen.
 
->[!NOTE]
->De upgrade of schaal kan duren vanaf 15 tot 45 minuten om toe te passen. U krijgt een melding wanneer de app is voltooid.
+> [!NOTE]
+> De upgrade of schaal kan duren vanaf 15 tot 45 minuten om toe te passen. U krijgt een melding wanneer de app is voltooid.
+
+> [!NOTE]
+> API Management service in de **verbruiks** laag wordt automatisch geschaald op basis van het verkeer.
 
 ## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>De Azure Portal gebruiken om bij te werken en te schalen
 

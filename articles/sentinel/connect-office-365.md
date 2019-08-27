@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0013540bf0ca921b2f41260dea185f6aa32567d7
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679267"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019001"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Gegevens verbinden vanuit Office 365-logboeken
 
@@ -37,6 +37,9 @@ U kunt audit logboeken vanuit [Office 365](https://docs.microsoft.com/office365/
 
 - U moet een globale beheerder of beveiligings beheerder zijn op uw Tenant
 - Op uw computer, van waaruit u bent aangemeld bij Azure Sentinel om de verbinding tot stand te brengen, moet u ervoor zorgen dat poort 4433 is geopend voor webverkeer.
+- Als uw Tenant geen Office 365 E3 of Office 365 E5-licentie heeft, moet u Unified auditing op uw tent met een van de volgende processen inschakelen:
+    - [Gebruik de cmdlet Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) en schakel de para meter ' UnifiedAuditLogIngestionEnabled ' in.
+    - [Of met behulp van de beveiligings-en compliancecentrum-gebruikers interface](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
 ## <a name="connect-to-office-365"></a>Verbinding maken met Office 365
 

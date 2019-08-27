@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7246a0223e156abd866594c65542069944601b01
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68740897"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018258"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een Azure-Virtual Network
 In dit document wordt de Azure App Service functie voor de integratie van virtuele netwerken beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in de [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). [Virtuele netwerken van Azure][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.  
@@ -84,8 +84,9 @@ Deze functie is beschikbaar als preview-versie, maar wordt wel ondersteund voor 
 * De app en het VNet moeten zich in dezelfde regio bevinden
 * U kunt een VNet met een geïntegreerde app niet verwijderen. U moet eerst de integratie verwijderen 
 * U kunt slechts één regionale VNet-integratie per App Service plan hebben. Meerdere apps in hetzelfde App Service-abonnement kunnen hetzelfde VNet gebruiken. 
+* U kunt het abonnement van een app of een App Service plan niet wijzigen terwijl er een app is die gebruikmaakt van regionale VNet-integratie
 
-Er wordt één adres gebruikt voor elk exemplaar van de App Service-abonnement. Als u uw app hebt geschaald naar 5 exemplaren, is dat 5 gebruikte adressen. Aangezien de grootte van het subnet niet kan worden gewijzigd na toewijzing, moet u een subnet gebruiken dat groot genoeg is om te kunnen voldoen aan de schaal van uw app. A/27 met 32-adressen is de aanbevolen grootte voor een Premium-App Service plan dat wordt geschaald naar 20 exemplaren.
+Er wordt één adres gebruikt voor elk exemplaar van de App Service-abonnement. Als u uw app naar 5 exemplaren hebt geschaald, worden 5 adressen gebruikt. Aangezien de grootte van het subnet niet kan worden gewijzigd na toewijzing, moet u een subnet gebruiken dat groot genoeg is om te kunnen voldoen aan de schaal van uw app. Een/26 met 64-adressen is de aanbevolen grootte. A/27 met 32-adressen bieden een Premium-App Service plan 20 instanties als u de grootte van het App Service plan niet hebt gewijzigd. Wanneer u een App Service plan omhoog of omlaag schaalt, hebt u twee keer zoveel adressen nodig voor een korte periode. 
 
 Als u wilt dat uw apps in een andere App Service een VNet bereiken dat al is verbonden met apps in een ander App Service-abonnement, moet u een ander subnet selecteren dan dat van de bestaande VNet-integratie.  
 
@@ -102,6 +103,8 @@ De functie is ook beschikbaar als preview-versie voor Linux. De VNet-integratie 
    ![Het VNet en subnet selecteren][7]
 
 Als uw app is geïntegreerd met uw VNet, wordt dezelfde DNS-server gebruikt als uw VNet is geconfigureerd met. 
+
+Voor regionale VNet-integratie moet het integratie-subnet worden gedelegeerd naar micro soft. Web.  Het subnet wordt automatisch door de gebruikers interface van VNet-integratie naar micro soft. Web gedelegeerd. Als uw account niet voldoende netwerk machtigingen heeft om dit in te stellen, moet u iemand hebben die kenmerken kan instellen op het subnet met integratie om het subnet te delegeren. Als u het subnet met integratie hand matig wilt overdragen, gaat u naar de gebruikers interface van het Azure Virtual Network-subnet en stelt u de overdracht in voor micro soft. Web
 
 Selecteer de **verbinding verbreken**om uw app te verbreken vanuit het VNet. Hiermee wordt de web-app opnieuw opgestart. 
 
@@ -249,7 +252,7 @@ Er zijn drie kosten verbonden aan het gebruik van de gateway vereiste VNet-integ
 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Hoewel de functie eenvoudig kan worden ingesteld, betekent dat niet dat uw ervaring geen probleem is. Als u problemen ondervindt met het verkrijgen van toegang tot uw gewenste eind punt, kunt u een aantal hulpprogram ma's gebruiken om de connectiviteit vanuit de app-console te testen. Er zijn twee consoles die u kunt gebruiken. Een van de kudu-console en de andere is de console in de Azure Portal. Als u de kudu-console wilt bereiken vanuit uw app, gaat u naar extra-> kudu. Dit is hetzelfde als voor [site naam]. scm. azurewebsites. net. Als dat is geopend, gaat u naar het tabblad debug console. Als u naar de Azure Portal gehoste console wilt gaan vanuit uw app, gaat u naar Hulpprogram Ma's->-console. 
+Hoewel de functie eenvoudig kan worden ingesteld, betekent dat niet dat uw ervaring geen probleem is. Als u problemen ondervindt met het verkrijgen van toegang tot uw gewenste eind punt, kunt u een aantal hulpprogram ma's gebruiken om de connectiviteit vanuit de app-console te testen. Er zijn twee consoles die u kunt gebruiken. Een van de kudu-console en de andere is de console in de Azure Portal. Als u de kudu-console wilt bereiken vanuit uw app, gaat u naar extra-> kudu. U kunt de Kudo-console ook bereiken op [site naam]. scm. azurewebsites. net. Zodra de website is geladen, gaat u naar het tabblad debug console. Als u naar de Azure Portal gehoste console wilt gaan vanuit uw app, gaat u naar Hulpprogram Ma's->-console. 
 
 #### <a name="tools"></a>Hulpprogramma's
 De **ping**-hulpprogram ma's van **nslookup** en **tracert** werken niet via de console vanwege beveiligings beperkingen. Als u de void wilt vullen, worden er twee afzonderlijke extra hulp middelen toegevoegd. We hebben een hulp programma met de naam nameresolver. exe toegevoegd om de DNS-functionaliteit te testen. De syntaxis is:

@@ -1,5 +1,5 @@
 ---
-title: Media Services opmerkingen bij de release | Microsoft Docs
+title: Opmerkingen bij de release van Media Services | Microsoft Docs
 description: Opmerkingen bij de release Media Services
 services: media-services
 documentationcenter: ''
@@ -11,162 +11,170 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: c519cf88f40928bbd556b0accfa30d9f8c5c0f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff85638a05855d0b755a7b1812ee7025274b559c
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991914"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019299"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
-Deze opmerkingen bij de release voor Azure Media Services wijzigingen ten opzichte van vorige versies en bekende problemen samenvatten.
+In deze release opmerkingen voor Azure Media Services worden wijzigingen in eerdere releases en bekende problemen toegelicht.
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-We horen graag van onze klanten, zodat we ons richten kunnen op het oplossen van problemen die invloed hebben op u. Als u een probleem melden of vragen stellen, verzendt een bericht in de [Azure Media Services MSDN Forum]. 
+We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [Azure Media Services MSDN Forum]. 
 
 ## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Bekende problemen
-### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>Algemene problemen met Media Services.
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Algemene problemen Media Services
 
 | Probleem | Description |
 | --- | --- |
-| Enkele veelvoorkomende HTTP-headers zijn niet opgegeven in de REST-API. |Als u Media Services-toepassingen ontwikkelen met behulp van de REST-API, vindt u dat sommige algemene HTTP-header-velden (met inbegrip van CLIENT-REQUEST-ID REQUEST-ID en de RETURN-CLIENT-REQUEST-ID) worden niet ondersteund. De headers worden toegevoegd in een toekomstige update. |
-| Percentage codering is niet toegestaan. |Media Services wordt de waarde van de eigenschap IAssetFile.Name bij het bouwen van URL's voor de streaming-inhoud (bijvoorbeeld `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Om deze reden is niet procent codering toegestaan. De waarde van de eigenschap Name geen van de volgende [procent-encoding-gereserveerde tekens](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] '. Ook kunnen er slechts één '. ' voor de bestandsnaamextensie. |
-| De methode ListBlobs die deel uitmaakt van de Azure Storage SDK versie 3.x mislukt. |Media Services genereert een SAS-URL's op basis van de [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) versie. Als u gebruikmaken van de Storage-SDK blobs vermelden in een blob-container wilt, gebruikt u de [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) methode die deel uitmaakt van de opslag-SDK-versie 2.x. |
-| De Media Services beperking mechanisme Hiermee beperkt u het Resourcegebruik voor toepassingen die overmatige aanvragen naar de service versturen. De service kan de 'Service niet beschikbaar' 503 HTTP-statuscode geretourneerd. |Zie voor meer informatie, de beschrijving van de 503 HTTP-statuscode in [Media Services-foutcodes](media-services-encoding-error-codes.md). |
-| Wanneer u query uitvoeren op entiteiten, wordt een limiet van 1000 entiteiten in één keer omdat de openbare versie 2-REST queryresultaten tot 1000 resultaten beperkt geretourneerd. |Gebruik overslaan en nemen (.NET) / top (REST), zoals beschreven in [in dit voorbeeld .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [dit REST-API-voorbeeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
-| Sommige clients kunnen afkomstig zijn via een probleem met herhaald label in het manifest Smooth Streaming. |Zie voor meer informatie, [in deze sectie](media-services-deliver-content-overview.md#known-issues). |
-| Media Services .NET SDK objecten kunnen niet worden geserialiseerd en als gevolg hiervan werken niet met Azure Cache voor Redis. |Als u probeert om de SDK AssetCollection-object toe te voegen aan Azure-Cache voor Redis te serialiseren, wordt er een uitzondering gegenereerd. |
+| Er zijn geen enkele algemene HTTP-headers in de REST API. |Als u Media Services toepassingen ontwikkelt met behulp van de REST API, worden enkele veelvoorkomende HTTP-header velden (met inbegrip van CLIENT-REQUEST-ID, aanvraag-ID en retour-CLIENT-REQUEST-ID) niet ondersteund. De kopteksten worden toegevoegd in een toekomstige update. |
+| Percentage-code ring is niet toegestaan. |Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het maken van Url's voor de streaming-inhoud ( `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`bijvoorbeeld). Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap name mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ & = + $,/?% # [] '. Daarnaast kan er slechts één '. ' zijn voor de bestandsnaam extensie. |
+| De methode ListBlobs die deel uitmaakt van de Azure Storage SDK-versie 3. x is mislukt. |Media Services genereert SAS-Url's op basis van de [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) -versie. Als u de opslag-SDK wilt gebruiken om blobs in een BLOB-container weer te geven, gebruikt u de methode [CloudBlobContainer. ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) die deel uitmaakt van de Storage SDK versie 2. x. |
+| Het Media Services beperkings mechanisme beperkt het resource gebruik voor toepassingen die overmatige aanvragen naar de service doen. De service kan de HTTP-status code ' service niet beschikbaar 503 ' retour neren. |Zie de beschrijving van de 503 HTTP-status code in [Media Services fout codes](media-services-encoding-error-codes.md)voor meer informatie. |
+| Wanneer u een query uitvoert op entiteiten, wordt een limiet van 1.000 entiteiten tegelijk geretourneerd, omdat de open bare REST versie 2 de query resultaten beperkt tot 1.000 resultaten. |Gebruik overs Laan en ondernemen (.NET)/top (REST) zoals beschreven in [dit .net-voor beeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [Dit rest API voor beeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
+| Sommige clients kunnen een herhaald label probleem hebben in het Smooth Streaming-manifest. |Zie [deze sectie](media-services-deliver-content-overview.md#known-issues)voor meer informatie. |
+| Media Services .NET SDK-objecten kunnen niet worden geserialiseerd en werken daarom niet met Azure cache voor redis. |Als u probeert het SDK AssetCollection-object te serialiseren om het toe te voegen aan Azure-cache voor redis, wordt er een uitzonde ring gegenereerd. |
 
-## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Versiegeschiedenis van REST-API
-Zie voor meer informatie over de geschiedenis van Media Services REST API-versie, de [Azure Media Services REST API-naslaginformatie].
+## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>Geschiedenis van REST API-versie
+Zie de [Naslag informatie over Azure Media Services REST API]voor informatie over de versie geschiedenis van Media Services rest API.
 
-## <a name="march-2019"></a>Maart 2019
+## <a name="august-2019"></a>2019 augustus
 
-De Media Hyperlapse Preview-functie van Azure Media Services is afgeschaft.
+### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
+
+Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. deze worden buiten gebruik gesteld op 30 november 2019.
+
+Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) en [aam migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)voor meer informatie.
+
+## <a name="march-2019"></a>2019 maart
+
+De preview-functie voor media Hyperlapse van Azure Media Services is afgeschaft.
 
 ## <a name="december-2018"></a>December 2018
 
-De Media Hyperlapse Preview-functie van Azure Media Services wordt binnenkort beëindigd. Vanaf 19 December 2018, maken Media Services niet meer wilt voor wijzigingen of verbeteringen Media Hyperlapse. Op 29 maart 2019, wordt het buiten gebruik is gesteld en niet meer beschikbaar zijn.
+De preview-functie voor media Hyperlapse van Azure Media Services wordt binnenkort buiten gebruik gesteld. Vanaf 19 december 2018 worden er geen wijzigingen meer of verbeteringen aangebracht in de media Media Services-Hyperlapse. Op 29 maart 2019 wordt het buiten gebruik gesteld en niet meer beschikbaar.
 
 ## <a name="october-2018"></a>Oktober 2018
 
-### <a name="cmaf-support"></a>Ondersteuning voor CMAF
+### <a name="cmaf-support"></a>CMAF-ondersteuning
 
-Ondersteuning voor Apple HLS (iOS 11 +) en MPEG-DASH CMAF en 'cbcs' spelers die ondersteuning bieden voor CMAF.
+Ondersteuning voor CMAF en ' cbcs-versleuteling voor Apple HLS (iOS 11 +) en MPEG-DASH-spelers die CMAF ondersteunen.
 
-### <a name="web-vtt-thumbnail-sprites"></a>Web VTT miniaturen sprites
+### <a name="web-vtt-thumbnail-sprites"></a>Web-VTT thumbnail-sprites
 
-U kunt Media Services nu gebruiken voor het genereren van miniaturen Web VTT-sprites met behulp van onze API's van v2. Zie voor meer informatie, [genereren van een miniatuur sprite](generate-thumbnail-sprite.md).
+U kunt nu Media Services gebruiken om Web VTT thumbnail-sprites te genereren met behulp van onze v2-Api's. Zie [een miniatuur genereren](generate-thumbnail-sprite.md)voor meer informatie.
 
 ## <a name="july-2018"></a>Juli 2018
 
-Met de meest recente versie van de service zijn er kleine wijzigingen aan de foutberichten die is geretourneerd door de service wanneer een taak mislukt, met betrekking tot hoe deze wordt opgedeeld in twee of meer regels in de opmaak.
+Met de nieuwste service release zijn er kleine wijzigingen in de opmaak van de fout berichten die door de service worden geretourneerd wanneer een taak mislukt, met betrekking tot hoe deze is opgesplitst in twee of meer regels.
 
 ## <a name="may-2018"></a>Mei 2018 
 
-Vanaf 12 mei 2018 livekanalen wordt niet langer ondersteuning voor het RTP/MPEG-2-transportstroom-opnameprotocol. Voer een migratie uit van RTP/MPEG-2 naar RTMP- of gefragmenteerde MP4 (Smooth Streaming) opnameprotocollen.
+Vanaf 12 mei 2018 krijgen Live kanalen niet langer ondersteuning voor het RTP/MPEG-2 Trans Port stream opname protocol. Migreer van RTP/MPEG-2 naar RTMP-of gefragmenteerde MP4 (Smooth Streaming)-opname protocollen.
 
 ## <a name="october-2017-release"></a>Release van oktober 2017
 > [!IMPORTANT] 
-> Media Services is niet meer ondersteund ondersteuning voor Azure Access Control Service verificatiesleutels. Op 22 juni 2018, kunt u niet langer verifiëren met de back-end voor Media Services via code met behulp van Access Control Service-sleutels. U moet uw code voor het gebruik van Azure Active Directory (Azure AD) bijwerken [Azure AD gebaseerde verificatie](media-services-use-aad-auth-to-access-ams-api.md). Bekijk voor waarschuwingen over deze wijziging in de Azure-portal.
+> Media Services is ondersteuning voor het afzeggen van de verificatie sleutels voor Azure Access Control Service. Op 22 juni 2018 kunt u niet langer verifiëren met de Media Services back-end via code met behulp van Access Control Service sleutels. U moet uw code bijwerken om Azure Active Directory (Azure AD) te gebruiken per [op Azure AD gebaseerde verificatie](media-services-use-aad-auth-to-access-ams-api.md). Bekijk waarschuwingen over deze wijziging in de Azure Portal.
 
 ### <a name="updates-for-october-2017"></a>Updates voor oktober 2017
 #### <a name="sdks"></a>SDK's
-* De .NET SDK is bijgewerkt voor ondersteuning van Azure AD-verificatie. Ondersteuning voor Access Control Service-verificatie is verwijderd uit de nieuwste .NET-SDK op Nuget.org om aan te moedigen sneller migratie naar Azure AD. 
-* De JAVA-SDK is bijgewerkt voor ondersteuning van Azure AD-verificatie. Ondersteuning voor Azure AD-verificatie is toegevoegd aan de Java-SDK. Zie voor meer informatie over het gebruik van de Java-SDK met Media Services [aan de slag met de Java-client-SDK voor Azure Media Services](media-services-java-how-to-use.md)
+* De .NET SDK is bijgewerkt voor ondersteuning van Azure AD-verificatie. Ondersteuning voor Access Control Service-verificatie is verwijderd uit de nieuwste .NET SDK op Nuget.org om snellere migratie naar Azure AD te stimuleren. 
+* De JAVA-SDK is bijgewerkt ter ondersteuning van Azure AD-verificatie. Ondersteuning voor Azure AD-verificatie is toegevoegd aan de Java-SDK. Voor informatie over het gebruik van de Java SDK met Media Services raadpleegt u aan [de slag met de Java-client-SDK voor Azure Media Services](media-services-java-how-to-use.md)
 
-#### <a name="file-based-encoding"></a>Codering op basis van bestanden
-* U kunt nu de Premium Encoder coderen van uw inhoud naar de H.265 hoge efficiëntie video coderen video codec (HEVC) gebruiken. Er is geen invloed op de prijzen, indien H.265 via andere codecs, zoals H.264 gewenst. Zie voor meer informatie over de licenties van octrooien HEVC [voorwaarden voor onlineservices](https://azure.microsoft.com/support/legal/).
-* Voor bronvideo die is gecodeerd met de video codec van H.265 (HEVC), zoals video vastgelegd met behulp van iOS11 of GoPro Hero 6, kunt nu u de Premium Encoder of de codering-standaard voor het coderen van deze video's. Zie voor meer informatie over de licenties van octrooien [voorwaarden voor onlineservices](https://azure.microsoft.com/support/legal/).
-* Voor inhoud die meerdere taal audionummers bevat, moeten de waarden van de taal correct worden aangeduid op basis van de bijbehorende bestandsindeling (bijvoorbeeld ISO MP4). Vervolgens gebruikt u de codering-standaard de inhoud voor het streamen van coderen. De resulterende streaming-locator geeft een lijst van de beschikbare talen voor audio.
-* De standaardencoder biedt nu ondersteuning voor twee nieuwe alleen audio systeemwaarden, "AAC Audio" en 'AAC goede kwaliteit Audio'. Beide produceren stereo geavanceerde audio-uitvoer (AAC) bij bitsnelheden van 128 k en 192 Kbps respectievelijk coderen.
-* De Premium Encoder ondersteunt nu QuickTime/MOV bestandsindelingen als invoer. De video-codec moet een van de [Apple ProRes typen die worden vermeld in dit artikel GitHub](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats). De audio moet een van beide AAC of pulse code modulatie (PCM). De Premium Encoder biedt geen ondersteuning voor, bijvoorbeeld DVC/DVCPro video verpakt in QuickTime/MOV bestanden als invoer. De standaardencoder biedt ondersteuning voor deze videocodecs.
-* De volgende correcties zijn aangebracht in coderingsprogramma's:
+#### <a name="file-based-encoding"></a>Op bestanden gebaseerde code ring
+* U kunt nu de Premium Encoder gebruiken om uw inhoud te coderen naar de HEVC-videocodec (High-efficiëntie video codering) van H. 265. Er zijn geen gevolgen voor de prijzen als u H. 265 over andere codecs kiest, zoals H. 264. Zie voor meer informatie over HEVC patent licenties [Online Services-voor waarden](https://azure.microsoft.com/support/legal/).
+* Voor bron video die is gecodeerd met de video-codec H. 265 (HEVC), zoals video die is vastgelegd met iOS11 of GoPro held 6, kunt u nu de Premium Encoder of de Standard Encoder gebruiken om deze Video's te coderen. Zie voor meer informatie over patent licenties [Online Services-voor waarden](https://azure.microsoft.com/support/legal/).
+* Voor inhoud die audio tracks met meerdere talen bevat, moeten de taal waarden op de juiste manier worden gelabeld volgens de bijbehorende specificatie van de bestands indeling (bijvoorbeeld ISO MP4). Vervolgens kunt u de standaard Encoder gebruiken om de inhoud voor streaming te coderen. De resulterende streaming-Locator bevat een lijst met de beschik bare audio talen.
+* De standaard encoder ondersteunt nu twee nieuwe alleen-audio systeem voorinstellingen, "AAC-audio" en "AAC goede kwaliteit". " Beide produceert een programma voor het uitvoeren van een AAC-uitvoer (stereo Advanced Audio code ring), met een bitsnelheid van 128 kbps en 192 kbps.
+* De Premium encoder ondersteunt nu QuickTime/MOV-bestands indelingen als invoer. De videocodec moet een van de [Apple ProRes-typen zijn die in dit github-artikel worden vermeld](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats). De audio moet AAC of Pulse Code modulatie (PCM) zijn. De Premium Encoder biedt geen ondersteuning voor bijvoorbeeld DVC/DVCPro video die in QuickTime/MOV-bestanden is verpakt als invoer. De standaard encoder ondersteunt deze video-codecs.
+* De volgende oplossingen voor fouten zijn gemaakt in coderings Programma's:
 
-    * U kunt nu verzenden van taken met behulp van een invoer asset. Nadat deze taken hebt voltooid, kunt u de asset wijzigen (bijvoorbeeld, toevoegen, verwijderen of wijzig de naam van bestanden in de asset), en aanvullende taken verzenden.
-    * De kwaliteit van JPEG-miniatuurweergaven die worden geproduceerd door de codering-standaard is verbeterd.
-    * De codering-standaard invoer metagegevens en miniaturen genereren beter past in zeer korte duur video's verwerkt.
-    * Verbeteringen aan de decodeerfunctie H.264 is gebruikt in de codering-standaard bepaalde zeldzaam artefacten te elimineren. 
+    * U kunt nu taken verzenden met behulp van een invoer Asset. Nadat deze taken zijn voltooid, kunt u de Asset wijzigen (bijvoorbeeld, bestanden toevoegen, verwijderen of een andere naam geven in het activum) en aanvullende taken verzenden.
+    * De kwaliteit van JPEG-miniaturen die worden geproduceerd door de Standard encoder is verbeterd.
+    * Het standaard coderings programma verwerkt de invoer van meta gegevens en miniaturen verbeterd in zeer korte Video's.
+    * Verbeteringen in de H. 264-decoder die in de Standard-Encoder wordt gebruikt, elimineren bepaalde zeldzame artefacten. 
 
 #### <a name="media-analytics"></a>Media Analytics
-Algemene beschikbaarheid van de Azure Media Redactor: Deze Mediaprocessor voert anoniem maken door de gezichten van geselecteerde personen Onscherp wordt weergegeven en is ideaal voor gebruik in scenario's met openbare veiligheid en nieuwsmedia. 
+Algemene Beschik baarheid van de Azure Media Redactor: Deze media processor voert anoniem maken uit door de gezichten van geselecteerde individuen te vervagen en is ideaal voor gebruik in de scenario's voor open bare veiligheid en nieuws media. 
 
-Zie voor een overzicht van deze nieuwe processor, [dit blogbericht](https://azure.microsoft.com/blog/azure-media-redactor/). Zie voor meer informatie over documentatie en de instellingen [Redigeer gezichten met Azure Media Analytics](media-services-face-redaction.md).
+Zie [dit blog bericht](https://azure.microsoft.com/blog/azure-media-redactor/)voor een overzicht van deze nieuwe processor. Zie voor meer informatie over documentatie en instellingen [redactie gezichten met Azure Media Analytics](media-services-face-redaction.md).
 
 
 
-## <a name="june-2017-release"></a>De release van juni 2017
+## <a name="june-2017-release"></a>Release van juni 2017
 
-Media Services nu ondersteunt [Azure AD gebaseerde verificatie](media-services-use-aad-auth-to-access-ams-api.md).
+Media Services ondersteunt nu [Azure AD-gebaseerde verificatie](media-services-use-aad-auth-to-access-ams-api.md).
 
 > [!IMPORTANT]
-> Media Services ondersteunt momenteel het model van Access Control Service-verificatie. Access Control Service autorisatie worden op 1 juni 2018 afgeschaft. We raden u aan om zo snel mogelijk naar het Azure Active Directory-verificatiemodel te migreren.
+> Media Services ondersteunt momenteel het Access Control Service-verificatie model. Access Control Service autorisatie wordt op 1 juni 2018 afgeschaft. We raden u aan om zo snel mogelijk naar het Azure Active Directory-verificatiemodel te migreren.
 
-## <a name="march-2017-release"></a>De release van maart 2017
+## <a name="march-2017-release"></a>Release van maart 2017
 
-U kunt nu de codering-standaard naar [automatisch een bitrateladder genereren](media-services-autogen-bitrate-ladder-with-mes.md) door op te geven de "adaptief streamen" tekenreeks vooraf ingesteld wanneer u een coderingstaak maakt. Als u wilt coderen een video streamen met Media Services, gebruiken de voorinstelling 'Adaptief streamen'. Voor het aanpassen van een vooraf ingesteld voor uw specifieke scenario codering, kunt u beginnen met [deze voorinstellingen](media-services-mes-presets-overview.md).
+U kunt nu de standaard Encoder gebruiken om [een bitrate ladder automatisch te genereren](media-services-autogen-bitrate-ladder-with-mes.md) door de vooraf ingestelde teken reeks voor ' adaptieve streaming ' op te geven wanneer u een coderings taak maakt. Als u een video wilt coderen voor streaming met Media Services, gebruikt u de vooraf ingestelde ' adaptieve streaming '. Als u een voor instelling voor versleuteling wilt aanpassen voor uw specifieke scenario, kunt u beginnen met [deze voor instellingen](media-services-mes-presets-overview.md).
 
-U kunt nu Media Encoder Standard of Media Encoder Premium Workflow te gebruiken [maken van een coderingstaak waarmee fMP4-chunks worden](media-services-generate-fmp4-chunks.md). 
+U kunt nu Media Encoder Standard of Media Encoder Premium Workflow gebruiken voor [het maken van een coderings taak voor het genereren van fMP4-segmenten](media-services-generate-fmp4-chunks.md). 
 
-## <a name="february-2017-release"></a>De release van februari 2017
+## <a name="february-2017-release"></a>Release van februari 2017
 
-Vanaf 1 April 2017, wordt elke taakrecord in uw account die ouder is dan 90 dagen verwijderd, samen met de bijbehorende Taakrecords. Verwijdering gebeurt zelfs als het totale aantal records lager dan het maximale quotum is. Als u wilt de gegevens van de taak archiveren, kunt u de code die wordt beschreven in [assets en gerelateerde entiteiten met Media Services .NET SDK beheren](media-services-dotnet-manage-entities.md).
+Vanaf 1 april 2017 worden alle taken records in uw account die ouder zijn dan 90 dagen automatisch verwijderd, samen met de bijbehorende taak records. De verwijdering vindt ook plaats als het totale aantal records lager is dan het maximum quotum. Als u de taak/taak gegevens wilt archiveren, kunt u de code die wordt beschreven in [activa en gerelateerde entiteiten beheren met de Media Services .NET SDK](media-services-dotnet-manage-entities.md)gebruiken.
 
-## <a name="january-2017-release"></a>De release van januari 2017
+## <a name="january-2017-release"></a>Release van januari 2017
 
-In Media Services vertegenwoordigt een streaming-eindpunt een streamingservice waarmee inhoud kan worden geleverd rechtstreeks naar een clientafspeeltoepassing of naar een netwerk voor contentlevering (CDN) voor verdere distributie. Media Services biedt ook een naadloze integratie van Azure Content Delivery Network. De uitgaande stroom van een service streamingendpoint zo mag een live stream een video op aanvraag of een progressieve download van uw activa in Media Services-account. Elke Media Services-account bevat een standaardstreaming-eindpunt. Aanvullende streaming-eindpunten kunnen worden gemaakt onder het account. 
+In Media Services vertegenwoordigt een streaming-eind punt een streaming-service die inhoud rechtstreeks kan leveren aan een client speler of een CDN (Content Delivery Network) voor verdere distributie. Media Services biedt ook naadloze integratie van Azure Content Delivery Network. De uitgaande stroom van een StreamingEndpoint-service kan een live stream, een video op aanvraag of een progressief downloaden van uw asset in uw Media Services-account zijn. Elk Media Services-account bevat een standaard streaming-eind punt. Er kunnen extra streaming-eind punten worden gemaakt onder het-account. 
 
-Er zijn twee versies van het streaming-eindpunten, 1.0 en 2.0. Vanaf 10 januari 2017 worden bevatten alle nieuwe Media Services-accounts de versie 2.0 standaardstreaming-eindpunt. Aanvullende streaming-eindpunten die u aan dit account toevoegt zijn ook versie 2.0. Deze wijziging heeft geen invloed op bestaande accounts. Bestaand streaming-eindpunten zijn versie 1.0 en kunnen worden bijgewerkt naar versie 2.0. Er zijn gedrag, facturering en de functiewijzigingen met deze wijziging. Zie [Streaming endpoints overview](media-services-streaming-endpoints-overview.md) (Overzicht van streaming-eindpunten) voor meer informatie.
+Er zijn twee versies van streaming-eind punten, 1,0 en 2,0. Vanaf 10 januari 2017 zijn nieuw gemaakte Media Services-accounts het standaard streaming-eind punt van versie 2,0. Extra streaming-eind punten die u aan dit account toevoegt, zijn ook versie 2,0. Deze wijziging heeft geen invloed op bestaande accounts. Bestaande streaming-eind punten zijn versie 1,0 en kunnen worden bijgewerkt naar versie 2,0. Er zijn gedrags-, facturerings-en functie wijzigingen met deze wijziging. Zie [Streaming endpoints overview](media-services-streaming-endpoints-overview.md) (Overzicht van streaming-eindpunten) voor meer informatie.
 
-Beginnen met de 2.15 versie, Media Services de volgende eigenschappen toegevoegd aan de streaming endpoint-entiteit:
+Vanaf de 2,15-versie Media Services de volgende eigenschappen toegevoegd aan de entiteit van het streaming-eind punt:
 
 * CdnProvider 
 * CdnProfile
 * FreeTrialEndTime 
 * StreamingEndpointVersion 
 
-Zie voor meer informatie over deze eigenschappen [streamingendpoint zo](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Zie [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)voor meer informatie over deze eigenschappen. 
 
 ## <a name="december-2016-release"></a>Release van december 2016
 
- U kunt Media Services nu gebruiken voor toegang tot telemetrie/metrische gegevens voor de services. U kunt de huidige versie van Media Services gebruiken voor het verzamelen van telemetriegegevens voor live-kanaal, streaming-eindpunt en archiveren van entiteiten. Zie voor meer informatie, [mediaservices telemetrie](media-services-telemetry-overview.md).
+ U kunt Media Services nu gebruiken voor toegang tot gegevens over telemetrie/metrieken voor de services. U kunt de huidige versie van Media Services gebruiken om telemetriegegevens te verzamelen voor Live Channel, streaming-eind punt en archief entiteiten. Zie [Media Services](media-services-telemetry-overview.md)telemetrie voor meer informatie.
 
-## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>Release van juli 2016
-### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Updates van het manifestbestand (*. ISM) die worden gegenereerd door de codering van taken
-Als een coderingstaak wordt verzonden naar Media Encoder Standard of Media Encoder Premium, de coderingstaak genereert een [streaming manifestbestand](media-services-deliver-content-overview.md) (* ISM) in de uitvoer. Met de meest recente versie van de service, is de syntaxis van deze streaming-manifestbestand bijgewerkt.
-
-> [!NOTE]
-> De syntaxis van de streaming (.ISM bevat) het manifest-bestand is gereserveerd voor intern gebruik. Het is mogelijk gewijzigd in toekomstige releases. Niet wijzigen of de inhoud van dit bestand bewerken.
-> 
-> 
-
-### <a name="a-new-client-manifest-ismc-file-is-generated-in-the-output-asset-when-an-encoding-task-outputs-one-or-more-mp4-files"></a>Een nieuwe client-manifest (*. ISMC) bestand wordt in de uitvoer gegenereerd wanneer een coderingstaak een of meer MP4-bestanden levert
-Beginnen met de nieuwste versie van de service na de voltooiing van een coderingstaak die een of meer MP4-bestanden, genereert bevat de uitvoerasset ook het bestand voor een streaming client-manifest (*.ismc). Het bestand .ismc verbetert de prestaties van dynamische streaming. 
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>Release van juli 2016
+### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Updates voor het manifest bestand (*. ISM) gegenereerd door coderings taken
+Wanneer een coderings taak wordt verzonden naar Media Encoder Standard of Media Encoder Premium, genereert de coderings taak een [streaming-manifest bestand](media-services-deliver-content-overview.md) (*. ISM) in de uitvoer Asset. Met de nieuwste service release is de syntaxis van dit bestand met het streaming-manifest bijgewerkt.
 
 > [!NOTE]
-> De syntaxis van het bestand van de client-manifest (.ismc) is gereserveerd voor intern gebruik. Het is mogelijk gewijzigd in toekomstige releases. Niet wijzigen of de inhoud van dit bestand bewerken.
+> De syntaxis van het streaming-manifest bestand (. ISM) is gereserveerd voor intern gebruik. Het is onderhevig aan wijzigingen in toekomstige releases. Wijzig of bewerk de inhoud van dit bestand niet.
 > 
 > 
 
-Zie voor meer informatie, [deze blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/).
+### <a name="a-new-client-manifest-ismc-file-is-generated-in-the-output-asset-when-an-encoding-task-outputs-one-or-more-mp4-files"></a>Een nieuw client manifest (*. ISMC) wordt gegenereerd in het uitvoer activum wanneer een coderings taak een of meer MP4-bestanden uitvoert
+Na het volt ooien van een coderings taak waarmee een of meer MP4-bestanden worden gegenereerd, bevat het uitvoer activum ook een streaming-client manifest bestand (*. ismc), te beginnen met de nieuwste service release. Het. ismc-bestand helpt de prestaties van dynamische streaming te verbeteren. 
+
+> [!NOTE]
+> De syntaxis van het client manifest bestand (. ismc) is gereserveerd voor intern gebruik. Het is onderhevig aan wijzigingen in toekomstige releases. Wijzig of bewerk de inhoud van dit bestand niet.
+> 
+> 
+
+Zie [deze blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/)voor meer informatie.
 
 ### <a name="known-issues"></a>Bekende problemen
-Sommige clients kunnen afkomstig zijn via een probleem met herhaald label in het manifest Smooth Streaming. Zie voor meer informatie, [in deze sectie](media-services-deliver-content-overview.md#known-issues).
+Sommige clients kunnen een herhaald label probleem hebben in het Smooth Streaming-manifest. Zie [deze sectie](media-services-deliver-content-overview.md#known-issues)voor meer informatie.
 
 ## <a id="apr_changes16"></a>Release van april 2016
 ### <a name="media-analytics"></a>Media Analytics
- Media Services geïntroduceerd Media Analytics voor krachtige video intelligence. Zie voor meer informatie, [Media Services Analytics-overzicht](media-services-analytics-overview.md).
+ Media Services geïntroduceerde Media Analytics voor krachtige video-informatie. Zie [Media Services Analytics Overview](media-services-analytics-overview.md)(Engelstalig) voor meer informatie.
 
-### <a name="apple-fairplay-preview"></a>Apple FairPlay (preview)
-U kunt nu Media Services gebruiken op uw HTTP Live Streaming (HLS) inhoud met Apple FairPlay dynamisch wordt versleuteld. U kunt ook de Media Services-service voor het leveren van licentie gebruiken om te FairPlay-licenties leveren aan clients. Zie voor meer informatie "Gebruiken om te streamen van uw met Apple FairPlay beveiligde HLS-inhoud voor Azure Media Services."
+### <a name="apple-fairplay-preview"></a>Apple FairPlay (preview-versie)
+U kunt Media Services nu gebruiken om uw HTTP Live Streaming-inhoud (HLS) dynamisch te versleutelen met Apple FairPlay. U kunt ook de Media Services License delivery service gebruiken om FairPlay-licenties te leveren aan clients. Zie ' Azure Media Services gebruiken om uw HLS-inhoud te streamen die is beveiligd met Apple FairPlay ' voor meer informatie.
 
 ## <a id="feb_changes16"></a>Release van februari 2016
-De nieuwste versie van de Media Services SDK voor .NET (3.5.3) bevat een fout met betrekking tot Google Widevine oplossing. Het was niet mogelijk om te AssetDeliveryPolicy worden hergebruikt voor meerdere assets die zijn versleuteld met Widevine. Als onderdeel van deze foutoplossing, is de volgende eigenschap toegevoegd aan de SDK: WidevineBaseLicenseAcquisitionUrl.
+De nieuwste versie van de Media Services SDK voor .NET (3.5.3) bevat een fout oplossing die betrekking heeft op Google Widevine. Het is niet mogelijk om AssetDeliveryPolicy te hergebruiken voor meerdere activa die zijn versleuteld met Widevine. Als onderdeel van deze fout oplossing is de volgende eigenschap toegevoegd aan de SDK: WidevineBaseLicenseAcquisitionUrl.
 
     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
         new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
@@ -176,262 +184,262 @@ De nieuwste versie van de Media Services SDK voor .NET (3.5.3) bevat een fout me
     };
 
 ## <a id="jan_changes_16"></a>Release van januari 2016
-Gereserveerde Encoding-eenheden zijn ter voorkoming van verwarring met het coderingsprogramma namen gewijzigd.
+Gereserveerde eenheden voor code ring zijn gewijzigd om Verwar ring met namen van code ring te verminderen.
 
-De Basic, Standard en Premium gereserveerde encoding-eenheden zijn gewijzigd naar S1, S2 en S3 gereserveerde eenheden, respectievelijk. Klanten die momenteel Basic gereserveerde encoding-eenheden gebruikt zien S1, wordt het label in de Azure-portal (en in de factuur). Klanten die gebruikmaken van standaard en Premium zien de labels S2 en S3, respectievelijk. 
+De gereserveerde eenheden Basic, Standard en Premium encoding hebben respectievelijk de naam S1, S2 en S3 gereserveerde eenheden. Klanten die gebruikmaken van standaard gereserveerde encoding-eenheden, zien S1 als het label in het Azure Portal (en in de factuur). Klanten die gebruikmaken van Standard en Premium, zien respectievelijk de labels S2 en S3. 
 
 ## <a id="dec_changes_15"></a>Release van december 2015
 
-### <a name="media-encoder-deprecation-announcement"></a>Media Encoder afschaffing aankondiging
+### <a name="media-encoder-deprecation-announcement"></a>Aankondiging van de afschaffing van Media Encoder
 
- Media Encoder worden afgeschaft vanaf ongeveer 12 maanden vanaf de release van Media Encoder Standard.
+ Media Encoder wordt vanaf ongeveer 12 maanden na de release van Media Encoder Standard verouderd.
 
 ### <a name="azure-sdk-for-php"></a>Azure SDK voor PHP
-De Azure SDK-team gepubliceerd een nieuwe versie van de [Azure SDK voor PHP](https://github.com/Azure/azure-sdk-for-php) pakket met updates en nieuwe functies voor Media Services. In het bijzonder de Media Services SDK voor PHP biedt nu ondersteuning voor de meest recente [inhoudsbeveiliging](media-services-content-protection-overview.md) functies. Deze functies zijn dynamische versleuteling met AES en DRM (PlayReady en Widevine) met en zonder token beperkingen. Het biedt ook ondersteuning voor schalen [eenheden codering](media-services-dotnet-encoding-units.md).
+Het Azure SDK-team heeft een nieuwe release gepubliceerd van het pakket [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php) met updates en nieuwe functies voor Media Services. Met name de Media Services SDK voor PHP ondersteunt nu de nieuwste functies voor [inhouds beveiliging](media-services-content-protection-overview.md) . Deze functies zijn dynamische versleuteling met AES en DRM (PlayReady en Widevine) met en zonder token beperkingen. Het biedt ook ondersteuning voor het schalen van coderings [eenheden](media-services-dotnet-encoding-units.md).
 
 Zie voor meer informatie:
 
-* De volgende [codevoorbeelden](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) kunt u snel aan de slag:
-  * **vodworkflow_aes.php**: Dit bestand PHP ziet u hoe u dynamische AES-128-versleuteling en de sleutelleveringsservice. Deze gebaseerd op het .NET-voorbeeld wordt uitgelegd in [dynamische versleuteling met AES-128 en de sleutelleveringsservice](media-services-protect-with-aes128.md).
-  * **vodworkflow_aes.php**: Dit bestand PHP ziet u hoe u dynamische versleuteling van PlayReady en de service voor het leveren van licenties. Deze gebaseerd op het .NET-voorbeeld wordt uitgelegd in [met PlayReady en/of Widevine dynamic common encryption](media-services-protect-with-playready-widevine.md).
-  * **scale_encoding_units.php**: Dit bestand PHP laat zien hoe gereserveerde encoding-eenheden schalen.
+* De volgende [code voorbeelden](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) helpen u snel aan de slag te gaan:
+  * **vodworkflow_aes.php**: Dit PHP-bestand laat zien hoe u AES-128 dynamische versleuteling en de key delivery-service kunt gebruiken. Het is gebaseerd op het .NET-voor beeld dat is uitgelegd in [use AES-128 Dynamic Encryption en de key delivery service](media-services-protect-with-aes128.md).
+  * **vodworkflow_aes.php**: In dit PHP-bestand wordt uitgelegd hoe u dynamische versleuteling van PlayReady en de service voor de levering van licenties kunt gebruiken. Het is gebaseerd op het .NET-voor beeld dat wordt uitgelegd in het [gebruik van PlayReady en/of Widevine Dynamic common Encryption](media-services-protect-with-playready-widevine.md).
+  * **scale_encoding_units.php**: Dit PHP-bestand laat zien hoe u gereserveerde encoding-eenheden kunt schalen.
 
 ## <a id="nov_changes_15"></a>Release van november 2015
- Media Services biedt nu de leveringsservice voor Widevine-licentie in de cloud. Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Zie ook [in deze zelfstudie](media-services-protect-with-playready-widevine.md) en de [GitHub-opslagplaats](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
+ Media Services biedt nu de Widevine-licentie leverings service in de Cloud. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie. Zie ook [deze zelf studie](media-services-protect-with-playready-widevine.md) en de [github-opslag plaats](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
 
-Widevine-licentie levering van services aangeboden door mediaservices zijn in preview. Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
+Widevine License Delivery Services van Media Services zijn beschikbaar als preview-versie. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie.
 
 ## <a id="oct_changes_15"></a>Release van oktober 2015
-Media Services is nu beschikbaar in de volgende datacenters: Brazilië-Zuid, India, westen, India-Zuid en India-midden. U kunt nu de Azure portal om te gebruiken [Media Service-accounts maken](media-services-portal-create-account.md) en diverse taken die worden beschreven in de [webpagina met documentatie over Media Services](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding is niet ingeschakeld in deze datacenters. Niet alle soorten gereserveerde coderingseenheden zijn bovendien beschikbaar in deze datacenters.
+Media Services is nu live in de volgende data centers: Brazilië-zuid, India-West, India-Zuid en India centraal. U kunt nu de Azure Portal gebruiken om [media service-accounts te maken](media-services-portal-create-account.md) en diverse taken uit te voeren die worden beschreven op de [webpagina van Media Services documentatie](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding is niet ingeschakeld in deze data centers. Verder zijn niet alle typen gereserveerde encoding-eenheden beschikbaar in deze data centers.
 
-* Brazilië-Zuid:                                          Alleen Standard en Basic encoding gereserveerde eenheden zijn beschikbaar.
-* India, westen, India-Zuid en India-midden:             Basic gereserveerde encoding-eenheden zijn alleen beschikbaar.
+* Brazilië-zuid:                                          Er zijn alleen gereserveerde Standard-en Basic Encoding-eenheden beschikbaar.
+* India-West, India-Zuid en India-centraal:             Er zijn alleen gereserveerde Basic Encoding-eenheden beschikbaar.
 
 ## <a id="september_changes_15"></a>Release van september 2015
-Media Services biedt nu de mogelijkheid om zowel video on demand als live streams met Widevine modulaire DRM-technologie. U kunt de volgende levering van services partners Widevine-licenties te leveren:
+Media Services biedt nu de mogelijkheid om zowel video on demand als live streams te beveiligen met Widevine Modular DRM-technologie. U kunt de volgende partners voor leverings Services gebruiken om Widevine-licenties te leveren:
 * [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
-Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/).
+Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)voor meer informatie.
   
 U kunt de [.NET SDK van Media Services](https://www.nuget.org/packages/windowsazure.mediaservices/) (vanaf versie 3.5.1) of de REST API gebruiken om AssetDeliveryConfiguration voor het gebruik van Widevine te configureren. 
-* Media Services, toegevoegde ondersteuning voor Apple ProRes video's. U kunt nu uw QuickTime-video's bronbestanden die gebruikmaken van Apple ProRes of andere codecs uploaden. Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/).
-* U kunt nu gebruiken Media Encoder Standard subclips en live archief uitpakken doen. Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
-* De volgende filters gebruiken om updates zijn aangebracht: 
+* Media Services heeft ondersteuning toegevoegd voor Apple ProRes-Video's. U kunt nu uw QuickTime-bron Video's uploaden die gebruikmaken van Apple ProRes of andere codecs. Zie [deze blog](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)voor meer informatie.
+* U kunt nu Media Encoder Standard gebruiken om subfragmenten en het uitpakken van Live-Archief uit te voeren. Zie [deze blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)voor meer informatie.
+* De volgende filter-updates zijn uitgevoerd: 
   
-  * Nu kunt u de Apple HLS-indeling gebruiken met een filter alleen audio. U kunt deze update gebruiken voor het verwijderen van een alleen-audio bijhouden door op te geven (alleen audio = false) in de URL.
-  * Als u filters voor uw activa definiëren, u kunt nu combineren meerdere (maximaal drie) filters in één URL.
+  * U kunt nu de Apple HLS-indeling met een filter voor alleen audio gebruiken. U kunt deze update gebruiken om een audio-alleen track te verwijderen door (alleen audio = false) in de URL op te geven.
+  * Wanneer u filters voor uw assets definieert, kunt u nu meerdere (Maxi maal drie) filters combi neren in één URL.
     
-    Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
-* Media Services ondersteunt nu ik-frames in HLS versie 4. Ik-frame ondersteuning optimaliseert vooruitspoelen en terugspoelen bedrijfsactiviteiten. Standaard zijn alle HLS versie 4 uitvoer de afspeellijst ik-frame (EXT-X-I-FRAME-STREAM-INF).
-Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+    Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)voor meer informatie.
+* Media Services ondersteunt nu I-frames in HLS versie 4. Met de ondersteuning van I-frames optimaliseert u bewerkingen voor snel vooruitspoelen en terugspoelen. Alle uitvoer van de HLS-versie 4 bevatten standaard de I-frame-afspeel lijst (EXT-X-I-FRAME-STREAM-INF).
+Zie [deze blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)voor meer informatie.
 
 ## <a id="august_changes_15"></a>Release van augustus 2015
-* De Media Services SDK voor de Java-versie 0.8.0 en nieuwe voorbeelden zijn nu beschikbaar. Zie voor meer informatie:
+* De Media Services SDK voor de 0.8.0-release van Java versie en nieuwe voor beelden zijn nu beschikbaar. Zie voor meer informatie:
     
-* De Azure Media Player is bijgewerkt met ondersteuning voor meerdere audio-stream. Zie voor meer informatie, [dit blogbericht](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
+* De Azure Media Player is bijgewerkt met ondersteuning voor meerdere audio stromen. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)voor meer informatie.
 
 ## <a id="july_changes_15"></a>Release van juli 2015
-* De algemene beschikbaarheid van Media Encoder Standard is aangekondigd. Zie voor meer informatie, [dit blogbericht](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/).
+* De algemene Beschik baarheid van Media Encoder Standard is aangekondigd. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)voor meer informatie.
   
-    Media Encoder Standard gebruikt presets, zoals beschreven in [in deze sectie](https://go.microsoft.com/fwlink/?LinkId=618336). Als u een vooraf ingestelde gebruikt voor 4K codeert, het type Premium gereserveerde eenheid ophalen. Zie voor meer informatie, [schaal codering](media-services-scale-media-processing-overview.md).
-* Live realtime bijschriften zijn gebruikt met Media Services en de Media Player. Zie voor meer informatie, [dit blogbericht](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/).
+    Media Encoder Standard maakt gebruik van voor instellingen, zoals beschreven in [deze sectie](https://go.microsoft.com/fwlink/?LinkId=618336). Wanneer u een vooraf ingestelde voor 4 KB-code ring gebruikt, haalt u het gereserveerde type voor de Premium-eenheid op. Zie [schaal codering](media-services-scale-media-processing-overview.md)voor meer informatie.
+* Er zijn live real-time bijschriften gebruikt met Media Services en de Media Player. Zie [dit blog bericht](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
-De Media Services .NET SDK is nu versie 3.4.0.0. De volgende updates zijn aangebracht: 
+De Media Services .NET SDK is nu versie 3.4.0.0. De volgende updates zijn uitgevoerd: 
 
-* Ondersteuning is voor live-archief geïmplementeerd. U kunt een asset met een live-archief niet downloaden.
-* Ondersteuning is voor dynamische filters gevonden geïmplementeerd.
-* Functionaliteit is geïmplementeerd, zodat gebruikers een opslagcontainer houden kunnen terwijl u ze verwijdert u een asset.
-* Oplossingen voor problemen zijn met betrekking tot het beleid in kanalen voor opnieuw proberen aangebracht.
+* Ondersteuning voor Live Archive is geïmplementeerd. U kunt geen Asset downloaden die een live-archief bevat.
+* Er is ondersteuning voor dynamische filters geïmplementeerd.
+* De functionaliteit is geïmplementeerd zodat gebruikers een opslag container kunnen bewaren tijdens het verwijderen van een Asset.
+* Er zijn oplossingen voor problemen gemaakt met betrekking tot beleid voor opnieuw proberen in kanalen.
 * Media Encoder Premium Workflow is ingeschakeld.
 
 ## <a id="june_changes_15"></a>Release van juni 2015
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
-De Media Services .NET SDK is nu versie 3.3.0.0. De volgende updates zijn aangebracht: 
+De Media Services .NET SDK is nu versie 3.3.0.0. De volgende updates zijn uitgevoerd: 
 
-* Er is ondersteuning toegevoegd voor de OpenId Connect discovery-specificatie.
-* Er is ondersteuning toegevoegd voor het verwerken van sleutels rollover aan de kant van id-provider.
+* Er is ondersteuning toegevoegd voor de detectie specificatie OpenID Connect Connect.
+* Er is ondersteuning toegevoegd voor het afhandelen van sleutels overschakeling aan de kant van de identiteits provider.
 
-Als u een id-provider die wordt aangegeven dat een OpenID Connect discovery-document (als Azure AD, Google en Salesforce doen), kunt u opdracht geven met Media Services om te verkrijgen van ondertekeningssleutels voor validatie van de JSON-Webtokens (JWTs) van de OpenID Connect discovery-specificatie. 
+Als u een id-provider gebruikt die een OpenID Connect Connect-detectie document (als Azure AD, Google en Sales Force) beschikbaar maakt, kunt u Media Services de opdracht geven om handtekening sleutels te verkrijgen voor de validatie van JSON-webtokens (JWTs) van de OpenID Connect Connect Discovery-specificatie. 
 
-Zie voor meer informatie, [gebruiken JSON web sleutels van de OpenID Connect discovery specificaties om te werken met JWT-verificatie in Media Services](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/).
+Zie JSON-websleutels [van de OpenID Connect Connect Discovery-specificatie gebruiken om te werken met JWT-verificatie in Media Services](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/)voor meer informatie.
 
-## <a id="may_changes_15"></a>Mei 2015-release
+## <a id="may_changes_15"></a>Kan 2015-release
 De volgende nieuwe functies zijn aangekondigd:
 
-* [Een voorbeeld van live coderen met Media Services](media-services-manage-live-encoder-enabled-channels.md)
-* [Dynamische manifest](media-services-dynamic-manifest-overview.md)
+* [Een preview van Live encoding met Media Services](media-services-manage-live-encoder-enabled-channels.md)
+* [Dynamisch manifest](media-services-dynamic-manifest-overview.md)
 
 ## <a id="april_changes_15"></a>Release van april 2015
-### <a name="general-media-services-updates"></a>Algemene Media Services-updates
+### <a name="general-media-services-updates"></a>Algemene Media Services updates
 * [Media Player](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/) is aangekondigd.
-* Beginnen met het Media Services REST 2.10, kanalen die zijn geconfigureerd voor het opnemen van een Real-Time Messaging Protocol (RTMP) worden gemaakt met de primaire en secundaire URL's voor opnemen. Zie voor meer informatie, [configuraties voor opnemen van kanaal](media-services-live-streaming-with-onprem-encoders.md#channel_input).
+* Met ingang van de Media Services REST 2,10 worden kanalen die zijn geconfigureerd voor het opnemen van een real-time Messa ging Protocol (RTMP) gemaakt met primaire en secundaire opname-Url's. Zie voor meer informatie [kanaal opname configuraties](media-services-live-streaming-with-onprem-encoders.md#channel_input).
 * Azure Media Indexer is bijgewerkt.
-* Ondersteuning voor Spaans taal is toegevoegd.
-* Een nieuwe configuratie voor de XML-indeling is toegevoegd.
+* Ondersteuning voor Spaanse taal is toegevoegd.
+* Er is een nieuwe configuratie voor de XML-indeling toegevoegd.
 
-Zie voor meer informatie, [deze blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+Zie [deze blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
-De Media Services .NET SDK is nu versie 3.2.0.0. De volgende updates zijn aangebracht:
+De Media Services .NET SDK is nu versie 3.2.0.0. De volgende updates zijn uitgevoerd:
 
-* Belangrijke wijziging: TokenRestrictionTemplate.Issuer en TokenRestrictionTemplate.Audience zijn gewijzigd voor het type tekenreeks.
-* Updates zijn aangebracht met betrekking tot het maken van beleid voor aangepaste opnieuw proberen.
-* Oplossingen voor problemen zijn aangebracht met betrekking tot de bestanden uploaden en downloaden.
-* De klasse MediaServicesCredentials accepteert nu de primaire en secundaire access control-eindpunten voor verificatie op basis.
+* Wijziging die fouten veroorzaakt: TokenRestrictionTemplate. Issuer en TokenRestrictionTemplate. Audience zijn gewijzigd in een teken reeks type.
+* Er zijn updates gemaakt met betrekking tot het maken van een aangepast beleid voor opnieuw proberen.
+* Er zijn oplossingen voor fouten gemaakt met betrekking tot het uploaden en downloaden van bestanden.
+* De MediaServicesCredentials-klasse accepteert nu de primaire en secundaire toegangs beheer eindpunten voor verificatie op basis van.
 
 ## <a id="march_changes_15"></a>Release van maart 2015
-### <a name="general-media-services-updates"></a>Algemene Media Services-updates
-* Media Services biedt nu Content Delivery Network-integratie. Ter ondersteuning van de integratie, is de eigenschap CdnEnabled toegevoegd aan streamingendpoint zo. CdnEnabled kan worden gebruikt met de REST-API's vanaf versie 2.9. Zie voor meer informatie, [streamingendpoint zo](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). CdnEnabled kan worden gebruikt met de .NET SDK vanaf versie 3.1.0.2. Zie voor meer informatie, [streamingendpoint zo](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint\(v=azure.10\).aspx).
-* Media Encoder Premium Workflow is aangekondigd. Zie voor meer informatie, [introductie van Premium encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/).
+### <a name="general-media-services-updates"></a>Algemene Media Services updates
+* Media Services biedt nu Content Delivery Network-integratie. Ter ondersteuning van de integratie is de eigenschap CdnEnabled toegevoegd aan StreamingEndpoint. CdnEnabled kan worden gebruikt met REST Api's vanaf versie 2,9. Zie [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)voor meer informatie. CdnEnabled kan worden gebruikt met de .NET SDK vanaf versie 3.1.0.2. Zie [StreamingEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint\(v=azure.10\).aspx)voor meer informatie.
+* De Media Encoder Premium Workflow is aangekondigd. Zie voor meer informatie [introductie van Premium-code ring in azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/).
 
 ## <a id="february_changes_15"></a>Release van februari 2015
-### <a name="general-media-services-updates"></a>Algemene Media Services-updates
-De Media Services REST-API is nu versie 2.9. Vanaf deze versie, kunt u het Content Delivery Network-integratie met het streaming-eindpunten inschakelen. Zie voor meer informatie, [streamingendpoint zo](https://msdn.microsoft.com/library/dn783468.aspx).
+### <a name="general-media-services-updates"></a>Algemene Media Services updates
+De Media Services REST API is nu versie 2,9. Vanaf deze versie kunt u de integratie van Content Delivery Network met streaming-eind punten inschakelen. Zie [StreamingEndpoint](https://msdn.microsoft.com/library/dn783468.aspx)voor meer informatie.
 
-## <a id="january_changes_15"></a>Januari 2015-release
-### <a name="general-media-services-updates"></a>Algemene Media Services-updates
-De algemene beschikbaarheid van de beveiliging van inhoud met dynamische versleuteling is aangekondigd. Zie voor meer informatie, [Media Services verbetert de streaming-beveiliging met algemene beschikbaarheid van DRM-technologie](https://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/).
+## <a id="january_changes_15"></a>Release van januari 2015
+### <a name="general-media-services-updates"></a>Algemene Media Services updates
+De algemene Beschik baarheid van de beveiliging van inhoud met dynamische versleuteling is aangekondigd. Zie voor meer informatie [Media Services streaming-beveiliging verbetert met de algemene Beschik baarheid van DRM-technologie](https://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/).
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
 De Media Services .NET SDK is nu versie 3.1.0.1.
 
-Deze release de standaardconstructor Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization.TokenRestrictionTemplate als verouderd gemarkeerd. De nieuwe constructor duurt TokenType als argument.
+In deze release is de standaard micro soft. WindowsAzure. Media Services. client. ContentKeyAuthorization. TokenRestrictionTemplate constructor gemarkeerd als verouderd. De nieuwe constructor gebruikt token type als een argument.
 
     TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
 
 ## <a id="december_changes_14"></a>Release van december 2014
-### <a name="general-media-services-updates"></a>Algemene Media Services-updates
-* Sommige updates en nieuwe functies zijn toegevoegd aan de Media Indexer. Zie voor meer informatie, [opmerkingen bij de release van de Azure Media Indexer versie 1.1.6.7](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/).
-* Een nieuwe REST-API is toegevoegd dat u gebruiken kunt om bij te werken van gereserveerde encoding-eenheden. Zie voor meer informatie, [EncodingReservedUnitType met REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype).
-* CORS-ondersteuning is toegevoegd voor de sleutelleveringsservice.
-* Verbeteringen zijn aangebracht in de opties voor autorisatiebeleid uitvoeren van query's.
-* In het datacenter in China, de [sleutel-URL van de levering van](https://docs.microsoft.com/rest/api/media/operations/contentkey#get_delivery_service_url) is nu per klant (net als in andere datacenters).
-* HLS automatisch doel duur is toegevoegd. Als u live streamt, wordt dynamisch HLS altijd geleverd. Media Services berekent standaard automatisch de HLS segment verpakking hoogte-breedteverhouding (FragmentsPerSegment) op basis van het interval sleutelframes (KeyFrameInterval). Deze methode wordt ook wel een groep afbeeldingen (GOP) die wordt ontvangen van het live coderingsprogramma genoemd. Zie voor meer informatie, [in combinatie met Media Services live streaming](https://msdn.microsoft.com/library/azure/dn783466.aspx).
+### <a name="general-media-services-updates"></a>Algemene Media Services updates
+* Sommige updates en nieuwe functies zijn toegevoegd aan de Media Indexer. Zie [Azure media indexer version 1.1.6.7 release opmerkingen](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)voor meer informatie.
+* Er is een nieuwe REST API toegevoegd die u kunt gebruiken om gereserveerde encoding-eenheden bij te werken. Zie [EncodingReservedUnitType with rest](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)(Engelstalig) voor meer informatie.
+* CORS-ondersteuning is toegevoegd voor de key delivery-service.
+* Er zijn prestatie verbeteringen aangebracht bij het opvragen van de opties voor het autorisatie beleid.
+* In het China-Data Center is de [key delivery-URL](https://docs.microsoft.com/rest/api/media/operations/contentkey#get_delivery_service_url) nu per klant (net zoals in andere data centers).
+* De automatische doel duur van HLS is toegevoegd. Bij het uitvoeren van live streamen wordt HLS altijd dynamisch verpakt. Standaard berekent Media Services de HLS-segment verpakkings ratio (FragmentsPerSegment) automatisch op basis van het interval voor het keyframe (KeyFrameInterval). Deze methode wordt ook wel een groep afbeeldingen (GOP terug) genoemd die wordt ontvangen van het Live coderings programma. Zie [werken met Media Services live streamen](https://msdn.microsoft.com/library/azure/dn783466.aspx)voor meer informatie.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
-De [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) is nu versie 3.1.0.0. De volgende updates zijn aangebracht:
+De [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) is nu versie 3.1.0.0. De volgende updates zijn uitgevoerd:
 
-* De afhankelijkheid .NET SDK is bijgewerkt naar .NET Framework 4.5.
-* Een nieuwe API die u gebruiken kunt om bij te werken van gereserveerde encoding-eenheden is toegevoegd. Zie voor meer informatie, [Update gereserveerde-eenheidstype en toename van de gereserveerde eenheden voor codering met behulp van .NET](media-services-dotnet-encoding-units.md).
-* JWT-ondersteuning voor token-verificatie is toegevoegd. Zie voor meer informatie, [JWT-tokenverificatie in Media Services en dynamische versleuteling](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
-* Relatieve verschuivingen voor BeginDate en ExpirationDate in de PlayReady-licentiesjabloon zijn toegevoegd.
+* De .NET SDK-afhankelijkheid is bijgewerkt naar het .NET 4,5-Framework.
+* Er is een nieuwe API toegevoegd die u kunt gebruiken om gereserveerde encoding-eenheden bij te werken. Zie gereserveerde- [eenheids typen bijwerken en gereserveerde encoding-eenheden verhogen](media-services-dotnet-encoding-units.md)met behulp van .net voor meer informatie.
+* JWT-ondersteuning voor token verificatie is toegevoegd. Zie [JWT-token verificatie in Media Services en dynamische versleuteling](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)voor meer informatie.
+* Relatieve verschuivingen voor BeginDate en ExpirationDate in de PlayReady-licentie sjabloon zijn toegevoegd.
 
 ## <a id="november_changes_14"></a>Release van november 2014
-* U kunt Media Services nu gebruiken om op te nemen van live Smooth Streaming (fMP4)-inhoud via een SSL-verbinding. Als u wilt opnemen via SSL, zorg ervoor dat u de URL voor opnemen bijwerkt naar HTTPS. Op dit moment biedt geen Media Services ondersteuning voor SSL met aangepaste domeinen. Zie voor meer informatie over het streamen van live [werken met Azure Media Services Live Streaming](https://msdn.microsoft.com/library/azure/dn783466.aspx).
-* U kunt een live stream RTMP op dit moment kan niet opnemen via een SSL-verbinding.
-* U kunt streamen via SSL alleen als het streaming-eindpunt van waaruit u uw inhoud leveren na 10 September 2014 is gemaakt. Als uw streaming-URL's zijn gebaseerd op het streaming-eindpunten die zijn gemaakt na 10 September 2014, bevat de URL 'streaming.mediaservices.windows.net"(de nieuwe indeling). Streaming-URL's die "origin.mediaservices.windows.net" (de oude indeling bevatten) bieden geen ondersteuning voor SSL. Als uw URL in de oude indeling is en u wilt streamen via SSL, [maken van een nieuwe streaming-eindpunt](media-services-portal-manage-streaming-endpoints.md). Als u wilt uw inhoud streamen via SSL, URL's op basis van het nieuwe streaming-eindpunt te gebruiken.
+* U kunt Media Services nu gebruiken om live Smooth Streaming-inhoud (fMP4) op te nemen via een SSL-verbinding. Zorg ervoor dat u de opname-URL naar HTTPS bijwerkt voor opname via SSL. Op dit moment biedt Media Services geen ondersteuning voor SSL met aangepaste domeinen. Zie [werken met Azure Media Services live streamen](https://msdn.microsoft.com/library/azure/dn783466.aspx)voor meer informatie over live streamen.
+* Op dit moment kunt u geen RTMP live stream opnemen via een SSL-verbinding.
+* U kunt alleen streamen via SSL als het streaming-eind punt van waaruit u uw inhoud levert, is gemaakt na 10 september 2014. Als uw streaming-Url's zijn gebaseerd op de streaming-eind punten die zijn gemaakt na 10 september 2014, bevat de URL ' streaming.mediaservices.windows.net ' (de nieuwe indeling). Streaming-Url's die "origin.mediaservices.windows.net" (de oude indeling) bevatten, bieden geen ondersteuning voor SSL. Als uw URL de oude indeling heeft en u via SSL wilt streamen, [maakt u een nieuw streaming-eind punt](media-services-portal-manage-streaming-endpoints.md). Gebruik Url's op basis van het nieuwe streaming-eind punt om uw inhoud te streamen via SSL.
 
 ### <a id="oct_sdk"></a>Media Services .NET SDK
-De Media Services SDK voor .NET extensions is nu versie 2.0.0.3.
+De Media Services SDK voor .NET-extensies is nu versie 2.0.0.3.
 
-De Media Services SDK voor .NET is nu versie 3.0.0.8. De volgende updates zijn aangebracht:
+De Media Services SDK voor .NET is nu versie 3.0.0.8. De volgende updates zijn uitgevoerd:
 
-* Herstructurering is in klassen voor opnieuw proberen beleid geïmplementeerd.
-* Een tekenreeks van de gebruikersagent is toegevoegd aan de HTTP-aanvraagheaders.
-* Een NuGet terugzetten build-stap is toegevoegd.
-* Scenario-tests zijn opgelost x509 gebruiken certificaat uit de opslagplaats.
-* De validatie-instellingen zijn toegevoegd voor wanneer het kanaal en streaming end bijwerkt.
+* Herstructurering is geïmplementeerd in beleids klassen voor opnieuw proberen.
+* Er is een teken reeks voor de gebruikers agent toegevoegd aan de HTTP-aanvraag headers.
+* Er is een stap voor het maken van een NuGet-herstel bewerking toegevoegd.
+* Scenario tests zijn vastgelegd voor gebruik van een x509-certificaat uit de opslag plaats.
+* Validatie-instellingen zijn toegevoegd voor wanneer het kanaal-en streaming-eind bijwerken.
 
-### <a name="new-github-repository-to-host-media-services-samples"></a>Nieuwe GitHub-opslagplaats naar host Media Services-voorbeelden
-Voorbeelden zijn de [GitHub-opslagplaats voor Media Services-voorbeelden](https://github.com/Azure/Azure-Media-Services-Samples).
+### <a name="new-github-repository-to-host-media-services-samples"></a>Nieuwe GitHub-opslag plaats voor het hosten van Media Services-voor beelden
+Voor beelden vindt u in de [github-opslag plaats Media Services](https://github.com/Azure/Azure-Media-Services-Samples)-voor beelden.
 
 ## <a id="september_changes_14"></a>Release van september 2014
-De metagegevens van de Media Services REST is nu versie 2.7. Zie voor meer informatie over de nieuwste updates voor de REST de [Media Services REST API-verwijzing](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+De Media Services REST-meta gegevens zijn nu versie 2,7. Zie voor meer informatie over de meest recente REST-updates de [referentie Media Services rest API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
 
-Er is nu de Media Services SDK voor .NET versie 3.0.0.7
+De Media Services SDK voor .NET is nu versie 3.0.0.7
 
-### <a id="sept_14_breaking_changes"></a>Belangrijke wijzigingen
-* Oorsprong is gewijzigd in [StreamingEndpoint].
-* Een wijziging is aangebracht in het standaardgedrag wanneer u de Azure-portal gebruiken om te coderen en vervolgens publiceren MP4-bestanden.
+### <a id="sept_14_breaking_changes"></a>Wijzigingen afbreken
+* De naam van de oorsprong is gewijzigd in [StreamingEndpoint].
+* Er is een wijziging aangebracht in het standaard gedrag wanneer u de Azure Portal gebruikt om MP4-bestanden te coderen en vervolgens te publiceren.
 
-### <a id="sept_14_GA_changes"></a>Nieuwe functies/scenario's die deel van de algemeen beschikbare versie uitmaken
-* De Media Indexer Mediaprocessor die is geïntroduceerd. Zie voor meer informatie, [indexeren van mediabestanden met de Media Indexer](https://msdn.microsoft.com/library/azure/dn783455.aspx).
-* U kunt de [StreamingEndpoint] entiteit toevoegen van aangepaste domeinnamen (host).
+### <a id="sept_14_GA_changes"></a>Nieuwe functies/scenario's die deel uitmaken van de release van de algemene Beschik baarheid
+* De Media Indexer-media processor is geïntroduceerd. Zie [Media bestanden indexeren met de media indexer](https://msdn.microsoft.com/library/azure/dn783455.aspx)voor meer informatie.
+* U kunt de entiteit [StreamingEndpoint] gebruiken om aangepaste domein namen (hostnamen) toe te voegen.
   
-    Toevoegen voor het gebruik van een aangepaste domeinnaam als de naam van Media Services streaming-eindpunt, aangepaste hostnamen aan uw streaming-eindpunt. De Media Services REST API's of de .NET SDK gebruiken om toe te voegen aangepaste hostnamen.
+    Als u een aangepaste domein naam wilt gebruiken als de Media Services streaming-eindpunt naam, voegt u aangepaste hostnamen toe aan het streaming-eind punt. Gebruik de Media Services REST-Api's of de .NET SDK om aangepaste hostnamen toe te voegen.
   
     De volgende overwegingen zijn van toepassing:
   
-  * U kunt het eigendom van de aangepaste domeinnaam moet hebben.
-  * Het eigendom van de domeinnaam moet worden gevalideerd door Media Services. Voor het valideren van het domein, maakt u een CName dat is toegewezen, het domein van de bovenliggende MediaServicesAccountId om te controleren of de DNS-mediaservices-dns-zone.
-  * U moet een andere CName waarmee de aangepaste hostnaam (bijvoorbeeld sports.contoso.com) worden toegewezen aan de naam van uw Media Services streamingendpoint zo host (bijvoorbeeld amstest.streaming.mediaservices.windows.net) maken.
+  * U moet het eigendom van de aangepaste domein naam hebben.
+  * Het eigendom van de domein naam moet worden gevalideerd door Media Services. Als u het domein wilt valideren, maakt u een CName die het MediaServicesAccountId-bovenliggende domein toewijst om DNS-Media Services-DNS-zone te verifiëren.
+  * U moet een andere CName maken die de aangepaste hostnaam (bijvoorbeeld sports.contoso.com) toewijst aan de hostnaam van uw Media Services StreamingEndpoint (bijvoorbeeld amstest.streaming.mediaservices.windows.net).
 
-    Zie voor meer informatie, de eigenschap CustomHostNames in de [streamingendpoint zo](https://msdn.microsoft.com/library/azure/dn783468.aspx) artikel.
+    Zie de eigenschap CustomHostNames in het artikel [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx) voor meer informatie.
 
-### <a id="sept_14_preview_changes"></a>Nieuwe functies/scenario's die deel van de openbare preview-versie uitmaken
-* Live streaming preview. Zie voor meer informatie, [in combinatie met Media Services live streaming](https://msdn.microsoft.com/library/azure/dn783466.aspx).
-* Sleutelleveringsservice. Zie voor meer informatie, [dynamische versleuteling met AES-128 en de sleutelleveringsservice](https://msdn.microsoft.com/library/azure/dn783457.aspx).
-* Dynamische AES-versleuteling. Zie voor meer informatie, [dynamische versleuteling met AES-128 en de sleutelleveringsservice](https://msdn.microsoft.com/library/azure/dn783457.aspx).
+### <a id="sept_14_preview_changes"></a>Nieuwe functies/scenario's die deel uitmaken van de open bare preview-versie
+* Live streaming preview. Zie [werken met Media Services live streamen](https://msdn.microsoft.com/library/azure/dn783466.aspx)voor meer informatie.
+* Key delivery service. Zie [AES-128 Dynamic Encryption en de key delivery-service gebruiken](https://msdn.microsoft.com/library/azure/dn783457.aspx)voor meer informatie.
+* AES dynamische versleuteling. Zie [AES-128 Dynamic Encryption en de key delivery-service gebruiken](https://msdn.microsoft.com/library/azure/dn783457.aspx)voor meer informatie.
 * PlayReady-service voor het leveren van licenties. 
-* Dynamische PlayReady-versleuteling. 
-* Media Services PlayReady-licentiesjabloon. Zie voor meer informatie de [overzicht van sjablonen voor Media Services PlayReady-licentie].
-* Stream-opslag versleuteld activa. Zie voor meer informatie, [Stream-opslag-gecodeerde inhoud](https://msdn.microsoft.com/library/azure/dn783451.aspx).
+* PlayReady dynamische versleuteling. 
+* Media Services PlayReady-licentie sjabloon. Zie het overzicht van de [Overzicht van sjablonen voor Media Services PlayReady-licentie]voor meer informatie.
+* Opslag-versleutelde assets streamen. Zie opslag van versleutelde [inhoud streamen](https://msdn.microsoft.com/library/azure/dn783451.aspx)voor meer informatie.
 
 ## <a id="august_changes_14"></a>Release van augustus 2014
-Wanneer u een asset coderen, wordt een uitvoerasset geproduceerd zodra de coderingstaak is voltooid. Tot en met deze release is de Media Services Encoder metagegevens over de activa van de uitvoer geproduceerd. Vanaf deze release, produceert de encoder ook metagegevens over invoer activa. Zie voor meer informatie, [Invoermetagegevens] en [Uitvoermetagegevens].
+Wanneer u een Asset codeert, wordt een uitvoer activum geproduceerd wanneer de coderings taak is voltooid. Tot deze release heeft de Media Services encoder meta gegevens over uitvoer assets geproduceerd. Vanaf deze release produceert het coderings programma ook meta gegevens over invoer assets. Zie [Invoermetagegevens] en uitvoer van meta [Uitvoermetagegevens]voor meer informatie.
 
 ## <a id="july_changes_14"></a>Release van juli 2014
-De volgende correcties zijn aangebracht voor de Azure Media Services Packager en Encryptor:
+De volgende oplossingen voor fouten zijn gemaakt voor de Azure Media Services packager en versleutelings programma:
 
-* Een asset livearchief wordt verzonden naar HLS, afspeelt alleen audio: Dit probleem is opgelost en nu zowel audio en video kunnen spelen.
-* Wanneer een asset wordt geleverd met HLS en AES-128-bits-envelop codering, afspelen de verpakte stromen niet op Android-apparaten: Deze fout is opgelost en de App-pakket stream afspeelt op Android-apparaten die ondersteuning bieden voor HLS.
+* Wanneer een Asset van een live-archief wordt verzonden naar HLS, wordt alleen audio afgespeeld: Dit probleem is opgelost en nu kunnen audio en video worden afgespeeld.
+* Wanneer een Asset is verpakt naar HLS en AES 128-bits envelop versleuteling, worden de verpakte streams niet afgespeeld op Android-apparaten: Deze bug is opgelost en de verpakte stroom wordt afgespeeld op Android-apparaten die ondersteuning bieden voor HLS.
 
-## <a id="may_changes_14"></a>Mei 2014-release
-### <a id="may_14_changes"></a>Algemene Media Services-updates
-U kunt nu [Dynamische pakketten] naar stream HLS versie 3. Stream HLS versie 3, toevoegen de volgende indeling: aan de pad-locator voor de oorsprong: * .ism/manifest(format=m3u8-aapl-v3). Zie voor meer informatie, [dit forum](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
+## <a id="may_changes_14"></a>Kan 2014-release
+### <a id="may_14_changes"></a>Algemene Media Services updates
+U kunt nu [dynamische pakketten] gebruiken voor het streamen van HLS versie 3. Als u HLS-versie 3 wilt streamen, voegt u de volgende indeling toe aan het pad van de oorsprong-Locator: *. ISM/manifest (Format = M3U8-AAPL-v3). Zie [dit forum](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3)voor meer informatie.
 
-Dynamische verpakking nu ook ondersteunt de levering van HLS (versie 3 en versie 4) met PlayReady op basis van Smooth Streaming statisch is versleuteld met PlayReady versleuteld. Zie voor meer informatie over het coderen van Smooth Streaming met PlayReady [Smooth Streaming beveiligen met PlayReady](https://msdn.microsoft.com/library/azure/dn189154.aspx).
+Dynamische verpakking biedt nu ook ondersteuning voor het leveren van HLS (versie 3 en versie 4) die is versleuteld met PlayReady op basis van Smooth Streaming statisch versleuteld met PlayReady. Voor informatie over het versleutelen van Smooth Streaming met PlayReady, raadpleegt u [Smooth streaming beveiligen met playready](https://msdn.microsoft.com/library/azure/dn189154.aspx).
 
 ### <a name="may_14_donnet_changes"></a>Media Services .NET SDK-updates
-De Media Services .NET SDK is nu versie 3.0.0.5. De volgende updates zijn aangebracht:
+De Media Services .NET SDK is nu versie 3.0.0.5. De volgende updates zijn uitgevoerd:
 
-* Snelheid en flexibiliteit zijn beter wanneer u uploaden en downloaden van media-activa.
-* Verbeteringen er zijn aangebracht in de afhandeling van nieuwe pogingen logica en tijdelijke uitzonderingen: 
+* Snelheid en flexibiliteit zijn beter wanneer u media-assets uploadt en downloadt.
+* Er zijn verbeteringen aangebracht in de logica voor opnieuw proberen en tijdelijke uitzonde ringen: 
   
-  * Tijdelijke fout detectie en Pogingslogica zijn verbeterd voor uitzonderingen die worden veroorzaakt wanneer u een query, wijzigingen, opslaan en uploaden of downloaden van bestanden. 
-  * Wanneer u web-uitzonderingen (bijvoorbeeld tijdens een tokenaanvraag Access Control Service), mislukt Er zijn fatale fouten sneller nu.
+  * Detectie van tijdelijke fouten en pogings logica zijn verbeterd voor uitzonde ringen die worden veroorzaakt wanneer u een query uitvoert, wijzigingen opslaat en bestanden uploadt of downloadt. 
+  * Wanneer u webuitzonderingen ontvangt (bijvoorbeeld tijdens een Access Control Service-token aanvraag), mislukken fatale fouten nu sneller.
 
-Zie voor meer informatie, [Pogingslogica in de Media Services SDK voor .NET].
+Zie [Logica voor opnieuw proberen in de Media Services SDK voor .NET]voor meer informatie.
 
 ## <a id="jan_feb_changes_14"></a>Releases van januari/februari 2014
 ### <a name="jan_fab_14_donnet_changes"></a>Media Services .NET SDK 3.0.0.1, 3.0.0.2 en 3.0.0.3
 De wijzigingen in 3.0.0.1 en 3.0.0.2 zijn onder andere:
 
-* Problemen met betrekking tot het gebruik van de LINQ-query's met de OrderBy-instructies zijn opgelost.
-* Test oplossingen in [GitHub] worden gesplitst in op basis van een eenheid tests en scenario's gebaseerde tests.
+* Problemen met betrekking tot het gebruik van LINQ-query's met OrderBy-instructies zijn opgelost.
+* Test oplossingen in [github] zijn gesplitst in op eenheden gebaseerde tests en op scenario's gebaseerde tests.
 
-Zie voor meer informatie over de wijzigingen de [releases van Media Services .NET SDK 3.0.0.1 en 3.0.0.2](http://gtrifonov.com/2014/02/07/windows-azure-media-services-net-sdk-3-0-0-2-release/index.html).
+Zie voor meer informatie over de wijzigingen de [versies van Media Services .NET SDK 3.0.0.1 en 3.0.0.2](http://gtrifonov.com/2014/02/07/windows-azure-media-services-net-sdk-3-0-0-2-release/index.html).
 
 De volgende wijzigingen zijn aangebracht in versie 3.0.0.3:
 
-* Azure storage-afhankelijkheden zijn bijgewerkt voor het gebruik van versie 3.0.3.0.
-* Een probleem voor achterwaartse compatibiliteit is opgelost voor 3.0. *.* releases.
+* Er zijn Azure Storage-afhankelijkheden bijgewerkt voor het gebruik van versie 3.0.3.0.
+* Er is een probleem opgelost met achterwaartse compatibiliteit voor 3,0. *.* shell.
 
-## <a id="december_changes_13"></a>Versie van december 2013
+## <a id="december_changes_13"></a>Release van december 2013
 ### <a name="dec_13_donnet_changes"></a>Media Services .NET SDK 3.0.0.0
 > [!NOTE]
-> De versies van de 3.0.x.x zijn niet achterwaarts compatibel met 2.4.x.x releases.
+> De versies van 3.0. x. x zijn niet achterwaarts compatibel met 2,4. x. x-releases.
 > 
 > 
 
-De nieuwste versie van de Media Services SDK is nu 3.0.0.0-prestatiemeters. U kunt de meest recente pakket te downloaden vanuit NuGet of vraag de bits van [GitHub].
+De nieuwste versie van de Media Services SDK is nu 3.0.0.0. U kunt het meest recente pakket downloaden van NuGet of de bits ophalen van [github].
 
-Beginnen met de Media Services SDK versie 3.0.0.0-prestatiemeters, kunt u opnieuw de [Azure AD Access controleservice](https://msdn.microsoft.com/library/hh147631.aspx) tokens. Zie voor meer informatie de sectie 'Hergebruik van Access controleservice-tokens' in [verbinding maken met Media Services met de Media Services SDK voor .NET](https://msdn.microsoft.com/library/azure/jj129571.aspx).
+Vanaf de Media Services SDK-versie 3.0.0.0 kunt u de [Azure AD Access Control service](https://msdn.microsoft.com/library/hh147631.aspx) -tokens opnieuw gebruiken. Zie voor meer informatie de sectie "hergebruik Access Control Service-tokens" in [Connect to Media Services met de Media Services SDK voor .net](https://msdn.microsoft.com/library/azure/jj129571.aspx).
 
-### <a name="dec_13_donnet_ext_changes"></a>Media Services .NET SDK extensions 2.0.0.0
- De Media Services .NET SDK-uitbreidingen zijn een set uitbreidingsmethoden en Help-functies die uw code vereenvoudigen en het eenvoudiger om te ontwikkelen met Media Services. U krijgt de laatste stukjes van [Media Services .NET SDK extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev).
+### <a name="dec_13_donnet_ext_changes"></a>Media Services .NET SDK-extensies 2.0.0.0
+ De Media Services .NET SDK-uitbrei dingen zijn een set uitbreidings methoden en hulp functies waarmee u uw code kunt vereenvoudigen en de ontwikkeling van Media Services kunt vergemakkelijken. U kunt de meest recente bits ophalen van [Media Services .NET SDK-extensies](https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev).
 
 ## <a id="november_changes_13"></a>Release van november 2013
-### <a name="nov_13_donnet_changes"></a>Media Services .NET SDK wijzigingen
-Vanaf deze versie, de Media Services SDK voor .NET-ingangen tijdelijke fouten fouten die optreden wanneer de Media Services REST API-laag worden aangeroepen.
+### <a name="nov_13_donnet_changes"></a>Media Services .NET SDK-wijzigingen
+Vanaf deze versie verwerkt de Media Services SDK voor .NET tijdelijke fouten die zich kunnen voordoen wanneer aanroepen naar de Media Services REST API-laag worden gedaan.
 
 ## <a id="august_changes_13"></a>Release van augustus 2013
-### <a name="aug_13_powershell_changes"></a>Media Services PowerShell-cmdlets die zijn opgenomen in de Azure SDK-hulpprogramma 's
-De volgende Media Services PowerShell-cmdlets zijn nu opgenomen in [Azure SDK-hulpprogramma's](https://github.com/Azure/azure-sdk-tools):
+### <a name="aug_13_powershell_changes"></a>Media Services Power shell-cmdlets die zijn opgenomen in azure SDK-hulpprogram ma's
+De volgende Media Services Power shell-cmdlets zijn nu opgenomen in de [Azure SDK-hulpprogram ma's](https://github.com/Azure/azure-sdk-tools):
 
 * Get-AzureMediaServices 
 
@@ -447,94 +455,94 @@ De volgende Media Services PowerShell-cmdlets zijn nu opgenomen in [Azure SDK-hu
     Bijvoorbeeld: `Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`
 
 ## <a id="june_changes_13"></a>Release van juni 2013
-### <a name="june_13_general_changes"></a>Media Services-wijzigingen
-De volgende wijzigingen die in deze sectie worden de updates die zijn opgenomen in de releases: juni 2013 Media Services:
+### <a name="june_13_general_changes"></a>Media Services wijzigingen
+De volgende wijzigingen die in deze sectie worden vermeld, zijn updates die zijn opgenomen in de Media Services releases van juni 2013:
 
-* De mogelijkheid om meerdere opslagaccounts koppelen aan een Media Service-account. 
+* De mogelijkheid om meerdere opslag accounts te koppelen aan een media service-account. 
     * StorageAccount
-    * Asset.StorageAccountName en Asset.StorageAccount
-* De mogelijkheid om bij te werken Job.Priority. 
-* Kennisgeving met betrekking tot entiteiten en eigenschappen: 
+    * Activa. StorageAccountName en activum. Storage account
+* De mogelijkheid om de taak. Priority bij te werken. 
+* Aan meldingen gerelateerde entiteiten en eigenschappen: 
     * JobNotificationSubscription
     * NotificationEndPoint
     * Taak
 * Asset.Uri 
 * Locator.Name 
 
-### <a name="june_13_dotnet_changes"></a>Media Services .NET SDK wijzigingen
-De volgende wijzigingen zijn opgenomen in de juni 2013 SDK voor Media Services worden vrijgegeven. De meest recente Media Services SDK is beschikbaar op GitHub.
+### <a name="june_13_dotnet_changes"></a>Media Services .NET SDK-wijzigingen
+De volgende wijzigingen zijn opgenomen in de releases van juni 2013 Media Services SDK. De nieuwste Media Services SDK is beschikbaar op GitHub.
 
-* Vanaf versie 2.3.0.0, de SDK voor Media Services ondersteunt meerdere opslag koppelen gebruikersaccounts aan een Media Services-account. Deze functie wordt ondersteund door de volgende API's:
+* Vanaf versie 2.3.0.0 ondersteunt de Media Services SDK het koppelen van meerdere opslag accounts aan een Media Services-account. De volgende Api's ondersteunen deze functie:
   
     * Type IStorageAccount
     * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
-    * StorageAccount-eigenschap
-    * De eigenschap StorageAccountName
+    * Eigenschap Storage account
+    * Eigenschap StorageAccountName
   
-      Zie voor meer informatie, [beheren Media Services-activa voor meerdere opslagaccounts](https://msdn.microsoft.com/library/azure/dn271889.aspx).
-* Kennisgeving met betrekking tot API's. Vanaf versie 2.2.0.0, kunt u luisteren naar Azure Queue storage meldingen. Zie voor meer informatie, [mediaservices verwerken taak meldingen](https://msdn.microsoft.com/library/azure/dn261241.aspx).
+      Zie [Media Services-assets beheren in meerdere opslag accounts](https://msdn.microsoft.com/library/azure/dn271889.aspx)voor meer informatie.
+* Aan meldingen gerelateerde Api's. Vanaf versie 2.2.0.0 kunt u naar Azure Queue-opslag meldingen Luis teren. Zie [Media Services taak meldingen verwerken](https://msdn.microsoft.com/library/azure/dn261241.aspx)voor meer informatie.
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions property
     * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
     * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription type
     * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
     * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
-* Afhankelijkheid van de Storage client SDK 2.0 (Microsoft.WindowsAzure.StorageClient.dll)
-* Afhankelijkheid van OData 5.5 (Microsoft.Data.OData.dll)
+* Afhankelijkheid van de Storage client SDK 2,0 (Microsoft. WindowsAzure. StorageClient. dll)
+* Afhankelijkheid van OData 5,5 (Microsoft. data. OData. dll)
 
 ## <a id="december_changes_12"></a>Release van december 2012
-### <a name="dec_12_dotnet_changes"></a>Media Services .NET SDK wijzigingen
-* IntelliSense: Ontbrekende IntelliSense documentatie is toegevoegd voor vele typen.
-* Microsoft.Practices.TransientFaultHandling.Core: Een probleem is opgelost waarbij de SDK nog steeds een afhankelijkheid van een oude versie van deze assembly heeft. De SDK verwijst nu naar versie 5.1.1209.1 van deze assembly.
+### <a name="dec_12_dotnet_changes"></a>Media Services .NET SDK-wijzigingen
+* IntelliSense: Er is een ontbrekend IntelliSense-documentatie toegevoegd voor veel typen.
+* Micro soft. practices. TransientFaultHandling. core: Er is een probleem opgelost waarbij de SDK nog steeds een oude versie van deze assembly had. De SDK verwijst nu naar versie 5.1.1209.1 van deze assembly.
 
-Oplossingen voor problemen die in de November 2012 SDK:
+Oplossingen voor problemen die in de SDK van november 2012 zijn gevonden:
 
-* IAsset.Locators.Count: Dit aantal wordt nu correct gerapporteerd op nieuwe IAsset interfaces nadat alle locators zijn verwijderd.
-* IAssetFile.ContentFileSize: Deze waarde is nu correct ingesteld na het uploaden van IAssetFile.Upload(filepath).
-* IAssetFile.ContentFileSize: Deze eigenschap kan nu worden ingesteld wanneer u een assetbestand maakt. Het is eerder alleen-lezen.
-* IAssetFile.Upload(filepath): Een probleem is opgelost waarbij deze van de synchrone Uploadmethode de volgende fout is genereren wanneer er meerdere bestanden zijn geüpload naar de asset. De volgende fout is 'Server-verificatie van de aanvraag is mislukt. Zorg ervoor dat de waarde van de autorisatie-header wordt gevormd correct met inbegrip van de handtekening."
-* IAssetFile.UploadAsync: Een probleem is opgelost die beperkt het gelijktijdig uploaden van bestanden naar vijf bestanden tot.
-* IAssetFile.UploadProgressChanged: Deze gebeurtenis wordt nu geleverd door de SDK.
-* IAssetFile.DownloadAsync(string, BlobTransferClient, ILocator, CancellationToken): De overbelasting van deze methode is nu beschikbaar.
-* IAssetFile.DownloadAsync: Een probleem is opgelost die de gelijktijdige downloaden van bestanden op vijf bestanden beperkt.
-* IAssetFile.Delete(): Er is een probleem opgelost aanroepende verwijderen mogelijk waar een uitzondering genereert, als er geen bestand is geüpload voor de IAssetFile.
-* Taken: Een probleem is opgelost waarbij een "MP4 Smooth Streams taak" met een 'PlayReady Protection taak"koppelen met behulp van een sjabloon hebt gemaakt taken helemaal.
-* EncryptionUtils.GetCertificateFromStore(): Deze methode genereert niet langer een null-referentieuitzondering vanwege een fout bij het vinden van het certificaat op basis van problemen met de certificaat-configuratie.
+* IAsset. Locators. Count: Dit aantal wordt nu correct gerapporteerd voor nieuwe IAsset-interfaces nadat alle locators zijn verwijderd.
+* IAssetFile.ContentFileSize: Deze waarde is nu correct ingesteld na een upload door IAssetFile. upload (filepath).
+* IAssetFile.ContentFileSize: Deze eigenschap kan nu worden ingesteld wanneer u een activa bestand maakt. Het was eerder alleen-lezen.
+* IAssetFile. upload (filepath): Er is een probleem opgelost waarbij deze synchrone upload methode de volgende fout heeft opgetreden toen er meerdere bestanden werden geüpload naar de Asset. De fout is de server kan de aanvraag niet verifiëren. Zorg ervoor dat de waarde van autorisatie-header correct is opgemaakt, inclusief de hand tekening.
+* IAssetFile.UploadAsync: Er is een probleem opgelost waarbij de gelijktijdige upload van bestanden naar vijf bestanden is beperkt.
+* IAssetFile.UploadProgressChanged: Deze gebeurtenis is nu afkomstig van de SDK.
+* IAssetFile.DownloadAsync(string, BlobTransferClient, ILocator, CancellationToken): Deze methode-overload is nu opgenomen.
+* IAssetFile.DownloadAsync: Er is een probleem opgelost waarbij het gelijktijdig downloaden van bestanden naar vijf bestanden is beperkt.
+* IAssetFile.Delete(): Er is een probleem opgelost waarbij het aanroepen van verwijderen mogelijk een uitzonde ring genereert als er geen bestand is geüpload voor de IAssetFile.
+* Functies Er is een probleem opgelost waarbij een ' MP4 to Smooth streaming Task ' met een ' PlayReady Protection-taak ' wordt gekoppeld met behulp van een taak sjabloon om helemaal geen taken te maken.
+* EncryptionUtils.GetCertificateFromStore(): Met deze methode wordt geen null-referentie-uitzonde ring meer gegenereerd vanwege een fout bij het vinden van het certificaat op basis van problemen met de certificaat configuratie.
 
-## <a id="november_changes_12"></a>November 2012 release
-De wijzigingen die in deze sectie zijn updates die zijn opgenomen in de November 2012 (versie 2.0.0.0) SDK. Deze wijzigingen mogelijk code die zijn geschreven voor de preview van juni 2012 SDK vrijgeven om te worden gewijzigd of opnieuw geschreven.
+## <a id="november_changes_12"></a>Release van november 2012
+De wijzigingen die in deze sectie worden vermeld, zijn updates opgenomen in de SDK van november 2012 (versie 2.0.0.0). Deze wijzigingen kunnen ertoe leiden dat code die is geschreven voor de preview SDK-versie van juni 2012, wordt gewijzigd of herschreven.
 
 * Assets
   
-    * IAsset.Create(assetName) is de *alleen* asset maken functie. IAsset.Create worden niet meer bestanden geüpload als onderdeel van de aanroep van methode. IAssetFile gebruiken voor het uploaden.
-    * De methode IAsset.Publish en de opsommingswaarde AssetState.Publish zijn verwijderd uit de SDK-Services. Code die is gebaseerd op deze waarde moet worden herschreven.
+    * IAsset. Create (assets) is de *enige* functie voor het maken van activa. IAsset. Create uploadt geen bestanden meer als onderdeel van de methode aanroep. Gebruik IAssetFile om te uploaden.
+    * De methode IAsset. publish en de opsommings waarde AssetState. publish zijn verwijderd uit de Services SDK. Alle code die afhankelijk is van deze waarde moet worden herschreven.
 * FileInfo
   
     * Deze klasse is verwijderd en vervangen door IAssetFile.
   
 * IAssetFiles
   
-    * IAssetFile FileInfo vervangt en heeft een verschillend gedrag. Als u wilt gebruiken, exemplaar maken van het IAssetFiles-object, gevolgd door het uploaden van een bestand op met behulp van de Media Services SDK of de Storage-SDK. De volgende IAssetFile.Upload overloads kunnen worden gebruikt:
+    * IAssetFile vervangt File Info en heeft een ander gedrag. Als u dit wilt gebruiken, maakt u een exemplaar van het IAssetFiles-object, gevolgd door een bestand dat u kunt uploaden met behulp van de Media Services SDK of de opslag-SDK. De volgende IAssetFile. upload-Overloads kunnen worden gebruikt:
   
-        * IAssetFile.Upload(filePath): Deze synchrone methode blokkeert de thread en wordt u aangeraden deze alleen wanneer u een enkel bestand uploadt.
-        * IAssetFile.UploadAsync (filePath, blobTransferClient, locator, cancellationToken): Deze asynchrone methode is het mechanisme voor het uploaden van voorkeur. 
+        * IAssetFile. upload (filePath): Deze synchrone methode blokkeert de thread en wordt alleen aangeraden als u één bestand uploadt.
+        * IAssetFile. UploadAsync (filePath, blobTransferClient, Locator, cancellationToken): Deze asynchrone methode is het voorkeurs mechanisme voor het uploaden. 
     
-            Bekende fout: Als u de token van de annulering, is het uploaden geannuleerd. De taken kunnen veel annulering statussen hebben. U moet correct variabel en het verwerken van uitzonderingen.
+            Bekende fout: Als u het annulerings token gebruikt, wordt het uploaden geannuleerd. De taken kunnen veel ANNULERINGS statussen hebben. U moet uitzonde ringen goed ondervangen en verwerken.
 * Locators
   
-    * De oorsprong-specifieke versies zijn verwijderd. De SAS-specifieke context. Locators.CreateSasLocator (asset, accessPolicy) wordt afgeschaft of verwijderd door de algemene beschikbaarheid worden gemarkeerd. Zie de sectie 'Locators' onder 'Nieuwe functionaliteit' voor het gedrag van bijgewerkt.
+    * De origin-specifieke versies zijn verwijderd. De SAS-specifieke context. Locators. CreateSasLocator (Asset, accessPolicy) wordt gemarkeerd als afgeschaft of verwijderd door algemene Beschik baarheid. Zie de sectie ' Locators ' onder ' nieuwe functionaliteit ' voor bijgewerkt gedrag.
 
 ## <a id="june_changes_12"></a>Preview-versie van juni 2012
-De volgende functionaliteit is nieuw in de release van November van de SDK:
+De volgende functionaliteit was nieuw in de release van november van de SDK:
 
 * Entiteiten verwijderen
   
-    * IAsset, IAssetFile, ILocator, IAccessPolicy en IContentKey objecten zijn nu op objectniveau, dat wil zeggen, IObject.Delete(), in plaats van dat een verwijdering in de verzameling, dat wil zeggen, cloudMediaContext.ObjCollection.Delete(objInstance) verwijderd.
+    * IAsset-, IAssetFile-, ILocator-, IAccessPolicy-en IContentKey-objecten worden nu verwijderd op object niveau, dat wil zeggen, IObject. Delete (), in plaats van een verwijdering te vereisen in de verzameling, dat wil zeggen Cloudmediacontext maakt. ObjCollection. Delete (objInstance).
 * Locators
   
-    * Locators moeten nu worden gemaakt met behulp van de methode CreateLocator. Ze moeten de LocatorType.SAS of LocatorType.OnDemandOrigin enum-waarden gebruiken als een argument voor het specifieke type locator die u wilt maken.
-    * Nieuwe eigenschappen zijn toegevoegd aan locators te maken het gemakkelijker om op te halen van bruikbare URI's voor uw inhoud. Dit nieuwe ontwerp van locators biedt meer flexibiliteit voor toekomstige van derden uitbreidbaarheid en vergroot het gebruiksgemak voor media-clienttoepassingen.
-* Ondersteuning voor asynchrone methode
+    * Locators nu moeten worden gemaakt met behulp van de methode CreateLocator. Ze moeten de Enum-waarden LocatorType. SAS of LocatorType. OnDemandOrigin gebruiken als argument voor het specifieke type Locator dat u wilt maken.
+    * Er zijn nieuwe eigenschappen toegevoegd aan Locators om het gemakkelijker te maken om bruikbare Uri's voor uw inhoud te verkrijgen. Dit nieuwe ontwerp van Locators biedt meer flexibiliteit voor de toekomst uitbreid baarheid van derden en verhoogt het gebruiks gemak voor media-client toepassingen.
+* Asynchrone methode ondersteuning
   
     * Asynchrone ondersteuning is toegevoegd aan alle methoden.
 
@@ -547,7 +555,7 @@ De volgende functionaliteit is nieuw in de release van November van de SDK:
 
 <!--- URLs. --->
 [Azure Media Services MSDN Forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
-[Azure Media Services REST API-naslaginformatie]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
+[Naslag informatie over Azure Media Services REST API]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Invoermetagegevens]: https://msdn.microsoft.com/library/azure/dn783120.aspx
 [Uitvoermetagegevens]: https://msdn.microsoft.com/library/azure/dn783217.aspx
@@ -564,7 +572,7 @@ De volgende functionaliteit is nieuw in de release van November van de SDK:
 [Dynamische pakketten]: https://msdn.microsoft.com/library/azure/jj889436.aspx
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
-[Pogingslogica in de Media Services SDK voor .NET]: https://msdn.microsoft.com/library/azure/dn745650.aspx
+[Logica voor opnieuw proberen in de Media Services SDK voor .NET]: https://msdn.microsoft.com/library/azure/dn745650.aspx
 [Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx

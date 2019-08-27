@@ -11,16 +11,16 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569050"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018973"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
-Gegevens detectie & classificatie (momenteel in Preview) biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL database voor het **detecteren**, classificeren & , labelen van het**beveiligen** van gevoelige gegevens in uw vinden.
+Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL database voor het **detecteren**, classificeren & , labelen van het**beveiligen** van gevoelige gegevens in uw data bases.
 Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, financiële, gezondheids zorg, persoonlijke Identificeer bare gegevens (PII), enzovoort.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
 
 - Helpt te voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving.
@@ -76,7 +76,7 @@ Zodra het beleid voor de hele Tenant is gedefinieerd, kunt u door gaan met de cl
 
 1. Ga naar de [Azure Portal](https://portal.azure.com).
 
-2. Navigeer naar **geavanceerde gegevens beveiliging** onder de kop beveiliging in het deel venster Azure SQL database. Klik om geavanceerde gegevens beveiliging in te scha kelen en klik vervolgens op de kaart **gegevens detectie & classificatie (preview)** .
+2. Navigeer naar **geavanceerde gegevens beveiliging** onder de kop beveiliging in het deel venster Azure SQL database. Klik om geavanceerde gegevens beveiliging in te scha kelen en klik vervolgens op de kaart **gegevens detectie & classificatie** .
 
    ![Een Data Base scannen](./media/sql-data-discovery-and-classification/data_classification.png)
 

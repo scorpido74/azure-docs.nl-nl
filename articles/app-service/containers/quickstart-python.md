@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 2ff4364fdb0f24ca08a77279d569c0f03de9bb24
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: c7306de4af7f958ef8f89dac41a5e08209916432
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996846"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020212"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Een python-app maken in Azure App Service in Linux
 
@@ -37,7 +37,7 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 ## <a name="download-the-sample-locally"></a>Het voorbeeld lokaal downloaden
 
-Voer de volgende opdrachten uit in een terminalvenster. Hiermee wordt de voorbeeldtoepassing gekloond naar uw lokale machine en navigeert u naar de map met de voorbeeldcode.
+Voer in een Terminal venster de volgende opdrachten uit om de voorbeeld toepassing te klonen op uw lokale computer en ga naar de map met de voorbeeld code.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -65,7 +65,7 @@ Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
-Open een webbrowser en navigeer naar de voorbeeldapp op `http://localhost:5000/`.
+Open een webbrowser en ga naar de voor beeld-app op `http://localhost:5000/`.
 
 Het bericht **Hallo wereld** uit de voorbeeld-app wordt weergegeven op de pagina.
 
@@ -158,7 +158,7 @@ De Python-voorbeeldcode wordt uitgevoerd in een App Service op Linux met een ing
 
 ## <a name="update-locally-and-redeploy-the-code"></a>De code lokaal bijwerken en opnieuw implementeren
 
-Typ `code application.py` in Cloud Shell om de Cloud Shell-editor te openen.
+Voer `code application.py` in de Cloud shell de Cloud shell editor te openen.
 
 ![Code application.py](media/quickstart-python/code-applicationpy.png)
 
@@ -184,7 +184,7 @@ Wanneer de implementatie is voltooid, gaat u terug naar het browservenster dat i
 
 Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de app te beheren die u hebt gemaakt.
 
-Klik in het linkermenu op **App Services** en klik op de naam van uw Azure-app.
+Selecteer in het linkermenu **App Services** en selecteer de naam van uw Azure-app.
 
 ![Navigatie naar Azure-app in de portal](./media/quickstart-python/app-service-list.png)
 

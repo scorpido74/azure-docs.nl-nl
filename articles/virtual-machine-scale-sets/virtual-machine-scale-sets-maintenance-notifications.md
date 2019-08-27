@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/20/2019
 ms.author: shants
-ms.openlocfilehash: 2ba1bb914dfc2edbe17d12cc58df097b60d1f94c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 413301fd8b6b4b2a3b60501378cf6da23cc38d81
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849735"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018851"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Geplande onderhouds meldingen voor schaal sets voor virtuele machines
 
@@ -28,13 +28,13 @@ Azure voert regel matig updates uit om de betrouw baarheid, prestaties en beveil
 
 - Als voor het onderhoud geen herstart vereist is, gebruikt Azure in-place migratie om de VM te onderbreken terwijl de host wordt bijgewerkt. Onderhouds bewerkingen die niet opnieuw moeten worden opgestart, hebben een fout domein toegepast op fout domein. De voortgang wordt gestopt als er waarschuwings status signalen worden ontvangen.
 
-- Als het onderhoud opnieuw moet worden opgestart, ontvangt u een melding dat wordt weer gegeven wanneer het onderhoud gepland is. In deze gevallen krijgt u een tijd venster waarin u het onderhoud zelf kunt starten wanneer het voor u het meest geschikt is.
+- Als de computer opnieuw moet worden opgestart, wordt een melding weer gegeven wanneer het onderhoud is gepland. In deze gevallen krijgt u een tijd venster met meestal 35 dagen waarop u het onderhoud zelf kunt starten, wanneer dit voor u geschikt is.
 
 
 Gepland onderhoud waarvoor opnieuw opstarten is vereist, wordt gepland in golven. Elke golf heeft een ander bereik (regio's):
 
 - Een golf begint met een melding aan klanten. Standaard wordt er een melding verzonden naar de eigenaar van het abonnement en mede-eigen aars. U kunt ontvangers en bericht opties, zoals e-mail, SMS en webhooks, toevoegen aan de meldingen door Azure- [activiteiten logboek waarschuwingen](../azure-monitor/platform/activity-logs-overview.md)te gebruiken.  
-- Met een melding wordt een *self-service venster* beschikbaar gesteld. In dit venster kunt u zien welk van uw Vm's zijn opgenomen in de Wave. U kunt onderhoud proactief starten volgens uw eigen plannings behoeften.
+- Met een melding wordt een *self-service venster* beschikbaar gesteld. In dit venster met meestal 35 dagen kunt u zien welke van uw Vm's zijn opgenomen in de Wave. U kunt onderhoud proactief starten volgens uw eigen plannings behoeften.
 - Na het self-service venster begint een *gepland onderhouds venster* . Op een bepaald moment tijdens dit venster plant Azure en past het vereiste onderhoud toe op uw VM. 
 
 Het doel van het hebben van twee vensters is dat u voldoende tijd hebt om onderhoud te starten en uw VM opnieuw op te opstarten, terwijl u weet wanneer Azure automatisch onderhoud start.
@@ -63,7 +63,7 @@ Gebruik self-service onderhoud **niet** in de volgende scenario's:
 - Als u de grootte van uw virtuele machine vaak wijzigt. Dit scenario kan de onderhouds status herstellen. 
 - Als u geplande gebeurtenissen hebt aangenomen die proactieve failover mogelijk maken of als u de werk belasting 15 minuten zonder problemen hebt afgesloten, wordt het afsluiten van het onderhoud gestart.
 
-**Gebruik Self** -service onderhoud als u van plan bent om uw virtuele machine tijdens de geplande onderhouds fase zonder onderbreking uit te voeren en geen van de voor gaande counterindications van toepassing is. 
+Gebruik self-service onderhoud als u van plan bent om uw virtuele machine tijdens de geplande onderhouds fase zonder onderbreking uit te voeren en geen van de voor gaande counterindications van toepassing is. 
 
 Het is raadzaam selfservice onderhoud in de volgende gevallen te gebruiken:
 
@@ -86,7 +86,7 @@ Wanneer een geplande onderhouds Golf is gepland, kunt u de lijst met virtuele-ma
 
 De kolom **self-service onderhoud** wordt nu weer gegeven in de lijst met virtuele-machine schaal sets. Elke schaalset voor virtuele machines kan een van de volgende waarden hebben voor de kolom selfservice onderhoud:
 
-| Waarde | Description |
+| Value | Description |
 |-------|-------------|
 | Ja | Ten minste één VM in de schaalset voor virtuele machines bevindt zich in een self-service venster. U kunt onderhoud starten op elk gewenst moment tijdens dit selfservice venster. | 
 | Nee | Er bevinden zich geen Vm's in een self-service venster in de desbetreffende schaalset voor virtuele machines. | 
@@ -100,7 +100,7 @@ Azure communiceert een planning voor gepland onderhoud door een e-mail bericht t
 2. Selecteer in het menu links de optie **monitor**. 
 3. Selecteer in het deel venster **monitor-waarschuwingen (klassiek)** **+ waarschuwing voor activiteiten logboek toevoegen**.
 4. Selecteer op de pagina **waarschuwing voor activiteiten logboek toevoegen** de gevraagde informatie of voer deze in. Zorg er in **criteria**voor dat u de volgende waarden instelt:
-   - **Gebeurtenis categorie**: Selecteer **service Health**.
+   - **Gebeurtenis categorie**: Selecteer **Service Health**.
    - **Services**: Selecteer **Virtual Machine Scale sets en virtual machines**.
    - **Type**: Selecteer **gepland onderhoud**. 
     
@@ -109,7 +109,7 @@ Zie [waarschuwingen voor activiteiten](../azure-monitor/platform/activity-log-al
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>Onderhoud starten op de schaalset voor virtuele machines vanuit de portal
 
-Meer informatie over onderhoud vindt u in het overzicht van virtuele-machine schaal sets. Als ten minste één virtuele machine in de schaalset voor virtuele machines is opgenomen in de geplande onderhoud Golf, wordt er een nieuw lint aan de bovenkant van de pagina toegevoegd. Selecteer het lint met meldingen om naar de  onderhouds pagina te gaan. 
+Meer informatie over onderhoud vindt u in het overzicht van virtuele-machine schaal sets. Als ten minste één virtuele machine in de schaalset voor virtuele machines is opgenomen in de geplande onderhoud Golf, wordt er een nieuw lint aan de bovenkant van de pagina toegevoegd. Selecteer het lint met meldingen om naar de onderhouds pagina te gaan. 
 
 Op de pagina **onderhoud** kunt u zien welke VM-instantie wordt beïnvloed door het geplande onderhoud. Als u onderhoud wilt starten, schakelt u het selectie vakje in dat overeenkomt met de betreffende VM. Selecteer vervolgens **Onderhoud starten**.
 
@@ -127,7 +127,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus**: 
 
-| Waarde | Description   |
+| Value | Description   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Hiermee wordt aangegeven of u op dit moment onderhoud kunt starten op de virtuele machine. |
 | PreMaintenanceWindowStartTime         | Het begin van het onderhouds self-service venster wanneer u onderhoud op uw virtuele machine kunt starten. |
@@ -158,7 +158,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 De volgende eigenschappen worden geretourneerd onder **MaintenanceRedeployStatus** voor elk VM-exemplaar: 
 
-| Waarde | Description   |
+| Value | Description   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Hiermee wordt aangegeven of u op dit moment onderhoud kunt starten op de virtuele machine. |
 | PreMaintenanceWindowStartTime         | Het begin van het onderhouds self-service venster wanneer u onderhoud op uw virtuele machine kunt starten. |
@@ -215,7 +215,7 @@ Zie [regio's en beschik baarheid voor virtuele machines in azure](../virtual-mac
 
 **A:** In verschillende use cases is uw VM gepland voor onderhoud nadat u uw onderhoud al hebt voltooid en opnieuw hebt geïmplementeerd:
    - De onderhouds Golf is geannuleerd en opnieuw gestart met een andere nettolading. Het kan zijn dat er een beschadigde Payload is gedetecteerd en dat er alleen een extra Payload moet worden geïmplementeerd.
-   - De virtuele machine  is op een ander knoop punt retoucheerd vanwege een hardwarefout.
+   - De virtuele machine is op een ander knoop punt retoucheerd vanwege een hardwarefout.
    - U hebt ervoor gekozen om te stoppen (toewijzing ongedaan te maken) en de virtuele machine opnieuw op te starten.
    - U hebt **automatisch afsluiten** ingeschakeld voor de virtuele machine.
 

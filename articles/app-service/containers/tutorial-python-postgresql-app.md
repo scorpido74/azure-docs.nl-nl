@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951906"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020190"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Een Python-web-app (Django) bouwen met PostgreSQL in Azure App Service
 
@@ -142,11 +142,11 @@ Quit the server with CONTROL-C.
 
 Ga naar `http://localhost:8000` in een browser. Als het goed is, ziet u nu het bericht `No polls are available.`. 
 
-Navigeer naar `http://localhost:8000/admin` en meld u aan met de gebruiker met beheerdersrechten die u hebt gemaakt in de vorige stap. Klik naast **Vragen** op **Toevoegen** en maak een poll-vraag met enkele keuzen.
+Ga naar `http://localhost:8000/admin` en meld u aan met de gebruikers beheerder die u in de laatste stap hebt gemaakt. Selecteer **toevoegen** naast **vragen** en maak een poll-vraag met enkele keuzes.
 
 ![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Als u opnieuw naar `http://localhost:8000` navigeert ziet u de poll-vraag weergegeven.
+`http://localhost:8000` Ga opnieuw naar opnieuw en Bekijk de poll-vraag die wordt weer gegeven.
 
 Met de Django-voorbeeldtoepassing worden gebruikersgegevens opgeslagen in de database. Als het gelukt is om een poll-vraag toe te voegen, worden met de app gegevens naar de lokale PostgreSQL-database geschreven.
 
@@ -269,13 +269,13 @@ Zodra de gebruiker met beheerdersrechten is gemaakt, voert u de Django-server ui
 python manage.py runserver
 ```
 
-Navigeer opnieuw naar `http://localhost:8000`. Als het goed is, ziet u het bericht `No polls are available.` opnieuw. 
+Ga opnieuw `http://localhost:8000` naar in. Als het goed is, ziet u het bericht `No polls are available.` opnieuw. 
 
-Navigeer naar `http://localhost:8000/admin` en meld u aan met de gebruiker met beheerdersrechten die u hebt gemaakt, en maak een poll-vraag zoals u eerder hebt gedaan.
+Ga naar `http://localhost:8000/admin` en meld u aan met de door de gebruiker gemaakte beheerder en maak een polling-vraag zoals eerder.
 
 ![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Als u opnieuw naar `http://localhost:8000` navigeert ziet u de poll-vraag weergegeven. Er worden nu via de app gegevens naar de database in Azure geschreven.
+`http://localhost:8000` Ga opnieuw naar opnieuw en Bekijk de poll-vraag die wordt weer gegeven. Er worden nu via de app gegevens naar de database in Azure geschreven.
 
 ## <a name="deploy-to-azure"></a>Implementeren in Azure
 
@@ -386,7 +386,7 @@ Als het goed is, ziet u de poll-vraag die u eerder hebt gemaakt.
 
 In App Service wordt een Django-project gedetecteerd in de opslagplaats door in elke submap te zoeken naar een _wsgi.py_ die standaard wordt gemaakt met `manage.py startproject`. Wanneer het bestand wordt gevonden, wordt de Django-web-app geladen. Zie [Ingebouwde Python-installatiekopie configureren](how-to-configure-python.md) voor meer informatie over het laden van Python-apps in App Service.
 
-Navigeer naar `<app-name>.azurewebsites.net` en meld u aan met de gebruiker met beheerdersrechten die u hebt gemaakt. Als u wilt, kunt u meer poll-vragen maken.
+Ga naar `<app-name>.azurewebsites.net` en meld u aan met dezelfde beheerders gebruiker die u hebt gemaakt. Als u wilt, kunt u meer poll-vragen maken.
 
 ![Lokaal uitgevoerde Python Django-toepassing](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -400,7 +400,7 @@ Navigeer naar `<app-name>.azurewebsites.net` en meld u aan met de gebruiker met 
 
 Ga naar de [Azure-portal](https://portal.azure.com) om de app te zien die u hebt gemaakt.
 
-Klik in het linkermenu op **App Services** en klik op de naam van uw Azure-app.
+Selecteer in het menu links **app Services**en selecteer vervolgens de naam van uw Azure-app.
 
 ![Navigatie naar Azure-app in de portal](./media/tutorial-python-postgresql-app/app-resource.png)
 

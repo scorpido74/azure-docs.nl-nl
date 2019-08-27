@@ -1,6 +1,6 @@
 ---
-title: Gegevenssets in Azure Data Factory | Microsoft Docs
-description: Meer informatie over de gegevenssets in Data Factory. Gegevenssets vertegenwoordigen invoer-en uitvoergegevens.
+title: Gegevens sets in Azure Data Factory | Microsoft Docs
+description: Meer informatie over gegevens sets in Data Factory. Gegevens sets vertegenwoordigen invoer/uitvoer-data.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -12,36 +12,36 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: shlo
-ms.openlocfilehash: 6b74f217d296b5de8886f608b1bc92e908b5d8b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bbf7159abf88ce70cc62d202a8375aad302a0552
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866477"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019977"
 ---
-# <a name="datasets-in-azure-data-factory"></a>Gegevenssets in Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
+# <a name="datasets-in-azure-data-factory"></a>Gegevens sets in Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-create-datasets.md)
 > * [Huidige versie](concepts-datasets-linked-services.md)
 
-Dit artikel wordt beschreven welke gegevenssets bent, hoe ze worden gedefinieerd in JSON-indeling, en hoe ze worden gebruikt Azure Data Factory-pijplijnen.
+In dit artikel wordt beschreven welke gegevens sets zijn, hoe ze worden gedefinieerd in JSON-indeling en hoe ze worden gebruikt in Azure Data Factory pijp lijnen.
 
-Als u niet bekend bent met Data Factory, raadpleegt u [Inleiding tot Azure Data Factory](introduction.md) voor een overzicht.
+Als u geen ervaring hebt met Data Factory, raadpleegt u [Introduction to Azure Data Factory](introduction.md) voor een overzicht.
 
 ## <a name="overview"></a>Overzicht
-Een gegevensfactory kan één of meer pijplijnen hebben. Een **pijplijn** is een logische groepering van **activiteiten** die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. Nu een **gegevensset** is een benoemde weergave van gegevens die gewoon verwijst of verwijst naar de gegevens die u gebruiken wilt uw **activiteiten** als invoer en uitvoer. Met gegevenssets worden gegevens binnen andere gegevensarchieven geïdentificeerd, waaronder tabellen, bestanden, mappen en documenten. Een Azure Blob-gegevensset benoemt bijvoorbeeld de blobcontainer en -map in de Blob-opslag van waaruit de activiteit de gegevens moet lezen.
+Een gegevensfactory kan één of meer pijplijnen hebben. Een **pijp lijn** is een logische groep **activiteiten** die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. Nu is een **gegevensset** een benoemde weer gave van gegevens waarmee u de gegevens die u in uw **activiteiten** wilt gebruiken als invoer en uitvoer, eenvoudigweg wijst of ernaar verwijst. Met gegevenssets worden gegevens binnen andere gegevensarchieven geïdentificeerd, waaronder tabellen, bestanden, mappen en documenten. Een Azure Blob-gegevensset benoemt bijvoorbeeld de blobcontainer en -map in de Blob-opslag van waaruit de activiteit de gegevens moet lezen.
 
-Voordat u een gegevensset maakt, moet u een [ **gekoppelde service** ](concepts-linked-services.md) uw gegevensopslag aan de data factory koppelen. Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. Beschouw dit niet mogelijk. de structuur van de gegevens in de gekoppelde gegevensarchieven, vertegenwoordigt de gegevensset en de gekoppelde service definieert de verbinding met de gegevensbron. Bijvoorbeeld, gekoppelde een Azure Storage-service wordt een storage-account aan de data factory. Een Azure Blob-gegevensset vertegenwoordigt de blob-container en de map in het Azure storage-account met de blobs voor invoer om te worden verwerkt.
+Voordat u een gegevensset maakt, moet u een [**gekoppelde service**](concepts-linked-services.md) maken om uw gegevens archief te koppelen aan de Data Factory. Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. U kunt het op deze manier nadenken. de gegevensset vertegenwoordigt de structuur van de gegevens in de gekoppelde gegevens archieven en de gekoppelde service definieert de verbinding met de gegevens bron. Een Azure Storage gekoppelde service koppelt bijvoorbeeld een opslag account aan de data factory. Een Azure Blob-gegevensset vertegenwoordigt de BLOB-container en de map in dat Azure-opslag account die de invoer-blobs bevat die moeten worden verwerkt.
 
-Hier volgt een voorbeeldscenario. Om gegevens te kopiëren van Blob-opslag met een SQL-database, moet u twee gekoppelde services maken: Azure Storage en Azure SQL Database. Vervolgens maakt u twee gegevenssets: Azure Blob-gegevensset (die verwijst naar de gekoppelde Azure Storage-service) en Azure SQL Table-gegevensset (die verwijst naar de gekoppelde Azure SQL Database-service). De Azure Storage en de gekoppelde Azure SQL Database-services bevatten verbindingsreeksen die Data Factory tijdens runtime gebruikt verbinding maken met uw Azure Storage en Azure SQL Database, respectievelijk. De Azure Blob-gegevensset specificeert de blob-container en de blob-map met de blobs voor invoer in uw Blob storage. De Azure SQL Table-gegevensset bevat de SQL-tabel in uw SQL-database waarnaar de gegevens zijn om te worden gekopieerd.
+Hier volgt een voorbeeld scenario. Als u gegevens wilt kopiëren van Blob-opslag naar een SQL database, maakt u twee gekoppelde services: Azure Storage en Azure SQL Database. Maak vervolgens twee gegevens sets: Azure Blob-gegevensset (die verwijst naar de Azure Storage gekoppelde service) en de gegevensset van de Azure SQL-tabel (die verwijst naar de Azure SQL Database gekoppelde service). De Azure Storage-en Azure SQL Database gekoppelde services bevatten verbindings reeksen die Data Factory in runtime gebruiken om respectievelijk verbinding te maken met uw Azure Storage en Azure SQL Database. De Azure Blob-gegevensset bevat de BLOB en BLOB-map die de invoer-blobs in uw Blob-opslag bevat. De gegevensset van de Azure SQL-tabel geeft de SQL-tabel in de SQL database aan waarnaar de gegevens moeten worden gekopieerd.
 
-Het volgende diagram toont de relaties tussen de pijplijn, activiteit, gegevensset en gekoppelde service in Data Factory:
+In het volgende diagram ziet u de relaties tussen pijp lijn, activiteit, gegevensset en gekoppelde service in Data Factory:
 
-![Relatie tussen pijplijn, activiteit, gegevensset, gekoppelde services](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+![Relatie tussen pijp lijn, activiteit, gegevensset, gekoppelde services](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
 
 
-## <a name="dataset-json"></a>JSON van de gegevensset
-Een gegevensset in Data Factory is gedefinieerd in de volgende JSON-indeling:
+## <a name="dataset-json"></a>JSON van gegevensset
+Een gegevensset in Data Factory wordt gedefinieerd in de volgende JSON-indeling:
 
 ```json
 {
@@ -65,26 +65,26 @@ Een gegevensset in Data Factory is gedefinieerd in de volgende JSON-indeling:
     }
 }
 ```
-De volgende tabel beschrijft de eigenschappen in de bovenstaande JSON:
+In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
 Eigenschap | Description | Vereist |
 -------- | ----------- | -------- |
-name | Naam van de gegevensset. Zie [Azure Data Factory - naamgevingsregels](naming-rules.md). |  Ja |
-type | Het type van de gegevensset. Geef een van de typen die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie voor meer informatie, [gegevenssettypen](#dataset-type). | Ja |
-structure | Het schema van de gegevensset. Zie voor meer informatie, [gegevensset schema](#dataset-structure-or-schema). | Nee |
-typeProperties | De type-eigenschappen zijn verschillend voor elk type (bijvoorbeeld: Azure Blob-, Azure SQL-tabel). Zie voor meer informatie over de ondersteunde typen en de bijbehorende eigenschappen, [gegevenssettype](#dataset-type). | Ja |
+name | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
+Type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie [type gegevensset](#dataset-type)voor meer informatie. | Ja |
+structure | Schema van de gegevensset. Zie [DataSet schema](#dataset-structure-or-schema)voor meer informatie. | Nee |
+typeProperties | De type-eigenschappen verschillen voor elk type (bijvoorbeeld: Azure Blob, Azure SQL-tabel). Zie [type gegevensset](#dataset-type)voor meer informatie over de ondersteunde typen en hun eigenschappen. | Ja |
 
-### <a name="data-flow-compatible-dataset"></a>Gegevensstroom compatibel gegevensset
+### <a name="data-flow-compatible-dataset"></a>Met gegevens stroom compatibele gegevensset
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Zie [ondersteunde gegevenssettypen](#dataset-type) voor een lijst met typen gegevenssets die zijn [gegevensstroom](concepts-data-flow-overview.md) compatibel is. Gegevenssets die compatibel zijn voor de gegevensstroom vereist verfijnde gegevenssetdefinities voor transformaties. De JSON-definitie is dus enigszins anders. In plaats van een _structuur_ eigenschap gegevenssets die compatibel gegevensstroom zijn hebben een _schema_ eigenschap.
+Zie [ondersteunde typen gegevensset](#dataset-type) voor een lijst met typen gegevensset die compatibel zijn met de [gegevens stroom](concepts-data-flow-overview.md) . Gegevens sets die compatibel zijn met de data transport, hebben gedetailleerde gegevensset definities voor trans formaties nodig. De JSON-definitie is dus iets anders. In plaats van een _structure_ -eigenschap hebben gegevens sets die compatibel zijn met de gegevensstroom, een _schema_ -eigenschap.
 
-Gegevenssets worden gebruikt in de gegevensstroom, in de bron en sink-transformaties. De gegevenssets definiëren de basisgegevens schema's. Als uw gegevens geen schema is, kunt u schema drift voor uw bron- en sinkblobpaden. Het schema in de gegevensset vertegenwoordigt het fysieke gegevenstype en de vorm.
+In gegevens stroom worden gegevens sets gebruikt in bron-en Sink-trans formaties. In de gegevens sets worden de basis gegevens schema's gedefinieerd. Als uw gegevens geen schema hebben, kunt u schema-drift gebruiken voor uw bron en Sink. Het schema in de gegevensset vertegenwoordigt het fysieke gegevens type en de vorm.
 
-Met het definiëren van het schema van de gegevensset, ontvangt u de gerelateerde gegevenstypen, opmaak van gegevens, locatie en verbindingsgegevens van de bijbehorende gekoppelde service. Metagegevens van de gegevenssets wordt weergegeven in de transformatie van de bron als de bron *projectie*. De projectie in transformatie van de bron voor vertegenwoordigt de gegevensstroom gegevens met gedefinieerde namen en typen.
+Als u het schema van de gegevensset definieert, krijgt u de gerelateerde gegevens typen, gegevens indelingen, bestands locatie en verbindings gegevens van de bijbehorende gekoppelde service. Meta gegevens uit de gegevens sets worden weer gegeven in de bron transformatie als bron *projectie*. De projectie in de bron transformatie vertegenwoordigt de gegevens stroom gegevens met gedefinieerde namen en typen.
 
-Wanneer u het schema van een gegevensset gegevensstroom hebt geïmporteerd, selecteert u de **Schema importeren** knop en kies uit de bron of van een lokaal bestand importeren. In de meeste gevallen importeert u het schema rechtstreeks vanuit de bron. Maar als u al een lokale schemabestand (een Parquet-bestanden of een CSV met koppen) hebt, kunt u instellen dat Data Factory op basis van het schema op dat bestand.
+Wanneer u het schema van een gegevensstroom gegevensset importeert, selecteert u de knop **schema importeren** en kiest u importeren uit de bron of van een lokaal bestand. In de meeste gevallen importeert u het schema rechtstreeks vanuit de bron. Maar als u al een lokaal schema bestand (een Parquet-bestand of CSV met headers) hebt, kunt u Data Factory door sturen om het schema op dat bestand te baseren.
 
 
 ```json
@@ -110,18 +110,18 @@ Wanneer u het schema van een gegevensset gegevensstroom hebt geïmporteerd, sele
 }
 ```
 
-De volgende tabel beschrijft de eigenschappen in de bovenstaande JSON:
+In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
 Eigenschap | Description | Vereist |
 -------- | ----------- | -------- |
-name | Naam van de gegevensset. Zie [Azure Data Factory - naamgevingsregels](naming-rules.md). |  Ja |
-type | Het type van de gegevensset. Geef een van de typen die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie voor meer informatie, [gegevenssettypen](#dataset-type). | Ja |
-schema | Het schema van de gegevensset. Zie voor meer informatie, [compatibel gegevenssets gegevensstroom](#dataset-type). | Nee |
-typeProperties | De type-eigenschappen zijn verschillend voor elk type (bijvoorbeeld: Azure Blob-, Azure SQL-tabel). Zie voor meer informatie over de ondersteunde typen en de bijbehorende eigenschappen, [gegevenssettype](#dataset-type). | Ja |
+name | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](naming-rules.md). |  Ja |
+Type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). <br/><br/>Zie [type gegevensset](#dataset-type)voor meer informatie. | Ja |
+schema | Schema van de gegevensset. Zie [Data flow compatibele gegevens sets](#dataset-type)voor meer informatie. | Nee |
+typeProperties | De type-eigenschappen verschillen voor elk type (bijvoorbeeld: Azure Blob, Azure SQL-tabel). Zie [type gegevensset](#dataset-type)voor meer informatie over de ondersteunde typen en hun eigenschappen. | Ja |
 
 
-## <a name="dataset-example"></a>Voorbeeld van de gegevensset
-In het volgende voorbeeld vertegenwoordigt de gegevensset een tabel met de naam MyTable in een SQL-database.
+## <a name="dataset-example"></a>Gegevensset-voor beeld
+In het volgende voor beeld vertegenwoordigt de gegevensset een tabel met de naam MyTable in een SQL database.
 
 ```json
 {
@@ -142,16 +142,16 @@ In het volgende voorbeeld vertegenwoordigt de gegevensset een tabel met de naam 
 ```
 Houd rekening met de volgende punten:
 
-- type is ingesteld op AzureSqlTable.
-- (specifiek voor AzureSqlTable) tableName type-eigenschap is ingesteld op MyTable.
-- linkedServiceName verwijst naar een gekoppelde service van het type AzureSqlDatabase, die is gedefinieerd in de volgende JSON-codefragment.
+- type wordt ingesteld op AzureSqlTable.
+- de eigenschap TableName type (specifiek voor het type AzureSqlTable) is ingesteld op MyTable.
+- linkedServiceName verwijst naar een gekoppelde service van het type AzureSqlDatabase, die wordt gedefinieerd in het volgende JSON-code fragment.
 
-## <a name="dataset-type"></a>Type Brongegevensset
-Er zijn veel verschillende typen gegevenssets, afhankelijk van het gegevensarchief dat u gebruikt. Zie de volgende tabel voor een lijst met gegevensarchieven die worden ondersteund door Data Factory. Klik op een gegevensarchief voor informatie over het maken van een gekoppelde service en een gegevensset voor het betreffende gegevensarchief.
+## <a name="dataset-type"></a>Type gegevensset
+Er zijn veel verschillende typen gegevens sets, afhankelijk van de gegevensopslag die u gebruikt. Zie de volgende tabel voor een lijst met gegevens archieven die door Data Factory worden ondersteund. Klik op een gegevens Archief voor informatie over het maken van een gekoppelde service en een gegevensset voor het gegevens archief.
 
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-dataflow.md)]
+[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/connector-activity-support-matrix.md)]
 
-In het voorbeeld in de vorige sectie, het type van de gegevensset is ingesteld op **AzureSqlTable**. Op dezelfde manier het type van de gegevensset voor een Azure Blob-gegevensset is ingesteld op **AzureBlob**, zoals weergegeven in de volgende JSON:
+In het voor beeld in de vorige sectie is het type gegevensset ingesteld op **AzureSqlTable**. Op dezelfde manier wordt voor een Azure Blob-gegevensset het type gegevensset ingesteld op **AzureBlob**, zoals wordt weer gegeven in de volgende JSON:
 
 ```json
 {
@@ -175,22 +175,22 @@ In het voorbeeld in de vorige sectie, het type van de gegevensset is ingesteld o
 }
 ```
 
-## <a name="dataset-structure-or-schema"></a>Structuur van de gegevensset of het schema
-De **structuur** sectie of **schema** sectie gegevenssets (gegevens stromen compatibel) is optioneel. Het schema van de gegevensset wordt gedefinieerd door een verzameling van namen en gegevenstypen van kolommen. De structuur sectie kunt u opgeven type-informatie die wordt gebruikt om te converteren en kolommen uit de bron naar de bestemming toewijzen.
+## <a name="dataset-structure-or-schema"></a>Structuur of schema van gegevensset
+De sectie gegevens sets of het **schema** (compatibel met data flow) is optioneel. Hiermee wordt het schema van de gegevensset gedefinieerd door een verzameling namen en gegevens typen van kolommen te bevatten. U kunt de sectie structure gebruiken om type gegevens op te geven die worden gebruikt voor het converteren van typen en het toewijzen van kolommen van de bron naar het doel.
 
 Elke kolom in de structuur bevat de volgende eigenschappen:
 
 Eigenschap | Description | Vereist
 -------- | ----------- | --------
-name | Naam van de kolom. | Ja
-type | Het gegevenstype van de kolom. Data Factory ondersteunt de volgende tijdelijke gegevenstypen als toegestane waarden: **Int16, Int32 Int64, één, Double, Decimal, Byte [], Booleaanse waarde, String, Guid, datum/tijd, Datetimeoffset en Timespan** | Nee
-culture | . NET-gebaseerde cultuur moet worden gebruikt wanneer het type een .NET-type is: `Datetime` of `Datetimeoffset`. De standaardwaarde is `en-us`. | Nee
-Indeling | Tekenreeks die moet worden gebruikt wanneer het type een .NET-type is-indeling: `Datetime` of `Datetimeoffset`. Raadpleeg [aangepaste datum en tijd opmaaktekenreeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) op datum/tijd opmaken. | Nee
+name | De naam van de kolom. | Ja
+Type | Het gegevens type van de kolom. Data Factory ondersteunt de volgende tussenliggende gegevens typen als toegestane waarden: **Int16, Int32, Int64, single, double, Decimal, byte [], Boolean, String, GUID, datetime, date time offset en time span** | Nee
+culture | . Op netgebaseerde cultuur die moet worden gebruikt wanneer het type een .net- `Datetime` type `Datetimeoffset`is: of. De standaardwaarde is `en-us`. | Nee
+format | Indelings teken reeks die moet worden gebruikt wanneer het type een .net `Datetime` - `Datetimeoffset`type is: of. Raadpleeg de [aangepaste datum-en tijd notatie teken reeksen](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) voor het opmaken van DateTime. | Nee
 
 ### <a name="example"></a>Voorbeeld
-Stel in het volgende voorbeeld wordt de bron-Blob-gegevens is CSV-indeling en bevat drie kolommen: gebruikers-id, naam en lastlogindate. Ze zijn van het type Int64, tekenreeks en datum/tijd met een aangepaste datum / tijdindeling met behulp van Franse afkortingen voor de dag van de week.
+In het volgende voor beeld zijn de gegevens van de bron-Blob in CSV-indeling en bevatten ze drie kolommen: GebruikersID, name en lastlogindate. Ze zijn van het type Int64, teken reeks en datum/tijd met een aangepaste datum/tijd-indeling die de dag van de week afgekort Franse namen gebruikt.
 
-De structuur van de Blob-gegevensset als volgt samen met de definities voor de kolommen te definiëren:
+Definieer de structuur van de BLOB-gegevensset als volgt in combi natie met de type definities voor de kolommen:
 
 ```json
 "structure":
@@ -203,26 +203,26 @@ De structuur van de Blob-gegevensset als volgt samen met de definities voor de k
 
 ### <a name="guidance"></a>Richtlijnen
 
-De volgende richtlijnen te begrijpen wanneer structuur informatie op te nemen, en wat u wilt opnemen de **structuur** sectie. Meer informatie over hoe data factory gegevens naar het sink-kaarten en bij het opgeven van informatie van de structuur van [Schema en de toewijzing van het type](copy-activity-schema-and-type-mapping.md).
+De volgende richt lijnen helpen u te begrijpen wanneer u structuur informatie moet toevoegen en wat u in de sectie **structure** moet toevoegen. Meer informatie over hoe data factory bron gegevens toewijst aan Sink en wanneer u structuur gegevens van [schema en type toewijzing](copy-activity-schema-and-type-mapping.md)opgeeft.
 
-- **Voor gegevensbronnen van sterke schema**, geef de structuur sectie alleen als u toewijzen bronkolommen wilt sink-kolommen, en hun namen niet hetzelfde zijn. Dit soort gestructureerde gegevens worden opgeslagen gegevens schema en het type informatie samen met de gegevens zelf. Voorbeelden van gestructureerde gegevensbronnen zijn SQL Server, Oracle en Azure SQL Database.<br/><br/>Als u informatie over het type is al beschikbaar voor gestructureerde gegevensbronnen, moet u informatie over het type niet opnemen wanneer u de sectie structuur opgeeft.
-- **Voor het schema niet/weak gegevensbronnen bijvoorbeeld tekstbestand in blob-opslag**, structuur opnemen wanneer de gegevensset een invoer voor een kopieeractiviteit is en gegevenstypen van brongegevensset moeten worden geconverteerd naar native-typen voor de sink. En structuur opnemen wanneer u toewijzen bronkolommen wilt sink-kolommen...
+- **Voor sterke schema gegevens bronnen**geeft u de sectie structuur alleen op als u wilt dat bron kolommen van de kaart worden gefilterd en de namen ervan niet hetzelfde zijn. In dit soort gestructureerde gegevens bronnen worden gegevens schema's en typen informatie opgeslagen samen met de gegevens zelf. Voor beelden van gestructureerde gegevens bronnen zijn SQL Server, Oracle en Azure SQL Database.<br/><br/>Als type-informatie is al beschikbaar voor gestructureerde gegevens bronnen, moet u geen type gegevens opgeven wanneer u de sectie structure insluit.
+- **Voor geen/zwak schema gegevens bronnen, zoals tekst bestand in Blob Storage**, neemt u structuur op wanneer de gegevensset een invoer is voor een Kopieer activiteit en gegevens typen van de bron-gegevensset moeten worden geconverteerd naar systeem eigen typen voor de sink. En neem structuur op als u bron kolommen wilt toewijzen aan Sink-kolommen.
 
 ## <a name="create-datasets"></a>Gegevenssets maken
-U kunt gegevenssets maken met behulp van een van deze hulpprogramma's of de SDK's: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST-API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-sjabloon en Azure-portal
+U kunt gegevens sets maken met behulp van een van deze hulpprogram ma's of Sdk's: [.net API](quickstart-create-data-factory-dot-net.md), [power shell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sjabloon en Azure Portal
 
-## <a name="current-version-vs-version-1-datasets"></a>Huidige versie vergeleken met versie 1-gegevenssets
+## <a name="current-version-vs-version-1-datasets"></a>Huidige versie versus gegevens sets van versie 1
 
-Hier zijn enkele verschillen tussen Data Factory en Data Factory versie 1-gegevenssets:
+Hier volgen enkele verschillen tussen Data Factory en Data Factory gegevens sets van versie 1:
 
-- De eigenschap external wordt niet ondersteund in de huidige versie. Deze wordt vervangen door een [trigger](concepts-pipeline-execution-triggers.md).
-- De eigenschappen van beleid en de beschikbaarheid worden niet ondersteund in de huidige versie. Afhankelijk van de begintijd voor een pijplijn [triggers](concepts-pipeline-execution-triggers.md).
-- Scoped gegevenssets (gegevenssets die zijn gedefinieerd in een pijplijn) worden niet ondersteund in de huidige versie.
+- De eigenschap external wordt niet ondersteund in de huidige versie. Het wordt vervangen door een [trigger](concepts-pipeline-execution-triggers.md).
+- De eigenschappen beleid en beschik baarheid worden niet ondersteund in de huidige versie. De begin tijd voor een pijp lijn is afhankelijk van [Triggers](concepts-pipeline-execution-triggers.md).
+- Bereik gegevens sets (gegevens sets die zijn gedefinieerd in een pijp lijn) worden niet ondersteund in de huidige versie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende zelfstudies voor stapsgewijze instructies voor het maken van pijplijnen en gegevenssets met behulp van een van deze hulpprogramma's of de SDK's.
+Raadpleeg de volgende zelf studie voor stapsgewijze instructies voor het maken van pijp lijnen en gegevens sets met behulp van een van deze hulpprogram ma's of Sdk's.
 
 - [Snelstartgids: een gegevensfactory maken met .NET](quickstart-create-data-factory-dot-net.md)
-- [Snelstartgids: een data factory maken met PowerShell](quickstart-create-data-factory-powershell.md)
-- [Snelstartgids: een data factory maken met REST-API](quickstart-create-data-factory-rest-api.md)
-- [Snelstartgids: een data factory maken met Azure portal](quickstart-create-data-factory-portal.md)
+- [Snelstartgids: een data factory maken met Power shell](quickstart-create-data-factory-powershell.md)
+- [Snelstartgids: een data factory maken met behulp van REST API](quickstart-create-data-factory-rest-api.md)
+- [Snelstartgids: een data factory maken met behulp van Azure Portal](quickstart-create-data-factory-portal.md)

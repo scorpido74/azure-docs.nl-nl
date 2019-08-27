@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/18/2019
+ms.date: 8/25/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 5458d26172123f0f6cb9914a04ec05b3163a084f
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: bc1b2a07f15ca98da7750c85cd25f2c5766c9bb5
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013275"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018165"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Detectie van dreigingen voor de service laag van Azure in Azure Security Center
 
@@ -52,7 +52,7 @@ Security Center Network-laag analyse zijn gebaseerd op voorbeeld [gegevens van I
 Zie [heuristische DNS-detecties in azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)om te begrijpen hoe Security Center netwerk signalen kunt gebruiken om bedreigings beveiliging toe te passen.
 
 >[!NOTE]
->Meldingen van de detectie van Azure-netwerk lagen, in Azure Security Center, worden niet gegenereerd tijdens het eerste uur nadat de virtuele machine is gemaakt.
+>Waarschuwingen voor de detectie van Azure Network Layer Threats in Azure Security Center worden alleen gegenereerd op virtuele machines waaraan hetzelfde IP-adres is toegewezen voor het hele uur gedurende welke een verdachte communicatie heeft plaatsgevonden. Dit geldt voor virtuele machines, evenals voor virtuele machines die in het abonnement van de klant worden gemaakt als onderdeel van een beheerde service (bijvoorbeeld AKS, Databricks).
 
 ## Azure Management Layer (Azure Resource Manager) (preview-versie)<a name ="management-layer"></a>
 

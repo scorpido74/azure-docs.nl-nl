@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 08/22/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b609dc70c45941ec1132c7cdf614cf9bec8119ff
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611898"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019026"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Azure Sentinel preview van on-Board
 
@@ -59,7 +59,8 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
 
    >[!NOTE] 
    > - Standaardwerk ruimten die zijn gemaakt door Azure Security Center worden niet weer gegeven in de lijst. u kunt geen Azure-Sentinel installeren.
-   > - Azure Sentinel kan worden uitgevoerd op werk ruimten die in een van de volgende regio's worden geïmplementeerd:  Australië-zuidoost, Canada-centraal, Centraal-India, VS-Oost, VS-Oost 2 EUAP (Canarische), Japan-Oost, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
+   > - Azure Sentinel kan worden uitgevoerd op werk ruimten die in een van de volgende regio's worden geïmplementeerd: Australië-oost, Australië-zuidoost, Canada-centraal, Centraal-India, VS Oost, VS-Oost 2 EUAP (Canarische), Japan-Oost, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2, VS-West-Centraal, Frankrijk-centraal, Korea-centraal, Europa-noord, VS-Oost 2, Azië-oost, VS-West, centraal VS, VS Zuid-Centraal.
+
 
 6. Klik op **Azure-Sentinel toevoegen**.
   

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: jingwang
 ms.openlocfilehash: a2815961f6afb0032aa6011cce5d59ab37f81303
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843186"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020414"
 ---
 | Categorie | Gegevensarchief | Wordt ondersteund als bron voor het kopiëren van een [activiteit](../articles/data-factory/copy-activity-overview.md) | Wordt ondersteund als Sink voor [Kopieer activiteiten](../articles/data-factory/copy-activity-overview.md) | Ondersteund door [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Ondersteund door [zelf-hostende IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) | Ondersteund door de [gegevens stroom](../articles/data-factory/concepts-data-flow-overview.md)
 |:--- |:--- |:--- |:--- |:--- |:--- |

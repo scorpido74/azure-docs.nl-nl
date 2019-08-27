@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: yexu
-ms.openlocfilehash: a77041b063f043c065df9a2955e9d07b5692f592
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b330c6010ddb5401dbf9753c2ea91bfeedf35c3b
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60314337"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020095"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Quickstart: Het hulpprogramma Copy Data gebruiken om gegevens te kopiëren
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-copy-data-tool.md)
 
@@ -31,18 +31,18 @@ In deze snelstart gebruikt u Azure Portal voor het maken van een data factory. G
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 
-1. Selecteer **Nieuw** in het menu links, selecteer **Gegevens en analyses** en selecteer vervolgens **Data Factory**. 
+1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
+1. Ga naar de [Azure Portal](https://portal.azure.com). 
+1. Selecteer **Een resource maken** in het menu links, selecteer **Analyse** en selecteer vervolgens **Data Factory**. 
    
-   ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+   ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in als **naam**. 
-      
-   ![Pagina Nieuwe data factory](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory.png)
  
    De naam van de Azure-gegevensfactory moet *wereldwijd uniek* zijn. Als u het volgende foutbericht ziet, wijzigt u de naam van de data factory (bijvoorbeeld **&lt;uwnaam&gt;ADFTutorialDataFactory**) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor naamgevingsregels voor Data Factory-artefacten.
   
-   ![Fout als de naam niet beschikbaar is](./media/quickstart-create-data-factory-portal/name-not-available-error.png)
+   ![Fout als de naam niet beschikbaar is](./media/doc-common-process/name-not-available-error.png)
 1. Selecteer voor **Abonnement** het Azure-abonnement waarin u de gegevensfactory wilt maken. 
 1. Voer een van de volgende stappen uit voor **Resourcegroep**:
      
@@ -51,20 +51,21 @@ In deze snelstart gebruikt u Azure Portal voor het maken van een data factory. G
          
    Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/resource-group-overview.md) voor meer informatie.  
 1. Selecteer **V2** als **Versie**.
-1. Selecteer voor **Locatie** een locatie voor de data factory. 
+1. Selecteer voor **Locatie** een locatie voor de data factory.
 
-   De lijst bevat alleen locaties die worden ondersteund door Data Factory en waar uw Azure Data Factory-metagegevens worden opgeslagen. Let op: de bijbehorende gegevensarchieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die Data Factory gebruikt, kunnen in andere regio's worden uitgevoerd.
+   De lijst bevat alleen locaties die worden ondersteund door Data Factory en waar uw Azure Data Factory-metagegevens worden opgeslagen. De bijbehorende gegevens archieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals Azure HDInsight) die Data Factory gebruikt, kunnen in andere regio's worden uitgevoerd.
 
 1. Selecteer **Maken**.
+
 1. Wanneer het maken is voltooid, ziet u de pagina **Data Factory**. Selecteer de tegel **Maken en controleren** om de gebruikersinterface (UI) van Azure Data Factory te openen op een afzonderlijk tabblad.
    
-   ![Startpagina van Data Factory, met de tegel Maken en controleren](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)
+   ![Startpagina van Data Factory, met de tegel Maken en controleren](./media/doc-common-process/data-factory-home-page.png)
 
 ## <a name="start-the-copy-data-tool"></a>Het hulpprogramma Copy Data starten
 
 1. Selecteer op de pagina **Aan de slag** de tegel **Copy Data** om het hulpprogramma Copy Data te starten. 
 
-   ![Tegel Copy Data](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-tile.png)
+   ![Tegel Copy Data](./media/doc-common-process/get-started-page.png)
 
 1. Op de pagina **Eigenschappen** van het hulpprogramma Copy Data, kunt u een naam en beschrijving opgeven voor de pijplijn. Selecteer vervolgens **Volgende**. 
 
@@ -73,37 +74,27 @@ In deze snelstart gebruikt u Azure Portal voor het maken van een data factory. G
 
     a. Klik op **+ Nieuwe verbinding maken** om een verbinding toe te voegen.
 
-    ![Pagina Brongegevensarchief](./media/quickstart-create-data-factory-copy-data-tool/new-source-linked-service.png)
+    b. Selecteer **Azure-Blob Storage** in de galerie en selecteer vervolgens **door gaan**.
 
-    b. Selecteer in de galerie de optie **Azure Blob Storage**. Selecteer vervolgens **Volgende**.
-
-    ![Blob-opslag selecteren in de galerie](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
-
-    c. Selecteer op de pagina **Azure Blob Storage-account opgeven** uw opslagaccount in de lijst **Naam van opslagaccount** en selecteer **Voltooien**. 
+    c. Geef op de pagina **nieuwe gekoppelde service (Azure Blob Storage)** een naam op voor de gekoppelde service. Selecteer uw opslag account in de lijst **naam van opslag account** , test verbinding en selecteer vervolgens **volt ooien**. 
 
    ![Het nieuwe Azure Blob Storage-account configureren](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
-   d. Selecteer de zojuist gemaakte gekoppelde service als bron. Klik vervolgens op **Volgende**.
-
-   ![Aan de bron gekoppelde service selecteren](./media/quickstart-create-data-factory-copy-data-tool/select-source-linked-service.png)
+    d. Selecteer de zojuist gemaakte gekoppelde service als bron en klik vervolgens op **volgende**.
 
 
 1. Voltooi op de pagina **Invoerbestand of invoermap kiezen** de volgende stappen:
 
-   a. Klik op **Bladeren** om naar de map **adftutorial/input** te gaan en selecteer het bestand **emp.txt**. Klik vervolgens op **Kiezen**. 
+   a. Klik op **Bladeren** om naar de map **adftutorial/input** te gaan, selecteer het bestand **EMP. txt** en klik vervolgens op **kiezen**. 
 
-   ![Pagina Invoerbestand of invoermap kiezen](./media/quickstart-create-data-factory-copy-data-tool/configure-source-path.png)
-
-   d. Schakel de optie **Binair exemplaar** in om het bestand as-is te kopiëren. Selecteer vervolgens **Volgende**. 
+   d. Schakel het selectie vakje voor **binaire kopieën** in om het bestand te kopiëren, en selecteer vervolgens **volgende**. 
 
    ![Pagina Invoerbestand of invoermap kiezen](./media/quickstart-create-data-factory-copy-data-tool/select-binary-copy.png)
 
 
-1. Selecteer op de pagina **Doelgegevensarchief** de gekoppelde **Azure Blob Storage**-service die u zojuist hebt gemaakt. Selecteer vervolgens **Volgende**. 
+1. Selecteer op de pagina **doel gegevens archief** de **Azure Blob Storage** gekoppelde service die u hebt gemaakt en selecteer vervolgens **volgende**. 
 
-   ![Pagina Doelgegevensarchief](./media/quickstart-create-data-factory-copy-data-tool/select-sink-linked-service.png)
-
-1. Voer op de pagina **Uitvoerbestand of uitvoermap kiezen** voor het mappad in: **adftutorial/output**. Selecteer vervolgens **Volgende**. 
+1. Voer op de pagina **het uitvoer bestand of de map kiezen** **adftutorial/output** in voor het mappad en selecteer vervolgens **volgende**. 
 
    ![Pagina Uitvoerbestand of uitvoermap kiezen](./media/quickstart-create-data-factory-copy-data-tool/configure-sink-path.png) 
 
@@ -111,25 +102,17 @@ In deze snelstart gebruikt u Azure Portal voor het maken van een data factory. G
 
 1. Controleer op de pagina **Overzicht** alle instellingen. Selecteer vervolgens **Volgende**. 
 
-    ![Pagina Overzicht](./media/quickstart-create-data-factory-copy-data-tool/summary-page.png)
-
 1. Selecteer op de pagina **Implementatie voltooid** de optie **Controleren** om de pijplijn of taak die u hebt gemaakt, te controleren. 
 
     ![Pagina Implementatie voltooid](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
 1. De toepassing wordt overgeschakeld naar het **Monitor**-tabblad. U ziet de status van de pijplijn op dit tabblad. Selecteer **Vernieuwen** om de lijst te vernieuwen. 
     
-    ![De uitvoering van de pijplijn controleren](./media/quickstart-create-data-factory-copy-data-tool/pipeline-monitoring.png)
-
 1. Selecteer de koppeling **Uitvoeringen van activiteit weergeven** in de kolom **Acties**. De pijplijn heeft slechts één activiteit van het type **Kopiëren**. 
-
-    ![Uitvoering van activiteiten controleren](./media/quickstart-create-data-factory-copy-data-tool/activity-monitoring.png)
     
 1. Selecteer de koppeling **Details** (afbeelding van een bril) in de kolom **Acties** om details over de kopieerbewerking weer te geven. Zie [Overzicht van kopieeractiviteit](copy-activity-overview.md) voor meer informatie over de eigenschappen.
 
-    ![Details van de kopieerbewerking](./media/quickstart-create-data-factory-copy-data-tool/activity-execution-details.png)
-
-1. Controleer of er een **emp.txt**- bestand is gemaakt in de **uitvoermap** van de container **adftutorial**. Als de uitvoermap niet bestaat, wordt deze automatisch aangemaakt in de Data Factory-service. 
+1. Controleer of er een **emp.txt**- bestand is gemaakt in de **uitvoermap** van de container **adftutorial**. Als de uitvoermap niet bestaat, wordt deze automatisch door de Data Factory-service gemaakt. 
 
 1. Schakel over naar het tabblad **Auteur** boven het tabblad **Monitor** op het linkerpaneel, zodat u de gekoppelde services, gegevenssets en pijplijnen kunt bewerken. Zie [Een gegevensfactory maken in Azure Portal](quickstart-create-data-factory-portal.md) voor meer informatie over het bewerken hiervan in de gebruikersinterface van Data Factory.
 

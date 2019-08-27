@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991787"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019084"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Getimede meta gegevens in live streamen signalering 
 
@@ -98,7 +98,7 @@ De volgende documenten bevatten voorzieningen, die door de verwijzing in deze te
 
 Azure Media Services ondersteunt realtime in-band meta gegevens voor zowel [RTMP] als Smooth Streaming [MS-SSTR-opname]-protocollen. Realtime meta gegevens kunnen worden gebruikt voor het definiëren van aangepaste gebeurtenissen, met uw eigen unieke aangepaste schema's (JSON, binary en XML), evenals door de bedrijfstak gedefinieerde indelingen als ID3, of SCTE-35 voor AD-Signa lering in een broadcast-stroom. 
 
-In dit artikel vindt u informatie over het verzenden van aangepaste, getimede meta gegevens signalen met de ondersteunde opname protocollen van Media Services. In dit artikel wordt ook uitgelegd hoe de manifesten voor HLS, DASH en Smooth Streaming worden gedecoreerd met de getimede meta gegevens signalen, en hoe deze in-band worden geplaatst wanneer de inhoud wordt geleverd met CMAF (MP4-fragmenten) of transport stroom (TS)-segmenten voor HLS. 
+In dit artikel vindt u informatie over het verzenden van aangepaste, getimede meta gegevens signalen met de ondersteunde opname protocollen van Azure Media Services. In dit artikel wordt ook uitgelegd hoe de manifesten voor HLS, DASH en Smooth Streaming worden gedecoreerd met de getimede meta gegevens signalen, en hoe deze in-band worden geplaatst wanneer de inhoud wordt geleverd met CMAF (MP4-fragmenten) of transport stroom (TS)-segmenten voor HLS. 
 
 Veelvoorkomende use-case scenario's voor tijdgebonden meta gegevens zijn:
 
@@ -122,7 +122,7 @@ Azure Media Services Live-gebeurtenissen en packager kunnen deze getimede meta g
 
 Met het protocol [RTMP] kunnen getimede meta gegevens signalen worden verzonden voor verschillende scenario's, waaronder aangepaste meta gegevens en SCTE-35-AD-signalen. 
 
-Reclame signalen (Hint berichten) worden verzonden als [AMF0]-Hint berichten die zijn Inge sloten in de [RTMP]-stream. De hint berichten kunnen ergens worden verzonden voordat de werkelijke gebeurtenis of het AD-Splice-signaal van [SCTE35] moet worden uitgevoerd. Ter ondersteuning van dit scenario wordt de werkelijke tijd van de gebeurtenis verzonden binnen het bericht hint. Zie [AMF0] voor meer informatie.
+Reclame signalen (Hint berichten) worden verzonden als [AMF0]-Hint berichten die zijn Inge sloten in de [RTMP]-stream. De hint berichten kunnen ergens worden verzonden voordat de werkelijke gebeurtenis of het AD-Splice-signaal van [SCTE35] moet worden uitgevoerd. Ter ondersteuning van dit scenario wordt de werkelijke tijds tempel van de presentatie van de gebeurtenis verzonden binnen het bericht hint. Zie [AMF0] voor meer informatie.
 
 De volgende [AMF0]-opdrachten worden ondersteund door Azure Media Services voor RTMP-opname:
 
@@ -139,8 +139,8 @@ De naam van het bericht [AMF0] kan worden gebruikt om meerdere gebeurtenis strom
 
 Als u aangepaste meta gegevensfeeds van uw upstream-encoder, een IP-camera, Drone of apparaat met het RTMP-protocol wilt opgeven, gebruikt u het opdracht type ' onUserDataEvent ' [AMF0]-gegevens bericht.
 
-De gegevens bericht opdracht **' onUserDataEvent '** moet een bericht lading met de volgende definitie bevatten om te kunnen worden vastgelegd door Media Services en zijn verpakt in de in-band bestands indeling, evenals de manifesten voor HLS, Dash en Smooth.
-Het is raadzaam om een time-out-berichten bericht niet vaker dan één keer per 0,5 seconden te verzenden (500ms). Elk bericht kan meta gegevens van meerdere frames samen voegen als u meta gegevens op frame niveau moet bieden. Als u multi-bitrate streams verzendt, kunt u het beste ook de meta gegevens op één bitrate geven om de band breedte te verminderen en storingen met de verwerking van video/audio te voor komen. 
+De gegevens bericht opdracht **' onUserDataEvent '** moet een bericht lading met de volgende definitie bevatten om te kunnen worden vastgelegd door Media Services en zijn verpakt in de in-band bestands indeling, evenals de manifesten voor HLS, DASH en Smooth streaming.
+Het is raadzaam om berichten met een time-out van de meta gegevens niet vaker dan één keer per 0,5 seconden (500ms) of stabiliteits problemen met de live stream te verzenden. Elk bericht kan meta gegevens van meerdere frames samen voegen als u meta gegevens op frame niveau moet bieden. Als u multi-bitrate streams verzendt, kunt u het beste ook de meta gegevens op één bitrate geven om de band breedte te verminderen en storingen met de verwerking van video/audio te voor komen. 
 
 De payload voor **' onUserDataEvent '** moet een bericht van het type [MPEGDASH] EventStream XML-indeling zijn. Dit maakt het eenvoudig om aangepaste gedefinieerde schema's door te geven die kunnen worden uitgevoerd in ' emsg-nettoladingen in-band voor CMAF [MPEGCMAF] die worden geleverd via HLS-of streepje-protocollen. Elk streepje gebeurtenis stroom bericht bevat een schemeIdUri die fungeert als een URN-bericht schema-ID en definieert de payload van het bericht. Sommige schema's, zoals "https://aomedia.org/emsg/ID3" voor [id3v2] of **urn: scte: scte35:2013: bin** voor [scte-35], worden gestandaardiseerd door industriële consortia voor interoperabiliteit. Elke toepassings provider kan hun eigen aangepaste schema definiëren met behulp van een URL die ze beheren (domein in eigendom) en kunnen een specificatie op die URL geven als ze kiezen. Als een speler een handler heeft voor het gedefinieerde schema, is dat het enige onderdeel dat de payload en het protocol moet begrijpen.
 
@@ -226,7 +226,7 @@ Afzonderlijke gebeurtenissen of gegevens ladingen worden niet rechtstreeks uitge
 
 ### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>Aanvullende informatieve beperkingen en standaard waarden voor onUserDataEvent-gebeurtenissen
 
-- Als de tijd schaal niet is ingesteld in het EventStream-element, wordt de RTMP 1Khz-tijd schaal standaard gebruikt
+- Als de tijd schaal niet is ingesteld in het EventStream-element, wordt de RTMP 1 kHz-tijd schaal standaard gebruikt
 - De levering van een onUserDataEvent-bericht is beperkt tot één keer per 500ms. Als u gebeurtenissen vaker verzendt, kan dit van invloed zijn op de band breedte en de stabiliteit van de live-feed
 
 ## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 RTMP AD Cue signalering met ' onCuePoint '
