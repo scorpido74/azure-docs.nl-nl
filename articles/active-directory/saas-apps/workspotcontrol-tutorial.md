@@ -176,7 +176,7 @@ In deze sectie maakt u een testgebruiker in Azure portal.
 
     1. In de **naam** veld **BrittaSimon**.
   
-    1. In de **gebruikersnaam** veld **brittasimon@* yourcompanydomain.extension* **. Voer bijvoorbeeld  **BrittaSimon@contoso.<i> </i>com**.
+    1. In de **gebruikersnaam** veld **brittasimon@* yourcompanydomain.extension***. Voer bijvoorbeeld  **BrittaSimon@contoso.<i> </i>com**.
 
     1. Selecteer de **Show wachtwoord** selectievakje. Noteer de waarde die wordt weergegeven in de **wachtwoord** vak.
 
