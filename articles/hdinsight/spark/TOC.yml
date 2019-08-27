@@ -311,8 +311,6 @@
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Apache Spark-taak mislukt - InvalidClassException
           href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Langzame Apache Spark-taken - listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Langzame Apache Spark-taken - opslagcontainer
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException-uitzondering
