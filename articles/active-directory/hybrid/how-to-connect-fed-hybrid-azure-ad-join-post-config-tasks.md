@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Taken na configuratie van hybride Azure AD join | Microsoft Docs'
-description: De Documentdetails van dit post-configuratietaken die nodig zijn voor uitvoeren de hybride Azure AD join
+title: 'Azure AD Connect: Hybride Azure AD-deelname post configuratie taken | Microsoft Docs'
+description: Dit document bevat informatie over de configuratie taken die nodig zijn om de hybride Azure AD-deelname te volt ooien
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,85 +16,85 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9af969700f4f2dfbedc4833badd7e7349696302
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244580"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032700"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Taken na configuratie voor hybride Azure AD-koppeling
 
-Nadat u Azure AD Connect voor het configureren van uw organisatie voor de hybride Azure AD join hebt uitgevoerd, zijn er nog een paar extra stappen die moeten worden voltooid als u wilt dat de installatie te voltooien.  Alleen de stappen die van toepassing voor uw apparaten zijn te verrichten.
+Nadat u Azure AD Connect hebt uitgevoerd om uw organisatie te configureren voor hybride Azure AD-deelname, zijn er enkele extra stappen die u moet volt ooien om de installatie te volt ooien.  Voer alleen de stappen uit die van toepassing zijn op uw apparaten.
 
-## <a name="1-configure-controlled-rollout-optional"></a>1. Configureren van beheerde implementatie (optioneel)
-Alle domein-apparaten met Windows 10 en Windows Server 2016 automatisch registreren bij Azure AD wanneer alle configuratiestappen voltooid zijn. Als u liever een gecontroleerde implementatie in plaats van deze automatische registratie, kunt u Groepsbeleid selectief inschakelen of uitschakelen van automatische implementatie.  Dit groepsbeleid moet worden ingesteld voordat u begint met de andere configuratie stappen: Azure AD
-* Maak een group policy object in uw Active Directory.
-* Noem het (ex-Hybrid Azure AD join).
-* Ga naar & bewerken:  Computerconfiguratie > beleid > Beheersjablonen > Windows-onderdelen > Device Registration service.
+## <a name="1-configure-controlled-rollout-optional"></a>1. Beheerde implementatie configureren (optioneel)
+Alle apparaten die lid zijn van een domein met Windows 10 en Windows Server 2016 worden automatisch geregistreerd bij Azure AD zodra alle configuratie stappen zijn voltooid. Als u de voor keur geeft aan een beheerde implementatie in plaats van deze automatische registratie, kunt u groeps beleid gebruiken om de automatische implementatie selectief in of uit te scha kelen.  Dit groeps beleid moet worden ingesteld voordat de andere configuratie stappen worden gestart:
+* Maak een groeps beleidsobject in uw Active Directory.
+* Noem het (ex-Hybrid Azure AD-deelname).
+* Bewerk & Ga naar:  Computer configuratie >-beleid > Beheersjablonen > Windows-onderdelen > apparaatregistratie.
 
 >[!NOTE]
->Voor 2012R2 de beleidsinstellingen zijn op **Computerconfiguratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace Join > automatisch workplace join-clientcomputers**
+>Voor 2012R2 zijn de beleids instellingen ingesteld op **computer configuratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace join > automatisch werk plek toevoegen aan client computers**
 
-* Deze instelling uitschakelen:  Domeincomputers als apparaten registreren.
-* Toepassen en klik op OK.
-* Koppel het groepsbeleidsobject aan de locatie van uw keuze (organisatie-eenheid, beveiliging of op het domein voor alle apparaten).
+* Deze instelling uitschakelen:  Registreer computers die lid zijn van een domein als apparaten.
+* Toep assen en klik op OK.
+* Koppel het groeps beleidsobject aan de gewenste locatie (organisatie-eenheid, beveiligings groep of het domein voor alle apparaten).
 
-## <a name="2-configure-network-with-device-registration-endpoints"></a>2. Netwerk configureren met device registration-eindpunten
-Zorg ervoor dat de volgende URL's toegankelijk vanaf computers in uw organisatie-netwerk voor registratie met Azure AD zijn:
+## <a name="2-configure-network-with-device-registration-endpoints"></a>2. Netwerk configureren met eind punten voor apparaatregistratie
+Zorg ervoor dat de volgende Url's toegankelijk zijn vanaf computers in het netwerk van uw organisatie voor registratie bij Azure AD:
 
 * https://enterpriseregistration.windows.net
 * https://login.microsoftonline.com
 * https://device.login.microsoftonline.com 
 
-## <a name="3-implement-wpad-for-windows-10-devices"></a>3. WPAD voor Windows 10-apparaten implementeren
-Als uw organisatie toegang heeft tot Internet via een uitgaande proxy, Web Proxy Auto-Discovery (WPAD) om in te schakelen van Windows 10-computers te registreren bij Azure AD te implementeren.
+## <a name="3-implement-wpad-for-windows-10-devices"></a>3. WPAD implementeren voor Windows 10-apparaten
+Als uw organisatie toegang heeft tot internet via een uitgaande proxy, implementeert u Web Proxy Auto-Discovery (WPAD) zodat Windows 10-computers zich kunnen registreren bij Azure AD.
 
-## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. De SCP in alle forests die niet zijn geconfigureerd door Azure AD Connect configureren 
+## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4. Configureer het SCP in een forest dat niet is geconfigureerd door Azure AD Connect 
 
-De service connection point (SCP) bevat uw Azure AD-tenant-gegevens die worden gebruikt door uw apparaten voor automatische registratie.  Voer het PowerShell-script, ConfigureSCP.ps1, die u hebt gedownload van Azure AD Connect.
+Het SCP (Service Connection Point) bevat uw Azure AD-Tenant gegevens die door uw apparaten worden gebruikt voor automatische registratie.  Voer het Power shell-script ConfigureSCP. ps1 uit dat u hebt gedownload van Azure AD Connect.
 
-## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Configureren van een federation-service die niet is geconfigureerd door Azure AD Connect
+## <a name="5-configure-any-federation-service-that-was-not-configured-by-azure-ad-connect"></a>5. Configureer een Federation-service die niet is geconfigureerd door Azure AD Connect
 
-Als uw organisatie gebruikmaakt van een federation-service zich aanmeldt bij Azure AD, moeten de claimregels in uw Azure AD-vertrouwensrelatie voor relying party verificatie van apparaten toestaan. Als u van Federatie met AD FS gebruikmaakt, gaat u naar [Help bij AD FS](https://aka.ms/aadrptclaimrules) voor het genereren van de claimregels. Als u een niet-Microsoft-federatieoplossing gebruikt, moet u contact op met die provider voor instructies.  
+Als uw organisatie een Federation-service gebruikt om u aan te melden bij Azure AD, moeten de claim regels in uw Azure AD Relying Party-vertrouwen apparaat-authenticatie toestaan. Als u Federatie gebruikt met AD FS, gaat u naar [AD FS Help](https://aka.ms/aadrptclaimrules) voor het genereren van de claim regels. Als u een Federatie oplossing die niet van micro soft is, neemt u contact op met de provider voor hulp.  
 
 >[!NOTE]
->Als u Windows downlevel-apparaten hebt, moet de service ondersteuning voor de claims authenticationmethod en wiaormultiauthn verlenen bij het ontvangen van aanvragen naar de Azure AD-vertrouwensrelatie. In AD FS, moet u een regel voor het transformeren van uitgifte die passen via de methode voor netwerkauthenticatie toevoegen.
+>Als u Windows-apparaten op een lager niveau hebt, moet de service ondersteuning bieden voor de authenticatie van de wiaormultiauthn en claims bij het ontvangen van aanvragen aan de Azure AD-vertrouwens relatie. In AD FS moet u een regel voor uitgifte transformatie toevoegen die door de verificatie methode wordt door gegeven.
 
-## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Azure AD naadloze eenmalige aanmelding voor Windows downlevel-apparaten inschakelen
+## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Azure AD naadloze SSO inschakelen voor Windows-apparaten op een lager niveau
 
-Als uw organisatie gebruikmaakt van wachtwoord-Hashsynchronisatie of Pass through-verificatie te melden bij Azure AD, Azure AD naadloze eenmalige aanmelding inschakelen met deze methode aanmelden om Windows downlevel-apparaten te verifiëren: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Als uw organisatie gebruikmaakt van hash-synchronisatie van wacht woorden of Pass-Through-verificatie om zich aan te melden bij Azure AD, schakelt u de naadloze SSO van Azure AD in met die aanmeldings https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso methode om Windows-apparaten op lagere niveaus te verifiëren:. 
 
-## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Azure AD-beleid voor Windows downlevel-apparaten instellen
+## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Beleid voor Azure AD instellen voor Windows-apparaten op lager niveau
 
-Voor het registreren van Windows downlevel-apparaten, moet u om ervoor te zorgen dat het beleid voor Azure AD kan gebruikers om apparaten te registreren. 
+Als u Windows-apparaten op een lager niveau wilt registreren, moet u ervoor zorgen dat gebruikers met het Azure AD-beleid apparaten kunnen registreren. 
 
-* Meld u aan uw account in Azure portal.
-* Ga naar:  Azure Active Directory > apparaten > instellingen voor apparaten
-* Ingesteld op ' Gebruikers kunnen hun apparaten registreren bij Azure AD' op Alles.
+* Meld u aan bij uw account in de Azure Portal.
+* Ga naar:  Azure Active Directory > apparaten > Apparaatinstellingen
+* Stel ' gebruikers kunnen hun apparaten registreren bij Azure AD '.
 * Op Opslaan klikken
 
-## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Azure AD-eindpunt toevoegen aan Windows downlevel-apparaten
+## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Een Azure AD-eind punt toevoegen aan Windows-apparaten op een lager niveau
 
-De Azure AD-apparaat verificatie-eindpunt toevoegen aan het lokale intranetzones op uw Windows downlevel-apparaten om te voorkomen dat certificaatmeldingen bij het verifiëren van de apparaten: https://device.login.microsoftonline.com 
+Voeg het Azure AD-eind punt voor verificatie van apparaten toe aan de lokale intranet zones op uw Windows-apparaten op het lagere niveau om certificaat prompts te voor komen bij het verifiëren van de apparaten: https://device.login.microsoftonline.com 
 
-Als u [naadloze eenmalige aanmelding](how-to-connect-sso.md), ook deze zone inschakelen 'Balk statusupdates via scripts toestaan' en voeg het volgende eindpunt toe: https://autologon.microsoftazuread-sso.com 
+Als u [naadloze SSO](how-to-connect-sso.md)gebruikt, schakelt u ook de optie updates op status balk toestaan via script in op die zone en voegt u het volgende eind punt toe: https://autologon.microsoftazuread-sso.com 
 
-## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Microsoft Workplace Join op Windows downlevel-apparaten installeren
+## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Micro soft-Workplace Join op Windows-apparaten op het lagere niveau installeren
 
-Met dit installatieprogramma maakt een geplande taak op het apparaat-systeem dat wordt uitgevoerd in de context van de gebruiker. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak op de achtergrond lid wordt van het apparaat met Azure AD met de referenties van de gebruiker na verificatie met behulp van geïntegreerde Windows-verificatie. Het download center loopt https://www.microsoft.com/download/details.aspx?id=53554. 
+Dit installatie programma maakt een geplande taak op het apparaatsysteem dat wordt uitgevoerd in de context van de gebruiker. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt na verificatie met behulp van geïntegreerde Windows-verificatie op de achtergrond toegevoegd aan het apparaat met Azure AD met de referenties van de gebruiker. Het Download centrum bevindt zich op https://www.microsoft.com/download/details.aspx?id=53554. 
 
-## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Groepsbeleid om toe te staan van device Registration service configureren
+## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Groeps beleid configureren voor het toestaan van apparaatregistratie
 
-* Maak een group policy object in uw Active Directory - als nog niet is gemaakt.
-* Noem het (ex-Hybrid Azure AD join).
-* Ga naar & bewerken:  Computerconfiguratie > beleid > Beheersjablonen > Windows-onderdelen > Device Registration service
-* Inschakelen:  Domeincomputers als apparaten registreren
-* Toepassen en klik op OK.
-* Koppel het groepsbeleidsobject aan de locatie van uw keuze (organisatie-eenheid, beveiliging of op het domein voor alle apparaten).
+* Maak een groeps beleidsobject in uw Active Directory--als dit nog niet is gemaakt.
+* Noem het (ex-Hybrid Azure AD-deelname).
+* Bewerk & Ga naar:  Computer configuratie >-beleid > Beheersjablonen > Windows-onderdelen > apparaatregistratie
+* Kunt  Computers die lid zijn van een domein registreren als apparaten
+* Toep assen en klik op OK.
+* Koppel het groeps beleidsobject aan de gewenste locatie (organisatie-eenheid, beveiligings groep of het domein voor alle apparaten).
 
 >[!NOTE]
->Voor 2012R2 de beleidsinstellingen zijn op **Computerconfiguratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace Join > automatisch workplace join-clientcomputers**
+>Voor 2012R2 zijn de beleids instellingen ingesteld op **computer configuratie > beleid > Beheersjablonen > Windows-onderdelen > Workplace join > automatisch werk plek toevoegen aan client computers**
 
 ## <a name="next-steps"></a>Volgende stappen
 [Write-back van apparaat configureren](how-to-connect-device-writeback.md)

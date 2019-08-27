@@ -1,7 +1,7 @@
 ---
 title: Maken van een CentOS Linux Data Science Virtual Machine
 titleSuffix: Azure
-description: Configureer en maak een Linux Data Science Virtual Machine in Azure voor het analyseren en machine learning.
+description: Een Linux-Data Science Virtual Machine in azure maken en configureren voor analyses en machine learning.
 services: machine-learning
 documentationcenter: ''
 author: vijetajo
@@ -16,366 +16,417 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 50dd51cc204a6a22d14873114ba6d98e2a174251
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c0464253c55aa5e51e8e86686405ea6b107c8382
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592011"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047723"
 ---
-# <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Een Linux CentOS Data Science Virtual Machine op Azure inrichten
+# <a name="provision-a-linux-centos-data-science-virtual-machine-in-azure"></a>Een Linux CentOS-Data Science Virtual Machine inrichten in azure
 
-De Linux Data Science Virtual Machine is een CentOS gebaseerde virtuele machine van Azure die wordt geleverd met een verzameling vooraf geïnstalleerde hulpprogramma's. Deze hulpprogramma's worden vaak gebruikt voor het uitvoeren van gegevensanalyse en machine learning. Er zijn belangrijke software-onderdelen opgenomen:
+De Linux-Data Science Virtual Machine (DSVM) is een Azure-virtuele machine op basis van CentOS. Linux DSVM wordt geleverd met een verzameling vooraf geïnstalleerde hulpprogram ma's die u kunt gebruiken voor gegevens analyse en machine learning. 
 
-* Besturingssysteem: Linux CentOS-distributie.
-* Microsoft R Server Developer Edition
-* Anaconda Python-distributie (versie 2.7 en 3.5), met inbegrip van populaire analysebibliotheken
-* JuliaPro - een gecureerde distributie van Julia-taal met populaire wetenschappelijke en data analytics-bibliotheken
-* Standalone Spark-instantie en één knooppunt Hadoop (HDFS, Yarn)
-* JupyterHub - een omgeving met meerdere gebruikers Jupyter-notebookserver ondersteunt R, Python, PySpark, Julia kernels
-* Azure Opslagverkenner
-* Azure-opdrachtregelinterface (CLI) voor het beheren van Azure-resources
-* Database voor PostgresSQL
-* Hulpprogramma's voor machine learning
-  * [Cognitive Toolkit](https://github.com/Microsoft/CNTK): Een grondige learning software Toolkit van micro soft Research.
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Een snelle machine learning systeem dat technieken ondersteunt, zoals online, hashing, allreduce, reducties, learning2search, actief en interactief leren.
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Een hulp programma dat snelle en nauw keurige implementatie van de structuur biedt.
-  * [Rattle](https://togaware.com/rattle/) (het hulp programma R-analyse is eenvoudig te leren): Een hulp programma dat aan de slag gaat met gegevens analyse en machine learning in R eenvoudig, met op GUI gebaseerde gegevens exploratie en modellen voor het automatisch genereren van R-code.
-* Azure SDK in Java, Python, node.js, Ruby, PHP
-* Bibliotheken in R en Python voor gebruik in Azure Machine Learning en andere Azure-services
-* Ontwikkelprogramma's en editors (RStudio, PyCharm, IntelliJ, Emacs, gedit, vi)
+De belangrijkste software onderdelen die deel uitmaken van een Linux-DSVM zijn:
 
+* Linux CentOS-distributie besturingssysteem.
+* Microsoft Machine Learning Server.
+* Anaconda python-distributie (versies 3,5 en 2,7), met inbegrip van populaire gegevens analyse bibliotheken.
+* JuliaPro, een gespreide distributie van de Julia-taal en populaire weten schappelijke en Data Analytics-bibliotheken.
+* Het zelfstandige Spark-exemplaar en Hadoop met één knoop punt (HDFS, GARENs).
+* JupyterHub, een Jupyter-notebook server voor meerdere gebruikers die R-, Python-, PySpark-en Julia-kernels ondersteunen.
+* Azure Storage Explorer.
+* Azure CLI, de Azure-opdracht regel interface voor het beheer van Azure-resources.
+* PostgresSQL-data base.
+* Machine learning-hulpprogram ma's:
+  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), een diep gaande software Toolkit van micro soft Research.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit), een snel machine learning systeem dat technieken zoals online, hashing, allreduce, reductie, learning2search, actief en interactief leren ondersteunt.
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/), een hulp programma dat snelle en nauw keurige implementatie van structuur biedt.
+  * [Rattle](https://togaware.com/rattle/), een hulp programma dat aan de slag gaat met gegevens analyse en machine learning in R is eenvoudig. Rattle biedt zowel op GUI gebaseerde gegevens exploratie als-modellering met behulp van automatische R-code generatie.
+* Azure SDK in Java, Python, node. js, Ruby en PHP.
+* Bibliotheken in R en python voor gebruik in Azure Machine Learning en andere Azure-Services.
+* Ontwikkelingsprogram ma's en editors (RStudio, PyCharm, IntelliJ, emacs, gedit, VI).
 
-Gegevenswetenschap omvat het doorlopen van een reeks taken:
+Wetenschappelijke gegevens omvat het doorlopen van een reeks taken:
 
-1. Zoeken, laden en vooraf verwerken van gegevens
-1. Het bouwen en testen van modellen
-1. De modellen voor gebruik in intelligente toepassingen implementeren
+1. Gegevens zoeken, laden en vooraf verwerken.
+1. Bouwen en testen van modellen.
+1. De modellen voor gebruik in intelligente toepassingen te implementeren.
 
-Gegevenswetenschappers verschillende hulpprogramma's gebruiken om deze taken te voltooien. Worden erg tijdrovend zijn om de juiste versies van de software zoeken en vervolgens om te downloaden, compileren kan, en deze versies installeren.
+Gegevenswetenschappers verschillende hulpprogramma's gebruiken om deze taken te voltooien. Het kan tijdrovend zijn om de juiste versies van de software te vinden en vervolgens de software te downloaden, te compileren en te installeren.
 
-De Linux Data Science Virtual Machine kan deze last aanzienlijk vereenvoudigen. Gebruik dit voor uw analyticsproject een vliegende start geven. Hiermee kunt u taken in verschillende talen, waaronder R, Python, SQL, Java en C++. Eclipse biedt een IDE voor het ontwikkelen en testen van uw code die is eenvoudig te gebruiken. De Azure SDK opgenomen in de virtuele machine kunt u uw toepassingen kunt maken met verschillende services in Linux gebruiken voor het cloudplatform van Microsoft. Bovendien hebt u toegang tot andere talen zoals Ruby, Perl, PHP en node.js die vooraf zijn geïnstalleerd.
+De Linux-DSVM kunnen deze belasting aanzienlijk versnellen. Gebruik de Linux-DSVM om uw analyse project te starten. De Linux-DSVM helpt u bij het werken aan taken in verschillende talen, waaronder R, Python, SQL, C++Java en. Eclips biedt een eenvoudig te gebruiken IDE voor het ontwikkelen en testen van uw code. De Azure SDK, die is opgenomen in de DSVM, helpt u bij het bouwen van uw toepassingen met behulp van verschillende services op Linux voor het micro soft-Cloud platform. Andere talen zijn vooraf geïnstalleerd, waaronder Ruby, perl, PHP en node. js.
 
-Er zijn geen kosten voor software voor deze data science VM-installatiekopie. U betaalt alleen de Azure-hardware-gebruikskosten die worden beoordeeld op basis van de grootte van de virtuele machine die u met de VM-installatiekopie inricht. Meer informatie over de compute-kosten te vinden in de [pagina met de vermelding op Azure Marketplace VM](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
-
-## <a name="other-versions-of-the-data-science-virtual-machine"></a>Andere versies van de virtuele Machine voor Datatechnologie
-Een [Ubuntu](dsvm-ubuntu-intro.md) installatiekopie is ook beschikbaar zijn, met veel van dezelfde hulpprogramma's als de installatiekopie van CentOS plus deep learning-frameworks. Een [Windows](provision-vm.md) installatiekopie is ook beschikbaar.
+Er zijn geen software kosten voor de DSVM-installatie kopie. U betaalt alleen de gebruiks kosten voor Azure-hardware die worden beoordeeld op basis van de grootte van de virtuele machine die u met de DSVM-installatie kopie hebt ingericht. Voor meer informatie over de reken kosten raadpleegt u de [vermelding voor data Science virtual machine voor Linux (CentOS)](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) in azure Marketplace.
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u een Linux Data Science Virtual Machine maken kunt, moet u het volgende hebt:
 
-* **Een Azure-abonnement**: Als u wilt aanvragen, Zie [gratis proefversie van Azure ophalen](https://azure.microsoft.com/free/).
-* **Een Azure-opslag account**: Zie [een Azure-opslag account maken](../../storage/common/storage-quickstart-create-account.md)om er een te maken. Als u niet gebruiken van een bestaand account wilt, kan het storage-account ook worden gemaakt als onderdeel van het proces voor het maken van de virtuele machine.
+Voordat u een Linux-Data Science Virtual Machine kunt maken, moet u aan de volgende vereisten voldoen:
 
-## <a name="create-your-linux-data-science-virtual-machine"></a>Maken van uw Linux Data Science Virtual Machine
-Hier volgen de stappen voor het maken van een exemplaar van de Linux Data Science Virtual Machine:
+* **Azure-abonnement**: Zie [een gratis Azure-account maken](https://azure.microsoft.com/free/)voor meer informatie over een Azure-abonnement.
+* **Azure-opslagaccount**: Zie [een opslag account maken](../../storage/common/storage-quickstart-create-account.md)voor meer informatie over het ophalen van een Azure-opslag account. Als u geen bestaand Azure Storage-account wilt gebruiken, kunt u een opslag account maken wanneer u de DSVM maakt.
 
-1. Navigeer naar de virtuele machine weergeven op de [Azure-portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm).
-1. Klik op **maken** (aan de onderkant) om de wizard.![ Configureer-data-science-vm](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
-1. De volgende secties vindt u de invoer voor elk van de stappen in de wizard (geïnventariseerd aan de rechterkant van de afbeelding hierboven) gebruikt voor het maken van de Microsoft Data Science Virtual Machine. Hier volgen de invoer die nodig zijn voor elk van deze stappen configureren:
-   
-   a. **Grondbeginselen van**:
-   
-   * **Naam**: De naam van uw data Science-server die u maakt.
-   * **Gebruikersnaam**: Eerste aanmeldings-ID van account.
-   * **Wachtwoord**: Wacht woord voor eerste account (u kunt een open bare SSH-sleutel gebruiken in plaats van een wacht woord).
-   * **Abonnement**: Als u meer dan één abonnement hebt, selecteert u een waar de machine zich moet worden gemaakt en worden kosten in rekening gebracht. U hebt privileges voor het maken van resources nodig voor dit abonnement.
-   * **Resourcegroep**: U kunt een nieuwe groep maken of een bestaande groep gebruikt.
-   * **Locatie**: Selecteer het Data Center dat het meest geschikt is. Dit is meestal het datacenter dat de meeste van uw gegevens, of zich het dichtst bij uw fysieke locatie voor de snelste toegang tot het netwerk.
-   
-   b. **Grootte**:
-   
-   * Selecteer een van de servertypen die voldoet aan de vereisten van het functionele en kostenbeperkingen. Selecteer **Alles weergeven** om te zien van meer opties van VM-grootten.
-   
-   c. **Instellingen voor**:
-   
-   * **Schijf type**: Kies **Premium** als u de voor keur geeft aan een SSD (Solid-State Drive). Kies anders **Standard**.
-   * **Opslag account**: U kunt een nieuw Azure-opslag account maken in uw abonnement, of een bestaand archief gebruiken op dezelfde locatie die is gekozen in de **basis** stap van de wizard.
-   * **Andere para meters**: In de meeste gevallen gebruikt u gewoon de standaard waarden. U moet overwegen niet-standaard waarden, de muisaanwijzer over de informatieve koppeling voor meer informatie over de specifieke velden.
-   
-   d. **Samenvatting**:
-   
-   * Controleer of alle informatie die u hebt ingevoerd juist is.
-   
-   e. **Kopen**:
-   
-   * Voor het starten van het inrichten, klikt u op **kopen**. Er wordt een koppeling gegeven naar de voorwaarden van de transactie. De virtuele machine heeft geen eventuele extra kosten buiten de rekenkracht voor de servergrootte van de die u hebt gekozen in de **grootte** stap.
+## <a name="other-versions-of-the-data-science-virtual-machine"></a>Andere versies van de Data Science Virtual Machine
 
-De inrichting duurt ongeveer 10-20 minuten. De status van de inrichting wordt weergegeven op de Azure-portal.
+De Data Science Virtual Machine is ook beschikbaar in de volgende versies:
+
+* [Ubuntu](dsvm-ubuntu-intro.md): De Ubuntu-afbeelding heeft veel dezelfde hulp middelen als de CentOS-installatie kopie, inclusief diepe leer raamwerken. 
+* [Windows](provision-vm.md)
+
+## <a name="create-a-linux-data-science-virtual-machine"></a>Een Linux-Data Science Virtual Machine maken
+
+Een exemplaar van de Linux-DSVM maken:
+
+1. Ga naar de vermelding van de virtuele machine in de [Azure Portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vmlinuxdsvm).
+1. Selecteer **maken** om de wizard te openen.
+
+   ![De wizard waarmee een Data Science Virtual Machine wordt geconfigureerd](./media/linux-dsvm-intro/configure-linux-data-science-virtual-machine.png)
+1. Typ of selecteer de volgende informatie voor elke stap van de wizard:
+   
+   **1** **basis beginselen**:
+
+      * **Naam**: De naam van de data science-server die u maakt.
+      * **Gebruikers naam**: de aanmeldings-id van het eerste account.
+      * **Wachtwoord**: het wachtwoord van het eerste account. (U kunt een openbare SSH-sleutel gebruiken in plaats van een wachtwoord.)
+      * **Abonnement**: Als u meer dan één abonnement hebt, selecteert u het abonnement waarop de machine wordt gemaakt en gefactureerd. U moet gemachtigd zijn om resources te maken voor het abonnement.
+      * **Resourcegroep**: U kunt een nieuwe resource groep maken of een bestaande groep gebruiken.
+      * **Locatie**: Selecteer een Data Center dat moet worden gebruikt voor de DSVM. In de meeste gevallen selecteert u het Data Center dat het meren deel van uw gegevens bevat of zich het dichtst bij uw fysieke locatie bevindt (voor de snelste netwerk toegang).
+   
+   **2** **grootte**: Selecteer een server type dat voldoet aan uw functionele vereiste en kosten beperkingen. Selecteer **Alles weergeven** om te zien van meer opties van VM-grootten.
+   
+   
+   **3** **instellingen**:
+      * **Schijf type**: Als u liever een SSD-schijf (Solid-State Drive) kiest, selecteert u **Premium**. Selecteer anders **standaard**.
+      * **Opslagaccount**: U kunt een nieuw Azure-opslag account maken in uw abonnement of een bestaand Azure-account gebruiken op dezelfde locatie die u hebt geselecteerd in de stap **basis beginselen** van de wizard.
+      * **Andere para meters**: In de meeste gevallen gebruikt u de standaard waarden om andere para meters te configureren. Als u niet-standaard waarden wilt zien, houdt u de muis aanwijzer boven de informatieve koppeling voor de para meter.
+   
+   **4** **samen vatting**: Controleer of de gegevens die u hebt ingevoerd juist zijn.
+   
+   **5** **kopen**: Selecteer **kopen**om het inrichten te starten. Er wordt een koppeling naar de voor waarden van de trans actie gegeven. Er zijn geen extra kosten verbonden aan de DSVM buiten de compute voor de grootte van deserver die u selecteert.
+
+Het inrichten duurt 10-20 minuten. De status van de inrichting wordt weer gegeven in de Azure Portal.
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>Toegang tot de Linux Data Science Virtual Machine
-Nadat de virtuele machine is gemaakt, kunt u zich aanmelden toe met behulp van SSH. Gebruik de accountreferenties op die u hebt gemaakt in de **basisbeginselen** sectie van stap 3 voor de tekst shell-interface. In Windows kunt u een SSH-clienthulpprogramma zoals [Putty](https://www.putty.org) downloaden. Als u liever een grafische desktop (X Windows-systeem), kunt u X11 doorsturen op Putty gebruiken of de X2Go-client installeren.
+
+Nadat de DSVM is gemaakt, kunt u zich aanmelden met behulp van SSH. Gebruik de account referenties die u hebt gemaakt in de sectie **basis beginselen** van de wizard voor de tekst shell-interface. In Windows kunt u een SSH-client hulpprogramma downloaden, [](https://www.putty.org)zoals putty. Als u liever een grafisch bureau blad (X Window-Systeem) hebt, kunt u X11 door sturen gebruiken op PuTTy of de X2Go-client installeren.
 
 > [!NOTE]
-> De client X2Go uitgevoerd aanzienlijk beter dan X11 doorsturen in de testfase. Het is raadzaam om met behulp van de client X2Go voor een grafische interface voor het bureaublad.
-> 
-> 
+> De client X2Go beter dan X11 doorsturen tests uitgevoerd. Het is raadzaam om met behulp van de client X2Go voor een grafische interface voor het bureaublad.
 
-## <a name="installing-and-configuring-x2go-client"></a>Installeren en configureren van X2Go client
-De Linux-VM is al ingericht met X2Go-server en gereed voor clientverbindingen accepteren. Voor verbinding met het bureaublad van de Linux-VM-grafische, het volgende op de client te doen:
+## <a name="install-and-configure-the-x2go-client"></a>De X2Go-client installeren en configureren
 
-1. Download en installeer de client X2Go voor uw clientplatform van [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
-1. De X2Go-client wordt uitgevoerd, en selecteer **nieuwe sessie**. Er verschijnt een configuratievenster met meerdere tabbladen. Voer de volgende configuratieparameters:
+De Linux-DSVM wordt ingericht met X2Go server en is klaar om client verbindingen te accepteren. Voer de volgende procedure uit op de client om verbinding te maken met het Linux DSVM graphical Desktop:
+
+1. Download en installeer de client X2Go voor uw clientplatform van [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. Voer de X2Go-client uit. Selecteer **nieuwe sessie**. Er wordt een configuratie venster met meerdere tabbladen geopend. Voer de volgende configuratieparameters:
    * **Tabblad sessie**:
-     * **Host**: De hostnaam of het IP-adres van uw Linux-Data Science VM.
-     * **Aanmelding**: Gebruikers naam op de virtuele Linux-machine.
-     * **SSH-poort**: De standaard waarde is 25.
-     * **Sessie type**: Wijzig de waarde in XFCE. De Linux-VM ondersteunt momenteel alleen XFCE desktop.
-   * **Tabblad Media**: Als u geen ondersteuning voor geluid en client afdrukken nodig hebt, kunt u deze uitschakelen.
-   * **Gedeelde mappen**: Als u mappen wilt van uw client machines die op de virtuele Linux-machine zijn gekoppeld, voegt u de client computer directory's toe die u wilt delen met de virtuele machine op dit tabblad.
+     * **Host**: Voer de hostnaam of het IP-adres in van uw Linux-DSVM.
+     * **Aanmelding**: Voer de gebruikers naam in op de Linux-DSVM.
+     * **SSH-poort**: Behoud de standaard waarde **22**.
+     * **Sessie type**: Wijzig de waarde in **xfce**. De Linux-DSVM ondersteunt momenteel alleen het XFCE-bureau blad.
+   * Tabblad **Media** : U kunt geluids ondersteuning en client afdrukken uitschakelen als u deze niet nodig hebt.
+   * **Gedeelde mappen**: Als u wilt dat directory's van uw client computers zijn gekoppeld aan de Linux-DSVM, voegt u de client computer directory's toe die u wilt delen met de DSVM.
 
-Nadat u zich aanmeldt bij de virtuele machine met behulp van de SSH-client of de XFCE grafische bureaublad via de client X2Go, bent u klaar om te beginnen met de hulpprogramma's die zijn geïnstalleerd en geconfigureerd op de virtuele machine. Op XFCE ziet u snelkoppelingen voor toepassingen in het menu en pictogrammen op het bureaublad voor veel van de hulpprogramma's.
+Nadat u zich hebt aangemeld bij de DSVM met behulp van de SSH-client of het grafische XFCE-bureau blad via de X2Go-client, kunt u beginnen met het gebruik van de hulpprogram ma's die zijn geïnstalleerd en geconfigureerd op de DSVM. Op XFCE kunt u snelkoppelingen en bureaublad pictogrammen voor toepassingen weer geven voor veel van de hulpprogram ma's.
 
 ## <a name="tools-installed-on-the-linux-data-science-virtual-machine"></a>Hulpprogramma's zijn geïnstalleerd op de Linux Data Science Virtual Machine
-### <a name="microsoft-r-server"></a>Microsoft R Server
-R is een van de meest populaire talen voor data-analyse en machine learning. Als u R gebruiken voor uw analyses wilt, heeft de virtuele machine Microsoft R Server (MEVR) met de Microsoft R Open (BHT) en Math Kernel-bibliotheek (MKL). De MKL optimaliseert wiskundige bewerkingen gebruikelijk in analytische algoritmen. BHT is 100 procent is compatibel met CRAN R en een van de R-bibliotheken die is gepubliceerd in CRAN kan worden geïnstalleerd op de BHT. MEVR biedt u schalen en uitoefening van R-modellen in webservices. U kunt uw R-programma's in een van de standaard-editors, zoals RStudio, vi, Emacs of gedit bewerken. Als u van de editor Emacs gebruikmaakt, is Houd er rekening mee dat de Emacs ERDRUKKEN (Emacs spreekt statistieken), vereenvoudigt pakket werken met R-bestanden in de editor Emacs vooraf geïnstalleerd.
 
-Console te starten, R, typt u **R** in de shell. Hiermee gaat u naar een interactieve omgeving. Voor het ontwikkelen van uw R-programma, u gewoonlijk gebruikt een editor zoals Emacs of vi of gedit en voer de scripts in R. Met RStudio hebt u een volledige grafische IDE-omgeving voor het ontwikkelen van uw R-programma.
+### <a name="machine-learning-server"></a>Machine Learning Server
 
-Er is ook een R-script voor installatie de [Top 20 R-pakketten](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) als u wilt. Met dit script kan worden uitgevoerd nadat u zich in de interactieve interface van R, die kan worden ingevoerd (zoals vermeld) door te typen **R** in de shell.  
+R is een van de meest populaire talen voor data-analyse en machine learning. Als u R voor uw analyse wilt gebruiken, is de DSVM Machine Learning Server met micro soft R open en de reken kundige kernel-bibliotheek. De reken kundige kernel-bibliotheek optimaliseert veelvoorkomende wiskundige bewerkingen in analytische algoritmen. R open is volledig compatibel met KRANen R. Een van de R-bibliotheken die in KRANs zijn gepubliceerd, kunnen worden geïnstalleerd op R open. 
+
+U kunt Machine Learning Server gebruiken om R-modellen te schalen en operationeel maken in webservices. U kunt uw R-programma's in een van de standaard-editors, zoals RStudio, vi of Emacs bewerken. De Emacs-editor is vooraf geïnstalleerd op de DSVM. Het emacs ESS (Emacsse Statistics)-pakket vereenvoudigt het werken met R-bestanden in de Emacs-editor.
+
+Als u de R-console wilt openen, voert u in de shell **r**in. Met deze opdracht gaat u naar een interactieve omgeving. Voor het ontwikkelen van uw R-programma gebruikt u doorgaans een editor zoals Emacs of VI, en voert u de scripts uit in R. RStudio biedt een volledige grafische IDE voor het ontwikkelen van uw R-programma.
+
+Een R-script dat u kunt gebruiken voor het installeren van de [Top 20 R pakketten](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) is opgenomen in de DSVM. U kunt dit script uitvoeren wanneer u zich in de R-interactieve interface bevindt. Zoals eerder vermeld, voert u in de shell **R**in om die interface te openen.  
 
 ### <a name="python"></a>Python
-Voor het ontwikkelen met behulp van Python, is distributie Anaconda Python 2.7 en 3.5 geïnstalleerd. Deze verdeling bevat de basis Python samen met ongeveer 300 van de meest populaire math, engineering en data analytics-pakketten. U kunt de standaard-teksteditors. Bovendien kunt u Spyder, een Python IDE die wordt geleverd met Anaconda Python-distributies. Spyder moet een grafische bureaublad of X11 doorsturen. Een snelkoppeling naar Spyder is opgegeven in het grafische bureaublad.
 
-Aangezien we zowel Python 2.7 en 3.5 hebben, moet u de gewenste Python-versie (conda-omgeving) u werken wilt op in de huidige sessie om precies te activeren. Het activeringsproces stelt de variabele PATH op de gewenste versie van Python.
+Anaconda python wordt geïnstalleerd met de python 3,5-en 2,7-omgevingen. De 2,7-omgeving heet _root_ en de 3,5-omgeving heet _py35_. Deze verdeling bevat de basis Python samen met ongeveer 300 van de meest populaire math, engineering en data analytics-pakketten.
 
-Voer de volgende opdracht uit vanuit de shell voor het activeren van de Python 2.7 conda-omgeving:
+De omgeving py35 is de standaardinstelling. Gebruik deze opdracht om de basis omgeving (2,7) te activeren:
 
-    source /anaconda/bin/activate root
+```bash
+source activate root
+```
 
-Python 2.7 is geïnstalleerd op */anaconda/bin*.
+Gebruik deze opdracht om de py35-omgeving opnieuw te activeren:
 
-Voor het activeren van de Python 3.5 conda-omgeving, voert u de volgende vanuit de shell:
+```bash
+source activate py35
+```
 
-    source /anaconda/bin/activate py35
+Als u een een python-interactieve sessie wilt aanroepen, voert u **python**in de shell in. 
 
+Aanvullende python-bibliotheken installeren met behulp van Conda of PIP. Voor PIP moet u eerst de juiste omgeving activeren als u niet de standaard waarde wilt:
 
-Python 3.5 is geïnstalleerd op */anaconda/envs/py35/bin*.
+```bash
+source activate root
+pip install <package>
+```
 
-Voor het aanroepen van een Python-interactieve sessie, typt u gewoon **python** in de shell. Als u zich op een grafische interface of X11 set up doorsturen hebt, kunt u typen **pycharm** de PyCharm Python IDE starten.
+Of geef het volledige pad naar het pip:
 
-Voor het installeren van extra Python-bibliotheken, die u nodig hebt om uit te voeren ```conda``` of ```pip``` opdracht onder sudo en het volledige pad van de Python package manager (conda of pip) om te installeren op de juiste Python-omgeving opgeven. Bijvoorbeeld:
+```bash
+/anaconda/bin/pip install <package>
+```
 
-    sudo /anaconda/bin/pip install <package> #pip for Python 2.7
-    sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
-    sudo /anaconda/bin/conda install [-n py27] <package> #conda for Python 2.7, default behavior
-    sudo /anaconda/bin/conda install -n py35 <package> #conda for Python 3.5
+Voor Conda moet u altijd de omgevings naam (py35 of root) opgeven:
 
+```bash
+conda install <package> -n py35
+```
+
+Als u een grafische interface gebruikt of X11 door sturen hebt ingesteld, kunt u **pycharm** invoeren om de PYCHARM python IDE te openen. U kunt de standaard-teksteditors. Daarnaast kunt u Spyder gebruiken, een python IDE die is gebundeld met Anaconda python-distributies. Spyder moet een grafische bureaublad of X11 doorsturen. Het grafische bureau blad heeft een snelkoppeling naar Spyder.
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
-De distributie Anaconda wordt geleverd met een Jupyter-notebook, een omgeving voor het delen van code en -analyse. De Jupyter-notebook toegankelijk is via JupyterHub. U aanmelden met uw lokale Linux-gebruikersnaam en wachtwoord.
 
-De Jupyter-notebook-server is vooraf geconfigureerd met Python 2, 3 van Python en R-kernels. Er is een pictogram op het bureaublad met de naam 'Jupyter-Notebook' om te starten van de browser voor toegang tot de notebookserver. Als u van de virtuele machine via SSH of X2Go-client gebruikmaakt, kunt u ook bezoeken [ https://localhost:8000/ ](https://localhost:8000/) voor toegang tot de Jupyter-notebook-server.
+De Anaconda-distributie wordt ook geleverd met een Jupyter Notebook, een omgeving om code en analyse te delen. Open de Jupyter Notebook via JupyterHub. U meldt zich aan met uw lokale Linux-gebruikers naam en-wacht woord.
+
+De Jupyter Notebook-server is vooraf geconfigureerd met python 2-, python 3-en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de Jupyter notebook-server. Als u toegang hebt tot de DSVM via SSH of de X2Go-client, kunt u ook toegang krijgen tot de\/Jupyter notebook-server op https:/localhost: 8000/.
 
 > [!NOTE]
 > Doorgaan als u certificaatwaarschuwingen.
-> 
-> 
 
-U kunt de Jupyter-notebook-server openen vanaf elke host. Typ *https://\<VM DNS-naam of IP-adres\>: 8000 /*
+U kunt de Jupyter-notebook-server openen vanaf elke host. Voer **https in\/:/\>DSVM DNS-naam of IP-adres: 8000/.\<**
 
 > [!NOTE]
-> Poort 8000 wordt standaard in de firewall geopend wanneer de virtuele machine is ingericht.
-> 
-> 
+> Poort 8000 wordt standaard geopend in de firewall wanneer de DSVM is ingericht. 
 
-We hebben verpakt voorbeeldnotitieblokken--één in Python en één in R. U kunt de koppeling naar de voorbeelden op de startpagina van de notebook ziet nadat u voor de Jupyter-notebook verifiëren met uw lokale Linux-gebruikersnaam en wachtwoord. U kunt een nieuwe notebook maken door het selecteren van **nieuw**, en vervolgens de juiste taal-kernel. Als er geen de **nieuw** klikken, klik op de **Jupyter** pictogram links bovenin om te gaan naar de startpagina van de notebookserver.
+Micro soft heeft voorbeeld notitieblokken, een in Python en één in R, verpakt. U kunt de koppeling naar de voor beelden op de start pagina van Jupyter Notebook bekijken nadat u zich bij de Jupyter Notebook hebt geverifieerd met behulp van uw lokale Linux-gebruikers naam en-wacht woord. Als u een nieuw notitie blok wilt maken, selecteert u **Nieuw**en selecteert u vervolgens de taal-kernel die u wilt gebruiken. Als de knop **Nieuw** niet wordt weer gegeven, selecteert u het **Jupyter** pictogram in de linkerbovenhoek om naar de start pagina van de notebook server te gaan.
 
-### <a name="apache-spark-standalone"></a>Apache Spark-zelfstandig 
-Een zelfstandig exemplaar van Apache Spark is vooraf geïnstalleerd op de Linux-DSVM om u te helpen bij het ontwikkelen van toepassingen voor Spark lokaal eerst voor testen en implementeren op grote clusters. U kunt de PySpark-programma's uitvoeren via de Jupyter-kernel. Wanneer u Jupyter openen en klik op de **nieuw** knop klikt, ziet u een lijst met beschikbare kernels. De 'Spark – Python' is de PySpark-kernel waarmee u Spark toepassingen bouwen met Python-taal. U kunt ook een Python IDE zoals PyCharm of Spyder gebruiken om te bouwen u Spark-programma. Aangezien dit is een zelfstandig exemplaar, de Spark-stack binnen de aanroepende clientprogramma wordt uitgevoerd. Hierdoor kunt u sneller en gemakkelijker problemen in vergelijking met het ontwikkelen van een Spark-cluster. 
+### <a name="spark-standalone"></a>Niet-zelfstandige Spark 
 
-Een voorbeeld PySpark-notebook wordt in Jupyter die u in de map 'SparkML' onder de basismap van Jupyter ($HOME/notitieblokken/SparkML/pySpark vinden kunt) verstrekt. 
+Een exemplaar van de zelfstandige modus van Spark wordt vooraf geïnstalleerd op de Linux-DSVM om u te helpen bij het lokaal ontwikkelen van Spark-toepassingen voordat u ze test en implementeert op grote clusters. 
 
-Als u in R voor Spark programmeert, kunt u Microsoft R Server, SparkR of sparklyr gebruiken. 
+U kunt de PySpark-programma's uitvoeren via de Jupyter-kernel. Wanneer u Jupyter opent, selecteert u de knop **Nieuw** en ziet u een lijst met beschik bare kernels. **Spark-python** is de PySpark-kernel waarmee u Spark-toepassingen kunt bouwen met behulp van de python-taal. U kunt ook een python IDE zoals PyCharm of Spyder gebruiken om uw Spark-programma te bouwen. 
 
-Voordat u uitvoert in Spark-context in Microsoft R Server, moet u een setup-stap om in te schakelen van een lokale één knooppunt HDFS Hadoop en Yarn-instantie eenmaal te doen. Hadoop-services worden standaard geïnstalleerd maar uitgeschakeld op de DSVM. Als u wilt inschakelen, moet u de volgende opdrachten als root de eerste keer uitvoeren:
+In deze zelfstandige instantie wordt de Spark-stack uitgevoerd in het aanroepende client programma. Met deze functie kunt u sneller en eenvoudiger problemen oplossen in vergelijking met het ontwikkelen van een Spark-cluster.
 
-    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-    chmod 0600 ~hadoop/.ssh/authorized_keys
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+Jupyter biedt een voor beeld van een PySpark-notebook. U vindt deze in de SparkML in de hoofdmap van Jupyter ($HOME/notebooks/SparkML/pySpark). 
 
-U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet nodig hebt ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` door een voor beeld uit te voeren waarin wordt uitgelegd hoe u Mevr kunt ontwikkelen en testen in de externe Spark-context (dit is de zelfstandige Spark-instantie `/dsvm/samples/MRS` op de DSVM), en is beschikbaar in de uitvoermap. 
+Als u programmeert in R voor Spark, kunt u Machine Learning Server, Spark of sparklyr gebruiken. 
+
+Voordat u uitvoert in een Spark-context in Machine Learning Server, moet u een eenmalige installatie stap uitvoeren om een lokaal Hadoop-en garen-exemplaar met één knoop punt in te scha kelen. Hadoop-services worden standaard geïnstalleerd maar uitgeschakeld op de DSVM. Als u Hadoop-Services wilt inschakelen, voert u de volgende opdrachten uit als hoofd de eerste keer:
+
+```bash
+echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+chmod 0600 ~hadoop/.ssh/authorized_keys
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```
+
+U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet nodig hebt door `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn`uit te voeren.
+
+De/dsvm/samples/MRS Directory bevat een voor beeld van het ontwikkelen en testen van Machine Learning Server in een externe Spark-context (het zelfstandige Spark-exemplaar op de DSVM).
 
 ### <a name="ides-and-editors"></a>IDE's en editors
-U hebt een ruime keuze aan verschillende code-editors. Dit omvat vi/VIM, Emacs gEdit, PyCharm, RStudio, Eclipse en IntelliJ. gEdit, Eclipse, IntelliJ, RStudio en PyCharm grafische editors zijn en moet u zijn aangemeld met een grafische bureaublad om ze te gebruiken. Deze editors hebben bureaublad- en toepassingsservices snelkoppelingen in het menu te starten.
 
-**VIM** en **Emacs** editors op basis van tekst zijn. Op Emacs, hebben we een add-on pakket met de naam Emacs spreekt statistieken (eldingen ONDERDRUKKEN) die werken met R gemakkelijker in de editor Emacs geïnstalleerd. Meer informatie kunt vinden op [ERDRUKKEN](https://ess.r-project.org/).
+U kunt kiezen uit verschillende code editors, waaronder VI/VIM, emacs, gedit, PyCharm, RStudio, eclips, LaTeX en IntelliJ. 
 
-**Eclipse** is een open source, uitbreidbare IDE die ondersteuning biedt voor meerdere talen. De Java-ontwikkelaars-editie wordt het exemplaar geïnstalleerd op de virtuele machine. Er zijn invoegtoepassingen beschikbaar zijn voor verschillende veelgebruikte talen die kunnen worden geïnstalleerd om uit te breiden de omgeving. We hebben ook een invoegtoepassing geïnstalleerd in Eclipse met de naam **Azure Toolkit voor Eclipse**. Hiermee kunt u maken, ontwikkelen, testen en implementeren van Azure met behulp van de Eclipse-ontwikkelomgeving die ondersteuning biedt voor talen zoals Java-toepassingen. Er is ook een **Azure SDK voor Java** waarmee toegang tot verschillende Azure-services uit binnen een Java-omgeving. Meer informatie over Azure toolkit voor Eclipse kan worden gevonden op [Azure Toolkit voor Eclipse](../../azure-toolkit-for-eclipse.md).
+* gedit, eclips, IntelliJ, R Studio en PyCharm zijn grafische editors. Als u deze wilt gebruiken, moet u zijn aangemeld bij een grafisch bureau blad. U opent ze met de snelkoppelingen voor het menu bureau blad en toepassingen.
 
-**LaTex** wordt geïnstalleerd via de texlive-package samen met een invoegtoepassing Emacs [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) pakket vereenvoudigt het ontwerpen van uw documenten LaTex binnen Emacs.  
+* Vim en emacs zijn op tekst gebaseerde editors. Op emacs maakt het ESS add-on-pakket in de Emacs-editor gemakkelijker werken met R. Meer informatie vindt u op de [ESS-website](https://ess.r-project.org/).
+
+* Eclips is een open-source, uitbreid bare IDE die ondersteuning biedt voor meerdere talen. Eclips IDE voor Java-Ontwikkel aars is de versie die is geïnstalleerd op de DSVM. U kunt invoeg toepassingen voor verschillende populaire talen installeren om de omgeving uit te breiden. 
+
+  De Azure-toolkit voor Eclipse-invoeg toepassing wordt geïnstalleerd met een eclips op het DSVM. U kunt Azure-toolkit voor Eclipse gebruiken om Azure-toepassingen te maken, te ontwikkelen, te testen en te implementeren met behulp van de eclips-ontwikkel omgeving die talen als Java ondersteunt.
+
+  De Azure SDK voor Java wordt ook geïnstalleerd met de Azure-toolkit voor Eclipse op de DSVM. De Azure SDK voor Java geeft u toegang tot verschillende Azure-Services vanuit een Java-omgeving. 
+  
+  Zie [Azure-Toolkit voor eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)voor meer informatie.
+
+* LaTeX wordt geïnstalleerd via het texlive-pakket, samen met een Emacs-invoeg toepassings pakket met de naam [AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html). Met dit pakket wordt het ontwerpen van uw LaTeX-documenten in Emacs vereenvoudigd. 
 
 ### <a name="databases"></a>Databases
-#### <a name="postgres"></a>Postgres
-De open-SourceDatabase **Postgres** is beschikbaar op de virtuele machine, met de services die worden uitgevoerd en initdb al voltooid. U moet nog steeds om databases en gebruikers te maken. Zie voor meer informatie de [Postgres documentatie](https://www.postgresql.org/docs/).  
 
-#### <a name="graphical-sql-client"></a>Grafische SQL-client
-**SQuirrel SQL**, een grafische SQL-client is opgegeven voor het verbinding maken met verschillende databases (zoals Microsoft SQL Server, Postgres en MySQL) en SQL-query's uitvoeren. U kunt dit uitvoeren vanaf een grafische bureaublad-sessiehost (met behulp van de client X2Go, bijvoorbeeld). Om aan te roepen SQuirrel SQL, kunt u starten vanaf het pictogram op het bureaublad of Voer de volgende opdracht op de shell.
+De Linux-DSVM biedt u toegang tot verschillende data base-en opdracht regel Programma's.
 
-    /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+#### <a name="postgressql"></a>PostgresSQL
 
-Voordat u het eerste gebruik, stuurprogramma's en database-aliassen hebt ingesteld. Het JDBC-stuurprogramma's bevinden zich op:
+De open-source data base PostgresSQL is beschikbaar op de DSVM, met de services die worden uitgevoerd en initdb zijn voltooid. U moet data bases en gebruikers maken. Zie de [PostgresSQL-documentatie](https://www.postgresql.org/docs/)voor meer informatie.  
 
-*/usr/share/Java/jdbcdrivers*
+#### <a name="squirrel-sql"></a>SQuirreL SQL
 
-Zie voor meer informatie, [SQuirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
+SQuirreL SQL is een grafische SQL-client die verbinding kan maken met verschillende data bases (inclusief SQL Server, PostgresSQL en MySQL) en SQL-query's kan uitvoeren. U kunt SQuirreL SQL uitvoeren vanuit een grafische bureaublad sessie (bijvoorbeeld via de X2Go-client) met behulp van een bureaublad pictogram. U kunt ook de-client uitvoeren met behulp van de volgende opdracht in de shell:
 
-#### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Opdrachtregelprogramma's voor toegang tot Microsoft SQL Server
+```bash
+/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+```
+
+Voordat u het eerste gebruik, stuurprogramma's en database-aliassen hebt ingesteld. De JDBC-Stuur Programma's bevinden zich op/usr/share/java/jdbcdrivers.
+
+Zie [Squirrel SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)voor meer informatie.
+
+#### <a name="command-line-tools-for-accessing-sql-server"></a>Opdracht regel Programma's voor toegang tot SQL Server
+
 Het pakket ODBC-stuurprogramma voor SQL Server wordt geleverd met twee opdrachtregelprogramma's:
 
-**bcp**: Met het BCP-hulp programma worden gegevens bulksgewijs gekopieerd tussen een exemplaar van Microsoft SQL Server en een gegevens bestand in een door de gebruiker opgegeven indeling. Het hulpprogramma bcp kan worden gebruikt om te importeren van grote aantallen nieuwe rijen in SQL Server-tabellen, of gegevens uit tabellen exporteren naar gegevensbestanden. Om gegevens te importeren in een tabel, moet u een bestandsindeling die is gemaakt voor deze tabel gebruiken of de structuur van de tabel en de typen gegevens die geldig voor de kolommen zijn begrijpen.
+* **bcp**: Het hulp programma BCP kopieert gegevens tussen een exemplaar van SQL Server en een gegevens bestand in een door de gebruiker opgegeven indeling. U kunt het hulp programma BCP gebruiken voor het importeren van grote aantallen nieuwe rijen in SQL Server tabellen of het exporteren van gegevens uit tabellen naar gegevens bestanden. Als u gegevens wilt importeren in een tabel, moet u een indelings bestand gebruiken dat voor die tabel is gemaakt. Of u moet inzicht hebben in de structuur van de tabel en de typen gegevens die geldig zijn voor de kolommen.
 
-Zie voor meer informatie, [verbinding te maken met bcp](https://msdn.microsoft.com/library/hh568446.aspx).
+  Zie [verbinding maken met BCP](https://msdn.microsoft.com/library/hh568446.aspx)voor meer informatie.
 
-**sqlcmd**: U kunt Transact-SQL-instructies invoeren met het Sqlcmd-hulp programma, evenals systeem procedures en script bestanden bij de opdracht prompt. Dit hulpprogramma maakt gebruik van ODBC om uit te voeren van Transact-SQL-batches.
+* **sqlcmd**: U kunt het Sqlcmd-hulp programma gebruiken om Transact-SQL-instructies, systeem procedures en script bestanden op te geven bij de opdracht prompt. Het Sqlcmd-hulp programma gebruikt ODBC om Transact-SQL-batches uit te voeren.
 
-Zie voor meer informatie, [verbinding te maken met sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
+  Zie [verbinding maken met Sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx)voor meer informatie.
 
-> [!NOTE]
-> Er zijn enkele verschillen in dit hulpprogramma tussen Linux en Windows-platforms. Zie de documentatie voor meer informatie.
-> 
-> 
+  > [!NOTE]
+  > Er zijn enkele verschillen in dit hulp programma tussen Linux-en Windows-platforms. Zie de documentatie voor meer informatie.
 
 #### <a name="database-access-libraries"></a>Database toegang bibliotheken
-Er zijn bibliotheken beschikbaar is in R en Python op access-databases.
 
-* In R, de **RODBC** pakket of **dplyr** pakket kunt u query's uitvoeren of SQL-instructies uitvoeren op de databaseserver.
-* In Python, de **pyodbc** -bibliotheek biedt toegang tot de database met ODBC-als de onderliggende laag.  
+Bibliotheken voor database toegang zijn beschikbaar in R en python:
 
-Toegang krijgen tot **Postgres**:
-
-* Van R: Gebruik het pakket **RPostgreSQL**.
-* Van python: Gebruik de **psycopg2** -bibliotheek.
+* In R kunt u het RODBC-pakket of het dplyr-pakket gebruiken om SQL-instructies op de database server op te vragen of uit te voeren.
+* In python biedt de pyodbc-bibliotheek database toegang met ODBC als de onderliggende laag.
 
 ### <a name="azure-tools"></a>Azure-hulpprogramma 's
-De volgende Azure-hulpprogramma's zijn geïnstalleerd op de virtuele machine:
 
-* **Azure-opdracht regel interface**: Met de Azure CLI kunt u Azure-resources maken en beheren via shell-opdrachten. Voor het aanroepen van de Azure-hulpprogramma's, typt u gewoon **azure help**. Zie voor meer informatie de [documentatiepagina van Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer is een grafisch hulp programma dat wordt gebruikt om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U kunt Storage Explorer openen via het pictogram van de snelkoppeling op het bureaublad. U kunt het aanroepen van een shell-prompt door te typen **StorageExplorer**. U moet zijn aangemeld vanaf een client X2Go of X11 doorsturen set up hebben.
-* **Azure-bibliotheken**: Hier volgen enkele van de vooraf geïnstalleerde bibliotheken.
+De volgende Azure-hulpprogram ma's zijn geïnstalleerd op de DSVM:
+
+* **Azure CLI**: U kunt de opdracht regel interface in azure gebruiken om Azure-resources te maken en te beheren via shell-opdrachten. Als u de Azure-hulpprogram ma's wilt openen, voert u **Azure Help**in. Zie voor meer informatie de [documentatiepagina van Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Azure Storage Explorer**: Azure Storage Explorer is een grafisch hulp programma dat u kunt gebruiken om te bladeren door de objecten die u in uw Azure-opslag account hebt opgeslagen, en om gegevens van en naar Azure-blobs te uploaden en te downloaden. U kunt Storage Explorer openen via het pictogram van de snelkoppeling op het bureaublad. U kunt deze ook openen vanuit een shell-prompt door **StorageExplorer**in te voeren. U moet zijn aangemeld bij een X2Go-client of X11-door sturing hebben ingesteld.
+* **Azure-bibliotheken**: De volgende bibliotheken zijn vooraf geïnstalleerd op de DSVM:
   
-  * **Python**: De Azure-gerelateerde bibliotheken in python die zijn geïnstalleerd, zijn **Azure**, **azureml**, **pydocumentdb**en **pyodbc**. Met de eerste drie bibliotheken, kunt u toegang tot Azure storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-database in Azure). De vierde servicebibliotheek pyodbc (samen met het Microsoft ODBC-stuurprogramma voor SQL Server), kunt u toegang tot SQL Server, Azure SQL Database en Azure SQL Data Warehouse met Python met behulp van een ODBC-interface. Voer **pip lijst** om te zien van de vermelde bibliotheken. Zorg dat u deze opdracht wordt uitgevoerd in de Python 2.7 en 3,5 omgevingen.
-  * **R**: De Azure-gerelateerde bibliotheken in R die zijn geïnstalleerd, zijn **AzureML** en **RODBC**.
-  * **Java**: De lijst met Azure Java-bibliotheken vindt u in de map **/dsvm/SDK/AzureSDKJava** op de virtuele machine. De sleutel-bibliotheken zijn Azure-opslag en beheer van API's, Azure Cosmos DB en JDBC-stuurprogramma's voor SQL Server.  
+  * **Python**: De Azure-gerelateerde bibliotheken in python zijn *Azure*, *azureml*, *pydocumentdb*en *pyodbc*. Met de eerste drie bibliotheken, kunt u toegang tot Azure storage-services, Azure Machine Learning en Azure Cosmos DB (een NoSQL-database in Azure). De vierde servicebibliotheek pyodbc (samen met het Microsoft ODBC-stuurprogramma voor SQL Server), kunt u toegang tot SQL Server, Azure SQL Database en Azure SQL Data Warehouse met Python met behulp van een ODBC-interface. Voer **pip lijst** om te zien van de vermelde bibliotheken. Zorg dat u deze opdracht wordt uitgevoerd in de Python 2.7 en 3,5 omgevingen.
+  * **R**: De Azure-gerelateerde bibliotheken in R zijn AzureML en RODBC.
+  * **Java**: De lijst met Azure Java-bibliotheken vindt u in de map/dsvm/sdk/AzureSDKJava op de DSVM. De sleutel-bibliotheken zijn Azure-opslag en beheer van API's, Azure Cosmos DB en JDBC-stuurprogramma's voor SQL Server.  
 
-U hebt toegang tot de [Azure-portal](https://portal.azure.com) van de vooraf geïnstalleerde Firefox-browser. In de Azure-portal, kunt u maken, beheren en controleren van Azure-resources.
+U kunt de [Azure Portal](https://portal.azure.com) openen vanuit de vooraf geïnstalleerde Firefox-browser. In de Azure Portal kunt u Azure-resources maken, beheren en bewaken.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning is een volledig beheerde cloudservice waarmee u kunt bouwen, implementeren en delen van predictive analytics-oplossingen. U bouwen uw experimenten en modellen in Azure Machine Learning Studio. Deze kan worden geopend via een webbrowser op de virtuele machine voor datatechnologie recentst [Microsoft Azure Machine Learning](https://studio.azureml.net).
 
-Nadat u zich bij Azure Machine Learning Studio aanmelden, hebt u toegang tot een experimenten-canvas waar u een logische stroom voor de machine learning-algoritmen kunt bouwen. U ook toegang hebben tot een Jupyter-notebook die worden gehost op Azure Machine Learning en werkt naadloos samen met de experimenten in Machine Learning Studio. Operationeel maken van de machine learning-modellen die u hebt gemaakt door ze in een webservice-interface. Hierdoor kunnen clients die zijn geschreven in elke taal om aan te roepen voorspellingen op basis van de machine learning-modellen. Zie voor meer informatie de [documentatie voor Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
+Azure Machine Learning is een volledig beheerde Cloud service die u kunt gebruiken om predictive analytics oplossingen te bouwen, te implementeren en te delen. U bouwen uw experimenten en modellen in Azure Machine Learning Studio. Als u toegang wilt krijgen tot Azure Machine Learning vanuit een webbrowser op de DSVM, gaat u naar [Microsoft Azure machine learning](https://studio.azureml.net).
 
-U kunt ook uw modellen in R of Python op de virtuele machine maken en vervolgens implementeren in productie met Azure Machine Learning. Hebben we bibliotheken geïnstalleerd in R (**AzureML**) en Python (**azureml**) om deze functionaliteit te schakelen.
+Nadat u zich hebt aangemeld bij Azure Machine Learning Studio, kunt u een Experimenteer teken gebruiken om een logische stroom te maken voor de machine learning-algoritmen. U hebt ook toegang tot een Jupyter Notebook die wordt gehost op Azure Machine Learning. Het notitie blok kan naadloos samen werken met de experimenten in Machine Learning Studio. 
 
-Zie voor meer informatie over het implementeren van modellen in R en Python in Azure Machine Learning [tien dingen die u in de Data science Virtual Machine doen kunt](vm-do-ten-things.md) (met name de sectie ' modellen met behulp van R of Python maken en deze operationeel te maken met behulp van Azure Machine Learning').
+Operationeel maken de machine learning modellen die u bouwt door ze in te pakken in een webservice-interface. Met inzet machine learning-modellen kunnen clients die in elke taal zijn geschreven, voor spellingen van deze modellen aanroepen. Zie voor meer informatie de [documentatie voor Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
+
+U kunt ook uw modellen in R of python bouwen op de DSVM en deze vervolgens implementeren in productie op Azure Machine Learning. Micro soft heeft bibliotheken in R (**azureml**) en python (**azureml**) geïnstalleerd ter ondersteuning van deze functionaliteit.
+
+Zie [tien dingen die u kunt doen op de data Science virtual machine](vm-do-ten-things.md)voor informatie over het implementeren van modellen in R en Python naar Azure machine learning.
 
 > [!NOTE]
-> Deze instructies zijn geschreven voor de Windows-versie van de Data Science VM. Maar de verstrekte informatie bevat over het implementeren van modellen op Azure Machine Learning is van toepassing op de Linux-VM.
-> 
-> 
+> De instructies in [tien dingen die u op het data Science virtual machine kunt doen](vm-do-ten-things.md) , zijn geschreven voor de Windows-versie van de DSVM. De informatie over het implementeren van modellen naar Azure Machine Learning is echter ook van toepassing op de Linux-DSVM.
 
 ### <a name="machine-learning-tools"></a>Hulpprogramma's voor machine learning
-De virtuele machine wordt geleverd met enkele machine learning-hulpprogramma's en -algoritmen die zijn vooraf gecompileerde en vooraf lokaal zijn geïnstalleerd. Deze omvatten:
 
-* **Microsoft Cognitive Toolkit** : Een diep gaande leer Toolkit.
+De DSVM wordt geleverd met een paar machine learning-hulpprogram ma's en-algoritmen die lokaal worden gecompileerd en vooraf zijn geïnstalleerd. Deze omvatten:
+
+* **Microsoft Cognitive Toolkit**: Een diep gaande leer Toolkit.
 * **Vowpal Wabbit**: Een Fast Online Learning-algoritme.
-* **xgboost**: Een hulp programma dat geoptimaliseerde, gestimuleerde structuur algoritmen biedt.
+* **XGBoost**: Een hulp programma dat geoptimaliseerde, gestimuleerde structuur algoritmen biedt.
 * **Python**: Anaconda python wordt geleverd met machine learning algoritmen met bibliotheken zoals Scikit. U kunt andere bibliotheken installeren met behulp van de `pip install` opdracht.
-* **R**: Er is een uitgebreide bibliotheek met machine learning functies beschikbaar voor R. Enkele van de vooraf geïnstalleerde bibliotheken zijn LM, GLM, randomForest, rpart. Andere bibliotheken kunnen worden geïnstalleerd door uit te voeren:
-  
-        install.packages(<lib name>)
+* **R**: Er is een uitgebreide bibliotheek met machine learning functies beschikbaar voor R. vooraf geïnstalleerde bibliotheken zijn LM, GLM, randomForest en rpart. U kunt andere bibliotheken installeren door uit `install.packages(<lib name>)`te voeren.
 
-Hier is aanvullende informatie over de eerste drie machine learning-hulpprogramma's in de lijst.
+Microsoft Cognitive Toolkit, Vowpal Wabbit en XGBoost worden gedetailleerd besproken in de volgende secties.
 
 #### <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
-Dit is een open-source, deep learning toolkit. Het is een opdrachtregelprogramma (cntk), en is al in het pad.
 
-Voor het uitvoeren van een eenvoudig voorbeeld, voert u de volgende opdrachten in de shell:
+Microsoft Cognitive Toolkit is een open-source diep Learning Toolkit. Het is een opdracht regel programma (CNTK) en bevindt zich al in het pad.
 
-    cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
-    cntk configFile=lr_bs.cntk makeMode=false command=Train
+Als u een basis voorbeeld wilt uitvoeren, voert u de volgende opdrachten uit in de shell:
 
-Zie voor meer informatie de sectie CNTK van [GitHub](https://github.com/Microsoft/CNTK), en de [CNTK wiki](https://github.com/Microsoft/CNTK/wiki).
+```bash
+cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
+cntk configFile=lr_bs.cntk makeMode=false command=Train
+```
+
+Zie de [GITHUB CNTK-opslag plaats](https://github.com/Microsoft/CNTK) en de CNTK- [wiki](https://github.com/Microsoft/CNTK/wiki)voor meer informatie.
 
 #### <a name="vowpal-wabbit"></a>Vowpal Wabbit
-Vowpal Wabbit is een machine learning-systeem dat gebruikmaakt van technieken zoals online, hash, allreduce, kortingen, learning2search, actief, en interactieve training.
 
-Als u wilt het hulpprogramma uitvoeren op een eenvoudige voorbeeld, het volgende doen:
+Vowpal Wabbit is een machine learning systeem dat gebruikmaakt van technieken zoals online, hashing, allreduce, reducties, learning2search, actief en interactief leren.
 
-    cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
-    cd vwdemo
-    vw house_dataset
+Voer de volgende opdrachten uit om het hulp programma uit te voeren op basis van een eenvoudig voor beeld:
 
-Er zijn andere, groter demo's in die map. Zie voor meer informatie over VW [in deze sectie van GitHub](https://github.com/JohnLangford/vowpal_wabbit), en de [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki).
+```bash
+cp -r /dsvm/tools/VowpalWabbit/demo vwdemo
+cd vwdemo
+vw house_dataset
+```
 
-#### <a name="xgboost"></a>xgboost
-Dit is een bibliotheek die is ontworpen en geoptimaliseerd voor boosted (structuur)-algoritmen. Het doel van deze bibliotheek is om de grenzen van de berekening van machines tot het uiterste dat nodig is voor grootschalige structuur versterking die schaalbare, draagbare en nauwkeurige.
+De Vowpal Wabbit-demo Directory bevat andere, grotere demo's. Zie [github Vowpal Wabbit repository](https://github.com/JohnLangford/vowpal_wabbit) en de [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)voor meer informatie over Vowpal Wabbit.
 
-Deze is geleverd als een opdrachtregel weergegeven, evenals een R-bibliotheek.
+#### <a name="xgboost"></a>XGBoost
 
-U kunt een interactieve R-sessie starten voor het gebruik van deze bibliotheek in R (door te typen **R** in de shell), en laad de bibliotheek.
+De XGBoost-bibliotheek is ontworpen en geoptimaliseerd voor geboostte algoritmen (structuur). De doel stelling van de XGBoost-bibliotheek is het pushen van de reken limieten van machines tot de Extremes die nodig zijn om grootschalige, schaal bare structuren te bieden.
 
-Hier volgt een eenvoudig voorbeeld die u in de R-prompt uitvoeren kunt:
+XGBoost wordt gegeven als opdracht regel en als R-bibliotheek.
 
-    library(xgboost)
+Als u de XGBoost-bibliotheek in R wilt gebruiken, start u een interactieve R-sessie (in de shell, voert u **R**) in en laadt u de tape wisselaar.
 
-    data(agaricus.train, package='xgboost')
-    data(agaricus.test, package='xgboost')
-    train <- agaricus.train
-    test <- agaricus.test
-    bst <- xgboost(data = train$data, label = train$label, max.depth = 2,
-                    eta = 1, nthread = 2, nround = 2, objective = "binary:logistic")
-    pred <- predict(bst, test$data)
+Hier volgt een eenvoudig voor beeld dat u kunt uitvoeren op de R-prompt:
 
-Als u wilt uitvoeren vanaf de opdrachtregel xgboost, vindt hier u de opdrachten uit te voeren in de shell:
+```R
+library(xgboost)
 
-    cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
-    cd xgboostdemo
-    xgboost mushroom.conf
+data(agaricus.train, package='xgboost')
+data(agaricus.test, package='xgboost')
+train <- agaricus.train
+test <- agaricus.test
+bst <- xgboost(data = train$data, label = train$label, max.depth = 2,
+                eta = 1, nthread = 2, nround = 2, objective = "binary:logistic")
+pred <- predict(bst, test$data)
+```
 
+Voer de volgende opdrachten uit in de shell om de XGBoost-opdracht regel uit te voeren:
 
-Een bestand .model is geschreven naar de map die is opgegeven. Informatie over deze demo-voorbeeld vindt [op GitHub](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
+```bash
+cp -r /dsvm/tools/xgboost/demo/binary_classification/ xgboostdemo
+cd xgboostdemo
+xgboost mushroom.conf
+```
 
-Zie voor meer informatie over xgboost, de [xgboost documentatiepagina](https://xgboost.readthedocs.org/en/latest/), en de bijbehorende [GitHub-opslagplaats](https://github.com/dmlc/xgboost).
+Een. model-bestand wordt geschreven naar de opgegeven map. Zie [binaire classificatie](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification)voor informatie over dit voor beeld van een demo op github.
+
+Zie de [XGBoost-documentatie](https://xgboost.readthedocs.org/en/latest/) en de [XGBoost github-opslag plaats](https://github.com/dmlc/xgboost)voor meer informatie over XGBoost.
 
 #### <a name="rattle"></a>Rammelaar
-Rattle (de **R** **A**analytische **T**lpmiddel **T**o **L**verdienen **E** asily) maakt gebruik van GUI-gebaseerde gegevens verkennen en modelleren. Deze geeft statistische en visuele samenvattingen van gegevens, transformaties die gemakkelijk kan worden gemodelleerd, zonder supervisie en onder supervisie modellen uit de gegevens is gebaseerd, geeft de prestaties van modellen grafische vorm en scores nieuwe gegevens worden ingesteld. Er wordt ook gegenereerd R-code voor het repliceren van de bewerkingen in de gebruikersinterface die kunnen worden rechtstreeks in R uitvoeren of als uitgangspunt gebruikt voor verdere analyse.
 
-Als u wilt uitvoeren Rammelaar, moet u zich in een grafische aanmelden-bureaubladsessie. Typ op de terminal ```R``` in te voeren van de R-omgeving. Voer de volgende opdrachten bij de R-prompt:
+Rattle (*R* *A*analytische *t*Ool *t*o *L*verdienen *E*asily) maakt gebruik van op GUI gebaseerde gegevens exploratie en model lering. Rattle:
+- Geeft statistische en visuele samen vattingen van gegevens weer.
+- Transformeert gegevens die gemakkelijk kunnen worden gemodelleerd.
+- Bouwt beide modellen zonder super visie en Super visie van gegevens.
+- Geeft de prestaties van modellen grafisch weer.
+- Hiermee worden nieuwe gegevens sets gescoord.
+- Hiermee wordt de R-code gegenereerd.
+- Hiermee repliceert u bewerkingen in de gebruikers interface die rechtstreeks kunnen worden uitgevoerd in R of worden gebruikt als uitgangs punt voor meer analyse.
 
-    library(rattle)
-    rattle()
+Als u Rattle wilt uitvoeren, moet u zijn aangemeld bij een grafische bureaublad sessie. Voer in een Terminal **r** in om de R-omgeving te openen. Voer de volgende opdrachten bij de R-prompt:
 
-Nu een grafische interface wordt geopend met een set tabbladen. Hier volgen de stappen snel aan de slag in Rammelaar die nodig zijn voor gebruik van een verzameling voorbeeldgegevens weer en een model te ontwikkelen. U wordt gevraagd in enkele van de volgende stappen uit om automatisch te installeren en sommige vereiste R-pakketten die nog niet op het systeem worden geladen.
+```R
+library(rattle)
+rattle()
+```
+
+Er wordt een grafische interface met een set tabbladen geopend. Gebruik de volgende Snelstartgids-stappen in Rattle om een voor beeld weer te gegeven en een model te bouwen. In sommige stappen wordt u gevraagd om automatisch enkele vereiste R-pakketten te installeren en te laden die nog niet op het systeem zijn geïnstalleerd.
 
 > [!NOTE]
-> Als u geen toegang tot het pakket installeren in de systeemmap (de standaardinstelling), ziet u mogelijk een prompt in uw R-console-venster om pakketten te installeren op uw persoonlijke bibliotheek. Antwoord *y* als u deze stappen ziet.
-> 
-> 
+> Als u geen machtigingen hebt om het pakket te installeren in de systeemmap (de standaard instelling), ziet u mogelijk een prompt op uw R-console venster om pakketten te installeren in uw persoonlijke bibliotheek. Als u deze prompts ziet, voert u **y**in.
 
-1. Klik op **Uitvoeren**.
-1. Een dialoogvenster verschijnt, waarin u wordt gevraagd als u wilt gebruiken van de voorbeeldgegevensset van weer. Klik op **Ja** laden in het voorbeeld.
-1. Klik op de **Model** tabblad.
-1. Klik op **Execute** een beslissingsstructuur maken.
-1. Klik op **tekenen** om weer te geven van de beslissingsstructuur.
-1. Klik op de **Forest** keuzerondje en klikt u op **Execute** aan het bouwen van een willekeurige forest.
-1. Klik op de **evalueren** tabblad.
-1. Klik op de **risico** keuzerondje en klikt u op **Execute** om twee risico (cumulatief) prestaties grafieken weer te geven.
-1. Klik op de **Log** tabblad om de genereren R-code voor de voorgaande bewerkingen weer te geven.
-   (Vanwege een fout in de huidige release van Rammelaar, u hoeft in te voegen een *#* teken vóór *... dit logboek exporteren*  in de tekst van het logboek.)
-1. Klik op de **exporteren** om op te slaan van de R-script-bestand met de naam *weather_script. R* naar de basismap.
+1. Selecteer **Uitvoeren**.
+1. Er wordt een dialoog venster weer gegeven waarin u wordt gevraagd om de voor beeld-gegevensset te laden. Selecteer **Ja** om het voor beeld te laden.
+1. Selecteer het tabblad **model** .
+1. Selecteer **uitvoeren** om een beslissings structuur te maken.
+1. Selecteer **tekenen** om de beslissings structuur weer te geven.
+1. Selecteer de optie **forest** en selecteer vervolgens **uitvoeren** om een wille keurig forest te bouwen.
+1. Selecteer het tabblad **evalueren** .
+1. Selecteer de optie **risico** en selecteer vervolgens **uitvoeren** om twee **risico's (cumulatief)** prestatie grafieken weer te geven.
+1. Selecteer het tabblad **logboek** om de gegenereerde R-code voor de voor gaande bewerkingen weer te geven. (Vanwege een fout in de huidige release van Rattle moet u een **#** teken invoegen vóór het exporteren van **Dit logboek** in de tekst van het logboek.)
+1. Selecteer de knop **exporteren** om het R-script bestand met de naam weather_script op te slaan *. R* naar de basismap.
 
-U kunt afsluiten Rammelaar en R. U kunt nu het gegenereerde R-script wijzigen of als het is om uit te voeren op elk gewenst moment om te worden herhaald alles wat u in de gebruikersinterface Rattle is uitgevoerd. Met name voor beginners in R is dit een eenvoudige manier om snel analyses en machine learning in een eenvoudig grafische interface, tijdens het automatisch genereren van code in R om te wijzigen en/of meer informatie.
+U kunt Rattle en R afsluiten. Nu kunt u het gegenereerde R-script wijzigen. Of gebruik het script zoals het is en voer deze op elk gewenst moment uit om alles te herhalen dat in de Rattle-gebruikers interface is uitgevoerd. Met name voor beginners in R is dit een manier om snel analyses en machine learning uit te voeren in een eenvoudige grafische interface, terwijl automatisch code wordt gegenereerd in R om te wijzigen of te leren.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Hier ziet u hoe u kunt doorgaan met uw learning en verkennen:
 
-* De [gegevenswetenschap op de Linux Data Science Virtual Machine](linux-dsvm-walkthrough.md) procedure ziet u hoe u enkele algemene datatechnologietaken met de Linux Data Science VM ingericht hier uitvoert. 
-* Verken de verschillende hulpprogramma's voor data science op de virtuele machine voor datatechnologie door het uitproberen van de hulpprogramma's die worden beschreven in dit artikel. U kunt ook uitvoeren *dsvm-meer-info* op de shell binnen de virtuele machine voor een algemene inleiding tot en tips voor meer informatie over de hulpprogramma's geïnstalleerd op de virtuele machine.  
-* Informatie over het bouwen van analytische oplossingen voor end-to-end systematisch met behulp van de [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
-* Ga naar de [Cortana Analytics-galerie](https://gallery.cortanaanalytics.com) voor machine learning en data analytics-voorbeelden die gebruikmaken van de Cortana Analytics Suite.
-
+* In het overzicht van de [gegevens wetenschap op het data Science virtual machine voor Linux](linux-dsvm-walkthrough.md) ziet u hoe u verschillende algemene data Science-taken kunt uitvoeren met de Linux-DSVM die hier is ingericht. 
+* Bekijk de verschillende hulpprogram ma's voor gegevens wetenschap op het DSVM door de hulpprogram ma's die in dit artikel worden beschreven, uit te proberen. U kunt ook uitvoeren `dsvm-more-info` in de shell in de virtuele machine voor een basis kennis Making en voor verwijzingen naar meer informatie over de hulpprogram ma's die op de DSVM zijn geïnstalleerd.  
+* Informatie over het bouwen van analytische oplossingen voor end-to-end systematisch met behulp van de [Team Data Science Process](https://aka.ms/tdsp).
+* Ga naar de [Azure AI Gallery](https://gallery.azure.ai/) voor machine learning en data analytics-voorbeelden die gebruikmaken van de Azure AI-services.

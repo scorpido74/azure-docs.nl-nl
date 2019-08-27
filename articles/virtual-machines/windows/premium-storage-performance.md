@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3979920cac8e3ef856b3211733f08c21afac3e26
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7fbeb12f5b221685aad5cac5352318db10bd69a7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693697"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036273"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]
 
@@ -26,3 +26,12 @@ ms.locfileid: "68693697"
 Voordat u begint Premium Storage, lees dan eerst de [Select a Azure-schijf type voor IaaS vm's](disks-types.md) en [Azure Storage schaal baarheid en prestatie doelen voor opslag accounts](../../storage/common/storage-scalability-targets.md).
 
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
+
+Als u een bench Mark-schijf wilt maken, raadpleegt u ons artikel over de benchmarking van [een schijf](disks-benchmarks.md).
+
+Meer informatie over de beschik bare schijf typen: [Selecteer een schijf type](disks-types.md)  
+
+Lees voor SQL Server gebruikers artikelen over best practices voor prestaties voor SQL Server:
+
+* [Aanbevolen procedures voor de prestaties van SQL Server in azure Virtual Machines](sql/virtual-machines-windows-sql-performance.md)
+* [Azure Premium Storage biedt de beste prestaties voor SQL Server in azure VM](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

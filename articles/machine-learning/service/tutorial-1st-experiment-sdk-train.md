@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972496"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051625"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Uw eerste ML model trainen
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 De enige vereiste is om deel één van deze zelf studie, [installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md)uit te voeren.
 
-In dit deel van de zelf studie voert u de code uit in het voor beeld-Jupyter-notitie blok dat is geopend aan het einde van deel 1. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
+In dit deel van de zelf studie voert u de code uit in het voor beeld `tutorials/tutorial-1st-experiment-sdk-train.ipynb` -Jupyter-notitie blok dat is geopend aan het einde van deel 1. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Verbinding maken met werk ruimte en experiment maken
 
@@ -41,6 +41,8 @@ Importeer de `Workspace` klasse en laad uw abonnements gegevens uit het bestand 
 
 Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatie token in.
 
+> [!TIP]
+> Als u nog geen ervaring hebt met Jupyter-notebooks, voert u code uit door te klikken op een code-cel en **SHIFT + ENTER** om de cellen een voor een tegelijk uit te voeren. U kunt ook de hele notebook tegelijk uitvoeren, op **cel** klikken in de bovenste menu balk en vervolgens op **alles uitvoeren**.
 
 ```python
 from azureml.core import Workspace

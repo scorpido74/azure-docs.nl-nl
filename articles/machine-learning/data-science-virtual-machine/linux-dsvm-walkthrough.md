@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8100108adc7115921948d3e8f10e415bc2705fbd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574964"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051646"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Gegevenswetenschap met een Linux Data Science Virtual Machine in Azure
 Deze procedure ziet u hoe u enkele algemene datatechnologietaken met de Linux Data Science VM uitvoert. De Linux Data Science Virtual Machine (DSVM) is een installatiekopie van een virtuele machine op Azure die vooraf worden geïnstalleerd met een verzameling hulpprogramma's die doorgaans gebruikt voor gegevensanalyse en machine learning is beschikbaar. De belangrijke software-componenten zijn ingedeeld de [Linux Data Science Virtual Machine inrichten](linux-dsvm-intro.md) onderwerp. De VM-installatiekopie maakt het gemakkelijk om te beginnen gegevenswetenschap in minuten, zonder te installeren en configureren van elk van de hulpprogramma's afzonderlijk. U kunt eenvoudig opschalen van de virtuele machine, indien nodig, en stoppen wanneer deze niet in gebruik. Deze resource is zo flexibel en kostenefficiënt.
@@ -36,7 +36,7 @@ Voordat u een Linux Data Science Virtual Machine gebruiken kunt, moet u het volg
 
 * Een **Azure-abonnement**. Als u nog geen een, Zie [Maak vandaag nog uw gratis Azure-account](https://azure.microsoft.com/free/).
 * Een [ **Linux data science VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Zie voor meer informatie over het inrichten van deze virtuele machine [Linux Data Science Virtual Machine inrichten](linux-dsvm-intro.md).
-* [X2Go](https://wiki.x2go.org/doku.php) geïnstalleerd op uw computer en een XFCE-sessie hebt geopend. Voor informatie over het installeren en configureren van een **X2Go client**, Zie [installeren en configureren van de client X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) geïnstalleerd op uw computer en een XFCE-sessie hebt geopend. Zie [de X2Go-client installeren en configureren](linux-dsvm-intro.md#install-and-configure-the-x2go-client)voor meer informatie over het installeren en configureren van een **X2Go-client**.
 * Voor een soepeler schuiven ervaring, uitschakelen van de vlag gfx.xrender.enabled in over:-configuratie in virtuele machines FireFox-browser. [Zie hier meer informatie. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Denk ook na over bij het omschakelen van *mousewheel.enable_pixel_scrolling* op False. [Hier instructies.](https://support.mozilla.org/questions/981140)
 * Een **AzureML account**. Als u niet al hebt, zich aanmelden voor nieuwe resourcegroep op de [AzureML-startpagina](https://studio.azureml.net/). Er is een laag gratis gebruik om u aan de slag te helpen.
 

@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f9223fdead9d22e8f58076b47502e71c06741e3f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e711e94a4ac8098137456c2ae5bf018107687354
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900112"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033225"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Een nieuwe aanbieding voor Dynamics 365 for Operations maken
 
@@ -339,11 +339,11 @@ Met de optie **Marketplace-vermelding** die is gevonden op het tabblad **test st
 
 ## <a name="supplemental-content"></a>Aanvullende inhoud
 
-Op deze pagina kunt u aanvullende vereiste informatie over uw aanbieding opgeven.
+Op deze pagina kunt u aanvullende informatie over uw aanbieding opgeven zodat we uw aanbieding kunnen valideren. Deze informatie wordt niet weer gegeven aan klanten of gepubliceerd op Marketplace.
 
-### <a name="validation-assets"></a>Validatie activa (s)
+### <a name="validation-assets"></a>Validatie-assets
 
-U moet een aanpassings analyse rapport (auto) uploaden in deze sectie. Dit rapport wordt gegenereerd door het analyseren van uw aanpassings-en extensie modellen op basis van een vooraf gedefinieerde set best practice regels.
+U moet een [aanpassings analyse rapport (auto)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) uploaden in deze sectie. Dit rapport wordt gegenereerd door het analyseren van uw aanpassings-en extensie modellen op basis van een vooraf gedefinieerde set best practice regels.
 
 Dit bestand moet de indeling. xls of. xlsx hebben. Als u meer dan één rapport hebt, kunt u een zip-bestand uploaden dat alle rapporten bevat.
 

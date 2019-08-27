@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624564"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035558"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement
 
@@ -35,8 +35,6 @@ Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden u
    * [Richt lijnen voor netwerk verplaatsing](./move-limitations/networking-move-limitations.md)
    * [Hulp Recovery Services verplaatsen](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Hulp Virtual Machines verplaatsen](./move-limitations/virtual-machines-move-limitations.md)
-
-   Als de doel resource groep een virtueel netwerk bevat, kan de status van de afhankelijke resources de verplaatsing blok keren, zelfs als deze resources niet bij de verplaatsing betrokken zijn. Zie richt lijnen voor het [verplaatsen van netwerken](./move-limitations/virtual-network-move-limitations.md)voor meer informatie.
 
 1. De bron-en doel abonnementen moeten actief zijn. Als u problemen ondervindt bij het inschakelen van een uitgeschakeld account, [maakt u een ondersteunings aanvraag voor Azure](../azure-supportability/how-to-create-azure-support-request.md). Selecteer **Abonnementsbeheer** voor het probleemtype.
 

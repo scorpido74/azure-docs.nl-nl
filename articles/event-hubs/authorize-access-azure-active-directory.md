@@ -1,5 +1,5 @@
 ---
-title: Toegang met Azure Active Directory autoriseren
+title: Toegang autoriseren met behulp van Azure Active Directory
 description: In dit artikel vindt u informatie over het verlenen van toegang tot Event Hubs-resources met behulp van Azure Active Directory.
 services: event-hubs
 ms.service: event-hubs
@@ -8,18 +8,18 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 1a42843cc81070cc284863b3736549576e32cb17
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: cc94f2705f044c3674432f31b63d630be8afbf7d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011880"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035883"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory
-Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
+Azure Event Hubs ondersteunt het gebruik van Azure Active Directory (Azure AD) om aanvragen voor Event Hubs bronnen goed te keuren. Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal, die een gebruiker of een service-principal van de toepassing is. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
 
 ## <a name="overview"></a>Overzicht
-Wanneer een beveiligingsprincipal (een gebruiker, groep of toepassing) probeert toegang te krijgen tot een Event Hubs resource, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
+Wanneer een beveiligingsprincipal (een gebruiker of een toepassing) probeert toegang te krijgen tot een Event Hubs resource, moet de aanvraag worden geautoriseerd. Met Azure AD is toegang tot een resource een proces dat uit twee stappen bestaat. 
 
  1. Eerst wordt de identiteit van de beveiligingsprincipal geverifieerd en wordt een OAuth 2,0-token geretourneerd. 
  1. Vervolgens wordt het token door gegeven als onderdeel van een aanvraag aan de Event Hubs-service om toegang tot de opgegeven bron te autoriseren.
@@ -33,7 +33,7 @@ Systeem eigen toepassingen en webtoepassingen die aanvragen indienen bij Event H
 ## <a name="assign-rbac-roles-for-access-rights"></a>RBAC-rollen toewijzen voor toegangs rechten
 Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md). Azure Event Hubs definieert een set ingebouwde RBAC-rollen die algemene sets machtigingen bevatten die worden gebruikt voor toegang tot Event Hub gegevens, en u kunt ook aangepaste rollen definiëren voor toegang tot de gegevens.
 
-Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, de Event Hubs naam ruimte of een andere resource. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)zijn.
+Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, de Event Hubs naam ruimte of een andere resource. Een beveiligings-principal van Azure AD kan een gebruiker of een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Ingebouwde RBAC-rollen voor Azure Event Hubs
 Azure biedt de volgende ingebouwde RBAC-rollen voor het verlenen van toegang tot Event Hubs gegevens met behulp van Azure AD en OAuth:

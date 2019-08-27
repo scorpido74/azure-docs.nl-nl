@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a7d1249d68ddd4a161d1c0476e5f56e80c4d32f9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012240"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032017"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Toegang tot een leslokaallab in Azure Lab Services
 In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, alle lessen bekijkt die u kunt openen, een virtuele machine in het Lab wilt starten/stoppen en verbinding kunt maken met de virtuele machine. 
@@ -57,31 +57,28 @@ In dit artikel wordt beschreven hoe u zich registreert bij een leslokaal Lab, al
     3. Voor virtuele **Linux** -machines kunt u **SSH** of **RDP** gebruiken (als deze is ingeschakeld) om er verbinding mee te maken. Zie [verbinding met extern bureau blad inschakelen voor Linux-machines](how-to-enable-remote-desktop-linux.md)voor meer informatie. 
     1. Als u een **Mac** gebruikt om verbinding te maken met de VM van het lab, volgt u de instructies in de volgende sectie. 
 
-## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Verbinding maken met de gebruikers interface van een virtuele machine met behulp van RDP op een Mac
-In deze sectie wordt uitgelegd hoe een student via RDP verbinding kan maken met de gebruikers interface (UI) van een virtuele machine via een Mac. Hier volgen de snelle stappen, gevolgd door Details: 
+## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Verbinding maken met een virtuele machine met behulp van RDP op een Mac
+In deze sectie wordt uitgelegd hoe een student via RDP verbinding kan maken met een virtuele machine via een Mac.
 
-1. Installeer Microsoft Extern bureaublad op uw Mac.
-2. Verbinding maken met een VM-gebruikers interface vanuit uw Mac met behulp van RDP. 
-
-### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Microsoft Extern bureaublad installeren op een Mac
+### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Stap 1: Microsoft Extern bureaublad installeren op een Mac
 1. Open de App Store op uw Mac en zoek naar **Microsoft extern bureaublad**.
 
     ![Microsoft Extern bureaublad](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. Installeer de meest recente versie van Microsoft Extern bureaublad. 
 
-### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>Toegang tot de gebruikers interface van de virtuele machine vanaf uw Mac met RDP
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Stap 2: Toegang tot de virtuele machine vanaf uw Mac met RDP
 1. Open het **RDP** -bestand dat op uw computer is gedownload met **Microsoft extern bureaublad** geïnstalleerd. Het moet beginnen met het maken van verbinding met de virtuele machine. 
 
-    ![Verbinding maken met de VM-gebruikers interface](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. Selecteer **door gaan** als u de volgende fout melding ontvangt. 
+    ![Verbinding maken met de virtuele machine](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Selecteer **door gaan** als u de volgende waarschuwing ontvangt. 
 
-    ![Certificaat fout](../media/how-to-use-classroom-lab/certificate-error.png)
-1. De gebruikers interface van de VM moet worden weer geven. 
+    ![Certificaat waarschuwing](../media/how-to-use-classroom-lab/certificate-error.png)
+1. De virtuele machine wordt weer geven. 
 
     > [!NOTE]
     > Het volgende voor beeld is voor een CentOS Linux-VM. 
 
-    ![VM-GEBRUIKERS INTERFACE](../media/how-to-use-classroom-lab/vm-ui.png)
+    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>Voortgangsbalk 
 De voortgangs balk op de tegel toont het aantal uren dat is gebruikt voor het aantal aan u toegewezen [quota-uren](how-to-configure-student-usage.md#set-quotas-for-users) . Deze tijd is de extra tijd die aan u is toegewezen, naast de geplande tijd voor het lab. De kleur van de voortgangs balk en de tekst onder de voortgangs balk varieert per van de volgende scenario's:

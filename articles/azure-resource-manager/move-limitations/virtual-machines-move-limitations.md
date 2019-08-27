@@ -1,46 +1,46 @@
 ---
-title: Azure virtuele Machines naar nieuwe abonnement of resourcegroep groep verplaatsen | Microsoft Docs
-description: Azure Resource Manager gebruiken voor virtuele machines verplaatsen naar een nieuwe resourcegroep of abonnement.
+title: Azure Virtual Machines verplaatsen naar een nieuw abonnement of nieuwe resource groep | Microsoft Docs
+description: Gebruik Azure Resource Manager om virtuele machines te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 095ed1c8d2328b1eb391042125526696ba8cda49
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7b9cce7ac367f42329e3198c75a7640a205d01fe
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723543"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035528"
 ---
-# <a name="move-guidance-for-virtual-machines"></a>Richtlijnen voor virtuele machines verplaatsen
+# <a name="move-guidance-for-virtual-machines"></a>Richt lijnen voor het verplaatsen van virtuele machines
 
-Dit artikel beschrijft de scenario's die worden momenteel niet ondersteund en de stappen voor het verplaatsen van virtuele machines met back-up.
+In dit artikel worden de scenario's beschreven die momenteel niet worden ondersteund en de stappen voor het verplaatsen van virtuele machines met back-up.
 
-## <a name="scenarios-not-supported"></a>Scenario's niet ondersteund
+## <a name="scenarios-not-supported"></a>Scenario's worden niet ondersteund
 
-De volgende scenario's nog niet ondersteund:
+De volgende scenario's worden nog niet ondersteund:
 
-* Beheerde schijven in Beschikbaarheidszones kunnen niet worden verplaatst naar een ander abonnement.
-* Virtuele Machines met een certificaat dat is opgeslagen in Key Vault kan worden verplaatst naar een nieuwe resourcegroep in hetzelfde abonnement, maar niet tussen meerdere abonnementen.
-* Virtual Machine Scale Sets met standaard SKU Load Balancer of een standaard SKU en openbare IP kan niet worden verplaatst.
-* Virtuele machines die zijn gemaakt op basis van Marketplace-resources met een abonnement dat is gekoppeld kan niet worden verplaatst tussen resourcegroepen of abonnementen. Inrichting ongedaan maken van de virtuele machine in het huidige abonnement en opnieuw implementeren in het nieuwe abonnement.
-* Virtuele machines in een bestaand virtueel netwerk, maar worden niet alle resources in het virtuele netwerk verplaatsen.
+* Managed Disks in Beschikbaarheidszones kan niet worden verplaatst naar een ander abonnement.
+* Virtual Machine Scale Sets met een standaard-SKU Load Balancer of een open bare standaard-SKU kan niet worden verplaatst.
+* Virtuele machines die zijn gemaakt op basis van Marketplace-resources met een abonnement dat is gekoppeld kan niet worden verplaatst tussen resourcegroepen of abonnementen. De inrichting van de virtuele machine in het huidige abonnement ongedaan maken en de implementatie opnieuw uitvoeren in het nieuwe abonnement.
+* Virtuele machines in een bestaand virtueel netwerk, maar u verplaatst niet alle resources in het virtuele netwerk.
+* Virtuele machines met lage prioriteit en virtuele-machine schaal sets met lage prioriteit kunnen niet worden verplaatst over resource groepen of-abonnementen.
 
 ## <a name="virtual-machines-with-azure-backup"></a>Virtuele machines met Azure Backup
 
-Voor het verplaatsen van virtuele machines die zijn geconfigureerd met Azure Backup, gebruikt u de volgende tijdelijke oplossing:
+Als u virtuele machines wilt verplaatsen die met Azure Backup zijn geconfigureerd, gebruikt u de volgende tijdelijke oplossing:
 
-* Zoek de locatie van uw virtuele Machine.
-* Vinden van een resourcegroep met de volgende naamgevingspatroon: `AzureBackupRG_<location of your VM>_1` bijvoorbeeld AzureBackupRG_westus2_1
+* Zoek de locatie van de virtuele machine.
+* Een resource groep zoeken met het volgende naamgevings patroon `AzureBackupRG_<location of your VM>_1` : bijvoorbeeld AzureBackupRG_westus2_1
 * Als in Azure portal, klikt u vervolgens selectievakje ' verborgen typen weergeven"
 * Als in PowerShell, gebruikt u de `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet
 * Als u in de CLI, gebruikt u de `az resource list -g AzureBackupRG_<location of your VM>_1`
-* Het vinden van de resource met het type `Microsoft.Compute/restorePointCollections` waarvoor het naamgevingspatroon `AzureBackup_<name of your VM that you're trying to move>_###########`
-* Deze resource verwijderen. Deze bewerking wordt alleen de directe herstelpunten, niet de gegevens waarvan een back-up is gemaakt in de kluis verwijderd.
-* Nadat het verwijderen is voltooid, kunt u de kluis en de virtuele machine verplaatsen naar het doelabonnement. Na het verplaatsen, kunt u back-ups zonder verlies van gegevens blijven.
-* Zie voor meer informatie over het verplaatsen Recovery Services-kluizen voor back-up [beperkingen voor Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+* De resource zoeken met een `Microsoft.Compute/restorePointCollections` type dat het naamgevings patroon heeft`AzureBackup_<name of your VM that you're trying to move>_###########`
+* Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
+* Nadat het verwijderen is voltooid, kunt u de kluis en de virtuele machine verplaatsen naar het doel abonnement. Na de verplaatsing kunt u back-ups voortzetten zonder verlies van gegevens.
+* Zie [Recovery Services beperkingen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)voor informatie over het verplaatsen van Recovery Services-kluizen voor back-ups.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor de opdrachten om resources te verplaatsen, [resources verplaatsen naar een nieuwe resourcegroep of abonnement](../resource-group-move-resources.md).
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../resource-group-move-resources.md)voor opdrachten voor het verplaatsen van resources.

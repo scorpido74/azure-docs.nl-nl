@@ -3,13 +3,13 @@ author: wesmc7777
 ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
-ms.date: 10/26/2018
-ms.openlocfilehash: eef073f5f4d1eb39fd5ccd8dafacd7074158fa37
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/20/2019
+ms.openlocfilehash: c412f7f3e20e4d04083e457bfb245b850b65e126
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667858"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050389"
 ---
 > [!div class="op_single_selector"]
 > * [Node.js](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
@@ -17,7 +17,7 @@ ms.locfileid: "68667858"
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
-Apparaatdubbels zijn JSON-documenten waarin statusinformatie van een apparaat (metagegevens, configuraties en voorwaarden) zijn opgeslagen. IoT Hub persistent voor elk apparaat dat verbinding maakt met het apparaat.
+Apparaatdubbels zijn JSON-documenten die informatie over de status van een apparaat opslaan, inclusief meta gegevens, configuraties en voor waarden. IoT Hub persistent voor elk apparaat dat verbinding maakt met het apparaat.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
@@ -25,30 +25,34 @@ Apparaat apparaatdubbels gebruiken voor het volgende:
 
 * Meta gegevens van het apparaat opslaan vanuit de back-end van uw oplossing.
 
-* Rapporteert de huidige status informatie, zoals de beschik bare mogelijkheden en voor waarden (bijvoorbeeld de gebruikte verbindings methode) vanuit uw apparaat-app.
+* Rapporteert de huidige status informatie, zoals de beschik bare mogelijkheden en voor waarden, bijvoorbeeld de gebruikte verbindings methode, van de apparaat-app.
 
-* Synchroniseer de status van langlopende werk stromen (zoals firmware en configuratie-updates) tussen een apparaat-app en een back-end-app.
+* Synchroniseer de status van langlopende werk stromen, zoals firmware en configuratie-updates, tussen een apparaat-app en een back-end-app.
 
 * Query's uitvoeren op de meta gegevens, configuratie of status van uw apparaat.
 
 Apparaatdubbels zijn ontworpen voor synchronisatie en voor het uitvoeren van query's op de configuraties en voor waarden van apparaten. Meer informatie over het gebruik van apparaatdubbels vindt u in inzicht in de apparaatdubbels van het [apparaat](../articles/iot-hub/iot-hub-devguide-device-twins.md).
 
-Apparaatdubbels van apparaten worden opgeslagen in een IoT-hub en bevatten:
+Apparaatdubbels van apparaten worden opgeslagen in een IoT-hub en bevatten de volgende elementen:
 
-* *Tags*, meta gegevens van apparaten die alleen toegankelijk zijn voor de back-end van de oplossing;
+* **Tags**. Meta gegevens van apparaten die alleen toegankelijk zijn voor de back-end van de oplossing.
 
-* *gewenste eigenschappen*, JSON-objecten die worden gewijzigd door de back-end van de oplossing en kunnen worden weer gegeven door de apparaat-app. maar
+* **Gewenste eigenschappen**. JSON-objecten die worden gewijzigd door de back-end van de oplossing en kunnen worden weer gegeven door de apparaat-app.
 
-* *gerapporteerde eigenschappen*, JSON-objecten die worden gewijzigd door de apparaat-app en die kunnen worden gelezen door de back-end van de oplossing. Tags en eigenschappen kunnen geen matrices bevatten, maar objecten kunnen worden genest.
+* **Gerapporteerde eigenschappen**. JSON-objecten die worden gewijzigd door de apparaat-app en kunnen worden gelezen door de back-end van de oplossing.
+
+Tags en eigenschappen kunnen geen matrices bevatten, maar objecten kunnen worden genest.
+
+In de volgende afbeelding ziet u de dubbele organisatie van het apparaat:
 
 ![Dubbele afbeelding van apparaat met functionaliteit](./media/iot-hub-selector-twin-get-started/twin.png)
 
 Daarnaast kan de back-end van de oplossing het apparaat apparaatdubbels opvragen op basis van alle bovenstaande gegevens.
-Raadpleeg [device apparaatdubbels](../articles/iot-hub/iot-hub-devguide-device-twins.md) voor meer informatie over de apparaatdubbels van het apparaat en de referentie voor de [IOT hub-query taal](../articles/iot-hub/iot-hub-devguide-query-language.md) voor het uitvoeren van query's.
+Zie voor meer informatie over device apparaatdubbels inzicht in de [apparaatdubbels](../articles/iot-hub/iot-hub-devguide-device-twins.md)van het apparaat. Zie [IOT hub query language (Engelstalig](../articles/iot-hub/iot-hub-devguide-query-language.md)) voor meer informatie over het uitvoeren van query's.
 
 
 In deze zelfstudie ontdekt u hoe u:
 
-* Maak een back-end-app waarmee *Tags* worden toegevoegd aan een apparaat, en een gesimuleerde apparaat-app die het verbindings kanaal rapporteert als een gerapporteerde *eigenschap* op het apparaat dubbele.
+* Maak een back-end-app waarmee Tags worden toegevoegd aan een apparaat, en een gesimuleerde apparaat-app die het verbindings kanaal rapporteert als een gerapporteerde eigenschap op het apparaat dubbele.
 
 * Zoek apparaten uit uw back-end-app met behulp van filters voor de tags en eigenschappen die eerder zijn gemaakt.

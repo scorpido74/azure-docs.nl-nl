@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: a931ecb255d20199dca13b60aa70a54d9d0fc85f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: b369dc82e98dff58a42b63b9733e7b786593d534
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383715"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034673"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Snelstartgids: Afbeeldingen zoeken met de REST API voor Bing Image Search en C#
 
@@ -24,7 +24,7 @@ Gebruik deze quickstart om zoekaanvragen naar de Bing afbeeldingen zoeken-API te
 De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) met extra foutafhandeling en aantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
-* Een versie van [Visual Studio 2017 of later](https://www.visualstudio.com/downloads/).
+* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
 * Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 

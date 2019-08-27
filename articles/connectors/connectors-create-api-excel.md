@@ -1,76 +1,72 @@
 ---
-title: Verbinding maken met Excel Online - Azure Logic Apps
-description: Beheren van gegevens met Excel Online REST API's en Azure Logic Apps
+title: Verbinding maken met Excel online-Azure Logic Apps
+description: Gegevens beheren met Excel online REST Api's en Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-tags: connectors
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2018
-ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+tags: connectors
+ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311961"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050907"
 ---
-# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel Online-gegevens met Azure Logic Apps beheren
+# <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel online-gegevens beheren met Azure Logic Apps
 
-Met Azure Logic Apps en de Excel Online-connector, kunt u geautomatiseerde taken en werkstromen op basis van uw gegevens in Excel Online voor bedrijven of OneDrive. Deze connector beschikt u acties waarmee u werkt met uw gegevens en werkbladen, bijvoorbeeld beheren:
+Met Azure Logic Apps en de Excel Online-connector kunt u geautomatiseerde taken en werk stromen maken op basis van uw gegevens in Excel online voor bedrijven of OneDrive. Deze connector bevat acties die u helpen bij het werken met uw gegevens en voor het beheren van spread sheets, bijvoorbeeld:
 
-* Nieuwe werkbladen en tabellen maken.
-* Opvragen en beheren van werkbladen, tabellen en rijen.
-* Voeg enkele rijen en sleutelkolommen.
+* Nieuwe werk bladen en tabellen maken.
+* Werk bladen, tabellen en rijen ophalen en beheren.
+* Voeg enkele rijen en sleutel kolommen toe.
 
-U kunt vervolgens de uitvoer van deze acties gebruiken met de acties die voor andere services. Bijvoorbeeld, als u een actie die werkbladen elke week worden gemaakt, kunt u nog een actie waarmee bevestigingse-mail verzonden via de Office 365 Outlook-connector.
+Vervolgens kunt u de uitvoer van deze acties gebruiken met acties voor andere services. Als u bijvoorbeeld een actie gebruikt waarmee werk bladen per week worden gemaakt, kunt u een andere actie gebruiken waarmee een e-mail met een bevestiging wordt verzonden met behulp van de Office 365 Outlook-Connector.
 
-Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> De [Excel Online voor bedrijven](/connectors/excelonlinebusiness/) en [Excel Online voor OneDrive](/connectors/excelonline/) connectors werken met Azure Logic Apps en verschillen van de [Excel-connector voor PowerApps](/connectors/excel/).
+> De [Excel online voor bedrijven](/connectors/excelonlinebusiness/) en [Excel online voor OneDrive](/connectors/excelonline/) -connectors werken met Azure Logic apps en verschillen van de [Excel-connector voor PowerApps](/connectors/excel/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>.
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [Office 365-account](https://www.office.com/) voor uw werkaccount of persoonlijk Microsoft-account
+* Een [Office 365-account](https://www.office.com/) voor uw werk account of persoonlijke Microsoft-account
 
-  Uw Excel-gegevens kan bestaan als een bestand met door komma's gescheiden waarden (CSV) in een opslagmap, bijvoorbeeld in OneDrive. 
-  U kunt ook de dezelfde CSV-bestand met de [platte connector](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
+  Uw Excel-gegevens kunnen bestaan als een CSV-bestand (Comma-Separated Value) in een opslagmap, bijvoorbeeld in OneDrive. 
+  U kunt ook hetzelfde CSV-bestand gebruiken met de [Connector voor platte bestanden](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot uw gegevens Excel Online. Deze connector beschikt u alleen acties, om de logische App, selecteert u een afzonderlijke trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waar u toegang wilt krijgen tot uw Excel online-gegevens. Deze connector biedt alleen acties, dus als u uw logische app wilt starten, selecteert u een afzonderlijke trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 ## <a name="add-excel-action"></a>Excel-actie toevoegen
 
-1. In de [Azure-portal](https://portal.azure.com), opent u uw logische app in de ontwerper van logische App, als dit niet al geopend.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Kies onder de trigger **nieuwe stap**.
+1. Kies **nieuwe stap**onder de trigger.
 
-1. Typ 'excel' als filter in het zoekvak. Selecteer de actie die u wilt onder de lijst met acties.
+1. Voer in het zoekvak ' Excel ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-1. Als u hierom wordt gevraagd om aan te melden bij uw Office 365-account, kiest u **aanmelden**.
+1. Meld u aan bij uw Office 365-account als u hierom wordt gevraagd.
 
-   Uw referenties toestaan dat uw logische app te maken van een verbinding met Excel Online toegang tot uw gegevens.
+   Met uw referenties wordt uw logische app geautoriseerd om een verbinding met Excel online te maken en toegang te krijgen tot uw gegevens.
 
-1. Verder biedt de benodigde informatie voor de geselecteerde actie en het bouwen van uw logic app-werkstroom.
+1. Blijf de benodigde Details voor de geselecteerde actie opgeven en de werk stroom van uw logische app bouwen.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie, zoals triggers en acties limieten, zoals is beschreven in van de connector OpenAPI (voorheen Swagger)-bestanden, Zie de referentiepagina's van deze connector:
+Voor technische details, zoals triggers, acties en limieten, zoals wordt beschreven door de OpenAPI (voorheen Swagger)-bestanden van de connector, raadpleegt u deze referentie pagina's voor Connectors:
 
-* [Excel Online voor bedrijven](/connectors/excelonlinebusiness/)
-* [Excel Online voor OneDrive](/connectors/excelonline/)
-
-## <a name="get-support"></a>Ondersteuning krijgen
-
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
+* [Excel online voor bedrijven](/connectors/excelonlinebusiness/)
+* [Excel online voor OneDrive](/connectors/excelonline/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

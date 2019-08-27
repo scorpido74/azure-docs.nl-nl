@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 22a27ba19670344f351205b6a4865bf85daf0bab
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900263"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034589"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabel .NET Standard API: Down load en release-opmerkingen
 > [!div class="op_single_selector"]
@@ -33,7 +33,14 @@ ms.locfileid: "69900263"
 |**Huidige ondersteunde framework**|[Microsoft .NET standaard 2,0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Probleem melden**|[Probleem melden](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
-## <a name="release-notes"></a>Releaseopmerkingen
+## <a name="release-notes-for-200-series"></a>Release opmerkingen voor de 2.0.0-serie
+de 2.0.0-serie neemt de afhankelijkheid van [micro soft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/), met prestatie verbeteringen en naam ruimte consolidatie op Cosmos DB eind punt.
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
+* eerste preview van 2.0.0 Table SDK die afhankelijk is van [micro soft. Azure. Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/), met prestatie verbeteringen en naam ruimte consolidatie op Cosmos DB eind punt. De open bare API blijft hetzelfde.
+
+## <a name="release-notes-for-100-series"></a>Release opmerkingen voor de 1.0.0-serie
+de 1.0.0-serie neemt de afhankelijkheid van [micro soft. Azure. DocumentDB. core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
 * Opgeloste fouten
@@ -77,6 +84,12 @@ Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het bui
 
 In deze platformoverschrijdende .NET Standard-bibliotheek [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) wordt de .NET Framework bibliotheek [micro soft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)vervangen.
 
+### <a name="200-series"></a>2.0.0-serie
+| Version | Releasedatum | Vervaldatum |
+| --- | --- | --- |
+| [2.0.0-Preview](#2.0.0-preview) |Auguest 22, 2019 |--- |
+
+### <a name="100-series"></a>1.0.0-serie
 | Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
 | [1.0.5-preview](#1.0.5-preview) |Auguest 20, 2019 |--- |

@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Wunderlist vanuit Azure Logic Apps | Microsoft Docs
-description: Automatiseren van taken en werkstromen die bewaken en beheren van lijsten, taken, herinneringen en meer in uw Wunderlist-account met behulp van Azure Logic Apps
+description: Automatiseer taken en werk stromen die lijsten, taken, herinneringen en meer bewaken en beheren in uw Wunderlist-account met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,68 +11,68 @@ ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57ab4a7b655a7d49a7120d358dccc627099e5fd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105663"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050658"
 ---
-# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Controleren en Wunderlist beheren met behulp van Azure Logic Apps
+# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Wunderlist controleren en beheren met behulp van Azure Logic Apps
 
-Met Azure Logic Apps en de Wunderlist-connector, kunt u geautomatiseerde taken en werkstromen die bewaken en beheren van to-do-lijsten, taken, herinneringen en meer in uw Wunderlist-account, samen met andere acties, bijvoorbeeld:
+Met Azure Logic Apps en de Wunderlist-connector kunt u geautomatiseerde taken en werk stromen maken waarmee TODO-lijsten, taken, herinneringen en meer worden bewaakt en beheerd in uw Wunderlist-account, samen met andere acties, bijvoorbeeld:
 
-* Monitor als nieuwe taken gemaakt, wanneer taken verwacht worden of herinneringen gebeuren.
-* Maken en beheren van lijsten, notities, taken, subtaken en meer.
+* Bewaak wanneer er nieuwe taken worden gemaakt, wanneer de taken moeten worden uitgevoerd of als er herinneringen optreden.
+* Maak en beheer lijsten, notities, taken, subtaken en meer.
 * Herinneringen instellen.
-* Get-lijsten, taken, subtaken, herinneringen, bestanden, notities, opmerkingen en meer.
+* Haal lijsten, taken, subtaken, herinneringen, bestanden, notities, opmerkingen en meer op.
 
-[Wunderlist](https://www.wunderlist.com/) is een service die u bij het plannen helpt, beheren en uw projecten, een lijst met taken en taken - op elk apparaat en overal te voltooien. U kunt triggers die te antwoorden krijgen van uw Wunderlist-account en de uitvoer beschikbaar voor andere acties. U kunt acties die taken met uw Wunderlist-account uitvoeren gebruiken. U kunt ook andere acties waarmee de uitvoer van de Wunderlist-acties hebben. Als nieuwe taken nadert, kunt u bijvoorbeeld berichten met de Slack-connector plaatsen. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+[Wunderlist](https://www.wunderlist.com/) is een service die u helpt bij het plannen, beheren en volt ooien van uw projecten, TODO-lijsten en taken, op elk apparaat, overal. U kunt triggers gebruiken die reacties ophalen van uw Wunderlist-account en de uitvoer beschikbaar maken voor andere acties. U kunt acties gebruiken om taken uit te voeren met uw Wunderlist-account. U kunt ook andere acties uitvoeren met de uitvoer van Wunderlist-acties. Als er bijvoorbeeld nieuwe taken moeten worden voltooid, kunt u berichten plaatsen met de verbindings vertraging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw Wunderlist-account en de gebruikersreferenties
+* Uw Wunderlist-account en gebruikers referenties
 
-   Uw referenties toestaan dat de logische app een verbinding maken en toegang tot uw account Wunderlist.
+   Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw Wunderlist-account.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot uw Yammer-account. Om te beginnen met een trigger Wunderlist [maken van een lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor het gebruik van een Wunderlist-actie beginnen uw logische app met een andere trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waar u toegang wilt krijgen tot uw Yammer-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een Wunderlist-trigger. Als u een actie Wunderlist wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 ## <a name="connect-to-wunderlist"></a>Verbinding maken met Wunderlist
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
 1. Kies een pad: 
 
-   * Typ 'wunderlist' als filter voor lege, logische apps, in het zoekvak. 
+   * Voor lege Logic apps voert u in het zoekvak ' wunderlist ' in als uw filter. 
    Selecteer de gewenste trigger onder de lijst met triggers. 
 
      -of-
 
    * Voor bestaande logische apps: 
    
-     * Kies onder de laatste stap waar u een actie toevoegen, **nieuwe stap**. 
+     * Kies **nieuwe stap**onder de laatste stap waarin u een actie wilt toevoegen. 
 
        -of-
 
-     * Tussen de stappen waar u een actie toevoegen, de aanwijzer over de pijl tussen fasen. 
-     Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+     * Als u een actie wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+     Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
      
-       Typ 'wunderlist' als filter in het zoekvak. 
-       Selecteer de actie die u wilt onder de lijst met acties.
+       In het zoekvak voert u ' wunderlist ' in als uw filter. 
+       Selecteer in de lijst acties de gewenste actie.
 
-1. Als u wordt gevraagd of u zich aanmeldt bij Wunderlist, meld u nu, zodat u toegang kunt toestaan.
+1. Als u wordt gevraagd om u aan te melden bij Wunderlist, meldt u zich nu aan zodat u toegang kunt toestaan.
 
-1. Geef de benodigde informatie voor uw geselecteerde trigger of actie en doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/wunderlist/).
+Raadpleeg de [referentie pagina](/connectors/wunderlist/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -81,4 +81,4 @@ Voor technische informatie over triggers en acties limieten die worden beschreve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 6fe2e63138ce9e0f4e8980e4f37330228ac2bdb6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369551"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036128"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -82,7 +82,7 @@ ThinPrint is een Windows-service provider met toegevoegde waarde waarmee u eenvo
 De ezeep-oplossing van ThinPrint breidt de waarde van virtueel bureau blad van Windows uit door de verbinding met de bestaande printer infrastructuur van het bedrijf in te scha kelen. ezeep biedt gebruikers controle over afdrukken in de onderneming, ongeacht waar ze zich bevinden. Met ezeep kunnen gebruikers een brug maken tussen het virtuele bureau blad van Windows en het afdrukken van hardware.
 
 - [Bekijk de kortere oplossing.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [Ga naar de website van de partner.](http://www.ezeep.com/wvd-printing)
+- [Ga naar de website van de partner.](https://www.ezeep.com/wvd-printing)
 
 ## <a name="workspot"></a>Workspot
 

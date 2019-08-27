@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: ec017901e36a01042485e9aeca2431c8a6838ab8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6c06453d479ae55ceb1c05a7ee8a29ce19a7a13b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536753"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034976"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Voor beeld: verifiëren met Azure Container Registry van de Azure Kubernetes-service
 
@@ -46,11 +46,15 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Een nieuw AKS-cluster maken met ACR-integratie
 
-U kunt AKS-en ACR-integratie instellen tijdens het maken van de eerste keer dat u uw AKS-cluster maakt.  Als u een AKS-cluster wilt toestaan om te communiceren met ACR, wordt een Azure Active Directory **Service-Principal** gebruikt. Met de volgende CLI-opdracht maakt u een ACR in de resource groep die u opgeeft en configureert u de juiste **ACRPull** -rol voor de Service-Principal. Als de *naam* van `aks<resource-group>acr` de ACR niet bestaat, wordt automatisch een standaard ACR-naam gemaakt.  Geef hieronder geldige waarden voor de para meters op.  De para meters tussen vier Kante haken zijn optioneel.
+U kunt AKS-en ACR-integratie instellen tijdens het maken van de eerste keer dat u uw AKS-cluster maakt.  Als u een AKS-cluster wilt toestaan om te communiceren met ACR, wordt een Azure Active Directory **Service-Principal** gebruikt. Met de volgende CLI-opdracht maakt u een ACR in de resource groep die u opgeeft en configureert u de juiste **ACRPull** -rol voor de Service-Principal. Als de *ACR-naam* niet bestaat in de resource groep die u opgeeft, `aks<resource-group>acr` wordt automatisch een standaard ACR-naam gemaakt.  Geef hieronder geldige waarden voor de para meters op.  De para meters tussen vier Kante haken zijn optioneel.
 ```azurecli
 az login
 az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
 ```
+\* * Een ACR-resource-id heeft de volgende indeling: 
+
+/Subscriptions/<-abonnement: d >/resourceGroups/< Resource-Group-name >/providers/Microsoft.ContainerRegistry/registries/<name> 
+  
 Het kan enkele minuten duren voordat deze stap is voltooid.
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>ACR-integratie maken voor bestaande AKS-clusters

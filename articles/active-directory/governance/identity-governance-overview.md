@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/25/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499662"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033324"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
@@ -42,7 +42,7 @@ Het is met name bedoeld om organisaties te helpen bij het oplossen van deze vier
 
 ## <a name="identity-lifecycle"></a>Levens duur van identiteit
 
-Identiteits beheer helpt organisaties bij het verkrijgen van een evenwicht tussen *productiviteit* : hoe snel kan een persoon toegang krijgen tot de resources die ze nodig hebben, bijvoorbeeld wanneer ze lid worden van mijn organisatie? En *hoe* moet de toegang tot de tijd worden gewijzigd, bijvoorbeeld als gevolg van wijzigingen in de werk status van die persoon?  Het beheer van identiteits levenscyclus is de basis voor Identity governance, en effectief beheer op schaal vereist een modernisering van de infra structuur voor Identity Lifecycle Management voor toepassingen.
+Identiteits beheer helpt organisaties bij het verkrijgen van een evenwicht tussen *productiviteit* : hoe snel kan een persoon toegang krijgen tot de resources die ze nodig hebben, bijvoorbeeld wanneer ze lid worden van mijn organisatie? En hoe moet de toegang tot de tijd worden gewijzigd, bijvoorbeeld als gevolg van wijzigingen in de werk status van die persoon?  Het beheer van identiteits levenscyclus is de basis voor Identity governance, en effectief beheer op schaal vereist een modernisering van de infra structuur voor Identity Lifecycle Management voor toepassingen.
 
 ![Levens duur van identiteit](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -80,6 +80,8 @@ Hoewel er voor elke klant geen perfecte oplossing of aanbeveling bestaat, bieden
 U kunt ook het tabblad aan de slag van **Identity governance** in het Azure Portal bekijken om te beginnen met het gebruik van rechten, toegangs beoordelingen, Privileged Identity Management en gebruiksvoorwaarden.
 
 ![Aan de slag met Identity governance](./media/identity-governance-overview/getting-started.png)
+
+Als u feedback hebt over de functies voor identiteits beheer, klikt u op **feedback ontvangen?** in de Azure Portal om uw feedback te verzenden. Het team controleert uw feedback regel matig.
 
 ## <a name="next-steps"></a>Volgende stappen
 

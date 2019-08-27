@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516130"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036326"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -70,7 +70,7 @@ Wanneer een beschikbaarheids zone niet meer beschikbaar is, neemt Azure netwerk 
 Als een storing van invloed is op de hele primaire regio, probeert micro soft eerst de primaire regio te herstellen. Als herstel niet mogelijk is, zal micro soft een failover uitvoeren naar de secundaire regio, zodat de secundaire regio de nieuwe primaire regio wordt. Als voor het opslag account RA-GZRS is ingeschakeld, kunnen toepassingen die voor dit scenario zijn ontworpen, lezen van de secundaire regio tijdens het wachten op failover. Als RA-GZRS niet is ingeschakeld voor het opslag account, kunnen toepassingen niet meer lezen van de secundaire tot de failover is voltooid.
 
 > [!NOTE]
-> GZRS en RA-GZRS zijn momenteel als preview-versie beschikbaar in de regio VS Oost 2. De door de klant beheerde account-failover (preview) is nog niet beschikbaar in VS Oost 2, zodat klanten momenteel geen account-failover-gebeurtenissen kunnen beheren met GZRS-en RA-GZRS-accounts. Tijdens de preview beheert micro soft failover-gebeurtenissen die van invloed zijn op GZRS-en RA-GZRS-accounts.
+> GZRS en RA-GZRS zijn momenteel als preview-versie beschikbaar in de regio VS Oost. De door de klant beheerde account-failover (preview) is nog niet beschikbaar in VS Oost 2, zodat klanten momenteel geen account-failover-gebeurtenissen kunnen beheren met GZRS-en RA-GZRS-accounts. Tijdens de preview beheert micro soft failover-gebeurtenissen die van invloed zijn op GZRS-en RA-GZRS-accounts.
 
 Omdat gegevens asynchroon naar de secundaire regio worden gerepliceerd, kan een storing die van invloed is op de primaire regio, leiden tot gegevens verlies als de primaire regio niet kan worden hersteld. Het interval tussen de meest recente schrijf bewerkingen naar de primaire regio en de laatste schrijf bewerking naar de secundaire regio wordt de Recovery Point Objective (RPO) genoemd. De RPO geeft het tijdstip aan waarop gegevens kunnen worden hersteld. Azure Storage heeft doorgaans een RPO van minder dan 15 minuten, maar er is momenteel geen SLA over hoe lang het duurt om gegevens naar de secundaire regio te repliceren.
 

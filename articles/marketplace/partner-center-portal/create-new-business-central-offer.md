@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900168"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033265"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Een nieuwe Dynamics 365 Business Central-aanbieding maken
 
@@ -354,7 +354,7 @@ Met de optie **Marketplace-vermelding** die is gevonden op het tabblad **test st
 
 ## <a name="supplemental-content"></a>Aanvullende inhoud
 
-Op deze pagina kunt u aanvullende vereiste informatie over uw aanbieding opgeven.
+Op deze pagina kunt u aanvullende informatie over uw aanbieding opgeven zodat we uw aanbieding kunnen valideren. Deze informatie wordt niet weer gegeven aan klanten of gepubliceerd op Marketplace.
 
 ### <a name="target-release"></a>Doel release
 
@@ -362,15 +362,15 @@ Geef aan welke release van micro soft Dynamics business Central uw oplossings do
 
 ### <a name="supported-editions"></a>Ondersteunde versies
 
-Geef aan of uw oplossing de essentiële onderdelen en/of Premium-editie van micro soft Dynamics 365 Business Central ondersteunt. U moet mini maal één waarde selecteren.
+Als voor uw aanbieding de Premium-editie van micro soft Dynamics 365 Business Central is vereist, selecteert u alleen **Premium** . Als dat niet het geval is, selecteert u zowel kernen als **Premium**.
 
 ### <a name="key-usage-scenario"></a>Scenario voor sleutel gebruik
 
-Upload een `.pdf` bestand met een lijst met de scenario's voor het gebruik van sleutels in een document (PDF-indeling). Alle scenario's die hier worden vermeld, kunnen door ons validatie team worden geverifieerd voordat we uw aanbieding voor Marketplace goed keuren.
+U moet een `.pdf` bestand ploaden met een lijst met de scenario's voor het gebruik van sleutels die zijn opgenomen in een document (PDF-indeling). Alle scenario's die hier worden vermeld, kunnen door ons validatie team worden geverifieerd voordat we uw aanbieding voor Marketplace goed keuren.
 
 ### <a name="app-tests-automation"></a>Automatisering van app-tests
 
-Upload hier ook een automatiserings bestand voor **app-tests** (. app).
+U kunt eventueel een automatiserings bestand voor **app-tests** uploaden (. app).
 
 ### <a name="test-accounts"></a>Test accounts
 

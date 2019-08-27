@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: c350ca3cd8cbfb5e550fccd0bae0df53168de178
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 80bca606a2b06d85afc8a2115133f44d738f7e0a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312080"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035237"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -46,7 +46,7 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * Europa -west
 * US - west-centraal
 * East US
-* Japan-Oost
+* Japan - oost
 * Azië - zuidoost
 * Zuid-Oost-Australië
 * Zuid-Brittannië
@@ -71,7 +71,7 @@ Gebruik de basis processen om agents te installeren op [Windows-computers verbin
 
 * **Monitor voor service connectiviteit**: Installeer een Log Analytics-agent op elk knoop punt van waaruit u de netwerk verbinding met het service-eind punt wilt bewaken. Een voor beeld is als u de netwerk connectiviteit met Office 365 wilt bewaken van uw Office-sites met het opschrift O1, O2 en O3. Installeer de Log Analytics agent op ten minste één knoop punt elk in O1, O2 en O3. 
 
-* **Monitor voor ExpressRoute**: Installeer ten minste één Log Analytics agent in uw virtuele Azure-netwerk. Installeer ook ten minste één agent in uw on-premises subnetwerk dat is verbonden via ExpressRoute-persoonlijke peering.  
+* **Monitor voor ExpressRoute**: Installeer ten minste één Log Analytics agent in uw virtuele Azure-netwerk. Installeer ook ten minste één agent in uw on-premises subnetwerk dat is verbonden via ExpressRoute-persoonlijke peering.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Log Analytics agents voor bewaking configureren 
 
@@ -105,7 +105,7 @@ Netwerkprestatiemeter maakt gebruik van synthetische trans acties voor het bewak
 
 1. Voeg de Netwerkprestatiemeter oplossing toe aan uw werk ruimte vanuit [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). U kunt ook het proces dat wordt beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md)gebruiken. 
 2. Open uw Log Analytics-werk ruimte en selecteer de tegel **overzicht** . 
-3. Selecteer de **Netwerkprestatiemeter** tegel met de bericht *oplossing moet extra worden geconfigureerd*.
+3. Selecteer de **Netwerkprestatiemeter** tegel met de bericht *oplossing moet extra worden geconfigureerd*.
 
    ![Netwerkprestatiemeter tegel](media/network-performance-monitor/npm-config.png)
 
@@ -133,7 +133,7 @@ Nadat de installatie is voltooid, duurt het 30 minuten tot een uur voordat de ge
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Bewakings instellingen voor subnetten en knoop punten bewerken 
 
-Alle subnetten waarop ten minste één agent is geïnstalleerd, worden weer gegeven op het tabblad  **subnetwerken**  op de pagina configuratie. 
+Alle subnetten waarop ten minste één agent is geïnstalleerd, worden weer gegeven op het tabblad subnetwerken op de pagina configuratie. 
 
 
 De bewaking van bepaalde subnetwerken in-of uitschakelen:
@@ -203,9 +203,9 @@ Nadat u de Netwerkprestatiemeter oplossing hebt ingeschakeld, biedt de tegel opl
 
 ### <a name="drill-down-for-depth"></a>Inzoomen op diepte 
 
-U kunt verschillende koppelingen in het dash board van de oplossing selecteren om in te zoomen op een wille keurig interesse gebied. Als u bijvoorbeeld een waarschuwing ziet of als er een slechte netwerk koppeling wordt weer gegeven op het dash board, selecteert u deze om verder te onderzoeken. Een pagina bevat een lijst met alle subnetwerk koppelingen voor de desbetreffende netwerk koppeling. U kunt het verlies, de latentie en de status van elke subnetwerk koppeling zien. U kunt snel zien welke subnetwerk koppeling problemen veroorzaakt. Selecteer **knooppunt koppelingen weer geven**  om alle knooppunt koppelingen voor de beschadigde subnet koppeling weer te geven. Vervolgens ziet u de koppelingen van afzonderlijke knoop punten en de status van de beschadigde knoop punten. 
+U kunt verschillende koppelingen in het dash board van de oplossing selecteren om in te zoomen op een wille keurig interesse gebied. Als u bijvoorbeeld een waarschuwing ziet of als er een slechte netwerk koppeling wordt weer gegeven op het dash board, selecteert u deze om verder te onderzoeken. Een pagina bevat een lijst met alle subnetwerk koppelingen voor de desbetreffende netwerk koppeling. U kunt het verlies, de latentie en de status van elke subnetwerk koppeling zien. U kunt snel zien welke subnetwerk koppeling problemen veroorzaakt. Selecteer **knooppunt koppelingen weer geven** om alle knooppunt koppelingen voor de beschadigde subnet koppeling weer te geven. Vervolgens ziet u de koppelingen van afzonderlijke knoop punten en de status van de beschadigde knoop punten. 
 
-Selecteer  **topologie weer geven**  om de hop-per-hop-topologie van de routes tussen de bron-en doel knooppunten weer te geven. De beschadigde routes worden rood weer gegeven. U kunt de latentie weer geven die door elke hop is bijgedragen, zodat u het probleem snel kunt identificeren met een bepaald gedeelte van het netwerk.
+Selecteer **topologie weer geven** om de hop-per-hop-topologie van de routes tussen de bron-en doel knooppunten weer te geven. De beschadigde routes worden rood weer gegeven. U kunt de latentie weer geven die door elke hop is bijgedragen, zodat u het probleem snel kunt identificeren met een bepaald gedeelte van het netwerk.
 
  
 
@@ -245,7 +245,7 @@ De topologie die in de kaart wordt weer gegeven, is een laag-3-topologie en beva
 
 ## <a name="log-queries-in-azure-monitor"></a>Query's in Azure Monitor vastleggen
 
-Alle gegevens die grafisch worden weer gegeven via de Netwerkprestatiemeter dash board en inzoom pagina's, zijn ook ingebouwd in [logboek query's](../log-query/log-query-overview.md). U kunt een interactieve analyse van gegevens in de opslag plaats uitvoeren en gegevens uit verschillende bronnen correleren. U kunt ook aangepaste waarschuwingen en weer gaven maken en de gegevens exporteren naar Excel, Power BI of een deel bare koppeling. Het gebied **algemene query's** in het dash board bevat enkele nuttige query's die u als uitgangs punt kunt gebruiken om uw eigen query's en rapporten te maken. 
+Alle gegevens die grafisch worden weer gegeven via de Netwerkprestatiemeter dash board en inzoom pagina's, zijn ook ingebouwd in [logboek query's](../log-query/log-query-overview.md). U kunt een interactieve analyse van gegevens in de opslag plaats uitvoeren en gegevens uit verschillende bronnen correleren. U kunt ook aangepaste waarschuwingen en weer gaven maken en de gegevens exporteren naar Excel, Power BI of een deel bare koppeling. Het gebied **algemene query's** in het dash board bevat enkele nuttige query's die u als uitgangs punt kunt gebruiken om uw eigen query's en rapporten te maken. 
 
 ## <a name="alerts"></a>Waarschuwingen
 
@@ -277,7 +277,7 @@ Informatie over prijzen is [online](network-performance-monitor-pricing-faq.md)b
 
 * **UserVoice:** U kunt uw ideeën plaatsen voor Netwerkprestatiemeter functies waaraan we ons willen gebruiken. Ga naar de [UserVoice-pagina](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Doe mee aan ons cohort:** We zijn altijd geïnteresseerd in het toevoegen van nieuwe klanten aan onze cohort. Als onderdeel hiervan krijgt u vroegtijdig toegang tot nieuwe functies en een kans om ons te helpen bij het verbeteren van Netwerkprestatiemeter. Als u wilt deel nemen, vult u deze [snelle enquête](https://aka.ms/npmcohort)in. 
+* **Doe mee aan ons cohort:** We zijn altijd geïnteresseerd in het toevoegen van nieuwe klanten aan onze cohort. Als onderdeel hiervan krijgt u vroegtijdig toegang tot nieuwe functies en een kans om ons te helpen bij het verbeteren van Netwerkprestatiemeter. Als u wilt deel nemen, vult u deze [snelle enquête](https://aka.ms/npmcohort)in. 
 
 ## <a name="next-steps"></a>Volgende stappen 
 Meer informatie over [prestatie meter](network-performance-monitor-performance-monitor.md), [service Connectivity monitor](network-performance-monitor-performance-monitor.md)en [ExpressRoute monitor](network-performance-monitor-expressroute.md). 

@@ -6,759 +6,66 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: nacharya1
-ms.author: nilesha
+author: trevorbye
+ms.author: trbye
 ms.reviewer: trbye
-ms.date: 08/11/2019
-ms.custom: seodec18
-ms.openlocfilehash: 49f46c09cfcfef2ab1e74ae7c08d9a54289293ac
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.date: 08/21/2019
+ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534840"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036249"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Zelfstudie: Geautomatiseerde machine learning gebruiken om uw regressiemodel te bouwen
+# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelfstudie: Automatische machine learning gebruiken om taxi tarieven te voors pellen
 
-Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelfstudie hebt u [de NYC-taxigegevens voorbereid voor regressiemodellering](tutorial-data-prep.md).
-
-Nu bent u er klaar voor om een model te bouwen met behulp van Azure Machine Learning Service. In dit gedeelte van de zelfstudie gebruikt u de voorbereide gegevens en genereert u automatisch een regressiemodel om de prijzen voor taxiritten te voorspellen. Met behulp van de geautomatiseerde machine learning-mogelijkheden van de service definieert u uw machine learning-doelen en -beperkingen. U start het geautomatiseerde machine learning-proces. Vervolgens staat u de automatische afstemming van algoritmes en hyperparameters toe. De techniek van geautomatiseerde machine learning doorloopt of itereert allerlei combinaties van algoritmen en hyperparameters totdat het beste model wordt gevonden op basis van uw criterium.
+In deze zelf studie gebruikt u geautomatiseerde machine learning in Azure Machine Learning-service om een regressie model te maken om de prijzen van het NYCe taxi te voors pellen. Dit proces accepteert trainings gegevens en configuratie-instellingen en herhaalt automatisch combi Naties van verschillende methoden voor het normaliseren/standaardiseren van functies, modellen en afstemming-instellingen om het beste model te ontvangen.
 
 ![Stroomdiagram](./media/tutorial-auto-train-models/flow2.png)
 
-In deze zelfstudie leert u het volgende:
+In deze zelf studie leert u de volgende taken:
 
 > [!div class="checklist"]
-> * Een Python-omgeving instellen en de SDK-pakketten importeren
-> * Een werkruimte configureren in Azure Machine Learning Service
-> * Een regressiemodel automatisch trainen
-> * Het model lokaal uitvoeren met aangepaste parameters
-> * De resultaten verkennen
+> * Gegevens downloaden, transformeren en opschonen met behulp van Azure open gegevens sets
+> * Een geautomatiseerd machine learning regressie model trainen
+> * Nauw keurigheid van model berekenen
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer nog vandaag de [gratis of betaalde versie van de Azure Machine Learning Service](https://aka.ms/AMLFree).
-
->[!NOTE]
-> De code in dit artikel is getest met Azure Machine Learning SDK-versie 1.0.39.
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie](https://aka.ms/AMLFree) van Azure machine learning service.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voltooi een deel van de [zelf studie voor gegevens voorbereiding](tutorial-data-prep.md).
+* Voltooi de [installatie handleiding](tutorial-1st-experiment-sdk-setup.md) als u nog geen Azure machine learning service-werk ruimte of virtuele notebook-machine hebt.
+* Nadat u de installatie zelf studie hebt voltooid, opent u de notebook **zelf studies/Regression-Automated-ml. ipynb** met dezelfde notebook server.
 
-* Nadat u het deel één hebt voltooid, opent u de notebook **zelf studies/Regression-part2-Automated-ml. ipynb** met dezelfde notebook server.
+Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt uitvoeren in uw eigen [lokale omgeving](how-to-configure-environment.md#local). Voer `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` uit om de vereiste pakketten op te halen.
 
-Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u hebt `matplotlib` geïnstalleerd en `automl` de `notebooks` en de extra's van de Azure machine learning SDK.
+## <a name="download-and-prepare-data"></a>Gegevens downloaden en voorbereiden
 
-## <a name="start"></a>De ontwikkelomgeving instellen
-
-De configuratie van uw ontwikkelomgeving kan worden uitgevoerd met een Python-notebook. De configuratie bestaat uit de volgende acties:
-
-* De SDK installeren
-* Python-pakketten importeren
-* Uw werk ruimte configureren
-
-### <a name="install-and-import-packages"></a>Pakketten installeren en importeren
-
-Als u de zelfstudie in uw eigen Python-omgeving volgt, gebruikt u het volgende om de benodigde pakketten te installeren.
-
-```shell
-pip install azureml-sdk[automl,notebooks] matplotlib
-```
-
-Importeer de Python-pakketten die u nodig hebt in deze zelfstudie:
+Importeer de benodigde pakketten. Het open gegevens sets pakket bevat een klasse die elke gegevens bron`NycTlcGreen` vertegenwoordigt (bijvoorbeeld) om eenvoudig datum parameters te filteren voordat u downloadt.
 
 ```python
-import azureml.core
+from azureml.opendatasets import NycTlcGreen
 import pandas as pd
-from azureml.core.workspace import Workspace
-import logging
-import os
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 ```
 
-### <a name="configure-workspace"></a>Werkruimte configureren
+Maak eerst een data frame om de taxi gegevens te bewaren. Als u in een niet-Spark-omgeving werkt, kunt u met data sets alleen één maand aan gegevens tegelijk downloaden met bepaalde klassen `MemoryError` om te voor komen dat er grote gegevens sets zijn.
 
-Maak een werkruimte-object van de bestaande werkruimte. Een [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is een klasse die uw Azure-abonnement en resource gegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden.
-
-`Workspace.from_config()` leest het bestand **config.json** en laadt de gegevens in een object met de naam `ws`.  `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
-
-Zodra u een werkruimteobject hebt, geeft u een naam op voor het experiment. Maak en registreer een lokale map met de werkruimte. De geschiedenis van alle uitvoeringen wordt vastgelegd onder het opgegeven experiment en in [Azure Portal](https://portal.azure.com).
+Voor het downloaden van taxi gegevens, wordt een maand tegelijk opgehaald en voordat deze wordt toegevoegd aan `green_taxi_df` wille keurige 2.000 records van elke maand om te voor komen dat de data frame wordt gepipetteerd. Bekijk een voor beeld van de gegevens.
 
 
 ```python
-ws = Workspace.from_config()
-# choose a name for the run history container in the workspace
-experiment_name = 'automated-ml-regression'
-# project folder
-project_folder = './automated-ml-regression'
+green_taxi_df = pd.DataFrame([])
+start = datetime.strptime("1/1/2015","%m/%d/%Y")
+end = datetime.strptime("1/31/2015","%m/%d/%Y")
 
-output = {}
-output['SDK version'] = azureml.core.VERSION
-output['Subscription ID'] = ws.subscription_id
-output['Workspace'] = ws.name
-output['Resource Group'] = ws.resource_group
-output['Location'] = ws.location
-output['Project Directory'] = project_folder
-pd.set_option('display.max_colwidth', -1)
-pd.DataFrame(data=output, index=['']).T
-```
+for sample_month in range(12):
+    temp_df_green = NycTlcGreen(start + relativedelta(months=sample_month), end + relativedelta(months=sample_month)) \
+        .to_pandas_dataframe()
+    green_taxi_df = green_taxi_df.append(temp_df_green.sample(2000))
 
-## <a name="explore-data"></a>Gegevens verkennen
-
-Gebruik het gegevensstroomobject dat u in de vorige zelfstudie hebt gemaakt. Samengevat, in deel 1 van deze zelfstudie zijn de NYC-taxigegevens opgeschoond zodat deze konden worden gebruikt in een Machine Learning-model. Nu gebruikt u verschillende functies van de gegevensset en een geautomatiseerd model om relaties tussen de functies en de prijs van een taxirit op te bouwen. Open de gegevensstroom, voer deze uit en beoordeel de resultaten:
-
-
-```python
-import azureml.dataprep as dprep
-
-file_path = os.path.join(os.getcwd(), "dflows.dprep")
-
-dflow_prepared = dprep.Dataflow.open(file_path)
-dflow_prepared.get_profile()
-```
-
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>type</th>
-      <th>Min.</th>
-      <th>Max.</th>
-      <th>Count</th>
-      <th>Ontbrekend aantal</th>
-      <th>Niet-ontbrekend aantal</th>
-      <th>Ontbrekend percentage</th>
-      <th>Aantal fouten</th>
-      <th>Leeg aantal</th>
-      <th>0,1%-kwantiel</th>
-      <th>1%-kwantiel</th>
-      <th>5%-kwantiel</th>
-      <th>25%-kwantiel</th>
-      <th>50%-kwantiel</th>
-      <th>75%-kwantiel</th>
-      <th>95%-kwantiel</th>
-      <th>99%-kwantiel</th>
-      <th>99,9%-kwantiel</th>
-      <th>Gemiddeld</th>
-      <th>Standaardafwijking</th>
-      <th>Variantie</th>
-      <th>Asymmetrie</th>
-      <th>Kurtosis</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>leverancier</th>
-      <td>FieldType.STRING</td>
-      <td>1</td>
-      <td>VTS</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>pickup_weekday</th>
-      <td>FieldType.STRING</td>
-      <td>Vrijdag</td>
-      <td>woensdag</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>pickup_hour</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0</td>
-      <td>23</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td>0</td>
-      <td>2,90047</td>
-      <td>2,69355</td>
-      <td>9,72889</td>
-      <td>16</td>
-      <td>19,3713</td>
-      <td>22,6974</td>
-      <td>23</td>
-      <td>23</td>
-      <td>14,2731</td>
-      <td>6,59242</td>
-      <td>43,46</td>
-      <td>-0,693723</td>
-      <td>-0,570403</td>
-    </tr>
-    <tr>
-      <th>pickup_minute</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0</td>
-      <td>59</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td>0</td>
-      <td>4,99701</td>
-      <td>4,95833</td>
-      <td>14,1528</td>
-      <td>29,3832</td>
-      <td>44,6825</td>
-      <td>56,4444</td>
-      <td>58,9909</td>
-      <td>59</td>
-      <td>29,427</td>
-      <td>17,4333</td>
-      <td>303,921</td>
-      <td>0,0120999</td>
-      <td>-1,20981</td>
-    </tr>
-    <tr>
-      <th>pickup_second</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0</td>
-      <td>59</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td>0</td>
-      <td>5,28131</td>
-      <td>5</td>
-      <td>14,7832</td>
-      <td>29,9293</td>
-      <td>44,725</td>
-      <td>56,7573</td>
-      <td>59</td>
-      <td>59</td>
-      <td>29,7443</td>
-      <td>17,3595</td>
-      <td>301,351</td>
-      <td>-0,0252399</td>
-      <td>-1,19616</td>
-    </tr>
-    <tr>
-      <th>dropoff_weekday</th>
-      <td>FieldType.STRING</td>
-      <td>Vrijdag</td>
-      <td>woensdag</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>dropoff_hour</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0</td>
-      <td>23</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td>0</td>
-      <td>2,57153</td>
-      <td>2</td>
-      <td>9,58795</td>
-      <td>15,9994</td>
-      <td>19,6184</td>
-      <td>22,8317</td>
-      <td>23</td>
-      <td>23</td>
-      <td>14,2105</td>
-      <td>6,71093</td>
-      <td>45,0365</td>
-      <td>-0,687292</td>
-      <td>-0,61951</td>
-    </tr>
-    <tr>
-      <th>dropoff_minute</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0</td>
-      <td>59</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td>0</td>
-      <td>5,44383</td>
-      <td>4,84694</td>
-      <td>14,1036</td>
-      <td>28,8365</td>
-      <td>44,3102</td>
-      <td>56,6892</td>
-      <td>59</td>
-      <td>59</td>
-      <td>29,2907</td>
-      <td>17,4108</td>
-      <td>303,136</td>
-      <td>0,0222514</td>
-      <td>-1,2181</td>
-    </tr>
-    <tr>
-      <th>dropoff_second</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0</td>
-      <td>59</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td>0</td>
-      <td>5,07801</td>
-      <td>5</td>
-      <td>14,5751</td>
-      <td>29,5972</td>
-      <td>45,4649</td>
-      <td>56,2729</td>
-      <td>59</td>
-      <td>59</td>
-      <td>29,772</td>
-      <td>17,5337</td>
-      <td>307,429</td>
-      <td>-0,0212575</td>
-      <td>-1,226</td>
-    </tr>
-    <tr>
-      <th>store_forward</th>
-      <td>FieldType.STRING</td>
-      <td>N</td>
-      <td>J</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>pickup_longitude</th>
-      <td>FieldType.DECIMAL</td>
-      <td>-74,0781</td>
-      <td>-73,7459</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0.0</td>
-      <td>-74,0578</td>
-      <td>-73,9639</td>
-      <td>-73,9656</td>
-      <td>-73,9508</td>
-      <td>-73,9255</td>
-      <td>-73,8529</td>
-      <td>-73,8302</td>
-      <td>-73,8238</td>
-      <td>-73,7697</td>
-      <td>-73,9123</td>
-      <td>0,0503757</td>
-      <td>0,00253771</td>
-      <td>0,352172</td>
-      <td>-0,923743</td>
-    </tr>
-    <tr>
-      <th>pickup_latitude</th>
-      <td>FieldType.DECIMAL</td>
-      <td>40,5755</td>
-      <td>40,8799</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0.0</td>
-      <td>40,632</td>
-      <td>40,7117</td>
-      <td>40,7115</td>
-      <td>40,7213</td>
-      <td>40,7565</td>
-      <td>40,8058</td>
-      <td>40,8478</td>
-      <td>40,8676</td>
-      <td>40,8778</td>
-      <td>40,7649</td>
-      <td>0,0494674</td>
-      <td>0,00244702</td>
-      <td>0,205972</td>
-      <td>-0,777945</td>
-    </tr>
-    <tr>
-      <th>dropoff_longitude</th>
-      <td>FieldType.DECIMAL</td>
-      <td>-74,0857</td>
-      <td>-73,7209</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0.0</td>
-      <td>-74,0775</td>
-      <td>-73,9875</td>
-      <td>-73,9882</td>
-      <td>-73,9638</td>
-      <td>-73,935</td>
-      <td>-73,8755</td>
-      <td>-73,8125</td>
-      <td>-73,7759</td>
-      <td>-73,7327</td>
-      <td>-73,9202</td>
-      <td>0,0584627</td>
-      <td>0,00341789</td>
-      <td>0,623622</td>
-      <td>-0,262603</td>
-    </tr>
-    <tr>
-      <th>dropoff_latitude</th>
-      <td>FieldType.DECIMAL</td>
-      <td>40,5835</td>
-      <td>40,8797</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0.0</td>
-      <td>40,5973</td>
-      <td>40,6928</td>
-      <td>40,6911</td>
-      <td>40,7226</td>
-      <td>40,7567</td>
-      <td>40,7918</td>
-      <td>40,8495</td>
-      <td>40,868</td>
-      <td>40,8787</td>
-      <td>40,7583</td>
-      <td>0,0517399</td>
-      <td>0,00267701</td>
-      <td>0,0390404</td>
-      <td>-0,203525</td>
-    </tr>
-    <tr>
-      <th>passagiers</th>
-      <td>FieldType.DECIMAL</td>
-      <td>1</td>
-      <td>6</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0,0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>5</td>
-      <td>5</td>
-      <td>6</td>
-      <td>6</td>
-      <td>2,39249</td>
-      <td>1,83197</td>
-      <td>3,3561</td>
-      <td>0,763144</td>
-      <td>-1,23467</td>
-    </tr>
-    <tr>
-      <th>afstand</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0,01</td>
-      <td>32,34</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0.0</td>
-      <td>0,0108744</td>
-      <td>0,743898</td>
-      <td>0,738194</td>
-      <td>1,243</td>
-      <td>2,40168</td>
-      <td>4,74478</td>
-      <td>10,5136</td>
-      <td>14,9011</td>
-      <td>21,8035</td>
-      <td>3,5447</td>
-      <td>3,2943</td>
-      <td>10,8524</td>
-      <td>1,91556</td>
-      <td>4,99898</td>
-    </tr>
-    <tr>
-      <th>kosten</th>
-      <td>FieldType.DECIMAL</td>
-      <td>0.1</td>
-      <td>88</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>6148,0</td>
-      <td>0.0</td>
-      <td>0,0</td>
-      <td>0.0</td>
-      <td>2,33837</td>
-      <td>5,00491</td>
-      <td>5</td>
-      <td>6,93129</td>
-      <td>10,524</td>
-      <td>17,4811</td>
-      <td>33,2343</td>
-      <td>50,0093</td>
-      <td>63,1753</td>
-      <td>13,6843</td>
-      <td>9,66571</td>
-      <td>93,426</td>
-      <td>1,78518</td>
-      <td>4,13972</td>
-    </tr>
-  </tbody>
-</table>
-
-U bereidt het model voor het experiment voor door kolommen toe te voegen aan `dflow_x` die functies worden bij het maken van het model. U definieert `dflow_y` als voorspellingswaarde; **kosten**:
-
-```python
-dflow_X = dflow_prepared.keep_columns(
-    ['pickup_weekday', 'pickup_hour', 'distance', 'passengers', 'vendor'])
-dflow_y = dflow_prepared.keep_columns('cost')
-```
-
-### <a name="split-the-data-into-train-and-test-sets"></a>Gegevens splitsen in sets voor trainen en voor testen
-
-Nu splitst u de gegevens in trainings- en testsets met behulp van de functie `train_test_split` in de `sklearn`-bibliotheek. Met deze functie worden de gegevens verdeeld in de gegevensset x (**functies**) voor het trainen van het model, en de gegevensset y (**te voorspellen waarden**) voor testen. Met de parameter `test_size` wordt het percentage gegevens bepaald dat moet worden toegewezen aan testen. Met de parameter `random_state` wordt de willekeurige generator ingesteld, zodat de verdeling tussen trainen en testen altijd deterministisch is:
-
-```python
-from sklearn.model_selection import train_test_split
-
-x_df = dflow_X.to_pandas_dataframe()
-y_df = dflow_y.to_pandas_dataframe()
-
-x_train, x_test, y_train, y_test = train_test_split(
-    x_df, y_df, test_size=0.2, random_state=223)
-# flatten y_train to 1d array
-y_train.values.flatten()
-```
-
-Het doel van deze stap is om gegevenspunten voor het testen van het voltooide model te verkrijgen die nog niet zijn gebruikt voor het trainen van het model. Zo kan de ware nauwkeurigheid van het model worden gemeten. Met andere woorden, een goed getraind model moet in staat zijn nauwkeurige voorspellingen te doen voor gegevens die nog niet eerder de revue hebben gepasseerd. U beschikt nu over de vereiste pakketten en gegevens voor automatische training van uw model.
-
-## <a name="automatically-train-a-model"></a>Automatisch een model trainen
-
-Als u automatisch een model wilt trainen, voert u de volgende stappen uit:
-1. Definieer de instellingen voor het uitvoeren van het experiment. Koppel uw trainingsgegevens aan de configuratie en wijzig de instellingen voor het trainingsproces.
-1. Verzend het experiment om het model af te stemmen. Nadat u het experiment hebt verzonden, doorloopt het proces verschillende machine learning-algoritmen en hyperparameter-instellingen conform de gedefinieerde beperkingen. Het optimale model worden gekozen door een metrische nauwkeurigheidswaarde te optimaliseren.
-
-### <a name="define-settings-for-autogeneration-and-tuning"></a>Definieer de instellingen voor automatisch genereren en afstemmen
-
-Definieer de experimentparameter en modelinstellingen voor automatisch genereren en afstemmen. Bekijk de volledige lijst met [instellingen](how-to-configure-auto-train.md). Het verzenden van het experiment met deze standaardinstellingen duurt ongeveer 10-15 minuten. Als u een kortere uitvoeringstijd wilt, verkleint u de waarde van `iterations` of `iteration_timeout_minutes`.
-
-
-|Eigenschap| Waarde in deze zelfstudie |Description|
-|----|----|---|
-|**iteration_timeout_minutes**|10|Tijdslimiet in minuten voor elke iteratie. Verklein deze waarde als u de totale uitvoeringstijd wilt verminderen.|
-|**iterations**|30|Aantal iteraties. Bij elke iteratie wordt een nieuw Machine Learning-model getraind met uw gegevens. Dit is de primaire waarde die van invloed is op de totale uitvoeringstijd.|
-|**primary_metric**| spearman_correlation | De metrische gegevens die u wilt optimaliseren. Het optimale model wordt gekozen op basis van deze metrische waarde.|
-|**preprocess**| Waar | Gebruik **True** voor de voorverwerking van de invoergegevens van het experiment (afhandeling van ontbrekende gegevens, conversie van tekst naar numerieke waarden, enzovoort).|
-|**uitgebreidheid**| logging.INFO | Hiermee bepaalt u het niveau van logboekregistratie.|
-|**n_cross_validations**|5|Aantal kruisvalidaties dat moet worden uitgevoerd wanneer er geen validatiegegevens worden opgegeven.|
-
-
-
-```python
-automl_settings = {
-    "iteration_timeout_minutes": 10,
-    "iterations": 30,
-    "primary_metric": 'spearman_correlation',
-    "preprocess": True,
-    "verbosity": logging.INFO,
-    "n_cross_validations": 5
-}
-```
-
-Gebruik de gedefinieerde trainingsinstellingen als parameter voor een `AutoMLConfig`-object. Geef uw trainingsgegevens en het type model op. In dat geval is dat `regression`.
-
-```python
-from azureml.train.automl import AutoMLConfig
-
-# local compute
-automated_ml_config = AutoMLConfig(task='regression',
-                                   debug_log='automated_ml_errors.log',
-                                   path=project_folder,
-                                   X=x_train.values,
-                                   y=y_train.values.flatten(),
-                                   **automl_settings)
-```
-
-> [!NOTE]
-> Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
-
-### <a name="train-the-automatic-regression-model"></a>Het automatische regressiemodel trainen
-
-Start het experiment voor lokale uitvoering. Geef het gedefinieerde `automated_ml_config`-object door aan het experiment. Stel de uitvoer in op `True` om de voortgang tijdens het experiment weer te geven:
-
-
-```python
-from azureml.core.experiment import Experiment
-experiment = Experiment(ws, experiment_name)
-local_run = experiment.submit(automated_ml_config, show_output=True)
-```
-
-De uitvoer wordt weergegeven en bijgewerkt terwijl het experiment wordt uitgevoerd. Voor elke iteratie ziet u het modeltype, de uitvoeringsduur en de nauwkeurigheid van de training. In het veld `BEST` wordt de beste trainingsscore op basis van uw type metrische waarde bijgehouden.
-
-    Parent Run ID: AutoML_02778de3-3696-46e9-a71b-521c8fca0651
-    *******************************************************************************************
-    ITERATION: The iteration being evaluated.
-    PIPELINE: A summary description of the pipeline being evaluated.
-    DURATION: Time taken for the current iteration.
-    METRIC: The result of computing score on the fitted pipeline.
-    BEST: The best observed score thus far.
-    *******************************************************************************************
-
-     ITERATION   PIPELINE                                       DURATION      METRIC      BEST
-             0   MaxAbsScaler ExtremeRandomTrees                0:00:08       0.9447    0.9447
-             1   StandardScalerWrapper GradientBoosting         0:00:09       0.9536    0.9536
-             2   StandardScalerWrapper ExtremeRandomTrees       0:00:09       0.8580    0.9536
-             3   StandardScalerWrapper RandomForest             0:00:08       0.9147    0.9536
-             4   StandardScalerWrapper ExtremeRandomTrees       0:00:45       0.9398    0.9536
-             5   MaxAbsScaler LightGBM                          0:00:08       0.9562    0.9562
-             6   StandardScalerWrapper ExtremeRandomTrees       0:00:27       0.8282    0.9562
-             7   StandardScalerWrapper LightGBM                 0:00:07       0.9421    0.9562
-             8   MaxAbsScaler DecisionTree                      0:00:08       0.9526    0.9562
-             9   MaxAbsScaler RandomForest                      0:00:09       0.9355    0.9562
-            10   MaxAbsScaler SGD                               0:00:09       0.9602    0.9602
-            11   MaxAbsScaler LightGBM                          0:00:09       0.9553    0.9602
-            12   MaxAbsScaler DecisionTree                      0:00:07       0.9484    0.9602
-            13   MaxAbsScaler LightGBM                          0:00:08       0.9540    0.9602
-            14   MaxAbsScaler RandomForest                      0:00:10       0.9365    0.9602
-            15   MaxAbsScaler SGD                               0:00:09       0.9602    0.9602
-            16   StandardScalerWrapper ExtremeRandomTrees       0:00:49       0.9171    0.9602
-            17   SparseNormalizer LightGBM                      0:00:08       0.9191    0.9602
-            18   MaxAbsScaler DecisionTree                      0:00:08       0.9402    0.9602
-            19   StandardScalerWrapper ElasticNet               0:00:08       0.9603    0.9603
-            20   MaxAbsScaler DecisionTree                      0:00:08       0.9513    0.9603
-            21   MaxAbsScaler SGD                               0:00:08       0.9603    0.9603
-            22   MaxAbsScaler SGD                               0:00:10       0.9602    0.9603
-            23   StandardScalerWrapper ElasticNet               0:00:09       0.9603    0.9603
-            24   StandardScalerWrapper ElasticNet               0:00:09       0.9603    0.9603
-            25   MaxAbsScaler SGD                               0:00:09       0.9603    0.9603
-            26   TruncatedSVDWrapper ElasticNet                 0:00:09       0.9602    0.9603
-            27   MaxAbsScaler SGD                               0:00:12       0.9413    0.9603
-            28   StandardScalerWrapper ElasticNet               0:00:07       0.9603    0.9603
-            29    Ensemble                                      0:00:38       0.9622    0.9622
-
-## <a name="explore-the-results"></a>De resultaten verkennen
-
-Bekijk de resultaten van de automatische training met een Jupyter-widget of door de geschiedenis van het experiment te controleren.
-
-### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Optie 1: Een Jupyter-widget toevoegen om de resultaten te bekijken
-
-Als u een Jupyter-notebook gebruikt, kunt u deze [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) gebruiken om een grafiek en een tabel met alle resultaten weer te geven:
-
-
-```python
-from azureml.widgets import RunDetails
-RunDetails(local_run).show()
-```
-
-![Uitvoeringsdetails van Jupyter-widget](./media/tutorial-auto-train-models/automl-dash-output.png)
-![Tekengebied Jupyter-widget](./media/tutorial-auto-train-models/automl-chart-output.png)
-
-Dezelfde resultaten worden opgeslagen in uw werk ruimte.  U vindt een koppeling naar de resultaten van het uitvoeren van:
-
-```
-local_run.get_portal_url()
-```
-
-
-### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Optie 2: Alle uitgevoerde herhalingen ophalen en onderzoeken in Python
-
-U kunt ook de geschiedenis van elk experiment ophalen en de afzonderlijke metrische gegevens voor elke uitgevoerde iteratie verkennen. Als u RMSE (root_mean_squared_error) bekijkt voor elk afzonderlijk model dat is uitgevoerd, ziet u dat de voorspelde taxitarieven bij de meeste iteraties binnen een redelijke marge ($3-4) vallen.
-
-```python
-children = list(local_run.get_children())
-metricslist = {}
-for run in children:
-    properties = run.get_properties()
-    metrics = {k: v for k, v in run.get_metrics().items()
-               if isinstance(v, float)}
-    metricslist[int(properties['iteration'])] = metrics
-
-rundata = pd.DataFrame(metricslist).sort_index(1)
-rundata
+green_taxi_df.head(10)
 ```
 
 <div>
@@ -776,326 +83,919 @@ rundata
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
+      <th>Leverancier</th>
+      <th>lpepPickupDatetime</th>
+      <th>lpepDropoffDatetime</th>
+      <th>passengerCount</th>
+      <th>tripDistance</th>
+      <th>puLocationId</th>
+      <th>doLocationId</th>
+      <th>pickupLongitude</th>
+      <th>pickupLatitude</th>
+      <th>dropoffLongitude</th>
       <th>...</th>
-      <th>20</th>
-      <th>21</th>
-      <th>22</th>
-      <th>23</th>
-      <th>24</th>
-      <th>25</th>
-      <th>26</th>
-      <th>27</th>
-      <th>28</th>
-      <th>29</th>
+      <th>paymentType</th>
+      <th>fareAmount</th>
+      <th>kent</th>
+      <th>mtaTax</th>
+      <th>improvementSurcharge</th>
+      <th>tipAmount</th>
+      <th>tollsAmount</th>
+      <th>ehailFee</th>
+      <th>totalAmount</th>
+      <th>tripType</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>explained_variance</th>
-      <td>0,811037</td>
-      <td>0,880553</td>
-      <td>0,398582</td>
-      <td>0,776040</td>
-      <td>0,663869</td>
-      <td>0,875911</td>
-      <td>0,115632</td>
-      <td>0,586905</td>
-      <td>0,851911</td>
-      <td>0,793964</td>
+      <th>131969</th>
+      <td>2</td>
+      <td>2015-01-11 05:34:44</td>
+      <td>2015-01-11 05:45:03</td>
+      <td>3</td>
+      <td>4,84</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,88</td>
+      <td>40,84</td>
+      <td>-73,94</td>
       <td>...</td>
-      <td>0,850023</td>
-      <td>0,883603</td>
-      <td>0,883704</td>
-      <td>0,880797</td>
-      <td>0,881564</td>
-      <td>0,883708</td>
-      <td>0,881826</td>
-      <td>0,585377</td>
-      <td>0,883123</td>
-      <td>0,886817</td>
+      <td>2</td>
+      <td>15,00</td>
+      <td>0,50</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>16,30</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>mean_absolute_error</th>
-      <td>2,189444</td>
-      <td>1,500412</td>
-      <td>5,480531</td>
-      <td>2,626316</td>
-      <td>2,973026</td>
-      <td>1,550199</td>
-      <td>6,383868</td>
-      <td>4,414241</td>
-      <td>1,743328</td>
-      <td>2,294601</td>
+      <th>1129817</th>
+      <td>2</td>
+      <td>2015-01-20 16:26:29</td>
+      <td>2015-01-20 16:30:26</td>
+      <td>1</td>
+      <td>0,69</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,96</td>
+      <td>40,81</td>
+      <td>-73,96</td>
       <td>...</td>
-      <td>1,797402</td>
-      <td>1,415815</td>
-      <td>1,418167</td>
-      <td>1,578617</td>
-      <td>1,559427</td>
-      <td>1,413042</td>
-      <td>1,551698</td>
-      <td>4,069196</td>
-      <td>1,505795</td>
-      <td>1,430957</td>
+      <td>2</td>
+      <td>4.50</td>
+      <td>1,00</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>6,30</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>median_absolute_error</th>
-      <td>1,438417</td>
-      <td>0,850899</td>
-      <td>4,579662</td>
-      <td>1,765210</td>
-      <td>1,594600</td>
-      <td>0,869883</td>
-      <td>4,266450</td>
-      <td>3,627355</td>
-      <td>0,954992</td>
-      <td>1,361014</td>
+      <th>1278620</th>
+      <td>2</td>
+      <td>2015-01-01 05:58:10</td>
+      <td>2015-01-01 06:00:55</td>
+      <td>1</td>
+      <td>0,45</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,91</td>
       <td>...</td>
-      <td>0,973634</td>
-      <td>0,774814</td>
-      <td>0,797269</td>
-      <td>1,147234</td>
-      <td>1,116424</td>
-      <td>0,783958</td>
-      <td>1,098464</td>
-      <td>2,709027</td>
-      <td>1,003728</td>
-      <td>0,851724</td>
+      <td>2</td>
+      <td>4,00</td>
+      <td>0,00</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>4,80</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>normalized_mean_absolute_error</th>
-      <td>0,024908</td>
-      <td>0,017070</td>
-      <td>0,062350</td>
-      <td>0,029878</td>
-      <td>0,033823</td>
-      <td>0,017636</td>
-      <td>0,072626</td>
-      <td>0,050219</td>
-      <td>0,019833</td>
-      <td>0,026105</td>
+      <th>348430</th>
+      <td>2</td>
+      <td>2015-01-17 02:20:50</td>
+      <td>2015-01-17 02:41:38</td>
+      <td>1</td>
+      <td>0,00</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,81</td>
+      <td>40,70</td>
+      <td>-73,82</td>
       <td>...</td>
-      <td>0,020448</td>
-      <td>0,016107</td>
-      <td>0,016134</td>
-      <td>0,017959</td>
-      <td>0,017741</td>
-      <td>0,016076</td>
-      <td>0,017653</td>
-      <td>0,046293</td>
-      <td>0,017131</td>
-      <td>0,016279</td>
+      <td>2</td>
+      <td>12,50</td>
+      <td>0,50</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>13,80</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>normalized_median_absolute_error</th>
-      <td>0,016364</td>
-      <td>0,009680</td>
-      <td>0,052101</td>
-      <td>0,020082</td>
-      <td>0,018141</td>
-      <td>0,009896</td>
-      <td>0,048538</td>
-      <td>0,041267</td>
-      <td>0,010865</td>
-      <td>0,015484</td>
+      <th>1269627</th>
+      <td>1</td>
+      <td>2015-01-01 05:04:10</td>
+      <td>2015-01-01 05:06:23</td>
+      <td>1</td>
+      <td>0,50</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,92</td>
       <td>...</td>
-      <td>0,011077</td>
-      <td>0,008815</td>
-      <td>0,009070</td>
-      <td>0,013052</td>
-      <td>0,012701</td>
-      <td>0,008919</td>
-      <td>0,012497</td>
-      <td>0,030819</td>
-      <td>0,011419</td>
-      <td>0,009690</td>
+      <td>2</td>
+      <td>4,00</td>
+      <td>0,50</td>
+      <td>0,50</td>
+      <td>0</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>5,00</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>normalized_root_mean_squared_error</th>
-      <td>0,047968</td>
-      <td>0,037882</td>
-      <td>0,085572</td>
-      <td>0,052282</td>
-      <td>0,065809</td>
-      <td>0,038664</td>
-      <td>0,109401</td>
-      <td>0,071104</td>
-      <td>0,042294</td>
-      <td>0,049967</td>
+      <th>811755</th>
+      <td>1</td>
+      <td>2015-01-04 19:57:51</td>
+      <td>2015-01-04 20:05:45</td>
+      <td>2</td>
+      <td>1,10</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,95</td>
       <td>...</td>
-      <td>0,042565</td>
-      <td>0,037685</td>
-      <td>0,037557</td>
-      <td>0,037643</td>
-      <td>0,037513</td>
-      <td>0,037560</td>
-      <td>0,037465</td>
-      <td>0,072077</td>
-      <td>0,037249</td>
-      <td>0,036716</td>
+      <td>2</td>
+      <td>6,50</td>
+      <td>0,50</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>7,80</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>normalized_root_mean_squared_log_error</th>
-      <td>0,055353</td>
-      <td>0,045000</td>
-      <td>0,110219</td>
-      <td>0,065633</td>
-      <td>0,063589</td>
-      <td>0,044412</td>
-      <td>0,123433</td>
-      <td>0,092312</td>
-      <td>0,046130</td>
-      <td>0,055243</td>
+      <th>737281</th>
+      <td>1</td>
+      <td>2015-01-03 12:27:31</td>
+      <td>2015-01-03 12:33:52</td>
+      <td>1</td>
+      <td>0,90</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,88</td>
+      <td>40,76</td>
+      <td>-73,87</td>
       <td>...</td>
-      <td>0,046540</td>
-      <td>0,041804</td>
-      <td>0,041771</td>
-      <td>0,045175</td>
-      <td>0,044628</td>
-      <td>0,041617</td>
-      <td>0,044405</td>
-      <td>0,079651</td>
-      <td>0,042799</td>
-      <td>0,041530</td>
+      <td>2</td>
+      <td>6,00</td>
+      <td>0,00</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>6,80</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>r2_score</th>
-      <td>0,810900</td>
-      <td>0,880328</td>
-      <td>0,398076</td>
-      <td>0,775957</td>
-      <td>0,642812</td>
-      <td>0,875719</td>
-      <td>0,021603</td>
-      <td>0,586514</td>
-      <td>0,851767</td>
-      <td>0,793671</td>
+      <th>113951</th>
+      <td>1</td>
+      <td>2015-01-09 23:25:51</td>
+      <td>2015-01-09 23:39:52</td>
+      <td>1</td>
+      <td>3,30</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,91</td>
       <td>...</td>
-      <td>0,849809</td>
-      <td>0,880142</td>
-      <td>0,880952</td>
-      <td>0,880586</td>
-      <td>0,881347</td>
-      <td>0,880887</td>
-      <td>0,881613</td>
-      <td>0,548121</td>
-      <td>0,882883</td>
-      <td>0,886321</td>
+      <td>2</td>
+      <td>12,50</td>
+      <td>0,50</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>13,80</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>root_mean_squared_error</th>
-      <td>4,216362</td>
-      <td>3,329810</td>
-      <td>7,521765</td>
-      <td>4,595604</td>
-      <td>5,784601</td>
-      <td>3,398540</td>
-      <td>9,616354</td>
-      <td>6,250011</td>
-      <td>3,717661</td>
-      <td>4,392072</td>
+      <th>150436</th>
+      <td>2</td>
+      <td>2015-01-11 17:15:14</td>
+      <td>2015-01-11 17:22:57</td>
+      <td>1</td>
+      <td>1,19</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,95</td>
       <td>...</td>
-      <td>3,741447</td>
-      <td>3,312533</td>
-      <td>3,301242</td>
-      <td>3,308795</td>
-      <td>3,297389</td>
-      <td>3,301485</td>
-      <td>3,293182</td>
-      <td>6,335581</td>
-      <td>3,274209</td>
-      <td>3,227365</td>
+      <td>1</td>
+      <td>7,00</td>
+      <td>0,00</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>1,75</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>9,55</td>
+      <td>1,00</td>
     </tr>
     <tr>
-      <th>root_mean_squared_log_error</th>
-      <td>0,243184</td>
-      <td>0,197702</td>
-      <td>0,484227</td>
-      <td>0,288349</td>
-      <td>0,279367</td>
-      <td>0,195116</td>
-      <td>0,542281</td>
-      <td>0,405559</td>
-      <td>0,202666</td>
-      <td>0,242702</td>
+      <th>432136</th>
+      <td>2</td>
+      <td>2015-01-22 23:16:33</td>
+      <td>2015-01-22 23:20:13</td>
+      <td>1</td>
+      <td>0,65</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,94</td>
       <td>...</td>
-      <td>0,204464</td>
-      <td>0,183658</td>
-      <td>0,183514</td>
-      <td>0,198468</td>
-      <td>0,196067</td>
-      <td>0,182836</td>
-      <td>0,195087</td>
-      <td>0,349935</td>
-      <td>0,188031</td>
-      <td>0,182455</td>
-    </tr>
-    <tr>
-      <th>spearman_correlation</th>
-      <td>0,944743</td>
-      <td>0,953618</td>
-      <td>0,857965</td>
-      <td>0,914703</td>
-      <td>0,939846</td>
-      <td>0,956159</td>
-      <td>0,828187</td>
-      <td>0,942069</td>
-      <td>0,952581</td>
-      <td>0,935477</td>
-      <td>...</td>
-      <td>0,951287</td>
-      <td>0,960335</td>
-      <td>0,960195</td>
-      <td>0,960279</td>
-      <td>0,960288</td>
-      <td>0,960323</td>
-      <td>0,960161</td>
-      <td>0,941254</td>
-      <td>0,960293</td>
-      <td>0,962158</td>
-    </tr>
-    <tr>
-      <th>spearman_correlation_max</th>
-      <td>0,944743</td>
-      <td>0,953618</td>
-      <td>0,953618</td>
-      <td>0,953618</td>
-      <td>0,953618</td>
-      <td>0,956159</td>
-      <td>0,956159</td>
-      <td>0,956159</td>
-      <td>0,956159</td>
-      <td>0,956159</td>
-      <td>...</td>
-      <td>0,960303</td>
-      <td>0,960335</td>
-      <td>0,960335</td>
-      <td>0,960335</td>
-      <td>0,960335</td>
-      <td>0,960335</td>
-      <td>0,960335</td>
-      <td>0,960335</td>
-      <td>0,960335</td>
-      <td>0,962158</td>
+      <td>2</td>
+      <td>5,00</td>
+      <td>0,50</td>
+      <td>0,50</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>6,30</td>
+      <td>1,00</td>
     </tr>
   </tbody>
 </table>
-<p>12 rijen × 30 kolommen</p>
+<p>10 rijen × 23 kolommen</p>
 </div>
 
-## <a name="retrieve-the-best-model"></a>Het beste model ophalen
 
-Selecteer uit de herhalingen de beste pijplijn. Met de methode `get_output` in `automl_classifier` worden de beste uitvoering en het aangepaste model voor de laatste aangepaste aanroep geretourneerd. U kunt de overloads op `get_output` gebruiken om de beste uitvoering en het aangepaste model op te halen voor alle geregistreerde metrische gegevens of voor een bepaalde herhaling:
+Nu de initiële gegevens zijn geladen, definieert u een functie voor het maken van verschillende op tijd gebaseerde functies uit het veld Datum/tijd ophalen. Hiermee maakt u nieuwe velden voor het maand nummer, de dag van de maand, de dag van de week en het uur van de dag, waarna het model kan worden gefactord op basis van de op tijd gebaseerde seizoensgebondenheid. Gebruik de `apply()` functie op de data frame om iteratieve `build_time_features()` functie toe te passen op elke rij in de taxi gegevens.
+
+```python
+def build_time_features(vector):
+    pickup_datetime = vector[0]
+    month_num = pickup_datetime.month
+    day_of_month = pickup_datetime.day
+    day_of_week = pickup_datetime.weekday()
+    hour_of_day = pickup_datetime.hour
+
+    return pd.Series((month_num, day_of_month, day_of_week, hour_of_day))
+
+green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day"]] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
+green_taxi_df.head(10)
+```
+
+<div>
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Leverancier</th>
+      <th>lpepPickupDatetime</th>
+      <th>lpepDropoffDatetime</th>
+      <th>passengerCount</th>
+      <th>tripDistance</th>
+      <th>puLocationId</th>
+      <th>doLocationId</th>
+      <th>pickupLongitude</th>
+      <th>pickupLatitude</th>
+      <th>dropoffLongitude</th>
+      <th>...</th>
+      <th>improvementSurcharge</th>
+      <th>tipAmount</th>
+      <th>tollsAmount</th>
+      <th>ehailFee</th>
+      <th>totalAmount</th>
+      <th>tripType</th>
+      <th>month_num</th>
+      <th>day_of_month</th>
+      <th>day_of_week</th>
+      <th>hour_of_day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>131969</th>
+      <td>2</td>
+      <td>2015-01-11 05:34:44</td>
+      <td>2015-01-11 05:45:03</td>
+      <td>3</td>
+      <td>4,84</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,88</td>
+      <td>40,84</td>
+      <td>-73,94</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>16,30</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>11</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1129817</th>
+      <td>2</td>
+      <td>2015-01-20 16:26:29</td>
+      <td>2015-01-20 16:30:26</td>
+      <td>1</td>
+      <td>0,69</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,96</td>
+      <td>40,81</td>
+      <td>-73,96</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>6,30</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>20</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>1278620</th>
+      <td>2</td>
+      <td>2015-01-01 05:58:10</td>
+      <td>2015-01-01 06:00:55</td>
+      <td>1</td>
+      <td>0,45</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,91</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>4,80</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>348430</th>
+      <td>2</td>
+      <td>2015-01-17 02:20:50</td>
+      <td>2015-01-17 02:41:38</td>
+      <td>1</td>
+      <td>0,00</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,81</td>
+      <td>40,70</td>
+      <td>-73,82</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>13,80</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>17</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1269627</th>
+      <td>1</td>
+      <td>2015-01-01 05:04:10</td>
+      <td>2015-01-01 05:06:23</td>
+      <td>1</td>
+      <td>0,50</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,92</td>
+      <td>40,76</td>
+      <td>-73,92</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>5,00</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>811755</th>
+      <td>1</td>
+      <td>2015-01-04 19:57:51</td>
+      <td>2015-01-04 20:05:45</td>
+      <td>2</td>
+      <td>1,10</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,95</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>7,80</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>4</td>
+      <td>6</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>737281</th>
+      <td>1</td>
+      <td>2015-01-03 12:27:31</td>
+      <td>2015-01-03 12:33:52</td>
+      <td>1</td>
+      <td>0,90</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,88</td>
+      <td>40,76</td>
+      <td>-73,87</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>6,80</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>113951</th>
+      <td>1</td>
+      <td>2015-01-09 23:25:51</td>
+      <td>2015-01-09 23:39:52</td>
+      <td>1</td>
+      <td>3,30</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,96</td>
+      <td>40,72</td>
+      <td>-73,91</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>13,80</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>9</td>
+      <td>4</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>150436</th>
+      <td>2</td>
+      <td>2015-01-11 17:15:14</td>
+      <td>2015-01-11 17:22:57</td>
+      <td>1</td>
+      <td>1,19</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,95</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>1,75</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>9,55</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>11</td>
+      <td>6</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>432136</th>
+      <td>2</td>
+      <td>2015-01-22 23:16:33</td>
+      <td>2015-01-22 23:20:13</td>
+      <td>1</td>
+      <td>0,65</td>
+      <td>Geen</td>
+      <td>Geen</td>
+      <td>-73,94</td>
+      <td>40,71</td>
+      <td>-73,94</td>
+      <td>...</td>
+      <td>0,3</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>ner</td>
+      <td>6,30</td>
+      <td>1,00</td>
+      <td>1</td>
+      <td>22</td>
+      <td>3</td>
+      <td>23</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rijen × 27 kolommen</p>
+</div>
+
+Verwijder enkele van de kolommen die u niet nodig hebt voor de training of het maken van extra functies.
+
+```python
+columns_to_remove = ["lpepPickupDatetime", "lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
+                     "improvementSurcharge", "tollsAmount", "ehailFee", "tripType", "rateCodeID",
+                     "storeAndFwdFlag", "paymentType", "fareAmount", "tipAmount"
+                    ]
+for col in columns_to_remove:
+    green_taxi_df.pop(col)
+
+green_taxi_df.head(5)
+```
+
+### <a name="cleanse-data"></a>Gegevens opschonen
+
+Voer de `describe()` functie uit op de nieuwe data frame om samenvattings statistieken voor elk veld weer te geven.
+
+```python
+green_taxi_df.describe()
+```
+
+<div>
+<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Leverancier</th>
+      <th>passengerCount</th>
+      <th>tripDistance</th>
+      <th>pickupLongitude</th>
+      <th>pickupLatitude</th>
+      <th>dropoffLongitude</th>
+      <th>dropoffLatitude</th>
+      <th>totalAmount</th>
+      <th>month_num</th>
+      <th>day_of_month</th>
+      <th>day_of_week</th>
+      <th>hour_of_day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+      <td>48000,00</td>
+    </tr>
+    <tr>
+      <th>gemiddelde</th>
+      <td>1,78</td>
+      <td>1,37</td>
+      <td>2,87</td>
+      <td>-73,83</td>
+      <td>40,69</td>
+      <td>-73,84</td>
+      <td>40,70</td>
+      <td>14,75</td>
+      <td>6,50</td>
+      <td>15,13</td>
+      <td>3,27</td>
+      <td>13,52</td>
+    </tr>
+    <tr>
+      <th>Std</th>
+      <td>0.41</td>
+      <td>1,04</td>
+      <td>2,93</td>
+      <td>2,76</td>
+      <td>1,52</td>
+      <td>2.61</td>
+      <td>1,44</td>
+      <td>12,08</td>
+      <td>3.45</td>
+      <td>8,45</td>
+      <td>1,95</td>
+      <td>6,83</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1,00</td>
+      <td>0,00</td>
+      <td>0,00</td>
+      <td>-74,66</td>
+      <td>0,00</td>
+      <td>-74,66</td>
+      <td>0,00</td>
+      <td>-300,00</td>
+      <td>1,00</td>
+      <td>1,00</td>
+      <td>0,00</td>
+      <td>0,00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2,00</td>
+      <td>1,00</td>
+      <td>1,06</td>
+      <td>-73,96</td>
+      <td>40,70</td>
+      <td>-73,97</td>
+      <td>40,70</td>
+      <td>7,80</td>
+      <td>3.75</td>
+      <td>8,00</td>
+      <td>2,00</td>
+      <td>9,00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2,00</td>
+      <td>1,00</td>
+      <td>1,90</td>
+      <td>-73,94</td>
+      <td>40,75</td>
+      <td>-73,94</td>
+      <td>40,75</td>
+      <td>11,30</td>
+      <td>6,50</td>
+      <td>15,00</td>
+      <td>3,00</td>
+      <td>15,00</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2,00</td>
+      <td>1,00</td>
+      <td>3,60</td>
+      <td>-73,92</td>
+      <td>40,80</td>
+      <td>-73,91</td>
+      <td>40,79</td>
+      <td>17,80</td>
+      <td>9,25</td>
+      <td>22,00</td>
+      <td>5,00</td>
+      <td>19,00</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2,00</td>
+      <td>9,00</td>
+      <td>97,57</td>
+      <td>0,00</td>
+      <td>41,93</td>
+      <td>0,00</td>
+      <td>41,94</td>
+      <td>450,00</td>
+      <td>12,00</td>
+      <td>30,00</td>
+      <td>6,00</td>
+      <td>23,00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+Vanuit de samenvattings statistieken ziet u dat er verschillende velden zijn met uitbijters of waarden waardoor de nauw keurigheid van het model wordt verminderd. Filter eerst of de velden lat/long binnen de grenzen van het gebied Manhattan. Zo kunt u de langere taxi-reizen of-reizen die uitschieters afwegen tegen hun relatie met andere functies filteren.
+
+U kunt het `tripDistance` veld ook filteren op een waarde groter dan nul, maar kleiner dan 31 mijl (de haversine-afstand tussen de twee lat/long-paren). Dit elimineert lange uitschieter-reizen met inconsistente reis kosten.
+
+Ten slotte heeft `totalAmount` het veld negatieve waarden voor de taxi tarieven, wat niet zinvol is in de context van ons model en het `passengerCount` veld bevat ongeldige gegevens met de minimum waarden nul.
+
+Filter deze afwijkingen met behulp van query functies en verwijder vervolgens de laatste paar kolommen die niet nodig zijn voor de training.
+
+
+```python
+final_df = green_taxi_df.query("pickupLatitude>=40.53 and pickupLatitude<=40.88")
+final_df = final_df.query("pickupLongitude>=-74.09 and pickupLongitude<=-73.72")
+final_df = final_df.query("tripDistance>=0.25 and tripDistance<31")
+final_df = final_df.query("passengerCount>0 and totalAmount>0")
+
+columns_to_remove_for_training = ["pickupLongitude", "pickupLatitude", "dropoffLongitude", "dropoffLatitude"]
+for col in columns_to_remove_for_training:
+    final_df.pop(col)
+```
+
+Roep `describe()` opnieuw aan met de gegevens om te controleren of het goed is gereinigd. U hebt nu een voor bereide en gereinigde set met gegevens over de taxi, feestdag en weers Taan die u voor machine learning model training kunt gebruiken.
+
+```python
+final_df.describe()
+```
+
+## <a name="configure-workspace"></a>Werkruimte configureren
+
+Maak een werkruimte-object van de bestaande werkruimte. Een [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is een klasse die uw Azure-abonnement en resource gegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden. `Workspace.from_config()`leest het bestand **config. json** en laadt de verificatie gegevens in een object `ws`met de naam. `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
+
+```python
+from azureml.core.workspace import Workspace
+ws = Workspace.from_config()
+```
+
+## <a name="split-the-data-into-train-and-test-sets"></a>Gegevens splitsen in sets voor trainen en voor testen
+
+Splits de gegevens in trainings-en test sets met `train_test_split` behulp van `scikit-learn` de functie in de-bibliotheek. Met deze functie worden de gegevens gescheiden in de x (**onderdelen**) gegevensset voor model training en de y (**waarden voor voors pellen**) gegevensset voor het testen.
+
+Met de parameter `test_size` wordt het percentage gegevens bepaald dat moet worden toegewezen aan testen. Met `random_state` de para meter wordt een Seed ingesteld op de wille keurige generator, zodat de splitsingen van uw Train tests deterministisch zijn.
+
+```python
+from sklearn.model_selection import train_test_split
+
+y_df = final_df.pop("totalAmount")
+x_df = final_df
+
+x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
+```
+
+Het doel van deze stap is om gegevenspunten voor het testen van het voltooide model te verkrijgen die nog niet zijn gebruikt voor het trainen van het model. Zo kan de ware nauwkeurigheid van het model worden gemeten.
+
+Met andere woorden, een goed getraind model moet in staat zijn nauwkeurige voorspellingen te doen voor gegevens die nog niet eerder de revue hebben gepasseerd. U hebt nu gegevens voor bereid op het automatisch trainen van een machine learning model.
+
+## <a name="automatically-train-a-model"></a>Automatisch een model trainen
+
+Als u automatisch een model wilt trainen, voert u de volgende stappen uit:
+1. Definieer de instellingen voor het uitvoeren van het experiment. Koppel uw trainingsgegevens aan de configuratie en wijzig de instellingen voor het trainingsproces.
+1. Verzend het experiment om het model af te stemmen. Nadat u het experiment hebt verzonden, doorloopt het proces verschillende machine learning-algoritmen en hyperparameter-instellingen conform de gedefinieerde beperkingen. Het optimale model worden gekozen door een metrische nauwkeurigheidswaarde te optimaliseren.
+
+### <a name="define-training-settings"></a>Trainings instellingen definiëren
+
+Definieer de para meter voor het experiment en de model instellingen voor training. Bekijk de volledige lijst met [instellingen](how-to-configure-auto-train.md). Het verzenden van het experiment met deze standaard instellingen duurt ongeveer 5-10 minuten, maar als u een kortere uitvoerings tijd wilt, `iterations` moet u de para meter verlagen.
+
+|Eigenschap| Waarde in deze zelfstudie |Description|
+|----|----|---|
+|**iteration_timeout_minutes**|2|Tijdslimiet in minuten voor elke iteratie. Verklein deze waarde als u de totale uitvoeringstijd wilt verminderen.|
+|**iterations**|20|Aantal iteraties. Bij elke iteratie wordt een nieuw Machine Learning-model getraind met uw gegevens. Dit is de primaire waarde die van invloed is op de totale uitvoeringstijd.|
+|**primary_metric**| spearman_correlation | De metrische gegevens die u wilt optimaliseren. Het optimale model wordt gekozen op basis van deze metrische waarde.|
+|**preprocess**| Waar | Gebruik **True** voor de voorverwerking van de invoergegevens van het experiment (afhandeling van ontbrekende gegevens, conversie van tekst naar numerieke waarden, enzovoort).|
+|**uitgebreidheid**| logging.INFO | Hiermee bepaalt u het niveau van logboekregistratie.|
+|**n_cross_validations**|5|Aantal kruisvalidaties dat moet worden uitgevoerd wanneer er geen validatiegegevens worden opgegeven.|
+
+```python
+import logging
+
+automl_settings = {
+    "iteration_timeout_minutes": 2,
+    "iterations": 20,
+    "primary_metric": 'spearman_correlation',
+    "preprocess": True,
+    "verbosity": logging.INFO,
+    "n_cross_validations": 5
+}
+```
+
+Gebruik uw gedefinieerde trainings instellingen als een `**kwargs` para meter voor `AutoMLConfig` een object. Geef uw trainingsgegevens en het type model op. In dat geval is dat `regression`.
+
+```python
+from azureml.train.automl import AutoMLConfig
+
+automl_config = AutoMLConfig(task='regression',
+                             debug_log='automated_ml_errors.log',
+                             X=x_train.values,
+                             y=y_train.values.flatten(),
+                             **automl_settings)
+```
+
+> [!NOTE]
+> Automatische machine learning vooraf verwerkte stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde vooraf verwerkings stappen die tijdens de training worden toegepast, automatisch toegepast op uw invoer gegevens.
+
+### <a name="train-the-automatic-regression-model"></a>Het automatische regressiemodel trainen
+
+Maak een experiment object in uw werk ruimte. Een experiment fungeert als een container voor uw afzonderlijke uitvoeringen. Geef het gedefinieerde `automl_config` object door aan het experiment en stel de uitvoer in `True` om de voortgang tijdens de uitvoering weer te geven.
+
+Na het starten van het experiment, worden de uitvoer weer gegeven als de proef versies. Voor elke iteratie ziet u het modeltype, de uitvoeringsduur en de nauwkeurigheid van de training. In het veld `BEST` wordt de beste trainingsscore op basis van uw type metrische waarde bijgehouden.
+
+```python
+from azureml.core.experiment import Experiment
+experiment = Experiment(ws, "taxi-experiment")
+local_run = experiment.submit(automl_config, show_output=True)
+```
+
+    Running on local machine
+    Parent Run ID: AutoML_1766cdf7-56cf-4b28-a340-c4aeee15b12b
+    Current status: DatasetFeaturization. Beginning to featurize the dataset.
+    Current status: DatasetEvaluation. Gathering dataset statistics.
+    Current status: FeaturesGeneration. Generating features for the dataset.
+    Current status: DatasetFeaturizationCompleted. Completed featurizing the dataset.
+    Current status: DatasetCrossValidationSplit. Generating individually featurized CV splits.
+    Current status: ModelSelection. Beginning model selection.
+
+    ****************************************************************************************************
+    ITERATION: The iteration being evaluated.
+    PIPELINE: A summary description of the pipeline being evaluated.
+    DURATION: Time taken for the current iteration.
+    METRIC: The result of computing score on the fitted pipeline.
+    BEST: The best observed score thus far.
+    ****************************************************************************************************
+
+     ITERATION   PIPELINE                                       DURATION      METRIC      BEST
+             0   StandardScalerWrapper RandomForest             0:00:16       0.8746    0.8746
+             1   MinMaxScaler RandomForest                      0:00:15       0.9468    0.9468
+             2   StandardScalerWrapper ExtremeRandomTrees       0:00:09       0.9303    0.9468
+             3   StandardScalerWrapper LightGBM                 0:00:10       0.9424    0.9468
+             4   RobustScaler DecisionTree                      0:00:09       0.9449    0.9468
+             5   StandardScalerWrapper LassoLars                0:00:09       0.9440    0.9468
+             6   StandardScalerWrapper LightGBM                 0:00:10       0.9282    0.9468
+             7   StandardScalerWrapper RandomForest             0:00:12       0.8946    0.9468
+             8   StandardScalerWrapper LassoLars                0:00:16       0.9439    0.9468
+             9   MinMaxScaler ExtremeRandomTrees                0:00:35       0.9199    0.9468
+            10   RobustScaler ExtremeRandomTrees                0:00:19       0.9411    0.9468
+            11   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9077    0.9468
+            12   StandardScalerWrapper LassoLars                0:00:15       0.9433    0.9468
+            13   MinMaxScaler ExtremeRandomTrees                0:00:14       0.9186    0.9468
+            14   RobustScaler RandomForest                      0:00:10       0.8810    0.9468
+            15   StandardScalerWrapper LassoLars                0:00:55       0.9433    0.9468
+            16   StandardScalerWrapper ExtremeRandomTrees       0:00:13       0.9026    0.9468
+            17   StandardScalerWrapper RandomForest             0:00:13       0.9140    0.9468
+            18   VotingEnsemble                                 0:00:23       0.9471    0.9471
+            19   StackEnsemble                                  0:00:27       0.9463    0.9471
+
+## <a name="explore-the-results"></a>De resultaten verkennen
+
+Bekijk de resultaten van automatische training met een [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py). Met de widget kunt u een grafiek en tabel van alle afzonderlijke run-iteraties weer geven, samen met metrische gegevens over de nauw keurigheid van de training en meta data. Daarnaast kunt u filteren op verschillende nauw keurige meet waarden dan uw primaire metriek met de kiezer voor vervolg keuzelijst.
+
+```python
+from azureml.widgets import RunDetails
+RunDetails(local_run).show()
+```
+
+![Uitvoeringsdetails van Jupyter-widget](./media/tutorial-auto-train-models/automl-dash-output.png)
+![Tekengebied Jupyter-widget](./media/tutorial-auto-train-models/automl-chart-output.png)
+
+### <a name="retrieve-the-best-model"></a>Het beste model ophalen
+
+Selecteer het beste model in uw iteraties. De `get_output` functie retourneert de beste uitvoering en het model dat voor het laatst aan de aanroep is aangepast. Door de Overloads op op `get_output`te gebruiken, kunt u het beste uitvoeren en het geschikte model voor elke vastgelegde metriek of een bepaalde herhaling ophalen.
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1103,57 +1003,27 @@ print(best_run)
 print(fitted_model)
 ```
 
-## <a name="test-the-best-model-accuracy"></a>Nauwkeurigheid van het beste model testen
+### <a name="test-the-best-model-accuracy"></a>Nauwkeurigheid van het beste model testen
 
-Gebruik het beste model om voorspellingen uit te voeren op de testgegevensset voor het voorspellen van taxitarieven. De functie `predict` maakt gebruik van het beste model. Met deze functie worden ook de waarden van y (**reiskosten**) uit de gegevensset `x_test` voorspeld. Druk de eerste tien voorspelde kostenwaarden uit `y_predict` af:
+Gebruik het beste model om voor spellingen uit te voeren op de test gegevens die zijn ingesteld om de taxi tarieven te voors pellen. De functie `predict` maakt gebruik van het beste model en voor spelt de waarden voor y, **reis kosten**en `x_test` de gegevensset. Druk de eerste 10 voorspelde kostenwaarden uit `y_predict` af.
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Maak een spreidingsdiagram om de voorspelde kostenwaarden in vergelijking met de daadwerkelijke kostenwaarden te visualiseren. De volgende code gebruikt de functie `distance` als x-as en de reis `cost` als y-as. De eerste 100 voorspelde en daadwerkelijke kostenwaarden worden in afzonderlijke reeksen gemaakt om de variantie van de voorspelde kosten van elke reisafstandswaarde te voorspellen. Als u de grafiek bekijkt, ziet u dat de afstand/kosten-relatie bijna lineair is en dat de voorspelde kostenwaarden in de meeste gevallen dicht bij de daadwerkelijke kostenwaarden voor dezelfde reisafstand liggen.
-
-```python
-%matplotlib inline
-
-import matplotlib.pyplot as plt
-
-fig = plt.figure(figsize=(14, 10))
-ax1 = fig.add_subplot(111)
-
-distance_vals = [x[4] for x in x_test.values]
-y_actual = y_test.values.flatten().tolist()
-
-ax1.scatter(distance_vals[:100], y_predict[:100],
-            s=18, c='b', marker="s", label='Predicted')
-ax1.scatter(distance_vals[:100], y_actual[:100],
-            s=18, c='r', marker="o", label='Actual')
-
-ax1.set_xlabel('distance (mi)')
-ax1.set_title('Predicted and Actual Cost/Distance')
-ax1.set_ylabel('Cost ($)')
-
-plt.legend(loc='upper left', prop={'size': 12})
-plt.rcParams.update({'font.size': 14})
-plt.show()
-```
-
-![Spreidingsdiagram voor voorspelling](./media/tutorial-auto-train-models/automl-scatter-plot.png)
-
-Bereken de `root mean squared error` van de resultaten. Gebruik het gegevensframe `y_test`. Converteer het frame naar een lijst om de voorspelde waarden te vergelijken. Met de functie `mean_squared_error` wordt de gemiddelde gekwadrateerde fout berekend tussen twee matrices met waarden. De vierkantswortel van het resultaat veroorzaakt een fout in dezelfde eenheden als de variabele y (**kosten**). Het geeft aan hoe ver de voorspelde taxitarieven ongeveer afwijken van de werkelijke tarieven:
+Bereken de `root mean squared error` van de resultaten. Converteer de `y_test` data frame naar een lijst om te vergelijken met de voorspelde waarden. Met de functie `mean_squared_error` wordt de gemiddelde gekwadrateerde fout berekend tussen twee matrices met waarden. De vierkantswortel van het resultaat veroorzaakt een fout in dezelfde eenheden als de variabele y (**kosten**). Het duidt ongeveer op hoe ver de voor spellingen van het taxi-ritbedrag uit de werkelijke tarieven afkomstig zijn.
 
 ```python
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
+y_actual = y_test.values.flatten().tolist()
 rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-    3.2204936862688798
-
-Voer de volgende code uit om MAPE (het gemiddelde absolute foutpercentage) te berekenen met behulp van de volledige gegevenssets `y_actual` en `y_predict`. Met deze statistiek wordt een absoluut verschil tussen elke voorspelde en werkelijke waarde berekent en worden alle verschillen opgeteld. Vervolgens wordt die som weergegeven als een percentage van het totaal van de werkelijke waarden:
+Voer de volgende code uit om de gemiddelde absolute percentage fout (MAPE) te berekenen met `y_actual` behulp van de volledige en `y_predict` gegevens sets. Met deze statistiek wordt een absoluut verschil tussen elke voorspelde en werkelijke waarde berekent en worden alle verschillen opgeteld. Vervolgens wordt deze som als een percentage van het totaal van de werkelijke waarden.
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1175,16 +1045,39 @@ print(1 - mean_abs_percent_error)
 ```
 
     Model MAPE:
-    0.10545153869569586
+    0.14353867606052823
 
     Model Accuracy:
-    0.8945484613043041
+    0.8564613239394718
 
-In de laatste metrische gegevens voor de nauwkeurigheid van de voorspellingen kunt u zien dat het model redelijk goed is in het voorspellen van taxitarieven op basis van de functies van de gegevensset, met een afwijking van maximaal $3,00 te veel of te weinig. In het traditionele ontwikkelingsproces voor een Machine Learning-model vergt het veel resourcecapaciteit, domeinkennis en tijd om verschillende modellen uit te voeren en de resultaten daarvan met elkaar te vergelijken. Geautomatiseerde machine learning is een uitstekende manier om in korte tijd veel verschillende modellen voor uw scenario te testen.
+
+Uit de twee nauw keurige meet gegevens voor de voor spellingen ziet u dat het model redelijk goed is bij het voors pellen van de taxi tarieven van de functies van de gegevensset, doorgaans binnen +-$4,00 en ongeveer 15% fout.
+
+De traditionele machine learning-model ontwikkelingsproces is zeer resource-intensieve en aanzienlijke domein kennis en het tijdstip investering uitvoeren en vergelijk de resultaten van tientallen modellen vereist. Geautomatiseerde machine learning is een uitstekende manier om in korte tijd veel verschillende modellen voor uw scenario te testen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning service-zelf studies uit te voeren.
+
+### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
+
+Als u een Cloud notebook server hebt gebruikt, stopt u de virtuele machine wanneer u deze niet gebruikt om de kosten te verlagen.
+
+1. Selecteer in uw werk ruimte de optie **laptop vm's**.
+1. Selecteer de VM in de lijst.
+1. Selecteer **stoppen**.
+1. Wanneer u klaar bent om de server opnieuw te gebruiken, selecteert u **starten**.
+
+### <a name="delete-everything"></a>Alles verwijderen
+
+Als u niet van plan bent om de resources te gebruiken die u hebt gemaakt, verwijdert u deze, zodat er geen kosten in rekening worden gebracht.
+
+1. Selecteer **Resourcegroepen** links in Azure Portal.
+1. Selecteer de resourcegroep die u eerder hebt gemaakt uit de lijst.
+1. Selecteer **Resourcegroep verwijderen**.
+1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen**.
+
+U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Bekijk de eigenschappen van de werkruimte en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -1195,4 +1088,4 @@ In deze zelfstudie over geautomatiseerde machine learning hebt u het volgende ge
 > * U hebt getraind met behulp van een lokaal geautomatiseerd regressiemodel met aangepaste parameters.
 > * U hebt trainingsresultaten verkend en gecontroleerd.
 
-[Uw model implementeren](tutorial-deploy-models-with-aml.md) met Azure Machine Learning.
+[Implementeer uw model](tutorial-deploy-models-with-aml.md) met Azure machine learning service.

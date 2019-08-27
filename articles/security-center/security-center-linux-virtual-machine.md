@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 725ac79414a9f94a40675bffe28a6972120c0cbf
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 402406f8aa677348d30551937cfca1e2726efba1
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515508"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033951"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure Security Center en Azure Virtual Machines met Linux
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) helpt u bedreigingen te voorkomen, te detecteren en erop te reageren. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden blijven, en werkt met een uitgebreid ecosysteem van beveiligingsoplossingen.
@@ -85,7 +85,7 @@ Nadat u een [beveiligingsbeleid](tutorial-security-policy.md) voor de resources 
 ![Beveiligingsstatus](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Beveiligingswaarschuwingen beheren en erop reageren
-Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren. Door gebruik te maken van een combinatie van [detectiemogelijkheden](security-center-detection-capabilities.md), kan Security Center beveiligingswaarschuwingen genereren waarmee u het probleem snel kunt onderzoeken en waarmee aanbevelingen kunnen worden geboden voor het herstellen van mogelijke aanvallen.
+Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren. Door gebruik te maken van een combinatie van [detectiemogelijkheden](security-center-alerts-overview.md#detect-threats), kan Security Center beveiligingswaarschuwingen genereren waarmee u het probleem snel kunt onderzoeken en waarmee aanbevelingen kunnen worden geboden voor het herstellen van mogelijke aanvallen.
 
 ![Beveiligingswaarschuwingen](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 

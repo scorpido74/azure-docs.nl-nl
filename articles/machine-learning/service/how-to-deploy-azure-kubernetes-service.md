@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 490085da1e8f6b8e151168433836d59329887c6e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 26f965169f1fd01676efd3356534a8ac9f2121f7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623966"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036072"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes service-cluster
 
@@ -229,7 +229,7 @@ Zie voor meer informatie over het gebruik van VS code [implementeren naar AKS vi
 
 ## <a name="web-service-authentication"></a>Verificatie van webservice
 
-Bij het implementeren naar de Azure Kubernetes-service is verificatie op __basis van een sleutel__ standaard ingeschakeld. U kunt ook __token__ verificatie inschakelen. Voor token verificatie moeten clients een Azure Active Directory-account gebruiken om een verificatie token aan te vragen, dat wordt gebruikt om aanvragen te doen voor de geïmplementeerde service.
+Bij het implementeren naar de Azure Kubernetes-service is verificatie op __basis van een sleutel__ standaard ingeschakeld. U kunt ook verificatie __op basis van tokens__ inschakelen. Voor verificatie op basis van tokens moeten clients een Azure Active Directory-account gebruiken om een verificatie token aan te vragen, dat wordt gebruikt om aanvragen te doen voor de geïmplementeerde service.
 
 Als u de verificatie wilt uitschakelen `auth_enabled=False` , stelt u de para meter bij het maken van de implementatie configuratie in. In het volgende voor beeld wordt de verificatie uitgeschakeld met de SDK:
 
@@ -269,7 +269,7 @@ print(token)
 > [!IMPORTANT]
 > U moet een nieuw token aanvragen na de tijd van `refresh_by` de token.
 >
-> Micro soft raadt u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. Als u wilt verifiëren met een token, wordt er door de webservice een aanroep naar de regio waarin uw Azure Machine Learning-werk ruimte is gemaakt. Als de regio van uw werk ruimte niet beschikbaar is, kunt u geen token voor uw webservice ophalen, zelfs als uw cluster zich in een andere regio bevindt dan uw werk ruimte. Dit leidt ertoe dat Azure AD-verificatie niet beschikbaar is totdat de regio van de werk ruimte weer beschikbaar is. Daarnaast is de afstand tussen de regio van uw cluster en de regio van uw werk ruimte groter, hoe langer het duurt om een token op te halen.
+> Micro soft raadt u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. Als u wilt verifiëren met een token, wordt er door de webservice een aanroep naar de regio waarin uw Azure Machine Learning-werk ruimte is gemaakt. Als de regio van uw werk ruimte niet beschikbaar is, kunt u geen token voor uw webservice ophalen, zelfs als uw cluster zich in een andere regio bevindt dan uw werk ruimte. Dit leidt ertoe dat op tokens gebaseerde verificatie niet beschikbaar is totdat de regio van de werk ruimte weer beschikbaar is. Daarnaast is de afstand tussen de regio van uw cluster en de regio van uw werk ruimte groter, hoe langer het duurt om een token op te halen.
 
 ## <a name="update-the-web-service"></a>Bijwerken van de webservice
 

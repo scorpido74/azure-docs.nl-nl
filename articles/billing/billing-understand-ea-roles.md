@@ -1,6 +1,6 @@
 ---
-title: Informatie over beheerdersrollen voor Enterprise in Azure | Microsoft Docs
-description: Meer informatie over Enterprise-beheerdersrollen in Azure.
+title: Meer informatie over beheerders rollen voor Enter prise in azure | Microsoft Docs
+description: Meer informatie over ondernemings beheerders rollen in Azure.
 services: billing
 documentationcenter: ''
 author: adpick
@@ -13,93 +13,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2018
 ms.author: banders
-ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39526defb8f41ddacb0a26d7ad852f820ca6ea77
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370710"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034531"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Enterprise Agreement voor Azure-beheerdersrollen in Azure begrijpen
+# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Meer informatie over Azure Enterprise Agreement-beheer rollen in azure
 
-Om u te helpen bij het gebruik van uw organisatie te beheren en besteden, Azure kunnen klanten met een Enterprise Agreement (EA) vijf afzonderlijke beheerdersrollen toewijzen:
+Om het gebruik en de uitgaven van uw organisatie te helpen beheren, kunnen Azure-klanten met een Enterprise Agreement (EA) vijf afzonderlijke beheerders rollen toewijzen:
 
-- Enterprise-beheerder
-- Enterprise-beheerder (alleen-lezen)
-- De beheerder van de afdeling
-- Afdeling beheerder (alleen-lezen)
+- Ondernemingsbeheerder
+- Enter prise-beheerder (alleen-lezen)
+- Afdelingsbeheerder
+- Afdelings beheerder (alleen-lezen)
 - Accounteigenaar
  
-Deze rollen zijn specifiek voor het beheren van Azure Enterprise-overeenkomsten en naast de ingebouwde rollen die Azure heeft toegang tot resources beheren. Zie voor meer informatie, [ingebouwde rollen voor Azure-resources](../role-based-access-control/built-in-roles.md).
+Deze rollen zijn specifiek voor het beheer van Azure Enter prise-overeenkomsten en zijn naast de ingebouwde rollen Azure om de toegang tot resources te beheren. Zie [ingebouwde rollen voor Azure-resources](../role-based-access-control/built-in-roles.md)voor meer informatie.
 
-De volgende secties beschrijven de beperkingen en mogelijkheden van elke rol.
+In de volgende secties worden de beperkingen en mogelijkheden van elke rol beschreven.
 
-## <a name="user-limit-for-admin-roles"></a>Gebruikerslimiet voor beheerdersrollen
+## <a name="user-limit-for-admin-roles"></a>Gebruikers limiet voor beheerders rollen
 
-|Rol| Gebruikerslimiet|
+|Role| Gebruikers limiet|
 |---|---|
-|Enterprise-beheerder|Onbeperkt|
-|Enterprise-beheerder (alleen-lezen)|Onbeperkt|
-|De beheerder van de afdeling|Onbeperkt|
-|Afdeling beheerder (alleen-lezen)|Onbeperkt|
+|Ondernemingsbeheerder|Onbeperkt|
+|Enter prise-beheerder (alleen-lezen)|Onbeperkt|
+|Afdelingsbeheerder|Onbeperkt|
+|Afdelings beheerder (alleen-lezen)|Onbeperkt|
 |Accounteigenaar|1 per account<sup>1</sup>|
 
-<sup>1</sup> elk account moet een unieke Microsoft-account of werk-of schoolaccount.
+<sup>1</sup> voor elk account is een uniek Microsoft-account-of werk-of school account vereist.
 
-## <a name="organization-structure-and-permissions-by-role"></a>Machtigingen per rol en de structuur van organisatie
+## <a name="organization-structure-and-permissions-by-role"></a>Organisatie structuur en-machtigingen op rol
 
-|Taken| Enterprise-beheerder|Enterprise-beheerder (alleen-lezen)|De beheerder van de afdeling|Afdeling beheerder (alleen-lezen)|Accounteigenaar|
+|Taken| Ondernemingsbeheerder|Enter prise-beheerder (alleen-lezen)|Afdelingsbeheerder|Afdelings beheerder (alleen-lezen)|Accounteigenaar|
 |---|---|---|---|---|---|
-|Ondernemingsadministrators weergeven|✔|✔|✘|✘|✘|
-|Toevoegen of verwijderen van Ondernemingsadministrators|✔|✘|✘|✘|✘|
-|Melding contactpersonen weergeven<sup>2</sup> |✔|✔|✘|✘|✘|
-|Toevoegen of verwijderen van de melding contactpersonen<sup>2</sup> |✔|✘|✘|✘|✘|
-|Maken en beheren van afdelingen |✔|✘|✘|✘|✘|
-|Beheerders van de afdeling weergeven|✔|✔|✔|✔|✘|
-|Toevoegen of verwijderen van de afdeling beheerders|✔|✔|✔|✘|✘|
-|Weergave-Accounts in de inschrijving |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
-|Accounts toevoegen aan de inschrijving en wijzig de eigenaar van Account|✔|✘|✔<sup>3</sup>|✘|✘|
-|Abonnementen en abonnementsmachtigingen maken en beheren|✘|✘|✘|✘|✔|
+|Ondernemings Administrators weer geven|✔|✔|✘|✘|✘|
+|Ondernemings Administrators toevoegen of verwijderen|✔|✘|✘|✘|✘|
+|Meldings contactpersonen weer geven<sup>2</sup> |✔|✔|✘|✘|✘|
+|Meldings contactpersonen toevoegen of verwijderen<sup>2</sup> |✔|✘|✘|✘|✘|
+|Afdelingen maken en beheren |✔|✘|✘|✘|✘|
+|Afdelings beheerders weer geven|✔|✔|✔|✔|✘|
+|Afdelings beheerders toevoegen of verwijderen|✔|✘|✔|✘|✘|
+|Accounts in de inschrijving weer geven |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
+|Accounts toevoegen aan de inschrijving en de eigenaar van het account wijzigen|✔|✘|✔<sup>3</sup>|✘|✘|
+|Abonnementen en abonnements machtigingen maken en beheren|✘|✘|✘|✘|✔|
 
-- <sup>2</sup> melding contactpersonen e-mailberichten over de Azure Enterprise-overeenkomst worden verzonden.
+- <sup>2</sup> er worden e-mail meldingen verzonden over de Enterprise Agreement van de Azure-contact persoon.
 - <sup>3</sup> taak is beperkt tot accounts in uw afdeling.
 
 
-## <a name="usage-and-costs-access-by-role"></a>Gebruik en kosten toegang op basis van rollen
+## <a name="usage-and-costs-access-by-role"></a>Gebruik en kosten toegang per rol
 
-|Taken| Enterprise-beheerder|Enterprise-beheerder (alleen-lezen)|De beheerder van de afdeling|Afdeling beheerder (alleen-lezen) |Accounteigenaar|
+|Taken| Ondernemingsbeheerder|Enter prise-beheerder (alleen-lezen)|Afdelingsbeheerder|Afdelings beheerder (alleen-lezen) |Accounteigenaar|
 |---|---|---|---|---|---|
-|Weergave-tegoed met inbegrip van de monetaire toezegging|✔|✔|✘|✘|✘|
-|Weergave afdeling uitgaven van quota|✔|✔|✘|✘|✘|
-|Afdeling uitgaven quota instellen|✔|✘|✘|✘|✘|
-|Organisatie EA prijslijst weergeven|✔|✔|✘|✘|✘|
-|Details van gebruiks- en kostengegevens weergeven|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
-|Beheren van resources in Azure portal|✘|✘|✘|✘|✔|
+|Credit saldo weer geven inclusief monetaire toezeg ging|✔|✔|✘|✘|✘|
+|Uitgave quota's voor afdelingen weer geven|✔|✔|✘|✘|✘|
+|Uitgave quota van afdelingen instellen|✔|✘|✘|✘|✘|
+|EA-prijs lijst van organisatie weer geven|✔|✔|✘|✘|✘|
+|Details over gebruik en kosten weer geven|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
+|Resources in Azure Portal beheren|✘|✘|✘|✘|✔|
 
-- <sup>4</sup> vereist dat de Enterprise-beheerder inschakelt **DA weergave kosten** beleid in de Enterprise portal. De beheerder van de afdeling kunnen kostendetails voor de afdeling bekijken.
-- <sup>5</sup> vereist dat de Enterprise-beheerder inschakelt **kosten weergeven die door de AO** beleid in de Enterprise portal. De accounteigenaar kunnen kostendetails van de voor het account bekijken.
+- <sup>4</sup> vereist dat de Enter prise-beheerder het beleid **voor da** -toeslagen in de Enter prise Portal inschakelt. De afdelings beheerder kan vervolgens de kosten Details voor de afdeling bekijken.
+- <sup>5</sup> vereist dat de ondernemings beheerder **ao** in de Enter prise Portal inschakelen. De eigenaar van het account kan vervolgens de kosten Details voor het account weer geven.
 
 
-## <a name="pricing-in-azure-portal"></a>Prijzen in Azure portal
+## <a name="pricing-in-azure-portal"></a>Prijzen in Azure Portal
 
-U ziet u mogelijk verschillende prijzen in de Azure-portal, afhankelijk van uw beheerdersrol en hoe het beleid van de kosten weergeven door de Enterprise-beheerder zijn ingesteld. De twee beleidsregels in de Enterprise portal die invloed hebben op de prijzen die u in de Azure-portal ziet zijn:
+U ziet mogelijk verschillende prijzen in de Azure Portal, afhankelijk van uw administratieve rol en hoe de beleids regels voor de weer gave van kosten worden ingesteld door de ondernemings beheerder. De twee beleids regels in de Enter prise portal die van invloed zijn op de prijzen die u ziet in de Azure Portal zijn:
 
-- Kosten van DA weergeven
-- Kosten weergeven die door de AO
+- DA-kosten weer geven
+- Kosten AO weer geven
 
-Zie voor meer informatie over het instellen van deze beleidsregels, [beheren van toegang tot factureringsgegevens voor Azure](billing-manage-access.md).
+Zie [toegang beheren tot facturerings gegevens voor Azure](billing-manage-access.md)voor meer informatie over het instellen van dit beleid.
 
-De volgende tabel ziet u de relatie tussen de Enterprise Agreement-beheerdersrollen, het beleid van de kosten weergeven, de op rollen gebaseerd beheer (RBAC) functie toegang in Azure portal en de prijzen die u ziet in de Azure-portal. De Enterprise-beheerder ziet altijd informatie over het gebruik op basis van de organisatie EA-prijzen. De beheerder van de afdeling en de eigenaar van Account zien echter verschillende prijzen weergaven op basis van het beleid van de kosten in rekening gebracht weergeven en hun RBAC-rol. De beheerdersrol voor een afdeling die worden vermeld in de volgende tabel verwijst naar de beheerder van de afdeling zowel afdeling (alleen-lezen) beheerdersrollen.
+In de volgende tabel ziet u de relatie tussen de Enterprise Agreement beheerders rollen, het beleid voor het weer geven van rechten, de functie op basis van op rollen gebaseerde toegangs beheer (RBAC) in de Azure Portal en de prijzen die u ziet in de Azure Portal. De Enter prise-beheerder ziet altijd gebruiks gegevens op basis van de EA-prijzen van de organisatie. De afdeling beheerder en account eigenaar zien echter verschillende prijs weergaven op basis van het beleid voor de weer gave van kosten en hun RBAC-rol. De rol afdelings beheerder in de volgende tabel verwijst naar de rollen afdeling beheerder en afdelings beheerder (alleen-lezen).
 
-|Enterprise Agreement-beheerdersrol|Beleid voor weergave kosten in rekening gebracht voor de rol|RBAC-rol|Prijzen weergeven|
+|Beheerdersrol Enterprise Agreement|Kosten beleid voor rol weer geven|RBAC-rol|Prijs weergave|
 |---|---|---|---|
-|Accounteigenaar of beheerder van de afdeling|✔ Ingeschakeld|Eigenaar|Organisatie EA-prijzen|
-|Accounteigenaar of beheerder van de afdeling|✘ Uitgeschakeld|Eigenaar|Adviesprijzen|
-|Accounteigenaar of beheerder van de afdeling|✔ Ingeschakeld |Geen|Er zijn geen prijzen|
-|Accounteigenaar of beheerder van de afdeling|✘ Uitgeschakeld |Geen|Er zijn geen prijzen|
-|Geen|Niet van toepassing |Eigenaar|Adviesprijzen|
+|Account eigenaar of afdelings beheerder|✔ Ingeschakeld|Eigenaar|EA-prijzen van organisatie|
+|Account eigenaar of afdelings beheerder|✘ Is uitgeschakeld|Eigenaar|Prijzen voor winkels|
+|Account eigenaar of afdelings beheerder|✔ Ingeschakeld |geen|Geen prijzen|
+|Account eigenaar of afdelings beheerder|✘ Is uitgeschakeld |geen|Geen prijzen|
+|Geen|Niet van toepassing |Eigenaar|Prijzen voor winkels|
 
-Stelt u de Enterprise-beheerdersrol en weergeven in rekening gebracht voor in de Enterprise portal. De RBAC-rol kan worden bijgewerkt in Azure portal. Zie voor meer informatie, [toegang met RBAC en de Azure-portal beheren](../role-based-access-control/role-assignments-portal.md).
+U stelt de rol ondernemings beheerder in en bekijkt het beleid voor kosten in de Enter prise Portal. De RBAC-rol kan worden bijgewerkt in de Azure Portal. Zie [toegang beheren met RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

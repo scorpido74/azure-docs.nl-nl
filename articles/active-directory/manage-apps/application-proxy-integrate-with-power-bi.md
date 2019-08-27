@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991115"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035147"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI-Mobiel met Azure AD-toepassingsproxy inschakelen
 
@@ -103,28 +103,27 @@ U bent nu klaar om Azure AD-toepassingsproxy te configureren.
 
 Ga naar **de sectie gebruikers en groepen** en wijs gebruikers toe om toegang te krijgen tot deze toepassing om het instellen van uw toepassing te volt ooien.
 
-## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>Stap 3: Power BI-Mobiel toegang verlenen tot rapport Services
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>Stap 3: De antwoord-URI voor de toepassing wijzigen
 
-Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot Report Services, moet u zich op de juiste wijze registreren in azure AD.  
+Voordat de Power BI mobiele app verbinding kan maken en toegang kan krijgen tot Report Services, moet u de registratie van de toepassing configureren die automatisch voor u is gemaakt in stap 2. 
 
 1. Selecteer op de pagina **overzicht** van Azure Active Directory **app-registraties**.
 2. Zoek op het tabblad **alle toepassingen** naar de toepassing die u in stap 2 hebt gemaakt.
 3. Selecteer de toepassing en selecteer vervolgens **verificatie**.
 4. Voeg de volgende omleidings-Uri's toe op basis van het platform dat u gebruikt.
 
-   Wanneer u de app registreert voor Power BI-Mobiel **IOS**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
+   Bij het configureren van de app voor Power BI-Mobiel **IOS**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Wanneer u de app registreert voor Power BI-Mobiel **Android**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
+   Bij het configureren van de app voor Power BI-Mobiel **Android**, voegt u de volgende omleidings-uri's van het type public client (mobiel & bureau blad) toe:
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > De omleidings-Uri's moeten worden toegevoegd om de toepassing correct te laten werken. Als u dit configureert voor zowel iOS als Android, hoeft u slechts **één** toepassing te registreren en de omleidings-uri's voor zowel IOS als Android toe te voegen. Als u voor elk platform afzonderlijke toepassingen nodig hebt, moet u de omleidings-URI `mspbi-adal://com.microsoft.powerbimobile` gebruiken: voor beide apps.
-
-2. Nu u uw systeem eigen toepassing hebt geregistreerd, kunt u deze toegang verlenen tot andere toepassingen in uw Directory. in dit geval hebt u toegang tot Report Services die zijn gepubliceerd via toepassings proxy. Volg de stappen in [stap 3: Verleen toegang tot uw proxy](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)toepassing.
+   > De omleidings-Uri's moeten worden toegevoegd om de toepassing correct te laten werken. Als u de app configureert voor zowel Power BI-Mobiel iOS als Android, voegt u de volgende omleidings-URI van het type open bare-client (mobiele & bureau blad) toe aan de `urn:ietf:wg:oauth:2.0:oob`lijst met omleidings-uri's die zijn geconfigureerd voor IOS:.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>Stap 4: Verbinding maken vanuit de Power BI-Mobiel-app
 

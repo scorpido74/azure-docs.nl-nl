@@ -3,20 +3,21 @@ title: Geautomatiseerde werk stromen maken met Visual Studio-Azure Logic Apps
 description: Taken, bedrijfs processen en werk stromen automatiseren voor bedrijfs integratie met behulp van Azure Logic Apps en Visual Studio
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
-ms.reviewer: klam, LADocs
-ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: 29ad95e33381aa03dc647e077cea56022f35a8db
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: c9248e5bcc9ebd819518b6ee609f529ea9b8f8bc
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982845"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051693"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Quickstart: Geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
 

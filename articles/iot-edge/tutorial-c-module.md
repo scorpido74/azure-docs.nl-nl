@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 04/23/2019
+ms.date: 08/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: fa8730c43adb37fa9f62682beec9baeb7e95dfcf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 32b050c86c2a170b1f95943a873c67d15f947c93
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839593"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035670"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Zelfstudie: Een C IoT Edge-module ontwikkelen voor Linux-apparaten
 
@@ -71,7 +71,7 @@ Maak een C-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
 3. Typ in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Volg de aanwijzingen in het opdrachtpalet om uw oplossing te maken.
 
-   | Veld | Waarde |
+   | Veld | Value |
    | ----- | ----- |
    | Map selecteren | Kies de locatie op uw ontwikkelcomputer waar VS Code de oplossingsbestanden moet maken. |
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor de oplossing in of accepteer de standaardnaam **EdgeSolution**. |
@@ -133,20 +133,20 @@ Met de standaard module code worden berichten ontvangen in een invoer wachtrij e
 1. Zoek de `CreateMessageInstance` functie in Main. c. Vervang de interne instructie if-else door de volgende code waarmee een aantal regels van functionaliteit wordt toegevoegd: 
 
    ```c
-   if ((messageInstance->messageHandle = IoTHubMessage_Clone(message)) == NULL)
-   {
-       free(messageInstance);
-       messageInstance = NULL;
-   }
-   else
-   {
-       messageInstance->messageTrackingId = messagesReceivedByInput1Queue;
-       MAP_HANDLE propMap = IoTHubMessage_Properties(messageInstance->messageHandle);
-       if (Map_AddOrUpdate(propMap, "MessageType", "Alert") != MAP_OK)
+       if ((messageInstance->messageHandle = IoTHubMessage_Clone(message)) == NULL)
        {
-          printf("ERROR: Map_AddOrUpdate Failed!\r\n");
+           free(messageInstance);
+           messageInstance = NULL;
        }
-   }
+       else
+       {
+           messageInstance->messageTrackingId = messagesReceivedByInput1Queue;
+           MAP_HANDLE propMap = IoTHubMessage_Properties(messageInstance->messageHandle);
+           if (Map_AddOrUpdate(propMap, "MessageType", "Alert") != MAP_OK)
+           {
+              printf("ERROR: Map_AddOrUpdate Failed!\r\n");
+           }
+       }
    ```
 
    De nieuwe code regels in de instructie else voegen een nieuwe eigenschap toe aan het bericht. Hiermee wordt het bericht als een waarschuwing labelen. Met deze code worden alle berichten als waarschuwingen gelabeld, omdat er functionaliteit wordt toegevoegd waarmee alleen berichten worden verzonden naar IoT Hub als er hoge Tempe raturen worden gerapporteerd. 
@@ -220,7 +220,7 @@ Met de standaard module code worden berichten ontvangen in een invoer wachtrij e
     static void moduleTwinCallback(DEVICE_TWIN_UPDATE_STATE update_state, const unsigned char* payLoad, size_t size, void* userContextCallback)
     {
         printf("\r\nTwin callback called with (state=%s, size=%zu):\r\n%s\r\n",
-            ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
+            MU_ENUM_TO_STRING(DEVICE_TWIN_UPDATE_STATE, update_state), size, payLoad);
         JSON_Value *root_value = json_parse_string(payLoad);
         JSON_Object *root_object = json_value_get_object(root_value);
         if (json_object_dotget_value(root_object, "desired.TemperatureThreshold") != NULL) {
@@ -242,12 +242,12 @@ Met de standaard module code worden berichten ontvangen in een invoer wachtrij e
        if (IoTHubModuleClient_LL_SetInputMessageCallback(iotHubModuleClientHandle, "input1", InputQueue1Callback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetInputMessageCallback(\"input1\")..........FAILED!\r\n");
-           ret = __FAILURE__;
+           ret = 1;
        }
        else if (IoTHubModuleClient_LL_SetModuleTwinCallback(iotHubModuleClientHandle, moduleTwinCallback, (void*)iotHubModuleClientHandle) != IOTHUB_CLIENT_OK)
        {
            printf("ERROR: IoTHubModuleClient_LL_SetModuleTwinCallback(default)..........FAILED!\r\n");
-           ret = __FAILURE__;
+           ret = 1;
        }
        else
        {

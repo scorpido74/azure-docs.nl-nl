@@ -1,126 +1,127 @@
 ---
-title: Verbinding maken met Azure blob-opslag - Azure Logic Apps
-description: Maken en beheren van blobs in Azure storage met Azure Logic Apps
+title: Verbinding maken met Azure Blob Storage-Azure Logic Apps
+description: Blobs maken en beheren in azure Storage met Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d9c29837e99d327112e6a9d648a5c56cc35e8555
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296614"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051057"
 ---
-# <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Maken en beheren van blobs in Azure blob-opslag met Azure Logic Apps
+# <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Blobs in Azure Blob-opslag maken en beheren met Azure Logic Apps
 
-Dit artikel wordt beschreven hoe u toegang tot en beheren van bestanden die zijn opgeslagen als blobs in uw Azure storage-account in een logische app met de Azure Blob Storage-connector. Op die manier kunt u logische apps die automatiseren van taken en werkstromen voor het beheren van uw bestanden maken. Bijvoorbeeld, kunt u logische apps die maken, ophalen, bijwerken en verwijderen van bestanden in uw storage-account maken.
+In dit artikel wordt uitgelegd hoe u bestanden die zijn opgeslagen als blobs in uw Azure Storage-account kunt openen en beheren in een logische app met de Azure Blob Storage-connector. Op die manier kunt u logische apps maken voor het automatiseren van taken en werk stromen voor het beheren van uw bestanden. U kunt bijvoorbeeld Logic apps bouwen die bestanden in uw opslag account maken, ophalen, bijwerken en verwijderen.
 
-Stel dat u hebt een hulpprogramma dat wordt bijgewerkt op een Azure-website. die fungeert als de trigger voor uw logische app. Wanneer dit gebeurt, kunt u uw logische app bijwerken van een bestand in uw blob storage-container, dit een bewerking in uw logische app is kunt hebben.
+Stel dat u een hulp programma hebt dat wordt bijgewerkt op een Azure-website. die fungeert als de trigger voor uw logische app. Als deze gebeurtenis zich voordoet, kunt u uw logische app een bestand in de BLOB storage-container laten bijwerken. Dit is een actie in uw logische app.
 
 > [!NOTE]
-> Logic Apps biedt geen ondersteuning voor rechtstreeks verbinding te maken naar Azure storage-accounts via firewalls. Voor toegang tot deze opslagaccounts, hier een van beide opties gebruiken:
+> Logic Apps biedt geen ondersteuning voor rechtstreekse verbinding met Azure Storage-accounts via firewalls. Voor toegang tot deze opslag accounts gebruikt u een van de volgende opties:
 >
-> * Maak een [integratieserviceomgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), waarmee verbinding kan maken met bronnen in een Azure-netwerk.
+> * Een [integratie service omgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)maken waarmee verbinding kan worden gemaakt met bronnen in een virtueel Azure-netwerk.
 >
-> * Als u al API Management gebruikt, kunt u deze service voor dit scenario. Zie voor meer informatie, [integratie van eenvoudige ondernemingsstructuur](https://aka.ms/aisarch).
+> * Als u API Management al gebruikt, kunt u deze service gebruiken voor dit scenario. Zie [eenvoudige architectuur voor ondernemings integratie](https://aka.ms/aisarch)voor meer informatie.
 
-Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Connector-specifieke technische informatie, Zie de [documentatie voor Azure Blob Storage-connector](/connectors/azureblobconnector/).
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Zie de naslag informatie voor [Azure Blob Storage-connector](/connectors/azureblobconnector/)voor connector-specifieke technische gegevens.
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Limieten
 
-* Standaard Azure Blob Storage-acties kunnen lezen of schrijven van bestanden die zijn *50 MB of kleiner*. Voor het afhandelen van bestanden die groter zijn dan 50 MB, maar tot 1024 MB, ondersteuning voor Azure Blob Storage-acties [bericht logische groepen te verdelen](../logic-apps/logic-apps-handle-large-messages.md). De **blobinhoud ophalen** actie impliciet gebruikt logische groepen te verdelen.
+* Met Azure Blob Storage-acties kunnen standaard bestanden worden gelezen of geschreven die *50 MB of kleiner*zijn. Voor het afhandelen van bestanden die groter zijn dan 50 MB maar Maxi maal 1024 MB, worden door Azure Blob Storage acties ondersteuning gegeven voor het delen van [berichten](../logic-apps/logic-apps-handle-large-messages.md). De actie **blob-inhoud ophalen** maakt impliciet gebruik van Chunking.
 
-* Triggers voor Azure Blob-opslag bieden geen ondersteuning voor logische groepen te verdelen. Bij het aanvragen van inhoud, selecteert u alleen bestanden die zijn dan 50 MB triggers of kleiner. Als u bestanden groter zijn dan 50 MB, gaat u als volgt dit patroon:
+* Azure Blob Storage-Triggers bieden geen ondersteuning voor het delen van segmenten. Bij het aanvragen van bestands inhoud selecteren triggers alleen bestanden van 50 MB of kleiner. Als u bestanden groter dan 50 MB wilt ophalen, volgt u dit patroon:
 
-  * Gebruik van een Azure Blob Storage-trigger die eigenschappen, zoals retourneert **wanneer een blob wordt toegevoegd of gewijzigd (alleen eigenschappen)** .
+  * Gebruik een Azure Blob Storage-trigger die bestands eigenschappen retourneert, zoals **Wanneer een BLOB wordt toegevoegd of gewijzigd (alleen eigenschappen)** .
 
-  * Ga als volgt de trigger met de Azure Blob-opslag **blobinhoud ophalen** actie, die het volledige bestand wordt gelezen en impliciet gebruikt logische groepen te verdelen.
+  * Volg de trigger met de bewerking voor het **ophalen van blob-inhoud** in Azure Blob Storage, die het volledige bestand leest en impliciet gebruikmaakt van Chunking.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [Azure storage-account en storage-container](../storage/blobs/storage-quickstart-blobs-portal.md)
+* Een [Azure-opslag account en een opslag container](../storage/blobs/storage-quickstart-blobs-portal.md)
 
-* De logische app waar u toegang wilt tot uw Azure blob storage-account hebben. Als uw logische app met een Azure Blob Storage-trigger wilt, moet u een [lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* De logische app waar u toegang nodig hebt tot uw Azure Blob-opslag account. Als u uw logische app wilt starten met een Azure Blob Storage-trigger, hebt u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)nodig.
 
 <a name="add-trigger"></a>
 
-## <a name="add-blob-storage-trigger"></a>Blob storage-trigger toevoegen
+## <a name="add-blob-storage-trigger"></a>Trigger voor Blob-opslag toevoegen
 
-In Azure Logic Apps, elke logische app moet beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis wordt uitgevoerd of wanneer een bepaalde voorwaarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, de Logic Apps-engine een exemplaar van de logische app maakt en werkstroom van uw app wordt gestart.
+In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van uw app uit te voeren.
 
-Dit voorbeeld laat zien hoe kun u een werkstroom voor logische Apps met de **wanneer een blob wordt toegevoegd of gewijzigd (alleen eigenschappen)** trigger wanneer de eigenschappen van een blob wordt toegevoegd of bijgewerkt in uw storage-container.
+In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten met de trigger **Wanneer een BLOB wordt toegevoegd of gewijzigd (alleen eigenschappen)** wanneer de eigenschappen van een BLOB worden toegevoegd of bijgewerkt in uw opslag container.
 
-1. In de [Azure-portal](https://portal.azure.com) of Visual Studio, maak een lege logische app, die Logic App Designer wordt geopend. Dit voorbeeld wordt de Azure-portal.
+1. Maak in de [Azure Portal](https://portal.azure.com) of Visual Studio een lege logische app, waarmee u de ontwerp functie voor logische apps kunt openen. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. Typ 'azure blob' als filter in het zoekvak. Selecteer de gewenste trigger in de lijst met triggers.
+2. Voer in het zoekvak ' Azure Blob ' in als uw filter. Selecteer in de lijst triggers de gewenste trigger.
 
-   In dit voorbeeld maakt gebruik van deze trigger: **Wanneer een blob wordt toegevoegd of gewijzigd (alleen eigenschappen)**
+   In dit voor beeld wordt deze trigger gebruikt: **Wanneer een BLOB wordt toegevoegd of gewijzigd (alleen eigenschappen)**
 
    ![Trigger selecteren](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
-3. Als u wordt gevraagd voor de verbindingsgegevens, [maken van de blob-opslag-verbinding nu](#create-connection). Of, als de verbinding al bestaat, geeft u de benodigde gegevens voor de trigger.
+3. Als u wordt gevraagd om de verbindings gegevens, [maakt u de verbinding voor Blob Storage nu](#create-connection). Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de trigger.
 
-   Selecteer voor dit voorbeeld wordt de container en de map die u wilt bewaken.
+   Selecteer voor dit voor beeld de container en de map die u wilt bewaken.
 
-   1. In de **Container** vak, selecteer het pictogram van de map.
+   1. Selecteer in het vak **container** het mappictogram.
 
-   2. Kies in de lijst met mappen de punthaak rechts ( **>** ), en blader vervolgens totdat u Zoek en selecteer de gewenste map.
+   2. Kies in de lijst met mappen de rechter hoek ( **>** ), en blader vervolgens tot u de gewenste map hebt gevonden en geselecteerd.
 
       ![Map selecteren](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
-   3. Selecteer het interval en frequentie voor hoe vaak u wilt dat de trigger om te controleren of de map voor wijzigingen.
+   3. Selecteer het interval en de frequentie voor hoe vaak de trigger de map moet controleren op wijzigingen.
 
-4. Wanneer u klaar bent, op de werkbalk van de ontwerper, kiest u **opslaan**.
+4. Wanneer u klaar bent, kiest u **Opslaan**op de werk balk van de ontwerp functie.
 
-5. Nu doorgaan met een of meer acties toe te voegen aan uw logische app voor de taken die u wilt uitvoeren met de resultaten van de trigger.
+5. Ga nu verder met het toevoegen van een of meer acties aan uw logische app voor de taken die u wilt uitvoeren met de trigger resultaten.
 
 <a name="add-action"></a>
 
-## <a name="add-blob-storage-action"></a>Blob storage-actie toevoegen
+## <a name="add-blob-storage-action"></a>Blob-opslag actie toevoegen
 
-In Azure Logic Apps, een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een stap in uw werkstroom die volgt op een trigger of een andere actie. In dit voorbeeld wordt de logische app begint met de [terugkeertrigger](../connectors/connectors-native-recurrence.md).
+In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) een stap in uw werk stroom die volgt op een trigger of een andere actie. Voor dit voor beeld begint de logische app met de [trigger voor terugkeer patroon](../connectors/connectors-native-recurrence.md).
 
-1. In de [Azure-portal](https://portal.azure.com) of Visual Studio, open uw logische app in Logic App Designer. Dit voorbeeld wordt de Azure-portal.
+1. Open in de [Azure Portal](https://portal.azure.com) of Visual Studio uw logische app in de ontwerp functie voor logische apps. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. Kies in de Logic App Designer onder de trigger of actie, **nieuwe stap**.
+2. Kies **nieuwe stap**onder de trigger of actie in de ontwerp functie voor logische apps.
 
    ![Een actie toevoegen](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
-   Als u wilt toevoegen een actie tussen bestaande stappen, Beweeg de muis boven de verbindende pijl. Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer **een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer **een actie toevoegen**.
 
-3. Typ 'azure blob' als filter in het zoekvak. Selecteer de actie die u wilt in de lijst met acties.
+3. Voer in het zoekvak ' Azure Blob ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-   In dit voorbeeld wordt met deze actie: **Blobinhoud ophalen**
+   In dit voor beeld wordt deze actie gebruikt: **Blob-inhoud ophalen**
 
    ![Actie selecteren](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
-4. Als u wordt gevraagd voor de verbindingsgegevens, [maken van de verbinding van Azure Blob-opslag nu](#create-connection).
-Of, als de verbinding al bestaat, geeft u de benodigde gegevens voor de actie.
+4. Als u wordt gevraagd om de verbindings gegevens, [maakt u nu uw Azure Blob Storage-verbinding](#create-connection).
+Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de actie.
 
-   Selecteer voor dit voorbeeld wordt het bestand dat u wenst.
+   Voor dit voor beeld selecteert u het gewenste bestand.
 
-   1. Uit de **Blob** vak, selecteer het pictogram van de map.
+   1. Selecteer het mappictogram in het vak **BLOB** .
   
       ![Map selecteren](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. Zoek en selecteer het bestand dat u op basis van een van de blob wenst **Id** getal. U kunt dit vinden **Id** nummer in de metagegevens van de blob die wordt geretourneerd door de eerder beschreven blob storage-trigger.
+   2. Zoek en selecteer het gewenste bestand op basis van het **id-** nummer van de blob. U vindt dit **id-** nummer in de meta gegevens van de blob die worden geretourneerd door de eerder beschreven Blob Storage-trigger.
 
-5. Wanneer u klaar bent, op de werkbalk van de ontwerper, kiest u **opslaan**.
-Als u wilt testen van uw logische app, zorg ervoor dat de geselecteerde map een blob bevat.
+5. Wanneer u klaar bent, kiest u **Opslaan**op de werk balk van de ontwerp functie.
+Als u uw logische app wilt testen, moet u ervoor zorgen dat de geselecteerde map een BLOB bevat.
 
-In dit voorbeeld worden alleen de inhoud voor een blob opgehaald. Als u wilt weergeven van de inhoud, een andere actie toevoegen die wordt een bestand met de blob gemaakt met behulp van een andere connector. Bijvoorbeeld, een OneDrive-actie die u een bestand op basis van de blob-inhoud maakt toevoegen.
+In dit voor beeld wordt alleen de inhoud van een BLOB opgehaald. Als u de inhoud wilt weer geven, voegt u een andere actie toe die een bestand met de BLOB maakt met behulp van een andere connector. U kunt bijvoorbeeld een OneDrive-actie toevoegen waarmee een bestand wordt gemaakt op basis van de inhoud van de blob.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-storage-account"></a>Verbinding maken met de storage-account
+## <a name="connect-to-storage-account"></a>Verbinding maken met het opslag account
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
@@ -128,8 +129,8 @@ In dit voorbeeld worden alleen de inhoud voor een blob opgehaald. Als u wilt wee
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie, zoals triggers en acties limieten, zoals beschreven door het openen van de connector-API (voorheen Swagger)-bestand, raadpleegt u de [van de connector-verwijzingspagina](/connectors/azureblobconnector/).
+Zie de [referentie pagina van de connector](/connectors/azureblobconnector/)voor technische details, zoals triggers, acties en limieten, zoals wordt beschreven in het open API-bestand van de connector (voorheen Swagger).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

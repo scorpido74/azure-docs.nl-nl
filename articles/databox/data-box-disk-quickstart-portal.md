@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.localizationpriority: high
-ms.date: 02/26/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 983edcc19a27b91599ea1e312268934b37f8b0ca
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012880"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035643"
 ---
 ::: zone target="docs"
 
@@ -65,6 +64,7 @@ Meld u aan bij de Azure Portal op [https://aka.ms/azuredataboxfromdiskdocs](http
 
 - U hebt uw bestelling voor data Box disk geplaatst met behulp van de [zelf studie: Azure Data Box Disk bestellen](data-box-disk-deploy-ordered.md).
 - U hebt uw schijven ontvangen en de taakstatus in de portal is bijgewerkt naar **Geleverd**.
+- U hebt het aantal schijven dat u hebt ontvangen gecontroleerd en u hebt één verbindings kabel per schijf.
 - U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
 
     - Een [ondersteund besturings systeem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)uitvoeren.

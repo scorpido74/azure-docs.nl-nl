@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6b6227827e8d1efbb1d20899cd08315c4cbb0150
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875199"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036300"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Netwerk beveiligings groep verwijderen opslag-blobs in Network Watcher
 
@@ -135,5 +135,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>Volgende stappen
+- Klanten kunnen het uitvoeren van het script automatiseren met [Azure scheduler](https://azure.microsoft.com/services/scheduler/) of [Azure Automation](https://azure.microsoft.com/services/automation/)
 - Zie [Azure monitor-logboeken voor netwerk beveiligings groepen (nsg's) voor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)meer informatie over NSG-logboek registratie.
 

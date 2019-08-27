@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 794f8f136521acbb51139b9e781a30c71a1560e6
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992755"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035913"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
@@ -170,7 +170,7 @@ Hieronder vindt u de algemene fout codes die u moet zoeken wanneer BYOK-versleut
 > Als u geo-DR wilt inschakelen voor een naam ruimte die gebruikmaakt van de BYOK-versleuteling, moet de secundaire naam ruimte voor koppelen zich in een toegewijd cluster bevinden en moet er een door het systeem toegewezen beheerde identiteit zijn ingeschakeld. Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
 
 > [!NOTE]
-> Voor BYOK versleutelde Event Hubs naam ruimten, worden de service-eind punten van het virtuele netwerk (VNet) niet ondersteund in de preview-versie. 
+> Als de service-eind punten van Virtual Network (VNet) zijn geconfigureerd op Azure Key Vault voor uw Event Hubs naam ruimte, wordt BYOK niet ondersteund. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

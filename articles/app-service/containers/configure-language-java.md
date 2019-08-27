@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647245"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034907"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux java-app voor Azure App Service configureren
 
@@ -402,7 +402,7 @@ Plaats tot slot de potten van het stuur programma in het Tomcat CLASSPATH en sta
 
     U kunt ook een FTP-client gebruiken om het JDBC-stuur programma te uploaden. Volg deze [instructies voor het ophalen van uw FTP-referenties](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-2. Als u een gegevens bron op server niveau hebt gemaakt, start u de App Service Linux-toepassing opnieuw. Tomcat wordt opnieuw `CATALINA_HOME` ingesteld `/home/tomcat/conf` op en gebruikt de bijgewerkte configuratie.
+2. Als u een gegevens bron op server niveau hebt gemaakt, start u de App Service Linux-toepassing opnieuw. Tomcat wordt opnieuw `CATALINA_BASE` ingesteld `/home/tomcat` op en gebruikt de bijgewerkte configuratie.
 
 ### <a name="spring-boot"></a>Spring Boot
 

@@ -15,58 +15,58 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: vijetaj
-ms.openlocfilehash: 488dc7db01bd865268e143b68cdaccd989010912
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2b328ccf63259c7faf4debdc07313d24381313a5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534930"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047679"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Een Windows-Data Science Virtual Machine inrichten in azure
 
-Micro soft Windows Data Science Virtual Machine (DSVM) is een installatie kopie van een virtuele machine (VM) van Windows Server 2016 in azure die vooraf is geïnstalleerd en geconfigureerd met hulpprogram ma's voor gegevens analyse en machine learning.
+Micro soft Windows Data Science Virtual Machine (DSVM) is een installatie kopie van een virtuele machine (VM) van Windows Server 2016 in Azure. Het is vooraf geïnstalleerd en geconfigureerd met hulpprogram ma's voor gegevens analyse en machine learning.
 
 ## <a name="included-data-science-tools"></a>Inbegrepen data Science-hulpprogram ma's
 
 De volgende hulpprogram ma's zijn opgenomen in een DSVM:
 
-* [Azure machine learning-service](../service/index.yml) Python-SDK
-* [Microsoft machine learning server](https://docs.microsoft.com/machine-learning-server/index) Developer Edition
-* Anaconda Python-distributie
-* Jupyter Notebook met R-, python-en PySpark-kernels
-* Micro soft Visual Studio Community
-* Microsoft Power BI Desktop
-* Microsoft SQL Server 2017 Developer Edition
-* Een zelfstandig Apache Spark exemplaar voor lokale ontwikkeling en tests
-* [JuliaPro](https://juliacomputing.com/products/juliapro.html)
+* Python-SDK voor de [Azure machine learning-service](../service/index.yml).
+* [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer edition.
+* Anaconda Python-distributie.
+* Jupyter-Notebook met R, Python en PySpark-kernels.
+* Microsoft Visual Studio Community.
+* Microsoft Power BI Desktop.
+* Microsoft SQL Server 2017 Developer edition.
+* Een zelfstandig Apache Spark-exemplaar voor lokale ontwikkeling en testen.
+* [JuliaPro](https://juliacomputing.com/products/juliapro.html).
 * Machine learning en data analytics-hulpprogramma's:
-  * Uitgebreide leer raamwerken: een uitgebreide set AI-Frameworks is beschikbaar op de VM. [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/), [tensor flow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), mxNet en Keras
-  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) -een snel machine learning systeem dat technieken zoals online hashing, allreduce, reducties, learning2search en actief en interactief onderwijs ondersteunt
-  * [XGBoost](https://xgboost.readthedocs.org/en/latest/) : een hulp programma dat snelle en nauw keurige structuur implementatie biedt
-  * [Rattle](https://togaware.com/rattle/) : het R-analytische hulp programma waarmee u aan de slag gaat met gegevens analyse en machine learning in R. Het bevat de mogelijkheid om gegevens op basis van een gebruikers interface te verkennen en te model leren met automatische R-code generatie.
-  * [Fridge](https://www.cs.waikato.ac.nz/ml/weka/) -Visual Data mining en machine learning software in Java
-  * [Apache Drill](https://drill.apache.org/) -een SQL-query engine zonder schema voor Apache Hadoop-, NoSQL-en Cloud opslag. ODBC- en JDBC-interfaces worden ondersteund voor het uitvoeren van query's NoSQL en bestanden van standard BI-hulpprogramma's zoals Power BI, Microsoft Excel en Tableau.
-* Bibliotheken in R en Python voor gebruik in Azure Machine Learning en andere Azure-services
-* GIT, met inbegrip van Git Bash, om te werken met broncodeopslagplaatsen, zoals GitHub en DevOps met Azure. GIT biedt verschillende populaire Linux-opdrachtregelprogramma's die toegankelijk zijn zowel op Git Bash en een opdrachtprompt. Voorbeelden zijn awk, sed, perl, grep, zoeken, wget en curl.
-* Ontwikkelingsprogram ma's en editors (RStudio, PyCharm)
+  * Uitgebreide leer raamwerken: [Tensor flow](https://www.tensorflow.org/), [Chainer](https://chainer.org/), MXNet en Keras AI frameworks zijn opgenomen op de VM.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): Een snelle machine learning-systeem die ondersteuning biedt voor technieken zoals online hashing, allreduce, kortingen, learning2search en actieve en interactieve training.
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Een hulpprogramma waarmee u snel en nauwkeurige boosted structuur-implementatie.
+  * [Rattle](https://togaware.com/rattle/). Het hulp programma R Analytical waarmee u aan de slag gaat met gegevens analyse en machine learning in R. Het bevat de mogelijkheid om gegevens op basis van een gebruikers interface te verkennen en te model leren met automatische R-code generatie.
+  * [Fridge](https://www.cs.waikato.ac.nz/ml/weka/): Visual gegevensanalyse en machine learning-software in Java.
+  * [Apache-detail weergave](https://drill.apache.org/): Een schema's SQL query-engine voor Apache Hadoop-, NoSQL- en opslag in de cloud. ODBC- en JDBC-interfaces worden ondersteund voor het uitvoeren van query's NoSQL en bestanden van standard BI-hulpprogramma's zoals Power BI, Microsoft Excel en Tableau.
+* Bibliotheken in R en Python voor gebruik in Azure Machine Learning en andere Azure-services.
+* Git, inclusief Git bash, om te werken met broncode opslagplaatsen zoals GitHub en Azure DevOps. Git biedt verschillende populaire Linux-opdracht regel Programma's die toegankelijk zijn in Git-Bash en in een opdracht prompt. Voorbeelden zijn awk, sed, perl, grep, zoeken, wget en curl.
+* Ontwikkelingsprogram ma's en editors (RStudio, PyCharm).
 
 ### <a name="about-data-science"></a>Over gegevens wetenschap
 
 Wetenschappelijke gegevens omvat het doorlopen van een reeks taken:
 
-1. Gegevens zoeken, laden en voorverwerken
-1. Modellen bouwen en testen
-1. De modellen implementeren voor gebruik in intelligente toepassingen
+1. Zoeken, laden en gegevens voorverwerken.
+1. Bouwen en testen van modellen.
+1. De modellen voor gebruik in intelligente toepassingen te implementeren.
 
-Gegevenswetenschappers gebruiken verschillende hulpprogramma's voor deze taken. Kan het zijn tijdrovend zijn om de juiste versies van software en download en installeer vervolgens deze. De DSVM bespaart tijd door een kant-en-klare installatie kopie op te geven die kan worden ingericht in azure met verschillende populaire hulpprogram ma's die vooraf zijn geïnstalleerd en geconfigureerd.
+Gegevenswetenschappers gebruiken verschillende hulpprogramma's voor deze taken. Kan het zijn tijdrovend zijn om de juiste versies van software en download en installeer vervolgens deze. De DSVM bespaart tijd door een kant-en-klare installatie kopie op te geven die kan worden ingericht op Azure, met verschillende populaire hulpprogram ma's die vooraf zijn geïnstalleerd en geconfigureerd.
 
-Met DSVM jump-start u uw analyse project. U kunt werken aan taken in verschillende talen, waaronder van R, Python, SQL en C#. Visual Studio biedt een eenvoudig te gebruiken geïntegreerde ontwikkelomgeving (IDE) voor het ontwikkelen en testen van uw code. De Azure SDK is opgenomen in de virtuele machine, zodat u uw toepassingen kunt bouwen met behulp van verschillende services op het Cloud platform van micro soft.
+Met DSVM jump-start u uw analyse project. U kunt werken met taken in verschillende talen, waaronder R, Python, SQL en C#. Visual Studio biedt een eenvoudig te gebruiken geïntegreerde ontwikkelomgeving (IDE) voor het ontwikkelen en testen van uw code. De Azure SDK is opgenomen in de virtuele machine, zodat u uw toepassingen kunt bouwen met behulp van services op het micro soft-Cloud platform.
 
-Er zijn geen kosten voor software voor deze data science VM-installatiekopie. U betaalt alleen de kosten van het gebruik van Azure. Ze afhankelijk zijn van de grootte van de virtuele machine die u inricht. Meer informatie over de compute-kosten zijn de **prijsinformatie** sectie op de [Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) pagina.
+Er zijn geen software kosten voor deze DSVM-installatie kopie. U betaalt alleen de kosten van het gebruik van Azure. Ze zijn afhankelijk van de grootte van de virtuele machine die u inricht. Zie de [pagina Data Science virtual machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)voor meer informatie.
 
 ### <a name="other-dsvm-versions"></a>Andere DSVM-versies
 
-* Een [Ubuntu](dsvm-ubuntu-intro.md) installatiekopie. Het bevat veel hulpprogramma's die vergelijkbaar is met de DSVM plus een aantal extra deep learning-frameworks.
+* Een [Ubuntu](dsvm-ubuntu-intro.md) installatiekopie. Het bevat hulpprogram ma's die vergelijkbaar zijn met de DSVM, plus een paar diep gaande lessen.
 * Een [Linux CentOS](linux-dsvm-intro.md) installatiekopie.
 * De [edition van Windows Server 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) van de Data Science Virtual Machine. Een paar hulpprogramma's zijn alleen beschikbaar op de editie van Windows Server 2016. In dit artikel geldt in alle andere gevallen ook voor de editie van Windows Server 2012.
 
@@ -78,98 +78,106 @@ Voor het maken van een Microsoft Data Science Virtual Machine, moet u een Azure-
 
 Een DSVM-exemplaar maken:
 
-1. Ga naar de vermelding van de virtuele machine op de [Azure Portal](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016). U wordt mogelijk gevraagd om u aan te melden bij uw Azure-account als u zich nog niet hebt aangemeld.
+1. Ga naar de vermelding van de virtuele machine op de [Azure Portal](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016). U wordt mogelijk gevraagd om u aan te melden bij uw Azure-account als u nog niet bent aangemeld.
 1. Selecteer de knop **maken** onderaan.
 
-   ![Configureer-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png)
+   ![De lijst met virtuele machines op de Azure Portal, met de knop maken](./media/provision-vm/configure-data-science-virtual-machine.png)
 
-1. U moet de volgende informatie invoeren voor het configureren van elk van de stappen die worden weer gegeven in het rechterdeel venster van de scherm opname:
+1. Voer de volgende informatie in voor het configureren van elk van de stappen die worden weer gegeven in het rechterdeel venster van de scherm opname:
 
    1. **Grondbeginselen van**:
-      * **Naam**: de naam van de DSVM
-      * **VM-schijf type**: **SSD** of **HDD**. Kies voor een NC_v1 GPU-exemplaar, zoals NVidia Tesla R80 op basis van **HDD** als het schijftype.
-      * **Gebruikers naam**: de account-id van de beheerder
-      * **Wacht woord**: het wacht woord voor het beheerders account
-      * **Abonnement**: Als u meer dan één abonnement hebt, selecteert u een waar de machine zich moet worden gemaakt en worden kosten in rekening gebracht.
-      * **Resourcegroep**. U kunt een nieuwe groep maken of een bestaande groep gebruikt.
-      * **Locatie**. Selecteer het datacenter die het meest geschikt is. Voor de snelste toegang tot het netwerk is het datacenter dat de meeste van uw gegevens of zich het dichtst bij uw fysieke locatie.
-   1. **Grootte**: Selecteer een van de servertypen die aansluit bij uw functionele vereisten en kostenbeperkingen. Voor meer opties van VM-grootten, selecteer **Alles weergeven**.
+      * **Naam**: Voer de naam van de DSVM in.
+      * **VM-schijf type**: Selecteer **SSD** of **HDD**. Kies **HDD** als schijf type voor een NC_v1 GPU-instantie zoals Nvidia Tesla K80.
+      * **Gebruikersnaam**: Voer de ID van het beheerders account in.
+      * **Wachtwoord**: Voer het wacht woord voor het beheerders account in.
+      * **Abonnement**: Als u meer dan één abonnement hebt, selecteert u de computer waarop de machine wordt gemaakt en gefactureerd.
+      * **Resourcegroep**: Een nieuwe groep maken of een bestaand item gebruiken.
+      * **Locatie**: Selecteer het Data Center dat het meest geschikt is. Voor de snelste netwerk toegang is het het Data Center dat het meren deel van uw gegevens heeft of zich het dichtst bij uw fysieke locatie bevindt.
+   1. **Grootte**: Selecteer het server type dat voldoet aan de functionele vereisten en kosten beperkingen. Voor meer opties van VM-grootten, selecteer **Alles weergeven**.
    1. **Instellingen voor**:  
       * **Beheerde schijven gebruiken**. Kies **beheerde** als u wilt dat Azure voor het beheren van de schijven voor de virtuele machine. Als dat niet het geval is, moet u een nieuwe of bestaande storage-account opgeven.  
       * **Andere parameters**. U kunt de standaardwaarden gebruiken. Als u niet-standaard waarden wilt gebruiken, houdt u de muis aanwijzer boven de koppeling voor informatie over de specifieke velden.
    1. **Samenvatting**: Controleer of alle informatie die u hebt ingevoerd juist is. Selecteer **Maken**.
 
 > [!NOTE]
-> * De virtuele machine heeft geen extra kosten als gevolg van de reken kosten voor de server grootte die u hebt gekozen in de stap **grootte** .
-> * De inrichting duurt ongeveer 10 tot 20 minuten. U kunt de status van uw virtuele machine weer geven op de Azure Portal.
+> * De virtuele machine heeft geen extra kosten als gevolg van de reken kosten voor de server grootte die u in de stap **grootte** hebt gekozen.
+> * Het inrichten duurt 10 tot 20 minuten. U kunt de status van uw virtuele machine weer geven op de Azure Portal.
 
-## <a name="how-to-access-the-dsvm"></a>Toegang tot de DSVM
+## <a name="access-the-dsvm"></a>Toegang tot de DSVM
 
-Nadat de virtuele machine is gemaakt en ingericht, kunt u extern bureaublad in deze met behulp van de accountreferenties van de beheerder die u hebt geconfigureerd in de voorgaande **basisbeginselen** sectie. U bent klaar om te beginnen met de hulpprogramma's die zijn geïnstalleerd en geconfigureerd op de virtuele machine. Veel van de hulpprogram ma's zijn toegankelijk via tegels en bureaublad pictogrammen in het start menu.
+Nadat de virtuele machine is gemaakt en ingericht, kunt u deze openen via een verbinding met een extern bureau blad. Gebruik de referenties van het beheerders account die u hebt geconfigureerd in de **basis** stappen voor het maken van een virtuele machine. 
 
-U kunt ook een Data Science VM aan Azure Notebooks koppelen om Jupyter-notebooks op de virtuele machine uit te voeren en de beperkingen van de gratis servicelaag over te slaan. Zie notebooks projects [-Compute-laag beheren en configureren](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)voor meer informatie.
+U bent klaar om te beginnen met de hulpprogramma's die zijn geïnstalleerd en geconfigureerd op de virtuele machine. Veel van de hulpprogram ma's zijn toegankelijk via tegels en bureaublad pictogrammen in het **Start** menu.
 
-## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Hulpprogramma's zijn geïnstalleerd op de Microsoft Data Science Virtual Machine
+U kunt ook een DSVM aan Azure Notebooks koppelen om Jupyter-notebooks op de virtuele machine uit te voeren en de beperkingen van de gratis servicelaag over te slaan. Zie [notebook-projecten beheren en configureren](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)voor meer informatie.
 
-Meer informatie over de hulpprogram ma's die zijn geïnstalleerd op de DSVM:
+<a name="tools"></a>
+
+## <a name="tools-installed-on-the-dvsm"></a>Hulpprogram ma's geïnstalleerd op de DVSM
+
+In de volgende secties vindt u meer informatie over de hulpprogram ma's die op het Data Science Virtual Machine zijn geïnstalleerd.
 
 ### <a name="microsoft-machine-learning-server-developer-edition"></a>Microsoft Machine Learning Server Developer edition
 
-U kunt Microsoft Enterprise Library voor schaalbare R of Python voor uw analyses gebruiken omdat de Machine Learning Server Developer edition is geïnstalleerd op de virtuele machine. Machine Learning Server is voorheen bekend als Microsoft R Server, het is een algemeen platform voor het analyseren van bedrijfs klasse. Het is beschikbaar voor zowel R als python. Het is ook schaalbaar, commercieel ondersteund en veilig.
+U kunt micro soft Enter prise-bibliotheek voor uw analyse gebruiken omdat Machine Learning Server Developer Edition is geïnstalleerd op de VM. Machine Learning Server is voorheen bekend als Microsoft R Server, is een algemeen implementeerbaar analyse platform. Het is schaalbaar en commercieel ondersteund.
 
 Machine Learning-Server biedt ondersteuning voor verschillende big data-statistieken, voorspellende modellen en machine learning-taken. Deze biedt ondersteuning voor het volledige aanbod van analytics: verkenning, analyse, visualisatie en modellering. Door en uitbreiden van open-source R en Python, is de Machine Learning Server compatibel met R en Python-scripts en functies. Het is ook compatibel met CRAN, pip en Conda-pakketten voor het analyseren van gegevens op de grote schaal.
 
-Machine Learning Server lost de geheugenbeperkingen van open-source R door het toevoegen van parallelle en bloksgewijze verwerking van gegevens. Dit betekent dat u analyses kunt uitvoeren op veel grotere gegevens dan wat past in het hoofd geheugen. Visual Studio Community is opgenomen op de virtuele machine. Het bevat de R-hulpprogram ma's voor Visual Studio-en Python Tools for Visual Studio-uitbrei dingen (PTVS) die een volledige IDE bieden voor het werken met R of python. We bieden ook andere IDE's zoals [RStudio](https://www.rstudio.com) en [PyCharm Community edition](https://www.jetbrains.com/pycharm/) op de virtuele machine.
+Machine Learning Server lost de geheugenbeperkingen van open-source R door het toevoegen van parallelle en bloksgewijze verwerking van gegevens. Dit betekent dat u analyses kunt uitvoeren op veel grotere gegevens dan wat past in het hoofd geheugen. 
+
+Visual Studio Community is opgenomen op de virtuele machine. Het bevat de R-hulpprogram ma's voor Visual Studio-en Python Tools for Visual Studio-uitbrei dingen (PTVS) die een volledige IDE bieden voor het werken met R of python. We bieden ook andere Ide's zoals [RStudio](https://www.rstudio.com) en [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) op de VM.
 
 ### <a name="python"></a>Python
 
-Voor de ontwikkeling met behulp van python worden Anaconda python-distributies 2,7 en 3,6 geïnstalleerd. Deze distributies hebben de basis Python samen met ongeveer 300 van de meest populaire math, engineering en data analytics-pakketten. U kunt PTVS, die is geïnstalleerd binnen Visual Studio Community 2017. Of u kunt een van de IDE's geleverd met Anaconda, zoals niet-actief of Spyder gebruiken. Zoek en start een van deze pakketten (Win + S).
+Voor de ontwikkeling met behulp van python worden Anaconda python-distributies 2,7 en 3,6 geïnstalleerd. Deze distributies hebben de basis Python samen met ongeveer 300 van de meest populaire math, engineering en data analytics-pakketten. U kunt PTVS gebruiken, dat is geïnstalleerd in Visual Studio Community 2017. U kunt ook een van de Ide's gebruiken die is gebundeld met Anaconda, zoals inactief of Spyder. Zoek en open een van deze pakketten (Windows-logo toets + S).
 
 > [!NOTE]
-> Om te verwijzen de Python-Tools voor Visual Studio op Anaconda Python 2.7, die u wilt maken van aangepaste omgevingen voor elke versie. Deze omgeving paden instellen in Visual Studio 2017 Community, gaat u naar **extra** > **Python Tools** > **Python-omgevingen**. Selecteer vervolgens **+ aangepast**.
+> Om te verwijzen de Python-Tools voor Visual Studio op Anaconda Python 2.7, die u wilt maken van aangepaste omgevingen voor elke versie. Als u deze omgevings paden wilt instellen in de Visual Studio 2017-Community, gaat u naar **hulpprogram ma's** > **python tools** > **python-omgevingen**. Selecteer vervolgens **+ aangepast**.
 
-Anaconda Python 3.6 is geïnstalleerd onder **C:\Anaconda**. Anaconda Python 2.7 is geïnstalleerd onder **c:\Anaconda\envs\python2**. Zie voor gedetailleerde stappen [documentatie bij PTVS](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters).
+Anaconda python 3,6 is geïnstalleerd onder C:\Anaconda. Anaconda python 2,7 is geïnstalleerd onder C:\Anaconda\envs\python2. Zie de [PTVS-documentatie](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters)voor gedetailleerde stappen.
 
 ### <a name="the-jupyter-notebook"></a>De Jupyter-Notebook
 
-Anaconda distributie wordt geleverd met de Jupyter-Notebook, een omgeving voor het delen van code en -analyse. De Jupyter-Notebook-server is vooraf geconfigureerd met Python 2.7, Python 3.x PySpark, Julia en R-kernels. Als u de Jupyter-server wilt starten en de browser voor toegang tot de notebook server wilt starten, gebruikt u het pictogram **Jupyter notebook** bureau blad.
+Anaconda-distributie wordt ook geleverd met de Jupyter Notebook, een omgeving om code en analyse te delen. De Jupyter-Notebook-server is vooraf geconfigureerd met Python 2.7, Python 3.x PySpark, Julia en R-kernels. Als u de Jupyter-server wilt starten en de browser voor toegang tot de notebook server wilt openen, gebruikt u het pictogram **Jupyter notebook** bureau blad.
 
 We het pakket verschillende voorbeeldnotitieblokken in Python en R. Nadat u toegang Jupyter tot, geeft de notebooks laten zien hoe om te werken met de volgende technologieën:
 
 * Machine Learning Server
 * SQL Server Machine Learning Services, analyses in-data base
 * Python
-* Micro soft cognitieve ToolKit
-* Tensorflow
+* Microsoft Cognitive Toolkit
+* TensorFlow
 * Andere Azure-technologieën
 
-U vindt de koppeling naar de voor beelden op de start pagina van de notitie blok nadat u zich hebt geverifieerd voor de Jupyter Notebook met behulp van het wacht woord dat u in een eerdere stap hebt gemaakt.
+U vindt de koppeling naar de voor beelden op de start pagina van het notitie blok nadat u zich hebt geverifieerd voor de Jupyter Notebook met behulp van het wacht woord dat u eerder hebt gemaakt.
 
 ### <a name="visual-studio-community-2017"></a>Visual Studio Community 2017
 
-De DSVM omvat Visual Studio community. Dit is een gratis versie van de populaire IDE van micro soft die u kunt gebruiken voor evaluatie doeleinden en kleine teams. Zie de [licentievoorwaarden](https://www.visualstudio.com/support/legal/mt171547).
+De DSVM omvat Visual Studio community. Dit is een gratis versie van de populaire IDE van micro soft die u kunt gebruiken voor evaluatie doeleinden en kleine teams. Zie de [licentie voorwaarden voor micro soft-software](https://www.visualstudio.com/support/legal/mt171547).
 
-Open Visual Studio met behulp van het bureaublad pictogram of het menu **Start** . Zoeken naar programma's (Win + S), gevolgd door **Visual Studio**. U kunt daar projecten maken in talen zoals C#, Python, R en node.js. Geïnstalleerde invoegtoepassingen maken het handig om te werken met de volgende Azure-services:
+Open Visual Studio met behulp van het bureaublad pictogram of het menu **Start** . Zoek naar Program ma's (Windows-logo toets + S), gevolgd door **Visual Studio**. Van daaruit kunt u projecten maken in talen zoals C#python, R en node. js. Geïnstalleerde invoegtoepassingen maken het handig om te werken met de volgende Azure-services:
 
 * Azure Data Catalog
-* Azure HDInsight Hadoop en Spark
+* Azure HDInsight voor Hadoop en Spark
 * Azure Data Lake
 
-Er is ook een invoeg toepassing met de naam **Azure machine learning voor Visual Studio code** die naadloos kan worden geïntegreerd in azure machine learning en waarmee u snel AI-toepassingen kunt bouwen.
+Een invoeg toepassing met de naam Azure Machine Learning voor Visual Studio code integreert ook met Azure Machine Learning en helpt u snel AI-toepassingen te bouwen.
 
 > [!NOTE]
 > Mogelijk is, krijgt u een bericht dat uw evaluatieperiode is verlopen. Voer de referenties van uw Microsoft-account. Of maak een nieuwe gratis account voor toegang tot Visual Studio Community.
 
 ### <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer edition
 
-De DSVM wordt geleverd met een ontwikkelaars versie van SQL Server 2017 met Machine Learning Services. Deze SQL Server Edition bevindt zich in R of python en kan in-data base-analyses uitvoeren. Machine Learning-Services biedt een platform voor het ontwikkelen en implementeren van intelligente toepassingen. U kunt deze talen en veel pakketten van de community om te maken van modellen en voorspellingen voor uw SQL Server-gegevens genereren. Omdat de Machine Learning-Services, in de database, de R- en Python talen in SQL Server is geïntegreerd, kunt u analytics dicht bij de gegevens bewaren. Deze integratie elimineert de kosten en beveiligingsrisico's die zijn gekoppeld aan de verplaatsing van gegevens.
+De DSVM wordt geleverd met een ontwikkelaars versie van SQL Server 2017 met Machine Learning Services. Deze SQL Server Edition bevindt zich in R of python en kan in-data base-analyses uitvoeren. 
+
+Machine Learning-Services biedt een platform voor het ontwikkelen en implementeren van intelligente toepassingen. U kunt deze talen en veel pakketten van de community om te maken van modellen en voorspellingen voor uw SQL Server-gegevens genereren. Omdat de Machine Learning-Services, in de database, de R- en Python talen in SQL Server is geïntegreerd, kunt u analytics dicht bij de gegevens bewaren. Deze integratie elimineert de kosten en beveiligingsrisico's die zijn gekoppeld aan de verplaatsing van gegevens.
 
 > [!NOTE]
 > De editie van SQL Server Developer is alleen voor ontwikkelings- en testdoeleinden. U moet een licentie voor het in productie uitvoeren.
 
-U kunt toegang tot SQL Server door het starten van Microsoft SQL Server Management Studio. De naam van uw virtuele machine wordt ingevuld als de **servernaam**. Windows-verificatie gebruiken wanneer u zich aanmelden als de beheerder van Windows. Wanneer u zich in SQL Server Management Studio, kunt u maken van andere gebruikers, databases maken, gegevens importeren en uitvoeren van SQL-query's.
+U hebt toegang tot SQL Server door Microsoft SQL Server Management Studio te openen. De naam van uw virtuele machine is ingevuld als **Server naam**. Windows-verificatie gebruiken wanneer u zich aanmelden als de beheerder van Windows. Wanneer u zich in SQL Server Management Studio, kunt u maken van andere gebruikers, databases maken, gegevens importeren en uitvoeren van SQL-query's.
 
-Als u wilt inschakelen in database analyses met behulp van SQL-Machine Learning-Services, door de volgende opdracht uit als een eenmalige actie in SQL Server Management Studio uitvoeren nadat u zich hebt aangemeld als beheerder van de server:
+Als u in-data base analyses wilt inschakelen met behulp van SQL Server Machine Learning Services, voert u de volgende opdracht uit als eenmalige actie in SQL Server Management Studio nadat u zich hebt aangemeld als server beheerder:
 
 ```
 CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS
@@ -182,27 +190,25 @@ Vervang `%COMPUTERNAME%` door de naam van uw virtuele machine.
 Verschillende Azure-hulpprogramma's zijn geïnstalleerd op de virtuele machine:
 
 * Een snelkoppeling op het bureaublad gaat u naar de Azure SDK-documentatie.
-* Gebruik **AzCopy** om gegevens in en uit uw Azure Storage-account te kopiëren. Als u wilt zien gebruik, voer **Azcopy** achter de opdrachtprompt.
-* Gebruik **Azure Storage Explorer** om te bladeren van de objecten die u in uw Azure Storage-account opslaat. Er worden ook gegevens gekopieerd van en naar Azure Storage. Als u dit hulp programma wilt openen, voert u **Storage Explorer** in het **Zoek** veld in. U kunt deze ook vinden in het menu **Start** van Windows.
-* **Adlcopy** kopieert gegevens naar Azure data Lake. Als u wilt zien gebruik, voer **adlcopy** in een opdrachtprompt.
-* **dtui** kopieert gegevens van en naar Azure Cosmos DB, een NoSQL-data base in de Cloud. Voer **dtui** in een opdrachtprompt.
-* **Azure Data Factory Integration runtime** kopieert u gegevens tussen on-premises gegevens bronnen en de Cloud. Het wordt gebruikt in hulpprogramma's zoals Azure Data Factory.
-* Gebruik **Microsoft Azure PowerShell** om uw Azure-resources te beheren in de Power shell-script taal. Het ook geïnstalleerd op de virtuele machine.
+* Gebruik AzCopy om gegevens in en uit uw Azure Storage-account te kopiëren. Als u wilt zien gebruik, voer **Azcopy** achter de opdrachtprompt.
+* Gebruik Azure Storage Explorer om te bladeren door de objecten die u in uw Azure Storage-account opslaat. Er worden ook gegevens gekopieerd van en naar Azure Storage. Als u dit hulp programma wilt openen, voert u **Storage Explorer** in het **Zoek** veld in. Of vinden op de Windows **Start** menu.
+* AdlCopy kopieert gegevens naar Azure Data Lake. Als u wilt zien gebruik, voer **adlcopy** in een opdrachtprompt.
+* Het hulp programma dtui kopieert gegevens van en naar Azure Cosmos DB, een NoSQL-data base in de Cloud. Voer **dtui** in een opdrachtprompt.
+* De Integration runtime kopieert gegevens tussen on-premises gegevens bronnen en de Cloud. Het wordt gebruikt in hulpprogramma's zoals Azure Data Factory.
+* Gebruik Azure PowerShell om uw Azure-resources te beheren in de Power shell-script taal. Het ook geïnstalleerd op de virtuele machine.
 
 ### <a name="power-bi"></a>Power BI
 
-De DSVM wordt geleverd met **Power bi Desktop** geïnstalleerd om u te helpen bij het bouwen van Dash boards en visualisaties. Met dit hulpprogramma kunt gegevens ophalen uit verschillende bronnen, uw dashboards en rapporten maken en deze publiceren naar de cloud. Zie voor meer informatie de [Power BI](https://powerbi.microsoft.com) site. U kunt Power BI Desktop vinden in het menu **Start** .
+De DSVM wordt geleverd met Power BI Desktop geïnstalleerd om u te helpen bij het bouwen van Dash boards en visualisaties. Met dit hulpprogramma kunt gegevens ophalen uit verschillende bronnen, uw dashboards en rapporten maken en deze publiceren naar de cloud. Zie de [Power bi-site](https://powerbi.microsoft.com)voor meer informatie. U kunt Power BI Desktop vinden in het menu **Start** .
 
 > [!NOTE]
 > U hebt een Microsoft Office 365-account voor toegang tot Power BI nodig.
 
-### <a name="azure-machine-learning-service-python-sdk"></a>Azure Machine Learning-service Python-SDK
+### <a name="azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK voor python
 
 Gegevens wetenschappers en AI-ontwikkel aars gebruiken de Azure Machine Learning SDK voor python om machine learning werk stromen te bouwen en uit te voeren met de [Azure machine learning service](../service/overview-what-is-azure-ml.md). U kunt communiceren met de service in Jupyter-notebooks of een andere python IDE met behulp van open-source frameworks zoals tensor flow en scikit-learn.
 
-Om te beginnen met de Python-SDK, Zie [Python gebruiken om aan de slag met Azure Machine Learning](../service/quickstart-create-workspace-with-python.md).
-
-De Python-SDK is vooraf geïnstalleerd op de Microsoft Data Science Virtual Machine.
+De Python-SDK is vooraf geïnstalleerd op de Microsoft Data Science Virtual Machine. Zie [python gebruiken om](../service/quickstart-create-workspace-with-python.md)aan de slag te gaan met Azure machine learning om de PYTHON-SDK te gebruiken.
 
 ## <a name="more-microsoft-development-tools"></a>Meer Microsoft-ontwikkelprogramma 's
 
@@ -217,19 +223,19 @@ U kunt het [installatie programma van het micro soft](https://www.microsoft.com/
 | Andere voorbeelden | C:\dsvm\samples |
 | Anaconda, standaard: Python 3,6 | C:\Anaconda |
 | Anaconda Python 2.7 omgeving | C:\Anaconda\envs\python2 |
-| Microsoft Machine Learning Server (zelfstandige versie)-Python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
-| Standaardexemplaar R, Machine Learning Server (zelfstandige versie) | C:\Program Files\Microsoft\ML Server\R_SERVER |
-| SQL-Machine Learning-Services in de database-instantie directory | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
+| Microsoft Machine Learning Server (zelfstandig) voor python | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
+| Standaard instantie R, Machine Learning Server (zelfstandig) | C:\Program Files\Microsoft\ML Server\R_SERVER |
+| SQL Server Machine Learning Services in de data base-instantie Directory | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
 | Diverse hulpprogramma 's | C:\dsvm\tools |
 
 > [!NOTE]
-> Op de Windows Server 2012-versie van de editie van DSVM- en Windows Server 2016 vóór maart 2018 is de standaardomgeving Anaconda Python 2.7. De secundaire omgeving is python 3,5, te vinden op **C:\Anaconda\envs\py35**.
+> Op de Windows Server 2012-versie van de DSVM en de Windows Server 2016 Edition vóór maart 2018 is de standaard Anaconda-omgeving python 2,7. De secundaire omgeving is python 3,5, te vinden op C:\Anaconda\envs\py35.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De hulpprogramma's op de virtuele machine voor datatechnologie verkennen door het selecteren van de **Start** menu.
-* Meer informatie over Azure Machine Learning-service door te lezen [wat is Azure Machine Learning-service?](../service/overview-what-is-azure-ml.md) en uit te proberen de [snelstartgidsen en zelfstudies](../service/index.yml) die beschikbaar zijn.
-* Ga in Verkenner naar **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** voor voor beelden die gebruikmaken van de RevoScaleR-bibliotheek in R die ondersteuning biedt voor gegevens analyse op de schaal van de onderneming.  
-* Lees het artikel [tien dingen die u in de Data science Virtual Machine doen kunt](https://aka.ms/dsvmtenthings).
+* Bekijk de hulpprogram ma's op de DSVM door het menu **Start** te openen.
+* Meer informatie over de Azure Machine Learning-service vindt u in [Wat is Azure machine learning service? en hoe](../service/overview-what-is-azure-ml.md) u Quick starts [en zelf studies](../service/index.yml)probeert te lezen.
+* Ga in Verkenner naar C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts voor voor beelden die gebruikmaken van de RevoScaleR-bibliotheek in R die ondersteuning biedt voor gegevens analyse op ondernemings schaal. 
+* Lees het artikel [tien dingen die u op het data Science virtual machine kunt doen](https://aka.ms/dsvmtenthings).
 * Informatie over het bouwen van analytische oplossingen voor end-to-end systematisch met behulp van de [Team Data Science Process](../team-data-science-process/index.yml).
-* Ga naar de [Azure AI Gallery](https://gallery.cortanaintelligence.com) services voor machine learning en data analytics-voorbeelden die gebruikmaken van Azure Machine Learning en gerelateerde gegevens in Azure. We hebben ook een pictogram voor deze galerie beschikbaar op de **Start** menu en het bureaublad van de virtuele machine.
+* Ga naar de [Azure AI Gallery](https://gallery.cortanaintelligence.com) services voor machine learning en data analytics-voorbeelden die gebruikmaken van Azure Machine Learning en gerelateerde gegevens in Azure. Daarnaast hebt u in het menu **Start** en op het bureau blad van de virtuele machine een pictogram voor deze galerie gegeven.

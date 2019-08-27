@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met Project Online via Azure Logic Apps | Microsoft Docs
-description: Werkstromen automatiseren die worden bewaakt en Project Online-projecten, taken en resources beheren met behulp van Azure Logic Apps maken
+title: Verbinding maken met project online vanuit Azure Logic Apps | Microsoft Docs
+description: Werk stromen automatiseren waarmee u project online-projecten,-taken en-resources kunt bewaken, maken en beheren met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,58 +11,58 @@ ms.topic: article
 ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe571209d28fe098ce9b507cb67b0a9a5abd25a3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105627"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050862"
 ---
-# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Project Online-projecten, taken en resources beheren met behulp van Azure Logic Apps
+# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Project online-projecten,-taken en-resources beheren met Azure Logic Apps
 
-Met Azure Logic Apps en de Project Online-connector, kunt u geautomatiseerde taken en werkstromen voor uw projecten, taken en resources kunt maken in Project Online via Office 365. Uw werkstromen kunnen uitvoeren deze acties en andere resources, bijvoorbeeld:
+Met Azure Logic Apps en de project Online-connector kunt u geautomatiseerde taken en werk stromen maken voor uw projecten, taken en resources in project online via Office 365. Uw werk stromen kunnen deze acties en andere uitvoeren, bijvoorbeeld:
 
-* Monitor als nieuwe projecten, taken of resources worden gemaakt. Monitor of wanneer nieuwe projecten worden gepubliceerd.
-* Maak nieuwe projecten, taken of resources.
-* Lijst met bestaande projecten of taken.
-* Uitchecken, inchecken of projecten publiceren.
+* Controleren wanneer nieuwe projecten, taken of resources worden gemaakt. U kunt ook controleren wanneer er nieuwe projecten worden gepubliceerd.
+* Nieuwe projecten, taken of resources maken.
+* Bestaande projecten of taken weer geven.
+* Bekijk of publiceer projecten en check deze uit.
 
-Project Online helpt u van plan bent, prioriteit en beheren van projecten en investeringen van vrijwel overal op bijna elk apparaat door te geven van de krachtige mogelijkheden voor projectbeheer. U kunt de Project Online triggers die te antwoorden krijgen van Project Online en beschikbaar voor andere acties maken voor de uitvoer. U kunt acties in uw logische apps gebruiken voor het uitvoeren van verschillende taken in Project Online. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Project online helpt u bij het plannen, bepalen en beheren van projecten en project portefeuille-investeringen van vrijwel elke locatie op vrijwel elk apparaat door krachtige mogelijkheden voor project beheer te bieden. U kunt project online-triggers gebruiken die reacties van project online ontvangen en de uitvoer beschikbaar maken voor andere acties. U kunt acties in uw Logic apps gebruiken om verschillende taken in project online uit te voeren. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Project Online, beschikbaar via een [Office 365-account](https://www.office.com/), 
+* Project online, verkrijgbaar via een [Office 365-account](https://www.office.com/), 
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot uw Project Online-gegevens. Om te beginnen met een Project Online trigger [maken van een lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor het gebruik van Project Online acties, start uw logische app met een andere trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waar u toegang wilt krijgen tot uw project online-gegevens. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een project online-trigger. Als u project online acties wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
-## <a name="connect-to-project-online"></a>Verbinding maken met Project Online
+## <a name="connect-to-project-online"></a>Verbinding maken met project online
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
 1. Kies een pad: 
 
-   * Voor lege, logische apps, in het zoekvak, typ 'Project Online' als filter. 
+   * Voor lege logische apps voert u in het zoekvak ' project online ' in als uw filter. 
    Selecteer de gewenste trigger onder de lijst met triggers. 
 
      -of-
 
-   * Voor bestaande logische apps, onder de stap waarin u wilt toevoegen van een actie kiezen **nieuwe stap**. In het zoekvak, typ 'Project Online' als filter. Selecteer de actie die u wilt onder de lijst met acties.
+   * Kies **nieuwe stap**onder de stap waar u een actie wilt toevoegen voor bestaande Logic apps. Voer in het zoekvak ' project online ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-1. Als u wordt gevraagd of u zich aanmeldt met Project Online, nu aanmelden.
+1. Als u wordt gevraagd om u aan te melden bij project online, meldt u zich nu aan.
 
-   Uw referenties toestaan dat de logische app een verbinding maken met Project Online en toegang tot uw gegevens.
+   Met uw referenties wordt uw logische app geautoriseerd om een verbinding met project online te maken en toegang te krijgen tot uw gegevens.
 
-1. Geef de benodigde informatie voor uw geselecteerde trigger of actie en doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/projectonline/).
+Raadpleeg de [referentie pagina](/connectors/projectonline/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -71,4 +71,4 @@ Voor technische informatie over triggers en acties limieten die worden beschreve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

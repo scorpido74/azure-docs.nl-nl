@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817211"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036028"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -111,7 +111,7 @@ Meer informatie over [iostat gebruiken](https://linux.die.net/man/1/iostat) en [
 
 De belangrijkste factoren die van invloed zijn op de prestaties van een toepassing die wordt uitgevoerd op Premium Storage, zijn aard van de i/o-aanvragen, de VM-grootte, de schijf grootte, het aantal schijven, het opslaan van schijven, meerdere threads en de wachtrij diepte. U kunt enkele van deze factoren beheren met knoppen van het systeem. De meeste toepassingen bieden u mogelijk geen optie om de i/o-grootte en de wachtrij diepte rechtstreeks te wijzigen. Als u bijvoorbeeld SQL Server gebruikt, kunt u niet de i/o-grootte en de wachtrij diepte kiezen. SQL Server kiest de optimale IO-grootte en wachtrij diepte waarden om de meeste prestaties te verkrijgen. Het is belang rijk om inzicht te krijgen in de gevolgen van beide typen factoren voor de prestaties van uw toepassing, zodat u de juiste resources kunt inrichten om te voldoen aan de prestatie behoeften.
 
-In deze sectie raadpleegt u de controle lijst voor toepassings vereisten die u hebt gemaakt om te bepalen hoeveel u nodig hebt om de prestaties van uw toepassingen te optimaliseren. Op basis hiervan kunt u bepalen welke factoren uit deze sectie u wilt afstemmen. Als u de effecten van elke factor van de prestaties van uw toepassing wilt Witness, voert u hulpprogram ma's voor benchmarking uit in de installatie van uw toepassing. Raadpleeg het gedeelte benchmarking aan het einde van dit artikel voor stappen voor het uitvoeren van algemene benchmarking-hulpprogram ma's op Windows-en Linux-Vm's.
+In deze sectie raadpleegt u de controle lijst voor toepassings vereisten die u hebt gemaakt om te bepalen hoeveel u nodig hebt om de prestaties van uw toepassingen te optimaliseren. Op basis hiervan kunt u bepalen welke factoren uit deze sectie u wilt afstemmen. Als u de effecten van elke factor van de prestaties van uw toepassing wilt Witness, voert u hulpprogram ma's voor benchmarking uit in de installatie van uw toepassing. Raadpleeg het artikel over benchmarking, gekoppeld aan het einde, voor stappen voor het uitvoeren van algemene benchmarking-hulpprogram ma's op Windows-en Linux-Vm's.
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>IOPS, door Voer en latentie in één oogopslag optimaliseren
 
@@ -166,7 +166,7 @@ Als u IOPS en band breedte wilt ophalen die hoger is dan de maximum waarde van �
 > [!NOTE]
 > Wanneer u meerdere IOPS of door Voer verhoogt, neemt de andere ook toe, moet u ervoor zorgen dat u de limieten voor door Voer of IOPS van de schijf of de virtuele machine niet bereikt wanneer een van beide wordt verhoogd.
 
-Als u de gevolgen van de i/o-grootte voor de prestaties van de toepassing wilt Witness, kunt u benchmarking-hulpprogram ma's uitvoeren op uw VM en schijven. Maak meerdere test uitvoeringen en gebruik een andere i/o-grootte voor elke uitvoering om de impact te bekijken. Raadpleeg het gedeelte benchmarking aan het einde van dit artikel voor meer informatie.
+Als u de gevolgen van de i/o-grootte voor de prestaties van de toepassing wilt Witness, kunt u benchmarking-hulpprogram ma's uitvoeren op uw VM en schijven. Maak meerdere test uitvoeringen en gebruik een andere i/o-grootte voor elke uitvoering om de impact te bekijken. Raadpleeg het artikel over benchmarking, gekoppeld aan het einde, voor meer informatie.
 
 ## <a name="high-scale-vm-sizes"></a>VM-grootten hoog schalen
 
@@ -387,11 +387,3 @@ Azure Premium Storage voorziet in een opgegeven aantal IOPS en door Voer, afhank
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de beschik bare schijf typen:
-
-* [Selecteer een schijf type](../articles/virtual-machines/windows/disks-types.md)  
-
-Lees voor SQL Server gebruikers artikelen over best practices voor prestaties voor SQL Server:
-
-* [Aanbevolen procedures voor de prestaties van SQL Server in azure Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Azure Premium Storage biedt de beste prestaties voor SQL Server in azure VM](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

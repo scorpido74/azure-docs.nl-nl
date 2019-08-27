@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 7cda51870a98b2606a0133a61ad6f786e7e9324a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: 58dd9ade749458facd6f11682af0b730258a7584
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900142"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033240"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een nieuw Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding
 
@@ -353,7 +353,7 @@ Met de optie **Marketplace-vermelding** die is gevonden op het tabblad **test st
 
 ## <a name="supplemental-content"></a>Aanvullende inhoud
 
-Op deze pagina kunt u aanvullende vereiste informatie over uw aanbieding opgeven.
+Op deze pagina kunt u aanvullende informatie over uw aanbieding opgeven zodat we uw aanbieding kunnen valideren. Deze informatie wordt niet weer gegeven aan klanten of gepubliceerd op Marketplace.
 
 ### <a name="key-usage-scenario"></a>Scenario voor sleutel gebruik
 

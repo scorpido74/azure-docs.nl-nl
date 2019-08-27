@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met SharePoint vanuit Azure Logic Apps | Microsoft Docs
-description: Automatiseren van taken en werkstromen die bewaken en beheren van resources in SharePoint Online of SharePoint Server on-premises met behulp van Azure Logic Apps
+title: Verbinding maken met share point vanuit Azure Logic Apps | Microsoft Docs
+description: Taken en werk stromen automatiseren waarmee resources in share point online of share Point server on-premises worden gecontroleerd en beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,74 +11,74 @@ ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8a34ee4e90b551da35aff8802c8badc0d74ff539
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60450740"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050786"
 ---
-# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Controleren en beheren van SharePoint-resources met Azure Logic Apps
+# <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Share point-resources bewaken en beheren met Azure Logic Apps
 
-Met Azure Logic Apps en de SharePoint-connector, kunt u geautomatiseerde taken en werkstromen die bewaken en beheren van resources, zoals bestanden, mappen, lijsten, artikelen, personen, enzovoort, in SharePoint Online of SharePoint Server on-premises, bijvoorbeeld:
+Met Azure Logic Apps en de share point-connector kunt u geautomatiseerde taken en werk stromen maken voor het bewaken en beheren van resources, zoals bestanden, mappen, lijsten, items, personen, enzovoort, in share point online of in share Point server on-premises, bijvoorbeeld:
 
-* Monitor als de bestanden of items zijn gemaakt, gewijzigd of verwijderd.
-* Maken, ophalen, bijwerken of verwijderen van items.
-* Toevoegen, verkrijgen of verwijderen van bijlagen. De inhoud ophalen van bijlagen.
-* Maken, kopieert, bijwerken of verwijderen van bestanden. 
-* Bestandseigenschappen bijwerken. Haal de inhoud, metagegevens of eigenschappen voor een bestand.
-* Lijst of ophalen van mappen.
-* Get-lijsten of lijstweergaven.
-* Stel de status van de goedkeuring van inhoud.
-* Personen die worden omgezet.
-* HTTP-aanvragen verzenden naar SharePoint.
-* Entiteitswaarden ophalen.
+* Bewaken wanneer bestanden of items worden gemaakt, gewijzigd of verwijderd.
+* Items maken, ophalen, bijwerken of verwijderen.
+* Bijlagen toevoegen, ophalen of verwijderen. Haal de inhoud op uit bijlagen.
+* Bestanden maken, kopiëren, bijwerken of verwijderen. 
+* Bestands eigenschappen bijwerken. De inhoud, meta gegevens of eigenschappen voor een bestand ophalen.
+* Mappen weer geven of uitpakken.
+* Haal lijsten of lijst Weergaven op.
+* Goedkeurings status van inhoud instellen.
+* Personen oplossen.
+* HTTP-aanvragen verzenden naar share point.
+* Entiteits waarden ophalen.
 
-U kunt triggers die te antwoorden krijgen van SharePoint en de uitvoer beschikbaar voor andere acties. U kunt acties in uw logische apps gebruiken voor het uitvoeren van taken in SharePoint. U kunt ook andere acties waarmee de uitvoer van de SharePoint-acties hebben. Bijvoorbeeld, als u regelmatig bestanden uit SharePoint ophalen, kunt u berichten verzenden naar uw team met behulp van de Slack-connector.
-Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+U kunt triggers gebruiken die reacties ophalen van share point en de uitvoer beschikbaar maken voor andere acties. U kunt acties in uw Logic apps gebruiken om taken uit te voeren in share point. U kunt ook andere acties uitvoeren met de uitvoer van share point-acties. Als u bijvoorbeeld regel matig bestanden ophaalt vanuit share point, kunt u berichten verzenden naar uw team met behulp van de verbindings uitstel.
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw SharePoint-site-adres en de gebruikersreferenties
+* Het adres en de gebruikers referenties van uw share point-site
 
-  Uw referenties toestaan dat de logische app een verbinding maken en toegang tot uw SharePoint-account. 
+  Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw share point-account. 
 
-* Voordat u logische apps met on-premises systemen, zoals SharePoint-Server verbinden kunt, moet u [installeren en instellen van een on-premises gegevensgateway](../logic-apps/logic-apps-gateway-install.md). Op die manier kunt u opgeven voor het gebruik van de gatewayinstallatie, wanneer u de SharePoint-Server verbinding voor uw logische app maakt.
+* Voordat u logische apps kunt verbinden met on-premises systemen zoals share Point server, moet u [een on-premises gegevens gateway installeren en instellen](../logic-apps/logic-apps-gateway-install.md). Op die manier kunt u opgeven dat u de gateway-installatie wilt gebruiken wanneer u de share Point server-verbinding maakt voor uw logische app.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot uw SharePoint-account. Om te beginnen met een SharePoint-trigger, [maken van een lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor het gebruik van een SharePoint-actie, start u uw logische app met een trigger, zoals een Salesforce-trigger, hebt u een Salesforce-account.
+* De logische app waartoe u toegang wilt krijgen tot uw share point-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een share point-trigger. Als u een share point-actie wilt gebruiken, start u uw logische app met een trigger, zoals een Sales Force-trigger, als u een Sales Force-account hebt.
 
-  Bijvoorbeeld, kun u uw logische app met de **wanneer een record wordt gemaakt** Salesforce-trigger. 
-  Deze trigger wordt elke keer dat een nieuwe record, zoals een lead in Salesforce wordt gemaakt. 
-  U kunt deze trigger met de SharePoint volgen **bestand maken** actie. Op die manier, wanneer de nieuwe record wordt gemaakt, uw logische app maakt een bestand in SharePoint met informatie over deze nieuwe record.
+  U kunt bijvoorbeeld uw logische app starten met de trigger **Wanneer een record wordt gemaakt** Sales Force. 
+  Deze trigger wordt geactiveerd elke keer dat een nieuwe record, zoals een lead, wordt gemaakt in Sales Force. 
+  U kunt deze trigger vervolgens volgen met de actie **bestand maken** van share point. Op die manier wordt bij het maken van de nieuwe record in de logische app een bestand in share point gemaakt met informatie over de nieuwe record.
 
 ## <a name="connect-to-sharepoint"></a>Verbinding maken met SharePoint
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Typ 'sharepoint' als filter voor lege, logische apps, in het zoekvak. Selecteer de gewenste trigger onder de lijst met triggers. 
+1. Voor lege Logic apps voert u in het zoekvak de waarde share point in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers. 
 
    -of-
 
-   Voor bestaande logische apps, onder de laatste stap waarin u wilt toevoegen van een SharePoint-actie, kies **nieuwe stap**. 
-   Typ 'sharepoint' als filter in het zoekvak. 
-   Selecteer de actie die u wilt onder de lijst met acties.
+   Kies voor bestaande Logic apps onder de laatste stap waar u een share point-actie wilt toevoegen de optie **nieuwe stap**. 
+   Voer in het zoekvak ' share point ' in als uw filter. 
+   Selecteer in de lijst acties de gewenste actie.
 
-   Als u wilt toevoegen een actie tussen fasen, de aanwijzer over de pijl tussen fasen. 
-   Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+   Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Wanneer u wordt gevraagd of u zich aanmeldt, bevatten de noodzakelijke verbindingsgegevens. Als u SharePoint Server, zorg ervoor dat u selecteert **verbinding maken via een on-premises gegevensgateway**. Wanneer u klaar bent, kiest u **Maken**.
+1. Wanneer u wordt gevraagd om u aan te melden, geeft u de benodigde verbindings gegevens op. Als u share Point server gebruikt, zorg er dan voor dat u **verbinding maken via een on-premises gegevens gateway**selecteert. Wanneer u klaar bent, kiest u **Maken**.
 
-1. Geef de benodigde informatie voor uw geselecteerde trigger of actie en doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/sharepoint/).
+Raadpleeg de [referentie pagina](/connectors/sharepoint/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -87,4 +87,4 @@ Voor technische informatie over triggers en acties limieten die worden beschreve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

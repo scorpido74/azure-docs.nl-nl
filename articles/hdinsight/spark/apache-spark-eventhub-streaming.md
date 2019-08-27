@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489812"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049494"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Zelfstudie: Tweets verwerken met Azure Event Hubs en Apache Spark in HDInsight
 
@@ -135,7 +135,7 @@ Maak een Jupyter-notebook en geef deze de naam **SendTweetsToEventHub**.
 
     ```
     %%configure
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
 2. Bewerk de code hieronder door te `<Event hub name>`vervangen `<Event hub namespace connection string>` `<CONSUMER KEY>`, `<CONSUMER SECRET>` `<ACCESS TOKEN>`,,, en `<TOKEN SECRET>` met de juiste waarden. Voer de bewerkte code uit om tweets naar uw Event Hub te verzenden:
@@ -217,7 +217,7 @@ Maak een andere Jupyter-notebook en noem deze **ReadTweetsFromEventHub**.
 
     ```
     %%configure -f
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
 2. Bewerk de onderstaande code door te `<Event hub name>`vervangen en `<Event hub namespace connection string>` door de juiste waarden. Voer de bewerkte code uit om tweets te lezen uit uw Event Hub:

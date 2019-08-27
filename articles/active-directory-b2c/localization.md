@@ -1,30 +1,30 @@
 ---
-title: Lokalisatie - Azure Active Directory B2C | Microsoft Docs
-description: Geef de lokalisatie-element van een aangepast beleid in Azure Active Directory B2C.
+title: Lokalisatie-Azure Active Directory B2C
+description: Geef het lokalisatie-element van een aangepast beleid in Azure Active Directory B2C op.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec9b4e7ce761d524d047f4d12cab9e5b782e6032
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510583"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033450"
 ---
 # <a name="localization"></a>Lokalisatie
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-De **lokalisatie** element kunt u ter ondersteuning van meerdere landinstellingen of talen in het beleid voor de gebruiker reizen. De lokalisatieondersteuning in het beleid kunt u:
+Het **lokalisatie** -element biedt ondersteuning voor meerdere land instellingen of talen in het beleid voor de gebruikers ritten. Met de lokalisatie ondersteuning in beleids regels kunt u:
 
-- Stel de expliciete lijst van de ondersteunde talen in een beleid en kies een taal.
-- Geef taalspecifieke tekenreeksen en verzamelingen.
+- Stel de expliciete lijst met ondersteunde talen in een beleid in en kies een standaard taal.
+- Taalspecifieke teken reeksen en verzamelingen opgeven.
 
 ```XML
 <Localization Enabled="true">
@@ -37,83 +37,84 @@ De **lokalisatie** element kunt u ter ondersteuning van meerdere landinstellinge
   ...
 ```
 
-De **lokalisatie** element bevat de volgende kenmerken:
+Het **lokalisatie** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
 | Enabled | Nee | Mogelijke waarden: `true` of `false`. |
 
-De **lokalisatie** element bevat een XML-elementen
+Het **lokalisatie** -element bevat de volgende XML-elementen
 
-| Element | Exemplaren | Description |
+| Element | Gevallen | Description |
 | ------- | ----------- | ----------- |
-| SupportedLanguages | 1: n | Lijst met ondersteunde talen. | 
+| SupportedLanguages | 1: n | Lijst met ondersteunde talen. |
 | LocalizedResources | 0: n | Lijst met gelokaliseerde resources. |
 
 ## <a name="supportedlanguages"></a>SupportedLanguages
 
-De **SupportedLanguages** element bevat de volgende kenmerken:
+Het **SupportedLanguages** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| Standaardtaal | Ja | De taal die moet worden gebruikt als de standaardlocatie voor gelokaliseerde bronnen. |
-| MergeBehavior | Nee | De opsommingswaarden van een van de waarden die worden samengevoegd, samen met eventuele ClaimType aanwezig zijn in een bovenliggende beleid met dezelfde id. Dit kenmerk gebruiken wanneer u een claim die is opgegeven in het Basisbeleid overschrijven. Mogelijke waarden: `Append`, `Prepend`, of `ReplaceAll`. De `Append` waarde geeft aan dat het verzamelen van gegevens aanwezig moet worden toegevoegd aan het einde van de verzameling die is opgegeven in het bovenliggende beleid. De `Prepend` waarde geeft aan dat het verzamelen van gegevens aanwezig zijn voordat u de verzameling die is opgegeven in het bovenliggende beleid moet worden toegevoegd. De `ReplaceAll` waarde geeft aan dat het verzamelen van gegevens die zijn gedefinieerd in het bovenliggende beleid moet worden genegeerd, in plaats daarvan de gegevens die zijn gedefinieerd in het huidige beleid gebruiken. |
+| Standaardtaal | Ja | De taal die moet worden gebruikt als standaard voor gelokaliseerde resources. |
+| MergeBehavior | Nee | Een opsommings waarde van waarden die samen worden samengevoegd met een claim type dat aanwezig is in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in basis beleid. Mogelijke waarden: `Append`, `Prepend`of `ReplaceAll`. De `Append` waarde geeft aan dat het verzamelen van gegevens moet worden toegevoegd aan het einde van de verzameling die in het bovenliggende beleid is opgegeven. De `Prepend` waarde geeft aan dat het verzamelen van gegevens moet worden toegevoegd vóór de verzameling die in het bovenliggende beleid is opgegeven. De `ReplaceAll` waarde geeft aan dat het verzamelen van gegevens die in het bovenliggende beleid zijn gedefinieerd, moet worden genegeerd, in plaats van de gegevens die in het huidige beleid zijn gedefinieerd. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
-De **SupportedLanguages** element bevat de volgende elementen:
+Het **SupportedLanguages** -element bevat de volgende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Gevallen | Description |
 | ------- | ----------- | ----------- |
-| SupportedLanguage | 1: n | Inhoud weergeven die aan een taalcode per RFC 5646 - Tags voor het identificeren van talen voldoet. | 
+| SupportedLanguage | 1: n | Geeft inhoud weer die voldoet aan een taal code per RFC 5646-Tags voor het identificeren van talen. |
 
 ## <a name="localizedresources"></a>LocalizedResources
 
-De **LocalizedResources** element bevat de volgende kenmerken:
+Het **LocalizedResources** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor het aanduiden van gelokaliseerde bronnen. |
+| ID | Ja | Een id die wordt gebruikt om gelokaliseerde bronnen uniek te identificeren. |
 
-De **LocalizedResources** element bevat de volgende elementen:
+Het **LocalizedResources** -element bevat de volgende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Gevallen | Description |
 | ------- | ----------- | ----------- |
-| LocalizedCollections | 0: n | Definieert de hele verzamelingen in verschillende culturen. Een verzameling kan verschillende aantal items en andere tekenreeksen voor verschillende culturen hebben. Voorbeelden van verzamelingen zijn de inventarisaties die worden weergegeven in de claimtypen. Bijvoorbeeld, wordt een land/regio-lijst weergegeven voor de gebruiker in een vervolgkeuzelijst. |
-| LocalizedStrings | 0: n | Hiermee definieert u alle van de tekenreeksen die, met uitzondering van de tekenreeksen die worden weergegeven in verzamelingen, in verschillende culturen. |
+| LocalizedCollections | 0: n | Definieert volledige verzamelingen in verschillende cult uren. Een verzameling kan een verschillend aantal items en verschillende teken reeksen voor verschillende cult uren hebben. Voor beelden van verzamelingen zijn de opsommingen die worden weer gegeven in claim typen. Een lijst met landen/regio's wordt bijvoorbeeld weer gegeven aan de gebruiker in een vervolg keuzelijst. |
+| LocalizedStrings | 0: n | Hiermee worden alle teken reeksen gedefinieerd, met uitzonde ring van de teken reeksen die in verzamelingen worden weer gegeven, in verschillende cult uren. |
 
 ### <a name="localizedcollections"></a>LocalizedCollections
 
-De **LocalizedCollections** element bevat de volgende elementen:
+Het **LocalizedCollections** -element bevat de volgende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Gevallen | Description |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Lijst met ondersteunde talen. |
 
 #### <a name="localizedcollection"></a>LocalizedCollection
 
-De **LocalizedCollection** element bevat de volgende kenmerken:
+Het **LocalizedCollection** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| ElementType | Ja | Verwijst naar een ClaimType-element of een element van de gebruikersinterface in het beleid-bestand. |
-| ElementId | Ja | Een tekenreeks met een verwijzing naar een claimtype al gedefinieerd in de sectie ClaimsSchema dat wordt gebruikt als **ElementType** is ingesteld op een ClaimType. |
-| TargetCollection | Ja | De doelverzameling. |
+| ElementType | Ja | Verwijst naar een claim type-element of een gebruikers interface-element in het beleids bestand. |
+| ElementId | Ja | Een teken reeks die een verwijzing bevat naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema, dat wordt gebruikt als **element** type is ingesteld op a. |
+| TargetCollection | Ja | De doel verzameling. |
 
-De **LocalizedCollection** element bevat de volgende elementen:
+Het **LocalizedCollection** -element bevat de volgende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Gevallen | Description |
 | ------- | ----------- | ----------- |
-| Item | 0: n | Hiermee definieert u een beschikbare optie voor de gebruiker selecteert voor een claim in de gebruikersinterface, zoals een waarde in een vervolgkeuzelijst. |
+| Item | 0: n | Hiermee definieert u een beschik bare optie voor de gebruiker om te selecteren voor een claim in de gebruikers interface, zoals een waarde in een vervolg keuzelijst. |
 
-De **Item** element bevat de volgende kenmerken:
+Het element **item** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| Text | Ja | De gebruiksvriendelijke weergavereeks die de gebruiker in de gebruikersinterface voor deze optie moet worden weergegeven. |
-| Value | Ja | De tekenreeks claim waarde die is gekoppeld met deze optie selecteert. |
+| Text | Ja | De gebruiks vriendelijke weergave teken reeks die moet worden weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
+| Value | Ja | De waarde van de teken reeks claim die is gekoppeld aan het selecteren van deze optie. |
+| SelectByDefault | Nee | Hiermee wordt aangegeven of deze optie standaard moet worden geselecteerd in de gebruikers interface. Mogelijke waarden: Waar of ONWAAR. |
 
-Het volgende voorbeeld ziet u het gebruik van de **LocalizedCollections** element. Deze bevat twee **LocalizedCollection** elementen, één voor Engels en een andere naam voor het Spaans. Beide ingesteld de **beperking** verzameling van de claim `Gender` met een lijst met items voor het Engels en Spaans.
+In het volgende voor beeld ziet u het gebruik van het element **LocalizedCollections** . Het bevat twee **LocalizedCollection** -elementen, een voor Engels en een andere voor Spaans. Stel de **beperkings** verzameling van de claim `Gender` in met een lijst met items voor Engels en Spaans.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -131,27 +132,26 @@ Het volgende voorbeeld ziet u het gebruik van de **LocalizedCollections** elemen
       <Item Text="Masculino" Value="M" />
     </LocalizedCollection>
 </LocalizedCollections>
-
 ```
 
 ### <a name="localizedstrings"></a>LocalizedStrings
 
-De **LocalizedStrings** element bevat de volgende elementen:
+Het **LocalizedStrings** -element bevat de volgende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Gevallen | Description |
 | ------- | ----------- | ----------- |
-| LocalizedString | 1: n | Een gelokaliseerde tekenreeks. |
+| LocalizedString | 1: n | Een gelokaliseerde teken reeks. |
 
-De **LocalizedString** element bevat de volgende kenmerken:
+Het **LocalizedString** -element bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Description |
 | --------- | -------- | ----------- |
-| ElementType | Ja | Een verwijzing naar een element van het type claim of een element van de gebruikersinterface in het beleid. Mogelijke waarden: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, of. De `ClaimType` waarde wordt gebruikt om een van de claim-kenmerken, zoals opgegeven in de StringId lokaliseren. De `UxElement` waarde wordt gebruikt om een van de gebruikersinterface-elementen die zijn opgegeven in de StringId lokaliseren. De `ErrorMessage` waarde wordt gebruikt om een van de foutberichten systeem zoals opgegeven in de StringId lokaliseren. De `Predicate` waarde wordt gebruikt voor het lokaliseren van een van de [predicaat](predicates.md) foutberichten worden weergegeven, zoals opgegeven in de StringId. De `InputValidation` waarde wordt gebruikt voor het lokaliseren van een van de [PredicateValidation](predicates.md) foutberichten die zijn opgegeven in de StringId groep. |
-| ElementId | Ja | Als **ElementType** is ingesteld op `ClaimType`, `Predicate`, of `InputValidation`, dit element bevat een verwijzing naar een claimtype al gedefinieerd in de sectie ClaimsSchema. | 
-| StringId | Ja | Als **ElementType** is ingesteld op `ClaimType`, dit element bevat een verwijzing naar een kenmerk van een claimtype. Mogelijke waarden: `DisplayName`, `AdminHelpText`, of `PatternHelpText`. De `DisplayName` waarde wordt gebruikt voor het instellen van de weergavenaam van de claim. De `AdminHelpText` waarde wordt gebruikt om de naam van het help-tekst van de claim-gebruiker ingesteld. De `PatternHelpText` waarde wordt gebruikt voor het instellen van de claim patroon help-tekst. Als **ElementType** is ingesteld op `UxElement`, dit element bevat een verwijzing naar een kenmerk van een element van de gebruikersinterface. Als **ElementType** is ingesteld op `ErrorMessage`, dit element Hiermee geeft u de id van een foutbericht weergegeven. Zie [gelokaliseerde tekenreeks id's](localization-string-ids.md) voor een volledige lijst van de `UxElement` id's.|
+| ElementType | Ja | Een verwijzing naar een claim type-element of een gebruikers interface-element in het beleid. Mogelijke waarden: `ClaimType` `UxElement` ,,`Predicate`,of. `ErrorMessage` De `ClaimType` waarde wordt gebruikt om een van de claim kenmerken te lokaliseren, zoals opgegeven in de StringId. De `UxElement` waarde wordt gebruikt voor het lokaliseren van een van de elementen van de gebruikers interface, zoals opgegeven in de StringId. De `ErrorMessage` waarde wordt gebruikt voor het lokaliseren van een van de systeem fout berichten die zijn opgegeven in de StringId. De `Predicate` waarde wordt gebruikt om een van de [predicaat](predicates.md) fout berichten te lokaliseren, zoals opgegeven in de StringId. De `InputValidation` waarde wordt gebruikt om een van de [PredicateValidation](predicates.md) -groeps fout berichten te lokaliseren zoals opgegeven in de StringId. |
+| ElementId | Ja | Als **element type** is ingesteld `ClaimType`op `Predicate`,, `InputValidation`of, bevat dit element een verwijzing naar een claim type dat al is gedefinieerd in de sectie ClaimsSchema. |
+| StringId | Ja | Als **element type** is ingesteld `ClaimType`op, bevat dit element een verwijzing naar een kenmerk van een claim type. Mogelijke waarden: `DisplayName`, `AdminHelpText`of `PatternHelpText`. De `DisplayName` waarde wordt gebruikt om de weergave naam van de claim in te stellen. De `AdminHelpText` waarde wordt gebruikt om de Help-tekst naam van de claim gebruiker in te stellen. De `PatternHelpText` waarde wordt gebruikt om de Help-tekst van het claim patroon in te stellen. Als element **type** is ingesteld `UxElement`op, bevat dit element een verwijzing naar een kenmerk van een element van een gebruikers interface. Als element **type** is ingesteld `ErrorMessage`op, wordt met dit element de id van een fout bericht opgegeven. Zie [lokalisatie teken reeks-id's](localization-string-ids.md) voor een volledige lijst `UxElement` met id's.|
 
 
-Het volgende voorbeeld ziet een gelokaliseerde pagina voor het registreren. De eerste drie **LocalizedString** waarden stelt u het kenmerk claim. De derde verandert de waarde van de knop Doorgaan. Het laatste item wijzigt het foutbericht.
+In het volgende voor beeld wordt een gelokaliseerde aanmeldings pagina weer gegeven. Met de eerste drie **LocalizedString** waarden wordt het claim kenmerk ingesteld. De derde wijzigt de waarde van de knop door gaan. De laatste Hiermee wijzigt u het fout bericht.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -165,7 +165,7 @@ Het volgende voorbeeld ziet een gelokaliseerde pagina voor het registreren. De e
 </LocalizedResources>
 ```
 
-Het volgende voorbeeld ziet u een gelokaliseerde de **UserHelpText** van **predicaat** met Id `IsLengthBetween8And64`. En een gelokaliseerde **UserHelpText** van **PredicateGroup** met Id `CharacterClasses` van **PredicateValidation** met Id `StrongPassword`.
+In het volgende voor beeld wordt een gelokaliseerd **UserHelpText** van **predicaat** met `IsLengthBetween8And64`id weer gegeven. En een gelokaliseerde **UserHelpText** van **PredicateGroup** met `CharacterClasses` id **PredicateValidation** met id `StrongPassword`.
 
 ```XML
 <PredicateValidation Id="StrongPassword">
@@ -187,16 +187,16 @@ Het volgende voorbeeld ziet u een gelokaliseerde de **UserHelpText** van **predi
 
 <LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>              
+<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
 ## <a name="set-up-localization"></a>Lokalisatie instellen
 
-In dit artikel wordt beschreven hoe u ter ondersteuning van meerdere landinstellingen of talen in het beleid voor gebruikers reizen. Lokalisatie zijn drie stappen vereist: de expliciete lijst van de ondersteunde talen taalspecifieke tekenreeksen en verzamelingen bieden, en de ContentDefinition voor de pagina bewerken.
+In dit artikel wordt beschreven hoe u meerdere land instellingen of talen in het beleid voor gebruikers ritten ondersteunt. Lokalisatie vereist drie stappen: Stel de expliciete lijst van de ondersteunde talen in, geef taalspecifieke teken reeksen en verzamelingen op en bewerk de ContentDefinition voor de pagina.
 
-### <a name="set-up-the-explicit-list-of-supported-languages"></a>Instellen van de expliciete lijst van ondersteunde talen
+### <a name="set-up-the-explicit-list-of-supported-languages"></a>De expliciete lijst met ondersteunde talen instellen
 
-Onder de **BuildingBlocks** element toevoegen de **lokalisatie** element met de lijst met ondersteunde talen. Het volgende voorbeeld laat zien hoe de lokalisatieondersteuning voor zowel Engels (standaard) en Spaans definiëren:
+Voeg onder het element BuildingBlocks het **lokalisatie** -element toe met de lijst met ondersteunde talen. In het volgende voor beeld ziet u hoe u de lokalisatie ondersteuning definieert voor zowel Engels (standaard) als Spaans:
 
 ```XML
 <Localization Enabled="true">
@@ -207,22 +207,23 @@ Onder de **BuildingBlocks** element toevoegen de **lokalisatie** element met de 
 </Localization>
 ```
 
-### <a name="provide-language-specific-strings-and-collections"></a>Taalspecifieke tekenreeksen en verzamelingen bieden 
+### <a name="provide-language-specific-strings-and-collections"></a>Taalspecifieke teken reeksen en verzamelingen opgeven
 
-Voeg **LocalizedResources** elementen binnen de **lokalisatie** element na het sluiten van de **SupportedLanguages** element. U toevoegen **LocalizedResources** -elementen voor elke pagina (inhoudsdefinitie) en elke taal die u wilt ondersteunen. Voor het aanpassen van de uniforme pagina voor registreren of aanmelden, meld u aan en meervoudige verificatie (MFA) pagina's voor het Engels, Spaans en Frankrijk, voeg u de volgende **LocalizedResources** elementen.  
-- Uniforme pagina voor registreren of aanmelden, Engels `<LocalizedResources Id="api.signuporsignin.en">`
-- Meld u aan of aanmelden pagina Unified Spaans `<LocalizedResources Id="api.signuporsignin.es">`
-- Uniforme pagina voor registreren of aanmelden, Frankrijk `<LocalizedResources Id="api.signuporsignin.fr">` 
-- Meld u aan, Engels `<LocalizedResources Id="api.localaccountsignup.en">`
-- Meld u aan, Spaans `<LocalizedResources Id="api.localaccountsignup.es">`
-- Meld u aan, Frankrijk `<LocalizedResources Id="api.localaccountsignup.fr">`
-- MFA, Engels `<LocalizedResources Id="api.phonefactor.en">`
-- MFA, Spaans `<LocalizedResources Id="api.phonefactor.es">`
-- MFA, Frankrijk `<LocalizedResources Id="api.phonefactor.fr">`
+Voeg **LocalizedResources** -elementen toe binnen het **lokalisatie** -element nadat het **SupportedLanguages** -element is gesloten. U voegt **LocalizedResources** -elementen toe voor elke pagina (inhouds definitie) en elke taal die u wilt ondersteunen. U kunt de volgende **LocalizedResources** -elementen toevoegen om de Unified registratie-of aanmeldings pagina, registratie en MFA-pagina's (multi-factor Authentication) voor Engels, Spaans en Frank rijk aan te passen.
 
-Elke **LocalizedResources** element bevat alle van de vereiste **LocalizedStrings** elementen met meerdere **LocalizedString** elementen en  **LocalizedCollections** elementen met meerdere **LocalizedCollection** elementen.  Het volgende voorbeeld wordt de Engelse lokalisatie van de pagina voor het registreren: 
+- Uniforme registratie-of aanmeldings pagina, Engels`<LocalizedResources Id="api.signuporsignin.en">`
+- Unified Sign-up-of aanmeldings pagina, Spaans`<LocalizedResources Id="api.signuporsignin.es">`
+- Uniforme registratie-of aanmeldings pagina, Frank rijk`<LocalizedResources Id="api.signuporsignin.fr">`
+- Registratie, Engels`<LocalizedResources Id="api.localaccountsignup.en">`
+- Registratie, Spaans`<LocalizedResources Id="api.localaccountsignup.es">`
+- Registratie, Frank rijk`<LocalizedResources Id="api.localaccountsignup.fr">`
+- MFA, Engels`<LocalizedResources Id="api.phonefactor.en">`
+- MFA, Spaans`<LocalizedResources Id="api.phonefactor.es">`
+- MFA, Frank rijk`<LocalizedResources Id="api.phonefactor.fr">`
 
-Opmerking: In dit voorbeeld wordt een verwijzing naar `Gender` en `City` claimtypen. Zorg dat u deze claims definiëren voor het gebruik van dit voorbeeld. Zie voor meer informatie, [ClaimsSchema](claimsschema.md).
+Elk **LocalizedResources** -element bevat alle vereiste **LocalizedStrings** -elementen met meerdere **LocalizedString** -elementen en **LocalizedCollections** -elementen met meerdere **LocalizedCollection** opties.  In het volgende voor beeld wordt de pagina voor aanmeldings pagina's Engels gelokaliseerd toegevoegd:
+
+Opmerking: In dit voor beeld wordt een `Gender` verwijzing `City` naar en claim typen gemaakt. Als u dit voor beeld wilt gebruiken, zorg er dan voor dat u deze claims definieert. Zie [ClaimsSchema](claimsschema.md)voor meer informatie.
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -249,7 +250,7 @@ Opmerking: In dit voorbeeld wordt een verwijzing naar `Gender` en `City` claimty
 </LocalizedResources>
 ```
 
-De lokalisatie van de pagina voor het registreren voor Spaans.
+Lokalisatie van de aanmeldings pagina voor Spaans.
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.es">
@@ -276,11 +277,11 @@ De lokalisatie van de pagina voor het registreren voor Spaans.
 </LocalizedResources>
 ```
 
-### <a name="edit-the-contentdefinition-for-the-page"></a>De ContentDefinition voor de pagina bewerken 
+### <a name="edit-the-contentdefinition-for-the-page"></a>De ContentDefinition voor de pagina bewerken
 
-Voor elke pagina die u wilt om te lokaliseren, geeft u de taalcodes gezocht de **ContentDefinition**.
+Voor elke pagina die u wilt lokaliseren, geeft u de taal codes op waarnaar u wilt zoeken in de **ContentDefinition**.
 
-Engels (en) en Spaans (es) aangepaste tekenreeksen in het volgende voorbeeld worden toegevoegd aan de pagina voor het registreren. De **LocalizedResourcesReferenceId** voor elk **LocalizedResourcesReference** is hetzelfde als de landinstellingen, maar u kunt een willekeurige tekenreeks als de id. Voor elke combinatie van taal en een pagina die u verwijzen naar de bijbehorende **LocalizedResources** u eerder hebt gemaakt.
+In het volgende voor beeld worden de aangepaste teken reeksen Engels (en) en Spaans (ES) toegevoegd aan de registratie pagina. De **LocalizedResourcesReferenceId** voor elke **LocalizedResourcesReference** is hetzelfde als de land instelling, maar u kunt elke wille keurige teken reeks als de id gebruiken. Voor elke combi natie van taal en pagina wijst u de overeenkomende **LocalizedResources** aan die u eerder hebt gemaakt.
 
 ```XML
 <ContentDefinition Id="api.localaccountsignup">
@@ -292,7 +293,7 @@ Engels (en) en Spaans (es) aangepaste tekenreeksen in het volgende voorbeeld wor
 </ContentDefinition>
 ```
 
-Het volgende voorbeeld ziet u het laatste XML-bestand:
+In het volgende voor beeld wordt de laatste XML weer gegeven:
 
 ```XML
 <BuildingBlocks>
@@ -363,7 +364,3 @@ Het volgende voorbeeld ziet u het laatste XML-bestand:
   </Localization>
 </BuildingBlocks>
 ```
-
-
-
-

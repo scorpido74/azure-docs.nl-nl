@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: aad42ea891b671bd481322d8b499d375ca06a7dc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5d13e7375c9e3cd874bc61b686ff2549c38da1f3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512637"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036370"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center en Azure Virtual Machines
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) helpt u bedreigingen te voorkomen, te detecteren en erop te reageren. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden blijven, en werkt met een uitgebreid ecosysteem van beveiligingsoplossingen.
@@ -59,8 +59,6 @@ Een beveiligingsbeleid bepaalt welke set controles wordt aanbevolen voor resourc
 
 > [!NOTE]
 > Zie het artikel [Beveiligingsbeleid instellen](tutorial-security-policy.md) voor meer informatie over elk **Preventiebeleid**.
-> 
-> 
 
 ## <a name="manage-security-recommendations"></a>Aanbevelingen voor beveiliging beheren
 De beveiligingsstatus van uw Azure-resources wordt gecontroleerd met Security Center. Wanneer met Security Center potentiële beveiligingsproblemen worden geïdentificeerd, worden er aanbevelingen gedaan. Deze aanbevelingen begeleiden u bij het configureren van de benodigde besturingselementen.
@@ -90,7 +88,7 @@ Nadat u een [beveiligingsbeleid](tutorial-security-policy.md) voor de resources 
 ![Beveiligingsstatus](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Beveiligingswaarschuwingen beheren en erop reageren
-Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren. Door gebruik te maken van een combinatie van [detectiemogelijkheden](security-center-detection-capabilities.md), kan Security Center beveiligingswaarschuwingen genereren waarmee u het probleem snel kunt onderzoeken en waarmee aanbevelingen kunnen worden geboden voor het herstellen van mogelijke aanvallen.
+Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren. Door gebruik te maken van een combinatie van [detectiemogelijkheden](security-center-alerts-overview.md#detect-threats), kan Security Center beveiligingswaarschuwingen genereren waarmee u het probleem snel kunt onderzoeken en waarmee aanbevelingen kunnen worden geboden voor het herstellen van mogelijke aanvallen.
 
 ![Beveiligingswaarschuwingen](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 

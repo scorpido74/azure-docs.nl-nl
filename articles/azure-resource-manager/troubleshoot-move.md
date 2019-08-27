@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b688218b871a5f652e7f4de172d23f1b1fb0aa5c
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624304"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035510"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Problemen oplossen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement
 
@@ -43,7 +43,9 @@ Indien mogelijk is grote break verplaatst naar afzonderlijke verplaatsingsbewerk
 
 ## <a name="resource-not-in-succeeded-state"></a>De resource heeft de status niet voltooid
 
-Als er een fout bericht wordt weer gegeven dat aangeeft dat een resource niet kan worden verplaatst, omdat deze niet de status geslaagd heeft, is het mogelijk een afhankelijke resource die de verplaatsing blokkeert. Bekijk de [status van afhankelijke resources](./move-limitations/networking-move-limitations.md#state-of-dependent-resources).
+Wanneer er een fout bericht wordt weer gegeven dat aangeeft dat een resource niet kan worden verplaatst, omdat deze niet de status geslaagd heeft, is het mogelijk een afhankelijke resource die de verplaatsing blokkeert.
+
+Als de bron-of doel resource groep een virtueel netwerk bevat, worden de statussen van alle afhankelijke resources voor het virtuele netwerk gecontroleerd tijdens de verplaatsing. Als een van deze resources een mislukte status heeft, wordt de verplaatsing geblokkeerd. Als bijvoorbeeld een virtuele machine die gebruikmaakt van het virtuele netwerk is mislukt, wordt de verplaatsing geblokkeerd. De verplaatsing wordt geblokkeerd, zelfs wanneer de virtuele machine niet een van de resources is die worden verplaatst en die zich niet in een van de resource groepen bevindt voor de verplaatsing. U kunt dit probleem voor komen door uw resources te verplaatsen naar een resource groep die geen virtueel netwerk heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

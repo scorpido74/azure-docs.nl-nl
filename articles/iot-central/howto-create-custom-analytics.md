@@ -1,184 +1,184 @@
 ---
-title: Azure IoT Central uitbreiden met aangepaste analytics | Microsoft Docs
-description: Als ontwikkelaar oplossing een IoT Central-toepassing te doen aangepaste analyses en visualisaties te configureren. Deze oplossing maakt gebruik van Azure Databricks.
+title: Azure IoT Central uitbreiden met aangepaste analyses | Microsoft Docs
+description: Configureer als ontwikkelaar van oplossingen een IoT Central-toepassing om aangepaste analyses en visualisaties uit te voeren. Deze oplossing maakt gebruik van Azure Databricks.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/21/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e039e2b8d9c183b5bfee1bee47e4addc4c873bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f9b255e8aa370184ec244ed418f02e55fc149b3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743438"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049168"
 ---
-# <a name="extend-azure-iot-central-with-custom-analytics"></a>Azure IoT Central uitbreiden met aangepaste analytics
+# <a name="extend-azure-iot-central-with-custom-analytics"></a>Azure IoT Central uitbreiden met aangepaste analyses
 
-In deze gebruiksaanwijzing ziet u, als de ontwikkelaar van een oplossing voor het uitbreiden van uw IoT Central-toepassing met aangepaste analyses en visualisaties. Het voorbeeld wordt een [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) werkruimte voor het analyseren van de telemetriestroom IoT Central en voor het genereren van visualisaties, zoals [grafieken vak](https://wikipedia.org/wiki/Box_plot).
+In deze hand leiding wordt uitgelegd hoe u, als oplossings ontwikkelaar, uw IoT Central-toepassing kunt uitbreiden met aangepaste analyses en visualisaties. In het voor beeld wordt een [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) -werk ruimte gebruikt voor het analyseren van de IOT Central telemetrische stroom en voor het genereren van visualisaties zoals [box plots](https://wikipedia.org/wiki/Box_plot).
 
-In deze gebruiksaanwijzing ziet u hoe u kunt IoT Central uitbreiden buiten deze al met doen kunt de [ingebouwde analyseprogramma's](howto-create-analytics.md).
+In deze hand leiding wordt uitgelegd hoe u IoT Central uitbreidt dan wat u al kunt doen met de [ingebouwde analyse hulpprogramma's](howto-create-analytics.md).
 
-In deze handleiding leert u hoe u:
+In deze hand leiding leert u het volgende:
 
-* Telemetrie van een IoT Central-toepassing met Stream *voortdurende gegevensexport*.
-* Maak een Azure Databricks-omgeving te analyseren en te tekenen telemetrie van apparaten.
+* Telemetrie streamen vanuit een IoT Central-toepassing met doorlopende *gegevens export*.
+* Maak een Azure Databricks omgeving om telemetrie van apparaten te analyseren en af te zetten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor de stappen in deze handleiding, hebt u een actief Azure-abonnement nodig.
+Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-abonnement nodig.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-### <a name="iot-central-application"></a>IoT Central-toepassing
+### <a name="iot-central-application"></a>IoT Central toepassing
 
-Maken van een IoT Central-toepassing van de [Azure IoT Central - mijn toepassingen](https://aka.ms/iotcentral) pagina met de volgende instellingen:
+Maak een IoT Central-toepassing op de pagina [Azure IOT Central-mijn toepassingen](https://aka.ms/iotcentral) met de volgende instellingen:
 
 | Instelling | Value |
 | ------- | ----- |
-| Betalingsschema | Betalen per gebruik |
-| Toepassingsjabloon | Contoso-voorbeeld |
-| De naam van de toepassing | Accepteer de standaardwaarde of Kies uw eigen naam |
-| URL | Accepteer de standaardwaarde of Kies uw eigen unieke URL-voorvoegsel |
-| Directory | Uw Azure Active Directory-tenant |
+| Betalings plan | Betalen per gebruik |
+| Toepassingsjabloon | Voorbeeld-Contoso |
+| Toepassingsnaam | Accepteer de standaard waarde of kies uw eigen naam |
+| URL | Accepteer de standaard waarde of kies uw eigen unieke URL-voor voegsel |
+| Directory | Uw Azure Active Directory-Tenant |
 | Azure-abonnement | Uw Azure-abonnement |
-| Regio | US - oost |
+| Regio | East US |
 
-De voorbeelden en schermopnamen in dit artikel gebruiken de **VS-Oost** regio. Kies een locatie dicht bij u en zorg ervoor dat u al uw resources in dezelfde regio maken.
+De voor beelden en scherm afbeeldingen in dit artikel gebruiken de regio **VS-Oost** . Kies een locatie dicht bij u en zorg ervoor dat u alle resources in dezelfde regio maakt.
 
-### <a name="resource-group"></a>Resourcegroep
+### <a name="resource-group"></a>Resource group
 
-Gebruik de [Azure portal om een resourcegroep te maken](https://portal.azure.com/#create/Microsoft.ResourceGroup) met de naam **IoTCentralAnalysis** bevatten de andere resources die u maakt. Uw Azure-resources in dezelfde locatie als uw IoT Central-toepassing maken.
+Gebruik de [Azure Portal om een resource groep te maken](https://portal.azure.com/#create/Microsoft.ResourceGroup) met de naam **IoTCentralAnalysis** die de andere resources bevat die u maakt. Maak uw Azure-resources op dezelfde locatie als uw IoT Central-toepassing.
 
 ### <a name="event-hubs-namespace"></a>Event Hubs-naamruimte
 
-Gebruik de [Azure portal om te maken van een Event Hubs-naamruimte](https://portal.azure.com/#create/Microsoft.EventHub) met de volgende instellingen:
+Gebruik de [Azure Portal om een event hubs naam ruimte te maken](https://portal.azure.com/#create/Microsoft.EventHub) met de volgende instellingen:
 
 | Instelling | Waarde |
 | ------- | ----- |
-| Name    | Kies de naamruimtenaam van uw |
+| Name    | De naam van de naam ruimte kiezen |
 | Prijscategorie | Basic |
-| Abonnement | Uw abonnement |
-| Resourcegroep | IoTCentralAnalysis |
-| Locatie | US - oost |
+| Subscription | Uw abonnement |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | Doorvoereenheden | 1 |
 
-### <a name="azure-databricks-workspace"></a>Azure Databricks-werkruimte
+### <a name="azure-databricks-workspace"></a>Azure Databricks werk ruimte
 
-Gebruik de [Azure portal om te maken van een Azure Databricks Service](https://portal.azure.com/#create/Microsoft.Databricks) met de volgende instellingen:
+Gebruik de [Azure Portal om een Azure Databricks service te maken](https://portal.azure.com/#create/Microsoft.Databricks) met de volgende instellingen:
 
 | Instelling | Value |
 | ------- | ----- |
-| Naam van de werkruimte    | Kies de Werkruimtenaam van uw |
-| Abonnement | Uw abonnement |
-| Resourcegroep | IoTCentralAnalysis |
-| Locatie | US - oost |
+| Naam van de werkruimte    | De naam van uw werk ruimte kiezen |
+| Subscription | Uw abonnement |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | Prijscategorie | Standard |
 
-Tijdens het maken van de vereiste resources, uw **IoTCentralAnalysis** resourcegroep ziet eruit als in de volgende schermafbeelding:
+Wanneer u de vereiste resources hebt gemaakt, ziet uw **IoTCentralAnalysis** -resource groep eruit als de volgende scherm afbeelding:
 
-![IoT Central analysis-resourcegroep](media/howto-create-custom-analytics/resource-group.png)
+![Resource groep IoT Central analyse](media/howto-create-custom-analytics/resource-group.png)
 
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
-U kunt een toepassing IoT Central telemetrie continu exporteren naar een event hub configureren. In deze sectie maakt u een event hub voor het ontvangen van telemetrie van uw IoT Central-toepassing. De event hub biedt de telemetrie naar uw Stream Analytics-taak voor verwerking.
+U kunt een IoT Central-toepassing configureren om voortdurend telemetrie te exporteren naar een Event Hub. In deze sectie maakt u een Event Hub voor het ontvangen van telemetrie van uw IoT Central-toepassing. De Event Hub levert de telemetrie naar uw Stream Analytics-taak voor verwerking.
 
-1. In de Azure-portal, gaat u naar uw Event Hubs-naamruimte en selecteer **+ Event Hub**.
-1. Naam van uw event hub **centralexport**, en selecteer **maken**.
-1. Selecteer in de lijst met eventhubs in uw naamruimte, **centralexport**. Kies vervolgens **beleid voor gedeelde toegang**.
-1. Selecteer **+ Toevoegen**. Maak een beleid met de naam **luisteren** met de **luisteren** claim.
-1. Wanneer het beleid klaar is, selecteert u deze in de lijst en kopieer vervolgens de **verbindingsreeks-primaire sleutel** waarde.
-1. Maak een notitie van deze verbindingsreeks, u deze later gebruiken bij het configureren van uw Databricks-notebook om uit de event hub te lezen.
+1. Ga in het Azure Portal naar uw Event Hubs-naam ruimte en selecteer **+ Event hub**.
+1. Geef uw Event Hub **centralexport**een naam en selecteer **maken**.
+1. Selecteer **centralexport**in de lijst met Event hubs in uw naam ruimte. Kies vervolgens **beleid voor gedeelde toegang**.
+1. Selecteer **+ Toevoegen**. Maak een beleid met de naam listen met de **listener** -claim.
+1. Wanneer het beleid gereed is, selecteert u het in de lijst en kopieert u vervolgens de **verbindings reeks-primaire sleutel** waarde.
+1. Noteer deze connection string. u kunt dit later doen wanneer u uw Databricks-notebook configureert om te lezen van de Event Hub.
 
-Uw Event Hubs-naamruimte ziet eruit als in de volgende schermafbeelding:
+De naam ruimte van uw Event Hubs ziet eruit als in de volgende scherm afbeelding:
 
 ![Event Hubs-naamruimte](media/howto-create-custom-analytics/event-hubs-namespace.png)
 
-## <a name="configure-export-in-iot-central"></a>Configureren van uitvoer in IoT Central
+## <a name="configure-export-in-iot-central"></a>Exporteren configureren in IoT Central
 
-Navigeer naar de [IoT Central-toepassing](https://aka.ms/iotcentral) u gemaakt op basis van de sjabloon Contoso. In deze sectie configureert u de toepassing om de telemetrie van de gesimuleerde apparaten naar uw event hub streamen. De export configureren:
+Ga naar de [IOT Central toepassing](https://aka.ms/iotcentral) die u hebt gemaakt op basis van de contoso-sjabloon. In deze sectie configureert u de toepassing voor het streamen van de telemetrie van de gesimuleerde apparaten naar uw Event Hub. Het exporteren configureren:
 
-1. Navigeer naar de **continue gegevensexport** weergeeft, schakelt **+ nieuw**, en vervolgens **Azure Event Hubs**.
-1. Gebruik de volgende instellingen naar de export configureren en selecteer vervolgens **opslaan**:
+1. Ga naar de pagina **continue gegevens export** , selecteer **+ Nieuw**en klik vervolgens op **Azure Event hubs**.
+1. Gebruik de volgende instellingen om het exporteren te configureren en selecteer vervolgens **Opslaan**:
 
     | Instelling | Value |
     | ------- | ----- |
-    | Weergavenaam | Exporteren naar Eventhubs |
+    | Weergavenaam | Exporteren naar Event Hubs |
     | Enabled | Aan |
-    | Event Hubs-naamruimte | De naam van uw Event Hubs-naamruimte |
+    | Event Hubs-naamruimte | De naam van uw Event Hubs-naam ruimte |
     | Event Hub | centralexport |
     | Metingen | Aan |
     | Apparaten | Uit |
     | Apparaatsjablonen | Uit |
 
-![Configuratie voor continue export](media/howto-create-custom-analytics/cde-configuration.png)
+![Configuratie continue gegevens export](media/howto-create-custom-analytics/cde-configuration.png)
 
-Wacht totdat de status van de export **met** voordat u doorgaat.
+Wacht tot de export status **actief** is voordat u doorgaat.
 
-## <a name="configure-databricks-workspace"></a>Databricks-werkruimte configureren
+## <a name="configure-databricks-workspace"></a>Databricks-werk ruimte configureren
 
-In de Azure-portal, gaat u naar uw Azure Databricks-service en selecteer **werkruimte starten**. Een nieuw tabblad geopend in uw browser en u zich aanmeldt bij uw werkruimte.
+Ga in het Azure Portal naar uw Azure Databricks-service en selecteer **werk ruimte starten**. Er wordt een nieuw tabblad geopend in uw browser en u wordt aangemeld bij uw werk ruimte.
 
 ### <a name="create-a-cluster"></a>Een cluster maken
 
-Op de **Azure Databricks** pagina, onder de lijst met algemene taken, selecteer **nieuw Cluster**.
+Selecteer op de pagina **Azure Databricks** , onder de lijst met algemene taken, de optie **Nieuw cluster**.
 
 Gebruik de informatie in de volgende tabel om uw cluster te maken:
 
 | Instelling | Waarde |
 | ------- | ----- |
 | Clusternaam | centralanalysis |
-| De clustermodus met | Standard |
-| Databricks Runtime-versie | 5.3 (Scala 2.11, Spark 2.4.0) |
+| Cluster modus | Standard |
+| Databricks Runtime versie | 5,3 (scala 2,11, Spark 2.4.0) |
 | Python-versie | 3 |
 | Automatisch schalen inschakelen | Nee |
-| Beëindigen na aantal minuten van inactiviteit | 30 |
-| Werknemertype | Standard_DS3_v2 |
-| Werknemers | 1 |
-| Stuurprogrammatype | Zelfde als medewerker |
+| Beëindigen na minuten van inactiviteit | 30 |
+| Type werk nemer | Standard_DS3_v2 |
+| Medewerkers | 1 |
+| Type stuur programma | Gelijk aan werk nemer |
 
-Het maken van een cluster kan enkele minuten duren, wacht tot het maken van het cluster om te voltooien voordat u doorgaat.
+Het maken van een cluster kan enkele minuten duren. wacht totdat het maken van het cluster is voltooid voordat u doorgaat.
 
 ### <a name="install-libraries"></a>Bibliotheken installeren
 
-Op de **Clusters** pagina, wacht totdat de clusterstatus van het is **met**.
+Wacht op de pagina **clusters** totdat de cluster status **actief**is.
 
-De volgende stappen laten zien hoe u de bibliotheek uw voorbeeld moet importeren in het cluster:
+De volgende stappen laten zien hoe u de bibliotheek kunt importeren die nodig is voor uw voor beeld in het cluster:
 
-1. Op de **Clusters** pagina, wachten totdat de status van de **centralanalysis** interactieve cluster **met**.
+1. Wacht op de pagina **clusters** totdat de status van het interactieve cluster **centralanalysis** wordt **uitgevoerd**.
 
-1. Selecteer het cluster en kies vervolgens de **bibliotheken** tabblad.
+1. Selecteer het cluster en klik vervolgens op het tabblad **tape wisselaars** .
 
-1. Op de **bibliotheken** tabblad **installeren nieuwe**.
+1. Kies op het tabblad **tape wisselaars** de optie **nieuwe installeren**.
 
-1. Op de **bibliotheek installeren** pagina, kies **Maven** als de bron van de bibliotheek.
+1. Kies op de pagina **bibliotheek installeren** de optie **maven** als de bron van de bibliotheek.
 
-1. In de **coördineert** tekstvak, voert u de volgende waarde: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+1. Voer in het tekstvak **coördinaten** de volgende waarde in:`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
 
-1. Kies **installeren** de bibliotheek te installeren op het cluster.
+1. Kies **installeren** om de bibliotheek op het cluster te installeren.
 
-1. De status van de tapewisselaar is nu **geïnstalleerde**:
+1. De status van de tape wisselaar is nu **geïnstalleerd**:
 
-    ![Bibliotheek geïnstalleerd](media/howto-create-custom-analytics/cluster-libraries.png)
+    ![Bibliotheek is geïnstalleerd](media/howto-create-custom-analytics/cluster-libraries.png)
 
 ### <a name="import-a-databricks-notebook"></a>Een Databricks-notebook importeren
 
-Gebruik de volgende stappen voor het importeren van een Databricks-notebook waarop de Python-code voor het analyseren en visualiseren van uw telemetrie IoT Central:
+Gebruik de volgende stappen om een Databricks-notebook te importeren dat de python-code bevat voor het analyseren en visualiseren van uw IoT Central telemetrie:
 
-1. Navigeer naar de **werkruimte** pagina in uw Databricks-omgeving. Selecteer de vervolgkeuzelijst naast de accountnaam van uw en kies vervolgens **importeren**.
+1. Navigeer naar de pagina **werk ruimte** in uw Databricks-omgeving. Selecteer de vervolg keuzelijst naast de naam van uw account en kies vervolgens **importeren**.
 
-1. Kies voor het importeren van een URL en voer het volgende adres: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Kies uit een URL om te importeren en voer het volgende adres in:[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
-1. Kies voor het importeren van de notebook **importeren**.
+1. Kies **importeren**om het notitie blok te importeren.
 
-1. Selecteer de **werkruimte** om de geïmporteerde notebook weer te geven:
+1. Selecteer de **werk ruimte** om het geïmporteerde notitie blok weer te geven:
 
-    ![Geïmporteerde notebook](media/howto-create-custom-analytics/import-notebook.png)
+    ![Geïmporteerd notitie blok](media/howto-create-custom-analytics/import-notebook.png)
 
-1. De code in de eerste Python-cel om toe te voegen van de Event Hubs-verbindingsreeks die u eerder hebt opgeslagen bewerken:
+1. Bewerk de code in de eerste python-cel om de Event Hubs connection string die u eerder hebt opgeslagen, toe te voegen:
 
     ```python
     from pyspark.sql.functions import *
@@ -192,41 +192,41 @@ Gebruik de volgende stappen voor het importeren van een Databricks-notebook waar
 
 ## <a name="run-analysis"></a>Analyse uitvoeren
 
-Als u wilt de analyse uitvoeren, moet u de notebook koppelen aan het cluster:
+Als u de analyse wilt uitvoeren, moet u het notitie blok aan het cluster koppelen:
 
-1. Selecteer **Detached** en selecteer vervolgens de **centralanalysis** cluster.
-1. Als het cluster niet wordt uitgevoerd, start u deze.
-1. Selecteer de knop uitvoeren voor het starten van de notebook.
+1. Selecteer **losgekoppeld** en selecteer vervolgens het **centralanalysis** -cluster.
+1. Als het cluster niet wordt uitgevoerd, start u het.
+1. Selecteer de knop uitvoeren om het notitie blok te starten.
 
-Mogelijk ziet u een fout in de laatste cel. Als dit het geval is, controleert u dat de vorige cellen worden uitgevoerd, wacht u even voor sommige gegevens worden geschreven naar de opslag en voer de laatste cel opnieuw uit.
+Er wordt mogelijk een fout in de laatste cel weer geven. Als dit het geval is, controleert u of de vorige cellen actief zijn, wacht u enkele gegevens naar opslag en voert u de laatste cel opnieuw uit.
 
-### <a name="view-smoothed-data"></a>Vloeiende gegevens weergeven
+### <a name="view-smoothed-data"></a>Vloeiende gegevens weer geven
 
-In het notitieblok, schuif naar cel 14 om te zien van een diagram van de rolling gemiddelde vochtigheid per apparaattype. In dit diagram wordt continu bijgewerkt als dit streaming telemetrie komt:
+Schuif in het notitie blok omlaag naar cel 14 om een grafiek van de gemiddelde vochtigheids graad op apparaattype te bekijken. Dit diagram blijft voortdurend bijgewerkt als streaming-telemetrie arriveert:
 
-![Vloeiend telemetrie-diagram](media/howto-create-custom-analytics/telemetry-plot.png)
+![Vloeiende telemetrie-tekening](media/howto-create-custom-analytics/telemetry-plot.png)
 
-U kunt het formaat van de grafiek in het notitieblok.
+U kunt de grootte van de grafiek in het notitie blok wijzigen.
 
-### <a name="view-box-plots"></a>Weergave grafieken
+### <a name="view-box-plots"></a>Vakken in het vak weer geven
 
-Schuif omlaag naar cel 20 om te zien in het notitieblok, de [grafieken vak](https://en.wikipedia.org/wiki/Box_plot). De box-grafieken zijn gebaseerd op statische gegevens, zodat u ze updaten moet u de cel opnieuw uitvoeren:
+Schuif in het notitie blok omlaag naar cel 20 om de [vakken](https://en.wikipedia.org/wiki/Box_plot)weer te geven. De vakken zijn gebaseerd op statische gegevens zodat u ze kunt bijwerken. u moet de cel opnieuw uitvoeren:
 
-![Vak grafieken](media/howto-create-custom-analytics/box-plots.png)
+![Boxplot](media/howto-create-custom-analytics/box-plots.png)
 
-U kunt het formaat van de grafieken in het notitieblok.
+U kunt de grootte van de grafieken in het notitie blok wijzigen.
 
 ## <a name="tidy-up"></a>Opruimen
 
-Als u wilt opruimen na deze instructies en onnodige kosten voorkomen, verwijdert de **IoTCentralAnalysis** resourcegroep in Azure portal.
+Als u wilt opruimen na deze procedure en overbodige kosten wilt voor komen, verwijdert u de resource groep **IoTCentralAnalysis** in de Azure Portal.
 
-U kunt de IoT Central-toepassing uit verwijderen de **Management** pagina in de toepassing.
+U kunt de IoT Central toepassing verwijderen van de **beheer** pagina binnen de toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze handleiding, hebt u geleerd hoe u:
+In deze hand leiding hebt u het volgende geleerd:
 
-* Telemetrie van een IoT Central-toepassing met Stream *voortdurende gegevensexport*.
-* Maak een Azure Databricks-omgeving te analyseren en telemetrische gegevens tekenen.
+* Telemetrie streamen vanuit een IoT Central-toepassing met doorlopende *gegevens export*.
+* Maak een Azure Databricks omgeving om telemetriegegevens te analyseren en af te zetten.
 
-Nu u weet hoe u aangepaste analytics maakt, de voorgestelde volgende stap is om te leren hoe u [visualiseren en analyseren van uw Azure IoT Central-gegevens in Power BI-dashboard](howto-connect-powerbi.md).
+Nu u weet hoe u aangepaste analyses maakt, is de voorgestelde volgende stap informatie over het visualiseren [en analyseren van uw Azure IOT Central-gegevens in een Power bi dash board](howto-connect-powerbi.md).

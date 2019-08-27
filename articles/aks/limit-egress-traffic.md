@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639788"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034952"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Preview-uitgaand verkeer voor cluster knooppunten beperken en toegang beheren tot vereiste poorten en services in azure Kubernetes service (AKS)
 
@@ -85,15 +85,13 @@ De volgende FQDN/toepassings regels zijn vereist:
 |----------------------------|-----------|----------|
 | *. hcp. \<Location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000 | Dit adres is het API-server eindpunt. *Vervang\<locatie\>* door de regio waar uw AKS-cluster is geïmplementeerd. |
 | *.tun. \<Location\>. azmk8s.io | HTTPS: 443, TCP: 22, TCP: 9000 | Dit adres is het API-server eindpunt. *Vervang\<locatie\>* door de regio waar uw AKS-cluster is geïmplementeerd. |
-| aksrepos.azurecr.io        | HTTPS:443 | Dit adres is vereist voor toegang tot afbeeldingen in Azure Container Registry (ACR). |
+| aksrepos.azurecr.io        | HTTPS:443 | Dit adres is vereist voor toegang tot afbeeldingen in Azure Container Registry (ACR). Dit REGI ster bevat installatie kopieën/grafieken van derden (bijvoorbeeld Metrics server, Core DNS, enzovoort) die vereist zijn voor de werking van het cluster tijdens de upgrade en schaal van het cluster|
 | *.blob.core.windows.net    | HTTPS:443 | Dit adres is de back-end-Store voor installatie kopieën die zijn opgeslagen in ACR. |
-| mcr.microsoft.com          | HTTPS:443 | Dit adres is vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). |
+| mcr.microsoft.com          | HTTPS:443 | Dit adres is vereist voor toegang tot afbeeldingen in micro soft Container Registry (MCR). Dit REGI ster bevat installatie kopieën/grafieken van de eerste partij (bijvoorbeeld Moby, enzovoort) die vereist zijn voor het functioneren van het cluster tijdens de upgrade en schaal van het cluster |
 | *.cdn.mscr.io              | HTTPS:443 | Dit adres is vereist voor de MCR-opslag die wordt ondersteund door het Azure Content Delivery Network (CDN). |
 | management.azure.com       | HTTPS:443 | Dit adres is vereist voor Kubernetes GET/PUT-bewerkingen. |
 | login.microsoftonline.com  | HTTPS:443 | Dit adres is vereist voor Azure Active Directory-verificatie. |
-| api.snapcraft.io           | HTTPS:443, HTTP:80 | Dit adres is vereist voor het installeren van Snap packages op Linux-knoop punten. |
 | ntp.ubuntu.com             | UDP:123   | Dit adres is vereist voor NTP-tijd synchronisatie op Linux-knoop punten. |
-| *. docker.io                | HTTPS:443 | Dit adres is vereist om vereiste container installatie kopieën voor de tunnel vooraan te halen. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Optionele aanbevolen adressen en poorten voor AKS-clusters
 
@@ -103,7 +101,7 @@ De volgende FQDN/toepassings regels worden aanbevolen voor een juiste werking va
 
 | FQDN-NAAM                                    | Port      | Gebruiken      |
 |-----------------------------------------|-----------|----------|
-| *.ubuntu.com                            | HTTP:80   | Met dit adres kunnen Linux-cluster knooppunten de vereiste beveiligings patches en updates downloaden. |
+| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com                           | HTTP:80   | Met dit adres kunnen Linux-cluster knooppunten de vereiste beveiligings patches en updates downloaden. |
 | packages.microsoft.com                  | HTTPS:443 | Dit adres is de micro soft packages-opslag plaats die wordt gebruikt voor *apt-get-* bewerkingen in de cache. |
 | dc.services.visualstudio.com            | HTTPS:443 | Aanbevolen voor juiste metrische gegevens en bewaking met behulp van Azure Monitor. |
 | *.opinsights.azure.com                  | HTTPS:443 | Aanbevolen voor juiste metrische gegevens en bewaking met behulp van Azure Monitor. |

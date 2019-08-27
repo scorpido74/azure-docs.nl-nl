@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bf63a9fb552b2a41ce7b9945faeda362592d8efb
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: dc31abaadf3f39d31a4c1b04f9911b5ce1677916
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558823"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048593"
 ---
 In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure-portal](https://portal.azure.com).
 
@@ -43,7 +43,7 @@ In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure
 
     In dit scherm kunt u de volgende waarden instellen:
 
-    - **Prijs- en schaalniveau**: De geselecteerde laag. u kunt kiezen uit diverse lagen, afhankelijk van hoeveel functies u wilt en hoeveel berichten u per dag wilt verzenden. De gratis optie is bedoeld voor testen en evalueren. Hiermee kunnen 500-apparaten worden verbonden met de hub en Maxi maal 8.000 berichten per dag. Met de gratis optie kunt u voor elk Azure-abonnement één IoT Hub maken.
+    - **Prijs- en schaalniveau**: De geselecteerde laag. U kunt kiezen uit verschillende lagen, afhankelijk van het aantal gewenste onderdelen en hoeveel berichten u per dag via uw oplossing verzendt. De gratis optie is bedoeld voor testen en evalueren. Hiermee kunnen 500-apparaten worden verbonden met de hub en Maxi maal 8.000 berichten per dag. Met de gratis optie kunt u voor elk Azure-abonnement één IoT Hub maken.
 
     - **IoT Hub-eenheden**: het aantal toegestane berichten per eenheid is afhankelijk van de prijscategorie van uw hub. Als u bijvoorbeeld wilt dat de hub ingangs-en 700.000-berichten ondersteunt, kiest u twee laag eenheden van S1.
     Zie [De juiste laag kiezen voor uw IoT-hub](../articles/iot-hub/iot-hub-scaling.md) voor informatie over andere opties.

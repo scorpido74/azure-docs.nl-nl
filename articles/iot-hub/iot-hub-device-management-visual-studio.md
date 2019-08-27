@@ -1,97 +1,114 @@
 ---
 title: Azure IoT-Apparaatbeheer met Cloud Explorer voor Visual Studio | Microsoft Docs
-description: De Cloud Explorer voor Visual Studio gebruiken voor Azure IoT Hub-Apparaatbeheer, met daarin de directe methoden en beheeropties van de Apparaatdubbel-gewenste eigenschappen.
+description: Gebruik de Cloud Explorer voor Visual Studio voor Azure IoT Hub Apparaatbeheer, met de juiste methoden en de gewenste beheer opties voor eigenschappen van de twee.
 author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399562"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048683"
 ---
-# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Cloud Explorer voor Visual Studio gebruiken voor het beheer van Azure IoT Hub-apparaten
+# <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Cloud Explorer gebruiken voor Visual Studio voor Azure IoT Hub Apparaatbeheer
 
-![Diagram voor end-to-end](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
+![End-to-end-diagram](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
-[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) is een nuttig Visual Studio-uitbreiding waarmee u uw Azure-resources bekijken, hun eigenschappen inspecteren en voert u belangrijke ontwikkelaar acties op basis van Visual Studio. Het wordt geleverd met opties die u gebruiken kunt diverse taken uit te voeren.
+[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) is een handige Visual Studio-uitbrei ding waarmee u uw Azure-resources kunt weer geven, de eigenschappen van hun eigen en belang rijke ontwikkel acties vanuit Visual Studio. Het wordt geleverd met beheer opties die u kunt gebruiken om verschillende taken uit te voeren.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Management-optie          | Taak                    |
+| Beheer optie          | Taak                    |
 |----------------------------|--------------------------------|
-| Directe methoden             | Een apparaat fungeren, zoals starten of stoppen van berichten verzenden of opnieuw opstarten van het apparaat maken.                                        |
-| Apparaatdubbel lezen           | Ophalen van de gerapporteerde status van een apparaat. Bijvoorbeeld, meldt het apparaat dat de LED nu knippert.                                    |
-| Dubbele apparaat bijwerken         | Een apparaat in een bepaalde status, zoals een LED groen instellen of het instellen van het interval voor het verzenden van telemetrie tot 30 minuten plaatsen.         |
-| Cloud-naar-apparaat-berichten   | Meldingen verzenden naar een apparaat. Bijvoorbeeld, "het is zeer waarschijnlijk regen vandaag nog. Vergeet niet om een overkoepelende."              |
+| Directe methoden             | Zorg ervoor dat een apparaat functioneert, zoals het starten of stoppen van het verzenden van berichten of het opnieuw opstarten van het apparaat.                                        |
+| Dubbele apparaten lezen           | De gerapporteerde status van een apparaat ophalen. Zo rapporteert het apparaat dat de LED nu knippert.                                    |
+| Dubbele update van apparaat         | Plaats een apparaat in bepaalde staten, zoals het instellen van een LED op groen of het instellen van het verzend interval van de telemetrie naar 30 minuten.         |
+| Cloud-naar-apparaat-berichten   | Meldingen verzenden naar een apparaat. Bijvoorbeeld: ' het is nu zeer waarschijnlijk de regen. Vergeet niet om een paraplu te brengen. "              |
 
-Zie voor meer gedetailleerde uitleg over de verschillen en richtlijnen over het gebruik van deze opties, [richtlijnen voor communicatie van apparaat-naar-cloud](iot-hub-devguide-d2c-guidance.md) en [Cloud-naar-apparaat communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md).
+Zie voor meer gedetailleerde informatie over de verschillen en richt lijnen over het gebruik van deze opties [apparaat-naar-Cloud communicatie richtlijnen](iot-hub-devguide-d2c-guidance.md) en [Cloud-naar-apparaat-communicatie richtlijnen](iot-hub-devguide-c2d-guidance.md).
 
-Apparaatdubbels zijn JSON-documenten waarin statusinformatie van een apparaat (metagegevens, configuraties en voorwaarden) zijn opgeslagen. IoT Hub is een apparaatdubbel voor elk apparaat dat is verbonden met het. Zie voor meer informatie over apparaatdubbels [aan de slag met apparaatdubbels](iot-hub-node-node-twin-getstarted.md).
+Apparaatdubbels zijn JSON-documenten die informatie over de status van een apparaat opslaan, inclusief meta gegevens, configuraties en voor waarden. IoT Hub persistent voor elk apparaat dat verbinding maakt met het apparaat. Zie [aan de slag met apparaat apparaatdubbels](iot-hub-node-node-twin-getstarted.md)voor meer informatie over apparaatdubbels.
 
 ## <a name="what-you-learn"></a>Wat u leert
 
-Leert u hoe u de Cloud Explorer gebruiken voor Visual Studio met verschillende beheeropties voor op uw ontwikkelcomputer.
+In dit artikel leert u hoe u Cloud Explorer voor Visual Studio kunt gebruiken met verschillende beheer opties op uw ontwikkel computer.
 
-## <a name="what-you-do"></a>Wat u allemaal doen
+## <a name="what-you-do"></a>Wat u doet
 
-Voer Cloud Explorer voor Visual Studio met verschillende opties.
+In dit artikel voert u Cloud Explorer voor Visual Studio uit met verschillende beheer opties.
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-- Een actief Azure-abonnement
-- Een Azure-IoT-Hub in uw abonnement
-- Microsoft Visual Studio 2017 Update 8 of hoger
-- Onderdeel van de cloud Explorer van Visual Studio Installer (standaard met de Azure Workload geselecteerd)
+U hebt de volgende vereisten nodig:
 
-## <a name="update-cloud-explorer-to-latest-version"></a>Cloud Explorer naar de nieuwste versie bijwerken
+- Een actief Azure-abonnement.
 
-Het onderdeel Cloud Explorer van Visual Studio Installer biedt alleen ondersteuning voor het bewaken van apparaat-naar-cloud en cloud-naar-apparaat-berichten. U moet downloaden en installeer de meest recente [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) voor toegang tot de beheeropties.
+- Een Azure-IoT Hub onder uw abonnement.
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Meld u aan voor toegang tot uw IoT-Hub
+- Micro soft Visual Studio 2017 Update 9 of hoger. In dit artikel wordt gebruikgemaakt van [Visual studio 2017 of Visual studio 2019](https://www.visualstudio.com/vs/).
 
-1. In Visual Studio **Cloud Explorer** venster, klikt u op het pictogram accountbeheer. U kunt de Cloud Explorer-venster openen **weergave** > **Cloud Explorer** menu.
+- Onderdeel van de Cloud Explorer uit Visual Studio Installer, dat standaard is geselecteerd met de Azure-workload.
 
-    ![Klik op Account beheren](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
+## <a name="update-cloud-explorer-to-latest-version"></a>Cloud Explorer bijwerken naar de nieuwste versie
 
-1. Klik op **Accounts beheren** in Cloud Explorer.
-1. Klik op **een account toevoegen...**  in het nieuwe venster voor de eerste keer aanmelden bij Azure.
-1. Nadat u zich hebt aangemeld, wordt de lijst met uw Azure-abonnement worden weergegeven. Selecteer het Azure-abonnementen weergeven en klik op het gewenste **toepassen**.
-1. Vouw **uw abonnement** > **IoT-Hubs** > **uw IoT-Hub**, de lijst met apparaten worden weergegeven onder het knooppunt van uw IoT-Hub. Met de rechtermuisknop op een apparaat voor toegang tot de beheeropties.
+Het onderdeel Cloud Explorer van Visual Studio Installer voor Visual Studio 2017 biedt alleen ondersteuning voor het bewaken van apparaat-naar-Cloud-en Cloud-naar-apparaat-berichten. Als u Visual Studio 2017 wilt gebruiken, downloadt en installeert u de nieuwste [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS).
 
-    ![Opties voor beheer](media/iot-hub-device-management-visual-studio/management-options.png)
+## <a name="sign-in-to-access-your-hub"></a>Meld u aan om toegang te krijgen tot uw hub
+
+1. Selecteer in Visual Studio**Cloud Explorer** **weer geven** > om Cloud Explorer te openen.
+
+1. Selecteer het pictogram account beheer om uw abonnementen weer te geven.
+
+    ![Pictogram account beheer](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
+
+1. Als u bent aangemeld bij Azure, worden uw accounts weer gegeven. Als u zich voor de eerste keer wilt aanmelden bij Azure, kiest u **een account toevoegen**.
+
+1. Selecteer de Azure-abonnementen die u wilt gebruiken en klik **op Toep assen**.
+
+1. Breid uw abonnement uit en vouw **IOT-hubs**uit.  Onder elke hub kunt u uw apparaten weer geven voor die hub. Klik met de rechter muisknop op een apparaat voor toegang tot de beheer opties.
+
+    ![Beheer opties](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
 ## <a name="direct-methods"></a>Directe methoden
 
-1. Met de rechtermuisknop op uw apparaat en selecteer **Direct Apparaatmethode aanroepen**.
-1. Voer de methodenaam en -nettolading in het invoervak.
-1. Resultaten worden weergegeven de **IoT-Hub** deelvenster Uitvoer.
+Als u directe methoden wilt gebruiken, voert u de volgende stappen uit:
 
-## <a name="read-device-twin"></a>Apparaatdubbel lezen
+1. Klik met de rechter muisknop op het apparaat en selecteer **directe methode van apparaat aanroepen**.
 
-1. Met de rechtermuisknop op uw apparaat en selecteer **Apparaatdubbel bewerken**.
-1. Een **azure-iot-device-twin.json** bestand wordt geopend met de inhoud van het dubbele apparaat.
+1. Voer de methode naam en payload in bij **directe methode Invoke**en selecteer vervolgens **OK**.
 
-## <a name="update-device-twin"></a>Dubbele apparaat bijwerken
+    Resultaten worden weer gegeven in de **uitvoer**.
 
-1. Sommige wijzigingen van **tags** of **properties.desired** veld de **azure-iot-device-twin.json** bestand.
-1. Druk op **Ctrl + S** bijwerken van het dubbele apparaat.
-1. Resultaten worden weergegeven de **IoT-Hub** deelvenster Uitvoer.
+## <a name="update-device-twin"></a>Dubbele update van apparaat
+
+Voer de volgende stappen uit om een apparaat dubbele te bewerken:
+
+1. Klik met de rechter muisknop op het apparaat en selecteer **apparaat twee bewerken**.
+
+   Een **Azure-IOT-Device-** onderliggend JSON-bestand wordt geopend met de inhoud van het apparaat dubbele.
+
+1. Breng enkele bewerkingen van **Tags** of **Eigenschappen aan. gewenste** velden voor het bestand **Azure-IOT-Device-dubbele. json** .
+
+1. Druk op **CTRL + S** om het dubbele apparaat bij te werken.
+
+   Resultaten worden weer gegeven in de **uitvoer**.
 
 ## <a name="send-cloud-to-device-messages"></a>Cloud-naar-apparaat-berichten verzenden
 
-Berichten van uw IoT-Hub worden verzonden naar uw apparaat, de volgende stappen uit:
+Voer de volgende stappen uit om een bericht te verzenden van uw IoT Hub naar uw apparaat:
 
-1. Met de rechtermuisknop op uw apparaat en selecteer **C2D-bericht verzenden**.
-1. Geef het bericht in het invoervak.
-1. Resultaten worden weergegeven de **IoT-Hub** deelvenster Uitvoer.
+1. Klik met de rechter muisknop op het apparaat en selecteer **C2D-bericht verzenden**.
+
+1. Voer het bericht in **C2D-bericht verzenden** in en selecteer **OK**.
+
+   Resultaten worden weer gegeven in de **uitvoer**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u Cloud Explorer gebruiken voor Visual Studio met verschillende opties.
+U hebt geleerd hoe u Cloud Explorer voor Visual Studio gebruikt met verschillende beheer opties.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

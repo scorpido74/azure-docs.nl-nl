@@ -1,6 +1,6 @@
 ---
 title: Log Analytics-werk ruimten beheren in Azure Monitor | Microsoft Docs
-description: U kunt Log Analytics-werk ruimten beheren in Azure Monitor met behulp van verschillende beheer taken voor gebruikers, accounts, werk ruimten en Azure-accounts.
+description: U kunt de toegang beheren tot gegevens die zijn opgeslagen in een Log Analytics-werk ruimten in Azure Monitor met behulp van resource, werk ruimte of machtigingen op tabel niveau. In dit artikel wordt uitgelegd hoe u dit kunt doen.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 08/26/2019
 ms.author: magoedte
-ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9bf278b76846b98f58126957c589df87524bb8a4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624341"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034716"
 ---
-# <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Logboek gegevens en-werk ruimten in Azure Monitor beheren
+# <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboek gegevens en-werk ruimten in Azure Monitor beheren
 
 Azure Monitor worden [logboek](data-platform-logs.md) gegevens opgeslagen in een log Analytics-werk ruimte, wat in feite een container is die gegevens-en configuratie gegevens bevat. Als u de toegang tot logboek gegevens wilt beheren, voert u verschillende beheer taken uit die betrekking hebben op uw werk ruimte.
 
@@ -32,7 +32,7 @@ In dit artikel wordt uitgelegd hoe u de toegang tot logboeken beheert en hoe u d
 
 * Toegang verlenen aan gebruikers die toegang nodig hebben tot logboek gegevens in een specifieke tabel in de werk ruimte met behulp van Azure RBAC.
 
-## <a name="define-access-control-mode"></a>Toegangs beheer modus definiëren
+## <a name="configure-access-control-mode"></a>Toegangs beheer modus configureren
 
 U kunt de toegangs beheer modus die is geconfigureerd op een werk ruimte weer geven vanuit de Azure Portal of met Azure PowerShell.  U kunt deze instelling wijzigen met een van de volgende ondersteunde methoden:
 
@@ -42,7 +42,7 @@ U kunt de toegangs beheer modus die is geconfigureerd op een werk ruimte weer ge
 
 * Azure Resource Manager-sjabloon
 
-### <a name="configure-from-the-azure-portal"></a>Configureren vanuit de Azure Portal
+### <a name="from-the-azure-portal"></a>Van de Azure Portal
 
 U kunt de huidige toegangs beheer modus voor de werk ruimte weer geven op de pagina **overzicht** van de werk ruimte in het menu van de **log Analytics werk ruimte** .
 
@@ -55,7 +55,7 @@ U kunt deze instelling wijzigen op de pagina **Eigenschappen** van de werk ruimt
 
 ![Toegangs modus voor werk ruimte wijzigen](media/manage-access/change-access-control-mode.png)
 
-### <a name="configure-using-powershell"></a>Configureren met Power shell
+### <a name="using-powershell"></a>PowerShell gebruiken
 
 Gebruik de volgende opdracht om de toegangs beheer modus voor alle werk ruimten in het abonnement te controleren:
 
@@ -99,18 +99,14 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-### <a name="configure-using-a-resource-manager-template"></a>Configureren met behulp van een resource manager-sjabloon
+### <a name="using-a-resource-manager-template"></a>Een resource manager-sjabloon gebruiken
 
 Als u de toegangs modus in een Azure Resource Manager sjabloon wilt configureren, stelt u de **enableLogAccessUsingOnlyResourcePermissions** -functie vlag in de werk ruimte in op een van de volgende waarden.
 
 * **Onwaar**: Stel de werk ruimte in op de werk ruimte-context machtigingen. Dit is de standaard instelling als de vlag niet is ingesteld.
 * **waar**: Stel de werk ruimte in op resource-context machtigingen.
 
-## <a name="manage-accounts-and-users"></a>Accounts en gebruikers beheren
-
-De machtigingen die worden toegepast op de werk ruimte voor een bepaalde gebruiker, worden gedefinieerd door de [toegangs modus](design-logs-deployment.md#access-mode) en de [toegangs beheer modus](design-logs-deployment.md#access-control-mode) van de werk ruimte. U kunt met de **werk ruimte context**alle logboeken in de werk ruimte weer geven waarvoor u gemachtigd bent, omdat query's in deze modus zijn afgestemd op alle gegevens in alle tabellen in de werk ruimte. Met **resource-context**bekijkt u logboek gegevens in de werk ruimte voor een bepaalde resource, resource groep of abonnement bij het rechtstreeks uitvoeren van een zoek actie vanuit de resource in het Azure Portal waartoe u toegang hebt. Query's in deze modus zijn alleen van toepassing op gegevens die aan die resource zijn gekoppeld.
-
-### <a name="workspace-permissions"></a>Werkruimte machtigingen
+## <a name="manage-access-using-workspace-permissions"></a>Toegang beheren met werkruimte machtigingen
 
 Elke werkruimte kunnen meerdere accounts worden gekoppeld, en elk account kan toegang hebben tot meerdere werkruimten. Toegang wordt beheerd met behulp [van Azure op rollen gebaseerde toegang](../../role-based-access-control/role-assignments-portal.md).
 
@@ -130,7 +126,7 @@ Voor de volgende activiteiten zijn ook Azure-machtigingen vereist:
 
 ## <a name="manage-access-using-azure-permissions"></a>Toegang beheren met Azure-machtigingen
 
-Volg de stappen in [Roltoewijzingen gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](../../role-based-access-control/role-assignments-portal.md) om toegang te verlenen tot de Log Analytics-werkruimte met behulp van Azure-machtigingen.
+Volg de stappen in [Roltoewijzingen gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](../../role-based-access-control/role-assignments-portal.md) om toegang te verlenen tot de Log Analytics-werkruimte met behulp van Azure-machtigingen. Voor beeld van aangepaste rollen, Zie [voor beelden van aangepaste rollen](#custom-role-examples)
 
 Azure heeft twee ingebouwde gebruikers rollen voor Log Analytics-werk ruimten:
 
@@ -180,7 +176,7 @@ De rol Inzender van Log Analytics bevat de volgende Azure acties:
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Geef de opslagaccountsleutel weer. Vereist om Log Analytics te configureren om logboeken uit Azure-opslagaccounts te lezen |
 | `Microsoft.Insights/alertRules/*` | Waarschuwingsregels toevoegen, bijwerken en verwijderen |
 | `Microsoft.Insights/diagnosticSettings/*` | Diagnostische instellingen bij Azure-resources toevoegen, bijwerken en verwijderen |
-| `Microsoft.OperationalInsights/*` | Configuratie voor Log Analytics-werkruimten toevoegen, bijwerken en verwijderen |
+| `Microsoft.OperationalInsights/*` | De configuratie voor Log Analytics-werk ruimten toevoegen, bijwerken en verwijderen. Gebruikers wensen `Microsoft.OperationalInsights/workspaces/write`om geavanceerde instellingen voor de werk ruimte te bewerken. |
 | `Microsoft.OperationsManagement/*` | Beheeroplossingen toevoegen en verwijderen |
 | `Microsoft.Resources/deployments/*` | Maak en verwijder implementaties. Vereist voor het toevoegen en verwijderen van oplossingen, werkruimten en Automation-accounts |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Maak en verwijder implementaties. Vereist voor het toevoegen en verwijderen van oplossingen, werkruimten en Automation-accounts |
@@ -207,6 +203,39 @@ Wanneer gebruikers een query uitvoeren op Logboeken vanuit een werk ruimte met b
 `/read`machtigingen worden meestal verleend vanuit een rol die  _\*/Read of_ _\*_ machtigingen bevat, zoals de ingebouwde functie [lezer](../../role-based-access-control/built-in-roles.md#reader) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) . Houd er rekening mee dat aangepaste rollen die specifieke acties of speciale ingebouwde rollen bevatten, deze machtiging mogelijk niet bevatten.
 
 Zie [definiëren per-tabel toegangs beheer](#table-level-rbac) hieronder als u een ander toegangs beheer voor verschillende tabellen wilt maken.
+
+## <a name="custom-role-examples"></a>Voor beelden van aangepaste rollen
+
+1. Als u een gebruiker toegang wilt geven tot logboek gegevens vanuit hun resources, voert u de volgende handelingen uit:
+
+    * De toegangs beheer modus voor de werk ruimte configureren voor het **gebruik van werk ruimte-of resource machtigingen**
+
+    * Ken gebruikers `*/read` of `Microsoft.Insights/logs/*/read` machtigingen toe aan hun resources. Als ze al de rol van [log Analytics lezer](../../role-based-access-control/built-in-roles.md#reader) in de werk ruimte zijn toegewezen, is het voldoende.
+
+2. Als u een gebruiker toegang wilt geven tot logboek gegevens van hun resources en de resources wilt configureren voor het verzenden van logboeken naar de werk ruimte, voert u de volgende handelingen uit:
+
+    * De toegangs beheer modus voor de werk ruimte configureren voor het **gebruik van werk ruimte-of resource machtigingen**
+
+    * Gebruikers de volgende machtigingen verlenen voor de werk ruimte `Microsoft.OperationalInsights/workspaces/read` : `Microsoft.OperationalInsights/workspaces/sharedKeys/action`en. Met deze machtigingen kunnen gebruikers geen query's op werkruimte niveau uitvoeren.
+
+    * Gebruikers de volgende machtigingen verlenen voor hun resources: `Microsoft.Insights/logs/*/read` en `Microsoft.Insights/diagnosticSettings/write`. Als er al een rol voor het [log Analytics Inzender](../../role-based-access-control/built-in-roles.md#contributor) is toegewezen aan deze resource, is dit voldoende.
+
+3. Als u een gebruiker toegang wilt geven tot logboek gegevens van hun resources, lees dan alle Azure AD-aanmeldingen en lees Updatebeheer logboek gegevens van de oplossing, voert u de volgende handelingen uit:
+
+    * De toegangs beheer modus voor de werk ruimte configureren voor het **gebruik van werk ruimte-of resource machtigingen**
+
+    * Gebruikers de volgende machtigingen verlenen voor de werk ruimte: 
+
+        * `Microsoft.OperationalInsights/workspaces/read`-vereist zodat het gebruik de werk ruimte kan opsommen en de Blade werk ruimte openen in de Azure Portal
+        * `Microsoft.OperationalInsights/workspaces/query/read`: vereist voor elke gebruiker die query's kan uitvoeren
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`– Als u logboeken van Azure AD-aanmelding wilt kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read`: Updatebeheer oplossingen voor logboeken kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`: Updatebeheer oplossingen voor logboeken kunnen lezen
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`– Als u Logboeken voor update beheer wilt lezen
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`-vereist om Updatebeheer oplossing te kunnen gebruiken
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`-vereist om Updatebeheer oplossing te kunnen gebruiken
+
+    * Gebruikers de volgende machtigingen verlenen voor hun resources: `*/read` of `Microsoft.Insights/logs/*/read`. Als aan de gebruiker de rol van [log Analytics lezer](../../role-based-access-control/built-in-roles.md#reader) is toegewezen in de werk ruimte, is dit voldoende.
 
 ## <a name="table-level-rbac"></a>RBAC op tabel niveau
 

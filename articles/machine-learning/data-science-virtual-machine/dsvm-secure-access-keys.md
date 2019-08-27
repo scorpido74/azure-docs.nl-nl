@@ -1,6 +1,6 @@
 ---
 title: Store veilig toegang tot referenties op de Data Science Virtual Machine - Azure | Microsoft Docs
-description: Leer hoe u voor het veilig opslaan van referenties voor toegang op de Data Science Virtual Machine. U leert hoe u beheerde service-identiteiten en de Azure Key Vault gebruiken voor het opslaan van referenties voor toegang.
+description: Leer hoe u voor het veilig opslaan van referenties voor toegang op de Data Science Virtual Machine. U leert hoe u beheerde service-identiteiten en Azure Key Vault kunt gebruiken om toegangs referenties op te slaan.
 keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses, team data science process
 services: machine-learning
 documentationcenter: ''
@@ -16,22 +16,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 7adc968dd88ede70b18766ce2c156c23324d0c4e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1374cbef41f40ea270f3c4d84c68d08e7db095bc
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557917"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051614"
 ---
-# <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Store-toegang op de Data Science Virtual Machine veilig referenties
+# <a name="store-access-credentials-securely-on-a-data-science-virtual-machine"></a>Toegangs referenties veilig opslaan op een Data Science Virtual Machine
 
-Een algemene vraag in het bouwen van cloudtoepassingen is over het beheren van de referenties die worden in de code moeten voor verificatie bij cloudservices. Het is belangrijk dat deze referenties veilig worden verwerkt. In het ideale geval ze nooit worden weergegeven op werkstations van ontwikkelaars of ophalen ingecheckt in broncodebeheer. 
+Het is gebruikelijk dat de code in Cloud toepassingen referenties bevat voor de verificatie van Cloud Services. Het beheren en beveiligen van deze referenties is een goed bekende uitdaging bij het bouwen van Cloud toepassingen. In het ideale geval moeten referenties nooit worden weer gegeven op werk stations voor ontwikkel aars of worden ingecheckt bij broncode beheer.
 
-[Identiteiten voor een Azure-resources beheerd](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) maakt het oplossen van dit probleem eenvoudiger door middel van een Azure-services een automatisch beheerde identiteit in Azure Active Directory (Azure AD). U kunt deze identiteit gebruiken om te verifiëren bij een service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u hoeft geen referenties in uw code. 
+Met de functie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) kunt u dit probleem eenvoudiger oplossen door Azure-Services een automatisch beheerde identiteit in azure Active Directory (Azure AD) te geven. U kunt deze identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, zonder dat u referenties in uw code hoeft te hebben.
 
-Een manier voor het beveiligen van referenties is het gebruik van MSI in combinatie met [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), een beheerde Azure-service voor het veilig opslaan van geheimen en cryptografische sleutels. U kunt toegang tot een sleutelkluis met behulp van de beheerde identiteit en ophalen van de geautoriseerde geheimen en cryptografische sleutels uit key vault. 
+Een manier om referenties te beveiligen is het gebruik van Windows Installer (MSI) in combi natie met [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), een beheerde Azure-service voor het veilig opslaan van geheimen en cryptografische sleutels. U kunt een sleutel kluis openen met behulp van de beheerde identiteit en vervolgens de geautoriseerde geheimen en cryptografische sleutels ophalen uit de sleutel kluis.
 
-De beheerde identiteit voor Azure-resources en documentatie voor Key Vault is een uitgebreide informatiebron voor gedetailleerde informatie over deze services. De rest van dit artikel helpt bij het basisgebruik van MSI en Key Vault voor de Data Science Virtual Machine (DSVM) voor toegang tot Azure-resources. 
+De documentatie over beheerde identiteiten voor Azure-resources en Key Vault bestaat uit een uitgebreide resource voor gedetailleerde informatie over deze services. De rest van dit artikel helpt bij het basisgebruik van MSI en Key Vault voor de Data Science Virtual Machine (DSVM) voor toegang tot Azure-resources. 
 
 ## <a name="create-a-managed-identity-on-the-dsvm"></a>Een beheerde identiteit op de DSVM maken 
 
@@ -46,11 +46,11 @@ az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
 
-## <a name="assign-key-vault-access-permission-to-a-vm-principal"></a>Key Vault-machtigingen voor toegang toewijzen aan een VM-principal
+## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>Key Vault toegangs machtigingen toewijzen aan een VM-Principal
 ```
-# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI. 
+# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
 
-# Assign only get and set permission but not the capability to list the keys.
+# Assign only get and set permissions but not the capability to list the keys.
 az keyvault set-policy --object-id <Principal ID of the DSVM from previous step> --name <Key Vault Name> -g <Resource Group of Key Vault>  --secret-permissions get set
 ```
 
@@ -61,14 +61,14 @@ az keyvault set-policy --object-id <Principal ID of the DSVM from previous step>
 x=`curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true`
 token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
 
-# Access the key vault by using the access token. 
+# Access the key vault by using the access token.
 curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
 ## <a name="access-storage-keys-from-the-dsvm"></a>Toegangssleutels voor opslag van de DSVM
 
 ```
-# Prerequisite: You have granted your VM's MSI access to use storage account access keys based on instructions from the article at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
+# Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
 ytoken=`echo $y | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
@@ -108,8 +108,8 @@ print("My secret value is {}".format(secret.value))
 ## <a name="access-the-key-vault-from-azure-cli"></a>Toegang tot de key vault vanuit Azure CLI
 
 ```
-# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. Here are commands to access the key vault from Azure CLI without having to log in to an Azure account. 
-# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permission, like accessing storage account keys, reading specific secrets, and writing new secrets, is provided to the MSI. 
+# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.
+# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permissions, like accessing storage account keys, reading specific secrets, and writing new secrets, are provided to the MSI.
 
 # Authenticate to Azure CLI without requiring an Azure account. 
 az login --msi

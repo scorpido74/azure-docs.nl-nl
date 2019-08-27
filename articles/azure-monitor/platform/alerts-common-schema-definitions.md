@@ -1,6 +1,6 @@
 ---
-title: Algemene waarschuwing schemadefinities voor Webhooks/Logic Apps/Azure Functions/Automation-Runbooks
-description: Informatie over de algemene waarschuwing schemadefinities voor Webhooks/Logic Apps/Azure Functions/Automation-Runbooks
+title: Algemene schema definities voor waarschuwingen voor webhooks/Logic Apps/Azure Functions/Automation-Runbooks
+description: Informatie over de algemene schema definities van waarschuwingen voor webhooks/Logic Apps/Azure Functions/Automation-Runbooks
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: c37ecfbadd7345fea347ff488895f16ba505c818
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 94938358bc4e4782e91401e24a01a3688c6a51ba
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594386"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034805"
 ---
 # <a name="common-alert-schema-definitions"></a>Definities van algemeen waarschuwingsschema
 
-In dit artikel beschrijft de [algemene waarschuwing schemadefinities](https://aka.ms/commonAlertSchemaDocs) voor Webhooks/Logic Apps/Azure Functions/Automation-Runbooks. 
+In dit artikel worden de [algemene schema definities voor waarschuwingen](https://aka.ms/commonAlertSchemaDocs) voor webhooks/Logic Apps/Azure functions/Automation-Runbooks beschreven. 
 
 ## <a name="overview"></a>Overzicht
 
-Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **de oorzaak van de waarschuwing**, en deze instanties worden beschreven in het algemene schema in de volgende secties:
-* **Essentials**: Een set **velden gestandaardiseerd**, gebruikt voor alle Waarschuwingstypen beschrijven **welke resource** de waarschuwing is ingeschakeld, samen met aanvullende algemene waarschuwing metagegevens (bijvoorbeeld ernst of beschrijving). 
-* **Ontvang een waarschuwing Context**: Een set velden waarin de **ertoe leiden dat van de waarschuwing**, met velden die verschillen **op basis van het Waarschuwingstype**. Een waarschuwing voor metrische gegevens hoeft bijvoorbeeld velden, zoals de naam van de meetwaarde en de metrische waarde in de context van de waarschuwing, terwijl er een waarschuwing voor activiteitenlogboek informatie over de gebeurtenis die de waarschuwing heeft gegenereerd. 
+Elk waarschuwings exemplaar beschrijft **de bron die is beïnvloed** en **de oorzaak van de waarschuwing**, en deze instanties worden beschreven in het algemene schema in de volgende secties:
+* **Essentiële zaken**: Een set **gestandaardiseerde velden**, gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven in **welke resource** de waarschuwing zich bevindt, samen met aanvullende veelvoorkomende meta gegevens van waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
+* **Waarschuwings context**: Een set velden waarin de **oorzaak van de waarschuwing**wordt beschreven, met velden die variëren op **basis van het waarschuwings type**. Een metrische waarschuwing heeft bijvoorbeeld velden als de metrische naam en metrische waarde in de context van de waarschuwing, terwijl een waarschuwing in het activiteiten logboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
 
-##### <a name="sample-alert-payload"></a>Voorbeeld van een alert payload
+##### <a name="sample-alert-payload"></a>Voorbeeld waarschuwing Payload
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +74,25 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
 }
 ```
 
-## <a name="essentials-fields"></a>'Essentials' velden
+## <a name="essentials-fields"></a>Belangrijkste velden
 
 | Veld | Description|
 |:---|:---|
-| alertId | GUID identificeren de waarschuwingsexemplaar. |
-| alertRule | De naam van de waarschuwingsregel die het exemplaar van de waarschuwing heeft gegenereerd. |
+| alertId | GUID die een unieke identificatie vormt van het waarschuwings exemplaar. |
+| alertRule | De naam van de waarschuwings regel die het waarschuwings exemplaar heeft gegenereerd. |
 | Severity | Ernst van de waarschuwing. Mogelijke waarden: Sev0, Sev1, Sev2, Sev3, Sev4 |
-| signalType | Hiermee geeft u het signaal waarop de waarschuwingsregel is gedefinieerd. Mogelijke waarden: Metrische gegevens, Logboeken, activiteitenlogboek |
-| monitorCondition | Wanneer een waarschuwing wordt geactiveerd, wordt de bewakingsvoorwaarde van de waarschuwing is ingesteld op 'Fired'. Als de onderliggende voorwaarde waarvoor de waarschuwing moet worden gestart, wist, worden de bewakingsvoorwaarde is ingesteld op 'Omgezet'.   |
-| monitoringService | De controle-service of oplossing die de waarschuwing heeft gegenereerd. De velden voor de context van de waarschuwing worden bepaald door de bewakingsservice. |
-| alertTargetIds | Lijst van de ARM-id's alle betrokken doelen van een waarschuwing. Voor een waarschuwing die is gedefinieerd in een Log Analytics-werkruimte of Application Insights-exemplaar, is de desbetreffende werkruimte/toepassing. |
-| originAlertId | ID van de waarschuwing instantie als worden gegenereerd door de bewakingsservice die zij genereren. |
-| firedDateTime | Datum-tijd van wanneer het exemplaar van de waarschuwing is geactiveerd in UTC |
-| resolvedDateTime | Datum / tijd van wanneer de monitor-voorwaarde voor de meldingen instantie is ingesteld op 'Omgezet' in UTC. Op dit moment alleen van toepassing voor metrische waarschuwingen.|
-| description | Beschrijving zoals gedefinieerd in de waarschuwingsregel |
-|essentialsVersion| Uniek versienummer op voor de sectie essentials.|
-|alertContextVersion | Uniek versienummer op voor de sectie alertContext |
+| signalType | Hiermee wordt het signaal geïdentificeerd waarop de waarschuwings regel is gedefinieerd. Mogelijke waarden: Metrische gegevens, logboeken, activiteiten logboek |
+| monitorCondition | Wanneer een waarschuwing wordt geactiveerd, wordt de bewakings voorwaarde van de waarschuwing ingesteld op geactiveerd. Wanneer de onderliggende voor waarde die de waarschuwing heeft veroorzaakt, is gewist, wordt de status van de monitor ingesteld op opgelost.   |
+| monitoringService | De bewakings service of-oplossing die de waarschuwing heeft gegenereerd. De velden voor de waarschuwings context worden bepaald door de bewakings service. |
+| alertTargetIds | Lijst met de ARM-Id's van alle betrokken doelen van een waarschuwing. Voor een logboek waarschuwing die is gedefinieerd voor een Log Analytics werk ruimte of Application Insights exemplaar, is het de respectieve werk ruimte/toepassing. |
+| originAlertId | ID van het waarschuwings exemplaar dat is gegenereerd door de bewakings service. |
+| firedDateTime | Datum en tijd waarop het waarschuwings exemplaar is geactiveerd in UTC |
+| resolvedDateTime | Datum en tijd waarop de monitor voorwaarde voor het waarschuwings exemplaar is ingesteld op ' opgelost ' in UTC. Momenteel alleen van toepassing op metrische waarschuwingen.|
+| description | Beschrijving zoals gedefinieerd in de waarschuwings regel |
+|essentialsVersion| Het versie nummer van de sectie Essentials.|
+|alertContextVersion | Versie nummer voor de sectie alertContext |
 
-##### <a name="sample-values"></a>Voorbeeldwaarden
+##### <a name="sample-values"></a>Voorbeeld waarden
 ```json
 {
   "essentials": {
@@ -114,13 +114,13 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
 }
 ```
 
-## <a name="alert-context-fields"></a>'Waarschuwen Context' velden
+## <a name="alert-context-fields"></a>Velden van waarschuwings context
 
-### <a name="metric-alerts"></a>Metrische waarschuwingen
+### <a name="metric-alerts"></a>Waarschuwingen voor metrische gegevens
 
 #### <a name="monitoringservice--platform"></a>monitoringService = 'Platform'
 
-##### <a name="sample-values"></a>Voorbeeldwaarden
+##### <a name="sample-values"></a>Voorbeeld waarden
 ```json
 {
   "alertContext": {
@@ -151,15 +151,15 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
 }
 ```
 
-### <a name="log-alerts"></a>Waarschuwingen voor logboeken
+### <a name="log-alerts"></a>Waarschuwingen registreren
 
 > [!NOTE]
-> + Voor waarschuwingen wanneer een aangepaste JSON-nettolading is gedefinieerd, wordt zodat het algemene schema hersteld het schema van de nettolading aan de hieronder beschreven.
-> + Waarschuwingen met het algemene schema ingeschakeld hebben een limiet van 256KB per waarschuwing. **Zoekresultaten zijn niet ingesloten in de nettolading van de waarschuwingen log als ze ervoor zorgen de grootte van de waarschuwing dat op meerdere van deze drempelwaarde.** Dit kan worden bepaald door het controleren van de vlag 'IncludedSearchResults'. In scenario's waarin de lijst met zoekresultaten niet opgenomen zijn, wordt aangeraden de query gebruiken in combinatie met de [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> + Voor logboek waarschuwingen waarbij een aangepaste JSON-nettolading is gedefinieerd, wordt het payload-schema door het algemene schema teruggezet naar de hieronder beschreven.
+> + Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 kB per waarschuwing. **Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt.** Dit kan worden bepaald door de vlag ' IncludedSearchResults ' te controleren. In scenario's waarin de zoek resultaten niet zijn opgenomen, is het raadzaam om de zoek query te gebruiken in combi natie met de [log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = 'Log Analytics'
+#### <a name="monitoringservice--log-analytics"></a>monitoringService = ' Log Analytics '
 
-##### <a name="sample-values"></a>Voorbeeldwaarden
+##### <a name="sample-values"></a>Voorbeeld waarden
 ```json
 {
   "alertContext": {
@@ -224,9 +224,9 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = 'Application Insights'
+#### <a name="monitoringservice--application-insights"></a>monitoringService = ' Application Insights '
 
-##### <a name="sample-values"></a>Voorbeeldwaarden
+##### <a name="sample-values"></a>Voorbeeld waarden
 ```json
 {
   "alertContext": {
@@ -289,9 +289,9 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
 
 ### <a name="activity-log-alerts"></a>Waarschuwingen voor activiteitenlogboeken
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = 'Activiteitenlogboek - administratieve'
+#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = ' activiteiten logboek-Administrative '
 
-##### <a name="sample-values"></a>Voorbeeldwaarden
+##### <a name="sample-values"></a>Voorbeeld waarden
 ```json
 {
   "alertContext": {
@@ -316,22 +316,118 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = 'ServiceHealth'
+#### <a name="monitoringservice--activity-log---policy"></a>monitoringService = ' activiteiten logboek-beleid '
 
-##### <a name="sample-values"></a>Voorbeeldwaarden
+##### <a name="sample-values"></a>Voorbeeld waarden
+```json
+{
+  "alertContext": {
+    "authorization": {
+      "action": "Microsoft.Resources/checkPolicyCompliance/read",
+      "scope": "/subscriptions/<GUID>"
+    },
+    "channels": "Operation",
+    "claims": "{\"aud\":\"https://management.azure.com/\",\"iss\":\"https://sts.windows.net/<GUID>/\",\"iat\":\"1566711059\",\"nbf\":\"1566711059\",\"exp\":\"1566740159\",\"aio\":\"42FgYOhynHNw0scy3T/bL71+xLyqEwA=\",\"appid\":\"<GUID>\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/<GUID>/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"<GUID>\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"<GUID>\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"<GUID>\",\"uti\":\"Miy1GzoAG0Scu_l3m1aIAA\",\"ver\":\"1.0\"}",
+    "caller": "<GUID>",
+    "correlationId": "<GUID>",
+    "eventSource": "Policy",
+    "eventTimestamp": "2019-08-25T11:11:34.2269098+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Warning",
+    "operationName": "Microsoft.Authorization/policies/audit/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "isComplianceCheck": "True",
+      "resourceLocation": "eastus2",
+      "ancestors": "<GUID>",
+      "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/<GUID>/\",\"policySetDefinitionId\":\"/providers/Microsoft.Authorization/policySetDefinitions/<GUID>/\",\"policyDefinitionReferenceId\":\"vulnerabilityAssessmentMonitoring\",\"policySetDefinitionName\":\"<GUID>\",\"policyDefinitionName\":\"<GUID>\",\"policyDefinitionEffect\":\"AuditIfNotExists\",\"policyAssignmentId\":\"/subscriptions/<GUID>/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn/\",\"policyAssignmentName\":\"SecurityCenterBuiltIn\",\"policyAssignmentScope\":\"/subscriptions/<GUID>\",\"policyAssignmentSku\":{\"name\":\"A1\",\"tier\":\"Standard\"},\"policyAssignmentParameters\":{}}]"
+    },
+    "status": "Succeeded",
+    "subStatus": "",
+    "submissionTimestamp": "2019-08-25T11:12:46.1557298+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---autoscale"></a>monitoringService = ' activiteiten logboek-automatisch schalen '
+
+##### <a name="sample-values"></a>Voorbeeld waarden
+```json
+{
+  "alertContext": {
+    "channels": "Admin, Operation",
+    "claims": "{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/autoscaleSettings\"}",
+    "caller": "Microsoft.Insights/autoscaleSettings",
+    "correlationId": "<GUID>",
+    "eventSource": "Autoscale",
+    "eventTimestamp": "2019-08-21T16:17:47.1551167+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Insights/AutoscaleSettings/Scaleup/Action",
+    "operationId": "<GUID>",
+    "properties": {
+      "description": "The autoscale engine attempting to scale resource '/subscriptions/d<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS' from 9 instances count to 10 instances count.",
+      "resourceName": "/subscriptions/<GUID>/resourceGroups/voiceassistancedemo/providers/Microsoft.Compute/virtualMachineScaleSets/alexademo",
+      "oldInstancesCount": "9",
+      "newInstancesCount": "10",
+      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"eastus\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "lastScaleActionTime": "Wed, 21 Aug 2019 16:17:47 GMT"
+    },
+    "status": "Succeeded",
+    "submissionTimestamp": "2019-08-21T16:17:47.2410185+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---security"></a>monitoringService = ' activiteiten logboek-beveiliging '
+
+##### <a name="sample-values"></a>Voorbeeld waarden
+```json
+{
+  "alertContext": {
+    "channels": "Operation",
+    "correlationId": "<GUID>",
+    "eventSource": "Security",
+    "eventTimestamp": "2019-08-26T08:34:14+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Security/locations/alerts/activate/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "threatStatus": "Quarantined",
+      "category": "Virus",
+      "threatID": "2147519003",
+      "filePath": "C:\\AlertGeneration\\test.eicar",
+      "protectionType": "Windows Defender",
+      "actionTaken": "Blocked",
+      "resourceType": "Virtual Machine",
+      "severity": "Low",
+      "compromisedEntity": "testVM",
+      "remediationSteps": "[\"No user action is necessary\"]",
+      "attackedResourceType": "Virtual Machine"
+    },
+    "status": "Active",
+    "submissionTimestamp": "2019-08-26T09:28:58.3019107+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--servicehealth"></a>monitoringService = ' ServiceHealth '
+
+##### <a name="sample-values"></a>Voorbeeld waarden
 ```json
 {
   "alertContext": {
     "authorization": null,
-    "channels": "Admin",
+    "channels": 1,
     "claims": null,
     "caller": null,
     "correlationId": "f3cf2430-1ee3-4158-8e35-7a1d615acfc7",
-    "eventSource": "ServiceHealth",
+    "eventSource": 2,
     "eventTimestamp": "2019-06-24T11:31:19.0312699+00:00",
     "httpRequest": null,
     "eventDataId": "<GUID>",
-    "level": "Informational",
+    "level": 3,
     "operationName": "Microsoft.ServiceHealth/maintenance/action",
     "operationId": "<GUID>",
     "properties": {
@@ -355,13 +451,14 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
     },
     "status": "Active",
     "subStatus": null,
-    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00"
+    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00",
+    "ResourceType": null
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = 'Resource Health'
+#### <a name="monitoringservice--resource-health"></a>monitoringService = ' Resource Health '
 
-##### <a name="sample-values"></a>Voorbeeldwaarden
+##### <a name="sample-values"></a>Voorbeeld waarden
 ```json
 {
   "alertContext": {
@@ -390,6 +487,6 @@ Beschrijving van elke waarschuwing instantie **de resource die betrokken** en **
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over het algemene schema van de waarschuwing](https://aka.ms/commonAlertSchemaDocs)
-- [Informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwing schema voor het afhandelen van al uw waarschuwingen.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [Meer informatie over het algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs)
+- [Meer informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 

@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met SMTP-server van Azure Logic Apps | Microsoft Docs
-description: Automatiseren van taken en werkstromen die het verzenden van e-mail via uw SMTP (Simple Mail Transfer Protocol)-account met behulp van Azure Logic Apps
+title: Verbinding maken met SMTP vanuit Azure Logic Apps | Microsoft Docs
+description: Taken en werk stromen automatiseren waarmee e-mail via uw SMTP-account (Simple Mail Transfer Protocol) wordt verzonden met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,65 +11,65 @@ ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1649f197d4dbd88e2b485ab32f254a2d09696a84
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106147"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050741"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail verzenden vanuit uw SMTP-account met Azure Logic Apps
 
-Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector, kunt u geautomatiseerde taken en werkstromen die e-mail vanuit uw SMTP-account verzenden maken. U kunt ook andere acties waarmee de uitvoer van de SMTP-acties hebben. Nadat uw SMTP een e-mailbericht verzendt, kunt u bijvoorbeeld uw team in Slack met de Slack-connector waarschuwen. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Met Azure Logic Apps en de Simple Mail Transfer Protocol (SMTP)-connector kunt u geautomatiseerde taken en werk stromen maken waarmee e-mail berichten worden verzonden vanuit uw SMTP-account. U kunt ook andere acties uitvoeren met de uitvoer van SMTP-acties. Nadat uw SMTP bijvoorbeeld een e-mail heeft verzonden, kunt u uw team in de toegestane vertraging melden met de uitzonderings connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw SMTP-account en de gebruikersreferenties
+* Uw SMTP-account en gebruikers referenties
 
-  Uw referenties toestaan dat de logische app een verbinding maken en toegang tot uw SMTP-account.
+  Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw SMTP-account.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot uw SMTP-account. Voor het gebruik van een SMTP-actie, start u uw logische app met een trigger, zoals een Salesforce-trigger, hebt u een Salesforce-account.
+* De logische app waartoe u toegang wilt krijgen tot uw SMTP-account. Als u een SMTP-actie wilt gebruiken, start u uw logische app met een trigger, zoals een Sales Force-trigger, als u een Sales Force-account hebt.
 
-  Bijvoorbeeld, kun u uw logische app met de **wanneer een record wordt gemaakt** Salesforce-trigger. 
-  Deze trigger wordt elke keer dat een nieuwe record, zoals een lead in Salesforce wordt gemaakt. 
-  U kunt deze trigger met de SMTP volgen **E-mail verzenden** actie. Op die manier, wanneer de nieuwe record wordt gemaakt, verzendt uw logische app een e-mail van uw SMTP-account over de nieuwe record.
+  U kunt bijvoorbeeld uw logische app starten met de trigger **Wanneer een record wordt gemaakt** Sales Force. 
+  Deze trigger wordt geactiveerd elke keer dat een nieuwe record, zoals een lead, wordt gemaakt in Sales Force. 
+  U kunt deze trigger vervolgens volgen met de actie SMTP- **e-mail verzenden** . Op die manier verzendt de logische app een e-mail van uw SMTP-account over de nieuwe record wanneer de nieuwe record wordt gemaakt.
 
-## <a name="connect-to-smtp"></a>Verbinding maken met SMTP-server
+## <a name="connect-to-smtp"></a>Verbinding maken met SMTP
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
-1. Kies onder de laatste stap waar u een SMTP-actie toevoegen, **nieuwe stap**. 
+1. Kies **nieuwe stap**onder de laatste stap waarin u een SMTP-actie wilt toevoegen. 
 
-   Als u wilt toevoegen een actie tussen fasen, de aanwijzer over de pijl tussen fasen. 
-   Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+   Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Typ 'smtp' als filter in het zoekvak. Selecteer de actie die u wilt onder de lijst met acties.
+1. Voer in het zoekvak ' SMTP ' in als uw filter. Selecteer in de lijst acties de gewenste actie.
 
-1. Wanneer u hierom wordt gevraagd, moet u deze verbindingsgegevens opgeven:
+1. Wanneer u hierom wordt gevraagd, geeft u de volgende verbindings gegevens op:
 
    | Eigenschap | Vereist | Description |
    |----------|----------|-------------|
-   | **Verbindingsnaam** | Ja | Een naam op voor de verbinding met de SMTP-server | 
-   | **SMTP-serveradres** | Ja | Het adres voor de SMTP-server | 
-   | **Naam van gebruiker** | Ja | Uw gebruikersnaam voor de SMTP-account | 
-   | **Wachtwoord** | Ja | Uw wachtwoord voor uw SMTP-account | 
-   | **SMTP-serverpoort** | Nee | Een specifieke poort op de SMTP-server die u wilt gebruiken | 
-   | **SSL inschakelen?** | Nee | Op of SSL-versleuteling uitschakelen. | 
+   | **Verbindingsnaam** | Ja | Een naam voor de verbinding met de SMTP-server | 
+   | **SMTP-server adres** | Ja | Het adres voor de SMTP-server | 
+   | **Gebruikers naam** | Ja | Uw gebruikers naam voor uw SMTP-account | 
+   | **Wachtwoord** | Ja | Uw wacht woord voor uw SMTP-account | 
+   | **SMTP-server poort** | Nee | Een specifieke poort op de SMTP-server die u wilt gebruiken | 
+   | **SSL inschakelen?** | Nee | SSL-versleuteling inschakelen of uitschakelen. | 
    |||| 
 
-1. Geef de benodigde informatie voor de geselecteerde actie. 
+1. Geef de benodigde gegevens op voor de geselecteerde actie. 
 
-1. Sla uw logische app of doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Sla de logische app op of ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/smtpconnector/).
+Raadpleeg de [referentie pagina](/connectors/smtpconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -78,4 +78,4 @@ Voor technische informatie over triggers en acties limieten die worden beschreve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853060"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032882"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Ongeldige wacht woorden in uw organisatie elimineren
 
@@ -39,7 +39,7 @@ Wanneer een nieuw wacht woord wordt gewijzigd of opnieuw wordt ingesteld voor ee
 > [!NOTE]
 > Cyber criminelen gebruiken vergelijk bare strategieën in hun aanvallen. Daarom publiceert micro soft de inhoud van deze lijst openbaar niet.
 
-## <a name="custom-banned-password-list"></a>Aangepaste lijst met verboden wacht woorden
+## <a name="custom-banned-password-list"></a>Aangepaste lijst met verboden wachtwoorden
 
 Sommige organisaties willen de beveiliging nog verder verbeteren door hun eigen aanpassingen toe te voegen boven op de lijst met algemene verboden wacht woorden in wat micro soft de aangepaste lijst met geblokkeerde wacht woorden aanroept. Micro soft adviseert dat de voor waarden die zijn toegevoegd aan deze lijst voornamelijk gericht zijn op organisatie-specifieke voor waarden, zoals:
 
@@ -121,7 +121,7 @@ Fuzzy matching wordt gebruikt op het genormaliseerde wacht woord om te bepalen o
 
 Voor beeld: Stel dat het wacht woord "ABCDEF" is verboden en dat een gebruiker het wacht woord wil wijzigen in een van de volgende:
 
-' abcdeg '    *(laatste teken gewijzigd van ' f ' naar ' g ')* ' ABCDEFG '   *' (g ' toegevoegd aan het einde)* ' abcde '     *(gevolgd door ' f ' is verwijderd van het einde)*
+' abcdeg ' *(laatste teken gewijzigd van ' f ' naar ' g ')* ' ABCDEFG ' *' (g ' toegevoegd aan het einde)* ' abcde ' *(gevolgd door ' f ' is verwijderd van het einde)*
 
 Elk van de bovenstaande wacht woorden komt niet specifiek overeen met het verboden wacht woord ' ABCDEF '. Omdat elk voor beeld echter binnen een bewerkings afstand van 1 van de verboden term ' ABCDEF ' ligt, worden deze allemaal beschouwd als een overeenkomst met ' ABCDEF '.
 

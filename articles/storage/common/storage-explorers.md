@@ -1,20 +1,20 @@
 ---
-title: Hulp middelen voor het werken met Azure Storage | Microsoft Docs
-description: Een lijst met hulpprogram ma's waarmee u uw Azure Storage gegevens kunt weer geven/gebruiken.
+title: Hulp middelen voor het werken met Azure Storage
+description: Een lijst met hulpprogram ma's waarmee u uw Azure Storage gegevens kunt weer geven en gebruiken.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 08/26/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 14cbc076f4c9eebd2647cd667acc856b393e4d93
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 11838a50d70d1b9a0216505e9ef0958d3b18bdac
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68665737"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035264"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage Client Tools
 Gebruikers van Azure Storage vaak hun gegevens willen weer geven of ermee kunnen communiceren met behulp van een Azure Storage-client programma. In de onderstaande tabellen worden een aantal hulpprogram ma's weer gegeven waarmee u dit kunt doen. We zetten in elk blok een ' X ' in als het de mogelijkheid biedt om de gegevens abstractie te inventariseren en/of te openen. De tabel geeft ook aan of de hulpprogram ma's gratis zijn of niet. ' Proef versie ' geeft aan dat er een gratis proef versie is, maar het volledige product is niet gratis. ' Y/N ' geeft aan dat een versie gratis beschikbaar is, terwijl er een andere versie beschikbaar is voor aankoop.
@@ -116,20 +116,6 @@ De functionaliteit of kwaliteit die door de volgende hulpprogram ma's van derden
     <td>X</td>
     <td>X</td>
     <td>Proef</td>
-    <td></td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate Azure Explorer</a></td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>J</td>
     <td></td>
     <td>X</td>
     <td></td>

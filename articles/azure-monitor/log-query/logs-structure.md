@@ -5,14 +5,14 @@ services: log-analytics
 author: bwren
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/16/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 6f5ae426018c9e7fa2ac586a2886c8e5e609069b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813860"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034876"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor logboeken
 De mogelijkheid om snel inzicht te krijgen in uw gegevens met behulp van een [logboek query](log-query-overview.md) is een krachtige functie van Azure monitor. Als u efficiënte en nuttige query's wilt maken, moet u een aantal basis concepten begrijpen, zoals waar de gewenste gegevens zich bevinden en hoe deze worden gestructureerd. In dit artikel worden de basis concepten beschreven die u nodig hebt om aan de slag te gaan.
@@ -46,7 +46,7 @@ union withsource = table *
 Zie de documentatie voor elke gegevens bron voor meer informatie over de tabellen die ze maken. Voor beelden zijn artikelen voor [agent gegevens bronnen](../platform/agent-data-sources.md), [Diagnostische logboeken](../platform/diagnostic-logs-schema.md)en bewakings [oplossingen](../insights/solutions-inventory.md).
 
 ### <a name="workspace-permissions"></a>Werkruimte machtigingen
-Zie [werkruimte machtigingen en-bereik](../platform/manage-access.md#manage-accounts-and-users) voor meer informatie over het verlenen van toegang tot de gegevens in een werk ruimte. Naast het verlenen van toegang tot de werk ruimte zelf, kunt u de toegang tot afzonderlijke tabellen beperken met behulp van het [tabel niveau RBAC](../platform/manage-access.md#table-level-rbac).
+Zie de [implementatie van een Azure monitor-logboeken ontwerpen](../platform/design-logs-deployment.md) om inzicht te krijgen in de strategie en aanbevelingen voor het toegangs beheer om toegang te bieden tot gegevens in een werk ruimte. Naast het verlenen van toegang tot de werk ruimte zelf, kunt u de toegang tot afzonderlijke tabellen beperken met behulp van het [tabel niveau RBAC](../platform/manage-access.md#table-level-rbac).
 
 ## <a name="application-insights-application"></a>Application Insights toepassing
 Wanneer u een toepassing maakt in Application Insights, wordt er automatisch een bijbehorende toepassing gemaakt in Azure Monitor Logboeken. Er is geen configuratie vereist om gegevens te verzamelen. de toepassing schrijft automatisch bewakings gegevens zoals pagina weergaven, aanvragen en uitzonde ringen.

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561314"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051442"
 ---
-# <a name="what-are-authentication-methods"></a>Wat zijn verificatie methoden?
+# <a name="what-are-authentication-methods"></a>Wat zijn verificatiemethoden?
 
-Als beheerder kiest u verificatie methoden voor Azure multi-factor Authentication en self-service voor het opnieuw instellen van wacht woorden (SSPR) het wordt aanbevolen dat u gebruikers verplicht om meerdere verificatie methoden te registreren. Wanneer een verificatie methode niet beschikbaar is voor een gebruiker, kunnen ze ervoor kiezen om te verifiëren met een andere methode.
+Als beheerder kiest u verificatie methoden voor Azure Multi-Factor Authentication en self-service voor wachtwoord herstel (SSPR). het wordt aanbevolen dat u gebruikers verplicht om meerdere verificatie methoden te registreren. Wanneer een verificatie methode niet beschikbaar is voor een gebruiker, kunnen ze ervoor kiezen om te verifiëren met een andere methode.
 
-Beheerders kunnen in beleid definiëren welke authenticatie methoden beschikbaar zijn voor gebruikers van SSPR en MFA. Sommige verificatie methoden zijn mogelijk niet beschikbaar voor alle functies. Zie voor meer informatie over het configureren van uw beleid de artikelen [over het implementeren van selfservice voor wachtwoord herstel](howto-sspr-deployment.md) en het [plannen van een Azure multi-factor Authentication](howto-mfa-getstarted.md) in de Cloud
+Beheerders kunnen in beleid definiëren welke authenticatie methoden beschikbaar zijn voor gebruikers van SSPR en MFA. Sommige verificatie methoden zijn mogelijk niet beschikbaar voor alle functies. Zie voor meer informatie over het configureren van uw beleid de artikelen [over het implementeren van selfservice voor wachtwoord herstel](howto-sspr-deployment.md) en het [plannen van een Azure multi-factor Authentication](howto-mfa-getstarted.md) voor de Cloud
 
 Micro soft raadt beheerders ten zeerste aan dat gebruikers meer dan het minimale vereiste aantal authenticatie methoden kunnen selecteren voor het geval ze geen toegang tot één hebben.
 
@@ -61,40 +61,40 @@ Als u beveiligings vragen gebruikt, raden wij u aan deze te gebruiken in combi n
 ### <a name="predefined-questions"></a>Vooraf gedefinieerde vragen
 
 * In welke stad hebt u uw eerste partner ontmoet?
-* In welke plaats hebben uw ouders elkaar leren kennen?
-* In welke stad woont uw jongste of oudste broer of zus?
-* In welke plaats is uw vader geboren?
-* In welke plaats hebt u uw eerste baan gehad?
-* In welke plaats is uw moeder geboren?
-* In welke plaats bevond u zich op nieuwjaarsavond 2000?
-* Wat is de achternaam van uw favoriete leraar op de middelbare school?
-* Voor welke universiteit bent u uitgeloot?
-* Waar hebt u uw trouwreceptie gehouden?
-* Wat is de tweede voornaam van uw vader?
-* Wat is uw lievelingseten?
-* Wat zijn de voor- en achternaam van uw grootmoeder van moeders kant?
-* Wat is de tweede voornaam van uw moeder?
+* In welke stad hebben uw ouders elkaar ontmoet?
+* In welke stad woont uw dichtstbijzijnde broer of zus?
+* In welke stad is uw vader geboren?
+* In welke stad is uw eerste taak?
+* In welke stad is uw moeder geboren?
+* In welke plaats was u op 2000 van het nieuwjaarsdag?
+* Wat is de achternaam van uw favoriete docent op de hoogste school?
+* Wat is de naam van een college dat u hebt toegepast, maar niet?
+* Wat is de naam van de plaats waar u uw eerste bruilofts receptie hebt gehouden?
+* Wat is de tweede naam van uw vader?
+* Wat is uw favoriete levens middelen?
+* Wat zijn de voor-en achternaam van uw en achternaam?
+* Wat is de tweede naam van uw moeder?
 * Wat is de maand en het jaar van uw oudste broer of zus? (bijvoorbeeld november 1985)
-* Wat is de tweede voornaam van uw oudste broer of zus?
-* Wat zijn de voor- en achternaam van uw grootvader van vaders kant?
-* Wat is de tweede voornaam van uw jongste broer of zus?
-* Op welke school zat u in de brugklas?
-* Wat zijn de voor- en achternaam van uw beste jeugdvriend?
-* Wat zijn de voor- en achternaam van uw eerste partner?
-* Wat is de achternaam van uw favoriete leraar op de lagere school?
-* Wat zijn het merk en model van uw eerste auto of motor?
-* Wat is de naam van uw eerste school?
-* In welk ziekenhuis bent u geboren?
-* In welke straat staat of stond het huis waar u bent opgegroeid?
-* Wat is de naam van uw jeugdidool?
-* Wat is de naam van uw favoriete knuffeldier?
-* Wat is de naam van uw eerste huisdier?
-* Wat was uw bijnaam als kind?
-* Wat was uw favoriete sport op de middelbare school?
-* Wat was uw eerste baan?
-* Wat zijn of waren de laatste vier cijfers van het telefoonnummer van uw ouderlijk huis?
-* Wat wilde u worden toen u klein was?
-* Wie is de grootste beroemdheid die u ooit hebt ontmoet?
+* Wat is de tweede naam van uw oudste broer of zus?
+* Wat zijn de voor-en achternaam van uw Paternal groot vader?
+* Wat is de tweede naam van uw jongste broer of zus?
+* Op welke school hebt u de zesde kwaliteit bijgewoond?
+* Wat zijn de voor-en achternaam van de beste vriend van uw jeugd?
+* Wat zijn de voor-en achternaam van uw eerste belang rijke andere?
+* Wat is de achternaam van uw favoriete school docent?
+* Wat was het merk en model van uw eerste auto of motor?
+* Wat is de naam van de eerste school die u hebt bijgewoond?
+* Wat is de naam van het zieken huis waarin u bent geboren?
+* Wat is de naam van de straat van uw eerste huis land?
+* Wat is de naam van uw jeugd held?
+* Wat is de naam van uw favoriete dierlijke dier?
+* Wat is de naam van uw eerste huis dier?
+* Wat was de bijnaam van uw kinderen?
+* Wat was uw favoriete sport op de hoge school?
+* Wat is uw eerste taak?
+* Wat zijn de laatste vier cijfers van het telefoon nummer van uw kinderen?
+* Wanneer u jonger was, wat wilt u doen wanneer u ingroeit?
+* Wie is de meest beroemde persoon die u ooit hebt ontmoet?
 
 Alle vooraf gedefinieerde beveiligings vragen worden vertaald en gelokaliseerd in de volledige set Office 365-talen op basis van de browser land instelling van de gebruiker.
 
@@ -195,6 +195,8 @@ Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phon
 >
 > Het opnieuw instellen van een wacht woord biedt geen ondersteuning voor telefoon uitbreidingen. Zelfs in de indeling van de + 1-4255551234X12345 worden uitbrei dingen verwijderd voordat de oproep wordt geplaatst.
 
+Micro soft biedt geen garantie voor consistentie op basis van SMS-of spraak Multi-Factor Authentication op hetzelfde nummer. In het belang van onze gebruikers mag micro soft op elk gewenst moment korte codes toevoegen of verwijderen, aangezien we route aanpassingen aanbrengen om de levering van SMS te verbeteren. Micro soft biedt geen ondersteuning voor korte codes voor landen/regio's, naast de Verenigde Staten en Canada.
+
 #### <a name="text-message"></a>Sms-bericht
 
 Er wordt een SMS-bericht verzonden naar het mobiele telefoon nummer met een verificatie code. Voer de verificatie code in die is opgegeven in de aanmeldings interface om door te gaan.
@@ -245,7 +247,7 @@ Algemene problemen met betrekking tot verificatie methoden met behulp van een te
 
 Bepaalde niet-browser-apps ondersteunen multi-factor Authentication niet, als een gebruiker is ingeschakeld voor multi-factor Authentication en probeert om niet-browser-apps te gebruiken, kunnen ze niet worden geverifieerd. Met een app-wacht woord kunnen gebruikers blijven verifiëren
 
-Als u multi-factor Authentication afdwingt via beleid voor voorwaardelijke toegang en niet via MFA per gebruiker, kunt u geen app-wacht woorden maken. Toepassingen die gebruikmaken van beleids regels voor voorwaardelijke toegang om toegang te beheren, hoeven geen app-wacht woorden te hebben.
+Als u Multi-Factor Authentication afdwingt via beleids regels voor voorwaardelijke toegang en niet via MFA per gebruiker, kunt u geen app-wacht woorden maken. Toepassingen die gebruikmaken van beleids regels voor voorwaardelijke toegang om toegang te beheren, hoeven geen app-wacht woorden te hebben.
 
 Als uw organisatie federatief is voor eenmalige aanmelding met Azure AD en u Azure MFA wilt gebruiken, moet u rekening houden met de volgende details:
 
@@ -259,7 +261,7 @@ Als uw organisatie federatief is voor eenmalige aanmelding met Azure AD en u Azu
 
 [Selfservice voor het opnieuw instellen van wacht woorden inschakelen voor uw organisatie](quickstart-sspr.md)
 
-[Azure multi-factor Authentication inschakelen voor uw organisatie](howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication inschakelen voor uw organisatie](howto-mfa-getstarted.md)
 
 [Gecombineerde registratie inschakelen in uw Tenant](howto-registration-mfa-sspr-combined.md)
 

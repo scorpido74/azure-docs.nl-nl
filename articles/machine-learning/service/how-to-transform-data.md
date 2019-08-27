@@ -12,19 +12,20 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 339a4f93d45b3d3b3e242aa735ce4b737a9292f0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694311"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035963"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Gegevens transformeren met de Azure Machine Learning Data Prep SDK
 
 In dit artikel leert u verschillende methoden voor het transformeren van gegevens met behulp `azureml-dataprep` van het pakket. Het pakket biedt functies die het eenvoudig maken om kolommen toe te voegen, ongewenste rijen of kolommen uit te filteren en ontbrekende waarden te wijzigen. Zie de volledige referentie documentatie voor het [pakket met de azureml-dataprep](https://aka.ms/data-prep-sdk).
 
 > [!Important]
-> Als u een nieuwe oplossing bouwt, probeert u de [Azure machine learning gegevens sets](how-to-explore-prepare-data.md) (preview) om uw gegevens te transformeren, momentopname gegevens op te slaan en gegevensset-definities op basis van een archief te bewaren. Gegevens sets is de volgende versie van de data prep SDK, die uitgebreide functionaliteit biedt voor het beheren van gegevens sets in AI-oplossingen. Als u het `azureml-dataprep` pakket gebruikt om een gegevensstroom te maken met uw trans formaties in plaats `azureml-datasets` van het pakket te gebruiken om een gegevensset te maken, kunt u later geen moment opnamen of versie gegevens sets gebruiken.
+> Als u een nieuwe oplossing bouwt, probeert u de [Azure machine learning gegevens sets](how-to-explore-prepare-data.md) (preview) om uw gegevens te transformeren, momentopname gegevens op te slaan en gegevensset-definities op basis van een archief te bewaren. Gegevens sets is de volgende versie van de data prep SDK, die uitgebreide functionaliteit biedt voor het beheren van gegevens sets in AI-oplossingen.
+> Als u het `azureml-dataprep` pakket gebruikt om een gegevensstroom te maken met uw trans formaties in plaats `azureml-datasets` van het pakket te gebruiken om een gegevensset te maken, kunt u later geen moment opnamen of versie gegevens sets gebruiken.
 
 In deze procedure worden voor beelden weer gegeven voor de volgende taken:
 
@@ -345,7 +346,7 @@ De opbouwfunctie voor expressies gebruiken `col`, geef de naam van de kolom als 
 
 In dit voorbeeld `dflow.filter(col('Tip_amount') > 0)` retourneert een nieuwe gegevensstroom met de rijen waarin de waarde van `Tip_amount` is groter dan 0.
 
-> [!NOTE] 
+> [!NOTE]
 > `Tip_amount` eerst wordt geconverteerd naar een numerieke waarde, waarmee je een expressie die wordt vergeleken met andere numerieke waarden maken.
 
 ```python
@@ -517,4 +518,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Raadpleeg de Azure Machine Learning data prep SDK- [zelf studie](tutorial-data-prep.md) voor een voor beeld van het oplossen van een specifiek scenario
+* Raadpleeg de [referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#dataprep) voor de Azure machine learning data prep SDK voor meer informatie.

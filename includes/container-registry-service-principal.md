@@ -8,31 +8,31 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176682"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032349"
 ---
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
-Voor het maken van een service-principal die toegang heeft tot uw container registry, kunt u het volgende script uitvoeren in de [Azure Cloud Shell](../articles/cloud-shell/overview.md) of een lokale installatie van de [Azure CLI](/cli/azure/install-azure-cli). Het script is geformatteerd voor de Bash-shell.
+Als u een service-principal met toegang tot uw container register wilt maken, voert u het volgende script uit in de [Azure Cloud shell](../articles/cloud-shell/overview.md) of een lokale installatie van de [Azure cli](/cli/azure/install-azure-cli). Het script is geformatteerd voor de bash-shell.
 
-Voordat u het script is uitgevoerd, werken de `ACR_NAME` variabele met de naam van het containerregister. De `SERVICE_PRINCIPAL_NAME` waarde moet uniek zijn binnen uw Azure Active Directory-tenant. Als u ontvangt een '`'http://acr-service-principal' already exists.`"fout, Geef een andere naam voor de service-principal.
+Voordat u het script uitvoert, moet `ACR_NAME` u de variabele bijwerken met de naam van het container register. De `SERVICE_PRINCIPAL_NAME` waarde moet uniek zijn binnen uw Azure Active Directory-Tenant. Als er een`'http://acr-service-principal' already exists.`fout bericht wordt weer gegeven, geeft u een andere naam op voor de Service-Principal.
 
-U kunt eventueel de `--role` waarde in de [az ad sp create-for-rbac] [ az-ad-sp-create-for-rbac] opdracht als u wilt andere machtigingen verlenen. Zie voor een volledige lijst met rollen, [ACR rollen en machtigingen](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
+U kunt desgewenst de `--role` waarde wijzigen in de opdracht [AZ AD SP create-for-RBAC][az-ad-sp-create-for-rbac] als u andere machtigingen wilt verlenen. Zie [ACR-rollen en-machtigingen](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md)voor een volledige lijst met rollen.
 
-Nadat u het script uitvoeren, Let op de service-principal **ID** en **wachtwoord**. Zodra u de referenties hebt, kunt u uw toepassingen en services om te verifiëren bij uw containerregister als de service-principal kunt configureren.
+Nadat u het script hebt uitgevoerd, noteert u de id en het **wacht woord**van de service **-** principal. Wanneer u de referenties hebt, kunt u uw toepassingen en services zo configureren dat deze bij het container register worden geverifieerd als de Service-Principal.
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh -->
 [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
-## <a name="use-an-existing-service-principal"></a>Gebruik een bestaande service-principal
+### <a name="use-an-existing-service-principal"></a>Een bestaande Service-Principal gebruiken
 
-Om registertoegang te verlenen aan een bestaande service-principal, moet u een nieuwe rol toewijzen aan de service-principal. Net als bij het maken van een nieuwe service principal, kunt u pull, push- en pull en eigenaar toegang, onder andere verlenen.
+Als u register toegang tot een bestaande Service-Principal wilt verlenen, moet u een nieuwe rol toewijzen aan de Service-Principal. Net als bij het maken van een nieuwe Service-Principal kunt u onder andere pull-, push-en pull-en eigendoms toegang verlenen.
 
-Het volgende script maakt gebruik van de [az roltoewijzing maken] [ az-role-assignment-create] opdracht uit om toegang te verlenen *pull* machtigingen aan een service-principal die u opgeeft in de `SERVICE_PRINCIPAL_ID` variabele. Pas de `--role` waarde op als u wilt een ander niveau van toegang verlenen.
+Het volgende script maakt gebruik van de opdracht [AZ Role Assignment][az-role-assignment-create] om *pull* -machtigingen te verlenen aan een Service-Principal `SERVICE_PRINCIPAL_ID` die u opgeeft in de variabele. Pas de `--role` waarde aan als u een ander toegangs niveau wilt verlenen.
 
 
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh -->

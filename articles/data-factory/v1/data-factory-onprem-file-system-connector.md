@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren naar/van een bestandssysteem met behulp van Azure Data Factory | Microsoft Docs
-description: Informatie over het kopiëren van gegevens naar en van een on-premises bestandssysteem met behulp van Azure Data Factory.
+title: Gegevens kopiëren van/naar een bestands systeem met behulp van Azure Data Factory | Microsoft Docs
+description: Meer informatie over het kopiëren van gegevens van en naar een on-premises bestands systeem met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,84 +13,84 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4d3816eebe85f01301c770a50a618142bcbfbb21
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 92274f63db78d53bdd0fa3fd440977422be3b4a1
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839971"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036288"
 ---
-# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Gegevens kopiëren naar en van een on-premises bestandssysteem met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar een on-premises bestands systeem met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1:](data-factory-onprem-file-system-connector.md)
 > * [Versie 2 (huidige versie)](../connector-file-system.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [File System-connector in V2](../connector-file-system.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [File System connector in v2](../connector-file-system.md).
 
 
-In dit artikel wordt uitgelegd hoe u met de Kopieeractiviteit in Azure Data Factory gebruiken om te kopiëren van gegevens naar/vanuit een on-premises bestandssysteem. Dit is gebaseerd op de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel een algemeen overzicht van de verplaatsing van gegevens met de kopieeractiviteit geeft.
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van/naar een on-premises bestands systeem. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
-U kunt gegevens kopiëren **uit een on-premises bestandssysteem** opgeslagen in de volgende gegevens:
+U kunt gegevens **van een on-premises bestands systeem** kopiëren naar de volgende gegevens archieven:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-U kunt gegevens kopiëren van de volgende gegevensarchieven **naar een on-premises bestandssysteem**:
+U kunt gegevens uit de volgende gegevens archieven kopiëren **naar een on-premises bestands systeem**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> Kopieeractiviteit worden het bronbestand niet worden verwijderd nadat deze is gekopieerd naar de bestemming. Als u verwijderen van het bronbestand na een geslaagde kopieerbewerking wilt, maakt u een aangepaste activiteit wilt verwijderen van het bestand en het gebruik van de activiteit in de pijplijn.
+> Met de Kopieer activiteit wordt het bron bestand niet verwijderd nadat het is gekopieerd naar de bestemming. Als u het bron bestand na een geslaagde kopie moet verwijderen, maakt u een aangepaste activiteit om het bestand te verwijderen en de activiteit in de pijp lijn te gebruiken.
 
-## <a name="enabling-connectivity"></a>Verbindingen inschakelen
-Data Factory ondersteunt verbindingen van en naar een on-premises bestandssysteem via **Data Management Gateway**. U moet de Data Management Gateway installeren in uw on-premises omgeving voor de Data Factory-service verbinding maken met een ondersteunde on-premises gegevensarchief met inbegrip van het bestandssysteem. Zie voor meer informatie over Data Management Gateway en voor stapsgewijze instructies over het instellen van de gateway, [gegevens verplaatsen tussen on-premises bronnen en de cloud met Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md). Naast de Data Management Gateway moeten er worden geen binaire bestanden worden geïnstalleerd om te communiceren en naar een on-premises bestandssysteem. U moet installeren en gebruiken van Data Management Gateway, zelfs als het bestandssysteem in Azure IaaS-VM. Zie voor gedetailleerde informatie over de gateway, [Data Management Gateway](data-factory-data-management-gateway.md).
+## <a name="enabling-connectivity"></a>Connectiviteit inschakelen
+Data Factory ondersteunt het maken van verbinding met en van een on-premises bestands systeem via **Data Management Gateway**. U moet de Data Management Gateway in uw on-premises omgeving installeren voor de Data Factory-service om verbinding te maken met een ondersteunde on-premises gegevens opslag met inbegrip van het bestands systeem. Zie [gegevens verplaatsen tussen on-premises bronnen en de Cloud met Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md)voor meer informatie over Data Management Gateway en voor stapsgewijze instructies voor het instellen van de gateway. Naast Data Management Gateway, moeten er geen andere binaire bestanden worden geïnstalleerd om te communiceren met en vanuit een on-premises bestands systeem. U moet de Data Management Gateway zelfs installeren en gebruiken als het bestands systeem zich in azure IaaS VM bevindt. Zie [Data Management Gateway](data-factory-data-management-gateway.md)voor gedetailleerde informatie over de gateway.
 
-Voor het gebruik van een bestandsshare voor Linux installeren [Samba](https://www.samba.org/) op uw Linux-server, en installeer Data Management Gateway op een Windows-server. Data Management Gateway installeert op een Linux-server wordt niet ondersteund.
+Als u een Linux-bestands share wilt gebruiken, installeert u [samba](https://www.samba.org/) op uw Linux-server en installeert u Data Management Gateway op een Windows-Server. Het installeren van Data Management Gateway op een Linux-server wordt niet ondersteund.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijplijn maken met een kopieeractiviteit die gegevens naar/van een bestandssysteem verplaatst met behulp van verschillende hulpprogramma's / API's.
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van/naar een bestands systeem met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijplijn te maken is met de **Kopieerwizard**. Zie [zelfstudie: Een pijplijn maken met de Wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snel overzicht van het maken van een pijplijn met behulp van de wizard kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: Maak een pijp lijn met behulp](data-factory-copy-data-wizard-tutorial.md) van de wizard kopiëren voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sjabloon**, **.NET API**, en **REST-API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
 
-Of u de hulpprogramma's of API's gebruikt, kunt u de volgende stappen uit voor het maken van een pijplijn die gegevens van een brongegevensarchief naar een sink-gegevensopslag verplaatst uitvoeren:
+Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
-1. Maak een **gegevensfactory**. Een data factory kan één of meer pijplijnen bevatten.
-2. Maak **gekoppelde services** opgeslagen om invoer- en gegevens te koppelen aan uw data factory. Bijvoorbeeld, als u gegevens uit Azure blob storage naar een on-premises bestandssysteem kopieert, u twee gekoppelde services om uw on-premises bestandssysteem en de Azure storage-account koppelen aan uw data factory. Zie voor de gekoppelde service-eigenschappen die specifiek voor een on-premises bestandssysteem zijn, [gekoppelde service-eigenschappen](#linked-service-properties) sectie.
-3. Maak **gegevenssets** te vertegenwoordigen invoer- en uitvoergegevens voor de kopieerbewerking. In het voorbeeld dat wordt vermeld in de vorige stap, maakt u een gegevensset om op te geven van de blob-container en map die de invoergegevens bevat. En u maakt een andere gegevensset om op te geven van de map en bestandsnaam (optioneel) in uw bestandssysteem. Zie voor de gegevensseteigenschappen die specifiek voor on-premises bestandssysteem zijn, [gegevensseteigenschappen](#dataset-properties) sectie.
-4. Maak een **pijplijn** met een kopieeractiviteit waarmee een gegevensset als invoer en een gegevensset als uitvoer. In het voorbeeld eerder vermeld, gebruikt u BlobSource als bron- en FileSystemSink als een sink voor de kopieeractiviteit. Op dezelfde manier als u vanuit on-premises bestandssysteem naar Azure Blob Storage kopieert, gebruikt u FileSystemSource en BlobSink in de kopieeractiviteit. Zie voor kopiëren-activiteitseigenschappen die specifiek voor on-premises bestandssysteem zijn, [eigenschappen van de kopieeractiviteit](#copy-activity-properties) sectie. Klik op de koppeling in de vorige sectie voor de gegevensopslag voor meer informatie over het gebruik van een gegevensarchief als een bron of een sink.
+1. Maak een **Data Factory**. Een data factory kan een of meer pijp lijnen bevatten.
+2. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory. Als u bijvoorbeeld gegevens kopieert van een Azure Blob-opslag naar een on-premises bestands systeem, maakt u twee gekoppelde services om uw on-premises bestands systeem en Azure Storage-account te koppelen aan uw data factory. Zie de sectie [Eigenschappen van gekoppelde service](#linked-service-properties) voor gekoppelde service-eigenschappen die specifiek zijn voor een on-premises bestands systeem.
+3. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. In het voor beeld in de laatste stap maakt u een gegevensset om de BLOB-container en de map op te geven die de invoer gegevens bevat. En u maakt een andere gegevensset om de map en de bestands naam (optioneel) op te geven in het bestands systeem. Zie de sectie [Eigenschappen](#dataset-properties) van gegevensset voor eigenschappen van een gegevensset die specifiek zijn voor on-premises bestands systeem.
+4. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. In het eerder genoemde voor beeld gebruikt u BlobSource als bron en FileSystemSink als Sink voor de Kopieer activiteit. En als u kopieert van on-premises bestands systeem naar Azure Blob Storage, gebruikt u FileSystemSource en BlobSink in de Kopieer activiteit. Zie de sectie [Eigenschappen van Kopieer](#copy-activity-properties) activiteit voor informatie over de eigenschappen van de Kopieer activiteit die specifiek zijn voor on-premises bestands systeem. Voor meer informatie over het gebruik van een gegevens archief als een bron of sink klikt u op de koppeling in de vorige sectie voor uw gegevens archief.
 
-Wanneer u de wizard gebruikt, worden de JSON-definities voor deze Data Factory-entiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u hulpprogramma's / API's (met uitzondering van de .NET API), kunt u deze Data Factory-entiteiten definiëren met behulp van de JSON-indeling.  Zie voor voorbeelden met JSON-definities voor Data Factory-entiteiten die worden gebruikt om gegevens te kopiëren naar/van een bestandssysteem [JSON voorbeelden](#json-examples-for-copying-data-to-and-from-file-system) sectie van dit artikel.
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie [JSON-voor beelden](#json-examples-for-copying-data-to-and-from-file-system) in dit artikel voor voor beelden met JSON-definities voor Data Factory entiteiten die worden gebruikt om gegevens te kopiëren van/naar een bestands systeem.
 
-De volgende secties bevatten meer informatie over JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten specifieke naar bestandssysteem:
+De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor het bestands systeem:
 
 ## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-U kunt een on-premises bestandssysteem koppelen aan een Azure-gegevensfactory met de **On-Premises bestandsserver** gekoppelde service. De volgende tabel bevat beschrijvingen van JSON-elementen die specifiek voor de bestandsserver van On-Premises gekoppelde service zijn.
+U kunt een on-premises bestands systeem koppelen aan een Azure-data factory met de gekoppelde **on-premises Bestands server** . De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor de on-premises gekoppelde service van de bestands server.
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Description | Vereist |
 | --- | --- | --- |
-| type |Zorg ervoor dat de eigenschap type wordt ingesteld op **OnPremisesFileServer**. |Ja |
-| host |Hiermee geeft u het pad naar de hoofdmap van de map die u wilt kopiëren. Gebruik het escape-teken ' \ ' voor speciale tekens in de tekenreeks. Zie [voorbeeld gekoppelde service en de gegevensset definities](#sample-linked-service-and-dataset-definitions) voor voorbeelden. |Ja |
-| userid |Geef de ID van de gebruiker die toegang tot de server heeft. |Nee (als u ervoor encryptedCredential kiest) |
-| password |Geef het wachtwoord voor de gebruiker (gebruikersnaam). |Nee (als u ervoor encryptedCredential kiest |
-| encryptedCredential |Geef de versleutelde referenties die u krijgen kunt door de cmdlet New-AzDataFactoryEncryptValue uit te voeren. |Nee (als u ervoor kiest om op te geven van gebruikers-id en wachtwoord in tekst zonder opmaak) |
-| gatewayName |Hiermee geeft u de naam van de gateway die Data Factory moet worden gebruikt verbinding maken met de on-premises bestandsserver. |Ja |
+| Type |Zorg ervoor dat de eigenschap type is ingesteld op **OnPremisesFileServer**. |Ja |
+| host |Hiermee geeft u het pad naar de hoofdmap van de map die u wilt kopiëren. Gebruik het escape teken ' \ ' voor speciale tekens in de teken reeks. Zie [voorbeeld gekoppelde service en de gegevensset definities](#sample-linked-service-and-dataset-definitions) voor voorbeelden. |Ja |
+| userid |Geef de ID van de gebruiker die toegang tot de server heeft. |Nee (als u kiest voor encryptedCredential) |
+| password |Geef het wachtwoord voor de gebruiker (gebruikersnaam). |Nee (als u encryptedCredential kiest |
+| encryptedCredential |Geef de versleutelde referenties op die u kunt ophalen door de cmdlet New-AzDataFactoryEncryptValue uit te voeren. |Nee (als u gebruikers naam en wacht woord als tekst zonder opmaak wilt opgeven) |
+| gatewayName |Hiermee geeft u de naam op van de gateway die Data Factory moet gebruiken om verbinding te maken met de on-premises Bestands server. |Ja |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Voorbeeld van een gekoppelde service en definities van de gegevensset
-| Scenario | Hosten in de definitie van de gekoppelde service | Mappad in de definitie van de gegevensset |
+| Scenario | Host in de definitie van de gekoppelde service | folderPath in de definitie van de gegevensset |
 | --- | --- | --- |
-| Lokale map op de machine Data Management Gateway: <br/><br/>Voorbeelden: D:\\ \* of D:\folder\subfolder\\* |D:\\ \\ (voor Data Management Gateway 2.0 en hoger) <br/><br/> localhost (voor oudere versies dan Data Management Gateway 2.0) |. \\ \\ of de map\\\\submap (voor Data Management Gateway 2.0 en hoger) <br/><br/>D:\\ \\ of D:\\\\map\\\\submap (voor de gatewayversie lager dan 2.0) |
-| Externe gedeelde map: <br/><br/>Voorbeelden: \\ \\MijnServer\\delen\\ \* of \\ \\MijnServer\\delen\\map\\submap\\* |\\\\\\\\myserver\\\\share |. \\ \\ of de map\\\\submap |
+| Lokale map op Data Management Gateway computer: <br/><br/>Voorbeelden: D:\\ \* of D:\folder\subfolder\\\* |D:\\ \\ (voor Data Management Gateway 2,0 en latere versies) <br/><br/> localhost (voor eerdere versies dan Data Management Gateway 2,0) |. \\ ofsubmap\\(voor Data Management Gateway 2,0 en latere versies)\\ \\ <br/><br/>D:\\ \\ofD\\: submap(voor\\de gateway versie onder 2,0)\\\\ |
+| Externe gedeelde map: <br/><br/>Voor beelden \\: \\mijn\\map met\\mijn share *of\\mijnserver\\shareFolder\\\\ \\\\\\* |\\\\\\\\myserver\\\\share |. \\ ofsubmap\\ \\ \\ |
 
 >[!NOTE]
 >Wanneer u via de gebruikersinterface, moet u niet voor het invoeren van twee backslashes (`\\`) opgeven om te escapen, zoals u ook via JSON, één backslash.
 
-### <a name="example-using-username-and-password-in-plain-text"></a>Voorbeeld: Met behulp van gebruikersnaam en wachtwoord in tekst zonder opmaak
+### <a name="example-using-username-and-password-in-plain-text"></a>Voorbeeld: Gebruikers naam en wacht woord gebruiken als tekst zonder opmaak
 
 ```JSON
 {
@@ -107,7 +107,7 @@ U kunt een on-premises bestandssysteem koppelen aan een Azure-gegevensfactory me
 }
 ```
 
-### <a name="example-using-encryptedcredential"></a>Voorbeeld: Met behulp van encryptedcredential
+### <a name="example-using-encryptedcredential"></a>Voorbeeld: Encryptedcredential gebruiken
 
 ```JSON
 {
@@ -124,28 +124,28 @@ U kunt een on-premises bestandssysteem koppelen aan een Azure-gegevensfactory me
 ```
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets en secties, [gegevenssets maken](data-factory-create-datasets.md). Secties, zoals de structuur, beschikbaarheid en het beleid van een gegevensset JSON zijn vergelijkbaar voor alle typen van de gegevensset.
+Zie [gegevens sets maken](data-factory-create-datasets.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties, zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON, zijn vergelijkbaar voor alle typen gegevensset.
 
-De sectie typeProperties verschilt voor elk type gegevensset. Het biedt informatie zoals de locatie en de indeling van de gegevens in het gegevensarchief. De typeProperties sectie voor de gegevensset van het type **bestandsshare** heeft de volgende eigenschappen:
+De sectie typeProperties verschilt voor elk type gegevensset. Het bevat informatie zoals de locatie en indeling van de gegevens in het gegevens archief. De sectie typeProperties voor de dataset van het type **file share** heeft de volgende eigenschappen:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Description | Vereist |
 | --- | --- | --- |
-| folderPath |Hiermee geeft u het subpad naar de map. Gebruik het escape-teken '\' voor speciale tekens in de tekenreeks. Filteren op jokerteken wordt niet ondersteund. Zie [voorbeeld gekoppelde service en de gegevensset definities](#sample-linked-service-and-dataset-definitions) voor voorbeelden.<br/><br/>U kunt deze eigenschap combineren met **partitionBy** naar de map paden op basis van het segment de status begin/einde en tijden. |Ja |
-| fileName |Geef de naam van het bestand in de **folderPath** als u wilt dat de tabel om te verwijzen naar een specifiek bestand in de map. Als u een waarde voor deze eigenschap niet opgeeft, wordt de tabel verwijst naar alle bestanden in de map.<br/><br/>Wanneer **fileName** is niet opgegeven voor een uitvoergegevensset en **preserveHierarchy** niet is opgegeven in de activiteit-sink, de naam van het gegenereerde bestand is in de volgende indeling: <br/><br/>`Data.<Guid>.txt` (Voorbeeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nee |
-| fileFilter |Geef een filter op dat moet worden gebruikt voor het selecteren van een subset van de bestanden in het mappad in plaats van alle bestanden. <br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (Eén teken).<br/><br/>Voorbeeld 1: "fileFilter": "* .log"<br/>Voorbeeld 2: "fileFilter': 2014-1-?.txt"<br/><br/>Houd er rekening mee dat fileFilter is van toepassing voor een invoergegevensset van de bestandsshare. |Nee |
-| partitionedBy |U kunt partitionedBy gebruiken om op te geven van een dynamische folderPath/bestandsnaam voor time series-gegevens. Een voorbeeld is folderPath geparametriseerde voor elk uur gegevens. |Nee |
-| format | De volgende bestandsindelingen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **GZip**, **Deflate**, **BZip2**, en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimale** en **snelste**. Zie [bestands- en compressie indelingen in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nee |
+| folderPath |Hiermee geeft u het pad naar de map. Gebruik het escape teken '\' voor speciale tekens in de teken reeks. Filteren op jokerteken wordt niet ondersteund. Zie [voorbeeld gekoppelde service en de gegevensset definities](#sample-linked-service-and-dataset-definitions) voor voorbeelden.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen **Bestands naam** is opgegeven voor een uitvoer-gegevensset en **preserveHierarchy** niet is opgegeven in de activiteit sink, heeft de naam van het gegenereerde bestand de volgende indeling: <br/><br/>`Data.<Guid>.txt`Hierbij Data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
+| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren. <br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beeld 1: "file filter": "*. log"<br/>Voor beeld 2: ' file filter ': 2014-1-?.txt"<br/><br/>File filter is van toepassing op een invoer-file share-gegevensset. |Nee |
+| partitionedBy |U kunt partitionedBy gebruiken om een dynamische folderPath/fileName op te geven voor gegevens van een tijd reeks. Een voor beeld is folderPath para meters voor elk uur aan gegevens. |Nee |
+| format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
+| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nee |
 
 > [!NOTE]
-> U kunt geen bestandsnaam en fileFilter tegelijkertijd gebruiken.
+> U kunt fileName en file filter niet tegelijkertijd gebruiken.
 
-### <a name="using-partitionedby-property"></a>Met behulp van de eigenschap partitionedBy
-Zoals vermeld in de vorige sectie, kunt u een dynamische folderPath en de bestandsnaam voor time series-gegevens met de **partitionedBy** eigenschap [Data Factory-functies en de systeemvariabelen](data-factory-functions-variables.md).
+### <a name="using-partitionedby-property"></a>De eigenschap partitionedBy gebruiken
+Zoals vermeld in de vorige sectie, kunt u een dynamische folderPath en-bestands naam opgeven voor tijdreeks gegevens met de eigenschap **partitionedBy** , [Data Factory functies en de systeem variabelen](data-factory-functions-variables.md).
 
-Zie voor meer informatie over meer informatie over time series-gegevenssets, planning en segmenten, [gegevenssets maken](data-factory-create-datasets.md), [planning en uitvoering](data-factory-scheduling-and-execution.md), en [het maken van pijplijnen](data-factory-create-pipelines.md).
+Zie [gegevens sets maken](data-factory-create-datasets.md), [plannen en uitvoeren](data-factory-scheduling-and-execution.md)en [pijp lijnen maken](data-factory-create-pipelines.md)voor meer informatie over gegevens sets, planning en segmenten voor de tijd reeksen.
 
-#### <a name="sample-1"></a>Voorbeeld 1:
+#### <a name="sample-1"></a>Voor beeld 1:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -155,9 +155,9 @@ Zie voor meer informatie over meer informatie over time series-gegevenssets, pla
 ],
 ```
 
-In dit voorbeeld {segment} wordt vervangen door de waarde van de Data Factory-systeemvariabele slicestart-waarde in de notatie (YYYYMMDDHH). Slicestart-waarde verwijst naar de begintijd van het segment. FolderPath verschilt voor elk segment. Bijvoorbeeld: wikidatagateway/wikisampledataout/2014100103 of wikidatagateway/wikisampledataout/2014100104.
+In dit voor beeld wordt {segment} vervangen door de waarde van de Data Factory systeem variabele slice start in de indeling (YYYYMMDDHH). Slice start verwijst naar de begin tijd van het segment. De folderPath verschilt voor elk segment. Bijvoorbeeld: wikidatagateway/wikisampledataout/2014100103 of wikidatagateway/wikisampledataout/2014100104.
 
-#### <a name="sample-2"></a>Voorbeeld 2:
+#### <a name="sample-2"></a>Voor beeld 2:
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -171,57 +171,57 @@ In dit voorbeeld {segment} wordt vervangen door de waarde van de Data Factory-sy
 ],
 ```
 
-Jaar, maand, dag en tijd van de slicestart-waarde in dit voorbeeld zijn uitgepakt naar afzonderlijke variabelen die gebruikmaken van de eigenschappen folderPath en de bestandsnaam.
+In dit voor beeld worden jaar, maand, dag en tijd van slice start geëxtraheerd in afzonderlijke variabelen die de eigenschappen folderPath en fileName gebruiken.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen maken](data-factory-create-pipelines.md) artikel. Eigenschappen zoals naam, beschrijving, invoer en uitvoer gegevenssets en beleidsregels zijn beschikbaar voor alle soorten activiteiten. Dat eigenschappen die beschikbaar zijn in de **typeProperties** sectie van de activiteit variëren met elk activiteitstype.
+Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer gegevens sets en beleids regels zijn beschikbaar voor alle typen activiteiten. Terwijl de eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activiteit, verschillen per activiteitstype.
 
-Ze verschillen voor de kopieeractiviteit, afhankelijk van de typen van bronnen en sinks. Als u gegevens uit een on-premises bestandssysteem verplaatst, u het brontype instellen in de kopieeractiviteit naar **FileSystemSource**. Als u gegevens naar een on-premises bestandssysteem verplaatst, u stelt het sink-type in de kopieeractiviteit naar **FileSystemSink**. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door FileSystemSource en FileSystemSink.
+Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks. Als u gegevens verplaatst van een on-premises bestands systeem, stelt u het bron type in de Kopieer activiteit in op **FileSystemSource**. En als u gegevens naar een on-premises bestands systeem verplaatst, stelt u het sink-type in de Kopieer activiteit in op **FileSystemSink**. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door FileSystemSource en FileSystemSink.
 
 **FileSystemSource** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Description | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursive |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. |True, False (standaard) |Nee |
 
 **FileSystemSink** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Description | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| copyBehavior |Definieert het gedrag kopiëren wanneer de bron BlobSource of bestandssysteem is. |**PreserveHierarchy:** Hiermee behoudt u de bestandshiërarchie in de doelmap. Dat wil zeggen, is het relatieve pad van het bronbestand voor de bronmap hetzelfde als het relatieve pad van de doel-bestand naar de doelmap.<br/><br/>**FlattenHierarchy:** Alle bestanden uit de bronmap worden gemaakt in het eerste niveau van de doelmap. De doelbestanden worden gemaakt met een automatisch gegenereerde naam.<br/><br/>**MergeFiles:** Hiermee worden alle bestanden uit de bronmap naar één bestand samengevoegd. Als de naam/blob-naam van het bestand is opgegeven, is de naam van het samengevoegde de opgegeven naam. Anders is de bestandsnaam van een automatisch gegenereerde. |Nee |
+| copyBehavior |Hiermee wordt het Kopieer gedrag gedefinieerd wanneer de bron BlobSource of File System is. |**PreserveHierarchy:** Hiermee behoudt u de bestands hiërarchie in de doelmap. Dat wil zeggen, het relatieve pad van het bron bestand naar de bronmap is hetzelfde als het relatieve pad van het doel bestand naar de doelmap.<br/><br/>**FlattenHierarchy:** Alle bestanden in de bronmap worden gemaakt in het eerste niveau van de doelmap. De doel bestanden worden gemaakt met een automatisch gegenereerde naam.<br/><br/>**MergeFiles** Alle bestanden van de bronmap worden samengevoegd met één bestand. Als de bestands naam/BLOB-naam is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. Anders is het een automatisch gegenereerde bestands naam. |Nee |
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursieve en copyBehavior voorbeelden
-Deze sectie beschrijft het resulterende gedrag van de kopieerbewerking voor de verschillende combinaties van waarden voor de recursieve en copyBehavior-eigenschappen.
+In deze sectie wordt het resulterende gedrag van de Kopieer bewerking voor verschillende combi Naties van waarden voor de recursieve en copyBehavior eigenschappen beschreven.
 
-| recursieve waarde | copyBehavior waarde | Resulterende gedrag |
+| recursieve waarde | waarde copyBehavior | Resulterende gedrag |
 | --- | --- | --- |
-| true |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met dezelfde structuur als de bron:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Het doel Map1 is gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch gegenereerde naam voor File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File5 |
-| true |mergeFiles |Voor een bronmap Map1 met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Het doel Map1 is gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1 bestand2 + bestand3 + File4 + 5-bestand inhoud worden samengevoegd in één bestand met een automatisch gegenereerde naam. |
-| false |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Subfolder1 bestand3 File4 en File5 is niet opgehaald. |
-| false |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch gegenereerde naam voor File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand2<br/><br/>Subfolder1 bestand3 File4 en File5 is niet opgehaald. |
-| false |mergeFiles |Voor een bronmap Map1 met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1 + bestand2 inhoud worden samengevoegd in één bestand met een automatisch gegenereerde naam.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch gegenereerde naam voor File1<br/><br/>Subfolder1 bestand3 File4 en File5 is niet opgehaald. |
+| true |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 wordt gemaakt met dezelfde structuur als de bron:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch gegenereerde naam voor File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File5 |
+| true |mergeFiles |Voor een bronmap Map1 met de volgende structuur,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1 + Bestand2 + File3 + File4 + inhoud van bestand 5 worden samengevoegd in één bestand met een automatisch gegenereerde bestands naam. |
+| false |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 wordt gemaakt met de volgende structuur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Subfolder1 bestand3 File4 en File5 is niet opgehaald. |
+| false |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 wordt gemaakt met de volgende structuur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch gegenereerde naam voor File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand2<br/><br/>Subfolder1 bestand3 File4 en File5 is niet opgehaald. |
+| false |mergeFiles |Voor een bronmap Map1 met de volgende structuur,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 wordt gemaakt met de volgende structuur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;De inhoud van bestand1 + Bestand2 wordt samengevoegd met een bestand met een automatisch gegenereerde bestands naam.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatisch gegenereerde naam voor bestand1<br/><br/>Subfolder1 bestand3 File4 en File5 is niet opgehaald. |
 
-## <a name="supported-file-and-compression-formats"></a>Ondersteunde indelingen voor bestanden en compressie
-Zie [bestands- en compressie indelingen in Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie.
+## <a name="supported-file-and-compression-formats"></a>Ondersteunde bestands-en compressie-indelingen
+Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie.
 
-## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>JSON-voorbeelden voor het kopiëren van gegevens naar en van bestandssysteem
-De volgende voorbeelden geven een voorbeeld van JSON-definities die u gebruiken kunt voor het maken van een pijplijn met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe het kopiëren van gegevens naar en van een on-premises bestandssysteem en een Azure Blob-opslag. U kunt echter gegevens kopiëren *rechtstreeks* uit een van de bronnen aan een van de sinks die worden vermeld in [ondersteunde bronnen en sinks](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieeractiviteit in Azure Data Factory.
+## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>JSON-voor beelden voor het kopiëren van gegevens van en naar het bestands systeem
+De volgende voor beelden bieden voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens kopieert van en naar een on-premises bestands systeem en Azure Blob-opslag. U kunt echter gegevens *rechtstreeks* vanuit een van de bronnen kopiëren naar een van de sinks in [ondersteunde bronnen en sinks](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieer activiteit in azure Data Factory.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Voorbeeld: Gegevens kopiëren van een on-premises bestandssysteem naar Azure Blob-opslag
-Dit voorbeeld laat zien hoe u gegevens kopiëren van een on-premises bestandssysteem naar Azure Blob-opslag. Het voorbeeld heeft de volgende Data Factory-entiteiten:
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Voorbeeld: Gegevens kopiëren van een on-premises bestands systeem naar Azure Blob-opslag
+In dit voor beeld ziet u hoe u gegevens kopieert van een on-premises bestands systeem naar Azure Blob-opslag. Het voor beeld heeft de volgende Data Factory entiteiten:
 
 * Een gekoppelde service van het type [OnPremisesFileServer](#linked-service-properties).
-* Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Invoer [gegevensset](data-factory-create-datasets.md) van het type [bestandsshare](#dataset-properties).
-* Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Een [pijplijn](data-factory-create-pipelines.md) met de Kopieeractiviteit die gebruikmaakt van [FileSystemSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+* Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+* Een invoer- [gegevensset](data-factory-create-datasets.md) van het type bestands [share](#dataset-properties).
+* Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [FileSystemSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het volgende voorbeeld tijdreeksen worden gegevens gekopieerd van een on-premises bestandssysteem naar Azure Blob storage per uur. De JSON-eigenschappen die worden gebruikt in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het volgende voor beeld worden elk uur gegevens van tijd reeksen gekopieerd van een on-premises bestands systeem naar Azure Blob-opslag. De JSON-eigenschappen die in deze voor beelden worden gebruikt, worden in de secties na de voor beelden beschreven.
 
-Instellen als eerste stap van Data Management Gateway aan de hand van de instructies in [gegevens verplaatsen tussen on-premises bronnen en de cloud met Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md).
+Als eerste stap stelt u Data Management Gateway in volgens de instructies in [gegevens verplaatsen tussen on-premises bronnen en de Cloud met Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md).
 
-**Bestandsserver voor on-Premises gekoppelde service:**
+**On-premises gekoppelde service voor bestands servers:**
 
 ```JSON
 {
@@ -238,9 +238,9 @@ Instellen als eerste stap van Data Management Gateway aan de hand van de instruc
 }
 ```
 
-Wordt u aangeraden de **encryptedCredential** eigenschap in plaats daarvan de **userid** en **wachtwoord** eigenschappen. Zie [File Server gekoppelde service](#linked-service-properties) voor meer informatie over deze gekoppelde service.
+Het is raadzaam om de eigenschap **encryptedCredential** te gebruiken in plaats van de eigenschappen **UserID** en **Password** . Zie de [gekoppelde service van de bestands server](#linked-service-properties) voor meer informatie over deze gekoppelde service.
 
-**Gekoppelde Azure Storage-service:**
+**Azure Storage gekoppelde service:**
 
 ```JSON
 {
@@ -254,11 +254,11 @@ Wordt u aangeraden de **encryptedCredential** eigenschap in plaats daarvan de **
 }
 ```
 
-**On-premises bestand system invoergegevensset:**
+**On-premises invoer gegevensset van het bestands systeem:**
 
-Gegevens wordt opgehaald uit een nieuw bestand om het uur. De eigenschappen folderPath en de bestandsnaam worden bepaald op basis van de begintijd van het segment.
+Gegevens worden elk uur uit een nieuw bestand opgehaald. De eigenschappen folderPath en fileName worden bepaald op basis van de begin tijd van het segment.
 
-Instellen van `"external": "true"` Data Factory informeert dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+De `"external": "true"` instelling informeert Data Factory dat de gegevensset extern is voor de Data Factory en niet wordt geproduceerd door een activiteit in de Data Factory.
 
 ```JSON
 {
@@ -320,9 +320,9 @@ Instellen van `"external": "true"` Data Factory informeert dat de dataset bevind
 }
 ```
 
-**Azure Blob storage-uitvoer gegevensset:**
+**Azure Blob Storage-uitvoer gegevensset:**
 
-Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en interval: 1). Het pad naar de map voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map maakt gebruik van het jaar, maand, dag en uur onderdelen van de begintijd.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad maakt gebruik van het jaar, de maand, de dag en het uur van de begin tijd.
 
 ```JSON
 {
@@ -380,9 +380,9 @@ Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en inte
 }
 ```
 
-**Een kopieeractiviteit in een pijplijn met File System-bron- en Blob:**
+**Een Kopieer activiteit in een pijp lijn met File System-bron en BLOB-Sink:**
 
-De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **FileSystemSource**, en **sink** type is ingesteld op **BlobSink**.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **FileSystemSource**en wordt het **sink** -type ingesteld op **BlobSink**.
 
 ```JSON
 {
@@ -430,18 +430,18 @@ De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik v
 }
 ```
 
-### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Voorbeeld: Gegevens kopiëren van Azure SQL Database naar een on-premises bestandssysteem
-Het volgende voorbeeld laat zien:
+### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Voorbeeld: Gegevens kopiëren van Azure SQL Database naar een on-premises bestands systeem
+In het volgende voor beeld ziet u:
 
 * Een gekoppelde service van het type [AzureSqlDatabase.](data-factory-azure-sql-connector.md#linked-service-properties)
 * Een gekoppelde service van het type [OnPremisesFileServer](#linked-service-properties).
-* Een invoergegevensset van het type [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
-* Een uitvoergegevensset van het type [bestandsshare](#dataset-properties).
-* Een pijplijn met een kopieeractiviteit die gebruikmaakt van [SqlSource](data-factory-azure-sql-connector.md##copy-activity-properties) en [FileSystemSink](#copy-activity-properties).
+* Een invoer-gegevensset van het type [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
+* Een uitvoer-gegevensset van het type bestands [share](#dataset-properties).
+* Een pijp lijn met een Kopieer activiteit die gebruikmaakt van [SqlSource](data-factory-azure-sql-connector.md##copy-activity-properties) en [FileSystemSink](#copy-activity-properties).
 
-Het voorbeeld kopieert time series-gegevens uit een Azure SQL-tabel naar een on-premises bestandssysteem elk uur. De JSON-eigenschappen die worden gebruikt in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het voor beeld worden elk uur gegevens van een tijd reeks gekopieerd van een Azure SQL-tabel naar een on-premises bestands systeem. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden in de secties na de voor beelden beschreven.
 
-**Gekoppelde service Azure SQL Database:**
+**Azure SQL Database gekoppelde service:**
 
 ```JSON
 {
@@ -455,7 +455,7 @@ Het voorbeeld kopieert time series-gegevens uit een Azure SQL-tabel naar een on-
 }
 ```
 
-**Bestandsserver voor on-Premises gekoppelde service:**
+**On-premises gekoppelde service voor bestands servers:**
 
 ```JSON
 {
@@ -472,13 +472,13 @@ Het voorbeeld kopieert time series-gegevens uit een Azure SQL-tabel naar een on-
 }
 ```
 
-Wordt u aangeraden de **encryptedCredential** eigenschap in plaats van de **userid** en **wachtwoord** eigenschappen. Zie [bestandssysteem gekoppelde service](#linked-service-properties) voor meer informatie over deze gekoppelde service.
+We raden u aan de eigenschap **encryptedCredential** te gebruiken in plaats van de eigenschappen **UserID** en **Password** te gebruiken. Zie de [gekoppelde service van het bestands systeem](#linked-service-properties) voor meer informatie over deze gekoppelde service.
 
 **Azure SQL-invoer gegevensset:**
 
-Het voorbeeld wordt ervan uitgegaan dat u een tabel 'MyTable' in Azure SQL gemaakt hebt en een kolom met de naam 'timestampcolumn' voor time series-gegevens bevat.
+In het voor beeld wordt ervan uitgegaan dat u een tabel ' MyTable ' hebt gemaakt in Azure SQL en deze een kolom bevat met de naam ' timestampcolumn ' voor gegevens van een tijd reeks.
 
-Instellen van ``“external”: ”true”`` Data Factory informeert dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+De ``“external”: ”true”`` instelling informeert Data Factory dat de gegevensset extern is voor de Data Factory en niet wordt geproduceerd door een activiteit in de Data Factory.
 
 ```JSON
 {
@@ -505,9 +505,9 @@ Instellen van ``“external”: ”true”`` Data Factory informeert dat de data
 }
 ```
 
-**On-premises bestand system uitvoergegevensset:**
+**On-premises uitvoer gegevensset van het bestands systeem:**
 
-Gegevens worden gekopieerd naar een nieuw bestand om het uur. Het mappad en de bestandsnaam voor de blob worden bepaald op basis van de begintijd van het segment.
+Gegevens worden elk uur naar een nieuw bestand gekopieerd. De folderPath en de bestands naam voor de BLOB worden bepaald op basis van de begin tijd van het segment.
 
 ```JSON
 {
@@ -569,9 +569,9 @@ Gegevens worden gekopieerd naar een nieuw bestand om het uur. Het mappad en de b
 }
 ```
 
-**Een kopieeractiviteit in een pijplijn met de SQL-bron en sink bestandssysteem:**
+**Een Kopieer activiteit in een pijp lijn met de SQL-bron en het bestands systeem Sink:**
 
-De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **SqlSource**, en de **sink** type is ingesteld op **FileSystemSink**. De SQL-query die is opgegeven voor de **SqlReaderQuery** eigenschap selecteert u de gegevens in het afgelopen uur te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **SqlSource**en het **sink** -type is ingesteld op **FileSystemSink**. De SQL-query die is opgegeven voor de eigenschap **SqlReaderQuery** selecteert de gegevens in het afgelopen uur om te kopiëren.
 
 ```JSON
 {
@@ -620,7 +620,7 @@ De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik v
 }
 ```
 
-Ook kunt u kolommen uit de brongegevensset op kolommen uit de sink-gegevensset in het definitie van de activiteit kopiëren toewijzen. Zie voor meer informatie, [toewijzing van kolommen in Azure Data Factory](data-factory-map-columns.md).
+U kunt ook kolommen van de bron-gegevensset toewijzen aan kolommen uit Sink-gegevensset in de definitie van de Kopieer activiteit. Zie [gegevensset-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie.
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
- Zie voor meer informatie over belangrijke factoren die invloed hebben op de prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory en de verschillende manieren om te optimaliseren, de [Kopieeractiviteit prestatie- en afstemmingshandleiding](data-factory-copy-activity-performance.md).
+ Voor meer informatie over de belangrijkste factoren die van invloed zijn op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in Azure Data Factory en verschillende manieren om deze te optimaliseren, raadpleegt u de [hand leiding Copy activity Performance and Tuning](data-factory-copy-activity-performance.md)(Kopieer activiteit).

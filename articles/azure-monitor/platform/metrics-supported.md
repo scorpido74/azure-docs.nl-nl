@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 49780ec342ea168d27ab8a029c41a1c18a6ffcc4
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019052"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051816"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
 
@@ -52,9 +52,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |QuotaBlocked|Geheugen: Quota geblokkeerd|Count|Average|Het huidige aantal quotum aanvragen dat is geblokkeerd totdat andere geheugen quota zijn vrijgemaakt.|ServerResourceType|
 |VertiPaqNonpaged|Geheugen: VertiPaq Nonpaged|Bytes|Average|Geheugen bytes vergrendeld in de werkset voor gebruik door de in-Memory engine.|ServerResourceType|
 |VertiPaqPaged|Geheugen: VertiPaq Paged|Bytes|Average|Bytes van wisselbaar geheugen die in gebruik zijn voor in-Memory gegevens.|ServerResourceType|
-|RowsReadPerSec|Verwerken: Gelezen rijen per seconde|CountPerSecond|Average|Het aantal rijen dat van alle relationele data bases is gelezen.|ServerResourceType|
-|RowsConvertedPerSec|Verwerken: Geconverteerde rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geconverteerd.|ServerResourceType|
-|RowsWrittenPerSec|Verwerken: Aantal geschreven rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geschreven.|ServerResourceType|
+|RowsReadPerSec|Bezig Gelezen rijen per seconde|CountPerSecond|Average|Het aantal rijen dat van alle relationele data bases is gelezen.|ServerResourceType|
+|RowsConvertedPerSec|Bezig Geconverteerde rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geconverteerd.|ServerResourceType|
+|RowsWrittenPerSec|Bezig Aantal geschreven rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geschreven.|ServerResourceType|
 |CommandPoolBusyThreads|Lijnen Bezette threads van opdracht pool|Count|Average|Het aantal actieve threads in de opdracht thread pool.|ServerResourceType|
 |CommandPoolIdleThreads|Lijnen Niet-actieve threads van opdracht pool|Count|Average|Het aantal niet-actieve threads in de opdracht thread pool.|ServerResourceType|
 |LongParsingBusyThreads|Lijnen Lange threads voor het parseren|Count|Average|Het aantal actieve threads in de thread pool voor lang parseren.|ServerResourceType|
@@ -328,25 +328,25 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|Percentage CPU|Percentage CPU|Procent|Average|Het percentage toegewezen berekeningseenheden dat momenteel door de virtuele machine(s) wordt gebruikt.|Er zijn geen dimensies|
-|Netwerk in|Netwerk in|Bytes|Totaal|Het aantal ontvangen bytes op alle netwerkinterfaces door de virtuele machine(s) (binnenkomend verkeer).|Er zijn geen dimensies|
-|Netwerk uit|Netwerk uit|Bytes|Totaal|Het aantal verzonden bytes op alle netwerkinterfaces door de virtuele machine(s) (uitgaand verkeer).|Er zijn geen dimensies|
-|Gelezen bytes per seconde op de schijf|Schijf lezen|BytesPerSecond|Average|Gemiddeld aantal gelezen bytes op de schijf tijdens de bewakingsperiode.|Er zijn geen dimensies|
-|Geschreven bytes per seconde|Schijf schrijven|BytesPerSecond|Average|Gemiddeld aantal geschreven bytes op de schijf tijdens de bewakingsperiode.|Er zijn geen dimensies|
-|Leesbewerkingen op de schijf/seconde|Leesbewerkingen op de schijf/seconde|CountPerSecond|Average|Gelezen IOP's op de schijf.|Er zijn geen dimensies|
-|Schrijfbewerkingen op de schijf/seconde|Schrijfbewerkingen op de schijf/seconde|CountPerSecond|Average|Geschreven IOP's op de schijf.|Er zijn geen dimensies|
+|Percentage CPU|Percentage CPU|Procent|Average|Het percentage toegewezen reken eenheden dat momenteel wordt gebruikt door de virtuele machine (s).|Er zijn geen dimensies|
+|Netwerk in|Netwerk in|Bytes|Totaal|Het aantal bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer).|Er zijn geen dimensies|
+|Netwerk uit|Netwerk uit|Bytes|Totaal|Het aantal uitgaande bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer).|Er zijn geen dimensies|
+|Gelezen bytes per seconde|Schijf lezen|BytesPerSecond|Average|Gemiddeld aantal gelezen bytes van de schijf tijdens de controle periode.|Er zijn geen dimensies|
+|Geschreven bytes per seconde|Schijf schrijven|BytesPerSecond|Average|Gemiddeld aantal bytes dat tijdens de controle periode naar de schijf wordt geschreven.|Er zijn geen dimensies|
+|Lees bewerkingen op de schijf per seconde|Lees bewerkingen op de schijf per seconde|CountPerSecond|Average|Read-IOPS van schijf.|Er zijn geen dimensies|
+|Schrijf bewerkingen op de schijf per seconde|Schrijf bewerkingen op de schijf per seconde|CountPerSecond|Average|Schijf schrijf-IOPS.|Er zijn geen dimensies|
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Micro soft. ClassicCompute/domein naam/sleuven/rollen
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|Percentage CPU|Percentage CPU|Procent|Average|Het percentage toegewezen berekeningseenheden dat momenteel door de virtuele machine(s) wordt gebruikt.|RoleInstanceId|
-|Netwerk in|Netwerk in|Bytes|Totaal|Het aantal ontvangen bytes op alle netwerkinterfaces door de virtuele machine(s) (binnenkomend verkeer).|RoleInstanceId|
-|Netwerk uit|Netwerk uit|Bytes|Totaal|Het aantal verzonden bytes op alle netwerkinterfaces door de virtuele machine(s) (uitgaand verkeer).|RoleInstanceId|
-|Gelezen bytes per seconde op de schijf|Schijf lezen|BytesPerSecond|Average|Gemiddeld aantal gelezen bytes op de schijf tijdens de bewakingsperiode.|RoleInstanceId|
-|Geschreven bytes per seconde|Schijf schrijven|BytesPerSecond|Average|Gemiddeld aantal geschreven bytes op de schijf tijdens de bewakingsperiode.|RoleInstanceId|
-|Leesbewerkingen op de schijf/seconde|Leesbewerkingen op de schijf/seconde|CountPerSecond|Average|Gelezen IOP's op de schijf.|RoleInstanceId|
-|Schrijfbewerkingen op de schijf/seconde|Schrijfbewerkingen op de schijf/seconde|CountPerSecond|Average|Geschreven IOP's op de schijf.|RoleInstanceId|
+|Percentage CPU|Percentage CPU|Procent|Average|Het percentage toegewezen reken eenheden dat momenteel wordt gebruikt door de virtuele machine (s).|RoleInstanceId|
+|Netwerk in|Netwerk in|Bytes|Totaal|Het aantal bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer).|RoleInstanceId|
+|Netwerk uit|Netwerk uit|Bytes|Totaal|Het aantal uitgaande bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer).|RoleInstanceId|
+|Gelezen bytes per seconde|Schijf lezen|BytesPerSecond|Average|Gemiddeld aantal gelezen bytes van de schijf tijdens de controle periode.|RoleInstanceId|
+|Geschreven bytes per seconde|Schijf schrijven|BytesPerSecond|Average|Gemiddeld aantal bytes dat tijdens de controle periode naar de schijf wordt geschreven.|RoleInstanceId|
+|Lees bewerkingen op de schijf per seconde|Lees bewerkingen op de schijf per seconde|CountPerSecond|Average|Read-IOPS van schijf.|RoleInstanceId|
+|Schrijf bewerkingen op de schijf per seconde|Schrijf bewerkingen op de schijf per seconde|CountPerSecond|Average|Schijf schrijf-IOPS.|RoleInstanceId|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
@@ -354,115 +354,115 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |TotalCalls|Totaal aantal aanroepen|Count|Totaal|Totaal aantal aanroepen.|ApiName, OperationName, Region|
 |SuccessfulCalls|Geslaagde aanroepen|Count|Totaal|Aantal geslaagde aanroepen.|ApiName, OperationName, Region|
-|TotalErrors|Totaal aantal fouten|Count|Totaal|Het totaal aantal aanroepen met een foutbericht (HTTP-antwoordcode 4xx of 5xx).|ApiName, OperationName, Region|
-|BlockedCalls|Geblokkeerde aanroepen|Count|Totaal|Het aantal aanroepen die de tarief- of quotumlimiet hebben overschreden.|ApiName, OperationName, Region|
-|ServerErrors|Serverfouten|Count|Totaal|Het aantal aanroepen met een interne servicefout (HTTP-responscode 5xx).|ApiName, OperationName, Region|
-|ClientErrors|Clientfouten|Count|Totaal|Het aantal aanroepen met een fout aan de clientzijde (HTTP-responscode 4xx).|ApiName, OperationName, Region|
-|DataIn|Inkomende gegevens|Bytes|Totaal|Grootte van inkomende gegevens in bytes.|ApiName, OperationName, Region|
+|TotalErrors|Totaal aantal fouten|Count|Totaal|Totaal aantal aanroepen met een fout respons (HTTP-antwoord code 4xx of 5xx).|ApiName, OperationName, Region|
+|BlockedCalls|Geblokkeerde aanroepen|Count|Totaal|Aantal aanroepen dat de frequentie of quotum limiet heeft overschreden.|ApiName, OperationName, Region|
+|ServerErrors|Serverfouten|Count|Totaal|Het aantal aanroepen met een interne fout in de service (HTTP-antwoord code 5xx).|ApiName, OperationName, Region|
+|ClientErrors|Clientfouten|Count|Totaal|Het aantal aanroepen met een fout aan de client zijde (HTTP-antwoord code 4xx).|ApiName, OperationName, Region|
+|DataIn|Inkomende gegevens|Bytes|Totaal|Grootte van binnenkomende gegevens in bytes.|ApiName, OperationName, Region|
 |DataOut|Uitgaande gegevens|Bytes|Totaal|Grootte van uitgaande gegevens in bytes.|ApiName, OperationName, Region|
-|Latentie|Latentie|MilliSeconds|Average|Latentie in milliseconden|ApiName, OperationName, Region|
-|CharactersTranslated|Tekens vertaald|Count|Totaal|Totaal aantal tekens in inkomende tekstaanvraag.|ApiName, OperationName, Region|
+|Latentie|Latentie|MilliSeconds|Average|Latentie in milliseconden.|ApiName, OperationName, Region|
+|CharactersTranslated|Tekens vertaald|Count|Totaal|Totaal aantal tekens in binnenkomende-tekst aanvraag.|ApiName, OperationName, Region|
 |CharactersTrained|Getrainde tekens|Count|Totaal|Totaal aantal getrainde tekens.|ApiName, OperationName, Region|
-|SpeechSessionDuration|Duur van de spraaksessie|Seconden|Totaal|Totale duur van de spraaksessie in seconden.|ApiName, OperationName, Region|
-|TotalTransactions|Totaal van transacties|Count|Totaal|Het totale aantal transacties.|Er zijn geen dimensies|
-|TotalTokenCalls|Totaal aantal tokenaanroepen|Count|Totaal|Het totale aantal tokenaanroepen.|ApiName, OperationName, Region|
+|SpeechSessionDuration|Duur van de spraaksessie|Seconden|Totaal|Totale duur van de spraak sessie in seconden.|ApiName, OperationName, Region|
+|TotalTransactions|Totaal van transacties|Count|Totaal|Totaal aantal trans acties.|Er zijn geen dimensies|
+|TotalTokenCalls|Totaal aantal tokenaanroepen|Count|Totaal|Totaal aantal token aanroepen.|ApiName, OperationName, Region|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Procent|Gemiddeld|Het percentage toegewezen berekeningseenheden dat momenteel door de virtuele machine(s) wordt gebruikt|Er zijn geen dimensies|
-|Netwerk in|Netwerk inkomend - factureerbaar|Bytes|Totaal|Het aantal ontvangen factureerbare bytes op alle netwerkinterfaces door de virtuele machine(s) (binnenkomend verkeer)|Er zijn geen dimensies|
-|Netwerk uit|Netwerk uitgaand - factureerbaar|Bytes|Totaal|Het aantal verzonden factureerbare bytes op alle netwerkinterfaces door de virtuele machine(s) (uitgaand verkeer)|Er zijn geen dimensies|
-|Gelezen bytes op de schijf|Gelezen bytes op de schijf|Bytes|Totaal|Het aantal vanaf schijf gelezen bytes tijdens de bewakingsperiode|Er zijn geen dimensies|
-|Geschreven bytes op de schijf|Geschreven bytes op de schijf|Bytes|Totaal|Het aantal naar schijf geschreven bytes tijdens de bewakingsperiode|Er zijn geen dimensies|
-|Leesbewerkingen op de schijf/seconde|Leesbewerkingen op de schijf/seconde|CountPerSecond|Average|Gelezen IOP's op de schijf|Er zijn geen dimensies|
-|Schrijfbewerkingen op de schijf/seconde|Schrijfbewerkingen op de schijf/seconde|CountPerSecond|Average|Geschreven IOP's op de schijf|Er zijn geen dimensies|
-|Resterend CPU-tegoed|Resterend CPU-tegoed|Count|Average|Totale tegoed beschikbaar voor burst|Er zijn geen dimensies|
-|Verbruikt CPU-tegoed|Verbruikt CPU-tegoed|Count|Average|Totale tegoed gebruikt door de virtuele machine|Er zijn geen dimensies|
-|Per schijf gelezen bytes per seconde|Vanaf de gegevensschijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode|SlotId|
-|Per schijf geschreven bytes per seconde|Naar de gegevensschijf geschreven bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode|SlotId|
-|Leesbewerkingen per schijf per seconde|Leesbewerkingen op de gegevensschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode|SlotId|
-|Schrijfbewerkingen per schijf per seconde|Schrijfbewerkingen op de gegevensschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode|SlotId|
-|Wachtrijomvang per schijf|Wachtrijomvang van de gegevensschijf (afgeschaft)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de gegevensschijf|SlotId|
-|Per besturingssysteemschijf gelezen bytes per seconde|Vanaf de besturingssysteemschijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Per besturingssysteemschijf geschreven bytes per seconde|Naar de besturingssysteemschijf geschreven bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Leesbewerkingen per besturingssysteemschijf per seconde|Leesbewerkingen op de besturingssysteemschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Schrijfbewerkingen per besturingssysteemschijf per seconde|Schrijfbewerkingen op de besturingssysteemschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Wachtrijomvang per besturingssysteemschijf|Wachtrijomvang van de besturingssysteemschijf (afgeschaft)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Vanaf de gegevensschijf gelezen bytes per seconde|Van de gegevensschijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode|LUN|
-|Naar de gegevensschijf geschreven bytes per seconde|Naar de gegevensschijf geschreven bytes per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode|LUN|
-|Leesbewerkingen op de gegevensschijf per seconde|Leesbewerkingen op de gegevensschijf per seconde (preview)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode|LUN|
-|Schrijfbewerkingen op de gegevensschijf per seconde|Schrijfbewerkingen op de gegevensschijf per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode|LUN|
-|Wachtrijlengte van gegevensschijf|Wachtrijlengte van gegevensschijf (preview)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de gegevensschijf|LUN|
-|Vanaf de besturingssysteemschijf gelezen bytes per seconde|Van de besturingssysteemschijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Naar de besturingssysteemschijf geschreven bytes per seconde|Naar de besturingssysteemschijf geschreven bytes per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Leesbewerkingen op de besturingssysteemschijf per seconde|Leesbewerkingen op de besturingssysteemschijf per seconde (preview)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Schrijfbewerkingen op de besturingssysteemschijf per seconde|Schrijfbewerkingen op de besturingssysteemschijf per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Wachtrijlengte van besturingssysteemschijf|Wachtrijlengte van besturingssysteemschijf (preview)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Binnenkomende stromen|Binnenkomende stromen (preview-versie)|Count|Average|Binnenkomende stromen is het aantal huidige stromen in de binnenkomende richting (verkeer dat naar de virtuele machine gaat)|Er zijn geen dimensies|
-|Uitgaande stromen|Uitgaande stromen (preview-versie)|Count|Average|Uitgaande stromen is het aantal huidige stromen in de uitgaande richting (verkeer dat uit de virtuele machine gaat)|Er zijn geen dimensies|
-|Maximale maakfrequentie van binnenkomende stromen|Maximale maakfrequentie van binnenkomende stromen (preview)|CountPerSecond|Average|De maximale maakfrequentie van binnenkomende stromen (verkeer dat naar de virtuele machine gaat)|Er zijn geen dimensies|
-|Maximale maakfrequentie van uitgaande stromen|Maximale maakfrequentie van uitgaande stromen (preview)|CountPerSecond|Average|De maximale maakfrequentie van uitgaande stromen (verkeer dat uit de virtuele machine komt)|Er zijn geen dimensies|
-|Cachetreffers voor lezen van Premium-gegevensschijf|Cachetreffers voor lezen van Premium-gegevensschijf (preview)|Percent|Average|Cachetreffers voor lezen van Premium-gegevensschijf|LUN|
-|Cachemissers voor lezen van Premium-gegevensschijf|Cachemissers voor lezen van Premium-gegevensschijf (preview)|Percent|Average|Cachemissers voor lezen van Premium-gegevensschijf|LUN|
-|Cachetreffers voor lezen van Premium-besturingssysteemschijf|Cachetreffers voor lezen van Premium-besturingssysteemschijf (preview)|Percent|Average|Cachetreffers voor lezen van Premium-besturingssysteemschijf|Er zijn geen dimensies|
-|Cachemissers voor lezen van Premium-besturingssysteemschijf|Cachemissers voor lezen van Premium-besturingssysteemschijf (preview)|Percent|Average|Cachemissers voor lezen van Premium-besturingssysteemschijf|Er zijn geen dimensies|
-|Netwerk inkomend - totaal|Netwerk inkomend - totaal|Bytes|Totaal|Het aantal ontvangen bytes op alle netwerkinterfaces door de virtuele machine(s) (binnenkomend verkeer)|Er zijn geen dimensies|
-|Netwerk uitgaand - totaal|Netwerk uitgaand - totaal|Bytes|Totaal|Het aantal verzonden bytes op alle netwerkinterfaces door de virtuele machine(s) (uitgaand verkeer)|Er zijn geen dimensies|
+|Netwerk in|Netwerk inkomend - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|Er zijn geen dimensies|
+|Netwerk uit|Netwerk uitgaand - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|Er zijn geen dimensies|
+|Gelezen bytes op de schijf|Gelezen bytes op de schijf|Bytes|Totaal|Gelezen bytes van de schijf tijdens de controle periode|Er zijn geen dimensies|
+|Geschreven bytes op de schijf|Geschreven bytes op de schijf|Bytes|Totaal|Naar schijf geschreven bytes tijdens de controle periode|Er zijn geen dimensies|
+|Lees bewerkingen op de schijf per seconde|Lees bewerkingen op de schijf per seconde|CountPerSecond|Average|Gelezen IOP's op de schijf|Er zijn geen dimensies|
+|Schrijf bewerkingen op de schijf per seconde|Schrijf bewerkingen op de schijf per seconde|CountPerSecond|Average|Geschreven IOP's op de schijf|Er zijn geen dimensies|
+|Resterend CPU-tegoed|Resterend CPU-tegoed|Count|Average|Totaal aantal beschik bare tegoeden voor burst|Er zijn geen dimensies|
+|Verbruikt CPU-tegoed|Verbruikt CPU-tegoed|Count|Average|Totaal aantal tegoeden dat door de virtuele machine wordt verbruikt|Er zijn geen dimensies|
+|Per schijf gelezen bytes/sec.|Gegevens schijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode|SlotId|
+|Schrijf bewerkingen per schijf/sec.|Gegevens schijf schrijf bewerkingen in bytes per seconde (afgeschaft)|CountPerSecond|Average|Tijdens de controle periode naar één schijf geschreven bytes per seconde|SlotId|
+|Lees bewerkingen per schijf/sec.|Lees bewerkingen op de gegevens schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode|SlotId|
+|Schrijf bewerkingen per schijf/SEC|Schrijf bewerkingen op de gegevens schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS tijdens de controle periode van één schijf schrijven|SlotId|
+|Wachtrijomvang per schijf|WACHTRIJ diepte van de gegevens schijf (afgeschaft)|Count|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|SlotId|
+|BESTURINGSSYSTEEM per schijf gelezen bytes per seconde|BESTURINGSSYSTEEM schijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Per schijf geschreven bytes/sec.|BESTURINGSSYSTEEM schijf schrijf bewerkingen in bytes per seconde (afgeschaft)|CountPerSecond|Average|Geschreven bytes per seconde tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Lees bewerkingen per schijf voor het besturings systeem/sec.|Lees bewerkingen op de besturingssysteem schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Schrijf bewerkingen per schijf van het besturings systeem/SEC|Schrijf bewerkingen op de besturingssysteem schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS tijdens de controle periode voor de besturingssysteem schijf schrijven vanaf één schijf|Er zijn geen dimensies|
+|Wachtrijomvang per besturingssysteemschijf|WACHTRIJ diepte van de besturingssysteem schijf (afgeschaft)|Count|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|Er zijn geen dimensies|
+|Gegevens schijf gelezen bytes per seconde|Gegevens schijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode|LUN|
+|Geschreven bytes per seconde gegevens schijf|Geschreven bytes per seconde (preview) gegevens schijf|CountPerSecond|Average|Tijdens de controle periode naar één schijf geschreven bytes per seconde|LUN|
+|Lees bewerkingen op de gegevens schijf per seconde|Lees bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode|LUN|
+|Schrijf bewerkingen op de gegevens schijf per seconde|Schrijf bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode van één schijf schrijven|LUN|
+|Wachtrijlengte van gegevensschijf|Wachtrij diepte van gegevens schijf (preview-versie)|Count|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN|
+|BESTURINGSSYSTEEM schijf gelezen bytes per seconde|BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|Geschreven bytes per seconde tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Lees bewerkingen van de besturingssysteem schijf per seconde|Lees bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode voor de besturingssysteem schijf schrijven vanaf één schijf|Er zijn geen dimensies|
+|Wachtrijlengte van besturingssysteemschijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Count|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|Er zijn geen dimensies|
+|Binnenkomende stromen|Binnenkomende stromen (preview-versie)|Count|Average|Inkomende stromen zijn het aantal huidige stromen in de binnenkomende richting (verkeer dat wordt verzonden naar de virtuele machine)|Er zijn geen dimensies|
+|Uitgaande stromen|Uitgaande stromen (preview-versie)|Count|Average|Uitgaande stromen zijn het aantal huidige stromen in de uitgaande richting (verkeer dat uit de virtuele machine wordt verzonden)|Er zijn geen dimensies|
+|Maximale maakfrequentie van binnenkomende stromen|Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)|CountPerSecond|Average|Het maximale aantal inkomende stromen (verkeer dat wordt verzonden naar de virtuele machine)|Er zijn geen dimensies|
+|Maximale maakfrequentie van uitgaande stromen|Maximum aantal uitgaande stromen voor maken (preview)|CountPerSecond|Average|De maximale aanmaak frequentie van uitgaande stromen (verkeer dat uit de virtuele machine wordt verzonden)|Er zijn geen dimensies|
+|Treffer voor Premium data-schijf cache lezen|Cache geheugen voor lezen van Premium-gegevens schijf (preview-versie)|Percent|Average|Treffer voor Premium data-schijf cache lezen|LUN|
+|Lees missers cache Premium-gegevens schijf|Cache voor lezen van Premium-gegevens schijf (preview)|Percent|Average|Lees missers cache Premium-gegevens schijf|LUN|
+|Treffer voor Premium-besturingssysteem schijf cache lezen|Treffer voor het lezen van een Premium-besturingssysteem schijf cache (preview-versie)|Percent|Average|Treffer voor Premium-besturingssysteem schijf cache lezen|Er zijn geen dimensies|
+|Leesmij voor Premium-besturingssysteem schijf cache lezen|Schijf cache voor Premium-Lees-missers (preview-versie)|Percent|Average|Leesmij voor Premium-besturingssysteem schijf cache lezen|Er zijn geen dimensies|
+|Netwerk inkomend - totaal|Netwerk inkomend - totaal|Bytes|Totaal|Het aantal ontvangen bytes op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|Er zijn geen dimensies|
+|Netwerk uitgaand - totaal|Netwerk uitgaand - totaal|Bytes|Totaal|Het aantal uitgaande bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|Er zijn geen dimensies|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |Percentage CPU|Percentage CPU|Procent|Gemiddeld|Het percentage toegewezen berekeningseenheden dat momenteel door de virtuele machine(s) wordt gebruikt|VMName|
-|Netwerk in|Netwerk inkomend - factureerbaar|Bytes|Totaal|Het aantal ontvangen factureerbare bytes op alle netwerkinterfaces door de virtuele machine(s) (binnenkomend verkeer)|VMName|
-|Netwerk uit|Netwerk uitgaand - factureerbaar|Bytes|Totaal|Het aantal verzonden factureerbare bytes op alle netwerkinterfaces door de virtuele machine(s) (uitgaand verkeer)|VMName|
-|Gelezen bytes op de schijf|Gelezen bytes op de schijf|Bytes|Totaal|Het aantal vanaf schijf gelezen bytes tijdens de bewakingsperiode|VMName|
-|Geschreven bytes op de schijf|Geschreven bytes op de schijf|Bytes|Totaal|Het aantal naar schijf geschreven bytes tijdens de bewakingsperiode|VMName|
-|Leesbewerkingen op de schijf/seconde|Leesbewerkingen op de schijf/seconde|CountPerSecond|Average|Gelezen IOP's op de schijf|VMName|
-|Schrijfbewerkingen op de schijf/seconde|Schrijfbewerkingen op de schijf/seconde|CountPerSecond|Average|Geschreven IOP's op de schijf|VMName|
-|Resterend CPU-tegoed|Resterend CPU-tegoed|Count|Average|Totale tegoed beschikbaar voor burst|Er zijn geen dimensies|
-|Verbruikt CPU-tegoed|Verbruikt CPU-tegoed|Count|Average|Totale tegoed gebruikt door de virtuele machine|Er zijn geen dimensies|
-|Per schijf gelezen bytes per seconde|Vanaf de gegevensschijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode|SlotId|
-|Per schijf geschreven bytes per seconde|Naar de gegevensschijf geschreven bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode|SlotId|
-|Leesbewerkingen per schijf per seconde|Leesbewerkingen op de gegevensschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode|SlotId|
-|Schrijfbewerkingen per schijf per seconde|Schrijfbewerkingen op de gegevensschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode|SlotId|
-|Wachtrijomvang per schijf|Wachtrijomvang van de gegevensschijf (afgeschaft)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de gegevensschijf|SlotId|
-|Per besturingssysteemschijf gelezen bytes per seconde|Vanaf de besturingssysteemschijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Per besturingssysteemschijf geschreven bytes per seconde|Naar de besturingssysteemschijf geschreven bytes per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Leesbewerkingen per besturingssysteemschijf per seconde|Leesbewerkingen op de besturingssysteemschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Schrijfbewerkingen per besturingssysteemschijf per seconde|Schrijfbewerkingen op de besturingssysteemschijf per seconde (afgeschaft)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Wachtrijomvang per besturingssysteemschijf|Wachtrijomvang van de besturingssysteemschijf (afgeschaft)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de besturingssysteemschijf|Er zijn geen dimensies|
-|Vanaf de gegevensschijf gelezen bytes per seconde|Van de gegevensschijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode|LUN, VMName|
-|Naar de gegevensschijf geschreven bytes per seconde|Naar de gegevensschijf geschreven bytes per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode|LUN, VMName|
-|Leesbewerkingen op de gegevensschijf per seconde|Leesbewerkingen op de gegevensschijf per seconde (preview)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode|LUN, VMName|
-|Schrijfbewerkingen op de gegevensschijf per seconde|Schrijfbewerkingen op de gegevensschijf per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode|LUN, VMName|
-|Wachtrijlengte van gegevensschijf|Wachtrijlengte van gegevensschijf (preview)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de gegevensschijf|LUN, VMName|
-|Vanaf de besturingssysteemschijf gelezen bytes per seconde|Van de besturingssysteemschijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Het aantal vanaf één schijf gelezen bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|VMName|
-|Naar de besturingssysteemschijf geschreven bytes per seconde|Naar de besturingssysteemschijf geschreven bytes per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven bytes per seconde tijdens de bewakingsperiode voor de besturingssysteemschijf|VMName|
-|Leesbewerkingen op de besturingssysteemschijf per seconde|Leesbewerkingen op de besturingssysteemschijf per seconde (preview)|CountPerSecond|Average|Het aantal van één schijf gelezen IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|VMName|
-|Schrijfbewerkingen op de besturingssysteemschijf per seconde|Schrijfbewerkingen op de besturingssysteemschijf per seconde (preview)|CountPerSecond|Average|Het aantal naar één schijf geschreven IOPS tijdens de bewakingsperiode voor de besturingssysteemschijf|VMName|
-|Wachtrijlengte van besturingssysteemschijf|Wachtrijlengte van besturingssysteemschijf (preview)|Count|Average|Wachtrijomvang (of wachtrijlengte) voor de besturingssysteemschijf|VMName|
-|Binnenkomende stromen|Binnenkomende stromen (preview-versie)|Count|Average|Binnenkomende stromen is het aantal huidige stromen in de binnenkomende richting (verkeer dat naar de virtuele machine gaat)|VMName|
-|Uitgaande stromen|Uitgaande stromen (preview-versie)|Count|Average|Uitgaande stromen is het aantal huidige stromen in de uitgaande richting (verkeer dat uit de virtuele machine gaat)|VMName|
-|Maximale maakfrequentie van binnenkomende stromen|Maximale maakfrequentie van binnenkomende stromen (preview)|CountPerSecond|Average|De maximale maakfrequentie van binnenkomende stromen (verkeer dat naar de virtuele machine gaat)|VMName|
-|Maximale maakfrequentie van uitgaande stromen|Maximale maakfrequentie van uitgaande stromen (preview)|CountPerSecond|Average|De maximale maakfrequentie van uitgaande stromen (verkeer dat uit de virtuele machine komt)|VMName|
-|Cachetreffers voor lezen van Premium-gegevensschijf|Cachetreffers voor lezen van Premium-gegevensschijf (preview)|Percent|Average|Cachetreffers voor lezen van Premium-gegevensschijf|LUN, VMName|
-|Cachemissers voor lezen van Premium-gegevensschijf|Cachemissers voor lezen van Premium-gegevensschijf (preview)|Percent|Average|Cachemissers voor lezen van Premium-gegevensschijf|LUN, VMName|
-|Cachetreffers voor lezen van Premium-besturingssysteemschijf|Cachetreffers voor lezen van Premium-besturingssysteemschijf (preview)|Percent|Average|Cachetreffers voor lezen van Premium-besturingssysteemschijf|VMName|
-|Cachemissers voor lezen van Premium-besturingssysteemschijf|Cachemissers voor lezen van Premium-besturingssysteemschijf (preview)|Percent|Average|Cachemissers voor lezen van Premium-besturingssysteemschijf|VMName|
-|Netwerk inkomend - totaal|Netwerk inkomend - totaal|Bytes|Totaal|Het aantal ontvangen bytes op alle netwerkinterfaces door de virtuele machine(s) (binnenkomend verkeer)|VMName|
-|Netwerk uitgaand - totaal|Netwerk uitgaand - totaal|Bytes|Totaal|Het aantal verzonden bytes op alle netwerkinterfaces door de virtuele machine(s) (uitgaand verkeer)|VMName|
+|Netwerk in|Netwerk inkomend - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes dat is ontvangen op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|VMName|
+|Netwerk uit|Netwerk uitgaand - factureerbaar|Bytes|Totaal|Het aantal factureer bare bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|VMName|
+|Gelezen bytes op de schijf|Gelezen bytes op de schijf|Bytes|Totaal|Gelezen bytes van de schijf tijdens de controle periode|VMName|
+|Geschreven bytes op de schijf|Geschreven bytes op de schijf|Bytes|Totaal|Naar schijf geschreven bytes tijdens de controle periode|VMName|
+|Lees bewerkingen op de schijf per seconde|Lees bewerkingen op de schijf per seconde|CountPerSecond|Average|Gelezen IOP's op de schijf|VMName|
+|Schrijf bewerkingen op de schijf per seconde|Schrijf bewerkingen op de schijf per seconde|CountPerSecond|Average|Geschreven IOP's op de schijf|VMName|
+|Resterend CPU-tegoed|Resterend CPU-tegoed|Count|Average|Totaal aantal beschik bare tegoeden voor burst|Er zijn geen dimensies|
+|Verbruikt CPU-tegoed|Verbruikt CPU-tegoed|Count|Average|Totaal aantal tegoeden dat door de virtuele machine wordt verbruikt|Er zijn geen dimensies|
+|Per schijf gelezen bytes/sec.|Gegevens schijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode|SlotId|
+|Schrijf bewerkingen per schijf/sec.|Gegevens schijf schrijf bewerkingen in bytes per seconde (afgeschaft)|CountPerSecond|Average|Tijdens de controle periode naar één schijf geschreven bytes per seconde|SlotId|
+|Lees bewerkingen per schijf/sec.|Lees bewerkingen op de gegevens schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode|SlotId|
+|Schrijf bewerkingen per schijf/SEC|Schrijf bewerkingen op de gegevens schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS tijdens de controle periode van één schijf schrijven|SlotId|
+|Wachtrijomvang per schijf|WACHTRIJ diepte van de gegevens schijf (afgeschaft)|Count|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|SlotId|
+|BESTURINGSSYSTEEM per schijf gelezen bytes per seconde|BESTURINGSSYSTEEM schijf gelezen bytes per seconde (afgeschaft)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Per schijf geschreven bytes/sec.|BESTURINGSSYSTEEM schijf schrijf bewerkingen in bytes per seconde (afgeschaft)|CountPerSecond|Average|Geschreven bytes per seconde tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Lees bewerkingen per schijf voor het besturings systeem/sec.|Lees bewerkingen op de besturingssysteem schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode voor de besturingssysteem schijf|Er zijn geen dimensies|
+|Schrijf bewerkingen per schijf van het besturings systeem/SEC|Schrijf bewerkingen op de besturingssysteem schijf per seconde (afgeschaft)|CountPerSecond|Average|IOPS tijdens de controle periode voor de besturingssysteem schijf schrijven vanaf één schijf|Er zijn geen dimensies|
+|Wachtrijomvang per besturingssysteemschijf|WACHTRIJ diepte van de besturingssysteem schijf (afgeschaft)|Count|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|Er zijn geen dimensies|
+|Gegevens schijf gelezen bytes per seconde|Gegevens schijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode|LUN, VMName|
+|Geschreven bytes per seconde gegevens schijf|Geschreven bytes per seconde (preview) gegevens schijf|CountPerSecond|Average|Tijdens de controle periode naar één schijf geschreven bytes per seconde|LUN, VMName|
+|Lees bewerkingen op de gegevens schijf per seconde|Lees bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode|LUN, VMName|
+|Schrijf bewerkingen op de gegevens schijf per seconde|Schrijf bewerkingen op de gegevens schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode van één schijf schrijven|LUN, VMName|
+|Wachtrijlengte van gegevensschijf|Wachtrij diepte van gegevens schijf (preview-versie)|Count|Average|Wachtrij diepte van gegevens schijf (of wachtrij lengte)|LUN, VMName|
+|BESTURINGSSYSTEEM schijf gelezen bytes per seconde|BESTURINGSSYSTEEM schijf gelezen bytes per seconde (preview)|CountPerSecond|Average|Gelezen bytes per seconde van één schijf tijdens de controle periode voor de besturingssysteem schijf|VMName|
+|Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|Geschreven bytes per seconde tijdens de controle periode voor de besturingssysteem schijf|VMName|
+|Lees bewerkingen van de besturingssysteem schijf per seconde|Lees bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS lezen vanaf één schijf tijdens de controle periode voor de besturingssysteem schijf|VMName|
+|Schrijf bewerkingen op de besturingssysteem schijf per seconde|Schrijf bewerkingen op de besturingssysteem schijf per seconde (preview)|CountPerSecond|Average|IOPS tijdens de controle periode voor de besturingssysteem schijf schrijven vanaf één schijf|VMName|
+|Wachtrijlengte van besturingssysteemschijf|Wachtrij diepte van de besturingssysteem schijf (preview-versie)|Count|Average|Wachtrij diepte van het besturings systeem (of wachtrij lengte)|VMName|
+|Binnenkomende stromen|Binnenkomende stromen (preview-versie)|Count|Average|Inkomende stromen zijn het aantal huidige stromen in de binnenkomende richting (verkeer dat wordt verzonden naar de virtuele machine)|VMName|
+|Uitgaande stromen|Uitgaande stromen (preview-versie)|Count|Average|Uitgaande stromen zijn het aantal huidige stromen in de uitgaande richting (verkeer dat uit de virtuele machine wordt verzonden)|VMName|
+|Maximale maakfrequentie van binnenkomende stromen|Maximum aantal aanmaak snelheden inkomende stromen (preview-versie)|CountPerSecond|Average|Het maximale aantal inkomende stromen (verkeer dat wordt verzonden naar de virtuele machine)|VMName|
+|Maximale maakfrequentie van uitgaande stromen|Maximum aantal uitgaande stromen voor maken (preview)|CountPerSecond|Average|De maximale aanmaak frequentie van uitgaande stromen (verkeer dat uit de virtuele machine wordt verzonden)|VMName|
+|Treffer voor Premium data-schijf cache lezen|Cache geheugen voor lezen van Premium-gegevens schijf (preview-versie)|Percent|Average|Treffer voor Premium data-schijf cache lezen|LUN, VMName|
+|Lees missers cache Premium-gegevens schijf|Cache voor lezen van Premium-gegevens schijf (preview)|Percent|Average|Lees missers cache Premium-gegevens schijf|LUN, VMName|
+|Treffer voor Premium-besturingssysteem schijf cache lezen|Treffer voor het lezen van een Premium-besturingssysteem schijf cache (preview-versie)|Percent|Average|Treffer voor Premium-besturingssysteem schijf cache lezen|VMName|
+|Leesmij voor Premium-besturingssysteem schijf cache lezen|Schijf cache voor Premium-Lees-missers (preview-versie)|Percent|Average|Leesmij voor Premium-besturingssysteem schijf cache lezen|VMName|
+|Netwerk inkomend - totaal|Netwerk inkomend - totaal|Bytes|Totaal|Het aantal ontvangen bytes op alle netwerk interfaces door de virtuele machine (s) (binnenkomend verkeer)|VMName|
+|Netwerk uitgaand - totaal|Netwerk uitgaand - totaal|Bytes|Totaal|Het aantal uitgaande bytes op alle netwerk interfaces door de virtuele machine (s) (uitgaand verkeer)|VMName|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|CpuUsage|CPU-gebruik|Count|Average|CPU-gebruik op alle kerngeheugens in millicores.|containerName|
-|MemoryUsage|Geheugengebruik|Bytes|Average|Totaal geheugengebruik in bytes.|containerName|
-|NetworkBytesReceivedPerSecond|Netwerkbytes ontvangen per seconde|Bytes|Average|Het aantal bytes dat het netwerk per seconde heeft ontvangen.|Er zijn geen dimensies|
-|NetworkBytesTransmittedPerSecond|Netwerkbytes verzonden per seconde|Bytes|Average|Het aantal bytes dat het netwerk per seconde heeft verzonden.|Er zijn geen dimensies|
+|CpuUsage|CPU-gebruik|Count|Average|CPU-gebruik op alle kernen in millicores.|containerName|
+|MemoryUsage|Geheugengebruik|Bytes|Average|Totaal geheugen gebruik in bytes.|containerName|
+|NetworkBytesReceivedPerSecond|Netwerkbytes ontvangen per seconde|Bytes|Average|Het netwerk ontvangen bytes per seconde.|Er zijn geen dimensies|
+|NetworkBytesTransmittedPerSecond|Netwerkbytes verzonden per seconde|Bytes|Average|Het netwerk aantal verzonden bytes per seconde.|Er zijn geen dimensies|
 
 ## <a name="microsoftcontainerregistryregistries"></a>Micro soft. ContainerRegistry/registers
 
@@ -523,18 +523,18 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|NICReadThroughput|Leesdoorvoer (netwerk)|BytesPerSecond|Average|De leesdoorvoer van de netwerkinterface op het apparaat in de rapportageperiode voor alle volumes in de gateway.|InstanceName|
-|NICWriteThroughput|Schrijfdoorvoer (netwerk)|BytesPerSecond|Average|De schrijfdoorvoer van de netwerkinterface op het apparaat in de rapportageperiode voor alle volumes in de gateway.|InstanceName|
-|CloudReadThroughputPerShare|Downloaddoorvoer cloud (share)|BytesPerSecond|Average|De downloaddoorvoer naar Azure vanaf een share tijdens de rapportageperiode.|Delen|
-|CloudUploadThroughputPerShare|Uploaddoorvoer cloud (share)|BytesPerSecond|Average|De uploaddoorvoer naar Azure vanaf een share tijdens de rapportageperiode.|Delen|
-|BytesUploadedToCloudPerShare|Geüploade cloudbytes (share)|Bytes|Average|Het totale aantal bytes dat naar Azure is geüpload vanaf een share tijdens de rapportageperiode.|Delen|
+|NICReadThroughput|Lees doorvoer (netwerk)|BytesPerSecond|Average|De Lees doorvoer van de netwerk interface op het apparaat in de rapportage periode voor alle volumes in de gateway.|InstanceName|
+|NICWriteThroughput|Schrijf doorvoer (netwerk)|BytesPerSecond|Average|De schrijf doorvoer van de netwerk interface op het apparaat in de rapportage periode voor alle volumes in de gateway.|InstanceName|
+|CloudReadThroughputPerShare|Door Voer van Cloud downloaden (delen)|BytesPerSecond|Average|De door Voer van downloaden naar Azure vanaf een share tijdens de rapportage periode.|Delen|
+|CloudUploadThroughputPerShare|Upload doorvoer van Cloud (delen)|BytesPerSecond|Average|De upload doorvoer naar Azure vanaf een share tijdens de rapportage periode.|Delen|
+|BytesUploadedToCloudPerShare|Geüploade Cloud bytes (delen)|Bytes|Average|Het totaal aantal bytes dat is geüpload naar Azure vanaf een share tijdens de rapportage periode.|Delen|
 |TotalCapacity|Totale capaciteit|Bytes|Average|Totale capaciteit|Er zijn geen dimensies|
-|Availablecapacity;)|Beschikbare capaciteit|Bytes|Average|De beschikbare capaciteit in bytes tijdens de rapportageperiode.|Er zijn geen dimensies|
-|CloudUploadThroughput|Uploaddoorvoer cloud|BytesPerSecond|Average|De uploaddoorvoer van de cloud naar Azure tijdens de rapportageperiode.|Er zijn geen dimensies|
-|CloudReadThroughput|Downloaddoorvoer cloud|BytesPerSecond|Average|De downloaddoorvoer van de cloud naar Azure tijdens de rapportageperiode.|Er zijn geen dimensies|
-|BytesUploadedToCloud|Geüploade cloudbytes (apparaat)|Bytes|Average|Het totale aantal bytes dat naar Azure is geüpload vanaf een apparaat tijdens de rapportageperiode.|Er zijn geen dimensies|
-|HyperVVirtualProcessorUtilization|Rand Compute - CPU-Percentage|Percent|Average|Percentage CPU-gebruik|InstanceName|
-|HyperVMemoryUtilization|Compute - geheugengebruik rand|Percent|Average|Hoeveelheid RAM in gebruik|InstanceName|
+|Availablecapacity;)|Beschikbare capaciteit|Bytes|Average|De beschik bare capaciteit in bytes tijdens de rapportage periode.|Er zijn geen dimensies|
+|CloudUploadThroughput|Uploaddoorvoer cloud|BytesPerSecond|Average|De upload doorvoer van de Cloud naar Azure tijdens de rapportage periode.|Er zijn geen dimensies|
+|CloudReadThroughput|Downloaddoorvoer cloud|BytesPerSecond|Average|De door Voer van de Cloud downloadt naar Azure tijdens de rapportage periode.|Er zijn geen dimensies|
+|BytesUploadedToCloud|Geüploade Cloud bytes (apparaat)|Bytes|Average|Het totale aantal bytes dat tijdens de rapportage periode naar Azure wordt geüpload vanaf een apparaat.|Er zijn geen dimensies|
+|HyperVVirtualProcessorUtilization|Edge Compute-percentage CPU|Percent|Average|Percentage CPU-gebruik|InstanceName|
+|HyperVMemoryUtilization|Edge Compute-geheugen gebruik|Percent|Average|Hoeveelheid RAM in gebruik|InstanceName|
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
@@ -785,22 +785,22 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Geslaagde aanvragen|Count|Totaal|Voltooide aanvragen voor Microsoft.EventHub.|EntityName |
-|ServerErrors|Serverfouten.|Count|Totaal|Serverfouten voor Microsoft.EventHub.|EntityName |
-|UserErrors|Gebruikersfouten.|Count|Totaal|Gebruikersfouten voor Microsoft.EventHub.|EntityName |
-|QuotaExceededErrors|Fout met overschreden quotum.|Count|Totaal|Fout met overschreden quotum voor Microsoft.EventHub.|EntityName |
-|ThrottledRequests|Beperkte aanvragen.|Count|Totaal|Beperkte aanvragen voor Microsoft.EventHub.|EntityName |
-|IncomingRequests|Binnenkomende aanvragen|Count|Totaal|Binnenkomende aanvragen voor Microsoft.EventHub.|EntityName|
-|IncomingMessages|Binnenkomende berichten|Count|Totaal|Binnenkomende berichten voor Microsoft.EventHub.|EntityName|
-|OutgoingMessages|Uitgaande berichten|Count|Totaal|Uitgaande berichten voor Microsoft.EventHub.|EntityName|
-|IncomingBytes|Binnenkomende bytes.|Bytes|Totaal|Binnenkomende bytes voor Microsoft.EventHub.|EntityName|
-|OutgoingBytes|Uitgaande bytes.|Bytes|Totaal|Uitgaande bytes voor Microsoft.EventHub.|EntityName|
-|ActiveConnections|ActiveConnections|Count|Average|Totaal aantal actieve verbindingen voor Microsoft.EventHub.|Er zijn geen dimensies|
-|ConnectionsOpened|Geopende verbindingen.|Count|Average|Geopende verbindingen voor Microsoft.EventHub.|EntityName|
-|ConnectionsClosed|Gesloten verbindingen.|Count|Average|Gesloten verbindingen voor Microsoft.EventHub.|EntityName|
-|CaptureBacklog|Achterstand vastleggen.|Count|Totaal|Achterstand vastleggen voor Microsoft.EventHub.|EntityName|
-|CapturedMessages|Vastgelegde berichten.|Count|Totaal|Vastgelegde berichten voor Microsoft.EventHub.|EntityName|
-|CapturedBytes|Vastgelegde bytes.|Bytes|Totaal|Vastgelegde bytes voor Microsoft.EventHub.|EntityName|
+|SuccessfulRequests|Geslaagde aanvragen|Count|Totaal|Geslaagde aanvragen voor micro soft. EventHub.|EntityName |
+|ServerErrors|Server fouten.|Count|Totaal|Server fouten voor micro soft. EventHub.|EntityName |
+|UserErrors|Gebruikers fouten.|Count|Totaal|Gebruikers fouten voor micro soft. EventHub.|EntityName |
+|QuotaExceededErrors|Quota overschreden fouten.|Count|Totaal|Quotum overschrijdt fouten voor micro soft. EventHub.|EntityName |
+|ThrottledRequests|Vertraagde aanvragen.|Count|Totaal|Beperkte aanvragen voor micro soft. EventHub.|EntityName |
+|IncomingRequests|Binnenkomende aanvragen|Count|Totaal|Binnenkomende aanvragen voor micro soft. EventHub.|EntityName|
+|IncomingMessages|Binnenkomende berichten|Count|Totaal|Binnenkomende berichten voor micro soft. EventHub.|EntityName|
+|OutgoingMessages|Uitgaande berichten|Count|Totaal|Uitgaande berichten voor micro soft. EventHub.|EntityName|
+|IncomingBytes|Binnenkomende bytes.|Bytes|Totaal|Binnenkomende bytes voor micro soft. EventHub.|EntityName|
+|OutgoingBytes|Uitgaande bytes.|Bytes|Totaal|Uitgaande bytes voor micro soft. EventHub.|EntityName|
+|ActiveConnections|ActiveConnections|Count|Average|Totaal aantal actieve verbindingen voor micro soft. EventHub.|Er zijn geen dimensies|
+|ConnectionsOpened|Geopende verbindingen.|Count|Average|Geopende verbindingen voor micro soft. EventHub.|EntityName|
+|ConnectionsClosed|Verbindingen gesloten.|Count|Average|Gesloten verbindingen voor micro soft. EventHub.|EntityName|
+|CaptureBacklog|Achterstand vastleggen.|Count|Totaal|Achterstand vastleggen voor micro soft. EventHub.|EntityName|
+|CapturedMessages|Vastgelegde berichten.|Count|Totaal|Vastgelegde berichten voor micro soft. EventHub.|EntityName|
+|CapturedBytes|Vastgelegde bytes.|Bytes|Totaal|Vastgelegde bytes voor micro soft. EventHub.|EntityName|
 |Size|Size|Bytes|Average|Grootte van een EventHub in bytes.|EntityName|
 |INREQS|Binnenkomende aanvragen (afgeschaft)|Count|Totaal|Totaal aantal binnenkomende verzend aanvragen voor een naam ruimte (afgeschaft)|Er zijn geen dimensies|
 |SUCCREQ|Geslaagde aanvragen (afgeschaft)|Count|Totaal|Totaal aantal geslaagde aanvragen voor een naam ruimte (afgeschaft)|Er zijn geen dimensies|
@@ -809,7 +809,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |INTERER|Interne server fouten (afgeschaft)|Count|Totaal|Totaal aantal interne server fouten voor een naam ruimte (afgeschaft)|Er zijn geen dimensies|
 |MISCERR|Andere fouten (afgeschaft)|Count|Totaal|Totaal aantal mislukte aanvragen voor een naam ruimte (afgeschaft)|Er zijn geen dimensies|
 |INMSGS|Binnenkomende berichten (afgeschaft) (afgeschaft)|Count|Totaal|Totaal aantal inkomende berichten voor een naam ruimte. Deze metriek is afgeschaft. Gebruik in plaats daarvan de metriek van binnenkomende berichten (afgeschaft)|Er zijn geen dimensies|
-|EHINMSGS|Binnenkomende berichten (afgeschaft)|Count|Totaal|Totaal aantal inkomende berichten voor een naam ruimte (afgeschaft)|Er zijn geen dimensies|
+|EHINMSGS|Inkomende berichten (afgeschaft)|Count|Totaal|Totaal aantal inkomende berichten voor een naam ruimte (afgeschaft)|Er zijn geen dimensies|
 |OUTMSGS|Uitgaande berichten (afgeschaft) (afgeschaft)|Count|Totaal|Totaal aantal uitgaande berichten voor een naam ruimte. Deze metriek is afgeschaft. Gebruik in plaats daarvan de metrische gegevens van uitgaande berichten (afgeschaft)|Er zijn geen dimensies|
 |EHOUTMSGS|Uitgaande berichten (afgeschaft)|Count|Totaal|Totaal aantal uitgaande berichten voor een naam ruimte (afgeschaft)|Er zijn geen dimensies|
 |EHINMBS|Binnenkomende bytes (afgeschaft) (afgeschaft)|Bytes|Totaal|Door Voer van binnenkomende berichten van Event hub voor een naam ruimte. Deze metriek is afgeschaft. Gebruik in plaats daarvan de metrische gegevens over binnenkomende bytes (afgeschaft)|Er zijn geen dimensies|
@@ -824,24 +824,24 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Geslaagde aanvragen (preview-versie)|Count|Totaal|Voltooide aanvragen voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|ServerErrors|Serverfouten. (Preview-versie)|Count|Totaal|Serverfouten voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|UserErrors|Gebruikersfouten. (Preview-versie)|Count|Totaal|Gebruikersfouten voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|QuotaExceededErrors|Fout met overschreden quotum. (Preview-versie)|Count|Totaal|Fout met overschreden quotum voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|ThrottledRequests|Beperkte aanvragen. (Preview-versie)|Count|Totaal|Beperkte aanvragen voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|IncomingRequests|Inkomende aanvragen (preview-versie)|Count|Totaal|Binnenkomende aanvragen voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|IncomingMessages|Inkomende berichten (preview-versie)|Count|Totaal|Binnenkomende berichten voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|OutgoingMessages|Uitgaande berichten (preview-versie)|Count|Totaal|Uitgaande berichten voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|IncomingBytes|Binnenkomende bytes. (Preview-versie)|Bytes|Totaal|Binnenkomende bytes voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|OutgoingBytes|Uitgaande bytes. (Preview-versie)|Bytes|Totaal|Uitgaande bytes voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|ActiveConnections|ActiveConnection (preview-versie)|Count|Average|Totaal aantal actieve verbindingen voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|ConnectionsOpened|Geopende verbindingen. (Preview-versie)|Count|Average|Geopende verbindingen voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|ConnectionsClosed|Gesloten verbindingen. (Preview-versie)|Count|Average|Gesloten verbindingen voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|CaptureBacklog|Achterstand vastleggen. (Preview-versie)|Count|Totaal|Achterstand vastleggen voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|CapturedMessages|Vastgelegde berichten. (Preview-versie)|Count|Totaal|Vastgelegde berichten voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|CapturedBytes|Vastgelegde bytes. (Preview-versie)|Bytes|Totaal|Vastgelegde bytes voor Microsoft.EventHub. (Preview-versie)|Er zijn geen dimensies|
-|CPU|CPU (preview-versie)|Percent|Maximum|CPU-gebruik voor het Event Hub-cluster als percentage|Role|
-|AvailableMemory|Beschikbaar geheugen (preview-versie)|Count|Maximum|Beschikbaar geheugen voor het Event Hub-cluster in bytes|Role|
+|SuccessfulRequests|Geslaagde aanvragen (preview-versie)|Count|Totaal|Geslaagde aanvragen voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|ServerErrors|Server fouten. (Preview)|Count|Totaal|Server fouten voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|UserErrors|Gebruikers fouten. (Preview)|Count|Totaal|Gebruikers fouten voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|QuotaExceededErrors|Quota overschreden fouten. (Preview)|Count|Totaal|Quotum overschrijdt fouten voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|ThrottledRequests|Vertraagde aanvragen. (Preview)|Count|Totaal|Beperkte aanvragen voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|IncomingRequests|Inkomende aanvragen (preview-versie)|Count|Totaal|Binnenkomende aanvragen voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|IncomingMessages|Inkomende berichten (preview-versie)|Count|Totaal|Binnenkomende berichten voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|OutgoingMessages|Uitgaande berichten (preview-versie)|Count|Totaal|Uitgaande berichten voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|IncomingBytes|Binnenkomende bytes. (Preview)|Bytes|Totaal|Binnenkomende bytes voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|OutgoingBytes|Uitgaande bytes. (Preview)|Bytes|Totaal|Uitgaande bytes voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|ActiveConnections|ActiveConnection (preview-versie)|Count|Average|Totaal aantal actieve verbindingen voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|ConnectionsOpened|Geopende verbindingen. (Preview)|Count|Average|Geopende verbindingen voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|ConnectionsClosed|Verbindingen gesloten. (Preview)|Count|Average|Gesloten verbindingen voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|CaptureBacklog|Achterstand vastleggen. (Preview)|Count|Totaal|Achterstand vastleggen voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|CapturedMessages|Vastgelegde berichten. (Preview)|Count|Totaal|Vastgelegde berichten voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|CapturedBytes|Vastgelegde bytes. (Preview)|Bytes|Totaal|Vastgelegde bytes voor micro soft. EventHub. (Preview)|Er zijn geen dimensies|
+|CPU|CPU (preview-versie)|Percent|Maximum|CPU-gebruik voor het event hub-cluster als een percentage|Role|
+|AvailableMemory|Beschikbaar geheugen (preview-versie)|Count|Maximum|Beschikbaar geheugen voor het event hub-cluster in bytes|Role|
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
 
@@ -855,10 +855,10 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Waargenomen metrische waarde|Count|Average|De waarde die is berekend door automatische schaalaanpassing wanneer deze is uitgevoerd|MetricTriggerSource|
-|MetricThreshold|Drempel voor een metrische waarde|Count|Average|De geconfigureerde drempelwaarde voor automatische schaalaanpassing wanneer automatische schaalaanpassing is uitgevoerd.|MetricTriggerRule|
-|ObservedCapacity|Waargenomen capaciteit|Count|Average|De capaciteit die is gerapporteerd aan automatische schaalaanpassing wanneer dit is uitgevoerd.|Er zijn geen dimensies|
-|ScaleActionsInitiated|Schaalacties geactiveerd|Count|Totaal|De richting van de schaalbewerking.|ScaleDirection|
+|ObservedMetricValue|Waargenomen metrische waarde|Count|Average|De waarde die wordt berekend door automatisch schalen wanneer deze wordt uitgevoerd|MetricTriggerSource|
+|MetricThreshold|Drempel voor een metrische waarde|Count|Average|De geconfigureerde drempel waarde voor automatisch schalen wanneer automatisch schalen is uitgevoerd.|MetricTriggerRule|
+|ObservedCapacity|Waargenomen capaciteit|Count|Average|De capaciteit die is gerapporteerd voor automatisch schalen wanneer deze wordt uitgevoerd.|Er zijn geen dimensies|
+|ScaleActionsInitiated|Schaalacties geactiveerd|Count|Totaal|De richting van de schaal bewerking.|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
@@ -866,44 +866,44 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|availabilityResults/availabilityPercentage|Beschikbaarheid|Procent|Average|Percentage van voltooide beschikbaarheidstesten|availabilityResult/naam, availabilityResult/locatie|
+|availabilityResults/availabilityPercentage|Beschikbaarheid|Procent|Average|Percentage voltooide beschikbaarheids tests|availabilityResult/naam, availabilityResult/locatie|
 |availabilityResults/aantal|Beschikbaarheidstesten|Count|Count|Aantal beschikbaarheidstesten|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
 |availabilityResults/duur|Duur beschikbaarheidstest|MilliSeconds|Average|Duur beschikbaarheidstest|availabilityResult/naam, availabilityResult/locatie, availabilityResult/geslaagd|
 |browserTimings/networkDuration|Netwerkverbindingstijd voor laden van pagina|MilliSeconds|Average|Tijd tussen de gebruikers aanvraag en de netwerk verbinding. Inclusief DNS-Zoek-en transport verbinding.|Er zijn geen dimensies|
 |browserTimings/processingDuration|Verwerkingstijd client|MilliSeconds|Average|Tijd tussen het ontvangen van de laatste byte van een document totdat de DOM is geladen. Asynchrone aanvragen kunnen nog steeds worden verwerkt.|Er zijn geen dimensies|
-|browserTimings/receiveDuration|Reactietijd voor ontvangen|MilliSeconds|Average|Tijd tussen de eerste en de laatste byte of tot verbreking van de verbinding.|Er zijn geen dimensies|
-|browserTimings/sendDuration|Verzoektijd voor verzenden|MilliSeconds|Average|Tijd tussen netwerkverbinding en ontvangst van eerste byte.|Er zijn geen dimensies|
-|browserTimings/totalDuration|Laadtijd van browserpagina|MilliSeconds|Average|Tijd vanaf gebruikersaanvraag totdat DOM, opmaakmodellen, scripts en afbeeldingen zijn geladen.|Er zijn geen dimensies|
+|browserTimings/receiveDuration|Reactietijd voor ontvangen|MilliSeconds|Average|Tijd tussen de eerste en laatste bytes, of tot de verbinding wordt verbroken.|Er zijn geen dimensies|
+|browserTimings/sendDuration|Verzoektijd voor verzenden|MilliSeconds|Average|Tijd tussen netwerk verbinding en ontvangst van de eerste byte.|Er zijn geen dimensies|
+|browserTimings/totalDuration|Laadtijd van browserpagina|MilliSeconds|Average|Tijd van de gebruikers aanvraag totdat DOM, opmaak modellen, scripts en installatie kopieën worden geladen.|Er zijn geen dimensies|
 |afhankelijkheden/aantal|Afhankelijkheidsaanroepen|Count|Count|Aantal aanroepen van de toepassing naar externe bronnen.|afhankelijkheid/type, afhankelijkheid/requests, afhankelijkheid/geslaagd, bewerking/synthetisch, Cloud/roleInstance, Cloud/rolnaam|
 |afhankelijkheden/duur|Duur van afhankelijkheid|MilliSeconds|Average|Duur van de aanroepen van de toepassing naar externe bronnen.|afhankelijkheid/type, afhankelijkheid/requests, afhankelijkheid/geslaagd, bewerking/synthetisch, Cloud/roleInstance, Cloud/rolnaam|
-|afhankelijkheden/mislukt|Mislukte afhankelijkheidsaanroepen|Count|Count|Aantal mislukte afhankelijkheidsaanroepen van de toepassing naar externe resources.|afhankelijkheid/type, afhankelijkheid/requests, bewerking/synthetisch, Cloud/roleInstance, Cloud/rolnaam|
-|Page views/aantal|Paginaweergaven|Count|Count|Aantal paginaweergaven.|bewerking/synthetisch|
+|afhankelijkheden/mislukt|Mislukte afhankelijkheidsaanroepen|Count|Count|Aantal mislukte afhankelijkheids aanroepen van de toepassing naar externe bronnen.|afhankelijkheid/type, afhankelijkheid/requests, bewerking/synthetisch, Cloud/roleInstance, Cloud/rolnaam|
+|Page views/aantal|Paginaweergaven|Count|Count|Aantal pagina weergaven.|bewerking/synthetisch|
 |Page views/duur|Laadtijd voor paginaweergave|MilliSeconds|Average|Laadtijd voor paginaweergave|bewerking/synthetisch|
-|performanceCounters/requestExecutionTime|Uitvoeringstijd van de HTTP-aanvraag|MilliSeconds|Average|Uitvoeringstijd van de meest recente aanvraag.|Cloud-roleInstance|
-|Performance Counters/requestsInQueue|HTTP-aanvragen in de toepassingswachtrij|Count|Average|Lengte van de rij met toepassingsaanvragen.|Cloud-roleInstance|
-|performanceCounters/requestsPerSecond|HTTP-aanvraagsnelheid|CountPerSecond|Average|Snelheid per seconde van alle aanvragen aan de toepassing vanaf ASP.NET.|Cloud-roleInstance|
-|performanceCounters/exceptionsPerSecond|Aantal uitzonderingen|CountPerSecond|Average|Het aantal verwerkte en onverwerkte uitzonderingen dat is gerapporteerd aan Windows, inclusief .NET-uitzonderingen en onbeheerde uitzonderingen die zijn geconverteerd naar .NET-uitzonderingen.|Cloud-roleInstance|
-|performanceCounters/processIOBytesPerSecond|I/O-snelheid voor proces|BytesPerSecond|Average|Totaal aantal per seconde gelezen en naar bestanden, netwerk en apparaten geschreven bytes.|Cloud-roleInstance|
+|performanceCounters/requestExecutionTime|Uitvoeringstijd van de HTTP-aanvraag|MilliSeconds|Average|Uitvoerings tijd van de meest recente aanvraag.|Cloud-roleInstance|
+|Performance Counters/requestsInQueue|HTTP-aanvragen in de toepassingswachtrij|Count|Average|Lengte van de wachtrij voor toepassings aanvragen.|Cloud-roleInstance|
+|performanceCounters/requestsPerSecond|HTTP-aanvraagsnelheid|CountPerSecond|Average|Het aantal aanvragen voor de toepassing per seconde van ASP.NET.|Cloud-roleInstance|
+|performanceCounters/exceptionsPerSecond|Aantal uitzonderingen|CountPerSecond|Average|Aantal verwerkte en onverwerkte uitzonde ringen die worden gerapporteerd aan Windows, inclusief .NET-uitzonde ringen en onbeheerde uitzonde ringen die worden geconverteerd naar .NET-uitzonde ringen.|Cloud-roleInstance|
+|performanceCounters/processIOBytesPerSecond|I/O-snelheid voor proces|BytesPerSecond|Average|Totaal aantal in bestanden, netwerk en apparaten gelezen en geschreven bytes per seconde.|Cloud-roleInstance|
 |performanceCounters/processCpuPercentage|CPU voor proces|Percent|Average|Het percentage van de verstreken tijd dat alle proces threads de processor hebben gebruikt om instructies uit te voeren. Dit kan variëren tussen 0 en 100. Deze metrische gegevens duiden de prestaties van alleen het W3wp-proces aan.|Cloud-roleInstance|
-|performanceCounters/processorCpuPercentage|Processortijd|Percent|Average|Het tijdspercentage dat de processor spendeert aan niet-inactieve threads.|Cloud-roleInstance|
-|performanceCounters/memoryAvailableBytes|Beschikbaar geheugen|Bytes|Average|Fysiek geheugen dat direct beschikbaar is voor toewijzing aan een proces of voor systeemgebruik.|Cloud-roleInstance|
-|performanceCounters/processPrivateBytes|Proceseigen bytes|Bytes|Average|Geheugen exclusief toegewezen aan de processen van de gecontroleerde toepassing.|Cloud-roleInstance|
-|aanvragen/duur|Serverreactietijd|MilliSeconds|Average|Tijd tussen de ontvangst van een HTTP-aanvraag en het voltooien van het verzenden van de reactie.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
+|performanceCounters/processorCpuPercentage|Processortijd|Percent|Average|Het percentage tijd dat de processor spendeert aan niet-inactieve threads.|Cloud-roleInstance|
+|performanceCounters/memoryAvailableBytes|Beschikbaar geheugen|Bytes|Average|Fysiek geheugen dat direct beschikbaar is voor toewijzing aan een proces of voor systeem gebruik.|Cloud-roleInstance|
+|performanceCounters/processPrivateBytes|Proceseigen bytes|Bytes|Average|Geheugen dat exclusief wordt toegewezen aan de processen van de bewaakte toepassing.|Cloud-roleInstance|
+|aanvragen/duur|Serverreactietijd|MilliSeconds|Average|Tijd tussen het ontvangen van een HTTP-aanvraag en het volt ooien van het verzenden van het antwoord.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |aanvragen/aantal|Serveraanvragen|Count|Count|Aantal voltooide HTTP-aanvragen.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
 |aanvragen/mislukt|Mislukte aanvragen|Count|Count|Het aantal HTTP-aanvragen dat is gemarkeerd als mislukt. In de meeste gevallen zijn dit aanvragen met een antwoord code > = 400 en niet gelijk is aan 401.|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, Cloud/rolnaam|
 |aanvragen/frequentie|Aantal server aanvragen|CountPerSecond|Average|Aantal server aanvragen per seconde|aanvraag-requests, aanvraag-resultCode, bewerking/synthetisch, Cloud/roleInstance, aanvraag/geslaagd, Cloud/rolnaam|
-|uitzonde ringen/aantal|Uitzonderingen|Count|Count|Gecombineerd aantal niet-onderschepte uitzonderingen.|Cloud/rolnaam, Cloud/roleInstance, client/type|
-|uitzonde ringen/browser|Browseruitzonderingen|Count|Count|Aantal niet-onderschepte uitzonderingen in de browser.|Er zijn geen dimensies|
-|uitzonde ringen/server|Serveruitzonderingen|Count|Count|Aantal niet-onderschepte uitzonderingen in de servertoepassing.|Cloud/rolnaam, Cloud-roleInstance|
+|uitzonde ringen/aantal|Uitzonderingen|Count|Count|Totaal aantal niet-onderschepte uitzonde ringen.|Cloud/rolnaam, Cloud/roleInstance, client/type|
+|uitzonde ringen/browser|Browseruitzonderingen|Count|Count|Aantal niet-onderschepte uitzonde ringen dat in de browser wordt gegenereerd.|Er zijn geen dimensies|
+|uitzonde ringen/server|Serveruitzonderingen|Count|Count|Aantal niet-onderschepte uitzonde ringen dat is opgetreden in de server toepassing.|Cloud/rolnaam, Cloud-roleInstance|
 |traceringen/aantal|Traces|Count|Count|Aantal traceerdocumenten|Trace/severityLevel, Operation/synthetisch, Cloud/rolnaam, Cloud/roleInstance|
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|ServiceApiHit|Totaalaantal treffers service-API|Count|Count|Totaalaantal treffers voor service-API|ActivityType, ActivityName|
-|ServiceApiLatency|Algemene latentie service-API|Milliseconden|Average|Algemene latentie van service-API-aanvragen|Activity type, Activiteitsnummer, status code|
-|ServiceApiResult|Totaalaantal resultaten service-API|Count|Count|Totaalaantal resultaten voor service-API|Activity type, Activiteitsnummer, status code|
+|ServiceApiHit|Totaalaantal treffers service-API|Count|Count|Totaal aantal treffers in de service-API|ActivityType, ActivityName|
+|ServiceApiLatency|Algemene latentie service-API|Milliseconden|Average|Algemene latentie van Service-API-aanvragen|Activity type, Activiteitsnummer, status code|
+|ServiceApiResult|Totaalaantal resultaten service-API|Count|Count|Totaal aantal resultaten van Service-API|Activity type, Activiteitsnummer, status code|
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
@@ -933,79 +933,79 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|RunsStarted|Gestarte uitvoeringen|Count|Totaal|Aantal gestarte werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunsCompleted|Voltooide uitvoeringen|Count|Totaal|Aantal voltooide werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunsSucceeded|Geslaagde uitvoeringen|Count|Totaal|Aantal geslaagde werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunsFailed|Mislukte uitvoeringen|Count|Totaal|Aantal mislukte werkstroomuitvoeringen.|Er zijn geen dimensies|
+|RunsStarted|Gestarte uitvoeringen|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Er zijn geen dimensies|
+|RunsCompleted|Voltooide uitvoeringen|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunsSucceeded|Geslaagde uitvoeringen|Count|Totaal|Aantal geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunsFailed|Mislukte uitvoeringen|Count|Totaal|Het aantal uitvoeringen van de werk stroom is mislukt.|Er zijn geen dimensies|
 |RunsCancelled|Uitvoeringen geannuleerd|Count|Totaal|Aantal uitgevoerde werk stroom uitvoeringen geannuleerd.|Er zijn geen dimensies|
-|RunLatency|Latentie van uitvoeringen|Seconden|Average|Latentie van voltooide werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunSuccessLatency|Latentie van geslaagde uitvoeringen|Seconden|Average|Latentie van geslaagde werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunThrottledEvents|Door uitvoering vertraagde gebeurtenissen|Count|Totaal|Aantal door werkstroomactie of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
-|RunFailurePercentage|Percentage mislukte uitvoeringen|Percent|Totaal|Percentage mislukte werkstroomuitvoeringen.|Er zijn geen dimensies|
-|ActionsStarted|Gestarte acties |Count|Totaal|Aantal gestarte werkstroomacties.|Er zijn geen dimensies|
-|ActionsCompleted|Voltooide acties |Count|Totaal|Aantal voltooide werkstroomacties.|Er zijn geen dimensies|
-|ActionsSucceeded|Geslaagde acties |Count|Totaal|Aantal geslaagde werkstroomacties.|Er zijn geen dimensies|
-|ActionsFailed|Mislukte acties|Count|Totaal|Aantal mislukte werkstroomacties.|Er zijn geen dimensies|
-|ActionsSkipped|Overgeslagen acties |Count|Totaal|Aantal overgeslagen werkstroomacties.|Er zijn geen dimensies|
-|ActionLatency|Actielatentie |Seconden|Average|Latentie van voltooide werkstroomacties.|Er zijn geen dimensies|
-|ActionSuccessLatency|Latentie geslaagde acties |Seconden|Average|Latentie van geslaagde werkstroomacties.|Er zijn geen dimensies|
-|ActionThrottledEvents|Door actie vertraagde gebeurtenissen|Count|Totaal|Aantal door werkstroomactie vertraagde gebeurtenissen.|Er zijn geen dimensies|
-|TriggersStarted|Gestarte triggers |Count|Totaal|Aantal gestarte werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersCompleted|Voltooide triggers |Count|Totaal|Aantal voltooide werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersSucceeded|Geslaagde triggers |Count|Totaal|Aantal geslaagde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersFailed|Mislukte triggers |Count|Totaal|Aantal mislukte werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersSkipped|Overgeslagen triggers|Count|Totaal|Aantal overgeslagen werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersFired|Geactiveerde triggers |Count|Totaal|Aantal geactiveerde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerLatency|Latentie van trigger |Seconden|Average|Latentie van voltooide werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerFireLatency|Latentie van triggeractivering |Seconden|Average|Latentie van geactiveerde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerSuccessLatency|Latentie van geslaagde triggers |Seconden|Average|Latentie van geslaagde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerThrottledEvents|Door trigger vertraagde gebeurtenissen|Count|Totaal|Aantal door werkstroomtrigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
-|BillableActionExecutions|Factureerbare uitvoeringen van acties|Count|Totaal|Aantal uitvoeringen van werkstroomacties dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillableTriggerExecutions|Factureerbare uitvoeringen van activeringen|Count|Totaal|Aantal uitvoeringen van werkstroomactiveringen dat wordt gefactureerd.|Er zijn geen dimensies|
-|TotalBillableExecutions|Totaal aantal factureerbare uitvoeringen|Count|Totaal|Aantal werkstroomuitvoeringen dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillingUsageNativeOperation|Facturering van gebruik voor systeemeigen uitvoerbewerkingen|Count|Totaal|Aantal systeemeigen uitvoerbewerkingen dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillingUsageStandardConnector|Facturering van gebruik voor uitvoeringen voor Standard-connector|Count|Totaal|Aantal uitvoeringen van de standaardconnector dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillingUsageStorageConsumption|Facturering van gebruik voor uitvoeringen van opslagverbruik|Count|Totaal|Aantal uitvoeringen van het opslagverbruik dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillingUsageNativeOperation|Facturering van gebruik voor systeemeigen uitvoerbewerkingen|Count|Totaal|Aantal systeemeigen uitvoerbewerkingen dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillingUsageStandardConnector|Facturering van gebruik voor uitvoeringen voor Standard-connector|Count|Totaal|Aantal uitvoeringen van de standaardconnector dat wordt gefactureerd.|Er zijn geen dimensies|
-|BillingUsageStorageConsumption|Facturering van gebruik voor uitvoeringen van opslagverbruik|Count|Totaal|Aantal uitvoeringen van het opslagverbruik dat wordt gefactureerd.|Er zijn geen dimensies|
+|RunLatency|Latentie van uitvoeringen|Seconden|Average|Latentie van voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunSuccessLatency|Latentie van geslaagde uitvoeringen|Seconden|Average|Latentie van geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunThrottledEvents|Door uitvoering vertraagde gebeurtenissen|Count|Totaal|Aantal werk stroom acties of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|RunFailurePercentage|Percentage mislukte uitvoeringen|Percent|Totaal|Percentage mislukte werk stroom uitvoeringen.|Er zijn geen dimensies|
+|ActionsStarted|Gestarte acties |Count|Totaal|Aantal gestarte werk stroom acties.|Er zijn geen dimensies|
+|ActionsCompleted|Voltooide acties |Count|Totaal|Aantal voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionsSucceeded|Geslaagde acties |Count|Totaal|Aantal geslaagde werk stroom acties.|Er zijn geen dimensies|
+|ActionsFailed|Mislukte acties|Count|Totaal|Aantal mislukte werk stroom acties.|Er zijn geen dimensies|
+|ActionsSkipped|Overgeslagen acties |Count|Totaal|Aantal overgeslagen werk stroom acties.|Er zijn geen dimensies|
+|ActionLatency|Actielatentie |Seconden|Average|Latentie van voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionSuccessLatency|Latentie geslaagde acties |Seconden|Average|Latentie van geslaagde werk stroom acties.|Er zijn geen dimensies|
+|ActionThrottledEvents|Door actie vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom actie vertraagde gebeurtenissen..|Er zijn geen dimensies|
+|TriggersStarted|Gestarte triggers |Count|Totaal|Aantal gestarte werk stroom triggers.|Er zijn geen dimensies|
+|TriggersCompleted|Voltooide triggers |Count|Totaal|Aantal voltooide werk stroom triggers.|Er zijn geen dimensies|
+|TriggersSucceeded|Geslaagde triggers |Count|Totaal|Aantal geslaagde werk stroom triggers.|Er zijn geen dimensies|
+|TriggersFailed|Mislukte triggers |Count|Totaal|Aantal mislukte werk stroom triggers.|Er zijn geen dimensies|
+|TriggersSkipped|Overgeslagen triggers|Count|Totaal|Aantal overgeslagen werk stroom triggers.|Er zijn geen dimensies|
+|TriggersFired|Geactiveerde triggers |Count|Totaal|Aantal geactiveerde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerLatency|Latentie van trigger |Seconden|Average|Latentie van voltooide werk stroom triggers.|Er zijn geen dimensies|
+|TriggerFireLatency|Latentie van triggeractivering |Seconden|Average|Latentie van geactiveerde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerSuccessLatency|Latentie van geslaagde triggers |Seconden|Average|Latentie van geslaagde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerThrottledEvents|Door trigger vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|BillableActionExecutions|Factureerbare uitvoeringen van acties|Count|Totaal|Aantal uitvoeringen van werk stroom acties dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillableTriggerExecutions|Factureerbare uitvoeringen van activeringen|Count|Totaal|Aantal uitvoeringen van werk stroom trigger dat wordt gefactureerd.|Er zijn geen dimensies|
+|TotalBillableExecutions|Totaal aantal factureerbare uitvoeringen|Count|Totaal|Aantal uitgevoerde werk stroom uitvoeringen dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillingUsageNativeOperation|Facturerings gebruik voor uitvoering van systeem eigen bewerkingen|Count|Totaal|Aantal uitvoeringen van de native bewerking dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillingUsageStandardConnector|Facturerings gebruik voor het uitvoeren van standaard-connectors|Count|Totaal|Aantal uitvoeringen van Standard-connector dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillingUsageStorageConsumption|Facturerings gebruik voor uitvoeringen van opslag verbruik|Count|Totaal|Aantal uitvoeringen van opslag verbruik dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillingUsageNativeOperation|Facturerings gebruik voor uitvoering van systeem eigen bewerkingen|Count|Totaal|Aantal uitvoeringen van de native bewerking dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillingUsageStandardConnector|Facturerings gebruik voor het uitvoeren van standaard-connectors|Count|Totaal|Aantal uitvoeringen van Standard-connector dat wordt gefactureerd.|Er zijn geen dimensies|
+|BillingUsageStorageConsumption|Facturerings gebruik voor uitvoeringen van opslag verbruik|Count|Totaal|Aantal uitvoeringen van opslag verbruik dat wordt gefactureerd.|Er zijn geen dimensies|
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|RunsStarted|Gestarte uitvoeringen|Count|Totaal|Aantal gestarte werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunsCompleted|Voltooide uitvoeringen|Count|Totaal|Aantal voltooide werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunsSucceeded|Geslaagde uitvoeringen|Count|Totaal|Aantal geslaagde werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunsFailed|Mislukte uitvoeringen|Count|Totaal|Aantal mislukte werkstroomuitvoeringen.|Er zijn geen dimensies|
+|RunsStarted|Gestarte uitvoeringen|Count|Totaal|Aantal uitvoeringen van werk stroom gestart.|Er zijn geen dimensies|
+|RunsCompleted|Voltooide uitvoeringen|Count|Totaal|Aantal voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunsSucceeded|Geslaagde uitvoeringen|Count|Totaal|Aantal geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunsFailed|Mislukte uitvoeringen|Count|Totaal|Het aantal uitvoeringen van de werk stroom is mislukt.|Er zijn geen dimensies|
 |RunsCancelled|Uitvoeringen geannuleerd|Count|Totaal|Aantal uitgevoerde werk stroom uitvoeringen geannuleerd.|Er zijn geen dimensies|
-|RunLatency|Latentie van uitvoeringen|Seconden|Average|Latentie van voltooide werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunSuccessLatency|Latentie van geslaagde uitvoeringen|Seconden|Average|Latentie van geslaagde werkstroomuitvoeringen.|Er zijn geen dimensies|
-|RunThrottledEvents|Door uitvoering vertraagde gebeurtenissen|Count|Totaal|Aantal door werkstroomactie of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|RunLatency|Latentie van uitvoeringen|Seconden|Average|Latentie van voltooide werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunSuccessLatency|Latentie van geslaagde uitvoeringen|Seconden|Average|Latentie van geslaagde werk stroom uitvoeringen.|Er zijn geen dimensies|
+|RunThrottledEvents|Door uitvoering vertraagde gebeurtenissen|Count|Totaal|Aantal werk stroom acties of trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
 |RunStartThrottledEvents|Vertraagde gebeurtenissen uitvoeren|Count|Totaal|Aantal uitgevoerde vertraagde gebeurtenissen voor de werk stroom.|Er zijn geen dimensies|
-|RunFailurePercentage|Percentage mislukte uitvoeringen|Percent|Totaal|Percentage mislukte werkstroomuitvoeringen.|Er zijn geen dimensies|
-|ActionsStarted|Gestarte acties |Count|Totaal|Aantal gestarte werkstroomacties.|Er zijn geen dimensies|
-|ActionsCompleted|Voltooide acties |Count|Totaal|Aantal voltooide werkstroomacties.|Er zijn geen dimensies|
-|ActionsSucceeded|Geslaagde acties |Count|Totaal|Aantal geslaagde werkstroomacties.|Er zijn geen dimensies|
-|ActionsFailed|Mislukte acties |Count|Totaal|Aantal mislukte werkstroomacties.|Er zijn geen dimensies|
-|ActionsSkipped|Overgeslagen acties |Count|Totaal|Aantal overgeslagen werkstroomacties.|Er zijn geen dimensies|
-|ActionLatency|Actielatentie |Seconden|Average|Latentie van voltooide werkstroomacties.|Er zijn geen dimensies|
-|ActionSuccessLatency|Latentie geslaagde acties |Seconden|Average|Latentie van geslaagde werkstroomacties.|Er zijn geen dimensies|
-|ActionThrottledEvents|Door actie vertraagde gebeurtenissen|Count|Totaal|Aantal door werkstroomactie vertraagde gebeurtenissen.|Er zijn geen dimensies|
-|TriggersStarted|Gestarte triggers |Count|Totaal|Aantal gestarte werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersCompleted|Voltooide triggers |Count|Totaal|Aantal voltooide werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersSucceeded|Geslaagde triggers |Count|Totaal|Aantal geslaagde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersFailed|Mislukte triggers |Count|Totaal|Aantal mislukte werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersSkipped|Overgeslagen triggers|Count|Totaal|Aantal overgeslagen werkstroomtriggers.|Er zijn geen dimensies|
-|TriggersFired|Geactiveerde triggers |Count|Totaal|Aantal geactiveerde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerLatency|Latentie van trigger |Seconden|Average|Latentie van voltooide werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerFireLatency|Latentie van triggeractivering |Seconden|Average|Latentie van geactiveerde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerSuccessLatency|Latentie van geslaagde triggers |Seconden|Average|Latentie van geslaagde werkstroomtriggers.|Er zijn geen dimensies|
-|TriggerThrottledEvents|Door trigger vertraagde gebeurtenissen|Count|Totaal|Aantal door werkstroomtrigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|Het werkstroomprocessorgebruik voor de integratieserviceomgeving|Percent|Average|Het werkstroomprocessorgebruik voor de integratieserviceomgeving.|Er zijn geen dimensies|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|Het werkstroomgeheugengebruik voor de integratieserviceomgeving|Percent|Average|Het werkstroomgeheugengebruik voor de integratieserviceomgeving.|Er zijn geen dimensies|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|Het connectorprocessorgebruik voor de integratieserviceomgeving|Percent|Average|Het connectorprocessorgebruik voor de integratieserviceomgeving.|Er zijn geen dimensies|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|Het connectorgeheugengebruik voor de integratieserviceomgeving|Percent|Average|Het connectorgeheugengebruik voor de integratieserviceomgeving.|Er zijn geen dimensies|
+|RunFailurePercentage|Percentage mislukte uitvoeringen|Percent|Totaal|Percentage mislukte werk stroom uitvoeringen.|Er zijn geen dimensies|
+|ActionsStarted|Gestarte acties |Count|Totaal|Aantal gestarte werk stroom acties.|Er zijn geen dimensies|
+|ActionsCompleted|Voltooide acties |Count|Totaal|Aantal voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionsSucceeded|Geslaagde acties |Count|Totaal|Aantal geslaagde werk stroom acties.|Er zijn geen dimensies|
+|ActionsFailed|Mislukte acties |Count|Totaal|Aantal mislukte werk stroom acties.|Er zijn geen dimensies|
+|ActionsSkipped|Overgeslagen acties |Count|Totaal|Aantal overgeslagen werk stroom acties.|Er zijn geen dimensies|
+|ActionLatency|Actielatentie |Seconden|Average|Latentie van voltooide werk stroom acties.|Er zijn geen dimensies|
+|ActionSuccessLatency|Latentie geslaagde acties |Seconden|Average|Latentie van geslaagde werk stroom acties.|Er zijn geen dimensies|
+|ActionThrottledEvents|Door actie vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom actie vertraagde gebeurtenissen..|Er zijn geen dimensies|
+|TriggersStarted|Gestarte triggers |Count|Totaal|Aantal gestarte werk stroom triggers.|Er zijn geen dimensies|
+|TriggersCompleted|Voltooide triggers |Count|Totaal|Aantal voltooide werk stroom triggers.|Er zijn geen dimensies|
+|TriggersSucceeded|Geslaagde triggers |Count|Totaal|Aantal geslaagde werk stroom triggers.|Er zijn geen dimensies|
+|TriggersFailed|Mislukte triggers |Count|Totaal|Aantal mislukte werk stroom triggers.|Er zijn geen dimensies|
+|TriggersSkipped|Overgeslagen triggers|Count|Totaal|Aantal overgeslagen werk stroom triggers.|Er zijn geen dimensies|
+|TriggersFired|Geactiveerde triggers |Count|Totaal|Aantal geactiveerde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerLatency|Latentie van trigger |Seconden|Average|Latentie van voltooide werk stroom triggers.|Er zijn geen dimensies|
+|TriggerFireLatency|Latentie van triggeractivering |Seconden|Average|Latentie van geactiveerde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerSuccessLatency|Latentie van geslaagde triggers |Seconden|Average|Latentie van geslaagde werk stroom triggers.|Er zijn geen dimensies|
+|TriggerThrottledEvents|Door trigger vertraagde gebeurtenissen|Count|Totaal|Aantal door werk stroom trigger vertraagde gebeurtenissen.|Er zijn geen dimensies|
+|IntegrationServiceEnvironmentWorkflowProcessorUsage|Gebruik van werk stroom processor voor Integratieserviceomgeving|Percent|Average|Gebruik van werk stroom processoren voor de integratie service omgeving.|Er zijn geen dimensies|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|Geheugen gebruik van werk stroom voor Integratieserviceomgeving|Percent|Average|Geheugen gebruik van werk stroom voor de integratie service omgeving.|Er zijn geen dimensies|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|Processor gebruik van connector voor Integratieserviceomgeving|Percent|Average|Het processor gebruik van de connector voor de integratie service omgeving.|Er zijn geen dimensies|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|Geheugen gebruik van connector voor Integratieserviceomgeving|Percent|Average|Geheugen gebruik van connector voor de integratie service omgeving.|Er zijn geen dimensies|
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
@@ -1207,12 +1207,12 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|registratie. alle|Registratiebewerkingen|Count|Totaal|Het aantal registratiebewerkingen (maken, bijwerken, query's uitvoeren en verwijderen). |Er zijn geen dimensies|
+|registratie. alle|Registratiebewerkingen|Count|Totaal|Het aantal voltooide registratie bewerkingen (gemaakte bijwerk query's en verwijderingen). |Er zijn geen dimensies|
 |registratie. Create|Bewerkingen voor het maken van registraties|Count|Totaal|Het aantal gemaakte registraties.|Er zijn geen dimensies|
 |registratie. update|Bewerkingen voor het bijwerken van registraties|Count|Totaal|Het aantal voltooide registratie-updates.|Er zijn geen dimensies|
-|registratie. ophalen|Bewerkingen voor het lezen van registraties|Count|Totaal|Het aantal uitgevoerde registratiequery's.|Er zijn geen dimensies|
-|registratie. Delete|Bewerkingen voor het verwijderen van registraties|Count|Totaal|Het aantal verwijderde registraties.|Er zijn geen dimensies|
-|e-mail|Binnenkomende berichten|Count|Totaal|Het aantal voltooide verzonden API-aanroepen. |Er zijn geen dimensies|
+|registratie. ophalen|Bewerkingen voor het lezen van registraties|Count|Totaal|Het aantal geslaagde registratie query's.|Er zijn geen dimensies|
+|registratie. Delete|Bewerkingen voor het verwijderen van registraties|Count|Totaal|Het aantal voltooide registraties dat is verwijderd.|Er zijn geen dimensies|
+|e-mail|Binnenkomende berichten|Count|Totaal|Het aantal geslaagde verzend-API-aanroepen. |Er zijn geen dimensies|
 |inkomend. gepland|Geplande pushmeldingen verzonden|Count|Totaal|Geplande push meldingen geannuleerd|Er zijn geen dimensies|
 |Binnenkomend. gepland. annuleren|Geplande push meldingen geannuleerd|Count|Totaal|Geplande push meldingen geannuleerd|Er zijn geen dimensies|
 |gepland. in behandeling|Geplande meldingen in behandeling|Count|Totaal|Geplande meldingen in behandeling|Er zijn geen dimensies|
@@ -1221,34 +1221,34 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |installatie. upsert|Installatiebewerkingen maken of bijwerken|Count|Totaal|Installatiebewerkingen maken of bijwerken|Er zijn geen dimensies|
 |installatie. patch|Installatiebewerkingen patchen|Count|Totaal|Installatiebewerkingen patchen|Er zijn geen dimensies|
 |installation.delete|Installatiebewerkingen verwijderen|Count|Totaal|Installatiebewerkingen verwijderen|Er zijn geen dimensies|
-|outgoing.allpns.success|Voltooide meldingen|Count|Totaal|Het aantal voltooide meldingen.|Er zijn geen dimensies|
-|outgoing.allpns.invalidpayload|Fouten met nettolading|Count|Totaal|Het aantal pushes dat is mislukt omdat PNS een fout met een onjuiste payload heeft geretourneerd.|Er zijn geen dimensies|
-|uitgaande. allpns. pnserror|Fouten met het externe meldingssysteem|Count|Totaal|Het aantal pushes dat is mislukt vanwege een probleem in de communicatie met PNS (exclusief verificatieproblemen).|Er zijn geen dimensies|
-|uitgaande. allpns. channelerror|Fouten met kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal ongeldig is, niet is gekoppeld aan de juiste app, beperkt is of verlopen is.|Er zijn geen dimensies|
-|outgoing.allpns.badorexpiredchannel|Fouten met slecht of verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal/het token/de registratie-id in de registratie is verlopen of ongeldig is.|Er zijn geen dimensies|
-|outgoing.wns.success|Meldingen over voltooide WNS|Count|Totaal|Het aantal voltooide meldingen.|Er zijn geen dimensies|
-|outgoing.wns.invalidcredentials|WNS-verificatiefouten (ongeldige referenties)|Count|Totaal|Het aantal pushes dat is mislukt omdat PNS de opgegeven referenties niet accepteert of omdat de referenties zijn geblokkeerd. (Windows Live herkent de referenties niet).|Er zijn geen dimensies|
+|outgoing.allpns.success|Voltooide meldingen|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.allpns.invalidpayload|Fouten met nettolading|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS een ongeldige Payload-fout heeft geretourneerd.|Er zijn geen dimensies|
+|uitgaande. allpns. pnserror|Fouten met het externe meldingssysteem|Count|Totaal|Het aantal pushes dat is mislukt omdat er een probleem is opgetreden bij het communiceren met de PNS (er zijn verificatie problemen uitgesloten).|Er zijn geen dimensies|
+|uitgaande. allpns. channelerror|Fouten met kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal ongeldig is en niet is gekoppeld aan de juiste app beperkt of verlopen.|Er zijn geen dimensies|
+|outgoing.allpns.badorexpiredchannel|Fouten met slecht of verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het kanaal/token-registratie in de registratie is verlopen of ongeldig is.|Er zijn geen dimensies|
+|outgoing.wns.success|Meldingen over voltooide WNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.wns.invalidcredentials|WNS-verificatie fouten (ongeldige referenties)|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd. (Windows Live herkent de referenties niet).|Er zijn geen dimensies|
 |outgoing.wns.badchannel|WNS-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal in de registratie niet is herkend (WNS-status: 404 niet gevonden).|Er zijn geen dimensies|
 |outgoing.wns.expiredchannel|WNS-fout wegens verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal is verlopen (WNS-status: 410 verdwenen).|Er zijn geen dimensies|
 |uitgaande. wns. throttled|Meldingen over beperkte WNS|Count|Totaal|Het aantal pushes dat is mislukt omdat WNS deze app beperkt (WNS-status: 406 niet toegestaan).|Er zijn geen dimensies|
-|outgoing.wns.tokenproviderunreachable|WNS-verificatiefouten (onbereikbaar)|Count|Totaal|Windows Live is niet bereikbaar.|Er zijn geen dimensies|
-|uitgaande. wns. invalidtoken|WNS-verificatiefouten (ongeldig token)|Count|Totaal|Het token dat is door gegeven aan WNS is niet geldig (WNS-status: 401 niet gemachtigd).|Er zijn geen dimensies|
-|outgoing.wns.wrongtoken|WNS-verificatiefouten (onjuist token)|Count|Totaal|Het token dat is door gegeven aan WNS is geldig, maar voor een andere toepassing (WNS-status: 403 verboden). Dit kan gebeuren als de kanaal in de registratie is gekoppeld aan een andere app. Controleer of de client-app is gekoppeld aan dezelfde app waarvan de referenties zich in de notification hub bevinden.|Er zijn geen dimensies|
+|outgoing.wns.tokenproviderunreachable|WNS-verificatie fouten (onbereikbaar)|Count|Totaal|Windows Live is niet bereikbaar.|Er zijn geen dimensies|
+|uitgaande. wns. invalidtoken|WNS-verificatie fouten (ongeldig token)|Count|Totaal|Het token dat is door gegeven aan WNS is niet geldig (WNS-status: 401 niet gemachtigd).|Er zijn geen dimensies|
+|outgoing.wns.wrongtoken|WNS-autorisatie fouten (onjuist token)|Count|Totaal|Het token dat is door gegeven aan WNS is geldig, maar voor een andere toepassing (WNS-status: 403 verboden). Dit kan gebeuren als de kanaal in de registratie is gekoppeld aan een andere app. Controleer of de client-app is gekoppeld aan dezelfde app waarvan de referenties zich in de notification hub bevinden.|Er zijn geen dimensies|
 |outgoing.wns.invalidnotificationformat|Ongeldige indeling van de WNS-melding|Count|Totaal|De indeling van de melding is ongeldig (WNS-status: 400). Houd er rekening mee dat WNS niet alle ongeldige payloads weigert.|Er zijn geen dimensies|
 |outgoing.wns.invalidnotificationsize|Fout met ongeldige grootte van de WNS-melding|Count|Totaal|De meldings lading is te groot (WNS-status: 413).|Er zijn geen dimensies|
 |outgoing.wns.channelthrottled|De verbinding met het WNS-kanaal is beperkt|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (WNS-reactie header: X-WNS-notification status: channelThrottled).|Er zijn geen dimensies|
 |outgoing.wns.channeldisconnected|De verbinding met het WNS-kanaal is verbroken|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (WNS-reactie header: X-WNS-DeviceConnectionStatus: verbinding verbroken).|Er zijn geen dimensies|
-|uitgaande. wns. dropd|Meldingen over verloren WNS|Count|Totaal|De melding is verwijderd omdat de kanaal-URI in de registratie is beperkt (X-WNS-NotificationStatus: dropped, maar niet X-WNS-DeviceConnectionStatus: disconnected).|Er zijn geen dimensies|
-|uitgaande. wns. pnserror|WNS-fouten|Count|Totaal|De melding is niet afgeleverd omdat er fouten zijn opgetreden in de communicatie met WNS.|Er zijn geen dimensies|
-|uitgaande. wns. authenticationerror|WNS-verificatiefouten|Count|Totaal|De melding is niet afgeleverd omdat er fouten zijn opgetreden in de communicatie met Windows Live, vanwege ongeldige referenties of vanwege een onjuist token.|Er zijn geen dimensies|
-|outgoing.apns.success|Meldingen over voltooide APNS|Count|Totaal|Het aantal voltooide meldingen.|Er zijn geen dimensies|
-|outgoing.apns.invalidcredentials|APNS-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat PNS de opgegeven referenties niet accepteert of omdat de referenties zijn geblokkeerd.|Er zijn geen dimensies|
+|uitgaande. wns. dropd|Meldingen over verloren WNS|Count|Totaal|De melding is verwijderd omdat de kanaal in de registratie is beperkt (X-WNS-notification status: verwijderd maar niet X-WNS-DeviceConnectionStatus: disconnected).|Er zijn geen dimensies|
+|uitgaande. wns. pnserror|WNS-fouten|Count|Totaal|Er is geen melding bezorgd vanwege fouten in de communicatie met WNS.|Er zijn geen dimensies|
+|uitgaande. wns. authenticationerror|WNS-verificatiefouten|Count|Totaal|Er is een melding niet bezorgd omdat er fouten zijn opgetreden tijdens de communicatie met Windows Live ongeldige referenties of een onjuist token.|Er zijn geen dimensies|
+|outgoing.apns.success|Meldingen over voltooide APNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.apns.invalidcredentials|APNS-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
 |outgoing.apns.badchannel|APNS-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat het token ongeldig is (status code voor het binaire APNS-Protocol: 8. Status code van APNS-HTTP-protocol: 400 met "BadDeviceToken").|Er zijn geen dimensies|
-|outgoing.apns.expiredchannel|APNS-fout wegens verlopen kanaal|Count|Totaal|Het aantal tokens dat ongeldig is gemaakt door het APNS-feedbackkanaal.|Er zijn geen dimensies|
+|outgoing.apns.expiredchannel|APNS-fout wegens verlopen kanaal|Count|Totaal|Het aantal tokens dat ongeldig is gemaakt door het APNS-feedback kanaal.|Er zijn geen dimensies|
 |outgoing.apns.invalidnotificationsize|Fout met ongeldige grootte van APNS-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload te groot is (status code van het binaire APNS-Protocol: 7).|Er zijn geen dimensies|
 |outgoing.apns.pnserror|APNS-fouten|Count|Totaal|Het aantal pushes dat is mislukt vanwege fouten in de communicatie met APNS.|Er zijn geen dimensies|
-|outgoing.gcm.success|Meldingen over voltooide GCM|Count|Totaal|Het aantal voltooide meldingen.|Er zijn geen dimensies|
-|outgoing.gcm.invalidcredentials|GCM-verificatiefouten (ongeldige referenties)|Count|Totaal|Het aantal pushes dat is mislukt omdat PNS de opgegeven referenties niet accepteert of omdat de referenties zijn geblokkeerd.|Er zijn geen dimensies|
+|outgoing.gcm.success|Meldingen over voltooide GCM|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.gcm.invalidcredentials|GCM-verificatie fouten (ongeldige referenties)|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
 |outgoing.gcm.badchannel|GCM-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie niet is herkend (GCM-resultaat: Ongeldige registratie).|Er zijn geen dimensies|
 |outgoing.gcm.expiredchannel|GCM-fout wegens verlopen kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie is verlopen (GCM resultaat: NotRegistered).|Er zijn geen dimensies|
 |uitgaande. GCM. throttled|Meldingen over beperkte GCM|Count|Totaal|Het aantal pushes dat is mislukt omdat GCM deze app heeft beperkt (GCM-status code: 501-599 of resultaat: niet beschikbaar).|Er zijn geen dimensies|
@@ -1257,18 +1257,18 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |outgoing.gcm.wrongchannel|GCM-fout wegens onjuist kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de registratie in de registratie niet is gekoppeld aan de huidige app (GCM-resultaat: InvalidPackageName).|Er zijn geen dimensies|
 |uitgaande. GCM. pnserror|GCM-fouten|Count|Totaal|Het aantal pushes dat is mislukt vanwege fouten in de communicatie met GCM.|Er zijn geen dimensies|
 |uitgaande. GCM. authenticationerror|GCM-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd, de referenties zijn geblokkeerd of de SenderId niet juist is geconfigureerd in de app (GCM-resultaat: MismatchedSenderId).|Er zijn geen dimensies|
-|uitgaand. mpns. geslaagd|Meldingen over voltooide MPNS|Count|Totaal|Het aantal voltooide meldingen.|Er zijn geen dimensies|
-|outgoing.mpns.invalidcredentials|Ongeldige MPNS-referenties|Count|Totaal|Het aantal pushes dat is mislukt omdat PNS de opgegeven referenties niet accepteert of omdat de referenties zijn geblokkeerd.|Er zijn geen dimensies|
+|uitgaand. mpns. geslaagd|Meldingen over voltooide MPNS|Count|Totaal|Het aantal geslaagde meldingen.|Er zijn geen dimensies|
+|outgoing.mpns.invalidcredentials|Ongeldige MPNS-referenties|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
 |outgoing.mpns.badchannel|MPNS-fout wegens slecht kanaal|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal in de registratie niet is herkend (MPNS-status: 404 niet gevonden).|Er zijn geen dimensies|
 |uitgaande. mpns. throttled|Meldingen over beperkte MPNS|Count|Totaal|Het aantal pushes dat is mislukt omdat MPNS deze app beperkt (WNS MPNS: 406 niet toegestaan).|Er zijn geen dimensies|
 |uitgaande. mpns. invalidnotificationformat|Ongeldige indeling van de MPNS-melding|Count|Totaal|Het aantal pushes dat is mislukt omdat de payload van de melding te groot is.|Er zijn geen dimensies|
 |outgoing.mpns.channeldisconnected|De verbinding met het MPNS-kanaal is verbroken|Count|Totaal|Het aantal pushes dat is mislukt omdat de kanaal van de registratie is verbroken (MPNS-status: 412 niet gevonden).|Er zijn geen dimensies|
 |uitgaande. mpns. dropd|Meldingen over verloren MPNS|Count|Totaal|Het aantal pushes dat is verwijderd door MPNS (MPNS-reactie header: X-notification status: QueueFull of onderdrukt).|Er zijn geen dimensies|
 |uitgaande. mpns. pnserror|MPNS-fouten|Count|Totaal|Het aantal pushes dat is mislukt vanwege fouten in de communicatie met MPNS.|Er zijn geen dimensies|
-|uitgaande. mpns. authenticationerror|MPNS-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat PNS de opgegeven referenties niet accepteert of omdat de referenties zijn geblokkeerd.|Er zijn geen dimensies|
-|notificationhub. pushes|Alle uitgaande meldingen|Count|Totaal|Alle uitgaande meldingen van de Notification Hub|Er zijn geen dimensies|
-|binnenkomende. alle. aanvragen|Alle binnenkomende aanvragen|Count|Totaal|Totaal aantal binnenkomende aanvragen voor een Notification Hub|Er zijn geen dimensies|
-|inkomend. alle. failedrequests|Alle binnenkomende mislukte aanvragen|Count|Totaal|Totaal aantal binnenkomende mislukte aanvragen voor een Notification Hub|Er zijn geen dimensies|
+|uitgaande. mpns. authenticationerror|MPNS-verificatiefouten|Count|Totaal|Het aantal pushes dat is mislukt omdat de PNS de opgegeven referenties niet heeft geaccepteerd of de referenties zijn geblokkeerd.|Er zijn geen dimensies|
+|notificationhub. pushes|Alle uitgaande meldingen|Count|Totaal|Alle uitgaande meldingen van de notification hub|Er zijn geen dimensies|
+|binnenkomende. alle. aanvragen|Alle binnenkomende aanvragen|Count|Totaal|Totaal aantal binnenkomende aanvragen voor een notification hub|Er zijn geen dimensies|
+|inkomend. alle. failedrequests|Alle binnenkomende mislukte aanvragen|Count|Totaal|Totaal aantal binnenkomende mislukte aanvragen voor een notification hub|Er zijn geen dimensies|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
 
@@ -1360,19 +1360,19 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|ListenerConnections-Success|ListenerConnections-Success|Count|Totaal|Voltooide ListenerConnections voor Microsoft.Relay.|EntityName|
-|ListenerConnections-ClientError|ListenerConnections-ClientError|Count|Totaal|ClientError op ListenerConnections voor Microsoft.Relay.|EntityName|
-|ListenerConnections-ServerError|ListenerConnections-ServerError|Count|Totaal|ServerError op ListenerConnections voor Microsoft.Relay.|EntityName|
-|SenderConnections-Success|SenderConnections-Success|Count|Totaal|Voltooide SenderConnections voor Microsoft.Relay.|EntityName|
-|SenderConnections-ClientError|SenderConnections-ClientError|Count|Totaal|ClientError op SenderConnections voor Microsoft.Relay.|EntityName|
-|SenderConnections-ServerError|SenderConnections-ServerError|Count|Totaal|ServerError op SenderConnections voor Microsoft.Relay.|EntityName|
-|ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Count|Totaal|Totale ListenerConnections voor Microsoft.Relay.|EntityName|
-|SenderConnections-TotalRequests|SenderConnections-TotalRequests|Count|Totaal|Totale SenderConnections-aanvragen voor Microsoft.Relay.|EntityName|
-|ActiveConnections|ActiveConnections|Count|Totaal|Totale ActiveConnections voor Microsoft.Relay.|EntityName|
-|ActiveListeners|ActiveListeners|Count|Totaal|Totale ActiveListeners voor Microsoft.Relay.|EntityName|
-|BytesTransferred|BytesTransferred|Count|Totaal|Totale BytesTransferred voor Microsoft.Relay.|EntityName|
-|ListenerDisconnects|ListenerDisconnects|Count|Totaal|Totale ListenerDisconnects voor Microsoft.Relay.|EntityName|
-|SenderDisconnects|SenderDisconnects|Count|Totaal|Total SenderDisconnects for Microsoft.Relay.|EntityName|
+|ListenerConnections-Success|ListenerConnections-Success|Count|Totaal|Geslaagde ListenerConnections voor micro soft. relay.|EntityName|
+|ListenerConnections-client error|ListenerConnections-client error|Count|Totaal|Client error op ListenerConnections voor micro soft. relay.|EntityName|
+|ListenerConnections-server error|ListenerConnections-server error|Count|Totaal|Server error op ListenerConnections voor micro soft. relay.|EntityName|
+|SenderConnections-Success|SenderConnections-Success|Count|Totaal|Geslaagde SenderConnections voor micro soft. relay.|EntityName|
+|SenderConnections-client error|SenderConnections-client error|Count|Totaal|Client error op SenderConnections voor micro soft. relay.|EntityName|
+|SenderConnections-server error|SenderConnections-server error|Count|Totaal|Server error op SenderConnections voor micro soft. relay.|EntityName|
+|ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Count|Totaal|Totale ListenerConnections voor micro soft. relay.|EntityName|
+|SenderConnections-TotalRequests|SenderConnections-TotalRequests|Count|Totaal|Totaal aantal SenderConnections-aanvragen voor micro soft. relay.|EntityName|
+|ActiveConnections|ActiveConnections|Count|Totaal|Totaal aantal ActiveConnection voor micro soft. relay.|EntityName|
+|ActiveListeners|ActiveListeners|Count|Totaal|Totale ActiveListeners voor micro soft. relay.|EntityName|
+|BytesTransferred|BytesTransferred|Count|Totaal|Totale BytesTransferred voor micro soft. relay.|EntityName|
+|ListenerDisconnects|ListenerDisconnects|Count|Totaal|Totale ListenerDisconnects voor micro soft. relay.|EntityName|
+|SenderDisconnects|SenderDisconnects|Count|Totaal|Totale SenderDisconnects voor micro soft. relay.|EntityName|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
@@ -1387,20 +1387,20 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Geslaagde aanvragen (preview-versie)|Count|Totaal|Totaal aantal geslaagde aanvragen voor een naam ruimte (preview-versie)|EntityName|
-|ServerErrors|Serverfouten. (Preview-versie)|Count|Totaal|Serverfouten voor Microsoft.ServiceBus. (Preview-versie)|EntityName|
-|UserErrors|Gebruikersfouten. (Preview-versie)|Count|Totaal|Gebruikersfouten voor Microsoft.ServiceBus. (Preview-versie)|EntityName|
-|ThrottledRequests|Beperkte aanvragen. (Preview-versie)|Count|Totaal|Beperkte aanvragen voor Microsoft.ServiceBus. (Preview-versie)|EntityName|
-|IncomingRequests|Inkomende aanvragen (preview-versie)|Count|Totaal|Binnenkomende aanvragen voor Microsoft.ServiceBus. (Preview-versie)|EntityName|
-|IncomingMessages|Inkomende berichten (preview-versie)|Count|Totaal|Binnenkomende berichten voor Microsoft.ServiceBus. (Preview-versie)|EntityName|
-|OutgoingMessages|Uitgaande berichten (preview-versie)|Count|Totaal|Uitgaande berichten voor Microsoft.ServiceBus. (Preview-versie)|EntityName|
-|ActiveConnections|ActiveConnection (preview-versie)|Count|Totaal|Totaal aantal actieve verbindingen voor Microsoft.ServiceBus. (Preview-versie)|Er zijn geen dimensies|
-|Size|Grootte (preview-versie)|Bytes|Average|Grootte van een wachtrij/onderwerp in bytes. (Preview-versie)|EntityName|
-|Berichten|Aantal berichten in een wachtrij/onderwerp. (Preview-versie)|Count|Average|Aantal berichten in een wachtrij/onderwerp. (Preview-versie)|EntityName|
-|ActiveMessages|Aantal actieve berichten in een wachtrij/onderwerp. (Preview-versie)|Count|Average|Aantal actieve berichten in een wachtrij/onderwerp. (Preview-versie)|EntityName|
-|DeadletteredMessages|Het aantal onbestelbare berichten in een wachtrij/onderwerp. (Preview-versie)|Count|Average|Het aantal onbestelbare berichten in een wachtrij/onderwerp. (Preview-versie)|EntityName|
-|ScheduledMessages|Het aantal geplande berichten in een wachtrij/onderwerp. (Preview-versie)|Count|Average|Het aantal geplande berichten in een wachtrij/onderwerp. (Preview-versie)|EntityName|
-|CPUXNS|CPU-gebruik per naamruimte|Percent|Maximum|Metrische gegevens voor het CPU-gebruik van de Premium-naamruimte voor Service Bus|Er zijn geen dimensies|
-|WSXNS|Geheugengebruik per naamruimte|Percent|Maximum|Metrische gegevens voor het geheugengebruik van de Premium-naamruimte voor Service Bus|Er zijn geen dimensies|
+|ServerErrors|Server fouten. (Preview)|Count|Totaal|Server fouten voor micro soft. ServiceBus. (Preview)|EntityName|
+|UserErrors|Gebruikers fouten. (Preview)|Count|Totaal|Gebruikers fouten voor micro soft. ServiceBus. (Preview)|EntityName|
+|ThrottledRequests|Vertraagde aanvragen. (Preview)|Count|Totaal|Beperkte aanvragen voor micro soft. ServiceBus. (Preview)|EntityName|
+|IncomingRequests|Inkomende aanvragen (preview-versie)|Count|Totaal|Binnenkomende aanvragen voor micro soft. ServiceBus. (Preview)|EntityName|
+|IncomingMessages|Inkomende berichten (preview-versie)|Count|Totaal|Binnenkomende berichten voor micro soft. ServiceBus. (Preview)|EntityName|
+|OutgoingMessages|Uitgaande berichten (preview-versie)|Count|Totaal|Uitgaande berichten voor micro soft. ServiceBus. (Preview)|EntityName|
+|ActiveConnections|ActiveConnection (preview-versie)|Count|Totaal|Totaal aantal actieve verbindingen voor micro soft. ServiceBus. (Preview)|Er zijn geen dimensies|
+|Size|Grootte (preview-versie)|Bytes|Average|Grootte van een wachtrij/onderwerp in bytes. (Preview)|EntityName|
+|Berichten|Aantal berichten in een wachtrij/onderwerp. (Preview)|Count|Average|Aantal berichten in een wachtrij/onderwerp. (Preview)|EntityName|
+|ActiveMessages|Aantal actieve berichten in een wachtrij/onderwerp. (Preview)|Count|Average|Aantal actieve berichten in een wachtrij/onderwerp. (Preview)|EntityName|
+|DeadletteredMessages|Aantal onbestelbare berichten in een wachtrij/onderwerp. (Preview)|Count|Average|Aantal onbestelbare berichten in een wachtrij/onderwerp. (Preview)|EntityName|
+|ScheduledMessages|Aantal geplande berichten in een wachtrij/onderwerp. (Preview)|Count|Average|Aantal geplande berichten in een wachtrij/onderwerp. (Preview)|EntityName|
+|CPUXNS|CPU-gebruik per naamruimte|Percent|Maximum|Metrische gegevens voor CPU-gebruik van service bus Premium-naam ruimte|Er zijn geen dimensies|
+|WSXNS|Geheugengebruik per naamruimte|Percent|Maximum|Metrische gegevens over geheugen gebruik voor service bus Premium-naam ruimte|Er zijn geen dimensies|
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
@@ -1435,33 +1435,33 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |---|---|---|---|---|---|
 |cpu_percent|Processorpercentage|Percent|Average|Processorpercentage|Er zijn geen dimensies|
 |physical_data_read_percent|Percentage gegevens-IO|Percent|Average|Percentage gegevens-IO|Er zijn geen dimensies|
-|log_write_percent|Percentage logboek-IO|Percent|Average|Percentage logboek-IO|Er zijn geen dimensies|
-|dtu_consumption_percent|DTU-percentage|Percent|Average|DTU-percentage|Er zijn geen dimensies|
-|opslag|Gebruikte gegevensruimte|Bytes|Maximum|Totale database grootte|Er zijn geen dimensies|
+|log_write_percent|Percentage logboek-IO|Percent|Average|Logboek-IO-percentage. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|dtu_consumption_percent|DTU-percentage|Percent|Average|DTU-percentage. Is van toepassing op DTU-gebaseerde data bases.|Er zijn geen dimensies|
+|opslag|Gebruikte gegevensruimte|Bytes|Maximum|Totale database grootte. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
 |connection_successful|Geslaagde verbindingen|Count|Totaal|Geslaagde verbindingen|Er zijn geen dimensies|
 |connection_failed|Mislukte verbindingen|Count|Totaal|Mislukte verbindingen|Er zijn geen dimensies|
 |blocked_by_firewall|Geblokkeerd door de firewall|Count|Totaal|Geblokkeerd door de firewall|Er zijn geen dimensies|
-|constateer|Deadlocks|Count|Totaal|Deadlocks|Er zijn geen dimensies|
-|storage_percent|Percentage gebruikte gegevens ruimte|Percent|Maximum|Databaseomvangpercentage|Er zijn geen dimensies|
-|xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Percent|Average|Percentage OLTP-opslag in het geheugen|Er zijn geen dimensies|
-|workers_percent|Werknemerspercentage|Percent|Average|Werknemerspercentage|Er zijn geen dimensies|
-|sessions_percent|Sessiepercentage|Percent|Average|Sessiepercentage|Er zijn geen dimensies|
-|dtu_limit|DTU-limiet|Count|Average|DTU-limiet|Er zijn geen dimensies|
-|dtu_used|DTU gebruikt|Count|Average|DTU gebruikt|Er zijn geen dimensies|
-|cpu_limit|CPU-limiet|Count|Average|CPU-limiet|Er zijn geen dimensies|
-|cpu_used|CPU gebruikt|Count|Average|CPU gebruikt|Er zijn geen dimensies|
-|dwu_limit|Limiet voor DWU|Count|Maximum|Limiet voor DWU|Er zijn geen dimensies|
-|dwu_consumption_percent|Percentage DWU|Percent|Maximum|Percentage DWU|Er zijn geen dimensies|
-|dwu_used|DWU gebruikt|Count|Maximum|DWU gebruikt|Er zijn geen dimensies|
+|constateer|Deadlocks|Count|Totaal|Impassen. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|storage_percent|Percentage gebruikte gegevens ruimte|Percent|Maximum|Percentage van de database grootte. Niet van toepassing op data warehouses of grootschalige-data bases.|Er zijn geen dimensies|
+|xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Percent|Average|Percentage OLTP-opslag in het geheugen. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|workers_percent|Werknemerspercentage|Percent|Average|Werknemers percentage. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|sessions_percent|Sessiepercentage|Percent|Average|Percentage sessies. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
+|dtu_limit|DTU-limiet|Count|Average|DTU-limiet. Is van toepassing op DTU-gebaseerde data bases.|Er zijn geen dimensies|
+|dtu_used|DTU gebruikt|Count|Average|DTU gebruikt. Is van toepassing op DTU-gebaseerde data bases.|Er zijn geen dimensies|
+|cpu_limit|CPU-limiet|Count|Average|CPU-limiet. Is van toepassing op vCore-data bases.|Er zijn geen dimensies|
+|cpu_used|CPU gebruikt|Count|Average|CPU gebruikt. Is van toepassing op vCore-data bases.|Er zijn geen dimensies|
+|dwu_limit|Limiet voor DWU|Count|Maximum|DWU-limiet. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
+|dwu_consumption_percent|Percentage DWU|Percent|Maximum|DWU-percentage. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
+|dwu_used|DWU gebruikt|Count|Maximum|DWU gebruikt. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
 |dw_cpu_percent|CPU-percentage van DW-knooppunt niveau|Percent|Average|CPU-percentage van DW-knooppunt niveau|DwLogicalNodeId|
 |dw_physical_data_read_percent|IO-percentage gegevens-i/o-knooppunt niveau|Percent|Average|IO-percentage gegevens-i/o-knooppunt niveau|DwLogicalNodeId|
-    |cache_hit_percent|Percentage cache treffers|Percent|Maximum|Percentage cache treffers|Er zijn geen dimensies|
-|cache_used_percent|Percentage gebruikt cache|Percent|Maximum|Percentage gebruikt cache|Er zijn geen dimensies|
-|local_tempdb_usage_percent|Lokaal TempDB-percentage|Percent|Average|Lokaal TempDB-percentage|Er zijn geen dimensies|
-|app_cpu_billed|Gefactureerde app-CPU|Count|Totaal|Gefactureerde app-CPU|Er zijn geen dimensies|
-|app_cpu_percent|CPU-percentage van app|Percent|Average|CPU-percentage van app|Er zijn geen dimensies|
-|app_memory_percent|Percentage gebruikt geheugen van app|Percent|Average|Percentage gebruikt geheugen van app|Er zijn geen dimensies|
-|allocated_data_storage|Toegewezen gegevensruimte|Bytes|Average|Toegewezen gegevensruimte|Er zijn geen dimensies|
+|cache_hit_percent|Percentage cache treffers|Percent|Maximum|Percentage van cache treffer. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
+|cache_used_percent|Percentage gebruikt cache|Percent|Maximum|Percentage gebruikt cache. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
+|local_tempdb_usage_percent|Lokaal TempDB-percentage|Percent|Average|Lokaal TempDB-percentage. Is alleen van toepassing op data warehouses.|Er zijn geen dimensies|
+|app_cpu_billed|Gefactureerde app-CPU|Count|Totaal|App CPU gefactureerd. Is van toepassing op serverloze data bases.|Er zijn geen dimensies|
+|app_cpu_percent|CPU-percentage van app|Percent|Average|CPU-percentage van de app. Is van toepassing op serverloze data bases.|Er zijn geen dimensies|
+|app_memory_percent|Percentage gebruikt geheugen van app|Percent|Average|Percentage gebruikt geheugen voor app. Is van toepassing op serverloze data bases.|Er zijn geen dimensies|
+|allocated_data_storage|Toegewezen gegevensruimte|Bytes|Average|Toegewezen gegevens ruimte. Niet van toepassing op data warehouses.|Er zijn geen dimensies|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -1470,17 +1470,17 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |cpu_percent|Processorpercentage|Percent|Average|Processorpercentage|Er zijn geen dimensies|
 |physical_data_read_percent|Percentage gegevens-IO|Percent|Average|Percentage gegevens-IO|Er zijn geen dimensies|
 |log_write_percent|Percentage logboek-IO|Percent|Average|Percentage logboek-IO|Er zijn geen dimensies|
-|dtu_consumption_percent|DTU-percentage|Percent|Average|DTU-percentage|Er zijn geen dimensies|
+|dtu_consumption_percent|DTU-percentage|Percent|Average|DTU-percentage. Is van toepassing op op DTU gebaseerde elastische Pools.|Er zijn geen dimensies|
 |storage_percent|Percentage gebruikte gegevens ruimte||Percent|Average|Opslag percentage|Er zijn geen dimensies|
 |workers_percent|Werknemerspercentage|Percent|Average|Werknemerspercentage|Er zijn geen dimensies|
 |sessions_percent|Sessiepercentage|Percent|Average|Sessiepercentage|Er zijn geen dimensies|
-|eDTU_limit|eDTU-limiet|Count|Average|eDTU-limiet|Er zijn geen dimensies|
+|eDTU_limit|eDTU-limiet|Count|Average|eDTU-limiet. Is van toepassing op op DTU gebaseerde elastische Pools.|Er zijn geen dimensies|
 |storage_limit|Maximale grootte van gegevens|Bytes|Average|Opslag limiet|Er zijn geen dimensies|
-|eDTU_used|eDTU gebruikt|Count|Average|eDTU gebruikt|Er zijn geen dimensies|
+|eDTU_used|eDTU gebruikt|Count|Average|eDTU gebruikt. Is van toepassing op op DTU gebaseerde elastische Pools.|Er zijn geen dimensies|
 |storage_used|Gebruikte gegevensruimte|Bytes|Average|Opslag gebruikt|Er zijn geen dimensies|
 |xtp_storage_percent|Percentage OLTP-opslag in het geheugen|Percent|Average|Percentage OLTP-opslag in het geheugen|Er zijn geen dimensies|
-|cpu_limit|CPU-limiet|Count|Average|CPU-limiet|Er zijn geen dimensies|
-|cpu_used|CPU gebruikt|Count|Average|CPU gebruikt|Er zijn geen dimensies|
+|cpu_limit|CPU-limiet|Count|Average|CPU-limiet. Is van toepassing op op vCore gebaseerde elastische Pools.|Er zijn geen dimensies|
+|cpu_used|CPU gebruikt|Count|Average|CPU gebruikt. Is van toepassing op op vCore gebaseerde elastische Pools.|Er zijn geen dimensies|
 |allocated_data_storage|Toegewezen gegevensruimte|Bytes|Average|Toegewezen gegevensruimte|Er zijn geen dimensies|
 |allocated_data_storage_percent|Percentage toegewezen gegevens ruimte|Percent|Maximum|Percentage toegewezen gegevens ruimte|Er zijn geen dimensies|
 
@@ -1515,7 +1515,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |BlobCapacity|Blobcapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de Blob-service van het opslagaccount (in bytes).|BlobType, Tier|
 |BlobCount|Aantal blobs|Count|Totaal|Het aantal blobs in de Blob-service van het opslagaccount.|BlobType|       |BlobCount|Aantal blobs|Count|Average|Het aantal blobs in de Blob-service van het opslagaccount.|BlobType, Tier|
 |ContainerCount|Aantal blobcontainers|Count|Gemiddeld|Het aantal containers in de Blob-service van het opslagaccount.|Er zijn geen dimensies|
-|IndexCapacity|Indexcapaciteit|Bytes|Average|De hoeveelheid opslagruimte gebruikt door ADLS Gen2-index (hiërarchisch) in bytes.|Er zijn geen dimensies|
+|IndexCapacity|Indexcapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de index van de ADLS Gen2 (hiërarchisch) in bytes.|Er zijn geen dimensies|
 |Transacties|Transacties|Count|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen evenals aanvragen die tot fouten. Gebruik de ResponseType-dimensie voor het aantal verschillende type reactie.|ResponseType, geotype, ApiName, authenticatie|
 |Inkomend verkeer|Inkomend verkeer|Bytes|Totaal|De hoeveelheid inkomende gegevens in bytes. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure.|Geotype, ApiName, authenticatie|
 |Uitgaand verkeer|Uitgaand verkeer|Bytes|Totaal|De hoeveelheid uitgaande gegevens in bytes. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer.|Geotype, ApiName, authenticatie|
@@ -1527,9 +1527,9 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|FileCapacity|Bestandscapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de File-service van het opslagaccount (in bytes).|Er zijn geen dimensies|
-|FileCount|Aantal bestanden|Count|Average|Het aantal bestanden in de File-service van het opslagaccount.|Er zijn geen dimensies|
-|FileShareCount|Aantal bestandsshares|Count|Average|Het aantal bestandsshares in de File-service van het opslagaccount.|Er zijn geen dimensies|
+|FileCapacity|Bestandscapaciteit|Bytes|Average|De hoeveelheid opslag die wordt gebruikt door de bestands service van het opslag account in bytes.|Er zijn geen dimensies|
+|FileCount|Aantal bestanden|Count|Average|Het aantal bestanden in de file-service van het opslag account.|Er zijn geen dimensies|
+|FileShareCount|Aantal bestandsshares|Count|Average|Het aantal bestands shares in de file-service van het opslag account.|Er zijn geen dimensies|
 |Transacties|Transacties|Count|Totaal|Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen evenals aanvragen die tot fouten. Gebruik de ResponseType-dimensie voor het aantal verschillende type reactie.|ResponseType, geotype, ApiName, authenticatie|
 |Inkomend verkeer|Inkomend verkeer|Bytes|Totaal|De hoeveelheid inkomende gegevens in bytes. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure.|Geotype, ApiName, authenticatie|
 |Uitgaand verkeer|Uitgaand verkeer|Bytes|Totaal|De hoeveelheid uitgaande gegevens in bytes. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer.|Geotype, ApiName, authenticatie|
@@ -1629,14 +1629,14 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
 |Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Description|Dimensies|
 |---|---|---|---|---|---|
-|DiskReadBytesPerSecond|Gelezen bytes per seconde op de schijf|BytesPerSecond|Average|Gemiddelde door Voer van schijf vanwege Lees bewerkingen gedurende de voorbeeld periode.|Er zijn geen dimensies|
+|DiskReadBytesPerSecond|Gelezen bytes per seconde|BytesPerSecond|Average|Gemiddelde door Voer van schijf vanwege Lees bewerkingen gedurende de voorbeeld periode.|Er zijn geen dimensies|
 |DiskWriteBytesPerSecond|Geschreven bytes per seconde|BytesPerSecond|Average|Gemiddelde doorvoer snelheid van schijven vanwege schrijf bewerkingen gedurende de voorbeeld periode.|Er zijn geen dimensies|
 |Gelezen bytes op de schijf|Gelezen bytes op de schijf|Bytes|Totaal|Totale schijf doorvoer vanwege Lees bewerkingen gedurende de voorbeeld periode.|Er zijn geen dimensies|
 |Geschreven bytes op de schijf|Geschreven bytes op de schijf|Bytes|Totaal|Totale schijf doorvoer vanwege schrijf bewerkingen gedurende de voorbeeld periode.|Er zijn geen dimensies|
 |DiskReadOperations|Lees bewerkingen op de schijf|Count|Totaal|Het aantal i/o-Lees bewerkingen in de vorige voorbeeld periode. Houd er rekening mee dat deze bewerkingen variabele grootte kunnen hebben.|Er zijn geen dimensies|
 |DiskWriteOperations|Schrijf bewerkingen op de schijf|Count|Totaal|Het aantal i/o-schrijf bewerkingen in de vorige voorbeeld periode. Houd er rekening mee dat deze bewerkingen variabele grootte kunnen hebben.|Er zijn geen dimensies|
-|Leesbewerkingen op de schijf/seconde|Leesbewerkingen op de schijf/seconde|CountPerSecond|Average|Het gemiddelde aantal i/o-Lees bewerkingen in de vorige voorbeeld periode. Houd er rekening mee dat deze bewerkingen variabele grootte kunnen hebben.|Er zijn geen dimensies|
-|Schrijfbewerkingen op de schijf/seconde|Schrijfbewerkingen op de schijf/seconde|CountPerSecond|Average|Het gemiddelde aantal i/o-schrijf bewerkingen in de vorige voorbeeld periode. Houd er rekening mee dat deze bewerkingen variabele grootte kunnen hebben.|Er zijn geen dimensies|
+|Lees bewerkingen op de schijf per seconde|Lees bewerkingen op de schijf per seconde|CountPerSecond|Average|Het gemiddelde aantal i/o-Lees bewerkingen in de vorige voorbeeld periode. Houd er rekening mee dat deze bewerkingen variabele grootte kunnen hebben.|Er zijn geen dimensies|
+|Schrijf bewerkingen op de schijf per seconde|Schrijf bewerkingen op de schijf per seconde|CountPerSecond|Average|Het gemiddelde aantal i/o-schrijf bewerkingen in de vorige voorbeeld periode. Houd er rekening mee dat deze bewerkingen variabele grootte kunnen hebben.|Er zijn geen dimensies|
 |DiskReadLatency|Lees latentie van schijf|Milliseconden|Average|Totale lees latentie. De som van de lees latentie van het apparaat en de kernel.|Er zijn geen dimensies|
 |DiskWriteLatency|Schrijf latentie schijf|Milliseconden|Average|Totale schrijf latentie. De som van de latentie voor het schrijven van apparaten en kernels.|Er zijn geen dimensies|
 |NetworkInBytesPerSecond|Netwerk in bytes per seconde|BytesPerSecond|Average|Gemiddelde netwerk doorvoer voor ontvangen verkeer.|Er zijn geen dimensies|

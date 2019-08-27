@@ -1,6 +1,6 @@
 ---
 title: Live streamen met Azure Media Services v3 | Microsoft Docs
-description: Deze zelfstudie leidt u door de stappen van live streamen met Media Services v3.
+description: In deze zelf studie wordt u begeleid bij de stappen voor het streamen van Live met Media Services v3.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 5028fd4179f19634b41bb46a5f6df40f36cc8e29
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b69bd62cb9bbe44fb37b3f3660c2f20f3965384e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275569"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051571"
 ---
-# <a name="tutorial-stream-live-with-media-services"></a>Zelfstudie: Met Media Services live Stream
+# <a name="tutorial-stream-live-with-media-services"></a>Zelfstudie: Live streamen met Media Services
 
 > [!NOTE]
-> Hoewel de zelfstudie wordt gebruikgemaakt van de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) voorbeelden van de algemene stappen zijn hetzelfde voor [REST-API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), of een andere ondersteunde [SDK's](media-services-apis-overview.md#sdks) .
+> Hoewel in de zelf studie de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -voor beelden worden gebruikt, zijn de algemene stappen hetzelfde voor [rest API](https://docs.microsoft.com/rest/api/media/liveevents), [cli](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)of andere ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 In Azure Media Services zijn [livegebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) verantwoordelijk voor het verwerken inhoud voor live streamen. Een livegebeurtenis biedt een invoereindpunt (de URL voor opnemen) dat u vervolgens doorgeeft aan een live-encoder. De livegebeurtenis ontvangt live-invoerstromen van de live-encoder en maakt deze beschikbaar voor streaming via een of meer [streaming-eindpunten](https://docs.microsoft.com/rest/api/media/streamingendpoints). Livegebeurtenissen bieden ook een preview-eindpunt (voorbeeld-URL) dat u kunt gebruiken om een voorbeeld van de stream te bekijken en deze te valideren voordat deze verder wordt verwerkt en geleverd. In deze zelfstudie ziet u hoe u .NET Core gebruikt om een **pass-through**-type van een live-gebeurtenis te maken. 
 
@@ -84,15 +84,15 @@ Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaSer
 
 ### <a name="create-a-live-event"></a>Een livegebeurtenis maken
 
-In deze sectie wordt beschreven hoe u een livegebeurtenis van het type **pass-through** maakt (LiveEventEncodingType ingesteld op None). Zie voor meer informatie over de beschikbare typen Live gebeurtenissen [Live gebeurtenistypen](live-events-outputs-concept.md#live-event-types). 
+In deze sectie wordt beschreven hoe u een livegebeurtenis van het type **pass-through** maakt (LiveEventEncodingType ingesteld op None). Zie [Live Event types](live-events-outputs-concept.md#live-event-types)(Engelstalig) voor meer informatie over de beschik bare typen Live-gebeurtenissen. 
  
-Er zijn enkele dingen die u opgeven wilt misschien bij het maken van de live-gebeurtenis:
+U kunt bijvoorbeeld de volgende zaken opgeven wanneer u de live-gebeurtenis wilt maken:
 
 * Media Services-locatie 
 * Het streaming-protocol voor de livegebeurtenis (momenteel worden de protocollen RTMP en Smooth Streaming ondersteund).<br/>U kunt de protocoloptie niet wijzigen terwijl de livegebeurtenis of de daaraan gekoppelde live-uitvoer worden uitgevoerd. Als u verschillende protocollen nodig hebt, maakt u voor elk streaming-protocol een afzonderlijke livegebeurtenis.  
 * IP-beperkingen voor de opname en voorbeeldweergave. U kunt de IP-adressen definiëren die zijn toegestaan om een video van deze livegebeurtenis op te nemen. Toegestane IP-adressen kunnen worden opgegeven als één IP-adres (bijvoorbeeld 10.0.0.1), een IP-adresbereik met een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22) of een IP-adresbereik met een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld , ' 10.0.0.1(255.255.252.0)').<br/>Als geen IP-adressen zijn opgegeven en er geen regeldefinitie bestaat, zijn er geen IP-adressen toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.<br/>De IP-adressen moeten een van de volgende indelingen hebben: IpV4-adres met 4 cijfers, CIDR-adresbereik.
-* Bij het maken van de gebeurtenis kunt u opgeven dat deze automatisch wordt gestart. <br/>Wanneer autostart is ingesteld op True, wordt de Live gebeurtenis gestart na het maken ervan. Dit betekent dat, de facturering begint zodra de Live gebeurtenis wordt gestart. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten. Zie [Live Event states and billing](live-event-states-billing.md) (Statussen en facturering voor livegebeurtenissen) voor meer informatie.
-* Voor een URL voor opnemen worden voorspeld, stelt u de modus 'aangepaste'. Zie voor gedetailleerde informatie [URL's voor Live gebeurtenis opnemen](live-events-outputs-concept.md#live-event-ingest-urls).
+* Bij het maken van de gebeurtenis kunt u opgeven dat deze automatisch wordt gestart. <br/>Wanneer autostart is ingesteld op True, wordt de Live gebeurtenis gestart na het maken ervan. Dit betekent dat de facturering begint zodra de live-gebeurtenis wordt gestart. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten. Zie [Live Event states and billing](live-event-states-billing.md) (Statussen en facturering voor livegebeurtenissen) voor meer informatie.
+* Stel de ' Vanity-modus in om een opname-URL voorspellend te maken. Zie [url's voor Live Event-opname](live-events-outputs-concept.md#live-event-ingest-urls)voor gedetailleerde informatie.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 
@@ -164,10 +164,6 @@ Als u klaar bent met het streamen van gebeurtenissen en de resources wilt opruim
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLocatorAssetAndStreamingEndpoint)]
 
-In de volgende code ziet u hoe u alle livegebeurtenissen uit uw account verwijdert:
-
-[!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupAccount)]   
-
 ## <a name="watch-the-event"></a>De gebeurtenis bekijken
 
 Als u de gebeurtenis wilt bekijken, kopieert u de streaming-URL die u hebt verkregen toen u de code uitvoerde, beschreven in Een streaming-locator maken, en gebruikt u een speler van uw keuze. U kunt [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) gebruiken om uw stream te testen op https://ampdemo.azureedge.net. 
@@ -187,9 +183,9 @@ az group delete --name amsResourceGroup
 > [!IMPORTANT]
 > Zolang de livegebeurtenis loopt, worden er kosten in rekening gebracht. Als het project/programma vastloopt of om welke reden dan ook wordt afgesloten, is het mogelijk dat de livegebeurtenis in een factureringsstaat staat.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk de [Azure Media Services-community](media-services-community.md) artikel om te zien van verschillende manieren kunt u vragen stellen, feedback te geven en updates over Media Services ophalen.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

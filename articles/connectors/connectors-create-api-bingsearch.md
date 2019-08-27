@@ -1,178 +1,174 @@
 ---
-title: Verbinding maken met Bing zoeken - Azure Logic Apps
-description: Nieuws met Bing Search REST API's en Azure Logic Apps zoeken
+title: Verbinding maken met Bing Search-Azure Logic Apps
+description: Zoek nieuws met Bing Search REST Api's en Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952542"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050998"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Nieuwsartikelen met zoeken in Bing en Azure Logic Apps zoeken
+# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Zoek nieuws met Bing Search en Azure Logic Apps
 
-Dit artikel wordt beschreven hoe u kunt vinden, nieuws, video's en andere items via Bing zoeken uit in een logische app met de Bing zoeken-connector. Op die manier kunt u logische apps die taken automatiseren en werkstromen voor de verwerking van zoekresultaten en maak deze items beschikbaar voor andere acties. 
+In dit artikel wordt beschreven hoe u nieuws, Video's en andere items kunt vinden via Bing Search vanuit een logische app met de Bing Search-connector. Op die manier kunt u logische apps maken die taken en werk stromen automatiseren voor het verwerken van zoek resultaten en deze items beschikbaar maken voor andere acties. 
 
-U kunt bijvoorbeeld zoeken naar nieuwsitems op basis van zoekcriteria en Twitter plaatsen van deze items zoals tweets in uw Twitter-feed hebt.
+U kunt bijvoorbeeld nieuws items vinden op basis van zoek criteria, en Twitter deze items als tweets in uw Twitter-feed plaatsen.
 
-Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Connector-specifieke technische informatie, Zie de <a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">documentatie voor zoeken in Bing-connector</a>.
+Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Zie de naslag informatie over de [Bing Search-connector](https://docs.microsoft.com/connectors/bingsearch/)voor connector-specifieke technische gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een [Cognitive Services-account](../cognitive-services/cognitive-services-apis-create-account.md)
 
-* Een [Bing zoeken-API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), waarmee u uw logische app toegang heeft tot de Bing zoeken-API's
+* Een [Bing Search-API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), waarmee u vanuit uw logische app toegang kunt krijgen tot de Bing zoeken-API's
 
-* De logische app waar u toegang tot uw Event Hub. Als uw logische app met een trigger zoeken in Bing wilt, moet u een [lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* De logische app waar u toegang wilt krijgen tot uw event hub. Als u uw logische app wilt starten met een Bing Search trigger, hebt u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)nodig.
 
 <a name="add-trigger"></a>
 
-## <a name="add-a-bing-search-trigger"></a>Een Bing zoeken-trigger toevoegen
+## <a name="add-a-bing-search-trigger"></a>Een Bing Search trigger toevoegen
 
-In Azure Logic Apps, elke logische app moet beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis wordt uitgevoerd of wanneer een bepaalde voorwaarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, de Logic Apps-engine een exemplaar van de logische app maakt en werkstroom van uw app wordt gestart.
+In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van uw app uit te voeren.
 
-1. In de Azure portal of Visual Studio, maak een lege logische app, die Logic App Designer wordt geopend. Dit voorbeeld wordt de Azure-portal.
+1. Maak in de Azure Portal of Visual Studio een lege logische app, waarmee u de ontwerp functie voor logische apps kunt openen. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. Typ 'Zoeken in Bing' als filter in het zoekvak. Selecteer de gewenste trigger in de lijst met triggers.
+2. Voer in het zoekvak ' Bing Search ' in als uw filter. Selecteer in de lijst triggers de gewenste trigger.
 
-   In dit voorbeeld maakt gebruik van deze trigger: **Bing zoeken - op nieuwe nieuwsartikel**
+   In dit voor beeld wordt deze trigger gebruikt: **Bing Search-op nieuw nieuws artikel**
 
-   ![Bing zoeken-trigger zoeken](./media/connectors-create-api-bing-search/add-trigger.png)
+   ![Bing Search trigger zoeken](./media/connectors-create-api-bing-search/add-trigger.png)
 
-3. Als u wordt gevraagd voor de verbindingsgegevens, [maken van de Bing zoeken-verbinding nu](#create-connection).
-Of, als de verbinding al bestaat, geeft u de benodigde gegevens voor de trigger.
+3. Als u wordt gevraagd om de verbindings gegevens, [maakt u de Bing Search verbinding nu](#create-connection).
+Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de trigger.
 
-   In dit voorbeeld moet u criteria opgeven voor het retourneren van overeenkomende nieuwsartikelen van zoeken in Bing.
+   Voor dit voor beeld geeft u criteria op voor het retour neren van overeenkomende nieuws artikelen van Bing Search.
 
    | Eigenschap | Vereist | Value | Description |
    |----------|----------|-------|-------------|
-   | Search Query | Ja | <*search-words*> | Voer in de trefwoorden die u wilt gebruiken. |
-   | Market | Ja | <*locale*> | De landinstelling zoeken. De standaardwaarde is "en-US", maar kunt u een andere waarde. |
-   | Safe Search | Ja | <*search-level*> | Het filterniveau voor het uitsluiten van inhoud voor volwassenen. De standaardwaarde is 'Gemiddeld', maar u kunt een ander niveau selecteren. |
-   | Count | Nee | <*results-count*> | Het opgegeven aantal resultaten retourneren. De standaardwaarde is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan zijn dat kleiner is dan het opgegeven getal. |
-   | Offset | Nee | <*skip-value*> | Het aantal resultaten dat moet worden overgeslagen voordat het retourneren van resultaten |
+   | Search Query | Ja | <*search-words*> | Voer de zoek woorden in die u wilt gebruiken. |
+   | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
+   | Safe Search | Ja | <*search-level*> | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
+   | Count | Nee | <*results-count*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
+   | Offset | Nee | <*Skip-waarde*> | Het aantal resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd |
    |||||
 
    Bijvoorbeeld:
 
    ![Trigger instellen](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
-4. Selecteer het interval en frequentie voor hoe vaak u wilt dat de trigger om te controleren op resultaten.
+4. Selecteer het interval en de frequentie voor het aantal keren dat u wilt dat de trigger controleert op resultaten.
 
-5. Wanneer u klaar bent, op de werkbalk van de ontwerper, kiest u **opslaan**.
+5. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
-6. Nu doorgaan met een of meer acties toe te voegen aan uw logische app voor de taken die u wilt uitvoeren met de resultaten van de trigger.
+6. Ga nu verder met het toevoegen van een of meer acties aan uw logische app voor de taken die u wilt uitvoeren met de trigger resultaten.
 
 <a name="add-action"></a>
 
-## <a name="add-a-bing-search-action"></a>De Bing zoeken-actie toevoegen
+## <a name="add-a-bing-search-action"></a>Een Bing Search actie toevoegen
 
-In Azure Logic Apps, een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een stap in uw werkstroom die volgt op een trigger of een andere actie. In dit voorbeeld wordt de logische app begint met een Bing zoeken-trigger die wordt geretourneerd die overeenkomt met de opgegeven criteria nieuwsartikelen.
+In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) een stap in uw werk stroom die volgt op een trigger of een andere actie. Voor dit voor beeld begint de logische app met een Bing Search trigger waarmee nieuws artikelen worden geretourneerd die overeenkomen met de opgegeven criteria.
 
-1. Open uw logische app in Logic App Designer in de Azure portal of Visual Studio. Dit voorbeeld wordt de Azure-portal.
+1. Open in de Azure Portal of Visual Studio uw logische app in de ontwerp functie voor logische apps. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. Kies onder de trigger of actie **nieuwe stap** > **een actie toevoegen**.
+2. Onder de trigger of actie selecteert u **nieuwe stap** > **een actie toevoegen**.
 
-   In dit voorbeeld maakt gebruik van deze trigger:
+   In dit voor beeld wordt deze trigger gebruikt:
 
-   **Bing zoeken - op nieuwe nieuwsartikel**
+   **Bing Search-op nieuw nieuws artikel**
 
    ![Actie toevoegen](./media/connectors-create-api-bing-search/add-action.png)
 
-   Als u wilt toevoegen een actie tussen bestaande stappen, Beweeg de muis boven de verbindende pijl. 
-   Kies het plusteken ( **+** ) die wordt weergegeven, en kies vervolgens **een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. 
+   Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-3. Typ 'Zoeken in Bing' als filter in het zoekvak.
-Selecteer de actie die u wilt in de lijst met acties.
+3. Voer in het zoekvak ' Bing Search ' in als uw filter.
+Selecteer in de lijst acties de gewenste actie.
 
-   In dit voorbeeld wordt met deze actie:
+   In dit voor beeld wordt deze actie gebruikt:
 
-   **Bing zoeken - lijst nieuws door query**
+   **Bing Search-Nieuws lijst per query**
 
-   ![De Bing zoeken-actie vinden](./media/connectors-create-api-bing-search/bing-search-select-action.png)
+   ![Bing Search actie zoeken](./media/connectors-create-api-bing-search/bing-search-select-action.png)
 
-4. Als u wordt gevraagd voor de verbindingsgegevens, [maken van de Bing zoeken-verbinding nu](#create-connection). Of, als de verbinding al bestaat, geeft u de benodigde gegevens voor de actie.
+4. Als u wordt gevraagd om de verbindings gegevens, [maakt u de Bing Search verbinding nu](#create-connection). Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de actie.
 
-   Voor dit voorbeeld geeft u de criteria voor het retourneren van een subset van de resultaten van de trigger.
+   Voor dit voor beeld geeft u de criteria op voor het retour neren van een subset van de resultaten van de trigger.
 
    | Eigenschap | Vereist | Value | Description |
    |----------|----------|-------|-------------|
-   | Search Query | Ja | <*search-expression*> | Voer een expressie voor het uitvoeren van query's de resultaten van de trigger. U kunt selecteren in de velden in de lijst met dynamische inhoud of maakt u een expressie met de opbouwfunctie voor expressies. |
-   | Market | Ja | <*locale*> | De landinstelling zoeken. De standaardwaarde is "en-US", maar kunt u een andere waarde. |
-   | Safe Search | Ja | <*search-level*> | Het filterniveau voor het uitsluiten van inhoud voor volwassenen. De standaardwaarde is 'Gemiddeld', maar u kunt een ander niveau selecteren. |
-   | Count | Nee | <*results-count*> | Het opgegeven aantal resultaten retourneren. De standaardwaarde is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan zijn dat kleiner is dan het opgegeven getal. |
-   | Offset | Nee | <*skip-value*> | Het aantal resultaten dat moet worden overgeslagen voordat het retourneren van resultaten |
+   | Search Query | Ja | <*search-expression*> | Voer een expressie in voor het uitvoeren van query's op de trigger resultaten. U kunt kiezen uit de velden in de lijst met dynamische inhoud of een expressie maken met de opbouw functie voor expressies. |
+   | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
+   | Safe Search | Ja | <*search-level*> | Het filter niveau voor het uitsluiten van inhoud voor volwassenen. De standaard waarde is ' matig ', maar u selecteert een ander niveau. |
+   | Count | Nee | <*results-count*> | Retourneert het opgegeven aantal resultaten. De standaard instelling is 20, maar u kunt een andere waarde opgeven. Het werkelijke aantal geretourneerde resultaten kan kleiner zijn dan het opgegeven aantal. |
+   | Offset | Nee | <*Skip-waarde*> | Het aantal resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd |
    |||||
 
-   Stel bijvoorbeeld dat u wilt dat deze resultaten waarvan Categorienaam het woord "tech bevat".
+   Stel dat u wilt dat de resultaten waarvan de categorie naam het woord ' Tech ' bevat.
 
-   1. Klik in de **zoekquery** vak, zodat de lijst met dynamische inhoud wordt weergegeven. 
-   Kies uit de lijst, **expressie** , zodat de opbouwfunctie voor expressies wordt weergegeven. 
+   1. Klik in het vak **Zoek opdracht** , zodat de lijst met dynamische inhoud wordt weer gegeven. 
+   Selecteer in de lijst **expressie** , zodat de opbouw functie voor expressies wordt weer gegeven. 
 
-      ![Bing zoeken-trigger](./media/connectors-create-api-bing-search/bing-search-action.png)
+      ![Bing Search trigger](./media/connectors-create-api-bing-search/bing-search-action.png)
 
       U kunt nu beginnen met het maken van de expressie.
 
-   2. Selecteer in de functielijst met, de **contains()** functie, die vervolgens wordt weergegeven in het expressievak. Klik op **dynamische inhoud** zodat de lijst met velden opnieuw wordt weergegeven, maar zorg ervoor dat de cursor tussen de haakjes blijft.
+   2. Selecteer in de lijst functies de functie **contains ()** , die vervolgens wordt weer gegeven in het vak expressie. Klik op **dynamische inhoud** zodat de lijst met velden opnieuw wordt weer gegeven, maar zorg ervoor dat de cursor binnen de haakjes blijft.
 
       ![Selecteer een functie](./media/connectors-create-api-bing-search/expression-select-function.png)
 
-   3. Selecteer in de lijst met velden, **categorie**, die wordt geconverteerd naar een parameter. 
-   Voeg een komma toe na de eerste parameter en na de komma, dit woord toevoegen: `'tech'` 
+   3. Selecteer in de lijst met velden de **categorie**die wordt omgezet in een para meter. 
+   Voeg een komma toe na de eerste para meter en Voeg na de komma het volgende woord toe:`'tech'` 
 
       ![Selecteer een veld](./media/connectors-create-api-bing-search/expression-select-field.png)
 
-   4. Als u klaar bent, kiest u **Done**.
+   4. Wanneer u gereed bent, selecteert u **OK**.
 
-      De expressie wordt nu weergegeven in de **zoekquery** vak in deze indeling:
+      De expressie wordt nu weer gegeven in het vak **Zoek opdracht** in deze indeling:
 
       ![Voltooide expressie](./media/connectors-create-api-bing-search/resolved-expression.png)
 
-      In de weergave van code, is deze expressie wordt weergegeven in deze indeling:
+      In de code weergave wordt deze expressie weer gegeven in de volgende indeling:
 
       `"@{contains(triggerBody()?['category'],'tech')}"`
 
-5. Wanneer u klaar bent, op de werkbalk van de ontwerper, kiest u **opslaan**.
+5. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-bing-search"></a>Verbinding maken met Bing zoeken
+## <a name="connect-to-bing-search"></a>Verbinding maken met Bing Search
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Wanneer u wordt gevraagd om de verbindingsgegevens, geef de volgende gegevens:
+1. Wanneer u wordt gevraagd om de verbindings gegevens, geeft u de volgende gegevens op:
 
    | Eigenschap | Vereist | Value | Description |
    |----------|----------|-------|-------------|
-   | Verbindingsnaam | Ja | <*naam van de verbinding*> | De naam voor uw verbinding maken |
-   | API-versie | Ja | <*API-version*> | De Bing zoeken-API-versie is standaard ingesteld op de huidige versie. Indien nodig kunt u een eerdere versie. |
-   | API-sleutel | Ja | <*API-key*> | De Bing zoeken-API-sleutel die u eerder hebt ontvangen. Als u een sleutel niet hebt, krijgt uw [nu API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Verbindingsnaam | Ja | <*verbindings naam*> | De naam die voor uw verbinding moet worden gemaakt |
+   | API-versie | Ja | <*API-versie*> | De Bing Search API-versie is standaard ingesteld op de huidige versie. U kunt indien nodig een eerdere versie selecteren. |
+   | API-sleutel | Ja | <*API-key*> | De Bing Search-API-sleutel die u eerder hebt verkregen. Als u geen sleutel hebt, kunt u [nu uw API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)ophalen. |  
    |||||  
 
    Bijvoorbeeld:
 
    ![Verbinding maken](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. Wanneer u klaar bent, kiest u **Maken**.
+2. Als u gereed bent, selecteert u **Maken**.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie, zoals triggers en acties limieten, zoals is beschreven in van de connector OpenAPI (voorheen Swagger)-bestand, raadpleegt u de [van de connector-verwijzingspagina](/connectors/bingsearch/).
-
-## <a name="get-support"></a>Ondersteuning krijgen
-
-* Ga naar het [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps) (Forum voor Azure Logic Apps) als u vragen hebt.
-* Als u ideeën voor functies wilt indienen of erop wilt stemmen, gaat u naar de [website voor feedback van Logic Apps-gebruikers](https://aka.ms/logicapps-wish).
+Zie de [referentie pagina van de connector](/connectors/bingsearch/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI (voorheen Swagger)-bestand van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

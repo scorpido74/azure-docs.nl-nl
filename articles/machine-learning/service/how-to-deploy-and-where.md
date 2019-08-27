@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7f856c0b69788c3d0b711d567777aba6cb4c6918
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997942"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036095"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Implementeer modellen met de Azure Machine Learning-service
 
@@ -78,12 +78,29 @@ De code fragmenten in deze sectie demonstreren het registreren van een model van
 
 + **De SDK gebruiken**
 
-  ```python
-  model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
-  print(model.name, model.id, model.version, sep='\t')
-  ```
+  Wanneer u de SDK gebruikt voor het trainen van een model, kunt u een [Run](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master) -of [AutoMLRun](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master) -object ontvangen, afhankelijk van hoe u het model hebt getraind. Elk object kan worden gebruikt voor het registreren van een model dat is gemaakt door een experiment.
 
-  De `model_path` verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad naar één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u deze in op de map die de bestanden bevat.
+  + Een model van een `azureml.core.Run` object registreren:
+ 
+    ```python
+    model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+    print(model.name, model.id, model.version, sep='\t')
+    ```
+
+    De `model_path` verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad naar één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u deze in op de map die de bestanden bevat. Zie de referentie [Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) voor meer informatie.
+
+  + Een model van een `azureml.train.automl.run.AutoMLRun` object registreren:
+
+    ```python
+        description = 'My AutoML Model'
+        model = run.register_model(description = description)
+
+        print(run.model_id)
+    ```
+
+    In dit voor beeld worden `metric` de `iteration` para meters en niet opgegeven. Dit zorgt ervoor dat de iteratie met de beste primaire metriek wordt geregistreerd. De `model_id` waarde die wordt geretourneerd door de uitvoering, wordt gebruikt in plaats van een model naam.
+
+    Zie de naslag gids voor [AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) voor meer informatie.
 
 + **De CLI gebruiken**
 
@@ -184,6 +201,9 @@ Het script bevat twee functies die het model laden en uitvoeren:
 Wanneer u een model registreert, geeft u een model naam op die wordt gebruikt voor het beheren van het model in het REGI ster. U gebruikt deze naam voor het [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) om het pad van het model bestand (en) op het lokale bestands systeem op te halen. Als u een map of een verzameling bestanden registreert, retourneert deze API het pad naar de map waarin zich de bestanden bevinden.
 
 Wanneer u een model registreert, geeft u het een naam die overeenkomt met waar het model lokaal of tijdens de service-implementatie wordt geplaatst.
+
+> [!IMPORTANT]
+> Als u een model hebt getraind met behulp van geautomatiseerde machine learning, wordt een `model_id` waarde gebruikt als de naam van het model. Zie [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment)voor een voor beeld van het registreren en implementeren van een model dat is getraind met automatische milliliters.
 
 In het onderstaande voor beeld wordt een pad geretourneerd naar één bestand `sklearn_mnist_model.pkl` (dat is geregistreerd met de naam `sklearn_mnist`):
 

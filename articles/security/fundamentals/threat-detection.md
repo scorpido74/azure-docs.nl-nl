@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c7a31337888dcdc2a8f8b95c5203cc659882b038
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927872"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036181"
 ---
 # <a name="azure-advanced-threat-detection"></a>Detectie van Azure Advanced Threat
 
@@ -384,6 +384,6 @@ Voor voor beelden van firewalls voor webtoepassingen die beschikbaar zijn in azu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Detectie mogelijkheden Azure Security Center](../../security-center/security-center-detection-capabilities.md): Helpt actieve bedreigingen te identificeren die gericht zijn op uw Azure-resources en biedt de inzichten die u nodig hebt om snel te reageren.
+- [Reageren op bedreigingen van vandaag](../../security-center/security-center-alerts-overview.md#respond-threats): Helpt actieve bedreigingen te identificeren die gericht zijn op uw Azure-resources en biedt de inzichten die u nodig hebt om snel te reageren.
 
 - [Detectie van Azure SQL database bedreigingen](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): Helpt bij het oplossen van problemen met mogelijke bedreigingen voor uw data bases.

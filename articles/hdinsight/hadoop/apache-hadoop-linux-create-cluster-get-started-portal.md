@@ -1,6 +1,6 @@
 ---
 title: 'Snelstart: Aan de slag met Apache Hadoop en Apache Hive met behulp van Azure Portal - Azure HDInsight'
-description: In deze snelstartgids gebruikt u de Azure portal om een HDInsight Hadoop-cluster te maken
+description: In deze Quick Start gebruikt u de Azure Portal voor het maken van een HDInsight Hadoop-cluster
 keywords: aan de slag met hadoop, hadoop linux, hadoop quickstart, aan de slag met hive, hive quickstart
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f92cb247afb25562a96373c28534549a2f16d8c9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0e3ee1620d9dc004f3b3b0804fc42cc0d427a7ef
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67805598"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036422"
 ---
-# <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Quickstart: Apache Hadoop-cluster maken in Azure HDInsight met behulp van Azure portal
+# <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Quickstart: Apache Hadoop cluster maken in azure HDInsight met behulp van Azure Portal
 
 In dit artikel leert u hoe u [Apache Hadoop](https://hadoop.apache.org/)-clusters maakt in HDInsight met behulp van de Azure-portal en vervolgens Apache Hive-taken uitvoert in HDInsight. De meeste Hadoop-taken zijn batchtaken. U maakt een cluster, voert enkele taken uit en verwijdert het cluster vervolgens. In dit artikel gaat u al deze drie taken uitvoeren.
 
@@ -32,26 +32,26 @@ In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van Azure Port
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-1. Vanuit de Azure-portal, gaat u naar **een resource maken** > **Analytics** > **HDInsight**.
+1. Ga vanuit het Azure Portal naar **een resource** > **Analytics** > **HDInsight**maken.
 
     ![Databricks in Azure Portal](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight.png "Databricks in Azure Portal")
 
-1. Onder **HDInsight** > **snelle invoer** > **basisbeginselen**Typ of Selecteer de volgende waarden:
+1. Typ of Selecteer onder**basis beginselen**van **HDInsight** > **snel maken** > de volgende waarden:
 
     |Eigenschap  |Description  |
     |---------|---------|
-    |Clusternaam   | Voer een naam in voor het Hadoop-cluster. Omdat alle clusters in HDInsight dezelfde DNS-naamruimte delen, moet deze naam uniek zijn. De naam kan bestaan uit maximaal 59 tekens, inclusief letters, cijfers en afbreekstreepjes bevatten. De eerste en laatste tekens van de naam mogen geen streepjes zijn. |
+    |Clusternaam   | Voer een naam in voor het Hadoop-cluster. Omdat alle clusters in HDInsight dezelfde DNS-naamruimte delen, moet deze naam uniek zijn. De naam mag Maxi maal 59 tekens bevatten, inclusief letters, cijfers en afbreek streepjes. De eerste en laatste tekens van de naam mogen geen streepjes zijn. |
     |Subscription    |  Selecteer uw Azure-abonnement. |
     |Clustertype     | Deze stap kunt u nu overslaan. U geeft het type cluster op in de volgende stap van deze procedure.|
-    |Gebruikersnaam en wachtwoord    | De standaardaanmeldingsnaam is **admin**. Het wachtwoord moet uit minstens tien tekens bestaan en moet minstens één cijfer, één hoofdletter, één kleine letter en één niet-alfanumeriek teken bevatten (uitgezonderd ' " ` \). Zorg ervoor dat u **geen makkelijk te raden** wachtwoorden gebruikt, zoals 'Pass@word1'.|
+    |Gebruikers naam en wacht woord voor cluster aanmelding    | De standaardaanmeldingsnaam is **admin**. Het wachtwoord moet uit minstens tien tekens bestaan en moet minstens één cijfer, één hoofdletter, één kleine letter en één niet-alfanumeriek teken bevatten (uitgezonderd ' " ` \). Zorg ervoor dat u **geen makkelijk te raden** wachtwoorden gebruikt, zoals 'Pass@word1'.|
     |SSH-gebruikersnaam (Secure Shell) | De standaardgebruikersnaam is **sshuser**.  U kunt hier echter een andere naam opgeven als u dat wilt. |
-    |Wachtwoord voor clusteraanmelding voor SSH gebruiken| Schakel dit selectievakje in als u voor de SSH-gebruiker het wachtwoord wilt gebruiken dat u hebt opgegeven voor Wachtwoord voor clusteraanmeldgegevens.|
+    |Wacht woord voor cluster aanmelding gebruiken voor SSH| Schakel dit selectie vakje in om hetzelfde wacht woord voor SSH-gebruiker te gebruiken als de gebruiker die u hebt opgegeven voor de aanmelding van het cluster.|
     |Resource group     | Maak een resourcegroep of selecteer een bestaande resourcegroep.  Een resourcegroep is een container met Azure-onderdelen.  In dit geval bevat de resourcegroep het HDInsight-cluster en het afhankelijke Azure Storage-account. |
     |Location    | Selecteer een Azure-locatie waar u het cluster wilt maken.  Kies een locatie zo dicht mogelijk bij u in de buurt voor betere prestaties. |
 
     ![HDInsight Linux aan de slag basiswaarden voor cluster opgeven](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-basics.png "Geef basiswaarden op voor het maken van een HDInsight-cluster")
 
-1. Selecteer **clustertype** openen de **clusterconfiguratie** pagina en geef vervolgens de volgende waarden:
+1. Selecteer **cluster type** om de pagina **cluster configuratie** te openen en geef vervolgens de volgende waarden op:
 
     |Eigenschap  |Description  |
     |---------|---------|
@@ -60,21 +60,21 @@ In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van Azure Port
 
     ![HDInsight Linux aan de slag basiswaarden voor cluster opgeven](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-configuration-hadoop.png "Geef basiswaarden op voor het maken van een HDInsight-cluster")
 
-    Selecteer **Selecteer** en selecteer vervolgens **volgende** om naar de opslaginstellingen te gaan.
+    Selecteer **selecteren** en selecteer **volgende** om door te gaan naar de opslag instellingen.
 
-1. Uit de **opslag** tabblad, geeft u de volgende waarden:
+1. Geef op het tabblad **opslag** de volgende waarden op:
 
     |Eigenschap  |Description  |
     |---------|---------|
-    |Type primaire opslag    | In dit artikel Azure storage gebruik van Azure Storage-Blob als het standaardopslagaccount te selecteren. U kunt ook Azure Data Lake Storage gebruiken als standaardopslag. |
-    |Methode selecteren     |  Selecteer voor dit artikel **Mijn abonnementen** om een opslagaccount uit uw Azure-abonnement te gebruiken. Als u een opslagaccount uit andere abonnementen wilt gebruiken, selecteert u **Toegangssleutel** en geeft u vervolgens de toegangssleutel voor dat account op. |
-    |Selecteer een opslagaccount   | Selecteer **selecteert u een opslagaccount** naar selecteert u een bestaand opslagaccount of **nieuw**. Als u een nieuw account maakt, wordt de naam moet tussen 3 en 24 tekens lang en kan alleen cijfers en kleine letters bevatten.|
+    |Type van primaire opslag    | Voor dit artikel selecteert u Azure Storage om Azure Storage Blob te gebruiken als het standaard opslag account. U kunt ook Azure Data Lake Storage gebruiken als standaardopslag. |
+    |Selectiemethode     |  Selecteer voor dit artikel **Mijn abonnementen** om een opslagaccount uit uw Azure-abonnement te gebruiken. Als u een opslagaccount uit andere abonnementen wilt gebruiken, selecteert u **Toegangssleutel** en geeft u vervolgens de toegangssleutel voor dat account op. |
+    |Selecteer een opslagaccount   | Selecteer **een opslag account selecteren** om een bestaand opslag account te selecteren of selecteer **nieuwe maken**. Als u een nieuw account maakt, moet de naam tussen de 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.|
 
-    Accepteer alle overige standaardwaarden en selecteer vervolgens **volgende** om door te gaan naar de pagina overzicht.
+    Accepteer alle andere standaard waarden en selecteer **volgende** om door te gaan naar de pagina samen vatting.
 
     ![HDInsight Linux aan de slag waarden voor clusteropslag opgeven](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-storage.png "Geef opslagwaarden op voor het maken van een HDInsight-cluster")
 
-1. Uit de **samenvatting** tabblad, controleert u of de waarden die u hebt geselecteerd in de eerdere stappen.
+1. Controleer op het tabblad **samen vatting** de waarden die u hebt geselecteerd in de vorige stappen.
 
     ![HDInsight Linux aan de slag cluster overzicht](./media/apache-hadoop-linux-create-cluster-get-started-portal/quick-create-summary.png "HDInsight Linux aan de slag cluster overzicht")
 
@@ -84,16 +84,16 @@ In deze sectie maakt u een Hadoop-cluster in HDInsight met behulp van Azure Port
 
     ![Aan de slag met clusterinstellingen in HDInsight op basis van Linux](./media/apache-hadoop-linux-create-cluster-get-started-portal/cluster-overview.png "HDInsight-clustereigenschappen")    
 
-    Elk cluster is afhankelijk van een [Azure Storage-account](../hdinsight-hadoop-use-blob-storage.md) of een [Azure Data Lake-account](../hdinsight-hadoop-use-data-lake-store.md). Dit wordt het standaardopslagaccount genoemd. HDInsight-cluster en het standaardopslagaccount moeten in dezelfde Azure-regio worden geplaatst. Het opslagaccount wordt niet verwijderd wanneer er clusters worden verwijderd.
+    Elk cluster is afhankelijk van een [Azure Storage-account](../hdinsight-hadoop-use-blob-storage.md) of een [Azure Data Lake-account](../hdinsight-hadoop-use-data-lake-store.md). Dit wordt het standaardopslagaccount genoemd. Het HDInsight-cluster en het standaard opslag account moeten zich in dezelfde Azure-regio bevinden. Het opslagaccount wordt niet verwijderd wanneer er clusters worden verwijderd.
 
     > [!NOTE]  
-    > Voor andere methoden voor het maken van cluster en inzicht in de eigenschappen die in deze Quick Start wordt gebruikt, Zie [maken van HDInsight-clusters](../hdinsight-hadoop-provision-linux-clusters.md).
+    > Zie [HDInsight-clusters maken](../hdinsight-hadoop-provision-linux-clusters.md)voor andere methoden voor het maken van een cluster en over de eigenschappen die worden gebruikt in deze Quick Start.
 
 ## <a name="run-apache-hive-queries"></a>Apache Hive-query's uitvoeren
 
-[Apache Hive](hdinsight-use-hive.md) is het meest populaire onderdeel dat in HDInsight wordt gebruikt. Er zijn veel manieren om Hive-taken uit te voeren in HDInsight. In deze snelstartgids gebruikt u de Ambari Hive-weergave in de portal. Voor andere methoden voor het indienen van Hive-taken raadpleegt u [Hive gebruiken in HDInsight](hdinsight-use-hive.md).
+[Apache Hive](hdinsight-use-hive.md) is het meest populaire onderdeel dat in HDInsight wordt gebruikt. Er zijn veel manieren om Hive-taken uit te voeren in HDInsight. In deze Quick Start gebruikt u de Ambari Hive-weer gave van de portal. Voor andere methoden voor het indienen van Hive-taken raadpleegt u [Hive gebruiken in HDInsight](hdinsight-use-hive.md).
 
-1. Als u Ambari wilt openen, selecteert u **Clusterdashboard** in de vorige schermafbeelding.  U kunt ook bladeren naar `https://ClusterName.azurehdinsight.net`, waarbij `ClusterName` is van het cluster dat u in de vorige sectie hebt gemaakt.
+1. Als u Ambari wilt openen, selecteert u **Clusterdashboard** in de vorige schermafbeelding.  U kunt ook bladeren naar `https://ClusterName.azurehdinsight.net`, waar `ClusterName` het cluster is dat u in de vorige sectie hebt gemaakt.
 
     ![HDInsight Linux aan de slag clusterdashboard](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux aan de slag clusterdashboard")
 
@@ -131,10 +131,10 @@ Nadat u een Hive-taak hebt voltooid, kunt u [de resultaten exporteren naar een A
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de Quick Start hebt voltooid, kunt u het cluster verwijdert. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
 > [!NOTE]  
-> Als u *onmiddellijk* u doorgaat met het volgende artikel voor meer informatie over het uitvoeren van ETL-bewerkingen met Hadoop in HDInsight, kunt u dat het cluster uitgevoerd. Dit komt doordat in de zelfstudie hebt u een Hadoop-cluster opnieuw maken. Als u niet meer via het volgende artikel meteen, moet u nu een het cluster verwijderen.
+> Als u *direct* verdergaat met het volgende artikel voor meer informatie over het uitvoeren van ETL-bewerkingen met behulp van Hadoop op HDInsight, wilt u het cluster mogelijk blijven uitvoeren. De reden hiervoor is dat u in de zelf studie een Hadoop-cluster opnieuw moet maken. Als u het volgende artikel echter niet meteen gaat, moet u het cluster nu verwijderen.
 
 ### <a name="to-delete-the-cluster-andor-the-default-storage-account"></a>Het cluster en/of het standaardopslagaccount verwijderen
 
@@ -148,7 +148,7 @@ Nadat u de Quick Start hebt voltooid, kunt u het cluster verwijdert. Met HDInsig
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u geleerd hoe u een Linux gebaseerde HDInsight-cluster met behulp van Resource Manager-sjabloon maken en hoe u eenvoudige Hive-query's uitvoert. In het volgende artikel leert u hoe u een ETL-bewerking (Extraction, Transformation, Loading) uitvoert met behulp van Hadoop in HDInsight.
+In deze Quick Start hebt u geleerd hoe u een HDInsight-cluster op basis van Linux maakt met behulp van een resource manager-sjabloon en hoe u eenvoudige Hive-query's uitvoert. In het volgende artikel leert u hoe u een ETL-bewerking (Extraction, Transformation, Loading) uitvoert met behulp van Hadoop in HDInsight.
 
 > [!div class="nextstepaction"]
->[Uitpakken, transformeren en laden van gegevens met behulp van interactieve Query in HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+>[Gegevens uitpakken, transformeren en laden met interactieve Query's op HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)

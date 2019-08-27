@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534798"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036200"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Zelfstudie: Beeld classificatie modellen trainen met MNIST-gegevens en scikit-meer informatie met behulp van Azure Machine Learning
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>Een bestaande rekenresource maken of koppelen
+### <a name="create-or-attach-an-existing-compute-target"></a>Een bestaand Compute-doel maken of koppelen
 
 Met Azure Machine Learning Compute, een beheerde service, kunnen gegevenswetenschappers Machine Learning-modellen trainen op clusters met virtuele Azure-machines. Voorbeelden hiervan zijn virtuele machines met GPU-ondersteuning. In deze zelfstudie maakt u Azure Machine Learning Compute als uw trainingsomgeving. Met de onderstaande code wordt het rekencluster voor u gemaakt als dat nog niet in uw werkruimte bestaat.
 
- **Het maken van het rekencluster duurt ongeveer vijf minuten.** Als het rekencluster al aanwezig is in de werkruimte, wordt het cluster door de code gebruikt en wordt er geen nieuw cluster gemaakt.
+ **Het maken van het reken doel duurt ongeveer vijf minuten.** Als de compute-resource al in de werk ruimte staat, wordt deze door de code gebruikt en wordt het proces voor het maken overs Laan.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ U hebt nu een beter beeld van hoe deze afbeeldingen eruit zien en wat u voor res
 
 ### <a name="upload-data-to-the-cloud"></a>Gegevens uploaden naar de cloud
 
-U kunt de gegevens nu op afstand toegankelijk maken door ze vanaf uw lokale computer te uploaden naar Azure. Hierdoor kunnen de gegevens worden gebruikt voor externe training. Het gegevensarchief is een handige structuur die is gekoppeld aan uw werkruimte voor het uploaden/downloaden van gegevens. Hier is tevens interactie mogelijk met de gegevens vanaf uw externe rekendoelen. Het archief is toegankelijk met een Azure Blob Storage-account.
+U hebt de trainings gegevens gedownload en gebruikt op de computer waarop uw notebook wordt uitgevoerd.  In de volgende sectie traint u een model op de externe Azure Machine Learning compute.  De externe Compute-resource heeft ook toegang nodig tot uw gegevens. Als u toegang wilt bieden, uploadt u uw gegevens naar een gecentraliseerd gegevens archief dat is gekoppeld aan uw werk ruimte. Deze Data Store biedt snelle toegang tot uw gegevens wanneer u externe Compute-doelen in de Cloud gebruikt, zoals in het Azure Data Center.
 
-De MNIST-bestanden worden geüpload naar een map met de naam `mnist` in de hoofdmap van het gegevensarchief:
+Upload de MNIST-bestanden naar een map `mnist` met de naam in de hoofdmap van het gegevens archief. Zie [toegang tot gegevens uit uw gegevens opslag](how-to-access-data.md) voor meer informatie.
 
 ```python
 ds = ws.get_default_datastore()

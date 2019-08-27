@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534584"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035221"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -36,7 +36,7 @@ Application Insights kan met elke webpagina worden gebruikt. Het enige wat u hie
 > [!IMPORTANT]
 > U hoeft alleen een van de onderstaande methoden te gebruiken voor het toevoegen van de Application Insights java script SDK aan uw toepassing. Als u de installatie op basis van NPM gebruikt, gebruik dan niet de installatie op basis van het fragment. Hetzelfde geldt voor het omgekeerde scenario wanneer u de methode op basis van het fragment gebruikt. gebruik niet ook de op NPM gebaseerde installatie. 
 
-### <a name="npm-based-setup"></a>Installatie op basis van NPM 
+### <a name="npm-based-setup"></a>Installatie op basis van NPM
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -198,7 +198,7 @@ De minified-call stack van uw telemetrie van de uitzonde ring kan worden unminif
 2. Identificeer welke bron kaarten overeenkomen met deze aanroep stack. De bron toewijzing moet overeenkomen met het bron bestand van een stack frame, maar een achtervoegsel met`.map`
 3. Sleep de bron kaarten en zet deze neer op de aanroep stack in de Azure Portal![](https://i.imgur.com/Efue9nU.gif)
 
-## <a name="application-insights-web-basic"></a>Application Insights Web Basic
+### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 
 Voor een licht gewicht-ervaring kunt u in plaats daarvan de basis versie van Application Insights installeren
 ```

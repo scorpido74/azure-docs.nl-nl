@@ -1,5 +1,5 @@
 ---
-title: Een Azure IoT Plug en Play preview-apparaat bouwen dat klaar is voor certificering | Microsoft Docs
+title: Een IoT Plug en Play preview-apparaat bouwen dat klaar is voor certificering | Microsoft Docs
 description: Als ontwikkelaar van een apparaat leert u hoe u een IoT Plug en Play preview-apparaat kunt bouwen dat klaar is voor certificering.
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878094"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047906"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Een IoT Plug en Play preview-apparaat bouwen dat gereed is voor certificering
 
@@ -124,7 +124,7 @@ Als u het apparaat wilt certificeren, moet het inrichten via de [Azure IOT Devic
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>De model informatie en SDK-informatie interfaces implementeren
 
-De Azure IoT Device SDK implementeert de model gegevens en SDK-informatie interfaces. Als u de functie voor het genereren van code in VS code gebruikt, gebruikt uw apparaatcode de Azure IoT Plug en Play apparaat-SDK.
+De Azure IoT Device SDK implementeert de model gegevens en SDK-informatie interfaces. Als u de functie voor het genereren van code in VS code gebruikt, gebruikt uw apparaatcode de IoT Plug en Play apparaat-SDK.
 
 Als u ervoor hebt gekozen om de Azure IoT Device SDK niet te gebruiken, kunt u de SDK-bron code gebruiken als referentie voor uw eigen implementatie.
 

@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 40d888da214bad079c665c8d0e6095e8762a131e
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.author: v-mohabe
+ms.openlocfilehash: 7ab42fdb03209173c61b70fdf498aa77b39a1c23
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990628"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036388"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Bedreigingsinformatierapport in Azure Security Center
 In dit document wordt uitgelegd hoe bedreigingsinformatierapporten in Azure Security Center u kunnen helpen meer te weten te komen over een bedreiging die een beveiligingswaarschuwing heeft gegenereerd.
 
 ## <a name="what-is-a-threat-intelligence-report"></a>Wat is een bedreigingsinformatierapport?
-Het detecteren van bedreigingen van Security Center werkt volgens het verzamelen van beveiligingsgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen. Deze informatie wordt door Security Center geanalyseerd, waarbij vaak informatie uit meerdere bronnen wordt samengebracht om bedreigingen te analyseren. Dit proces is onderdeel van de [detectiecapaciteiten](security-center-detection-capabilities.md) van het Security Center.
+Het detecteren van bedreigingen van Security Center werkt volgens het verzamelen van beveiligingsgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen. Deze informatie wordt door Security Center geanalyseerd, waarbij vaak informatie uit meerdere bronnen wordt samengebracht om bedreigingen te analyseren. Zie [How Azure Security Center detecteert en reageert op bedreigingen](security-center-alerts-overview.md#detect-threats)voor meer informatie.
 
 Wanneer Security Center een bedreiging detecteert, produceert het een [beveiligingswaarschuwing](security-center-managing-and-responding-alerts.md) met gedetailleerde informatie over een specifieke gebeurtenis en suggesties om het op te lossen. Ter ondersteuning van incident response teams, het onderzoeken en oplossen van bedreigingen, Security Center bevat een Threat Intelligence-rapport dat informatie bevat over de gedetecteerde bedreiging, inclusief informatie zoals:
 
@@ -70,7 +70,6 @@ Hier kunt u de PDF voor het rapport downloaden en meer lezen over het gedetectee
 In dit document hebt u geleerd hoe beveiligingsinformatierapporten van Azure Security Center u kunnen helpen tijdens een onderzoek naar beveiligingswaarschuwingen. Zie de volgende onderwerpen voor meer informatie over het Azure Beveiligingscentrum:
 
 * [Veelgestelde vragen over Azure Security Center](security-center-faq.md). Raadpleeg de veelgestelde vragen over het gebruik van de service.
-* [Detectiemogelijkheden van Azure Security Center](security-center-detection-capabilities.md)
 * [Plannings- en bedieningsgids voor Azure Security Center](security-center-planning-and-operations-guide.md). Leer de ontwerpoverwegingen kennen en leer deze in te plannen als u de overstap naar Azure Security Center wilt maken.
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md). Informatie over het beheren van en reageren op beveiligingswaarschuwingen.
 * [Beveiligingsincidenten afhandelen in Azure Security Center](security-center-incident.md)

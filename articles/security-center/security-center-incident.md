@@ -1,6 +1,6 @@
 ---
-title: Beveiligingswaarschuwingen verwerken in Azure Security Center | Microsoft Docs
-description: Dit document bevat informatie over het gebruik van de mogelijkheden van Azure Security Center om beveiligingsincidenten af te handelen.
+title: Beveiligings incidenten beheren in Azure Security Center | Microsoft Docs
+description: Dit document helpt u bij het gebruik van Azure Security Center voor het beheren van beveiligings incidenten.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,53 +12,62 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60704081"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047593"
 ---
-# <a name="handling-security-incidents-in-azure-security-center"></a>Beveiligingsincidenten afhandelen in Azure Security Center
-Sorteren en onderzoeken van beveiligingswaarschuwingen kan zelfs voor de meest ervaren beveiligingsanalisten tijdrovend zijn, en velen weten zelfs niet waar te beginnen. Met behulp van [analytics](security-center-detection-capabilities.md) om de informatie tussen afzonderlijke [beveiligingswaarschuwingen](security-center-managing-and-responding-alerts.md) te verbinden kan het Beveiligingscentrum u één overzicht geven van de aanval en alle gerelateerde waarschuwingen - zo begrijpt u snel wat de aanvaller deed en welke resources betrokken zijn.
+# <a name="manage-security-incidents-in-azure-security-center"></a>Beveiligings incidenten beheren in Azure Security Center
 
-Dit document bespreekt hoe u beveiligingswaarschuwingen in het Beveiligingscentrum gebruikt als hulpmiddel bij het afhandelen van beveiligingsincidenten.
+Het sorteren en onderzoeken van beveiligings waarschuwingen kan enige tijd in beslag nemen voor zelfs de meest ervaren beveiligings analisten, en in veel gevallen is het lastig om zelfs te weten waar u moet beginnen. Met behulp van [analytics](security-center-detection-capabilities.md) om de informatie tussen afzonderlijke [beveiligingswaarschuwingen](security-center-managing-and-responding-alerts.md) te verbinden kan het Beveiligingscentrum u één overzicht geven van de aanval en alle gerelateerde waarschuwingen - zo begrijpt u snel wat de aanvaller deed en welke resources betrokken zijn.
+
+In dit onderwerp vindt u informatie over incidenten in Security Center en hoe u de waarschuwingen herstelt.
 
 ## <a name="what-is-a-security-incident"></a>Wat is een beveiligingsincident?
-In het Beveiligingscentrum is een beveiligingsincident een samenloop van alle waarschuwingen voor een resource die overeenstemt met [kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)-patronen. Incidenten verschijnen in de tegel en blade voor [Beveiligingswaarschuwingen](security-center-managing-and-responding-alerts.md). Een incident zal de lijst van gerelateerde waarschuwingen tonen, zodat u meer info krijgt over elke gebeurtenis.
+
+In het Beveiligingscentrum is een beveiligingsincident een samenloop van alle waarschuwingen voor een resource die overeenstemt met [kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/)-patronen. Incidenten worden weer gegeven in de lijst met [beveiligings waarschuwingen](security-center-managing-and-responding-alerts.md) . Klik op één een incident om de gerelateerde waarschuwingen weer te geven, waarmee u meer informatie over elk exemplaar kunt verkrijgen.
 
 ## <a name="managing-security-incidents"></a>Beveiligingsincidenten beheren
-U kunt uw huidige beveiligingsincidenten controleren met de tegel Beveiligingswaarschuwingen. Open Azure Portal en voer de volgende stappen uit om meer informatie over elk incident weer te geven:
 
-1. Op het Security Center-dashboard ziet u de tegel **Beveiligingswaarschuwingen**.
+1. Klik op het Security Center dash board op de tegel **beveiligings waarschuwingen** . De incidenten en waarschuwingen worden weer gegeven. Merk op dat de beschrijving van een beveiligingsincident een ander pictogram heeft vergeleken met andere waarschuwingen.
 
-    ![De tegel Beveiligingswaarschuwingen in Security Center](./media/security-center-incident/security-center-incident-fig1.png)
+    ![Beveiligings incidenten weer geven](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-2. Klik op deze tegel om hem uit te breiden. Als er een beveiligingsincident wordt gedetecteerd, verschijnt hij onder de grafiek beveiligingswaarschuwingen zoals hieronder afgebeeld:
+1. Als u details wilt weer geven, klikt u op een incident. Op de Blade **beveiligings incident gedetecteerd** wordt meer informatie weer gegeven. De sectie **algemene informatie** kan inzicht bieden in wat de beveiligings waarschuwing heeft geactiveerd. Hierin worden gegevens weer gegeven, zoals de doel resource, het bron-IP-adres (indien van toepassing), als de waarschuwing nog steeds actief is en aanbevelingen voor het oplossen van problemen.  
 
-    ![Beveiligingsincident](./media/security-center-incident/security-center-incident-fig2.png)
+    ![Reageren op beveiligings incidenten in Azure Security Center](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-3. Merk op dat de beschrijving van een beveiligingsincident een ander pictogram heeft vergeleken met andere waarschuwingen. Klik erop om meer informatie over dit incident te bekijken.
+1. Klik op een waarschuwing om meer informatie over elke waarschuwing te krijgen. Het herstel dat door Security Center wordt voorgesteld, verschilt per beveiligingswaarschuwing. Het herstel dat door Security Center wordt voorgesteld, verschilt per beveiligingswaarschuwing. 
 
-    ![Beveiligingsincident](./media/security-center-incident/security-center-incident-fig3.png)
+   > [!NOTE]
+   > Dezelfde waarschuwing kan bestaan als onderdeel van een incident, en als een zelfstandige waarschuwing worden weer gegeven.
 
-4. Op de blade **incident** ziet u meer details over dit beveiligingsincident, waaronder een volledige omschrijving, ernst (in dit geval hoog), huidige status (in dit geval *actief*, wat impliceert dat de gebruiker nog niets heeft gedaan - dit kan door met de rechtermuisknop te klikken op het incident op de blade **Beveiligingswaarschuwingen**), de aangevallen resource (in dit geval *VM1*) en de stappen om het incident te herstellen. In het onderste venster ziet u de waarschuwingen die in dit incident zijn opgenomen. Als u meer informatie wilt over elke waarschuwing, klikt u er gewoon op. Er wordt nu een nieuwe blade geopend, zoals hieronder aangegeven:
+    ![Waarschuwingsdetails](./media/security-center-incident/security-center-incident-alert.png)
 
-    ![Beveiligingsincident](./media/security-center-incident/security-center-incident-fig4.png)
+1. Volg de stappen voor herstel die zijn opgegeven voor elke waarschuwing.
 
-De informatie op deze blade verschilt, afhankelijk van de waarschuwing. Lees [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md) voor meer info over het beheren van deze waarschuwingen. Enkele belangrijke overwegingen met betrekking tot deze mogelijkheid:
+Voor meer informatie over waarschuwingen, [het beheren van en reageren op beveiligings waarschuwingen](security-center-managing-and-responding-alerts.md).
 
-* Een nieuw filter kunt u de weergave alleen Incident, alleen waarschuwingen of zowel kunt aanpassen.
-* Dezelfde waarschuwing kan als onderdeel van een incident (indien van toepassing) bestaan en worden weergegeven als een afzonderlijke waarschuwing.
+De volgende onderwerpen helpen u bij het door lopen van de verschillende waarschuwingen, volgens de resource typen:
+
+* [IaaS Vm's en server waarschuwingen](security-center-alerts-iaas.md)
+* [Systeem eigen Compute-waarschuwingen](security-center-alerts-compute.md)
+* [Data Services-waarschuwingen](security-center-alerts-data-services.md)
+
+In de volgende onderwerpen wordt uitgelegd hoe Security Center de verschillende telemetrie gebruikt die wordt verzameld van integratie met de Azure-infra structuur, om extra beveiligings lagen toe te passen voor resources die in azure zijn geïmplementeerd:
+
+* [Waarschuwingen voor service lagen](security-center-alerts-service-layer.md)
+* [Integratie met Azure-beveiligings producten](security-center-alerts-integration.md)
 
 ## <a name="see-also"></a>Zie ook
 In dit document hebt u kunnen lezen hoe u de mogelijkheid beveiligingsincidenten in Azure Security Center gebruikt. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
 
-* [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Detectiemogelijkheden van Azure Security Center](security-center-detection-capabilities.md)
+* [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-overview.md).
+* [Beveiligingswaarschuwingen beheren](security-center-managing-and-responding-alerts.md)
 * [Plannings- en bedieningsgids voor Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Azure Security Center FAQ](security-center-faq.md): raadpleeg veelgestelde vragen over het gebruik van de service.
 * [Azure-beveiligingsblog](https://blogs.msdn.com/b/azuresecurity/): lees blogberichten over de beveiliging en naleving van Azure.

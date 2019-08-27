@@ -1,46 +1,46 @@
 ---
-title: Verbinding maken met GitHub - Azure Logic Apps | Microsoft Docs
-description: GitHub-gebeurtenissen met GitHub REST-API's en Azure Logic Apps bewaken
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 03/02/2018
-ms.topic: article
-ms.service: logic-apps
+title: Verbinding maken met GitHub-Azure Logic Apps
+description: GitHub-gebeurtenissen bewaken met GitHub REST-Api's en Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 0d2ff9368bc244a5afd6fafc40cf476b90a80a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6e2a803ee2a272189abf0f21796b2305eea40b
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462566"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050901"
 ---
-# <a name="connect-to-github"></a>Verbinding maken met GitHub
+# <a name="connect-to-github-from-azure-logic-apps"></a>Verbinding maken met GitHub vanuit Azure Logic Apps
 
-GitHub is een webgebaseerde Git-opslagplaats hostingservice die alle van de gedistribueerde-versiebeheer en source code management (SCM)-functionaliteit in Git plus andere functies biedt.
+GitHub is een op het web gebaseerde Git-hosting service voor opslag plaatsen die alle gedistribueerde revisie beheer en SCM-functionaliteit (broncode beheer) biedt in Git en andere functies.
 
-Aan de slag met de GitHub-connector, [maakt u eerst een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+[Maak eerst een logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om aan de slag te gaan met de GitHub-connector.
 
-## <a name="create-a-connection-to-github"></a>Maak een verbinding met GitHub
+## <a name="create-a-connection-to-github"></a>Een verbinding met GitHub maken
 
-Voor het gebruik van de GitHub-connector in een logische app, moet u eerst maken een *verbinding* en geeft u de details voor deze eigenschappen: 
+Als u de GitHub-connector in een logische app wilt gebruiken, moet u eerst een *verbinding* maken en vervolgens Details voor deze eigenschappen opgeven: 
 
 | Eigenschap | Vereist | Description | 
 | -------- | -------- | ----------- | 
-| Token | Ja | Geef uw GitHub-referenties. |
+| Token | Ja | Geef uw GitHub-referenties op. |
 
-Nadat u de verbinding hebt gemaakt, kunt u de acties worden uitgevoerd en luisteren naar de triggers die in dit artikel wordt beschreven.
+Nadat u de verbinding hebt gemaakt, kunt u de acties uitvoeren en Luis teren naar de triggers die in dit artikel worden beschreven.
 
 > [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 
-## <a name="connector-specific-details"></a>Connector-specifieke details
+## <a name="connector-reference"></a>Connector-verwijzing
 
-Raadpleeg voor triggers en acties die zijn gedefinieerd in Swagger en beperkingen met betrekking de [connectorgegevens](/connectors/github/).
+Raadpleeg de [referentie pagina van de connector](/connectors/github/)voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
-## <a name="find-more-connectors"></a>Meer connectors zoeken
+## <a name="next-steps"></a>Volgende stappen
 
-* Controleer de [lijst van Connectors](apis-list.md).
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

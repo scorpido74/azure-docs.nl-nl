@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5088cfa417c76933be6785188f2b173b7b461d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772577"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035947"
 ---
 # <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Azure Machine Learning-Service verkennen met Jupyter-notebooks
 
@@ -67,4 +67,4 @@ Bekijk de [voorbeeld notitieblokken](https://aka.ms/aml-notebooks) om te ontdekk
 
 - [Een model voor de classificatie van afbeeldingen trainen en implementeren met MNIST](tutorial-train-models-with-aml.md)
 
-- [Gegevens voorbereiden en geautomatiseerde machine learning gebruiken om een regressiemodel met de gegevensset voor taxi's in NYC te trainen](tutorial-data-prep.md)
+- [Gegevens voorbereiden en geautomatiseerde machine learning gebruiken om een regressiemodel met de gegevensset voor taxi's in NYC te trainen](tutorial-auto-train-models.md)

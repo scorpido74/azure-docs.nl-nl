@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515280"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035724"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database serverloze (preview-versie)
 
@@ -136,7 +136,7 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Data base kopiëren|Maak een Data Base als kopie.<br>Exporteren naar een BACPAC-bestand.|
 |SQL-gegevens synchronisatie|Synchronisatie tussen de data bases van de hub en het lid die worden uitgevoerd op een configureerbaar schema of die hand matig worden uitgevoerd|
 |Bepaalde data base-meta gegevens wijzigen|Nieuwe data base-Tags toevoegen.<br>De maximale vCores, de minimale vCores of de vertraging voor autopause wijzigen.|
-|SQL Server Management Studio (SSMS)|Als u SSMS versie 18 gebruikt en een nieuw query venster opent voor een Data Base op de server, wordt alle automatisch onderbroken data bases op dezelfde server hervat. Dit gedrag treedt niet op als u gebruikmaakt van SSMS-versie 17.9.1 met IntelliSense is uitgeschakeld.|
+|SQL Server Management Studio (SSMS)|Als u SSMS-versies gebruikt die ouder zijn dan 18,1 en een nieuw query venster opent voor een Data Base op de server, wordt automatisch onderbroken Data Base op dezelfde server hervat. Dit gedrag treedt niet op als u SSMS-versie 18,1 of hoger gebruikt.|
 
 Autohervatten wordt ook geactiveerd tijdens de implementatie van sommige service-updates waarvoor de data base online moet zijn.
 
@@ -165,7 +165,7 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
    |Parameter|Opties voor waarden|Standaardwaarde|
    |---|---|---|---|
    |Min vCores|Een van de {0,5, 1, 2, 4} overschrijdt de maximale vCores|0,5 vCores|
-   |Vertraging van autopause|Minimum: 60 minuten (1 uur)<br>Maximum: 10080 minuten (7 dagen)<br>Stappen 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
+   |Vertraging van autopause|Maal 60 minuten (1 uur)<br>Gehalte 10080 minuten (7 dagen)<br>Stappen 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
 
 > [!NOTE]
 > T-SQL gebruiken om een bestaande Data Base naar een server te verplaatsen of de berekenings grootte te wijzigen wordt momenteel niet ondersteund, maar kan worden uitgevoerd via de Azure Portal of Power shell.

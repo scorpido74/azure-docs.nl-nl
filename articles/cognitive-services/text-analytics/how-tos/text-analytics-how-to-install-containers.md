@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: ff0be2e9dada758cce96ba7c5eebbf03b00f56c6
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971449"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051265"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics containers installeren en uitvoeren
 
@@ -48,54 +48,38 @@ U moet voldoen aan de volgende vereisten voordat u met behulp van Text Analytics
 
 De volgende tabel beschrijft de minimale en aanbevolen CPU-kernen, ten minste 2,6 GHz (gigahertz) of sneller, en het geheugen, in gigabytes (GB), om toe te wijzen voor elke container Text Analytics.
 
-| Container | Minimum | Aanbevolen | TPS<br>(Minimum, Maximum)|
-|-----------|---------|-------------|--|
-|Sleuteltermextractie | 1 Core, 2 GB geheugen | 1 kern geheugen van 4 GB |15, 30|
-|Taaldetectie | 1 Core, 2 GB geheugen | 1 kern geheugen van 4 GB |15, 30|
-|Sentimentanalyse | 1 Core, 2 GB geheugen | 1 kern geheugen van 4 GB |15, 30|
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
+
+[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
+
+#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
+
+[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
+
+#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
+
+***
 
 * Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
 * TPS-trans acties per seconde
 
 Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van `docker run` de opdracht.
 
-## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
 
-Containerinstallatiekopieën voor Text Analytics zijn beschikbaar via Microsoft Container Registry.
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-| Container | Opslagplaats |
-|-----------|------------|
-|Sleuteltermextractie | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-|Taaldetectie | `mcr.microsoft.com/azure-cognitive-services/language` |
-|Sentimentanalyse| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
 
-Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden van micro soft container Registry.
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-Zie voor een volledige beschrijving van de beschikbare labels voor de Text Analytics-containers, de volgende containers op de Docker-Hub:
+#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
 
-* [Sleuteltermextractie](https://go.microsoft.com/fwlink/?linkid=2018757)
-* [Taaldetectie](https://go.microsoft.com/fwlink/?linkid=2018759)
-* [Sentimentanalyse](https://go.microsoft.com/fwlink/?linkid=2018654)
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
-Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) opdracht om een container installatie kopie te downloaden.
-
-### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Docker-pull voor de container voor de extractie van sleutel woorden
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
-```
-
-### <a name="docker-pull-for-the-language-detection-container"></a>Docker-pull voor de taal detectie container
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-container"></a>Docker-pull voor de sentiment-container
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
+***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -112,23 +96,19 @@ Gebruik de opdracht [docker run](https://docs.docker.com/engine/reference/comman
 
 [Voor beelden](../text-analytics-resource-container-config.md#example-docker-run-commands) van `docker run` de opdracht zijn beschikbaar.
 
-### <a name="run-container-example-of-docker-run-command"></a>Container voorbeeld van de opdracht docker run uitvoeren
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-Deze opdracht:
+#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
 
-* Voert een sleutel woordgroepen container uit vanuit de container installatie kopie
-* Wijst een CPU-kern en 4 GB aan geheugen toe
-* Gebruikt TCP-poort 5000 en wijst er een pseudo-TTY voor de container
-* Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
+#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
+
+[!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
+
+***
 
 > [!IMPORTANT]
 > De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](#billing).

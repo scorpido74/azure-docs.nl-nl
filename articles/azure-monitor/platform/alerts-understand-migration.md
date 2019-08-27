@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302252"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034759"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Meer informatie over de werking van het hulp programma voor migratie
 
@@ -75,11 +75,11 @@ Alle klassieke waarschuwingen op Cosmos DB metrieken kunnen worden gemigreerd, b
 
 - Gemiddeld aantal aanvragen per seconde
 - Consistentieniveau
-- Http-2xx
-- HTTP-3xx
-- Http 400
+- HTTP 2xx
+- HTTP 3xx
+- HTTP 400
 - HTTP 401
-- Interne server fout
+- Interne serverfout
 - Maxi maal aantal RUPM verbruikt per minuut
 - Max. RUs per seconde
 - Aantal mislukte aanvragen van Mongo
@@ -205,9 +205,9 @@ Voor Cosmos DB zijn equivalente gegevens zoals hieronder weer gegeven:
 | Metrische gegevens in klassieke waarschuwingen | Equivalente metrische gegevens in nieuwe waarschuwingen | Opmerkingen|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
-| Gegevens grootte | DataUsage| |
+| Gegevensgrootte | DataUsage| |
 | Aantal documenten | DocumentCount||
-| Index grootte | IndexUsage||
+| Indexgrootte | IndexUsage||
 | Aanvraag kosten voor aantal Mongo| MongoRequestCharge met dimensie "opdrachtnaam" = "aantal"||
 | Aanvraag frequentie aantal Mongo | MongoRequestsCount met dimensie "opdrachtnaam" = "aantal"||
 | Kosten voor het verwijderen van Mongo-aanvragen | MongoRequestCharge met dimensie "opdrachtnaam" = "verwijderen"||
@@ -260,9 +260,16 @@ Nadat u [de migratie hebt geactiveerd](alerts-using-migration-tool.md), ontvangt
 
 Het abonnement kan niet worden gemigreerd vanwege een aantal recente wijzigingen aan de klassieke waarschuwings regels in uw abonnement. Dit probleem is tijdelijk. U kunt de migratie opnieuw starten nadat de migratie status in een paar dagen weer **gereed is voor migratie** .
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Het beleid of de scope vergrendeling waardoor uw regels niet kunnen worden gemigreerd
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Bereik vergrendeling voor komen dat uw regels worden gemigreerd
 
-Als onderdeel van de migratie worden nieuwe metrische waarschuwingen en nieuwe actie groepen gemaakt en vervolgens worden klassieke waarschuwings regels verwijderd. Er is echter een beleid of bereik vergrendeling die verhindert dat wij resources kunnen maken. Afhankelijk van het beleid of de bereik vergrendeling kunnen sommige of alle regels niet worden gemigreerd. U kunt dit probleem oplossen door de scope vergrendeling of het beleid tijdelijk te verwijderen en de migratie opnieuw te activeren.
+Als onderdeel van de migratie worden nieuwe metrische waarschuwingen en nieuwe actie groepen gemaakt en vervolgens worden klassieke waarschuwings regels verwijderd. Een bereik vergrendeling kan er echter voor zorgen dat we geen resources kunnen maken of verwijderen. Afhankelijk van de bereik vergrendeling kunnen sommige of alle regels niet worden gemigreerd. U kunt dit probleem oplossen door de bereik vergrendeling voor het abonnement, de resource groep of de resource die wordt vermeld in het [migratie hulpprogramma](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel), te verwijderen en de migratie opnieuw te activeren. Bereik vergrendeling kan niet worden uitgeschakeld en moet voor de duur van het migratie proces worden verwijderd. Meer [informatie over het beheren van bereik vergrendelingen](../../azure-resource-manager/resource-group-lock-resources.md#portal).
+
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Beleid met een ' deny '-effect waardoor we uw regels niet kunnen migreren
+
+Als onderdeel van de migratie worden nieuwe metrische waarschuwingen en nieuwe actie groepen gemaakt en vervolgens worden klassieke waarschuwings regels verwijderd. Een beleid kan er echter voor zorgen dat we geen resources kunnen maken. Afhankelijk van het beleid kunnen sommige of alle regels niet worden gemigreerd. De beleids regels die het proces blok keren, worden weer gegeven in het [hulp programma voor migratie](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Los dit probleem op door een van de volgende:
+
+- Het uitsluiten van de abonnementen of resource groepen voor de duur van het migratie proces van de beleids toewijzing. Meer [informatie over het beheren van het uitsluitings bereik van beleid](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
+- Het verwijderen of wijzigen van het effect op ' audit ' of ' append ' (die bijvoorbeeld problemen met ontbrekende labels kan oplossen). Meer [informatie over het beheren van het beleid-effect](../../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="next-steps"></a>Volgende stappen
 

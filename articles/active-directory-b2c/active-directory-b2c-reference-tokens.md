@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c347a5740a13d071d4bb06daf43463f974198e5d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2b33c35b1e4f83c30e2efdf64aed0b5f2035c79b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980803"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032080"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Overzicht van tokens in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD) B2C, worden verschillende typen beveiligings tokens meegegeven wanneer elke [verificatie stroom](active-directory-b2c-apps.md)wordt verwerkt. In dit document worden de indeling, de beveiligings kenmerken en de inhoud van elk type token beschreven.
+Azure Active Directory B2C (Azure AD B2C) worden verschillende typen beveiligings tokens meegegeven wanneer elke [verificatie stroom](active-directory-b2c-apps.md)wordt verwerkt. In dit document worden de indeling, de beveiligings kenmerken en de inhoud van elk type token beschreven.
 
 ## <a name="token-types"></a>Token typen
 
@@ -40,7 +40,7 @@ Een [geregistreerde toepassing](tutorial-register-applications.md) ontvangt toke
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-Beveiligings tokens die uw toepassing ontvangt van Azure AD B2C kunnen afkomstig zijn van `/authorize` de `/token` -of-eind punten. Wanneer id-tokens worden verkregen van `/authorize` het eind punt, worden ze uitgevoerd met behulp van de [impliciete stroom](active-directory-b2c-reference-spa.md). dit wordt vaak gebruikt voor gebruikers die zich aanmelden bij webtoepassingen op basis van Java script. Wanneer id-tokens worden verkregen van `/token` het eind punt, worden ze uitgevoerd met behulp van de [code stroom vertrouwelijk](active-directory-b2c-reference-oidc.md), waardoor het token in de browser verborgen blijft.
+Beveiligings tokens die uw toepassing ontvangt van Azure AD B2C kunnen afkomstig zijn van `/authorize` de `/token` -of-eind punten. Wanneer id-tokens worden verkregen van `/authorize` het eind punt, wordt dit gedaan met behulp van de [impliciete stroom](active-directory-b2c-reference-spa.md). dit wordt vaak gebruikt voor gebruikers die zich aanmelden bij webtoepassingen op basis van Java script. Wanneer id-tokens worden verkregen van `/token` het eind punt, wordt het uitgevoerd met de [autorisatie code stroom](active-directory-b2c-reference-oidc.md#get-a-token), waardoor het token in de browser verborgen blijft.
 
 ## <a name="claims"></a>Claims
 

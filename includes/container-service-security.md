@@ -4,14 +4,14 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c7b9e3a9eb5c906fa598da9c8c547cb542ecb719
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176588"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036690"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(AFGESCHAFT) Docker-containers in Azure Container Service beveiligen
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>KEUR Docker-containers beveiligen in Azure Container Service
 
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -34,7 +34,7 @@ Beveiliging is erg belangrijk voor ondernemingen. Om zich te beschermen tegen be
 
 Zelfs wanneer u een persoonlijk register gebruikt, is het een goed idee om scanoplossingen voor installatiekopieën te gebruiken voor extra beveiligingsvalidatie. Elke softwarelaag in een containerinstallatiekopie is mogelijk kwetsbaar voor beveiligingsproblemen, afzonderlijk van de andere lagen in de containerinstallatiekopie. Steeds meer bedrijven implementeren hun productieworkloads op basis van containertechnologieën. Daardoor wordt het scannen van installatiekopieën steeds belangrijker om veiligheidsbedreigingen voor organisaties te voorkomen. 
 
-Oplossingen voor beveiligingsbewaking en scannen zoals [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) en [Aqua Security](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) kunnen worden gebruikt om containerinstallatiekopieën in een persoonlijk register te scannen en mogelijke beveiligingsproblemen te identificeren. Het is belangrijk om te weten welk scanniveau de verschillende oplossingen bieden. Bepaalde oplossingen controleren de lagen van de installatiekopie bijvoorbeeld alleen maar op bekende beveiligingsproblemen. Deze oplossingen kunnen mogelijk niet software voor installatiekopielagen controleren die via bepaalde pakketbeheersoftware is gemaakt. Andere oplossingen hebben diepere scanintegratie en kunnen beveiligingsproblemen in alle verpakte software vinden.
+Oplossingen voor beveiligingsbewaking en scannen zoals [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) en [Aqua Security](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) kunnen worden gebruikt om containerinstallatiekopieën in een persoonlijk register te scannen en mogelijke beveiligingsproblemen te identificeren. Het is belangrijk om te weten welk scanniveau de verschillende oplossingen bieden. Bepaalde oplossingen controleren de lagen van de installatiekopie bijvoorbeeld alleen maar op bekende beveiligingsproblemen. Deze oplossingen kunnen mogelijk niet software voor installatiekopielagen controleren die via bepaalde pakketbeheersoftware is gemaakt. Andere oplossingen hebben diepere scanintegratie en kunnen beveiligingsproblemen in alle verpakte software vinden.
 
 ### <a name="production-deployment-rules-and-audit"></a>Regels voor productie-implementatie en controle
 Zodra een toepassing naar productie is geïmplementeerd, is het essentieel om enkele regels in te stellen om ervoor te zorgen dat de installatiekopieën die worden gebruikt in productieomgevingen beveiligd zijn en geen beveiligingsproblemen bevatten.
@@ -58,11 +58,11 @@ Elke orchestrator die beschikbaar is in Azure Container Service heeft zijn eigen
 
 Zie de volgende bronnen voor extre orchestrator-specifieke informatie over beveiliging:
 
-* **Kubernetes**: [Aanbevolen beveiligingsprocedures voor Kubernetes-implementatie](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
+* **Kubernetes**: [Aanbevolen beveiligings procedures voor de implementatie van Kubernetes](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
-* **DC/OS**: [Uw Cluster beveiligen](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
+* **DC/OS**: [Uw cluster beveiligen](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
 
-* **Docker Swarm**: [Docker-beveiliging](https://www.docker.com/docker-security)
+* **Docker-Swarm**: [Docker-beveiliging](https://www.docker.com/docker-security)
 
 ## <a name="next-steps"></a>Volgende stappen
 

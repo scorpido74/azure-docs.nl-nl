@@ -6,17 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 08/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6dcd55cc2c269024179e450d789df544bb8ff9a9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012924"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035707"
 ---
+::: zone target="chromeless"
+
+# <a name="return-azure-data-box-disk"></a>Azure Data Box Disk retour neren 
+
+::: zone-end
+
 ::: zone target="docs"
 
 # <a name="tutorial-return-azure-data-box-disk"></a>Zelfstudie: Azure Data Box Disk retour neren 
@@ -29,13 +34,14 @@ In deze zelfstudie leert u het volgende:
 > * Een Data Box Disk naar Microsoft verzenden
 > * Data Box Disk in verschillende regio's ophalen
 
-
 ## <a name="prerequisites"></a>Vereisten
 
 Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data Box-schijf en deze gegevens controleren](data-box-disk-deploy-copy-data.md).
 
 
 ## <a name="ship-data-box-disk-back"></a>Een Data Box Disk terugsturen
+
+::: zone-end
 
 1. Koppel de schijven los, nadat de gegevensvalidatie is voltooid. Verwijder de verbindingskabels.
 2. Verpak alle schijven en de verbindingskabels in bubbelplastic en plaats deze in de verzenddoos. Er kunnen kosten in rekening worden gebracht als de accessoires ontbreken.
@@ -45,15 +51,25 @@ Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data B
 
 De volgende stappen worden bepaald door de locatie waar u het apparaat retourneert.
 
+
+
+- [Plan een ophaling met ups bij het retour neren van het apparaat in VS en Canada](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
+- [Plan een ophaling met DHL voor Europa](data-box-disk-deploy-picked-up.md#pick-up-in-europe) door de website ervan te bezoeken en het Airway-factuur nummer op te geven.
+- [Een ophaling plannen in Australië](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
+- [Een ophaling voor landen in Azië](data-box-disk-deploy-picked-up.md#pick-up-in-asia) zoals Japan, Korea en Singapore plannen.
+
+::: zone target="chromeless"
+
+Nadat de schijven zijn opgehaald door uw provider, wordt de status van de bestelling in de portal-updates en een tracerings-ID weer gegeven.
+
+::: zone-end
+
 ## <a name="pick-up-in-us-canada"></a>Orderverzamelen in Nederland, Canada
 
 Voer de volgende stappen uit als u het apparaat in VS of Canada retourneert.
 
 1. Gebruik het retourlabel in de doorzichtige plastic hoes op de doos. Als het label is beschadigd of verloren is gegaan:
     - Ga naar **overzicht > verzend label te downloaden** en down load een retour verzendings label.
-
-        ![Verzendlabel downloaden](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Breng het label op het apparaat.
 
 2. Verzegel de verpakking en zorg ervoor dat het retourlabel zichtbaar is.
@@ -64,33 +80,20 @@ Voer de volgende stappen uit als u het apparaat in VS of Canada retourneert.
     - Als het tracking nummer niet wordt vermeld, moet u tijdens het ophalen een extra kosten betalen.
     - In plaats van het ophalen te plannen, kunt u ook de Data Box Disk op de dichtstbijzijnde uitval locatie afhalen.
 
-
 ## <a name="pick-up-in-europe"></a>Ophalen in Europa
 
 Voer de volgende stappen uit als u het apparaat in Europa wilt retour neren.
 
 1. Gebruik het retourlabel in de doorzichtige plastic hoes op de doos. Als het label is beschadigd of verloren is gegaan:
     - Ga naar **overzicht > verzend label te downloaden** en down load een retour verzendings label.
-
-        ![Verzendlabel downloaden](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Breng het label op het apparaat.
 
 2. Verzegel de verpakking en zorg ervoor dat het retourlabel zichtbaar is.
 3. Als u het apparaat in Europa met DHL retourneert, dient u een ophaalverzoek in door op de website van DHL het verzendnummer op te geven.
-4. Ga naar de pagina land/regio DHL Express en kies **een courier-verzameling boeken > eReturn-verzen ding**.
-
-    ![DHL retour zending](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
-    
+4. Ga naar de pagina land/regio DHL Express en kies **een courier-verzameling boeken > eReturn-verzen ding**.    
 3. Geef het nummer van de luchtvrachtbrief op en klik op **Boek een koerier** om een ophaalmoment te plannen.
 
-      ![Ophalen plannen](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
-
-## <a name="pick-up-in-asia-pacific"></a>Picken in Azië en Stille Oceaan
-
-Deze regio bevat instructies voor het ophalen in Japan, Korea, Australië en Singapore.
-
-### <a name="pick-up-in-australia"></a>Orderverzamelen in Australië
+## <a name="pick-up-in-australia"></a>Orderverzamelen in Australië
 
 Azure-data centers in Australië hebben een extra beveiligings melding. Alle inkomende verzen dingen moeten een geavanceerde melding hebben. Voer de volgende stappen uit voor het ophalen in Australië.
 
@@ -100,6 +103,10 @@ Azure-data centers in Australië hebben een extra beveiligings melding. Alle ink
     - Ordernaam
     - Adres
     - Naam van contactpersoon
+
+## <a name="pick-up-in-asia"></a>Picken in Azië
+
+De instructies voor het afhalen verschillen per Japan, Korea en Singapore.
 
 ### <a name="pick-up-in-japan"></a>Ophalen in Japan
 
@@ -159,6 +166,8 @@ Als dat nodig is, kunt u contact opnemen met de ondersteuning van de Quantium-op
 3. Hand aan de Courier. 
 
 
+::: zone target="docs"
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie zijn verschillende onderwerpen besproken over de Azure Data Box-schijf, zoals:
@@ -175,24 +184,5 @@ Ga naar de volgende procedure om te leren hoe u het uploaden van gegevens van Da
 ::: zone-end
 
 
-::: zone target="chromeless"
-
-# <a name="return-the-disk-to-azure"></a>De schijf naar Azure retour neren
-
-1. Wanneer de gegevens validatie is voltooid, koppelt u de schijven los. Verwijder de verbindingskabels.
-2. Verpak alle schijven en de verbindingskabels in bubbelplastic en plaats deze in de verzenddoos. Er kunnen kosten in rekening worden gebracht als de accessoires ontbreken.
-    - De verpakking van de eerste verzen ding opnieuw gebruiken.  
-    - U wordt aangeraden schijven te verpakken met een goed beveiligde ballon.
-    - Zorg ervoor dat het passend is Snug om de bewegingen in het vak te verminderen.
-
-3. De volgende stappen worden bepaald door de locatie waar u het apparaat retourneert.
-
-    - [Plan een ophaling met ups bij het retour neren van het apparaat in VS en Canada](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-    - [Plan een ophaling met DHL voor Europa](data-box-disk-deploy-picked-up.md#pick-up-in-europe) door de website ervan te bezoeken en het Airway-factuur nummer op te geven.
-    - [Plan een ophaling voor landen in Australië-Pacific-regio](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific) , zoals Australië, Japan, Korea en Singapore.
-
-Nadat de schijven zijn opgehaald door uw provider, wordt de status van de bestelling in de portal-updates en een tracerings-ID weer gegeven.
-
-::: zone-end
 
 

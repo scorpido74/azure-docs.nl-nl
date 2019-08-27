@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697623"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032681"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Wat is Text Analytics-API?
 
@@ -81,7 +81,7 @@ Deze sectie is voor betere zichtbaarheid verplaatst naar een afzonderlijk artike
 
 ## <a name="data-limits"></a>Gegevenslimieten
 
-Alle eindpunten van de Text Analytics-API accepteren onbewerkte tekstgegevens. De huidige limiet is 5120 tekens per document. Als u grotere documenten moet analyseren, kunt u deze splitsen in een aantal kleinere documenten. Als u toch een hogere limiet nodig hebt, [neem dan contact met ons op](https://azure.microsoft.com/overview/sales-number/) zodat we uw vereisten kunnen bespreken.
+Alle eindpunten van de Text Analytics-API accepteren onbewerkte tekstgegevens. De huidige limiet is 5120 tekens per document. Als u grotere documenten moet analyseren, kunt u deze splitsen in een aantal kleinere documenten.
 
 | Limiet | Value |
 |------------------------|---------------|
@@ -93,7 +93,7 @@ De frequentie limiet is afhankelijk van uw prijs categorie.
 
 | Laag          | Aanvragen per seconde | Aanvragen per minuut |
 |---------------|---------------------|---------------------|
-| Meerdere services | 1000                | 1000                |
+| S/meerdere services | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |

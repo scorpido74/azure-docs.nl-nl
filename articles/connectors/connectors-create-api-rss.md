@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met RSS-feeds van Azure Logic Apps | Microsoft Docs
-description: Automatiseren van taken en werkstromen die bewaken en beheren van RSS-feeds met behulp van Azure Logic Apps
+title: Verbinding maken met RSS-feeds vanuit Azure Logic Apps | Microsoft Docs
+description: Taken en werk stromen automatiseren waarmee RSS-feeds worden gecontroleerd en beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,51 +11,51 @@ ms.topic: article
 ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 70b250074395977f70ac1b3eb0ce3ffdc96fced1
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204845"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050843"
 ---
-# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>RSS-kanalen beheren met behulp van Azure Logic Apps
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>RSS-feeds beheren met behulp van Azure Logic Apps
 
-Met Azure Logic Apps en de RSS-connector, kunt u geautomatiseerde taken en werkstromen voor een RSS-feed, bijvoorbeeld:
+Met Azure Logic Apps en de RSS-connector kunt u geautomatiseerde taken en werk stromen voor elke RSS-feed maken, bijvoorbeeld:
 
-* Monitor als de RSS-feeditems worden gepubliceerd.
-* Lijst met alle RSS-feeditems.
+* Controleren wanneer RSS-feed-items worden gepubliceerd.
+* Alle items van de RSS-feed weer geven.
 
-RSS (Rich Site Summary), ook wel heel eenvoudig Syndication, is een populaire indeling voor web-syndicatie en wordt gebruikt voor het publiceren van regelmatig bijgewerkte inhoud, zoals blogberichten en nieuws. Veel uitgevers van inhoud bieden dat een RSS-feed, zodat gebruikers zich op deze inhoud abonneren kunnen. 
+RSS (uitgebreid site overzicht), ook wel echt eenvoudige syndicatie genoemd, is een populaire indeling voor Websyndicatie en wordt gebruikt voor het publiceren van regel matig bijgewerkte inhoud, zoals blog berichten en nieuwskoppen. Veel uitgevers van inhoud bieden een RSS-feed zodat gebruikers zich kunnen abonneren op die inhoud. 
 
-U kunt een RSS-trigger die wordt antwoorden uit een RSS-feed opgehaald en maakt de uitvoer beschikbaar voor andere acties. U kunt een RSS-actie in uw logische apps gebruiken voor het uitvoeren van een taak met de RSS-feed. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+U kunt een RSS-trigger gebruiken die antwoorden ontvangt van een RSS-feed en de uitvoer beschikbaar maakt voor andere acties. U kunt een RSS-actie in uw Logic apps gebruiken om een taak uit te voeren met de RSS-feed. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
 * De URL voor een RSS-feed
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot een RSS-feed. Om te beginnen met een RSS-trigger, [maken van een lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor het gebruik van een RSS-actie beginnen uw logische app met een andere trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waarvoor u toegang wilt krijgen tot een RSS-feed. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een RSS-trigger. Als u een RSS-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 ## <a name="connect-to-an-rss-feed"></a>Verbinding maken met een RSS-feed
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
 1. Kies een pad: 
 
-   * Typ 'rss' als filter voor lege, logische apps, in het zoekvak. Selecteer de gewenste trigger onder de lijst met triggers. 
+   * Voor lege logische apps voert u in het zoekvak ' RSS ' in als uw filter. Selecteer de gewenste trigger onder de lijst met triggers. 
 
      -of-
 
-   * Voor bestaande logische apps, onder de stap waarin u wilt toevoegen van een actie kiezen **nieuwe stap**. Typ 'rss' als filter in het zoekvak. Selecteer de actie die u wilt onder de lijst met acties.
+   * Kies **nieuwe stap**onder de stap waar u een actie wilt toevoegen voor bestaande Logic apps. Typ 'rss' als filter in het zoekvak. Selecteer in de lijst acties de gewenste actie.
 
-1. Geef de benodigde informatie voor uw geselecteerde trigger of actie en doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/rss/).
+Raadpleeg de [referentie pagina](/connectors/rss/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -64,4 +64,4 @@ Voor technische informatie over triggers en acties limieten die worden beschreve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

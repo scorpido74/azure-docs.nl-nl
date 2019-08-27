@@ -1,6 +1,6 @@
 ---
-title: Onderhouds meldingen instellen voor uw Windows-Vm's in azure | Microsoft Docs
-description: Meer informatie over het instellen van geplande onderhouds meldingen voor uw virtuele Azure-machines.
+title: Geplande gebeurtenissen controleren voor uw Windows-Vm's in azure | Microsoft Docs
+description: Meer informatie over het bewaken van uw virtuele Azure-machines voor geplande gebeurtenissen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657409"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051854"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>Meldingen over onderhoud die van invloed zijn op uw virtuele machine instellen
+# <a name="monitoring-scheduled-events"></a>Bewakings Scheduled Events
 
 Updates worden elke dag toegepast op verschillende onderdelen van Azure, om ervoor te zorgen dat de services die worden uitgevoerd, veilig en up-to-date blijven. Naast geplande updates kunnen ook niet-geplande gebeurtenissen optreden. Als er bijvoorbeeld hardware-degradatie of-fouten worden gedetecteerd, moeten Azure-Services mogelijk niet-gepland onderhoud uitvoeren. Het gebruik van Livemigratie, het bewaren van updates en het algemeen houden van een strikte balk over de impact van updates, in de meeste gevallen zijn deze gebeurtenissen bijna transparant voor klanten en ze hebben geen invloed op een paar seconden van het blok keren van virtuele machines. Voor sommige toepassingen kan het echter zelfs enkele seconden duren voordat de blok kering van de virtuele machine gevolgen kan hebben. Het is belang rijk dat u op de hoogte bent van aanstaande onderhouds werkzaamheden van Azure, om ervoor te zorgen dat deze toepassingen optimaal worden ervaren. [Scheduled events-service](scheduled-events.md) biedt u een programmatische interface om op de hoogte te worden gesteld van aanstaande onderhouds werkzaamheden en kunt u het onderhoud op de juiste manier afhandelen. 
 

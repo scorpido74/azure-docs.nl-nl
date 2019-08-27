@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 07/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 5b9054f0be9b3098d853164e1ccf52df451f8165
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 796335fddf6107284b589d70094ff4f5a0e3acd5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012974"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050000"
 ---
 ::: zone target="docs"
 
@@ -302,14 +301,12 @@ Voer de volgende stappen uit om verbinding te maken en gegevens te kopiëren van
 1. Geef de inhoud van het ontgrendelde station weer. De lijst met voorgemaakte mappen en submappen in het station verschilt, afhankelijk van de opties die zijn geselecteerd bij het plaatsen van de Data Box Disk order.
 2. Kopieer de gegevens naar mappen die overeenkomen met de juiste gegevens indeling. Kopieer bijvoorbeeld de ongestructureerde gegevens naar de map voor *BlockBlob* -map-, VHD-of VHDX-gegevens naar *PageBlob* map en bestanden naar *AzureFile*. Als de gegevens indeling niet overeenkomt met de juiste map (opslag type), mislukt de gegevens in een latere stap naar Azure.
 
+    - Zorg ervoor dat alle containers, blobs en bestanden voldoen aan de [Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) -naamgevings conventies en [Azure-object grootte limieten](data-box-disk-limits.md#azure-object-size-limits). Als deze regels of limieten niet worden gevolgd, mislukt het uploaden van gegevens naar Azure.
     - Er wordt voor elke submap onder de BlockBlob- en PageBlob-mappen een container gemaakt in het Azure-opslagaccount. Alle bestanden onder *BlockBlob* -en *PageBlob* -mappen worden gekopieerd naar een standaard container $root onder het Azure Storage-account. 
     - Alle bestanden in de $root container worden altijd geüpload als blok-blobs.
     - Kopieer bestanden naar een map in de map *AzureFile* . Een submap in de map *AzureFile* maakt een file share. Bestanden die rechtstreeks naar de map *AzureFile* worden gekopieerd, mislukken en worden geüpload als blok-blobs.
     - Als er in de hoofdmap bestanden en mappen voorkomen, moet u deze naar een andere map verplaatsen voordat u met het kopiëren van gegevens begint.
     - Als uw bestelling Managed Disks als een van de opslag doelen, raadpleegt u de naamgevings conventies voor [beheerde schijven](data-box-disk-limits.md#managed-disk-naming-conventions).
-
-    > [!IMPORTANT]
-    > Alle containers, blobs en file moeten voldoen aan Azure- [naamgevings conventies](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) en [Azure-object grootte limieten](data-box-disk-limits.md#azure-object-size-limits). Als deze regels of limieten niet worden gevolgd, mislukt het uploaden van gegevens naar Azure.
 
 3. Gebruik slepen en neerzetten met bestanden Verkenner of een hulp programma voor het kopiëren van SMB-compatibele bestanden zoals Robocopy om uw gegevens te kopiëren. U kunt meerdere Kopieer taken starten met de volgende opdracht:
 
@@ -327,6 +324,6 @@ Voer de volgende stappen uit om uw gegevens te verifiëren.
 1. Voer `DataBoxDiskValidation.cmd` uit in de map *DataBoxDiskImport* van het station om de controlesom te controleren.
 2. Gebruik optie 2 om uw bestanden te valideren en controle sommen te genereren. Afhankelijk van de gegevensgrootte kan deze stap enige tijd in beslag nemen. Als er fouten optreden tijdens de validatie en het genereren van de controlesom, krijgt u hiervan een melding en ziet u ook een koppeling naar de foutenlogboeken.
 
-    Als tijdens de validatie fouten worden weer geven, raadpleegt u [problemen met validatie fouten oplossen](data-box-disk-troubleshoot.md).
+    Zie [gegevens valideren](data-box-disk-deploy-copy-data.md#validate-data)voor meer informatie over gegevens validatie. Zie [problemen met validatie fouten oplossen](data-box-disk-troubleshoot.md)als u problemen ondervindt tijdens de validatie.
 
 ::: zone-end

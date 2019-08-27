@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 61c404abc9c0b00512014d4ebf3450023699507b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8081862d3849ee9653427f43ad1dadb145102d00
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908001"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036117"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Linux-machines te controleren
 
@@ -104,7 +104,7 @@ Wanneer aanbevelingen worden doorgevoerd, worden ze als opgelost gemarkeerd.
 
 ## <a name="view-detected-threats"></a>Gedetecteerde bedreigingen bekijken
 
-Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Lees [Detectiemogelijkheden van Azure Security Center](../../security-center/security-center-detection-capabilities.md) voor gedetailleerdere informatie over de detectiemogelijkheden van Azure Security Center.
+Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie [How Security Center bedreigingen detecteren?](../../security-center/security-center-alerts-overview.md#detect-threats)voor uitgebreide informatie over de detectie mogelijkheden van Security Center bedreigingen.
 
 De functie voor beveiligingsmeldingen vereist dat de Security Center-prijscategorie wordt verhoogd van *Gratis* naar *Standard*. Er is een **gratis proefversie** beschikbaar wanneer u naar deze hogere prijscategorie overstapt. 
 
