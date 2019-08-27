@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563901"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050075"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
  
@@ -248,7 +248,7 @@ Versie 2 en [v3 (preview)](luis-migration-api-v3.md) van de API zijn beschikbaar
 
 De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. Eind punten voor gepubliceerde (staging of productie) apps hebben een _andere_ route dan eind punten voor getrainde apps. 
 
-Gebruik de host, `https://localhost:5000`voor container-api's. 
+Gebruik de host, `http://localhost:5000`voor container-api's. 
 
 |Pakkettype|Methode|Route|Queryparameters|
 |--|--|--|--|
@@ -274,7 +274,7 @@ curl -X GET \
 "http://localhost:5000/luis/v2.0/apps/{APPLICATION_ID}?q=turn%20on%20the%20lights&staging=false&timezoneOffset=0&verbose=false&log=true" \
 -H "accept: application/json"
 ```
-Als u query's wilt uitvoeren  naar de faserings omgeving, wijzigt u de parameter waarde voor de **faserings** query teken reeks in waar: 
+Als u query's wilt uitvoeren naar de faserings omgeving, wijzigt u de parameter waarde voor de **faserings** query teken reeks in waar: 
 
 `staging=true`
 

@@ -1,48 +1,48 @@
 ---
-title: Gegevens van de klant aanvragen functies in Azure IoT Central | Microsoft Docs
-description: Gegevens van de klant functies in Azure IoT Central aanvragen
+title: Functies voor klant gegevens aanvragen in azure IoT Central | Microsoft Docs
+description: Functies voor het aanvragen van klant gegevens in azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/24/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 4c63ac8d6b16b2a0476600f67c66b2ccc8dc2aab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1775c8680b2e0d931c623d2e8ced2224205a767
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685559"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050487"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Overzicht van de klant functies voor aanvraag
 
-Azure IoT Central is een volledig beheerde oplossing uit Internet of Things (IoT)-software-as-a-service waarmee u eenvoudig verbinding maken, bewaken, en uw IoT-apparaten op schaal beheren, diepe inzichten uit uw IoT-gegevens maken en onderneem actie.
+Azure IoT Central is een software-as-a-service-oplossing met volledige beheerde Internet of Things (IoT) waarmee u eenvoudig uw IoT-assets op schaal kunt aansluiten, bewaken en beheren, een grondige inzichten kunt creëren op basis van uw IoT-gegevens en een gefundeerde actie kunt ondernemen.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="identifying-customer-data"></a>Identificeren van klantgegevens
+## <a name="identifying-customer-data"></a>Klant gegevens identificeren
 
-Azure Active Directory Object-id's worden gebruikt voor het identificeren van gebruikers en rollen toewijzen. Azure IoT Central portal geeft gebruiker e-mailadressen van roltoewijzingen, maar alleen de Azure Active Directory-Object-ID is opgeslagen, het e-mailadres is dynamisch opgevraagd uit Azure Active Directory. Azure IoT Central-beheerders kunnen weergeven, exporteren en verwijderen van gebruikers van de toepassing in de sectie voor het beheer van gebruiker van een Azure IoT Central-toepassing.
+Azure Active Directory-object-Id's worden gebruikt om gebruikers te identificeren en rollen toe te wijzen. De Azure IoT Central-portal geeft gebruikers-e-mail adressen weer voor roltoewijzingen, maar alleen de Azure Active Directory object-ID wordt opgeslagen, het e-mail adres wordt dynamisch opgehaald uit Azure Active Directory. Azure IoT Central-beheerders kunnen toepassings gebruikers weer geven, exporteren en verwijderen in het gedeelte gebruikers beheer van een Azure IoT Central-toepassing.
 
-In de toepassing, kunnen de e-mailadressen worden geconfigureerd om waarschuwingen te ontvangen. In dit geval e-mailadressen worden opgeslagen in IoT Central en moeten worden beheerd vanaf de pagina account in het app-beheer.
+Binnen de toepassing kunnen e-mail adressen worden geconfigureerd voor het ontvangen van waarschuwingen. In dit geval worden e-mail adressen opgeslagen in IoT Central en moeten ze worden beheerd via de beheer pagina voor de account van de app.
 
-Met betrekking tot apparaten, Microsoft geen gegevens worden bijgehouden en heeft geen toegang tot gegevens die kan apparaat gebruiker correlatie. Veel van de apparaten die worden beheerd in Azure IoT Central zijn niet persoonlijke apparaten, bijvoorbeeld een Verkoopautomaat of koffie maker. Klanten kunnen echter rekening houden met bepaalde apparaten aan zijn persoonlijke en bij naar eigen goeddunken hun eigen asset of inventaris bijhouden van systemen die verbinden van apparaten naar personen kunnen onderhouden. Azure IoT Central beheert en alle gegevens die zijn gekoppeld aan apparaten als persoonlijke gegevens worden opgeslagen.
+Met betrekking tot apparaten onderhoudt micro soft geen informatie en heeft deze geen toegang tot gegevens waardoor het apparaat aan de gebruikers correlatie kan worden door gegeven. Veel van de apparaten die worden beheerd in azure IoT Central zijn geen persoonlijke apparaten, bijvoorbeeld een automaten machine of een koffie maker. Klanten kunnen er echter voor zorgen dat sommige apparaten persoonlijk worden geïdentificeerd en kunnen hun eigen Asset-of inventaris tracking-systemen onderhouden die apparaten aan individuen koppelen. Met Azure IoT Central worden alle gegevens die zijn gekoppeld aan apparaten, beheerd en opgeslagen alsof deze persoons gegevens zijn.
 
-Wanneer u Microsoft enterprise-services gebruikt, genereert Microsoft bepaalde informatie bekend als het systeem gegenereerde logboeken. Deze logboeken vormen feitelijke acties die zijn uitgevoerd binnen de service en diagnostische gegevens met betrekking tot afzonderlijke apparaten en niet zijn gerelateerd aan gebruikersactiviteit. Azure IoT Central het systeem gegenereerde logboeken zijn niet toegankelijk of door toepassingsbeheerders van de kan worden geëxporteerd.
+Wanneer u micro soft Enter prise Services gebruikt, genereert micro soft bepaalde informatie, ook wel door het systeem gegenereerde logboeken. Deze logboeken vormen feitelijke acties die worden uitgevoerd in de service en diagnostische gegevens met betrekking tot afzonderlijke apparaten, en zijn niet gerelateerd aan de gebruikers activiteit. Door Azure IoT Central door het systeem gegenereerde logboeken zijn niet toegankelijk of exporteerbaar door toepassings beheerders.
 
 ## <a name="deleting-customer-data"></a>Verwijderen van klantgegevens
 
-De mogelijkheid om gebruikersgegevens te verwijderen is alleen beschikbaar via de pagina met IoT Central administration. Beheerders voor de gebruiker om te worden verwijderd en selecteer kunnen selecteren **verwijderen** in de rechterbovenhoek van de toepassing om de record te verwijderen. Toepassingsbeheerders kunnen ook afzonderlijke accounts die niet langer gekoppeld aan de betreffende toepassing verwijderen.
+De mogelijkheid om gebruikers gegevens te verwijderen wordt alleen geboden via de pagina IoT Central beheer. Toepassings beheerders kunnen de te verwijderen gebruiker selecteren en **verwijderen** selecteren in de rechter bovenhoek van de toepassing om de record te verwijderen. Toepassings beheerders kunnen ook afzonderlijke accounts verwijderen die niet meer aan de betreffende toepassing zijn gekoppeld.
 
-Nadat een gebruiker is verwijderd, worden er geen verdere waarschuwingen verzonden naar deze. Het e-mailadres moet echter afzonderlijk verwijderd uit elke geconfigureerde waarschuwing.
+Nadat een gebruiker is verwijderd, worden er geen waarschuwingen meer naar hen verzonden. Het e-mail adres moet echter afzonderlijk worden verwijderd uit elke geconfigureerde waarschuwing.
 
-Zie voor meer informatie, [regels en acties voor uw apparaat configureren](tutorial-configure-rules.md).
+Zie [regels en acties voor uw apparaat configureren](tutorial-configure-rules.md)voor meer informatie.
 
 ## <a name="exporting-customer-data"></a>Exporteren van gegevens van de klant
 
-De mogelijkheid om gegevens te exporteren, is alleen beschikbaar via de pagina met IoT Central administration. Gegevens van de klant, inclusief toegewezen rollen, kan worden geselecteerd, gekopieerd en geplakt door een beheerder van de toepassing.
+De mogelijkheid om gegevens te exporteren, wordt alleen geboden via de pagina IoT Central beheer. Klant gegevens, met inbegrip van toegewezen rollen, kunnen worden geselecteerd, gekopieerd en geplakt door een toepassings beheerder.
 
 ## <a name="links-to-additional-documentation"></a>Koppelingen naar aanvullende documentatie
 
-Zie voor meer informatie over het accountbeheer van, met inbegrip van roldefinities, [beheren van uw toepassing](howto-administer.md).
+Zie [uw toepassing beheren](howto-administer.md)voor meer informatie over account beheer, waaronder roldefinities.

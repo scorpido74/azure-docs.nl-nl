@@ -1,183 +1,184 @@
 ---
-title: Verbinding maken met Azure Eventhubs - Azure Logic Apps
-description: Beheren en controleren van gebeurtenissen met Azure Event Hubs en Azure Logic Apps
+title: Verbinding maken met Azure-Event Hubs-Azure Logic Apps
+description: Gebeurtenissen beheren en bewaken met Azure Event Hubs en Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 882bae14678d8bfff15b35c63c666a20aeee3d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24f66782821f372f5c045dbb82db24fa8b6ad482
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720053"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051081"
 ---
-# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Bewaken, ontvangen en verzenden van gebeurtenissen met Azure Event Hubs en Azure Logic Apps
+# <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Gebeurtenissen bewaken, ontvangen en verzenden met Azure Event Hubs en Azure Logic Apps
 
-Dit artikel wordt beschreven hoe u kunt controleren en beheren van gebeurtenissen die worden verzonden naar [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) uit in een logische app met de Azure Event Hubs-connector. Op die manier kunt u logische apps die automatiseren van taken en werkstromen voor het controleren, verzenden en ontvangen van gebeurtenissen van uw Event Hub maken. Connector-specifieke technische informatie, Zie de [documentatie voor Azure Event Hubs-connector](https://docs.microsoft.com/connectors/eventhubs/)</a>.
+In dit artikel wordt beschreven hoe u gebeurtenissen die naar [azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md) worden verzonden, kunt bewaken en beheren vanuit een logische app met de Azure Event hubs-connector. Op die manier kunt u logische apps maken waarmee taken en werkstromen worden geautomatiseerd voor het controleren, verzenden en ontvangen van gebeurtenissen vanuit uw Event Hub. Zie de [naslag](https://docs.microsoft.com/connectors/eventhubs/)</a>informatie voor Azure Event hubs-connector voor connector-specifieke technische gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Een [Azure Event Hubs-naamruimte en Event Hub](../event-hubs/event-hubs-create.md)
+* Een [Azure Event hubs-naam ruimte en Event hub](../event-hubs/event-hubs-create.md)
 
-* De logische app waar u toegang tot uw Event Hub. Als uw logische app met een Azure Event Hubs-trigger wilt, moet u een [lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* De logische app waar u toegang wilt krijgen tot uw event hub. Als u uw logische app wilt starten met een Azure Event Hubs-trigger, hebt u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)nodig.
+Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: Maak uw eerste logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="permissions-connection-string"></a>
 
-## <a name="check-permissions-and-get-connection-string"></a>Controleer de machtigingen en -verbindingsreeks ophalen
+## <a name="check-permissions-and-get-connection-string"></a>Controleer de machtigingen en ontvang connection string
 
-Controleer uw machtigingen voor uw logische app voor toegang tot uw Event Hub, en de verbindingsreeks voor uw Event Hubs-naamruimte ophalen.
+Als u ervoor wilt zorgen dat uw logische app toegang heeft tot uw event hub, controleert u uw machtigingen en haalt u de connection string voor uw Event Hubs naam ruimte op.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Ga naar uw Event Hubs *naamruimte*, niet in een specifieke Event Hub. 
+1. Ga naar uw Event Hubs *naam ruimte*, niet een specifieke Event hub. 
 
-1. In het menu naamruimte onder **instellingen**, selecteer **beleid voor gedeelde toegang**. Onder **Claims**, Controleer of u hebt **beheren** machtigingen voor die naamruimte.
+1. Selecteer in het menu naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 
-   ![Machtigingen beheren voor uw Event Hub-naamruimte](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
+   ![Machtigingen voor uw event hub-naam ruimte beheren](./media/connectors-create-api-azure-event-hubs/event-hubs-namespace.png)
 
-1. Als u de verbindingsgegevens van uw later handmatig invoeren wilt, moet u de verbindingsreeks ophalen voor uw Event Hubs-naamruimte.
+1. Als u de verbindings gegevens later hand matig wilt invoeren, haalt u de connection string voor uw Event Hubs naam ruimte op.
 
-   1. Under **Policy**, choose **RootManageSharedAccessKey**.
+   1. Kies onder **beleid**de optie **RootManageSharedAccessKey**.
 
-   1. De verbindingsreeks van uw primaire sleutel vinden. Kies de knop kopiëren en opslaan van de verbindingsreeks voor later gebruik.
+   1. Zoek de connection string van uw primaire sleutel. Kies de knop kopiëren en sla de connection string op voor later gebruik.
 
-      ![Event Hubs-naamruimte-verbindingsreeks kopiëren](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
+      ![Event Hubs naam ruimte connection string kopiëren](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > Om te controleren of de verbindingsreeks gekoppeld aan uw Event Hubs-naamruimte of met een specifieke event hub is, zorg ervoor dat de verbindingsreeks beschikt niet over de `EntityPath`  parameter. Als u deze parameter kunt vinden, wordt de verbindingsreeks is voor een specifieke Event Hub 'entiteit' en is niet de juiste tekenreeks die moet worden gebruikt met uw logische app.
+      > Als u wilt controleren of uw Connection String is gekoppeld aan uw event hubs naam ruimte of met een specifieke Event hub, moet u ervoor zorgen `EntityPath`dat de Connection String geen  para meter heeft. Als u deze para meter vindt, is het connection string voor een specifieke Event hub-entiteit en is het niet de juiste teken reeks voor gebruik met uw logische app.
 
-1. Nu doorgaan met [een Event Hubs-trigger toevoegen](#add-trigger) of [een Event Hubs-actie toevoegen](#add-action).
+1. Ga nu verder met [het toevoegen van een event hubs trigger](#add-trigger) of [het toevoegen van een event hubs actie](#add-action).
 
 <a name="add-trigger"></a>
 
-## <a name="add-event-hubs-trigger"></a>Event Hubs-trigger toevoegen
+## <a name="add-event-hubs-trigger"></a>Event Hubs trigger toevoegen
 
-In Azure Logic Apps, elke logische app moet beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis wordt uitgevoerd of wanneer een bepaalde voorwaarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, de Logic Apps-engine een exemplaar van de logische app maakt en werkstroom van uw app wordt gestart.
+In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van uw app uit te voeren.
 
-In dit voorbeeld laat zien hoe u een werkstroom voor logische Apps kunt starten wanneer nieuwe gebeurtenissen worden verzonden naar uw Event Hub. 
+In dit voor beeld ziet u hoe u een werk stroom van een logische app kunt starten wanneer er nieuwe gebeurtenissen naar uw event hub worden verzonden. 
 
-1. In de Azure portal of Visual Studio, maak een lege logische app, die wordt geopend de ontwerper van logische Apps. Dit voorbeeld wordt de Azure-portal.
+1. Maak in de Azure Portal of Visual Studio een lege logische app, waarmee Logic Apps Designer wordt geopend. In dit voor beeld wordt de Azure Portal gebruikt.
 
-1. Typ 'eventhubs' als filter in het zoekvak. Selecteer deze trigger uit de lijst met triggers: **Wanneer gebeurtenissen zijn beschikbaar in de Event Hub - Event Hubs**
+1. Voer in het zoekvak ' event hubs ' in als uw filter. Selecteer in de lijst triggers deze trigger: **Wanneer gebeurtenissen beschikbaar zijn in Event hub-Event Hubs**
 
    ![Trigger selecteren](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
-1. Als u wordt gevraagd voor de verbindingsgegevens, [maken van de verbinding van Event Hubs nu](#create-connection). 
+1. Als u wordt gevraagd om de verbindings gegevens, [maakt u de Event hubs verbinding nu](#create-connection). 
 
-1. In de trigger bevatten informatie over de Event Hub die u wilt bewaken. Voor meer eigenschappen, opent u de **toevoegen van nieuwe parameter** lijst. Een parameter selecteren, wordt die eigenschap toegevoegd aan de trigger-kaart.
+1. Geef in de trigger informatie op over de Event hub die u wilt bewaken. Open de lijst **nieuwe para meter toevoegen** voor meer eigenschappen. Als u een para meter selecteert, wordt die eigenschap toegevoegd aan de trigger kaart.
 
    ![Trigger-eigenschappen](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
    | Eigenschap | Vereist | Description |
    |----------|----------|-------------|
-   | **Event Hub-naam** | Ja | De naam van de Event Hub die u wilt bewaken |
-   | **Inhoudstype** | Nee | Het inhoudstype van de gebeurtenis. De standaardwaarde is `application/octet-stream`. |
-   | **Naam van de groep consumenten** | Nee | De [naam voor de Event Hub-consumergroep](../event-hubs/event-hubs-features.md#consumer-groups) moet worden gebruikt voor het lezen van gebeurtenissen. Indien niet opgegeven, wordt de standaard-consumergroep wordt gebruikt. |
-   | **Maximum aantal gebeurtenissen tellen** | Nee | Het maximum aantal gebeurtenissen. De trigger retourneert tussen één en het aantal gebeurtenissen dat is opgegeven door deze eigenschap. |
-   | **Interval** | Ja | Een positief geheel getal dat wordt beschreven hoe vaak de werkstroom wordt uitgevoerd op basis van de frequentie |
-   | **Frequentie** | Ja | De tijdseenheid voor het terugkeerpatroon |
+   | **Event Hub-naam** | Ja | De naam van de Event hub die u wilt bewaken |
+   | **Inhoudstype** | Nee | Het inhouds type van de gebeurtenis. De standaardwaarde is `application/octet-stream`. |
+   | **Naam van de groep consumenten** | Nee | De [naam van de Event hub-consumenten groep](../event-hubs/event-hubs-features.md#consumer-groups) die moet worden gebruikt voor het lezen van gebeurtenissen. Als niet wordt opgegeven, wordt de standaard Consumer groep gebruikt. |
+   | **Maximum aantal gebeurtenissen** | Nee | Het maximum aantal gebeurtenissen. De trigger retourneert tussen één en het aantal gebeurtenissen dat door deze eigenschap is opgegeven. |
+   | **Interval** | Ja | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie |
+   | **Frequentie** | Ja | De tijds eenheid voor het terugkeer patroon |
    ||||
 
    **Aanvullende eigenschappen**
 
    | Eigenschap | Vereist | Description |
    |----------|----------|-------------|
-   | **Inhoudsschema** | Nee | De JSON-inhoud schema voor de gebeurtenissen te lezen uit de Event Hub. Bijvoorbeeld, als u het schema content opgeeft, kunt u de logische app voor de gebeurtenissen die overeenkomen met het schema activeren. |
-   | **Minimale partitiesleutel** | Nee | Voer de minimale [partitie](../event-hubs/event-hubs-features.md#partitions) ID te lezen. Standaard worden alle partities worden gelezen. |
-   | **Maximale partitiesleutel** | Nee | Voer de maximaal [partitie](../event-hubs/event-hubs-features.md#partitions) ID te lezen. Standaard worden alle partities worden gelezen. |
-   | **Tijdzone** | Nee | Geldt alleen wanneer u een begintijd opgeeft, omdat deze trigger UTC-offset wordt niet geaccepteerd. Selecteer de tijdzone die u wilt toepassen. <p>Zie voor meer informatie, [maken en uitvoeren van terugkerende taken en werkstromen met Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
-   | **Begintijd** | Nee | Geef een begintijd die in deze indeling: <p>JJJJ-MM-ddTUU als u een tijdzone selecteren<p>-of-<p>JJJJ-MM-ddTHH als u niet een tijdzone selecteren<p>Zie voor meer informatie, [maken en uitvoeren van terugkerende taken en werkstromen met Azure Logic Apps](../connectors/connectors-native-recurrence.md). |
+   | **Inhouds schema** | Nee | Het JSON-inhouds schema voor de gebeurtenissen die moeten worden gelezen vanuit de Event hub. Als u bijvoorbeeld het inhouds schema opgeeft, kunt u de logische app alleen activeren voor de gebeurtenissen die overeenkomen met het schema. |
+   | **Minimale partitie sleutel** | Nee | Voer de minimale [partitie](../event-hubs/event-hubs-features.md#partitions) -id in die u wilt lezen. Standaard worden alle partities gelezen. |
+   | **Maximum partitie sleutel** | Nee | Voer de maximale [partitie](../event-hubs/event-hubs-features.md#partitions) -id in die u wilt lezen. Standaard worden alle partities gelezen. |
+   | **Tijdzone** | Nee | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen UTC-offset accepteert. Selecteer de tijd zone die u wilt Toep assen. <p>Zie [terugkerende taken en werk stromen maken en uitvoeren met Azure Logic apps](../connectors/connectors-native-recurrence.md)voor meer informatie. |
+   | **Begintijd** | Nee | Geef een begin tijd op in deze notatie: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert<p>-of-<p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert<p>Zie [terugkerende taken en werk stromen maken en uitvoeren met Azure Logic apps](../connectors/connectors-native-recurrence.md)voor meer informatie. |
    ||||
 
-1. Wanneer u klaar bent, op de werkbalk van de ontwerper, kiest u **opslaan**.
+1. Wanneer u klaar bent, kiest u **Opslaan**op de werk balk van de ontwerp functie.
 
-1. Nu doorgaan met een of meer acties toe te voegen aan uw logische app voor de taken die u wilt uitvoeren met de resultaten van de trigger. 
+1. Ga nu verder met het toevoegen van een of meer acties aan uw logische app voor de taken die u wilt uitvoeren met de trigger resultaten. 
 
-   Bijvoorbeeld, om te filteren van gebeurtenissen op basis van een specifieke waarde, zoals een categorie, kunt u een voorwaarde toevoegen zodat de **gebeurtenis - Event Hubs verzenden** actie verzendt alleen de gebeurtenissen die voldoen aan de voorwaarde. 
+   Als u bijvoorbeeld gebeurtenissen wilt filteren op basis van een specifieke waarde, zoals een categorie, kunt u een voor waarde toevoegen zodat de actie **gebeurtenis verzenden** alleen de gebeurtenissen verzendt die aan uw voor waarde voldoen. 
 
 > [!NOTE]
-> Alle Event Hub-triggers zijn *long-polling* triggers, wat betekent dat wanneer een trigger wordt geactiveerd, de trigger worden alle gebeurtenissen verwerkt en wacht dan tot 30 seconden voor meer gebeurtenissen worden weergegeven in uw Event Hub.
-> Als er geen gebeurtenissen worden ontvangen binnen 30 seconden, wordt de trigger uitvoeren wordt overgeslagen. Anders wordt de trigger blijft lezen van gebeurtenissen totdat uw Event Hub leeg is.
-> De volgende trigger poll gebeurt op basis van het terugkeerpatroon die u in de eigenschappen van de trigger opgeeft.
+> Alle Event hub-triggers zijn *lange polling* triggers, wat betekent dat wanneer een trigger wordt geactiveerd, de trigger alle gebeurtenissen verwerkt en gedurende 30 seconden wordt gewacht tot er meer gebeurtenissen in uw event hub worden weer gegeven.
+> Als er binnen 30 seconden geen gebeurtenissen worden ontvangen, wordt de trigger wordt uitgevoerd. Anders wordt het lezen van gebeurtenissen voortgezet totdat de Event hub leeg is.
+> De volgende trigger poll wordt uitgevoerd op basis van het terugkeer interval dat u opgeeft in de eigenschappen van de trigger.
 
 <a name="add-action"></a>
 
-## <a name="add-event-hubs-action"></a>Event Hubs-actie toevoegen
+## <a name="add-event-hubs-action"></a>Event Hubs actie toevoegen
 
-In Azure Logic Apps, een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een stap in uw werkstroom die volgt op een trigger of een andere actie. In dit voorbeeld wordt de logische app begint met een Event Hubs-trigger waarmee wordt gecontroleerd op nieuwe gebeurtenissen in uw Event Hub.
+In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) een stap in uw werk stroom die volgt op een trigger of een andere actie. Voor dit voor beeld begint de logische app met een Event Hubs trigger waarmee wordt gecontroleerd op nieuwe gebeurtenissen in uw event hub.
 
-1. Open uw logische app in de ontwerper van logische Apps in de Azure portal of Visual Studio. Dit voorbeeld wordt de Azure-portal.
+1. Open in de Azure Portal of Visual Studio uw logische app in Logic Apps Designer. In dit voor beeld wordt de Azure Portal gebruikt.
 
-1. Kies onder de trigger of actie **nieuwe stap**.
+1. Kies **nieuwe stap**onder de trigger of actie.
 
-   Als u wilt toevoegen een actie tussen bestaande stappen, Beweeg de muis boven de verbindende pijl. 
-   Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. 
+   Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
-1. Typ 'eventhubs' als filter in het zoekvak.
-Selecteer deze actie uit de lijst met acties: **Gebeurtenis - Event Hubs verzenden**
+1. Voer in het zoekvak ' event hubs ' in als uw filter.
+Selecteer in de lijst acties deze actie: **Gebeurtenis verzenden-Event Hubs**
 
-   ![Selecteer actie 'Gebeurtenis verzenden'](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
+   ![De actie gebeurtenis verzenden selecteren](./media/connectors-create-api-azure-event-hubs/find-event-hubs-action.png)
 
-1. Als u wordt gevraagd voor de verbindingsgegevens, [maken van de verbinding van Event Hubs nu](#create-connection). 
+1. Als u wordt gevraagd om de verbindings gegevens, [maakt u de Event hubs verbinding nu](#create-connection). 
 
-1. In de actie bevatten informatie over de gebeurtenissen die u wilt verzenden. Voor meer eigenschappen, opent u de **toevoegen van nieuwe parameter** lijst. Een parameter selecteren, wordt die eigenschap toegevoegd aan de actie-kaart.
+1. Geef in de actie informatie op over de gebeurtenissen die u wilt verzenden. Open de lijst **nieuwe para meter toevoegen** voor meer eigenschappen. Als u een para meter selecteert, wordt deze eigenschap aan de actie kaart toegevoegd.
 
-   ![Selecteer de naam Event Hub en gebeurtenis inhoud leveren](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
+   ![De naam van de Event hub selecteren en de inhoud van de gebeurtenis opgeven](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
    | Eigenschap | Vereist | Description |
    |----------|----------|-------------|
-   | **Event Hub-naam** | Ja | De Event Hub waar u om de gebeurtenis te verzenden |
+   | **Event Hub-naam** | Ja | De Event hub waarnaar u de gebeurtenis wilt verzenden |
    | **Inhoud** | Nee | De inhoud voor de gebeurtenis die u wilt verzenden |
-   | **Eigenschappen** | Nee | De eigenschappen van de app en de waarden voor het verzenden van |
-   | **Partitiesleutel** | Nee | De [partitie](../event-hubs/event-hubs-features.md#partitions) ID voor het verzenden van de gebeurtenis |
+   | **Eigenschappen** | Nee | De app-eigenschappen en-waarden die moeten worden verzonden |
+   | **Partitie sleutel** | Nee | De [partitie](../event-hubs/event-hubs-features.md#partitions) -id voor het verzenden van de gebeurtenis |
    ||||
 
-   U kunt bijvoorbeeld de uitvoer van de trigger van Event Hubs verzenden naar een andere Event Hub:
+   U kunt bijvoorbeeld de uitvoer van uw Event Hubs trigger naar een andere Event hub verzenden:
 
-   ![Voorbeeld van de gebeurtenis te verzenden](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action-example.png)
+   ![Voor beeld van gebeurtenis verzenden](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action-example.png)
 
-1. Wanneer u klaar bent, op de werkbalk van de ontwerper, kiest u **opslaan**.
+1. Wanneer u klaar bent, kiest u **Opslaan**op de werk balk van de ontwerp functie.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-your-event-hub"></a>Verbinding maken met uw Event Hub
+## <a name="connect-to-your-event-hub"></a>Verbinding maken met uw event hub
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)] 
 
-1. Wanneer u wordt gevraagd om de verbindingsgegevens, geef de volgende gegevens:
+1. Wanneer u wordt gevraagd om de verbindings gegevens, geeft u de volgende gegevens op:
 
    | Eigenschap | Vereist | Value | Description |
    |----------|----------|-------|-------------|
-   | **Verbindingsnaam** | Ja | <*naam van de verbinding*> | De naam voor uw verbinding maken |
-   | **Event Hubs Namespace** | Ja | <*event-hubs-namespace*> | Selecteer de Event Hubs-naamruimte die u wilt gebruiken. |
+   | **Verbindingsnaam** | Ja | <*verbindings naam*> | De naam die voor uw verbinding moet worden gemaakt |
+   | **Event Hubs naam ruimte** | Ja | <*event-hubs-namespace*> | Selecteer de Event Hubs naam ruimte die u wilt gebruiken. |
    |||||  
 
    Bijvoorbeeld:
 
-   ![Event Hub-verbinding maken](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
+   ![Event hub-verbinding maken](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
-   Voer handmatig de connection string, de optie kiezen **handmatig verbindingsgegevens invoeren**. 
-   Informatie over [over het vinden van de verbindingsreeks](#permissions-connection-string).
+   Als u de connection string hand matig wilt invoeren, selecteert u **hand matig verbindings gegevens invoeren**. 
+   Meer informatie [over het vinden van uw Connection String](#permissions-connection-string).
 
-2. Selecteer het Event Hubs-beleid moet worden gebruikt, als u nog niet is geselecteerd. Kies **Maken**.
+2. Selecteer het Event Hubs-beleid dat u wilt gebruiken, als dit nog niet is geselecteerd. Kies **Maken**.
 
-   ![Event Hub-verbinding, deel 2 maken](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-2.png)
+   ![Event hub-verbinding maken, deel 2](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-2.png)
 
-3. Nadat u uw verbinding maakt, doorgaan met [toevoegen Event Hubs activeren](#add-trigger) of [toevoegen Event Hubs-actie](#add-action).
+3. Nadat u de verbinding hebt gemaakt, gaat u door met [Event hubs trigger toevoegen](#add-trigger) of [Event hubs actie toevoegen](#add-action).
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie, zoals triggers en acties limieten, zoals is beschreven in van de connector OpenAPI (voorheen Swagger)-bestand, raadpleegt u de [van de connector-verwijzingspagina](/connectors/eventhubs/).
+Zie de [referentie pagina van de connector](/connectors/eventhubs/)voor technische details, zoals triggers, acties en limieten, zoals beschreven in het OpenAPI (voorheen Swagger)-bestand van de connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

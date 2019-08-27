@@ -49,6 +49,8 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Beschikbaarheid van het cluster bewaken met Ambari en Azure Monitor-logboeken
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: Opslagopties vergelijken
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: Procedures
   items:
     - name: Clusteropslag gebruiken

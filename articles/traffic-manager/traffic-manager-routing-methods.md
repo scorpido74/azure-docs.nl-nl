@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 305f24fc274ad48f5c60762223b7bf4e970fe083
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 06ce7fb5d18920be6f71821b034dc13061c60032
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333736"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051459"
 ---
 # <a name="traffic-manager-routing-methods"></a>Methoden voor het doorsturen van Traffic Manager
 
@@ -146,7 +146,7 @@ Zoals uitgelegd in de werking van [Traffic Manager](traffic-manager-how-it-works
 * [Zijn er beperkingen voor de API-versie die ondersteuning biedt voor dit routerings type?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name = "multivalue"></a>Meerdere waarden verkeer-routerings methode
-Met de routerings methode met meerdere **waarden** kunt u in één antwoord op een DNS-query meer in orde zijnde eind punten ophalen. Dit maakt het mogelijk om aan client zijde nieuwe pogingen te doen met andere eind punten in het geval van een geretourneerd eind punt dat niet meer reageert. Dit patroon kan de beschik baarheid van een service verhogen en de latentie voor een nieuwe DNS-query verminderen om een gezonde eind punt te verkrijgen. De methode voor het routeren van meerdere waarden werkt alleen als alle eind punten van het type extern zijn en zijn opgegeven als IPv4-of IPv6-adres. Wanneer een query voor dit profiel wordt ontvangen, worden alle gezonde eind punten geretourneerd en onderhevig aan het Configureer bare maximum aantal retour waarden.
+Met de routerings methode met meerdere **waarden** kunt u in één antwoord op een DNS-query meer in orde zijnde eind punten ophalen. Hierdoor kan de aanroeper aan client zijde nieuwe pogingen uitvoeren met andere eind punten in het geval van een geretourneerd eind punt dat niet meer reageert. Dit patroon kan de beschik baarheid van een service verhogen en de latentie voor een nieuwe DNS-query verminderen om een gezonde eind punt te verkrijgen. De methode voor het routeren van meerdere waarden werkt alleen als alle eind punten van het type extern zijn en zijn opgegeven als IPv4-of IPv6-adres. Wanneer een query voor dit profiel wordt ontvangen, worden alle gezonde eind punten geretourneerd en onderhevig aan het Configureer bare maximum aantal retour waarden.
 
 ### <a name="faqs"></a>Veelgestelde vragen
 

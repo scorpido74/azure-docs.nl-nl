@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93f78cf07cd4815e5b17ffd3953db121adb6535
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558752"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048997"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-In deze sectie maakt u een apparaat-id in het identiteits register van uw IoT-hub. Een apparaat kan geen verbinding maken met een hub, tenzij het een vermelding bevat in het identiteits register. Zie de sectie identiteits register van de [IOT hub-ontwikkelaars handleiding](../articles/iot-hub/iot-hub-devguide-identity-registry.md)voor meer informatie.
+In deze sectie maakt u een apparaat-id in het identiteits register van uw IoT-hub. Een apparaat kan geen verbinding maken met een hub, tenzij het een vermelding bevat in het identiteits register. Zie de [IOT hub-ontwikkelaars handleiding](../articles/iot-hub/iot-hub-devguide-identity-registry.md#identity-registry-operations)voor meer informatie.
 
 1. In het navigatie menu van de IoT-hub opent u **IOT-apparaten**en selecteert u vervolgens **Nieuw** om een apparaat toe te voegen aan uw IOT-hub.
 

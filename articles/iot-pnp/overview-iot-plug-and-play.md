@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1be6e2354a87bfb0de87b85fe46a1feb42100c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 56a73449c69010bc97122023f7dcbc9e3a9df154
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878255"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048001"
 ---
-# <a name="what-is-azure-iot-plug-and-play-preview"></a>Wat is Azure IoT Plug en Play preview?
+# <a name="what-is-iot-plug-and-play-preview"></a>Wat is IoT Plug en Play preview?
 
 Met IoT Plug en Play Preview kunnen ontwikkel aars van oplossingen apparaten met hun oplossingen integreren zonder Inge sloten code te hoeven schrijven. De kern van IoT Plug en Play is een schema voor het _capaciteits model_ van het apparaat dat de mogelijkheden van apparaten beschrijft. Dit schema is een JSON-document dat is gestructureerd als een reeks interfaces die definities bevatten van:
 

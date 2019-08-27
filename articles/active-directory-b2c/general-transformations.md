@@ -1,44 +1,44 @@
 ---
-title: Voorbeelden van algemene claims transformatie voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C | Microsoft Docs
-description: Voorbeelden van algemene claims transformatie voor de identiteit ervaring Framework-Schema van de Azure Active Directory B2C.
+title: Algemene voor beelden van claim transformatie voor het Framework van de identiteits ervaring van Azure Active Directory B2C
+description: Algemene voor beelden van claim transformatie voor het Framework-schema van de identiteits ervaring van Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5f8068ea7e97343749c719d2d0800e20701079c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7cea33cb61f8f8d0fe305a757f11c80bc5da24ca
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510987"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032900"
 ---
-# <a name="general-claims-transformations"></a>Algemene claimtransformaties
+# <a name="general-claims-transformations"></a>Algemene claim transformaties
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel biedt voorbeelden voor het gebruik van claimtransformaties algemene van het schema Identiteitservaring-Framework in Azure Active Directory (Azure AD) B2C. Zie voor meer informatie, [ClaimsTransformations](claimstransformations.md).
+In dit artikel vindt u voor beelden van het gebruik van algemene claim transformaties van het Framework-schema voor identiteits ervaring in Azure Active Directory B2C (Azure AD B2C). Zie [ClaimsTransformations](claimstransformations.md)voor meer informatie.
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-Controleert of de **inputClaim** of niet bestaat en stelt **outputClaim** op waar of ONWAAR dienovereenkomstig.
+Controleert of de **input claim** bestaat of niet en stelt **output claim** in op waar of onwaar dienovereenkomstig.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |Alle | De invoer claim waarvan het bestaan moet worden bevestigd. |
-| OutputClaim | outputClaim | booleaans | Het ClaimType dat wordt gegenereerd nadat deze ClaimsTransformation is aangeroepen. |
+| InputClaim | inputClaim |Any | De invoer claim waarvan het bestaan moet worden geverifieerd. |
+| OutputClaim | outputClaim | boolean | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-Gebruik die dit claims transformatie om te controleren of als een claim bestaat, en een waarde bevat. De geretourneerde waarde is een Booleaanse waarde die aangeeft of de claim bestaat. Volgende voorbeeld wordt gecontroleerd of het e-mailadres bestaat.
+Gebruik deze claim transformatie om te controleren of een claim bestaat of een wille keurige waarde bevat. De geretourneerde waarde is een Boolean die aangeeft of de claim bestaat. In het volgende voor beeld wordt gecontroleerd of het e-mail adres bestaat.
 
 ```XML
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isEmailPresent" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -47,21 +47,21 @@ Gebruik die dit claims transformatie om te controleren of als een claim bestaat,
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
+- Invoer claims:
   - **inputClaim**: someone@contoso.com
-- Uitvoerclaims: 
-    - **outputClaim**: true
+- Uitvoer claims:
+  - **output claim**: True
 
 ## <a name="hash"></a>Hash
 
-De opgegeven tekst zonder opmaak, met behulp van de salt en een geheim hash.
+Hash de meegeleverde tekst zonder opmaak met het zout en een geheim. Het hash-algoritme dat wordt gebruikt, is SHA-256.
 
 | Item | TransformationClaimType | Gegevenstype | Opmerkingen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | Als tekst zonder opmaak | string | De invoer claim moeten worden versleuteld |
-| InputClaim | Salt | string | De salt-parameter. U kunt maken als een willekeurige waarde, met behulp van `CreateRandomString` transformatie claims. |
-| InputParameter | randomizerSecret | string | Verwijst naar een bestaande Azure AD B2C **Beleidssleutels**. Een nieuwe maken: Selecteer in uw Azure AD B2C-tenant, **B2C-instellingen > Identity-Ervaringsframework**. Selecteer **Beleidssleutels** om de sleutels die beschikbaar in uw tenant zijn weer te geven. Selecteer **Toevoegen**. Voor **opties**, selecteer **handmatig**. Geef een naam (het voorvoegsel B2C_1A_ mogelijk automatisch worden toegevoegd.). Voer een geheim dat u gebruiken wilt, zoals 1234567890 het geheim in. Selecteer voor sleutelgebruik, **geheim**. Selecteer **Maken**. |
-| OutputClaim | Hash | string | Het ClaimType dat wordt gegenereerd nadat deze transformatie claims is aangeroepen. De claim die is geconfigureerd in de `plaintext` inputClaim. |
+| InputClaim | sleutel | string | De invoer claim die moet worden versleuteld |
+| InputClaim | Salt | string | De Salt-para meter. U kunt een wille keurige waarde `CreateRandomString` maken met behulp van claims trans formatie. |
+| InputParameter | randomizerSecret | string | Verwijst naar een bestaande Azure AD B2C **Policy Key**. Een nieuwe beleids sleutel maken: Selecteer in uw Azure AD B2C-Tenant onder **beheren**de optie **identiteits ervaring-Framework**. Selecteer **beleids sleutels** om de sleutels weer te geven die beschikbaar zijn in uw Tenant. Selecteer **Toevoegen**. Voor **Opties**selecteert u **hand matig**. Geef een naam op (het voor voegsel *B2C_1A_* kan automatisch worden toegevoegd.). Voer in het tekstvak **geheim** een geheim in dat u wilt gebruiken, bijvoorbeeld 1234567890. Selecteer voor **sleutel gebruik** **hand tekening**. Selecteer **Maken**. |
+| OutputClaim | eigenaar | string | Het claim type dat is geproduceerd nadat deze claim transformatie is aangeroepen. De claim die is geconfigureerd `plaintext` in de input claim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -80,12 +80,9 @@ De opgegeven tekst zonder opmaak, met behulp van de salt en een geheim hash.
 
 ### <a name="example"></a>Voorbeeld
 
-- Invoerclaims:
-    - **Als tekst zonder opmaak**: MyPass@word1
-    - **Salt**: 487624568
-    - **randomizerSecret**: B2C_1A_AccountTransformSecret
-- Uitvoerclaims: 
-    - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
-
-
-
+- Invoer claims:
+  - **Lees bare tekst**:MyPass@word1
+  - **Salt**: 487624568
+  - **randomizerSecret**: B2C_1A_AccountTransformSecret
+- Uitvoer claims:
+  - **outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=

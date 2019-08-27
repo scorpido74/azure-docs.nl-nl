@@ -17,6 +17,8 @@
       href: apache-hbase-tutorial-get-started-linux.md
 - name: Concepten
   items:
+    - name: Opslagopties vergelijken
+      href: ../hdinsight-hadoop-compare-storage-options.md
     - name: HDInsight-apps installeren
       href: ../hdinsight-apps-install-applications.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: Planning clustercapaciteit

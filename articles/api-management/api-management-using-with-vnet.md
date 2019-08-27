@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 338ceef8ce94e97f7569f85b0079f75aed033612
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 18bbeb2b4936b1c8a03ffdc7eade8dc92d094fde
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558633"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050607"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen waartoe u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [Overzicht van Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -140,7 +140,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
 + **SMTP-relay**: Uitgaande netwerk verbinding voor de SMTP-relay, die wordt omgezet onder de `smtpi-co1.msn.com`host `smtpi-ch1.msn.com` `smtpi-db3.msn.com`, `smtpi-sin.msn.com` , en`ies.global.microsoft.com`
 
-+ **Ontwikkelaars Portal CAPTCHA**: Uitgaande netwerk verbinding voor de CAPTCHA van de ontwikkelaars Portal, die wordt omgezet op de `client.hip.live.com`host.
++ **Ontwikkelaars Portal CAPTCHA**: Uitgaande netwerk verbinding voor de CAPTCHA van de ontwikkelaars Portal, die wordt omgezet onder de `client.hip.live.com` hosts `partner.hip.live.com`en.
 
 + **Azure Portal diagnostische gegevens**: Als u de stroom van Diagnostische logboeken van Azure Portal wilt inschakelen wanneer u de API Management extensie van binnen een Virtual Network `dc.services.visualstudio.com` gebruikt, is uitgaande toegang tot op poort 443 vereist. Dit helpt bij het oplossen van problemen die u kunt tegen komen wanneer u uitbrei ding gebruikt.
 

@@ -1,6 +1,6 @@
 ---
 title: Voorbeelden en procedures voor virtuele Machines voor Datatechnologie - Azure | Microsoft Docs
-description: Meer informatie over de voorbeelden en procedures die laten zien u hoe u algemene taken en scenario's met de Data Science Virtual Machine.
+description: In deze voor beelden en instructies leert u hoe u veelvoorkomende taken en scenario's kunt verwerken met de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
 documentationcenter: ''
@@ -16,47 +16,47 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 57ebefb11d23c5ea18d5859ca494944e6a845e04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565319"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047831"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Voorbeelden van virtuele Machines voor Datatechnologie
 
-Azure Data Science Virtual Machines bevat een uitgebreide set met voorbeeldcode. De voorbeeldcode is in de vorm van Jupyter notebooks en scripts in talen zoals Python en R. 
+Azure data Science Virtual Machines (Dsvm) bevat een uitgebreide set voorbeeld code. Dit zijn voor beelden van Jupyter-notebooks en-scripts in talen als python en R.
 > [!NOTE]
-> Zie voor meer informatie over het uitvoeren van Jupyter notebooks op uw virtuele machines voor datatechnologie, de [toegang Jupyter](#access-jupyter) sectie.
+> Zie de sectie [toegangs Jupyter](#access-jupyter) voor meer informatie over het uitvoeren van Jupyter-notebooks op uw virtuele machines voor data technologie.
 
 ## <a name="quick-reference-of-samples"></a>Naslaggids van voorbeelden
 | Voorbeelden van categorie | Description | Locaties |
 | ------------- | ------------- | ------------- |
-| R-taal  | Voorbeelden in R uitgelegd scenario's zoals verbinding maken met Azure-cloud-gegevensarchieven. Ze ook wordt uitgelegd hoe u wilt vergelijken van open-source R en Microsoft-R. En ze wordt uitgelegd hoe u modellen op Microsoft R Server of SQL Server. <br/> [R-taal](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
-| Python-taal  | Voorbeelden van Python wordt uitgelegd scenario's, zoals het verbinden met Azure-cloud-gegevensarchieven en werken met Azure Machine Learning.  <br/> [Python-taal](#python-language) | <br/>`~notebooks` <br/><br/>|
-| Julia-taal  | Voorbeeld in Julia waarin wordt uitgelegd plotten en deep learning in Julia. Ook wordt uitgelegd aanroepende C en Python van Julia. <br/> [Julia-taal](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
-| Azure Machine Learning  | Machine learning en deep learning-modellen met Machine Learning bouwen. Implementeer modellen overal. Gebruik automatische machine learning en intelligente hyperparameter afstemmen. Modelbeheer- en gedistribueerde training ook gebruiken. <br/> [Machine Learning](#azureml) | <br/>`~notebooks/AzureML`<br/> <br/>|
-| PyTorch-laptops  | Deep learning-voorbeelden die gebruikmaken van PyTorch gebaseerde neurale netwerken. Notitieblokken de variëren van beginner tot geavanceerde scenario's.  <br/> [PyTorch-laptops](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
-| TensorFlow  |  Voorbeelden voor verschillende neurale netwerken en technieken die worden geïmplementeerd met behulp van de TensorFlow-framework. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
-| Microsoft Cognitive Toolkit <br/>   | Deep learning-voorbeelden die zijn gepubliceerd door de Cognitive Toolkit-team van Microsoft.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
-| caffe2 | Deep learning-voorbeelden die gebruikmaken van caffe2 gebaseerde neurale netwerken. Gebruikers vertrouwd verschillende notitieblokken met caffe2 en hoe u effectief te gebruiken. Voorbeelden zijn onder meer het maken van het vooraf verwerken en gegevensset installatiekopieën. Ze bevatten ook regressie en het gebruik van vooraf getrainde modellen. <br/> [caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
-| H2O   | Op basis van een Python-voorbeelden die gebruikmaken van H2O Praktijkscenario problemen. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
-| SparkML taal  | Voorbeelden die gebruikmaken van functies van de toolkit MLLib Spark met pySpark en MMLSpark--Microsoft Machine Learning voor Apache Spark op Apache Spark 2.x.  <br/> [SparkML taal](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
-| XGBoost | Standard machine learning-voorbeelden in XGBoost voor scenario's zoals classificatie- en regressiemodellen. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
+| R-taal  | Voor beelden illustreren scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het vergelijken van open source R en Microsoft Machine Learning Server. Er wordt ook uitgelegd hoe u operationeel maken modellen op Microsoft Machine Learning Server en SQL Server. <br/> [R-taal](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
+| Python-taal  | Voor beelden van scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het werken met Azure Machine Learning.  <br/> [Python-taal](#python-language) | <br/>`~notebooks` <br/><br/>|
+| Julia-taal  | Hier vindt u een gedetailleerde beschrijving van het uitzetten en diep gaande leren in Julia. Ook wordt uitgelegd hoe u C en python aanroept vanuit Julia. <br/> [Julia-taal](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux:<br/> `~notebooks/julia`<br/><br/> |
+| Azure Machine Learning  | Illustreert hoe u machine learning-en diep gaande modellen bouwt met Machine Learning. Implementeer modellen overal. Gebruik automatische machine learning en intelligente hyperparameter afstemmen. Modelbeheer- en gedistribueerde training ook gebruiken. <br/> [Machine Learning](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|
+| PyTorch-laptops  | Voor beelden van diep gaande lessen die gebruikmaken van op PyTorch gebaseerde Neural netwerken. Notitieblokken de variëren van beginner tot geavanceerde scenario's.  <br/> [PyTorch-laptops](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
+| TensorFlow  |  Diverse Neural-netwerk voorbeelden en-technieken die worden geïmplementeerd met behulp van het tensor flow-Framework. <br/> [TensorFlow](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
+| Microsoft Cognitive Toolkit <br/>   | Voor beelden van diep gaande lessen die door het Cognitive Toolkit-team bij micro soft worden gepubliceerd.  <br/> [Cognitive Toolkit](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> Linux:<br/> `~notebooks/CNTK`<br/> <br/>|
+| Caffe2 | Voor beelden van diep gaande lessen die gebruikmaken van op Caffe2 gebaseerde Neural netwerken. Met verschillende notebooks worden gebruikers met Caffe2 vertrouwd en wordt uitgelegd hoe u het effectief kunt gebruiken. Voor beelden zijn onder andere afbeeldings voorverwerken en het maken van gegevensset. Ze omvatten ook regressie en het gebruik van voortrainde modellen. <br/> [Caffe2](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
+| H2O   | Voor beelden op basis van python die H2O gebruiken voor scenario's met een praktijk probleem. <br/> [H2O](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
+| SparkML taal  | Voor beelden die gebruikmaken van functies van de Apache Spark MLLib Toolkit via pySpark en MMLSpark: Micro Soft Machine Learning voor Apache Spark op Apache Spark 2. x.  <br/> [SparkML taal](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
+| XGBoost | Standaard voor beelden van machine learning in XGBoost voor scenario's zoals classificatie en regressie. <br/> [XGBoost](#xgboost) | <br/>Windows:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
 
 <br/>
 
 ## <a name="access-jupyter"></a>Toegang tot Jupyter 
 
-Voor toegang tot Jupyter, selecteer de `Jupyter` pictogram in het menu bureaublad of toepassing. U kunt ook Jupyter openen op Linux-versies van virtuele Machines voor Datatechnologie. U kunt toegang krijgen tot op afstand via een webbrowser recentst `https://<Full Domain Name or IP Address of the DSVM>:8000` op Ubuntu.
+Om toegang te krijgen tot Jupyter, selecteert u het pictogram **Jupyter** in het menu bureau blad of toepassing. U hebt ook toegang tot Jupyter op een Linux-editie van een DSVM. Als u extern vanuit een webbrowser wilt openen, gaat `https://<Full Domain Name or IP Address of the DSVM>:8000` u naar op Ubuntu.
 
-Voor het toevoegen van uitzonderingen en toegang tot Jupyter beschikbaar maken via een browser, Zie de volgende schermafbeelding.
+Gebruik de volgende richt lijnen om uitzonde ringen toe te voegen en de toegang tot Jupyter via een browser beschikbaar te maken:
 
 
 ![Jupyter-uitzondering inschakelen](./media/ubuntu-jupyter-exception.png)
 
 
-Meld u aan met hetzelfde wachtwoord als voor uw aanmelding bij voor Data Science Virtual Machines.
+Meld u aan met het wacht woord dat u gebruikt om u aan te melden bij de Data Science Virtual Machine.
 <br/>
 
 **Jupyter thuis**
@@ -71,8 +71,8 @@ Meld u aan met hetzelfde wachtwoord als voor uw aanmelding bij voor Data Science
 ## <a name="julia-language"></a>Julia-taal 
 <br/>![Julia-voorbeelden](./media/julia-samples.png)<br/>
 
-## <a name="azureml"></a>AzureML 
-<br/>![AzurekML-voorbeelden](./media/azureml-samples.png)<br/>
+## <a name="azure-machine-learning"></a>Azure Machine Learning 
+<br/>![Azure Machine Learning-voor beelden](./media/azureml-samples.png)<br/>
 
 ## <a name="pytorch"></a>PyTorch
 <br/>![PyTorch-voorbeelden](./media/pytorch-samples.png)<br/>
@@ -85,7 +85,7 @@ Meld u aan met hetzelfde wachtwoord als voor uw aanmelding bij voor Data Science
 <br/>![Voorbeelden van CNTK](./media/cntk-samples.png)<br/>
 
 
-## <a name="caffe2"></a>caffe2 
+## <a name="caffe2"></a>Caffe2 
 <br/>![caffe2-voorbeelden](./media/caffe2-samples.png)<br/>
 
 ## <a name="h2o"></a>H2O 

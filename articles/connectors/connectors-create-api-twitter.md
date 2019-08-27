@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Twitter vanuit Azure Logic Apps | Microsoft Docs
-description: Automatiseren van taken en werkstromen die bewaken en beheren van tweets, plus gegevens over Volgers, uw gevolgde gebruikers, andere gebruikers, tijdlijnen en meer uit uw Twitter-account met behulp van Azure Logic Apps ophalen
+description: Automatiseer taken en werk stromen voor het bewaken en beheren van tweets, plus gegevens over de volgers, uw gevolgde gebruikers, andere gebruikers, tijd lijnen en meer van uw Twitter-account met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,80 +11,80 @@ ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104983"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050701"
 ---
-# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Controleren en beheren van Twitter met behulp van Azure Logic Apps
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Twitter controleren en beheren met behulp van Azure Logic Apps
 
-Met Azure Logic Apps en de Twitter-connector, kunt u geautomatiseerde taken en werkstromen die bewaken en beheren van gegevens die u geïnteresseerd in Twitter, zoals bent een tweet, volgers, gebruikers en gebruikers, tijdlijnen en meer, samen met andere acties, bijvoorbeeld gevolgd:
+Met Azure Logic Apps en de Twitter-connector kunt u geautomatiseerde taken en werk stromen maken die u bedenken en beheren van gegevens die u bevalt in Twitter, zoals tweets, volgers, gebruikers, gevolgde gebruikers, tijd lijnen en meer, samen met andere acties, bijvoorbeeld:
 
-* Controleren, posten en tweets zoeken.
-* Gegevens, zoals Volgers, gevolgde gebruikers en tijdlijnen ophalen.
+* Tweets controleren, plaatsen en zoeken.
+* Gegevens ophalen zoals volgers, gevolgde gebruikers, tijd lijnen en meer.
 
-U kunt triggers die te antwoorden krijgen van uw Twitter-account en de uitvoer beschikbaar voor andere acties. U kunt acties die taken met uw Twitter-account uitvoeren gebruiken. U kunt ook andere acties waarmee de uitvoer van de Twitter-acties hebben. Wanneer een nieuwe tweet met een specifieke hashtag wordt weergegeven, kunt u bijvoorbeeld berichten met de Slack-connector verzenden. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+U kunt triggers gebruiken die reacties ophalen van uw Twitter-account en de uitvoer beschikbaar maken voor andere acties. U kunt acties gebruiken om taken uit te voeren met uw Twitter-account. U kunt ook andere acties uitvoeren met de uitvoer van Twitter-acties. Wanneer bijvoorbeeld een nieuwe tweet met een specifieke hashtag wordt weer gegeven, kunt u berichten verzenden met de connector voor toegestane vertraging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw Twitter-account en de gebruikersreferenties
+* Uw Twitter-account en gebruikers referenties
 
-   Uw referenties toestaan dat de logische app een verbinding maken en toegang tot uw Twitter-account.
+   Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw Twitter-account.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot uw Twitter-account. Om te beginnen met een Twitter-trigger, [maken van een lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor het gebruik van een Twitter-actie beginnen uw logische app met een andere trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waarvoor u toegang wilt krijgen tot uw Twitter-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een Twitter-trigger. Als u een Twitter-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 ## <a name="connect-to-twitter"></a>Verbinding maken met Twitter
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
 1. Kies een pad: 
 
-   * Typ 'twitter' als filter voor lege, logische apps, in het zoekvak. 
+   * Voor lege logische apps voert u in het zoekvak ' Twitter ' in als uw filter. 
    Selecteer de gewenste trigger onder de lijst met triggers. 
 
      -of-
 
    * Voor bestaande logische apps: 
    
-     * Kies onder de laatste stap waar u een actie toevoegen, **nieuwe stap**. 
+     * Kies **nieuwe stap**onder de laatste stap waarin u een actie wilt toevoegen. 
 
        -of-
 
-     * Tussen de stappen waar u een actie toevoegen, de aanwijzer over de pijl tussen fasen. 
-     Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+     * Als u een actie wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+     Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
      
-       Typ 'twitter' als filter in het zoekvak. 
-       Selecteer de actie die u wilt onder de lijst met acties.
+       Voer in het zoekvak ' Twitter ' in als uw filter. 
+       Selecteer in de lijst acties de gewenste actie.
 
-1. Als u wordt gevraagd of u aanmelden bij Twitter, meld u nu, zodat u toegang voor uw logische app verlenen kunt.
+1. Als u wordt gevraagd om u aan te melden bij Twitter, meldt u zich nu aan zodat u toegang kunt verlenen voor uw logische app.
 
-1. Geef de benodigde informatie voor uw geselecteerde trigger of actie en doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-trigger: Wanneer er een nieuwe tweet wordt geplaatst
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-trigger: Wanneer een nieuwe tweet wordt geplaatst
 
-Deze trigger start een werkstroom voor logische Apps wanneer de trigger wordt een nieuwe tweet bijvoorbeeld gedetecteerd met de hashtag, #Seattle. Wanneer deze tweets worden gevonden, kunt u bijvoorbeeld een bestand met de tweets inhoud toevoegen aan opslag, zoals een Dropbox-account met behulp van de Dropbox-connector. 
+Deze trigger start een werk stroom voor logische apps wanneer de trigger een nieuwe Tweet detecteert, bijvoorbeeld met de hashtag, #Seattle. Als deze tweets bijvoorbeeld worden gevonden, kunt u een bestand met de inhoud van de Tweets toevoegen aan de opslag, zoals een Dropbox-account met behulp van de Dropbox-connector. 
 
-U kunt eventueel een voorwaarde die in aanmerking komende tweets afkomstig van gebruikers met ten minste een opgegeven aantal Volgers zijn moeten opnemen.
+U kunt desgewenst een voor waarde toevoegen die in aanmerking komt voor tweets van gebruikers met ten minste een opgegeven aantal volgers.
 
-**Voorbeeld van de onderneming**: U kunt deze trigger gebruiken om te controleren van tweets over uw bedrijf en de tweets inhoud uploaden naar een SQL-database.
+**Bedrijfs voorbeeld**: U kunt deze trigger gebruiken om tweets over uw bedrijf te bewaken en de tweets-inhoud te uploaden naar een SQL database.
 
 ### <a name="twitter-action-post-a-tweet"></a>Twitter-actie: Een tweet plaatsen
 
-Deze actie een tweet geplaatst, maar u kunt de actie instellen zodat de tweet de inhoud van de tweets die door de eerder beschreven trigger is gevonden bevat. 
+Met deze actie wordt een Tweet geboekt, maar u kunt de actie zodanig instellen dat de Tweet de inhoud bevat van tweets die door de eerder beschreven trigger is gevonden. 
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/twitterconnector/).
+Raadpleeg de [referentie pagina](/connectors/twitterconnector/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -93,4 +93,4 @@ Voor technische informatie over triggers en acties limieten die worden beschreve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

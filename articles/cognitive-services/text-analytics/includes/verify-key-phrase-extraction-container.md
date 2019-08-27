@@ -1,7 +1,7 @@
 ---
-title: De Sentimentanalyse container instantie controleren
+title: De Sleuteltermextractie container instantie controleren
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het controleren van het exemplaar van de Sentimentanalyse-container.
+description: Meer informatie over het controleren van het exemplaar van de Sleuteltermextractie-container.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: cbc5ad63dd944eb53d3a8052e75744cb5c3709ea
+ms.openlocfilehash: 1a14ea186b3e1127928a36600d1047a633aea568
 ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051193"
+ms.locfileid: "70051885"
 ---
-## <a name="verify-the-sentiment-analysis-container-instance"></a>De Sentimentanalyse container instantie controleren
+## <a name="verify-the-key-phrase-extraction-container-instance"></a>De Sleuteltermextractie container instantie controleren
 
 1. Selecteer het tabblad **overzicht** en kopieer het IP-adres.
 1. Open een nieuw browser tabblad en voer het IP-adres in. Voer `http://<IP-address>:5000 (http://55.55.55.55:5000`bijvoorbeeld in). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
@@ -31,19 +31,20 @@ ms.locfileid: "70051193"
     {
       "documents": [
         {
-          "language": "en",
           "id": "1",
-          "text": "Hello world. This is some input text that I love."
+          "text": "Hello world"
         },
         {
-          "language": "fr",
           "id": "2",
           "text": "Bonjour tout le monde"
         },
         {
-          "language": "es",
           "id": "3",
           "text": "La carretera estaba atascada. Había mucho tráfico el día de ayer."
+        },
+        {
+          "id": "4",
+          "text": ":) :( :D"
         }
       ]
     }
@@ -67,18 +68,24 @@ ms.locfileid: "70051193"
 
 1. Selecteer **uitvoeren** om de sentiment van de tekst te bepalen.
 
-    Het model dat in de container is verpakt, genereert een Score van 0 tot 1, waarbij 0 negatieve sentiment is en 1 positief sentiment is.
+    Het model dat in de container is verpakt, genereert een Score van 0 tot 1, waarbij 0 negatief is en 1 positief is.
 
     Het JSON-antwoord dat wordt geretourneerd bevat sentiment voor de bijgewerkte tekst invoer:
 
     ```json
     {
       "documents": [
-      {
-        "id": "7",
-        "score": 0.9826303720474243,
-        "statistics": {
-          "charactersCount": 176,
+        {
+          "id": "7",
+          "keyPhrases": [
+            "Great people",
+            "great sessions",
+            "KubeCon Conference",
+            "Barcelona",
+            "best conferences"
+          ],
+          "statistics": {
+            "charactersCount": 176,
             "transactionsCount": 1
           }
         }
@@ -93,4 +100,4 @@ ms.locfileid: "70051193"
     }
     ```
 
-We kunnen nu het document `id` van de JSON-gegevens van de reactie Payload koppelen aan het oorspronkelijke document `id`met de aanvraag lading. De Score van meer dan `0.98` geeft aan dat er een zeer positieve sentiment is.
+We kunnen nu het document `id` van de JSON-gegevens van de reactie Payload koppelen aan het oorspronkelijke document `id`met de aanvraag lading. Het resulterende document heeft een `keyPhrases` matrix die de lijst met sleutel zinnen bevat die zijn geëxtraheerd uit het bijbehorende invoer document. Daarnaast zijn er verschillende statistieken, zoals `characterCount` en `transactionCount` voor elk van de resulterende documenten.

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: 65d88e6c201f633a260e31544444341e636e9941
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f1c42002343de1dd3b3ef6b9c9e35f458db925f4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552252"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051122"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics docker-containers configureren
 
@@ -51,7 +51,7 @@ Deze instelling bevindt zich op de volgende locatie:
 
 |Vereist| Name | Gegevenstype | Description |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Reeks | De vereiste URL voor het facturerings eindpunt |
+|Ja| `Billing` | Tekenreeks | De vereiste URL voor het facturerings eindpunt |
 
 ## <a name="eula-setting"></a>Overeenkomst instelling
 
@@ -93,60 +93,26 @@ Vervang {_argument_name_} door uw eigen waarden:
 
 | Tijdelijke aanduiding | Waarde | Indeling of voorbeeld |
 |-------------|-------|---|
-|{API_KEY} | De eindpunt sleutel van de `Text Analytics` resource die beschikbaar is op `Text Analytics` de pagina Azure Keys. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-|{ENDPOINT_URI} | De waarde van het facturerings eindpunt is beschikbaar `Text Analytics` op de pagina overzicht van Azure.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+| **{API_KEY}** | De eindpunt sleutel van de `Text Analytics` resource die beschikbaar is op `Text Analytics` de pagina Azure Keys. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar `Text Analytics` op de pagina overzicht van Azure.| Zie [vereiste para meters](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
 
 > [!IMPORTANT]
 > De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](how-tos/text-analytics-how-to-install-containers.md#billing).
 > De ApiKey-waarde is de **sleutel** van de `Text Analytics` pagina Azure-resource sleutels. 
 
-## <a name="key-phrase-extraction-container-docker-examples"></a>Voor beelden van extractie van sleutel woordgroepen container
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[Sleuteltermextractie](#tab/keyphrase)
 
-De volgende docker-voor beelden zijn voor de sleutel woord extractie container. 
+[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-### <a name="basic-example"></a>Eenvoudige voorbeeld 
+#### <a name="language-detectiontablanguage"></a>[Taaldetectie](#tab/language)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
+[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-### <a name="logging-example"></a>Voor beeld van logboek registratie 
+#### <a name="sentiment-analysistabsentiment"></a>[Sentimentanalyse](#tab/sentiment)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
-## <a name="language-detection-container-docker-examples"></a>Voor beelden van de docker voor taal detectie container
-
-De volgende docker-voor beelden zijn voor de taal detectie container. 
-
-### <a name="basic-example"></a>Eenvoudige voorbeeld
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Voor beeld van logboek registratie
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
- 
-## <a name="sentiment-analysis-container-docker-examples"></a>Voor beelden van sentiment Analysis container docker
-
-De volgende docker-voor beelden zijn voor de sentiment Analysis-container. 
-
-### <a name="basic-example"></a>Eenvoudige voorbeeld
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>Voor beeld van logboek registratie
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+***
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
 title: Verbinding maken met Yammer vanuit Azure Logic Apps | Microsoft Docs
-description: Automatiseren van taken en werkstromen die bewaken, boeken en berichten, feeds en nog veel meer in Yammer beheren met behulp van Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee berichten, feeds en meer worden bewaakt, gepost en beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,67 +11,67 @@ ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9228a94dcf27d8987b16e2caa2681cf973db0657
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104728"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050636"
 ---
-# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Controleren en beheren van uw Yammer-account met behulp van Azure Logic Apps
+# <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Uw Yammer-account bewaken en beheren met behulp van Azure Logic Apps
 
-Met Azure Logic Apps en de Yammer-connector, kunt u geautomatiseerde taken en werkstromen die bewaken en beheren van berichten, kanalen en meer in uw Yammer-account, samen met andere acties, bijvoorbeeld:
+Met Azure Logic Apps en de Yammer-connector kunt u geautomatiseerde taken en werk stromen maken waarmee berichten, feeds en meer worden gecontroleerd en beheerd in uw Yammer-account, samen met andere acties, bijvoorbeeld:
 
-* Monitor als nieuwe berichten worden weergegeven in de gevolgde kanalen en groepen.
-* Ophalen van berichten, groepen, netwerken, de gebruikers details en meer.
-* Boeken en achtige berichten.
+* Controleren wanneer er nieuwe berichten worden weer gegeven in gevolgde feeds en groepen.
+* Ontvang berichten, groepen, netwerken, Details van gebruikers en nog veel meer.
+* Berichten plaatsen en vergelijken.
 
-U kunt triggers die te antwoorden krijgen van uw Yammer-account en de uitvoer beschikbaar voor andere acties. U kunt acties die taken met uw Yammer-account uitvoeren gebruiken. U kunt ook andere acties waarmee de uitvoer van de Yammer-acties hebben. Wanneer nieuwe berichten worden weergegeven in de kanalen of groepen, kunt u die berichten delen met de Slack-connector. Als u geen ervaring met logische apps, raadpleegt u [wat is Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+U kunt triggers gebruiken die reacties ophalen van uw Yammer-account en de uitvoer beschikbaar maken voor andere acties. U kunt acties gebruiken om taken uit te voeren met uw Yammer-account. U kunt ook andere acties uitvoeren met de uitvoer van Yammer-acties. Als er bijvoorbeeld nieuwe berichten in feeds of groepen worden weer gegeven, kunt u deze berichten delen met de connector voor toegestane vertraging. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, <a href="https://azure.microsoft.com/free/" target="_blank">registreer u dan nu voor een gratis Azure-account</a>. 
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). 
 
-* Uw Yammer-account en de gebruikersreferenties
+* Uw Yammer-account en gebruikers referenties
 
-   Uw referenties toestaan dat de logische app een verbinding maken en toegang tot uw Yammer-account.
+   Met uw referenties wordt uw logische app geautoriseerd om een verbinding te maken en toegang te krijgen tot uw Yammer-account.
 
-* Basiskennis over [over het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* De logische app waar u toegang tot uw Yammer-account. Om te beginnen met een trigger Yammer [maken van een lege, logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md). Voor het gebruik van een Yammer-actie beginnen uw logische app met een andere trigger, bijvoorbeeld, de **terugkeerpatroon** trigger.
+* De logische app waar u toegang wilt krijgen tot uw Yammer-account. [Maak een lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)om te beginnen met een Yammer-trigger. Als u een Yammer-actie wilt gebruiken, start u uw logische app met een andere trigger, bijvoorbeeld de trigger voor **terugkeer patroon** .
 
 ## <a name="connect-to-yammer"></a>Verbinding maken met Yammer
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com), en open uw logische app in Logic App Designer, als het niet al geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open de logische app in de ontwerp functie voor logische apps, als deze nog niet is geopend.
 
 1. Kies een pad: 
 
-   * Typ 'yammer' als filter voor lege, logische apps, in het zoekvak. 
+   * Voor lege Logic apps voert u in het zoekvak ' Yammer ' in als uw filter. 
    Selecteer de gewenste trigger onder de lijst met triggers. 
 
      -of-
 
    * Voor bestaande logische apps: 
    
-     * Kies onder de laatste stap waar u een actie toevoegen, **nieuwe stap**. 
+     * Kies **nieuwe stap**onder de laatste stap waarin u een actie wilt toevoegen. 
 
        -of-
 
-     * Tussen de stappen waar u een actie toevoegen, de aanwijzer over de pijl tussen fasen. 
-     Kies het plusteken ( **+** ) die wordt weergegeven, en selecteer vervolgens **een actie toevoegen**.
+     * Als u een actie wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. 
+     Kies het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
      
-       Typ 'yammer' als filter in het zoekvak. 
-       Selecteer de actie die u wilt onder de lijst met acties.
+       Voer in het zoekvak ' Yammer ' in als uw filter. 
+       Selecteer in de lijst acties de gewenste actie.
 
-1. Als u wordt gevraagd of u zich aanmeldt bij Yammer, meld u nu Meld u nu, zodat u toegang kunt toestaan.
+1. Als u wordt gevraagd om u aan te melden bij Yammer, meldt u zich nu aan, zodat u toegang kunt toestaan.
 
-1. Geef de benodigde informatie voor uw geselecteerde trigger of actie en doorgaan met het ontwikkelen van uw logische app-werkstroom.
+1. Geef de benodigde gegevens op voor de geselecteerde trigger of actie en ga door met het bouwen van de werk stroom van uw logische app.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor technische informatie over triggers en acties limieten die worden beschreven van de connector openapi (voorheen Swagger) beschrijving van de connector controleren [-verwijzingspagina](/connectors/yammer/).
+Raadpleeg de [referentie pagina](/connectors/yammer/)van de connector voor technische informatie over triggers, acties en limieten die worden beschreven in de beschrijving van de OpenAPI (voorheen Swagger) van de connector.
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
@@ -80,4 +80,4 @@ Voor technische informatie over triggers en acties limieten die worden beschreve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over andere [Logic Apps-connectors](../connectors/apis-list.md)
+* Meer informatie over andere [Logic apps](../connectors/apis-list.md) -connectors

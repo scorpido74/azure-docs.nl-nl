@@ -6,16 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 07/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 483288869e0eda20010108b8293c5964ff9571c2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012909"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049973"
 ---
 ::: zone target="docs"
 
@@ -30,6 +29,16 @@ In deze zelfstudie leert u het volgende:
 > * Schijven aansluiten en de wachtwoordcode opzoeken
 > * Schijven ontgrendelen op Windows-client
 > * Schijven ontgrendelen op Linux-client
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk uitpakken, verbinding maken en ontgrendelen
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -283,7 +292,7 @@ Zie problemen [met ontgrendelen oplossen](data-box-disk-troubleshoot-unlock.md)a
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  Geef de sleutel op die u hebt verkregen van **algemene > apparaatgegevens** in de Azure Portal. De stationsletter die is toegewezen aan de schijf wordt weergegeven. 
+    -  Haal de sleutel van **algemene > apparaatgegevens** op in de Azure Portal en geef deze hier op. De stationsletter die is toegewezen aan de schijf wordt weergegeven. 
 4. Als u de schijven op een Linux-client wilt ontgrendelen, opent u een Terminal. Ga naar de map waar u de software hebt gedownload. Typ de volgende opdrachten om de bestands machtigingen te wijzigen, zodat u deze bestanden kunt uitvoeren: 
 
     ```
@@ -295,7 +304,7 @@ Zie problemen [met ontgrendelen oplossen](data-box-disk-troubleshoot-unlock.md)a
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    Voer het ontgrendelingsprogramma van Data Box Disk uit. Geef de sleutel van de Azure Portal op door naar **algemene > apparaatgegevens**te gaan. Geef eventueel een lijst met BitLocker-versleutelde volumes binnen enkele aanhalings tekens op om te ontgrendelen.
+    Voer het ontgrendelingsprogramma van Data Box Disk uit. Haal de sleutel van **algemene > apparaatgegevens** op in de Azure Portal en geef deze hier op. Geef eventueel een lijst met BitLocker-versleutelde volumes binnen enkele aanhalings tekens op om te ontgrendelen.
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’

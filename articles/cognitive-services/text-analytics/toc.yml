@@ -69,15 +69,9 @@
         - name: Containers configureren
           href: text-analytics-resource-container-config.md
         - name: Containerinstanties gebruiken
-          items:
-            - name: Sentimentanalyse
-              href: how-tos/deploy-sentiment-analysis-on-container-instances.md
+          href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Kubernetes Service (AKS) gebruiken
-          items:
-            - name: Taaldetectie
-              href: how-tos/use-language-detection-on-aks.md
-            - name: Sentimentanalyse
-              href: how-tos/use-sentiment-analysis-on-aks.md
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: De verbonden service Text Analytics gebruiken
       href: vs-text-connected-service.md
 - name: Naslaginformatie
