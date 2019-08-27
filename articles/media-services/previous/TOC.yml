@@ -49,6 +49,15 @@
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: Procedures
   items:
+    - name: Verouderde onderdelen
+      href: legacy-components.md
+      items:
+        - name: Migreren vanuit Azure Media Encoder
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: Migreren vanuit Windows Azure Media Encoder
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
     - name: Beheren
       items:
         - name: Accounts

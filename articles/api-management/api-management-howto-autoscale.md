@@ -1,6 +1,6 @@
 ---
 title: Automatisch schalen van een Azure API Management-exemplaar configureren | Microsoft Docs
-description: Dit onderwerp wordt beschreven hoe u het gedrag voor automatisch schalen voor een Azure API Management-exemplaar kunt instellen.
+description: In dit onderwerp wordt beschreven hoe u het gedrag voor automatisch schalen instelt voor een Azure API Management-exemplaar.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,120 +11,123 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123464"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018265"
 ---
-# <a name="automatically-scale-an-azure-api-management-instance"></a>Automatisch schalen van een Azure API Management-exemplaar  
+# <a name="automatically-scale-an-azure-api-management-instance"></a>Een Azure API Management-exemplaar automatisch schalen  
 
-Azure API Management service-exemplaar kan automatisch worden geschaald op basis van een set regels. Dit gedrag kan worden ingeschakeld en geconfigureerd via Azure Monitor en wordt alleen ondersteund in **Standard** en **Premium** segment van de Azure API Management-service.
+Azure API Management service-exemplaar kan automatisch worden geschaald op basis van een set regels. Dit gedrag kan worden ingeschakeld en geconfigureerd via Azure Monitor en wordt alleen ondersteund in de lagen **Standard** en **Premium** van de Azure API Management-service.
 
-Het artikel wordt uitgelegd hoe van de configuratie voor automatisch schalen en stelt de optimale configuratie van regels voor automatisch schalen.
+In dit artikel wordt stapsgewijs uitgelegd hoe u automatisch schalen configureert en een optimale configuratie van regels voor automatisch schalen stelt.
+
+> [!NOTE]
+> API Management service in de **verbruiks** laag wordt automatisch geschaald op basis van het verkeer, zonder dat er aanvullende configuratie nodig is.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt volgen de stappen in dit artikel, moet u:
+Als u de stappen in dit artikel wilt volgen, moet u het volgende doen:
 
 + Een actief Azure-abonnement hebben.
-+ Een Azure API Management-exemplaar hebben. Zie voor meer informatie, [maken van een Azure API Management-exemplaar](get-started-create-service-instance.md).
-+ Informatie over het concept van [capaciteit van een Azure API Management-exemplaar](api-management-capacity.md).
-+ Inzicht in [handmatig proces van een Azure API Management-exemplaar schalen](upgrade-and-scale.md), met inbegrip van consequenties van kosten.
++ Een Azure API Management-exemplaar hebben. Zie [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)voor meer informatie.
++ Inzicht in het concept van de [capaciteit van een Azure API Management-exemplaar](api-management-capacity.md).
++ Meer informatie [over het hand matig schalen van een Azure API Management-exemplaar](upgrade-and-scale.md), met inbegrip van kosten gevolgen.
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-standard.md](../../includes/api-management-availability-premium-standard.md)]
 
-## <a name="azure-api-management-autoscale-limitations"></a>Beperkingen van Azure API Management-functie voor automatisch schalen
+## <a name="azure-api-management-autoscale-limitations"></a>Beperkingen voor automatisch schalen van Azure API Management
 
-Bepaalde beperkingen en de gevolgen van het vergroten/verkleinen beslissingen moeten worden opgelost voordat gedrag voor automatisch schalen configureren.
+Er moeten bepaalde beperkingen en gevolgen van schaal beslissingen worden overwogen voordat u gedrag voor automatisch schalen configureert.
 
-+ Automatisch schalen kan alleen worden ingeschakeld voor **Standard** en **Premium** lagen van Azure API Management-service.
-+ Prijscategorieën worden ook het maximum aantal eenheden voor een service-exemplaar opgeven.
-+ Schalen van proces wordt ten minste 20 minuten duren.
-+ Als de service is vergrendeld door een andere bewerking, schalen van de aanvraag mislukt en automatisch opnieuw te proberen.
-+ In het geval van een service met meerdere regionale implementaties, alleen-eenheden in de **primaire locatie** kunnen worden geschaald. Eenheden in andere locaties kunnen niet worden geschaald.
++ Automatisch schalen kan alleen worden ingeschakeld voor de **standaard** -en **Premium** -lagen van Azure API Management service.
++ Prijs categorieën geven ook het maximum aantal eenheden voor een service-exemplaar op.
++ Het schaal proces kan ten minste 20 minuten duren.
++ Als de service is vergrendeld door een andere bewerking, mislukt de aanvraag voor schalen en wordt het automatisch opnieuw geprobeerd.
++ In het geval van een service met meerdere regionale implementaties kan alleen eenheden op de **primaire locatie** worden geschaald. Eenheden op andere locaties kunnen niet worden geschaald.
 
-## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Inschakelen en automatisch schalen configureren voor Azure API Management-service
+## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>Automatisch schalen voor Azure API Management-service inschakelen en configureren
 
-Volg de stappen hieronder om automatisch schalen configureren voor een Azure API Management-service:
+Volg de onderstaande stappen om automatisch schalen te configureren voor een Azure API Management-service:
 
-1. Navigeer naar **Monitor** exemplaar in de Azure-portal.
+1. Navigeer naar instantie **controleren** in het Azure Portal.
 
     ![Azure Monitor](media/api-management-howto-autoscale/01.png)
 
-2. Selecteer **voor automatisch schalen** in het menu aan de linkerkant.
+2. Selecteer **automatisch schalen** in het menu aan de linkerkant.
 
-    ![Azure Monitor voor automatisch schalen-resource](media/api-management-howto-autoscale/02.png)
+    ![Azure Monitor resource voor automatisch schalen](media/api-management-howto-autoscale/02.png)
 
-3. Zoek uw Azure API Management-service op basis van de filters in de vervolgkeuzemenu's.
-4. Selecteer de gewenste Azure API Management service-exemplaar.
-5. In de zojuist geopende sectie, klikt u op de **automatisch schalen inschakelen** knop.
+3. Zoek uw Azure API Management-service op basis van de filters in vervolg menu's.
+4. Selecteer de gewenste Azure API Management service-instantie.
+5. Klik in de sectie Nieuw geopend op de knop **automatisch schalen inschakelen** .
 
-    ![Azure Monitor voor automatisch schalen inschakelen](media/api-management-howto-autoscale/03.png)
+    ![Azure Monitor automatisch schalen inschakelen](media/api-management-howto-autoscale/03.png)
 
-6. In de **regels** sectie, klikt u op **+ toevoegen van een regel**.
+6. Klik in de sectie **regels** op **+ een regel toevoegen**.
 
-    ![Automatisch schalen van Azure Monitor-regel toevoegen](media/api-management-howto-autoscale/04.png)
+    ![Azure Monitor regel voor automatisch schalen toevoegen](media/api-management-howto-autoscale/04.png)
 
-7. Een nieuwe scale-out regel definiëren.
+7. Definieer een nieuwe scale-out regel.
 
-   Een regel voor uitschalen kan bijvoorbeeld een toevoeging van een Azure API Management-eenheid, geactiveerd wanneer de gemiddelde capaciteit metrische gegevens in de afgelopen 30 minuten hoger is dan 80%. De onderstaande tabel bevat de configuratie voor een dergelijke regel.
+   Een scale-out-regel kan bijvoorbeeld een toevoeging van een Azure API Management-eenheid activeren, wanneer de gemiddelde capaciteits metriek in de laatste 30 minuten 80% overschrijdt. De onderstaande tabel bevat een configuratie voor een dergelijke regel.
 
     | Parameter             | Value             | Opmerkingen                                                                                                                                                                                                                                                                           |
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Bron van metrische gegevens         | Huidige resource  | Definieer de regel op basis van de huidige metrische gegevens voor Azure API Management-resources.                                                                                                                                                                                                     |
+    | Bron van metrische gegevens         | Huidige resource  | Definieer de regel op basis van de huidige metrische gegevens van Azure API Management resource.                                                                                                                                                                                                     |
     | *Criteria*            |                   |                                                                                                                                                                                                                                                                                 |
-    | Tijdverzameling      | Gemiddeld           |                                                                                                                                                                                                                                                                                 |
-    | Naam van de meetwaarde           | Capaciteit          | Capaciteit meetwaarde is een Azure API Management-meting zetten op basis van gebruik van bronnen van een Azure API Management-exemplaar.                                                                                                                                                            |
-    | Tijdsintervalstatistieken  | Gemiddeld           |                                                                                                                                                                                                                                                                                 |
+    | Tijdverzameling      | Average           |                                                                                                                                                                                                                                                                                 |
+    | Naam van de meetwaarde           | Capaciteit          | De metrische gegevens van de capaciteit zijn een Azure API Management metriek die het gebruik van resources van een Azure API Management instantie weerspiegelt.                                                                                                                                                            |
+    | Tijdsintervalstatistieken  | Average           |                                                                                                                                                                                                                                                                                 |
     | Operator              | Groter dan      |                                                                                                                                                                                                                                                                                 |
-    | Drempelwaarde             | 80%               | De drempelwaarde voor de gemiddelde capaciteit metrische gegevens.                                                                                                                                                                                                                                 |
-    | Duur (in minuten) | 30                | Het interval aan de capaciteit metrische gegevens gemiddelde is specifiek voor gebruikspatronen. Hoe langer de periode is, worden de soepeler de reactie - onregelmatige pieken hebben minder invloed op de beslissing van de scale-out. Het wordt echter ook de scale-out-trigger vertragen. |
+    | Drempelwaarde             | 80%               | De drempel waarde voor de metrische gegevens over de gemiddelde capaciteit.                                                                                                                                                                                                                                 |
+    | Duur (in minuten) | 30                | De tijds duur voor het gemiddelde van de capaciteits metriek is specifiek voor gebruiks patronen. Hoe langer de tijds periode is, hoe vloeiender de reactie is-loopt over een minder effect op de uitschaal beslissing. Er wordt echter ook een vertraging voor de scale-out trigger gegenereerd. |
     | *Actie*              |                   |                                                                                                                                                                                                                                                                                 |
     | Bewerking             | Aantal verhogen met |                                                                                                                                                                                                                                                                                 |
-    | Aantal exemplaren        | 1                 | De Azure API Management-exemplaar per 1 eenheid uitschalen.                                                                                                                                                                                                                          |
-    | Afkoelen (minuten)   | 60                | Het duurt minimaal 20 minuten voor de Azure API Management-service om uit te schalen. In de meeste gevallen de afkoelperiode bevindt van 60 minuten wordt voorkomen dat veel schaal-outs wordt geactiveerd.                                                                                                  |
+    | Aantal instanties        | 1                 | Het Azure API Management-exemplaar uitschalen op 1 eenheid.                                                                                                                                                                                                                          |
+    | Afkoelen (minuten)   | 60                | Het duurt ten minste 20 minuten voordat de Azure API Management-service is uitgeschaald. In de meeste gevallen voor komt de door koele periode van 60 minuten dat er veel Scale-outs worden geactiveerd.                                                                                                  |
 
-8. Klik op **toevoegen** op de regel niet opslaan.
+8. Klik op **toevoegen** om de regel op te slaan.
 
-    ![Azure Monitor scale-out regel](media/api-management-howto-autoscale/05.png)
+    ![Azure Monitor scale-out-regel](media/api-management-howto-autoscale/05.png)
 
-9. Klik nogmaals op **+ toevoegen van een regel**.
+9. Klik opnieuw op **+ een regel toevoegen**.
 
-    Deze keer moet een schaal in regel worden gedefinieerd. Dit zorgt ervoor dat resources zijn niet worden verspild, wanneer het gebruik van API's wordt verlaagd.
+    Deze keer moet er een schaal in de regel worden gedefinieerd. Het zorgt ervoor dat resources niet worden verspild wanneer het gebruik van Api's afneemt.
 
-10. Een nieuwe omvang in regel definiëren.
+10. Definieer een nieuwe schaal in de regel.
 
-    Een schaalset in regel kan bijvoorbeeld een verwijdering van een Azure API Management-eenheid, geactiveerd wanneer de gemiddelde capaciteit metrische gegevens in de afgelopen 30 minuten minder dan 35 is %. De onderstaande tabel bevat de configuratie voor een dergelijke regel.
+    Een schaal in regel kan bijvoorbeeld een verwijdering van een Azure API Management-eenheid activeren, wanneer de gemiddelde capaciteits metriek in de laatste 30 minuten lager is dan 35%. De onderstaande tabel bevat een configuratie voor een dergelijke regel.
 
     | Parameter             | Value             | Opmerkingen                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Bron van metrische gegevens         | Huidige resource  | Definieer de regel op basis van de huidige metrische gegevens voor Azure API Management-resources.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+    | Bron van metrische gegevens         | Huidige resource  | Definieer de regel op basis van de huidige metrische gegevens van Azure API Management resource.                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *Criteria*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Tijdverzameling      | Gemiddeld           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Naam van de meetwaarde           | Capaciteit          | Dezelfde metrische gegevens als het account dat wordt gebruikt voor de scale-out regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    | Tijdsintervalstatistieken  | Gemiddeld           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Tijdverzameling      | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Naam van de meetwaarde           | Capaciteit          | Dezelfde metrische waarde als die voor de scale-out-regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | Tijdsintervalstatistieken  | Average           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Operator              | Kleiner dan         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Drempelwaarde             | 35%               | Op dezelfde manier aan de scale-out regel afhankelijk deze waarde sterk van de gebruikspatronen van de Azure API Management. |
-    | Duur (in minuten) | 30                | Dezelfde waarde als het account dat wordt gebruikt voor de scale-out regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Drempelwaarde             | 35%               | Net als bij de scale-out regel is deze waarde sterk afhankelijk van de gebruiks patronen van de Azure-API Management. |
+    | Duur (in minuten) | 30                | Dezelfde waarde als die voor de scale-out-regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Actie*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Bewerking             | Aantal verlagen met | In de wat is gebruikt voor de scale-out regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | Aantal exemplaren        | 1                 | Dezelfde waarde als het account dat wordt gebruikt voor de scale-out regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Afkoelen (minuten)   | 90                | Inschalen moet meer dan een scale-out, conservatieve, zodat de afkoelperiode bevindt mag niet langer zijn.                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | Bewerking             | Aantal verlagen met | Tegenovergestelde van wat werd gebruikt voor de scale-out-regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | Aantal instanties        | 1                 | Dezelfde waarde als die voor de scale-out-regel.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | Afkoelen (minuten)   | 90                | Schaal in moet beter zijn dan een uitschalen, zodat de onderdruks periode langer moet zijn.                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-11. Klik op **toevoegen** op de regel niet opslaan.
+11. Klik op **toevoegen** om de regel op te slaan.
 
-    ![Azure Monitor-schaal in regel](media/api-management-howto-autoscale/06.png)
+    ![Schaal Azure Monitor in regel](media/api-management-howto-autoscale/06.png)
 
-12. Stel de **maximale** van Azure API Management-eenheden.
+12. Stel het **maximum** aantal Azure API Management-eenheden in.
 
     > [!NOTE]
-    > Met Azure API Management heeft een limiet van een exemplaar naar uitschalen kunt eenheden. De limiet is afhankelijk van een servicelaag.
+    > Voor Azure API Management geldt een limiet van eenheden waarmee een exemplaar kan worden uitgeschaald naar. De limiet is afhankelijk van een servicelaag.
 
-    ![Azure Monitor-schaal in regel](media/api-management-howto-autoscale/07.png)
+    ![Schaal Azure Monitor in regel](media/api-management-howto-autoscale/07.png)
 
-13. Klik op **Opslaan**. De functie voor automatisch schalen is geconfigureerd.
+13. Klik op **Opslaan**. Uw automatisch schalen is geconfigureerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
