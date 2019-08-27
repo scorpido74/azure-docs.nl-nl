@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: diberry
-ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663917"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034377"
 ---
 # <a name="how-personalizer-works"></a>Hoe Personalizer werkt
 
@@ -163,7 +163,7 @@ U kunt aanbevelings motoren gebruiken met Personaler:
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Inhouds beveiligingen toevoegen aan uw toepassing
 
-Als uw toepassing grote afwijkingen toestaat in inhoud die wordt weer gegeven voor gebruikers, en een deel van die inhoud onveilig of ongepast is voor sommige gebruikers, moet u ervoor zorgen dat de juiste veiligheids maatregelen worden getroffen om te voor komen dat uw gebruikers onaanvaardbaar kunnen zien Inhoudbeheer. Het beste patroon om beveiligingen te implementeren is: Het beste patroon om beveiligingen te implementeren is:
+Als uw toepassing grote afwijkingen toestaat in inhoud die wordt weer gegeven voor gebruikers, en een deel van die inhoud onveilig of ongepast is voor sommige gebruikers, moet u ervoor zorgen dat de juiste veiligheids maatregelen worden getroffen om te voor komen dat uw gebruikers onaanvaardbaar kunnen zien Inhoudbeheer. Het beste patroon om beveiligingen te implementeren is:
     * De lijst met te rangschikken acties ophalen.
     * Filter de items die niet geschikt zijn voor de doel groep.
     * Rang Schik deze levensvat bare acties alleen.

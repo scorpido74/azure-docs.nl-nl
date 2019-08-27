@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564578"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034496"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Tekst herkennen containers installeren en uitvoeren
 
-Het gedeelte tekst herkennen van Computer Vision-is ook beschikbaar als een Docker-container. Hiermee kunt u om te detecteren en extraheer gedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangsten, posters en visitekaartjes.  
+Het gedeelte tekst herkennen van Computer Vision-is ook beschikbaar als een Docker-container. Hiermee kunt u om te detecteren en extraheer gedrukte tekst uit afbeeldingen van verschillende objecten met verschillende oppervlakken en achtergronden, zoals ontvangsten, posters en visitekaartjes.
+
 > [!IMPORTANT]
 > De tekst herkennen-container wordt op dit moment werkt alleen met Engels.
 
@@ -38,7 +39,7 @@ U moet voldoen aan de volgende vereisten voordat u Tekst herkennen containers ge
 
 ## <a name="request-access-to-the-private-container-registry"></a>Aanvraag voor toegang tot de privécontainerregister
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>De hostcomputer
 
@@ -46,16 +47,7 @@ U moet voldoen aan de volgende vereisten voordat u Tekst herkennen containers ge
 
 ### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
 
-De volgende tabel beschrijft de minimale en aanbevolen CPU-kernen en het geheugen die moeten worden toegewezen voor elke Tekst herkennen-container.
-
-| Container | Minimum | Aanbevolen |TPS<br>(Minimum, Maximum)|
-|-----------|---------|-------------|--|
-|Tekst herkennen|1 Core, 8 GB geheugen, 0,5 TPS|2 kernen, 8 GB geheugen, 1 TPS|0,5, 1|
-
-* Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
-* TPS-trans acties per seconde
-
-Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van `docker run` de opdracht.
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>De container installatie kopie ophalen met`docker pull`
 

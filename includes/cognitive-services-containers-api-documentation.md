@@ -1,24 +1,24 @@
 ---
 author: IEvangelist
 ms.author: dapine
-ms.date: 06/25/2019
+ms.date: 08/22/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 00cc63f53388ab7bea05a0b55784247f63477684
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 081155c8984f39cc9cc8e905eb108c07dee98d2e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704172"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034430"
 ---
-## <a name="validate-that-a-container-is-running"></a>Valideren dat een container wordt uitgevoerd 
+## <a name="validate-that-a-container-is-running"></a>Controleren of een container wordt uitgevoerd 
 
-Er zijn verschillende manieren om te valideren dat de container wordt uitgevoerd. 
+Er zijn verschillende manieren om te controleren of de container wordt uitgevoerd. Zoek het *externe IP-* adres en de weer gegeven poort van de betreffende container en open uw favoriete webbrowser. Gebruik de onderstaande aanvraag-Url's om te controleren of de container wordt uitgevoerd. De onderstaande voorbeeld aanvraag-url's zijn `http://localhost:5000`, maar uw specifieke container kan variëren. Houd er rekening mee dat u afhankelijk bent van het *externe IP-* adres van uw container en de weer gegeven poort.
 
-|Aanvraag|Doel|
+| Aanvraag-URL | Doel |
 |--|--|
-|`http://localhost:5000/`|De container biedt een startpagina.|
-|`http://localhost:5000/status`|Aangevraagd met GET, om te valideren dat de container wordt uitgevoerd zonder dat een eindpunt-query. Deze aanvraag kan worden gebruikt voor Kubernetes [liveness en gereedheid voor tests](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/).|
-|`http://localhost:5000/swagger`|De container biedt een volledige set met documentatie voor de eindpunten en een `Try it now` functie. Met deze functie kunt u uw instellingen invoeren in een web gebaseerde HTML-formulier en de query te maken zonder code te schrijven. Nadat de query retourneert, wordt een voorbeeld van de CURL-opdracht opgegeven om te demonstreren dat de HTTP-headers en hoofdtekst van de indeling die is vereist. |
+| `http://localhost:5000/` | De container bevat een start pagina. |
+| `http://localhost:5000/status` | Er wordt met een HTTP GET-aanvraag gecontroleerd of de container wordt uitgevoerd zonder dat dit een eindpunt query veroorzaakt. Deze aanvraag kan worden gebruikt voor Kubernetes- [en gereedheids tests](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/). |
+| `http://localhost:5000/swagger` | De container bevat een volledige documentatie voor de eind punten en een try- **out** -functie. Met deze functie kunt u uw instellingen invoeren in een HTML-formulier op het web en de query maken zonder dat u code hoeft te schrijven. Nadat de query is geretourneerd, wordt een voor beeld van een krul opdracht weer gegeven om te demonstreren welke HTTP-headers en hoofdtekst indeling vereist zijn. |
 
-![Startpagina van de container](./media/cognitive-services-containers-api-documentation/container-webpage.png)
+![Start pagina van container](./media/cognitive-services-containers-api-documentation/container-webpage.png)
