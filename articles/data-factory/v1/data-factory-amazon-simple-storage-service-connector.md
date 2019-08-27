@@ -94,10 +94,10 @@ Secties zoals structuur, Beschik baarheid en beleid zijn vergelijkbaar voor alle
 
 | Eigenschap | Description | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| bucketName |De naam van de S3-bucket. |Tekenreeks |Ja |
-| key |De object sleutel S3. |Tekenreeks |Nee |
-| prefix |Voorvoegsel voor de sleutel S3-object. Objecten waarvan sleutels met dit voorvoegsel beginnen worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |Tekenreeks |Nee |
-| version |De versie van de S3-object, als S3 versiebeheer is ingeschakeld. |Tekenreeks |Nee |
+| bucketName |De naam van de S3-bucket. |String |Ja |
+| key |De object sleutel S3. |String |Nee |
+| prefix |Voorvoegsel voor de sleutel S3-object. Objecten waarvan sleutels met dit voorvoegsel beginnen worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |String |Nee |
+| version |De versie van de S3-object, als S3 versiebeheer is ingeschakeld. |String |Nee |
 | format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie de [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling ](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u bestanden wilt kopiëren als-zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. | |Nee |
 | compression | Geef het type en het niveau van compressie voor de gegevens. De ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. | |Nee |
 

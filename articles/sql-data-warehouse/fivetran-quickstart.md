@@ -80,5 +80,5 @@ Als u wilt aanmelden bij Fivetran, voert u de referenties die u gebruikt voor to
 * Host (de naam van uw server).
 * Poort.
 * Database.
-* Gebruiker (de naam van de gebruiker moet **fivetran\@_servernaam_** waar *servernaam* maakt deel uit van uw Azure-host URI:  ***servernaam*. database.Windows.NET**).
+* Gebruiker (de naam van de gebruiker moet **fivetran\@_servernaam_** waar *servernaam* maakt deel uit van uw Azure-host URI: ***servernaam*.database.Windows.NET**).
 * Het wachtwoord.
