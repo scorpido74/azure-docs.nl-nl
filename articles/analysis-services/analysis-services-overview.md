@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 260d2774eecb42d0234c33e40b4f10680a4fbfbd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932236"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073853"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -67,6 +67,8 @@ Deze laag is de meest geschikte voor essentiële productietoepassingen waarvoor 
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
+|S8v2*    |    640     |    200     |
+|S9v2*    |    1280    |    400     |
 
 \* Niet beschikbaar in alle regio’s.  
 
@@ -82,34 +84,35 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Canada - midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |US - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|US - oost 2     |     S8, S9   |    1    |
+|US - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
 |US - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |US - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |US - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |US - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |US - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|US - west     |    S8, S9   |    2  |
+|US - west     |    S8, S9, S8v2, S9v2   |    2  |
 |VS - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|VS - west 2    |    S8, S9  |    1     |
+|VS - west 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
 |Europa - noord     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
+|Europa - noord     |    S8v2, S9v2      |    3     |
 |Verenigd Koninkrijk Zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa -west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa -west    |   S8, S9  |  1  |
+|Europa -west    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Azië en Stille Oceaan 
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
 |Australië - oost     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australië - oost     |    S8, S9    |    1     |
+|Australië - oost     |    S8, S9, S8v2, S9v2    |    1     |
 |Australië - zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan - oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
+|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |India - west     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Schalen naar uw behoeften
@@ -246,7 +249,7 @@ In de documentatie van Azure Analysis Services wordt ook gebruikgemaakt van [Git
 
 ## <a name="blogs"></a>Blogs
 
-Er veranderen nog veel dingen. Krijg de meest recente informatie in het [blog van het Analysis Services-team](https://blogs.msdn.microsoft.com/analysisservices/) en in het [Azure-blog](https://azure.microsoft.com/blog/).
+Er veranderen nog veel dingen. Ontvang de meest recente informatie over de [Power bi blog](https://powerbi.microsoft.com/blog/category/analysis-services/) en [Azure-blog](https://azure.microsoft.com/blog/).
 
 ## <a name="community"></a>Community
 

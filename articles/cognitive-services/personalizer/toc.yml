@@ -72,8 +72,8 @@
       items:
         - name: .NET
           items:
-            - name: .NET SDK-referentie
-              href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
+            - name: Naslaginformatie
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
             - name: NuGet-pakket
               href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
         - name: Aan de slag

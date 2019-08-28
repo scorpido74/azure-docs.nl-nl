@@ -10,17 +10,16 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c103e6cb3626750414ee5083dad3e34b6be4986c
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 989bff7d8be5c234d9536afa8afc0beb6870807e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408946"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071665"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure
 
@@ -54,7 +53,7 @@ const port = process.env.PORT || 1337;
 
 App Service injecteert process.env.PORT in uw toepassing, zodat de code de variabele gebruikt om te weten naar welke poort moet worden geluisterd. 
 
-Navigeer in een terminalvenster naar de **hoofdmap** van de Node.js-voorbeeldproject (de map waarin zich _index.js_).
+Navigeer in een Terminal venster naar de **hoofdmap** van het knoop punt. js-voorbeeld project (de map die _index. js_bevat).
 
 ## <a name="run-the-app-locally"></a>De app lokaal uitvoeren
 
@@ -77,7 +76,7 @@ Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
 
 ## <a name="create-a-project-zip-file"></a>Een ZIP-bestand van het project maken
 
-Zorg ervoor dat u bent nog steeds in de **hoofdmap** van het voorbeeldproject (de map waarin zich _index.js_). Maak een ZIP-archief van alle bestanden in uw project. De volgende opdracht maakt gebruik van het standaardhulpprogramma in de terminal:
+Zorg ervoor dat u zich nog steeds in de **hoofdmap** van het voorbeeld project bevindt (de map die _index. js_bevat). Maak een ZIP-archief van alle bestanden in uw project. De volgende opdracht maakt gebruik van het standaardhulpprogramma in de terminal:
 
 ```
 # Bash
@@ -95,7 +94,7 @@ U kunt dit ZIP-bestand later uploaden naar Azure en dit implementeren in App Ser
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)] 
 
-## <a name="create-a-web-app"></a>Een webtoepassing maken
+## <a name="create-a-web-app"></a>Een web-app maken
 
 Maak in Cloud Shell een web-app in het App Service-plan van `myAppServicePlan` met de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). 
 
@@ -165,7 +164,7 @@ Open met een teksteditor het bestand `index.js` binnen de Node.js-app en breng e
 response.end("Hello Azure!");
 ```
 
-Navigeer in het lokale terminalvenster naar van uw toepassing **hoofdmap** (de map waarin zich _index.js_), maak een nieuw zipbestand voor uw bijgewerkte project.
+Ga in het lokale terminal venster naar de **hoofdmap** van uw toepassing (de map waarin _index. js_zich bevindt), maak een nieuw zip-bestand voor uw bijgewerkte project.
 
 ```azurecli-interactive
 # Bash

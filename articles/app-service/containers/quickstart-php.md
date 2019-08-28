@@ -10,17 +10,16 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7976dcafe8bb3f787465e72b6a61bbc48daf4086
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 414d34065b78db0f76683752b93d5ed89ebcdf75
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849555"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071181"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>Een PHP-web-app maken in App Service op Linux
 
@@ -76,7 +75,7 @@ Druk in uw terminalvenster op **Ctrl + C** om de webserver af te sluiten.
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Een webtoepassing maken
+## <a name="create-a-web-app"></a>Een web-app maken
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 

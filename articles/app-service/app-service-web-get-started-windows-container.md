@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/12/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 089334d32ca54035abfbf59446366ecbe3378c15
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 791017fffe96455157388fb43e0c1d65faba8933
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919744"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071526"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Een aangepaste Windows-container uitvoeren in Azure (Preview)
 
@@ -96,7 +95,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 2. Ga in het zoekvak boven de lijst met Azure Marketplace-resources naar **Web App for Containers** en selecteer dit.
 
-3. Geef een app-naam op, zoals *win-container-demo*, accepteer de standaardwaarden om een nieuwe resourcegroep te maken en klik in de lijst **OS** op **Windows (Preview)**.
+3. Geef een app-naam op, zoals *win-container-demo*, accepteer de standaardwaarden om een nieuwe resourcegroep te maken en klik in de lijst **OS** op **Windows (Preview)** .
 
     ![](media/app-service-web-get-started-windows-container/portal-create-page.png)
 
@@ -178,13 +177,13 @@ Als u wilt dat App Service de nieuwe installatiekopie ophaalt uit Docker Hub, mo
 
 U mag ook een andere aangepaste Docker-installatiekopie gebruiken om de app uit te voeren. Kies echter wel de juiste [bovenliggende installatiekopie](https://docs.docker.com/develop/develop-images/baseimages/) voor het gewenste framework: 
 
-- Voor het implementeren van .NET Framework-apps, gebruikt u een bovenliggende installatiekopie op basis van de Windows Server Core-2019 [Long-Term Servicing-kanaal (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) release. 
-- Voor het implementeren van .NET Core-apps, gebruikt u een bovenliggende installatiekopie op basis van de Windows Server Nano 1809 [semi-Annual Servicing-kanaal (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) release. 
+- Als u .NET Framework-Apps wilt implementeren, gebruikt u een bovenliggende installatie kopie op basis van de versie van het Windows Server Core 2019 [-LTSC (Long-term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . 
+- Als u .NET Core-Apps wilt implementeren, gebruikt u een bovenliggende installatie kopie op basis van de versie van het Windows Server nano 1809 [Semi-Annual-onderhouds kanaal (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
 
 Het duurt enige tijd om een bovenliggende installatiekopie te downloaden tijdens het opstarten van de app. U kunt deze opstarttijd echter verminderen door een van de volgende bovenliggende installatiekopieën te gebruiken die al in cache zijn opgeslagen in Azure App Service:
 
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 - dit is de basis-container die worden gebruikt in Microsoft [ASP.NET Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) Microsoft Windows Nano Server-installatiekopieën.
+- [MCR.Microsoft.com/DOTNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-dit is de basis container die wordt gebruikt in micro soft [ASP.net core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) micro soft Windows nano server-installatie kopieën.
 
 ## <a name="next-steps"></a>Volgende stappen
 
