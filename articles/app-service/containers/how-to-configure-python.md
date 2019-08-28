@@ -10,29 +10,28 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: fb90122f7277687886a6579fdb729b7f91660ed6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617278"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071095"
 ---
-# <a name="configure-a-linux-python-app-for-azure-app-service"></a>Een Linux-Python-app configureren voor Azure App Service
+# <a name="configure-a-linux-python-app-for-azure-app-service"></a>Een Linux python-app voor Azure App Service configureren
 
-In dit artikel wordt beschreven hoe Python-apps worden uitgevoerd in [Azure App Service](app-service-linux-intro.md) en hoe u het gedrag van Azure App Service zo nodig kunt aanpassen. Python-apps moeten worden geïmplementeerd met alle de vereiste [pip](https://pypi.org/project/pip/) modules.
+In dit artikel wordt beschreven hoe Python-apps worden uitgevoerd in [Azure App Service](app-service-linux-intro.md) en hoe u het gedrag van Azure App Service zo nodig kunt aanpassen. Python-apps moeten worden geïmplementeerd met alle vereiste [PIP](https://pypi.org/project/pip/) -modules.
 
-De App Service-implementatie-engine activeert een virtuele omgeving automatisch en wordt uitgevoerd `pip install -r requirements.txt` voor u wanneer u implementeert een [Git-opslagplaats](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), of een [Zip-pakket](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) met buildprocessen die zijn ingeschakeld.
+De implementatie-engine van app service activeert automatisch een virtuele omgeving `pip install -r requirements.txt` en wordt voor u uitgevoerd wanneer u een [Git-opslag plaats](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)implementeert, of een [zip-pakket](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) met Build-processen ingeschakeld.
 
-Deze handleiding bevat de belangrijkste concepten en instructies voor het Python-ontwikkelaars die gebruikmaken van een ingebouwde Linux-container in App Service. Als u Azure App Service nog nooit hebt gebruikt, moet u de [Python-quickstart](quickstart-python.md) en [Python met PostgreSQL zelfstudie](tutorial-python-postgresql-app.md) eerste.
+Deze hand leiding bevat belang rijke concepten en instructies voor python-ontwikkel aars die een ingebouwde Linux-container gebruiken in App Service. Als u Azure App Service nog nooit hebt gebruikt, moet u eerst de [python-Snelstartgids](quickstart-python.md) en [python met postgresql zelf studie](tutorial-python-postgresql-app.md) volgen.
 
 > [!NOTE]
-> Linux is momenteel de aanbevolen optie voor het uitvoeren van Python-apps in App Service. Zie voor informatie over de optie Windows [Python op de Windows-versie van App Service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
+> Linux is momenteel de aanbevolen optie voor het uitvoeren van python-apps in App Service. Zie voor meer informatie over de Windows-optie [python op de Windows-functie van app service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
 >
 
 ## <a name="show-python-version"></a>Python-versie weergeven
@@ -114,13 +113,13 @@ Als de App Service geen aangepaste opdracht, Django-app of Flask-app vindt, word
 
 ## <a name="customize-startup-command"></a>Opstartopdracht aanpassen
 
-U kunt het opstartgedrag van de container sturen door een aangepaste Gunicorn-opstartopdracht te geven. U doet dit door de volgende opdracht uitvoert de [Cloud Shell](https://shell.azure.com):
+U kunt het opstartgedrag van de container sturen door een aangepaste Gunicorn-opstartopdracht te geven. Als u dit wilt doen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Bijvoorbeeld, als u een Flask-app waarvan belangrijkste module hebt is *hello.py* en de Flask-app-object in dat bestand heeft de naam `myapp`, klikt u vervolgens  *\<aangepaste opdracht >* is als volgt:
+Als u bijvoorbeeld een kolf-app hebt waarvan de hoofd module *Hello.py* is en het app-object van de kolf in dat `myapp`bestand een naam heeft, dan  *\<is de aangepaste opdracht >* als volgt:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -132,9 +131,9 @@ Als de belangrijkste module zich in een submap bevindt, zoals `website`, geeft u
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-U kunt ook toevoegen eventuele extra argumenten voor Gunicorn naar  *\<aangepaste opdracht >* , zoals `--workers=4`. Zie voor meer informatie [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Gunicorn uitvoeren, docs.gunicorn.org).
+U kunt ook aanvullende argumenten voor Gunicorn toevoegen aan  *\<aangepaste-opdracht >* , zoals `--workers=4`. Zie voor meer informatie [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Gunicorn uitvoeren, docs.gunicorn.org).
 
-Gebruik van een niet-Gunicorn-server, zoals [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), kunt u deze vervangen  *\<aangepaste opdracht >* met er ongeveer als volgt:
+Als u een niet-Gunicorn-server wilt gebruiken, zoals [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), kunt u  *\<aangepaste-opdracht >* vervangen door iets zoals het volgende:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -145,7 +144,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Toegang tot omgevingsvariabelen
 
-In App Service, kunt u [app-instellingen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten de app-code. Vervolgens kunt u ze openen met behulp van het standaardpatroon [os.environ](https://docs.python.org/3/library/os.html#os.environ). Voor toegang tot bijvoorbeeld de app-instelling `WEBSITE_SITE_NAME` gebruikt u de volgende code:
+In App Service kunt u de [app-instellingen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten uw app-code instellen. Vervolgens kunt u ze openen met behulp van het standaardpatroon [os.environ](https://docs.python.org/3/library/os.html#os.environ). Voor toegang tot bijvoorbeeld de app-instelling `WEBSITE_SITE_NAME` gebruikt u de volgende code:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -180,7 +179,7 @@ Populaire webframeworks bieden toegang tot de `X-Forwarded-*`-informatie in het 
 - **U ziet het bericht 'Service niet beschikbaar' in de browser.** De browser heeft een time-out gegenereerd in afwachting van een reactie van App Service. Dat betekent dat de App Service de Gunicorn-server heeft gestart, maar dat de argumenten die de app-code opgeeft onjuist zijn.
 - Vernieuw de browser, met name als u gebruikmaakt van de laagste prijscategorieën in uw App Service-plan. Het is bijvoorbeeld mogelijk dat het opstarten van de app langer duurt wanneer gebruik wordt gemaakt van de gratis prijscategorie en reageert na het vernieuwen van de browser.
 - Controleer of de app is gestructureerd zoals App Service dat verwacht voor [Django](#django-app) of [Flask](#flask-app), of gebruik een [aangepaste opstartopdracht](#customize-startup-command).
-- [Toegang tot de logboekstream](#access-diagnostic-logs).
+- [Open de logboek stroom](#access-diagnostic-logs).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -188,7 +187,7 @@ Populaire webframeworks bieden toegang tot de `X-Forwarded-*`-informatie in het 
 > [Zelfstudie: Python-app met PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Implementeren vanaf de privé-containeropslagplaats](tutorial-custom-docker-image.md)
+> [Zelfstudie: Implementeren vanuit een persoonlijke container opslagplaats](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [App Service Linux Veelgestelde vragen](app-service-linux-faq.md)
+> [Veelgestelde vragen over App Service Linux](app-service-linux-faq.md)

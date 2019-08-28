@@ -4,18 +4,18 @@ hide_bc: false
 title: Documentatie voor Azure Internet of Things - zelfstudies, API-verwijzing | Microsoft Docs
 description: Azure Internet of Things (IoT) is een verzameling van door Microsoft beheerde cloudservices die miljarden IoT-assets met elkaar verbinden, bewaken en controleren. Eenvoudiger gezegd, een IoT-oplossing bestaat uit een of meer IoT-apparaten en een of meer back-endservices in de cloud die met elkaar communiceren.
 services: azure-iot
-author: dsk-2015
+author: philmea
 manager: philmea
 ms.service: azure-iot
-ms.topic: landing-page
-ms.date: 02/12/2019
-ms.author: dkshir
-ms.openlocfilehash: d19b6fff3bf2b43ecb692bd8d8e33a202e969570
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: hub-page
+ms.date: 08/27/2019
+ms.author: philmea
+ms.openlocfilehash: 7ea66c873d6ba70c2a7b3907a83a466117b56190
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61216546"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074327"
 ---
 <div id="main" class="v2">
     <div class="container">
