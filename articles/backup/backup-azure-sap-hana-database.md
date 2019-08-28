@@ -5,21 +5,21 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034571"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060703"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Back-up maken van een SAP HANA Data Base naar Azure
 
 [Azure backup](backup-overview.md) ondersteunt de back-up van SAP Hana-data bases naar Azure.
 
 > [!NOTE]
-> Deze functie is momenteel beschikbaar als openbare preview-versie. Het is momenteel niet gereed voor productie en heeft geen gegarandeerde SLA. 
+> Deze functie is momenteel beschikbaar als openbare preview-versie. Het is momenteel niet gereed voor productie en heeft geen gegarandeerde SLA.
 
 ## <a name="scenario-support"></a>Scenario-ondersteuning
 
@@ -32,8 +32,11 @@ ms.locfileid: "70034571"
 ### <a name="current-limitations"></a>Huidige beperkingen
 
 - U kunt alleen back-ups maken van SAP HANA-data bases die worden uitgevoerd op Azure-Vm's.
-- U kunt SAP HANA back-up alleen configureren in de Azure Portal. De functie kan niet worden geconfigureerd met Power shell, CLI of de REST API.
-- U kunt alleen back-ups maken van data bases in de scale-up-modus.
+- U kunt alleen back-ups maken van SAP HANA exemplaar dat wordt uitgevoerd in één Azure VM. Meerdere HANA-instanties in dezelfde Azure-VM worden momenteel niet ondersteund.
+- U kunt alleen back-ups maken van data bases in de scale-up-modus. Scale-out dat wil zeggen een HANA-instantie op meerdere virtuele Azure-machines wordt momenteel niet ondersteund voor back-ups.
+- U kunt geen back-up maken van SAP HANA exemplaar met dynamische lagen in een uitgebreide server, dat wil zeggen, dynamische lagen op een ander knoop punt. Dit is in wezen uitschalen, wat niet wordt ondersteund.
+- U kunt geen back-up maken van SAP HANA exemplaar waarvoor dynamische lagen zijn ingeschakeld op dezelfde server. Dynamische lagen worden momenteel niet ondersteund.
+- U kunt SAP HANA back-up alleen configureren in de Azure Portal. De functie kan niet worden geconfigureerd met Power shell, CLI.
 - U kunt om de 15 minuten een back-up maken van database Logboeken. Logboek back-ups gaan alleen naar de stroom nadat een volledige back-up voor de data base is voltooid.
 - U kunt volledige en differentiële back-ups maken. Incrementele back-up wordt momenteel niet ondersteund.
 - U kunt het back-upbeleid niet wijzigen nadat u het hebt toegepast voor SAP HANA back-ups. Als u een back-up met andere instellingen wilt maken, maakt u een nieuw beleid of wijst u een ander beleid toe.
@@ -44,23 +47,16 @@ ms.locfileid: "70034571"
 
 Zorg ervoor dat u het volgende doet voordat u back-ups configureert:
 
-1. Installeer op de virtuele machine waarop de SAP HANA-data base wordt uitgevoerd, het officiële micro soft [.net core Runtime 2,1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) -pakket. Houd rekening met het volgende:
-    - U hebt alleen het **DotNet-runtime-2,1-** pakket nodig. U hebt **aspnetcore-runtime-2,1**niet nodig.
-    - Als de VM geen Internet toegang heeft, Mirror of een offline cache voor dotnet-runtime-2,1 (en alle afhankelijke Rpm's) van de micro soft package feed die op de pagina is opgegeven.
-    - Tijdens de installatie van het pakket wordt u mogelijk gevraagd om een optie op te geven. Als dit het geval is, geeft u **oplossing 2**op.
-
-        ![Installatie optie pakket](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. Installeer en schakel op de VM ODBC-stuur programmapakketten van het officiële SLES-pakket/medium in met behulp van Zypper, als volgt:
+1. Op de VM waarop de SAP HANA-data base wordt uitgevoerd, kunt u als volgt ODBC-stuur programmapakketten installeren en inschakelen vanuit het officiële SLES-pakket/-medium met behulp van Zypper:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. Connectiviteit van de virtuele machine met Internet toestaan, zodat deze Azure kan bereiken, zoals beschreven in de [onderstaande](#set-up-network-connectivity)procedure.
+2. Connectiviteit van de virtuele machine met Internet toestaan, zodat deze Azure kan bereiken, zoals beschreven in de [onderstaande](#set-up-network-connectivity)procedure.
 
-4. Voer het script voor voorafgaande registratie uit in de virtuele machine waarin HANA is geïnstalleerd als een hoofd gebruiker. Het script is opgenomen [in de portal](#discover-the-databases) in de stroom en is vereist voor het instellen van de [juiste machtigingen](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
+3. Voer het script voor voorafgaande registratie uit in de virtuele machine waarin HANA is geïnstalleerd als een hoofd gebruiker. Het script is opgenomen [in de portal](#discover-the-databases) in de stroom en is vereist voor het instellen van de [juiste machtigingen](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
 
 ### <a name="set-up-network-connectivity"></a>Netwerk connectiviteit instellen
 
@@ -68,6 +64,7 @@ Voor alle bewerkingen moet de SAP HANA VM verbinding hebben met open bare IP-adr
 
 - U kunt de [IP-](https://www.microsoft.com/download/details.aspx?id=41653) adresbereiken voor Azure-data centers downloaden en vervolgens toegang tot deze IP-adressen toestaan.
 - Als u netwerk beveiligings groepen (Nsg's) gebruikt, kunt u de code van de Cloud- [service](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gebruiken om alle open bare IP-adressen van Azure toe te staan. U kunt de [cmdlet Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) gebruiken om NSG-regels te wijzigen.
+- 443-poort moet white list zijn omdat het Trans Port via HTTPS is.
 
 ## <a name="onboard-to-the-public-preview"></a>Onboarding voor de open bare preview
 
@@ -79,8 +76,6 @@ Onboarding voor de open bare preview als volgt:
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -182,6 +177,15 @@ Ga als volgt te werk als u een lokale back-up wilt maken (met behulp van HANA St
     - Stel **log_backup_using_backint** in op **True**.
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>Een upgrade van beveiligde 1,0 Db's naar 2,0
+
+Als u SAP HANA 1,0 Db's beveiligt en een upgrade naar 2,0 wilt uitvoeren, voert u de onderstaande stappen uit.
+
+- Stop de beveiliging met behoud van gegevens voor oude dit SDC DB.
+- Voer het script voor de voorafgaande registratie opnieuw uit met de juiste details van (sid en MDC). 
+- Extensie opnieuw registreren (back-up > Details weer geven-> de relevante Azure-VM selecteren-> opnieuw registreren). 
+- Klik op Db's opnieuw detecteren voor dezelfde VM. Hier ziet u de nieuwe Db's in stap 2 met de juiste Details (SYSTEMDB en Tenant database, niet dit SDC). 
+- Beveilig deze nieuwe data bases.
 
 ## <a name="next-steps"></a>Volgende stappen
 

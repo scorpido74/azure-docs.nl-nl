@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567627"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060656"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Verbinding maken tussen uw toepassing en het beheerde exemplaar van Azure SQL Database
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uw toepassing verbinden met Azure SQL Database beheerde instantie
 
 U hebt nu meerdere keuzes wanneer u bepaalt hoe en waar u uw toepassing host.
 
@@ -141,10 +141,10 @@ De volgende minimale versies van de hulpprogram ma's en stuur Programma's worden
 | --- | --- |
 |.NET Framework | 4.6.1 (of .NET core) |
 |ODBC-stuurprogramma| v17 |
-|PHP-stuur programma| 5.2.0 |
-|JDBC-stuur programma| 6.4.0 |
-|Node. js-stuur programma| 2.1.1 |
-|OLEDB-stuur programma| 18.0.2.0 |
+|PHP-stuurprogramma| 5.2.0 |
+|JDBC-stuurprogramma| 6.4.0 |
+|Node.js-stuurprogramma| 2.1.1 |
+|OLEDB-stuurprogramma| 18.0.2.0 |
 |SSMS| 18,0 of [hoger](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) of hoger |
 

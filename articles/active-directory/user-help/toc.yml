@@ -1,5 +1,5 @@
 - name: Documentatie voor gebruikershulp
-  href: index.md
+  href: index.yml
 - name: Hulp bij verificatie in twee stappen
   items:
     - name: Overzicht

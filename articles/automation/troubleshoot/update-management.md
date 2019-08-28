@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982691"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061343"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Problemen met Updatebeheer oplossen
 
@@ -278,6 +278,7 @@ Dubbel klik op de uitzonde ring die rood wordt weer gegeven om het volledige uit
 |`0x8024001E`| De update bewerking is niet voltooid omdat de service of het systeem is afgesloten.|
 |`0x8024002E`| Windows Update-service is uitgeschakeld.|
 |`0x8024402C`     | Als u een WSUS-server gebruikt, moet u ervoor zorgen dat de `WUServer` register `WUStatusServer` waarden voor en onder `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` de register sleutel de juiste WSUS-server hebben.        |
+|`0x80072EE2`|Probleem met de netwerk verbinding of het probleem praten met een geconfigureerde WSUS-server. Controleer de WSUS-instellingen en controleer of deze toegankelijk is vanaf de client.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Zorg ervoor dat de Windows Update service (wuauserv) wordt uitgevoerd en niet is uitgeschakeld.        |
 |Een andere algemene uitzonde ring     | Zoek op internet naar de mogelijke oplossingen en werk met uw lokale IT-ondersteuning.         |
 

@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533469"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061382"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
@@ -58,16 +58,11 @@ Voor knoop punten waarop Windows worden uitgevoerd, worden de volgende versies o
 - Windows 8.1
 - Windows 7
 
-De [micro soft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) zelfstandige product-SKU bevat geen implementatie van de gewenste status cumuleren zodat deze niet kan worden beheerd door de configuratie van de Power shell DSC of de Azure Automation status.
+De zelfstandige product-SKU van [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) bevat geen implementatie van de gewenste status cumuleren zodat deze niet kan worden beheerd met Power shell DSC of Azure Automation State Configuration.
 
 Voor knoop punten waarop Linux wordt uitgevoerd, worden de volgende distributies/versies ondersteund:
 
-De DSC Linux-extensie ondersteunt alle Linux-distributies die zijn [goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , met uitzonde ring van:
-
-Distributie | Version
--|-
-Debian  | alle versies
-Ubuntu  | 18,04
+De DSC Linux-extensie ondersteunt alle Linux-distributies die worden vermeld onder [ondersteunde Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)-distributies.
 
 ### <a name="dsc-requirements"></a>DSC-vereisten
 
@@ -79,7 +74,7 @@ Voor alle Linux-knoop punten die worden uitgevoerd in azure, wordt [Power shell 
 
 Als uw knoop punten zich in een particulier netwerk bevinden, zijn de volgende poort en Url's vereist voor de status configuratie (DSC) om te communiceren met Automation:
 
-* Poort: Alleen TCP 443 is vereist voor uitgaande internet toegang.
+* Importeer Alleen TCP 443 is vereist voor uitgaande internet toegang.
 * Globale URL: *. azure-automation.net
 * Globale URL van US Gov-Virginia: *. azure-automation.us
 * Agent service: https://\<workspaceId\>. agentsvc.Azure-Automation.net

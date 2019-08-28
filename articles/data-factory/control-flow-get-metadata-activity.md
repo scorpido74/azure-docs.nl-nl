@@ -1,6 +1,6 @@
 ---
 title: Meta gegevens activiteit in Azure Data Factory ophalen | Microsoft Docs
-description: Meer informatie over hoe u de GetMetadata-activiteit in een Data Factory pijp lijn kunt gebruiken.
+description: Meer informatie over het gebruik van de activiteit meta gegevens ophalen in een Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,86 +13,86 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 081d7219407decac5dd36a06f289436aa0da627b
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966345"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061549"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
 
-De GetMetadata-activiteit kan worden gebruikt voor het ophalen van **meta gegevens** van alle gegevens in azure Data Factory. Deze activiteit kan worden gebruikt in de volgende scenario's:
+U kunt de activiteit meta gegevens ophalen gebruiken om de meta gegevens van alle gegevens in de Azure Data Factory op te halen. U kunt deze activiteit gebruiken in de volgende scenario's:
 
-- De meta gegevens van alle gegevens valideren
-- Een pijp lijn activeren wanneer de gegevens gereed/beschikbaar zijn
+- Valideer de meta gegevens van alle gegevens.
+- Een pijp lijn activeren wanneer de gegevens gereed/beschikbaar zijn.
 
 De volgende functionaliteit is beschikbaar in de controle stroom:
 
-- De uitvoer van de GetMetadata-activiteit kan worden gebruikt in voorwaardelijke expressies om validatie uit te voeren.
-- Een pijp lijn kan worden geactiveerd wanneer aan de voor waarde wordt voldaan via do-until-lus
+- U kunt de uitvoer van de activiteit meta gegevens ophalen in voorwaardelijke expressies gebruiken om validatie uit te voeren.
+- U kunt een pijp lijn activeren wanneer aan een voor waarde wordt voldaan via do until-lus.
 
-## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
+## <a name="capabilities"></a>Mogelijkheden
 
-De GetMetadata-activiteit neemt een gegevensset als vereiste invoer en voert uitvoer uit van meta gegevens die beschikbaar zijn als uitvoer van de activiteit. Op dit moment worden de volgende connectors met corresponderende meta gegevens ondersteund en wordt de Maxi maal ondersteunde grootte van de meta gegevens Maxi maal **1 MB**.
+De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourneert meta gegevens als uitvoer. Op dit moment worden de volgende connectors en de bijbehorende opgehaalde meta gegevens ondersteund. De maximale grootte van de geretourneerde meta gegevens is 1 MB.
 
 >[!NOTE]
->Als u GetMetadata-activiteit uitvoert op een zelf-hosted Integration Runtime, wordt de meest recente mogelijkheid ondersteund op versie 3,6 of hoger. 
+>Als u de activiteit meta gegevens ophalen uitvoert op een zelf-hostende Integration runtime, worden de meest recente mogelijkheden ondersteund in versie 3,6 of hoger.
 
 ### <a name="supported-connectors"></a>Ondersteunde connectors
 
-**Bestands opslag:**
+**Bestands opslag**
 
 | Connector/meta gegevens | itemName<br>(bestand/map) | itemType<br>(bestand/map) | size<br>Profiler | gemaakt<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structure<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Google-Cloud opslag](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure Blob](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [Azure File Storage](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [Bestandssysteem](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Voor Amazon S3 en Google Cloud Storage geldt voor `lastModified` Bucket en de sleutel, maar niet voor de virtuele map; `exists` ; en de van toepassing op Bucket en sleutel, maar niet voor voegsel of virtuele map.
-- Voor Azure Blob geldt de `lastModified` container en de blob, maar niet voor de virtuele map.
+- Voor Amazon S3 en Google Cloud Storage `lastModified` is van toepassing op de Bucket en de sleutel, maar niet op de virtuele map, en `exists` is van toepassing op de Bucket en de sleutel, maar niet op het voor voegsel of de virtuele map.
+- Voor Azure Blob Storage geldt `lastModified` voor de container en de blob, maar niet voor de virtuele map.
 
-**Relationele data base:**
+**Relationele data base**
 
 | Connector/meta gegevens | structure | Aantal | reeds |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
-| [Beheerd exemplaar voor Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Beheerd exemplaar van Azure SQL-Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
 | [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Opties voor meta gegevens
 
-De volgende meta gegevens typen kunnen worden opgegeven in de velden lijst GetMetadata om op te halen:
+U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit meta gegevens ophalen om de bijbehorende gegevens op te halen:
 
 | Meta gegevens type | Description |
 |:--- |:--- |
 | itemName | De naam van het bestand of de map. |
-| itemType | Het type van het bestand of de map. Uitvoer waarde is `File` of `Folder`. |
-| size | Grootte van het bestand in bytes. Alleen van toepassing op het bestand. |
+| itemType | Het type van het bestand of de map. Geretourneerde waarde `File` is `Folder`of. |
+| size | Grootte van het bestand in bytes. Alleen van toepassing op bestanden. |
 | gemaakt | Er is een datum/tijd gemaakt van het bestand of de map. |
 | lastModified | Datum/tijd waarop het bestand of de map voor het laatst is gewijzigd. |
-| childItems | Lijst met submappen en bestanden in de opgegeven map. Alleen van toepassing op de map. De uitvoer waarde is een lijst met de naam en het type van elk onderliggend item. |
-| contentMD5 | MD5 van het bestand. Alleen van toepassing op het bestand. |
-| structure | De gegevens structuur in het bestand of de relationele database tabel. De uitvoer waarde is een lijst met kolom namen en kolom typen. |
+| childItems | Lijst met submappen en bestanden in de opgegeven map. Alleen van toepassing op mappen. Geretourneerde waarde is een lijst met de naam en het type van elk onderliggend item. |
+| contentMD5 | MD5 van het bestand. Alleen van toepassing op bestanden. |
+| structure | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
 | Aantal | Het aantal kolommen in het bestand of de tabel relationeel. |
-| reeds| Hiermee wordt aangegeven of een bestand/map/tabel bestaat of niet. Opmerking als ' exists ' is opgegeven in de GetaMetadata-veld lijst, mislukt de activiteit zelfs wanneer het item (bestand/map/tabel) niet bestaat. in plaats daarvan wordt `exists: false` er een resultaat in de uitvoer weer gegeven. |
+| reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Houd er rekening `exists` mee dat als is opgegeven in de lijst met velden voor meta gegevens ophalen, de activiteit niet kan worden uitgevoerd, zelfs niet als het bestand, de map of de tabel niet bestaat. In plaats daarvan wordt geretourneerd in de uitvoer. `exists: false` |
 
 >[!TIP]
->Als u wilt valideren of een bestand/map/tabel bestaat, geeft `exists` u in de velden lijst GetMetadata op. vervolgens kunt u het `exists: true/false` resultaat van de uitvoer van de activiteit controleren. Als `exists` niet is geconfigureerd in de lijst met velden, mislukt de GetMetadata-activiteit wanneer het object niet wordt gevonden.
+>Als u wilt controleren of een bestand, map of tabel bestaat, geeft `exists` u in de velden lijst activiteit van meta gegevens ophalen op. U kunt vervolgens het `exists: true/false` resultaat controleren in de uitvoer van de activiteit. Als `exists` niet wordt opgegeven in de lijst met velden, mislukt de activiteit meta gegevens ophalen als het object niet is gevonden.
 
 >[!NOTE]
->Wanneer u meta gegevens ophaalt uit bestanden `modifiedDatetimeStart` en configureert en `modifiedDatetimeEnd`/of `childItems` , retourneert de in uitvoer alleen bestanden onder het opgegeven pad met de laatste wijzigings tijd tussen het bereik, maar geen submappen.
+>Wanneer u meta gegevens ophaalt uit het `modifiedDatetimeStart` bestand `modifiedDatetimeEnd`archieven en `childItems` configureren of, bevat de uitvoer alleen bestanden in het opgegeven pad met een tijd die het laatst is gewijzigd binnen het opgegeven bereik. In zijn geen items in submappen inbegrepen.
 
 ## <a name="syntax"></a>Syntaxis
 
-**GetMetadata-activiteit:**
+**Activiteit meta gegevens ophalen**
 
 ```json
 {
@@ -108,7 +108,7 @@ De volgende meta gegevens typen kunnen worden opgegeven in de velden lijst GetMe
 }
 ```
 
-**Sets**
+**Dataset**
 
 ```json
 {
@@ -132,18 +132,18 @@ De volgende meta gegevens typen kunnen worden opgegeven in de velden lijst GetMe
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Momenteel kan de GetMetadata-activiteit de volgende typen meta gegevens ophalen.
+Op dit moment kunnen met de activiteit meta gegevens ophalen de volgende typen meta gegevens worden geretourneerd:
 
 Eigenschap | Description | Vereist
 -------- | ----------- | --------
-fieldList | Een lijst met de typen meta gegevens die zijn vereist. Zie de sectie Details in [meta gegevens opties](#metadata-options) voor ondersteunde meta gegevens. | Ja 
-sets | De referentie gegevensset waarvan de meta gegevens activiteit moet worden opgehaald door de GetMetadata-activiteit. Zie de sectie [ondersteunde mogelijkheden](#supported-capabilities) op ondersteunde connectors en Raadpleeg het onderwerp over de syntaxis van de gegevensset voor informatie over de gegevens van een connector. | Ja
+fieldList | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
+sets | De referentie gegevensset waarvan de meta gegevens moeten worden opgehaald door de activiteit meta gegevens ophalen. Zie de sectie [mogelijkheden](#capabilities) voor informatie over ondersteunde connectors. Raadpleeg de onderwerpen over de specifieke connector voor de syntaxis van de gegevensset. | Ja
 formatSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
 storeSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
 
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
-Het resultaat van de GetMetadata wordt weer gegeven in de uitvoer van de activiteit. Hieronder vindt u twee voor beelden met uitgebreide opties voor meta gegevens die zijn geselecteerd in de velden lijst als verwijzing. Gebruik het patroon van `@{activity('MyGetMetadataActivity').output.itemName}`om het resultaat in de volgende activiteit te gebruiken.
+De resultaten van de meta gegevens ophalen worden weer gegeven in de uitvoer van de activiteit. Hieronder vindt u twee voor beelden van uitgebreide opties voor meta gegevens. Gebruik dit patroon om de resultaten in een volgende activiteit te gebruiken: `@{activity('MyGetMetadataActivity').output.itemName}`.
 
 ### <a name="get-a-files-metadata"></a>Meta gegevens van een bestand ophalen
 
@@ -193,9 +193,9 @@ Het resultaat van de GetMetadata wordt weer gegeven in de uitvoer van de activit
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
+Meer informatie over andere controle stroom activiteiten die door Data Factory worden ondersteund:
 
-- [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)
-- [Voor elke activiteit](control-flow-for-each-activity.md)
-- [Lookup Activity](control-flow-lookup-activity.md)
-- [Webactiviteit](control-flow-web-activity.md)
+- [Pijplijn activiteit uitvoeren](control-flow-execute-pipeline-activity.md)
+- [Activiteit ForEach](control-flow-for-each-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit Web](control-flow-web-activity.md)

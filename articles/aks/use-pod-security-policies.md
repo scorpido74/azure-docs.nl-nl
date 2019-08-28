@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 374e86409be08f1f9859b3e325dda57080b89dbf
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033990"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061842"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
 
@@ -32,7 +32,7 @@ U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfiguree
 
 ### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
 
-Als u pod-beveiligings beleid wilt gebruiken, hebt u de *AKS-preview cli-* extensie versie 0.4.1 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] ::
+Als u pod-beveiligings beleid wilt gebruiken, hebt u de *AKS-preview cli-* extensie versie 0.4.1 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -443,7 +443,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 ```
 
 > [!NOTE]
-> In de eerste stap van dit artikel is de functie pod-beveiligings beleid ingeschakeld op het AKS-cluster. De aanbevolen procedure is om alleen de functie pod-beveiligings beleid in te scha kelen nadat u uw eigen beleid hebt gedefinieerd. Dit is de fase waarin u de functie pod-beveiligings beleid inschakelt. Er zijn een of meer aangepaste beleids regels gedefinieerd en er zijn gebruikers accounts aan die beleids regels gekoppeld. Nu kunt u de functie pod-beveiligings beleid beveiligen en de problemen die worden veroorzaakt door het standaard beleid minimaliseren.
+> In de eerste stap van dit artikel is de functie pod-beveiligings beleid ingeschakeld op het AKS-cluster. De aanbevolen procedure is om alleen de functie pod-beveiligings beleid in te scha kelen nadat u uw eigen beleid hebt gedefinieerd. Dit is de fase waarin u de functie pod-beveiligings beleid inschakelt. Er zijn een of meer aangepaste beleids regels gedefinieerd en er zijn gebruikers accounts aan die beleids regels gekoppeld. Nu kunt u de functie pod-beveiligings beleid veilig inschakelen en de problemen die worden veroorzaakt door het standaard beleid minimaliseren.
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Het maken van een niet-gemachtigd pod opnieuw testen
 

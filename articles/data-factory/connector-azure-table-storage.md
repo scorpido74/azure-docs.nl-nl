@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985989"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061491"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure-tabel opslag met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -48,7 +48,7 @@ U kunt een Azure Storage gekoppelde service maken met behulp van de account sleu
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **AzureTableStorage**. |Ja |
+| Type | De eigenschap type moet worden ingesteld op **AzureTableStorage**. |Ja |
 | connectionString | Geef de informatie die nodig zijn voor het verbinding maken met opslag voor de connectionString-eigenschap. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook account sleutel in azure Key Vault plaatsen en de `accountKey` configuratie uit de Connection String halen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. |Ja |
 | connectVia | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
@@ -123,7 +123,7 @@ De volgende eigenschappen worden ondersteund om verificatie van de Shared Access
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **AzureTableStorage**. |Ja |
+| Type | De eigenschap type moet worden ingesteld op **AzureTableStorage**. |Ja |
 | sasUri | Geef de SAS-URI van de URI van de Shared Access-hand tekening op in de tabel. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook SAS-token in Azure Key Vault plaatsen om automatisch te draaien en het token gedeelte te verwijderen. Raadpleeg de volgende voor beelden en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja |
 | connectVia | De [integratieruntime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. U kunt de Azure Integration Runtime of de zelfgehoste Cloudintegratieruntime gebruiken (als het gegevensarchief bevindt zich in een particulier netwerk). Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
 
@@ -194,7 +194,7 @@ Als u gegevens wilt kopiëren van en naar de Azure-tabel, stelt u de eigenschap 
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de DataSet moet worden ingesteld op **AzureTable**. |Ja |
+| Type | De eigenschap type van de DataSet moet worden ingesteld op **AzureTable**. |Ja |
 | tableName |De naam van de tabel in het data base-exemplaar van Table-opslag waarnaar de gekoppelde service verwijst. |Ja |
 
 **Voorbeeld:**
@@ -221,10 +221,8 @@ Als u gegevens wilt kopiëren van en naar de Azure-tabel, stelt u de eigenschap 
 
 Voor gegevens archieven zonder schema, zoals Azure-tabel, wordt het schema door Data Factory op een van de volgende manieren afleiden:
 
-* Als u de structuur van gegevens met behulp van de **structuur** eigenschap in de definitie van de Data Factory zich houdt aan deze structuur als het schema. Als in dit geval een rij geen waarde voor een kolom bevat, wordt er een null-waarde voor gegeven.
-* Als u de structuur van gegevens niet opgeeft met behulp van de eigenschap **structure** in de definitie van de gegevensset, wordt het schema door Data Factory afgeleid van de eerste rij in de gegevens. Als in dit geval de eerste rij niet het volledige schema bevat, worden sommige kolommen gemist in het resultaat van de Kopieer bewerking.
-
-Voor gegevens bronnen met een schema hoeft de best practice de structuur van de gegevens op te geven met behulp van de eigenschap **structure** .
+* Als u de kolom toewijzing in de Kopieer activiteit opgeeft, Data Factory gebruik de lijst met kolommen aan de bron zijde om gegevens op te halen. Als in dit geval een rij geen waarde voor een kolom bevat, wordt er een null-waarde voor gegeven.
+* Als u de kolom toewijzing in de Kopieer activiteit niet opgeeft, wordt door Data Factory het schema afleiden door de eerste rij in de gegevens te gebruiken. Als in dit geval de eerste rij niet het volledige schema bevat (bijvoorbeeld sommige kolommen hebben een null-waarde), worden sommige kolommen niet in het resultaat van de Kopieer bewerking gemist.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
@@ -236,7 +234,7 @@ Als u gegevens wilt kopiëren uit een Azure-tabel, stelt u het bron type in de K
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AzureTableSource**. |Ja |
+| Type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AzureTableSource**. |Ja |
 | azureTableSourceQuery |Gebruik de aangepaste Table-opslag query om gegevens te lezen. Zie de voor beelden in de volgende sectie. |Nee |
 | azureTableSourceIgnoreTableNotFound |Hiermee wordt aangegeven of de uitzonde ring van de tabel mag worden toegestaan.<br/>Toegestane waarden zijn **waar** en **False** (standaard). |Nee |
 
@@ -262,7 +260,7 @@ Als u gegevens wilt kopiëren naar de Azure-tabel, stelt u het sink-type in de K
 
 | Eigenschap | Description | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **AzureTableSink**. |Ja |
+| Type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **AzureTableSink**. |Ja |
 | azureTableDefaultPartitionKeyValue |De standaard waarde voor de partitie sleutel die door de Sink kan worden gebruikt. |Nee |
 | azureTablePartitionKeyName |Geef de naam op van de kolom waarvan de waarden worden gebruikt als partitie sleutels. Als u niets opgeeft, wordt ' AzureTableDefaultPartitionKeyValue ' gebruikt als de partitie sleutel. |Nee |
 | azureTableRowKeyName |Geef de naam op van de kolom waarvan de kolom waarden worden gebruikt als de rij-sleutel. Als u deze niet opgeeft, gebruikt u een GUID voor elke rij. |Nee |

@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414848"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061399"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobiele app die web-Api's aanroept-code configuratie
 
-Zodra u de toepassing hebt gemaakt, leert u hoe u de code kunt configureren op basis van de para meters van de toepassing die u tijdens de app-registratie hebt gekregen. Mobiele toepassingen hebben ook enkele complexe specifiek, die te maken hebben met de aanpassing in het Framework voor het bouwen van deze apps
+Zodra u de toepassing hebt gemaakt, leert u hoe u de code kunt configureren met de para meters voor app-registratie. Mobiele toepassingen hebben ook enkele complexe specifiek, die te maken hebben met de aanpassing in het Framework voor het bouwen van deze apps
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>MSAL-bibliotheken die mobiele apps ondersteunen
 
@@ -38,7 +38,7 @@ De micro soft-bibliotheken die mobiele apps ondersteunen zijn:
 
 ## <a name="configuring-the-application"></a>De toepassing configureren
 
-Mobiele toepassingen gebruiken de MSAL `PublicClientApplication` -klasse. Hier kunt u een exemplaar maken:
+Mobiele toepassingen gebruiken de `PublicClientApplication` -klasse. Hier kunt u een exemplaar maken:
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ In de volgende alinea wordt uitgelegd hoe u de code van de toepassing configuree
 
 #### <a name="instantiating-the-application"></a>De toepassing instantiëren
 
-In Xamarin, of UWP, is de eenvoudigste manier om de toepassing te instantiëren, waarbij de `ClientId` de GUID van uw toepassing is die is geregistreerd.
+In Xamarin, of UWP, is de eenvoudigste manier om de toepassing te instantiëren als volgt, `ClientId` waarbij de de GUID van de geregistreerde app is.
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -87,7 +87,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-In Android raden wij u `CurrentActivityPlugin` [hier](https://github.com/jamesmontemagno/CurrentActivityPlugin)aan.  De code `PublicClientApplication` van de opbouw functie ziet er als volgt uit:
+In Android wordt u aangeraden om het `CurrentActivityPlugin` [hier](https://github.com/jamesmontemagno/CurrentActivityPlugin)te gebruiken.  De code `PublicClientApplication` van de opbouw functie ziet er als volgt uit:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -128,7 +128,7 @@ Ten slotte zijn er enkele specifieke kenmerken die u moet weten over de browsers
 
 #### <a name="uwp-specific-considerations"></a>Specifieke aandachtspunten voor UWP
 
-Op UWP kunt u bedrijfs netwerken gebruiken. Zie [universeel Windows-platform-specifieke overwegingen met MSAL.net](msal-net-uwp-considerations.md)voor meer informatie over de UWP-specifiek.
+Op UWP kunt u bedrijfs netwerken gebruiken. Zie [universeel Windows-platform-specifieke overwegingen met MSAL.net](msal-net-uwp-considerations.md)voor meer informatie over het gebruik van de MSAL-bibliotheek met UWP.
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>De toepassing configureren voor het gebruik van de Broker
 

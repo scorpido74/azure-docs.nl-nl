@@ -1,6 +1,6 @@
 ---
-title: Een Azure Automation-runbook starten met een webhook
-description: Een webhook waarmee een client van een runbook in Azure Automation starten vanuit een HTTP-aanroep.  Dit artikel wordt beschreven hoe u een webhook maakt en over het aanroepen van een voor het starten van een runbook.
+title: Een Azure Automation runbook starten met een webhook
+description: Een webhook waarmee een client een runbook in Azure Automation kan starten vanuit een HTTP-aanroep.  In dit artikel wordt beschreven hoe u een webhook maakt en hoe u er een aanroept om een runbook te starten.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,131 +9,134 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 153e910ea85ae843c6d4db51e709b58e441f6761
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477931"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061431"
 ---
-# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Een Azure Automation-runbook starten met een webhook
+# <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Een Azure Automation runbook starten met een webhook
 
-Een *webhook* kunt u een bepaald runbook in Azure Automation starten via een afzonderlijke HTTP-aanvraag. Hierdoor kan externe services, zoals Azure DevOps-Services, GitHub, logboeken van Azure Monitor of aangepaste toepassingen runbooks starten zonder het implementeren van een volledige oplossing met behulp van de API van Azure Automation.  
+Met een webhook kunt u een bepaald runbook in azure Automation starten via één HTTP-aanvraag. Hierdoor kunnen externe services, zoals Azure DevOps Services, GitHub, Azure Monitor-Logboeken of aangepaste toepassingen, runbooks starten zonder een volledige oplossing te implementeren met behulp van de Azure Automation-API.
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
-U kunt vergelijken webhooks voor andere methoden voor het starten van een runbook in [een runbook starten in Azure Automation](automation-starting-a-runbook.md)
+U kunt webhooks vergelijken met andere methoden voor het starten van een runbook bij [het starten van een runbook in azure Automation](automation-starting-a-runbook.md)
 
 > [!NOTE]
-> Een Python-runbook start met behulp van een webhook wordt niet ondersteund.
+> Het gebruik van een webhook voor het starten van een python-runbook wordt niet ondersteund.
 
 ## <a name="details-of-a-webhook"></a>Details van een webhook
 
-De volgende tabel beschrijft de eigenschappen die u voor een webhook configureren moet.
+In de volgende tabel worden de eigenschappen beschreven die u moet configureren voor een webhook.
 
 | Eigenschap | Description |
 |:--- |:--- |
-| Name |U kunt een willekeurige naam die u wilt gebruiken voor een webhook omdat dit niet wordt blootgesteld aan de client opgeven. Dit wordt alleen gebruikt voor u om te identificeren van het runbook in Azure Automation. <br> Als een best practice, moet u de webhook geeft een naam die betrekking hebben op de client die wordt gebruikt. |
-| URL |De URL van de webhook is het unieke adres waarmee een client wordt aangeroepen met een HTTP POST naar het runbook dat is gekoppeld aan de webhook starten. Er wordt automatisch gegenereerd bij het maken van de webhook. U kunt een aangepaste URL niet opgeven. <br> <br> De URL bevat een beveiligingstoken waarmee het runbook worden aangeroepen door een derde partij zonder verdere verificatie. Daarom moet deze worden behandeld als een wachtwoord. Uit veiligheidsoverwegingen kunt u alleen de URL in de Azure-portal weergeven op het moment dat de webhook wordt gemaakt. Houd er rekening mee de URL op een veilige locatie op voor toekomstig gebruik. |
-| Vervaldatum |Als een certificaat heeft elke webhook een vervaldatum die op dat moment deze kan niet meer worden gebruikt. Deze datum van afloop voor kan worden gewijzigd nadat de webhook wordt gemaakt, zolang de webhook niet is verlopen. |
-| Enabled |Een webhook is standaard ingeschakeld wanneer deze wordt gemaakt. Als u dit op uitgeschakeld, instellen wordt er geen client kan worden gebruikt. U kunt instellen dat de **ingeschakeld** eigenschap wanneer u de webhook of op elk gewenst moment nadat deze gemaakt. |
+| Name |U kunt elke gewenste naam voor een webhook opgeven, omdat deze niet beschikbaar is voor de client. Het wordt alleen gebruikt om het runbook in Azure Automation te identificeren. <br> Als best practice moet u de webhook een naam geven die betrekking heeft op de client die deze gebruikt. |
+| URL |De URL van de webhook is het unieke adres dat een client aanroept met een HTTP-POST om het runbook te starten dat is gekoppeld aan de webhook. Het wordt automatisch gegenereerd wanneer u de webhook maakt. U kunt geen aangepaste URL opgeven. <br> <br> De URL bevat een beveiligings token waarmee het runbook kan worden aangeroepen door een systeem van derden zonder verdere authenticatie. Daarom moet het worden behandeld als een wacht woord. Uit veiligheids overwegingen kunt u de URL alleen weer geven in de Azure Portal op het moment dat de webhook wordt gemaakt. Noteer de URL op een veilige locatie voor toekomstig gebruik. |
+| Verloopdatum |Net als bij een certificaat heeft elke webhook een verloop datum op het moment dat deze niet meer kan worden gebruikt. Deze verval datum kan worden gewijzigd nadat de webhook is gemaakt, zolang de webhook niet is verlopen. |
+| Enabled |Een webhook wordt standaard ingeschakeld wanneer deze wordt gemaakt. Als u deze instelt op uitgeschakeld, kan geen enkele client deze gebruiken. U kunt de eigenschap **enabled** instellen wanneer u de webhook maakt of op elk moment wanneer deze wordt gemaakt. |
 
 ### <a name="parameters"></a>Parameters
 
-Een webhook kunt waarden voor runbookparameters die worden gebruikt wanneer het runbook wordt gestart door die webhook definiëren. De webhook waarden voor de verplichte parameters van het runbook moet bevatten en waarden voor optionele parameters kan bevatten. Een parameterwaarde die is geconfigureerd om een webhook kan worden gewijzigd nadat de webhook wordt gemaakt. Meerdere webhooks die zijn gekoppeld aan één runbook kunt elke andere parameterwaarden gebruiken.
+Een webhook kan waarden voor runbook-para meters definiëren die worden gebruikt wanneer het runbook door die webhook wordt gestart. De webhook moet waarden bevatten voor alle verplichte para meters van het runbook en kan waarden bevatten voor optionele para meters. Een parameter waarde die is geconfigureerd voor een webhook kan worden gewijzigd, zelfs na het maken van de webhook. Meerdere webhooks die zijn gekoppeld aan één runbook kunnen verschillende parameter waarden gebruiken.
 
-Wanneer een client wordt gestart voor een runbook met behulp van een webhook, overschrijven niet het van de parameterwaarden die zijn gedefinieerd in de webhook. Voor het ontvangen van gegevens van de client, het runbook met de naam één parameter kunt accepteren **$WebhookData**. Deze parameter is van een type [object] die gegevens bevat die de client in de POST-aanvraag bevat.
+Wanneer een client een runbook start met een webhook, kunnen de parameter waarden die zijn gedefinieerd in de webhook niet worden overschreven. Als u gegevens van de client wilt ontvangen, kan het runbook een enkele para meter met de naam **$WebhookData**accepteren. Deze para meter is van het type [object] dat gegevens bevat die de client bevat in de POST-aanvraag.
 
 ![Webhookdata-eigenschappen](media/automation-webhooks/webhook-data-properties.png)
 
-De **$WebhookData** object heeft de volgende eigenschappen:
+Het **$WebhookData** -object heeft de volgende eigenschappen:
 
 | Eigenschap | Description |
 |:--- |:--- |
 | WebhookName |De naam van de webhook. |
-| RequestHeader |Hash-tabel met de headers van de binnenkomende POST-aanvraag. |
-| RequestBody |De hoofdtekst van de binnenkomende POST-aanvraag. Dit blijft behouden alle opmaak, zoals tekenreeks, JSON, XML, of formulier gecodeerde gegevens. Het runbook moet worden geschreven om te werken met de gegevensindeling die wordt verwacht. |
+| RequestHeader |Hash-tabel met de kopteksten van de binnenkomende POST-aanvraag. |
+| RequestBody |De hoofd tekst van de binnenkomende POST-aanvraag. Hiermee behoudt u alle opmaak, zoals teken reeks-, JSON-, XML-of formulier versleutelde gegevens. Het runbook moet worden geschreven om te kunnen werken met de verwachte gegevens indeling. |
 
-Er is geen configuratie van de webhook vereist ter ondersteuning van de **$WebhookData** parameter en het runbook is niet vereist om te accepteren. Als het runbook bevat geen definitie van de parameter, wordt er details van de aanvraag is verzonden vanaf de client genegeerd.
+Er is geen configuratie van de webhook vereist voor de ondersteuning van de para meter **$WebhookData** en het runbook is niet vereist om het te accepteren. Als het runbook de para meter niet definieert, worden de details van de aanvraag die vanaf de client is verzonden, genegeerd.
 
-Als u een waarde voor $WebhookData opgeven bij het maken van de webhook, dat de waarde wanneer de webhook wordt het runbook met de gegevens van de client POST-aanvraag gestart wordt genegeerd, zelfs als de client geen gegevens in de aanvraagtekst bevatten. Als u een runbook met $WebhookData met behulp van een andere methode dan een webhook start, kunt u een waarde opgeven voor $Webhookdata die wel wordt herkend door het runbook. Deze waarde moet een object met dezelfde [eigenschappen](#details-of-a-webhook) als $Webhookdata zodat het runbook correct ermee werken kan alsof het is in combinatie met de werkelijke WebhookData die is doorgegeven door een webhook.
+> [!NOTE]
+> Wanneer u een webhook aanroept, moet u altijd alle parameter waarden opslaan als de aanroep mislukt. Als er sprake is van een netwerk storing of een verbindings probleem, kunt u geen mislukte webhook-aanroepen ophalen.
 
-Bijvoorbeeld, als u de volgende runbook vanuit de Azure-portal starten zijn en een aantal voorbeelden WebhookData doorgeven wilt voor het testen, omdat de WebhookData is een object, moet deze worden doorgegeven als JSON in de gebruikersinterface.
+Als u een waarde voor $WebhookData opgeeft wanneer u de webhook maakt, wordt die waarde genegeerd wanneer de webhook het runbook start met de gegevens van de client POST-aanvraag, zelfs als de client geen gegevens in de aanvraag tekst bevat. Als u een runbook start dat $WebhookData met een andere methode dan een webhook, kunt u een waarde opgeven voor $Webhookdata die wordt herkend door het runbook. Deze waarde moet een object zijn met dezelfde [Eigenschappen](#details-of-a-webhook) als $Webhookdata, zodat het runbook correct kan worden gebruikt alsof het werkte met de werkelijke Webhookdata die door een webhook is door gegeven.
 
-![WebhookData-parameter van de gebruikersinterface](media/automation-webhooks/WebhookData-parameter-from-UI.png)
+Als u bijvoorbeeld het volgende runbook start vanuit de Azure Portal en een voor beeld van een WebhookData voor het testen wilt door geven, omdat WebhookData een object is, moet het worden door gegeven als JSON in de gebruikers interface.
 
-Voor de volgende runbook, hebt u de volgende eigenschappen voor de parameter WebhookData:
+![WebhookData-para meter van gebruikers interface](media/automation-webhooks/WebhookData-parameter-from-UI.png)
+
+Als u de volgende eigenschappen voor de para meter WebhookData hebt, kunt u voor het volgende runbook opgeven:
 
 * WebhookName: *MyWebhook*
 * RequestBody: *[{'ResourceGroup': 'myResourceGroup','Name': 'vm01'},{'ResourceGroup': 'myResourceGroup','Name': 'vm02'}]*
 
-Vervolgens wilt u de volgende JSON-waarde in de gebruikersinterface voor de parameter WebhookData doorgeven. Retourneert het volgende voorbeeld door de regelterugloop en regeltekens komt overeen met de indeling die wordt doorgegeven vanuit een webhook.
+Vervolgens geeft u de volgende JSON-waarde door in de gebruikers interface voor de para meter WebhookData. Het volgende voor beeld met de tekens regel terugloop en nieuwe regel komt overeen met de indeling die wordt door gegeven vanuit een webhook.
 
 ```json
 {"WebhookName":"mywebhook","RequestBody":"[\r\n {\r\n \"ResourceGroup\": \"vm01\",\r\n \"Name\": \"vm01\"\r\n },\r\n {\r\n \"ResourceGroup\": \"vm02\",\r\n \"Name\": \"vm02\"\r\n }\r\n]"}
 ```
 
-![WebhookData-parameter starten vanuit de gebruikersinterface](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
+![De para meter WebhookData starten vanuit de gebruikers interface](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
 > [!NOTE]
-> De waarden van alle invoerparameters die zijn opgegeven, worden geregistreerd met de runbooktaak. Dit betekent dat alle invoer geleverd door de client in de webhookaanvraag is geregistreerd en beschikbaar zijn voor iedereen met toegang tot de automation-taak.  Daarom moet u voorzichtig met gevoelige informatie in de webhookaanroepen.
+> De waarden van alle invoer parameters worden vastgelegd met de runbook-taak. Dit betekent dat alle invoer van de client in de webhook-aanvraag wordt geregistreerd en beschikbaar is voor iedereen die toegang heeft tot de Automation-taak.  Daarom moet u voorzichtig zijn met het opnemen van gevoelige informatie in webhook-aanroepen.
 
 ## <a name="security"></a>Beveiliging
 
-De beveiliging van een webhook, is afhankelijk van de privacy van de URL, waarin een beveiligingstoken dat kan worden aangeroepen. Azure Automation wordt geen verificatie uitgevoerd op de aanvraag, zolang deze is gemaakt met de juiste URL. Om deze reden moet webhooks niet worden gebruikt voor runbooks die uiterst gevoelige functies uitvoeren zonder gebruik van een alternatieve methode voor het valideren van de aanvraag.
+De beveiliging van een webhook is afhankelijk van de privacy van de URL, die een beveiligings token bevat waarmee het kan worden aangeroepen. Azure Automation voert geen verificatie uit voor de aanvraag zolang deze is gemaakt aan de juiste URL. Daarom mogen webhooks niet worden gebruikt voor runbooks die zeer gevoelige functies uitvoeren zonder gebruik te maken van een alternatieve manier om de aanvraag te valideren.
 
-U kunt opnemen logische binnen het runbook om te bepalen dat deze door een webhook is aangeroepen door het controleren van de **WebhookName** eigenschap van de parameter $WebhookData. Het runbook kan verdere validatie uitvoeren door te zoeken naar bepaalde informatie in de **RequestHeader** of **RequestBody** eigenschappen.
+U kunt logica in het runbook toevoegen om te bepalen of deze is aangeroepen door een webhook door de eigenschap webhooknaam van de para meter $WebhookData te controleren. Het runbook kan verdere validatie uitvoeren door te zoeken naar specifieke informatie in de eigenschappen **RequestHeader** of **RequestBody** .
 
-Een andere strategie is dat het runbook dat sommige validatie van een voorwaarde voor het extern uitvoeren wanneer deze een webhook-aanvraag ontvangen. Neem bijvoorbeeld een runbook dat wordt aangeroepen door GitHub wanneer er sprake is van een nieuwe doorvoer naar een GitHub-opslagplaats. Het runbook kan verbinding maken met GitHub om te valideren dat een nieuwe wijziging voordat u doorgaat opgetreden.
+Een andere strategie is ervoor te hebben dat het runbook enige validatie van een externe voor waarde uitvoert bij het ontvangen van een webhook-aanvraag. Denk bijvoorbeeld aan een runbook dat wordt aangeroepen door GitHub wanneer er een nieuwe door Voer is voor een GitHub-opslag plaats. Het runbook kan verbinding maken met GitHub om te controleren of er een nieuwe doorgevoerde bewerking is uitgevoerd voordat u doorgaat.
 
-## <a name="creating-a-webhook"></a>Het maken van een webhook
+## <a name="creating-a-webhook"></a>Een webhook maken
 
-Gebruik de volgende procedure om een nieuwe webhook maken gekoppeld aan een runbook in Azure portal.
+Gebruik de volgende procedure om een nieuwe webhook te maken die is gekoppeld aan een runbook in de Azure Portal.
 
-1. Uit de **Runbooks pagina** in Azure portal, klikt u op het runbook dat de webhook wordt gestart om de detailpagina ervan weer te geven. Zorg ervoor dat het runbook **Status** is **gepubliceerd**.
-2. Klik op **Webhook** aan de bovenkant van de pagina te openen de **Webhook toevoegen** pagina.
-3. Klik op **nieuwe webhook maken** openen de **pagina van de webhook maken**.
-4. Geef een **naam**, **vervaldatum** voor de webhook en of het moet worden ingeschakeld. Zie [Details van een webhook](#details-of-a-webhook) voor meer informatie deze eigenschappen.
-5. Klik op het pictogram voor kopiëren en druk op Ctrl + C om te kopiëren van de URL van de webhook. Noteer het op een veilige plaats. **Als u de webhook maakt, kan u niet de URL opnieuw ophalen.**
+1. Klik op de **pagina Runbooks** in de Azure Portal op het runbook dat de webhook start om de detail pagina ervan weer te geven. Zorg ervoor dat de **status** van het Runbook wordt **gepubliceerd**.
+2. Klik boven aan de pagina op webhook om de pagina **webhook toevoegen** te openen.
+3. Klik op **nieuwe webhook maken** om de **pagina webhook maken**te openen.
+4. Geef een **naam**op voor de **verval datum** van de webhook en of deze moet worden ingeschakeld. Zie de [Details van een webhook](#details-of-a-webhook) voor meer informatie over deze eigenschappen.
+5. Klik op het Kopieer pictogram en druk op CTRL + C om de URL van de webhook te kopiëren. Noteer deze vervolgens op een veilige plaats. **Wanneer u de webhook hebt gemaakt, kunt u de URL niet opnieuw ophalen.**
 
-   ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
+   ![Webhook-URL](media/automation-webhooks/copy-webhook-url.png)
 
-1. Klik op **Parameters** waarden opgeven voor de runbookparameters. Als het runbook verplichte parameters heeft, klikt u vervolgens bent u niet de webhook te maken tenzij er waarden zijn verstrekt.
-1. Klik op **maken** te maken van de webhook.
+1. Klik op **para meters** om waarden voor de runbook-para meters op te geven. Als het runbook verplichte para meters bevat, kunt u de webhook pas maken als er waarden zijn opgegeven.
+1. Klik op **maken** om de webhook te maken.
 
-## <a name="using-a-webhook"></a>Met behulp van een webhook
+## <a name="using-a-webhook"></a>Een webhook gebruiken
 
-Als u wilt een webhook gebruiken nadat deze is gemaakt, moet u de clienttoepassing een HTTP POST met de URL voor de webhook uitgeven. De syntaxis van de webhook is in de volgende indeling:
+Als u een webhook wilt gebruiken nadat deze is gemaakt, moet uw client toepassing een HTTP-bericht verzenden met de URL voor de webhook. De syntaxis van de webhook heeft de volgende indeling:
 
 ```http
 http://<Webhook Server>/token?=<Token Value>
 ```
 
-De client ontvangt een van de volgende retourcodes van de POST-aanvraag.
+De client ontvangt een van de volgende retour codes van de POST-aanvraag.
 
 | Code | Text | Description |
 |:--- |:--- |:--- |
-| 202 |Geaccepteerd |De aanvraag is geaccepteerd en het runbook is met succes in de wachtrij geplaatst. |
-| 400 |Onjuiste aanvraag |De aanvraag is niet geaccepteerd voor een van de volgende redenen: <ul> <li>De webhook is verlopen.</li> <li>De webhook is uitgeschakeld.</li> <li>Het token in de URL is ongeldig.</li>  </ul> |
-| 404 |Niet gevonden |De aanvraag is niet geaccepteerd voor een van de volgende redenen: <ul> <li>De webhook is niet gevonden.</li> <li>Het runbook is niet gevonden.</li> <li>Het account is niet gevonden.</li>  </ul> |
-| 500 |Interne serverfout |De URL is geldig, maar er is een fout opgetreden. Verzend de aanvraag. |
+| 202 |Geaccepteerd |De aanvraag is geaccepteerd en het runbook is in de wachtrij geplaatst. |
+| 400 |Onjuiste aanvraag |De aanvraag is om een van de volgende redenen niet geaccepteerd: <ul> <li>De webhook is verlopen.</li> <li>De webhook is uitgeschakeld.</li> <li>Het token in de URL is ongeldig.</li>  </ul> |
+| 404 |Niet gevonden |De aanvraag is om een van de volgende redenen niet geaccepteerd: <ul> <li>De webhook is niet gevonden.</li> <li>Het runbook is niet gevonden.</li> <li>Het account is niet gevonden.</li>  </ul> |
+| 500 |Interne serverfout |De URL is geldig, maar er is een fout opgetreden. Verzend de aanvraag opnieuw. |
 
-Ervan uitgaande dat de aanvraag is geslaagd, bevat het antwoord voor webhook de taak-ID in JSON-indeling als volgt. Het kan een enkele taak-ID bevatten, maar de JSON-indeling kan voor mogelijke toekomstige verbeteringen.
+Ervan uitgaande dat de aanvraag is geslaagd, bevat de webhook-respons de taak-ID in JSON-indeling als volgt. Het bevat één taak-ID, maar de JSON-indeling biedt mogelijke toekomstige verbeteringen.
 
 ```json
 {"JobIds":["<JobId>"]}
 ```
 
-De client kan niet bepalen wanneer de runbooktaak is voltooid of de status van de voltooiing van de webhook. Kan het deze gegevens met behulp van de taak-ID met een andere methode zoals bepalen [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) of de [API van Azure Automation](/rest/api/automation/job).
+De client kan niet bepalen wanneer de runbook-taak is voltooid of de voltooiings status van de webhook. Deze informatie kan worden bepaald met behulp van de taak-ID met een andere methode, zoals [Windows Power shell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) of de [Azure Automation-API](/rest/api/automation/job).
 
-## <a name="renew-webhook"></a>Vernieuwen van een webhook
+## <a name="renew-webhook"></a>Een webhook vernieuwen
 
-Wanneer een webhook wordt gemaakt, heeft een geldigheidsduur van één jaar. Na dat jaar tijd de webhook automatisch verloopt. Nadat een webhook is verlopen kan niet worden geactiveerd, moet worden verwijderd en opnieuw gemaakt. Als een webhook heeft de verlooptijd niet worden bereikt, kan worden uitgebreid.
+Wanneer er een webhook wordt gemaakt, heeft deze een geldigheids duur van één jaar. De webhook verloopt na dit jaar automatisch. Zodra een webhook is verlopen, kan deze niet opnieuw worden geactiveerd. deze moet worden verwijderd en opnieuw worden gemaakt. Als een webhook de verloop tijd niet heeft bereikt, kan deze worden uitgebreid.
 
-Als u wilt uitbreiden een webhook, gaat u naar het runbook dat de webhook bevat. Selecteer **Webhooks** onder **Resources**. Klik op de webhook die u wilt uitbreiden, deze actie opent u de **Webhook** pagina.  Kies een nieuwe datum en tijd en klik op **opslaan**.
+Als u een webhook wilt uitbreiden, gaat u naar het runbook dat de webhook bevat. Selecteer webhooks onder **resources**. Klik op de webhook die u wilt uitbreiden. met deze actie wordt de pagina webhook geopend.  Kies een nieuwe verval datum en-tijd en klik op **Opslaan**.
 
-## <a name="sample-runbook"></a>Voorbeeldrunbook
+## <a name="sample-runbook"></a>Voor beeld-runbook
 
-Het volgende voorbeeldrunbook accepteert de webhookgegevens die zijn en start de virtuele machines dat is opgegeven in de aanvraagtekst. Dit runbook testen in uw Automation-Account onder **Runbooks**, klikt u op **+ toevoegen van een runbook**. Als u niet hoe een runbook te maken weet, Zie [het maken van een runbook](automation-quickstart-create-runbook.md).
+Het volgende voor beeld-runbook accepteert de webhookgegevens en start de virtuele machines die zijn opgegeven in de hoofd tekst van de aanvraag. Als u dit runbook wilt testen, klikt u in uw Automation-account onder **Runbooks**op **+ een runbook toevoegen**. Als u niet weet hoe u een runbook moet maken, raadpleegt u [een Runbook maken](automation-quickstart-create-runbook.md).
 
 ```powershell
 param
@@ -171,7 +174,7 @@ if ($WebhookData) {
             {
                 throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
             }
-            Write-Output "Authenticating to Azure with service principal." 
+            Write-Output "Authenticating to Azure with service principal."
             Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Output
 
         # Start each virtual machine
@@ -188,11 +191,11 @@ else {
 }
 ```
 
-## <a name="test-the-example"></a>Het voorbeeld testen
+## <a name="test-the-example"></a>Het voor beeld testen
 
-Windows PowerShell wordt het volgende voorbeeld een runbook starten met een webhook. Elke taal waarvoor een HTTP-aanvraag kan een webhook; gebruiken Windows PowerShell wordt gebruikt als een voorbeeld.
+In het volgende voor beeld wordt Windows Power shell gebruikt om een runbook te starten met een webhook. Elke taal die een HTTP-aanvraag kan maken, kan een webhook gebruiken. Windows Power shell wordt hier als voor beeld gebruikt.
 
-Het runbook wordt een lijst met virtuele machines die zijn opgemaakt in JSON in de hoofdtekst van de aanvraag verwacht. Het runbook valideert ook dat de headers een gedefinieerd bevatten bericht voor het valideren van de beller webhook is ongeldig.
+Het runbook verwacht een lijst met virtuele machines die in JSON zijn ingedeeld in de hoofd tekst van de aanvraag. Het runbook valideert en de headers bevatten een gedefinieerd bericht om te valideren dat de webhook-aanroeper geldig is.
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -207,7 +210,7 @@ $response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $heade
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-Het volgende voorbeeld ziet u de hoofdtekst van de aanvraag die beschikbaar is voor het runbook in de **RequestBody** eigenschap van **WebhookData**. Deze waarde wordt opgemaakt als JSON, omdat dat de indeling die is opgenomen in de hoofdtekst van de aanvraag is.
+In het volgende voor beeld ziet u de hoofd tekst van de aanvraag die beschikbaar is voor het runbook in de eigenschap **RequestBody** van **WebhookData**. Deze waarde wordt als JSON opgemaakt, omdat dat de indeling is die is opgenomen in de hoofd tekst van de aanvraag.
 
 ```json
 [
@@ -222,11 +225,11 @@ Het volgende voorbeeld ziet u de hoofdtekst van de aanvraag die beschikbaar is v
 ]
 ```
 
-De volgende afbeelding ziet u de aanvraag is verzonden vanaf de Windows PowerShell en het resulterende antwoord. De taak-ID is geëxtraheerd uit het antwoord en geconverteerd naar een tekenreeks.
+In de volgende afbeelding ziet u de aanvraag die wordt verzonden vanuit Windows Power shell en de resulterende reactie. De taak-ID wordt opgehaald uit het antwoord en geconverteerd naar een teken reeks.
 
-![Knop Webhooks](media/automation-webhooks/webhook-request-response.png)
+![Knop webhooks](media/automation-webhooks/webhook-request-response.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over het gebruik van Azure Automation actie te ondernemen op Azure-waarschuwingen, [gebruik van een waarschuwing voor het activeren van een Azure Automation-runbook](automation-create-alert-triggered-runbook.md).
+* Zie [een waarschuwing gebruiken om een Azure Automation runbook te activeren](automation-create-alert-triggered-runbook.md)voor meer informatie over het gebruik van Azure Automation om actie te ondernemen voor Azure-waarschuwingen.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034759"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061553"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Meer informatie over de werking van het hulp programma voor migratie
 
@@ -36,7 +36,7 @@ Hoewel het hulp programma bijna alle [klassieke waarschuwings regels](monitoring
 - Klassieke waarschuwings regels op enkele Cosmos DB metrische gegevens. [Meer informatie](#cosmos-db-metrics) vindt u verderop in dit artikel.
 - Klassieke waarschuwings regels op alle klassieke virtuele machines en metrische gegevens voor Cloud Services (micro soft. ClassicCompute/informatie en micro soft. ClassicCompute/domainName/sleuven/rollen). [Meer informatie](#classic-compute-metrics) vindt u verderop in dit artikel.
 
-Als uw abonnement een van deze klassieke regels bevat, moet u ze hand matig migreren. Omdat er geen automatische migratie kan worden geboden, blijven bestaande, klassieke metrische waarschuwingen van deze typen werken tot 2020 juni. Deze uitbrei ding geeft u de tijd om over te stappen op nieuwe waarschuwingen. Er kunnen echter geen nieuwe klassieke waarschuwingen worden gemaakt na 2019 augustus.
+Als uw abonnement een van deze klassieke regels bevat, moet u ze hand matig migreren. Omdat er geen automatische migratie kan worden geboden, blijven bestaande, klassieke metrische waarschuwingen van deze typen werken tot 2020 juni. Deze uitbrei ding geeft u de tijd om over te stappen op nieuwe waarschuwingen. U kunt ook door gaan met het maken van nieuwe klassieke waarschuwingen in de bovenstaande lijst met uitzonde ringen tot en met 2020. Voor al het andere, kunnen na augustus 2019 geen nieuwe klassieke waarschuwingen worden gemaakt.
 
 > [!NOTE]
 > Afgezien van de hierboven vermelde uitzonde ringen, als uw klassieke waarschuwings regels ongeldig zijn, d.w.z. deze worden afgeschaft op gedeprecieerde [metrische gegevens](#classic-alert-rules-on-deprecated-metrics) of resources die zijn verwijderd, worden deze niet gemigreerd tijdens vrijwillige migratie. Dergelijke ongeldige klassieke waarschuwings regels worden verwijderd wanneer de automatische migratie plaatsvindt.

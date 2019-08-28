@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 08/25/2017
+ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: edbeffebd1f4ee41d8a2bdaddcdc7d84cbe1affe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780934"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060725"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Aan de slag met apparaatdubbels (node. js)
 
@@ -29,7 +29,9 @@ Aan het einde van deze zelf studie hebt u twee node. js-console-apps:
 > Het artikel [Azure IOT sdk's](iot-hub-devguide-sdks.md) bevat informatie over de Azure IOT-sdk's die u kunt gebruiken om zowel apparaat-als back-end-apps te bouwen.
 >
 
-U hebt het volgende nodig om deze zelf studie te volt ooien:
+## <a name="prerequisites"></a>Vereisten
+
+Voor deze zelfstudie hebt u het volgende nodig:
 
 * Node. js versie 10.0. x of hoger.
 
@@ -53,28 +55,28 @@ U hebt het volgende nodig om deze zelf studie te volt ooien:
 
 In deze sectie maakt u een node. JS-Console-app waarmee de meta gegevens van de locatie worden toegevoegd aan het apparaat dat is gekoppeld aan **myDeviceId**. Vervolgens wordt een query uitgevoerd op het apparaat apparaatdubbels dat is opgeslagen in de IoT-hub en worden de apparaten die zich in de Verenigde Staten bevinden, geselecteerd en vervolgens de apparatuur die een mobiele verbinding rapporteert.
 
-1. Maak een nieuwe lege map met de naam **addtagsandqueryapp**. Maak in de map **addtagsandqueryapp** een nieuw package. JSON-bestand met de volgende opdracht achter de opdracht prompt. Accepteer alle standaardwaarden:
+1. Maak een nieuwe lege map met de naam **addtagsandqueryapp**. Maak in de map **addtagsandqueryapp** een nieuw package. JSON-bestand met de volgende opdracht achter de opdracht prompt. De `--yes` para meter accepteert alle standaard waarden.
 
-    ```
-    npm init
+    ```cmd/sh
+    npm init --yes
     ```
 
 2. Voer bij de opdracht prompt in de map **addtagsandqueryapp** de volgende opdracht uit om het **Azure-iothub-** pakket te installeren:
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iothub --save
     ```
 
 3. Maak een nieuw **AddTagsAndQuery. js** -bestand in de map **addtagsandqueryapp** met behulp van een tekst editor.
 
-4. Voeg de volgende code toe aan het bestand **AddTagsAndQuery. js** en vervang de tijdelijke aanduiding voor **{IOT hub Connection String}** door de IOT hub Connection String u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string):
+4. Voeg de volgende code toe aan het bestand **AddTagsAndQuery. js** . Vervang `{iot hub connection string}` door de IOT hub-Connection String die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
    ``` javascript
         'use strict';
         var iothub = require('azure-iothub');
         var connectionString = '{iot hub connection string}';
         var registry = iothub.Registry.fromConnectionString(connectionString);
-   
+
         registry.getTwin('myDeviceId', function(err, twin){
             if (err) {
                 console.error(err.constructor.name + ': ' + err.message);
@@ -87,7 +89,7 @@ In deze sectie maakt u een node. JS-Console-app waarmee de meta gegevens van de 
                       }
                     }
                 };
-   
+
                 twin.update(patch, function(err) {
                   if (err) {
                     console.error('Could not update twin: ' + err.constructor.name + ': ' + err.message);
@@ -116,7 +118,7 @@ In deze sectie maakt u een node. JS-Console-app waarmee de meta gegevens van de 
                     console.log("Devices in Redmond43: " + results.map(function(twin) {return twin.deviceId}).join(','));
                 }
             });
-   
+
             query = registry.createQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
             query.nextAsTwin(function(err, results) {
                 if (err) {
@@ -130,17 +132,17 @@ In deze sectie maakt u een node. JS-Console-app waarmee de meta gegevens van de 
 
     In de vorige code worden twee query's uitgevoerd: de eerste selecteert alleen het apparaat apparaatdubbels van apparaten die zich in de **Redmond43** -installatie bevinden en de tweede verfijnt de query om alleen de apparaten te selecteren die ook zijn verbonden via een mobiel netwerk.
 
-    De vorige code, wanneer deze het **query** -object maakt, geeft een maximum aantal geretourneerde documenten op. Het **query** -object bevat een **hasMoreResults** Boolean-eigenschap die u kunt gebruiken om de **nextAsTwin** -methoden meerdere keren aan te roepen om alle resultaten op te halen. Een methode met de naam **Next** is beschikbaar voor resultaten die geen apparaatdubbels zijn, bijvoorbeeld resultaten van aggregatie query's.
+    Wanneer de code het **query** -object maakt, geeft het het maximum aantal geretourneerde documenten op in de tweede para meter. Het **query** -object bevat een **hasMoreResults** Boolean-eigenschap die u kunt gebruiken om de **nextAsTwin** -methoden meerdere keren aan te roepen om alle resultaten op te halen. Een methode met de naam **Next** is beschikbaar voor resultaten die geen apparaatdubbels zijn, bijvoorbeeld de resultaten van aggregatie query's.
 
 6. Voer de toepassing uit met:
 
-    ```
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 
    U ziet één apparaat in de resultaten voor de query die vraagt naar alle apparaten in **Redmond43** en geen voor de query waarmee de resultaten worden beperkt tot apparaten die gebruikmaken van een mobiel netwerk.
-   
-    ![Het ene apparaat weer geven in de query resultaten](media/iot-hub-node-node-twin-getstarted/service1.png)
+
+   ![Het ene apparaat weer geven in de query resultaten](media/iot-hub-node-node-twin-getstarted/service1.png)
 
 In de volgende sectie maakt u een apparaat-app die de connectiviteits gegevens rapporteert en het resultaat van de query in de vorige sectie wijzigt.
 
@@ -148,36 +150,36 @@ In de volgende sectie maakt u een apparaat-app die de connectiviteits gegevens r
 
 In deze sectie maakt u een node. JS-Console-app die als **myDeviceId**verbinding maakt met uw hub en vervolgens de gerapporteerde eigenschappen van het apparaat vervolgens bijwerkt met de informatie die is verbonden met behulp van een mobiel netwerk.
 
-1. Maak een nieuwe lege map met de naam **reportconnectivity**. Maak in de map **reportconnectivity** een nieuw package. JSON-bestand met de volgende opdracht achter de opdracht prompt. Accepteer alle standaardwaarden:
-   
-    ```
-    npm init
+1. Maak een nieuwe lege map met de naam **reportconnectivity**. Maak in de map **reportconnectivity** een nieuw package. JSON-bestand met de volgende opdracht achter de opdracht prompt. De `--yes` para meter accepteert alle standaard waarden.
+
+    ```cmd/sh
+    npm init --yes
     ```
 
-2. Voer bij de opdracht prompt in de map **reportconnectivity** de volgende opdracht uit om het **Azure-IOT-Device**-en **Azure-IOT-Device-mqtt** -pakket te installeren:
-   
-    ```
+2. Voer bij de opdracht prompt in de map **reportconnectivity** de volgende opdracht uit om de **Azure-IOT-Device**-en **Azure-IOT-Device-mqtt** -pakketten te installeren:
+
+    ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
 3. Maak een nieuw **ReportConnectivity. js** -bestand in de map **ReportConnectivity** met behulp van een tekst editor.
 
-4. Voeg de volgende code toe aan het bestand **ReportConnectivity. js** en vervang de tijdelijke aanduiding **{device Connection String}** door het apparaat Connection String dat u hebt gekopieerd tijdens het maken van de **myDeviceId** -apparaat-id:
+4. Voeg de volgende code toe aan het bestand **ReportConnectivity. js** . Vervang `{device connection string}` door het apparaat Connection String u hebt gekopieerd tijdens het maken van de **myDeviceId** -apparaat-id bij het [registreren van een nieuw apparaat in de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
-    ```
+    ```javascript
         'use strict';
         var Client = require('azure-iot-device').Client;
         var Protocol = require('azure-iot-device-mqtt').Mqtt;
-   
+
         var connectionString = '{device connection string}';
         var client = Client.fromConnectionString(connectionString, Protocol);
-   
+
         client.open(function(err) {
         if (err) {
             console.error('could not open IotHub client');
         }  else {
             console.log('client opened');
-   
+
             client.getTwin(function(err, twin) {
             if (err) {
                 console.error('could not get twin');
@@ -187,7 +189,7 @@ In deze sectie maakt u een node. JS-Console-app die als **myDeviceId**verbinding
                         type: 'cellular'
                     }
                 };
-   
+
                 twin.properties.reported.update(patch, function(err) {
                     if (err) {
                         console.error('could not update twin');
@@ -206,7 +208,7 @@ In deze sectie maakt u een node. JS-Console-app die als **myDeviceId**verbinding
 
 5. De apparaat-app uitvoeren
 
-    ```   
+    ```cmd/sh
         node ReportConnectivity.js
     ```
 
@@ -214,7 +216,7 @@ In deze sectie maakt u een node. JS-Console-app die als **myDeviceId**verbinding
 
 6. Nu het apparaat de verbindings gegevens heeft gerapporteerd, zou het in beide query's moeten worden weer gegeven. Ga terug naar de map **addtagsandqueryapp** en voer de query's opnieuw uit:
 
-    ```   
+    ```cmd/sh
         node AddTagsAndQuery.js
     ```
 

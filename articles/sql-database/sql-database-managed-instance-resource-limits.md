@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 06/26/2019
-ms.openlocfilehash: 776a27ca0babfd7557bf4d16c449a8dfa5bceaf7
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 08/27/2019
+ms.openlocfilehash: 921a14243bc50651358f0df42b88857ab227916d
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998201"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060644"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Overzicht Azure SQL Database limieten voor beheerde exemplaar bronnen
 
@@ -51,7 +51,7 @@ Het beheerde exemplaar heeft twee service lagen: Algemeen en Bedrijfskritiek. De
 
 | **Functie** | **Algemeen** | **Bedrijfskritiek** |
 | --- | --- | --- |
-| Aantal vCores\* | Gen4 8, 16, 24<br/>GEN5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24, 32 <br/> GEN5 4, 8, 16, 24, 32, 40, 64, 80 |
+| Aantal vCores\* | Gen4 8, 16, 24<br/>GEN5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> GEN5 4, 8, 16, 24, 32, 40, 64, 80 |
 | Maxi maal geheugen | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 40,8 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | Gen4 56 GB-168 GB (7GB/vCore)<br/>GEN5 40,8 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
 | Maximale opslag grootte voor gereserveerde instanties | -2 TB voor 4 vCores (alleen GEN5)<br/>-8 TB voor andere grootten | Gen4 1 TB <br/> GEN5 <br/>-1 TB voor 4, 8, 16 vCores<br/>-2 TB voor 24 vCores<br/>-4 TB voor 32, 40, 64, 80 vCores |
 | Maximale databasegrootte | Bepaald door de maximale opslag grootte per instantie | Bepaald door de maximale opslag grootte per instantie |
@@ -65,10 +65,12 @@ Het beheerde exemplaar heeft twee service lagen: Algemeen en Bedrijfskritiek. De
 | Maximale grootte van tempDB | 192-1.920 GB (24 GB per vCore)<br/>Voeg meer vCores toe om meer TempDB-ruimte te krijgen. | Beperkt door de maximale opslag grootte van het exemplaar. De grootte van het TempDB-logboek bestand is momenteel beperkt tot 24 GB/vCore. |
 | In-memory OLTP | Niet ondersteund | Beschikbaar |
 | Maximum aantal sessies | 30000 | 30000 |
+| Lees bare replica's | 0 | 1 |
 
 > [!NOTE]
 > - De grootte van de gegevens en het logboek bestand in de gebruikers-en systeem databases zijn opgenomen in de opslag grootte van het exemplaar, vergeleken met de maximale opslag grootte. Gebruik de <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> -systeem weergave om de totale hoeveelheid gebruikte ruimte te bepalen op basis van data bases. Fouten logboeken worden niet persistent gemaakt en zijn niet opgenomen in de grootte. Back-ups worden niet opgenomen in de opslag grootte.
 > - De door Voer en IOPS zijn ook afhankelijk van het pagina formaat dat niet expliciet wordt beperkt door een beheerd exemplaar.
+> U kunt een andere Lees bare replica maken in een andere Azure-regio met behulp van groepen voor automatische failover.
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 

@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741666"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061709"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheer oplossing in azure (preview-versie)
 
@@ -66,14 +66,14 @@ Voordat u met deze procedure begint, moet u de volgende informatie verzamelen.
 
 Vanuit uw Log Analytics-werk ruimte:
 
-- Werkruimtenaam: De werk ruimte waar de Office 365-gegevens worden verzameld.
-- Resourcegroepnaam: De resource groep die de werk ruimte bevat.
+- Werkruimte naam: De werk ruimte waar de Office 365-gegevens worden verzameld.
+- Naam van resource groep: De resource groep die de werk ruimte bevat.
 - Azure-abonnements-ID: Het abonnement met de werk ruimte.
 
 Van uw Office 365-abonnement:
 
-- Gebruikersnaam: Het e-mail adres van een Administrator-account.
-- Tenant-id: Unieke ID voor het Office 365-abonnement.
+- Gebruikers Het e-mail adres van een Administrator-account.
+- Tenant-ID: Unieke ID voor het Office 365-abonnement.
 - Client-ID: teken reeks van 16 tekens die de Office 365-client vertegenwoordigt.
 - Client geheim: De versleutelde teken reeks is vereist voor verificatie.
 
@@ -83,45 +83,46 @@ De eerste stap is het maken van een toepassing in Azure Active Directory dat de 
 
 1. Meld u aan bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com/).
 1. Selecteer **Azure Active Directory** en **app-registraties**.
-1. Klik op **Nieuwe toepassing registreren**.
+1. Klik op **nieuwe registratie**.
 
     ![App-registratie toevoegen](media/solution-office-365/add-app-registration.png)
-1. Voer een toepassings **naam** en **aanmeldings-URL in**.  De naam moet een beschrijving zijn.  Gebruiken `http://localhost` voor de URL en de _Web-app/-API_ voor het **toepassings type** blijven
+1. Voer een toepassings **naam**in. Selecteer **accounts in elke organisatie Directory (een Azure AD-Directory-multi tenant)** voor de **ondersteunde account typen**.
     
     ![App maken](media/solution-office-365/create-application.png)
-1. Klik op **maken** en valideer de toepassings gegevens.
+1. Klik op **registreren** en valideer de toepassings gegevens.
 
     ![Geregistreerde app](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>Toepassing voor Office 365 configureren
 
-1. Klik op **instellingen** om het menu **instellingen** te openen.
-1. Selecteer **eigenschappen**. Wijzig **meerdere tenants** naar _Ja_.
+1. Selecteer **verificatie** en controleer of **accounts in elke organisatie Directory (een Azure AD-adres lijst-multi tenant)** zijn geselecteerd onder **ondersteunde account typen**.
 
     ![Instellingen multi tenant](media/solution-office-365/settings-multitenant.png)
 
-1. Selecteer **vereiste machtigingen** in het menu **instellingen** en klik vervolgens op **toevoegen**.
-1. Klik op **een API selecteren** en vervolgens op **Office 365-beheer-api's**. Klik op **Office 365-beheer-api's**. Klik op **Selecteren**.
+1. Selecteer **API-machtigingen** en **Voeg vervolgens een machtiging toe**.
+1. Klik op **Office 365-beheer-api's**. 
 
     ![API selecteren](media/solution-office-365/select-api.png)
 
-1. Selecteer onder **machtigingen selecteren** de volgende opties voor zowel **toepassings machtigingen** als **gedelegeerde machtigingen**:
-   - Gegevens over de servicestatus van uw organisatie lezen
-   - Activiteitengegevens van uw organisatie lezen
-   - Activiteitenrapporten van uw organisatie lezen
+1. Onder **welk type machtigingen vereist uw toepassing?** Selecteer de volgende opties voor zowel **toepassings machtigingen** als gedelegeerde **machtigingen**:
+   - Informatie over de service status voor uw organisatie lezen
+   - Gegevens van de activiteit voor uw organisatie lezen
+   - Activiteiten rapporten voor uw organisatie lezen
 
-     ![API selecteren](media/solution-office-365/select-permissions.png)
+     ![API selecteren](media/solution-office-365/select-permissions-01.png)![API selecteren](media/solution-office-365/select-permissions-02.png)
 
-1. Klik op **selecteren** en vervolgens op **gereed**.
-1. Klik op **machtigingen verlenen** en klik vervolgens op **Ja** wanneer u wordt gevraagd om te verifiëren.
+1. Klik op **machtigingen toevoegen**.
+1. Klik op **toestemming beheerder verlenen** en klik vervolgens op **Ja** wanneer u wordt gevraagd om te verifiëren.
 
-    ![Machtigingen verlenen](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>Een sleutel voor de toepassing toevoegen
+### <a name="add-a-secret-for-the-application"></a>Een geheim voor de toepassing toevoegen
 
-1. Selecteer **sleutels** in het menu **instellingen** .
+1. Selecteer **certificaten & geheimen** en vervolgens **Nieuw client geheim**.
+
+    ![Sleutels](media/solution-office-365/secret.png)
+ 
 1. Typ een **Beschrijving** en **duur** voor de nieuwe sleutel.
-1. Klik op **Opslaan** en kopieer vervolgens de **waarde** die wordt gegenereerd.
+1. Klik op **toevoegen** en kopieer de **waarde** die wordt gegenereerd.
 
     ![Sleutels](media/solution-office-365/keys.png)
 

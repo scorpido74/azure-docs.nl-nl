@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622256"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061373"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Veelgestelde vragen
 
@@ -43,11 +43,9 @@ Gebruikers accounts voor toepassingen moeten altijd worden gemaakt via een gebru
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Welke leveranciers van sociale ID ondersteunen u nu? Wat zijn de voor waarden die u in de toekomst wilt ondersteunen?
 
-Momenteel bieden we ondersteuning voor Facebook, Google +, LinkedIn, Amazon, Twitter (preview), WeChat (preview), Weibo (preview) en QQ (preview). We zullen ondersteuning voor andere populaire sociale id-providers toevoegen op basis van de vraag van de klant.
+Momenteel ondersteunen we verschillende sociale id-providers, waaronder Amazon, Facebook, GitHub (preview), Google, LinkedIn, micro soft-account (MSA), QQ (preview), Twitter, WeChat (preview) en Weibo (preview). We evalueren het toevoegen van ondersteuning voor andere populaire sociale id-providers op basis van de vraag van de klant.
 
-Azure AD B2C heeft ook ondersteuning toegevoegd voor [aangepast beleid](active-directory-b2c-overview-custom.md). Met deze aangepaste beleids regels kan een ontwikkelaar een eigen beleid maken met een id-provider die [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) of SAML ondersteunt.
-
-Ga aan de slag met aangepaste beleids regels door ons [aangepaste beleids Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)uit te checken.
+Azure AD B2C biedt ook ondersteuning voor [aangepast beleid](active-directory-b2c-overview-custom.md). Aangepaste beleids regels bieden u de mogelijkheid om uw eigen beleid te maken voor elke id-provider die ondersteuning biedt voor [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) of SAML. Ga aan de slag met aangepaste beleids regels door ons [aangepaste beleids Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)uit te checken.
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Kan ik scopes configureren voor het verzamelen van meer informatie over consumenten van verschillende aanbieders van sociale identiteiten?
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2cf5e0f6da52670d383a1d1508dc7bcc7847831f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 8a0b974e9b64d477e53c37757b4f2fa952befba2
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824550"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061863"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -58,9 +58,11 @@ Als u fouten wilt opsporen in uw app met SQL Database als de back-end, zorgt u e
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="grant-azure-ad-user-access-to-database"></a>Azure AD-gebruikers toegang verlenen tot data base
+## <a name="grant-database-access-to-azure-ad-user"></a>Database toegang verlenen aan Azure AD-gebruiker
 
-Schakel eerst Azure AD-verificatie in om SQL Database door een Azure AD-gebruiker toe te wijzen als Active Directory beheerder van de SQL Database-Server. Deze gebruiker wijkt af van de Microsoft-account die u hebt gebruikt om u aan te melden voor uw Azure-abonnement. Dit moet een gebruiker zijn die u hebt gemaakt, geïmporteerd, gesynchroniseerd of uitgenodigd voor Azure AD. Zie [Azure AD-functies en-beperkingen in SQL database](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)voor meer informatie over de toegestane Azure AD-gebruikers. 
+Schakel eerst Azure AD-verificatie in om SQL Database door een Azure AD-gebruiker toe te wijzen als Active Directory beheerder van de SQL Database-Server. Deze gebruiker wijkt af van de Microsoft-account die u hebt gebruikt om u aan te melden voor uw Azure-abonnement. Dit moet een gebruiker zijn die u hebt gemaakt, geïmporteerd, gesynchroniseerd of uitgenodigd voor Azure AD. Zie [Azure AD-functies en-beperkingen in SQL database](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)voor meer informatie over de toegestane Azure AD-gebruikers.
+
+Als uw Azure AD-Tenant nog geen gebruiker heeft, maakt u er een door de stappen te volgen op [gebruikers toevoegen of verwijderen met Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
 Zoek de object-id van de Azure AD-gebruiker [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) met behulp van de en vervang  *\<User-Principal-name >* . Het resultaat wordt opgeslagen in een variabele.
 
@@ -71,7 +73,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Als u de lijst met alle UPN-namen in azure AD wilt zien `az ad user list --query [].userPrincipalName`, voert u uit.
 >
 
-Voeg deze Azure AD-gebruiker toe als Active Directory- [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) beheerder met behulp van de opdracht in de Cloud shell. Vervang in de volgende opdracht Server  *naam>\<* .
+Voeg deze Azure AD-gebruiker toe als Active Directory- [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) beheerder met behulp van de opdracht in de Cloud shell. Vervang `.database.windows.net`  *\<* in de volgende opdracht Server naam > door de naam van de SQL database-server (zonder het achtervoegsel).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -170,7 +172,10 @@ var conn = (System.Data.SqlClient.SqlConnection)Database.GetDbConnection();
 conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
-Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app.
+> [!TIP]
+> Deze demonstratie code is synchroon voor duidelijkheid. Zie voor meer informatie [asynchrone hand leiding voor constructors](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#constructors).
+
+Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app. De `AzureServiceTokenProvider` klasse slaat het token in de cache op in het geheugen en haalt dit net vóór de verval datum op uit Azure AD. U hebt geen aangepaste code nodig om het token te vernieuwen.
 
 Typ `Ctrl+F5` om de app opnieuw uit te voeren. Dezelfde ruwe app in uw browser is nu rechtstreeks verbonden met de Azure SQL Database, met behulp van Azure AD-verificatie. Met deze installatie kunt u database migraties uitvoeren vanuit Visual Studio.
 

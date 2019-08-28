@@ -7,16 +7,17 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: d1a155845f5c04817611fb14f4a973527e3e039b
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e748ade19fe64399015acfc35892c5d9081bf9e3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050473"
+ms.locfileid: "70062099"
 ---
 # <a name="get-started-with-device-twins-net"></a>Aan de slag met Device apparaatdubbels (.NET)
+
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 In deze zelf studie maakt u deze .NET-console-apps:
@@ -31,7 +32,9 @@ In deze zelf studie maakt u deze .NET-console-apps:
 > Het artikel [Azure IOT sdk's](iot-hub-devguide-sdks.md) bevat informatie over de Azure IOT-sdk's die u kunt gebruiken om zowel apparaat-als back-end-apps te bouwen.
 >
 
-Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden voldaan:
+## <a name="prerequisites"></a>Vereisten
+
+Voor deze zelfstudie hebt u het volgende nodig:
 
 * Visual Studio.
 
@@ -75,7 +78,7 @@ In deze sectie maakt u een .NET-console-app met C#, waarmee de meta gegevens van
     using Microsoft.Azure.Devices;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding door de IoT Hub connection string die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{iot hub connection string}` door de IOT hub-Connection String die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
 
     ```csharp  
     static RegistryManager registryManager;
@@ -98,13 +101,13 @@ In deze sectie maakt u een .NET-console-app met C#, waarmee de meta gegevens van
                 }
             }";
         await registryManager.UpdateTwinAsync(twin.DeviceId, patch, twin.ETag);
-   
+
         var query = registryManager.CreateQuery(
           "SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'", 100);
         var twinsInRedmond43 = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43: {0}", 
           string.Join(", ", twinsInRedmond43.Select(t => t.DeviceId)));
-   
+
         query = registryManager.CreateQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
         var twinsInRedmond43UsingCellular = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43 using cellular network: {0}", 
@@ -155,7 +158,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
     using Newtonsoft.Json;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding door het apparaat connection string dat u hebt genoteerd in [een nieuw apparaat registreren bij de IOT hub](#register-a-new-device-in-the-iot-hub).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{device connection string}` door het apparaat Connection String dat u hebt genoteerd in [een nieuw apparaat registreren in IOT hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp  
     static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
@@ -193,7 +196,7 @@ In deze sectie maakt u een .NET-console-app die als **myDeviceId**verbinding maa
         try
         {
             Console.WriteLine("Sending connectivity data as reported property");
-            
+
             TwinCollection reportedProperties, connectivity;
             reportedProperties = new TwinCollection();
             connectivity = new TwinCollection();

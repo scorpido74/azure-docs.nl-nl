@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2018
+ms.date: 08/21/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 597670803514fa59faaafdad73786cdb745a0976
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5342ec14e32b87c5cccdb36206122ce1168aeb56
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640905"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061416"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection met Azure Security Center
 
@@ -117,6 +117,7 @@ Een goed aardige Windows Defender ATP-test waarschuwing genereren:
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- [Platforms en functies die worden ondersteund door Azure Security Center](security-center-os-coverage.md)
 - [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): Meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen.
 - [Aanbevelingen voor beveiliging in azure Security Center beheren](security-center-recommendations.md): Meer informatie over hoe u met aanbevelingen uw Azure-resources kunt beveiligen.
 - [Beveiligings status controleren in azure Security Center](security-center-monitoring.md): Meer informatie over het controleren van de status van uw Azure-resources.

@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967905"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061934"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparante gegevens versleuteling voor SQL Database en Data Warehouse
 
 Transparent Data Encryption (TDE) helpt bij het beschermen van Azure SQL Database, Azure SQL Managed instance en Azure Data Warehouse tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Er wordt in realtime versleuteling en ontsleuteling van de data base, gekoppelde back-ups en transactie logboek bestanden in rust uitgevoerd zonder dat de toepassing hoeft te worden gewijzigd. TDE is standaard ingeschakeld voor alle nieuw geïmplementeerde Azure SQL-data bases. TDE kan niet worden gebruikt voor het versleutelen van de logische **hoofd** database in SQL database.  De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
 
-TDE moet hand matig worden ingeschakeld voor Azure SQL Managed instance, oudere data bases van Azure SQL Database of Azure SQL Data Warehouse.  
+TDE moet hand matig worden ingeschakeld voor oudere data bases van Azure SQL Database, een beheerd exemplaar van Azure SQL of Azure SQL Data Warehouse.
+Beheerde exemplaar databases die zijn gemaakt via Restore, nemen de versleutelings status over van de bron database.
 
 Transparante gegevens versleuteling versleutelt de opslag van een volledige data base met behulp van een symmetrische sleutel die de database versleutelings sleutel wordt genoemd. Deze versleutelings sleutel voor de data base wordt beveiligd door de transparante beveiliging van gegevens versleuteling. Het beveiligings programma is een door een service beheerd certificaat (door de service beheerde transparante gegevens versleuteling) of een asymmetrische sleutel die is opgeslagen in Azure Key Vault (Bring Your Own Key). U stelt de transparante gegevens versleutelings beveiliging in op server niveau voor Azure SQL Database en het Data Warehouse, en op instantie niveau voor Azure SQL Managed instance. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
 

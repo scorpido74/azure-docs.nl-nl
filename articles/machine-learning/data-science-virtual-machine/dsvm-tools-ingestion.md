@@ -1,6 +1,6 @@
 ---
 title: Data Science Virtual Machine gegevensopnamehulpprogramma's - Azure | Microsoft Docs
-description: Meer informatie over de gegevensopnamehulpprogramma's en hulpprogramma's vooraf geïnstalleerd in de Data Science Virtual Machine.
+description: Meer informatie over de hulpprogram ma's voor gegevens opname en hulpprogram ma's die vooraf zijn geïnstalleerd op de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
 documentationcenter: ''
@@ -16,64 +16,64 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: vijetaj
-ms.openlocfilehash: ffc6071206236bc25d3c02576225c1de935f722a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58bfab43d39f050e19687c30a61e05892fffc3f2
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557706"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060603"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science Virtual Machine gegevensopnamehulpprogramma 's
 
-Een van de eerste technische stappen in een data science of AI-project is het identificeren van de gegevenssets die worden gebruikt en deze weer in uw omgeving voor analyse. De Data Science Virtual Machine (DSVM) bevat hulpprogram ma's en bibliotheken om gegevens van verschillende bronnen naar een analytische gegevens opslag lokaal op het DSVM of in een gegevens platform in de Cloud of on-premises te brengen. 
+Als een van de eerste technische stappen in een Data Science of AI-project, moet u de gegevens sets identificeren die moeten worden gebruikt en deze in uw analyse omgeving opnemen. De Data Science Virtual Machine (DSVM) bevat hulpprogram ma's en bibliotheken waarmee u gegevens uit verschillende bronnen lokaal op de DSVM kunt plaatsen, of in een gegevens platform in de Cloud of on-premises.
 
-Hier volgen enkele we hebt opgegeven op de DSVM verkeer hulpprogramma's. 
+Hier volgen enkele hulp middelen voor het verplaatsen van gegevens die beschikbaar zijn in de DSVM.
 
 ## <a name="adlcopy"></a>AdlCopy
 
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   | Een hulpprogramma voor het kopiëren van gegevens uit Azure storage-blobs in Azure Data Lake Store. Het kan ook gegevens tussen twee Azure Data Lake Store-accounts kopiëren.      |
+| Wat is het?   | Een hulp programma voor het kopiëren van gegevens uit Azure Blob-opslag naar Azure Data Lake Store. Het kan ook gegevens tussen twee Azure Data Lake Store-accounts kopiëren.      |
 | Ondersteunde DSVM-versies      | Windows      |
-| Wordt doorgaans gebruikt      | Meerdere blobs van Azure storage te importeren in Azure Data Lake Store.      |
-|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdrachtprompt, typ `adlcopy` om hulp te krijgen.    |
+| Wordt doorgaans gebruikt      | Meerdere blobs uit Azure Blob-opslag importeren in Azure Data Lake Store.      |
+|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdracht prompt en typ `adlcopy` om hulp te krijgen.    |
 | Koppelingen naar voorbeelden      | [AdlCopy gebruiken](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
-| Meer hulpprogramma's op de DSVM      | AzCopy, Azure-opdrachtregel     |
+| Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, Azure CLI     |
 
-## <a name="azure-command-line"></a>Azure-opdrachtregel
+## <a name="azure-cli"></a>Azure-CLI
 
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   | Een hulpprogramma voor Azure. Het bevat ook bewerkingen van de opdracht voor het verplaatsen van gegevens uit Azure-gegevensplatforms zoals Azure storage-blobs, Azure Data Lake Storage     |
+| Wat is het?   | Een hulpprogramma voor Azure. Het bevat ook opdracht opdrachten voor het verplaatsen van gegevens van Azure-gegevens platforms zoals Azure Blob Storage en Azure Data Lake Store.     |
 | Ondersteunde DSVM-versies      | Windows, Linux     |
-| Wordt doorgaans gebruikt      | Importeren, exporteren van gegevens naar en van Azure storage, Azure Data Lake Store      |
-|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdrachtprompt, typ `az` om hulp te krijgen.    |
+| Wordt doorgaans gebruikt      | Importeren en exporteren van gegevens van en naar Azure Storage en Azure Data Lake Store.      |
+|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdracht prompt en typ `az` om hulp te krijgen.    |
 | Koppelingen naar voorbeelden      | [Azure CLI gebruiken](https://docs.microsoft.com/cli/azure)     |
-| Meer hulpprogramma's op de DSVM      | AzCopy, AdlCopy      |
+| Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy      |
 
 
 ## <a name="azcopy"></a>AzCopy
 
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   | Een hulpprogramma voor het kopiëren van gegevens naar en van lokale bestanden, Azure storage-blobs, bestanden en tabellen.      |
+| Wat is het?   | Een hulp programma voor het kopiëren van gegevens naar en van lokale bestanden, Azure Blob-opslag, bestanden en tabellen.      |
 | Ondersteunde DSVM-versies      | Windows      |
-| Wordt doorgaans gebruikt      | Bestanden zijn gekopieerd naar blob-opslag, te kopiëren van BLOB's tussen accounts.      |
-|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdrachtprompt, typ `azcopy` om hulp te krijgen.    |
+| Wordt doorgaans gebruikt      | Kopiëren van bestanden naar Azure Blob-opslag en het kopiëren van blobs tussen accounts.      |
+|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdracht prompt en typ `azcopy` om hulp te krijgen.    |
 | Koppelingen naar voorbeelden      | [AzCopy in Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
-| Meer hulpprogramma's op de DSVM      | AdlCopy     |
+| Gerelateerde hulpprogram ma's op de DSVM      | AdlCopy     |
 
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB Data Migration tool
 
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   | Hulpprogramma voor het importeren van gegevens uit verschillende bronnen, met inbegrip van JSON-bestanden, CSV-bestanden, SQL, MongoDB, Azure Table storage, Amazon DynamoDB en Azure Cosmos DB SQL API verzamelingen in Azure Cosmos DB.      |
+| Wat is het?   | Hulp programma voor het importeren van gegevens uit verschillende bronnen in Azure Cosmos DB. Deze bronnen zijn onder andere JSON-bestanden, CSV-bestanden, SQL, MongoDB, Azure-tabel opslag, Amazon DynamoDB en Azure Cosmos DB SQL API-verzamelingen.      |
 | Ondersteunde DSVM-versies      | Windows      |
-| Wordt doorgaans gebruikt      | Bestanden van een virtuele machine importeren in CosmosDB, gegevens importeren uit Azure table storage in CosmosDB of importeren van gegevens uit een SQL Server-database in CosmosDB.     |
-|  Hoe kan ik gebruik / uitvoeren?    |   Gebruik van de opdrachtregel versie, Open een opdrachtprompt, typ `dt`. Gebruik van het GUI-hulpprogramma, open een opdrachtprompt, typ `dtui`.    |
-| Koppelingen naar voorbeelden      | [Gegevens importeren in CosmosDB](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
-| Meer hulpprogramma's op de DSVM      | AzCopy, AdlCopy      |
+| Wordt doorgaans gebruikt      | Importeren van bestanden van een virtuele machine naar CosmosDB, importeren van gegevens uit Azure-tabel opslag naar CosmosDB en het importeren van gegevens uit een Microsoft SQL Server-Data Base naar CosmosDB.     |
+|  Hoe kan ik gebruik / uitvoeren?    |   Als u de opdracht regel versie wilt gebruiken, opent u een opdracht prompt `dt`en typt u. Als u het hulp programma GUI wilt gebruiken, opent u een `dtui`opdracht prompt en typt u.    |
+| Koppelingen naar voorbeelden      | [Gegevens CosmosDB importeren](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
+| Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy      |
 
 
 ## <a name="bcp"></a>BCP
@@ -82,21 +82,21 @@ Hier volgen enkele we hebt opgegeven op de DSVM verkeer hulpprogramma's.
 | ------------- | ------------- |
 | Wat is het?   | SQL Server-hulpprogramma om gegevens tussen SQL Server en een bestand te kopiëren.      |
 | Ondersteunde DSVM-versies      | Windows      |
-| Wordt doorgaans gebruikt      | Een CSV-bestand importeren in een SQL Server-tabel, een SQL Server-tabel te exporteren naar een bestand.      |
-|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdrachtprompt, typ `bcp` om hulp te krijgen.    |
-| Koppelingen naar voorbeelden      | [Hulpprogramma voor bulksgewijs kopiëren](https://docs.microsoft.com/sql/tools/bcp-utility)      |
-| Meer hulpprogramma's op de DSVM      | SQL Server, sqlcmd      |
+| Wordt doorgaans gebruikt      | Het importeren van een CSV-bestand in een SQL Server tabel en het exporteren van een SQL Server-tabel naar een bestand.      |
+|  Hoe kan ik gebruik / uitvoeren?    |   Open een opdracht prompt en typ `bcp` om hulp te krijgen.    |
+| Koppelingen naar voorbeelden      | [BCP-hulp programma](https://docs.microsoft.com/sql/tools/bcp-utility)      |
+| Gerelateerde hulpprogram ma's op de DSVM      | SQL Server, sqlcmd      |
 
 ## <a name="blobfuse"></a>Blobfuse
 
 |    |           |
 | ------------- | ------------- |
-| Wat is het?   | Een hulpprogramma voor het koppelen van een Azure blob-container in het Linux-bestandssysteem.      |
+| Wat is het?   | Een hulp programma om een Azure Blob Storage-container te koppelen aan het Linux-bestands systeem.      |
 | Ondersteunde DSVM-versies      | Linux      |
-| Wordt doorgaans gebruikt      | Lezen en schrijven naar blobs in een container      |
-|  Hoe kan ik gebruik / uitvoeren?    |   Voer _blobfuse_ op een terminal.    |
+| Wordt doorgaans gebruikt      | Lezen van en schrijven naar blobs in een container.      |
+|  Hoe gebruikt en voert u deze uit?    |   Voer _blobfuse_ op een terminal.    |
 | Koppelingen naar voorbeelden      | [blobfuse op GitHub](https://github.com/Azure/azure-storage-fuse)      |
-| Meer hulpprogramma's op de DSVM      | Azure-opdrachtregel      |
+| Gerelateerde hulpprogram ma's op de DSVM      | Azure-CLI      |
 
 
 ## <a name="microsoft-data-management-gateway"></a>Microsoft Data Management Gateway
@@ -106,6 +106,6 @@ Hier volgen enkele we hebt opgegeven op de DSVM verkeer hulpprogramma's.
 | Wat is het?   | Een hulpprogramma voor het verbinding maken met on-premises gegevensbronnen cloud services voor gebruik.      |
 | Ondersteunde DSVM-versies      | Windows      |
 | Wordt doorgaans gebruikt      | Een VM wordt verbonden met een on-premises gegevensbron.      |
-|  Hoe kan ik gebruik / uitvoeren?    |   Start "Microsoft Data Management Gateway" in het startmenu.    |
+|  Hoe kan ik gebruik / uitvoeren?    |   Open micro soft Data Management Gateway vanuit het menu Start.    |
 | Koppelingen naar voorbeelden      | [Gegevensbeheergateway](https://msdn.microsoft.com/library/dn879362.aspx)      |
-| Meer hulpprogramma's op de DSVM      | AzCopy, AdlCopy, bcp    |
+| Gerelateerde hulpprogram ma's op de DSVM      | AzCopy, AdlCopy, bcp    |
