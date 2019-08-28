@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d5213ff21d92bf811b05802e4cb2ffab9b9a29c6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 5baa8c78ad581a00a3601706f31cf815359120c7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648378"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077053"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Quickstart: Een gegevensfactory maken met de Azure Data Factory-UI
 
@@ -71,7 +71,7 @@ Bekijk deze video voor een beter begrip van de Data Factory-UI:
 ## <a name="create-a-linked-service"></a>Een gekoppelde service maken
 In deze procedure maakt u een gekoppelde service om uw Azure Storage-account te koppelen aan de data factory. De gekoppelde service beschikt over de verbindingsgegevens die de Data Factory-service tijdens runtime gebruikt om er een verbinding mee tot stand te brengen.
 
-1. Selecteer **Verbindingen** en selecteer vervolgens in de werkbalk de knop **Nieuw**. 
+1. Selecteer **verbindingen**en selecteer vervolgens de knop **Nieuw** op de werk balk (de knop**verbindingen** bevindt zich onderaan de linkerkolom onder **Factory-resources**). 
 
 1. Selecteer op de pagina **Nieuwe gekoppelde service** de optie **Azure Blob-opslag** en selecteer vervolgens**Doorgaan**. 
 

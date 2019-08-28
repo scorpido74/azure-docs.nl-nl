@@ -11,17 +11,16 @@ ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6bca1b067f5ec667e8b5da92a182a5618582b2f3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617433"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071326"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Inleiding tot App Service onder Linux
 
@@ -35,10 +34,10 @@ App Service onder Linux ondersteunt een aantal ingebouwde installatiekopieën om
 |---|---|
 | Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 8.12, 9.4, 10.1, 10.10, 10.14 |
 | Java * | Tomcat 8.5, 9.0, Java SE, WildFly 14 (voeren alle JRE 8 uit) |
-| PHP | 5.6, 7.0, 7.2, 7.3 |
+| PHP | 5,6, 7,0, 7,2, 7,3 |
 | Python | 2.7, 3.6, 3.7 |
 | .NET Core | 1.0, 1.1, 2.0, 2.1, 2.2 |
-| Ruby | 2.3, 2.4, 2.5, 2.6 |
+| Ruby | 2,3, 2,4, 2,5, 2,6 |
 
 ## <a name="deployments"></a>Implementaties
 
@@ -71,13 +70,13 @@ Controleer [Azure Status Dashboard](https://azure.microsoft.com/status).
 
 In Azure Portal worden alleen functies getoond die momenteel werken voor Web App for Containers. Naarmate er meer functies mogelijk worden, zullen ze op de portal worden getoond.
 
-App Service onder Linux wordt alleen ondersteund met [gratis, Basic, Standard en Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) appservice-abonnementen en heeft geen een [gedeelde](https://azure.microsoft.com/pricing/details/app-service/plans/) laag. U kunt een Linux-Web-App maken in een App Service-plan al als host voor non - Linux Web Apps.  
+App Service op Linux wordt alleen ondersteund met de app service [-abonnementen gratis, Basic, Standard en Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) en heeft geen [gedeelde](https://azure.microsoft.com/pricing/details/app-service/plans/) laag. U kunt geen Linux-web-app maken in een App Service abonnement dat al wordt gehost op niet-Linux Web Apps.  
 
-Op basis van een beperking voor dezelfde resourcegroep bevinden in dezelfde regio in Windows en Linux-apps kunnen niet worden gecombineerd.
+Op basis van een huidige beperking geldt dat voor dezelfde resource groep geen Windows-en Linux-apps kunnen worden gecombineerd in dezelfde regio.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Wanneer uw toepassing niet kan worden gestart of als u de logboeken vanuit de app wilt controleren, controleert u de Docker-logboeken in de map LogFiles. U kunt deze map openen via uw SCM-site of via FTP. Logboek de `stdout` en `stderr` in de container, moet u inschakelen **logboekregistratie voor Docker-Container** onder **logboeken voor App Service**. De instelling wordt onmiddellijk van kracht. App Service de wijziging wordt gedetecteerd en wordt de container automatisch opnieuw opgestart.
+Wanneer uw toepassing niet kan worden gestart of als u de logboeken vanuit de app wilt controleren, controleert u de Docker-logboeken in de map LogFiles. U kunt deze map openen via uw SCM-site of via FTP. Als u de `stdout` en `stderr` vanuit uw container wilt registreren, moet u **logboek registratie** voor docker-container inschakelen onder **app service logboeken**. De instelling wordt onmiddellijk van kracht. De wijziging wordt door App Service gedetecteerd en de container wordt automatisch opnieuw gestart.
 
 U hebt toegang tot de SCM-site via **Geavanceerde hulpmiddelen** in het menu **Ontwikkelprogramma's**.
 

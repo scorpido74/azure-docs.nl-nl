@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 15a1e388b17a66bf22fc0fd51744cb0aaa1b36d4
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415550"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071504"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Een ASP.NET-app migreren naar Azure App Service met behulp van een Windows-container (preview)
 
@@ -34,7 +33,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Docker instellen voor het uitvoeren van Windows-containers</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.NET en webontwikkeling** en **Azure-ontwikkeling** werkbelastingen. Als u Visual Studio 2019 al hebt geïnstalleerd:
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installeer Visual Studio 2019</a> met de **ASP.net-en Web Development** -en **Azure-ontwikkel** werkbelastingen. Als u Visual Studio 2019 al hebt geïnstalleerd:
     - Installeer de nieuwste updates in Visual Studio door te klikken op **Help** > **Check for Updates**.
     - Voeg de werkbelastingen toe in Visual Studio door te klikken op **Tools** > **Get Tools and Features**.
 
@@ -121,7 +120,7 @@ Configureer het nieuwe containerregister op basis van de voorgestelde waarden in
 | ----------------- | ------------ | ----|
 |**DNS-voorvoegsel**| Behoud de gegenereerde registernaam of wijzig deze in een andere unieke naam. |  |
 |**Resourcegroep**| Klik op **New** (nieuw), typ **myResourceGroup** en klik op **OK**. |  |
-|**SKU**| Basis | [Prijscategorieën](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**SKU**| Basic | [Prijscategorieën](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Registerlocatie**| Europa -west | |
 
 ![Azure Container Registry configureren](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -132,7 +131,7 @@ Er wordt een terminalvenster geopend waarin de voortgang van het implementeren v
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-web-app"></a>Een webtoepassing maken
+## <a name="create-a-web-app"></a>Een web-app maken
 
 Selecteer in het menu links **Create a resource** (een resource maken) > **Web** > **Web App for Containers**.
 
