@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Documentatie voor gebruikershulp
+summary: Als medewerker, IT-medewerker of eindgebruiker kunt u verificatie instellen voor uw werk- of schoolaccount, uw eigen wachtwoord opnieuw instellen en apparaten koppelen, de Microsoft Authenticator-app instellen en de verschillende portals gebruiken.
+metadata:
+  title: Gebruikershulp voor verificatie, apps en apparaten
+  description: Als medewerker of eindgebruiker kunt u bekijken hoe u verificatie, de Microsoft Authenticator-app en de portal Mijn apps kunt instellen en gebruiken.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  ms.collection: M365-identity-device-management
+  author: eross-msft
+  ms.author: lizross
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70062202"
+landingContent:
+- title: De Microsoft Authenticator-app instellen en gebruiken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de Microsoft Authenticator-app?
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: De app downloaden en installeren
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: Back-up en herstel van accountgegevens
+      url: user-help-auth-app-backup-recovery.md
+    - text: Aanmelden met behulp van de app
+      url: user-help-auth-app-sign-in.md
+- title: Verificatie in twee stappen instellen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is verificatie in twee stappen?
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uw verificatiemethoden instellen
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: Instellingen beheren
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: Help opvragen
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: De portal Mijn apps instellen en gebruiken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de Mijn Apps-portal?
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uw gegevens bijwerken
+      url: my-apps-portal-end-user-update-profile.md
+    - text: Help opvragen
+      url: my-apps-portal-end-user-troubleshoot.md
+- title: Beveiligingsgegevens (preview) instellen en gebruiken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn beveiligingsgegevens (preview)?
+      url: user-help-security-info-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uw methoden voor beveiligingsgegevens instellen
+      url: security-info-add-update-methods-overview.md
+    - text: Prompt voor gegevens toevoegen tijdens aanmelden
+      url: security-info-setup-signin.md
+- title: Mijn profiel (preview) instellen en gebruiken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de portal Mijn profiel (preview)?
+      url: myprofile-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uw organisaties beheren
+      url: myprofile-portal-organizations-page.md
+    - text: Uw verbonden apparaten beheren
+      url: myprofile-portal-devices-page.md
+- title: Uw eigen wachtwoord opnieuw instellen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is wachtwoord opnieuw instellen?
+      url: user-help-password-reset-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Registreren voor wachtwoordherstel
+      url: active-directory-passwords-reset-register.md
+    - text: Uw wachtwoord opnieuw instellen
+      url: user-help-reset-password.md

@@ -1,89 +1,123 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over Azure Active Directory B2C
+summary: Azure Active Directory B2C (Azure AD B2C) is een service voor identiteitsbeheer waarmee u kunt aanpassen hoe uw klanten zich registreren en aanmelden en hoe zij hun profielen beheren wanneer ze uw iOS-, Android- en .NET-toepassingen, toepassingen met één pagina (SPA) en andere toepassingen gebruiken. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure AD B2C gebruikt.
 metadata:
   title: Documentatie over Azure Active Directory B2C
-  meta.description: 'Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.'
+  description: Ontdek hoe u met Azure Active Directory B2C kunt aanpassen en beheren hoe klanten zich registreren en aanmelden en hoe zij hun profielen beheren wanneer ze uw toepassingen gebruiken.
   services: active-directory-b2c
-  author: mmacy
-  manager: daveba
   ms.service: active-directory
   ms.subservice: B2C
   ms.topic: landing-page
-  ms.date: 03/29/2018
+  ms.collection: collection
+  author: mmacy
   ms.author: marsma
-abstract:
-  description: 'Azure Active Directory (Azure AD) B2C is een identiteitsbeheerservice waarmee u kunt aanpassen en controleren hoe uw klanten zich registreren en aanmelden en hoe zijn hun profielen beheren wanneer ze uw toepassingen gebruiken. Dit omvat ook toepassingen die onder meer zijn ontwikkeld voor iOS, Android en .NET. Met Azure AD B2C kunt u deze acties uitvoeren terwijl u tegelijkertijd de identiteit van uw klant beschermt. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure AD B2C gebruikt.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/active-directory-b2c-video.PNG
-      width: 250
-    title: 'Klantidentiteitsbeheer met Azure AD B2C (20:56)'
-    href: 'https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory-b2c/active-directory-b2c-overview
-            html: <p>Meer informatie over Azure AD B2C en welke functies en mogelijkheden dit biedt.</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: Over Azure AD B2C
-          - href: /azure/active-directory-b2c/solution-articles
-            html: <p>Verken oplossings- en trainingsmogelijkheden met behulp van Azure AD B2C.</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: Oplossingen en training
-          - href: /azure/active-directory-b2c/trustframeworkpolicy
-            html: <p>Maak geavanceerde scenario's voor registratie en aanmelding met behulp van aangepast beleid in Azure AD B2C.</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: Identity-ervaringsframework
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Meer informatie over hoe u identiteitsbeheer instelt voor de klanten die uw toepassing gebruiken:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg'
-            text: Bureaublad
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg'
-            text: Eén pagina
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa'
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over hoe u registratie, aanmelding en klantprofielen beheert in uw ASP.NET-toepassing, bureaubladtoepassing en Node.js-toepassing met één pagina.'
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: ASP.NET
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Een tenant maken</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Gebruikers verifiëren</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API-toegang toekennen</a></p>
-          - title: Bureaublad
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Een tenant maken</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Gebruikers verifiëren</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API-toegang toekennen</a></p>
-          - title: Eén pagina
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Een tenant maken</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Gebruikers verifiëren</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API-toegang toekennen</a></p>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Ontdek voorbeelden waarin wordt beschreven hoe u klantidentiteiten in uw toepassing beheert.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="/azure/active-directory-b2c/code-samples">Mobiele, desktop- en web-apps en apps van één pagina</a>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 445e3bf68b3ce75ca2d9e51dc6f69c638f2f6b44
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70061350"
+landingContent:
+- title: De basisbeginselen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure AD B2C?
+      url: active-directory-b2c-overview.md
+  - linkListType: get-started
+    links:
+    - text: Een Azure AD B2C-tenant maken
+      url: tutorial-create-tenant.md
+    - text: Een toepassing registreren
+      url: tutorial-register-applications.md
+    - text: Gebruikersstromen instellen
+      url: tutorial-create-user-flows.md
+  - linkListType: learn
+    links:
+    - text: 'Video: Klantidentiteitsbeheer met Azure AD B2C'
+      url: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
+- title: Identiteit toevoegen aan ASP.NET-apps
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Aanmeldingsgegevens instellen
+      url: active-directory-b2c-quickstarts-web-app.md
+  - linkListType: tutorial
+    links:
+    - text: Gebruikers verifiëren in een .NET-webtoepassing
+      url: active-directory-b2c-tutorials-web-app.md
+    - text: API-toegang tot een .NET-webtoepassing verlenen
+      url: active-directory-b2c-tutorials-web-api.md
+    - text: Aanmelden via bedrijven of sociale netwerken inschakelen
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: Codevoorbeelden voor webtoepassingen en API's
+      url: code-samples.md#web-apps-and-apis
+- title: Identiteit toevoegen aan toepassingen met één pagina
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Aanmeldingsgegevens instellen
+      url: active-directory-b2c-quickstarts-desktop-app.md
+  - linkListType: tutorial
+    links:
+    - text: Gebruikers verifiëren in een toepassing met één pagina
+      url: active-directory-b2c-tutorials-spa.md
+    - text: API-toegang tot een toepassing met één pagina verlenen
+      url: active-directory-b2c-tutorials-spa-webapi.md
+    - text: Aanmelden via bedrijven of sociale netwerken inschakelen
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: Codevoorbeelden voor toepassingen met één pagina
+      url: code-samples.md#single-page-apps
+- title: Identiteit toevoegen aan desktop-apps
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Aanmeldingsgegevens instellen
+      url: active-directory-b2c-quickstarts-desktop-app.md
+  - linkListType: tutorial
+    links:
+    - text: Gebruikers verifiëren in systeemeigen clients
+      url: active-directory-b2c-tutorials-desktop-app.md
+    - text: API-toegang tot systeemeigen clients verlenen
+      url: active-directory-b2c-tutorials-desktop-app-webapi.md
+    - text: Aanmelden via bedrijven of sociale netwerken inschakelen
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: Codevoorbeelden voor mobiele en desktop-apps
+      url: code-samples.md
+- title: Veelvoorkomende identiteitsscenario's configureren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Inleiding tot gebruikersstromen
+      url: active-directory-b2c-reference-policies.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gebruikers registreren en aanmelden
+      url: tutorial-create-user-flows.md
+    - text: De gebruikersinterface aanpassen
+      url: customize-ui-overview.md
+    - text: Aanmelden met Facebook inschakelen
+      url: active-directory-b2c-setup-fb-app.md
+- title: Geavanceerde identiteitsscenario's ontwikkelen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Inleiding tot aangepast beleid
+      url: active-directory-b2c-overview-custom.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gebruikers registreren en aanmelden
+      url: active-directory-b2c-get-started-custom.md
+    - text: De gebruikersinterface aanpassen
+      url: active-directory-b2c-ui-customization-custom.md
+    - text: Aanmelden met Azure AD voor meerdere tenants inschakelen
+      url: active-directory-b2c-setup-commonaad-custom.md
+    - text: Uw eigen bedrijfslogica toevoegen met REST API's
+      url: active-directory-b2c-rest-api-validation-custom.md

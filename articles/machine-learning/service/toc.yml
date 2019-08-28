@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: Regressie (gegevens over taxi's NYC)
           items:
-            - name: 1. Gegevens voorbereiden voor modellering
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. Een ML-model automatisch trainen
+            - name: Een ML-model automatisch trainen
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: Visuele interface
@@ -260,7 +257,7 @@
     - name: Herbruikbare werkstromen maken
       displayName: pipelines
       items:
-        - name: Machine learning-pijplijnen
+        - name: ML-pijplijnen maken in Python
           href: how-to-create-your-first-pipeline.md
         - name: Azure-pijplijnen voor CI/CD
           displayName: 'continuous, integration, delivery'

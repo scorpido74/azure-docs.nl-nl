@@ -207,6 +207,8 @@
           href: api-management-configuration-repository-git.md
         - name: Op rollen gebaseerd toegangsbeheer gebruiken
           href: api-management-role-based-access-control.md
+        - name: API Management-exemplaren migreren
+          href: api-management-howto-migrate.md
         - name: Beheerde identiteiten voor Azure-resources gebruiken
           href: api-management-howto-use-managed-service-identity.md
         - name: Integreren met Service Fabric

@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: Aanbevelingen gebruiken om de beveiliging te verbeteren
       href: security-center-using-recommendations.md
-    - name: Bedreigingen detecteren
-      href: security-center-detection-capabilities.md
-    - name: Beveiligingswaarschuwingen beheren
-      href: security-center-managing-and-responding-alerts.md
-    - name: Beveiligingsincidenten
-      href: security-center-incident.md
     - name: Beheer in meerdere tenants
       href: security-center-cross-tenant-management.md
-    - name: Waarschuwingen voor dreigingsdetectie
+    - name: Waarschuwingen voor dreigingsdetectie en incidenten
       items:
         - name: Overzicht van beveiligingswaarschuwingen
           href: security-center-alerts-overview.md
+        - name: Beveiligingswaarschuwingen beheren
+          href: security-center-managing-and-responding-alerts.md
+        - name: Beveiligingsincidenten beheren
+          href: security-center-incident.md
         - name: Detectie van bedreigingen voor VM's en servers
           href: security-center-alerts-iaas.md
         - name: Detectie van bedreigingen voor cloud-compute

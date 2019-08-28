@@ -1,91 +1,90 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Traffic Manager
+### YamlMime:Landing
+title: Documentatie voor Traffic Manager
+summary: Informatie over het gebruik van Azure Traffic Manager. Met behulp van snelstarts, zelfstudies, voorbeelden en meer wordt uitgelegd hoe u binnenkomend verkeer kunt beheren voor optimale toepassingsprestaties. Ook vindt u hier informatie over hoe u verkeer naar Azure of naar externe service-eindpunten kunt distribueren.
 metadata:
-  document_id: null
-  title: Traffic Manager
-  meta.description: 'Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.'
+  title: Documentatie voor Traffic Manager
+  description: Meer informatie over hoe u Traffic Manager gebruikt om inkomend verkeer te routeren voor optimale toepassingsprestaties en -betrouwbaarheid. Quickstarts, zelfstudies, voorbeelden en andere documentatie laten zien hoe u verkeer naar service-eindpunten van Azure of externe service-eindpunten kunt beheren.
   services: traffic-manager
-  author: asudbring
-  manager: twooley
-  layout: LandingPage
   ms.service: traffic-manager
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/28/2019
+  ms.collection: collection
+  author: asudbring
   ms.author: allensu
-abstract:
-  description: 'Informatie over het gebruik van Azure Traffic Manager. Met behulp van snelstarts, zelfstudies, voorbeelden en meer wordt uitgelegd hoe u binnenkomend verkeer kunt beheren voor optimale toepassingsprestaties. Ook vindt u hier informatie over hoe u verkeer naar Azure of naar externe service-eindpunten kunt distribueren.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Informatie over het beheren van webverkeer naar uw service-eindpunten met behulp van Traffic Manager.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Informatie over het routeren van verkeer op basis van de verschillende routeringsmethoden die beschikbaar zijn in Traffic Manager.
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">Verkeer routeren op basis van de geografische locatie van het eindpunt</a>
-          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">Verkeer routeren voor lage latentie</a>
-          - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">Verkeer naar een set eindpunten distribueren</a>
-          - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">Verkeer routeren naar een prioriteitseindpunt</a>
-          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">Verkeer beheren met gewogen eindpunten</a>
-          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">Verkeer routeren op basis van het subnet van de gebruiker</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure-beheerder
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure-oplossingsarchitect
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: Azure-beheer voor AWS-beheerders
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Scriptvoorbeelden voor veelvoorkomende taken.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/traffic-manager/cli-samples">Azure-CLI</a>
-          - html: <a href="/azure/traffic-manager/powershell-samples">PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure-CLI</a></p>'
-          - title: Talen
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/trafficmanager/">Naslaginformatie over REST-API</a></p>
+  ms.date: 08/19/2019
+  ms.openlocfilehash: e0990e15a10d18d836daddc1d5fba83af95948d8
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70051962"
+landingContent:
+- title: Meer informatie over Traffic Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Traffic Manager?
+      url: traffic-manager-overview.md
+  - linkListType: concept
+    links:
+    - text: Methoden voor het doorsturen van Traffic Manager
+      url: traffic-manager-routing-methods.md
+  - linkListType: learn
+    links:
+    - text: Verbeter de beschikbaarheid en gegevenslocatie van uw service
+      url: https://docs.microsoft.com/learn/modules/distribute-load-with-traffic-manager/
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een Traffic Manager-profiel maken met behulp van de Azure-portal
+      url: quickstart-create-traffic-manager-profile.md
+  - linkListType: tutorial
+    links:
+    - text: Website-responsiviteit verbeteren
+      url: tutorial-traffic-manager-improve-website-response.md
+    - text: De geografische verkeersrouteringsmethode configureren
+      url: traffic-manager-configure-geographic-routing-method.md
+    - text: De gewogen verkeersrouteringsmethode configureren
+      url: traffic-manager-configure-weighted-routing-method.md
+    - text: De geprioriteerde verkeersrouteringsmethode configureren
+      url: traffic-manager-configure-priority-routing-method.md
+    - text: Verkeer naar specifieke eindpunten routeren op basis van gebruikers-subnets
+      url: tutorial-traffic-manager-subnet-routing.md
+- title: Beheren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Geneste Traffic Manager-profielen
+      url: traffic-manager-nested-profiles.md
+    - text: Traffic Manager-eindpunten
+      url: traffic-manager-endpoint-types.md
+    - text: Eindpuntbewaking in Traffic Manager
+      url: traffic-manager-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: Eindpunten toevoegen, uitschakelen, inschakelen of verwijderen
+      url: traffic-manager-manage-endpoints.md
+    - text: Een Traffic Manager-profiel beheren
+      url: traffic-manager-manage-profiles.md
+    - text: Taakverdelingsservices gebruiken in Azure
+      url: traffic-manager-load-balancing-azure.md
+    - text: Het internetdomein van een bedrijf naar een Traffic Manager-domein laten wijzen
+      url: traffic-manager-point-internet-domain.md
+    - text: Prestatieoverwegingen
+      url: traffic-manager-performance-considerations.md
+- title: Problemen oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: registratie in het diagnoselogboek inschakelen
+      url: traffic-manager-diagnostic-logs.md
+    - text: Problemen met verslechterde status oplossen
+      url: traffic-manager-troubleshooting-degraded.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.trafficmanager/?view=azps-2.5.0
+    - text: Azure-CLI
+      url: https://docs.microsoft.com/cli/azure/network/traffic-manager?view=azure-cli-latest

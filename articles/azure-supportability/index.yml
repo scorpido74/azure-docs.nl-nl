@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Documentatie voor Azure-ondersteuning
+summary: Hierin wordt beschreven hoe Azure-klanten ondersteuningsaanvragen kunnen maken en beheren in de Azure-portal.
+metadata:
+  title: Documentatie voor Azure-ondersteuning
+  description: Hierin wordt beschreven hoe Azure-klanten ondersteuningsaanvragen kunnen maken en beheren in de Azure-portal.
+  services: azure supportability
+  ms.service: azure-supportability
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: 
+  author: arob98
+  ms.author: angrobe
+  ms.date: 08/24/2019
+  ms.openlocfilehash: 4ee8de0f591618be7eb3a08c04f5820faeebaf4a
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052134"
+landingContent:
+- title: Een ondersteuningsaanvraag maken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een ondersteuningsaanvraag maken voor Azure
+      url: how-to-create-azure-support-request.md
+  - linkListType: get-started
+    links:
+    - text: Een ondersteuningsaanvraag maken via de Azure-portal
+      url: https://portal.azure.com/#create/Microsoft.Support
+- title: Aanvragen voor quotumverhoging
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: De vCPU-limiet voor een VM-reeks verhogen
+      url: per-vm-quota-requests.md
+    - text: De algehele regionale vCPU-limiet verhogen
+      url: regional-quota-requests.md
+    - text: Netwerklimiet verhoogd
+      url: networking-quota-requests.md
+- title: Problemen oplossen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Regio of SKU is niet beschikbaar
+      url: sku-series-unavailable.md

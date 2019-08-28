@@ -1,56 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor RBAC voor Azure-resources
+summary: Op rollen gebaseerde toegangsbeheer (RBAC) is een systeem waarmee u geavanceerd toegangsbeheer van Azure-resources kunt toepassen. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
 metadata:
-  document_id: null
-  title: Documentatie voor op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources | Microsoft Docs
-  description: 'Meer informatie over het gebruik van op rollen gebaseerd toegangsbeheer (RBAC) om te beheren wie toegang heeft tot Azure-resources, wat ze kunnen doen met die bronnen en tot welke gebieden ze toegang hebben.'
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  title: Documentatie voor op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources
+  description: Meer informatie over het gebruik van op rollen gebaseerd toegangsbeheer (RBAC) om te beheren wie toegang heeft tot Azure-resources, wat ze kunnen doen met die bronnen en tot welke gebieden ze toegang hebben.
+  services: role-based-access-control
   ms.service: role-based-access-control
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 02/16/2019
+  ms.collection: na
+  author: rolyon
   ms.author: rolyon
-abstract:
-  description: Op rollen gebaseerde toegangsbeheer (RBAC) is een systeem waarmee u geavanceerd toegangsbeheer van Azure-resources kunt toepassen. Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren.
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-get-started.png
-      width: 200
-    title: 'De toegang tot Azure beperken (1:16)'
-    href: 'https://www.youtube.com/embed/FKBoWWKRnvI'
-    width: 200
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/check-access">Toegang voor een gebruiker bekijken</a>
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Een gebruiker toegang verlenen - Portal</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Een groep toegang verlenen - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Een aangepaste rol maken - PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">Een aangepaste rol maken - CLI</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Uw Azure-resources beveiligen met op rollen gebaseerd toegangsbeheer (RBAC)
-            href: /learn/modules/secure-azure-resources-with-rbac/
-            image:
-              src: /learn/achievements/secure-azure-resources-with-rbac.svg
-              href: /learn/modules/secure-azure-resources-with-rbac/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-active-directory">Meer interactief leren...</a>
+  ms.date: 08/26/2019
+  ms.openlocfilehash: cd4628ef5e7d56f03590899fe514141d415c8f01
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052025"
+landingContent:
+- title: Over RBAC voor Azure-resources
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is RBAC?
+      url: overview.md
+    - text: Inzicht in de verschillende rollen
+      url: rbac-and-directory-admin-roles.md
+  - linkListType: video
+    links:
+    - text: 'Microsoft Ignite: De toegang tot Azure beperken'
+      url: https://www.youtube.com/embed/FKBoWWKRnvI
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Toegang voor een gebruiker bekijken
+      url: check-access.md
+  - linkListType: tutorial
+    links:
+    - text: Een gebruiker toegang verlenen - Portal
+      url: quickstart-assign-role-user-portal.md
+    - text: Een groep toegang verlenen - PowerShell
+      url: tutorial-role-assignments-group-powershell.md
+  - linkListType: learn
+    links:
+    - text: Uw Azure-resources beveiligen met RBAC
+      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
+- title: Toegang beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portal
+      url: role-assignments-portal.md
+    - text: PowerShell
+      url: role-assignments-powershell.md
+    - text: Azure-CLI
+      url: role-assignments-cli.md
+    - text: REST-API
+      url: role-assignments-rest.md
+    - text: Template
+      url: role-assignments-template.md
+- title: Aangepaste rollen maken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Aangepaste rollen
+      url: custom-roles.md
+  - linkListType: tutorial
+    links:
+    - text: Een aangepaste rol maken - PowerShell
+      url: tutorial-custom-role-powershell.md
+    - text: Een aangepaste rol maken - CLI
+      url: tutorial-custom-role-cli.md
