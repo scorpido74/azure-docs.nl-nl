@@ -49,7 +49,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 In dit gedeelte maakt u twee website-instanties die de twee service-eindpunten voor het Traffic Manager-profiel vormen in twee Azure-regio’s. Om de twee websites te maken, moeten de volgende stappen worden uitgevoerd:
 
-1. Maak twee virtuele machines om een eenvoudige website uit te voeren: een in **VS-Oost** en de andere in **Europa - west**.
+1. Maak twee virtuele machines om een eenvoudige website uit te voeren: een in **US - oost** en de andere in **Europa - west**.
 2. Installeer IIS-server op elke VM en werk de standaardpagina van de website bij die de naam beschrijft van de virtuele machine waarmee een gebruiker is verbonden als deze de website bezoekt.
 
 #### <a name="create-vms-for-running-websites"></a>Virtuele machines maken voor het uitvoeren van websites
@@ -163,7 +163,7 @@ Toevoegen van de twee virtuele machines met de IIS-servers - *myIISVMEastUS* & *
     | Type                    | Azure-eindpunt                                   |
     | Name           | myEastUSEndpoint                                        |
     | Doelbrontype           | Openbaar IP-adres                          |
-    | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in VS-Oost.|
+    | Doelbron          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
     |        |           |
 
 4. Herhaal stappen 2 en 3 om toe te voegen een ander eindpunt met de naam *myWestEuropeEndpoint* voor het openbare IP-adres *myIISVMWestEurope-IP-* dat is gekoppeld aan de virtuele machine met de naam van de IIS-server  *myIISVMWestEurope*.

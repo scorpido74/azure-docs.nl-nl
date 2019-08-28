@@ -40,8 +40,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U moet voor deze zelfstudie de volgende zaken implementeren om de Traffic Manager in actie te zien:
 
-- twee basiswebsites in verschillende Azure-regio’s - **VS-Oost** (fungeert als interne website) en **Europa - west** (fungeert als productiewebsite).
-- twee virtuele machines voor het testen van de Traffic Manager - Een VM in **VS-Oost** en de tweede VM in **Europa - west**.
+- twee basiswebsites in verschillende Azure-regio’s - **US - oost** (fungeert als interne website) en **Europa - west** (fungeert als productiewebsite).
+- twee virtuele machines voor het testen van de Traffic Manager - Een VM in **US - oost** en de tweede VM in **Europa - west**.
 
 De virtuele machines voor de tests worden gebruikt om te laten zien hoe Traffic Manager verkeer van gebruikers naar de interne website of de productiewebsite routeert op basis van het subnet waar de query van de gebruiker vandaan komt.
 
@@ -53,7 +53,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 In dit gedeelte maakt u twee website-instanties die de twee service-eindpunten voor het Traffic Manager-profiel vormen in twee Azure-regio’s. Om de twee websites te maken, moeten de volgende stappen worden uitgevoerd:
 
-1. Maak twee virtuele machines om een eenvoudige website uit te voeren: een in **VS-Oost** en de andere in **Europa - west**.
+1. Maak twee virtuele machines om een eenvoudige website uit te voeren: een in **US - oost** en de andere in **Europa - west**.
 2. Installeer IIS-server op elke VM en werk de standaardpagina van de website bij die de naam beschrijft van de virtuele machine waarmee een gebruiker is verbonden als deze de website bezoekt.
 
 #### <a name="create-vms-for-running-websites"></a>Virtuele machines maken voor het uitvoeren van websites
@@ -176,7 +176,7 @@ Toevoegen van de twee virtuele machines met de IIS-servers - *myIISVMEastUS* & *
     | Type                    | Azure-eindpunt                                   |
     | Name           | myInternalWebSiteEndpoint                                        |
     | Doelresourcetype           | Openbaar IP-adres                          |
-    | Doelresource          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in VS-Oost.|
+    | Doelresource          | **Kies een openbaar IP-adres** om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam *myIISVMEastUS-ip*. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
     |  Instellingen voor subnetroutering    |   Voeg de IP-adres van *myVMEastUS* testen van de virtuele machine. Elke gebruikersquery die afkomstig zijn van deze virtuele machine worden omgeleid naar de *myInternalWebSiteEndpoint*.    |
 
 4. Herhaal stappen 2 en 3 om toe te voegen een ander eindpunt met de naam *myProdWebsiteEndpoint* voor het openbare IP-adres *myIISVMWestEurope-IP-* dat is gekoppeld aan de virtuele machine met de naam van de IIS-server  *myIISVMWestEurope*. Voor **routering subnetinstellingen**, voeg de IP-adres van de test-VM - *myVMWestEurope*. Elke gebruikersquery van deze test-VM zal naar het eindpunt *myProdWebsiteEndpoint* worden gerouteerd.

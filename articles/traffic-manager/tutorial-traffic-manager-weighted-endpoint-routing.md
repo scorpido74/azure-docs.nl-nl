@@ -160,7 +160,7 @@ De twee virtuele machines met de IIS-servers myIISVMEastUS en myIISVMWestEurope,
     | Type                    | Voer het Azure-eindpunt in.                                   |
     | Naam           | Voer **myEastUSEndpoint** in.                                        |
     | Doelbrontype           | Selecteer **Openbaar IP-adres**.                          |
-    | Doelbron          | Kies een openbaar IP-adres om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam **myIISVMEastUS-ip**. Dit is het openbare IP-adres van de IIS-server VM in VS-Oost.|
+    | Doelbron          | Kies een openbaar IP-adres om het overzicht van resources met openbare IP-adressen onder hetzelfde abonnement weer te geven. Selecteer in **Resource** het openbare IP-adres met de naam **myIISVMEastUS-ip**. Dit is het openbare IP-adres van de IIS-server VM in US - oost.|
     |  Gewicht      | Voer **100** in.        |
     |        |           |
 

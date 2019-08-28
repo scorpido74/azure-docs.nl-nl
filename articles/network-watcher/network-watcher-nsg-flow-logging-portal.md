@@ -50,7 +50,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Nieuwe maken** en voer **myResourceGroup** in.|
-    |Locatie| Selecteer **VS Oost**|
+    |Locatie| Selecteer **US - oost**|
 
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
 5. Accepteer onder **Instellingen** alle standaardwaarden en selecteer **OK**.
