@@ -9,23 +9,22 @@ ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764712"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069455"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>De Azure App Service-omgeving configureren met geforceerde tunnels
 
 De ASE (App Service Environment) is een implementatie van Azure App Service in een virtueel Azure-netwerk van de klant. Veel klanten configureren hun virtuele Azure-netwerken als uitbreidingen van hun on-premises netwerken met VPN’s of Azure ExpressRoute-verbindingen. Geforceerde tunneling vindt plaats wanneer u internetverkeer omleidt naar uw VPN of een virtueel apparaat. Virtuele apparaten worden vaak gebruikt om uitgaand netwerkverkeer te inspecteren en te controleren. 
 
-De ASE heeft een aantal externe afhankelijkheden. Deze worden beschreven in het document [App Service Environment network architecture][network] (Netwerkarchitectuur van App Service Environment). Normaal gesproken moet al het verkeer met een uitgaande ASE-afhankelijkheid het VIP passeren dat is ingericht met de ASE. Als u de routering voor het verkeer naar of van de ASE wijzigt zonder onderstaande informatie te volgen, zal uw ASE niet meer werken.
+De ASE heeft een aantal externe afhankelijkheden, die worden beschreven in het document van de [app service Environment netwerk architectuur][network] . Normaal gesproken moet al het verkeer met een uitgaande ASE-afhankelijkheid het VIP passeren dat is ingericht met de ASE. Als u de routering voor het verkeer naar of van de ASE wijzigt zonder onderstaande informatie te volgen, zal uw ASE niet meer werken.
 
 In een virtueel Azure-netwerk vindt routering plaats op basis van LPM (Longest Prefix Match). Als er meer dan één route met dezelfde overeenkomende LPM is, wordt een route geselecteerd op basis van de oorsprong. Dit gebeurt in de volgende volgorde:
 
@@ -33,7 +32,7 @@ In een virtueel Azure-netwerk vindt routering plaats op basis van LPM (Longest P
 * BGP-route (wanneer u ExpressRoute gebruikt)
 * Systeemroute
 
-Lees [User-defined routes and IP forwarding][routes] (Door de gebruiker opgegeven routes en Doorsturen via IP) voor meer informatie over routering in een virtueel netwerk. 
+Lees door de [gebruiker gedefinieerde routes en door sturen via IP][routes]voor meer informatie over route ring in een virtueel netwerk. 
 
 Als u uw uitgaande ASE-verkeer wilt omleiden zodat het niet meer direct naar het internet gaat, hebt u de volgende opties:
 
@@ -67,7 +66,7 @@ U kunt uw ASE-subnet configureren om alle BGP-routes te negeren.  Wanneer de ASE
 Uw ASE-subnet configureren om BGP-routes te negeren:
 
 * Maak een UDR en wijs deze toe aan uw ASE-subnet, als u dit nog niet hebt gedaan.
-* Open in Azure Portal de gebruikersinterface voor de routetabel die aan uw ASE-subnet is toegewezen.  Selecteer Configuratie.  Stel de doorgifte van de BGP-route in op Uitgeschakeld.  Klik op Opslaan. Documentatie over hoe u dit kunt uitschakelen, vindt u in het document [Een routetabel maken][routetable].
+* Open in Azure Portal de gebruikersinterface voor de routetabel die aan uw ASE-subnet is toegewezen.  Selecteer Configuratie.  Stel de doorgifte van de BGP-route in op Uitgeschakeld.  Klik op Opslaan. De documentatie over het uitschakelen ervan vindt u in het document [een route tabel maken][routetable] .
 
 Wanneer u het ASE-subnet hebt geconfigureerd om alle BGP-routes te negeren, hebben uw apps geen toegang meer tot on-premises resources. Als u de toegang tot on-premises weer wilt inschakelen voor uw apps, bewerkt u de UDR die is toegewezen aan uw ASE-subnet en voegt u routes toe voor uw on-premises adresbereiken. Het type van de volgende hop moet worden ingesteld op Virtueel-netwerkgateway. 
 
@@ -76,13 +75,13 @@ Wanneer u het ASE-subnet hebt geconfigureerd om alle BGP-routes te negeren, hebb
 
 Voer de volgende stappen uit als u al het uitgaande verkeer vanuit uw ASE, behalve het verkeer naar Azure SQL en Azure Storage, wilt omleiden:
 
-1. Maak een routetabel en wijs deze toe aan uw ASE-subnet. Zoek in [App Service Environment management addresses][management] (Beheeradressen van App Service Environment) de adressen bij uw regio. Maak routes voor deze adressen met Internet als de volgende hop. Deze routes zijn nodig omdat het inkomend managementverkeer van ASE (App Service Environment) moet antwoorden vanaf hetzelfde adres als waarnaar het is verzonden.   
+1. Maak een routetabel en wijs deze toe aan uw ASE-subnet. Zoek hier de adressen die overeenkomen met uw regio [app service Environment beheer adressen][management]. Maak routes voor deze adressen met Internet als de volgende hop. Deze routes zijn nodig omdat het inkomend managementverkeer van ASE (App Service Environment) moet antwoorden vanaf hetzelfde adres als waarnaar het is verzonden.   
 
 2. Service-eindpunten met Azure SQL en Azure Storage instellen met uw ASE-subnet.  Nadat deze stap is voltooid, kunt u uw VNet configureren met geforceerde tunneling.
 
-Om uw ASE in een virtueel netwerk te maken dat al is geconfigureerd voor het routeren van al het verkeer on-premises, moet u uw ASE met een resource manager-sjabloon maken.  Het is niet mogelijk in een bestaand subnet met het portal een ASE te maken.  Wanneer u uw ASE implementeert in een VNet dat is al geconfigureerd om uitgaand verkeer on-premises te routeren, moet u uw ASE maken met een resource manager-sjabloon, hiermee bent u in staat om een bestaand subnet op te geven. Voor meer informatie over het implementeren van een ASE met een sjabloon raadpleegt u [Een App Service Environment maken met een sjabloon][template].
+Om uw ASE in een virtueel netwerk te maken dat al is geconfigureerd voor het routeren van al het verkeer on-premises, moet u uw ASE met een resource manager-sjabloon maken.  Het is niet mogelijk in een bestaand subnet met het portal een ASE te maken.  Wanneer u uw ASE implementeert in een VNet dat is al geconfigureerd om uitgaand verkeer on-premises te routeren, moet u uw ASE maken met een resource manager-sjabloon, hiermee bent u in staat om een bestaand subnet op te geven. Voor meer informatie over het implementeren van een ASE met een sjabloon, lees het [maken van een app service Environment met behulp van een sjabloon][template].
 
-Met service-eindpunten kunt u de toegang tot multitenant-services beperken tot een reeks virtuele Azure-netwerken en subnetten. In de documentatie [Service-eindpunten voor virtuele netwerken][serviceendpoints] vindt u meer informatie over service-eindpunten. 
+Met service-eindpunten kunt u de toegang tot multitenant-services beperken tot een reeks virtuele Azure-netwerken en subnetten. Meer informatie over service-eind punten vindt u in de documentatie over de [Virtual Network Service-eind punten][serviceendpoints] . 
 
 Wanneer u service-eindpunten voor een bron inschakelt, worden er routes gemaakt die een hogere prioriteit hebben dan alle andere routes. Als u service-eindpunten gebruikt met een ASE met geforceerde tunnels, maakt het managementverkeer van Azure SQL en Azure Storage geen gebruik van geforceerde tunnels. Het andere verkeer met ASE-afhankelijkheid maakt wel gebruik van geforceerde tunnels en kan niet verloren gaan, anders werkt de ASE niet correct.
 
@@ -96,7 +95,7 @@ Als u geforceerd tunneling configureert met een netwerkfilterapparaat, houd er d
 
 Voer de volgende stappen uit als u al het uitgaande verkeer vanuit uw ASE, behalve het verkeer naar Azure SQL en Azure Storage, wilt omleiden:
 
-1. Maak een routetabel en wijs deze toe aan uw ASE-subnet. Zoek in [App Service Environment management addresses][management] (Beheeradressen van App Service Environment) de adressen bij uw regio. Maak routes voor deze adressen met Internet als de volgende hop. Deze routes zijn nodig omdat het inkomend managementverkeer van ASE (App Service Environment) moet antwoorden vanaf hetzelfde adres als waarnaar het is verzonden. 
+1. Maak een routetabel en wijs deze toe aan uw ASE-subnet. Zoek hier de adressen die overeenkomen met uw regio [app service Environment beheer adressen][management]. Maak routes voor deze adressen met Internet als de volgende hop. Deze routes zijn nodig omdat het inkomend managementverkeer van ASE (App Service Environment) moet antwoorden vanaf hetzelfde adres als waarnaar het is verzonden. 
 
 2. Service-eindpunten met Azure Storage instellen met uw ASE-subnet
 
@@ -108,7 +107,7 @@ Voer de volgende stappen uit als u al het uitgaande verkeer vanuit uw ASE, behal
 
    Selecteer bovenaan **PUT**. Met deze optie wordt een schaalbewerking in de App Service-omgeving geactiveerd en de firewall aangepast.
 
-_Uw ASE maken met de uitgaande adressen_: Volg de aanwijzingen in [Create an App Service Environment with a template][template] (Een App Service Environment maken met een sjabloon) en haal de geschikte sjabloon op.  Bewerk de sectie met bronnen in het bestand azuredeploy.json, maar niet in het blok 'properties' en neem voor **userWhitelistedIpRanges** een regel op die uw waarden bevat.
+_Uw ASE maken met de uitgaande adressen_: Volg de instructies in [Create a app service environment with a Temp late][template] en haal de juiste sjabloon door.  Bewerk de sectie met bronnen in het bestand azuredeploy.json, maar niet in het blok 'properties' en neem voor **userWhitelistedIpRanges** een regel op die uw waarden bevat.
 
     "resources": [
       {
