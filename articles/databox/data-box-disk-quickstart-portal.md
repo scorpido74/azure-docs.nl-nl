@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035643"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126018"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70035643"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Aan de slag met Azure Data Box Disk met behulp van Azure Portal
+## <a name="get-started-with-azure-data-box-disk"></a>Aan de slag met Azure Data Box Disk 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ::: zone target="chromeless"
 
-In deze quickstart wordt beschreven hoe u de Azure Data Box Disk implementeert met de Azure-portal. De stappen omvatten het controleren van vereisten, het ontgrendelen van de schijven, verbinding maken en kopiëren van gegevens naar de schijven, zodat deze naar Azure worden geüpload.
+In deze hand leiding wordt beschreven hoe u de Azure Data Box Disk implementeert in de Azure Portal. De stappen omvatten het controleren van vereisten, het ontgrendelen van de schijven en het koppelen en kopiëren van gegevens naar de schijven, zodat deze naar Azure worden geüpload.
 
 ::: zone-end
 
@@ -60,7 +60,7 @@ Meld u aan bij de Azure Portal op [https://aka.ms/azuredataboxfromdiskdocs](http
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Vereisten
+### <a name="prerequisites"></a>Vereisten
 
 - U hebt uw bestelling voor data Box disk geplaatst met behulp van de [zelf studie: Azure Data Box Disk bestellen](data-box-disk-deploy-ordered.md).
 - U hebt uw schijven ontvangen en de taakstatus in de portal is bijgewerkt naar **Geleverd**.

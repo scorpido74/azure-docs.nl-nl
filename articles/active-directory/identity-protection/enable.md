@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304ba16985d5abfc4d385b3f1150cfa544c20b2a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c8e73bd3639adcc43dd191ff2eacaf7335f08d72
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335519"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126585"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection inschakelen
 
 Azure Active Directory Identity Protection is een mogelijkheid van Azure Active Directory (Azure AD). Met Azure AD Identity Protection kunt u het volgende doen:
 
-- Een geconsolideerde weer gave van gemarkeerde gebruikers en risico gebeurtenissen die zijn gedetecteerd met machine learning algoritmen ophalen
+- Een geconsolideerde weer gave van gemarkeerde gebruikers en risico detecties die zijn gedetecteerd met machine learning-algoritmen ophalen
 - Op risico gebaseerd beleid voor voorwaardelijke toegang instellen om uw gebruikers automatisch te beveiligen
 - Beveiligings postuur verbeteren door te handelen op beveiligings problemen 
 

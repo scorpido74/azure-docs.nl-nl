@@ -3,16 +3,16 @@ title: Overzicht van Azure Blueprints
 description: Meer informatie over hoe u met de Azure-service voor blauw drukken artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848442"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146106"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Overzicht van de service Azure-blauw drukken
 
@@ -106,14 +106,23 @@ Als u een blauwdruk wilt toewijzen of de toewijzing ongedaan wilt maken, heeft u
 > [!NOTE]
 > Omdat blauwdruktoewijzingen op een abonnement worden gemaakt, moeten de machtigingen voor het toewijzen van blauwdrukken en het ongedaan maken van toewijzingen worden toegekend op abonnementsbereik of worden overgenomen in een abonnementsbereik.
 
-Alle bovenstaande machtigingen zijn opgenomen in de rol **Eigenaar**. De rol **Inzender** beschikt over machtigingen voor het maken en verwijderen van blauwdrukken. Er is geen sprake van blauwdruktoewijzingsmachtigingen. Als deze ingebouwde rollen niet aan uw beveiligingsbehoeften voldoen, kunt u een [aangepaste rol](../../role-based-access-control/custom-roles.md) maken.
+De volgende ingebouwde rollen zijn beschikbaar:
+
+|RBAC-rol | Description |
+|-|-|
+|[Eigenaar](../../role-based-access-control/built-in-roles.md#owner) | Naast andere machtigingen bevat alle Azure Blueprint gerelateerde machtigingen. |
+|[Inzender](../../role-based-access-control/built-in-roles.md#contributor) | Naast andere machtigingen, kunnen blauw drukken-definities maken en verwijderen, maar geen blauw drukken toewijzings machtigingen. |
+|[Blauw druk bijdrager](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Kan blauw drukken-definities beheren, maar niet toewijzen. |
+|[Blauw druk-operator](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Bestaande publicaties kunnen worden toegewezen, maar er kunnen geen nieuwe blauw drukken-definities worden gemaakt. De toewijzing van blauw drukken werkt alleen als de toewijzing wordt uitgevoerd met een door de gebruiker toegewezen beheerde identiteit. |
+
+Als deze ingebouwde rollen niet aan uw beveiligingsbehoeften voldoen, kunt u een [aangepaste rol](../../role-based-access-control/custom-roles.md) maken.
 
 > [!NOTE]
 > Als u een door het systeem toegewezen beheerde identiteit gebruikt, is voor de service-principal voor Azure-blauw drukken de rol van **eigenaar** van het toegewezen abonnement vereist om de implementatie in te scha kelen. Als u de portal gebruikt, wordt deze rol automatisch verleend en ingetrokken voor de implementatie. Als u de REST API gebruikt, moet deze rol handmatig worden toegekend, maar wordt deze automatisch ingetrokken nadat de implementatie is voltooid. Als u een door de gebruiker toegewezen beheerde identiteit gebruikt, moet alleen de gebruiker die de blauw druk maakt, **eigenaars** machtigingen hebben.
 
 ## <a name="naming-limits"></a>Naamgevings limieten
 
-Hier volgt een lijst met beperkingen die voor bepaalde velden bestaan:
+De volgende beperkingen bestaan voor bepaalde velden:
 
 |Object|Veld|Toegestane tekens|Met maximaal Hoogte|
 |-|-|-|-|

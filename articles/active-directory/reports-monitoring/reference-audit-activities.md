@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989639"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127131"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referentie voor auditactiviteiten van Azure AD
 
@@ -66,10 +66,10 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Toegangsbeoordelingen|Toegangsbeoordeling bijwerken|
 |Toegangsbeoordelingen|Status van de onboarding van Azure AD-toegangs beoordelingen bijwerken|
 |Toegangsbeoordelingen|Instellingen voor de e-mailmelding van de toegangsbeoordeling bijwerken|
-|Toegangsbeoordelingen|Instelling voor toegangsbeoordeling van aantal terugkeerpatronen bijwerken|
-|Toegangsbeoordelingen|Instelling voor toegangsbeoordeling van duur van terugkeerpatroon in dagen bijwerken|
-|Toegangsbeoordelingen|Instelling voor toegangsbeoordeling van eindtype van terugkeerpatroon bijwerken|
-|Toegangsbeoordelingen|Instelling voor toegangsbeoordeling van type terugkeerpatroon bijwerken|
+|Toegangsbeoordelingen|Instelling voor aantal herhalingen van de toegangs beoordeling bijwerken|
+|Toegangsbeoordelingen|Instelling voor toegangs beoordeling duur van terugkeer patroon in dagen bijwerken|
+|Toegangsbeoordelingen|Instelling van eind type van terugkeer patroon van toegangs beoordeling bijwerken|
+|Toegangsbeoordelingen|Instelling voor toegangs beoordeling van type terugkeer patroon bijwerken|
 |Toegangsbeoordelingen|Instellingen voor de herinnering van de toegangsbeoordeling bijwerken|
 |Toegangsbeoordelingen|Programma bijwerken|
 |Toegangsbeoordelingen|Aanvraaggoedkeuring bijwerken|
@@ -348,10 +348,10 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 
 |Controlecategorie|Activiteit|
 |---|---|
-|Administratieve eenheden beheren|Eén type risicogebeurtenis downloaden|
+|Administratieve eenheden beheren|Een enkel type risico detectie downloaden|
 |Administratieve eenheden beheren|Beheerders en status van aanmelding voor wekelijkse samenvatting downloaden|
-|Administratieve eenheden beheren|Alle risicogebeurtenistypen downloaden|
-|Administratieve eenheden beheren|Risicogebeurtenissen voor gratis gebruikers downloaden|
+|Administratieve eenheden beheren|Alle typen risico detectie downloaden|
+|Administratieve eenheden beheren|Beschik bare risico detecties voor gebruikers downloaden|
 |Administratieve eenheden beheren|Gebruikers voor wie wordt aangegeven dat ze risico lopen downloaden|
 |Toepassingsbeheer|Verwerkte batchuitnodigingen|
 |Toepassingsbeheer|Geüploade batchuitnodigingen|
@@ -518,10 +518,10 @@ In dit artikel worden de auditactiviteiten vermeld die in uw auditlogboeken kunn
 |Groepsbeheer|Aanvraag voor goedkeuring aanvraag beoordelen|
 |Groepsbeheer|Toegangsbeoordeling bijwerken|
 |Groepsbeheer|Instellingen voor de e-mailmelding van de toegangsbeoordeling bijwerken|
-|Groepsbeheer|Instelling voor toegangsbeoordeling van aantal terugkeerpatronen bijwerken|
-|Groepsbeheer|Instelling voor toegangsbeoordeling van duur van terugkeerpatroon in dagen bijwerken|
-|Gebruikersbeheer|Instelling voor toegangsbeoordeling van eindtype van terugkeerpatroon bijwerken|
-|Gebruikersbeheer|Instelling voor toegangsbeoordeling van type terugkeerpatroon bijwerken|
+|Groepsbeheer|Instelling voor aantal herhalingen van de toegangs beoordeling bijwerken|
+|Groepsbeheer|Instelling voor toegangs beoordeling duur van terugkeer patroon in dagen bijwerken|
+|Gebruikersbeheer|Instelling van eind type van terugkeer patroon van toegangs beoordeling bijwerken|
+|Gebruikersbeheer|Instelling voor toegangs beoordeling van type terugkeer patroon bijwerken|
 
 
 

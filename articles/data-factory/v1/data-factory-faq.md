@@ -1,97 +1,95 @@
 ---
-title: Azure Data Factory - Veelgestelde vragen
+title: Veelgestelde vragen over Azure Data Factory
 description: Veelgestelde vragen over Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f33a59105d1be94ccd4fb24ae3d962b36c2efbdd
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839360"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139822"
 ---
-# <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - Veelgestelde vragen
+# <a name="azure-data-factory---frequently-asked-questions"></a>Veelgestelde vragen over Azure Data Factory
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [veelgestelde vraag - Data Factory](../frequently-asked-questions.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Veelgestelde vragen-Data Factory](../frequently-asked-questions.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Algemene vragen
 ### <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory?
-Data Factory is een cloudgebaseerde gegevensintegratie service die **automatiseert de verplaatsing en transformatie van gegevens**. Net als bij een factory die wordt uitgevoerd apparatuur wordt gebruikt om grondstoffen te transformeren in eindproducten, beheert Data Factory bestaande services die onbewerkte gegevens verzamelen en transformeren in kant-en-klare informatie.
+Data Factory is een service voor gegevens integratie **in de Cloud waarmee de verplaatsing en trans formatie van gegevens**worden geautomatiseerd. Net als bij een fabriek die apparatuur uitvoert om grond stoffen te maken en deze te transformeren in voltooide producten, Data Factory worden bestaande services die onbewerkte gegevens verzamelen, omgezet in kant-en-klare informatie.
 
-Data Factory kunt u gegevensgestuurde werkstromen maken om te verplaatsen van gegevens tussen zowel on-premises en cloudlocaties voor gegevensopslag, evenals verwerken/transformeren gegevens met behulp van rekenservices zoals Azure HDInsight en Azure Data Lake Analytics. Nadat u een pijplijn die de actie die u nodig hebt maken, kunt u plannen dat het periodiek wordt uitgevoerd (elk uur, dagelijks, wekelijks enz.).   
+Met Data Factory kunt u gegevensgestuurde werk stromen maken om gegevens te verplaatsen tussen zowel on-premises als in de cloud opgeslagen gegevens, en gegevens verwerken/transformeren met behulp van reken services zoals Azure HDInsight en Azure Data Lake Analytics. Nadat u een pijp lijn hebt gemaakt die de actie uitvoert die u nodig hebt, kunt u deze zo plannen dat deze regel matig wordt uitgevoerd (elk uur, dagelijks, wekelijks, enzovoort).   
 
-Zie voor meer informatie, [overzicht en belangrijkste concepten](data-factory-introduction.md).
+Zie [overzicht van & basis concepten](data-factory-introduction.md)voor meer informatie.
 
-### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Waar vind ik prijsinformatie voor Azure Data Factory?
-Zie [pagina met prijsinformatie van Data Factory][adf-pricing-details] voor de prijsinformatie voor Azure Data Factory.  
+### <a name="where-can-i-find-pricing-details-for-azure-data-factory"></a>Waar vind ik prijs informatie voor Azure Data Factory?
+Zie de [pagina met prijs informatie voor Data Factory][adf-pricing-details] voor de prijs informatie voor de Azure Data Factory.  
 
-### <a name="how-do-i-get-started-with-azure-data-factory"></a>Hoe ga ik aan de slag met Azure Data Factory?
-* Zie voor een overzicht van Azure Data Factory, [Inleiding tot Azure Data Factory](data-factory-introduction.md).
-* Voor een zelfstudie over het **kopiëren en verplaatsen van gegevens** met activiteit kopiëren, Zie [gegevens kopiëren van Azure Blob Storage naar Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-* Voor een zelfstudie over het **gegevens transformeren** met behulp van HDInsight Hive-activiteit. Zie [gegevens verwerken met Hive-script uitgevoerd op Hadoop-cluster](data-factory-build-your-first-pipeline.md)
+### <a name="how-do-i-get-started-with-azure-data-factory"></a>Hoe kan ik aan de slag met Azure Data Factory?
+* Zie [Inleiding tot Azure Data Factory](data-factory-introduction.md)voor een overzicht van Azure Data Factory.
+* Zie [gegevens kopiëren van Azure Blob Storage naar Azure SQL database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)voor een zelf studie over het **kopiëren/verplaatsen van gegevens** met behulp van Kopieer activiteit.
+* Voor een zelf studie over het **transformeren van gegevens** met HDInsight Hive-activiteit. Bekijk [gegevens verwerken door Hive-script uit te voeren in een Hadoop-cluster](data-factory-build-your-first-pipeline.md)
 
-### <a name="what-is-the-data-factorys-region-availability"></a>Wat is de beschikbaarheid in regio's van de Data Factory?
-Data Factory is beschikbaar in **VS West** en **Noord-Europa**. De reken- en -services die worden gebruikt door data factory's kunnen zich in andere regio's. Zie [ondersteunde regio's](data-factory-introduction.md#supported-regions).
+### <a name="what-is-the-data-factorys-region-availability"></a>Wat is de beschik baarheid van de beData Factorys regio?
+Data Factory is beschikbaar in **VS West** en **Europa-Noord**. De compute-en opslag services die door de gegevens fabrieken worden gebruikt, kunnen zich in andere regio's bevindt. Zie [ondersteunde regio's](data-factory-introduction.md#supported-regions).
 
-### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Wat zijn de beperkingen voor aantal van de data factory's / pijplijnen/activiteiten/gegevenssets?
-Zie **Azure Data Factory-limieten** sectie van de [Azure-abonnement en Servicelimieten, Quotums en beperkingen](../../azure-subscription-service-limits.md#data-factory-limits) artikel.
+### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Wat zijn de limieten voor het aantal gegevens fabrieken/pijp lijnen/activiteiten/gegevens sets?
+Zie de sectie **Azure Data Factory limieten** van het artikel [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-subscription-service-limits.md#data-factory-limits) .
 
-### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Wat is de ervaring van ontwerpen of ontwikkelaar met Azure Data Factory-service?
-U kunt de auteur/data factory's maken met een van de volgende hulpprogramma's / SDK's:
+### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Wat is de ontwerp-en ontwikkelaars ervaring met Azure Data Factory Service?
+Met een van de volgende hulpprogram ma's/Sdk's kunt u gegevens fabrieken ontwerpen/maken:
 
-* **Visual Studio** u Visual Studio kunt gebruiken om te maken van een Azure data factory. Zie [bouw uw eerste pijplijn met Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) voor meer informatie.
-* **Azure PowerShell** Zie [maken en te bewaken, Azure Data Factory met Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) voor een zelfstudie/overzicht voor het maken van een data factory met behulp van PowerShell. Zie [Data Factory Cmdlet Reference][adf-powershell-reference] inhoud op MSDN-bibliotheek voor een uitgebreide documentatie over Data Factory-cmdlets.
-* **.NET-klassebibliotheek** programmatisch kunt u data factory's maken met behulp van Data Factory .NET SDK. Zie [maken, bewaken en beheren van data factory's met .NET SDK](data-factory-create-data-factories-programmatically.md) voor een overzicht van het maken van een data factory met .NET SDK. Zie [Data Factory Class Library Reference][msdn-class-library-reference] voor een uitgebreide documentatie over Data Factory .NET SDK.
-* **REST-API** u kunt ook de REST-API die worden weergegeven door de Azure Data Factory-service maken en implementeren van data factory's gebruiken. Zie [API-naslaginformatie voor Data Factory-REST][msdn-rest-api-reference] voor een uitgebreide documentatie over Data Factory-REST API.
-* **Azure Resource Manager-sjabloon** Zie [zelfstudie: Uw eerste Azure-gegevensfactory bouwen met Azure Resource Manager-sjabloon](data-factory-build-your-first-pipeline-using-arm.md) voor meer informatie.
+* **Visual Studio** U kunt Visual Studio gebruiken om een Azure data factory te maken. Zie [uw eerste gegevens pijplijn bouwen met Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) voor meer informatie.
+* **Azure PowerShell** Zie [Azure Data Factory maken en bewaken met behulp van Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) voor een zelf studie/walkthrough voor het maken van een Data Factory met Power shell. Zie [Data Factory cmdlet-referentie][adf-powershell-reference] -inhoud in de MSDN-bibliotheek voor een uitgebreide documentatie van Data Factory-cmdlets.
+* **.Net-klassebibliotheek** U kunt via een programma gegevens fabrieken maken met behulp van Data Factory .NET SDK. Zie [gegevens fabrieken maken, bewaken en beheren met behulp van .NET SDK](data-factory-create-data-factories-programmatically.md) voor een overzicht van het maken van een Data Factory met behulp van .NET SDK. Zie [Data Factory Class Library Reference][msdn-class-library-reference] (Engelstalig) voor een uitgebreide documentatie over Data Factory .NET SDK.
+* **rest API** U kunt ook de REST API weer gegeven door de Azure Data Factory-service gebruiken om gegevens fabrieken te maken en te implementeren. Zie [Data Factory rest API Reference][msdn-rest-api-reference] voor een uitgebreide documentatie van Data Factory rest API.
+* **Azure Resource Manager sjabloon** Zie [zelf studie: Bouw uw eerste Azure-Data Factory met behulp van Azure Resource Manager sjabloon](data-factory-build-your-first-pipeline-using-arm.md) fo-gegevens.
 
 ### <a name="can-i-rename-a-data-factory"></a>Kan ik de naam van een data factory wijzigen?
-Nee. Net als andere Azure-resources, kan niet de naam van een Azure data factory worden gewijzigd.
+Nee. Net als bij andere Azure-resources kan de naam van een Azure-data factory niet worden gewijzigd.
 
-### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Kan ik een data factory verplaatsen van één Azure-abonnement naar een andere?
-Ja. Gebruik de **verplaatsen** knop op uw data factory-blade zoals weergegeven in het volgende diagram:
+### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Kan ik een data factory van het ene Azure-abonnement naar het andere verplaatsen?
+Ja. Gebruik de knop **verplaatsen** op de blade Data Factory zoals in het volgende diagram wordt weer gegeven:
 
-![Data factory verplaatsen](media/data-factory-faq/move-data-factory.png)
+![data factory verplaatsen](media/data-factory-faq/move-data-factory.png)
 
-### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Wat zijn de omgevingen die door Data Factory worden ondersteund?
-De volgende tabel bevat een lijst met compute-omgevingen wordt ondersteund door Data Factory en de activiteiten die kunnen worden uitgevoerd op deze.
+### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Wat zijn de reken omgevingen die door Data Factory worden ondersteund?
+De volgende tabel bevat een lijst met reken omgevingen die worden ondersteund door Data Factory en de activiteiten die hierop kunnen worden uitgevoerd.
 
 | Compute-omgeving | activities |
 | --- | --- |
-| [On-demand HDInsight-cluster](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) of [uw eigen HDInsight-cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
+| [Hdinsight-cluster op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) of [uw eigen hdinsight-cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning-activiteiten: Batchuitvoering en resources bijwerken](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning activiteiten: Batch uitvoering en update resource](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Opgeslagen procedure](data-factory-stored-proc-activity.md) |
 
-### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Hoe Azure Data Factory vergelijken met SQL Server Integration Services (SSIS)? 
-Zie de [vs Azure Data Factory. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) presentatie op basis van een van onze MVP's (meest waardevolle Professionals): Reza Rad. Sommige van de meest recente wijzigingen in Data Factory kan niet worden weergegeven in het PowerPoint-presentatie. We zijn voortdurend meer mogelijkheden toegevoegd aan Azure Data Factory. We zijn voortdurend meer mogelijkheden toegevoegd aan Azure Data Factory. We zullen deze updates opnemen in de vergelijking van data-integratie-technologieën van Microsoft enige tijd later dit jaar.   
+### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Hoe kan Azure Data Factory vergelijken met SQL Server Integration Services (SSIS)? 
+Bekijk de [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) -presentatie van een van onze mvp's (meest waardevolle professionals): Reza rad. Sommige van de recente wijzigingen in Data Factory worden mogelijk niet weer gegeven in het diamodel. We voegen continu meer mogelijkheden toe aan Azure Data Factory. We voegen continu meer mogelijkheden toe aan Azure Data Factory. Deze updates worden opgenomen in de vergelijking van technologieën van micro soft die later dit jaar worden geïntegreerd.   
 
-## <a name="activities---faq"></a>Activiteiten - Veelgestelde vragen
-### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Wat zijn de verschillende typen activiteiten die u in een Data Factory-pijplijn gebruiken kunt?
-* [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) om gegevens te verplaatsen.
-* [Activiteiten voor gegevenstransformatie](data-factory-data-transformation-activities.md) te verwerken/transformeren van gegevens.
+## <a name="activities---faq"></a>Activiteiten-Veelgestelde vragen
+### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Wat zijn de verschillende soorten activiteiten die u in een Data Factory pijp lijn kunt gebruiken?
+* [Gegevens verplaatsings activiteiten](data-factory-data-movement-activities.md) om gegevens te verplaatsen.
+* [Activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) voor het verwerken/transformeren van gegevens.
 
 ### <a name="when-does-an-activity-run"></a>Wanneer wordt een activiteit uitgevoerd?
-De **beschikbaarheid** configuratie-instelling in de tabel met uitvoer bepaalt wanneer de activiteit wordt uitgevoerd. Als invoergegevenssets zijn opgegeven, de activiteit wordt gecontroleerd of alle afhankelijkheden van de invoergegevens zijn voldaan (dat wil zeggen, **gereed** staat) voordat het wordt gestart.
+De instelling **beschikbaarheids** configuratie in de uitvoer gegevens tabel bepaalt wanneer de activiteit wordt uitgevoerd. Als er invoer gegevens sets zijn opgegeven, controleert de activiteit of aan alle invoergegevens afhankelijkheden is voldaan (dat wil zeggen, status **gereed** ) voordat deze wordt gestart.
 
-## <a name="copy-activity---faq"></a>Kopieeractiviteit - Veelgestelde vragen
-### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>Is het beter om een pijplijn met meerdere activiteiten of een afzonderlijke pijplijn voor elke activiteit?
-Pijplijnen zijn mag bundelen gerelateerde activiteiten. Als de gegevenssets waarmee ze zijn verbonden niet worden gebruikt door een willekeurige andere activiteit buiten de pijplijn, kunt u de activiteiten in één pijplijn. Op deze manier u niet moet keten pijplijn actieve perioden zodat deze worden uitgelijnd met elkaar. De integriteit van gegevens in de tabellen die intern is aan de pijplijn is ook beter behouden bij het bijwerken van de pijplijn. Update van de pijplijn in feite stopt alle activiteiten in de pijplijn, verwijdert u deze en maakt deze opnieuw. Vanuit het perspectief ontwerpen, kan het ook eenvoudiger om te zien van de stroom van gegevens binnen de gerelateerde activiteiten in een JSON-bestand voor de pijplijn zijn.
+## <a name="copy-activity---faq"></a>Kopieer activiteit-Veelgestelde vragen
+### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>Is het beter om een pijp lijn te hebben met meerdere activiteiten of een afzonderlijke pijp lijn voor elke activiteit?
+Pijp lijnen moeten gerelateerde activiteiten bundelen. Als de gegevens sets waarmee ze zijn verbonden, niet worden gebruikt door andere activiteiten buiten de pijp lijn, kunt u de activiteiten in één pijp lijn blijven. Op deze manier hoeft u geen pijp lijn actieve Peri Oden te koppelen zodat ze met elkaar worden uitgelijnd. De gegevens integriteit in de tabellen intern voor de pijp lijn is ook beter behouden bij het bijwerken van de pijp lijn. Met pijplijn update worden alle activiteiten in de pijp lijn in wezen gestopt, verwijderd en opnieuw gemaakt. Vanuit het ontwerp perspectief is het mogelijk dat de stroom van gegevens binnen de gerelateerde activiteiten in één JSON-bestand voor de pijp lijn eenvoudiger kan worden weer gegeven.
 
-### <a name="what-are-the-supported-data-stores"></a>Wat zijn de ondersteunde gegevensarchieven?
+### <a name="what-are-the-supported-data-stores"></a>Wat zijn de ondersteunde gegevens archieven?
 De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchief naar een sinkgegevensarchief. Data Factory ondersteunt de volgende gegevensarchieven. Gegevens vanuit elke willekeurige bron kunnen naar een sink worden geschreven. Klik op een gegevensarchief voor informatie over het kopiëren van gegevens naar en van dat archief.
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
@@ -99,26 +97,26 @@ De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchi
 > [!NOTE]
 > Gegevensarchieven met een * kunnen zich on-premises of op Azure IaaS bevinden. Hiervoor moet u [Data Management Gateway](data-factory-data-management-gateway.md) installeren op een on-premises/Azure IaaS-computer.
 
-### <a name="what-are-the-supported-file-formats"></a>Wat zijn de ondersteunde bestandsindelingen?
+### <a name="what-are-the-supported-file-formats"></a>Wat zijn de ondersteunde bestands indelingen?
 [!INCLUDE [data-factory-file-format](../../../includes/data-factory-file-format.md)]
 
-### <a name="where-is-the-copy-operation-performed"></a>Waar wordt de kopieerbewerking uitgevoerd?
-Zie [wereldwijd beschikbaar gegevensverplaatsing](data-factory-data-movement-activities.md#global) sectie voor meer informatie. Kort gezegd, wanneer een on-premises-gegevensarchief is betrokken, wordt de kopieerbewerking uitgevoerd door de Data Management Gateway in uw on-premises omgeving. En wanneer de verplaatsing van gegevens tussen twee cloudopslagvoorzieningen, de kopieerbewerking wordt uitgevoerd in de regio het dichtst bij de sink-locatie in hetzelfde geografische gebied.
+### <a name="where-is-the-copy-operation-performed"></a>Waar wordt de Kopieer bewerking uitgevoerd?
+Zie de sectie [wereld wijd beschik bare gegevens verplaatsing](data-factory-data-movement-activities.md#global) voor meer informatie. Kortom, wanneer een on-premises gegevens archief betrokken is, wordt de Kopieer bewerking uitgevoerd door de Data Management Gateway in uw on-premises omgeving. En wanneer de verplaatsing tussen twee Cloud archieven plaatsvindt, wordt de Kopieer bewerking uitgevoerd in de regio die het dichtst in de buurt is van de Sink-locatie in dezelfde geografie.
 
-## <a name="hdinsight-activity---faq"></a>HDInsight-activiteit - Veelgestelde vragen
+## <a name="hdinsight-activity---faq"></a>HDInsight-activiteit-Veelgestelde vragen
 ### <a name="what-regions-are-supported-by-hdinsight"></a>Welke regio's worden ondersteund door HDInsight?
-Zie de sectie geografische beschikbaarheid in het volgende artikel: of [prijsinformatie voor HDInsight][hdinsight-supported-regions].
+Zie de sectie geografische Beschik baarheid in het volgende artikel: of [prijs informatie voor HDInsight][hdinsight-supported-regions].
 
-### <a name="what-region-is-used-by-an-on-demand-hdinsight-cluster"></a>Welke regio wordt gebruikt door een on-demand HDInsight-cluster?
-De on-demand HDInsight-cluster wordt gemaakt in dezelfde regio waar de opslag die u hebt opgegeven om te worden gebruikt met het cluster zich bevindt.    
+### <a name="what-region-is-used-by-an-on-demand-hdinsight-cluster"></a>Welke regio wordt gebruikt door een HDInsight-cluster op aanvraag?
+Het HDInsight-cluster op aanvraag wordt gemaakt in dezelfde regio waar de opslag ruimte die u hebt opgegeven voor het cluster bestaat.    
 
-### <a name="how-to-associate-additional-storage-accounts-to-your-hdinsight-cluster"></a>Hoe kan ik extra opslagaccounts met uw HDInsight-cluster koppelen?
-Als u uw eigen HDInsight-Cluster (BYOC - Bring Your Own Cluster), raadpleegt u de volgende onderwerpen:
+### <a name="how-to-associate-additional-storage-accounts-to-your-hdinsight-cluster"></a>Hoe koppelt u extra opslag accounts aan uw HDInsight-cluster?
+Als u uw eigen HDInsight-cluster gebruikt (BYOC uw eigen cluster te maken), raadpleegt u de volgende onderwerpen:
 
-* [Met behulp van een HDInsight-Cluster met alternatieve Opslagaccounts en Metastores][hdinsight-alternate-storage]
-* [Extra Opslagaccounts gebruiken met HDInsight Hive][hdinsight-alternate-storage-2]
+* [Een HDInsight-cluster gebruiken met alternatieve opslag accounts en meta Stores][hdinsight-alternate-storage]
+* [Extra opslag accounts gebruiken met HDInsight-Hive][hdinsight-alternate-storage-2]
 
-Als u een cluster op aanvraag die is gemaakt door de Data Factory-service gebruikt, geeft u extra opslagaccounts voor het HDInsight gekoppelde service zodat de Data Factory-service namens registreren kan. Gebruik in de JSON-definitie voor de gekoppelde service op aanvraag, **, additionallinkedservicenames,** eigenschap opgeven van alternatieve storage-accounts, zoals wordt weergegeven in de volgende JSON-fragment:
+Als u een cluster op aanvraag gebruikt dat is gemaakt door de Data Factory-Service, geeft u extra opslag accounts op voor de gekoppelde HDInsight-service zodat de Data Factory-service namens u kan worden geregistreerd. In de JSON-definitie voor de gekoppelde on-demand-service gebruikt u de eigenschap **additionalLinkedServiceNames** om alternatieve opslag accounts op te geven, zoals wordt weer gegeven in het volgende JSON-fragment:
 
 ```JSON
 {
@@ -137,25 +135,25 @@ Als u een cluster op aanvraag die is gemaakt door de Data Factory-service gebrui
     }
 }
 ```
-In het bovenstaande voorbeeld vertegenwoordigen otherLinkedServiceName1 en otherLinkedServiceName2 van gekoppelde services waarvan definities referenties die het HDInsight-cluster nodig heeft bevatten voor toegang tot andere storage-accounts.
+In het bovenstaande voor beeld vertegenwoordigen otherLinkedServiceName1 en otherLinkedServiceName2 gekoppelde services waarvan de definities referenties bevatten die het HDInsight-cluster nodig heeft om toegang te krijgen tot alternatieve opslag accounts.
 
-## <a name="slices---faq"></a>Segmenten - Veelgestelde vragen
-### <a name="why-are-my-input-slices-not-in-ready-state"></a>Waarom wordt mijn invoersegmenten niet in de status gereed hebben?
-Een veelvoorkomende fout is de instelling **externe** eigenschap **waar** voor de invoergegevensset wanneer de invoergegevens zich buiten de data factory (niet geproduceerd door de data factory).
+## <a name="slices---faq"></a>Segmenten-Veelgestelde vragen
+### <a name="why-are-my-input-slices-not-in-ready-state"></a>Waarom zijn mijn invoer segmenten niet de status gereed?
+Bij een veelvoorkomende fout wordt er geen **externe** eigenschap ingesteld op **True** in de invoer-gegevensset wanneer de invoer gegevens zich buiten het Data Factory bevinden (niet gemaakt door de Data Factory).
 
-In het volgende voorbeeld, hoeft u alleen om in te stellen **externe** op ' True ' voor **dataset1**.  
+In het volgende voor beeld hoeft u alleen **extern** in te stellen op True in **dataset1**.  
 
-**DataFactory1** Pipeline-1: dataset1 -> activiteit1 -> dataset2 -> activiteit2 dataset3 pijplijn 2 ->: dataset3 -> activiteit3 dataset4 ->
+**DataFactory1** Pijp lijn 1: dataset1-> activiteit1-> dataset2-> activiteit2-> dataset3-pijp lijn 2: dataset3-> activiteit3-> dataset4
 
-Als u een andere data factory met een pijplijn die dataset4 (die worden geproduceerd door de pijplijn 2 in data factory, 1) nodig hebt, moet u dataset4 markeren als een externe gegevensset omdat de gegevensset wordt geproduceerd door een andere data factory (DataFactory1, niet DataFactory2).  
+Als u een andere data factory hebt met een pijp lijn die dataset4 (geproduceerd door pijp lijn 2 in data factory 1), markeert u dataset4 als een externe gegevensset, omdat de gegevensset wordt geproduceerd door een andere data factory (DataFactory1, niet DataFactory2).  
 
 **DataFactory2**    
-Pijplijn 1: dataset4 -> activity4 dataset5 ->
+Pijp lijn 1: dataset4-> activity4-> dataset5
 
-Als de eigenschap external juist is ingesteld, controleert u of de ingevoerde gegevens in de opgegeven locatie in de definitie van de invoergegevensset bestaat.
+Als de externe eigenschap op de juiste wijze is ingesteld, controleert u of de invoer gegevens bestaan op de locatie die is opgegeven in de definitie van de invoer gegevensset.
 
-### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>Het uitvoeren van een segment op een later tijdstip dan middernacht wanneer het segment dagelijks wordt geproduceerd?
-Gebruik de **offset** eigenschap om op te geven van de tijd die u wilt dat het segment wordt geproduceerd. Zie [beschikbaarheid van gegevenssets](data-factory-create-datasets.md#dataset-availability) sectie voor meer informatie over deze eigenschap. Hier volgt een kort voorbeeld:
+### <a name="how-to-run-a-slice-at-another-time-than-midnight-when-the-slice-is-being-produced-daily"></a>Hoe kan een segment op een ander tijdstip worden uitgevoerd dan middernacht wanneer het segment dagelijks wordt geproduceerd?
+Gebruik de eigenschap **Offset** om de tijd op te geven waarop u het segment wilt produceren. Zie de sectie [Beschik baarheid van gegevensset](data-factory-create-datasets.md#dataset-availability) voor meer informatie over deze eigenschap. Hier volgt een kort voor beeld:
 
 ```json
 "availability":
@@ -165,36 +163,36 @@ Gebruik de **offset** eigenschap om op te geven van de tijd die u wilt dat het s
     "offset": "06:00:00"
 }
 ```
-Dagelijkse segmenten beginnen bij **6 AM** in plaats van de standaard-middernacht.     
+Dagelijkse segmenten beginnen bij **6 uur** in plaats van de standaard middernacht.     
 
 ### <a name="how-can-i-rerun-a-slice"></a>Hoe kan ik een segment opnieuw uitvoeren?
-U kunt een segment opnieuw uitvoeren in een van de volgende manieren:
+U kunt een segment op een van de volgende manieren opnieuw uitvoeren:
 
-* Monitor and Manage App gebruiken een activiteitsvenster of het segment opnieuw uit te voeren. Zie [opnieuw uitvoeren geselecteerd activiteitsvensters](data-factory-monitor-manage-app.md#perform-batch-actions) voor instructies.   
-* Klik op **uitvoeren** in de opdrachtbalk op de **GEGEVENSSEGMENT** blade voor het segment in de Azure-portal.
-* Voer **Set AzDataFactorySliceStatus** cmdlet met de Status ingesteld op **wachten** voor het segment.   
+* Gebruik de app controleren en beheren om een activiteiten venster of segment opnieuw uit te voeren. Zie de [geselecteerde activiteit opnieuw uitvoeren](data-factory-monitor-manage-app.md#perform-batch-actions) voor instructies.   
+* Klik op **uitvoeren** in de opdracht balk op de Blade **gegevens segment** voor het segment in de Azure Portal.
+* Voer de cmdlet **set-AzDataFactorySliceStatus** uit met de status ingesteld op **wachten** op het segment.   
 
     ```powershell
     Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-  Zie [Set AzDataFactorySliceStatus][set-azure-datafactory-slice-status] voor meer informatie over de cmdlet.
+  Zie [set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status] voor meer informatie over de cmdlet.
 
-### <a name="how-long-did-it-take-to-process-a-slice"></a>Hoe lang het voordat een segment verwerken?
-Activiteitsvensterverkenner in de Monitor & Manage App gebruiken om te weten hoe lang het heeft geduurd voor het verwerken van een gegevenssegment. Zie [Activiteitsvensterverkenner](data-factory-monitor-manage-app.md#activity-window-explorer) voor meer informatie.
+### <a name="how-long-did-it-take-to-process-a-slice"></a>Hoe lang duurt het om een segment te verwerken?
+Gebruik de activiteiten venster Verkenner in monitor & App beheren om te zien hoe lang het duurde om een gegevens segment te verwerken. Zie [activiteiten venster Verkenner](data-factory-monitor-manage-app.md#activity-window-explorer) voor meer informatie.
 
-U kunt ook in Azure portal het volgende doen:  
+U kunt ook het volgende doen in het Azure Portal:  
 
-1. Klik op **gegevenssets** tegel op de **DATA FACTORY** blade voor uw data factory.
-2. Klik op de specifieke gegevensset in de **gegevenssets** blade.
-3. Selecteer het segment dat u geïnteresseerd in van bent de **recente segmenten** lijst op de **tabel** blade.
-4. Klik op de activiteit die wordt uitgevoerd vanuit de **uitvoeringen van activiteit** lijst op de **GEGEVENSSEGMENT** blade.
-5. Klik op **eigenschappen** tegel op de **DETAILS uitvoering van activiteit** blade.
-6. U ziet de **duur** veld met een waarde. Deze waarde is de tijd voor het verwerken van het segment.   
+1. Klik op de tegel gegevens **sets** op de Blade **Data FACTORY** voor uw Data Factory.
+2. Klik op de Blade **gegevens sets** op de gegevensset.
+3. Selecteer het segment waarin u geïnteresseerd bent in de lijst met **recente segmenten** op de Blade **tabel** .
+4. Klik op de uitvoering van de activiteit in de lijst met **uitgevoerde activiteiten** op de Blade **gegevens segment** .
+5. Klik op **Eigenschappen** tegel op de Blade **Details uitvoering van activiteit** .
+6. Het veld **duur** wordt weer geven met een waarde. Deze waarde is de tijd die nodig is om het segment te verwerken.   
 
-### <a name="how-to-stop-a-running-slice"></a>Het stoppen van een actief segment?
-Als u stoppen met de pijplijn wilt wordt uitgevoerd, kunt u [stand-by-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) cmdlet. Op dit moment stopt onderbreken van de pijplijn niet de segment-uitvoeringen die uitgevoerd worden. Zodra u klaar bent met de uitvoeringen wordt uitgevoerd, wordt geen extra segment opgehaald.
+### <a name="how-to-stop-a-running-slice"></a>Hoe kan ik een actief segment stoppen?
+Als u wilt stoppen met het uitvoeren van de pijp lijn, kunt u de cmdlet [suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) gebruiken. Op dit moment stopt het onderbreken van de pijp lijn niet de segment uitvoeringen die worden uitgevoerd. Zodra het uitvoeren van de uitvoering is voltooid, wordt er geen extra segment opgenomen.
 
-Als u echt onmiddellijk stoppen alle uitvoeringen wilt, is de enige manier om de pijplijn verwijderen en opnieuw maken. Als u verwijderen van de pijplijn wilt, hoeft u niet om tabellen en gekoppelde services die worden gebruikt door de pijplijn te verwijderen.
+Als u de uitvoeringen echt onmiddellijk wilt stoppen, is de enige manier om de pijp lijn te verwijderen en opnieuw te maken. Als u ervoor kiest om de pijp lijn te verwijderen, hoeft u geen tabellen en gekoppelde services te verwijderen die door de pijp lijn worden gebruikt.
 
 [create-factory-using-dotnet-sdk]: data-factory-create-data-factories-programmatically.md
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models

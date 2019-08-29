@@ -8,23 +8,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 67e4874fcca93633140b7630ceadd273d1646f86
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 86bbff167a2653fd8d89b566b551c4c53dd3614e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721178"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124565"
 ---
-# <a name="what-are-azure-queues"></a>Wat zijn wachtrijen in Azure?
+# <a name="what-are-azure-queues"></a>Wat zijn Azure-wacht rijen?
 
-Azure Queue-opslag is een service voor het opslaan van grote aantallen berichten. U opent berichten van overal ter wereld via geverifieerde oproepen met HTTP of HTTPS. Een wachtrij bericht kan Maxi maal 64 KB groot zijn. Een wachtrij kan miljoenen berichten bevatten, tot de totale capaciteits limiet van een opslag account.
-
-## <a name="common-uses"></a>Veelvoorkomende toepassingen
-
-Veelvoorkomende toepassingen van Queue Storage zijn onder andere:
-
-* Het maken van een voorraad werk dat asynchroon moet worden verwerkt
-* Het doorgeven van berichten van een Azure-webrol aan een Azure-werkrol
+Azure Queue Storage is een service voor het opslaan van grote aantallen berichten. U opent berichten van overal ter wereld via geverifieerde oproepen met HTTP of HTTPS. Een wachtrij bericht kan Maxi maal 64 KB groot zijn. Een wachtrij kan miljoenen berichten bevatten, tot de totale capaciteits limiet van een opslag account. Wacht rijen worden vaak gebruikt om een achterstand te maken voor het asynchroon verwerken van werk.
 
 ## <a name="queue-service-concepts"></a>Queue-service concepten
 

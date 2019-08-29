@@ -11,16 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: bwren
-ms.openlocfilehash: 397272c3a47aca2aa73394f443d76dead66308e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555329"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124153"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste Logboeken in Azure Monitor
+
 Met de aangepaste logboek gegevens bron in Azure Monitor kunt u gebeurtenissen uit tekst bestanden op zowel Windows-als Linux-computers verzamelen. Veel toepassingen registreren gegevens in tekst bestanden in plaats van standaard logboek registratie Services, zoals Windows-gebeurtenis logboek of syslog. Zodra de gegevens zijn verzameld, kunt u deze in afzonderlijke velden in uw query's parseren of de gegevens tijdens het verzamelen naar afzonderlijke velden extra heren.
 
 ![Aangepaste logboek verzameling](media/data-sources-custom-logs/overview.png)
@@ -46,6 +47,9 @@ De logboek bestanden die moeten worden verzameld, moeten voldoen aan de volgende
 > * Het maximum aantal tekens voor de naam van de kolom is 500. 
 >
 
+>[!IMPORTANT]
+>Aangepaste logboek verzameling vereist dat de toepassing die het logboek bestand schrijft, regel matig de logboek inhoud op de schijf opschoont. Dit komt omdat de aangepaste logboek verzameling afhankelijk is van wijzigings meldingen van het bestands systeem voor het logboek bestand dat wordt bijgehouden.
+
 ## <a name="defining-a-custom-log"></a>Een aangepast logboek definiëren
 Gebruik de volgende procedure om een aangepast logboek bestand te definiëren.  Ga naar het einde van dit artikel voor een overzicht van een voor beeld van het toevoegen van een aangepast logboek.
 
@@ -64,7 +68,6 @@ U begint met het uploaden van een voor beeld van het aangepaste logboek.  Met de
 
 Als er een tijds tempel scheidings teken wordt gebruikt, wordt de eigenschap TimeGenerated van elke record die is opgeslagen in Azure Monitor ingevuld met de datum/tijd die is opgegeven voor dat item in het logboek bestand.  Als er een nieuw regel scheidings teken wordt gebruikt, wordt TimeGenerated ingevuld met de datum en tijd waarop de invoer Azure Monitor verzameld.
 
-
 1. Klik op **Bladeren** en blader naar een voorbeeld bestand.  Houd er rekening mee dat deze knop mogelijk een label **kiest** in sommige browsers.
 2. Klik op **Volgende**.
 3. Met de wizard voor aangepaste logboek bestanden wordt het bestand geüpload en worden de records weer geven die worden geïdentificeerd.
@@ -75,7 +78,6 @@ Als er een tijds tempel scheidings teken wordt gebruikt, wordt de eigenschap Tim
 U moet een of meer paden definiëren op de agent waar het aangepaste logboek kan worden gevonden.  U kunt een specifiek pad en naam opgeven voor het logboek bestand, of u kunt een pad met een Joker teken voor de naam. Dit biedt ondersteuning voor toepassingen die elke dag een nieuw bestand maken of wanneer een bestand een bepaalde grootte heeft bereikt. U kunt ook meerdere paden opgeven voor één logboek bestand.
 
 Een toepassing kan bijvoorbeeld elke dag een logboek bestand maken met de datum die is opgenomen in de naam in log20100316. txt. Een patroon voor een dergelijk logboek kan *\*log. txt* zijn die van toepassing zou zijn op elk logboek bestand volgens het naamgevings schema van de toepassing.
-
 
 De volgende tabel bevat voor beelden van geldige patronen om andere logboek bestanden op te geven.
 
@@ -105,7 +107,6 @@ Zodra Azure Monitor begint met het verzamelen van het aangepaste logboek, zijn r
 > [!NOTE]
 > Als de eigenschap RawData ontbreekt in de query, moet u mogelijk uw browser sluiten en opnieuw openen.
 
-
 ### <a name="step-6-parse-the-custom-log-entries"></a>Stap 6. De aangepaste logboek vermeldingen parseren
 De volledige logboek vermelding wordt opgeslagen in één eigenschap met de naam **RawData**.  Waarschijnlijk wilt u de verschillende delen van de gegevens in elk item scheiden in afzonderlijke eigenschappen voor elke record. Raadpleeg het [parseren van tekst gegevens in azure monitor](../log-query/parse-text.md) voor opties voor het parseren van **RawData** in meerdere eigenschappen.
 
@@ -114,7 +115,6 @@ Gebruik het volgende proces in de Azure Portal om een aangepast logboek te verwi
 
 1. Selecteer in het menu **Data** van de **Geavanceerde instellingen** voor uw werk ruimte de optie **aangepaste logboeken** om alle aangepaste logboeken weer te geven.
 2. Klik op **verwijderen** naast het aangepaste logboek dat u wilt verwijderen.
-
 
 ## <a name="data-collection"></a>Gegevensverzameling
 Azure Monitor worden ongeveer elke vijf minuten nieuwe vermeldingen van elk aangepast logboek verzameld.  De agent registreert de locatie in elk logboek bestand dat wordt verzameld.  Als de agent gedurende een bepaalde tijd offline gaat, worden er door Azure Monitor gegevens verzameld van waar deze zich voor het laatst heeft verlaten, zelfs als deze vermeldingen zijn gemaakt terwijl de agent offline was.
@@ -135,11 +135,11 @@ Aangepaste logboek records hebben een type met de naam van het logboek dat u opg
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Voorbeeld scenario voor het toevoegen van een aangepast logboek
 In het volgende gedeelte wordt een voor beeld van het maken van een aangepast logboek beschreven.  Het voorbeeld logboek dat wordt verzameld heeft één vermelding op elke regel, beginnend met een datum en tijd en vervolgens door komma's gescheiden velden voor code, status en bericht.  Hieronder ziet u enkele voor beelden van vermeldingen.
 
-    2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2016-03-10 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2016-03-10 01:38:22 302,Error,Application could not connect to database
-    2016-03-10 01:31:34 303,Error,Application lost connection to database
+    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+    2019-08-27 01:38:22 302,Error,Application could not connect to database
+    2019-08-27 01:31:34 303,Error,Application lost connection to database
 
 ### <a name="upload-and-parse-a-sample-log"></a>Een voorbeeld logboek uploaden en parseren
 We bieden een van de logboek bestanden en kunnen de gebeurtenissen zien die worden verzameld.  In dit geval is de nieuwe regel een voldoende scheidings teken.  Als één vermelding in het logboek echter meerdere regels kan omvatten, moet er een tijds tempel scheidings teken worden gebruikt.
@@ -157,14 +157,10 @@ We gebruiken de naam *MyApp_CL* en voeren een **Beschrijving**in.
 ![Logboek naam](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Controleren of de aangepaste logboeken worden verzameld
-We gebruiken een query van *type = MyApp_CL* om alle records uit het verzamelde logboek te retour neren.
+We gebruiken een eenvoudige query van *MyApp_CL* om alle records uit het verzamelde logboek te retour neren.
 
 ![Logboek query zonder aangepaste velden](media/data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>De aangepaste logboek vermeldingen parseren
-We gebruiken aangepaste velden om de velden *EventTime*, *code*, *status*en *bericht* te definiëren en we kunnen het verschil zien in de records die door de query worden geretourneerd.
-
-![Logboek query met aangepaste velden](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="alternatives-to-custom-logs"></a>Alternatieven voor aangepaste logboeken
 Aangepaste logboeken zijn nuttig als uw gegevens voldoen aan de criteria die worden weer gegeven, maar er zijn situaties zoals de volgende, waar u een andere strategie nodig hebt:

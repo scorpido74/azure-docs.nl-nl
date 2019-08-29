@@ -1,7 +1,7 @@
 ---
-title: 'Boosted Decision Tree regressie: Moduleverwijzing'
+title: 'Regressie verbetering van de beslissings structuur: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module Boosted Decision Tree regressie in de Azure Machine Learning-service te maken van een ensembles van regressiestructuren met behulp van verhogen.
+description: Meer informatie over het gebruik van de versterkde regressie-module voor de beslissings structuur in Azure Machine Learning service om een ensemble van regressie structuren te maken met behulp van Boosting.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,80 +9,79 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 67e54f10074ee566ce974dbd27485904bfe0a653
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de4135c2e516eb7f26e1b99a22a60501f4577cce
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411551"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128959"
 ---
-# <a name="boosted-decision-tree-regression-module"></a>Boosted Decision Tree regressie-module
+# <a name="boosted-decision-tree-regression-module"></a>Regressie module voor versterkte beslissings structuur
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Deze module gebruiken voor het maken van een ensembles van regressiestructuren met behulp van verhogen. *Versterking* betekent dat elke structuur afhankelijk van de voorafgaande structuren is. Het algoritme leert door de resterende van de vertakkingen die eraan vooraf gingen. Dus doorgaans in een decision tree ensembles versterking de nauwkeurigheid vergroten met kleine kans op minder dekking.  
+Gebruik deze module om een ensemble van regressie structuren te maken met behulp van Boosting. *Versterking* houdt in dat elke boom structuur afhankelijk is van eerdere structuren. Het algoritme leert u door het aanpassen van de rest van de bomen die erop werden gevolgd. Zo kunt u in een beslissings structuur een ensemble verhogen om de nauw keurigheid van een klein risico van minder behoefte aan te nemen.  
   
-Deze regressiemethode is een methode voor het leren met supervisie, en daarom vereist een *gegevensset met het label*. De labelkolom moet numerieke waarden bevatten.  
+Deze regressie methode is een gelabelde leer methode en vereist daarom een gegevensset met de *naam*. De label kolom moet numerieke waarden bevatten.  
 
 > [!NOTE]
-> Gebruik deze module alleen met gegevenssets die gebruikmaken van numerieke variabelen.  
+> Gebruik deze module alleen met gegevens sets die numerieke variabelen gebruiken.  
 
-Nadat u het model hebt gedefinieerd, traint met behulp van de [Train Model](./train-model.md).
+Nadat u het model hebt gedefinieerd, traint u het met het [Train model](./train-model.md).
 
 > [!TIP]
-> Wilt u meer weten over de structuren die zijn gemaakt? Nadat het model is getraind, met de rechtermuisknop op de uitvoer van de [Train Model](./train-model.md) -module en selecteer **Visualize** om te zien van de structuur die is gemaakt op elke iteratie. U kunt inzoomen op de splitsingen voor elke structuur en bekijkt de regels voor elk knooppunt.  
+> Wilt u meer weten over de structuur die is gemaakt? Nadat het model is getraind, klikt u met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteert u visualiseren om de boom structuur te zien die op elke iteratie is gemaakt. U kunt inzoomen op de splitsingen voor elke structuur en de regels voor elk knoop punt bekijken.  
   
-## <a name="more-about-boosted-regression-trees"></a>Meer informatie over het boosted regressiestructuren  
+## <a name="more-about-boosted-regression-trees"></a>Meer informatie over versterkte regressie structuren  
 
-Versterking is een van verschillende klassieke methoden voor het maken van modellen ensembles, samen met gezakt, willekeurige forests, enzovoort.  Boosted decision trees gebruiken in Azure Machine Learning, een efficiënte implementatie van de kleurovergang voor de DATAMART versterking algoritme. Gradient boosting is een machine learning-technieken voor regressie problemen. Deze bouwt elke boomstructuur regressie van een stap voor stap wijze, met een vooraf gedefinieerde verlies-functie voor het meten van de fout in elke stap en corrigeren voor het in de volgende. De voorspellingsmodel is dus eigenlijk een ensembles van zwakkere voorspellende modellen.  
+Versterking is een van de klassieke methoden voor het maken van ensemble-modellen, samen met behulp van de inbagging, wille keurige forests enzovoort.  In Azure Machine Learning gebruiken versterkte beslissings structuren een efficiënte implementatie van het Boost-algoritme voor de bloedkleur overgang. Verbetering van de kleur overgang is een machine learning techniek voor regressie problemen. Hiermee wordt elke regressie structuur op een stapsgewijse manier gebouwd, waarbij een vooraf gedefinieerde verlies functie wordt gebruikt om de fout in elke stap te meten en in de volgende weer te corrigeren. Daarom is het Voorspellings model eigenlijk een ensemble van zwakkere Voorspellings modellen.  
   
-Problemen met regressie, versterking bouwt een reeks structuren in een stap voor stap manier en selecteert vervolgens de optimale structuur met behulp van een willekeurige differentieerbare verlies-functie.  
+Bij regressie problemen bouwt het versterking van een reeks structuren op een stapsgewijse manier en selecteert de optimale boom structuur met een wille keurige differentiatie functie.  
   
-Voor meer informatie, Zie de volgende artikelen:  
+Zie de volgende artikelen voor meer informatie:  
   
 + [https://wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting](https://wikipedia.org/wiki/Gradient_boosting)
 
-    Deze Wikipedia-artikel op gradient boosting wordt enige achtergrondinformatie gegeven op boosted structuren. 
+    In dit Wikipedia-artikel over verloop versterking wordt een achtergrond op gestimuleerde structuren geboden. 
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Microsoft Research: Van RankNet naar LambdaRank naar LambdaMART: Een overzicht. Door J.C. Burges.
+    Microsoft Research: Van RankNet tot LambdaRank naar LambdaMART: Een overzicht. Door J.C. Burges.
 
-De kleurovergang voor de verhoging van de methode kan ook worden gebruikt voor classificatie problemen doordat ze naar de regressie bij een geschikte verlies-functie. Zie voor meer informatie over de implementatie boosted structuren voor classificatie taken [Two-Class Boosted beslissingsstructuur](./two-class-boosted-decision-tree.md).  
+De methode voor het verhogen van de kleur overgang kan ook worden gebruikt voor classificatie problemen door deze te verminderen tot regressie met een geschikte verlies functie. Zie voor meer informatie over de implementatie van de versterkte bomen voor classificatie taken, [twee klasse boosted beslissings structuur](./two-class-boosted-decision-tree.md).  
 
-## <a name="how-to-configure-boosted-decision-tree-regression"></a>Boosted Decision Tree regressie configureren
+## <a name="how-to-configure-boosted-decision-tree-regression"></a>Verbetering van de regressie beslissings structuur configureren
 
-1.  Voeg de **beslissingsstructuur heeft de Klantenopbrengst** module naar het experimentcanvas. U vindt deze module onder **Machine Learning**, **initialiseren**onder de **regressie** categorie. 
+1.  Voeg de **Uitgeboostte beslissings structuur** module toe aan uw experiment. U kunt deze module vinden onder **machine learning**, **initialiseren**, onder de categorie **regressie** . 
   
-2.  Geef op hoe u het model te trainen, door in te stellen de **trainer aanmaakmodus** optie.  
+2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén Parameter**: Selecteer deze optie als u hoe u wilt configureren van het model weet, en een specifieke set waarden als argumenten.  
+    -   **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden als argumenten op.  
    
   
-3. **Maximum aantal Bladeren per structuur**: Het maximum aantal terminal knooppunten (bladeren) dat kan worden gemaakt in een boomstructuur aangeven.  
+3. **Maximum aantal Leaves per boom structuur**: Hiermee wordt het maximum aantal Terminal knooppunten (Leaves) aangegeven dat in een structuur kan worden gemaakt.  
 
-    Door deze waarde, u mogelijk Verhoog de grootte van de structuur en betere nauwkeurigheid, indien overfitting en meer tijd voor trainingen.  
+    Door deze waarde te verg Roten, kunt u de grootte van de structuur verg Roten, waardoor het risico op overschrijding en een langere tijd beter is.  
 
-4. **Minimum aantal voorbeelden per leaf-knooppunt**: Het minimumaantal cases die zijn vereist voor het maken van een terminal (leaf) van de knooppunten in een boomstructuur aangeven.
+4. **Minimum aantal steek proeven per blad knooppunt**: Geef het minimum aantal cases aan dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.
 
-    Door deze waarde, verhoogt u de drempelwaarde voor het maken van nieuwe regels. Bijvoorbeeld, met de standaardwaarde van 1, zelfs op een enkel geval kan leiden tot een nieuwe regel moet worden gemaakt. Als u de waarde 5 verhoogt, wordt de trainingsgegevens hoeft te bevatten ten minste 5 aanvragen die voldoen aan de dezelfde voorwaarden.
+    Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de opleidings gegevens ten minste 5 gevallen bevatten die aan dezelfde voor waarden voldoen.
 
-5. **Learning-tarief**: Typ een getal tussen 0 en 1 die de Stapgrootte van de bij het leren definieert. Het leertempo bepaalt hoe snel of traag de cursist convergeert wel op de optimale oplossing ligt. Als de Stapgrootte van de is te groot is, kunt u de optimale oplossing overschrijding. Als de stap te klein is, duurt training langer om te convergeren op de beste oplossing.
+5. **Leer tempo**: Typ een getal tussen 0 en 1 dat de stap grootte tijdens het leren definieert. Het leer tempo bepaalt hoe snel of traag de kenniser convergeert met de optimale oplossing. Als de grootte van de stap te groot is, kunt u de optimale oplossing overschrijden. Als de grootte van de stap te klein is, neemt de training meer tijd in beslag op de beste oplossing.
 
-6. **Aantal structuren gebouwd**: Geeft het totale aantal beslissingsstructuren om te maken in de ensembles. Als u meer beslisbomen maakt, krijgt u mogelijk betere dekking, maar trainingstijd toeneemt.
+6. **Aantal geconstrueerde structuren**: Geef het totaal aantal beslissings structuren op dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar de trainings tijd wordt verhoogd.
 
-    Deze waarde bepaalt ook het aantal structuren weergegeven bij het visualiseren van het getrainde model. Als u wilt zien of een boomstructuur ingle afdrukken, kunt u de waarde ingesteld op 1. echter slechts één structuur wordt gemaakt (de structuur met de eerste set parameters) en er is geen verdere pogingen worden uitgevoerd.
+    Deze waarde bepaalt ook het aantal structuren dat wordt weer gegeven wanneer het getrainde model wordt gevisualiseerd. Als u een Ingle-structuur wilt zien of afdrukken, kunt u de waarde instellen op 1. Er wordt echter slechts één structuur geproduceerd (de boom structuur met de initiële set para meters) en er worden geen verdere herhalingen uitgevoerd.
 
-7. **Willekeurig getal seed**: Typ een optionele niet-negatief geheel getal in om te gebruiken als de random seed-waarde. Een seed opgeeft, zorgt u ervoor reproduceerbaarheid voor uitvoert met dezelfde gegevens en parameters.
+7. **Wille keurig aantal Seed**: Typ een optioneel niet-negatief geheel getal dat moet worden gebruikt als de wille keurige Seed-waarde. Het opgeven van een Seed zorgt voor een reproduceer baarheid van alle uitvoeringen die dezelfde gegevens en para meters hebben.
 
-    De random seed is standaard ingesteld op 0, wat betekent dat de eerste seed-waarde wordt opgehaald uit de systeemklok.
+    Standaard is de wille keurige Seed ingesteld op 0, wat betekent dat de aanvankelijke Seed-waarde wordt opgehaald uit de systeem klok.
   
-8. **Onbekende categorische niveaus toestaan**: Selecteer deze optie voor het maken van een groep voor onbekende waarden in de sets trainings- en validatie. Als u deze optie uitschakelt, kan het model alleen de waarden die zijn opgenomen in de trainingsgegevens accepteren. Het model is mogelijk minder nauwkeurig voor bekende waarden, maar dit kunt doen van betere voorspellingen voor nieuwe (onbekend) waarden bieden.
+8. **Onbekende categorische-niveaus toestaan**: Selecteer deze optie als u een groep wilt maken voor onbekende waarden in de trainings-en validatie sets. Als u deze optie uitschakelt, kan het model alleen de waarden accepteren die deel uitmaken van de trainings gegevens. Het model is mogelijk minder nauw keurig voor bekende waarden, maar het kan betere voor spellingen bieden voor nieuwe (onbekende) waarden.
 
-9. Een gegevensset training en een van de trainingsmodules toevoegen:
+9. Voeg een trainings gegevensset en een van de trainings modules toe:
 
-    - Als u instelt **trainer aanmaakmodus** optie naar **één Parameter**, gebruikt u de [Train Model](train-model.md) module.  
+    - Als u de optie **trainers modus maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .  
   
     
 
@@ -90,16 +89,16 @@ De kleurovergang voor de verhoging van de methode kan ook worden gebruikt voor c
   
 ### <a name="results"></a>Resultaten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ Als u wilt zien van de structuur die is gemaakt op elke herhaling, met de rechtermuisknop op de uitvoer van de [Train Model](train-model.md) -module en selecteer **Visualize**.
++ Klik met de rechter muisknop op de uitvoer van de module [Train model](train-model.md) en selecteer visualiseren om de structuur weer te gevendie op elke iteratie is gemaakt.
   
-     Klik op elke structuur als u wilt inzoomen op de splitsingen en de regels voor elk knooppunt.  
+     Klik op elke structuur om in te zoomen op de splitsingen en Bekijk de regels voor elk knoop punt.  
 
-+ Voor het gebruik van het model voor het scoren, verbindt deze met [Score Model](./score-model.md), om waarden voor nieuwe invoer voorbeelden te voorspellen.
++ Als u het model voor scores wilt gebruiken, verbindt u het met het [score model](./score-model.md)om waarden te voors pellen voor nieuwe invoer voorbeelden.
 
-+ Om een momentopname van het getrainde model hebt opgeslagen, met de rechtermuisknop op de **Trained model** uitvoer van de trainingsmodule en selecteer **OpslaanAls**. De kopie van het getrainde model dat u opslaat, is niet bijgewerkt op opeenvolgende uitvoeringen van het experiment.
++ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de getrainde **model** uitvoer van de trainings module en selecteert u **Opslaan als**. Het exemplaar van het getrainde model dat u opslaat, wordt niet bijgewerkt bij opeenvolgende uitvoeringen van het experiment.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: 1c365790e1633a74be9f5baf41098e7511f99a7d
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 2fd8934f34b811c0a2532f27e32fc799c2c8186e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563283"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141851"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
 
@@ -82,7 +82,7 @@ Ga als volgt te werk op elke virtuele machine voor een geslaagde domein koppelin
 5. Verifieer met een domein account dat bevoegdheden heeft voor computers die lid zijn van een domein.
 
     >[!NOTE]
-    > Als u uw virtuele machines lid maakt van een Azure AD Domain Services omgeving, moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)-Administrators.
+    > Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)-Administrators.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>De virtuele machines registreren bij de hostgroep voor Windows virtueel bureau blad-voor beeld
 

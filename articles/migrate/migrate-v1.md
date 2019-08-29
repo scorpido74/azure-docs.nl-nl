@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905229"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142088"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -201,7 +201,7 @@ Als u afhankelijkheids visualisatie wilt gebruiken, koppelt u een Log Analytics-
 1. Als u een Log Analytics werk ruimte aan een project wilt koppelen, klikt u in **overzicht**> **Essentials**op **configuratie vereist**.
 2. U kunt een nieuwe werk ruimte maken of een bestaande toevoegen:
   - Geef een naam op om een nieuwe werk ruimte te maken. De werk ruimte wordt gemaakt in een regio in dezelfde [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) als het migratie project.
-  - Wanneer u een bestaande werk ruimte koppelt, kunt u kiezen uit alle beschik bare werk ruimten in hetzelfde abonnement als het migratie project. Er worden alleen werk ruimten weer gegeven die zijn gemaakt in een [ondersteunde servicetoewijzing regio](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Als u een werk ruimte wilt koppelen, moet u ervoor zorgen dat u toegang hebt tot de werk ruimte.
+  - Wanneer u een bestaande werk ruimte koppelt, kunt u kiezen uit alle beschik bare werk ruimten in hetzelfde abonnement als het migratie project. Er worden alleen werk ruimten weer gegeven die zijn gemaakt in een [ondersteunde servicetoewijzing regio](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Als u een werk ruimte wilt koppelen, moet u ervoor zorgen dat u toegang hebt tot de werk ruimte.
 
 > [!NOTE]
 > U kunt de werk ruimte die is gekoppeld aan een migratie project niet wijzigen.

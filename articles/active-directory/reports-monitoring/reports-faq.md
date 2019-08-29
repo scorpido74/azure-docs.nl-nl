@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987930"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127013"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Veelgestelde vragen over Azure Active Directory rapporten
 
@@ -37,7 +37,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 **V: Ik gebruik momenteel de `https://graph.windows.net/<tenant-name>/reports/` endpoint api's om Azure AD-beveiligings rapporten (specifieke typen detecties, zoals gelekte referenties of aanmeldingen vanaf anonieme IP-adressen), via een programma te halen in onze rapportage systemen. Waar moet ik naar overschakelen?**
 
-**A:** U kunt de [API](../identity-protection/graph-get-started.md) voor risico gebeurtenissen voor identiteits beveiliging gebruiken voor toegang tot beveiligings detecties via Microsoft Graph. Deze nieuwe indeling biedt meer flexibiliteit in de manier waarop u gegevens kunt opvragen, met geavanceerde filters, veld selectie en meer, en risico gebeurtenissen in één type worden gestandardization voor een eenvoudige integratie in Siem's en andere hulpprogram ma's voor het verzamelen van gegevens. Omdat de gegevens een andere indeling hebben, kunt u geen nieuwe query vervangen door uw oude query's. [De nieuwe API maakt echter gebruik van Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent). Dit is de micro soft-norm voor dergelijke Api's als O365 of Azure AD. Het werk vereist dus om uw huidige micro soft Graph-investeringen uit te breiden of om u te helpen bij het starten van de overgang naar dit nieuwe standaard platform.
+**A:** U kunt de [API](../identity-protection/graph-get-started.md) voor risico detectie van identiteits beveiliging gebruiken voor toegang tot beveiligings detecties via Microsoft Graph. Deze nieuwe indeling biedt meer flexibiliteit in de manier waarop u gegevens kunt opvragen, met geavanceerde filters, veld selectie en meer, en waarmee risico detecties in één type worden gestandaardiseerd, zodat integratie gemakkelijker kan worden geïntegreerd in Siem's en andere hulpprogram ma's voor gegevens verzameling. Omdat de gegevens een andere indeling hebben, kunt u geen nieuwe query vervangen door uw oude query's. [De nieuwe API maakt echter gebruik van Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent). Dit is de micro soft-norm voor dergelijke Api's als O365 of Azure AD. Het werk vereist dus om uw huidige micro soft Graph-investeringen uit te breiden of om u te helpen bij het starten van de overgang naar dit nieuwe standaard platform.
 
 ---
 
@@ -107,7 +107,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 ## <a name="risky-sign-ins"></a>Riskante aanmeldingen
 
-**V: Er is sprake van een risico gebeurtenis in identiteits beveiliging, maar ik zie geen corresponderende aanmelding in het rapport met aanmeldingen. Wordt dit verwacht?**
+**V: Er is sprake van een risico detectie in identiteits beveiliging, maar ik zie geen corresponderende aanmelding in het rapport met aanmeldingen. Wordt dit verwacht?**
 
 **A:** Ja, identiteits beveiliging evalueert Risico's voor alle verificatie stromen, ongeacht of deze interactief of niet-interactief zijn. Het rapport alle aanmeldingen alleen bevat alleen de interactieve aanmeldingen.
 
@@ -115,7 +115,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 **V: Hoe kan ik weet u waarom een aanmelding of een gebruiker een risico heeft gevlagd in de Azure Portal?**
 
-**A:** Als u een **Azure AD Premium** -abonnement hebt, kunt u meer te weten komen over de onderliggende risico gebeurtenissen door de gebruiker te selecteren in gebruikers die zijn **gemarkeerd voor risico** of door een record te selecteren in het rapport **Risk ante** aanmeldingen. Als u een **gratis** of **basis** abonnement hebt, kunt u de gebruikers weer geven die risico lopen en rapporten met Risk ante aanmeldingen, maar u kunt de gegevens van de onderliggende risico gebeurtenis niet zien.
+**A:** Als u een **Azure AD Premium** -abonnement hebt, kunt u meer te weten komen over de onderliggende risico detecties door de gebruiker te selecteren in gebruikers die zijn **gemarkeerd voor risico** of door een record te selecteren in het rapport **Risk ante** aanmeldingen. Als u een **gratis** of **basis** abonnement hebt, kunt u de gebruikers die risico lopen en rapporten met Risk ante aanmeldingen weer geven, maar u kunt de informatie over de onderliggende risico detectie niet zien.
 
 ---
 
@@ -125,7 +125,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 
 ---
 
-**V: Wat betekent de risico gebeurtenis ' Aanmelden met extra risico '?**
+**V: Wat betekent de risico detectie "aanmelden met extra risico gedetecteerd"?**
 
 **A:** Om u inzicht te geven in alle Risk ante aanmeldingen in uw omgeving, wordt ' Aanmelden met extra risico ' functions als tijdelijke aanduiding voor aanmeldingen voor detecties die exclusief zijn voor Azure AD Identity Protection-abonnees.
 

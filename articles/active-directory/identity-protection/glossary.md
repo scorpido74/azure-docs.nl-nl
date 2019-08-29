@@ -11,23 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6751fe74bfd9b8a07aec2263582d9f1a4bc0b2ac
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: b1a1c35929670891c38bb1b3e26806b4c9bed6a0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333979"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126450"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
 
 ### <a name="at-risk-user"></a>Risico (gebruiker)
-Een gebruiker met een of meer actieve risico gebeurtenissen. 
+Een gebruiker met een of meer actieve risico detecties. 
 
 ### <a name="atypical-sign-in-location"></a>Ongewoone aanmeldings locatie
 Een aanmelding vanaf een geografische locatie die niet gebruikelijk is voor de specifieke gebruiker, soort gelijke gebruikers of de Tenant.
 
 ### <a name="azure-ad-identity-protection"></a>Azure AD-identiteitsbeveiliging
-Een beveiligings module van Azure Active Directory die een geconsolideerde weer gave biedt voor risico gebeurtenissen en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van een organisatie.
+Een beveiligings module van Azure Active Directory die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van een organisatie.
 
 ### <a name="conditional-access"></a>Voorwaardelijke toegang
 Een beleid voor het beveiligen van de toegang tot bronnen. Regels voor voorwaardelijke toegang worden opgeslagen in de Azure Active Directory en worden geëvalueerd door Azure AD voordat ze toegang tot de resource verlenen.  Voor beelden van regels zijn het beperken van toegang op basis van de locatie van de gebruiker, de Apparaatstatus of de verificatie methode van de gebruiker.
@@ -38,31 +38,31 @@ Informatie over identificatie en bewijs van identificatie die wordt gebruikt om 
 ### <a name="event"></a>Gebeurtenis
 Een record van een activiteit in Azure Active Directory.
 
-### <a name="false-positive-risk-event"></a>ONWAAR-positief (risico gebeurtenis)
-Een status van een risico gebeurtenis is hand matig ingesteld door een gebruiker met identiteits beveiliging, waarmee wordt aangegeven dat de risico gebeurtenis is onderzocht en onjuist is gemarkeerd als een risico gebeurtenis.
+### <a name="false-positive-risk-detection"></a>ONWAAR-positief (risico detectie)
+Een status van een risico detectie is hand matig ingesteld door een gebruiker met identiteits beveiliging, die aangeeft dat de risico detectie is onderzocht en onjuist is gemarkeerd als risico detectie.
 
 ### <a name="identity"></a>Identiteit
 Een persoon of entiteit die moet worden geverifieerd door middel van verificatie, op basis van criteria zoals een wacht woord of een certificaat.
 
-### <a name="identity-risk-event"></a>Identiteits risico gebeurtenis
+### <a name="identity-risk-detection"></a>Identiteits risico detectie
 AAD-gebeurtenis die is gemarkeerd als afwijkend door identiteits beveiliging, en kan erop wijzen dat er is geknoeid met een identiteit.
 
-### <a name="ignored-risk-event"></a>Genegeerd (risico gebeurtenis)
-Een status van een risico gebeurtenis is hand matig ingesteld door een gebruiker met identiteits beveiliging, wat aangeeft dat de risico gebeurtenis is gesloten zonder dat er een herstel actie wordt uitgevoerd.
+### <a name="ignored-risk-detection"></a>Genegeerd (risico detectie)
+Een status van een risico detectie kan hand matig worden ingesteld door een gebruiker met identiteits beveiliging, wat aangeeft dat de risico detectie is gesloten zonder een herstel actie te ondernemen.
 
 ### <a name="impossible-travel-from-atypical-locations"></a>Onmogelijk traject van ongewone locaties
-Een risico gebeurtenis die wordt geactiveerd wanneer twee aanmeldingen voor dezelfde gebruiker worden gedetecteerd, waarbij ten minste een van de aanmeldingen afkomstig is van een ongewoone aanmeldings locatie en waar de tijd tussen de aanmeldings tijden korter is dan de minimale tijd die nodig is om fysiek te reizen tussen deze locaties.  
+Een risico detectie wordt geactiveerd wanneer twee aanmeldingen voor dezelfde gebruiker worden gedetecteerd, waarbij ten minste één van de aanmeldingen afkomstig is van een ongewoone aanmeldings locatie en waar de tijd tussen de aanmeldingen korter is dan de minimale tijds duur die nodig is voor het fysiek reizen tussen deze maplocaties.  
 
 ### <a name="investigation"></a>Onderzoek
-Het proces van het controleren van de activiteiten, logboeken en andere relevante informatie met betrekking tot een risico gebeurtenis om te bepalen of de stappen voor herstel of beperking nood zakelijk zijn, te begrijpen of en hoe de identiteit is aangetast en hoe de aangetaste identiteit is gebruikt.
+Het proces van het controleren van de activiteiten, logboeken en andere relevante informatie met betrekking tot een risico detectie om te bepalen of de stappen voor herstel of beperking nood zakelijk zijn, te begrijpen of en hoe de identiteit is aangetast en hoe het is aangetast de identiteit is gebruikt.
 
 ### <a name="leaked-credentials"></a>Gelekte referenties
-Een risico gebeurtenis die wordt geactiveerd wanneer de huidige gebruikers referenties (gebruikers naam en wacht woord) door ons onderzoekers openbaar op het donkere web worden gevonden.
+Een risico detectie wordt geactiveerd wanneer de huidige gebruikers referenties (gebruikers naam en wacht woord) door ons onderzoekers openbaar op het donkere web worden gevonden.
 
 ### <a name="mitigation"></a>Oplossing
-Een actie om de mogelijkheid van een aanvaller te beperken of te elimineren om te voor komen dat de identiteit of het apparaat is aangetast zonder dat de identiteit of de status van een computer wordt hersteld. Bij een beperking worden eerdere risico gebeurtenissen die zijn gekoppeld aan de identiteit of het apparaat niet opgelost.
+Een actie om de mogelijkheid van een aanvaller te beperken of te elimineren om te voor komen dat de identiteit of het apparaat is aangetast zonder dat de identiteit of de status van een computer wordt hersteld. Bij een oplossing worden eerdere risico detecties die zijn gekoppeld aan de identiteit of het apparaat niet opgelost.
 
-### <a name="multi-factor-authentication"></a>Meervoudige verificatie
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Een verificatie methode waarvoor twee of meer authenticatie methoden zijn vereist, die iets kunnen bevatten dat de gebruiker heeft, een dergelijk certificaat; iets wat de gebruiker weet, zoals gebruikers namen, wacht woorden of door gegeven zinsdelen; fysieke kenmerken, zoals een vinger afdruk. en persoonlijke kenmerken, zoals een persoonlijke hand tekening.
 
 ### <a name="offline-detection"></a>Offline detectie
@@ -75,34 +75,34 @@ Een deel van een beveiligings beleid, waarmee de entiteiten (groepen, gebruikers
 Het deel van een beveiligings beleid dat de omstandigheden beschrijft waarmee het beleid wordt geactiveerd en de acties die worden uitgevoerd wanneer het beleid wordt geactiveerd.
 
 ### <a name="prevention"></a>Preventie
-Een actie om schade aan de organisatie te voor komen door misbruik van een identiteit of een apparaat waarvoor wordt vermoed dat ze zijn aangetast of waarvan is geknoeid. Met een preventieve actie wordt het apparaat of de identiteit niet beveiligd en worden eerdere risico gebeurtenissen niet opgelost.
+Een actie om schade aan de organisatie te voor komen door misbruik van een identiteit of een apparaat waarvoor wordt vermoed dat ze zijn aangetast of waarvan is geknoeid. Een preventieve actie beveiligt niet het apparaat of de identiteit en biedt geen oplossing voor eerdere risico detecties.
 
 ### <a name="privileged-user"></a>Privileged (gebruiker)
-Een gebruiker die op het moment van een risico gebeurtenis permanente of tijdelijke beheerders machtigingen heeft voor een of meer resources in Azure Active Directory, zoals een globale beheerder, facturerings beheerder, service beheerder, gebruikers beheerder en wachtwoord beheerder. 
+Een gebruiker die op het moment van een risico detectie permanente of tijdelijke beheerders machtigingen had voor een of meer resources in Azure Active Directory, zoals een globale beheerder, facturerings beheerder, service beheerder, gebruikers beheerder en wacht woord Beheerder. 
 
-### <a name="real-time"></a>Realtime
+### <a name="real-time"></a>Real-time
 Zie real-time detectie.
 
 ### <a name="real-time-detection"></a>Real-time detectie
 De detectie van afwijkingen en de evaluatie van het risico van een gebeurtenis, zoals een aanmeldings poging voordat de gebeurtenis kan door gaan.
 
-### <a name="remediated-risk-event"></a>Hersteld (risico gebeurtenis)
-De status van een risico gebeurtenis wordt automatisch ingesteld op identiteits beveiliging, wat aangeeft dat de risico gebeurtenis is hersteld met behulp van de standaard actie voor door voeren voor dit type risico gebeurtenis. Als het wacht woord van de gebruiker bijvoorbeeld opnieuw wordt ingesteld, worden veel risico gebeurtenissen die aangeven dat het vorige wacht woord is aangetast automatisch hersteld.
+### <a name="remediated-risk-detection"></a>Opgelost (risico detectie)
+De status van een risico detectie wordt automatisch ingesteld op identiteits beveiliging, wat aangeeft dat de risico detectie is hersteld met behulp van de standaard actie voor door voeren van dit type risico detectie. Wanneer het wacht woord van de gebruiker bijvoorbeeld opnieuw wordt ingesteld, worden veel risico detecties die aangeven dat het vorige wacht woord is aangetast automatisch hersteld.
 
 ### <a name="remediation"></a>Herstel
-Een actie voor het beveiligen van een identiteit of een apparaat dat eerder is vermoed of waarvan bekend is dat deze worden aangetast. Met een herstel actie wordt de identiteit of het apparaat teruggezet naar een veilige status en worden eerdere risico gebeurtenissen die zijn gekoppeld aan de identiteit of het apparaat opgelost.
+Een actie voor het beveiligen van een identiteit of een apparaat dat eerder is vermoed of waarvan bekend is dat deze worden aangetast. Met een herstel actie wordt de identiteit of het apparaat teruggezet naar een veilige status en worden eerdere risico detecties die zijn gekoppeld aan de identiteit of het apparaat opgelost.
 
-### <a name="resolved-risk-event"></a>Opgelost (risico gebeurtenis)
-Een status van een risico gebeurtenis is hand matig ingesteld door een gebruiker voor identiteits beveiliging, waarmee wordt aangegeven dat de gebruiker een geschikte herstel actie heeft ondernomen voor externe identiteits beveiliging en dat de risico gebeurtenis moet worden beschouwd als gesloten.
+### <a name="resolved-risk-detection"></a>Opgelost (risico detectie)
+Een status van een risico detectie is hand matig ingesteld door een gebruiker voor identiteits beveiliging, waarmee wordt aangegeven dat de gebruiker een geschikte herstel actie heeft ondernomen voor externe identiteits beveiliging en dat de risico detectie als gesloten moet worden beschouwd.
 
-### <a name="risk-event-status"></a>Status van risico gebeurtenis
-Een eigenschap van een risico gebeurtenis die aangeeft of de gebeurtenis actief is en wanneer deze is gesloten, de reden voor het sluiten ervan.
+### <a name="risk-detection-status"></a>Status van de risico detectie
+Een eigenschap van een risico detectie, die aangeeft of de gebeurtenis actief is en wanneer deze is gesloten, de reden voor het sluiten ervan.
 
-### <a name="risk-event-type"></a>Type risicogebeurtenis
-Een categorie voor de risico gebeurtenis, waarmee het type afwijkingen wordt aangegeven dat de gebeurtenis heeft veroorzaakt als riskant beschouwd.
+### <a name="risk-detection-type"></a>Type risico detectie
+Een categorie voor de risico detectie, waarmee wordt aangegeven welk type afwijkingen de gebeurtenis heeft veroorzaakt als riskant beschouwd.
 
-### <a name="risk-level-risk-event"></a>Risico niveau (risico gebeurtenis)
-Een indicatie (hoog, gemiddeld of laag) van de ernst van de risico gebeurtenis om gebruikers met een identiteits beveiliging de prioriteit te geven van de acties die nodig zijn om het risico voor hun organisatie te verminderen. 
+### <a name="risk-level-risk-detection"></a>Risico niveau (risico detectie)
+Een indicatie (hoog, gemiddeld of laag) van de ernst van de risico detectie om gebruikers met een identiteits beveiliging de prioriteit te geven van de acties die nodig zijn om het risico voor hun organisatie te verminderen. 
 
 ### <a name="risk-level-sign-in"></a>Risico niveau (aanmelden)
 Een indicatie (hoog, gemiddeld of laag) van de kans dat voor een bepaalde aanmelding een andere persoon de identiteit van de gebruiker probeert te gebruiken.
@@ -126,21 +126,21 @@ Verifiëren met een identiteit in Azure Active Directory.
 Het proces of de actie voor het verifiëren van een identiteit in Azure Active Directory en de gebeurtenis die deze bewerking vastlegt.
 
 ### <a name="sign-in-from-anonymous-ip-address"></a>Aanmelden vanaf een anoniem IP-adres
-Een risico gebeurtenis die wordt geactiveerd na een geslaagde aanmelding vanaf een IP-adres dat is geïdentificeerd als een IP-adres van een anonieme proxy.
+Een risico detectie wordt geactiveerd na een geslaagde aanmelding vanaf een IP-adres dat is geïdentificeerd als een IP-adres van een anonieme proxy.
 
 ### <a name="sign-in-from-infected-device"></a>Aanmelden vanaf een geïnfecteerd apparaat
-Een risico gebeurtenis die wordt geactiveerd wanneer een aanmelding afkomstig is van een IP-adres, die bekend is om te worden gebruikt door een of meer apparaten die zijn aangetast en die actief probeert te communiceren met een bot-server.
+Een risico detectie wordt geactiveerd wanneer een aanmelding afkomstig is van een IP-adres, die bekend is om te worden gebruikt door een of meer apparaten die zijn aangetast en die actief probeert te communiceren met een bot-server.
 
 ### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Meld u aan bij een IP-adres met verdachte activiteiten
-Een risico gebeurtenis die wordt geactiveerd na een geslaagde aanmelding vanaf een IP-adres met een groot aantal mislukte aanmeldings pogingen over meerdere gebruikers accounts gedurende een korte periode.
+Een risico detectie wordt geactiveerd na een geslaagde aanmelding vanaf een IP-adres met een groot aantal mislukte aanmeldings pogingen over meerdere gebruikers accounts gedurende een korte periode.
 
 ### <a name="sign-in-from-unfamiliar-location"></a>Aanmelden vanaf onbekende locatie
-Een risico gebeurtenis die wordt geactiveerd wanneer een gebruiker zich heeft aangemeld vanaf een nieuwe locatie (IP, breedte graad/lengte graad en ASN).
+Een risico detectie wordt geactiveerd wanneer een gebruiker zich heeft aangemeld vanaf een nieuwe locatie (IP, breedte graad/lengte graad en ASN).
 
-### <a name="sign-in-risk"></a>Aanmeldingsrisico
+### <a name="sign-in-risk"></a>Aanmeldings risico
 Zie risico niveau (aanmelden)
 
-### <a name="sign-in-risk-policy"></a>Beleid voor aanmeldingsrisico's
+### <a name="sign-in-risk-policy"></a>Beleid voor aanmeldings Risico's
 Een beleid voor voorwaardelijke toegang dat het risico op een specifieke aanmelding evalueert en oplossingen toepast op basis van vooraf gedefinieerde voor waarden en regels.
 
 ### <a name="user-compromise-risk"></a>Risico op inbreuk van gebruiker
@@ -153,7 +153,7 @@ Zie risico niveau (inbreuk op de gebruiker).
 Een beleid voor voorwaardelijke toegang dat de aanmelding beschouwt en oplossingen op basis van vooraf gedefinieerde voor waarden en regels toepast.
 
 ### <a name="users-flagged-for-risk"></a>Gebruikers voor wie wordt aangegeven dat ze risico lopen
-Gebruikers met risico gebeurtenissen die actief of hersteld zijn
+Gebruikers die risico detecties hebben, die actief of hersteld zijn
 
 ### <a name="vulnerability"></a>Beveiligingsprobleem
 Een configuratie of voor waarde in Azure Active Directory, waardoor de Directory gevoelig is voor aanvallen of bedreigingen.

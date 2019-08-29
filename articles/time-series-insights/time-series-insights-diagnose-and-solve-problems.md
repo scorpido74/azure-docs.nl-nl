@@ -1,6 +1,6 @@
 ---
-title: Problemen vaststellen, oplossen en oplossen van problemen in Azure Time Series Insights | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u vaststellen, oplossen en oplossen van veelvoorkomende problemen die in uw Azure Time Series Insights-omgeving optreden.
+title: Problemen opsporen, problemen oplossen en oplossen in Azure Time Series Insights | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u veelvoorkomende problemen die zich kunnen voordoen in uw Azure Time Series Insights omgeving kunt vaststellen, oplossen en verhelpen.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -9,111 +9,112 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 05/07/2019
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa2e26666ce863d98b5c47201eeadb1d7f6a5d2c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164503"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129126"
 ---
-# <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Vaststellen en oplossen van problemen in uw Time Series Insights-omgeving
+# <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Problemen in uw Time Series Insights omgeving diagnosticeren en oplossen
 
-In dit artikel worden enkele problemen beschreven die in uw Azure Time Series Insights-omgeving optreden. Het artikel biedt mogelijke oorzaken en oplossingen voor het omzetten van.
+In dit artikel worden enkele problemen beschreven die kunnen optreden in uw Azure Time Series Insights omgeving. Het artikel bevat mogelijke oorzaken en oplossingen voor oplossing.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Meer informatie over algemene Time Series Insights klant uitdagingen en oplossingen.</br>
+### <a name="learn-about-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>Meer informatie over veelvoorkomende uitdagingen en oplossingen voor klanten Time Series Insights.</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
-## <a name="problem-no-data-is-shown"></a>Probleem: Er zijn geen gegevens worden weergegeven.
+## <a name="problem-no-data-is-shown"></a>Probleem: er worden geen gegevens weer gegeven
 
-Er zijn geen gegevens in de [Azure Time Series Insights explorer](https://insights.timeseries.azure.com) voor enkele veelvoorkomende redenen optreden:
+Er kunnen om verschillende redenen geen gegevens in de [Azure time series Insights Explorer](https://insights.timeseries.azure.com) optreden:
 
-### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Oorzaak A: gebeurtenis brongegevens bevinden zich niet in JSON-indeling
+### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Oorzaak van een: gebeurtenis bron gegevens bevindt zich niet in JSON-indeling
 
-Azure Time Series Insights biedt alleen ondersteuning voor JSON-gegevens. Zie voor voorbeelden van JSON, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
+Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelden van JSON, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
 
-### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Oorzaak B: de sleutel van de bron gebeurtenis ontbreekt een vereiste machtiging
+### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Oorzaak B: er ontbreekt een vereiste machtiging voor de bron sleutel van de gebeurtenis
 
-* Voor een IoT-hub in Azure IoT Hub, moet u de sleutel die is **service verbinding maken met** machtigingen. Een van de **iothubowner** of **service** beleidsregels werken omdat ze beide **service verbinding maken met** machtigingen.
+* Voor een IoT-hub in azure IoT Hub moet u de sleutel opgeven die **service Connect** -machtigingen heeft. Een van de **iothubowner** -of **service** beleidsregels werkt, omdat beide machtigingen voor **service verbinding** hebben.
 
-   [![IoT Hub-service verbindingsmachtigingen](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [![Verbindings machtigingen voor IoT Hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
-* Voor een event hub in Azure Event Hubs, moet u de sleutel die is **luisteren** machtigingen. Een van de **lezen** of **beheren** beleidsregels werken omdat ze beide **luisteren** machtigingen.
+* Voor een Event Hub in azure Event Hubs moet u de sleutel met de machtiging **Luis teren** opgeven. Een van de beleids regels voor **lezen** of **beheren** werkt, omdat deze beide over **Luister** machtigingen beschikken.
 
-   [![Event hub listen-machtigingen](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [![Event hub-Luister machtigingen](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
-### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Oorzaak C: de consumergroep opgegeven is niet exclusief voor Time Series Insights
+### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Oorzaak C: de verleende consumenten groep is niet exclusief Time Series Insights
 
-Als u een IoT-hub of een event hub registreert, is het belangrijk om te stellen de consumergroep die u wilt gebruiken om de gegevens te lezen. Deze consumergroep *kan niet worden gedeeld*. Als de consumergroep wordt gedeeld, de onderliggende IoT-hub of event hub automatisch en willekeurig verbreekt verbinding met een van de lezers. Geef een unieke consumergroep voor Time Series Insights om uit te lezen.
+Wanneer u een IoT-hub registreert of een Event Hub, is het belang rijk om de Consumer groep in te stellen die u wilt gebruiken voor het lezen van de gegevens. Deze consumenten groep *kan niet worden gedeeld*. Als de Consumer groep wordt gedeeld, wordt de onderliggende IoT-hub of Event Hub automatisch en wille keurig losgekoppeld van een van de lezers. Geef een unieke consumenten groep op voor de Time Series Insights om te lezen.
 
-## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Probleem: sommige gegevens worden weergegeven, maar er ontbreken gegevens
+## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Probleem: sommige gegevens worden weer gegeven, maar er ontbreken gegevens
 
-Wanneer gegevens slechts gedeeltelijk wordt weergegeven en de gegevens wordt weergegeven om te worden vertraging, moet u rekening houden met verschillende mogelijkheden.
+Wanneer gegevens slechts gedeeltelijk worden weer gegeven en de gegevens zichtbaar zijn, moet u rekening houden met verschillende mogelijkheden.
 
-### <a name="cause-a-your-environment-is-being-throttled"></a>Ervoor zorgen dat uw omgeving wordt beperkt A:
+### <a name="cause-a-your-environment-is-being-throttled"></a>Oorzaak van een: uw omgeving wordt beperkt
 
-Beperking is een veelvoorkomend probleem wanneer omgevingen zijn ingericht, nadat u een gebeurtenisbron met gegevens maken. Azure IoT Hub en Azure gebeurtenissen Hubs opslaan van gegevens voor maximaal zeven dagen. Time Series Insights begin altijd bij de oudste gebeurtenissen in de gebeurtenis bron (first in, First out, of *FIFO*).
+Beperking is een veelvoorkomend probleem bij het inrichten van omgevingen nadat u een gebeurtenis bron hebt gemaakt die gegevens bevat. Azure IoT Hub-en Azure Events-gegevens opslag zijn Maxi maal zeven dagen. Time Series Insights altijd beginnen met de oudste gebeurtenis in de bron van de gebeurtenis (First-in, first-out of *FIFO*).
 
-Als u 5 miljoen gebeurtenissen in een gebeurtenisbron hebt wanneer u verbinding met een S1 maakt, leest één eenheid Time Series Insights-omgeving, Time Series Insights ongeveer 1 miljoen gebeurtenissen per dag. Er kan uitzien zoals Time Series Insights vijf dagen met een latentie van ondervindt. Wat gebeurt er is echter dat de omgeving wordt beperkt.
+Als u bijvoorbeeld 5.000.000 gebeurtenissen in een gebeurtenis bron hebt wanneer u verbinding maakt met een S1-Time Series Insights omgeving met één eenheid, wordt door Time Series Insights ongeveer 1.000.000 gebeurtenissen per dag gelezen. Het lijkt erop dat Time Series Insights vijf latenties ondervindt. Maar wat er gebeurt, is dat de omgeving wordt beperkt.
 
-Als u oude gebeurtenissen in de gebeurtenisbron hebt, kunt u benaderen beperking op twee manieren:
+Als u oude gebeurtenissen in uw gebeurtenis bron hebt, kunt u op een van de volgende twee manieren beperken:
 
-- Limieten voor het bewaren van de bron van de gebeurtenis als u wilt verwijderen van oude gebeurtenissen die u niet wilt weergegeven in de Time Series Insights wijzigen.
-- Richt een groter van omgeving (het aantal eenheden) voor een betere de doorvoer van oude gebeurtenissen. Met behulp van het vorige voorbeeld, als u dezelfde S1 omgeving vijf eenheden voor één dag verhogen, moet de omgeving achterstand binnen een dag. Als uw productie-onveranderlijke gebeurtenis 1 miljoen of minder gebeurtenissen per dag is, kunt u de capaciteit van de gebeurtenis één eenheid beperken nadat deze de resultaten.
+- Wijzig de Bewaar limieten van uw gebeurtenis bron om oude gebeurtenissen die u niet wilt weer geven in Time Series Insights te verwijderen.
+- Richt een grotere omgevings grootte (aantal eenheden) in om de door Voer van oude gebeurtenissen te verg Roten. Als u in het voor gaande voor beeld dezelfde S1-omgeving tot vijf eenheden voor één dag verhoogt, moet de omgeving binnen een dag worden opgevangen. Als de productie van de vaste-toestand gebeurtenis 1.000.000 of minder gebeurtenissen per dag is, kunt u de capaciteit van de gebeurtenis beperken tot één eenheid nadat deze is opgevangen.
 
-De beperkingslimiet wordt afgedwongen op basis van de SKU-type van de omgeving en capaciteit. Alle bronnen van gebeurtenissen in de omgeving delen deze capaciteit. Als de bron van de gebeurtenis voor uw IoT-hub of event hub pushes gegevens buiten de grenzen afgedwongen, ziet u de beperking en een vertraging.
+De beperkings limiet wordt afgedwongen op basis van het SKU-type en de capaciteit van de omgeving. Alle gebeurtenis bronnen in de omgeving delen deze capaciteit. Als de gebeurtenis bron voor uw IoT-hub of Event Hub gegevens na de afgedwongen limieten pusht, ziet u vertraging en een vertraging.
 
-De volgende afbeelding toont een Time Series Insights-omgeving met een SKU van S1 en een capaciteit van 3. Kan het binnenkomende 3 miljoen gebeurtenissen per dag.
+In de volgende afbeelding ziet u een Time Series Insights omgeving met een SKU van S1 en een capaciteit van 3. Het kan 3.000.000 gebeurtenissen per dag inkomen.
 
-![Huidige omgeving SKU-capaciteit](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)] (media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[![Huidige capaciteit van de SKU van de omgeving](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
-Als voorbeeld wordt ervan uitgegaan dat deze omgeving berichten van een event hub neemt. De volgende afbeelding toont de frequentie van de inkomende gegevens:
+Als voor beeld wordt ervan uitgegaan dat een omgeving berichten van een Event Hub opneemt. Het dagelijkse ingangs tempo is ~ 67.000 berichten. Dit aantal wordt elke minuut op ongeveer 46 berichten omgezet. 
 
-[![Voorbeeld van de inkomende tarief voor een event hub](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)](media/diagnose-and-solve-problems/eventhub-ingress-rate.png#lightbox)
+* Als elke Event Hub-bericht wordt afgevlakt tot één Time Series Insights gebeurtenis, treedt er geen beperking op. 
+* Als elke Event Hub-bericht wordt afgevlakt tot 100 Time Series Insights gebeurtenissen, moeten 4.600-gebeurtenissen elke minuut worden opgenomen. 
 
-Het dagelijkse tarief voor inkomend verkeer is ~ 67,000 berichten. Dit tarief wordt omgezet in ongeveer 46 berichten per minuut. Als de event hub-bericht is samengevoegd tot één gebeurtenis Time Series Insights, plaats beperking niet. Als de event hub-bericht is samengevoegd tot 100 Time Series Insights-gebeurtenissen, moeten 4,600 gebeurtenissen per minuut worden opgenomen. Een S1 SKU-omgeving met een capaciteit van 3 kan alleen 2100 ingangsgebeurtenissen per minuut (1 miljoen gebeurtenissen per dag = 700 gebeurtenissen per minuut op basis van drie eenheden = 2100 gebeurtenissen per minuut). U ziet een vertraging vanwege een beperking voor deze instelling.
+Een S1-SKU-omgeving met een capaciteit van 3 kan per minuut slechts 2.100 gebeurtenissen binnenkomen (1.000.000 gebeurtenissen per dag = 700 gebeurtenissen per minuut bij drie eenheden = 2.100 gebeurtenissen per minuut). 
 
-Zie voor een grondig inzicht in hoe logische afvlakken werkt, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
+Zie [ondersteunde JSON-shapes](./how-to-shape-query-json.md)voor meer informatie over hoe afvlakking logisch werkt.
 
-#### <a name="recommended-resolutions-for-excessive-throttling"></a>Aanbevolen oplossingen voor overmatige beperking
+#### <a name="recommended-resolutions-for-excessive-throttling"></a>Aanbevolen oplossingen voor buitensporige beperking
 
-Om op te lossen de vertraging, vergroot u de SKU-capaciteit van uw omgeving. Zie voor meer informatie, [uw Time Series Insights-omgeving schalen](time-series-insights-how-to-scale-your-environment.md).
+Als u de vertraging wilt herstellen, verg root u de SKU-capaciteit van uw omgeving. Zie [uw time series Insights-omgeving schalen](time-series-insights-how-to-scale-your-environment.md)voor meer informatie.
 
-### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Oorzaak B: initiële opname van historische gegevens inkomend verkeer wordt vertraagd
+### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Oorzaak B: de eerste opname van historische gegevens vertraagt de ingang
 
-Als u een bestaande gebeurtenisbron verbindt, is het waarschijnlijk dat uw IoT-hub of event hub al gegevens bevat. De omgeving wordt gestart binnenhalen van gegevens vanaf het begin van de bewaarperiode van de bron van de gebeurtenis-bericht. De standaardverwerking van deze kan niet worden overschreven. U kunt betrekken beperking. Beperking kan duren voor meer informatie zoals het historische gegevens worden opgenomen.
+Als u een bestaande gebeurtenis bron verbindt, is het waarschijnlijk dat uw IoT-hub of Event Hub al gegevens bevat. De omgeving begint met het ophalen van gegevens uit het begin van de Bewaar periode van de gebeurtenis bron. Deze standaard verwerking kan niet worden overschreven. U kunt bandbreedte beperking inschakelen. Het kan even duren voordat de beperking is opgetreden tijdens het opnemen van historische gegevens.
 
-#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Aanbevolen oplossingen voor grote eerste gegevensopname
+#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>Aanbevolen oplossingen voor grote eerste opname
 
-Om op te lossen de vertraging:
+De vertraging oplossen:
 
-1. Verhoog de SKU-capaciteit voor de maximaal toegestane waarde (in dit geval 10). Nadat u de capaciteit verhoogt, wordt het proces inkomend verkeer wordt gestart om af te vangen veel sneller. U betaalt voor de grotere capaciteit. Om te visualiseren hoe snel u hebt vastgelegd, vindt u de beschikbaarheidsgrafiek in de [Verkenner van Time Series Insights](https://insights.timeseries.azure.com).
+1. Verhoog de capaciteit van de SKU tot de Maxi maal toegestane waarde (10, in dit geval). Nadat u de capaciteit hebt verhoogd, begint het ingangs proces veel sneller. Er worden kosten in rekening gebracht voor de toegenomen capaciteit. Als u wilt visualiseren hoe snel u opvangt, kunt u de beschikbaarheids grafiek weer geven in de [Time Series Insights Explorer](https://insights.timeseries.azure.com).
 
-2. Wanneer de vertraging is bijgewerkt, verlaagt u de SKU-capaciteit op de snelheid van de normale inkomend verkeer.
+2. Wanneer de vertraging is opgevangen, verlaagt u de SKU-capaciteit tot uw normale ingangs rente.
 
-## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Probleem: instelling van mijn gebeurtenisbron timestamp eigenschap name niet werkt
+## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Probleem: het instellen van de eigenschaps naam van de tijds tempel van mijn gebeurtenis is niet mogelijk
 
-Zorg ervoor dat de timestamp eigenschapsnaam en waarde aan de volgende regels voldoet:
+Zorg ervoor dat de naam van de tijds tempel eigenschap en de waarde voldoen aan de volgende regels:
 
-* Naam van de tijdstempeleigenschap is hoofdlettergevoelig.
-* De waarde van de timestamp eigenschap die afkomstig zijn uit uw gebeurtenisbron als een JSON-tekenreeks moet de indeling hebben _jjjj-MM-ddTUU. FFFFFFFK_. Een voorbeeld is **2008-04-12T12:53Z**.
+* De naam van de tijds tempel eigenschap is hoofdletter gevoelig.
+* De waarde van de tijds tempel eigenschap die afkomstig is van uw gebeurtenis bron als JSON-teken reeks moet de notatie _jjjj-mm-ddTuu: mm: SS hebben. FFFFFFFK_. Een voor beeld is **2008-04-12T12:53Z**.
 
-De eenvoudigste manier om ervoor te zorgen dat de naam van de tijdstempeleigenschap is vastgelegd en correct werkt, is met de Verkenner van Time Series Insights. Selecteer een bepaalde tijd nadat u de naam van de tijdstempeleigenschap ingevoerd in de Time Series Insights explorer, met behulp van de grafiek. Met de rechtermuisknop op de selectie en selecteer vervolgens de **gebeurtenissen onderzoeken** optie.
+De eenvoudigste manier om ervoor te zorgen dat de naam van de tijds tempel eigenschap wordt vastgelegd en correct werkt, is door de Time Series Insights Explorer te gebruiken. Selecteer in de Time Series Insights Explorer, in de grafiek, een periode nadat u de naam van de tijds tempel eigenschap hebt ingevoerd. Klik met de rechter muisknop op de selectie en selecteer vervolgens de optie **gebeurtenissen verkennen** .
 
-De eerste kolomkop moet de naam van de tijdstempeleigenschap. Naast het woord **Timestamp**, ziet u **($ts)** .
+De eerste kolomkop moet de naam van de eigenschap time stamp zijn. Naast het **tijds tempel**van het woord ziet u **($TS)** .
 
-Niet ziet u de volgende waarden:
+De volgende waarden mogen niet worden weer geven:
 
-- *(abc)* : Geeft aan dat Time Series Insights is worden gebruikt voor het lezen van de gegevenswaarden als tekenreeksen.
-- *Pictogram Agenda*: Geeft aan dat de gegevenswaarde is lezen van Time Series Insights *datum-/* .
-- *#* : Geeft aan dat Time Series Insights de gegevenswaarden wordt gelezen als een geheel getal zijn.
+- *(abc)* : Geeft aan dat Time Series Insights de gegevens waarden leest als teken reeksen.
+- *Kalender pictogram*: Geeft aan dat de gegevens waarde door Time Series Insights gelezen als *datum/tijd*.
+- *#* : Geeft aan dat Time Series Insights de gegevens waarden leest als een geheel getal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Hulp nodig hebt, kunt u een gesprek starten de [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) of [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights).
+- Start een gesprek in het [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)voor hulp.
 
-- Gebruik voor voor de ondersteuningsopties, [ondersteuning van Azure](https://azure.microsoft.com/support/options/).
+- Gebruik [Azure-ondersteuning](https://azure.microsoft.com/support/options/)voor ondersteunings opties.

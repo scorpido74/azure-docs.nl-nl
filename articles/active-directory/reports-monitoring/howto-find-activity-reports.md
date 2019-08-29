@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988288"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127393"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Activiteiten rapporten zoeken in de Azure Portal
 
@@ -112,29 +112,29 @@ U kunt het rapport aanmeldingen gebruiken om details over toepassings gebruik te
 
 ### <a name="anomalous-activity-reports"></a>Rapporten over afwijkende activiteiten
 
-Rapporten over afwijkende activiteiten bieden informatie over beveiligings Risico's die Azure AD kan detecteren en rapporteren.
+Afwijkende activiteiten rapporten bieden informatie over beveiligings risico detecties die Azure AD kan detecteren en rapporteren.
 
-De volgende tabel bevat de beveiligings rapporten van de afwijkende Azure AD-activiteiten en de bijbehorende risico gebeurtenis typen in de Azure Portal. Zie [Risicogebeurtenissen in Azure Active Directory](concept-risk-events.md) voor meer informatie.  
+De volgende tabel bevat de beveiligings rapporten van de afwijkende Azure AD-activiteiten en de bijbehorende typen risico detectie in de Azure Portal. Zie [Azure Active Directory-risico detectie](concept-risk-events.md)voor meer informatie.  
 
 
-| Rapport over afwijkend Azure AD-activiteiten |  Risico gebeurtenis type identiteits beveiliging|
+| Rapport over afwijkend Azure AD-activiteiten |  Type risico detectie identiteits bescherming|
 | :--- | :--- |
 | Gebruikers van wie de referenties zijn gelekt | Gelekte referenties |
 | Onregelmatige aanmeldingsactiviteiten | Onmogelijke reis naar ongewone locaties |
 | Aanmeldingen vanaf mogelijk geïnfecteerde apparaten | Aanmeldingen vanaf geïnfecteerde apparaten|
 | Aanmeldingen van onbekende bronnen | Aanmeldingen vanaf anonieme IP-adressen |
-| Aanmeldingen vanaf IP-adressen met verdachte activiteiten | Aanmeldingen vanaf IP-adressen met verdachte activiteiten |
+| Aanmeldingen van IP-adressen met verdachte activiteit | Aanmeldingen van IP-adressen met verdachte activiteit |
 | - | Aanmeldingen vanaf onbekende locaties |
 
-De volgende afwijkende beveiligings rapporten van Azure AD worden niet opgenomen als risico gebeurtenissen in de Azure Portal:
+De volgende afwijkende beveiligings rapporten van Azure AD worden niet opgenomen als risico detecties in de Azure Portal:
 
 * Aanmeldingen na meerdere mislukte pogingen
 * Aanmeldingen vanuit meerdere locaties
 
 
-### <a name="detected-risk-events"></a>Gedetecteerde risico gebeurtenissen
+### <a name="detected-risk-detections"></a>Gedetecteerde risico detecties
 
-U hebt toegang tot rapporten over gedetecteerde risico gebeurtenissen in het gedeelte **beveiliging** van de blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Gedetecteerde risico gebeurtenissen worden bijgehouden in de volgende rapporten:   
+U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **beveiliging** van de blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Gedetecteerde risico detecties worden bijgehouden in de volgende rapporten:   
 
 - [Gebruikers die risico lopen](concept-user-at-risk.md)
 - [Riskante aanmeldingen](concept-risky-sign-ins.md)
@@ -147,7 +147,7 @@ U hebt toegang tot rapporten over gedetecteerde risico gebeurtenissen in het ged
 
 #### <a name="symptoms"></a>Symptomen 
 
-Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Waarom? 
+Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie niet alle records voor de tijd die ik heb geselecteerd. Hoe komt dat? 
 
  ![Rapportage](./media/troubleshoot-missing-data-download/01.png)
  
@@ -205,7 +205,7 @@ Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het 
 
 #### <a name="symptoms"></a>Symptomen
 
-Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Waarom? 
+Ik kan niet meer dan 30 dagen aan aanmeldings- en controlegegevens bekijken in de Azure-portal. Hoe komt dat? 
 
  ![Rapportage](./media/troubleshoot-missing-audit-data/03.png)
 

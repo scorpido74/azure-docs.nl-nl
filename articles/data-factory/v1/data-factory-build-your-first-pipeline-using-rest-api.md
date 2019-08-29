@@ -3,22 +3,20 @@ title: Uw eerste gegevensfactory bouwen (REST) | Microsoft Docs
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn met behulp van de Data Factory-REST API.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ab36d475052aa71427427e1362c74abd031fa414
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5fe554371e54c6f67ae714084f110319b43fe54c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839462"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140438"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Zelfstudie: Uw eerste Azure-gegevensfactory bouwen met de Data Factory-REST API
 > [!div class="op_single_selector"]
@@ -57,9 +55,9 @@ De pijplijn in deze zelfstudie heeft één activiteit: **HDInsight Hive-activite
   4. Wijs de **ADFGetStartedApp**-toepassing toe aan de rol **Inzender Data Factory**.
 * Installeer [Azure PowerShell](/powershell/azure/overview).
 * Start **PowerShell** en voer de volgende opdracht uit. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
-  1. Voer **Connect AzAccount** en voer de gebruikersnaam en wachtwoord op waarmee u zich aanmeldt bij Azure portal.
-  2. Voer **Get-AzSubscription** om alle abonnementen voor dit account weer te geven.
-  3. Voer **Get-AzSubscription - SubscriptionName NameOfAzureSubscription | Set-AzContext** om te selecteren van het abonnement dat u wilt werken. Vervang **NameOfAzureSubscription** door de naam van uw Azure-abonnement.
+  1. Voer **Connect-AzAccount** uit en voer de gebruikers naam en het wacht woord in die u gebruikt om u aan te melden bij de Azure Portal.
+  2. Voer **Get-AzSubscription** uit om alle abonnementen voor dit account weer te geven.
+  3. Voer **Get-AzSubscription-Subscriptionname NameOfAzureSubscription | Stel-AzContext** in om het abonnement te selecteren waarmee u wilt werken. Vervang **NameOfAzureSubscription** door de naam van uw Azure-abonnement.
 * Maak een Azure-resourcegroep met de naam **ADFTutorialResourceGroup** door de volgende opdracht uit te voeren in PowerShell:
 
     ```powershell
@@ -170,13 +168,13 @@ De volgende tabel bevat beschrijvingen van de JSON-eigenschappen die in het code
 
 | Eigenschap | Description |
 |:--- |:--- |
-| type |De eigenschap type wordt ingesteld op AzureBlob, omdat de gegevens zich in de Azure-blobopslag bevinden. |
+| Type |De eigenschap type wordt ingesteld op AzureBlob, omdat de gegevens zich in de Azure-blobopslag bevinden. |
 | linkedServiceName |Deze eigenschap verwijst naar de StorageLinkedService die u eerder hebt gemaakt. |
 | fileName |Deze eigenschap is optioneel. Als u deze eigenschap niet opgeeft, worden alle bestanden uit folderPath gekozen. In dit geval wordt alleen input.log verwerkt. |
 | type |Omdat de logboekbestanden tekstbestanden zijn, gebruiken we TextFormat. |
 | columnDelimiter |Kolommen in de logboekbestanden worden gescheiden door een komma (,) |
 | frequency/interval |Als frequency wordt ingesteld op Month en de interval 1 is, betekent dat dat de invoersegmenten één keer per maand beschikbaar worden gemaakt. |
-| external |Deze eigenschap wordt ingesteld op true als de invoergegevens niet worden gegenereerd door de Data Factory-service. |
+| extern |Deze eigenschap wordt ingesteld op true als de invoergegevens niet worden gegenereerd door de Data Factory-service. |
 
 ### <a name="outputdatasetjson"></a>outputdataset.json
 

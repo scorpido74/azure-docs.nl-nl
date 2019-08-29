@@ -1,119 +1,136 @@
 ---
-title: Een Azure Kubernetes Service-cluster met de webdashboard beheren
-description: Informatie over het gebruik van de ingebouwde Kubernetes web UI-dashboard voor het beheren van een cluster Azure Kubernetes Service (AKS)
+title: Een Azure Kubernetes service-cluster beheren met het webdashboard
+description: Meer informatie over het gebruik van het ingebouwde Kubernetes Web UI-dash board voor het beheren van een Azure Kubernetes service-cluster (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mlearned
-ms.openlocfilehash: 0de2f285b5eca88a098a2d7cfe1608ad2f0db71b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5aa8268fee7d43ad13ea8710760ba493683f502e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615244"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126883"
 ---
-# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes-web-dashboard in Azure Kubernetes Service (AKS)
+# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes Web dash board in azure Kubernetes service (AKS)
 
-Kubernetes biedt een webdashboard dat kan worden gebruikt voor eenvoudige beheerbewerkingen. Dit dashboard kunt u de status van de basisbewaking van statussen en metrische gegevens voor uw toepassingen weergeven, maken en implementeren van services en bewerken van bestaande toepassingen. In dit artikel ziet u hoe u toegang tot het Kubernetes-dashboard met de Azure CLI en leidt u door enkele eenvoudige dashboard-bewerkingen.
+Kubernetes bevat een webdashboard dat kan worden gebruikt voor elementaire beheer bewerkingen. Met dit dash board kunt u de basis status en-metrische gegevens voor uw toepassingen bekijken, services maken en implementeren, en bestaande toepassingen bewerken. In dit artikel wordt beschreven hoe u met de Azure CLI toegang krijgt tot het Kubernetes-dash board en vervolgens een aantal eenvoudige dashboard bewerkingen doorloopt.
 
-Zie voor meer informatie over het Kubernetes-dashboard [Kubernetes Web UI-Dashboard][kubernetes-dashboard].
+Voor meer informatie over het Kubernetes-dash board raadpleegt u [Kubernetes Web UI-dash board][kubernetes-dashboard].
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-De stappen die in dit document wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt en hebben een `kubectl` verbinding met het cluster. Als u maken van een AKS-cluster wilt, raadpleegt u de [Quick Start voor AKS][aks-quickstart].
+Voor de stappen die in dit document worden beschreven, wordt ervan uitgegaan dat u een AKS `kubectl` -cluster hebt gemaakt en een verbinding met het cluster tot stand hebt gebracht. Als u een AKS-cluster moet maken, raadpleegt u de [AKS Quick][aks-quickstart]start.
 
-Ook moet de Azure CLI-versie 2.0.46 of later zijn geïnstalleerd en geconfigureerd. Voer  `az --version`  uit om de versie te bekijken. Als u wilt installeren of upgraden, Zie [Azure CLI installeren][install-azure-cli].
+Ook moet de Azure CLI-versie 2.0.46 of later zijn geïnstalleerd en geconfigureerd. Voer  `az --version`  uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
-## <a name="start-the-kubernetes-dashboard"></a>Start het Kubernetes-dashboard
+## <a name="start-the-kubernetes-dashboard"></a>Het Kubernetes-dash board starten
 
-Gebruiken om het Kubernetes-dashboard starten, de [az aks Bladeren][az-aks-browse] opdracht. Het volgende voorbeeld wordt het dashboard voor het cluster met de naam *myAKSCluster* in de resourcegroep met de naam *myResourceGroup*:
+Als u het Kubernetes-dash board wilt starten, gebruikt u de opdracht [AZ AKS Browse][az-aks-browse] . In het volgende voor beeld wordt het dash board geopend voor het cluster met de naam *myAKSCluster* in de resource groep met de naam *myResourceGroup*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Met deze opdracht maakt een proxy tussen uw systeem voor de ontwikkeling en het Kubernetes-API en opent een webbrowser naar de Kubernetes-dashboard. Als een webbrowser niet aan het Kubernetes-dashboard wordt geopend, kopieert en plakt u de URL-adres dat is vermeld in de Azure CLI, doorgaans `http://127.0.0.1:8001`.
+Met deze opdracht maakt u een proxy tussen uw ontwikkel systeem en de Kubernetes-API en opent u een webbrowser op het Kubernetes-dash board. Als een webbrowser niet wordt geopend in het Kubernetes-dash board, kopieert en plakt u het URL-adres dat u in `http://127.0.0.1:8001`de Azure cli hebt genoteerd, meestal.
 
-![De overzichtspagina van het Kubernetes-web-dashboard](./media/kubernetes-dashboard/dashboard-overview.png)
+![De aanmeldings pagina van het Kubernetes Web dash board](./media/kubernetes-dashboard/dashboard-login.png)
 
-### <a name="for-rbac-enabled-clusters"></a>Voor clusters met RBAC-ingeschakeld
+U hebt de volgende opties om u aan te melden bij het dash board van uw cluster:
 
-Als uw AKS-cluster maakt gebruik van RBAC, een *ClusterRoleBinding* moet worden gemaakt voordat u het dashboard correct kan openen. Standaard wordt met het Kubernetes-dashboard wordt geïmplementeerd met minimale leestoegang en RBAC toegangsfouten worden weergegeven. Het Kubernetes-dashboard biedt momenteel geen ondersteuning voor gebruiker opgegeven referenties om te bepalen het niveau van toegang, in plaats daarvan wordt de rollen die zijn verleend aan de serviceaccount. De Clusterbeheerder van een kunt aanvullende toegang verlenen tot de *kubernetes-dashboard* -serviceaccount, maar dit kan een vector voor uitbreiding van bevoegdheden zijn. U kunt ook Azure Active Directory-verificatie voor een meer gedetailleerd niveau van toegang integreren.
-
-U kunt een binding maken met de [kubectl maken clusterrolebinding][kubectl-create-clusterrolebinding] opdracht zoals wordt weergegeven in het volgende voorbeeld. 
+* Een [kubeconfig-bestand][kubeconfig-file]. U kunt een kubeconfig-bestand genereren met [AZ AKS Get-credentials][az-aks-get-credentials].
+* Een token, zoals een [Service account token][aks-service-accounts] of gebruikers token. Op met [Aad ingeschakelde clusters][aad-cluster]is dit token een Aad-token. U kunt gebruiken `kubectl config view` om de tokens in uw kubeconfig-bestand weer te geven. Zie [Azure Active Directory integreren met de Azure Kubernetes-service met de Azure cli][aad-cluster]voor meer informatie over het maken van een Aad-token voor gebruik met een AKS-cluster.
+* Het standaard dash board service-account, dat wordt gebruikt als u op *overs Laan*klikt.
 
 > [!WARNING]
-> Deze voorbeeld-binding is niet van toepassing op alle onderdelen van de aanvullende verificatie en kan leiden tot onveilig gebruiken. Het Kubernetes-dashboard is geopend voor iedereen met toegang tot de URL. Het Kubernetes-dashboard niet openbaar beschikbaar.
+> Open het Kubernetes-dash board nooit openbaar, ongeacht de gebruikte verificatie methode.
+> 
+> Wanneer u verificatie instelt voor het Kubernetes-dash board, is het raadzaam om een token te gebruiken voor het standaard dash board service-account. Met een token kan elke gebruiker hun eigen machtigingen gebruiken. Als u het standaard dash board service-account gebruikt, kan een gebruiker hun eigen machtigingen negeren en in plaats daarvan het service account gebruiken.
+> 
+> Als u ervoor kiest om het standaard dashboard service account te gebruiken en uw AKS-cluster gebruikmaakt van RBAC, moet u een *ClusterRoleBinding* maken voordat u het dash board correct kunt openen. Standaard wordt het Kubernetes-dash board geïmplementeerd met minimale Lees toegang en worden RBAC-toegangs fouten weer gegeven. Een cluster beheerder kan ervoor kiezen om extra toegang te verlenen aan het *kubernetes-dash board-* service account, maar dit kan een vector zijn voor het escaleren van bevoegdheden. U kunt ook Azure Active Directory-verificatie integreren om een nauw keuriger toegangs niveau te bieden.
 >
-> Zie voor meer informatie over het gebruik van de verschillende verificatiemethoden, de Kubernetes-dashboard-wiki op [besturingselementen voor toegang][dashboard-authentication].
+> Als u een binding wilt maken, gebruikt u de opdracht [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] , zoals weer gegeven in het volgende voor beeld. **Deze voorbeeld binding geldt niet voor aanvullende verificatie onderdelen en kan leiden tot onveilig gebruik.**
+>
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
+> 
+> U hebt nu toegang tot het Kubernetes-dash board in uw cluster met RBAC-functionaliteit. Als u het Kubernetes-dash board wilt starten, gebruikt u de opdracht [AZ AKS Browse][az-aks-browse] zoals beschreven in de vorige stap.
+>
+> Als uw cluster geen RBAC gebruikt, wordt het niet aanbevolen een *ClusterRoleBinding*te maken.
+> 
+> Voor meer informatie over het gebruik van de verschillende verificatie methoden, zie de Kubernetes dash board-wiki op [toegangs beheer][dashboard-authentication].
 
-```console
-kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
-```
+Nadat u een methode hebt gekozen om u aan te melden, wordt het Kubernetes-dash board weer gegeven. Als u ervoor kiest om *token* of *Skip*te gebruiken, gebruikt het Kubernetes-dash board de machtigingen van de gebruiker die momenteel is aangemeld voor toegang tot het cluster.
 
-U kunt nu toegang tot het Kubernetes-dashboard in uw cluster RBAC-functionaliteit. Gebruiken om het Kubernetes-dashboard starten, de [az aks Bladeren][az-aks-browse] opdracht zoals beschreven in de vorige stap.
+![De overzichts pagina van het Kubernetes Web dash board](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ## <a name="create-an-application"></a>Een app maken
 
-Als u wilt zien hoe het Kubernetes-dashboard kan de complexiteit van beheertaken, laten we u een toepassing maken. U kunt een toepassing van het Kubernetes-dashboard maken door op te geven tekstinvoer, een YAML-bestand, of via een grafische wizard.
+Als u wilt zien hoe het Kubernetes-dash board de complexiteit van beheer taken kan verminderen, gaan we een toepassing maken. U kunt een toepassing vanuit het Kubernetes-dash board maken door tekst invoer, een YAML-bestand of een grafische wizard te leveren.
 
-Voor het maken van een toepassing, voert u de volgende stappen uit:
+Voer de volgende stappen uit om een toepassing te maken:
 
-1. Selecteer de **maken** knop in het bovenste venster.
-1. Als u wilt de grafische wizard gebruikt, wilt **maken van een app**.
-1. Geef een naam voor de implementatie, zoals *nginx*
-1. Voer de naam in voor de container-installatiekopie moet worden gebruikt, zoals *nginx:1.15.5*
-1. Als u poort 80 voor webverkeer beschikbaar, wilt maken u een Kubernetes-service. Onder **Service**, selecteer **externe**, voert u **80** voor de poort en de doelpoort.
+1. Selecteer de knop **maken** in het rechter venster.
+1. Als u de grafische wizard wilt gebruiken, kiest u voor het **maken van een app**.
+1. Geef een naam op voor de implementatie, bijvoorbeeld *nginx*
+1. Voer de naam in voor de container installatie kopie die moet worden gebruikt, zoals *nginx: 1.15.5*
+1. Als u poort 80 voor webverkeer beschikbaar wilt maken, maakt u een Kubernetes-service. Onder **service**selecteert u **extern**en voert u **80** in voor de poort en de doel poort.
 1. Wanneer u klaar bent, selecteert u **implementeren** om de app te maken.
 
-![Een app implementeren in het Kubernetes-web-dashboard](./media/kubernetes-dashboard/create-app.png)
+![Een app implementeren in het Kubernetes Web dash board](./media/kubernetes-dashboard/create-app.png)
 
-Het duurt een minuut of twee voor een openbare externe IP-adres moet worden toegewezen aan de Kubernetes-service. Op de grootte links, onder **detectie en taakverdeling** Selecteer **Services**. De service van uw toepassing wordt weergegeven, met inbegrip van de *externe eindpunten*, zoals wordt weergegeven in het volgende voorbeeld:
+Het duurt enkele minuten voordat een openbaar extern IP-adres wordt toegewezen aan de Kubernetes-service. Klik aan de linkerkant onder **detectie en taak verdeling** **Services**selecteren. De service van uw toepassing wordt vermeld, inclusief de *externe eind punten*, zoals wordt weer gegeven in het volgende voor beeld:
 
-![Lijst met services en eindpunten weergeven](./media/kubernetes-dashboard/view-services.png)
+![Lijst met Services en eind punten weer geven](./media/kubernetes-dashboard/view-services.png)
 
-Selecteer het adres van het eindpunt opent een browservenster naar de standaard-NGINX-pagina:
+Selecteer het eindpunt adres om een webbrowser venster te openen op de standaard NGINX-pagina:
 
-![De standaard-NGINX-pagina van de geïmplementeerde toepassing weergeven](./media/kubernetes-dashboard/default-nginx.png)
+![De standaard NGINX-pagina van de geïmplementeerde toepassing weer geven](./media/kubernetes-dashboard/default-nginx.png)
 
-## <a name="view-pod-information"></a>Pod-informatie weergeven
+## <a name="view-pod-information"></a>Pod-gegevens weer geven
 
-Het Kubernetes-dashboard kan bieden eenvoudige metrische gegevens controleren en het oplossen van problemen, zoals Logboeken.
+Het Kubernetes-dash board kan basis gegevens over bewaking en informatie over het oplossen van problemen bieden, zoals Logboeken.
 
-Meer informatie over uw toepassing schillen Selecteer **schillen** in het linkermenu. De lijst met beschikbare schillen wordt weergegeven. Kies uw *nginx* schil om informatie, zoals het gebruik van resources weer te geven:
+Als u meer informatie over uw toepassing wilt zien, selecteert u in het menu aan de linkerkant de optie **peul** . De lijst met beschik bare peulen wordt weer gegeven. Kies uw *nginx* pod om informatie weer te geven, zoals Resource verbruik:
 
-![Pod-informatie weergeven](./media/kubernetes-dashboard/view-pod-info.png)
+![Pod-gegevens weer geven](./media/kubernetes-dashboard/view-pod-info.png)
 
 ## <a name="edit-the-application"></a>De toepassing bewerken
 
-Naast het maken en toepassingen voor het weergeven, kan het Kubernetes-dashboard worden gebruikt om te bewerken en bijwerken van implementaties van toepassingen. Aanvullende om redundantie te bieden voor de toepassing, laten we u het aantal NGINX replica's vergroten.
+Naast het maken en weer geven van toepassingen, kunt u het Kubernetes-dash board gebruiken om toepassings implementaties te bewerken en bij te werken. Als u aanvullende redundantie voor de toepassing wilt bieden, kunt u het aantal NGINX-replica's verhogen.
 
 Een implementatie bewerken:
 
-1. Selecteer **implementaties** in het menu links en kies vervolgens uw *nginx* implementatie.
-1. Selecteer **bewerken** in de bovenste rechter navigatiebalk.
-1. Zoek de `spec.replica` waarde, op rond regel 20. Als u wilt het aantal replica's voor de toepassing te verhogen, wijzig deze waarde van *1* naar *3*.
-1. Selecteer **Update** als u klaar bent.
+1. Selecteer **implementaties** in het menu links en kies vervolgens uw *nginx* -implementatie.
+1. Selecteer **bewerken** in de rechter bovenhoek navigatie balk.
+1. Zoek de `spec.replica` waarde, rond regel 20. Als u het aantal replica's voor de toepassing wilt verhogen, wijzigt u deze waarde van *1* in *3*.
+1. Selecteer **bijwerken** wanneer gereed.
 
-![De implementatie voor het bijwerken van het aantal replica's bewerken](./media/kubernetes-dashboard/edit-deployment.png)
+![De implementatie bewerken om het aantal replica's bij te werken](./media/kubernetes-dashboard/edit-deployment.png)
 
-Het duurt een paar minuten voor de nieuwe pods die moet worden gemaakt binnen een replicaset. Kies in het menu links **replicasets**, en kies vervolgens uw *nginx* replicaset. De lijst van schillen bevat nu het aantal bijgewerkte replica's, zoals wordt weergegeven in de volgende voorbeelduitvoer:
+Het kan even duren voordat het nieuwe Peul is gemaakt binnen een replicaset. Kies in het menu links de optie **replica sets**en kies vervolgens uw *nginx* -replicaset. De lijst met peulen weerspiegelt nu het bijgewerkte aantal replica's, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
 
-![Informatie weergeven over de replicaset](./media/kubernetes-dashboard/view-replica-set.png)
+![Informatie over de replicaset weer geven](./media/kubernetes-dashboard/view-replica-set.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het Kubernetes-dashboard, de [Kubernetes Web UI-Dashboard][kubernetes-dashboard].
+Meer informatie over het Kubernetes-dash board vindt u in het [dash board Kubernetes Web UI][kubernetes-dashboard].
 
 <!-- LINKS - external -->
-[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubeconfig-file]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 [kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 <!-- LINKS - internal -->
+[aad-cluster]: ./azure-ad-integration-cli.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
-[install-azure-cli]: /cli/azure/install-azure-cli
+[aks-service-accounts]: ./concepts-identity.md#kubernetes-service-accounts
+[az-account-get-access-token]: /cli/azure/account?view=azure-cli-latest#az-account-get-access-token
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[install-azure-cli]: /cli/azure/install-azure-cli

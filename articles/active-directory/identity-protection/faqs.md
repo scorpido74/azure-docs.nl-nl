@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334012"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126530"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Veelgestelde vragen over Azure Active Directory Identity Protection
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over de identiteits beveiliging van Azure Active Directory (Azure AD). Zie [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)voor meer informatie. 
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Waarom hebben sommige risico gebeurtenissen de status ' gesloten (systeem) '?
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Waarom hebben sommige risico detecties de status ' gesloten (systeem) '?
 
-**A:** Deze risico gebeurtenissen zijn gedetecteerd door identiteits beveiliging en later gesloten omdat de gebeurtenissen niet langer als riskant worden beschouwd. Deze gebeurtenissen tellen niet mee op het risico niveau van de gebruiker. 
+**A:** Deze risico detecties zijn gedetecteerd door identiteits beveiliging en later gesloten omdat de gebeurtenissen niet langer als riskant worden beschouwd. Deze gebeurtenissen tellen niet mee op het risico niveau van de gebruiker. 
 
 ---
 

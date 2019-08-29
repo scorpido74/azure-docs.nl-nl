@@ -1,7 +1,7 @@
 ---
-title: 'Transformatie toepassen: Moduleverwijzing'
+title: 'Trans formatie Toep assen: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module transformatie toepassen in Azure Machine Learning-service om te wijzigen van een invoergegevensset op basis van een eerder berekende transformatie.
+description: Meer informatie over het gebruik van de module trans formatie Toep assen in Azure Machine Learning service om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,42 +9,41 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 810f375642af49814049589cb83ad17fea578b13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028708"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128967"
 ---
 # <a name="apply-transformation-module"></a>Module transformatie toepassen
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om een invoergegevensset op basis van een eerder berekende transformatie.  
+Gebruik deze module om een invoer gegevensset te wijzigen op basis van een eerder berekende trans formatie.  
   
-Bijvoorbeeld, als u z-scores gebruikt voor het normaliseren van uw trainingsgegevens met behulp van de **gegevens normaliseren** -module, u wilt de z-score-waarde die is berekend gebruiken voor training tijdens ook de scoring fase. In Azure Machine Learning, kunt u de methode normalisering opslaan als een transformatie, en klik vervolgens met behulp **transformatie toepassen** de z-score toepassen op de ingevoerde gegevens voordat de score.
+Als u bijvoorbeeld z-scores hebt gebruikt voor het normaliseren van uw trainings gegevens met behulp van de module **normaliseren gegevens** , zou u ook de z-Score waarde willen gebruiken die tijdens de Score fase is berekend voor training. In Azure Machine Learning kunt u de normalisatie methode opslaan als een trans formatie en vervolgens **trans formatie Toep assen** gebruiken om de z-Score toe te passen op de invoer gegevens vóór de score.
   
-Azure Machine Learning biedt ondersteuning voor het maken en vervolgens verschillende soorten aangepaste transformaties toe te passen. U wilt bijvoorbeeld, opslaan en opnieuw transformaties te gebruiken:  
+Azure Machine Learning biedt ondersteuning voor het maken en Toep assen van verschillende soorten aangepaste trans formaties. Stel dat u trans formaties wilt opslaan en opnieuw wilt gebruiken voor:  
   
-- Verwijder of vervang de ontbrekende waarden, met behulp van **Clean Missing Data**
-- Gegevens, met behulp van normaliseren **gegevens normaliseren**
+- Ontbrekende waarden verwijderen of vervangen, met behulp van **schone ontbrekende gegevens**
+- Gegevens normaliseren met behulp van **Normal data**
   
 
-## <a name="how-to-use-apply-transformation"></a>Het gebruik van de transformatie toepassen  
+## <a name="how-to-use-apply-transformation"></a>Trans formatie Toep assen gebruiken  
   
-1. Voeg de **transformatie toepassen** module naar het experimentcanvas. U vindt deze module onder **Machine Learning**, in de **Score** categorie. 
+1. Voeg de module **trans formatie Toep assen** toe aan uw experiment. U kunt deze module vinden onder **machine learning**in de categorie **Score** . 
   
-2. Zoek naar een bestaande transformatie te gebruiken als invoer.  Eerder opgeslagen transformaties kunnen u vinden in de **transformeert** groep in het navigatiedeelvenster links.  
+2. Zoek een bestaande trans formatie die moet worden gebruikt als invoer.  Eerder opgeslagen trans formaties vindt u in de groep **trans formatie** in het navigatie deel venster aan de linkerkant.  
   
    
   
-3. Verbinding maken met de gegevensset die u wilt transformeren. De gegevensset moet exact hetzelfde schema hebben (aantal kolommen, kolomnamen, gegevenstypen) als de gegevensset waarvoor de transformatie voor het eerst is ontworpen.  
+3. Verbind de gegevensset die u wilt transformeren. De gegevensset moet exact hetzelfde schema (aantal kolommen, kolom namen, gegevens typen) hebben als de gegevensset waarvoor de trans formatie voor het eerst is ontworpen.  
   
-4. Er zijn geen andere parameters moeten worden ingesteld omdat alle aanpassingen worden uitgevoerd bij het definiëren van de transformatie.  
+4. Er hoeven geen andere para meters te worden ingesteld, omdat alle aanpassingen worden uitgevoerd bij het definiëren van de trans formatie.  
   
-5. Als u wilt een transformatie toepassen op de nieuwe gegevensset, moet u het experiment uitvoert.  
+5. Als u een trans formatie wilt Toep assen op de nieuwe gegevensset, voert u het experiment uit.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

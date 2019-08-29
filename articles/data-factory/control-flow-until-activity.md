@@ -1,26 +1,25 @@
 ---
-title: UNTIL-activiteit in Azure Data Factory | Microsoft Docs
-description: De Until-activiteit wordt een set van activiteiten in een lus uitgevoerd totdat de voorwaarde die is gekoppeld aan de activiteit in waar resulteert of er een optreedt time-out.
+title: Until-activiteit in Azure Data Factory | Microsoft Docs
+description: Met de activiteit until wordt een reeks activiteiten uitgevoerd totdat de voor waarde die aan de activiteit is gekoppeld, wordt geëvalueerd als waar of er een time-out optreedt.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155174"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142448"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>UNTIL-activiteit in Azure Data Factory
-De Until-activiteit biedt dezelfde functionaliteit die een do-totdat lusstructuur in een programmeertaal. Er wordt een reeks activiteiten uitgevoerd totdat de voorwaarde die aan de activiteit is gekoppeld, resulteert in waar. U kunt in Data Factory een time-outwaarde voor de Until-activiteit opgeven. 
+# <a name="until-activity-in-azure-data-factory"></a>Until-activiteit in Azure Data Factory
+De activiteit until biedt dezelfde functionaliteit als een lus-until-herhalings structuur in programmeer talen. Er wordt een reeks activiteiten uitgevoerd totdat de voorwaarde die aan de activiteit is gekoppeld, resulteert in waar. U kunt in Data Factory een time-outwaarde voor de Until-activiteit opgeven. 
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -54,19 +53,19 @@ De Until-activiteit biedt dezelfde functionaliteit die een do-totdat lusstructuu
 
 Eigenschap | Description | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van de `Until` activiteit. | String | Ja
-type | Moet worden ingesteld op **totdat**. | String | Ja
-expressie | Expressie die moet worden geëvalueerd op waar of ONWAAR | De expressie.  | Ja
-timeout | De-pas na de opgegeven tijd hier time-out lus. | tekenreeks. `d.hh:mm:ss` (of) `hh:mm:ss`. De standaardwaarde is 7 dagen. Maximale waarde is: 90 dagen. | Nee
-Activiteiten | Set van activiteiten die worden uitgevoerd totdat de expressie resulteert in `true`. | Matrix van activiteiten. |  Ja
+name | De naam van `Until` de activiteit. | Tekenreeks | Ja
+Type | Moet worden ingesteld op **until**. | Tekenreeks | Ja
+expression | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie.  | Ja
+timeout | De lus-until loopt na de opgegeven tijd hier. | Tekenreeksexpressie. `d.hh:mm:ss`of `hh:mm:ss`. De standaard waarde is 7 dagen. Maximum waarde is: 90 dagen. | Nee
+Activiteiten | Set activiteiten die worden uitgevoerd tot de expressie wordt geëvalueerd `true`. | Matrix van activiteiten. |  Ja
 
 ## <a name="example-1"></a>Voorbeeld 1
 
 > [!NOTE]
-> Deze sectie bevat JSON-definities en voorbeeld van PowerShell-opdrachten om uit te voeren van de pijplijn. Zie voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory-pijplijn met behulp van Azure PowerShell en JSON-definities [zelfstudie: een data factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken](quickstart-create-data-factory-powershell.md)met behulp van Azure PowerShell voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
 
-### <a name="pipeline-with-until-activity"></a>Pijplijn met Until-activiteit
-In dit voorbeeld heeft de pijplijn twee activiteiten: **Pas** en **wacht**. De activiteit wachten wacht tot de opgegeven periode voordat de webactiviteit in de lus wordt uitgevoerd. Zie voor meer informatie over expressies en functies in Data Factory, [expressietaal en functies](control-flow-expression-language-functions.md). 
+### <a name="pipeline-with-until-activity"></a>Pijp lijn met until-activiteit
+In dit voor beeld heeft de pijp lijn twee activiteiten: **Tot** en een **ogen blik geduld**. De wait-activiteit wacht tot de opgegeven periode voordat de Web-activiteit in de lus wordt uitgevoerd. Zie [expressie taal en-functies](control-flow-expression-language-functions.md)voor meer informatie over expressies en functies in Data Factory. 
 
 ```json
 {
@@ -117,9 +116,9 @@ In dit voorbeeld heeft de pijplijn twee activiteiten: **Pas** en **wacht**. De a
 ```
 
 ## <a name="example-2"></a>Voorbeeld 2 
-De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een map voor uitvoer in een lus. De lus wordt beëindigd wanneer de waarde voor de herhalingen parameter is ingesteld op false, of er een optreedt na een minuut time-out.   
+Met de pijp lijn in dit voor beeld worden gegevens gekopieerd van een uitvoermap naar een uitvoermap in een lus. De lus wordt beëindigd wanneer de waarde voor de para meter REPEAT is ingesteld op False of na één minuut een time-out optreedt.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Pijplijn met Until-activiteit (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met until-activiteit (Adfv2QuickStartPipeline. json)
 
 ```json
 {
@@ -192,7 +191,7 @@ De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een map vo
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Storage gekoppelde service (AzureStorageLinkedService. json)
 
 ```json
 {
@@ -209,8 +208,8 @@ De pijplijn in dit voorbeeld kopieert gegevens uit een invoermap naar een map vo
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Met parameters Azure Blob-gegevensset (BlobDataset.json)
-De pijplijn-stelt de **folderPath** aan de waarde van een **outputPath1** of **outputPath2** parameter van de pijplijn. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Geparametriseerde Azure Blob-gegevensset met para meters (BlobDataset. json)
+De pijp lijn stelt de **FolderPath** in op de waarde van de para meter **outputPath1** of **outputPath2** van de pijp lijn. 
 
 ```json
 {
@@ -236,7 +235,7 @@ De pijplijn-stelt de **folderPath** aan de waarde van een **outputPath1** of **o
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Sourceblobcontainer JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON-para meter (PipelineParameters. json)
 
 ```json
 {
@@ -246,11 +245,11 @@ De pijplijn-stelt de **folderPath** aan de waarde van een **outputPath1** of **o
 }
 ```
 
-### <a name="powershell-commands"></a>PowerShell-opdrachten
+### <a name="powershell-commands"></a>Power shell-opdrachten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Deze opdrachten wordt ervan uitgegaan dat u de JSON-bestanden hebt opgeslagen in de map: C:\ADF. 
+Bij deze opdrachten wordt ervan uitgegaan dat u de JSON-bestanden hebt opgeslagen in de map: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -290,7 +289,7 @@ while ($True) {
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere controlestroomactiviteiten die door Data Factory worden ondersteund: 
+Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)

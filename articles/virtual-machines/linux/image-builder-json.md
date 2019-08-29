@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816323"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129062"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Preview: Een Azure Image Builder-sjabloon maken 
 
@@ -190,6 +190,7 @@ Hiermee stelt u de bron afbeelding een versie van een bestaande installatie kopi
 De `imageVersionId` moet de ResourceID van de versie van de installatie kopie zijn. Gebruik [AZ sig installatie kopie](/cli/azure/sig/image-version#az-sig-image-version-list) van de lijst met installatie kopieën om versie-versies weer te geven.
 
 ## <a name="properties-buildtimeoutinminutes"></a>Eigenschappen: buildTimeoutInMinutes
+
 Standaard wordt de opbouw functie voor installatie kopieën gedurende 240 minuten uitgevoerd. Daarna wordt de time-out en stopt, ongeacht of de installatie kopie is gemaakt. Als de time-out wordt weer gegeven, ziet u een fout die vergelijkbaar is met de volgende:
 
 ```text
@@ -203,7 +204,6 @@ Als u vindt dat er meer tijd nodig is voor het volt ooien van aanpassingen, stel
 
 
 ## <a name="properties-customize"></a>Eigenschappen: aanpassen
-
 
 De opbouw functie voor installatie kopieën ondersteunt meerdere ' Customizers '. Customizers zijn functies die worden gebruikt voor het aanpassen van uw installatie kopie, zoals het uitvoeren van scripts of het opnieuw opstarten van servers. 
 

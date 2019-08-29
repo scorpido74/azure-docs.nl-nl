@@ -7,77 +7,77 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592305"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142914"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Wat is Azure Data Box Heavy?
 
-Azure Data Box zware kunt u honderden terabytes aan gegevens verzenden naar Azure in een snelle, voordelige, en betrouwbare manier. De gegevens worden overgedragen naar Azure door een Data Box zware apparaat verzenden met een 1 PB opslagcapaciteit, die u met uw gegevens invullen en verzenden naar Microsoft. Het apparaat heeft een robuuste hoofdlettergebruik te beschermen en beveiligen van uw gegevens tijdens de overdracht.
+Met Azure Data Box Heavy kunt u op een snelle, goedkope en betrouw bare manier honderden terabytes aan gegevens verzenden naar Azure. De gegevens worden overgebracht naar Azure door u een Data Box Heavy apparaat te sturen met een opslag capaciteit van 1 tot PB, die u opvult met uw gegevens en terugsturen naar micro soft. Het apparaat heeft een robuuste behuizing om uw gegevens tijdens de overdracht te beschermen en te beveiligen.
 
-Zodra het apparaat wordt ontvangen in uw datacenter, instellen met behulp van de lokale webgebruikersinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter, uw gegevens geüpload naar uw Azure Storage-account (s). Het hele end-to-end-proces in Azure portal, kunt u bijhouden.
+Zodra het apparaat is ontvangen op uw Data Center, stelt u het in met behulp van de lokale webgebruikersinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-Data Center worden uw gegevens geüpload naar uw Azure Storage-account (s). U kunt het volledige end-to-end-proces volgen in de Azure Portal.
 
 
 > [!IMPORTANT]
-> - Voor het aanvragen van een apparaat, moet u zich aanmelden bij de [Azure-portal](https://portal.azure.com).
+> - Als u een apparaat wilt aanvragen, meldt u zich aan bij de [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 
-Gegevens in het zware is het meest geschikt voor de grootten van de gegevens in de honderden terabytes, waar de netwerkverbinding is onvoldoende voor het uploaden van de gegevens naar Azure. De gegevensverplaatsing kan eenmalig of periodiek zijn, of eerst een grote gegevensoverdracht, gevolgd door meerdere periodieke overdrachten. Hier volgen de verschillende scenario’s waarin Data Box Heavy kan worden gebruikt voor gegevensoverdracht.
+Data Box Heavy is het meest geschikt voor de grootte van gegevens in honderden terabytes, waarbij de netwerk verbinding onvoldoende is om de gegevens te uploaden naar Azure. De gegevensverplaatsing kan eenmalig of periodiek zijn, of eerst een grote gegevensoverdracht, gevolgd door meerdere periodieke overdrachten. Hier volgen de verschillende scenario’s waarin Data Box Heavy kan worden gebruikt voor gegevensoverdracht.
 
  - **Eenmalige migratie**: wanneer grote aantallen on-premises gegevens worden verplaatst naar Azure.
-     - Een mediabibliotheek van tapes die offline zijn in Azure om te maken van een online mediabibliotheek verplaatsen.
-     - Uw VM-farm, SQL server en toepassingen naar Azure migreren.
-     - Historische gegevens te verplaatsen naar Azure voor uitvoerige analyse en rapportage met behulp van HDInsight.
+     - Verplaats een media bibliotheek van offline tapes naar Azure om een bibliotheek voor online media te maken.
+     - Migreer uw VM-Farm, SQL Server en toepassingen naar Azure.
+     - Verplaats historische gegevens naar Azure voor uitgebreide analyse en rapporten met HDInsight.
 
  - **Initiële bulkoverdracht**: wanneer eerst een grote overdracht plaatsvindt met Data Box Heavy (seed), gevolgd door incrementele overdrachten via het netwerk.
-     - Gegevens in het zware en een back-upoplossingen partner worden te verplaatsen van de eerste grote historische back-up naar Azure gebruikt. Zodra dat is voltooid, worden gegevens incrementeel via het netwerk overgebracht naar Azure-opslag.
+     - Data Box Heavy en een partner voor back-upoplossing worden bijvoorbeeld gebruikt om de eerste grote historische back-up naar Azure te verplaatsen. Zodra dat is voltooid, worden gegevens incrementeel via het netwerk overgebracht naar Azure-opslag.
 
  - **Periodieke uploads**: wanneer er periodiek grote aantallen gegevens worden gegenereerd en verplaatst moeten worden naar Azure. Bijvoorbeeld in de energie-exploitatie, waar er video's worden gegenereerd op olieplatforms en windmolenparken.
 
 ## <a name="benefits"></a>Voordelen
 
-Gegevens in het zware is ontworpen om enorme hoeveelheden gegevens naar Azure verplaatsen met weinig of geen invloed op uw netwerk. Deze oplossing biedt de volgende voordelen:
+Data Box Heavy is ontworpen om enorme hoeveel heden gegevens naar Azure te verplaatsen, met weinig gevolgen voor uw netwerk. Deze oplossing biedt de volgende voordelen:
 
-- **Snelheid** -gegevens in het zware maakt gebruik van krachtige 40 Gbps-netwerkinterfaces.
+- **Snelle** data Box Heavy maakt gebruik van hoge prestaties van 40-Gbps-netwerk interfaces.
 
-- **Beveiliging** -gegevens in het zware heeft ingebouwde beveiliging beveiligingen voor het apparaat, gegevens en de service.
+- **Security** -data Box Heavy heeft ingebouwde beveiligings beveiligingen voor het apparaat, de gegevens en de service.
     - Het apparaat heeft een robuuste behuizing die is beveiligd met fraudebestendige schroeven en verzegelde stickers.
     - De gegevens op het apparaat zijn altijd beveiligd met AES 256-bitsversleuteling.
     - Het apparaat kan alleen worden ontgrendeld met een wachtwoord dat via Azure Portal wordt doorgegeven.
     - De service wordt beschermd door beveiligingsfuncties van Azure.
-    - Nadat uw gegevens is geüpload naar Azure, de schijven op het apparaat gewist, in overeenstemming met de National Institute of Standards and Technology (NIST) 800-88r1 standaarden.
+    - Zodra uw gegevens naar Azure zijn geüpload, worden de schijven op het apparaat schoon gewist, in overeenstemming met de normen van het National Institute of Standards and Technology (NIST) 800-88r1.
 
 
 ## <a name="features-and-specifications"></a>Functies en specificaties
 
-De gegevens in het zware apparaat heeft de volgende functies in deze release.
+Het Data Box Heavy-apparaat heeft de volgende functies in deze release.
 
 | Specificaties                                          | Description              |
 |---------------------------------------------------------|--------------------------|
-| Gewicht                                                  | ~ 500 lbs. <br>Apparaat vergrendelen wheels voor transport|
-| Dimensies                                              | Breedte: 26 inches hoogte: 28 inches lengte: 48 inch |
-| Rackruimte                                              | Kan niet worden rek|
-| Vereiste kabels                                         | 4 gegrond 120 V / 10 A kracht kabels (NEMA 5 tot 15) opgenomen <br> Apparaat ondersteunt maximaal 240 V power en C-13 power recipiënten heeft <br> Gebruik netwerkkabels compatibel is met [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
-| Energiebeheer                                                    | 4 ingebouwde power supply-eenheden (PSUs) gedeeld tussen beide knooppunten van het apparaat <br> 1200 w typische stroomverbruik|
-| Opslagcapaciteit                                        | ~ 1 PB onbewerkte, 70 schijven van 14 TB <br> 770 TB aan bruikbare capaciteit|
-| Aantal knooppunten                                          | 2 onafhankelijke knooppunten per apparaat (500 TB elk) |
-| Netwerkinterfaces per knooppunt                             | 4-netwerkinterfaces per knooppunt <br><br> MGMT, DATA3 <ul><li> 2 x 1 GbE-netwerkinterfaces </li><li> MGMT is voor het beheer en de initiële configuratie, geen gebruiker worden geconfigureerd </li><li> DATA3 wordt de gebruiker configureerbare en Dynamic Host configuratieprotocol (DHCP)-standaard</li><li>De 1 GbE-netwerkinterfaces kunnen ook worden geconfigureerd als 10 GbE-interfaces</li></ul>Bestand1, DATA2 gegevensinterfaces <ul><li>2 X 40-GbE interfaces </li><li> Gebruiker worden geconfigureerd voor DHCP (standaard) of statische</li></ul>|
+| Gewicht                                                  | ~ 500 lbs. <br>Apparaat op het vergren delen van wielen voor Trans Port|
+| Dimensies                                              | Breedte: 26 inch hoogte: Lengte van 28 inch: 48 inch |
+| Rackruimte                                              | Kan niet worden gekoppeld aan een rek|
+| Vereiste kabels                                         | 4 gehuurde 120 V/10 een stroom kabel (NEMA 5-15) inbegrepen <br> Het apparaat ondersteunt een capaciteit van Maxi maal 240 V en heeft C-13 voedings containers <br> Netwerk kabels gebruiken die compatibel [zijn met MELLANOX MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html)  |
+| /Uitschakelaar                                                    | 4 ingebouwde voedings eenheden (PSUs) die worden gedeeld tussen de knoop punten van het apparaat <br> 1\.200 watt typische power draw|
+| Opslagcapaciteit                                        | ~ 1-PB RAW, 70 schijven van 14 TB elk <br> 770-TB bruikbare capaciteit|
+| Aantal knooppunten                                          | 2 onafhankelijke knoop punten per apparaat (500 TB elk) |
+| Netwerk interfaces per knoop punt                             | 4 netwerk interfaces per knoop punt <br><br> BEHEER, DATA3 <ul><li> 2 X 1 GbE-interfaces </li><li> Beheer is voor het beheren van en de eerste installatie, en kan niet door de gebruiker worden geconfigureerd </li><li> DATA3 is standaard door de gebruiker te configureren en Dynamic Host Configuration Protocol (DHCP)</li></ul>BESTAND1, BESTAND2 gegevens interfaces <ul><li>2 X 40-GbE-interfaces </li><li> Gebruiker configureerbaar voor DHCP (standaard) of statisch</li></ul>|
 
 
 ## <a name="components"></a>Onderdelen
 
 Deze Data Box Heavy bevat de volgende onderdelen:
 
-* **Data Box Heavy-apparaat**: Een fysiek apparaat met een stevige behuizing waarop gegevens veilig worden opgeslagen. Dit apparaat heeft een bruikbaar opslagcapaciteit van 770 TB.
+* **Data Box Heavy-apparaat**: Een fysiek apparaat met een stevige behuizing waarop gegevens veilig worden opgeslagen. Dit apparaat heeft een bruikbare opslag capaciteit van 770 TB.
     
-* **Data Box-service**: Een extensie in Azure Portal waarmee u een Data Box Heavy-apparaat kunt beheren via een webinterface waartoe u toegang hebt vanaf verschillende geografische locaties. De Data Box-service gebruiken voor het beheren van uw gegevens in het zware apparaat. Met de service kunt u taken uitvoeren zoals orders maken en beheren, waarschuwingen bekijken en beheren en shares beheren.  
+* **Data Box-service**: Een extensie in Azure Portal waarmee u een Data Box Heavy-apparaat kunt beheren via een webinterface waartoe u toegang hebt vanaf verschillende geografische locaties. Gebruik de Data Box-Service om uw Data Box Heavy-apparaat te beheren. Met de service kunt u taken uitvoeren zoals orders maken en beheren, waarschuwingen bekijken en beheren en shares beheren.  
 
 * **Lokale webinterface**: een webinterface die wordt gebruikt voor het configureren van het apparaat, zodat u verbinding kunt maken met het lokale netwerk en het apparaat bij de Data Box-service kunt registreren. Gebruik de lokale webinterface om het apparaat uit te schakelen of opnieuw op te starten, logboeken met kopieerbewerkingen te bekijken en contact op te nemen met Microsoft Ondersteuning om een serviceaanvraag in te dienen.
 
@@ -96,11 +96,11 @@ Een typische stroom bestaat uit de volgende stappen:
 
 5. **Uploaden**: De gegevens worden automatisch van het apparaat naar Azure gekopieerd. De schijven in het apparaat worden veilig gewist overeenkomstig de richtlijnen van het National Institute of Standards and Technology.
 
-Tijdens dit proces krijgt u een melding via e-mail over alle statuswijzigingen aan de.
+Tijdens dit proces wordt u via e-mail op de hoogte gesteld van alle status wijzigingen.
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Gegevens in het zware kunt gegevensoverdracht op basis van de regio waarin de service is geïmplementeerd, land/de regio waaraan het apparaat is verzonden en de doel-Azure storage-account waar u de gegevens overbrengt.
+Data Box Heavy kunt gegevens overdragen op basis van de regio waarin de service is geïmplementeerd, het land/de regio waarnaar het apparaat wordt verzonden en het Azure Storage-doel account waar u de gegevens overdraagt.
 
 - **Beschikbaarheid van service**: Voor deze release is de Data Box Heavy-resource beschikbaar in de volgende regio’s:
     - Alle openbare cloud-regio's in de Verenigde Staten: US - west-centraal, US - west 2, US - west, US - zuid-centraal, US - centraal, US - noord-centraal, US - oost en US - oost 2.
@@ -110,18 +110,18 @@ Gegevens in het zware kunt gegevensoverdracht op basis van de regio waarin de se
 
 - **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s waar de service beschikbaar is.
 
-Voor de meest actuele informatie over beschikbaarheid in regio's voor gegevens in het zware, gaat u naar [Azure-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
+Ga voor de meest recente informatie over de beschik baarheid van regio's voor Data Box Heavy naar [Azure-producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
-## <a name="sign-up"></a>Aanmelden
+## <a name="sign-up"></a>Registreren
 
-De volgende stappen om u te registreren voor gegevens in het zware:
+Voer de volgende stappen uit om u aan te melden voor Data Box Heavy:
 
 1. Meld u aan bij Azure Portal op: https://portal.azure.com.
 2. Klik op **+ een resource maken** om een nieuwe resource te maken. Zoek naar **Azure Data Box**. Selecteer de **Azure Data Box**-service.
 3. Klik op **Create**.
-4. Kies het abonnement dat u wilt gebruiken voor gegevens in het zware. Selecteer de regio waar u de Data Box Heavy-resource wilt implementeren. Klik bij de optie **Data Box Heavy** op **Registreren**.
-5. Beantwoord de vragen met betrekking tot de gegevens woonplaats land/regio, tijdsbestek, doel Azure-service voor gegevensoverdracht, netwerkbandbreedte en data transfer frequentie. Lees de privacyverklaring en voorwaarden en schakel het selectievakje in zodat Microsoft uw e-mailadres kan gebruiken om contact met u op te nemen.
+4. Kies het abonnement dat u wilt gebruiken voor Data Box Heavy. Selecteer de regio waar u de Data Box Heavy-resource wilt implementeren. Klik bij de optie **Data Box Heavy** op **Registreren**.
+5. Beantwoord de vragen over het land/de regio, de tijd van de Azure-doel service voor gegevens overdracht, de netwerk bandbreedte en de frequentie van gegevens overdracht. Lees de privacyverklaring en voorwaarden en schakel het selectievakje in zodat Microsoft uw e-mailadres kan gebruiken om contact met u op te nemen.
 
-Nadat u bent aangemeld, kunt u een Data Box-zwaar kunt bestellen.
+Zodra u zich hebt geregistreerd, kunt u een Data Box Heavy best Ellen.
 
     

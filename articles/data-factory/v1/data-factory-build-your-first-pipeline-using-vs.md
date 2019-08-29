@@ -3,23 +3,21 @@ title: Uw eerste gegevensfactory bouwen (Visual Studio) | Microsoft Docs
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn met behulp van Visual Studio.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7398c0c9-7a03-4628-94b3-f2aaef4a72c5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.custom: vs-azure
-ms.tgt_pltfrm: na
 ms.topic: tutorial
+ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f3c4fc379ac932e66c5d02e08e72ef4d16db638b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 39b640a64cf93a7a9cbb0565084b238891e880c1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836709"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140550"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Zelfstudie: Een gegevensfactory maken met behulp van Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -172,13 +170,13 @@ In deze stap maakt u gegevenssets die de invoer- en uitvoergegevens voor Hive-ve
 
     Eigenschap | Description |
     -------- | ----------- |
-    type |De eigenschap Type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in Azure Blob Storage bevinden.
+    Type |De eigenschap Type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in Azure Blob Storage bevinden.
     linkedServiceName | De AzureStorageLinkedService1 die u eerder hebt gemaakt.
     fileName |Deze eigenschap is optioneel. Als u deze eigenschap niet opgeeft, worden alle bestanden uit folderPath gekozen. In dit geval wordt alleen input.log verwerkt.
     type | Omdat de logboekbestanden tekstbestanden zijn, gebruiken we TextFormat. |
     columnDelimiter | Kolommen in de logboekbestanden worden gescheiden door een komma (`,`)
     frequency/interval | Als frequency wordt ingesteld op Month en de interval 1 is, betekent dat dat de invoersegmenten één keer per maand beschikbaar worden gemaakt.
-    external | Deze eigenschap wordt ingesteld op true als de invoergegevens voor de activiteit niet worden gegenereerd door de pijplijn. Deze eigenschap wordt alleen opgegeven voor invoergegevenssets. Stel deze eigenschap voor de invoergegevensset van de eerste activiteit altijd in op true.
+    extern | Deze eigenschap wordt ingesteld op true als de invoergegevens voor de activiteit niet worden gegenereerd door de pijplijn. Deze eigenschap wordt alleen opgegeven voor invoergegevenssets. Stel deze eigenschap voor de invoergegevensset van de eerste activiteit altijd in op true.
 4. Sla het bestand **InputDataset.json** op.
 
 #### <a name="create-output-dataset"></a>Uitvoergegevensset maken

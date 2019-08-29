@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 80c1ffd27b0668f19fd87e7eda62e578c861ba64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934603"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129321"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen om uw identiteitsinfrastructuur te beveiligen
 
@@ -53,7 +53,7 @@ De meeste beveiligings schendingen van een onderneming zijn afkomstig van een ac
 
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Zorg ervoor dat uw organisatie sterke authenticatie gebruikt
 
-Gezien de frequentie van wacht woorden die worden geschat, vergoedd, gestolen met malware of hergebruikt, is het belang rijk om het wacht woord te herstellen met een vorm van sterke referenties. meer informatie over [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
+Gezien de frequentie van wacht woorden die worden geschat, vergoedd, gestolen met malware of hergebruikt, is het belang rijk om het wacht woord te herstellen met een vorm van sterke referentie – meer informatie over [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Start verbieden doorgaans aangevallen wacht woorden en schakel de traditionele complexiteit en de verval regels uit.
 
@@ -130,7 +130,7 @@ Azure Active Directory heeft veel mogelijkheden die automatisch aanvallen onders
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>Beveiligings beleid voor gebruikers Risico's implementeren met behulp van Azure AD Identity Protection
 
-Gebruikers risico duidt op de kans dat de identiteit van een gebruiker is aangetast en wordt berekend op basis van de [gebruikers risico gebeurtenissen](../../active-directory/identity-protection/overview.md) die zijn gekoppeld aan de identiteit van een gebruiker. Een beleid voor gebruikers Risico's is een beleid voor voorwaardelijke toegang waarmee het risico niveau wordt geëvalueerd voor een specifieke gebruiker of groep. Op basis van laag, gemiddeld, hoog risico niveau kan een beleid worden geconfigureerd om de toegang te blok keren of om een beveiligd wachtwoord wijziging te vereisen met multi-factor Authentication. De aanbeveling van micro soft is om een veilige wachtwoord wijziging te vereisen voor gebruikers met een hoog risico.
+Gebruikers risico duidt op de kans dat de identiteit van een gebruiker is aangetast en wordt berekend op basis van de [gebruikers risico detecties](../../active-directory/identity-protection/overview.md) die zijn gekoppeld aan de identiteit van een gebruiker. Een beleid voor gebruikers Risico's is een beleid voor voorwaardelijke toegang waarmee het risico niveau wordt geëvalueerd voor een specifieke gebruiker of groep. Op basis van laag, gemiddeld, hoog risico niveau kan een beleid worden geconfigureerd om de toegang te blok keren of om een beveiligd wachtwoord wijziging te vereisen met multi-factor Authentication. De aanbeveling van micro soft is om een veilige wachtwoord wijziging te vereisen voor gebruikers met een hoog risico.
 
 ![Gebruikers voor wie wordt aangegeven dat ze risico lopen](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
@@ -156,7 +156,7 @@ Microsoft Azure Services en-functies bieden u Configureer bare opties voor bevei
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Azure AD Identity Protection gebeurtenissen bewaken
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een hulp programma voor melding, bewaking en rapportage dat u kunt gebruiken om mogelijke beveiligings problemen te detecteren die van invloed zijn op de identiteiten van uw organisatie. Er worden risico gebeurtenissen gedetecteerd, zoals gelekte referenties, onmogelijk reizen en aanmeldingen vanaf geïnfecteerde apparaten, anonieme IP-adressen, IP-adressen die zijn gekoppeld aan de verdachte activiteit en onbekende locaties. Schakel meldings waarschuwingen in om e-mail te ontvangen van gebruikers die risico lopen en/of een wekelijks overzichts-e-mail.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een hulp programma voor melding, bewaking en rapportage dat u kunt gebruiken om mogelijke beveiligings problemen te detecteren die van invloed zijn op de identiteiten van uw organisatie. Er worden risico detecties gedetecteerd, zoals gelekte referenties, onmogelijk reizen en aanmeldingen vanaf geïnfecteerde apparaten, anonieme IP-adressen, IP-adressen die zijn gekoppeld aan de verdachte activiteit en onbekende locaties. Schakel meldings waarschuwingen in om e-mail te ontvangen van gebruikers die risico lopen en/of een wekelijks overzichts-e-mail.
 
 Azure AD Identity Protection biedt twee belang rijke rapporten die u dagelijks moet bewaken:
 1. Met Risk ante aanmeldings rapporten worden aanmeldings activiteiten voor gebruikers gesurfacet die u moet onderzoeken; de rechtmatige eigenaar heeft de aanmelding mogelijk niet uitgevoerd.

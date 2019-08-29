@@ -1,76 +1,76 @@
 ---
-title: Go-To-Market Services - uw marketplace-voordelen | Azure
-description: Go-To-Market Services - Microsoft-resources die uitgevers kunnen gebruiken worden in deze sectie beschreven.
+title: Go-to-Market-Services-uw Marketplace-voor delen | Azure
+description: 'Go-to-Market-Services: micro soft-bronnen die uitgevers kunnen gebruiken, worden beschreven in deze sectie.'
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 297a6f9058b220d1f2e3a0ca69d018858218b774
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02fcda2d851ddefa1c592bf0b5b09d5e5d59828f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65909718"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128231"
 ---
-# <a name="your-marketplace-benefits"></a>Uw Marketplace-voordelen
+# <a name="your-marketplace-benefits"></a>Uw voor delen voor Marketplace
 
-Als onderdeel van de publicatie weg, die u wilt maken van technische en marketingmateriaal activa voor uw aanbieding. Er zijn als gevolg hiervan, technische en marketingmateriaal voordelen die Azure Marketplace en AppSource uitgevers gebruiken kunnen om te verbeteren van klantcontacten in uw aanbieding. Mogelijk vindt u de onderstaande nuttig technische bronnen.
+Als onderdeel van uw publicatie traject moet u technische en marketing assets maken voor uw aanbieding. Als gevolg hiervan zijn er technische en marketing voordelen die Azure Marketplace en AppSource-Publishers kunnen gebruiken om de betrokkenheid van de klant te verbeteren met uw aanbieding. De technische bronnen die hieronder nuttig zijn, zijn mogelijk te vinden.
 
-## <a name="technical-resources-provided-by-microsoft"></a>Technische bronnen die worden geleverd door Microsoft
+## <a name="technical-resources-provided-by-microsoft"></a>Technische bronnen van micro soft
 
-Terwijl u uw aanbieding maakt, kunt u profiteren van een getal van Microsoft-resources, zoals overleg met een technisch expert, of voor het verkrijgen van ondersteuning voor het testen van een marketplace-specifieke oplossing.
+Tijdens het maken van uw aanbieding kunt u profiteren van een aantal micro soft-resources, zoals Consulting met een technische deskundige, of ondersteuning krijgen voor het testen van een Marketplace-specifieke oplossing.
 
-Technische bronnen kunnen op elk gewenst moment worden gebruikt.  De volgende tabel bevat de voordelen:
+Technische bronnen kunnen op elk moment worden gebruikt.  De volgende tabel bevat een overzicht van de voor delen:
 
 ![](./media/marketplace-publishers-guide/technical-benefit-table.png)
 
-## <a name="how-to-access-microsoft-resources"></a>Toegang tot Microsoft-resources
+## <a name="how-to-access-microsoft-resources"></a>Toegang tot micro soft-resources
 
-De Go-to-Market-voordelen zijn toegankelijk voor partners die een aanbieding onlangs hebt gepubliceerd. 
+De go-to-Market-voor delen zijn toegankelijk voor partners die onlangs een aanbieding hebben gepubliceerd. 
 
-1. Onboarding: [Registreren](https://azuremarketplace.microsoft.com/sell) om toegang te krijgen tot de Cloud Partner-Portal en onboarding bronnen voor ondersteuning.
-2. Microsoft Marketplaces Consultation: Profiteer van deze [gratis consultatie](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) om u te helpen bij het plannen van de architectuur van uw app in de marketplace.
-3. Marketplace-Forums: Stel uw vragen rechtstreeks naar Microsoft-werknemers en andere marketplace-partners in de [forum van Marketplace](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
-4. Technische ondersteuning: Gebruik het menu Help in [Cloud Partner-Portal](https://cloudpartner.azure.com/) om hulp te krijgen op uw vragen met betrekking tot marketplace. 
-5. AAD-integratie en ontwikkeling en testen sponsorship: u wordt worden aangemeld wanneer u live gaan met een transactable (kan worden geïmplementeerd en factureerbare-aanbieding). Zie de volgende sectie voor informatie over het aan de slag met go-to-market-voordelen.
+1. Onboarding [Meld](https://azuremarketplace.microsoft.com/sell) u aan om toegang te krijgen tot de Cloud Partner-Portal en de ondersteunings bronnen voor de onboarding.
+2. Micro soft Marketplace-raadpleging: Profiteer van deze [gratis consultatie](https://support.microsoft.com/help/4010317/microsoft-marketplaces-consultation) om de architectuur van uw app in Marketplace te plannen.
+3. Marketplace forums: Vraag uw vragen rechtstreeks naar micro soft-werk nemers en andere Marketplace-partners in het [Marketplace-forum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222).
+4. Technische ondersteuning: Gebruik het menu Help in [Cloud Partner-Portal](https://cloudpartner.azure.com/) om hulp te krijgen over uw ondersteunings vragen met betrekking tot Marketplace. 
+5. AAD-integratie en-ontwikkelings-en test sponsor: u wordt gemeldd wanneer u live gaat met een transactable-aanbieding (Deployable en Factureerbaar). Zie de volgende sectie voor meer informatie over hoe u aan de slag gaat met Go-to-Market-voor delen.
 
-## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Voordelen van de Go-to-market (GTM) in de Marketplace
+## <a name="go-to-market-gtm-benefits-in-the-marketplace"></a>Voor delen van Go-to-Market (GTM) in Marketplace
 
-Nieuwe aanbiedingen in Azure Marketplace en AppSource komen in aanmerking voor het ontvangen van gratis marketplace GTM-voordelen via ons team van Microsoft GTM Services. Dit team helpt u uw aanbiedingen te optimaliseren en te verhogen voor uw oplossingen in de Microsoft marketplace.
+Nieuwe aanbiedingen in zowel Azure Marketplace als AppSource komen in aanmerking voor gratis Marketplace GTM-voor delen via ons micro soft GTM Services-team. Met dit team kunt u uw vermeldingen optimaliseren en het bewustzijn verhogen voor uw oplossingen op micro soft Marketplace.
 
-| Storefront | Aanvullende beschikbare voordelen |
+| Storefront | Aanvullende beschik bare voor delen |
 |:--- |:--- |
-| AppSource |  Microsoft Gold-partners <br> Transact aanbiedingen: voordelen van Marketplace <br> Proefversie Apps |
-| De Azure Marketplace | Transact aanbiedingen: voordelen van Marketplace <br> Proefaanbiedingen |
+| AppSource |  Micro soft Gold-partners <br> Aanbiedingen voor Marketplace: markt beloningen <br> Proef-apps |
+| De Azure Marketplace | Aanbiedingen voor Marketplace: markt beloningen <br> Proef aanbiedingen |
 
-De GTM-ondersteuning omvat sjablonen, webinhoud, training en hulpprogramma's voor het promoten van uw bedrijf.
+Uw GTM-ondersteuning omvat sjablonen, webinhoud, training en hulpprogram ma's voor het promoten van uw bedrijf.
 
-Voor toegang tot deze voordelen, moet u naar:
+Voor toegang tot deze voor delen moet u het volgende doen:
 
-1. Een aanbieding publiceren in Azure Marketplace of AppSource.
-2. Zorg ervoor dat u hebt een marketing contactpersoon in de **contactgegevens** gedeelte van uw aanbieding. Dit moet een toegewezen marketing resource, in plaats van een catch-all-alias. (Internet Explorer, Vermijd het gebruik van ' ondersteunen\@', ' info\@"," marketing\@', enzovoort.)
+1. Publiceer een aanbieding in azure Marketplace of AppSource.
+2. Zorg ervoor dat u een marketing contact hebt ingevoerd in het gedeelte **contact gegevens** van uw aanbieding. Dit moet een toegewezen marketing resource zijn, in plaats van een catch-all-alias. (Vermijd het gebruik van ' support\@', ' Info\@', ' marketing\@', enz.)
 
-Op basis van de oplossingsstatus van uw, voorstel lijst, proefversie of Transact-opbrengst van Marketplace, ontvangt u een e-mail met bronnen voor zelfhulp of een uitnodiging voor een aanroep van overleg met een toegewezen Engagement Manager. U hoeft niet verder niets voor het starten van de aanroep te doen, het Marketplace-Voorbereidingsteam neemt contact met u op basis van de informatie die u opgeeft in de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
+Op basis van uw oplossings status, aanbieding voor aanbiedingen, proef versie of trans acties in Marketplace, ontvangt u een e-mail bericht met zelf hulp bronnen of een uitnodiging voor een consultatie gesprek met een toegewezen engagement manager. U hoeft niets te doen om de oproep te initiëren: het voorbereidings team van de Marketplace neemt contact met u op op basis van de informatie die u in de [Cloud Partner-Portal](https://cloudpartner.azure.com/)opgeeft.
 
-Het bereik van de activiteiten die beschikbaar zijn voor u uitgebreid naarmate u uw aanbiedingen op marketplace groeit. Alle aanbiedingen ontvangen een basisniveau aan optimalisatie aanbevelingen en de promotie.  Deze aanbiedingen zijn ook in aanmerking komen voor extra marketing voordelen op basis van de oplossing status (lijst, proefversie of Transact - marketplace beloningen), gekozen marketplace en de prestatie van de competentie voor het Microsoft-Partner.
+Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie.  Deze aanbiedingen komen ook in aanmerking voor aanvullende marketing voordelen op basis van de oplossings status (lijst, proef versie of afkortingen van de Marketplace), de gekozen Marketplace en de competentie van micro soft-partners.
 
-De onderstaande tabel geven een overzicht van de vereisten voor geschiktheid voor de lijst en Proefaanbiedingen:
+In de volgende tabel vindt u een overzicht van de vereisten voor lijst-en proef abonnementen:
 
 ![](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
 
-\* Silver- of gold-competentie vereist. <br>
-\*\* Gold-competentie voor vereist. <br>
-\*\*\* Vereist gold-competentie voor en CO-sell Ready in aanbiedingen die Partner. <br>
-^ Transact alleen van toepassing op Azure Marketplace.
+\*Vereist Silver-of Gold-competentie. <br>
+\*\*Gold-competentie vereist. <br>
+\*\*\*Vereist Gold-competentie en samen te verkopen in partner lijsten. <br>
+Alleen ^ Transact, van toepassing op Azure Marketplace.
 
-## <a name="marketplace-rewards-for-transact-partners"></a>Marketplace-voordelen voor transact-partners
+## <a name="marketplace-rewards-for-transact-partners"></a>Marketplace-beloningen voor Transact-partners
 
-De volledige lijst van de voordelen voor marketplace beloningen kan worden weergegeven in de [programma samenvatting dia's](https://onedrive.live.com/view.aspx?resid=1900675C97CA6FE0!630&ithint=file%2cpptx&authkey=!APQ6LSnDenx2FKM).
+De volledige lijst met voor delen voor Marketplace-beloningen kan worden weer gegeven in de [programma samenvattings dia's](https://aka.ms/marketplacerewards).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Aanmelden bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/) maken en configureren uw aanbieding.
+Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/) om uw aanbieding te maken en te configureren.
 
 ---

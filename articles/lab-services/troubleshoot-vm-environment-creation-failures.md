@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774419"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129043"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Problemen met de virtuele machine (VM) en het maken van een omgeving oplossen in Azure DevTest Labs
 DevTest Labs geeft u waarschuwingen als een computer naam ongeldig is of als u een test beleid schendt. Soms wordt er rood `X` weer geven naast de VM of omgevings status van uw Lab, waarmee u wordt geïnformeerd dat er iets verkeerd is gegaan.  In dit artikel vindt u enkele trucs die u kunt gebruiken om het onderliggende probleem te vinden en om het probleem in de toekomst te voor komen.
 
 ## <a name="portal-notifications"></a>Portal meldingen
-Als u de Azure Portal gebruikt, is de eerste plaats om te kijken naar het **deel venster meldingen**.  De meldingen van het deelvenster, beschikbaar op de opdrachtbalk door te klikken op de **belpictogram**, laat u weten of het lab maken van virtuele machine of de omgeving is geslaagd of mislukt.  Als er een fout is opgetreden, wordt het fout bericht weer gegeven dat is gekoppeld aan het maken van een fout. De details bevatten vaak meer informatie om het probleem op te lossen. In het volgende voor beeld is het maken van de virtuele machine mislukt vanwege het uitvoeren van de kern geheugens. In het gedetailleerde bericht wordt uitgelegd hoe u het probleem kunt oplossen en een kern quotum toename aanvragen.
+Als u de Azure Portal gebruikt, is de eerste plaats om te kijken naar het **deel venster meldingen**.  De meldingen van het deelvenster, beschikbaar op de opdrachtbalk door te klikken op de **belpictogram**, laat u weten of het lab maken van virtuele machine of de omgeving is geslaagd of mislukt.  Als er een fout is opgetreden, wordt het fout bericht weer gegeven dat is gekoppeld aan het maken van een fout. De details bevatten vaak meer informatie om het probleem op te lossen. In het volgende voor beeld is het maken van de virtuele machine mislukt vanwege het uitvoeren van de kern geheugens. In het gedetailleerde bericht wordt uitgelegd hoe u het probleem kunt oplossen en een kern quotum toename aanvragen.
 
 ![Azure Portal-melding](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 

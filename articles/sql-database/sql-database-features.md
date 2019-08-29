@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2a14140a395e8ccd2bf0092d5922d639914b01a7
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900407"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135277"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Vergelijking van functies: Azure SQL Database versus SQL Server
 
@@ -160,6 +160,16 @@ Azure SQL database ondersteunt diverse hulp middelen voor gegevens die u kunnen 
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Geen-Zie [uitgebreide gebeurtenissen](sql-database-xevent-db-diff-from-svr.md) | Ja |
 | [System Center Operations Manager-SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Nee |
+
+## <a name="migration-methods"></a>Migratie methoden
+
+U kunt verschillende migratie methoden gebruiken om uw gegevens te verplaatsen tussen SQL Server, Individuele database en beheerde exemplaar databases. Sommige methoden zijn **online** en nemen alle wijzigingen op die tijdens het uitvoeren van de migratie op de bron worden aangebracht, terwijl u in **offline** -methoden de werk belasting stopt die gegevens op de bron wijzigt terwijl de migratie wordt uitgevoerd.
+
+| **Bron** | **Eén data base en elastische pool** | **Beheerd exemplaar** |
+| --- | --- | --- |
+| SQL Server (on-premises, AzureVM, Amazon RDS) | **Aanschaffen** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Aanschaffen** [Gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** Systeem eigen back-up/herstellen, [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
+| Individuele database | **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
+| Beheerd exemplaar | **Aanschaffen** [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) | **Aanschaffen** [Transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Breken** Herstel punt voor meerdere exemplaren ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) of [Azure cli](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [systeem eigen back-up/herstellen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

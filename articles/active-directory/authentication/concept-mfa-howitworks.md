@@ -1,5 +1,5 @@
 ---
-title: 'Azure multi-factor Authentication: hoe IT werkt-Azure Active Directory'
+title: 'Azure Multi-Factor Authentication: hoe IT werkt-Azure Active Directory'
 description: Multi-Factor Authentication van Azure helpt bij het bewaken van de toegang tot uw gegevens en toepassingen en komt tegemoet aan de wensen van gebruikers met een eenvoudige aanmeldprocedure.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4f19c16149dbed34c16d021ff7100cace9a06a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 57b441803a066b794d17b46afec4d930b94ebdea
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879144"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125137"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Hoe werkt het? Azure Multi-Factor Authentication
 
@@ -30,20 +30,20 @@ De beveiliging van verificatie in twee stappen is afhankelijk van de gelaagde be
 
 ![Afbeelding van de conceptuele verificatie methoden](./media/concept-mfa-howitworks/methods.png)</center>
 
-Azure multi-factor Authentication (MFA) helpt u bij het beveiligen van de toegang tot gegevens en toepassingen, terwijl u eenvoudiger bent voor gebruikers. Het biedt extra beveiliging door een tweede vorm van verificatie te vereisen en sterke verificatie te bieden met behulp van een bereik aan gebruiks vriendelijke [verificatie methoden](concept-authentication-methods.md). Gebruikers kunnen of kunnen niet worden aangevraagd voor MFA op basis van configuratie beslissingen die een beheerder doet.
+Azure Multi-Factor Authentication (MFA) helpt bij het beveiligen van de toegang tot gegevens en toepassingen en voor gebruikers eenvoudiger te beheren. Het biedt extra beveiliging door een tweede vorm van verificatie te vereisen en sterke verificatie te bieden met behulp van een bereik aan gebruiks vriendelijke [verificatie methoden](concept-authentication-methods.md). Gebruikers kunnen of kunnen niet worden aangevraagd voor MFA op basis van configuratie beslissingen die een beheerder doet.
 
-## <a name="how-to-get-multi-factor-authentication"></a>Hoe kan ik multi-factor Authentication ophalen?
+## <a name="how-to-get-multi-factor-authentication"></a>Hoe krijg ik Multi-Factor Authentication?
 
-Multi-factor Authentication wordt geleverd als onderdeel van de volgende aanbiedingen:
+Multi-Factor Authentication wordt geleverd als onderdeel van de volgende aanbiedingen:
 
-* **Azure Active Directory Premium** of **Microsoft 365 Business** : volledig aanbevolen gebruik van Azure multi-factor Authentication met behulp van beleid voor voorwaardelijke toegang om multi-factor Authentication te vereisen.
+* **Azure Active Directory Premium** of **Microsoft 365 Business** -volledig aanbevolen gebruik van Azure multi-factor Authentication met behulp van beleid voor voorwaardelijke toegang om multi-factor Authentication te vereisen.
 
 * **Azure ad free** of zelfstandige **Office 365** -licenties: gebruik vooraf gemaakte [basis beveiligings beleidsregels voor voorwaardelijke toegang](../conditional-access/concept-baseline-protection.md) om multi-factor Authentication voor uw gebruikers en beheerders te vereisen.
 
-* **Azure Active Directory globale beheerders** : een subset van Azure multi-factor Authentication-mogelijkheden is beschikbaar als middel om globale beheerders accounts te beveiligen.
+* **Azure Active Directory globale beheerders** : een subset van Azure multi-factor Authentication mogelijkheden is beschikbaar als middel om globale beheerders accounts te beveiligen.
 
 > [!NOTE]
-> Nieuwe klanten kunnen Azure multi-factor Authentication niet meer kopen als een zelfstandige aanbieding die vanaf 1 september 2018. Multi-factor Authentication blijft een beschik bare functie in Azure AD Premium-licenties.
+> Nieuwe klanten kunnen Azure Multi-Factor Authentication niet meer kopen als zelfstandige aanbieding die vanaf 1 september 2018. Multi-factor Authentication blijft een beschik bare functie in Azure AD Premium-licenties.
 
 ## <a name="supportability"></a>Ondersteuning
 
@@ -52,8 +52,8 @@ Aangezien de meeste gebruikers gewend zijn om alleen wacht woorden te gebruiken 
 * Train uw ondersteunings medewerkers voor het afhandelen van scenario's waarbij de gebruiker zich niet kan aanmelden omdat ze geen toegang hebben tot hun verificatie methoden of ze niet goed werken.
    * Met het beleid voor voorwaardelijke toegang voor de Azure MFA-service kunnen uw ondersteunings medewerkers een gebruiker toevoegen aan een groep die is uitgesloten van een beleid waarvoor MFA is vereist.
 * Overweeg het gebruik van voorwaardelijke toegang met de naam locaties als een manier om verificatie vragen in twee stappen te minimaliseren. Met deze functionaliteit kunnen beheerders verificatie in twee stappen overs laan voor gebruikers die zich aanmelden vanaf een beveiligde vertrouwde netwerk locatie, zoals een netwerk segment dat wordt gebruikt voor het onboarden van nieuwe gebruikers.
-* Implementeer [Azure AD Identity Protection](../active-directory-identityprotection.md) en activeer verificatie in twee stappen op basis van risico gebeurtenissen.
+* Implementeer [Azure AD Identity Protection](../active-directory-identityprotection.md) en activeer verificatie in twee stappen op basis van risico detecties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Stapsgewijze implementatie van Azure multi-factor Authentication](howto-mfa-getstarted.md)
+- [Step-by-Step Azure Multi-Factor Authentication-implementatie](howto-mfa-getstarted.md)

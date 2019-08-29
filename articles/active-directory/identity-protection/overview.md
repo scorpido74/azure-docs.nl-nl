@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335388"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125676"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Wat is Azure Active Directory Identity Protection?
 
@@ -45,10 +45,10 @@ Azure Active Directory Identity Protection is meer dan een hulp programma voor b
 - Risico niveaus voor aanmelding worden berekend
 - De risico niveaus van gebruikers worden berekend
 
-**Risico gebeurtenissen onderzoeken:**
+**Risico detecties onderzoeken:**
 
-- Meldingen verzenden voor risico gebeurtenissen
-- Risico gebeurtenissen onderzoeken met behulp van relevante en contextuele informatie
+- Meldingen verzenden voor risico detecties
+- Risico detecties onderzoeken met behulp van relevante en contextuele informatie
 - Eenvoudige werk stromen bieden voor het bijhouden van onderzoeken
 - Eenvoudige toegang bieden tot herstel acties, zoals het opnieuw instellen van wacht woorden
 
@@ -76,10 +76,10 @@ Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-role
 
 Azure Active Directory Identity Protection analyseert uw configuratie en detecteert beveiligings problemen die invloed kunnen hebben op de identiteiten van uw gebruikers. Zie [beveiligings problemen die worden gedetecteerd door Azure Active Directory Identity Protection](vulnerabilities.md)voor meer informatie.
 
-### <a name="risk-events"></a>Risicogebeurtenissen
+### <a name="risk-detections"></a>Risico detecties
 
-Azure Active Directory gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op de identiteiten van uw gebruikers. Het systeem maakt een record voor elke gedetecteerde verdachte actie. Deze records worden ook wel risico gebeurtenissen genoemd.  
-Zie [Risicogebeurtenissen in Azure Active Directory](../active-directory-identity-protection-risk-events.md) voor meer informatie.
+Azure Active Directory gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op de identiteiten van uw gebruikers. Het systeem maakt een record voor elke gedetecteerde verdachte actie. Deze records worden ook wel risico detecties genoemd.  
+Zie [Azure Active Directory-risico detectie](../active-directory-identity-protection-risk-events.md)voor meer informatie.
 
 ## <a name="investigation"></a>Onderzoek
 
@@ -89,10 +89,10 @@ Uw traject voor identiteits beveiliging begint meestal met het dash board voor i
 
 Het dashboard biedt u toegang tot:
 
-- Rapporten zoals gebruikers die zijn **gemarkeerd voor risico**, **risico gebeurtenissen** en **beveiligings problemen**
+- Rapporten zoals gebruikers die zijn **gemarkeerd voor risico**, **detectie van Risico's** en **beveiligings problemen**
 - Instellingen, zoals de configuratie van uw **beveiligings beleid**, **meldingen** en **registratie van multi-factor Authentication**
 
-Het is doorgaans uw begin punt voor onderzoek. Dit is het proces van het controleren van de activiteiten, logboeken en andere relevante informatie met betrekking tot een risico gebeurtenis om te bepalen of de stappen voor herstel of beperking nood zakelijk zijn, en hoe de identiteit is u hebt geknoeid en weet hoe de aangetaste identiteit is gebruikt.
+Het is doorgaans uw begin punt voor onderzoek. Dit is het proces van het controleren van de activiteiten, logboeken en andere relevante informatie met betrekking tot een risico detectie om te bepalen of de stappen voor herstel of beperking nood zakelijk zijn, en hoe de identiteit is u hebt geknoeid en weet hoe de aangetaste identiteit is gebruikt.
 
 U kunt uw onderzoeksactiviteiten koppelen aan de [meldingen](notifications.md) Azure Active Directory bescherming per e-mail wordt verzonden.
 

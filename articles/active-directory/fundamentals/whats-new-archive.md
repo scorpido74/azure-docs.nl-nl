@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a978e2755818e88cad580753e041eacd50a9e6d2
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1b5615de8df42bca64822b0e459c7815412300af
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980487"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125386"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archief voor de wat is er nieuw? in Azure Active Directory
 
@@ -1843,11 +1843,11 @@ Zie voor meer informatie over het aanbieden van uw toepassing in de Azure AD-app
 **Service categorie:** Identity Protection  
 **Product mogelijkheden:** Beveiliging van identiteits beveiliging &
 
-Het inzicht u voor een gedetecteerde risicogebeurtenis krijgt is gekoppeld aan uw Azure AD-abonnement. Met de Azure AD Premium P2-editie krijgt u de meest gedetailleerde informatie over alle onderliggende detecties.
+Het inzicht dat u krijgt bij een gedetecteerde risico detectie is gekoppeld aan uw Azure AD-abonnement. Met de Azure AD Premium P2-editie krijgt u de meest gedetailleerde informatie over alle onderliggende detecties.
 
-Met de Azure AD Premium P1-editie worden detecties die niet bij uw licentie inbegrepen zijn weergegeven als de risicogebeurtenis aanmelden met extra risico gedetecteerd.
+Met de Azure AD Premium P1 Edition worden detecties die niet onder uw licentie vallen, weer gegeven als het aanmelden van de risico detectie met een extra risico gedetecteerd.
 
-Zie [Risicogebeurtenissen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) voor meer informatie.
+Zie [Azure Active Directory-risico detectie](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)voor meer informatie.
  
 ---
 
@@ -1913,7 +1913,7 @@ Met de algemene beschikbaarheid van de nieuwe Azure Active Directory Administrat
 
 **Wat is er beschikbaar?**
 
-Als onderdeel van de overgang naar de nieuwe beheerconsole, 2 nieuwe API's beschikbaar gemaakt voor het ophalen van Azure AD-activiteitenlogboeken. De nieuwe set API's biedt uitgebreidere filteren en sorteren van functionaliteit naast het leveren van uitgebreide controle- en aanmeldingsactiviteiten. De gegevens die eerder beschikbaar tot en met de beveiligingsrapporten kan nu worden geopend via de Identity Protection risicogebeurtenissen API in Microsoft Graph.
+Als onderdeel van de overgang naar de nieuwe beheerconsole, 2 nieuwe API's beschikbaar gemaakt voor het ophalen van Azure AD-activiteitenlogboeken. De nieuwe set API's biedt uitgebreidere filteren en sorteren van functionaliteit naast het leveren van uitgebreide controle- en aanmeldingsactiviteiten. De gegevens die eerder via de beveiligings rapporten beschikbaar zijn, kunnen nu worden geopend via de API voor risico detectie van identiteits beveiliging in Microsoft Graph.
 
 Zie voor meer informatie:
 
@@ -2264,13 +2264,13 @@ Zie [besturings elementen in voorwaardelijke toegang tot Azure AD](https://docs.
  
 ---
 
-### <a name="aggregation-of-real-time-risk-events"></a>Aggregatie van realtime risicogebeurtenissen
+### <a name="aggregation-of-real-time-risk-detections"></a>Aggregatie van real-time risico detecties
 
 **Type:** Gewijzigde functie    
 **Service categorie:** Identiteitsbeveiliging  
 **Product mogelijkheden:** Identiteits beveiliging en-beveiliging
 
-In Azure AD Identity Protection worden nu alle realtime risicogebeurtenissen die afkomstig van hetzelfde IP-adres op een bepaalde dag zijn samengevoegd voor elk type risicogebeurtenis. Deze wijziging beperkt het volume van de risicogebeurtenissen die worden weergegeven zonder wijziging in de gebruikersbeveiliging.
+In Azure AD Identity Protection worden alle real-time-risico detecties die afkomstig zijn van hetzelfde IP-adres op een bepaalde dag, nu geaggregeerd voor elk type risico detectie. Met deze wijziging wordt het volume aan risico detecties beperkt zonder dat er wijzigingen in de gebruikers beveiliging worden weer gegeven.
 
 De onderliggende realtime detectie werkt telkens wanneer de gebruiker zich aanmeldt. Als u een aanmeldingsrisico beveiligingsbeleid instellen voor multi-factor Authentication of de toegang blokkeert hebt, is het nog steeds geactiveerd tijdens elke riskante aanmelding.
  
@@ -2388,7 +2388,7 @@ Zie voor meer informatie, [verbergen van een toepassing van derden uit de ervari
 
 **Wat is er beschikbaar?**
 
- Als onderdeel van de overgang naar de nieuwe beheerconsole, twee nieuwe API's voor het ophalen van Azure AD-activiteit logboeken beschikbaar zijn. De nieuwe set API's biedt uitgebreidere filteren en sorteren van functionaliteit naast het leveren van uitgebreide controle- en aanmeldingsactiviteiten. De gegevens die eerder beschikbaar tot en met de beveiligingsrapporten nu zijn toegankelijk via de API voor Identity Protection risico gebeurtenissen in Microsoft Graph.
+ Als onderdeel van de overgang naar de nieuwe beheerconsole, twee nieuwe API's voor het ophalen van Azure AD-activiteit logboeken beschikbaar zijn. De nieuwe set API's biedt uitgebreidere filteren en sorteren van functionaliteit naast het leveren van uitgebreide controle- en aanmeldingsactiviteiten. De gegevens die eerder via de beveiligings rapporten beschikbaar zijn, kunnen worden geopend via de API voor risico detectie van identiteits beveiliging in Microsoft Graph.
 
 
 ## <a name="september-2017"></a>September 2017

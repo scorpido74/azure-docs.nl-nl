@@ -15,26 +15,26 @@ ms.date: 01/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989842"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127642"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Rapport met gebruikers die risico lopen in de Azure-portal
 
-Azure Active Directory (Azure AD) detecteert verdachte activiteit in verband met uw gebruikersaccounts. Voor elke gedetecteerde activiteit wordt een record met de naam [risicogebeurtenis](concept-risk-events.md) gemaakt.
+Azure Active Directory (Azure AD) detecteert verdachte activiteit in verband met uw gebruikersaccounts. Voor elke gedetecteerde actie wordt een record gemaakt met de naam [risico detectie](concept-risk-events.md) .
 
 De beveiligingsrapporten zijn beschikbaar via de [Azure-portal](https://portal.azure.com). Selecteer de blade **Azure Active Directory** en ga vervolgens naar de sectie **Beveiliging**. 
 
-De gedetecteerde risico's worden gebruikt om het volgende te berekenen:
+De gedetecteerde risico detecties worden gebruikt om het volgende te berekenen:
 
 - **Riskante aanmeldingen** - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is. 
 
 - **Gebruikers voor wie wordt aangegeven dat ze risico lopen** - Een riskante gebruiker is een indicator van een gebruikersaccount dat mogelijk is aangetast. 
 
-Zie [Het beleid voor gebruikersrisico's configureren](../identity-protection/howto-user-risk-policy.md) voor informatie over het configureren van de beleidsregels die deze risicogebeurtenissen activeren. 
+Zie [How to configure the User Risk](../identity-protection/howto-user-risk-policy.md)policies (Engelstalig) voor meer informatie over het configureren van het beleid voor het activeren van deze risico detecties. 
 
 ![Riskante aanmeldingen](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ Alle edities van Azure Active Directory bieden rapporten over gebruikers voor wi
 
 - In de edities **Azure Active Directory Free en Basic** hebt u toegang tot een lijst met gebruikers voor wie wordt aangegeven dat ze risico lopen. 
 
-- Daarnaast kunt u in de editie **Azure Active Directory Premium 1** bepaalde onderliggende risicogebeurtenissen onderzoeken die voor elk rapport zijn gedetecteerd. 
+- Daarnaast kunt u met de **Azure Active Directory Premium 1** -editie enkele van de onderliggende risico detecties onderzoeken die zijn gedetecteerd voor elk rapport. 
 
-- De editie **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over alle onderliggende risicogebeurtenissen. Deze editie stelt u ook in staat beveiligingsbeleidsregels te configureren die automatisch op de geconfigureerde risiconiveaus reageren.
+- De versie van **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over alle onderliggende risico detecties. Daarnaast kunt u hiermee beveiligings beleid configureren dat automatisch reageert op geconfigureerde risico niveaus.
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Rapport met gebruikers die risico lopen voor de gratis en Basic-editie van Azure AD
@@ -73,7 +73,7 @@ Het rapport over gebruikers voor wie wordt aangegeven dat ze risico lopen in de 
 
 - Een lijst met gebruikersaccounts die mogelijk zijn aangetast 
 
-- Verzamelde informatie over de gedetecteerde [risicogebeurtenistypen](concept-risk-events.md)
+- Samengevoegde informatie over de [typen risico detectie](concept-risk-events.md) die zijn gedetecteerd
 
 - Een optie voor het downloaden van het rapport
 
@@ -89,11 +89,11 @@ Wanneer u een gebruiker selecteert, krijgt u een gedetailleerde rapportweergave 
 
 - Alle gebeurtenissen sluiten
 
-- De gemelde risico's voor de gebruiker onderzoeken. 
+- Bekijk de gemelde risico detecties voor de gebruiker. 
 
 ![Riskante aanmeldingen](./media/concept-user-at-risk/324.png)
 
-Als u een risicogebeurtenis wilt onderzoeken, selecteert u de gebeurtenis in de lijst om de bijbehorende blade **Details** te openen. Op de blade **Details** kunt u een risicogebeurtenis handmatig sluiten of een handmatig gesloten risicogebeurtenis opnieuw activeren. 
+Als u een risico detectie wilt onderzoeken, selecteert u er een in de lijst om de Blade **Details** voor deze risico detectie te openen. Op de Blade **Details** hebt u de mogelijkheid om een risico detectie hand matig te sluiten of een hand matig gesloten risico detectie opnieuw te activeren. 
 
 ![Riskante aanmeldingen](./media/concept-user-at-risk/325.png)
 

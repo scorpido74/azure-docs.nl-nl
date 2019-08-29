@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779170"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142621"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK voor SQL-API: Release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -220,7 +220,7 @@ ms.locfileid: "68779170"
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Oplossing voor een probleem dat af en toe leidt tot een webexcept: Kan de externe naam niet omzetten.
+* Oplossing voor een probleem dat af en toe leidt tot een webexcept: De externe naam kan niet worden omgezet.
 * De ondersteuning voor het lezen van een getypte document rechtstreeks door toe te voegen nieuwe overloads naar ReadDocumentAsync API toegevoegd.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -251,9 +251,21 @@ De Azure Cosmos DB .NET Core Preview SDK heeft de functiepariteit met de meest r
 
 Als u vragen hebt over deze SDK, post naar [stack overflow](https://stackoverflow.com/questions/tagged/azure-documentdb)of een probleem in de [github-opslag plaats](https://github.com/Azure/azure-documentdb-dotnet/issues).
 
-## <a name="release--retirement-dates"></a>Release & datums buiten gebruik stellen
+## <a name="release--retirement-dates"></a>Uittredings datums &
+Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het buiten gebruik stellen van een SDK om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
-| Versie | Releasedatum | Vervaldatum |
+Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert. 
+
+Aanvragen voor het Azure Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
+
+> [!WARNING]
+> Alle versies **1. x** van de .net core SDK voor de SQL-API worden op **30 augustus 2020**gestopt.
+> 
+>
+<br/>
+
+
+| Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
 | [2.5.1](#2.5.1) |02, 2019 |--- |
 | [2.4.1](#2.4.1) |20 juni 2019 |--- |
@@ -268,26 +280,26 @@ Als u vragen hebt over deze SDK, post naar [stack overflow](https://stackoverflo
 | [2.1.1](#2.1.1) |27 september 2018 |--- |
 | [2.1.0](#2.1.0) |21 september 2018 |--- |
 | [2.0.0](#2.0.0) |07 september 2018 |--- |
-| [1.9.1](#1.9.1) |09 maart 2018 |--- |
-| [1.8.2](#1.8.2) |21 februari 2018 |--- |
-| [1.8.1](#1.8.1) |05 februari 2018 |--- |
-| [1.7.1](#1.7.1) |16 november 2017 |--- |
-| [1.7.0](#1.7.0) |10 november 2017 |--- |
-| [1.6.0](#1.6.0) |17 oktober 2017 |--- |
-| [1.5.1](#1.5.1) |02 oktober 2017 |--- |
-| [1.5.0](#1.5.0) |10 augustus 2017 |--- | 
-| [1.4.1](#1.4.1) |07 augustus 2017 |--- |
-| [1.4.0](#1.4.0) |02 augustus 2017 |--- |
-| [1.3.2](#1.3.2) |12 juni 2017 |--- |
-| [1.3.1](#1.3.1) |23 mei 2017 |--- |
-| [1.3.0](#1.3.0) |10 mei 2017 |--- |
-| [1.2.2](#1.2.2) |19 april 2017 |--- |
-| [1.2.1](#1.2.1) |29 maart 2017 |--- |
-| [1.2.0](#1.2.0) |25 maart 2017 |--- |
-| [1.1.2](#1.1.2) |20 maart 2017 |--- |
-| [1.1.1](#1.1.1) |14 maart 2017 |--- |
-| [1.1.0](#1.1.0) |16 februari 2017 |--- |
-| [1.0.0](#1.0.0) |21 december 2016 |--- |
+| [1.9.1](#1.9.1) |09 maart 2018 |30 augustus 2020 |
+| [1.8.2](#1.8.2) |21 februari 2018 |30 augustus 2020 |
+| [1.8.1](#1.8.1) |05 februari 2018 |30 augustus 2020 |
+| [1.7.1](#1.7.1) |16 november 2017 |30 augustus 2020 |
+| [1.7.0](#1.7.0) |10 november 2017 |30 augustus 2020 |
+| [1.6.0](#1.6.0) |17 oktober 2017 |30 augustus 2020 |
+| [1.5.1](#1.5.1) |02 oktober 2017 |30 augustus 2020 |
+| [1.5.0](#1.5.0) |10 augustus 2017 |30 augustus 2020 | 
+| [1.4.1](#1.4.1) |07 augustus 2017 |30 augustus 2020 |
+| [1.4.0](#1.4.0) |02 augustus 2017 |30 augustus 2020 |
+| [1.3.2](#1.3.2) |12 juni 2017 |30 augustus 2020 |
+| [1.3.1](#1.3.1) |23 mei 2017 |30 augustus 2020 |
+| [1.3.0](#1.3.0) |10 mei 2017 |30 augustus 2020 |
+| [1.2.2](#1.2.2) |19 april 2017 |30 augustus 2020 |
+| [1.2.1](#1.2.1) |29 maart 2017 |30 augustus 2020 |
+| [1.2.0](#1.2.0) |25 maart 2017 |30 augustus 2020 |
+| [1.1.2](#1.1.2) |20 maart 2017 |30 augustus 2020 |
+| [1.1.1](#1.1.1) |14 maart 2017 |30 augustus 2020 |
+| [1.1.0](#1.1.0) |16 februari 2017 |30 augustus 2020 |
+| [1.0.0](#1.0.0) |21 december 2016 |30 augustus 2020 |
 | [0.1.0-preview](#0.1.0-preview) |15 november 2016 |En met 31 december 2016 |
 
 ## <a name="see-also"></a>Zie ook

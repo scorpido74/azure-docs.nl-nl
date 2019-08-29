@@ -3,23 +3,20 @@ title: Uw eerste gegevensfactory bouwen (PowerShell) | Microsoft Docs
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn met behulp van Azure PowerShell.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: 22ec1236-ea86-4eb7-b903-0e79a58b90c7
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 0f18fc8a18cbcf5d85b68ed40790eda36d653812
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 3e60e31f62d74a22a87c60f70e62bd5148906607
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836576"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140419"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Zelfstudie: Uw eerste Azure-gegevensfactory bouwen met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -74,7 +71,7 @@ In deze stap gebruikt u Azure PowerShell om een Azure-gegevensfactory met de naa
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     Voor sommige van de stappen in deze zelfstudie wordt ervan uitgegaan dat u de resourcegroep met de naam ADFTutorialResourceGroup gebruikt. Als u een andere resourcegroep gebruikt, moet u voor deze zelfstudie die groep gebruiken in plaats van ADFTutorialResourceGroup.
-3. Voer de **New-AzDataFactory** cmdlet die wordt gemaakt van een data factory met de naam **FirstDataFactoryPSH**.
+3. Voer de cmdlet **New-AzDataFactory** uit die een Data Factory met de naam **firstdatafactorypsh te maken**maakt.
 
     ```PowerShell
     New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH –Location "West US"
@@ -122,22 +119,22 @@ In deze stap koppelt u uw Azure Storage-account aan uw gegevensfactory. U gebrui
     ```
     Vervang de **accountnaam** door de naam van uw Azure-opslagaccount en vervang de **accountsleutel** door de toegangssleutel van het Azure-opslagaccount. Raadpleeg de informatie over het weergeven, kopiëren en opnieuw genereren van toegangssleutels voor opslag in [Uw opslagaccount beheren](../../storage/common/storage-account-manage.md#access-keys) als u meer wilt weten over het verkrijgen van een toegangssleutel voor opslag.
 2. Schakel in Azure PowerShell over naar de map ADFGetStarted.
-3. U kunt de **New-AzDataFactoryLinkedService** cmdlet die wordt gemaakt van een gekoppelde service. Voor deze cmdlet en andere Data Factory-cmdlets die u in deze zelfstudie gebruikt, moet u waarden doorgeven voor de parameters *ResourceGroupName* en *DataFactoryName*. U kunt ook gebruiken **Get-AzDataFactory** om op te halen een **DataFactory** object en geeft u het object zonder te hoeven typen *ResourceGroupName* en  *DataFactoryName* telkens wanneer u een cmdlet uitvoert. Voer de volgende opdracht uit om toe te wijzen de uitvoer van de **Get-AzDataFactory** cmdlet om een **$df** variabele.
+3. U kunt de cmdlet **New-AzDataFactoryLinkedService** gebruiken om een gekoppelde service te maken. Voor deze cmdlet en andere Data Factory-cmdlets die u in deze zelfstudie gebruikt, moet u waarden doorgeven voor de parameters *ResourceGroupName* en *DataFactoryName*. U kunt ook **Get-AzDataFactory** gebruiken om een **DataFactory** -object op te halen en het object door geven zonder *ResourceGroupName* en *DataFactoryName* telkens wanneer u een cmdlet uitvoert. Voer de volgende opdracht uit om de uitvoer van de cmdlet **Get-AzDataFactory** toe te wijzen aan een **$DF** variabele.
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-4. Voer nu de **New-AzDataFactoryLinkedService** cmdlet de gekoppelde **StorageLinkedService** service.
+4. Voer nu de cmdlet **New-AzDataFactoryLinkedService** uit om de gekoppelde **StorageLinkedService** -service te maken.
 
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\StorageLinkedService.json
     ```
-    Als u hadn't uitvoert de **Get-AzDataFactory** cmdlet en toegewezen van de uitvoer naar de **$df** variabele, zou u moeten waarden opgeven voor de *ResourceGroupName* en  *DataFactoryName* parameters als volgt te werk.
+    Als u de cmdlet **Get-AzDataFactory** niet had uitvoeren en de uitvoer hebt toegewezen aan de variabele **$DF** , moet u de waarden voor de para meters *ResourceGroupName* en *DataFactoryName* als volgt opgeven.
 
     ```PowerShell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName FirstDataFactoryPSH -File .\StorageLinkedService.json
     ```
-    Als u Azure PowerShell in het midden van de zelfstudie sluit, u moet uitvoeren de **Get-AzDataFactory** cmdlet volgende keer dat u Azure PowerShell om de zelfstudie te voltooien.
+    Als u in het midden van de zelf studie Azure PowerShell sluit, moet u de cmdlet **Get-AzDataFactory** uitvoeren om de volgende keer dat u Azure PowerShell start de zelf studie te volt ooien.
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Een gekoppelde HDInsight-service maken
 In deze stap koppelt u een on-demand HDInsight-cluster aan uw gegevensfactory. Het HDInsight-cluster wordt automatisch gemaakt tijdens runtime en wordt verwijderd wanneer het verwerken is voltooid en het cluster gedurende een opgegeven tijdsperiode niet actief is geweest. U kunt uw eigen HDInsight-cluster gebruiken in plaats van een on-demand HDInsight-cluster. Zie [Gekoppelde services berekenen](data-factory-compute-linked-services.md) voor meer informatie.
@@ -176,7 +173,7 @@ In deze stap koppelt u een on-demand HDInsight-cluster aan uw gegevensfactory. H
        Naarmate er meer segmenten worden verwerkt, verschijnen er meer containers in uw Azure-blobopslag. Als u deze niet nodig hebt voor het oplossen van problemen met taken, kunt u ze verwijderen om de opslagkosten te verlagen. De namen van deze containers worden als volgt opgebouwd: adf**naamvanuwgegevensfactory**-**naamvangekoppeldeservice**-datum-/tijdstempel. Gebruik hulpprogramma's zoals [Microsoft Opslagverkenner](https://storageexplorer.com/) om containers in uw Azure-blobopslag te verwijderen.
 
      Zie [Gekoppelde on-demand HDInsight-service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) voor meer informatie.
-2. Voer de **New-AzDataFactoryLinkedService** cmdlet die wordt gemaakt van de gekoppelde service met de naam HDInsightOnDemandLinkedService.
+2. Voer de cmdlet **New-AzDataFactoryLinkedService** uit om de gekoppelde service met de naam HDInsightOnDemandLinkedService te maken.
     
     ```PowerShell
     New-AzDataFactoryLinkedService $df -File .\HDInsightOnDemandLinkedService.json
@@ -217,13 +214,13 @@ In deze stap maakt u gegevenssets die de invoer- en uitvoergegevens voor Hive-ve
 
    | Eigenschap | Description |
    |:--- |:--- |
-   | type |De eigenschap type wordt ingesteld op AzureBlob, omdat de gegevens zich in de Azure-blobopslag bevinden. |
+   | Type |De eigenschap type wordt ingesteld op AzureBlob, omdat de gegevens zich in de Azure-blobopslag bevinden. |
    | linkedServiceName |Deze eigenschap verwijst naar de StorageLinkedService die u eerder hebt gemaakt. |
    | fileName |Deze eigenschap is optioneel. Als u deze eigenschap niet opgeeft, worden alle bestanden uit folderPath gekozen. In dit geval wordt alleen input.log verwerkt. |
    | type |Omdat de logboekbestanden tekstbestanden zijn, gebruiken we TextFormat. |
    | columnDelimiter |Kolommen in de logboekbestanden worden gescheiden door een komma (,). |
    | frequency/interval |Als frequency wordt ingesteld op Month en de interval 1 is, betekent dat dat de invoersegmenten één keer per maand beschikbaar worden gemaakt. |
-   | external |Deze eigenschap wordt ingesteld op true als de invoergegevens niet worden gegenereerd door de Data Factory-service. |
+   | extern |Deze eigenschap wordt ingesteld op true als de invoergegevens niet worden gegenereerd door de Data Factory-service. |
 2. Voer in Azure PowerShell de volgende opdracht uit om de Data Factory-gegevensset te maken:
 
     ```PowerShell
@@ -339,12 +336,12 @@ In deze stap maakt u uw eerste pijplijn met een **HDInsightHive**-activiteit. He
 ## <a name="monitor-pipeline"></a>De pijplijn bewaken
 In deze stap gebruikt u Azure PowerShell om te bewaken wat er gebeurt in een Azure-gegevensfactory.
 
-1. Voer **Get-AzDataFactory** en toewijzen van de uitvoer naar een **$df** variabele.
+1. Voer **Get-AzDataFactory** uit en wijs de uitvoer toe aan een **$DF** variabele.
 
     ```PowerShell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name FirstDataFactoryPSH
     ```
-2. Voer **Get-AzDataFactorySlice** voor meer informatie over alle segmenten van de **EmpSQLTable**, dit is de uitvoertabel van de pijplijn.
+2. Voer **Get-AzDataFactorySlice** uit om details over alle segmenten van de **EmpSQLTable**te verkrijgen. Dit is de uitvoer tabel van de pijp lijn.
 
     ```PowerShell
     Get-AzDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
@@ -363,7 +360,7 @@ In deze stap gebruikt u Azure PowerShell om te bewaken wat er gebeurt in een Azu
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. Voer **Get-AzDataFactoryRun** om op te halen van de details van activiteit actief is gedurende een bepaald segment.
+3. Voer **Get-AzDataFactoryRun** uit om de details van de activiteit uitvoeringen voor een specifiek segment op te halen.
 
     ```PowerShell
     Get-AzDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01

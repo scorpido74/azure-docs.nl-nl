@@ -15,14 +15,17 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: d4036b2aaa59eeb8e38a5881e465031d7a2f15e3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899713"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142837"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Toegang tot beheer van Azure beheren met voorwaardelijke toegang
+
+> [!CAUTION]
+> Zorg ervoor dat u begrijpt hoe voorwaardelijke toegang werkt voordat u een beleid instelt om de toegang tot Azure management te beheren. Zorg ervoor dat u geen voor waarden maakt die uw eigen toegang tot de portal kunnen blok keren.
 
 Voorwaardelijke toegang in Azure Active Directory (Azure AD) beheert de toegang tot Cloud-apps op basis van specifieke voor waarden die u opgeeft. Als u toegang wilt toestaan, maakt u beleid voor voorwaardelijke toegang om toegang toe te staan of te blok keren op basis van het feit of aan de vereisten in het beleid wordt voldaan. 
 
@@ -44,7 +47,5 @@ Het beleid dat u maakt, is van toepassing op alle Azure Management-eind punten, 
 
 Houd er rekening mee dat het beleid van toepassing is op Azure PowerShell, waarmee de Azure Resource Manager-API wordt aangeroepen. Het is niet van toepassing op [Azure AD Power shell](/powershell/azure/active-directory/install-adv2), die Microsoft Graph aanroept.
 
-> [!CAUTION]
-> Zorg ervoor dat u begrijpt hoe voorwaardelijke toegang werkt voordat u een beleid instelt om de toegang tot Azure management te beheren. Zorg ervoor dat u geen voor waarden maakt die uw eigen toegang tot de portal kunnen blok keren.
 
 Zie [voorwaardelijke toegang in azure Active Directory](../active-directory/active-directory-conditional-access-azure-portal.md)voor meer informatie over het instellen en gebruiken van voorwaardelijke toegang.

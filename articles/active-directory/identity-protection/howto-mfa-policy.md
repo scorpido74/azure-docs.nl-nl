@@ -11,27 +11,27 @@ manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 939f08fd16cf27e641cf6436a00396ad2db8e6c3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499566"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126397"
 ---
-# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Procedure: Het Azure multi-factor Authentication-registratie beleid configureren
+# <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Procedure: Het registratie beleid voor Azure Multi-Factor Authentication configureren
 
 Azure AD Identity Protection helpt u bij het beheren van de implementatie van multi-factor Authentication (MFA) door het configureren van een beleid voor voorwaardelijke toegang om MFA-registratie te vereisen, ongeacht de moderne verificatie-app waarmee u zich aanmeldt. In dit artikel wordt uitgelegd wat het beleid kan gebruiken en hoe het kan worden geconfigureerd.
 
 
 
-## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Wat is het Azure multi-factor Authentication-registratie beleid?
+## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Wat is het Azure Multi-Factor Authentication-registratie beleid?
 
-Azure multi-factor Authentication biedt een manier om te controleren wie u meer dan alleen een gebruikers naam en wacht woord gebruikt. Het biedt een tweede beveiligingslaag voor gebruikers aanmeldingen. Gebruikers kunnen alleen reageren op MFA-prompts als ze zich eerst registreren voor Azure multi-factor Authentication.
+Azure Multi-Factor Authentication biedt een manier om te controleren wie u meer dan alleen een gebruikers naam en wacht woord gebruikt. Het biedt een tweede beveiligingslaag voor gebruikers aanmeldingen. Om gebruikers te kunnen reageren op MFA-prompts, moeten ze zich eerst registreren voor Azure Multi-Factor Authentication.
 
-We raden u aan Azure multi-factor Authentication voor gebruikers aanmeldingen te vereisen omdat:
+U wordt aangeraden Azure Multi-Factor Authentication te vereisen voor aanmeldingen van gebruikers omdat:
 
 - Biedt sterke verificatie met een scala aan eenvoudige verificatie opties
-- Speelt een belang rijke rol bij het voorbereiden van uw organisatie voor het beveiligen en herstellen van risico gebeurtenissen in identiteits beveiliging
+- Speelt een belang rijke rol bij het voorbereiden van uw organisatie voor het beveiligen en herstellen van risico detecties in identiteits beveiliging
 
 Zie [Wat is Azure multi-factor Authentication?](../authentication/howto-mfa-getstarted.md) voor meer informatie over MFA.
 

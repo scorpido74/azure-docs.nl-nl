@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 33e29b02adfccf94da84dd99451117485b892ba3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
-ms.translationtype: HT
+ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072914"
+ms.locfileid: "70129197"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen oplossen met Azure File Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -717,7 +717,7 @@ Deze fout treedt op omdat het opslag account is overgeschakeld naar een andere r
 | **Fout reeks** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Herstel vereist** | Nee |
 
-Deze fout treedt op vanwege een intern probleem met de synchronisatie database. Deze fout wordt automatisch opgelost wanneer de Azure File Sync wanneer de synchronisatie wordt uitgevoerd. Als deze fout gedurende een verlengde periode blijft bestaan, kunt u een ondersteunings aanvraag maken. we nemen contact met u op om dit probleem op te lossen.
+Deze fout treedt op vanwege een intern probleem met de synchronisatie database. Deze fout wordt automatisch opgelost wanneer er synchronisatie pogingen worden gedaan. Als deze fout gedurende een verlengde periode blijft bestaan, kunt u een ondersteunings aanvraag maken. we nemen contact met u op om dit probleem op te lossen.
 
 <a id="-2134364024"></a>**De synchronisatie is mislukt vanwege een wijziging in de Azure Active Directory Tenant**  
 

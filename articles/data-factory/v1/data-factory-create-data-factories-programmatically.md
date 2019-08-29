@@ -1,34 +1,33 @@
 ---
-title: Gegevens-pipelines maken met behulp van Azure .NET SDK | Microsoft Docs
-description: Leer hoe u via een programma maken, bewaken en beheren van Azure data factory's met behulp van Data Factory-SDK.
+title: Gegevens pijplijnen maken met behulp van de Azure .NET SDK | Microsoft Docs
+description: Informatie over het programmatisch maken, bewaken en beheren van Azure-gegevens fabrieken met behulp van Data Factory SDK.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487279"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140220"
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Maken, bewaken en beheren van Azure data factory's met behulp van Azure Data Factory .NET SDK
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-gegevens fabrieken maken, bewaken en beheren met behulp van Azure Data Factory .NET SDK
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="overview"></a>Overzicht
-U kunt maken, bewaken en beheren van Azure data factory's programmatisch met behulp van Data Factory .NET SDK. In dit artikel bevat een overzicht waarin u volgen kunt om het maken van een voorbeeld van .NET-consoletoepassing die maakt en bewaakt een data factory. 
+U kunt Azure-gegevens fabrieken programmatisch maken, bewaken en beheren met behulp van Data Factory .NET SDK. Dit artikel bevat een overzicht dat u kunt volgen om een voor beeld van een .NET-console toepassing te maken waarmee een data factory wordt gemaakt en gecontroleerd. 
 
 > [!NOTE]
-> Dit artikel behandelt niet de volledige Data Factory .NET API. Zie [Data Factory .NET API-verwijzing](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) voor uitgebreide documentatie over .NET API voor Data Factory. 
+> Dit artikel behandelt niet de volledige Data Factory .NET API. Zie [Data Factory .net API Reference](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) voor uitgebreide documentatie over .net api voor Data Factory. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -106,7 +105,7 @@ U moet na deze stappen beschikken over de volgende vier waarden:
 * Wachtwoord (opgegeven in de eerste opdracht)
 
 ## <a name="walkthrough"></a>Walkthrough
-In dit overzicht kunt u een data factory maken met een pijplijn met een kopieeractiviteit. De kopieeractiviteit kopieert gegevens van een map in uw Azure-blobopslag naar een andere map in dezelfde blobopslag. 
+In de walkthrough maakt u een data factory met een pijp lijn die een Kopieer activiteit bevat. De Kopieer activiteit kopieert gegevens uit een map in uw Azure Blob-opslag naar een andere map in dezelfde Blob-opslag. 
 
 Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over de kopieeractiviteit.
 
@@ -122,7 +121,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
 3. Voer de volgende stappen uit in de **Package Manager Console**:
    1. Voer de volgende opdracht uit om het Data Factory-pakket te installeren: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Voer de volgende opdracht uit om het Azure Active Directory-pakket te installeren (u gebruikt de Active Directory API in de code): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Vervang de inhoud van **App.config** bestand in het project met de volgende inhoud: 
+4. Vervang de inhoud van het bestand **app. config** in het project door de volgende inhoud: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -139,8 +138,8 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
         </appSettings>
     </configuration>
     ```
-5. Werk in het bestand App.Config de waarden voor  **&lt;toepassings-ID&gt;** ,  **&lt;wachtwoord&gt;** ,  **&lt;abonnement ID&gt;** , en **&lt;tenant-ID&gt;** door uw eigen waarden.
-6. Voeg de volgende **met behulp van** instructies toe aan de **Program.cs** bestand in het project.
+5. In het bestand app. config worden de waarden voor  **&lt;de toepassings&gt;-id**,  **&lt;het wacht woord&gt;** ,  **&lt;de abonnements-id&gt;** en **&lt;de Tenant-id bijgewerkt met&gt;** uw eigen waarden.
+6. Voeg de volgende **using** -instructies toe aan het **Program.cs** -bestand in het project.
 
     ```csharp
     using System.Configuration;
@@ -178,7 +177,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
     ```
 
    > [!IMPORTANT]
-   > Vervang de waarde van **resourceGroupName** door de naam van uw Azure-resourcegroep. U kunt maken met een resource-groep met de [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet.
+   > Vervang de waarde van **resourceGroupName** door de naam van uw Azure-resourcegroep. U kunt een resource groep maken met behulp van de cmdlet [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
    >
    > Werk de naam van de data factory (dataFactoryName) zodanig bij dat deze uniek is. De naam van de gegevensfactory moet wereldwijd uniek zijn. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](data-factory-naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 7. Voeg de volgende code die een **gegevensfactory** maakt toe aan de methode **Main**.
@@ -222,9 +221,9 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
     ```
 9. Voeg de volgende code die **gegevenssets voor invoer en uitvoer** maakt toe aan de methode **Main**.
 
-    De **FolderPath** voor de blob is ingesteld op **adftutorial /** waar **adftutorial** is de naam van de container in de blob-opslag. Als deze container niet in uw Azure blob storage bestaat, een container maken met deze naam: **adftutorial** en een tekstbestand te uploaden naar de container.
+    De **FolderPath** voor de invoer-blob is ingesteld op **adftutorial/** WHERE **adftutorial** de naam van de container in uw Blob-opslag. Als deze container niet bestaat in uw Azure Blob-opslag, maakt u een container met de volgende naam: **adftutorial** en uploadt u een tekst bestand naar de container.
 
-    Het mappad voor de uitvoer-blob is ingesteld op: **adftutorial/apifactoryoutput / {segmenteren}** waar **segment** dynamisch wordt berekend op basis van de waarde van **SliceStart** () datum / tijd van elk segment starten).
+    De FolderPath voor de uitvoer-blob is ingesteld op: **adftutorial/apifactoryoutput/{slice}** , waarbij **segment** dynamisch wordt berekend op basis van de waarde van **slice start** (begin datum/tijd van elk segment).
 
     ```csharp
     // create input and output datasets
@@ -360,7 +359,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
         }
     });
     ```
-12. Voeg de volgende code toe aan de methode **Main** om de status van een gegevenssegment van de uitvoergegevensset te achterhalen. Er is slechts één segment verwacht in dit voorbeeld.
+12. Voeg de volgende code toe aan de methode **Main** om de status van een gegevenssegment van de uitvoergegevensset te achterhalen. Er wordt slechts één segment verwacht in dit voor beeld.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -395,7 +394,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
         }
     }
     ```
-13. **(optioneel)**  Voeg de volgende code om de details van een gegevenssegment naar van de uitvoering de **Main** methode.
+13. **(optioneel)** Voeg de volgende code toe om details van de uitvoering voor een gegevens segment op te halen voor de methode **Main** .
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
@@ -427,7 +426,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Voeg de volgende Help-methode toe die door de methode **Main** wordt gebruikt voor de klasse **Program**. Deze methode verschijnt een dialoogvenster waarin beschikt u over **gebruikersnaam** en **wachtwoord** waarmee u zich aanmeldt bij Azure portal.
+14. Voeg de volgende Help-methode toe die door de methode **Main** wordt gebruikt voor de klasse **Program**. Met deze methode wordt een dialoog venster weer gegeven waarin u de **gebruikers naam** en het **wacht woord** kunt opgeven die u gebruikt om u aan te melden bij Azure Portal.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -447,9 +446,9 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
     }
     ```
 
-15. Vouw in Solution Explorer het project: **DataFactoryAPITestApp**, met de rechtermuisknop op **verwijzingen**, en klikt u op **verwijzing toevoegen**. Schakel het selectievakje voor `System.Configuration` assembly en klikt u op **OK**.
+15. Vouw in het Solution Explorer het project uit: **DataFactoryAPITestApp**, klik met de rechter muisknop op **verwijzingen**en klik op **referentie toevoegen**. Schakel het selectie vakje `System.Configuration` voor de assembly in en klik op **OK**.
 15. Bouw de consoletoepassing. Klik op **Build** in het menu en klik op **Build Solution**.
-16. Controleer of er ten minste één bestand in de container adftutorial in uw Azure blob storage. Als dat niet het geval is, bestand Emp.txt te bekijken in Kladblok maken met de volgende inhoud en dit uploaden naar de container adftutorial.
+16. Controleer of er ten minste één bestand aanwezig is in de adftutorial-container in uw Azure Blob-opslag. Als dat niet het geval is, maakt u het bestand EMP. txt in Klad blok met de volgende inhoud en uploadt u het naar de adftutorial-container.
 
     ```
     John, Doe
@@ -460,9 +459,9 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
     * Gekoppelde service: **AzureStorageLinkedService**
     * Gegevensset: **DatasetBlobSource** en **DatasetBlobDestination**.
     * Pijplijn: **PipelineBlobSample**
-19. Controleren of een uitvoerbestand is gemaakt de **apifactoryoutput** map in de **adftutorial** container.
+19. Controleer of er een uitvoer bestand is gemaakt in de map **apifactoryoutput** in de container **adftutorial** .
 
-## <a name="get-a-list-of-failed-data-slices"></a>Een lijst met mislukte gegevenssegmenten 
+## <a name="get-a-list-of-failed-data-slices"></a>Een lijst met mislukte gegevens segmenten ophalen 
 
 ```csharp
 // Parse the resource path
@@ -502,6 +501,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende voorbeeld voor het maken van een pijplijn met behulp van .NET-SDK die gegevens uit Azure blob storage worden gekopieerd naar een Azure SQL database: 
+Zie het volgende voor beeld voor het maken van een pijp lijn met behulp van .NET SDK waarmee gegevens van een Azure Blob-opslag naar een Azure-SQL database worden gekopieerd: 
 
-- [Een pijplijn maken voor het kopiëren van gegevens uit Blob Storage naar SQL Database](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Een pijp lijn maken om gegevens van Blob Storage naar SQL Database te kopiëren](data-factory-copy-activity-tutorial-using-dotnet-api.md)

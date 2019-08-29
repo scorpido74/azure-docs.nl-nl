@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614219"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125595"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Een HDInsight-cluster met Enterprise Security Package configureren met behulp van Azure Active Directory Domain Services
 
@@ -22,12 +22,12 @@ Enterprise Security Package-clusters (ESP) bieden toegang van meerdere gebruiker
 In dit artikel leert u hoe u een HDInsight-cluster met ESP kunt configureren met behulp van Azure Active Directory Domain Services (Azure AD DS).
 
 > [!NOTE]  
-> ESP is algemeen beschikbaar in HDInsight 3,6 en 4,0 voor cluster typen: Apache Spark, Interactive, Apache Hadoop en HBase. ESP voor Apache Kafka cluster type is in preview.
+> ESP is algemeen beschikbaar in HDInsight 3,6 en 4,0 voor cluster typen: Apache Spark, Interactive, Hadoop en HBase. ESP voor Apache Kafka cluster type is in Preview met best mogelijke ondersteuning. ESP-clusters die zijn gemaakt vóór ESP-GA-datum (1 oktober 2018) worden niet ondersteund.
 
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS inschakelen
 
 > [!NOTE]  
-> Alleen Tenant beheerders hebben de bevoegdheid om Azure AD-DS in te scha kelen. Als de cluster opslag is Azure Data Lake Storage (ADLS) gen1 of Gen2, moet u multi-factor Authentication (MFA) alleen uitschakelen voor gebruikers die toegang moeten hebben tot het cluster met behulp van basis-Kerberos-verificaties. U kunt met behulp van vertrouwde IP- [adressen](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) of [voorwaardelijke toegang](../../active-directory/conditional-access/overview.md) voor specifieke gebruikers alleen MFA uitschakelen als ze toegang hebben tot het VNET-IP-bereik van het HDInsight-cluster. Als u voorwaardelijke toegang gebruikt, moet u ervoor zorgen dat het AD-service-eind punt is ingeschakeld in het HDInsight-VNET.
+> Alleen Tenant beheerders hebben de bevoegdheid om Azure AD-DS in te scha kelen. Als de cluster opslag is Azure Data Lake Storage (ADLS) gen1 of Gen2, moet u Multi-Factor Authentication (MFA) alleen uitschakelen voor gebruikers die toegang moeten hebben tot het cluster met behulp van basis-Kerberos-verificaties. U kunt met behulp van vertrouwde IP- [adressen](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) of [voorwaardelijke toegang](../../active-directory/conditional-access/overview.md) voor specifieke gebruikers alleen MFA uitschakelen als ze toegang hebben tot het VNET-IP-bereik van het HDInsight-cluster. Als u voorwaardelijke toegang gebruikt, moet u ervoor zorgen dat het AD-service-eind punt is ingeschakeld in het HDInsight-VNET.
 >
 > Als de cluster opslag Azure Blob Storage (WASB) is, moet u MFA niet uitschakelen.
 

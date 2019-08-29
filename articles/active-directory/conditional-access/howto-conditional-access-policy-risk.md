@@ -11,24 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d1b3e2f36256164420ae6b2e699f0ef48e2e78
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576548"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125432"
 ---
-# <a name="conditional-access-risk-based-conditional-access"></a>Voorwaardelijke toegang: Voorwaardelijke toegang op basis van risico
+# <a name="conditional-access-risk-based-conditional-access"></a>Voorwaardelijke toegang: Voorwaardelijke toegang op basis van risico's
 
-Organisaties met Azure AD Premium P2-licenties kunnen beleid voor voorwaardelijke toegang maken met Azure AD Identity Protection risico gebeurtenissen. Er zijn drie standaard beleidsregels die kunnen worden ingeschakeld. 
+Organisaties met Azure AD Premium P2-licenties kunnen beleids regels voor voorwaardelijke toegang maken met Azure AD Identity Protection risico detecties. Er zijn drie standaard beleidsregels die kunnen worden ingeschakeld. 
 
-* Vereisen dat alle gebruikers zich registreren voor Azure multi-factor Authentication.
+* Vereisen dat alle gebruikers zich registreren voor Azure Multi-Factor Authentication.
 * Een wachtwoord wijziging vereisen voor gebruikers met een hoog risico.
 * Multi-factor Authentication vereisen voor gebruikers met gemiddeld of hoog aanmeldings risico.
 
-## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Vereisen dat alle gebruikers zich registreren voor Azure multi-factor Authentication
+## <a name="require-all-users-to-register-for-azure-multi-factor-authentication"></a>Vereisen dat alle gebruikers zich registreren voor Azure Multi-Factor Authentication
 
-Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden geregistreerd voor Azure multi-factor Authentication. 
+Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden geregistreerd voor Azure Multi-Factor Authentication. 
 
 1. Meld u aan bij **Azure Portal**.
 1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.

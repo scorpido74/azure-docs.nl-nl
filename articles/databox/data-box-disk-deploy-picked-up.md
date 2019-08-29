@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035707"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135045"
 ---
 ::: zone target="chromeless"
 
-# <a name="return-azure-data-box-disk"></a>Azure Data Box Disk retour neren 
+## <a name="return-azure-data-box-disk"></a>Azure Data Box Disk retour neren 
 
 ::: zone-end
 
@@ -49,22 +49,9 @@ Voltooi voordat u begint de [Zelfstudie: Gegevens kopiëren naar de Azure Data B
     - U wordt aangeraden schijven te verpakken met een goed beveiligde ballon.
     - Zorg ervoor dat het passend is Snug om de bewegingen in het vak te verminderen.
 
-De volgende stappen worden bepaald door de locatie waar u het apparaat retourneert.
+De volgende stappen worden bepaald door de locatie waar u het apparaat retourneert. De instructies zijn verschillend voor VS/Canada, Australië of landen in Azië.
 
-
-
-- [Plan een ophaling met ups bij het retour neren van het apparaat in VS en Canada](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-- [Plan een ophaling met DHL voor Europa](data-box-disk-deploy-picked-up.md#pick-up-in-europe) door de website ervan te bezoeken en het Airway-factuur nummer op te geven.
-- [Een ophaling plannen in Australië](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
-- [Een ophaling voor landen in Azië](data-box-disk-deploy-picked-up.md#pick-up-in-asia) zoals Japan, Korea en Singapore plannen.
-
-::: zone target="chromeless"
-
-Nadat de schijven zijn opgehaald door uw provider, wordt de status van de bestelling in de portal-updates en een tracerings-ID weer gegeven.
-
-::: zone-end
-
-## <a name="pick-up-in-us-canada"></a>Orderverzamelen in Nederland, Canada
+### <a name="pick-up-in-us-canada"></a>Orderverzamelen in Nederland, Canada
 
 Voer de volgende stappen uit als u het apparaat in VS of Canada retourneert.
 
@@ -80,7 +67,7 @@ Voer de volgende stappen uit als u het apparaat in VS of Canada retourneert.
     - Als het tracking nummer niet wordt vermeld, moet u tijdens het ophalen een extra kosten betalen.
     - In plaats van het ophalen te plannen, kunt u ook de Data Box Disk op de dichtstbijzijnde uitval locatie afhalen.
 
-## <a name="pick-up-in-europe"></a>Ophalen in Europa
+### <a name="pick-up-in-europe"></a>Ophalen in Europa
 
 Voer de volgende stappen uit als u het apparaat in Europa wilt retour neren.
 
@@ -93,7 +80,7 @@ Voer de volgende stappen uit als u het apparaat in Europa wilt retour neren.
 4. Ga naar de pagina land/regio DHL Express en kies **een courier-verzameling boeken > eReturn-verzen ding**.    
 3. Geef het nummer van de luchtvrachtbrief op en klik op **Boek een koerier** om een ophaalmoment te plannen.
 
-## <a name="pick-up-in-australia"></a>Orderverzamelen in Australië
+### <a name="pick-up-in-australia"></a>Orderverzamelen in Australië
 
 Azure-data centers in Australië hebben een extra beveiligings melding. Alle inkomende verzen dingen moeten een geavanceerde melding hebben. Voer de volgende stappen uit voor het ophalen in Australië.
 
@@ -104,11 +91,11 @@ Azure-data centers in Australië hebben een extra beveiligings melding. Alle ink
     - Adres
     - Naam van contactpersoon
 
-## <a name="pick-up-in-asia"></a>Picken in Azië
+### <a name="pick-up-in-asia"></a>Picken in Azië
 
 De instructies voor het afhalen verschillen per Japan, Korea en Singapore.
 
-### <a name="pick-up-in-japan"></a>Ophalen in Japan
+#### <a name="pick-up-in-japan"></a>Ophalen in Japan
 
 1. Schrijf uw bedrijfs naam en adres gegevens in de begeleide notitie als gegevens van de afzender.
 2. Quantium-oplossing voor e-mail met de volgende e-mail sjabloon.
@@ -135,7 +122,7 @@ Als dat nodig is, kunt u contact opnemen met de ondersteuning van de Quantium-op
 - E-mail:Customerservice.JP@quantiumsolutions.com 
 - Telefoon: 03-5755-0150 
 
-### <a name="pick-up-in-korea"></a>Ophalen in Korea
+#### <a name="pick-up-in-korea"></a>Ophalen in Korea
 
 1. Zorg ervoor dat u de retour consigning-Opmerking opneemt.
 2. Ophalen aanvragen wanneer een begeleidende partij aanwezig is:
@@ -149,13 +136,10 @@ Als dat nodig is, kunt u contact opnemen met de ondersteuning van de Quantium-op
     3. Roep *Quantium Solutions International* Hotline aan voor alternatieve regelingen als de courier niet arriveert voor verzameling. 
     4. U ontvangt een mondelinge bevestiging als de aanvraag via de telefoon wordt gedaan.
 
-### <a name="pick-up-in-singapore"></a>Ophalen in Singapore
+#### <a name="pick-up-in-singapore"></a>Ophalen in Singapore
 
 1. Druk het verzend label af en voeg het toe aan het vak. Als het label is beschadigd of verloren is gegaan:
     - Ga naar **overzicht > verzend label te downloaden** en ontvang een retour verzendings label.
-
-        ![Verzendlabel downloaden](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Breng het label op het apparaat. Zorg ervoor dat het label zichtbaar is.
 
 2. Ophalen aanvragen:

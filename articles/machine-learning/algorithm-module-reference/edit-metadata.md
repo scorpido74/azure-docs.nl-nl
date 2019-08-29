@@ -1,7 +1,7 @@
 ---
-title: 'Metagegevens bewerken: Modulereferentie'
+title: 'Meta gegevens bewerken: Modulereferentie'
 titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module metagegevens bewerken in de Azure Machine Learning-service om te wijzigen van metagegevens die gepaard gaat met de kolommen in een gegevensset.
+description: Meer informatie over het gebruik van de module meta gegevens bewerken in de Azure Machine Learning-service voor het wijzigen van meta gegevens die zijn gekoppeld aan kolommen in een gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,94 +9,93 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 282652adb917450c262e08bf10c3c6e537b829e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072706"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128873"
 ---
-# <a name="edit-metadata-module"></a>De metagegevens van module bewerken
+# <a name="edit-metadata-module"></a>Meta gegevens module bewerken
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor de Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik de module gegevens bewerken om te wijzigen van de metagegevens die gepaard gaat met de kolommen in een gegevensset. De waarde en het gegevenstype van de gegevensset wordt gewijzigd na het gebruik van de module metagegevens bewerken.
+Gebruik de module gegevens bewerken om meta gegevens te wijzigen die zijn gekoppeld aan kolommen in een gegevensset. De waarde en het gegevens type van de gegevensset worden gewijzigd na gebruik van de module meta gegevens bewerken.
 
-Wijzigingen in typische metagegevens zijn onder andere:
+Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
   
-+ Booleaanse of numerieke kolommen als categorische waarden te behandelen.
++ Booleaanse of numerieke kolommen behandelen als categorische waarden.
   
-+ Die aangeeft welke kolom bevat de **klasse** label of de waarden die u wilt categoriseren of voorspellen bevat.
++ Geeft aan welke kolom het **klassen** label bevat of de waarden bevat die u wilt categoriseren of voors pellen.
   
-+ Kolommen markeren als functies.
++ Kolommen markeren als onderdelen.
   
-+ Het wijzigen van datum/tijd-waarden naar numerieke waarden of vice versa.
++ Datum/tijd-waarden wijzigen in numerieke waarden of andersom.
   
-+ Wijzigen van kolommen.
++ De naam van kolommen wijzigen.
   
- Telkens wanneer u de definitie van een kolom, doorgaans wijzigen om te voldoen aan vereisten voor een downstream-module met behulp van metagegevens bewerken. Bijvoorbeeld, sommige modules werken alleen met specifieke gegevenstypen of vlaggen voor de kolommen vereisen zoals `IsFeature` of `IsCategorical`.  
+ Gebruik de meta gegevens bewerken op elk gewenst moment om de definitie van een kolom te wijzigen, meestal om te voldoen aan de vereisten voor een downstream-module. Sommige modules werken bijvoorbeeld alleen met specifieke gegevens typen of vereisen markeringen voor de kolommen, zoals `IsFeature` of. `IsCategorical`  
   
- Nadat u de vereiste bewerking niet uitvoeren, kunt u de metagegevens in de oorspronkelijke staat herstellen.
+ Nadat u de vereiste bewerking hebt uitgevoerd, kunt u de meta gegevens herstellen naar de oorspronkelijke staat.
   
-## <a name="configure-edit-metadata"></a>Configureren van metagegevens bewerken
+## <a name="configure-edit-metadata"></a>Meta gegevens bewerken configureren
   
-1. De metagegevens bewerken-module toevoegen aan uw experiment in Azure Machine Learning, en verbinding maken met de gegevensset die u wilt bijwerken. U vindt de gegevensset onder **gegevenstransformatie** in de **bewerken** categorie.
+1. In Azure Machine Learning voegt u de module meta gegevens bewerken toe aan uw experiment en verbindt u de gegevensset die u wilt bijwerken. U kunt de gegevensset onder **gegevens transformatie** vinden in de categorie **bewerken** .
   
-1. Selecteer **Start de kolomkiezer** en kiest u de kolom of een set kolommen om te werken met. U kunt kolommen afzonderlijk op naam of index of kunt u een groep met kolommen op type.  
+1. Selecteer **de kolom kiezer starten** en kies de kolom of set kolommen waarmee u wilt werken. U kunt kolommen afzonderlijk op naam of index kiezen of u kunt een groep kolommen op type kiezen.  
   
-1. Selecteer de **gegevenstype** optie als u moet een ander gegevenstype toewijzen aan de geselecteerde kolommen. Mogelijk moet u het gegevenstype voor bepaalde bewerkingen wijzigen. Bijvoorbeeld, als uw brongegevensset getallen verwerkt als tekst heeft, moet u ze op een numeriek gegevenstype voordat u wiskundige bewerkingen.
+1. Selecteer de optie **gegevens type** als u een ander gegevens type aan de geselecteerde kolommen wilt toewijzen. Mogelijk moet u het gegevens type voor bepaalde bewerkingen wijzigen. Als uw bron-gegevensset bijvoorbeeld getallen heeft verwerkt als tekst, moet u deze wijzigen in een numeriek gegevens type voordat u wiskundige bewerkingen kunt gebruiken.
 
-    + De ondersteunde gegevenstypen zijn **tekenreeks**, **geheel getal**, **dubbele**, **Booleaanse**, en **datum-/** .
+    + De ondersteunde gegevens typen zijn **teken reeks**, **geheel getal**, **dubbel**, **Booleaans**en **datum/tijd**.
 
-    + Als u meerdere kolommen selecteert, moet u de wijzigingen in metagegevens naar toepassen *alle* geselecteerde kolommen. Stel dat u twee of drie numerieke kolommen kiezen. U kunt ze wijzigen naar een tekenreeks gegevenstype en de naam wijzigen in één bewerking. U kan echter één kolom in een tekenreeksgegevenstype en een andere kolom wijzigen van een float-waarde in een geheel getal zijn.
+    + Als u meerdere kolommen selecteert, moet u de meta gegevens wijzigingen Toep assen op *alle* geselecteerde kolommen. Stel bijvoorbeeld dat u twee of drie numerieke kolommen kiest. U kunt deze allemaal wijzigen in een teken reeks gegevens type en ze in één bewerking een andere naam geven. U kunt echter niet één kolom wijzigen in een teken reeks gegevens type en een andere kolom van een float-waarde tot een geheel getal.
   
-    + Als u een nieuw gegevenstype niet opgeeft, wordt de kolommetagegevens van de ongewijzigd.
+    + Als u geen nieuw gegevens type opgeeft, worden de meta gegevens van de kolom ongewijzigd.
 
-    + De kolom van het type en de waarden wordt gewijzigd nadat u de metagegevens bewerken-bewerking niet uitvoeren. U kunt het oorspronkelijke gegevenstype op elk gewenst moment herstellen met behulp van metagegevens bewerken opnieuw instellen van het gegevenstype van kolom.  
+    + Het kolom Type en de waarden worden gewijzigd nadat u de bewerking meta gegevens bewerken hebt uitgevoerd. U kunt het oorspronkelijke gegevens type op elk gewenst moment herstellen met behulp van meta gegevens bewerken om het kolom gegevens type opnieuw in te stellen.  
 
     > [!NOTE]
-    > Als u elk type getal en wijzigt de **datum-/** typt, laat u de **datum-/ tijdindeling** veld leeg. Op dit moment is het niet mogelijk om op te geven van de doel-gegevensindeling.  
+    > Als u een wille keurig type getal wijzigt in het type **datum/tijd** , laat u het veld **datum in notatie** leeg. Het is momenteel niet mogelijk om de indeling van de doel gegevens op te geven.  
 
-1. Selecteer de **Categorisch** optie om op te geven dat de waarden in de geselecteerde kolommen moeten worden behandeld als categorieën.
+1. Selecteer de optie **categorische** om op te geven dat de waarden in de geselecteerde kolommen als categorieën moeten worden behandeld.
 
-    Bijvoorbeeld, u mogelijk hebt u een kolom met de getallen van 0, 1 en 2, maar weet dat de getallen daadwerkelijk betekent "Roker," 'Niet-roker' en 'Onbekend'. In dat geval door de kolom als categorische markeert u ervoor zorgen dat de waarden worden gebruikt alleen om gegevens te groeperen en niet in de berekeningen.
+    Stel dat u een kolom hebt met de cijfers 0, 1 en 2, maar weet dat de getallen de waarde "rook," "niet-verrookr" en "onbekend" bevatten. In dat geval door de kolom als categorische te markeren, zorgt u ervoor dat de waarden alleen worden gebruikt om gegevens te groeperen en niet in numerieke berekeningen.
   
-1. Gebruik de **velden** optie als u wilt wijzigen van de manier waarop Azure Machine Learning gebruikt de gegevens in een model.
+1. Gebruik de optie **velden** als u de manier wilt wijzigen waarop Azure machine learning de gegevens in een model gebruikt.
 
-    + **Functie**: Gebruik deze optie om een kolom markeren als een functie in modules die worden uitgevoerd alleen op functie-kolommen. Standaard worden alle kolommen in eerste instantie beschouwd als functies.  
+    + **Functie**: Gebruik deze optie om een kolom te markeren als een functie in modules die alleen op functie Kolommen werken. Standaard worden alle kolommen als onderdelen behandeld.  
   
-    + **Label**: Gebruik deze optie om het markeren van het label, ook wel bekend als het voorspelbare kenmerk of target-variabele wordt. Veel modules vereist dat die precies één labelkolom is aanwezig in de gegevensset.
+    + **Label**: Gebruik deze optie om het label te markeren, dat ook wel het voorspel bare kenmerk of de doel variabele wordt genoemd. Voor veel modules moet exact één label kolom aanwezig zijn in de gegevensset.
 
-        In veel gevallen afleiden Azure Machine Learning dat een kolom een klasse-label bevat. Door in te stellen deze metagegevens, kunt u ervoor zorgen dat de kolom correct wordt geïdentificeerd. Deze optie instelt, wordt gegevenswaarden niet gewijzigd. Alleen de manier waarop dat sommige machine learning-algoritmen verwerking van de gegevens verandert.
+        In veel gevallen kan Azure Machine Learning afleiden dat een kolom een klassen label bevat. Door deze meta gegevens in te stellen, kunt u ervoor zorgen dat de kolom correct wordt geïdentificeerd. Als u deze optie instelt, worden er geen gegevens waarden gewijzigd. Het wijzigt alleen de manier waarop sommige algoritmen voor machine learning de gegevens verwerken.
   
     > [!TIP]
-    > Hebt u gegevens die niet in deze categorieën past? Uw gegevensset kan bijvoorbeeld waarden zoals unieke id's die niet handig als variabelen zijn bevatten. Deze id's kunnen soms problemen bij gebruik in een model veroorzaken.
+    > Hebt u gegevens die niet in deze categorieën passen? Uw gegevensset kan bijvoorbeeld waarden bevatten zoals unieke id's die niet nuttig zijn als variabelen. Soms kunnen dergelijke Id's problemen veroorzaken bij gebruik in een model.
     >
-    > Azure Machine Learning kunt u gelukkig houdt op al uw gegevens, zodat u hoeft deze kolommen verwijderen uit de gegevensset. Als u uitvoeren van bewerkingen op een speciale set kolommen wilt, alleen alle andere kolommen tijdelijk verwijderen met behulp van de [Select Columns in Dataset](select-columns-in-dataset.md) module. Later kunt u de kolommen in de gegevensset samenvoegen met behulp van de [kolommen toevoegen](add-columns.md) module.  
+    > Gelukkig houdt Azure Machine Learning al uw gegevens bij, zodat u deze kolommen niet hoeft te verwijderen uit de gegevensset. Als u bewerkingen wilt uitvoeren op een bepaalde set kolommen, verwijdert u alleen tijdelijk alle andere kolommen met de module [kolommen in gegevensset selecteren](select-columns-in-dataset.md) . Later kunt u de kolommen weer samen voegen met de gegevensset met behulp van de module [kolommen toevoegen](add-columns.md) .  
   
-1. Gebruik de volgende opties om te wissen van vorige selecties en metagegevens op de standaardwaarden herstellen.  
+1. Gebruik de volgende opties om eerdere selecties te wissen en meta gegevens te herstellen naar de standaard waarden.  
   
-    + **Schakel functie**: Gebruik deze optie om de functievlag te verwijderen.  
+    + **Functie wissen**: Gebruik deze optie om de functie vlag te verwijderen.  
   
-         Alle kolommen worden in eerste instantie behandeld als functies. Voor modules die wiskundige bewerkingen uitvoeren, moet u mogelijk gebruik van deze optie om te voorkomen dat numerieke kolommen wordt behandeld als variabelen.
+         Alle kolommen worden in eerste instantie behandeld als functies. Voor modules die wiskundige bewerkingen uitvoeren, moet u mogelijk deze optie gebruiken om te voor komen dat numerieke kolommen als variabelen worden beschouwd.
   
-    + **Duidelijke label**: Gebruik deze optie om te verwijderen de **label** metagegevens van de opgegeven kolom.  
+    + **Label wissen**: Gebruik deze optie om de meta gegevens van het **Label** te verwijderen uit de opgegeven kolom.  
   
-    + **Schakel score**: Gebruik deze optie om te verwijderen de **score** metagegevens van de opgegeven kolom.  
+    + **Score wissen**: Gebruik deze optie om de meta gegevens van de **Score** te verwijderen uit de opgegeven kolom.  
   
-         U markeren momenteel niet expliciet een kolom als een score in Azure Machine Learning. Bepaalde bewerkingen wordt echter resulteren in een kolom wordt gemarkeerd als een score intern. Een aangepaste R-module kan ook, score waarden uitvoer.
+         U kunt een kolom momenteel niet expliciet markeren als een score in Azure Machine Learning. Een aantal bewerkingen resulteert echter in een kolom die intern als score wordt gemarkeerd. Een aangepaste R-module kan ook Score waarden uitvoeren.
 
-1. Voor **nieuwe kolomnamen**, typ de nieuwe naam van de geselecteerde kolom of kolommen.  
+1. Voer voor **nieuwe kolom namen**de nieuwe naam van de geselecteerde kolom of kolommen in.  
   
-    + De namen van kolommen kunt alleen de tekens die worden ondersteund door UTF-8-codering. Lege tekenreeksen, null-waarden of namen die alleen uit spaties bestaan zijn niet toegestaan.  
+    + Kolom namen kunnen alleen tekens gebruiken die worden ondersteund door UTF-8-code ring. Lege teken reeksen, null-waarden of namen die uitsluitend uit spaties bestaan, zijn niet toegestaan.  
   
-    + Wijzig de naam van meerdere kolommen, geef de naam als een door komma's gescheiden lijst in volgorde van de indexen die kolom.  
+    + Als u de naam van meerdere kolommen wilt wijzigen, voert u de namen in als een door komma's gescheiden lijst in volg orde van de kolom indexen.  
   
-    + De naam van alle geselecteerde kolommen moeten worden gewijzigd. U kunt geen weglaat of kolommen overslaan.  
+    + De naam van alle geselecteerde kolommen moet worden gewijzigd. U kunt geen kolommen weglaten of overs Laan.  
   
 1. Voer het experiment uit.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) naar de Azure Machine Learning-service.
+Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service.

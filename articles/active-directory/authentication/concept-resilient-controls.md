@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779677"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125117"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Maak een flexibele toegangs beheer strategie met Azure Active Directory
 
@@ -80,12 +80,12 @@ Met dit voor beeld van een beleidset worden geselecteerde gebruikers in **AppUse
 * Beleid 1: Toegang blok keren voor personen buiten de doel groepen
   * Gebruikers en groepen: Alle gebruikers bevatten. AppUsers, CoreAdmins en EmergencyAccess uitsluiten
   * Cloud-apps: Alle apps toevoegen
-  * Nader (Geen)
+  * Nader Geen
   * Beheer toekennen: Blokkeren
 * Beleid 2: Verleen toegang tot AppUsers die MFA of een vertrouwd apparaat vereisen.
   * Gebruikers en groepen: Neem AppUsers op. CoreAdmins en EmergencyAccess uitsluiten
   * Cloud-apps: Alle apps toevoegen
-  * Nader (Geen)
+  * Nader Geen
   * Beheer toekennen: Toegang verlenen, multi-factor Authentication vereisen, vereist dat het apparaat compatibel is. Voor meerdere besturings elementen: Een van de geselecteerde besturings elementen vereisen.
 
 ### <a name="contingencies-for-user-lockout"></a>Onvoorziene gebeurtenissen voor gebruikers vergrendeling
@@ -232,7 +232,7 @@ Afhankelijk van welke oplossingen of onvoorziene gebeurtenissen worden gebruikt 
 1. Als onderdeel van uw strategie voor het wijzigen van het besturings element, documenteren elke wijziging en de status van het bedrijf om eventuele onvoorziene gebeurtenissen terug te draaien zodra de toegangs beheer functies volledig operationeel zijn.
 2. Stel dat kwaad aardige actors proberen wacht woorden te oogsten door middel van wachtwoord spray of phishing-aanvallen, terwijl u MFA uitschakelt. Het is ook mogelijk dat ongeldige actors al wacht woorden hebben die voorheen geen toegang verlenen tot resources die tijdens dit venster kunnen worden geprobeerd. Voor kritieke gebruikers, zoals leidinggevenden, kunt u dit risico gedeeltelijk beperken door hun wacht woorden opnieuw in te stellen voordat u MFA uitschakelt.
 3. Archiveer alle aanmeldings activiteiten om te bepalen wie toegang heeft tot wat er tijdens de tijd MFA is uitgeschakeld.
-4. [Alle risico gebeurtenissen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) die zijn gerapporteerd tijdens dit venster sorteren.
+4. [Sorteren alle risico detecties gerapporteerd](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) tijdens dit venster.
 
 ## <a name="after-a-disruption"></a>Na een onderbreking
 
@@ -242,7 +242,7 @@ De wijzigingen die u hebt gemaakt als onderdeel van het geactiveerde rampen plan
 2. Schakel de beleids regels voor nood gevallen uit. 
 3. Terugdraaiende wijzigingen die u hebt aangebracht en die tijdens de onderbreking zijn gedocumenteerd.
 4. Als u een account voor toegang tot nood gevallen hebt gebruikt, moet u de referenties opnieuw genereren en de nieuwe gegevens van de referenties fysiek beveiligen als onderdeel van de procedures voor de nood toegangs account.
-5. Ga door met het [sorteren van alle risico gebeurtenissen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) die zijn gerapporteerd na de onderbreking van verdachte activiteiten.
+5. Ga door met het [sorteren van alle risico detecties](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) die zijn gerapporteerd na de onderbreking van verdachte activiteiten.
 6. Alle vernieuwings tokens die zijn uitgegeven [met Power shell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) intrekken voor een aantal gebruikers. Het intrekken van alle vernieuwings tokens is belang rijk voor geprivilegieerde accounts die worden gebruikt tijdens de onderbreking en het uitvoeren ervan zal afdwingen dat ze opnieuw worden geverifieerd en voldoen aan het beheer van het herstelde beleid.
 
 ## <a name="emergency-options"></a>Opties voor nood gevallen
@@ -254,7 +254,7 @@ Als uw organisatie verouderd beleid voor MFA per gebruiker gebruikt, kunt u het 
    1. Als u niet beschikt over de inventaris van uitgaande IP-adressen of als u toegang wilt inschakelen binnen en buiten het bedrijfs netwerk, kunt u de gehele IPv4-adres ruimte als vertrouwde Ip's toevoegen door 0.0.0.0/1 en 128.0.0.0/1 op te geven.
 
 >[!IMPORTANT]
- > Als u de vertrouwde IP-adressen uitbreidt om de toegang te blok keren, worden risico gebeurtenissen die zijn gekoppeld aan IP-adressen (bijvoorbeeld onmogelijk reizen of niet-vertrouwde locaties) niet gegenereerd.
+ > Als u de vertrouwde IP-adressen uitbreidt om de toegang te blok keren, worden risico detecties die zijn gekoppeld aan IP-adressen (bijvoorbeeld onmogelijk reizen of niet-vertrouwde locaties) niet gegenereerd.
 
 >[!NOTE]
  > Het configureren van [vertrouwde IP-adressen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) voor Azure MFA is alleen beschikbaar met [Azure AD Premium-licenties](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).

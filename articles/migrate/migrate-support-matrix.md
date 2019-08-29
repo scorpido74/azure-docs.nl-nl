@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 99ef5c8a4a4291dd1b9d047da9006623dacd0b53
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019193"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147869"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -31,10 +31,10 @@ Er zijn twee versies van de Azure Migrate-service:
 
 De tabel bevat een overzicht van de ondersteunde migratie scenario's.
 
-**Implementatie** | **Details*** 
+**Implementatie** | **Details** 
 --- | --- 
 **On-premises evaluatie** | Beoordeling van on-premises workloads en gegevens die worden uitgevoerd op virtuele VMware-machines en virtuele Hyper-V-machines. Evalueer het gebruik van Azure Migrate server-evaluatie en-Microsoft Data Migration Assistant (DMA) en hulpprogram ma's van derden die Cloudamize, cohuur tech en Turbonomic server bevatten.
-**Migratie van on-premises naar Azure** | Migreer werk belastingen en gegevens die worden uitgevoerd op fysieke servers, virtuele VMware-machines, virtuele Hyper-V-machines en op AWS/GCP-instanties naar Azure. Migreer met Azure Migrate server assessment en Azure Database Migration Service (DMS) en gebruik hulpprogram ma's van derden die Carbonite en CorentTech bevatten.
+**Migratie van on-premises naar Azure** | Migreer werk belastingen en gegevens die worden uitgevoerd op fysieke servers, virtuele VMware-machines, virtuele Hyper-V-machines, fysieke servers en virtuele machines in de Cloud naar Azure. Migreer met Azure Migrate server assessment en Azure Database Migration Service (DMS) en gebruik hulpprogram ma's van derden die Carbonite en CorentTech bevatten.
 
 De ondersteuning van specifieke hulp middelen wordt als volgt samenvatten.
 
@@ -53,7 +53,7 @@ CorentTech | Migratie | [Meer informatie](https://www.corenttech.com/).
 
 **Ondersteuning** | **Details**
 --- | ---
-Subscription | U kunt één Azure Migrate project in een abonnement hebben.
+Subscription | U kunt meerdere Azure Migrate-projecten in een abonnement hebben.
 Azure-machtigingen | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
 Virtuele VMware-machines  | Evalueer Maxi maal 35.000 VMware-Vm's in één project.
 Virtuele Hyper-V-machines | Evalueer Maxi maal 10.000 Hyper-V-Vm's in één project.

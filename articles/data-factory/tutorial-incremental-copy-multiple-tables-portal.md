@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581943"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140758"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL-database kopiëren
 In deze zelfstudie maakt u een Azure Data Factory met een pijplijn waarmee wijzigingsgegevens uit meerdere tabellen van een lokale SQL-server naar een Azure SWL-database worden gekopieerd.    
@@ -175,9 +174,9 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Gegevenstypen en aanvullende opgeslagen procedures maken in de Azure SQL-database
 Voer de volgende query uit om twee opgeslagen procedures en twee gegevenstypen te maken in de SQL-database. Deze worden gebruikt voor het samenvoegen van de gegevens uit de brontabellen in doeltabellen.
 
-Als u wilt de weg te beginnen met eenvoudig te maken, we deze opgeslagen Procedures te geven van de deltagegevens in via een tabelvariabele rechtstreeks te gebruiken en deze vervolgens samenvoegen in doelarchief. Wees voorzichtig met dat niet een 'groot' aantal delta rijen (meer dan 100 verwacht wordt) worden opgeslagen in de tabelvariabele.  
+Om het traject eenvoudig te laten beginnen, gebruiken we rechtstreeks deze opgeslagen procedures waarmee de Delta gegevens worden door gegeven via een tabel variabele en deze vervolgens samen voegen in het doel archief. Wees voorzichtig dat een ' grote ' aantal Delta rijen (meer dan 100) niet wordt verwacht om te worden opgeslagen in de tabel variabele.  
 
-Als u moet voor het samenvoegen van een groot aantal rijen van de verschillen in het doelarchief, stellen we voor u gebruikmaken van de kopieeractiviteit alle de deltagegevens te kopiëren naar een tijdelijke "staging" tabel in de doel-eerste opslaan, en vervolgens uw eigen opgeslagen procedure gebouwd zonder gebruik van diverse tabel kan worden samengevoegd uit de tabel "staging" in de tabel 'laatste'. 
+Als u een groot aantal Delta rijen in het doel archief moet samen voegen, kunt u het beste de Kopieer activiteit gebruiken om alle Delta gegevens te kopiëren naar een tijdelijke tabel ' staging ' in het doel archief en vervolgens uw eigen opgeslagen procedure hebt gemaakt zonder tabel Varia te gebruiken kan ze van de tabel "staging" samen voegen met de tabel definitief. 
 
 
 ```sql
@@ -228,7 +227,7 @@ END
 
 ```
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 1. Klik op **Nieuw** in het linkermenu en klik vervolgens op **Gegevens en analyses** en **Data Factory**. 
@@ -306,7 +305,7 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
 1. In het venster **Nieuwe gekoppelde service** selecteert u **Microsoft SQL Server** en klikt u op **Doorgaan**. 
 
     ![SQL-server selecteren](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
-1. Voer in het venster **New Linked Service** de volgende stappen uit:
+1. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
 
     1. Voer **SqlServerLinkedService** in als **Naam**. 
     1. Selecteer **MySelfHostedIR** bij **Connect via integration runtime**. Dit is een **belangrijke** stap. De standaard integratieruntime kan geen verbinding maken met een on-premises-gegevensarchief. Gebruik de zelf-hostende integratieruntime die u eerder hebt gemaakt. 
@@ -327,7 +326,7 @@ In de laatste stap maakt u een gekoppelde service om uw Microsoft SQL Server-bro
 
     ![Knop Nieuwe gekoppelde service](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
 1. In het venster **New Linked Service** selecteert u **Azure SQL Database** en klikt u op **Doorgaan**. 
-1. Voer in het venster **New Linked Service** de volgende stappen uit:
+1. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
 
     1. Voer **AzureSqlDatabaseLinkedService** in als **Naam**. 
     1. Bij de **Servernaam** selecteert u de naam van uw Azure SQL-server in de vervolgkeuzelijst. 
@@ -401,9 +400,9 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
 
    ![Azure SQL-database selecteren](./media/tutorial-incremental-copy-multiple-tables-portal/select-azure-sql-database.png)
 1. Voer in het tabblad **Algemeen** in het venster Eigenschappen onderaan **WatermarkDataset** in als **Naam**.
-1. Open het tabblad **Connection** en voer de volgende stappen uit: 
+1. Ga naar het tabblad **Verbinding** en voer de volgende stappen uit: 
 
-    1. Selecteer **AzureSqlDatabaseLinkedService** bij **Linked service**.
+    1. Selecteer **AzureSqlDatabaseLinkedService** als **Gekoppelde service**.
     1. Selecteer **[dbo].[watermarktable]** als **Tabel**.
 
        ![WatermarkDataset - verbinding](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
@@ -426,7 +425,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
     ![Nieuwe pijplijn - menu](./media/tutorial-incremental-copy-multiple-tables-portal/new-pipeline-menu.png)
 1. Voer in het tabblad **Algemeen** in het venster **Eigenschappen** **IncrementalCopyPipeline** in als **Naam**. 
 
-    ![Naam pijplijn](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
+    ![Naam van de pijplijn](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. Voer bij in het venster **Eigenschappen** de volgende stappen uit: 
 
     1. Klik op **+ New**. 
@@ -440,7 +439,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
 1. Ga naar het tabblad **Instellingen** in het venster **Eigenschappen** en voer `@pipeline().parameters.tableList` in voor **Items**. De ForEach-activiteit doorloopt de lijst met tabellen en voert de volgende incrementele kopiebewerkingen uit. 
 
     ![ForEach-activiteit - instellingen](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
-1. Selecteer de activiteit **ForEach** in de pijplijn als dat nog niet is gebeurd. Klik op de knop **Bewerken (potloodpictogram)**.
+1. Selecteer de activiteit **ForEach** in de pijplijn als dat nog niet is gebeurd. Klik op de knop **Bewerken (potloodpictogram)** .
 
     ![ForEach-activiteit - bewerken](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
 1. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om de **opzoekactiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen. en voer **LookupOldWaterMarkActivity** in bij **Naam**.
@@ -493,9 +492,9 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
     ![Kopieeractiviteit - sinkinstellingen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Voer de volgende stappen uit:
 
-    1. In de **gegevensset** -eigenschap voor **SinkTableName** parameter, voer `@{item().TABLE_NAME}`.
-    1. Voor **opgeslagen procedurenaam** eigenschap, voer `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Voor **tabeltype** eigenschap, voer `@{item().TableType}`.
+    1. Voer in`@{item().TABLE_NAME}`de eigenschap **DataSet** de para meter SinkTableName in.
+    1. Voer`@{item().StoredProcedureNameForMergeOperation}`voor de eigenschap **opgeslagen procedure naam** in.
+    1. Voer`@{item().TableType}`bij eigenschap van het **type tabel** in.
 
 
         ![Kopieeractiviteit - parameters](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
@@ -517,7 +516,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
         | Name | Type | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | Tekenreeks | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Opgeslagen-procedureactiviteit - instellingen voor de opgeslagen procedure](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. Klik in het linkerdeelvenster op **Publiceren**. Deze actie publiceert de entiteiten die u hebt gemaakt met de Data Factory-service. 
@@ -561,7 +560,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De ForEa
     ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
 1. Klik op de koppeling **Uitvoeringen van activiteiten weergeven** in de kolom **Acties**. U ziet de uitvoering van alle activiteiten die zijn gekoppeld aan de pijplijnuitvoering. 
 
-    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png)
+    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png)
 
 ## <a name="review-the-results"></a>De resultaten bekijken
 Voer in SQL Server Management Studio de volgende query's uit op de SQL-doeldatabase om te controleren of de gegevens van de brontabellen naar de doeltabellen zijn gekopieerd: 
@@ -663,7 +662,7 @@ VALUES
     ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
 1. Klik op de koppeling **Uitvoeringen van activiteiten weergeven** in de kolom **Acties**. U ziet de uitvoering van alle activiteiten die zijn gekoppeld aan de pijplijnuitvoering. 
 
-    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
+    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-multiple-tables-portal/activity-runs.png) 
 
 ## <a name="review-the-final-results"></a>De eindresultaten bekijken
 Voer in SQL Server Management Studio de volgende query's uit op de doeldatabase om te controleren dat de bijgewerkte/nieuwe gegevens van de brontabellen naar de doeltabellen zijn gekopieerd. 

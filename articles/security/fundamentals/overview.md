@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907916"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129339"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -345,7 +345,7 @@ Het beveiligen van systemen, toepassingen en gegevens begint met toegangs beheer
 Micro soft maakt gebruik van meerdere beveiligings procedures en-technologieën in de producten en services voor het beheren van identiteit en toegang.
 -   [Multi-factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) moeten gebruikers meerdere methoden gebruiken voor toegang, on-premises en in de Cloud. Het biedt krachtige verificatie met diverse eenvoudige verificatie opties, terwijl gebruikers een eenvoudig aanmeldings proces kunnen uitvoeren.
 
--   [Microsoft Authenticator](https://aka.ms/authenticator) biedt een gebruikers vriendelijke multi-factor Authentication-ervaring die werkt met zowel Microsoft Azure Active Directory-als micro soft-accounts, en biedt ondersteuning voor goed keuringen op basis van wearables en vinger afdruk.
+-   [Microsoft Authenticator](https://aka.ms/authenticator) biedt een gebruiks vriendelijke multi-factor Authentication ervaring die werkt met Microsoft Azure Active Directory-en micro soft-accounts, en biedt ondersteuning voor wearables en goed keuringen op basis van vinger afdrukken.
 
 -   Met het afdwingen van het [wacht woord](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) wordt de beveiliging van traditionele wacht woorden verhoogd door de vereisten voor lengte en complexiteit, geforceerde periodieke rotatie en account vergrendeling na mislukte verificatie pogingen op te nemen.
 
@@ -365,7 +365,7 @@ Micro soft maakt gebruik van meerdere beveiligings procedures en-technologieën 
 
 - [Cloud app Discovery](../../active-directory/cloudappdiscovery-get-started.md) is een Premium-functie van Azure Active Directory waarmee u Cloud toepassingen kunt identificeren die worden gebruikt door de werk nemers in uw organisatie.
 
-- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) is een beveiligings service die gebruikmaakt van Azure Active Directory anomalie detectie mogelijkheden om een geconsolideerde weer gave te bieden in risico gebeurtenissen en mogelijke beveiligings problemen die van invloed kunnen zijn op de identiteit.
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) is een beveiligings service die gebruikmaakt van Azure Active Directory anomalie detectie mogelijkheden om een geconsolideerde weer gave te bieden in risico detecties en mogelijke beveiligings problemen die van invloed kunnen zijn op de identiteit.
 
 - Met [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) kunt u virtuele Azure-machines toevoegen aan een domein zonder dat u domein controllers hoeft te implementeren. Gebruikers melden zich aan bij deze Vm's door hun bedrijfs Active Directory referenties te gebruiken en kunnen naadloos toegang krijgen tot resources.
 

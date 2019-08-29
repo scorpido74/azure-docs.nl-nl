@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 7ff4db2e349d0da811ef262e308477bde3b27a3c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934586"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129301"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden voor Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -61,7 +61,7 @@ Voor delen van de beveiliging van Azure Active Directory (Azure AD) zijn de moge
 
 - Bieden van eenmalige aanmelding toegang tot uw toepassingen, waaronder duizenden vooraf geïntegreerde SaaS-apps.
 
-- Beveiliging van de toegang tot de toepassing inschakelen door op regels gebaseerde multi-factor Authentication af te dwingen voor zowel on-premises als Cloud toepassingen.
+- Beveiliging van de toegang tot de toepassing inschakelen door op regels gebaseerde Multi-Factor Authentication af te dwingen voor zowel on-premises als Cloud toepassingen.
 
 - U kunt veilige externe toegang tot on-premises webtoepassingen inrichten via Azure AD-toepassingsproxy.
 
@@ -73,7 +73,7 @@ Hier volgen de belangrijkste mogelijkheden van Azure Identity Management:
 
 - Eenmalige aanmelding
 
-- Meervoudige verificatie
+- Multi-Factor Authentication
 
 - Beveiligings bewaking, waarschuwingen en rapporten op basis van machine learning
 
@@ -95,7 +95,7 @@ Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service)
 
 Gebruikers hoeven niet alleen meerdere sets met gebruikers namen en wacht woorden te beheren, toepassings toegang kan automatisch worden ingericht of ongedaan gemaakt op basis van organisatie groepen en hun status als werk nemer. [Azure AD introduceert beveiligings-en toegangs beheer functies](../../active-directory/active-directory-enterprise-apps-manage-sso.md) waarmee u de toegang van gebruikers tot de SaaS-toepassingen centraal kunt beheren.
 
-#### <a name="multi-factor-authentication"></a>Meervoudige verificatie
+#### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 [Azure multi-factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) is een verificatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist en waarmee een kritieke tweede beveiligingslaag wordt toegevoegd aan gebruikers aanmeldingen en trans acties. [MFA helpt](../../active-directory/authentication/concept-mfa-howitworks.md) de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke authenticatie via verschillende verificatie opties: telefonische oproep, tekst bericht of mobiele app-melding of verificatie code en OAuth-tokens van derden.
 
@@ -147,7 +147,7 @@ Met Azure AD Privileged Identity Management kunt u het volgende doen:
 
 #### <a name="identity-protection"></a>Identiteitsbeveiliging
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een beveiligings service die een geconsolideerde weer gave biedt voor risico gebeurtenissen en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van de bestaande Azure Active Directory afwijkingen detectie mogelijkheden (beschikbaar via de afwijkende activiteiten van Azure AD) en introduceert nieuwe risico gebeurtenis typen waarmee afwijkingen in realtime kunnen worden gedetecteerd.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van de bestaande Azure Active Directory afwijkingen detectie mogelijkheden (beschikbaar via de afwijkende activiteiten van Azure AD) en introduceert nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
 ## <a name="secure-resource-access"></a>Toegang tot beveiligde bronnen
 

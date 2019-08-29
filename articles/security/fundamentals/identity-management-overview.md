@@ -1,6 +1,6 @@
 ---
 title: Azure-beveiligings functies die u helpen bij het identiteits beheer | Microsoft Docs
-description: " Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die u helpen bij het identiteits beheer. Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen, waardoor er extra validatie niveaus, zoals multi-factor Authentication en voorwaardelijke toegang, mogelijk zijn. restrictie. "
+description: " Dit artikel bevat een overzicht van de belangrijkste Azure-beveiligings functies die u helpen bij het identiteits beheer. Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen, waardoor er extra validatie niveaus, zoals Multi-Factor Authentication en voorwaardelijke toegang, mogelijk zijn. restrictie. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826284"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129366"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 
- Identiteits beheer is het proces van het verifiëren en autoriseren van [beveiligings](/windows/security/identity-protection/access-control/security-principals)-principals. Het omvat ook het beheren van informatie over deze principals (identiteiten). Beveiligings-principals (identiteiten) kunnen services, toepassingen, gebruikers, groepen, enzovoort bevatten. Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen. Dergelijke bescherming maakt extra validatie niveaus mogelijk, zoals multi-factor Authentication en beleid voor voorwaardelijke toegang. Het bewaken van verdachte activiteiten via geavanceerde beveiligings rapportage, controle en waarschuwingen helpt mogelijke beveiligings problemen te verhelpen. [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) biedt eenmalige aanmelding (SSO) voor duizenden cloud software as a Service (SaaS)-apps en toegang tot web-apps die u on-premises uitvoert.
+ Identiteits beheer is het proces van het verifiëren en autoriseren van [beveiligings](/windows/security/identity-protection/access-control/security-principals)-principals. Het omvat ook het beheren van informatie over deze principals (identiteiten). Beveiligings-principals (identiteiten) kunnen services, toepassingen, gebruikers, groepen, enzovoort bevatten. Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de toegang tot toepassingen en resources in het bedrijfs centrum en in de Cloud beveiligen. Dergelijke bescherming maakt extra validatie niveaus mogelijk, zoals Multi-Factor Authentication en beleid voor voorwaardelijke toegang. Het bewaken van verdachte activiteiten via geavanceerde beveiligings rapportage, controle en waarschuwingen helpt mogelijke beveiligings problemen te verhelpen. [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) biedt eenmalige aanmelding (SSO) voor duizenden cloud software as a Service (SaaS)-apps en toegang tot web-apps die u on-premises uitvoert.
  
 Door gebruik te maken van de beveiligings voordelen van Azure Active Directory (Azure AD) kunt u het volgende doen:
 
 * Maak en beheer één identiteit voor elke gebruiker in uw hybride onderneming, zodat gebruikers, groepen en apparaten synchroon blijven. 
 * Bied SSO-toegang tot uw toepassingen, waaronder duizenden vooraf geïntegreerde SaaS-apps.
-* Beveiliging van de toegang tot de toepassing inschakelen door op regels gebaseerde multi-factor Authentication af te dwingen voor zowel on-premises als Cloud toepassingen.
+* Beveiliging van de toegang tot de toepassing inschakelen door op regels gebaseerde Multi-Factor Authentication af te dwingen voor zowel on-premises als Cloud toepassingen.
 * U kunt veilige externe toegang tot on-premises webtoepassingen inrichten via Azure AD-toepassingsproxy.
 
 Het doel van dit artikel is een overzicht te geven van de belangrijkste Azure-beveiligings functies die u helpen bij het identiteits beheer. We bieden ook koppelingen naar artikelen met meer informatie over elke functie, zodat u meer informatie kunt krijgen.  
@@ -79,13 +79,13 @@ Meer informatie:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure multi-factor Authentication is een verificatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist en waarmee een kritieke tweede beveiligingslaag wordt toegevoegd aan gebruikers aanmeldingen en trans acties. Multi-factor Authentication helpt de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke verificatie via verschillende verificatie opties: telefoon gesprekken, tekst berichten, meldingen over mobiele apps of verificatie codes en OAuth-tokens van derden.
+Azure Multi-Factor Authentication is een authenticatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist en waarmee een kritieke tweede beveiligingslaag wordt toegevoegd aan gebruikers aanmeldingen en trans acties. Multi-Factor Authentication helpt de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke verificatie via verschillende verificatie opties: telefoon gesprekken, tekst berichten, meldingen over mobiele apps of verificatie codes en OAuth-tokens van derden.
 
 Meer informatie:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Wat is Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
-* [Hoe Azure multi-factor Authentication werkt](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Hoe Azure Multi-Factor Authentication werkt](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="rbac"></a>RBAC
 
@@ -160,7 +160,7 @@ Meer informatie:
 
 ## <a name="identity-protection"></a>Identiteitsbeveiliging
 
-Azure AD Identity Protection is een beveiligings service die een geconsolideerde weer gave biedt voor risico gebeurtenissen en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits bescherming maakt gebruik van de bestaande Azure AD-detectie mogelijkheden voor afwijkingen, die beschikbaar zijn via rapporten van afwijkende activiteiten van Azure AD. Identiteits beveiliging introduceert ook nieuwe risico gebeurtenis typen waarmee afwijkingen in realtime kunnen worden gedetecteerd.
+Azure AD Identity Protection is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits bescherming maakt gebruik van de bestaande Azure AD-detectie mogelijkheden voor afwijkingen, die beschikbaar zijn via rapporten van afwijkende activiteiten van Azure AD. Identiteits beveiliging introduceert ook nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
 Meer informatie:
 

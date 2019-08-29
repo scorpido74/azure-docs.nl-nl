@@ -3,21 +3,21 @@ title: Gegevens transformeren met Databricks notebook-Azure | Microsoft Docs
 description: Meer informatie over het verwerken of transformeren van gegevens door een Databricks-notebook uit te voeren.
 services: data-factory
 documentationcenter: ''
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 2bc8b84d4b98036acc93788dee88444786df139e
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: db437c7699c7fddc2b04175537446f53c4c4bc85
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335857"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140819"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Gegevens transformeren door een Databricks-notebook uit te voeren
 
@@ -61,7 +61,7 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 |---|---|---|
 |name|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
-|type|Voor Databricks notebook-activiteit is het type activiteit DatabricksNotebook.|Ja|
+|Type|Voor Databricks notebook-activiteit is het type activiteit DatabricksNotebook.|Ja|
 |linkedServiceName|De naam van de gekoppelde Databricks-service waarop de Databricks-notebook wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.|Ja|
 |notebookPath|Het absolute pad van de notebook dat moet worden uitgevoerd in de Databricks-werk ruimte. Dit pad moet beginnen met een slash.|Ja|
 |baseParameters|Een matrix met sleutel-waardeparen. Basis parameters kunnen worden gebruikt voor elke uitvoering van de activiteit. Als het notitie blok een para meter accepteert die niet is opgegeven, wordt de standaard waarde van het notitie blok gebruikt. Meer informatie over para meters in [Databricks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)-notebooks.|Nee|

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a228c0d349fd45f34923a64ef99dcfba50c4c548
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 93532b1b40dc138a234d5433591a2ba79167194e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034996"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135578"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -123,7 +123,7 @@ De volgende beheerders rollen zijn beschikbaar:
 
 * **[Apparaatbeheer](#device-administrators)** : Deze rol is alleen beschikbaar voor toewijzing als extra lokale beheerder in [Apparaatinstellingen](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Gebruikers met deze rol worden lokale computer beheerders op alle Windows 10-apparaten die lid zijn van Azure Active Directory. Ze kunnen geen apparaten objecten in Azure Active Directory beheren. 
 
-* **[Lezers van mappen](#directory-readers)** : Dit is een rol die alleen moet worden toegewezen aan verouderde toepassingen die het toestemmings [raamwerk](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)niet ondersteunen. Wijs het niet toe aan gebruikers.
+* **[Lezers van mappen](#directory-readers)** : Dit is een rol die alleen moet worden toegewezen aan verouderde toepassingen die het toestemmings [raamwerk](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)niet ondersteunen. Gebruikers met deze rol kunnen basis informatie over de Directory lezen. Deze rol moet worden gebruikt voor: 1) verlenen van een specifieke set gast gebruikers lees toegang in plaats van deze aan alle gast gebruikers toe te kennen. 2) het verlenen van een specifieke set gebruikers zonder beheerders rechten toegang tot Azure Portal wanneer ' toegang tot de Azure AD-Portal beperken tot beheerders alleen ' is ingesteld op ' ja '. 3) verlenen van service-principals toegang tot Directory whereDirectory. Read. all is geen optie.
 
 * **[Directory-synchronisatie accounts](#directory-synchronization-accounts)** : Niet gebruiken. Deze rol wordt automatisch toegewezen aan de Azure AD Connect-service en is niet bedoeld of wordt niet ondersteund voor andere gebruik.
 
@@ -658,7 +658,7 @@ Gebruikers die aan deze rol zijn toegewezen, worden toegevoegd aan de lokale gro
 | microsoft.aad.directory/groupSettingTemplates/basic/read | Lees de basis eigenschappen van groupSettingTemplates in Azure Active Directory. |
 
 ### <a name="directory-readers"></a>Adreslijstlezers
-Kan basis informatie over de Directory lezen. Voor het verlenen van toegang tot toepassingen, niet bedoeld voor gebruikers.
+Kan basis informatie over de Directory lezen. Gebruikers met deze rol kunnen basis informatie over de Directory lezen. Deze rol moet worden gebruikt voor: 1) verlenen van een specifieke set gast gebruikers lees toegang in plaats van deze aan alle gast gebruikers toe te kennen. 2) het verlenen van een specifieke set gebruikers zonder beheerders rechten toegang tot Azure Portal wanneer ' toegang tot de Azure AD-Portal beperken tot beheerders alleen ' is ingesteld op ' ja '. 3) verlenen van service-principals toegang tot Directory whereDirectory. Read. all is geen optie.
 
 | **Acties** | **Beschrijving** |
 | --- | --- |

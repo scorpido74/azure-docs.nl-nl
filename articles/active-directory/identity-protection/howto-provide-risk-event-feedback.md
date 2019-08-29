@@ -1,6 +1,6 @@
 ---
-title: Feedback geven over risico gebeurtenissen in Azure AD Identity Protection-Azure Active Directory
-description: Hoe en waarom moet u feedback geven over risico gebeurtenissen met betrekking tot identiteits beveiliging.
+title: Feedback geven over risico detecties in Azure AD Identity Protection-Azure Active Directory
+description: Hoe en waarom moet u feedback geven over risico detecties voor identiteits beveiliging.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd0984a78860192f507323491952e895c8de8bf
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 32480e66a71c9e706b1f3eee1a3d459737120c5c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370198"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126332"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Procedure: Feedback geven over Risico's in Azure AD Identity Protection
 
@@ -24,7 +24,7 @@ Met Azure AD Identity Protection kunt u feedback geven over de risico beoordelin
 
 ## <a name="what-is-a-detection"></a>Wat is een detectie?
 
-Een detectie van identiteits beveiliging is een indicator van verdachte activiteiten van een risico voor identiteits Risico's. Deze verdachte activiteiten worden risico gebeurtenissen genoemd. Deze detecties op basis van id's kunnen worden gebaseerd op heuristiek, machine learning of kunnen afkomstig zijn van partner producten. Deze detecties worden gebruikt om het risico en de gebruikers Risico's van het aanmelden te bepalen.
+Een detectie van identiteits beveiliging is een indicator van verdachte activiteiten van een risico voor identiteits Risico's. Deze verdachte activiteiten worden risico detecties genoemd. Deze detecties op basis van id's kunnen worden gebaseerd op heuristiek, machine learning of kunnen afkomstig zijn van partner producten. Deze detecties worden gebruikt om het risico en de gebruikers Risico's van het aanmelden te bepalen.
 
 * Gebruikers risico duidt op de kans dat een identiteit wordt aangetast.
 * Aanmeldings risico geeft aan dat de kans dat een aanmelding is aangetast (bijvoorbeeld omdat de aanmelding niet is geautoriseerd door de eigenaar van de identiteit).
@@ -49,15 +49,15 @@ Hier volgen de scenario's en mechanismen voor het geven van risico feedback voor
 | --- | --- | --- | --- |
 | **Het aanmelden is niet aangetast (fout positief)** <br> In het rapport Risk ante aanmeldingen wordt een aanmeldings risico (risico status = gevaar) weer gegeven, maar de aanmelding is niet aangetast. | Selecteer de aanmelding en klik op aanmelden bevestigen veilig. | Azure AD verplaatst het aggregatie risico van het aanmelden naar geen [risico status = bevestigd veilig; Risico niveau (aggregatie) =-] en maakt de impact op het risico van de gebruiker ongedaan. | Op dit moment is de optie veilig aanmelden bevestigen alleen beschikbaar in het rapport Risk ante aanmeldingen. |
 | **Aanmelding is aangetast (ware positieve)** <br> In het rapport Risk ante aanmeldingen ziet u een aanmeld risico (risico status = loopt risico) met laag risico [risico niveau (aggregatie) = low] en die aanmelding werd inderdaad aangetast. | Selecteer de aanmelding en klik op bevestigen dat er is geknoeid. | Azure AD verplaatst het aggregatie risico van het aanmelden en het gebruikers risico op hoog [risico status = bevestigd is aangetast; Risico niveau = hoog]. | Op dit moment is de optie voor misbruik van een aanmelding bevestigen alleen beschikbaar in het rapport Risk ante aanmeldingen. |
-| **Gebruikers vervalsen (waar positief)** <br> In het rapport Risk ante gebruikers wordt een gebruiker weer gegeven met een risico status (risico staat = risico), met laag risico [risico niveau = laag] en die gebruiker inderdaad aangetast werd. | Selecteer de gebruiker en klik op ' Bevestig de gebruiker '. | Azure AD verplaatst het risico van de gebruiker naar hoog [Risk status = bevestigd is aangetast; Risico niveau = hoog] en voegt een nieuwe detectie toe die door de beheerder is bevestigd. | De optie ' verkraakte gebruikers bevestigen ' is momenteel alleen beschikbaar in het rapport Risk ante gebruikers. <br> De detectie ' door de beheerder bevestigde gebruiker heeft een vermoedt ' wordt weer gegeven in het tabblad risico gebeurtenissen die niet zijn gekoppeld aan een aanmelding in het rapport Risk ante gebruikers. |
+| **Gebruikers vervalsen (waar positief)** <br> In het rapport Risk ante gebruikers wordt een gebruiker weer gegeven met een risico status (risico staat = risico), met laag risico [risico niveau = laag] en die gebruiker inderdaad aangetast werd. | Selecteer de gebruiker en klik op ' Bevestig de gebruiker '. | Azure AD verplaatst het risico van de gebruiker naar hoog [Risk status = bevestigd is aangetast; Risico niveau = hoog] en voegt een nieuwe detectie toe die door de beheerder is bevestigd. | De optie ' verkraakte gebruikers bevestigen ' is momenteel alleen beschikbaar in het rapport Risk ante gebruikers. <br> De detectie ' door de beheerder bevestigde gebruiker heeft een vermoedt ' wordt weer gegeven op het tabblad risico detecties die niet zijn gekoppeld aan een aanmelding in het rapport Risk ante gebruikers. |
 | **Door de gebruiker opgelost buiten Azure AD Identity Protection (ware positieve + opgelost)** <br> In het rapport Risk ante gebruikers wordt een gebruiker met een risico weer gegeven en de gebruiker is vervolgens buiten Azure AD Identity Protection hersteld. | 1. Selecteer de gebruiker en klik op geïnfecteerde gebruiker bevestigen. (Dit proces bevestigt bij Azure AD dat de gebruiker inderdaad heeft geknoeid.) <br> 2. Wacht op het risico niveau van de gebruiker om naar hoog te gaan. (Deze tijd geeft Azure AD de tijd die nodig is om de bovenstaande feedback te nemen naar de risico-engine.) <br> 3. Selecteer de gebruiker en klik op gebruikers risico negeren. (Dit proces bevestigt bij Azure AD dat de gebruiker niet meer heeft geknoeid.) |  Azure AD verplaatst het gebruikers risico naar geen [risico status = genegeerd; Risico niveau =-] en sluit het risico op alle bestaande aanmeldingen die actief risico lopen. | Als u op ' gebruikers risico negeren ' klikt, wordt het risico voor de gebruiker en eerdere aanmeldingen gesloten. Deze actie kan niet ongedaan worden gemaakt. |
 | **De gebruiker is niet aangetast (fout positief)** <br> Het rapport Risk ante gebruikers wordt weer gegeven met een gebruiker met een risico, maar de gebruiker wordt niet geknoeid. | Selecteer de gebruiker en klik op gebruikers risico negeren. (Dit proces bevestigt bij Azure AD dat de gebruiker niet heeft geknoeid.) | Azure AD verplaatst het gebruikers risico naar geen [risico status = genegeerd; Risico niveau =-]. | Als u op ' gebruikers risico negeren ' klikt, wordt het risico voor de gebruiker en eerdere aanmeldingen gesloten. Deze actie kan niet ongedaan worden gemaakt. |
 | Ik wil het risico van de gebruiker sluiten, maar ik weet niet zeker of de gebruiker is aangetast/veilig. | Selecteer de gebruiker en klik op gebruikers risico negeren. (Dit proces bevestigt bij Azure AD dat de gebruiker niet meer heeft geknoeid.) | Azure AD verplaatst het gebruikers risico naar geen [risico status = genegeerd; Risico niveau =-]. | Als u op ' gebruikers risico negeren ' klikt, wordt het risico voor de gebruiker en eerdere aanmeldingen gesloten. Deze actie kan niet ongedaan worden gemaakt. U kunt de gebruiker het beste herstellen door te klikken op wacht woord opnieuw instellen of de gebruiker vragen om hun referenties veilig opnieuw in te stellen of te wijzigen. |
 
-Feedback over gebruikers risico gebeurtenissen in identiteits beveiliging wordt offline verwerkt en kan enige tijd duren om bij te werken. De kolom risico verwerkings status biedt de huidige status van de feedback verwerking.
+Feedback over gebruikers risico detecties in identiteits beveiliging wordt offline verwerkt en kan enige tijd duren om bij te werken. De kolom risico verwerkings status biedt de huidige status van de feedback verwerking.
 
 ![Status van risico verwerking voor rapport Risk ante gebruikers](./media/howto-provide-risk-event-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Naslag informatie over Azure Active Directory Identity Protection risico gebeurtenissen](risk-events-reference.md)
+[Naslag informatie over Azure Active Directory Identity Protection risico detectie](risk-events-reference.md)

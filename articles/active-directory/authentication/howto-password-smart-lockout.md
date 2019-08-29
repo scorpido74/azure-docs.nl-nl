@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637598"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125009"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory slim vergren delen
 
@@ -67,7 +67,7 @@ Op basis van de vereisten van uw organisatie moeten slimme vergrendelings waarde
 
 Voer de volgende stappen uit om de slimme vergrendelings waarden voor uw organisatie te controleren of te wijzigen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en klik op **Azure Active Directory**en vervolgens op **verificatie methoden**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar **Azure Active Directory** > **verificatie methoden** > **wachtwoord beveiliging**.
 1. Stel de **drempel waarde voor vergren deling**in op basis van het aantal mislukte aanmeldingen dat is toegestaan voor een account voordat het voor het eerst wordt vergrendeld. De standaard waarde is 10.
 1. Stel de **vergrendelings duur in seconden in**, tot de lengte in seconden van elke vergren deling. De standaard waarde is 60 seconden (een minuut).
 

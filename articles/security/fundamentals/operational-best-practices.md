@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828724"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129336"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -218,7 +218,7 @@ Zie [beleid maken en beheren om naleving af te dwingen](../../governance/policy/
 **Details**: Document toewijzing in de documentatie van uw organisatie of in het Azure-beleid zelf door een verwijzing naar het organisatie beleid toe te voegen in de beschrijving van het Azure- [beleid](../../governance/policy/concepts/definition-structure.md#display-name-and-description) of de beschrijving van het Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) .
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Risico rapporten van Azure AD bewaken
-Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam [risico gebeurtenis](../../active-directory/reports-monitoring/concept-risk-events.md). Risico gebeurtenissen worden vastgelegd in azure AD-beveiligings rapporten. Lees voor meer informatie over het beveiligings rapport [gebruikers die risico](../../active-directory/reports-monitoring/concept-user-at-risk.md) lopen, en het [beveiligings rapport Risk ante](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)aanmeldingen.
+Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam [risico detectie](../../active-directory/reports-monitoring/concept-risk-events.md). Risico detecties worden vastgelegd in azure AD-beveiligings rapporten. Lees voor meer informatie over het beveiligings rapport [gebruikers die risico](../../active-directory/reports-monitoring/concept-user-at-risk.md) lopen, en het [beveiligings rapport Risk ante](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)aanmeldingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](best-practices-and-patterns.md) voor meer aanbevolen procedures voor beveiliging bij het ontwerpen, implementeren en beheren van uw cloud oplossingen met behulp van Azure.

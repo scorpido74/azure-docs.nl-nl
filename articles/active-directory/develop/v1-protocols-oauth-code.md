@@ -17,14 +17,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834712"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135730"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Azure Active Directory-webtoepassingen toegang verlenen met de stroom voor het verlenen van de OAuth 2.0-code
+
+> [!NOTE]
+>  Als u de server niet vertelt welke resource u wilt aanroepen, wordt het beleid voor voorwaardelijke toegang voor die bron niet geactiveerd door de server. Als u een MFA-trigger wilt gebruiken, moet u een resource in uw URL toevoegen. 
+>
 
 Azure Active Directory (Azure AD) gebruikt OAuth 2,0 om toegang te verlenen tot webtoepassingen en Web-Api's in uw Azure AD-Tenant. Deze hand leiding is taal onafhankelijk en beschrijft hoe u HTTP-berichten verzendt en ontvangt zonder gebruik te maken van de [open source-bibliotheken](active-directory-authentication-libraries.md).
 
@@ -219,7 +223,7 @@ De volgende tabel bevat de HTTP-status codes die het eind punt voor token uitgif
 | HTTP-code | Description |
 | --- | --- |
 | 400 |Standaard-HTTP-code. Wordt in de meeste gevallen gebruikt en wordt meestal veroorzaakt door een ongeldige aanvraag. Corrigeer en verzend de aanvraag opnieuw. |
-| 401 |Verificatie mislukt. De aanvraag ontbreekt bijvoorbeeld de para meter client_secret. |
+| 401 |Verificatie is mislukt. De aanvraag ontbreekt bijvoorbeeld de para meter client_secret. |
 | 403 |Autorisatie is mislukt. De gebruiker heeft bijvoorbeeld geen machtiging voor toegang tot de resource. |
 | 500 |Er is een interne fout opgetreden bij de service. Voer de aanvraag opnieuw uit. |
 
@@ -278,6 +282,8 @@ De RFC 6750-specificatie definieert de volgende fouten voor resources die gebrui
 Toegangs tokens zijn korte duur en moeten worden vernieuwd nadat ze hebben geduurd om toegang te blijven houden tot resources. U `access_token` kunt de vernieuwen door een andere `POST` aanvraag in te `/token` dienen bij het eind punt, maar `refresh_token` deze keer is `code`de tijd die u opgeeft in plaats van de.  De vernieuwings tokens zijn geldig voor alle resources die uw client al toestemming heeft gegeven om toegang te krijgen `resource=https://graph.microsoft.com` `resource=https://contoso.com/api`. Daarom kan een vernieuwings token dat is uitgegeven op een aanvraag voor, worden gebruikt om een nieuw toegangs token aan te vragen. 
 
 Voor vernieuwings tokens is geen levens duur opgegeven. De levens duur van vernieuwings tokens is doorgaans relatief lang. In sommige gevallen verloopt het vernieuwen van tokens, worden deze ingetrokken of beschikt over onvoldoende machtigingen voor de gewenste actie. Uw toepassing moet verwachten en fouten afhandelen die door het eind punt voor token uitgifte zijn geretourneerd.
+
+[!NOTE] De levens duur van toegangs tokens kunt u hier vinden: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties De standaard waarde voor toegangs tokens is 1 uur en de standaard waarde voor vernieuwings tokens is 90 dagen. Deze levens duur kan worden gewijzigd door de levens duur van het token dienovereenkomstig te configureren. 
 
 Wanneer u een reactie met een vernieuwings token fout ontvangt, moet u het huidige vernieuwings token verwijderen en een nieuwe autorisatie code of toegangs token aanvragen. Bij het gebruik van een vernieuwings token in de machtigings stroom van de autorisatie code wordt `interaction_required` `invalid_grant` met name het vernieuwings token verwijderd en een nieuwe autorisatie code aangevraagd.
 

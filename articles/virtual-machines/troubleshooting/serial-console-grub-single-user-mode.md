@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: HT
+ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090195"
+ms.locfileid: "70124489"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken voor toegang tot de GRUB en de modus voor één gebruiker
 GRUB is de GRand Unified Bootloader. Dit is waarschijnlijk het eerste wat u zult zien wanneer u een virtuele machine opstart. Omdat het wordt weer gegeven voordat het besturings systeem is gestart, is het niet toegankelijk via SSH. Vanuit GRUB kunt u de opstart configuratie wijzigen om onder andere de modus voor één gebruiker op te starten.
@@ -58,9 +58,24 @@ Als u zich in de modus voor één gebruiker bevindt, gaat u als volgt te werk om
 RHEL gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Als u echter geen hoofd toegang hebt ingesteld voor de modus voor één gebruiker, hebt u geen hoofd wachtwoord en kunt u zich niet aanmelden. Er is een tijdelijke oplossing (Zie ' hand matig toegang tot de modus voor één gebruiker maken ' hieronder), maar u kunt het voor stel het eerst gebruiken om toegang tot de hoofdmap in te stellen.
 
 ### <a name="grub-access-in-rhel"></a>GRUB-toegang in RHEL
-RHEL wordt geleverd met GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op een wille keurige toets. Het scherm GRUB wordt weer gegeven.
+RHEL wordt geleverd met GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op een wille keurige toets. Het scherm GRUB wordt weer gegeven. Als deze niet wordt weer gegeven, controleert u of de volgende regels aanwezig zijn in uw GRUB`/etc/default/grub`-bestand ():
 
-> Opmerking: Red Hat biedt ook documentatie voor opstarten in de herstel modus, de nood herstel modus, de foutopsporingsmodus en het opnieuw instellen van het hoofd wachtwoord. [Klik hier om het te openen](https://aka.ms/rhel7grubterminal).
+#### <a name="rhel-8"></a>RHEL 8:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+```
+
+#### <a name="rhel-7"></a>RHEL 7:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL_OUTPUT="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 net.ifnames=0"
+```
+
+> [!NOTE]
+> Red Hat biedt ook documentatie voor opstarten in de herstel modus, de nood herstel modus, de foutopsporingsmodus en het opnieuw instellen van het hoofd wachtwoord. [Klik hier om het te openen](https://aka.ms/rhel7grubterminal).
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Hoofd toegang instellen voor de modus voor één gebruiker in RHEL
 Voor de modus voor één gebruiker in RHEL moet de hoofd gebruiker zijn ingeschakeld. deze is standaard uitgeschakeld. Als u de modus voor één gebruiker wilt inschakelen, gebruikt u de volgende instructies:
@@ -193,7 +208,7 @@ Als SLES niet normaal kan worden opgestart, wordt u automatisch verwijderd naar 
 Net als Red Hat Enterprise Linux vereist de modus voor één gebruiker in Oracle Linux GRUB en de hoofd gebruiker moeten worden ingeschakeld.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB toegang in Oracle Linux
-Oracle Linux is GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op ESC. Het scherm GRUB wordt weer gegeven. Als u grub niet ziet, zorg er dan voor dat de waarde van `GRUB_TERMINAL` de regel ' seriële console ' bevat, bijvoorbeeld: `GRUB_TERMINAL="serial console"`.
+Oracle Linux is GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op ESC. Het scherm GRUB wordt weer gegeven. Als u grub niet ziet, zorg er dan voor dat de waarde van `GRUB_TERMINAL` de regel ' seriële console ' bevat, bijvoorbeeld: `GRUB_TERMINAL="serial console"`. Maak GRUB opnieuw met `grub2-mkconfig -o /boot/grub/grub.cfg`.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Modus voor één gebruiker in Oracle Linux
 Volg de instructies voor RHEL hierboven om de modus voor één gebruiker in Oracle Linux in te scha kelen.

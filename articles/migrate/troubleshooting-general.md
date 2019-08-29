@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: fa1e7fcf89ccc06e429831191ba5dfce3cf33797
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 7fea6d16c8846909a8ce9bb33aae74ce343018fa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828311"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142327"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problemen met Azure Migrate oplossen
 
@@ -199,17 +199,17 @@ Niet-goedgekeurd Linux-besturingssysteem | De machine kan worden gestart in azur
 Onbekend besturings systeem | Het besturings systeem van de virtuele machine is opgegeven als ' andere ' in vCenter Server. Dit gedrag blokkeert Azure Migrate van het controleren van de Azure-gereedheid van de virtuele machine. Zorg ervoor dat het besturings systeem van de machine door Azure wordt [ondersteund](https://aka.ms/azureoslist) voordat u de computer migreert.
 Niet-ondersteunde hoeveelheid bits van besturingssysteem | Vm's met een 32-bits besturings systeem kunnen worden opgestart in azure, maar we raden u aan het besturings systeem van de virtuele machine bij te werken naar 64-bits voordat u naar Azure migreert.
 Vereist een micro soft Visual Studio-abonnement | Op de computer wordt een Windows-client besturingssysteem uitgevoerd dat alleen wordt ondersteund via een Visual Studio-abonnement.
-Er is geen VM gevonden voor de vereiste opslagprestaties | De opslag prestaties (invoer/uitvoer-bewerkingen per seconde [IOPS] en door Voer) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de opslag vereisten voor de machine vóór de migratie.
-Er is geen VM gevonden voor de vereiste netwerkprestaties | De netwerk prestaties (in/uit) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de netwerk vereisten voor de computer.
-Er is geen VM gevonden in de opgegeven locatie | Gebruik een andere doel locatie vóór de migratie.
+Er is geen VM gevonden voor de vereiste opslag prestaties | De opslag prestaties (invoer/uitvoer-bewerkingen per seconde [IOPS] en door Voer) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de opslag vereisten voor de machine vóór de migratie.
+Er is geen VM gevonden voor de vereiste netwerk prestaties | De netwerk prestaties (in/uit) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de netwerk vereisten voor de computer.
+De virtuele machine is niet gevonden op de opgegeven locatie | Gebruik een andere doel locatie vóór de migratie.
 Een of meer ongeschikte schijven | Een of meer schijven die zijn gekoppeld aan de virtuele machine voldoen niet aan de vereisten van Azure. Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en evalueert de schijven op basis van de schijf limieten voor Premium Managed disks (32 TB).  Voor elke schijf die aan de VM is gekoppeld, moet u ervoor zorgen dat de grootte van de schijf < 64 TB (ondersteund door Ultra-SSD schijven), als dat niet het geval is, vermindert u de schijf grootte voordat u naar Azure migreert of gebruikt u meerdere schijven in Azure en koppelt u [deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen. Zorg ervoor dat de prestaties (IOPS en door Voer) die nodig zijn voor elke schijf worden ondersteund door door Azure [beheerde virtuele-machine schijven](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits).
 Een of meer niet-geschikte netwerk adapters. | Verwijder ongebruikte netwerk adapters van de machine voordat de migratie wordt gebruikt.
 Het aantal schijven overschrijdt de limiet | Verwijder ongebruikte schijven van de machine vóór de migratie.
 De schijfgrootte overschrijdt de limiet | Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD-schijven en evalueert de schijven op basis van Premium-schijf limieten (32 TB). Azure ondersteunt echter schijven met een grootte van Maxi maal 64 TB (ondersteund door Ultra-SSD schijven). Verklein schijven tot minder dan 64 TB vóór de migratie of gebruik meerdere schijven in Azure en [strip deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen.
-Schijf niet beschikbaar op de opgegeven locatie | Zorg ervoor dat de schijf zich op de doel locatie bevindt voordat u migreert.
-Schijf niet beschikbaar voor de opgegeven redundantie | De schijf moet het opslag type redundantie gebruiken dat is gedefinieerd in de instellingen voor evaluatie (standaard LRS).
+De schijf is niet beschikbaar op de opgegeven locatie | Zorg ervoor dat de schijf zich op de doel locatie bevindt voordat u migreert.
+De schijf is niet beschikbaar voor de opgegeven redundantie | De schijf moet het opslag type redundantie gebruiken dat is gedefinieerd in de instellingen voor evaluatie (standaard LRS).
 Kan de schijf geschiktheid niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
-Er is geen VM met vereiste kernen en geheugen gevonden | Azure kan geen geschikt VM-type vinden. Verminder het geheugen en het aantal kernen van de on-premises machine voordat u migreert.
+VM met vereiste kernen en geheugen niet gevonden | Azure kan geen geschikt VM-type vinden. Verminder het geheugen en het aantal kernen van de on-premises machine voordat u migreert.
 Kan de geschiktheid van de virtuele machine niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Kan de geschiktheid van een of meer schijven niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
 Kan de geschiktheid voor een of meer netwerk adapters niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
@@ -271,7 +271,7 @@ En [hier volgt een lijst met Linux-besturings systemen die worden ondersteund do
 
 ### <a name="what-operating-systems-does-the-dependency-agent-support"></a>Welke besturings systemen worden ondersteund door de afhankelijkheids agent?
 
-[Hier volgt een lijst met Windows-besturings systemen die worden ondersteund door de afhankelijkheids agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems). En [hier volgt een lijst met Linux-besturings systemen die worden ondersteund door de afhankelijkheids agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+[Hier volgt een lijst met [Windows-en Linux-besturings systemen die Azure monitor voor VM's ondersteunt](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="i-cant-visualize-dependencies-in-azure-migrate-for-more-than-a-one-hour-duration"></a>Ik kan voor meer dan een duur van één uur geen afhankelijkheden in Azure Migrate visualiseren.
 In Azure Migrate kunt u afhankelijkheden tot een duur van één uur visualiseren. Hoewel u met Azure Migrate kunt terugkeren naar een bepaalde datum in de afgelopen maand, is de maximale duur waarvoor u de afhankelijkheden kunt visualiseren één uur.

@@ -8,19 +8,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 2b25dff29563dcf44077465f3e563d04f04b3119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7826d34b3489fce9d71da051345cf066b756ef8b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157040"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140970"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: een Azure Data Factory maken op basis van een Azure Resource Manager-sjabloon
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Huidige versie](quickstart-create-data-factory-resource-manager-template.md)
 
@@ -369,9 +369,9 @@ De sjabloon implementeert de volgende Data Factory-entiteiten:
 - Pijplijn met een kopieeractiviteit
 - Trigger om de pijplijn te activeren
 
-De geïmplementeerde trigger is gestopt. Een van de manieren om te beginnen de trigger is met de **Start AzDataFactoryV2Trigger** PowerShell-cmdlet. De volgende procedure bevat gedetailleerde stappen:
+De geïmplementeerde trigger is gestopt. Een van de manieren om de trigger te starten, is met de Power shell **-cmdlet start-AzDataFactoryV2Trigger** . De volgende procedure bevat gedetailleerde stappen:
 
-1. Maak in het PowerShell-venster een variabele voor de naam van de resourcegroep. Kopieer de volgende opdracht naar het PowerShell-venster en druk op ENTER. Als u de naam van een andere resourcegroep voor de opdracht New-AzResourceGroupDeployment hebt opgegeven, moet u de waarde hier bijwerken.
+1. Maak in het PowerShell-venster een variabele voor de naam van de resourcegroep. Kopieer de volgende opdracht naar het PowerShell-venster en druk op ENTER. Als u een andere naam voor de resource groep hebt opgegeven voor de opdracht New-AzResourceGroupDeployment, werkt u de waarde hier bij.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -417,7 +417,7 @@ De geïmplementeerde trigger is gestopt. Een van de manieren om te beginnen de t
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Bevestig dat de trigger is gestart door de opdracht Get-AzDataFactoryV2Trigger nogmaals uit te voeren.
+6. Controleer of de trigger is gestart door de opdracht Get-AzDataFactoryV2Trigger opnieuw uit te voeren.
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -605,7 +605,7 @@ U definieert een pijplijn waarmee gegevens uit de ene Azure Blob-gegevensset naa
 
 #### <a name="trigger"></a>Trigger
 
-U definieert een trigger die de pijplijn eenmaal per uur uitvoert. De geïmplementeerde trigger is gestopt. Start de trigger met behulp van de **Start AzDataFactoryV2Trigger** cmdlet. Zie het artikel [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md#triggers) voor meer informatie over triggers.
+U definieert een trigger die de pijplijn eenmaal per uur uitvoert. De geïmplementeerde trigger is gestopt. Start de trigger met behulp van de cmdlet **Start-AzDataFactoryV2Trigger** . Zie het artikel [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md#triggers) voor meer informatie over triggers.
 
 ```json
 {

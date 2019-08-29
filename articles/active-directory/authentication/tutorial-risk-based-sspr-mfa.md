@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113207"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125179"
 ---
-# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Zelfstudie: Risicogebeurtenissen gebruiken als trigger voor Multi-Factor Authentication en het wijzigen van wachtwoorden
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Zelfstudie: Risico detecties gebruiken om Multi-Factor Authentication en wachtwoord wijzigingen te activeren
 
 In deze zelfstudie gaat u functies van Azure Active Directory (Azure AD) Identity Protection inschakelen. Dit is een Azure AD Premium P2-functie en is meer dan alleen een controle- en rapportagehulpmiddel. Ter bescherming van identiteiten binnen uw organisatie, kunt u op risicogebeurtenissen gebaseerde beleidsregels configureren die automatisch op risicovol gedrag reageren. Deze beleidsregels kunnen automatisch herstelstappen blokkeren of initiëren, zoals onder andere het verplicht wijzigen van wachtwoorden en het afdwingen van Multi-Factor Authentication.
 
-Azure AD Identity Protection-beleid kunnen worden gebruikt naast de bestaande beleidsregels voor voorwaardelijke toegang als een extra beveiligingslaag. Misschien dat het nooit voorkomt dat gebruikers risicovol gedrag activeren waarvoor een van deze beleidsregels is vereist, maar u als beheerder weet dat ze zijn beveiligd.
+Azure AD Identity Protection-beleid kan worden gebruikt naast bestaande beleids regels voor voorwaardelijke toegang als een extra beveiligingslaag. Misschien dat het nooit voorkomt dat gebruikers risicovol gedrag activeren waarvoor een van deze beleidsregels is vereist, maar u als beheerder weet dat ze zijn beveiligd.
 
-Er zijn enkele gebeurtenissen die een risicogebeurtenis kunnen activeren, zoals onder andere:
+Enkele items die mogelijk een risico detectie activeren, zijn onder andere:
 
 * Gebruikers van wie de referenties zijn gelekt
 * Aanmeldingen vanaf anonieme IP-adressen
@@ -61,7 +61,7 @@ Azure AD Identity Protection bevat een standaardbeleid dat u kan helpen bij het 
    1. Door beleid in te stellen, moeten alle gebruikers methoden registreren ter voorbereiding van het gebruik van Multi-Factor Authentication.
 1. Klik op **Opslaan**.
 
-   ![Vereisen dat gebruikers zich registreren voor MFA bij het aanmelden](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![Vereisen dat gebruikers zich bij het aanmelden registreren voor MFA](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>Op risicogebeurtenissen gebaseerde wachtwoordwijzigingen inschakelen
 

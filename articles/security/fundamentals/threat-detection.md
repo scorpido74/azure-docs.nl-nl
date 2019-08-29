@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036181"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129287"
 ---
 # <a name="azure-advanced-threat-detection"></a>Detectie van Azure Advanced Threat
 
@@ -30,13 +30,13 @@ Azure biedt een breed scala aan opties voor het configureren en aanpassen van de
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een functie van een [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) -editie die een overzicht geeft van de risico gebeurtenissen en mogelijke beveiligings problemen die van invloed kunnen zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van bestaande Azure AD anomalie detectie mogelijkheden die beschikbaar zijn via [Azure AD afwijkende activiteiten rapporten](../../active-directory/active-directory-reporting-azure-portal.md)en introduceert nieuwe risico gebeurtenis typen waarmee real-time afwijkingen kunnen worden gedetecteerd.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een functie van een [Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) -editie die een overzicht geeft van de risico detecties en mogelijke beveiligings problemen die van invloed kunnen zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van bestaande Azure AD anomalie detectie mogelijkheden die beschikbaar zijn via [Azure AD afwijkende activiteiten rapporten](../../active-directory/active-directory-reporting-azure-portal.md)en introduceert nieuwe typen risico detectie waarmee realtime afwijkingen kunnen worden gedetecteerd.
 
 ![Azure AD Identity Protection diagram](./media/threat-detection/azure-threat-detection-fig1.png)
 
-Identiteits beveiliging maakt gebruik van adaptieve machine learning algoritmen en heuristieks om afwijkingen en risico gebeurtenissen te detecteren die kunnen erop wijzen dat er is geknoeid met een identiteit. Met behulp van deze gegevens worden met identiteits beveiliging rapporten en waarschuwingen gegenereerd zodat u deze risico gebeurtenissen kunt onderzoeken en de juiste herstel-of risicoieve actie moet ondernemen.
+Identiteits beveiliging maakt gebruik van adaptieve machine learning algoritmen en heuristieken voor het detecteren van afwijkingen en risico detecties die kunnen erop wijzen dat er is geknoeid met een identiteit. Met behulp van deze gegevens genereren identiteits beveiliging rapporten en waarschuwingen, zodat u deze risico detecties kunt onderzoeken en de juiste herstel-of risicoieve actie moet ondernemen.
 
-Azure Active Directory Identity Protection is meer dan een hulp programma voor bewaking en rapportage. Op basis van risico gebeurtenissen berekent identiteits beveiliging een gebruikers risico niveau voor elke gebruiker, zodat u beleids regels op basis van Risico's kunt configureren om automatisch de identiteiten van uw organisatie te beveiligen.
+Azure Active Directory Identity Protection is meer dan een hulp programma voor bewaking en rapportage. Op basis van risico detectie berekent de identiteits beveiliging een gebruikers risico niveau voor elke gebruiker, zodat u beleids regels op basis van Risico's kunt configureren om automatisch de identiteiten van uw organisatie te beveiligen.
 
 Deze beleids regels op basis van Risico's, naast andere [besturings elementen voor voorwaardelijke toegang](../../active-directory/active-directory-conditional-access-azure-portal.md) die worden geleverd door Azure Active Directory en [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md), kunnen automatisch adaptieve herstel acties blok keren of aanbieden die het opnieuw instellen van het wacht woord en de multi-factor bevatten verificatie afdwingen.
 
@@ -46,14 +46,14 @@ Azure Active Directory Identity Protection is meer dan een hulp programma voor b
 
 Voor beelden van een aantal manieren waarop Azure Identity Protection uw accounts en identiteiten kan beveiligen, zijn onder andere:
 
-[Risico gebeurtenissen en Risk ante accounts detecteren](../../active-directory/identity-protection/overview.md)
--   Detecteer zes risico gebeurtenis typen met behulp van machine learning en heuristische regels.
+[Risico detecties en Risk ante accounts detecteren](../../active-directory/identity-protection/overview.md)
+-   Detecteer zes typen risico detectie met behulp van machine learning en heuristische regels.
 -   Gebruikers risico niveaus berekenen.
 -   Geef aangepaste aanbevelingen voor het verbeteren van de algemene beveiligings postuur door beveiligings problemen te markeren.
 
-[Risico gebeurtenissen onderzoeken](../../active-directory/identity-protection/overview.md)
--   Meldingen verzenden voor risico gebeurtenissen.
--   Onderzoek risico gebeurtenissen met behulp van relevante en contextuele informatie.
+[Risico detecties onderzoeken](../../active-directory/identity-protection/overview.md)
+-   Verzend meldingen voor risico detecties.
+-   Onderzoek risico detecties met behulp van relevante en contextuele informatie.
 -   Geef eenvoudige werk stromen voor het bijhouden van onderzoeken.
 -   Bied eenvoudige toegang tot herstel acties, zoals het opnieuw instellen van wacht woorden.
 

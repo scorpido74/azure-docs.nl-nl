@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036701"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141830"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een groep te maken
 
@@ -23,7 +23,7 @@ Wanneer u een Azure Batch groep maakt met behulp van de configuratie van de virt
 
 Wanneer u de galerie met gedeelde afbeeldingen gebruikt voor uw aangepaste installatie kopie, hebt u controle over het type en de configuratie van het besturings systeem, evenals het type gegevens schijven. De gedeelde installatie kopie kan toepassingen en referentie gegevens bevatten die beschikbaar worden op alle knoop punten in de batch-pool zodra ze zijn ingericht.
 
-U kunt ook meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Wanneer u een installatie kopie-versie gebruikt om een virtuele machine te maken, wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine. 
+U kunt ook meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Wanneer u een installatie kopie-versie gebruikt om een virtuele machine te maken, wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine.
 
 Met een gedeelde installatie kopie bespaart u tijd bij het voorbereiden van de reken knooppunten van uw pool om uw batch-workload uit te voeren. Het is mogelijk om een Azure Marketplace-installatie kopie te gebruiken en software te installeren op elk reken knooppunt na het inrichten, maar het gebruik van een gedeelde installatie kopie is doorgaans efficiënter. Daarnaast kunt u meerdere replica's opgeven voor de gedeelde installatie kopie, dus wanneer u groepen met veel Vm's (meer dan 600 Vm's) maakt, bespaart u tijd bij het maken van de groep.
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Een groep maken op basis van een gedeelde installatie kopie met behulp van de Azure Portal
+
+Gebruik de volgende stappen om een groep te maken op basis van een gedeelde installatie kopie in de Azure Portal.
+
+1. Open de [Azure Portal](https://portal.azure.com).
+1. Ga naar **batch-accounts** en selecteer uw account.
+1. Selecteer **Pools** en voeg vervolgens **toe** om een nieuwe groep te maken.
+1. Selecteer in de sectie **type installatie** kopie de **Galerie gedeelde installatie kopieën**.
+1. Voltooi de resterende gedeelten met informatie over uw beheerde installatie kopie.
+1. Selecteer **OK**.
+
+![Maak een pool met behulp van een gedeelde installatie kopie met de portal.](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>Overwegingen voor grote Pools
 

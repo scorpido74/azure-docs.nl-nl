@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 90cd079ebc82e8231b052f65156f85d612592ad2
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
-ms.translationtype: HT
+ms.openlocfilehash: 1bf46240303d1f31cd09c1a2723e18d27d3ef789
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114742"
+ms.locfileid: "70124688"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migreren naar Azure Premium Storage (niet-beheerde schijven)
 
@@ -177,7 +177,7 @@ Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de gro
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
     ```
-
+ 
    Hier volgen beschrijvingen van de para meters die worden gebruikt in de AzCopy-opdracht:
 
    * **/Source:** _bron:&gt; &lt;_ Locatie van de map of de opslag container-URL die de VHD bevat.
@@ -265,15 +265,15 @@ Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de gro
 2. Open Azure PowerShell en ga naar de map waarin AzCopy is geïnstalleerd.
 3. Gebruik de volgende opdracht om het VHD-bestand van ' source ' naar ' Destination ' te kopiëren.
 
-    ```azcopy
-    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
-    ```
+   ```azcopy
+      AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
+   ```
 
-    Voorbeeld:
+   Voorbeeld:
 
-    ```azcopy
-    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-    ```
+   ```azcopy
+      AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
+   ```
 
    Hier volgen beschrijvingen van de para meters die worden gebruikt in de AzCopy-opdracht:
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30669c8f5aeefc14db42a32d87f333419758327
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989867"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127366"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Aan de slag met de API voor Azure Active Directory rapportage
 
@@ -49,7 +49,7 @@ Zie voor gedetailleerde instructies de [vereisten voor toegang tot de Azure Acti
 
 Het Microsoft Graph API-eind punt voor audit `https://graph.microsoft.com/beta/auditLogs/directoryAudits` Logboeken is en het Microsoft Graph API-eind punt `https://graph.microsoft.com/beta/auditLogs/signIns`voor aanmeldingen is. Zie de naslag informatie over de [controle-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) en [aanmeldings-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)voor meer gegevens.
 
-Daarnaast kunt u de [API voor risico gebeurtenissen voor identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
+Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
 
 > [!NOTE]
 >  Het eind punt voor de **\/Graph.Windows.net-Tenant\/naam\>rapporten\/ is afgeschaft.\<\/\/** Gebruik de nieuwe API-eind punten die hierboven worden beschreven om via een programma toegang te krijgen tot de activiteiten en beveiligings rapporten.

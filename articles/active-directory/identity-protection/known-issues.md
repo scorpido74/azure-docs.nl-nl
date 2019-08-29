@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d5aa50aec98b3944aed92b9da49182f0608f34c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: fe7125174129752e6d6dbe0e00d01d4f32755333
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333901"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126094"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Veelgestelde vragen en bekende problemen met identiteits beveiliging (vernieuwd) in Azure Active Directory
 
@@ -34,15 +34,15 @@ Query's op het veld **username** zijn hoofdletter gevoelig, terwijl query's op h
 
 **Als u datums weer geven** inschakelt, wordt de kolom **risico laatst bijgewerkt** verborgen. Als u de kolom wilt lezen, klikt u boven aan de Blade Risk ante gebruikers op **kolommen** .
 
-**Alle gebeurtenissen** in klassieke identiteits beveiliging sluiten Hiermee stelt u de status van de risico gebeurtenissen in op **gesloten (opgelost)** .
+**Alle gebeurtenissen** in klassieke identiteits beveiliging sluiten Hiermee stelt u de status van de risico detecties in op **gesloten (opgelost)** .
 
 ## <a name="risky-sign-ins-report-known-issues"></a>Risk ante aanmeldingen melden bekende problemen
 
-**Oplossen** bij een risico gebeurtenis Hiermee stelt u de status in op **gebruikers die MFA door gegeven door op risico gebaseerd beleid**.
+**Oplossen** met een risico detectie stelt de status in op **gebruikers die MFA door gegeven door beleid op basis van risico**.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-event"></a>Waarom kan ik mijn eigen risico niveaus niet instellen voor elke risico gebeurtenis?
+### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>Waarom kan ik mijn eigen risico niveaus niet instellen voor elke risico detectie?
 
 Risico niveaus in identiteits beveiliging zijn gebaseerd op de nauw keurigheid van de detectie en worden mogelijk gemaakt door onze gecontroleerde machine learning. Als u wilt aanpassen welke gebruikers ervaring worden gepresenteerd, kan de beheerder bepaalde gebruikers/groepen opnemen/uitsluiten van het risico beleid voor gebruikers Risico's en aanmeldings Risico's.
 
@@ -68,11 +68,11 @@ Toewijzing van IP-geolocatie is een toonaangevende uitdaging. Als u denkt dat de
 - Daarnaast bieden we de informatie aan onze machine learning systemen voor toekomstige verbeteringen in de risico beoordeling.
 
     > [!NOTE]
-    > Als u denkt dat de gebruiker niet heeft geknoeid, gebruikt u **gebruikers risico sluiten** op gebruikers niveau in plaats van **bevestigd veilig** op aanmeldings niveau. Als u het **risico** van gebruikers negeert voor het gebruikers niveau, sluit u het gebruikers risico en alle achterstallige Risk ante aanmeldingen en risico gebeurtenissen.
+    > Als u denkt dat de gebruiker niet heeft geknoeid, gebruikt u **gebruikers risico sluiten** op gebruikers niveau in plaats van **bevestigd veilig** op aanmeldings niveau. Als u het **risico** van gebruikers negeert voor het gebruikers niveau, sluit u het gebruikers risico en alle achterstallige Risk ante aanmeldingen en risico detecties.
 
-### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>Waarom kan ik een gebruiker met een laag (of hoger) risico Score zien, zelfs als er geen Risk ante aanmeldingen of risico gebeurtenissen worden weer gegeven in identiteits beveiliging?
+### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Waarom kan ik een gebruiker met een laag (of hoger) risico Score zien, zelfs als er geen Risk ante aanmeldingen of risico detecties worden weer gegeven in identiteits beveiliging?
 
-Omdat het gebruikers risico cumulatief is en niet verloopt, is het mogelijk dat een gebruiker weinig of meer gebruikers Risico's heeft, zelfs als er geen recente Risk ante aanmeldingen of risico gebeurtenissen worden weer gegeven in identiteits beveiliging. Dit kan gebeuren als de enige schadelijke activiteit van een gebruiker buiten het tijds bestek ligt waarvoor we de details van Risk ante aanmeldingen en risico gebeurtenissen opslaan. Er wordt geen gebruikers risico verstrijkt omdat er sprake is van een bekend aantal actors in de 140 omgeving van de klant. Klanten kunnen de risico tijdlijn van de gebruiker bekijken om te begrijpen waarom een gebruiker risico loopt door te gaan naar:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+Omdat het gebruikers risico cumulatief is en niet verloopt, kan een gebruiker een risico van weinig of meer gebruikers hebben, zelfs als er geen recente Risk ante aanmeldingen of risico detecties worden weer gegeven in identiteits beveiliging. Dit kan gebeuren als de enige schadelijke activiteit van een gebruiker voorbij het tijds bestek heeft geduurd waarvoor we de details van Risk ante aanmeldingen en risico detecties opslaan. Er wordt geen gebruikers risico verstrijkt omdat er sprake is van een bekend aantal actors in de 140 omgeving van de klant. Klanten kunnen de risico tijdlijn van de gebruiker bekijken om te begrijpen waarom een gebruiker risico loopt door te gaan naar:`Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Waarom heeft een aanmelding een hoge score voor een ' Sign-in-risico (aggregatie) ' wanneer de detecties zijn van een laag of gemiddeld risico?
 

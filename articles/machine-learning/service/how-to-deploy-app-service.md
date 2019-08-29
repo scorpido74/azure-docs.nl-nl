@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114285"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147910"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie de documentatie [over app service in Linux](/azure/app-service/containers/) voor meer informatie over het configureren van uw web-app.
-* Zie [aan de slag met automatisch schalen in azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)voor meer informatie over schalen.
-* Zie [een SSL-certificaat gebruiken in uw Azure app service](/azure/app-service/app-service-web-ssl-cert-load)voor meer informatie over SSL-ondersteuning.
-* Zie [uw app service-app configureren voor het gebruik van Azure Active Directory-aanmelding](/azure/app-service/configure-authentication-provider-aad)voor meer informatie over verificatie.
+* Meer informatie over het configureren van uw web-app in de documentatie [over app service in Linux](/azure/app-service/containers/) .
+* Meer informatie over schalen vindt u in aan de [slag met automatisch schalen in azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
+* [Gebruik een SSL-certificaat in uw Azure app service](/azure/app-service/app-service-web-ssl-cert-load).
+* [Configureer uw app service-app voor het gebruik van Azure Active Directory aanmelden](/azure/app-service/configure-authentication-provider-aad).
 * [Een ML-Model dat is geïmplementeerd als een webservice gebruiken](how-to-consume-web-service.md)

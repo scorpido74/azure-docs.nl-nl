@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987909"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127037"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Vertragingen bij rapportage Azure Active Directory
 
@@ -64,11 +64,11 @@ De volgende tabel bevat de latentie-informatie voor beveiligings rapporten.
 | Gebruikers die risico lopen          | 5 minuten   | 15 minuten  | 2 uur  |
 | Riskante aanmeldingen         | 5 minuten   | 15 minuten  | 2 uur  |
 
-## <a name="risk-events"></a>Risicogebeurtenissen
+## <a name="risk-detections"></a>Risico detecties
 
-Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam **risico gebeurtenis**.
+Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam **risico detectie**.
 
-De volgende tabel bevat de latentie-informatie voor risico gebeurtenissen.
+De volgende tabel bevat de latentie-informatie voor risico detectie.
 
 | Rapport | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
@@ -77,11 +77,11 @@ De volgende tabel bevat de latentie-informatie voor risico gebeurtenissen.
 | Gebruikers van wie de referenties zijn gelekt |2 uur |4 uur |8 uur |
 | Onmogelijke reis naar ongewone locaties |5 minuten |1 uur |8 uur  |
 | Aanmeldingen vanaf geïnfecteerde apparaten |2 uur |4 uur |8 uur  |
-| Aanmeldingen vanaf IP-adressen met verdachte activiteiten |2 uur |4 uur |8 uur  |
+| Aanmeldingen van IP-adressen met verdachte activiteit |2 uur |4 uur |8 uur  |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht van Azure AD-rapporten](overview-reports.md)
 * [Programmatische toegang tot Azure AD-rapporten](concept-reporting-api.md)
-* [Risicogebeurtenissen in Azure Active Directory](concept-risk-events.md)
+* [Detectie van Azure Active Directory-Risico's](concept-risk-events.md)

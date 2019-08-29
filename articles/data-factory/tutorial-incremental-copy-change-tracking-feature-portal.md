@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a71c83a190bd7e88edd5008edef670b32905add
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169219"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140812"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor bijhouden van wijzigingen 
 In deze zelfstudie maakt u een Azure data factory met een pijplijn die gewijzigde gegevens laadt op basis van informatie over **wijzigingen** in de Azure SQL-brondatabase naar een Azure blob storage.  
@@ -149,10 +148,10 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-1. Selecteer in het menu links **een resource maken** > **gegevens en analyses** > **Data Factory**: 
+1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -261,7 +260,7 @@ In deze stap maakt u een gegevensset die de gegevens voorstelt die worden gekopi
 
     1. Selecteer **AzureStorageLinkedService** bij **Linked service**.
     2. Voer **adftutorial/incchgtracking** in voor het **map**gedeelte van het **bestandspad**.
-    3. Voer  **\@CONCAT (' incrementele-', pipeline(). RunId, '.txt')** voor **bestand** deel uitmaakt van de **filePath**.  
+    3. Voer concat in  **('incremental-',pipeline()\@. RunId, '. txt ')** voor het **bestand** deel van het **bestandspad**.  
 
        ![Sink-gegevensset - verbinding](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -320,7 +319,7 @@ Klik in de werkbalk voor de pijplijn op **Trigger** en klik vervolgens op **Trig
     ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
 2. Uitvoeringen van activiteit die aan de pijplijn zijn gekoppeld, kunt u bekijken door te klikken op de koppeling **View Activity Runs** in de kolom **Actions**. Omdat er slechts één activiteit in de pijplijn is, ziet u slechts één vermelding in de lijst. Als u wilt terugkeren naar de vorige weergave, klikt u op de koppeling **Pipelines** bovenaan. 
 
-    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
+    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
 ### <a name="review-the-results"></a>De resultaten bekijken
 U ziet u een bestand met de naam `incremental-<GUID>.txt` in de `incchgtracking` map van de `adftutorial` container. 
@@ -361,7 +360,7 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
     ![Menu Nieuwe pijplijn](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Er wordt een nieuw tabblad weergegeven voor het configureren van de pijplijn. U ziet ook de pijplijn in de structuurweergave. In het venster **Properties** wijzigt u de naam van de pijplijn in **IncrementalCopyPipeline**.
 
-    ![Naam pijplijn](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
+    ![Naam van de pijplijn](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
 3. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om de **opzoekactiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen. Stel de naam van de activiteit in op **LookupLastChangeTrackingVersionActivity**. Deze activiteit haalt de versie voor het bijhouden van wijzigingen op die werd gebruikt in de laatste kopieerbewerking die is opgeslagen in de tabel **table_store_ChangeTracking_version**.
 
     ![Activiteit Lookup - naam](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
@@ -417,7 +416,7 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
         | Name | Type | Value | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
-        | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
+        | TableName | Tekenreeks | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Opgeslagen-procedureactiviteit - parameters](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
 14. **Verbind de kopieeractiviteit met de opgeslagen-procedureactiviteit**. Sleep de **groene** knop die is gekoppeld aan de Copy-activiteit naar de Stored Procedure-activiteit. 
@@ -442,7 +441,7 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
     ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
 2. Uitvoeringen van activiteit die aan de pijplijn zijn gekoppeld, kunt u bekijken door te klikken op de koppeling **View Activity Runs** in de kolom **Actions**. Omdat er slechts één activiteit in de pijplijn is, ziet u slechts één vermelding in de lijst. Als u wilt terugkeren naar de vorige weergave, klikt u op de koppeling **Pipelines** bovenaan. 
 
-    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
+    ![Uitvoeringen van activiteit](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 
 
 ### <a name="review-the-results"></a>De resultaten bekijken

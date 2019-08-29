@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967081"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124913"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Taken in het beheer van rechten van Azure AD delegeren (preview-versie)
 
@@ -30,13 +30,15 @@ ms.locfileid: "68967081"
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Standaard kunnen globale beheerders en gebruikers beheerders alle aspecten van het beheer van rechten van Azure AD maken en beheren. Het is echter mogelijk dat de gebruikers in deze rollen niet alle scenario's kennen waarin toegangs pakketten zijn vereist. Normaal gesp roken is het gebruikers binnen afdelingen die weten wie ze moeten kunnen samen werken.
+Standaard kunnen globale beheerders en gebruikers beheerders alle aspecten van het beheer van rechten van Azure AD maken en beheren. Het is echter mogelijk dat de gebruikers in deze rollen niet alle scenario's kennen waarin toegangs pakketten zijn vereist. Normaal gesp roken is het gebruikers binnen afdelingen die weten wie ze moeten kunnen samen werken. 
 
-In plaats van onbeperkte machtigingen te verlenen aan niet-beheerders, kunt u gebruikers de minste machtigingen verlenen die ze nodig hebben om hun taak uit te voeren en te voor komen dat er conflicterende of onjuiste toegangs rechten zijn. In dit artikel worden de rollen beschreven die u kunt toewijzen om verschillende taken in het rechts beheer te delegeren.
+In plaats van onbeperkte machtigingen te verlenen aan niet-beheerders, kunt u gebruikers de minste machtigingen verlenen die ze nodig hebben om hun taak uit te voeren en te voor komen dat er conflicterende of onjuiste toegangs rechten zijn. In dit artikel worden de rollen beschreven die u kunt toewijzen om verschillende taken in het rechts beheer te delegeren. 
 
 ## <a name="delegate-example-for-departmental-adoption"></a>Voor beeld van delegeren voor het goed keuren van afdelingen
 
-Als u wilt weten hoe u taken kunt delegeren in het recht beheer, kunt u een voor beeld overwegen. Stel dat uw organisatie de volgende vijf gebruikers heeft:
+Als u wilt weten hoe u taken kunt delegeren in het recht beheer, kunt u een voor beeld overwegen. 
+
+Stel dat uw organisatie de volgende vijf gebruikers heeft:
 
 | Gebruiker | Afdeling | Opmerkingen |
 | --- | --- | --- |
@@ -59,6 +61,7 @@ Zowel de onderzoeks-als marketing afdeling willen het rechten beheer voor hun ge
 De afdelingen voor onderzoek en marketing kunnen nu gebruikmaken van het rechten beheer. Bob, Carola, Dave en Elisa kunnen toegangs pakketten maken en beheren in hun respectieve catalogi.
 
 ![Voor beeld van een recht op gedelegeerd beheer](./media/entitlement-management-delegate/elm-delegate.png)
+
 
 ## <a name="entitlement-management-roles"></a>Rechten beheer rollen
 
@@ -113,6 +116,7 @@ Voor een gebruiker die geen globale beheerder of gebruikers beheerder is, om gro
 | [Toepassings beheerder](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
 | [Beheerder van de Cloud toepassing](../users-groups-roles/directory-assign-admin-roles.md) | Catalogus eigenaar |  |  | :heavy_check_mark: |  |
 | Gebruiker | Catalogus eigenaar | Alleen als de groeps eigenaar | Alleen als de groeps eigenaar | Alleen als de eigenaar van de app |  |
+
 
 ## <a name="add-a-catalog-creator"></a>Een maker van de catalogus toevoegen
 

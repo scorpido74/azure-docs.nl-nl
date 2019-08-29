@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8fffc74075abf6dcc4b5c293819f739a9725646b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998180"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128204"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -30,15 +30,15 @@ In het artikel ziet u hoe u de API [Video uploaden](https://api-portal.videoinde
 Als uw video eenmaal is geüpload, wordt de video eventueel door Video Indexer gecodeerd (besproken in het artikel). Wanneer u een Video Indexer-account maakt, kunt u kiezen uit een gratis proefversie (waarmee u een bepaald aantal gratis minuten indexering krijgt) of een betaalde optie (zonder quotumlimiet). Bij de gratis proefversie biedt Video Indexer websitegebruikers maximaal 600 minuten aan gratis indexering en API-gebruikers maximaal 2400 minuten gratis indexering. Met betaalde optie maakt u een Video Indexer-account dat is [verbonden met uw Azure-abonnement en een Azure Media Services-account](connect-to-azure.md). U betaalt zowel voor de geïndexeerde minuten als voor kosten verbonden aan het Media-account. 
 
 ## <a name="uploading-considerations"></a>Aandachtspunten voor uploaden
-
-- Bij het uploaden van uw video op basis van de URL (aanbevolen) moet het eindpunt worden beveiligd met TLS 1.2 (of hoger)
-- De upload grootte met de URL-optie is beperkt tot 30 GB
-- De lengte van de aanvraag-URL is beperkt tot 2048 tekens
-- De optie voor de upload grootte met de byte matrix is beperkt tot 2 GB
-- De byte matrix optie verkeert na 30 minuten
-- De URL die is opgegeven in de parameter `videoURL`moet worden gecodeerd
-- Het indexeren van Media Services assets heeft dezelfde beperking als het indexeren van de URL
-- Video Indexer heeft een maximale duur limiet van vier uur voor één bestand
+ 
+- Wanneer u uw video uploadt op basis van de URL (voor keur), moet het eind punt worden beveiligd met TLS 1,2 (of hoger).
+- De upload grootte met de URL-optie is beperkt tot 30 GB.
+- De lengte van de aanvraag-URL is beperkt tot 6144 tekens waarbij de lengte van de URL van de query teken reeks is beperkt tot 4096 tekens.
+- De upload grootte met de byte matrix optie is beperkt tot 2 GB.
+- De byte matrix optie verkeert na 30 minuten.
+- De URL die is opgenomen `videoURL` in de para meter moet worden gecodeerd.
+- Het indexeren van Media Services assets heeft dezelfde beperking als het indexeren van een URL.
+- Video Indexer heeft een maximale duur limiet van vier uur voor één bestand.
 
 > [!Tip]
 > Het verdient aanbeveling om .NET Framework versie 4.6.2 of hoger te gebruiken omdat oudere versies van .NET Framework niet standaard gebruikmaken van TLS 1.2.

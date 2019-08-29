@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 15960c39878e0c8ae22f94197ed1937597f1ee02
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126134"
 ---
 ::: zone target="docs"
 
@@ -34,7 +34,7 @@ In deze zelfstudie leert u het volgende:
 
 ::: zone target="chromeless"
 
-# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk uitpakken, verbinding maken en ontgrendelen
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk uitpakken, verbinding maken en ontgrendelen
 
 ::: zone-end
 
@@ -313,7 +313,9 @@ Zie problemen [met ontgrendelen oplossen](data-box-disk-troubleshoot-unlock.md)a
 
 Nadat de schijf is ontgrendeld, kunt u de inhoud van de schijf weer geven.
 
-Ga naar de [zelf studie voor meer informatie over het instellen en ontgrendelen van de schijven: Azure Data Box Disk](data-box-disk-deploy-set-up.md)uitpakken, verbinding maken en ontgrendelen.
+Ga voor meer informatie over het instellen van schijven, naar [het uitpakken van uw data Box Disk](data-box-disk-deploy-set-up.md#unpack-your-disks).
+
+Ga voor meer informatie over het ontgrendelen van schijven naar [unlock data Box disk op de Windows-client](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client).
 
 ::: zone-end
 

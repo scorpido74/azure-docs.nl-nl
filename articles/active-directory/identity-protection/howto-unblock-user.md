@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4e3756435703c4e8c887a4e7b9d4f75a6701d840
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335376"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126252"
 ---
 # <a name="how-to-unblock-users"></a>Procedure: Gebruikers deblokkeren
 
@@ -31,7 +31,7 @@ U kunt het type beleid ophalen dat een gebruiker heeft geblokkeerd vanuit de kop
 
 | Beleid | Gebruikers dialoogvenster |
 | --- | --- |
-| Aanmeldingsrisico |![Geblokkeerde aanmelding](./media/howto-unblock-user/02.png) |
+| Aanmeldings risico |![Geblokkeerde aanmelding](./media/howto-unblock-user/02.png) |
 | Gebruikersrisico |![Geblokkeerd account](./media/howto-unblock-user/104.png) |
 
 Een gebruiker die wordt geblokkeerd door:
@@ -52,7 +52,7 @@ Als u de blok kering van een verdachte aanmelding wilt opheffen, hebt u de volge
 Als u de blok kering van een account dat risico loopt, hebt u de volgende opties:
 
 1. **Wacht woord opnieuw instellen** : u kunt het wacht woord van de gebruiker opnieuw instellen. 
-2. **Alle risico gebeurtenissen negeren** : het gebruikers risico beleid blokkeert een gebruiker als het geconfigureerde risico niveau van de gebruiker voor het blok keren van toegang is bereikt. U kunt het risico niveau van een gebruiker verlagen door gerapporteerde risico gebeurtenissen hand matig af te sluiten. 
+2. **Alle risico detecties verwijderen** : het gebruikers risico beleid blokkeert een gebruiker als het geconfigureerde risico niveau van de gebruiker voor het blok keren van toegang is bereikt. U kunt het risico niveau van een gebruiker verlagen door gerapporteerde risico detecties hand matig af te sluiten. 
 3. **Uitsluiten van beleid** : als u denkt dat de huidige configuratie van uw aanmeldings beleid problemen veroorzaakt voor specifieke gebruikers, kunt u de gebruikers hiervan uitsluiten. Zie [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)voor meer informatie.
 4. **Beleid uitschakelen** : als u denkt dat uw beleids configuratie problemen veroorzaakt voor al uw gebruikers, kunt u het beleid uitschakelen. Zie [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)voor meer informatie.
 

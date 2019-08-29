@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989722"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127281"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Wat zijn Azure Active Directory-rapporten?
 
@@ -54,9 +54,9 @@ Alle edities van Azure AD bieden rapporten over gebruikers voor wie wordt aangeg
 
 - In de edities **Azure Active Directory Free en Basic** hebt u toegang tot een lijst die gebruikers bevat voor wie wordt aangegeven dat ze risico lopen, evenals riskante aanmeldingen. 
 
-- De editie **Azure Active Directory Premium 1** bevat een uitgebreider model waarmee u ook bepaalde onderliggende risicogebeurtenissen kunt onderzoeken die voor elk rapport zijn gedetecteerd. 
+- De **Azure Active Directory Premium 1** editie breidt dit model uit door ook een aantal van de onderliggende risico detecties te onderzoeken die zijn gedetecteerd voor elk rapport. 
 
-- De editie **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over de onderliggende risicogebeurtenissen. Deze editie stelt u ook in staat beveiligingsbeleidsregels te configureren die automatisch op de geconfigureerde risiconiveaus reageren.
+- De versie van **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over de onderliggende risico detecties. Daarnaast kunt u hiermee beveiligings beleid configureren dat automatisch reageert op geconfigureerde risico niveaus.
 
 
 ## <a name="activity-reports"></a>Activiteitsrapporten

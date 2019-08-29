@@ -3,23 +3,20 @@ title: Uw eerste gegevensfactory bouwen (Azure Portal) | Microsoft Docs
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn met behulp van de Data Factory-editor in Azure Portal.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 2a7e2f9e5018bdad2a1ed2c6edcb727a2ffdcddd
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: b60f6adf6c13bc86fb4c4604dda7d4b92963b7ca
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839118"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140577"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Zelfstudie: uw eerste data factory bouwen met behulp van de Azure-portal
 > [!div class="op_single_selector"]
@@ -34,7 +31,7 @@ ms.locfileid: "67839118"
 > Dit artikel is van toepassing op versie 1 van Azure Data Factory, die algemeen beschikbaar is. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Quickstart: Een gegevensfactory maken met behulp van Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 > [!WARNING]
-> De JSON-editor in Azure Portal voor het ontwerpen en implementeren van ADF v1 pijplijnen worden uitgeschakeld op 31 juli 2019. Na 31 juli 2019, u kunt echter ook doorgaan met [ADF v1 Powershell-cmdlets](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), [ADF v1 .net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [ADF v1 REST-API's](https://docs.microsoft.com/rest/api/datafactory/) te ontwerpen en implementeren van uw ADF v1-pijplijnen.
+> De JSON-editor in azure portal voor het ontwerpen & het implementeren van ADF v1-pijp lijnen wordt uitgeschakeld op 31 juli 2019. Na 31 juli 2019 kunt u de [Power shell](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)-cmdlets van ADF v1, [ADF v1 .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [ADF v1 rest api's](https://docs.microsoft.com/rest/api/datafactory/) gebruiken om te schrijven & uw ADF v1-pijp lijnen te maken.
 
 In dit artikel leert u hoe u [Azure Portal](https://portal.azure.com/) gebruikt om uw eerste data factory te maken. Als u de zelfstudie wilt volgen met andere hulpprogramma's/SDK's, selecteert u een van de opties uit de vervolgkeuzelijst. 
 
@@ -50,7 +47,7 @@ Lees het [Zelfstudieoverzicht](data-factory-build-your-first-pipeline.md) en vol
 
 Dit artikel biedt geen conceptueel overzicht van de Data Factory-service. Lees voor meer informatie over de service [Inleiding tot Azure Data Factory](data-factory-introduction.md).  
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn kan één of meer activiteiten bevatten. Een voorbeeld is een kopieeractiviteit die gegevens kopieert van een brongegevensarchief naar een doelgegevensarchief. Een ander voorbeeld is een HDInsight Hive-activiteit die een Hive-script uitvoert dat invoergegevens omzet om uitvoergegevens te produceren. 
 
 Volg deze stappen om een data factory te maken:
@@ -128,7 +125,7 @@ In deze stap koppelt u een on-demand HDInsight-cluster aan uw gegevensfactory. H
 
 1. Selecteer in de Data Factory Editor **Meer** > **Opnieuw berekenen** > **On-demand HDInsight-cluster**.
 
-    ![Nieuwe berekening](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
+    ![Opnieuw berekenen](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 
 1. Kopieer het onderstaande codefragment en plak het in het venster Draft-1. Het JSON-codefragment bevat de eigenschappen die worden gebruikt om het on-demand HDInsight-cluster te maken.
 
@@ -213,14 +210,14 @@ In deze stap maakt u gegevenssets die de invoer- en uitvoergegevens voor Hive-ve
 
    | Eigenschap | Genest onder | Description |
    |:--- |:--- |:--- |
-   | type | properties |De eigenschap type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in de blobopslag bevinden. |
+   | Type | properties |De eigenschap type wordt ingesteld op **AzureBlob**, omdat de gegevens zich in de blobopslag bevinden. |
    | linkedServiceName | format |Deze eigenschap verwijst naar AzureStorageLinkedService, die u eerder hebt gemaakt. |
    | folderPath | typeProperties | Deze eigenschap verwijst naar de blobcontainer en de map die de blobs voor invoer bevat. | 
    | fileName | typeProperties |Deze eigenschap is optioneel. Als u deze eigenschap niet opgeeft, worden alle bestanden uit folderPath gekozen. In deze zelfstudie wordt alleen het input.log-bestand verwerkt. |
-   | type | format |Omdat de logboekbestanden tekstbestanden zijn, gebruikt u **TextFormat**. |
+   | Type | format |Omdat de logboekbestanden tekstbestanden zijn, gebruikt u **TextFormat**. |
    | columnDelimiter | format |De kolommen in de logboekbestanden worden gescheiden door een komma (`,`). |
    | frequency/interval | availability |Als frequency wordt ingesteld op **Month** en de interval **1** is, betekent dit dat de invoersegmenten één keer per maand beschikbaar worden gemaakt. |
-   | external | properties | Deze eigenschap wordt ingesteld op **true** als de invoergegevens niet worden gegenereerd door deze pijplijn. In deze zelfstudie wordt het bestand input.log niet gegenereerd door deze pijplijn. Daarom is de eigenschap ingesteld op **true**. |
+   | extern | properties | Deze eigenschap wordt ingesteld op **true** als de invoergegevens niet worden gegenereerd door deze pijplijn. In deze zelfstudie wordt het bestand input.log niet gegenereerd door deze pijplijn. Daarom is de eigenschap ingesteld op **true**. |
 
     Zie [Azure Blob-connectoren](data-factory-azure-blob-connector.md#dataset-properties) voor meer informatie over deze JSON-eigenschappen.
 

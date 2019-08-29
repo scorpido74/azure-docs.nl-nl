@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f244c28b99c429fef5641bb4fc399e09fd451069
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334026"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126561"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Procedure: Risico beleid configureren in Azure Active Directory identiteits beveiliging (vernieuwd)
 
-Azure AD detecteert risico gebeurtenissen die indica toren voor mogelijk aangetast identiteiten zijn. Door risico beleid te configureren, kunt u automatische antwoorden op de detectie resultaten definiëren:
+Azure AD detecteert risico detecties die indica toren voor mogelijk verdachte identiteiten zijn. Door risico beleid te configureren, kunt u automatische antwoorden op de detectie resultaten definiëren:
 
-- Met het beleid voor aanmeldings Risico's kunt u een reactie configureren op real-time risico gebeurtenissen die zijn gedetecteerd tijdens het aanmelden van een gebruiker. 
+- Met het beleid voor aanmeldings Risico's kunt u een reactie configureren op real-time risico detecties die zijn gedetecteerd tijdens het aanmelden van een gebruiker. 
 - Met het beleid voor gebruikers Risico's kunt u een reactie configureren op alle actieve gebruikers Risico's die gedurende een bepaalde periode zijn gedetecteerd voor een gebruiker.  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Wat is het aanmeldings risico beleid?
 
-Azure AD analyseert elke aanmelding van een gebruiker. Het doel van de analyse is het detecteren van verdachte acties die samen met de aanmelding worden uitgevoerd. Is de aanmelding bijvoorbeeld voltooid met een anoniem IP-adres of is de aanmelding gestart vanaf een onbekende locatie? In azure AD worden de verdachte acties die door het systeem kunnen worden gedetecteerd ook wel risico gebeurtenissen genoemd. Op basis van de risico gebeurtenissen die zijn gedetecteerd tijdens een aanmelding, berekent Azure AD een waarde. De waarde vertegenwoordigt de kans (laag, gemiddeld, hoog) dat de aanmelding niet wordt uitgevoerd door de rechtmatige gebruiker. De kans is het **risico niveau voor het aanmelden**.
+Azure AD analyseert elke aanmelding van een gebruiker. Het doel van de analyse is het detecteren van verdachte acties die samen met de aanmelding worden uitgevoerd. Is de aanmelding bijvoorbeeld voltooid met een anoniem IP-adres of is de aanmelding gestart vanaf een onbekende locatie? In azure AD worden de verdachte acties die door het systeem kunnen worden gedetecteerd ook wel risico detecties genoemd. Op basis van de risico detecties die zijn gedetecteerd tijdens een aanmelding, berekent Azure AD een waarde. De waarde vertegenwoordigt de kans (laag, gemiddeld, hoog) dat de aanmelding niet wordt uitgevoerd door de rechtmatige gebruiker. De kans is het **risico niveau voor het aanmelden**.
 
 Het beleid voor aanmeldings Risico's is een geautomatiseerd antwoord dat u kunt configureren voor een specifiek aanmeldings risico niveau. In uw antwoord kunt u de toegang tot uw resources blok keren of vereisen dat een MFA-uitdaging (multi-factor Authentication) wordt door gegeven om toegang te krijgen.
 
-Wanneer een gebruiker een MFA-prompt heeft uitgevoerd die wordt geactiveerd door het beleid voor aanmeldings Risico's, geeft deze feedback aan identiteits beveiliging dat de aanmelding afkomstig is van de legitieme gebruiker. De aanmeldings risico gebeurtenis die de MFA-prompt heeft geactiveerd, wordt dan automatisch gesloten en de identiteits beveiliging zorgt ervoor dat deze gebeurtenis niet kan bijdragen aan de verhoging van het risico van de gebruiker. Het inschakelen van het beleid voor aanmeldings Risico's kan noisiness in de weer gave Risk ante aanmeldingen verminderen door gebruikers toe te staan zichzelf op te lossen wanneer u wordt gevraagd MFA op te geven en vervolgens automatisch de bijbehorende Risk ante aanmelding af te sluiten.
+Wanneer een gebruiker een MFA-prompt heeft uitgevoerd die wordt geactiveerd door het beleid voor aanmeldings Risico's, geeft deze feedback aan identiteits beveiliging dat de aanmelding afkomstig is van de legitieme gebruiker. De detectie van het aanmeldings risico dat de MFA-prompt heeft geactiveerd, wordt dan automatisch gesloten en de identiteits beveiliging zorgt ervoor dat deze gebeurtenis niet kan bijdragen aan de verhoging van het risico van gebruikers. Het inschakelen van het beleid voor aanmeldings Risico's kan noisiness in de weer gave Risk ante aanmeldingen verminderen door gebruikers toe te staan zichzelf op te lossen wanneer u wordt gevraagd MFA op te geven en vervolgens automatisch de bijbehorende Risk ante aanmelding af te sluiten.
 
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Hoe kan ik toegang tot het beleid voor aanmeldings Risico's?
    
@@ -51,7 +51,7 @@ Wanneer u het beleid voor aanmeldings Risico's configureert, moet u het volgende
 
 - Het niveau van het aanmeldings risico waarmee het beleid wordt geactiveerd:
 
-   ![Niveau van aanmeldingsrisico](./media/howto-configure-risk-policies/12.png)
+   ![Risico niveau voor aanmelden](./media/howto-configure-risk-policies/12.png)
 
 - Het type toegang dat u wilt afdwingen wanneer aan uw aanmeldings risico niveau is voldaan:  
 
@@ -93,9 +93,9 @@ Zie voor een overzicht van de gerelateerde gebruikers ervaring:
 
 ## <a name="what-is-a-user-risk-policy"></a>Wat is een gebruikers risico beleid?
 
-Azure AD analyseert elke aanmelding van een gebruiker. Het doel van de analyse is het detecteren van verdachte acties die samen met de aanmelding worden uitgevoerd. In azure AD worden de verdachte acties die door het systeem kunnen worden gedetecteerd ook wel risico gebeurtenissen genoemd. Hoewel sommige risico gebeurtenissen in realtime kunnen worden gedetecteerd, zijn er ook risico gebeurtenissen die meer tijd vereisen. Als u bijvoorbeeld een onmogelijke reis naar ongewone locaties wilt detecteren, is voor het systeem een eerste leer periode van 14 dagen vereist om meer te weten te komen over het normale gedrag van een gebruiker. Er zijn verschillende opties om gedetecteerde risico gebeurtenissen op te lossen. U kunt bijvoorbeeld afzonderlijke risico gebeurtenissen hand matig oplossen, of u kunt ze oplossen met behulp van een aanmeldings risico of een beleid voor voorwaardelijke toegang voor gebruikers Risico's.
+Azure AD analyseert elke aanmelding van een gebruiker. Het doel van de analyse is het detecteren van verdachte acties die samen met de aanmelding worden uitgevoerd. In azure AD worden de verdachte acties die door het systeem kunnen worden gedetecteerd ook wel risico detecties genoemd. Hoewel sommige risico detecties in realtime kunnen worden gedetecteerd, zijn er ook risico detecties die meer tijd vereisen. Als u bijvoorbeeld een onmogelijke reis naar ongewone locaties wilt detecteren, is voor het systeem een eerste leer periode van 14 dagen vereist om meer te weten te komen over het normale gedrag van een gebruiker. Er zijn verschillende opties voor het oplossen van gedetecteerde risico detecties. U kunt bijvoorbeeld afzonderlijke risico detecties hand matig oplossen of u kunt ze omzetten met behulp van een aanmeldings risico of een beleid voor voorwaardelijke toegang voor gebruikers Risico's.
 
-Alle risico gebeurtenissen die zijn gedetecteerd voor een gebruiker en niet zijn opgelost, worden actieve risico gebeurtenissen genoemd. De actieve risico gebeurtenissen die aan een gebruiker zijn gekoppeld, worden gebruikers risico genoemd. Op basis van het gebruikers risico berekent Azure AD een waarschijnlijkheid (laag, gemiddeld, hoog) die een gebruiker heeft geknoeid. De kans is het gebruikers risico niveau.
+Alle risico detecties die zijn gedetecteerd voor een gebruiker en niet zijn opgelost, worden actieve risico detecties genoemd. De actieve risico detecties die aan een gebruiker zijn gekoppeld, worden gebruikers risico genoemd. Op basis van het gebruikers risico berekent Azure AD een waarschijnlijkheid (laag, gemiddeld, hoog) die een gebruiker heeft geknoeid. De kans is het gebruikers risico niveau.
 
 ![Gebruikers Risico's](./media/howto-configure-risk-policies/11031.png)
 
@@ -139,8 +139,8 @@ U kunt een beveiligings beleid voor gebruikers Risico's instellen om gebruikers 
 
 Een aanmelding blok keren:
 
-* Voor komt dat nieuwe gebruikers risico gebeurtenissen voor de betrokken gebruiker worden gegenereerd
-* Hiermee kunnen beheerders de risico gebeurtenissen hand matig herstellen die van invloed zijn op de identiteit van de gebruiker en deze terugzetten naar een veilige status
+* Hiermee wordt voor komen dat nieuwe gebruikers risico detecties worden gegenereerd voor de betrokken gebruiker
+* Hiermee kunnen beheerders hand matig de risico detecties herstellen die van invloed zijn op de identiteit van de gebruiker en deze herstellen naar een veilige status
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory risico gebeurtenissen | Microsoft Docs
-description: Deze artice biedt een gedetailleerd overzicht van de risico gebeurtenissen.
+title: Detectie van Azure Active Directorye Risico's | Microsoft Docs
+description: Deze artice biedt een gedetailleerd overzicht van de risico detecties.
 services: active-directory
 keywords: identiteits beveiliging van Azure Active Directory, beveiliging, risico, risico niveau, beveiligings beleid
 author: cawrites
@@ -16,26 +16,26 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5711d900653ae7786899ce1c53f22cf181f5b8bf
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988277"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127323"
 ---
-# <a name="azure-active-directory-risk-events"></a>Azure Active Directory risico gebeurtenissen
+# <a name="azure-active-directory-risk-detections"></a>Detectie van Azure Active Directory-Risico's
 
-Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure Active Directory gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam **risico gebeurtenis**.
+Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure Active Directory gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam **risico detectie**.
 
-Er zijn twee locaties waar u gemelde risico gebeurtenissen kunt bekijken:
+Er zijn twee locaties waar u gerapporteerde risico detecties kunt bekijken:
 
- - **Azure ad-rapportage** : risico gebeurtenissen maken deel uit van de beveiligings rapporten van Azure AD. Voor meer informatie, zie het beveiligings rapport [gebruikers die risico](concept-user-at-risk.md) lopen, beveiligings rapport en [Risk ante](concept-risky-sign-ins.md)aanmeldingen.
+ - **Azure AD Reporting** : risico detecties maken deel uit van de beveiligings rapporten van Azure AD. Voor meer informatie, zie het beveiligings rapport [gebruikers die risico](concept-user-at-risk.md) lopen, beveiligings rapport en [Risk ante](concept-risky-sign-ins.md)aanmeldingen.
 
- - **Azure AD Identity Protection** risico gebeurtenissen maken ook deel uit van de rapportage mogelijkheden van [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+ - **Azure AD Identity Protection** -risico detecties maken ook deel uit van de rapportage mogelijkheden van [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-Daarnaast kunt u de [API voor risico gebeurtenissen voor identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
+Daarnaast kunt u de [API voor risico detectie van identiteits beveiliging](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) gebruiken om programmatisch toegang te krijgen tot beveiligings detecties met behulp van Microsoft Graph. Zie [aan de slag met Azure Active Directory Identity Protection en Microsoft Graph](../identity-protection/graph-get-started.md)voor meer informatie. 
 
-Azure Active Directory detecteert zes typen risico gebeurtenissen op dit moment:
+Momenteel detecteert Azure Active Directory zes soorten risico detecties:
 
 - [Gebruikers met gelekte referenties](#leaked-credentials) 
 - [Aanmeldingen vanaf anonieme IP-adressen](#sign-ins-from-anonymous-ip-addresses) 
@@ -44,26 +44,26 @@ Azure Active Directory detecteert zes typen risico gebeurtenissen op dit moment:
 - [Aanmeldingen vanaf IP-adressen met verdachte activiteiten](#sign-ins-from-ip-addresses-with-suspicious-activity) 
 - [Aanmeldingen vanaf onbekende locaties](#sign-in-from-unfamiliar-locations) 
 
-![Risicogebeurtenis](./media/concept-risk-events/91.png)
+![Risico detectie](./media/concept-risk-events/91.png)
 
 > [!IMPORTANT]
-> Soms vindt u een risico gebeurtenis zonder een bijbehorende aanmeldings vermelding in het [aanmeld rapport](concept-sign-ins.md). Dit komt doordat identiteits beveiliging het risico evalueert voor **interactieve** en **niet-interactieve** aanmeldingen, terwijl in het rapport voor aanmeldingen alleen de interactieve aanmeldingen worden weer gegeven.
+> Soms vindt u een risico detectie zonder een corresponderende aanmeldings vermelding in het [aanmeld rapport](concept-sign-ins.md). Dit komt doordat identiteits beveiliging het risico evalueert voor **interactieve** en **niet-interactieve** aanmeldingen, terwijl in het rapport voor aanmeldingen alleen de interactieve aanmeldingen worden weer gegeven.
 
-Het inzicht u voor een gedetecteerde risicogebeurtenis krijgt is gekoppeld aan uw Azure AD-abonnement. 
+Het inzicht dat u krijgt bij een gedetecteerde risico detectie is gekoppeld aan uw Azure AD-abonnement. 
 
 * Met de **Azure AD Premium P2-editie**krijgt u de meest gedetailleerde informatie over alle onderliggende detecties. 
 * Met de **Azure AD Premium P1 Edition**worden geavanceerde detecties (zoals niet-vertrouwde aanmeldings eigenschappen) niet gedekt door uw licentie en worden ze weer gegeven onder de naam **aanmelding met extra risico gedetecteerd**. Daarnaast zijn de velden risico niveau en risico detail verborgen.
 
-Hoewel de detectie van risico gebeurtenissen een belang rijk aspect vormt van het beveiligen van uw identiteiten, hebt u ook de mogelijkheid om deze hand matig te verhelpen of om automatische antwoorden te implementeren door beleid voor voorwaardelijke toegang te configureren. Zie [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)voor meer informatie.
+Hoewel de detectie van risico detecties al een belang rijk aspect vormt van het beveiligen van uw identiteiten, hebt u ook de mogelijkheid om deze hand matig te beantwoorden of om automatische antwoorden te implementeren door beleid voor voorwaardelijke toegang te configureren. Zie [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)voor meer informatie.
 
-## <a name="risk-event-types"></a>Risicogebeurtenistypen
+## <a name="risk-detection-types"></a>Typen risico detectie
 
-De eigenschap **type risico gebeurtenis** is een id voor de verdachte actie waarvoor een risico gebeurtenis record is gemaakt.
+De eigenschap **type risico detectie** is een id voor de verdachte actie waarvoor een risico detectie record is gemaakt.
 
 De continue investeringen van micro soft in het detectie proces leiden tot het volgende:
 
-- Verbeteringen in de nauw keurigheid van de detectie van bestaande risico gebeurtenissen 
-- Nieuwe risico gebeurtenis typen die in de toekomst zullen worden toegevoegd
+- Verbeteringen in de nauw keurigheid van de detectie van bestaande risico detecties 
+- Nieuwe typen risico detectie die in de toekomst zullen worden toegevoegd
 
 ### <a name="leaked-credentials"></a>Gelekte referenties
 
@@ -74,86 +74,86 @@ Wanneer Cybercriminals geldige wacht woorden van legitieme gebruikers beveiligt,
 - Beveiligings teams bij micro soft
 - Andere vertrouwde bronnen 
 
-Wanneer de service gebruikers naam/wachtwoord paren ophaalt, worden ze gecontroleerd op basis van de huidige geldige referenties van AAD-gebruikers. Als er een overeenkomst wordt gevonden, betekent dit dat het wacht woord van een gebruiker is aangetast en dat er een **risico gebeurtenis** met gelekte referenties is gemaakt.
+Wanneer de service gebruikers naam/wachtwoord paren ophaalt, worden ze gecontroleerd op basis van de huidige geldige referenties van AAD-gebruikers. Als er een overeenkomst wordt gevonden, betekent dit dat het wacht woord van een gebruiker is aangetast en dat er een gelekte **referentie risico detectie** wordt gemaakt.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Aanmeldingen vanaf anonieme IP-adressen
 
-Dit type risico gebeurtenis identificeert gebruikers die zijn aangemeld bij een IP-adres dat is geïdentificeerd als een IP-adres van een anonieme proxy. Deze proxy's worden gebruikt door mensen die u wilt verbergen, IP-adres van hun apparaat en kunnen voor kwade bedoelingen worden gebruikt.
+Dit type risico detectie identificeert gebruikers die zijn aangemeld bij een IP-adres dat is geïdentificeerd als een IP-adres van een anonieme proxy. Deze proxy's worden gebruikt door mensen die u wilt verbergen, IP-adres van hun apparaat en kunnen voor kwade bedoelingen worden gebruikt.
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Onmogelijke reis naar ongewone locaties
 
-Dit type risico gebeurtenis identificeert twee aanmeldingen die afkomstig zijn van geografische locaties, waarbij ten minste één van de locaties mogelijk ook ongewoon kan zijn voor de gebruiker, gezien het gedrag van het verleden. Deze machine learning-algoritme houdt onder andere rekening met de tijd tussen de twee aanmeldingen en de tijd die nodig zou zijn voor de gebruiker om van de eerste locatie naar de tweede te gaan, wat aangeeft dat een andere gebruiker hetzelfde gebruikt aanmeldings.
+Dit type risico detectie identificeert twee aanmeldingen die afkomstig zijn van geografische locaties, waarbij ten minste één van de locaties mogelijk ook ongewoon kan zijn voor de gebruiker, gezien het gedrag van het verleden. Deze machine learning-algoritme houdt onder andere rekening met de tijd tussen de twee aanmeldingen en de tijd die nodig zou zijn voor de gebruiker om van de eerste locatie naar de tweede te gaan, wat aangeeft dat een andere gebruiker hetzelfde gebruikt aanmeldings.
 
 Het algoritme negeert duidelijke ' fout-positieven ' die bijdragen aan de niet-bewaarde reis omstandigheden, zoals Vpn's en locaties die regel matig door andere gebruikers in de organisatie worden gebruikt. Het systeem heeft een initiële leer periode van 14 dagen waarin het aanmeldings gedrag van een nieuwe gebruiker wordt beschreven. 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Aanmelden vanaf onbekende locaties
 
-Dit type risico gebeurtenis beschouwt vroegere aanmeldings locaties (IP, breedte graad/lengte graad en ASN) om te bepalen of er nieuwe/onbekende locaties zijn. Het systeem slaat informatie op over eerdere locaties die door een gebruiker worden gebruikt en beschouwt deze bekende locaties. De risico gebeurtenis wordt geactiveerd wanneer de aanmelding wordt uitgevoerd vanaf een locatie die zich nog niet in de lijst met bekende locaties bevindt. Het systeem heeft een initiële leer periode van 30 dagen, waardoor er geen nieuwe locaties worden gemarkeerd als onbekende locaties. Het systeem negeert ook aanmeldingen van bekende apparaten en locaties die geografisch dicht bij een bekende locatie vallen. 
+Dit type risico detectie houdt rekening met eerdere aanmeldings locaties (IP, breedte graad/lengte graad en ASN) om te bepalen of er nieuwe/onbekende locaties zijn. Het systeem slaat informatie op over eerdere locaties die door een gebruiker worden gebruikt en beschouwt deze bekende locaties. De risico detectie wordt geactiveerd wanneer de aanmelding wordt uitgevoerd vanaf een locatie die zich nog niet in de lijst met bekende locaties bevindt. Het systeem heeft een initiële leer periode van 30 dagen, waardoor er geen nieuwe locaties worden gemarkeerd als onbekende locaties. Het systeem negeert ook aanmeldingen van bekende apparaten en locaties die geografisch dicht bij een bekende locatie vallen. 
 
-Identiteits beveiliging detecteert aanmeldingen vanaf onbekende locaties ook voor basis verificatie/verouderde protocollen. Omdat deze protocollen niet over moderne bekende functies beschikken, zoals client-id, is er onvoldoende telemetrie om fout-positieven te verminderen. Als u het aantal gedetecteerde risico gebeurtenissen wilt verminderen, gaat u naar moderne verificatie.   
+Identiteits beveiliging detecteert aanmeldingen vanaf onbekende locaties ook voor basis verificatie/verouderde protocollen. Omdat deze protocollen niet over moderne bekende functies beschikken, zoals client-id, is er onvoldoende telemetrie om fout-positieven te verminderen. Als u het aantal gedetecteerde risico detecties wilt verminderen, moet u overstappen op moderne verificatie.   
 
 ### <a name="sign-ins-from-infected-devices"></a>Aanmeldingen vanaf geïnfecteerde apparaten
 
-Dit type risico gebeurtenis identificeert aanmeldingen van apparaten die zijn geïnfecteerd met malware en waarvan bekend is dat deze actief communiceren met een bot-server. Dit wordt bepaald door de IP-adressen van het apparaat van de gebruiker te correleren met IP-adressen die in contact komen met een bot-server. 
+Dit type risico detectie identificeert aanmeldingen van apparaten die zijn geïnfecteerd met malware, waarvan bekend is dat deze actief communiceren met een bot-server. Dit wordt bepaald door de IP-adressen van het apparaat van de gebruiker te correleren met IP-adressen die in contact komen met een bot-server. 
 
-### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Aanmeldingen vanaf IP-adressen met verdachte activiteiten
-Dit type risico gebeurtenis geeft de IP-adressen aan waarvan een groot aantal mislukte aanmeldings pogingen gedurende een korte periode in meerdere gebruikers accounts is gedetecteerd. Dit komt overeen met de verkeers patronen van IP-adressen die door aanvallers worden gebruikt. Dit is een sterke indicator die de accounts al of op het punt staan te worden aangetast. Dit is een machine learning-algoritme dat duidelijke fout-positieven negeert, zoals IP-adressen die regel matig worden gebruikt door andere gebruikers in de organisatie.  Het systeem heeft een initiële leer periode van 14 dagen waarin het aanmeldings gedrag van een nieuwe gebruiker en een nieuwe Tenant wordt ontdekt.
+### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Aanmeldingen van IP-adressen met verdachte activiteit
+Met dit type risico detectie worden IP-adressen geïdentificeerd waarvan een groot aantal mislukte aanmeldings pogingen gedurende een korte periode in meerdere gebruikers accounts is gedetecteerd. Dit komt overeen met de verkeers patronen van IP-adressen die door aanvallers worden gebruikt. Dit is een sterke indicator die de accounts al of op het punt staan te worden aangetast. Dit is een machine learning-algoritme dat duidelijke fout-positieven negeert, zoals IP-adressen die regel matig worden gebruikt door andere gebruikers in de organisatie.  Het systeem heeft een initiële leer periode van 14 dagen waarin het aanmeldings gedrag van een nieuwe gebruiker en een nieuwe Tenant wordt ontdekt.
 
 ## <a name="detection-type"></a>Detectietype
 
-De eigenschap detectie type is een indicator (**realtime** of **offline**) voor de detectie periode van een risico gebeurtenis. Op dit moment worden de meeste risico gebeurtenissen tijdens een verwerkings bewerking offline gedetecteerd nadat de risico gebeurtenis is opgetreden.
+De eigenschap detectie type is een indicator (**realtime** of **offline**) voor de detectie periode van een risico detectie. Op dit moment worden de meeste risico detecties tijdens een verwerkings bewerking offline gedetecteerd nadat de risico detectie is opgetreden.
 
 De volgende tabel geeft een overzicht van de tijd die nodig is om een detectie type weer te geven in een gerelateerd rapport:
 
 | Detectie type | Rapportage latentie |
 | --- | --- |
-| Realtime | 5 tot 10 minuten |
+| Real-time | 5 tot 10 minuten |
 | Offline | 2 tot 4 uur |
 
 
-Voor de risico gebeurtenis typen Azure Active Directory gedetecteerd, zijn de volgende detectie typen:
+Voor de typen risico detectie Azure Active Directory gedetecteerd, zijn de volgende detectie typen:
 
-| Type risico gebeurtenis | Detectie type |
+| Type risico detectie | Detectie type |
 | :-- | --- | 
 | [Gebruikers met gelekte referenties](#leaked-credentials) | Offline |
-| [Aanmeldingen vanaf anonieme IP-adressen](#sign-ins-from-anonymous-ip-addresses) | Realtime |
+| [Aanmeldingen vanaf anonieme IP-adressen](#sign-ins-from-anonymous-ip-addresses) | Real-time |
 | [Onmogelijke reis naar ongewone locaties](#impossible-travel-to-atypical-locations) | Offline |
-| [Aanmeldingen vanaf onbekende locaties](#sign-in-from-unfamiliar-locations) | Realtime |
+| [Aanmeldingen vanaf onbekende locaties](#sign-in-from-unfamiliar-locations) | Real-time |
 | [Aanmeldingen vanaf geïnfecteerde apparaten](#sign-ins-from-infected-devices) | Offline |
 | [Aanmeldingen vanaf IP-adressen met verdachte activiteiten](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
 
 
 ## <a name="risk-level"></a>Risiconiveau
 
-De eigenschap risico niveau van een risico gebeurtenis is een indicator (**hoog**, **gemiddeld**of **laag**) voor de ernst en het vertrouwen van een risico gebeurtenis. Deze eigenschap helpt u bij het bepalen van de acties die u moet uitvoeren. 
+De eigenschap risico niveau van een risico detectie is een indicator (**hoog**, **gemiddeld**of **laag**) voor de ernst en het vertrouwen van een risico detectie. Deze eigenschap helpt u bij het bepalen van de acties die u moet uitvoeren. 
 
-De ernst van de risico gebeurtenis duidt op de sterkte van het signaal als voor speld op identiteits inbreuk. Het vertrouwen is een indicator voor de mogelijkheid van valse positieven. 
+De ernst van de risico detectie duidt op de sterkte van het signaal als voor speld op identiteits inbreuk. Het vertrouwen is een indicator voor de mogelijkheid van valse positieven. 
 
 Bijvoorbeeld: 
 
-* **Hoog**: Hoge betrouw baarheid en een hoge Ernst risico gebeurtenis. Deze gebeurtenissen zijn sterke indica toren die zijn aangetast door de identiteit van de gebruiker, en eventuele gebruikers accounts die van invloed zijn op de gebruiker, moeten onmiddellijk worden hersteld.
+* **Hoog**: Hoge betrouw baarheid en hoge risico detectie van de ernst. Deze gebeurtenissen zijn sterke indica toren die zijn aangetast door de identiteit van de gebruiker, en eventuele gebruikers accounts die van invloed zijn op de gebruiker, moeten onmiddellijk worden hersteld.
 
-* **Gemiddeld**: Hoge Ernst, maar een lagere betrouwbaarheids risico gebeurtenis, of andersom. Deze gebeurtenissen zijn mogelijk riskant en eventuele gevolgen voor gebruikers accounts moeten worden hersteld.
+* **Gemiddeld**: Hoge Ernst, maar lager betrouwbaarheids risico detectie, of andersom. Deze gebeurtenissen zijn mogelijk riskant en eventuele gevolgen voor gebruikers accounts moeten worden hersteld.
 
-* **Laag**: Risico gebeurtenis met lage betrouw baarheid en lage ernst. Deze gebeurtenis vereist mogelijk geen directe actie, maar in combi natie met andere risico gebeurtenissen kan een sterke indicatie worden geboden dat de identiteit is aangetast.
+* **Laag**: Lage betrouw baarheid en risico detectie met lage urgentie. Deze gebeurtenis vereist mogelijk geen directe actie, maar in combi natie met andere risico detecties kan een sterke indicatie worden geboden dat de identiteit is aangetast.
 
 ![Risico niveau](./media/concept-risk-events/01.png)
 
 ### <a name="leaked-credentials"></a>Gelekte referenties
 
-De risico gebeurtenissen van gelekte referenties worden als **hoog**geclassificeerd, omdat ze een duidelijke indicatie geven dat de gebruikers naam en het wacht woord beschikbaar zijn voor een aanvaller.
+De beveiligings detecties van lekken worden geclassificeerd als **hoog**, omdat ze een duidelijke indicatie geven dat de gebruikers naam en het wacht woord beschikbaar zijn voor een aanvaller.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Aanmeldingen vanaf anonieme IP-adressen
 
-Het risico niveau voor dit type risico gebeurtenis is **gemiddeld** , omdat een anoniem IP-adres geen sterke indicatie vormt van een inbreuk op een account. U wordt aangeraden direct contact op te nemen met de gebruiker om te controleren of ze anonieme IP-adressen gebruiken.
+Het risico niveau voor dit type risico detectie is **gemiddeld** omdat een anoniem IP-adres geen sterke indicatie vormt van een inbreuk op een account. U wordt aangeraden direct contact op te nemen met de gebruiker om te controleren of ze anonieme IP-adressen gebruiken.
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Onmogelijke reis naar ongewone locaties
 
-Onmogelijke reis is doorgaans een goede indicatie dat een hacker zich kan aanmelden. Fout-positieven kunnen echter optreden wanneer een gebruiker met een nieuw apparaat reist of een VPN gebruikt dat doorgaans niet wordt gebruikt door andere gebruikers in de organisatie. Een andere bron van false-positieven is toepassingen die server Ip's onjuist door geven als client-Ip's, waardoor het uiterlijk van de aanmeldingen kan worden weer gegeven vanuit het Data Center waar de back-end van de toepassing wordt gehost (vaak dit zijn micro soft-data centers). kan de weer gave van aanmeldingen mogelijk maken op basis van IP-adressen van micro soft. Als gevolg van deze false-positieven is het risico niveau voor deze risico gebeurtenis **gemiddeld**.
+Onmogelijke reis is doorgaans een goede indicatie dat een hacker zich kan aanmelden. Fout-positieven kunnen echter optreden wanneer een gebruiker met een nieuw apparaat reist of een VPN gebruikt dat doorgaans niet wordt gebruikt door andere gebruikers in de organisatie. Een andere bron van false-positieven is toepassingen die server Ip's onjuist door geven als client-Ip's, waardoor het uiterlijk van de aanmeldingen kan worden weer gegeven vanuit het Data Center waar de back-end van de toepassing wordt gehost (vaak dit zijn micro soft-data centers). kan de weer gave van aanmeldingen mogelijk maken op basis van IP-adressen van micro soft. Als gevolg van deze valse-positieven is het risico niveau voor deze risico detectie **gemiddeld**.
 
 > [!TIP]
-> U kunt het aantal gemelde fout-positieven voor dit type risico gebeurtenis verminderen door [benoemde locaties](../active-directory-named-locations.md)te configureren. 
+> U kunt de gerapporteerde fout-positieven voor dit type risico detectie verminderen door [benoemde locaties](../active-directory-named-locations.md)te configureren. 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Aanmelden vanaf onbekende locaties
 
@@ -161,13 +161,13 @@ Onbekende locaties kunnen een sterke indicatie geven dat een aanvaller een gesto
 
 ### <a name="sign-ins-from-infected-devices"></a>Aanmeldingen vanaf geïnfecteerde apparaten
 
-Met deze risico gebeurtenis worden IP-adressen, niet van gebruikers apparaten geïdentificeerd. Als verschillende apparaten zich achter één IP-adres bevinden, en slechts enkele ervan worden beheerd door een bot-netwerk, wordt deze gebeurtenis onnodig door de aanmeldingen van andere apparaten geactiveerd. Dit is de reden waarom deze risico gebeurtenis is geclassificeerd als **laag**.  
+Met deze risico detectie worden IP-adressen, niet van gebruikers apparaten geïdentificeerd. Als verschillende apparaten zich achter één IP-adres bevinden, en slechts enkele ervan worden beheerd door een bot-netwerk, wordt deze gebeurtenis onnodig door de aanmeldingen van andere apparaten geactiveerd. Dit is de reden waarom deze risico detectie is geclassificeerd als **laag**.  
 
 U kunt het beste contact opnemen met de gebruiker en alle apparaten van de gebruiker scannen. Het is ook mogelijk dat het persoonlijke apparaat van een gebruiker is geïnfecteerd of dat iemand anders een geïnfecteerd apparaat gebruikt van hetzelfde IP-adres als de gebruiker. Geïnfecteerde apparaten worden vaak geïnfecteerd door malware die nog niet zijn geïdentificeerd door antivirus software, en kunnen ook duiden op onjuiste gebruikers gewoonten, waardoor het apparaat geïnfecteerd kan raken.
 
 Zie het [Malware Protection Center](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/)voor meer informatie over het oplossen van malware-infecties.
 
-### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Aanmeldingen vanaf IP-adressen met verdachte activiteiten
+### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Aanmeldingen van IP-adressen met verdachte activiteit
 
 We raden u aan contact op te nemen met de gebruiker om te controleren of ze daad werkelijk zijn aangemeld vanaf een IP-adres dat is gemarkeerd als verdacht. Het risico niveau voor dit gebeurtenis type is '**medium**' omdat verschillende apparaten zich achter hetzelfde IP-adres bevinden, terwijl er slechts enkele voor de verdachte activiteit kan worden verantwoordelijk. 
 

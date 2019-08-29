@@ -1,138 +1,136 @@
 ---
-title: Pijplijnen bewaken en beheren met behulp van de Azure-portal en PowerShell | Microsoft Docs
-description: Informatie over het gebruik van Azure portal en Azure PowerShell om te controleren en beheren van de Azure data factory's en pijplijnen die u hebt gemaakt.
+title: Pijp lijnen bewaken en beheren met behulp van de Azure Portal en Power shell | Microsoft Docs
+description: Meer informatie over het gebruik van de Azure Portal en Azure PowerShell voor het bewaken en beheren van de Azure-gegevens fabrieken en-pijp lijnen die u hebt gemaakt.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e8215d9737087cf1a5632dc8514c12988ff999f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123139"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139662"
 ---
-# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Controleren en beheren van Azure Data Factory-pijplijnen met behulp van de Azure-portal en PowerShell
+# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de Azure Portal en Power shell
 > [!div class="op_single_selector"]
-> * [Met behulp van Azure portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
-> * [Met behulp van bewaking en beheer van app](data-factory-monitor-manage-app.md)
+> * [Azure Portal/Azure PowerShell gebruiken](data-factory-monitor-manage-pipelines.md)
+> * [De app voor bewaking en beheer gebruiken](data-factory-monitor-manage-app.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [controleren en beheren van Data Factory-pijplijnen in](../monitor-visually.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Data Factory pijp lijnen bewaken en beheren in](../monitor-visually.md).
 
-In dit artikel wordt beschreven hoe u bewaken, beheren en fouten opsporen in uw pijplijnen met behulp van Azure portal en PowerShell.
-
-> [!IMPORTANT]
-> De toepassing bewaking en beheer biedt een betere ondersteuning voor bewaking en beheer van uw gegevenspijplijnen en oplossen van problemen. Zie voor meer informatie over het gebruik van de toepassing [controleren en beheren van Data Factory-pijplijnen met behulp van de app bewaking en beheer](data-factory-monitor-manage-app.md). 
+In dit artikel wordt beschreven hoe u uw pijp lijnen kunt bewaken, beheren en fouten kunt opsporen met behulp van Azure Portal en Power shell.
 
 > [!IMPORTANT]
-> Azure Data Factory versie 1 nu maakt gebruik van de nieuwe [Azure Monitor-waarschuwingen infrastructuur](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). De oude waarschuwingen infrastructuur is afgeschaft. Als gevolg hiervan uw bestaande waarschuwingen geconfigureerd voor versie 1 data factory's niet meer werken. Uw bestaande waarschuwingen voor v1 data factory's worden niet automatisch gemigreerd. U moet deze waarschuwingen op de nieuwe waarschuwingen infrastructuur opnieuw maken. Meld u aan bij de Azure portal en selecteer **Monitor** nieuwe waarschuwingen over metrische gegevens (zoals mislukte uitvoeringen of geslaagde uitvoeringen) voor uw versie 1 data factory's maken.
+> De bewakings & beheer toepassing biedt een betere ondersteuning voor het bewaken en beheren van uw gegevens pijplijnen en het oplossen van problemen. Zie [Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer](data-factory-monitor-manage-app.md)voor meer informatie over het gebruik van de toepassing. 
+
+> [!IMPORTANT]
+> Azure Data Factory versie 1 maakt nu gebruik van de nieuwe [Azure monitor-infra structuur voor waarschuwingen](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). De oude infra structuur voor waarschuwingen is afgeschaft. Als gevolg hiervan werken de bestaande waarschuwingen die zijn geconfigureerd voor gegevens fabrieken van versie 1 niet meer. Uw bestaande waarschuwingen voor v1-gegevens fabrieken worden niet automatisch gemigreerd. U moet deze waarschuwingen opnieuw maken op de nieuwe infra structuur voor waarschuwingen. Meld u aan bij de Azure Portal en selecteer **monitor** om nieuwe waarschuwingen te maken over metrische gegevens (zoals mislukte uitvoeringen of geslaagde uitvoeringen) voor uw data-fabrieken van versie 1.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="understand-pipelines-and-activity-states"></a>Pijplijnen en status van activiteiten
-Met behulp van de Azure-portal, kunt u het volgende doen:
+## <a name="understand-pipelines-and-activity-states"></a>Pijp lijnen en activiteiten status begrijpen
+Met behulp van de Azure Portal kunt u het volgende doen:
 
-* Uw data factory als een diagram weergeven.
-* Activiteiten bekijken in een pijplijn.
-* Gegevenssets voor invoer en uitvoer weergeven.
+* Uw data factory als diagram weer geven.
+* Activiteiten in een pijp lijn weer geven.
+* Invoer-en uitvoer gegevens sets weer geven.
 
-Deze sectie beschrijft ook hoe een segment van de gegevensset van een status status verandert in een andere.   
+In deze sectie wordt ook beschreven hoe een segment overgang van een status naar een andere status.   
 
-### <a name="navigate-to-your-data-factory"></a>Navigeer naar uw data factory
+### <a name="navigate-to-your-data-factory"></a>Ga naar uw data factory
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Klik op **Data Factory's** in het menu aan de linkerkant. Als u dit niet ziet, klikt u op **meer services >** , en klik vervolgens op **Data Factory's** onder de **INTELLIGENCE en analyse** categorie.
+2. Klik op **gegevens fabrieken** in het menu aan de linkerkant. Als u dit niet ziet, klikt u op **meer services >** en klikt u vervolgens op **gegevens fabrieken** onder de categorie **Intelligence en analyse** .
 
-   ![Door alles bladeren > Data Factory's](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
-3. Op de **Data Factory's** blade, selecteert u de data factory waarin u geïnteresseerd bent.
+   ![Door alle >-gegevens fabrieken bladeren](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
+3. Selecteer op de Blade **gegevens fabrieken** de Data Factory waarin u bent geïnteresseerd.
 
     ![Data factory selecteren](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
 
-   U ziet de startpagina van de data factory.
+   U ziet de start pagina voor de data factory.
 
    ![Blade Data factory](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
-#### <a name="diagram-view-of-your-data-factory"></a>Diagramweergave van uw data factory
-De **Diagram** weergave van een data factory biedt een enkel glazen bewaken en beheren van de data factory en bijbehorende assets. Om te zien de **Diagram** weergeven van uw data factory, klikt u op **Diagram** op de startpagina voor de data factory.
+#### <a name="diagram-view-of-your-data-factory"></a>Diagram weergave van uw data factory
+De **diagram** weergave van een Data Factory biedt één glas venster om de Data Factory en de bijbehorende activa te controleren en te beheren. Als u de **diagram** weergave van uw Data Factory wilt zien, klikt u op het **diagram** op de start pagina van de Data Factory.
 
 ![Diagramweergave](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
-U kunt inzoomen, uitzoomen, zoomen als u wilt aanpassen, zoomen naar 100%, de indeling van het diagram vergrendelen en automatische positie gebruiken voor pijplijnen en gegevenssets. U ziet ook de gegevens van de afkomst (dat wil zeggen, items upstream- en downstreamitems van geselecteerde items weergeven).
+U kunt inzoomen, uitzoomen, passend maken, inzoomen op 100%, de indeling van het diagram vergren delen en pijp lijnen en gegevens sets automatisch positioneren. U kunt ook de gegevens afkomst informatie bekijken (dat wil zeggen upstream-en downstream-items van geselecteerde items weer geven).
 
-### <a name="activities-inside-a-pipeline"></a>Activiteiten binnen een pijplijn
-1. Met de rechtermuisknop op de pijplijn en klik vervolgens op **pijplijn openen** om te zien van alle activiteiten in de pijplijn, samen met de invoer- en uitvoergegevenssets voor de activiteiten. Deze functie is handig als uw pijplijn vindt u meer dan één activiteit en u wilt weten over de operationele afkomst van één pijplijn.
+### <a name="activities-inside-a-pipeline"></a>Activiteiten in een pijp lijn
+1. Klik met de rechter muisknop op de pijp lijn en klik vervolgens op **pijp lijn openen** om alle activiteiten in de pijp lijn te bekijken, samen met de invoer-en uitvoer gegevens sets voor de activiteiten. Deze functie is handig als uw pijp lijn meer dan één activiteit bevat en u inzicht wilt krijgen in de operationele afkomst van één pijp lijn.
 
     ![Menu Pijplijn openen](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
-2. In het volgende voorbeeld ziet u een kopieeractiviteit in de pijplijn met een invoer en uitvoer. 
+2. In het volgende voor beeld ziet u een Kopieer activiteit in de pijp lijn met een invoer en een uitvoer. 
 
-    ![Activiteiten binnen een pijplijn](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
-3. U kunt navigeren naar de startpagina van de data factory door te klikken op de **Data factory** koppeling in het koppelingenmenu in de linkerbovenhoek.
+    ![Activiteiten in een pijp lijn](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
+3. U kunt teruggaan naar de start pagina van de data factory door te klikken op de koppeling **Data Factory** in het breadcrumb in de linkerbovenhoek.
 
     ![Ga terug naar data factory](./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png)
 
-### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>De status van elke activiteit binnen een pijplijn weergeven
-U kunt de huidige status van een activiteit weergeven door de status van een van de gegevenssets die worden geproduceerd door de activiteit weer te geven.
+### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>De status van elke activiteit in een pijp lijn weer geven
+U kunt de huidige status van een activiteit weer geven door de status weer te geven van de gegevens sets die door de activiteit worden geproduceerd.
 
-Door te dubbelklikken op de **OutputBlobTable** in de **Diagram**, ziet u alle segmenten die worden geproduceerd door verschillende activiteiten bij uitvoering binnen een pijplijn. Kunt u zien dat de copy-activiteit is voor de afgelopen acht uur is uitgevoerd en die worden geproduceerd segmenten in de **gereed** staat.  
+Door te dubbel klikken op de **OutputBlobTable** in het **diagram**, kunt u alle segmenten zien die worden geproduceerd door verschillende activiteiten, in een pijp lijn. U kunt zien dat de Kopieer activiteit met succes is uitgevoerd voor de laatste acht uur en dat de segmenten zijn gemaakt met de status **gereed** .  
 
-![Status van de pijplijn](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
+![Status van de pijp lijn](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
 
 De segmenten van de gegevensset in de data factory kunnen een van de volgende statussen hebben:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Description</th>
+    <th align="left">State</th><th align="left">Substatus</th><th align="left">Description</th>
 </tr>
 <tr>
-    <td rowspan="8">Wachten op</td><td>ScheduleTime</td><td>De tijd is niet afkomstig zijn van het segment uit te voeren.</td>
+    <td rowspan="8">Wachten op</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het segment is niet beschikbaar.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>De upstream-afhankelijkheden zijn niet gereed.</td>
 </tr>
 <tr>
-<td>ComputeResources</td><td>De compute-resources zijn niet beschikbaar.</td>
+<td>ComputeResources</td><td>De reken resources zijn niet beschikbaar.</td>
 </tr>
 <tr>
-<td>ConcurrencyLimit</td> <td>Alle activiteitsinstanties zijn bezig met het uitvoeren van andere segmenten.</td>
+<td>ConcurrencyLimit</td> <td>Alle activiteiten exemplaren worden bezet en andere segmenten worden uitgevoerd.</td>
 </tr>
 <tr>
-<td>ActivityResume</td><td>De activiteit is onderbroken en segmenten kan niet worden uitgevoerd totdat de activiteit is hervat.</td>
+<td>ActivityResume</td><td>De activiteit wordt gepauzeerd en kan de segmenten pas worden uitgevoerd als de activiteit wordt hervat.</td>
 </tr>
 <tr>
-<td>Opnieuw proberen</td><td>Uitvoering van activiteit wordt opnieuw geprobeerd.</td>
+<td>Opnieuw proberen</td><td>De uitvoering van de activiteit wordt opnieuw uitgevoerd.</td>
 </tr>
 <tr>
-<td>Validatie</td><td>Validatie is nog niet gestart.</td>
+<td>Validatie</td><td>De validatie is nog niet gestart.</td>
 </tr>
 <tr>
-<td>ValidationRetry</td><td>Validatie is in afwachting opnieuw geprobeerd.</td>
+<td>ValidationRetry</td><td>Er wordt gewacht tot de validatie is uitgevoerd.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>Validatie wordt uitgevoerd.</td>
+<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het segment wordt verwerkt.</td>
 </tr>
 <tr>
-<td rowspan="4">Mislukt</td><td>TimedOut</td><td>De activiteit is uitgevoerd duurde langer dan is toegestaan door de activiteit.</td>
+<td rowspan="4">Mislukt</td><td>TimedOut</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
 </tr>
 <tr>
-<td>Geannuleerd</td><td>Het segment is geannuleerd door gebruikersactie.</td>
+<td>Geannuleerd</td><td>Het segment is geannuleerd door de gebruiker.</td>
 </tr>
 <tr>
-<td>Validatie</td><td>Validatie is mislukt.</td>
+<td>Validatie</td><td>De validatie is mislukt.</td>
 </tr>
 <tr>
-<td>-</td><td>Het segment de status kan niet worden gegenereerd en/of gevalideerd.</td>
+<td>-</td><td>Het segment kan niet worden gegenereerd en/of gevalideerd.</td>
 </tr>
 <td>Gereed</td><td>-</td><td>Het segment is gereed voor gebruik.</td>
 </tr>
@@ -140,42 +138,42 @@ De segmenten van de gegevensset in de data factory kunnen een van de volgende st
 <td>Overgeslagen</td><td>Geen</td><td>Het segment wordt niet verwerkt.</td>
 </tr>
 <tr>
-<td>Geen</td><td>-</td><td>Een segment gebruikt een andere status had, maar is ingesteld.</td>
+<td>Geen</td><td>-</td><td>Er wordt een segment gebruikt dat bestaat uit een andere status, maar dit is opnieuw ingesteld.</td>
 </tr>
 </table>
 
 
 
-U kunt de details van een segment weergeven door te klikken op de vermelding van een segment in de **onlangs bijgewerkt segmenten** blade.
+U kunt de details van een segment weer geven door te klikken op een segment item op de Blade **recent bijgewerkte segmenten** .
 
-![Details gegevenssegment](./media/data-factory-monitor-manage-pipelines/slice-details.png)
+![Details van segment](./media/data-factory-monitor-manage-pipelines/slice-details.png)
 
-Als het segment is meerdere keren uitgevoerd, ziet u meerdere rijen in de **uitvoeringen van activiteit** lijst. U vindt meer informatie over een activiteit die wordt uitgevoerd door te klikken op de vermelding uitvoeren in de **uitvoeringen van activiteit** lijst. De lijst bevat de logboekbestanden, samen met een foutbericht weergegeven als er een. Deze functie is handig voor het weergeven en logboeken foutopsporing zonder te hoeven verlaten van uw gegevensfactory.
+Als het segment meerdere keren is uitgevoerd, ziet u meerdere rijen in de lijst **uitvoeringen van activiteit** . U kunt details over een uitvoering van een activiteit weer geven door te klikken op de vermelding uitvoeren in de lijst uitvoeringen van **activiteit** . De lijst bevat alle logboek bestanden, samen met een fout bericht als er een wordt weer gegeven. Deze functie is handig als u logboeken wilt weer geven en fouten wilt opsporen zonder uw data factory te verlaten.
 
 ![Details uitvoering van activiteit](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-Als het segment de status niet de **gereed** staat, ziet u de upstreamsegmenten die nog niet klaar bent en blokkeert de huidige status wordt uitgevoerd de **upstreamsegmenten die niet gereed** lijst. Deze functie is handig wanneer het segment de status **wachten** staat en u wilt weten over de upstream-afhankelijkheden die voor het segment ondernemen.
+Als het segment niet de status **gereed** heeft, kunt u de upstream-segmenten zien die niet gereed zijn en het huidige segment blok keren voor uitvoering in de lijst upstream- **segmenten die niet gereed zijn** . Deze functie is handig als uw segment zich in de **wacht** stand bevindt en u inzicht wilt krijgen in de upstream-afhankelijkheden waar het segment op wacht.
 
-![Upstreamsegmenten die niet gereed](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
+![Constream-segmenten die niet gereed zijn](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
-### <a name="dataset-state-diagram"></a>Gegevensset staat diagram
-Nadat u een data factory implementeert en de pijplijnen een ongeldige actieve periode hebben, segmenten de gegevensset overgang naar de andere van de ene staat. Hier volgt het de segmentstatus op dit moment in het volgende diagram van de status:
+### <a name="dataset-state-diagram"></a>Status diagram van gegevensset
+Nadat u een data factory hebt geïmplementeerd en de pijp lijnen een geldige actieve periode hebben, overstapt de gegevensset de segmenten van de ene status naar de andere. Op dit moment volgt de segment status het volgende status diagram:
 
 ![Status diagram](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-De gegevensset staat overgang stroom in data factory is het volgende: Wacht In-voortgang/In uitvoering (valideren) -> -> gereed/is mislukt.
+De status overgangs stroom van de gegevensset in data factory is als volgt: Wachtende > in uitvoering/in uitvoering (valideren)-> Ready/failed.
 
-Het segment wordt gestart in een **wachten** staat, wachten op voorwaarden waaraan moet worden voldaan voordat deze wordt uitgevoerd. Vervolgens wordt de activiteit wordt uitgevoerd en het segment krijgt een **In uitvoering** staat. De activiteit is uitgevoerd, kan slagen of mislukken. Het segment is gemarkeerd als **gereed** of **mislukt**, op basis van het resultaat van de uitvoering.
+Het segment begint met een **wacht** status. er wordt gewacht tot aan de voor waarden wordt voldaan voordat deze wordt uitgevoerd. Vervolgens wordt de activiteit uitgevoerd en wordt het segment de status **in uitvoering** heeft. De uitvoering van de activiteit kan slagen of mislukken. Het segment is gemarkeerd als **gereed** of **mislukt**, op basis van het resultaat van de uitvoering.
 
-Kunt u het segment om terug te gaan van de status opnieuw instellen de **gereed** of **mislukt** status naar de **wachten** staat. U kunt ook het segment de status markeren **overslaan**, waardoor de activiteiten van het uitvoeren van en het segment niet verwerken.
+U kunt het segment opnieuw instellen om terug te gaan van de status **gereed** of **mislukt** in de **wacht** stand. U kunt ook de segment status markeren om **over te slaan**, waardoor de activiteit niet kan worden uitgevoerd en niet verwerkt.
 
-## <a name="pause-and-resume-pipelines"></a>Onderbreken en hervatten van pijplijnen
-U kunt uw pijplijnen beheren met behulp van Azure PowerShell. U kunt bijvoorbeeld onderbreken en hervatten van pijplijnen door het uitvoeren van Azure PowerShell-cmdlets. 
+## <a name="pause-and-resume-pipelines"></a>Pijp lijnen onderbreken en hervatten
+U kunt uw pijp lijnen beheren door gebruik te maken van Azure PowerShell. U kunt pijp lijnen bijvoorbeeld onderbreken en hervatten door Azure PowerShell-cmdlets uit te voeren. 
 
 > [!NOTE] 
-> De diagramweergave biedt geen ondersteuning voor het onderbreken en hervatten van pijplijnen. Als u gebruiken van een gebruikersinterface wilt, gebruikt u de toepassing bewaking en beheer. Zie voor meer informatie over het gebruik van de toepassing [controleren en beheren van Data Factory-pijplijnen met behulp van de app bewaking en beheer](data-factory-monitor-manage-app.md) artikel. 
+> De diagram weergave biedt geen ondersteuning voor het onderbreken en hervatten van pijp lijnen. Als u een gebruikers interface wilt gebruiken, gebruikt u de toepassing bewaking en beheer. Zie [Data Factory pijp lijnen bewaken en beheren met behulp van het artikel controle-en beheer-apps](data-factory-monitor-manage-app.md) voor meer informatie over het gebruik van de toepassing. 
 
-U kunt onderbreken of onderbreken pijplijnen met behulp van de **stand-by-AzDataFactoryPipeline** PowerShell-cmdlet. Deze cmdlet is handig als u niet uitvoeren van uw pijplijnen wilt totdat een probleem is opgelost. 
+U kunt pijp lijnen onderbreken/uitstellen met behulp van de Power shell **-cmdlet Suspend-AzDataFactoryPipeline** . Deze cmdlet is handig als u uw pijp lijnen niet wilt uitvoeren totdat een probleem is opgelost. 
 
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -186,7 +184,7 @@ Bijvoorbeeld:
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
-Nadat het probleem is opgelost met de pijplijn, kunt u de onderbroken pijplijn kunt hervatten door de volgende PowerShell-opdracht uit:
+Nadat het probleem met de pijp lijn is opgelost, kunt u de onderbroken pijp lijn hervatten door de volgende Power shell-opdracht uit te voeren:
 
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
@@ -197,29 +195,29 @@ Bijvoorbeeld:
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
-## <a name="debug-pipelines"></a>Fouten opsporen in pijplijnen
-Azure Data Factory biedt uitgebreide mogelijkheden voor u fouten opsporen en oplossen van pijplijnen met behulp van Azure portal en Azure PowerShell.
+## <a name="debug-pipelines"></a>Debug-pijp lijnen
+Azure Data Factory biedt uitgebreide mogelijkheden voor het opsporen en oplossen van problemen met pijp lijnen met behulp van de Azure Portal en Azure PowerShell.
 
 > [!NOTE] 
-> Het is veel eenvoudiger daarvoor fouten met behulp van de App bewaking en beheer. Zie voor meer informatie over het gebruik van de toepassing [controleren en beheren van Data Factory-pijplijnen met behulp van de app bewaking en beheer](data-factory-monitor-manage-app.md) artikel. 
+> Het is veel eenvoudiger om troubleshot fouten te maken met behulp van de bewaking & management-app. Zie [Data Factory pijp lijnen bewaken en beheren met behulp van het artikel controle-en beheer-apps](data-factory-monitor-manage-app.md) voor meer informatie over het gebruik van de toepassing. 
 
-### <a name="find-errors-in-a-pipeline"></a>Fouten in een pijplijn te zoeken
-Als de uitvoering van activiteit in een pijplijn mislukt, wordt de status van de gegevensset die wordt geproduceerd door de pijplijn is een foutstatus vanwege de fout. U kunt fouten opsporen en oplossen van fouten in Azure Data Factory met behulp van de volgende methoden.
+### <a name="find-errors-in-a-pipeline"></a>Fouten in een pijp lijn zoeken
+Als de uitvoering van de activiteit in een pijp lijn mislukt, heeft de gegevensset die wordt geproduceerd door de pijp lijn een fout status vanwege de fout. U kunt fouten opsporen en problemen oplossen in Azure Data Factory met behulp van de volgende methoden.
 
-#### <a name="use-the-azure-portal-to-debug-an-error"></a>De Azure portal gebruiken voor het fouten opsporen in een fout
-1. Op de **tabel** blade, klikt u op het segment probleem waarvoor de **Status** ingesteld op **mislukt**.
+#### <a name="use-the-azure-portal-to-debug-an-error"></a>De Azure Portal gebruiken om een fout op te lossen
+1. Klik op de Blade **tabel** op het probleem segment waarvan de **status** is ingesteld op **mislukt**.
 
-   ![Blade tabel met probleem segment](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
-2. Op de **gegevenssegment** blade, klikt u op het uitvoeren van de activiteit die is mislukt.
+   ![Blade met de tabel met een probleem segment](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
+2. Klik op de Blade **gegevens segment** op de uitvoering van de activiteit die is mislukt.
 
-   ![Gegevenssegment met een fout](./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png)
-3. Op de **details uitvoering van activiteit** blade kunt u de bestanden die gekoppeld aan de verwerking voor HDInsight zijn downloaden. Klik op **downloaden** voor Status/stderr voor het downloaden van het foutenlogboekbestand met informatie over de fout.
+   ![Gegevens segment met een fout](./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png)
+3. Op de Blade **Details uitvoering van activiteit** kunt u de bestanden downloaden die zijn gekoppeld aan de HDInsight-verwerking. Klik op **down load** voor status/stderr om het fouten logboek bestand te downloaden dat details bevat over de fout.
 
-   ![Blade met details met de fout de uitvoering van activiteiten](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
+   ![Blade Details uitvoering van activiteit met fout](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
-#### <a name="use-powershell-to-debug-an-error"></a>PowerShell gebruiken voor het fouten opsporen in een fout
+#### <a name="use-powershell-to-debug-an-error"></a>Power shell gebruiken om een fout op te lossen
 1. Start **PowerShell**.
-2. Voer de **Get-AzDataFactorySlice** opdracht om te zien van de segmenten en hun status. Er is een segment met de status van **mislukt**.        
+2. Voer de opdracht **Get-AzDataFactorySlice** uit om de segmenten en hun status weer te geven. Als het goed is, ziet u een segment met de status **mislukt**.        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
@@ -230,8 +228,8 @@ Als de uitvoering van activiteit in een pijplijn mislukt, wordt de status van de
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
-   Vervang **StartDateTime** met begintijd van uw pijplijn. 
-3. Voer nu de **Get-AzDataFactoryRun** cmdlet voor meer informatie over de activiteit is uitgevoerd voor het segment.
+   Vervang **StartDateTime** door de begin tijd van de pijp lijn. 
+3. Voer nu de cmdlet **Get-AzDataFactoryRun** uit om meer informatie over de uitvoering van de activiteit voor het segment op te halen.
 
     ```powershell   
     Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
@@ -244,8 +242,8 @@ Als de uitvoering van activiteit in een pijplijn mislukt, wordt de status van de
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
-    De waarde van StartDateTime is de begintijd voor het segment fout/probleem die u in de vorige stap hebt genoteerd. De datum / tijd moet tussen dubbele aanhalingstekens worden geplaatst.
-4. Hier ziet u uitvoer met de details over de fout die vergelijkbaar is met het volgende:
+    De waarde van StartDateTime is de start tijd voor het fout/probleem segment dat u in de vorige stap hebt genoteerd. De datum/tijd moet tussen dubbele aanhalings tekens worden geplaatst.
+4. Als het goed is, ziet u de volgende informatie:
 
     ```   
     Id                      : 841b77c9-d56c-48d1-99a3-8c16c3e77d39
@@ -269,73 +267,73 @@ Als de uitvoering van activiteit in een pijplijn mislukt, wordt de status van de
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. U kunt uitvoeren de **opslaan AzDataFactoryLog** cmdlet met de id-waarde die u in de uitvoer zien en de logboekbestanden gedownload met behulp van de **- DownloadLogsoption** voor de cmdlet.
+5. U kunt de cmdlet **Save-AzDataFactoryLog** uitvoeren met de id-waarde die u uit de uitvoer ziet en de logboek bestanden downloaden met behulp van de **-DownloadLogsoption** voor de cmdlet.
 
     ```powershell
     Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
     ```
 
-## <a name="rerun-failures-in-a-pipeline"></a>Fouten in een pijplijn opnieuw uitvoeren
+## <a name="rerun-failures-in-a-pipeline"></a>Fouten in een pijp lijn opnieuw uitvoeren
 
 > [!IMPORTANT]
-> Het is eenvoudiger oplossen van fouten en mislukte segmenten opnieuw met behulp van de App bewaking en beheer. Zie voor meer informatie over het gebruik van de toepassing [controleren en beheren van Data Factory-pijplijnen met behulp van de app bewaking en beheer](data-factory-monitor-manage-app.md). 
+> Het is eenvoudiger om fouten op te lossen en mislukte segmenten opnieuw uit te voeren met behulp van de bewaking & management-app. Zie [Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer](data-factory-monitor-manage-app.md)voor meer informatie over het gebruik van de toepassing. 
 
 ### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
-Nadat u problemen oplossen en opsporen van fouten in een pijplijn, kunt u fouten opnieuw uitvoeren door te klikken en te navigeren naar het segment de status fout de **uitvoeren** knop op de opdrachtbalk.
+Na het oplossen van fouten in een pijp lijn, kunt u storingen opnieuw uitvoeren door te navigeren naar het fout segment en te klikken op de knop **uitvoeren** op de opdracht balk.
 
-![Een mislukte segment opnieuw uitvoeren](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
+![Een mislukt segment opnieuw uitvoeren](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
-In geval het segment heeft validatie is mislukt vanwege een fout bij het beleid (bijvoorbeeld als gegevens niet beschikbaar zijn), kunt u de fout corrigeren en validatie opnieuw uit door te klikken op de **valideren** knop op de opdrachtbalk.
+Als de validatie van het segment is mislukt vanwege een beleids fout (bijvoorbeeld als er gegevens niet beschikbaar zijn), kunt u de fout oplossen en opnieuw valideren door te klikken op de knop validate op de opdracht balk.
 
-![Corrigeer de fouten en valideren](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
+![Fouten corrigeren en valideren](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
-U kunt fouten opnieuw uitvoeren met behulp van de **Set AzDataFactorySliceStatus** cmdlet. Zie de [Set AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) onderwerp voor de syntaxis en andere details over de cmdlet.
+U kunt fouten opnieuw uitvoeren met behulp van de cmdlet **set-AzDataFactorySliceStatus** . Zie het onderwerp [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) voor de syntaxis en andere informatie over de cmdlet.
 
 **Voorbeeld:**
 
-Het volgende voorbeeld wordt de status van alle segmenten voor de tabel 'DAWikiAggregatedData' om te wachten in de Azure data factory 'WikiADF'.
+In het volgende voor beeld wordt de status van alle segmenten voor de tabel DAWikiAggregatedData ingesteld op wachtend in azure data factory ' WikiADF '.
 
-De 'UpdateType' is ingesteld op 'UpstreamInPipeline', wat betekent dat de status van elk segment voor de tabel en alle afhankelijke (upstream) tabellen zijn ingesteld op 'Wachten'. De mogelijke waarde voor deze parameter is 'Afzonderlijk'.
+De ' UpdateType ' is ingesteld op ' UpstreamInPipeline ', wat betekent dat de statussen van elk segment voor de tabel en alle afhankelijke (upstream) tabellen worden ingesteld op wait. De andere mogelijke waarde voor deze para meter is ' persoonlijk '.
 
 ```powershell
 Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
-## <a name="create-alerts-in-the-azure-portal"></a>Waarschuwingen maken in Azure portal
+## <a name="create-alerts-in-the-azure-portal"></a>Waarschuwingen maken in de Azure Portal
 
-1.  Meld u aan bij de Azure portal en selecteer **Monitor -> waarschuwingen** om de pagina waarschuwingen te openen.
+1.  Meld u aan bij de Azure Portal en selecteer **monitor-> waarschuwingen** om de pagina waarschuwingen te openen.
 
-    ![Open de pagina met waarschuwingen.](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+    ![Open de pagina waarschuwingen.](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
 
-2.  Selecteer **+ nieuwe waarschuwingsregel** om een nieuwe waarschuwing te maken.
+2.  Selecteer **+ nieuwe waarschuwings regel** om een nieuwe waarschuwing te maken.
 
     ![Een nieuwe waarschuwing maken](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  Definieer de **waarschuwen voorwaarde**. (Zorg ervoor dat u selecteert **Data Factory's** in de **filteren op resourcetype** veld.) U kunt ook waarden opgeven voor **dimensies**.
+3.  Definieer de **waarschuwings voorwaarde**. (Zorg ervoor dat u **gegevens fabrieken** selecteert in het veld **filteren op resource type** .) U kunt ook waarden voor **dimensies**opgeven.
 
-    ![De waarschuwingsvoorwaarde - doel selecteren definiëren](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+    ![De waarschuwings voorwaarde definiëren-doel selecteren](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
-    ![De waarschuwing voorwaarde definiëren: waarschuwingscriteria toevoegen](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+    ![De waarschuwings voorwaarde definiëren-waarschuwings criteria toevoegen](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
 
-    ![De waarschuwing voorwaarde definiëren: waarschuwingslogica toevoegen](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+    ![De waarschuwings voorwaarde definiëren-waarschuwings logica toevoegen](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
 
-4.  Definieer de **Waarschuwingsdetails**.
+4.  Definieer de **Details**van de waarschuwing.
 
-    ![De Waarschuwingsdetails definiëren](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+    ![De waarschuwings Details definiëren](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 
-5.  Definieer de **actiegroep**.
+5.  Definieer de **actie groep**.
 
-    ![De actiegroep definiëren: een nieuwe actiegroep maken](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+    ![De actie groep definiëren-een nieuwe actie groep maken](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
 
-    ![Definieer de actiegroep - eigenschappen instellen](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+    ![De instellingen van de actie groep definiëren](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
 
-    ![Definieer de actiegroep - nieuwe actiegroep gemaakt](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
+    ![Definieer de actie groep-nieuwe actie groep gemaakt](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
 
-## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Een data factory verplaatsen naar een andere resourcegroep of abonnement
-U kunt een data factory verplaatsen naar een andere resourcegroep of een ander abonnement met behulp van de **verplaatsen** opdracht balk knop op de startpagina van uw data factory.
+## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Een data factory verplaatsen naar een andere resource groep of een ander abonnement
+U kunt een data factory verplaatsen naar een andere resource groep of een ander abonnement met behulp van de knop opdracht balk **verplaatsen** op de start pagina van uw Data Factory.
 
-![Data factory verplaatsen](./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png)
+![data factory verplaatsen](./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png)
 
-U kunt ook alle gerelateerde resources (zoals berichten die gekoppeld aan de data factory zijn), samen met de data factory verplaatsen.
+U kunt ook alle gerelateerde resources (zoals waarschuwingen die zijn gekoppeld aan de data factory) verplaatsen, samen met de data factory.
 
-![In het dialoogvenster voor resources verplaatsen](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
+![Het dialoog venster Resources verplaatsen](./media/data-factory-monitor-manage-pipelines/MoveResources.png)

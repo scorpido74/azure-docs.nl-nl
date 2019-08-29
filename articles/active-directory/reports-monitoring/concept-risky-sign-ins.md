@@ -15,20 +15,20 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629e7bf8ee7100b5927483ecfd4efa1d9223c151
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989925"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127421"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Het rapport Riskante aanmeldingen in de Azure Active Directory-portal
 
-Azure Active Directory (Azure AD) detecteert verdachte acties die zijn gerelateerd aan uw gebruikers accounts. Voor elke gedetecteerde activiteit wordt een record met de naam **risicogebeurtenis** gemaakt. Zie [risico gebeurtenissen in azure AD](concept-risk-events.md)voor meer informatie. 
+Azure Active Directory (Azure AD) detecteert verdachte acties die zijn gerelateerd aan uw gebruikers accounts. Voor elke gedetecteerde actie wordt een record gemaakt met de naam **risico detectie** . Zie voor meer informatie [Azure AD-risico detecties](concept-risk-events.md). 
 
 De beveiligingsrapporten zijn beschikbaar via de [Azure-portal](https://portal.azure.com). Selecteer de blade **Azure Active Directory** en ga vervolgens naar de sectie **Beveiliging**. 
 
-Er zijn twee verschillende beveiligings rapporten die worden berekend op basis van de risico gebeurtenissen:
+Er zijn twee verschillende beveiligings rapporten die worden berekend op basis van de risico detecties:
 
 - **Riskante aanmeldingen** - Een riskante aanmelding is een indicator van een aanmeldingspoging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikersaccount is.
 
@@ -36,7 +36,7 @@ Er zijn twee verschillende beveiligings rapporten die worden berekend op basis v
 
 ![Riskante aanmeldingen](./media/concept-risky-sign-ins/10.png)
 
-Zie [Het beleid voor gebruikersrisico's configureren](../identity-protection/howto-user-risk-policy.md) voor informatie over het configureren van de beleidsregels die deze risicogebeurtenissen activeren.  
+Zie [How to configure the User Risk](../identity-protection/howto-user-risk-policy.md)policies (Engelstalig) voor meer informatie over het configureren van het beleid voor het activeren van deze risico detecties.  
 
 ## <a name="who-can-access-the-risky-sign-ins-report"></a>Wie kan het rapport Risk ante aanmeldingen openen?
 
@@ -54,9 +54,9 @@ Alle versies van Azure AD bieden u rapporten met Risk ante aanmeldingen. Het det
 
 - In de **Azure Active Directory Free en Basic-edities**krijgt u een lijst met Risk ante aanmeldingen. 
 
-- Daarnaast kunt u in de editie **Azure Active Directory Premium 1** bepaalde onderliggende risicogebeurtenissen onderzoeken die voor elk rapport zijn gedetecteerd. 
+- Daarnaast kunt u met de **Azure Active Directory Premium 1** -editie enkele van de onderliggende risico detecties onderzoeken die zijn gedetecteerd voor elk rapport. 
 
-- De editie **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over alle onderliggende risicogebeurtenissen. Deze editie stelt u ook in staat beveiligingsbeleidsregels te configureren die automatisch op de geconfigureerde risiconiveaus reageren.
+- De versie van **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over alle onderliggende risico detecties. Daarnaast kunt u hiermee beveiligings beleid configureren dat automatisch reageert op geconfigureerde risico niveaus.
 
 ## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Rapport Risk ante aanmeldingen voor Azure AD Free en Basic Edition
 
@@ -90,26 +90,26 @@ Dit rapport geeft u ook een optie om het volgende te doen:
 
 Het rapport Risk ante aanmeldingen in de Azure AD Premium-edities biedt u het volgende:
 
-- Samengevoegde informatie over de [typen risico gebeurtenissen](concept-risk-events.md) die zijn gedetecteerd. Met de **Azure AD Premium P1 Edition**worden detecties die niet onder uw licentie vallen, weer gegeven als het aanmelden met een risico gebeurtenis **waarvoor extra risico is gedetecteerd**. Met de **Azure AD Premium P2-editie**krijgt u de meest gedetailleerde informatie over alle onderliggende detecties.
+- Samengevoegde informatie over de [typen risico detectie](concept-risk-events.md) die zijn gedetecteerd. Met de **Azure AD Premium P1 Edition**worden detecties die niet onder uw licentie vallen, weer gegeven als het aanmelden van de risico detectie **met een extra risico gedetecteerd**. Met de **Azure AD Premium P2-editie**krijgt u de meest gedetailleerde informatie over alle onderliggende detecties.
 
 - Een optie voor het downloaden van het rapport
 
 ![Riskante aanmeldingen](./media/concept-risky-sign-ins/456.png)
 
-Wanneer u een risicogebeurtenis selecteert, krijgt u een gedetailleerde rapportweergave voor deze risicogebeurtenis waarmee u het volgende kunt:
+Wanneer u een risico detectie selecteert, krijgt u een gedetailleerde rapport weergave voor deze risico detectie waarmee u het volgende kunt doen:
 
 - Een optie voor het configureren van een [beleid voor herstel van gebruikersrisico's](../identity-protection/howto-user-risk-policy.md)  
 
-- De detectietijdlijn voor de risicogebeurtenis bekijken  
+- De detectie tijdlijn voor de risico detectie bekijken  
 
-- Een lijst met gebruikers bekijken waarvoor deze risicogebeurtenis is gedetecteerd
+- Bekijk een lijst met gebruikers waarvoor deze risico detectie is gedetecteerd
 
-- Risico gebeurtenissen hand matig sluiten. 
+- Sluit risico detecties hand matig. 
 
 ![Riskante aanmeldingen](./media/concept-risky-sign-ins/457.png)
 
 > [!IMPORTANT]
-> Soms vindt u een risico gebeurtenis zonder een bijbehorende aanmeldings vermelding in het [aanmeld rapport](concept-sign-ins.md). Dit komt doordat identiteits beveiliging het risico evalueert voor **interactieve** en **niet-interactieve** aanmeldingen, terwijl in het rapport voor aanmeldingen alleen de interactieve aanmeldingen worden weer gegeven.
+> Soms vindt u een risico detectie zonder een corresponderende aanmeldings vermelding in het [aanmeld rapport](concept-sign-ins.md). Dit komt doordat identiteits beveiliging het risico evalueert voor **interactieve** en **niet-interactieve** aanmeldingen, terwijl in het rapport voor aanmeldingen alleen de interactieve aanmeldingen worden weer gegeven.
 
 Wanneer u een gebruiker selecteert, krijgt u een gedetailleerde rapportweergave voor deze gebruiker waarmee u het volgende kunt:
 
@@ -119,12 +119,12 @@ Wanneer u een gebruiker selecteert, krijgt u een gedetailleerde rapportweergave 
 
 - Alle gebeurtenissen sluiten
 
-- De gemelde risico's voor de gebruiker onderzoeken. 
+- Bekijk de gemelde risico detecties voor de gebruiker. 
 
 ![Riskante aanmeldingen](./media/concept-risky-sign-ins/324.png)
 
-Selecteer in de lijst de risicogebeurtenis die u wilt onderzoeken.  
-Hiermee opent u de blade **Details** voor deze risicogebeurtenis. Op de blade **Details** kunt u een risicogebeurtenis handmatig sluiten of een handmatig gesloten risicogebeurtenis opnieuw activeren. 
+Als u een risico detectie wilt onderzoeken, selecteert u er een in de lijst.  
+Hiermee opent u de Blade **Details** voor deze risico detectie. Op de Blade **Details** hebt u de mogelijkheid om een risico detectie hand matig te sluiten of een hand matig gesloten risico detectie opnieuw te activeren. 
 
 ![Riskante aanmeldingen](./media/concept-risky-sign-ins/325.png)
 
@@ -132,4 +132,4 @@ Hiermee opent u de blade **Details** voor deze risicogebeurtenis. Op de blade **
 
 - [Het beleid voor gebruikersrisico's configureren](../identity-protection/howto-user-risk-policy.md)
 - [How to configure the risk remediation policy](../identity-protection/howto-user-risk-policy.md) (Beleid voor herstel gebruikersrisico configureren)
-- [Risicogebeurtenistypen](concept-risk-events.md)
+- [Typen risico detectie](concept-risk-events.md)

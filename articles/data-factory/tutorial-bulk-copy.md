@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 88fd480f87c3a33af1d16e57d6687d739dc1ec7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5d0807fb03c8518286a369f50df62f0ec0b23c2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123417"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140769"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory
 Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure SQL Database naar Azure SQL Data Warehouse**. U kunt hetzelfde patroon toepassen in andere kopieerscenario's. Bijvoorbeeld het kopiëren van tabellen van SQL Server/Oracle naar Azure SQL Database/Data Warehouse/Azure Blob, verschillende paden kopiëren van Blob naar Azure SQL Database-tabellen.
@@ -73,7 +72,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
 2. Selecteer uw server en klik op **Firewall** onder **INSTELLINGEN**.
 3. Klik op de pagina **Firewallinstellingen** op **AAN** bij **Toegang tot Azure-services toestaan**.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 
 1. Start **PowerShell**. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
 
@@ -92,7 +91,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Voer de **Set AzDataFactoryV2** cmdlet om een gegevensfactory te maken. Vervang voordat u de opdracht uitvoert de tijdelijke aanduidingen door uw eigen waarden. 
+2. Voer de cmdlet **set-AzDataFactoryV2** uit om een Data Factory te maken. Vervang voordat u de opdracht uitvoert de tijdelijke aanduidingen door uw eigen waarden. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -139,7 +138,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
 
 2. Schakel in **Azure PowerShell** over naar de map **ADFv2TutorialBulkCopy**.
 
-3. Voer de **Set AzDataFactoryV2LinkedService** cmdlet voor het maken van de gekoppelde service: **AzureSqlDatabaseLinkedService**. 
+3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -176,7 +175,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
     }
     ```
 
-2. Maak de gekoppelde service: **AzureSqlDWLinkedService**, run the **Set-AzDataFactoryV2LinkedService** cmdlet.
+2. De gekoppelde service maken: **AzureSqlDWLinkedService**, run the **Set-AzDataFactoryV2LinkedService** cmdlet.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -215,7 +214,7 @@ In deze zelfstudie gebruikt u Azure Blob-opslag als een tussentijds faseringsgeb
     }
     ```
 
-2. Maak de gekoppelde service: **AzureStorageLinkedService**, voert de **Set AzDataFactoryV2LinkedService** cmdlet.
+2. De gekoppelde service maken: **AzureStorageLinkedService**voert u de cmdlet **set-AzDataFactoryV2LinkedService** uit.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -254,7 +253,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
     }
     ```
 
-2. De gegevensset maken: **AzureSqlDatabaseDataset**, voert de **Set AzDataFactoryV2Dataset** cmdlet.
+2. De gegevensset maken: **AzureSqlDatabaseDataset**voert u de cmdlet **set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -298,7 +297,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
     }
     ```
 
-2. De gegevensset maken: **AzureSqlDWDataset**, run the **Set-AzDataFactoryV2Dataset** cmdlet.
+2. De gegevensset maken: **AzureSqlDWDataset**voert u de cmdlet **set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -390,7 +389,7 @@ In deze pijplijn wordt een lijst met tabellen gebruikt als parameter. Voor elke 
     }
     ```
 
-2. De pijplijn maken: **IterateAndCopySQLTables**, voert de **Set AzDataFactoryV2Pipeline** cmdlet.
+2. De pijplijn maken: **IterateAndCopySQLTables**voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -466,7 +465,7 @@ Deze pijplijn voert twee stappen uit:
     }
     ```
 
-2. De pijplijn maken: **GetTableListAndTriggerCopyData**, Run the **Set-AzDataFactoryV2Pipeline** cmdlet.
+2. De pijplijn maken: **GetTableListAndTriggerCopyData**voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"

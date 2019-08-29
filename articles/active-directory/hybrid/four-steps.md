@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532441"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124925"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Vier stappen voor een sterke identiteits basis met Azure Active Directory
 
@@ -71,7 +71,7 @@ Azure AD-toepassingsproxy biedt de volgende voor delen:
 
 * Azure AD uitbreiden naar on-premises resources
   * Beveiliging en beveiliging in de Cloud schalen
-  * Functies zoals voorwaardelijke toegang en multi-factor Authentication die eenvoudig zijn in te scha kelen
+  * Functies zoals voorwaardelijke toegang en Multi-Factor Authentication die eenvoudig zijn in te scha kelen
 * Geen onderdelen in het perimeter netwerk, zoals VPN-en traditionele reverse proxy-oplossingen
 * Geen binnenkomende verbindingen vereist
 * Eenmalige aanmelding (SSO) op apparaten, resources en apps in de Cloud en on-premises
@@ -141,7 +141,7 @@ Standaard worden accounts door Azure AD ontgrendeld wanneer het wacht woord opni
 
 Azure biedt rapporten die door u en uw organisatie kunnen worden gebruikt om ervoor te zorgen dat gebruikers worden geregistreerd voor MFA en SSPR. Gebruikers die zich niet hebben geregistreerd, moeten mogelijk worden getraind voor het proces.
 
-Het rapport voor MFA [-](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) aanmeldingen bevat informatie over het gebruik van MFA en geeft inzicht in hoe MFA werkt in uw organisatie. U hebt toegang tot activiteiten voor aanmelden (en controles en risico gebeurtenissen) voor Azure AD van cruciaal belang voor het oplossen van problemen, gebruiks analyses en forensische onderzoek.
+Het rapport voor MFA [-](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) aanmeldingen bevat informatie over het gebruik van MFA en geeft inzicht in hoe MFA werkt in uw organisatie. U hebt toegang tot activiteiten voor aanmelden (en controles en risico detecties) voor Azure AD is essentieel voor het oplossen van problemen, gebruiks analyses en forensische onderzoek.
 
 Op dezelfde manier kan het [rapport voor Self-Service wachtwoord beheer](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) worden gebruikt om te bepalen wie (of niet) is geregistreerd voor SSPR.
 

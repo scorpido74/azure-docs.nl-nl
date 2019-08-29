@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0f1a2e0bad39b54edc153416e4120bbc6912578c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532941"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125454"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Basislijn beleid: Beveiliging van eind gebruikers (preview-versie)
 
@@ -24,7 +24,7 @@ We denken meestal dat beheerders accounts de enige accounts zijn die moeten word
 
 Om een redelijk evenwicht tussen beveiliging en gebruiks vriendelijkheid te krijgen, moeten gebruikers niet elke keer dat ze zich aanmelden, worden gevraagd. Verificatie aanvragen die het normale gebruikers gedrag weer spie gelen, zoals het aanmelden vanaf hetzelfde apparaat vanaf dezelfde locatie, hebben een lage kans op inbreuk. Alleen aanmeldingen die als riskant worden beschouwd en eigenschappen van een ongeldige actor weer geven, moeten worden gevraagd met MFA-uitdagingen.
 
-Beveiliging voor eind gebruikers is een op een risico gebaseerd MFA- [basislijn beleid](concept-baseline-protection.md) dat alle gebruikers in een directory beveiligt, inclusief alle beheerders rollen. Als u dit beleid inschakelt, moeten alle gebruikers zich registreren voor MFA met de verificator-app. Gebruikers kunnen de inschrijvings prompt voor MFA voor 14 dagen negeren, waarna de aanmelding wordt geblokkeerd totdat ze zich registreren voor MFA. Wanneer de registratie voor MFA is geregistreerd, wordt gebruikers alleen om MFA gevraagd tijdens het aanmelden met een Risk ante poging. Gebruikers accounts die zijn aangetast, worden geblokkeerd totdat het wacht woord opnieuw is ingesteld en risico gebeurtenissen zijn genegeerd.
+Beveiliging voor eind gebruikers is een op een risico gebaseerd MFA- [basislijn beleid](concept-baseline-protection.md) dat alle gebruikers in een directory beveiligt, inclusief alle beheerders rollen. Als u dit beleid inschakelt, moeten alle gebruikers zich registreren voor MFA met de verificator-app. Gebruikers kunnen de inschrijvings prompt voor MFA voor 14 dagen negeren, waarna de aanmelding wordt geblokkeerd totdat ze zich registreren voor MFA. Wanneer de registratie voor MFA is geregistreerd, wordt gebruikers alleen om MFA gevraagd tijdens het aanmelden met een Risk ante poging. Verdachte gebruikers accounts worden geblokkeerd totdat het wacht woord opnieuw is ingesteld en risico detecties zijn uitgeschakeld.
 
 > [!NOTE]
 > Dit beleid is van toepassing op alle gebruikers, inclusief gast accounts, en wordt geëvalueerd wanneer u zich aanmeldt bij alle toepassingen.
@@ -33,7 +33,7 @@ Beveiliging voor eind gebruikers is een op een risico gebaseerd MFA- [basislijn 
 
 Ter bescherming van onze klanten vindt de gelekte referentie service van micro soft zoek naar openbaar beschik bare gebruikers naam/wachtwoord paren. Als ze overeenkomen met een van onze gebruikers, helpen we dat account direct te beveiligen. Gebruikers die zijn geïdentificeerd als een gelekte referentie, worden bevestigd. Deze gebruikers kunnen zich niet aanmelden totdat het wacht woord opnieuw is ingesteld.
 
-Gebruikers aan wie een Azure AD Premium-licentie is toegewezen, kunnen de toegang herstellen via selfservice voor wachtwoord herstel (SSPR) als de mogelijkheid is ingeschakeld in hun Directory. Gebruikers zonder een Premium-licentie die wordt geblokkeerd, moeten contact opnemen met een beheerder om een hand matige wachtwoord herstel uit te voeren en de gemarkeerde gebruikers risico gebeurtenis te negeren.
+Gebruikers aan wie een Azure AD Premium-licentie is toegewezen, kunnen de toegang herstellen via selfservice voor wachtwoord herstel (SSPR) als de mogelijkheid is ingeschakeld in hun Directory. Gebruikers zonder een Premium-licentie die wordt geblokkeerd, moeten contact opnemen met een beheerder om een hand matige wachtwoord herstel uit te voeren en de gemarkeerde gebruikers risico detectie te sluiten.
 
 ### <a name="steps-to-unblock-a-user"></a>Stappen voor het deblokkeren van een gebruiker
 

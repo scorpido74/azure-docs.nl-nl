@@ -1,25 +1,24 @@
 ---
-title: Wachtactiviteit in Azure Data Factory | Microsoft Docs
-description: De activiteit wachten onderbreekt de uitvoering van de pijplijn voor de opgegeven periode.
+title: Wachtende activiteit in Azure Data Factory | Microsoft Docs
+description: De wait-activiteit pauzeert de uitvoering van de pijp lijn voor de opgegeven periode.
 services: data-factory
 documentationcenter: ''
-author: shlo
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: shlo
-ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48a722979e61209a855dd1fec22fcdcc756ae1ce
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764748"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142425"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Wachtactiviteit uitvoeren in Azure Data Factory
+# <a name="execute-wait-activity-in-azure-data-factory"></a>Wacht activiteit uitvoeren in Azure Data Factory
 Als u een Wait Activity in een pijplijn gebruikt, wacht de pijplijn tot de opgegeven periode voorbij is voordat de volgende activiteiten worden uitgevoerd. 
 
 ## <a name="syntax"></a>Syntaxis
@@ -39,17 +38,17 @@ Als u een Wait Activity in een pijplijn gebruikt, wacht de pijplijn tot de opgeg
 
 Eigenschap | Description | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van de `Wait` activiteit. | String | Ja
-type | Moet worden ingesteld op **wacht**. | String | Ja
-waitTimeInSeconds | Het aantal seconden dat de pijplijn moet wachten voordat u doorgaat met de verwerking. | Geheel getal | Ja
+name | De naam van `Wait` de activiteit. | Tekenreeks | Ja
+Type | Moet worden ingesteld op **wait**. | Tekenreeks | Ja
+waitTimeInSeconds | Het aantal seconden dat de pijp lijn wacht voordat de verwerking doorgaat. | Integer | Ja
 
 ## <a name="example"></a>Voorbeeld
 
 > [!NOTE]
-> Deze sectie bevat JSON-definities en voorbeeld van PowerShell-opdrachten om uit te voeren van de pijplijn. Zie voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory-pijplijn met behulp van Azure PowerShell en JSON-definities [zelfstudie: een data factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken](quickstart-create-data-factory-powershell.md)met behulp van Azure PowerShell voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
 
-### <a name="pipeline-with-wait-activity"></a>Pijplijn met wachtactiviteit
-In dit voorbeeld heeft de pijplijn twee activiteiten: **Pas** en **wacht**. De activiteit wachten is geconfigureerd om te wachten tot één seconde. De pijplijn wordt de Web-activiteit in een lus uitgevoerd met één seconde wachttijd tussen elke uitvoering. 
+### <a name="pipeline-with-wait-activity"></a>Pijp lijn met wachtende activiteit
+In dit voor beeld heeft de pijp lijn twee activiteiten: **Tot** en een **ogen blik geduld**. De wacht activiteit is zo geconfigureerd dat deze gedurende één seconde wordt gewacht. De pijp lijn voert de Web-activiteit in een lus uit met één seconde wacht tijd tussen elke uitvoering. 
 
 ```json
 {
@@ -100,7 +99,7 @@ In dit voorbeeld heeft de pijplijn twee activiteiten: **Pas** en **wacht**. De a
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere controlestroomactiviteiten die door Data Factory worden ondersteund: 
+Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)

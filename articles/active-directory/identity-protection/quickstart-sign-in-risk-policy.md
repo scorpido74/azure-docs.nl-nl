@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335303"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127703"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Quickstart: Toegang blok keren als er een sessie risico wordt gedetecteerd met Azure Active Directory Identity Protection  
 
@@ -34,7 +34,7 @@ Voor het voltooien van het scenario in deze zelfstudie hebt u het volgende nodig
 
 - **Toegang tot een Azure AD Premium P2-editie** -Azure AD Identity Protection is een Azure AD Premium P2-functie. 
 - **Identiteits beveiliging** : voor het scenario in deze Snelstartgids moet identiteits beveiliging zijn ingeschakeld. Als u niet weet hoe u identiteits beveiliging kunt inschakelen, raadpleegt u [Azure Active Directory Identity Protection](../identity-protection/enable.md)in te scha kelen.
-- **Tor** -browser: de [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en) is ontworpen om u te helpen uw privacy online te bewaren. Identiteits beveiliging detecteert een aanmelding vanuit een Tor-browser als aanmeldingen **vanaf anonieme IP-adressen**, die een gemiddeld risico niveau hebben. Zie [Risicogebeurtenissen in Azure Active Directory](../reports-monitoring/concept-risk-events.md) voor meer informatie.  
+- **Tor** -browser: de [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en) is ontworpen om u te helpen uw privacy online te bewaren. Identiteits beveiliging detecteert een aanmelding vanuit een Tor-browser als aanmeldingen **vanaf anonieme IP-adressen**, die een gemiddeld risico niveau hebben. Zie [Azure Active Directory-risico detectie](../reports-monitoring/concept-risk-events.md)voor meer informatie.  
 - **Een test account met de naam Alain Charon** : als u niet weet hoe u een test account moet maken, raadpleegt u [een nieuwe gebruiker toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Uw aanmelding testen 
@@ -48,7 +48,7 @@ Het doel van deze stap is om ervoor te zorgen dat uw test account toegang heeft 
 
 ## <a name="create-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang maken 
 
-In het scenario in deze Snelstartgids wordt een aanmelding van een Tor-browser gebruikt om een gedetecteerde aanmeldingen te genereren vanuit een risico gebeurtenis voor **Anonieme IP-adressen** . Het risico niveau van deze risico gebeurtenis is gemiddeld. Als u op deze risico gebeurtenis wilt reageren, stelt u de risico voorwaarde voor aanmelden in op gemiddeld. 
+In het scenario in deze Snelstartgids wordt een aanmelding van een Tor-browser gebruikt om een gedetecteerde aanmeldingen te genereren op basis van een risico detectie voor **Anonieme IP-adressen** . Het risico niveau van deze risico detectie is gemiddeld. Als u wilt reageren op deze risico detectie, stelt u de risico voorwaarde voor aanmelden in op gemiddeld. 
 
 In deze sectie wordt uitgelegd hoe u het vereiste beleid voor voorwaardelijke toegang voor aanmeldings Risico's maakt. Stel in uw beleid het volgende in:
 
@@ -81,7 +81,7 @@ In deze sectie wordt uitgelegd hoe u het vereiste beleid voor voorwaardelijke to
 
 Als u uw beleid wilt testen, probeert u zich aan te melden bij uw [Azure Portal](https://portal.azure.com) als **Alan Charon** met behulp van de Tor-browser. Uw aanmeldings poging moet worden geblokkeerd door het beleid voor voorwaardelijke toegang.
 
-![Meervoudige verificatie](./media/quickstart-sign-in-risk-policy/203.png)
+![Multi-Factor Authentication](./media/quickstart-sign-in-risk-policy/203.png)
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen

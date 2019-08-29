@@ -11,33 +11,33 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 7fcf24256634ef11b575348d9da7d6bbbab8b67c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333925"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127772"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection Playbook
 
 Met deze Playbook kunt u het volgende doen:
 
-* Gegevens in de omgeving Identity Protection te vullen door risicogebeurtenissen en beveiligingsproblemen te simuleren
+* Gegevens in de identiteits beschermings omgeving vullen door risico detecties en beveiligings problemen te simuleren
 * Beleid voor voorwaardelijke toegang op basis van een risico instellen en de impact van dit beleid testen
 
-## <a name="simulating-risk-events"></a>Risico gebeurtenissen simuleren
+## <a name="simulating-risk-detections"></a>Risico detecties simuleren
 
-Deze sectie bevat stappen voor het simuleren van de volgende typen risico-gebeurtenissen:
+In deze sectie worden de stappen beschreven voor het simuleren van de volgende typen risico detectie:
 
 * Aanmeldingen vanaf anonieme IP-adressen (eenvoudig)
 * Aanmeldingen vanaf onbekende locaties (gemiddeld)
 * Onmogelijke reis naar ongewone locaties (moeilijk)
 
-Andere risico gebeurtenissen kunnen niet op een veilige manier worden gesimuleerd.
+Andere risico detecties kunnen niet op een veilige manier worden gesimuleerd.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Aanmeldingen vanaf anonieme IP-adressen
 
-Zie aanmeldingen [vanaf anonieme IP-adressen](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses)voor meer informatie over deze risico gebeurtenis. 
+Zie aanmeldingen [vanaf anonieme IP-adressen](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses)voor meer informatie over deze risico detectie. 
 
 Als u de volgende procedure wilt uitvoeren, moet u gebruikmaken van:
 
@@ -53,7 +53,7 @@ De aanmeldingspagina wordt binnen 10-15 minuten weergegeven op het Identity Prot
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>Aanmeldingen vanaf onbekende locaties
 
-Zie aanmeldingen [vanaf onbekende locaties](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations)voor meer informatie over deze risico gebeurtenis. 
+Zie aanmeldingen [vanaf onbekende locaties](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations)voor meer informatie over deze risico detectie. 
 
 Om aanmeldingen vanaf onbekende locaties te simuleren, dient zich u aan te melden vanaf een locatie en een apparaat waar u zich nog niet eerder hebt aangemeld met uw testaccount.
 
@@ -76,14 +76,14 @@ De aanmeldingspagina wordt binnen 10-15 minuten weergegeven op het Identity Prot
 
 ### <a name="impossible-travel-to-atypical-location"></a>Onmogelijke reis naar ongewone locatie
 
-Zie voor meer informatie over deze risico gebeurtenis [onmogelijk reizen naar ongewoone locatie](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
+Zie voor meer informatie over deze risico detectie [onmogelijk reizen naar ongewoone locatie](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
 
-Het simuleren van de niet-bewaarde reis voorwaarde is lastig, omdat de algoritme gebruikmaakt van machine learning om onbedoelde positieve waarden te vervalsen, zoals niet-verplaatsingen van bekende apparaten, of aanmeldingen vanuit Vpn's die worden gebruikt door andere gebruikers in de Directory. Daarnaast is voor de algoritme een aanmeldings geschiedenis van 14 dagen en 10 aanmeldingen van de gebruiker vereist voordat de risico gebeurtenissen worden gegenereerd. Vanwege de complexe machine learning modellen en de bovenstaande regels is er een kans dat de volgende stappen niet leiden tot een risico gebeurtenis. Mogelijk wilt u deze stappen voor meerdere Azure AD-accounts repliceren om deze risico gebeurtenis te publiceren.
+Het simuleren van de niet-bewaarde reis voorwaarde is lastig, omdat de algoritme gebruikmaakt van machine learning om onbedoelde positieve waarden te vervalsen, zoals niet-verplaatsingen van bekende apparaten, of aanmeldingen vanuit Vpn's die worden gebruikt door andere gebruikers in de Directory. Daarnaast is voor de algoritme een aanmeldings geschiedenis van 14 dagen en 10 aanmeldingen van de gebruiker vereist voordat het genereren van de risico detectie begint. Vanwege de complexe machine learning modellen en de bovenstaande regels is er een kans dat de volgende stappen niet leiden tot een risico detectie. Mogelijk wilt u deze stappen voor meerdere Azure AD-accounts repliceren om deze risico detectie te publiceren.
 
 **Voer de volgende stappen uit om een onmogelijke reis naar een ongewone locatie te simuleren**:
 
 1. Ga in uw standaard browser naar [https://myapps.microsoft.com](https://myapps.microsoft.com).  
-2. Voer de referenties in van het account dat u wilt gebruiken om een risicogebeurtenis voor een onmogelijke reis te genereren.
+2. Voer de referenties in van het account waarvoor u een onmogelijk risico detectie voor de reis wilt genereren.
 3. Wijzig uw gebruikersagent. U kunt uw gebruikersagent in Internet Explorer wijzigen vanuit Ontwikkelhulpprogramma's of in Firefox of Chrome door een invoegtoepassing voor het wisselen van de gebruikersagent te gebruiken.
 4. Wijzig uw IP-adres. U kunt uw IP-adres wijzigen door een VPN-of een Tor-invoeg toepassing te gebruiken of door een nieuwe machine in azure te draaien in een ander Data Center.
 5. Meld u aan [https://myapps.microsoft.com](https://myapps.microsoft.com) met dezelfde referenties als voor en binnen een paar minuten na de vorige aanmelding.
@@ -93,7 +93,7 @@ De aanmelding wordt binnen 2-4 uur weer gegeven in het dash board voor identitei
 ## <a name="simulating-vulnerabilities"></a>Beveiligings problemen simuleren
 Zwakke plekken zijn zwakke punten in een Azure AD-omgeving die door een kwaadwillend persoon kunnen worden misbruikt. Momenteel zijn er 3 typen zwakke plekken in Azure AD Identity Protection bekend die gebruikmaken van andere functies van Azure AD. Deze beveiligingslekken worden automatisch weergegeven op het Identity Protection-dashboard zodra deze functies zijn ingesteld.
 
-* [Multi-factor Authentication](../authentication/multi-factor-authentication.md) voor Azure AD
+* Azure AD- [multi-factor Authentication](../authentication/multi-factor-authentication.md)
 * Azure AD- [Cloud Discovery](https://docs.microsoft.com/cloud-app-security/).
 * Azure AD- [privileged Identity Management](../privileged-identity-management/pim-configure.md). 
 
@@ -118,8 +118,8 @@ Zie [Het risicobeleid voor gebruikers configureren](howto-user-risk-policy.md) v
 
 5. Selecteer in de sectie besturings elementen het gewenste toegangs beheer (bijvoorbeeld vereisen dat het wacht woord is gewijzigd).
 5. Selecteer **uit**als **beleid afdwingen**.
-6. Het gebruikers risico van een test account verhogen door bijvoorbeeld een van de risico gebeurtenissen een paar keer te simuleren.
-7. Wacht een paar minuten en controleer vervolgens of het gebruikers niveau voor uw gebruiker gemiddeld is. Als dat niet het geval is, Simuleer dan meer risico gebeurtenissen voor de gebruiker.
+6. Het gebruikers risico van een test account verhogen door bijvoorbeeld een van de risico detecties een paar keer te simuleren.
+7. Wacht een paar minuten en controleer vervolgens of het gebruikers niveau voor uw gebruiker gemiddeld is. Als dat niet het geval is, Simuleer dan meer risico detecties voor de gebruiker.
 8. Selecteer **aan**als **beleid afdwingen**.
 9. U kunt nu voorwaardelijke toegang op basis van gebruikers risico testen door zich aan te melden met een gebruiker met een verhoogd risico niveau.
 

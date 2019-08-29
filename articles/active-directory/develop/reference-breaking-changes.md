@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931787"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125422"
 ---
 # <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie? 
 
@@ -41,7 +41,24 @@ Het verificatie systeem wijzigt en voegt voortdurend functies toe om de naleving
 
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
 
-2019 augustus: POST semantiek afdwingen volgens regels voor het parseren van de URL-dubbele para meters activeren een fout. de aanhalings tekens voor de para meters worden niet meer genegeerd en de [stuk lijst](https://www.w3.org/International/questions/qa-byte-order-mark) wordt genegeerd.
+September 2019: Aanvullende afdwinging van POST semantiek volgens de regels voor het parseren van URL'S-dubbele para meters activeren een fout en [stuk lijst](https://www.w3.org/International/questions/qa-byte-order-mark) wordt genegeerd.
+
+## <a name="august-2019"></a>2019 augustus
+
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>De semantiek van POST formulieren wordt strikt meer afgedwongen en aanhalings tekens worden genegeerd
+
+**Ingangs datum**: 2 september 2019
+
+**Beïnvloede eind punten**: Zowel v 1.0 als v 2.0
+
+**Beïnvloede protocollen**: Een wille keurige POST wordt gebruikt ([client referenties](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), inzending van [autorisatie code](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)en vernieuwing van het [token](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+
+Met ingang van de week van 9/2 worden verificatie aanvragen die gebruikmaken van de POST-methode gevalideerd met striktere HTTP-standaarden.  In het bijzonder worden spaties en dubbele aanhalings tekens (") niet meer verwijderd uit de waarden van het aanvraag formulier. Deze wijzigingen worden niet verwacht om bestaande clients te verstoren, en zorgen ervoor dat aanvragen die naar Azure AD worden verzonden, elke keer betrouwbaar worden afgehandeld. In de toekomst (zie hierboven) gaan we ook dubbele para meters afwijzen en de stuk lijst in aanvragen negeren. 
+
+Voorbeeld:
+
+`?e=f&g=h` `e` Dehuidige == datum wordtidentiek`f`geparseerd. `?e=    "f"&g=h`  Met deze wijziging zou het nu worden geparseerd, zodat `e`  ==  `    "f"` dit niet waarschijnlijk een geldig argument is en de aanvraag nu mislukt. 
+
 
 ## <a name="july-2019"></a>2019 juli
 

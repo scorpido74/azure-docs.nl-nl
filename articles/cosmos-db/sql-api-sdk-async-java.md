@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 3bee473adde9c4762cf400dff6190eb76a4cc8d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 156699b8d8c1a645961f4e919bdd843d995a3d18
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624688"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142650"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchrone Java-SDK voor SQL-API: Release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -152,9 +152,13 @@ Nieuwe functies en functionaliteit en -optimalisatie worden alleen toegevoegd aa
 
 Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
 
+> [!WARNING]
+> Alle versies **1. x** van de ASYNC Java SDK voor SQL API worden op **30 augustus 2020**ingetrokken.
+> 
+>
 <br/>
 
-| Versie | Releasedatum | Vervaldatum |
+| Version | Releasedatum | Vervaldatum |
 | --- | --- | --- |
 | [2.4.3](#2.4.3) |5 maart 2019|--- |
 | [2.4.2](#2.4.2) |1 maart 2019|--- |
@@ -169,9 +173,9 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 | [2.1.0](#2.1.0) |5 september 2018|--- |
 | [2.0.1](#2.0.1) |16 augustus 2018|--- |
 | [2.0.0](#2.0.0) |20 juni 2018|--- |
-| [1.0.2](#1.0.2) |18 mei 2018|--- |
-| [1.0.1](#1.0.1) |20 april 2018|--- |
-| [1.0.0](#1.0.0) |27 februari, 2018|--- |
+| [1.0.2](#1.0.2) |18 mei 2018|30 augustus 2020 |
+| [1.0.1](#1.0.1) |20 april 2018|30 augustus 2020 |
+| [1.0.0](#1.0.0) |27 februari, 2018|30 augustus 2020 |
 
 ## <a name="faq"></a>Veelgestelde vragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

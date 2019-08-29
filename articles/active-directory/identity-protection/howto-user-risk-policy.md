@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 92bfb921833d99a3538ffa8c4c5d16a9f0cd3acd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335449"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126290"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Procedure: Het beleid voor gebruikersrisico’s configureren
 
@@ -26,9 +26,9 @@ In dit artikel vindt u de informatie die u nodig hebt om een beleid voor gebruik
 
 ## <a name="what-is-a-user-risk-policy"></a>Wat is een gebruikers risico beleid?
 
-Azure AD analyseert elke aanmelding van een gebruiker. Het doel van de analyse is het detecteren van verdachte acties die samen met de aanmelding worden uitgevoerd. In azure AD worden de verdachte acties die door het systeem kunnen worden gedetecteerd ook wel risico gebeurtenissen genoemd. Hoewel sommige risico gebeurtenissen in realtime kunnen worden gedetecteerd, zijn er ook risico gebeurtenissen die meer tijd vereisen. Als u bijvoorbeeld een onmogelijke reis naar ongewone locaties wilt detecteren, is voor het systeem een eerste leer periode van 14 dagen vereist om meer te weten te komen over het normale gedrag van een gebruiker. Er zijn verschillende opties om gedetecteerde risico gebeurtenissen op te lossen. U kunt bijvoorbeeld afzonderlijke risico gebeurtenissen hand matig oplossen, of u kunt ze oplossen met behulp van een aanmeldings risico of een beleid voor voorwaardelijke toegang voor gebruikers Risico's.
+Azure AD analyseert elke aanmelding van een gebruiker. Het doel van de analyse is het detecteren van verdachte acties die samen met de aanmelding worden uitgevoerd. In azure AD worden de verdachte acties die door het systeem kunnen worden gedetecteerd ook wel risico detecties genoemd. Hoewel sommige risico detecties in realtime kunnen worden gedetecteerd, zijn er ook risico detecties die meer tijd vereisen. Als u bijvoorbeeld een onmogelijke reis naar ongewone locaties wilt detecteren, is voor het systeem een eerste leer periode van 14 dagen vereist om meer te weten te komen over het normale gedrag van een gebruiker. Er zijn verschillende opties voor het oplossen van gedetecteerde risico detecties. U kunt bijvoorbeeld afzonderlijke risico detecties hand matig oplossen of u kunt ze omzetten met behulp van een aanmeldings risico of een beleid voor voorwaardelijke toegang voor gebruikers Risico's.
 
-Alle risico gebeurtenissen die zijn gedetecteerd voor een gebruiker en niet zijn opgelost, worden actieve risico gebeurtenissen genoemd. De actieve risico gebeurtenissen die aan een gebruiker zijn gekoppeld, worden gebruikers risico genoemd. Op basis van het gebruikers risico berekent Azure AD een waarschijnlijkheid (laag, gemiddeld, hoog) die een gebruiker heeft geknoeid. De kans is het gebruikers risico niveau.
+Alle risico detecties die zijn gedetecteerd voor een gebruiker en niet zijn opgelost, worden actieve risico detecties genoemd. De actieve risico detecties die aan een gebruiker zijn gekoppeld, worden gebruikers risico genoemd. Op basis van het gebruikers risico berekent Azure AD een waarschijnlijkheid (laag, gemiddeld, hoog) die een gebruiker heeft geknoeid. De kans is het gebruikers risico niveau.
 
 ![Gebruikers Risico's](./media/howto-user-risk-policy/1031.png)
 
@@ -72,8 +72,8 @@ U kunt een beveiligings beleid voor gebruikers Risico's instellen om gebruikers 
 
 Een aanmelding blok keren:
 
-* Voor komt dat nieuwe gebruikers risico gebeurtenissen voor de betrokken gebruiker worden gegenereerd
-* Hiermee kunnen beheerders de risico gebeurtenissen hand matig herstellen die van invloed zijn op de identiteit van de gebruiker en deze terugzetten naar een veilige status
+* Hiermee wordt voor komen dat nieuwe gebruikers risico detecties worden gegenereerd voor de betrokken gebruiker
+* Hiermee kunnen beheerders hand matig de risico detecties herstellen die van invloed zijn op de identiteit van de gebruiker en deze herstellen naar een veilige status
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 

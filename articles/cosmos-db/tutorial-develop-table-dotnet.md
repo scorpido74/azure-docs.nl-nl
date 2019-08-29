@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 05/20/2019
-ms.openlocfilehash: 75f1554f7522723d71666633a03761d07e797e33
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 677ea48244f8417670a2645ab67fa08c1f869f1a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443504"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142588"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met Azure Cosmos DB Table-API en Azure-tabel opslag met behulp van de .NET SDK
 
@@ -59,7 +59,7 @@ Voer de volgende stappen uit om het NuGet-pakket te verkrijgen:
 
 1. Klik met de rechtermuisknop op het project in **Solution Explorer** en kies **NuGet-pakketten beheren**.
 
-1. `Microsoft.Azure.Cosmos.Table`Zoek online naar, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`enselecteerinstalleren om de Microsoft Azure Cosmos DB-tabel bibliotheek te installeren.  `Microsoft.Extensions.Configuration.Binder`
+1. `Microsoft.Azure.Cosmos.Table`Zoek online naar, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`enselecteerinstalleren om de Microsoft Azure Cosmos DB-tabel bibliotheek te installeren. `Microsoft.Extensions.Configuration.Binder`
 
 ## <a name="configure-your-storage-connection-string"></a>De opslagverbindingsreeks configureren
 
@@ -217,36 +217,36 @@ In het volgende code voorbeeld wordt een entiteits object gemaakt en toegevoegd 
 Klik met de rechter muisknop op uw project **CosmosTableSamples**. Selecteer **toevoegen**, **Nieuw item** en voeg een klasse toe met de naam **SamplesUtils.cs**. In deze klasse wordt alle code opgeslagen die is vereist voor het uitvoeren van ruwe bewerkingen op de entiteiten. 
 
 ```csharp
-public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
-    {
-      if (entity == null)
-    {
-       throw new ArgumentNullException("entity");
-    }
-    try
-    {
-       // Create the InsertOrReplace table operation
-       TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+ {
+     if (entity == null)
+     {
+         throw new ArgumentNullException("entity");
+     }
+     try
+     {
+         // Create the InsertOrReplace table operation
+         TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
 
-       // Execute the operation.
-       TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
-       CustomerEntity insertedCustomer = result.Result as CustomerEntity;
-        
-        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-        if (result.RequestCharge.HasValue)
-          {
-            Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
-          }
+         // Execute the operation.
+         TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+         CustomerEntity insertedCustomer = result.Result as CustomerEntity;
 
-        return insertedCustomer;
-        }
-        catch (StorageException e)
-        {
-          Console.WriteLine(e.Message);
-          Console.ReadLine();
-          throw;
-        }
-    }
+         // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure Cosmos DB
+         if (result.RequestCharge.HasValue)
+         {
+             Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+         }
+
+         return insertedCustomer;
+     }
+     catch (StorageException e)
+     {
+         Console.WriteLine(e.Message);
+         Console.ReadLine();
+         throw;
+     }
+ }
 ```
 
 ### <a name="get-an-entity-from-a-partition"></a>Een entiteit uit een partitie ophalen

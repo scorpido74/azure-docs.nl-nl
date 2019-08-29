@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637290"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147859"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Kies uit de vCore-service lagen en migreer vanuit de DTU-service lagen
 
@@ -43,7 +43,7 @@ In de volgende tabel worden de verschillen tussen de drie lagen beschreven:
 ||**Algemeen doel**|**Bedrijfs kritiek**|**Grootschalige**|
 |---|---|---|---|
 |Het best voor|De meeste zakelijke workloads. Biedt budget gerichte, evenwichtige en schaal bare reken-en opslag opties.|Zakelijke toepassingen met hoge I/O-vereisten. Biedt de hoogste flexibiliteit voor storingen door gebruik te maken van verschillende geïsoleerde replica's.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.|
-|Compute|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores<br/>**Serverloze Compute**:<br/>GEN5 0,5-4 vCores|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores|
+|Compute|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores<br/>**Serverloze Compute**:<br/>GEN5 0,5-16 vCores|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores|
 |Geheugen|**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore<br/>**Serverloze Compute**:<br/>GEN5 3 GB per vCore|**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore |**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore|
 |Storage|Maakt gebruik van externe opslag.<br/>**Berekenings reken single data base**:<br/>5 GB – 4 TB<br/>**Eén reken database zonder server**:<br/>5 GB - 1 TB<br/>**Beheerd exemplaar**: 32 GB - 8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Berekenings reken single data base**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
 |I/O-door Voer (ongeveer)|**Eén data base**: 500 IOPS per vCore met 7000 maximum aantal IOPS.<br/>**Beheerd exemplaar**: Is afhankelijk van de [grootte van het bestand](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per kern met 200.000 maximum aantal IOPS|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPs is afhankelijk van de werk belasting.|

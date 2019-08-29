@@ -1,7 +1,7 @@
 ---
-title: 'Gegevens toewijzen aan Cluster: Moduleverwijzing'
+title: 'Gegevens toewijzen aan cluster: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de gegevens toewijzen aan de Cluster-module in Azure Machine Learning-service om clustering-model te beoordelen.
+description: Meer informatie over het gebruik van de module gegevens toewijzen aan cluster in Azure Machine Learning service om het cluster model te scoren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,44 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1c2d2a02ecfb617551dd9174b87f363d57b151a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 56f608044716ea3655576c11aa7a62343215f508
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467201"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128993"
 ---
-# <a name="module-assign-data-to-clusters"></a>Module: Gegevens toewijzen aan Clusters
+# <a name="module-assign-data-to-clusters"></a>Programma Gegevens toewijzen aan clusters
 
-In dit artikel wordt beschreven hoe u de *gegevens toewijzen aan Clusters* module in de visuele interface van Azure Machine Learning. De module genereert voorspellingen via clustering-model dat is getraind met de *K-means clustering* algoritme.
+In dit artikel wordt beschreven hoe u de module *gegevens toewijzen aan clusters* kunt gebruiken in de Azure machine learning Visual-Interface. De module genereert voor spellingen via een cluster model dat is getraind met het algoritme *k-means clustering* .
 
-De gegevens toewijzen aan Clusters module retourneert een gegevensset met de waarschijnlijke toewijzingen voor elke nieuwe gegevenspunt. 
+De module gegevens toewijzen aan clusters retourneert een gegevensset die de waarschijnlijke toewijzingen voor elk nieuw gegevens punt bevat. 
 
 
-## <a name="how-to-use-assign-data-to-clusters"></a>Het gebruik van gegevens met Clusters toewijzen
+## <a name="how-to-use-assign-data-to-clusters"></a>Toewijzing van gegevens aan clusters gebruiken
   
-1. Zoek in de visuele interface van Azure Machine Learning, een eerder getrainde clustering-model. U kunt maken en trainen clustering-model met behulp van een van de volgende methoden:  
+1. Zoek in de Visual Interface van Azure Machine Learning een eerder getraind cluster model. U kunt een cluster model maken en trainen met behulp van een van de volgende methoden:  
   
-    - De K-means clustering-algoritme configureren met behulp van de [K-Means Clustering](k-means-clustering.md) module en trainen het model met behulp van een gegevensset en de module Train Clustering-Model (dit artikel).  
+    - Configureer de k-means clustering-algoritme met behulp van de [K-betekent cluster](k-means-clustering.md) module en Train het model met behulp van een gegevensset en de module Train clustering model (dit artikel).  
   
-    - U kunt ook toevoegen met een bestaande getrainde clustering-model van de **opgeslagen modellen** groep in uw werkruimte.
+    - U kunt ook een bestaand getraind cluster model toevoegen vanuit de groep **opgeslagen modellen** in uw werk ruimte.
 
-2. Het getrainde model koppelen aan de linkerinvoerpoort van **gegevens toewijzen aan Clusters**.  
+2. Koppel het getrainde model aan de linker invoer poort van de **toewijzing van gegevens aan clusters**.  
 
-3. Koppel een nieuwe gegevensset als invoer. 
+3. Voeg een nieuwe gegevensset als invoer toe. 
 
-   In deze gegevensset zijn labels optioneel. Clustering is over het algemeen een methode zonder supervisie learning. U wordt niet aan de categorieën van tevoren weten. De ingevoerde kolommen moeten wel gelijk zijn aan de kolommen die werden gebruikt in training die de clustering-model of een fout optreedt.
+   In deze gegevensset zijn labels optioneel. Over het algemeen is clustering een niet-gecontroleerde leer methode. U wordt niet verwacht dat u de categorieën van tevoren kent. De invoer kolommen moeten echter hetzelfde zijn als de kolommen die zijn gebruikt bij het trainen van het cluster model, of er treedt een fout op.
 
     > [!TIP]
-    > Als u wilt verkleinen het aantal kolommen die zijn geschreven met de interface van de voorspellingen van het cluster, gebruikt u [kolommen selecteren in de gegevensset](select-columns-in-dataset.md), en een subset van de kolommen selecteren. 
+    > Als u het aantal kolommen dat naar de interface wordt geschreven van de cluster voorspellingen wilt reduceren, gebruikt u [kolommen selecteren in de gegevensset](select-columns-in-dataset.md)en selecteert u een subset van de kolommen. 
     
-4. Laat de **controleren toevoegen of schakel het selectievakje voor alleen resultaat** selectievakje is ingeschakeld als u wilt dat de resultaten bevatten de volledige invoergegevensset, met inbegrip van een kolom waarin de resultaten (cluster-toewijzingen).
+4. Schakel het selectie vakje **controleren op toevoegen of uitschakelen voor alleen resultaat alleen** in als u wilt dat de resultaten de volledige invoer gegevensset bevatten, inclusief een kolom waarin de resultaten worden weer gegeven (cluster toewijzingen).
   
-    Als u dit selectievakje uitschakelt, worden alleen de resultaten worden geretourneerd. Deze optie kan nuttig zijn bij het maken van voorspellingen als onderdeel van een webservice.
+    Als u dit selectie vakje uitschakelt, worden alleen de resultaten geretourneerd. Deze optie kan nuttig zijn bij het maken van voor spellingen als onderdeel van een webservice.
   
 5.  Voer het experiment uit.  
   
 ### <a name="results"></a>Resultaten
 
-+  Als u wilt weergeven van de waarden in de gegevensset, met de rechtermuisknop op de module, selecteert u **leiden tot gegevenssets**, en selecteer vervolgens **Visualize**.
++  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module,selecteert u **resultaat gegevens sets**en selecteert u vervolgens visualiseren.
 

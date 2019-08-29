@@ -1,7 +1,7 @@
 ---
-title: 'Rijen toevoegen: Moduleverwijzing'
+title: 'Rijen toevoegen: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module rijen toevoegen in Azure Machine Learning-service om twee gegevenssets samen te voegen.
+description: Meer informatie over het gebruik van de module rijen toevoegen in Azure Machine Learning service om twee gegevens sets samen te voegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,38 +9,37 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ffd693ea3452ef48dc3e05e7bc4a6d3988a487b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c25f555fd7870afa4e75a3d1e490914e85118d20
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028753"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129014"
 ---
-# <a name="add-rows-module"></a>Rijen module toevoegen
+# <a name="add-rows-module"></a>Module rijen toevoegen
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om twee gegevenssets samen te voegen. In samengevoegde, worden de rijen van de tweede gegevensset toegevoegd aan het einde van de eerste gegevensset.  
+Gebruik deze module om twee gegevens sets samen te voegen. In samen voeging worden de rijen van de tweede gegevensset toegevoegd aan het einde van de eerste gegevensset.  
   
-Samengevoegde rijen is handig in scenario's zoals deze:  
+Het samen voegen van rijen is handig in scenario's zoals:  
   
-+ Als u een reeks evaluatie statistieken hebt gegenereerd, en u wilt combineren in één tabel voor het melden van eenvoudiger.  
++ U hebt een reeks evaluatie statistieken gegenereerd en wilt u deze combi neren in één tabel om de rapportage te vergemakkelijken.  
   
-+ U hebt gewerkt met verschillende gegevenssets, en u wilt combineren de gegevenssets om een uiteindelijke gegevensset te maken.  
++ U hebt met verschillende gegevens sets gewerkt en u wilt de gegevens sets combi neren om een definitieve gegevensset te maken.  
 
-## <a name="how-to-use-add-rows"></a>Het gebruik van rijen toevoegen  
+## <a name="how-to-use-add-rows"></a>Rijen toevoegen gebruiken  
 
-Als u wilt samenvoegen rijen van twee gegevenssets, moeten de rijen precies hetzelfde schema hebben. Dit betekent, hetzelfde aantal kolommen en hetzelfde type gegevens in de kolommen.
+Als u rijen wilt samen voegen vanuit twee gegevens sets, moeten de rijen precies hetzelfde schema hebben. Dit betekent dat hetzelfde aantal kolommen en hetzelfde type gegevens in de kolommen.
 
-1.  Sleep de **rijen toevoegen** -module in uw experiment, kunt u deze vinden onder **gegevenstransformatie**, in de **bewerken** categorie.
+1.  Sleep de module **rijen toevoegen** naar het experiment, u kunt deze vinden onder **gegevens transformatie**in de categorie **bewerken** .
 
-2. De gegevenssets verbinden met de twee invoerpoorten. De gegevensset die u wilt toevoegen, moet zijn verbonden met de tweede (rechts)-poort. 
+2. Verbind de gegevens sets met de twee invoer poorten. De gegevensset die u wilt toevoegen, moet zijn verbonden met de tweede poort (rechts). 
   
-3.  Voer het experiment uit. Het aantal rijen in de uitvoergegevensset moet gelijk zijn aan de som van de rijen van beide invoergegevenssets.
+3.  Voer het experiment uit. Het aantal rijen in de uitvoer gegevensset moet gelijk zijn aan de som van de rijen van beide invoer gegevens sets.
 
-    Als u dezelfde gegevensset aan zowel invoer van toevoegen de **rijen toevoegen** -module, de gegevensset wordt gedupliceerd. 
+    Als u dezelfde gegevensset toevoegt aan beide invoer van de module **rijen toevoegen** , wordt de gegevensset gedupliceerd. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

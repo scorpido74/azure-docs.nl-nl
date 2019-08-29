@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693877"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125345"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Implementatie handleiding voor Azure Active Directory feature
 
@@ -53,10 +53,10 @@ In deze fase scha kelen beheerders basis beveiligings functies in om een beter b
 | [Periodiek wacht woord opnieuw instellen uitschakelen voor gebruikers accounts op basis van de Cloud](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Periodiek wacht woord opnieuw instellen moedig uw gebruikers aan om hun bestaande wacht woord te verhogen. Gebruik de richt lijnen in het document met wachtwoord richtlijnen van micro soft om uw on-premises beleid te spie gelen aan alleen-Cloud gebruikers. | Azure AD Free |
 | [Azure Active Directory slim vergren delen aanpassen](../authentication/howto-password-smart-lockout.md) | Voor komen dat de vergren delingen van Cloud gebruikers worden gerepliceerd naar on-premises Active Directory gebruikers | |
 | [Extranet smartcard vergrendeling inschakelen voor AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS extranet vergrendeling beschermt tegen beveiligings aanvallen met een felle wacht woord, terwijl geldige AD FS gebruikers hun accounts blijven gebruiken. | |
-| [Azure AD multi-factor Authentication implementeren met behulp van beleid voor voorwaardelijke toegang](../authentication/howto-mfa-getstarted.md) | Gebruikers verplichten verificatie in twee stappen uit te voeren bij het openen van gevoelige toepassingen die gebruikmaken van het beleid voor voorwaardelijke toegang. | Azure AD Premium P1 |
+| [Azure AD-Multi-Factor Authentication implementeren met behulp van beleid voor voorwaardelijke toegang](../authentication/howto-mfa-getstarted.md) | Gebruikers verplichten verificatie in twee stappen uit te voeren bij het openen van gevoelige toepassingen die gebruikmaken van het beleid voor voorwaardelijke toegang. | Azure AD Premium P1 |
 | [Azure Active Directory Identity Protection inschakelen](../identity-protection/enable.md) | Tracering inschakelen van Risk ante aanmeldingen en aangetaste referenties voor gebruikers in uw organisatie. | Azure AD Premium P2 |
-| [Risico gebeurtenissen gebruiken om multi-factor Authentication-en wachtwoord wijzigingen te activeren](../authentication/tutorial-risk-based-sspr-mfa.md) | Schakel automatisering in die gebeurtenissen zoals multi-factor Authentication, het opnieuw instellen van wacht woorden en het blok keren van aanmeldingen kan activeren op basis van risico. | Azure AD Premium P2 |
-| [Geconvergeerde registratie voor self-service voor wachtwoord opnieuw instellen en Azure AD multi-factor Authentication (preview) inschakelen](../authentication/concept-registration-mfa-sspr-converged.md) | Sta uw gebruikers toe om zich te registreren bij een algemene ervaring voor zowel Azure multi-factor Authentication als selfservice voor het opnieuw instellen van wacht woorden. | Azure AD Premium P1 |
+| [Risico detecties gebruiken om multi-factor Authentication-en wachtwoord wijzigingen te activeren](../authentication/tutorial-risk-based-sspr-mfa.md) | Schakel automatisering in die gebeurtenissen zoals multi-factor Authentication, het opnieuw instellen van wacht woorden en het blok keren van aanmeldingen kan activeren op basis van risico. | Azure AD Premium P2 |
+| [Geconvergeerde registratie voor self-service voor wachtwoord opnieuw instellen en Azure AD multi-factor Authentication (preview) inschakelen](../authentication/concept-registration-mfa-sspr-converged.md) | Sta uw gebruikers toe om zich te registreren bij een algemene ervaring voor zowel Azure Multi-Factor Authentication als selfservice voor wachtwoord herstel. | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Fase 2: Gebruikers importeren, synchronisatie inschakelen en apparaten beheren
 

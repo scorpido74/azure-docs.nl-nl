@@ -1,163 +1,161 @@
 ---
-title: Grootschalige gegevenssets verwerken met behulp van Data Factory en Batch | Microsoft Docs
-description: Beschrijft hoe u voor het verwerken van grote hoeveelheden gegevens in een Azure Data Factory-pijplijn met behulp van de parallelle verwerking van de mogelijkheden van Azure Batch.
+title: Grootschalige gegevens sets verwerken met behulp van Data Factory en batch | Microsoft Docs
+description: Hierin wordt beschreven hoe u enorme hoeveel heden gegevens in een Azure Data Factory pijp lijn verwerkt met behulp van de parallelle verwerkings capaciteit van Azure Batch.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 67829b6245fe4fea8da88c97fa8d5aeedccc90a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fe015e2ffa371c0c31f7f5f43c433d44f3ca3c42
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446613"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140047"
 ---
-# <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevenssets verwerken met behulp van Data Factory en Batch
+# <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Azure Data Factory, die algemeen beschikbaar is. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [aangepaste activiteiten in Data Factory](../transform-data-using-dotnet-custom-activity.md).
 
-In dit artikel beschrijft een architectuur van een Voorbeeldoplossing die wordt verplaatst en grootschalige gegevenssets in een automatische en geplande wijze verwerkt. Het biedt ook een end-to-end-scenario voor het implementeren van de oplossing met behulp van Data Factory en Azure Batch.
+In dit artikel wordt een architectuur beschreven van een voor beeld van een oplossing waarmee grootschalige gegevens sets op een automatische en geplande manier worden verplaatst en verwerkt. Het bevat ook een end-to-end-procedure voor het implementeren van de oplossing met behulp van Data Factory en Azure Batch.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In dit artikel is langer dan een typische artikel omdat deze een overzicht van een volledige oplossing bevat. Als u geen ervaring met Batch en Data Factory, vindt u informatie over deze services en hoe ze samenwerken. Als u over de services weet en zijn ontwerpen/architectuur met een oplossing, kunt u zich richten op de architectuur-sectie van het artikel. Als u een prototype of een oplossing ontwikkelt, is het raadzaam om te proberen de stapsgewijze instructies in deze stapsgewijze kennismaking. Wij willen graag uw opmerkingen over deze inhoud en hoe u deze gebruikt.
+Dit artikel is langer dan een typisch artikel omdat het een overzicht bevat van een volledige voorbeeld oplossing. Als u geen ervaring hebt met batch en Data Factory, kunt u meer informatie vinden over deze services en hoe ze samen werken. Als u iets weet over de services en een oplossing ontwerpt/opzet, kunt u zich concentreren op de sectie architectuur van het artikel. Als u een prototype of een oplossing ontwikkelt, wilt u mogelijk de stapsgewijze instructies in het overzicht proberen. We nodigen uw opmerkingen uit over deze inhoud en hoe u deze gebruikt.
 
-Eerst laten we kijken hoe Data Factory en Batch-services u kunt grote gegevenssets proces in de cloud.     
+Laten we eerst eens kijken hoe Data Factory en batch Services u kunnen helpen grote gegevens sets in de cloud te verwerken.     
 
 
 ## <a name="why-azure-batch"></a>Waarom Azure Batch?
- U kunt Batch gebruiken voor het uitvoeren van grootschalige parallelle en high performance computing (HPC) toepassingen efficiënt in de cloud. Het is een platformservice die rekenintensief werk inplant voor uitvoering op een beheerde verzameling virtuele machines (VM's). Deze compute-resources om te voldoen aan de behoeften van uw taken kan automatisch worden geschaald.
+ U kunt batch gebruiken om op efficiënte wijze grootschalige parallelle en HPC-toepassingen (High Performance Computing) in de Cloud uit te voeren. Het is een platform service die reken intensief werk plant om te worden uitgevoerd op een beheerde verzameling virtuele machines (Vm's). Hiermee kunnen reken resources automatisch worden geschaald om te voldoen aan de behoeften van uw taken.
 
-Met de Batch-service definieert u Azure-rekenresources om uw toepassingen parallel en op de juiste schaal uit te voeren. U kunt op aanvraag uitvoeren of geplande taken. U hoeft niet te handmatig maken, configureren en beheren van een HPC-cluster, individuele virtuele machines, virtuele netwerken of een complexe taak en taakplanning infrastructuur.
+Met de Batch-service definieert u Azure-rekenresources om uw toepassingen parallel en op de juiste schaal uit te voeren. U kunt taken uitvoeren op aanvraag of gepland. U hoeft niet hand matig een HPC-cluster, afzonderlijke Vm's, virtuele netwerken of een complexe taak en een infra structuur voor taak planning te maken, configureren en beheren.
 
- Als u niet bekend bent met Batch, de volgende artikelen helpen u te begrijpen van de architectuur/implementatie van de oplossing in dit artikel beschreven:   
+ Als u niet bekend bent met batch, kunt u de volgende artikelen gebruiken om inzicht te krijgen in de architectuur/implementatie van de oplossing die in dit artikel wordt beschreven:   
 
-* [Basisprincipes van Batch](../../batch/batch-technical-overview.md)
+* [Basis principes van batch](../../batch/batch-technical-overview.md)
 * [Overzicht van de functies van Batch](../../batch/batch-api-basics.md)
 
-(Optioneel) voor meer informatie over Batch, Zie [de Batch-documentatie](https://docs.microsoft.com/azure/batch/).
+Zie ook [de batch-documentatie](https://docs.microsoft.com/azure/batch/)voor meer informatie over batch.
 
 ## <a name="why-azure-data-factory"></a>Waarom Azure Data Factory?
-Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. Data Factory kunt u beheerde gegevenspijplijnen maken die gegevens verplaatsen van on-premises en gegevensarchieven naar een centrale gegevensopslagplaats in de cloud. Een voorbeeld is de Azure Blob-opslag. U kunt Data Factory gebruiken om te verwerken/transformeren gegevens met behulp van services zoals Azure HDInsight en Azure Machine Learning. U kunt ook gegevenspijplijnen om uit te voeren op een geplande wijze (bijvoorbeeld elk uur, dagelijks en wekelijks) plannen. U kunt controleren en beheren van de pijplijnen in een oogwenk om problemen te identificeren en actie ondernemen.
+Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. U kunt Data Factory gebruiken om beheerde gegevens pijplijnen te maken waarmee gegevens worden verplaatst van on-premises en gegevens opslag in de Cloud naar een gecentraliseerd gegevens archief. Een voor beeld is Azure Blob-opslag. U kunt Data Factory gebruiken om gegevens te verwerken/transformeren met behulp van services zoals Azure HDInsight en Azure Machine Learning. U kunt ook gegevens pijplijnen zodanig plannen dat deze op een geplande manier worden uitgevoerd (bijvoorbeeld elk uur, dagelijks en wekelijks). U kunt de pijp lijnen in één oogopslag bewaken en beheren om problemen te identificeren en actie te ondernemen.
 
-  Als u niet bekend bent met Data Factory, de volgende artikelen helpen u te begrijpen van de architectuur/implementatie van de oplossing in dit artikel beschreven:  
+  Als u niet bekend bent met Data Factory, kunt u de volgende artikelen gebruiken om inzicht te krijgen in de architectuur/implementatie van de oplossing die in dit artikel wordt beschreven:  
 
 * [Inleiding tot Data Factory](data-factory-introduction.md)
-* [Uw eerste pijplijn bouwen](data-factory-build-your-first-pipeline.md)   
+* [Uw eerste gegevens pijplijn bouwen](data-factory-build-your-first-pipeline.md)   
 
-(Optioneel) voor meer informatie over Data Factory, Zie [de documentatie voor Data Factory](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
+Zie ook [de Data Factory documentatie](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory)voor meer informatie over Data Factory.
 
-## <a name="data-factory-and-batch-together"></a>Data Factory en Batch samen
-Data Factory bevat ingebouwde activiteiten. Bijvoorbeeld, de Copy-activiteit wordt gebruikt om te kopiëren en verplaatsen van gegevens van een brongegevensarchief naar een doelgegevensarchief. De Hive-activiteit wordt gebruikt om gegevens te verwerken met behulp van Hadoop-clusters (HDInsight) op Azure. Zie voor een lijst van ondersteunde transformatieactiviteiten, [activiteiten voor gegevenstransformatie](data-factory-data-transformation-activities.md).
+## <a name="data-factory-and-batch-together"></a>Data Factory en batch samen
+Data Factory bevat ingebouwde activiteiten. De Kopieer activiteit wordt bijvoorbeeld gebruikt voor het kopiëren/verplaatsen van gegevens uit een brongegevens archief naar een doel gegevens archief. De Hive-activiteit wordt gebruikt voor het verwerken van gegevens met behulp van Hadoop-clusters (HDInsight) in Azure. Zie [activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md)voor een lijst met ondersteunde transformatie activiteiten.
 
-U kunt ook aangepaste .NET-activiteiten wilt verplaatsen of gegevens te verwerken met uw eigen logica maken. U kunt deze activiteiten uitvoeren op een HDInsight-cluster of in een Batch-pool van virtuele machines. Wanneer u Batch gebruikt, kunt u de groep van automatisch schalen configureren (toevoegen of verwijderen van virtuele machines op basis van de werkbelasting) op basis van een formule die u opgeeft.     
+U kunt ook aangepaste .NET-activiteiten maken om gegevens met uw eigen logica te verplaatsen of te verwerken. U kunt deze activiteiten uitvoeren op een HDInsight-cluster of op een batch-pool van Vm's. Wanneer u batch gebruikt, kunt u de groep zodanig configureren dat deze automatisch wordt geschaald (Vm's toevoegen of verwijderen op basis van de werk belasting) op basis van een door u verstrekte formule.     
 
-## <a name="architecture-of-a-sample-solution"></a>Architectuur van een Voorbeeldoplossing
-  De architectuur die worden beschreven in dit artikel is bedoeld voor een eenvoudige oplossing. Het is ook relevant zijn voor complexe scenario's, zoals de modellering van financiële services, verwerking van afbeeldingen en rendering en genetische analysis risico.
+## <a name="architecture-of-a-sample-solution"></a>Architectuur van een voorbeeld oplossing
+  De architectuur die in dit artikel wordt beschreven, is voor een eenvoudige oplossing. Het is ook relevant voor complexe scenario's, zoals risico modellen door financiële services, verwerking van afbeeldingen en rendering en genomic-analyses.
 
-Het diagram illustreert hoe Data Factory regelt de verwerking en gegevensverplaatsing. U leert ook hoe Batch verwerkt de gegevens in een parallelle manier. Downloaden en afdrukken van het diagram voor eenvoudige verwijzing (11 x 17 inches of A3-grootte). Voor toegang tot het diagram zodat u het kunt afdrukken, Zie [HPC en gegevensindeling met behulp van Batch en Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
+Het diagram illustreert hoe Data Factory gegevens verplaatsing en-verwerking organiseert. Ook wordt aangegeven hoe de gegevens op een parallelle manier door batch worden verwerkt. Down load het diagram en druk het af voor eenvoudige Naslag informatie (11 x 17 inch of a3). Voor toegang tot het diagram, zodat u het kunt afdrukken, raadpleegt u [HPC en gegevens indeling met behulp van batch en Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
 
-[![Grootschalige gegevensverwerking diagram](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
+[![Diagram voor grootschalige gegevens verwerking](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
 
-De volgende lijst beschrijft de basisstappen van het proces. De oplossing bevat code en uitleg om de end-to-end oplossing te bouwen.
+De volgende lijst bevat de basis stappen van het proces. De oplossing bevat code en uitleg om de end-to-end-oplossing te bouwen.
 
-* **Batch configureren met een pool van rekenknooppunten (virtuele machines).** U kunt het aantal knooppunten en de grootte van elk knooppunt opgeven.
+* **Een batch configureren met een pool van reken knooppunten (Vm's).** U kunt het aantal knoop punten en de grootte van elk knoop punt opgeven.
 
-* **Maak een Data Factory-exemplaar** die is geconfigureerd met entiteiten die staan voor blob-opslag, het Batch-compute-service, i/o-gegevens en een werkstroom/pipeline met activiteiten die gegevens verplaatsen en transformeren.
+* **Maak een Data Factory-exemplaar** dat is geconfigureerd met entiteiten die Blob Storage vertegenwoordigen, de batch compute-service, invoer/uitvoer gegevens en een werk stroom/pijp lijn met activiteiten waarmee gegevens worden verplaatst en getransformeerd.
 
-* **Maak een aangepaste .NET-activiteit in de Data Factory-pijplijn.** De activiteit is uw eigen code die wordt uitgevoerd op de Batch-pool.
+* **Maak een aangepaste .NET-activiteit in de Data Factory-pijp lijn.** De activiteit is uw gebruikers code die wordt uitgevoerd op de batch-pool.
 
-* **Store grote hoeveelheden gegevens als blobs in Azure Storage.** Gegevens is onderverdeeld in logische segmenten (meestal door time).
+* **Sla grote hoeveel heden invoer gegevens op als blobs in Azure Storage.** Gegevens worden onderverdeeld in logische segmenten (meestal op tijd).
 
-* **Data Factory worden gegevens die wordt verwerkt parallel** naar de secundaire locatie.
+* **Data Factory kopieert gegevens die parallel worden verwerkt** naar de secundaire locatie.
 
-* **Data Factory wordt de aangepaste activiteit uitgevoerd met behulp van de groep toegewezen door de Batch.** Data Factory kunt activiteiten tegelijk worden uitgevoerd. Elke activiteit een segment van de gegevens worden verwerkt. De resultaten worden opgeslagen in de opslag.
+* **Data Factory voert de aangepaste activiteit uit met behulp van de pool toegewezen door batch.** Data Factory kunt activiteiten gelijktijdig uitvoeren. Elke activiteit verwerkt een gegevens segment. De resultaten worden opgeslagen in de opslag.
 
-* **Data Factory de eindresultaten verplaatst naar een derde locatie** om te worden gedistribueerd via een app of voor verdere verwerking door andere hulpprogramma's.
+* **Data Factory de uiteindelijke resultaten naar een derde locatie verplaatst,** hetzij voor distributie via een app of voor verdere verwerking door andere hulpprogram ma's.
 
-## <a name="implementation-of-the-sample-solution"></a>Implementatie van de Voorbeeldoplossing
-De Voorbeeldoplossing is opzettelijk eenvoudig. Het is ontworpen om u te laten zien u hoe u Data Factory en Batch samen met proces-gegevenssets. De oplossing telt het aantal exemplaren van de zoekterm "Microsoft" in invoerbestanden die zijn ingedeeld in een tijdreeks. Deze vervolgens weergeeft het aantal dat moet worden uitvoerbestanden.
+## <a name="implementation-of-the-sample-solution"></a>Implementatie van de voorbeeld oplossing
+De voorbeeld oplossing is opzettelijk eenvoudig. Het is ontworpen om u te laten zien hoe u Data Factory en batch samen kunt gebruiken om gegevens sets te verwerken. De oplossing telt het aantal exemplaren van de zoek term ' micro soft ' in invoer bestanden die zijn ingedeeld in een tijd reeks. Vervolgens wordt het aantal uitgevoerd naar uitvoer bestanden.
 
-**Tijd:** Als u bekend met de basisprincipes van Azure Data Factory en Batch bent en de volgende vereisten hebt voltooid, wordt in deze oplossing een tot twee uur duurt.
+**Tegelijk** Als u bekend bent met de basis principes van Azure, Data Factory en batch en u de volgende vereisten hebt voltooid, duurt het één tot twee uur om deze oplossing te volt ooien.
 
 ### <a name="prerequisites"></a>Vereisten
 #### <a name="azure-subscription"></a>Azure-abonnement
-Als u geen Azure-abonnement hebt, kunt u snel een gratis proefaccount maken. Zie voor meer informatie, [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
+Als u geen Azure-abonnement hebt, kunt u snel een gratis proef account maken. Zie [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/)voor meer informatie.
 
 #### <a name="azure-storage-account"></a>Azure Storage-account
-U kunt een storage-account gebruiken voor het opslaan van de gegevens in deze zelfstudie. Als u geen een storage-account hebt, raadpleegt u [een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md). De Voorbeeldoplossing maakt gebruik van blob-opslag.
+In deze zelf studie gebruikt u een opslag account om de gegevens op te slaan. Zie [een opslag account maken](../../storage/common/storage-quickstart-create-account.md)als u geen opslag account hebt. De voorbeeld oplossing maakt gebruik van Blob Storage.
 
 #### <a name="azure-batch-account"></a>Azure Batch-account
-Een Batch-account maken met behulp van de [Azure-portal](https://portal.azure.com/). Zie voor meer informatie, [maken en beheren van een Batch-account](../../batch/batch-account-create-portal.md). Houd er rekening mee de Batch-account naam en de accountsleutel. Ook kunt u de [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) cmdlet voor het maken van een Batch-account. Zie voor instructies over het gebruik van deze cmdlet [aan de slag met Batch PowerShell-cmdlets](../../batch/batch-powershell-cmdlets-get-started.md).
+Maak een batch-account met behulp van de [Azure Portal](https://portal.azure.com/). Zie [een batch-account maken en beheren](../../batch/batch-account-create-portal.md)voor meer informatie. Noteer de batch-account naam en de account sleutel. U kunt ook de cmdlet [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) gebruiken om een batch-account te maken. Zie [aan de slag met batch-Power shell](../../batch/batch-powershell-cmdlets-get-started.md)-cmdlets voor instructies over het gebruik van deze cmdlet.
 
-De Voorbeeldoplossing maakt gebruik van Batch (indirect via een data factory-pijplijn) om gegevens te verwerken in een parallelle manier op een pool van rekenknooppunten (een beheerde verzameling virtuele machines).
+De voorbeeld oplossing maakt gebruik van batch (indirect via een data factory pijp lijn) om gegevens parallel te verwerken op een pool van reken knooppunten (een beheerde verzameling virtuele machines).
 
-#### <a name="azure-batch-pool-of-virtual-machines"></a>Azure Batch-pool van virtuele machines
-Een Batch-pool maken met ten minste twee rekenknooppunten.
+#### <a name="azure-batch-pool-of-virtual-machines"></a>Azure Batch pool van virtuele machines
+Maak een batch-pool met ten minste twee reken knooppunten.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer **Bladeren** in het menu aan de linkerkant en selecteer **Batch-Accounts**.
+1. Selecteer in het [Azure Portal](https://portal.azure.com) **Bladeren** in het menu links en selecteer batch- **accounts**.
 
-1. Selecteer uw Batch-account openen de **Batch-Account** blade.
+1. Selecteer uw batch-account om de Blade **batch-account** te openen.
 
-1. Selecteer de **Pools** tegel.
+1. Selecteer de tegel **groepen** .
 
-1. Op de **Pools** blade, selecteer de **toevoegen** knop op de werkbalk om een groep toevoegen.
+1. Selecteer op de Blade **Pools** de knop **toevoegen** op de werk balk om een groep toe te voegen.
 
-   a. Geef een ID voor de pool (**groeps-ID**). Houd er rekening mee de ID van de pool. U hebt deze nodig wanneer u de data factory-oplossing.
+   a. Voer een ID in voor de pool (**groeps-id**). Noteer de ID van de groep. U hebt deze nodig wanneer u de data factory-oplossing maakt.
 
-   b. Geef **Windows Server 2012 R2** voor de **Besturingssysteemfamilie** instelling.
+   b. Geef **Windows Server 2012 R2** op voor de instelling van het **besturings systeem** .
 
-   c. Selecteer een **knooppunt prijscategorie**.
+   c. Selecteer een **prijs categorie voor het knoop punt**.
 
-   d. Voer **2** als de waarde voor de **doel toegewezen** instelling.
+   d. Voer **2** in als de waarde voor de **toegewezen doel** instelling.
 
-   e. Voer **2** als de waarde voor de **maximum aantal taken per knooppunt** instelling.
+   e. Voer **2** in als de waarde voor de instelling **Max. aantal taken per knoop punt** .
 
-   f. Selecteer **OK** om de pool te maken.
+   f. Selecteer **OK** om de groep te maken.
 
 #### <a name="azure-storage-explorer"></a>Azure Opslagverkenner
-U gebruikt [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) of [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (van ClumsyLeaf Software) om te controleren en wijzigen van de gegevens in uw Storage-projecten. U kunt ook controleren en wijzigen van de gegevens in de logboeken van uw cloudtoepassingen.
+U gebruikt [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) of [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (van ClumsyLeaf-software) om de gegevens in uw opslag projecten te controleren en te wijzigen. U kunt ook de gegevens in de logboeken van uw in de Cloud gehoste toepassingen controleren en wijzigen.
 
 1. Maak een container met de naam **mycontainer** met persoonlijke toegang (geen anonieme toegang).
 
 1. Als u CloudXplorer gebruikt, maakt u mappen en submappen met de volgende structuur:
 
-   ![Structuur van map en submappen](./media/data-factory-data-processing-using-batch/image3.png)
+   ![Structuur van mappen en submappen](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder` en `outputfolder` zijn op het hoogste niveau mappen in `mycontainer`. De `inputfolder` map bevat submappen met de datum / tijd-stempels (jjjj-MM-DD: HH).
+   `Inputfolder`en `outputfolder` zijn mappen op het hoogste niveau `mycontainer`in. De `inputfolder` map bevat submappen met een datum/tijd stempel (jjjj-mm-dd-UU).
 
-   Als u Storage Explorer, in de volgende stap, uploadt u de bestanden met de volgende namen: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`, enzovoort. Deze stap maakt automatisch de mappen.
+   Als u Storage Explorer gebruikt, uploadt u in de volgende stap bestanden met de volgende namen: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt`, enzovoort. Met deze stap worden de mappen automatisch gemaakt.
 
-1. Maak een tekstbestand **bestand.txt** op uw computer met inhoud die het sleutelwoord is **Microsoft**. Een voorbeeld is 'aangepaste activiteit Microsoft test aangepaste activiteit Microsoft test'.
+1. Maak een tekst bestand **bestand. txt** op de computer met inhoud met het sleutel woord **micro soft**. Een voor beeld is ' aangepaste activiteit testen die micro soft heeft gepaard micro soft '.
 
-1. Upload het bestand naar de volgende invoer mappen in blob-opslag:
+1. Upload het bestand naar de volgende invoer mappen in Blob Storage:
 
    ![Invoer mappen](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Als u Storage Explorer gebruikt, uploadt u de **bestand.txt** van het bestand in **mycontainer**. Selecteer **kopie** op de werkbalk om een kopie van de blob te maken. In de **kopiëren van de Blob** wijzigen van het dialoogvenster de **blob doelnaam** naar `inputfolder/2015-11-16-00/file.txt`. Herhaal deze stap maken `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt`, enzovoort. Deze actie wordt automatisch gemaakt voor de mappen.
+   Als u Storage Explorer gebruikt, uploadt u het bestand **. txt** -bestand naar **mycontainer**. Selecteer **kopiëren** op de werk balk om een kopie van de BLOB te maken. Wijzig in het dialoog venster `inputfolder/2015-11-16-00/file.txt` **BLOB kopiëren** de naam van de **doel-BLOB** in. Herhaal deze stap om te `inputfolder/2015-11-16-01/file.txt`maken `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt`,, enzovoort. Met deze actie worden automatisch de mappen gemaakt.
 
-1. Maken van een andere container met de naam `customactivitycontainer`. De aangepaste activiteit zip-bestand uploaden naar deze container.
+1. Maak een andere container `customactivitycontainer`met de naam. Upload het zip-bestand van de aangepaste activiteit naar deze container.
 
 #### <a name="visual-studio"></a>Visual Studio
-Installeer Visual Studio 2012 of later om de aangepaste activiteit Batch moet worden gebruikt in de data factory-oplossing te maken.
+Installeer Visual Studio 2012 of hoger om de aangepaste batch-activiteit te maken die in de data factory oplossing moet worden gebruikt.
 
-### <a name="high-level-steps-to-create-the-solution"></a>Op hoog niveau van de stappen voor het maken van de oplossing
-1. Maak een aangepaste activiteit die de gegevensverwerking logica bevat.
+### <a name="high-level-steps-to-create-the-solution"></a>Stappen op hoog niveau voor het maken van de oplossing
+1. Maak een aangepaste activiteit die de logica voor gegevens verwerking bevat.
 
 1. Maak een data factory die gebruikmaakt van de aangepaste activiteit.
 
 ### <a name="create-the-custom-activity"></a>De aangepaste activiteit maken
-De data factory aangepaste activiteit vormt de kern van de Voorbeeldoplossing van dit. De Voorbeeldoplossing maakt gebruik van Batch om uit te voeren van de aangepaste activiteit. Zie voor meer informatie over het ontwikkelen van aangepaste activiteiten en deze gebruiken in data factory-pijplijnen [aangepaste activiteiten gebruiken in een data factory-pijplijn](data-factory-use-custom-activities.md).
+De data factory aangepaste activiteit is het hart van deze voorbeeld oplossing. De voorbeeld oplossing maakt gebruik van batch om de aangepaste activiteit uit te voeren. Zie [aangepaste activiteiten gebruiken in een Data Factory-pijp lijn](data-factory-use-custom-activities.md)voor meer informatie over het ontwikkelen van aangepaste activiteiten en het gebruik ervan in Data Factory pijp lijnen.
 
-Voor het maken van een aangepaste .NET-activiteit die u kunt gebruiken in een data factory-pijplijn, maakt u een .NET-klassebibliotheekproject met een klasse die de IDotNetActivity-interface implementeert. Deze interface heeft slechts één methode: Uitvoeren. Dit is de handtekening van de methode:
+Als u een aangepaste .NET-activiteit wilt maken die u in een data factory pijp lijn kunt gebruiken, maakt u een .NET-klassen bibliotheek project met een klasse die de IDotNetActivity-interface implementeert. Deze interface heeft slechts één methode: Aanvaller. Dit is de hand tekening van de methode:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -167,46 +165,46 @@ public IDictionary<string, string> Execute(
             IActivityLogger logger)
 ```
 
-De methode heeft enkele belangrijke onderdelen die u nodig hebt om te begrijpen:
+De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
 
-* De methode nodig vier parameters:
+* De methode heeft vier para meters:
 
-  * **linkedServices**. Deze parameter is een overzichtslijst met gekoppelde services die i/o-gegevensbronnen (bijvoorbeeld blob storage) aan de data factory koppelen. In dit voorbeeld is er slechts één van de gekoppelde service van het type Azure-opslag die wordt gebruikt voor zowel invoer en uitvoer.
-  * **gegevenssets**. Deze parameter is een overzichtslijst met gegevenssets. U kunt deze parameter gebruiken om de locaties en schema's die zijn gedefinieerd door gegevenssets voor invoer en uitvoer te verkrijgen.
-  * **activiteit**. Deze parameter geeft de huidige compute-entiteit. In dit geval is het een batchservice.
-  * **logger**. U kunt de logger foutopsporing opmerkingen die surface schrijven als het logboek 'Gebruiker' voor de pijplijn.
-* De methode retourneert een woordenlijst die kan worden gebruikt om aangepaste activiteiten samen in de toekomst koppelen. Deze functie nog niet is geïmplementeerd, kunt u dus een lege woordenlijst retourneren van de methode.
+  * **linkedServices**. Deze para meter is een overzicht van gekoppelde services die invoer/uitvoer-gegevens bronnen (bijvoorbeeld Blob Storage) koppelen aan de data factory. In dit voor beeld is er slechts één gekoppelde service van het type Azure Storage gebruikt voor invoer en uitvoer.
+  * **gegevens sets**. Deze para meter is een overzicht van gegevens sets. U kunt deze para meter gebruiken om de locaties en schema's op te halen die worden gedefinieerd door de invoer-en uitvoer gegevens sets.
+  * **activiteit**. Deze para meter vertegenwoordigt de huidige Compute-entiteit. In dit geval is het een batch-service.
+  * **logger**. U kunt de logboek registratie gebruiken om fout opsporingsgegevens te schrijven die het Opper vlak ' gebruiker ' voor de pijp lijn.
+* De-methode retourneert een woorden lijst die kan worden gebruikt om aangepaste activiteiten in de toekomst te koppelen. Deze functie is nog niet geïmplementeerd, dus retour neren alleen een lege woorden lijst van de methode.
 
-#### <a name="procedure-create-the-custom-activity"></a>Procedure: De aangepaste activiteit maken
-1. Maak een .NET-klassebibliotheekproject in Visual Studio.
+#### <a name="procedure-create-the-custom-activity"></a>Goedkeuringsprocedure De aangepaste activiteit maken
+1. Maak een .NET Class Library-project in Visual Studio.
 
    a. Start Visual Studio 2012/2013/2015.
 
    b. Selecteer **Bestand** > **Nieuw** > **Project**.
 
-   c. Vouw **sjablonen**, en selecteer **Visual C\#** . In dit scenario gebruikt u C\#, maar u kunt een .NET-taal gebruiken voor het ontwikkelen van de aangepaste activiteit.
+   c. Vouw **sjablonen**uit en selecteer **Visual C\#** . In dit scenario gebruikt u C\#, maar u kunt elke .net-taal gebruiken om de aangepaste activiteit te ontwikkelen.
 
-   d. Selecteer **Class Library** uit de lijst met projecttypen aan de rechterkant.
+   d. Selecteer **Class Library** in de lijst met project typen aan de rechter kant.
 
-   e. Voer **MyDotNetActivity** voor de **naam**.
+   e. Voer **MyDotNetActivity** in als **naam**.
 
-   f. Selecteer **C:\\ADF** voor de **locatie**. Maak de map **ADF** als deze niet bestaat.
+   f. Selecteer **C:\\ADF** voor de **locatie**. Maak de map **ADF** als deze nog niet bestaat.
 
    g. Selecteer **OK** om het project te maken.
 
-1. Selecteer **extra** > **NuGet-Pakketbeheer** > **Package Manager Console**.
+1. Selecteer **extra** > **NuGet package manager** > Package Manager-**console**.
 
-1. In de Package Manager-Console, dan de volgende opdracht om te importeren Microsoft.Azure.Management.DataFactories:
+1. Voer in de Package Manager-console de volgende opdracht uit om micro soft. Azure. Management. DataFactories te importeren:
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-1. Importeren van de **Azure Storage** NuGet-pakket in het project. Omdat u de API voor Blob-opslag in dit voorbeeld gebruiken moet u dit pakket:
+1. Importeer het **Azure Storage** NuGet-pakket in het project. U hebt dit pakket nodig omdat u de Blob Storage-API in dit voor beeld gebruikt:
 
     ```powershell
     Install-Package Az.Storage
     ```
-1. Voeg de volgende using-instructies aan het bronbestand in het project:
+1. Voeg de volgende instructies toe aan het bron bestand in het project:
 
     ```csharp
     using System.IO;
@@ -220,17 +218,17 @@ De methode heeft enkele belangrijke onderdelen die u nodig hebt om te begrijpen:
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-1. Wijzig de naam van de naamruimte **MyDotNetActivityNS**.
+1. Wijzig de naam van de naam ruimte in **MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-1. Wijzig de naam van de klasse **MyDotNetActivity**, en die afkomstig zijn uit de **IDotNetActivity** interface zoals wordt weergegeven:
+1. Wijzig de naam van de klasse in **MyDotNetActivity**en afleiden van de **IDotNetActivity** -interface, zoals wordt weer gegeven:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-1. Implementeren (toevoegen) de **Execute** -methode van de **IDotNetActivity** interface met de **MyDotNetActivity** klasse. Kopieer de volgende code toe aan de methode. Zie voor een uitleg van de logica in deze methode gebruikt, de [uitvoermethode](#execute-method) sectie.
+1. Implementeer (toevoegen) de **Execute** -methode van de **IDotNetActivity** -interface aan de klasse **MyDotNetActivity** . Kopieer de volgende voorbeeld code naar de-methode. Zie de sectie [methode uitvoeren](#execute-method) voor een uitleg van de logica die wordt gebruikt in deze methode.
 
     ```csharp
     /// <summary>
@@ -312,7 +310,7 @@ De methode heeft enkele belangrijke onderdelen die u nodig hebt om te begrijpen:
        return new Dictionary<string, string>();
     }
     ```
-1. Voeg de volgende methoden toe aan de klasse. Deze methoden worden aangeroepen door de **Execute** methode. Belangrijkste, de **berekenen** methode worden geïsoleerd van de code die door elke blob gegevensbrontabellen loopt.
+1. Voeg de volgende Help-methoden toe aan de klasse. Deze methoden worden aangeroepen door de **Execute** -methode. Met de methode **Calculate** wordt de code voor het door lopen van elke BLOB geïsoleerd.
 
     ```csharp
     /// <summary>
@@ -381,7 +379,7 @@ De methode heeft enkele belangrijke onderdelen die u nodig hebt om te begrijpen:
        return output;
     }
     ```
-    De methode GetFolderPath retourneert het pad naar de map die de gegevensset naar wijst en de getfilename,-methode retourneert de naam van de blob /-bestand dat de gegevensset naar wijst.
+    De methode GetFolderPath retourneert het pad naar de map waarnaar de DataSet verwijst en de methode GetFileName retourneert de naam van het BLOB/bestand waarnaar de gegevensset verwijst.
 
     ```csharp
 
@@ -394,22 +392,22 @@ De methode heeft enkele belangrijke onderdelen die u nodig hebt om te begrijpen:
             "folderPath": "mycontainer/inputfolder/{Year}-{Month}-{Day}-{Hour}",
     ```
 
-    De methode Calculate berekent het aantal exemplaren van het sleutelwoord 'Microsoft' in de invoerbestanden (blobs in de map). De zoekterm "Microsoft" is vastgelegd in de code.
+    De methode Calculate berekent het aantal exemplaren van het sleutel woord ' micro soft ' in de invoer bestanden (blobs in de map). De zoek term micro soft is vastgelegd in de code.
 
-1. Het project compileren. Selecteer **bouwen** in het menu en selecteer vervolgens **Build Solution**.
+1. Het project compileren. Selecteer **Build** in het menu en selecteer vervolgens **Build Solution**.
 
-1. Start Windows Verkenner en Ga naar de **bin\\debug** of **bin\\release** map. De keuze van de map is afhankelijk van het type van de build.
+1. Start Windows Verkenner en ga naar de map **bin\\debug** of **bin\\release** . De keuze van de map is afhankelijk van het type Build.
 
-1. Maak een zip-bestand **MyDotNetActivity.zip** die bevat alle binaire bestanden in de  **\\bin\\Debug** map. Het is raadzaam om op te nemen van de MyDotNetActivity. **pdb** bestand, zodat u aanvullende informatie zoals het regelnummer krijgen in de broncode waardoor het probleem een fout optreedt.
+1. Maak een zip-bestand **MyDotNetActivity. zip** dat alle binaire bestanden bevat in de  **\\map bin\\debug** . Mogelijk wilt u de MyDotNetActivity toevoegen. **PDB** -bestand, zodat u aanvullende informatie krijgt, zoals het regel nummer in de bron code die het probleem heeft veroorzaakt als er een fout optreedt.
 
-   ![De lijst van de map bin\Debug](./media/data-factory-data-processing-using-batch/image5.png)
+   ![De lijst met bin\Debug](./media/data-factory-data-processing-using-batch/image5.png)
 
-1. Uploaden **MyDotNetActivity.zip** als blob naar de blob-container `customactivitycontainer` in de blob-opslag dat met de StorageLinkedService-service in ADFTutorialDataFactory wordt gekoppeld. Maken van de blob-container `customactivitycontainer` als deze nog niet bestaat.
+1. Upload **MyDotNetActivity. zip** als een BLOB naar de BLOB- `customactivitycontainer` container in de Blob-opslag die door de gekoppelde StorageLinkedService-service in ADFTutorialDataFactory wordt gebruikt. Maak de BLOB- `customactivitycontainer` container als deze nog niet bestaat.
 
-#### <a name="execute-method"></a>De methode Execute
-Deze sectie bevat meer informatie over de code in de Execute-methode.
+#### <a name="execute-method"></a>Methode uitvoeren
+In deze sectie vindt u meer informatie over de code in de methode Execute.
 
-1. De leden voor de invoerverzameling doorlopen vindt u in de [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) naamruimte. Als u wilt de blob-collectie doorlopen, bent u vereist om te gebruiken de **BlobContinuationToken** klasse. In wezen, moet u een do-while-lus met het token als het mechanisme voor het afsluiten van de lus. Zie voor meer informatie, [gebruik Blob storage vanuit .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Een basic-lus wordt hier weergegeven:
+1. De leden voor het herhalen van de invoer verzameling vindt u in de naam ruimte [micro soft. WindowsAzure. storage. blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) . Als u de BLOB-verzameling wilt door lopen, moet u de **BlobContinuationToken** -klasse gebruiken. In essentie moet u een do-while-lus met het token gebruiken als het mechanisme voor het afsluiten van de lus. Zie [Blob Storage van .net gebruiken](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor meer informatie. Hier ziet u een eenvoudige lus:
 
     ```csharp
     // Initialize the continuation token.
@@ -432,47 +430,47 @@ Deze sectie bevat meer informatie over de code in de Execute-methode.
     } while (continuationToken != null);
 
     ```
-   Zie voor meer informatie de documentatie voor de [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) methode.
+   Zie de documentatie voor de methode [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) voor meer informatie.
 
-1. De code voor het werken met de reeks blobs logisch gaat binnen de do-while-lus. In de **Execute** methode, de-terwijl de lus wordt de lijst met blobs doorgegeven aan een methode met de naam **berekenen**. De methode retourneert een string-variabele met de naam **uitvoer** dat wil zeggen het resultaat van die via alle blobs in het segment herhaald.
+1. De code voor het werken met de set blobs is logisch binnen de lus-while. In de **Execute** -methode geeft de lus-while de lijst met blobs door aan een methode met de naam **Calculate**. De methode retourneert een teken reeks variabele met de naam **output** die het resultaat is van het door lopen van alle blobs in het segment.
 
-   Deze retourneert het aantal exemplaren van de zoekterm "Microsoft" in de blob die is doorgegeven aan de **berekenen** methode.
+   Hiermee wordt het aantal exemplaren geretourneerd van de zoek term ' micro soft ' in de blob die is door gegeven aan de methode Calculate.
 
     ```csharp
     output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
     ```
-1. Na de **berekenen** methode is voltooid, moet zijn geschreven naar een nieuwe blob. Voor elke set blobs verwerkt, kan een nieuwe blob worden geschreven met de resultaten. Voor het schrijven naar een nieuwe blob, moet u eerst de uitvoergegevensset vinden.
+1. Nadat de methode Calculate is voltooid, moet deze worden geschreven naar een nieuwe blob. Voor elke set verwerkte blobs kan een nieuwe BLOB worden geschreven met de resultaten. Als u naar een nieuwe BLOB wilt schrijven, moet u eerst de uitvoer gegevensset vinden.
 
     ```csharp
     // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
     Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
     ```
-1. De code wordt ook de Help-methode **GetFolderPath** om op te halen van het mappad (de containernaam van opslag).
+1. De code roept ook de Help-methode **GetFolderPath** aan om het mappad (de naam van de opslag container) op te halen.
 
     ```csharp
     folderPath = GetFolderPath(outputDataset);
     ```
-   De methode GetFolderPath cast-object voor de gegevensset naar een AzureBlobDataSet, met een eigenschap met de naam FolderPath.
+   De methode GetFolderPath cast het object DataSet naar een AzureBlobDataSet, dat een eigenschap heeft met de naam FolderPath.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FolderPath;
     ```
-1. De code roept de **GetFileName** methode voor het ophalen van de naam van het bestand (blobnaam). De code is vergelijkbaar met de vorige code die is gebruikt voor het ophalen van pad naar de map.
+1. De code roept de **GetFileName** -methode op om de bestands naam (BLOB name) op te halen. De code is vergelijkbaar met de vorige code die is gebruikt om het mappad op te halen.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FileName;
     ```
-1. De naam van het bestand is gemaakt met het maken van een URI-object. De URI-constructor gebruikt de **BlobEndpoint** eigenschap om de containernaam te retourneren. De naam van pad en bestandsnaam in de map worden toegevoegd aan het samenstellen van de blob-URI van de uitvoer.  
+1. De naam van het bestand wordt geschreven door een URI-object te maken. De URI-constructor gebruikt de eigenschap **BlobEndpoint** om de container naam te retour neren. Het pad en de bestands naam van de map worden toegevoegd om de URI van de uitvoer-BLOB te maken.  
 
     ```csharp
     // Write the name of the file.
     Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     ```
-1. Nadat de naam van het bestand is geschreven, kunt u de uitvoertekenreeks van de **berekenen** methode naar een nieuwe blob:
+1. Nadat de naam van het bestand is geschreven, kunt u de uitvoer teken reeks van de methode Calculate naar een nieuwe BLOB schrijven:
 
     ```csharp
     // Create a blob and upload the output text.
@@ -482,11 +480,11 @@ Deze sectie bevat meer informatie over de code in de Execute-methode.
     ```
 
 ### <a name="create-the-data-factory"></a>De data factory maken
-In de [maken van de aangepaste activiteit](#create-the-custom-activity) sectie maakt u een aangepaste activiteit gemaakt en het zip-bestand met de binaire bestanden en het PDB-bestand geüpload naar een blob-container. In deze sectie maakt maken u een data factory met een pijplijn met behulp van de aangepaste activiteit.
+In de sectie [aangepaste activiteit maken](#create-the-custom-activity) hebt u een aangepaste activiteit gemaakt en het zip-bestand met binaire bestanden en het PDB-bestand geüpload naar een BLOB-container. In deze sectie maakt u een data factory met een pijp lijn die gebruikmaakt van de aangepaste activiteit.
 
-De invoergegevensset voor de aangepaste activiteit vertegenwoordigt de blobs (bestanden) in de invoermap (`mycontainer\\inputfolder`) in blob-opslag. De uitvoergegevensset voor de activiteit vertegenwoordigt de gegevens in blobs in de map voor uitvoer (`mycontainer\\outputfolder`) in blob-opslag.
+De invoer gegevensset voor de aangepaste activiteit vertegenwoordigt de blobs (bestanden) in de invoercel (`mycontainer\\inputfolder`) in Blob Storage. De uitvoer gegevensset voor de activiteit vertegenwoordigt de uitvoer-blobs in de uitvoermap (`mycontainer\\outputfolder`) in Blob Storage.
 
-Een of meer bestanden in de invoermappen plaatsen:
+Een of meer bestanden neerzetten in de invoer mappen:
 
 ```
 mycontainer -\> inputfolder
@@ -497,21 +495,21 @@ mycontainer -\> inputfolder
     2015-11-16-04
 ```
 
-Verwijder bijvoorbeeld één bestand (bestand.txt) met de volgende inhoud in elk van de mappen:
+U kunt bijvoorbeeld één bestand (bestand. txt) met de volgende inhoud in elk van de mappen verwijderen:
 
 ```
 test custom activity Microsoft test custom activity Microsoft
 ```
 
-Elke invoermap komt overeen met een segment in de data factory, zelfs als de map twee of meer bestanden heeft. Wanneer elk segment wordt verwerkt door de pijplijn, wordt de aangepaste activiteit doorloopt de blobs in de map invoer voor dat segment.
+Elke invoercel komt overeen met een segment in het data factory, zelfs als de map twee of meer bestanden bevat. Wanneer elk segment door de pijp lijn wordt verwerkt, doorloopt de aangepaste activiteit alle blobs in de map invoer voor dat segment.
 
-U ziet vijf uitvoerbestanden met dezelfde inhoud. Het bestand voor uitvoer van het verwerken van het bestand in de map 2015-11-16: 00 heeft bijvoorbeeld de volgende inhoud:
+U ziet vijf uitvoer bestanden met dezelfde inhoud. Het uitvoer bestand van verwerking van het bestand in de map 2015-11-16-00 heeft bijvoorbeeld de volgende inhoud:
 
 ```
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
 ```
 
-Als u meerdere bestanden (bestand.txt, bestand2.txt samengevoegd, file3.txt) met dezelfde inhoud in de map invoer neerzetten, ziet u de volgende inhoud in het uitvoerbestand. Elke map (2015-11-16: 00, enzovoort) komt overeen met een segment in dit voorbeeld, zelfs als de map meerdere invoerbestanden heeft.
+Als u meerdere bestanden (File. txt, bestand2. txt, file3. txt) met dezelfde inhoud in de map invoer neerzet, ziet u de volgende inhoud in het uitvoer bestand. Elke map (2015-11-16-00, enz.) komt overeen met een segment in dit voor beeld, ook al heeft de map meerdere invoer bestanden.
 
 ```csharp
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
@@ -519,91 +517,91 @@ Als u meerdere bestanden (bestand.txt, bestand2.txt samengevoegd, file3.txt) met
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file3.txt.
 ```
 
-Het uitvoerbestand heeft drie regels nu, één voor elk invoerbestand (blob) in de map die is gekoppeld aan het segment (2015-11-16: 00).
+Het uitvoer bestand heeft nu drie regels, één voor elk invoer bestand (BLOB) in de map die is gekoppeld aan het segment (2015-11-16-00).
 
-Een taak wordt gemaakt voor elke activiteit die wordt uitgevoerd. In dit voorbeeld moet u er slechts één activiteit is in de pijplijn. Wanneer een segment wordt verwerkt door de pijplijn, wordt de aangepaste activiteit wordt uitgevoerd op Batch voor het verwerken van het segment. Omdat er vijf segmenten (elk segment kan hebben meerdere blobs of -bestand), worden de vijf taken in Batch gemaakt. Wanneer een taak wordt uitgevoerd op Batch, is de aangepaste activiteit die wordt uitgevoerd.
+Er wordt een taak gemaakt voor elke uitvoering van de activiteit. In dit voor beeld is er slechts één activiteit in de pijp lijn. Wanneer een segment door de pijp lijn wordt verwerkt, wordt de aangepaste activiteit uitgevoerd op batch om het segment te verwerken. Omdat er vijf segmenten zijn (elk segment kan meerdere blobs of een bestand bevatten), worden er vijf taken in batch gemaakt. Wanneer een taak wordt uitgevoerd op batch, is dit de aangepaste activiteit die wordt uitgevoerd.
 
-De volgende procedure bevat aanvullende informatie.
+In de volgende walkthrough vindt u meer informatie.
 
 #### <a name="step-1-create-the-data-factory"></a>Stap 1: De data factory maken
-1. Nadat u zich aanmeldt bij de [Azure-portal](https://portal.azure.com/), de volgende stappen uit:
+1. Nadat u zich hebt aangemeld bij de [Azure Portal](https://portal.azure.com/), voert u de volgende stappen uit:
 
-   a. Selecteer **nieuw** in het menu links.
+   a. Selecteer **Nieuw** in het menu links.
 
-   b. Selecteer **gegevens en analyses** op de **nieuw** blade.
+   b. Selecteer **gegevens en analyses** op de **nieuwe** Blade.
 
-   c. Selecteer **Data Factory** op de **gegevensanalyse** blade.
+   c. Selecteer **Data Factory** op de Blade **gegevens analyse** .
 
-1. Op de **nieuwe data factory** blade Voer **CustomActivityFactory** voor de naam. De naam van de data factory moet een Globally Unique Identifier zijn. Als u de foutmelding 'de naam Data factory CustomActivityFactory is niet beschikbaar', wijzigt u de naam van de data factory. Bijvoorbeeld, gebruik yournameCustomActivityFactory en opnieuw maken van de data factory.
+1. Voer op de Blade **nieuw Data Factory** **CustomActivityFactory** in als naam. De naam van de data factory moet een Globally Unique Identifier zijn. Als het fout bericht ' Data Factory-naam CustomActivityFactory is niet beschikbaar ' wordt weer gegeven, wijzigt u de naam van de data factory. Gebruik bijvoorbeeld yournameCustomActivityFactory en maak de data factory opnieuw.
 
-1. Selecteer **GROEPSNAAM voor ACCOUNTRESOURCES**, en selecteer een bestaande resourcegroep of maak een resourcegroep.
+1. Selecteer de naam van de **resource groep**en selecteer een bestaande resource groep of maak een resource groep.
 
-1. Controleer of het abonnement en de regio waar u de data factory moet worden gemaakt juist zijn.
+1. Controleer of het abonnement en de regio waar u de data factory wilt maken juist zijn.
 
-1. Selecteer **maken** op de **nieuwe data factory** blade.
+1. Selecteer **maken** op de Blade **Nieuw Data Factory** .
 
-1. De data factory is gemaakt in het dashboard van de portal.
+1. De data factory wordt gemaakt in het dash board van de portal.
 
-1. Nadat de gegevensfactory is gemaakt, ziet u de **Data factory** pagina, waarin u de inhoud van de data factory.
+1. Nadat de data factory is gemaakt, ziet u de pagina **Data Factory** , waarin de inhoud van de Data Factory wordt weer gegeven.
 
-   ![Pagina Data factory](./media/data-factory-data-processing-using-batch/image6.png)
+   ![Pagina Data Factory](./media/data-factory-data-processing-using-batch/image6.png)
 
 #### <a name="step-2-create-linked-services"></a>Stap 2: Gekoppelde services maken
-Gekoppelde services worden gegevensarchieven of compute-services aan een data factory. In deze stap koppelt u uw opslagaccount en de Batch-account aan uw data factory.
+Met gekoppelde services worden gegevens archieven of COMPUTE-Services gekoppeld aan een data factory. In deze stap koppelt u uw opslag account en batch-account aan uw data factory.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
-1. Selecteer de **auteur en implementeer** tegel op de **Data factory** blade voor **CustomActivityFactory**. De Data Factory-Editor wordt weergegeven.
+1. Selecteer de tegel **ontwerpen en implementeren** op de Blade **Data Factory** voor **CustomActivityFactory**. De Data Factory editor wordt weer gegeven.
 
-1. Selecteer **nieuw gegevensarchief** op de opdrachtbalk en kies **Azure storage.** De JSON-script gebruikt u voor het maken van een gekoppelde service in de editor wordt weergegeven.
+1. Selecteer **Nieuw gegevens archief** op de opdracht balk en kies **Azure Storage.** Het JSON-script dat u gebruikt voor het maken van een gekoppelde opslag service in de editor wordt weer gegeven.
 
    ![Nieuwe gegevensopslag](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Zie voor meer informatie over het verkrijgen van uw toegangssleutel voor opslag, [weergeven, kopiëren en opnieuw genereren opslag toegangssleutels](../../storage/common/storage-account-manage.md#access-keys).
+1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Zie [toegangs sleutels voor opslag weer geven, kopiëren en opnieuw genereren](../../storage/common/storage-account-manage.md#access-keys)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
 
 1. Selecteer in de opdrachtbalk **Implementeren** om de gekoppelde service te implementeren.
 
    ![Implementeren](./media/data-factory-data-processing-using-batch/image8.png)
 
-#### <a name="create-an-azure-batch-linked-service"></a>Een gekoppelde Azure-Batch-service maken
-In deze stap maakt u een gekoppelde service voor uw Batch-account dat wordt gebruikt voor het uitvoeren van de aangepaste activiteit van data factory.
+#### <a name="create-an-azure-batch-linked-service"></a>Een Azure Batch gekoppelde service maken
+In deze stap maakt u een gekoppelde service voor uw batch-account dat wordt gebruikt voor het uitvoeren van de data factory aangepaste activiteit.
 
-1. Selecteer **nieuwe berekening** op de opdrachtbalk en kies **Azure Batch.** De JSON-script maakt u een Batch gekoppelde service in de editor wordt weergegeven.
+1. Selecteer **nieuwe Compute** op de opdracht balk en kies **Azure batch.** Het JSON-script dat u gebruikt voor het maken van een gekoppelde batch-service in de editor wordt weer gegeven.
 
-1. In de JSON-script:
+1. In het JSON-script:
 
-   a. Vervang **accountnaam** met de naam van uw Batch-account.
+   a. Vervang de **account naam** door de naam van uw batch-account.
 
-   b. Vervang **toegangssleutel** door de toegangssleutel van het Batch-account.
+   b. Vervang de **toegangs sleutel** door de toegangs sleutel van het batch-account.
 
-   c. Voer de ID van de groep voor de **poolName** eigenschap. Voor deze eigenschap, kunt u opgeven de naam van de groep van toepassingen of de id van de groep van toepassingen.
+   c. Voer de ID van de pool in voor de eigenschap **pool** naam. Voor deze eigenschap kunt u de naam van de groep of de groeps-ID opgeven.
 
-   d. Voer de batch-URI voor de **batchUri** JSON-eigenschap.
+   d. Voer de batch-URI in voor de JSON-eigenschap **batchUri** .
 
       > [!IMPORTANT]
-      > De URL van de **Batch-Account** blade is in de volgende indeling: \<accountname\>.\< regio\>. batch.azure.com. Voor de **batchUri** eigenschap in de JSON-script dat u wilt verwijderen van a88 "accountname." ** uit de URL. Een voorbeeld is `"batchUri": "https://eastus.batch.azure.com"`.
+      > De URL van de Blade **batch-account** heeft de volgende indeling \<: AccountName\>.\< Region\>. batch.Azure.com. Voor de eigenschap **batchUri** in het JSON-script moet u A88 ' AccountName ' verwijderen. * * van de URL. Een voorbeeld is `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
-      ![Blade batch-Account](./media/data-factory-data-processing-using-batch/image9.png)
+      ![Blade batch-account](./media/data-factory-data-processing-using-batch/image9.png)
 
-      Voor de **poolName** eigenschap, kunt u ook de ID van de pool in plaats van de naam van de pool opgeven.
+      Voor de eigenschap **pool** naam kunt u ook de id van de pool opgeven in plaats van de naam van de groep.
 
       > [!NOTE]
-      > De Data Factory-service biedt geen op aanvraag optie ondersteuning voor Batch als voor HDInsight. U kunt alleen uw eigen Batch-pool gebruiken in een data factory.
+      > De Data Factory-service biedt geen ondersteuning voor een on-demand optie voor batch zoals voor HDInsight. U kunt alleen uw eigen batch-pool gebruiken in een data factory.
       >
       >
    
-   e. Geef **StorageLinkedService** voor de **linkedServiceName** eigenschap. U hebt deze gekoppelde service gemaakt in de vorige stap. Deze opslag wordt gebruikt als een faseringsgebied voor bestanden en Logboeken.
+   e. Geef **StorageLinkedService** op voor de eigenschap **linkedServiceName** . U hebt deze gekoppelde service gemaakt in de vorige stap. Deze opslag wordt gebruikt als tijdelijke ruimte voor bestanden en Logboeken.
 
 1. Selecteer in de opdrachtbalk **Implementeren** om de gekoppelde service te implementeren.
 
 #### <a name="step-3-create-datasets"></a>Stap 3: Gegevenssets maken
-In deze stap maakt u gegevenssets voor invoer-en uitvoergegevens.
+In deze stap maakt u gegevens sets om invoer-en uitvoer gegevens weer te geven.
 
 #### <a name="create-the-input-dataset"></a>De invoergegevensset maken
-1. Selecteer in de Data Factory Editor de **nieuwe gegevensset** op de werkbalk. Selecteer **Azure Blob-opslag** uit de vervolgkeuzelijst.
+1. Selecteer in de Data Factory editor de knop **nieuwe gegevensset** op de werk balk. Selecteer **Azure Blob-opslag** in de vervolg keuzelijst.
 
-1. Vervang de JSON-script in het rechterdeelvenster met de volgende JSON-fragment:
+1. Vervang het JSON-script in het rechterdeel venster met het volgende JSON-fragment:
 
     ```json
     {
@@ -661,13 +659,13 @@ In deze stap maakt u gegevenssets voor invoer-en uitvoergegevens.
     }
     ```
 
-    Maakt u een pijplijn verderop in dit scenario met de begintijd 2015-11-16T00:00:00Z en aan het eind tijd 2015-11-16T05:00:00Z. Deze is ingesteld voor het produceren van gegevens per uur, dus er vijf i/o-segmenten zijn (tussen **00**: 00:00 -\> **05**: 00:00).
+    U maakt later in dit overzicht een pijp lijn met de begin tijd 2015-11-16T00:00:00Z en de eind tijd 2015-11-16T05:00:00Z. Het is gepland om gegevens per uur te produceren, dus er zijn vijf invoer/uitvoer segmenten (tussen **00**: 00:00\> - **05**: 00:00).
 
-    De **frequentie** en **interval** voor de invoergegevensset zijn ingesteld op **uur** en **1**, wat betekent dat het invoersegment beschikbaar per uur is.
+    De **frequentie** en het **interval** voor de invoer gegevensset zijn ingesteld op **uur** en **1**, wat betekent dat het invoer segment per uur beschikbaar is.
 
-    De begintijd voor elk segment wordt vertegenwoordigd door de **SliceStart** systeemvariabele in de vorige JSON-codefragment. Hier volgen de begintijden voor elk segment.
+    De begin tijd voor elk segment wordt weer gegeven door de systeem variabele **slice start** in het vorige JSON-code fragment. Dit zijn de begin tijden voor elk segment.
 
-    | **Slice** | **Begintijd**          |
+    | **Gereedschap** | **Begintijd**          |
     |-----------|-------------------------|
     | 1         | 2015-11-16T**00**:00:00 |
     | 2         | 2015-11-16T**01**:00:00 |
@@ -675,9 +673,9 @@ In deze stap maakt u gegevenssets voor invoer-en uitvoergegevens.
     | 4         | 2015-11-16T**03**:00:00 |
     | 5         | 2015-11-16T**04**:00:00 |
 
-    De **folderPath** wordt berekend met behulp van het jaar, maand, dag en uur deel van de starttijd van segment (**SliceStart**). Hier ziet u hoe een invoermap is toegewezen aan een segment.
+    De **FolderPath** wordt berekend met behulp van het jaar, de maand, de dag en het uur gedeelte van de begin tijd van het segment (**slice start**). Hier ziet u hoe een uitvoermap wordt toegewezen aan een segment.
 
-    | **Slice** | **Begintijd**          | **Invoermap**  |
+    | **Gereedschap** | **Begintijd**          | **Invoer map**  |
     |-----------|-------------------------|-------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
@@ -685,14 +683,14 @@ In deze stap maakt u gegevenssets voor invoer-en uitvoergegevens.
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
-1. Selecteer **implementeren** op de werkbalk om te maken en implementeren van de **InputDataset** tabel.
+1. Selecteer **implementeren** op de werk balk om de tabel **input dataset** te maken en te implementeren.
 
 #### <a name="create-the-output-dataset"></a>De uitvoergegevensset maken
-In deze stap maakt u een andere gegevensset van het type AzureBlob om weer te geven van de uitvoergegevens.
+In deze stap maakt u een andere gegevensset van het type AzureBlob om de uitvoer gegevens weer te geven.
 
-1. Selecteer in de Data Factory Editor de **nieuwe gegevensset** op de werkbalk. Selecteer **Azure Blob-opslag** uit de vervolgkeuzelijst.
+1. Selecteer in de Data Factory editor de knop **nieuwe gegevensset** op de werk balk. Selecteer **Azure Blob-opslag** in de vervolg keuzelijst.
 
-1. Vervang de JSON-script in het rechterdeelvenster met de volgende JSON-fragment:
+1. Vervang het JSON-script in het rechterdeel venster met het volgende JSON-fragment:
 
     ```json
     {
@@ -722,9 +720,9 @@ In deze stap maakt u een andere gegevensset van het type AzureBlob om weer te ge
     }
     ```
 
-    Een uitvoer-blob/bestand is gegenereerd voor elke invoersegment. Hier ziet u hoe een uitvoerbestand voor elk segment wordt genoemd. De uitvoerbestanden worden gegenereerd in een map voor uitvoer, `mycontainer\\outputfolder`.
+    Er wordt een uitvoer-blob/-bestand gegenereerd voor elk invoer segment. Hier ziet u hoe een uitvoer bestand een naam krijgt voor elk segment. Alle uitvoer bestanden worden gegenereerd in één uitvoermap, `mycontainer\\outputfolder`.
 
-    | **Slice** | **Begintijd**          | **Uitvoerbestand**       |
+    | **Gereedschap** | **Begintijd**          | **Uitvoer bestand**       |
     |-----------|-------------------------|-----------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
@@ -732,21 +730,21 @@ In deze stap maakt u een andere gegevensset van het type AzureBlob om weer te ge
     | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
-    Houd er rekening mee dat alle bestanden in een map invoer (bijvoorbeeld 2015-11-16: 00) deel van een segment met de begintijd 2015-11-16: 00 uitmaken. Wanneer dit segment wordt verwerkt, de aangepaste activiteit via elk bestand wordt gescand en produceert een regel in het uitvoerbestand met het aantal exemplaren van de zoekterm 'Microsoft'. Als er drie bestanden in de map 2015-11-16: 00, zijn er drie regels in de uitvoer bestand 2015-11-16-00.txt.
+    Houd er rekening mee dat alle bestanden in een map voor invoer (bijvoorbeeld 2015-11-16-00) deel uitmaken van een segment met de begin tijd 2015-11-16-00. Wanneer dit segment wordt verwerkt, scant de aangepaste activiteit elk bestand en produceert een regel in het uitvoer bestand met het aantal exemplaren van de zoek term micro soft. Als er drie bestanden in de map 2015-11-16-00 staan, zijn er drie regels in het uitvoer bestand 2015-11-16 -00. txt.
 
-1. Selecteer **implementeren** op de werkbalk om te maken en implementeren van de **OutputDataset**.
+1. Selecteer **implementeren** op de werk balk om de **output dataset**te maken en te implementeren.
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>Stap 4: Maken en uitvoeren van de pijplijn met een aangepaste activiteit
-In deze stap maakt u een pijplijn met één activiteit, de aangepaste activiteit die u eerder hebt gemaakt.
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>Stap 4: De pijp lijn maken en uitvoeren met een aangepaste activiteit
+In deze stap maakt u een pijp lijn met één activiteit, de aangepaste activiteit die u eerder hebt gemaakt.
 
 > [!IMPORTANT]
-> Als u dit nog niet hebt geüpload **bestand.txt** invoer mappen in de blob-container, doen voordat u de pijplijn maken. De **isPaused** eigenschap is ingesteld op false in de pijplijn-JSON, zodat de pijplijn wordt onmiddellijk uitgevoerd omdat de **start** datum ligt in het verleden.
+> Als u **File. txt** niet hebt geüpload voor het invoeren van mappen in de BLOB-container, moet u dit doen voordat u de pijp lijn maakt. De eigenschap **isPaused** is ingesteld op ONWAAR in de JSON van de pijp lijn, zodat de pijp lijn onmiddellijk wordt uitgevoerd, omdat de **begin** datum in het verleden ligt.
 >
 >
 
-1. Selecteer in de Data Factory Editor **nieuwe pijplijn** op de opdrachtbalk. Als u de opdracht niet ziet, selecteert u het weglatingsteken weer te geven.
+1. Selecteer in de Data Factory editor **nieuwe pijp lijn** op de opdracht balk. Als u de opdracht niet ziet, selecteert u het weglatings teken om het weer te geven.
 
-1. Vervang de JSON-script in het rechterdeelvenster met de volgende JSON-fragment:
+1. Vervang het JSON-script in het rechterdeel venster met het volgende JSON-fragment:
 
     ```json
     {
@@ -793,65 +791,65 @@ In deze stap maakt u een pijplijn met één activiteit, de aangepaste activiteit
     ```
    Houd rekening met de volgende punten:
 
-   * Slechts één activiteit in de pijplijn is en is van het type **DotNetActivity**.
-   * **AssemblyName** is ingesteld op de naam van het DLL-bestand **MyDotNetActivity.dll**.
-   * **EntryPoint** is ingesteld op **MyDotNetActivityNS.MyDotNetActivity**. Het is in feite \<naamruimte\>.\< ClassName\> in uw code.
-   * **PackageLinkedService** is ingesteld op **StorageLinkedService**, die verwijzen naar de blob-opslag met de aangepaste activiteit zip-bestand. Als u verschillende opslagaccounts voor i/o-bestanden en de aangepaste activiteit zip-bestand gebruikt, hebt u een andere gekoppelde Storage-service maken. In dit artikel wordt ervan uitgegaan dat u hetzelfde opslagaccount.
-   * **PackageFile** is ingesteld op **customactivitycontainer/MyDotNetActivity.zip**. Het is in de indeling \<containerforthezip\>/\<nameofthezip.zip\>.
-   * De aangepaste activiteit neemt **InputDataset** als invoer en **OutputDataset** als uitvoer.
-   * De **linkedServiceName** eigenschap van de aangepaste activiteit wijst naar **AzureBatchLinkedService**, waarin staat dat Data Factory die de aangepaste activiteit moet worden uitgevoerd op Batch.
-   * De **gelijktijdigheid** instelling is belangrijk. Als u de standaardwaarde 1, is zelfs als u twee of meer in de Batch-pool rekenknooppunten, de segmenten worden verwerkt na elkaar. Daarom worden niet u u profiteert van de parallelle verwerking van de mogelijkheid van Batch. Als u instelt **gelijktijdigheid** naar een hogere waarde, bijvoorbeeld 2 is, betekent dit dat twee segmenten (komt overeen met twee taken in Batch) op hetzelfde moment kunnen worden verwerkt. In dit geval wordt worden de virtuele machines in de Batch-pool gebruikt. De eigenschap gelijktijdigheid van taken op de juiste wijze ingesteld.
-   * Slechts één taak (segment) wordt uitgevoerd op een virtuele machine op elk gewenst moment standaard. Standaard **maximum aantal taken per VM** is ingesteld op 1 voor een Batch-pool. Als onderdeel van de vereisten, kunt u een groep gemaakt met deze eigenschap is ingesteld op 2. Daarom kunnen twee gegevenssegmenten voor factory uitvoeren op een virtuele machine op hetzelfde moment.
-     - De **isPaused** eigenschap is standaard ingesteld op false. De pijplijn wordt onmiddellijk uitgevoerd in dit voorbeeld omdat de segmenten in het verleden. U kunt deze eigenschap instellen op **waar** onderbreken van de pijplijn en weer in **false** opnieuw te starten.
-     -   De **start** en **end** tijden zijn vijf uur uit elkaar liggen. Segmenten worden per uur geproduceerd, zodat de vijf segmenten worden geproduceerd door de pijplijn.
+   * Er bevindt zich slechts één activiteit in de pijp lijn en het is van het type **DotNetActivity**.
+   * **Assemblyname** is ingesteld op de naam van het dll-bestand **MyDotNetActivity. dll**.
+   * **Entry Point** wordt ingesteld op **MyDotNetActivityNS. MyDotNetActivity**. Het is in \<principe\>naam\< ruimte. \> className in uw code.
+   * **PackageLinkedService** is ingesteld op **StorageLinkedService**, die verwijst naar de Blob-opslag met het zip-bestand van de aangepaste activiteit. Als u verschillende opslag accounts gebruikt voor invoer-en uitvoer bestanden en het zip-bestand van de aangepaste activiteit, moet u een andere opslag-gekoppelde service maken. In dit artikel wordt ervan uitgegaan dat u hetzelfde opslag account gebruikt.
+   * **PackageFile** is ingesteld op **customactivitycontainer/MyDotNetActivity. zip**. Het is in de indeling \<containerforthezip\>/\<nameofthezip. zip\>.
+   * De aangepaste activiteit krijgt **input dataset** als invoer en **output dataset** als uitvoer.
+   * De eigenschap **linkedServiceName** van de aangepaste activiteit verwijst naar **AzureBatchLinkedService**, wat aangeeft Data Factory dat de aangepaste activiteit moet worden uitgevoerd op batch.
+   * De **gelijktijdigheids** instelling is belang rijk. Als u de standaard waarde (1) gebruikt, zelfs als u twee of meer reken knooppunten in de batch-pool hebt, worden de segmenten na elkaar verwerkt. Daarom neemt u geen gebruik van de parallelle verwerkings mogelijkheid van batch. Als u **gelijktijdigheid** instelt op een hogere waarde, zegt 2, betekent dit dat twee segmenten (overeenkomt met twee taken in batch) tegelijk kunnen worden verwerkt. In dit geval worden zowel de virtuele machines in de batch-pool gebruikt. Stel de gelijktijdigheids eigenschap op de juiste wijze in.
+   * Er wordt standaard slechts één taak (segment) uitgevoerd op een virtuele machine. **Maximum aantal taken per VM** is standaard ingesteld op 1 voor een batch-pool. Als onderdeel van de vereisten hebt u een pool gemaakt waarvoor deze eigenschap is ingesteld op 2. Daarom kunnen twee data factory segmenten tegelijk worden uitgevoerd op een virtuele machine.
+     - De eigenschap **isPaused** is standaard ingesteld op ONWAAR. De pijp lijn wordt direct in dit voor beeld uitgevoerd, omdat de segmenten in het verleden beginnen. U kunt deze eigenschap instellen op **True** om de pijp lijn te onderbreken en weer in te stellen op **False** om opnieuw op te starten.
+     -   De **begin** -en **eind** tijd zijn vijf uur van elkaar. Segmenten worden elk uur geproduceerd, dus vijf segmenten worden geproduceerd door de pijp lijn.
 
 1. Selecteer in de opdrachtbalk **Implementeren** om de pijplijn te implementeren.
 
-#### <a name="step-5-test-the-pipeline"></a>Stap 5: De pijplijn testen
-In deze stap maakt testen u de pijplijn door het verwijderen van bestanden in de invoer-mappen. Begin met het testen van de pijplijn met één bestand voor elke map invoer.
+#### <a name="step-5-test-the-pipeline"></a>Stap 5: De pijp lijn testen
+In deze stap test u de pijp lijn door bestanden in de invoer mappen neer te zetten. Begin met het testen van de pijp lijn met één bestand voor elke invoercel.
 
-1. Op de **Data factory** -blade in Azure portal, selecteer **Diagram**.
+1. Selecteer **diagram**op de Blade gegevensfactory in de Azure Portal.
 
    ![Diagram](./media/data-factory-data-processing-using-batch/image10.png)
 
-1. In de **Diagram** weergeven, dubbelklikt u op de invoergegevensset **InputDataset**.
+1. Dubbel klik in de **diagram** weergave op de gegevensset **input dataset**.
 
-   ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
+   ![Input DataSet](./media/data-factory-data-processing-using-batch/image11.png)
 
-1. De **InputDataset** blade wordt weergegeven met alle vijf segmenten gereed. U ziet dat de **segment BEGINTIJD** en **EINDTIJD van segment** voor elk segment.
+1. De Blade **input dataset** wordt weer gegeven met alle vijf segmenten die klaar zijn. Let op de **begin tijd** van het segment en **eind tijd** van het segment voor elk segment.
 
-   ![Segment start invoer- en eindtijd](./media/data-factory-data-processing-using-batch/image12.png)
+   ![Begin-en eind tijd van invoer segment](./media/data-factory-data-processing-using-batch/image12.png)
 
-1. In de **Diagram** weergave, selecteer **OutputDataset**.
+1. Selecteer in de **diagram** weergave **output dataset**.
 
-1. De vijf uitvoersegmenten worden weergegeven in de **gereed** status als ze zijn geproduceerd.
+1. De vijf uitvoer segmenten worden weer gegeven met de status **gereed** als ze zijn geproduceerd.
 
-   ![Uitvoer segment begin- en eindtijd](./media/data-factory-data-processing-using-batch/image13.png)
+   ![Begin-en eind tijd van uitvoer segment](./media/data-factory-data-processing-using-batch/image13.png)
 
-1. De portal gebruiken om de taken die zijn gekoppeld aan de segmenten weer te geven en kijk wat elk segment worden uitgevoerd op de VM. Zie voor meer informatie de [integratie van Data Factory en Batch](#data-factory-and-batch-integration) sectie.
+1. Gebruik de portal om de taken weer te geven die zijn gekoppeld aan de segmenten en te zien op welke VM elk segment is uitgevoerd. Zie de sectie [Data Factory en batch-integratie](#data-factory-and-batch-integration) voor meer informatie.
 
-1. De uitvoerbestanden worden weergegeven onder `mycontainer` in `outputfolder` in uw blob storage.
+1. De uitvoer bestanden worden weer `mycontainer` gegeven `outputfolder` onder in uw Blob-opslag.
 
-   ![Uitvoerbestanden in de opslag](./media/data-factory-data-processing-using-batch/image15.png)
+   ![Uitvoer bestanden in opslag](./media/data-factory-data-processing-using-batch/image15.png)
 
-   Vijf uitvoerbestanden worden vermeld, één voor elk segment invoer. Elk van de uitvoerbestanden bevat inhoud die vergelijkbaar is met de volgende uitvoer:
+   Vijf uitvoer bestanden worden weer gegeven, één voor elk invoer segment. Elk van de uitvoer bestanden heeft inhoud die vergelijkbaar is met de volgende uitvoer:
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
     ```
-   Het volgende diagram illustreert hoe de data factory-segmenten worden toegewezen aan taken in Batch. In dit voorbeeld heeft een segment slechts één uitvoeren.
+   In het volgende diagram ziet u hoe de data factory segmenten worden toegewezen aan taken in batch. In dit voor beeld heeft een segment slechts één run.
 
-   ![Diagram van de toewijzing van segment](./media/data-factory-data-processing-using-batch/image16.png)
+   ![Diagram van segment toewijzing](./media/data-factory-data-processing-using-batch/image16.png)
 
-1. Probeer nu met meerdere bestanden in een map. Maken van de bestanden **bestand2.txt samengevoegd**, **file3.txt**, **file4.txt**, en **file5.txt** met dezelfde inhoud zoals in bestand.txt in de map **2015-11-06-01**.
+1. Probeer nu met meerdere bestanden in een map. Maak de bestanden **bestand2. txt**, **file3. txt**, **file4. txt**en **file5. txt** met dezelfde inhoud als in file. txt in de map **2015-11-06-01**.
 
-1. In de map voor uitvoer, verwijdert u het uitvoerbestand **2015-11-16-01.txt**.
+1. Verwijder in de map uitvoermap het uitvoer bestand **2015-11-16 -01. txt**.
 
-1. Op de **OutputDataset** blade met de rechtermuisknop op het segment met **segment BEGINTIJD** ingesteld op **11/16/2015 01:00:00 AM**. Selecteer **uitvoeren** voor verwerking opnieuw apparaat uitvoeren of het segment opnieuw uitvoeren. Het segment heeft nu de vijf bestanden in plaats van een bestand.
+1. Klik op de Blade **output dataset** met de rechter muisknop op het segment met de **begin tijd** van het segment ingesteld op **11/16/2015 01:00:00 uur**. Selecteer **uitvoeren** om het segment opnieuw op te starten of opnieuw te verwerken. Het segment heeft nu vijf bestanden in plaats van één bestand.
 
     ![Voer](./media/data-factory-data-processing-using-batch/image17.png)
 
-1. Nadat het segment de status wordt uitgevoerd en de status ervan **gereed**, Controleer of de inhoud van het uitvoerbestand voor dit segment (**2015-11-16-01.txt**). Het uitvoerbestand wordt weergegeven onder `mycontainer` in `outputfolder` in uw blob storage. Er moet een regel voor elk bestand van het segment.
+1. Nadat het segment is uitgevoerd en de status **gereed**is, controleert u de inhoud van het uitvoer bestand voor dit segment (**2015-11-16 -01. txt**). Het uitvoer bestand wordt weer `mycontainer` gegeven `outputfolder` onder in uw Blob-opslag. Er moet een regel voor elk bestand van het segment zijn.
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
@@ -862,43 +860,43 @@ In deze stap maakt testen u de pijplijn door het verwijderen van bestanden in de
     ```
 
 > [!NOTE]
-> Als u de uitvoer bestand 2015-11-16-01.txt voordat u probeert met vijf invoerbestanden niet verwijdert, ziet u een regel uit de vorige segment uitvoering en vijf regels van het huidige segment uitvoeren. De inhoud wordt toegevoegd aan het uitvoerbestand standaard, als deze al bestaat.
+> Als u het uitvoer bestand 2015-11-16 -01. txt niet hebt verwijderd voordat u met vijf invoer bestanden hebt geprobeerd, ziet u één regel uit de vorige segment uitvoering en vijf regels van de huidige segment uitvoering. Standaard wordt de inhoud toegevoegd aan het uitvoer bestand als dit al bestaat.
 >
 >
 
-#### <a name="data-factory-and-batch-integration"></a>Integratie van Data Factory en Batch
-De Data Factory-service maakt een taak in Batch met de naam `adf-poolname:job-xxx`.
+#### <a name="data-factory-and-batch-integration"></a>Integratie van Data Factory en batch
+De Data Factory-service maakt een taak in batch met de `adf-poolname:job-xxx`naam.
 
 ![Batch-taken](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
-Een taak in de taak wordt gemaakt voor elke uitvoering van de activiteit van een segment. Als 10 segmenten worden verwerkt, wordt 10 taken worden gemaakt in de taak. U kunt meer dan één segment parallel worden uitgevoerd als er meerdere rekenknooppunten in de groep hebben. Als het maximum aantal taken per knooppunt is ingesteld op meer dan één, kunt meer dan één segment in de dezelfde berekening uitvoeren.
+Er wordt een taak in de taak gemaakt voor elke activiteit uitvoering van een segment. Als 10 segmenten klaar zijn om te worden verwerkt, worden er 10 taken in de taak gemaakt. U kunt meer dan één segment parallel uitvoeren als u meerdere reken knooppunten in de groep hebt. Als het maximum aantal taken per Compute-knoop punt is ingesteld op meer dan één, kan er meer dan één segment op dezelfde Compute worden uitgevoerd.
 
-In dit voorbeeld zijn het vijf segmenten, dus er vijf taken in Batch zijn. Met **gelijktijdigheid** ingesteld op **5** in de pijplijn-JSON in de data factory en **maximum aantal taken per VM** ingesteld op **2** in de Batch-pool met **2** virtuele machines, de taken snel worden uitgevoerd. (De begin- en eindtijden voor taken controleren).
+In dit voor beeld zijn er vijf segmenten, waardoor er vijf taken in batch zijn. Wanneer de gelijktijdigheid is ingesteld op **5** in de JSON van de pijp lijn in de Data Factory en het **maximum aantal taken per VM** ingesteld op **2** in de batch-pool met **2** vm's, worden de taken snel uitgevoerd. (Controleer de begin-en eind tijden voor taken.)
 
-De portal gebruiken om de Batch-taak en de bijbehorende taken die gekoppeld aan de segmenten zijn weer te geven en kijk wat elk segment worden uitgevoerd op de VM.
+Gebruik de portal om de batch-taak en de bijbehorende taken weer te geven die zijn gekoppeld aan de segmenten en te zien op welke VM elk segment is uitgevoerd.
 
-![Batch-taken](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
+![Batch-taak taken](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
 ### <a name="debug-the-pipeline"></a>Fouten opsporen in de pijplijn
-De foutopsporing bestaat uit enkele basistechnieken.
+Fout opsporing bestaat uit een aantal basis technieken.
 
-1. Als het invoersegment niet is ingesteld op **gereed**, Controleer of de invoermapstructuur juist is en dat bestand.txt bestaat in de invoermappen.
+1. Als het invoer segment niet is ingesteld op **gereed**, controleert u of de map van de invoer mappen juist is en of het bestand. txt in de invoer mappen bestaat.
 
-   ![Invoermapstructuur](./media/data-factory-data-processing-using-batch/image3.png)
+   ![Mapstructuur van invoer](./media/data-factory-data-processing-using-batch/image3.png)
 
-1. In de **Execute** methode van de aangepaste activiteit, gebruik de **IActivityLogger** object om informatie die helpt u bij het oplossen van problemen te registreren. De geregistreerde berichten weergegeven in de gebruiker\_0-logboekbestand.
+1. Gebruik in de methode Execute van uw aangepaste activiteit het object **IActivityLogger** om informatie te registreren die u helpt bij het oplossen van problemen. De logboek berichten worden weer gegeven in het\_bestand gebruiker 0. log.
 
-   Op de **OutputDataset** blade, selecteert u het segment voor de **gegevenssegment** blade voor dat segment. Onder **uitvoeringen van activiteit**, ziet u een activiteit die wordt uitgevoerd voor het segment. Als u selecteert **uitvoeren** in de opdrachtbalk, kun u een andere activiteit die wordt uitgevoerd voor hetzelfde segment.
+   Selecteer het segment op de Blade **output dataset** om de Blade **gegevens segment** voor dat segment weer te geven. Onder **uitvoeringen van activiteit**ziet u de uitvoering van één activiteit voor het segment. Als u **uitvoeren** in de opdracht balk selecteert, kunt u een andere uitvoering van de activiteit voor hetzelfde segment starten.
 
-   Wanneer u de activiteit die wordt uitgevoerd selecteert, ziet u de **details uitvoering van activiteit** blade met een lijst van logboekbestanden. U ziet dat geregistreerde berichten in de gebruiker\_0-logboekbestand. Wanneer een fout optreedt, ziet u drie uitvoeringen van activiteit omdat het maximale aantal pogingen is ingesteld op 3 in de pijplijn/JSON van de activiteit. Wanneer u de uitvoering van activiteit selecteert, ziet u de logboekbestanden die u bekijken kunt voor het oplossen van de fout.
+   Wanneer u de uitvoering van de activiteit selecteert, ziet u de Blade **Details uitvoering van activiteit** met een lijst met logboek bestanden. U ziet berichten die zijn geregistreerd in\_het bestand gebruiker 0. log. Wanneer er een fout optreedt, ziet u dat er drie activiteiten worden uitgevoerd omdat het aantal nieuwe pogingen is ingesteld op 3 in de JSON van de pijp lijn/activiteit. Wanneer u de uitvoering van de activiteit selecteert, ziet u de logboek bestanden die u kunt controleren om de fout op te lossen.
 
-   ![Gegevens en OutputDataset segment blades](./media/data-factory-data-processing-using-batch/image18.png)
+   ![Blades voor output dataset en gegevens segmenten](./media/data-factory-data-processing-using-batch/image18.png)
 
-   Selecteer in de lijst met logboekbestanden, **user-0.log**. In het rechterdeelvenster de resultaten van het gebruik van de **IActivityLogger.Write** methode worden weergegeven.
+   Selecteer in de lijst met logboek bestanden **User-0. log**. In het rechterdeel venster worden de resultaten van het gebruik van de methode **IActivityLogger. write** weer gegeven.
 
-   ![Blade met details uitvoering van activiteit](./media/data-factory-data-processing-using-batch/image19.png)
+   ![Blade Details uitvoering van activiteit](./media/data-factory-data-processing-using-batch/image19.png)
 
-   Controleer de systeem-0.log voor elk systeem foutberichten en uitzonderingen.
+   Controleer System-0. log op systeem fout berichten en uitzonde ringen.
 
     ```
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Loading assembly file MyDotNetActivity...
@@ -909,38 +907,38 @@ De foutopsporing bestaat uit enkele basistechnieken.
     
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
-1. Bevatten de **PDB** bestand in het zip-bestand, zodat de foutdetails informatie zoals de aanroepstack hebben wanneer er een fout optreedt.
+1. Neem het **PDB** -bestand op in het zip-bestand, zodat de fout Details informatie, zoals aanroep stack, bevatten wanneer er een fout optreedt.
 
-1. Alle bestanden in het zip-bestand voor de aangepaste activiteit moeten zich op het hoogste niveau zonder submappen.
+1. Alle bestanden in het zip-bestand voor de aangepaste activiteit moeten zich op het hoogste niveau zonder submappen bevinden.
 
-   ![Lijst met aangepaste activiteit zip-bestanden](./media/data-factory-data-processing-using-batch/image20.png)
+   ![Lijst met aangepaste post bestanden](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Zorg ervoor dat **assemblyName** (MyDotNetActivity.dll), **entryPoint** (MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip), en **packageLinkedService** (moet verwijzen naar de blob-opslag die het zip-bestand bevat) zijn ingesteld op de juiste waarden.
+1. Zorg ervoor dat **assemblyname** (MyDotNetActivity. dll), **Entry Point** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) en **packageLinkedService** (moet verwijzen naar de Blob-opslag die het zip-bestand bevat) is ingesteld op de juiste waarden.
 
-1. Als u een fout en opnieuw wilt verwerken van het segment de status opgelost, met de rechtermuisknop op het segment in de **OutputDataset** blade en selecteer **uitvoeren**.
+1. Als u een fout hebt opgelost en het segment opnieuw wilt verwerken, klikt u met de rechter muisknop op het segment op de Blade **output dataset** en selecteert u **uitvoeren**.
 
-   ![Blade OutputDataset optie uitvoeren](./media/data-factory-data-processing-using-batch/image21.png)
+   ![De optie Blade uitvoeren output DataSet](./media/data-factory-data-processing-using-batch/image21.png)
 
    > [!NOTE]
-   > Een container bevindt zich in de blob-opslag met de naam `adfjobs`. Deze container wordt niet automatisch verwijderd, maar u kunt deze veilig verwijderen nadat u klaar bent met testen van de oplossing. Op dezelfde manier de data factory-oplossing maakt u een batchtaak met de naam `adf-\<pool ID/name\>:job-0000000001`. Nadat u de oplossing als u dit wilt testen, kunt u deze taak verwijderen.
+   > Er bevindt zich in de BLOB `adfjobs`-opslag een container met de naam. Deze container wordt niet automatisch verwijderd, maar u kunt deze veilig verwijderen nadat u klaar bent met het testen van de oplossing. Op dezelfde manier maakt de data factory oplossing een batch- `adf-\<pool ID/name\>:job-0000000001`taak met de naam. U kunt deze taak verwijderen nadat u de oplossing hebt getest.
    >
    >
-1. De aangepaste activiteit maakt geen gebruik van de **app.config** -bestand van het pakket. Dus als uw code verbindingstekenreeksen van het configuratiebestand leest, werkt niet tijdens runtime. Het is het beste wanneer u Batch gebruikt is voor het opslaan van alle geheimen in Azure Key Vault. Vervolgens gebruiken een certificaat op basis van service-principal voor de key vault beveiligen en distribueren van het certificaat naar de Batch-pool. De aangepaste .NET-activiteit hebben toegang tot geheimen van de key vault tijdens runtime. Deze algemene oplossing kan worden geschaald naar elk type geheim, niet alleen een verbindingsreeks.
+1. De aangepaste activiteit maakt geen gebruik van het bestand **app. config** uit uw pakket. Als uw code verbindings reeksen uit het configuratie bestand leest, werkt deze daarom niet tijdens runtime. De best practice wanneer u batch gebruikt, is het opslaan van geheimen in Azure Key Vault. Gebruik vervolgens een service-principal op basis van een certificaat om de sleutel kluis te beveiligen en het certificaat naar de batch-pool te distribueren. De aangepaste .NET-activiteit kan tijdens runtime toegang hebben tot geheimen van de sleutel kluis. Deze algemene oplossing kan worden geschaald naar elk type geheim, niet alleen op een connection string.
 
-    Er is een eenvoudigere oplossing, maar het is niet een best practice. U kunt een service van SQL database gekoppeld tekenreeks instellingen met verbinding maken. Vervolgens kunt u een gegevensset die gebruikmaakt van de gekoppelde service maken en koppelen van de gegevensset als een dummy-invoergegevensset aan de aangepaste .NET-activiteit. U kunt vervolgens toegang tot de verbindingsreeks van de gekoppelde service in de code van de aangepaste activiteit. Dit moet werkt prima tijdens runtime.  
+    Er is een eenvoudige tijdelijke oplossing, maar dit is geen best practice. U kunt een SQL database gekoppelde service maken met connection string-instellingen. Vervolgens kunt u een gegevensset maken die gebruikmaakt van de gekoppelde service en de gegevensset als een dummy invoer gegevensset koppelen aan de aangepaste .NET-activiteit. U kunt vervolgens de connection string van de gekoppelde service openen in de code van de aangepaste activiteit. Het werkt prima tijdens runtime.  
 
-#### <a name="extend-the-sample"></a>Het voorbeeld uitbreiden
-U kunt dit voorbeeld voor meer informatie over Data Factory en Batch-functies kunt uitbreiden. Neem bijvoorbeeld de volgende stappen uit voor het verwerken van segmenten in een ander tijdsbereik:
+#### <a name="extend-the-sample"></a>Het voor beeld uitbreiden
+U kunt dit voor beeld uitbreiden voor meer informatie over Data Factory-en batch-functies. Als u bijvoorbeeld segmenten in een ander tijds bereik wilt verwerken, voert u de volgende stappen uit:
 
-1. Voeg de volgende submappen in `inputfolder`: 2015-11-16-05, 2015-11-16-06 201-11-16-07-2011-11-16-08 en 2015-11-16-09. Plaats de invoerbestanden in deze mappen. Wijzigen van de eindtijd voor de pijplijn uit `2015-11-16T05:00:00Z` naar `2015-11-16T10:00:00Z`. In de **Diagram** weergeven, dubbelklikt u op **InputDataset** en bevestigt u dat de invoersegmenten gereed zijn. Dubbelklik op **OutputDataset** om te zien van de status van de uitvoersegmenten. Als deze zich in de **gereed** staat, controleert u de map voor uitvoer voor de uitvoerbestanden.
+1. Voeg de volgende submappen toe `inputfolder`in: 2015-11-16-05, 2015-11-16-06, 201-11-16-07, 2011-11-16-08 en 2015-11-16-09. Plaats invoer bestanden in deze mappen. Wijzig de eind tijd voor de pijp lijn van `2015-11-16T05:00:00Z` in `2015-11-16T10:00:00Z`. Dubbel klik in de **diagram** weergave op **input dataset** en bevestig dat de invoer segmenten gereed zijn. Dubbel klik op **output dataset** om de status van de uitvoer segmenten te bekijken. Als ze de status **gereed** hebben, controleert u de uitvoermap voor de uitvoer bestanden.
 
-1. Vergroten of verkleinen van de **gelijktijdigheid** instelling om te begrijpen hoe dit van invloed is op de prestaties van uw oplossing, met name de verwerking die wordt uitgevoerd op Batch. Voor meer informatie over de **gelijktijdigheid** stellen, Zie ' stap 4: Maken en uitvoeren van de pijplijn met een aangepaste activiteit."
+1. Verg root of verklein de **gelijktijdigheids** instelling om te begrijpen hoe dit van invloed is op de prestaties van uw oplossing, met name de verwerking die op batch wordt uitgevoerd. Voor meer informatie over de **gelijktijdigheids** instelling, zie ' stap 4: Maak de pijp lijn met een aangepaste activiteit en voer deze uit.
 
-1. Een pool maken met nieuwere/oudere **maximum aantal taken per VM**. Gekoppelde gebruikt u de nieuwe groep die u hebt gemaakt, het bijwerken van de Batch-service in de data factory-oplossing. Voor meer informatie over de **maximum aantal taken per VM** stellen, Zie ' stap 4: Maken en uitvoeren van de pijplijn met een aangepaste activiteit."
+1. Maak een pool met een hoger/lager **maximum aantal taken per VM**. Als u de nieuwe groep wilt gebruiken die u hebt gemaakt, werkt u de gekoppelde batch-service bij in de data factory-oplossing. Voor meer informatie over het **maximum aantal taken per VM** -instelling, zie ' stap 4: Maak de pijp lijn met een aangepaste activiteit en voer deze uit.
 
-1. Maak een Batch-pool met de **voor automatisch schalen** functie. Automatisch schalen rekenknooppunten in een Batch-pool is de dynamische aanpassing van de verwerkingscapaciteit die worden gebruikt door uw toepassing. 
+1. Maak een batch-pool met de functie voor **automatisch schalen** . Het automatisch schalen van reken knooppunten in een batch-pool is de dynamische aanpassing van het verwerkings vermogen dat door uw toepassing wordt gebruikt. 
 
-    De voorbeeldformule hier bereikt het volgende gedrag. Wanneer de pool in eerste instantie wordt gemaakt, wordt deze begint met één virtuele machine. De metriek $PendingTasks definieert het aantal taken in de die wordt uitgevoerd en actieve (in de wachtrij) staat. De formule wordt het gemiddelde aantal in behandeling zijnde taken gevonden in de afgelopen 180 seconden en TargetDedicated dienovereenkomstig ingesteld. Het zorgt ervoor dat TargetDedicated nooit meer dan 25 VM's gaat. Als nieuwe taken worden verzonden, wordt de pool automatisch vergroot. Als de taken zijn voltooid, virtuele machines gratis één voor één en worden deze virtuele machines Hiermee verkleint u de automatische schaalaanpassing. U kunt startingNumberOfVMs en maxNumberofVMs aanpassen aan uw behoeften.
+    Met de voorbeeld formule wordt het volgende gedrag gerealiseerd. Wanneer de pool voor het eerst wordt gemaakt, begint deze met één virtuele machine. Met de $PendingTasks meet waarde wordt het aantal taken in de status van actief en actief (in wachtrij) gedefinieerd. Met de formule vindt u het gemiddelde aantal taken in de afgelopen 180 seconden dat in behandeling is en stelt u TargetDedicated dienovereenkomstig in. Zo zorgt u ervoor dat TargetDedicated nooit meer dan 25 Vm's verloopt. Wanneer er nieuwe taken worden verzonden, wordt de groep automatisch verg root. Zodra de taken zijn voltooid, worden virtuele machines één voor één vrijgegeven en worden de Vm's automatisch geschaald. U kunt startingNumberOfVMs en maxNumberofVMs aan uw behoeften aanpassen.
  
     Formule voor automatisch schalen:
 
@@ -952,32 +950,32 @@ U kunt dit voorbeeld voor meer informatie over Data Factory en Batch-functies ku
     $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
     ```
 
-   Zie voor meer informatie, [automatisch schalen rekenknooppunten in een Batch-pool](../../batch/batch-automatic-scaling.md).
+   Zie [reken knooppunten automatisch schalen in een batch-pool](../../batch/batch-automatic-scaling.md)voor meer informatie.
 
-   Als de groep gebruikmaakt van de [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), 15 tot 30 minuten aan de virtuele machine voorbereiden voordat u de aangepaste activiteit kan worden uitgevoerd door de Batch-service. Als de groep gebruikmaakt van een andere autoScaleEvaluationInterval, kan de Batch-service autoScaleEvaluationInterval plus 10 minuten duren.
+   Als de groep de standaard [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)gebruikt, kan de batch-service 15 tot 30 minuten duren voordat de virtuele machine wordt voor bereid voordat de aangepaste activiteit wordt uitgevoerd. Als de groep een andere autoScaleEvaluationInterval gebruikt, kan de batch-service autoScaleEvaluationInterval plus 10 minuten duren.
 
-1. In de Voorbeeldoplossing is de **Execute** methode roept de **berekenen** methode waarmee een segment invoergegevens om te produceren van een uitvoergegevenssegment wordt verwerkt. Kunt u uw eigen methode voor het verwerken van invoergegevens en vervang de **berekenen** methode aanroepen in de **Execute** methode met een aanroep naar de methode.
+1. In de voorbeeld oplossing roept de **Execute** -methode de methode Calculate aan waarmee een invoer gegevens segment wordt verwerkt om een segment met uitvoer gegevens te produceren. U kunt uw eigen methode schrijven om invoer gegevens te verwerken en de aanroep methode **berekenen** in de methode Execute te vervangen door een aanroep van uw methode.
 
 ### <a name="next-steps-consume-the-data"></a>Volgende stappen: De gegevens gebruiken
-Nadat u gegevens verwerken, kunt u deze gebruiken met onlineprogramma's zoals Power BI. Hier vindt u koppelingen naar informatie waarmee u inzicht in de Power BI en het gebruik ervan in Azure:
+Nadat u gegevens hebt verwerkt, kunt u deze gebruiken met online hulpprogram ma's zoals Power BI. Hier vindt u koppelingen naar informatie over Power BI en hoe u deze kunt gebruiken in Azure:
 
 * [Een gegevensset in Power BI verkennen](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
 * [Aan de slag met Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Gegevens vernieuwen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
-* [Azure en Power BI: Basisoverzicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+* [Azure en Power BI: Basis overzicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Verwijzingen
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
-  * [Inleiding tot de Data Factory-service](data-factory-introduction.md)
+  * [Inleiding tot de Data Factory-Service](data-factory-introduction.md)
   * [Aan de slag met Data Factory](data-factory-build-your-first-pipeline.md)
-  * [Aangepaste activiteiten gebruiken in een Data Factory-pijplijn](data-factory-use-custom-activities.md)
+  * [Aangepaste activiteiten gebruiken in een Data Factory pijp lijn](data-factory-use-custom-activities.md)
 * [Azure Batch](https://azure.microsoft.com/documentation/services/batch/)
 
-  * [Basisprincipes van Batch](../../batch/batch-technical-overview.md)
-  * [Overzicht van Batch-functies](../../batch/batch-api-basics.md)
-  * [Een batchaccount in Azure portal maken en beheren](../../batch/batch-account-create-portal.md)
-  * [Aan de slag met de Batch-clientbibliotheek voor .NET](../../batch/quick-run-dotnet.md)
+  * [Basis principes van batch](../../batch/batch-technical-overview.md)
+  * [Overzicht van batch-functies](../../batch/batch-api-basics.md)
+  * [Een batch-account maken en beheren in de Azure Portal](../../batch/batch-account-create-portal.md)
+  * [Aan de slag met de batch-client bibliotheek voor .NET](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

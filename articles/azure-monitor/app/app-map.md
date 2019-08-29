@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302574"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126963"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings toewijzing: Gedistribueerde toepassingen sorteren
 
@@ -50,7 +50,7 @@ Klik op een onderdeel om gerelateerde inzichten te bekijken en ga naar de presta
 
 ![Flyout](media/app-map/application-map-002.png)
 
-### <a name="investigate-failures"></a>Fouten onderzoeken
+### <a name="investigate-failures"></a>Mislukte pogingen onderzoeken
 
 Selecteer **fouten onderzoeken** om het deel venster fouten te starten.
 
@@ -66,7 +66,7 @@ Selecteer **prestaties onderzoeken**om prestatie problemen op te lossen.
 
 ![Scherm opname van prestatie ervaring](media/app-map/performance.png)
 
-### <a name="go-to-details"></a>Ga naar Details
+### <a name="go-to-details"></a>Naar de details gaan
 
 Selecteer **Ga naar Details** om de end-to-end-transactie ervaring te verkennen, waarmee weer gaven kunnen worden aangeboden op het stack niveau van de aanroep.
 
@@ -74,7 +74,7 @@ Selecteer **Ga naar Details** om de end-to-end-transactie ervaring te verkennen,
 
 ![Scherm opname van end-to-end-transactie Details](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Weer geven in Analytics
+### <a name="view-in-analytics"></a>Weergeven in Analytics
 
 Als u de gegevens van uw toepassing verder wilt opvragen en onderzoeken, klikt u op **weer geven in Analytics**.
 
@@ -272,4 +272,6 @@ Als u feedback wilt geven, gebruikt u de optie feedback.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Correlatie](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)
+* Raadpleeg voor meer informatie over hoe correlatie werkt in Application Insights het [artikel over de telemetrie https://docs.microsoft.com/azure/application-insights/application-insights-correlation) -correlatie] (.
+* De [end-to-end trans actie diagnostische ervaring](transaction-diagnostics.md) verbindt de telemetrie aan de server zijde van alle Application Insights bewaakte onderdelen tot één weer gave.
+* Raadpleeg voor geavanceerde correlatie scenario's in ASP.NET Core en ASP.NET het artikel [aangepaste bewerkingen bijhouden](custom-operations-tracking.md) .

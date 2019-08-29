@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dcc7d2d03b3c4a3f4c8c772f38aa3785080d986
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 9da0552e3ccc707c6b2f228b402f4e9db7dafee3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335362"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125706"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection meldingen
 
-Azure AD Identity Protection verzendt twee typen e-mail berichten voor automatische meldingen om u te helpen bij het beheren van risico-en risico gebeurtenissen van gebruikers:
+Azure AD Identity Protection verzendt twee typen e-mail berichten voor automatische meldingen om u te helpen bij het beheren van risico-en risico detecties van gebruikers:
 
 - Gebruikers met een risico voor een gedetecteerd e-mail bericht
 - E-mail met wekelijkse samen vatting
@@ -31,7 +31,7 @@ In dit artikel vindt u een overzicht van beide e-mail meldingen.
 
 Als reactie op een gedetecteerd account dat risico loopt, genereert Azure AD Identity Protection een e-mail waarschuwing met **gebruikers die risico lopen** als onderwerp. Het e-mail bericht bevat een koppeling naar de gebruikers die zijn **[gemarkeerd voor een risico](../reports-monitoring/concept-user-at-risk.md)** rapport. Als best practice moet u onmiddellijk de gebruikers op risico onderzoeken.
 
-Met de configuratie voor deze waarschuwing kunt u opgeven op welk gebruikers risico niveau u de waarschuwing wilt genereren. Het e-mail adres wordt gegenereerd wanneer het risico niveau van de gebruiker de opgegeven waarde bereikt. Er worden echter geen nieuwe gebruikers meer ontvangen die waarschuwingen hebben gevonden voor deze gebruiker nadat ze zijn overgezet naar dit risico niveau. Als u het beleid bijvoorbeeld instelt op een waarschuwing over gemiddeld risico van gebruikers en uw gebruiker John verplaatst naar gemiddeld risico, ontvangt u de gebruikers die risico lopen voor John. Er wordt echter geen waarschuwing weer gegeven wanneer John vervolgens naar een hoog risico wordt verplaatst of extra risico gebeurtenissen heeft.
+Met de configuratie voor deze waarschuwing kunt u opgeven op welk gebruikers risico niveau u de waarschuwing wilt genereren. Het e-mail adres wordt gegenereerd wanneer het risico niveau van de gebruiker de opgegeven waarde bereikt. Er worden echter geen nieuwe gebruikers meer ontvangen die waarschuwingen hebben gevonden voor deze gebruiker nadat ze zijn overgezet naar dit risico niveau. Als u het beleid bijvoorbeeld instelt op een waarschuwing over gemiddeld risico van gebruikers en uw gebruiker John verplaatst naar gemiddeld risico, ontvangt u de gebruikers die risico lopen voor John. Er wordt echter geen waarschuwing weer gegeven wanneer John vervolgens naar een hoog risico wordt verplaatst of extra risico detecties heeft.
 
 ![Gebruikers met een risico voor een gedetecteerd e-mail bericht](./media/notifications/01.png)
 
@@ -48,7 +48,7 @@ Als u het dialoog venster verwant wilt openen, klikt u op **waarschuwingen** in 
 
 ## <a name="weekly-digest-email"></a>E-mail met wekelijkse samen vatting
 
-Het wekelijkse overzichts-e-mail bericht bevat een samen vatting van nieuwe risico gebeurtenissen.  
+Het wekelijkse overzichts bericht bevat een samen vatting van nieuwe risico detecties.  
 Het bevat:
 
 - Gebruikers die risico lopen

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102878"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142219"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Veelgestelde vragen
 
@@ -172,7 +172,7 @@ Nee, de visualisatie van de afhankelijkheid kan niet worden geëxporteerd. Maar 
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Hoe kan ik de installatie van micro soft Monitoring Agent (MMA) en de afhankelijkheids agent automatiseren?
 
-Gebruik dit [script om de agents te installeren](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples). Volg deze [instructies voor het installeren van MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) met behulp van de opdracht regel of de automatisering. Voor MMA gebruikt u [Dit script](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Gebruik dit [script om de afhankelijkheids agent te installeren](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Volg deze [instructies voor het installeren van MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) met behulp van de opdracht regel of de automatisering. Voor MMA gebruikt u [Dit script](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
 Naast scripts kunt u ook implementatie hulpprogramma's als System Center Configuration Manager en [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gebruiken om de agents te implementeren.
 
@@ -183,8 +183,7 @@ Naast scripts kunt u ook implementatie hulpprogramma's als System Center Configu
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>Welke besturings systemen worden ondersteund door de afhankelijkheids agent?
 
-- Bekijk de lijst met [Windows-besturings systemen die worden ondersteund door de afhankelijkheids agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
-- Bekijk de lijst met [Linux-besturings systemen die worden ondersteund door de afhankelijkheids agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+Bekijk de lijst met [Windows-en Linux-besturings systemen die Azure monitor voor VM's ondersteunt](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Kan ik afhankelijkheden in Azure Migrate meer dan een uur visualiseren?
 Nee. U kunt afhankelijkheden tot een uur visualiseren. U kunt teruggaan naar een bepaalde datum in geschiedenis, tot nu toe per maand, maar de maximale duur voor visualisatie is een uur. U kunt bijvoorbeeld de tijds duur in de afhankelijkheids toewijzing gebruiken om afhankelijkheden voor gisteren weer te geven, maar u kunt deze alleen bekijken voor een venster van één uur. U kunt echter Azure Monitor-Logboeken gebruiken om een langere duur van [afhankelijkheids gegevens](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) op te vragen.

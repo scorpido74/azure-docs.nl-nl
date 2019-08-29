@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: fa3aedf138564fedafe555adfbaf6c56efc1813e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360839"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141915"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus wachtrijen gebruiken met python
 
@@ -36,7 +36,7 @@ In deze zelf studie leert u hoe u python-toepassingen kunt maken om berichten te
 
         > [!NOTE]
         > In deze zelf studie maakt u een **wachtrij** in de service bus naam ruimte met behulp van python. 
-1. Python of het [python Azure service bus-pakket][Python Azure Service Bus package]installeren, raadpleegt u de [installatie handleiding voor python](../python-how-to-install.md). Bekijk [hier](/python/api/overview/azure/servicebus?view=azure-python)de volledige documentatie over service bus python SDK.
+1. Python of het [python Azure service bus-pakket][Python Azure Service Bus package]installeren, raadpleegt u de [installatie handleiding voor python](/azure/python/python-sdk-azure-install). Bekijk [hier](/python/api/overview/azure/servicebus?view=azure-python)de volledige documentatie over service bus python SDK.
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
 Met het **ServiceBusClient** -object kunt u met wacht rijen werken. Voeg de volgende code toe aan de bovenkant van een python-bestand waarin u programmatisch toegang wilt krijgen Service Bus:
@@ -119,7 +119,7 @@ msg.delete()
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een receiver-toepassing het bericht om de een of andere reden niet kan verwerken, kan  de methode voor het ontgrendelen van het **bericht object worden** aangeroepen. Dit leidt ertoe dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een receiver-toepassing het bericht om de een of andere reden niet kan verwerken, kan de methode voor het **ontgrendelen** van het bericht object worden aangeroepen. Dit leidt ertoe dat Service Bus het bericht in de wachtrij ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
 
 Er is ook een time-out gekoppeld aan een bericht dat in de wachtrij is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt het bericht automatisch door Service Bus ontgrendeld en wordt het beschikbaar om opnieuw te worden ontvangen.
 
