@@ -1,6 +1,6 @@
 ---
-title: Profielsjablonen van de gebruiker in Azure API Management | Microsoft Docs
-description: Informatie over het aanpassen van de inhoud van de pagina gebruikersprofiel in de ontwikkelaarsportal in Azure API Management.
+title: Gebruikers profiel sjablonen in azure API Management | Microsoft Docs
+description: Meer informatie over het aanpassen van de inhoud van de gebruikers profiel pagina's in de ontwikkelaars Portal in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,21 +10,20 @@ ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f24b9c6ce2aeb318040b61c29d7e14c01886c46
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61074824"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073313"
 ---
-# <a name="user-profile-templates-in-azure-api-management"></a>Profielsjablonen van de gebruiker in Azure API Management
-Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud van ontwikkelaarsportalpagina's met behulp van een set van sjablonen die hun inhoud hebt geconfigureerd. Met behulp van [DotLiquid](http://dotliquidmarkup.org/) syntaxis en de editor van uw keuze, zoals [DotLiquid voor ontwerpers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [tekenreeks resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), en [pagina besturingselementen](api-management-page-controls.md), hebt u geweldige flexibiliteit voor het configureren van de inhoud van de pagina's naar eigen inzicht met behulp van deze sjablonen.  
+# <a name="user-profile-templates-in-azure-api-management"></a>Gebruikers profiel sjablonen in azure API Management
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, [zoals DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), glyph- [resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
   
- De sjablonen in deze sectie kunnen u de inhoud van de gebruiker profiel pagina's in de ontwikkelaarsportal aanpassen.  
+ Met de sjablonen in deze sectie kunt u de inhoud van de gebruikers profiel pagina's in de ontwikkelaars portal aanpassen.  
   
 -   [Profiel](#Profile)  
   
@@ -32,17 +31,17 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
   
 -   [Toepassingen](#Applications)  
   
--   [Accountgegevens bijwerken](#UpdateAccountInfo)  
+-   [Account gegevens bijwerken](#UpdateAccountInfo)  
   
 > [!NOTE]
->  Standaard-voorbeeldsjablonen zijn opgenomen in de volgende documentatie, maar kunnen worden gewijzigd vanwege de continue verbeteringen. U kunt de live standaardsjablonen weergeven in de portal voor ontwikkelaars door te navigeren naar de gewenste afzonderlijke sjablonen. Zie voor meer informatie over het werken met sjablonen [over het aanpassen van de API Management-ontwikkelaarsportal met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Voor beelden van standaard sjablonen zijn opgenomen in de volgende documentatie, maar zijn onderhevig aan wijzigingen als gevolg van voortdurende verbeteringen. U kunt de Live standaard sjablonen in de ontwikkelaars portal weer geven door te navigeren naar de gewenste afzonderlijke sjablonen. Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="Profile"></a> Profiel  
- De **profiel** sjabloon kunt u de Gebruikersprofielsectie van de gebruikersprofielpagina in de ontwikkelaarsportal aanpassen.  
+##  <a name="Profile"></a>Uplinkpoortprofiel  
+ Met de **profiel** sjabloon kunt u de sectie gebruikers profiel van de pagina gebruikers profiel in de ontwikkelaars portal aanpassen.  
   
- ![De profielpagina](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM gebruikersprofiel pagina")  
+ ![Gebruikers profiel pagina](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "Pagina APIM-gebruikers profiel")  
   
 ### <a name="default-template"></a>Standaardsjabloon  
   
@@ -97,28 +96,28 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- Deze sjabloon kan geen gebruik [pagina besturingselementen](api-management-page-controls.md).  
+ Deze sjabloon gebruikt mogelijk geen [pagina besturings elementen](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
 > [!NOTE]
->  De [profiel](#Profile), [toepassingen](#Applications), en [abonnementen](#Subscriptions) sjablonen voor het gegevensmodel met dezelfde delen en ontvangen van dezelfde sjabloongegevens.  
+>  De sjablonen [profiel](#Profile), [toepassingen](#Applications)en [abonnementen](#Subscriptions) delen hetzelfde gegevens model en ontvangen dezelfde sjabloon gegevens.  
   
 |Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|string|De voornaam van de huidige gebruiker.|  
+|`firstName`|string|De voor naam van de huidige gebruiker.|  
 |`lastName`|string|De achternaam van de huidige gebruiker.|  
-|`companyName`|string|De naam van het bedrijf van de huidige gebruiker.|  
-|`addresserEmail`|string|E-mailadres van de huidige gebruiker.|  
-|`developersUsageStatisticsLink`|string|Relatieve URL analyses voor de huidige gebruiker weergeven.|  
-|`subscriptions`|Verzameling van [abonnement](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
-|`applications`|Verzameling van [toepassing](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
-|`changePasswordUrl`|string|De relatieve URL van de huidige gebruiker-wachtwoord te wijzigen.|  
-|`changeNameOrEmailUrl`|string|De relatieve URL naar de naam en e-mailadres voor de huidige gebruiker wijzigen.|  
-|`canChangePassword`|booleaans|De huidige gebruiker kan of hun wachtwoord wijzigen.|  
-|`isSystemUser`|booleaans|Of de huidige gebruiker is lid van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
+|`companyName`|string|De bedrijfs naam van de huidige gebruiker.|  
+|`addresserEmail`|string|Het e-mail adres van de huidige gebruiker.|  
+|`developersUsageStatisticsLink`|string|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
+|`subscriptions`|Verzameling [abonnements](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
+|`applications`|Verzameling [toepassings](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
+|`changePasswordUrl`|string|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
+|`changeNameOrEmailUrl`|string|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
+|`canChangePassword`|boolean|Hiermee wordt aangegeven of de huidige gebruiker het wacht woord kan wijzigen.|  
+|`isSystemUser`|boolean|Hiermee wordt aangegeven of de huidige gebruiker lid is van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
   
-### <a name="sample-template-data"></a>Voorbeeldgegevens voor de sjabloon  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -184,10 +183,10 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 }  
 ```  
   
-##  <a name="Subscriptions"></a> Abonnementen  
- De **abonnementen** sjabloon kunt u het gedeelte met abonnementen van de gebruikersprofielpagina in de ontwikkelaarsportal aanpassen.  
+##  <a name="Subscriptions"></a>Geabonneerd  
+ Met de **abonnementen** sjabloon kunt u de sectie abonnementen van de pagina gebruikers profiel in de ontwikkelaars portal aanpassen.  
   
- ![Abonnement op de gebruikerspagina](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM op de pagina gebruiker abonnement")  
+ ![Pagina abonnements gebruiker](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "Pagina APIM-gebruikers abonnement")  
   
 ### <a name="default-template"></a>Standaardsjabloon  
   
@@ -316,30 +315,30 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- Deze sjabloon mogelijk gebruikt u de volgende [pagina besturingselementen](api-management-page-controls.md).  
+ Deze sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
   
--   [subscription-cancel](api-management-page-controls.md#subscription-cancel)  
+-   [abonnement-annuleren](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
 > [!NOTE]
->  De [profiel](#Profile), [toepassingen](#Applications), en [abonnementen](#Subscriptions) sjablonen voor het gegevensmodel met dezelfde delen en ontvangen van dezelfde sjabloongegevens.  
+>  De sjablonen [profiel](#Profile), [toepassingen](#Applications)en [abonnementen](#Subscriptions) delen hetzelfde gegevens model en ontvangen dezelfde sjabloon gegevens.  
   
 |Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|string|De voornaam van de huidige gebruiker.|  
+|`firstName`|string|De voor naam van de huidige gebruiker.|  
 |`lastName`|string|De achternaam van de huidige gebruiker.|  
-|`companyName`|string|De naam van het bedrijf van de huidige gebruiker.|  
-|`addresserEmail`|string|E-mailadres van de huidige gebruiker.|  
-|`developersUsageStatisticsLink`|string|Relatieve URL analyses voor de huidige gebruiker weergeven.|  
-|`subscriptions`|Verzameling van [abonnement](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
-|`applications`|Verzameling van [toepassing](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
-|`changePasswordUrl`|string|De relatieve URL van de huidige gebruiker-wachtwoord te wijzigen.|  
-|`changeNameOrEmailUrl`|string|De relatieve URL naar de naam en e-mailadres voor de huidige gebruiker wijzigen.|  
-|`canChangePassword`|booleaans|De huidige gebruiker kan of hun wachtwoord wijzigen.|  
-|`isSystemUser`|booleaans|Of de huidige gebruiker is lid van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
+|`companyName`|string|De bedrijfs naam van de huidige gebruiker.|  
+|`addresserEmail`|string|Het e-mail adres van de huidige gebruiker.|  
+|`developersUsageStatisticsLink`|string|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
+|`subscriptions`|Verzameling [abonnements](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
+|`applications`|Verzameling [toepassings](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
+|`changePasswordUrl`|string|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
+|`changeNameOrEmailUrl`|string|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
+|`canChangePassword`|boolean|Hiermee wordt aangegeven of de huidige gebruiker het wacht woord kan wijzigen.|  
+|`isSystemUser`|boolean|Hiermee wordt aangegeven of de huidige gebruiker lid is van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
   
-### <a name="sample-template-data"></a>Voorbeeldgegevens voor de sjabloon  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -405,10 +404,10 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 }  
 ```  
   
-##  <a name="Applications"></a> Toepassingen  
- De **toepassingen** sjabloon kunt u het gedeelte met abonnementen van de gebruikersprofielpagina in de ontwikkelaarsportal aanpassen.  
+##  <a name="Applications"></a>Toepassingen  
+ Met de sjabloon **toepassingen** kunt u de sectie abonnementen van de pagina gebruikers profiel in de ontwikkelaars portal aanpassen.  
   
- ![Gebruiker toepassingen accountpagina](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM-gebruikersaccount pagina met toepassingen")  
+ De ![pagina gebruikers account toepassingen](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "Pagina APIM-gebruikers accounts")  
   
 ### <a name="default-template"></a>Standaardsjabloon  
   
@@ -479,30 +478,30 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- Deze sjabloon mogelijk gebruikt u de volgende [pagina besturingselementen](api-management-page-controls.md).  
+ Deze sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
   
--   [App-acties](api-management-page-controls.md#app-actions)  
+-   [app-acties](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
 > [!NOTE]
->  De [profiel](#Profile), [toepassingen](#Applications), en [abonnementen](#Subscriptions) sjablonen voor het gegevensmodel met dezelfde delen en ontvangen van dezelfde sjabloongegevens.  
+>  De sjablonen [profiel](#Profile), [toepassingen](#Applications)en [abonnementen](#Subscriptions) delen hetzelfde gegevens model en ontvangen dezelfde sjabloon gegevens.  
   
 |Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
-|`firstName`|string|De voornaam van de huidige gebruiker.|  
+|`firstName`|string|De voor naam van de huidige gebruiker.|  
 |`lastName`|string|De achternaam van de huidige gebruiker.|  
-|`companyName`|string|De naam van het bedrijf van de huidige gebruiker.|  
-|`addresserEmail`|string|E-mailadres van de huidige gebruiker.|  
-|`developersUsageStatisticsLink`|string|Relatieve URL analyses voor de huidige gebruiker weergeven.|  
-|`subscriptions`|Verzameling van [abonnement](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
-|`applications`|Verzameling van [toepassing](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
-|`changePasswordUrl`|string|De relatieve URL van de huidige gebruiker-wachtwoord te wijzigen.|  
-|`changeNameOrEmailUrl`|string|De relatieve URL naar de naam en e-mailadres voor de huidige gebruiker wijzigen.|  
-|`canChangePassword`|booleaans|De huidige gebruiker kan of hun wachtwoord wijzigen.|  
-|`isSystemUser`|booleaans|Of de huidige gebruiker is lid van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
+|`companyName`|string|De bedrijfs naam van de huidige gebruiker.|  
+|`addresserEmail`|string|Het e-mail adres van de huidige gebruiker.|  
+|`developersUsageStatisticsLink`|string|Relatieve URL voor het weer geven van analyses voor de huidige gebruiker.|  
+|`subscriptions`|Verzameling [abonnements](api-management-template-data-model-reference.md#Subscription) entiteiten.|De abonnementen voor de huidige gebruiker.|  
+|`applications`|Verzameling [toepassings](api-management-template-data-model-reference.md#Application) entiteiten.|De toepassingen van de huidige gebruiker.|  
+|`changePasswordUrl`|string|De relatieve URL voor het wijzigen van het wacht woord van de huidige gebruiker.|  
+|`changeNameOrEmailUrl`|string|De relatieve URL voor het wijzigen van de naam en het e-mail adres van de huidige gebruiker.|  
+|`canChangePassword`|boolean|Hiermee wordt aangegeven of de huidige gebruiker het wacht woord kan wijzigen.|  
+|`isSystemUser`|boolean|Hiermee wordt aangegeven of de huidige gebruiker lid is van een van de ingebouwde [groepen](api-management-key-concepts.md#groups).|  
   
-### <a name="sample-template-data"></a>Voorbeeldgegevens voor de sjabloon  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -568,10 +567,10 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 }  
 ```  
   
-##  <a name="UpdateAccountInfo"></a> Accountgegevens bijwerken  
- De **accountgegevens bijwerken** sjabloon kunt u het aanpassen van de **accountgegevens bijwerken** pagina in de portal voor ontwikkelaars.  
+##  <a name="UpdateAccountInfo"></a>Account gegevens bijwerken  
+ Met de sjabloon **Update account info** kunt u de pagina **account gegevens bijwerken** aanpassen in de ontwikkelaars Portal.  
   
- ![Gebruiker Account Info pagina sjablonen voor Ontwikkelaarsportals](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM gebruiker Account Info pagina sjablonen voor Ontwikkelaarsportals")  
+ ![Gebruikers account informatie pagina ontwikkelaars Portal sjablonen](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM-gebruikers account informatie pagina ontwikkelaars Portal sjablonen")  
   
 ### <a name="default-template"></a>Standaardsjabloon  
   
@@ -606,12 +605,12 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- Deze sjabloon kan geen gebruik [pagina besturingselementen](api-management-page-controls.md).  
+ Deze sjabloon gebruikt mogelijk geen [pagina besturings elementen](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Gegevensmodel  
- [Gebruikersaccountgegevens](api-management-template-data-model-reference.md#UserAccountInfo) entiteit.  
+ Entiteit [gebruikers account info](api-management-template-data-model-reference.md#UserAccountInfo) .  
   
-### <a name="sample-template-data"></a>Voorbeeldgegevens voor de sjabloon  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -626,4 +625,4 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het werken met sjablonen [over het aanpassen van de API Management-ontwikkelaarsportal met behulp van sjablonen](api-management-developer-portal-templates.md).
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.

@@ -240,6 +240,8 @@
           href: virtual-machine-scale-sets-automatic-upgrade.md
         - name: Exemplaarbescherming (preview)
           href: virtual-machine-scale-sets-instance-protection.md
+        - name: Meldingen over verwijderen beëindigen (preview)
+          href: virtual-machine-scale-sets-terminate-notification.md
         - name: Gedeelde installatiekopiegalerieën
           items:
             - name: Overzicht
