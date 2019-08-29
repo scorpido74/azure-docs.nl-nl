@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 7893c8e8b8d67b4b63bd9d6bb5a71552e95c9125
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850251"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100951"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central beheren via de Azure Portal
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-In plaats van IoT Central-toepassingen te maken en beheren via de pagina [toepassings beheer](https://aka.ms/iotcentral) van IOT Central kunt u de [Azure Portal](https://portal.azure.com) gebruiken om uw toepassingen te beheren.
+In plaats van IoT Central-toepassingen te maken en te beheren op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) , kunt u de [Azure Portal](https://portal.azure.com) gebruiken om uw toepassingen te beheren.
 
 ## <a name="create-iot-central-applications"></a>IoT Central-toepassingen maken
 
@@ -39,7 +39,7 @@ Selecteer nu **Maken**.
 
 ![Beheer Portal: IoT Central resource](media/howto-manage-iot-central-from-portal/image0c1.png)
 
-Vul alle velden in het formulier in. Dit formulier is vergelijkbaar met het formulier dat u invult om toepassingen te maken op de pagina IoT Central [toepassings beheer](https://aka.ms/iotcentral) . Zie de Snelstartgids [een IOT Central-toepassing maken](quick-deploy-iot-central.md) voor meer informatie.
+Vul alle velden in het formulier in. Dit formulier is vergelijkbaar met het formulier dat u invult om toepassingen te maken op de [Azure IOT Central Application Manager](https://aka.ms/iotcentral) -website. Zie de Snelstartgids [een IOT Central-toepassing maken](quick-deploy-iot-central.md) voor meer informatie.
 
 ![Beheer Portal: IoT Central-resource maken](media/howto-manage-iot-central-from-portal/image1a.png)  
 
@@ -64,7 +64,7 @@ Als u de toepassing wilt verplaatsen naar een andere resource groep, selecteert 
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Als u de toepassing naar een ander abonnement wilt verplaatsen,  selecteert u de wijzigings koppeling naast het abonnement. Kies het abonnement waarnaar u deze toepassing wilt migreren in het dialoog venster dat wordt weer gegeven.
+Als u de toepassing naar een ander abonnement wilt verplaatsen, selecteert u de wijzigings koppeling naast het abonnement. Kies het abonnement waarnaar u deze toepassing wilt migreren in het dialoog venster dat wordt weer gegeven.
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image5a.png)
 

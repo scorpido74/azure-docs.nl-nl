@@ -10,16 +10,15 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8c0c8f5543af425091c821f28d08fcab01118fd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990342"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090450"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-activering mislukt in scenario met geforceerde tunneling
 
@@ -27,7 +26,7 @@ In dit artikel wordt beschreven hoe u het KMS-activerings probleem oplost dat zi
 
 ## <a name="symptom"></a>Symptoom
 
-U schakelt [geforceerde tunneling](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) in subnetten van het virtuele netwerk van Azure in om alle Internet verkeer terug te sturen naar uw on-premises netwerk. In dit scenario kan Windows worden geactiveerd door de virtuele machines (Vm's) van Azure waarop Windows Server 2012 R2 (of een latere versie van Windows) wordt uitgevoerd. Vm's waarop een eerdere versie van Windows wordt uitgevoerd, kunnen Windows echter niet activeren.
+U schakelt [geforceerde tunneling](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) in subnetten van het virtuele netwerk van Azure in om alle Internet verkeer terug te sturen naar uw on-premises netwerk. In dit scenario wordt Windows niet geactiveerd door de Azure virtual machines (Vm's) die Windows uitvoeren.
 
 ## <a name="cause"></a>Oorzaak
 

@@ -1,6 +1,6 @@
 ---
-title: Maken en beheren van een virtuele Machine van Azure met behulp van Java | Microsoft Docs
-description: Java en Azure Resource Manager gebruiken om een virtuele machine en alle ondersteunende resources te implementeren.
+title: Een virtuele Azure-machine maken en beheren met Java | Microsoft Docs
+description: Gebruik Java en Azure Resource Manager voor het implementeren van een virtuele machine en alle ondersteunende bronnen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,36 +11,35 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: b02fd8f012dee2436f4f276e05185428008508a1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722574"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103021"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows-machines in Azure met behulp van Java maken en beheren
+# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Virtuele Windows-machines maken en beheren in azure met behulp van Java
 
-Een [virtuele Azure-Machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) moet diverse ondersteunende Azure-resources (VM). In dit artikel bevat informatie over het maken, beheren en verwijderen van VM-resources met behulp van Java. In deze zelfstudie leert u procedures om het volgende te doen:
+Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources maakt, beheert en verwijdert met behulp van Java. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Maak een Maven-project
+> * Een Maven-project maken
 > * Afhankelijkheden toevoegen
 > * Referenties maken
 > * Resources maken
-> * Beheertaken uitvoeren
+> * Beheer taken uitvoeren
 > * Resources verwijderen
 > * De toepassing uitvoeren
 
-Het duurt ongeveer 20 minuten deze stappen uitvoeren.
+Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 
-## <a name="create-a-maven-project"></a>Maak een Maven-project
+## <a name="create-a-maven-project"></a>Een Maven-project maken
 
 1. Als u dit nog niet hebt gedaan, installeert u [Java](https://aka.ms/azure-jdks).
-2. Installeer [Maven](https://maven.apache.org/download.cgi).
+2. Installeer [maven](https://maven.apache.org/download.cgi).
 3. Maak een nieuwe map en het project:
     
     ```
@@ -52,7 +51,7 @@ Het duurt ongeveer 20 minuten deze stappen uitvoeren.
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-1. Onder de `testAzureApp` map, open de `pom.xml` bestand en voeg toe van de buildconfiguratie van &lt;project&gt; om in te schakelen van de samenstelling van uw toepassing:
+1. Open in `testAzureApp` de map het `pom.xml` bestand en voeg de opbouw configuratie toe aan &lt;project&gt; om het bouwen van uw toepassing in te scha kelen:
 
     ```xml
     <build>
@@ -68,7 +67,7 @@ Het duurt ongeveer 20 minuten deze stappen uitvoeren.
     </build>
     ```
 
-2. Voeg de afhankelijkheden die nodig zijn voor toegang tot de Azure Java SDK.
+2. Voeg de afhankelijkheden toe die nodig zijn voor toegang tot de Azure Java-SDK.
 
     ```xml
     <dependency>
@@ -117,11 +116,11 @@ Het duurt ongeveer 20 minuten deze stappen uitvoeren.
 
 ## <a name="create-credentials"></a>Referenties maken
 
-Voordat u deze stap begint, zorg ervoor dat u toegang tot hebt een [Active Directory service-principal](../../active-directory/develop/howto-create-service-principal-portal.md). U moet ook de toepassings-ID, de verificatiesleutel en de tenant-ID die u nodig hebt in een latere stap vastleggen.
+Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een [Active Directory Service-Principal](../../active-directory/develop/howto-create-service-principal-portal.md). Noteer ook de toepassings-ID, de verificatie sleutel en de Tenant-ID die u in een latere stap nodig hebt.
 
-### <a name="create-the-authorization-file"></a>Het bestand met autorisatieregels maken
+### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
 
-1. Maak een bestand met de naam `azureauth.properties` en voeg deze eigenschappen toe:
+1. Maak een bestand met `azureauth.properties` de naam en voeg deze eigenschappen toe:
 
     ```
     subscription=<subscription-id>
@@ -134,20 +133,20 @@ Voordat u deze stap begint, zorg ervoor dat u toegang tot hebt een [Active Direc
     graphURL=https://graph.windows.net/
     ```
 
-    Vervang **&lt;abonnement-id&gt;** met uw abonnements-id, **&lt;toepassing-id&gt;** met de Active Directory-toepassing id **&lt;verificatiesleutel&gt;** met de sleutel van de toepassing en **&lt;tenant-id&gt;** met de tenant-id.
+    De **&lt;abonnements-id&gt;** vervangen door de id van **&lt;&gt;** uw abonnement, de toepassings-id met de Active Directory toepassings-id, **&lt;verificatie sleutel met&gt;** de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
 
 2. Sla het bestand op.
-3. Stel een omgevingsvariabele met de naam AZURE_AUTH_LOCATION in uw shell met het volledige pad naar het verificatiebestand.
+3. Stel een omgevings variabele met de naam AZURE_AUTH_LOCATION in uw shell in met het volledige pad naar het verificatie bestand.
 
-### <a name="create-the-management-client"></a>De management-client maken
+### <a name="create-the-management-client"></a>De Management-client maken
 
-1. Open de `App.java` bestand onder `src\main\java\com\fabrikam` en zorgt ervoor dat deze pakketinstructie aan de bovenkant:
+1. Open het `App.java` bestand onder `src\main\java\com\fabrikam` en controleer of deze pakket instructie bovenaan staat:
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. Voeg deze onder de pakketinstructie importeren van instructies:
+2. Voeg onder de instructie package de volgende import instructies toe:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -169,7 +168,7 @@ Voordat u deze stap begint, zorg ervoor dat u toegang tot hebt een [Active Direc
     import java.util.Scanner;
     ```
 
-2. Voor het maken van de Active Directory-referenties die u nodig hebt om aan te vragen, voeg deze code toe aan de belangrijkste methode van de klasse App:
+2. Als u de Active Directory referenties wilt maken die u nodig hebt om aanvragen te doen, voegt u deze code toe aan de methode Main van de app-klasse:
    
     ```java
     try {
@@ -189,9 +188,9 @@ Voordat u deze stap begint, zorg ervoor dat u toegang tot hebt een [Active Direc
 
 ### <a name="create-the-resource-group"></a>De resourcegroep maken
 
-Alle resources moeten worden opgenomen in een [resourcegroep](../../azure-resource-manager/resource-group-overview.md).
+Alle resources moeten deel uitmaken van een [resource groep](../../azure-resource-manager/resource-group-overview.md).
 
-Geef waarden op voor de toepassing en maak de resourcegroep, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u waarden voor de toepassing wilt opgeven en de resource groep wilt maken, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Creating resource group...");
@@ -203,9 +202,9 @@ ResourceGroup resourceGroup = azure.resourceGroups()
 
 ### <a name="create-the-availability-set"></a>De beschikbaarheidsset maken
 
-[Beschikbaarheidssets](tutorial-availability-sets.md) maken het gemakkelijker voor u te houden van de virtuele machines die worden gebruikt door uw toepassing.
+Met [beschikbaarheids sets](tutorial-availability-sets.md) kunt u gemakkelijker de virtuele machines onderhouden die door uw toepassing worden gebruikt.
 
-Voor het maken van de beschikbaarheidsset, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u de beschikbaarheidsset wilt maken, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Creating availability set...");
@@ -216,11 +215,11 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
     .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
 ```
-### <a name="create-the-public-ip-address"></a>Het openbare IP-adres maken
+### <a name="create-the-public-ip-address"></a>Het open bare IP-adres maken
 
 Een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) is nodig om te communiceren met de virtuele machine.
 
-Voor het maken van het openbare IP-adres voor de virtuele machine, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u het open bare IP-adres voor de virtuele machine wilt maken, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Creating public IP address...");
@@ -234,9 +233,9 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-Een virtuele machine moet zich in een subnet van een [virtueel netwerk](../../virtual-network/virtual-networks-overview.md).
+Een virtuele machine moet zich in een subnet van een [virtueel netwerk](../../virtual-network/virtual-networks-overview.md)bevinden.
 
-Voor het maken van een subnet en een virtueel netwerk, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u een subnet en een virtueel netwerk wilt maken, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Creating virtual network...");
@@ -249,11 +248,11 @@ Network network = azure.networks()
     .create();
 ```
 
-### <a name="create-the-network-interface"></a>De netwerkinterface maken
+### <a name="create-the-network-interface"></a>De netwerk interface maken
 
-Een virtuele machine moet een netwerkinterface om te communiceren met het virtuele netwerk.
+Een virtuele machine heeft een netwerk interface nodig om te communiceren met het virtuele netwerk.
 
-Voor het maken van een netwerkinterface, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u een netwerk interface wilt maken, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Creating network interface...");
@@ -270,9 +269,9 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
 
-Nu dat u de ondersteunende netwerkbronnen gemaakt, kunt u een virtuele machine kunt maken.
+Nu u alle ondersteunende resources hebt gemaakt, kunt u een virtuele machine maken.
 
-Voor het maken van de virtuele machine, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u de virtuele machine wilt maken, voegt u deze code toe aan het try-blok in de methode Main:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -294,11 +293,11 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> Deze zelfstudie maakt u een virtuele machine met een versie van het besturingssysteem Windows Server. Zie voor meer informatie over het selecteren van andere installatiekopieën, [navigeren door en selecteren van installatiekopieën van virtuele machine met Windows PowerShell en de Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> In deze zelf studie maakt u een virtuele machine waarop een versie van het Windows Server-besturings systeem wordt uitgevoerd. Zie voor meer informatie over het selecteren van andere installatie kopieën [navigeren en installatie kopieën van virtuele Azure-machines selecteren met Windows Power shell en de Azure cli](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Als u gebruiken van een bestaande schijf in plaats van een marketplace-installatiekopie wilt, gebruikt u deze code: 
+Als u een bestaande schijf wilt gebruiken in plaats van een Marketplace-installatie kopie, gebruikt u deze code: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk")
@@ -319,19 +318,19 @@ azure.virtualMachines.define("myVM")
     .create();
 ```
 
-## <a name="perform-management-tasks"></a>Beheertaken uitvoeren
+## <a name="perform-management-tasks"></a>Beheer taken uitvoeren
 
-Tijdens de levenscyclus van een virtuele machine wilt u mogelijk beheertaken uitvoeren, zoals het starten, stoppen of verwijderen van een virtuele machine. Bovendien kunt u maken van code om repetitieve of complexe taken te automatiseren.
+Tijdens de levenscyclus van een virtuele machine wilt u mogelijk beheertaken uitvoeren, zoals het starten, stoppen of verwijderen van een virtuele machine. U kunt ook code maken om herhaalde of complexe taken te automatiseren.
 
-Wanneer u iets te doen met de virtuele machine, moet u een exemplaar van het ophalen. Voeg deze code toe aan het blok probeer van de belangrijkste methode:
+Wanneer u iets moet doen met de virtuele machine, moet u een exemplaar hiervan ophalen. Voeg deze code toe aan het try-blok van de methode Main:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-the-vm"></a>Informatie over de virtuele machine
+### <a name="get-information-about-the-vm"></a>Informatie over de virtuele machine ophalen
 
-Voor informatie over de virtuele machine, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u informatie over de virtuele machine wilt ophalen, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("hardwareProfile");
@@ -389,9 +388,9 @@ input.nextLine();
 
 ### <a name="stop-the-vm"></a>De virtuele machine stoppen
 
-U kunt een virtuele machine stoppen en alle bijbehorende instellingen behouden, maar nog steeds in rekening gebracht voor het, of u kunt een virtuele machine stoppen en deze toewijzing. Wanneer een virtuele machine ongedaan is gemaakt, worden alle resources die zijn gekoppeld aan deze ook ongedaan gemaakt en facturering-ends voor het.
+U kunt een virtuele machine stoppen en alle instellingen behouden, maar er nog steeds kosten in rekening worden gebracht, of u kunt een virtuele machine stoppen en de toewijzing ervan ongedaan maken. Wanneer de toewijzing van een virtuele machine ongedaan wordt gemaakt, worden alle resources die eraan zijn gekoppeld, ook ongedaan gemaakt en wordt de facturering voor het apparaat beëindigd.
 
-Als u wilt de virtuele machine stoppen zonder deze toewijzing ongedaan maken..., voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u de virtuele machine wilt stoppen zonder de toewijzing ervan op te heffen, voegt u deze code toe aan het try-blok in de methode Main:
 
 ```java
 System.out.println("Stopping vm...");
@@ -400,7 +399,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-Als u wilt de toewijzing van de virtuele machine, wijzigt u de aanroep zijn uitgeschakeld in deze code:
+Als u de toewijzing van de virtuele machine ongedaan wilt maken, wijzigt u de uitgeschakeld-aanroep naar deze code:
 
 ```java
 vm.deallocate();
@@ -408,7 +407,7 @@ vm.deallocate();
 
 ### <a name="start-the-vm"></a>De virtuele machine starten
 
-Voor het starten van de virtuele machine, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u de virtuele machine wilt starten, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Starting vm...");
@@ -419,9 +418,9 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>Grootte van de virtuele machine wijzigen
 
-Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van een grootte voor uw virtuele machine. Zie voor meer informatie, [VM-grootten](sizes.md).  
+Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM](sizes.md)-grootten voor meer informatie.  
 
-Als de grootte van de virtuele machine wilt wijzigen, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Resizing vm...");
@@ -432,9 +431,9 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Een gegevensschijf toevoegen aan de virtuele machine
+### <a name="add-a-data-disk-to-the-vm"></a>Een gegevens schijf toevoegen aan de VM
 
-Een gegevensschijf toevoegen aan de virtuele machine die 2 GB groot is, heeft een LUN van 0, en een type opslaan in cache van ReadWrite, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+Als u een gegevens schijf wilt toevoegen aan de virtuele machine met een grootte van 2 GB, een LUN van 0 en een cache type ReadWrite, voegt u deze code toe aan het blok try in de methode Main:
 
 ```java
 System.out.println("Adding data disk...");
@@ -447,9 +446,9 @@ input.nextLine();
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-Omdat u voor resources die worden gebruikt in Azure betaalt, is het altijd verstandig resources verwijderen die niet langer nodig zijn. Als u wilt verwijderen van de virtuele machines en de ondersteunende resources, u hoeft te doen, is de resourcegroep verwijderen.
+Omdat er in rekening worden gebracht voor resources die worden gebruikt in azure, is het altijd verstandig om resources te verwijderen die niet meer nodig zijn. Als u de virtuele machines en alle ondersteunende bronnen wilt verwijderen, moet u de resource groep verwijderen.
 
-1. Als u wilt verwijderen van de resourcegroep, voeg deze code toe aan het blok proberen in de belangrijkste methode:
+1. Als u de resource groep wilt verwijderen, voegt u deze code toe aan het blok try in de methode Main:
    
     ```java
     System.out.println("Deleting resources...");
@@ -460,17 +459,17 @@ Omdat u voor resources die worden gebruikt in Azure betaalt, is het altijd verst
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Het duurt ongeveer vijf minuten voor deze consoletoepassing volledig uitvoeren vanaf het begin te voltooien.
+Het duurt ongeveer vijf minuten voordat deze console toepassing volledig van begin tot eind kan worden uitgevoerd.
 
-1. Als u wilt de toepassing uitvoert, gebruikt u deze Maven-opdracht:
+1. Als u de toepassing wilt uitvoeren, gebruikt u de volgende maven-opdracht:
 
     ```
     mvn compile exec:java
     ```
 
-2. Voordat u druk op **Enter** om te beginnen met verwijderen van resources, kunt u een paar minuten om te controleren of het maken van de resources in Azure portal kunt nemen. Klik op de status van de implementatie als u wilt weergeven over de implementatie.
+2. Voordat u op **Enter** drukt om resources te verwijderen, kan het enkele minuten duren voordat het maken van de resources in de Azure Portal is gecontroleerd. Klik op de implementatie status om informatie over de implementatie weer te geven.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het gebruik van de [Azure-bibliotheken voor Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
+* Meer informatie over het gebruik [van de Azure-bibliotheken voor Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
 

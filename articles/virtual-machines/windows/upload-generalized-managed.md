@@ -1,6 +1,6 @@
 ---
-title: Een beheerde Azure-virtuele machine maken vanaf een gegeneraliseerde on-premises VHD | Microsoft Docs
-description: Een gegeneraliseerde VHD uploaden naar Azure en het maken van nieuwe virtuele machines, in het Resource Manager-implementatiemodel.
+title: Een beheerde Azure-VM maken op basis van een gegeneraliseerde on-premises VHD | Microsoft Docs
+description: Upload een gegeneraliseerde VHD naar Azure en gebruik deze om nieuwe virtuele machines te maken in het Resource Manager-implementatie model.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,67 +11,66 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 9846bf7b28f1205f98eb59671553d309fe754d30
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: be3ccfd0c562763d0968398ddb042dc5f07dbdcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707943"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101565"
 ---
-# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Een gegeneraliseerde VHD uploaden en maken van nieuwe virtuele machines in Azure
+# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Een gegeneraliseerde VHD uploaden en gebruiken om nieuwe virtuele machines te maken in azure
 
-In dit artikel begeleidt u bij het uploaden van een VHD van een gegeneraliseerde VM naar Azure, een installatiekopie van de VHD maken en een nieuwe virtuele machine maken van die installatiekopie met behulp van PowerShell. U kunt een VHD die is geëxporteerd uit een on-premises virtualisatie-hulpprogramma of een andere cloud uploaden. Met behulp van [Managed Disks](managed-disks-overview.md) voor de nieuwe virtuele machine vereenvoudigt u het VM-beheer en betere beschikbaarheid biedt wanneer de virtuele machine wordt geplaatst in een beschikbaarheidsset. 
+In dit artikel wordt stapsgewijs beschreven hoe u Power shell gebruikt om een VHD van een gegeneraliseerde VM naar Azure te uploaden, een installatie kopie van de VHD te maken en een nieuwe VM te maken op basis van die installatie kopie. U kunt een VHD uploaden die is geëxporteerd uit een on-premises virtualisatie hulpprogramma of vanuit een andere cloud. Het gebruik van [Managed disks](managed-disks-overview.md) voor de nieuwe virtuele machine vereenvoudigt het beheer van virtuele machines en biedt betere Beschik baarheid wanneer de virtuele machine wordt geplaatst in een beschikbaarheidsset. 
 
-Zie voor een voorbeeld van een script, [voorbeeldscript een VHD uploaden naar Azure en maak een nieuwe virtuele machine](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
+Zie [voorbeeld script voor het uploaden van een VHD naar Azure en het maken van een nieuwe virtuele machine](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)voor een voorbeeld script.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-- Voordat u een VHD uploaden naar Azure, u moet volgen [voorbereiden van een Windows VHD of VHDX te uploaden naar Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Beoordeling [plannen voor de migratie naar Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) voordat u begint met uw migratie naar [Managed Disks](managed-disks-overview.md).
+- Voordat u een VHD naar Azure uploadt, moet u [een Windows-VHD of VHDX voorbereiden om te uploaden naar Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Controleer [het plan voor de migratie naar Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) voordat u de migratie naar [Managed disks](managed-disks-overview.md)start.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>De bron-VM generaliseren met Sysprep
 
-Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Zie voor meer informatie over Sysprep de [Sysprep overzicht](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Zie het [overzicht van Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)voor meer informatie over Sysprep.
 
-Zorg ervoor dat de server-functies die worden uitgevoerd op de machine worden ondersteund door Sysprep. Zie voor meer informatie, [Sysprep-ondersteuning voor serverfuncties](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)voor meer informatie.
 
 > [!IMPORTANT]
-> Als u van plan bent om uit te voeren van Sysprep voordat u uw VHD uploadt naar Azure voor het eerst, zorg ervoor dat u hebt [uw virtuele machine voorbereid](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+> Als u van plan bent om Sysprep uit te voeren voordat u de VHD voor het eerst uploadt naar Azure, moet u ervoor zorgen dat u [uw VM hebt voor bereid](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 > 
 > 
 
-1. Meld u aan de virtuele machine van Windows.
-2. Open het venster met de opdrachtprompt als beheerder. Wijzig de map in % windir%\system32\sysprep en voer `sysprep.exe`.
-3. In de **hulpprogramma voor systeemvoorbereiding** in het dialoogvenster, selecteer **Voer System Out-of-Box Experience (OOBE)** , en zorg ervoor dat de **Generalize** selectievakje is ingeschakeld.
-4. Voor **afsluitopties**, selecteer **afsluiten**.
+1. Meld u aan bij de virtuele Windows-machine.
+2. Open het venster met de opdrachtprompt als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer uit `sysprep.exe`.
+3. Selecteer in het dialoog venster **hulp programma voor systeem voorbereiding** de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat het selectie vakje **generalize** is ingeschakeld.
+4. Selecteer voor **afsluit opties**de optie **Afsluiten**.
 5. Selecteer **OK**.
    
-    ![Sysprep start](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Als Sysprep is voltooid, sluit de virtuele machine. Start de virtuele machine niet opnieuw.
+    ![Sysprep starten](./media/upload-generalized-managed/sysprepgeneral.png)
+6. Wanneer Sysprep is voltooid, wordt de virtuele machine afgesloten. Start de virtuele machine niet opnieuw op.
 
 
-## <a name="get-a-storage-account"></a>Een opslagaccount ophalen
+## <a name="get-a-storage-account"></a>Een opslag account ophalen
 
-U hebt een opslagaccount in Azure voor het opslaan van de geüploade VM-installatiekopie. U kunt een bestaand opslagaccount gebruiken of een nieuwe maken. 
+U hebt een opslag account in azure nodig om de geüploade VM-installatie kopie op te slaan. U kunt een bestaand opslag account gebruiken of een nieuwe maken. 
 
-Als u dat u de VHD worden gebruikt voor het maken van een beheerde schijf voor een virtuele machine, is de locatie van de storage-account moet dezelfde locatie waar u de virtuele machine maakt.
+Als u de VHD gebruikt voor het maken van een beheerde schijf voor een virtuele machine, moet de locatie van het opslag account gelijk zijn aan de locatie waar u de virtuele machine gaat maken.
 
-Als u wilt weergeven van de beschikbare opslag-accounts, typ:
+Voer het volgende in om de beschik bare opslag accounts weer te geven:
 
 ```azurepowershell
 Get-AzStorageAccount | Format-Table
 ```
 
-## <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw storage-account
+## <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw opslag account
 
-Gebruik de [toevoegen AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet voor het uploaden van de VHD naar een container in uw storage-account. In dit voorbeeld wordt het bestand geüpload *myVHD.vhd* van *C:\Users\Public\Documents\Virtual hardeschijven\\*  naar een opslagaccount met de naam *mystorageaccount* in de *myResourceGroup* resourcegroep. Het bestand worden opgenomen in de container met de naam *mycontainer* en de nieuwe bestandsnaam worden *myUploadedVHD.vhd*.
+Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de VHD te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand *myVHD. VHD* geüpload van *C:\Users\Public\Documents\Virtual harde\\ schijven* naar een opslag account met de naam *mystorageaccount* in de resource groep *myResourceGroup* . Het bestand wordt in de container met de naam *mycontainer* geplaatst en de nieuwe bestands naam wordt *myUploadedVHD. VHD*.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -81,7 +80,7 @@ Add-AzVhd -ResourceGroupName $rgName -Destination $urlOfUploadedImageVhd `
 ```
 
 
-Als dit lukt, krijgt u een reactie die er ongeveer als volgt uitziet:
+Als dat lukt, krijgt u een antwoord dat er ongeveer als volgt uitziet:
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -95,39 +94,39 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-Afhankelijk van uw netwerkverbinding en de grootte van uw VHD-bestand kan met deze opdracht even om te voltooien.
+Afhankelijk van uw netwerk verbinding en de grootte van het VHD-bestand kan het enige tijd duren voordat deze opdracht is voltooid.
 
 ### <a name="other-options-for-uploading-a-vhd"></a>Andere opties voor het uploaden van een VHD
  
-U kunt ook een VHD uploaden naar uw opslagaccount met behulp van een van de volgende opties:
+U kunt ook een VHD uploaden naar uw opslag account met behulp van een van de volgende opties:
 
 - [AzCopy](https://aka.ms/downloadazcopy)
-- [Azure-opslag kopiëren van de Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-- [Azure Storage Explorer uploaden van Blobs](https://azurestorageexplorer.codeplex.com/)
-- [Naslaginformatie voor Storage Import/Export Service REST API](https://msdn.microsoft.com/library/dn529096.aspx)
--   Het is raadzaam om met behulp van de Import/Export-Service als de geschatte tijd uploaden is langer dan zeven dagen. U kunt [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) om in te schatten van de tijd van de eenheid grootte en de overdracht van gegevens. 
-    Import/Export kan worden gebruikt om te kopiëren naar een standard storage-account. U moet worden gekopieerd van standaardopslag naar premium storage-account met behulp van een hulpprogramma zoals AzCopy.
+- [BLOB-API Azure Storage kopiëren](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+- [Azure Storage Explorer uploaden van blobs](https://azurestorageexplorer.codeplex.com/)
+- [Naslag informatie voor Storage import/export-service REST API](https://msdn.microsoft.com/library/dn529096.aspx)
+-   U kunt het beste de import/export-service gebruiken als de geschatte upload tijd langer is dan zeven dagen. U kunt [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) gebruiken om de tijd te schatten van de gegevens grootte en de overdrachts eenheid. 
+    Importeren/exporteren kan worden gebruikt om naar een Standard-opslag account te kopiëren. U moet de standaard opslag kopiëren naar een Premium Storage-account met behulp van een hulp programma zoals AzCopy.
 
 > [!IMPORTANT]
-> Als u AzCopy gebruikt voor uw VHD uploaden naar Azure, zorg ervoor dat u hebt ingesteld [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) voordat het script uploaden wordt uitgevoerd. Als de bestemming een blob is en deze optie niet is opgegeven, maakt AzCopy standaard een blok-blob.
+> Als u AzCopy gebruikt om uw VHD te uploaden naar Azure, moet u ervoor zorgen dat u [ **/BlobType: pagina**](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs#upload-a-file) hebt ingesteld voordat u het upload script uitvoert. Als de bestemming een blob is en deze optie niet is opgegeven, maakt AzCopy standaard een blok-blob.
 > 
 > 
 
 
 
-## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Een beheerde installatiekopie van het geüploade VHD maken 
+## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Een beheerde installatie kopie maken op basis van de geüploade VHD 
 
-Een beheerde installatiekopie maken van uw gegeneraliseerde VHD met het besturingssysteem. De volgende waarden vervangen door uw eigen gegevens.
+Een beheerde installatie kopie maken op basis van de gegeneraliseerde VHD van het besturings systeem. Vervang de volgende waarden door uw eigen gegevens.
 
 
-Stel eerst enkele parameters:
+Stel eerst een aantal para meters in:
 
 ```powershell
 $location = "East US" 
 $imageName = "myImage"
 ```
 
-Maak de installatiekopie met behulp van uw gegeneraliseerde VHD met het besturingssysteem.
+Maak de installatie kopie met de gegeneraliseerde VHD van het besturings systeem.
 
 ```powershell
 $imageConfig = New-AzImageConfig `
@@ -147,7 +146,7 @@ New-AzImage `
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Nu u een installatiekopie hebt gemaakt, kunt u een of meer nieuwe VM's van de installatiekopie maken met behulp. Dit voorbeeld maakt u een virtuele machine met de naam *myVM* van *myImage*in *myResourceGroup*.
+Nu u een installatiekopie hebt gemaakt, kunt u een of meer nieuwe VM's van de installatiekopie maken met behulp. In dit voor beeld wordt een VM gemaakt met de naam *myVM* van *MyImage*, in *myResourceGroup*.
 
 
 ```powershell
@@ -166,5 +165,5 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Aanmelden bij uw nieuwe virtuele machine. Zie voor meer informatie, [hoe u verbinding maken met en meld u aan een virtuele Azure-machine waarop Windows wordt uitgevoerd bij](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Meld u aan bij de nieuwe virtuele machine. Zie [verbinding maken en aanmelden bij een virtuele Azure-machine met Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie. 
 

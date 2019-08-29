@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650416"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095757"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -188,7 +188,7 @@ De resource met behulp van de resourcenaam opgeven of de [resourceId functie](#r
 
 Als u een **lijst** functie gebruikt in een resource die voorwaardelijk wordt geïmplementeerd, wordt de functie geëvalueerd, zelfs als de resource niet is geïmplementeerd. Er wordt een fout bericht weer **geven** als de functie List verwijst naar een resource die niet bestaat. Gebruik de functie **als** om te controleren of de functie alleen wordt geëvalueerd wanneer de resource wordt geïmplementeerd. Zie de [functie als](resource-group-template-functions-logical.md#if) voor een voorbeeld sjabloon die gebruikmaakt van if en-lijst met een voorwaardelijke geïmplementeerde resource.
 
-### <a name="example"></a>Voorbeeld
+### <a name="list-example"></a>Voor beeld van lijst
 
 De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) laat zien hoe de primaire en secundaire sleutels uit een opslagaccount in de uitvoersectie geretourneerd. Deze retourneert ook een SAS-token voor het opslagaccount. 
 
@@ -284,7 +284,7 @@ Elk type ondersteunde wordt geretourneerd in de volgende indeling:
 
 Matrix volgorde van de geretourneerde waarden wordt niet gegarandeerd.
 
-### <a name="example"></a>Voorbeeld
+### <a name="providers-example"></a>Voor beeld van providers
 
 De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) laat zien hoe u de provider-functie te gebruiken:
 
@@ -433,7 +433,7 @@ Bijvoorbeeld:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`is correct `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` is niet juist
 
-### <a name="example"></a>Voorbeeld
+### <a name="reference-example"></a>Referentie voorbeeld
 
 De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) implementeert een resource, en verwijst naar die resource.
 
@@ -600,7 +600,7 @@ Een algemene gebruik van de resourceGroup-functie is het maken van resources in 
 
 U kunt ook de functie resourceGroup gebruiken om labels van de resource groep toe te passen op een resource. Zie [labels Toep assen op resource groep](resource-group-using-tags.md#apply-tags-from-resource-group)voor meer informatie.
 
-### <a name="example"></a>Voorbeeld
+### <a name="resource-group-example"></a>Voor beeld van resource groep
 
 De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) worden de eigenschappen van de resourcegroep geretourneerd.
 
@@ -737,7 +737,7 @@ Vaak het geval is, moet u deze functie wilt gebruiken bij het gebruik van een st
 }
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="resource-id-example"></a>Resource-ID-voor beeld
 
 De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) geeft als resultaat de resource-ID voor een opslagaccount in de resourcegroep:
 
@@ -795,7 +795,7 @@ De functie geeft als resultaat van de volgende indeling:
 }
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="subscription-example"></a>Voor beeld van abonnement
 
 De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) toont de abonnement-functie in de uitvoersectie aangeroepen. 
 

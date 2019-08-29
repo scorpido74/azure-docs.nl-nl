@@ -1,6 +1,6 @@
 ---
-title: vCPU-quota's voor Azure | Microsoft Docs
-description: Meer informatie over vCPU-quota voor Azure.
+title: vCPU quota's voor Azure | Microsoft Docs
+description: Meer informatie over vCPU-quota's voor Azure.
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,26 +11,25 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 8912387583c24945de22bcb029d40e4d4766b1fb
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 48da419cdf5b4555e06b2a87d4b6821276777826
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719878"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102470"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>vCPU-quota virtuele machines
 
-De vCPU-quota's voor virtuele machines en schaalsets voor virtuele machines zijn gerangschikt in twee lagen voor elk abonnement, in elke regio. De eerste laag is het totaal aantal regionale vcpu's en de tweede laag is de verschillende VM-grootte familie-kernen, zoals de D-serie vcpu's. Telkens wanneer een nieuwe virtuele machine is geïmplementeerd de vcpu's voor de virtuele machine mag niet groter zijn dan het vCPU-quotum voor de familie van VM-grootte of het totale aantal regionale vCPU-quotum. Als een van deze quota worden overschreden, wordt de VM-implementatie niet toegestaan. Er is ook een quotum voor het totale aantal virtuele machines in de regio. De informatie over elk van deze quota kunnen worden weergegeven de **gebruik + quota** sectie van de **abonnement** pagina in de [Azure-portal](https://portal.azure.com), of u kunt een query voor de waarden met behulp van PowerShell.
+De vCPU-quota's voor virtuele machines en virtuele-machine schaal sets worden gerangschikt in twee lagen voor elk abonnement, in elke regio. De eerste laag is het totale regionale Vcpu's en de tweede laag is de verschillende kernen van de VM-grootte, zoals de Vcpu's van de D-serie. Telkens wanneer een nieuwe virtuele machine wordt geïmplementeerd, mag de Vcpu's voor de virtuele machine niet groter zijn dan het vCPU quotum voor de VM-grootte familie of het totale regionale vCPU-quotum. Als een van deze quota wordt overschreden, is de implementatie van de VM niet toegestaan. Er is ook een quotum voor het totale aantal virtuele machines in de regio. De details van elk van deze quota's kunnen worden weer gegeven in de sectie **gebruik en quota's** van de pagina **abonnement** in de [Azure Portal](https://portal.azure.com), of u kunt een query uitvoeren voor de waarden met behulp van Power shell.
 
  [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)] 
  
 ## <a name="check-usage"></a>Gebruik controleren
 
-U kunt de [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) cmdlet om te controleren op het quotagebruik van uw.
+U kunt de cmdlet [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) gebruiken om het quota gebruik te controleren.
 
 ```azurepowershell-interactive
 Get-AzVMUsage -Location "East US"
@@ -80,10 +79,10 @@ Premium Storage Managed Disks                1 10000 Count
 
 
 ## <a name="reserved-vm-instances"></a>Gereserveerde VM-instanties
-Gereserveerde VM-instanties, die zijn gericht op één abonnement zonder VM-grootte flexibiliteit, wordt een nieuwe aspect toegevoegd aan de vCPU-quota. Deze waarden wordt het aantal exemplaren van de opgegeven grootte die kan worden geïmplementeerd in het abonnement moet worden beschreven. Ze werken als een tijdelijke aanduiding in het quotumsysteem om ervoor te zorgen dat quotum om ervoor te zorgen gereserveerde VM-instanties zijn geïmplementeerd in het abonnement is gereserveerd. Bijvoorbeeld, als een specifiek abonnement heeft 10 Standard_D1 gereserveerde VM-exemplaren de limiet voor het gebruik van voor Standard_D1 gereserveerde VM-exemplaren is 10. Dit zorgt ervoor dat Azure om ervoor te zorgen dat er altijd ten minste 10 vcpu's beschikbaar in het totaal aantal regionale Vcpu-quotum zijn moet worden gebruikt voor Standard_D1 exemplaren en er ten minste 10 vcpu's beschikbaar in de Standard D-serie vCPU-quotum zijn moet worden gebruikt voor Standard_D1 exemplaren.
+Gereserveerde VM-instanties, die zijn afgestemd op één abonnement zonder flexibiliteit voor VM-grootte, zullen een nieuw aspect toevoegen aan de vCPU quota's. Deze waarden beschrijven het aantal exemplaren van de opgegeven grootte dat in het abonnement moet worden geïmplementeerd. Ze werken als tijdelijke aanduiding in het quota systeem om ervoor te zorgen dat quota gereserveerd zijn om te zorgen dat gereserveerde VM-exemplaren in het abonnement kunnen worden geïmplementeerd. Als een specifiek abonnement bijvoorbeeld 10 Standard_D1 gereserveerde VM-instanties heeft, zijn de limieten voor het gebruik van Standard_D1 gereserveerde VM-instanties 10. Dit zorgt ervoor dat Azure in het totale regionale Vcpu's-quotum altijd ten minste 10 Vcpu's beschikbaar is om te worden gebruikt voor Standard_D1-instanties en dat er ten minste 10 Vcpu's beschikbaar zijn in het vCPU-quotum van de standaard D-serie om te worden gebruikt voor Standard_D1-exemplaren.
 
-Als u een quotaverhoging vereist is voor één abonnement gereserveerde instantie aanschaft, kunt u [een verhoging aanvragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) voor uw abonnement.
+Als een quotum toename vereist is om één enkel abonnement RI te kopen, kunt u [een quotum verhoging aanvragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) voor uw abonnement.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over facturering en quota voor [Azure-abonnement en Servicelimieten, quotums en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json).
+Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json)voor meer informatie over facturering en quota's.

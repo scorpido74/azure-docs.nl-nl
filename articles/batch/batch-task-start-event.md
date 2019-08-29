@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 76100f1457123ac88055fddd55eb22a102201adf
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: efad9e71b986156c6d8e95208d50ac8d5a4d7e7f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322808"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094353"
 ---
 # <a name="task-start-event"></a>Gebeurtenis taak starten
 
@@ -63,8 +62,8 @@ ms.locfileid: "68322808"
 
 |De naam van element|type|Opmerkingen|
 |------------------|----------|-----------|
-|poolId|Reeks|De id van de pool waarvoor de taak is uitgevoerd.|
-|nodeId|Reeks|De id van het knoop punt waarop de taak is uitgevoerd.|
+|poolId|Tekenreeks|De id van de pool waarvoor de taak is uitgevoerd.|
+|nodeId|Tekenreeks|De id van het knoop punt waarop de taak is uitgevoerd.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 

@@ -1,31 +1,30 @@
 ---
-title: Afhandeling van fouten in duurzame functies - Azure
-description: Leer hoe u voor het afhandelen van fouten in de extensie duurzame functies voor Azure Functions.
+title: Fouten afhandelen in Durable Functions-Azure
+description: Meer informatie over het afhandelen van fouten in de Durable Functions extensie voor Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79af90d1c2c5b698ee7394f7fb20486b3069038c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33d1b410119e631e0ccc9941beac1062d4ec30f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751938"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087335"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Afhandeling van fouten in duurzame functies (Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Het afhandelen van fouten in Durable Functions (Azure Functions)
 
-Duurzame functie indelingen zijn geïmplementeerd in de code en de mogelijkheden voor foutafhandeling van de programmeertaal kunnen gebruiken. Met deze waarmee u rekening moet er echt zijn niet alle nieuwe concepten die u nodig hebt voor meer informatie over het afhandelen van fouten en compensatie opnemen in uw indelingen. Er zijn echter enkele problemen die u moet rekening houden met.
+Duurzame functie-indelingen worden in code geïmplementeerd en kunnen de functies voor fout afhandeling van de programmeer taal gebruiken. Daarom zijn er echt geen nieuwe concepten die u nodig hebt om meer te weten te komen over het opnemen van fout afhandeling en compensatie in uw integraties. Er zijn echter enkele gedragingen waarmee u rekening moet houden.
 
-## <a name="errors-in-activity-functions"></a>Fouten in de activiteitsfuncties
+## <a name="errors-in-activity-functions"></a>Fouten in de activiteit functies
 
-Elke uitzondering die is gegenereerd in een functie van de activiteit is samengevoegd terug naar de orchestrator-functie en gegenereerd als een `FunctionFailedException`. U kunt schrijven voor de verwerking en compensatie foutcode die aansluit bij uw behoeften in de orchestrator-functie.
+Uitzonde ringen die worden gegenereerd in een functie van een activiteit, worden teruggeleid naar de Orchestrator-functie en `FunctionFailedException`gegenereerd als een. U kunt fout afhandeling en compensatie code schrijven die aan uw behoeften voldoen in de Orchestrator-functie.
 
-Bijvoorbeeld, houd rekening met de volgende orchestrator-functie die wordt overgedragen middelen van één account naar een andere:
+Denk bijvoorbeeld aan de volgende Orchestrator-functie waarmee u fondsen van het ene naar het andere account overbrengt:
 
 ### <a name="c"></a>C#
 
@@ -66,7 +65,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -102,11 +101,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Als de aanroep van de **CreditAccount** functie mislukt voor de doelaccount, de orchestrator-functie voor deze worden gecompenseerd door de bestaande fondsen creditering terug naar de bronaccount.
+Als de aanroep van de functie **CreditAccount** mislukt voor het doel account, compenseert de Orchestrator-functie dit door de tegoeden terug te sturen naar het bron account.
 
-## <a name="automatic-retry-on-failure"></a>Automatische nieuwe pogingen bij fout
+## <a name="automatic-retry-on-failure"></a>Automatische nieuwe poging bij fout
 
-Als u activiteitsfuncties of subquery orchestration functies aanroept, kunt u een beleid voor automatische opnieuw proberen. Het volgende voorbeeld roept een functie maximaal drie keer en wacht vijf seconden tussen nieuwe pogingen:
+Wanneer u activiteit functies of suborchestration-functies aanroept, kunt u een beleid voor automatische nieuwe pogingen opgeven. In het volgende voor beeld wordt geprobeerd een functie Maxi maal drie keer aan te roepen en wordt vijf seconden gewacht tussen elke nieuwe poging:
 
 ### <a name="c"></a>C#
 
@@ -123,7 +122,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -137,20 +136,20 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-De `CallActivityWithRetryAsync` (.NET) of `callActivityWithRetry` (JavaScript) API heeft een `RetryOptions` parameter. Suborchestration aanroept met behulp van de `CallSubOrchestratorWithRetryAsync` (.NET) of `callSubOrchestratorWithRetry` (JavaScript) API kunt gebruiken deze dezelfde beleid voor opnieuw proberen.
+De `CallActivityWithRetryAsync` API (.net) `callActivityWithRetry` of (Java script) gebruikt `RetryOptions` een para meter. Suborchestrator-aanroepen met `CallSubOrchestratorWithRetryAsync` behulp van de `callSubOrchestratorWithRetry` API (.net) of (Java script) kunnen gebruikmaken van dezelfde beleids regels voor opnieuw proberen.
 
 Er zijn verschillende opties voor het aanpassen van het beleid voor automatische opnieuw proberen. Hieronder vallen de volgende landen/regio's:
 
-* **Maximumaantal pogingen**: Het maximale aantal nieuwe pogingen.
-* **Eerste interval voor opnieuw proberen**: De hoeveelheid tijd moet worden gewacht voordat de eerste nieuwe poging.
-* **Uitstel coëfficiënt**: De coëfficiënt gebruikt om te bepalen van de snelheid van de toename van uitstel. Standaard ingesteld op 1.
-* **Interval voor opnieuw proberen van max**: De maximale hoeveelheid tijd moet wachten tussen nieuwe pogingen.
-* **Opnieuw proberen**: De maximale hoeveelheid tijd te besteden aan dit nieuwe pogingen. Het standaardgedrag is voor onbepaalde tijd opnieuw uit te voeren.
-* **Verwerken**: Een door de gebruiker gedefinieerde callback kunt opgeven dat bepaalt of een aanroep van de functie opnieuw moet worden uitgevoerd.
+* **Maximum aantal pogingen**: Het maximum aantal nieuwe pogingen.
+* **Interval voor eerste poging**: De hoeveelheid tijd die moet worden gewacht voordat de eerste nieuwe poging wordt gedaan.
+* **Uitstel coëfficiënt**: De coëfficiënt die wordt gebruikt om de frequentie van de toename van uitstel te bepalen. De standaard waarde is 1.
+* **Maximum interval voor opnieuw proberen**: De maximale wacht tijd tussen nieuwe pogingen.
+* **Time-out voor opnieuw proberen**: De maximale hoeveelheid tijd die nodig is om nieuwe pogingen uit te voeren. Het standaard gedrag is om voor onbepaalde tijd opnieuw te proberen.
+* **Greep**: Een door de gebruiker gedefinieerde call back kan worden opgegeven, waarmee wordt bepaald of een functie aanroep opnieuw moet worden geprobeerd.
 
-## <a name="function-timeouts"></a>Functie time-outs
+## <a name="function-timeouts"></a>Time-outs van functies
 
-Mogelijk wilt u een functieaanroep binnen een orchestrator-functie afbreken als duurt te lang om te voltooien. De juiste manier om dit te doen vandaag is door het maken van een [duurzame timer](durable-functions-timers.md) met behulp van `context.CreateTimer` (.NET) of `context.df.createTimer` (JavaScript) in combinatie met `Task.WhenAny` (.NET) of `context.df.Task.any` (JavaScript), zoals in het volgende voorbeeld:
+Het kan zijn dat u een functie aanroep binnen een Orchestrator-functie wilt verlaten als het te lang duurt om te volt ooien. De juiste manier om dit te doen is door een [duurzame timer](durable-functions-timers.md) te maken `context.CreateTimer` met (.net) `context.df.createTimer` of (Java script) in `Task.WhenAny` combi natie met ( `context.df.Task.any` .net) of (Java script), zoals in het volgende voor beeld:
 
 ### <a name="c"></a>C#
 
@@ -181,7 +180,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -206,13 +205,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Dit mechanisme uitvoeren van de activiteit wordt uitgevoerd niet daadwerkelijk wordt beëindigd. In plaats daarvan kunt deze gewoon de orchestrator-functie voor het negeren van het resultaat en op verplaatsen. Zie voor meer informatie de [Timers](durable-functions-timers.md#usage-for-timeout) documentatie.
+> Met dit mechanisme wordt de uitvoering van de uitgevoerde activiteiten functie niet daad werkelijk afgesloten. In plaats daarvan kan de Orchestrator-functie het resultaat negeren en verplaatsen. Zie de [time](durable-functions-timers.md#usage-for-timeout) -outdocumentatie voor meer informatie.
 
 ## <a name="unhandled-exceptions"></a>Onverwerkte uitzonderingen
 
-Als een orchestrator-functie is mislukt met een niet-verwerkte uitzondering, de details van de uitzondering worden geregistreerd en het exemplaar is voltooid met een `Failed` status.
+Als een Orchestrator-functie mislukt met een niet-verwerkte uitzonde ring, worden de details van de uitzonde ring vastgelegd en `Failed` wordt het exemplaar voltooid met een status.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het analyseren van problemen](durable-functions-diagnostics.md)
+> [Meer informatie over het vaststellen van problemen](durable-functions-diagnostics.md)

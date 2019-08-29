@@ -3,19 +3,19 @@ title: Een container maken in Azure Cosmos DB
 description: Leer hoe u een container maakt in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7768f94051c6882f08dce360e35bf673c7b1103d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241007"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093483"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
-In dit artikel wordt uitgelegd dat de verschillende manieren om een Azure Cosmos-container (verzameling, tabel of grafiek) te maken. U kunt Azure portal, Azure CLI, gebruiken of ondersteunde SDK's voor deze. In dit artikel ziet u hoe u een container maakt, de partitiesleutel opgeeft en doorvoer inricht.
+In dit artikel worden de verschillende manieren beschreven voor het maken van een Azure Cosmos-container (verzameling, tabel of grafiek). U kunt hiervoor Azure Portal, Azure CLI of ondersteunde Sdk's gebruiken. In dit artikel ziet u hoe u een container maakt, de partitiesleutel opgeeft en doorvoer inricht.
 
 ## <a name="create-a-container-using-azure-portal"></a>Een container maken met behulp van de Azure-portal
 
@@ -23,14 +23,14 @@ In dit artikel wordt uitgelegd dat de verschillende manieren om een Azure Cosmos
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account), of Selecteer een bestaand account.
+1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand account.
 
 1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe verzameling**. Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
    * Voer een verzamelings-id in.
    * Voer een partitiesleutel in.
-   * Voer een doorvoer moet worden ingericht (bijvoorbeeld 1000 ru's).
+   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
 ![Schermopname van het Data Explorer-deelvenster met Nieuwe verzameling gemarkeerd](./media/how-to-create-container/partitioned-collection-create-sql.png)
@@ -39,14 +39,14 @@ In dit artikel wordt uitgelegd dat de verschillende manieren om een Azure Cosmos
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account), of Selecteer een bestaand account.
+1. [Maak een nieuw Azure Cosmos-account](create-mongodb-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
 1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe verzameling**. Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
    * Voer een verzamelings-id in.
    * Voer een shardsleutel in.
-   * Voer een doorvoer moet worden ingericht (bijvoorbeeld 1000 ru's).
+   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
 ![Schermopname van Azure Cosmos DB-API voor MongoDB, dialoogvenster Verzameling toevoegen](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
@@ -55,14 +55,14 @@ In dit artikel wordt uitgelegd dat de verschillende manieren om een Azure Cosmos
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. [Maak een nieuw Azure Cosmos-account](create-cassandra-dotnet.md#create-a-database-account), of Selecteer een bestaand account.
+1. [Maak een nieuw Azure Cosmos-account](create-cassandra-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
 1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe tabel**. Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe keyspace maakt of een bestaande keyspace gebruikt.
    * Voer een tabelnaam in.
    * Voer de eigenschappen in en geef een primaire sleutel op.
-   * Voer een doorvoer moet worden ingericht (bijvoorbeeld 1000 ru's).
+   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
 ![Schermopname van Cassandra-API, dialoogvenster Tabel toevoegen](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
@@ -74,15 +74,15 @@ In dit artikel wordt uitgelegd dat de verschillende manieren om een Azure Cosmos
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. [Maak een nieuw Azure Cosmos-account](create-graph-dotnet.md#create-a-database-account), of Selecteer een bestaand account.
+1. [Maak een nieuw Azure Cosmos-account](create-graph-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
 1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe grafiek**. Geef de volgende gegevens op:
 
    * Geef aan of u een nieuwe database maakt of een bestaande database gebruikt.
-   * Een grafiek-ID invoeren.
+   * Voer een grafiek-ID in.
    * Selecteer **onbeperkte** opslagcapaciteit.
    * Voer een partitiesleutel in voor hoekpunten.
-   * Voer een doorvoer moet worden ingericht (bijvoorbeeld 1000 ru's).
+   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
 ![Schermopname van Gremlin-API, dialoogvenster Grafiek toevoegen](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
@@ -91,12 +91,12 @@ In dit artikel wordt uitgelegd dat de verschillende manieren om een Azure Cosmos
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. [Maak een nieuw Azure Cosmos-account](create-table-dotnet.md#create-a-database-account), of Selecteer een bestaand account.
+1. [Maak een nieuw Azure Cosmos-account](create-table-dotnet.md#create-a-database-account)of selecteer een bestaand account.
 
 1. Open het deelvenster **Data Explorer** en selecteer **Nieuwe tabel**. Geef de volgende gegevens op:
 
-   * Voer een tabel-ID.
-   * Voer een doorvoer moet worden ingericht (bijvoorbeeld 1000 ru's).
+   * Voer een tabel-ID in.
+   * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
 ![Schermopname van Table-API, dialoogvenster Grafiek toevoegen](./media/how-to-create-container/partitioned-collection-create-table.png)
@@ -172,9 +172,9 @@ az cosmosdb collection create \
     --throughput 400
 ```
 
-## <a name="create-a-container-using-powershell"></a>Maak een container met behulp van PowerShell
+## <a name="create-a-container-using-powershell"></a>Een container maken met behulp van Power shell
 
-De voorbeelden hieronder ziet u het maken van alle ondersteunende resources die nodig zijn voor het inrichten van een resource van het niveau van de container in Azure Cosmos DB
+In de onderstaande voor beelden ziet u alle ondersteunende resources die nodig zijn voor het inrichten van een resource op container niveau in Azure Cosmos DB
 
 ### <a id="ps-sql"></a>SQL-API
 
@@ -497,7 +497,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> MongoDB wire-protocol niet begrijpt het concept van [Aanvraageenheden](request-units.md). Als u wilt een nieuwe verzameling met ingerichte doorvoer voor het maken, moet u de Azure portal of Cosmos DB SDK's gebruiken voor SQL-API.
+> Het MongoDB-draad protocol begrijpt het concept van [aanvraag eenheden](request-units.md)niet. Als u een nieuwe verzameling wilt maken met een ingerichte door Voer, gebruikt u de Azure Portal-of Cosmos DB Sdk's voor SQL API.
 
 ### <a id="dotnet-cassandra"></a>Cassandra-API
 
@@ -513,5 +513,5 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 - [Partitionering in Azure Cosmos DB](partitioning-overview.md)
 - [Aanvraageenheden in Azure Cosmos DB](request-units.md)
-- [Doorvoer voor containers en databases inrichten](set-throughput.md)
-- [Werken met Azure Cosmos-account](account-overview.md)
+- [Door Voer voor het inrichten van containers en data bases](set-throughput.md)
+- [Werken met een Azure Cosmos-account](account-overview.md)

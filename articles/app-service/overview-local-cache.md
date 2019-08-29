@@ -1,6 +1,6 @@
 ---
-title: Overzicht van lokale cache - Azure App Service | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u het inschakelen, grootte en het opvragen van de status van de lokale Cache van Azure App Service-functie
+title: Overzicht van lokale cache-Azure App Service | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u de status van de Azure App Service lokale cache functie inschakelt, verg root of verkleint en doorzoekt.
 services: app-service
 documentationcenter: app-service
 author: cephalin
@@ -10,66 +10,65 @@ tags: optional
 keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1d6e233509b50f0b03678f2e62267169d02133a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9102d6f3ce3be44107268419517dc9ebe434ac7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60839030"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098465"
 ---
-# <a name="azure-app-service-local-cache-overview"></a>Overzicht van Azure App Service lokale Cache
+# <a name="azure-app-service-local-cache-overview"></a>Overzicht van lokale cache Azure App Service
 
 > [!NOTE]
-> Lokale cache wordt niet ondersteund in de functie-apps of App Service-apps in containers, zoals op [App Service on Linux](containers/app-service-linux-intro.md).
+> Lokale cache wordt niet ondersteund in functie-apps of in containers App Service-apps, zoals op [app service op Linux](containers/app-service-linux-intro.md).
 
 
-Azure App Service-inhoud wordt opgeslagen in Azure Storage en omhoog in een duurzame manier als share met de inhoud is opgehaald. Dit ontwerp is bedoeld om te werken met verschillende apps en bevat de volgende kenmerken:  
+Azure App Service inhoud wordt opgeslagen op Azure Storage en wordt op een duurzame manier als een inhouds share geoppereerd. Dit ontwerp is bedoeld om te werken met verschillende apps en heeft de volgende kenmerken:  
 
-* De inhoud wordt gedeeld tussen meerdere exemplaren van de virtuele machine (VM) van de app.
-* De inhoud, duurzaam en kan worden gewijzigd door het uitvoeren van apps.
-* Logboekbestanden en diagnostische gegevensbestanden zijn beschikbaar onder de map met dezelfde gedeelde inhoud.
-* De map met inhoud publiceren van nieuwe inhoud rechtstreeks worden bijgewerkt. U kunt dezelfde inhoud via de SCM-website en de uitvoering onmiddellijk weergeven app (doorgaans sommige technologieën zoals ASP.NET app opnieuw opstarten initiëren op sommige bestandswijzigingen om op te halen van de meest recente inhoud).
+* De inhoud wordt gedeeld door meerdere exemplaren van virtuele machines (VM) van de app.
+* De inhoud is duurzaam en kan worden gewijzigd door apps uit te voeren.
+* Logboek bestanden en diagnostische gegevens bestanden zijn beschikbaar in dezelfde gedeelde map met inhoud.
+* Wanneer u nieuwe inhoud publiceert, wordt de inhoudsmap rechtstreeks bijgewerkt. U kunt dezelfde inhoud direct weer geven via de SCM-website en de app die wordt uitgevoerd (doorgaans sommige technologieën zoals ASP.NET doen de herstart van een app op een aantal wijzigingen in het bestand beginnen met het ophalen van de meest recente inhoud).
 
-Veel apps gebruiken een of meer van deze functies, hoeft sommige apps alleen een krachtige, alleen-lezen store voor inhoud die ze kunnen worden uitgevoerd vanaf met hoge beschikbaarheid. Deze apps kunnen profiteren van een VM-exemplaar van een specifieke lokale cache.
+Hoewel veel apps een of meer van deze functies gebruiken, hebben sommige apps alleen een hoogwaardige, alleen-lezen inhouds opslag nodig die kan worden uitgevoerd met hoge Beschik baarheid. Deze apps kunnen profiteren van een VM-exemplaar van een specifieke lokale cache.
 
-De functie van de lokale Cache van Azure App Service biedt een webweergave van de rol van uw inhoud. Deze inhoud is een cache voor write-maar-negeren van de inhoud van uw opslag die asynchroon on-site opstarten wordt gemaakt. Als de cache klaar is, wordt de site om te worden uitgevoerd op basis van de inhoud in cache ingeschakeld. Apps die worden uitgevoerd op de lokale Cache hebben de volgende voordelen:
+De functie Azure App Service lokale cache biedt een weer gave van webrollen van uw inhoud. Deze inhoud is een schrijf-maar-verwijder cache van uw opslag inhoud die asynchroon is gemaakt voor het opstarten van de site. Wanneer de cache gereed is, wordt de site overgeschakeld om te worden uitgevoerd op de inhoud in de cache. Voor apps die worden uitgevoerd op een lokale cache gelden de volgende voor delen:
 
-* Ze zijn immuun voor latentie die optreden wanneer ze toegang inhoud op Azure Storage tot.
-* Ze zijn ongevoelig voor de geplande upgrades of niet-geplande storingen en eventuele andere storingen met Azure Storage die zich voordoen op servers die de inhoud delen.
-* Ze hebben minder app wordt opnieuw opgestart vanwege wijzigingen voor storage-share.
+* Ze zijn ongevoelig voor latenties die zich voordoen wanneer ze toegang hebben tot inhoud op Azure Storage.
+* Ze zijn ongevoelig voor de geplande upgrades of ongeplande downtime en andere onderbrekingen met Azure Storage die zich voordoen op servers die de inhouds share leveren.
+* Ze hebben minder apps opnieuw opgestart vanwege wijzigingen in de opslag share.
 
-## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hoe de lokale cache verandert het gedrag van App Service
-* _D:\home_ verwijst naar de lokale cache, die op de VM-exemplaar wordt gemaakt wanneer de app wordt gestart. _D:\Local_ om te verwijzen naar de tijdelijke opslag voor VM-specifieke blijft.
-* De lokale cache bevat een momentopname van de _/siteconfiguratie_ en _/siteextensions_ mappen van de gedeelde inhoud store op _D:\home\site_ en _D:\home\ siteextensions_, respectievelijk. De bestanden zijn gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 300 MB, maar u het kunt verhogen, kunt u maximaal 2 GB.
-* De lokale cache is alleen-lezen. Een wijziging wordt echter verwijderd wanneer de app wordt verplaatst van virtuele machines of opnieuw wordt opgestart. Gebruik de lokale cache niet voor apps die essentiële gegevens opslaan in de store.
-* _D:\home\LogFiles_ en _D:\home\Data_ logboekbestanden en app-gegevens bevatten. De twee submappen worden lokaal opgeslagen op de VM-exemplaar en periodiek worden gekopieerd naar de gedeelde inhoud store. Apps kunnen logboekbestanden en gegevens behouden door ze naar deze mappen te schrijven. Het kopiëren naar de gedeelde inhoud store is echter best-effort, zodat het mogelijk voor logboekbestanden en de gegevens verloren vanwege het vastlopen van een plotselinge van een VM-exemplaar.
-* [Logboekstreaming](troubleshoot-diagnostic-logs.md#streamlogs) wordt beïnvloed door het best-effort-exemplaar. U kan zien tot een vertraging van één minuut in de gestreamde Logboeken.
-* In de gedeelde inhoud store is een wijziging in de mapstructuur van de _logboekbestanden_ en _gegevens_ mappen voor apps die gebruikmaken van de lokale cache. Er zijn nu submappen in die het naamgevingspatroon van "de unieke id" + tijdstempel volgen. Elk van de submappen komt overeen met een VM-exemplaar waar de app wordt uitgevoerd of is uitgevoerd.
-* Andere mappen in _D:\home_ blijven in de lokale cache en zijn niet gekopieerd naar de gedeelde inhoud store.
-* App-implementatie via elke ondersteunde methode publiceert rechtstreeks naar de duurzame opslag voor gedeelde inhoud. Om te vernieuwen de _D:\home\site_ en _D:\home\siteextensions_ mappen in de lokale cache, de app moet opnieuw worden opgestart. Als u de levenscyclus van naadloze, Zie de informatie later in dit artikel.
-* De standaardweergave van de SCM-site blijft die van de gedeelde opslag van inhoud.
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hoe de lokale cache het gedrag van App Service wijzigt
+* _D:\home_ verwijst naar de lokale cache, die op het VM-exemplaar wordt gemaakt wanneer de app wordt gestart. _D:\Local_ blijft verwijzen naar de tijdelijke VM-specifieke opslag.
+* De lokale cache bevat een eenmalige kopie van de _/site_ -en _/siteextensions_ -mappen van het gedeelde inhouds archief, respectievelijk op _D:\home\site_ en _D:\home\siteextensions_. De bestanden worden gekopieerd naar de lokale cache wanneer de app wordt gestart. De grootte van de twee mappen voor elke app is standaard beperkt tot 300 MB, maar u kunt deze verhogen tot 2 GB.
+* De lokale cache is lezen/schrijven. Elke wijziging wordt echter verwijderd wanneer de app virtuele machines verplaatst of opnieuw wordt gestart. Gebruik niet de lokale cache voor apps die essentiële gegevens in het inhouds archief opslaan.
+* _D:\home\LogFiles_ en _D:\home\Data_ bevatten logboek bestanden en app-gegevens. De twee submappen worden lokaal opgeslagen in het VM-exemplaar en worden periodiek naar het gedeelde inhouds archief gekopieerd. Apps kunnen logboek bestanden en gegevens persistent maken door deze te schrijven naar deze mappen. De kopie naar het gedeelde inhouds archief is echter het meest geschikt voor het geval dat logboek bestanden en gegevens verloren gaan als gevolg van een plotselinge crash van een VM-exemplaar.
+* [](troubleshoot-diagnostic-logs.md#streamlogs) Het streamen van Logboeken wordt beïnvloed door de best mogelijke kopieer activiteit. U kunt in de gestreamde Logboeken een vertraging van één minuut opvolgen.
+* In het gedeelde inhouds archief bevindt zich een wijziging in de mappen structuur van de _logboek bestanden_ en _gegevens_ mappen voor apps die gebruikmaken van de lokale cache. Er bevinden zich nu submappen die het naam patroon van ' unieke id ' + tijds tempel volgen. Elk van de submappen komt overeen met een VM-exemplaar waarop de app wordt uitgevoerd of die wordt uitgevoerd.
+* Andere mappen in _D:\home_ blijven in de lokale cache en worden niet gekopieerd naar het gedeelde inhouds archief.
+* App-implementatie via een ondersteunde methode publiceert rechtstreeks naar het archief met duurzame gedeelde inhoud. Als u de _D:\home\site_ -en _D:\home\siteextensions_ -mappen in de lokale cache wilt vernieuwen, moet u de app opnieuw starten. Zie de informatie verderop in dit artikel om de levens cyclus naadloos te maken.
+* De standaard inhouds weergave van de SCM-site blijft die van het gedeelde inhouds archief.
 
-## <a name="enable-local-cache-in-app-service"></a>Lokale Cache in App Service inschakelen
-U configureren lokale Cache met behulp van een combinatie van gereserveerde app-instellingen. U kunt deze appinstellingen configureren met behulp van de volgende methoden:
+## <a name="enable-local-cache-in-app-service"></a>Lokale cache inschakelen in App Service
+U kunt de lokale cache configureren met behulp van een combi natie van gereserveerde app-instellingen. U kunt deze app-instellingen configureren met behulp van de volgende methoden:
 
-* [Azure Portal](#Configure-Local-Cache-Portal)
+* [Azure-portal](#Configure-Local-Cache-Portal)
 * [Azure Resource Manager](#Configure-Local-Cache-ARM)
 
-### <a name="configure-local-cache-by-using-the-azure-portal"></a>Lokale Cache configureren met behulp van de Azure-portal
+### <a name="configure-local-cache-by-using-the-azure-portal"></a>Lokale cache configureren met behulp van de Azure Portal
 <a name="Configure-Local-Cache-Portal"></a>
 
-U de lokale Cache inschakelen op basis van de per-web-app met behulp van deze app-instelling: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+U schakelt lokale cache per web-app in met behulp van deze app-instelling:`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![Azure portal-app-instellingen: Lokale cache](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
+![App-instellingen Azure Portal: Lokale cache](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
-### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Lokale Cache configureren met behulp van Azure Resource Manager
+### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Lokale cache configureren met behulp van Azure Resource Manager
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```json
@@ -93,33 +92,33 @@ U de lokale Cache inschakelen op basis van de per-web-app met behulp van deze ap
 ...
 ```
 
-## <a name="change-the-size-setting-in-local-cache"></a>De grootte van instelling wijzigen in lokale Cache
-Grootte van de lokale cache is standaard **300 MB**. Dit omvat de KCC/site en /siteextensions-mappen die zijn gekopieerd uit de store voor inhoud, evenals de lokaal gemaakte logboeken en gegevens-mappen. Als u wilt deze limiet wilt verhogen, gebruikt u de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`. U kunt de grootte tot vergroten **2 GB** (2000 MB) per app.
+## <a name="change-the-size-setting-in-local-cache"></a>De instelling grootte in lokale cache wijzigen
+De grootte van de lokale cache is standaard **300 MB**. Dit geldt ook voor de mappen/site en/siteextensions die worden gekopieerd uit het inhouds archief, evenals alle lokaal gemaakte logboeken en gegevens mappen. Gebruik de app-instelling `WEBSITE_LOCAL_CACHE_SIZEINMB`om deze limiet te verhogen. U kunt de grootte verhogen tot **2 GB** (2000 MB) per app.
 
-## <a name="best-practices-for-using-app-service-local-cache"></a>Aanbevolen procedures voor het gebruik van lokale Cache van App Service
-Het is raadzaam dat u de lokale Cache in combinatie met gebruiken de [Faseringsomgevingen](../app-service/deploy-staging-slots.md) functie.
+## <a name="best-practices-for-using-app-service-local-cache"></a>Aanbevolen procedures voor het gebruik van App Service lokale cache
+U wordt aangeraden lokale cache te gebruiken in combi natie met de functie [staging Environment](../app-service/deploy-staging-slots.md) .
 
-* Voeg de *sticky* app-instelling `WEBSITE_LOCAL_CACHE_OPTION` met de waarde `Always` aan uw **productie** sleuf. Als u `WEBSITE_LOCAL_CACHE_SIZEINMB`, ook toevoegen als een sticky instelling naar de productiesite.
-* Maak een **fasering** sleuf en publiceren naar de Staging-site. Stelt u de staging-site naar de lokale Cache gebruiken voor het inschakelen van de levenscyclus van een naadloze build-implementeren-test voor staging-als u de voordelen van de lokale Cache voor de productiesite meestal niet.
-* Test uw site op basis van de Staging-site.  
-* Wanneer u klaar bent, een [wisselen](../app-service/deploy-staging-slots.md#Swap) sleuven tussen uw fasering en productie.  
-* Sticky instellingen omvatten de naam en het vergrendelde aan een site. Dus wanneer de Staging-site als ze in productie komen opgehaald, neemt de instellingen voor de lokale Cache-app. De zojuist verwisseld productiesite na een paar minuten wordt uitgevoerd op de lokale cache en wordt opgewarmd als onderdeel van sleuf opwarmtijd na wisselen. Dus als de wisseling van sleuven voltooid is, wordt uw productiesite uitgevoerd op basis van de lokale cache.
+* Voeg de *plak* app- `WEBSITE_LOCAL_CACHE_OPTION` instelling met de `Always` waarde toe aan uw **productie** sleuf. Als u gebruikt `WEBSITE_LOCAL_CACHE_SIZEINMB`, voegt u deze ook als een plak instelling toe aan uw productie sleuf.
+* Maak een **staging** -sleuf en publiceer deze naar uw staging-sleuf. Normaal gesp roken stelt u de staging-sleuf niet in voor het gebruik van een lokale cache om een naadloze implementatie van de levens cyclus voor fase ring mogelijk te maken als u de voor delen van de lokale cache voor de productie site ontvangt.
+* Test uw site op basis van uw staging-sleuf.  
+* Wanneer u klaar bent, kunt u een [swap bewerking](../app-service/deploy-staging-slots.md#Swap) uitgeven tussen uw staging-en productie-sleuven.  
+* Plak instellingen bevatten naam en plak een sleuf. Als de Faserings sleuf wordt gewisseld naar productie, neemt deze de instellingen van de lokale cache-app over. De zojuist verwisselde productie sleuf wordt na een paar minuten uitgevoerd op de lokale cache en wordt na de wisseling opwarmen als onderdeel van de sleuf opwarm. Wanneer de wisseling van de sleuf is voltooid, wordt uw productie sleuf uitgevoerd op basis van de lokale cache.
 
 ## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
-### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hoe kan ik zien als een lokale Cache van toepassing op mijn app?
-Als uw app een krachtige, betrouwbare inhoudsarchief moet, niet de store voor inhoud gebruikt voor het schrijven van kritieke gegevens tijdens runtime en minder dan 2 GB in de totale grootte is, klikt u vervolgens is het antwoord "Ja". Als u de totale grootte van de mappen KCC/site en /siteextensions, kunt u de site-extensie "Azure Web Apps schijfgebruik."
+### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>Hoe kan ik zien of de lokale cache van toepassing is op mijn app?
+Als uw app een hoogwaardige, betrouw bare inhouds opslag nodig heeft, wordt het inhouds archief niet gebruikt voor het schrijven van kritieke gegevens tijdens runtime. Dit is minder dan 2 GB in totale grootte. het antwoord is "ja"! Als u de totale grootte van uw/site-en/siteextensions-mappen wilt ophalen, kunt u de site-extensie ' Azure Web Apps Disk Usage ' gebruiken.
 
-### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Hoe kan ik zien als Mijn site is overgeschakeld naar het gebruik van lokale Cache?
-Als u de lokale Cache-functie met Faseringsomgevingen, wordt de wisselbewerking niet voltooien totdat de lokale Cache is opgewarmd. Als u wilt controleren of uw site wordt uitgevoerd op basis van de lokale Cache, kunt u de omgevingsvariabele voor worker-proces controleren `WEBSITE_LOCALCACHE_READY`. Volg de instructies op de [worker proces omgevingsvariabele](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) pagina voor toegang tot de worker-proces omgevingsvariabele op meerdere exemplaren.  
+### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>Hoe kan ik zien of mijn site is overgeschakeld naar het gebruik van een lokale cache?
+Als u de functie lokale cache gebruikt met Faserings omgevingen, wordt de wissel bewerking niet voltooid totdat de lokale cache wordt opgewarmd. Als u wilt controleren of uw site wordt uitgevoerd op de lokale cache, kunt u de variabele `WEBSITE_LOCALCACHE_READY`voor de werk proces omgeving controleren. Gebruik de instructies op de pagina [omgevings variabele van werk processen](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) voor toegang tot de omgevings variabele werk processen op meerdere exemplaren.  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb nieuwe wijzigingen hebt gepubliceerd, maar mijn app lijkt niet te laat. Hoe komt dat?
-Als uw app gebruikmaakt van lokale Cache, moet u uw site als u de meest recente wijzigingen opnieuw gestart. Wilt u zich geen wijzigingen aan een productiesite publiceren? Zie de sleuf opties in de vorige sectie met best practices.
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ik heb zojuist nieuwe wijzigingen gepubliceerd, maar mijn app lijkt deze niet te bevatten. Hoe komt dat?
+Als uw app gebruikmaakt van lokale cache, moet u de site opnieuw opstarten om de laatste wijzigingen op te halen. Wilt u geen wijzigingen publiceren naar een productie site? Zie de sleuf opties in het gedeelte eerder best practices.
 
-### <a name="where-are-my-logs"></a>Waar zijn mijn Logboeken?
-Met de lokale Cache uw logboeken en gegevensmappen zien er enigszins anders. De structuur van uw submappen blijft echter hetzelfde, behalve dat de submappen onder een submap met de indeling 'de unieke id van VM-' + tijdstempel zijn surfen.
+### <a name="where-are-my-logs"></a>Waar bevinden zich mijn logboeken?
+In het geval van een lokale cache zien uw logboeken en gegevens mappen er iets anders uit. De structuur van uw submappen blijft echter hetzelfde, behalve dat de submappen worden Nestled onder een submap met de notatie ' unieke VM-id ' + tijds tempel.
 
-### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Ik heb lokale Cache ingeschakeld, maar mijn app nog steeds wordt opnieuw gestart. Waarom is dit? Ik beschouwd in dat lokale Cache geholpen met regelmatige app opnieuw wordt opgestart.
-Lokale Cache helpt te voorkomen dat met betrekking tot opslag-app wordt opnieuw opgestart. Uw app kan echter nog steeds opnieuw wordt opgestart ondergaan tijdens geplande infrastructuur upgrades van de virtuele machine. De algemene app opnieuw wordt opgestart die zich met lokale Cache ingeschakeld voordoen moet minder zijn.
+### <a name="i-have-local-cache-enabled-but-my--app-still-gets-restarted-why-is-that-i-thought-local-cache-helped-with-frequent-app-restarts"></a>Er is een lokale cache ingeschakeld, maar mijn app wordt nog steeds opnieuw gestart. Waarom is dat? Ik dacht dat lokale cache is geholpen bij het opnieuw starten van een app.
+Lokale cache helpt te voor komen dat de app voor opslag is gestart. Uw app kan echter nog steeds opnieuw worden gestart tijdens de geplande infrastructuur upgrades van de virtuele machine. De algemene app wordt opnieuw gestart, zodat de lokale cache minder hoeft te worden gebruikt.
 
-### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Lokale Cache alle mappen uitsluiten wordt gekopieerd naar het lokale station sneller
-Als onderdeel van de stap waarmee de inhoud van de opslag worden gekopieerd, is een map met de naam opslagplaats uitgesloten. Dit helpt bij de scenario's waarbij de inhoud van uw site een opslagplaats voor bronbeheer die niet nodig in werking van dag tot dag van de app is kan bevatten. 
+### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Sluit de lokale cache alle directory's uit die naar het snellere lokale station worden gekopieerd?
+Als onderdeel van de stap waarmee de opslag inhoud wordt gekopieerd, wordt een map met de naam opslag plaats uitgesloten. Dit helpt bij scenario's waarbij uw site-inhoud mogelijk een broncode beheer opslagplaats bevat die mogelijk niet nodig is in de dag van de dag van de app. 

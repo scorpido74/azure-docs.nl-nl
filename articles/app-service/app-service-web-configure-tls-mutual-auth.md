@@ -1,6 +1,6 @@
 ---
-title: Wederzijdse TLS-verificatie - Azure App Service configureren
-description: Informatie over het configureren van uw app voor het gebruik van verificatie van clientcertificaten op TLS.
+title: Wederzijdse TLS-verificatie configureren-Azure App Service
+description: Meer informatie over hoe u uw app kunt configureren voor het gebruik van verificatie van client certificaten op TLS.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -10,43 +10,42 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60852445"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088162"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Wederzijdse TLS-verificatie voor Azure App Service configureren
 
-U kunt toegang tot uw Azure App Service-app beperken door in te schakelen van verschillende soorten verificatie voor deze. Een manier om dit te doen is om te vragen van een clientcertificaat als de clientaanvraag via TLS/SSL is en het certificaat te valideren. Dit mechanisme wordt TLS wederzijdse verificatie of verificatie van clientcertificaten genoemd. In dit artikel laat zien hoe uw app ingesteld voor het gebruik van verificatie van clientcertificaten.
+U kunt de toegang tot uw Azure App Service-app beperken door verschillende verificatie typen in te scha kelen. Een manier om dit te doen is door een client certificaat aan te vragen wanneer de client aanvraag over TLS/SSL gaat en het certificaat te valideren. Dit mechanisme heet TLS wederzijdse verificatie of verificatie van client certificaten. In dit artikel wordt beschreven hoe u uw app instelt voor gebruik van verificatie van client certificaten.
 
 > [!NOTE]
-> Als u toegang uw site via HTTP en niet HTTPS tot, ontvangt u geen een clientcertificaat. Dus als uw toepassing clientcertificaten vereist, moet u niet toestaan aanvragen voor uw toepassing via HTTP.
+> Als u toegang tot uw site hebt via HTTP en niet HTTPS, ontvangt u geen client certificaat. Als voor uw toepassing client certificaten zijn vereist, moet u dus geen aanvragen voor uw toepassing via HTTP toestaan.
 >
 
-## <a name="enable-client-certificates"></a>Clientcertificaten inschakelen
+## <a name="enable-client-certificates"></a>Client certificaten inschakelen
 
-Als u uw app instelt om clientcertificaten te vereisen, moet u instellen de `clientCertEnabled` instellen voor uw app naar `true`. Als u wilt instellen, kunt u de volgende opdracht uitvoeren de [Cloud Shell](https://shell.azure.com).
+Als u uw app wilt instellen op client certificaten vereist, moet u de `clientCertEnabled` instelling voor uw app instellen op. `true` Als u de instelling wilt instellen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
-## <a name="access-client-certificate"></a>Clientcertificaat voor toegang
+## <a name="access-client-certificate"></a>Client certificaat openen
 
-In App Service gebeurt de SSL-beëindiging van de aanvraag bij de frontend load balancer. Wanneer de aanvraag naar de code van de app met [clientcertificaten ingeschakeld](#enable-client-certificates), App Service injects een `X-ARR-ClientCert` aanvraagheader met het clientcertificaat. App Service doet iets met dit clientcertificaat dan doorgestuurd naar uw app. Code van de app is verantwoordelijk voor het valideren van het clientcertificaat.
+In App Service wordt SSL-beëindiging van de aanvraag uitgevoerd op het front-end-load balancer. Bij het door sturen van de aanvraag naar uw app-code met [client certificaten ingeschakeld](#enable-client-certificates), `X-ARR-ClientCert` app service een aanvraag header injecteert met het client certificaat. App Service doet niets met dit client certificaat, behalve het door sturen naar uw app. Uw app-code is verantwoordelijk voor het valideren van het client certificaat.
 
-Voor ASP.NET-, certificaat van de client is beschikbaar via de **HttpRequest.ClientCertificate** eigenschap.
+Voor ASP.NET is het client certificaat beschikbaar via de eigenschap **HttpRequest. ClientCertificate** .
 
-Voor andere toepassingsstacks (Node.js, PHP, enzovoort), het clientcertificaat is beschikbaar in uw app met een met base64 gecodeerde waarde in de `X-ARR-ClientCert` aanvraagheader.
+Voor andere toepassings Stacks (node. js, PHP, enzovoort) is het client certificaat beschikbaar in uw app via een base64-gecodeerde waarde in de `X-ARR-ClientCert` aanvraag header.
 
-## <a name="aspnet-sample"></a>ASP.NET-voorbeeld
+## <a name="aspnet-sample"></a>ASP.NET-voor beeld
 
 ```csharp
     using System;
@@ -170,9 +169,9 @@ Voor andere toepassingsstacks (Node.js, PHP, enzovoort), het clientcertificaat i
     }
 ```
 
-## <a name="nodejs-sample"></a>Node.js-voorbeeld
+## <a name="nodejs-sample"></a>Voor beeld van node. js
 
-De volgende Node.js-voorbeeldcode wordt de `X-ARR-ClientCert` kop- en maakt gebruik van [knooppunt forge](https://github.com/digitalbazaar/forge) naar de PEM base64-gecodeerde tekenreeks converteren naar een certificaatobject en te valideren:
+Met de volgende voorbeeld code van node. js `X-ARR-ClientCert` wordt de header opgehaald en wordt [knoop punt-vervalsing](https://github.com/digitalbazaar/forge) gebruikt om de met base64 gecodeerde PEM-teken reeks te converteren naar een certificaat object en dit te valideren:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -190,7 +189,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity

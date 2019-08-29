@@ -1,6 +1,6 @@
 ---
-title: Azure Windows VM-grootten - GPU | Microsoft Docs
-description: Een lijst met de verschillende GPU geoptimaliseerd grootten beschikbaar voor Windows virtuele machines in Azure. Bevat informatie over het aantal vcpu's, gegevensschijven en NIC's, evenals opslag en doorvoer netwerkbandbreedte voor grootten die in deze reeks.
+title: Azure Windows VM-grootten-GPU | Microsoft Docs
+description: Geeft een lijst van de verschillende geoptimaliseerde GPU-grootten die beschikbaar zijn voor virtuele Windows-machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 86725fccba810284677aeb3324839a52c91c3021
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0e809690f0453806402c27773ad0029fc5f64be2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710205"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102350"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-geoptimaliseerde VM-grootten
+# <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
@@ -30,9 +29,9 @@ ms.locfileid: "67710205"
 
 ## <a name="supported-operating-systems-and-drivers"></a>Ondersteunde besturingssystemen en stuurprogramma’s
 
-Als u wilt profiteren van de GPU-mogelijkheden van Azure uit de N-serie VM's waarop Windows wordt uitgevoerd, moeten de NVIDIA GPU-stuurprogramma's worden geïnstalleerd. De [NVIDIA GPU-stuurprogramma extensie](../extensions/hpccompute-gpu-windows.md) juiste NVIDIA CUDA- of GRID stuurprogramma's worden geïnstalleerd op een VM uit de N-serie. Installeren of beheren van de extensie met de Azure portal of hulpprogramma's, zoals Azure PowerShell of Azure Resource Manager-sjablonen. Zie de [NVIDIA GPU-stuurprogramma extensie documentatie](../extensions/hpccompute-gpu-windows.md) voor ondersteunde besturingssystemen en implementatiestappen. Raadpleeg voor algemene informatie over VM-extensies [virtuele machine van Azure-extensies en functies](../extensions/overview.md).
+Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de Azure N-serie die worden uitgevoerd op Windows, moeten de NVIDIA GPU-Stuur Programma's zijn geïnstalleerd. Met de [uitbrei ding NVIDIA GPU-stuur programma](../extensions/hpccompute-gpu-windows.md) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](../extensions/hpccompute-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](../extensions/overview.md)voor algemene informatie over VM-extensies.
 
-Als u kiest voor het handmatig installeren van NVIDIA GPU-stuurprogramma's, Zie [N-serie GPU-stuurprogramma-instellingen voor Windows](n-series-driver-setup.md) voor ondersteunde besturingssystemen, stuurprogramma's en installatie-en verificatiestappen.
+Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, raadpleegt u [het stuur programma voor de installatie van de N-Series GPU voor Windows](n-series-driver-setup.md) voor de ondersteunde besturings systemen, stuur Programma's en installatie-en verificatie stappen.
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
@@ -45,5 +44,5 @@ Als u kiest voor het handmatig installeren van NVIDIA GPU-stuurprogramma's, Zie 
 - [Vorige generaties](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over hoe u [Azure compute units (ACU)](acu.md) kunt u de prestaties van Azure-SKU's met elkaar vergelijken.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
 

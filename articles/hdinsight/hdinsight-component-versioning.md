@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a844d28067fc0851760849317160d5902918252e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991554"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074379"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?
 
@@ -177,63 +177,7 @@ De sectie bevat koppelingen naar release opmerkingen voor de Hortonworks-gegeven
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Standaard knooppunt configuratie en grootte van virtuele machines voor clusters
 
-De volgende tabellen geven een lijst van de standaard grootte van virtuele machines (VM) voor HDInsight-clusters.  Deze grafiek is nodig om inzicht te krijgen in de VM-grootten die moeten worden gebruikt bij het maken van Power shell-of Azure CLI-scripts voor het implementeren van HDInsight-clusters.
-
-> [!NOTE]
-> De enige cluster typen met gegevens schijven zijn Kafka-en HBase-clusters waarvoor de functie voor versneld schrijven is ingeschakeld. HDInsight ondersteunt de P30-en S30-schijf grootten in deze scenario's.
-
-> [!IMPORTANT]  
-> Als u meer dan 32 worker-knoop punten in een cluster nodig hebt, moet u een hoofd knooppunt grootte selecteren met ten minste 8 kernen en 14 GB aan RAM-geheugen.
-
-* Alle ondersteunde regio's behalve Brazilië-zuid en Japan-West:
-
-|Clustertype|Hadoop|HBase|Interactive Query|Storm|Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|Head: standaard VM-grootte|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
-|Kop: aanbevolen VM-grootten|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|Werk nemer: standaard VM-grootte|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 met 2 S30 schijven per Broker|
-|Werk nemer: aanbevolen VM-grootten|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|ZooKeeper: standaard VM-grootte||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
-|ZooKeeper: aanbevolen VM-grootten||A4 v2||A2 v2|||A2M v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|ML Services: standaard VM-grootte||||||D4 v2||
-|ML Services: aanbevolen VM-grootte||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* Alleen Brazilië-zuid en Japan-West (geen v2-groottes):
-
-  | Clustertype | Hadoop | HBase | Interactive Query |Storm | Spark | ML-services |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Head: standaard VM-grootte |D12 |D12  | D13 |A3 |D12 |D12 |
-  | Kop: aanbevolen VM-grootten |D3<br/> D4<br/> D12 |D3<br/> D4<br/> D12  | D13<br/> D14 |CEL<br/> A4,<br/> A5 |D12<br/> D13<br/> D14 |D12<br/> D13<br/> D14 |
-  | Werk nemer: standaard VM-grootte |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | Werk nemer: aanbevolen VM-grootten |D3<br/> D4<br/> D12 |D3<br/> D4<br/> D12  | D13<br/> D14 |D3<br/> D4<br/> D12 |D4<br/> D12<br/> D13<br/> D14 | D4<br/> D12<br/> D13<br/> D14 |
-  | ZooKeeper: standaard VM-grootte | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | ZooKeeper: aanbevolen VM-grootten | |A2,<br/> CEL<br/> A4 | |A2,<br/> CEL<br/> A4 | | |
-  | ML Services: standaard VM-grootten | | | | | |D4 |
-  | ML Services: aanbevolen VM-grootten | | | | | |D4<br/> D12<br/> D13<br/> D14 |
-
-> [!NOTE]
-> - Head staat bekend als *Nimbus* voor het Storm-cluster type.
-> - Werk nemer staat bekend als *Super Visor* voor het Storm-cluster type.
-> - De werk nemer staat bekend als *regio* voor het cluster type HBase.
+Zie [Configuratie Details van Azure HDInsight-cluster](hdinsight-supported-node-configuration.md)voor meer informatie over de virtuele-machine-sku's die u voor uw cluster wilt selecteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Setup van het cluster voor Apache Hadoop, Spark en meer op HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

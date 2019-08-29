@@ -11,204 +11,203 @@ ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 713e814478f88def2559dad79aafeb6fa2737d7f
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 76d47353c5b81d7ed735f11a81e3e77514054076
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667354"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082648"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
-Azure Resource Manager biedt een aantal geweldige functies, is het essentieel is voor het plannen van de migratie om ervoor zaken soepel verloopt. Tijd besteed aan het plannen, zorgt u ervoor dat u geen problemen ondervindt tijdens het uitvoeren van migratieactiviteiten. 
+Hoewel Azure Resource Manager veel fantastische functies biedt, is het van essentieel belang om uw migratie traject te plannen om ervoor te zorgen dat alles goed gaat. Bij het plannen van de tijd zorgt u ervoor dat er geen problemen optreden tijdens het uitvoeren van migratie activiteiten. 
 
 > [!NOTE] 
-> De volgende richtlijnen is sterk bijgedragen aan door de Azure Customer Advisory team en uw oplossing in de Cloud-architecten die werken met klanten in grote omgevingen migreren. Naarmate deze dit document wordt steeds bijgewerkt als nieuwe patronen van succes indelingsversies beschikbaar komen, dus kom terug in tijd op de tijd om te zien of er geen nieuwe aanbevelingen zijn.
+> De volgende richt lijnen zijn sterk bijgedragen aan het Azure-team voor klanten advisering en Cloud oplossingen die samen werken met klanten bij het migreren van grote omgevingen. Zo blijft dit document worden bijgewerkt wanneer er nieuwe patronen worden weer gegeven. Controleer daarom van tijd tot tijd om te zien of er nieuwe aanbevelingen zijn.
 
-Er zijn vier algemene fasen van de migratie:
+Er zijn vier algemene fasen van de migratie traject:
 
-![Migratiefasen](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
+![Migratie fasen](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
 ## <a name="plan"></a>Plannen
 
-### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen voor- en nadelen
+### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen en-afwegingen
 
-Afhankelijk van de grootte van de technische vereisten, locaties en operationele procedures, is het raadzaam om te overwegen:
+Afhankelijk van de grootte van uw technische vereisten, geografi en operationele procedures, kunt u overwegen:
 
-1. Waarom is de Azure Resource Manager voor uw organisatie vereist?  Wat zijn de zakelijke redenen voor een migratie?
-2. Wat zijn de technische redenen voor Azure Resource Manager?  Wat (indien aanwezig) extra Azure-services wilt u gebruiken?
-3. Welke toepassing (of sets van virtuele machines) is inbegrepen bij de migratie?
-4. Welke scenario's worden ondersteund met de migratie-API?  Controleer de [niet-ondersteunde functies en configuraties](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations).
-5. Biedt uw operationele teams nu ondersteuning voor toepassingen/VM's in zowel klassieke als Azure Resource Manager?
-6. Hoe (indien helemaal) Azure Resource Manager wijzigt de VM-implementatie, beheer, bewaking en rapportage van processen?  Moeten uw implementatiescripts om te worden bijgewerkt?
-7. Wat is de communicatie van plan bent om te waarschuwen belanghebbenden (eindgebruikers, toepassingseigenaren en eigenaren van infrastructuur)?
-8. Afhankelijk van de complexiteit van de omgeving, moet er een onderhoudsperiode waar de toepassing niet beschikbaar voor eindgebruikers en toepassingseigenaren van is?  Zo ja, hoe lang?
-9. Wat is de trainingsplan opstellen om ervoor te zorgen belanghebbenden deskundig en kundig in Azure Resource Manager?
-10. Wat is het Programmabeheer of project management plan voor de migratie?
-11. Wat zijn de tijdlijnen voor de migratie van Azure Resource Manager en andere gerelateerde technologie wegenkaarten?  Zijn ze optimaal uitgelijnd?
+1. Waarom is Azure Resource Manager gewenst voor uw organisatie?  Wat zijn de zakelijke redenen voor een migratie?
+2. Wat zijn de technische redenen voor Azure Resource Manager?  Wat (indien van toepassing) extra Azure-Services wilt u gebruiken?
+3. Welke toepassing (of sets met virtuele machines) is opgenomen in de migratie?
+4. Welke scenario's worden ondersteund met de migratie-API?  Bekijk de [niet-ondersteunde functies en configuraties](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations).
+5. Ondersteunen uw operationele teams nu toepassingen/Vm's in zowel het klassieke als het Azure Resource Manager?
+6. Hoe (indien van toepassing) Azure Resource Manager uw VM-implementatie-, beheer-, bewakings-en rapportage processen wijzigen?  Moeten uw implementatie scripts worden bijgewerkt?
+7. Wat is het communicatie plan om belanghebbenden (eind gebruikers, eigen aars van toepassingen en eigen aars van infra structuur) te waarschuwen?
+8. Moet er een onderhouds periode zijn waarin de toepassing niet beschikbaar is voor eind gebruikers en voor toepassings eigenaren, afhankelijk van de complexiteit van de omgeving?  Zo ja, hoe lang?
+9. Wat is het trainings plan om ervoor te zorgen dat belanghebbenden kennis en ervaring hebben in Azure Resource Manager?
+10. Wat is het programma voor het beheer of het plannen van het project voor de migratie?
+11. Wat zijn de tijd lijnen voor de Azure Resource Manager migratie en andere gerelateerde technologie wegen kaarten?  Zijn ze optimaal uitgelijnd?
 
-### <a name="patterns-of-success"></a>Patronen van geslaagd
+### <a name="patterns-of-success"></a>Patronen van slagen
 
-Geslaagde klanten gedetailleerde plannen waar de voorgaande vragen zijn besproken, gedocumenteerd en geregeld.  Zorg ervoor dat de migratieplannen breed worden gecommuniceerd naar sponsors en belanghebbenden.  Geef uzelf met kennis over uw opties voor de migratie; lezen door deze migratie-document dat hieronder wordt sterk aanbevolen.
+Succes volle klanten hebben gedetailleerde plannen waar de voor gaande vragen worden besproken, gedocumenteerd en geregeld.  Zorg ervoor dat de migratie plannen breed worden gecommuniceerd naar sponsors en belanghebbenden.  Geef kennis over uw migratie opties; Lees deze migratie documenten hieronder wordt sterk aanbevolen.
 
-* [Overzicht van het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Overzicht van door het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Technische details over door platforms ondersteunde migratie van klassiek naar Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Planning voor de migratie van IaaS-resources van het klassieke implementatiemodel naar Azure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [PowerShell gebruiken voor het migreren van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Power shell gebruiken voor het migreren van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [CLI gebruiken voor het migreren van IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Community-hulpprogramma's voor hulp bij de migratie van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Community tools voor hulp bij de migratie van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Bekijk de meest voorkomende migratiefouten](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Lees de veelgestelde vragen over migratie IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Bekijk de veelgestelde vragen over het migreren van IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-### <a name="pitfalls-to-avoid"></a>Valkuilen om te voorkomen
+### <a name="pitfalls-to-avoid"></a>Valk uilen om te voor komen
 
-- Fout bij het plannen.  De stappen van de technologie van deze migratie hebben bewezen en het resultaat is voorspelbare.
-- De veronderstelling dat het platform ondersteunde migratie die API wordt rekening gehouden met alle scenario's. Lees de [niet-ondersteunde functies en configuraties](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations) om te begrijpen welke scenario's worden ondersteund.
-- Mogelijke onderbreking van de toepassing niet van plan voor eindgebruikers.  Plan onvoldoende buffer om te waarschuwen voldoende eindgebruikers van de tijd van de toepassing mogelijk niet beschikbaar.
+- Kan niet plannen.  De technologie stappen van deze migratie zijn bewezen en de uitkomst is voorspelbaar.
+- Veronderstelling dat het door het platform ondersteunde migratie-API voor alle scenario's wordt verwerkt. Lees de [niet-ondersteunde functies en configuraties](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations) om te begrijpen welke scenario's worden ondersteund.
+- Geen potentiële toepassings onderbreking voor eind gebruikers plannen.  Plan voldoende buffers om eind gebruikers te waarschuwen voor mogelijk niet-beschik bare toepassings tijd.
 
 
-## <a name="lab-test"></a>Test Lab 
+## <a name="lab-test"></a>Test omgeving 
 
-**Het repliceren van uw omgeving en een test-migratie**
+**Uw omgeving repliceren en een test migratie uitvoeren**
   > [!NOTE]
-  > Exacte replicatie van uw bestaande omgeving wordt uitgevoerd met behulp van een door de community geleverde hulpprogramma dat wordt niet officieel ondersteund door Microsoft Support. Daarom is het een **optionele** stap maar dit is de beste manier om erachter te komen problemen zonder dat u uw productie-omgevingen. Als met een door de community geleverde hulpprogramma kan niet worden gebruikt, lees vervolgens over de aanbeveling valideren/voorbereiden/afbreken droge uitvoeren hieronder.
+  > De exacte replicatie van uw bestaande omgeving wordt uitgevoerd door gebruik te maken van een door de Community bijgedragen hulp programma dat niet officieel wordt ondersteund door Microsoft Ondersteuning. Daarom is het een **optionele** stap, maar dit is de beste manier om problemen op te sporen zonder uw productie omgevingen te raken. Als het gebruik van een door de Community bijgedragen hulp programma geen optie is, leest u de aanbevelingen voor het valideren/voorbereiden/afbreken van de droge uitvoering.
   >
   
-  Uitvoering van een test lab van uw exacte scenario (compute, netwerken en opslag), is de beste manier om te controleren of een soepele migratie. Dit helpt ervoor te zorgen:
+  Het uitvoeren van een test omgeving voor uw exacte scenario (compute, netwerken en opslag) is de beste manier om een soepele migratie te garanderen. Dit helpt ervoor te zorgen:
 
-- Een volledig afzonderlijke lab of een bestaande niet-productie-omgeving te testen. U wordt aangeraden een volledig afzonderlijke lab die meerdere malen kan worden gemigreerd en destructief kan worden gewijzigd.  Scripts voor het verzamelen/hydraat metagegevens uit de echte abonnementen worden hieronder vermeld.
-- Het is een goed idee om het lab maken in een afzonderlijk abonnement. De reden is dat de testomgeving wordt herhaaldelijk omlaag worden verwijderd, en wanneer u een afzonderlijke, geïsoleerd abonnement wordt de kans kleiner dat iets echte wordt per ongeluk verwijderd.
+- Een geheel afzonderlijke Lab of een bestaande niet-productie omgeving om te testen. We raden u aan een volledig apart Lab te maken dat herhaaldelijk kan worden gemigreerd en kan worden gewijzigd.  Hieronder vindt u een lijst met scripts voor het verzamelen/onthydraten van meta gegevens uit de echte abonnementen.
+- Het is een goed idee om het lab in een afzonderlijk abonnement te maken. De reden hiervoor is dat het lab herhaaldelijk wordt gescheurd en een afzonderlijk, geïsoleerd abonnement heeft, waardoor de kans dat iets echt per ongeluk wordt verwijderd, wordt gereduceerd.
 
-  Dit kan worden bereikt met behulp van het hulpprogramma AsmMetadataParser. [Meer informatie over dit hulpprogramma hier](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
+  Dit kunt u doen met behulp van het hulp programma AsmMetadataParser. [Lees hier meer over dit hulp programma](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
-### <a name="patterns-of-success"></a>Patronen van geslaagd
+### <a name="patterns-of-success"></a>Patronen van slagen
 
-De volgende zijn problemen gedetecteerd in veel van de grotere migraties. Dit is geen uitputtende lijst en u moet verwijzen naar de [niet-ondersteunde functies en configuraties](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations) voor meer informatie. U kan of kan niet deze technische problemen optreden, maar in dat geval het oplossen van deze vóór de migratie zorgt ervoor dat een soepeler ervaring.
+De volgende problemen zijn in veel van de grotere migraties ontdekt. Dit is geen limitatieve lijst en u moet de niet- [ondersteunde functies en configuraties](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations) raadplegen voor meer details. U kunt deze technische problemen wellicht wel of niet tegen komen, maar als u deze wel oplost voordat u een migratie uitvoert, zorgt u ervoor dat u een soepeler ervaring hebt.
 
-- **Een uitvoering van de testmodus valideren/voorbereiden/afbreken doen** -dit is misschien wel de belangrijkste stap om ervoor te zorgen van klassiek naar Azure Resource Manager migratie geslaagd. De migratie-API heeft drie belangrijke stappen: Valideren, voorbereiden en vastleggen. Valideren van wordt de status van uw klassieke omgeving lezen en retourneert een resultaat van alle problemen. Echter, omdat sommige problemen in de Azure Resource Manager-stack voorkomen kunnen, valideren zal niet alles onderscheppen. De volgende stap in het migratieproces, voorbereiden kunt weergeven die problemen. Voorbereiden worden de metagegevens van klassiek naar Azure Resource Manager verplaatsen, maar wordt niet doorvoeren van de verplaatsing en wordt niet verwijderen of wijzigen iets aan de kant van het klassieke model. De uitvoering droge omvat het voorbereiden van de migratie en vervolgens wordt afgebroken (**niet doorvoeren**) voorbereiden van de migratie. Het doel van valideren/voorbereiden/afbreken droge uitvoering is om te zien van de metagegevens in de Azure Resource Manager-stack, onderzoekt het (*via programmacode of via de Portal*), en controleer of alles goed migreert en werken via technische problemen.  Ook krijgt u een idee van de duur van de migratie, zodat u dienovereenkomstig plannen voor uitvaltijd maken kan.  Een valideren/voorbereiden/afbreken niet leidt tot geen uitvaltijd gebruiker; Daarom is het niet-verstorend voor gebruik van de toepassing.
-  - De volgende items moeten worden opgelost voordat het droge uitvoeren, maar een test testmodus wordt ook gewoon leegmaken van deze stappen voor gegevensvoorbereiding als ze zijn gemist. Tijdens de migratie van de onderneming, hebben we het droge uitvoeren op een veilige en waardevolle manier om te controleren of de gereedheid van de migratie worden ontdekt.
-  - Als voorbereiding wordt uitgevoerd, het besturingselement vlak (Azure management-bewerkingen) wordt vergrendeld voor het hele virtuele netwerk, zodat er kunnen geen wijzigingen aangebracht in de metagegevens van de virtuele machine tijdens het valideren/voorbereiden/afbreken.  Maar anders een functie van de toepassing (extern bureaublad-Sessiehost, VM-gebruik, enzovoort), worden niet.  Gebruikers van de virtuele machines weet niet dat de uitvoering droge wordt uitgevoerd.
+- **Een droge uitvoering valideren/voorbereiden/afbreken** : dit is misschien de belangrijkste stap om te zorgen voor een klassieke Azure Resource Manager migratie. De migratie-API bestaat uit drie belang rijke stappen: Valideren, voorbereiden en door voeren. Met validering wordt de status van uw klassieke omgeving gelezen en wordt het resultaat van alle problemen geretourneerd. Omdat er echter enkele problemen in de Azure Resource Manager stack kunnen bestaan, wordt met validate niet alles onderschept. De volgende stap in het migratie proces helpt u bij het voorbereiden van deze problemen. Met de voor bereiding worden de meta gegevens van het klassieke naar Azure Resource Manager verplaatst, maar wordt de verplaatsing niet doorgevoerd en wordt niets aan de klassieke kant verwijderd of gewijzigd. Bij een droge uitvoering moet de migratie worden voor bereid en vervolgens worden afgebroken (**niet door voeren**) de migratie wordt voor bereid. Het doel van het valideren/voorbereiden/afbreken van een droge uitvoering is om alle meta gegevens in de Azure Resource Manager stack te bekijken, te bekijken (*programmatisch of in portal*), en te controleren of alles juist wordt gemigreerd en technische problemen kunnen samen werken.  Het biedt ook een idee van de duur van de migratie, zodat u de uitval tijd dienovereenkomstig kunt plannen.  Een validering/voor bereiding/afbreken veroorzaakt geen uitval tijd van de gebruiker; Daarom is het niet-verstoort van het gebruik van de toepassing.
+  - De onderstaande items moeten worden opgelost voordat de droge uitvoering kan worden uitgevoerd, maar bij een droge uitvoer test worden deze voorbereidings stappen ook veilig verwijderd als ze worden gemist. Tijdens de migratie van een onderneming hebben we vastgesteld dat de droge uitvoering een veilige en onwaardevole manier is om de gereedheid voor de migratie te garanderen.
+  - Wanneer de voor bereiding wordt uitgevoerd, wordt het besturings vlak (Azure Management Operations) vergrendeld voor het hele virtuele netwerk, zodat er geen wijzigingen kunnen worden aangebracht in de VM-meta gegevens tijdens het valideren/voorbereiden/afbreken.  Maar anders wordt een toepassings functie (RD, VM-gebruik, enzovoort) niet beïnvloed.  Gebruikers van de virtuele machines weten niet dat de droge uitvoering wordt uitgevoerd.
 
-- **Express Route-Circuits en VPN-** . Express Route-Gateways met autorisatielinks kunnen momenteel niet worden gemigreerd zonder downtime. Zie voor een tijdelijke oplossing, [migreren ExpressRoute-circuits en gekoppelde virtuele netwerken van het klassieke naar het Resource Manager-implementatiemodel](../../expressroute/expressroute-migration-classic-resource-manager.md).
+- **Express route-circuits en VPN**. Momenteel kunnen Express route gateways met autorisatie koppelingen niet zonder downtime worden gemigreerd. Zie ExpressRoute-circuits [en gekoppelde virtuele netwerken van het klassieke naar het Resource Manager-implementatie model migreren](../../expressroute/expressroute-migration-classic-resource-manager.md)voor de tijdelijke oplossing.
 
-- **VM-extensies** -extensies voor virtuele machines worden mogelijk een van de grootste obstakels voor migratie van actieve VM's. Herstel van VM-extensies kan nemen al 1-2 dagen, dus dienovereenkomstig te plannen.  Een werkende Azure-agent is nodig voor het rapporteren van VM-extensie-status van actieve virtuele machines. Als de status voor een actieve virtuele machine terug als beschadigd gaat, wordt deze migratie stoppen. De agent zelf hoeft niet in staat om in te schakelen van de migratie, maar als extensies op de virtuele machine bestaat, klikt u vervolgens zowel een agent werkt en uitgaande internetverbinding (met DNS) er nodig zijn voor migratie naar voren verplaatsen.
-  - Als de verbinding met een DNS-server verbroken tijdens de migratie van alle VM-extensies, met uitzondering BGInfo v1 is. \* moet eerst worden verwijderd uit elke virtuele machine voordat het voorbereiden van de migratie en weer opnieuw vervolgens toegevoegd aan de virtuele machine na de migratie van Azure Resource Manager.  **Dit is alleen voor virtuele machines die worden uitgevoerd.**  Als de virtuele machines zijn gestopt toewijzing ongedaan wordt gemaakt, hoeft VM-extensies niet worden verwijderd. **Opmerking:** Veel extensies, zoals Azure diagnostics en security center controle zal zichzelf opnieuw installeren na de migratie, ze te verwijderen is geen probleem.
-  - Bovendien, zorg ervoor dat Netwerkbeveiligingsgroepen worden niet uitgaande toegang tot internet beperken. Dit kan gebeuren bij sommige configuraties Netwerkbeveiligingsgroepen. Uitgaande toegang tot internet (en DNS) is nodig voor VM-extensies worden gemigreerd naar Azure Resource Manager. 
-  - Er zijn twee versies van de BGInfo-extensie: v1 en v2.  Als de virtuele machine is gemaakt met behulp van de Azure portal of PowerShell, wordt de virtuele machine de v1-extensie waarschijnlijk daarop hebben. Deze extensie niet hoeft te worden verwijderd en worden overgeslagen (niet gemigreerd) door de migratie-API. Echter, als de klassieke virtuele machine is gemaakt met de nieuwe Azure portal, waarschijnlijk is er de JSON-gebaseerde v2-versie van BGInfo, die kan worden gemigreerd naar Azure Resource Manager de agent werkt en uitgaande toegang tot internet (en DNS) is opgegeven. 
-  - **Herstel-optie 1**. Als u weet dat uw VM's geen uitgaande internet toegang tot een werkende DNS-service en werkt de Azure-agents op de virtuele machines, verwijdert u alle VM-extensies als onderdeel van de migratie voordat voorbereiden, installeert u de VM-extensies opnieuw na de migratie. 
-  - **Herstel-optie 2**. Als VM-extensies te groot is van een drempel zijn, is een andere optie het afsluiten/toewijzing ongedaan maken alle VM's vóór de migratie. De toewijzing ongedaan gemaakt virtuele machines migreren, en start ze vervolgens aan de Azure Resource Manager. Het voordeel hier is dat de VM-extensies worden gemigreerd. Het nadeel is dat alle openbare virtuele IP-adressen gerichte verbroken worden (dit kan een niet-starter zijn), en natuurlijk de virtuele machines worden afgesloten veroorzaakt een veel grotere invloed op toepassingen werken.
+- **VM-extensies** : virtuele-machine uitbreidingen zijn mogelijk een van de grootste obstakels om actieve vm's te migreren. Herstel van VM-extensies kan tot 1-2 dagen duren, dus plan daarom dienovereenkomstig.  Er is een werkende Azure-agent nodig om de VM-extensie status van actieve Vm's te rapporteren. Als de status terugkeert als beschadigd voor een actieve virtuele machine, wordt de migratie gestopt. Het is niet nodig om de migratie in te scha kelen voor de agent zelf, maar als er uitbrei dingen bestaan op de VM, zijn er voor de migratie zowel een werk agent als een uitgaande Internet verbinding (met DNS) vereist.
+  - Als de verbinding met een DNS-server tijdens de migratie is verbroken, worden alle VM-extensies uitgezonderd BGInfo v1. \* moet eerst van elke VM worden verwijderd voordat de migratie wordt voor bereid en vervolgens opnieuw aan de VM worden toegevoegd na de migratie van Azure Resource Manager.  **Dit geldt alleen voor virtuele machines die worden uitgevoerd.**  Als de toewijzing van Vm's is gestopt, hoeven VM-extensies niet te worden verwijderd. **Opmerking:** Veel uitbrei dingen zoals de bewaking van Azure Diagnostics en Security Center worden na de migratie opnieuw geïnstalleerd, dus het is geen probleem.
+  - Zorg er bovendien voor dat netwerk beveiligings groepen geen beperking voor uitgaande internet toegang hebben. Dit kan gebeuren bij sommige configuraties van netwerk beveiligings groepen. Uitgaande internet toegang (en DNS) is vereist voor het migreren van VM-extensies naar Azure Resource Manager. 
+  - Er zijn twee versies van de BGInfo-extensie: v1 en v2.  Als de virtuele machine is gemaakt met behulp van de Azure Portal of Power shell, heeft de virtuele machine waarschijnlijk de V1-extensie. Deze extensie hoeft niet te worden verwijderd en wordt overgeslagen (niet gemigreerd) door de migratie-API. Als de klassieke virtuele machine echter is gemaakt met de nieuwe Azure Portal, heeft deze waarschijnlijk de op JSON gebaseerde v2-versie van BGInfo, die kan worden gemigreerd naar Azure Resource Manager, op voor waarde dat de agent werkt en uitgaande internet toegang (en DNS) heeft. 
+  - **Herstel optie 1**. Als u weet dat uw Vm's geen uitgaande internet toegang, een werkende DNS-service en werkende Azure-agents op de virtuele machines hebben, verwijdert u alle VM-extensies als onderdeel van de migratie voordat u het voor bereidt en installeert u de VM-extensies na de migratie opnieuw. 
+  - **Herstel optie 2**. Als VM-extensies te groot zijn voor een hindernis, is een andere optie het afsluiten/toewijzen van alle Vm's vóór migratie. Migreer de opgeheven Vm's en start ze vervolgens opnieuw op de Azure Resource Manager-zijde. Het voor deel hiervan is dat VM-extensies worden gemigreerd. Het nadeel is dat alle open bare virtuele Ip's die zijn gericht verloren gaan (dit kan een niet-starter zijn), en de virtuele machines die worden afgesloten, veroorzaken een veel grotere invloed op de werk toepassingen.
 
     > [!NOTE] 
-    > Als een Azure Security Center-beleid is geconfigureerd op basis van de actieve virtuele machines die wordt gemigreerd, het beveiligingsbeleid moet worden gestopt voordat u extensies verwijdert, anders wordt de bewaking van de extensie van de beveiliging wordt automatisch opnieuw geïnstalleerd op de virtuele machine nadat deze is verwijderd.
+    > Als een Azure Security Center beleid is geconfigureerd voor de actieve Vm's die worden gemigreerd, moet het beveiligings beleid worden gestopt voordat de extensies worden verwijderd. anders wordt de extensie voor beveiligings bewaking automatisch opnieuw geïnstalleerd op de VM nadat deze is verwijderd.
 
-- **Beschikbaarheidssets** : als u een virtueel netwerk (vNet) worden gemigreerd naar Azure Resource Manager, de klassieke implementatie (dat wil zeggen cloudservice) ingesloten virtuele machines moeten zich allemaal in één beschikbaarheidsset of de virtuele machines moet niet deel in een beschikbaarheidsset. Met meer dan één beschikbaarheidsset in de cloudservice is niet compatibel met Azure Resource Manager en migratie wordt onderbroken.  Er kan niet ook enkele VM's in een beschikbaarheidsset en sommige virtuele machines niet in een beschikbaarheidsset. U kunt dit oplossen, moet u herstellen of verplaatsen van uw cloudservice.  Plan als dit wordt mogelijk tijd in beslag nemen. 
+- **Beschikbaarheids sets** : voor een virtueel netwerk (vNet) dat naar Azure Resource Manager moet worden gemigreerd, moet de klassieke implementatie (d.w.z. Cloud service) virtuele machines in één beschikbaarheidsset zijn, anders moeten de virtuele machines zich in een beschikbaarheidsset bevinden. Als er meer dan één beschikbaarheidsset in de Cloud service is ingesteld, is deze niet compatibel met Azure Resource Manager en stopt de migratie.  Daarnaast kunnen er geen virtuele machines in een beschikbaarheidsset worden opgegeven, en sommige Vm's niet in een beschikbaarheidsset. Om dit op te lossen, moet u uw Cloud service herstellen of anders in een andere volg orde zetten.  Plan dienovereenkomstig, omdat dit mogelijk tijdrovend is. 
 
-- **Web/Worker-Rolimplementaties** -Cloud Services met web-en werkrollen niet migreren naar Azure Resource Manager. De web-/ werkrollen moeten eerst worden verwijderd van het virtuele netwerk voordat de migratie kunt starten.  Een typische oplossing is alleen in een afzonderlijke klassiek virtueel netwerk dat is ook gekoppeld aan een ExpressRoute-circuit naar instanties van de web-/ werkrol of voor het migreren van de code naar nieuwere PaaS-App-Services (deze bespreking is buiten het bereik van dit document). In het eerste geval implementeren, een nieuwe klassiek virtueel netwerk maken, verplaatsen/implementeert u opnieuw de web-/ werkrollen naar deze nieuw virtueel netwerk en verwijderen van de implementaties van het virtuele netwerk wordt verplaatst. Er zijn geen codewijzigingen vereist. De nieuwe [Peering in virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md) mogelijkheid kan worden gebruikt om samen het klassieke virtuele netwerk met de web-/ werkrollen en andere virtuele netwerken in dezelfde Azure-regio, zoals het virtuele netwerk dat wordt gemigreerd (**nadat het virtuele netwerkmigratie is voltooid als de gekoppelde virtuele netwerken kunnen niet worden gemigreerd**), daarom bieden dezelfde mogelijkheden met zonder prestatieverlies van en geen sancties latentie/bandbreedte. Het toevoegen van gegeven [Peering in virtuele netwerken](../../virtual-network/virtual-network-peering-overview.md), web/worker-rolimplementaties nu eenvoudig kan worden verholpen en blokkeert de migratie naar Azure Resource Manager.
+- **Implementaties van web-en werk rollen** -Cloud Services die web-en werk rollen bevatten, kunnen niet worden gemigreerd naar Azure Resource Manager. De web-en werk rollen moeten eerst uit het virtuele netwerk worden verwijderd voordat de migratie kan worden gestart.  Een typische oplossing is het verplaatsen van de web-of worker-instanties naar een afzonderlijk klassiek virtueel netwerk dat ook is gekoppeld aan een ExpressRoute-circuit, of om de code te migreren naar een nieuwere PaaS App Services (deze discussie valt buiten het bereik van dit document). Maak in de eerste aanvraag voor opnieuw implementeren een nieuw klassiek virtueel netwerk, verplaats/Implementeer de web-of werk rollen naar dat nieuwe virtuele netwerk en verwijder vervolgens de implementaties van het virtuele netwerk dat wordt verplaatst. Er zijn geen code wijzigingen vereist. De nieuwe [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md) -mogelijkheid kan worden gebruikt voor het samen voegen van het klassieke virtuele netwerk met de web-en werk rollen en andere virtuele netwerken in dezelfde Azure-regio, zoals het virtuele netwerk dat wordt gemigreerd (**na het virtuele netwerk de migratie is voltooid omdat gepeerde virtuele netwerken niet kunnen worden**gemigreerd. Daarom bieden dezelfde mogelijkheden zonder verlies van prestaties en geen latentie/bandbreedte boetes. Gezien de toevoeging van [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md), implementaties van web-en werk rollen kan nu eenvoudig worden verholpen en wordt de migratie naar Azure Resource Manager niet geblokkeerd.
 
-- **Azure Resource Manager-quota** -Azure-regio's hebben afzonderlijke quota/limieten voor zowel klassieke als Azure Resource Manager. Hoewel in een migratiescenario nieuwe hardware is niet wordt verbruikt *(we bent wisselen van bestaande VM's van klassiek naar Azure Resource Manager)* , Azure Resource Manager-quota nog moeten worden voldaan met voldoende capaciteit voor migratie kunt starten. Hieronder volgen de belangrijkste limieten die we hebben gezien problemen veroorzaken.  Open een ondersteuningsticket quotum te verhogen van de limieten. 
+- **Azure Resource Manager quota's** : Azure-regio's hebben afzonderlijke quota's/limieten voor zowel klassieke als Azure Resource Manager. Hoewel er in een migratie scenario nieuwe hardware niet wordt gebruikt *(we wisselen bestaande vm's uit van klassieke naar Azure Resource Manager)* , moeten Azure Resource Manager quota's nog steeds aanwezig zijn met voldoende capaciteit voordat de migratie kan worden gestart. Hieronder ziet u de belangrijkste limieten die we hebben gezien problemen veroorzaken.  Een quotum ondersteunings ticket openen om de limieten te verhogen. 
 
     > [!NOTE]
-    > Deze limieten moeten worden gegenereerd in dezelfde regio als uw huidige omgeving moeten worden gemigreerd.
+    > Deze limieten moeten worden verhoogd in dezelfde regio als uw huidige omgeving om te worden gemigreerd.
     >
 
   - Netwerkinterfaces
   - Load balancers
   - Openbare IP-adressen
-  - Statische openbare IP-adressen
+  - Statische open bare Ip's
   - Kerngeheugens
   - Netwerkbeveiligingsgroepen
   - Routetabellen
 
-    U kunt uw huidige Azure Resource Manager-quota's die met de volgende opdrachten met de meest recente versie van Azure CLI kunt controleren.
+    U kunt uw huidige Azure Resource Manager quota's controleren met behulp van de volgende opdrachten met de nieuwste versie van Azure CLI.
 
-    **COMPUTE** *(kernen, Beschikbaarheidssets)*
+    **Berekenen** *(Kernen, beschikbaarheids sets)*
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 
     ```
 
-    **Netwerk** *(virtuele netwerken, statische openbare IP-adressen, openbare IP-adressen, de Netwerkbeveiligingsgroepen Network Interfaces, Load Balancers, routetabellen)*
+    **Netwerk** *(Virtuele netwerken, statische open bare IP-adressen, open bare IP-adressen, netwerk beveiligings groepen, netwerk interfaces, load balancers, route tabellen)*
     
     ```bash
     az network list-usages -l <azure-region> -o jsonc
     ```
 
-    **Opslag** *(Opslagaccount)*
+    **Opslag** *(Opslag account)*
     
     ```bash
     az storage account show-usage
     ```
 
-- **Azure Resource Manager API beperkingslimieten** : als u een groot genoeg omgeving (zoals hebt) > 400 VM's in een VNET), kunt u de standaard-API beperkingslimieten voor schrijfbewerkingen bereikt (momenteel **1200-schrijfbewerkingen/uur**) in Azure Resource Manager. Voordat u begint met de migratie, moet u een ondersteuningsticket om deze limiet voor uw abonnement te verhogen verhogen.
+- **Azure Resource Manager-API** -beperkings limieten: als u een grote voldoende omgeving hebt (bijvoorbeeld > 400 Vm's in een VNET) kunt u de standaard limieten voor de API-beperking voor schrijf bewerkingen (momenteel **1200 schrijf bewerkingen/uur**) in azure Resource Manager aanraken. Voordat u met de migratie begint, moet u een ondersteunings ticket genereren om deze limiet voor uw abonnement te verg Roten.
 
-- **Inrichting is een time-out opgetreden van VM-Status** : als een virtuele machine de status van heeft **inrichting is een time-out**, dit moet worden opgelost vóór de migratie. De enige manier om dit te doen is met uitvaltijd door het opheffen van inrichting/beëindiging van de virtuele machine (verwijderen, houden van de schijf en opnieuw maken van de virtuele machine). 
+- **VM-status time** -out voor inrichting: als er een **time**-out is opgetreden voor een virtuele machine, moet deze voorafgaand aan de migratie worden opgelost. De enige manier om dit te doen is met downtime door de inrichting van de virtuele machine ongedaan te maken/opnieuw in te richten (verwijderen, de schijf te houden en de virtuele machine opnieuw te maken). 
 
-- **De Status van de VM RoleStateUnknown** - als de migratie stopt vanwege een **onbekende Rolstatus** foutbericht, de virtuele machine met behulp van de portal controleren en zorg ervoor dat deze wordt uitgevoerd. Deze fout wordt meestal verdwijnen op haar eigen (geen herstel is vereist) na een paar minuten en is vaak een tijdelijke type vaak gezien tijdens een virtuele Machine **start**, **stoppen**, **opnieuwstarten** bewerkingen. **Aanbevolen procedures:** migratie opnieuw na een paar minuten opnieuw proberen. 
+- **RoleStateUnknown-VM-status** : als de migratie wordt gestopt als gevolg van een **onbekende functie status** , controleert u de virtuele machine met behulp van de portal en controleert u of deze actief is. Deze fout wordt doorgaans na een paar minuten verwijderd (zonder herstel is vereist) en is vaak een tijdelijk type dat vaak wordt weer gegeven tijdens het **starten**, **stoppen**en **opnieuw starten** van een virtuele machine. **Aanbevolen procedure:** Voer de migratie na een paar minuten opnieuw uit. 
 
-- **Fabric-Cluster bestaat niet** : In sommige gevallen kan bepaalde VM's om diverse oneven redenen kunnen niet worden gemigreerd. Een van deze gevallen bekend is als de virtuele machine is onlangs gemaakt (in de afgelopen week of zo) en is er gebeurd met het land van een Azure-cluster die nog niet is uitgerust voor Azure Resource Manager-workloads.  U krijgt een foutmelding waarin wordt gemeld **fabric-cluster bestaat niet** en de virtuele machine kan niet worden gemigreerd. Wacht een paar dagen wordt dit specifieke probleem meestal opgelost als het cluster binnenkort Azure Resource Manager is ingeschakeld krijgt. Echter, een directe oplossing is om te `stop-deallocate` de virtuele machine, vervolgens naar voren te gaan met migratie en start de virtuele machine een back-up in Azure Resource Manager nadat de migratie.
+- Het **infrastructuur cluster bestaat niet** . in sommige gevallen kunnen bepaalde vm's niet om verschillende oneven redenen worden gemigreerd. Een van deze bekende gevallen is als de virtuele machine onlangs is gemaakt (in de afgelopen week of dus) en is opgetreden in een Azure-cluster dat nog niet is ingericht voor Azure Resource Manager workloads.  Er wordt een fout bericht weer geven met de melding dat het **Fabric-cluster niet bestaat** en de virtuele machine niet kan worden gemigreerd. Als er een aantal dagen wordt gewacht, wordt dit probleem doorgaans opgelost als het cluster binnenkort Azure Resource Manager ingeschakeld. Er is echter een onmiddellijke tijdelijke oplossing `stop-deallocate` naar de virtuele machine. Ga vervolgens verder met de migratie en start de VM in azure Resource Manager na de migratie.
 
-### <a name="pitfalls-to-avoid"></a>Valkuilen om te voorkomen
+### <a name="pitfalls-to-avoid"></a>Valk uilen om te voor komen
 
-- Geen sneltoetsen en laat u de migratie valideren, voorbereiden/afbreken droge uitvoeren.
-- Meeste, zo niet alle verschijnt van de potentiële problemen tijdens het valideren/voorbereiden/afbreken stappen.
+- Doe geen sneltoetsen en laat de migraties valideren/voor bereid/afbreken droge uitvoering weg.
+- Als dat niet het geval is, worden uw potentiële problemen duidelijk tijdens de stappen voor het valideren/voorbereiden/afbreken.
 
 ## <a name="migration"></a>Migratie
 
-### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen voor- en nadelen
+### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen en-afwegingen
 
-U bent nu klaar omdat u via de bekende problemen met uw omgeving hebt gewerkt.
+U bent nu klaar omdat u de bekende problemen met uw omgeving hebt doorstaan.
 
-Voor de echte migraties is het raadzaam om te overwegen:
+Voor de echte migratie kunt u het volgende overwegen:
 
-1. Plan en plannen van het virtuele netwerk (kleinste eenheid van de migratie) met prioriteit verhogen.  Voer eerst de eenvoudige virtuele netwerken en de voortgang van de meer gecompliceerde virtuele netwerken.
-2. De meeste klanten hebben niet-productie-en productieomgevingen.  De laatste productie plannen.
-3. **(OPTIONEEL)**  Plannen van een uitvaltijd wegens onderhoud met veel van de buffer in het geval zich onverwachte problemen voordoen.
-4. Communiceren met en afgestemd op uw ondersteuningsteams in het geval zich problemen voordoen.
+1. Het virtuele netwerk (kleinste eenheid van migratie) plannen en plannen met een hogere prioriteit.  Voer eerst de eenvoudige virtuele netwerken en de voortgang met de complexere virtuele netwerken uit.
+2. De meeste klanten hebben andere omgevingen dan productie en productie.  Plan de productie als laatste.
+3. **(Optioneel)** Een onderhouds downtime plannen met veel buffers als er onverwachte problemen optreden.
+4. Communiceer met en stem mee met uw ondersteunings teams als er problemen optreden.
 
-### <a name="patterns-of-success"></a>Patronen van geslaagd
+### <a name="patterns-of-success"></a>Patronen van slagen
 
-De technische hulp van de bovenstaande sectie van de Test Lab moet worden beschouwd als en verholpen voordat u een echte migratie.  Met het testen is de migratie daadwerkelijk een gebeurtenisafhankelijke.  Voor productieomgevingen, is het mogelijk handig om aanvullende ondersteuning, zoals een vertrouwde Microsoft-partner of Microsoft Premier services.
+De technische richt lijn van de sectie test omgeving hierboven moet worden overwogen en verholpen vóór een echte migratie.  Bij een adequaat testen is de migratie eigenlijk een niet-gebeurtenis.  Voor productie omgevingen kan het handig zijn om aanvullende ondersteuning te bieden, zoals een vertrouwde micro soft-partner of micro soft premier-Services.
 
-### <a name="pitfalls-to-avoid"></a>Valkuilen om te voorkomen
+### <a name="pitfalls-to-avoid"></a>Valk uilen om te voor komen
 
-Niet volledig testen kan problemen veroorzaken en vertraging in de migratie.  
+Het niet volledig testen kan leiden tot problemen en vertraging tijdens de migratie.  
 
-## <a name="beyond-migration"></a>Na migratie
+## <a name="beyond-migration"></a>Buiten de migratie
 
-### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen voor- en nadelen
+### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen en-afwegingen
 
-Nu dat u in Azure Resource Manager, maximaliseert u het platform.  Lees de [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) voor meer informatie over extra voordelen.
+Nu u zich in Azure Resource Manager bevindt, maximaliseert u het platform.  Lees het [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) voor meer informatie over aanvullende voor delen.
 
-Dingen om te overwegen:
+Aandachtspunten:
 
-- Bundeling van de migratie met andere activiteiten.  De meeste klanten kiezen voor een onderhoudsvenster van toepassing.  Als dit het geval is, is het raadzaam deze uitvaltijd gebruiken om in te schakelen van andere Azure Resource Manager-mogelijkheden, zoals versleuteling en migreren naar Managed Disks.
-- Terug naar de technische en zakelijke redenen voor Azure Resource Manager. Schakel de extra services alleen beschikbaar op Azure Resource Manager die betrekking hebben op uw omgeving.
-- Moderniseer uw omgeving met PaaS-services.
+- De migratie met andere activiteiten bundelen.  De meeste klanten kiezen voor een onderhouds venster voor de toepassing.  Als dat het geval is, kunt u deze downtime gebruiken om andere Azure Resource Manager mogelijkheden zoals versleuteling en migratie naar Managed Disks in te scha kelen.
+- Ga naar de technische en zakelijke redenen voor Azure Resource Manager; Schakel de extra services in die alleen beschikbaar zijn op Azure Resource Manager die van toepassing zijn op uw omgeving.
+- Modern uw omgeving met PaaS Services.
 
-### <a name="patterns-of-success"></a>Patronen van geslaagd
+### <a name="patterns-of-success"></a>Patronen van slagen
 
-Worden doelgericht op welke services u nu wilt inschakelen in Azure Resource Manager.  Veel klanten vinden het hieronder aantrekkelijk voor hun Azure-omgevingen:
+Wees doel gericht op welke services u nu wilt inschakelen in Azure Resource Manager.  Veel klanten vinden het onderstaande aantrekkelijk voor hun Azure-omgevingen:
 
-- [Op rollen gebaseerd toegangsbeheer](../../role-based-access-control/overview.md).
-- [Azure Resource Manager-sjablonen voor de implementatie eenvoudiger en meer gecontroleerde](../../azure-resource-manager/resource-group-overview.md#template-deployment).
+- [Access Control op basis van rollen](../../role-based-access-control/overview.md).
+- [Azure Resource Manager sjablonen voor een eenvoudiger en meer bewaakte implementatie](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [Tags](../../azure-resource-manager/resource-group-using-tags.md).
-- [Activiteit-besturingselement](../../azure-resource-manager/resource-group-audit.md)
-- [Beleid voor Azure](../../governance/policy/overview.md)
+- [Besturings element voor activiteit](../../azure-resource-manager/resource-group-audit.md)
+- [Azure-beleid](../../governance/policy/overview.md)
 
-### <a name="pitfalls-to-avoid"></a>Valkuilen om te voorkomen
+### <a name="pitfalls-to-avoid"></a>Valk uilen om te voor komen
 
-Houd er rekening mee waarom u deze van klassiek naar Azure Resource Manager-migratie is gestart.  Wat was de oorspronkelijke zakelijke redenen? U de zakelijke reden is bereikt?
+Denk eraan dat u dit klassieke Azure Resource Manager hebt gestart voor migratie traject.  Wat zijn de oorspronkelijke zakelijke redenen? Hebt u de zakelijke reden gerealiseerd?
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Overzicht van door het platform ondersteunde migratie van IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Technische details over door platforms ondersteunde migratie van klassiek naar Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Planning voor de migratie van IaaS-resources van het klassieke implementatiemodel naar Azure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [PowerShell gebruiken voor het migreren van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Community-hulpprogramma's voor hulp bij de migratie van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Power shell gebruiken voor het migreren van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Community tools voor hulp bij de migratie van IaaS-resources van klassiek naar Azure Resource Manager](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Bekijk de meest voorkomende migratiefouten](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Lees de veelgestelde vragen over migratie IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Bekijk de veelgestelde vragen over het migreren van IaaS-resources van klassiek naar Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

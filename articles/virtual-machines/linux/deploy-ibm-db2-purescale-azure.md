@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 68fde09b1ee5f18aa784793cc19e9f547b19ed43
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871881"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083445"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale implementeren op Azure
 
@@ -80,7 +79,7 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 
 | Scherm naam               | Veld                                        | Value                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Welkom                   |                                              | Nieuwe installatie                                                                                           |
+| Bijwerken                   |                                              | Nieuwe installatie                                                                                           |
 | Kies een product          |                                              | DB2-versie 11.1.3.3. Server edities met DB2 pureScale                                              |
 | Configuratie             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Het installatie type selecteren                 | Standaard                                                                                               |
@@ -88,7 +87,7 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 | Eigenaar van exemplaar            | Bestaande gebruiker voor exemplaar, gebruikers naam        | DB2sdin1                                                                                              |
 | Gebruiker met omheining               | Bestaande gebruiker, gebruikers naam                     | DB2sdfe1                                                                                              |
 | Bestands systeem van cluster       | Pad naar gedeelde schijf partitie apparaat            | /dev/dm-2                                                                                             |
-|                           | Koppel punt                                  | /DB2sd\_1804a                                                                                         |
+|                           | Koppelpunt                                  | /DB2sd\_1804a                                                                                         |
 |                           | Gedeelde schijf voor gegevens                         | /dev/dm-1                                                                                             |
 |                           | Koppel punt (gegevens)                           | /DB2fs/datafs1                                                                                        |
 |                           | Gedeelde schijf voor logboek                          | /dev/dm-0                                                                                             |

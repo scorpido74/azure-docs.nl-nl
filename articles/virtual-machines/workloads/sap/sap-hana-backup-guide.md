@@ -1,237 +1,236 @@
 ---
-title: Back-uphandleiding voor SAP HANA op Azure Virtual Machines | Microsoft Docs
-description: Back-uphandleiding voor SAP HANA biedt twee belangrijke back-mogelijkheden voor SAP HANA op Azure virtual machines
+title: Back-upgids voor SAP HANA op Azure Virtual Machines | Microsoft Docs
+description: De back-upgids voor SAP HANA biedt twee belang rijke back-upmogelijkheden voor SAP HANA op virtuele machines van Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 91671b39e6ac33e16636cc924f5c0aa5e3fcbf3b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05a4b8e8034e1c354a4209244694aeb2fc2c6007
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709951"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078752"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Back-uphandleiding voor SAP HANA op Azure Virtual Machines
 
 ## <a name="getting-started"></a>Aan de slag
 
-De back-uphandleiding voor SAP HANA op Azure virtuele Machines worden alleen Azure-specifieke onderwerpen beschreven. Raadpleeg voor algemene SAP HANA back-up verwante items, de SAP HANA-documentatie (Zie _documentatie over backup van SAP HANA_ verderop in dit artikel).
+In de back-upgids voor SAP HANA die op virtuele machines van Azure worden uitgevoerd, worden alleen specifieke onderwerpen van Azure beschreven. Raadpleeg de SAP HANA documentatie (Zie _SAP Hana back-updocumentatie_ verderop in dit artikel) voor algemene SAP Hana back-up van gerelateerde items.
 
-De focus van dit artikel is op twee belangrijke back-mogelijkheden voor SAP HANA op Azure virtual machines:
+De focus van dit artikel is op twee belang rijke back-upmogelijkheden voor SAP HANA op virtuele machines van Azure:
 
-- HANA back-up naar het bestandssysteem in een Azure Linux-Machine (Zie [SAP HANA Azure back-up op bestandsniveau](sap-hana-backup-file-level.md))
-- HANA back-up op basis van opslagmomentopnamen handmatig met behulp van de functie van Azure storage blob snapshot of Azure Backup-Service (Zie [back-up van SAP HANA op basis van opslagmomentopnamen](sap-hana-backup-storage-snapshots.md))
+- HANA-back-up naar het bestands systeem in een virtuele machine van Azure Linux (Zie [SAP HANA Azure Backup op bestands niveau](sap-hana-backup-file-level.md))
+- HANA-back-up op basis van moment opnamen van opslag met behulp van de Azure Storage BLOB snap shot-functie hand matig of Azure Backup Service ( [SAP Hana Zie back-ups op basis van opslag momentopnamen](sap-hana-backup-storage-snapshots.md))
 
-SAP HANA biedt een back-up van de API waarmee back-uphulpprogramma's van derden integreren rechtstreeks met SAP HANA. (Dat is niet binnen het bereik van deze handleiding.) Er is geen rechtstreekse integratie van SAP HANA met Azure Backup-service beschikbaar is nu op basis van deze API.
+SAP HANA biedt een back-upapi waarmee back-uptools van derden rechtstreeks kunnen worden geïntegreerd met SAP HANA. (Dat valt niet binnen het bereik van deze hand leiding.) Er is op dit moment geen directe integratie van SAP HANA met Azure Backup-Service beschikbaar.
 
-SAP HANA wordt officieel ondersteund op verschillende typen Azure VM's, zoals Azure M-serie. Voor een volledige lijst van SAP HANA Azure Virtual machines gecertificeerde, Bekijk [gecertificeerde IaaS-platformen vinden](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). In dit artikel wordt bijgewerkt als nieuwe aanbiedingen voor SAP HANA op Azure beschikbaar.
+SAP HANA wordt officieel ondersteund op verschillende typen virtuele Azure-machines, zoals Azure M-series. Voor een volledige lijst met SAP HANA gecertificeerde Azure-Vm's raadpleegt u [gecertificeerde IaaS-platforms zoeken](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Dit artikel wordt bijgewerkt als nieuwe aanbiedingen voor SAP HANA op Azure beschikbaar worden.
 
-Er is ook een hybride oplossing voor SAP HANA beschikbaar op Azure, waarbij SAP HANA op wordt uitgevoerd niet-gevirtualiseerde fysieke servers. Deze back-handleiding voor SAP HANA Azure bestrijkt echter een zuivere Azure-omgeving waarin de SAP HANA wordt uitgevoerd in een Azure-VM niet SAP HANA op &quot;grote instanties.&quot; Zie [SAP HANA (grote instanties) overzicht en architectuur op Azure](hana-overview-architecture.md) voor meer informatie over deze back-upoplossing op &quot;grote instanties&quot; op basis van opslagmomentopnamen.
+Er is ook een SAP HANA hybride oplossing beschikbaar op Azure, waarbij SAP HANA niet-gevirtualiseerd op fysieke servers wordt uitgevoerd. Deze SAP Hana Azure Backup Guide bevat echter een zuivere Azure-omgeving waarin SAP Hana in een Azure-VM wordt uitgevoerd, en niet &quot;SAP Hana worden uitgevoerd op grote exemplaren.&quot; Zie [SAP Hana (grote exemplaren) overzicht en architectuur op Azure](hana-overview-architecture.md) voor meer informatie over deze back-upoplossing op&quot; basis van opslag momentopnamen op &quot;grote instanties.
 
-Algemene informatie over SAP-producten ondersteund op Azure kan worden gevonden [SAP-notitie 1928533](https://launchpad.support.sap.com/#/notes/1928533).
+Algemene informatie over SAP-producten die worden ondersteund in azure, vindt u in [SAP Note 1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
-De volgende drie cijfers biedt een overzicht van de back-upopties van SAP HANA met behulp van systeemeigen Azure-mogelijkheden op dit moment, en ook drie mogelijke toekomstige back-scenario's worden weergegeven. De gerelateerde artikelen [SAP HANA Azure back-up op bestandsniveau](sap-hana-backup-file-level.md) en [back-up van SAP HANA op basis van opslagmomentopnamen](sap-hana-backup-storage-snapshots.md) beschrijven deze opties in meer detail, met inbegrip van grootte- en Prestatieoverwegingen voor SAP HANA back-ups die multi-terabytes groot zijn.
+De volgende drie cijfers geven een overzicht van de SAP HANA back-upopties die momenteel gebruikmaken van systeem eigen Azure-mogelijkheden en er worden ook drie mogelijke back-upscenario's weer gegeven. In de verwante artikelen [SAP HANA Azure Backup op bestands niveau](sap-hana-backup-file-level.md) en [SAP Hana back-up op basis van moment opnamen van opslag](sap-hana-backup-storage-snapshots.md) , worden deze opties uitvoeriger beschreven, met inbegrip van de grootte-en prestatie overwegingen voor SAP Hana back-ups met meerdere terabytes.
 
 ![In deze afbeelding ziet u twee mogelijkheden voor het opslaan van de huidige status van de virtuele machine](media/sap-hana-backup-guide/image001.png)
 
-In deze afbeelding ziet u de mogelijkheid om de huidige status van virtuele machine, hetzij via Azure Backup-service of handmatige momentopname van VM-schijven op te slaan. Met deze methode heeft één&#39;t gemachtigd voor het beheren van back-ups van SAP HANA. De uitdaging van het scenario van de momentopname schijf is consistentie van bestandssysteem en de status van een App-consistente schijf. De consistentie-onderwerp wordt beschreven in de sectie _SAP HANA-gegevensconsistentie bij het nemen van opslagmomentopnamen_ verderop in dit artikel. Mogelijkheden en beperkingen van Azure Backup-service met betrekking tot back-ups van SAP HANA worden ook verderop in dit artikel besproken.
+In deze afbeelding ziet u de mogelijkheid om de huidige status van de virtuele machine op te slaan via Azure Backup Service of hand matige moment opname van VM-schijven. Met deze aanpak moet er één worden&#39;gebruikt voor het beheren van SAP Hana back-ups. De uitdaging van het schijf momentopname scenario is consistentie van het bestands systeem en een toepassings consistente schijf status. Het consistentie onderwerp wordt beschreven in de sectie _SAP Hana gegevens consistentie bij het maken van moment opnamen van opslag_ verderop in dit artikel. De mogelijkheden en beperkingen van Azure Backup service met betrekking tot SAP HANA back-ups worden ook verderop in dit artikel besproken.
 
-![In deze afbeelding ziet u opties voor het maken van een SAP HANA bestandsback-up binnen de virtuele machine](media/sap-hana-backup-guide/image002.png)
+![In deze afbeelding ziet u de opties voor het maken van een back-up van een SAP HANA-bestand in de VM](media/sap-hana-backup-guide/image002.png)
 
-In deze afbeelding ziet u opties voor het nemen van een SAP HANA-back-up binnen de virtuele machine en vervolgens opslaan van het back-upbestanden HANA ergens anders met verschillende hulpprogramma's. Een HANA back-up duurt langer dan een momentopname op basis van back-upoplossing vereist, maar het heeft namelijk voordelen met betrekking tot de integriteit en consistentie. Meer informatie vindt u verderop in dit artikel.
+In deze afbeelding ziet u opties voor het maken van een back-up van SAP HANA-bestanden in de virtuele machine en vervolgens het opslaan van de HANA-back-upbestanden op een andere manier. Het maken van een HANA-back-up vergt meer tijd dan een back-upoplossing op basis van moment opnamen, maar heeft voor delen met betrekking tot integriteit en consistentie. Verderop in dit artikel vindt u meer informatie.
 
-![In deze afbeelding toont een mogelijke toekomstige SAP HANA back-scenario](media/sap-hana-backup-guide/image003.png)
+![In deze afbeelding ziet u een potentieel toekomstig SAP HANA back-upscenario](media/sap-hana-backup-guide/image003.png)
 
-In deze afbeelding toont een mogelijke toekomstige SAP HANA back-scenario. Als de SAP HANA toegestaan nemen van back-ups van een secundaire replicatie, zou deze extra opties voor back-upstrategieën toevoegen. Het is momenteel niet mogelijk op basis van een bericht in de SAP HANA-Wiki:
+In deze afbeelding ziet u een potentieel toekomstig SAP HANA back-upscenario. Als SAP HANA back-ups van een secundaire replicatie mag maken, worden er aanvullende opties voor back-upstrategieen toegevoegd. Momenteel is het niet mogelijk op basis van een bericht in de wiki SAP HANA:
 
-_&quot;Is het mogelijk om back-ups uitvoeren op de secundaire kant?_
+_&quot;Is het mogelijk om back-ups te maken aan de secundaire zijde?_
 
-_Nee, momenteel kunt u alleen ondernemen gegevens en logboekback-ups op de primaire zijde. Als na overname naar de secundaire zijde, automatische back-up is ingeschakeld, wordt de logboekback-ups automatisch er worden geschreven.&quot;_
+_Nee, op dit moment kunt u alleen back-ups maken van gegevens en logboeken aan de primaire zijde. Als automatische logboek back-up is ingeschakeld, wordt de back-up van de logboeken automatisch geschreven na de overname van de secundaire server.&quot;_
 
-## <a name="sap-resources-for-hana-backup"></a>SAP-resources voor HANA back-up
+## <a name="sap-resources-for-hana-backup"></a>SAP-bronnen voor HANA-back-ups
 
-### <a name="sap-hana-backup-documentation"></a>Documentatie over backup van SAP HANA
+### <a name="sap-hana-backup-documentation"></a>SAP HANA back-updocumentatie
 
-- [Inleiding tot beheer van SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US)
-- [Plannen van de back-up en de strategie voor herstel](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)
-- [HANA-back-up met behulp van ABAP DBACOCKPIT plannen](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
-- [Planning gegevensback-ups (SAP HANA Cockpit)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
-- Veelgestelde vragen over SAP HANA back-up [1642148 voor SAP-notitie](https://launchpad.support.sap.com/#/notes/1642148)
-- Veelgestelde vragen over SAP HANA-database en storage-momentopnamen in [2039883 voor SAP-notitie](https://launchpad.support.sap.com/#/notes/2039883)
-- Ongeschikte netwerk bestandssystemen voor back-up en herstel in [1820529 voor SAP-notitie](https://launchpad.support.sap.com/#/notes/1820529)
+- [Inleiding tot SAP HANA beheer](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US)
+- [De strategie voor back-up en herstel plannen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)
+- [HANA-back-ups plannen met ABAP DBACOCKPIT](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
+- [Gegevens back-ups plannen (SAP HANA cockpit)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
+- Veelgestelde vragen over SAP HANA back-up in [SAP Note 1642148](https://launchpad.support.sap.com/#/notes/1642148)
+- Veelgestelde vragen over SAP HANA data base-en opslag momentopnamen in [SAP-notitie 2039883](https://launchpad.support.sap.com/#/notes/2039883)
+- Niet-geschikte netwerk bestands systemen voor back-up en herstel in [SAP-notitie 1820529](https://launchpad.support.sap.com/#/notes/1820529)
 
 ### <a name="why-sap-hana-backup"></a>Waarom SAP HANA back-up?
 
-Azure storage biedt beschikbaarheid en betrouwbaarheid gebruiksklaar (Zie [Inleiding tot Microsoft Azure Storage](../../../storage/common/storage-introduction.md) voor meer informatie over Azure storage).
+Azure Storage biedt Beschik baarheid en betrouw baarheid van de doos (Zie [Inleiding tot Microsoft Azure Storage](../../../storage/common/storage-introduction.md) voor meer informatie over Azure Storage).
 
-Het minimale aantal voor &quot;back-up&quot; te vertrouwen op de SLA's voor Azure, de SAP HANA-gegevens en logboekbestanden bestanden op Azure-VHD's die zijn gekoppeld aan de virtuele machine van de SAP HANA-server is. Deze methode heeft betrekking op VM-fouten, maar niet mogelijke beschadiging van de SAP HANA-gegevens en logboekbestanden of logische fouten, zoals gegevens of bestanden per ongeluk verwijderen. Back-ups zijn ook vereist voor naleving of om wettelijke redenen. Kort gezegd, is het altijd een nodig voor back-ups van SAP HANA.
+De minimale voor &quot;back&quot; -up is afhankelijk van de Azure-sla's, waarbij de SAP Hana gegevens en logboek bestanden op Azure-vhd's die zijn gekoppeld aan de SAP Hana-Server-VM. Deze aanpak heeft betrekking op VM-fouten, maar geen mogelijke schade aan de SAP HANA gegevens en logboek bestanden, of logische fouten zoals het verwijderen van gegevens of bestanden per ongeluk. Back-ups zijn ook vereist om te voldoen aan het beleid. Kortom, er is altijd SAP HANA back-ups nodig.
 
-### <a name="how-to-verify-correctness-of-sap-hana-backup"></a>Juistheid van SAP HANA back-up controleren
-Wanneer u opslagmomentopnamen, wordt die wordt uitgevoerd een test voor het terugzetten op een ander systeem aanbevolen. Deze benadering biedt een manier om te zorgen dat een back-up correct en interne processen voor back-up en herstellen werken zoals verwacht. Dit is een aanzienlijke drempel on-premises is het veel eenvoudiger om uit te voeren in de cloud door te geven van de benodigde resources tijdelijk voor dit doel.
+### <a name="how-to-verify-correctness-of-sap-hana-backup"></a>De juistheid van SAP HANA back-up controleren
+Wanneer u opslag momentopnamen gebruikt, wordt het uitvoeren van een test herstel op een ander systeem aanbevolen. Deze benadering biedt een manier om ervoor te zorgen dat een back-up correct is en dat interne processen voor back-up en herstel naar verwachting werken. Hoewel dit een belang rijke hindernis is, is het veel eenvoudiger om in de cloud te komen door tijdelijk vereiste bronnen te bieden voor dit doel.
 
-Houden er rekening mee dat doen een eenvoudig herstellen en controleren of HANA actief is en het uitvoeren is niet voldoende. In het ideale geval moet een een consistentiecontrole voor de tabel om er zeker van te zijn dat de herstelde database goed is uitgevoerd. SAP HANA biedt verschillende soorten consistentiecontroles wordt beschreven in [SAP-notitie 1977584](https://launchpad.support.sap.com/#/notes/1977584).
+Houd er wel zeker van dat u een eenvoudige herstel bewerking uitvoert en controleert of HANA actief is en niet voldoende is. In het ideale geval moet er een tabel consistentie controle worden uitgevoerd om er zeker van te zijn dat de herstelde data base prima is. SAP HANA biedt verschillende soorten consistentie controles die worden beschreven in [SAP Note 1977584](https://launchpad.support.sap.com/#/notes/1977584).
 
-Informatie over de consistentiecontrole van de tabel kan ook worden gevonden op de website van de SAP op [tabel en consistentiecontroles catalogus](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
+Informatie over de consistentie controle van de tabel vindt u ook op de SAP-website op [consistentie controles van tabellen en catalogi](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
 
-Voor back-ups van standard-is test terugzetten niet nodig. Er zijn twee SAP HANA-hulpprogramma's die helpen om te controleren welke back-up kan worden gebruikt voor herstel: hdbbackupdiag en hdbbackupcheck. Zie [handmatig controleren of een herstel is mogelijk](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm) voor meer informatie over deze hulpprogramma's.
+Voor back-ups van standaard bestanden is het niet nodig om een test herstel uit te kunnen zetten. Er zijn twee SAP HANA-hulpprogram ma's waarmee u kunt controleren welke back-up kan worden gebruikt voor herstel: hdbbackupdiag en hdbbackupcheck. Zie [hand matig controleren of een herstel kan worden](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm) uitgevoerd voor meer informatie over deze hulpprogram ma's.
 
-### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>Voordelen en nadelen van HANA back-up ten opzichte van de storage-momentopname
+### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>Voor-en nadelen van HANA-back-ups versus opslag momentopname
 
-SAP heeft&#39;t de voorkeur geeft aan een van beide HANA back-up ten opzichte van de momentopname van de opslag. Geeft de voor- en nadelen, zodat een welke bepalen kunt gebruiken afhankelijk van de situatie en de beschikbare opslag-technologie (Zie [plannen van uw back-up en strategie voor herstel](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
+SAP heeft&#39;voor keur voor een Hana-back-up en een moment opname van de opslag. De lijst bevat de voor-en nadelen, waardoor er een kan worden bepaald welke gegevens moeten worden gebruikt, afhankelijk van de situatie en de beschik bare opslag technologie (Zie [uw strategie voor back-up en herstel plannen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
 
-In Azure, worden op de hoogte van het feit dat de Azure-blob-functie Snapshot&#39;t garantie consistentie van bestandssysteem (Zie [met blob-momentopnamen met PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). De volgende sectie, _SAP HANA-gegevensconsistentie bij het nemen van opslagmomentopnamen_, enkele overwegingen met betrekking tot deze functie wordt besproken.
+Op Azure moet u zich bewust zijn van het feit dat de functie&#39;voor de moment opname van de Azure Blob de bestandssysteem consistentie van het-garantie bestand (Zie het gebruik van BLOB- [moment opnamen met Power shell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). In de volgende sectie, _SAP Hana consistentie van gegevens bij het maken van moment opnamen van opslag_, worden enkele aandachtspunten met betrekking tot deze functie besproken.
 
-Bovendien heeft een inzicht in de facturering gevolgen wanneer vaak werken met blob-momentopnamen zoals beschreven in dit artikel: [Inzicht in hoe momentopnamen toerekenen kosten](/rest/api/storageservices/understanding-how-snapshots-accrue-charges): het is&#39;t als voor de hand liggende als Azure virtuele schijven.
+Daarnaast moet een inzicht hebben in de facturerings implicaties bij het regel matig werken met Blob-moment opnamen, zoals beschreven in dit artikel: Meer [informatie over hoe moment opnamen](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)worden toegerekend&#39;, het hebben t als duidelijk te maken met behulp van virtuele Azure-schijven.
 
-### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>SAP HANA-gegevensconsistentie bij het nemen van opslagmomentopnamen
+### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>SAP HANA consistentie van gegevens bij het maken van moment opnamen van opslag
 
-Systeem- en bestandsconsistentie is een complex probleem bij het nemen van storage-momentopnamen. De eenvoudigste manier om problemen te vermijden zou afsluiten SAP HANA, of misschien zelfs de hele virtuele machine zijn. Het is mogelijk dat een afsluiten goed met een demo of prototype of zelfs een systeem voor de ontwikkeling, maar deze kan niet worden gebruikt voor een productiesysteem.
+Consistentie van het bestands systeem en de toepassing is een complex probleem bij het maken van moment opnamen van opslag. De eenvoudigste manier om problemen te voor komen, is om SAP HANA af te sluiten of misschien zelfs de hele virtuele machine. Een afsluiting kan worden doable met een demonstratie of prototype, of zelfs op een ontwikkel systeem, maar dit is geen optie voor een productie systeem.
 
-In Azure, een Houd er rekening mee dat de Azure-blob-functie Snapshot heeft&#39;t garantie consistentie van bestandssysteem. Werkt prima echter met behulp van de SAP HANA-functie, snapshot, zolang er slechts één virtuele schijf die betrokken zijn is. Maar zelfs met een enkele schijf extra items moeten worden gecontroleerd. [SAP-notitie 2039883](https://launchpad.support.sap.com/#/notes/2039883) bevat belangrijke informatie over SAP HANA back-ups via opslagmomentopnamen. Bijvoorbeeld, genoemd, met het bestandssysteem XFS is nodig om uit te voeren **xfs\_blokkeren** voordat u begint met een momentopname van een opslagruimte om te consistentie te garanderen (Zie [xfs\_freeze(8) - pagina voor Linux-man ](https://linux.die.net/man/8/xfs_freeze) voor meer informatie over **xfs\_blokkeren**).
+In azure moet u er ook&#39;voor zorgen dat de functie voor de moment opname van de Azure Blob de bestandssysteem consistentie van het systeem garandeert. Het werkt echter goed met behulp van de functie voor moment opnamen van SAP HANA, zolang er slechts één virtuele schijf betrokken is. Maar zelfs met één schijf moeten extra items worden gecontroleerd. [SAP Note 2039883](https://launchpad.support.sap.com/#/notes/2039883) heeft belang rijke informatie over het SAP Hana van back-ups via opslag momentopnamen. Er wordt bijvoorbeeld aangegeven dat, met het bestands systeem xfs, het nodig is om **xfs\_-blok kering** uit te voeren voordat een opslag momentopname wordt gestart om consistentie te garanderen (Zie [\_xfs bevriezen (8)-Linux-man pagina](https://linux.die.net/man/8/xfs_freeze) voor meer informatie over **xfsblok\_keren**).
 
-Het onderwerp van de consistentie wordt het nog moeilijker in een aanvraag waarin een systeem met één bestand meerdere schijven/volumes omvat. Bijvoorbeeld, met behulp van mdadm of LVM en striping. De SAP-notitie bovengenoemde statussen:
+Het onderwerp van consistentie wordt nog steeds lastiger in gevallen waarin één bestands systeem meerdere schijven/volumes omvat. U kunt bijvoorbeeld mdadm of LVM en striping gebruiken. De SAP-opmerking hierboven vermelde statussen:
 
-_&quot;Maar houd er rekening mee dat het opslagsysteem heeft om de i/o-consistentie te garanderen tijdens het maken van een momentopname van een opslag per gegevensvolume van SAP HANA, dat wil zeggen vastleggen van een volume met SAP HANA servicespecifieke gegevens moet een atomische bewerking.&quot;_
+_&quot;Houd er rekening mee dat het opslag systeem de I/O-consistentie moet garanderen tijdens het maken van een opslag momentopname per SAP HANA gegevens volume, dat wil zeggen snapshotting van een SAP HANA service-specifiek gegevens volume moet een Atomic-bewerking zijn.&quot;_
 
-Ervan uitgaande dat er is een XFS bestandssysteem spanning vier Azure virtuele schijven, bevatten de volgende stappen een consistente momentopname te maken die staat voor het gegevensgebied HANA:
+Ervan uitgaande dat er een XFS-bestands systeem is met vier virtuele schijven van Azure, bieden de volgende stappen een consistente moment opname die het HANA-gegevens gebied vertegenwoordigt:
 
-- HANA-momentopname voorbereiden
-- Het bestandssysteem stilzetten (Gebruik bijvoorbeeld **xfs\_blokkeren**)
-- Alle benodigde blob-momentopnamen maken op Azure
-- Blokkering van het bestandssysteem
-- Controleer of de HANA-momentopname
+- Voor bereiding van HANA-moment opname
+- Het bestands systeem blok keren (bijvoorbeeld **xfs\_stilzetten**gebruiken)
+- Alle benodigde BLOB-moment opnamen maken op Azure
+- De blok kering van het bestands systeem opheffen
+- De HANA-moment opname bevestigen
 
-De aanbeveling is het gebruik van de bovenstaande procedure in alle gevallen moet aan de veilige, ongeacht welke bestandssysteem. Of als het één schijf of striping via mdadm of LVM over meerdere schijven.
+Aanbeveling is de bovenstaande procedure in alle gevallen aan de kluis zijde te gebruiken, ongeacht het bestands systeem. Of als het één schijf of striping is, via mdadm of LVM op meerdere schijven.
 
-Het is belangrijk om te bevestigen van de HANA-momentopname. Vanwege de &quot;kopiëren bij schrijven&quot; SAP HANA mogelijk niet meer schijfruimte vrij terwijl in deze modus momentopname voorbereiden. Deze&#39;ook niet mogelijk is om te starten van nieuwe back-ups totdat de SAP HANA-momentopname is bevestigd.
+Het is belang rijk om de HANA-moment opname te bevestigen. Als gevolg van &quot;het kopiëren naar schrijven,&quot; is voor SAP Hana mogelijk geen extra schijf ruimte nodig tijdens deze modus voor het voorbereiden van de moment opname. &#39;Het is ook niet mogelijk om nieuwe back-ups te starten totdat de moment opname van SAP Hana is bevestigd.
 
-Azure Backup-service maakt gebruik van Azure VM-extensies voorzichtig zijn van de consistentie van bestandssysteem. Deze VM-extensies zijn niet beschikbaar voor zelfstandig gebruik. Een heeft nog steeds voor het beheren van SAP HANA-consistentie. Zie het bijbehorende artikel [SAP HANA Azure back-up op bestandsniveau](sap-hana-backup-file-level.md) voor meer informatie.
+Azure Backup-Service gebruikt Azure VM-extensies om de consistentie van het bestands systeem te maken. Deze VM-extensies zijn niet beschikbaar voor zelfstandig gebruik. Er moet nog steeds SAP HANA consistentie worden beheerd. Zie het gerelateerde artikel [SAP HANA Azure Backup op bestands niveau](sap-hana-backup-file-level.md) voor meer informatie.
 
-### <a name="sap-hana-backup-scheduling-strategy"></a>SAP HANA-strategie voor back-up plannen
+### <a name="sap-hana-backup-scheduling-strategy"></a>Strategie voor het plannen van back-ups SAP HANA
 
-De SAP HANA-artikel [plannen van uw back-up en strategie voor herstel](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) statussen van een basic-abonnement om back-ups:
+In het artikel SAP HANA de [strategie voor back-up en herstel plannen,](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm) een basis plan voor het uitvoeren van back-ups:
 
-- Storage-momentopnamen (dagelijks)
-- Volledige back-up met behulp van bestands- of bacint indeling (één keer per week)
-- Automatische logboekback-ups
+- Opslag momentopname (dagelijks)
+- Gegevens back-up volt ooien met behulp van de bestands-of bacint-indeling (één keer per week)
+- Automatische back-ups van Logboeken
 
-(Optioneel) kan een volledig zonder opslagmomentopnamen; gaan ze kunnen worden vervangen door HANA delta-back-ups, zoals incrementele of differentiële back-ups (Zie [Delta-back-ups](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)).
+Optioneel kan er volledig worden zonder moment opnamen van de opslag. ze kunnen worden vervangen door HANA Delta back-ups, zoals incrementele of differentiële back-ups (Zie [Delta back-ups](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)).
 
-Gebruikershandleiding voor de HANA biedt een lijst met voorbeelden. Dit kan erop wijzen dat een SAP HANA naar een bepaald punt in tijd met behulp van de volgende volgorde van de back-ups herstellen:
+De HANA-beheer handleiding bevat een lijst met voor beelden. Hiermee wordt voorgesteld dat één herstel SAP HANA naar een bepaald tijdstip wordt gedaan met behulp van de volgende reeks back-ups:
 
-1. Volledige back-up
+1. Volledige gegevens back-up
 2. Differentiële back-up
 3. Incrementele back-up 1
 4. Incrementele back-up 2
-5. Logboekback-ups
+5. Logboek back-ups
 
-Met betrekking tot een exacte plannen wanneer en hoe vaak een bepaald type back-up moet gebeuren, is het niet mogelijk om te geven van een algemene richtlijn — te klantspecifieke is en is afhankelijk van hoeveel gegevenswijzigingen in het systeem optreden. Een algemene aanbeveling van SAP-zijde, die kan worden gezien als algemene richtlijnen, is het maken een volledige HANA back-up eenmaal per week.
-Met betrekking tot logboekback-ups, Zie de documentatie van SAP HANA [logboekback-ups](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm).
+Met betrekking tot een exacte planning zoals wanneer en hoe vaak een specifiek back-uptype moet plaatsvinden, is het niet mogelijk om een algemene richt lijn te geven, dat is te specifiek voor de klant en is afhankelijk van het aantal gegevens wijzigingen in het systeem. Een basis aanbeveling van SAP Side, die als algemene richt lijn kan worden gezien, is om één keer per week een volledige HANA-back-up te maken.
+Zie de SAP HANA documentatie [logboek back-ups](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm)voor logboek back-ups.
 
-SAP wordt ook aangeraden voeren sommige housekeeping van de back-catalogus om te voorkomen dat deze groeiende oneindig (Zie [huishoudelijke voor back-catalogus en back-upopslag](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
+SAP raadt u ook aan enkele housekeeping van de back-upcatalogus te doen, zodat deze oneindig groeit (Zie [housekeeping voor back-upcatalogus en back-upopslag](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
 
-### <a name="sap-hana-configuration-files"></a>SAP HANA-configuratiebestanden
+### <a name="sap-hana-configuration-files"></a>Configuratie bestanden SAP HANA
 
-Zoals vermeld in de veelgestelde vragen in [SAP-notitie 1642148](https://launchpad.support.sap.com/#/notes/1642148), de SAP HANA-configuratiebestanden maken geen deel uit van een standard HANA back-up. Ze zijn niet essentieel is voor het herstellen van een systeem. De configuratie van de HANA kan handmatig worden gewijzigd na het herstel. In het geval één ophalen van dezelfde aangepaste configuratie tijdens het herstelproces wilt, is het nodig om back-up van de configuratiebestanden HANA afzonderlijk.
+Zoals vermeld in de veelgestelde vragen over [SAP Note 1642148](https://launchpad.support.sap.com/#/notes/1642148), maken de SAP Hana configuratie bestanden geen deel uit van een standaard Hana-back-up. Ze zijn niet essentieel voor het herstellen van een systeem. De HANA-configuratie kan na het herstellen hand matig worden gewijzigd. Als er tijdens het herstel proces dezelfde aangepaste configuratie moet worden verkregen, is het nood zakelijk om een back-up te maken van de HANA-configuratie bestanden.
 
-Als een systeem voor back-upbestand van toegewezen HANA standaard HANA back-ups gaat, kan een ook Kopieer de configuratiebestanden voor de dezelfde back-bestandssysteem en Kopieer alles samen naar de bestemming van de laatste opslag, zoals cool blob-opslag.
+Als standaard HANA-back-ups naar een toegewezen HANA-back-upbestandssysteem gaan, kan de configuratie bestanden ook naar hetzelfde back-upbestand worden gekopieerd en vervolgens alles kopiëren naar de uiteindelijke opslag bestemming zoals cool Blob Storage.
 
-### <a name="sap-hana-cockpit"></a>SAP HANA Cockpit
+### <a name="sap-hana-cockpit"></a>SAP HANA cockpit
 
-SAP HANA Cockpit biedt de mogelijkheid om controleren en beheren van SAP HANA via een browser. Dit kunt u ook de verwerking van back-ups van SAP HANA en daardoor kan worden gebruikt als alternatief voor SAP HANA Studio en ABAP DBACOCKPIT (Zie [SAP HANA Cockpit](https://help.sap.com/saphelp_hanaplatform/helpdata/en/73/c37822444344f3973e0e976b77958e/content.htm) voor meer informatie).
+SAP HANA cockpit biedt de mogelijkheid om SAP HANA te bewaken en te beheren via een browser. Ook is het mogelijk om SAP HANA back-ups te verwerken en kan daarom worden gebruikt als alternatief voor SAP HANA Studio en ABAP DBACOCKPIT (Zie [SAP Hana cockpit](https://help.sap.com/saphelp_hanaplatform/helpdata/en/73/c37822444344f3973e0e976b77958e/content.htm) voor meer informatie).
 
-![In deze afbeelding ziet u het scherm van SAP HANA Cockpit Database Administration](media/sap-hana-backup-guide/image004.png)
+![In deze afbeelding ziet u het scherm SAP HANA cockpit-database beheer](media/sap-hana-backup-guide/image004.png)
 
-In deze afbeelding ziet u het scherm van het beheer van Cockpit-Database van SAP HANA en de back-tegel aan de linkerkant. De back-tegel ziet relevante machtigingen nodig voor aanmeldingsaccount.
+In deze afbeelding ziet u het scherm SAP HANA cockpit-database beheer en de back-uptegel aan de linkerkant. Voor het weer geven van de back-uptegel zijn de juiste gebruikers machtigingen vereist voor het aanmeldings account.
 
-![Back-ups kunnen worden bewaakt in SAP HANA Cockpit terwijl ze voortdurend worden](media/sap-hana-backup-guide/image005.png)
+![Back-ups kunnen worden bewaakt in SAP HANA cockpit terwijl ze actief zijn](media/sap-hana-backup-guide/image005.png)
 
-Back-ups kunnen worden bewaakt in SAP HANA Cockpit terwijl ze voortdurend en, als deze is voltooid, alle details van de back-up beschikbaar zijn.
+U kunt back-ups in SAP HANA cockpit controleren wanneer ze actief zijn en, zodra deze is voltooid, alle back-upgegevens beschikbaar zijn.
 
-![Een voorbeeld met behulp van Firefox op een Azure-VM SLES 12 met Gnome desktop](media/sap-hana-backup-guide/image006.png)
+![Een voor beeld van het gebruik van Firefox op een Azure SLES 12 VM met gnome desktop](media/sap-hana-backup-guide/image006.png)
 
-De vorige schermafbeeldingen zijn uitgevoerd vanaf een Windows VM in Azure. Dit is een voorbeeld met behulp van Firefox op een Azure-VM SLES 12 met Gnome desktop. Hier ziet u de optie voor het definiëren van SAP HANA-back-upschema's in SAP HANA Cockpit. Zoals ook zien kunnen, stelt deze datum/tijd als een voorvoegsel voor de back-upbestanden. In SAP HANA Studio, het standaardvoorvoegsel is &quot;voltooid\_gegevens\_back-up&quot; bij het uitvoeren van een volledige bestandsback-up. Gebruik een unieke voorvoegsel wordt aanbevolen.
+De vorige scherm afbeeldingen zijn gemaakt op basis van een Azure Windows-VM. Dit is een voor beeld van het gebruik van Firefox op een Azure SLES 12 VM met gnome desktop. Hier ziet u de optie voor het definiëren van SAP HANA back-upschemas in SAP HANA cockpit. Zoals u ziet, wordt de datum/tijd voorgesteld als voor voegsel voor de back-upbestanden. In SAP Hana Studio &quot;is het standaard voorvoegsel volledige\_gegevens\_back-&quot; up bij het uitvoeren van een volledige back-up van een bestand. U wordt aangeraden een uniek voor voegsel te gebruiken.
 
-### <a name="sap-hana-backup-encryption"></a>SAP HANA-versleuteling van back-up
+### <a name="sap-hana-backup-encryption"></a>Back-upversleuteling SAP HANA
 
-SAP HANA biedt versleuteling van gegevens en logboekbestanden. Als voor SAP HANA-gegevens en logboekbestanden zijn niet versleuteld, zijn klikt u vervolgens de back-ups ook niet versleuteld. Het is aan de klant kan een vorm van de oplossing van derden gebruiken voor het versleutelen van de back-ups van SAP HANA. Zie [gegevens en logboekbestanden Volumeversleuteling](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/01f36fbb5710148b668201a6e95cf2/content.htm) voor meer informatie over SAP HANA-versleuteling.
+SAP HANA biedt versleuteling van gegevens en Logboeken. Als SAP HANA gegevens en logboek niet zijn versleuteld, worden de back-ups ook niet versleuteld. Het is de klant in staat te stellen om een vorm van een oplossing van derden te gebruiken voor het versleutelen van de SAP HANA back-ups. Zie [gegevens en logboek volume versleuteling](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/01f36fbb5710148b668201a6e95cf2/content.htm) voor meer informatie over SAP Hana versleuteling.
 
-Op Microsoft Azure, kan een klant de functie voor IaaS-VM-versleuteling gebruiken om te versleutelen. Bijvoorbeeld, kan een speciale gegevensschijven die zijn gekoppeld aan de virtuele machine, en die worden gebruikt voor het opslaan van back-ups van SAP HANA en kopieën maken van deze schijven gebruiken.
+Op Microsoft Azure kan een klant de IaaS-functie voor VM-versleuteling gebruiken om te versleutelen. Een voor beeld: een toegewezen gegevens schijven die zijn gekoppeld aan de virtuele machine, die worden gebruikt voor het opslaan van SAP HANA back-ups, en het maken van kopieën van deze schijven.
 
-Versleutelde virtuele machines /-schijven kan worden verwerkt door Azure Backup-service (Zie [back-up en herstellen versleutelde virtuele machines met Azure Backup](../../../backup/backup-azure-vms-encryption.md)).
+Azure Backup-service kan versleutelde Vm's/schijven verwerken (Zie [back-ups maken van versleutelde virtuele machines en deze herstellen met Azure backup](../../../backup/backup-azure-vms-encryption.md)).
 
-Een andere optie is de SAP HANA-virtuele machine en de schijven zonder versleuteling beheren en opslaan van de back-upbestanden van de SAP HANA in een opslagaccount waarvoor versleuteling is ingeschakeld (Zie [Azure Storage-Serviceversleuteling voor Data-at-Rest](../../../storage/common/storage-service-encryption.md)).
+Een andere mogelijkheid is om de SAP HANA virtuele machine en de bijbehorende schijven te onderhouden zonder versleuteling, en de SAP HANA back-upbestanden op te slaan in een opslag account waarvoor versleuteling is ingeschakeld (Zie [Azure Storage service versleuteling voor gegevens op rest](../../../storage/common/storage-service-encryption.md)).
 
-## <a name="test-setup"></a>Test-installatie
+## <a name="test-setup"></a>Setup testen
 
-### <a name="test-virtual-machine-on-azure"></a>Test-virtuele Machine op Azure
+### <a name="test-virtual-machine-on-azure"></a>Virtuele machine testen op Azure
 
-Om uit te voeren op onze tests, is de installatie van een SAP HANA in een Azure-GS5-VM voor de volgende back-up/herstel testen gebruikt. De beginselen zijn dezelfde als de M-serie VM's.
+Om onze tests uit te voeren, werd een SAP HANA installatie in een Azure GS5-VM gebruikt voor de volgende tests voor back-up/herstel. De principes zijn hetzelfde als voor virtuele machines uit de M-serie.
 
-![In deze afbeelding ziet u onderdeel van het overzicht van Azure portal voor de test-HANA VM](media/sap-hana-backup-guide/image007.png)
+![In deze afbeelding ziet u een deel van de Azure Portal-overzicht van de HANA-test-VM](media/sap-hana-backup-guide/image007.png)
 
-In deze afbeelding ziet deel van het overzicht van Azure portal voor de test-HANA VM.
+In deze afbeelding ziet u een deel van de Azure Portal overzicht van de HANA-test-VM.
 
-### <a name="test-backup-size"></a>Testen van back-upgrootte
+### <a name="test-backup-size"></a>Grootte van de back-up testen
 
-![In deze afbeelding is afkomstig uit de back-upconsole in HANA Studio en ziet u de grootte van de back-upbestand van 229 GB voor de HANA-server voor index](media/sap-hana-backup-guide/image008.png)
+![Deze afbeelding is overgenomen van de back-upconsole in HANA Studio en toont de grootte van het back-upbestand van 229 GB voor de HANA-Index Server](media/sap-hana-backup-guide/image008.png)
 
-Een tijdelijke tabel is ingevuld met gegevens om op te halen van een back-grootte van de totale hoeveelheid gegevens van meer dan 200 GB voor het afleiden van realistische prestatiegegevens. De afbeelding is afkomstig uit de back-upconsole in HANA Studio en ziet u de grootte van de back-upbestand van 229 GB voor de HANA-server voor index. Bij de tests voor is de back-up standaardvoorvoegsel "COMPLETE_DATA_BACKUP" in SAP HANA Studio gebruikt. In de echte productiesystemen, moet een nuttiger voorvoegsel worden gedefinieerd. SAP HANA Cockpit stelt voor datum/tijd.
+Een dummy tabel is gevuld met gegevens voor het verkrijgen van een totale gegevens back-up van meer dan 200 GB om realistische prestatie gegevens af te leiden. De afbeelding is overgenomen van de back-upconsole in HANA Studio en toont de grootte van het back-upbestand van 229 GB voor de HANA-Index Server. Voor de tests is het standaard back-upvoorvoegsel ' COMPLETE_DATA_BACKUP ' in SAP HANA Studio gebruikt. In echte productie systemen moet een nuttig voor voegsel worden gedefinieerd. De datum/tijd wordt voorgesteld door SAP HANA cockpit.
 
-### <a name="test-tool-to-copy-files-directly-to-azure-storage"></a>Testen van hulpprogramma bestanden rechtstreeks naar Azure storage te kopiëren
+### <a name="test-tool-to-copy-files-directly-to-azure-storage"></a>Test programma voor het rechtstreeks kopiëren van bestanden naar Azure Storage
 
-Om over te dragen SAP HANA-back-upbestanden rechtstreeks naar Azure blob storage of Azure-bestandsshares, is het hulpprogramma blobxfer omdat het ondersteunt zowel doelen en deze eenvoudig kan worden geïntegreerd in automatiseringsscripts vanwege de opdrachtregelinterface gebruikt. Het hulpprogramma blobxfer is beschikbaar op [GitHub](https://github.com/Azure/blobxfer).
+Als u SAP HANA back-upbestanden rechtstreeks wilt overdragen naar Azure Blob-opslag of Azure-bestands shares, is het blobxfer-hulp programma gebruikt omdat het beide doelen ondersteunt. het kan eenvoudig worden geïntegreerd in Automation-scripts vanwege de opdracht regel interface. Het hulp programma blobxfer is beschikbaar op [github](https://github.com/Azure/blobxfer).
 
-### <a name="test-backup-size-estimation"></a>Schatting van de back-upgrootte testen
+### <a name="test-backup-size-estimation"></a>Schatting van de grootte van de back-up testen
 
-Het is belangrijk om te schatten van de grootte van de back-up van SAP HANA. Deze schatting kunt u de prestaties verbeteren door het definiëren van de grootte van de maximale back-upbestand voor een aantal back-upbestanden of vanwege de parallelle uitvoering tijdens het kopiëren van bestanden. (Deze gegevens worden verderop in dit artikel beschreven.) Een moet ook beslissen of u een volledige back-up of een delta-back-up (incrementele of differentiële).
+Het is belang rijk om de back-upgrootte van SAP HANA te schatten. Deze schatting helpt de prestaties te verbeteren door de maximale bestands grootte voor back-ups voor een aantal back-upbestanden te definiëren als gevolg van parallellisme tijdens het kopiëren van een bestand. (Deze details worden verderop in dit artikel beschreven.) Er moet ook worden besloten of u een volledige back-up of een Delta back-up wilt maken (incrementeel of differentieel).
 
-Gelukkig is er een eenvoudige SQL-instructie maakt een schatting van de grootte van de back-upbestanden: **Selecteer \* van M\_back-up\_grootte\_SCHATTINGEN** (Zie [schatting de ruimte die nodig zijn in het bestandssysteem voor een gegevensback-up](https://help.sap.com/saphelp_hanaplatform/helpdata/en/7d/46337b7a9c4c708d965b65bc0f343c/content.htm)).
+Gelukkig is er een eenvoudige SQL-instructie die de grootte van de back-upbestanden schat:  **\* Selecteer\_uit\_M\_schattingen voor het maken van een back-up** (Zie [de benodigde ruimte in het bestands systeem voor een gegevens schatten Back-up](https://help.sap.com/saphelp_hanaplatform/helpdata/en/7d/46337b7a9c4c708d965b65bc0f343c/content.htm)).
 
-![De uitvoer van deze SQL-instructie overeenkomt met bijna exact de werkelijke grootte van de volledige gegevens back-up op schijf](media/sap-hana-backup-guide/image009.png)
+![De uitvoer van deze SQL-instructie komt bijna exact overeen met de werkelijke grootte van de volledige gegevens back-up op schijf](media/sap-hana-backup-guide/image009.png)
 
-De uitvoer van deze SQL-instructie voor het testsysteem, komt overeen met bijna exact de werkelijke grootte van de volledige gegevens back-up op schijf.
+Voor het test systeem komt de uitvoer van deze SQL-instructie overeen met bijna precies de werkelijke grootte van de volledige gegevens back-up op schijf.
 
-### <a name="test-hana-backup-file-size"></a>Grootte van back-upbestand HANA testen
+### <a name="test-hana-backup-file-size"></a>De grootte van HANA-back-upbestanden testen
 
-![De back-upconsole HANA Studio kan beperken van de maximale bestandsgrootte van de back-upbestanden HANA](media/sap-hana-backup-guide/image010.png)
+![Met de HANA Studio-back-upconsole kan één de maximale bestands grootte van HANA-back-upbestanden worden beperkt](media/sap-hana-backup-guide/image010.png)
 
-De back-upconsole HANA Studio kunt een om te beperken van de maximale bestandsgrootte van HANA back-upbestanden. In de voorbeeldomgeving maakt die functie het mogelijk om op te halen van meerdere kleinere back-upbestanden in plaats van één 230 GB back-upbestand. Kleinere bestanden een aanzienlijke invloed heeft op de prestaties (Zie het bijbehorende artikel [SAP HANA Azure back-up op bestandsniveau](sap-hana-backup-file-level.md)).
+Met de HANA Studio-back-upconsole kan één de maximale bestands grootte van HANA-back-upbestanden beperken. In de voorbeeld omgeving maakt deze functie het mogelijk om meerdere kleinere back-upbestanden op te halen in plaats van een 1 230-GB-back-up. Kleinere bestanden hebben een grote invloed op de prestaties (Zie het gerelateerde artikel [SAP HANA Azure Backup op bestands niveau](sap-hana-backup-file-level.md)).
 
 ## <a name="summary"></a>Samenvatting
 
-Op basis van de resultaten van die de volgende tabellen tonen de voor- en nadelen van oplossingen voor back-up van een SAP HANA-database die wordt uitgevoerd op Azure virtual machines.
+Op basis van de test resultaten bevatten de volgende tabellen voor-en nadelen van oplossingen om een back-up te maken van een SAP HANA-data base die wordt uitgevoerd op virtuele machines van Azure.
 
-**Back-up van SAP HANA naar het bestandssysteem en daarna back-upbestanden naar de laatste back-updoelmap kopiëren**
-
-|Oplossing                                           |Professionals                                 |Nadelen                                  |
-|---------------------------------------------------|-------------------------------------|--------------------------------------|
-|Behoudt HANA back-ups op VM-schijven                      |Er zijn geen extra risicobeheerinspanningen     |Eats lokale VM-schijfruimte vrij           |
-|Blobxfer-hulpprogramma voor het back-upbestanden naar blob storage kopiëren |Parallelle uitvoering om meerdere bestanden te kopiëren keuze cool blob storage gebruiken | Onderhoud van extra hulpmiddelen en aangepaste scripts | 
-|BLOB kopiëren via Powershell of CLI                    |Er zijn geen extra hulpmiddelen die nodig zijn, kan worden geconfigureerd via Azure Powershell of CLI |handmatig proces-klant beschikt om te zorgen voor het uitvoeren van scripts en het beheer van de gekopieerde blobs voor terugzetten|
-|Kopiëren naar NFS-share                                  |Na verwerking van back-upbestanden op andere virtuele machine zonder gevolgen voor de HANA-server|Trage kopieerproces|
-|Blobxfer kopiëren naar Azure File-Service                |Geen eten ruimte vrij op de lokale VM-schijven|Er is geen directe ondersteuning door HANA back-up, formaat beperking van de bestandsshare die momenteel op 5 TB schrijven|
-|Azure Backup Agent                                 | Zou worden aanbevolen oplossing         | Op dit moment niet beschikbaar op Linux    |
-
-
-
-**Back-SAP HANA op basis van opslagmomentopnamen**
+**Back-ups maken van SAP HANA naar het bestands systeem en back-upbestanden kopiëren na de laatste back-upbestemming**
 
 |Oplossing                                           |Professionals                                 |Nadelen                                  |
 |---------------------------------------------------|-------------------------------------|--------------------------------------|
-|Azure Backup Service                               | Hiermee kunnen back-up van virtuele machine op basis van de blob-momentopnamen | Als u niet op herstel, het maken van een nieuwe virtuele machine is vereist voor het herstelproces, wat vervolgens betekent de noodzaak van een nieuwe sleutel van de SAP HANA-licentie dat|
-|Handmatige blob-momentopnamen                              | Flexibiliteit om te maken en herstellen van specifieke VM-schijven zonder te hoeven wijzigen van de unieke ID van de virtuele machine|Alle handmatig werk dat moet worden uitgevoerd door de klant|
+|HANA-back-ups op VM-schijven blijven                      |Geen extra beheer taken     |Eats van lokale VM-schijf ruimte           |
+|Blobxfer-hulp programma voor het kopiëren van back-upbestanden naar Blob Storage |Parallelle uitvoering van het kopiëren van meerdere bestanden, keuze voor het gebruik van cool Blob Storage | Extra onderhoud van hulp middelen en aangepaste scripts | 
+|BLOB Copy via Power shell of CLI                    |Er kan geen extra hulp programma worden uitgevoerd via Azure Power shell of CLI |hand matig proces, de klant moet het uitvoeren van scripts en het beheer van gekopieerde blobs voor herstel|
+|Kopiëren naar NFS-share                                  |Naverwerking van back-upbestanden op een andere VM zonder invloed op de HANA-server|Langzaam kopieer proces|
+|Blobxfer kopiëren naar Azure File-Service                |Geen ruimte op lokale VM-schijven.|Geen ondersteuning voor directe schrijf bewerkingen door HANA-back-up, grootte beperking van bestands share momenteel op 5 TB|
+|Azure Backup-Agent                                 | Is de voorkeurs oplossing         | Momenteel niet beschikbaar in Linux    |
+
+
+
+**Back-SAP HANA op basis van opslag momentopnamen**
+
+|Oplossing                                           |Professionals                                 |Nadelen                                  |
+|---------------------------------------------------|-------------------------------------|--------------------------------------|
+|Azure Backup-Service                               | Maakt VM-back-ups op basis van BLOB-moment opnamen | Wanneer u herstel op bestands niveau niet gebruikt, moet u een nieuwe virtuele machine maken voor het herstel proces. Dit impliceert vervolgens de nood zaak van een nieuwe SAP HANA licentie sleutel|
+|Hand matige BLOB-moment opnamen                              | Flexibiliteit voor het maken en herstellen van specifieke VM-schijven zonder de unieke VM-ID te wijzigen|Alle hand matige werkzaamheden, die door de klant moeten worden uitgevoerd|
 
 ## <a name="next-steps"></a>Volgende stappen
-* [SAP HANA Azure back-up op bestandsniveau](sap-hana-backup-file-level.md) beschrijving van de bestanden zijn gebaseerd back-upoptie.
-* [Back-up van SAP HANA op basis van opslagmomentopnamen](sap-hana-backup-storage-snapshots.md) beschrijving van de opslag op basis van een momentopname van back-upoptie.
-* Zie voor meer informatie over het opzetten van hoge beschikbaarheid en plan voor herstel na noodgevallen van SAP HANA op Azure (grote instanties), [SAP HANA (grote instanties) hoge beschikbaarheid en herstel na noodgeval op Azure](hana-overview-high-availability-disaster-recovery.md).
+* [SAP HANA Azure Backup op bestands niveau](sap-hana-backup-file-level.md) wordt de back-upoptie op basis van bestanden beschreven.
+* Met [SAP Hana back-up op basis van opslag momentopnamen](sap-hana-backup-storage-snapshots.md) wordt de back-upoptie gebaseerd op opslag momentopnamen beschreven.
+* Zie [SAP Hana (grote instanties) hoge Beschik baarheid en herstel na nood gevallen op Azure](hana-overview-high-availability-disaster-recovery.md)voor meer informatie over het tot stand brengen van een hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure (grote exemplaren).

@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption voor Windows | Microsoft Docs
-description: Azure Disk Encryption implementeert op een Windows virtuele machine met behulp van een VM-extensie.
+description: Hiermee worden Azure Disk Encryption geïmplementeerd op een virtuele Windows-machine met behulp van een extensie van een virtuele machine.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ejarvi
@@ -8,46 +8,45 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 9a3e135172f0744c053da816b3c77762dbe783c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 11394f692765cc1df5db0eb5c0dd06425026505d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706102"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092651"
 ---
-# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption voor Windows (Microsoft.Azure.Security.AzureDiskEncryption)
+# <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption voor Windows (micro soft. Azure. Security. AzureDiskEncryption)
 
 ## <a name="overview"></a>Overzicht
 
-Azure Disk Encryption maakt gebruik van BitLocker voor volledige schijfversleuteling op Azure virtual machines waarop Windows wordt uitgevoerd.  Deze oplossing is geïntegreerd met Azure Key Vault om sleutels en geheimen in uw key vault-abonnement te beheren. 
+Azure Disk Encryption maakt gebruik van BitLocker om versleuteling van de volledige schijf te bieden op virtuele machines van Azure waarop Windows wordt uitgevoerd.  Deze oplossing is geïntegreerd met Azure Key Vault voor het beheren van schijf versleutelings sleutels en geheimen in uw sleutel kluis abonnement. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zie voor een volledige lijst met vereisten, [vereisten voor Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Zie [AzureDiskEncryption](
+../../security/azure-security-disk-encryption-prerequisites.md)vereisten voor een volledige lijst met vereisten.
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Zie voor een lijst van momenteel Windows-versies, [vereisten voor Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
+Zie [Azure Disk Encryption vereisten](../../security/azure-security-disk-encryption-prerequisites.md)voor een lijst met de huidige versies van Windows.
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-Azure Disk Encryption is verbinding met Internet vereist voor toegang tot Active Directory, Key Vault, opslag- en eindpunten voor het beheer van pakket.  Zie voor meer informatie over instellingen voor netwerkbeveiliging, [vereisten voor Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Azure Disk Encryption Internet connectiviteit vereist voor toegang tot Active Directory-, Key Vault-, opslag-en Package Management-eind punten.  Zie [AzureDiskEncryption](
+../../security/azure-security-disk-encryption-prerequisites.md)vereisten voor meer informatie over de beveiligings instellingen van het netwerk.
 
-## <a name="extension-schemata"></a>Extensie-schema 's
+## <a name="extension-schemata"></a>Extensie schema's
 
-Er zijn twee schema's voor Azure Disk Encryption: v1.1, een nieuwere, aanbevolen schema die geen van Azure Active Directory (AAD)-eigenschappen en v0.1 gebruikmaakt, een oudere schema waarvoor AAD-eigenschappen. Moet u de schemaversie die overeenkomt met de extensie die u gebruikt: schema v1.1 voor de AzureDiskEncryption versie 1.1, v0.1 schema voor de AzureDiskEncryption versie van de extensie 0.1 van de extensie.
+Er zijn twee schema's voor Azure Disk Encryption: v 1.1, een nieuwer, aanbevolen schema dat geen gebruik maakt van Azure Active Directory (AAD)-eigenschappen en v 0.1, een ouder schema dat AAD-eigenschappen vereist. U moet de schema versie gebruiken die overeenkomt met de extensie die u gebruikt: schema v 1.1 voor de AzureDiskEncryption-extensie versie 1,1, schema v 0.1 voor de AzureDiskEncryption-extensie versie 0,1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schema v1.1: Er is geen AAD (aanbevolen)
+### <a name="schema-v11-no-aad-recommended"></a>Schema v 1.1: Geen AAD (aanbevolen)
 
-Het schema v1.1 wordt aanbevolen en vereist geen Azure Active Directory-eigenschappen.
+Het v 1.1-schema wordt aanbevolen en vereist geen Azure Active Directory eigenschappen.
 
 ```json
 {
@@ -74,11 +73,11 @@ Het schema v1.1 wordt aanbevolen en vereist geen Azure Active Directory-eigensch
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schema v0.1: met AAD 
+### <a name="schema-v01-with-aad"></a>Schema v 0,1: met AAD 
 
-De 0,1 schema vereist `aadClientID` en ofwel `aadClientSecret` of `AADClientCertificate`.
+Het 0,1-schema `aadClientID` vereist en `aadClientSecret` ofwel `AADClientCertificate`of.
 
-Met behulp van `aadClientSecret`:
+Gebruiken `aadClientSecret`:
 
 ```json
 {
@@ -108,7 +107,7 @@ Met behulp van `aadClientSecret`:
 }
 ```
 
-Met behulp van `AADClientCertificate`:
+Gebruiken `AADClientCertificate`:
 
 ```json
 {
@@ -145,36 +144,36 @@ Met behulp van `AADClientCertificate`:
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1, 1.1 | int |
-| (0,1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0,1 schema) AADClientSecret | password | string |
-| (0,1 schema) AADClientCertificate | vingerafdruk | string |
-| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-woordenlijst |
+| Type | AzureDiskEncryptionForLinux | string |
+| typeHandlerVersion | 0,1, 1,1 | int |
+| (0,1-schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0,1-schema) AADClientSecret | password | string |
+| (0,1-schema) AADClientCertificate | thumbprint | string |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-woorden lijst |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | KeyVaultURL | url | string |
-| (optioneel) Wachtwoordzin | password | string | 
+| Beschrijving Wachtzin | password | string | 
 | SequenceVersion | uniqueidentifier | string |
-| VolumeType | OS-, gegevens, alle | string |
+| VolumeType | Besturings systeem, gegevens, alle | string |
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
-Zie voor een voorbeeld van sjabloonimplementatie [ een nieuwe versleutelde Windows-VM maken van galerijafbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image).
+Zie [een nieuwe versleutelde Windows-VM maken op basis van een galerie afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image)voor een voor beeld van een sjabloon implementatie.
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
-Instructies vindt u in de meest recente [documentatie van Azure CLI](/cli/azure/vm/encryption?view=azure-cli-latest). 
+Instructies vindt u in de meest recente [documentatie van Azure cli](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Raadpleeg de [probleemoplossingsgids voor Azure Disk Encryption](../../security/azure-security-disk-encryption-tsg.md).
+Raadpleeg de [hand leiding](../../security/azure-security-disk-encryption-tsg.md)voor het oplossen van problemen met Azure Disk Encryption.
 
 ### <a name="support"></a>Ondersteuning
 
 Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/community/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over extensies [extensies voor virtuele machines en functies voor Windows](features-windows.md).
+Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.

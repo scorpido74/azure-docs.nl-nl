@@ -1,5 +1,5 @@
 ---
-title: Gebruiken met Kubernetes en helm-Computer Vision
+title: Computer Vision-container gebruiken met Kubernetes en helm
 titleSuffix: Azure Cognitive Services
 description: Implementeer de Computer Vision-container in een Azure-container exemplaar en test deze in een webbrowser.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 8/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5befba9bdc44a594363dba86c0c2d082a9b44cdd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036625"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068975"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Gebruiken met Kubernetes en Helm
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Computer Vision-container gebruiken met Kubernetes en helm
 
 Een optie voor het on-premises beheren van uw Computer Vision-containers is het gebruik van Kubernetes en helm. Door Kubernetes en helm te gebruiken om de Tekst herkennen container installatie kopie te definiëren, maken we een Kubernetes-pakket. Dit pakket wordt on-premises geïmplementeerd op een Kubernetes-cluster. Ten slotte verkennen we hoe u de geïmplementeerde Services kunt testen. Zie [tekst herkennen containers installeren en uitvoeren](computer-vision-how-to-install-containers.md)voor meer informatie over het uitvoeren van docker-containers zonder Kubernetes-indeling.
 

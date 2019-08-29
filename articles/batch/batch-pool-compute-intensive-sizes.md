@@ -9,16 +9,15 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 687783520b082cdfd1a6ffc91a8641ea35fafd68
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323357"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094922"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-of GPU-instanties gebruiken in batch-Pools
 
@@ -43,7 +42,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux-Pools-virtuele-machine configuratie
 
-| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Groeps instellingen |
+| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16,04 LTS, of<br/>HPC op basis van CentOS<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
 | [NC, NCv2, NCv3, NDv2-serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (per serie) | Ubuntu 16,04 LTS, of<br/>CentOS 7,3 of 7,4<br/>(Azure Marketplace) | NVIDIA CUDA-of CUDA Toolkit-Stuur Programma's | N/A | 
@@ -53,7 +52,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows-Pools-virtuele-machine configuratie
 
-| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Groeps instellingen |
+| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 of<br/>2012 (Azure Marketplace) | Micro soft MPI 2012 R2 of hoger, of<br/> Intel MPI 5<br/><br/>Windows RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen, gelijktijdige taak uitvoering uitschakelen |
 | [NC, NCv2, NCv3, ND, NDv2-serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (per serie) | Windows Server 2016 of <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA-of CUDA Toolkit-Stuur Programma's| N/A | 
@@ -67,7 +66,7 @@ De RDMA-of GPU-mogelijkheden van Compute-grootten in batch worden alleen onderst
 > De grootte van een N-serie wordt niet ondersteund in batch-Pools met de configuratie van de Cloud service.
 >
 
-| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Groeps instellingen |
+| Size | Mogelijkheid | Besturingssystemen | Vereiste software | Poolinstellingen |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016, 2012 R2, 2012 of<br/>2008 R2 (gast besturingssysteem familie) | Micro soft MPI 2012 R2 of hoger, of<br/>Intel MPI 5<br/><br/>Windows RDMA-Stuur Programma's | Communicatie tussen knoop punten inschakelen,<br/> gelijktijdige taak uitvoering uitschakelen |
 
@@ -107,7 +106,7 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Windows NC-knoop punten, moe
 3. Upload het pakket naar uw batch-account. Zie de richt lijnen voor [toepassings pakketten](batch-application-packages.md) voor instructies. Geef een toepassings-id, zoals *GPUDriver*, en een versie, zoals *411,82*, op.
 1. Maak met behulp van de batch-Api's of de Azure Portal een pool in de virtuele-machine configuratie met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van instellingen voor het op de achtergrond installeren van de NVIDIA GPU-Stuur Programma's met behulp van een begin taak:
 
-| Instelling | Waarde |
+| Instelling | Value |
 | ---- | ----- | 
 | **Type installatiekopie** | Marketplace (Linux/Windows) |
 | **Publisher** | MicrosoftWindowsServer |
@@ -128,7 +127,7 @@ Als u CUDA-toepassingen wilt uitvoeren op een groep Linux NC-knoop punten, moet 
 4. Maak een batch-account in een regio die NC-Vm's ondersteunt.
 5. Maak met behulp van de batch-Api's of de Azure Portal een pool [met behulp van de aangepaste installatie kopie](batch-custom-images.md) en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen voor de installatie kopie:
 
-| Instelling | Waarde |
+| Instelling | Value |
 | ---- | ---- |
 | **Type installatiekopie** | Aangepaste installatiekopie |
 | **Aangepaste installatie kopie** | *Naam van de afbeelding* |
@@ -162,7 +161,7 @@ Voor het uitvoeren van MPI-toepassingen in een groep van Linux-knoop punten van 
 
 Maak met behulp van de batch-Api's of de Azure Portal een pool met behulp van deze installatie kopie en met het gewenste aantal knoop punten en schaal. De volgende tabel bevat voor beelden van groeps instellingen:
 
-| Instelling | Waarde |
+| Instelling | Value |
 | ---- | ---- |
 | **Type installatiekopie** | Marketplace (Linux/Windows) |
 | **Publisher** | OpenLogic |

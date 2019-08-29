@@ -1,450 +1,482 @@
 ---
-title: 'REST zelf studie: Cognitive Services aanroepen in een pijp lijn met AI-verrijking-Azure Search'
-description: Stap voor een voor beeld van gegevens extractie, natuurlijke taal en afbeelding AI-verwerking in Azure Search indexeren voor gegevens extractie en trans formatie via JSON-blobs met behulp van Postman en de REST API.
+title: 'REST zelf studie: Een AI-verrijkings pijplijn bouwen met cognitieve zoek functie-Azure Search'
+description: Neem een voor beeld van tekst extractie en natuurlijke taal verwerking over inhoud in JSON-blobs met behulp van Postman en de Azure Search REST-Api's.
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 05/28/2019
+ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 07fd1bbab68dc9abcd6e7f8df7f36f7977ff5b3a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e647d3c66d339a60278fa7d0f078497157b3fff1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638922"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102832"
 ---
-# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST zelf studie: Cognitive Services-API's aanroepen in een Azure Search Indexing-pijp lijn
+# <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Zelfstudie: Structuur toevoegen aan ' ongestructureerde inhoud ' met cognitieve zoek functie
 
-In deze zelfstudie leert u de mechanismen achter gegevensverrijking programmeren in Azure Search met behulp van *cognitieve vaardigheden*. Vaardig heden worden ondersteund door NLP (natuurlijke taal verwerking) en mogelijkheden voor de analyse van installatie kopieën in Cognitive Services. Via de vaardig heden-compositie en-configuratie kunt u tekst-en tekst representaties van een afbeelding of gescand document bestand extra heren. U kunt ook taal, entiteiten, sleutel zinnen en meer detecteren. Het eind resultaat is uitgebreide extra inhoud in een Azure Search index, gemaakt met AI-verrijkingen in een Indexing-pijp lijn. 
-
-In deze zelfstudie maakt u REST API-aanroepen om de volgende taken uit te voeren:
+Als u ongestructureerde tekst-of afbeeldings inhoud hebt, kunt u met de [cognitieve Zoek](cognitive-search-concept-intro.md) functie van Azure Search informatie ophalen en nieuwe inhoud maken die nuttig is voor Zoek opdrachten in volledige tekst of kennis analyse. Hoewel het mogelijk is om afbeeldings bestanden (JPG, PNG, TIFF) te verwerken, is deze zelf studie gericht op inhoud op basis van woorden, het Toep assen van taal detectie en tekst analyse voor het maken van nieuwe velden en informatie die u kunt gebruiken in query's, facetten en filters.
 
 > [!div class="checklist"]
-> * Een indexeringspijplijn maken die voorbeeldgegevens onderweg naar een index verrijkt
-> * Pas ingebouwde vaardigheden toe: herkenning van entiteiten, taaldetectie, tekstbewerkingen en extractie van sleuteltermen
-> * Vaardigheden aan elkaar koppelen door invoeren aan uitvoeren toe te wijzen in een set vaardigheden
-> * Aanvragen uitvoeren en resultaten bekijken
-> * De index en indexeerfuncties opnieuw instellen voor verdere ontwikkeling
+> * Begin met hele documenten (ongestructureerde tekst) zoals PDF, MD, DOCX en PPTX in Azure Blob-opslag.
+> * Maak een pijp lijn die tekst extraheert, taal detecteert, entiteiten herkent en sleutel zinnen detecteert.
+> * Definieer een index voor het opslaan van de uitvoer (onbewerkte inhoud, plus pijp lijn gegenereerde naam/waarde-paren).
+> * Voer de pijp lijn uit om de index te maken en te laden.
+> * Verken inhoud met zoeken in volledige tekst en een uitgebreide query syntaxis.
 
-Uitvoer is een volledige doorzoekbare index in Azure Search. U kunt de index uitbreiden met andere standaardfuncties, zoals [synoniemen](search-synonyms.md), [scoreprofielen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analyses](search-analyzers.md) en [filters](search-filters.md).
+U hebt verschillende services nodig om deze procedure te volt ooien, plus de [postman desktop-app](https://www.getpostman.com/) of een ander hulp programma voor het testen van webtoepassingen om rest API-aanroepen te maken. 
 
-Deze zelf studie wordt uitgevoerd op de gratis service, maar het aantal gratis trans acties is beperkt tot 20 documenten per dag. Als u deze zelf studie meer dan één keer in dezelfde dag wilt uitvoeren, gebruikt u een kleinere set bestanden, zodat u in meer uitvoeringen kunt passen.
+Als u geen Azure-abonnement hebt, opent u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-> [!NOTE]
-> Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in Azure Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
->
-> De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met Azure Search prijzen](https://go.microsoft.com/fwlink/?linkid=2042400).
+## <a name="download-files"></a>Bestanden downloaden
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+1. Open deze [OneDrive-map](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) en klik in de linkerbovenhoek op **downloaden** om de bestanden naar uw computer te kopiëren. 
 
-## <a name="prerequisites"></a>Vereisten
+1. Klik met de rechter muisknop op het zip-bestand en selecteer **Alles uitpakken**. Er zijn 14 bestanden van verschillende typen. U gebruikt 7 voor deze oefening.
 
-In deze zelf studie worden de volgende services, hulpprogram ma's en gegevens gebruikt. 
+## <a name="1---create-services"></a>1-services maken
 
-+ [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld gegevens. Zorg ervoor dat het opslag account zich in dezelfde regio bevindt als Azure Search.
+In deze walkthrough wordt Azure Search gebruikt voor het indexeren en query's, Cognitive Services voor AI-verrijking en Azure Blob-opslag om de gegevens op te geven. Maak indien mogelijk alle drie de services in dezelfde regio en resource groep voor nabijheid en beheer baarheid. In de praktijk kan uw Azure Storage-account zich in een wille keurige regio bevinden.
 
-+ [Postman desktop-app](https://www.getpostman.com/) wordt gebruikt om rest-aanroepen naar Azure Search te maken.
+### <a name="start-with-azure-storage"></a>Beginnen met Azure Storage
 
-+ De [voorbeeld gegevens](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) bestaan uit een kleine set verschillende typen. 
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/) en klik op **+ resource maken**.
 
-+ [Een Azure Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
+1. Zoek naar het *opslag account* en selecteer het opslag account van micro soft.
 
-## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
+   ![Opslag account maken](media/cognitive-search-tutorial-blob/storage-account.png "Opslag account maken")
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Search hebt toegevoegd aan uw abonnement, volgt u deze stappen om de benodigde gegevens op te halen:
+1. Op het tabblad basis beginselen zijn de volgende items vereist. Accepteer de standaard waarden voor alle andere.
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+   + **Resourcegroep**. Selecteer een bestaande naam of maak een nieuwe, maar gebruik dezelfde groep voor alle services, zodat u ze gezamenlijk kunt beheren.
 
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+   + **Naam van opslag account**. Als u denkt dat u mogelijk meerdere resources van hetzelfde type hebt, gebruikt u de naam van dubbel zinnigheid per type en regio, bijvoorbeeld *blobstoragewestus*. 
 
-![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
+   + **Locatie**. Kies indien mogelijk dezelfde locatie die wordt gebruikt voor Azure Search en Cognitive Services. Een enkele locatie vernietigt bandbreedte kosten.
 
-Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
+   + **Soort account**. Kies de standaard *StorageV2 (algemeen gebruik v2)* .
 
-## <a name="prepare-sample-data"></a>Voorbeeld gegevens voorbereiden
+1. Klik op **beoordeling + maken** om de service te maken.
 
-De verrijkingspijplijn haalt gegevens uit Azure-gegevensbronnen. Brongegevens moeten afkomstig zijn van een ondersteund type gegevensbron van een [Azure Search-indexeerfunctie](search-indexer-overview.md). Azure Table Storage wordt niet ondersteund voor cognitieve Zoek opdrachten. In dit voorbeeld gebruiken we blobopslag om meerdere inhoudstypen te laten zien.
+1. Zodra de app is gemaakt, klikt u op **Ga naar de resource** om de pagina overzicht te openen.
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op blobs en klik vervolgens op **+ container**.
+1. Klik op blobs-service.
 
-1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) om voorbeeld gegevens te bevatten. U kunt het niveau van open bare toegang instellen op een van de geldige waarden.
+1. Klik op **+ container** om een container te maken en geef deze de naam *tandwiel-Search-demo*.
 
-1. Nadat de container is gemaakt, opent u deze en selecteert u **uploaden** op de opdracht balk om de voorbeeld bestanden te uploaden die u in een vorige stap hebt gedownload.
+1. Selecteer *tandwiel-Search-demo* en klik vervolgens op **uploaden** om de map te openen waarin u de bestanden hebt opgeslagen. Selecteer alle niet-afbeeldings bestanden. U moet 7 bestanden hebben. Klik op **OK** om te uploaden.
 
-   ![Bronbestanden in Azure-blobopslag](./media/cognitive-search-quickstart-blob/sample-data.png)
+   ![Voorbeeld bestanden uploaden](media/cognitive-search-tutorial-blob/sample-files.png "Voorbeeld bestanden uploaden")
 
-1. Nadat de voorbeeldbestanden zijn geladen, haalt u de containernaam en een verbindingsreeks voor de Blob-opslag op. U kunt dat doen door in de Azure-portal naar uw opslagaccount te navigeren. Ga naar **Toegangssleutels** en kopieer het veld **Verbindingsreeks**.
+1. Voordat u Azure Storage verlaat, moet u een connection string ophalen zodat u een verbinding in Azure Search kunt formuleren. 
 
-   De verbindingsreeks moet een URL zijn die er ongeveer als volgt uitziet:
+   1. Ga terug naar de pagina overzicht van uw opslag account (we hebben *blobstragewestus* als voor beeld gebruikt). 
+   
+   1. Selecteer in het navigatie deel venster links de optie **toegangs sleutels** en kopieer een van de verbindings reeksen. 
+
+   De connection string is een URL die vergelijkbaar is met het volgende voor beeld:
 
       ```http
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
-Er zijn andere manieren om de verbindingsreeks op te geven, zoals een Shared Access Signature bieden. Zie [Indexing Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials) (Azure Blob Storage indexeren) voor meer informatie over referenties voor gegevensbronnen.
+1. Sla de connection string op in Klad blok. U hebt deze later nodig bij het instellen van de gegevens bron verbinding.
 
-## <a name="set-up-postman"></a>Postman instellen
+### <a name="cognitive-services"></a>Cognitive Services
+
+AI-verrijking in cognitieve zoek opdracht wordt ondersteund door Cognitive Services, met inbegrip van Text Analytics en Computer Vision voor natuurlijke taal en afbeeldings verwerking. Als u een echt prototype of project wilt volt ooien, moet u op dit punt Cognitive Services (in dezelfde regio als Azure Search), zodat u het kunt koppelen aan index bewerkingen.
+
+Voor deze oefening kunt u echter het inrichten van resources overs Laan omdat Azure Search verbinding kan maken met Cognitive Services achter de schermen en u 20 gratis trans acties per Indexeer functie uitvoert. Omdat in deze zelf studie 7 trans acties worden gebruikt, is de gratis toewijzing voldoende. Voor grotere projecten plant u het inrichten van Cognitive Services op de S0-laag voor betalen per gebruik. Zie [Cognitive Services koppelen](cognitive-search-attach-cognitive-services.md)voor meer informatie.
+
+### <a name="azure-search"></a>Azure Search
+
+Het derde onderdeel is Azure Search, dat u [in de portal kunt maken](search-create-service-portal.md). U kunt de gratis laag gebruiken om deze procedure te volt ooien. 
+
+Net als bij Azure Blob-opslag neemt het even de tijd om de toegangs sleutel te verzamelen. Daarnaast moet u, wanneer u begint met het structureren van aanvragen, het eind punt en de beheer-API-sleutel opgeven die worden gebruikt om elke aanvraag te verifiëren.
+
+### <a name="get-an-admin-api-key-and-url-for-azure-search"></a>Een beheer-API-sleutel en-URL voor Azure Search ophalen
+
+1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en haal de naam van uw zoek service op in de pagina **overzicht** van de zoek service. U kunt uw service naam bevestigen door de URL van het eind punt te controleren. Als uw eind punt- `https://mydemo.search.windows.net`URL zou zijn, zou uw `mydemo`service naam zouden zijn.
+
+2. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+
+    Haal ook de query sleutel op. Het is een best practice voor het uitgeven van query aanvragen met alleen-lezen toegang.
+
+![De service naam en de beheer-en query sleutels ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+
+Alle aanvragen vereisen een API-sleutel in de header van elke aanvraag die naar uw service wordt verzonden. Een geldige sleutel brengt een vertrouwens relatie tot stand, op basis van aanvraag, tussen de toepassing die de aanvraag verzendt en de service die deze verwerkt.
+
+## <a name="2---set-up-postman"></a>2-postman instellen
 
 Start Postman en stel een HTTP-aanvraag in. Als u niet bekend bent met dit hulp programma, raadpleegt u [Azure Search rest-Api's verkennen met behulp van Postman](search-get-started-postman.md).
 
-De aanvraag methoden die in deze zelf studie worden gebruikt, zijn **post**, **put**en **Get**. De header sleutels zijn ' content-type ' ingesteld op ' application/json ' en een ' API-Key ' die is ingesteld op een beheerders sleutel van uw Azure Search service. In de hoofdtekst plaatst u de werkelijke inhoud van uw aanroep. 
+De aanvraag methoden die in deze zelf studie worden gebruikt, zijn **post**, **put**en **Get**. U gebruikt de methoden voor het maken van vier API-aanroepen naar uw zoek service: Maak een gegevens bron, een vaardig heden, een index en een Indexeer functie.
 
-  ![Semi-gestructureerde zoekopdracht](media/search-semi-structured-data/postmanoverview.png)
+Stel in headers ' content-type ' `application/json` in en stel `api-key` in op de beheer-API-sleutel van uw Azure Search service. Wanneer u de koppen hebt ingesteld, kunt u deze gebruiken voor elke aanvraag in deze oefening.
 
-We gebruiken postman om vier API-aanroepen naar uw zoek service te maken voor het maken van een gegevens bron, een vaardig heden, een index en een Indexeer functie. De gegevensbron bevat een verwijzing naar uw opslagaccount en uw JSON-gegevens. Uw zoekservice maakt de verbinding tijdens het laden van de gegevens.
+  ![URL en header] van Postman-aanvraag (media/search-get-started-postman/postman-url.png "URL en header") van Postman-aanvraag
 
+## <a name="3---create-the-pipeline"></a>3: de pijp lijn maken
 
-## <a name="create-a-data-source"></a>Een gegevensbron maken
+In Azure Search wordt AI-verwerking uitgevoerd tijdens het indexeren (of gegevens opname). In dit deel van het scenario worden vier objecten gemaakt: gegevens bron, index definitie, vaardig heden, Indexeer functie. 
 
-Nu dat uw services en bronbestanden zijn voorbereid, kunt u de onderdelen van uw indexeringspijplijn samenstellen. Begin met een [gegevensbronobject](https://docs.microsoft.com/rest/api/searchservice/create-data-source) dat Azure Search vertelt hoe het externe gegevens moet ophalen.
+### <a name="step-1-create-a-data-source"></a>Stap 1: Een gegevensbron maken
 
-Geef in de aanvraagheader de naam van de service op die u hebt gebruikt bij het maken van de Azure Search-service en de API-sleutel die is gegenereerd voor uw zoekservice. Geef in de aanvraagbody de naam van de blobcontainer en de verbindingsreeks op.
+Een [gegevens bron object](https://docs.microsoft.com/rest/api/searchservice/create-data-source) biedt de Connection String aan de BLOB-container met de bestanden.
 
-### <a name="sample-request"></a>Voorbeeldaanvraag
-```http
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
-Content-Type: application/json
-api-key: [admin key]
-```
-#### <a name="request-body-syntax"></a>Syntaxis aanvraagbody
-```json
-{
-  "name" : "demodata",
-  "description" : "Demo files to demonstrate cognitive search capabilities.",
-  "type" : "azureblob",
-  "credentials" :
-  { "connectionString" :
-    "DefaultEndpointsProtocol=https;AccountName=<your account name>;AccountKey=<your account key>;"
-  },
-  "container" : { "name" : "<your blob container name>" }
-}
-```
-Verzend de aanvraag. Het online hulpprogramma zou een 201-statuscode moeten retourneren om de succesvolle uitvoering te bevestigen. 
+1. Gebruik **post** en de volgende URL, waarbij u de naam van uw service vervangt door de werkelijke naam van uw service.
 
-Aangezien dit uw eerste aanvraag is, controleert u Azure Portal om te bevestigen dat de gegevensbron in Azure Search is gemaakt. Controleer op de pagina zoek service dashboard of de lijst met gegevens bronnen een nieuw item is. U moet mogelijk een paar minuten wachten tot de portalpagina is vernieuwd. 
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   ```
 
-  ![Tegel Gegevensbronnen in de portal](./media/cognitive-search-tutorial-blob/data-source-tile.png "Tegel Gegevensbronnen in de portal")
+1. Kopieer de volgende JSON-definitie in de **hoofd tekst**van de `connectionString` aanvraag en vervang deze door de huidige verbinding van uw opslag account. 
 
-Als u een 403- of 404-fout krijgt, controleert u de constructie van de aanvraag: `api-version=2019-05-06` moet in het eindpunt staan, `api-key` in de header na `Content-Type`, en de waarde ervan moet geldig voor een zoekservice zijn. U kunt de header hergebruiken voor de overige stappen in deze zelfstudie.
+   Vergeet niet om ook de container naam te bewerken. We hebben ' tandwiel-Search-demo ' voor de container naam in een eerdere stap voorgesteld.
 
-## <a name="create-a-skillset"></a>Een set vaardigheden maken
-
-In deze stap definieert u een reeks verrijkingsstappen die u op uw gegevens wilt toepassen. We noemen elke verrijkingsstap een *vaardigheid* en de reeks verrijkingsstappen een *set vaardigheden*. In deze zelf studie worden [ingebouwde cognitieve vaardig heden](cognitive-search-predefined-skills.md) voor de vaardig heden gebruikt:
-
-+ [Taaldetectie](cognitive-search-skill-language-detection.md) om de taal van de inhoud vast te stellen.
-
-+ [Tekst splitsen](cognitive-search-skill-textsplit.md) om grote inhoud in kleinere stukken op te delen voordat u de vaardigheid voor sleuteltermextractie aanroept. Sleuteltermextractie accepteert invoeren van 50.000 tekens of minder. Enkele voorbeeldbestanden moeten worden opgesplitst om aan deze limiet te voldoen.
-
-+ [Entiteits herkenning](cognitive-search-skill-entity-recognition.md) voor het extra heren van de namen van organisaties uit inhoud in de BLOB-container.
-
-+ [Sleuteltermextractie](cognitive-search-skill-keyphrases.md) voor het ophalen van de belangrijkste sleuteltermen. 
-
-### <a name="sample-request"></a>Voorbeeldaanvraag
-Voordat u de REST-aanroep uitvoert, moet u de servicenaam en de beheersleutel in de aanvraag hieronder vervangen als het hulpprogramma de aanvraagheader tussen aanroepen niet behoudt. 
-
-Deze aanvraag maakt een set vaardigheden. Gebruik de naam van de set vaardigheden ```demoskillset``` voor de rest van deze zelfstudie.
-
-```http
-PUT https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
-api-key: [admin key]
-Content-Type: application/json
-```
-#### <a name="request-body-syntax"></a>Syntaxis aanvraagbody
-```json
-{
-  "description":
-  "Extract entities, detect language and extract key-phrases",
-  "skills":
-  [
+    ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
+      "name" : "cog-search-demo-ds",
+      "description" : "Demo files to demonstrate cognitive search capabilities.",
+      "type" : "azureblob",
+      "credentials" :
+      { "connectionString" :
+        "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-ACCOUNT-KEY>;"
+      },
+      "container" : { "name" : "<YOUR-BLOB-CONTAINER-NAME>" }
+    }
+    ```
+1. Verzend de aanvraag. U ziet de status code 201 bevestigend geslaagd. 
+
+Als u een 403- of 404-fout krijgt, controleert u de constructie van de aanvraag: `api-version=2019-05-06` moet in het eindpunt staan, `api-key` in de header na `Content-Type`, en de waarde ervan moet geldig voor een zoekservice zijn. Mogelijk wilt u het JSON-document uitvoeren via een online JSON-validatie programma om ervoor te zorgen dat de syntaxis juist is. 
+
+### <a name="step-2-create-a-skillset"></a>Stap 2: Een set vaardigheden maken
+
+Een [object voor vaardig heden](https://docs.microsoft.com/rest/api/searchservice/create-skillset) is een set verrijkings stappen die op uw inhoud wordt toegepast. 
+
+1. Gebruik **put** en de volgende URL, waarbij u de naam van uw service vervangt door de werkelijke naam van uw service.
+
+    ```http
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    ```
+
+1. Kopieer de onderstaande JSON-definitie in de **hoofd tekst**van de aanvraag. Deze vaardig heden bestaat uit de volgende ingebouwde vaardig heden.
+
+   | Eigen                 | Description    |
+   |-----------------------|----------------|
+   | [Entiteit herkenning](cognitive-search-skill-entity-recognition.md) | Extraheert de namen van personen, organisaties en locaties uit inhoud in de BLOB-container. |
+   | [Taaldetectie](cognitive-search-skill-language-detection.md) | Detecteert de taal van de inhoud. |
+   | [Tekst splitsen](cognitive-search-skill-textsplit.md)  | Hiermee verbreekt u grote inhoud in kleinere segmenten voordat u de kwalificatie voor de extractie van sleutel woorden aanroept. Sleuteltermextractie accepteert invoeren van 50.000 tekens of minder. Enkele voorbeeldbestanden moeten worden opgesplitst om aan deze limiet te voldoen. |
+   | [Sleuteltermextractie](cognitive-search-skill-keyphrases.md) | Hiermee worden de belangrijkste hoofd zinnen opgehaald. |
+
+   Elke vaardigheid wordt uitgevoerd voor de inhoud van het document. Tijdens het verwerken opent Azure Search elk document om inhoud van verschillende bestandsindelingen te lezen. Gevonden tekst uit het bronbestand wordt in een gegenereerd ```content```-veld geplaatst, één voor elk document. Als zodanig wordt ```"/document/content"```de invoer.
+
+   Voor het uitpakken van sleutel zinnen is ```"document/pages/*"``` het gebruik van de tekst splitter-vaardigheid om grotere bestanden op pagina's te versleutelen, de context voor de kwalificatie voor de extractie van belang rijke frasen (voor elke pagina in het document) in plaats van. ```"/document/content"```
+
+    ```json
+    {
+      "description": "Extract entities, detect language and extract key-phrases",
+      "skills":
+      [
         {
-          "name": "text", "source": "/document/content"
-        }
-      ],
-      "outputs": [
+          "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+          "categories": [ "Person", "Organization", "Location" ],
+          "defaultLanguageCode": "en",
+          "inputs": [
+            { "name": "text", "source": "/document/content" }
+          ],
+          "outputs": [
+            { "name": "persons", "targetName": "persons" },
+            { "name": "organizations", "targetName": "organizations" },
+            { "name": "locations", "targetName": "locations" }
+          ]
+        },
         {
-          "name": "organizations", "targetName": "organizations"
+          "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
+          "inputs": [
+            { "name": "text", "source": "/document/content" }
+          ],
+          "outputs": [
+            { "name": "languageCode", "targetName": "languageCode" }
+          ]
+        },
+        {
+          "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+          "textSplitMode" : "pages",
+          "maximumPageLength": 4000,
+          "inputs": [
+            { "name": "text", "source": "/document/content" },
+            { "name": "languageCode", "source": "/document/languageCode" }
+          ],
+          "outputs": [
+            { "name": "textItems", "targetName": "pages" }
+          ]
+        },
+        {
+          "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+          "context": "/document/pages/*",
+          "inputs": [
+            { "name": "text", "source": "/document/pages/*" },
+            { "name":"languageCode", "source": "/document/languageCode" }
+          ],
+          "outputs": [
+            { "name": "keyPhrases", "targetName": "keyPhrases" }
+          ]
         }
       ]
-    },
+    }
+    ```
+    Een grafische weergave van de set vaardigheden wordt hieronder weergegeven. 
+
+    ![Een set vaardigheden begrijpen](media/cognitive-search-tutorial-blob/skillset.png "Een set vaardigheden begrijpen")
+
+1. Verzend de aanvraag. Postman moet de status code 201 bevestigen van geslaagde pogingen retour neren. 
+
+> [!NOTE]
+> Uitvoeren kunnen aan een index worden toegewezen, als invoer worden gebruikt voor een downstream-vaardigheid, of beide zoals bij taalcode. Een taalcode is in de index handig om te filteren. Taalcode wordt als invoer door vaardigheden voor tekstanalyse gebruikt om de taalregels voor woordafbreking in te stellen. Zie [How to define a skillset](cognitive-search-defining-skillset.md) (Een set vaardigheden definiëren) voor meer informatie over de grondbeginselen van vaardigheden.
+
+### <a name="step-3-create-an-index"></a>Stap 3: Een index maken
+
+Een [index](https://docs.microsoft.com/rest/api/searchservice/create-index) biedt het schema dat wordt gebruikt voor het maken van de fysieke expressie van uw inhoud in omgekeerde indexen en andere constructs in azure Search. Het grootste onderdeel van een index is de verzameling velden, waarbij het gegevens type en de kenmerken inhoud en gedrag in Azure Search bepalen.
+
+1. Gebruik **put** en de volgende URL om uw-service naam te vervangen door de werkelijke naam van uw service, om uw index een naam te benoemen.
+
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   ```
+
+1. In de **hoofd tekst**van de aanvraag kopieert u de volgende JSON-definitie. In `content` het veld wordt het document zelf opgeslagen. Aanvullende velden voor `languageCode`, `keyPhrases`en `organizations` vertegenwoordigen nieuwe informatie (velden en waarden) die zijn gemaakt door de vaardig heden.
+
+    ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
-      "inputs": [
+      "fields": [
         {
-          "name": "text", "source": "/document/content"
-        }
-      ],
-      "outputs": [
+          "name": "id",
+          "type": "Edm.String",
+          "key": true,
+          "searchable": true,
+          "filterable": false,
+          "facetable": false,
+          "sortable": true
+        },
         {
-          "name": "languageCode",
-          "targetName": "languageCode"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
-      "textSplitMode" : "pages",
-      "maximumPageLength": 4000,
-      "inputs": [
+          "name": "metadata_storage_name",
+          "type": "Edm.String",
+          "searchable": false,
+          "filterable": false,
+          "facetable": false,
+          "sortable": false
+        },
         {
-          "name": "text",
-          "source": "/document/content"
+          "name": "content",
+          "type": "Edm.String",
+          "sortable": false,
+          "searchable": true,
+          "filterable": false,
+          "facetable": false
         },
         {
           "name": "languageCode",
-          "source": "/document/languageCode"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "textItems",
-          "targetName": "pages"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
-      "context": "/document/pages/*",
-      "inputs": [
-        {
-          "name": "text", "source": "/document/pages/*"
+          "type": "Edm.String",
+          "searchable": true,
+          "filterable": false,
+          "facetable": false
         },
-        {
-          "name":"languageCode", "source": "/document/languageCode"
-        }
-      ],
-      "outputs": [
         {
           "name": "keyPhrases",
-          "targetName": "keyPhrases"
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "filterable": false,
+          "facetable": false
+        },
+        {
+          "name": "persons",
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "sortable": false,
+          "filterable": true,
+          "facetable": true
+        },
+        {
+          "name": "organizations",
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "sortable": false,
+          "filterable": true,
+          "facetable": true
+        },
+        {
+          "name": "locations",
+          "type": "Collection(Edm.String)",
+          "searchable": true,
+          "sortable": false,
+          "filterable": true,
+          "facetable": true
         }
       ]
     }
-  ]
-}
-```
+    ```
 
-Verzend de aanvraag. Het online hulpprogramma zou een 201-statuscode moeten retourneren om de succesvolle uitvoering te bevestigen. 
+1. Verzend de aanvraag. Postman moet de status code 201 bevestigen van geslaagde pogingen retour neren. 
 
-#### <a name="explore-the-request-body"></a>De aanvraagbody verkennen
+### <a name="step-4-create-and-run-an-indexer"></a>Stap 4: Een Indexeer functie maken en uitvoeren
 
-U ziet hoe de vaardigheid voor sleuteltermextractie op elke pagina wordt toegepast. Door de context op ```"document/pages/*"``` in te stellen, voert u deze verrijker uit voor elk onderdeel van de matrix document/pagina's (voor elke pagina in het document).
+Een [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) verstuurt de pijp lijn. De drie onderdelen die u tot nu toe hebt gemaakt (gegevens bron, vaardig heden, index) zijn invoer naar een Indexeer functie. Het maken van de Indexeer functie op Azure Search is de gebeurtenis die de volledige pijp lijn in beweging zet. 
 
-Elke vaardigheid wordt uitgevoerd voor de inhoud van het document. Tijdens het verwerken opent Azure Search elk document om inhoud van verschillende bestandsindelingen te lezen. Gevonden tekst uit het bronbestand wordt in een gegenereerd ```content```-veld geplaatst, één voor elk document. Stel de invoer daarom in als ```"/document/content"```.
+1. Gebruik **put** en de volgende URL en vervang uw service naam door de werkelijke naam van uw service, zodat u de Indexeer functie een naam kunt.
 
-Een grafische weergave van de set vaardigheden wordt hieronder weergegeven. 
+   ```http
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   ```
 
-![Een set vaardigheden begrijpen](media/cognitive-search-tutorial-blob/skillset.png "Een set vaardigheden begrijpen")
+1. Kopieer de onderstaande JSON-definitie in de **hoofd tekst**van de aanvraag. Let op de elementen van de veld toewijzing; deze toewijzingen zijn belang rijk omdat ze de gegevens stroom definiëren. 
 
-Uitvoeren kunnen aan een index worden toegewezen, als invoer worden gebruikt voor een downstream-vaardigheid, of beide zoals bij taalcode. Een taalcode is in de index handig om te filteren. Taalcode wordt als invoer door vaardigheden voor tekstanalyse gebruikt om de taalregels voor woordafbreking in te stellen.
+   De `fieldMappings` worden verwerkt vóór de vaardig heden en verzenden inhoud van de gegevens bron naar doel velden in een index. U gebruikt veld toewijzingen voor het verzenden van bestaande, niet-gewijzigde inhoud naar de index. Als veld namen en-typen gelijk zijn aan beide uiteinden, is toewijzing niet vereist.
 
-Zie [How to define a skillset](cognitive-search-defining-skillset.md) (Een set vaardigheden definiëren) voor meer informatie over de grondbeginselen van vaardigheden.
+   Het `outputFieldMappings` zijn voor velden die zijn gemaakt door vaardig heden en die dus worden verwerkt nadat de vaardig heden zijn uitgevoerd. De verwijzingen naar `sourceFieldNames` in `outputFieldMappings` zijn pas aanwezig als het kraken of verrijken van documenten is gemaakt. Het `targetFieldName` is een veld in een index dat in het index schema is gedefinieerd.
 
-## <a name="create-an-index"></a>Een index maken
-
-In dit gedeelte kunt u het indexschema definiëren door op te geven welke velden in de doorzoekbare index moeten worden opgenomen en de zoekkenmerken voor elk veld op te geven. Velden hebben een type en kunnen kenmerken opnemen die bepalen hoe het veld wordt gebruikt (doorzoekbaar, sorteerbaar enzovoort). Veldnamen in een index hoeven niet identiek te zijn aan de veldnamen in de bron. In een latere stap voegt u veldverwijzingen in een indexeerfunctie toe om bron-doelvelden te verbinden. Definieer voor deze stap de index met behulp van veldnaamconventies die relevant zijn voor uw zoektoepassing.
-
-In deze oefening worden de volgende velden en veldtypen gebruikt:
-
-| field-names: | `id`       | content   | languageCode | keyPhrases         | organizations     |
-|--------------|----------|-------|----------|--------------------|-------------------|
-| field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
-
-
-### <a name="sample-request"></a>Voorbeeldaanvraag
-Voordat u de REST-aanroep uitvoert, moet u de servicenaam en de beheersleutel in de aanvraag hieronder vervangen als het hulpprogramma de aanvraagheader tussen aanroepen niet behoudt. 
-
-Deze aanvraag maakt een index. Gebruik de naam van de index ```demoindex``` voor de rest van deze zelfstudie.
-
-```http
-PUT https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
-#### <a name="request-body-syntax"></a>Syntaxis aanvraagbody
-
-```json
-{
-  "fields": [
+    ```json
     {
-      "name": "id",
-      "type": "Edm.String",
-      "key": true,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false,
-      "sortable": true
-    },
-    {
-      "name": "content",
-      "type": "Edm.String",
-      "sortable": false,
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "languageCode",
-      "type": "Edm.String",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "keyPhrases",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "filterable": false,
-      "facetable": false
-    },
-    {
-      "name": "organizations",
-      "type": "Collection(Edm.String)",
-      "searchable": true,
-      "sortable": false,
-      "filterable": false,
-      "facetable": false
+      "name":"cog-search-demo-idxr",    
+      "dataSourceName" : "cog-search-demo-ds",
+      "targetIndexName" : "cog-search-demo-idx",
+      "skillsetName" : "cog-search-demo-ss",
+      "fieldMappings" : [
+        {
+          "sourceFieldName" : "metadata_storage_path",
+          "targetFieldName" : "id",
+          "mappingFunction" :
+            { "name" : "base64Encode" }
+        },
+        {
+          "sourceFieldName" : "metadata_storage_name",
+          "targetFieldName" : "metadata_storage_name",
+          "mappingFunction" :
+            { "name" : "base64Encode" }
+        },
+        {
+          "sourceFieldName" : "content",
+          "targetFieldName" : "content"
+        }
+      ],
+      "outputFieldMappings" :
+      [
+        {
+          "sourceFieldName" : "/document/persons",
+          "targetFieldName" : "persons"
+        },
+        {
+          "sourceFieldName" : "/document/organizations",
+          "targetFieldName" : "organizations"
+        },
+        {
+          "sourceFieldName" : "/document/locations",
+          "targetFieldName" : "locations"
+        },
+        {
+          "sourceFieldName" : "/document/pages/*/keyPhrases/*",
+          "targetFieldName" : "keyPhrases"
+        },
+        {
+          "sourceFieldName": "/document/languageCode",
+          "targetFieldName": "languageCode"
+        }
+      ],
+      "parameters":
+      {
+        "maxFailedItems":-1,
+        "maxFailedItemsPerBatch":-1,
+        "configuration":
+        {
+          "dataToExtract": "contentAndMetadata",
+          "parsingMode": "default",
+          "firstLineContainsHeaders": false,
+          "delimitedTextDelimiter": ","
+        }
+      }
     }
-  ]
-}
-```
-Verzend de aanvraag. Het online hulpprogramma zou een 201-statuscode moeten retourneren om de succesvolle uitvoering te bevestigen. 
+    ```
 
-Zie [Create Index (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index maken (Azure Search REST API)) voor meer informatie over het definiëren van een index.
+1. Verzend de aanvraag. Postman moet het retour neren van de status code 201 bevestigend geslaagde verwerking. 
 
+   Deze stap kan enkele minuten in beslag nemen. De gegevensset is klein, maar analytische vaardigheden zijn berekeningsintensief. 
 
-## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Een indexeerfunctie maken, velden toewijzen en transformaties uitvoeren
-
-Tot nu toe hebt u een gegevensbron, een set vaardigheden en een index gemaakt. Deze drie onderdelen gaan deel uitmaken van een [indexeerfunctie](search-indexer-overview.md) die de onderdelen combineert in één meervoudige bewerking. Als u deze in een indexeerfunctie wilt combineren, moet u veldtoewijzingen definiëren. 
-
-+ De fieldMappings worden vóór de vaardig heden verwerkt, waarbij bron velden van de gegevens bron worden toegewezen aan de doel velden in een index. Als veld namen en-typen gelijk zijn aan beide uiteinden, is toewijzing niet vereist.
-
-+ De outputFieldMappings worden verwerkt na de vaardig heden en verwijzen naar sourceFieldNames die niet bestaan totdat het document wordt gekraakt of verrijkt. De targetFieldName is een veld in een index.
-
-Naast het koppelen van invoer naar uitvoer, kunt u ook veld toewijzingen gebruiken om gegevens structuren samen te voegen. Zie [hoe u verrijkte velden aan een Doorzoek bare index kunt toewijzen](cognitive-search-output-field-mapping.md)voor meer informatie.
-
-### <a name="sample-request"></a>Voorbeeldaanvraag
-
-Voordat u de REST-aanroep uitvoert, moet u de servicenaam en de beheersleutel in de aanvraag hieronder vervangen als het hulpprogramma de aanvraagheader tussen aanroepen niet behoudt. 
-
-Geef ook de naam van de indexeerfunctie op. U kunt er voor de rest van deze zelfstudie naar verwijzen als ```demoindexer```.
-
-```http
-PUT https://[servicename].search.windows.net/indexers/demoindexer?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
-#### <a name="request-body-syntax"></a>Syntaxis aanvraagbody
-
-```json
-{
-  "name":"demoindexer", 
-  "dataSourceName" : "demodata",
-  "targetIndexName" : "demoindex",
-  "skillsetName" : "demoskillset",
-  "fieldMappings" : [
-    {
-      "sourceFieldName" : "metadata_storage_path",
-      "targetFieldName" : "id",
-      "mappingFunction" :
-        { "name" : "base64Encode" }
-    },
-    {
-      "sourceFieldName" : "content",
-      "targetFieldName" : "content"
-    }
-  ],
-  "outputFieldMappings" :
-  [
-    {
-      "sourceFieldName" : "/document/organizations",
-      "targetFieldName" : "organizations"
-    },
-    {
-      "sourceFieldName" : "/document/pages/*/keyPhrases/*",
-      "targetFieldName" : "keyPhrases"
-    },
-    {
-      "sourceFieldName": "/document/languageCode",
-      "targetFieldName": "languageCode"
-    }
-  ],
-  "parameters":
-  {
-    "maxFailedItems":-1,
-    "maxFailedItemsPerBatch":-1,
-    "configuration":
-    {
-      "dataToExtract": "contentAndMetadata",
-      "imageAction": "generateNormalizedImages"
-    }
-  }
-}
-```
-
-Verzend de aanvraag. Het online hulpprogramma zou een 201-statuscode moeten retourneren om de succesvolle verwerking te bevestigen. 
-
-Deze stap kan enkele minuten in beslag nemen. De gegevensset is klein, maar analytische vaardigheden zijn berekeningsintensief. Sommige vaardigheden, zoals afbeeldingsanalyse, zijn langlopend.
-
-> [!TIP]
+> [!NOTE]
 > Het maken van een indexeerfunctie roept de pijplijn aan. Als er problemen zijn met het bereiken van de gegevens, het toewijzen van invoeren en uitvoeren of de volgorde van bewerkingen, worden ze in deze fase weergegeven. Mogelijk moet u eerst objecten verwijderen om de pijplijn opnieuw uit te voeren met code- of scriptwijzigingen. Zie [Reset and re-run](#reset) (Opnieuw instellen en uitvoeren) voor meer informatie.
 
-#### <a name="explore-the-request-body"></a>De aanvraagbody verkennen
+#### <a name="about-indexer-parameters"></a>Over para meters voor indexeren
 
-Het script stelt ```"maxFailedItems"``` op -1 in, wat de indexeerengine de opdracht geeft om fouten tijdens het importeren van gegevens te negeren. Dit is nuttig omdat de demo-gegevensbron maar een paar documenten bevat. Voor een grotere gegevensbron zou u de waarde op groter dan 0 instellen.
+Het script stelt ```"maxFailedItems"``` op -1 in, wat de indexeerengine de opdracht geeft om fouten tijdens het importeren van gegevens te negeren. Dit is acceptabel omdat er zo weinig documenten in de gegevens bron van de demo zijn. Voor een grotere gegevensbron zou u de waarde op groter dan 0 instellen.
 
-Let ook op de instructie ```"dataToExtract":"contentAndMetadata"``` in de configuratieparameters. Deze instructie geeft de indexeerfunctie de opdracht om automatisch de inhoud van verschillende bestandsindelingen te extraheren, evenals metagegevens voor elk bestand. 
+De ```"dataToExtract":"contentAndMetadata"``` instructie geeft aan dat de Indexeer functie automatisch de inhoud moet extra heren uit verschillende bestands indelingen en meta gegevens die zijn gerelateerd aan elk bestand. 
 
 Wanneer inhoud wordt uitgepakt, kunt u instellen dat ```imageAction``` tekst ophaalt uit afbeeldingen die in de gegevensbron worden gevonden. De configuratie van ```"imageAction":"generateNormalizedImages"```, OCR Skill en Text Merge Skill geeft de indexeerfunctie de opdracht om tekst uit de afbeeldingen te extraheren (bijvoorbeeld het woord 'stop' van een Stop-verkeersbord) en deze in te sluiten als onderdeel van het inhoudsveld. Dit gedrag is van toepassing op zowel de afbeeldingen die zijn ingesloten in de documenten (zoals een afbeelding in een pdf-bestand) als afbeeldingen die zijn gevonden in de gegevensbron, zoals een JPG-bestand.
 
-## <a name="check-indexer-status"></a>De status van de indexeerfunctie controleren
+## <a name="4---monitor-indexing"></a>4: indexeren controleren
 
-Nadat de indexeerfunctie is gedefinieerd, wordt deze automatisch uitgevoerd wanneer u de aanvraag verzendt. Afhankelijk van welke cognitieve vaardigheden u hebt gedefinieerd, kan het indexeren langer duren dan verwacht. Als u wilt weten of de indexeerfunctie nog wordt uitgevoerd, verzendt u de volgende aanvraag om de status van de indexeerfunctie te controleren.
+Het indexeren en verrijken begint zodra u de aanvraag voor het maken van een indexer verzendt. Afhankelijk van de cognitieve vaardig heden die u hebt gedefinieerd, kan het indexeren enige tijd duren. Als u wilt weten of de indexeerfunctie nog wordt uitgevoerd, verzendt u de volgende aanvraag om de status van de indexeerfunctie te controleren.
 
-```http
-GET https://[servicename].search.windows.net/indexers/demoindexer/status?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
+1. Gebruik **Get** en de volgende URL en vervang uw service naam door de werkelijke naam van uw service om uw Indexeer functie een naam te geven.
 
-Het antwoord geeft aan of de indexeerfunctie wordt uitgevoerd. Gebruik nadat het indexeren is voltooid een andere HTTP GET voor het STATUS-eindpunt (zoals hierboven) om rapporten te bekijken van eventuele fouten en waarschuwingen die tijdens de verrijking zijn opgetreden.  
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   ```
 
-Waarschuwingen komen veel voor bij sommige combinaties van bronbestand en vaardigheid en wijzen niet altijd op een probleem. In deze zelfstudie zijn de waarschuwingen onschadelijk (bijvoorbeeld geen tekstinvoeren van de JPEG-bestanden). U kunt het statusantwoord bekijken voor uitgebreide informatie over waarschuwingen die tijdens het indexeren zijn verzonden.
- 
-## <a name="query-your-index"></a>Een query uitvoeren in uw index
+1. Bekijk het antwoord om te zien of de Indexeer functie wordt uitgevoerd of om fout-en waarschuwings gegevens weer te geven.  
 
-Voer nadat het indexeren is voltooid query's uit waarmee de inhoud van afzonderlijke velden wordt geretourneerd. Standaard retourneert Azure Search de 50 hoogste resultaten. De voorbeeldgegevens zijn beperkt, dus de standaardinstelling werkt prima. Als u echter werkt met grotere gegevenssets, moet u mogelijk parameters opnemen in de queryreeks om meer resultaten te retourneren. Zie [How to page results in Azure Search](search-pagination-page-layout.md) (Resultaten genereren in Azure Search) voor instructies.
+Als u de gratis laag gebruikt, wordt het volgende bericht verwacht: ' "kan geen inhoud of meta gegevens uit het document extra heren. Geëxtraheerde tekst afgekapt tot ' 32768 ' tekens '. Dit bericht wordt weer gegeven omdat het indexeren van blobs in de gratis laag een[limiet van 32 KB voor teken extractie](search-limits-quotas-capacity.md#indexer-limits)heeft. Dit bericht wordt niet weer gegeven voor deze gegevensset op hogere lagen. 
 
-Voer als verificatiestap query's uit op de index voor alle velden.
+> [!NOTE]
+> Waarschuwingen zijn gebruikelijk in sommige scenario's en geven niet altijd een probleem aan. Als een BLOB-container bijvoorbeeld afbeeldings bestanden bevat en de pijp lijn geen afbeeldingen afhandelt, wordt er een waarschuwing weer gegeven met de mede deling dat de installatie kopieën niet zijn verwerkt.
 
-```http
-GET https://[servicename].search.windows.net/indexes/demoindex?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
+## <a name="5---search"></a>5-zoeken
 
-De uitvoer is het schema van de index met de naam, het type en de kenmerken van elk veld.
+Nu u nieuwe velden en informatie hebt gemaakt, gaan we enkele query's uitvoeren om inzicht te krijgen in de waarde van de cognitieve zoek opdracht omdat deze is gekoppeld aan een typisch Zoek scenario.
 
-Verzend een tweede query voor `"*"` om alle inhoud te retourneren van één veld, zoals `organizations`.
+Intrekken dat we zijn begonnen met blob-inhoud, waarbij het hele document is verpakt `content` in één veld. U kunt dit veld doorzoeken en zoeken naar overeenkomsten met uw query's.
 
-```http
-GET https://[servicename].search.windows.net/indexes/demoindex/docs?search=*&$select=organizations&api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
-```
+1. Gebruik **Get** en de volgende URL en vervang uw service naam door de werkelijke naam van uw service om te zoeken naar exemplaren van een term of woord groep, waarbij u het `content` veld en het aantal overeenkomende documenten wilt retour neren.
 
-Herhaal dit voor aanvullende velden: inhoud, language code, zinsdelen en organisaties in deze oefening. U kunt meerdere velden retourneren via `$select` met behulp van een door komma's gescheiden lijst.
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   ```
+   
+   De resultaten van deze query retour neren de inhoud van het document. Dit heeft hetzelfde resultaat als het gebruik van de BLOB-Indexeer functie zonder de cognitieve Zoek pijplijn. Dit veld kan doorzoekbaar zijn, maar is niet geschikt als u facetten, filters of automatisch aanvullen wilt gebruiken.
 
-U kunt GET of POST gebruiken, afhankelijk van de complexiteit en lengte van de queryreeks. Zie [Query using the REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Query's uitvoeren met de REST API) voor meer informatie.
+   ![Inhouds veld uitvoer](media/cognitive-search-tutorial-blob/content-output.png "Inhouds veld uitvoer")
+   
+1. Voor de tweede query retourneert u enkele van de nieuwe velden die door de pijp lijn zijn gemaakt (personen, organisaties, locaties, language code). Er worden geen zinsdelen voor het boogje wegge laten, maar u moet deze ook meenemen als u deze waarden wilt zien.
 
+   ```http
+   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   ```
+   De velden in de $select-instructie bevatten nieuwe gegevens die zijn gemaakt op basis van de verwerkings mogelijkheden van de natuurlijke taal van Cognitive Services. Zoals u kunt verwachten, is er een ruis in de resultaten en variaties in documenten, maar in veel gevallen levert de analytische modellen nauw keurige resultaten op.
 
+   In de volgende afbeelding ziet u de resultaten voor de open letter van de Satya NADELLA, waarbij wordt aangenomen dat de CEO Role bij micro soft.
+
+   ![Pijplijn uitvoer](media/cognitive-search-tutorial-blob/pipeline-output.png "Pijplijn uitvoer")
+
+1. Als u wilt zien hoe u kunt profiteren van deze velden, voegt u een facet parameter toe om een aggregatie van overeenkomende documenten per locatie te retour neren.
+
+   ```http
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   ``` 
+
+   In dit voor beeld zijn er twee of drie overeenkomsten voor elke locatie.
+
+   ![Facet uitvoer](media/cognitive-search-tutorial-blob/facet-output.png "Facet uitvoer")
+   
+
+1. In dit laatste voor beeld past u een filter toe op de verzameling organisaties, waarbij twee overeenkomsten worden geretourneerd voor filter criteria op basis van NASDAQ.
+
+   ```http
+   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   ```
+
+Deze query's illustreren een aantal manieren waarop u kunt werken met query syntaxis en filters voor nieuwe velden die zijn gemaakt door cognitieve Zoek opdrachten. Voor meer query voorbeelden, Zie [voor beelden in zoeken in documenten rest API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [eenvoudige syntaxis query voorbeelden](search-query-simple-examples.md)en [volledige voor beelden](search-query-lucene-examples.md)van de Lucene-query.
 
 <a name="reset"></a>
 
@@ -454,16 +486,14 @@ In de eerste experimentele fasen van pijplijnontwikkeling, is de meest praktisch
 
 Uw documenten opnieuw indexeren met de nieuwe definities:
 
-1. Verwijder de index om persistente gegevens te verwijderen. Verwijder de indexeerfunctie om deze in de service opnieuw te maken.
-2. Wijzig de definitie van een set vaardigheden en index.
-3. Maak de index en indexeerfunctie opnieuw in de service om de pijplijn uit te voeren. 
+1. Verwijder de Indexeer functie, de index en de vaardig heden.
+2. Objecten wijzigen.
+3. Maak uw service opnieuw om de pijp lijn uit te voeren. 
 
-U kunt de portal gebruiken om indexen, indexeerfuncties en vaardighedensets te verwijderen.
+U kunt de portal gebruiken om indexen, Indexeer functies en vaardig heden te verwijderen, of door gebruik te **verwijderen** en url's aan elk object toe te voegen. Met de volgende opdracht wordt een Indexeer functie verwijderd.
 
 ```http
-DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2019-05-06
-api-key: [api-key]
-Content-Type: application/json
+DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
 ```
 
 De statuscode 204 wordt na verwijdering geretourneerd.
@@ -476,7 +506,7 @@ In deze zelfstudie zijn de basisstappen voor het bouwen van een pijplijn voor ve
 
 [Vooraf gedefinieerde vaardigheden](cognitive-search-predefined-skills.md) zijn geïntroduceerd, samen met de definitie van de set vaardigheden en het mechanisme voor het koppelen van vaardigheden via in- en uitvoeren. U hebt ook geleerd dat `outputFieldMappings` vereist is in de definitie van de indexeerfunctie voor de routering van verrijkte waarden uit de pijplijn naar een doorzoekbare index op een Azure Search-service.
 
-Tot slot hebt u geleerd hoe u resultaten kunt testen en het systeem opnieuw kunt instellen voor verdere iteraties. U hebt geleerd dat het uitvoeren van query's op de index de uitvoer retourneert die is gemaakt door de pijplijn voor verrijkte indexering. Deze release bevat een mechanisme voor het weergeven van interne constructies (verrijkte documenten die zijn gemaakt door het systeem). U hebt ook geleerd hoe u de status van de indexeerfunctie kunt controleren en welke objecten u moet verwijderen voordat u een pijplijn opnieuw uitvoert.
+Tot slot hebt u geleerd hoe u resultaten kunt testen en het systeem opnieuw kunt instellen voor verdere iteraties. U hebt geleerd dat het uitvoeren van query's op de index de uitvoer retourneert die is gemaakt door de pijplijn voor verrijkte indexering. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

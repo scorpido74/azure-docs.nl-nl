@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876738"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073920"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -34,39 +34,45 @@ Volg deze instructies als u problemen ondervindt bij het samen voegen van Vm's a
 
 **Wordt** Er is een type fout opgetreden bij het invoeren van de referenties in de Azure Resource Manager sjabloon-interface oplossingen.
 
-**Fix:** Volg deze instructies om de referenties te corrigeren.
+**Fix:** Voer een van de volgende acties uit om het probleem op te lossen.
 
-1. Voeg de Vm's hand matig toe aan een domein.
-2. Opnieuw implementeren wanneer de referenties zijn bevestigd. Zie [een hostgroep maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
-3. Virtuele machines toevoegen aan een domein met behulp van een sjabloon met een [bestaande Windows-VM koppelen aan een AD-domein](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Voeg de Vm's hand matig toe aan een domein.
+- De sjabloon opnieuw implementeren wanneer de referenties zijn bevestigd. Zie [een hostgroep maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Virtuele machines toevoegen aan een domein met behulp van een sjabloon met een [bestaande Windows-VM koppelen aan een AD-domein](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Fout: Time-out bij het wachten op invoer van de gebruiker
 
 **Wordt** Het account dat wordt gebruikt voor het volt ooien van het lidmaatschap van een domein, heeft mogelijk multi-factor Authentication (MFA).
 
-**Fix:** Volg deze instructies om de samen voeging van het domein te volt ooien.
+**Fix:** Voer een van de volgende acties uit om het probleem op te lossen.
 
-1. MFA voor het account tijdelijk verwijderen.
-2. Gebruik een service account.
+- MFA voor het account tijdelijk verwijderen.
+- Gebruik een service account.
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Fout: Het account dat wordt gebruikt tijdens het inrichten, heeft geen machtigingen om de bewerking te volt ooien
 
 **Wordt** Het account dat wordt gebruikt, heeft geen machtigingen om Vm's toe te voegen aan het domein vanwege naleving en voor Schriften.
 
-**Fix:** Volg deze instructies.
+**Fix:** Voer een van de volgende acties uit om het probleem op te lossen.
 
-1. Gebruik een account dat lid is van de groep Administrators.
-2. Verleen de benodigde machtigingen voor het account dat wordt gebruikt.
+- Gebruik een account dat lid is van de groep Administrators.
+- Verleen de benodigde machtigingen voor het account dat wordt gebruikt.
 
 ### <a name="error-domain-name-doesnt-resolve"></a>Fout: Domein naam kan niet worden omgezet
 
-**Oorzaak 1:** Vm's bevinden zich in een resource groep die niet is gekoppeld aan het virtuele netwerk (VNET) waarin het domein zich bevindt.
+**Oorzaak 1:** Vm's bevinden zich in een virtueel netwerk dat niet is gekoppeld aan het virtuele netwerk (VNET) waarin het domein zich bevindt.
 
 **Oplossing 1:** Maak VNET-peering tussen het VNET waar Vm's zijn ingericht en het VNET waar de domein controller (DC) wordt uitgevoerd. Zie [een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
 
-**Oorzaak 2:** Wanneer u AadService (AADS) gebruikt, zijn er geen DNS-vermeldingen ingesteld.
+**Oorzaak 2:** Wanneer u Azure Active Directory Domain Services (Azure AD DS) gebruikt, zijn de DNS-server instellingen van het virtuele netwerk niet bijgewerkt zodat ze verwijzen naar de beheerde domein controllers.
 
-**Fix 2:** Zie [enable Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns)om domein Services in te stellen.
+**Fix 2:** Zie [DNS-instellingen bijwerken voor het virtuele Azure-netwerk](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)om de DNS-instellingen voor het virtuele netwerk met Azure AD DS bij te werken.
+
+**Oorzaak 3:** De DNS-server instellingen van de netwerk interface verwijzen niet naar de juiste DNS-server in het virtuele netwerk.
+
+**Oplossing 3:** Voer een van de volgende acties uit om het probleem op te lossen, volgens de stappen in [Change DNS servers].
+- Wijzig de DNS-server instellingen van de netwerk interface in **aangepast** met de stappen van [DNS-servers wijzigen](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) en geef de privé-IP-adressen op van de DNS-servers in het virtuele netwerk.
+- Wijzig de instellingen van de DNS-server van de netwerk interface in **overnemen van het virtuele netwerk** met de stappen van [DNS-servers wijzigen](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)en wijzig vervolgens de DNS-server instellingen van het virtuele netwerk met de stappen van [DNS-servers wijzigen](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>De Windows Virtual Desktop agent en het Windows-opstart laad programma voor virtueel bureau blad zijn niet geïnstalleerd
 

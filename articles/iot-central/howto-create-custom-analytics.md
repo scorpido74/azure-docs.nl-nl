@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5f9b255e8aa370184ec244ed418f02e55fc149b3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e1649d1ad50a62374cb5a1d9491c594e1b485ec1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049168"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100965"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics"></a>Azure IoT Central uitbreiden met aangepaste analyses
 
@@ -35,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ### <a name="iot-central-application"></a>IoT Central toepassing
 
-Maak een IoT Central-toepassing op de pagina [Azure IOT Central-mijn toepassingen](https://aka.ms/iotcentral) met de volgende instellingen:
+Maak een IoT Central-toepassing op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) met de volgende instellingen:
 
 | Instelling | Value |
 | ------- | ----- |
@@ -99,7 +99,7 @@ De naam ruimte van uw Event Hubs ziet eruit als in de volgende scherm afbeelding
 
 ## <a name="configure-export-in-iot-central"></a>Exporteren configureren in IoT Central
 
-Ga naar de [IOT Central toepassing](https://aka.ms/iotcentral) die u hebt gemaakt op basis van de contoso-sjabloon. In deze sectie configureert u de toepassing voor het streamen van de telemetrie van de gesimuleerde apparaten naar uw Event Hub. Het exporteren configureren:
+Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) naar de IOT Central toepassing die u hebt gemaakt op basis van de contoso-sjabloon. In deze sectie configureert u de toepassing voor het streamen van de telemetrie van de gesimuleerde apparaten naar uw Event Hub. Het exporteren configureren:
 
 1. Ga naar de pagina **continue gegevens export** , selecteer **+ Nieuw**en klik vervolgens op **Azure Event hubs**.
 1. Gebruik de volgende instellingen om het exporteren te configureren en selecteer vervolgens **Opslaan**:

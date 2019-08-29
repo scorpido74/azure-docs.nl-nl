@@ -1,61 +1,60 @@
 ---
 title: Triggers en bindingen in Azure Functions
-description: Leer hoe u met triggers en bindingen verbinding maken met uw Azure-functie online evenementen en cloud-gebaseerde services.
+description: Meer informatie over het gebruik van triggers en bindingen om uw Azure-functie te koppelen aan online gebeurtenissen en Cloud Services.
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 0896a829a24335f3e62581fa3b63e013478781bc
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 914158ba7cfcc7530120d427c62e69036b3bb156
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480998"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085091"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-triggers en bindingen concepten
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Concepten van Azure Functions triggers en bindingen
 
-In dit artikel leert u de geavanceerde concepten rond functions-triggers en bindingen.
+In dit artikel vindt u informatie over de concepten van het hoge niveau rond functies triggers en bindingen.
 
-Triggers zijn wat ertoe leiden dat een functie om uit te voeren. Een trigger bepaalt hoe een functie is aangeroepen en een functie moet exact één trigger hebben. Triggers aan gegevens, die vaak wordt geleverd als de nettolading van de functie zijn gekoppeld. 
+Triggers zijn de oorzaak dat een functie wordt uitgevoerd. Een trigger definieert hoe een functie wordt aangeroepen en een functie moet precies één trigger hebben. Triggers hebben gekoppelde gegevens, wat vaak wordt gegeven als de payload van de functie. 
 
-Binding aan een functie is een manier om een andere resource declaratief verbinding te maken met de functie. Bindingen kunnen worden verbonden als *invoer bindingen*, *uitvoerbindingen*, of beide. Gegevens van bindingen is opgegeven voor de functie als parameters.
+Een binding met een functie is een manier om een andere resource declaratief aan de functie te koppelen. bindingen kunnen worden verbonden als *invoer bindingen*, *uitvoer bindingen*of beide. Gegevens van bindingen worden aan de functie door gegeven als para meters.
 
-U kunt combineren en overeenkomen met andere bindingen aan uw behoeften. Bindingen zijn optioneel en een functie kan één of meerdere invoer hebt en/of uitvoerbindingen.
+U kunt verschillende bindingen combi neren en vergelijken met uw behoeften. Bindingen zijn optioneel en een functie kan een of meerdere invoer-en/of uitvoer bindingen hebben.
 
-Triggers en bindingen kunnen u voorkomen dat hardcoderen toegang tot andere services. De functie ontvangt gegevens (bijvoorbeeld de inhoud van een wachtrijbericht) in de parameters van de functie. U kunt gegevens (bijvoorbeeld om een wachtrijbericht te maken) verzenden met behulp van de geretourneerde waarde van de functie. 
+Met triggers en bindingen kunt u hardcoding toegang tot andere services voor komen. De functie ontvangt gegevens (bijvoorbeeld de inhoud van een wachtrij bericht) in functie parameters. U verzendt gegevens (bijvoorbeeld om een wachtrij bericht te maken) met behulp van de geretourneerde waarde van de functie. 
 
-Houd rekening met de volgende voorbeelden van hoe u verschillende functies kan implementeren.
+Bekijk de volgende voor beelden van hoe u verschillende functies kunt implementeren.
 
-| Voorbeeldscenario | Trigger | Invoerbinding | Storage-Uitvoerbinding |
+| Voorbeeldscenario | Trigger | Invoer binding | Uitvoer binding |
 |-------------|---------|---------------|----------------|
-| Een nieuwe wachtrijbericht wordt ontvangen die wordt uitgevoerd met een functie voor het schrijven naar een andere wachtrij. | wachtrij<sup>*</sup> | *Geen* | wachtrij<sup>*</sup> |
-|Een geplande taak leest de inhoud van de Blob-opslag en maakt u een nieuwe Cosmos DB-document. | Timer | Blob Storage | Cosmos DB |
-|De Event Grid wordt gebruikt om een afbeelding niet lezen uit de Blob-opslag en een document van Cosmos DB om een e-mail te verzenden. | Event Grid | BLOB-opslag en Cosmos DB | SendGrid |
-| Een webhook die gebruikmaakt van Microsoft Graph om bij te werken van een Excel-werkblad. | HTTP | *Geen* | Microsoft Graph |
+| Er wordt een nieuw wachtrij bericht ontvangen waarmee een functie wordt uitgevoerd om naar een andere wachtrij te schrijven. | Wachtrij<sup>*</sup> | *Geen* | Wachtrij<sup>*</sup> |
+|Met een geplande taak wordt Blob Storage inhoud gelezen en wordt er een nieuw Cosmos DB document gemaakt. | Timer | Blob-opslag | Cosmos DB |
+|De Event Grid wordt gebruikt voor het lezen van een afbeelding van Blob Storage en een document van Cosmos DB om een e-mail bericht te verzenden. | Event Grid | Blob Storage en Cosmos DB | SendGrid |
+| Een webhook die gebruikmaakt van Microsoft Graph om een Excel-werk blad bij te werken. | HTTP | *Geen* | Microsoft Graph |
 
-<sup>\*</sup> Hiermee geeft u verschillende wachtrijen
+<sup>\*</sup>Vertegenwoordigt verschillende wacht rijen
 
-Deze voorbeelden zijn niet bedoeld om te worden volledig, maar om te laten zien hoe u kunt triggers en bindingen samen worden opgegeven.
+Deze voor beelden zijn niet volledig, maar zijn bedoeld om te laten zien hoe u triggers en bindingen samen kunt gebruiken.
 
-###  <a name="trigger-and-binding-definitions"></a>Trigger-en-binding
+###  <a name="trigger-and-binding-definitions"></a>Definities van triggers en bindingen
 
-Triggers en bindingen zijn verschillend, afhankelijk van de aanpak van ontwikkeling gedefinieerd.
+Triggers en bindingen worden op verschillende manieren gedefinieerd, afhankelijk van de ontwikkelings benadering.
 
-| Platform | Triggers en bindingen zijn geconfigureerd door... |
+| Platform | Triggers en bindingen worden geconfigureerd door... |
 |-------------|--------------------------------------------|
-| C#klassebibliotheek | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;met het inrichten van methoden en parameters met C# kenmerken |
-| Alle andere (met inbegrip van Azure portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bijwerken van [function.json](./functions-reference.md) ([schema](http://json.schemastore.org/function)) |
+| C#klassen bibliotheek | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;methoden en para meters met C# kenmerken verf raaien |
+| Alle andere (inclusief Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Function. json](./functions-reference.md) ([schema](http://json.schemastore.org/function)) bijwerken |
 
-De portal biedt een gebruikersinterface voor deze configuratie, maar u kunt het bestand bewerken rechtstreeks door het openen van de **geavanceerde editor** beschikbaar via de **integreren** tabblad van uw functie.
+De portal biedt een gebruikers interface voor deze configuratie, maar u kunt het bestand rechtstreeks bewerken door de **Geavanceerde editor** te openen die beschikbaar is via het tabblad **integreren** van uw functie.
 
-In .NET definieert het parametertype het gegevenstype voor de invoergegevens. Gebruik bijvoorbeeld `string` verbinding maken met de tekst van een wachtrijtrigger, een matrix van bytes lezen als binaire bestanden en een aangepaste-type naar een object niet deserialiseren.
+In .NET definieert het parameter type het gegevens type voor invoer gegevens. Gebruik `string` bijvoorbeeld om een binding te maken met de tekst van een wachtrij trigger, een byte matrix die als binair moet worden gelezen en een aangepast type om te deserialiseren naar een object.
 
-Voor de talen die dynamisch worden getypt, zoals JavaScript, gebruikt u de `dataType` eigenschap in de *function.json* bestand. Bijvoorbeeld, als u wilt de inhoud van een HTTP-aanvraag in binaire indeling lezen, ingesteld `dataType` naar `binary`:
+Voor talen die dynamisch worden getypt, zoals Java script, `dataType` gebruikt u de eigenschap in het bestand *Function. json* . Als u bijvoorbeeld de inhoud van een HTTP-aanvraag in binaire indeling wilt lezen, `dataType` stelt `binary`u het volgende in:
 
 ```json
 {
@@ -68,31 +67,31 @@ Voor de talen die dynamisch worden getypt, zoals JavaScript, gebruikt u de `data
 
 Andere opties voor `dataType` zijn `stream` en `string`.
 
-## <a name="binding-direction"></a>Richting van de binding
+## <a name="binding-direction"></a>Bindings richting
 
-Alle triggers en bindingen hebben een `direction` eigenschap in de [function.json](./functions-reference.md) bestand:
+Alle triggers en bindingen hebben een `direction` eigenschap in het bestand [Function. json](./functions-reference.md) :
 
-- Triggers is de richting altijd `in`
-- Gebruik van de invoer- en uitvoerbindingen `in` en `out`
-- Sommige bindingen ondersteunt een speciale richting `inout`. Als u `inout`, alleen de **geavanceerde editor** is beschikbaar via de **integreren** tabblad in de portal.
+- Voor triggers is de richting altijd`in`
+- Invoer-en uitvoer bindingen `in` gebruiken en`out`
+- Sommige bindingen bieden ondersteuning voor een `inout`speciale richting. Als u gebruikt `inout`, is alleen de **Geavanceerde editor** beschikbaar via het tabblad **integreren** in de portal.
 
-Bij het gebruik [kenmerken in een klassebibliotheek](functions-dotnet-class-library.md) voor het configureren van triggers en bindingen, de richting is opgegeven in een kenmerkconstructie of afgeleid van het parametertype.
+Wanneer u [kenmerken in een klassen bibliotheek](functions-dotnet-class-library.md) gebruikt om triggers en bindingen te configureren, wordt de richting in een kenmerk-constructor of afgeleid van het parameter type gegeven.
 
 ## <a name="supported-bindings"></a>Ondersteunde bindingen
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-Zie voor meer informatie over welke bindingen zijn beschikbaar als preview of zijn goedgekeurd voor gebruik in productieomgevingen, [ondersteunde talen](supported-languages.md).
+Zie [ondersteunde talen](supported-languages.md)voor informatie over welke bindingen in Preview zijn of die zijn goedgekeurd voor productie gebruik.
 
 ## <a name="resources"></a>Resources
-- [Binding-expressies en patronen](./functions-bindings-expressions-patterns.md)
-- [Met behulp van de geretourneerde waarde van de Azure-functie](./functions-bindings-return-value.md)
-- [Informatie over het registreren van een bindingexpressie](./functions-bindings-register.md)
-- Testen:
+- [Expressies en patronen binden](./functions-bindings-expressions-patterns.md)
+- [De functie retour waarde van Azure gebruiken](./functions-bindings-return-value.md)
+- [Een bindings expressie registreren](./functions-bindings-register.md)
+- Testen
   - [Strategieën voor het testen van uw code in Azure Functions](functions-test-a-function.md)
-  - [Handmatig uitvoeren van een niet HTTP-geactiveerde functie](functions-manually-run-non-http.md)
-- [Afhandeling van fouten-binding](./functions-bindings-errors.md)
+  - [Een niet met HTTP geactiveerde functie hand matig uitvoeren](functions-manually-run-non-http.md)
+- [Bindings fouten verwerken](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Azure Functions-binding extensies registreren](./functions-bindings-register.md)
+> [Azure Functions bindings uitbreidingen registreren](./functions-bindings-register.md)

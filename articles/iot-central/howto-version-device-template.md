@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877312"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100909"
 ---
 # <a name="create-a-new-device-template-version"></a>Een nieuwe sjabloon versie voor een apparaat maken
 
@@ -50,7 +50,7 @@ In de volgende lijst worden de gebruikers acties beschreven waarvoor een nieuwe 
 
 Wat gebeurt er met regels en dash boards van het apparaat als er een versie wijziging is?
 
-**Regels** kunnen voor waarden bevatten die afhankelijk zijn van eigenschappen. Als u een of meer van deze eigenschappen hebt verwijderd, kunnen deze regels worden opgesplitst in de nieuwe sjabloon versie van het apparaat. U kunt naar deze specifieke regels gaan en de voor waarden bijwerken om de regels op te lossen. De regels voor uw vorige versie moeten zonder enige gevolgen werken.
+**Regels** in de vorige versie van de sjabloon voor het apparaat blijven ongewijzigd. Regels worden niet automatisch gemigreerd naar de nieuwe sjabloon versie van het apparaat. U kunt op de gebruikelijke wijze regels maken voor de nieuwe sjabloon versie. Zie voor meer informatie de [regel een telemetrie maken en meldingen instellen in uw Azure IOT Central-artikel voor het Toep assen van toepassingen](howto-create-telemetry-rules.md) .
 
 **Dash boards van apparaten** kunnen verschillende typen tegels bevatten. Sommige tegels kunnen instellingen en eigenschappen bevatten. Wanneer een eigenschap of instelling die in een tegel wordt gebruikt, wordt verwijderd, is de tegel volledig of gedeeltelijk verbroken. U kunt naar de tegel gaan om het probleem op te lossen door de tegel te verwijderen of de inhoud van de tegel bij te werken.
 

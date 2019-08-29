@@ -1,6 +1,6 @@
 ---
-title: Abonnementen in Azure API Management | Microsoft Docs
-description: Meer informatie over het concept van abonnementen in Azure API Management.
+title: Abonnementen in azure API Management | Microsoft Docs
+description: Meer informatie over het concept van abonnementen in azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -9,60 +9,59 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: afd43bbf6f52f498ad8f56d5a48b960d45d84137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243248"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073410"
 ---
-# <a name="subscriptions-in-azure-api-management"></a>Abonnementen in Azure API Management
+# <a name="subscriptions-in-azure-api-management"></a>Abonnementen in azure API Management
 
-Abonnementen zijn een belangrijk concept in Azure API Management. Ze zijn de meest voorkomende manier voor consumenten van de API voor toegang tot API's die zijn gepubliceerd via een API Management-exemplaar. Dit artikel bevat een overzicht van het concept.
+Abonnementen vormen een belang rijk concept in azure API Management. Ze zijn de meest voorkomende manier voor API-gebruikers om toegang te krijgen tot Api's die zijn gepubliceerd via een API Management-exemplaar. Dit artikel bevat een overzicht van het concept.
 
-## <a name="what-are-subscriptions"></a>Welke abonnementen zijn?
+## <a name="what-are-subscriptions"></a>Wat zijn abonnementen?
 
-Wanneer u API's via API Management publiceert, is het eenvoudig en voor beveiligde toegang tot deze API's met behulp van abonnementssleutels. Ontwikkelaars die gebruikmaken van de gepubliceerde API's willen moeten een geldig abonnement-sleutel opnemen in de HTTP-aanvragen wanneer ze deze API's aanroepen. Anders wordt worden de aanroepen onmiddellijk geweigerd door de API Management-gateway. Ze worden niet doorgestuurd naar de back-end-services.
+Wanneer u Api's publiceert via API Management, is het eenvoudig en gebruikelijk om de toegang tot die Api's te beveiligen met behulp van abonnements sleutels. Ontwikkel aars die de gepubliceerde Api's moeten gebruiken, moeten een geldige abonnements sleutel in HTTP-aanvragen voor het aanroepen van deze Api's hebben. Anders worden de aanroepen onmiddellijk door de API Management Gateway afgewezen. Ze worden niet doorgestuurd naar de back-end-services.
 
-Als u een abonnementssleutel voor toegang tot API's, is een abonnement vereist. Een abonnement is in feite een benoemde container voor een combinatie van sleutel abonnement. Ontwikkelaars die gebruikmaken van de gepubliceerde API's willen krijgt abonnementen. En ze hoeft goedkeuring van de API-uitgevers. API-uitgevers kunnen ook abonnementen direct voor de API-consumenten maken.
+Als u een abonnements sleutel voor toegang tot Api's wilt ophalen, is een abonnement vereist. Een-abonnement is in feite een benoemde container voor een paar abonnements sleutels. Ontwikkel aars die de gepubliceerde Api's moeten gebruiken, kunnen abonnementen ophalen. En ze hebben geen goed keuring nodig van API-uitgevers. API-uitgevers kunnen ook rechtstreeks abonnementen voor API-gebruikers maken.
 
 > [!TIP]
-> API Management biedt ook ondersteuning voor andere methoden voor het beveiligen van toegang tot API's, met inbegrip van de volgende voorbeelden:
-> - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
-> - [Clientcertificaten](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP-whitelists](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> API Management ondersteunt ook andere mechanismen voor het beveiligen van de toegang tot Api's, met inbegrip van de volgende voor beelden:
+> - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
+> - [Client certificaten](api-management-howto-mutual-certificates-for-clients.md)
+> - [IP-white list](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Bereik van abonnementen
 
-Abonnementen kunnen worden gekoppeld aan verschillende bereiken: product, alle API's of een afzonderlijke API.
+Abonnementen kunnen worden gekoppeld aan verschillende bereiken: product, alle Api's of een afzonderlijke API.
 
 ### <a name="subscriptions-for-a-product"></a>Abonnementen voor een product
 
-Traditioneel abonnementen in API Management zijn altijd gekoppeld aan één [API-product](api-management-terminology.md) bereik. De lijst met producten ontwikkelaars gevonden op de Portal voor ontwikkelaars. Verzend dan ze abonnementaanvragen voor de producten die ze wilden gebruiken. Nadat een aanvraag is goedgekeurd, automatisch of door de API-uitgevers, kan de ontwikkelaar de sleutels in het gebruiken voor toegang tot alle API's in het product. Op dit moment weergegeven developer-portal alleen de product-scope-abonnementen onder de Gebruikersprofielsectie. 
+Normaal gesp roken zijn abonnementen in API Management altijd gekoppeld aan één [API-product](api-management-terminology.md) bereik. Ontwikkel aars hebben een lijst met producten gevonden op de ontwikkelaars Portal. Daarna verzenden ze abonnements aanvragen voor de producten die ze willen gebruiken. Nadat een abonnements aanvraag is goedgekeurd, hetzij automatisch of door API-uitgevers, kan de ontwikkelaar de sleutels erin gebruiken om toegang te krijgen tot alle Api's in het product. Op dit moment toont de ontwikkelaars Portal alleen de product Scope abonnementen onder het gebruikers profiel gedeelte. 
 
-![Product-abonnementen](./media/api-management-subscriptions/product-subscription.png)
+![Product abonnementen](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> In bepaalde scenario's wilt API-uitgevers publiceren van een API-product voor het publiek zonder de noodzaak van abonnementen. Schakelt ze uit de **-abonnement vereist** kiezen op de **instellingen** pagina van het product in de Azure-portal. Als gevolg hiervan zijn alle API's onder het product toegankelijk zonder API-sleutel.
+> Onder bepaalde scenario's is het mogelijk dat API-uitgevers een API-product willen publiceren naar het openbaar zonder dat er abonnementen zijn vereist. Ze kunnen de selectie van de optie **abonnement vereisen** op de pagina **instellingen** van het product in de Azure Portal opheffen. Als gevolg hiervan kunnen alle Api's onder het product worden geopend zonder een API-sleutel.
 
-### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Abonnementen voor alle API's of een afzonderlijke API
+### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Abonnementen voor alle Api's of een afzonderlijke API
 
-Wanneer we geïntroduceerd de [verbruik](https://aka.ms/apimconsumptionblog) laag van API Management kunnen we enkele wijzigingen in het Sleutelbeheer stroomlijnen gemaakt:
-- Eerst hebben we twee meer abonnement bereiken toegevoegd: alle API's en één API. Het bereik van abonnementen is niet langer beperkt tot een API-product. Het is nu mogelijk te maken van sleutels die toegang aan een API of alle API's binnen een exemplaar van API Management, verlenen zonder een product maken en de API's eerst aan toe te voegen. Bovendien elk exemplaar van API Management wordt nu geleverd met een onveranderbare, alle-API's-abonnement. Dit abonnement kunt u gemakkelijker en eenvoudiger om te testen en fouten opsporen in API's in de testconsole.
+Toen we de [verbruiks](https://aka.ms/apimconsumptionblog) tier van API Management introducden, hebben we enkele wijzigingen aangebracht in het stroom lijnen van het sleutel beheer:
+- Eerst hebben we twee meer abonnements bereiken toegevoegd: alle Api's en één API. Het bereik van abonnementen is niet langer beperkt tot een API-product. Het is nu mogelijk om sleutels te maken die toegang verlenen tot een API of alle Api's binnen een API Management-exemplaar, zonder dat er een product hoeft te worden gemaakt en de Api's eerst aan het object moeten worden toegevoegd. Elke API Management-exemplaar wordt nu ook geleverd met een onveranderbaar abonnement met alle Api's. Dit abonnement maakt het eenvoudiger en gemakkelijker om Api's in de test console te testen en fouten op te sporen.
 
-- Ten tweede API Management nu kunnen **zelfstandige** abonnementen. Abonnementen zijn niet langer vereist om te worden gekoppeld aan een developer-account. Deze functie is handig in scenario's, zoals wanneer meerdere ontwikkelaars of teams een abonnement deelt.
+- Ten tweede API Management nu **zelfstandige** abonnementen. Abonnementen hoeven niet langer te worden gekoppeld aan een ontwikkelaars account. Deze functie is handig in scenario's, bijvoorbeeld wanneer verschillende ontwikkel aars of teams een abonnement delen.
 
-- Ten slotte, API-uitgevers kunnen nu [abonnementen maken](api-management-howto-create-subscriptions.md) rechtstreeks in Azure portal:
+- Tot slot kunnen API-uitgevers nu rechtstreeks in het Azure Portal [abonnementen maken](api-management-howto-create-subscriptions.md) :
 
     ![Flexibele abonnementen](./media/api-management-subscriptions/flexible-subscription.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer informatie over API Management:
+Meer informatie over API Management:
 
-+ Informatie over andere [concepten](api-management-terminology.md) in API Management.
-+ Volg onze [zelfstudies](import-and-publish.md) voor meer informatie over API Management.
-+ Controleer onze [pagina met veelgestelde vragen](api-management-faq.md) voor veelgestelde vragen.
++ Meer informatie over andere [concepten](api-management-terminology.md) in API management.
++ Volg onze [zelf studies](import-and-publish.md) voor meer informatie over API management.
++ Raadpleeg onze [pagina met veelgestelde](api-management-faq.md) vragen voor veelgestelde vragen.

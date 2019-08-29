@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 98fdf76dc2e1cb8171e7b0b37216d5f5405a1e6a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0d3ddf2e005338a19972cfcdef025579764f7f23
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275426"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114723"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>De distributiemodus configureren voor Azure Load Balancer
 
@@ -32,7 +32,7 @@ De standaardmodus voor distributie voor Azure Load Balancer is een 5-tuple hash.
 
 ## <a name="source-ip-affinity-mode"></a>Affiniteitsmodus voor bron-IP
 
-Load Balancer kan ook worden geconfigureerd met behulp van de bron IP-affiniteit distributie-modus. Deze distributiemodus wordt ook wel bekend als sessieaffiniteit of client-IP-affiniteit. De modus gebruikt een 2-tuple (bron-IP en doel-IP) of 3-tuple (bron-IP, doel-IP en protocol type) hash-verkeer worden toegewezen aan de beschikbare servers. Met behulp van de bron-IP-affiniteit gaat verbindingen die geïnitieerd worden vanuit dezelfde clientcomputer u naar het eindpunt van de dezelfde DIP.
+Load Balancer kan ook worden geconfigureerd met behulp van de bron IP-affiniteit distributie-modus. Deze distributiemodus wordt ook wel bekend als sessieaffiniteit of client-IP-affiniteit. De modus gebruikt een 2-tuple (bron-IP en doel-IP) of 3-tuple (bron-IP, doel-IP en protocol type) hash-verkeer worden toegewezen aan de beschikbare servers. Met behulp van bron-IP-affiniteit gaan verbindingen die vanaf dezelfde client computer worden gestart naar hetzelfde DIP-eind punt.
 
 De volgende afbeelding ziet u een configuratie met 2-tuple. U ziet hoe de 2-tuple wordt uitgevoerd via de load balancer voor virtuele machine, 1 (VM1). VM1 vervolgens een back-up VM2 en vm3 maakt.
 
@@ -42,7 +42,7 @@ Affiniteitsmodus voor bron-IP-lost incompatibiliteit tussen Azure Load Balancer 
 
 Een andere use-casescenario is media uploaden. Het uploaden van gegevens gebeurt via UDP, maar het besturingselement vlak wordt bereikt via TCP:
 
-* Een client initieert een TCP-sessie naar het openbare adres met taakverdeling en wordt omgeleid naar een specifieke DIP. Het kanaal blijft actief voor het bewaken van de status van de verbinding.
+* Een client start een TCP-sessie naar het open bare adres met taak verdeling en wordt omgeleid naar een specifieke DIP. Het kanaal blijft actief voor het bewaken van de status van de verbinding.
 * Een nieuwe sessie UDP vanaf dezelfde computer wordt gestart met de dezelfde openbare load balancing-eindpunt. De verbinding is omgeleid naar hetzelfde DIP-eindpunt als de vorige TCP-verbinding. Het uploaden van de media kan worden uitgevoerd met een hoge doorvoer terwijl een besturingskanaal via TCP.
 
 > [!NOTE]
@@ -50,9 +50,26 @@ Een andere use-casescenario is media uploaden. Het uploaden van gegevens gebeurt
 
 ## <a name="configure-source-ip-affinity-settings"></a>Bron-IP-affiniteit-instellingen configureren
 
-Voor virtuele machines geïmplementeerd met Resource Manager, moet u PowerShell gebruiken om te wijzigen van de load balancer-distributie-instellingen op een bestaande regel voor taakverdeling. Hiermee wordt de distributiemodus: 
+### <a name="azure-portal"></a>Azure Portal
 
-```powershell
+U kunt de configuratie van de distributie modus wijzigen door de taakverdelings regel in de portal te wijzigen.
+
+1. Meld u aan bij de Azure Portal en zoek de resource groep met de load balancer die u wilt wijzigen door te klikken op **resource groepen**.
+2. Klik op de Blade load balancer overzicht op **taakverdelings regels** onder **instellingen**.
+3. Klik op de Blade taakverdelings regels op de taakverdelings regel waarvan u de distributie modus wilt wijzigen.
+4. Onder de regel wordt de distributie modus gewijzigd door de vervolg keuzelijst **sessie persistentie** te wijzigen.  De volgende opties zijn beschikbaar:
+    
+    * **Geen (op hash gebaseerd)** : Hiermee geeft u op dat opeenvolgende aanvragen van dezelfde client door elke virtuele machine kunnen worden verwerkt.
+    * **Client-IP (bron-IP-affiniteit 2-tuple)** -geeft aan dat opeenvolgende aanvragen van hetzelfde client-IP-adres worden verwerkt door dezelfde virtuele machine.
+    * **Client-IP en-protocol (bron-IP-affiniteit 3-tuple)** : Hiermee geeft u op dat opeenvolgende aanvragen van dezelfde combi natie van client-IP-adres en-protocol worden verwerkt door dezelfde virtuele machine.
+
+5. Kies de distributie modus en klik vervolgens op **Opslaan**.
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Voor virtuele machines die met Resource Manager zijn geïmplementeerd, gebruikt u Power shell om de distributie-instellingen voor Load Balancer te wijzigen voor een bestaande regel voor taak verdeling. De volgende opdracht werkt de distributie modus bij: 
+
+```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
 $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -60,7 +77,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 
 Voor klassieke virtuele machines, gebruikt u Azure PowerShell om de distributie-instellingen te wijzigen. Een Azure-eindpunt toevoegen aan een virtuele machine en de distributiemodus voor load balancer configureren:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
@@ -88,13 +105,13 @@ Een eindpunt load balancer-distributie modus-configuratie ophalen met behulp van
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-Wanneer de `LoadBalancerDistribution` element is niet aanwezig, de standaard 5-tuple-algoritme maakt gebruik van Azure Load Balancer.
+Wanneer het `LoadBalancerDistribution` element niet aanwezig is, gebruikt Azure Load Balancer het standaard algoritme van 5-tuple.
 
 ### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>Distributiemodus configureren voor de eindpuntset met gelijke
 
 Als eindpunten onderdeel van een eindpuntset met load balancing-zijn, moet de distributiemodus worden geconfigureerd op de eindpuntset met gelijke:
 
-```azurepowershell
+```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 

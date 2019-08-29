@@ -1,7 +1,7 @@
 ---
-title: Recepten voor Docker-containers
+title: Recepten voor docker-containers
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze recepten container te maken van Cognitive Services-Containers die kunnen worden hergebruikt. Containers kunnen worden gebouwd met enkele of alle configuratie-instellingen, zodat ze niet nodig zijn wanneer de container wordt gestart. Wanneer u deze nieuwe laag van de container (met instellingen hebt) en u deze lokaal hebt getest, kunt u de container kunt opslaan in een container registry. Wanneer de container wordt gestart, moet deze alleen de instellingen die op dit moment niet worden opgeslagen in de container.
+description: Gebruik deze container recepten om Cognitive Services containers te maken die opnieuw kunnen worden gebruikt. Containers kunnen worden gebouwd met enkele of alle configuratie-instellingen, zodat ze niet nodig zijn wanneer de container wordt gestart. Zodra u deze nieuwe laag of container hebt (met instellingen) en u deze lokaal hebt getest, kunt u de container opslaan in een container register. Wanneer de container wordt gestart, zijn alleen de instellingen nodig die momenteel niet zijn opgeslagen in de container.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,52 +10,52 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 37fa972d52c564c4d61e5923c2b3dc48bde9d2ee
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a8162f96051a73b9f6e6a6fe3ece020e0a94f08f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445811"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068830"
 ---
-# <a name="create-containers-for-reuse"></a>Containers voor hergebruik maken
+# <a name="create-containers-for-reuse"></a>Containers maken voor hergebruik
 
-Gebruik deze recepten container te maken van Cognitive Services-Containers die kunnen worden hergebruikt. Containers kunnen worden gebouwd met sommige of alle configuratie-instellingen, zodat deze _niet_ die nodig zijn wanneer de container wordt gestart.
+Gebruik deze container recepten om Cognitive Services containers te maken die opnieuw kunnen worden gebruikt. Containers kunnen worden gebouwd met enkele of alle configuratie-instellingen, zodat ze _niet_ nodig zijn wanneer de container wordt gestart.
 
-Wanneer u deze nieuwe laag van de container (met instellingen hebt) en u deze lokaal hebt getest, kunt u de container kunt opslaan in een container registry. Wanneer de container wordt gestart, moet deze alleen de instellingen die op dit moment niet worden opgeslagen in de container. De container privéregister hier configuratie voor u om deze instellingen in te geven.
+Zodra u deze nieuwe laag of container hebt (met instellingen) en u deze lokaal hebt getest, kunt u de container opslaan in een container register. Wanneer de container wordt gestart, zijn alleen de instellingen nodig die momenteel niet zijn opgeslagen in de container. De persoonlijke register container bevat configuratie ruimte die u kunt door geven aan de hand van deze instellingen in.
 
-## <a name="docker-run-syntax"></a>Docker syntaxis uitvoeren
+## <a name="docker-run-syntax"></a>Syntaxis van docker-uitvoering
 
-Alle `docker run` voorbeelden in dit document wordt ervan uitgegaan dat een Windows-console met een `^` regel voortzetting teken. Overweeg het volgende voor eigen gebruik:
+Voor beelden in dit document wordt ervan uitgegaan dat een `^` Windows-console met een regel voortzettings teken. `docker run` Houd rekening met het volgende voor eigen gebruik:
 
 * Wijzig de volgorde van de argumenten niet, tenzij u bekend bent met docker-containers.
-* Als u een besturingssysteem dan Windows of een console dan Windows-console gebruikt, gebruikt u de juiste console/terminal, de syntaxis van de map voor koppelingen en regel voortzetting teken voor de console en het systeem.  Omdat de Cognitive Services-container een Linux-besturingssysteem is, gebruikt het koppelpunt van het doel een Linux-stijl map-syntaxis.
-* `docker run` voorbeelden gebruiken de map uit de `c:` station om te voorkomen van machtigingsconflicten op Windows. Als u gebruiken van een specifieke map als de invoermap wilt, moet u mogelijk de docker verlenen machtiging-service.
+* Als u een ander besturings systeem dan Windows gebruikt, of een andere console dan Windows-console, gebruikt u de juiste console/terminal, syntaxis voor koppelingen en een regel vervolg teken voor uw console en systeem.  Omdat de Cognitive Services container een Linux-besturings systeem is, gebruikt de doel koppeling een syntaxis voor de Linux-stijl.
+* `docker run`voor beelden gebruiken de Directory uit `c:` het station om te voor komen dat er machtigings conflicten zijn in Windows. Als u gebruiken van een specifieke map als de invoermap wilt, moet u mogelijk de docker verlenen machtiging-service.
 
-## <a name="store-no-configuration-settings-in-image"></a>Er is geen configuratie-instellingen in afbeelding Store
+## <a name="store-no-configuration-settings-in-image"></a>Geen configuratie-instellingen opslaan in afbeelding
 
-Het voorbeeld `docker run` opdrachten voor elke service Sla de configuratie-instellingen niet in de container. Wanneer u de container met een service-console of het register begint, moeten deze configuratie-instellingen om door te geven. De container privéregister hier configuratie voor u om deze instellingen in te geven.
+In de `docker run` voorbeeld opdrachten voor elke service worden geen configuratie-instellingen in de container opgeslagen. Wanneer u de container vanuit een console of register service start, moeten die configuratie-instellingen worden door gegeven. De persoonlijke register container bevat configuratie ruimte die u kunt door geven aan de hand van deze instellingen in.
 
-## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Hergebruik van recept: alle configuratie-instellingen met container opslaan
+## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Recept hergebruiken: alle configuratie-instellingen opslaan met container
 
-Als u wilt alle configuratie-instellingen opslaan, maakt u een `Dockerfile` met deze instellingen.
+Maak een `Dockerfile` met deze instellingen om alle configuratie-instellingen op te slaan.
 
-Problemen met deze methode:
+Problemen met deze aanpak:
 
-* De nieuwe container is een afzonderlijke naam en het label van de oorspronkelijke container.
-* Als u wilt deze instellingen wijzigt, moet u de waarden van het bestand Dockerfile wijzigen, de installatiekopie herbouwen en opnieuw publiceren naar het register.
-* Als iemand anders toegang tot uw container registry of uw lokale host, kunnen ze voert u de container en gebruikmaken van de Cognitive Services-eindpunten.
-* Als uw Cognitive Service geen invoer koppelingen vereist, niet toevoegen de `COPY` regels die moeten worden uw docker-bestand.
+* De nieuwe container heeft een afzonderlijke naam en label van de oorspronkelijke container.
+* Als u deze instellingen wilt wijzigen, moet u de waarden van de Dockerfile wijzigen, de installatie kopie opnieuw samen stellen en opnieuw publiceren naar het REGI ster.
+* Als iemand toegang krijgt tot uw container register of uw lokale host, kan deze de container uitvoeren en de Cognitive Services-eind punten gebruiken.
+* Als uw cognitieve service geen invoer koppels vereist, voegt u de `COPY` lijnen niet toe aan uw Dockerfile.
 
-Docker-bestand, vanuit de bestaande Cognitive Services-container die u gebruiken wilt, maakt vervolgens gebruik van docker-opdrachten in het Dockerfile in te stellen of het ophalen van gegevens in de container moet.
+Maak Dockerfile, haal uit de bestaande Cognitive Services-container die u wilt gebruiken, en gebruik vervolgens docker-opdrachten in de Dockerfile om informatie in te stellen of in te trekken die de container nodig heeft.
 
-In dit voorbeeld:
+Dit voor beeld:
 
-* Hiermee stelt u het eindpunt van de facturering `{BILLING_ENDPOINT}` vanaf de host de sleutel van de omgeving met behulp van `ENV`.
-* Stelt de facturering API-sleutel, `{ENDPOINT_KEY}` vanaf de host de sleutel van de omgeving met behulp van ' ENV.
+* Hiermee stelt u het facturerings eindpunt `{BILLING_ENDPOINT}` in op basis van de omgevings sleutel van de host met. `ENV`
+* Hiermee stelt u de facturerings- `{ENDPOINT_KEY}` API-sleutel van de omgevings sleutel van de host in met behulp van ' env.
 
-### <a name="reuse-recipe-store-billing-settings-with-container"></a>Hergebruik van recept: sla de instellingen van de facturering met container
+### <a name="reuse-recipe-store-billing-settings-with-container"></a>Recept hergebruiken: facturerings instellingen opslaan met container
 
-In dit voorbeeld laat zien hoe de Text Analytics sentiment container van een docker-bestand maken.
+In dit voor beeld ziet u hoe u de Text Analytics ' sentiment-container bouwt van een Dockerfile.
 
 ```Dockerfile
 FROM mcr.microsoft.com/azure-cognitive-services/sentiment:latest
@@ -64,15 +64,15 @@ ENV apikey={ENDPOINT_KEY}
 ENV EULA=accept
 ```
 
-Bouwen en uitvoeren van de container [lokaal](#how-to-use-container-on-your-local-host) of van uw [privéregister container](#how-to-add-container-to-private-registry) indien nodig.
+Bouw en voer de container [lokaal](#how-to-use-container-on-your-local-host) of vanuit uw [privé register container](#how-to-add-container-to-private-registry) waar nodig uit.
 
-### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>Hergebruik van recept: opslaan van facturering en instellingen met de container voor koppelen
+### <a name="reuse-recipe-store-billing-and-mount-settings-with-container"></a>Recept hergebruiken: instellingen voor facturering en koppelen opslaan met container
 
-In dit voorbeeld laat zien hoe u Language Understanding, facturering en modellen uit het bestand Dockerfile opslaan.
+In dit voor beeld ziet u hoe u Language Understanding gebruikt, facturering en modellen opslaat vanuit de Dockerfile.
 
-* Het model Language Understanding (LUIS)-bestand uit van de host van het bestand gekopieerd met behulp van system `COPY`.
-* De container LUIS ondersteunt meer dan één model. Als alle modellen worden opgeslagen in dezelfde map, moet u alle een `COPY` instructie.
-* Voer het docker-bestand van het relatieve bovenliggende item van de invoermap model. Voer voor het volgende voorbeeld wordt de `docker build` en `docker run` opdrachten van het relatieve bovenliggende `/input`. De eerste `/input` op de `COPY` opdracht is van de hostcomputer directory. De tweede `/input` is de map van de container.
+* Kopieert het Language Understanding model bestand (LUIS) van het bestands systeem van de host `COPY`met behulp van.
+* De LUIS-container ondersteunt meer dan één model. Als alle modellen in dezelfde map zijn opgeslagen, hebt u één `COPY` instructie nodig.
+* Voer het docker-bestand uit vanaf de relatieve bovenliggende map van de model invoer Directory. Voer voor het volgende voor beeld de `docker build` opdrachten `docker run` en uit vanaf het relatieve bovenliggende `/input`item van. De eerste `/input` op de `COPY` opdracht is de map van de hostcomputer. De tweede `/input` is de map van de container.
 
 ```Dockerfile
 FROM <container-registry>/<cognitive-service-container-name>:<tag>
@@ -82,67 +82,67 @@ ENV EULA=accept
 COPY /input /input
 ```
 
-Bouwen en uitvoeren van de container [lokaal](#how-to-use-container-on-your-local-host) of van uw [privéregister container](#how-to-add-container-to-private-registry) indien nodig.
+Bouw en voer de container [lokaal](#how-to-use-container-on-your-local-host) of vanuit uw [privé register container](#how-to-add-container-to-private-registry) waar nodig uit.
 
-## <a name="how-to-use-container-on-your-local-host"></a>Het gebruik van de container op uw lokale host
+## <a name="how-to-use-container-on-your-local-host"></a>Container gebruiken op uw lokale host
 
-Voor het bouwen van de Docker-bestand, Vervang `<your-image-name>` met de nieuwe naam van de afbeelding vervolgens gebruiken:
+Als u het docker-bestand wilt `<your-image-name>` maken, vervangt u door de nieuwe naam van de installatie kopie en gebruikt u vervolgens:
 
 ```console
 docker build -t <your-image-name> .
 ```
 
-Aan de installatiekopie uitvoert, en deze te verwijderen wanneer de container wordt gestopt (`--rm`):
+Als u de installatie kopie wilt uitvoeren en deze wilt verwijderen wanneer de`--rm`container stopt ():
 
 ```console
 docker run --rm <your-image-name>
 ```
 
-## <a name="how-to-add-container-to-private-registry"></a>Container toevoegen aan persoonlijke register
+## <a name="how-to-add-container-to-private-registry"></a>Een container toevoegen aan een persoonlijk REGI ster
 
-Volg deze stappen voor het gebruik van de docker-bestand en de nieuwe installatiekopie in uw persoonlijke containerregister plaatsen.  
+Volg deze stappen om de Dockerfile te gebruiken en plaats de nieuwe installatie kopie in het persoonlijke container register.  
 
-1. Maak een `Dockerfile` met de tekst van recept voor hergebruik. Een `Dockerfile` beschikt niet over een uitbreiding.
+1. Maak een `Dockerfile` met de tekst van het opnieuw gebruiken van het recept. A `Dockerfile` heeft geen extensie.
 
-1. Alle waarden in de punthaken vervangen door uw eigen waarden.
+1. Vervang waarden in de punt haken door uw eigen waarden.
 
-1. Bouw het bestand in een installatiekopie op de opdrachtregel of de terminal, met de volgende opdracht. Vervang de waarden in de punthaken `<>`, met uw eigen containernaam en het label.  
+1. Bouw het bestand in een installatie kopie op de opdracht regel of in de Terminal met de volgende opdracht. Vervang de waarden in de punt haken, `<>`met uw eigen container naam en label.  
 
-    De optie tag `-t`, is een manier om informatie over wat u hebt gewijzigd voor de container toevoegen. Bijvoorbeeld, een containernaam zijn van `modified-LUIS` geeft aan dat de oorspronkelijke container heeft is gelaagd. De naam van een tag van `with-billing-and-model` geeft aan hoe de container Language Understanding (LUIS) is gewijzigd.
+    De tag optie, `-t`, is een manier om informatie toe te voegen over wat u voor de container hebt gewijzigd. Een container naam van `modified-LUIS` geeft bijvoorbeeld aan dat de oorspronkelijke container is gelaagd. De label naam van `with-billing-and-model` geeft aan hoe de container language Understanding (Luis) is gewijzigd.
 
     ```Bash
     docker build -t <your-new-container-name>:<your-new-tag-name> .
     ```
 
-1. Meld u op een console bij Azure CLI. Met deze opdracht opent een browservenster en verificatie is vereist. Eenmaal is geverifieerd, kunt u de browser sluit en doorgaan met werken in de console.
+1. Meld u aan bij Azure CLI vanuit een-console. Met deze opdracht wordt een browser geopend en is verificatie vereist. Nadat u bent geverifieerd, kunt u de browser sluiten en blijven werken in de-console.
 
-    ```azure-cli
+    ```azurecli
     az login
     ```
 
-1. Meld u aan uw persoonlijke register met Azure CLI op een console.
+1. Meld u aan bij uw persoonlijke REGI ster met Azure CLI vanuit een-console.
 
-    Vervang de waarden in de punthaken `<my-registry>`, met de registernaam van uw eigen.  
+    Vervang de waarden in de punt haken, `<my-registry>`met uw eigen register naam.  
 
-    ```azure-cli
+    ```azurecli
     az acr login --name <my-registry>
     ```
 
-    U kunt zich ook aanmelden met dockeraanmelding als u een service-principal zijn toegewezen.
+    U kunt zich ook aanmelden met docker-aanmelding als u een Service-Principal hebt toegewezen.
 
     ```Bash
     docker login <my-registry>.azurecr.io
     ```
 
-1. De container met de persoonlijke registerlocatie-code. Vervang de waarden in de punthaken `<my-registry>`, met de registernaam van uw eigen. 
+1. Label de container met de locatie van het persoonlijke REGI ster. Vervang de waarden in de punt haken, `<my-registry>`met uw eigen register naam. 
 
     ```Bash
     docker tag <your-new-container-name>:<your-new-tag-name> <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
     ```
 
-    Als u niet de naam van een tag `latest` wordt geïmpliceerd.
+    Als u geen label naam gebruikt, `latest` wordt geïmpliceerd.
 
-1. De nieuwe installatiekopie naar uw persoonlijke containerregister pushen. Wanneer u uw persoonlijke containerregister bekijkt, is de containernaam die wordt gebruikt in de volgende CLI-opdracht is de naam van de opslagplaats.
+1. Push de nieuwe installatie kopie naar uw persoonlijke container register. Wanneer u uw persoonlijke container register bekijkt, wordt de naam van de opslag plaats die wordt gebruikt in de volgende CLI-opdracht.
 
     ```Bash
     docker push <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
@@ -151,7 +151,7 @@ Volg deze stappen voor het gebruik van de docker-bestand en de nieuwe installati
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Maken en gebruiken van Azure Container Instances](azure-container-instance-recipe.md)
+> [Azure container instance maken en gebruiken](azure-container-instance-recipe.md)
 
 <!--
 ## Store input and output configuration settings

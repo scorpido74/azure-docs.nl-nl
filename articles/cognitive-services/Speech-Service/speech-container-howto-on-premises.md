@@ -1,5 +1,5 @@
 ---
-title: Gebruiken met Kubernetes en helm-Speech Service
+title: De speech service-container gebruiken met Kubernetes en helm
 titleSuffix: Azure Cognitive Services
 description: Door Kubernetes en helm te gebruiken om de installatie kopieën van het spraak naar tekst-en tekst-naar-spraak-container te definiëren, maken we een Kubernetes-pakket. Dit pakket wordt on-premises geïmplementeerd op een Kubernetes-cluster.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/16/2019
+ms.date: 8/26/2019
 ms.author: dapine
-ms.openlocfilehash: d8a5b941be34028f7a1c53e39b38ab30714ba301
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 3c8ffcdb08fc99f5d815639e14fb4456fbd035e8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971342"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066489"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Gebruiken met Kubernetes en Helm
+# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>De speech service-container gebruiken met Kubernetes en helm
 
 Een optie voor het on-premises beheren van uw spraak containers is het gebruik van Kubernetes en helm. Door Kubernetes en helm te gebruiken om de installatie kopieën van het spraak naar tekst-en tekst-naar-spraak-container te definiëren, maken we een Kubernetes-pakket. Dit pakket wordt on-premises geïmplementeerd op een Kubernetes-cluster. Ten slotte verkennen we hoe u de geïmplementeerde Services en verschillende configuratie opties kunt testen. Zie [Install and run Speech Service containers](speech-container-howto.md)(Engelstalig) voor meer informatie over het uitvoeren van docker-containers zonder Kubernetes-indeling.
 

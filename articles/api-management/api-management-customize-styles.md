@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658082"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073700"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>De stijl van de pagina's van de ontwikkelaarsportal aanpassen
 
@@ -57,11 +56,11 @@ In deze zelfstudie leert u het volgende:
     Alle elementen die u kunt aanpassen met behulp van **Stijlen** worden weergegeven op de pagina
 5. Voer 'headings-color' in het veld **Wijzigen van de waarden om de weergave van het ontwikkelaarsportal aan te passen:** in.
 
-    De  **\@headings-color** element wordt weergegeven op de pagina. Deze variabele bepaalt de kleur van de tekst.
+    Het element kop-Color wordt weer gegeven op de pagina.  **\@** Deze variabele bepaalt de kleur van de tekst.
 
     ![stijl aanpassen](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Klik op het veld voor de  **\@headings-color** variabele. 
+6. Klik op het veld voor de  **\@variabele koppen-kleur** . 
     
     De vervolgkeuzelijst Kleurenkiezer wordt geopend.
 7. Selecteer een nieuwe kleur uit de vervolgkeuzelijst Kleurenkiezer.

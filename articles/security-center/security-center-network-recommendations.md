@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6dfd3bd86e55d19bf1c15486a502a4cbab3c96a8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905308"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101014"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Uw netwerk bronnen beveiligen in Azure Security Center
 Azure Security Center de beveiligings status van uw Azure-resources voortdurend geanalyseerd op de aanbevolen procedures voor netwerk beveiliging. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
@@ -153,7 +153,6 @@ DDoS Protection standaard moet zijn ingeschakeld|Beveilig virtuele netwerken met
 Zie de volgende onderwerpen voor meer informatie over aanbevelingen die betrekking hebben op andere typen Azure-resources:
 
 * [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
-* [Protecting your applications in Azure Security Center](security-center-application-recommendations.md) (Uw toepassingen beveiligen in Azure Security Center)
 * [Beveiligen van uw Azure SQL-service in Azure Security Center](security-center-sql-service-recommendations.md)
 
 Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:

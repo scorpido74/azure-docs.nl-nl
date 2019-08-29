@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abe04a88f3337ed26b98815b5633fd5d719b7ce3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2d6170dead4e8577cea6883ffea25b90ebe39b88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234231"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078997"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>SAP-werk belasting op de Azure-planning en implementatie Controlelijst 
 
@@ -159,7 +158,7 @@ De pilot kan worden uitgevoerd vóór of parallel aan project planning en-voor b
    3.  Zorg ervoor dat alle resources die moeten worden versleuteld, zijn versleuteld. Definieer en voer processen uit om een back-up te maken van certificaten, opslag en toegang te krijgen tot deze certificaten en herstel de versleutelde entiteiten. 
    4.  Gebruik [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) en/of voor besturingssysteem schijven waar mogelijk vanuit een besturings systeem wordt weer gegeven.
    5.  Controleer of er niet te veel versleutelings lagen zijn gebruikt. Het maakt niet alleen gebruik van Azure Disk Encryption en vervolgens op een van de transparante data base-versleutelings methoden van DBMS
-6. Prestaties testen
+6. Prestatietesten
    1.  In SAP op basis van SAP-tracering en-metingen, de Top 10 online-rapporten vergelijken met de huidige implementatie, indien van toepassing 
    2.  In SAP op basis van SAP-tracering en-metingen, de eerste 10 batch-taken vergelijken met de huidige implementatie, indien van toepassing 
    3.  In SAP op basis van SAP-tracering en-metingen, vergelijkt u gegevens overdracht via interfaces in het SAP-systeem. Richt u op de interfaces waar u weet dat de overdracht nu plaatsvindt tussen verschillende locaties, zoals van on-premises naar Azure 

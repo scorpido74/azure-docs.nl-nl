@@ -3,15 +3,15 @@ title: Meer informatie over het configureren en beheren van Time to Live in Azur
 description: Meer informatie over het configureren en beheren van Time to Live in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: bb67e6e4fbef51a0fbd26efd2618be8cc9896beb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797742"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092992"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Time to Live configureren in Azure Cosmos DB
 
@@ -37,9 +37,9 @@ Gebruik de volgende stappen om Time to Live in te schakelen op een container zon
    ![Time to Live configureren in de Azure-portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
 
-- Als DefaultTimeToLive null is vervolgens is uw Time to Live uitgeschakeld
-- Wanneer DefaultTimeToLive wordt -1 en vervolgens de Time-to Live-instelling is ingeschakeld (geen standaard)
-- Wanneer DefaultTimeToLive een andere Int-waarde (met uitzondering van 0 heeft) is de Time-to Live-instelling ingeschakeld
+- Als DefaultTimeToLive leeg is, is uw Time to Live uitgeschakeld
+- Als DefaultTimeToLive is ingesteld op-1, is de instelling van uw Time to Live ingeschakeld (geen standaard waarde)
+- Als DefaultTimeToLive een andere int-waarde heeft (behalve 0), is de Time to Live instelling ingeschakeld
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Time to Live inschakelen op een container met behulp van de SDK
 
@@ -103,7 +103,7 @@ U kunt niet alleen de standaardwaarde voor Time to Live voor een container inste
 
 ### <a id="portal-set-ttl-item"></a>Azure-portal
 
-Gebruik de volgende stappen uit om in te schakelen time to live op een item van:
+Gebruik de volgende stappen om TTL op een item in te scha kelen:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
@@ -115,10 +115,10 @@ Gebruik de volgende stappen uit om in te schakelen time to live op een item van:
 
    * Open het venster **Schaal en instellingen**.
    * Onder **Instelling** zoekt u **Time to Live**.
-   * Selecteer **op (niet standaard)** of selecteer **op** en stel een TTL-waarde. 
+   * Selecteer **aan (geen standaard instelling)** of selecteer aan en stel een TTL-waarde **in** . 
    * Klik op **Opslaan** om de wijzigingen op te slaan.
 
-5. Vervolgens gaat u naar het item waarvoor u wenst te insteltijd voor de live, voegt u de `ttl` eigenschap en selecteer **Update**. 
+5. Ga vervolgens naar het item waarvoor u de tijd wilt instellen op Live, voeg de `ttl` eigenschap toe en selecteer **bijwerken**. 
 
    ```json
    {
@@ -208,7 +208,7 @@ response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disable-time-to-live"></a>Time to Live uitschakelen
 
-Als u Time to Live voor een container wilt uitschakelen en het achtergrondproces dat op verlopen items controleert, wilt stoppen, moet eigenschap `DefaultTimeToLive` op de container worden verwijderd. Het verwijderen van deze eigenschap is iets anders dan het instellen ervan op -1. Als u de eigenschap op -1 instelt, zullen nieuwe items die aan de container worden toegevoegd, nooit verlopen. U kunt deze waarde echter voor bepaalde items in de container overschrijven. Wanneer u de TTL-eigenschap verwijderd uit de container verloopt de items nooit, zelfs als er zijn dat ze expliciet de vorige standaard TTL-waarde zijn overschreven.
+Als u Time to Live voor een container wilt uitschakelen en het achtergrondproces dat op verlopen items controleert, wilt stoppen, moet eigenschap `DefaultTimeToLive` op de container worden verwijderd. Het verwijderen van deze eigenschap is iets anders dan het instellen ervan op -1. Als u de eigenschap op -1 instelt, zullen nieuwe items die aan de container worden toegevoegd, nooit verlopen. U kunt deze waarde echter voor bepaalde items in de container overschrijven. Wanneer u de eigenschap TTL uit de container verwijdert, blijven de items nooit verlopen, zelfs als ze expliciet de vorige standaard TTL-waarde hebben overschreven.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 

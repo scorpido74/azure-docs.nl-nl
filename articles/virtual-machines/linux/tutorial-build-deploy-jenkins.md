@@ -6,19 +6,18 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478364"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081657"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Zelfstudie: Uw app implementeren voor Linux Virtual Machines in Azure met Jenkins en Azure DevOps Services
 
@@ -35,7 +34,7 @@ naar een [implementatiegroep](https://docs.microsoft.com/azure/devops/pipelines/
 > * Jenkins configureren voor de integratie met Azure DevOps Services.
 > * Een Jenkins-service-eindpunt maken.
 > * Een implementatiegroep maakt voor de virtuele Azure-machines.
-> * Maak een Azure-pijplijnen release-pijplijn.
+> * Een release pijplijn voor een Azure-pijp lijn maken.
 > * Handmatige en door CI geactiveerde implementaties uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
@@ -133,7 +132,7 @@ U hebt een [implementatiegroep](https://www.visualstudio.com/docs/build/concepts
 
 1. Open het tabblad **Releases** van de hub **Release&amp; maken**, open **Implementatiegroepen** en selecteer **+ nieuw**.
 2. Geef een naam voor de implementatiegroep en een optionele beschrijving op. Selecteer vervolgens **Maken**.
-3. Kies het besturingssysteem voor de virtuele machine van uw implementatiedoel. Selecteer bijvoorbeeld **Ubuntu 16.04+**.
+3. Kies het besturingssysteem voor de virtuele machine van uw implementatiedoel. Selecteer bijvoorbeeld **Ubuntu 16.04+** .
 4. Selecteer **Een persoonlijk toegangstoken in het script gebruiken voor verificatie**.
 5. Selecteer de koppeling **Systeemvereisten**. Installeer de vereisten voor uw besturingssysteem.
 6. Selecteer **Script kopiëren naar Klembord** om het script te kopiëren.
@@ -141,7 +140,7 @@ U hebt een [implementatiegroep](https://www.visualstudio.com/docs/build/concepts
 8. Na de installatie wordt u gevraagd om implementatiegroepstags. Accepteer de standaardwaarden.
 9. Controleer in Azure DevOps Services uw zojuist geregistreerde virtuele machine in **Doelen** onder **Implementatiegroepen**.
 
-## <a name="create-an-azure-pipelines-release-pipeline"></a>Een Azure-pijplijnen release-pijplijn
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Een release pijplijn voor een Azure-pijp lijn maken
 
 Met een release-pijplijn geeft u het proces op dat in Azure DevOps Services wordt gebruikt om de app te implementeren. In dit voorbeeld voert u een shellscript uit.
 
@@ -166,7 +165,7 @@ De release-pijplijn in Azure Pipelines maken:
 2. Selecteer de build die u hebt voltooid in de gemarkeerde vervolgkeuzelijst en selecteer **Wachtrij**.
 3. Kies de releasekoppeling in het pop-upbericht. Bijvoorbeeld: 'Release **Release 1** is gemaakt'.
 4. Open het tabblad **Logboeken** om de uitvoer van de releaseconsole te bekijken.
-5. Open in uw browser de URL van een van de servers die u hebt toegevoegd aan de implementatiegroep. Typ bijvoorbeeld **http://{ip-adres-van-uw-server}**.
+5. Open in uw browser de URL van een van de servers die u hebt toegevoegd aan de implementatiegroep. Typ bijvoorbeeld **http://{ip-adres-van-uw-server}** .
 6. Ga naar de Git-bronopslagplaats en wijzig de inhoud van de kop **h1** in het bestand app/views/index.jade met gewijzigde tekst.
 7. Voer uw wijziging door.
 8. Na een paar minuten ziet u dat er een nieuwe release is gemaakt op de pagina **Releases** van Azure DevOps. Open de release om te zien welke implementatie wordt uitgevoerd. Gefeliciteerd!

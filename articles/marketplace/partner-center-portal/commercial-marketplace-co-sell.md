@@ -1,0 +1,88 @@
+---
+title: Optie voor co-sell in Partner Center | Azure Marketplace
+description: De gegevens die u opgeeft op het tabblad verkopen van uw aanbieding, worden door micro soft Sales-teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften.
+author: qianw211
+manager: evansma
+ms.author: v-qiwe
+ms.service: marketplace
+ms.topic: conceptual
+ms.date: 08/27/2019
+ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076106"
+---
+# <a name="co-sell-option-in-partner-center"></a>Optie voor co-sell in Partner Center
+
+Het is volledig optioneel om informatie op het tabblad samen verkopen op te geven. Het is vereist voor het vergemakkelijkt van de verkoop van Ready en de status van de voor bereidingen op de IP-mede verkoop. De gegevens die u verstrekt, worden door micro soft Sales teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften. Het is niet rechtstreeks beschikbaar voor klanten. Zie voor meer informatie [verkopen via micro soft](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft).
+
+## <a name="applicable-products"></a>Toepasselijke producten
+
+Kies een van de micro soft-producten die uw aanbieding heeft gebouwd op of ontworpen om te werken met.
+
+## <a name="customer-segments"></a>Klant segmenten
+
+Selecteer de grootte van het bedrijf waarvoor uw aanbieding bestemd is.
+
+## <a name="offer-type"></a>Type aanbieding
+
+Selecteer uw aanbiedings type:
+
+| **Aanbiedings type**    | **Beschrijving**  |
+| :------------------- | :-------------------|
+| Apparaat | Een aanbieding waarbij u hardware van een apparaatfabrikant bouwt of verkoopt. |
+| IP | Apps of andere auteurs rechtelijk beschermde materialen waarvoor het gebruik van de klant in licentie is gegeven. Bijvoorbeeld: een CRM-programma dat on-premises kan worden gelicentieerd en geïnstalleerd. |
+| Service | Praktische kennis voor een specifiek eenmalig project, vaak geleverd via consultants. Bijvoorbeeld: het instellen van een klanten database voor een-client (waarbij de client na levering verantwoordelijk is voor de uitvoering van de data base). |
+| Beheerde service | Praktijk gerichte expertise voor een Cloud project, meestal op doorlopende basis. Bijvoorbeeld: Bieden van een platform en hulpprogram ma's voor het uitvoeren van een online database, met doorlopend beheer van de beheerde service provider. |
+
+## <a name="solution-areas"></a>Oplossings gebieden
+
+U kunt Maxi maal drie oplossings gebieden toevoegen voor uw aanbieding.  Voor elk oplossings gebied kunt u Maxi maal twee subgebieden voor de oplossing kiezen. Als u meerdere subcategorieën wilt selecteren, `Ctrl` gebruikt u de sleutel (op Windows) of de opdracht toets (op Mac OS).
+
+Oplossings gebieden helpen u bij het bepalen van de scenario's die uw aanbieding is ontworpen om te voldoen aan het doel.
+
+## <a name="documents"></a>Documenten
+
+| **Faxdocumenten**    | **Beschrijving**  |
+| :------------------- | :-------------------|
+| *Klant met één pager* | Voor de klant geschikte beschrijving van uw aanbieding. Micro soft verkoop teams kunnen deze informatie delen met klanten om te helpen bepalen of uw aanbieding goed kan worden aangepast en om ervoor te zorgen dat de klant klaar is. <br> <br> Gebruik een van de volgende relevante sjablonen: <br> <ul> <li> [Microsoft Azure sjabloon met één pager](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Micro soft Dynamics 365 1-pager sjabloon](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Office 365 1-pager sjabloon](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Windows 10 1-pager sjabloon](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+ |
+| *Presentatie van de klant* | Schuif in het diamodel om uw oplossing te verkopen en de toegevoegde waarde. Nadat u hebt gecontroleerd of uw aanbieding klaar is voor de klant, delen micro soft verkoop teams de presentatie mogelijk met klanten om de waarde te geleeren die beide bedrijven meebrengen bij het implementeren van een gemeen schappelijke oplossing. De presentatie moet betrekking hebben op de werking van uw oplossing, hoe deze kan helpen klanten, welke branches de oplossing is voor en hoe deze worden vergeleken met concurrerende oplossingen. <br> <br> Zie voor meer informatie [klant presentatie sjabloon](https://aka.ms/GTMServices_CustomerPresentation).|
+| *Casestudy van de klant* | Deze informatie toont een mogelijke klant hoe u en micro soft deze oplossing in eerdere gevallen hebben geïmplementeerd. <br> <br> Zie voor meer informatie [sjabloon casestudy](https://aka.ms/GTM_Case_Study_Template). |
+| *Verifieer bare klant-WINS (optioneel)* | Specifieke voor beelden van klant successen nadat uw oplossing is geïmplementeerd. |
+| *Channel pitch-dek (optioneel)* | Een diapresentatie met informatie waarmee de wederverkopers van het kanaal kunnen leren om meer te weten te komen over uw oplossing en om de verkoop teams gereed te stellen om uw aanbieding te verkopen. Dit omvat doorgaans een lift, informatie over doel klanten, vragen om klanten, pratende punten en koppelingen naar Video's, documentatie en ondersteunings informatie te vragen. |
+| *Diagrammen voor referentie architectuur* | Een document waarin het model wordt weer gegeven dat staat voor het IP-adres dat is gemaakt door de partner, samen met de relatie met micro soft-Cloud Services, en hoe het kan voldoen aan de technische vereisten van het programma voor het Program meren van de IP. |
+| *Andere documenten* | U kunt eventueel Maxi maal vijf extra documenten of Video's uploaden om micro soft verkoop teams en-wederverkopers te helpen om meer te weten te komen over uw oplossing, organisatie en/of verschillen. |
+| *URL van externe verwijzing* | De koppeling naar de site van uw product, waar micro soft Sales teams en Channel wederverkopers meer informatie over uw oplossing hebben. |
+
+## <a name="contacts"></a>Contactpersonen
+
+Met uw contact gegevens kunnen micro soft verkoop teams en Channel wederverkopers vragen om aanvullende informatie van de juiste resource in uw organisatie. Contact gegevens zijn beschikbaar voor alle verkoop teams van micro soft. Als u ervoor kiest om uw aanbieding beschikbaar te stellen in het CSP-programma, is deze contact informatie ook beschikbaar voor Channel-wederverkopers. 
+
+Dit document bevat richt lijnen voor de verschillende rollen voor partners en hoe u er een kunt kiezen. U kunt uw contact personen opgeven door de CSV-sjabloon te downloaden van het partner centrum, elke rij in te vullen met informatie over de contact persoon en dit CSV-bestand te importeren. Als u een CSV-bestand importeert, worden de bestaande contact personen overschreven.
+
+U kunt ook uw bestaande lijst met contact personen van een aanbieding exporteren en vervolgens wijzigingen aanbrengen in dat bestand.
+
+* *Naam (vereist)* : De naam van de contact persoon.
+* *E-mail adres (vereist)* : Het e-mail adres van de contact persoon.
+* *Taak titel (vereist)* : Taak titel.
+* *Rol (vereist)* : Gebruik een van de volgende rollen in dit veld in de sjabloon.
+
+    | **Rol**    | **Beschrijving**  |
+    | :------------------- | :-------------------|
+    | *Partner marketing* | Deze rol is gericht op het marketing van uw oplossing en het samen werken met marketing activiteiten met micro soft verkoop teams en Channel-wederverkopers. Het belangrijkste contact punt voor marketing afspraken en aanbiedings inhoud, zoals product beschrijvingen, afbeeldingen en Video's. |
+    | *Partner verkoop* | Deze rol is gericht op het verkopen van uw oplossing en samen werking met verkopen met micro soft verkoop teams en Channel wederverkopers. Voor oplossingen voor co-verkoop geeft u ten minste één partner verkoop contactpersoon per regio op waarin u klaar wilt zijn voor samen verkopen. De contact persoon van dezelfde partner kan meerdere regio's omvatten. |
+    | *Technische verkoop partner* | Ondersteunt technische architectuur-en implementatie overwegingen tijdens de verkoop cyclus, de integratie na verkoop en implementaties. |
+    | *Klant succes Manager van de partner* | Biedt doorgaans ondersteuning voor klanten die na de implementatie profiteren, om hen te helpen het meeste uit uw oplossing te halen en de footprint binnen de organisatie van de klant te verg Roten. |
+
+* *Landen/regio's (vereist):*  Gebruik bij het invullen van de sjabloon de [land-/regiocodes van twee letters zoals vermeld](./commercial-marketplace-co-sell-countries.md). Als de contact persoon alle landen/regio's omvat, gebruikt u de drie letter code ' OOO '. Als een contact persoon meer dan één land/regio omvat, voert u elk van de twee letter codes gescheiden door een komma in (Voer bijvoorbeeld ' US, CA, FR ' in de sjabloon in).
+
+    De landen/regio's moeten overeenkomen met het rayon van elke contact persoon. Micro soft verkoop teams en Channel-wederverkopers gebruiken deze informatie voor het aanvragen van informatie of het samen werken aan verkoop binnen het specifieke land/de regio.
+
+* *Staten/provincies (optioneel):*  Gebruik bij het invullen van de sjabloon de XX-XX-indeling zoals vermeld in de [tabel provincies/provincies](./commercial-marketplace-co-sell-states.md).
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Zie [verkopen met micro soft](https://partner.microsoft.com/membership/sell-with-microsoft)voor meer informatie.

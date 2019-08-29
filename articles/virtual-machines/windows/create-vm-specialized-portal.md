@@ -1,6 +1,6 @@
 ---
-title: Een virtuele Windows-machine maken vanaf een gespecialiseerde VHD in Azure portal | Microsoft Docs
-description: Maak een nieuwe Windows-VM vanaf een VHD in de Azure-portal.
+title: Maak een Windows-VM op basis van een gespecialiseerde VHD in de Azure Portal | Microsoft Docs
+description: Maak een nieuwe Windows-VM op basis van een VHD in het Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -10,74 +10,73 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: cadd4b16ab111f46e49429c6d99e0e692325b3b1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718934"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079647"
 ---
-# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Een virtuele machine van een VHD maken met behulp van Azure portal
+# <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Een virtuele machine maken op basis van een VHD met behulp van de Azure Portal
 
-Er zijn verschillende manieren om u te maken van een virtuele machine (VM) in Azure: 
+Er zijn verschillende manieren om een virtuele machine (VM) in azure te maken: 
 
-- Als u al een virtuele harde schijf (VHD) te gebruiken of als u kopiëren van de VHD van een bestaande virtuele machine wilt te gebruiken, kunt u een nieuwe virtuele machine door *koppelen* de VHD met de nieuwe virtuele machine als een besturingssysteemschijf. 
+- Als u al een virtuele harde schijf (VHD) hebt die u kunt gebruiken of als u de VHD wilt kopiëren van een bestaande virtuele machine om te gebruiken, maakt u een nieuwe virtuele machine door de VHD aan de nieuwe virtuele machine toe te voegen als een besturingssysteem schijf. 
 
-- U kunt een nieuwe virtuele machine maken van de VHD van een virtuele machine die is verwijderd. Bijvoorbeeld, als u een Azure-VM die niet goed werkt hebt, kunt u verwijderen van de virtuele machine en bijbehorende VHD gebruiken voor het maken van een nieuwe virtuele machine. U kunt dezelfde VHD gebruiken of een kopie van de VHD maken met het maken van een momentopname en vervolgens een nieuwe beheerde schijf maken op basis van de momentopname. Hoewel het maken van een momentopname van een enkele extra stappen nodig, blijven behouden de oorspronkelijke VHD en biedt u een terugval.
+- U kunt een nieuwe virtuele machine maken op basis van de VHD van een virtuele machine die is verwijderd. Als u bijvoorbeeld een virtuele machine van Azure hebt die niet correct werkt, kunt u de virtuele machine verwijderen en de VHD gebruiken om een nieuwe virtuele machine te maken. U kunt dezelfde VHD opnieuw gebruiken of een kopie van de VHD maken door een moment opname te maken en vervolgens een nieuwe beheerde schijf te maken op basis van de moment opname. Hoewel het maken van een moment opname een paar stappen onderneemt, wordt de oorspronkelijke VHD bewaard en krijgt u een terugval.
 
-- Een klassieke virtuele machine maken en gebruiken van de VHD te maken van een nieuwe virtuele machine die gebruikmaakt van de Resource Manager-implementatiemodel en beheerde schijven. Voor de beste resultaten **stoppen** de klassieke virtuele machine in Azure portal voor het maken van een momentopname.
+- Maak een klassieke virtuele machine en gebruik de VHD om een nieuwe VM te maken die gebruikmaakt van het Resource Manager-implementatie model en Managed disks. Voor de beste resultaten **stopt** u de klassieke vm in de Azure Portal voordat u de moment opname maakt.
  
-- U kunt een Azure-VM maken van een on-premises-VHD door de on-premises VHD uploaden en deze te koppelen aan een nieuwe virtuele machine. U PowerShell of een ander hulpprogramma gebruiken voor het uploaden van de VHD naar een opslagaccount en vervolgens maakt u een beheerde schijf van de VHD. Zie voor meer informatie, [een gespecialiseerde VHD uploaden](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
+- U kunt een virtuele machine van Azure maken op basis van een on-premises VHD door de on-premises VHD te uploaden en deze te koppelen aan een nieuwe virtuele machine. U kunt Power shell of een ander hulp programma gebruiken om de VHD te uploaden naar een opslag account en vervolgens een beheerde schijf te maken op basis van de VHD. Zie [een speciale VHD uploaden](create-vm-specialized.md#option-2-upload-a-specialized-vhd)voor meer informatie. 
 
-Gebruik een gespecialiseerde schijf niet als u wilt maken van meerdere virtuele machines. In plaats daarvan voor grotere implementaties [maken van een installatiekopie](capture-image-resource.md) en vervolgens [die installatiekopie gebruiken om te maken van meerdere virtuele machines](create-vm-generalized-managed.md).
+Gebruik geen gespecialiseerde schijf als u meerdere Vm's wilt maken. Maak in plaats daarvan [een installatie kopie](capture-image-resource.md) voor grotere implementaties en [gebruik vervolgens de installatie kopie om meerdere vm's te maken](create-vm-generalized-managed.md).
 
 
-## <a name="copy-a-disk"></a>Een diskette kopiëren
+## <a name="copy-a-disk"></a>Een schijf kopiëren
 
-Een momentopname maken en maak vervolgens een schijf van de momentopname. Deze strategie kunt u de oorspronkelijke VHD als alternatieve methode houden:
+Maak een moment opname en maak een schijf van de moment opname. Met deze strategie kunt u de oorspronkelijke VHD als terugval gebruiken:
 
-1. Uit de [Azure-portal](https://portal.azure.com), selecteert u in het menu links **alle services**.
-2. In de **alle services** het zoekvak, typ **schijven** en selecteer vervolgens **schijven** om de lijst met beschikbare schijven weer te geven.
-3. Selecteer de schijf die u wilt gebruiken. De **schijf** pagina voor de schijf wordt weergegeven.
-4. Selecteer in het menu aan de bovenkant **maken momentopname**. 
-5. Voer een **naam** voor de momentopname.
-6. Kies een **resourcegroep** voor de momentopname. U kunt een bestaande resourcegroep gebruiken of een nieuwe maken.
-7. Voor **accounttype**, kiest u **standaard (HDD)** of **Premium (SSD)** opslag.
-8. Wanneer u klaar bent, selecteert u **maken** om de momentopname te maken.
-9. Nadat de momentopname is gemaakt, selecteert u **een resource maken** in het menu links.
-10. Voer in het zoekvak **beheerde schijf** en selecteer vervolgens **Managed Disks** in de lijst.
-11. Op de **Managed Disks** weergeeft, schakelt **maken**.
-12. Voer een **naam** voor de schijf.
-13. Kies een **resourcegroep** voor de schijf. U kunt een bestaande resourcegroep gebruiken of een nieuwe maken. Deze selectie wordt ook gebruikt als de resourcegroep waarin u de virtuele machine maken van de schijf.
-14. Voor **accounttype**, kiest u **standaard (HDD)** of **Premium (SSD)** opslag.
-15. In **gegevensbrontype**, zorg ervoor dat **momentopname** is geselecteerd.
-16. In de **bronmomentopname** vervolgkeuzelijst, selecteert u de momentopname die u wilt gebruiken.
-17. Breng eventuele wijzigingen aan en selecteer vervolgens **maken** om de schijf te maken.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in het linkermenu **alle services**.
+2. In het zoekvak **alle services** voert u **schijven** in en selecteert u vervolgens **schijven** om de lijst met beschik bare schijven weer te geven.
+3. Selecteer de schijf die u wilt gebruiken. De **schijf** pagina voor die schijf wordt weer gegeven.
+4. Selecteer in het menu bovenaan de optie **moment opname maken**. 
+5. Voer een **naam** in voor de moment opname.
+6. Kies een **resource groep** voor de moment opname. U kunt een bestaande resource groep gebruiken of een nieuwe maken.
+7. Voor **account type**kiest u **Standard-(HDD)** of **Premium-opslag (SSD)** .
+8. Wanneer u klaar bent, selecteert u **maken** om de moment opname te maken.
+9. Nadat de moment opname is gemaakt, selecteert u **een resource maken** in het menu links.
+10. In het zoekvak voert u **Managed Disk** in en selecteert u **Managed disks** in de lijst.
+11. Selecteer op de pagina **Managed disks** **maken**.
+12. Voer een **naam** in voor de schijf.
+13. Kies een **resource groep** voor de schijf. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Deze selectie wordt ook gebruikt als de resource groep waar u de virtuele machine maakt op basis van de schijf.
+14. Voor **account type**kiest u **Standard-(HDD)** of **Premium-opslag (SSD)** .
+15. Zorg ervoor dat in **bron type** **moment opname** is geselecteerd.
+16. Selecteer in de vervolg keuzelijst **bron momentopname** de moment opname die u wilt gebruiken.
+17. Breng eventuele andere aanpassingen aan en selecteer vervolgens **maken** om de schijf te maken.
 
-## <a name="create-a-vm-from-a-disk"></a>Een virtuele machine maken van een schijf
+## <a name="create-a-vm-from-a-disk"></a>Een virtuele machine maken op basis van een schijf
 
-Nadat u de beheerde schijf VHD die u wilt gebruiken hebt, kunt u de virtuele machine maken in de portal:
+Nadat u de virtuele harde schijf hebt die u wilt gebruiken, kunt u de virtuele machine maken in de portal:
 
-1. Uit de [Azure-portal](https://portal.azure.com), selecteert u in het menu links **alle services**.
-2. In de **alle services** het zoekvak, typ **schijven** en selecteer vervolgens **schijven** om de lijst met beschikbare schijven weer te geven.
-3. Selecteer de schijf die u wilt gebruiken. De **schijf** pagina voor de schijf wordt geopend.
-4. In de **overzicht** pagina, zorg ervoor dat **SCHIJFSTATUS** wordt vermeld als **gekoppeld**. Als dat niet, moet u mogelijk op de schijf loskoppelen van de virtuele machine of de virtuele machine om vrij te maken van de schijf verwijderen.
-4. Selecteer in het menu aan de bovenkant van de pagina **maken VM**.
-5. Op de **basisbeginselen** pagina voor de nieuwe virtuele machine, voer een **virtuele-machinenaam** en selecteer een bestaande **resourcegroep** of maak een nieuwe.
-6. Voor **grootte**, selecteer **grootte wijzigen** toegang krijgen tot de **grootte** pagina.
-7. Selecteer een rij van de grootte van virtuele machine en kies vervolgens **Selecteer**.
-8. Op de **netwerken** pagina, u kunt ofwel de portal voor alle nieuwe resources maken of kunt u een bestaande **virtueel netwerk** en **netwerkbeveiligingsgroep**. De portal maakt altijd een nieuwe netwerkinterface en openbare IP-adres voor de nieuwe virtuele machine. 
-9. Op de **Management** pagina, wijzigingen aanbrengen in de controle-opties.
-10. Op de **Gast config** pagina, alle extensies toevoegen, indien nodig.
-11. Wanneer u klaar bent, selecteert u **revisie + maken**. 
-12. Als de VM-configuratie is gevalideerd, selecteert u **maken** implementatie te starten.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in het linkermenu **alle services**.
+2. In het zoekvak **alle services** voert u **schijven** in en selecteert u vervolgens **schijven** om de lijst met beschik bare schijven weer te geven.
+3. Selecteer de schijf die u wilt gebruiken. De **schijf** pagina voor die schijf wordt geopend.
+4. Controleer op de pagina **overzicht** of de **status** van de schijf niet- **gekoppeld**is. Als dat niet het geval is, moet u mogelijk de schijf loskoppelen van de virtuele machine of de virtuele machine verwijderen om de schijf vrij te maken.
+4. Selecteer in het menu boven aan de pagina **VM maken**.
+5. Voer op de pagina **basis beginselen** voor de nieuwe virtuele **machine de naam** van een VM in en selecteer een bestaande **resource groep** of maak een nieuwe.
+6. Voor **grootte**selecteert u **grootte wijzigen** voor toegang tot de pagina **grootte** .
+7. Selecteer een rij met de VM-grootte en kies vervolgens **selecteren**.
+8. Op de pagina **netwerk** kunt u de portal alle nieuwe resources laten maken of u kunt een bestaand **virtueel netwerk** en een **netwerk beveiligings groep**selecteren. De portal maakt altijd een nieuwe netwerk interface en een openbaar IP-adres voor de nieuwe virtuele machine. 
+9. Breng wijzigingen aan in de bewakings opties op de pagina **beheer** .
+10. Voeg op de pagina **gast configuratie** alle gewenste uitbrei dingen toe.
+11. Wanneer u klaar bent, selecteert u **controleren + maken**. 
+12. Als de VM-configuratie wordt gevalideerd, selecteert u **maken** om de implementatie te starten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook PowerShell gebruiken om te gebruiken [een VHD uploaden naar Azure en het maken van een gespecialiseerde VM](create-vm-specialized.md).
+U kunt ook Power shell gebruiken om [een VHD te uploaden naar Azure en een gespecialiseerde virtuele machine te maken](create-vm-specialized.md).
 
 

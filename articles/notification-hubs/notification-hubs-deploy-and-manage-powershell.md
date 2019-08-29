@@ -1,6 +1,6 @@
 ---
 title: Notification Hubs implementeren en beheren met PowerShell
-description: Over het maken en beheren van Notification Hubs met behulp van PowerShell voor Automation
+description: Notification Hubs maken en beheren met behulp van Power shell voor automatisering
 services: notification-hubs
 documentationcenter: ''
 author: jwargo
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4dbbaeea736dd46478ad9992201ea28bd7bfc2ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cff6ef25d0fe812cc6df26bf946daff29d37f84
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457835"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102849"
 ---
-# <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Implementeren en beheren van notification hubs met behulp van PowerShell
+# <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Notification hubs implementeren en beheren met Power shell
 
 ## <a name="overview"></a>Overzicht
 
-Dit artikel leest u hoe het gebruik van maken en beheren van Azure Notification Hubs met behulp van PowerShell. De volgende algemene automatiseringstaken worden weergegeven in dit artikel.
+In dit artikel leest u hoe u Azure Notification Hubs maken en beheren met behulp van Power shell. In dit artikel worden de volgende algemene automatiserings taken weer gegeven.
 
 - Een Notification Hub maken
 - Referenties instellen
 
-Als u ook een nieuwe service bus-naamruimte voor uw notification hubs maken moet, raadpleegt u [Service Bus beheren met PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
+Zie [Service Bus beheren met Power shell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)als u ook een nieuwe service bus-naam ruimte wilt maken voor uw notification hubs.
 
-Notification Hubs beheren wordt rechtstreeks door de opgenomen met Azure PowerShell-cmdlets niet ondersteund. De aanbevolen aanpak van PowerShell is om te verwijzen naar de assembly Microsoft.Azure.NotificationHubs.dll. De assembly wordt geleverd bij de [Microsoft Azure Notification Hubs NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Het beheren van Notification hubs wordt niet rechtstreeks ondersteund door de cmdlets die zijn opgenomen in Azure PowerShell. De beste benadering van Power shell is om te verwijzen naar de assembly micro soft. Azure. notification hubs. dll. De assembly wordt gedistribueerd met het [Microsoft Azure notification hubs NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Azure is een platform op basis van een abonnement. Zie voor meer informatie over het verkrijgen van een abonnement [Aankoopopties], [aanbiedingen voor leden], of [gratis proefversie].
-- Een computer met Azure PowerShell. Zie voor instructies [installeren en configureren van Azure PowerShell].
-- Een algemeen begrip van de PowerShell-scripts, NuGet-pakketten en .NET Framework.
+- Een Azure-abonnement. Azure is een platform op basis van een abonnement. Zie voor meer informatie over het verkrijgen van een abonnement [Aankoop opties], [aanbiedingen voor leden], of [Gratis proef versie].
+- Een computer met Azure PowerShell. Zie [Azure PowerShell installeren en configureren ]voor instructies.
+- Een algemene uitleg van Power shell-scripts, NuGet-pakketten en de .NET Framework.
 
-## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Een verwijzing naar de .NET-assembly voor Service Bus
+## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Inclusief een verwijzing naar de .NET-assembly voor Service Bus
 
-Beheren van Azure Notification Hubs is nog niet opgenomen in de PowerShell-cmdlets in Azure PowerShell. Voor het inrichten van notification hubs, kunt u de .NET-client die is opgegeven in de [Microsoft Azure Notification Hubs NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Het beheren van Azure Notification Hubs is nog niet opgenomen in de Power shell-cmdlets in Azure PowerShell. Als u notification hubs wilt inrichten, kunt u de .NET-client gebruiken die in het [Microsoft Azure notification hubs NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)is opgenomen.
 
-Eerst, zorg ervoor dat uw script vindt de **Microsoft.Azure.NotificationHubs.dll** assembly die is geïnstalleerd als een NuGet-pakket in een Visual Studio-project. Om flexibele, voert het script als volgt:
+Zorg er eerst voor dat uw script de assembly **micro soft. Azure. notification hubs. dll** kan vinden die is geïnstalleerd als een NuGet-pakket in een Visual Studio-project. Om het flexibele te maken, voert het script de volgende stappen uit:
 
-1. Bepaalt het pad waar het is aangeroepen.
-2. Via het pad wordt verzonden, totdat er een map met de naam `packages`. Deze map wordt gemaakt tijdens de installatie van NuGet-pakketten voor Visual Studio-projecten.
-3. Zoekopdrachten recursief de `packages` map voor een assembly met de naam `Microsoft.Azure.NotificationHubs.dll`.
-4. Verwijst naar de assembly die de typen beschikbaar voor later gebruik zijn.
+1. Bepaalt het pad waarop het is aangeroepen.
+2. Hiermee wordt het pad door lopen totdat een map met `packages`de naam wordt gevonden. Deze map wordt gemaakt wanneer u NuGet-pakketten voor Visual Studio-projecten installeert.
+3. Recursief zoekt in de `packages` map naar een assembly `Microsoft.Azure.NotificationHubs.dll`met de naam.
+4. Verwijst naar de assembly zodat de typen beschikbaar zijn voor later gebruik.
 
-Hier ziet u hoe deze stappen zijn geïmplementeerd in een PowerShell-script:
+Deze stappen worden in een Power shell-script geïmplementeerd:
 
 ``` powershell
 try
@@ -72,11 +72,11 @@ catch [System.Exception]
 }
 ```
 
-## <a name="create-the-namespacemanager-class"></a>Maak de `NamespaceManager` klasse
+## <a name="create-the-namespacemanager-class"></a>De `NamespaceManager` klasse maken
 
-Voor het inrichten van Notification Hubs, maak een instantie van de [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) klasse van de SDK.
+Als u Notification Hubs wilt inrichten, maakt u een instantie van de [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) -klasse van de SDK.
 
-U kunt de [Get-AzureSBAuthorizationRule] cmdlet opgenomen met Azure PowerShell om op te halen van een autorisatieregel die wordt gebruikt voor een verbindingsreeks. Een verwijzing naar de `NamespaceManager` exemplaar wordt opgeslagen in de `$NamespaceManager` variabele. `$NamespaceManager` wordt gebruikt voor het inrichten van een notification hub.
+U kunt met behulp van de cmdlet [Get-AzureSBAuthorizationRule] die deel uitmaakt van Azure PowerShell, een autorisatie regel ophalen die wordt gebruikt om een Connection String op te geven. Een verwijzing naar het `NamespaceManager` exemplaar wordt opgeslagen in de `$NamespaceManager` variabele. `$NamespaceManager`wordt gebruikt om een notification hub in te richten.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -86,21 +86,21 @@ $NamespaceManager=[Microsoft.Azure.NotificationHubs.NamespaceManager]::CreateFro
 Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
 ```
 
-## <a name="provisioning-a-new-notification-hub"></a>Een nieuwe Notification Hub inrichten
+## <a name="provisioning-a-new-notification-hub"></a>Een nieuwe notification hub inrichten
 
 Gebruiken voor het inrichten van een nieuwe notification hub, de [.NET API voor Notification Hubs].
 
-In dit gedeelte van het script maakt instellen u vier lokale variabelen.
+In dit deel van het script stelt u vier lokale variabelen in.
 
-1. `$Namespace`: Stel dit in op de naam van de naamruimte waarin u wilt maken van een notification hub.
-2. `$Path`: Stel dit pad op de naam van de nieuwe notification hub.  Bijvoorbeeld: 'MyHub'.
-3. `$WnsPackageSid`: Stel dit in op de pakket-SID voor uw Windows-App uit de [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
-4. `$WnsSecretkey`: Stel dit in op de geheime sleutel voor uw Windows-App uit de [Windows Dev Center](https://developer.microsoft.com/en-us/windows).
+1. `$Namespace`: Stel dit in op de naam van de naam ruimte waarin u een notification hub wilt maken.
+2. `$Path`: Stel dit pad in op de naam van de nieuwe notification hub.  Bijvoorbeeld ' MyHub '.
+3. `$WnsPackageSid`: Stel dit in op de pakket-SID voor uw Windows-app in het [Windows-ontwikkelaars centrum](https://developer.microsoft.com/en-us/windows).
+4. `$WnsSecretkey`: Stel dit in op de geheime sleutel voor uw Windows-app in het [Windows-ontwikkelaars centrum](https://developer.microsoft.com/en-us/windows).
 
-Deze variabelen worden gebruikt om verbinding maken met uw naamruimte en een nieuwe Notification Hub is geconfigureerd voor het afhandelen van Windows Notification Services (WNS) verzenden met WNS-referenties voor een Windows-App maken. Voor meer informatie over het verkrijgen van het pakket-SID en geheime sleutel zien, de [aan de slag met Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) zelfstudie.
+Deze variabelen worden gebruikt om verbinding te maken met uw naam ruimte en een nieuwe notification hub te creëren die is geconfigureerd voor het afhandelen van Windows Notification Services (WNS)-meldingen met WNS-referenties voor een Windows-app. Zie de zelf studie aan de slag [met Notification hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) voor meer informatie over het verkrijgen van de pakket-sid en de geheime sleutel.
 
-- Het script-fragment wordt de `NamespaceManager` object om te controleren om te zien als de Notification Hub wordt geïdentificeerd door `$Path` bestaat.
-- Als deze niet bestaat, maakt het script `NotificationHubDescription` referenties met WNS en doorgegeven aan de `NamespaceManager` klasse `CreateNotificationHub` methode.
+- Het script fragment gebruikt het `NamespaceManager` object om te controleren of de notification hub is geïdentificeerd door `$Path` exists.
+- Als deze niet bestaat, wordt het script gemaakt `NotificationHubDescription` met wns-referenties en wordt het door `NamespaceManager` gegeven `CreateNotificationHub` aan de klasse-methode.
 
 ``` powershell
 $Namespace = "<Enter your namespace>"
@@ -147,17 +147,17 @@ else
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Service Bus met PowerShell beheren](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [Over het maken van Service Bus-wachtrijen, onderwerpen en abonnementen die gebruikmaken van een PowerShell-script](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [Over het maken van een Service Bus-Namespace en een Event Hub met behulp van een PowerShell-script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+- [Service Bus-wacht rijen,-onderwerpen en-abonnementen maken met een Power shell-script](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+- [Een Service Bus naam ruimte en een event hub maken met een Power shell-script](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-Sommige kant-en-scripts zijn ook beschikbaar voor downloaden:
+Sommige kant-en-klare scripts zijn ook beschikbaar om te worden gedownload:
 
-- [Service Bus PowerShell-Scripts](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
+- [Service Bus Power shell-scripts](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
-[Aankoopopties]: https://azure.microsoft.com/pricing/purchase-options/
+[Aankoop opties]: https://azure.microsoft.com/pricing/purchase-options/
 [Aanbiedingen voor leden]: https://azure.microsoft.com/pricing/member-offers/
-[Gratis proefversie]: https://azure.microsoft.com/pricing/free-trial/
-[installeren en configureren van Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[Gratis proef versie]: https://azure.microsoft.com/pricing/free-trial/
+[Azure PowerShell installeren en configureren ]: /powershell/azureps-cmdlets-docs
 [.NET API voor Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace

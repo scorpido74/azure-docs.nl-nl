@@ -10,23 +10,22 @@ ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: fd9902a83a813daffc52e089e6e8bfc4137c5b8f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656634"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072276"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>De inhoud en opmaak van pagina’s bewerken in de ontwikkelaarsportal in Azure API Management
 Er zijn die manieren waarop u de ontwikkelaarsportal in Azure API Management kunt aanpassen:
 
-* [De inhoud van statische pagina's en pagina-indelingselementen bewerken][modify-content-layout] (uitgelegd in deze handleiding)
-* [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaarsportal][customize-styles]
-* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikersverificatie, enzovoort.)
+* [De inhoud van statische pagina's en pagina-indelings elementen bewerken][modify-content-layout] (dit wordt uitgelegd in deze hand leiding)
+* [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaars Portal][customize-styles]
+* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -56,8 +55,8 @@ De Developer-portal is toegankelijk via de Azure Portal.
 U zou nu de nieuwe header op elke pagina moeten zien binnen de ontwikkelaarsportal.
 
 ## <a name="next-steps"> </a>Volgende stappen
-* [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaarsportal][customize-styles]
-* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikersverificatie, enzovoort.)
+* [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaars Portal][customize-styles]
+* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

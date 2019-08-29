@@ -3,15 +3,15 @@ title: Query's uitvoeren op containers in Azure Cosmos DB
 description: Leer hoe u query's kunt uitvoeren op containers in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: cf14e005de3710f26bfdbab7cc0dac87e0cf000e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 799fa43ad6ff12e5fa84326cbb41842e76daff12
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243756"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092970"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Query’s uitvoeren op een Azure Cosmos-container
 
@@ -32,7 +32,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 De volgende query heeft geen filter voor de partitiesleutel (`DeviceId`) en wordt verspreid over alle partities waarop deze wordt uitgevoerd op basis van de index van de partitie. Als u een query wilt uitvoeren op meerdere partities, stelt u `EnableCrossPartitionQuery` in op 'True' (of `x-ms-documentdb-query-enablecrosspartition`  in de REST-API).
 
-De eigenschap EnableCrossPartitionQuery accepteert een Booleaanse waarde. Als deze is ingesteld op 'true' en als uw query geen partitiesleutel bevat, wordt de query door Azure Cosmos DB verspreid over alle partities. Dit wordt gedaan door afzonderlijke query's op alle partities uit te voeren. Om te lezen resultaten van de query, moeten de clienttoepassingen gebruiken de resultaten van de FeedResponse en controleren voor de eigenschap ContinuationToken. Om alle resultaten te lezen, moet dit worden herhaald totdat de eigenschap ContinuationToken null is. 
+De eigenschap EnableCrossPartitionQuery accepteert een Booleaanse waarde. Als deze is ingesteld op 'true' en als uw query geen partitiesleutel bevat, wordt de query door Azure Cosmos DB verspreid over alle partities. Dit wordt gedaan door afzonderlijke query's op alle partities uit te voeren. Als u de query resultaten wilt lezen, moeten de client toepassingen de resultaten van de FeedResponse gebruiken en de eigenschap ContinuationToken controleren. Om alle resultaten te lezen, moet dit worden herhaald totdat de eigenschap ContinuationToken null is. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

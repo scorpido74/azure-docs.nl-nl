@@ -1,6 +1,6 @@
 ---
-title: Ontwikkelaarsaccounts authoriseren met behulp van Azure Active Directory - Azure API Management | Microsoft Docs
-description: Informatie over het autoriseren van gebruikers met behulp van Azure Active Directory in API Management.
+title: Ontwikkel ontwikkelaars accounts met behulp van Azure Active Directory-Azure API Management | Microsoft Docs
+description: Meer informatie over het autoriseren van gebruikers met behulp van Azure Active Directory in API Management.
 services: api-management
 documentationcenter: API Management
 author: miaojiang
@@ -9,115 +9,114 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d267ff3a43438d9fe6e4e21f0ac023cfa6675f19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6116ece6035b326440108c1f2b2effd1b6bb9258
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956302"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072551"
 ---
-# <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkelaarsaccounts authoriseren met behulp van Azure Active Directory in Azure API Management
+# <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure Active Directory in azure API Management
 
-Dit artikel leest u hoe de developer-Portal voor gebruikers om toegang te krijgen van Azure Active Directory (Azure AD). Deze handleiding leest u ook hoe voor het beheren van groepen van Azure AD-gebruikers door externe groepen met de gebruikers toe te voegen.
+Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakelen voor gebruikers van Azure Active Directory (Azure AD). In deze hand leiding wordt ook beschreven hoe u groepen van Azure AD-gebruikers beheert door externe groepen toe te voegen die de gebruikers bevatten.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-- Importeren en publiceren van een Azure API Management-exemplaar. Zie voor meer informatie, [importeren en publiceren](import-and-publish.md).
+- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+- Importeer en publiceer een Azure API Management-exemplaar. Zie [importeren en publiceren](import-and-publish.md)voor meer informatie.
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
-## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Ontwikkelaarsaccounts authoriseren met behulp van Azure AD
+## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure AD
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
-2. Selecteer ![pijl](./media/api-management-howto-aad/arrow.png).
-3. Type **api** in het zoekvak in.
-4. Selecteer **API Management-services**.
+2. Selecteren ![pijl](./media/api-management-howto-aad/arrow.png).
+3. Typ **API** in het zoekvak.
+4. Selecteer **API Management Services**.
 5. Selecteer uw service-exemplaar van API Management.
-6. Onder **Security**, selecteer **identiteiten**.
-7. Selecteer **+ toevoegen** vanaf de bovenkant.
+6. Onder **beveiliging**selecteert u **identiteiten**.
+7. Selecteer **+ toevoegen** aan de bovenkant.
 
-    De **id-provider toevoegen** deelvenster wordt weergegeven aan de rechterkant.
-8. Onder **providertype**, selecteer **Azure Active Directory**.
+    Het deel venster **ID-provider toevoegen** wordt aan de rechter kant weer gegeven.
+8. Selecteer **Azure Active Directory**onder **provider type**.
 
-    Besturingselementen waarmee u kunt andere benodigde informatie op te geven in het deelvenster worden weergegeven. De besturingselementen zijn **Client-ID** en **clientgeheim**. (U krijgt informatie over deze besturingselementen later in dit artikel.)
-9. Maak een notitie van de inhoud van **Omleidings-URL**.
+    Besturings elementen waarmee u andere benodigde informatie kunt invoeren, worden weer gegeven in het deel venster. De besturings elementen omvatten **client-id** en **client geheim**. (U krijgt verderop in het artikel informatie over deze besturings elementen.)
+9. Noteer de inhoud van de omleidings- **URL**.
     
-   ![Stappen voor het toevoegen van een id-provider in Azure portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
+   ![Stappen voor het toevoegen van een id-provider in de Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. Open een ander tabblad in uw browser. 
-11. Navigeer naar de [Azure portal - App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) een app registreren in Active Directory.
-12. Onder **beheren**, selecteer **App-registraties**.
-13. Selecteer **registratie van nieuwe**. Op de **registreren van een toepassing** pagina, stelt u de waarden als volgt:
+11. Ga naar de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om een App in Active Directory te registreren.
+12. Selecteer onder **beheren**de optie **app-registraties**.
+13. Selecteer **nieuwe registratie**. Stel op de pagina **een toepassing registreren** de volgende waarden in:
     
-* Stel **naam** naar een beschrijvende naam op. e.g., *developer-portal*
-* Stel **ondersteund accounttypen** naar **Accounts in deze organisatie-map alleen**. 
-* Stel **omleidings-URI** op de waarde die u hebt verkregen in stap 9. 
+* Stel **name** in op een duidelijke naam. e.g., *developer-portal*
+* Stel **ondersteunde account typen** **in op accounts in deze directory van de organisatie**. 
+* Stel de omleidings- **URI** in op de waarde die u in stap 9 hebt ontvangen. 
 * Kies **registreren**. 
 
-14.  Nadat de toepassing is geregistreerd, kopieert u de **(client) toepassings-ID** uit de **overzicht** pagina. 
-15. Ga terug naar uw API Management-exemplaar. In de **id-provider toevoegen** venster, plak de **(client) toepassings-ID** waarde in de **Client-ID** vak.
-16. Ga terug naar de Azure AD-configuratie, selecteer **certificaten en geheimen** onder **beheren**. Selecteer de **nieuwe clientgeheim** knop. Voer een waarde in **beschrijving**, selecteer een optie voor **verloopt** en kies **toevoegen**. Kopieer de geheime waarde van de client voordat u de pagina verlaat. U hebt deze gegevens nodig in de volgende stap. 
-17. Onder **beheren**, selecteer **verificatie** en selecteer vervolgens **ID-tokens** onder **impliciete toekenning**
-18. Ga terug naar uw API Management-exemplaar, plakt u het geheim in de **clientgeheim** vak.
+14.  Nadat de toepassing is geregistreerd, kopieert u de **toepassings-id (client)** van de pagina **overzicht** . 
+15. Ga terug naar uw API Management-exemplaar. Plak in het venster **ID-provider toevoegen** de waarde van de **toepassing (client)** in het vak **client-id** .
+16. Ga terug naar de Azure AD-configuratie en selecteer **certificaten & geheimen** onder **beheren**. Selecteer de knop **Nieuw client geheim** . Voer een waarde in het veld **Beschrijving**in, selecteer een optie voor verloopt en kies **toevoegen**. Kopieer de waarde van het client geheim voordat u de pagina verlaat. U hebt deze gegevens nodig in de volgende stap. 
+17. Selecteer onder **beheren**de optie **verificatie** en selecteer **id-tokens** onder impliciete **toekenning**
+18. Ga terug naar uw API Management-exemplaar en plak het geheim in het vak **client Secret** .
 
     > [!IMPORTANT]
-    > Zorg ervoor dat u het bijwerken van de **clientgeheim** voordat de sleutel is verlopen. 
+    > Zorg ervoor dat u het **client geheim** bijwerkt voordat de sleutel verloopt. 
     >  
     >
 
-19. De **id-provider toevoegen** venster bevat ook de **Tenants toegestaan** in het tekstvak. Er, geef de domeinen van de Azure AD-instanties die u wilt toegang verlenen tot de API's van de service-exemplaar van API Management. U kunt meerdere domeinen met vorm, spaties en komma's scheiden.
+19. Het venster **ID-provider toevoegen** bevat ook het tekstvak **toegestane tenants** . Hier geeft u de domeinen van de Azure AD-exemplaren op waaraan u toegang wilt verlenen tot de Api's van het API Management service-exemplaar. U kunt meerdere domeinen van elkaar scheiden met nieuwe voor-en spaties of komma's.
 
 > [!NOTE]
-> Kunt u meerdere domeinen in de **Tenants toegestaan** sectie. Voordat elke gebruiker kan zich aanmelden vanaf een ander domein dan het oorspronkelijke domein waar de toepassing is geregistreerd, moet een globale beheerder van het andere domein machtiging voor de toepassing toegang heeft tot directory gegevens verlenen. Als u wilt machtigen, de globale beheerder moet: een. Ga naar `https://<URL of your developer portal>/aadadminconsent` (bijvoorbeeld https://contoso.portal.azure-api.net/aadadminconsent).
-> b. Typ in het domein van de Azure AD-tenant die ze willen om toegang aan te geven.
-> c. Selecteer **Indienen**. 
+> U kunt meerdere domeinen opgeven in de sectie **toegestane tenants** . Voordat een gebruiker zich kan aanmelden vanuit een ander domein dan het oorspronkelijke domein waarin de toepassing is geregistreerd, moet een globale beheerder van het andere domein toestemming verlenen voor toegang tot Directory gegevens van de toepassing. De globale beheerder moet het volgende doen om toestemming te verlenen: a. Ga naar `https://<URL of your developer portal>/aadadminconsent` (bijvoorbeeld) https://contoso.portal.azure-api.net/aadadminconsent).
+> b. Typ de domein naam van de Azure AD-Tenant waarmee u toegang wilt verlenen.
+> c. Selecteer **indienen**. 
 
-20.  Nadat u de gewenste configuratie opgeeft, selecteert u **toevoegen**.
+20.  Nadat u de gewenste configuratie hebt opgegeven, selecteert u **toevoegen**.
 
-Nadat de wijzigingen zijn opgeslagen, worden gebruikers in de opgegeven Azure AD exemplaar kan zich aanmelden bij de portal voor ontwikkelaars met de volgende stappen in [aanmelden bij de portal voor ontwikkelaars met behulp van een Azure AD-account](#log_in_to_dev_portal).
+Nadat de wijzigingen zijn opgeslagen, kunnen gebruikers in de opgegeven Azure AD-instantie zich aanmelden bij de ontwikkelaars portal door de stappen te volgen in [Aanmelden bij de ontwikkelaars Portal met behulp van een Azure ad-account](#log_in_to_dev_portal).
 
-## <a name="add-an-external-azure-ad-group"></a>Toevoegen van een externe Azure AD-groep
+## <a name="add-an-external-azure-ad-group"></a>Een externe Azure AD-groep toevoegen
 
-Nadat u de toegang voor gebruikers in een Azure AD-exemplaar hebt ingeschakeld, kunt u Azure AD-groepen toevoegen in API Management. Vervolgens kunt u de koppeling van de ontwikkelaars in de groep met de gewenste producten eenvoudiger beheren.
+Nadat u toegang hebt ingeschakeld voor gebruikers in een Azure AD-exemplaar, kunt u Azure AD-groepen toevoegen in API Management. Vervolgens kunt u de koppeling van de ontwikkel aars in de groep gemakkelijker beheren met de gewenste producten.
 
  > [!IMPORTANT]
- > Toevoegen van een externe Azure AD-groep, moet u eerst de Azure AD-exemplaar op de **identiteiten** tabblad via de volgende procedure in de vorige sectie. Bovendien de toepassing, moet toegangsrechten hebben voor Azure AD Graph API met `Directory.Read.All` machtiging. 
+ > Als u een externe Azure AD-groep wilt toevoegen, moet u eerst de Azure AD-instantie op het tabblad **Identities** configureren door de procedure in de vorige sectie te volgen. Daarnaast moet aan de toepassing toegang worden verleend tot Azure AD Graph API met `Directory.Read.All` toestemming. 
 
-Toevoegen van externe Azure AD-groepen van de **groepen** tabblad van uw exemplaar van API Management.
+U voegt externe Azure AD-groepen toe op het tabblad **groepen** van uw API Management-exemplaar.
 
 1. Selecteer de tab **Groepen**.
-2. Selecteer de **toevoegen AAD-groep** knop.
-   ![Knop 'AAD-groep toevoegen'](./media/api-management-howto-aad/api-management-with-aad008.png)
+2. Selecteer de knop **Aad-groep toevoegen** .
+   ![Knop AAD-groep toevoegen](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Selecteer de groep die u wilt toevoegen.
-4. Druk op de **Selecteer** knop.
+4. Druk op de knop **selecteren** .
 
-Nadat u een externe Azure AD hebt toegevoegd groep, kunt u bekijken en de eigenschappen ervan configureren. Selecteer de naam van de groep van de **groepen** tabblad. Hier kunt u **naam** en **beschrijving** gegevens voor de groep.
+Nadat u een externe Azure AD-groep hebt toegevoegd, kunt u de eigenschappen ervan bekijken en configureren. Selecteer de naam van de groep op het tabblad **groepen** . Hier kunt u de **naam** en **Beschrijving** voor de groep bewerken.
  
-Gebruikers van de geconfigureerde Azure AD-exemplaar nu kan aanmelden bij de portal voor ontwikkelaars. Ze kunnen bekijken en zich abonneren op alle groepen waarvan ze inzicht hebben.
+Gebruikers van het geconfigureerde Azure AD-exemplaar kunnen zich nu aanmelden bij de ontwikkelaars Portal. Ze kunnen weer geven en zich abonneren op groepen waarvoor ze zicht baarheid hebben.
 
-## <a name="a-idlogintodevportalsign-in-to-the-developer-portal-by-using-an-azure-ad-account"></a><a id="log_in_to_dev_portal"/>Aanmelden bij de portal voor ontwikkelaars met behulp van een Azure AD-account
+## <a name="a-idlog_in_to_dev_portalsign-in-to-the-developer-portal-by-using-an-azure-ad-account"></a><a id="log_in_to_dev_portal"/>Aanmelden bij de ontwikkelaars Portal met behulp van een Azure AD-account
 
-Zich aanmeldt bij de portal voor ontwikkelaars met behulp van een Azure AD-account die u hebt geconfigureerd in de vorige secties:
+Meld u aan bij de ontwikkelaars Portal met behulp van een Azure AD-account dat u in de vorige secties hebt geconfigureerd:
 
-1. Open een nieuw browservenster geopend met behulp van de aanmelding-URL van de configuratie van de Active Directory-toepassing en selecteer **Azure Active Directory**.
+1. Open een nieuw browser venster met behulp van de aanmeldings-URL van de Active Directory toepassings configuratie en selecteer **Azure Active Directory**.
 
-   ![Aanmeldingspagina opgeven][api-management-dev-portal-signin]
+   ![Aanmeldings pagina][api-management-dev-portal-signin]
 
-1. Voer de referenties van een van de gebruikers in Azure AD en selecteer **aanmelden**.
+1. Voer de referenties in van een van de gebruikers in azure AD en selecteer **Aanmelden**.
 
-   ![Aanmelden met gebruikersnaam en wachtwoord][api-management-aad-signin]
+   ![Aanmelden met gebruikers naam en wacht woord][api-management-aad-signin]
 
-1. U mogelijk gevraagd met een registratieformulier als eventuele aanvullende informatie vereist is. Vul het registratieformulier in en selecteer **aanmelden**.
+1. U wordt mogelijk gevraagd om een registratie formulier als er aanvullende informatie vereist is. Vul het registratie formulier in en selecteer **Aanmelden**.
 
-   ![Knop 'Aanmelden' op het registratieformulier][api-management-complete-registration]
+   ![De knop registreren op het registratie formulier][api-management-complete-registration]
 
-De gebruiker is nu aangemeld bij de portal voor ontwikkelaars voor uw API Management service-exemplaar.
+Uw gebruiker is nu aangemeld bij de ontwikkelaars portal voor uw API Management service-exemplaar.
 
-![Developer-portal nadat de registratie is voltooid][api-management-registration-complete]
+![Ontwikkelaars Portal na registratie is voltooid][api-management-registration-complete]
 
 [api-management-dev-portal-signin]: ./media/api-management-howto-aad/api-management-dev-portal-signin.png
 [api-management-aad-signin]: ./media/api-management-howto-aad/api-management-aad-signin.png

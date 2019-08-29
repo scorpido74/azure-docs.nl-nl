@@ -1,6 +1,6 @@
 ---
-title: Een Oracle-database maken in een Azure-VM | Microsoft Docs
-description: Snel gebruiksklaar een Oracle Database 12c-database in uw Azure-omgeving.
+title: Een Oracle-data base maken in een Azure-VM | Microsoft Docs
+description: Krijg snel een Oracle Database 12c-data base in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -9,22 +9,21 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 26c6abc75e653b489a7385c423a9b2d00a4ed063
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6d43fa2621aa95bdcf18d5c033d1347e13dc3f67
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705309"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101475"
 ---
-# <a name="create-an-oracle-database-in-an-azure-vm"></a>Een Oracle-Database in een Azure-VM maken
+# <a name="create-an-oracle-database-in-an-azure-vm"></a>Een Oracle Database maken in een Azure VM
 
-Deze handleiding vindt u gebruik van de Azure CLI voor het implementeren van een Azure-machine vanuit de [Oracle marketplace-galerie installatiekopie](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) om te kunnen maken van een Oracle 12 c-database. Nadat de server is geïmplementeerd, maakt u verbinding via SSH om te configureren van de Oracle-database. 
+In deze hand leiding vindt u informatie over het gebruik van de Azure CLI om een virtuele Azure-machine te implementeren vanuit de [Galerie met Oracle Marketplace-afbeeldingen](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) om een Oracle 12c-data base te maken. Zodra de server is geïmplementeerd, kunt u verbinding maken via SSH om de Oracle-Data Base te configureren. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -43,9 +42,9 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Virtuele machine maken
 
-U kunt een virtuele machine (VM) maken met de [az vm maken](/cli/azure/vm) opdracht. 
+Als u een virtuele machine (VM) wilt maken, gebruikt u de opdracht [AZ VM Create](/cli/azure/vm) . 
 
-In het volgende voorbeeld wordt een virtuele machine met de naam `myVM` gemaakt. SSH-sleutels, maakt het ook als ze niet al bestaan op een standaardsleutellocatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.  
+In het volgende voorbeeld wordt een virtuele machine met de naam `myVM` gemaakt. Ook worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.  
 
 ```azurecli-interactive 
 az vm create \
@@ -57,7 +56,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Nadat u de virtuele machine maakt, geeft Azure CLI informatie die vergelijkbaar is met het volgende voorbeeld. Noteer de waarde voor `publicIpAddress`. U gebruikt dit adres voor toegang tot de virtuele machine.
+Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt op het volgende voor beeld. Noteer de waarde voor `publicIpAddress`. U gebruikt dit adres voor toegang tot de virtuele machine.
 
 ```azurecli
 {
@@ -74,17 +73,17 @@ Nadat u de virtuele machine maakt, geeft Azure CLI informatie die vergelijkbaar 
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Voor het maken van een SSH-sessie met de virtuele machine, gebruikt u de volgende opdracht. Vervang het IP-adres met de `publicIpAddress` waarde voor uw virtuele machine.
+Gebruik de volgende opdracht om een SSH-sessie met de virtuele machine te maken. Vervang het IP-adres door `publicIpAddress` de waarde voor uw VM.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
 ```
 
-## <a name="create-the-database"></a>De database maken
+## <a name="create-the-database"></a>De data base maken
 
-De Oracle-software is al geïnstalleerd op de Marketplace-installatiekopie. Maak als volgt een voorbeelddatabase. 
+De Oracle-software is al geïnstalleerd op de Marketplace-installatie kopie. Maak als volgt een voorbeeld database. 
 
-1.  Schakel over naar de *oracle* supergebruiker en vervolgens de initialisatie van de listener voor logboekregistratie:
+1.  Schakel over naar de *Oracle* -super gebruiker en Initialiseer vervolgens de listener voor logboek registratie:
 
     ```bash
     $ sudo su - oracle
@@ -119,7 +118,7 @@ De Oracle-software is al geïnstalleerd op de Marketplace-installatiekopie. Maak
     The command completed successfully
     ```
 
-2.  De database maken:
+2.  Maak de Data Base:
 
     ```bash
     dbca -silent \
@@ -141,17 +140,17 @@ De Oracle-software is al geïnstalleerd op de Marketplace-installatiekopie. Maak
            -ignorePreReqs
     ```
 
-    Het duurt een paar minuten om de database te maken.
+    Het duurt enkele minuten om de data base te maken.
 
 3. Oracle-variabelen instellen
 
-Voordat u verbinding maakt, moet u twee omgevingsvariabelen worden ingesteld: *ORACLE_HOME* en *ORACLE_SID*.
+Voordat u verbinding maakt, moet u twee omgevings variabelen instellen: *ORACLE_HOME* en *ORACLE_SID*.
 
 ```bash
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-U kunt ook variabelen ORACLE_HOME en ORACLE_SID toevoegen aan het bestand .bashrc. Hiermee wordt de omgevingsvariabelen voor toekomstige aanmeldingen opgeslagen. Controleer of de volgende instructies zijn toegevoegd aan de `~/.bashrc` bestand met behulp van de editor van uw keuze.
+U kunt ook ORACLE_HOME-en ORACLE_SID-variabelen toevoegen aan het. bashrc-bestand. Hierdoor worden de omgevings variabelen opgeslagen voor toekomstige aanmeldingen. Bevestig dat u de volgende instructies aan het bestand `~/.bashrc` hebt toegevoegd met de editor van uw keuze.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -160,23 +159,23 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1 
 ```
 
-## <a name="oracle-em-express-connectivity"></a>Oracle EM snelle connectiviteit
+## <a name="oracle-em-express-connectivity"></a>Oracle EM Express-connectiviteit
 
-Voor een GUI-beheerhulpprogramma die u gebruiken kunt om te verkennen van de database, Oracle EM Express instellen. Als u wilt verbinding maken met Oracle EM Express, moet u eerst de poort in Oracle instellen. 
+Voor een GUI-beheer programma dat u kunt gebruiken om de data base te verkennen, stelt u Oracle EM Express in. Als u verbinding wilt maken met Oracle EM Express, moet u eerst de poort instellen in Oracle. 
 
-1. Verbinding maken met uw database met behulp van sqlplus:
+1. Verbinding maken met uw data base met behulp van sqlplus:
 
     ```bash
     sqlplus / as sysdba
     ```
 
-2. Eenmaal verbinding hebben, de poort 5502 instellen voor snelle EM
+2. Nadat de verbinding is gemaakt, stelt u de poort 5502 voor EM Express in
 
     ```bash
     exec DBMS_XDB_CONFIG.SETHTTPSPORT(5502);
     ```
 
-3. Open de container PDB1 als dit nog niet hebt geopend, maar de eerste controle de status:
+3. Open de container PDB1 als deze nog niet is geopend, maar eerst de status controleren:
 
     ```bash
     select con_id, name, open_mode from v$pdbs;
@@ -191,31 +190,31 @@ Voor een GUI-beheerhulpprogramma die u gebruiken kunt om te verkennen van de dat
       3           PDB1                      MOUNT
     ```
 
-4. Als de OPEN_MODE voor `PDB1` is niet lezen schrijven, voer de volgende opdrachten om te openen PDB1:
+4. Als de OPEN_MODE voor `PDB1` niet lezen schrijven is, voert u de volgende opdrachten uit om PDB1 te openen:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-U moet zelf typen `quit` to-end van de sessie sqlplus en het type `exit` afmelden van de oracle-gebruiker.
+U moet typen `quit` om de sqlplus-sessie te beëindigen en `exit` te typen om de Oracle-gebruiker af te melden.
 
-## <a name="automate-database-startup-and-shutdown"></a>Database opstarten en afsluiten automatiseren
+## <a name="automate-database-startup-and-shutdown"></a>Data bases automatisch opstarten en afsluiten
 
-De Oracle-database standaard niet automatisch wordt gestart wanneer u de virtuele machine opnieuw opstarten. Als u de Oracle-database instelt op automatisch starten, eerst aanmelden als root. Vervolgens maken en bijwerken van bepaalde systeembestanden.
+De Oracle-Data Base wordt standaard niet automatisch gestart wanneer u de virtuele machine opnieuw opstart. Als u de Oracle-Data Base wilt instellen om automatisch te starten, meldt u zich eerst aan als basis. Maak en werk vervolgens enkele systeem bestanden bij.
 
-1. Meld u aan bij als hoofdmap
+1. Aanmelden als basis
     ```bash
     sudo su -
     ```
 
-2.  Gebruik uw favoriete editor, bewerk het bestand `/etc/oratab` en wijzigt u de standaardinstelling `N` naar `Y`:
+2.  Bewerk het bestand `/etc/oratab` met uw favoriete editor en wijzig de standaard instelling `N` in `Y`:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Maak een bestand met de naam `/etc/init.d/dbora` en plak de volgende inhoud:
+3.  Maak een bestand met `/etc/init.d/dbora` de naam en plak de volgende inhoud:
 
     ```
     #!/bin/sh
@@ -246,14 +245,14 @@ De Oracle-database standaard niet automatisch wordt gestart wanneer u de virtuel
     esac
     ```
 
-4.  Machtigingen wijzigen voor bestanden met *chmod* als volgt:
+4.  Wijzig machtigingen voor bestanden met *chmod* als volgt:
 
     ```bash
     chgrp dba /etc/init.d/dbora
     chmod 750 /etc/init.d/dbora
     ```
 
-5.  Symbolische koppelingen maken voor opstarten en afsluiten als volgt:
+5.  Maak als volgt symbolische koppelingen voor opstarten en afsluiten:
 
     ```bash
     ln -s /etc/init.d/dbora /etc/rc.d/rc0.d/K01dbora
@@ -261,17 +260,17 @@ De Oracle-database standaard niet automatisch wordt gestart wanneer u de virtuel
     ln -s /etc/init.d/dbora /etc/rc.d/rc5.d/S99dbora
     ```
 
-6.  Als u wilt uw wijzigingen hebt getest, start u de VM opnieuw:
+6.  Als u uw wijzigingen wilt testen, start u de VM opnieuw op:
 
     ```bash
     reboot
     ```
 
-## <a name="open-ports-for-connectivity"></a>Open poorten voor connectiviteit
+## <a name="open-ports-for-connectivity"></a>Poorten openen voor connectiviteit
 
-De laatste taak is het configureren van sommige externe eindpunten. Als u de Azure-Netwerkbeveiligingsgroep die worden beveiligd met de virtuele machine instelt, moet u eerst de SSH-sessie in de virtuele machine (moet zijn is gestart uit SSH wanneer opnieuw wordt opgestart in de vorige stap) afsluiten. 
+De laatste taak is het configureren van sommige externe eind punten. Als u de Azure-netwerk beveiligings groep wilt instellen die de virtuele machine beveiligt, moet u eerst uw SSH-sessie in de VM afsluiten (na het opnieuw opstarten in de vorige stap). 
 
-1.  Als u wilt openen van het eindpunt dat u extern toegang tot de Oracle-database, maakt u een regel voor Netwerkbeveiligingsgroep met [az network nsg-regel maken](/cli/azure/network/nsg/rule) als volgt: 
+1.  Als u het eind punt dat u gebruikt voor toegang tot de Oracle-Data Base op afstand wilt openen, maakt u een regel voor een netwerk beveiligings groep met [AZ Network NSG regel Create](/cli/azure/network/nsg/rule) als volgt: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -283,7 +282,7 @@ De laatste taak is het configureren van sommige externe eindpunten. Als u de Azu
         --destination-port-range 1521
     ```
 
-2.  Als u wilt openen van het eindpunt dat u gebruiken voor toegang op afstand tot Oracle EM Express, maakt u een regel voor Netwerkbeveiligingsgroep met [az network nsg-regel maken](/cli/azure/network/nsg/rule) als volgt:
+2.  Als u het eind punt wilt openen dat u gebruikt voor toegang tot Oracle EM Express op afstand, maakt u een regel voor een netwerk beveiligings groep met [AZ Network NSG regel Create](/cli/azure/network/nsg/rule) :
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -295,7 +294,7 @@ De laatste taak is het configureren van sommige externe eindpunten. Als u de Azu
         --destination-port-range 5502
     ```
 
-3. Indien nodig, het openbare IP-adres van uw virtuele machine opnieuw met verkrijgen [az network public-ip show](/cli/azure/network/public-ip) als volgt:
+3. Als dat nodig is, kunt u het open bare IP-adres van uw VM opnieuw verkrijgen met [AZ Network public-ip show](/cli/azure/network/public-ip) als volgt:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -305,19 +304,19 @@ De laatste taak is het configureren van sommige externe eindpunten. Als u de Azu
         --output tsv
     ```
 
-4.  Verbinding maken met Express EM vanuit uw browser. Zorg ervoor dat uw browser is compatibel met EM Express (installatie van Flash is vereist): 
+4.  Verbinding maken met EM Express vanuit uw browser. Zorg ervoor dat uw browser compatibel is met EM Express (Flash installeren is vereist): 
 
     ```
     https://<VM ip address or hostname>:5502/em
     ```
 
-U kunt aanmelden met behulp van de **SYS** account in en controleer de **als sysdba** selectievakje. Gebruik het wachtwoord **OraPasswd1** die u hebt ingesteld tijdens de installatie. 
+U kunt u aanmelden met het **sys** -account en het selectie vakje **als sysdba** inschakelen. Gebruik de wachtwoord **OraPasswd1** die u tijdens de installatie hebt ingesteld. 
 
-![Schermafbeelding van de aanmeldingspagina Oracle OEM Express](./media/oracle-quick-start/oracle_oem_express_login.png)
+![Scherm afbeelding van de Oracle OEM Express-aanmeldings pagina](./media/oracle-quick-start/oracle_oem_express_login.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u klaar bent met het verkennen van uw eerste Oracle-database in Azure en de virtuele machine is niet meer nodig hebt, kunt u de [az group delete](/cli/azure/group) opdracht voor het verwijderen van de resourcegroep, VM, en alle gerelateerde resources.
+Wanneer u klaar bent met het verkennen van uw eerste Oracle-data base in Azure en de virtuele machine niet meer nodig is, kunt u de opdracht [AZ Group delete](/cli/azure/group) gebruiken om de resource groep, de virtuele machine en alle gerelateerde resources te verwijderen.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -325,6 +324,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over andere [Oracle-oplossingen op Azure](oracle-considerations.md). 
+Meer informatie over andere [Oracle-oplossingen in azure](oracle-considerations.md). 
 
-Probeer de [installeren en configureren van Oracle geautomatiseerde Storage Management](configure-oracle-asm.md) zelfstudie.
+Probeer de zelf studie [Oracle Automated Storage Management installeren en configureren](configure-oracle-asm.md) .

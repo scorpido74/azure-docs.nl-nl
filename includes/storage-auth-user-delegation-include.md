@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 2ea936ba489024648583cf22c5ab73ae06bb1537
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f3b9f6c27fb8d423350eac5d286c9859ad6fbd37
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69011973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70104243"
 ---
 ## <a name="about-the-user-delegation-sas-preview"></a>Over de SAS voor gebruikers overdracht (preview-versie)
 
 Een SAS-token voor toegang tot een container of Blob kan worden beveiligd met behulp van de referenties voor Azure AD of een account sleutel. Een SAS die is beveiligd met Azure AD-referenties, wordt een SAS voor gebruikers overdracht genoemd, omdat het OAuth 2,0-token dat wordt gebruikt om de SA'S te ondertekenen, wordt aangevraagd namens de gebruiker.
 
-Micro soft raadt u aan om Azure AD-referenties, indien mogelijk, te gebruiken als een beveiligings best practice, in plaats van de account sleutel te gebruiken, wat eenvoudiger kan worden aangetast. Wanneer het ontwerp van uw toepassing gedeelde toegangs handtekeningen vereist, gebruikt u Azure AD-referenties om een gebruikers delegering SA'S voor superieure beveiliging te maken. Zie [een gebruiker delegering Sa's maken](/rest/api/storageservices/create-a-user-delegation-sas)voor meer informatie over de sa's van de gebruikers overdracht.
+Micro soft raadt u aan om Azure AD-referenties, indien mogelijk, te gebruiken als een beveiligings best practice, in plaats van de account sleutel te gebruiken, wat eenvoudiger kan worden aangetast. Wanneer het ontwerp van uw toepassing gedeelde toegangs handtekeningen vereist, gebruikt u Azure AD-referenties om een gebruikers delegering SA'S voor superieure beveiliging te maken. Zie [een gebruiker delegering Sa's maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over de sa's van de gebruikers overdracht.
 
 > [!NOTE]
 > De preview-versie van de SAS voor gebruikers overdracht is alleen bedoeld voor niet-productie gebruik.

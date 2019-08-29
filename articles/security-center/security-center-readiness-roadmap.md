@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 1527dbd1df3e4a10a68a5949d9e0bca11628bdd2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 989d438ad2c5ec80b89540eb7ddfc80d69a9d0e6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781144"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100922"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap naar Azure Security Center-gereedheid
 Dit document bevat een roadmap naar gereedheid die u helpt aan de slag te gaan met Azure Security Center.
@@ -67,9 +67,8 @@ Gebruik de volgende bronnen om u te helpen met het beheer van beveiligingswaarsc
 
 Artikelen    
 * [Beveiligingsstatus bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Protecting your virtual machines in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-recommendations) (Uw virtuele machines beveiligen in Azure Security Center)
+* [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 * [Protecting your network in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations) (Uw netwerk beveiligen in Azure Security Center)
-* [Protecting your applications in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-application-recommendations) (Uw toepassingen beveiligen in Azure Security Center)
 * [Protecting Azure SQL service and data in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations) (Azure SQL-service en -gegevens beveiligen in Azure Security Center)
 
 

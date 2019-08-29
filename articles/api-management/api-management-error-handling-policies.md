@@ -1,6 +1,6 @@
 ---
-title: Foutafhandeling in Azure API Management-beleid | Microsoft Docs
-description: Informatie over het reageren op fouten die tijdens de verwerking van aanvragen in Azure API Management optreden.
+title: Fout afhandeling in azure API Management-beleid | Microsoft Docs
+description: Meer informatie over hoe u kunt reageren op fout condities die zich kunnen voordoen tijdens het verwerken van aanvragen in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,24 +10,23 @@ ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df7b14c8221ab7837cabe968a82cfc5d5d9050c4
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704442"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072580"
 ---
-# <a name="error-handling-in-api-management-policies"></a>Foutafhandeling in API Management-beleidsregels
+# <a name="error-handling-in-api-management-policies"></a>Fout afhandeling in API Management beleid
 
-Door op te geven een `ProxyError` -object, Azure API Management kunnen uitgevers om te reageren op fouten die tijdens het verwerken van aanvragen optreden. De `ProxyError` object toegankelijk is via de [context. LastError](api-management-policy-expressions.md#ContextVariables) eigenschap en kan worden gebruikt door het beleid in de `on-error` beleidssectie. Dit artikel bevat een verwijzing voor de fout afhandelen mogelijkheden in Azure API Management.  
+Door een `ProxyError` object op te geven, kunnen uitgevers met Azure API Management reageren op fout voorwaarden. Dit kan voor komen tijdens het verwerken van aanvragen. Het `ProxyError` object wordt geopend via de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error en kan worden gebruikt door beleid in `on-error` de sectie Policy. In dit artikel vindt u informatie over de mogelijkheden voor het afhandelen van fouten in azure API Management.  
   
-## <a name="error-handling-in-api-management"></a>Foutafhandeling in API Management
+## <a name="error-handling-in-api-management"></a>Fout afhandeling in API Management
 
- In Azure API Management-beleidsregels worden gedeeld in `inbound`, `backend`, `outbound`, en `on-error` secties, zoals wordt weergegeven in het volgende voorbeeld.  
+ Beleids regels in azure API management worden onderverdeeld `inbound`in `backend`, `outbound`,, `on-error` en, zoals in het volgende voor beeld wordt weer gegeven.  
   
 ```xml  
 <policies>  
@@ -48,86 +47,86 @@ Door op te geven een `ProxyError` -object, Azure API Management kunnen uitgevers
 </policies>  
 ```  
   
-Tijdens de verwerking van een aanvraag, ingebouwde stappen worden uitgevoerd, samen met eventuele beleidsregels die binnen het bereik van de aanvraag zijn. Als er een fout optreedt, onmiddellijk verwerken gaat u naar de `on-error` beleidssectie.  
-De `on-error` beleidssectie kan worden gebruikt op een bereik. API-uitgevers kunnen aangepaste gedrag, zoals logboekregistratie van de fout naar eventhubs of het maken van een nieuw antwoord om terug te keren naar de aanroepende functie configureren.  
+Tijdens de verwerking van een aanvraag worden de ingebouwde stappen uitgevoerd, samen met alle beleids regels die binnen het bereik van de aanvraag vallen. Als er een fout optreedt, wordt de verwerking direct naar `on-error` de sectie beleid verwezen.  
+De `on-error` sectie beleid kan worden gebruikt in elk bereik. API-uitgevers kunnen aangepaste gedragingen configureren, zoals het vastleggen van de fout in Event hubs of het maken van een nieuw antwoord om terug te keren naar de aanroeper.  
   
 > [!NOTE]
->  De `on-error` sectie is niet aanwezig in het beleid standaard. Om toe te voegen de `on-error` sectie naar een door beleid, blader naar het gewenste beleid in de editor en toe te voegen. Zie voor meer informatie over het configureren van beleid [beleidsregels in API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).  
+>  De `on-error` sectie is standaard niet in beleids regels aanwezig. Als u de `on-error` sectie wilt toevoegen aan een beleid, bladert u naar het gewenste beleid in de beleids editor en voegt u het toe. Zie [beleid in API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)voor meer informatie over het configureren van beleid.  
 >   
->  Als er geen `on-error` sectie aanroepers ontvangt 400 of 500 HTTP-antwoordberichten als er een fout optreedt.  
+>  Als er geen `on-error` sectie is, ontvangen aanroepers 400-of 500-http-antwoord berichten als er een fout optreedt.  
   
-### <a name="policies-allowed-in-on-error"></a>Beleidsregels die zijn toegestaan in bij fout
+### <a name="policies-allowed-in-on-error"></a>Beleid dat is toegestaan in on-error
 
- De volgende beleidsregels kunnen worden gebruikt in de `on-error` beleidssectie.  
+ Het volgende beleid kan worden gebruikt in de `on-error` sectie Policy.  
   
--   [Kies](api-management-advanced-policies.md#choose)  
+-   [desgewenst](api-management-advanced-policies.md#choose)  
 -   [set-variable](api-management-advanced-policies.md#set-variable)  
 -   [zoeken en vervangen](api-management-transformation-policies.md#Findandreplacestringinbody)  
--   [return-response](api-management-advanced-policies.md#ReturnResponse)  
+-   [retour-antwoord](api-management-advanced-policies.md#ReturnResponse)  
 -   [set-header](api-management-transformation-policies.md#SetHTTPheader)  
--   [set-method](api-management-advanced-policies.md#SetRequestMethod)  
+-   [set-methode](api-management-advanced-policies.md#SetRequestMethod)  
 -   [set-status](api-management-advanced-policies.md#SetStatus)  
 -   [send-request](api-management-advanced-policies.md#SendRequest)  
 -   [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)  
--   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)  
+-   [aanmelden bij eventhub](api-management-advanced-policies.md#log-to-eventhub)  
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
 ## <a name="lasterror"></a>LastError
 
- Wanneer er een fout optreedt en besturingselement gaat u naar de `on-error` beleidssectie de fout wordt opgeslagen in [context. LastError](api-management-policy-expressions.md#ContextVariables) eigenschap, die kan worden geopend door een beleid in de `on-error` sectie. LastError heeft de volgende eigenschappen.  
+ Als er een fout optreedt en er wordt verwezen naar `on-error` de beleids sectie, wordt de fout opgeslagen in de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error, die kan worden geopend door beleid in `on-error` de sectie. Last error heeft de volgende eigenschappen.  
   
 | Name       | Type   | Description                                                                                               | Vereist |
 |------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| `Source`   | string | De naam van het element waar de fout is opgetreden. Mogelijk beleid of de naam van een ingebouwde pijplijn-stap.     | Ja      |
-| `Reason`   | string | Machine-vriendelijk foutcode die kan worden gebruikt in foutafhandeling.                                       | Nee       |
-| `Message`  | string | Leesbare foutbeschrijving.                                                                         | Ja      |
-| `Scope`    | string | Naam van het bereik waarin de fout is opgetreden en een van de 'global', 'product', "api" of 'bewerking' | Nee       |
-| `Section`  | string | De naam van sectie waarin fout is opgetreden. Mogelijke waarden: "inkomende", 'back-end', "uitgaande" of "on error".       | Nee       |
-| `Path`     | string | Hiermee geeft u geneste beleid, bijvoorbeeld ' kiezen [3] / wanneer [2] '.                                                        | Nee       |
-| `PolicyId` | string | De waarde van de `id` kenmerk als opgegeven door de klant, in het beleid dat is waar de fout is opgetreden             | Nee       |
+| `Source`   | string | De naam van het element waarop de fout is opgetreden. Dit kan een beleids regel of een ingebouwde pijplijn naam zijn.     | Ja      |
+| `Reason`   | string | Machine vriendelijke fout code, die kan worden gebruikt voor het afhandelen van fouten.                                       | Nee       |
+| `Message`  | string | Beschrijving van door de mens lees bare fout.                                                                         | Ja      |
+| `Scope`    | string | De naam van het bereik waarin de fout is opgetreden en kan een van de volgende zijn: ' Global ', ' product ', ' API ' of ' Operation ' | Nee       |
+| `Section`  | string | Sectie naam waarin fout is opgetreden. Mogelijke waarden: ' binnenkomend ', ' back-end ', ' outbound ' of ' on-error '.       | Nee       |
+| `Path`     | string | Hiermee geeft u genest beleid op, bijvoorbeeld ' Kies [3]/when [2] '.                                                        | Nee       |
+| `PolicyId` | string | Waarde van het `id` kenmerk, indien opgegeven door de klant, op het beleid waar fout is opgetreden             | Nee       |
 
 > [!TIP]
-> U kunt de statuscode openen via context. Response.StatusCode.  
+> U kunt de status code openen met behulp van context. Response. status code.  
 
 > [!NOTE]
-> Alle beleidsregels hebben een optioneel `id` kenmerk dat kan worden toegevoegd aan het hoofdelement van het beleid. Als dit kenmerk in een beleid aanwezig is wanneer er een fout optreedt, de waarde van het kenmerk kan worden opgehaald met behulp van de `context.LastError.PolicyId` eigenschap.
+> Alle beleids regels hebben een `id` optioneel kenmerk dat kan worden toegevoegd aan het hoofd element van het beleid. Als dit kenmerk aanwezig is in een beleid als er een fout optreedt, kan de waarde van het kenmerk worden opgehaald met behulp `context.LastError.PolicyId` van de eigenschap.
 
-## <a name="predefined-errors-for-built-in-steps"></a>Vooraf gedefinieerde fouten voor de ingebouwde stappen  
- De volgende fouten zijn vooraf gedefinieerd voor fouten die zich tijdens de evaluatie van de verwerkingsstappen die worden ingebouwd voordoen kunnen.  
+## <a name="predefined-errors-for-built-in-steps"></a>Vooraf gedefinieerde fouten voor ingebouwde stappen  
+ De volgende fouten zijn vooraf gedefinieerd voor fout situaties die kunnen optreden tijdens de evaluatie van de ingebouwde verwerkings stappen.  
   
 | Source        | Voorwaarde                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
-| configuratie | URI komt niet overeen met elke API of bewerking | OperationNotFound       | Kan niet overeen met de binnenkomende aanvraag voor een bewerking.                                                                      |
-| authorization | De abonnementssleutel is niet opgegeven             | SubscriptionKeyNotFound | Toegang is geweigerd vanwege een ontbrekende abonnementssleutel. Zorg ervoor dat de abonnementssleutel bij aanvragen voor deze API. |
-| authorization | De sleutelwaarde abonnement is ongeldig         | SubscriptionKeyInvalid  | De toegang is geweigerd vanwege ongeldige abonnements-sleutel. Zorg ervoor dat u een geldige sleutel opgeven voor een actief abonnement.            |
+| configuratie | De URI komt niet overeen met een API of bewerking | OperationNotFound       | Kan de inkomende aanvraag niet overeenkomen met een bewerking.                                                                      |
+| authorization | De abonnements sleutel is niet opgegeven             | SubscriptionKeyNotFound | De toegang is geweigerd vanwege een ontbrekende abonnements sleutel. Zorg ervoor dat u de abonnements sleutel opneemt bij het maken van aanvragen voor deze API. |
+| authorization | De waarde van de abonnements sleutel is ongeldig         | SubscriptionKeyInvalid  | De toegang is geweigerd vanwege een ongeldige abonnements sleutel. Zorg ervoor dat u een geldige sleutel opgeeft voor een actief abonnement.            |
   
-## <a name="predefined-errors-for-policies"></a>Vooraf gedefinieerde fouten voor beleid  
- De volgende fouten zijn vooraf gedefinieerd voor fouten die zich tijdens de evaluatie van het beleid voordoen kunnen.  
+## <a name="predefined-errors-for-policies"></a>Vooraf gedefinieerde fouten voor beleids regels  
+ De volgende fouten zijn vooraf gedefinieerd voor fout situaties die kunnen optreden tijdens de beleids evaluatie.  
   
 | Source       | Voorwaarde                                                       | Reason                    | Message                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| Frequentielimiet   | Limiet overschreden                                             | RateLimitExceeded         | Limiet wordt overschreden                                                                                                               |
-| quota        | Quotum overschreden                                                  | QuotaExceeded             | Volumequotum buiten bereik. Quotum wordt aangevuld in xx:xx:xx. \- of - Out van quota voor bandbreedte. Quotum wordt aangevuld in xx:xx:xx. |
-| jsonp        | Waarde van de callback-parameter is ongeldig (bevat verkeerde tekens) | CallbackParameterInvalid  | Waarde van parameter callback {retouraanroep-parameter-name} is niet een geldige JavaScript-id.                                          |
-| IP-filter    | Het parseren van de beller-IP-adres uit de aanvraag is mislukt                          | FailedToParseCallerIP     | Kan geen IP-adres instellen voor de oproepende functie. Toegang geweigerd.                                                                        |
-| IP-filter    | Aanroeper IP staat niet in lijst met toegestane                                | CallerIpNotAllowed        | Aanroeper IP-adres {ip-adres} is niet toegestaan. Toegang geweigerd.                                                                        |
-| IP-filter    | Aanroeper IP staat in de lijst met geblokkeerde Apps                                    | CallerIpBlocked           | IP-adres van oproepende functie is geblokkeerd. Toegang geweigerd.                                                                                         |
-| Check-header | Vereiste header niet weergegeven of waarde ontbreekt               | HeaderNotFound            | Koptekst {header-name} is niet gevonden in de aanvraag. Toegang geweigerd.                                                                    |
-| Check-header | Vereiste header niet weergegeven of waarde ontbreekt               | HeaderValueNotAllowed     | De waarde van de header {header-naam} van {headerwaarde} is niet toegestaan. Toegang geweigerd.                                                          |
-| validate-jwt | Jwt-token ontbreekt in de aanvraag                                 | TokenNotFound             | De JWT is niet gevonden in de aanvraag. Toegang geweigerd.                                                                                         |
-| validate-jwt | Handtekeningvalidatie is mislukt                                     | TokenSignatureInvalid     | < bericht van jwt-bibliotheek\>. Toegang geweigerd.                                                                                          |
-| validate-jwt | Ongeldige doelgroep                                                | TokenAudienceNotAllowed   | < bericht van jwt-bibliotheek\>. Toegang geweigerd.                                                                                          |
-| validate-jwt | Ongeldige uitgever                                                  | TokenIssuerNotAllowed     | < bericht van jwt-bibliotheek\>. Toegang geweigerd.                                                                                          |
-| validate-jwt | Token is verlopen                                                   | TokenExpired              | < bericht van jwt-bibliotheek\>. Toegang geweigerd.                                                                                          |
-| validate-jwt | Handtekeningsleutel is niet opgelost door ID                            | TokenSignatureKeyNotFound | < bericht van jwt-bibliotheek\>. Toegang geweigerd.                                                                                          |
-| validate-jwt | Er ontbreken vereiste claims in token                          | TokenClaimNotFound        | JWT-token ontbreekt in de volgende claims: < c1\>, < c2\>,... Toegang geweigerd.                                                            |
-| validate-jwt | Claim waarden verschil                                           | TokenClaimValueNotAllowed | Claimwaarde {claim-name} van {claimwaarde} is niet toegestaan. Toegang geweigerd.                                                             |
-| validate-jwt | Andere validatiefouten                                       | JwtInvalid                | < bericht van jwt-bibliotheek\>                                                                                                          |
+| frequentie limiet   | Frequentie limiet overschreden                                             | RateLimitExceeded         | Frequentie limiet is overschreden                                                                                                               |
+| quota        | Quotum overschreden                                                  | QuotaExceeded             | Volumequotum buiten bereik. Het quotum wordt aangevuld in xx: xx: xx. -of-verouderd quotum voor de band breedte. Het quotum wordt aangevuld in xx: xx: xx. |
+| jsonp        | Waarde van call back-para meter is ongeldig (bevat onjuiste tekens) | CallbackParameterInvalid  | De waarde van de call back-para meter {call back-para meter-name} is geen geldige java script-id.                                          |
+| IP-filter    | Parseren van beller-IP uit aanvraag mislukt                          | FailedToParseCallerIP     | Kan geen IP-adres voor de oproepende functie instellen. Toegang geweigerd.                                                                        |
+| IP-filter    | Het IP-adres van de aanroeper is niet in de lijst met toegestane adressen                                | CallerIpNotAllowed        | Het IP-adres van de oproepende functie {IP-Address} is niet toegestaan. Toegang geweigerd.                                                                        |
+| IP-filter    | IP van beller bevindt zich in de lijst met geblokkeerde adressen                                    | CallerIpBlocked           | Het IP-adres van de beller is geblokkeerd. Toegang geweigerd.                                                                                         |
+| check-header | De vereiste header is niet weer gegeven of de waarde ontbreekt               | HeaderNotFound            | Header {header-name} is niet gevonden in de aanvraag. Toegang geweigerd.                                                                    |
+| check-header | De vereiste header is niet weer gegeven of de waarde ontbreekt               | HeaderValueNotAllowed     | Header {header-name} waarde {header-value} is niet toegestaan. Toegang geweigerd.                                                          |
+| validate-jwt | JWT-token ontbreekt in aanvraag                                 | TokenNotFound             | De JWT is niet gevonden in de aanvraag. Toegang geweigerd.                                                                                         |
+| validate-jwt | Validatie van hand tekening is mislukt                                     | TokenSignatureInvalid     | < bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
+| validate-jwt | Ongeldige doel groep                                                | TokenAudienceNotAllowed   | < bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
+| validate-jwt | Ongeldige verlener                                                  | TokenIssuerNotAllowed     | < bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
+| validate-jwt | Token is verlopen                                                   | TokenExpired              | < bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
+| validate-jwt | De handtekening sleutel is niet omgezet op basis van de ID                            | TokenSignatureKeyNotFound | < bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
+| validate-jwt | De vereiste claims ontbreken in het token                          | TokenClaimNotFound        | In het JWT-token ontbreken de volgende claims:\>< C1,\>< C2,... Toegang geweigerd.                                                            |
+| validate-jwt | Claim waarden komen niet overeen                                           | TokenClaimValueNotAllowed | Claim {claim naam} waarde {claim-value} is niet toegestaan. Toegang geweigerd.                                                             |
+| validate-jwt | Andere validatie fouten                                       | JwtInvalid                | < bericht van de JWT-bibliotheek\>                                                                                                          |
 
 ## <a name="example"></a>Voorbeeld
 
-Als een API-beleid op:
+Een API-beleid instellen op:
 
 ```xml
 <policies>
@@ -170,15 +169,15 @@ Als een API-beleid op:
 </policies>
 ```
 
-en verzenden van een niet-gemachtigde aanvraag resulteert in het volgende antwoord:
+en het verzenden van een niet-geautoriseerde aanvraag leidt tot het volgende antwoord:
 
-![Niet-geautoriseerde foutbericht](media/api-management-error-handling-policies/error-response.png)
+![Niet-geautoriseerd fout antwoord](media/api-management-error-handling-policies/error-response.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie werken met beleidsregels voor:
+Zie voor meer informatie over het gebruik van beleid:
 
 + [Beleid in API Management](api-management-howto-policies.md)
-+ [API's transformeren](transform-api.md)
-+ [Naslaginformatie over beleid voor](api-management-policy-reference.md) voor een volledige lijst van beleidsverklaringen en de bijbehorende instellingen
-+ [Voorbeelden van beleid](policy-samples.md)   
++ [Api's transformeren](transform-api.md)
++ [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
++ [Voor beelden van beleid](policy-samples.md)   

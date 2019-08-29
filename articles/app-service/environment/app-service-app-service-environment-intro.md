@@ -1,6 +1,6 @@
 ---
-title: Inleiding tot App Service Environment v1 - Azure
-description: Meer informatie over de App Service Environment v1-functie die beveiligde, lid is van een VNet, toegewezen schaaleenheden biedt voor het uitvoeren van al uw apps.
+title: Inleiding tot App Service Environment v1-Azure
+description: Meer informatie over de App Service Environment v1-functie die beveiligde, aan VNet toegevoegde, toegewezen schaal eenheden biedt om al uw apps uit te voeren.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,81 +10,80 @@ ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 2bb1a9c3922f435b6be78614aacff6e85bf475ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130735"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070159"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Inleiding tot App Service Environment v1
 
 > [!NOTE]
-> In dit artikel gaat over de App Service Environment v1.  Er is een nieuwere versie van de App Service Environment die gebruiksvriendelijker en wordt uitgevoerd op een krachtigere infrastructuur. Voor meer informatie over de nieuwe versie begin met het [Inleiding tot App Service Environment](intro.md).
+> Dit artikel heeft betrekking op de App Service Environment v1.  Er is een nieuwere versie van de App Service Environment die eenvoudiger is te gebruiken en wordt uitgevoerd op een krachtigere infra structuur. Begin met de [Inleiding tot de app service Environment](intro.md)voor meer informatie over de nieuwe versie.
 
 ## <a name="overview"></a>Overzicht
 
-Een App Service Environment is een [Premium] [ PremiumTier] service-plan-optie van [Azure App Service](../overview.md) die zorgt voor een volledig geïsoleerde en toegewezen omgeving voor het veilig uitvoeren Azure App Service-apps op grote schaal, met inbegrip van Web-Apps, Mobile Apps en API Apps.  
+Een App Service Environment is een optie voor een [Premium][PremiumTier] service plan van [Azure app service](../overview.md) die een volledig geïsoleerde en toegewezen omgeving biedt voor het veilig uitvoeren van Azure app service-apps op grote schaal, met inbegrip van Web Apps, Mobile apps en API apps.  
 
-App Service-omgevingen zijn ideaal voor toepassingsworkloads die waarvoor nodig:
+App Service omgevingen zijn ideaal voor werk belastingen van toepassingen waarvoor het volgende is vereist:
 
-* Zeer grote schaal
-* Isolatie en beveiligde netwerktoegang
+* Zeer hoge schaal
+* Isolatie en beveiligde netwerk toegang
 
-Klanten kunnen meerdere App Service-omgevingen binnen één Azure-regio, evenals over meerdere Azure-regio's maken.  Hierdoor wordt de App Service-omgevingen ideaal voor het horizontaal schalen zonder status toepassingslagen ter ondersteuning van hoge RPS-werkbelastingen.
+Klanten kunnen meerdere App Service omgevingen maken binnen één Azure-regio en ook in meerdere Azure-regio's.  Dit zorgt ervoor dat App Service omgevingen ideaal zijn voor Horizon taal schaalloze toepassings lagen ter ondersteuning van hoge RPS-workloads.
 
-App Service-omgevingen zijn geïsoleerd actieve slechts één klant toepassingen, en worden altijd geïmplementeerd in een virtueel netwerk.  Klanten hebben meer controle over zowel toepassing binnenkomend en uitgaand netwerkverkeer en toepassingen zeer snelle, veilige verbindingen kunnen maken via virtuele netwerken tot on-premises bedrijfsresources.
+App Service omgevingen zijn alleen geïsoleerd voor het uitvoeren van de toepassingen van één klant en worden altijd geïmplementeerd in een virtueel netwerk.  Klanten hebben nauw keurige controle over zowel binnenkomend als uitgaand netwerk verkeer en toepassingen kunnen snelle, veilige verbindingen tot stand brengen via virtuele netwerken naar on-premises bedrijfs bronnen.
 
-Voor een overzicht van hoe App Service-omgevingen grote schaal inschakelen en beveiligde netwerktoegang, Zie de [AzureCon Deep Dive] [ AzureConDeepDive] op App Service-omgevingen.
+Zie voor een overzicht van de manier waarop App Service-omgevingen grootschalige en veilige toegang tot het netwerk bieden, de uitgebreide kennis van [AzureCon][AzureConDeepDive] in app service omgevingen!
 
-Voor een uitgebreide voor horizontaal schalen met behulp van meerdere App Service-omgevingen raadpleegt u het artikel instellen van een [geo-distributed app footprint][GeodistributedAppFootprint].
+Zie het artikel over het instellen van een [geografisch gedistribueerd app-Opper vlak][GeodistributedAppFootprint]voor een diep gaande op horizon taal schalen met meerdere app service omgevingen.
 
-Als u wilt zien hoe de beveiligingsarchitectuur in AzureCon Deep Dive is geconfigureerd, ziet u het artikel over het implementeren van een [gelaagde beveiligingsarchitectuur](app-service-app-service-environment-layered-security.md) met App Service-omgevingen.
+Zie het artikel over het implementeren van een gelaagde [beveiligings architectuur](app-service-app-service-environment-layered-security.md) met app service omgevingen voor meer informatie over hoe de beveiligings architectuur die wordt weer gegeven in de AzureCon diepe duik is geconfigureerd.
 
-Apps die worden uitgevoerd op App Service-omgevingen hebben hun toegang vergrendeld met upstream-apparaten, zoals web application Firewall (WAF).  In het artikel over [een WAF configureren voor App Service-omgevingen](app-service-app-service-environment-web-application-firewall.md) bevat informatie over dit scenario.
+Voor apps die op App Service omgevingen worden uitgevoerd, kan de toegang worden gedecodeerd via upstream-apparaten, zoals Web Application firewalls (WAF).  Het artikel over het [configureren van een WAF voor app service omgevingen](app-service-app-service-environment-web-application-firewall.md) behandelt dit scenario.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="dedicated-compute-resources"></a>Toegewezen Compute-Resources
+## <a name="dedicated-compute-resources"></a>Toegewezen reken resources
 
-Alle van de compute-resources in een App Service Environment zijn exclusief toegewezen aan één abonnement en een App Service Environment kan worden geconfigureerd met maximaal vijftig (50) compute-resources voor exclusief gebruik door één toepassing.
+Alle reken resources in een App Service Environment zijn exclusief toegewezen aan één abonnement en een App Service Environment kan worden geconfigureerd met Maxi maal 50 (50) reken resources voor exclusief gebruik door één toepassing.
 
-Een App Service-omgeving bestaat uit een front-compute-resourcegroep, evenals één tot drie worker compute-resourcegroepen.
+Een App Service Environment bestaat uit een front-end Compute-resource groep en een tot drie werk computer-reken resource groepen.
 
-De front-end-pool bevat rekenresources die verantwoordelijk is voor SSL-beëindiging als ook automatische taakverdeling van app-aanvragen in een App Service Environment.
+De front-end-pool bevat reken resources die verantwoordelijk zijn voor het beëindigen van SSL als een automatische taak verdeling van app-aanvragen binnen een App Service Environment.
 
-Elke groep met werkrollen bevat rekenresources die zijn toegewezen aan [App Service-abonnementen][AppServicePlan], die een of meer Azure App Service-apps op zijn beurt bevatten.  Omdat er maximaal drie verschillende werknemersgroepen aanwezig in een App Service Environment zijn kunnen, hebt u de flexibiliteit om verschillende compute-resources voor elke workergroep kiezen.  
+Elke werknemers groep bevat reken resources die zijn toegewezen aan [app service plannen][AppServicePlan], die op zijn beurt een of meer Azure app service apps bevatten.  Omdat er Maxi maal drie verschillende werkgroepen kunnen zijn in een App Service Environment, hebt u de flexibiliteit om verschillende reken resources te kiezen voor elke werk groep.  
 
-Bijvoorbeeld: Hiermee kunt u een groep met werkrollen maken met minder krachtige compute-resources voor App Service-abonnementen bedoeld voor ontwikkelings- of apps.  Een tweede (of zelfs derde) werknemersgroep kan krachtigere rekenresources die zijn bedoeld voor App Service-abonnementen met productie-apps gebruiken.
+Zo kunt u bijvoorbeeld één werk groep maken met minder krachtige reken resources voor App Service plannen die zijn bedoeld voor ontwikkelings-en test toepassingen.  Een tweede (of zelfs derde) werk groep kan gebruikmaken van krachtigere reken resources die zijn bedoeld voor App Service plannen die productie-apps uitvoeren.
 
-Zie voor meer informatie over de hoeveelheid rekenresources die beschikbaar zijn voor de front-end- en worker-groepen [het configureren van een App Service Environment][HowToConfigureanAppServiceEnvironment].  
+Zie [How to Configure an app service Environment][HowToConfigureanAppServiceEnvironment](Engelstalig) voor meer informatie over de hoeveelheid reken resources die beschikbaar zijn voor de front-end-en worker-groepen.  
 
-Voor meer informatie over de beschikbare compute resource grootten die worden ondersteund in een App Service Environment, moet u de [prijzen voor App Service] [ AppServicePricing] pagina en bekijk de beschikbare opties voor App Service-omgevingen in de De prijscategorie Premium.
+Raadpleeg de pagina met [app service prijzen][AppServicePricing] voor meer informatie over de beschik bare berekenings resource grootten die worden ondersteund in een app service Environment en Bekijk de beschik bare opties voor app service omgevingen in de prijs categorie Premium.
 
-## <a name="virtual-network-support"></a>Virtual Network-ondersteuning
+## <a name="virtual-network-support"></a>Ondersteuning voor Virtual Network
 
-Een App Service Environment kan worden gemaakt in **beide** een virtueel netwerk van Azure Resource Manager, **of** een klassieke implementatie model virtueel netwerk ([meer informatie over virtuele netwerken] [MoreInfoOnVirtualNetworks]).  Aangezien een App Service-omgeving altijd in een virtueel netwerk bestaat en nauwkeuriger binnen een subnet van een virtueel netwerk, kunt u gebruikmaken van de beveiligingsfuncties van virtuele netwerken voor het beheren van zowel binnenkomende en uitgaande netwerkcommunicatie.  
+Een App Service Environment kan worden gemaakt in een Azure Resource Manager virtueel netwerk **of** een klassiek implementatie model virtueel netwerk ([meer informatie over virtuele netwerken][MoreInfoOnVirtualNetworks]).  Omdat een App Service Environment altijd bestaat in een virtueel netwerk en nauw keuriger is binnen een subnet van een virtueel netwerk, kunt u gebruikmaken van de beveiligings functies van virtuele netwerken om zowel binnenkomende als uitgaande netwerk communicatie te beheren.  
 
-Een App Service-omgeving kan een van beide internetgerichte met een openbaar IP-adres of interne geconfronteerd met alleen een Azure interne Load Balancer (ILB)-adres zijn.
+Een App Service Environment kan Internet zijn met een openbaar IP-adres of intern gericht met alleen een Azure intern Load Balancer (ILB)-adres.
 
-U kunt [netwerkbeveiligingsgroepen] [ NetworkSecurityGroups] om te beperken van binnenkomende netwerkcommunicatie met het subnet waarin een App Service-omgeving zich bevindt.  Hiermee kunt u apps achter upstream-apparaten en services, zoals firewalls voor webtoepassingen en SaaS-netwerkproviders uitvoeren.
+U kunt [netwerk beveiligings groepen][NetworkSecurityGroups] gebruiken om de inkomende netwerk communicatie te beperken tot het subnet waar een app service Environment zich bevindt.  Zo kunt u apps uitvoeren achter de upstream-apparaten en-services, zoals firewalls voor webtoepassingen en netwerk-SaaS-providers.
 
-Apps hebben ook vaak toegang nodig tot bedrijfsresources zoals interne databases en webservices.  Een algemene aanpak is om alleen voor interne netwerkverkeer stromen binnen een virtueel Azure-netwerk beschikbaar maken voor deze eindpunten.  Zodra een App Service Environment is toegevoegd aan hetzelfde virtuele netwerk bevinden als de interne services, apps die worden uitgevoerd in de omgeving toegang krijgen tot deze, met inbegrip van eindpunten bereikbaar is via [Site-naar-Site] [ SiteToSite] en [Azure ExpressRoute] [ ExpressRoute] verbindingen.
+Apps hebben ook vaak toegang nodig tot bedrijfsresources zoals interne databases en webservices.  Een veelvoorkomende aanpak is om deze eind punten alleen beschikbaar te maken voor intern netwerk verkeer dat binnen een virtueel Azure-netwerk loopt.  Zodra een App Service Environment is gekoppeld aan hetzelfde virtuele netwerk als de interne services, hebben apps die in de omgeving worden uitgevoerd, toegang tot de toepassingen, waaronder eind punten die bereikbaar zijn via [site-naar-site-][SiteToSite] en [Azure ExpressRoute][ExpressRoute] -verbindingen.
 
-Voor meer informatie over de werking van App Service-omgevingen met virtuele netwerken en on-premises netwerken raadpleegt u de volgende artikelen op [netwerkarchitectuur][NetworkArchitectureOverview], [inkomende beheren Verkeer][ControllingInboundTraffic], en [veilig maken van verbinding met back-ends][SecurelyConnectingToBackends]. 
+Raadpleeg de volgende artikelen over de [netwerk architectuur][NetworkArchitectureOverview], beheer van binnenkomend [verkeer][ControllingInboundTraffic]en [veilig verbinding maken met back-endservers][SecurelyConnectingToBackends]voor meer informatie over de werking van app service omgevingen met virtuele netwerken en on-premises netwerken. 
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u wilt aan de slag met App Service-omgevingen, Zie [hoe om te maken van een App Service-omgeving][HowToCreateAnAppServiceEnvironment]
+Zie [een app service Environment maken][HowToCreateAnAppServiceEnvironment] om aan de slag te gaan met app service omgevingen
 
-Zie voor een overzicht van de netwerkarchitectuur van App Service-omgeving, de [overzicht van netwerkarchitectuur] [ NetworkArchitectureOverview] artikel.
+Zie het artikel overzicht van de [netwerk architectuur][NetworkArchitectureOverview] voor een overzicht van de app service Environment-netwerk architectuur.
 
-Zie voor meer informatie over het gebruik van een App Service Environment met ExpressRoute, het volgende artikel op [Express Route- en App Service-omgevingen][NetworkConfigDetailsForExpressRoute].
+Raadpleeg het volgende artikel over [Express route en app service omgevingen][NetworkConfigDetailsForExpressRoute]voor meer informatie over het gebruik van een app service Environment met ExpressRoute.
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

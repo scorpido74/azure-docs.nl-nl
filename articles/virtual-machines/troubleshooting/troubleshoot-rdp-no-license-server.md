@@ -1,41 +1,40 @@
 ---
-title: De extern bureaublad-licentieserver niet beschikbaar wanneer u verbinding met een Azure-VM maakt | Microsoft Docs
-description: Informatie over het oplossen van problemen met RDP is mislukt omdat er geen extern bureaublad-licentieserver beschikbaar | Microsoft Docs
+title: De Extern bureaublad licentie server is niet beschikbaar wanneer u verbinding maakt met een Azure VM | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met RDP-problemen omdat er geen Extern bureaublad licentie server beschikbaar is | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c5eb25ae536a6cdb0eb12f1233307215fe2d7d1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318949"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080014"
 ---
-# <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Extern bureaublad-licentieserver niet beschikbaar wanneer u verbinding met een Azure-VM maakt
+# <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Extern bureaublad licentie server is niet beschikbaar wanneer u verbinding maakt met een Azure VM
 
-Dit artikel helpt het probleem wordt opgelost wanneer u geen verbinding met een Azure-machine (VM maken) omdat er geen extern bureaublad-licentieserver beschikbaar is voor het bieden van een licentie.
+Dit artikel helpt u bij het oplossen van het probleem wanneer u geen verbinding kunt maken met een virtuele machine van Azure (VM), omdat er geen Extern bureaublad licentie server beschikbaar is om een licentie te bieden.
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u probeert verbinding maken met een virtuele machine (VM), treden de volgende scenario's:
+Wanneer u probeert verbinding te maken met een virtuele machine (VM), treden de volgende scenario's op:
 
-- De VM-schermafbeelding ziet u dat het besturingssysteem volledig geladen en in afwachting van referenties is.
-- U ontvangt de volgende foutberichten weergegeven wanneer u probeert een Microsoft Remote Desktop Protocol (RDP)-verbinding te maken:
+- In de VM-scherm afbeelding ziet u dat het besturings systeem volledig is geladen en wordt gewacht op referenties.
+- U ontvangt de volgende fout berichten wanneer u een RDP-verbinding (Microsoft Extern bureaublad Protocol) wilt maken:
 
-  - De externe sessie is beëindigd omdat er geen extern bureaublad-licentieservers beschikbaar, voor een licentie.
+  - De externe sessie is beëindigd omdat er geen Extern bureaublad licentie servers beschikbaar zijn om een licentie te bieden.
 
-  - Er is geen extern bureaublad-licentieserver is beschikbaar. Extern bureaublad-Services meer werken omdat deze computer voorbij de respijtperiode is en nog niet is verbinding gemaakt met ten minste een geldige Windows Server 2008-licentieserver. Selecteer dit bericht extern bureaublad-sessiehost-Server configureren voor het gebruik van Licentiecontrole openen.
+  - Er is geen Extern bureaublad licentie server beschikbaar. Extern bureaublad-services werkt niet meer omdat de respijt periode van deze computer niet is bereikt en geen contact heeft gemaakt met ten minste een geldige Windows Server 2008-licentie server. Selecteer dit bericht om de configuratie van RD Session Host-servers te openen voor het gebruik van licentie controle.
 
-Echter, u kunt verbinding maken met de virtuele machine normaal gesproken met behulp van een beheersessie:
+U kunt echter wel verbinding maken met de virtuele machine met behulp van een beheer sessie:
 
 ```
 mstsc /v:<Server>[:<Port>] /admin
@@ -43,90 +42,90 @@ mstsc /v:<Server>[:<Port>] /admin
 
 ## <a name="cause"></a>Oorzaak
 
-Dit probleem treedt op als een extern bureaublad-licentieserver niet beschikbaar is voor een licentie voor het starten van een externe sessie. Dit kan worden veroorzaakt door verschillende scenario's, zelfs als een Remote Desktop Session Host-rol is ingesteld op de virtuele machine:
+Dit probleem doet zich voor als een Extern bureaublad licentie server niet beschikbaar is om een licentie te bieden om een externe sessie te starten. Dit kan worden veroorzaakt door verschillende scenario's, zelfs als een Extern bureaublad sessiehost is ingesteld op de virtuele machine:
 
-- Er is nooit een extern bureaublad-licentieverlening rol in de omgeving en de respijtperiode 180 dagen ligt boven.
-- Een extern bureaublad-licentie is geïnstalleerd in de omgeving, maar deze nooit geactiveerd.
-- Een extern bureaublad-licentieserver in de omgeving heeft geen Client Access Licenses (CAL's) is toegevoegd om de verbinding in te stellen.
-- Een extern bureaublad-licentie is geïnstalleerd in de omgeving. Er zijn CAL's beschikbaar, maar ze zijn niet juist geconfigureerd.
-- Een extern bureaublad-licentie heeft CAL's en deze is geactiveerd. Echter enkele andere problemen op de extern bureaublad-licentieserver te voorkomen dat het leveren van licenties in de omgeving.
+- Er is nooit een Extern bureaublad-licentie functie in de omgeving en de respijt periode is 180 dagen.
+- Er is een Extern bureaublad licentie in de omgeving geïnstalleerd, maar deze is nooit geactiveerd.
+- Een Extern bureaublad licentie in de omgeving heeft geen Client Access Licenses (Cal's) die zijn geïnjecteerd voor het instellen van de verbinding.
+- Er is een Extern bureaublad licentie in de omgeving geïnstalleerd. Er zijn beschik bare Cal's, maar deze zijn niet goed geconfigureerd.
+- Een Extern bureaublad licentie heeft Cal's en is geactiveerd. Er zijn echter andere problemen op de Extern bureaublad licentie server die voor komen dat deze licenties in de omgeving bieden.
 
 ## <a name="solution"></a>Oplossing
 
-Dit probleem op te lossen [maakt u een back-up van de besturingssysteemschijf](../windows/snapshot-copy-managed-disk.md) en volg deze stappen:
+U kunt dit probleem oplossen door [een back-up te maken van de besturingssysteem schijf en de](../windows/snapshot-copy-managed-disk.md) volgende stappen uit te voeren:
 
-1. Verbinding maken met de virtuele machine met een beheersessie:
+1. Verbinding maken met de virtuele machine met behulp van een beheer sessie:
 
    ```
    mstsc /v:<Server>[:<Port>] /admin
    ```
 
-    Als u geen verbinding met de virtuele machine maken met behulp van een beheersessie, kunt u de [seriële Console van de virtuele Machine op Azure](serial-console-windows.md) toegang krijgen tot de virtuele machine als volgt:
+    Als u geen verbinding kunt maken met de virtuele machine met behulp van een beheer sessie, kunt u de VM- [seriële console op Azure](serial-console-windows.md) als volgt gebruiken om toegang te krijgen tot de vm's:
 
-    1. Toegang tot de seriële Console door te selecteren **ondersteuning en probleemoplossing** >  **(Preview) van de seriële console**. Als de functie is ingeschakeld op de virtuele machine, kunt u de virtuele machine is verbinden.
+    1. Open de seriële console door ondersteuning te selecteren **& probleem oplossing** > **seriële console (preview)** . Als de functie is ingeschakeld op de virtuele machine, kunt u verbinding maken met de virtuele machine.
 
-    2. Maak een nieuw kanaal voor een CMD-exemplaar. Voer **CMD** naar het kanaal begint en naam van het kanaal.
+    2. Een nieuw kanaal maken voor een CMD-exemplaar. Voer **cmd** in om het kanaal te starten en de kanaal naam op te halen.
 
-    3. Schakel over naar het kanaal dat u de CMD-exemplaar wordt uitgevoerd. In dit geval moet het kanaal 1:
+    3. Schakel over naar het kanaal waarop het CMD-exemplaar wordt uitgevoerd. In dit geval moet het kanaal 1 zijn:
 
        ```
        ch -si 1
        ```
 
-    4. Selecteer **Enter** opnieuw en voer een geldige gebruikersnaam en wachtwoord, lokaal of domein-ID voor de virtuele machine.
+    4. Selecteer opnieuw **invoeren** en voer een geldige gebruikers naam en wacht woord, lokale of domein-id in voor de virtuele machine.
 
-2. Controleer of de virtuele machine een Remote Desktop Session Host-rol is ingeschakeld heeft. Als de functie is ingeschakeld, controleert u of deze correct werkt. Open een verhoogde CMD-exemplaar en volg deze stappen:
+2. Controleer of er een Extern bureaublad Session Host-rol is ingeschakeld op de VM. Als de functie is ingeschakeld, controleert u of deze goed werkt. Open een met verhoogde bevoegdheden een CMD-exemplaar en voer de volgende stappen uit:
 
-    1. Gebruik de volgende opdracht om de status van de Remote Desktop Session Host-rol te controleren:
+    1. Gebruik de volgende opdracht om de status van de Extern bureaublad Session Host-functie te controleren:
 
        ```
         reg query "HKLM\SOFTWARE\Microsoft\ServerManager\ServicingStorage\ServerComponentCache\RDS-RD-Server" /v InstallState
         ```
 
-        Als deze opdracht een waarde van 0 retourneert, betekent dit dat de functie is uitgeschakeld en u naar stap 3 gaat.
+        Als met deze opdracht de waarde 0 wordt geretourneerd, betekent dit dat de rol is uitgeschakeld en dat u naar stap 3 kunt gaan.
 
-    2. Gebruik de volgende opdracht om te controleren van het beleid en zo nodig opnieuw te configureren:
+    2. Gebruik de volgende opdracht om het beleid te controleren en indien nodig opnieuw te configureren:
 
        ```
         reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode reg query "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers
        ```
 
-        Als de **LicensingMode** waarde is ingesteld op een andere waarde dan 4, per gebruiker, wordt de waarde ingesteld op 4:
+        Als de waarde voor **LicensingMode** is ingesteld op een andere waarde dan 4, per gebruiker, stelt u de waarde in op 4:
 
          ```
         reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\RCM\Licensing Core" /v LicensingMode /t REG_DWORD /d 4
         ```
 
-       Als de **SpecifiedLicenseServers** waarde bestaat niet of heeft onjuiste licentiegegevens voor server, als volgt wijzigen:
+       Als de waarde voor **SpecifiedLicenseServers** niet bestaat of onjuiste licentie server gegevens heeft, wijzigt u deze als volgt:
 
        ```
         reg add "HKLM\SYSTEM\CurrentControlSet\Services\TermService\Parameters" /v SpecifiedLicenseServers /t REG_MULTI_SZ /d "<FQDN / IP License server>"
        ```
 
-    3. Nadat u wijzigingen in het register aanbrengt, start u de virtuele machine opnieuw.
+    3. Nadat u wijzigingen in het REGI ster hebt aangebracht, start u de VM opnieuw op.
 
-    4. Als u geen CAL's hebt, verwijdert u de Remote Desktop Session Host-rol. Vervolgens wordt het RDP-protocol opnieuw worden ingesteld op normaal. Hierdoor kan alleen twee gelijktijdige RDP-verbindingen met de virtuele machine:
+    4. Als u geen Cal's hebt, verwijdert u de functie sessiehost van Extern bureaublad. Vervolgens wordt de RDP-configuratie teruggezet naar normaal. Er zijn slechts twee gelijktijdige RDP-verbindingen met de virtuele machine toegestaan:
 
         ```
        dism /ONLINE /Disable-feature /FeatureName:Remote-Desktop-Services
         ```
 
-        Als de virtuele machine de rol van extern bureaublad-licentieverlening heeft en deze wordt niet gebruikt, kunt u ook die rol verwijderen:
+        Als de virtuele machine de Extern bureaublad-licentie functie heeft en niet wordt gebruikt, kunt u die rol ook verwijderen:
 
        ```
         dism /ONLINE /Disable-feature /FeatureName:Licensing
        ```
 
-    5. Zorg ervoor dat de virtuele machine verbinding met de extern bureaublad-licentieserver maken kan. U kunt de verbinding met de poort 135 tussen de virtuele machine en de licentieserver testen: 
+    5. Zorg ervoor dat de virtuele machine verbinding kan maken met de Extern bureaublad licentie server. U kunt de connectiviteit testen op poort 135 tussen de virtuele machine en de licentie server: 
 
        ```
        telnet <FQDN / IP License Server> 135
        ```
 
-3. Als er geen extern bureaublad-licentieserver in de omgeving en u maken wilt, kunt u [installeren van een extern bureaublad-licentieverlening functieservice](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). Vervolgens [de extern bureaublad-Services-licentieverlening configureren](https://blogs.technet.microsoft.com/askperf/2013/09/20/rd-licensing-configuration-on-windows-server-2012/).
+3. Als er geen Extern bureaublad licentie server in de omgeving is en u er een wilt maken, kunt u [een extern bureaublad Licensing-functie service installeren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). [Configureer vervolgens de RDS-licentie verlening](https://blogs.technet.microsoft.com/askperf/2013/09/20/rd-licensing-configuration-on-windows-server-2012/).
 
-4. Als een extern bureaublad-licentieserver geconfigureerd en in orde is is, controleert u dat de extern bureaublad-licentieserver is geactiveerd met CAL's.
+4. Als een Extern bureaublad licentie server is geconfigureerd en in orde is, moet u ervoor zorgen dat de Extern bureaublad licentie server wordt geactiveerd met Cal's.
 
 ## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning
 
-Als u nog steeds hulp nodig hebt, [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem is opgelost.
+Als u nog hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om het probleem op te lossen.

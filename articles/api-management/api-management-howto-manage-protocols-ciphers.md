@@ -1,6 +1,6 @@
 ---
-title: Protocollen en coderingen in Azure API Management beheren | Microsoft Docs
-description: Informatie over het beheren van (TLS, SSL)-protocollen en coderingen (DES) in Azure API Management.
+title: Protocollen en code ringen beheren in azure API Management | Microsoft Docs
+description: Meer informatie over het beheren van protocollen (TLS, SSL) en code ringen (DES) in azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -9,39 +9,38 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: f809aaf872607e7fa61368832a3df74318f2a858
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7c7fdd06480ce3da70c86d38ab0685b9b3aaaf2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66141502"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072392"
 ---
-# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Protocollen en coderingen in Azure API Management beheren
+# <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Protocollen en code ringen beheren in azure API Management
 
-Met Azure API Management biedt ondersteuning voor meerdere versies van TLS-protocol voor zowel client-en back-end, evenals de 3DES-codering.
+Azure API Management ondersteunt meerdere versies van het TLS-protocol voor zowel client-als back-endservers en de 3DES-code ring.
 
-Deze handleiding leest u over het beheren van protocollen en coderingen configuratie voor een Azure API Management-exemplaar.
+In deze hand leiding wordt beschreven hoe u protocollen en coderings configuratie beheert voor een Azure API Management-exemplaar.
 
-![Protocollen en coderingen in APIM beheren](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
+![Protocollen en code ringen in APIM beheren](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt volgen de stappen in dit artikel, moet u het volgende hebben:
+Als u de stappen in dit artikel wilt volgen, hebt u het volgende nodig:
 
-* Exemplaar van API Management
+* Een API Management-exemplaar
 
-## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>Over het beheren van TLS-protocollen en 3DES-codering
+## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>TLS-protocollen en 3DES-code ring beheren
 
-1. Navigeer naar uw **exemplaar van API Management** in Azure portal.
-2. Selecteer **Protocol-instellingen** in het menu.  
-3. In- of uitschakelen van de gewenste protocollen of versleuteling.
-4. Klik op **Opslaan**. Wijzigingen worden toegepast binnen een uur.  
+1. Navigeer naar uw **API Management-exemplaar** in de Azure Portal.
+2. Selecteer **Protocol instellingen** in het menu.  
+3. Gewenste protocollen of code ringen in-of uitschakelen.
+4. Klik op **Opslaan**. Wijzigingen worden binnen een uur toegepast.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [TLS (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
-* Bekijk meer [video's](https://azure.microsoft.com/documentation/videos/index/?services=api-management) over API Management.
+* Bekijk meer [Video's](https://azure.microsoft.com/documentation/videos/index/?services=api-management) over API management.

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: b7b003c588d7b079823bb046676a1226828fcae2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e6b5c8c2f734a12fe246a82ce1aa1dc53893ab64
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249859"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072380"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Ontwikkelaars accounts met OAuth 2,0 in azure API Management autoriseren
 
@@ -97,7 +96,7 @@ In deze hand leiding wordt beschreven hoe u uw API Management service-exemplaar 
 
 Nadat u uw OAuth 2,0-autorisatie server hebt geconfigureerd en uw API hebt geconfigureerd voor het gebruik van die server, kunt u deze testen door naar de ontwikkelaars portal te gaan en een API aan te roepen.  Klik op **ontwikkelaars Portal** in het bovenste menu op de pagina **overzicht** van Azure API Management-instantie.
 
-![ontwikkelaarsportal][api-management-developer-portal-menu]
+![Ontwikkelaarsportal][api-management-developer-portal-menu]
 
 Klik op **api's** in het bovenste menu en selecteer **echo-API**.
 

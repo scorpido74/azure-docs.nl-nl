@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312208"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102895"
 ---
 # <a name="dependency-visualization"></a>Visualisatie van afhankelijkheden
 
@@ -28,7 +28,7 @@ Met de functie voor afhankelijkheids visualisatie in Server evaluatie kunt u gro
 
 - Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
 - Als u al een project hebt gemaakt, moet u ervoor zorgen dat u de Azure Migrate hebt [toegevoegd](how-to-assess.md) : Hulp programma Server Assessment.
-- Zorg ervoor dat u uw computers hebt gedetecteerd in Azure Migrate. u kunt dit doen door een Azure Migrate apparaat in te stellen voor [VMware](how-to-set-up-appliance-vmware.md) of [Hyper-V](how-to-set-up-appliance-hyper-v.md). Het apparaat detecteert on-premises machines en stuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie. [Meer informatie](migrate-appliance.md).
+- Zorg ervoor dat u uw computers hebt gedetecteerd in Azure Migrate. u kunt dit doen door een Azure Migrate apparaat in te stellen voor [VMware](how-to-set-up-appliance-vmware.md) of [Hyper-V](how-to-set-up-appliance-hyper-v.md). Het apparaat detecteert on-premises machines en stuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server-evaluatie. [Meer informatie](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Hoe werkt het?
 
@@ -41,7 +41,7 @@ Azure Migrate gebruikt de [servicetoewijzing](../operations-management-suite/ope
     3. Klik in de **OMS-werk ruimte**op **configuratie vereist**.
     4. In **werk ruimte configureren**geeft u op of u een nieuwe werk ruimte wilt maken of een bestaande wilt gebruiken:
     
-    ![Werk ruimte toevoegen](./media/how-to-create-group-machine-dependencies/workspace.png)
+    ![Werkruimte toevoegen](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - Tijdens het koppelen van een werk ruimte krijgt u de mogelijkheid om een nieuwe werk ruimte te maken of een bestaande te koppelen:
   - Wanneer u een nieuwe werk ruimte maakt, moet u een naam opgeven voor de werk ruimte. De werk ruimte wordt vervolgens gemaakt in een regio in dezelfde [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) als het migratie project.
@@ -55,11 +55,11 @@ Azure Migrate gebruikt de [servicetoewijzing](../operations-management-suite/ope
 
     ![Log Analytics werk ruimte navigeren](./media/concepts-dependency-visualization/oms-workspace.png)
 
-Als u afhankelijkheids visualisatie wilt gebruiken, moet u agents downloaden en installeren op elke on-premises computer die u wilt analyseren.  
+Als u visualisatie van afhankelijkheden wilt gebruiken, moet u agents downloaden en installeren op elke on-premises computer die u wilt analyseren.  
 
 - [Micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) moet op elke computer worden geïnstalleerd. Meer [informatie](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) over het installeren van de MMA-agent.
-- De [afhankelijkheids agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) moet op elke computer worden geïnstalleerd. Meer [informatie](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) over het installeren van de afhankelijkheids agent.
-- Als u bovendien computers hebt zonder Internet verbinding, moet u de Log Analytics-gateway hierop downloaden en installeren.
+- De [afhankelijkheids agent](../azure-monitor/platform/agents-overview.md#dependency-agent) moet op elke computer worden geïnstalleerd. Meer [informatie](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) over het installeren van de afhankelijkheids agent.
+- En als u VM's zonder internetverbinding hebt, moet u op deze machines Log Analytics-gateway downloaden en installeren.
 
 U hebt deze agents niet nodig op computers die u wilt beoordelen, tenzij u gebruikmaakt van afhankelijkheids visualisatie.
 

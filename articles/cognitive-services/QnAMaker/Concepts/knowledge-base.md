@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8cd63913c0e96d496aa617369601c1dd121b4b46
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2b3e74f337cf8f57321c3a8d94f8191fc3ebb530
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542843"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093902"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Wat is er een basis voor kennis van QnA Maker?
 
@@ -81,9 +81,9 @@ Een **gebruikers query** is de vraag of de eind gebruiker de Knowledge Base vraa
 }
 ```
 
-U bepaalt het antwoord door eigenschappen zoals [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)en [stringFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)in te stellen.
+U bepaalt het antwoord door eigenschappen zoals [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)en [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)in te stellen.
 
-Gebruik [gesprek inhoud](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) met de [functionaliteit voor meerdere](../how-to/multiturn-conversation.md) keren om te zorgen dat de conversatie de vragen en antwoorden verfijnt, om het juiste en laatste antwoord te vinden.
+Gebruik [gespreks context](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) met [multi-turn-functionaliteit](../how-to/multiturn-conversation.md) om de conversatie te laten verfijnen om de vragen en antwoorden op te lossen, om het juiste en laatste antwoord te vinden.
 
 ### <a name="the-response-from-a-call-to-generate-answer"></a>Het antwoord van een aanroep voor het genereren van een antwoord
 

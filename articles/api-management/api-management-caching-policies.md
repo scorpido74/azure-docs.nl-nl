@@ -10,16 +10,15 @@ ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 2b74c0d8dc0daa7bb86c2884f5e574fdc579ba44
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 06c4ede12f939e48973d3e0b502d90b848d199bb
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442384"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072610"
 ---
 # <a name="api-management-caching-policies"></a>Beleid voor API Management cache
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.

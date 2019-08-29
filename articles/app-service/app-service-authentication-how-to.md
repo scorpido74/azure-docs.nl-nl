@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b4b70a45758f697c469895bcef6ea8d203065e26
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853964"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098546"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Geavanceerd gebruik van verificatie en autorisatie in Azure App Service
 
@@ -186,7 +185,7 @@ Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-sess
 - **Micro soft-account**: Bij het [configureren van verificatie-instellingen voor micro soft-accounts](configure-authentication-provider-microsoft.md)selecteert u het `wl.offline_access` bereik.
 - **Azure Active Directory**: Voer [https://resources.azure.com](https://resources.azure.com)in de volgende stappen uit:
     1. Selecteer boven aan de pagina **lezen/schrijven**.
-    2. Navigeer in de linkernavigatiebalk naar **abonnementen** >  **_\<abonnements\_naam_**  > resourceGroups >  **_resource groep\<\_ naam\_>_**  providersmicrosoft > . websites > appname> >  **_config\<\__**  >  >  >  **authsettings**. 
+    2. Navigeer in de linkernavigatiebalk naar **abonnementen** >  **_\<abonnements\_naam_**  > resourceGroups >  **_resource groep\<\_ naam\_>_** providersmicrosoft > . websites > appname> >  **_config\<\__**  >  >  >  **authsettings**. 
     3. Klik op **Bewerken**.
     4. Wijzig de volgende eigenschap. _Vervang\<deapp\_-id >_ door de Azure Active Directory-toepassings-id van de service die u wilt openen.
 

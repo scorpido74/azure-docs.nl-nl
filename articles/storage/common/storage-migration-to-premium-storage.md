@@ -1,6 +1,6 @@
 ---
-title: Migratie van VM's naar Azure Premium Storage | Microsoft Docs
-description: Uw bestaande virtuele machines migreren naar Azure Premium Storage. Premium Storage biedt ondersteuning voor schijven voor hoge prestaties en lage latentie voor I/O-intensieve werkbelastingen op Azure Virtual Machines.
+title: Vm's migreren naar Azure Premium Storage | Microsoft Docs
+description: Migreer uw bestaande Vm's naar Azure Premium Storage. Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor I/O-intensieve workloads die worden uitgevoerd op Azure Virtual Machines.
 services: storage
 author: roygara
 ms.service: storage
@@ -9,190 +9,190 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 6b6e442ff3333a7fd085f8e452ae056e7daaba8c
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
-ms.translationtype: MT
+ms.openlocfilehash: 90cd079ebc82e8231b052f65156f85d612592ad2
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565502"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114742"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migreren naar Azure Premium Storage (niet-beheerde schijven)
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u migreert van een virtuele machine die gebruikmaakt van niet-beheerde standaardschijven aan een virtuele machine die gebruikmaakt van niet-beheerde premium-schijven. U wordt aangeraden dat u Azure Managed Disks gebruiken voor nieuwe virtuele machines en uw vorige niet-beheerde schijven te converteren naar managed disks. Beheerde schijven ingang de onderliggende opslagaccounts, zodat u niet te hoeven. Zie voor meer informatie onze [overzicht van Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+> In dit artikel wordt beschreven hoe u een virtuele machine migreert die gebruikmaakt van niet-beheerde standaard schijven naar een virtuele machine die gebruikmaakt van niet-beheerde Premium-schijven. U wordt aangeraden Azure Managed Disks te gebruiken voor nieuwe Vm's en u uw vorige niet-beheerde schijven te converteren naar beheerde schijven. Managed Disks de onderliggende opslag accounts te verwerken zodat u dat niet hoeft te doen. Raadpleeg voor meer informatie onze Managed Disks- [overzicht](../../virtual-machines/windows/managed-disks-overview.md).
 >
 
-Azure Premium Storage voorziet in ondersteuning voor hoge prestaties en lage latentie schijven voor virtuele machines waarop I/O-intensieve werkbelastingen worden uitgevoerd. VM-schijven van uw toepassing migreren naar Azure Premium Storage kunt u profiteren van de snelheid en prestaties van deze schijven uitvoeren.
+Azure Premium Storage biedt schijf ondersteuning met hoge prestaties en lage latentie voor virtuele machines met I/O-intensieve workloads. U kunt profiteren van de snelheid en prestaties van deze schijven door de VM-schijven van uw toepassing te migreren naar Azure Premium Storage.
 
-Het doel van deze handleiding is om nieuwe gebruikers van Azure Premium Storage betere voorbereidingen voor het maken van een probleemloze overgang van hun huidige systeem naar Premium Storage te helpen. De handleiding behandelt drie van de belangrijkste onderdelen van dit proces:
+Het doel van deze hand leiding is om nieuwe gebruikers van Azure Premium Storage beter voor te bereiden om een soepele overgang van hun huidige systeem naar Premium Storage te maken. De gids heeft betrekking op drie van de belangrijkste onderdelen in dit proces:
 
-* [Plan voor de migratie naar Premium Storage](#plan-the-migration-to-premium-storage)
-* [Voorbereiden en virtuele harde schijven (VHD's) kopiëren naar Premium Storage](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
-* [Met Premium-opslag van Azure virtuele Machine maken](#create-azure-virtual-machine-using-premium-storage)
+* [Plannen voor de migratie naar Premium Storage](#plan-the-migration-to-premium-storage)
+* [Virtuele harde schijven (Vhd's) voorbereiden en kopiëren naar Premium Storage](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
+* [Virtuele Azure-machine maken met behulp van Premium Storage](#create-azure-virtual-machine-using-premium-storage)
 
-U kunt virtuele machines vanaf andere platforms migreren naar Azure Premium Storage of bestaande Azure-VM's migreren van standaardopslag naar Premium Storage. Deze handleiding bevat informatie over stappen voor beide twee scenario's. Volg de stappen die zijn opgegeven in de betreffende sectie afhankelijk van uw scenario.
+U kunt Vm's van andere platforms migreren naar Azure Premium Storage of bestaande Azure-Vm's migreren van standaard opslag naar Premium Storage. In deze hand leiding worden de stappen voor beide scenario's besproken. Volg de stappen die zijn opgegeven in de relevante sectie, afhankelijk van uw scenario.
 
 > [!NOTE]
-> U vindt een overzicht van functies en prijzen van premium SSD's in: [Selecteer een schijftype voor IaaS-VM's](../../virtual-machines/windows/disks-types.md#premium-ssd). Het is raadzaam om de migratie van een virtuele machine-schijf vereisen hoge IOPS naar Azure Premium Storage voor de beste prestaties voor uw toepassing. Als de schijf geen hoge IOPS is vereist, kunt u kosten kunt beperken door het onderhoud ervan in de Standard-opslag, waarin de gegevens van de virtuele machine-schijf op hardeschijfstations (HDD's) in plaats van SSD's worden opgeslagen.
+> U vindt een overzicht van de functies en de prijzen voor Premium Ssd's in: [Selecteer een schijf type voor IaaS-vm's](../../virtual-machines/windows/disks-types.md#premium-ssd). We raden u aan een virtuele machine schijf te migreren die hoge IOPS vereist voor Azure Premium Storage voor de beste prestaties voor uw toepassing. Als uw schijf geen hoge IOPS vereist, kunt u de kosten beperken door deze op te slaan in de standaard opslag, waarbij de schijf gegevens van de virtuele machine worden opgeslagen op vasteschijfstations (Hdd's) in plaats van Ssd's.
 >
 
-De migratie voltooien in zijn geheel is mogelijk aanvullende acties zowel vóór als na de stappen in deze handleiding. Voorbeelden hiervan zijn virtuele netwerken of eindpunten configureren of codewijzigingen in de toepassing zelf mogelijk moet hiervoor de enige downtime in uw toepassing. Deze acties zijn uniek voor elke toepassing en u ze samen met de stappen in deze handleiding voor de volledige overgang naar Premium Storage zo weinig mogelijk moet voltooien.
+Voor het volledig volt ooien van het migratie proces zijn mogelijk extra acties vereist voor zowel vóór als na de stappen in deze hand leiding. Voor beelden zijn onder andere het configureren van virtuele netwerken of eind punten of het aanbrengen van code wijzigingen in de toepassing zelf waarvoor mogelijk enige downtime in uw toepassing nodig is. Deze acties zijn uniek voor elke toepassing en u moet deze samen met de stappen in deze hand leiding volt ooien om de volledige overgang naar Premium Storage zo naadloos mogelijk te maken.
 
-## <a name="plan-the-migration-to-premium-storage"></a>Plan voor de migratie naar Premium Storage
-In deze sectie zorgt u ervoor dat u bent klaar om de migratie stappen in dit artikel helpt u bij het maken van de beste beslissing op schijf en VM-typen.
+## <a name="plan-the-migration-to-premium-storage"></a>Plannen voor de migratie naar Premium Storage
+In deze sectie wordt ervoor gezorgd dat u klaar bent om de migratie stappen in dit artikel uit te voeren en kunt u de beste beslissing nemen over VM-en schijf typen.
 
 ### <a name="prerequisites"></a>Vereisten
-* U moet een Azure-abonnement. Als u niet hebt, kunt u een één maand [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/) abonnement of gaat u naar [Azure-prijzen](https://azure.microsoft.com/pricing/) voor meer opties.
-* Voor het uitvoeren van PowerShell-cmdlets, moet u de Microsoft Azure PowerShell-module. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor het installatiepunt en de installatie-instructies.
-* Wanneer u van plan bent te gebruiken Azure-VM's die worden uitgevoerd op de Premium-opslag, moet u de compatibele virtuele machines voor een Premium Storage gebruiken. U kunt schijven van zowel Standard als Premium-opslag gebruiken met Premium Storage kunnen VM's. Premium storage-schijven zijn in de toekomst beschikbaar met meer VM-typen. Zie voor meer informatie over alle beschikbare Azure-VM-schijftypen en grootten [grootten voor virtuele machines](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) en [groottes voor Cloud Services](../../cloud-services/cloud-services-sizes-specs.md).
+* U hebt een Azure-abonnement nodig. Als u er nog geen hebt, kunt u een [gratis proef](https://azure.microsoft.com/pricing/free-trial/) abonnement van één maand maken of de [prijzen van Azure](https://azure.microsoft.com/pricing/) bezoeken voor meer opties.
+* Als u Power shell-cmdlets wilt uitvoeren, hebt u de module Microsoft Azure PowerShell nodig. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor het installatiepunt en de installatie-instructies.
+* Wanneer u van plan bent om Azure-Vm's te gebruiken die worden uitgevoerd op Premium Storage, moet u de Premium Storage capable Vm's gebruiken. U kunt zowel standaard als Premium Storage schijven gebruiken met Premium Storage geschikte Vm's. Premium-opslag schijven zullen in de toekomst beschikbaar zijn met meer VM-typen. Zie [grootten voor virtuele machines](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) en [grootten voor Cloud Services](../../cloud-services/cloud-services-sizes-specs.md)voor meer informatie over alle beschik bare schijf typen en grootten voor Azure VM.
 
 ### <a name="considerations"></a>Overwegingen
-Een Azure-VM ondersteunt meerdere Premium-opslagschijven koppelen zodat uw toepassingen tot 256 TB opslagruimte per virtuele machine hebben kunnen. Met Premium Storage kunnen uw toepassingen maar liefst 80.000 IOPS (invoer/uitvoer-bewerkingen per seconde) per VM en 2000 MB per seconde schijfdoorvoer per VM met extreem lage latenties bij leesbewerkingen. Hebt u opties in een aantal VM's en schijven. In deze sectie is om te helpen u een optie die het beste bij uw werkbelasting weer te geven.
+Een Azure-VM biedt ondersteuning voor het koppelen van verschillende Premium Storage schijven, zodat uw toepassingen Maxi maal 256 TB opslag ruimte per VM kunnen hebben. Met Premium Storage kunnen uw toepassingen 80.000 IOPS (invoer/uitvoer-bewerkingen per seconde) per VM en 2000 MB per seconde schijf doorvoer per VM met een extreem lage latentie voor lees bewerkingen. U hebt opties in verschillende Vm's en schijven. In deze sectie kunt u een optie vinden die het beste past bij uw werk belasting.
 
 #### <a name="vm-sizes"></a>Formaten van virtuele machines
-De specificaties van de grootte van virtuele Azure-machine vindt u in [grootten voor virtuele machines](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Bekijk de prestatiekenmerken van virtuele machines die werken met Premium Storage en kiest u de meest geschikte VM-grootte die het beste bij uw workload. Zorg ervoor dat er voldoende bandbreedte beschikbaar op de virtuele machine is om het schijfverkeer te stimuleren.
+De Azure VM-grootte specificaties worden weer gegeven in [grootten voor virtuele machines](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Bekijk de prestatie kenmerken van virtuele machines die met Premium Storage werken en kies de meest geschikte VM-grootte die het beste past bij uw werk belasting. Zorg ervoor dat er voldoende band breedte beschikbaar is op uw virtuele machine om het schijf verkeer te verzorgen.
 
 #### <a name="disk-sizes"></a>Schijfformaten
-Er zijn vijf typen schijven die kunnen worden gebruikt met de virtuele machine en elk heeft specifieke IOPs en doorvoer limieten. In overweging nemen deze limieten bij het kiezen van het schijftype voor uw virtuele machine op basis van de behoeften van uw toepassing in termen van capaciteit, prestaties, schaalbaarheid en piek wordt geladen.
+Er zijn vijf soorten schijven die kunnen worden gebruikt met uw virtuele machine, en elk heeft specifieke IOPs-en doorvoer limieten. Houd rekening met deze beperkingen bij het kiezen van het schijf type voor uw virtuele machine op basis van de behoeften van uw toepassing in termen van capaciteit, prestaties, schaal baarheid en piek belasting.
 
-| Schijftype voor Premium-schijven  | P10   | P20   | P30            | P40            | P50            | 
+| Type Premium-schijven  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
 | Schijfgrootte           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 | IOP's per schijf       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | Doorvoer per schijf | 100 MB per seconde | 150 MB per seconde | 200 MB per seconde | 250 MB per seconde | 250 MB per seconde |
 
-Te bepalen of er extra gegevensschijven die nodig zijn voor uw virtuele machine zijn afhankelijk van uw workload. U kunt meerdere permanente gegevensschijven koppelen aan uw virtuele machine. Indien nodig, kunt u op de schijven te verhogen van de capaciteit en prestaties van het volume stripe. (Zie Wat is er schijfsegmentering [hier](../../virtual-machines/windows/premium-storage-performance.md#disk-striping).) Als u Premium Storage-gegevensschijven met stripe [opslagruimten][4], moet u deze configureren met één kolom voor elke schijf die wordt gebruikt. De algehele prestaties van het striped volume kan anders zijn lager is dan verwacht vanwege een ongelijke distributie van verkeer voor de schijven. Voor Linux-VM's kunt u de *mdadm* hulpprogramma hiervoor ook. Zie artikel [Software-RAID configureren onder Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie.
+Bepaal, afhankelijk van uw workload, of er extra gegevens schijven voor uw virtuele machine nodig zijn. U kunt verschillende permanente gegevens schijven aan uw virtuele machine koppelen. U kunt, indien nodig, over de schijven strepen om de capaciteit en prestaties van het volume te verg Roten. (Zie wat is schijf striping [](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)?) Als u Premium Storage gegevens schijven met [opslag ruimten][4]wilt verwijderen, moet u deze configureren met één kolom voor elke gebruikte schijf. Anders is het mogelijk dat de algehele prestaties van het striped volume lager zijn dan verwacht als gevolg van een ongelijke distributie van verkeer over de schijven. Voor virtuele Linux-machines kunt u het *mdadm* -hulp programma gebruiken om hetzelfde te krijgen. Zie het artikel [Software RAID op Linux configureren](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie.
 
-#### <a name="storage-account-scalability-targets"></a>Schaalbaarheidsdoelen voor Storage-account
-Premium Storage-accounts hebben de volgende schaalbaarheidsdoelen naast de [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md). Als uw toepassingsvereisten de schaalbaarheidsdoelen van een enkel opslagaccount overschrijdt, uw toepassing gebruik meerdere opslagaccounts maken en partities voor uw gegevens voor deze opslagaccounts.
+#### <a name="storage-account-scalability-targets"></a>Schaalbaarheids doelen voor het opslag account
+Premium Storage accounts hebben naast de [Azure Storage schaal baarheid en prestatie doelen](storage-scalability-targets.md)de volgende schaalbaarheids doelen. Als uw toepassings vereisten de schaalbaarheids doelen van één opslag account overschrijden, bouwt u uw toepassing voor het gebruik van meerdere opslag accounts en partitioneert u uw gegevens in deze opslag accounts.
 
-| Totale capaciteit | Totale bandbreedte voor een Account voor lokaal redundante opslag |
+| Totale account capaciteit | Totale band breedte voor een lokaal redundante opslag account |
 |:--- |:--- |
-| Capaciteit van de schijf: 35TB<br />Snapshot-capaciteit: 10 TB |Maximaal 50 gigabits per seconde voor binnenkomend en uitgaand |
+| Schijf capaciteit: 35TB<br />Momentopname capaciteit: 10 TB |Maxi maal 50 gigabits per seconde voor inkomend en uitgaand verkeer |
 
-Bekijk voor meer informatie over specificaties van Premium Storage [schaalbaarheids- en prestatiedoelen voor Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
+Raadpleeg [Azure Storage schaalbaarheids-en prestatie doelen](storage-scalability-targets.md#premium-performance-storage-account-scale-limits)voor meer informatie over Premium Storage specificaties.
 
-#### <a name="disk-caching-policy"></a>Beleid voor caching schijf
-Beleid voor caching schijf is standaard *alleen-lezen* voor alle Premium gegevensschijven, en *lezen / schrijven* voor de Premium-schijf die is gekoppeld aan de virtuele machine. Deze configuratieinstelling wordt aanbevolen om de optimale prestaties voor IOs van uw toepassing. Voor schijven schrijfintensief of alleen-schrijven gegevens (zoals SQL Server-logboekbestanden) uitschakelen in schijfcache zodat u betere prestaties van toepassingen kunt bereiken. De cache-instellingen voor bestaande gegevensschijven kunnen worden bijgewerkt met behulp van de [Azure-portal](https://portal.azure.com) of de *- HostCaching* parameter van de *Set AzureDataDisk* cmdlet.
+#### <a name="disk-caching-policy"></a>Beleid voor schijf cache
+Het cache beleid voor schijven is standaard *alleen-lezen* voor alle Premium-gegevens schijven en *lezen-schrijven* voor de Premium-besturingssysteem schijf die is gekoppeld aan de virtuele machine. Deze configuratie-instelling wordt aanbevolen om de optimale prestaties van de IOs van uw toepassing te garanderen. Voor schrijf bare of alleen-schrijven gegevens schijven (zoals SQL Server-logboek bestanden) schakelt u schijf cache, zodat u betere toepassings prestaties kunt krijgen. De cache-instellingen voor bestaande gegevens schijven kunnen worden bijgewerkt met behulp van de [Azure Portal](https://portal.azure.com) of de para meter *-HostCaching* van de cmdlet *set-AzureDataDisk* .
 
 #### <a name="location"></a>Location
-Kies een locatie waar Azure Premium Storage beschikbaar is. Zie [Azure Services per regio](https://azure.microsoft.com/regions/#services) voor actuele informatie over de beschikbare locaties. Virtuele machines zich in dezelfde regio bevinden als het opslagaccount dat winkels de schijven voor de virtuele machine veel betere prestaties krijgt dan als ze zich in verschillende regio's.
+Kies een locatie waar Azure Premium Storage beschikbaar is. Zie [Azure-Services per regio](https://azure.microsoft.com/regions/#services) voor actuele informatie over beschik bare locaties. Vm's die zich in dezelfde regio bevinden als het opslag account waarin de schijven voor de virtuele machine zijn opgeslagen, bieden veel betere prestaties dan wanneer ze zich in verschillende regio's bevinden.
 
-#### <a name="other-azure-vm-configuration-settings"></a>Andere Azure-VM-configuratie-instellingen
-Bij het maken van een Azure-VM, wordt u gevraagd om bepaalde VM-instellingen te configureren. Denk eraan dat enkele instellingen staan vast voor de levensduur van de virtuele machine, terwijl u kunt wijzigen of andere later toevoegen. Deze Azure-VM-configuratie-instellingen controleren en zorg ervoor dat deze zodat deze overeenkomt met de vereisten van uw workloads op de juiste wijze zijn geconfigureerd.
+#### <a name="other-azure-vm-configuration-settings"></a>Andere configuratie-instellingen voor Azure VM
+Wanneer u een virtuele Azure-machine maakt, wordt u gevraagd om bepaalde VM-instellingen te configureren. Houd er rekening mee dat weinig instellingen worden vastgesteld voor de levens duur van de virtuele machine, terwijl u later andere kunt wijzigen of toevoegen. Bekijk deze Azure VM-configuratie-instellingen en zorg ervoor dat deze zijn geconfigureerd om te voldoen aan de vereisten van uw werk belasting.
 
 ### <a name="optimization"></a>Optimalisatie
-[Azure Premium Storage: Ontwerp voor hoge prestaties](../../virtual-machines/windows/premium-storage-performance.md) bevat richtlijnen voor het bouwen van krachtige toepassingen met behulp van Azure Premium Storage. Volg de richtlijnen in combinatie met aanbevolen procedures voor prestaties van toepassing op de technologieën die worden gebruikt door uw toepassing.
+[Azure Premium Storage: Ontwerp voor hoge prestaties](../../virtual-machines/windows/premium-storage-performance.md) biedt richt lijnen voor het bouwen van toepassingen met hoge prestaties met behulp van Azure Premium Storage. U kunt de richt lijnen volgen in combi natie met best practices voor prestaties die van toepassing zijn op technologieën die door uw toepassing worden gebruikt.
 
-## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Voorbereiden en virtuele harde schijven (VHD's) kopiëren naar Premium Storage
-De volgende sectie bevat richtlijnen voor het voorbereiden van VHD's van uw virtuele machine en VHD's kopiëren naar Azure Storage.
+## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Virtuele harde schijven (Vhd's) voorbereiden en kopiëren naar Premium Storage
+De volgende sectie bevat richt lijnen voor het voorbereiden van Vhd's van uw virtuele machine en het kopiëren van Vhd's naar Azure Storage.
 
-* [Scenario 1: "Ik ben bestaande Azure-VM's migreren naar Azure Premium Storage."](#scenario1)
-* [Scenario 2: "Ik ben VM's migreren vanaf andere platforms naar Azure Premium Storage."](#scenario2)
+* [Scenario 1: "Ik ben bestaande Azure-Vm's migreren naar Azure Premium Storage."](#scenario1)
+* [Scenario 2: "Ik migreer Vm's van andere platforms naar Azure Premium Storage."](#scenario2)
 
 ### <a name="prerequisites"></a>Vereisten
-Als u wilt voorbereiden van de VHD's voor migratie, hebt u het volgende nodig:
+Als u de virtuele harde schijven voor migratie wilt voorbereiden, hebt u het volgende nodig:
 
-* Een Azure-abonnement, een storage-account en een container in het storage-account waarmee u uw VHD kunt kopiëren. Houd er rekening mee dat het doelopslagaccount een Standard of Premium Storage-account, afhankelijk van uw behoefte kan worden.
-* Een hulpprogramma voor het generaliseren van de VHD als u van plan bent om te maken van meerdere VM-exemplaren van deze. Bijvoorbeeld, sysprep voor Windows of virt-sysprep voor Ubuntu.
-* Een hulpprogramma voor het uploaden van het VHD-bestand naar het opslagaccount. Zie [gegevensoverdracht met het AzCopy-opdrachtregelprogramma](storage-use-azcopy.md) of gebruik een [Azure storage explorer](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). Deze handleiding wordt beschreven voor het kopiëren van uw VHD met het AzCopy-hulpprogramma.
+* Een Azure-abonnement, een opslag account en een container in dat opslag account waarnaar u uw VHD kunt kopiëren. Houd er rekening mee dat het doel-opslag account een standaard-of Premium Storage account kan zijn, afhankelijk van uw vereiste.
+* Een hulp programma voor het generaliseren van de VHD als u van plan bent om meerdere VM-exemplaren hiervan te maken. Bijvoorbeeld Sysprep voor Windows of virt-Sysprep voor Ubuntu.
+* Een hulp programma voor het uploaden van het VHD-bestand naar het opslag account. Zie [gegevens overdragen met het opdracht regel programma AzCopy](storage-use-azcopy.md) of een [Azure Storage Explorer](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)gebruiken. In deze hand leiding wordt beschreven hoe u uw VHD kopieert met het hulp programma AzCopy.
 
 > [!NOTE]
-> Als u ervoor de optie synchrone kopiëren met AzCopy kiest, voor optimale prestaties, kopieert u uw VHD door het uitvoeren van een van deze hulpprogramma's van een Azure-virtuele machine die zich in dezelfde regio als het doelopslagaccount. Als u een VHD van een Azure-VM in een andere regio kopieert, is het mogelijk dat de prestaties van uw langzamer.
+> Als u de optie synchroon kopiëren kiest met AzCopy, moet u voor optimale prestaties uw VHD kopiëren door een van deze hulpprogram ma's uit te voeren vanaf een Azure-VM die zich in dezelfde regio bevindt als het opslag account van de bestemming. Als u een VHD kopieert van een Azure-VM in een andere regio, kunnen de prestaties langzamer zijn.
 >
-> Voor een grote hoeveelheid gegevens te kopiëren over beperkte bandbreedte, kunt u overwegen [gebruik van de Azure Import/Export-service voor het overbrengen van gegevens naar Blob-opslag](../storage-import-export-service.md); Hiermee kunt u om over te dragen van uw gegevens door de verzending van harde schijven naar een Azure-datacenter. U kunt de Azure Import/Export-service gebruiken om gegevens te kopiëren naar een standard storage-account alleen. Zodra de gegevens zich in uw standard storage-account, kunt u een gebruiken de [kopie Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) of AzCopy om over te dragen van de gegevens naar uw premium storage-account.
+> Overweeg [het gebruik van de Azure import/export-service om gegevens over te brengen naar Blob Storage](../storage-import-export-service.md), voor het kopiëren van een grote hoeveelheid gegevens over een beperkte band breedte. Zo kunt u uw gegevens overdragen door harde schijven naar een Azure-Data Center te verzenden. U kunt de Azure import/export-service alleen gebruiken om gegevens te kopiëren naar een standaard-opslag account. Zodra de gegevens zich in uw standaard opslag account bevindt, kunt u de [copy BLOB API](https://msdn.microsoft.com/library/azure/dd894037.aspx) of AzCopy gebruiken om de gegevens over te dragen naar uw Premium Storage-account.
 >
-> Houd er rekening mee dat Microsoft Azure biedt alleen ondersteuning voor vaste grootte VHD-bestanden. VHDX-bestanden of dynamische VHD's worden niet ondersteund. Hebt u een dynamische VHD, kunt u deze converteren naar vaste grootte met behulp van de [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) cmdlet.
+> Houd er rekening mee dat Microsoft Azure alleen ondersteuning biedt voor VHD-bestanden met een vaste grootte. VHDX-bestanden of dynamische Vhd's worden niet ondersteund. Als u een dynamische VHD hebt, kunt u deze converteren naar een vaste grootte met de cmdlet [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) .
 >
 >
 
-### <a name="scenario1"></a>Scenario 1: "Ik ben bestaande Azure-VM's migreren naar Azure Premium Storage."
-Als u bestaande Azure-VM's migreert, moet de virtuele machine stoppen, VHD's per het type VHD die u wilt voorbereiden en kopieer vervolgens de VHD met het AzCopy- of PowerShell.
+### <a name="scenario1"></a>Scenario 1: "Ik ben bestaande Azure-Vm's migreren naar Azure Premium Storage."
+Als u bestaande Azure-Vm's migreert, stopt u de virtuele machine, bereidt u Vhd's voor op basis van het gewenste type VHD en kopieert u de VHD met AzCopy of Power shell.
 
-De virtuele machine moet volledig omlaag voor het migreren van een oude toestand. Er zijn een uitvaltijd totdat de migratie is voltooid.
+De virtuele machine moet volledig worden uitgeschakeld om een schone status te migreren. Er is een uitval tijd tot de migratie is voltooid.
 
-#### <a name="step-1-prepare-vhds-for-migration"></a>Stap 1. VHD voorbereiden voor migratie
-Als u een bestaande Azure-VM's naar Premium Storage migreert, wordt uw VHD kan zijn:
+#### <a name="step-1-prepare-vhds-for-migration"></a>Stap 1. Vhd's voorbereiden voor migratie
+Als u bestaande Azure-Vm's migreert naar Premium Storage, kan uw VHD het volgende zijn:
 
-* Een gegeneraliseerde installatiekopie
-* Een unieke besturingssysteemschijf
-* Een gegevensschijf
+* Een gegeneraliseerde installatie kopie van het besturings systeem
+* Een unieke besturingssysteem schijf
+* Een gegevens schijf
 
-Hieronder helpen we u bij deze 3 scenario's voor het voorbereiden van uw VHD.
+Hieronder volgen de drie scenario's voor het voorbereiden van uw VHD.
 
-##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Een gegeneraliseerde VHD met besturingssysteem gebruiken voor het maken van meerdere VM-exemplaren
-Als u een VHD die wordt gebruikt voor het maken van meerdere algemene Azure-VM-exemplaren uploaden wilt, moet u eerst de VHD met een hulpprogramma sysprep generaliseren. Dit is van toepassing op een VHD die on-premises of in de cloud. Sysprep verwijdert alle systeemspecifieke gegevens uit de VHD.
+##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Een gegeneraliseerde VHD van het besturings systeem gebruiken om meerdere VM-exemplaren te maken
+Als u een VHD uploadt die wordt gebruikt om meerdere algemene Azure VM-exemplaren te maken, moet u eerst de VHD generaliseren met een hulp programma Sysprep. Dit is van toepassing op een VHD die zich lokaal of in de Cloud bevindt. Sysprep verwijdert specifieke informatie van de virtuele machine.
 
 > [!IMPORTANT]
-> Een momentopname of back-up van uw virtuele machine voordat u het generaliseren. Actieve sysprep gestopt en toewijzing ongedaan maken van het VM-exemplaar. Volg onderstaande stappen om sysprep de VHD van een Windows-besturingssysteem. Houd er rekening mee dat de Sysprep wordt uitgevoerd, moet u de virtuele machine afgesloten. Zie voor meer informatie over Sysprep [Sysprep overzicht](https://technet.microsoft.com/library/hh825209.aspx) of [technische documentatie van Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
+> Neem een moment opname of maak een back-up van uw virtuele machine voordat u deze generaliseert. Als Sysprep wordt uitgevoerd, wordt het VM-exemplaar gestopt en de toewijzing ongedaan maken. Volg de onderstaande stappen om een VHD van het Windows-besturings systeem te Sysprep. Houd er rekening mee dat de virtuele machine moet worden afgesloten als u de Sysprep-opdracht uitvoert. Zie voor meer informatie over Sysprep [overzicht van Sysprep](https://technet.microsoft.com/library/hh825209.aspx) of [technische documentatie over Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
 >
 >
 
-1. Open een opdrachtpromptvenster als beheerder.
-2. Voer de volgende opdracht Sysprep openen:
+1. Open een opdracht prompt venster als beheerder.
+2. Voer de volgende opdracht in om Sysprep te openen:
 
     ```
     %windir%\system32\sysprep\sysprep.exe
     ```
 
-3. Selecteer in het hulpprogramma voor systeemvoorbereiding, voer System Out-of-Box Experience (OOBE), schakel het selectievakje generaliseren, selecteer **afsluiten**, en klik vervolgens op **OK**, zoals wordt weergegeven in de onderstaande afbeelding. Sysprep wordt generaliseren van het besturingssysteem en het systeem afsluiten.
+3. In het hulp programma voor systeem voorbereiding selecteert u System out-of-Box Experience (OOBE) invoeren, schakelt u het selectie vakje generalize in, selecteert u **Afsluiten**en klikt u op **OK**, zoals in de onderstaande afbeelding wordt weer gegeven. Sysprep generaliseert het besturings systeem en wordt het systeem afgesloten.
 
     ![][1]
 
-Gebruik virt sysprep hiervoor ook voor een Ubuntu-VM. Zie [virt sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) voor meer informatie. Zie ook enkele van de open-source [inrichten van Linux-Server software](https://www.cyberciti.biz/tips/server-provisioning-software.html) voor andere Linux-besturingssystemen.
+Voor een Ubuntu-VM gebruikt u virt-Sysprep om hetzelfde te krijgen. Zie [virt-Sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) voor meer informatie. Zie ook enkele van de open source [Linux server](https://www.cyberciti.biz/tips/server-provisioning-software.html) -inrichtings software voor andere Linux-besturings systemen.
 
-##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Een unieke VHD met besturingssysteem gebruiken voor het maken van één VM-instantie
-Hebt u een toepassing die wordt uitgevoerd op de virtuele machine waarvoor u de specifieke gegevens van de machine, u de VHD niet generaliseren. Een niet-gegeneraliseerde VHD kan worden gebruikt om een unieke virtuele Azure-machine-exemplaar te maken. Bijvoorbeeld, als u een domeincontroller op uw VHD hebt, maakt sysprep wordt uitgevoerd het niet effectief als een domeincontroller. Bekijk de toepassingen die worden uitgevoerd op de virtuele machine en de impact van het sysprep uitvoeren op deze voordat u de VHD te generaliseren.
+##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Een unieke VHD van het besturings systeem gebruiken om één VM-exemplaar te maken
+Als u een toepassing hebt die wordt uitgevoerd op de virtuele machine waarvoor de computer gegevens moeten worden opgegeven, moet u de VHD niet generaliseren. Een niet-gegeneraliseerde VHD kan worden gebruikt om een unieke Azure VM-instantie te maken. Als u bijvoorbeeld domein controller op uw VHD hebt, wordt het uitvoeren van Sysprep als een domein controller. Bekijk de toepassingen die op uw virtuele machine worden uitgevoerd en de gevolgen van het uitvoeren van Sysprep op deze apps voordat u de VHD generaliseert.
 
-##### <a name="register-data-disk-vhd"></a>Registreren van de VHD met gegevensschijf
-Hebt u gegevensschijven in Azure worden gemigreerd, moet u controleren of de VM's die gebruikmaken van de gegevensschijven van deze worden afgesloten.
+##### <a name="register-data-disk-vhd"></a>VHD met gegevens schijf registreren
+Als er gegevens schijven in Azure worden gemigreerd, moet u controleren of de virtuele machines die gebruikmaken van deze gegevens schijven, worden afgesloten.
 
-Volg de stappen die hieronder worden beschreven VHD kopiëren naar Azure Premium Storage en registreert u dit als een schijf ingerichte gegevens.
+Volg de stappen die hieronder worden beschreven om VHD naar Azure Premium Storage te kopiëren en te registreren als een ingerichte gegevens schijf.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>Stap 2. Het doel van uw VHD maken
-Maak een opslagaccount voor het onderhouden van uw VHD's. Houd rekening met de volgende punten bij het plannen waar uw VHD's opgeslagen:
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>Stap 2. De bestemming voor uw VHD maken
+Maak een opslag account voor het onderhouden van uw Vhd's. Houd rekening met de volgende punten bij het plannen waar u de Vhd's opslaat:
 
-* Het doel van Premium storage-account.
-* Locatie van het opslagaccount moet hetzelfde zijn als Premium-opslag kunnen Azure-VM's u in de laatste fase maakt. U kunt kopiëren naar een nieuw opslagaccount of een abonnement om te gebruiken hetzelfde opslagaccount op basis van uw behoeften.
-* Kopieer en bewaar de opslagaccountsleutel van het doelopslagaccount voor de volgende fase.
+* Het doel Premium-opslag account.
+* De locatie van het opslag account moet hetzelfde zijn als Premium Storage geschikte Azure-Vm's die u in de laatste fase gaat maken. U kunt kopiëren naar een nieuw opslag account, of u kunt hetzelfde opslag account gebruiken op basis van uw behoeften.
+* Kopieer en sla de sleutel van het opslag account van het doel opslag account voor de volgende fase op.
 
-Een gegevensschijf kunt u enkele gegevensschijven los bewaren in een standard storage-account (bijvoorbeeld schijven met minder dynamische opslag), maar we raden u om alle gegevens voor productie-werkbelasting gebruik van premium-opslag te verplaatsen.
+Voor gegevens schijven kunt u ervoor kiezen om sommige gegevens schijven te bewaren in een standaard-opslag account (bijvoorbeeld schijven met een koele opslag), maar we raden u ten zeerste aan alle gegevens voor de werk belasting van de productie te verplaatsen om Premium-opslag te gebruiken.
 
-#### <a name="copy-vhd-with-azcopy-or-powershell"></a>Stap 3. Kopieer de VHD met het AzCopy- of PowerShell
-U moet uw container pad en opslagaccountsleutel voor het verwerken van een van deze twee opties gevonden. Container pad en de opslagaccountsleutel vindt u **Azure Portal** > **opslag**. De URL wordt dan zoals container ' https:\//myaccount.blob.core.windows.net/mycontainer/ '.
+#### <a name="copy-vhd-with-azcopy-or-powershell"></a>Stap 3. VHD kopiëren met AzCopy of Power shell
+U moet het pad naar de container en de sleutel van het opslag account zoeken om een van deze twee opties te kunnen verwerken. De container-pad en de sleutel voor het opslag account vindt u in **Azure Portal** > -**opslag**. De container-URL is als ' https:\//myaccount.blob.core.Windows.net/mycontainer/'.
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Optie 1: Kopieer geen VHD met AzCopy (asynchrone kopiëren)
-Met behulp van AzCopy, u kunt eenvoudig de VHD uploaden via Internet. Dit kan tijd duren, afhankelijk van de grootte van de VHD's. Vergeet niet om te controleren of limieten Inkomend/uitgaand verkeer van het opslagaccount wanneer u deze optie. Zie [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md) voor meer informatie.
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Optie 1: Een VHD kopiëren met AzCopy (asynchroon kopiëren)
+Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de grootte van de Vhd's kan dit enige tijd duren. Controleer de limieten voor het inkomen/uitvallen van opslag accounts wanneer u deze optie gebruikt. Zie [Azure Storage schaal baarheid en prestatie doelen](storage-scalability-targets.md) voor meer informatie.
 
-1. Download en installeer AzCopy hier: [Meest recente versie van AzCopy](https://aka.ms/downloadazcopy)
-2. Open Azure PowerShell en Ga naar de map waarin AzCopy wordt geïnstalleerd.
-3. Gebruik de volgende opdracht uit om te kopiëren van de VHD-bestand van 'Source' naar 'Doel'.
+1. Down load en installeer AzCopy hier: [Meest recente versie van AzCopy](https://aka.ms/downloadazcopy)
+2. Open Azure PowerShell en ga naar de map waarin AzCopy is geïnstalleerd.
+3. Gebruik de volgende opdracht om het VHD-bestand van ' source ' naar ' Destination ' te kopiëren.
 
-    ```azcopy
-    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
-    ```
+   ```azcopy
+   AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
+   ```
 
     Voorbeeld:
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
-        ```
+    ```
 
-    Here are descriptions of the parameters used in the AzCopy command:
+   Hier volgen beschrijvingen van de para meters die worden gebruikt in de AzCopy-opdracht:
 
-   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
-   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
-   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
-   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
-   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
+   * **/Source:** _bron:&gt; &lt;_ Locatie van de map of de opslag container-URL die de VHD bevat.
+   * **/SourceKey:** _bron-account-sleutel&gt;: &lt;_ Sleutel van het opslag account van het bron-opslag account.
+   * **/Dest:** _doel:&gt; &lt;_ URL van de opslag container waarnaar de VHD moet worden gekopieerd.
+   * **/DestKey:** _doel account-sleutel&gt;: &lt;_ Sleutel van het opslag account van het doel-opslag account.
+   * **/Pattern:** _Bestands naam:&gt; &lt;_ Geef de bestands naam op van de VHD die u wilt kopiëren.
 
-For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
+Zie [gegevens overdragen met het opdracht regel programma AzCopy](storage-use-azcopy.md)voor meer informatie over het gebruik van het hulp programma AzCopy.
 
-##### Option 2: Copy a VHD with PowerShell (Synchronized copy)
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Optie 2: Een VHD kopiëren met Power shell (gesynchroniseerde kopie)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-You can also copy the VHD file using the PowerShell cmdlet Start-AzStorageBlobCopy. Use the following command on Azure PowerShell to copy VHD. Replace the values in <> with corresponding values from your source and destination storage account. To use this command, you must have a container called vhds in your destination storage account. If the container doesn't exist, create one before running the command.
+U kunt het VHD-bestand ook kopiëren met behulp van de Power shell-cmdlet start-AzStorageBlobCopy. Gebruik de volgende opdracht op Azure PowerShell om VHD te kopiëren. Vervang de waarden in < > door de bijbehorende waarden uit uw bron-en doel-opslag account. Als u deze opdracht wilt gebruiken, moet u een container met de naam vhd's in het doel-opslag account hebben. Als de container niet bestaat, maakt u er een voordat u de opdracht uitvoert.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -216,54 +216,54 @@ C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destac
 C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>Scenario 2: "Ik ben VM's migreren vanaf andere platforms naar Azure Premium Storage."
-Als u VHD van niet - Azure-Cloudopslag in Azure migreert, moet u eerst de VHD exporteren naar een lokale map. Het pad van de volledige broncode van de lokale directory waar VHD is opgeslagen bij de hand hebt, en vervolgens met behulp van AzCopy te uploaden naar Azure Storage.
+### <a name="scenario2"></a>Scenario 2: "Ik migreer Vm's van andere platforms naar Azure Premium Storage."
+Als u VHD migreert van niet-Azure-Cloud opslag naar Azure, moet u eerst de VHD exporteren naar een lokale map. Hebben het volledige bronpad van de lokale map waar VHD op een handige manier wordt opgeslagen en vervolgens AzCopy om het te uploaden naar Azure Storage.
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>Stap 1. VHD naar een lokale map exporteren
-##### <a name="copy-a-vhd-from-aws"></a>Kopieer een VHD van AWS
-1. Als u van AWS gebruikmaakt, exporteert u de EC2-instantie op een VHD in een Amazon S3-bucket. Volg de stappen beschreven in de Amazon-documentatie voor Amazon EC2-instanties exporteren van het hulpprogramma Amazon EC2-opdrachtregelinterface (CLI) installeren en uitvoeren van de opdracht instantie-export-taak maken voor het exporteren van de EC2-instantie naar een VHD-bestand. Zorg ervoor dat u **VHD** voor de schijf&#95;INSTALLATIEKOPIE&#95;indeling variabele bij het uitvoeren van de **-exemplaar-export-taak maken** opdracht. De geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-bucket die u tijdens dat proces opgeeft.
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>Stap 1. VHD exporteren naar een lokale map
+##### <a name="copy-a-vhd-from-aws"></a>Een VHD kopiëren vanuit AWS
+1. Als u AWS gebruikt, exporteert u het EC2-exemplaar naar een VHD in een Amazon S3-Bucket. Volg de stappen die worden beschreven in de Amazon-documentatie voor het exporteren van Amazon EC2 instances voor het installeren van het hulp programma Amazon EC2 Command-Line Interface (CLI) en voer de opdracht Create-instance-export-Task uit om het EC2-exemplaar te exporteren naar een VHD-bestand. Zorg ervoor dat u **VHD** gebruikt voor de&#95;variabele&#95;indeling van schijf kopie bij het uitvoeren van de opdracht **Create-instance-export-Task** . Het geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-Bucket die u tijdens dat proces opgeeft.
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \
       --export-to-s3-task DiskImageFormat=DISK_IMAGE_FORMAT,ContainerFormat=ova,S3Bucket=BUCKET,S3Prefix=PREFIX
     ```
 
-2. Download het VHD-bestand van de S3-bucket. Selecteer vervolgens het VHD-bestand, **acties** > **downloaden**.
+2. Down load het VHD-bestand van de S3-Bucket. Selecteer het VHD-bestand en vervolgens de **acties** > **downloaden**.
 
     ![][3]
 
-##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Kopieer een VHD van andere niet-Azure-cloud
-Als u VHD van niet - Azure-Cloudopslag in Azure migreert, moet u eerst de VHD exporteren naar een lokale map. Kopieer het pad van de volledige broncode van de lokale directory waar de VHD is opgeslagen.
+##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Een VHD kopiëren vanuit een andere niet-Azure-Cloud
+Als u VHD migreert van niet-Azure-Cloud opslag naar Azure, moet u eerst de VHD exporteren naar een lokale map. Kopieer het volledige bronpad van de lokale map waarin VHD wordt opgeslagen.
 
-##### <a name="copy-a-vhd-from-on-premises"></a>Kopieer geen VHD van on-premises
-Als u VHD vanuit een on-premises-omgeving migreert, moet u de volledige broncode pad waar de VHD is opgeslagen. Het bronpad kan een server of bestandsshare zijn.
+##### <a name="copy-a-vhd-from-on-premises"></a>Een VHD kopiëren van on-premises
+Als u VHD migreert vanuit een on-premises omgeving, hebt u het volledige bronpad nodig waar VHD wordt opgeslagen. Het bronpad kan een server locatie of bestands share zijn.
 
-#### <a name="step-2-create-the-destination-for-your-vhd"></a>Stap 2. Het doel van uw VHD maken
-Maak een opslagaccount voor het onderhouden van uw VHD's. Houd rekening met de volgende punten bij het plannen waar uw VHD's opgeslagen:
+#### <a name="step-2-create-the-destination-for-your-vhd"></a>Stap 2. De bestemming voor uw VHD maken
+Maak een opslag account voor het onderhouden van uw Vhd's. Houd rekening met de volgende punten bij het plannen waar u de Vhd's opslaat:
 
-* Het doelopslagaccount mogelijk standard of premium storage, afhankelijk van de vereisten van uw toepassing.
-* De regio van opslagaccount moet hetzelfde zijn als Premium-opslag kunnen Azure-VM's u in de laatste fase maakt. U kunt kopiëren naar een nieuw opslagaccount of een abonnement om te gebruiken hetzelfde opslagaccount op basis van uw behoeften.
-* Kopieer en bewaar de opslagaccountsleutel van het doelopslagaccount voor de volgende fase.
+* Het doel-opslag account kan een standaard-of Premium-opslag zijn, afhankelijk van de vereiste van uw toepassing.
+* De regio van het opslag account moet hetzelfde zijn als Premium Storage geschikte Azure-Vm's die u in de laatste fase gaat maken. U kunt kopiëren naar een nieuw opslag account, of u kunt hetzelfde opslag account gebruiken op basis van uw behoeften.
+* Kopieer en sla de sleutel van het opslag account van het doel opslag account voor de volgende fase op.
 
-We raden u om alle gegevens voor productie-werkbelasting gebruik van premium-opslag te verplaatsen.
+We raden u ten zeerste aan alle gegevens voor de werk belasting van de productie te verplaatsen om Premium-opslag te gebruiken.
 
 #### <a name="step-3-upload-the-vhd-to-azure-storage"></a>Stap 3. De VHD uploaden naar Azure Storage
-Nu dat u uw VHD in de lokale map hebt, kunt u AzCopy of AzurePowerShell het VHD-bestand uploaden naar Azure Storage. Beide opties vindt u hier:
+Nu u uw VHD in de lokale map hebt, kunt u AzCopy of AzurePowerShell gebruiken om het. VHD-bestand te uploaden naar Azure Storage. Beide opties worden hier weer gegeven:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Optie 1: Met behulp van Azure PowerShell Add-AzureVhd het VHD-bestand uploaden
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Optie 1: Het. VHD-bestand uploaden met Azure PowerShell add-AzureVhd
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Een voorbeeld \<Uri > mogelijk  ** _"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Een voorbeeld \<FileInfo > mogelijk  ** _"C:\path\to\upload.vhd"_** .
+Een voor \<beeld van een URI > is mogelijk **_"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Een voor \<beeld van een file info > is **_' C:\path\to\upload.VHD '_** .
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Optie 2: AzCopy gebruiken om de VHD-bestand te uploaden
-Met behulp van AzCopy, u kunt eenvoudig de VHD uploaden via Internet. Dit kan tijd duren, afhankelijk van de grootte van de VHD's. Vergeet niet om te controleren of limieten Inkomend/uitgaand verkeer van het opslagaccount wanneer u deze optie. Zie [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md) voor meer informatie.
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Optie 2: Het. VHD-bestand uploaden met behulp van AzCopy
+Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de grootte van de Vhd's kan dit enige tijd duren. Controleer de limieten voor het inkomen/uitvallen van opslag accounts wanneer u deze optie gebruikt. Zie [Azure Storage schaal baarheid en prestatie doelen](storage-scalability-targets.md) voor meer informatie.
 
-1. Download en installeer AzCopy hier: [Meest recente versie van AzCopy](https://aka.ms/downloadazcopy)
-2. Open Azure PowerShell en Ga naar de map waarin AzCopy wordt geïnstalleerd.
-3. Gebruik de volgende opdracht uit om te kopiëren van de VHD-bestand van 'Source' naar 'Doel'.
+1. Down load en installeer AzCopy hier: [Meest recente versie van AzCopy](https://aka.ms/downloadazcopy)
+2. Open Azure PowerShell en ga naar de map waarin AzCopy is geïnstalleerd.
+3. Gebruik de volgende opdracht om het VHD-bestand van ' source ' naar ' Destination ' te kopiëren.
 
     ```azcopy
     AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -273,93 +273,93 @@ Met behulp van AzCopy, u kunt eenvoudig de VHD uploaden via Internet. Dit kan ti
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-        ```
+    ```
 
-    Here are descriptions of the parameters used in the AzCopy command:
+   Hier volgen beschrijvingen van de para meters die worden gebruikt in de AzCopy-opdracht:
 
-   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
-   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
-   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
-   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
-   * **/BlobType: page:** Specifies that the destination is a page blob.
-   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
+   * **/Source:** _bron:&gt; &lt;_ Locatie van de map of de opslag container-URL die de VHD bevat.
+   * **/SourceKey:** _bron-account-sleutel&gt;: &lt;_ Sleutel van het opslag account van het bron-opslag account.
+   * **/Dest:** _doel:&gt; &lt;_ URL van de opslag container waarnaar de VHD moet worden gekopieerd.
+   * **/DestKey:** _doel account-sleutel&gt;: &lt;_ Sleutel van het opslag account van het doel-opslag account.
+   * **/BlobType: pagina:** Hiermee geeft u op dat de bestemming een pagina-blob is.
+   * **/Pattern:** _Bestands naam:&gt; &lt;_ Geef de bestands naam op van de VHD die u wilt kopiëren.
 
-For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
+Zie [gegevens overdragen met het opdracht regel programma AzCopy](storage-use-azcopy.md)voor meer informatie over het gebruik van het hulp programma AzCopy.
 
-##### Other options for uploading a VHD
-You can also upload a VHD to your storage account using one of the following means:
+##### <a name="other-options-for-uploading-a-vhd"></a>Andere opties voor het uploaden van een VHD
+U kunt ook een VHD uploaden naar uw opslag account met behulp van een van de volgende manieren:
 
-* [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Azure Storage Explorer Uploading Blobs](https://azurestorageexplorer.codeplex.com/)
-* [Storage Import/Export Service REST API Reference](https://msdn.microsoft.com/library/dn529096.aspx)
-
-> [!NOTE]
-> We recommend using Import/Export Service if estimated uploading time is longer than 7 days. You can use [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) to estimate the time from data size and transfer unit.
->
-> Import/Export can be used to copy to a standard storage account. You will need to copy from standard storage to premium storage account using a tool like AzCopy.
->
->
-
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Create Azure VMs using Premium Storage
-After the VHD is uploaded or copied to the desired storage account, follow the instructions in this section to register the VHD as an OS image, or OS disk depending on your scenario and then create a VM instance from it. The data disk VHD can be attached to the VM once it is created.
-A sample migration script is provided at the end of this section. This simple script does not match all scenarios. You may need to update the script to match with your specific scenario. To see if this script applies to your scenario, see below [A Sample Migration Script](#a-sample-migration-script).
-
-### Checklist
-1. Wait until all the VHD disks copying is complete.
-2. Make sure Premium Storage is available in the region you are migrating to.
-3. Decide the new VM series you will be using. It should be a Premium Storage capable, and the size should be depending on the availability in the region and based on your needs.
-4. Decide the exact VM size you will use. VM size needs to be large enough to support the number of data disks you have. E.g. if you have 4 data disks, the VM must have 2 or more cores. Also, consider processing power, memory and network bandwidth needs.
-5. Create a Premium Storage account in the target region. This is the account you will use for the new VM.
-6. Have the current VM details handy, including the list of disks and corresponding VHD blobs.
-
-Prepare your application for downtime. To do a clean migration, you have to stop all the processing in the current system. Only then you can get it to consistent state which you can migrate to the new platform. Downtime duration will depend on the amount of data in the disks to migrate.
+* [BLOB-API Azure Storage kopiëren](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Azure Storage Explorer uploaden van blobs](https://azurestorageexplorer.codeplex.com/)
+* [Naslag informatie voor Storage import/export-service REST API](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> If you are creating an Azure Resource Manager VM from a specialized VHD Disk, please refer to [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) for deploying Resource Manager VM using existing disk.
+> U kunt het beste de import/export-service gebruiken als de geschatte upload tijd langer is dan 7 dagen. U kunt [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) gebruiken om de tijd te schatten van de gegevens grootte en de overdrachts eenheid.
+>
+> Importeren/exporteren kan worden gebruikt om naar een Standard-opslag account te kopiëren. U moet de standaard opslag kopiëren naar een Premium Storage-account met een hulp programma zoals AzCopy.
 >
 >
 
-### Register your VHD
-To create a VM from OS VHD or to attach a data disk to a new VM, you must first register them. Follow steps below depending on your VHD's scenario.
+## <a name="create-azure-virtual-machine-using-premium-storage"></a>Virtuele Azure-machines maken met behulp van Premium Storage
+Nadat de VHD is geüpload of gekopieerd naar het gewenste opslag account, volgt u de instructies in deze sectie om de VHD als een installatie kopie van het besturings systeem te registreren, of de besturingssysteem schijf, afhankelijk van uw scenario en vervolgens een VM-exemplaar te maken. De VHD met de gegevens schijf kan worden gekoppeld aan de virtuele machine nadat deze is gemaakt.
+Aan het einde van deze sectie vindt u een voor beeld van een migratie script. Dit eenvoudige script komt niet overeen met alle scenario's. Mogelijk moet u het script bijwerken zodat dit overeenkomt met uw specifieke scenario. Zie onder [een voor beeld van een migratie script](#a-sample-migration-script)om te zien of dit script van toepassing is op uw scenario.
 
-#### Generalized Operating System VHD to create multiple Azure VM instances
-After generalized OS image VHD is uploaded to the storage account, register it as an **Azure VM Image** so that you can create one or more VM instances from it. Use the following PowerShell cmdlets to register your VHD as an Azure VM OS image. Provide the complete container URL where VHD was copied to.
+### <a name="checklist"></a>Controlelijst
+1. Wacht totdat alle VHD-schijven zijn gekopieerd.
+2. Zorg ervoor dat Premium Storage beschikbaar is in de regio waar u naar migreert.
+3. Bepaal welke nieuwe VM-serie u wilt gebruiken. Het moet een Premium Storage mogelijk zijn en de grootte moet afhankelijk zijn van de beschik baarheid in de regio en op basis van uw behoeften.
+4. Bepaal de exacte VM-grootte die u wilt gebruiken. De VM-grootte moet groot genoeg zijn voor het ondersteunen van het aantal gegevens schijven dat u hebt. Bijvoorbeeld Als u 4 gegevens schijven hebt, moet de virtuele machine twee of meer kern geheugens hebben. Denk ook aan het verwerken van energie, geheugen en netwerk bandbreedte behoeften.
+5. Maak een Premium Storage-account in de doel regio. Dit is het account dat u wilt gebruiken voor de nieuwe virtuele machine.
+6. Laat de huidige VM-Details weten, met inbegrip van de lijst met schijven en de bijbehorende VHD-blobs.
+
+Bereid uw toepassing voor op uitval tijd. Als u een schone migratie wilt uitvoeren, moet u alle bewerkingen in het huidige systeem stoppen. U kunt deze alleen weer geven in een consistente status die u kunt migreren naar het nieuwe platform. De duur van downtime is afhankelijk van de hoeveelheid gegevens op de schijven die moeten worden gemigreerd.
+
+> [!NOTE]
+> Als u een Azure Resource Manager VM maakt op basis van een speciale VHD-schijf, raadpleegt u [deze sjabloon voor het](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) implementeren van een resource manager-VM met behulp van een bestaande schijf.
+>
+>
+
+### <a name="register-your-vhd"></a>Uw VHD registreren
+Als u een virtuele machine wilt maken op basis van de besturingssysteem-VHD of als u een gegevens schijf aan een nieuwe virtuele machine wilt koppelen, moet u deze eerst registreren. Volg de onderstaande stappen, afhankelijk van het scenario van uw VHD.
+
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Algemene VHD van het besturings systeem voor het maken van meerdere Azure VM-exemplaren
+Nadat de VHD met de gegeneraliseerde installatie kopie van het besturings systeem is geüpload naar het opslag account, moet u deze registreren als een **Azure VM-installatie kopie** , zodat u een of meer VM-exemplaren hiervan kunt maken. Gebruik de volgende Power shell-cmdlets om uw VHD te registreren als een installatie kopie van een Azure VM-besturings systeem. Geef de volledige container-URL op waarnaar VHD is gekopieerd.
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows
 ```
 
-Kopieer en bewaar de naam van deze nieuwe Azure-VM-installatiekopie. In het bovenstaande voorbeeld is het *OSImageName*.
+Kopieer de naam van deze nieuwe Azure VM-installatie kopie en sla deze op. In het bovenstaande voor beeld is dit *OSImageName*.
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>De unieke besturingssysteem-VHD voor het maken van één Azure VM-instantie
-Nadat de unieke VHD met het besturingssysteem naar het opslagaccount dat is geüpload, registreert u dit als een **Azure Besturingssysteemschijf** zodat u een VM-exemplaar van deze maken kunt. Gebruik deze PowerShell-cmdlets voor het registreren van uw VHD als de schijf van een Azure-besturingssysteem. Geef de volledige container-URL waarnaar de VHD is gekopieerd.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Unieke VHD van het besturings systeem om één Azure VM-exemplaar te maken
+Nadat de unieke VHD van het besturings systeem is geüpload naar het opslag account, registreert u deze als een **Azure-besturingssysteem schijf** , zodat u er een VM-instantie van kunt maken. Gebruik deze Power shell-cmdlets om uw VHD te registreren als een Azure-besturingssysteem schijf. Geef de volledige container-URL op waarnaar VHD is gekopieerd.
 
 ```powershell
 Add-AzureDisk -DiskName "OSDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd" -Label "My OS Disk" -OS "Windows"
 ```
 
-Kopieer en bewaar de naam van deze nieuwe Azure-OS-schijf. In het bovenstaande voorbeeld is het *OSDisk*.
+Kopieer de naam van deze nieuwe Azure-besturingssysteem schijf en sla deze op. In het bovenstaande voor beeld is dit *OSDisk*.
 
-#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Gegevensschijf moet worden gekoppeld aan de nieuwe Azure-VM-instantie (s)
-Nadat de VHD met gegevensschijf is geüpload naar storage-account, registreert u dit als een Azure-gegevensschijf, zodat deze kan worden gekoppeld aan uw nieuwe DS-serie, DSv2-reeks of GS-serie Azure VM-exemplaar.
+#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>VHD met gegevens schijf die moet worden gekoppeld aan nieuwe Azure VM-exemplaren
+Nadat de VHD met de gegevens schijf is geüpload naar het opslag account, registreert u deze als een Azure-gegevens schijf, zodat deze kan worden gekoppeld aan uw nieuwe DS-serie, DSv2-Series of GS-serie Azure VM-instantie.
 
-Gebruik deze PowerShell-cmdlets voor het registreren van uw VHD als een Azure-gegevensschijf. Geef de volledige container-URL waarnaar de VHD is gekopieerd.
+Gebruik deze Power shell-cmdlets om uw VHD te registreren als een Azure-gegevens schijf. Geef de volledige container-URL op waarnaar VHD is gekopieerd.
 
 ```powershell
 Add-AzureDisk -DiskName "DataDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk.vhd" -Label "My Data Disk"
 ```
 
-Kopieer en bewaar de naam van deze nieuwe Azure-gegevensschijf. In het bovenstaande voorbeeld is het *DataDisk*.
+Kopieer de naam van deze nieuwe Azure-gegevens schijf en sla deze op. In het bovenstaande voor beeld is dit *DataDisk*.
 
-### <a name="create-a-premium-storage-capable-vm"></a>Een virtuele machine voor de staat van Premium-opslag maken
-Nadat de installatiekopie van het besturingssysteem of de schijf met besturingssysteem zijn geregistreerd, maakt u een nieuwe DS-serie, DSv2-reeks of GS-serie VM. U gebruikt de installatiekopie van besturingssysteem of de naam van een besturingssysteem schijf die u hebt geregistreerd. Selecteer het type virtuele machine in de Premium Storage-laag. In onderstaand voorbeeld gebruiken we de *Standard_DS2* VM-grootte.
+### <a name="create-a-premium-storage-capable-vm"></a>Een virtuele machine maken die geschikt is voor Premium Storage
+Nadat de installatie kopie van het besturings systeem of de besturingssysteem schijf is geregistreerd, maakt u een nieuwe virtuele machine uit de DS-serie, DSv2-serie of GS-serie. U gebruikt de installatie kopie van het besturings systeem of de naam van de besturingssysteem schijf die u hebt geregistreerd. Selecteer het VM-type in de laag Premium Storage. In het onderstaande voor beeld gebruiken we de *Standard_DS2* -VM-grootte.
 
 > [!NOTE]
-> De grootte van de schijf om ervoor te zorgen dat deze overeenkomt met uw capaciteit en prestatie-eisen en grootte van de beschikbare Azure-schijven worden bijgewerkt.
+> Werk de schijf grootte bij om ervoor te zorgen dat deze overeenkomt met de capaciteits-en prestatie vereisten en de beschik bare groottes van Azure-schijven.
 >
 >
 
-Volg de stapsgewijze onderstaande PowerShell-cmdlets om de nieuwe VM te maken. Stel eerst de algemene parameters:
+Volg de onderstaande stapsgewijze Power shell-cmdlets om de nieuwe virtuele machine te maken. Stel eerst de algemene para meters in:
 
 ```powershell
 $serviceName = "yourVM"
@@ -371,16 +371,16 @@ $vmName ="yourVM"
 $vmSize = "Standard_DS2"
 ```
 
-Maak eerst een cloudservice waarin u uw nieuwe virtuele machines worden gehost.
+Maak eerst een Cloud service waarin u uw nieuwe Vm's gaat hosten.
 
 ```powershell
 New-AzureService -ServiceName $serviceName -Location $location
 ```
 
-Maak vervolgens het Azure-VM-exemplaar van de installatiekopie van het besturingssysteem of de OS-schijf die u hebt geregistreerd, afhankelijk van uw scenario.
+Afhankelijk van uw scenario maakt u de Azure VM-instantie van de installatie kopie van het besturings systeem of de besturingssysteem schijf die u hebt geregistreerd.
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Besturingssysteem-VHD voor het maken van meerdere exemplaren van de Azure-VM gegeneraliseerd
-Maken van een of meer DS-serie Azure VM-exemplaren met behulp van de **installatiekopie van het besturingssysteem Azure** die u hebt geregistreerd. Geef de naam van deze installatiekopie van het besturingssysteem in de VM-configuratie bij het maken van nieuwe virtuele machine, zoals hieronder wordt weergegeven.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Algemene VHD van het besturings systeem voor het maken van meerdere Azure VM-exemplaren
+Maak een of meer nieuwe Azure VM-exemplaren van de DS-serie met behulp van de **installatie kopie van het Azure-besturings systeem** die u hebt geregistreerd. Geef een naam op voor de installatie kopie van het besturings systeem in de VM-configuratie bij het maken van een nieuwe virtuele machine, zoals hieronder
 
 ```powershell
 $OSImage = Get-AzureVMImage –ImageName "OSImageName"
@@ -392,8 +392,8 @@ Add-AzureProvisioningConfig -Windows –AdminUserName $adminUser -Password $admi
 New-AzureVM -ServiceName $serviceName -VM $vm
 ```
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>De unieke besturingssysteem-VHD voor het maken van één Azure VM-instantie
-Maak een nieuwe DS serie virtuele Azure-machine-exemplaar met de **Azure Besturingssysteemschijf** die u hebt geregistreerd. Geef de naam van dit OS-schijf in de VM-configuratie bij het maken van de nieuwe virtuele machine, zoals hieronder wordt weergegeven.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Unieke VHD van het besturings systeem om één Azure VM-exemplaar te maken
+Maak een nieuwe Azure-VM-instantie van de DS-serie met behulp van de **Azure-besturingssysteem schijf** die u hebt geregistreerd. Geef de naam op van deze besturingssysteem schijf in de VM-configuratie bij het maken van de nieuwe VM, zoals hieronder wordt weer gegeven.
 
 ```powershell
 $OSDisk = Get-AzureDisk –DiskName "OSDisk"
@@ -403,12 +403,12 @@ $vm = New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -DiskName $OSDisk.Di
 New-AzureVM -ServiceName $serviceName –VM $vm
 ```
 
-Geef andere Azure-VM-informatie, zoals een service in de cloud, regio, opslagaccount, beschikbaarheidsset en cachebeleid. Houd er rekening mee dat het VM-exemplaar geplaatst met de bijbehorende besturingssysteem of de gegevensschijven, worden moet zodat de geselecteerde cloud service, regio en storage-account op dezelfde locatie als de onderliggende virtuele harde schijven van deze schijven zijn moet.
+Geef andere Azure-VM-informatie op, zoals een Cloud service, regio, opslag account, beschikbaarheidsset en beleid voor caching. Het VM-exemplaar moet zich op dezelfde locatie bevinden als de onderliggende Vhd's van die schijven, zodat de geselecteerde Cloud service, de regio en het opslag account op dezelfde plaats moeten staan.
 
 ### <a name="attach-data-disk"></a>Een gegevensschijf koppelen
-Ten slotte, als u de gegevensschijf VHD's hebt geregistreerd, koppelt u ze naar de nieuwe Premium-opslag kan Azure VM.
+Ten slotte, als u virtuele harde schijven hebt geregistreerd, koppelt u deze aan de nieuwe Premium Storage geschikte Azure VM.
 
-Gebruikt u de volgende PowerShell-cmdlet gegevensschijf koppelen aan de nieuwe virtuele machine en het cachebeleid opgeven. In het volgende voorbeeld het cachebeleid is ingesteld op *ReadOnly*.
+Gebruik de volgende Power shell-cmdlet om de gegevens schijf aan de nieuwe virtuele machine te koppelen en het cache beleid op te geven. In het onderstaande voor beeld is het beleid voor cachen ingesteld op *ReadOnly*.
 
 ```powershell
 $vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
@@ -419,27 +419,27 @@ Update-AzureVM  -VM $vm
 ```
 
 > [!NOTE]
-> Mogelijk zijn er extra stappen die nodig is voor de ondersteuning van uw toepassing die niet worden behandeld in deze handleiding.
+> Er zijn mogelijk extra stappen nodig om uw toepassing te ondersteunen die niet onder deze hand leiding valt.
 >
 >
 
-### <a name="checking-and-plan-backup"></a>Controleren en back-up plannen
-Zodra de nieuwe virtuele machine actief en werkend is, toegang met behulp van de dezelfde aanmeldings-id en wachtwoord is als de oorspronkelijke virtuele machine en controleer of dat alles werkt zoals verwacht. Alle instellingen, met inbegrip van de striped volumes, zouden worden gebruikt in de nieuwe virtuele machine.
+### <a name="checking-and-plan-backup"></a>Back-ups controleren en plannen
+Zodra de nieuwe VM actief is, opent u deze met dezelfde aanmeldings-id en hetzelfde wacht woord als de oorspronkelijke virtuele machine en controleert u of alles werkt zoals verwacht. Alle instellingen, met inbegrip van de striped volumes, worden weer gegeven in de nieuwe VM.
 
-De laatste stap is het plannen van back-up en onderhoud plannen voor de nieuwe virtuele machine op basis van de behoeften van de toepassing.
+De laatste stap bestaat uit het plannen van de back-up-en onderhouds planning voor de nieuwe virtuele machine op basis van de behoeften van de toepassing.
 
-### <a name="a-sample-migration-script"></a>Een voorbeeld van migratie van een script
-Als u meerdere virtuele machines hebt te migreren, wordt de automatisering met behulp van PowerShell-scripts nuttig zijn. Hieronder volgt een voorbeeld van een script waarmee de migratie van een virtuele machine worden geautomatiseerd. Houd er rekening mee dat het onderstaande script is slechts een voorbeeld en er zijn enkele veronderstellingen over de huidige VM-schijven. Mogelijk moet u bijwerken van het script moet overeenkomen met uw specifieke scenario.
+### <a name="a-sample-migration-script"></a>Een voor beeld van een migratie script
+Als u meerdere Vm's wilt migreren, is automatisering via Power shell-scripts handig. Hieronder volgt een voor beeld van een script waarmee de migratie van een virtuele machine wordt geautomatiseerd. Houd er rekening mee dat het onderstaande script slechts een voor beeld is en dat er enkele hypo Thesen worden gemaakt voor de huidige VM-schijven. Mogelijk moet u het script bijwerken zodat dit overeenkomt met uw specifieke scenario.
 
 De veronderstellingen zijn:
 
-* Klassieke Azure-VM's die u maakt.
-* De bron-OS-schijven en de gegevensschijven van de bron zich in hetzelfde opslagaccount en dezelfde container. Als uw Besturingssysteemschijven en gegevensschijven niet op dezelfde plaats zijn, kunt u AzCopy of Azure PowerShell gebruiken om te kopiëren van VHD's over de storage-accounts en -containers. Raadpleeg de vorige stap: [Kopieer de VHD met het AzCopy- of PowerShell](#copy-vhd-with-azcopy-or-powershell). Bewerken van dit script om te voldoen aan uw scenario is een andere keuze, maar wij raden omdat het is eenvoudiger en sneller met behulp van de AzCopy- of PowerShell.
+* U maakt klassieke Azure-Vm's.
+* De schijven van het bron besturingssysteem en de bron gegevens schijven bevinden zich in hetzelfde opslag account en dezelfde container. Als de schijven en gegevens schijven van uw besturings systeem zich niet op dezelfde locatie bevinden, kunt u AzCopy of Azure PowerShell gebruiken om Vhd's te kopiëren via opslag accounts en containers. Raadpleeg de vorige stap: [Kopieer de VHD met AzCopy of Power shell](#copy-vhd-with-azcopy-or-powershell). Het bewerken van dit script om te voldoen aan uw scenario is een andere keuze, maar we raden u aan om AzCopy of Power shell te gebruiken, omdat dit eenvoudiger en sneller is.
 
-Hieronder vindt u het automatiseringsscript. Tekst vervangen door uw gegevens en bijwerken van het script moet overeenkomen met uw specifieke scenario.
+Het Automation-script wordt hieronder gegeven. Vervang tekst door uw gegevens en werk het script bij zodat dit overeenkomt met uw specifieke scenario.
 
 > [!NOTE]
-> Met behulp van het bestaande script behoudt niet de netwerkconfiguratie van de bron-VM. U moet re-config de netwerkinstellingen op de gemigreerde virtuele machines.
+> Als u het bestaande script gebruikt, wordt de netwerk configuratie van de bron-VM niet bewaard. U moet de netwerk instellingen op uw gemigreerde Vm's opnieuw configureren.
 >
 >
 
@@ -736,37 +736,37 @@ Hieronder vindt u het automatiseringsscript. Tekst vervangen door uw gegevens en
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 ```
 
-#### <a name="optimization"></a>Optimalisatie
-De huidige configuratie van de virtuele machine kan worden aangepast speciaal om te werken goed met standaardschijven. Bijvoorbeeld, de prestaties verbeteren door het gebruik van veel schijven in een striped volumes. Bijvoorbeeld, in plaats van 4 schijven afzonderlijk op Premium-opslag, u mogelijk de kosten optimaliseren door één schijf. Optimalisaties als deze niet hoeft te worden verwerkt op een per geval beoordeeld en aangepaste stappen moeten worden uitgevoerd na de migratie. Merk ook op dat dit proces werkt mogelijk niet goed voor databases en toepassingen die afhankelijk van de schijfindeling gedefinieerd in de instellingen zijn.
+#### <a name="optimization"></a>Gedaan
+Uw huidige VM-configuratie kan specifiek worden aangepast om goed te kunnen werken met standaard schijven. Bijvoorbeeld om de prestaties te verbeteren door gebruik te maken van veel schijven in een striped volume. In plaats van 4-schijven afzonderlijk op Premium Storage te gebruiken, kunt u de kosten mogelijk met één schijf optimaliseren. Optimalisaties zoals deze moeten per geval worden afgehandeld en vereisen aangepaste stappen na de migratie. Houd er ook rekening mee dat dit proces mogelijk niet goed werkt voor data bases en toepassingen die afhankelijk zijn van de schijf indeling die is gedefinieerd in de installatie.
 
 ##### <a name="preparation"></a>Voorbereiding
-1. De eenvoudige migratie voltooid zoals beschreven in de vorige sectie. Optimalisaties zal worden uitgevoerd op de nieuwe virtuele machine na de migratie.
-2. De nieuwe schijfgrootte die nodig zijn voor de geoptimaliseerde configuratie definiëren.
-3. Bepaal de toewijzing van de huidige schijven/volumes in de nieuwe schijf-specificaties.
+1. Voltooi de eenvoudige migratie zoals beschreven in de vorige sectie. Optimalisaties worden uitgevoerd op de nieuwe virtuele machine na de migratie.
+2. Definieer de nieuwe schijf grootten die nodig zijn voor de geoptimaliseerde configuratie.
+3. Bepaal de toewijzing van de huidige schijven/volumes aan de nieuwe schijf specificaties.
 
-##### <a name="execution-steps"></a>De stappen worden uitgevoerd
-1. De nieuwe schijven maken met de juiste grootte beschikbaar op de VM voor Premium-opslag.
-2. Meld u aan bij de virtuele machine en kopieer de gegevens van het huidige volume naar de nieuwe schijf die is toegewezen aan dat volume. Doe dit voor de huidige volumes die moeten worden toegewezen aan een nieuwe schijf.
-3. Vervolgens de toepassingsinstellingen overschakelen naar de nieuwe schijven wijzigen en de oude volumes loskoppelen.
+##### <a name="execution-steps"></a>Uitvoerings stappen
+1. Maak de nieuwe schijven met de juiste grootte op de Premium Storage VM.
+2. Meld u aan bij de virtuele machine en kopieer de gegevens van het huidige volume naar de nieuwe schijf die is gekoppeld aan dat volume. Doe dit voor alle huidige volumes die moeten worden toegewezen aan een nieuwe schijf.
+3. Wijzig vervolgens de toepassings instellingen om over te scha kelen naar de nieuwe schijven en ontkoppel de oude volumes.
 
-Raadpleeg voor het afstemmen van de toepassing voor betere prestaties van de schijf, het optimaliseren van de prestaties toepassingsgedeelte van onze [ontwerpen voor hoge prestaties](../../virtual-machines/windows/premium-storage-performance.md) artikel.
+Raadpleeg de sectie optimalisatie van toepassings prestaties van het artikel [ontwerpen voor hoge prestaties](../../virtual-machines/windows/premium-storage-performance.md) voor het afstemmen van de toepassing voor betere prestaties van de schijf.
 
-### <a name="application-migrations"></a>Migraties van toepassing
-Databases en andere complexe toepassingen kunnen speciale stappen vereist zoals gedefinieerd door de provider van de toepassing voor de migratie. Raadpleeg de documentatie van de desbetreffende toepassing. Bijvoorbeeld Normaal gesproken databases kunnen worden gemigreerd via back-up en herstellen.
+### <a name="application-migrations"></a>Toepassings migraties
+Data bases en andere complexe toepassingen kunnen speciale stappen vereisen zoals gedefinieerd door de toepassings provider voor de migratie. Raadpleeg de documentatie van de betreffende toepassing. Bijvoorbeeld normaal gesp roken kunnen data bases worden gemigreerd met back-up en herstel.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende bronnen voor specifieke scenario's voor migratie van virtuele machines:
+Raadpleeg de volgende bronnen voor specifieke scenario's voor het migreren van virtuele machines:
 
-* [Azure virtuele Machines migreren tussen Opslagaccounts](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Maken en een Windows Server-VHD uploaden naar Azure.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Het maken en een Linux VHD uploaden naar Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Migreren van virtuele Machines van Amazon AWS naar Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Azure Virtual Machines migreren tussen opslag accounts](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+* [Een Windows Server-VHD maken en uploaden naar Azure.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Een Linux-VHD maken en uploaden naar Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Virtual Machines migreren van Amazon AWS naar Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Zie ook de volgende bronnen voor meer informatie over Azure Storage en Azure Virtual Machines:
+Raadpleeg ook de volgende bronnen voor meer informatie over Azure Storage en Azure Virtual Machines:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Selecteer een schijftype voor IaaS-VM 's](../../virtual-machines/windows/disks-types.md)
+* [Selecteer een schijf type voor IaaS Vm's](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

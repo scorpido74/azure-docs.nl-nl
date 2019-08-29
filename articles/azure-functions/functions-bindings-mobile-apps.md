@@ -1,54 +1,53 @@
 ---
-title: Mobile Apps-bindingen voor Azure Functions
-description: Over het gebruik van Azure Mobile Apps-bindingen in Azure Functions.
+title: Mobile Apps bindingen voor Azure Functions
+description: Meer informatie over het gebruik van Azure Mobile Apps-bindingen in Azure Functions.
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, functies, gebeurtenisverwerking, dynamische Computing, serverloze architectuur
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 965ec88b39336e71d2779da4b7cd31b9c26e28be
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 37192a25bff794ac019fd29b47e0e8ad161790c9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480365"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097326"
 ---
-# <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-bindingen voor Azure Functions 
+# <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindingen voor Azure Functions 
 
 > [!NOTE]
-> Azure Mobile Apps-bindingen zijn alleen beschikbaar voor Azure Functions 1.x. Ze worden niet ondersteund in Azure Functions 2.x.
+> Azure Mobile Apps-bindingen zijn alleen beschikbaar voor Azure Functions 1. x. Ze worden niet ondersteund in Azure Functions 2. x.
 
-Dit artikel wordt uitgelegd hoe u werkt met [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) bindingen in Azure Functions. Azure Functions ondersteunt invoer- en uitvoerbindingen voor Mobile Apps.
+In dit artikel wordt uitgelegd hoe u kunt werken met [Azure Mobile apps](../app-service-mobile/app-service-mobile-value-prop.md) -bindingen in azure functions. Azure Functions ondersteunt invoer-en uitvoer bindingen voor Mobile Apps.
 
-De Mobile Apps-bindingen kunnen u lezen en bijwerken van gegevenstabellen in mobiele apps.
+Met de Mobile Apps bindingen kunt u gegevens tabellen in mobiele apps lezen en bijwerken.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>Pakketten - functies 1.x
 
-Mobile Apps-bindingen zijn opgegeven in de [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet-pakket versie 1.x. Broncode voor het pakket is in de [azure webjobs-sdk extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub-opslagplaats.
+Mobile Apps bindingen zijn opgenomen in het pakket [micro soft. Azure. webjobs. Extensions. MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet, versie 1. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) .
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="input"></a>Invoer
 
-De Mobile Apps-Invoerbinding wordt een record van een tabeleindpunt mobiele geladen en geeft deze door aan uw functie. In C# en F# functies, wijzigingen in de record worden automatisch terug naar de tabel verzonden wanneer de functie is afgesloten.
+De Mobile Apps invoer binding laadt een record uit een eind punt van een mobiele tabel en geeft deze door aan uw functie. In C# en F# werken alle wijzigingen die in de record zijn aangebracht, automatisch terug naar de tabel wanneer de functie is afgesloten.
 
-## <a name="input---example"></a>Invoer - voorbeeld
+## <a name="input---example"></a>Invoer-voor beeld
 
 Zie het voorbeeld taalspecifieke:
 
 * [C# script (.csx)](#input---c-script-example)
-* Javascript
+* JavaScript
 
-### <a name="input---c-script-example"></a>Invoer - voorbeeld van C#-script
+### <a name="input---c-script-example"></a>Voor beeld C# van invoer script
 
-Het volgende voorbeeld ziet u een Invoerbinding van Mobile Apps in een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrijbericht waarvoor een record-id. De functie leest de opgegeven record en wijzigt de `Text` eigenschap.
+In het volgende voor beeld ziet u een Mobile apps invoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrij bericht dat een record-id heeft. De functie leest de opgegeven record en wijzigt de bijbehorende `Text` eigenschap.
 
 Hier volgt de binding-gegevens de *function.json* bestand:
 
@@ -91,9 +90,9 @@ public static void Run(string myQueueItem, JObject record)
 }
 ```
 
-### <a name="input---javascript"></a>Invoer - JavaScript
+### <a name="input---javascript"></a>Invoer-java script
 
-Het volgende voorbeeld ziet u een Invoerbinding van Mobile Apps in een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrijbericht waarvoor een record-id. De functie leest de opgegeven record en wijzigt de `Text` eigenschap.
+In het volgende voor beeld ziet u een Mobile Apps invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrij bericht dat een record-id heeft. De functie leest de opgegeven record en wijzigt de bijbehorende `Text` eigenschap.
 
 Hier volgt de binding-gegevens de *function.json* bestand:
 
@@ -132,9 +131,9 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>Invoer - kenmerken
 
-In [C#-klassebibliotheken](functions-dotnet-class-library.md), gebruikt u de [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) kenmerk.
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) .
 
-Zie voor meer informatie over de kenmerkeigenschappen die u kunt configureren, [de volgende configuratiesectie](#input---configuration).
+Voor informatie over kenmerk eigenschappen die u kunt configureren, raadpleegt u [de volgende configuratie sectie](#input---configuration).
 
 ## <a name="input---configuration"></a>Invoer - configuratie
 
@@ -142,30 +141,30 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Description|
 |---------|---------|----------------------|
-| **type**|| Moet worden ingesteld op "mobileTable"|
-| **direction**||Moet worden ingesteld op 'in'|
-| **name**|| De naam van de invoerparameter in de functiehandtekening.|
-|**tableName** |**TableName**|Naam van de mobiele app gegevenstabel|
-| **id**| **Id** | De id van de record om op te halen. Kan zijn statisch of op basis van de trigger die de functie activeert. Bijvoorbeeld, als u een wachtrijtrigger vervolgens gebruiken voor uw functie `"id": "{queueTrigger}"` maakt gebruik van de tekenreekswaarde van bericht uit de wachtrij als de record-ID om op te halen.|
-|**verbinding**|**verbinding**|De naam van een appinstelling met de URL van de mobiele app. De functie maakt gebruik van deze URL om de vereiste REST-bewerkingen op uw mobiele app samen te stellen. Maken van een app-instelling in uw functie-app die van de mobiele app-URL bevat, geeft u vervolgens de naam van de app-instelling in de `connection` eigenschap in uw Invoerbinding. De URL lijkt `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKey**|De naam van een appinstelling met de API-sleutel van uw mobiele app. Geef de API-sleutel als u [implementeren van een API-sleutel in uw mobiele app voor Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), of [een API-sleutel in uw mobiele .NET-app implementeren](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Maken van een app-instelling in uw functie-app met de API-sleutel voor de sleutel, en vervolgens toevoegen de `apiKey` eigenschap in uw Invoerbinding met de naam van de app-instelling. |
+| **type**|| Moet worden ingesteld op ' mobileTable '|
+| **direction**||Moet worden ingesteld op ' in '|
+| **name**|| Naam van invoer parameter in functie handtekening.|
+|**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
+| **id**| **Id** | De id van de record die moet worden opgehaald. Kan statisch zijn of op basis van de trigger die de functie aanroept. Als u bijvoorbeeld een wachtrij trigger gebruikt voor uw functie, `"id": "{queueTrigger}"` gebruikt de teken reeks waarde van het wachtrij bericht als de record-id die moet worden opgehaald.|
+|**verbinding**|**verbinding**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam op van de `connection` app-instelling in de eigenschap in uw invoer binding. De URL ziet er `http://<appname>.azurewebsites.net`als volgt uit.
+|**apiKey**|**ApiKey**|De naam van een app-instelling met de API-sleutel van uw mobiele app. Geef de API-sleutel op als u [een API-sleutel in uw mobiele node. js-app implementeert](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)of [een API-sleutel in uw mobiele .net-app implementeert](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Als u de sleutel wilt opgeven, maakt u een app-instelling in de functie-app die de API- `apiKey` sleutel bevat en voegt u vervolgens de eigenschap in uw invoer binding toe met de naam van de app-instelling. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Niet de API-sleutel niet delen met uw mobiele app-clients. Het moet alleen worden gedistribueerd veilig aan servicezijde-clients, zoals Azure Functions. Azure Functions wordt uw verbindingsgegevens en API-sleutels als app-instellingen opgeslagen zodat ze niet worden gecontroleerd in uw resourcebeheerbibliotheek. Dit beschermt uw vertrouwelijke gegevens.
+> Deel de API-sleutel niet met uw mobiele app-clients. Het mag alleen veilig worden gedistribueerd aan service-side clients, zoals Azure Functions. Azure Functions slaat de verbindings gegevens en API-sleutels op als app-instellingen, zodat ze niet worden ingecheckt in uw opslag plaats voor broncode beheer. Hiermee wordt uw gevoelige informatie beveiligd.
 
 ## <a name="input---usage"></a>Invoer - gebruik
 
-In C#-functies, wanneer de record met de opgegeven ID is gevonden, wordt doorgegeven in de benoemde [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parameter. Wanneer de record niet wordt gevonden, de parameterwaarde is `null`. 
+In C# functions, wanneer de record met de opgegeven id wordt gevonden, wordt deze door gegeven aan de benoemde [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) -para meter. Als de record niet wordt gevonden, is `null`de waarde van de para meter. 
 
-In JavaScript-functies, de record is doorgegeven aan de `context.bindings.<name>` object. Wanneer de record niet wordt gevonden, de parameterwaarde is `null`. 
+In Java script-functies wordt de record door gegeven `context.bindings.<name>` aan het object. Als de record niet wordt gevonden, is `null`de waarde van de para meter. 
 
-In C# en F# functies en wijzigingen die u in de invoer aanbrengt record (invoerparameter) automatisch terug naar de tabel worden verzonden wanneer de functie is afgesloten. U kunt een record in JavaScript-functies niet wijzigen.
+In C# en F# -functies worden alle wijzigingen die u aanbrengt in de invoer record (invoer parameter) automatisch teruggestuurd naar de tabel wanneer de functie is afgesloten. U kunt een record in Java script-functies niet wijzigen.
 
 ## <a name="output"></a>Output
 
-Gebruik de Mobile Apps-Uitvoerbinding schrijven van een nieuwe record in een tabel met Mobile Apps.  
+Gebruik de Mobile Apps uitvoer binding om een nieuwe record te schrijven naar een Mobile Apps tabel.  
 
 ## <a name="output---example"></a>Uitvoer - voorbeeld
 
@@ -177,7 +176,7 @@ Zie het voorbeeld taalspecifieke:
 
 ### <a name="output---c-example"></a>Uitvoer - voorbeeld met C#
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die wordt geactiveerd door een wachtrijbericht en maakt u een record in een tabel van de mobiele app.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die wordt geactiveerd door een wachtrij bericht en maakt u een record in een tabel met mobiele apps.
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -192,7 +191,7 @@ public static object Run(
 
 ### <a name="output---c-script-example"></a>Uitvoer - voorbeeld van C#-script
 
-Het volgende voorbeeld ziet u een Uitvoerbinding voor Mobile Apps in een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrijbericht en maakt u een nieuwe record met vastgelegde waarde voor de `Text` eigenschap.
+In het volgende voor beeld ziet u een Mobile apps uitvoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een bericht in de wachtrij en maakt een nieuwe record met een in code vastgelegde waarde `Text` voor de eigenschap.
 
 Hier volgt de binding-gegevens de *function.json* bestand:
 
@@ -233,7 +232,7 @@ public static void Run(string myQueueItem, out object record)
 
 ### <a name="output---javascript-example"></a>Uitvoer - JavaScript-voorbeeld
 
-Het volgende voorbeeld ziet u een Uitvoerbinding voor Mobile Apps in een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een wachtrijbericht en maakt u een nieuwe record met vastgelegde waarde voor de `Text` eigenschap.
+In het volgende voor beeld ziet u een Mobile Apps uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie wordt geactiveerd door een bericht in de wachtrij en maakt een nieuwe record met een in code vastgelegde waarde `Text` voor de eigenschap.
 
 Hier volgt de binding-gegevens de *function.json* bestand:
 
@@ -277,9 +276,9 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>Uitvoer - kenmerken
 
-In [C#-klassebibliotheken](functions-dotnet-class-library.md), gebruikt u de [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) kenmerk.
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) .
 
-Zie voor meer informatie over de kenmerkeigenschappen die u kunt configureren, [uitvoer - configuratie](#output---configuration). Hier volgt een `MobileTable` kenmerk voorbeeld in een handtekeningmethode:
+Zie [output-Configuration](#output---configuration)(Engelstalig) voor meer informatie over kenmerk eigenschappen die u kunt configureren. Hier volgt een `MobileTable` kenmerk voorbeeld in een handtekeningmethode:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -300,27 +299,27 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Description|
 |---------|---------|----------------------|
-| **type**|| Moet worden ingesteld op "mobileTable"|
-| **direction**||Moet worden ingesteld op 'out'|
-| **name**|| De naam van de uitvoerparameter bij functiehandtekening.|
-|**tableName** |**TableName**|Naam van de mobiele app gegevenstabel|
-|**verbinding**|**MobileAppUriSetting**|De naam van een appinstelling met de URL van de mobiele app. De functie maakt gebruik van deze URL om de vereiste REST-bewerkingen op uw mobiele app samen te stellen. Maken van een app-instelling in uw functie-app die van de mobiele app-URL bevat, geeft u vervolgens de naam van de app-instelling in de `connection` eigenschap in uw Invoerbinding. De URL lijkt `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKeySetting**|De naam van een appinstelling met de API-sleutel van uw mobiele app. Geef de API-sleutel als u [implementeren van een API-sleutel in uw back-end mobiele app Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), of [implementeren van een API-sleutel in uw mobiele app .NET back-end](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Maken van een app-instelling in uw functie-app met de API-sleutel voor de sleutel, en vervolgens toevoegen de `apiKey` eigenschap in uw Invoerbinding met de naam van de app-instelling. |
+| **type**|| Moet worden ingesteld op ' mobileTable '|
+| **direction**||Moet worden ingesteld op out|
+| **name**|| De naam van de uitvoer parameter in de functie handtekening.|
+|**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
+|**verbinding**|**MobileAppUriSetting**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam op van de `connection` app-instelling in de eigenschap in uw invoer binding. De URL ziet er `http://<appname>.azurewebsites.net`als volgt uit.
+|**apiKey**|**ApiKeySetting**|De naam van een app-instelling met de API-sleutel van uw mobiele app. Geef de API-sleutel op als u [een API-sleutel in uw back-end van de node. js-app implementeert](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)of [een API-sleutel in uw back-end van uw .net-app implementeert](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Als u de sleutel wilt opgeven, maakt u een app-instelling in de functie-app die de API- `apiKey` sleutel bevat en voegt u vervolgens de eigenschap in uw invoer binding toe met de naam van de app-instelling. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> Niet de API-sleutel niet delen met uw mobiele app-clients. Het moet alleen worden gedistribueerd veilig aan servicezijde-clients, zoals Azure Functions. Azure Functions wordt uw verbindingsgegevens en API-sleutels als app-instellingen opgeslagen zodat ze niet worden gecontroleerd in uw resourcebeheerbibliotheek. Dit beschermt uw vertrouwelijke gegevens.
+> Deel de API-sleutel niet met uw mobiele app-clients. Het mag alleen veilig worden gedistribueerd aan service-side clients, zoals Azure Functions. Azure Functions slaat de verbindings gegevens en API-sleutels op als app-instellingen, zodat ze niet worden ingecheckt in uw opslag plaats voor broncode beheer. Hiermee wordt uw gevoelige informatie beveiligd.
 
 ## <a name="output---usage"></a>Uitvoer - gebruik
 
-In C#-script-functies, gebruikt u een benoemde output-parameter van het type `out object` voor toegang tot de uitvoer-record. In C#-klassebibliotheken, de `MobileTable` kenmerk kan worden gebruikt met een van de volgende typen:
+Gebruik C# in script functies een benoemde uitvoer parameter van het type `out object` om toegang tot de uitvoer record te krijgen. In C# class-bibliotheken kan `MobileTable` het kenmerk worden gebruikt met een van de volgende typen:
 
-* `ICollector<T>` of `IAsyncCollector<T>`, waarbij `T` is `JObject` of een type met een `public string Id` eigenschap.
+* `ICollector<T>`of `IAsyncCollector<T>`, waarbij `T` een van `JObject` beide typen een `public string Id` eigenschap is.
 * `out JObject`
-* `out T` of `out T[]`, waarbij `T` is een Type met een `public string Id` eigenschap.
+* `out T`of `out T[]`, waarbij `T` elk type is met een `public string Id` eigenschap.
 
-Gebruik in Node.js-functies, `context.bindings.<name>` voor toegang tot de uitvoer-record.
+In node. js-functies gebruikt `context.bindings.<name>` u om toegang tot de uitvoer record te krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

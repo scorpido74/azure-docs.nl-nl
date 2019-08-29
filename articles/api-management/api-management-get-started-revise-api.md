@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203622"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072569"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Revisies gebruiken om vaste wijzigingen veilig in Azure API Management aan te brengen
 Wanneer uw API klaar is voor gebruik en daadwerkelijk wordt ingezet door ontwikkelaars, moet u op een bepaald moment wijzigingen aanbrengen aan die API, zonder dat dit gevolgen heeft voor clients die de API aanroepen. Het is ook handig om ontwikkelaars te informeren over de aangebrachte wijzigingen. We kunnen dit doen in Azure API Management met **revisies**. Zie voor meer informatie [Versies en revisies](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) en [API-versies met Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -84,7 +83,7 @@ In deze zelfstudie leert u het volgende:
 
 2. Open het contextmenu ( **...** ) voor **Revisie 2**.
 3. Selecteer **Instellen als huidige**.
-4. Controleer **Op het openbare wijzigingenlogboek voor deze API plaatsen**, als u opmerkingen over deze wijziging wilt plaatsen. Geef een beschrijving voor de wijziging die ontwikkelaars wordt weergegeven, bijvoorbeeld: **Revisies testen. Nieuwe 'test'-bewerking toegevoegd.**
+4. Controleer **Op het openbare wijzigingenlogboek voor deze API plaatsen**, als u opmerkingen over deze wijziging wilt plaatsen. Geef een beschrijving op voor de wijziging die ontwikkel aars kunnen zien, bijvoorbeeld: **Revisies testen. Nieuwe 'test'-bewerking toegevoegd.**
 5. **Revisie 2** is nu actueel.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Door de portal voor ontwikkelaars browsen om de wijzigingen en het logboek in te zien
@@ -96,7 +95,7 @@ In deze zelfstudie leert u het volgende:
 5. Selecteer **API-wijzigingsoverzicht** onder de API-naam.
 6. U ziet dat de vermelding van het wijzigingslogboek in deze lijst wordt weergegeven.
 
-    ![ontwikkelaarsportal](media/api-management-getstarted-revise-api/developer_portal.PNG)
+    ![Ontwikkelaarsportal](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 

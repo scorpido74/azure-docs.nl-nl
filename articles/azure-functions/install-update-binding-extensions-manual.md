@@ -1,52 +1,51 @@
 ---
-title: Handmatig installeren of bijwerken van de bindinguitbreidingen Azure Functions
-description: Informatie over het installeren of bijwerken van de bindinguitbreidingen Azure Functions voor geïmplementeerde functie-apps.
+title: Azure Functions binding-extensies hand matig installeren of bijwerken
+description: Meer informatie over het installeren of bijwerken van Azure Functions bindings extensies voor geïmplementeerde functie-apps.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-keywords: Azure functions, functies, binding-extensies, NuGet, updates
+keywords: Azure functions, functions, bindings uitbreidingen, NuGet, updates
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7686a9b2df6df6b54851e9c9957186f76be3fafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035720"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085060"
 ---
-# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Handmatig installeren of bijwerken van Azure Functions-bindinguitbreidingen van de portal
+# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions bindings uitbreidingen hand matig installeren of bijwerken vanuit de portal
 
-De Azure Functions-runtime versie 2.x gebruikmaakt van extensies van de binding voor het implementeren van code voor triggers en bindingen. Bindinguitbreidingen vindt u in het NuGet-pakketten. Voor het registreren van een uitbreiding, moet u in feite een pakket installeren. Bij het ontwikkelen van functies, is de manier waarop dat u bindinguitbreidingen installeert afhankelijk van de ontwikkelomgeving. Zie voor meer informatie, [bindinguitbreidingen registreren](./functions-bindings-register.md) in de triggers en bindingen.
+In de runtime van Azure Functions versie 2. x worden bindings uitbreidingen gebruikt voor het implementeren van code voor triggers en bindingen. Er worden bindings uitbreidingen gegeven in NuGet-pakketten. Als u een uitbrei ding wilt registreren, installeert u een pakket. Bij het ontwikkelen van functies is de manier waarop u bindings uitbreidingen installeert afhankelijk van de ontwikkelings omgeving. Zie [bindings uitbreidingen registreren](./functions-bindings-register.md) in het artikel triggers en bindingen voor meer informatie.
 
-Soms moet u handmatig installeren of bijwerken van de bindinguitbreidingen in Azure portal. U wilt bijvoorbeeld een geregistreerde binding niet bijwerken naar een nieuwere versie. U moet mogelijk ook voor het registreren van een ondersteunde binding die kan worden geïnstalleerd in de **integreren** tabblad in de portal.
+Soms moet u de bindings extensies hand matig installeren of bijwerken in de Azure Portal. U moet bijvoorbeeld een geregistreerde binding bijwerken naar een nieuwere versie. Mogelijk moet u ook een ondersteunde binding registreren die niet kan worden geïnstalleerd op het tabblad **integreren** in de portal.
 
-## <a name="install-a-binding-extension"></a>Een binding-extensie installeren
+## <a name="install-a-binding-extension"></a>Een bindings uitbreiding installeren
 
-Gebruik de volgende stappen handmatig installeren of bijwerken van uitbreidingen van de portal.
+Gebruik de volgende stappen om uitbrei dingen hand matig te installeren of bij te werken vanuit de portal.
 
-1. In de [Azure-portal](https://portal.azure.com), zoek uw functie-app en selecteer deze. Kies de **overzicht** tabblad en selecteer **stoppen**.  Stoppen van de functie-app, ontgrendelt bestanden zodat de wijzigingen worden doorgevoerd.
+1. Zoek in de [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze. Kies het tabblad **overzicht** en selecteer **stoppen**.  Als u de functie-app stopt, worden bestanden ontgrendeld zodat er wijzigingen kunnen worden aangebracht.
 
-1. Kies de **platformfuncties** tabblad en klik vervolgens onder **ontwikkelprogramma's** Selecteer **geavanceerde hulpmiddelen (Kudu)** . Het eindpunt van de Kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) in een nieuw venster wordt geopend.
+1. Kies het tabblad **platform functies** en selecteer onder **ontwikkelingsprogram ma's** **geavanceerde hulp middelen (kudu)** . Het kudu-eind`https://<APP_NAME>.scm.azurewebsites.net/`punt () wordt geopend in een nieuw venster.
 
-1. Selecteer in het venster Kudu **Foutopsporingsconsole** > **CMD**.  
+1. Selecteer in het venster kudu de optie **debug console** > **cmd**.  
 
-1. Navigeer in het opdrachtvenster naar `D:\home\site\wwwroot` en kies het verwijderpictogram naast `bin` op de map te verwijderen. Selecteer **OK** om de verwijdering te bevestigen.
+1. In het opdracht venster navigeert u `D:\home\site\wwwroot` naar en selecteert u het pictogram verwijderen `bin` naast om de map te verwijderen. Selecteer **OK** om de verwijdering te bevestigen.
 
-1. Kies het bewerkingspictogram naast de `extensions.csproj` -bestand, dat de bindinguitbreidingen voor de functie-app definieert. Het projectbestand wordt geopend in de online-editor.
+1. Kies het bewerkings pictogram naast `extensions.csproj` het bestand, waarmee de bindings extensies voor de functie-app worden gedefinieerd. Het project bestand wordt geopend in de online editor.
 
-1. Controleer de vereiste toevoegingen en updates van **PackageReference** -items in de **ItemGroup**en selecteer vervolgens **opslaan**. De huidige lijst van ondersteunde pakketversies vindt u de [welke pakketten heb ik nodig?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) wiki-artikel. Alle drie Azure Storage-bindingen moeten het pakket Microsoft.Azure.WebJobs.Extensions.Storage.
+1. Maak de vereiste toevoegingen en updates van **PackageReference** -items in de **ItemGroup**en selecteer vervolgens **Opslaan**. De huidige lijst met ondersteunde pakket versies vindt u in het artikel over [welke pakketten heb ik nodig?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) Voor alle drie de Azure Storage bindingen is het pakket micro soft. Azure. webjobs. Extensions. Storage vereist.
 
-1. Uit de `wwwroot` map, voer de volgende opdracht om op te bouwen de waarnaar wordt verwezen, assembly's in de `bin` map.
+1. Voer in `wwwroot` de map de volgende opdracht uit om de assembly's in de `bin` map te maken waarnaar wordt verwezen.
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
     ```
 
-1. Terug in de **overzicht** tabblad in de portal, kiest u **Start** de functie-app opnieuw te starten.
+1. Klik op het tabblad **overzicht** in de portal op **Start** om de functie-app opnieuw te starten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898141"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095816"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelfstudie: Status controle gebruiken in azure Deployment Manager (open bare preview)
 
@@ -235,8 +235,8 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
 
 Om de zelf studie te vereenvoudigen, worden de topologie sjabloon en artefacten gedeeld op de volgende locaties, zodat u niet uw eigen kopie hoeft voor te bereiden. Als u uw eigen wilt gebruiken, volgt u de instructies in [de zelf studie: Gebruik Azure Deployment Manager met Resource Manager-](./deployment-manager-tutorial.md)sjablonen.
 
-* Topologie sjabloon:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
-* Opslag voor artefacten:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Topologie sjabloon: https:\//armtutorials.blob.core.Windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
+* Opslag voor artefacten: https\/:/armtutorials.blob.core.Windows.net/admtutorial/ArtifactStore
 
 Als u de topologie wilt implementeren, selecteert u **proberen** om de Cloud shell te openen en plakt u het Power shell-script.
 
@@ -265,8 +265,8 @@ Controleer of de servicetopologie en de onderstreepte resources zijn gemaakt met
 
 Om de zelf studie te vereenvoudigen, wordt de gereviseerde implementatie sjabloon gedeeld op de volgende locaties, zodat u niet uw eigen kopie hoeft voor te bereiden. Als u uw eigen wilt gebruiken, volgt u de instructies in [de zelf studie: Gebruik Azure Deployment Manager met Resource Manager-](./deployment-manager-tutorial.md)sjablonen.
 
-* Topologie sjabloon:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
-* Opslag voor artefacten:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Topologie sjabloon: https:\//armtutorials.blob.core.Windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
+* Opslag voor artefacten: https\/:/armtutorials.blob.core.Windows.net/admtutorial/ArtifactStore
 
 Gebruik de status van de slechte URL die u hebt gemaakt in [een Health Check-service Simulator maken](#create-a-health-check-service-simulator). Zie [de door de gebruiker toegewezen beheerde identiteit maken](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity)voor **managedIdentityID**.
 

@@ -1,6 +1,6 @@
 ---
-title: App Service-ILB as-omgeving met behulp van Azure Resource Manager-sjablonen - maken | Microsoft Docs
-description: Informatie over het maken van een interne load balancer as-omgeving met behulp van Azure Resource Manager-sjablonen.
+title: ILB ASE maken met behulp van Azure Resource Manager-sjablonen-App Service | Microsoft Docs
+description: Meer informatie over het maken van een interne load balancer ASE met behulp van Azure Resource Manager-sjablonen.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,66 +10,65 @@ ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 862887e1e530bfdca4359e914b9a81c9360ac4dd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130752"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070431"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Een ILB ASE maken met behulp van Azure Resource Manager-sjablonen
 
 > [!NOTE] 
-> In dit artikel gaat over de App Service Environment v1. Er is een nieuwere versie van de App Service Environment die gebruiksvriendelijker en wordt uitgevoerd op een krachtigere infrastructuur. Voor meer informatie over de nieuwe versie begin met het [Inleiding tot App Service Environment](intro.md).
+> Dit artikel heeft betrekking op de App Service Environment v1. Er is een nieuwere versie van de App Service Environment die eenvoudiger is te gebruiken en wordt uitgevoerd op een krachtigere infra structuur. Begin met de [Inleiding tot de app service Environment](intro.md)voor meer informatie over de nieuwe versie.
 >
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Overzicht
-App Service-omgevingen kunnen worden gemaakt met een intern virtueel netwerk-adres in plaats van een openbare VIP-adres.  Deze interne adres wordt geleverd door een Azure-onderdeel de interne load balancer (ILB) genoemd.  Een ILB as-omgeving kunnen worden gemaakt met behulp van de Azure portal.  Ook kunnen worden gemaakt met automation via Azure Resource Manager-sjablonen.  Dit artikel helpt bij de stappen en de syntaxis voor het maken van een ILB as-omgeving met Azure Resource Manager-sjablonen.
+App Service omgevingen kunnen worden gemaakt met een intern adres van een virtueel netwerk in plaats van een open bare VIP.  Dit interne adres wordt verzorgd door een Azure-onderdeel dat de interne load balancer (ILB) wordt genoemd.  U kunt een ILB ASE maken met behulp van de Azure Portal.  Het kan ook worden gemaakt met behulp van automatisering via Azure Resource Manager sjablonen.  In dit artikel worden de stappen en syntaxis beschreven die nodig zijn voor het maken van een ILB-ASE met Azure Resource Manager sjablonen.
 
-Er zijn drie stappen die betrokken zijn bij het maken van een ILB as-omgeving automatiseren:
+Er zijn drie stappen betrokken bij het automatiseren van het maken van een ILB-ASE:
 
-1. Eerst wordt de base as-omgeving gemaakt in een virtueel netwerk met behulp van een interne load balancer-adres in plaats van een openbare VIP-adres.  Als onderdeel van deze stap wordt een hoofddomeinnaam op toegewezen aan de ILB as-omgeving.
-2. Zodra de ILB as-omgeving is gemaakt, wordt een SSL-certificaat geüpload.  
-3. Het geüploade SSL-certificaat is expliciet toegewezen aan de ILB as-omgeving als de 'standaard' SSL-certificaat.  Dit SSL-certificaat wordt gebruikt voor SSL-verkeer naar apps op de ILB as-omgeving wanneer de apps worden aangepakt met behulp van de algemene hoofddomein (bijvoorbeeld) toegewezen aan de as-omgeving https://someapp.mycustomrootcomain.com)
+1. Eerst wordt de basis-ASE gemaakt in een virtueel netwerk met behulp van een intern load balancer adres in plaats van een open bare VIP.  Als onderdeel van deze stap wordt een root-domein naam toegewezen aan de ILB-ASE.
+2. Zodra de ILB-ASE is gemaakt, wordt er een SSL-certificaat geüpload.  
+3. Het geüploade SSL-certificaat wordt expliciet toegewezen aan de ILB-ASE als het ' standaard SSL-certificaat.  Dit SSL-certificaat wordt gebruikt voor SSL-verkeer naar apps op de ILB-ASE wanneer de apps worden geadresseerd met behulp van het gemeen schappelijke hoofd domein dat is toegewezen aan de ASE (bijvoorbeeld https://someapp.mycustomrootcomain.com)
 
-## <a name="creating-the-base-ilb-ase"></a>Het maken van de Base ILB as-omgeving
-Een voorbeeld van Azure Resource Manager-sjabloon en de bijbehorende parameters-bestand zijn beschikbaar op GitHub [hier][quickstartilbasecreate].
+## <a name="creating-the-base-ilb-ase"></a>De basis-ILB-ASE maken
+Een voor beeld Azure Resource Manager sjabloon en het bijbehorende parameter bestand, zijn [hier][quickstartilbasecreate]beschikbaar op github.
 
-De meeste van de parameters in de *azuredeploy.parameters.json* bestand gemeenschappelijk zijn voor het maken van zowel ILB as-omgevingen, evenals as-omgevingen gebonden aan een openbare VIP-adres.  De lijst hieronder aanroepen speciale Opmerking uitvoerparameters of die zijn uniek, bij het maken van een ILB as-omgeving:
+De meeste para meters in het bestand *azuredeploy. para meters. json* zijn gebruikelijk voor het maken van zowel ILB as, als as gebonden aan een open bare VIP.  In de onderstaande lijst worden para meters van speciale opmerkingen, of die uniek zijn, aangeroepen bij het maken van een ILB-ASE:
 
-* *internalLoadBalancingMode*:  In de meeste gevallen set wordt dit tot 3, wat betekent dat zowel HTTP/HTTPS-verkeer op poort 80/443 en het besturingselement/gegevenskanaal poorten hebben geluisterd naar door de FTP-service op de as-omgeving, worden gekoppeld aan een ILB intern virtueel netwerk-adres toegewezen.  Als deze eigenschap wordt in plaats daarvan ingesteld op 2, klikt u vervolgens gerelateerde alleen de FTP-service poorten (zowel controle en kanalen) wordt gebonden aan een ILB-adres, terwijl het HTTP/HTTPS-verkeer op het openbare VIP-adres blijft.
-* *dnsSuffix*:  Deze parameter bepaalt de standaard-hoofddomein dat wordt toegewezen aan de as-omgeving.  In de openbare variatie van Azure App Service biedt het hoofddomein standaard voor alle web-apps is *azurewebsites.net*.  Maar omdat een ILB as-omgeving intern voor het virtuele netwerk van een klant is, het niet verstandig om te gebruiken van de openbare service standaard-hoofddomein.  Een ILB as-omgeving moet in plaats daarvan een standaard-hoofddomein die zinvol voor gebruik binnen een bedrijf intern virtueel netwerk hebben.  Bijvoorbeeld, een hypothetische Contoso Corporation gebruiken een standaard-hoofddomein van *interne contoso.com* voor apps die zijn bedoeld om alleen worden omgezet en toegankelijk is in het virtuele netwerk van Contoso. 
-* *ipSslAddressCount*:  Deze parameter is automatisch standaard ingesteld op een waarde van 0 in de *azuredeploy.json* omdat ILB as-omgevingen hebben slechts één ILB-adres.  Er zijn geen expliciete IP-SSL-adressen voor een ILB as-omgeving, en kan daarom de IP-SSL-adresgroep voor een ILB as-omgeving moet worden ingesteld op nul, anders een inrichting fout wordt uitgevoerd. 
+* *internalLoadBalancingMode*:  In de meeste gevallen stelt u deze in op 3. Dit betekent dat zowel HTTP/HTTPS-verkeer op poort 80/443 en de besturings-en gegevens kanaal poorten die worden geluisterd door de FTP-service op de ASE, gebonden zijn aan een ILB toegewezen virtueel netwerk intern adres.  Als deze eigenschap wordt ingesteld op 2, worden alleen de aan de FTP-service gerelateerde poorten (besturings-en gegevens kanalen) gebonden aan een ILB-adres, terwijl het HTTP/HTTPS-verkeer op de open bare VIP blijft.
+* *dnsSuffix*:  Deze para meter definieert het standaard hoofd domein dat wordt toegewezen aan de ASE.  In de open bare variatie van Azure App Service is het standaard hoofd domein voor alle web-apps *azurewebsites.net*.  Omdat een ILB-ASE echter intern is voor het virtuele netwerk van een klant, is het niet zinvol om het standaard hoofd domein van de open bare service te gebruiken.  In plaats daarvan moet een ILB-ASE een standaard hoofd domein hebben dat zinvol is voor gebruik binnen het interne virtuele netwerk van het bedrijf.  Zo kan een hypothetische contoso-onderneming bijvoorbeeld gebruikmaken van een standaard hoofd domein van *Internal-contoso.com* voor apps die alleen bedoeld zijn om te worden omgezet in het virtuele netwerk van contoso. 
+* *ipSslAddressCount*:  Deze para meter wordt automatisch standaard ingesteld op de waarde 0 in het bestand *azuredeploy. json* omdat ILB as slechts één ILB-adres heeft.  Er zijn geen expliciete IP-SSL-adressen voor een ILB-ASE en daarom moet de IP-SSL-adres groep voor een ILB ASE worden ingesteld op nul, anders treedt er een inrichtings fout op. 
 
-Zodra de *azuredeploy.parameters.json* bestand is ingevuld voor een ILB as-omgeving, de ILB as-omgeving kunnen vervolgens worden gemaakt met het volgende Powershell-codefragment.  Wijzigen van het bestand paden zodat deze overeenkomen met waar de Azure Resource Manager-sjabloonbestanden bevinden zich op uw computer.  Vergeet ook niet op te geven van uw eigen waarden voor de implementatienaam van Azure Resource Manager en de naam van de resourcegroep.
+Zodra het bestand *azuredeploy. para meters. json* is ingevuld voor een ILB-ASE, kan de ILB ASE worden gemaakt met behulp van het volgende Power shell-code fragment.  Wijzig de bestands paden zodat deze overeenkomen met de Azure Resource Manager sjabloon bestanden op de computer staan.  Vergeet ook niet om uw eigen waarden op te geven voor de naam van de Azure Resource Manager implementatie en de naam van de resource groep.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-Nadat de Azure Resource Manager sjabloon wordt ingediend duurt een paar uur voor de ILB as-omgeving moet worden gemaakt.  Nadat het maken is voltooid, wordt de ILB as-omgeving weergegeven in de UX-portal in de lijst met App Service-omgevingen voor het abonnement waarmee de implementatie is geactiveerd.
+Nadat de Azure Resource Manager-sjabloon is ingediend, duurt het enkele uren voordat de ILB ASE is gemaakt.  Zodra het maken is voltooid, wordt de ILB ASE weer gegeven in de portal UX in de lijst met App Service omgevingen voor het abonnement dat de implementatie heeft geactiveerd.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Uploaden en het 'Standaard' SSL-certificaat configureren
-Zodra de ILB as-omgeving is gemaakt, moet een SSL-certificaat worden gekoppeld aan de as-omgeving als de 'standaard' SSL-certificaat gebruiken voor het tot stand brengen van SSL-verbindingen met apps.  Verder met het voorbeeld hypothetische Contoso Corporation als van de as-omgeving standaard DNS-achtervoegsel is *interne contoso.com*, klikt u vervolgens een verbinding met *https://some-random-app.internal-contoso.com* een SSL-certificaat dat is vereist geldig voor * *.internal contoso.com*. 
+## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Het standaard SSL-certificaat uploaden en configureren
+Zodra de ILB-ASE is gemaakt, moet er een SSL-certificaat aan de ASE worden gekoppeld als het standaard SSL-certificaat gebruik voor het tot stand brengen van SSL-verbindingen met apps.  Als u doorgaat met het voor beeld van een hypothetische Contoso Corporation, als hetstandaard-DNS-achtervoegsel van *https://some-random-app.internal-contoso.com* de ASE Internal-contoso.com is, dan is een verbinding vereist voor een SSL-certificaat dat geldig is voor * *. Internal-contoso.com*. 
 
-Er zijn tal van manieren om een geldig SSL-certificaat met inbegrip van de interne CA's, aanschaffen van een certificaat van een externe gebruiker en het gebruik van een zelfondertekend certificaat verkrijgen.  De volgende certificaatkenmerken moeten juist zijn geconfigureerd, ongeacht wat de bron van het SSL-certificaat is:
+Er zijn verschillende manieren om een geldig SSL-certificaat met inbegrip van interne Ca's te verkrijgen, een certificaat van een externe verlener te kopen en een zelfondertekend certificaat te gebruiken.  De volgende certificaatkenmerken moeten juist zijn geconfigureerd, ongeacht wat de bron van het SSL-certificaat is:
 
-* *Onderwerp*:  Dit kenmerk moet worden ingesteld op * *.uw-root-domein-here.com*
-* *Alternatieve naam voor onderwerp*:  Dit kenmerk moet bevatten zowel * *.uw-root-domein-here.com*, en * *.Hier-root-domein-here.com*.  De reden voor de tweede vermelding is dat SSL-verbindingen met de SCM/Kudu-site die is gekoppeld aan elke app worden uitgevoerd met een adres van het formulier *your-app-name.scm.your-root-domain-here.com*.
+* *Onderwerp*:  Dit kenmerk moet worden ingesteld op * *. Your-Root-Domain-here.com*
+* *Alternatieve naam voor onderwerp*:  Dit kenmerk moet zowel * *. Your-Root-Domain-here.com*als * *. scm.Your-Root-Domain-here.com*bevatten.  De reden voor de tweede vermelding is dat SSL-verbindingen met de SCM/kudu-site die aan elke app zijn gekoppeld, worden gemaakt met behulp van een adres van de notatie *your-app-name.scm.Your-Root-Domain-here.com*.
 
-Met een geldig SSL-certificaat in voorraad, zijn twee aanvullende voorbereidende stappen nodig.  Het SSL-certificaat moet worden geconverteerd/opgeslagen als een pfx-bestand.  Houd er rekening mee dat het pfx-bestand moet alle tussenliggende opnemen en basiscertificaten en moet ook zijn beveiligd met een wachtwoord.
+Met een geldig SSL-certificaat zijn er twee extra voorbereidende stappen nodig.  Het SSL-certificaat moet worden geconverteerd/opgeslagen als een. pfx-bestand.  Houd er rekening mee dat het pfx-bestand alle tussenliggende en basis certificaten moet bevatten en moet worden beveiligd met een wacht woord.
 
-Het resulterende pfx-bestand moet worden geconverteerd naar een Base 64-tekenreeks omdat het SSL-certificaat worden geüpload met behulp van een Azure Resource Manager-sjabloon.  Omdat Azure Resource Manager-sjablonen tekstbestanden zijn, wordt het pfx-bestand moet worden geconverteerd naar een Base 64-tekenreeks, zodat deze opgenomen als een parameter van de sjabloon worden kan.
+Vervolgens moet het bestand resultd. pfx worden geconverteerd naar een base64-teken reeks, omdat het SSL-certificaat wordt geüpload met behulp van een Azure Resource Manager sjabloon.  Omdat Azure Resource Manager sjablonen tekst bestanden zijn, moet het pfx-bestand worden geconverteerd naar een base64-teken reeks zodat het kan worden opgenomen als een para meter van de sjabloon.
 
-Het onderstaande codefragment Powershell toont een voorbeeld van een zelfondertekend certificaat genereren en exporteren van het certificaat als een pfx-bestand converteren van het pfx-bestand in een met base64 gecodeerde tekenreeks en vervolgens opslaan van de met base64 gecodeerde tekenreeks in een afzonderlijk bestand.  De Powershell-code voor base64-codering is gebaseerd op de [Powershell-Scripts Blog][examplebase64encoding].
+In het onderstaande Power shell-code fragment ziet u een voor beeld van het genereren van een zelfondertekend certificaat, het exporteren van het certificaat als een. pfx-bestand, het converteren van het pfx-bestand naar een base64-gecodeerde teken reeks en het opslaan van de base64-gecodeerde teken reeks in een afzonderlijk bestand.  De Power shell-code voor Base64 code ring is aangepast op basis van de [blog Power shell-scripts][examplebase64encoding].
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -83,18 +82,18 @@ Het onderstaande codefragment Powershell toont een voorbeeld van een zelfonderte
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-Zodra het SSL-certificaat is is gegenereerd en geconverteerd naar een met base64 gecodeerde tekenreeks, het voorbeeld van Azure Resource Manager-sjabloon op GitHub voor [configureren van het standaard SSL-certificaat] [ configuringDefaultSSLCertificate] kan worden gebruikt.
+Zodra het SSL-certificaat is gegenereerd en geconverteerd naar een base64-gecodeerde teken reeks, kan het voor beeld Azure Resource Manager sjabloon op GitHub voor [het configureren van het standaard SSL-certificaat][configuringDefaultSSLCertificate] worden gebruikt.
 
-De parameters in de *azuredeploy.parameters.json* bestand worden hieronder vermeld:
+De para meters in het bestand *azuredeploy. para meters. json* worden hieronder weer gegeven:
 
-* *appServiceEnvironmentName*:  De naam van de ILB as-omgeving wordt geconfigureerd.
-* *existingAseLocation*:  De tekenreeks met de Azure-regio waar de ILB as-omgeving is geïmplementeerd.  Bijvoorbeeld:  'Zuid-centraal VS'.
-* *pfxBlobString*:  De based64 gecodeerd tekenreeksweergave van het pfx-bestand.  Met behulp van het bovenstaande codefragment, zou u de tekenreeks in 'exportedcert.pfx.b64' kopiëren en plak deze in als de waarde van de *pfxBlobString* kenmerk.
-* *wachtwoord*:  Het wachtwoord dat wordt gebruikt voor het beveiligen van het pfx-bestand.
-* *certificateThumbprint*:  Vingerafdruk van het certificaat.  Als u deze waarde wordt opgehaald vanuit Powershell (bijvoorbeeld *$certificate. Vingerafdruk* uit het vorige codefragment), kunt u de waarde-is.  Echter als u de waarde in het dialoogvenster Windows-certificaat kopieert, vergeet niet het verwijderen van de overbodige spaties.  De *certificateThumbprint* moet er ongeveer zo uitzien:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName*:  Een beschrijvende tekenreeks-id van uw eigen kiezen die aan identiteit het certificaat wordt gebruikt.  De naam wordt gebruikt als onderdeel van de unieke id van de Azure Resource Manager voor de *Microsoft.Web/certificates* entiteit voor het SSL-certificaat.  De naam van de **moet** eindigen met het volgende achtervoegsel: \_yourASENameHere_InternalLoadBalancingASE.  Dit achtervoegsel wordt gebruikt door de portal als een indicator dat het certificaat wordt gebruikt voor het beveiligen van een ASE met ILB ingeschakeld.
+* *appServiceEnvironmentName*:  De naam van de ILB-ASE die wordt geconfigureerd.
+* *existingAseLocation*:  Tekst teken reeks met de Azure-regio waar de ILB ASE is geïmplementeerd.  Bijvoorbeeld:  "Zuid-Centraal VS".
+* *pfxBlobString*:  De versleutelde teken reeks weergave based64 van het pfx-bestand.  Met behulp van het code fragment dat eerder is weer gegeven, kopieert u de teken reeks in "exportedcert. pfx. b64" en plakt u deze in als de waarde van het kenmerk *pfxBlobString* .
+* *wacht woord*:  Het wacht woord dat wordt gebruikt om het pfx-bestand te beveiligen.
+* *certificateThumbprint*:  De vinger afdruk van het certificaat.  Als u deze waarde ophaalt uit Power shell (bijvoorbeeld *$Certificate. Vinger afdruk* van het vorige code fragment), kunt u de waarde als-is.  Als u de waarde echter uit het dialoog venster Windows-certificaat kopieert, vergeet dan niet de overbodige spaties te verwijderen.  De *certificateThumbprint* moet er ongeveer als volgt uitzien:  AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificaatpad*:  Een beschrijvende teken reeks-id van uw eigen keuze voor het identificeren van het certificaat.  De naam wordt gebruikt als onderdeel van de unieke Azure Resource Manager-id voor de entiteit *micro soft. Web/certificates* die het SSL-certificaat vertegenwoordigt.  De naam **moet** eindigen op het volgende achtervoegsel: \_yourASENameHere_InternalLoadBalancingASE.  Dit achtervoegsel wordt door de portal gebruikt als een indicator waarmee het certificaat wordt gebruikt voor het beveiligen van een ILB-ASE.
 
-Een verkorte voorbeeld van *azuredeploy.parameters.json* wordt hieronder weergegeven:
+Hieronder ziet u een afgekort voor beeld van *azuredeploy. para meters. json* :
 
     {
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
@@ -121,21 +120,21 @@ Een verkorte voorbeeld van *azuredeploy.parameters.json* wordt hieronder weergeg
          }
     }
 
-Zodra de *azuredeploy.parameters.json* bestand zijn ingevuld, wordt het standaard SSL-certificaat kan worden geconfigureerd met behulp van de volgende Powershell-codefragment.  Wijzigen van het bestand paden zodat deze overeenkomen met waar de Azure Resource Manager-sjabloonbestanden bevinden zich op uw computer.  Vergeet ook niet op te geven van uw eigen waarden voor de implementatienaam van Azure Resource Manager en de naam van de resourcegroep.
+Zodra het bestand *azuredeploy. para meters. json* is ingevuld, kan het standaard SSL-certificaat worden geconfigureerd met behulp van het volgende Power shell-code fragment.  Wijzig de bestands paden zodat deze overeenkomen met de Azure Resource Manager sjabloon bestanden op de computer staan.  Vergeet ook niet om uw eigen waarden op te geven voor de naam van de Azure Resource Manager implementatie en de naam van de resource groep.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-Nadat de Azure Resource Manager sjabloon wordt ingediend duurt het ongeveer 40 minuten per ASE front-end de wijziging toepassen.  Bijvoorbeeld, met een standaard aangepast as-omgeving met behulp van twee front-ends, duurt de sjabloon ongeveer één uur en 20 minuten om te voltooien.  Terwijl de sjabloon wordt uitgevoerd kunnen de as-omgeving worden niet geschaald.  
+Nadat de Azure Resource Manager-sjabloon is ingediend, duurt het ongeveer 40 minuten per ASE front-end om de wijziging toe te passen.  Bijvoorbeeld, met een standaard ASE met twee front-ends, duurt de sjabloon ongeveer één uur en twintig minuten om te volt ooien.  Terwijl de sjabloon wordt uitgevoerd, kan de ASE niet worden geschaald.  
 
-Nadat de sjabloon is voltooid, apps van de ILB as-omgeving is toegankelijk via HTTPS en de verbindingen worden beveiligd met behulp van het standaard SSL-certificaat.  Het standaard SSL-certificaat wordt gebruikt wanneer de apps op de ILB as-omgeving worden aangepakt met behulp van een combinatie van naam van de toepassing, plus de standaardhostnaam.  Bijvoorbeeld *https://mycustomapp.internal-contoso.com* zou gebruiken de standaard-SSL-certificaat voor * *.internal contoso.com*.
+Zodra de sjabloon is voltooid, zijn apps op de ILB ASE toegankelijk via HTTPS en worden de verbindingen beveiligd met het standaard SSL-certificaat.  Het standaard SSL-certificaat wordt gebruikt wanneer apps op de ILB-ASE worden geadresseerd met behulp van een combi natie van de toepassings naam plus de standaard-hostnaam.  Gebruik bijvoorbeeld *https://mycustomapp.internal-contoso.com* het standaard SSL-certificaat voor * *. Internal-contoso.com*.
 
-Echter, net als bij apps die worden uitgevoerd op de openbare multitenant-service, ontwikkelaars kunnen ook zo configureren dat aangepaste hostnamen voor afzonderlijke apps, en configureer vervolgens unieke SNI SSL-certificaatbindingen voor afzonderlijke apps.  
+Maar net als bij apps die worden uitgevoerd op de open bare multi tenant-service kunnen ontwikkel aars ook aangepaste hostnamen configureren voor afzonderlijke apps en vervolgens unieke SNI SSL certificaat bindingen configureren voor afzonderlijke apps.  
 
 ## <a name="getting-started"></a>Aan de slag
-Als u wilt aan de slag met App Service-omgevingen, Zie [Inleiding tot App Service-omgeving](app-service-app-service-environment-intro.md)
+Zie [Inleiding tot app service Environment](app-service-app-service-environment-intro.md) om aan de slag te gaan met app service omgevingen
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

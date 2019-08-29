@@ -1,6 +1,6 @@
 ---
-title: Azure API Management-paginabesturingselementen | Microsoft Docs
-description: Meer informatie over de paginabesturingselementen beschikbaar voor gebruik in sjablonen voor ontwikkelaarsportals in Azure API Management.
+title: Besturings elementen voor Azure API Management-pagina | Microsoft Docs
+description: Meer informatie over de pagina besturings elementen die beschikbaar zijn voor gebruik in ontwikkelaars Portal sjablonen in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,47 +9,46 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b720d64f5b0a5f66375083b7854658aa754db150
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656928"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072288"
 ---
-# <a name="azure-api-management-page-controls"></a>Azure API Management-pagina controles
-Azure API Management levert de volgende besturingselementen voor gebruik in de developer portal-sjablonen.  
+# <a name="azure-api-management-page-controls"></a>Besturings elementen van Azure API Management-pagina
+Azure API Management biedt de volgende besturings elementen voor gebruik in de sjablonen voor de ontwikkelaars Portal.  
   
-Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie in de sjabloon van developer-portal. Sommige besturingselementen, zoals de [acties voor app](#app-actions) toe, parameters hebben, zoals wordt weergegeven in het volgende voorbeeld:  
+Als u een besturings element wilt gebruiken, plaatst u het op de gewenste locatie in de sjabloon voor de ontwikkelaars Portal. Sommige besturings elementen, zoals het besturings element voor [app-acties](#app-actions) , hebben para meters, zoals wordt weer gegeven in het volgende voor beeld:  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
- De waarden voor de parameters worden doorgegeven als onderdeel van het gegevensmodel voor de sjabloon. In de meeste gevallen kunt u gewoon plakken in het opgegeven voorbeeld voor elk besturingselement voor het correct te laten werken. Voor meer informatie over de parameterwaarden ziet u de sectie voor het model van gegevens voor elke sjabloon waarin een besturingselement kan worden gebruikt.  
+ De waarden voor de para meters worden door gegeven als onderdeel van het gegevens model voor de sjabloon. In de meeste gevallen kunt u in het voor beeld van het besturings element gewoon plakken. Meer informatie over de parameter waarden vindt u in de sectie gegevens model voor elke sjabloon waarin een besturings element mag worden gebruikt.  
   
- Zie voor meer informatie over het werken met sjablonen [over het aanpassen van de API Management-ontwikkelaarsportal met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="developer-portal-template-page-controls"></a>Developer portal sjabloon paginabesturingselementen  
+## <a name="developer-portal-template-page-controls"></a>Pagina besturings elementen voor ontwikkelaars Portal-sjabloon  
   
--   [App-acties](#app-actions)  
+-   [app-acties](#app-actions)  
 -   [basic-signin](#basic-signin)  
 -   [paging-control](#paging-control)  
 -   [Providers](#providers)  
--   [search-control](#search-control)  
--   [sign-up](#sign-up)  
--   [abonnement-knop](#subscribe-button)  
--   [subscription-cancel](#subscription-cancel)  
+-   [besturings element zoeken](#search-control)  
+-   [registratie](#sign-up)  
+-   [abonneren: knop](#subscribe-button)  
+-   [abonnement-annuleren](#subscription-cancel)  
   
-##  <a name="app-actions"></a> App-acties  
- De `app-actions` controle biedt een gebruikersinterface voor interactie met toepassingen op de gebruikersprofielpagina in de portal voor ontwikkelaars.  
+##  <a name="app-actions"></a>app-acties  
+ Het `app-actions` besturings element biedt een gebruikers interface voor interactie met toepassingen op de pagina gebruikers profiel in de ontwikkelaars Portal.  
   
- ![App&#45;acties besturingselement](./media/api-management-page-controls/APIM-app-actions-control.png "APIM-acties voor app-beheer")  
+ ![besturings&#45;element voor app-acties](./media/api-management-page-controls/APIM-app-actions-control.png "APIM app-acties beheren")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -63,15 +62,15 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
 |---------------|-----------------|  
 |appId|De id van de toepassing.|  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `app-actions` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `app-actions` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
 -   [Toepassingen](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a> Basic-aanmelding  
- De `basic-signin` controle biedt een besturingselement voor het verzamelen van aanmelding bij gebruikersgegevens op de pagina aanmelden in de portal voor ontwikkelaars.  
+##  <a name="basic-signin"></a>basis-aanmelden  
+ Het `basic-signin` besturings element bevat een besturings element voor het verzamelen van informatie over gebruikers aanmelding op de aanmeldings pagina in de ontwikkelaars Portal.  
   
- ![Basic&#45;aanmelding besturingselement](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin besturingselement")  
+ ![basis&#45;besturings element voor aanmelden](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM Basic-besturings element voor aanmelden")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -82,15 +81,15 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
 ### <a name="parameters"></a>Parameters  
  Geen.  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `basic-signin` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `basic-signin` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
 -   [Aanmelden](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a> besturingselement voor paginering  
- De `paging-control` biedt wisselbestand-functionaliteit op developer portal-pagina's die een lijst met items weergeven.  
+##  <a name="paging-control"></a>paginering-besturings element  
+ De `paging-control` pagina biedt paginerings functionaliteit op pagina's voor de ontwikkelaars portal die een lijst met items weer geven.  
   
- ![besturingselement voor het wisselbestand](./media/api-management-page-controls/APIM-paging-control.png "APIM-besturingselement voor paginering")  
+ ![besturings element voor paginering](./media/api-management-page-controls/APIM-paging-control.png "Besturings element APIM")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -101,19 +100,19 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
 ### <a name="parameters"></a>Parameters  
  Geen.  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `paging-control` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `paging-control` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
 -   [API-lijst](api-management-api-templates.md#APIList)  
   
--   [Lijst met probleem](api-management-issue-templates.md#IssueList)  
+-   [Lijst met problemen](api-management-issue-templates.md#IssueList)  
   
--   [Lijst met producten](api-management-product-templates.md#ProductList)  
+-   [Product lijst](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a> Providers  
- De `providers` controle biedt een besturingselement voor de selectie van verificatieproviders op de pagina aanmelden in de portal voor ontwikkelaars.  
+##  <a name="providers"></a>hardwareproviders  
+ Het `providers` besturings element biedt een besturings element voor selectie van verificatie providers op de aanmeldings pagina in de ontwikkelaars Portal.  
   
- ![providers besturingselement](./media/api-management-page-controls/APIM-providers-control.png "APIM-providers beheren")  
+ ![besturings element providers](./media/api-management-page-controls/APIM-providers-control.png "Besturings element APIM providers")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -124,15 +123,15 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
 ### <a name="parameters"></a>Parameters  
  Geen.  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `providers` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `providers` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
 -   [Aanmelden](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a> besturingselement voor zoeken  
- De `search-control` biedt functionaliteit voor het zoeken op developer portal-pagina's die een lijst met items weergeven.  
+##  <a name="search-control"></a>besturings element zoeken  
+ De `search-control` biedt zoek functionaliteit op pagina's van de ontwikkelaars portal die een lijst met items weer geven.  
   
- ![besturingselement voor zoeken](./media/api-management-page-controls/APIM-search-control.png "APIM-besturingselement voor zoeken")  
+ ![besturings element voor zoeken](./media/api-management-page-controls/APIM-search-control.png "Besturings element voor APIM zoeken")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -143,17 +142,17 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
 ### <a name="parameters"></a>Parameters  
  Geen.  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `search-control` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `search-control` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
 -   [API-lijst](api-management-api-templates.md#APIList)  
   
--   [Lijst met producten](api-management-product-templates.md#ProductList)  
+-   [Product lijst](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a> Meld u aan  
- De `sign-up` controle biedt een besturingselement voor het verzamelen van informatie over gebruikersprofielen in de pagina voor het registreren in de portal voor ontwikkelaars.  
+##  <a name="sign-up"></a>registratie  
+ Het `sign-up` besturings element bevat een besturings element voor het verzamelen van informatie over gebruikers profielen op de registratie pagina in de ontwikkelaars Portal.  
   
- ![Meld u&#45;omhoog besturingselement](./media/api-management-page-controls/APIM-sign-up-control.png "aanmelding APIM-besturingselement")  
+ ![registratie&#45;beheer](./media/api-management-page-controls/APIM-sign-up-control.png "APIM-registratie beheer")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -164,15 +163,15 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
 ### <a name="parameters"></a>Parameters  
  Geen.  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `sign-up` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `sign-up` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
 -   [Aanmelden](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a> abonnement-knop  
- De `subscribe-button` biedt een besturingselement voor een gebruiker aan een product abonneren.  
+##  <a name="subscribe-button"></a>abonneren: knop  
+ De `subscribe-button` biedt een controle voor het abonneren van een gebruiker op een product.  
   
- ![abonneren&#45;besturingselement voor knop](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM abonneren knopbesturingselement")  
+ ![besturings&#45;element voor knop Abonneren](./media/api-management-page-controls/APIM-subscribe-button-control.png "Besturings element voor APIM-Abonneer knop")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -183,15 +182,15 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
 ### <a name="parameters"></a>Parameters  
  Geen.  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `subscribe-button` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `subscribe-button` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
--   [Product](api-management-product-templates.md#Product)  
+-   [Voortplant](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a> abonnement annuleren  
- De `subscription-cancel` controle biedt een besturingselement voor het annuleren van een abonnement op een product in de gebruikersprofielpagina in de portal voor ontwikkelaars.  
+##  <a name="subscription-cancel"></a>abonnement-annuleren  
+ Het `subscription-cancel` besturings element bevat een besturings element voor het annuleren van een abonnement op een product op de pagina gebruikers profiel in de ontwikkelaars Portal.  
   
- ![abonnement&#45;besturing annuleren](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM-abonnement annuleren besturingselement")  
+ ![besturings&#45;element voor annuleren van abonnement](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM-abonnement: beheer annuleren")  
   
 ### <a name="usage"></a>Gebruik  
   
@@ -205,13 +204,13 @@ Voor het gebruik van een besturingselement, plaatst u het in de gewenste locatie
   
 |Parameter|Description|  
 |---------------|-----------------|  
-|subscriptionId|De id van het abonnement te annuleren.|  
-|cancelUrl|Het abonnement wordt geannuleerd URL.|  
+|subscriptionId|De id van het abonnement dat moet worden geannuleerd.|  
+|cancelUrl|Het abonnement annuleert de URL.|  
   
-### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals  
- De `subscription-cancel` beheer kan worden gebruikt in de volgende sjablonen van de developer-portal:  
+### <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal  
+ Het `subscription-cancel` besturings element kan worden gebruikt in de volgende sjablonen voor de ontwikkelaars portal:  
   
--   [Product](api-management-product-templates.md#Product)
+-   [Voortplant](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het werken met sjablonen [over het aanpassen van de API Management-ontwikkelaarsportal met behulp van sjablonen](api-management-developer-portal-templates.md).
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.

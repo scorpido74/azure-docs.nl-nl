@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 52f6e7ebb1cbae14878b1897bd8c59c73dd0f493
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981030"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102208"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele machine met Windows SQL Server inrichten in de Azure Portal
 
@@ -37,21 +36,12 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende vooraf geconfigureerde installatie kopieën selecteren in de galerie met virtuele machines. De volgende stappen laten zien hoe u een van de SQL Server 2017-installatie kopieën kunt selecteren.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw account.
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven**te selecteren. 
+1. Typ `2017` in het zoekvak voor de SQL Server-installatie kopie op de tegel **virtuele SQL** -machines **en selecteer vervolgens gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016** uit de vervolg keuzelijst. 
 
-1. Klik in Azure Portal op **Een resource maken**. In de portal wordt het venster **Nieuw** geopend.
 
-1. Klik in het venster **Nieuw** op **Berekenen** en klik vervolgens op **Alles weergeven**.
-
-1. Typ in het zoekveld **SQL Server 2017** en druk op ENTER.
-
-1. Selecteer in de vervolg keuzelijst filter _Windows Server 2016_ voor het **besturings systeem** en selecteer _micro soft_ als de **Uitgever**. 
-
-     ![Het venster Nieuwe berekening](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
-
-1. Bekijk de beschikbare SQL Server-installatiekopieën. Elke installatiekopie correspondeert met een bepaalde SQL Server-versie en een bepaald besturingssysteem.
-
-1. Selecteer de installatie kopie **met de naam gratis SQL Server-licentie: SQL Server 2017-ontwikkelaar op Windows Server**2016.
+   ![SQL VM-installatie kopie selecteren](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
 
    > [!TIP]
    > De Developer-editie wordt in deze walkthrough gebruikt omdat het een volledig functionele, gratis versie van SQL Server voor ontwikkel tests is. U betaalt alleen voor de kosten van het uitvoeren van de virtuele machine. U kunt echter kiezen welke installatie kopieën u in deze walkthrough wilt gebruiken. Zie [SQL Server Windows virtual machines Overview](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)(Engelstalig) voor een beschrijving van de beschik bare installatie kopieën.
@@ -61,7 +51,6 @@ Wanneer u een SQL Server virtuele machine maakt, kunt u een van de verschillende
    >
    > Zie [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Prijsrichtlijnen voor SQL Server Azure VM's) voor meer informatie over deze opties.
 
-1. Controleer onder **Een implementatiemodel selecteren** of **Resource Manager** is geselecteerd. Resource Manager is het aanbevolen implementatiemodel voor nieuwe virtuele machines. 
 
 1. Selecteer **Maken**.
 

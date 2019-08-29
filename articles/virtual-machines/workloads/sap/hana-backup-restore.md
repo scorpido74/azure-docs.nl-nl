@@ -7,19 +7,18 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27f7a9b576263b97c251306c9817b85c31041739
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 705dfb0b62327d9675fe9bf3e5860b1396e2fab9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312230"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101311"
 ---
 # <a name="backup-and-restore"></a>Back-ups en herstellen
 
@@ -132,7 +131,7 @@ Het Linux-besturings systeem dat is geïnstalleerd op SAP HANA op Azure (grote e
 
 Het is uw verantwoordelijkheid om de SAP HANA HDB-client te installeren op de HANA grote instantie-eenheden tijdens de installatie van SAP HANA.
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>Stap 2: De/etc/ssh/ssh\_-configuratie wijzigen
+### <a name="step-2-change-the-etcsshssh_config"></a>Stap 2: De/etc/ssh/ssh\_-configuratie wijzigen
 
 Deze stap wordt beschreven in ' communicatie inschakelen met opslag ' in [micro soft snap shot tools for SAP Hana op Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf).
 
@@ -303,7 +302,7 @@ Gebruik het script `azure_hana_snapshot_details`om meer informatie over moment o
    * De grootte van het totale aantal moment opnamen in een volume
    * De volgende details in elke moment opname in dat volume: 
       - Naam van moment opname 
-      - Tijd maken 
+      - Aanmaaktijd 
       - Grootte van de moment opname
       - Frequentie van de moment opname
       - HANA-back-up-ID die is gekoppeld aan deze moment opname, indien van toepassing
@@ -333,7 +332,7 @@ Als u het script uitvoert met deze instelling, is het aantal moment opnamen, dat
 
 Als u een set met moment opnamen niet meer wilt onderhouden met het back-upvoorvoegsel **dailyhana** in de syntaxis voorbeelden, voert u het script uit met **0** als het Bewaar nummer. Alle moment opnamen die overeenkomen met dit label worden vervolgens verwijderd. Het verwijderen van alle moment opnamen kan invloed hebben op de mogelijkheden van de functionaliteit voor herstel na nood gevallen van HANA grote instanties.
 
-Een tweede optie voor het verwijderen van specifieke moment opnamen is het script `azure_hana_snapshot_delete`te gebruiken. Dit script is ontworpen om een moment opname of set met moment opnamen te verwijderen met behulp van de HANA-back-up-ID zoals gevonden in HANA Studio of via de naam van de moment opname zelf. Op dit moment is de back-upid alleen gekoppeld aan de moment opnamen die zijn gemaakt voor het **Hana** -momentopname type. Momentopname back-ups van het  type logboeken en **opstarten** voeren geen SAP Hana moment opname uit, dus er is geen back-upid voor deze moment opnamen. Als de naam van de moment opname wordt ingevoerd, zoekt deze naar alle moment opnamen op de verschillende volumes die overeenkomen met de opgegeven naam van de moment opname. 
+Een tweede optie voor het verwijderen van specifieke moment opnamen is het script `azure_hana_snapshot_delete`te gebruiken. Dit script is ontworpen om een moment opname of set met moment opnamen te verwijderen met behulp van de HANA-back-up-ID zoals gevonden in HANA Studio of via de naam van de moment opname zelf. Op dit moment is de back-upid alleen gekoppeld aan de moment opnamen die zijn gemaakt voor het **Hana** -momentopname type. Momentopname back-ups van het type logboeken en **opstarten** voeren geen SAP Hana moment opname uit, dus er is geen back-upid voor deze moment opnamen. Als de naam van de moment opname wordt ingevoerd, zoekt deze naar alle moment opnamen op de verschillende volumes die overeenkomen met de opgegeven naam van de moment opname. 
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 

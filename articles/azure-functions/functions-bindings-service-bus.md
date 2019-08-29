@@ -8,16 +8,15 @@ manager: gwallace
 keywords: Azure functions, functies, gebeurtenisverwerking, dynamische Computing, serverloze architectuur
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774701"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114381"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-bindingen voor Azure Functions
 
@@ -715,14 +714,19 @@ In C# en C#-script, kunt u de volgende parametertypen voor de Uitvoerbinding:
 * `out T paramName` - `T` geen JSON-geserialiseerd type kan zijn. Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt het bericht in functies gemaakt met een null-object.
 * `out string` -Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt in functies een bericht niet maken.
 * `out byte[]` -Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt in functies een bericht niet maken.
-* `out BrokeredMessage` -Als de waarde van parameter is null wanneer de functie wordt afgesloten, wordt in functies een bericht niet maken.
+* `out BrokeredMessage`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
+* `out Message`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x)
 * `ICollector<T>` of `IAsyncCollector<T>` : voor het maken van meerdere berichten. Een bericht wordt gemaakt bij het aanroepen van de `Add` methode.
 
-In het async-functies, gebruikt u de geretourneerde waarde of `IAsyncCollector` in plaats van een `out` parameter.
+Bij het werken C# met functies:
 
-Deze parameters zijn voor Azure Functions-versie 1.x; Gebruik voor 2.x [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) in plaats van `BrokeredMessage`.
+* Asynchrone functies hebben een retour waarde nodig `IAsyncCollector` of in plaats `out` van een para meter.
 
-In JavaScript, toegang krijgen tot de wachtrij of onderwerp met behulp van `context.bindings.<name from function.json>`. U kunt een tekenreeks, een bytematrix of een Javascript-object (gedeserialiseerd naar JSON) toewijzen aan `context.binding.<name>`.
+* Als u toegang wilt krijgen tot de sessie- [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) id, maakt u `sessionId` een binding met een type en gebruikt u de eigenschap.
+
+In JavaScript, toegang krijgen tot de wachtrij of onderwerp met behulp van `context.bindings.<name from function.json>`. U kunt een teken reeks, een byte matrix of een Java Script-object (gedeserialiseerd in JSON) toewijzen aan `context.binding.<name>`.
+
+Als u een bericht wilt verzenden naar een wachtrij met ingeschakelde sessiesC# in niet-talen, gebruikt u de [Azure service bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) in plaats van de ingebouwde uitvoer binding.
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
 

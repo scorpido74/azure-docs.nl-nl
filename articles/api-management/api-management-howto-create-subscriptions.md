@@ -1,6 +1,6 @@
 ---
-title: Maken van abonnementen in Azure API Management | Microsoft Docs
-description: Informatie over het maken van abonnementen in Azure API Management.
+title: Abonnementen maken in azure API Management | Microsoft Docs
+description: Meer informatie over het maken van abonnementen in azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -9,45 +9,44 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657604"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073527"
 ---
-# <a name="create-subscriptions-in-azure-api-management"></a>Maken van abonnementen in Azure API Management
+# <a name="create-subscriptions-in-azure-api-management"></a>Abonnementen maken in azure API Management
 
-Wanneer u API's via Azure API Management publiceert, is het eenvoudig en voor beveiligde toegang tot deze API's met behulp van abonnementssleutels. Clienttoepassingen die gebruikmaken van de gepubliceerde API's moeten moeten een geldig abonnement-sleutel opnemen in de HTTP-aanvragen wanneer ze deze API's aanroepen. Als u een abonnementssleutel voor toegang tot API's, is een abonnement vereist. Zie voor meer informatie over abonnementen [abonnementen in Azure API Management](api-management-subscriptions.md).
+Wanneer u Api's publiceert via Azure API Management, is het eenvoudig en gebruikelijk om de toegang tot die Api's te beveiligen met behulp van abonnements sleutels. Client toepassingen die de gepubliceerde Api's moeten gebruiken, moeten een geldige abonnements sleutel bevatten in HTTP-aanvragen wanneer ze aanroepen naar die Api's. Als u een abonnements sleutel voor toegang tot Api's wilt ophalen, is een abonnement vereist. Zie [abonnementen in Azure API Management](api-management-subscriptions.md)voor meer informatie over abonnementen.
 
-In dit artikel worden de stappen voor het maken van abonnementen in Azure portal.
+In dit artikel worden de stappen beschreven voor het maken van abonnementen in de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in dit artikel, zijn de vereisten als volgt uit:
+Als u de stappen in dit artikel wilt uitvoeren, zijn de volgende vereisten:
 
-+ [Maak een exemplaar van API Management](get-started-create-service-instance.md).
-+ Inzicht in [abonnementen in API Management](api-management-subscriptions.md).
++ [Maak een API Management-exemplaar](get-started-create-service-instance.md).
++ Meer informatie [over abonnementen in API Management](api-management-subscriptions.md).
 
-## <a name="create-a-new-subscription"></a>Maak een nieuw abonnement
+## <a name="create-a-new-subscription"></a>Een nieuw abonnement maken
 
 1. Selecteer **abonnementen** in het menu aan de linkerkant.
 2. Selecteer **abonnement toevoegen**.
-3. Geef een naam op van het abonnement en selecteert u het bereik.
-4. (Optioneel) Kies als het abonnement gekoppeld aan een gebruiker worden moet.
+3. Geef een naam op voor het abonnement en selecteer het bereik.
+4. Kies eventueel als het abonnement moet worden gekoppeld aan een gebruiker.
 5. Selecteer **Opslaan**.
 
 ![Flexibele abonnementen](./media/api-management-subscriptions/flexible-subscription.png)
 
-Nadat u het abonnement hebt gemaakt, vindt u twee API-sleutels voor toegang tot de API's. Een sleutel is primaire en secundaire is. 
+Nadat u het abonnement hebt gemaakt, worden er twee API-sleutels gegeven voor toegang tot de Api's. Een sleutel is primair en een is secundair. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer informatie over API Management:
+Meer informatie over API Management:
 
-+ Informatie over andere [concepten](api-management-terminology.md) in API Management.
-+ Volg onze [zelfstudies](import-and-publish.md) voor meer informatie over API Management.
-+ Controleer onze [pagina met veelgestelde vragen](api-management-faq.md) voor veelgestelde vragen.
++ Meer informatie over andere [concepten](api-management-terminology.md) in API management.
++ Volg onze [zelf studies](import-and-publish.md) voor meer informatie over API management.
++ Raadpleeg onze [pagina met veelgestelde](api-management-faq.md) vragen voor veelgestelde vragen.

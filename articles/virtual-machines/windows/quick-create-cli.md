@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: Een virtuele Windows-machine maken met Azure PowerShell | Microsoft Docs'
-description: In deze snelstart leert u hoe u Azure PowerShell gebruikt om een virtuele Windows-machine te maken
+title: 'Quick Start: een Windows-VM maken met behulp van Azure CLI | Microsoft Docs'
+description: In deze Quick Start leert u hoe u de Azure CLI gebruikt om een virtuele Windows-machine te maken
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d50c3cc59bffba1c9124c59bbd6ed197025dabc8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722999"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088844"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Quickstart: Een virtuele Windows-machine maken met de Azure CLI
 
@@ -33,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/bash](https://shell.azure.com/bash) te gaan. Selecteer **kopie** voor het kopiëren van de blokken van code, plak u deze in de Cloud Shell en druk op **Enter** uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/bash](https://shell.azure.com/bash) te gaan. Selecteer **kopiëren** om de blokken code te kopiëren, plak deze in het Cloud shell en druk op **Enter** om het programma uit te voeren.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -45,10 +44,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Virtuele machine maken
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt. In dit voorbeeld wordt *azureuser* voor de naam van een gebruiker met beheerdersrechten. 
+Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een VM met de naam *myVM* gemaakt. In dit voor beeld wordt *azureuser* gebruikt voor een gebruikers naam met beheerders rechten. 
 
-U moet de waarde voor `--admin-password` , mislukt de aanvraag. Wijzig deze in een wachtwoord dat voldoet aan de [wachtwoordvereisten voor virtuele Azure-machines](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-). De gebruikersnaam en het wachtwoord wordt later gebruikt, wanneer u verbinding met de virtuele machine maakt.
+U moet de waarde wijzigen voor `--admin-password` , anders mislukt de bewerking. Wijzig de waarde in een wacht woord dat [voldoet aan de wachtwoord](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)vereisten voor Azure-vm's. De gebruikers naam en het wacht woord worden later gebruikt wanneer u verbinding maakt met de virtuele machine.
 
 ```azurecli-interactive
 az vm create \

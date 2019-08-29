@@ -1,7 +1,7 @@
 ---
 title: Een app met meerdere containers maken in Web App for Containers - Azure App Service
-description: Informatie over het gebruik van meerdere containers op Azure met Docker Compose, WordPress en MySQL.
-keywords: Azure appservice, web-app, linux, docker compose, multicontainer, meerdere containers, web-app voor containers, meerdere containers, container, wordpress, azure db voor mysql, productiedatabase met containers
+description: Meer informatie over het gebruik van meerdere containers op Azure met docker-compositie, WordPress en MySQL.
+keywords: Azure app service, Web-app, Linux, docker, samen stellen, meerdere containers, multi-container, Web-app voor containers, meerdere containers, container, WordPress, Azure DB voor mysql, productie database met containers
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -10,16 +10,15 @@ editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: d1176d2d70dcd4de3e4287a1973de027c061f291
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b83edae698ed62deea189c979478c2170a034fc8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055550"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070868"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Zelfstudie: Een app met meerdere containers (preview) maken in Web App for Containers
 
@@ -39,7 +38,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelfstudie, moet u ervaring met [Docker Compose](https://docs.docker.com/compose/).
+Voor het volt ooien van deze zelf studie hebt u ervaring nodig met [docker opstellen](https://docs.docker.com/compose/).
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
@@ -47,7 +46,7 @@ Voor deze zelfstudie gebruikt u het samenstellingsbestand van [Docker](https://d
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 
-Zie voor ondersteunde configuratie-opties, [Docker Compose opties](configure-custom-container.md#docker-compose-options).
+Zie Opties voor docker- [samen stellen](configure-custom-container.md#docker-compose-options)voor ondersteunde configuratie opties.
 
 Maak een map voor de zelfstudie in de Cloud Shell en ga er vervolgens naartoe.
 
@@ -115,7 +114,7 @@ Wanneer het App Service-plan is gemaakt, toont Cloud Shell soortgelijke informat
 
 ## <a name="create-a-docker-compose-app"></a>Een Docker Compose-app maken
 
-Maak in Cloud Shell een [web-app](app-service-linux-intro.md) met meerdere containers in het `myAppServicePlan` App Service-plan met de opdracht [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vergeet niet om te vervangen  _\<app-naam >_ door een unieke naam.
+Maak in Cloud Shell een [web-app](app-service-linux-intro.md) met meerdere containers in het `myAppServicePlan` App Service-plan met de opdracht [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Vergeet niet om de  _\<app-naam >_ te vervangen door een unieke app-naam.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -154,7 +153,7 @@ Het wordt niet aanbevolen databasecontainers te gebruiken in een productieomgevi
 
 Maak een Azure Database for MySQL-server met de opdracht [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create).
 
-Vervang in de volgende opdracht, de naam van uw MySQL-server waarin u ziet de  _&lt;mysql-server-naam >_ tijdelijke aanduiding (geldige tekens zijn `a-z`, `0-9`, en `-`). Deze naam maakt deel uit van de hostnaam van de MySQL-server (`<mysql-server-name>.database.windows.net`) en moet globaal uniek zijn.
+Vervang in de volgende opdracht de naam van uw MySQL-server, waarbij u `0-9`de `-` `a-z`  _&lt;tijdelijke aanduiding mysql-server-name >_ (geldige tekens zijn, en). Deze naam maakt deel uit van de hostnaam van de MySQL-server (`<mysql-server-name>.database.windows.net`) en moet globaal uniek zijn.
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name>  --location "South Central US" --admin-user adminuser --admin-password My5up3rStr0ngPaSw0rd! --sku-name B_Gen4_1 --version 5.7
@@ -249,11 +248,11 @@ Wanneer de app-instelling is gemaakt, toont Cloud Shell soortgelijke informatie 
 ]
 ```
 
-Zie voor meer informatie over omgevingsvariabelen [omgevingsvariabelen configureren](configure-custom-container.md#configure-environment-variables).
+Zie [omgevings variabelen configureren](configure-custom-container.md#configure-environment-variables)voor meer informatie over omgevings variabelen.
 
 ### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>Een aangepaste installatiekopie gebruiken voor MySQL SSL en andere configuraties
 
-Standaard wordt SSL gebruikt in Azure Database for MySQL. Voor WordPress is aanvullende configuratie vereist voor het gebruik van SSL met MySQL. De WordPress-officiële installatiekopie' biedt geen de aanvullende configuratie, maar een [aangepaste installatiekopie](https://github.com/Azure-Samples/multicontainerwordpress) is voorbereid voor uw gemak. In de praktijk voegt u de gewenste wijzigingen toe aan uw eigen installatiekopie.
+Standaard wordt SSL gebruikt in Azure Database for MySQL. Voor WordPress is aanvullende configuratie vereist voor het gebruik van SSL met MySQL. De WordPress ' officiële installatie kopie ' biedt geen aanvullende configuratie, maar er is een [aangepaste installatie kopie](https://github.com/Azure-Samples/multicontainerwordpress) voor bereid voor uw gemak. In de praktijk voegt u de gewenste wijzigingen toe aan uw eigen installatiekopie.
 
 De aangepaste installatiekopie is gebaseerd op de 'officiële installatiekopie' van [WordPress van Docker-Hub](https://hub.docker.com/_/wordpress/). De volgende wijzigingen zijn aangebracht in deze aangepaste installatiekopie voor de Azure Database for MySQL:
 
@@ -285,7 +284,7 @@ Sla uw wijzigingen op en sluit nano af. Sla op met de opdracht `^O` en sluit af 
 
 ### <a name="update-app-with-new-configuration"></a>De app bijwerken met de nieuwe configuratie
 
-Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om te vervangen  _\<app-naam >_ met de naam van de web-app die u eerder hebt gemaakt.
+Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om de  _\<app-name >_ te vervangen door de naam van de web-app die u eerder hebt gemaakt.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -310,11 +309,11 @@ Blader naar de geïmplementeerde app in (`http://<app-name>.azurewebsites.net`).
 
 ## <a name="add-persistent-storage"></a>Permanente opslag toevoegen
 
-Uw app met meerdere containers wordt nu uitgevoerd in Web App for Containers. Als u WordPress echter nu installeert uw app later opnieuw start, ziet u dat uw WordPress-installatie is verdwenen. Dit gebeurt omdat de configuratie van Docker Compose momenteel naar een opslaglocatie in de container verwijst. De bestanden die zijn geïnstalleerd in de container, blijven niet behouden nadat de app opnieuw is gestart. In deze sectie gaat u [permanente opslag toevoegen](configure-custom-container.md#use-persistent-shared-storage) naar uw WordPress-container.
+Uw app met meerdere containers wordt nu uitgevoerd in Web App for Containers. Als u WordPress echter nu installeert uw app later opnieuw start, ziet u dat uw WordPress-installatie is verdwenen. Dit gebeurt omdat de configuratie van Docker Compose momenteel naar een opslaglocatie in de container verwijst. De bestanden die zijn geïnstalleerd in de container, blijven niet behouden nadat de app opnieuw is gestart. In deze sectie [voegt u permanente opslag](configure-custom-container.md#use-persistent-shared-storage) toe aan de WordPress-container.
 
 ### <a name="configure-environment-variables"></a>Omgevingsvariabelen configureren
 
-Als u wilt gebruiken voor permanente opslag, schakelt u deze instelling in App Service. Als u deze wijziging wilt aanbrengen, gebruikt u de opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. App-instellingen zijn hoofdlettergevoelig en door spaties gescheiden.
+Als u permanente opslag wilt gebruiken, schakelt u deze instelling in App Service. Als u deze wijziging wilt aanbrengen, gebruikt u de opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell. App-instellingen zijn hoofdlettergevoelig en door spaties gescheiden.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -361,7 +360,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>De app bijwerken met de nieuwe configuratie
 
-Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om te vervangen  _\<app-naam >_ door een unieke naam.
+Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om de  _\<app-naam >_ te vervangen door een unieke app-naam.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -445,7 +444,7 @@ Wanneer de app-instelling is gemaakt, toont Cloud Shell soortgelijke informatie 
 
 ### <a name="update-app-with-new-configuration"></a>De app bijwerken met de nieuwe configuratie
 
-Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om te vervangen  _\<app-naam >_ door een unieke naam.
+Configureer in Cloud Shell uw [web-app](app-service-linux-intro.md) met meerdere containers opnieuw met de opdracht [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Vergeet niet om de  _\<app-naam >_ te vervangen door een unieke app-naam.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -470,7 +469,7 @@ Voer de stappen uit en installeer WordPress.
 
 ### <a name="connect-wordpress-to-redis"></a>WordPress verbinden met Redis
 
-Aanmelden bij de WordPress-beheerder. Selecteer **Invoegtoepassingen** in het linkernavigatievenster en selecteer vervolgens **Geïnstalleerde invoegtoepassingen**.
+Meld u aan bij WordPress admin. Selecteer **Invoegtoepassingen** in het linkernavigatievenster en selecteer vervolgens **Geïnstalleerde invoegtoepassingen**.
 
 ![WordPress-invoegtoepassingen selecteren][2]
 
@@ -532,7 +531,7 @@ Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aa
 > [!div class="nextstepaction"]
 > [Zelfstudie: Aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
-Of Ga naar andere resources:
+U kunt ook andere resources bekijken:
 
 > [!div class="nextstepaction"]
 > [Aangepaste container configureren](configure-custom-container.md)

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900211"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099435"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -105,6 +105,8 @@ Dit zijn de limieten voor een definitie van een enkele logische app:
 
 ### <a name="integration-service-environment-ise"></a>Integration service Environment (ISE)
 
+Dit zijn de doorvoer limieten voor de Premium-SKU:
+
 | Name | Limiet | Opmerkingen |
 |------|-------|-------|
 | Uitvoerings limiet basis eenheid | Systeem-beperkt wanneer de capaciteit van de infra structuur 80% bereikt | Biedt ~ 4.000 actie-uitvoeringen per minuut, wat ~ 160.000.000 actie uitvoeringen per maand is | |
@@ -113,6 +115,9 @@ Dit zijn de limieten voor een definitie van een enkele logische app:
 ||||
 
 [Neem contact op met het Logic apps team](mailto://logicappsemail@microsoft.com) om aan uw vereisten te voldoen, om aan de slag te gaan met de normale verwerking, of om belasting tests uit te voeren.
+
+> [!NOTE]
+> De [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) heeft geen gepubliceerde limieten omdat deze SKU geen Sla (Service Level Agreement) of mogelijkheden heeft voor het omhoog schalen. Gebruik deze SKU alleen voor experimenteren, ontwikkelen en testen, niet voor productie-of prestatie testen.
 
 <a name="request-limits"></a>
 
@@ -181,10 +186,10 @@ Elk Azure-abonnement heeft deze limieten voor het integratie account:
 
 * Elke ISE, of [Developer of Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), is beperkt tot 5 totale integratie accounts:
 
-  | ISE SKU | Limiet |
-  |---------|-------|
-  | **Premium** | 5 totaal- [standaard](../logic-apps/logic-apps-pricing.md#integration-accounts) alleen, geen gratis of basis |
-  | **Developer** | 5 totaal-gratis (beperkt tot 1), standaard of beide, maar geen basis |
+  | ISE SKU | Limieten van integratie account |
+  |---------|----------------------------|
+  | **Premium** | 5 totaal- [standaard](../logic-apps/logic-apps-pricing.md#integration-accounts) accounts, met inbegrip van één standaard account gratis. Er zijn geen gratis of basis accounts toegestaan. |
+  | **Developer** | 5 totaal- [gratis](../logic-apps/logic-apps-pricing.md#integration-accounts) (beperkt tot 1 account) en [standaard](../logic-apps/logic-apps-pricing.md#integration-accounts) gecombineerd, of alle standaard accounts. Er zijn geen basis accounts toegestaan. Gebruik de [Developer-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) voor experimenteren, ontwikkelen en testen, maar niet voor productie-of prestatie testen. |
   |||
 
 Aanvullende kosten zijn van toepassing op integratie accounts die u toevoegt buiten de integratie accounts die zijn opgenomen in een ISE. Zie het [Logic apps-prijs model](../logic-apps/logic-apps-pricing.md#fixed-pricing)voor meer informatie over de prijzen en facturerings werkzaamheden voor ISEs. Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/)voor prijs tarieven.

@@ -1,53 +1,52 @@
 ---
-title: Duurzame functies met behulp van de Azure portal maken
-description: Informatie over het installeren van de extensie duurzame functies voor Azure Functions voor het ontwikkelen van de portal.
+title: Durable Functions maken met behulp van de Azure Portal
+description: Meer informatie over het installeren van de Durable Functions extensie voor Azure Functions voor portal ontwikkeling.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 4670dd37facf341e355d736a72b4d71f27237fda
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 520579334d88bbab8ac28df7e446879aa9736248
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612910"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098207"
 ---
-# <a name="create-durable-functions-using-the-azure-portal"></a>Duurzame functies met behulp van de Azure portal maken
+# <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions maken met behulp van de Azure Portal
 
-De [duurzame functies](durable-functions-overview.md) -extensie voor Azure Functions vindt u in het NuGet-pakket [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Deze uitbreiding moet worden geïnstalleerd in uw functie-app. In dit artikel laat zien hoe dit pakket installeren zodat u duurzame functies in Azure portal kunt ontwikkelen.
+De uitbrei ding voor de [Durable functions](durable-functions-overview.md) voor Azure functions is opgenomen in het NuGet-pakket [micro soft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Deze uitbrei ding moet worden geïnstalleerd in uw functie-app. In dit artikel wordt beschreven hoe u dit pakket installeert zodat u duurzame functies kunt ontwikkelen in de Azure Portal.
 
 > [!NOTE]
 > 
-> * Als u ontwikkelt duurzame functies in C#, kunt u overwegen in plaats daarvan [ontwikkeling in Visual Studio 2019](durable-functions-create-first-csharp.md).
-> * Als u duurzame functies in JavaScript ontwikkelt, moet u in plaats daarvan overwegen [Visual Studio Code ontwikkelen](./quickstart-js-vscode.md).
+> * Als u duurzame functies ontwikkelt in C#, moet u in plaats daarvan [Visual Studio 2019-ontwikkeling](durable-functions-create-first-csharp.md)overwegen.
+> * Als u duurzame functies ontwikkelt in Java script, moet u in plaats daarvan [Visual Studio code Development](./quickstart-js-vscode.md)overwegen.
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet een functie-app voor het hosten van de uitvoering van elke functie hebben. Een functie-app kunt u uw functies groeperen in een logische eenheid voor eenvoudiger beheer, implementeren en delen van resources. U kunt een .NET- of JavaScript-app maken.
+U moet een functie-app hebben om de uitvoering van een functie te hosten. Met een functie-app kunt u uw functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen. U kunt een .NET-of Java script-app maken.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Gemaakte functie-app maakt standaard gebruik van versie 2.x van de Azure Functions-runtime. De extensie duurzame functies werkt voor beide versies 1.x en 2.x van de Azure Functions-runtime in C#, en versie 2.x in JavaScript. Sjablonen zijn echter alleen beschikbaar wanneer die gericht is op versie 2.x van de runtime, ongeacht de gekozen taal.
+De functie-app die is gemaakt, maakt standaard gebruik van versie 2. x van de Azure Functions runtime. De uitbrei ding Durable Functions werkt op versie 1. x en 2. x van de Azure Functions runtime C#in en versie 2. x in Java script. Sjablonen zijn echter alleen beschikbaar bij het doel versie 2. x van de runtime, ongeacht de gekozen taal.
 
-## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Installeer het durable-functions npm-pakket (alleen voor JavaScript)
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Het NPM-pakket met duurzame functies installeren (alleen Java script)
 
-Als u JavaScript duurzame functies maakt, moet u voor het installeren van de [ `durable-functions` npm-pakket](https://www.npmjs.com/package/durable-functions).
+Als u Java script-Durable functions maakt, moet u het [ `durable-functions` NPM-pakket](https://www.npmjs.com/package/durable-functions)installeren.
 
-1. Selecteer uw functie-app-naam, gevolgd door **platformfuncties**, klikt u vervolgens **geavanceerde hulpmiddelen (Kudu)** .
+1. Selecteer de naam van uw functie-app, gevolgd door **platform functies**, en **Geavanceerde Hulpprogram ma's (kudu)** .
 
-   ![Functies van het platform functies kiezen Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   ![Functies platform functies kiezen kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
 
-2. Selecteer in de Kudu-console, **Foutopsporingsconsole** vervolgens **CMD**.
+2. Selecteer in de kudu-console **fout opsporing console** en vervolgens **cmd**.
 
-   ![Kudu-console voor foutopsporing](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Console voor fout opsporing kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. Directory-structuur van uw functie-app-bestand moet worden weergegeven. Navigeer naar de map `site/wwwroot`. Van daaruit, uploadt u een `package.json` bestand door te slepen en neer te zetten in het venster van de directory bestand. Een voorbeeld van een `package.json` lager is dan:
+3. De structuur van de bestands directory van de functie-app moet worden weer gegeven. Navigeer naar de map `site/wwwroot`. Van daaruit kunt u een `package.json` bestand uploaden door het te slepen en neer te zetten in het venster van de bestands directory. Hieronder ziet `package.json` u een voor beeld:
 
     ```json
     {
@@ -57,13 +56,13 @@ Als u JavaScript duurzame functies maakt, moet u voor het installeren van de [ `
     }
     ```
 
-   ![Kudu uploaden package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu upload package. json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. Zodra uw `package.json` is geüpload, worden uitgevoerd de `npm install` opdracht uit vanaf de Kudu-Console voor extern kan worden uitgevoerd.
+4. Nadat uw `package.json` is geüpload, voert u `npm install` de opdracht uit vanuit de kudu-console voor externe uitvoering.
 
-   ![Kudu uitvoeren npm-installatie](./media/durable-functions-create-portal/kudu-npm-install.png)
+   ![Kudu uitvoeren NPM installeren](./media/durable-functions-create-portal/kudu-npm-install.png)
 
-## <a name="create-an-orchestrator-function"></a>Een orchestrator-functie maken
+## <a name="create-an-orchestrator-function"></a>Een Orchestrator-functie maken
 
 1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
 
@@ -73,29 +72,29 @@ Als u JavaScript duurzame functies maakt, moet u voor het installeren van de [ `
 
     ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/durable-functions-create-portal/add-first-function.png)
 
-1. Typ in het zoekveld `durable` en kies vervolgens de **starter duurzame functies HTTP** sjabloon.
+1. Typ `durable` in het zoek veld en kies vervolgens de sjabloon **Durable functions http-starter** .
 
-1. Wanneer u hierom wordt gevraagd, selecteert u **installeren** voor het installeren van de extensie Azure DurableTask eventuele afhankelijkheden in de functie-app. U hoeft alleen de extensie voor een functie-app kunt installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Wanneer u hierom wordt gevraagd, selecteert u **installeren** om de Azure DurableTask-extensie voor alle afhankelijkheden in de functie-app te installeren. U hoeft de extensie slechts één keer te installeren voor een functie-app geven. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. Nadat de installatie is voltooid, noem de nieuwe functie `HttpStart` en kies **maken**. De gemaakte functie wordt gebruikt om de indeling start.
+1. Wanneer de installatie is voltooid, kunt u de nieuwe `HttpStart` functie een naam en kies **maken**. De functie die wordt gemaakt, wordt gebruikt om de indeling te starten.
 
-1. Een functie maken in de functie-app, ditmaal met behulp van de **duurzame functies** sjabloon. Naam voor de nieuwe functie voor orchestration `HelloSequence`.
+1. Maak een andere functie in de functie-app, dit keer door gebruik te maken van de **Durable functions Orchestrator** -sjabloon. Geef een naam op voor de `HelloSequence`nieuwe Orchestration-functie.
 
-1. Maken van een derde functie met de naam `Hello` met behulp van de **activiteit duurzame functies** sjabloon.
+1. Maak een derde functie met `Hello` de naam met behulp van de sjabloon **Durable functions activiteit** .
 
-## <a name="test-the-durable-function-orchestration"></a>De indeling duurzame functie testen
+## <a name="test-the-durable-function-orchestration"></a>De functie voor de integratie van duurzame functies testen
 
-1. Ga terug naar de **HttpStart** functie, kies **<> / functie-URL ophalen** en **kopie** de URL. U gebruikt deze URL om te beginnen de **HelloSequence** functie.
+1. Ga terug naar de functie **HttpStart** , kies **</> functie-URL ophalen** en **Kopieer** de URL. U gebruikt deze URL om de functie **HelloSequence** te starten.
 
-1. Een HTTP-hulpprogramma, zoals Postman of cURL gebruiken voor het verzenden van een POST-aanvraag naar de URL die u hebt gekopieerd. Het volgende voorbeeld wordt een cURL-opdracht die een POST-aanvraag naar de duurzame functie verzendt:
+1. Gebruik een HTTP-hulp programma zoals postman of krul om een POST-aanvraag te verzenden naar de URL die u hebt gekopieerd. Het volgende voor beeld is een krul opdracht waarmee een POST-aanvraag wordt verzonden naar de functie duurzame:
 
     ```bash
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    In dit voorbeeld `{your-function-app-name}` is het domein dat is de naam van uw functie-app. Het antwoordbericht bevat een set met URI-eindpunten die u gebruiken kunt om te controleren en beheren van de uitvoering van deze domeinnaam ziet als in het volgende voorbeeld eruit:
+    In dit voor beeld `{your-function-app-name}` is het domein de naam van de functie-app. Het antwoord bericht bevat een aantal URI-eind punten die u kunt gebruiken om de uitvoering te controleren en te beheren. dit ziet er als volgt uit:
 
     ```json
     {  
@@ -107,7 +106,7 @@ Als u JavaScript duurzame functies maakt, moet u voor het installeren van de [ `
     }
     ```
 
-1. Roep de `statusQueryGetUri` URI van het eindpunt en u ziet u de huidige status van de duurzame functie, er zoals in dit voorbeeld uitzien kan:
+1. Roep de `statusQueryGetUri` URI van het eind punt aan en u ziet de huidige status van de duurzame functie. deze kan er als volgt uitzien:
 
     ```json
         {
@@ -119,7 +118,7 @@ Als u JavaScript duurzame functies maakt, moet u voor het installeren van de [ `
         }
     ```
 
-1. Aanroepen blijven de `statusQueryGetUri` eindpunt totdat de status gewijzigd in **voltooid**, en ziet u een antwoord weergegeven zoals in het volgende voorbeeld:
+1. Ga door met `statusQueryGetUri` het aanroepen van het eind punt totdat de status is gewijzigd in **voltooid**en er een antwoord wordt weer geven, zoals in het volgende voor beeld:
 
     ```json
     {
@@ -135,7 +134,7 @@ Als u JavaScript duurzame functies maakt, moet u voor het installeren van de [ `
         }
     ```
 
-Uw eerste duurzame functie is nu actief en werkend in Azure.
+Uw eerste duurzame functie is nu actief en wordt uitgevoerd in Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 17ae6dc8d1d583e5223a64ee079731fa5d9dc63c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 03d67249ef1d74844a7e9019e90f6331ecfdf0c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902310"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102983"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Beheer van leads voor Dynamics 365 voor klant betrokkenheid configureren
 
@@ -97,7 +97,7 @@ Voer de volgende stappen uit om Azure Active Directory voor Dynamics 365 voor kl
 
     ![Machtigingen toevoegen](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Nadat u de stappen 1-13 op het Azure Portal hebt voltooid, gaat u naar het exemplaar van Dynamics 365 voor klant betrokkenheid door te navigeren naar https://tenant.crm.dynamics.com) de URL (bijvoorbeeld.
+14. Nadat u de stappen 1-13 op het Azure Portal hebt voltooid, gaat u naar het exemplaar van Dynamics 365 voor klant betrokkenheid door te navigeren naar `https://tenant.crm.dynamics.com`de URL (zoals).
 15. Toegangs instellingen door het tandwiel pictogram te selecteren en **Geavanceerde instellingen** op de bovenste navigatie balk.
 16. Klik eenmaal op de pagina instellingen op de bovenste navigatie balk en selecteer **beveiliging**.
 17. Selecteer op de pagina Beveiliging de optie **gebruikers**.  Selecteer op de pagina gebruikers de vervolg keuzelijst ' ingeschakelde gebruikers ' om over te scha kelen naar **toepassings gebruikers**.

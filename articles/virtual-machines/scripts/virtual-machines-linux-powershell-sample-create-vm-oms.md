@@ -1,6 +1,6 @@
 ---
-title: Voorbeeld van Azure PowerShell-Script - logboeken van Azure Monitor | Microsoft Docs
-description: Voorbeeld van Azure PowerShell-Script - logboeken van Azure Monitor
+title: Azure PowerShell script-voor beeld-Azure Monitor logboeken | Microsoft Docs
+description: Azure PowerShell script-voor beeld-Azure Monitor logboeken
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e05f146a45eebd257c0a7648573252d1784d21e3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 309418427da70eea6db40936477845698b5415fd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703355"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090995"
 ---
-# <a name="create-an-azure-monitor-vm-with-powershell"></a>Een Azure VM-Monitor maken met PowerShell
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>Een Azure Monitor-VM maken met Power shell
 
 Met dit script maakt u een virtuele Azure-machine, installeert u de Log Analytics-agent en schrijft u het systeem in bij een Log Analytics-werkruimte. Nadat het script is uitgevoerd, is de virtuele machine zichtbaar in de console.
 
@@ -51,7 +50,7 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Hiermee maakt u een subnetconfiguratie. Deze configuratie wordt gebruikt bij het maken van het virtueel netwerk. |
 | [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) | Hiermee maakt u een virtueel netwerk. |
 | [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres. |

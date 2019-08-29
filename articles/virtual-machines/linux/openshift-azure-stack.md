@@ -1,6 +1,6 @@
 ---
-title: Implementeren van OpenShift in Azure Stack | Microsoft Docs
-description: Implementeren van OpenShift in Azure Stack.
+title: Open Shift implementeren in Azure Stack | Microsoft Docs
+description: Open Shift implementeren in Azure Stack.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,32 +9,31 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: haroldw
-ms.openlocfilehash: 91b37753ae80596612eda9d3ccd34858691e35ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771546"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082599"
 ---
-# <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>OpenShift Containerplatform of OKD in Azure Stack implementeren
+# <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Open Shift container platform of OKD implementeren in Azure Stack
 
-OpenShift kan worden geïmplementeerd in Azure Stack. Er zijn enkele belangrijke verschillen tussen Azure en Azure Stack, zodat de implementatie wordt enigszins verschillen en mogelijkheden wordt ook enigszins verschillen.
+Open Shift kan worden geïmplementeerd in Azure Stack. Er zijn enkele belang rijke verschillen tussen Azure en Azure Stack zodat de implementatie enigszins verschilt en de mogelijkheden ook enigszins verschillen.
 
-De Azure-Cloud-Provider werkt niet op dit moment in Azure Stack. Daarom kunt u zich niet op de schijf koppelen voor permanente opslag in Azure Stack. In plaats daarvan kunt u andere opties voor opslag, zoals NFS, iSCSI, GlusterFS, enzovoort. U kunt als alternatief kunt CNS inschakelen en gebruiken van GlusterFS voor permanente opslag. Als CNS is ingeschakeld, wordt met extra opslagruimte voor het gebruik van GlusterFS drie extra knooppunten geïmplementeerd.
+Op dit moment werkt de Azure-Cloud provider niet in Azure Stack. Daarom kunt u geen schijf koppeling gebruiken voor permanente opslag in Azure Stack. In plaats daarvan kunt u andere opslag opties configureren, zoals NFS, iSCSI, GlusterFS, enzovoort. Als alternatief kunt u CNS inschakelen en GlusterFS gebruiken voor permanente opslag. Als CNS is ingeschakeld, worden er drie extra knoop punten geïmplementeerd met extra opslag voor GlusterFS gebruik.
 
-U kunt een van de verschillende methoden gebruiken OpenShift Container Platform of OKD in Azure Stack implementeren:
+U kunt een van de volgende methoden gebruiken om open Shift container platform of OKD te implementeren in Azure Stack:
 
-- U kunt handmatig implementeren van de onderdelen die nodig zijn Azure-infrastructuur en voer vervolgens de [documentatie voor OpenShift Container Platform](https://docs.openshift.com/container-platform) of [OKD documentatie](https://docs.okd.io).
-- U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-container-platform/) die vereenvoudigt de implementatie van het cluster OpenShift Container Platform.
-- U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-origin) die de implementatie van het cluster OKD vereenvoudigt.
+- U kunt de benodigde onderdelen van de Azure-infra structuur hand matig implementeren en vervolgens de documentatie of de [OKD-documentatie](https://docs.okd.io)van open [SHIFT container platform](https://docs.openshift.com/container-platform) volgen.
+- U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-container-platform/) gebruiken die de implementatie van het open Shift container platform-cluster vereenvoudigt.
+- U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-origin) gebruiken die de implementatie van het OKD-cluster vereenvoudigt.
 
-Als de Resource Manager-sjabloon gebruikt, selecteert u de juiste vertakking (azurestack-release-3.x). De sjablonen voor Azure werkt niet omdat de API-versies verschillen tussen Azure en Azure Stack zijn. De verwijzing naar de installatiekopie van de RHEL is momenteel vastgelegd als een variabele in het bestand azuredeploy.json en moet worden gewijzigd zodat deze overeenkomt met uw installatiekopie.
+Als u de Resource Manager-sjabloon gebruikt, selecteert u de juiste vertakking (azurestack-release-3. x). De sjablonen voor Azure werken niet omdat de API-versies verschillen van Azure en Azure Stack. De verwijzing naar de RHEL-afbeelding is momenteel vastgelegd als een variabele in het bestand azuredeploy. json en moet worden gewijzigd om overeen te komen met uw installatie kopie.
 
 ```json
 "imageReference": {
@@ -45,31 +44,31 @@ Als de Resource Manager-sjabloon gebruikt, selecteert u de juiste vertakking (az
 }
 ```
 
-Een Red Hat-abonnement is vereist voor alle opties. De Red Hat Enterprise Linux-exemplaar is tijdens de implementatie aan het Red Hat-abonnement is geregistreerd en die is gekoppeld aan de groeps-ID die de rechten voor OpenShift Container Platform bevat.
-Zorg ervoor dat u hebt een geldige gebruikersnaam, wachtwoord en groep-ID in Red Hat abonnement Manager (RHSM) U kunt ook kunt u een activeringscode, organisatie-ID en groep-ID.  U kunt deze informatie controleren door aan te melden bij https://access.redhat.com.
+Voor alle opties is een Red Hat-abonnement vereist. Tijdens de implementatie wordt het Red Hat Enterprise Linux-exemplaar geregistreerd bij het Red Hat-abonnement en gekoppeld aan de groeps-ID die de rechten voor open Shift container platform bevat.
+Zorg ervoor dat u een geldige gebruikers naam, wacht woord en groeps-ID voor Red Hat Subscription Manager (RHSM) hebt. U kunt ook een activerings sleutel, organisatie-ID en groeps-ID gebruiken.  U kunt deze informatie controleren door u aan te https://access.redhat.com melden bij.
 
-## <a name="azure-stack-prerequisites"></a>Vereisten voor Azure Stack
+## <a name="azure-stack-prerequisites"></a>Azure Stack vereisten
 
-Een RHEL-installatiekopie (OpenShift Container Platform) of CentOS-installatiekopie (OKD) moet worden toegevoegd aan uw Azure Stack-omgeving om een OpenShift-cluster te implementeren. Neem contact op met uw Azure Stack-beheerder om toe te voegen deze installatiekopieën. Instructies vindt u hier:
+Er moet een RHEL-installatie kopie (open Shift container platform) of CentOS-installatie kopie (OKD) worden toegevoegd aan uw Azure Stack omgeving om een open Shift-cluster te implementeren. Neem contact op met de beheerder van Azure Stack om deze installatie kopieën toe te voegen. Instructies vindt u hier:
 
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-marketplace-azure-items
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd
 
-## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>Implementeren met behulp van de OpenShift Container Platform of OKD Resource Manager-sjabloon
+## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>Implementeren met behulp van de open Shift container platform-of OKD Resource Manager-sjabloon
 
-Als u wilt implementeren met behulp van de Resource Manager-sjabloon, kunt u een parameterbestand gebruiken om op te geven van de invoerparameters. Voor het verder aanpassen van de implementatie, de GitHub-opslagplaats splitst en de juiste items wijzigen.
+Als u wilt implementeren met behulp van de Resource Manager-sjabloon, gebruikt u een parameter bestand voor het opgeven van de invoer parameters. Als u de implementatie verder wilt aanpassen, splitst u de GitHub-opslag plaats en wijzigt u de juiste items.
 
-Sommige algemene opties voor het aanpassen bevatten, maar niet beperkt tot:
+Enkele algemene aanpassings opties zijn, maar zijn niet beperkt tot:
 
-- Bastionhost VM-grootte (variabele in azuredeploy.json)
-- Naamconventies (variabelen in azuredeploy.json)
-- OpenShift-cluster-specifieke instellingen, worden gewijzigd via het hosts-bestand (deployOpenShift.sh)
-- Verwijzing naar afbeelding RHEL (variabele in azuredeploy.json)
+- Bastion VM-grootte (variabele in azuredeploy. json)
+- Naamgevings regels (variabelen in azuredeploy. json)
+- Details van open Shift-cluster, gewijzigd via een hosts-bestand (deployOpenShift.sh)
+- RHEL-afbeeldings verwijzing (variabele in azuredeploy. json)
 
-Voor de stappen voor het implementeren met behulp van de Azure CLI, volgt u de juiste sectie in de [OpenShift Container Platform](./openshift-container-platform.md) sectie of de [OKD](./openshift-okd.md) sectie.
+Voor de stappen voor de implementatie met behulp van de Azure CLI, volgt u de toepasselijke sectie in het gedeelte open [SHIFT container platform](./openshift-container-platform.md) of de sectie [OKD](./openshift-okd.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Taken na de implementatie](./openshift-post-deployment.md)
-- [OpenShift-implementatie in Azure oplossen](./openshift-troubleshooting.md)
+- [Problemen met openshift-implementatie in azure oplossen](./openshift-troubleshooting.md)

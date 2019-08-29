@@ -1,6 +1,6 @@
 ---
 title: Zelfstudie - Een virtuele Linux-machine met cloud-init aanpassen in Azure | Microsoft Docs
-description: In deze zelfstudie leert u hoe u cloud-init en Key Vault gebruiken voor het aanpassen van Linux-VM's de eerste keer die worden opgestart in Azure
+description: In deze zelf studie leert u hoe u Cloud-init en Key Vault kunt gebruiken om Linux-Vm's aan te passen wanneer ze voor het eerst in Azure worden opgestart
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d56aa1c9b86542df3c2a7154669856686823e1dd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7215a8f169a878b10663347cf9560d822c6aa7e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708606"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081769"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Zelfstudie - Cloud-init gebruiken voor het aanpassen van een virtuele Linux-machine in Azure bij de eerste keer dat die wordt opgestart
 
@@ -131,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Web-app testen
-Nu kunt u een webbrowser Open en voer *http:\/\/\<openbare IP-adres >* in de adresbalk. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De Node.js-app wordt weergegeven zoals in het volgende voorbeeld:
+U kunt nu een webbrowser openen en *http:\/\/\<publicIpAddress >* invoeren in de adres balk. Geef uw eigen openbare IP-adres op uit het creatieproces van de virtuele machine proces. De Node.js-app wordt weergegeven zoals in het volgende voorbeeld:
 
 ![Actieve NGINX-site weergeven](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -262,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>De beveiligde web-app testen
-Nu kunt u een webbrowser Open en voer *https:\/\/\<openbare IP-adres >* in de adresbalk. Geef uw eigen openbare IP-adres op zoals weergegeven in de uitvoer tijdens het maken van de vorige VM. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
+U kunt nu een webbrowser openen en *https:\/\/\<publicIpAddress >* invoeren in de adres balk. Geef uw eigen openbare IP-adres op zoals weergegeven in de uitvoer tijdens het maken van de vorige VM. Als u een zelfondertekend certificaat gebruikt, aanvaardt u de beveiligingswaarschuwing:
 
 ![Beveiligingswaarschuwing voor web browser accepteren](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

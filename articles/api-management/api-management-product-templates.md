@@ -1,6 +1,6 @@
 ---
-title: Productsjablonen in Azure API Management | Microsoft Docs
-description: Informatie over het aanpassen van de inhoud van de product-pagina's in de Azure API Management-portal voor ontwikkelaars.
+title: Product sjablonen in azure API Management | Microsoft Docs
+description: Meer informatie over het aanpassen van de inhoud van de product pagina's in de Azure API Management-ontwikkelaars Portal.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,34 +10,33 @@ ms.assetid: 49f9254c-4c5f-4ed4-9c8d-798f44e805ee
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 637d4e7bc75537d99538048700673192534613dc
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61088176"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073387"
 ---
-# <a name="product-templates-in-azure-api-management"></a>Productsjablonen in Azure API Management
+# <a name="product-templates-in-azure-api-management"></a>Product sjablonen in azure API Management
 
-Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud van ontwikkelaarsportalpagina's met behulp van een set van sjablonen die hun inhoud hebt geconfigureerd. Met behulp van [DotLiquid](http://dotliquidmarkup.org/) syntaxis en de editor van uw keuze, zoals [DotLiquid voor ontwerpers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [tekenreeks resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), en [pagina besturingselementen](api-management-page-controls.md), hebt u geweldige flexibiliteit voor het configureren van de inhoud van de pagina's naar eigen inzicht met behulp van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, [zoals DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), glyph- [resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
   
- De sjablonen in deze sectie kunnen u de inhoud van de product-pagina's in de ontwikkelaarsportal aanpassen.  
+ Met de sjablonen in deze sectie kunt u de inhoud van de product pagina's in de ontwikkelaars portal aanpassen.  
   
--   [Lijst met producten](#ProductList)  
+-   [Product lijst](#ProductList)  
   
--   [Product](#Product)  
+-   [Voortplant](#Product)  
   
 > [!NOTE]
->  Standaard-voorbeeldsjablonen zijn opgenomen in de volgende documentatie, maar kunnen worden gewijzigd vanwege de continue verbeteringen. U kunt de live standaardsjablonen weergeven in de portal voor ontwikkelaars door te navigeren naar de gewenste afzonderlijke sjablonen. Zie voor meer informatie over het werken met sjablonen [over het aanpassen van de API Management-ontwikkelaarsportal met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Voor beelden van standaard sjablonen zijn opgenomen in de volgende documentatie, maar zijn onderhevig aan wijzigingen als gevolg van voortdurende verbeteringen. U kunt de Live standaard sjablonen in de ontwikkelaars portal weer geven door te navigeren naar de gewenste afzonderlijke sjablonen. Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a> Lijst met producten  
- De **lijst met producten** sjabloon kunt u de hoofdtekst van de pagina van de lijst met producten in de ontwikkelaarsportal aanpassen.  
+##  <a name="ProductList"></a>Product lijst  
+ Met de sjabloon **producten lijst** kunt u de hoofd tekst van de product lijst pagina aanpassen in de ontwikkelaars Portal.  
   
  ![Lijst met producten](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
@@ -70,21 +69,21 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- De `Product list` sjabloon mogelijk gebruikt u de volgende [pagina besturingselementen](api-management-page-controls.md).  
+ De `Product list` sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
--   [search-control](api-management-page-controls.md#search-control)  
+-   [besturings element zoeken](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
-|Paging|[Voor het wisselbestand](api-management-template-data-model-reference.md#Paging) entiteit.|De informatie paginering voor de verzameling producten.|  
-|Filtering|[Filteren](api-management-template-data-model-reference.md#Filtering) entiteit.|De filters gebruiken om gegevens voor de pagina van de lijst met producten.|  
-|Products|Verzameling van [Product](api-management-template-data-model-reference.md#Product) entiteiten.|De producten die zichtbaar is voor de huidige gebruiker.|  
+|Zoekresultaten oproepen|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling producten.|  
+|Filteren|[Filter](api-management-template-data-model-reference.md#Filtering) entiteit.|De filter gegevens voor de lijst pagina met producten.|  
+|Producten|Verzameling van [product](api-management-template-data-model-reference.md#Product) entiteiten.|De producten die zichtbaar zijn voor de huidige gebruiker.|  
   
-### <a name="sample-template-data"></a>Voorbeeldgegevens voor de sjabloon  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -122,10 +121,10 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 }  
 ```  
   
-##  <a name="Product"></a> Product  
- De **Product** sjabloon kunt u de hoofdtekst van de productpagina in de ontwikkelaarsportal aanpassen.  
+##  <a name="Product"></a>Voortplant  
+ Met de **product** sjabloon kunt u de hoofd tekst van de product pagina aanpassen in de ontwikkelaars Portal.  
   
- ![Developer portal productpagina](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![Product pagina voor ontwikkelaars Portal](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>Standaardsjabloon  
   
@@ -197,27 +196,27 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- De `Product list` sjabloon mogelijk gebruikt u de volgende [pagina besturingselementen](api-management-page-controls.md).  
+ De `Product list` sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
   
--   [abonnement-knop](api-management-page-controls.md#subscribe-button)  
+-   [abonneren: knop](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
-|Product|[Product](api-management-template-data-model-reference.md#Product)|Het opgegeven product.|  
-|IsDeveloperSubscribed|booleaans|Of de huidige gebruiker is geabonneerd op dit product.|  
-|SubscriptionState|getal|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> -   `0 - suspended` : het abonnement is geblokkeerd en API's van het product kan niet worden aangeroepen door de abonnee.<br />-   `1 - active` : het abonnement actief is.<br />-   `2 - expired` : het abonnement is bereikt de vervaldatum en is gedeactiveerd.<br />-   `3 - submitted` – de Abonnementaanvraag is gemaakt door de ontwikkelaar, maar is nog niet is goedgekeurd of afgewezen.<br />-   `4 - rejected` – de Abonnementaanvraag is afgewezen door een beheerder.<br />-   `5 - cancelled` : het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
-|Limits|matrix|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
-|DelegatedSubscriptionEnabled|booleaans|Of [delegering](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) is ingeschakeld voor dit abonnement.|  
-|DelegatedSubscriptionUrl|tekenreeks|Als delegering is ingeschakeld, de URL van de gedelegeerde abonnement.|  
-|IsAgreed|booleaans|Als het product termen, zijn ongeacht of de huidige gebruiker heeft ingestemd met de voorwaarden.|  
-|Subscriptions|Verzameling van [samenvatting van abonnement](api-management-template-data-model-reference.md#SubscriptionSummary) entiteiten.|De abonnementen aan het product.|  
-|Apis|Verzameling van [API](api-management-template-data-model-reference.md#API) entiteiten.|De API's in dit product.|  
-|CannotAddBecauseSubscriptionNumberLimitReached|booleaans|Of de huidige gebruiker is die in aanmerking komen om u te abonneren op dit product met betrekking tot de voor uw abonnement.|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|booleaans|Of de huidige gebruiker is die in aanmerking komen om u te abonneren op dit product met betrekking tot meerdere abonnementen zijn of niet wordt toegestaan.|  
+|Product|[Voortplant](api-management-template-data-model-reference.md#Product)|Het opgegeven product.|  
+|IsDeveloperSubscribed|boolean|Hiermee wordt aangegeven of de huidige gebruiker is geabonneerd op dit product.|  
+|SubscriptionState|nummer|De status van het abonnement. Mogelijke statussen zijn:<br /><br /> -   `0 - suspended`: het abonnement is geblokkeerd en de abonnee kan geen Api's van het product aanroepen.<br />-   `1 - active`: het abonnement is actief.<br />-   `2 - expired`-het abonnement heeft de verval datum bereikt en is gedeactiveerd.<br />-   `3 - submitted`: de abonnements aanvraag is ingediend door de ontwikkelaar, maar is nog niet goedgekeurd of afgekeurd.<br />-   `4 - rejected`-de abonnements aanvraag is geweigerd door een beheerder.<br />-   `5 - cancelled`-het abonnement is geannuleerd door de ontwikkelaar of beheerder.|  
+|Limieten|array|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
+|DelegatedSubscriptionEnabled|boolean|Of [](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) delegering is ingeschakeld voor dit abonnement.|  
+|DelegatedSubscriptionUrl|string|Als delegering is ingeschakeld, wordt de URL van het overgedragen abonnement.|  
+|IsAgreed|boolean|Als het product voor waarden heeft, of de huidige gebruiker de voor waarden heeft geaccepteerd.|  
+|Abonnementen|Verzameling van overzichts entiteiten van [abonnementen](api-management-template-data-model-reference.md#SubscriptionSummary) .|De abonnementen op het product.|  
+|APIs|Verzameling van [API](api-management-template-data-model-reference.md#API) -entiteiten.|De Api's in dit product.|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|Hiermee wordt aangegeven of de huidige gebruiker in aanmerking komt voor een abonnement op dit product met betrekking tot de limiet van het abonnement.|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|Hiermee wordt aangegeven of de huidige gebruiker in aanmerking komt voor het abonneren op dit product met betrekking tot het toestaan van meerdere abonnementen.|  
   
-### <a name="sample-template-data"></a>Voorbeeldgegevens voor de sjabloon  
+### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
 ```json  
 {  
@@ -262,4 +261,4 @@ Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het werken met sjablonen [over het aanpassen van de API Management-ontwikkelaarsportal met behulp van sjablonen](api-management-developer-portal-templates.md).
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.

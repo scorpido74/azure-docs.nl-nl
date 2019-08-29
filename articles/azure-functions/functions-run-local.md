@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949913"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096164"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -315,12 +314,12 @@ func host start
 | **`--cors-credentials`** | Alleen-lezen geverifieerde aanvragen (cookies en de verificatie header) versie 2. x toestaan. |
 | **`--cors`** | Een door komma's gescheiden lijst met CORS-oorsprong, zonder spaties. |
 | **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. Alleen versie 2. x. |
-| **`--nodeDebugPort -n`** | De poort voor het fout opsporingsprogramma van het knoop punt dat moet worden gebruikt. Standaard: Een waarde van Launch. json of 5858. Alleen versie 1. x. |
+| **`--nodeDebugPort -n`** | De poort voor het fout opsporingsprogramma van het knoop punt dat moet worden gebruikt. Prijs Een waarde van Launch. json of 5858. Alleen versie 1. x. |
 | **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Alleen gebruikt met `--cert`. Alleen versie 2. x. |
 | **`--port -p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
 | **`--pause-on-error`** | Wacht op extra invoer voordat het proces wordt afgesloten. Wordt alleen gebruikt bij het starten van kern Hulpprogramma's van een Integrated Development Environment (IDE).|
 | **`--script-root --prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C# klassen bibliotheek project bouwt, worden de bestanden host. json, local. settings. json en function. json gegenereerd in een *hoofdmap* met een pad zoals. `MyProject/bin/Debug/netstandard2.0` In dit geval stelt u het voor voegsel `--script-root MyProject/bin/Debug/netstandard2.0`in als. Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
-| **`--timeout -t`** | De time-out voor het starten van de functions-host, in seconden. Standaard: 20 seconden.|
+| **`--timeout -t`** | De time-out voor het starten van de functions-host, in seconden. Prijs 20 seconden.|
 | **`--useHttps`** | Maak een `https://localhost:{port}` binding aan in `http://localhost:{port}`plaats van aan. Met deze optie wordt standaard een vertrouwd certificaat op uw computer gemaakt.|
 
 Wanneer de functie host wordt gestart, wordt de URL van de met HTTP geactiveerde functies uitgevoerd:

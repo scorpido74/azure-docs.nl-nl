@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: da681171-f045-4c80-a5a9-d8bd47964673
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: 7c666ada226dd6f666444a89a792f2be727f3f75
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 034d322b31b2704e5f9351912f46c2b0ccb0e8b8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881572"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100813"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Grootten voor virtuele Linux-machines in azure
 In dit artikel worden de beschik bare grootten en opties voor de virtuele machines van Azure beschreven die u kunt gebruiken om uw Linux-apps en-workloads uit te voeren. Het biedt ook overwegingen bij de implementatie om te weten wanneer u van plan bent deze resources te gebruiken. Dit artikel is ook beschikbaar voor [virtuele Windows-machines](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

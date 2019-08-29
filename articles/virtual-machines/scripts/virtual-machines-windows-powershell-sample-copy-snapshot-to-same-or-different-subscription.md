@@ -9,32 +9,31 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2019
 ms.author: ramankum
-ms.openlocfilehash: 6164a92e19d8657525029bca9a749baadcb49362
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 09c3dd68dff95a909796e3331069f22ce222c05d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242884"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081085"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Met PowerShell een momentopname van een beheerde schijf kopiëren naar hetzelfde of een ander abonnement
 
 Met dit script wordt een momentopname van een beheerde schijf gekopieerd naar hetzelfde of een ander abonnement. Gebruik dit script voor de volgende scenario's:
 
-1. Een momentopname in Premium-opslag (Premium_LRS) migreren naar de standaardopslag (Standard_LRS of Standard_ZRS) om uw kosten te beperken.
-1. Een momentopname van lokaal redundante opslag (Premium_LRS, Standard_LRS) migreren naar zone-redundante opslag (Standard_ZRS) om te profiteren van de hogere betrouwbaarheid van ZRS-opslag.
-1. Een momentopname van een verplaatsen naar een ander abonnement in dezelfde regio voor een langere periode.
+1. Migreer een moment opname in Premium Storage (Premium_LRS) naar de standaard opslag (Standard_LRS of Standard_ZRS) om uw kosten te verlagen.
+1. Migreer een moment opname van lokaal redundante opslag (Premium_LRS, Standard_LRS) naar zone redundante opslag (Standard_ZRS) om te profiteren van de hogere betrouw baarheid van ZRS-opslag.
+1. Een moment opname verplaatsen naar een ander abonnement in dezelfde regio voor een langere Bewaar periode.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Voorbeeldscript
 

@@ -1,40 +1,39 @@
 ---
-title: naslaginformatie over host.JSON voor Azure Functions 1.x
-description: Referentiedocumentatie voor de Azure Functions host.json-bestand met de v1-runtime.
+title: host. json-verwijzing voor Azure Functions 1. x
+description: Referentie documentatie voor het Azure Functions host. JSON-bestand met de V1-runtime.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c169d9cc774a2c6264ba1520240005f13ba9d2da
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62107071"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096460"
 ---
-# <a name="hostjson-reference-for-azure-functions-1x"></a>naslaginformatie over host.JSON voor Azure Functions 1.x
+# <a name="hostjson-reference-for-azure-functions-1x"></a>host. json-verwijzing voor Azure Functions 1. x
 
-> [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions-runtime die u gebruikt: "]
+> [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
 > * [Versie 1:](functions-host-json-v1.md)
 > * [Versie 2](functions-host-json.md)
 
-De *host.json* metagegevensbestand globale configuratie-opties die invloed hebben op alle functies die voor een functie-app bevat. In dit artikel bevat de instellingen die beschikbaar voor de v1-runtime zijn. Het JSON-schema loopt http://json.schemastore.org/host.
+Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u de instellingen die beschikbaar zijn voor de V1-runtime. Het JSON-schema bevindt zich op http://json.schemastore.org/host.
 
 > [!NOTE]
-> In dit artikel is bedoeld voor Azure Functions 1.x.  Voor een verwijzing van host.json in functies 2.x gebruikt, Zie [naslaginformatie over host.json voor Azure Functions 2.x](functions-host-json.md).
+> In dit artikel is bedoeld voor Azure Functions 1.x.  Zie [host. json Reference voor Azure functions 2. x](functions-host-json.md)voor een verwijzing naar de host. json in functions 2. x.
 
-Andere configuratieopties van de functie-app worden beheerd in uw [app-instellingen](functions-app-settings.md).
+Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md).
 
-Sommige instellingen host.json worden alleen gebruikt bij het uitvoeren van lokaal in de [local.settings.json](functions-run-local.md#local-settings-file) bestand.
+Sommige host. json-instellingen worden alleen gebruikt wanneer lokaal wordt uitgevoerd in het bestand [Local. settings. json](functions-run-local.md#local-settings-file) .
 
-## <a name="sample-hostjson-file"></a>Voorbeeldbestand voor host.json
+## <a name="sample-hostjson-file"></a>Voor beeld van host. JSON-bestand
 
-Het volgende voorbeeld *host.json* bestanden hebben alle mogelijke opties opgegeven.
+Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgegeven.
 
 
 ```json
@@ -107,7 +106,7 @@ Het volgende voorbeeld *host.json* bestanden hebben alle mogelijke opties opgege
 }
 ```
 
-De volgende secties van dit artikel wordt uitgelegd dat elke eigenschap op het hoogste niveau. Alle zijn optioneel tenzij anders aangegeven.
+In de volgende secties van dit artikel wordt elke eigenschap op het hoogste niveau uitgelegd. Alle zijn optioneel, tenzij anders aangegeven.
 
 ## <a name="aggregator"></a>aggregator
 
@@ -123,13 +122,13 @@ De volgende secties van dit artikel wordt uitgelegd dat elke eigenschap op het h
 
 ## <a name="eventhub"></a>eventHub
 
-Configuratie-instellingen voor [Event Hub-triggers en bindingen](functions-bindings-event-hubs.md).
+Configuratie-instellingen voor [Event hub-triggers en](functions-bindings-event-hubs.md)-bindingen.
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>functies
 
-Een lijst met functies die de host van de taak wordt uitgevoerd. Een lege matrix betekent dat alle functies uitvoeren. Bedoeld voor gebruik alleen wanneer [lokaal uitgevoerde](functions-run-local.md). In de functie-apps in Azure, moet u in plaats daarvan de stappen in volgen [het uitschakelen van de functies in Azure Functions](disable-function.md) specifieke functies in plaats van met deze instelling uitschakelen.
+Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal uitvoeren](functions-run-local.md). In functie-apps in azure moet u in plaats daarvan de stappen volgen in [het uitschakelen van functies in azure functions](disable-function.md) om specifieke functies uit te scha kelen in plaats van deze instelling te gebruiken.
 
 ```json
 {
@@ -139,7 +138,7 @@ Een lijst met functies die de host van de taak wordt uitgevoerd. Een lege matrix
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Geeft aan dat de duur van de time-out voor alle functies. Het geldige bereik is 1 seconde tot 10 minuten in een verbruiksabonnement zonder server en de standaardwaarde is 5 minuten. Er is geen algemene limiet in een App Service-plan en de standaardwaarde is afhankelijk van de runtimeversie.
+Hiermee wordt de duur van de time-out voor alle functies aangegeven. In een serverloze verbruiks abonnement is het geldige bereik van 1 seconde tot 10 minuten en de standaard waarde is 5 minuten. In een App Service plan geldt geen algemene limiet en de standaard waarde is afhankelijk van de runtime versie.
 
 ```json
 {
@@ -149,7 +148,7 @@ Geeft aan dat de duur van de time-out voor alle functies. Het geldige bereik is 
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-Configuratie-instellingen voor [health monitor voor de Host](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -165,25 +164,25 @@ Configuratie-instellingen voor [health monitor voor de Host](https://github.com/
 
 |Eigenschap  |Standaard | Description |
 |---------|---------|---------| 
-|enabled|true|Hiermee geeft u op of de functie is ingeschakeld. | 
-|healthCheckInterval|10 seconden|Het tijdsinterval tussen de periodieke achtergrond-status wordt gecontroleerd. | 
-|healthCheckWindow|2 minuten|Een verschuivend tijdvenster gebruikt in combinatie met de `healthCheckThreshold` instelling.| 
-|healthCheckThreshold|6|Maximum aantal keren dat de statuscontrole kan mislukken voordat het recyclen van een host wordt gestart.| 
-|counterThreshold|0.80|De drempelwaarde waarmee een prestatiemeteritem wordt beschouwd als niet in orde.| 
+|enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
+|healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie `healthCheckThreshold` met de instelling.| 
+|healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
+|counterThreshold|0,80|De drempel waarde waarbij een prestatie meter item wordt beschouwd als een slechte status.| 
 
 ## <a name="http"></a>http
 
-Configuratie-instellingen voor [http-triggers en bindingen](functions-bindings-http-webhook.md).
+Configuratie-instellingen voor [http-triggers en-bindingen](functions-bindings-http-webhook.md).
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 
-*Versie 1.x alleen.*
+*Alleen versie 1. x.*
 
-De unieke ID voor de host van een taak. Een kleine letter GUID met streepjes u kunt verwijderen. Vereist wanneer die lokaal wordt uitgevoerd. Bij het uitvoeren in Azure, wordt u aangeraden dat u een id-waarde niet instellen. Een ID in Azure automatisch wordt gegenereerd wanneer `id` wordt weggelaten. 
+De unieke ID voor een beveiligingshost. Kan een kleine letter-GUID zijn waarbij streepjes worden verwijderd. Vereist wanneer lokaal wordt uitgevoerd. Bij het uitvoeren in azure wordt u aangeraden geen ID-waarde in te stellen. Een id wordt automatisch gegenereerd in azure wanneer `id` wordt wegge laten. 
 
-Als u een opslagaccount voor meerdere functie-apps deelt, zorg ervoor dat elke functie-app een andere heeft `id`. U kunt weglaten de `id` eigenschap of elke functie-app handmatig in te stellen `id` op een andere waarde. De timertrigger gebruikt een opslag-vergrendeling om ervoor te zorgen dat er slechts één instantie van de timer als een functie-app wordt geschaald naar meerdere exemplaren. Als twee functie-apps dezelfde delen `id` en elk een timertrigger gebruikt, slechts één timer wordt uitgevoerd.
+Als u een opslag account deelt in meerdere functie-apps, moet u ervoor zorgen dat elke functie- `id`app een andere heeft. U kunt de eigenschap `id` weglaten of de functie- `id` app hand matig instellen op een andere waarde. De timer trigger gebruikt een opslag vergrendeling om ervoor te zorgen dat er slechts één timer exemplaar is wanneer een functie-app wordt geschaald naar meerdere exemplaren. Als twee functie-apps hetzelfde `id` hebben en elk een timer trigger gebruikt, wordt er slechts één timer uitgevoerd.
 
 ```json
 {
@@ -193,7 +192,7 @@ Als u een opslagaccount voor meerdere functie-apps deelt, zorg ervoor dat elke f
 
 ## <a name="logger"></a>logger
 
-Besturingselementen voor filteren voor logboeken die is geschreven door een [ILogger object](functions-monitoring.md#write-logs-in-c-functions) of door [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
+Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger-object](functions-monitoring.md#write-logs-in-c-functions) of [context. log](functions-monitoring.md#write-logs-in-javascript-functions).
 
 ```json
 {
@@ -212,13 +211,13 @@ Besturingselementen voor filteren voor logboeken die is geschreven door een [ILo
 
 |Eigenschap  |Standaard | Description |
 |---------|---------|---------| 
-|categoryFilter|N.v.t.|Hiermee geeft u filteren op categorie| 
-|defaultLevel|Information|Voor de categorieën die niet is opgegeven in de `categoryLevels` matrix kunnen logboeken op dit niveau en hoger verzenden naar Application Insights.| 
-|categoryLevels|N.v.t.|Een matrix van categorieën die Hiermee geeft u het minimale logboek-niveau te verzenden naar Application Insights voor elke categorie. Alle categorieën die met dezelfde waarde beginnen Hiermee beheert u de categorie die u hier opgeeft, en meer waarden hebben voorrang. In het voorgaande voorbeeld *host.json* -bestand, alle categorieën die beginnen met "Host.Aggregator" log op `Information` niveau. Alle andere categorieën die beginnen met 'Host', zoals "Host.Executor", zich aanmelden `Error` niveau.| 
+|categoryFilter|N.v.t.|Hiermee wordt gefilterd op categorie opgegeven| 
+|defaultLevel|Information|Voor alle categorieën die niet in de `categoryLevels` matrix zijn opgegeven, verzendt u logboeken op dit niveau en hierboven naar Application Insights.| 
+|categoryLevels|N.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld van een *host. json* -bestand worden alle categorieën die beginnen met ' host. `Information` aggregator ' op niveau vastgelegd. Alle andere categorieën die beginnen met ' host ', zoals ' host. uitvoerder ', logboek `Error` op niveau.| 
 
-## <a name="queues"></a>queues
+## <a name="queues"></a>Bestel
 
-Configuratie-instellingen voor [Storage queue-triggers en bindingen](functions-bindings-storage-queue.md).
+Configuratie-instellingen voor [opslag wachtrij-Triggers en](functions-bindings-storage-queue.md)-bindingen.
 
 ```json
 {
@@ -234,15 +233,15 @@ Configuratie-instellingen voor [Storage queue-triggers en bindingen](functions-b
 
 |Eigenschap  |Standaard | Description |
 |---------|---------|---------| 
-|maxPollingInterval|60000|Het maximale interval in milliseconden tussen de wachtrij worden opgevraagd.| 
-|visibilityTimeout|0|Het tijdsinterval tussen nieuwe pogingen bij het verwerken van een bericht is mislukt.| 
-|batchSize|16|Het aantal Wachtrijberichten waarmee de Functions-runtime gelijktijdig worden opgehaald en parallel worden verwerkt. Als het getal dat wordt verwerkt opgehaald omlaag naar de `newBatchThreshold`, de runtime opgehaald van een andere batch en start deze berichten worden verwerkt. Zodat het maximum aantal gelijktijdige berichten worden verwerkt per functie `batchSize` plus `newBatchThreshold`. Deze limiet geldt afzonderlijk voor elke wachtrij-geactiveerde functie. <br><br>Als u voorkomen dat de parallelle uitvoering voor berichten in een wachtrij ontvangen wilt, kunt u instellen `batchSize` op 1. Deze instelling elimineert echter gelijktijdigheid alleen zo lang uw functie-app wordt uitgevoerd op een enkele virtuele machine (VM). Als de functie-app wordt geschaald naar meerdere virtuele machines, kan één exemplaar van elke wachtrij-geactiveerde functie uitvoeren in elke virtuele machine.<br><br>De maximale `batchSize` is 32. | 
-|maxDequeueCount|5|Het aantal keren dat probeert een bericht verwerken voordat u deze verplaatst naar de wachtrij onverwerkbare.| 
-|newBatchThreshold|batchSize/2|Wanneer het aantal berichten gelijktijdig worden verwerkt met deze eigenschap omlaag naar het volgende nummer, wordt een andere batch in de runtime opgehaald.| 
+|maxPollingInterval|60000|Het maximum interval in milliseconden tussen de wachtrij polls.| 
+|visibilityTimeout|0|Het tijds interval tussen nieuwe pogingen wanneer het verwerken van een bericht mislukt.| 
+|batchSize|16|Het aantal wachtrij berichten dat door de functions-runtime gelijktijdig wordt opgehaald en processen parallel. Wanneer het nummer dat wordt verwerkt, naar de `newBatchThreshold`wordt Verwerk, wordt er door de runtime een andere batch opgehaald en worden deze berichten verwerkt. Het maximum aantal gelijktijdige berichten dat per functie wordt verwerkt, is `batchSize` plus `newBatchThreshold`. Deze limiet geldt afzonderlijk voor elke door de wachtrij geactiveerde functie. <br><br>Als u een parallelle uitvoering wilt voor komen voor berichten die worden ontvangen op één wachtrij, `batchSize` kunt u instellen op 1. Met deze instelling elimineert u echter alleen gelijktijdigheid, zolang uw functie-app wordt uitgevoerd op één virtuele machine (VM). Als de functie-app wordt geschaald naar meerdere Vm's, kan elke virtuele machine één exemplaar van elke door de wachtrij geactiveerde functie uitvoeren.<br><br>De maximum `batchSize` waarde is 32. | 
+|maxDequeueCount|5|Het aantal keren dat een bericht moet worden verwerkt voordat het naar de verontreinigde wachtrij wordt verplaatst.| 
+|newBatchThreshold|batchSize/2|Telkens wanneer het aantal berichten dat gelijktijdig wordt verwerkt, naar dit nummer wordt opgehaald, haalt de runtime een andere batch op.| 
 
 ## <a name="servicebus"></a>serviceBus
 
-Configuratie-instelling voor [Service Bus-triggers en bindingen](functions-bindings-service-bus.md).
+Configuratie-instelling voor [Service Bus triggers en bindingen](functions-bindings-service-bus.md).
 
 ```json
 {
@@ -260,9 +259,9 @@ Configuratie-instelling voor [Service Bus-triggers en bindingen](functions-bindi
 |prefetchCount|N.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende MessageReceiver.| 
 |autoRenewTimeout|00:05:00|De maximale tijdsduur waarbinnen de vergrendeling van het bericht automatisch wordt vernieuwd.| 
 
-## <a name="singleton"></a>singleton
+## <a name="singleton"></a>Singleton
 
-Configuratie-instellingen voor het gedrag van Singleton vergrendelen. Zie voor meer informatie, [GitHub-probleem over de ondersteuning van singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [github-probleem over Singleton-ondersteuning](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)voor meer informatie.
 
 ```json
 {
@@ -278,17 +277,17 @@ Configuratie-instellingen voor het gedrag van Singleton vergrendelen. Zie voor m
 
 |Eigenschap  |Standaard | Description |
 |---------|---------|---------| 
-|lockPeriod|00:00:15|De periode die functie niveau vergrendelingen voor worden uitgevoerd. De vergrendelingen voor automatisch verlengen.| 
-|listenerLockPeriod|00:01:00|De periode die listener vergrendelingen voor worden uitgevoerd.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Het tijdsinterval voor listener-lock herstel moet worden gebruikt als een listener-vergrendeling kan niet worden verkregen bij het opstarten.| 
-|lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime wordt geprobeerd om een vergrendeling te verkrijgen.| 
-|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen pogingen van vergrendeling ophalen.| 
+|lockPeriod|00:00:15|De periode waarin vergrendelingen op functie niveau worden uitgevoerd. De vergren delingen automatisch verlengen.| 
+|listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
+|lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
+|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="tracing"></a>tracering
 
-*Versie 1.x*
+*Versie 1. x*
 
-Configuratie-instellingen voor logboeken die u met behulp van maakt een `TraceWriter` object. Zie [C# logboekregistratie](functions-reference-csharp.md#logging) en [Node.js logboekregistratie](functions-reference-node.md#writing-trace-output-to-the-console).
+Configuratie-instellingen voor logboeken die u maakt met `TraceWriter` behulp van een-object. Zie [ C# ](functions-reference-csharp.md#logging) logboek registratie en [node. js-logboek registratie](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {
@@ -301,12 +300,12 @@ Configuratie-instellingen voor logboeken die u met behulp van maakt een `TraceWr
 
 |Eigenschap  |Standaard | Description |
 |---------|---------|---------| 
-|consoleLevel|info|Het traceringsniveau bepaald voor console-aanmelding. Opties zijn: `off`, `error`, `warning`, `info`, en `verbose`.|
-|fileLoggingMode|debugOnly|Het traceringsniveau bepaald voor logboekregistratie. Opties zijn `never`, `always`, `debugOnly`.| 
+|consoleLevel|info|Het tracerings niveau voor console logboek registratie. Opties zijn: `off` `error`,, ,`info`en .`verbose` `warning`|
+|fileLoggingMode|debugOnly|Het tracerings niveau voor logboek registratie van bestanden. Opties zijn `never`, `always`, `debugOnly`.| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories) die moet worden gecontroleerd op wijzigingen.  Zorgt ervoor dat wanneer de code in deze mappen wordt gewijzigd, de wijzigingen worden doorgevoerd door uw functies.
+Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories) die moeten worden gecontroleerd op wijzigingen.  Zorgt ervoor dat wanneer de code in deze directory's wordt gewijzigd, de wijzigingen worden opgehaald door uw functies.
 
 ```json
 {
@@ -317,7 +316,7 @@ Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het bijwerken van het bestand host.json](functions-reference.md#fileupdate)
+> [Meer informatie over het bijwerken van het bestand host. json](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Zie de globale instellingen in omgevingsvariabelen](functions-app-settings.md)
+> [Algemene instellingen in omgevings variabelen weer geven](functions-app-settings.md)

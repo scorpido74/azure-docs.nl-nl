@@ -1,31 +1,30 @@
 ---
-title: Status van de aangepaste indeling in duurzame functies - Azure
-description: Informatie over het configureren en gebruiken van de status van aangepaste indeling voor duurzame functies.
+title: Aangepaste indelings status in Durable Functions-Azure
+description: Meer informatie over het configureren en gebruiken van een aangepaste indelings status voor Durable Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8d36c797e80702302a1954d2f00e1e4daabcaa88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b93b0cd5053db7d8a2b6aebd30d32f542670d90
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60709997"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098119"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Status van de aangepaste indeling in duurzame functies (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Aangepaste indelings status in Durable Functions (Azure Functions)
 
-Status van aangepaste indeling kunt u een aangepaste statuswaarde instellen voor de orchestrator-functie. Deze status wordt geboden via de GetStatus HTTP-API of de `DurableOrchestrationClient.GetStatusAsync` API.
+Met de aangepaste indelings status kunt u een aangepaste status waarde instellen voor uw Orchestrator-functie. Deze status wordt gegeven via de http GetStatus-API of `DurableOrchestrationClient.GetStatusAsync` de API.
 
-## <a name="sample-use-cases"></a>Voorbeelden van use cases
+## <a name="sample-use-cases"></a>Voorbeeld Cases gebruiken
 
 ### <a name="visualize-progress"></a>Voortgang visualiseren
 
-Clients kunnen het eindpunt van de status controleren en een voortgang gebruikersinterface die worden gevisualiseerd met de huidige uitvoeringsfase weergeven. Het volgende voorbeeld ziet u voortgang delen:
+Clients kunnen het eind punt van de status controleren en een voortgangs GEBRUIKERSINTERFACE weer geven die de huidige uitvoerings fase visualiseert. In het volgende voor beeld ziet u de voortgang van het delen:
 
 #### <a name="c"></a>C#
 
@@ -54,7 +53,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+#### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -80,7 +79,7 @@ module.exports = async function(context, name) {
 };
 ```
 
-En vervolgens ontvangt de client de uitvoer van de orchestration alleen wanneer `CustomStatus` veld is ingesteld op "Londen":
+En de client ontvangt de uitvoer van de indeling alleen wanneer `CustomStatus` het veld is ingesteld op Amsterdam:
 
 #### <a name="c"></a>C#
 
@@ -115,7 +114,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+#### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,14 +144,14 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> In JavaScript, de `customStatus` veld wordt ingesteld wanneer de volgende `yield` of `return` actie is gepland.
+> In Java script wordt `customStatus` het veld ingesteld wanneer de volgende `yield` of `return` actie wordt gepland.
 
 > [!WARNING]
-> Bij het ontwikkelen van lokaal in JavaScript, moet u de omgevingsvariabele instellen `WEBSITE_HOSTNAME` naar `localhost:<port>`, bijvoorbeeld. `localhost:7071` gebruik van methoden op `DurableOrchestrationClient`. Zie voor meer informatie over deze vereiste de [GitHub-probleem](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Bij het lokaal ontwikkelen in Java script moet u de omgevings variabele `WEBSITE_HOSTNAME` instellen op `localhost:<port>`, bijvoorbeeld. `localhost:7071`om methoden te gebruiken `DurableOrchestrationClient`in. Zie het [github-probleem](https://github.com/Azure/azure-functions-durable-js/issues/28)voor meer informatie over deze vereiste.
 
-### <a name="output-customization"></a>Aanpassing van uitvoer
+### <a name="output-customization"></a>Aanpassing van de uitvoer
 
-Een andere interessante scenario is gebruikers segmenteren door aangepaste uitvoer op basis van unieke kenmerken of interacties. Met behulp van de status van aangepaste indeling blijft de client-side-code algemene. Alle wijzigingen van de belangrijkste gebeurt op de server, zoals wordt weergegeven in het volgende voorbeeld:
+Een ander interessant scenario is het segmenteren van gebruikers door een aangepaste uitvoer te retour neren op basis van unieke kenmerken of interacties. Met behulp van de aangepaste indelings status blijft de client-side-code algemeen. Alle belang rijke wijzigingen worden aangebracht aan de server zijde, zoals wordt weer gegeven in het volgende voor beeld:
 
 #### <a name="c"></a>C#
 
@@ -192,7 +191,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+#### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -225,9 +224,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-### <a name="instruction-specification"></a>Instructie-specificatie
+### <a name="instruction-specification"></a>Instructie specificatie
 
-De orchestrator kan unieke instructies bieden aan de clients via de aangepaste status. De status van aangepaste instructies worden toegewezen aan de stappen in de orchestration-code:
+De Orchestrator kan unieke instructies bieden aan de clients via de aangepaste status. De aangepaste status instructies worden toegewezen aan de stappen in de indelings code:
 
 #### <a name="c"></a>C#
 
@@ -257,7 +256,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+#### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -286,7 +285,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="sample"></a>Voorbeeld
 
-In het volgende voorbeeld wordt is de status van de aangepaste eerst; ingesteld
+In het volgende voor beeld wordt de aangepaste status eerst ingesteld.
 
 ### <a name="c"></a>C#
 
@@ -303,7 +302,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -319,14 +318,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Terwijl de indeling wordt uitgevoerd, kunnen deze aangepaste status ophalen van externe clients:
+Terwijl de Orchestration wordt uitgevoerd, kunnen externe clients deze aangepaste status ophalen:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Clients ontvangt het volgende antwoord:
+Clients ontvangen het volgende antwoord:
 
 ```http
 {
@@ -340,9 +339,9 @@ Clients ontvangt het volgende antwoord:
 ```
 
 > [!WARNING]
-> De status van de aangepaste nettolading is beperkt tot 16 KB van UTF-16-JSON-tekst omdat deze kunnen zijn moet voor de kolom van een Azure-tabelopslag. Ontwikkelaars kunnen externe opslag gebruiken als ze nodig hebben grotere nettolading.
+> De nettolading van de aangepaste status is beperkt tot 16 KB aan UTF-16-JSON-tekst omdat deze moet kunnen passen in een Azure Table Storage-kolom. Ontwikkel aars kunnen externe opslag gebruiken als ze een grotere Payload nodig hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over HTTP-API's in duurzame functies](durable-functions-http-api.md)
+> [Meer informatie over HTTP-Api's in Durable Functions](durable-functions-http-api.md)

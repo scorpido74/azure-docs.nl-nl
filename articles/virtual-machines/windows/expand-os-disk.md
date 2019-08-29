@@ -1,6 +1,6 @@
 ---
-title: Vouw de besturingssysteemschijf van een Windows-VM in Azure | Microsoft Docs
-description: Vouw de grootte van de besturingssysteemschijf van een virtuele machine met behulp van Azure Powershell in het Resource Manager-implementatiemodel.
+title: Het station met het besturings systeem van een virtuele Windows-machine in een Azure-versie uitbreiden | Microsoft Docs
+description: Breid de grootte van het OS-station van een virtuele machine uit met Azure Power shell in het Resource Manager-implementatie model.
 services: virtual-machines-windows
 documentationcenter: ''
 author: kirpasingh
@@ -9,43 +9,42 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 81e6b5558ab90f154ebf121a558704b00b97444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b22507796a9e614da780d25795bb7edf7094e935
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684330"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103204"
 ---
-# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Over het uitbreiden van de besturingssysteemschijf van een virtuele machine
+# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Het station van het besturings systeem van een virtuele machine uitbreiden
 
-Wanneer u een nieuwe virtuele machine (VM) maakt in een resourcegroep gemaakt met het implementeren van een installatiekopie van [Azure Marketplace](https://azure.microsoft.com/marketplace/), de standaard OS-station is vaak 127 GB (sommige afbeeldingen hebben kleinere OS-schijfformaten standaard). Hoewel het mogelijk is om gegevensschijven toe te voegen aan de VM (het aantal is afhankelijk van de SKU die u hebt gekozen) en het bovendien wordt aangeraden om toepassingen en CPU-intensieve werkbelastingen te installeren op deze aanvullende schijven, moeten klanten vaak ook de besturingssysteemschijf uitbreiden om bepaalde scenario's te ondersteunen, zoals de volgende:
+Wanneer u een nieuwe virtuele machine (VM) maakt in een resource groep door een installatie kopie te implementeren vanuit [Azure Marketplace](https://azure.microsoft.com/marketplace/), is het standaard station van het besturings systeem vaak 127 GB (sommige installatie kopieën hebben standaard kleinere besturingssysteem schijf grootten). Hoewel het mogelijk is om gegevensschijven toe te voegen aan de VM (het aantal is afhankelijk van de SKU die u hebt gekozen) en het bovendien wordt aangeraden om toepassingen en CPU-intensieve werkbelastingen te installeren op deze aanvullende schijven, moeten klanten vaak ook de besturingssysteemschijf uitbreiden om bepaalde scenario's te ondersteunen, zoals de volgende:
 
 - Ondersteuning voor oudere toepassingen die onderdelen op de besturingssysteemschijf installeren.
 - Een fysieke computer of virtuele machine migreren van on-premises met een grotere besturingssysteemschijf.
 
 
 > [!IMPORTANT]
-> Formaat van de OS-schijf van een Azure-Machine zorgt ervoor dat deze opnieuw te starten.
+> Het wijzigen van de grootte van de besturingssysteem schijf van een virtuele machine van Azure zorgt ervoor dat deze opnieuw wordt opgestart.
 >
-> Na het uitbreiden van de schijven, moet u [Vouw het schijfvolume binnen het besturingssysteem](#expand-the-volume-within-the-os) om te profiteren van de grotere schijf.
+> Nadat u de schijven hebt uitgebreid, moet u [het volume in het besturings systeem uitbreiden](#expand-the-volume-within-the-os) om te kunnen profiteren van de grotere schijf.
 > 
 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
-## <a name="resize-a-managed-disk"></a>Grootte van een beheerde schijf wijzigen
+## <a name="resize-a-managed-disk"></a>Het formaat van een beheerde schijf wijzigen
 
 Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer de volgende stappen uit:
 
-1. Meld u aan met uw Microsoft Azure-account in de modus voor resourcebeheer en selecteer uw abonnement als volgt:
+1. Meld u aan bij uw Microsoft Azure-account in de modus resource beheer en selecteer uw abonnement als volgt:
    
    ```powershell
    Connect-AzAccount
@@ -67,7 +66,7 @@ Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer d
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Verkrijg een verwijzing naar de beheerde OS-schijf. De grootte van de beheerde besturingssysteemschijf instellen op de gewenste waarde en de schijf als volgt te werk:
+5. Verkrijg een verwijzing naar de beheerde besturingssysteem schijf. Stel de grootte van de beheerde besturingssysteem schijf in op de gewenste waarde en werk de schijf als volgt bij:
    
    ```Powershell
    $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
@@ -75,7 +74,7 @@ Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer d
    Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
    ```   
    > [!WARNING]
-   > De nieuwe grootte moet groter zijn dan de bestaande schijfgrootte. Het maximaal toegestane aantal is 2048 GB voor OS-schijven. (Het is mogelijk om uit te breiden de VHD-blob die grootte overschrijdt, maar het besturingssysteem is alleen mogelijk om te werken met de eerste 2048 GB aan ruimte.)
+   > De nieuwe grootte moet groter zijn dan de bestaande schijfgrootte. Het Maxi maal toegestane aantal is 2048 GB voor besturingssysteem schijven. (Het is mogelijk om de VHD-BLOB buiten die grootte uit te breiden, maar het besturings systeem kan alleen met de eerste 2048 GB aan ruimte werken.)
    > 
    > 
 6. Het bijwerken van de VM kan een paar seconden duren. Zodra de opdracht is voltooid, start u de VM als volgt opnieuw op:
@@ -86,11 +85,11 @@ Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer d
 
 Dat is alles. Ga nu met RDP naar de VM, open Computerbeheer (of Schijfbeheer) en vouw het station met de zojuist toegewezen ruimte uit.
 
-## <a name="resize-an-unmanaged-disk"></a>Grootte van een niet-beheerde schijf wijzigen
+## <a name="resize-an-unmanaged-disk"></a>Het formaat van een onbeheerde schijf wijzigen
 
 Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer de volgende stappen uit:
 
-1. Meld u aan met uw Microsoft Azure-account in de modus voor resourcebeheer en selecteer uw abonnement als volgt:
+1. Meld u aan bij uw Microsoft Azure-account in de modus resource beheer en selecteer uw abonnement als volgt:
    
    ```Powershell
    Connect-AzAccount
@@ -112,7 +111,7 @@ Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer d
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. De grootte van de niet-beheerde besturingssysteemschijf instellen op de gewenste waarde en de virtuele machine als volgt te werk:
+5. Stel de grootte van de niet-beheerde besturingssysteem schijf in op de gewenste waarde en werk de virtuele machine als volgt bij:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -120,7 +119,7 @@ Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer d
    ```
    
    > [!WARNING]
-   > De nieuwe grootte moet groter zijn dan de bestaande schijfgrootte. Het maximaal toegestane aantal is 2048 GB voor OS-schijven. (Het is mogelijk om uit te breiden de VHD-blob die grootte overschrijdt, maar het besturingssysteem is alleen mogelijk om te werken met de eerste 2048 GB aan ruimte.)
+   > De nieuwe grootte moet groter zijn dan de bestaande schijfgrootte. Het Maxi maal toegestane aantal is 2048 GB voor besturingssysteem schijven. (Het is mogelijk om de VHD-BLOB buiten die grootte uit te breiden, maar het besturings systeem kan alleen met de eerste 2048 GB aan ruimte werken.)
    > 
    > 
    
@@ -131,12 +130,12 @@ Open de Powershell ISE of het Powershell-venster in de beheerdersmodus en voer d
    ```
 
 
-## <a name="scripts-for-os-disk"></a>Scripts voor de besturingssysteemschijf
+## <a name="scripts-for-os-disk"></a>Scripts voor besturingssysteem schijf
 
-Hieronder vindt u het volledige script ter referentie voor zowel beheerde als niet-beheerde schijven:
+Hieronder ziet u het volledige script voor uw referentie voor zowel beheerde als onbeheerde schijven:
 
 
-**Beheerde schijven**
+**Azure Managed Disks**
 
 ```Powershell
 Connect-AzAccount
@@ -165,9 +164,9 @@ Update-AzVM -ResourceGroupName $rgName -VM $vm
 Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="resizing-data-disks"></a>Gegevensschijven vergroten of verkleinen
+## <a name="resizing-data-disks"></a>Grootte van gegevens schijven wijzigen
 
-In dit artikel primair gericht op het uitbreiden van de besturingssysteemschijf van de virtuele machine, maar het script kan ook worden gebruikt voor het uitbreiden van de gegevensschijven die zijn gekoppeld aan de virtuele machine. Als u bijvoorbeeld de eerste gegevensschijf die is gekoppeld aan de VM wilt uitbreiden, vervangt u het object `OSDisk` van `StorageProfile` door de matrix `DataDisks` en gebruikt u een numerieke index om een verwijzing naar de eerste gekoppelde schijf te verkrijgen, zoals hieronder wordt weergegeven:
+Dit artikel is voornamelijk gericht op het uitbreiden van de besturingssysteem schijf van de virtuele machine, maar het script kan ook worden gebruikt voor het uitbreiden van de gegevens schijven die zijn gekoppeld aan de virtuele machine. Als u bijvoorbeeld de eerste gegevensschijf die is gekoppeld aan de VM wilt uitbreiden, vervangt u het object `OSDisk` van `StorageProfile` door de matrix `DataDisks` en gebruikt u een numerieke index om een verwijzing naar de eerste gekoppelde schijf te verkrijgen, zoals hieronder wordt weergegeven:
 
 **Beheerde schijf**
 
@@ -185,7 +184,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-Op dezelfde manier u kan verwijzen naar andere gegevensschijven die zijn gekoppeld aan de virtuele machine, hetzij met behulp van een index, zoals hierboven of de **naam** van de schijf:
+Op dezelfde manier kunt u verwijzen naar andere gegevens schijven die zijn gekoppeld aan de virtuele machine, hetzij door gebruik te maken van een index zoals hierboven wordt weer gegeven, of de eigenschap **name** van de schijf:
 
 
 **Beheerde schijf**
@@ -200,21 +199,21 @@ Op dezelfde manier u kan verwijzen naar andere gegevensschijven die zijn gekoppe
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
 
-## <a name="expand-the-volume-within-the-os"></a>Vouw het schijfvolume binnen het besturingssysteem
+## <a name="expand-the-volume-within-the-os"></a>Het volume binnen het besturings systeem uitbreiden
 
-Nadat u de schijf hebt uitgebreid voor de virtuele machine, moet u het besturingssysteem en vouw het volume voor de nieuwe ruimte bevat. Er zijn verschillende methoden voor het uitbreiden van een partitie. In deze sectie bevat informatie over verbinding te maken van de virtuele machine met behulp van een RDP-verbinding om uit te breiden de partitie met behulp **DiskPart**.
+Wanneer u de schijf voor de virtuele machine hebt uitgebreid, moet u het besturings systeem openen en het volume uitbreiden om de nieuwe ruimte te maken. Er zijn verschillende methoden voor het uitbreiden van een partitie. In deze sectie wordt beschreven hoe u de virtuele machine verbindt met een RDP-verbinding om de partitie uit te breiden met **Disk Part**.
 
-1. Open een RDP-verbinding met uw virtuele machine.
+1. Open een RDP-verbinding met uw VM.
 
-2.  Open een opdrachtprompt en typ **diskpart**.
+2.  Open een opdracht prompt en typ **Disk Part**.
 
-2.  Op de **DISKPART** vragen, typ `list volume`. Noteer het volume dat u wilt uitbreiden.
+2.  Typ`list volume`bij de **Disk Part** -prompt. Noteer het volume dat u wilt uitbreiden.
 
-3.  Op de **DISKPART** vragen, typ `select volume <volumenumber>`. Hiermee wordt het volume *volumenummer* die u wilt uitbreiden naar aaneengesloten vrije ruimte op dezelfde schijf.
+3.  Typ`select volume <volumenumber>`bij de **Disk Part** -prompt. Hiermee wordt het volume *volumenumber* geselecteerd dat u wilt uitbreiden naar aaneengesloten lege ruimte op dezelfde schijf.
 
-4.  Op de **DISKPART** vragen, typ `extend [size=<size>]`. Hiermee wordt het geselecteerde volume door *grootte* in megabytes (MB).
+4.  Typ`extend [size=<size>]`bij de **Disk Part** -prompt. Hiermee wordt het geselecteerde volume uitgebreid naar *grootte* in mega bytes (MB).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook Koppel de schijven met behulp van de [Azure-portal](attach-managed-disk-portal.md).
+U kunt ook schijven koppelen met behulp van de [Azure Portal](attach-managed-disk-portal.md).

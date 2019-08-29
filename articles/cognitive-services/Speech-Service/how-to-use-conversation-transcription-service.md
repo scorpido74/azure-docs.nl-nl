@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559463"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066437"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Uitwisseling van meerdere deel nemers transcriberen met de Speech SDK
 
@@ -25,7 +25,9 @@ Met de **ConversationTranscriber** API van de Speech SDK kunt u vergaderingen/ge
 
 * De conversatie-transcriber wordt C++ondersteund C#voor, en Java op Windows, Linux en Android.
 * De ROOBO DevKit is de ondersteunde hardware-omgeving voor het maken van de conversatie transcripties, omdat deze een circulaire multi-microfoon matrix biedt die efficiënt kan worden gebruikt voor de identificatie van de spreker. [Zie speech apparaten SDK (Engelstalig) voor meer informatie](speech-devices-sdk.md).
-* Speech SDK-ondersteuning voor Conversation transcriptie is beperkt tot het gebruik van audio pull-en push-modus stromen met acht kanalen van 16-bits 16 kHz PCM-audio.
+* Speech SDK-ondersteuning voor conversatie transcriptie is beperkt tot audio-pull-en push-modus stromen met 8 kanalen van 16-bits 16 kHz PCM-audio. Op dit moment worden alleen deze kits ondersteund voor het vastleggen van 8 kanalen:
+   * [ROOBO slimme audio circulaire 7-Mic DK](https://ddk.roobo.com/)
+   * [Azure KINECT DK](https://azure.microsoft.com/en-in/services/kinect-dk/).
 * De conversatie transcriptie is momenteel beschikbaar in de talen ' nl-US ' en ' zh-CN ' in de volgende regio's: centralus en EastAsia.
 
 ## <a name="prerequisites"></a>Vereisten

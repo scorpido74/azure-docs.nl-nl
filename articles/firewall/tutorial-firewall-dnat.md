@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/28/2018
+ms.date: 08/29/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0a58382b9825a7b32aee69c00b9801d1c77251a
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60192932"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114631"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Zelfstudie: Binnenkomend verkeer filteren met Azure Firewall DNAT via de Azure-portal
 
@@ -52,7 +52,7 @@ Maak eerst de VNets en peer ze.
 
 1. Klik op de startpagina van de Azure-portal op **Alle services**.
 2. Klik onder **Netwerken** op **Virtuele netwerken**.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Bij **Naam** typt u **VN-Hub**.
 5. Bij **Adresruimte** typt u **10.0.0.0/16**.
 6. Bij **Abonnement** selecteert u uw abonnement.
@@ -62,15 +62,16 @@ Maak eerst de VNets en peer ze.
 
      De firewall zal zich in dit subnet bevinden, en de subnetnaam **moet** AzureFirewallSubnet zijn.
      > [!NOTE]
-     > De minimale grootte van het subnet AzureFirewallSubnet is /26.
-10. Bij **Adresbereik** typt u **10.0.1.0/24**.
+     > De grootte van het AzureFirewallSubnet-subnet is/26. Zie [Azure firewall FAQ (Engelstalig](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)) voor meer informatie over de grootte van het subnet.
+
+10. Typ **10.0.1.0/26**voor het **adres bereik**.
 11. Gebruik de andere standaardinstellingen en klik vervolgens op **Maken**.
 
 ### <a name="create-a-spoke-vnet"></a>Een spoke-VNet maken
 
 1. Klik op de startpagina van de Azure-portal op **Alle services**.
 2. Klik onder **Netwerken** op **Virtuele netwerken**.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Bij **Naam** typt u **VN-Spoke**.
 5. Bij **Adresruimte** typt u **192.168.0.0/16**.
 6. Bij **Abonnement** selecteert u uw abonnement.
@@ -90,7 +91,7 @@ Nu gaat u de twee VNets als peer van elkaar instellen.
 
 1. Klik op het virtuele netwerk **VN-Hub**.
 2. Klik onder **Instellingen** op **Peerings**.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Typ **Peer-HubSpoke** als de naam.
 5. Selecteer **VN-Spoke** voor het virtuele netwerk.
 6. Klik op **OK**.
@@ -99,7 +100,7 @@ Nu gaat u de twee VNets als peer van elkaar instellen.
 
 1. Klik op het virtuele netwerk **VN-Spoke**.
 2. Klik onder **Instellingen** op **Peerings**.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Typ **Peer-SpokeHub** als de naam.
 5. Selecteer **VN-Hub** voor het virtuele netwerk.
 6. Klik op **Doorgestuurd verkeer toestaan**.
@@ -151,10 +152,10 @@ Als de implementatie is voltooid, ziet u het privé IP-adres voor de virtuele ma
    |Instelling  |Waarde  |
    |---------|---------|
    |Name     |FW-DNAT-test|
-   |Abonnement     |\<uw abonnement\>|
-   |Resourcegroep     |**Gebruik bestaande**: RG-DNAT-Test |
+   |Subscription     |\<uw abonnement\>|
+   |Resource group     |**Bestaande gebruiken**: RG-DNAT-test |
    |Location     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
-   |Een virtueel netwerk kiezen     |**Gebruik bestaande**: VN-Hub|
+   |Een virtueel netwerk kiezen     |**Bestaande gebruiken**: VN-Hub|
    |Openbaar IP-adres     |**Nieuwe maken**. Het openbare IP-adres moet van het type Standaard-SKU zijn.|
 
 5. Klik op **Controleren + maken**.
@@ -170,7 +171,7 @@ Voor het subnet **SN-Workload** configureert u dat de standaardroute voor uitgaa
 
 1. Klik op de startpagina van de Azure-portal op **Alle services**.
 2. Klik onder **Netwerken** op **Routetabellen**.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Bij **Naam** typt u **RT-FWroute**.
 5. Bij **Abonnement** selecteert u uw abonnement.
 6. Bij **Resourcegroep** selecteert u **Bestaande gebruiken** en selecteert u **RG-DNAT-Test**.
@@ -204,7 +205,7 @@ Voor het subnet **SN-Workload** configureert u dat de standaardroute voor uitgaa
 10. Bij **Doelpoorten** typt u **3389**. 
 11. Bij **Omgezet adres** typt u het privé-IP-adres voor de virtuele machine Srv-Workload. 
 12. Bij **Vertaalde poort** typt u **3389**. 
-13. Klik op **Add**. 
+13. Klik op **Toevoegen**. 
 
 ## <a name="test-the-firewall"></a>De firewall testen
 

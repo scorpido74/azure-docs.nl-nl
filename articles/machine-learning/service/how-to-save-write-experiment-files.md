@@ -1,6 +1,7 @@
 ---
-title: Opslag beperkingen en experiment latentie met invoer-en uitvoer mappen voor komen
-description: In dit artikel leert u waar u uw experimentele invoer bestanden opslaat, en waar u uitvoer bestanden schrijft om te voor komen dat er problemen met de opslag beperking en de latentie van een experiment.
+title: Waar opslaan & write experimenten-bestanden
+titleSuffix: Azure Machine Learning service
+description: Meer informatie over waar u uw experimentele invoer bestanden opslaat, en waar u uitvoer bestanden schrijft om te voor komen dat er problemen met de opslag beperking en de latentie van een experiment optreden.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ea820536d93ec095f6f2929a9dc3b38d92779a58
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856053"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114517"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Locatie voor het opslaan en schrijven van bestanden voor Azure Machine Learning experimenten
 

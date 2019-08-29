@@ -1,6 +1,6 @@
 ---
-title: Status van de toepassing-extensie gebruiken met Azure virtual machine scale sets | Microsoft Docs
-description: Informatie over het gebruik van de status van de toepassing-extensie voor het bewaken van de status van uw toepassingen die zijn geïmplementeerd op virtuele-machineschaalsets.
+title: De toepassings status extensie gebruiken met virtuele-machine schaal sets van Azure | Microsoft Docs
+description: Meer informatie over het gebruik van de toepassings status extensie voor het controleren van de status van uw toepassingen die zijn geïmplementeerd op schaal sets voor virtuele machines.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e074d76f9ed095725d99bddc9eb21925f4b3697c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60619821"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114473"
 ---
-# <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Uitbreiding met de virtuele-machineschaalset wordt ingesteld met behulp van de status van de toepassing
-Bewaking van de toepassingsstatus van uw is een belangrijk signaal voor het beheren en upgraden van uw implementatie. Virtuele Azure-machine-schaalsets bieden ondersteuning voor [rolling upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) inclusief [automatische upgrades van de installatiekopie van het besturingssysteem](virtual-machine-scale-sets-automatic-upgrade.md), die afhankelijk zijn van statuscontrole van de afzonderlijke exemplaren om te upgraden van uw implementatie .
+# <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>De toepassings status uitbreiding gebruiken met schaal sets voor virtuele machines
+Het controleren van de status van uw toepassing is een belang rijk signaal voor het beheren en upgraden van uw implementatie. Virtuele-machine schaal sets van Azure bieden ondersteuning voor [rolling upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , waaronder [automatische upgrades van besturings systemen](virtual-machine-scale-sets-automatic-upgrade.md), die afhankelijk zijn van de status controle van de afzonderlijke instanties om uw implementatie bij te werken.
 
-Dit artikel wordt beschreven hoe u de status van de toepassing-extensie voor het bewaken van de status van uw toepassingen die zijn geïmplementeerd op virtuele-machineschaalsets kunt gebruiken.
+In dit artikel wordt beschreven hoe u de toepassings status uitbreiding kunt gebruiken om de status van uw toepassingen te controleren die zijn geïmplementeerd op schaal sets voor virtuele machines.
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel wordt ervan uitgegaan dat u bekend met bent:
--   Virtuele Azure-machine [extensies](../virtual-machines/extensions/overview.md)
--   [Wijzigen van](virtual-machine-scale-sets-upgrade-scale-set.md) virtuele-machineschaalsets
+In dit artikel wordt ervan uitgegaan dat u bekend bent met:
+-   [Extensies](../virtual-machines/extensions/overview.md) voor virtuele Azure-machines
+-   Schaal sets voor virtuele machines [wijzigen](virtual-machine-scale-sets-upgrade-scale-set.md)
 
-## <a name="when-to-use-the-application-health-extension"></a>Wanneer u de status van de toepassing-extensie
-De extensie van de status van de toepassing wordt geïmplementeerd in een instantie van virtuele-machineschaalset en rapporten op de virtuele machine wordt de status van binnen het exemplaar in de schaalset. U kunt configureren dat de extensie test op een toepassingseindpunt en de status van de toepassing op dat exemplaar. De status van dit exemplaar wordt gecontroleerd door Azure om te bepalen of een exemplaar in aanmerking voor upgrade operations.
+## <a name="when-to-use-the-application-health-extension"></a>Wanneer de toepassings status uitbreiding moet worden gebruikt
+De uitbrei ding voor de toepassings status wordt geïmplementeerd binnen een exemplaar van een virtuele-machine schaalset en rapporten over de VM-status in het exemplaar van de schaalset. U kunt de uitbrei ding voor het testen van het eind punt van een toepassing configureren en de status van de toepassing op dat exemplaar bijwerken. Deze status van het exemplaar wordt gecontroleerd door Azure om te bepalen of een exemplaar in aanmerking komt voor upgrade bewerkingen.
 
-Als de extensie rapporten wordt de status van binnen een virtuele machine, kan de extensie worden gebruikt in situaties waarbij externe tests zoals statuscontroles van toepassing (die gebruikmaken van aangepaste Azure Load Balancer [tests](../load-balancer/load-balancer-custom-probe-overview.md)) kan niet worden gebruikt.
+Als de uitbrei ding rapporteert over de status van binnen een virtuele machine, kan de uitbrei ding worden gebruikt in situaties waarin externe tests, zoals het controleren van de status van toepassingen (die gebruikmaken van aangepaste Azure Load Balancer [tests](../load-balancer/load-balancer-custom-probe-overview.md)), niet kunnen worden gebruikt.
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON ziet u het schema voor de extensie van de status van de toepassing. De extensie moet ten minste een 'tcp' of 'http'-aanvraag met een bijbehorende poort of Aanvraagpad respectievelijk.
+De volgende JSON toont het schema voor de uitbrei ding van de toepassings status. Voor de uitbrei ding is mini maal een TCP-of HTTP-aanvraag met respectievelijk een bijbehorend poort-of aanvraag pad vereist.
 
 ```json
 {
@@ -67,7 +67,7 @@ De volgende JSON ziet u het schema voor de extensie van de status van de toepass
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
+| Type | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Instellingen
@@ -75,15 +75,15 @@ De volgende JSON ziet u het schema voor de extensie van de status van de toepass
 | Name | Waarde / voorbeeld | Gegevenstype
 | ---- | ---- | ----
 | protocol | `http` of `tcp` | string |
-| port | Optioneel als het protocol `http`, verplicht als het protocol `tcp` | int |
-| requestPath | Verplicht als het protocol `http`, niet toegestaan als het protocol `tcp` | string |
+| port | Optioneel wanneer protocol is `http`, verplicht wanneer protocol wordt`tcp` | int |
+| requestPath | Verplicht wanneer protocol is `http`, niet toegestaan als protocol wordt`tcp` | string |
 
-## <a name="deploy-the-application-health-extension"></a>De extensie van de status van de toepassing implementeren
-Er zijn meerdere manieren van de implementatie van de status van de toepassing uitbreiding van uw schaal ingesteld zoals beschreven in de onderstaande voorbeelden.
+## <a name="deploy-the-application-health-extension"></a>De toepassings status uitbreiding implementeren
+Er zijn meerdere manieren om de toepassings status extensie te implementeren op uw schaal sets, zoals beschreven in de onderstaande voor beelden.
 
 ### <a name="rest-api"></a>REST-API
 
-In het volgende voorbeeld wordt de status van de toepassing-uitbreiding (met de naam myHealthExtension) toegevoegd aan de extensionProfile in het model met een schaal van een op basis van een Windows-schaalset.
+In het volgende voor beeld wordt de toepassings status extensie (met de naam myHealthExtension) toegevoegd aan de extensionProfile in het model met de schaalset van een op Windows gebaseerde schaalset.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/myHealthExtension?api-version=2018-10-01`
@@ -105,13 +105,13 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
   }
 }
 ```
-Gebruik `PATCH` bewerken van een reeds geïmplementeerde uitbreiding.
+Gebruik `PATCH` om een reeds geïmplementeerde extensie te bewerken.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Gebruik de [toevoegen AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet om de status van de toepassing-extensie toevoegen aan de schaal modeldefinitie instellen.
+Gebruik de cmdlet [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) om de toepassings status extensie toe te voegen aan de model definitie van de schaalset.
 
-Het volgende voorbeeld wordt de status van de toepassing-extensie voor de `extensionProfile` in het schaalsetmodel van een op basis van een Windows-schaalset. Het voorbeeld wordt de nieuwe Az PowerShell-module.
+In het volgende voor beeld wordt de toepassings status extensie `extensionProfile` toegevoegd aan de in het model Scale set van een op Windows gebaseerde schaalset. In het voor beeld wordt de nieuwe AZ Power shell-module gebruikt.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -147,23 +147,32 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Gebruik [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set) om toe te voegen van de uitbreiding van de status van de toepassing de definitie van model van de schaalset.
+Gebruik [AZ vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set) om de toepassings status extensie toe te voegen aan de model definitie van de schaalset.
 
-Het volgende voorbeeld wordt de status van de toepassing-extensie toegevoegd aan het model met een schaal van een op basis van een Windows-schaalset.
+In het volgende voor beeld wordt de toepassings status extensie toegevoegd aan het model met schaal sets van een op Linux gebaseerde schaalset.
 
 ```azurecli-interactive
 az vmss extension set \
-  --name ApplicationHealthWindows \
+  --name ApplicationHealthLinux \
   --publisher Microsoft.ManagedServices \
   --version 1.0 \
   --resource-group <myVMScaleSetResourceGroup> \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
+De inhoud van het JSON-bestand van de extensie.
+
+```json
+{
+  "protocol": "<protocol>",
+  "port": "<port>",
+  "requestPath": "</requestPath>"
+}
+```
 
 
 ## <a name="troubleshoot"></a>Problemen oplossen
-Extensie uitvoering uitvoer wordt vastgelegd in bestanden gevonden in de volgende mappen:
+Uitvoer voor uitvoering van extensie wordt vastgelegd in bestanden die in de volgende directory's zijn gevonden:
 
 ```Windows
 C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\<version>\
@@ -173,7 +182,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 /var/lib/waagent/apphealth
 ```
 
-De logboeken vastleggen ook periodiek de status van de toepassing.
+In de logboeken wordt ook regel matig de status van de toepassings status vastgelegd.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [Implementeer uw toepassing](virtual-machine-scale-sets-deploy-app.md) ingesteld op de virtuele-machineschaalset.
+Meer informatie over het [implementeren van uw toepassing](virtual-machine-scale-sets-deploy-app.md) op virtuele-machine schaal sets.

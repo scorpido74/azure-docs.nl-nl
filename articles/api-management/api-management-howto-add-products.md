@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: eff827937adbae7cfdfdd86392593df8d698053c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 134483764ffcb012ece0769a514683fc9487887f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241772"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073617"
 ---
 # <a name="create-and-publish-a-product"></a>Een product maken en publiceren  
 
@@ -53,7 +52,7 @@ In deze zelfstudie leert u het volgende:
     | `Display name`             | De naam zoals u wilt dat deze wordt weergegeven in de **ontwikkelaarsportal**.                                                                                                                                                                                                                                                        |
     | Name                     | Een beschrijvende naam van het product.                                                                                                                                                                                                                                                                                      |
     | Description              | In het veld **Beschrijving** kunt u gedetailleerde informatie over het product opgeven, zoals het doel, de API's waartoe het product toegang biedt, en andere nuttige informatie.                                                                                                                                               |
-    | Status                    | Druk op **Gepubliceerd** als u het product wilt publiceren. Voordat de API's in een product kunnen worden aangeroepen, moet het product worden gepubliceerd. Nieuwe producten zijn standaard niet-gepubliceerd, en alleen zichtbaar voor gebruikers in de groep **Beheerders**.                                                                                      |
+    | State                    | Druk op **Gepubliceerd** als u het product wilt publiceren. Voordat de API's in een product kunnen worden aangeroepen, moet het product worden gepubliceerd. Nieuwe producten zijn standaard niet-gepubliceerd, en alleen zichtbaar voor gebruikers in de groep **Beheerders**.                                                                                      |
     | Abonnement is vereist    | Schakel **Abonnement vereisen**in als een gebruiker een abonnement moet hebben om het product te kunnen gebruiken.                                                                                                                                                                                                                                   |
     | Goedkeuring vereist        | Schakel **Goedkeuring vereisen** in als u wilt dat een beheerder abonnementspogingen voor dit product beoordeelt en accepteert of weigert. Als het selectievakje uitgeschakeld is, worden abonnementspogingen automatisch goedgekeurd.                                                                                                                         |
     | Limiet voor het aantal abonnementen | Als u het aantal gelijktijdige abonnementen wilt beperken, voert u de limiet voor het aantal abonnementen in.                                                                                                                                                                                                                                |

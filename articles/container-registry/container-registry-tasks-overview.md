@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311876"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114807"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
 
@@ -56,7 +56,7 @@ Informatie over het gebruik van snelle taken in de eerste zelf studie over ACR-t
 
 ## <a name="automatic-build-on-source-code-commit"></a>Automatisch bouwen bij het door voeren van de bron code
 
-Gebruik ACR-taken om automatisch een container installatie kopie te activeren wanneer de code wordt vastgelegd in een Git-opslag plaats. Bouw taken, configureerbaar met de Azure CLI-opdracht [AZ ACR taak][az-acr-task], zodat u een Git-opslag plaats en optioneel een vertakking en Dockerfile kunt opgeven. Wanneer uw team code doorvoert naar de opslag plaats, activeert een webhook met ACR-gemaakte taken een build van de container installatie kopie die is gedefinieerd in de opslag plaats.
+Gebruik ACR-taken om automatisch een container installatie kopie te activeren wanneer de code wordt vastgelegd in een Git-opslag plaats in GitHub of Azure DevOps. Bouw taken, configureerbaar met de Azure CLI-opdracht [AZ ACR taak][az-acr-task], zodat u een Git-opslag plaats en optioneel een vertakking en Dockerfile kunt opgeven. Wanneer uw team code doorvoert naar de opslag plaats, activeert een webhook met ACR-gemaakte taken een build van de container installatie kopie die is gedefinieerd in de opslag plaats.
 
 > [!IMPORTANT]
 > Als u eerder taken hebt gemaakt tijdens het voor beeld `az acr build-task` met de opdracht, moeten deze taken opnieuw worden gemaakt met de opdracht [AZ ACR Task][az-acr-task] .
@@ -73,10 +73,14 @@ Wanneer een installatie kopie van een besturings systeem of app-Framework wordt 
 
 Omdat ACR-taken de afhankelijkheden van basis installatie kopieën dynamisch detecteren bij het samen stellen van een container installatie kopie, kan deze detecteert wanneer de basis installatie kopie van de toepassings installatie kopie wordt bijgewerkt. Met één vooraf geconfigureerde [Build-taak](container-registry-tutorial-base-image-update.md#create-a-task)bouwt ACR taken vervolgens **automatisch elke installatie kopie van de toepassing opnieuw** op. Met deze automatische detectie en het opnieuw samen stellen van ACR-taken bespaart u de tijd en inspanningen die normaal gesp roken nodig zijn voor het hand matig bijhouden en bijwerken van elke toepassings installatie kopie die verwijst naar de bijgewerkte basis installatie kopie.
 
-Meer informatie over patches voor besturings systemen en Framework in de ACR-zelf studie voor de derde taak [voor het automatiseren van installatie kopieën voor de update van de basis installatie kopie met Azure container Registry taken](container-registry-tutorial-base-image-update.md).
+Een ACR-taak houdt een update van een basis installatie kopie bij wanneer de basis installatie kopie zich op een van de volgende locaties bevindt:
 
-> [!NOTE]
-> Op dit moment worden alleen builds van de basis installatie kopieën gegenereerd als de basis-en toepassings installatie kopieën zich in hetzelfde Azure container Registry bevinden, of als de basis zich in een open bare docker hub of micro soft Container Registry-opslag plaats bevindt.
+* Hetzelfde Azure container Registry waarin de taak wordt uitgevoerd
+* Een ander Azure container registry in dezelfde regio 
+* Een open bare opslag plaats in docker hub
+* Een open bare opslag plaats in micro soft Container Registry
+
+Meer informatie over patches voor besturings systemen en Framework in de ACR-zelf studie voor de derde taak [voor het automatiseren van installatie kopieën voor de update van de basis installatie kopie met Azure container Registry taken](container-registry-tutorial-base-image-update.md).
 
 ## <a name="multi-step-tasks"></a>Taken met meerdere stappen
 

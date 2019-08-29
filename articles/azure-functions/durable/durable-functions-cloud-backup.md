@@ -1,120 +1,119 @@
 ---
-title: Fan-uitgaand/fan-in scenario's in duurzame functies - Azure
-description: Informatie over het implementeren van een scenario fan-uitgaand-ventilator-in in de extensie duurzame functies voor Azure Functions.
+title: Uitwaaier-en ventilator scenario's in Durable Functions-Azure
+description: Meer informatie over het implementeren van een uitgevallen ventilator in de Durable Functions extensie voor Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0bef5f1b64ec9f322070ba5c36cab138c7327da2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3db98039ae057e48867c91d1081c38066067c621
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741270"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087434"
 ---
-# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-uitgaand/fan-in-scenario in duurzame functies - back-voorbeeld van de Cloud
+# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Voor beeld van uitwaaier/ventilator in Durable Functions-Cloud-back-up
 
-*Fan-uitgaand/fan-in* verwijst naar het patroon van meerdere functies gelijktijdig uitgevoerd en vervolgens een aggregatie uit te voeren op de resultaten. Dit artikel wordt uitgelegd voor een voorbeeld dat gebruikmaakt van [duurzame functies](durable-functions-overview.md) voor het implementeren van een fan-in/fan-uitgaand scenario. Het voorbeeld is een duurzame functie die back-ups van alle of een deel van de site-inhoud van een app in Azure Storage.
+*Uitwaaieren/ventilatoren* verwijst naar het patroon van het gelijktijdig uitvoeren van meerdere functies en het uitvoeren van enige aggregatie op de resultaten. In dit artikel wordt een voor beeld uitgelegd dat gebruikmaakt van [Durable functions](durable-functions-overview.md) voor het implementeren van een in-en uitwaaierings scenario. Het voor beeld is een duurzame functie waarmee back-ups worden gemaakt van alle of een deel van de site-inhoud van een app in Azure Storage.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
 ## <a name="scenario-overview"></a>Overzicht van scenario's
 
-In dit voorbeeld wordt met de functies alle bestanden onder een opgegeven map recursief uploaden naar blob-opslag. Tellen wordt ook het totale aantal bytes dat zijn geüpload.
+In dit voor beeld worden met de functies alle bestanden onder een opgegeven map recursief naar Blob Storage geüpload. Ze tellen ook het totale aantal bytes dat is geüpload.
 
-Het is mogelijk één functie die zorgt voor van alles wat schrijven. Het belangrijkste probleem dat u het volgende uit in is **schaalbaarheid**. Uitvoering van één functie kan alleen uitgevoerd op een enkele virtuele machine, zodat de doorvoer wordt beperkt door de doorvoer van dat één virtuele machine. Een ander probleem is **betrouwbaarheid**. Als er een fout halverwege, of als het hele proces langer dan vijf minuten duurt, de back-up kan niet in een status gedeeltelijk voltooid. Er moet opnieuw worden gestart.
+Het is mogelijk om één functie te schrijven die van alles zorgt. Het belangrijkste probleem dat u kunt uitvoeren, is **schaal baarheid**. Het uitvoeren van één functie kan alleen worden uitgevoerd op één virtuele machine, zodat de door Voer wordt beperkt door de door Voer van die ene VM. Een ander probleem is de **betrouw baarheid**. Als er een fout is opgetreden in de praktijk, of als het hele proces meer dan vijf minuten duurt, kan de back-up mislukken met een gedeeltelijk voltooide status. Deze moet vervolgens opnieuw worden gestart.
 
-Een meer robuuste benadering zou zijn om twee reguliere functies te schrijven: één zou het inventariseren van de bestanden en voeg de bestandsnamen toe aan een wachtrij en een andere zou lezen uit de wachtrij en de bestanden uploaden naar blob-opslag. Dit is het beter wat betreft de doorvoer en betrouwbaarheid, maar u kunt inrichten en beheren van een wachtrij moet. Nog belangrijker, aanzienlijke complexiteit is geïntroduceerd in termen van **management status** en **coördinatie** als u doen meer wilt, zoals rapport het totale aantal bytes geüpload.
+Een robuustere benadering is het schrijven van twee reguliere functies: een zou de bestanden opsommen en de bestands namen toevoegen aan een wachtrij, en een andere Lees bewerking uit de wachtrij en de bestanden uploaden naar Blob-opslag. Dit is beter in het kader van de door Voer en betrouw baarheid, maar hiervoor moet u een wachtrij inrichten en beheren. Belang rijker is dat aanzienlijk complexer wordt gemaakt in termen van **status beheer** en **coördinatie** als u iets meer wilt doen, zoals rapport het totale aantal geüploade bytes.
 
-Een duurzame functies aanpak biedt u alle voordelen van de genoemde met weinig overhead.
+Een Durable Functions aanpak biedt u alle genoemde voor delen met zeer lage overhead.
 
 ## <a name="the-functions"></a>De functies
 
-Dit artikel wordt uitgelegd dat de volgende functies in de voorbeeld-app:
+In dit artikel worden de volgende functies in de voor beeld-app uitgelegd:
 
 * `E2_BackupSiteContent`
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-De volgende secties worden de configuratie en de code die worden gebruikt voor C#-scripts. De code voor het ontwikkelen van Visual Studio wordt weergegeven aan het einde van het artikel.
+In de volgende secties worden de configuratie en code uitgelegd die worden C# gebruikt voor het uitvoeren van scripts. De code voor Visual Studio-ontwikkeling wordt aan het einde van het artikel weer gegeven.
 
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>De cloud back-indeling (Visual Studio Code en Azure portal voorbeeldcode)
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>De Cloud backup-indeling (Visual Studio code en Azure Portal voorbeeld code)
 
-De `E2_BackupSiteContent` functie gebruikmaakt van de standaard *function.json* voor orchestrator-functies.
+De `E2_BackupSiteContent` functie maakt gebruik van de standaard *functie. json* voor Orchestrator-functies.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
 
-Dit is de code die de orchestrator-functie implementeert:
+Dit is de code waarmee de Orchestrator-functie wordt geïmplementeerd:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Deze functie orchestrator doet in feite het volgende:
+Deze Orchestrator-functie doet hoofd zakelijk het volgende:
 
-1. Neemt een `rootDirectory` waarde als een invoerparameter.
-2. Roept een functie om op te halen van een recursieve lijst met bestanden onder `rootDirectory`.
-3. Maakt meerdere parallelle functieaanroepen naar elk bestand uploaden naar Azure Blob Storage.
-4. Wacht tot alle uploads om te voltooien.
-5. Retourneert de som totaal aantal bytes die zijn geüpload naar Azure Blob Storage.
+1. Neemt een `rootDirectory` waarde als invoer parameter.
+2. Hiermee wordt een functie aangeroepen om een recursieve lijst met bestanden te `rootDirectory`verkrijgen onder.
+3. Maakt meerdere parallelle functie aanroepen om elk bestand te uploaden naar Azure Blob Storage.
+4. Er wordt gewacht tot alle uploads zijn voltooid.
+5. Retourneert het totale aantal bytes dat is geüpload naar Azure Blob Storage.
 
-U ziet dat de `await Task.WhenAll(tasks);` (C#) en `yield context.df.Task.all(tasks);` regels (JavaScript). Alle afzonderlijke aanroepen naar de `E2_CopyFileToBlob` functie zijn *niet* gestopt. Dit is opzettelijk zodat ze parallel worden uitgevoerd. Wanneer we deze reeks taken doorgeven `Task.WhenAll` (C#) of `context.df.Task.all` (JavaScript), krijgen we weer een taak die wordt niet voltooid *totdat alle kopieerbewerkingen hebt voltooid*. Als u bekend met de taak parallelle bibliotheek (TPL) in .NET bent of [ `Promise.all` ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript, is dit geen nieuw voor u. Het verschil is dat deze taken mogelijk gelijktijdig op meerdere virtuele machines worden uitgevoerd en de extensie duurzame functies zorgt ervoor dat de end-to-end-uitvoering tegen recyclen van processen is.
+Let op `await Task.WhenAll(tasks);` deC#regels ( `yield context.df.Task.all(tasks);` ) en (Java script). Alle afzonderlijke aanroepen naar de `E2_CopyFileToBlob` functie zijn *niet* gewacht. Dit is opzettelijk, zodat ze parallel kunnen worden uitgevoerd. Wanneer we deze matrix van taken door geven `Task.WhenAll` aanC#() `context.df.Task.all` of (Java script), krijgen we een taak terug die pas wordt voltooid als *alle kopieer bewerkingen zijn voltooid*. Als u bekend bent met de parallelle bibliotheek van de taak (TPL) in [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) .net of in Java script, is dit niet nieuw. Het verschil is dat deze taken gelijktijdig kunnen worden uitgevoerd op meerdere virtuele machines, en de uitbrei ding van de Durable Functions zorgt ervoor dat de end-to-end-uitvoering kan worden uitgebreid tot het proces wordt gerecycled.
 
 > [!NOTE]
-> Hoewel er taken zijn qua ontwerp vergelijkbaar met JavaScript beloften, orchestrator-functies moeten gebruiken `context.df.Task.all` en `context.df.Task.any` in plaats van `Promise.all` en `Promise.race` voor het beheren van taak parallellisering.
+> Hoewel taken conceptueel lijken op Java script-belofte, moeten Orchestrator-functies gebruikmaken `context.df.Task.all` van `context.df.Task.any` en in `Promise.all` plaats `Promise.race` van en om taak parallel Lise ring te beheren.
 
-Na in afwachting van `Task.WhenAll` (of uit wordt vrijgegeven `context.df.Task.all`), we weten dat alle aanroepen van de functie hebt voltooid en waarden terug naar ons zijn geretourneerd. Elke aanroep van `E2_CopyFileToBlob` retourneert het aantal bytes geüpload, zodat het berekenen van de som totaal aantal bytes-telling is een kwestie van het toevoegen van alle waarden samen retourneren.
+Nadat we hebben gewacht `Task.WhenAll` (of als resultaat van `context.df.Task.all`), weet u dat alle functie aanroepen zijn voltooid en waarden hebben geretourneerd naar ons. Elke aanroep voor `E2_CopyFileToBlob` het retour neren van het aantal geüploade bytes, dus het berekenen van het totaal aantal bytes is een kwestie van het toevoegen van alle retour waarden.
 
-## <a name="helper-activity-functions"></a>Activiteit hulpfuncties
+## <a name="helper-activity-functions"></a>Functies van de Help-activiteit
 
-De activiteit hulpfuncties net als bij andere voorbeelden zijn alleen normale functies die gebruikmaken van de `activityTrigger` binding activeren. Bijvoorbeeld, de *function.json* voor het bestand `E2_GetFileList` er als volgt uit:
+De functies van de Help-activiteit, net als bij andere voor beelden, zijn alleen `activityTrigger` normale functies die gebruikmaken van de trigger binding. Het bestand `E2_GetFileList` *Function. json* ziet er bijvoorbeeld als volgt uit:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
-En de implementatie als volgt:
+En dit is de implementatie:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-De JavaScript-uitvoering van `E2_GetFileList` maakt gebruik van de `readdirp` module recursief moeten lezen de mapstructuur.
+De Java script- `E2_GetFileList` implementatie van `readdirp` maakt gebruik van de module voor het recursief lezen van de mapstructuur.
 
 > [!NOTE]
-> U kunt vraagt zich misschien af waarom u kan niet alleen plaats deze code rechtstreeks in de orchestrator-functie. U kunt, maar deze strijdig is met een van de fundamentele regels van orchestrator-functies, is dat ze nooit i/o, inclusief lokale toegang tot bestandssysteem moeten doen.
+> U vraagt zich misschien af waarom u deze code niet rechtstreeks in de Orchestrator-functie wilt plaatsen. Dat kan, maar dit zou een van de fundamentele regels van Orchestrator-functies verstoren, dat wil zeggen dat ze nooit I/O moeten, waaronder lokale bestandssysteem toegang.
 
-De *function.json* voor het bestand `E2_CopyFileToBlob` is op deze manier eenvoudig:
+Het bestand *Function. json* voor `E2_CopyFileToBlob` is net zo eenvoudig:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-De C#-implementatie is ook eenvoudig. Dit gebeurt met het gebruik van enkele geavanceerde functies van Azure Functions-Bindingen (dat wil zeggen, het gebruik van de `Binder` parameter), maar u hoeft zich geen zorgen over de gegevens ten behoeve van dit scenario te.
+De C# implementatie is ook tamelijk eenvoudig. Er zijn enkele geavanceerde functies van Azure functions bindingen (dat wil zeggen, het gebruik van de `Binder` para meter), maar u hoeft zich geen zorgen te maken over deze Details voor het doel van deze procedure.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
-De JavaScript-uitvoering heeft geen toegang tot de `Binder` functie van Azure Functions, zodat de [Azure Storage SDK voor Node](https://github.com/Azure/azure-storage-node) de plaatsvindt.
+De Java script-implementatie heeft geen toegang tot `Binder` de functie van Azure functions. de [Azure Storage SDK voor het knoop punt](https://github.com/Azure/azure-storage-node) neemt dus de locatie.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
-De uitvoering wordt het bestand wordt geladen vanaf schijf en asynchroon streamt de inhoud naar een blob met dezelfde naam in de container 'back-ups'. De geretourneerde waarde is het aantal bytes dat is gekopieerd naar de opslag, die vervolgens wordt gebruikt door de orchestrator-functie voor het berekenen van het totaal.
+Met de implementatie wordt het bestand van de schijf geladen en wordt de inhoud asynchroon naar een blob met dezelfde naam in de container back-ups gestreamd. De geretourneerde waarde is het aantal bytes dat wordt gekopieerd naar de opslag, dat vervolgens wordt gebruikt door de Orchestrator-functie om de cumulatieve som te berekenen.
 
 > [!NOTE]
-> Dit is een goed voorbeeld van het verplaatsen van i/o-bewerkingen in een `activityTrigger` functie. Niet alleen kan worden het werk verdeeld over veel verschillende virtuele machines, maar ook profiteren van de voordelen van het plaatsen van controlepunten de voortgang. Als het hostproces opgehaald beëindigd voor een bepaalde reden, weet u welke uploads al hebt voltooid.
+> Dit is een perfecte voor beeld van het verplaatsen van I/O `activityTrigger` -bewerkingen in een functie. Niet alleen kan het werk worden verdeeld over verschillende Vm's, maar u krijgt ook de voor delen van het controle punt van de voortgang. Als het hostproces om welke reden dan ook wordt beëindigd, weet u dat er al een upload bewerking is voltooid.
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
 
@@ -129,9 +128,9 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> De `HttpStart` -functie die u aanroept werkt alleen met inhoud voor JSON-indeling. Om deze reden de `Content-Type: application/json` -header is vereist en het pad naar de map is gecodeerd als een JSON-tekenreeks. Bovendien HTTP-fragment wordt ervan uitgegaan er is een item in de `host.json` -bestand dat Hiermee verwijdert u de standaard `api/` voorvoegsel van alle functies URL van de HTTP-trigger. U vindt de opmaak voor deze configuratie in de `host.json` bestand in de voorbeelden.
+> De `HttpStart` functie die u aanroept, werkt alleen met inhoud in JSON-indeling. Daarom is de `Content-Type: application/json` header vereist en wordt het mappad gecodeerd als een JSON-teken reeks. Daarnaast wordt ervan uitgegaan dat er een vermelding in het `host.json` bestand staat waarmee het standaard `api/` voorvoegsel van alle http-trigger functies url's wordt verwijderd. U kunt de opmaak voor deze configuratie vinden in het `host.json` bestand in de voor beelden.
 
-Triggers voor deze HTTP-aanvraag de `E2_BackupSiteContent` orchestrator en geeft de tekenreeks `D:\home\LogFiles` als parameter. Het antwoord bevat een koppeling om de status van de back-upbewerking ophalen:
+Met deze HTTP-aanvraag `E2_BackupSiteContent` wordt de Orchestrator geactiveerd en wordt `D:\home\LogFiles` de teken reeks door gegeven als para meter. Het antwoord bevat een koppeling om de status van de back-upbewerking op te halen:
 
 ```
 HTTP/1.1 202 Accepted
@@ -142,7 +141,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 (...trimmed...)
 ```
 
-Deze bewerking kan enkele minuten duren, afhankelijk van hoeveel logboekbestanden in uw functie-app hebt. U kunt de meest recente status krijgen door het uitvoeren van query's de URL in de `Location` -header van het vorige HTTP 202-antwoord.
+Afhankelijk van het aantal logboek bestanden dat u in uw functie-app hebt, kan het enkele minuten duren voordat deze bewerking is voltooid. U kunt de meest recente status verkrijgen door een query uit te geven `Location` op de URL in de kop van het vorige http 202-antwoord.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -157,7 +156,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 {"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:16Z"}
 ```
 
-In dit geval wordt wordt de functie nog steeds uitgevoerd. U zijn kunt zien van de invoer die is opgeslagen in de orchestrator-status en de tijd voor laatst bijgewerkt. U kunt echter ook doorgaan met de `Location` headerwaarden worden gecontroleerd op voltooiing. Als de status 'voltooid' is, ziet u een HTTP-antwoord-waarde die vergelijkbaar is met het volgende:
+In dit geval wordt de functie nog steeds uitgevoerd. U kunt de invoer zien die is opgeslagen in de Orchestrator-status en het tijdstip waarop de gegevens voor het laatst zijn bijgewerkt. U kunt de `Location` header waarden blijven gebruiken om te controleren op voltooiing. Wanneer de status voltooid is, ziet u een HTTP-antwoord waarde die lijkt op het volgende:
 
 ```
 HTTP/1.1 200 OK
@@ -167,20 +166,20 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:26Z"}
 ```
 
-U kunt nu zien dat de indeling voltooid is en ongeveer hoeveel tijd het duurde om te voltooien. U ziet ook een waarde voor de `output` veld, waarmee wordt aangegeven dat ongeveer 450 KB van Logboeken zijn geüpload.
+Nu kunt u zien dat de indeling is voltooid en ongeveer de hoeveelheid tijd die nodig is om te volt ooien. U ziet ook een waarde voor het `output` veld, waarmee wordt aangegeven dat er ongeveer 450 kB aan logboeken is geüpload.
 
-## <a name="visual-studio-sample-code"></a>Visual Studio-voorbeeldcode
+## <a name="visual-studio-sample-code"></a>Visual Studio-voorbeeld code
 
-Hier volgt de indeling als één C#-bestand in een Visual Studio-project:
+Dit is de indeling als één C# bestand in een Visual Studio-project:
 
 > [!NOTE]
-> U moet voor het installeren van de `Microsoft.Azure.WebJobs.Extensions.Storage` Nuget-pakket om uit te voeren van de voorbeeldcode hieronder.
+> Als u de voorbeeld code hieronder `Microsoft.Azure.WebJobs.Extensions.Storage` wilt uitvoeren, moet u het Nuget-pakket installeren.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit voorbeeld heeft laten zien hoe u de fan-uitgaand/fan-in patroon wilt implementeren. Het volgende voorbeeld laat zien hoe voor het implementeren van de monitor patroon via [duurzame timers](durable-functions-timers.md).
+In dit voor beeld wordt aangegeven hoe u het patroon uitwaaieren/ventilatoren implementeert. In het volgende voor beeld ziet u hoe u het monitor patroon kunt implementeren met behulp van [duurzame timers](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
-> [De monitor-voorbeeld uitvoeren](durable-functions-monitor.md)
+> [De monitor-voor beeld uitvoeren](durable-functions-monitor.md)

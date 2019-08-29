@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 7f7a203495e35d9e4143fe247a55adaa43bc5d2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 22b7b79426829b57f15263f7792dca6596c6641f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817048"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073243"
 ---
 # <a name="import-soap-api"></a>SOAP API importeren
 
@@ -49,7 +48,7 @@ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-s
     ![Pass-through](./media/import-soap-api/pass-through.png)
 5. Druk op tab.
 
-    De volgende velden ingevuld met de gegevens van de SOAP-API: Weergavenaam, naam, beschrijving.
+    De volgende velden worden gevuld met de informatie uit de SOAP-API: Weergave naam, naam en beschrijving.
 6. Voeg een achtervoegsel toe van de URL voor de API. Het achtervoegsel is een naam die deze specifieke API in dit APIM-exemplaar identificeert. Hij moet uniek zijn in dit APIM-exemplaar.
 9. Publiceer de API door deze aan een product te koppelen. In dit geval wordt het product *onbeperkt* gebruikt.  Als u wilt dat de API wordt gepubliceerd en beschikbaar is voor ontwikkelaars, kunt u deze toevoegen aan een product. U kunt dit doen tijdens het maken van de API of het later instellen.
 

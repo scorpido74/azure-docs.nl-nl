@@ -1,6 +1,6 @@
 ---
-title: Hoge beschikbaarheid voor NFS op Azure VM's in SUSE Linux Enterprise Server | Microsoft Docs
-description: Hoge beschikbaarheid voor NFS op Azure VM's in SUSE Linux Enterprise Server
+title: Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server | Microsoft Docs
+description: Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 93644b9a3487906a27db70bfe82cceccdc7ab45c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707231"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101057"
 ---
-# <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge beschikbaarheid voor NFS op Azure VM's in SUSE Linux Enterprise Server
+# <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -51,141 +50,141 @@ ms.locfileid: "67707231"
 
 [sap-hana-ha]:sap-hana-high-availability.md
 
-In dit artikel wordt beschreven hoe u de virtuele machines implementeren, configureren van de virtuele machines, installeer het framework van het cluster en installeren van een maximaal beschikbare NFS-server die kan worden gebruikt voor het opslaan van de gedeelde gegevens van een maximaal beschikbare SAP-systeem.
-Deze handleiding wordt beschreven hoe u een maximaal beschikbare NFS-server die wordt gebruikt door twee SAP-systemen, NW1 en NW2 instelt. De namen van de resources (bijvoorbeeld virtuele machines, virtuele netwerken) in het voorbeeld wordt ervan uitgegaan dat u hebt gebruikt de [SAP-server de sjabloon][template-file-server] met het voorvoegsel van de resource **prod**.
+In dit artikel wordt beschreven hoe u de virtuele machines implementeert, de virtuele machines configureert, het cluster raamwerk installeert en een Maxi maal beschik bare NFS-server installeert die kan worden gebruikt om de gedeelde gegevens van een Maxi maal beschikbaar SAP-systeem op te slaan.
+In deze hand leiding wordt beschreven hoe u een Maxi maal beschik bare NFS-server instelt die wordt gebruikt door twee SAP-systemen, NW1 en NW2. De namen van de resources (bijvoorbeeld virtuele machines, virtuele netwerken) in het voor beeld aannemen dat u de SAP- [Bestands server sjabloon][template-file-server] hebt gebruikt met resource voorvoegsel **Prod**.
 
-Lees eerst de volgende SAP-opmerkingen en documenten
+Lees eerst de volgende SAP-opmerkingen en-documenten
 
-* SAP-notitie [1928533], heeft:
+* SAP-opmerking [1928533], die:
   * Lijst met Azure-VM-grootten die worden ondersteund voor de implementatie van SAP-software
-  * Informatie over belangrijke capaciteit voor Azure VM-grootten
-  * Ondersteunde SAP-software en besturingssysteem (OS) en combinaties van database
-  * Vereiste kernel van SAP-versie voor Windows en Linux op Microsoft Azure
+  * Informatie over belang rijke capaciteit voor Azure VM-grootten
+  * Ondersteunde SAP-software en besturings systemen (OS) en database combinaties
+  * Vereiste versie van de SAP-kernel voor Windows en Linux op Microsoft Azure
 
-* SAP-notitie [2015553] bevat vereisten voor SAP-ondersteunde SAP software-implementaties in Azure.
-* SAP-notitie [2205917] heeft aanbevolen instellingen voor het besturingssysteem voor SUSE Linux Enterprise Server voor SAP-toepassingen
-* SAP-notitie [1944799] SAP HANA-richtlijnen voor SUSE Linux Enterprise Server heeft voor SAP-toepassingen
-* SAP-notitie [2178632] vindt u meer informatie over alle bewaking metrische gegevens die zijn gerapporteerd voor SAP in Azure.
-* SAP-notitie [2191498] heeft de vereiste versie van de SAP-Host-Agent voor Linux in Azure.
-* SAP-notitie [2243692] bevat informatie over de licentieverlening voor SAP op Linux in Azure.
-* SAP-notitie [1984787] bevat algemene informatie over het SUSE Linux Enterprise Server 12.
-* SAP-notitie [1999351] bevat aanvullende informatie over probleemoplossing voor de Azure uitgebreide controle-extensie voor SAP.
-* [SAP-Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) bevat alle SAP-opmerkingen voor Linux vereist.
-* [Azure virtuele Machines, planning en implementatie van SAP op Linux][planning-guide]
-* [Azure Virtual Machines-implementatie voor SAP op Linux (in dit artikel)][deployment-guide]
-* [Azure virtuele Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
-* [SUSE Linux Enterprise hoge beschikbaarheid-extensie 12 SP3 best practice-richtlijnen][sles-hae-guides]
-  * Maximaal beschikbare NFS-opslag met DRBD en Pacemaker
-* [SUSE Linux Enterprise Server voor SAP-toepassingen 12 SP3 best practice-richtlijnen][sles-for-sap-bp]
-* [Releaseopmerkingen voor SUSE hoge beschikbaarheid extensie 12 SP3][suse-ha-12sp3-relnotes]
+* SAP-opmerking [2015553] bevat vereisten voor SAP-ondersteuning voor SAP-software-implementaties in Azure.
+* SAP Note [2205917] heeft aanbevolen instellingen voor het besturings systeem voor SuSE Linux Enterprise Server voor SAP-toepassingen
+* SAP Note [1944799] heeft SAP Hana richt lijnen voor SuSE Linux Enterprise Server voor SAP-toepassingen
+* SAP Note [2178632] bevat gedetailleerde informatie over alle bewakings gegevens die zijn gerapporteerd voor SAP in Azure.
+* SAP Note [2191498] heeft de vereiste SAP host agent-versie voor Linux in Azure.
+* SAP Note [2243692] bevat informatie over SAP-licentie verlening op Linux in Azure.
+* SAP Note [1984787] bevat algemene informatie over SuSE Linux Enterprise Server 12.
+* SAP Note [1999351] bevat extra informatie over probleem oplossing voor de uitgebreide bewakings extensie van Azure voor SAP.
+* Op de [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) zijn alle vereiste SAP-notities voor Linux geïnstalleerd.
+* [Azure Virtual Machines planning en implementatie voor SAP op Linux][planning-guide]
+* [Azure Virtual Machines-implementatie voor SAP op Linux (dit artikel)][deployment-guide]
+* [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
+* [Richt lijnen voor best practices voor de maximale Beschik baarheid van SUSE Linux Enter prise 12 SP3][sles-hae-guides]
+  * Maxi maal beschik bare NFS-opslag met DRBD en pacemaker
+* [SUSE Linux Enterprise Server voor SAP-toepassingen 12 SP3 best practices-hand leidingen][sles-for-sap-bp]
+* [Release opmerkingen voor de SUSE-extensie voor hoge Beschik baarheid van 12 SP3][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Overzicht
 
-SAP NetWeaver vereist voor het bereiken van hoge beschikbaarheid, een NFS-server. De NFS-server is geconfigureerd in een cluster dat gescheiden en kan worden gebruikt door meerdere SAP-systemen.
+Voor een hoge Beschik baarheid is SAP NetWeaver een NFS-server nodig. De NFS-server is geconfigureerd in een afzonderlijk cluster en kan worden gebruikt door meerdere SAP-systemen.
 
-![Overzicht van SAP NetWeaver hoge beschikbaarheid](./media/high-availability-guide-nfs/ha-suse-nfs.png)
+![Overzicht van de hoge Beschik baarheid van SAP netweave](./media/high-availability-guide-nfs/ha-suse-nfs.png)
 
-De NFS-server maakt gebruik van een speciale virtuele hostnaam en virtuele IP-adressen voor elk SAP-systeem die gebruikmaakt van deze server voor NFS. In Azure, wordt een load balancer overstappen naar een virtueel IP-adres. De volgende lijst ziet u de configuratie van de load balancer.        
+De NFS-server gebruikt een specifieke virtuele hostnaam en virtuele IP-adressen voor elk SAP-systeem dat deze NFS-server gebruikt. Op Azure is een load balancer vereist voor het gebruik van een virtueel IP-adres. De volgende lijst bevat de configuratie van de load balancer.        
 
-* Front-end-configuratie
+* Front-end configuratie
   * IP-adres 10.0.0.4 voor NW1
   * IP-adres 10.0.0.5 voor NW2
-* Back-endconfiguratie
-  * Verbonden met primaire netwerkinterfaces van alle virtuele machines die deel van het NFS-cluster uitmaken
-* Testpoort
+* Back-end-configuratie
+  * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster
+* Test poort
   * Poort 61000 voor NW1
   * Poort 61001 voor NW2
-* Regels van loadbalancing in Plbscheduler
+* Loadbalancing-regels
   * 2049 TCP voor NW1
   * 2049 UDP voor NW1
   * 2049 TCP voor NW2
   * 2049 UDP voor NW2
 
-## <a name="set-up-a-highly-available-nfs-server"></a>Een maximaal beschikbare NFS-server instellen
+## <a name="set-up-a-highly-available-nfs-server"></a>Een Maxi maal beschik bare NFS-server instellen
 
-U kunt een Azure-sjabloon gebruiken voor het implementeren van alle vereiste Azure-resources, met inbegrip van de virtuele machines, beschikbaarheid, en de load balancer of kunt u de resources handmatig implementeren.
+U kunt een Azure-sjabloon van GitHub gebruiken om alle vereiste Azure-resources te implementeren, met inbegrip van de virtuele machines, beschikbaarheidsset en load balancer, of u kunt de resources hand matig implementeren.
 
-### <a name="deploy-linux-via-azure-template"></a>Linux via Azure-sjabloon implementeren
+### <a name="deploy-linux-via-azure-template"></a>Linux implementeren via Azure-sjabloon
 
-De Azure Marketplace bevat een afbeelding voor SUSE Linux Enterprise Server voor 12 van de SAP-toepassingen die u gebruiken kunt om nieuwe virtuele machines te implementeren.
-U kunt een van de snelstartsjablonen van op GitHub gebruiken om alle vereiste resources te implementeren. De sjabloon implementeert de virtuele machines, load balancer, beschikbaarheidsset enzovoort. Volg deze stappen om de sjabloon te implementeren:
+De Azure Marketplace bevat een installatie kopie voor SUSE Linux Enterprise Server voor SAP-toepassingen 12 die u kunt gebruiken om nieuwe virtuele machines te implementeren.
+U kunt een van de Quick Start-sjablonen op GitHub gebruiken voor het implementeren van alle vereiste resources. De sjabloon implementeert de virtuele machines, de load balancer, de beschik baarheid, enzovoort. Volg deze stappen om de sjabloon te implementeren:
 
-1. Open de [SAP-server de sjabloon][template-file-server] in Azure portal   
-1. Voer de volgende parameters
-   1. Voorvoegsel van de resource  
-      Geef het voorvoegsel dat u wilt gebruiken. De waarde wordt gebruikt als een voorvoegsel voor de resources die zijn geïmplementeerd.
-   2. Telling van SAP-systeem  
-      Voer het nummer van de SAP-systemen die deze bestandsserver wordt gebruikt. Hierdoor wordt de vereiste hoeveelheid geïmplementeerd van frontend-configuraties, load balancer-regels, test u poorten, schijven, enzovoort.
-   3. Type besturingssysteem  
-      Selecteer een van de Linux-distributies. Selecteer voor dit voorbeeld, SLES 12
-   4. Gebruikersnaam voor de beheerder en het wachtwoord van beheerder  
-      Een nieuwe gebruiker wordt gemaakt die kan worden gebruikt voor aanmelding bij de machine.
+1. Open de [sjabloon SAP-Bestands server][template-file-server] in de Azure Portal   
+1. Voer de volgende para meters in
+   1. Resource voorvoegsel  
+      Geef het voor voegsel op dat u wilt gebruiken. De waarde wordt gebruikt als een voor voegsel voor de resources die worden geïmplementeerd.
+   2. Aantal SAP-systemen  
+      Voer het aantal SAP-systemen in dat deze bestands server gaat gebruiken. Hiermee implementeert u de vereiste hoeveelheid frontend-configuraties, regels voor taak verdeling, poort testen, schijven, enzovoort.
+   3. Type besturings systeem  
+      Selecteer een van de Linux-distributies. Selecteer voor dit voor beeld SLES 12
+   4. Gebruikers naam en beheerders wachtwoord voor beheerder  
+      Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    5. Subnet-ID  
-      Als u wilt de virtuele machine implementeren in een bestaand VNet waarin u een subnet dat is gedefinieerd hebben de virtuele machine moet worden toegewezen aan de ID van dat specifieke subnet een naam. De ID is meestal ziet eruit als /subscriptions/ **&lt;abonnements-ID&gt;** /resourceGroups/ **&lt;groepsnaam voor accountresources&gt;** /providers/ Microsoft.Network/virtualNetworks/ **&lt;virtuele-netwerknaam&gt;** /subnets/ **&lt;subnetnaam&gt;**
+      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De id is doorgaans hetzelfde als/Subscriptions/ **&lt;-&gt;abonnements-id**/resourceGroups/ **&lt;naam&gt;van de resource groep**/providers/Microsoft.Network/virtualNetworks/ **&lt; naam&gt;** van**het&lt;/subnets/-subnetvanhetvirtuelenetwerk&gt;**
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Handmatig implementeren van Linux via Azure portal
+### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
-U moet eerst de virtuele machines voor dit cluster NFS maken. Daarna wordt u een load balancer maken en gebruiken van de virtuele machines in de back endadresgroepen.
+U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
 
 1. Een resourcegroep maken
-1. Een virtueel netwerk maken
+1. Een Virtual Network maken
 1. Een Beschikbaarheidsset maken  
-   De maximale updatedomein instellen
-1. Ten minste 1 gebruik van virtuele Machine maken SLES4SAP 12 SP3, in dit voorbeeld de SLES4SAP 12 SP3 BYOS image SLES voor SAP Applications 12 SP3 (BYOS) wordt gebruikt  
-   Selecteer de Beschikbaarheidsset eerder hebt gemaakt  
-1. Maken van virtuele Machine 2 gebruik ten minste SLES4SAP 12 SP3, in dit voorbeeld de SLES4SAP 12 SP3 BYOS-afbeelding  
-   SLES voor SAP Applications 12 SP3 (BYOS) wordt gebruikt  
-   Selecteer de Beschikbaarheidsset eerder hebt gemaakt  
-1. Een gegevensschijf voor elk SAP-systeem toevoegen aan beide virtuele machines.
-1. Maak een Load Balancer (intern)  
+   Maximum aantal update domeinen instellen
+1. Virtuele machine 1 maken gebruik ten minste SLES4SAP 12 SP3, in dit voor beeld wordt de SLES4SAP 12 SP3 BYOS image SLES for SAP-toepassingen 12 SP3 (BYOS) gebruikt  
+   Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
+1. Virtuele machine 2 maken gebruik ten minste SLES4SAP 12 SP3, in dit voor beeld de SLES4SAP 12 SP3 BYOS-installatie kopie  
+   SLES for SAP-toepassingen 12 SP3 (BYOS) wordt gebruikt  
+   Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
+1. Voeg één gegevens schijf voor elk SAP-systeem toe aan beide virtuele machines.
+1. Een Load Balancer maken (intern)  
    1. De frontend-IP-adressen maken
       1. IP-adres 10.0.0.4 voor NW1
-         1. De load balancer openen, front-end-IP-adresgroep selecteren en klik op toevoegen
-         1. Voer de naam van de nieuwe frontend-IP-adresgroep (bijvoorbeeld **nw1-frontend**)
-         1. De toewijzing instellen op statisch en geef het IP-adres (bijvoorbeeld **10.0.0.4**)
+         1. Open de load balancer, selecteer de frontend-IP-adres groep en klik op toevoegen
+         1. Voer de naam van de nieuwe front-end-IP-adres groep in (bijvoorbeeld **NW1-** front-end)
+         1. Stel de toewijzing in op statisch en voer het IP-adres in (bijvoorbeeld **10.0.0.4**)
          1. Klik op OK
       1. IP-adres 10.0.0.5 voor NW2
-         * Herhaal de stappen hierboven voor NW2
-   1. De back endadresgroepen maken
-      1. Verbonden met primaire netwerkinterfaces van alle virtuele machines die deel van de NFS-cluster voor NW1 uitmaken
-         1. Open de load balancer, back-endpools selecteren en klik op toevoegen
-         1. Voer de naam van de nieuwe back endpool (bijvoorbeeld **nw1-back-end**)
+         * Herhaal de bovenstaande stappen voor NW2
+   1. De back-end-Pools maken
+      1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW1
+         1. Open de load balancer, selecteer back-endservers en klik op toevoegen
+         1. Voer de naam van de nieuwe back-end-groep in (bijvoorbeeld **NW1-back-end**)
          1. Klik op een virtuele machine toevoegen
-         1. Selecteer de Beschikbaarheidsset u eerder hebt gemaakt
-         1. Selecteer de virtuele machines van de NFS-cluster
+         1. Selecteer de Beschikbaarheidsset die u eerder hebt gemaakt
+         1. De virtuele machines van het NFS-cluster selecteren
          1. Klik op OK
-      1. Verbonden met primaire netwerkinterfaces van alle virtuele machines die deel van de NFS-cluster voor NW2 uitmaken
-         * Herhaal de stappen hierboven om een back endadresgroep maken voor NW2
-   1. De statuscontroles maken
+      1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW2
+         * Herhaal de bovenstaande stappen voor het maken van een back-end-groep voor NW2
+   1. De status tests maken
       1. Poort 61000 voor NW1
-         1. De load balancer openen, selecteer statuscontroles en klikt u op toevoegen
-         1. Voer de naam van de nieuwe statustest (bijvoorbeeld **nw1 hp**)
-         1. Selecteer TCP als protocol, poort 610**00**, Interval van 5 en de drempelwaarde voor onjuiste status 2
+         1. Open de load balancer, selecteer status controles en klik op toevoegen
+         1. Voer de naam van de nieuwe status test in (bijvoorbeeld **NW1-HP**)
+         1. TCP als protocol selecteren, poort 610**00**, interval 5 en drempel waarde voor onjuiste status 2 gebruiken
          1. Klik op OK
       1. Poort 61001 voor NW2
-         * Herhaal de stappen hierboven om te maken van een statustest voor NW2
-   1. Regels van loadbalancing in Plbscheduler
+         * Herhaal de bovenstaande stappen voor het maken van een status test voor NW2
+   1. Loadbalancing-regels
       1. 2049 TCP voor NW1
-         1. De load balancer openen, selecteert u load balancer-regels en klikt u op toevoegen
-         1. Voer de naam van de nieuwe load balancer-regel (bijvoorbeeld **nw1-lb-2049**)
-         1. Selecteer de front-end-IP-adres, de back-endpool en de statustest die u eerder hebt gemaakt (bijvoorbeeld **nw1-frontend**)
-         1. Houd protocol **TCP**, voer poort **2049**
+         1. Open de load balancer, selecteer taakverdelings regels en klik op toevoegen
+         1. Voer de naam in van de nieuwe load balancer regel (bijvoorbeeld **NW1-lb-2049**)
+         1. Selecteer het frontend-IP-adres, de back-end-pool en de status test die u eerder hebt gemaakt (bijvoorbeeld **NW1-front-end**)
+         1. Behoud protocol **TCP**, voer poort **2049** in
          1. Time-out voor inactiviteit tot 30 minuten verhogen
-         1. **Zorg ervoor dat u zwevend IP inschakelen**
+         1. **Zorg ervoor dat zwevend IP-adressen zijn ingeschakeld**
          1. Klik op OK
       1. 2049 UDP voor NW1
-         * Herhaal de bovenstaande stappen voor- en UDP-poort 2049 voor NW1
+         * Herhaal de bovenstaande stappen voor poort 2049 en UDP voor NW1
       1. 2049 TCP voor NW2
-         * Herhaal de stappen hierboven voor- en TCP-poort 2049 voor NW2
+         * Herhaal de bovenstaande stappen voor poort 2049 en TCP voor NW2
       1. 2049 UDP voor NW2
-         * Herhaal de bovenstaande stappen voor- en UDP-poort 2049 voor NW2
+         * Herhaal de bovenstaande stappen voor poort 2049 en UDP voor NW2
 
 > [!IMPORTANT]
-> Schakel geen TCP-tijdstempels op Azure VM's achter Azure Load Balancer worden geplaatst. Inschakelen van TCP tijdstempels zorgt ervoor dat de statuscontroles mislukken. Stel de parameter **net.ipv4.tcp_timestamps** naar **0**. Zie voor meer informatie [Load Balancer statuscontroles](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. TCP _timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
 
-### <a name="create-pacemaker-cluster"></a>Pacemaker-cluster maken
+### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 
-Volg de stappen in [Pacemaker op SUSE Linux Enterprise Server in Azure instellen](high-availability-guide-suse-pacemaker.md) om een eenvoudige Pacemaker-cluster voor deze NFS-server te maken.
+Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](high-availability-guide-suse-pacemaker.md) om een basis pacemaker-cluster voor deze NFS-server te maken.
 
 ### <a name="configure-nfs-server"></a>NFS-server configureren
 
@@ -194,7 +193,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 1. **[A]**  Omzetten van de hostnaam instellen
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
-   Vervang het IP-adres en de hostnaam in de volgende opdrachten
+   Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -206,47 +205,47 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <b>10.0.0.5 nw2-nfs</b>
    </code></pre>
 
-1. **[A]**  Inschakelen NFS-server
+1. **[A]** NFS-server inschakelen
 
-   De NFS-export basisvermelding te maken
+   De export vermelding voor het hoofd-NFS maken
 
    <pre><code>sudo sh -c 'echo /srv/nfs/ *\(rw,no_root_squash,fsid=0\)>/etc/exports'
    
    sudo mkdir /srv/nfs/
    </code></pre>
 
-1. **[A]**  Drbd onderdelen installeren
+1. **[A]** drbd-onderdelen installeren
 
    <pre><code>sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
-1. **[A]**  Maken van een partitie voor de drbd-apparaten
+1. **[A]** een partitie maken voor de drbd-apparaten
 
-   Alle schijven van de beschikbare gegevens weergeven
+   Alle beschik bare gegevens schijven weer geven
 
    <pre><code>sudo ls /dev/disk/azure/scsi1/
    </code></pre>
 
-   Voorbeeld van uitvoer
+   Voorbeeld uitvoer
    
    ```
    lun0  lun1
    ```
 
-   Partities voor elke gegevensschijf maken
+   Partities maken voor elke gegevens schijf
 
    <pre><code>sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun1'
    </code></pre>
 
-1. **[A]**  Maken LVM-configuraties
+1. **[A]** LVM-configuraties maken
 
-   Lijst met alle beschikbare partities
+   Alle beschik bare partities weer geven
 
    <pre><code>ls /dev/disk/azure/scsi1/lun*-part*
    </code></pre>
 
-   Voorbeeld van uitvoer
+   Voorbeeld uitvoer
    
    ```
    /dev/disk/azure/scsi1/lun0-part1  /dev/disk/azure/scsi1/lun1-part1
@@ -263,23 +262,23 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo lvcreate -l 100%FREE -n <b>NW2</b> vg-<b>NW2</b>-NFS
    </code></pre>
 
-1. **[A]**  Drbd configureren
+1. **[A]** drbd configureren
 
    <pre><code>sudo vi /etc/drbd.conf
    </code></pre>
 
-   Zorg ervoor dat het bestand drbd.conf de volgende twee regels bevat
+   Zorg ervoor dat het bestand drbd. conf de volgende twee regels bevat
 
    <pre><code>include "drbd.d/global_common.conf";
    include "drbd.d/*.res";
    </code></pre>
 
-   De globale drbd-configuratie wijzigen
+   De configuratie van de globale drbd wijzigen
 
    <pre><code>sudo vi /etc/drbd.d/global_common.conf
    </code></pre>
 
-   De volgende vermeldingen toevoegen aan de handler en net sectie.
+   Voeg de volgende items toe aan de handler en de sectie net.
 
    <pre><code>global {
         usage-count no;
@@ -318,12 +317,12 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    }
    </code></pre>
 
-1. **[A]**  Maken de NFS-drbd-apparaten
+1. **[A]** de NFS drbd-apparaten maken
 
    <pre><code>sudo vi /etc/drbd.d/<b>NW1</b>-nfs.res
    </code></pre>
 
-   De configuratie voor de nieuwe drbd apparaat- en uitgiftemodules invoegen
+   De configuratie voor het nieuwe drbd-apparaat invoegen en afsluiten
 
    <pre><code>resource <b>NW1</b>-nfs {
         protocol     C;
@@ -348,7 +347,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <pre><code>sudo vi /etc/drbd.d/<b>NW2</b>-nfs.res
    </code></pre>
 
-   De configuratie voor de nieuwe drbd apparaat- en uitgiftemodules invoegen
+   De configuratie voor het nieuwe drbd-apparaat invoegen en afsluiten
 
    <pre><code>resource <b>NW2</b>-nfs {
         protocol     C;
@@ -370,7 +369,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    }
    </code></pre>
 
-   Maken van het apparaat drbd en start de App
+   Het drbd-apparaat maken en starten
 
    <pre><code>sudo drbdadm create-md <b>NW1</b>-nfs
    sudo drbdadm create-md <b>NW2</b>-nfs
@@ -378,25 +377,25 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo drbdadm up <b>NW2</b>-nfs
    </code></pre>
 
-1. **[1]**  Overslaan van de initiële synchronisatie
+1. **[1]** eerste synchronisatie overs Laan
 
    <pre><code>sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
    sudo drbdadm new-current-uuid --clear-bitmap <b>NW2</b>-nfs
    </code></pre>
 
-1. **[1]**  Het primaire knooppunt instellen
+1. **[1]** het primaire knoop punt instellen
 
    <pre><code>sudo drbdadm primary --force <b>NW1</b>-nfs
    sudo drbdadm primary --force <b>NW2</b>-nfs
    </code></pre>
 
-1. **[1]**  Wacht totdat de nieuwe drbd apparaten worden gesynchroniseerd
+1. **[1]** wacht totdat de nieuwe drbd-apparaten zijn gesynchroniseerd
 
    <pre><code>sudo drbdsetup wait-sync-resource NW1-nfs
    sudo drbdsetup wait-sync-resource NW2-nfs
    </code></pre>
 
-1. **[1]**  Bestandssystemen op de apparaten drbd maken
+1. **[1]** bestands systemen op de drbd-apparaten maken
 
    <pre><code>sudo mkfs.xfs /dev/drbd0
    sudo mkdir /srv/nfs/NW1
@@ -425,17 +424,17 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo umount /srv/nfs/NW2
    </code></pre>
 
-1. **[A]**  Drbd split-brain detectie instellen
+1. **[A]** drbd detectie van Split-hersenen
 
-   Wanneer u drbd gebruikt om gegevens van de ene host naar een andere te synchroniseren, kan een zogenaamde split-brain optreden. Een split-brain is een scenario waarin beide clusterknooppunten gepromoveerd van het apparaat in drbd als de primaire en is niet gesynchroniseerd. Is het mogelijk een zeldzame situatie, maar u nog steeds wilt verwerken en een splitsing brein moeite heeft zo snel mogelijk opgelost. Daarom is het belangrijk om te worden geïnformeerd wanneer een split-brain is er gebeurd.
+   Wanneer u drbd gebruikt voor het synchroniseren van gegevens van de ene host naar een andere, kan een zogenaamde Splits hersenen worden uitgevoerd. Een splits-hersenen is een scenario waarbij beide cluster knooppunten het drbd-apparaat hebben gepromoveerd tot de primaire en niet-gesynchroniseerd. Het kan een zeldzame situatie zijn, maar u moet nog steeds een splits-hersenen zo snel mogelijk verwerken en oplossen. Het is daarom belang rijk om een melding te ontvangen wanneer een split-hersenen is opgetreden.
 
-   Lezen [de documentatie van de officiële drbd](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) over het instellen van een splitsing brein melding.
+   Lees [de officiële drbd-documentatie](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) over het instellen van een melding voor gesplitste hersenen.
 
-   Het is ook mogelijk om te een splitsing brein scenario automatisch worden hersteld. Lees voor meer informatie, [automatische splitsen brein herstelbeleid](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
+   Het is ook mogelijk om automatisch te herstellen vanuit een split-hersenen scenario. Lees voor meer informatie [automatisch splitsen voor gesplitste herstel beleid](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
    
-### <a name="configure-cluster-framework"></a>Cluster-Framework configureren
+### <a name="configure-cluster-framework"></a>Cluster Framework configureren
 
-1. **[1]**  NFS drbd apparaten voor SAP-systeem NW1 toevoegen aan de configuratie van het cluster
+1. **[1]** Voeg de NFS drbd-apparaten voor de SAP-systeem NW1 toe aan de cluster configuratie
 
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
@@ -486,7 +485,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
      g-<b>NW1</b>_nfs ms-drbd_<b>NW1</b>_nfs:Master
    </code></pre>
 
-1. **[1]**  NFS drbd apparaten voor SAP-systeem NW2 toevoegen aan de configuratie van het cluster
+1. **[1]** Voeg de NFS drbd-apparaten voor de SAP-systeem NW2 toe aan de cluster configuratie
 
    <pre><code># Enable maintenance mode
    sudo crm configure property maintenance-mode=true
@@ -531,16 +530,16 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
 
-1. **[1]**  Onderhoudsmodus uitschakelen
+1. **[1]** onderhouds modus uitschakelen
    
    <pre><code>sudo crm configure property maintenance-mode=false
    </code></pre>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De SAP ASCS en -database installeren](high-availability-guide-suse.md)
-* [Azure virtuele Machines, planning en implementatie van SAP][planning-guide]
+* [De SAP-ASCS en-data base installeren](high-availability-guide-suse.md)
+* [Azure Virtual Machines planning en implementatie voor SAP][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP][deployment-guide]
-* [Azure virtuele Machines DBMS-implementatie voor SAP][dbms-guide]
-* Zie voor meer informatie over het opzetten van hoge beschikbaarheid en plan voor herstel na noodgevallen van SAP HANA op Azure (grote instanties), [SAP HANA (grote instanties) hoge beschikbaarheid en herstel na noodgeval op Azure](hana-overview-high-availability-disaster-recovery.md).
-* Zie voor meer informatie over het opzetten van hoge beschikbaarheid en plan voor herstel na noodgevallen van SAP HANA op Azure Virtual machines, [hoge beschikbaarheid van SAP HANA op Azure Virtual Machines (VM's)][sap-hana-ha]
+* [Azure Virtual Machines DBMS-implementatie voor SAP][dbms-guide]
+* Zie [SAP Hana (grote instanties) hoge Beschik baarheid en herstel na nood gevallen op Azure](hana-overview-high-availability-disaster-recovery.md)voor meer informatie over het tot stand brengen van een hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure (grote exemplaren).
+* Zie [hoge Beschik baarheid van SAP Hana op azure virtual machines (vm's)][sap-hana-ha] voor meer informatie over het opzetten van een hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure-vm's.

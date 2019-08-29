@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: a86ce329a19272eb83c431af395b330f75111361
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 083702a5340ed47370a8b4c7d64846848636ba30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323301"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094876"
 ---
 # <a name="pool-create-event"></a>Gebeurtenis pool maken
 
@@ -49,8 +48,8 @@ ms.locfileid: "68323301"
 
 |Element|type|Opmerkingen|
 |-------------|----------|-----------|
-|id|Reeks|De id van de pool.|
-|displayName|Reeks|De weergave naam van de pool.|
+|id|Tekenreeks|De id van de pool.|
+|displayName|Tekenreeks|De weergave naam van de pool.|
 |vmSize|Tekenreeks|De grootte van de virtuele machines in de groep. Alle virtuele machines in een groep hebben dezelfde grootte. <br/><br/> Zie [grootten voor Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)voor informatie over de beschik bare grootten van virtuele machines voor Cloud Services Pools (Pools die zijn gemaakt met cloudServiceConfiguration). Batch ondersteunt alle Cloud Services VM-grootten behalve `ExtraSmall`.<br/><br/> Zie [grootten voor virtual machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) of [grootten voor virtual machines](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows) voor meer informatie over de beschik bare VM-grootten voor Pools met installatie kopieën van de virtual machines Marketplace (Pools die zijn gemaakt met virtualMachineConfiguration). Batch ondersteunt alle Azure VM-groottes met uitzondering van `STANDARD_A0` en die met Premium Storage (de serie `STANDARD_GS`, `STANDARD_DS` en `STANDARD_DSV2`).|
 |[cloudServiceConfiguration](#bk_csconf)|Complex type|De Cloud service configuratie voor de groep.|
 |[virtualMachineConfiguration](#bk_vmconf)|Complex type|De virtuele-machine configuratie voor de groep.|
@@ -75,17 +74,17 @@ ms.locfileid: "68323301"
 |De naam van element|type|Opmerkingen|
 |------------------|----------|-----------|
 |[imageReference](#bk_imgref)|Complex type|Hiermee geeft u informatie op over het platform of de Marketplace-installatie kopie die moet worden gebruikt.|
-|nodeAgentSKUId|Reeks|De SKU van de batch-knooppunt agent die is ingericht op het reken knooppunt.|
+|nodeAgentSKUId|Tekenreeks|De SKU van de batch-knooppunt agent die is ingericht op het reken knooppunt.|
 |[windowsConfiguration](#bk_winconf)|Complex type|Hiermee geeft u de instellingen van het Windows-besturings systeem op de virtuele machine. Deze eigenschap moet niet worden opgegeven als de imageReference verwijst naar een Linux-installatie kopie van het besturings systeem.|
 
 ###  <a name="bk_imgref"></a>imageReference
 
 |De naam van element|type|Opmerkingen|
 |------------------|----------|-----------|
-|publisher|Reeks|De uitgever van de installatie kopie.|
+|publisher|Tekenreeks|De uitgever van de installatie kopie.|
 |oplossingen|Tekenreeks|De aanbieding van de installatie kopie.|
-|sku|Reeks|De SKU van de afbeelding.|
-|version|Reeks|De versie van de installatie kopie.|
+|sku|Tekenreeks|De SKU van de afbeelding.|
+|version|Tekenreeks|De versie van de installatie kopie.|
 
 ###  <a name="bk_winconf"></a>windowsConfiguration
 

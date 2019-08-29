@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc1200d6acef077e36f701a75f613aba0ccbb75f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319455"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103397"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Niet van RDP-verbinding met een virtuele machine omdat de virtuele machine wordt opgestart in de veilige modus
 
@@ -113,19 +112,19 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
     reg unload HKLM\BROKENSYSTEM
     ```
 
-#### <a name="configure-the-windows-to-boot-into-normal-mode"></a>Configureren van de Windows om op te starten in de normale modus
+#### <a name="configure-the-windows-to-boot-into-normal-mode"></a>Windows configureren om op te starten in de normale modus
 
 1. Open een opdrachtprompt met verhoogde bevoegdheid-sessie (**als administrator uitvoeren**).
-2. Controleer de opstartconfiguratiegegevens. In de volgende opdrachten, we gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde voor uw virtuele machine.
+2. Controleer de opstart configuratie gegevens. In de volgende opdrachten wordt ervan uitgegaan dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf F is. Vervang deze stationsletter door de juiste waarde voor de virtuele machine.
 
         bcdedit /store F:\boot\bcd /enum
-    Noteer de id-naam van de partitie met de **\windows** map. Standaard is de id-naam 'Standaard'.
+    Noteer de id-naam van de partitie die de map **\Windows** heeft. De id-naam is standaard ingesteld op standaard.
 
-    Als de virtuele machine is geconfigureerd om op te starten in de veilige modus, ziet u een extra vlag onder de **Windows-opstartlaadprogramma** sectie met de naam **veilig**. Als u niet ziet de **veilig** vlag, in dit artikel is niet van toepassing op uw scenario.
+    Als de virtuele machine is geconfigureerd om op te starten in de veilige modus, ziet u een extra vlag onder de **Windows-opstartlaadprogramma** sectie met de naam **veilig**. Als u de vlag **safeboot** niet ziet, is dit artikel niet van toepassing op uw scenario.
 
-    ![De afbeelding over opstarten id](./media/troubleshoot-rdp-safe-mode/boot-id.png)
+    ![De installatie kopie over de opstart-id](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
-3. Verwijder de **veilig** markeren, zodat de virtuele machine opnieuw in de normale modus opgestart:
+3. Verwijder de vlag **safeboot** , zodat de virtuele machine in de normale modus wordt opgestart:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
 4. Controleer de opstartconfiguratiegegevens om ervoor te zorgen dat de **veilig** markering wordt verwijderd:
