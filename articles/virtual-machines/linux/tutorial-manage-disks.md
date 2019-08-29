@@ -9,7 +9,6 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
@@ -17,16 +16,16 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 02dd1b293d250b1adf09325fa36e01f176722599
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9f4aec031d9ba8a162b022541c6e4cb35ce976a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708472"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081511"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Zelfstudie: Azure-schijven beheren met de Azure CLI
 
-Virtuele machines (VM's) in Azure gebruiken schijven om het besturingssysteem, toepassingen en gegevens op te slaan. Wanneer u een virtuele machine maakt, is het belangrijk dat u een schijfgrootte en configuratie die geschikt zijn voor de verwachte werkbelasting kiest. In deze zelfstudie ziet u hoe u VM-schijven implementeert en beheert. U krijgt informatie over:
+Virtuele machines (VM's) in Azure gebruiken schijven om het besturingssysteem, toepassingen en gegevens op te slaan. Wanneer u een virtuele machine maakt, is het belang rijk dat u een schijf grootte en configuratie kiest die geschikt is voor de verwachte werk belasting. In deze zelfstudie ziet u hoe u VM-schijven implementeert en beheert. U krijgt informatie over:
 
 > [!div class="checklist"]
 > * Besturingssysteemschijven en tijdelijke schijven
@@ -69,9 +68,9 @@ In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
-Azure Cloud Shell is een gratis interactieve shell die u gebruiken kunt om uit te voeren van de stappen in dit artikel. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account.
+Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de stappen in dit artikel uit te voeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account.
 
-Als u Cloud Shell, schakelt **uitproberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/bash) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **deze** in de rechter bovenhoek van een code blok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/bash) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="create-and-attach-disks"></a>Schijven maken en koppelen
 
@@ -179,7 +178,7 @@ Nu de schijf is geconfigureerd, sluit u de SSH-sessie.
 exit
 ```
 
-## <a name="take-a-disk-snapshot"></a>Een diskette momentopname
+## <a name="take-a-disk-snapshot"></a>Een moment opname van de schijf maken
 
 Wanneer u een momentopname van de schijf maakt, maakt Azure een alleen-lezen en tijdgebonden kopie van de schijf. Azure VM-momentopnamen zijn handig om snel de status van een virtuele machine op te slaan voordat u configuratiewijzigingen aanbrengt. Bij een probleem of fout kan de virtuele machine worden hersteld met behulp van een momentopname. Wanneer een virtuele machine meer dan één schijf heeft, wordt van elke schijf een momentopname gemaakt, onafhankelijk van de andere schijven. Overweeg de virtuele machine te stoppen voordat u momentopnamen van de schijf maakt, zodat u toepassingsconsistente back-ups kunt maken. U kunt ook de [Azure Backup-service](/azure/backup/) gebruiken, waarmee u automatische back-ups kunt maken terwijl de virtuele machine wordt uitgevoerd.
 

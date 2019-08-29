@@ -1,5 +1,5 @@
 ---
-title: Uw eerste functie maken vanuit Azure portal | Microsoft Docs
+title: Maak uw eerste functie van de Azure Portal | Microsoft Docs
 description: Leer hoe u uw eerste serverloze Azure-functie kunt maken met behulp van Azure Portal.
 services: functions
 documentationcenter: na
@@ -7,28 +7,27 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 4a49cb3de2dc36dcd933a0b31b6a55b838eb1336
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 93b3f34b78710b18b6ff95f91b3eeda09e9e73e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864626"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096990"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Uw eerste functie maken in Azure Portal
 
-Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren. In dit artikel leert u hoe u Functions een 'Hallo wereld'-functie maakt in Azure portal gebruikt.
+Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren. In dit artikel vindt u informatie over het gebruik van functies voor het maken van een "Hallo wereld"-functie in de Azure Portal.
 
 ![Functie-app maken in Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C#Ontwikkelaars moeten rekening houden met [uw eerste functie maken in Visual Studio 2019](functions-create-your-first-function-visual-studio.md) in plaats van in de portal. 
+> C#Ontwikkel aars kunnen overwegen [uw eerste functie in Visual Studio 2019 te maken](functions-create-your-first-function-visual-studio.md) in plaats van in de portal. 
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
@@ -44,9 +43,9 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-function"></a>Een door HTTP geactiveerde functie maken
 
-1. Vouw uw nieuwe functie-app uit en selecteer vervolgens de **+**-knop naast **Functies**, kies **In de portal** en selecteer **Doorgaan**.
+1. Vouw uw nieuwe functie-app uit en selecteer vervolgens de **+** -knop naast **Functies**, kies **In de portal** en selecteer **Doorgaan**.
 
-    ![Snelstartgids voor het kiezen van een platform voor Functions.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Functies Quick start voor het kiezen van een platform.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
 1. Kies **WebHook + API** en selecteer vervolgens **Maken**.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: ca4908e642644ccbf349841d143bfcc18e944025
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 25c732d1311e2bcffe0fda0d5e427d5df5f99da6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305836"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065932"
 ---
 # <a name="security-groups"></a>Beveiligingsgroepen
 <a name="network-security-groups"></a>
@@ -56,38 +56,38 @@ Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van
 
 De volgende service tags zijn beschikbaar voor gebruik in [regels voor netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules). Service tags met sterretje aan het einde (dat wil zeggen Cloud *) kunnen ook worden gebruikt in [Azure firewall-netwerk regels](https://docs.microsoft.com/azure/firewall/service-tags). 
 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** voor de klassieke versie): Deze tag omvat de adres ruimte van het virtuele netwerk (alle CIDR-bereiken die zijn gedefinieerd voor het virtuele netwerk), alle verbonden on-premises adres ruimten, [gekoppelde virtuele netwerken](virtual-network-peering-overview.md) of virtuele netwerken die zijn verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en-adres voor voegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Houd er rekening mee dat deze tag mogelijk een standaard route kan bevatten. 
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** voor de klassieke versie): Met deze tag wordt de load balancer voor de infrastructuur van Azure aangeduid. De tag wordt omgezet in het [Virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) van waaruit statuscontroles van Azure worden uitgevoerd. Als u de load balancer van Azure niet gebruikt, kunt u deze regel onderdrukken.
-* **Internet** (Resource Manager) (**INTERNET** voor de klassieke versie): Met deze tag wordt de IP-adresruimte aangeduid die zich buiten het virtuele netwerk bevindt en bereikbaar is via internet. Dit adresbereik omvat ook de [openbare IP-adresruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653).
-* **Cloud*** (alleen Resource Manager): Met deze tag wordt de IP-adresruimte voor Azure aangeduid, inclusief alle [openbare IP-adressen van het datacenter](https://www.microsoft.com/download/details.aspx?id=41653). Als u *AzureCloud* opgeeft als waarde, wordt verkeer naar AzureCloud toegestaan of geweigerd. Als u alleen toegang tot cloud in een bepaalde [regio](https://azure.microsoft.com/regions)wilt toestaan, kunt u de regio opgeven in de volgende indeling Cloud. [regio naam]. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **AzureTrafficManager*** (alleen Resource Manager): Met deze tag wordt de IP-adresruimte voor de test-IP-adressen van Azure Traffic Manager aangeduid. Meer informatie over de test-IP-adressen van Traffic Manager vindt u in de [Veelgestelde vragen over Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). Deze tag wordt aanbevolen voor de inkomende beveiligings regel.  
-* **Opslag*** (alleen Resource Manager): Met deze tag wordt de IP-adresruimte voor de service Azure Storage aangeduid. Als u *Storage* opgeeft als waarde, wordt verkeer naar de opslag toegestaan of geweigerd. Als u alleen toegang tot opslag wilt toestaan in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio opgeven in de volgende indelings opslag. [regio naam]. De tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure Storage, maar geen specifiek Azure Storage-account. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **SQL*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL en Azure SQL Data Warehouse Services. Als u *Sql* opgeeft als waarde, wordt verkeer naar Sql toegestaan of geweigerd. Als u alleen toegang tot SQL wilt toestaan in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio opgeven in de volgende indeling SQL. [regio naam]. De tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure SQL Database, maar geen specifieke SQL-database of -server. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **AzureCosmosDB*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de Azure Cosmos Database-service aangeduid. Als u *AzureCosmosDB* opgeeft als waarde, wordt verkeer naar AzureCosmosDB toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureCosmosDB in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureCosmosDB.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **AzureKeyVault*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Key Vault aangeduid. Als u *AzureKeyVault* opgeeft als waarde, wordt verkeer naar AzureKeyVault toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureKeyVault in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureKeyVault.[regionaam] specificeren. Deze tag heeft een afhankelijkheid van de **AzureActiveDirectory** -tag. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel.  
-* **EventHub*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Event Hub aangeduid. Als u *EventHub* opgeeft als waarde, wordt verkeer naar EventHub toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot EventHub in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling EventHub.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **ServiceBus*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Azure ServiceBus-service aan met behulp van de service laag Premium. Als u *ServiceBus* opgeeft als waarde, wordt verkeer naar ServiceBus toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot ServiceBus in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling ServiceBus.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **MicrosoftContainerRegistry*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Microsoft-containerregister aangeduid. Als u *MicrosoftContainerRegistry* opgeeft als waarde, wordt verkeer naar MicrosoftContainerRegistry toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot MicrosoftContainerRegistry in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling MicrosoftContainerRegistry.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **AzureContainerRegistry*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Container Registry aangeduid. Als u *AzureContainerRegistry* opgeeft als waarde, wordt verkeer naar AzureContainerRegistry toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureContainerRegistry in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureContainerRegistry.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **ApiManagement*** (alleen Resource Manager): Met deze tag worden de adres voorvoegsels van het beheer verkeer voor APIM dedicated-implementaties aangegeven. Als u *ApiManagement* opgeeft als waarde, wordt verkeer naar ApiManagement toegestaan of geweigerd. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
 * **AppService*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure App Service aangeduid. Als u *AppService* opgeeft als waarde, wordt verkeer naar AppService toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AppService in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AppService.[regionaam] specificeren. Deze tag wordt aanbevolen voor een uitgaande beveiligings regel voor front-apps-front-end-front-ends.  
 * **AppServiceManagement*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het beheer verkeer voor App Service Environment specifieke implementaties. Als u *AppServiceManagement* opgeeft als waarde, wordt verkeer naar AppServiceManagement toegestaan of geweigerd. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
-* **ApiManagement*** (alleen Resource Manager): Met deze tag worden de adres voorvoegsels van het beheer verkeer voor APIM dedicated-implementaties aangegeven. Als u *ApiManagement* opgeeft als waarde, wordt verkeer naar ApiManagement toegestaan of geweigerd. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
-* **AzureConnectors*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Logic Apps-connectors voor test-en back-end-verbindingen aan. Als u *AzureConnectors* opgeeft als waarde, wordt verkeer naar AzureConnectors toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureConnectors in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureConnectors.[regionaam] specificeren. Deze tag wordt aanbevolen voor de inkomende beveiligings regel. 
-* **GatewayManager** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het beheer verkeer voor de toegewezen implementaties van VPN/app-gateways aan. Als u *GatewayManager* opgeeft als waarde, wordt verkeer naar GatewayManager toegestaan of geweigerd. Deze tag wordt aanbevolen voor de inkomende beveiligings regel. 
-* **AzureDataLake*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Data Lake aangeduid. Als u *AzureDataLake* opgeeft als waarde, wordt verkeer naar AzureDataLake toegestaan of geweigerd. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
 * **AzureActiveDirectory*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Active Directory aangeduid. Als u *AzureActiveDirectory* opgeeft als waarde, wordt verkeer naar AzureActiveDirectory toegestaan of geweigerd. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel.
-* **AzureMonitor*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Log Analytics, app Insights, AzMon en aangepaste metrische gegevens (GB-eind punten) aan. Als u *AzureMonitor* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor AzureMonitor. Voor Log Analytics heeft deze tag afhankelijk van de **opslag** label. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel.
-* **ServiceFabric*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de ServiceFabric-service aan. Als u *ServiceFabric* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor ServiceFabric. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **AzureMachineLearning*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de AzureMachineLearning-service aan. Als u *AzureMachineLearning* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor AzureMachineLearning. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
-* **BatchNodeManagement*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het beheer verkeer voor Azure Batch specifieke implementaties. Als u *BatchNodeManagement* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd vanuit de batch-service naar reken knooppunten. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
-* **AzureBackup*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de AzureBackup-service aan. Als u *AzureBackup* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor AzureBackup. Dit label heeft afhankelijk van de **opslag** -en **AzureActiveDirectory** -tag. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
 * **AzureActiveDirectoryDomainServices*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het beheer verkeer voor Azure Active Directory Domain Services specifieke implementaties. Als u *AzureActiveDirectoryDomainServices* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor AzureActiveDirectoryDomainServices. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel.  
-* **SqlManagement*** (alleen Resource Manager): Met deze tag worden de adres voorvoegsels van het beheer verkeer voor SQL-toegewezen implementaties aangegeven. Als u *SqlManagement* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor SqlManagement. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
-* **CognitiveServicesManagement** (Alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het verkeer voor Cognitive Services. Als u *CognitiveServicesManagement* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor CognitiveServicesManagement. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel.  
-* **Dynamics365ForMarketingEmail** (Alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de marketing-e-mail service van Dynamics 365. Als u *Dynamics365ForMarketingEmail* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor Dynamics365ForMarketingEmail. Als u alleen toegang tot Dynamics365ForMarketingEmail in een bepaalde [regio](https://azure.microsoft.com/regions)wilt toestaan, kunt u de regio opgeven in de volgende indeling Dynamics365ForMarketingEmail. [regio naam].
+* **AzureBackup*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de AzureBackup-service aan. Als u *AzureBackup* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor AzureBackup. Deze tag bevat een afhankelijkheid van de **opslag** -en **AzureActiveDirectory** -Tags. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **Cloud*** (alleen Resource Manager): Met deze tag wordt de IP-adresruimte voor Azure aangeduid, inclusief alle [openbare IP-adressen van het datacenter](https://www.microsoft.com/download/details.aspx?id=41653). Als u *AzureCloud* opgeeft als waarde, wordt verkeer naar AzureCloud toegestaan of geweigerd. Als u alleen toegang tot cloud in een bepaalde [regio](https://azure.microsoft.com/regions)wilt toestaan, kunt u de regio opgeven in de volgende indeling Cloud. [regio naam]. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **AzureConnectors*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Logic Apps-connectors voor test-en back-end-verbindingen aan. Als u *AzureConnectors* opgeeft als waarde, wordt verkeer naar AzureConnectors toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureConnectors in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureConnectors.[regionaam] specificeren. Deze tag wordt aanbevolen voor de inkomende beveiligings regel. 
+* **AzureContainerRegistry*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Container Registry aangeduid. Als u *AzureContainerRegistry* opgeeft als waarde, wordt verkeer naar AzureContainerRegistry toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureContainerRegistry in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureContainerRegistry.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **AzureCosmosDB*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de Azure Cosmos Database-service aangeduid. Als u *AzureCosmosDB* opgeeft als waarde, wordt verkeer naar AzureCosmosDB toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureCosmosDB in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureCosmosDB.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **AzureDataLake*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Data Lake aangeduid. Als u *AzureDataLake* opgeeft als waarde, wordt verkeer naar AzureDataLake toegestaan of geweigerd. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **AzureKeyVault*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Key Vault aangeduid. Als u *AzureKeyVault* opgeeft als waarde, wordt verkeer naar AzureKeyVault toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot AzureKeyVault in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling AzureKeyVault.[regionaam] specificeren. Deze tag heeft een afhankelijkheid van de **AzureActiveDirectory** -tag. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel.  
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** voor de klassieke versie): Met deze tag wordt de load balancer voor de infrastructuur van Azure aangeduid. De tag wordt omgezet in het [Virtuele IP-adres van de host](security-overview.md#azure-platform-considerations) (168.63.129.16) van waaruit statuscontroles van Azure worden uitgevoerd. Als u de load balancer van Azure niet gebruikt, kunt u deze regel onderdrukken.
+* **AzureMachineLearning*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de AzureMachineLearning-service aan. Als u *AzureMachineLearning* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor AzureMachineLearning. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **AzureMonitor*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Log Analytics, app Insights, AzMon en aangepaste metrische gegevens (GB-eind punten) aan. Als u *AzureMonitor* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor AzureMonitor. Voor Log Analytics heeft deze tag afhankelijk van de **opslag** label. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel.
 * **AzurePlatformDNS** (Alleen Resource Manager): Deze code geeft aan dat DNS een basis infrastructuur service is. Als u *AzurePlatformDNS* voor de waarde opgeeft, kunt u de standaard overweging van het [Azure-platform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) voor DNS uitschakelen. Wees voorzichtig met het gebruik van deze tag. U wordt aangeraden te testen voordat u deze tag gebruikt. 
 * **AzurePlatformIMDS** (Alleen Resource Manager): Deze tag geeft IMDS aan die een basis infrastructuur service is. Als u *AzurePlatformIMDS* voor de waarde opgeeft, kunt u de standaard overweging van het [Azure-platform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) voor IMDS uitschakelen. Wees voorzichtig met het gebruik van deze tag. U wordt aangeraden te testen voordat u deze tag gebruikt. 
 * **AzurePlatformLKM** (Alleen Resource Manager): Met deze tag wordt de Windows-licentie verlening of de sleutel beheer service aangeduid. Als u *AzurePlatformLKM* voor de waarde opgeeft, kunt u de standaard overweging van het [Azure-platform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) voor licentie verlening uitschakelen. Wees voorzichtig met het gebruik van deze tag. U wordt aangeraden te testen voordat u deze tag gebruikt. 
+* **AzureTrafficManager*** (alleen Resource Manager): Met deze tag wordt de IP-adresruimte voor de test-IP-adressen van Azure Traffic Manager aangeduid. Meer informatie over de test-IP-adressen van Traffic Manager vindt u in de [Veelgestelde vragen over Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). Deze tag wordt aanbevolen voor de inkomende beveiligings regel.  
+* **BatchNodeManagement*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het beheer verkeer voor Azure Batch specifieke implementaties. Als u *BatchNodeManagement* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd vanuit de batch-service naar reken knooppunten. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
+* **CognitiveServicesManagement** (Alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het verkeer voor Cognitive Services. Als u *CognitiveServicesManagement* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor CognitiveServicesManagement. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel.  
+* **Dynamics365ForMarketingEmail** (Alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de marketing-e-mail service van Dynamics 365. Als u *Dynamics365ForMarketingEmail* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor Dynamics365ForMarketingEmail. Als u alleen toegang tot Dynamics365ForMarketingEmail in een bepaalde [regio](https://azure.microsoft.com/regions)wilt toestaan, kunt u de regio opgeven in de volgende indeling Dynamics365ForMarketingEmail. [regio naam].
+* **EventHub*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Azure Event Hub aangeduid. Als u *EventHub* opgeeft als waarde, wordt verkeer naar EventHub toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot EventHub in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling EventHub.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **GatewayManager** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van het beheer verkeer voor de toegewezen implementaties van VPN/app-gateways aan. Als u *GatewayManager* opgeeft als waarde, wordt verkeer naar GatewayManager toegestaan of geweigerd. Deze tag wordt aanbevolen voor de inkomende beveiligings regel. 
+* **Internet** (Resource Manager) (**INTERNET** voor de klassieke versie): Met deze tag wordt de IP-adresruimte aangeduid die zich buiten het virtuele netwerk bevindt en bereikbaar is via internet. Dit adresbereik omvat ook de [openbare IP-adresruimte van Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+* **MicrosoftContainerRegistry*** (alleen Resource Manager): Met deze tag worden de adresvoorvoegsels van de service Microsoft-containerregister aangeduid. Als u *MicrosoftContainerRegistry* opgeeft als waarde, wordt verkeer naar MicrosoftContainerRegistry toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot MicrosoftContainerRegistry in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling MicrosoftContainerRegistry.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **ServiceBus*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Azure ServiceBus-service aan met behulp van de service laag Premium. Als u *ServiceBus* opgeeft als waarde, wordt verkeer naar ServiceBus toegestaan of geweigerd. Als u alleen toegang wilt toestaan tot ServiceBus in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio in de volgende indeling ServiceBus.[regionaam] specificeren. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **ServiceFabric*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de ServiceFabric-service aan. Als u *ServiceFabric* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor ServiceFabric. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **SQL*** (alleen Resource Manager): Deze tag geeft de adres voorvoegsels van de Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL en Azure SQL Data Warehouse Services. Als u *Sql* opgeeft als waarde, wordt verkeer naar Sql toegestaan of geweigerd. Als u alleen toegang tot SQL wilt toestaan in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio opgeven in de volgende indeling SQL. [regio naam]. De tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure SQL Database, maar geen specifieke SQL-database of -server. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **SqlManagement*** (alleen Resource Manager): Met deze tag worden de adres voorvoegsels van het beheer verkeer voor SQL-toegewezen implementaties aangegeven. Als u *SqlManagement* voor de waarde opgeeft, wordt verkeer toegestaan of geweigerd voor SqlManagement. Deze tag wordt aanbevolen voor de inkomende/uitgaande beveiligings regel. 
+* **Opslag*** (alleen Resource Manager): Met deze tag wordt de IP-adresruimte voor de service Azure Storage aangeduid. Als u *Storage* opgeeft als waarde, wordt verkeer naar de opslag toegestaan of geweigerd. Als u alleen toegang tot opslag wilt toestaan in een specifieke [regio](https://azure.microsoft.com/regions), kunt u de regio opgeven in de volgende indelings opslag. [regio naam]. De tag vertegenwoordigt de service, maar geen specifieke exemplaren van de service. De tag vertegenwoordigt bijvoorbeeld de service Azure Storage, maar geen specifiek Azure Storage-account. Deze tag wordt aanbevolen voor de uitgaande beveiligings regel. 
+* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** voor de klassieke versie): Deze tag omvat de adres ruimte van het virtuele netwerk (alle CIDR-bereiken die zijn gedefinieerd voor het virtuele netwerk), alle verbonden on [](virtual-network-peering-overview.md) -premises adres ruimten, gekoppelde virtuele netwerken of virtuele netwerken die zijn verbonden met een [virtuele netwerk gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) en-adres voor voegsels die worden gebruikt voor door de [gebruiker gedefinieerde routes](virtual-networks-udr-overview.md). Houd er rekening mee dat deze tag mogelijk een standaard route kan bevatten. 
 
 > [!NOTE]
 > Met servicetags van Azure-services worden de adresvoorvoegsels aangeduid van de specifieke cloud die wordt gebruikt. 
@@ -101,7 +101,7 @@ U kunt een on-premises firewall downloaden en integreren met de lijst met Servic
 U kunt deze informatie ook programmatisch ophalen met behulp van de **service tag discovery-API** (open bare preview)- [rest](https://aka.ms/discoveryapi_rest), [Azure PowerShell](https://aka.ms/discoveryapi_powershell)en [Azure cli](https://aka.ms/discoveryapi_cli). 
 
 > [!NOTE]
-> De volgende wekelijkse publicaties (oude versie) voor [Azure-](https://www.microsoft.com/en-us/download/details.aspx?id=41653)Clouds, volks [Republiek China](https://www.microsoft.com/en-us/download/details.aspx?id=42064)en [duitsland](https://www.microsoft.com/en-us/download/details.aspx?id=54770) worden met 30 juni 2020 afgeschaft. Begin met het gebruik van de bijgewerkte publicaties zoals hierboven wordt beschreven. 
+> De volgende wekelijkse publicaties (oude versie) voor [](https://www.microsoft.com/en-us/download/details.aspx?id=41653)Azure-Clouds, volks [Republiek China](https://www.microsoft.com/en-us/download/details.aspx?id=42064)en [duitsland](https://www.microsoft.com/en-us/download/details.aspx?id=54770) worden met 30 juni 2020 afgeschaft. Begin met het gebruik van de bijgewerkte publicaties zoals hierboven wordt beschreven. 
 
 ## <a name="default-security-rules"></a>Standaardbeveiligingsregels
 
@@ -111,19 +111,19 @@ Azure maakt de volgende standaardregels in elke netwerkbeveiligingsgroep die u m
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|Source|Bronpoorten|Bestemming|Doelpoorten|Protocol|Access|
+|Priority|Source|Bronpoorten|Bestemming|Doelpoorten|Protocol|Toegang|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Any|Allow|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|Source|Bronpoorten|Bestemming|Doelpoorten|Protocol|Access|
+|Priority|Source|Bronpoorten|Bestemming|Doelpoorten|Protocol|Toegang|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Any|Allow|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|Source|Bronpoorten|Bestemming|Doelpoorten|Protocol|Access|
+|Priority|Source|Bronpoorten|Bestemming|Doelpoorten|Protocol|Toegang|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Any|Weigeren|
 
@@ -131,19 +131,19 @@ Azure maakt de volgende standaardregels in elke netwerkbeveiligingsgroep die u m
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Access |
+|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Any | Allow |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Access |
+|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Any | Allow |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Access |
+|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | Weigeren |
 
@@ -163,7 +163,7 @@ In de vorige afbeelding zijn *NIC1* en *NIC2* leden van de toepassingsbeveiligin
 
 Deze regel is vereist om verkeer van internet naar de webservers te laten lopen. Binnenkomend verkeer van internet wordt geweigerd door de standaardbeveiligingsregel [DenyAllInbound](#denyallinbound). Daarom is er geen extra regel nodig voor de toepassingsbeveiligingsgroepen *AsgLogic* of *AsgDb*.
 
-|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Access |
+|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
 
@@ -171,7 +171,7 @@ Deze regel is vereist om verkeer van internet naar de webservers te laten lopen.
 
 De standaardbeveiligingsregel [AllowVNetInBound](#allowvnetinbound) staat communicatie toe tussen resources in hetzelfde virtuele netwerk. Daarom is deze regel vereist voor het weigeren van verkeer dat van een willekeurige resource afkomstig is.
 
-|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Access |
+|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Any | Weigeren |
 
@@ -179,7 +179,7 @@ De standaardbeveiligingsregel [AllowVNetInBound](#allowvnetinbound) staat commun
 
 Deze regel staat verkeer toe van de toepassingsbeveiligingsgroep *AsgLogic* naar de toepassingsbeveiligingsgroep *AsgDb*. De prioriteit voor deze regel is hoger dan de prioriteit voor de regel *Deny-Database-All*. Als gevolg hiervan wordt deze regel verwerkt vóór de regel *Deny-Database-All*, zodat verkeer van de toepassingsbeveiligingsgroep *AsgLogic* wordt toegestaan, terwijl al het andere verkeer wordt geblokkeerd.
 
-|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Access |
+|Priority|Source|Bronpoorten| Bestemming | Doelpoorten | Protocol | Toegang |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 

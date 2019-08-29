@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624268"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068850"
 ---
 # <a name="what-are-the-speech-services"></a>Wat zijn de Speech Services?
 
@@ -84,12 +84,10 @@ De voorbeeld code is beschikbaar op GitHub voor elk van de Azure speech-Services
 
 Azure speech Services werkt goed met ingebouwde modellen, maar u kunt de ervaring voor uw product of omgeving verder aanpassen en afstemmen. Aanpassings opties variëren van het verfijnen van akoestische modellen tot unieke spraak lettertypen voor uw merk. Nadat u een aangepast model hebt gemaakt, kunt u het gebruiken met een van de Azure-spraak Services.
 
-| Speech Service | Model | Description |
-|----------------|-------|-------------|
-| Spraak naar tekst | [Akoestisch model](how-to-customize-acoustic-models.md) | Maak een aangepast akoestische model voor toepassingen, hulpprogram ma's of apparaten die in bepaalde omgevingen worden gebruikt, zoals in een auto of op een fabriek, elk met specifieke registratie voorwaarden. Voor beelden zijn onder andere geaccentde spraak, specifieke achtergrond geluiden of het gebruik van een specifieke microfoon voor de opname. |
-| | [Taalmodel](how-to-customize-language-model.md) | Maak een aangepast taal model voor het verbeteren van de transcriptie en grammatica van een specifiek veld, zoals medische terminologie of het jargon. |
-| | [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraak model kunt u het fonetische formulier en de weer gave van een woord of term definiëren. Dit is handig voor het verwerken van aangepaste voorwaarden, zoals productnamen of afkortingen. Alles wat u nodig hebt om te beginnen is een uitspraak van bestand--een eenvoudige txt-bestand. |
-| Tekst naar spraak | [Spraakstijl](how-to-customize-voice-font.md) | Met aangepaste spraak lettertypen kunt u een herken bare, een-op-een-spraak voor uw merk maken. Er is slechts een kleine hoeveelheid gegevens nodig om aan de slag te gaan. Hoe meer gegevens u verstrekt, des te meer natuurlijke en Human-like uw gesp roken letter type klinkt. |
+| Speech Service | Platform | Description |
+|----------------|-------------|-------------|
+| Spraak naar tekst | [Aangepaste spraak](https://aka.ms/customspeech) | Pas de modellen voor spraak herkenning aan uw behoeften en beschik bare gegevens aan. Elimineer hindernissen bij spraakherkenning, zoals spreekstijl, vocabulaire en achtergrondgeluiden. |
+| Tekst naar spraak | [Aangepaste spraak](https://aka.ms/customvoice) | Bouw een herken bare, eenmalige stem voor uw tekst-naar-spraak-apps met uw gesp roken gegevens. U kunt de spraak uitvoer verder verfijnen door een set spraak parameters aan te passen. |
 
 ## <a name="reference-docs"></a>Referentiedocumenten
 

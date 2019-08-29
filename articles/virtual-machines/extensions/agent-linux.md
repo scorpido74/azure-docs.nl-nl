@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure Linux-VM-Agent | Microsoft Docs
-description: Informatie over het installeren en configureren van Linux-Agent (waagent) voor het beheren van de interactie van de virtuele machine met Azure-Infrastructuurcontroller.
+title: Overzicht van Azure Linux VM-agent | Microsoft Docs
+description: Meer informatie over het installeren en configureren van Linux-agent (waagent) voor het beheren van de interactie van uw virtuele machine met de Azure Fabric-controller.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -11,129 +11,128 @@ ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59a0cdd29e50501f023faf323948a400f325df0b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: acb6e14845beb4c947992e63f1984c072ba9f59f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706168"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084824"
 ---
-# <a name="understanding-and-using-the-azure-linux-agent"></a>Informatie over en het gebruik van de Azure Linux Agent
+# <a name="understanding-and-using-the-azure-linux-agent"></a>Meer informatie over het gebruik van de Azure Linux-agent
 
-De Microsoft Azure Linux Agent (waagent) beheert Linux en FreeBSD inrichten en VM-interactie met de Azure-Infrastructuurcontroller. Naast de Linux-Agent inrichting functies bieden, biedt Azure ook de mogelijkheid van het gebruik van cloud-init voor sommige Linux OSes. De Linux-Agent biedt de volgende functionaliteit voor Linux en FreeBSD IaaS implementaties:
+De Microsoft Azure Linux-agent (waagent) beheert Linux & FreeBSD-inrichting en VM-interactie met de Azure Fabric-controller. Naast de Linux-agent die inrichtings functionaliteit biedt, biedt Azure ook de mogelijkheid om Cloud-init te gebruiken voor bepaalde Linux-besturings systemen. De Linux-agent biedt de volgende functionaliteit voor Linux-en FreeBSD IaaS-implementaties:
 
 > [!NOTE]
-> Zie voor meer informatie de [Leesmij-bestand](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
+> Raadpleeg het [Leesmij-bestand](https://github.com/Azure/WALinuxAgent/blob/master/README.md)voor meer informatie.
 > 
 > 
 
-* **Inrichting van installatiekopieën**
+* **Installatie kopie inrichten**
   
-  * Het maken van een gebruikersaccount
-  * Configureren van SSH-verificatietypen
-  * Implementatie van de openbare SSH-sleutels en paren van sleutels
-  * Naam van de host instellen
-  * Publiceren van de hostnaam voor het DNS-platform
-  * Vingerafdruk voor SSH-host rapporteren aan het platform
-  * Resourcebeheer voor schijf
-  * Opmaak en koppelen van de bronschijf
-  * Configureren van wisselruimte
+  * Een gebruikers account maken
+  * SSH-verificatie typen configureren
+  * Implementatie van open bare SSH-sleutels en sleutel paren
+  * De hostnaam instellen
+  * De hostnaam publiceren naar het platform-DNS
+  * De vinger afdruk van de SSH-hostwaarde rapporteren aan het platform
+  * Bron schijf beheer
+  * De bron schijf Format teren en koppelen
+  * Wissel ruimte configureren
 * **Netwerken**
   
-  * Routes voor een betere compatibiliteit met platform DHCP-servers beheren
-  * Zorgt ervoor dat de stabiliteit van de naam van de netwerk-interface
+  * Beheert routes om de compatibiliteit met DHCP-platform servers te verbeteren
+  * Zorgt voor de stabiliteit van de netwerk interface naam
 * **Kernel**
   
-  * Hiermee configureert u de virtuele NUMA (uitschakelen voor de kernel <`2.6.37`)
-  * Hyper-V entropie voor /dev/random verbruikt
-  * Hiermee configureert u SCSI time-outs voor het root-apparaat (die mogelijk externe)
+  * Hiermee configureert u virtuele NUMA (uitschakelen voor kernel`2.6.37`<)
+  * Gebruikt Hyper-V entropie voor/dev/random
+  * Hiermee configureert u SCSI-time-outs voor het hoofd apparaat (dit kan extern zijn)
 * **Diagnostics**
   
-  * Console-omleiding naar de seriële poort
+  * Console omleiding naar de seriële poort
 * **SCVMM-implementaties**
   
-  * Detecteert en de VMM-agent voor Linux bootstrapt bij het uitvoeren in een omgeving met System Center Virtual Machine Manager 2012 R2
+  * Detecteert en Boots trapt de VMM-agent voor Linux wanneer deze wordt uitgevoerd in een System Center Virtual Machine Manager 2012 R2-omgeving
 * **VM-extensie**
   
-  * Onderdelen die zijn gemaakt door Microsoft en Partners in Linux-VM (IaaS) om in te schakelen van software en automatisering van de configuratie invoeren
-  * Referentie-implementatie op VM-extensie [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Het inbrengen van het onderdeel dat is geschreven door micro soft en partners in Linux VM (IaaS) om software-en configuratie automatisering in te scha kelen
+  * VM-extensie referentie-implementatie op[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Communicatie
-De gegevensstroom van het platform aan de agent vindt plaats via twee kanalen:
+De informatie stroom van het platform naar de agent vindt plaats via twee kanalen:
 
-* Een opstarttijd gekoppeld DVD voor IaaS-implementaties. Deze DVD bevat een OVF-compatibele configuratie-bestand met alle Inrichtingsgegevens dan de werkelijke SSH keypairs.
-* Een TCP-eindpunt blootstellen van een REST-API gebruikt om op te halen van de implementatie en topologieconfiguratie.
+* Een DVD die is gekoppeld aan het opstart tijdstip voor IaaS-implementaties. Deze DVD bevat een OVF-compatibel configuratie bestand dat alle inrichtings gegevens bevat, behalve de daad werkelijke SSH-sleutel paars.
+* Een TCP-eind punt geeft een REST API die wordt gebruikt voor het verkrijgen van implementatie-en topologie configuratie.
 
 ## <a name="requirements"></a>Vereisten
-De volgende systemen zijn getest en bekend is dat ze werken met de Azure Linux Agent:
+De volgende systemen zijn getest en bekend bij het werken met de Azure Linux-agent:
 
 > [!NOTE]
-> Deze lijst kan verschillen van de officiële lijst met ondersteunde systemen op het Microsoft Azure-Platform, zoals hier wordt beschreven: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Deze lijst kan afwijken van de officiële lijst met ondersteunde systemen op het Microsoft Azure-platform, zoals hier wordt beschreven:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
 * CoreOS
 * CentOS 6.3+
 * Red Hat Enterprise Linux 6.7+
-* Debian 7.0+
-* Ubuntu 12.04+
-* openSUSE 12.3+
+* Debian 7.0 +
+* Ubuntu 12.04 +
+* openSUSE 12.3 +
 * SLES 11 SP3 +
-* Oracle Linux 6.4+
+* Oracle Linux 6.4 +
 
 Andere ondersteunde systemen:
 
-* FreeBSD 10 + (Azure Linux Agent v2.0.10 +)
+* FreeBSD 10 + (Azure Linux-agent v 2.0.10 +)
 
-De Linux-agent is afhankelijk van sommige systeempakketten alleen juist werken:
+De Linux-agent is afhankelijk van sommige systeem pakketten om goed te kunnen functioneren:
 
 * Python 2.6 +
 * OpenSSL 1.0+
 * OpenSSH 5.3+
-* Hulpprogramma's voor bestandssysteem: sfdisk, fdisk, mkfs, gescheiden
-* Wachtwoord-hulpprogramma's: chpasswd, sudo
-* Tekst voor het verwerken van hulpprogramma's: sed, grep
-* Hulpprogramma's voor het netwerk: ip-route
-* Kernel-ondersteuning voor het koppelen van bestandssystemen UDF.
+* Bestandssysteem hulpprogramma's: sfdisk, fdisk, mkfs, opgenomen
+* Wachtwoord hulpprogramma's: chpasswd, sudo
+* Hulp middelen voor tekst verwerking: sed, grep
+* Netwerk hulpprogramma's: IP-route
+* Kernel-ondersteuning voor het koppelen van UDF-bestandssysteem.
 
 ## <a name="installation"></a>Installatie
-Installatie met behulp van een RPM- of DEB-pakket uit de opslagplaats voor uw distributie van pakket is de voorkeursmethode voor het installeren en upgraden van de Azure Linux Agent. Alle de [distributie-providers die zijn goedgekeurd](../linux/endorsed-distros.md) het pakket van Azure Linux agent integreren in hun opslagplaatsen en installatiekopieën.
+Installatie met behulp van een RPM-of een DEB-pakket uit de opslag plaats van uw distributie pakket is de voorkeurs methode voor het installeren en upgraden van de Azure Linux-agent. Alle gewaarmerkte [distributie providers](../linux/endorsed-distros.md) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen.
 
-Raadpleeg de documentatie in de [Azure Linux Agent-opslagplaats op GitHub](https://github.com/Azure/WALinuxAgent) voor geavanceerde installatie-opties, zoals het installeren van de bron of naar aangepaste locaties of voorvoegsels.
+Raadpleeg de documentatie in de [Azure Linux-agent opslag plaats op github](https://github.com/Azure/WALinuxAgent) voor geavanceerde installatie opties, zoals het installeren van bron of naar aangepaste locaties of voor voegsels.
 
-## <a name="command-line-options"></a>Opdrachtregelopties
+## <a name="command-line-options"></a>Opdracht regel opties
 ### <a name="flags"></a>Vlaggen
-* uitgebreide: Detailniveau van de opgegeven opdracht verhogen
-* afdwingen: Interactieve bevestiging overslaan voor bepaalde opdrachten
+* uitgebreide Uitgebreider van opgegeven opdracht verhogen
+* verkopers Interactieve bevestiging voor sommige opdrachten overs Laan
 
 ### <a name="commands"></a>Opdrachten
-* Help: Bevat de ondersteunde opdrachten en vlaggen.
-* inrichting ongedaan maken: Poging voor opschonen van het systeem en maken deze geschikt is voor beëindiging. De volgende bewerking verwijdert:
+* Help: Een lijst met de ondersteunde opdrachten en vlaggen.
+* inrichting Probeer het systeem op te schonen en maak het geschikt voor opnieuw inrichten. De volgende bewerking wordt verwijderd:
   
-  * Alle SSH-hostsleutels (als Provisioning.RegenerateSshHostKeyPair 'y' in het configuratiebestand is)
-  * Configuratie van de naamserver in /etc/resolv.conf
-  * Hoofdwachtwoord uit/etc/shadow (als Provisioning.DeleteRootPassword 'y' in het configuratiebestand is)
-  * In de cache leases voor DHCP-client
+  * Alle SSH-host-sleutels (indien ingericht. RegenerateSshHostKeyPair is ' y ' in het configuratie bestand)
+  * Naam server-configuratie in/etc/resolv.conf
+  * Het Hoofdwacht woord van/etc/shadow (indien inrichting. DeleteRootPassword is ' y ' in het configuratie bestand)
+  * DHCP-clientleases in cache
   * Herstel van hostnaam naar localhost.localdomain
 
 > [!WARNING]
-> Opheffen van inrichting is geen garantie dat de installatiekopie uitgeschakeld van alle gevoelige informatie en geschikt voor verdere distributie is.
+> Het ongedaan maken van de inrichting garandeert niet dat de installatie kopie is gewist van alle gevoelige informatie en is geschikt voor herdistributie.
 > 
 > 
 
-* inrichting + gebruiker: Alles wordt uitgevoerd in - inrichting (hierboven) en ook Hiermee verwijdert u de laatste ingerichte gebruikersaccount (verkregen van /var/lib/waagent) en gegevens die zijn gekoppeld. Deze parameter is bij het inrichten van een installatiekopie die eerder is ingericht op Azure, zodat deze kan worden vastgelegd en hergebruikt ongedaan maken.
-* Versie: Geeft de versie van waagent
-* serialconsole: Hiermee configureert u WORMGATEN als u wilt markeren ttyS0 (de eerste seriële poort) als de opstart-console. Dit zorgt ervoor dat de kernel wordt logboeken worden verzonden naar de seriële poort en beschikbaar gesteld voor foutopsporing.
-* daemon: Waagent worden uitgevoerd als een daemon voor het beheren van interactie met het platform. Dit argument wordt opgegeven voor waagent in het waagent init-script.
-* Starten: Waagent als achtergrondproces uitgevoerd
+* inrichting opheffen + gebruiker: Voert de volledige inrichting uit (boven) en verwijdert ook de laatste ingerichte gebruikers account (verkregen door/var/lib/waagent) en de bijbehorende gegevens. Deze para meter wordt gebruikt bij het ongedaan maken van de inrichting van een installatie kopie die eerder is ingericht op Azure, zodat deze kan worden vastgelegd en opnieuw kan worden gebruikt.
+* Versie: Hiermee wordt de versie van waagent weer gegeven
+* serialconsole: Hiermee configureert u GRUB om ttyS0 (de eerste seriële poort) als opstart console te markeren. Dit zorgt ervoor dat de opstart chassis-logboeken van de kernel worden verzonden naar de seriële poort en beschikbaar worden gesteld voor fout opsporing.
+* daemon Voer waagent uit als een daemon om de interactie met het platform te beheren. Dit argument is opgegeven voor waagent in het waagent init-script.
+* starten Waagent uitvoeren als een achtergrond proces
 
 ## <a name="configuration"></a>Configuratie
-Een configuratiebestand (/ etc/waagent.conf) bepaalt de acties van waagent. Hieronder ziet u een voorbeeld-configuratiebestand:
+Een configuratie bestand (/etc/waagent.conf) regelt de acties van waagent. Hieronder ziet u een voor beeld van een configuratie bestand:
 
     ```
     Provisioning.Enabled=y
@@ -161,17 +160,17 @@ Een configuratiebestand (/ etc/waagent.conf) bepaalt de acties van waagent. Hier
     AutoUpdate.Enabled=y
     ```
 
-De volgende die verschillende configuratie-opties worden beschreven. Configuratie-opties zijn van de drie typen; Booleaans, tekenreeks of geheel getal zijn. De Booleaanse configuratieopties kunnen worden opgegeven als "y" of "n". De speciale trefwoord 'None' als de volgende gegevens kunnen worden gebruikt voor bepaalde tekenreeks type configuratie-items:
+De volgende verschillende configuratie opties worden beschreven. Configuratie opties zijn van drie typen. Booleaans, teken reeks of geheel getal. De opties voor de Booleaanse configuratie kunnen worden opgegeven als "y" of "n". Het speciale sleutel woord ' geen ' kan worden gebruikt voor bepaalde configuratie vermeldingen voor teken reeksen als de volgende details:
 
-**Provisioning.Enabled:**  
+**Inrichting. ingeschakeld:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Hierdoor kan de gebruiker of de inrichting functionaliteit in de agent uit te schakelen. Geldige waarden zijn "y" of "n". Als inrichting is uitgeschakeld, SSH-host en de gebruiker sleutels in de afbeelding worden bewaard en een configuratie die is opgegeven in de Azure Inrichtings-API wordt genegeerd.
+Hiermee kan de gebruiker de inrichtings functionaliteit in de agent in-of uitschakelen. Geldige waarden zijn "y" of "n". Als het inrichten is uitgeschakeld, worden de SSH-host en de gebruikers sleutels in de installatie kopie behouden en wordt de configuratie die is opgegeven in de Azure-inrichtings-API genegeerd.
 
 > [!NOTE]
-> De `Provisioning.Enabled` parameter standaard ingesteld op "n" op Ubuntu Cloud afbeeldingen die cloud-init voor het inrichten gebruiken.
+> De `Provisioning.Enabled` para meter wordt standaard ingesteld op ' n ' op Ubuntu Cloud-installatie kopieën die gebruikmaken van Cloud-init voor het inrichten.
 > 
 > 
 
@@ -180,60 +179,60 @@ Hierdoor kan de gebruiker of de inrichting functionaliteit in de agent uit te sc
 Type: Boolean  
 Default: n
 ```
-Als is ingesteld, het hoofdwachtwoord in het bestand/etc/shadow tijdens het inrichtingsproces is gewist.
+Als deze instelling is ingesteld, wordt het hoofd wachtwoord in het/etc/shadow-bestand gewist tijdens het inrichtings proces.
 
 **Provisioning.RegenerateSshHostKeyPair:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Als is ingesteld, alle SSH-host-sleutelparen (ecdsa, dsa en rsa) worden verwijderd tijdens het inrichtingsproces uit/etc/ssh /. En wordt een enkele nieuwe sleutelpaar gegenereerd.
+Als deze instelling is ingesteld, worden alle sleutel paren van SSH-hosts (ECDSA, DSA en RSA) verwijderd tijdens het inrichtings proces van/etc/ssh/. En er wordt één nieuw sleutel paar gegenereerd.
 
-Het versleutelingstype voor het nieuwe sleutelpaar kan worden geconfigureerd door de vermelding Provisioning.SshHostKeyPairType. SSH-sleutelparen voor ontbrekende versleutelingstypen die maken bepaalde distributies opnieuw wanneer de SSH-daemon opnieuw wordt gestart (bijvoorbeeld bij opnieuw opstarten).
+Het versleutelings type voor het nieuwe sleutel paar kan worden geconfigureerd door de inrichtings SshHostKeyPairType-vermelding. Bij sommige distributies worden SSH-sleutel paren opnieuw gemaakt voor ontbrekende versleutelings typen wanneer de SSH-daemon opnieuw wordt gestart (bijvoorbeeld bij het opnieuw opstarten).
 
 **Provisioning.SshHostKeyPairType:**  
 ```
 Type: String  
 Default: rsa
 ```
-Dit kan worden ingesteld op een type van de versleuteling algoritme die wordt ondersteund door de SSH-daemon op de virtuele machine. Normaal gesproken ondersteunde waarden zijn 'rsa', "dsa" en 'ecdsa'. "putty.exe" op Windows biedt geen ondersteuning voor 'ecdsa'. Als u van plan bent putty.exe gebruikt in Windows om het verbinding maken met een Linux-distributie, gebruikt u dus 'rsa' of 'dsa'.
+Dit kan worden ingesteld op een type versleutelings algoritme dat wordt ondersteund door de SSH-daemon op de virtuele machine. De doorgaans ondersteunde waarden zijn ' RSA ', ' DSA ' en ' ECDSA '. ' putty. exe ' biedt geen ondersteuning voor ' ECDSA '. Als u putty. exe in Windows wilt gebruiken om verbinding te maken met een Linux-implementatie, gebruikt u daarom ' RSA ' of ' DSA '.
 
-**Provisioning.MonitorHostName:**  
+**Provisioning. MonitorHostName:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Als set in waagent de virtuele Linux-machine voor wijzigingen van de hostnaam bewaakt (zoals geretourneerd door de opdracht 'hostname') en automatisch bijwerken van de configuratie van netwerken in de afbeelding in overeenstemming met de wijziging. Om te pushen de wijziging naar de DNS-servers,-netwerken opnieuw in de virtuele machine wordt gestart. Dit resulteert in het kort verlies van verbinding met Internet.
+Als deze optie is ingesteld, controleert waagent de virtuele Linux-machine op hostnamen (zoals geretourneerd door de opdracht ' hostname ') en werkt de netwerk configuratie in de installatie kopie automatisch bij om de wijziging door te voeren. Als u de naam wijziging naar de DNS-servers wilt pushen, wordt het netwerk opnieuw gestart in de virtuele machine. Dit resulteert in een kort verlies van Internet verbinding.
 
 **Provisioning.DecodeCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Als de set in waagent decodeert CustomData van Base64.
+Indien ingesteld, waagent decodeert CustomData uit base64.
 
 **Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Als de set in waagent voert CustomData na het inrichten.
+Als deze instelling is ingesteld, wordt CustomData na het inrichten door waagent uitgevoerd.
 
 **Provisioning.AllowResetSysUser**
 ```
 Type: Boolean
 Default: n
 ```
-Met deze optie kunt het wachtwoord voor de gebruiker sys opnieuw moet worden ingesteld; Standaard is uitgeschakeld.
+Met deze optie kan het wacht woord voor de sys-gebruiker opnieuw worden ingesteld. de standaard waarde is uitgeschakeld.
 
 **Provisioning.PasswordCryptId**  
 ```
 Type: String  
 Default: 6
 ```
-Het algoritme dat wordt gebruikt door crypt bij het genereren van wachtwoord-hash.  
+Algoritme dat door crypt wordt gebruikt bij het genereren van de wachtwoord-hash.  
  1 - MD5  
- 2a - Blowfish  
+ 2a-blowfish  
  5 - SHA-256  
  6 - SHA-512  
 
@@ -242,99 +241,99 @@ Het algoritme dat wordt gebruikt door crypt bij het genereren van wachtwoord-has
 Type: String  
 Default: 10
 ```
-De lengte van willekeurige salt gebruikt bij het genereren van wachtwoord-hash.
+Lengte van wille keurig zout dat wordt gebruikt bij het genereren van een wacht woord-hash.
 
 **ResourceDisk.Format:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Als u het wachtwoord instelt, wordt de bronschijf geleverd door het platform opgemaakt en in waagent geladen als het type bestandssysteem is aangevraagd door de gebruiker in "ResourceDisk.Filesystem" iets anders dan 'ntfs is'. Een enkele partitie van het type Linux (83) is beschikbaar op de schijf. Deze partitie is niet geformatteerd als deze met succes kan worden gekoppeld.
+Als deze is ingesteld, wordt de bron schijf die door het platform wordt opgegeven, geformatteerd en gekoppeld door waagent als het bestandssysteem type dat door de gebruiker in ResourceDisk. File System is aangevraagd, een andere is dan NTFS. Er wordt één partitie van het type Linux (83) beschikbaar gemaakt op de schijf. Deze partitie is niet geformatteerd als deze kan worden gekoppeld.
 
 **ResourceDisk.Filesystem:**  
 ```
 Type: String  
 Default: ext4
 ```
-Hiermee geeft u het type bestandssysteem voor de resource-schijf. Ondersteunde waarden variëren per Linux-distributie. Als de tekenreeks is de X-en vervolgens mkfs. X moet aanwezig zijn op de Linux-installatiekopie. Installatiekopieën voor SLES 11 moeten meestal 'ext3' gebruiken. FreeBSD-installatiekopieën moeten hier 'ufs2' gebruiken.
+Hiermee geeft u het bestandssysteem type voor de bron schijf op. Ondersteunde waarden variëren per Linux-distributie. Als de teken reeks X is, wordt mkfs. X moet aanwezig zijn op de Linux-installatie kopie. SLES 11-afbeeldingen moeten normaal gesp roken gebruikmaken van ' ext3 '. FreeBSD-installatie kopieën moeten hier ' UFS2 ' gebruiken.
 
 **ResourceDisk.MountPoint:**  
 ```
 Type: String  
 Default: /mnt/resource 
 ```
-Hiermee geeft u het pad waar de resource-schijf is gekoppeld. De resource-schijf is een *tijdelijke* schijf en kan worden leeggemaakt wanneer de inrichting van de virtuele machine is beëindigd.
+Hiermee geeft u het pad op waar de bron schijf is gekoppeld. De bron schijf is een *tijdelijke* schijf en kan worden leeg gemaakt wanneer de inrichting van de virtuele machine ongedaan is.
 
 **ResourceDisk.MountOptions**  
 ```
 Type: String  
 Default: None
 ```
-Hiermee geeft u de koppelingsopties schijf moeten worden doorgegeven aan de opdracht mount -o. Dit is een door komma's gescheiden lijst met waarden, bijvoorbeeld. 'nodev, nosuid'. Zie mount(8) voor meer informatie.
+Hiermee geeft u de opties voor schijf koppeling op die moeten worden door gegeven aan de opdracht mount-o. Dit is een door komma's gescheiden lijst met waarden, bijvoorbeeld 'nodev,nosuid'. Zie mount (8) voor meer informatie.
 
 **ResourceDisk.EnableSwap:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Als instellen, een wisselbestand (/ swapfile) is gemaakt op de bronschijf en toegevoegd aan de wisselruimte van het systeem.
+Als deze instelling is ingesteld, wordt er een wissel bestand (/swapfile) gemaakt op de bron schijf en toegevoegd aan de wissel ruimte van het systeem.
 
 **ResourceDisk.SwapSizeMB:**  
 ```
 Type: Integer  
 Default: 0
 ```
-De grootte van het wisselbestand in megabytes.
+De grootte van het wissel bestand in mega bytes.
 
 **Logs.Verbose:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Als is ingesteld, gegevens opnemen in logboek wordt versterkt. Waagent meldt zich aan /var/log/waagent.log en maakt gebruik van de functionaliteit van de logrotate systeem voor het draaien van Logboeken.
+Als deze instelling is ingesteld, wordt de uitgebreidheid van het logboek verbeterd. Waagent meldt zich aan bij/var/log/waagent.log en maakt gebruik van de systeem logrotate-functionaliteit om logboeken te draaien.
 
 **OS.EnableRDMA**  
 ```
 Type: Boolean  
 Default: n
 ```
-Als is ingesteld, de agent probeert te installeren en vervolgens een RDMA-kernel-stuurprogramma te laden dat overeenkomt met de versie van de firmware van de onderliggende hardware.
+Als deze instelling is ingesteld, probeert de agent een RDMA-kernelstuurprogramma te installeren en vervolgens te laden dat overeenkomt met de versie van de firmware op de onderliggende hardware.
 
 **OS.RootDeviceScsiTimeout:**  
 ```
 Type: Integer  
 Default: 300
 ```
-Deze instelling configureert u de SCSI-time-out in seconden op de OS-schijf- en gegevensstations. Als niet is ingesteld, het systeem standaardwaarden worden gebruikt.
+Met deze instelling configureert u de SCSI-time-out in seconden op de besturingssysteem schijf en de gegevens stations. Als deze niet is ingesteld, worden de standaard waarden van het systeem gebruikt.
 
 **OS.OpensslPath:**  
 ```
 Type: String  
 Default: None
 ```
-Deze instelling kan worden gebruikt om op te geven van een alternatief pad voor de openssl binaire moet worden gebruikt voor cryptografische bewerkingen.
+Deze instelling kan worden gebruikt om een alternatief pad op te geven voor de binaire openssl die moet worden gebruikt voor cryptografische bewerkingen.
 
 **HttpProxy.Host, HttpProxy.Port**  
 ```
 Type: String  
 Default: None
 ```
-Als deze proxyserver is ingesteld, de agent gebruikt voor toegang tot het internet. 
+Als deze instelling is ingesteld, gebruikt de agent deze proxy server voor toegang tot internet. 
 
-**AutoUpdate.Enabled**
+**Auto update. ingeschakeld**
 ```
 Type: Boolean
 Default: y
 ```
-In- of uitschakelen van automatische updates voor de doelstatus verwerken; Standaard is ingeschakeld.
+Automatisch bijwerken voor de doel status verwerking in-of uitschakelen; de standaard instelling is ingeschakeld.
 
 
 
-## <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
-Gebruikmaken van Ubuntu Cloudinstallatiekopieën [cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) om uit te voeren veel configuratietaken die anders zouden worden beheerd door de Azure Linux Agent. De volgende punten zijn van toepassing:
+## <a name="ubuntu-cloud-images"></a>Cloud installatie kopieën Ubuntu
+Ubuntu Cloud-installatie kopieën maken gebruik van [Cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) voor het uitvoeren van veel configuratie taken die anders door de Azure Linux-agent zouden worden beheerd. De volgende verschillen zijn van toepassing:
 
-* **Provisioning.Enabled** standaard ingesteld op "n" op Ubuntu Cloud afbeeldingen die cloud-init gebruiken voor het inrichtingsproces taken uitvoeren.
-* De volgende configuratieparameters hebben geen effect op Ubuntu Cloudinstallatiekopieën die cloud-init gebruiken voor het beheren van de bronschijf en wisselruimte:
+* **Inrichten. ingeschakeld** standaard ingesteld op ' n ' voor Ubuntu-Cloud installatie kopieën die gebruikmaken van Cloud-init om inrichtings taken uit te voeren.
+* De volgende configuratie parameters hebben geen effect op Ubuntu-Cloud installatie kopieën die gebruikmaken van Cloud-init voor het beheren van de bron schijf en wissel ruimte:
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
@@ -342,8 +341,8 @@ Gebruikmaken van Ubuntu Cloudinstallatiekopieën [cloud-init](https://launchpad.
   * **ResourceDisk.EnableSwap**
   * **ResourceDisk.SwapSizeMB**
 
-* Zie voor meer informatie de volgende bronnen voor het configureren van het koppelpunt van de resource-schijf en wisselruimte op Ubuntu Cloudinstallatiekopieën tijdens het inrichten van:
+* Raadpleeg de volgende bronnen voor meer informatie over het configureren van het koppel punt voor de bron schijf en het wisselen van ruimte op Ubuntu Cloud installatie kopieën tijdens het inrichten:
   
-  * [Ubuntu Wiki: Swap-partities configureren](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Aangepaste gegevens injecteren in een virtuele Machine van Azure](../windows/classic/inject-custom-data.md)
+  * [Ubuntu Wiki: Swap partities configureren](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Aangepaste gegevens injecteren in een virtuele Azure-machine](../windows/classic/inject-custom-data.md)
 

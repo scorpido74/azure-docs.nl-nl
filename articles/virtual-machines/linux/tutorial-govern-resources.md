@@ -9,17 +9,16 @@ editor: tysonn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 760055a831998aa026439302094e146fd4d39394
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7bd204789f99fa299300ff47003857e9ecc6085e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708456"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103607"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Zelfstudie: Meer informatie over het beheren van virtuele Linux-machines met Azure CLI
 
@@ -65,11 +64,11 @@ adgroupId=$(az ad group show --group <your-group-name> --query objectId --output
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
 
-Als u een foutbericht waarin wordt gemeld ontvangt **Principal \<guid > bestaat niet in de map**, de nieuwe groep in de hele Azure Active Directory nog niet is doorgevoerd. Probeer de opdracht opnieuw uit te voeren.
+Als er een fout bericht wordt weer **gegeven \<met de melding dat de principal-GUID > niet in de directory bestaat, is**de nieuwe groep niet door gegeven in de Azure Active Directory. Probeer de opdracht opnieuw uit te voeren.
 
 Normaal gesproken herhaalt u het proces voor *Inzender voor netwerken* en *Inzender voor opslagaccounts* om ervoor te zorgen dat gebruikers worden toegewezen om de geïmplementeerde resources te beheren. In dit artikel kunt u deze stappen overslaan.
 
-## <a name="azure-policy"></a>Azure Policy
+## <a name="azure-policy"></a>Azure-beleid
 
 [Azure-beleid](../../governance/policy/overview.md) helpt u ervoor te zorgen dat alle resources in het abonnement voldoen aan de bedrijfsnormen. Uw abonnement heeft al meerdere beleidsdefinities. Als u de beschikbare beleidsdefinities wilt bekijken, gebruikt u de opdracht [az policy definition list](/cli/azure/policy/definition):
 

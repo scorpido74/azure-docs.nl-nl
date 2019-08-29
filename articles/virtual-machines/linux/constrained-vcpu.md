@@ -1,6 +1,6 @@
 ---
-title: Azure beperkte vCPU-formaat, Linux | Microsoft Docs
-description: Geeft een lijst van de Vm-grootten zijn geschikt voor een aantal beperkte vCPU's hebben.
+title: In azure beperkte vCPU-grootten-Linux | Microsoft Docs
+description: Geeft een lijst van de VM-grootten die een beperkt aantal vCPU kunnen hebben.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: e05346e16315dfdeca926e6db87e6d5f2252e227
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 473db3ad0a31e66c6b8f148d5756978dab44ed27
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668105"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091967"
 ---
-# <a name="constrained-vcpu-capable-vm-sizes"></a>Beperkte vCPU kunnen VM-grootten
+# <a name="constrained-vcpu-capable-vm-sizes"></a>Gebonden vCPU-VM-grootten
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-constrained-vcpu.md)]
@@ -36,5 +35,5 @@ ms.locfileid: "67668105"
 - [Krachtig rekenvermogen](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over hoe u [Azure compute units (ACU)](acu.md) kunt u de prestaties van Azure-SKU's met elkaar vergelijken.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
 

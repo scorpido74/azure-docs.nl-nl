@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935073"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092817"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Actieve geo-replicatie maken en gebruiken
 
@@ -106,6 +106,10 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 ## <a name="preparing-secondary-database-for-failover"></a>Secundaire data base voorbereiden voor failover
 
 Zorg ervoor dat de verificatie vereisten voor de secundaire server en de data base correct zijn geconfigureerd om ervoor te zorgen dat uw toepassing direct toegang heeft tot de nieuwe primaire na een failover. Zie [SQL database Security na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie. Zorg ervoor dat het Bewaar beleid voor back-ups op de secundaire data base overeenkomt met die van de primaire gegevens bank om de naleving na een failover te garanderen. Deze instellingen maken geen deel uit van de data base en worden niet gerepliceerd. Standaard wordt het secundaire geconfigureerd met een standaard PITR-Bewaar periode van zeven dagen. Zie [SQL database automatische back-ups](sql-database-automated-backups.md)voor meer informatie.
+
+> [!IMPORTANT]
+> Als uw data base lid is van een failovergroep, kunt u de failover niet starten met behulp van de geo-replicatie faiover-opdracht. U kunt de opdracht failover gebruiken voor de groep. Als u een afzonderlijke Data Base wilt failover, moet u deze eerst verwijderen uit de groep failover. Zie [failover-groepen](sql-database-auto-failover-group.md) voor meer informatie. 
+
 
 ## <a name="configuring-secondary-database"></a>Secundaire data base configureren
 

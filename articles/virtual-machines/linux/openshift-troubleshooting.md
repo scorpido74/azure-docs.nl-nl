@@ -1,6 +1,6 @@
 ---
-title: OpenShift-implementatie in Azure oplossen | Microsoft Docs
-description: Problemen met OpenShift-implementatie in Azure.
+title: Problemen met de openshift-implementatie in azure oplossen | Microsoft Docs
+description: Problemen met openshift-implementatie in azure oplossen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,44 +9,43 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: af6746e7246b8783e5bdbef34cf1b57427aa7ebb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 31512bb264b5e998e5b6adc76d37c82c174933be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60771274"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091710"
 ---
-# <a name="troubleshoot-openshift-deployment-in-azure"></a>OpenShift-implementatie in Azure oplossen
+# <a name="troubleshoot-openshift-deployment-in-azure"></a>Problemen met openshift-implementatie in azure oplossen
 
-Als het cluster OpenShift niet succesvol zijn geïmplementeerd, wordt de Azure-portal foutuitvoer opgeven. De uitvoer kan lastig zijn om te lezen, waardoor het lastig om het probleem te identificeren. Snel scan deze uitvoer voor afsluitcode 3, 4 of 5. Het volgende bevat informatie over deze drie afsluitcodes:
+Als het open Shift-cluster niet goed kan worden geïmplementeerd, biedt de Azure Portal de fout uitvoer. Het kan lastig zijn om de uitvoer te lezen, waardoor het moeilijk is om het probleem te identificeren. Scan deze uitvoer snel voor afsluit code 3, 4 of 5. Hieronder vindt u informatie over deze drie afsluit codes:
 
-- Afsluitcode 3: Uw Red Hat-abonnement-gebruikersnaam / wachtwoord of organisatie-ID / activeringscode is onjuist
-- Afsluitcode 4: Uw Red Hat groeps-ID is onjuist of er zijn geen rechten beschikbaar
-- Afsluitcode 5: Kan niet worden ingericht Docker Thin Pool Volume
+- Afsluit code 3: De gebruikers naam/het wacht woord of de organisatie-ID/activerings sleutel van het Red Hat-abonnement is onjuist
+- Afsluit code 4: Uw Red Hat-groeps-ID is onjuist of er zijn geen rechten beschikbaar
+- Afsluit code 5: Kan docker-volume met smalle pool niet inrichten
 
-Voor alle andere afsluitcodes, verbinding maken met de host (s) via ssh als de logboekbestanden wilt weergeven.
+Voor alle andere afsluit codes maakt u via SSH verbinding met de host om de logboek bestanden weer te geven.
 
 **OpenShift Container Platform**
 
-SSH naar de ansible-playbook-host. Voor de sjabloon of de Marketplace-aanbieding, gebruikt u de bastionhost. In de bastionomgeving kunt u SSH naar alle andere knooppunten in het cluster (master, infra, CNS, rekenen). U moet dit de hoofdmap om de logboekbestanden te raadplegen. Hoofdmap is uitgeschakeld voor de SSH-toegang standaard gebruik dus geen hoofdmap SSH naar andere knooppunten.
+SSH naar de ansible Playbook-host. Voor de sjabloon of de Marketplace-aanbieding gebruikt u de bastion-host. Vanuit de Bastion kunt u SSHen naar alle andere knoop punten in het cluster (Master, infra structuur, CNS, compute). U moet een hoofdmap hebben om de logboek bestanden weer te geven. De hoofdmap is standaard uitgeschakeld voor SSH-toegang. gebruik geen basis voor SSH-naar andere knoop punten.
 
 **OKD**
 
-SSH naar de ansible-playbook-host. Gebruik de master-0-host voor de sjabloon OKD (versie 3,9 en lager). Gebruik de bastionhost voor de sjabloon OKD (versie 3.10 en hoger). Van de ansible-playbook-host kunt u SSH naar alle andere knooppunten in het cluster (master, infra, CNS, rekenen). U moet dit de hoofdmap (sudo su-) om de logboekbestanden te raadplegen. Hoofdmap is uitgeschakeld voor de SSH-toegang standaard gebruik dus geen hoofdmap SSH naar andere knooppunten.
+SSH naar de ansible Playbook-host. Voor de OKD-sjabloon (versie 3,9 en eerder) gebruikt u de host van het hoofd-0. Voor de OKD-sjabloon (versie 3,10 en hoger) gebruikt u de bastion-host. Vanaf de ansible Playbook-host kunt u SSHen naar alle andere knoop punten in het cluster (Master, infra structuur, CNS, compute). Als u de logboek bestanden wilt weer geven, moet u root (sudo su-) zijn. De hoofdmap is standaard uitgeschakeld voor SSH-toegang. gebruik geen basis voor SSH-naar andere knoop punten.
 
 ## <a name="log-files"></a>Logboekbestanden
 
-De logboekbestanden voor de host-voorbereiding-scripts (stderr en stdout) bevinden zich in `/var/lib/waagent/custom-script/download/0` op alle hosts. Als er is een fout tijdens de voorbereiding van de host opgetreden, bekijkt u deze logboekbestanden om te bepalen van de fout.
+De logboek bestanden (stderr en stdout) voor de host-voorbereidings scripts `/var/lib/waagent/custom-script/download/0` bevinden zich op alle hosts. Als er een fout is opgetreden tijdens de voor bereiding van de host, bekijkt u deze logboek bestanden om de fout te bepalen.
 
-Als de voorbereiding van scripts met succes is uitgevoerd, klikt u vervolgens de logboekbestanden de `/var/lib/waagent/custom-script/download/1` directory van de host ansible-playbook moet worden onderzocht. Als de fout is opgetreden tijdens de werkelijke installatie van OpenShift, wordt de stdout-bestand de volgende fout weergegeven. Deze informatie gebruiken om contact op met ondersteuning voor verdere ondersteuning.
+Als de voorbereidings scripts met succes worden uitgevoerd, moeten de `/var/lib/waagent/custom-script/download/1` logboek bestanden in de map van de ansible Playbook-host worden onderzocht. Als de fout is opgetreden tijdens de werkelijke installatie van open Shift, wordt de fout weer gegeven in het stdout-bestand. Gebruik deze informatie om contact op te nemen met de ondersteuning voor verdere ondersteuning.
 
-Voorbeeld van uitvoer
+Voorbeeld uitvoer
 
 ```json
 TASK [openshift_storage_glusterfs : Load heketi topology] **********************
@@ -86,38 +85,38 @@ Failure summary:
 
 De meest voorkomende fouten tijdens de installatie zijn:
 
-1. De persoonlijke sleutel heeft wachtwoordzin
-2. Key vault-geheim met persoonlijke sleutel is niet correct gemaakt
-3. Referenties voor service-principal zijn niet correct opgegeven
-4. Service-principal heeft geen inzenderstoegang tot de resourcegroep
+1. Persoonlijke sleutel heeft wachtwoordzin
+2. Sleutel kluis geheim met persoonlijke sleutel is niet correct gemaakt
+3. De referenties van de Service-Principal zijn onjuist ingevoerd
+4. De service-principal heeft geen toegang tot de resource groep.
 
 ### <a name="private-key-has-a-passphrase"></a>Persoonlijke sleutel heeft een wachtwoordzin
 
-Hier ziet u een foutbericht weergegeven dat machtiging is geweigerd voor ssh. SSH naar de ansible-playbook-host om te controleren op een wachtwoordzin op de persoonlijke sleutel.
+Er wordt een fout weer geven met de melding dat de machtiging voor SSH is geweigerd. SSH naar de ansible Playbook-host om te controleren op een wachtwoordzin voor de persoonlijke sleutel.
 
-### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Key vault-geheim met persoonlijke sleutel is niet correct gemaakt
+### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Sleutel kluis geheim met persoonlijke sleutel is niet correct gemaakt
 
-De persoonlijke sleutel is gekopieerd naar de host met ansible-playbook - ~/.ssh/id_rsa. Controleer of dat dit bestand juist is. Testen door een SSH-sessie op een van de clusterknooppunten van de host ansible-playbook te openen.
+De persoonlijke sleutel wordt gekopieerd naar de ansible Playbook-host ~/.ssh/id_rsa. Bevestig dat dit bestand juist is. Test door een SSH-sessie te openen op een van de cluster knooppunten van de ansible Playbook-host.
 
-### <a name="service-principal-credentials-were-entered-incorrectly"></a>Referenties voor service-principal zijn niet correct opgegeven
+### <a name="service-principal-credentials-were-entered-incorrectly"></a>De referenties van de Service-Principal zijn onjuist ingevoerd
 
-Bij het opgeven van de invoer voor de sjabloon of Marketplace-aanbieding, wordt de onjuiste informatie werd geboden. Zorg ervoor dat u de juiste toepassings-id (clientId) en het wachtwoord (clientSecret) gebruiken voor de service-principal. Controleer of door de volgende azure cli-opdracht.
+Wanneer u de invoer voor de sjabloon of Marketplace-aanbieding opgeeft, zijn de onjuiste gegevens verstrekt. Zorg ervoor dat u de juiste appId (clientId) en het wacht woord (clientSecret) voor de Service-Principal gebruikt. Controleer door de volgende Azure cli-opdracht uit te geven.
 
 ```bash
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
-### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Service-principal heeft geen inzenderstoegang tot de resourcegroep
+### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>De service-principal heeft geen toegang tot de resource groep.
 
-Als de Azure-cloud-provider is ingeschakeld, moet de service-principal gebruikt Inzender-toegang tot de resourcegroep hebben. Controleer of door de volgende azure cli-opdracht.
+Als de Azure-Cloud provider is ingeschakeld, moet de Service-Principal toegang hebben tot de resource groep. Controleer door de volgende Azure cli-opdracht uit te geven.
 
 ```bash
 az group update -g <openshift resource group> --set tags.sptest=test
 ```
 
-## <a name="additional-tools"></a>Aanvullende hulpprogramma 's
+## <a name="additional-tools"></a>Extra hulp middelen
 
-Voor sommige fouten, kunt u ook de volgende opdrachten gebruiken voor meer informatie:
+Voor sommige fouten kunt u ook de volgende opdrachten gebruiken om meer informatie te krijgen:
 
-1. status van systemctl \<service >
-2. journalctl -xe
+1. systemctl- \<status service >
+2. journalctl-XE

@@ -1,6 +1,6 @@
 ---
-title: Chef-extensie voor virtuele Azure-machines | Microsoft Docs
-description: De Chef-Client implementeren op een virtuele machine met behulp van de Chef-VM-extensie.
+title: Chef-extensie voor Azure-Vm's | Microsoft Docs
+description: Implementeer de chef-client op een virtuele machine met behulp van de VM-extensie chef.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -10,34 +10,33 @@ tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0ed042b3b004fd43bc03304c3042c2ac3e1a6482
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706089"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092554"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-extensie voor Linux en Windows
 
-Chef Software levert een DevOps-automatiseringsplatform voor Linux en Windows. Hiermee kunnen zowel fysieke als virtuele serverconfiguraties worden beheerd. De VM-extensie van Chef is een uitbreiding waarmee Chef op virtuele machines.
+Chef Software levert een DevOps-automatiseringsplatform voor Linux en Windows. Hiermee kunnen zowel fysieke als virtuele serverconfiguraties worden beheerd. De chef-VM-extensie is een uitbrei ding waarmee chef op virtuele machines worden ingeschakeld.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De Chef-VM-extensie wordt ondersteund op alle de [extensie ondersteund besturingssysteem](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) in Azure.
+De chef-VM-extensie wordt ondersteund op alle [besturings systemen](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems) die door de extensie worden ondersteund in Azure.
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De Chef-VM-extensie is vereist dat de virtuele doelmachine is verbonden met internet om op te halen van de nettolading van de Chef-Client van het content delivery network (CDN).  
+De chef-VM-extensie vereist dat de virtuele doel machine is verbonden met internet om de chef-client Payload op te halen van het Content Delivery Network (CDN).  
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON bevat het schema voor de Chef-VM-extensie. De extensie vereist ten minste de URL van de Chef-Server, de naam van de validatie-Client en de validatiesleutel voor de Chef-Server. Deze waarden kunnen u vinden in de `knife.rb` bestand in de starter-kit.zip dat wordt gedownload tijdens de installatie van [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) of een zelfstandige [Chef Server](https://downloads.chef.io/chef-server). Omdat de validatiesleutel moet worden behandeld als gevoelige gegevens, moet deze worden geconfigureerd onder de **protectedSettings** -element, wat betekent dat deze alleen op de virtuele doelmachine worden ontsleuteld.
+In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor de uitbrei ding zijn mini maal de URL van de chef-server, de naam van de validatie-client en de validatie sleutel voor de chef-server vereist. deze waarden zijn te vinden in het `knife.rb` bestand in Starter-Kit. zip dat wordt gedownload wanneer u [chef Automatiseer](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) of een zelfstandige chef- [Server](https://downloads.chef.io/chef-server)installeert. Omdat de validatie sleutel moet worden behandeld als gevoelige gegevens, moet deze worden geconfigureerd onder het **protectedSettings** -element, wat inhoudt dat deze alleen wordt ontsleuteld op de virtuele doel machine.
 
 ```json
 {
@@ -66,13 +65,13 @@ De volgende JSON bevat het schema voor de Chef-VM-extensie. De extensie vereist 
 }  
 ```
 
-### <a name="core-property-values"></a>Core-eigenschapswaarden
+### <a name="core-property-values"></a>Kern eigenschaps waarden
 
 | Name | Waarde / voorbeeld | Gegevenstype
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (datum) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| Type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Instellingen
@@ -81,7 +80,7 @@ De volgende JSON bevat het schema voor de Chef-VM-extensie. De extensie vereist 
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | J |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | J |
-| settings/runlist | `recipe[mycookbook::default]` | string | J |
+| instellingen/runlist | `recipe[mycookbook::default]` | string | J |
 
 ### <a name="protected-settings"></a>Beveiligde instellingen
 
@@ -103,15 +102,15 @@ De volgende JSON bevat het schema voor de Chef-VM-extensie. De extensie vereist 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen kunnen worden gebruikt om een of meer virtuele machines implementeren, de Chef-Client installeren, verbinding maken met de Chef-Server en het uitvoeren de eerste configuratie op de server zoals gedefinieerd door de [uitvoeren-lijst](https://docs.chef.io/run_lists.html)
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen kunnen worden gebruikt om een of meer virtuele machines te implementeren, de chef-client te installeren, verbinding te maken met de chef-server en de eerste configuratie op de server uit te voeren, zoals gedefinieerd in de [lijst Run-List](https://docs.chef.io/run_lists.html)
 
-Een voorbeeld van Resource Manager-sjabloon met de Chef-VM-extensie kunt u vinden in de [Azure snelstartgalerie](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Een voor beeld van een resource manager-sjabloon met de extensie chef VM vindt u in de [Galerie van Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)start.
 
 De JSON-configuratie voor een VM-extensie worden genest in de bron van de virtuele machine of geplaatst op de hoofdmap of het hoogste niveau van een Resource Manager JSON-sjabloon. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en het type. Zie voor meer informatie, [naam en type voor de onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md).
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
-De Azure CLI kan worden gebruikt om de VM-extensie van Chef implementeren op een bestaande virtuele machine. Vervang de **validation_key** met de inhoud van uw validatiesleutel (dit bestand op als een `.pem` extensie).  Vervang **validation_client_name**, **chef_server_url** en **run_list** met deze waarden uit de `knife.rb` bestand in uw Starter Kit.
+De Azure CLI kan worden gebruikt om de chef-VM-extensie te implementeren op een bestaande virtuele machine. Vervang de **validation_key** door de inhoud van uw validatie sleutel (dit bestand als een `.pem` extensie).  Vervang **validation_client_name**, **chef_server_url** en **run_list** door deze waarden uit het `knife.rb` bestand in uw Start pakket.
 
 ```azurecli
 az vm extension set \
@@ -123,7 +122,7 @@ az vm extension set \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
-## <a name="troubleshooting-and-support"></a>Problemen oplossen en ondersteuning
+## <a name="troubleshooting-and-support"></a>Probleemoplossing en ondersteuning
 
 Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure CLI. Als wilt zien de implementatiestatus van extensies voor een bepaalde virtuele machine, voert u de volgende opdracht uit met de Azure CLI.
 
@@ -149,9 +148,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 
 | Foutcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 51 | Deze extensie wordt niet ondersteund voor besturingssysteem van de virtuele machine | |
+| 51 | Deze extensie wordt niet ondersteund op het besturings systeem van de virtuele machine | |
 
-Als u meer informatie over probleemoplossing vindt u de [Chef VM-extensie Leesmij](https://github.com/chef-partners/azure-chef-extension).
+Meer informatie over het oplossen van problemen vindt u in het Leesmij-bestand van de [chef VM-extensie](https://github.com/chef-partners/azure-chef-extension).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Maken van een niet-beheerde installatiekopie van een gegeneraliseerde VM in Azure | Microsoft Docs
-description: Een installatiekopie unmanged van een gegeneraliseerde VM Windows gebruiken om te maken van meerdere exemplaren van een virtuele machine in Azure maken.
+title: Een onbeheerde installatie kopie maken van een gegeneraliseerde VM in azure | Microsoft Docs
+description: Maak een unmanged-installatie kopie van een gegeneraliseerde Windows-VM die u kunt gebruiken om meerdere exemplaren van een virtuele machine in azure te maken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,50 +11,49 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 929dd5bdb01adeaa7b1332bd7a5e6d823edba34a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 45c59ccdd45a0c00635c3e0a3919248f33e2919a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710399"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102455"
 ---
-# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Een niet-beheerde VM-installatiekopie maken van een Azure-VM
+# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Een installatie kopie van een niet-beheerde virtuele machine maken op basis van een Azure-VM
 
-In dit artikel bevat informatie over opslagaccounts. U wordt aangeraden dat u beheerde schijven en beheerde installatiekopieën in plaats van een storage-account gebruiken. Zie voor meer informatie, [een beheerde installatiekopie maken van een gegeneraliseerde VM in Azure](capture-image-resource.md).
+In dit artikel wordt beschreven hoe u opslag accounts gebruikt. U wordt aangeraden beheerde schijven en beheerde installatie kopieën te gebruiken in plaats van een opslag account. Zie [een beheerde installatie kopie van een gegeneraliseerde vm in azure vastleggen](capture-image-resource.md)voor meer informatie.
 
-In dit artikel ziet u hoe u Azure PowerShell gebruiken om een installatiekopie van een gegeneraliseerde Azure-VM te maken met behulp van een storage-account. U kunt vervolgens de installatiekopie van het maken van een andere virtuele machine. De afbeelding bevat een schijf met het besturingssysteem en de gegevensschijven die zijn gekoppeld aan de virtuele machine. De installatiekopie bevat geen de virtuele-netwerkbronnen, dus u deze resources instellen moet wanneer u de nieuwe virtuele machine maakt. 
+In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om een installatie kopie van een gegeneraliseerde Azure-VM te maken met behulp van een opslag account. Vervolgens kunt u de installatie kopie gebruiken om een andere virtuele machine te maken. De installatie kopie bevat de besturingssysteem schijf en de gegevens schijven die aan de virtuele machine zijn gekoppeld. De installatie kopie bevat geen virtuele netwerk resources, dus moet u deze resources instellen wanneer u de nieuwe VM maakt. 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-vm"></a>De virtuele machine generaliseren 
-Deze sectie leest u hoe u uw Windows virtuele machine voor gebruik als een installatiekopie te generaliseren. Een virtuele machine generaliseren, verwijdert u alle persoonlijke gegevens over uw account, onder andere en bereidt de computer moet worden gebruikt als een afbeelding. Zie voor meer informatie over [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx).
+In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Als u een virtuele machine generaliseert, worden alle gegevens van uw persoonlijke account, onder andere, verwijderd en wordt de computer voor bereid voor gebruik als installatie kopie. Zie voor meer informatie over [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx).
 
-Zorg ervoor dat de server-functies die worden uitgevoerd op de machine worden ondersteund door Sysprep. Zie voor meer informatie, [Sysprep-ondersteuning voor Server-rollen](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) voor meer informatie.
 
 > [!IMPORTANT]
-> Als u uw VHD naar Azure voor het eerst uploaden wilt, zorg ervoor dat u hebt [uw virtuele machine voorbereid](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voordat Sysprep wordt uitgevoerd. 
+> Als u de VHD voor het eerst uploadt naar Azure, moet u ervoor zorgen dat u [uw VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hebt voor bereid voordat u Sysprep uitvoert. 
 > 
 > 
 
-U kunt ook een Linux VM generaliseren met `sudo waagent -deprovision+user` en gebruikt u PowerShell om vast te leggen van de virtuele machine. Zie voor meer informatie over het gebruik van de CLI om vast te leggen van een virtuele machine [het generaliseren en vastleggen van een virtuele Linux-machine met de Azure CLI](../linux/capture-image.md).
+U kunt een virtuele Linux-machine ook generaliseren met `sudo waagent -deprovision+user` en vervolgens Power shell gebruiken om de virtuele machine vast te leggen. Zie [een virtuele Linux-machine generaliseren en vastleggen met behulp van de Azure cli](../linux/capture-image.md)voor meer informatie over het gebruik van de CLI om een virtuele machine vast te leggen.
 
 
-1. Meld u aan de virtuele machine van Windows.
+1. Meld u aan bij de virtuele Windows-machine.
 2. Open het venster met de opdrachtprompt als beheerder. Wijzig de directory in **%windir%\system32\sysprep** en voer dan `sysprep.exe`run uit.
 3. In het dialoogvenster **Hulpprogramma voor systeemvoorbereiding** selecteert u **OOBE (Out-of-Box Experience) van systeem starten** en zorgt u dat het selectievakje **Generaliseren** is ingeschakeld.
-4. In **afsluitopties**, selecteer **afsluiten**.
+4. Selecteer **Afsluiten**in het **afsluit opties**.
 5. Klik op **OK**.
    
-    ![Sysprep start](./media/upload-generalized-managed/sysprepgeneral.png)
+    ![Sysprep starten](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Wanneer Sysprep is voltooid, wordt de virtuele machine afgesloten. 
 
 > [!IMPORTANT]
-> De virtuele machine niet opnieuw opstarten totdat u klaar bent de VHD uploaden naar Azure of het maken van een installatiekopie van de virtuele machine. Als de virtuele machine per ongeluk wordt opnieuw gestart met Sysprep om het opnieuw.
+> Start de virtuele machine niet opnieuw op voordat u klaar bent met het uploaden van de VHD naar Azure of het maken van een installatie kopie van de virtuele machine. Als de virtuele machine per ongeluk opnieuw wordt opgestart, voert u Sysprep uit om deze opnieuw te generaliseren.
 > 
 > 
 
@@ -65,37 +64,37 @@ U kunt ook een Linux VM generaliseren met `sudo waagent -deprovision+user` en ge
     Connect-AzAccount
     ```
    
-    Er wordt een pop-upvenster geopend voor u de referenties van uw Azure-account in te voeren.
-2. Haal de abonnement-id's voor uw beschikbare abonnementen.
+    Er wordt een pop-upvenster geopend om uw Azure-account referenties in te voeren.
+2. Haal de abonnement-Id's op voor uw beschik bare abonnementen.
    
     ```powershell
     Get-AzSubscription
     ```
-3. Instellen van het juiste abonnement met behulp van de abonnements-ID.
+3. Stel het juiste abonnement in met de abonnements-ID.
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Wijs de virtuele machine en stelt u de status op gegeneraliseerd
+## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>De toewijzing van de virtuele machine ongedaan maken en de status instellen op gegeneraliseerd
 
 > [!IMPORTANT] 
-> U kan toevoegen, bewerken of verwijderen van tags van een virtuele machine nadat deze is gemarkeerd als gegeneraliseerd. Als u een code toevoegen aan de virtuele machine wilt, zorg er dan voor dat u de labels toevoegen voordat u gemarkeerd als gegeneraliseerd.
+> U kunt geen Tags toevoegen, bewerken of verwijderen van een virtuele machine nadat deze is gemarkeerd als gegeneraliseerd. Als u een tag wilt toevoegen aan de VM, moet u ervoor zorgen dat u de Tags toevoegt voordat u deze markeert als gegeneraliseerd.
 > 
 
-1. Toewijzing van de VM-resources.
+1. De toewijzing van de VM-resources ongedaan maken.
    
     ```powershell
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    De *Status* voor de virtuele machine in Azure portal, verandert van **gestopt** naar **gestopt (toewijzing opgeheven)** .
-2. Zet de status van de virtuele machine **gegeneraliseerd**. 
+    De *status* van de virtuele machine in de Azure Portal verandert van **gestopt** in **gestopt (toewijzing opgeheven)** .
+2. Stel de status van de virtuele machine in op **gegeneraliseerd**. 
    
     ```powershell
     Set-AzVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
-3. Controleer de status van de virtuele machine. De **OSState/gegeneraliseerd** sectie voor de virtuele machine moet de **DisplayStatus** ingesteld op **VM gegeneraliseerd**.  
+3. Controleer de status van de virtuele machine. Voor de sectie **OSState/generalis** voor de virtuele machine moet de **DisplayStatus** zijn ingesteld op **VM gegeneraliseerd**.  
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
@@ -104,7 +103,7 @@ U kunt ook een Linux VM generaliseren met `sudo waagent -deprovision+user` en ge
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Maak een installatiekopie van een niet-beheerde virtuele machine in de doel-storage-container met de volgende opdracht. De installatiekopie is gemaakt in hetzelfde opslagaccount als de oorspronkelijke virtuele machine. De `-Path` parameter slaat een kopie van de JSON-sjabloon voor de bron-VM naar uw lokale computer. De `-DestinationContainerName` parameter is de naam van de container die u wilt uw installatiekopieën bevatten. Als de container niet bestaat, is het voor u gemaakt.
+Maak met behulp van deze opdracht een niet-beheerde installatie kopie van een virtuele machine in de doel opslag container. De installatie kopie wordt gemaakt in hetzelfde opslag account als de oorspronkelijke virtuele machine. Met `-Path` de para meter wordt een kopie van de JSON-sjabloon voor de bron-VM opgeslagen op de lokale computer. De `-DestinationContainerName` para meter is de naam van de container die u in uw afbeeldingen wilt opslaan. Als de container niet bestaat, wordt deze voor u gemaakt.
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -112,17 +111,17 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-U kunt de URL van uw installatiekopie ophalen uit de JSON-bestand-sjabloon. Ga naar de **resources** > **storageProfile** > **osDisk** > **installatiekopie**  >  **uri** sectie voor het volledige pad van de afbeelding. De URL van de installatiekopie lijkt: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+U kunt de URL van uw installatie kopie ophalen uit de sjabloon voor het JSON-bestand. Ga naar de > sectie **storageProfile** > van**osDisk** > voorhetvolledige pad van de installatie kopie. >  De URL van de afbeelding ziet er als `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`volgt uit:.
    
-U kunt ook de URI in de portal controleren. De afbeelding wordt gekopieerd naar een container met de naam **system** in uw opslagaccount. 
+U kunt ook de URI in de portal controleren. De installatie kopie wordt gekopieerd naar een container met de naam **System** in uw opslag account. 
 
 ## <a name="create-a-vm-from-the-image"></a>Maak een VM op basis van de installatiekopie
 
-U kunt nu een of meer virtuele machines van de niet-beheerde installatiekopie maken.
+U kunt nu een of meer virtuele machines maken op basis van de niet-beheerde installatie kopie.
 
 ### <a name="set-the-uri-of-the-vhd"></a>De URI van de VHD instellen
 
-De URI voor de VHD te gebruiken is in de indeling: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**VHD. In dit voorbeeld de VHD met de naam **myVHD** is in het opslagaccount **mystorageaccount** in de container **mycontainer**.
+De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.Windows.net/**mycontainer**/**MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -130,16 +129,16 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak de vNet en subnet van de [virtueel netwerk](../../virtual-network/virtual-networks-overview.md).
+Maak het vNet en het subnet van het [virtuele netwerk](../../virtual-network/virtual-networks-overview.md).
 
-1. Maak het subnet. Het volgende voorbeeld maakt u een subnet met de naam **mySubnet** in de resourcegroep **myResourceGroup** met het adresvoorvoegsel van **10.0.0.0/24**.  
+1. Maak het subnet. In het volgende voor beeld wordt een subnet met de naam **mySubnet** in de resource groep **myResourceGroup** gemaakt met het adres voorvoegsel **10.0.0.0/24**.  
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubnet"
     $singleSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Maak het virtuele netwerk. Het volgende voorbeeld wordt een virtueel netwerk met de naam **myVnet** in de **VS-West** locatie met het adresvoorvoegsel van **10.0.0.0/16**.  
+2. Maak het virtuele netwerk. In het volgende voor beeld wordt een virtueel netwerk met de naam **myVnet** gemaakt op de locatie **VS-West** met het adres voorvoegsel van **10.0.0.0/16**.  
    
     ```powershell
     $location = "West US"
@@ -148,17 +147,17 @@ Maak de vNet en subnet van de [virtueel netwerk](../../virtual-network/virtual-n
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
 
-### <a name="create-a-public-ip-address-and-network-interface"></a>Een openbare IP-adres en een netwerkinterface maken
+### <a name="create-a-public-ip-address-and-network-interface"></a>Een openbaar IP-adres en een netwerk interface maken
 Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt u een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) en een netwerkinterface nodig.
 
-1. Maak een openbaar IP-adres. In dit voorbeeld maakt u een openbaar IP-adres met de naam **myPip**. 
+1. Maak een openbaar IP-adres. In dit voor beeld wordt een openbaar IP-adres gemaakt met de naam **myPip**. 
    
     ```powershell
     $ipName = "myPip"
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Maken van de NIC. Dit voorbeeld maakt u een NIC met de naam **myNic**. 
+2. Maak de NIC. In dit voor beeld wordt een NIC gemaakt met de naam **myNic**. 
    
     ```powershell
     $nicName = "myNic"
@@ -166,10 +165,10 @@ Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt 
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>De netwerkbeveiligingsgroep en een RDP-regel maken
-Als u zich aanmelden bij uw virtuele machine via RDP, moet u hebt een beveiligingsregel om RDP-toegang op poort 3389. 
+### <a name="create-the-network-security-group-and-an-rdp-rule"></a>De netwerk beveiligings groep en een RDP-regel maken
+Als u zich met RDP wilt aanmelden bij uw VM, moet u een beveiligings regel hebben waarmee RDP-toegang wordt toegestaan op poort 3389. 
 
-Dit voorbeeld maakt u een NSG met de naam **myNsg** dat een regel met de naam bevat **myRdpRule** die RDP-verkeer toestaat via poort 3389. Zie voor meer informatie over nsg's [poorten openen voor een virtuele machine in Azure met behulp van PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In dit voor beeld wordt een NSG met de naam **mijnnbg** gemaakt die een regel bevat met de naam **myRdpRule** die RDP-verkeer via poort 3389 toestaat. Zie [poorten openen voor een virtuele machine in azure met behulp van Power shell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over nsg's.
 
 ```powershell
 $nsgName = "myNsg"
@@ -184,15 +183,15 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 ```
 
 
-### <a name="create-a-variable-for-the-virtual-network"></a>Maak een variabele voor het virtuele netwerk
-Maak een variabele voor de voltooide virtuele netwerk. 
+### <a name="create-a-variable-for-the-virtual-network"></a>Een variabele voor het virtuele netwerk maken
+Maak een variabele voor het voltooide virtuele netwerk. 
 
 ```powershell
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>De virtuele machine maken
-De volgende PowerShell is voltooid de configuraties van virtuele machines en maakt gebruik van niet-beheerde installatiekopie als bron voor de nieuwe installatie.
+De volgende Power shell voltooit de configuraties van de virtuele machine en maakt gebruik van onbeheerde installatie kopieën als bron voor de nieuwe installatie.
 
 </br>
 
@@ -250,7 +249,7 @@ De volgende PowerShell is voltooid de configuraties van virtuele machines en maa
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-Als u klaar bent, ziet u de zojuist gemaakte virtuele machine in de [Azure-portal](https://portal.azure.com) onder **Bladeren** > **virtuele machines**, of met behulp van de volgende PowerShell opdrachten:
+Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName
@@ -258,6 +257,6 @@ Als u klaar bent, ziet u de zojuist gemaakte virtuele machine in de [Azure-porta
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor het beheren van uw nieuwe virtuele machine met Azure PowerShell, [virtuele machines beheren met Azure Resource Manager en PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Zie [virtuele machines beheren met Azure Resource Manager en Power shell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over het beheren van uw nieuwe virtuele machine met Azure PowerShell.
 
 

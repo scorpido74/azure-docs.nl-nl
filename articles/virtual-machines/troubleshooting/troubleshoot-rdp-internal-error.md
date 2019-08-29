@@ -1,5 +1,5 @@
 ---
-title: Een interne fout treedt op wanneer u een RDP-verbinding naar Azure Virtual Machines | Microsoft Docs
+title: Er treedt een interne fout op wanneer u een RDP-verbinding maakt met Azure Virtual Machines | Microsoft Docs
 description: Meer informatie over het oplossen van de interne fouten RDP in Microsoft Azure. | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa00a5b65b0e337c47ca1fa892b8958f0bd2232
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319425"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089810"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Een interne fout treedt op wanneer u probeert verbinding maken met een Azure-VM via Extern bureaublad
 
@@ -55,7 +54,7 @@ Om dit probleem wilt oplossen, gebruikt u de seriële Console of [herstel de vir
 Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Als de seriële Console niet is ingeschakeld op de virtuele machine, gaat u naar de [herstel de virtuele machine offline](#repair-the-vm-offline) sectie.
 
-#### <a name="step-1-check-the-rdp-port"></a>Stap: 1 Controleer de RDP-poort
+#### <a name="step-1-check-the-rdp-port"></a>Wizardstap 1 Controleer de RDP-poort
 
 1. In een PowerShell-sessie, gebruikt u de [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) om te controleren of poort 8080 wordt gebruikt door andere toepassingen:
@@ -87,7 +86,7 @@ Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-co
 
     3. [Bijwerken van de netwerkbeveiligingsgroep voor de nieuwe poort](../../virtual-network/security-overview.md) in de Azure portal RDP-poort.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Stap 2: Juiste machtigingen instellen voor de RDP-zelf-ondertekend certificaat
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Stap 2: Juiste machtigingen instellen voor het zelf-ondertekende RDP-certificaat
 
 1.  Voer de volgende opdrachten één voor één om de zelf-ondertekend RDP-certificaat te vernieuwen in een PowerShell-exemplaar:
 

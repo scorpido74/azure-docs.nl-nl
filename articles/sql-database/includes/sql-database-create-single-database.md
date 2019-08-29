@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894161"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098964"
 ---
 In deze stap maakt u een Azure SQL Database afzonderlijke data base. 
 
@@ -23,7 +23,7 @@ In deze stap maakt u een Azure SQL Database afzonderlijke data base.
 
 Maak uw resource groep en één data base met behulp van de Azure Portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
 2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
 3. Selecteer **maken**:
 
@@ -43,7 +43,7 @@ Maak uw resource groep en één data base met behulp van de Azure Portal.
        - **Servernaam**: Typ `mysqlserver`; en een aantal getallen voor uniekheid.
        - **Aanmeldgegevens van serverbeheerder**: Typ `azureuser`.
        - **Wachtwoord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
-       - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `West US 2`.
+       - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `West US`.
 
          ![Nieuwe server](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ Maak uw resource groep en één data base met behulp van Power shell.
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

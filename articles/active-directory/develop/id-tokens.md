@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/27/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853180"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074266"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -30,7 +30,7 @@ ms.locfileid: "68853180"
 
 ## <a name="using-the-id_token"></a>De id_token gebruiken
 
-ID-tokens moeten worden gebruikt om te controleren of een gebruiker aan wie ze beweren te zijn en meer nuttige informatie hierover kan krijgen, moet worden gebruikt voor autorisatie in plaats van een [toegangs token](access-tokens.md). De claims die het biedt, kunnen worden gebruikt voor UX in uw toepassing, een Data Base keying maken en toegang verlenen tot de client toepassing.
+ID-tokens moeten worden gebruikt om te controleren of een gebruiker aan wie ze beweren te zijn en meer nuttige informatie hierover kan krijgen, moet worden gebruikt voor autorisatie in plaats van een [toegangs token](access-tokens.md). De claims die het biedt, kunnen worden gebruikt voor UX in uw toepassing, als sleutels in een Data Base en toegang bieden tot de client toepassing.  Wanneer u sleutels voor een Data Base `idp` maakt, moet u deze niet gebruiken, omdat deze gast scenario's ophoopt.  Keying moet worden uitgevoerd op `sub` zichzelf (dit is altijd uniek), met `tid` voor route ring, als dat nodig is.  Als u gegevens in verschillende services moet delen, `oid` + `sub` + `tid` werkt dit omdat meerdere services hetzelfde `oid`zijn.
 
 ## <a name="claims-in-an-id_token"></a>Claims in een id_token
 
@@ -74,7 +74,7 @@ In deze lijst worden de claims weer gegeven die standaard in de meeste id_tokens
 |`nbf` |  int, een UNIX-time stamp | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking.|
 |`exp` |  int, een UNIX-time stamp | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking.  Het is belang rijk te weten dat een resource het token vóór deze tijd kan afwijzen, als er bijvoorbeeld een wijziging in de verificatie is vereist of als er een token is ingetrokken. |
 | `c_hash`| Tekenreeks |De code-hash is alleen opgenomen in ID-tokens wanneer het ID-token wordt uitgegeven met een OAuth 2,0-autorisatie code. Het kan worden gebruikt om de authenticiteit van een autorisatie code te valideren. Zie [OpenID Connect Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html)(Engelstalig) voor meer informatie over het uitvoeren van deze validatie. |
-|`at_hash`| Reeks |De hash van het toegangs token is alleen opgenomen in ID-tokens wanneer het ID-token wordt uitgegeven met een OAuth 2,0-toegangs token. Het kan worden gebruikt om de authenticiteit van een toegangs token te valideren. Zie [OpenID Connect Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html)(Engelstalig) voor meer informatie over het uitvoeren van deze validatie. |
+|`at_hash`| Tekenreeks |De hash van het toegangs token is alleen opgenomen in ID-tokens wanneer het ID-token wordt uitgegeven met een OAuth 2,0-toegangs token. Het kan worden gebruikt om de authenticiteit van een toegangs token te valideren. Zie [OpenID Connect Connect Specification](https://openid.net/specs/openid-connect-core-1_0.html)(Engelstalig) voor meer informatie over het uitvoeren van deze validatie. |
 |`aio` | Dekkende teken reeks | Een interne claim die door Azure AD wordt gebruikt om gegevens te registreren voor het opnieuw gebruiken van tokens. Moet worden genegeerd.|
 |`preferred_username` | Tekenreeks | De primaire gebruikers naam die de gebruiker vertegenwoordigt. Dit kan een e-mail adres, telefoon nummer of een algemene gebruikers naam zijn zonder een opgegeven indeling. De waarde is onveranderbaar en kan in de loop van de tijd veranderen. Omdat de waarde is ververanderbaar, mag deze niet worden gebruikt om autorisatie beslissingen te nemen. Het `profile` bereik is vereist om deze claim te ontvangen.|
 |`email` | Tekenreeks | De `email` claim is standaard aanwezig voor gast accounts met een e-mail adres.  Uw app kan de e-mail claim voor beheerde gebruikers (die van dezelfde Tenant als de resource) aanvragen met `email` behulp van de [optionele claim](active-directory-optional-claims.md).  Op het v 2.0-eind punt kan uw app ook aanvragen `email` voor het OpenID Connect-verbindings bereik. u hoeft niet zowel de optionele claim als de scope op te vragen om de claim op te halen.  De e-mail claim ondersteunt alleen adresseer bare e-mail van de profiel gegevens van de gebruiker. |

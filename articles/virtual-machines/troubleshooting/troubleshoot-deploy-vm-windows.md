@@ -1,6 +1,6 @@
 ---
-title: Problemen met implementatie Windows virtuele machine in Azure | Microsoft Docs
-description: Problemen met implementatie Windows virtuele machine in het Azure Resource Manager-implementatiemodel.
+title: Problemen met het implementeren van problemen met virtuele Windows-machines in azure oplossen | Microsoft Docs
+description: Problemen met het implementeren van problemen met virtuele Windows-machines in het Azure Resource Manager-implementatie model oplossen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -11,115 +11,114 @@ ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 76841484595b0a8809b8ab10db3199fc8cd28b04
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d963556a657f4367acca14d5d8340f384ef555a9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710438"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080208"
 ---
-# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problemen met implementatie Windows virtuele machine in Azure
+# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problemen met het implementeren van problemen met virtuele Windows-machines in azure oplossen
 
-Voor het oplossen van problemen bij de implementatie in Azure virtuele machine (VM), Controleer de [top problemen](#top-issues) voor veelvoorkomende fouten en oplossingen.
+Voor het oplossen van problemen met de implementatie van virtuele machines (VM) in azure, raadpleegt u de [meest voorkomende problemen](#top-issues) met veelvoorkomende fouten en oplossingen.
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op [het Azure MSDN en Stack Overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer **ophalen ondersteunen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
-## <a name="top-issues"></a>Meest voorkomende problemen
+## <a name="top-issues"></a>Belangrijkste problemen
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
-## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Het cluster kan niet de aangevraagde VM-grootte ondersteunt
+## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Het cluster kan de aangevraagde VM-grootte niet ondersteunen
 \<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- Probeer de aanvraag met een kleinere virtuele machine.
-- Als de grootte van de aangevraagde virtuele machine kan niet worden gewijzigd:
-    - Stop alle virtuele machines in de beschikbaarheidsset. Klik op **resourcegroepen** > uw resourcegroep > **Resources** > uw beschikbaarheidsset > **virtuele Machines** > uw virtuele machine >  **Stop**.
-    - Nadat alle virtuele machines stoppen, moet u de virtuele machine maken in de gewenste grootte.
-    - Start de nieuwe virtuele machine eerst en selecteert u elk van de gestopte VM's en klik op Start.
+- Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
+- Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
+    - Stop alle virtuele machines in de beschikbaarheidsset. Klik op **resource groepen** > de resource groep > **resources** > uw beschikbaarheidsset > **virtual machines** > uw virtuele machine > **gestopt**.
+    - Nadat alle virtuele machines zijn gestopt, maakt u de virtuele machine in de gewenste grootte.
+    - Start eerst de nieuwe VM en selecteer vervolgens elk van de gestopte Vm's en klik op Start.
 
 
-## <a name="the-cluster-does-not-have-free-resources"></a>Het cluster heeft geen gratis resources
+## <a name="the-cluster-does-not-have-free-resources"></a>Het cluster heeft geen vrije resources
 \<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
-- De aanvraag later opnieuw proberen.
-- Als de nieuwe virtuele machine deel van een andere beschikbaarheidsset uitmaken kan
-    - Een virtuele machine maken in een andere beschikbaarheidsset (in dezelfde regio).
-    - De nieuwe virtuele machine toevoegen aan hetzelfde virtuele netwerk.
+- Voer de aanvraag later opnieuw uit.
+- Als de nieuwe VM deel kan uitmaken van een andere beschikbaarheidsset
+    - Maak een virtuele machine in een andere beschikbaarheidsset (in dezelfde regio).
+    - Voeg de nieuwe virtuele machine toe aan hetzelfde virtuele netwerk.
 
-## <a name="how-can-i-use-and-deploy-a-windows-client-image-into-azure"></a>Hoe kan ik gebruiken en een windows client-installatiekopie implementeren in Azure?
+## <a name="how-can-i-use-and-deploy-a-windows-client-image-into-azure"></a>Hoe kan ik een Windows-client installatie kopie gebruiken en implementeren in azure?
 
-U kunt Windows 7, Windows 8 of Windows 10 in Azure voor dev/test-scenario's als u een juiste Visual Studio (voorheen MSDN)-abonnement hebt. Dit [artikel](../windows/client-images.md) geeft een overzicht van de vereisten voor geschiktheid voor actieve Windows-client in Azure en maakt gebruik van de Azure-galerie met installatiekopieën.
+U kunt Windows 7, Windows 8 of Windows 10 gebruiken in azure voor ontwikkel-en test scenario's als u een geschikt MSDN-abonnement (Visual Studio) hebt. In dit [artikel](../windows/client-images.md) vindt u een overzicht van de vereisten voor het uitvoeren van Windows-client in Azure en het gebruik van de installatie kopieën van Azure galerie.
 
-## <a name="how-can-i-deploy-a-virtual-machine-using-the-hybrid-use-benefit-hub"></a>Hoe kan ik een virtuele machine met behulp van Hybrid Use Benefit (HUB) implementeren?
+## <a name="how-can-i-deploy-a-virtual-machine-using-the-hybrid-use-benefit-hub"></a>Hoe kan ik een virtuele machine implementeren met behulp van het hybride gebruiks voordeel (HUB)?
 
-Er zijn een aantal verschillende manieren voor het implementeren van Windows-machines met Azure Hybrid Use Benefit.
+Er zijn een aantal verschillende manieren om virtuele Windows-machines te implementeren met de Azure Hybrid Use Benefit.
 
 Voor een Enterprise Agreement-abonnement:
 
-• VM's implementeren vanaf een specifieke Marketplace-installatiekopieën die vooraf geconfigureerd met Azure Hybrid Use Benefit zijn.
+• Implementeer Vm's vanaf specifieke Marketplace-installatie kopieën die vooraf zijn geconfigureerd met Azure Hybrid Use Benefit.
 
-Voor Enterprise agreement:
+Voor Enter prise Agreement:
 
-• Een aangepaste VM uploaden en implementeren met behulp van een Resource Manager-sjabloon of Azure PowerShell.
+• Upload een aangepaste VM en implementeer deze met behulp van een resource manager-sjabloon of Azure PowerShell.
 
 Zie de volgende bronnen voor meer informatie:
 
  - [Overzicht van Azure Hybrid Use Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
- - [Veelgestelde vragen over het downloaden](https://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
+ - [Veelgestelde vragen over downloaden](https://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
 
- - [Azure Hybrid Use Benefit voor WindowsServer en Windows-](../windows/hybrid-use-benefit-licensing.md).
+ - [Azure Hybrid use Benefit voor Windows Server en Windows-client](../windows/hybrid-use-benefit-licensing.md).
 
- - [Hoe kan ik het Hybrid Use Benefit gebruiken in Azure](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
+ - [Hoe kan ik het voor deel voor hybride gebruik in azure gebruiken?](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
 
-## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Hoe kan ik mijn maandelijkse tegoed voor Visual studio Enterprise (BizSpark) activeren
+## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Hoe kan ik mijn maandelijkse tegoed voor Visual Studio Enter prise (BizSpark) activeren
 
-Activeer uw maandelijkse tegoed, ziet deze [artikel](https://azure.microsoft.com/offers/ms-azr-0064p/).
+Als u uw maandelijkse tegoed wilt activeren, raadpleegt u dit [artikel](https://azure.microsoft.com/offers/ms-azr-0064p/).
 
-## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Hoe kan Enterprise Dev/Test toevoegen aan mijn Enterprise Agreement (EA) toegang te krijgen tot venster-clientinstallatiekopieën?
+## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Enterprise Dev/Test toevoegen aan mijn Enterprise Agreement (EA) om toegang te krijgen tot Window-client installatie kopieën?
 
-Alleen accounteigenaren die hiervoor zijn gemachtigd door een Enterprise-beheerder, kunnen abonnementen maken op basis van de Enterprise Dev/Test-aanbieding. De accounteigenaar maakt abonnementen via de Azure Account Portal en vervolgens als medebeheerders Visual Studio-abonnees moet toevoegen. Zodat ze kunnen beheren en gebruiken van de benodigde bronnen voor ontwikkelen en testen. Zie voor meer informatie, [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Alleen accounteigenaren die hiervoor zijn gemachtigd door een Enterprise-beheerder, kunnen abonnementen maken op basis van de Enterprise Dev/Test-aanbieding. De eigenaar van het account maakt abonnementen via de Azure-account Portal en moet vervolgens actieve Visual Studio-abonnees als co-beheerder toevoegen. Zodat ze de benodigde bronnen voor ontwikkelen en testen kunnen beheren en gebruiken. Zie [Enterprise dev/test](https://azure.microsoft.com/offers/ms-azr-0148p/)voor meer informatie.
 
-## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>De stuurprogramma's ontbreken voor mijn VM Windows-N-serie
+## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Mijn stuur Programma's ontbreken voor mijn VM van de Windows N-serie
 
-Stuurprogramma's voor Windows-VM's zich bevinden [hier](../windows/n-series-driver-setup.md).
+Stuur Programma's voor op Windows gebaseerde virtuele machines bevinden zich [hier](../windows/n-series-driver-setup.md).
 
-## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ik kan een GPU-exemplaar niet vinden in mijn VM uit de N-serie
+## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Ik kan geen GPU-exemplaar vinden in mijn N-serie-VM
 
-Als u wilt profiteren van de GPU-mogelijkheden van Azure uit de N-serie VM's met Windows Server 2016 of Windows Server 2012 R2, moet u NVIDIA grafische stuurprogramma's installeren op elke virtuele machine na de implementatie. Informatie over de installatie van stuurprogramma is beschikbaar voor [Windows VMs](../windows/n-series-driver-setup.md) en [virtuele Linux-machines](../linux/n-series-driver-setup.md).
+Als u gebruik wilt maken van de GPU-mogelijkheden van Azure N-serie Vm's met Windows Server 2016 of Windows Server 2012 R2, moet u na de implementatie NVIDIA grafische Stuur Programma's installeren op elke VM. Informatie over stuur programma-instellingen is beschikbaar voor virtuele [Windows-machines](../windows/n-series-driver-setup.md) en [Linux-vm's](../linux/n-series-driver-setup.md).
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Virtuele machines uit de N-serie is beschikbaar in mijn regio?
+## <a name="is-n-series-vms-available-in-my-region"></a>Zijn er Vm's uit de N-serie beschikbaar in mijn regio?
 
-U kunt controleren op de beschikbaarheid van de [producten beschikbaar per regio tabel](https://azure.microsoft.com/regions/services), en prijzen [hier](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
+U kunt de beschik baarheid controleren vanuit de [tabel met beschik bare producten per regio](https://azure.microsoft.com/regions/services)en de prijzen. [](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)
 
-## <a name="what-client-images-can-i-use-and-deploy-in-azure-and-how-to-i-get-them"></a>Welke client-afbeeldingen kan ik gebruiken en implementeren in Azure, en hoe aan krijg ik die?
+## <a name="what-client-images-can-i-use-and-deploy-in-azure-and-how-to-i-get-them"></a>Welke client installatie kopieën kan ik gebruiken en implementeren in azure, en hoe krijg ik deze?
 
-Kunt u Windows 7, Windows 8 of Windows 10 in Azure voor dev/test-scenario's die dat u hebt een geschikt abonnement op Visual Studio (voorheen MSDN). 
+U kunt Windows 7, Windows 8 of Windows 10 gebruiken in azure voor ontwikkel-en test scenario's waarin u hebt gebruikgemaakt van een geschikt MSDN-abonnement (Visual Studio). 
 
-- Windows 10-installatiekopieën beschikbaar zijn via Azure Gallery in [in aanmerking komende dev/test-aanbiedingen](../windows/client-images.md#eligible-offers). 
-- Visual Studio-abonnees binnen elk type aanbieding kunnen ook [voldoende voorbereiden en maak](../windows/prepare-for-upload-vhd-image.md) een 64-bits Windows 7, Windows 8 of Windows 10-installatiekopie en vervolgens [uploaden naar Azure](../windows/upload-generalized-managed.md). Het gebruik blijft beperkt tot ontwikkelen en testen door actieve Visual Studio-abonnees.
+- Windows 10-installatie kopieën zijn beschikbaar in de Azure Gallery binnen [in aanmerking komende ontwikkel-en test aanbiedingen](../windows/client-images.md#eligible-offers). 
+- Visual Studio-abonnees binnen elk type aanbieding kunnen ook adequaat een 64-bits Windows 7-, Windows 8-of Windows 10-installatie kopie [voorbereiden en maken](../windows/prepare-for-upload-vhd-image.md) en vervolgens [uploaden naar Azure](../windows/upload-generalized-managed.md). Het gebruik blijft beperkt tot dev/test door actieve Visual Studio-abonnees.
 
-Dit [artikel](../windows/client-images.md) geeft een overzicht van de vereisten voor geschiktheid voor actieve Windows-client in Azure en het gebruik van de Azure-galerie met installatiekopieën.
+In dit [artikel](../windows/client-images.md) vindt u een overzicht van de vereisten voor het uitvoeren van Windows-client in Azure en het gebruik van de installatie kopieën van Azure galerie.
 
-## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Ik ben niet kunnen zien van familie van VM-grootte die ik nodig heb wanneer het formaat van mijn virtuele machine.
+## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>Ik kan de serie van de VM-grootte niet zien die ik wil bij het wijzigen van de grootte van mijn VM.
 
-Wanneer een virtuele machine wordt uitgevoerd, wordt deze geïmplementeerd op een fysieke server. De fysieke servers in Azure-regio's worden gegroepeerd in clusters van algemene fysieke hardware. Formaat van een virtuele machine die de virtuele machine worden verplaatst naar andere hardwareclusters verschilt, afhankelijk van welke implementatiemodel is gebruikt voor het implementeren van de virtuele machine.
+Wanneer een virtuele machine wordt uitgevoerd, wordt deze geïmplementeerd op een fysieke server. De fysieke servers in azure-regio's worden gegroepeerd in clusters van algemene fysieke hardware. Het wijzigen van de grootte van een virtuele machine die vereist dat de VM naar verschillende hardwareconfiguraties wordt verplaatst, is afhankelijk van het implementatie model dat is gebruikt voor het implementeren van de virtuele machine.
 
-- Virtuele machines die worden geïmplementeerd in het klassieke implementatiemodel, de cloud service-implementatie moeten worden verwijderd en opnieuw worden geïmplementeerd om te wijzigen van de virtuele machines in een grootte in een andere serie met grootten.
+- Vm's die zijn geïmplementeerd in het klassieke implementatie model, moet de Cloud service-implementatie worden verwijderd en opnieuw worden geïmplementeerd om de Vm's te wijzigen in een grootte in een andere grootte familie.
 
-- In het implementatiemodel van Resource Manager geïmplementeerde virtuele machines, moet u alle virtuele machines stoppen in de beschikbaarheidsset voor de grootte van alle virtuele machines in de beschikbaarheidsset te wijzigen.
+- Vm's die zijn geïmplementeerd in het Resource Manager-implementatie model, moet u alle virtuele machines in de beschikbaarheidsset stoppen voordat u de grootte van een virtuele machine in de beschikbaarheidsset wijzigt.
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>De vermelde VM-grootte wordt niet ondersteund tijdens de implementatie in de Beschikbaarheidsset.
 
-Kies een grootte die wordt ondersteund op de beschikbaarheidsset cluster. Het verdient aanbeveling bij het maken van een beschikbaarheidsset ingesteld op de grootste VM-grootte kiezen u denkt dat u nodig hebt, en hebben dat de eerste implementatie voor de beschikbaarheidsset.
+Kies een grootte die wordt ondersteund op het cluster van de beschikbaarheidsset. Het is raadzaam om een beschikbaarheidsset te maken om de grootste VM-grootte te kiezen die u nodig hebt en die uw eerste implementatie voor de Beschikbaarheidsset moet zijn.
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Kan ik een bestaande klassieke virtuele machine toevoegen aan een beschikbaarheidsset?
 
-Ja. U kunt een bestaande klassieke virtuele machine toevoegen aan een nieuwe of bestaande Beschikbaarheidsset. Zie voor meer informatie [een bestaande virtuele machine toevoegen aan een beschikbaarheidsset](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
+Ja. U kunt een bestaande klassieke virtuele machine toevoegen aan een nieuwe of bestaande Beschikbaarheidsset. Zie [een bestaande virtuele machine toevoegen aan een beschikbaarheidsset](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op [het Azure MSDN en Stack Overflow-forums](https://azure.microsoft.com/support/forums/).
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/).
 
-U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer **ophalen ondersteunen**.
+U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.

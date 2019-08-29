@@ -1,6 +1,6 @@
 ---
-title: Azure-resourcegroepen met VM-extensies exporteren | Microsoft Docs
-description: Exporteren van Resource Manager-sjablonen die extensies voor virtuele machines bevatten.
+title: Azure-resource groepen exporteren die VM-extensies bevatten | Microsoft Docs
+description: Exporteer Resource Manager-sjablonen die de extensies van de virtuele machine bevatten.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
@@ -9,64 +9,63 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 7f4e2ca6-f1c7-4f59-a2cc-8f63132de279
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: roiyz
-ms.openlocfilehash: 58e72390e4cee04b31ed983fb5fcdf5657fcca45
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6ac3a19d12b99c61dd0607b07b4659114f52400e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706011"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084624"
 ---
-# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Resourcegroepen met VM-extensies exporteren
+# <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Resource groepen exporteren die VM-extensies bevatten
 
-Azure-resourcegroepen kunnen worden geëxporteerd naar een nieuwe Resource Manager-sjabloon die vervolgens kan worden geïmplementeerd. Het exportproces interpreteert bestaande resources en Resource Manager-sjabloon maakt die bij de implementatie resulteert in een vergelijkbaar resourcegroep. Wanneer u de optie voor het exporteren van resourcegroep op basis van een resourcegroep met de extensies voor virtuele machines, kunnen meerdere items moeten worden overwogen, zoals compatibiliteit van de extensie en beveiligde instellingen.
+Azure-resource groepen kunnen worden geëxporteerd naar een nieuwe resource manager-sjabloon die vervolgens opnieuw kan worden geïmplementeerd. Het export proces interpreteert bestaande resources en maakt een resource manager-sjabloon die bij het implementeren van resultaten in een soort gelijke resource groep. Wanneer u de optie voor het exporteren van de resource groep gebruikt voor een resource groep met extensies voor virtuele machines, moeten er verschillende items worden overwogen, zoals uitbreidings compatibiliteit en beveiligde instellingen.
 
-Deze document staat informatie over de werking van het exportproces resourcegroep met betrekking tot de VM-extensies, waaronder een lijst van ondersteunde extensies en meer informatie over de verwerking van beveiligde gegevens.
+In dit document wordt beschreven hoe het export proces van de resource groep werkt met extensies voor virtuele machines, met inbegrip van een lijst met ondersteunde uitbrei dingen en Details over het afhandelen van beveiligde gegevens.
 
-## <a name="supported-virtual-machine-extensions"></a>Ondersteunde VM-extensies
+## <a name="supported-virtual-machine-extensions"></a>Ondersteunde extensies voor virtuele machines
 
-Veel extensies voor virtuele machines zijn beschikbaar. Niet alle uitbreidingen kunnen worden geëxporteerd naar een Resource Manager-sjabloon met behulp van de functie 'Automatiseringsscript'. Als een VM-extensie wordt niet ondersteund, moet deze handmatig terug in de geëxporteerde sjabloon worden geplaatst.
+Er zijn veel uitbrei dingen voor virtuele machines beschikbaar. Niet alle uitbrei dingen kunnen worden geëxporteerd naar een resource manager-sjabloon met behulp van de functie voor automatiserings scripts. Als de extensie van een virtuele machine niet wordt ondersteund, moet deze hand matig worden teruggezet naar de geëxporteerde sjabloon.
 
-De volgende extensies kunnen worden geëxporteerd met de functie voor automation-script.
+De volgende uitbrei dingen kunnen worden geëxporteerd met de functie Automation script.
 
 | Toestelnummer ||||
 |---|---|---|---|
-| Acronis back-up | Datadog Windows Agent | OS-patches voor Linux | VM-momentopname Linux
-| Back-up Acronis Linux | Docker Extension | Puppet Agent |
-| BG-Info | DSC-extensie | Site 24 x 7 Apm inzicht |
-| BMC CTM Agent Linux | Dynatrace-Linux | 24 x 7 Linux siteserver |
-| BMC CTM Agent Windows | Dynatrace Windows | Site 24x7 Windows Server |
-| Chef-Client | HPE Security toepassing Defender | Trend Micro DSA |
+| Acronis-back-up | Datadog Windows-agent | BESTURINGSSYSTEEM patches voor Linux | VM-moment opname Linux
+| Acronis backup Linux | Docker-extensie | Puppet-agent |
+| BG-gegevens | DSC-extensie | Site 24x7 apm Insight |
+| BMC CMT-agent Linux | Dynatrace Linux | Site 24x7 Linux-server |
+| BMC CMT-agent Windows | Dynatrace Windows | Site 24x7 Windows Server |
+| Chef-client | HPE-beveiligings toepassing Defender | Trend Micro DSA |
 | Aangepast script | IaaS Antimalware | Trend Micro DSA Linux |
-| Aangepaste scriptextensie | Diagnostische gegevens over IaaS | Voor Linux-VM-toegang |
-| Aangepast Script voor Linux | Chef-Client voor Linux | Voor Linux-VM-toegang |
-| Datadog Linux-Agent | De diagnostische Linux | VM-momentopname |
+| Aangepaste scriptextensie | IaaS diagnostische gegevens | VM-toegang voor Linux |
+| Aangepast script voor Linux | Linux chef-client | VM-toegang voor Linux |
+| Datadog Linux-agent | Linux-diagnose | VM-momentopname |
 
-## <a name="export-the-resource-group"></a>De resourcegroep exporteren
+## <a name="export-the-resource-group"></a>De resource groep exporteren
 
-Als u wilt een resourcegroep in een herbruikbare sjabloon exporteren, voert u de volgende stappen uit:
+Als u een resource groep wilt exporteren naar een herbruikbare sjabloon, voert u de volgende stappen uit:
 
 1. Aanmelden bij Azure Portal
-2. Klik in het Menu Hub op resourcegroepen
-3. Selecteer de doelresourcegroep in de lijst
-4. Klik in de resourcegroep-blade op automatiseringsscript
+2. Klik in het menu hub op resource groepen
+3. Selecteer de doel resource groep in de lijst
+4. Klik in de Blade van de resource groep op Automation script
 
 ![Sjabloon exporteren](./media/export-templates/template-export.png)
 
-Het Azure Resource Manager-script voor automatische produceert een Resource Manager-sjabloon, een parameterbestand en enkele voorbeelden van implementatiescripts, zoals PowerShell en Azure CLI. De geëxporteerde sjabloon kan op dit moment worden gedownload met behulp van de downloadknop als een nieuwe sjabloon toegevoegd aan de bibliotheek voor sjablonen of gedistribueerd met behulp van de knop implementeren.
+Het Azure Resource Manager automatiserings script produceert een resource manager-sjabloon, een parameter bestand en verschillende voor beelden van implementatie scripts, zoals Power shell en Azure CLI. Op dit moment kunt u de geëxporteerde sjabloon downloaden met behulp van de knop downloaden, toegevoegd als een nieuwe sjabloon aan de sjabloon bibliotheek of opnieuw geïmplementeerd met de knop implementeren.
 
 ## <a name="configure-protected-settings"></a>Beveiligde instellingen configureren
 
-Veel extensies voor virtuele machine van Azure bevatten een configuratie met beveiligde instellingen die gevoelige gegevens zoals referenties en van configuratietekenreeksen worden gecodeerd. Beveiligde instellingen worden niet geëxporteerd met het automatiseringsscript. Indien nodig, beveiligde instellingen moeten opnieuw worden geplaatst in de geëxporteerde sjablonen.
+Veel virtuele-machine uitbreidingen van Azure bevatten een configuratie voor beveiligde instellingen waarmee gevoelige gegevens, zoals referenties en configuratie teken reeksen, worden versleuteld. Beveiligde instellingen worden niet geëxporteerd met het Automation-script. Als dat nodig is, moeten beveiligde instellingen opnieuw worden ingevoegd in de geëxporteerde sjabloon.
 
-### <a name="step-1---remove-template-parameter"></a>Stap 1: sjabloonparameter verwijderen
+### <a name="step-1---remove-template-parameter"></a>Stap 1-sjabloon parameter verwijderen
 
-Tijdens het exporteren van de resourcegroep, wordt een enkele sjabloonparameter gemaakt om u te bieden een waarde voor de geëxporteerde beveiligde instellingen. Deze parameter kan worden verwijderd. Verwijder de parameter, bekijk de lijst met parameters en verwijderen van de parameter die op dit JSON-voorbeeld lijkt.
+Wanneer de resource groep wordt geëxporteerd, wordt er één sjabloon parameter gemaakt om een waarde voor de geëxporteerde beveiligde instellingen op te geven. Deze para meter kan worden verwijderd. Als u de para meter wilt verwijderen, bekijkt u de parameter lijst en verwijdert u de para meter die lijkt op dit JSON-voor beeld.
 
 ```json
 "extensions_extensionname_protectedSettings": {
@@ -75,11 +74,11 @@ Tijdens het exporteren van de resourcegroep, wordt een enkele sjabloonparameter 
 }
 ```
 
-### <a name="step-2---get-protected-settings-properties"></a>Stap 2: Get beveiligde eigenschappen
+### <a name="step-2---get-protected-settings-properties"></a>Stap 2: eigenschappen van beveiligde instellingen ophalen
 
-Omdat elk beveiligd instellen van een reeks vereiste eigenschappen heeft, moet een lijst van deze eigenschappen worden verzameld. Alle parameters van de configuratie van de beveiligde instellingen kunt u vinden in de [Azure Resource Manager-schema op GitHub](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Dit schema bevat alleen de parametersets voor de uitbreidingen die worden vermeld in de sectie overzicht van dit document. 
+Omdat voor elke beveiligde instelling een set vereiste eigenschappen is opgegeven, moet er een lijst met deze eigenschappen worden verzameld. Elke para meter van de configuratie van de beveiligde instellingen vindt u in het [Azure Resource Manager schema op github](https://raw.githubusercontent.com/Azure/azure-resource-manager-schemas/master/schemas/2015-08-01/Microsoft.Compute.json). Dit schema bevat alleen de parameter sets voor de uitbrei dingen die worden vermeld in de sectie Overzicht van dit document. 
 
-Uit binnen de opslagplaats schema zoeken naar de gewenste extensie, in dit voorbeeld `IaaSDiagnostics`. Zodra de extensies `protectedSettings` object is gevonden, Let op elke parameter. In het voorbeeld van de `IaasDiagnostic` extensie, de parameters zijn vereist `storageAccountName`, `storageAccountKey`, en `storageAccountEndPoint`.
+Zoek in het schema opslagplaats de gewenste extensie, voor dit voor beeld `IaaSDiagnostics`. Zodra het uitbrei ding `protectedSettings` object is gevonden, noteert u de para meters. In het voor beeld van `IaasDiagnostic` de uitbrei ding zijn `storageAccountName`de para `storageAccountKey`meters `storageAccountEndPoint`vereist, en.
 
 ```json
 "protectedSettings": {
@@ -103,11 +102,11 @@ Uit binnen de opslagplaats schema zoeken naar de gewenste extensie, in dit voorb
 }
 ```
 
-### <a name="step-3---re-create-the-protected-configuration"></a>Stap 3: de configuratie van de beveiligde opnieuw te maken
+### <a name="step-3---re-create-the-protected-configuration"></a>Stap 3: de beveiligde configuratie opnieuw maken
 
-Zoek op de geëxporteerde sjabloon, `protectedSettings` en het instellingsobject geëxporteerde beveiligde vervangen door een nieuw exemplaar met de vereiste extensieparameters en een waarde voor elk criterium.
+Zoek in het geëxporteerde sjabloon naar `protectedSettings` het geëxporteerde object met beveiligde instellingen en vervang dit door een nieuwe. met daarin de vereiste extensie parameters en een waarde voor elk item.
 
-In het voorbeeld van de `IaasDiagnostic` extensie, de nieuwe voor beveiligde instellingsconfiguratie eruit als in het volgende voorbeeld:
+In het voor beeld van `IaasDiagnostic` de uitbrei ding ziet de configuratie van de nieuwe beveiligde instelling eruit als in het volgende voor beeld:
 
 ```json
 "protectedSettings": {
@@ -117,7 +116,7 @@ In het voorbeeld van de `IaasDiagnostic` extensie, de nieuwe voor beveiligde ins
 }
 ```
 
-De laatste extensie resource lijkt op het volgende JSON-voorbeeld:
+De uiteindelijke extensie resource ziet er ongeveer uit als in het volgende voor beeld van JSON:
 
 ```json
 {
@@ -149,9 +148,9 @@ De laatste extensie resource lijkt op het volgende JSON-voorbeeld:
 }
 ```
 
-Als u Sjabloonparameters eigenschapswaarden op te geven, moeten deze worden gemaakt. Bij het maken van Sjabloonparameters voor beveiligd waarden in te stellen, zorg ervoor dat u de `SecureString` parametertype zodat gevoelige waarden zijn beveiligd. Zie voor meer informatie over het gebruik van parameters [Authoring Azure Resource Manager-sjablonen](../../resource-group-authoring-templates.md).
+Als u sjabloon parameters gebruikt om eigenschaps waarden op te geven, moeten deze worden gemaakt. Bij het maken van sjabloon parameters voor beveiligde instellings waarden, moet u `SecureString` ervoor zorgen dat gevoelige waarden worden beveiligd met behulp van het parameter type. Zie [Azure Resource Manager sjablonen ontwerpen](../../resource-group-authoring-templates.md)voor meer informatie over het gebruik van para meters.
 
-In het voorbeeld van de `IaasDiagnostic` extensie, de volgende parameters zouden worden gemaakt in de parametersectie van de Resource Manager-sjabloon.
+In het voor beeld van `IaasDiagnostic` de uitbrei ding worden de volgende para meters gemaakt in de sectie para meters van de Resource Manager-sjabloon.
 
 ```json
 "storageAccountName": {
@@ -164,4 +163,4 @@ In het voorbeeld van de `IaasDiagnostic` extensie, de volgende parameters zouden
 }
 ```
 
-De sjabloon kan op dit moment worden geïmplementeerd met behulp van de implementatiemethode van een sjabloon.
+Op dit moment kan de sjabloon met elke sjabloon implementatie methode worden geïmplementeerd.

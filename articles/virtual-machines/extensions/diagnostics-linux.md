@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871910"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092672"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken om metrische gegevens en logboeken te bewaken
 
@@ -135,9 +135,7 @@ storageAccountSasToken | Een [SAS-token](https://azure.microsoft.com/blog/sas-up
 mdsdHttpProxy | Beschrijving Er zijn HTTP-proxy gegevens nodig om de extensie in te scha kelen om verbinding te maken met het opgegeven opslag account en eind punt.
 sinksConfig | Beschrijving Details van alternatieve doelen waarop metrische gegevens en gebeurtenissen kunnen worden geleverd. De specifieke details van elke gegevens sink die wordt ondersteund door de uitbrei ding, worden behandeld in de volgende secties.
 
-
-> [!NOTE]
-> Bij het implementeren van de uitbrei ding met een Azure-implementatie sjabloon moeten het opslag account en het SAS-token vooraf worden gemaakt en vervolgens worden door gegeven aan de sjabloon. U kunt een virtuele machine, opslag account en de uitbrei ding niet in één sjabloon implementeren. Het maken van een SAS-token binnen een sjabloon wordt momenteel niet ondersteund.
+Gebruik de functie **listAccountSas** om een SAS-token in een resource manager-sjabloon op te halen. Zie voor beeld van een voorbeeld sjabloon [lijst functie](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
 
 U kunt eenvoudig de vereiste SAS-token maken via de Azure Portal.
 
@@ -167,10 +165,10 @@ Kopieer de gegenereerde SA'S naar het veld storageAccountSasToken. Verwijder de 
 
 In deze optionele sectie worden extra bestemmingen gedefinieerd waarnaar de uitbrei ding de verzamelde informatie verzendt. De Sink-matrix bevat een object voor elke extra gegevens sink. Het kenmerk ' type ' bepaalt de andere kenmerken in het object.
 
-Element | Waarde
+Element | Value
 ------- | -----
 name | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
-type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
+Type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
 
 Versie 3,0 van de diagnostische Linux-extensie ondersteunt twee Sink-typen: EventHub en JsonBlob.
 
@@ -229,7 +227,7 @@ Deze structuur bevat verschillende blokken instellingen die de informatie bepale
 }
 ```
 
-Element | Waarde
+Element | Value
 ------- | -----
 StorageAccount | De naam van het opslag account waarin de gegevens worden geschreven door de extensie. Moet dezelfde naam zijn als is opgegeven in de [beveiligde instellingen](#protected-settings).
 mdsdHttpProxy | Beschrijving Hetzelfde als in de [beveiligde instellingen](#protected-settings). De open bare waarde wordt overschreven door de privé waarde, indien ingesteld. Sla proxy-instellingen die een geheim bevatten, zoals een wacht woord, op in de [beveiligde instellingen](#protected-settings).
@@ -252,12 +250,12 @@ De resterende elementen worden gedetailleerd beschreven in de volgende secties.
 
 Deze optionele structuur bepaalt het verzamelen van metrische gegevens en logboeken voor levering aan de service Azure metrics en andere gegevens-Sinks. U moet ofwel `performanceCounters` of `syslogEvents` beide opgeven. U moet de `metrics` structuur opgeven.
 
-Element | Waarde
+Element | Value
 ------- | -----
 eventVolume | Beschrijving Hiermee bepaalt u het aantal partities dat in de opslag tabel is gemaakt. Moet een van `"Large"`, `"Medium"`of `"Small"`zijn. Als dat niet is opgegeven, is `"Medium"`de standaard waarde.
 sampleRateInSeconds | Beschrijving Het standaard interval tussen het verzamelen van metrische gegevens (niet-geaggregeerde). De kleinste ondersteunde sample frequentie is 15 seconden. Als dat niet is opgegeven, is `15`de standaard waarde.
 
-#### <a name="metrics"></a>metrics
+#### <a name="metrics"></a>metrische gegevens
 
 ```json
 "metrics": {
@@ -312,13 +310,13 @@ Deze optionele sectie bepaalt het verzamelen van metrische gegevens. Onbewerkte 
 Element | Value
 ------- | -----
 wastafel | Beschrijving Een door komma's gescheiden lijst met de namen van de sinks waarnaar LAD geaggregeerde metrische resultaten verzendt. Alle geaggregeerde metrische gegevens worden gepubliceerd naar elke vermelde sink. Zie [sinksConfig](#sinksconfig). Voorbeeld: `"EHsink1, myjsonsink"`.
-type | Identificeert de werkelijke provider van de metriek.
+Type | Identificeert de werkelijke provider van de metriek.
 Klasse | Samen met "Counter" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counter | Samen met "class" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counterSpecifier | Identificeert de specifieke metrische waarde binnen de metrische naam ruimte van Azure.
 condition | Beschrijving Selecteert een specifiek exemplaar van het object waarop de metriek van toepassing is of selecteert de aggregatie voor alle exemplaren van dat object. Zie `builtin` metrische definities voor meer informatie.
 sampleRate | IS 8601-interval waarmee de snelheid wordt ingesteld waarmee onbewerkte voor beelden voor deze metrische gegevens worden verzameld. Als deze niet is ingesteld, wordt het verzamelings interval ingesteld met de waarde [sampleRateInSeconds](#ladcfg). De kortste ondersteunde sample frequentie is 15 seconden (PT15S).
-teleenheid | Moet een van de volgende teken reeksen zijn: "Count", "Bytes", "Seconds", "Percent", "CountPerSecond", "BytesPerSecond", "Millisecond". Hiermee definieert u de eenheid voor de metriek. Consumenten van de verzamelde gegevens verwachten dat de verzamelde gegevens waarden overeenkomen met deze eenheid. Dit veld wordt door LAD genegeerd.
+eenheid | Moet een van de volgende teken reeksen zijn: "Count", "Bytes", "Seconds", "Percent", "CountPerSecond", "BytesPerSecond", "Millisecond". Hiermee definieert u de eenheid voor de metriek. Consumenten van de verzamelde gegevens verwachten dat de verzamelde gegevens waarden overeenkomen met deze eenheid. Dit veld wordt door LAD genegeerd.
 displayName | Het label (in de taal die is opgegeven door de instellingen van de bijbehorende land instellingen) dat aan deze gegevens in azure-metrieken moet worden gekoppeld. Dit veld wordt door LAD genegeerd.
 
 De counterSpecifier is een wille keurige id. Consumenten van metrische gegevens, zoals het Azure Portal grafiek-en waarschuwings onderdeel, gebruiken counterSpecifier als de "sleutel" waarmee een metriek of een exemplaar van een metriek wordt aangeduid. Voor `builtin` metrische gegevens raden we u aan om counterSpecifier-waarden te gebruiken `/builtin/`die beginnen met. Als u een specifiek exemplaar van een metriek verzamelt, raden we u aan de id van het exemplaar te koppelen aan de waarde counterSpecifier. Een aantal voorbeelden:
@@ -355,7 +353,7 @@ Deze optionele sectie bepaalt het verzamelen van logboek gebeurtenissen van sysl
 
 De syslogEventConfiguration-verzameling heeft één vermelding voor elke syslog-faciliteit. Als minSeverity is voor een bepaalde faciliteit, of als deze faciliteit niet in het-element wordt weer gegeven, worden er geen gebeurtenissen vastgelegd.
 
-Element | Waarde
+Element | Value
 ------- | -----
 wastafel | Een door komma's gescheiden lijst met de namen van de sinks waarnaar afzonderlijke logboek gebeurtenissen worden gepubliceerd. Alle logboek gebeurtenissen die overeenkomen met de beperkingen in syslogEventConfiguration, worden gepubliceerd naar elke vermelde sink. Voorbeeld: "EHforsyslog"
 facilityName | De naam van een syslog-faciliteit (bijvoorbeeld\_' Log User ' of\_' Log LOCAL0 '). Zie de sectie ' faciliteit ' op de [pagina syslog man](http://man7.org/linux/man-pages/man3/syslog.3.html) voor de volledige lijst.

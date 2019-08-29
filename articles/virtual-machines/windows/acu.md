@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de Azure Compute Unit | Microsoft Docs
-description: Overzicht van het concept van het Azure compute-eenheden voor Windows. De ACU biedt een manier om te vergelijken van CPU-prestaties in Azure-SKU's.
+title: Overzicht van de Azure Compute-eenheid | Microsoft Docs
+description: Overzicht van het concept van de Azure-reken eenheden voor Windows. De ACU biedt een manier om de CPU-prestaties in azure Sku's te vergelijken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -9,26 +9,25 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: 03c3ffee2437ed0c84bc0ec7a0e58d4381407125
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7a9bd3bcfc0c3f1d77b5f7cf8d56254543e2eede
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721160"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103291"
 ---
-# <a name="azure-compute-unit-acu"></a>Azure compute unit (ACU)
+# <a name="azure-compute-unit-acu"></a>Azure Compute-eenheid (ACU)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]
 
 
 Hier vindt u koppelingen naar meer informatie over de verschillende grootten:
-- [Voor algemeen gebruik](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerd geheugen](../virtual-machines-windows-sizes-memory.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

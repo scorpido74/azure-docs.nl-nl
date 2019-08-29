@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 44d6311246ab303966b7cfd8bee854b1c017f85d
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 60c8505b8180a60eed114deb4cd2b11f32c8baa4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107122"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096810"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Een door Azure Queue Storage geactiveerde functie maken
 
@@ -63,7 +62,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
     | Instelling | Voorgestelde waarde | Description |
     |---|---|---|
-    | **Naam** | Uniek in uw functie-app | Naam van deze door een wachtrij geactiveerde functie. |
+    | **Name** | Uniek in uw functie-app | Naam van deze door een wachtrij geactiveerde functie. |
     | **Wachtrijnaam**   | myqueue-items    | De naam van de wachtrij waarmee u verbinding moet maken in uw opslagaccount. |
     | **Opslagaccountverbinding** | AzureWebJobStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |    
 

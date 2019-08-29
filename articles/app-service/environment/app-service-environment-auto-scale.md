@@ -1,6 +1,6 @@
 ---
-title: Automatisch schalen en App Service Environment v1 - Azure
-description: Automatisch schalen en App Service-omgeving
+title: Automatisch schalen en App Service Environment v1-Azure
+description: Automatisch schalen en App Service Environment
 services: app-service
 documentationcenter: ''
 author: btardif
@@ -10,219 +10,218 @@ ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955962"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070090"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatisch schalen en App Service Environment v1
 
 > [!NOTE]
-> In dit artikel gaat over de App Service Environment v1.  Er is een nieuwere versie van de App Service Environment die gebruiksvriendelijker en wordt uitgevoerd op een krachtigere infrastructuur. Voor meer informatie over de nieuwe versie begin met het [Inleiding tot App Service Environment](intro.md).
+> Dit artikel heeft betrekking op de App Service Environment v1.  Er is een nieuwere versie van de App Service Environment die eenvoudiger is te gebruiken en wordt uitgevoerd op een krachtigere infra structuur. Begin met de [Inleiding tot de app service Environment](intro.md)voor meer informatie over de nieuwe versie.
 > 
 
-Ondersteuning voor Azure App Service-omgevingen *automatisch schalen*. U kunt afzonderlijke werknemersgroepen automatisch schalen op basis van metrische gegevens of schema.
+Azure App Service omgevingen ondersteunen automatisch *schalen*. U kunt afzonderlijke werk groepen automatisch schalen op basis van metrische gegevens of planning.
 
-![Opties voor automatisch schalen voor een groep met werkrollen.][intro]
+![Opties voor automatisch schalen voor een werk groep.][intro]
 
-Automatisch schalen optimaliseert uw Resourcegebruik door automatisch vergroten en verkleinen van een App Service-omgeving waarin u binnen uw budget passen en of profiel laden.
+Met automatisch schalen kunt u het resource gebruik optimaliseren door een App Service omgeving te verg Roten of te verkleinen, zodat deze aan uw budget en of het profiel voor het laden voldoet.
 
-## <a name="configure-worker-pool-autoscale"></a>Worker-groep van toepassingen automatisch schalen configureren
-U hebt toegang tot de functionaliteit voor automatisch schalen van de **instellingen** tabblad van de groep met werkrollen.
+## <a name="configure-worker-pool-autoscale"></a>Automatisch schalen van werk groepen configureren
+U kunt de functie voor automatisch schalen openen via het tabblad **instellingen** van de werk groep.
 
-![Tabblad instellingen van de groep met werkrollen.][settings-scale]
+![Het tabblad instellingen van de groep werk nemers.][settings-scale]
 
-Van daaruit is dat de interface moet bekend zijn omdat het de dezelfde ervaring die u ziet wanneer u de schaal van een App Service-plan. 
+Van daaruit moet de interface tamelijk bekend zijn, omdat deze dezelfde ervaring heeft als u een App Service plan schaalt. 
 
-![De instellingen handmatig schalen.][scale-manual]
+![Instellingen voor hand matig schalen.][scale-manual]
 
 U kunt ook een profiel voor automatisch schalen configureren.
 
 ![Instellingen voor automatisch schalen.][scale-profile]
 
-Profielen voor automatisch schalen zijn handig om een limiet instellen voor de schaalset. Op deze manier kunt u een consistente prestaties ervaren door een ondergrens schaalwaarde (1) en een voorspelbare uitgaven maximum instellen door in te stellen van een bovengrens (2) hebben.
+Profielen voor automatisch schalen zijn handig voor het instellen van limieten voor uw schaal. Op deze manier kunt u een consistente prestatie-ervaring hebben door een lagere grens waarde (1) en een voorspel bare bestedings limiet in te stellen door een bovengrens (2) in te stellen.
 
-![Schaalinstellingen in het profiel.][scale-profile2]
+![Schaal instellingen in het profiel.][scale-profile2]
 
-Nadat u een profiel hebt gedefinieerd, kunt u regels voor automatisch schalen om te schalen omhoog of omlaag het aantal exemplaren in de groep met werkrollen binnen de grenzen die zijn gedefinieerd door het profiel kunt toevoegen. Regels voor automatisch schalen zijn gebaseerd op de metrische gegevens.
+Nadat u een profiel hebt gedefinieerd, kunt u regels voor automatisch schalen toevoegen om het aantal instanties in de werk groep binnen de grenzen die door het profiel zijn gedefinieerd, omhoog of omlaag te schalen. Regels voor automatisch schalen zijn gebaseerd op metrische gegevens.
 
-![Schaalregel.][scale-rule]
+![Schaal regel.][scale-rule]
 
- Een groep met werkrollen of metrische front-endgegevens kan worden gebruikt voor het definiëren van regels voor automatisch schalen. Deze metrische gegevens zijn dezelfde metrische gegevens kunt u in de grafieken van de blade resource te controleren of instellen van waarschuwingen voor.
+ Een werk groep of front-end-metrische gegevens kunnen worden gebruikt voor het definiëren van regels voor automatisch schalen. Deze metrische gegevens zijn dezelfde metrische gegevens die u kunt bewaken in de Blade van de resource en voor het instellen van waarschuwingen voor.
 
-## <a name="autoscale-example"></a>Voorbeeld van de functie voor automatisch schalen
-Automatisch schalen van een App Service environment kan door te gaan met een scenario voor uw beste worden geïllustreerd.
+## <a name="autoscale-example"></a>Voor beeld van automatisch schalen
+Automatisch schalen van een App Service omgeving kan het beste worden geïllustreerd door een scenario door te lopen.
 
-Dit artikel wordt uitgelegd van de benodigde overwegingen bij het instellen van automatisch schalen. Het artikel helpt u bij de interacties die aan de orde komen als u automatisch schalen App Service-omgevingen die worden gehost in App Service-omgeving.
+In dit artikel worden alle benodigde overwegingen uitgelegd bij het instellen van automatisch schalen. Het artikel begeleidt u door de interacties die tijdens het automatisch schalen van App Service omgevingen die worden gehost in App Service Environment worden afgespeeld.
 
-### <a name="scenario-introduction"></a>Scenario-Inleiding
-Frank is een sysadmin voor een onderneming die een deel van de werklasten die ze beheren is gemigreerd naar een App Service-omgeving.
+### <a name="scenario-introduction"></a>Scenario Inleiding
+Frank is een sysadmin van een onderneming die een deel van de workloads heeft gemigreerd die ze naar een App Service omgeving beheren.
 
-De App Service-omgeving is geconfigureerd voor handmatig schalen als volgt:
+De App Service omgeving wordt als volgt geconfigureerd als hand matig schalen:
 
 * **Front-ends:** 3
-* **Groep met werkrollen 1**: 10
-* **Groep met werkrollen 2**: 5
-* **Groep met werkrollen 3**: 5
+* **Werknemers groep 1**: 10
+* **Werknemers groep 2**: 5
+* **Werk groep 3**: 5
 
-Groep met werkrollen 1 wordt gebruikt voor werkbelastingen voor productie, terwijl de groep met werkrollen 2 en 3 groep met werkrollen worden gebruikt voor kwaliteitscontrole (QA) en werkvolumes voor ontwikkeling.
+Werk groep 1 wordt gebruikt voor werk belastingen voor productie, terwijl werk groep 2 en werk groep 3 worden gebruikt voor kwaliteits controle (QA) en ontwikkelings werk belastingen.
 
-De App Service-plannen voor QA en dev zijn ingesteld op handmatig schalen. De productie-App Service-plan is ingesteld op automatisch schalen te bekommeren om variaties in de belasting en het verkeer.
+De App Service plannen voor QA en dev zijn geconfigureerd voor hand matige schalen. Het plan voor productie App Service is ingesteld op automatisch schalen om te omgaan met variaties in belasting en verkeer.
 
-Frank is erg bekend zijn met de toepassing. Ze weet dat de piekuren voor taakverdeling tussen 9:00 uur en 18:00:00 uur omdat dit een line-of-business (LOB)-toepassing die werknemers gebruiken terwijl ze op kantoor zijn. Gebruik komt hierna als gebruikers zijn klaar voor die dag. Buiten de piekuren is er nog steeds bepaalde laden omdat gebruikers toegang hebben tot de app op afstand met behulp van hun mobiele apparaten of home-pc's. De productie-App Service-plan is al geconfigureerd voor automatisch schalen op basis van CPU-gebruik met de volgende regels:
+Frank is bekend met de toepassing. Ze weten dat de piek uren voor belasting tussen 9:00 uur en 6:00 uur zijn, omdat dit een LOB-toepassing (line-of-Business) is die werk nemers gebruiken terwijl ze zich op kantoor bevinden. Het gebruik gaat verloren wanneer gebruikers voor die dag klaar zijn. Buiten de piek uren is er nog enige belasting, omdat gebruikers op afstand toegang hebben tot de app via hun mobiele apparaten of thuis Pc's. Het plan voor productie App Service is al geconfigureerd om automatisch te schalen op basis van CPU-gebruik met de volgende regels:
 
-![Specifieke instellingen voor LOB-app.][asp-scale]
+![Specifieke instellingen voor de LOB-app.][asp-scale]
 
-| **Profiel voor automatisch schalen: weekdagen: App Service-plan** | **Profiel voor automatisch schalen: tijdens het weekend: App Service-plan** |
+| **Profiel voor automatisch schalen – werk dagen-App Service plan** | **Profiel voor automatisch schalen: weekends-App Service plan** |
 | --- | --- |
-| **Naam:** Profiel weekdag |**Naam:** Weekend profiel |
-| **Schaal:** Regels voor planning en prestaties |**Schaal:** Regels voor planning en prestaties |
-| **Profiel:** Weekdays |**Profiel:** Weekend |
+| **Naam:** Weekdag profiel |**Naam:** Weekend-profiel |
+| **Schalen op:** Regels voor planning en prestaties |**Schalen op:** Regels voor planning en prestaties |
+| **Uplinkpoortprofiel** Week dagen |**Uplinkpoortprofiel** Weekend |
 | **Type:** Terugkeerpatroon |**Type:** Terugkeerpatroon |
-| **Doelbereik van:** 5 tot 20 exemplaren |**Doelbereik van:** 3 tot en met 10 exemplaren |
-| **Aantal dagen:** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Aantal dagen:** Zaterdag, zondag |
-| **Begintijd:** 9:00 UUR |**Begintijd:** 9:00 UUR |
-| **Tijdzone:** UTC-08 |**Tijdzone:** UTC-08 |
+| **Doel bereik:** 5 tot 20 exemplaren |**Doel bereik:** 3 tot 10 exemplaren |
+| **Resterende** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Resterende** Zaterdag, zondag |
+| **Begin tijd:** 9:00 UUR |**Begin tijd:** 9:00 UUR |
+| **Tijd zone:** UTC-08 |**Tijd zone:** UTC-08 |
 |  | |
-| **Regel voor automatisch schalen (Omhoog schalen)** |**Regel voor automatisch schalen (Omhoog schalen)** |
-| **bron:** Productie (App Service-omgeving) |**bron:** Productie (App Service-omgeving) |
-| **Metriek:** CPU-PERCENTAGE |**Metriek:** CPU-PERCENTAGE |
-| **Bewerking:** Meer dan 60% |**Bewerking:** Meer dan 80% |
-| **Duur:** 5 minuten |**Duur:** 10 minuten |
-| **Tijdverzameling:** Gemiddeld |**Tijdverzameling:** Gemiddeld |
-| **Actie:** Aantal verhogen met 2 |**Actie:** Aantal verhogen met 1 |
+| **Regel voor automatisch schalen (omhoog schalen)** |**Regel voor automatisch schalen (omhoog schalen)** |
+| **Resource** Productie (App Service Environment) |**Resource** Productie (App Service Environment) |
+| **Gemeten** VERBRUIK |**Gemeten** VERBRUIK |
+| **Schijf** Meer dan 60% |**Schijf** Meer dan 80% |
+| **Hebben** 5 minuten |**Hebben** 10 minuten |
+| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
+| **Optreden** Aantal verhogen met 2 |**Optreden** Aantal verhogen met 1 |
 | **Afkoelen (minuten):** 15 |**Afkoelen (minuten):** 20 |
 |  | |
-| **Regel voor automatisch schalen (schaal omlaag)** |**Regel voor automatisch schalen (schaal omlaag)** |
-| **bron:** Productie (App Service-omgeving) |**bron:** Productie (App Service-omgeving) |
-| **Metriek:** CPU-PERCENTAGE |**Metriek:** CPU-PERCENTAGE |
-| **Bewerking:** Minder dan 30% |**Bewerking:** Minder dan 20% |
-| **Duur:** 10 minuten |**Duur:** 15 minuten |
-| **Tijdverzameling:** Gemiddeld |**Tijdverzameling:** Gemiddeld |
-| **Actie:** Aantal verlagen met 1 |**Actie:** Aantal verlagen met 1 |
+| **Regel voor automatisch schalen (omlaag schalen)** |**Regel voor automatisch schalen (omlaag schalen)** |
+| **Resource** Productie (App Service Environment) |**Resource** Productie (App Service Environment) |
+| **Gemeten** VERBRUIK |**Gemeten** VERBRUIK |
+| **Schijf** Minder dan 30% |**Schijf** Minder dan 20% |
+| **Hebben** 10 minuten |**Hebben** 15 minuten |
+| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
+| **Optreden** Aantal verlagen met 1 |**Optreden** Aantal verlagen met 1 |
 | **Afkoelen (minuten):** 20 |**Afkoelen (minuten):** 10 |
 
-### <a name="app-service-plan-inflation-rate"></a>De snelheid van App Service-plan
-App Service-plannen die zijn geconfigureerd om automatisch schalen te doen met een maximale prijs per uur. Deze snelheid kan worden berekend op basis van de waarden geleverd op de regel voor automatisch schalen.
+### <a name="app-service-plan-inflation-rate"></a>Inflatie frequentie App Service plan
+App Service abonnementen die zijn geconfigureerd om automatisch te worden geschaald, hebben een maximum snelheid per uur. Dit aantal kan worden berekend op basis van de waarden die zijn opgenomen in de regel voor automatisch schalen.
 
-Informatie over en het berekenen van de *App Service-plan de rate* is belangrijk voor App Service-omgeving voor automatisch schalen, omdat wijzigingen aan een groep met werkrollen niet onmiddellijk.
+Het is belang rijk App Service dat de inflatie van het *app service plan wordt beoordeeld* en berekend, omdat schaal wijzigingen in een werk groep niet onmiddellijk worden geschaald.
 
-De App Service-plan de snelheid wordt als volgt berekend:
+De inflatie voor het App Service plan wordt als volgt berekend:
 
-![App Service-plan tarief voor de berekening.][ASP-Inflation]
+![De berekening van de inflatie van App Service plannen.][ASP-Inflation]
 
-Op basis van de functie voor automatisch schalen: omhoog schalen-regel voor het profiel van de weekdag van de productie-App Service-plan:
+Op basis van de regel voor automatisch schalen: omhoog schalen voor het weekdag Profiel van het productie App Service plan:
 
-![App Service-plan de snelheid voor weekdagen op basis van automatisch schalen regel omhoog schalen.][Equation1]
+![App Service de inflatie voor werk dagen te plannen op basis van de regel voor automatisch schalen.][Equation1]
 
-De formule zou in het geval van de functie voor automatisch schalen: omhoog schalen-regel voor het Weekend profiel van de productie-App Service-plan, omgezet in:
+In het geval van de regel voor automatisch schalen – opschalen voor het weekend Profiel van de productie-App Service plan, wordt de formule omgezet in:
 
-![App Service-plan de snelheid voor weekends op basis van automatisch schalen regel omhoog schalen.][Equation2]
+![App Service de inflatie voor weekends te plannen op basis van de regel voor automatisch schalen.][Equation2]
 
-Deze waarde kan ook worden berekend voor bewerkingen voor omlaag schalen.
+Deze waarde kan ook worden berekend voor schaal bewerkingen.
 
-Op basis van de functie voor automatisch schalen: schaal omlaag regel voor het profiel van de weekdag van de productie-App Service-plan, dit zou er als volgt uitzien:
+Op basis van de regel voor automatisch schalen-omlaag schalen voor het weekdag Profiel van het productie App Service plan ziet u het volgende:
 
-![App Service-plan de snelheid voor weekdagen op basis van automatisch schalen regel omlaag schalen.][Equation3]
+![App Service de inflatie voor werk dagen te plannen op basis van de regel voor automatisch schalen.][Equation3]
 
-De formule zou in het geval van de functie voor automatisch schalen: schaal omlaag regel voor het Weekend profiel van de productie-App Service-plan, omgezet in:  
+In het geval van de regel voor automatisch schalen-omlaag schalen voor het weekend Profiel van de productie-App Service plan, wordt de formule omgezet in:  
 
-![App Service-plan de snelheid voor weekends op basis van automatisch schalen regel omlaag schalen.][Equation4]
+![App Service de inflatie voor weekends te plannen op basis van de regel voor automatisch schalen-omlaag schalen.][Equation4]
 
-De productie-App Service-plan kan groeien met een maximale snelheid van acht instanties/uur tijdens de week en vier instanties/uur tijdens het weekend. Deze kunt instanties met een maximale snelheid van vier exemplaren per uur in de week en zes exemplaren/uur tijdens het weekend vrijgeven.
+Het productie App Service plan kan worden uitgebreid met Maxi maal acht exemplaren per uur tijdens de week en vier exemplaren per uur tijdens het weekend. Het kan instanties vrijgeven met een maximum snelheid van vier exemplaren per uur tijdens de week en zes exemplaren/uur tijdens het weekend.
 
-Als meerdere App Service-abonnementen zijn die wordt gehost in een groep met werkrollen, u hebt voor het berekenen van de *totale snelheid van de* als de som van de frequentie van de voor alle App Service-abonnementen die worden gehost in die groep met werkrollen.
+Als er meerdere App Service plannen worden gehost in een werknemers groep, moet u het *totale inflatie percentage* berekenen als de som van het inflatie percentage voor alle app service plannen die worden gehost in die werknemers groep.
 
-![De berekening van de totale snelheid van de voor meerdere App Service-plannen die wordt gehost in een groep met werkrollen.][ASP-Total-Inflation]
+![Totale inflatie berekening voor meerdere App Service plannen die worden gehost in een werknemers groep.][ASP-Total-Inflation]
 
-### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>De App Service-plan de snelheid voor het definiëren van regels voor automatisch schalen van werknemer pool gebruiken
-Werknemer-pools die als host fungeren App Service-plannen die zijn geconfigureerd voor automatisch schalen moeten worden toegewezen een buffer van capaciteit. De buffer kan voor de bewerkingen voor automatisch schalen om te vergroten of verkleinen van de App Service-plan, indien nodig. De minimale buffer zou de berekende totale App Service Plan de frequentie.
+### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Gebruik het App Service plan inflatie tarieven voor het definiëren van regels voor automatisch schalen van werk groepen
+Werk groepen die App Service plannen hosten die zijn geconfigureerd voor automatisch schalen, moeten een buffer capaciteit toewijzen. De buffer maakt het mogelijk om automatisch te schalen en zo nodig het App Service plan te verkleinen. De minimale buffer is de berekende totale App Service het inflatie percentage van het plan.
 
-Omdat App Service-omgeving schaalbewerkingen even duren om toe te passen, moet elke wijziging rekening gehouden met meer aanvraag-wijzigingen die optreden kunnen, terwijl een schaalbewerking uitgevoerd wordt. Om te voldoen aan deze latentie, raden wij aan dat u het berekende totale aantal App Service Plan de tarief als het minimum aantal exemplaren die worden toegevoegd voor elke bewerking voor automatisch schalen.
+Omdat App Service omgevings schaal bewerkingen enige tijd in beslag nemen, moet elke wijziging rekening houden met verdere wijzigingen in de vraag die kunnen optreden terwijl een schaal bewerking wordt uitgevoerd. Voor deze latentie raden we u aan om de berekende totale App Service-inflatie verhouding te gebruiken als het minimum aantal exemplaren dat voor elke bewerking voor automatisch schalen is toegevoegd.
 
-Met deze informatie kunt Frank het profiel van de volgende voor automatisch schalen en regels definiëren:
+Met deze informatie kan Frank het volgende profiel voor automatisch schalen en regels definiëren:
 
-![De profiel-regels voor automatisch schalen voor LOB-voorbeeld.][Worker-Pool-Scale]
+![Profiel regels automatisch schalen voor het LOB-voor beeld.][Worker-Pool-Scale]
 
-| **Profiel voor automatisch schalen: weekdagen** | **Profiel voor automatisch schalen: tijdens het weekend** |
+| **Profiel voor automatisch schalen: werk dagen** | **Profiel voor automatisch schalen: weekends** |
 | --- | --- |
-| **Naam:** Profiel weekdag |**Naam:** Weekend profiel |
-| **Schaal:** Regels voor planning en prestaties |**Schaal:** Regels voor planning en prestaties |
-| **Profiel:** Weekdays |**Profiel:** Weekend |
+| **Naam:** Weekdag profiel |**Naam:** Weekend-profiel |
+| **Schalen op:** Regels voor planning en prestaties |**Schalen op:** Regels voor planning en prestaties |
+| **Uplinkpoortprofiel** Week dagen |**Uplinkpoortprofiel** Weekend |
 | **Type:** Terugkeerpatroon |**Type:** Terugkeerpatroon |
-| **Doelbereik van:** 13-25 exemplaren |**Doelbereik van:** 6 tot en met 15-instanties |
-| **Aantal dagen:** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Aantal dagen:** Zaterdag, zondag |
-| **Begintijd:** 7:00 UUR |**Begintijd:** 9:00 UUR |
-| **Tijdzone:** UTC-08 |**Tijdzone:** UTC-08 |
+| **Doel bereik:** 13 tot 25 exemplaren |**Doel bereik:** 6 tot 15 exemplaren |
+| **Resterende** Maandag, dinsdag, woensdag, donderdag, vrijdag |**Resterende** Zaterdag, zondag |
+| **Begin tijd:** 7:00 UUR |**Begin tijd:** 9:00 UUR |
+| **Tijd zone:** UTC-08 |**Tijd zone:** UTC-08 |
 |  | |
-| **Regel voor automatisch schalen (Omhoog schalen)** |**Regel voor automatisch schalen (Omhoog schalen)** |
-| **bron:** Worker-groep 1 |**bron:** Worker-groep 1 |
-| **Metriek:** WorkersAvailable |**Metriek:** WorkersAvailable |
-| **Bewerking:** Minder dan 8 |**Bewerking:** Minder dan 3 |
-| **Duur:** 20 minuten |**Duur:** 30 minuten |
-| **Tijdverzameling:** Gemiddeld |**Tijdverzameling:** Gemiddeld |
-| **Actie:** Aantal verhogen met 8 |**Actie:** Aantal verhogen met 3 |
+| **Regel voor automatisch schalen (omhoog schalen)** |**Regel voor automatisch schalen (omhoog schalen)** |
+| **Resource** Werknemers groep 1 |**Resource** Werknemers groep 1 |
+| **Gemeten** WorkersAvailable |**Gemeten** WorkersAvailable |
+| **Schijf** Minder dan 8 |**Schijf** Minder dan 3 |
+| **Hebben** 20 minuten |**Hebben** 30 minuten |
+| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
+| **Optreden** Aantal verhogen met 8 |**Optreden** Aantal verhogen met 3 |
 | **Afkoelen (minuten):** 180 |**Afkoelen (minuten):** 180 |
 |  | |
-| **Regel voor automatisch schalen (schaal omlaag)** |**Regel voor automatisch schalen (schaal omlaag)** |
-| **bron:** Worker-groep 1 |**bron:** Worker-groep 1 |
-| **Metriek:** WorkersAvailable |**Metriek:** WorkersAvailable |
-| **Bewerking:** Groter is dan 8 |**Bewerking:** Groter dan 3 |
-| **Duur:** 20 minuten |**Duur:** 15 minuten |
-| **Tijdverzameling:** Gemiddeld |**Tijdverzameling:** Gemiddeld |
-| **Actie:** Aantal verlagen met 2 |**Actie:** Aantal verlagen met 3 |
+| **Regel voor automatisch schalen (omlaag schalen)** |**Regel voor automatisch schalen (omlaag schalen)** |
+| **Resource** Werknemers groep 1 |**Resource** Werknemers groep 1 |
+| **Gemeten** WorkersAvailable |**Gemeten** WorkersAvailable |
+| **Schijf** Groter dan 8 |**Schijf** Groter dan 3 |
+| **Hebben** 20 minuten |**Hebben** 15 minuten |
+| **Tijd aggregatie:** Average |**Tijd aggregatie:** Average |
+| **Optreden** Aantal verlagen met 2 |**Optreden** Aantal verlagen met 3 |
 | **Afkoelen (minuten):** 120 |**Afkoelen (minuten):** 120 |
 
-De doel-bereik dat is gedefinieerd in het profiel wordt berekend door de minimale exemplaren die zijn gedefinieerd in het profiel voor de App Service-plan + buffer.
+Het doel bereik dat in het profiel is gedefinieerd, wordt berekend op basis van het minimum aantal exemplaren dat is gedefinieerd in het profiel voor de App Service plan +-buffer.
 
-Het maximum aantal bereik is de som van alle maximum bereiken voor alle App Service-abonnementen die worden gehost in de groep met werkrollen.
+Het maximum bereik is de som van alle maximale bereiken voor alle App Service plannen die worden gehost in de werk groep.
 
-Het aantal verhogen voor de schaal van regels moet worden ingesteld op ten minste 1 X de App Service-Plan de snelheid voor scale-.
+Het aantal verg Roten voor de regels voor omhoog schalen moet worden ingesteld op ten minste 1X het App Service plan inflatie voor omhoog schalen.
 
-Aantal verlagen kan worden aangepast op een andere waarde tussen 1/2 X of 1 X de App Service-Plan de snelheid voor schaal omlaag.
+Aantal verminderingen kan worden aangepast aan iets tussen 1/2X, of de App Service de inflatie van het schema voor omlaag schalen.
 
-### <a name="autoscale-for-front-end-pool"></a>Automatisch schalen voor de front-end-pool
-Regels voor front-automatisch schalen zijn eenvoudiger dan voor werknemersgroepen. Primair, moet u  
-Zorg ervoor dat deze duur van de meting en de afkoeltijd timers Houd rekening met schaalbewerkingen op een App Service-plan zijn niet onmiddellijk.
+### <a name="autoscale-for-front-end-pool"></a>Automatisch schalen voor front-end-groep
+Regels voor het automatisch schalen van de front-end zijn eenvoudiger dan voor werk groepen. In de eerste plaats moet u  
+Zorg ervoor dat de duur van de meting en de cooldown-timers overwegen dat schaal bewerkingen op een App Service plan niet onmiddellijk zijn.
 
-Voor dit scenario weet Frank dat de frequentie van fouten wordt verhoogd wanneer de front-ends tot 80% CPU-gebruik en Hiermee stelt u de regel voor automatisch schalen om te verhogen instanties als volgt:
+In dit scenario weet Frank dat de fout frequentie toeneemt nadat de front-ends een CPU-gebruik hebben bereikt van 80% en wordt de regel voor automatisch schalen ingesteld om instanties te verhogen:
 
 ![Instellingen voor automatisch schalen voor de front-end-pool.][Front-End-Scale]
 
-| **Front-ends met het profiel voor automatisch schalen:** |
+| **Profiel voor automatisch schalen: front-ends** |
 | --- |
-| **Naam:** Front-ends met automatisch schalen |
-| **Schaal:** Regels voor planning en prestaties |
-| **Profiel:** elke dag |
+| **Naam:** Automatisch schalen: front-ends |
+| **Schalen op:** Regels voor planning en prestaties |
+| **Uplinkpoortprofiel** Elke dag |
 | **Type:** Terugkeerpatroon |
-| **Doelbereik van:** 3 tot en met 10 exemplaren |
-| **Aantal dagen:** elke dag |
-| **Begintijd:** 9:00 UUR |
-| **Tijdzone:** UTC-08 |
+| **Doel bereik:** 3 tot 10 exemplaren |
+| **Resterende** Elke dag |
+| **Begin tijd:** 9:00 UUR |
+| **Tijd zone:** UTC-08 |
 |  |
-| **Regel voor automatisch schalen (Omhoog schalen)** |
-| **bron:** Front-end-pool |
-| **Metriek:** CPU-PERCENTAGE |
-| **Bewerking:** Meer dan 60% |
-| **Duur:** 20 minuten |
-| **Tijdverzameling:** Gemiddeld |
-| **Actie:** Aantal verhogen met 3 |
+| **Regel voor automatisch schalen (omhoog schalen)** |
+| **Resource** Front-end-pool |
+| **Gemeten** VERBRUIK |
+| **Schijf** Meer dan 60% |
+| **Hebben** 20 minuten |
+| **Tijd aggregatie:** Average |
+| **Optreden** Aantal verhogen met 3 |
 | **Afkoelen (minuten):** 120 |
 |  |
-| **Regel voor automatisch schalen (schaal omlaag)** |
-| **bron:** Worker-groep 1 |
-| **Metriek:** CPU-PERCENTAGE |
-| **Bewerking:** Minder dan 30% |
-| **Duur:** 20 minuten |
-| **Tijdverzameling:** Gemiddeld |
-| **Actie:** Aantal verlagen met 3 |
+| **Regel voor automatisch schalen (omlaag schalen)** |
+| **Resource** Werknemers groep 1 |
+| **Gemeten** VERBRUIK |
+| **Schijf** Minder dan 30% |
+| **Hebben** 20 minuten |
+| **Tijd aggregatie:** Average |
+| **Optreden** Aantal verlagen met 3 |
 | **Afkoelen (minuten):** 120 |
 
 <!-- IMAGES -->

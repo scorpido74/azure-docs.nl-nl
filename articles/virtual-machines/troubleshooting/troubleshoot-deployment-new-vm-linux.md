@@ -1,6 +1,6 @@
 ---
-title: Linux VM-implementatie oplossen | Microsoft Docs
-description: Bij het maken van een nieuwe virtuele Linux-machine in Azure Resource Manager-implementatieproblemen oplossen
+title: Problemen met de implementatie van Linux-VM'S oplossen | Microsoft Docs
+description: Problemen met de implementatie van Resource Manager oplossen wanneer u een nieuwe virtuele Linux-machine in azure maakt
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
@@ -11,83 +11,82 @@ ms.assetid: 906a9c89-6866-496b-b4a4-f07fb39f990c
 ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: dd6241f75311ea956b204b5181ae17db0ef3faa1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710495"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090028"
 ---
-# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Probleemoplossing voor implementatieproblemen bij het maken van een nieuwe virtuele Linux-machine in Azure Resource Manager
+# <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Problemen met de implementatie van Resource Manager oplossen met het maken van een nieuwe virtuele Linux-machine in azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
 
-## <a name="top-issues"></a>Meest voorkomende problemen
+## <a name="top-issues"></a>Belangrijkste problemen
 [!INCLUDE [support-disclaimer](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 Voor andere problemen met en vragen over de VM-implementatie raadpleegt u [Troubleshoot deploying Linux virtual machine issues in Azure](troubleshoot-deploy-vm-linux.md) (Problemen met de implementatie van Linux-VM's in Azure oplossen).
 
-## <a name="collect-activity-logs"></a>Activiteitenlogboeken verzamelen
-Als u wilt gaan met het oplossen van problemen, de activiteitenlogboeken voor het identificeren van de fout die is gekoppeld aan het probleem te verzamelen. De volgende koppelingen bevatten gedetailleerde informatie over de procedure te volgen.
+## <a name="collect-activity-logs"></a>Activiteiten logboeken verzamelen
+Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logboeken om de fout te identificeren die aan het probleem is gekoppeld. De volgende koppelingen bevatten gedetailleerde informatie over het proces dat moet worden gevolgd.
 
 [Implementatiebewerkingen bekijken](../../azure-resource-manager/resource-manager-deployment-operations.md)
 
-[Activiteitenlogboeken bekijken voor het beheren van Azure-resources](../../resource-group-audit.md)
+[Activiteiten logboeken weer geven om Azure-resources te beheren](../../resource-group-audit.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** Als het besturingssysteem gegeneraliseerd Linux is, en deze is geüpload en/of vastgelegd met de algemene instelling, klik zich er niet eventuele fouten. Op dezelfde manier als het besturingssysteem Linux gespecialiseerd, en deze is geüpload en/of vastgelegd met de instelling van gespecialiseerde en eventuele fouten niet.
+**VORIG** Als het besturings systeem wordt gegeneraliseerd door Linux en het is geüpload en/of vastgelegd met de gegeneraliseerde instelling, zijn er geen fouten. Op dezelfde manier geldt dat als het besturings systeem Linux gespecialiseerd is en het is geüpload en/of vastgelegd met de gespecialiseerde instelling, er geen fouten zijn.
 
-**Uploadfouten:**
+**Upload fouten:**
 
-**N<sup>1</sup>:** Als het besturingssysteem Linux gegeneraliseerd en is geüpload als gespecialiseerd, krijgt u een inrichting time-outfout omdat de virtuele machine is vastgelopen bij het inrichtingsproces fase.
+**N<sup>1</sup>:** Als het besturings systeem wordt gegeneraliseerd door Linux en het is geüpload als gespecialiseerd, ontvangt u een time-outfout voor inrichting omdat de virtuele machine zich in de inrichtings fase bevindt.
 
-**N<sup>2</sup>:** Als het besturingssysteem is Linux, en is geüpload als gegeneraliseerd, wordt er een inrichten is mislukt omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke de computernaam, gebruikersnaam en wachtwoord.
+**N<sup>2</sup>:** Als het besturings systeem Linux gespecialiseerd is en het is geüpload als gegeneraliseerd, krijgt u een inrichtings fout, omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord.
 
-**Oplossing:**
+**Opgelost**
 
-Uploaden om op te lossen beide deze fouten, de oorspronkelijke VHD, on-premises, met dezelfde instelling als die voor het besturingssysteem (gegeneraliseerde/specifieke) beschikbaar. Als u wilt uploaden als gegeneraliseerd, vergeet niet om uit te voeren - eerst de inrichting.
+Als u beide fouten wilt oplossen, uploadt u de oorspronkelijke VHD, die beschikbaar is op locatie, met dezelfde instelling als die voor het besturings systeem (gegeneraliseerd/gespecialiseerd). Als u wilt uploaden als gegeneraliseerd, moet u eerst de uitvoering van het programma uitvoeren.
 
-**Vastleggen fouten:**
+**Fouten vastleggen:**
 
-**N<sup>3</sup>:** Als het besturingssysteem gegeneraliseerd Linux is, en deze wordt vastgelegd als gespecialiseerd, krijgt u een inrichting time-outfout omdat de oorspronkelijke virtuele machine kan niet worden gebruikt omdat het is gemarkeerd als gegeneraliseerd.
+**N<sup>3</sup>:** Als het besturings systeem Linux gegeneraliseerd is en het is vastgelegd als gespecialiseerd, krijgt u een time-outfout van inrichting omdat de oorspronkelijke virtuele machine niet bruikbaar is omdat deze is gemarkeerd als gegeneraliseerd.
 
-**N<sup>4</sup>:** Als het besturingssysteem is Linux, en deze wordt vastgelegd als gegeneraliseerd, wordt er een inrichten is mislukt omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke de computernaam, gebruikersnaam en wachtwoord. De oorspronkelijke virtuele machine is ook niet kan worden gebruikt omdat deze is gemarkeerd als gespecialiseerde.
+**N<sup>4</sup>:** Als het besturings systeem Linux gespecialiseerd is en het is vastgelegd als gegeneraliseerd, krijgt u een inrichtings fout omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord. De oorspronkelijke virtuele machine kan ook niet worden gebruikt omdat deze is gemarkeerd als gespecialiseerd.
 
-**Oplossing:**
+**Opgelost**
 
-Beide deze fouten oplossen, verwijdert u de huidige installatiekopie vanuit de portal en [opnieuw vanuit de huidige VHD vastleggen](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) met dezelfde instelling als die voor het besturingssysteem (gegeneraliseerde/specifieke).
+Om beide fouten op te lossen, verwijdert u de huidige installatie kopie uit de portal en [legt u deze opnieuw vast vanaf de huidige vhd's](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) met dezelfde instelling als voor het besturings systeem (gegeneraliseerd/gespecialiseerd).
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probleem: Aangepaste / galerie / marketplace-installatiekopie; Toewijzingsfout
-Deze fout zich voordoet in situaties als de nieuwe VM-aanvraag is vastgemaakt aan een cluster die op de VM-grootte wordt aangevraagd niet kan ondersteunen, of heeft geen beschikbare vrije ruimte voor de aanvraag.
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probleem: Aangepaste/galerie/Marketplace-afbeelding; toewijzings fout
+Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster dat de aangevraagde VM-grootte niet kan ondersteunen of waarvoor er geen beschik bare ruimte beschikbaar is om aan de aanvraag te voldoen.
 
-**1 oorzaak:** Het cluster kan niet de aangevraagde VM-grootte ondersteunt.
+**Oorzaak 1:** Het cluster kan de aangevraagde VM-grootte niet ondersteunen.
 
 **Oplossing 1:**
 
-* Probeer de aanvraag met een kleinere virtuele machine.
-* Als de grootte van de aangevraagde virtuele machine kan niet worden gewijzigd:
+* Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
+* Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
   * Stop alle virtuele machines in de beschikbaarheidsset.
-    Klik op **resourcegroepen** > *uw resourcegroep* > **Resources** > *uw beschikbaarheidsset*  >  **Virtuele Machines** > *uw virtuele machine* > **stoppen**.
-  * Nadat alle virtuele machines stoppen, moet u de nieuwe virtuele machine maken in de gewenste grootte.
-  * Start de nieuwe virtuele machine eerst, en vervolgens selecteert u elk van de gestopte VM's en klik op **Start**.
+    Klik op **resource groepen** > *uw resource groep* >  > omuw > *beschikbaarheidsset*virtualmachines > *uw virtuele machine in te stellen. Stoppen.*   > 
+  * Nadat alle Vm's zijn gestopt, maakt u de nieuwe virtuele machine op de gewenste grootte.
+  * Start eerst de nieuwe VM en selecteer vervolgens elk van de gestopte Vm's en klik op **Start**.
 
-**2 oorzaak:** Het cluster heeft geen gratis resources.
+**Oorzaak 2:** Het cluster heeft geen vrije resources.
 
 **Oplossing 2:**
 
-* De aanvraag opnieuw uitvoeren op een later tijdstip.
-* Als de nieuwe virtuele machine deel van een andere beschikbaarheidsset uitmaken kan
-  * Maak een nieuwe virtuele machine in een andere beschikbaarheidsset (in dezelfde regio bevinden).
-  * De nieuwe virtuele machine toevoegen aan hetzelfde virtuele netwerk.
+* Voer de aanvraag op een later tijdstip opnieuw uit.
+* Als de nieuwe VM deel kan uitmaken van een andere beschikbaarheidsset
+  * Maak een nieuwe virtuele machine in een andere beschikbaarheidsset (in dezelfde regio).
+  * Voeg de nieuwe virtuele machine toe aan hetzelfde virtuele netwerk.
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u problemen ondervindt wanneer u een gestopte Linux-VM starten of het formaat van een bestaande VM met Linux in Azure, Zie [problemen met opnieuw te starten of het formaat van een bestaande virtuele Machine voor Linux in Azure Resource Manager oplossen implementatie](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Als u problemen ondervindt bij het starten van een gestopt Linux-VM of het formaat van een bestaande virtuele Linux-machine in azure wijzigt, raadpleegt u problemen met [de implementatie van Resource Manager oplossen bij het opnieuw starten of wijzigen van het formaat van een bestaande Linux-vm in azure](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3bf9ba52bc4071755918b842da477384dcd38973
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323507"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095168"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Query's maken om batch resources efficiënt weer te geven
 
@@ -35,7 +34,7 @@ Bijna alle batch-toepassingen moeten een type bewaking of een andere bewerking u
 ## <a name="meet-the-detaillevel"></a>Voldoen aan de DetailLevel
 In een productie batch-toepassing kunnen entiteiten zoals Jobs, taken en reken knooppunten het aantal duizend tallen. Wanneer u informatie nodig hebt over deze resources, moet u een mogelijke grote hoeveelheid gegevens ' cross ' door kruisen van de batch-service naar uw toepassing op elke query. Door het aantal items en het type informatie dat wordt geretourneerd door een query te beperken, kunt u de snelheid van uw query's verhogen en dus ook de prestaties van uw toepassing.
 
-Dit code fragment voor [batch .net][api_net] API *bevat een* lijst met alle taken die aan een taak zijn gekoppeld, samen met *alle* eigenschappen van elke taak:
+Dit code fragment voor [batch .net][api_net] API bevat een lijst met alle taken die aan een taak zijn gekoppeld, samen met *alle* eigenschappen van elke taak:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -165,7 +164,7 @@ Eigenschaps namen in filters, selecteren en uitvouwen teken reeksen *moeten* ove
 
 ### <a name="mappings-for-select-strings"></a>Toewijzingen voor selectie teken reeksen
 * **Batch .net-typen**: Batch .NET API-typen.
-* **Rest API entiteiten**: Elke pagina in deze kolom bevat een of meer tabellen met de REST API eigenschaps namen voor het type. Deze eigenschapnamen worden gebruikt wanneer *u teken reeksen* samen stelt. U gebruikt dezelfde eigenschaps namen wanneer u een teken reeks voor [ODATADetailLevel. SelectClause][odata_select] bouwt.
+* **Rest API entiteiten**: Elke pagina in deze kolom bevat een of meer tabellen met de REST API eigenschaps namen voor het type. Deze eigenschapnamen worden gebruikt wanneer u teken reeksen samen stelt. U gebruikt dezelfde eigenschaps namen wanneer u een teken reeks voor [ODATADetailLevel. SelectClause][odata_select] bouwt.
 
 | Batch .NET-typen | REST API entiteiten |
 | --- | --- |

@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011301"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084866"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -273,4 +273,4 @@ Als u hulp nodig hebt bij het upgraden naar een nieuwere versie van Azure AD Con
 
 **V: Waarom worden de gebeurtenissen 6311 en 6401 weer gegeven na een fouten in de synchronisatie stap?**
 
-De gebeurtenissen 6311- **de server heeft een onverwachte fout aangetroffen tijdens het uitvoeren van een call back** en 6401- **de beheer agent controller heeft een onverwachte fout aangetroffen. deze** worden altijd geregistreerd na een fout in de synchronisatie stap. Om deze fouten op te lossen, moet u de fouten in de synchronisatie stap opschonen.  Zie [problemen oplossen tijdens synchronisatie](tshoot-connect-sync-errors.md) en [problemen met object synchronisatie oplossen met Azure AD Connect Sync](/tshoot-connect-objectsync.md) voor meer informatie.
+De gebeurtenissen 6311- **de server heeft een onverwachte fout aangetroffen tijdens het uitvoeren van een call back** en 6401- **de beheer agent controller heeft een onverwachte fout aangetroffen. deze** worden altijd geregistreerd na een fout in de synchronisatie stap. Om deze fouten op te lossen, moet u de fouten in de synchronisatie stap opschonen.  Zie [problemen oplossen tijdens synchronisatie](tshoot-connect-sync-errors.md) en [problemen met object synchronisatie oplossen met Azure AD Connect Sync](tshoot-connect-objectsync.md) voor meer informatie.

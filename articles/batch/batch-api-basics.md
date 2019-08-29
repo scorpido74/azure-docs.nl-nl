@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
-ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 96ba829ffaadb6bc792c2d859e1e6766ab3ee394
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323886"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095590"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Grootschalige parallelle rekenoplossingen ontwikkelen met Batch
 
@@ -287,7 +286,7 @@ Het is doorgaans wenselijk dat de Batch-service wacht tot de begintaak is voltoo
 
 Als een begintaak op een rekenknooppunt mislukt, wordt de status van het knooppunt bijgewerkt om de fout aan te geven en is het knooppunt niet beschikbaar om taken toe te wijzen. Een begintaak kan mislukken als er een probleem optreedt bij het kopiëren van de bronbestanden van de begintaak uit de opslag, of als het proces dat door de opdrachtregel ervan wordt uitgevoerd een andere afsluitcode dan nul retourneert.
 
-Als u de begintaak toevoegt aan of bijwerkt voor een bestaande pool, moet u de rekenknooppunten van de pool opnieuw opstarten om de begintaak toe te passen op de knooppunten.
+Als u de begintaak voor een bestaande pool toevoegt of bijwerkt, moet u de rekenknooppunten voor de begintaak opnieuw toepassen op de knooppunten.
 
 >[!NOTE]
 > Batch beperkt de totale grootte van een begintaak, inclusief bronbestanden en omgevingsvariabelen. Als u de grootte van een begintaak wilt beperken, kunt u dat op twee manieren doen:
@@ -335,7 +334,7 @@ Bij taakafhankelijkheden kunt u scenario's zoals de volgende configureren:
 * *taakC* is afhankelijk van *taakA* én *taakB*.
 * *taakD* is afhankelijk van een bereik van taken, zoals taken *1* t/m *10*, voordat deze wordt uitgevoerd.
 
-Bekijk [taak afhankelijkheden in azure batch](batch-task-dependencies.md) en het voor beeld van de GitHub [-code in][github_sample_taskdeps] de opslag plaats [Azure-batch-samples][github_samples] voor meer gedetailleerde informatie over deze functie.
+Bekijk [taak afhankelijkheden in azure batch](batch-task-dependencies.md) en het [][github_sample_taskdeps] voor beeld van de GitHub-code in de opslag plaats [Azure-batch-samples][github_samples] voor meer gedetailleerde informatie over deze functie.
 
 ## <a name="environment-settings-for-tasks"></a>Omgevingsinstellingen voor taken
 Elke taak die wordt uitgevoerd door de Batch-service heeft toegang tot de omgevingsvariabelen die zijn ingesteld op de rekenknooppunten. Hieronder vallen omgevings variabelen die zijn gedefinieerd door de batch-service (door de[service gedefinieerde][msdn_env_vars]) en aangepaste omgevings variabelen die u voor uw taken kunt definiëren. De toepassingen en scripts die door uw taken worden uitgevoerd, hebben tijdens de uitvoering toegang tot deze omgevingsvariabelen.

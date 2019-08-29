@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 78fb48d2584e94e5c38a4648f1ae41e566637601
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0d5f04d9c0cc6dcd8a784ae7a816d93e2aab30aa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875581"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099476"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Een Azure IoT Central-toepassing maken
 
@@ -24,7 +24,7 @@ Als _maker_ gebruikt u de gebruikersinterface van Azure IoT Central om uw Micros
 
 ## <a name="create-an-application"></a>Een app maken
 
-Navigeer naar de pagina [​​Toepassingsbeheer ](https://aka.ms/iotcentral) van Azure IoT Central. U moet zich aanmelden met een persoonlijk account of werk- of schoolaccount van Microsoft.
+Ga naar de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) . U moet zich aanmelden met een persoonlijk account of werk- of schoolaccount van Microsoft.
 
 Als u wilt beginnen met het maken van een nieuwe Azure IoT Central-toepassing, selecteert u **Nieuwe toepassing**. Hiermee gaat u naar de pagina **Toepassing maken**.
 
@@ -58,4 +58,4 @@ Een nieuwe Azure IoT Central-toepassing maken:
 In deze snelstart hebt u een IoT Central-toepassing gemaakt. Dit is de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Volg een rondleiding door IoT Central](overview-iot-central-tour.md)
+> [Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing](./tutorial-define-device-type.md)

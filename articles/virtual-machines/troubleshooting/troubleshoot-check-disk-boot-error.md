@@ -1,49 +1,48 @@
 ---
-title: Bestandssysteem controleren bij het opstarten van een Azure-VM | Microsoft Docs
-description: Informatie over het oplossen van het probleem dat de virtuele machine bestandssysteem controleren weergeven bij het opstarten | Microsoft Docs
+title: Bestands systeem controleren bij het opstarten van een Azure-VM | Microsoft Docs
+description: Meer informatie over het oplossen van het probleem dat door VM wordt gecontroleerd bestands systeem controleren bij het opstarten | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 51a97443f6b9ba2a37fa2db708b8520a9c450000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ad4053c2dda50598853528bb6e8b3441c455fbba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594807"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080232"
 ---
-# <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Windows bevat 'bestandssysteem controleren' wanneer een Azure-VM wordt opgestart
+# <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Windows geeft ' controleren op bestands systeem ' bij het opstarten van een Azure VM
 
-Dit artikel beschrijft de fout 'Bestandssysteem controleren', die optreden kunnen tijdens het opstarten van een Windows virtuele Machine (VM) in Microsoft Azure.
+In dit artikel wordt de fout ' controle van het bestands systeem ' beschreven die kan optreden wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure.
 
 > [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/resource-manager-deployment-model.md). Dit artikel wordt beschreven met behulp van de Resource Manager-implementatiemodel, dat wordt u aangeraden voor nieuwe implementaties in plaats van het klassieke implementatiemodel.
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. dit wordt aangeraden voor nieuwe implementaties in plaats van het klassieke implementatie model.
 
 ## <a name="symptom"></a>Symptoom 
 
-Een Windows-VM niet wordt gestart. Wanneer u de schermafbeeldingen opstarten controleren in [diagnostische gegevens over opstarten](boot-diagnostics.md), ziet u dat de schijf controleren-proces (chkdsk.exe) wordt uitgevoerd met een van de volgende berichten:
+Een Windows-VM start niet. Wanneer u de opstart scherm opnamen in [Diagnostische gegevens over opstarten](boot-diagnostics.md)controleert, ziet u dat het proces controle schijf (Chkdsk. exe) wordt uitgevoerd met een van de volgende berichten:
 
-- Scannen en herstellen van station (C:)
-- Controleren of bestandssysteem op C:
+- Station scannen en herstellen (C:)
+- Bestands systeem op C controleren:
 
 ## <a name="cause"></a>Oorzaak
 
-Als een NTFS-fout in het bestandssysteem wordt gevonden, wordt Windows controleren en herstellen van de consistentie van de schijf op het systeem opnieuw is opgestart. Dit gebeurt doorgaans als de virtuele machine heeft een onverwacht opnieuw opgestart, of als het afsluiten van de virtuele machine is abrupt onderbroken.
+Als er een NTFS-fout in het bestands systeem wordt gevonden, wordt de consistentie van de schijf bij de volgende keer opnieuw opstarten gecontroleerd en hersteld. Dit gebeurt meestal als de VM onverwacht opnieuw wordt opgestart of als het afsluit proces van de virtuele machine abrupt is onderbroken.
 
 ## <a name="solution"></a>Oplossing 
 
-Windows normaal opgestart nadat het proces controleren op schijf is voltooid. Als de virtuele machine is mislukt tijdens het controleren op schijf, probeert uit te voeren van de schijf controleren op de virtuele machine offline:
-1.  Een momentopname van de besturingssysteemschijf van de betrokken VM als een back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
+Windows wordt normaal opgestart nadat het proces voor het controleren van de schijf is voltooid. Als de virtuele machine is vastgelopen in het controle schijf proces, probeert u de controle schijf op de virtuele machine offline uit te voeren:
+1.  Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
 2.  [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md).  
-3.  Voer op de virtuele machine voor herstel, schijf controleren op de gekoppelde besturingssysteemschijf. In het volgende voorbeeld wordt de stationsletter van de gekoppelde besturingssysteemschijf E: 
+3.  Op de virtuele machine voor herstel voert u schijf controleren uit op de gekoppelde besturingssysteem schijf. In het volgende voor beeld is de Stuur letter van de gekoppelde besturingssysteem schijf E: 
         
         chkdsk E: /f
-4.  Nadat de schijf controleren is voltooid, de schijf loskoppelen van de virtuele machine voor herstel en koppelt u de schijf met de betreffende virtuele machine als een besturingssysteemschijf opnieuw. Zie voor meer informatie, [een virtuele Windows-machine oplossen door de besturingssysteemschijf koppelen aan een virtuele machine voor herstel](troubleshoot-recovery-disks-portal-windows.md).
+4.  Nadat de controle schijf is voltooid, ontkoppelt u de schijf van de herstel-VM en koppelt u de schijf opnieuw aan de betrokken VM als een besturingssysteem schijf. Zie [problemen met een Windows-VM oplossen door de besturingssysteem schijf aan een herstel-VM te koppelen](troubleshoot-recovery-disks-portal-windows.md)voor meer informatie.

@@ -1,5 +1,5 @@
 ---
-title: GlusterFS op Azure VM's op Red Hat Enterprise Linux voor SAP NetWeaver | Microsoft Docs
+title: GlusterFS op Azure-Vm's op Red Hat Enterprise Linux voor SAP NetWeaver | Microsoft Docs
 description: GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711247"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101126"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver
 
@@ -43,88 +42,88 @@ ms.locfileid: "60711247"
 
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 
-In dit artikel wordt beschreven hoe u de virtuele machines implementeren, configureren van de virtuele machines en installeren van een cluster GlusterFS die kan worden gebruikt voor het opslaan van de gedeelde gegevens van een maximaal beschikbare SAP-systeem.
-Deze handleiding wordt beschreven hoe u GlusterFS die wordt gebruikt door twee SAP-systemen, NW1 en NW2 instelt. De namen van de resources (bijvoorbeeld virtuele machines, virtuele netwerken) in het voorbeeld wordt ervan uitgegaan dat u hebt gebruikt de [SAP-server de sjabloon] [ template-file-server] met het voorvoegsel van de resource **glust**.
+In dit artikel wordt beschreven hoe u de virtuele machines implementeert, hoe u de virtuele machines configureert en hoe u een GlusterFS-cluster installeert dat kan worden gebruikt om de gedeelde gegevens van een Maxi maal beschikbaar SAP-systeem op te slaan.
+In deze hand leiding wordt beschreven hoe u GlusterFS instelt die worden gebruikt door twee SAP-systemen, NW1 en NW2. De namen van de bronnen (bijvoorbeeld virtuele machines, virtuele netwerken) in het voor beeld aannemen dat u de SAP- [Bestands server sjabloon][template-file-server] hebt gebruikt met resource voorvoegsel **glust**.
 
-Lees eerst de volgende SAP-opmerkingen en documenten
+Lees eerst de volgende SAP-opmerkingen en-documenten
 
-* SAP-notitie [1928533], heeft:
+* SAP-opmerking [1928533], die:
   * Lijst met Azure-VM-grootten die worden ondersteund voor de implementatie van SAP-software
-  * Informatie over belangrijke capaciteit voor Azure VM-grootten
-  * Ondersteunde SAP-software en besturingssysteem (OS) en combinaties van database
-  * Vereiste kernel van SAP-versie voor Windows en Linux op Microsoft Azure
+  * Informatie over belang rijke capaciteit voor Azure VM-grootten
+  * Ondersteunde SAP-software en besturings systemen (OS) en database combinaties
+  * Vereiste versie van de SAP-kernel voor Windows en Linux op Microsoft Azure
 
-* SAP-notitie [2015553] bevat vereisten voor SAP-ondersteunde SAP software-implementaties in Azure.
-* SAP-notitie [2002167] heeft aanbevolen instellingen voor Red Hat Enterprise Linux OS
-* SAP-notitie [2009879] bevat richtlijnen voor SAP HANA voor Red Hat Enterprise Linux
-* SAP-notitie [2178632] vindt u meer informatie over alle bewaking metrische gegevens die zijn gerapporteerd voor SAP in Azure.
-* SAP-notitie [2191498] heeft de vereiste versie van de SAP-Host-Agent voor Linux in Azure.
-* SAP-notitie [2243692] bevat informatie over de licentieverlening voor SAP op Linux in Azure.
-* SAP-notitie [1999351] bevat aanvullende informatie over probleemoplossing voor de Azure uitgebreide controle-extensie voor SAP.
-* [SAP-Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) bevat alle SAP-opmerkingen voor Linux vereist.
-* [Azure virtuele Machines, planning en implementatie van SAP op Linux][planning-guide]
-* [Azure Virtual Machines-implementatie voor SAP op Linux (in dit artikel)][deployment-guide]
-* [Azure virtuele Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
-* [Productdocumentatie voor Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)
-* Algemene RHEL-documentatie
-  * [Overzicht van de invoegtoepassing voor hoge beschikbaarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Beheer van de invoegtoepassing voor hoge beschikbaarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Naslaginformatie over hoge beschikbaarheid-invoegtoepassing](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-* Azure specifieke RHEL-documentatie:
-  * [Ondersteuningsbeleid voor RHEL Clusters met hoge beschikbaarheid - Microsoft Azure Virtual Machines als leden van het Cluster](https://access.redhat.com/articles/3131341)
-  * [Installeren en configureren van een Red Hat Enterprise Linux 7.4 (en hoger) Cluster met hoge beschikbaarheid voor Microsoft Azure](https://access.redhat.com/articles/3252491)
+* SAP-opmerking [2015553] bevat vereisten voor SAP-ondersteuning voor SAP-software-implementaties in Azure.
+* SAP Note [2002167] heeft aanbevolen instellingen voor het besturings systeem voor Red Hat Enterprise Linux
+* SAP Note [2009879] heeft SAP Hana richt lijnen voor Red Hat Enterprise Linux
+* SAP Note [2178632] bevat gedetailleerde informatie over alle bewakings gegevens die zijn gerapporteerd voor SAP in Azure.
+* SAP Note [2191498] heeft de vereiste SAP host agent-versie voor Linux in Azure.
+* SAP Note [2243692] bevat informatie over SAP-licentie verlening op Linux in Azure.
+* SAP Note [1999351] bevat extra informatie over probleem oplossing voor de uitgebreide bewakings extensie van Azure voor SAP.
+* Op de [SAP Community wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) zijn alle vereiste SAP-notities voor Linux geïnstalleerd.
+* [Azure Virtual Machines planning en implementatie voor SAP op Linux][planning-guide]
+* [Azure Virtual Machines-implementatie voor SAP op Linux (dit artikel)][deployment-guide]
+* [Azure Virtual Machines DBMS-implementatie voor SAP op Linux][dbms-guide]
+* [Product documentatie voor Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)
+* Algemene documentatie voor RHEL
+  * [Overzicht van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Beheer van Maxi maal beschik bare invoeg toepassingen](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Naslag informatie voor de invoeg toepassing met hoge Beschik baarheid](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+* Specifieke RHEL-documentatie voor Azure:
+  * [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden](https://access.redhat.com/articles/3131341)
+  * [Installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure](https://access.redhat.com/articles/3252491)
 
 ## <a name="overview"></a>Overzicht
 
-SAP NetWeaver vereist voor het bereiken van hoge beschikbaarheid gedeelde opslag. GlusterFS is geconfigureerd in een cluster dat gescheiden en kunnen worden gebruikt door meerdere SAP-systemen.
+Voor een hoge Beschik baarheid is voor SAP net-Weave gedeelde opslag vereist. GlusterFS wordt geconfigureerd in een afzonderlijk cluster en kan worden gebruikt door meerdere SAP-systemen.
 
-![Overzicht van SAP NetWeaver hoge beschikbaarheid](./media/high-availability-guide-rhel-glusterfs/rhel-glusterfs.png)
+![Overzicht van de hoge Beschik baarheid van SAP netweave](./media/high-availability-guide-rhel-glusterfs/rhel-glusterfs.png)
 
 ## <a name="set-up-glusterfs"></a>GlusterFS instellen
 
-U kunt een Azure-sjabloon gebruiken om alle vereiste Azure-resources te implementeren, met inbegrip van de virtuele machines, beschikbaarheidsset en network interfaces of u kunt de resources handmatig implementeren.
+U kunt een Azure-sjabloon van github gebruiken om alle vereiste Azure-resources te implementeren, met inbegrip van de virtuele machines, beschikbaarheidsset en netwerk interfaces, of u kunt de resources hand matig implementeren.
 
-### <a name="deploy-linux-via-azure-template"></a>Linux via Azure-sjabloon implementeren
+### <a name="deploy-linux-via-azure-template"></a>Linux implementeren via Azure-sjabloon
 
-De Azure Marketplace bevat een afbeelding voor Red Hat Enterprise Linux die u gebruiken kunt om nieuwe virtuele machines te implementeren.
-U kunt een van de snelstartsjablonen van op github gebruiken om alle vereiste resources te implementeren. De sjabloon implementeert de virtuele machines, beschikbaarheidsset enzovoort. Volg deze stappen om de sjabloon te implementeren:
+De Azure Marketplace bevat een installatie kopie voor Red Hat Enterprise Linux die u kunt gebruiken om nieuwe virtuele machines te implementeren.
+U kunt een van de Quick Start-sjablonen op github gebruiken voor het implementeren van alle vereiste resources. De sjabloon implementeert de virtuele machines, de beschik baarheid, enzovoort. Volg deze stappen om de sjabloon te implementeren:
 
-1. Open de [SAP-server de sjabloon] [ template-file-server] in Azure portal
-1. Voer de volgende parameters
-   1. Voorvoegsel van de resource  
-      Geef het voorvoegsel dat u wilt gebruiken. De waarde wordt gebruikt als een voorvoegsel voor de resources die zijn geïmplementeerd.
-   2. Telling van SAP-systeem Voer het nummer van de SAP-systemen die deze bestandsserver wordt gebruikt. Hierdoor wordt het vereiste aantal schijven enzovoort geïmplementeerd.
-   3. Type besturingssysteem  
-      Selecteer een van de Linux-distributies. Selecteer voor dit voorbeeld RHEL 7
-   4. Admin Username, Administrator-wachtwoord of SSH-sleutel  
-      Een nieuwe gebruiker wordt gemaakt die kan worden gebruikt voor aanmelding bij de machine.
+1. Open de [sjabloon SAP-Bestands server][template-file-server] in de Azure Portal
+1. Voer de volgende para meters in
+   1. Resource voorvoegsel  
+      Geef het voor voegsel op dat u wilt gebruiken. De waarde wordt gebruikt als een voor voegsel voor de resources die worden geïmplementeerd.
+   2. Aantal SAP-systeem Voer het aantal SAP-systemen in dat deze bestands server gaat gebruiken. Hiermee wordt het vereiste aantal schijven, enzovoort, geïmplementeerd.
+   3. Type besturings systeem  
+      Selecteer een van de Linux-distributies. Selecteer voor dit voor beeld RHEL 7
+   4. Beheerders naam, beheerders wachtwoord of SSH-sleutel  
+      Er wordt een nieuwe gebruiker gemaakt die kan worden gebruikt om u aan te melden bij de computer.
    5. Subnet-ID  
-      Als u wilt de virtuele machine implementeren in een bestaand VNet waarin u een subnet dat is gedefinieerd hebben de virtuele machine moet worden toegewezen aan de ID van dat specifieke subnet een naam. De ID is meestal ziet eruit als /subscriptions/ **&lt;abonnements-ID&gt;** /resourceGroups/ **&lt;groepsnaam voor accountresources&gt;** /providers/ Microsoft.Network/virtualNetworks/ **&lt;virtuele-netwerknaam&gt;** /subnets/ **&lt;subnetnaam&gt;**
+      Als u de virtuele machine wilt implementeren in een bestaand VNet waarvoor u een subnet hebt gedefinieerd, moet de virtuele machine worden toegewezen aan, de ID van het specifieke subnet benoemen. De id is doorgaans hetzelfde als/Subscriptions/ **&lt;-&gt;abonnements-id**/resourceGroups/ **&lt;naam&gt;van de resource groep**/providers/Microsoft.Network/virtualNetworks/ **&lt; naam&gt;** van**het&lt;/subnets/-subnetvanhetvirtuelenetwerk&gt;**
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Handmatig implementeren van Linux via Azure portal
+### <a name="deploy-linux-manually-via-azure-portal"></a>Linux hand matig implementeren via Azure Portal
 
-U moet eerst de virtuele machines voor dit cluster te maken. Daarna wordt u een load balancer maken en gebruiken van de virtuele machines in de back endadresgroepen.
+U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
 
 1. Een resourcegroep maken
-1. Een virtueel netwerk maken
+1. Een Virtual Network maken
 1. Een Beschikbaarheidsset maken  
-   De maximale updatedomein instellen
-1. Virtuele Machine 1 maken  
-   Ten minste RHEL 7, in dit de Red Hat Enterprise Linux 7.4-voorbeeldafbeelding <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   Selecteer de Beschikbaarheidsset eerder hebt gemaakt  
-1. Virtuele Machine 2 maken  
-   Ten minste RHEL 7, in dit de Red Hat Enterprise Linux 7.4-voorbeeldafbeelding <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
-   Selecteer de Beschikbaarheidsset eerder hebt gemaakt  
-1. Een gegevensschijf voor elk SAP-systeem toevoegen aan beide virtuele machines.
+   Maximum aantal update domeinen instellen
+1. Virtuele machine 1 maken  
+   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
+1. Virtuele machine 2 maken  
+   Gebruik ten minste RHEL 7, in dit voor beeld de installatie kopie van Red Hat Enterprise Linux 7,4<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
+1. Voeg één gegevens schijf voor elk SAP-systeem toe aan beide virtuele machines.
 
 ### <a name="configure-glusterfs"></a>GlusterFS configureren
 
-De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1, **[2]** - alleen van toepassing op knooppunt 2, **[3].**  - alleen van toepassing op knooppunt 3.
+De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1, **[2]** -alleen van toepassing op knoop punt 2, **[3]** -alleen van toepassing op knoop punt 3.
 
 1. **[A]**  Omzetten van de hostnaam instellen
 
    U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
-   Vervang het IP-adres en de hostnaam in de volgende opdrachten
+   Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
@@ -137,35 +136,35 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <b>10.0.0.42 glust-2</b>
    </code></pre>
 
-1. **[A]** Register
+1. **[A]** registreren
 
-   Registreren van uw virtuele machines en deze koppelen aan een pool met opslagplaatsen voor RHEL 7 en GlusterFS
+   Registreer uw virtuele machines en koppel deze aan een groep die opslag plaatsen voor RHEL 7 en GlusterFS bevat
 
    <pre><code>sudo subscription-manager register
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-1. **[A]** Enable GlusterFS repos
+1. **[A]** glusterfs opslag plaatsen inschakelen
 
-   Om te installeren de vereiste pakketten, schakel de volgende opslagplaatsen.
+   Schakel de volgende opslag plaatsen in om de vereiste pakketten te installeren.
 
    <pre><code>sudo subscription-manager repos --disable "*"
    sudo subscription-manager repos --enable=rhel-7-server-rpms
    sudo subscription-manager repos --enable=rh-gluster-3-for-rhel-7-server-rpms
    </code></pre>
   
-1. **[A]**  GlusterFS installeren pakketten
+1. **[A]** glusterfs-pakketten installeren
 
-   Deze pakketten installeren op alle GlusterFS-knooppunten
+   Deze pakketten installeren op alle GlusterFS-knoop punten
 
    <pre><code>sudo yum -y install redhat-storage-server
    </code></pre>
 
-   Start opnieuw op de knooppunten na de installatie.
+   Start de knoop punten na de installatie opnieuw op.
 
-1. **[A]** Modify Firewall
+1. **[A] de** Firewall wijzigen
 
-   Firewallregels voor clientverkeer op de knooppunten GlusterFS toevoegen.
+   Voeg firewall regels toe om client verkeer naar de GlusterFS-knoop punten toe te staan.
 
    <pre><code># list the available zones
    firewall-cmd --get-active-zones
@@ -174,9 +173,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo firewall-cmd --zone=public --add-service=glusterfs
    </code></pre>
 
-1. **[A]**  Inschakelen en GlusterFS service starten
+1. **[A]** glusterfs-service inschakelen en starten
 
-   Start de service GlusterFS op alle knooppunten.
+   Start de GlusterFS-service op alle knoop punten.
 
    <pre><code>sudo systemctl start glusterd
    sudo systemctl enable glusterd
@@ -184,7 +183,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
 1. **[1]** Create GluserFS
 
-   Voer de volgende opdrachten om de GlusterFS-cluster te maken
+   Voer de volgende opdrachten uit om het GlusterFS-cluster te maken
 
    <pre><code>sudo gluster peer probe glust-1
    sudo gluster peer probe glust-2
@@ -203,9 +202,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    # State: Accepted peer request (Connected)
    </code></pre>
 
-1. **[2]**  Testen peer-status
+1. **[2]** status van test peer
 
-   De status van de peer op het tweede knooppunt testen
+   De status van de peer op het tweede knoop punt testen
 
    <pre><code>sudo gluster peer status
    # Number of Peers: 2
@@ -219,9 +218,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    # State: Peer in Cluster (Connected)
    </code></pre>
 
-1. **[3]**  Testen peer-status
+1. **[3]** status van test peer
 
-   De status van de peer op de derde knooppunt testen
+   De status van de peer op het derde knoop punt testen
 
    <pre><code>sudo gluster peer status
    # Number of Peers: 2
@@ -235,11 +234,11 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    # State: Peer in Cluster (Connected)
    </code></pre>
 
-1. **[A]**  LVM maken
+1. **[A]** LVM maken
 
-   In dit voorbeeld wordt de GlusterFS gebruikt voor twee SAP-systemen, NW1 en NW2. Gebruik de volgende opdrachten om te maken van LVM-configuraties voor deze SAP-systemen.
+   In dit voor beeld wordt de GlusterFS gebruikt voor twee SAP-systemen, NW1 en NW2. Gebruik de volgende opdrachten om LVM-configuraties voor deze SAP-systemen te maken.
 
-   Deze opdrachten gebruiken voor NW1
+   Gebruik deze opdrachten voor NW1
 
    <pre><code>sudo pvcreate --dataalignment 1024K /dev/disk/azure/scsi1/lun0
    sudo pvscan
@@ -278,7 +277,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo mount -a
    </code></pre>
 
-   Deze opdrachten gebruiken voor NW2
+   Gebruik deze opdrachten voor NW2
 
    <pre><code>sudo pvcreate --dataalignment 1024K /dev/disk/azure/scsi1/lun1
    sudo pvscan
@@ -317,9 +316,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo mount -a
    </code></pre>
 
-1. **[1]**  Het gedistribueerde volume maken
+1. **[1]** het gedistribueerde volume maken
 
-   Gebruik de volgende opdrachten om te maken van het volume GlusterFS voor NW1 en start de service.
+   Gebruik de volgende opdrachten om het GlusterFS-volume voor NW1 te maken en het te starten.
 
    <pre><code>sudo gluster vol create <b>NW1</b>-sapmnt replica 3 glust-0:/rhs/<b>NW1</b>/sapmnt glust-1:/rhs/<b>NW1</b>/sapmnt glust-2:/rhs/<b>NW1</b>/sapmnt force
    sudo gluster vol create <b>NW1</b>-trans replica 3 glust-0:/rhs/<b>NW1</b>/trans glust-1:/rhs/<b>NW1</b>/trans glust-2:/rhs/<b>NW1</b>/trans force
@@ -334,7 +333,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo gluster volume start <b>NW1</b>-aers
    </code></pre>
 
-   Gebruik de volgende opdrachten om te maken van het volume GlusterFS voor NW2 en start de service.
+   Gebruik de volgende opdrachten om het GlusterFS-volume voor NW2 te maken en het te starten.
 
    <pre><code>sudo gluster vol create <b>NW2</b>-sapmnt replica 3 glust-0:/rhs/<b>NW2</b>/sapmnt glust-1:/rhs/<b>NW2</b>/sapmnt glust-2:/rhs/<b>NW2</b>/sapmnt force
    sudo gluster vol create <b>NW2</b>-trans replica 3 glust-0:/rhs/<b>NW2</b>/trans glust-1:/rhs/<b>NW2</b>/trans glust-2:/rhs/<b>NW2</b>/trans force
@@ -351,9 +350,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De SAP ASCS en -database installeren](high-availability-guide-rhel.md)
-* [Azure virtuele Machines, planning en implementatie van SAP][planning-guide]
+* [De SAP-ASCS en-data base installeren](high-availability-guide-rhel.md)
+* [Azure Virtual Machines planning en implementatie voor SAP][planning-guide]
 * [Azure Virtual Machines-implementatie voor SAP][deployment-guide]
-* [Azure virtuele Machines DBMS-implementatie voor SAP][dbms-guide]
-* Zie voor meer informatie over het opzetten van hoge beschikbaarheid en plan voor herstel na noodgevallen van SAP HANA op Azure (grote instanties), [SAP HANA (grote instanties) hoge beschikbaarheid en herstel na noodgeval op Azure](hana-overview-high-availability-disaster-recovery.md).
-* Zie voor meer informatie over het opzetten van hoge beschikbaarheid en plan voor herstel na noodgevallen van SAP HANA op Azure Virtual machines, [hoge beschikbaarheid van SAP HANA op Azure Virtual Machines (VM's)][sap-hana-ha]
+* [Azure Virtual Machines DBMS-implementatie voor SAP][dbms-guide]
+* Zie [SAP Hana (grote instanties) hoge Beschik baarheid en herstel na nood gevallen op Azure](hana-overview-high-availability-disaster-recovery.md)voor meer informatie over het tot stand brengen van een hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure (grote exemplaren).
+* Zie [hoge Beschik baarheid van SAP Hana op azure virtual machines (vm's)][sap-hana-ha] voor meer informatie over het opzetten van een hoge Beschik baarheid en het plannen van nood herstel van SAP Hana op Azure-vm's.

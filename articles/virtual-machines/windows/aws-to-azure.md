@@ -1,6 +1,6 @@
 ---
-title: Een AWS Windows-VM's verplaatsen naar Azure | Microsoft Docs
-description: Een Amazon Web Services (AWS) EC2 Windows-exemplaar naar een virtuele machine van Azure verplaatsen.
+title: Een Windows AWS-Vm's verplaatsen naar Azure | Microsoft Docs
+description: Verplaats een Amazon Web Services (AWS) EC2 Windows-exemplaar naar een virtuele machine van Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,61 +11,60 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: bc738a33ba50935a2118b8bd0bbfafed83e5f461
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 31f6ffc4f114039e0c53c1994f8c4364dea18298
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722773"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089507"
 ---
-# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Een Windows-VM vanuit Amazon Web Services (AWS) te verplaatsen naar een virtuele machine van Azure
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Een Windows-VM verplaatsen van Amazon Web Services (AWS) naar een virtuele machine van Azure
 
-Als u virtuele machines voor het hosten van uw workloads in Azure evalueert, kunt u het exporteren van een bestaande Amazon Web Services (AWS) EC2 Windows VM-instantie vervolgens de virtuele harde schijf (VHD) uploaden naar Azure. Als de VHD is geüpload, kunt u een nieuwe virtuele machine maken in Azure van de VHD. 
+Als u virtuele machines van Azure evalueert om uw workloads te hosten, kunt u een bestaande Amazon Web Services (AWS) EC2 Windows VM-exemplaar exporteren en vervolgens de virtuele harde schijf (VHD) uploaden naar Azure. Zodra de VHD is geüpload, kunt u in azure een nieuwe virtuele machine maken op basis van de VHD. 
 
-In dit artikel bevat informatie over het verplaatsen van een enkele virtuele machine van AWS naar Azure. Als u verplaatsen van virtuele machines van AWS naar Azure op schaal wilt, Zie [migreren van virtuele machines in Amazon Web Services (AWS) naar Azure met Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+In dit artikel wordt beschreven hoe u één VM verplaatst van AWS naar Azure. Als u Vm's op schaal wilt verplaatsen van AWS naar Azure, raadpleegt u [virtual machines in Amazon Web Services (AWS) migreren naar Azure met Azure site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
 ## <a name="prepare-the-vm"></a>De virtuele machine voorbereiden 
  
-U kunt zowel gegeneraliseerde en gespecialiseerde VHD's uploaden naar Azure. Elk type is vereist dat u de virtuele machine voorbereiden voordat u exporteert van AWS. 
+U kunt zowel gegeneraliseerde als gespecialiseerde Vhd's uploaden naar Azure. Elk type vereist dat u de virtuele machine voorbereidt voordat u exporteert vanuit AWS. 
 
-- **Gegeneraliseerde VHD** -een gegeneraliseerde VHD heeft al uw persoonlijke accountinformatie verwijderd met behulp van Sysprep. Als u van plan bent de VHD als een installatiekopie gebruiken om te maken van nieuwe virtuele machines uit, moet u het: 
+- **Gegeneraliseerde VHD** : voor een gegeneraliseerde VHD zijn al uw persoonlijke account gegevens verwijderd met behulp van Sysprep. Als u van plan bent om de VHD te gebruiken als een installatie kopie om nieuwe Vm's te maken op basis van, moet u het volgende doen: 
  
-    * [Voorbereiden van een Windows VM](prepare-for-upload-vhd-image.md).  
-    * Generaliseren met Sysprep de virtuele machine.  
+    * [Bereid een Windows-VM](prepare-for-upload-vhd-image.md)voor.  
+    * Generaliseer de virtuele machine met behulp van Sysprep.  
 
  
-- **Gespecialiseerde VHD** -een gespecialiseerde VHD onderhoudt de gebruikersaccounts, toepassingen en andere statusgegevens van de oorspronkelijke virtuele machine. Als u van plan bent de VHD als gebruiken-is een nieuwe virtuele machine maakt, zorg ervoor dat de volgende stappen zijn voltooid.  
-    * [Voorbereiden van een Windows-VHD te uploaden naar Azure](prepare-for-upload-vhd-image.md). **Geen** generaliseren van de virtuele machine met behulp van Sysprep. 
-    * Verwijder alle Gast virtualisatie-hulpprogramma's en de agents die zijn geïnstalleerd op de virtuele machine (dat wil zeggen VMware-hulpprogramma's genoemd). 
-    * Zorg ervoor dat de virtuele machine is geconfigureerd voor het ophalen van de IP-adres en DNS-instellingen via DHCP. Dit zorgt ervoor dat de server een IP-adres binnen het VNet wordt wanneer deze opgestart wordt.  
+- **Gespecialiseerde VHD** : met een gespecialiseerde VHD worden de gebruikers accounts, toepassingen en andere status gegevens van de oorspronkelijke virtuele machine beheerd. Als u van plan bent om de VHD te gebruiken om een nieuwe virtuele machine te maken, moet u ervoor zorgen dat de volgende stappen zijn uitgevoerd.  
+    * [Bereid een Windows VHD voor om te uploaden naar Azure](prepare-for-upload-vhd-image.md). Generaliseer de virtuele machine **niet** met behulp van Sysprep. 
+    * Verwijder alle hulpprogram ma's voor gast-virtualisatie en de agents die zijn geïnstalleerd op de VM (bijvoorbeeld VMware-hulpprogram ma's). 
+    * Zorg ervoor dat de virtuele machine is geconfigureerd om het IP-adres en de DNS-instellingen via DHCP te halen. Dit zorgt ervoor dat de server een IP-adres binnen het VNet verkrijgt wanneer het wordt gestart.  
 
 
-## <a name="export-and-download-the-vhd"></a>Exporteren en downloaden van de VHD 
+## <a name="export-and-download-the-vhd"></a>De VHD exporteren en downloaden 
 
-Exporteer de EC2-instantie naar een VHD in een Amazon S3-bucket. Volg de stappen in de Amazon-documentatieartikel [exporteren van een exemplaar als een virtuele machine met behulp van virtuele machine importeren/exporteren](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) en voer de [-exemplaar-export-taak maken](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) opdracht voor het exporteren van de EC2-instantie naar een VHD-bestand. 
+Exporteer het EC2-exemplaar naar een VHD in een Amazon S3-Bucket. Volg de stappen in het artikel in de Amazon-documentatie om [een exemplaar te exporteren als een virtuele machine met behulp van import/export van de VM](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) en voer de opdracht [Create-instance-export-Task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) uit om het EC2-exemplaar te exporteren naar een VHD-bestand. 
 
-De geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-bucket die u opgeeft. De syntaxis van de basis voor het exporteren van de VHD is hieronder, vervang de tijdelijke tekstaanduiding in \<vierkante haken > met uw gegevens.
+Het geëxporteerde VHD-bestand wordt opgeslagen in de Amazon S3-Bucket die u opgeeft. De basis syntaxis voor het exporteren van de VHD vindt u hieronder. Vervang de tekst \<van de tijdelijke aanduiding tussen vier Kante haken > met uw gegevens.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-Nadat de VHD is geëxporteerd, volg de instructies in [hoe kan ik een Object downloaden vanaf een S3-Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) te downloaden van het VHD-bestand van de S3-bucket. 
+Nadat de VHD is geëxporteerd, volgt u de instructies in [Hoe kan ik een object downloaden van een S3-Bucket?](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) het VHD-bestand downloaden van de S3-Bucket. 
 
 > [!IMPORTANT]
-> AWS het kosten van gegevensoverdracht kosten voor het downloaden van de VHD. Zie [prijzen van Amazon S3](https://aws.amazon.com/s3/pricing/) voor meer informatie.
+> Kosten voor AWS kosten voor het downloaden van de VHD worden door gegeven. Zie de [prijzen voor Amazon S3](https://aws.amazon.com/s3/pricing/) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu de VHD uploaden naar Azure en maak een nieuwe virtuele machine. 
+U kunt nu de VHD uploaden naar Azure en een nieuwe VM maken. 
 
-- Als u Sysprep uitgevoerd op de bron aan **Generaliseren** deze voordat u exporteert, Zie [een gegeneraliseerde VHD uploaden en maken van een nieuwe virtuele machines in Azure](upload-generalized-managed.md)
-- Als u niet Sysprep hebt uitgevoerd voordat u exporteert, de VHD wordt beschouwd als **gespecialiseerde**, Zie [een gespecialiseerde VHD uploaden naar Azure en een nieuwe virtuele machine maken](create-vm-specialized.md)
+- Zie [een gegeneraliseerde VHD uploaden en deze gebruiken voor het maken van een nieuwe virtuele machine in azure](upload-generalized-managed.md) als u Sysprep op uw bron hebt uitgevoerd om deze te **generaliseren** voordat u het bestand exporteert.
+- Als u Sysprep niet hebt uitgevoerd vóór het exporteren, wordt de VHD als **gespecialiseerd**beschouwd. Zie [een gespecialiseerde VHD uploaden naar Azure en een nieuwe VM maken](create-vm-specialized.md)
 
  

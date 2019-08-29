@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: a132cf28b0ccd30b3f7e854e46763ce99372ddfe
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fcbf4e054359534f924b401f2f42e1d4c33890be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361144"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102484"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows-Vm's maken en beheren in azure met behulp van python
 
@@ -566,7 +565,7 @@ Omdat er in rekening worden gebracht voor resources die worden gebruikt in azure
 
 1. Klik op **starten** in Visual Studio om de console toepassing uit te voeren.
 
-2. Druk op **Enter** nadat de status van elke resource is geretourneerd. In de status informatie ziet u een geslaagde  inrichtings status. Nadat de virtuele machine is gemaakt, hebt u de mogelijkheid om alle resources die u maakt, te verwijderen. Voordat u op **Enter** drukt om resources te verwijderen, kunt u een paar minuten duren om te controleren of de Azure Portal is gemaakt. Als u de Azure Portal hebt geopend, moet u de Blade wellicht vernieuwen om nieuwe resources weer te geven.  
+2. Druk op **Enter** nadat de status van elke resource is geretourneerd. In de status informatie ziet u een geslaagde inrichtings status. Nadat de virtuele machine is gemaakt, hebt u de mogelijkheid om alle resources die u maakt, te verwijderen. Voordat u op **Enter** drukt om resources te verwijderen, kunt u een paar minuten duren om te controleren of de Azure Portal is gemaakt. Als u de Azure Portal hebt geopend, moet u de Blade wellicht vernieuwen om nieuwe resources weer te geven.  
 
     Het duurt ongeveer vijf minuten voordat deze console toepassing volledig van begin tot eind kan worden uitgevoerd. Het kan enkele minuten duren voordat de toepassing is voltooid voordat alle resources en de resource groep zijn verwijderd.
 

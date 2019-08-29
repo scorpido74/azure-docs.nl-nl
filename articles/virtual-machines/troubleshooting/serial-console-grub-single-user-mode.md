@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 656bc8329d6273695e4da24a7e7d13c9df6a1080
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846603"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090195"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken voor toegang tot de GRUB en de modus voor één gebruiker
 GRUB is de GRand Unified Bootloader. Dit is waarschijnlijk het eerste wat u zult zien wanneer u een virtuele machine opstart. Omdat het wordt weer gegeven voordat het besturings systeem is gestart, is het niet toegankelijk via SSH. Vanuit GRUB kunt u de opstart configuratie wijzigen om onder andere de modus voor één gebruiker op te starten.

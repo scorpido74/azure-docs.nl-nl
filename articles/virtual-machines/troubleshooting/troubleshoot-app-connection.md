@@ -1,149 +1,148 @@
 ---
-title: Problemen oplossen met toegang voor VM-toepassing in Azure | Microsoft Docs
-description: Deze gedetailleerde stappen voor probleemoplossing gebruiken voor het isoleren van problemen in de verbinding te maken met toepassingen die worden uitgevoerd op virtuele machines in Azure.
+title: Problemen met toegang tot VM-toepassingen in azure oplossen | Microsoft Docs
+description: Gebruik deze gedetailleerde stappen voor probleem oplossing om problemen te isoleren bij het maken van verbinding met toepassingen die worden uitgevoerd op virtuele machines in Azure.
 services: virtual-machines
 documentationcenter: ''
 author: genlin
 manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
-keywords: Kan toepassing te starten, het programma kan niet worden geopend, poort geblokkeerd, kan niet worden geblokkeerd poort voor luisteren start het programma, luisteren
+keywords: kan de toepassing niet starten, het programma wordt niet geopend, de poort is geblokkeerd, het programma kan niet worden gestart, de luister poort is geblokkeerd
 ms.assetid: b9ff7cd0-0c5d-4c3c-a6be-3ac47abf31ba
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 9bc528cdd098a2e355c542c3ca8f9bcb0287f339
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: fd79e04cdd8f9d01131c016031d696c1583eb55d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710528"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080404"
 ---
-# <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Verbindingsproblemen van toepassing op virtuele machines in Azure oplossen
+# <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Verbindings problemen met de toepassing op virtuele machines in azure oplossen
 
-Er zijn verschillende redenen wanneer u mag niet beginnen of verbinding maken met een toepassing die wordt uitgevoerd op een Azure-machine (VM). Oorzaken zijn onder meer de toepassing niet wordt uitgevoerd of op de verwachte poorten luistert, de luisterende poort geblokkeerd of netwerken regels niet correct doorgegeven verkeer naar de toepassing. Dit artikel beschrijft een methodisch benadering voor het zoeken en los het probleem.
+Er zijn verschillende redenen wanneer u niet kunt starten of verbinding kunt maken met een toepassing die wordt uitgevoerd op een virtuele Azure-machine (VM). De reden hiervoor is dat de toepassing niet actief is of niet op de verwachte poorten luistert, de luister poort blokkeert of netwerk regels het verkeer naar de toepassing niet goed door geven. In dit artikel wordt een methode beschreven om het probleem op te sporen en te verhelpen.
 
-Als u hebt met het verbinding maken met uw virtuele machine via RDP of SSH problemen, moet u een van de volgende artikelen eerst zien:
+Als u problemen ondervindt met het maken van verbinding met uw virtuele machine met behulp van RDP of SSH, raadpleegt u eerst een van de volgende artikelen:
 
-* [Problemen oplossen met extern bureaublad-verbindingen met een Windows-gebaseerde virtuele Machine in Azure](troubleshoot-rdp-connection.md)
-* [Problemen oplossen met Secure Shell (SSH)-verbindingen met een Linux-gebaseerde Azure-machine](troubleshoot-ssh-connection.md).
+* [Problemen met Extern bureaublad verbindingen met een virtuele Azure-machine op Windows oplossen](troubleshoot-rdp-connection.md)
+* [Problemen met ssh-verbindingen (Secure Shell) met een op Linux gebaseerde Azure Virtual Machine oplossen](troubleshoot-ssh-connection.md).
 
-Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op [het Azure MSDN en Stack Overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer **ophalen ondersteunen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en de stack overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
-## <a name="quick-start-troubleshooting-steps"></a>Quick start-stappen voor probleemoplossing
-Als u verbinding maken met een toepassing hebt, kunt u de volgende algemene stappen voor probleemoplossing. Probeer verbinding te maken voor uw toepassing opnieuw na elke stap:
+## <a name="quick-start-troubleshooting-steps"></a>Stappen voor snel starten van problemen oplossen
+Als u problemen ondervindt bij het maken van verbinding met een toepassing, probeert u de volgende algemene stappen voor probleem oplossing. Probeer na elke stap opnieuw verbinding te maken met uw toepassing:
 
 * Start de virtuele machine opnieuw op
-* Het eindpunt opnieuw / firewall-regels / netwerk regels voor de netwerkbeveiligingsgroep (NSG)
-  * [Resource Manager-model - Netwerkbeveiligingsgroepen beheren](../../virtual-network/manage-network-security-group.md)
-  * [Klassieke model - eindpunten voor Cloudservices beheren](../../cloud-services/cloud-services-enable-communication-role-instances.md)
-* Verbinding maken vanaf een andere locatie, zoals een ander Azure virtual network
+* De regels voor het eind punt/firewall/netwerk beveiligings groep (NSG) opnieuw maken
+  * [Resource Manager-model: netwerk beveiligings groepen beheren](../../virtual-network/manage-network-security-group.md)
+  * [Klassiek model-Cloud Services-eind punten beheren](../../cloud-services/cloud-services-enable-communication-role-instances.md)
+* Verbinding maken vanaf een andere locatie, zoals een ander virtueel Azure-netwerk
 * Implementeer de virtuele machine opnieuw
-  * [Windows virtuele machine opnieuw implementeren](redeploy-to-new-node-windows.md)
-  * [Linux virtuele machine opnieuw implementeren](redeploy-to-new-node-linux.md)
+  * [Windows-VM opnieuw implementeren](redeploy-to-new-node-windows.md)
+  * [Linux-VM opnieuw implementeren](redeploy-to-new-node-linux.md)
 * De virtuele machine opnieuw maken
 
-Zie voor meer informatie, [probleemoplossing Endpoint Connectivity (RDP/SSH/HTTP, enz. fouten)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows).
+Zie [Troubleshooting endpoint Connectivity (RDP/SSH/http, enzovoort)](https://social.msdn.microsoft.com/Forums/azure/en-US/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)voor meer informatie.
 
-## <a name="detailed-troubleshooting-overview"></a>Gedetailleerd overzicht van het oplossen van problemen
-Er zijn vier hoofdgebieden om op te lossen van de toegang van een toepassing die wordt uitgevoerd op een virtuele machine van Azure.
+## <a name="detailed-troubleshooting-overview"></a>Overzicht van gedetailleerde probleem oplossing
+Er zijn vier hoofd gebieden voor het oplossen van de toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure.
 
-![problemen oplossen kan toepassing niet starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
+![problemen met de toepassing kan niet worden gestart](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access1.png)
 
-1. De toepassing die wordt uitgevoerd op virtuele machine van Azure.
-   * De toepassing zelf correct wordt uitgevoerd?
-2. Virtuele machine van Azure.
-   * De virtuele machine zelf is correct uitgevoerd en het reageren op aanvragen?
-3. Azure-netwerk-eindpunten.
-   * Cloud service-eindpunten voor virtuele machines in het klassieke implementatiemodel.
-   * Netwerkbeveiligingsgroepen en binnenkomende NAT-regels voor virtuele machines in Resource Manager-implementatiemodel.
-   * Kan de stroom van gebruikers aan de virtuele machine/toepassing op de verwachte poorten verkeer?
-4. Uw Internet-edge-apparaat.
-   * Firewall-regels in plaats verhinderen dat verkeer stroomt correct?
+1. De toepassing die wordt uitgevoerd op de virtuele machine van Azure.
+   * Wordt de toepassing zelf correct uitgevoerd?
+2. De virtuele machine van Azure.
+   * Wordt de VM zelf correct uitgevoerd en reageert deze op aanvragen?
+3. Azure-netwerk eindpunten.
+   * Cloud service-eind punten voor virtuele machines in het klassieke implementatie model.
+   * Netwerk beveiligings groepen en binnenkomende NAT-regels voor virtuele machines in het Resource Manager-implementatie model.
+   * Kan verkeer van gebruikers naar de virtuele machine of toepassing op de verwachte poorten worden gestroomd?
+4. Uw Internet edge-apparaat.
+   * Zijn er firewall regels aanwezig waardoor verkeer niet goed kan worden gestroomd?
 
-Voor clientcomputers die toegang de toepassing via een site-naar-site VPN of ExpressRoute-verbinding tot zijn, zijn de belangrijkste gebieden die leiden tot problemen met kunnen de toepassing en de virtuele machine van Azure.
+Voor client computers die toegang tot de toepassing hebben via een site-naar-site VPN-of ExpressRoute-verbinding, zijn de belangrijkste gebieden die problemen kunnen veroorzaken, de toepassing en de virtuele Azure-machine.
 
-Volg deze stappen om te bepalen van de bron van het probleem en de correctie.
+Volg deze stappen om de oorzaak van het probleem en de correctie te bepalen.
 
-## <a name="step-1-access-application-from-target-vm"></a>Stap 1: Toegang tot de toepassing van het doel-VM
-Probeert te krijgen tot de toepassing met de juiste client-programma van de virtuele machine waarop deze wordt uitgevoerd. Naam van de lokale host, het lokale IP-adres of de loopbackadres (127.0.0.1) gebruiken.
+## <a name="step-1-access-application-from-target-vm"></a>Stap 1: Toegang tot de toepassing vanaf de doel-VM
+Probeer toegang te krijgen tot de toepassing met het juiste client programma van de virtuele machine waarop het wordt uitgevoerd. Gebruik de naam van de lokale host, het lokale IP-adres of het loop back-adres (127.0.0.1).
 
-![toepassing rechtstreeks vanuit de virtuele machine starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
+![toepassing rechtstreeks vanuit de VM starten](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access2.png)
 
-Bijvoorbeeld, als de toepassing een webserver, open een browser op de virtuele machine en probeert te krijgen tot een webpagina die wordt gehost op de virtuele machine.
+Als de toepassing bijvoorbeeld een webserver is, opent u een browser op de virtuele machine en probeert u een webpagina te openen die wordt gehost op de virtuele machine.
 
-Als u de toepassing openen kunt, gaat u naar [stap 2](#step2).
+Als u toegang tot de toepassing kunt krijgen, gaat u naar [stap 2](#step2).
 
-Als u geen toegang de toepassing tot, controleert u of de volgende instellingen:
+Als u geen toegang hebt tot de toepassing, controleert u de volgende instellingen:
 
-* De toepassing wordt uitgevoerd op de virtuele doelmachine.
-* De toepassing luistert op de verwachte TCP en UDP-poorten.
+* De toepassing wordt uitgevoerd op de virtuele doel machine.
+* De toepassing luistert op de verwachte TCP-en UDP-poorten.
 
-Gebruik op Windows en Linux gebaseerde virtuele machines, de **netstat - a** opdracht om de actieve luisterpoorten weer te geven. Bekijk de uitvoer voor de verwachte poorten waarop uw toepassing moet luisteren. De toepassing opnieuw starten of om de verwachte poorten indien nodig kunnen gebruiken en probeer opnieuw toegang krijgen tot de toepassing lokaal configureren.
+Gebruik op zowel Windows-als op Linux gebaseerde virtuele machines de **netstat-a-** opdracht om de actieve luisterende poorten weer te geven. Controleer de uitvoer voor de verwachte poorten waarop uw toepassing luistert. Start de toepassing opnieuw of configureer deze zo dat deze de verwachte poorten gebruikt en probeer de toepassing opnieuw lokaal te openen.
 
-## <a id="step2"></a>Stap 2: Toegang tot de toepassing van een andere virtuele machine in hetzelfde virtuele netwerk
-Probeer toegang tot de toepassing van een andere virtuele machine, maar in hetzelfde virtuele netwerk, met behulp van de VM-hostnaam of het Azure-toegewezen openbare, persoonlijke of provider IP-adres. Voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel, moet u het openbare IP-adres van de cloudservice niet gebruiken.
+## <a id="step2"></a>Stap 2: Toegang tot de toepassing vanaf een andere VM in hetzelfde virtuele netwerk
+Probeer toegang te krijgen tot de toepassing vanaf een andere VM, maar in hetzelfde virtuele netwerk, met behulp van de hostnaam van de virtuele machine of het door Azure toegewezen open bare, privé-of provider-IP-adres. Gebruik het open bare IP-adres van de Cloud service niet voor virtuele machines die zijn gemaakt met het klassieke implementatie model.
 
-![toepassing starten vanuit een andere virtuele machine](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
+![toepassing starten vanuit een andere VM](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access3.png)
 
-Bijvoorbeeld, als de toepassing een webserver is, probeert te krijgen tot een webpagina vanuit een browser op een andere virtuele machine in hetzelfde virtuele netwerk.
+Als de toepassing bijvoorbeeld een webserver is, probeert u een webpagina te openen vanuit een browser op een andere VM in hetzelfde virtuele netwerk.
 
-Als u de toepassing openen kunt, gaat u naar [stap 3](#step3).
+Als u toegang tot de toepassing kunt krijgen, gaat u naar [stap 3](#step3).
 
-Als u geen toegang de toepassing tot, controleert u of de volgende instellingen:
+Als u geen toegang hebt tot de toepassing, controleert u de volgende instellingen:
 
-* De firewall van de host op de doel-VM toe dat de binnenkomende aanvraag en uitgaand antwoordverkeer.
-* Indringers detecteren of het netwerk bewaken die worden uitgevoerd op de doel-VM wordt het verkeer wordt toegestaan.
-* Cloud Services-eindpunten of Netwerkbeveiligingsgroepen toestaat dat het verkeer:
-  * [Klassieke model - eindpunten voor Cloudservices beheren](../../cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Resource Manager-model - Netwerkbeveiligingsgroepen beheren](../../virtual-network/manage-network-security-group.md)
-* Een afzonderlijke component die wordt uitgevoerd in de virtuele machine in het pad tussen de test en uw VM's, zoals een load balancer of een firewall, toestaat het verkeer.
+* De host-firewall op de doel-VM staat de inkomende aanvraag en het uitgaande antwoord verkeer toe.
+* Het verkeer wordt toegestaan door inbraak detectie of de netwerk bewakings software die wordt uitgevoerd op de doel-VM.
+* Cloud Services-eind punten of netwerk beveiligings groepen staan het verkeer toe:
+  * [Klassiek model-Cloud Services-eind punten beheren](../../cloud-services/cloud-services-enable-communication-role-instances.md)
+  * [Resource Manager-model: netwerk beveiligings groepen beheren](../../virtual-network/manage-network-security-group.md)
+* Een afzonderlijk onderdeel dat op uw virtuele machine wordt uitgevoerd in het pad tussen de virtuele test machine en uw virtuele machine, zoals een load balancer of firewall, staat het verkeer toe.
 
-Op een Windows-gebaseerde virtuele machine, gebruikt u Windows Firewall met geavanceerde beveiliging om te bepalen of de firewall-regels van uw toepassing binnenkomend en uitgaand verkeer uitsluiten.
+Gebruik Windows Firewall met geavanceerde beveiliging op een virtuele Windows-machine om te bepalen of de firewall regels het binnenkomende en uitgaande verkeer van uw toepassing uitsluiten.
 
-## <a id="step3"></a>Stap 3: Toegang tot de toepassing van buiten het virtuele netwerk
-Probeer toegang tot de toepassing vanaf een computer buiten het virtuele netwerk als de virtuele machine waarop de toepassing wordt uitgevoerd. Gebruik een ander netwerk als de oorspronkelijke clientcomputer.
+## <a id="step3"></a>Stap 3: Toegang tot toepassingen buiten het virtuele netwerk
+Probeer toegang te krijgen tot de toepassing vanaf een computer buiten het virtuele netwerk als de VM waarop de toepassing wordt uitgevoerd. Gebruik een ander netwerk als uw oorspronkelijke client computer.
 
-![toepassing starten op een computer buiten het virtuele netwerk](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
+![toepassing starten vanaf een computer buiten het virtuele netwerk](./media/virtual-machines-common-troubleshoot-app-connection/tshoot_app_access4.png)
 
-Bijvoorbeeld, als de toepassing een webserver is, probeert te krijgen tot de webpagina wordt weergegeven in een browser op een computer die zich niet in het virtuele netwerk.
+Als de toepassing bijvoorbeeld een webserver is, probeert u de webpagina te openen vanuit een browser die wordt uitgevoerd op een computer die zich niet in het virtuele netwerk bevindt.
 
-Als u geen toegang de toepassing tot, controleert u of de volgende instellingen:
+Als u geen toegang hebt tot de toepassing, controleert u de volgende instellingen:
 
-* Voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel:
+* Voor virtuele machines die zijn gemaakt met het klassieke implementatie model:
   
-  * Controleer of dat de configuratie van eindpunten voor de virtuele machine het binnenkomende verkeer, met name het protocol (TCP of UDP) en de openbare en persoonlijke poortnummers toestaat.
-  * Controleer of dat toegangsbeheerlijsten (ACL's) op het eindpunt niet voorkomen inkomend verkeer van Internet dat.
-  * Zie voor meer informatie, [instellen van eindpunten aan een virtuele Machine](../windows/classic/setup-endpoints.md).
-* Voor virtuele machines die zijn gemaakt met het implementatiemodel van Resource Manager:
+  * Controleer of de eindpunt configuratie voor de virtuele machine het binnenkomende verkeer, met name het Protocol (TCP of UDP) en de open bare en particuliere poort nummers toestaat.
+  * Controleer of Acl's (toegangs beheer lijsten) op het eind punt geen binnenkomend verkeer van Internet verhinderen.
+  * Zie [eind punten instellen voor een virtuele machine](../windows/classic/setup-endpoints.md)voor meer informatie.
+* Voor virtuele machines die zijn gemaakt met het Resource Manager-implementatie model:
   
-  * Controleer of dat de binnenkomende NAT-regelconfiguratie voor de virtuele machine het binnenkomende verkeer, met name het protocol (TCP of UDP) en de openbare en persoonlijke poortnummers toestaat.
-  * Controleer of dat Netwerkbeveiligingsgroepen dat de binnenkomende aanvraag en uitgaand antwoordverkeer toestaat.
-  * Zie voor meer informatie, [wat is er een netwerkbeveiligingsgroep?](../../virtual-network/security-overview.md)
+  * Controleer of de configuratie van de binnenkomende NAT-regel voor de virtuele machine het binnenkomende verkeer, met name het Protocol (TCP of UDP) en de open bare en particuliere poort nummers toestaat.
+  * Controleer of de netwerk beveiligings groepen de inkomende aanvraag en het uitgaande antwoord verkeer toestaan.
+  * Zie [Wat is een netwerk beveiligings groep?](../../virtual-network/security-overview.md) voor meer informatie.
 
-Als de virtuele machine of het eindpunt een lid van een load balancer-set is:
+Als de virtuele machine of het eind punt lid is van een set met gelijke taak verdeling:
 
-* Controleer of de test-protocol (TCP of UDP) en het poortnummer juist zijn.
-* Als de test-protocol en poort is anders dan het load balancer-set-protocol en poort:
-  * Controleer of de toepassing luistert op de test-protocol (TCP of UDP) en het poortnummer (Gebruik **netstat – a** op de doel-VM).
-  * Controleer of dat de firewall van de host op de doel-VM is waardoor de aanvraag voor een binnenkomende statustest en antwoordverkeer uitgaande test.
+* Controleer of het test protocol (TCP of UDP) en het poort nummer juist zijn.
+* Als het test protocol en de poort afwijkt van het protocol en de poort met gelijke taak verdeling:
+  * Controleer of de toepassing luistert op het test protocol (TCP of UDP) en het poort nummer (gebruik **netstat – a** op de doel-VM).
+  * Controleer of de host-firewall op de doel-VM de binnenkomende test aanvraag en het uitgaande verkeer van de test respons toestaat.
 
-Als u de toepassing openen kunt, zorgt u ervoor dat uw edge-apparaat voor Internet toestaat:
+Als u toegang hebt tot de toepassing, moet u ervoor zorgen dat het Internet edge-apparaat het volgende toestaat:
 
-* Het verkeer voor het aanvragen van uitgaande aanvraag vanaf uw clientcomputer met de Azure-machine.
-* De binnenkomende aanvraag-antwoordverkeer van de virtuele machine van Azure.
+* Het uitgaande toepassings verkeer van uw client computer naar de virtuele machine van Azure.
+* Het binnenkomende verkeer van toepassings antwoorden van de virtuele Azure-machine.
 
-## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Stap 4 als u geen toegang de toepassing tot gebruiken IP-Controleer of de instellingen te controleren. 
+## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Stap 4 als u geen toegang hebt tot de toepassing, gebruikt u IP controleren om de instellingen te controleren. 
 
-Zie voor meer informatie, [Azure-netwerk bewakingsoverzicht](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+Zie overzicht van Azure- [netwerk bewaking](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)voor meer informatie. 
 
 ## <a name="additional-resources"></a>Aanvullende resources
-[Problemen oplossen met extern bureaublad-verbindingen met een Windows-gebaseerde virtuele Machine in Azure](troubleshoot-rdp-connection.md)
+[Problemen met Extern bureaublad verbindingen met een virtuele Azure-machine op Windows oplossen](troubleshoot-rdp-connection.md)
 
-[Problemen met Secure Shell (SSH)-verbindingen met een Linux-gebaseerde Azure-machine oplossen](troubleshoot-ssh-connection.md)
+[Problemen met SSH-verbindingen (Secure Shell) met een op Linux gebaseerde Azure Virtual Machine oplossen](troubleshoot-ssh-connection.md)
 
 

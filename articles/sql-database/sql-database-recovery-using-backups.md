@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/30/2019
-ms.openlocfilehash: 55d60ec332515fcfa3deb565a4a770027681537a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/27/2019
+ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566976"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103105"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Een Azure-SQL database herstellen met behulp van automatische database back-ups
 
@@ -37,7 +37,7 @@ Wanneer u de service laag Standard of Premium gebruikt, maakt een herstelde data
 - Herstellen van P11 – P15 naar S4-S12 of P1-P6 als de maximale grootte van de data base groter is dan 500 GB.
 - Herstellen van P1 – P6 naar S4-S12 als de maximale grootte van de data base groter is dan 250 GB.
 
-De extra kosten zijn icurred wanneer de maximale grootte van de herstelde data base groter is dan de hoeveelheid opslag die is opgenomen in de servicelaag en het prestatie niveau van de doel database. De extra opslag ruimte die boven de inbegrepen hoeveelheid is ingericht, wordt extra in rekening gebracht. Zie de [pagina met prijzen voor SQL database](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag. Als de daad werkelijke hoeveelheid gebruikte ruimte kleiner is dan de hoeveelheid inbegrepen opslag, kunt u deze extra kosten voor komen door de maximale database grootte in te stellen op de opgenomen hoeveelheid.
+De extra kosten worden in rekening gebracht wanneer de maximale grootte van de herstelde data base groter is dan de hoeveelheid opslag die is opgenomen in de servicelaag en het prestatie niveau van de doel database. De extra opslag ruimte die boven de inbegrepen hoeveelheid is ingericht, wordt extra in rekening gebracht. Zie de [pagina met prijzen voor SQL database](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag. Als de daad werkelijke hoeveelheid gebruikte ruimte kleiner is dan de hoeveelheid inbegrepen opslag, kunt u deze extra kosten voor komen door de maximale database grootte in te stellen op de opgenomen hoeveelheid.
 
 > [!NOTE]
 > [Automatische database back-ups](sql-database-automated-backups.md) worden gebruikt wanneer u een [kopie van een Data Base](sql-database-copy.md)maakt.
@@ -113,7 +113,7 @@ Als u een verwijderde data base wilt herstellen met behulp van de Azure Portal, 
 
 U kunt een SQL database op elke server in een Azure-regio herstellen vanuit de meest recente geo-gerepliceerde back-ups. Geo-Restore maakt gebruik van een geo-gerepliceerde back-up als bron. Dit kan ook worden aangevraagd als de data base of het Data Center niet toegankelijk is vanwege een storing.
 
-Geo-Restore is de standaard herstel optie wanneer uw data base niet beschikbaar is vanwege een incident in de hosting regio. U kunt de data base herstellen naar een server in een andere regio. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze geo-gerepliceerd wordt naar een Azure-Blob in een andere regio. Als gevolg hiervan kan de herstelde data base Maxi maal één uur achter de orignal-Data Base zijn. In de volgende afbeelding ziet u het herstellen van de data base van de laatste beschik bare back-up in een andere regio.
+Geo-Restore is de standaard herstel optie wanneer uw data base niet beschikbaar is vanwege een incident in de hosting regio. U kunt de data base herstellen naar een server in een andere regio. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze geo-gerepliceerd wordt naar een Azure-Blob in een andere regio. Als gevolg hiervan kan de herstelde data base Maxi maal één uur achter de oorspronkelijke Data Base zijn. In de volgende afbeelding ziet u het herstellen van de data base van de laatste beschik bare back-up in een andere regio.
 
 ![Geo-herstel](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -127,7 +127,7 @@ Herstel naar een bepaald tijdstip op een geo-secundair wordt momenteel niet onde
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Geo-herstel met behulp van de Azure Portal
 
-Als u geografisch een Data Base wilt herstellen tijdens de retentie periode voor het [DTU-model](sql-database-service-tiers-dtu.md) of een [vCore op basis](sql-database-service-tiers-vcore.md) van de Azure Portal, opent u de pagina SQL-data bases en klikt u vervolgens op **toevoegen**. Selecteer in het tekstvak **bron selecteren** de optie **back-up**. Geef de back-up op van waaruit het herstel moet worden uitgevoerd in de regio en op de server van uw keuze.
+Als u geografisch een Data Base wilt herstellen met behulp van de Azure Portal, opent u de pagina SQL-data bases en klikt u vervolgens op **toevoegen**. Selecteer in het tekstvak **bron selecteren** de optie **back-up**. Geef de back-up op van waaruit het herstel moet worden uitgevoerd in de regio en op de server van uw keuze.
 
 > [!Note]
 > Geo-Restore met behulp van de Azure Portal is niet beschikbaar in een beheerd exemplaar. Gebruik in plaats daarvan Power shell.

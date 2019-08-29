@@ -1,6 +1,6 @@
 ---
-title: Wisselen van OS-schijf voor een Azure-VM met behulp van CLI | Microsoft-Docs
-description: Wijzig de besturingssysteemschijf die worden gebruikt door een Azure-machine met de CLI.
+title: De besturingssysteem schijf voor een virtuele Azure-machine wisselen met CLI | Microsoft Docs '
+description: Wijzig de besturingssysteem schijf die wordt gebruikt door een virtuele Azure-machine met behulp van de CLI.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -11,30 +11,29 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 970f3409cc46fa6cf96fff3e6944ebeaeadcdcce
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7b5f8a47b2b9c3692698b2ec6a7e5bc470b86a18
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667266"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091672"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Wijzigen van de besturingssysteemschijf die worden gebruikt door een Azure-VM met behulp van de CLI
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>De besturingssysteem schijf wijzigen die wordt gebruikt door een virtuele machine van Azure met de CLI
 
 
-Als u een bestaande virtuele machine hebt, maar u wilt de schijf voor een back-up schijf of de schijf met een ander besturingssysteem wisselen, kunt u de Azure CLI de OS-schijven wisselen. U hoeft niet te verwijderen en opnieuw maken van de virtuele machine. U kunt zelfs een beheerde schijf gebruiken in een andere resourcegroep, zolang deze niet al wordt gebruikt.
+Als u een bestaande VM hebt, maar u de schijf wilt wisselen voor een back-upschijf of een andere besturingssysteem schijf, kunt u de Azure CLI gebruiken om de besturingssysteem schijven te wisselen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken. U kunt zelfs een beheerde schijf in een andere resource groep gebruiken, zolang deze nog niet in gebruik is.
 
-De virtuele machine hoeft te worden stopped\deallocated en vervolgens de resource-ID van de beheerde schijf kan worden vervangen door de resource-ID van een andere beheerde schijf. 
+De VM moet stopped\deallocated zijn. vervolgens kan de bron-ID van de beheerde schijf worden vervangen door de resource-ID van een andere beheerde schijf. 
 
-Zorg ervoor dat de VM-grootte en de opslag-type zijn compatibel met de schijf die u wilt koppelen. Bijvoorbeeld, als de schijf die u wilt gebruiken in Premium-opslag, moet klikt u vervolgens de virtuele machine geschikt voor Premium-opslag (zoals de grootte van een DS-serie).
+Zorg ervoor dat de VM-grootte en het opslag type compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken zich bijvoorbeeld in Premium Storage bevindt, moet de virtuele machine Premium Storage kunnen zijn (zoals een grootte van de DS-serie).
 
-In dit artikel gebruikmaken van Azure CLI versie 2.0.25 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+Voor dit artikel is Azure CLI versie 2.0.25 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 
-Gebruik [az Schijflijst](/cli/azure/disk) voor een lijst van de schijven in de resourcegroep.
+Gebruik [AZ Disk List](/cli/azure/disk) om een lijst op te halen van de schijven in de resource groep.
 
 ```azurecli-interactive
 az disk list \
@@ -44,7 +43,7 @@ az disk list \
 ```
 
 
-Gebruik [az vm stop](/cli/azure/vm) aan de virtuele machine voordat u de schijven wisselen stop\deallocate.
+Gebruik [AZ VM stop](/cli/azure/vm) om de virtuele machine te stop\deallocateen voordat u de schijven verwisselt.
 
 ```azurecli-interactive
 az vm stop \
@@ -53,7 +52,7 @@ az vm stop \
 ```
 
 
-Gebruik [az vm update](/cli/azure/vm#az-vm-update) met de volledige resource-ID van de nieuwe schijf voor de `--osdisk` parameter 
+Gebruik [AZ VM update](/cli/azure/vm#az-vm-update) met de volledige resource-id van de nieuwe schijf voor `--osdisk` de para meter 
 
 ```azurecli-interactive 
 az vm update \
@@ -62,7 +61,7 @@ az vm update \
    --os-disk /subscriptions/<subscription ID>/resourceGroups/swap/providers/Microsoft.Compute/disks/myDisk 
    ```
    
-Start opnieuw op de virtuele machine met behulp van [az vm start](/cli/azure/vm).
+Start de VM opnieuw [op met AZ VM start](/cli/azure/vm).
 
 ```azurecli-interactive
 az vm start \
@@ -73,4 +72,4 @@ az vm start \
    
 **Volgende stappen**
 
-Zie voor het maken van een kopie van een schijf, [momentopname maken van een schijf](snapshot-copy-managed-disk.md).
+Als u een kopie van een schijf wilt maken, raadpleegt u [een moment opname van een schijf](snapshot-copy-managed-disk.md).

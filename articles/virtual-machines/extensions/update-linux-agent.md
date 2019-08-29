@@ -1,6 +1,6 @@
 ---
-title: Werk de Azure Linux-Agent vanuit GitHub | Microsoft Docs
-description: Meer informatie over het Azure Linux Agent bijwerken voor uw Linux-VM in Azure
+title: De Azure Linux-agent bijwerken vanuit GitHub | Microsoft Docs
+description: Meer informatie over het bijwerken van de Azure Linux-agent voor uw virtuele Linux-machine in azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -11,52 +11,51 @@ ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: roiyz
-ms.openlocfilehash: fd02e414aeff26510981661f49cc914a5ea6592b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: acb35cbadd64bb5ceeb4a97deb7bc5187ff108ae
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705872"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084098"
 ---
-# <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Het bijwerken van de Azure Linux Agent op een virtuele machine
+# <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>De Azure Linux-agent op een virtuele machine bijwerken
 
-Om bij te werken uw [Azure Linux Agent](https://github.com/Azure/WALinuxAgent) op een Linux-VM in Azure, moet u al hebben:
+Als u uw [Azure Linux-agent](https://github.com/Azure/WALinuxAgent) op een virtuele Linux-machine in azure wilt bijwerken, moet u al beschikken over:
 
-- Een actieve Linux VM in Azure.
-- Een verbinding met die Linux-VM met behulp van SSH.
+- Een actieve Linux-VM in Azure.
+- Een verbinding met die virtuele Linux-machine met behulp van SSH.
 
-U moet altijd eerst voor een pakket in de opslagplaats voor Linux-distributie. Het is mogelijk dat het pakket beschikbaar zijn mogelijk niet de nieuwste versie, echter automatisch bijwerken inschakelen zorgt u ervoor dat de meest recente update wordt altijd kunnen genieten van de Linux-Agent. Hebt u problemen bij het installeren van het Pakketbeheer, moet u zoeken naar ondersteuning van de leverancier van de distributie.
+U moet altijd controleren op een pakket in de Linux distributie-opslag plaats. Het is mogelijk dat het beschik bare pakket niet de meest recente versie is, maar het inschakelen van auto update zorgt ervoor dat de Linux-agent altijd de meest recente update krijgt. Als u problemen hebt met de installatie van de pakket beheerders, moet u de distributie-leverancier ondersteunen.
 
-## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Ondersteuning van de agent minimumgrootte van de virtuele machine in Azure
-Controleer of de [minimaal versie-ondersteuning voor agents van de virtuele machine in Azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) voordat u doorgaat.
+## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Minimale ondersteuning van Virtual Machine agent in azure
+Controleer de [minimale versie ondersteuning voor virtuele-machine agenten in azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) voordat u doorgaat.
 
-## <a name="updating-the-azure-linux-agent"></a>De Azure Linux Agent bijwerken
+## <a name="updating-the-azure-linux-agent"></a>De Azure Linux-agent bijwerken
 
 ## <a name="ubuntu"></a>Ubuntu
 
-#### <a name="check-your-current-package-version"></a>Controleer uw huidige Pakketversie
+#### <a name="check-your-current-package-version"></a>De huidige pakket versie controleren
 
 ```bash
 apt list --installed | grep walinuxagent
 ```
 
-#### <a name="update-package-cache"></a>Pakketcache bijwerken
+#### <a name="update-package-cache"></a>Pakket cache bijwerken
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installeer de nieuwste Pakketversie
+#### <a name="install-the-latest-package-version"></a>Installeer de meest recente pakket versie
 
 ```bash
 sudo apt-get install walinuxagent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zorg ervoor dat automatisch bijwerken is ingeschakeld
+#### <a name="ensure-auto-update-is-enabled"></a>Controleren of automatisch bijwerken is ingeschakeld
 
 Controleer eerst of deze is ingeschakeld:
 
@@ -64,14 +63,14 @@ Controleer eerst of deze is ingeschakeld:
 cat /etc/waagent.conf
 ```
 
-Zoek 'AutoUpdate.Enabled'. Als u deze uitvoer ziet, is het ingeschakeld:
+Zoek auto update. enabled. Als u deze uitvoer ziet, wordt deze ingeschakeld:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Om in te schakelen uitvoeren:
+Uitvoeren inschakelen:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -79,13 +78,13 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 
 ### <a name="restart-the-waagent-service"></a>De waagent-service opnieuw starten
 
-#### <a name="restart-agent-for-1404"></a>Agent opnieuw starten om 14.04
+#### <a name="restart-agent-for-1404"></a>Agent opnieuw starten voor 14,04
 
 ```bash
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>Agent opnieuw starten om 16.04 / 17.04
+#### <a name="restart-agent-for-1604--1704"></a>Agent opnieuw starten voor 16,04/17,04
 
 ```bash
 systemctl restart walinuxagent.service
@@ -93,49 +92,49 @@ systemctl restart walinuxagent.service
 
 ## <a name="debian"></a>Debian
 
-### <a name="debian-7-wheezy"></a>Debian 7 “Wheezy”
+### <a name="debian-7-wheezy"></a>Debian 7 "Wheezy"
 
-#### <a name="check-your-current-package-version"></a>Controleer uw huidige Pakketversie
+#### <a name="check-your-current-package-version"></a>De huidige pakket versie controleren
 
 ```bash
 dpkg -l | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Pakketcache bijwerken
+#### <a name="update-package-cache"></a>Pakket cache bijwerken
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installeer de nieuwste Pakketversie
+#### <a name="install-the-latest-package-version"></a>Installeer de meest recente pakket versie
 
 ```bash
 sudo apt-get install waagent
 ```
 
-#### <a name="enable-agent-auto-update"></a>Agent automatisch bijwerken inschakelen
-Deze versie van Debian beschikt niet over een versie > = 2.0.16, automatisch bijwerken is daarom niet beschikbaar. De uitvoer van de bovenstaande opdracht wordt weergegeven als het pakket bijgewerkt is.
+#### <a name="enable-agent-auto-update"></a>Automatische update van de agent inschakelen
+Deze versie van Debian heeft geen versie > = 2.0.16, daarom is auto update niet beschikbaar voor IT. Met de uitvoer van de bovenstaande opdracht wordt weer gegeven of het pakket up-to-date is.
 
-### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Jessie" / Debian 9 'uitrekken"
+### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Jessie"/Debian 9 "stretch"
 
-#### <a name="check-your-current-package-version"></a>Controleer uw huidige Pakketversie
+#### <a name="check-your-current-package-version"></a>De huidige pakket versie controleren
 
 ```bash
 apt list --installed | grep waagent
 ```
 
-#### <a name="update-package-cache"></a>Pakketcache bijwerken
+#### <a name="update-package-cache"></a>Pakket cache bijwerken
 
 ```bash
 sudo apt-get -qq update
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installeer de nieuwste Pakketversie
+#### <a name="install-the-latest-package-version"></a>Installeer de meest recente pakket versie
 
 ```bash
 sudo apt-get install waagent
 ```
-#### <a name="ensure-auto-update-is-enabled"></a>Zorg ervoor dat automatisch bijwerken is ingeschakeld 
+#### <a name="ensure-auto-update-is-enabled"></a>Controleren of automatisch bijwerken is ingeschakeld 
 
 Controleer eerst of deze is ingeschakeld:
 
@@ -143,14 +142,14 @@ Controleer eerst of deze is ingeschakeld:
 cat /etc/waagent.conf
 ```
 
-Zoek 'AutoUpdate.Enabled'. Als u deze uitvoer ziet, is het ingeschakeld:
+Zoek auto update. enabled. Als u deze uitvoer ziet, wordt deze ingeschakeld:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Om in te schakelen uitvoeren:
+Uitvoeren inschakelen:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -162,29 +161,29 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 sudo systemctl restart walinuxagent.service
 ```
 
-## <a name="red-hat--centos"></a>Red Hat / CentOS
+## <a name="red-hat--centos"></a>Red Hat/CentOS
 
 ### <a name="rhelcentos-6"></a>RHEL/CentOS 6
 
-#### <a name="check-your-current-package-version"></a>Controleer uw huidige Pakketversie
+#### <a name="check-your-current-package-version"></a>De huidige pakket versie controleren
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Controleren op beschikbare updates
+#### <a name="check-available-updates"></a>Beschik bare updates controleren
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installeer de nieuwste Pakketversie
+#### <a name="install-the-latest-package-version"></a>Installeer de meest recente pakket versie
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zorg ervoor dat automatisch bijwerken is ingeschakeld 
+#### <a name="ensure-auto-update-is-enabled"></a>Controleren of automatisch bijwerken is ingeschakeld 
 
 Controleer eerst of deze is ingeschakeld:
 
@@ -192,14 +191,14 @@ Controleer eerst of deze is ingeschakeld:
 cat /etc/waagent.conf
 ```
 
-Zoek 'AutoUpdate.Enabled'. Als u deze uitvoer ziet, is het ingeschakeld:
+Zoek auto update. enabled. Als u deze uitvoer ziet, wordt deze ingeschakeld:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Om in te schakelen uitvoeren:
+Uitvoeren inschakelen:
 
 ```bash
 sudo sed -i 's/\# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -213,25 +212,25 @@ sudo service waagent restart
 
 ### <a name="rhelcentos-7"></a>RHEL/CentOS 7
 
-#### <a name="check-your-current-package-version"></a>Controleer uw huidige Pakketversie
+#### <a name="check-your-current-package-version"></a>De huidige pakket versie controleren
 
 ```bash
 sudo yum list WALinuxAgent
 ```
 
-#### <a name="check-available-updates"></a>Controleren op beschikbare updates
+#### <a name="check-available-updates"></a>Beschik bare updates controleren
 
 ```bash
 sudo yum check-update WALinuxAgent
 ```
 
-#### <a name="install-the-latest-package-version"></a>Installeer de nieuwste Pakketversie
+#### <a name="install-the-latest-package-version"></a>Installeer de meest recente pakket versie
 
 ```bash
 sudo yum install WALinuxAgent  
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zorg ervoor dat automatisch bijwerken is ingeschakeld 
+#### <a name="ensure-auto-update-is-enabled"></a>Controleren of automatisch bijwerken is ingeschakeld 
 
 Controleer eerst of deze is ingeschakeld:
 
@@ -239,14 +238,14 @@ Controleer eerst of deze is ingeschakeld:
 cat /etc/waagent.conf
 ```
 
-Zoek 'AutoUpdate.Enabled'. Als u deze uitvoer ziet, is het ingeschakeld:
+Zoek auto update. enabled. Als u deze uitvoer ziet, wordt deze ingeschakeld:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Om in te schakelen uitvoeren:
+Uitvoeren inschakelen:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -262,23 +261,23 @@ sudo systemctl restart waagent.service
 
 ### <a name="suse-sles-11-sp4"></a>SUSE SLES 11 SP4
 
-#### <a name="check-your-current-package-version"></a>Controleer uw huidige Pakketversie
+#### <a name="check-your-current-package-version"></a>De huidige pakket versie controleren
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Controleren op beschikbare updates
+#### <a name="check-available-updates"></a>Beschik bare updates controleren
 
-De bovenstaande uitvoer wordt weergegeven als het pakket bijgewerkt is.
+In de bovenstaande uitvoer wordt weer gegeven of het pakket up-to-date is.
 
-#### <a name="install-the-latest-package-version"></a>Installeer de nieuwste Pakketversie
+#### <a name="install-the-latest-package-version"></a>Installeer de meest recente pakket versie
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zorg ervoor dat automatisch bijwerken is ingeschakeld 
+#### <a name="ensure-auto-update-is-enabled"></a>Controleren of automatisch bijwerken is ingeschakeld 
 
 Controleer eerst of deze is ingeschakeld:
 
@@ -286,14 +285,14 @@ Controleer eerst of deze is ingeschakeld:
 cat /etc/waagent.conf
 ```
 
-Zoek 'AutoUpdate.Enabled'. Als u deze uitvoer ziet, is het ingeschakeld:
+Zoek auto update. enabled. Als u deze uitvoer ziet, wordt deze ingeschakeld:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Om in te schakelen uitvoeren:
+Uitvoeren inschakelen:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -307,23 +306,23 @@ sudo /etc/init.d/waagent restart
 
 ### <a name="suse-sles-12-sp2"></a>SUSE SLES 12 SP2
 
-#### <a name="check-your-current-package-version"></a>Controleer uw huidige Pakketversie
+#### <a name="check-your-current-package-version"></a>De huidige pakket versie controleren
 
 ```bash
 zypper info python-azure-agent
 ```
 
-#### <a name="check-available-updates"></a>Controleren op beschikbare updates
+#### <a name="check-available-updates"></a>Beschik bare updates controleren
 
-In de uitvoer van de bovenstaande, wordt dit beschreven als het pakket bijgewerkt is.
+In de uitvoer van de bovenstaande wordt weer gegeven of het pakket up-to-date is.
 
-#### <a name="install-the-latest-package-version"></a>Installeer de nieuwste Pakketversie
+#### <a name="install-the-latest-package-version"></a>Installeer de meest recente pakket versie
 
 ```bash
 sudo zypper install python-azure-agent
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zorg ervoor dat automatisch bijwerken is ingeschakeld 
+#### <a name="ensure-auto-update-is-enabled"></a>Controleren of automatisch bijwerken is ingeschakeld 
 
 Controleer eerst of deze is ingeschakeld:
 
@@ -331,14 +330,14 @@ Controleer eerst of deze is ingeschakeld:
 cat /etc/waagent.conf
 ```
 
-Zoek 'AutoUpdate.Enabled'. Als u deze uitvoer ziet, is het ingeschakeld:
+Zoek auto update. enabled. Als u deze uitvoer ziet, wordt deze ingeschakeld:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Om in te schakelen uitvoeren:
+Uitvoeren inschakelen:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -352,15 +351,15 @@ sudo systemctl restart waagent.service
 
 ## <a name="oracle-6-and-7"></a>Oracle 6 en 7
 
-Voor Oracle Linux, zorg ervoor dat de `Addons` opslagplaats is ingeschakeld. Kies het bestand bewerken `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux), en wijzigt u de regel `enabled=0` naar `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in deze het bestand.
+Zorg ervoor dat de `Addons` opslag plaats is ingeschakeld voor Oracle Linux. Kies voor het bewerken van `/etc/yum.repos.d/public-yum-ol6.repo`het bestand (Oracle Linux 6 `/etc/yum.repos.d/public-yum-ol7.repo`) of `enabled=1` (Oracle Linux) en wijzig de `enabled=0` regel in onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
 
-Typ vervolgens de volgende opdracht voor het installeren van de meest recente versie van de Azure Linux Agent:
+Als u de nieuwste versie van de Azure Linux-agent wilt installeren, typt u:
 
 ```bash
 sudo yum install WALinuxAgent
 ```
 
-Als u niet de opslagplaats van de invoegtoepassing kunt u deze regels gewoon toevoegen aan het einde van het bestand .repo op basis van uw Oracle Linux-versie:
+Als u de opslag plaats voor invoeg toepassingen niet vindt, kunt u deze regels aan het einde van het. opslag plaats-bestand toevoegen volgens uw Oracle Linux-release:
 
 Voor virtuele machines van Oracle Linux 6:
 
@@ -390,24 +389,24 @@ Typ vervolgens:
 sudo yum update WALinuxAgent
 ```
 
-Meestal dit is alles wat u nodig hebt, maar als om een bepaalde reden u moet voor het installeren van https://github.com rechtstreeks, gebruik de volgende stappen.
+Normaal gesp roken hoeft u alleen maar de volgende stappen uit https://github.com te voeren als u deze om een bepaalde reden rechtstreeks wilt installeren.
 
 
-## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>De Linux-Agent bijwerken wanneer er geen agentpakket voor distributie
+## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>De Linux-agent bijwerken wanneer er geen agent pakket bestaat voor distributie
 
-Wget (Er zijn bepaalde distributies die niet standaard, zoals de versies van Red Hat, CentOS en Oracle Linux 6.4 en 6.5 installeert) installeren door te typen `sudo yum install wget` op de opdrachtregel.
+Wget installeren (er zijn enkele distributies die niet standaard worden geïnstalleerd, zoals Red Hat, CentOS en Oracle Linux versie 6,4 en 6,5) door te typen `sudo yum install wget` op de opdracht regel.
 
-### <a name="1-download-the-latest-version"></a>1. Download de nieuwste versie
-Open [de release van Azure Linux Agent in GitHub](https://github.com/Azure/WALinuxAgent/releases) in een webpagina en ontdek het nummer van de meest recente versie. (U kunt uw huidige versie vinden door te typen `waagent --version`.)
+### <a name="1-download-the-latest-version"></a>1. De nieuwste versie downloaden
+Open [de release van de Azure Linux-agent in github](https://github.com/Azure/WALinuxAgent/releases) op een webpagina en ontdek het meest recente versie nummer. (U kunt uw huidige versie vinden door te `waagent --version`typen.)
 
-#### <a name="for-version-22x-or-later-type"></a>Voor versie 2.2.x of hoger, typ:
+#### <a name="for-version-22x-or-later-type"></a>Voor versie 2.2. x of hoger typt u:
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.x.zip
 unzip v2.2.x.zip
 cd WALinuxAgent-2.2.x
 ```
 
-De volgende regel wordt versie 2.2.0 als voorbeeld gebruikt:
+In de volgende regel wordt versie 2.2.0 als voor beeld gebruikt:
 
 ```bash
 wget https://github.com/Azure/WALinuxAgent/archive/v2.2.14.zip
@@ -415,16 +414,16 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>2. De Azure Linux-Agent installeren
+### <a name="2-install-the-azure-linux-agent"></a>2. De Azure Linux-agent installeren
 
-#### <a name="for-version-22x-use"></a>Voor versie 2.2.x, gebruik:
-Mogelijk moet u het pakket installeren `setuptools` ten eerste-- [hier](https://pypi.python.org/pypi/setuptools). Voer vervolgens
+#### <a name="for-version-22x-use"></a>Gebruik voor versie 2.2. x het volgende:
+Het is mogelijk dat u het pakket `setuptools` eerst moet installeren. Zie [hier](https://pypi.python.org/pypi/setuptools). Voer vervolgens
 
 ```bash
 sudo python setup.py install
 ```
 
-#### <a name="ensure-auto-update-is-enabled"></a>Zorg ervoor dat automatisch bijwerken is ingeschakeld
+#### <a name="ensure-auto-update-is-enabled"></a>Controleren of automatisch bijwerken is ingeschakeld
 
 Controleer eerst of deze is ingeschakeld:
 
@@ -432,21 +431,21 @@ Controleer eerst of deze is ingeschakeld:
 cat /etc/waagent.conf
 ```
 
-Zoek 'AutoUpdate.Enabled'. Als u deze uitvoer ziet, is het ingeschakeld:
+Zoek auto update. enabled. Als u deze uitvoer ziet, wordt deze ingeschakeld:
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-Om in te schakelen uitvoeren:
+Uitvoeren inschakelen:
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
 ### <a name="3-restart-the-waagent-service"></a>3. De waagent-service opnieuw starten
-Voor het merendeel van de Linux-distributies:
+Voor de meeste Linux-distributies:
 
 ```bash
 sudo service waagent restart
@@ -458,20 +457,20 @@ Gebruik voor Ubuntu:
 sudo service walinuxagent restart
 ```
 
-CoreOS, gebruiken:
+Gebruik voor CoreOS:
 
 ```bash
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4. Controleren welke versie van Azure Linux Agent
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4. De versie van de Azure Linux-agent bevestigen
     
 ```bash
 waagent -version
 ```
 
-Voor CoreOS, is het mogelijk dat de bovenstaande opdracht niet werkt.
+De bovenstaande opdracht werkt mogelijk niet voor CoreOS.
 
-U ziet dat de versie van Azure Linux Agent is bijgewerkt naar de nieuwe versie.
+U zult zien dat de versie van de Azure Linux-agent is bijgewerkt naar de nieuwe versie.
 
-Zie voor meer informatie over de Azure Linux Agent [Azure Linux Agent Leesmij](https://github.com/Azure/WALinuxAgent).
+Zie het [Leesmij-bestand voor Azure Linux-agent](https://github.com/Azure/WALinuxAgent)voor meer informatie over de Azure Linux-agent.

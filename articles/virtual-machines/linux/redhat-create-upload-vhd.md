@@ -1,6 +1,6 @@
 ---
-title: Maken en uploaden van een Red Hat Enterprise Linux-VHD voor gebruik in Azure | Microsoft Docs
-description: Informatie over het maken en uploaden van een Azure virtuele harde schijf (VHD) met een Red Hat Linux-besturingssysteem.
+title: Een Red Hat Enterprise Linux VHD maken en uploaden voor gebruik in azure | Microsoft Docs
+description: Meer informatie over het maken en uploaden van een virtuele harde schijf van Azure (VHD) met een Red Hat Linux-besturings systeem.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -11,51 +11,50 @@ ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: f7f9baec5421a63e46536480cde8d60d3877d4d7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: aef25e79d99c6c7434123df76e85e605b22fde51
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670977"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082252"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Een op Red Hat gebaseerde virtuele machine voor Azure voorbereiden
-In dit artikel leert u hoe u een virtuele machine van Red Hat Enterprise Linux (RHEL) voorbereidt voor gebruik in Azure. De versies van RHEL die worden beschreven in dit artikel zijn 6.7 + en 7.1 +. De hypervisors voor voorbereiding die worden beschreven in dit artikel zijn Hyper-V, op basis van een kernel virtuele machine (KVM) en VMware. Zie voor meer informatie over vereisten voor geschiktheid voor uw deelname aan het Red Hat Cloud Access programma [van Red Hat Cloud Access website](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) en [RHEL uitgevoerd op Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Zie voor informatie over het automatiseren van het bouwen van RHEL afbeeldingen de [Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
+In dit artikel wordt beschreven hoe u een virtuele Red Hat Enterprise Linux-machine (RHEL) voorbereidt voor gebruik in Azure. De versies van RHEL die in dit artikel worden behandeld, zijn 6,7 + en 7.1 +. De Hyper visors voor voor bereidingen die in dit artikel worden behandeld, zijn Hyper-V, op kernel gebaseerde virtuele machine (KVM) en VMware. Voor meer informatie over de geschiktheids vereisten voor deelname aan het Cloud Access-programma van Red Hat raadpleegt u [de Cloud Access-website van Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) en [voert u RHEL uit op Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Zie de [opbouw functie voor Azure-installatie kopieën](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)voor manieren om het bouwen van RHEL-installatie kopieën te automatiseren.
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Een Red Hat gebaseerde virtuele machine op basis van Hyper-V Manager voorbereiden
+## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Een op Red Hat gebaseerde virtuele machine voorbereiden vanuit Hyper-V-beheer
 
 ### <a name="prerequisites"></a>Vereisten
-In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de website van Red Hat verkregen en de RHEL-installatiekopie hebt geïnstalleerd op een virtuele harde schijf (VHD). Zie voor meer informatie over het gebruik van Hyper-V-beheer voor het installeren van een besturingssysteeminstallatiekopie [de Hyper-V-rol installeren en configureren van een virtuele Machine](https://technet.microsoft.com/library/hh846766.aspx).
+In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van de website Red Hat en de RHEL-installatie kopie hebt geïnstalleerd op een virtuele harde schijf (VHD). Zie [hyper-v-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor meer informatie over het gebruik van Hyper-v-beheer om een installatie kopie van een besturings systeem te installeren.
 
-**Opmerkingen bij de installatie van de RHEL**
+**RHEL-installatie notities**
 
-* Azure biedt geen ondersteuning voor VHDX-indeling. Azure ondersteunt alleen vaste VHD. U kunt Hyper-V Manager gebruiken voor de schijf converteren naar VHD-indeling of kunt u de cmdlet convert-vhd. Als u VirtualBox gebruiken, selecteert u **vaste grootte** in plaats van de standaard dynamisch toegewezen optie bij het maken van de schijf.
-* Azure ondersteunt alleen virtuele machines van generatie 1. U kunt een virtuele machine generatie 1 converteren van VHDX, zodat de VHD-indeling en dynamisch uit te breiden naar een schijf met vaste grootte. U kunt een virtuele machine generatie niet wijzigen. Zie voor meer informatie, [zou ik een generatie 1 of 2 virtuele machine in Hyper-V maken?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
-* De maximale grootte die toegestaan voor de VHD is 1023 GB.
-* Logische Volume Manager (LVM) wordt ondersteund en kan worden gebruikt op de besturingssysteemschijf en gegevensschijven in virtuele machines van Azure. In het algemeen wordt het echter aanbevolen standaard partities op de besturingssysteemschijf in plaats van LVM gebruiken. Met deze procedure vermijdt LVM naam conflicteert met de gekloonde virtuele machines, met name als u ooit een besturingssysteemschijf koppelen aan een andere identieke virtuele machine moet voor probleemoplossing. Zie ook [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) en [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) documentatie.
-* Kernel-ondersteuning voor het koppelen van bestandssystemen Universal Disk Format (UDF's) is vereist. Op de eerste keer opstarten op Azure geeft de UDF-indeling media die is gekoppeld aan de Gast de inrichtingsconfiguratie aan de virtuele Linux-machine. De Azure Linux Agent moet u mogelijk de UDF-bestandssysteem om te lezen van de configuratie en het inrichten van de virtuele machine koppelen.
-* Stel een swap-partitie niet op de besturingssysteemschijf. De Linux-Agent kan worden geconfigureerd voor het maken van een wisselbestand op de tijdelijke schijf.  Meer informatie hierover vindt u in de volgende stappen uit.
-* Alle VHD's op Azure beschikken over een virtuele grootte die is afgestemd op 1MB. Bij het converteren van een onbewerkte schijf naar de VHD moet u ervoor zorgen dat de onbewerkte schijfgrootte een veelvoud van 1MB vóór de conversie is. Meer informatie vindt u in de onderstaande stappen. Zie ook [opmerkingen bij de installatie van Linux](create-upload-generic.md#general-linux-installation-notes) voor meer informatie.
+* Azure biedt geen ondersteuning voor de VHDX-indeling. Azure ondersteunt alleen vaste VHD. U kunt Hyper-V-beheer gebruiken om de schijf te converteren naar VHD-indeling, of u kunt de cmdlet Convert-VHD gebruiken. Als u VirtualBox gebruikt, selecteert u **vaste grootte** in plaats van de standaard optie voor dynamisch toegewezen wanneer u de schijf maakt.
+* Azure ondersteunt alleen virtuele machines van de eerste generatie. U kunt een virtuele machine van de eerste generatie converteren van VHDX naar de VHD-bestands indeling en van dynamisch uitbreiden naar een schijf met een vaste grootte. U kunt de generatie van een virtuele machine niet wijzigen. Zie [een virtuele machine van de eerste generatie maken in Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)voor meer informatie.
+* De maximale grootte die is toegestaan voor de VHD is 1.023 GB.
+* Logical Volume Manager (LVM) wordt ondersteund en kan worden gebruikt op de besturingssysteem schijf of gegevens schijven in virtuele machines van Azure. Over het algemeen is het echter raadzaam om standaard partities op de besturingssysteem schijf te gebruiken in plaats van LVM. Met deze procedure wordt voor komen dat LVM naam strijdig is met gekloonde virtuele machines, met name als u ooit een besturingssysteem schijf moet koppelen aan een andere identieke virtuele machine voor het oplossen van problemen. Zie ook [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) en [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -documentatie.
+* Kernel-ondersteuning voor het koppelen van UDF-bestands systemen (Universal Disk Format) is vereist. Bij de eerste keer opstarten op Azure wordt de inrichtings configuratie door de UDF-indelings media die aan de gast is gekoppeld, door gegeven aan de virtuele Linux-machine. De Azure Linux-agent moet het UDF-bestands systeem kunnen koppelen om de configuratie te lezen en de virtuele machine in te richten.
+* Configureer geen swap partitie op de schijf met het besturings systeem. De Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf.  Meer informatie hierover vindt u in de volgende stappen.
+* Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Meer informatie vindt u in de volgende stappen. Zie ook [Linux-installatie notities](create-upload-generic.md#general-linux-installation-notes) voor meer informatie.
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>Een RHEL 6 virtuele machine op basis van Hyper-V Manager voorbereiden
+### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>Een virtuele machine met RHEL 6 voorbereiden vanuit Hyper-V-beheer
 
 1. Selecteer de virtuele machine in Hyper-V-beheer.
 
-1. Klik op **Connect** om een consolevenster voor de virtuele machine te openen.
+1. Klik op **verbinding maken** om een console venster voor de virtuele machine te openen.
 
-1. In de RHEL-6, NetworkManager kan leiden tot problemen met de Azure Linux agent. Dit pakket verwijderen door de volgende opdracht uit:
+1. In RHEL 6 kan NetworkManager conflicteren met de Azure Linux-agent. Verwijder dit pakket door de volgende opdracht uit te voeren:
    
         # sudo rpm -e --nodeps NetworkManager
 
-1. Maak of bewerk de `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. Maak of bewerk de `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -65,52 +64,52 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         PEERDNS=yes
         IPV6INIT=no
 
-1. Verplaats de udev-regels om te voorkomen dat statische regels voor de Ethernet-interface voor het genereren (of verwijderen). Deze regels veroorzaken problemen bij het klonen van een virtuele machine in Microsoft Azure of Hyper-V:
+1. Verplaats (of verwijder) de udev-regels om te voor komen dat statische regels voor de Ethernet-interface worden gegenereerd. Deze regels veroorzaken problemen bij het klonen van een virtuele machine in Microsoft Azure of Hyper-V:
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-1. Zorg ervoor dat de netwerkservice wordt gestart bij het opstarten met de volgende opdracht:
+1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
         # sudo chkconfig network on
 
-1. Registreer uw Red Hat-abonnement om in te schakelen van de installatie van pakketten van de RHEL-opslagplaats met de volgende opdracht:
+1. Registreer uw Red Hat-abonnement om de installatie van pakketten vanuit de RHEL-opslag plaats mogelijk te maken door de volgende opdracht uit te voeren:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Het pakket WALinuxAgent `WALinuxAgent-<version>`, naar de opslagplaats van Red Hat extra's is gepusht. De opslagplaats extra's inschakelen met de volgende opdracht:
+1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Wijzig de kernel boot line in de grub-configuratie om op te nemen van aanvullende kernel-parameters voor Azure. Open hiervoor deze wijziging `/boot/grub/menu.lst` in een teksteditor en zorg ervoor dat de kernel standaard de volgende parameters bevat:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door `/boot/grub/menu.lst` voeren, opent u in een tekst editor en zorgt u ervoor dat de standaard-kernel de volgende para meters bevat:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    Dit ook zorgt ervoor dat alle consoleberichten worden verzonden naar de eerste seriële poort, die Azure helpen kan ondersteuning bij het opsporen van problemen.
+    Dit zorgt er ook voor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen.
     
-    Bovendien wordt aangeraden dat u de volgende parameters:
+    Daarnaast wordt u aangeraden de volgende para meters te verwijderen:
     
         rhgb quiet crashkernel=auto
     
-    Grafische en stil opstarten zijn niet nuttig in een cloudomgeving waar we alle logboeken worden verzonden naar de seriële poort.  U kunt laten de `crashkernel` geconfigureerd als de gewenste optie. Houd er rekening mee dat deze parameter de hoeveelheid beschikbaar geheugen in de virtuele machine door 128 MB of meer wordt. Deze configuratie mogelijk problemen op kleinere virtuele machine.
+    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort.  U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Deze configuratie kan problemen opleveren bij kleinere grootten van virtuele machines.
 
 
-1. Zorg ervoor dat de secure shell (SSH)-server is geïnstalleerd en geconfigureerd om te starten tijdens het opstarten, dit doorgaans de standaardinstelling is. Wijzig /etc/ssh/sshd_config om op te nemen in de volgende regel:
+1. Zorg ervoor dat de SSH-server (Secure Shell) is geïnstalleerd en geconfigureerd om te starten bij het opstarten. Dit is meestal de standaard instelling. Wijzig/etc/ssh/sshd_config zodat deze de volgende regel bevat:
 
         ClientAliveInterval 180
 
-1. De Azure Linux-Agent installeren met de volgende opdracht:
+1. Installeer de Azure Linux-agent door de volgende opdracht uit te voeren:
 
         # sudo yum install WALinuxAgent
 
         # sudo chkconfig waagent on
 
-    Installatie van het pakket WALinuxAgent verwijdert de NetworkManager en NetworkManager gnome pakketten als ze zijn niet verwijderd in stap 3.
+    Als u het WALinuxAgent-pakket installeert, worden de NetworkManager-en NetworkManager-gnome-pakketten verwijderd als deze nog niet zijn verwijderd in stap 3.
 
-1. Maak geen wisselruimte op de besturingssysteemschijf.
+1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux Agent kunt wisselruimte automatisch configureren met behulp van de schijf van de lokale resource die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bronschijf een tijdelijke schijf is en dat deze kan worden leeggemaakt als de inrichting van de virtuele machine is beëindigd. Nadat u de Azure Linux Agent in de vorige stap hebt geïnstalleerd, op de juiste wijze de volgende parameters in /etc/waagent.conf wijzigen:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. De lokale bron schijf is een tijdelijke schijf en kan worden leeg gemaakt als de inrichting van de virtuele machine ongedaan is. Nadat u de Azure Linux-agent in de vorige stap hebt geïnstalleerd, wijzigt u de volgende para meters in/etc/waagent.conf op de juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -118,11 +117,11 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-1. Het abonnement (indien nodig) registratie met de volgende opdracht:
+1. Hef de registratie van het abonnement op (indien nodig) door de volgende opdracht uit te voeren:
 
         # sudo subscription-manager unregister
 
-1. Voer de volgende opdrachten voor de inrichting van de virtuele machine ongedaan maken en voorbereiden voor het inrichten op Azure:
+1. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -132,21 +131,21 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
 
         # logout
 
-1. Klik op **actie** > **afsluiten** in Hyper-V-beheer. De VHD met Linux is nu klaar om te worden geüpload naar Azure.
+1. Klik op **actie** > **Afsluiten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden geüpload naar Azure.
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Een RHEL 7 virtuele machine op basis van Hyper-V Manager voorbereiden
+### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Een virtuele machine met RHEL 7 voorbereiden vanuit Hyper-V-beheer
 
 1. Selecteer de virtuele machine in Hyper-V-beheer.
 
-1. Klik op **Connect** om een consolevenster voor de virtuele machine te openen.
+1. Klik op **verbinding maken** om een console venster voor de virtuele machine te openen.
 
-1. Maak of bewerk de `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. Maak of bewerk de `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -157,45 +156,45 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         IPV6INIT=no
         NM_CONTROLLED=no
 
-1. Zorg ervoor dat de netwerkservice wordt gestart bij het opstarten met de volgende opdracht:
+1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
         # sudo systemctl enable network
 
-1. Registreer uw Red Hat-abonnement om in te schakelen van de installatie van pakketten van de RHEL-opslagplaats met de volgende opdracht:
+1. Registreer uw Red Hat-abonnement om de installatie van pakketten vanuit de RHEL-opslag plaats mogelijk te maken door de volgende opdracht uit te voeren:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel boot line in de grub-configuratie om op te nemen van aanvullende kernel-parameters voor Azure. Open hiervoor deze wijziging `/etc/default/grub` in een teksteditor en bewerk de `GRUB_CMDLINE_LINUX` parameter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door `/etc/default/grub` voeren, opent u in een tekst editor `GRUB_CMDLINE_LINUX` en bewerkt u de para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Dit ook zorgt ervoor dat alle consoleberichten worden verzonden naar de eerste seriële poort, die Azure helpen kan ondersteuning bij het opsporen van problemen. Deze configuratie worden ook uitgeschakeld de nieuwe naamgeving van RHEL 7 NIC's. Bovendien is het raadzaam dat u de volgende parameters:
+   Dit zorgt er ook voor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. Deze configuratie schakelt ook de nieuwe RHEL 7-naamgevings conventies voor Nic's uit. Daarnaast wordt u aangeraden de volgende para meters te verwijderen:
    
         rhgb quiet crashkernel=auto
    
-    Grafische en stil opstarten zijn niet nuttig in een cloudomgeving waar we alle logboeken worden verzonden naar de seriële poort. U kunt laten de `crashkernel` geconfigureerd als de gewenste optie. Houd er rekening mee dat deze parameter vermindert de hoeveelheid beschikbaar geheugen in de virtuele machine door 128 MB of meer, die mogelijk problemen op kleinere virtuele machine.
+    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
-1. Als u klaar bent bewerken `/etc/default/grub`, voer de volgende opdracht om op te bouwen de grub-configuratie:
+1. Wanneer u klaar bent met `/etc/default/grub`bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten tijdens het opstarten, dit doorgaans de standaardinstelling is. Wijzigen `/etc/ssh/sshd_config` om op te nemen in de volgende regel:
+1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten. Dit is meestal de standaard instelling. Wijzig `/etc/ssh/sshd_config` de volgende regel in:
 
         ClientAliveInterval 180
 
-1. Het pakket WALinuxAgent `WALinuxAgent-<version>`, naar de opslagplaats van Red Hat extra's is gepusht. De opslagplaats extra's inschakelen met de volgende opdracht:
+1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-1. De Azure Linux-Agent installeren met de volgende opdracht:
+1. Installeer de Azure Linux-agent door de volgende opdracht uit te voeren:
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-1. Maak geen wisselruimte op de besturingssysteemschijf.
+1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux Agent kunt wisselruimte automatisch configureren met behulp van de schijf van de lokale resource die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bronschijf een tijdelijke schijf is en kan worden leeggemaakt als de inrichting van de virtuele machine is beëindigd. Nadat u de Azure Linux Agent in de vorige stap hebt geïnstalleerd, wijzigt u de volgende parameters in `/etc/waagent.conf` op de juiste wijze:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt geïnstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -203,11 +202,11 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-1. Als u wilt de registratie van het abonnement, moet u de volgende opdracht uitvoeren:
+1. Als u de registratie van het abonnement wilt opheffen, voert u de volgende opdracht uit:
 
         # sudo subscription-manager unregister
 
-1. Voer de volgende opdrachten voor de inrichting van de virtuele machine ongedaan maken en voorbereiden voor het inrichten op Azure:
+1. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -217,21 +216,21 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
 
         # logout
 
-1. Klik op **actie** > **afsluiten** in Hyper-V-beheer. De VHD met Linux is nu klaar om te worden geüpload naar Azure.
+1. Klik op **actie** > **Afsluiten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden geüpload naar Azure.
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Een Red Hat gebaseerde virtuele machine op basis van KVM voorbereiden
-### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>Een RHEL 6 virtuele machine op basis van KVM voorbereiden
+## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>Een op Red Hat gebaseerde virtuele machine voorbereiden op basis van KVM
+### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>Een virtuele machine van RHEL 6 voorbereiden op KVM
 
-1. Download het KVM-image van RHEL 6 van de Red Hat-website.
+1. Down load de KVM-installatie kopie van RHEL 6 van de website Red Hat.
 
-1. Een root-wachtwoord instellen.
+1. Stel een Hoofdwacht woord in.
 
-    Een versleuteld wachtwoord genereren en kopieer de uitvoer van de opdracht:
+    Genereer een versleuteld wacht woord en kopieer de uitvoer van de opdracht:
 
         # openssl passwd -1 changeme
 
-    Stel een hoofdwachtwoord met guestfish:
+    Stel een hoofd wachtwoord in met guestfish:
         
         # guestfish --rw -a <image-name>
         > <fs> run
@@ -240,16 +239,16 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         > <fs> vi /etc/shadow
         > <fs> exit
 
-   Wijzigen van de tweede veld van de hoofdgebruiker van "." in het versleutelde wachtwoord.
+   Wijzig het tweede veld van de hoofd gebruiker van "!!" naar het versleutelde wacht woord.
 
-1. Maak een virtuele machine in KVM vanuit de installatiekopie van het qcow2. Het schijftype instellen op **qcow2**, en stelt u het virtuele netwerkinterface-Apparaatmodel op **virtio**. Vervolgens start u de virtuele machine en meld u aan als hoofdgebruiker.
+1. Maak een virtuele machine in KVM vanuit de qcow2-installatie kopie. Stel het schijf type in op **qcow2**en stel het apparaat model van de virtuele netwerk interface in op **virtio**. Vervolgens start u de virtuele machine en meldt u zich aan als root.
 
-1. Maak of bewerk de `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. Maak of bewerk de `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -259,40 +258,40 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         PEERDNS=yes
         IPV6INIT=no
 
-1. Verplaats de udev-regels om te voorkomen dat statische regels voor de Ethernet-interface voor het genereren (of verwijderen). Deze regels veroorzaken problemen wanneer u een virtuele machine in Azure of Hyper-V: klonen
+1. Verplaats (of verwijder) de udev-regels om te voor komen dat statische regels voor de Ethernet-interface worden gegenereerd. Deze regels veroorzaken problemen bij het klonen van een virtuele machine in azure of Hyper-V:
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-1. Zorg ervoor dat de netwerkservice wordt gestart bij het opstarten met de volgende opdracht:
+1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
         # chkconfig network on
 
-1. Registreer uw Red Hat-abonnement om in te schakelen van de installatie van pakketten van de RHEL-opslagplaats met de volgende opdracht:
+1. Registreer uw Red Hat-abonnement om de installatie van pakketten vanuit de RHEL-opslag plaats mogelijk te maken door de volgende opdracht uit te voeren:
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel boot line in de grub-configuratie om op te nemen van aanvullende kernel-parameters voor Azure. Open hiervoor deze configuratie `/boot/grub/menu.lst` in een teksteditor en zorg ervoor dat de kernel standaard de volgende parameters bevat:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze configuratie wilt uitvoeren `/boot/grub/menu.lst` , opent u in een tekst editor en zorgt u ervoor dat de standaard-kernel de volgende para meters bevat:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    Dit ook zorgt ervoor dat alle consoleberichten worden verzonden naar de eerste seriële poort, die Azure helpen kan ondersteuning bij het opsporen van problemen.
+    Dit zorgt er ook voor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen.
     
-    Bovendien is het raadzaam dat u de volgende parameters:
+    Daarnaast wordt u aangeraden de volgende para meters te verwijderen:
     
         rhgb quiet crashkernel=auto
     
-    Grafische en stil opstarten zijn niet nuttig in een cloudomgeving waar we alle logboeken worden verzonden naar de seriële poort. U kunt laten de `crashkernel` geconfigureerd als de gewenste optie. Houd er rekening mee dat deze parameter vermindert de hoeveelheid beschikbaar geheugen in de virtuele machine door 128 MB of meer, die mogelijk problemen op kleinere virtuele machine.
+    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
 
-1. Hyper-V-modules aan initramfs toevoegen:  
+1. Hyper-V-modules toevoegen aan initramfs:  
 
-    Bewerken `/etc/dracut.conf`, en voeg de volgende inhoud:
+    Bewerk `/etc/dracut.conf`en voeg de volgende inhoud toe:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
-    Opnieuw opbouwen initramfs:
+    Initramfs opnieuw maken:
 
         # dracut -f -v
 
@@ -300,26 +299,26 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
 
         # yum remove cloud-init
 
-1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten tijdens het opstarten:
+1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten van het systeem:
 
         # chkconfig sshd on
 
-    Wijzig /etc/ssh/sshd_config om op te nemen van de volgende regels:
+    Wijzig/etc/ssh/sshd_config zodat de volgende regels worden toegevoegd:
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Het pakket WALinuxAgent `WALinuxAgent-<version>`, naar de opslagplaats van Red Hat extra's is gepusht. De opslagplaats extra's inschakelen met de volgende opdracht:
+1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. De Azure Linux-Agent installeren met de volgende opdracht:
+1. Installeer de Azure Linux-agent door de volgende opdracht uit te voeren:
 
         # yum install WALinuxAgent
 
         # chkconfig waagent on
 
-1. De Azure Linux Agent kunt wisselruimte automatisch configureren met behulp van de schijf van de lokale resource die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bronschijf een tijdelijke schijf is en kan worden leeggemaakt als de inrichting van de virtuele machine is beëindigd. Nadat u de Azure Linux Agent in de vorige stap hebt geïnstalleerd, wijzigt u de volgende parameters in **/etc/waagent.conf** op de juiste wijze:
+1. De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt geïnstalleerd, wijzigt u de volgende para meters in **/etc/waagent.conf** op de juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -327,11 +326,11 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-1. Het abonnement (indien nodig) registratie met de volgende opdracht:
+1. Hef de registratie van het abonnement op (indien nodig) door de volgende opdracht uit te voeren:
 
         # subscription-manager unregister
 
-1. Voer de volgende opdrachten voor de inrichting van de virtuele machine ongedaan maken en voorbereiden voor het inrichten op Azure:
+1. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -341,12 +340,12 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
 
         # logout
 
-1. De virtuele machine in KVM afgesloten.
+1. Sluit de virtuele machine in KVM af.
 
-1. De afbeelding qcow2 naar de VHD-indeling converteren.
+1. Converteer de qcow2-afbeelding naar de VHD-indeling.
 
 > [!NOTE]
-> Er is een bekend probleem in qemu img versies > = 2.2.1 die in een onjuiste indeling VHD resulteert. Het probleem is opgelost in QEMU 2.6. Het verdient aanbeveling qemu-img 2.2.0 of lager gebruiken, of bijwerken op 2.6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies > = 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -372,17 +371,17 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
 
         
-### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>Een RHEL 7 virtuele machine op basis van KVM voorbereiden
+### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>Een virtuele machine van RHEL 7 voorbereiden op KVM
 
-1. Download de KVM-afbeelding van RHEL 7 van de Red Hat-website. Deze procedure maakt gebruik van RHEL 7 als voorbeeld.
+1. Down load de KVM-installatie kopie van RHEL 7 van de website Red Hat. Deze procedure maakt gebruik van RHEL 7 als voor beeld.
 
-1. Een root-wachtwoord instellen.
+1. Stel een Hoofdwacht woord in.
 
-    Een versleuteld wachtwoord genereren en kopieer de uitvoer van de opdracht:
+    Genereer een versleuteld wacht woord en kopieer de uitvoer van de opdracht:
 
         # openssl passwd -1 changeme
 
-    Stel een hoofdwachtwoord met guestfish:
+    Stel een hoofd wachtwoord in met guestfish:
 
         # guestfish --rw -a <image-name>
         > <fs> run
@@ -391,16 +390,16 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         > <fs> vi /etc/shadow
         > <fs> exit
 
-   Wijzigen van de tweede veld van de hoofdgebruiker van "." in het versleutelde wachtwoord.
+   Het tweede veld van de hoofd gebruiker wijzigen van "!!" naar het versleutelde wacht woord.
 
-1. Maak een virtuele machine in KVM vanuit de installatiekopie van het qcow2. Het schijftype instellen op **qcow2**, en stelt u het virtuele netwerkinterface-Apparaatmodel op **virtio**. Vervolgens start u de virtuele machine en meld u aan als hoofdgebruiker.
+1. Maak een virtuele machine in KVM vanuit de qcow2-installatie kopie. Stel het schijf type in op **qcow2**en stel het apparaat model van de virtuele netwerk interface in op **virtio**. Vervolgens start u de virtuele machine en meldt u zich aan als root.
 
-1. Maak of bewerk de `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. Maak of bewerk de `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -411,35 +410,35 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         IPV6INIT=no
         NM_CONTROLLED=no
 
-1. Zorg ervoor dat de netwerkservice wordt gestart bij het opstarten met de volgende opdracht:
+1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
         # sudo systemctl enable network
 
-1. Registreer uw Red Hat-abonnement om in te schakelen van installatie van pakketten van de RHEL-opslagplaats met de volgende opdracht:
+1. Registreer uw Red Hat-abonnement om de installatie van pakketten vanuit de RHEL-opslag plaats in te scha kelen door de volgende opdracht uit te voeren:
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel boot line in de grub-configuratie om op te nemen van aanvullende kernel-parameters voor Azure. Open hiervoor deze configuratie `/etc/default/grub` in een teksteditor en bewerk de `GRUB_CMDLINE_LINUX` parameter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze configuratie wilt uitvoeren `/etc/default/grub` , opent u in een tekst editor en `GRUB_CMDLINE_LINUX` bewerkt u de para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Met deze opdracht zorgt er ook voor dat alle consoleberichten worden verzonden naar de eerste seriële poort, die Azure helpen kan ondersteuning bij het opsporen van problemen. De opdracht worden ook uitgeschakeld de nieuwe naamgeving van RHEL 7 NIC's. Bovendien is het raadzaam dat u de volgende parameters:
+   Met deze opdracht zorgt u er ook voor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. Met deze opdracht worden ook de nieuwe RHEL 7-naamgevings conventies voor Nic's uitgeschakeld. Daarnaast wordt u aangeraden de volgende para meters te verwijderen:
    
         rhgb quiet crashkernel=auto
    
-    Grafische en stil opstarten zijn niet nuttig in een cloudomgeving waar we alle logboeken worden verzonden naar de seriële poort. U kunt laten de `crashkernel` geconfigureerd als de gewenste optie. Houd er rekening mee dat deze parameter vermindert de hoeveelheid beschikbaar geheugen in de virtuele machine door 128 MB of meer, die mogelijk problemen op kleinere virtuele machine.
+    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
-1. Als u klaar bent bewerken `/etc/default/grub`, voer de volgende opdracht om op te bouwen de grub-configuratie:
+1. Wanneer u klaar bent met `/etc/default/grub`bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
 
         # grub2-mkconfig -o /boot/grub2/grub.cfg
 
-1. Hyper-V-modules in initramfs toevoegen.
+1. Voeg Hyper-V-modules toe aan initramfs.
 
-    Bewerken `/etc/dracut.conf` en voeg inhoud toe:
+    Inhoud `/etc/dracut.conf` bewerken en toevoegen:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
-    Opnieuw opbouwen initramfs:
+    Initramfs opnieuw maken:
 
         # dracut -f -v
 
@@ -447,30 +446,30 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
 
         # yum remove cloud-init
 
-1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten tijdens het opstarten:
+1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten van het systeem:
 
         # systemctl enable sshd
 
-    Wijzig /etc/ssh/sshd_config om op te nemen van de volgende regels:
+    Wijzig/etc/ssh/sshd_config zodat de volgende regels worden toegevoegd:
 
         PasswordAuthentication yes
         ClientAliveInterval 180
 
-1. Het pakket WALinuxAgent `WALinuxAgent-<version>`, naar de opslagplaats van Red Hat extra's is gepusht. De opslagplaats extra's inschakelen met de volgende opdracht:
+1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-1. De Azure Linux-Agent installeren met de volgende opdracht:
+1. Installeer de Azure Linux-agent door de volgende opdracht uit te voeren:
 
         # yum install WALinuxAgent
 
-    De service waagent inschakelen:
+    De waagent-service inschakelen:
 
         # systemctl enable waagent.service
 
-1. Maak geen wisselruimte op de besturingssysteemschijf.
+1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux Agent kunt wisselruimte automatisch configureren met behulp van de schijf van de lokale resource die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bronschijf een tijdelijke schijf is en kan worden leeggemaakt als de inrichting van de virtuele machine is beëindigd. Nadat u de Azure Linux Agent in de vorige stap hebt geïnstalleerd, wijzigt u de volgende parameters in `/etc/waagent.conf` op de juiste wijze:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt geïnstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -478,11 +477,11 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-1. Het abonnement (indien nodig) registratie met de volgende opdracht:
+1. Hef de registratie van het abonnement op (indien nodig) door de volgende opdracht uit te voeren:
 
         # subscription-manager unregister
 
-1. Voer de volgende opdrachten voor de inrichting van de virtuele machine ongedaan maken en voorbereiden voor het inrichten op Azure:
+1. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -492,12 +491,12 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
 
         # logout
 
-1. De virtuele machine in KVM afgesloten.
+1. Sluit de virtuele machine in KVM af.
 
-1. De afbeelding qcow2 naar de VHD-indeling converteren.
+1. Converteer de qcow2-afbeelding naar de VHD-indeling.
 
 > [!NOTE]
-> Er is een bekend probleem in qemu img versies > = 2.2.1 die in een onjuiste indeling VHD resulteert. Het probleem is opgelost in QEMU 2.6. Het verdient aanbeveling qemu-img 2.2.0 of lager gebruiken, of bijwerken op 2.6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies > = 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -523,25 +522,25 @@ In deze sectie wordt ervan uitgegaan dat u hebt al een ISO-bestand vanaf de webs
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Een Red Hat gebaseerde virtuele machine van VMware voorbereiden
+## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Een op Red Hat gebaseerde virtuele machine voorbereiden vanuit VMware
 ### <a name="prerequisites"></a>Vereisten
-In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware al hebt geïnstalleerd. Zie voor meer informatie over het installeren van een besturingssysteem in VMware [installatiehandleiding voor VMware Gast-besturingssysteem](https://partnerweb.vmware.com/GOSIG/home.html).
+In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt geïnstalleerd in VMware. Zie voor meer informatie over het installeren van een besturings systeem in VMware de [installatie handleiding voor VMware Guest Operating System](https://partnerweb.vmware.com/GOSIG/home.html).
 
-* Wanneer u de Linux-besturingssysteem installeert, raden wij aan dat u standaard partities in plaats van LVM, dit is vaak de standaardwaarde voor vele installaties. Dit voorkomt LVM naam conflicteert met de gekloonde virtuele machine, dat met name als de schijf van een besturingssysteem ooit worden gekoppeld aan een andere virtuele machine moet voor probleemoplossing. LVM of RAID kan op gegevensschijven worden gebruikt als de voorkeur.
-* Stel een swap-partitie niet op de besturingssysteemschijf. U kunt de Linux-agent voor het maken van een wisselbestand op de tijdelijke schijf configureren. Meer informatie hierover vindt u in de volgende stappen.
-* Wanneer u de virtuele harde schijf maakt, selecteert u **Store virtuele schijf als een enkel bestand**.
+* Wanneer u het Linux-besturings systeem installeert, raden we u aan om standaard partities te gebruiken in plaats van LVM, wat vaak de standaard waarde is voor veel installaties. Hiermee wordt voor komen dat LVM naam strijdig is met de gekloonde virtuele machine, met name als een besturingssysteem schijf ooit moet worden gekoppeld aan een andere virtuele machine voor het oplossen van problemen. LVM of RAID kan worden gebruikt op gegevens schijven als dit de voor keur heeft.
+* Configureer geen swap partitie op de schijf met het besturings systeem. U kunt de Linux-agent configureren voor het maken van een wissel bestand op de tijdelijke bron schijf. In de volgende stappen vindt u meer informatie hierover.
+* Wanneer u de virtuele harde schijf maakt, selecteert u **virtuele schijf opslaan als één bestand**.
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>Een RHEL 6 virtuele machine van VMware voorbereiden
-1. In de RHEL-6, NetworkManager kan leiden tot problemen met de Azure Linux agent. Dit pakket verwijderen door de volgende opdracht uit:
+### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>Een virtuele machine met RHEL 6 voorbereiden vanuit VMware
+1. In RHEL 6 kan NetworkManager conflicteren met de Azure Linux-agent. Verwijder dit pakket door de volgende opdracht uit te voeren:
    
         # sudo rpm -e --nodeps NetworkManager
 
-1. Maak een bestand met de naam **netwerk** in de map/etc/sysconfig/met de volgende tekst:
+1. Maak in de map/etc/sysconfig/een bestand met de naam **netwerk** dat de volgende tekst bevat:
 
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. Maak of bewerk de `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -551,57 +550,57 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
         PEERDNS=yes
         IPV6INIT=no
 
-1. Verplaats de udev-regels om te voorkomen dat statische regels voor de Ethernet-interface voor het genereren (of verwijderen). Deze regels veroorzaken problemen wanneer u een virtuele machine in Azure of Hyper-V: klonen
+1. Verplaats (of verwijder) de udev-regels om te voor komen dat statische regels voor de Ethernet-interface worden gegenereerd. Deze regels veroorzaken problemen bij het klonen van een virtuele machine in azure of Hyper-V:
 
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-1. Zorg ervoor dat de netwerkservice wordt gestart bij het opstarten met de volgende opdracht:
+1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
         # sudo chkconfig network on
 
-1. Registreer uw Red Hat-abonnement om in te schakelen van de installatie van pakketten van de RHEL-opslagplaats met de volgende opdracht:
+1. Registreer uw Red Hat-abonnement om de installatie van pakketten vanuit de RHEL-opslag plaats mogelijk te maken door de volgende opdracht uit te voeren:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Het pakket WALinuxAgent `WALinuxAgent-<version>`, naar de opslagplaats van Red Hat extra's is gepusht. De opslagplaats extra's inschakelen met de volgende opdracht:
+1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. Wijzig de kernel boot line in de grub-configuratie om op te nemen van aanvullende kernel-parameters voor Azure. U doet dit door open `/etc/default/grub` in een teksteditor en bewerk de `GRUB_CMDLINE_LINUX` parameter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen `/etc/default/grub` , opent u in een tekst editor en `GRUB_CMDLINE_LINUX` bewerkt u de para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
-   Dit ook zorgt ervoor dat alle consoleberichten worden verzonden naar de eerste seriële poort, die Azure helpen kan ondersteuning bij het opsporen van problemen. Bovendien is het raadzaam dat u de volgende parameters:
+   Dit zorgt er ook voor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. Daarnaast wordt u aangeraden de volgende para meters te verwijderen:
    
         rhgb quiet crashkernel=auto
    
-    Grafische en stil opstarten zijn niet nuttig in een cloudomgeving waar we alle logboeken worden verzonden naar de seriële poort. U kunt laten de `crashkernel` geconfigureerd als de gewenste optie. Houd er rekening mee dat deze parameter vermindert de hoeveelheid beschikbaar geheugen in de virtuele machine door 128 MB of meer, die mogelijk problemen op kleinere virtuele machine.
+    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
-1. Hyper-V-modules aan initramfs toevoegen:
+1. Hyper-V-modules toevoegen aan initramfs:
 
-    Bewerken `/etc/dracut.conf`, en voeg de volgende inhoud:
+    Bewerk `/etc/dracut.conf`en voeg de volgende inhoud toe:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
-    Opnieuw opbouwen initramfs:
+    Initramfs opnieuw maken:
 
         # dracut -f -v
 
-1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten tijdens het opstarten, dit doorgaans de standaardinstelling is. Wijzigen `/etc/ssh/sshd_config` om op te nemen in de volgende regel:
+1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten. Dit is meestal de standaard instelling. Wijzig `/etc/ssh/sshd_config` de volgende regel in:
 
     ClientAliveInterval 180
 
-1. De Azure Linux-Agent installeren met de volgende opdracht:
+1. Installeer de Azure Linux-agent door de volgende opdracht uit te voeren:
 
         # sudo yum install WALinuxAgent
 
         # sudo chkconfig waagent on
 
-1. Maak geen wisselruimte op de besturingssysteemschijf.
+1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux Agent kunt wisselruimte automatisch configureren met behulp van de schijf van de lokale resource die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bronschijf een tijdelijke schijf is en kan worden leeggemaakt als de inrichting van de virtuele machine is beëindigd. Nadat u de Azure Linux Agent in de vorige stap hebt geïnstalleerd, wijzigt u de volgende parameters in `/etc/waagent.conf` op de juiste wijze:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt geïnstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -609,11 +608,11 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-1. Het abonnement (indien nodig) registratie met de volgende opdracht:
+1. Hef de registratie van het abonnement op (indien nodig) door de volgende opdracht uit te voeren:
 
         # sudo subscription-manager unregister
 
-1. Voer de volgende opdrachten voor de inrichting van de virtuele machine ongedaan maken en voorbereiden voor het inrichten op Azure:
+1. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -623,10 +622,10 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
 
         # logout
 
-1. Sluit de virtuele machine en het VMDK-bestand converteren naar een VHD-bestand.
+1. Sluit de virtuele machine af en converteer het VMDK-bestand naar een VHD-bestand.
 
 > [!NOTE]
-> Er is een bekend probleem in qemu img versies > = 2.2.1 die in een onjuiste indeling VHD resulteert. Het probleem is opgelost in QEMU 2.6. Het verdient aanbeveling qemu-img 2.2.0 of lager gebruiken, of bijwerken op 2.6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies > = 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -652,13 +651,13 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>Een RHEL 7 virtuele machine van VMware voorbereiden
-1. Maak of bewerk de `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
+### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>Een virtuele machine met RHEL 7 voorbereiden vanuit VMware
+1. Maak of bewerk het `/etc/sysconfig/network` bestand en voeg de volgende tekst toe:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
-1. Maak of bewerk de `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
+1. Maak of bewerk het `/etc/sysconfig/network-scripts/ifcfg-eth0` bestand en voeg de volgende tekst toe:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -669,55 +668,55 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
         IPV6INIT=no
         NM_CONTROLLED=no
 
-1. Zorg ervoor dat de netwerkservice wordt gestart bij het opstarten met de volgende opdracht:
+1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
         # sudo systemctl enable network
 
-1. Registreer uw Red Hat-abonnement om in te schakelen van de installatie van pakketten van de RHEL-opslagplaats met de volgende opdracht:
+1. Registreer uw Red Hat-abonnement om de installatie van pakketten vanuit de RHEL-opslag plaats mogelijk te maken door de volgende opdracht uit te voeren:
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. Wijzig de kernel boot line in de grub-configuratie om op te nemen van aanvullende kernel-parameters voor Azure. Open hiervoor deze wijziging `/etc/default/grub` in een teksteditor en bewerk de `GRUB_CMDLINE_LINUX` parameter. Bijvoorbeeld:
+1. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u deze wijziging wilt door `/etc/default/grub` voeren, opent u in een tekst editor `GRUB_CMDLINE_LINUX` en bewerkt u de para meter. Bijvoorbeeld:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Deze configuratie zorgt er ook voor dat alle consoleberichten worden verzonden naar de eerste seriële poort, die Azure helpen kan ondersteuning bij het opsporen van problemen. Deze ook schakelt u de nieuwe naamgeving van RHEL 7 voor NIC's. Bovendien is het raadzaam dat u de volgende parameters:
+   Deze configuratie zorgt er ook voor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. De nieuwe RHEL 7-naamgevings conventies voor Nic's worden ook uitgeschakeld. Daarnaast wordt u aangeraden de volgende para meters te verwijderen:
    
         rhgb quiet crashkernel=auto
    
-    Grafische en stil opstarten zijn niet nuttig in een cloudomgeving waar we alle logboeken worden verzonden naar de seriële poort. U kunt laten de `crashkernel` geconfigureerd als de gewenste optie. Houd er rekening mee dat deze parameter vermindert de hoeveelheid beschikbaar geheugen in de virtuele machine door 128 MB of meer, die mogelijk problemen op kleinere virtuele machine.
+    Grafisch en stil opstarten zijn niet handig in een cloud omgeving waar alle logboeken moeten worden verzonden naar de seriële poort. U kunt de `crashkernel` optie zo nodig laten configureren. Houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met 128 MB of meer reduceert. Dit kan problemen opleveren bij kleinere VM-grootten.
 
-1. Als u klaar bent bewerken `/etc/default/grub`, voer de volgende opdracht om op te bouwen de grub-configuratie:
+1. Wanneer u klaar bent met `/etc/default/grub`bewerken, voert u de volgende opdracht uit om de configuratie van grub opnieuw samen te stellen:
 
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-1. Hyper-V-modules aan initramfs toevoegen.
+1. Voeg Hyper-V-modules toe aan initramfs.
 
-    Bewerken `/etc/dracut.conf`, Voeg inhoud toe:
+    Bewerken `/etc/dracut.conf`, inhoud toevoegen:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
-    Opnieuw opbouwen initramfs:
+    Initramfs opnieuw maken:
 
         # dracut -f -v
 
-1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten tijdens het opstarten. Dit is doorgaans de standaardinstelling. Wijzigen `/etc/ssh/sshd_config` om op te nemen in de volgende regel:
+1. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten. Dit is doorgaans de standaard instelling. Wijzig `/etc/ssh/sshd_config` de volgende regel in:
 
         ClientAliveInterval 180
 
-1. Het pakket WALinuxAgent `WALinuxAgent-<version>`, naar de opslagplaats van Red Hat extra's is gepusht. De opslagplaats extra's inschakelen met de volgende opdracht:
+1. Het WALinuxAgent-pakket `WALinuxAgent-<version>`,, is gepusht naar de Red Hat extras-opslag plaats. Schakel de extra's-opslag plaats in door de volgende opdracht uit te voeren:
 
         # subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-1. De Azure Linux-Agent installeren met de volgende opdracht:
+1. Installeer de Azure Linux-agent door de volgende opdracht uit te voeren:
 
         # sudo yum install WALinuxAgent
 
         # sudo systemctl enable waagent.service
 
-1. Maak geen wisselruimte op de besturingssysteemschijf.
+1. Maak geen wissel ruimte op de schijf met het besturings systeem.
 
-    De Azure Linux Agent kunt wisselruimte automatisch configureren met behulp van de schijf van de lokale resource die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bronschijf een tijdelijke schijf is en kan worden leeggemaakt als de inrichting van de virtuele machine is beëindigd. Nadat u de Azure Linux Agent in de vorige stap hebt geïnstalleerd, wijzigt u de volgende parameters in `/etc/waagent.conf` op de juiste wijze:
+    De Azure Linux-agent kan automatisch wissel ruimte configureren door gebruik te maken van de lokale bron schijf die is gekoppeld aan de virtuele machine nadat de virtuele machine is ingericht op Azure. Houd er rekening mee dat de lokale bron schijf een tijdelijke schijf is en kan worden leeg gemaakt als de inrichting van de virtuele machine wordt opheffen. Nadat u de Azure Linux-agent in de vorige stap hebt geïnstalleerd, wijzigt u de `/etc/waagent.conf` volgende para meters op de juiste manier:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -725,11 +724,11 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-1. Als u wilt de registratie van het abonnement, moet u de volgende opdracht uitvoeren:
+1. Als u de registratie van het abonnement wilt opheffen, voert u de volgende opdracht uit:
 
         # sudo subscription-manager unregister
 
-1. Voer de volgende opdrachten voor de inrichting van de virtuele machine ongedaan maken en voorbereiden voor het inrichten op Azure:
+1. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
 
         # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
@@ -739,10 +738,10 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
 
         # logout
 
-1. Sluit de virtuele machine en het VMDK-bestand converteren naar de VHD-indeling.
+1. Sluit de virtuele machine af en converteer het VMDK-bestand naar de VHD-indeling.
 
 > [!NOTE]
-> Er is een bekend probleem in qemu img versies > = 2.2.1 die in een onjuiste indeling VHD resulteert. Het probleem is opgelost in QEMU 2.6. Het verdient aanbeveling qemu-img 2.2.0 of lager gebruiken, of bijwerken op 2.6 of hoger. Naslaginformatie: https://bugs.launchpad.net/qemu/+bug/1490611.
+> Er is een bekende fout in qemu-img-versies > = 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. U kunt het beste een qemu-img 2.2.0 of lager gebruiken of bijwerken naar 2,6 of hoger. Verwijzing: https://bugs.launchpad.net/qemu/+bug/1490611.
 >
 
 
@@ -768,10 +767,10 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Een Red Hat gebaseerde virtuele machine op basis van een ISO met behulp van een bestand kickstart automatisch voorbereiden
-### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>Een RHEL 7 virtuele machine uit een bestand kickstart voorbereiden
+## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Een op Red Hat gebaseerde virtuele machine voorbereiden vanuit een ISO met behulp van een kickstart-bestand automatisch
+### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>Een virtuele machine van RHEL 7 voorbereiden vanuit een kickstart-bestand
 
-1.  Maak een bestand kickstart met de volgende inhoud en sla het bestand. Zie voor meer informatie over de installatie van kickstart de [Kickstart installatiehandleiding](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
+1.  Maak een kickstart-bestand dat de volgende inhoud bevat en sla het bestand op. Zie de [installatie handleiding voor kickstart](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)voor meer informatie over de installatie van KickStart.
 
         # Kickstart for provisioning a RHEL 7 Azure VM
 
@@ -892,44 +891,44 @@ In deze sectie wordt ervan uitgegaan dat u een virtuele RHEL-machine in VMware a
 
         %end
 
-1. Plaats het bestand kickstart waar het installatie-systeem kunt openen.
+1. Plaats het kickstart-bestand waar het installatie systeem toegang toe heeft.
 
-1. Maak een nieuwe virtuele machine in Hyper-V-beheer. Op de **virtuele hardeschijf aansluiten** weergeeft, schakelt **later een virtuele harde schijf koppelen**, en voltooi de Wizard Nieuwe virtuele Machine.
+1. Maak een nieuwe virtuele machine in Hyper-V-beheer. Selecteer op de pagina **virtuele harde schijf aansluiten** de optie **later een virtuele harde schijf koppelen**en voltooi de wizard Nieuwe virtuele machine.
 
 1. Open de instellingen van de virtuele machine:
 
-    a.  Een nieuwe virtuele harde schijf koppelen aan de virtuele machine. Zorg ervoor dat u selecteert **VHD-indeling** en **vaste grootte**.
+    a.  Koppel een nieuwe virtuele harde schijf aan de virtuele machine. Zorg ervoor dat u de **VHD-indeling** en de **vaste grootte**selecteert.
 
-    b.  De ISO-installatie aan het DVD-station koppelen.
+    b.  Koppel de ISO-installatie aan het DVD-station.
 
-    c.  Stel het BIOS om op te starten vanaf de CD.
+    c.  Stel het BIOS in op opstarten vanaf CD.
 
-1. Start de virtuele machine. Wanneer de installatiehandleiding wordt weergegeven, drukt u op **tabblad** het configureren van de opstartopties.
+1. Start de virtuele machine. Wanneer de installatie handleiding wordt weer gegeven, drukt u op **Tab** om de opstart opties te configureren.
 
-1. ENTER `inst.ks=<the location of the kickstart file>` aan het einde van de opstartopties en druk op **Enter**.
+1. Geef `inst.ks=<the location of the kickstart file>` aan het einde van de opstart opties op en druk op **Enter**.
 
-1. Wacht tot de installatie is voltooid. Wanneer deze voltooid, wordt de virtuele machine automatisch afgesloten. De VHD met Linux is nu klaar om te worden geüpload naar Azure.
+1. Wacht totdat de installatie is voltooid. Wanneer de virtuele machine is voltooid, wordt deze automatisch afgesloten. Uw Linux-VHD is nu gereed om te worden geüpload naar Azure.
 
 ## <a name="known-issues"></a>Bekende problemen
-### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a>De Hyper-V-stuurprogramma kan niet worden opgenomen in de eerste RAM-schijf bij het gebruik van een niet-Hyper-V-hypervisor
+### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a>Het Hyper-V-stuur programma kan niet worden opgenomen in de eerste RAM-schijf wanneer een niet-Hyper-V-Hyper Visor wordt gebruikt
 
-In sommige gevallen, Linux-installatieprogramma's mogelijk niet bevatten de stuurprogramma's voor Hyper-V in de eerste RAM-schijf (initrd of initramfs) tenzij Linux wordt gedetecteerd dat deze wordt uitgevoerd in een omgeving met Hyper-V.
+In sommige gevallen worden de Stuur Programma's voor Hyper-V in de eerste RAM-schijf (initrd of initramfs) mogelijk niet in de installatie van Linux vermeld, tenzij Linux detecteert dat deze wordt uitgevoerd in een Hyper-V-omgeving.
 
-Wanneer u een andere virtualisatiesysteem (dat wil zeggen, Virtualbox, Xen, enzovoort) gebruikt voor het voorbereiden van uw Linux-installatiekopie, moet u mogelijk opnieuw opbouwen initrd om ervoor te zorgen dat ten minste de hv_vmbus en hv_storvsc kernel-modules zijn beschikbaar op de eerste RAM-schijf. Dit is een bekend probleem ten minste op systemen die zijn gebaseerd op de upstream Red Hat-distributie.
+Wanneer u een ander virtualisatie systeem gebruikt (dat wil zeggen, VirtualBox, xen, enzovoort) om uw Linux-installatie kopie voor te bereiden, moet u mogelijk initrd opnieuw bouwen om ervoor te zorgen dat er ten minste de kernel-modules hv_vmbus en hv_storvsc beschikbaar zijn op de eerste RAM-schijf. Dit is een bekend probleem ten minste op systemen die zijn gebaseerd op de upstream-Red Hat-distributie.
 
-U lost dit probleem, Hyper-V-modules toevoegen aan initramfs en deze opnieuw bouwen:
+U kunt dit probleem oplossen door Hyper-V-modules toe te voegen aan initramfs en deze opnieuw te bouwen:
 
-Bewerken `/etc/dracut.conf`, en voeg de volgende inhoud:
+Bewerk `/etc/dracut.conf`en voeg de volgende inhoud toe:
 
         add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
 
-Opnieuw opbouwen initramfs:
+Initramfs opnieuw maken:
 
         # dracut -f -v
 
-Zie de informatie voor meer informatie over [opnieuw opbouwen van initramfs](https://access.redhat.com/solutions/1958).
+Zie de informatie over het opnieuw opbouwen van [initramfs](https://access.redhat.com/solutions/1958)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt nu uw Red Hat Enterprise Linux virtuele harde schijf gebruiken om te maken van nieuwe virtuele machines in Azure. Als dit de eerste keer dat u de VHD-bestand naar Azure uploadt, Zie [een Linux-VM maken van een aangepaste schijf](upload-vhd.md#option-1-upload-a-vhd).
+U kunt nu uw Red Hat Enterprise Linux virtuele harde schijf gebruiken om nieuwe virtuele machines te maken in Azure. Zie [een virtuele Linux-machine maken op basis van een aangepaste schijf](upload-vhd.md#option-1-upload-a-vhd)als dit de eerste keer is dat u het VHD-bestand naar Azure uploadt.
 
-Zie voor meer informatie over de hypervisors die zijn gecertificeerd voor Red Hat Enterprise Linux [de Red Hat-website](https://access.redhat.com/certified-hypervisors).
+Zie [de website Red Hat](https://access.redhat.com/certified-hypervisors)voor meer informatie over de Hyper visors die zijn gecertificeerd voor het uitvoeren van Red Hat Enterprise Linux.

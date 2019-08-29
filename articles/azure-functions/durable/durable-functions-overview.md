@@ -6,17 +6,16 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 12/22/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 6e1acf5f605d7f6fb42d24e6e7ec624a317b0e31
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 323ab530d8199dd154e5d3568c09f86f6f52d702
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612868"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087199"
 ---
 # <a name="what-are-durable-functions"></a>Wat is Durable Functions?
 
@@ -50,7 +49,7 @@ Durable Functions ondersteunt momenteel de volgende talen:
 
 Durable Functions heeft als doel alle [Azure Functions-talen](../supported-languages.md) te ondersteunen. Zie [Durable Functions issues list](https://github.com/Azure/azure-functions-durable-extension/issues) voor de laatste voortgangsstatus van de ondersteuning voor meer talen.
 
-Net als Azure Functions, worden sjablonen gebruiken om u te helpen bij het ontwikkelen van duurzame functies met behulp van [Visual Studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md), en de [Azure-portal](durable-functions-create-portal.md).
+Net als Azure Functions zijn er sjablonen waarmee u Durable Functions kunt ontwikkelen met behulp van [Visual studio 2019](durable-functions-create-first-csharp.md), [Visual Studio Code](quickstart-js-vscode.md)en de [Azure Portal](durable-functions-create-portal.md).
 
 ## <a name="billing"></a>Billing
 
@@ -60,7 +59,7 @@ Durable Functions worden op dezelfde manier in rekening gebracht als Azure Funct
 
 U kunt in minder dan 10 minuten aan de slag gaan met Durable Functions door een van deze taalspecifieke quickstart-zelfstudies te volgen:
 
-* [C#met behulp van Visual Studio 2019](durable-functions-create-first-csharp.md)
+* [C#Visual Studio 2019 gebruiken](durable-functions-create-first-csharp.md)
 * [JavaScript met Visual Studio Code](quickstart-js-vscode.md)
 
 In beide quickstarts maakt en test u een lokale ‘hallo wereld’-duurzame functie. Vervolgens publiceert u de functiecode op Azure. De functie die u maakt, organiseert en koppelt aanroepen naar andere functies.

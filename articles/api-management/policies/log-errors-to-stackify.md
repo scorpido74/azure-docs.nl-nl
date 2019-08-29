@@ -1,6 +1,6 @@
 ---
-title: Azure API management-beleid voorbeeld - fouten verzenden Stackify voor logboekregistratie | Microsoft Docs
-description: Azure API management-beleid-voorbeeld - ziet u hoe u een beleid voor fout logboekregistratie voor het verzenden van fouten naar Stackify voor logboekregistratie toevoegen...
+title: Voor beeld van Azure API management-beleid-fouten verzenden naar Stackify voor logboek registratie | Microsoft Docs
+description: 'Voor beeld van Azure API management-beleid: demonstreert hoe u een beleid voor fout registratie kunt toevoegen om fouten naar Stackify te verzenden voor logboek registratie.'
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,31 +9,30 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 07cc83830fe2d467c611622bb66dfbb8c9429c2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82aab34a9815f080fe8abb8c1d8b6de66866806e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860535"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067577"
 ---
-# <a name="send-errors-to-stackify-for-logging"></a>Fouten verzenden naar Stackify voor logboekregistratie
+# <a name="send-errors-to-stackify-for-logging"></a>Fouten naar Stackify verzenden voor logboek registratie
 
-In dit artikel bevat een voorbeeld van Azure API management-beleid die laat zien hoe u een beleid van de fout logboekregistratie voor het verzenden van fouten naar Stackify voor logboekregistratie toe te voegen. Als u wilt instellen of bewerken van een beleid voor code, volg de stappen [instellen of bewerken van een beleid](../set-edit-policies.md). Zie voor meer voorbeelden [beleid voorbeelden](../policy-samples.md).
+In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u een beleid voor fout registratie kunt toevoegen om fouten naar Stackify te verzenden voor logboek registratie. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
 
 ## <a name="policy"></a>Beleid
 
-Plak de code in de **bij fout** blokkeren.
+Plak de code in het blok **op fouten** .
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Log errors to Stackify.policy.xml)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de APIM-beleid:
+Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voorbeelden van beleid](../policy-samples.md)
++ [Voor beelden van beleid](../policy-samples.md)
 

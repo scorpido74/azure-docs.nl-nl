@@ -1,6 +1,6 @@
 ---
-title: Zoeken en verwijderen van niet-gekoppelde NIC's van Azure | Microsoft Docs
-description: Over het zoeken en verwijderen van Azure-NIC's die niet zijn gekoppeld aan virtuele machines met de Azure CLI
+title: Niet-gekoppelde Azure-Nic's zoeken en verwijderen | Microsoft Docs
+description: Azure-Nic's zoeken en verwijderen die niet zijn gekoppeld aan Vm's met de Azure CLI
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -11,25 +11,24 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: dd4fcfe80818bd8e1e87851f4b5131aac73ceeb5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1665b5fa8d2bfd63982bcffd1d5251214ff3586b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671510"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083315"
 ---
-# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Over het zoeken en verwijderen van niet-gekoppelde netwerkinterface kaarten (NIC's) voor virtuele machines van Azure
-Wanneer u een virtuele machine (VM) in Azure verwijdert, worden de netwerkinterfacekaarten (NIC's) worden niet standaard verwijderd. Als u maken en verwijderen van meerdere virtuele machines, blijven de niet-gebruikte NIC's gebruiken van het interne IP-adresleases. Als u andere VM-NIC's maken, is het mogelijk dat ze niet verkrijgen van een IP-adresleases in de adresruimte van het subnet. Dit artikel leest u hoe om te zoeken en niet-gekoppelde NIC's verwijderen.
+# <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Niet-gekoppelde netwerk interface kaarten (Nic's) zoeken en verwijderen voor Azure-Vm's
+Wanneer u een virtuele machine (VM) in azure verwijdert, worden de netwerk interface kaarten (Nic's) niet standaard verwijderd. Als u meerdere Vm's maakt en verwijdert, blijven de interne IP-adresleases door de ongebruikte Nic's worden gebruikt. Wanneer u andere VM-Nic's maakt, kunnen ze mogelijk geen IP-lease verkrijgen in de adres ruimte van het subnet. In dit artikel wordt beschreven hoe u niet-gekoppelde Nic's zoekt en verwijdert.
 
 ## <a name="find-and-delete-unattached-nics"></a>Niet-gekoppelde NIC's zoeken en verwijderen
 
-De *virtualMachine* opgeslagen bij de groep-ID en resource van de virtuele machine de NIC is gekoppeld aan de eigenschap voor een NIC. Het volgende script wordt uitgevoerd via alle NIC's in een abonnement en controleert u of de *virtualMachine* eigenschap null is. Als deze eigenschap null is, wordt de NIC is niet gekoppeld aan een virtuele machine.
+De eigenschap *virtualMachine* voor een NIC slaat de id en de resource groep op van de virtuele machine waaraan de NIC is gekoppeld. Met het volgende script worden alle Nic's in een abonnement door lopen en wordt gecontroleerd of de eigenschap *virtualMachine* null is. Als deze eigenschap Null is, is de NIC niet gekoppeld aan een virtuele machine.
 
-Als u wilt weergeven van alle niet-gekoppelde NIC's, het heeft raden u aan voor eerste uitvoering van het script met de *deleteUnattachedNics* variabele *0*. Als u wilt de niet-gekoppelde NIC's verwijderen nadat u de uitvoer bekijken, voer het script met *deleteUnattachedNics* naar *1*.
+Als u alle niet-gekoppelde Nic's wilt weer geven, is het raadzaam om eerst het script met de variabele *deleteUnattachedNics* uit te voeren op *0*. Als u alle niet-gekoppelde Nic's wilt verwijderen nadat u de lijst uitvoer hebt gecontroleerd, voert u het script uit met *deleteUnattachedNics* in *1*.
 
 ```azurecli
 # Set deleteUnattachedNics=1 if you want to delete unattached NICs
@@ -53,4 +52,4 @@ done
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het maken en beheren van virtuele netwerken in Azure [maken en beheren van VM-netwerken](tutorial-virtual-network.md).
+Zie [VM-netwerken maken en beheren](tutorial-virtual-network.md)voor meer informatie over het maken en beheren van virtuele netwerken in Azure.

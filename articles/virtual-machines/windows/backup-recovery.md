@@ -1,6 +1,6 @@
 ---
-title: Overzicht van back-upopties voor Azure Windows VM's | Microsoft Docs
-description: Overzicht van back-upopties voor Windows Azure virtuele machines.
+title: Overzicht van back-upopties voor Azure Windows-Vm's | Microsoft Docs
+description: Overzicht van back-upopties voor virtuele Windows-machines van Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,20 +9,19 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 431c4defe5fd2a7d6d9929fbad3705956c815deb
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f145ae8e32f361acc6ef22d7b05d1de8e87a295a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719298"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089472"
 ---
-# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Opties voor back-up en herstel voor virtuele machines in Azure
-U kunt uw gegevens beschermen door regelmatig back-ups te maken. Er zijn verschillende opties voor back-up beschikbaar is voor virtuele machines, afhankelijk van uw use-casescenario.
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Opties voor back-up en herstel voor virtuele machines in azure
+U kunt uw gegevens beschermen door regelmatig back-ups te maken. Er zijn verschillende back-upopties beschikbaar voor virtuele machines, afhankelijk van uw gebruiks aanvraag.
 
 [!INCLUDE [virtual-machines-common-backup-recovery](../../../includes/virtual-machines-common-backup-recovery.md)]

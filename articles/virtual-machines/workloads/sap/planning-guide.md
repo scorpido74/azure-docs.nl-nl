@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11a54dee653bcfa6c94a861e483183ac39f465bf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: e87ea28f2454ec3c969574b21ef383e81b3148c2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "67710187"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098769"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines planning en implementatie voor SAP net-Weaver
 
@@ -1780,7 +1779,7 @@ SAP-exemplaren die zich in azure bevinden, hebben toegang tot bestands shares di
 
 Om de bewaking van essentiële SAP-systemen in azure mogelijk te maken, krijgen de SAP-bewakings hulpprogramma's SAPOSCOL of SAP host agent gegevens uit de Azure virtual machine service host via een Azure-bewakings extensie voor SAP. Omdat de vereisten van SAP specifiek zijn voor SAP-toepassingen, heeft micro soft besloten de vereiste functionaliteit niet algemeen in azure te implementeren, maar laat het klanten de benodigde bewakings onderdelen en configuraties implementeren op hun virtuele Machines die in Azure worden uitgevoerd. Het beheer van de implementatie en de levens cyclus van de bewakings onderdelen wordt voornamelijk geautomatiseerd door Azure.
 
-#### <a name="solution-design"></a>Oplossings ontwerp
+#### <a name="solution-design"></a>Ontwerp van de oplossing
 
 De oplossing die is ontwikkeld om SAP-bewaking in te scha kelen, is gebaseerd op de architectuur van de Azure VM-agent en extensie Framework. Het idee van de Azure VM-agent en extensie Framework is het toestaan van de installatie van de software toepassing (en) die beschikbaar zijn in de Azure VM-extensie galerie binnen een VM. Het principe dat zich achter dit concept bevindt, is het toestaan van de implementatie van speciale functionaliteit op een virtuele machine en de configuratie van deze software op het moment van implementatie.
 

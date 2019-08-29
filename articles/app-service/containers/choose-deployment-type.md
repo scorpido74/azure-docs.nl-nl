@@ -1,7 +1,7 @@
 ---
-title: Aangepaste installatiekopie meerdere containers of ingebouwde installatiekopie - Azure App Service implementeren | Microsoft Docs
-description: U moet kiezen tussen implementatie van een aangepaste Docker-containers, meerdere containers en een ingebouwde toepassingsframework voor App Service on Linux
-keywords: Azure appservice, web-app, linux, oss
+title: Aangepaste installatie kopie, meerdere containers of ingebouwde installatie kopie implementeren Azure App Service | Microsoft Docs
+description: Bepalen van de implementatie van een aangepaste docker-container, meerdere containers en een ingebouwd toepassings raamwerk voor App Service op Linux
+keywords: Azure app service, Web-app, Linux, oss
 services: app-service
 documentationCenter: ''
 author: msangapu
@@ -11,38 +11,37 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bba38bb69e5abaa94b01308924fe0c6bf07ca08e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae28b185aa44ca22d59204826036435a10c64e91
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919949"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066793"
 ---
-# <a name="custom-image-multi-container-or-built-in-platform-image"></a>Aangepaste installatiekopie, meerdere containers of ingebouwde platform-installatiekopie?
+# <a name="custom-image-multi-container-or-built-in-platform-image"></a>Aangepaste installatie kopie, meerdere containers of ingebouwde platform installatie kopie?
 
-[App Service on Linux](app-service-linux-intro.md) biedt drie verschillende paden naar de mogelijkheid uw toepassing op Internet gepubliceerd:
+[App service op Linux](app-service-linux-intro.md) biedt drie verschillende paden om uw toepassing op het web te publiceren:
 
-- **Implementatie van de aangepaste installatiekopie**: "Containeropslagplaats' uw app in een Docker-installatiekopie die al uw bestanden en afhankelijkheden in een kant-en-klaar-pakket bevat.
-- **Implementatie van meerdere containers**: "Containeropslagplaats' uw app in meerdere containers met behulp van een configuratiebestand Docker Compose.
-- **App-implementatie met een ingebouwde platforminstallatiekopie**: Onze ingebouwde platforminstallatiekopieën bevatten algemene web-app runtimes en afhankelijkheden, zoals Node en PHP. Gebruik een van de [methoden voor het implementeren van Azure App Service](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) uw app implementeren in uw WebApp-opslag, en vervolgens een ingebouwde platforminstallatiekopie uit te voeren.
+- **Implementatie van aangepaste installatie kopie**: ' Eenvoudig ' uw app in een docker-installatie kopie met al uw bestanden en afhankelijkheden in een Ready-to-run-pakket.
+- **Implementatie met meerdere containers**: ' Eenvoudig ' uw app over meerdere containers met behulp van een docker-configuratie bestand.
+- **App-implementatie met een ingebouwde platform installatie kopie**: Onze ingebouwde platform installatie kopieën bevatten algemene Web app-Runtimes en-afhankelijkheden, zoals node en PHP. Gebruik een van de [Azure app service implementatie methoden](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) om uw app te implementeren in de opslag ruimte van uw web-app en gebruik vervolgens een ingebouwde platform installatie kopie om deze uit te voeren.
 
 ## <a name="which-method-is-right-for-your-app"></a>Welke methode is geschikt voor uw app? 
 
-De primaire factoren zijn:
+De belangrijkste factoren die u moet overwegen:
 
-- **Beschikbaarheid van Docker in uw ontwikkelingswerkstroom**: Ontwikkeling van aangepaste installatiekopie moet basiskennis hebt van de werkstroom van de ontwikkeling van Docker. Implementatie van een aangepaste installatiekopie naar een web-app vereist publicatie van uw aangepaste installatiekopie naar een host van de opslagplaats, zoals Docker Hub. Als u bekend bent met Docker en Docker-taken kunt toevoegen aan uw build-werkstroom, of als u al uw app als een Docker-installatiekopie publiceert, wordt een aangepaste afbeelding wordt vrijwel zeker de beste keuze.
-- **Architectuur met meerdere lagen**: Meerdere containers, zoals het niveau van een web-toepassing en een API-laag voor het scheiden van mogelijkheden met behulp van meerdere containers implementeren. 
-- **De prestaties van toepassingen**: Verhoog de prestaties van uw app in meerdere containers met behulp van een cachelaag, zoals Redis. Selecteer meerdere containers om dit te bereiken.
-- **De unieke runtime-vereisten**: De ingebouwde platforminstallatiekopieën zijn ontworpen om te voldoen aan de behoeften van de meeste WebApps, maar zijn beperkt in hun aanpassingsmogelijkheden. Uw app hebben unieke afhankelijkheden of andere runtime-vereisten die groter zijn dan wat de ingebouwde installatiekopieën zijn geschikt voor.
-- **Bouw vereisten**: Met [continue implementatie](../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), krijgt u uw app actief en werkend op Azure rechtstreeks vanuit de broncode. Er is geen extern proces voor build of de publicatie is vereist. Er is echter een limiet voor de aanpasbaarheid en de beschikbaarheid van de build-hulpprogramma's in de [Kudu](https://github.com/projectkudu/kudu/wiki) implementatie-engine. Uw app kan de Kudu-mogelijkheden langzamerhand wanneer deze in de afhankelijkheden of vereisten voor het bouwen van aangepaste bedrijfslogica groeit.
-- **Schijf lezen/schrijven-vereisten**: Alle web-apps zijn een opslagvolume toegewezen voor webinhoud. Dit volume, ondersteund door Azure Storage, is gekoppeld aan `/home` in van de app-bestandssysteem. In tegenstelling tot de bestanden in de container-bestandssysteem, bestanden in de inhoud volume toegankelijk zijn voor alle schalingsinstanties van een app en wijzigingen blijven behouden in de app opnieuw wordt opgestart. Echter de latentie van de schijf van het volume van de inhoud hoger is en meer variabele dan de latentie van de container lokaal bestandssysteem en toegang kan worden beïnvloed door het platform upgrades, niet-geplande uitvaltijd en problemen met de netwerkverbinding. Apps waarvoor zware alleen-lezen toegang tot de bestanden met inhoud kunnen van de implementatie van de aangepaste installatiekopie, die bestanden worden geplaatst in het bestandssysteem van de afbeelding in plaats van op het volume van de inhoud profiteren.
-- **Bouw Resourcegebruik**: Wanneer een app wordt geïmplementeerd vanuit de bron, de implementatiescripts uitgevoerd door Kudu gebruiken dezelfde App Service-Plan reken- en bronnen als de app die wordt uitgevoerd. Meer resources of tijd dan het gewenste mag worden gebruikt voor grote app-implementaties. In het bijzonder genereren veel implementatiewerkstromen zware schijfactiviteit op het volume voor inhoud op app, die niet is geoptimaliseerd voor deze activiteit. Een aangepaste installatiekopie bevat alle van de bestanden en afhankelijkheden van uw app in één pakket hoeft geen extra bestandsoverdrachten of acties voor implementatie naar Azure.
-- **Voor snelle iteratie moet**: Een app dockerizing vereist extra build-stappen. Voor de wijzigingen worden doorgevoerd, moet u de nieuwe installatiekopie pushen naar een opslagplaats met elke update. Deze updates worden vervolgens opgehaald voor de Azure-omgeving. Implementeren vanaf de bron kan als een van de ingebouwde containers voldoet aan de behoeften van uw app, een snellere ontwikkelingswerkstroom bieden.
+- **Beschik baarheid van docker in uw Ontwikkel werk stroom**: Voor de ontwikkeling van aangepaste installatie kopieën is basis kennis van de werk stroom docker-ontwikkeling vereist. Voor de implementatie van een aangepaste installatie kopie naar een web-app moet uw aangepaste installatie kopie worden gepubliceerd in een opslagplaats host zoals docker hub. Als u bekend bent met docker en u docker-taken aan uw build-werk stroom kunt toevoegen, of als u uw app al publiceert als een docker-installatie kopie, is een aangepaste installatie kopie bijna zeker de beste keuze.
+- **Architectuur met meerdere lagen**: Implementeer meerdere containers, zoals een Web Application Layer en een API-laag om de mogelijkheden te scheiden door gebruik te maken van een multi-container. 
+- **Toepassings prestaties**: Verhoog de prestaties van uw app met meerdere containers met behulp van een cache-laag, zoals redis. Selecteer multi-container om dit te verzorgen.
+- **Unieke runtime vereisten**: De ingebouwde platform installatie kopieën zijn ontworpen om te voldoen aan de behoeften van de meeste web-apps, maar zijn beperkt in hun aanpassings mogelijkheden. Uw app kan unieke afhankelijkheden of andere runtime vereisten hebben die groter zijn dan de ingebouwde installatie kopieën.
+- **Vereisten voor Build**: Met [continue implementatie](../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)kunt u uw app rechtstreeks vanuit de bron code op Azure uitvoeren. Er is geen externe build of publicatie vereist. Er is echter een limiet voor de aanpassings mogelijkheden en beschik baarheid van hulpprogram ma's voor builds in de implementatie-engine van [kudu](https://github.com/projectkudu/kudu/wiki) . Uw app kan de mogelijkheden van kudu uitgroeien omdat deze zich in de afhankelijkheden of vereisten voor aangepaste compilatie logica verg Roten.
+- **Vereisten voor lezen/schrijven schijf**: Aan alle web-apps wordt een opslag volume voor webinhoud toegewezen. Dit volume, dat wordt ondersteund door Azure Storage, is `/home` gekoppeld aan in het bestands systeem van de app. In tegens telling tot bestanden in het bestands systeem van de container zijn bestanden in het inhouds volume toegankelijk via alle schaal instanties van een app en worden wijzigingen behouden in de app die opnieuw wordt gestart. De schijf latentie van het inhouds volume is echter hoger en meer dan de latentie van het lokale container bestands systeem en de toegang kan worden beïnvloed door platform upgrades, ongeplande uitval tijd en problemen met de netwerk verbinding. Apps waarvoor zware alleen-lezen toegang tot inhouds bestanden is vereist, kunnen profiteren van de aangepaste implementatie van installatie kopieën, waarmee bestanden worden geplaatst in het bestands systeem van de installatie kopie in plaats van op het inhouds volume.
+- **Resource gebruik maken**: Wanneer een app vanuit de bron wordt geïmplementeerd, gebruiken de implementatie scripts die worden uitgevoerd door kudu, dezelfde App Service om reken-en opslag resources te plannen als de actieve app. Grote app-implementaties nemen mogelijk meer resources of tijd in beslag dan gewenst. Met name een groot aantal implementatie werk stromen genereren zware schijf activiteit op het volume van de app-inhoud, wat niet is geoptimaliseerd voor deze activiteit. Een aangepaste installatie kopie levert alle bestanden en afhankelijkheden van uw app in Azure in één pakket zonder dat hiervoor extra bestands overdrachten of implementatie acties nodig zijn.
+- **Snelle herhaling vereist**: Voor het Dockerizing van een app zijn aanvullende build-stappen vereist. Als u de wijzigingen wilt door voeren, moet u de nieuwe installatie kopie naar een opslag plaats met elke update pushen. Deze updates worden vervolgens opgehaald naar de Azure-omgeving. Als een van de ingebouwde containers voldoet aan de behoeften van uw app, kan de implementatie vanaf bron een snellere Ontwikkel werk stroom bieden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -50,9 +49,9 @@ Aangepaste container:
 * [Aangepaste container uitvoeren](quickstart-docker-go.md)
 
 Meerdere containers:
-* [Meerdere container-app maken](quickstart-multi-container.md)
+* [Een app met meerdere containers maken](quickstart-multi-container.md)
 
-De volgende artikelen aan de slag met App Service on Linux met een ingebouwde platforminstallatiekopie:
+Met de volgende artikelen kunt u aan de slag met App Service op Linux met een ingebouwde platform installatie kopie:
 
 * [.NET Core](quickstart-dotnetcore.md)
 * [PHP](quickstart-php.md)

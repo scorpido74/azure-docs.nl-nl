@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fed118ee78e6a11f3492060a55ac9847bb5b6a88
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 60f74de308938ee155cf61f3360f73d92feaa67c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720038"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102496"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele Windows-machine maken in de Azure-portal
 
@@ -37,7 +36,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 1. Kies in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
-1. In de **nieuw** pagina onder **populair**, selecteer **Windows Server 2016 Datacenter**.
+1. Selecteer op de pagina **Nieuw** onder **populair** **Windows Server 2016 Data Center**.
 
 1. Zorg ervoor dat op het tabblad **Basics** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** om een nieuwe resourcegroep te maken. Typ *myResourceGroup* als de naam. 
 
@@ -95,7 +94,7 @@ Selecteer de VM in de portal en gebruik in het overzicht van de VM de knop **Kli
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u de VM niet meer nodig hebt, kunt u de resourcegroep, de machine zelf én alle gerelateerde resources verwijderen. Selecteer de resourcegroep voor de virtuele machine en selecteer vervolgens **verwijderen**. Controleer of de naam van de resourcegroep waarin de resources verwijderen voltooid.
+Wanneer u de VM niet meer nodig hebt, kunt u de resourcegroep, de machine zelf én alle gerelateerde resources verwijderen. Selecteer de resource groep voor de virtuele machine en selecteer vervolgens **verwijderen**. Bevestig de naam van de resource groep om het verwijderen van de resources te volt ooien.
 
 ## <a name="next-steps"></a>Volgende stappen
 

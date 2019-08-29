@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: chackdan
-ms.openlocfilehash: 4a5a67133d52a0cdc0cc082ab85c1cc791c13ad5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 3816fb56b806029d7a23b67741197e32de6a6ff3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876564"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102992"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certificaten en beveiliging op Linux-clusters
 
@@ -43,7 +42,7 @@ Voor sommige services kunt u X. 509-certificaten configureren in [ConfigPackage]
 
 ### <a name="using-x509-securitycredentialstype"></a>X509-SecurityCredentialsType gebruiken
 
-Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met `X509Credentials` het ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials))- `SecurityCredentials` type[(](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/.net java).[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)
+Met de .NET-of Java-Sdk's kunt u **x509** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met `X509Credentials` het[(.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials))- `SecurityCredentials` type[](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/(.net java).[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)
 
 De **x509** -verwijzing zoekt naar het certificaat in een certificaat archief. Het volgende XML-bestand toont de para meters die worden gebruikt om de locatie van het certificaat op te geven:
 
@@ -72,7 +71,7 @@ In het volgende XML-bestand wordt een **TransportSettings** -sectie weer gegeven
 </Section>
 ```
 
-### <a name="using-x5092-securitycredentialstype"></a>Using X509_2 SecurityCredentialsType
+### <a name="using-x509_2-securitycredentialstype"></a>Using X509_2 SecurityCredentialsType
 
 Met de Java-SDK kunt u **X509_2** opgeven voor de **SecurityCredentialsType**. Dit komt overeen met `X509Credentials2` het ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2))- `SecurityCredentials` type[](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)(Java). 
 

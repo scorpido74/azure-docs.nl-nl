@@ -1,6 +1,6 @@
 ---
 title: Linux-distributies die zijn goedgekeurd op Azure | Microsoft Docs
-description: Meer informatie over Linux op door Azure onderschreven distributies, met inbegrip van richtlijnen voor Ubuntu, CentOS, Oracle en SUSE.
+description: Meer informatie over Linux op door Azure goedgekeurde distributies, inclusief richt lijnen voor Ubuntu, CentOS, Oracle en SUSE.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -11,58 +11,57 @@ ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: szark
-ms.openlocfilehash: 172267af394885d0c5ac0a0717de87e968182d37
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 4b254b508e5fac5721e579620e207c2a8612352d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667854"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083408"
 ---
-# <a name="endorsed-linux-distributions-on-azure"></a>Linux-distributies op Azure
--Partners bieden Linux-installatiekopieën in de Azure Marketplace. We werken met verschillende Linux-community's nog meer varianten toevoegen aan de lijst met distributiepunten die zijn goedgekeurd. In de tussentijd voor distributies die niet beschikbaar zijn vanuit de Marketplace, u kunt altijd brengt uw eigen Linux door de richtlijnen op [maken en uploaden van een virtuele harde schijf met het Linux-besturingssysteem](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+# <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
+Partners bieden Linux-installatie kopieën in de Azure Marketplace. We werken samen met verschillende Linux-community's om nog meer versies toe te voegen aan de goedgekeurde distributie lijst. In de tussen tijd kunt u uw eigen Linux altijd gebruiken door de richt lijnen te volgen bij het [maken en uploaden van een virtuele harde schijf met het Linux-besturings systeem](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
 
 ## <a name="supported-distributions-and-versions"></a>Ondersteunde distributies en versies
-De volgende tabel bevat de Linux-distributies en versies die worden ondersteund op Azure. Raadpleeg [ondersteuning voor Linux-installatiekopieën in Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) voor meer informatie over ondersteuning voor Linux en open-source-technologie in Azure gedetailleerde.
+De volgende tabel geeft een lijst van de Linux-distributies en-versies die worden ondersteund in Azure. Raadpleeg de [ondersteuning voor Linux-installatie kopieën in Microsoft Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) voor meer gedetailleerde informatie over ondersteuning voor Linux en open-source technologie in Azure.
 
-De Linux Integration Services (LIS) stuurprogramma's voor Hyper-V en Azure zijn kernelmodules die deel uitmaakt van Microsoft rechtstreeks naar de upstream-Linux-kernel.  Aantal LIS-stuurprogramma's zijn standaard ingebouwd in kernel van de distributie. Oudere distributies die zijn gebaseerd op Red Hat Enterprise (RHEL) / CentOS zijn beschikbaar als een afzonderlijke download op [Linux Integration Services versie 4.2 voor Hyper-V en Azure](https://www.microsoft.com/download/details.aspx?id=55106). Zie [vereisten voor Linux-kernel](create-upload-generic.md#linux-kernel-requirements) voor meer informatie over de LIS-stuurprogramma's.
+De LIS-Stuur programma's (Linux Integration Services) voor Hyper-V en Azure zijn kernel-modules die micro soft rechtstreeks bijdraagt aan de upstream Linux-kernel.  Sommige LIS-Stuur Programma's zijn standaard ingebouwd in de kernel van de distributie. Oudere distributies die zijn gebaseerd op Red Hat Enter prise (RHEL)/CentOS zijn verkrijgbaar als afzonderlijke down load bij [Linux Integration Services versie 4,2 voor Hyper-V en Azure](https://www.microsoft.com/download/details.aspx?id=55106). Zie [vereisten voor Linux-kernel](create-upload-generic.md#linux-kernel-requirements) voor meer informatie over de Lis-Stuur Programma's.
 
-De Azure Linux Agent al vooraf is geïnstalleerd op de Azure Marketplace-installatiekopieën en is meestal beschikbaar vanuit de distributie van pakket-opslagplaats. Broncode is te vinden in [GitHub](https://github.com/azure/walinuxagent).
+De Azure Linux-agent is al vooraf geïnstalleerd op de installatie kopieën van Azure Marketplace en is doorgaans beschikbaar vanuit de opslag plaats van het distributie pakket. U vindt de bron code op [github](https://github.com/azure/walinuxagent).
 
 
 | Distributie | Version | Stuurprogramma's | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [LIS downloaden](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: In kernel |Pakket: In [opslagplaats](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) onder "WALinuxAgent" <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |In kernel |Broncode: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7,9 +, 8.2 + |In kernel |Pakket: In de opslagplaats onder 'waagent' <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |In kernel |Pakket: In de opslagplaats onder "WALinuxAgent" <br/>Broncode: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+, 8.0+ |In kernel |Pakket: In de opslagplaats onder "WALinuxAgent" <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES voor SAP<br>11 SP4<br>12 SP1+<br>15|In kernel |Pakket:<p> voor 11 in [Cloud: extra](https://build.opensuse.org/project/show/Cloud:Tools) opslagplaats<br>voor 12 opgenomen in de Module 'Openbare Cloud' onder 'python-azure-agent'<br/>Broncode: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE Leap 42.2 + |In kernel |Pakket: In [Cloud: extra](https://build.opensuse.org/project/show/Cloud:Tools) opslagplaats onder 'python-azure-agent' <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |In kernel |Pakket: In de opslagplaats onder "walinuxagent" <br/>Broncode: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [LIS downloaden](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: In kernel |Pakket: In [opslag plaats](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) onder ' WALinuxAgent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |In kernel |Bron code: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
+| Debian |Debian 7,9 +, 8.2 + |In kernel |Pakket: In opslag plaats onder ' waagent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Oracle Linux |6.4+, 7.0+ |In kernel |Pakket: In opslag plaats onder ' WALinuxAgent ' <br/>Bron code: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6,7 +, 7.1 +, 8.0 + |In kernel |Pakket: In opslag plaats onder ' WALinuxAgent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES voor SAP<br>11 SP4<br>12 SP1+<br>15|In kernel |Pakket:<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE Schrikkel 42.2 + |In kernel |Pakket: In [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats onder ' python-Azure-agent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |In kernel |Pakket: In opslag plaats onder ' walinuxagent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>**  informatie over uitgebreide ondersteuning voor Ubuntu 12.04 en 14.04 vindt u hier: [Ubuntu uitgebreid beveiligingsbeheer](https://www.ubuntu.com/esm).
+  - **<sup>1</sup>** informatie over uitgebreide ondersteuning voor Ubuntu 12,04 en 14,04 vindt u hier: [Ubuntu Extended Security-onderhoud](https://www.ubuntu.com/esm).
 
 
-## <a name="image-update-cadence"></a>Installatiekopie-update uitgebracht
-Azure vereist dat de uitgevers van de onderschreven Linux-distributies afbeeldingen in de Azure Marketplace regelmatig met de meest recente patches en beveiligingsproblemen, op een per kwartaal of sneller uitgebracht bijgewerkt. Bijgewerkte installatiekopieën in de Azure Marketplace zijn beschikbaar voor klanten automatisch als nieuwe versies van een installatiekopie-SKU. Meer informatie over het Linux-installatiekopieën zoeken: [Linux-VM-installatiekopieën zoeken in de Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+## <a name="image-update-cadence"></a>Uitgebracht installatie kopie-update
+Azure vereist dat de uitgevers van de getekende Linux-distributies hun installatie kopieën regel matig bijwerken in de Azure Marketplace met de nieuwste patches en beveiligings oplossingen, op een driemaandelijkse of snellere uitgebracht. Bijgewerkte installatie kopieën in azure Marketplace zijn automatisch beschikbaar voor klanten als nieuwe versies van een image SKU. Meer informatie over het zoeken naar Linux-installatie kopieën: [Zoek naar Linux VM-installatie kopieën in azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
 
 ### <a name="additional-links"></a>Aanvullende koppelingen
- - [Levenscyclus van de installatiekopie SUSE openbare Cloud](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
+ - [Levenscyclus van de open bare Cloud installatie kopie van SUSE](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
 
-## <a name="azure-tuned-kernels"></a>Afgestemd op de Azure kernels
+## <a name="azure-tuned-kernels"></a>Door Azure afgestemde kernels
 
-Azure werkt nauw samen met verschillende onderschreven Linux-distributies het optimaliseren van de installatiekopieën die zij gepubliceerd naar de Azure Marketplace. Slechts één aspect van deze samenwerking is de ontwikkeling van 'op' Linux kernels die zijn geoptimaliseerd voor het Azure-platform en geleverd als volledig ondersteunde onderdelen van de Linux-distributie. De kernels afgestemd op de Azure opnemen van nieuwe functies en verbeterde prestaties en op een snellere (meestal kwartalen) uitgebracht in vergelijking met de standaard- of algemene kernels die beschikbaar in de distributie zijn.
+Azure werkt nauw samen met verschillende geplaatste Linux-distributies om de installatie kopieën te optimaliseren die ze naar Azure Marketplace hebben gepubliceerd. Eén aspect van deze samen werking is de ontwikkeling van ' afgestemde ' Linux-kernels die zijn geoptimaliseerd voor het Azure-platform en geleverd als volledig ondersteunde onderdelen van de Linux-distributie. De door Azure afgestemde kernels bevatten nieuwe functies en prestatie verbeteringen en sneller (meestal driemaandelijks) uitgebracht vergeleken met de standaard-of algemene kernels die beschikbaar zijn via de distributie.
 
-In de meeste gevallen vindt u deze vooraf zijn geïnstalleerd op de standaardinstallatiekopieën in de Azure Marketplace kernels en dus Azure-klanten wordt onmiddellijk het voordeel van deze geoptimaliseerde kernels. Meer informatie over deze kernels zijn afgestemd op Azure kan worden gevonden in de volgende koppelingen:
+In de meeste gevallen vindt u deze kernels die vooraf zijn geïnstalleerd op de standaard installatie kopieën in de Azure Marketplace, waardoor Azure-klanten onmiddellijk profiteren van de voor delen van deze geoptimaliseerde kernels. Meer informatie over deze kernels die zijn afgestemd op Azure, vindt u in de volgende koppelingen:
 
- - CentOS afgestemd op de Azure Kernel - beschikbaar via de virtualisatie van CentOS SIG - [meer informatie](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
- - Debian Cloud-Kernel - beschikbaar met de Debian 10 en de Debian 9 'backports' afbeelding op Azure - [meer Info](https://wiki.debian.org/Cloud/MicrosoftAzure)
- - SLES afgestemd op de Azure Kernel - [meer informatie](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
- - Ubuntu afgestemd op de Azure Kernel - [meer informatie](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+ - CentOS Azure-afgestemde kernel-beschikbaar via de CentOS-virtualisatie SIG- [meer informatie](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+ - Debian Cloud-kernel: beschikbaar in azure- [meer informatie](https://wiki.debian.org/Cloud/MicrosoftAzure) over de installatie kopie van Debian 10 en Debian 9 "backports"
+ - SLES Azure-afgestemde kernel- [meer informatie](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+ - Ubuntu Azure-afgestemde kernel- [meer informatie](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 
 ## <a name="partners"></a>Partners
@@ -70,33 +69,33 @@ In de meeste gevallen vindt u deze vooraf zijn geïnstalleerd op de standaardins
 ### <a name="coreos"></a>CoreOS
 [https://coreos.com/docs/running-coreos/cloud-providers/azure/](https://coreos.com/docs/running-coreos/cloud-providers/azure/)
 
-Vanaf de website van CoreOS:
+Op de CoreOS-website:
 
-*CoreOS is ontworpen voor beveiliging, consistentie en betrouwbaarheid. In plaats van de installatie van pakketten via yum of apt, CoreOS Linux-containers gebruikt voor het beheren van uw services op een hoger niveau van abstractie. Een enkele service code en alle afhankelijkheden zijn verpakt in een container die kan worden uitgevoerd op een of meer CoreOS-machines.*
+*CoreOS is ontworpen voor beveiliging, consistentie en betrouw baarheid. In plaats van pakketten te installeren via yum of apt, gebruikt CoreOS Linux-containers om uw services te beheren op een hoger niveau van abstractie. De code van een enkele service en alle afhankelijkheden zijn verpakt in een container die kan worden uitgevoerd op een of meer CoreOS machines.*
 
 ### <a name="credativ"></a>credativ
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
-Credativ is een onafhankelijke consulting services bedrijf en die gespecialiseerd in de ontwikkeling en implementatie van professionele oplossingen is met behulp van gratis software. Als toonaangevende open-source-specialisten heeft Credativ internationale opname met veel IT-afdelingen die gebruikmaken van de ondersteuning. In combinatie met Microsoft wordt Credativ momenteel voorbereid bijbehorende Debian installatiekopieën voor Debian 8 (Jessie) en Debian vóór 7 (Wheezy). Beide afbeeldingen zijn speciaal ontworpen om uit te voeren op Azure en eenvoudig kunnen worden beheerd via het platform. Credativ wordt ook ondersteuning voor de lange termijn onderhoud en het bijwerken van de Debian installatiekopieën voor Azure via de Open Source Support Centers.
+Credativ is een onafhankelijke Consulting-en service maatschappij die is gespecialiseerd in de ontwikkeling en implementatie van professionele oplossingen door gebruik te maken van gratis software. Als toonaangevende open-source specialisten heeft Credativ internationale herkenning met veel IT-afdelingen die hun ondersteuning gebruiken. In combi natie met micro soft wordt Credativ momenteel de bijbehorende Debian-installatie kopieën voor Debian 8 (Jessie) en Debian voor 7 (Wheezy) voor bereid. Beide installatie kopieën zijn speciaal ontworpen om te worden uitgevoerd op Azure en kunnen eenvoudig worden beheerd via het platform. Credativ biedt ook ondersteuning voor de lange termijn onderhoud en het bijwerken van de Debian-installatie kopieën voor Azure via de open source-ondersteunings centra.
 
 ### <a name="oracle"></a>Oracle
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Van Oracle-strategie bestaat uit het bieden van een breed portfolio van oplossingen voor openbare en privéclouds. De strategie geeft klanten de keuze en flexibiliteit in hoe ze in Oracle clouds Oracle-software en andere clouds implementeren. De partnerschap van Oracle met Microsoft stelt klanten in staat Oracle-software in openbare en besloten clouds van Microsoft te implementeren in de wetenschap dat ze certificeringen en ondersteuning kunnen krijgen van Oracle.  De toezegging en investering in een Oracle-oplossingen voor openbare en privéclouds van Oracle is niet gewijzigd.
+De strategie van Oracle is om een breed assortiment oplossingen te bieden voor open bare en particuliere Clouds. De strategie biedt klanten keuze en flexibiliteit bij het implementeren van Oracle-software in Oracle-Clouds en andere Clouds. De partnerschap van Oracle met Microsoft stelt klanten in staat Oracle-software in openbare en besloten clouds van Microsoft te implementeren in de wetenschap dat ze certificeringen en ondersteuning kunnen krijgen van Oracle.  De toezeg ging en investeringen van Oracle in Oracle Public-en Private Cloud-oplossingen worden niet gewijzigd.
 
 ### <a name="red-hat"></a>Red Hat
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-Toonaangevende provider van de wereld van open source-oplossingen, Red Hat kan meer dan 90% van Fortune 500-bedrijven zakelijke uitdagingen, hun IT uitlijnen en strategieën voor bedrijven, en voor te bereiden voor de toekomst van technologie. Red Hat doet dit door op te geven beveiligde oplossingen via een open bedrijfsmodel en een betaalbare en voorspelbare abonnementsmodel.
+Dankzij de wereld wijde provider van open-source-oplossingen biedt Red Hat meer dan 90% aan Fortune 500-bedrijven om zakelijke uitdagingen op te lossen, hun IT-en bedrijfs strategieën uit te lijnen en de toekomst van technologie voor te bereiden. Red Hat doet dit door veilige oplossingen te bieden met behulp van een open bedrijfs model en een betaalbaar, voorspelbaar abonnement model.
 
 ### <a name="suse"></a>SUSE
 [https://www.suse.com/suse-linux-enterprise-server-on-azure](https://www.suse.com/suse-linux-enterprise-server-on-azure)
 
-SUSE Linux Enterprise Server op Azure is een bewezen platform dat biedt superieure betrouwbaarheid en beveiliging voor de cloud computing. Van SUSE veelzijdige Linux-platform wordt naadloos geïntegreerd met Azure cloudservices bieden een eenvoudige cloudomgeving. Met meer dan 9,200 gecertificeerde toepassingen van meer dan 1800 onafhankelijke softwareleveranciers voor SUSE Linux Enterprise Server, SUSE wordt ervoor gezorgd dat workloads die ondersteund worden uitgevoerd in het datacenter probleemloos kunnen worden geïmplementeerd op Azure.
+SUSE Linux Enterprise Server op Azure is een bewezen platform dat een superieure betrouw baarheid en beveiliging biedt voor Cloud Computing. Het veelzijdige Linux-platform van SUSE kan naadloos worden geïntegreerd met Azure Cloud Services om een gemakkelijk te beheren cloud omgeving te bieden. Met meer dan 9.200 gecertificeerde toepassingen van meer dan 1.800 onafhankelijke software leveranciers voor SUSE Linux Enterprise Server, zorgt SUSE ervoor dat werk belastingen die worden uitgevoerd in het Data Center, in vertrouwen kunnen worden geïmplementeerd in Azure.
 
 ### <a name="canonical"></a>Canonical
 [https://www.ubuntu.com/cloud/azure](https://www.ubuntu.com/cloud/azure)
 
-Canonieke engineering en open community governance station van Ubuntu succes in de client, server en cloud computing, waaronder persoonlijke cloudservices voor consumenten. Van canonical visie van een uniforme, gratis platform in Ubuntu, van telefoon naar de cloud, biedt een reeks samenhangend interfaces voor de telefoon, tablet, tv-programma's en desktop. Deze visie kunt u de eerste keuze voor de diverse instellingen van providers van openbare Clouds voor de makers van consumentenelektronica en een favoriet tussen afzonderlijke technologen Ubuntu.
+De canonieke techniek en het open Community governance-station Ubuntu slagen in client-, server-en Cloud Computing, waaronder persoonlijke Cloud Services voor consumenten. De standaardisatie van een uniform, gratis platform in Ubuntu, van telefoon tot Cloud, biedt een familie van samenhangende interfaces voor de telefoon, Tablet, TV en desktop. Deze visie maakt Ubuntu de eerste keuze voor diverse instellingen van open bare cloud providers voor de makers van consumenten elektronica en een favoriet tussen afzonderlijke Technologists.
 
-Met ontwikkelaars en technische datacenters over de hele wereld, Canonical is in zijn soort als u wilt samenwerken met makers van hardware, inhoudsproviders en softwareontwikkelaars om oplossingen voor Ubuntu op de markt voor pc's, servers en mobiele apparaten.
+Met ontwikkel aars en technische hulp middelen over de hele wereld is canoniek gepositioneerd naar een partner met hardware makers, inhouds providers en software ontwikkelaars om Ubuntu oplossingen op de markt te brengen voor Pc's, servers en hand held apparaten.

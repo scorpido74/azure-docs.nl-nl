@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff74db14a1621cdcea1b1ae082d351ce6a3a52f6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227412"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073880"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronisatie: De locatie van de voor keur gegevens voor Office 365-resources configureren
 Het doel van dit onderwerp is om u stapsgewijs te begeleiden bij het configureren van het kenmerk voor de voorkeurs locatie van gegevens in Azure Active Directory (Azure AD) Connect Sync. Wanneer iemand gebruikmaakt van mogelijkheden voor meerdere geografische locaties in Office 365, gebruikt u dit kenmerk om de geografische locatie van de Office 365-gegevens van de gebruiker aan te duiden. (De termen *regio* en *geo* worden door elkaar gebruikt.)
@@ -32,7 +32,7 @@ Office 365-resources voor uw gebruikers bevinden zich standaard in dezelfde geog
 Door het kenmerk **preferredDataLocation**in te stellen, kunt u de geo van een gebruiker definiëren. U kunt de Office 365-resources van de gebruiker, zoals het postvak en OneDrive, in dezelfde geografische regio als de gebruiker hebben en nog steeds één Tenant voor uw hele organisatie hebben.
 
 > [!IMPORTANT]
-> Meerdere geografische locaties zijn momenteel beschikbaar voor klanten met een minimum van 500 Office 365 Services-abonnementen. Neem contact op met uw micro soft-vertegenwoordiger voor meer informatie.
+> Multi-geo is momenteel beschikbaar voor klanten met een actief Enterprise Agreement en een minimum van 500 Office 365 Services-abonnementen. Neem contact op met uw micro soft-vertegenwoordiger voor meer informatie.
 >
 >
 
@@ -49,7 +49,7 @@ De geografische gebieden in Office 365 is beschikbaar voor meerdere geografische
 | Frankrijk | FRA |
 | India | ZOEKEN |
 | Japan | JPN |
-| Korea | KOR |
+| Zuid-Korea | KOR |
 | Zuid-Afrika | ZAF |
 | Verenigde Arabische Emiraten | ZIJN |
 | Verenigd Koninkrijk | GBR |
@@ -99,7 +99,7 @@ Om te voor komen dat onbedoelde wijzigingen worden geëxporteerd naar Azure AD, 
 ## <a name="step-2-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>Stap 2: Het bron kenmerk toevoegen aan het on-premises Active Directory-Connector schema
 Niet alle Azure AD-kenmerken worden geïmporteerd in de on-premises Active Directory-Connector ruimte. Als u ervoor hebt gekozen om een kenmerk te gebruiken dat standaard niet is gesynchroniseerd, moet u het importeren. Om het bron kenmerk toe te voegen aan de lijst met geïmporteerde kenmerken:
 
-1. Selecteer het  tabblad connectors in de Synchronization Service Manager.
+1. Selecteer het tabblad connectors in de Synchronization Service Manager.
 2. Klik met de rechter muisknop op de on-premises Active Directory-connector en selecteer **Eigenschappen**.
 3. Ga in het pop-upvenster naar het tabblad **kenmerken selecteren** .
 4. Zorg ervoor dat het bron kenmerk dat u hebt geselecteerd, is ingeschakeld in de lijst met kenmerken. Als uw kenmerk niet wordt weer gegeven, selecteert u het selectie vakje **alles weer geven** .
@@ -110,7 +110,7 @@ Niet alle Azure AD-kenmerken worden geïmporteerd in de on-premises Active Direc
 ## <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Stap 3: **PreferredDataLocation** toevoegen aan het Azure AD-connector schema
 Het kenmerk **preferredDataLocation** wordt standaard niet in de Azure AD-connector ruimte geïmporteerd. Om het toe te voegen aan de lijst met geïmporteerde kenmerken:
 
-1. Selecteer het  tabblad connectors in de Synchronization Service Manager.
+1. Selecteer het tabblad connectors in de Synchronization Service Manager.
 2. Klik met de rechter muisknop op de Azure AD-connector en selecteer **Eigenschappen**.
 3. Ga in het pop-upvenster naar het tabblad **kenmerken selecteren** .
 4. Selecteer het kenmerk **preferredDataLocation** in de lijst.
@@ -126,22 +126,22 @@ Met de regel voor binnenkomende synchronisatie kan de kenmerk waarde worden gest
 3. Selecteer **nieuwe regel toevoegen**om een nieuwe regel voor binnenkomende verbindingen te maken.
 4. Geef onder het tabblad **Beschrijving** de volgende configuratie op:
 
-    | Kenmerk | Waarde | Details |
+    | Kenmerk | Value | Details |
     | --- | --- | --- |
     | Name | *Geef een naam op* | Bijvoorbeeld ' in van AD: gebruiker preferredDataLocation ' |
     | Description | *Geef een aangepaste beschrijving op* |  |
     | Verbonden systeem | *Kies de on-premises Active Directory-connector* |  |
     | Type verbonden systeem object | **Gebruiker** |  |
     | Omgekeerd object type | **Person** |  |
-    | Koppelings type | **Koppelen** |  |
+    | Type koppeling | **Koppelen** |  |
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Laat het **bereik filter** leeg, zodat alle objecten worden toegevoegd. Mogelijk moet u het bereik filter aanpassen op basis van uw Azure AD Connect-implementatie.
 6. Ga naar het **tabblad trans formatie**en implementeer de volgende transformatie regel:
 
-    | Stroom type | Doel kenmerk | Source | Eenmaal Toep assen | Type samen voeging |
+    | Stroom type | Doelkenmerk | Source | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Het bron kenmerk kiezen | Uitgeschakeld | Update |
+    |Rechtstreeks | preferredDataLocation | Het bron kenmerk kiezen | Uitgeschakeld | Update |
 
 7. Als u de regel voor binnenkomend verkeer wilt maken, selecteert u **toevoegen**.
 
@@ -162,7 +162,7 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
     | Verbonden systeem | *De Azure AD-connector selecteren* ||
     | Type verbonden systeem object | **Gebruiker** ||
     | Omgekeerd object type | **Person** ||
-    | Koppelings type | **Koppelen** ||
+    | Type koppeling | **Koppelen** ||
     | Prioriteit | *Kies een getal tussen 1 en 99* | 1 – 99 is gereserveerd voor aangepaste synchronisatie regels. Kies geen waarde die wordt gebruikt door een andere synchronisatie regel. |
 
 5. Ga naar het tabblad **filter bereik** en voeg één bereik filter groep met twee componenten toe:
@@ -176,9 +176,9 @@ De regel voor uitgaande synchronisatie maakt het mogelijk dat de waarde van het 
 
 6. Ga naar het tabblad **trans formatie** en implementeer de volgende transformatie regel:
 
-    | Stroom type | Doel kenmerk | Source | Eenmaal Toep assen | Type samen voeging |
+    | Stroom type | Doelkenmerk | Source | Eenmaal Toep assen | Type samen voeging |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Uitgeschakeld | Update |
+    | Rechtstreeks | preferredDataLocation | preferredDataLocation | Uitgeschakeld | Update |
 
 7. Sluit **toevoegen** om de uitgaande regel te maken.
 

@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85c3a1953ce34ab6bf60111715d9d8972a4682ba
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 9ee6c4630205561eb8beb19062520f8ae2a35e1b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853390"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073915"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Procedure: De Azure AD Graph API gebruiken
 
-De Azure Active Directory (Azure AD) Graph API biedt programmatische toegang tot Azure AD via OData REST API-eind punten. Toepassingen kunnen Azure AD Graph API gebruiken om bewerkingen voor maken, lezen, bijwerken en verwijderen uit te voeren op Directory gegevens en-objecten. U kunt bijvoorbeeld Azure AD Graph API gebruiken om een nieuwe gebruiker te maken, de eigenschappen van de gebruiker weer te geven of bij te werken, het wacht woord van de gebruiker te wijzigen, het groepslid maatschap te controleren op op rollen gebaseerde toegang, de gebruiker uit te scha kelen of te verwijderen. Zie [Azure AD-Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) en [azure AD-Graph API vereisten](https://msdn.microsoft.com/library/hh974476.aspx)voor meer informatie over Azure AD Graph API-functies en-toepassings scenario's.
+> [!IMPORTANT]
+> Wij raden u ten zeerste aan om [Microsoft Graph](https://developer.microsoft.com/graph) te gebruiken in plaats van Azure AD Graph API om toegang te krijgen tot Azure Active Directory-resources. We richten ons momenteel op ontwikkelingen in Microsoft Graph. Voor Azure AD Graph API zijn geen verdere verbeteringen gepland. Er zijn een zeer beperkt aantal scenario's waarvoor Azure AD Graph API mogelijk nog steeds geschikt is. Zie voor meer informatie de [Microsoft Graph of het](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blog bericht van Azure AD Graph en [Migreer Azure AD Graph-apps naar Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+
+De Azure Active Directory (Azure AD) Graph API biedt programmatische toegang tot Azure AD via OData REST API-eind punten. Toepassingen kunnen Azure AD Graph API gebruiken om bewerkingen voor maken, lezen, bijwerken en verwijderen uit te voeren op Directory gegevens en-objecten. U kunt bijvoorbeeld Azure AD Graph API gebruiken om een nieuwe gebruiker te maken, de eigenschappen van de gebruiker weer te geven of bij te werken, het wacht woord van de gebruiker te wijzigen, het groepslid maatschap te controleren op op rollen gebaseerde toegang, de gebruiker uit te scha kelen of te verwijderen. Zie [Azure AD-Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) en [azure AD-Graph API vereisten](https://msdn.microsoft.com/library/hh974476.aspx)voor meer informatie over Azure AD Graph API-functies en-toepassings scenario's. Azure AD Graph API werkt alleen met werk-of school/organisatie-accounts.
 
 Dit artikel is van toepassing op Azure AD-Graph API. Zie [de Microsoft Graph-API gebruiken](https://developer.microsoft.com/graph/docs/concepts/use_the_api)voor vergelijk bare informatie met betrekking tot Microsoft Graph-API.
-
-> [!IMPORTANT]
-> Wij raden u ten zeerste aan om [Microsoft Graph](https://developer.microsoft.com/graph) te gebruiken in plaats van Azure AD Graph API om toegang te krijgen tot Azure Active Directory-resources. We richten ons momenteel op ontwikkelingen in Microsoft Graph. Voor Azure AD Graph API zijn geen verdere verbeteringen gepland. Er is maar een beperkt aantal scenario's waarvoor Azure AD Graph API nog steeds geschikt is. Zie het blogbericht [Mogelijk Graph of Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) in het Office-ontwikkelaarscentrum voor meer informatie.
 
 ## <a name="how-to-construct-a-graph-api-url"></a>Een Graph API URL maken
 

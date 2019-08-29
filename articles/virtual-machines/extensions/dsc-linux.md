@@ -1,6 +1,6 @@
 ---
 title: Azure DSC-extensie voor Linux
-description: OMI en DSC-pakketten om toe te staan een virtuele Azure Linux-machine moet worden geconfigureerd met behulp van Desired State Configuration installeert.
+description: Installeert OMI-en DSC-pakketten zodat een virtuele Azure Linux-machine kan worden geconfigureerd met behulp van desired state Configuration.
 services: virtual-machines-linux
 documentationcenter: ''
 author: bobbytreed
@@ -8,31 +8,30 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 4b0cd88cbb3729a3e81aeb5d6f43f417c8cb2f17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64682770"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084722"
 ---
-# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (Microsoft.OSTCExtensions.DSCForLinux)
+# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
-Desired State Configuration (DSC) is een beheerplatform waarmee u voor het beheren van uw IT-afdeling en infrastructuur voor ontwikkeling met configuratie als code.
+Desired state Configuration (DSC) is een beheer platform waarmee u uw IT-en ontwikkelings infrastructuur met configuratie als code kunt beheren.
 
-DSCForLinux uitbreiding is gepubliceerd en ondersteund door Microsoft. De uitbreiding is de OMI en DSC-agent geïnstalleerd op Azure virtual machines. DSC-extensie kunt ook de volgende acties uitvoeren
+De extensie DSCForLinux wordt gepubliceerd en ondersteund door micro soft. Met de uitbrei ding wordt de OMI-en DSC-agent geïnstalleerd op virtuele machines van Azure. De DSC-extensie kan ook de volgende acties uitvoeren
 
 
-- Registreren van de Linux-VM in Azure Automation-account om te kunnen pull-configuraties van Azure Automation-service (ExtensionAction registreren)
-- MOF-configuraties push naar de Linux-VM (ExtensionAction Push)
-- MOF-Meta-configuratie toepassen op de Linux-VM Pull-Server configureren om het pull-knooppuntconfiguratie (Pull ExtensionAction)
-- Aangepaste DSC-modules installeren op de Linux-VM (ExtensionAction installeren)
-- Verwijderen van aangepaste DSC-modules voor de Linux-VM (ExtensionAction verwijderen)
+- Registreer de virtuele Linux-machine naar Azure Automation-account om configuraties van Azure Automation Service te kunnen halen (ExtensionAction registreren)
+- MOF-configuraties naar de Linux-VM pushen (push ExtensionAction)
+- Meta MOF-configuratie Toep assen op de virtuele Linux-machine voor het configureren van een pull-server voor het ophalen van knooppunt configuratie (pull-ExtensionAction)
+- Aangepaste DSC-modules installeren op de virtuele Linux-machine (ExtensionAction installeren)
+- Aangepaste DSC-modules verwijderen van de virtuele Linux-machine (ExtensionAction verwijderen)
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -40,44 +39,44 @@ DSCForLinux uitbreiding is gepubliceerd en ondersteund door Microsoft. De uitbre
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De DSC-Linux-extensie biedt ondersteuning voor alle de [op Azure onderschreven Linux-distributies](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , met uitzondering:
+De DSC Linux-extensie ondersteunt alle Linux-distributies die zijn [goedgekeurd op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , met uitzonde ring van:
 
 | Distributie | Version |
 |---|---|
-| Debian | Alle versies |
-| Ubuntu| 18.04 |
+| Debian | alle versies |
+| Ubuntu| 18,04 |
  
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De extensie DSCForLinux is vereist dat de virtuele doelmachine is verbonden met internet. Bijvoorbeeld: Register extensie heeft verbinding met de Automation-service. Voor andere vereiste acties, zoals Pull, Pull, vereist installatie een verbinding met azure storage en/of github. Dit is afhankelijk van instellingen die zijn opgegeven door de klant.
+De DSCForLinux-extensie vereist dat de virtuele doel machine is verbonden met internet. Voor het registreren van de extensie is bijvoorbeeld connectiviteit met de Automation-Service vereist. Voor andere acties, zoals pull, pull, is connectiviteit met Azure Storage/github vereist. Dit is afhankelijk van de instellingen van de klant.
 
 ## <a name="extension-schema"></a>Extensieschema
 
-### <a name="11-public-configuration"></a>1.1 openbare configuratie
+### <a name="11-public-configuration"></a>1,1 open bare configuratie
 
-Hier vindt u alle ondersteunde configuratie voor een openbare-parameters:
+Hier vindt u alle ondersteunde para meters voor de open bare configuratie:
 
-* `FileUri`: (optioneel, string) de uri van het ZIP-bestand voor MOF-bestand/Meta MOF-bestand/aangepaste resource.
-* `ResourceName`: (optioneel, string) de naam van de aangepaste resource-module
-* `ExtensionAction`: (optioneel, string) geeft aan wat een extensie doet. Geldige waarden: Registreren, pushen, ophalen, installeren, verwijderen. Indien niet opgegeven, wordt deze beschouwd als actie Push-standaard.
-* `NodeConfigurationName`: (optioneel, string) de naam van de knooppuntconfiguratie van een om toe te passen.
-* `RefreshFrequencyMins`: (optioneel, int) geeft aan hoe vaak (in minuten) DSC probeert te verkrijgen van de configuratie van de pull-server. 
-       Als de configuratie op de pull-server van de huidige versie van het doelknooppunt verschilt, wordt het gekopieerd naar de store in behandeling en toegepast.
-* `ConfigurationMode`: (optioneel, string) geeft aan hoe de configuratie moet worden toegepast door DSC. Geldige waarden zijn: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
-* `ConfigurationModeFrequencyMins`: (optioneel, int) geeft aan hoe vaak (in minuten) DSC zorgt ervoor dat de configuratie in de gewenste status.
+* `FileUri`: (optioneel, String) de URI van het MOF-bestand/meta MOF-bestand/aangepaste ZIP-bestand voor de resource.
+* `ResourceName`: (optioneel, String) de naam van de aangepaste resource module
+* `ExtensionAction`: (optioneel, String) geeft aan wat een extensie doet. geldige waarden: Registreren, pushen, pull, installeren, verwijderen. Als u niets opgeeft, wordt dit beschouwd als een push actie.
+* `NodeConfigurationName`: (optioneel, String) de naam van een knooppunt configuratie die moet worden toegepast.
+* `RefreshFrequencyMins`: (optioneel, int) Hiermee geeft u op hoe vaak (in minuten) DSC probeert de configuratie van de pull-server op te halen. 
+       Als de configuratie op de pull-server verschilt van het huidige op het doel knooppunt, wordt deze gekopieerd naar de in behandeling zijnde Store en toegepast.
+* `ConfigurationMode`: (optioneel, teken reeks) Hiermee geeft u op hoe DSC de configuratie moet Toep assen. Geldige waarden zijn: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
+* `ConfigurationModeFrequencyMins`: (optioneel, int) Hiermee geeft u op hoe vaak (in minuten) DSC ervoor zorgt dat de configuratie de gewenste status heeft.
 
 > [!NOTE]
-> Als u een versie < 2.3, is modusparameter hetzelfde als ExtensionAction. Modus lijkt te zijn van een overbelaste term. Daarom de om verwarring te voorkomen, wordt ExtensionAction gebruikt vanaf versie 2.3 en hoger. Voor compatibiliteit met eerdere versies ondersteunt de extensie modus en de ExtensionAction. 
+> Als u een versie < 2,3 gebruikt, is de modus parameter hetzelfde als ExtensionAction. De modus lijkt een overbelaste term te zijn. Om Verwar ring te voor komen, wordt ExtensionAction gebruikt vanaf 2,3-versie. Voor achterwaartse compatibiliteit ondersteunt de uitbrei ding zowel de modus als de ExtensionAction. 
 >
 
-### <a name="12-protected-configuration"></a>1.2 beveiligde configuratie
+### <a name="12-protected-configuration"></a>1,2 beveiligde configuratie
 
-Hier vindt u alle ondersteunde beveiligde configuratieparameters:
+Hier vindt u alle ondersteunde beveiligings configuratie parameters:
 
-* `StorageAccountName`: (optioneel, string) de naam van het opslagaccount waarin het bestand
-* `StorageAccountKey`: (optioneel, string) de sleutel van het opslagaccount waarin het bestand
-* `RegistrationUrl`: (optioneel, string) de URL van de Azure Automation-account
-* `RegistrationKey`: (optioneel, string) de toegangssleutel van het Azure Automation-account
+* `StorageAccountName`: (optioneel, String) de naam van het opslag account dat het bestand bevat
+* `StorageAccountKey`: (optioneel, String) de sleutel van het opslag account dat het bestand bevat
+* `RegistrationUrl`: (optioneel, String) de URL van het Azure Automation-account
+* `RegistrationKey`: (optioneel, String) de toegangs sleutel van het Azure Automation-account
 
 
 ## <a name="scenarios"></a>Scenario's
@@ -101,7 +100,7 @@ public.json
 }
 ```
 
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $privateConfig = '{
   "RegistrationUrl": "<azure-automation-account-url>",
@@ -117,7 +116,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-a-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Een MOF-configuratiebestand (in Azure Storage-Account) van toepassing op de virtuele machine
+### <a name="apply-a-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Een MOF-configuratie bestand (in Azure Storage account) Toep assen op de VM
 
 protected.json
 ```json
@@ -135,7 +134,7 @@ public.json
 }
 ```
 
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -149,7 +148,7 @@ $publicConfig = '{
 ```
 
 
-### <a name="apply-a-mof-configuration-file-in-public-storage-to-the-vm"></a>Een MOF-configuratiebestand (in openbare opslag) van toepassing op de virtuele machine
+### <a name="apply-a-mof-configuration-file-in-public-storage-to-the-vm"></a>Een MOF-configuratie bestand (in open bare opslag) Toep assen op de VM
 
 public.json
 ```json
@@ -158,14 +157,14 @@ public.json
 }
 ```
 
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $publicConfig = '{
   "FileUri": "<mof-file-uri>"
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Een meta MOF-configuratiebestand (in Azure Storage-Account) van toepassing op de virtuele machine
+### <a name="apply-a-meta-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Een meta MOF-configuratie bestand (in Azure Storage account) Toep assen op de VM
 
 protected.json
 ```json
@@ -183,7 +182,7 @@ public.json
 }
 ```
 
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -196,7 +195,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Een meta MOF-configuratiebestand (in openbare opslag) van toepassing op de virtuele machine
+### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Een meta MOF-configuratie bestand (in open bare opslag) Toep assen op de VM
 public.json
 ```json
 {
@@ -204,7 +203,7 @@ public.json
   "ExtensionAction": "Pull"
 }
 ```
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $publicConfig = '{
   "FileUri": "<meta-mof-file-uri>",
@@ -212,7 +211,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-zip-file-in-azure-storage-account-to-the-vm"></a>Een aangepaste resource-module (ZIP-bestand in Azure Storage-Account) installeren op de virtuele machine
+### <a name="install-a-custom-resource-module-zip-file-in-azure-storage-account-to-the-vm"></a>Een aangepaste resource module (ZIP-bestand in Azure Storage account) installeren op de VM
 protected.json
 ```json
 {
@@ -228,7 +227,7 @@ public.json
 }
 ```
 
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -241,7 +240,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-zip-file-in-public-storage-to-the-vm"></a>Een aangepaste resource-module (ZIP-bestand in de openbare opslag) installeren op de virtuele machine
+### <a name="install-a-custom-resource-module-zip-file-in-public-storage-to-the-vm"></a>Een aangepaste resource module (ZIP-bestand in open bare opslag) installeren op de VM
 public.json
 ```json
 {
@@ -249,7 +248,7 @@ public.json
   "FileUri": "<resource-zip-file-uri>"
 }
 ```
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $publicConfig = '{
   "ExtensionAction": "Install",
@@ -257,7 +256,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="remove-a-custom-resource-module-from-the-vm"></a>Een aangepaste resource-module uit de virtuele machine verwijderen
+### <a name="remove-a-custom-resource-module-from-the-vm"></a>Een aangepaste resource module verwijderen van de VM
 public.json
 ```json
 {
@@ -265,7 +264,7 @@ public.json
   "ExtensionAction": "Remove"
 }
 ```
-PowerShell-indeling
+Power shell-indeling
 ```powershell
 $publicConfig = '{
   "ResourceName": "<resource-name>",
@@ -275,62 +274,62 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor de post-implementatieconfiguratie zoals onboarding voor Azure Automation. 
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor de implementatie configuratie na een onboarding naar Azure Automation vereist. 
 
-De Resource Manager-voorbeeldsjabloon is [201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) en [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
+Het voor beeld van een resource manager-sjabloon is [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) en [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
-Voor meer informatie over Azure Resource Manager-sjabloon, gaat u naar [Authoring Azure Resource Manager-sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
+Voor meer informatie over Azure Resource Manager-sjabloon gaat u naar [ontwerp Azure Resource Manager sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
-### <a name="21-using-azure-cliazure-cli"></a>2.1. Using [**Azure CLI**][azure-cli]
-Voordat u de extensie DSCForLinux implementeert, moet u uw `public.json` en `protected.json`, op basis van de verschillende scenario's in sectie 3.
+### <a name="21-using-azure-cliazure-cli"></a>2.1. [**Azure cli**] [Azure-cli] gebruiken
+Voordat u de DSCForLinux-extensie implementeert, `public.json` moet `protected.json`u uw en configureren volgens de verschillende scenario's in sectie 3.
 
 #### <a name="211-classic"></a>2.1.1. Klassiek
-Azure Service Management-modus is een afkorting voor de klassieke modus. U kunt overschakelen naar deze door te voeren:
+De klassieke modus wordt ook Azure Service Management-modus genoemd. U kunt overschakelen naar het bestand door het volgende uit te voeren:
 ```
 $ azure config mode asm
 ```
 
-U kunt DSCForLinux extensie implementeren door uit te voeren:
+U kunt de DSCForLinux-extensie implementeren door het volgende uit te voeren:
 ```
 $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 
-Meer informatie over de nieuwste extensie-versie beschikbaar is, voert u de volgende uit:
+Voor meer informatie over de nieuwste beschik bare extensie versie voert u de volgende handelingen uit:
 ```
 $ azure vm extension list
 ```
 
-#### <a name="212-resource-manager"></a>2.1.2. Resource Manager
-U kunt overschakelen naar Azure Resource Manager-modus door uit te voeren:
+#### <a name="212-resource-manager"></a>omschreven. Resource Manager
+U kunt overschakelen naar Azure Resource Manager modus door uit te voeren:
 ```
 $ azure config mode arm
 ```
 
-U kunt DSCForLinux extensie implementeren door uit te voeren:
+U kunt de DSCForLinux-extensie implementeren door het volgende uit te voeren:
 ```
 $ azure vm extension set <resource-group> <vm-name> \
 DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> In de Azure Resource Manager-modus, `azure vm extension list` is niet beschikbaar voor deze oefening.
+> In azure Resource Manager modus `azure vm extension list` is nu niet beschikbaar.
 >
 
-### <a name="22-using-azure-powershellazure-powershell"></a>2.2. Met behulp van [**Azure PowerShell**] [azure powershell]
+### <a name="22-using-azure-powershellazure-powershell"></a>2.2. [**Azure PowerShell**] [Azure-Power Shell] gebruiken
 
-#### <a name="221-classic"></a>2.2.1 klassiek
+#### <a name="221-classic"></a>2.2.1 (klassiek)
 
-U kunt zich aanmelden bij uw Azure-account (Azure Service Management-modus) door te voeren:
+U kunt u aanmelden bij uw Azure-account (Azure Service Management-modus) door het volgende uit te voeren:
 
 ```powershell>
 Add-AzureAccount
 ```
 
-En DSCForLinux extensie implementeren door uit te voeren:
+En implementeer de DSCForLinux-extensie door de volgende handelingen uit te voeren:
 
 ```powershell>
 $vmname = '<vm-name>'
@@ -340,7 +339,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-U moet de inhoud van de $privateConfig en $publicConfig op basis van verschillende scenario's in bovenstaande sectie wijzigen 
+U moet de inhoud van de $privateConfig en $publicConfig wijzigen volgens de verschillende scenario's in de bovenstaande sectie 
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -361,17 +360,17 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="222resource-manager"></a>2.2.2.Resource Manager
+#### <a name="222resource-manager"></a>2.2.2. Resource Manager
 
-U kunt zich aanmelden bij uw Azure-account (Azure Resource Manager-modus) door te voeren:
+U kunt u aanmelden bij uw Azure-account (Azure Resource Manager modus) door het volgende uit te voeren:
 
 ```powershell>
 Login-AzAccount
 ```
 
-Klik op [ **hier** ](../../azure-resource-manager/manage-resources-powershell.md) voor meer informatie over het gebruik van Azure PowerShell met Azure Resource Manager.
+Klik [**hier**](../../azure-resource-manager/manage-resources-powershell.md) voor meer informatie over het gebruik van Azure PowerShell met Azure Resource Manager.
 
-U kunt DSCForLinux extensie implementeren door uit te voeren:
+U kunt de DSCForLinux-extensie implementeren door het volgende uit te voeren:
 
 ```powershell>
 $rgName = '<resource-group-name>'
@@ -382,7 +381,7 @@ $publisher = 'Microsoft.OSTCExtensions'
 $version = '< version>'
 ```
 
-U moet de inhoud van de $privateConfig en $publicConfig op basis van verschillende scenario's in bovenstaande sectie wijzigen 
+U moet de inhoud van de $privateConfig en $publicConfig wijzigen volgens de verschillende scenario's in de bovenstaande sectie 
 ```
 $privateConfig = '{
   "StorageAccountName": "<storage-account-name>",
@@ -419,8 +418,8 @@ Extensie uitvoering uitvoer wordt vastgelegd in het volgende bestand:
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-Foutcode: 51 voorstelt niet-ondersteunde distributie of niet-ondersteunde extensie actie.
-In sommige gevallen bestaat DSC-Linux-uitbreiding niet voor het installeren van OMI wanneer hogere versie van OMI al is in de machine. [foutbericht: (000003) De Downgrade is niet toegestaan]
+Fout code: 51 staat voor een niet-ondersteunde distributie of een niet-ondersteunde extensie actie.
+In sommige gevallen kan de DSC Linux-uitbrei ding OMI niet installeren wanneer er al een hogere versie van OMI op de computer aanwezig is. [fout bericht: (000003) Downgrade niet toegestaan]
 
 
 
@@ -429,4 +428,4 @@ In sommige gevallen bestaat DSC-Linux-uitbreiding niet voor het installeren van 
 Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnemen met de Azure-experts op het [forums voor Azure MSDN en Stack Overflow](https://azure.microsoft.com/support/community/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over extensies [extensies en functies voor Linux virtuele machines](features-linux.md).
+Zie [virtuele machines en functies voor Linux](features-linux.md)voor meer informatie over uitbrei dingen.

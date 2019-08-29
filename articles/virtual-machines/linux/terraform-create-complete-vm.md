@@ -9,20 +9,19 @@ editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: gwallace
-ms.openlocfilehash: be8bfd8b6a0ba8afa43869366b4482e1b202727f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876335"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100806"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Een volledige infra structuur voor virtuele Linux-machines maken in azure met terraform
+# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Een complete infrastructuur voor virtuele Linux-machines maken in Azure met Terraform
 
 Met terraform kunt u volledige infrastructuur implementaties definiëren en maken in Azure. U bouwt terraform-sjablonen op in een Human-Lees bare indeling waarmee Azure-resources op een consistente en verreproduceerde manier worden gemaakt en geconfigureerd. In dit artikel wordt beschreven hoe u een volledige Linux-omgeving en ondersteunende resources maakt met terraform. U kunt ook leren hoe u [terraform installeert en configureert](terraform-install-configure.md).
 

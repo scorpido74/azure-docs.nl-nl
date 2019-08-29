@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726808"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098625"
 ---
 # <a name="securing-paas-deployments"></a>PaaS-implementaties beveiligen
 
@@ -96,14 +96,14 @@ Hieronder volgen de aanbevolen procedures voor het beheren van het identiteits p
 **Aanbevolen procedure**: Bescherm uw VM-beheer interfaces op hybride PaaS-en IaaS-Services met behulp van een beheer interface waarmee u de virtuele machines rechtstreeks op afstand kunt beheren.   
 **Details**: Protocollen voor extern beheer, zoals [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)en [externe communicatie met Power shell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) , kunnen worden gebruikt. Over het algemeen is het raadzaam dat u geen rechtstreekse externe toegang tot virtuele machines inschakelt via internet.
 
-Gebruik, indien mogelijk, alternatieve benaderingen zoals het gebruik van virtuele particuliere netwerken in een virtueel Azure-netwerk. Als er geen alternatieve benaderingen beschikbaar zijn, moet u ervoor zorgen dat u complexe wachtwoord zinnen en twee ledige verificatie gebruikt (zoals [Azure multi-factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)).
+Gebruik, indien mogelijk, alternatieve benaderingen zoals het gebruik van virtuele particuliere netwerken in een virtueel Azure-netwerk. Als er geen alternatieve benaderingen beschikbaar zijn, moet u ervoor zorgen dat u complexe wachtwoordzins en twee ledige verificatie gebruikt (zoals [Azure multi-factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)).
 
 **Aanbevolen procedure**: Gebruik krachtige platformen voor verificatie en autorisatie.   
 **Details**: Gebruik federatieve identiteiten in azure AD in plaats van aangepaste gebruikers archieven. Wanneer u federatieve identiteiten gebruikt, profiteert u van een op platform gebaseerde benadering en delegeert u het beheer van geautoriseerde identiteiten aan uw partners. Een federatieve identiteits benadering is vooral belang rijk wanneer werk nemers worden beëindigd en deze informatie moet worden weer spie geld via meerdere identiteits-en autorisatie systemen.
 
 Gebruik platform verificatie-en autorisatie mechanismen in plaats van aangepaste code. De reden hiervoor is dat het ontwikkelen van aangepaste verificatie code fout gevoelig is. De meeste ontwikkel aars zijn geen beveiligings experts en zijn waarschijnlijk niet op de hoogte van de finesses en de nieuwste ontwikkelingen in verificatie en autorisatie. Commerciële code (bijvoorbeeld van micro soft) wordt vaak uitgebreid gecontroleerd.
 
-Gebruik twee ledige verificatie. Verificatie met twee factoren is de huidige standaard voor verificatie en autorisatie, omdat het voor komt dat de zwakke plekken in de beveiliging van gebruikers naam en wacht woord worden geauthenticeerd. Toegang tot de interfaces van Azure Management (Portal/Remote Power shell) en klant gerichte services moeten zijn ontworpen en geconfigureerd voor gebruik van [Azure multi-factor Authentication](/azure/active-directory/authentication/multi-factor-authentication).
+Gebruik twee ledige verificatie. Verificatie met twee factoren is de huidige standaard voor verificatie en autorisatie, omdat het voor komt dat de zwakke plekken in de beveiliging van gebruikers naam en wacht woord worden geauthenticeerd. Toegang tot de interfaces van Azure Management (Portal/Remote Power shell) en klant gerichte services moeten zijn ontworpen en geconfigureerd voor het gebruik van [Azure multi-factor Authentication](/azure/active-directory/authentication/multi-factor-authentication).
 
 Gebruik standaard verificatie protocollen, zoals OAuth2 en Kerberos. Deze protocollen zijn uitgebreid gecontroleerd en zijn waarschijnlijk geïmplementeerd als onderdeel van uw platform bibliotheken voor verificatie en autorisatie.
 
@@ -116,7 +116,7 @@ De volgende tabel geeft een overzicht van de STRIDE-bedreigingen en biedt enkele
 | --- | --- | --- |
 | Spoofing | Authentication | HTTPS-verbindingen vereisen. |
 | Manipulatie | Gegevensintegriteit | SSL-certificaten valideren. |
-| Ging | Geen weerlegbaarheid | [Bewaking en diagnose](/azure/architecture/best-practices/monitoring)van Azure inschakelen. |
+| Ging | Niet-afwijzing | [Bewaking en diagnose](/azure/architecture/best-practices/monitoring)van Azure inschakelen. |
 | Vrijgeven van informatie | Aard | Versleutel gevoelige gegevens op rest door gebruik te maken van [service certificaten](/rest/api/appservice/certificates). |
 | Denial of service | Beschikbaarheid | Bewaak de prestatie gegevens voor mogelijke denial-of-service-voor waarden. Verbindings filters implementeren. |
 | Verhoging van bevoegdheden | Authorization | Gebruik [privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
@@ -139,7 +139,7 @@ Hieronder vindt u aanbevolen procedures voor het gebruik van App Service.
 **Details**: [App service Environment](/azure/app-service/environment/intro) heeft een functie voor de integratie van virtuele netwerken waarmee u binnenkomende bron-IP-adressen kunt beperken via netwerk beveiligings groepen. Met virtuele netwerken kunt u Azure-resources in een niet-Internet Routeer bare netwerk plaatsen waartoe u de toegang beheert. Zie [uw app integreren met een virtueel Azure-netwerk](/azure/app-service/web-sites-integrate-with-vnet)voor meer informatie.
 
 **Aanbevolen procedure**: Controleer de beveiligings status van uw App Service omgevingen.   
-**Details**: Gebruik Azure Security Center om uw App Service omgevingen te bewaken. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er [aanbevelingen](/azure/security-center/security-center-virtual-machine-recommendations) gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden.
+**Details**: Gebruik Azure Security Center om uw App Service omgevingen te bewaken. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er [aanbevelingen](../../security-center/security-center-virtual-machine-protection.md) gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden.
 
 > [!NOTE]
 > Bewakings App Service is in de preview-fase en is alleen beschikbaar voor de [standaard-laag](/azure/security-center/security-center-pricing) van Security Center.

@@ -1,6 +1,6 @@
 ---
-title: Wisselen van OS-schijf voor een Azure-VM met PowerShell | Microsoft-Docs
-description: Wijzig de besturingssysteemschijf die worden gebruikt door een virtuele machine van Azure met behulp van PowerShell.
+title: De besturingssysteem schijf voor een Azure-VM wisselen met Power shell | Microsoft Docs '
+description: Wijzig de besturingssysteem schijf die wordt gebruikt door een virtuele machine van Azure met behulp van Power shell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,34 +11,33 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: ae3979f7ceae4a854df00b39d9c2b9673f65f987
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b213db38dade06e5015227494fa77b2f465ba1d9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720134"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089049"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Wijzigen van de besturingssysteemschijf die worden gebruikt door een Azure-VM met behulp van PowerShell
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>De besturingssysteem schijf wijzigen die wordt gebruikt door een Azure VM met behulp van Power shell
 
-Als u een bestaande virtuele machine hebt, maar u wilt de schijf voor een back-up schijf of de schijf met een ander besturingssysteem wisselen, kunt u Azure PowerShell om te vervangen door de OS-schijven. U hoeft niet te verwijderen en opnieuw maken van de virtuele machine. U kunt zelfs een beheerde schijf gebruiken in een andere resourcegroep, zolang deze niet al wordt gebruikt.
+Als u een bestaande VM hebt, maar u de schijf wilt wisselen voor een back-upschijf of een andere besturingssysteem schijf, kunt u Azure PowerShell gebruiken om de besturingssysteem schijven te vervangen. U hoeft de virtuele machine niet te verwijderen en opnieuw te maken. U kunt zelfs een beheerde schijf in een andere resource groep gebruiken, zolang deze nog niet in gebruik is.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-De virtuele machine hoeft te worden stopped\deallocated en vervolgens de resource-ID van de beheerde schijf kan worden vervangen door de resource-ID van een andere beheerde schijf.
+De VM moet stopped\deallocated zijn. vervolgens kan de bron-ID van de beheerde schijf worden vervangen door de resource-ID van een andere beheerde schijf.
 
-Zorg ervoor dat de VM-grootte en de opslag-type zijn compatibel met de schijf die u wilt koppelen. Bijvoorbeeld, als de schijf die u wilt gebruiken in Premium-opslag, moet klikt u vervolgens de virtuele machine geschikt voor Premium-opslag (zoals de grootte van een DS-serie). 
+Zorg ervoor dat de VM-grootte en het opslag type compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken zich bijvoorbeeld in Premium Storage bevindt, moet de virtuele machine Premium Storage kunnen zijn (zoals een grootte van de DS-serie). 
 
-Haal een lijst van schijven in een resource-groep met [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
+Een lijst met schijven in een resource groep ophalen met behulp van [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-Wanneer u de naam van de schijf die u wilt gebruiken, stelt u dat als de besturingssysteemschijf voor de virtuele machine. In dit voorbeeld stop\deallocates de virtuele machine met de naam *myVM* en wijst de schijf met de naam *newDisk* als een schijf met het nieuwe besturingssysteem. 
+Wanneer u de naam van de schijf die u wilt gebruiken hebt, stelt u deze in als de besturingssysteem schijf voor de virtuele machine. In dit voor beeld stop\deallocates de virtuele machine met de naam *myVM* en wordt de schijf met de naam *newDisk* toegewezen als de nieuwe besturingssysteem schijf. 
  
 ```azurepowershell-interactive 
 # Get the VM 
@@ -63,4 +62,4 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 **Volgende stappen**
 
-Zie voor het maken van een kopie van een schijf, [momentopname maken van een schijf](snapshot-copy-managed-disk.md).
+Als u een kopie van een schijf wilt maken, raadpleegt u [een moment opname van een schijf](snapshot-copy-managed-disk.md).

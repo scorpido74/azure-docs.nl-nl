@@ -1,6 +1,6 @@
 ---
-title: Verzamelen van informatie over alle virtuele machines in een abonnement met PowerShell | Microsoft Docs
-description: Verzamelen van informatie over alle virtuele machines in een abonnement met PowerShell
+title: Details verzamelen over alle virtuele machines in een abonnement met Power shell | Microsoft Docs
+description: Details verzamelen over alle virtuele machines in een abonnement met Power shell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -9,23 +9,22 @@ editor: v-miegge
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: b4828b34a089a59e630aaaf7652e8623b3e2c7b8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b51c0f7a9fbeadfd0ff79e4578bddad052466b13
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659708"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090793"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Verzamelen van informatie over alle virtuele machines in een abonnement met PowerShell
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Details verzamelen over alle virtuele machines in een abonnement met Power shell
 
-Dit script maakt u een csv met de naam van de virtuele machine, resourcegroep, regio, Virtueelnetwerk, Subnet, privé-IP-adres, Type besturingssysteem en openbare IP-adres van de virtuele machines in het opgegeven abonnement.
+Met dit script maakt u een CSV met de VM-naam, de naam van de resource groep, de regio, de Virtual Network, het subnet, het privé-IP-adres, het type besturings systeem en het open bare IP-adres van de virtuele machines in het abonnement.
 
 Als u geen [Azure-abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
 
@@ -71,14 +70,14 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Uitleg van het script
-Met dit script gebruikt de volgende opdrachten om te maken van een csv-uitvoer van de details van virtuele machines in een abonnement. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om een CSV-export van de gegevens van Vm's in een abonnement te maken. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 |Opdracht|Opmerkingen|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Hiermee stelt u de tenant, abonnement en omgeving voor cmdlets te gebruiken in de huidige sessie.|
-|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Hiermee haalt u de eigenschappen van een virtuele machine.|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Hiermee haalt u een openbaar IP-adres.|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Hiermee haalt u een netwerkinterface.|
+|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Hiermee stelt u de Tenant, het abonnement en de omgeving in voor cmdlets die moeten worden gebruikt in de huidige sessie.|
+|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Hiermee worden de eigenschappen van een virtuele machine opgehaald.|
+|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Hiermee haalt u een openbaar IP-adres op.|
+|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Hiermee wordt een netwerk interface opgehaald.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

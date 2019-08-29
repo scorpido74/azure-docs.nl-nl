@@ -1,6 +1,6 @@
 ---
-title: Azure-seriële Console voor SysRq en NMI aanroepen | Microsoft Docs
-description: Met behulp van de seriële Console voor SysRq en NMI roept in virtuele machines van Azure.
+title: Azure seriële console voor SysRq-en NMI-aanroepen | Microsoft Docs
+description: Met behulp van seriële console voor SysRq-en NMI-aanroepen in azure virtual machines.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -8,128 +8,127 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 79729cf222c208a78a2eac430e51b996cddb4e78
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d5c647bac2bc6abc85a74531e052f0f3a54b2047
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710549"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090094"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Seriële Console gebruiken voor SysRq en NMI aanroepen
+# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Seriële console gebruiken voor SysRq-en NMI-aanroepen
 
-## <a name="system-request-sysrq"></a>Systeem-aanvraag (SysRq)
-Een SysRq is een opeenvolging van sleutels die worden geïnterpreteerd door de bewerking system kernel Linux, die een set vooraf gedefinieerde acties kan activeren. Deze opdrachten worden vaak gebruikt bij het oplossen van de virtuele machine of herstel kan niet worden uitgevoerd via een traditioneel beheer (bijvoorbeeld, als de virtuele machine niet reageert). Met de functie SysRq van de seriële Console van Azure nabootsen drukken op de SysRq sleutel en de tekens die zijn ingevoerd op een fysieke toetsenbord.
+## <a name="system-request-sysrq"></a>Systeem aanvraag (SysRq)
+Een SysRq is een reeks sleutels die worden begrepen door de Linux-bewerkings systeem-kernel, waarmee een reeks vooraf gedefinieerde acties kan worden geactiveerd. Deze opdrachten worden vaak gebruikt bij het oplossen van problemen met de virtuele machine of het herstel kan niet worden uitgevoerd via een traditioneel beheer (bijvoorbeeld als de VM niet reageert). Met de SysRq-functie van Azure Serial console wordt op het drukken van de SysRq-sleutel en de tekens die op een fysiek toetsen bord zijn ingevoerd, gesimuleerd.
 
-Wanneer de reeks SysRq wordt geleverd, wordt de configuratie van de kernel bepalen hoe het systeem reageert. Zie voor meer informatie over het inschakelen en uitschakelen van SysRq de *beheerdershandleiding voor de SysRq* [tekst](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq).  
+Zodra de SysRq-reeks is geleverd, bepaalt de kernel configuratie hoe het systeem reageert. Voor informatie over het in-en uitschakelen van SYSRQ, raadpleegt u de [tekst](https://aka.ms/kernelorgsysreqdoc) | voor de *SYSRQ-beheerders handleiding* .[](https://aka.ms/linuxsysrq)  
 
-De seriële Console van Azure kan worden gebruikt voor het verzenden van een SysRq met een Azure-machine via het toetsenbordpictogram in de opdrachtbalk die hieronder wordt weergegeven.
+De Azure Serial console kan worden gebruikt om een SysRq te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-'Verzenden SysRq opdracht' kiest, wordt een dialoogvenster dat wordt bieden algemene SysRq opties of accepteren van een reeks SysRq opdrachten ingevoerd in het dialoogvenster geopend.  Hiermee wordt voor de reeks SysRq's een bewerking op hoog niveau zoals het gebruik van een veilige opnieuw opstarten uit te voeren: `REISUB`.
+Als u de opdracht ' SysRq verzenden ' kiest, wordt er een dialoog venster geopend, waarmee u algemene SysRq-opties kunt opgeven, of een reeks SysRq-opdrachten die in het dialoog venster zijn ingevoerd.  Op die manier kunnen reeksen SysRq een bewerking op hoog niveau uitvoeren, zoals veilig opnieuw opstarten met behulp van `REISUB`:.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
-De opdracht SysRq kan niet worden gebruikt op virtuele machines die zijn gestopt of waarvan kernel bevindt zich in een niet-reagerend status. (bijvoorbeeld een kernelprobleem).
+De opdracht SysRq kan niet worden gebruikt op virtuele machines die zijn gestopt of waarvan de kernel een niet-reagerende status heeft. (bijvoorbeeld een kernel paniek).
 
 ### <a name="enable-sysrq"></a>SysRq inschakelen 
-Zoals beschreven in de *beheerdershandleiding voor de SysRq* hierboven SysRq kan worden geconfigureerd dat alle, geen of alleen bepaalde opdrachten zijn beschikbaar. Kunt u alle SysRq opdrachten met behulp van de onderstaande stappen, maar deze niet blijven van kracht na opnieuw opstarten:
+Zoals beschreven in de *SYSRQ-beheer handleiding* hierboven, kan SYSRQ zodanig worden geconfigureerd dat alle, geen of alleen bepaalde opdrachten beschikbaar zijn. U kunt alle SysRq-opdrachten inschakelen met behulp van de onderstaande stap, maar deze wordt niet opnieuw opgestart:
 ```
 echo "1" >/proc/sys/kernel/sysrq
 ```
-Als u de configuratie van de SysReq permanente, u kunt als volgt als u wilt alle SysRq opdrachten inschakelen
-1. Deze regel aan toe te voegen */etc/sysctl.conf* <br>
+Als u de SysReq-configuratie permanent wilt maken, kunt u het volgende doen om alle SysRq-opdrachten in te scha kelen:
+1. Deze regel toevoegen aan */etc/sysctl.conf* <br>
     `kernel.sysrq = 1`
-1. Opnieuw opstarten of sysctl bijwerken door te voeren <br>
+1. Sysctl opnieuw opstarten of bijwerken door uit te voeren <br>
     `sysctl -p`
 
 ### <a name="command-keys"></a>Opdracht sleutels 
-In de beheerdershandleiding SysRq hierboven is:
+Vanuit de SysRq-beheer handleiding hierboven:
 
 |Opdracht| Function
 | ------| ----------- |
-|``b``  |   Wordt onmiddellijk het systeem opnieuw opstarten zonder synchroniseren of de schijven ontkoppelen.
-|``c``  |   Een systeem vastlopen wordt uitgevoerd door een NULL-aanwijzer voor referentie ongedaan maken. Een crashdump worden uitgevoerd als geconfigureerd.
-|``d``  |   Geeft alle vergrendelingen die zijn ingesteld.
-|``e``  |   Een SIGTERM verzenden naar alle processen, met uitzondering van init.
-|``f``  |   De killer oom als u wilt een geheugen hog proces beëindigen wordt gebeld, maar kan geen paniek als er niets kan worden beëindigd.
-|``g``  |   Gebruikt door kgdb (kernelfoutopsporingsprogramma)
-|``h``  |   Help-informatie wordt weergegeven (een andere sleutel dan de hier vermelde gegevens worden ook weergegeven voor Help-informatie, maar ``h`` gemakkelijk te onthouden :-)
-|``i``  |    Een SIGKILL verzenden naar alle processen, met uitzondering van init.
-|``j``  |    Geforceerd 'Net ontdooien deze' - bestandssystemen geblokkeerd met de ioctl FIFREEZE.
-|``k``  |    Veilige toegang sleutel (SAK) beëindigt alle programma's op de huidige virtuele-console. OPMERKING: Belangrijke opmerkingen hieronder in de sectie SAK zien.
-|``l``  |    Toont een stack-backtrace voor alle actieve CPU's.
-|``m``  |    Huidige geheugen informatie die u kunt de console zal worden dump.
-|``n``  |    Gebruikt voor het RT taken goed te kunnen maken
-|``o``  |    Uit het systeem wordt afgesloten (indien geconfigureerd en wordt ondersteund).
-|``p``  |    De huidige wordt geregistreerd en de vlaggen voor de console zal worden dump.
-|``q``  |    Dump wordt per CPU-lijsten met alle gewapend hrtimers (maar niet regelmatig timer_list timers) en gedetailleerde informatie weer over alle clockevent-apparaten.
-|``r``  |    Schakelt toetsenbord onbewerkte modus en wordt dit XLATE ingesteld.
-|``s``  |    Probeert te synchroniseren van alle gekoppelde bestandssystemen.
-|``t``  |    Wordt een lijst met huidige taken en hun gegevens aan uw console dump.
-|``u``  |    Probeert te koppelen van alle gekoppelde bestandssystemen alleen-lezen.
-|``v``  |    Geforceerd worden hersteld framebuffer-console
-|``v``  |    Zorgt ervoor dat ETM buffer dump [ARM-specifieke]
-|``w``  |    Dumpbestanden voor foutopsporing taken die noodvoeding (geblokkeerd) status hebben.
-|``x``  |    Gebruikt door de interface xmon op ppc/powerpc platforms. Globale PMU registreert op sparc64 weergeven. Alle TLB vermeldingen op MIPS dump.
-|``y``  |    Algemene CPU-Registers [SPARC-64-specifieke] weergeven
-|``z``  |    De buffer ftrace dump
-|``0``-``9`` | Hiermee stelt u de console logboek-niveau, bepalen welke kernel-berichten worden afgedrukt aan de console. (``0``voor voorbeeld zou ervoor zorgen dat alleen noodgevallen berichten, zoals PANICs of OOPSes deze aan uw console zouden.)
+|``b``  |   Het systeem wordt onmiddellijk opnieuw opgestart zonder de schijven te synchroniseren of te ontkoppelen.
+|``c``  |   Voert een systeem crash uit door een verwijzing naar een NULL-aanwijzer. Er wordt een crash dump genomen als deze is geconfigureerd.
+|``d``  |   Toont alle vergrendelde vergren delingen.
+|``e``  |   Een SIGTERM verzenden naar alle processen, met uitzonde ring van init.
+|``f``  |   Roept de oom-Killer aan om een geheugen Hog proces af te breken, maar niet in paniek als niets kan worden afgebroken.
+|``g``  |   Gebruikt door KGDB (kernel debugger)
+|``h``  |   De Help wordt weer gegeven (een andere sleutel dan die hier wordt vermeld, maar ``h`` is gemakkelijk te onthouden:-)
+|``i``  |    Een SIGKILL verzenden naar alle processen, met uitzonde ring van init.
+|``j``  |    Alleen het ontdooien:-bestands systeem dat door de FIFREEZE IOCTL is geblokkeerd.
+|``k``  |    Met de beveiligde Toegangs toets (SAK) worden alle Program ma's op de huidige virtuele console afbreken. OPMERKING: Zie belang rijke opmerkingen hieronder in de sectie SAK.
+|``l``  |    Toont een stack-backtrace voor alle actieve Cpu's.
+|``m``  |    Dumpt de huidige geheugen gegevens naar uw-console.
+|``n``  |    Wordt gebruikt om RT-taken goed te kunnen uitvoeren
+|``o``  |    Het systeem wordt afgesloten (indien geconfigureerd en ondersteund).
+|``p``  |    Hiermee worden de huidige kassa's en vlaggen voor uw console gedumpt.
+|``q``  |    Zal per CPU-lijst van alle gehrtimerseerde (maar geen normale timer_list timers) dumpen en gedetailleerde informatie over alle clockevent-apparaten.
+|``r``  |    Hiermee schakelt u de modus voor onbewerkte toetsaanslagen uit en stelt u deze in op XLATE.
+|``s``  |    Er wordt geprobeerd om alle gekoppelde bestands systemen te synchroniseren.
+|``t``  |    Er wordt een lijst met huidige taken en de bijbehorende informatie naar uw console gedumpt.
+|``u``  |    Er wordt geprobeerd alle gekoppelde bestands systemen alleen-lezen te koppelen.
+|``v``  |    Hiermee wordt de framebuffer-console geforceerd hersteld
+|``v``  |    Veroorzaakt ETM buffer dump [ARM-specifiek]
+|``w``  |    Dumpt taken die zich in de status van een nood situatie (geblokkeerd) bevinden.
+|``x``  |    Wordt gebruikt door de xmon-interface op PPC/powerpc-platforms. Algemene PMU-registers weer geven op sparc64. Alle TLB-vermeldingen op MIPS dumpen.
+|``y``  |    Globale CPU-registers weer geven [SPARC-64-specifiek]
+|``z``  |    De ftrace-buffer dumpen
+|``0``-``9`` | Hiermee stelt u het logboek niveau van de console in, waarbij wordt beheerd welke kernel-berichten worden afgedrukt op uw-console. (``0``dit kan bijvoorbeeld zodanig zijn dat alleen nood berichten, zoals een paniek of een bestand, het naar uw-console zou kunnen maken.)
 
 ### <a name="distribution-specific-documentation"></a>Distributie-specifieke documentatie ###
-Voor distributie-specifieke documentatie over SysRq en stappen voor het configureren van Linux te maken van een crashdump wanneer deze een opdracht SysRq "Vastloopt" ontvangt, Zie de onderstaande koppelingen:
+Zie de onderstaande koppelingen voor distributie-specifieke documentatie over SysRq en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een SysRq ' crash '.
 
 #### <a name="ubuntu"></a>Ubuntu ####
- - [Kernel-crashdump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [Kernel-crash dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 #### <a name="red-hat"></a>Red Hat ####
-- [Wat is de faciliteit SysRq en hoe gebruik ik dit?](https://access.redhat.com/articles/231663)
-- [Het gebruik van de faciliteit SysRq voor het verzamelen van gegevens van een RHEL-server](https://access.redhat.com/solutions/2023)
+- [Wat is de SysRq-faciliteit en hoe kan ik deze gebruiken?](https://access.redhat.com/articles/231663)
+- [De SysRq-faciliteit gebruiken om informatie te verzamelen van een RHEL-server](https://access.redhat.com/solutions/2023)
 
 #### <a name="suse"></a>SUSE ####
-- [Configureren van de kernel dump van core vastleggen](https://www.suse.com/support/kb/doc/?id=3374462)
+- [Kernel core-dump vastleggen configureren](https://www.suse.com/support/kb/doc/?id=3374462)
 
 #### <a name="coreos"></a>CoreOS ####
-- [Verzamelen crash-Logboeken](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
+- [Vastlopende logboeken verzamelen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="non-maskable-interrupt-nmi"></a>Niet te maskeren Interrupt (NMI) 
-Een niet-maskeren interrupt (NMI) is ontworpen voor het maken van een signaal dat software op een virtuele machine worden niet genegeerd. In het verleden zijn NMIs gebruikt om te controleren op hardwareproblemen op systemen die specifieke reactietijden vereist.  NMI vandaag, programmeurs en systeembeheerders vaak gebruikt als een mechanisme voor foutopsporing of problemen met systemen die niet reageren.
+## <a name="non-maskable-interrupt-nmi"></a>Niet-maskeer bare interrupt (NMI) 
+Een niet-maskeer bare interrupt (NMI) is ontworpen om een signaal te maken dat software op een virtuele machine niet wordt genegeerd. In het verleden zijn NMIs gebruikt om te controleren op hardwareproblemen op systemen die specifieke reactietijden vereist.  Tegenwoordig gebruiken programmeurs en systeem beheerders NMI vaak als een mechanisme voor het opsporen van problemen met systemen die niet reageren.
 
-De seriële Console kan worden gebruikt voor het verzenden van een NMI met een Azure-machine via het toetsenbordpictogram in de opdrachtbalk die hieronder wordt weergegeven. Zodra de NMI wordt geleverd, worden de virtuele-machineconfiguratie bepalen hoe het systeem reageert.  Linux-besturingssystemen kunnen worden geconfigureerd voor crashes en het besturingssysteem van een geheugendump maken ontvangt een NMI.
+De seriële console kan worden gebruikt om een NMI te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk. Zodra de NMI is geleverd, wordt door de configuratie van de virtuele machine bepaald hoe het systeem reageert.  Linux-besturings systemen kunnen worden geconfigureerd om te crashen en een geheugen dump te maken waarbij het besturings systeem een NMI ontvangt.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>NMI inschakelen
-Voor Linux-systemen die ondersteuning bieden voor sysctl voor het configureren van de kernel-parameters, kunt u een paniek inschakelen bij de ontvangst van deze NMI met behulp van de volgende:
-1. Deze regel aan toe te voegen */etc/sysctl.conf* <br>
+Voor Linux-systemen die sysctl ondersteunen voor het configureren van kernel-para meters, kunt u een paniek inschakelen wanneer deze NMI wordt ontvangen met behulp van het volgende:
+1. Deze regel toevoegen aan */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`
-1. Opnieuw opstarten of sysctl bijwerken door te voeren <br>
+1. Sysctl opnieuw opstarten of bijwerken door uit te voeren <br>
     `sysctl -p`
 
-Voor meer informatie over Linux-kernel-configuraties, met inbegrip van `unknown_nmi_panic`, `panic_on_io_nmi`, en `panic_on_unrecovered_nmi`, Zie: [Documentatie voor/proc/sys/kernel / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Voor distributie-specifieke documentatie over NMI en stappen voor het configureren van Linux te maken van een crashdump wanneer deze een NMI ontvangt, Zie de onderstaande koppelingen:
+Zie voor meer informatie over Linux-kernel- `unknown_nmi_panic`configuraties `panic_on_io_nmi`, inclusief `panic_on_unrecovered_nmi`, en: [Documentatie voor/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Zie de onderstaande koppelingen voor distributie-specifieke documentatie over NMI en stappen voor het configureren van Linux voor het maken van een crash dump bij het ontvangen van een NMI.
  
 ### <a name="ubuntu"></a>Ubuntu 
- - [Kernel-crashdump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+ - [Kernel-crash dump](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 ### <a name="red-hat"></a>Red Hat 
- - [Wat is er een NMI en wat kan ik deze voor gebruiken?](https://access.redhat.com/solutions/4127)
- - [Hoe kan ik mijn systeem vastlopen wanneer NMI switch wordt gepusht configureren?](https://access.redhat.com/solutions/125103)
- - [Beheerdershandleiding voor de crash Dump](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
+ - [Wat is een NMI en waarvoor kan ik deze gebruiken?](https://access.redhat.com/solutions/4127)
+ - [Hoe kan ik mijn systeem laten vastlopen wanneer de NMI-switch wordt gepusht?](https://access.redhat.com/solutions/125103)
+ - [Beheerders handleiding voor crash dump](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
-- [Configureren van de kernel dump van core vastleggen](https://www.suse.com/support/kb/doc/?id=3374462)
+- [Kernel core-dump vastleggen configureren](https://www.suse.com/support/kb/doc/?id=3374462)
 
 ### <a name="coreos"></a>CoreOS 
-- [Verzamelen crash-Logboeken](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
+- [Vastlopende logboeken verzamelen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>Volgende stappen
-* De hoofdpagina van de seriële Console-Linux-documentatie bevindt zich [hier](serial-console-linux.md).
-* Seriële Console gebruiken om op te starten in [van WORMGATEN en voer de modus voor één gebruiker](serial-console-grub-single-user-mode.md)
-* Seriële Console van het is ook beschikbaar voor [Windows](serial-console-windows.md) VM's
-* Meer informatie over [diagnostische gegevens over opstarten](boot-diagnostics.md)
+* De documentatie pagina voor de hoofd console Linux bevindt zich [hier](serial-console-linux.md).
+* Seriële console gebruiken om op te starten in [grub en de modus voor één gebruiker](serial-console-grub-single-user-mode.md) in te voeren
+* De seriële console is ook beschikbaar voor virtuele [Windows](serial-console-windows.md) -machines
+* Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md)

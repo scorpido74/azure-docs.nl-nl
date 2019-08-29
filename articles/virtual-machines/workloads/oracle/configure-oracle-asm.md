@@ -1,6 +1,6 @@
 ---
-title: Oracle Asm installeren op een Azure Linux-machine instellen | Microsoft Docs
-description: Snel gebruiksklaar Oracle Asm installeren om in uw Azure-omgeving.
+title: Oracle ASM op een virtuele Azure Linux-machine instellen | Microsoft Docs
+description: Krijg snel en eenvoudig Oracle-ASM in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -9,29 +9,28 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: a2f6eab495680b3f32246488af5b7bbe5263d93a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 91150251140379c15d4ab3711ded571c9ad2c024
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707708"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101655"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle ASM installeren op een virtuele Azure Linux-machine  
 
-Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. In deze zelfstudie bevat informatie over de implementatie van virtuele Azure-machines in combinatie met de installatie en configuratie van Oracle geautomatiseerde Storage Management (ASM).  In deze zelfstudie leert u procedures om het volgende te doen:
+Virtuele machines in Azure bieden een volledig geconfigureerde en flexibele computeromgeving. In deze zelf studie wordt de basis implementatie van virtuele Azure-machines besproken, gecombineerd met de installatie en configuratie van Oracle Automated Storage Management (ASM).  In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Maken en verbinding maken met een Oracle-Database-VM
-> * Installeren en configureren van Oracle geautomatiseerd beheer van opslag
-> * Installeren en configureren van de infrastructuur voor Oracle-raster
+> * Een Oracle Database-VM maken en er verbinding mee tot stand brengen
+> * Geautomatiseerd opslag beheer voor Oracle installeren en configureren
+> * De Oracle-raster infrastructuur installeren en configureren
 > * Een Oracle ASM-installatie initialiseren
-> * Maak een Oracle DB beheerd door ASM
+> * Een Oracle DB maken dat wordt beheerd door ASM
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
@@ -42,7 +41,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-U kunt een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure resources worden geïmplementeerd en beheerd. In dit voorbeeld wordt een resourcegroep met de naam *myResourceGroup* in de *eastus* regio.
+U kunt een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een Azure-resource groep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In dit voor beeld wordt een resource groep met de naam *myResourceGroup* in de regio *eastus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -50,9 +49,9 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>Een virtuele machine maken
 
-Een virtuele machine op basis van de installatiekopie met Oracle-Database maken en deze voor het gebruik van Oracle ASM configureren, gebruikt u de [az vm maken](/cli/azure/vm) opdracht. 
+Gebruik de opdracht [AZ VM Create](/cli/azure/vm) om een virtuele machine te maken op basis van de Oracle database installatie kopie en deze te configureren voor het gebruik van Oracle asm. 
 
-Het volgende voorbeeld wordt een virtuele machine met de naam myVM die een groot Standard_DS2_v2 met vier gekoppelde gegevensschijven van 50 GB. Als ze nog niet bestaan in de standaardsleutellocatie, maakt het ook SSH-sleutels.  Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.  
+In het volgende voor beeld wordt een VM gemaakt met de naam myVM die een Standard_DS2_v2-grootte heeft met vier gekoppelde gegevens schijven van 50 GB. Als ze nog niet bestaan op de standaard locatie van de sleutel, worden er ook SSH-sleutels gemaakt.  Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.  
 
    ```azurecli-interactive
    az vm create --resource-group myResourceGroup \
@@ -63,7 +62,7 @@ Het volgende voorbeeld wordt een virtuele machine met de naam myVM die een groot
     --data-disk-sizes-gb 50 50 50 50
    ```
 
-Nadat u de virtuele machine maakt, geeft Azure CLI informatie die vergelijkbaar is met het volgende voorbeeld. Noteer de waarde voor `publicIpAddress`. U gebruikt dit adres voor toegang tot de virtuele machine.
+Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt op het volgende voor beeld. Noteer de waarde voor `publicIpAddress`. U gebruikt dit adres voor toegang tot de virtuele machine.
 
    ```azurecli
    {
@@ -80,25 +79,25 @@ Nadat u de virtuele machine maakt, geeft Azure CLI informatie die vergelijkbaar 
 
 ### <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Gebruik de volgende opdracht voor het maken van een SSH-sessie met de virtuele machine en aanvullende instellingen configureren. Vervang het IP-adres met de `publicIpAddress` waarde voor uw virtuele machine.
+Gebruik de volgende opdracht als u een SSH-sessie met de virtuele machine wilt maken en aanvullende instellingen wilt configureren. Vervang het IP-adres door `publicIpAddress` de waarde voor uw VM.
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-## <a name="install-oracle-asm"></a>Install Oracle ASM
+## <a name="install-oracle-asm"></a>Oracle ASM installeren
 
-Oracle ASM installeren, de volgende stappen. 
+Voer de volgende stappen uit om Oracle ASM te installeren. 
 
-Zie voor meer informatie over het installeren van Oracle ASM [Oracle ASMLib Downloads voor Oracle Linux 6](https://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html).  
+Zie [Oracle ASMLib down loads for Oracle Linux 6](https://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html)(Engelstalig) voor meer informatie over het installeren van Oracle asm.  
 
-1. U moet zich aanmelden als basis om door te gaan met de ASM-installatie:
+1. U moet zich aanmelden als root om door te gaan met de installatie van ASM:
 
    ```bash
    sudo su -
    ```
    
-2. Voer deze aanvullende opdrachten om Oracle ASM-onderdelen te installeren:
+2. Voer deze extra opdrachten uit om Oracle ASM-onderdelen te installeren:
 
    ```bash
     yum list | grep oracleasm 
@@ -115,7 +114,7 @@ Zie voor meer informatie over het installeren van Oracle ASM [Oracle ASMLib Down
    rpm -qa |grep oracleasm
    ```
 
-    De uitvoer van deze opdracht moet bevatten de volgende onderdelen:
+    De uitvoer van deze opdracht moet de volgende onderdelen vermelden:
 
     ```bash
    oracleasm-support-2.1.10-4.el6.x86_64
@@ -123,7 +122,7 @@ Zie voor meer informatie over het installeren van Oracle ASM [Oracle ASMLib Down
    oracleasmlib-2.0.12-1.el6.x86_64
     ```
 
-4. ASM vereist specifieke gebruikers en rollen om te kunnen laten functioneren. De volgende opdrachten maakt de vereiste gebruikersaccounts en groepen: 
+4. ASM vereist specifieke gebruikers en rollen om goed te kunnen functioneren. Met de volgende opdrachten worden de vereiste gebruikers accounts en-groepen gemaakt: 
 
    ```bash
     groupadd -g 54345 asmadmin 
@@ -133,36 +132,36 @@ Zie voor meer informatie over het installeren van Oracle ASM [Oracle ASMLib Down
     usermod -g oinstall -G dba,asmdba,asmadmin oracle
    ```
 
-5. Controleer of gebruikers en groepen correct zijn gemaakt:
+5. Controleer of de gebruikers en groepen correct zijn gemaakt:
 
    ```bash
    id grid
    ```
 
-    De uitvoer van deze opdracht moet een lijst met de volgende gebruikers en groepen:
+    De uitvoer van deze opdracht moet de volgende gebruikers en groepen weer geven:
 
     ```bash
     uid=3000(grid) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54345(asmadmin),54346(asmdba),54347(asmoper)
     ```
  
-6. Maak een map voor de gebruiker *raster* en de eigenaar niet wijzigen:
+6. Maak een map voor gebruikers *raster* en wijzig de eigenaar:
 
    ```bash
    mkdir /u01/app/grid 
    chown grid:oinstall /u01/app/grid
    ```
 
-## <a name="set-up-oracle-asm"></a>Oracle Asm installeren
+## <a name="set-up-oracle-asm"></a>Oracle ASM instellen
 
-Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *asmadmin*. Zorg ervoor dat de *oracle* gebruiker deel uitmaakt van de groep asmadmin. Als u de installatie van de Oracle ASM instelt, moet u de volgende stappen uitvoeren:
+Voor deze zelf studie is de standaard gebruiker *raster* en is de standaard groep *asmadmin*. Zorg ervoor dat de *Oracle* -gebruiker deel uitmaakt van de asmadmin-groep. Voer de volgende stappen uit om uw Oracle ASM-installatie in te stellen:
 
-1. Instellen van het stuurprogramma van Oracle ASM-bibliotheek omvat het definiëren van de standaardgebruiker (raster) en de standaardgroep (asmadmin), evenals het configureren van het station om te beginnen bij het opstarten (Kies y) en om te zoeken naar schijven op opstarten (y te kiezen). U moet de hierom wordt gevraagd van de volgende opdracht uit:
+1. Het instellen van het stuur programma voor de Oracle ASM-bibliotheek omvat het definiëren van de standaard gebruiker (raster) en de standaard groep (asmadmin), en het configureren van het station om te starten bij opstarten (Kies y) en om te scannen op schijven bij het opstarten (Kies y). U moet de prompts beantwoorden met de volgende opdracht:
 
    ```bash
    /usr/sbin/oracleasm configure -i
    ```
 
-   De uitvoer van deze opdracht ziet er vergelijkbaar met het volgende moet worden gestopt met vraagt moeten worden beantwoord.
+   De uitvoer van deze opdracht moet er ongeveer als volgt uitzien, met de prompts die moeten worden beantwoord.
 
     ```bash
    Configuring the Oracle ASM library driver.
@@ -180,12 +179,12 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
    Writing Oracle ASM library driver configuration: done
    ```
 
-2. De schijfconfiguratie van de weergeven:
+2. De schijf configuratie weer geven:
    ```bash
    cat /proc/partitions
    ```
 
-   De uitvoer van deze opdracht zijn vergelijkbaar met de volgende lijst met beschikbare schijven
+   De uitvoer van deze opdracht moet er ongeveer uitzien als de volgende lijst met beschik bare schijven
 
    ```bash
    8       16   14680064 sdb
@@ -200,19 +199,19 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
    11       0       1152 sr0
    ```
 
-3. Schijf formatteren */dev/sdc* door te voeren van de volgende opdracht en beantwoord de prompts met:
+3. Format teer de schijf */dev/SDC* door de volgende opdracht uit te voeren en de prompts te beantwoorden met:
    - *n* voor nieuwe partitie
    - *p* voor primaire partitie
    - *1* om de eerste partitie te selecteren
-   - Druk op `enter` voor de standaard eerste 3D-cilinder
-   - Druk op `enter` voor de standaard laatste 3D-cilinder
-   - Druk op *w* de wijzigingen naar de partitietabel schrijven  
+   - Druk `enter` op de standaard eerste cilinder
+   - Druk `enter` op de standaard laatste cilinder
+   - Druk op *w* om de wijzigingen in de partitie tabel te schrijven  
 
    ```bash
    fdisk /dev/sdc
    ```
    
-   Met behulp van de antwoorden die hierboven, uitzien de uitvoer voor de opdracht fdisk als volgt:
+   Met de hierboven vermelde antwoorden moet de uitvoer voor de fdisk-opdracht er als volgt uitzien:
 
    ```bash
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -248,15 +247,15 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
    Syncing disks.
    ```
 
-4. Herhaal de voorgaande opdracht fdisk voor `/dev/sdd`, `/dev/sde`, en `/dev/sdf`.
+4. Herhaal de voor gaande fdisk- `/dev/sdd`opdracht `/dev/sde`voor, `/dev/sdf`en.
 
-5. Controleer de schijfconfiguratie:
+5. Controleer de schijf configuratie:
 
    ```bash
    cat /proc/partitions
    ```
 
-   De uitvoer van de opdracht ziet er als volgt uit:
+   De uitvoer van de opdracht moet er als volgt uitzien:
 
    ```bash
    major minor  #blocks  name
@@ -277,14 +276,14 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
      11       0    1048575 sr0
    ```
 
-6. Controleer de status van de Oracle ASM-service en start de service Oracle Asm installeren:
+6. Controleer de status van de Oracle ASM-service en start de Oracle ASM-service:
 
    ```bash
    service oracleasm status 
    service oracleasm start
    ```
 
-   De uitvoer van de opdracht ziet er als volgt uit:
+   De uitvoer van de opdracht moet er als volgt uitzien:
    
    ```bash
    Checking if ASM is loaded: no
@@ -302,7 +301,7 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
    service oracleasm createdisk FRA /dev/sdf1
    ```    
 
-   De uitvoer van de opdracht ziet er als volgt uit:
+   De uitvoer van de opdracht moet er als volgt uitzien:
 
    ```bash
    Marking disk "ASMSP" as an ASM disk:                       [  OK  ]
@@ -311,13 +310,13 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
    Marking disk "FRA" as an ASM disk:                         [  OK  ]
    ```
 
-8. Oracle ASM-schijven vermelden:
+8. Oracle ASM-schijven weer geven:
 
    ```bash
    service oracleasm listdisks
    ```   
 
-   De uitvoer van de opdracht moet uit de volgende Oracle ASM-schijven vermelden:
+   De uitvoer van de opdracht moet de volgende Oracle ASM-schijven vermelden:
 
    ```bash
     ASMSP
@@ -326,7 +325,7 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
     FRA
    ```
 
-9. De wachtwoorden voor de basis-, oracle en raster gebruikers wijzigen. **Maak notitie van deze nieuwe wachtwoorden** als u deze later tijdens de installatie gebruikt.
+9. Wijzig de wacht woorden voor de hoofd-, Oracle-en grid-gebruikers. **Noteer deze nieuwe wacht woorden** wanneer u deze later tijdens de installatie gebruikt.
 
    ```bash
    passwd oracle 
@@ -334,7 +333,7 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
    passwd root
    ```
 
-10. Wijzig de map machtiging:
+10. Wijzig de machtiging voor de map:
 
     ```bash
     chmod -R 775 /opt 
@@ -349,21 +348,21 @@ Voor deze zelfstudie de standaardwaarde is *raster* en de standaard-groep is *as
     chmod 600 /dev/sdf1
     ```
 
-## <a name="download-and-prepare-oracle-grid-infrastructure"></a>Download en Oracle Grid infrastructuur voorbereiden
+## <a name="download-and-prepare-oracle-grid-infrastructure"></a>De Oracle-raster infrastructuur downloaden en voorbereiden
 
-Om te downloaden en bereidt u de infrastructuur voor het raster van Oracle-software, voert u de volgende stappen uit:
+Voer de volgende stappen uit om de Oracle Grid-infrastructuur software te downloaden en voor te bereiden:
 
-1. Downloaden van Oracle Grid infrastructuur niet vanuit de [Oracle ASM-downloadpagina](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
+1. Down load de Oracle grid-infra structuur vanaf de [Oracle ASM-download pagina](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
 
-   Bij het downloaden met de titel **Oracle Database 12c Release 1 Grid infrastructuur (12.1.0.2.0) voor Linux x86-64**, de twee ZIP-bestanden te downloaden.
+   Down load de twee zip-bestanden onder de down load met de titel **Oracle database 12c-versie 1 (12.1.0.2.0) voor linux x86-64**.
 
-2. Nadat u het ZIP-bestanden naar uw client-computer downloaden, kunt u Secure Copy Protocol (SCP) gebruiken de bestanden naar uw virtuele machine te kopiëren:
+2. Nadat u de zip-bestanden hebt gedownload naar de client computer, kunt u het Secure Copy Protocol (SCP) gebruiken om de bestanden te kopiëren naar uw VM:
 
    ```bash
    scp *.zip <publicIpAddress>:.
    ```
 
-3. SSH in uw Oracle-VM in Azure om te verplaatsen van het ZIP-bestanden in de / opt-map. Wijzig de eigenaar van de bestanden:
+3. SSH terug naar uw Oracle-VM in azure om de zip-bestanden te verplaatsen naar de map/opt. Wijzig vervolgens de eigenaar van de bestanden:
 
    ```bash
    ssh <publicIPAddress>
@@ -373,7 +372,7 @@ Om te downloaden en bereidt u de infrastructuur voor het raster van Oracle-softw
    sudo chown grid:oinstall linuxamd64_12102_grid_2of2.zip
    ```
 
-4. Pak de bestanden. (Installatie van de Linux unzip hulpprogramma als deze nog niet geïnstalleerd.)
+4. Pak de bestanden uit. (Installeer het hulp programma voor Linux-Unzip als dit nog niet is geïnstalleerd.)
    
    ```bash
    sudo yum install unzip
@@ -381,41 +380,41 @@ Om te downloaden en bereidt u de infrastructuur voor het raster van Oracle-softw
    sudo unzip linuxamd64_12102_grid_2of2.zip
    ```
 
-5. De machtiging wijzigen:
+5. Machtiging wijzigen:
    
    ```bash
    sudo chown -R grid:oinstall /opt/grid
    ```
 
-6. Update geconfigureerd wisselruimte. Oracle Grid onderdelen moeten ten minste 6,8 GB aan wisselruimte voor het installeren van de Grid. Standaardgrootte van het wisselbestand voor Oracle Linux-installatiekopieën in Azure is alleen 2048MB. U wilt verhogen `ResourceDisk.SwapSizeMB` in de `/etc/waagent.conf` -bestand en de WALinuxAgent-service opnieuw starten om de bijgewerkte instellingen toe te passen. Omdat het een alleen-lezen-bestand is, moet u bestandsmachtigingen om in te schakelen toegang voor schrijven wijzigen.
+6. Geconfigureerde wissel ruimte bijwerken. Onderdelen van Oracle grid hebben ten minste 6,8 GB wissel ruimte nodig om raster te installeren. De standaard grootte van het wissel bestand voor het Oracle Linux van installatie kopieën in Azure is alleen 2048 MB. U moet het `/etc/waagent.conf` bestand `ResourceDisk.SwapSizeMB` verg Roten en de WALinuxAgent-service opnieuw starten om de bijgewerkte instellingen van kracht te laten worden. Omdat het een alleen-lezen bestand is, moet u de bestands machtigingen wijzigen om schrijf toegang in te scha kelen.
 
    ```bash
    sudo chmod 777 /etc/waagent.conf  
    vi /etc/waagent.conf
    ```
    
-   Zoeken naar `ResourceDisk.SwapSizeMB` en wijzig de waarde in **8192**. U moet druk op `insert` invoegmodus, typt u in de waarde van **8192** en druk vervolgens op `esc` om terug te keren naar de opdrachtmodus. Voor het schrijven van de wijzigingen en sluit het bestand, typ `:wq` en druk op `enter`.
+   Zoek en wijzig de waarde in **8192.** `ResourceDisk.SwapSizeMB` U moet op de invoeg `insert` modus drukken, de waarde **8192** invoeren en vervolgens op drukken klikken `esc` om terug te gaan naar de opdracht modus. Als u de wijzigingen wilt schrijven en het bestand wilt `:wq` afsluiten, `enter`typt u en drukt u op.
    
    > [!NOTE]
-   > Is het raadzaam dat u altijd gebruikt `WALinuxAgent` wisselruimte configureren zodat deze altijd op de lokale tijdelijke schijf (tijdelijke schijf) voor de beste prestaties wordt gemaakt. Zie voor meer informatie over [toevoegen van een wisselbestand in Linux Azure virtuele machines](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines).
+   > U wordt ten zeerste aangeraden `WALinuxAgent` altijd te gebruiken voor het configureren van de wissel ruimte, zodat deze altijd wordt gemaakt op de lokale tijdelijke schijf (tijdelijke schijf) voor de beste prestaties. Zie [How to add a swap file in virtuele machines van Linux Azure](https://support.microsoft.com/en-us/help/4010058/how-to-add-a-swap-file-in-linux-azure-virtual-machines)voor meer informatie.
 
-## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>Uw lokale client en de virtuele machine om uit te voeren x11 voorbereiden
-Oracle ASM configureren, is een grafische interface voor het voltooien van de installatie en configuratie vereist. We gebruiken de x11 protocol om deze installatie mogelijk te maken. Als u een clientsysteem (Mac of Linux) die al X11 heeft mogelijkheden ingeschakeld en geconfigureerd - kunt u deze configuratie en installatie exclusieve verdergaan met Windows-machines. 
+## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>Bereid uw lokale client en VM voor op het uitvoeren van X11
+Voor het configureren van Oracle ASM is een grafische interface vereist om de installatie en configuratie te volt ooien. We gebruiken het X11-protocol om deze installatie te vergemakkelijken. Als u een-client systeem (Mac of Linux) gebruikt waarop al X11-functies zijn ingeschakeld en geconfigureerd, kunt u deze configuratie en instellingen voor Windows-computers overs Laan. 
 
-1. [Download PuTTY](https://www.putty.org/) en [Xming downloaden](https://xming.en.softonic.com/) op uw Windows-computer. U moet de installatie van beide van deze toepassingen met de standaardwaarden voordat u doorgaat.
+1. [Down load putty](https://www.putty.org/) en [down load Xming](https://xming.en.softonic.com/) naar uw Windows-computer. U moet de installatie van beide toepassingen met de standaard waarden volt ooien voordat u kunt door gaan.
 
-2. Nadat u PuTTY, open een opdrachtprompt, in de PuTTY-map (bijvoorbeeld C:\Program Files\PuTTY) wijzigen en uitvoeren `puttygen.exe` om een sleutel te genereren.
+2. Nadat u putty hebt geïnstalleerd, opent u een opdracht prompt, wijzigt u in de map putty (bijvoorbeeld C:\Program Files\PuTTY) en voert `puttygen.exe` u uit om een sleutel te genereren.
 
-3. In de PuTTY Serversleutelgenerator:
+3. In PuTTy-sleutel Generator:
    
-   1. Genereer een sleutel door het selecteren van de `Generate` knop.
-   2. Kopieer de inhoud van de sleutel (Ctrl + C).
+   1. Genereer een sleutel door de `Generate` knop te selecteren.
+   2. Kopieer de inhoud van de sleutel (CTRL + C).
    3. Selecteer de knop `Save private key`.
-   4. Negeer de waarschuwing over het beveiligen van de sleutel met een wachtwoordzin, en selecteer vervolgens `OK`.
+   4. Negeer de waarschuwing over het beveiligen van de sleutel met een wachtwoordzin en selecteer `OK`deze.
 
-   ![Schermafbeelding van PuTTY Serversleutelgenerator](./media/oracle-asm/puttykeygen.png)
+   ![Scherm opname van PuTTy-sleutel generator](./media/oracle-asm/puttykeygen.png)
 
-4. Voer deze opdrachten uit in uw VM:
+4. Voer de volgende opdrachten uit in uw virtuele machine:
 
    ```bash
    sudo su - grid
@@ -423,159 +422,159 @@ Oracle ASM configureren, is een grafische interface voor het voltooien van de in
    cd .ssh
    ```
 
-5. Maak een bestand met de naam `authorized_keys`. Plak de inhoud van de sleutel in dit bestand en sla het bestand.
+5. Maak een bestand met de naam `authorized_keys`. Plak de inhoud van de sleutel in dit bestand en sla het bestand op.
 
    > [!NOTE]
-   > De sleutel moet de tekenreeks bevatten `ssh-rsa`. De inhoud van de sleutel moet bovendien één regel tekst.
+   > De sleutel moet de teken reeks `ssh-rsa`bevatten. De inhoud van de sleutel moet ook één tekst regel zijn.
    >  
 
-6. Start op het clientsysteem PuTTY. In de **categorie** deelvenster, Ga naar **verbinding** > **SSH** > **Auth**. In de **bestand met persoonlijke sleutel voor verificatie** vak, blader naar de sleutel die u eerder hebt gegenereerd.
+6. Start PuTTy op het client systeem. Ga in het deel venster **categorie** naar**SSH** > -**verificatie**voor **verbindingen** > . Blader in het vak **persoonlijk sleutel bestand voor verificatie** naar de sleutel die u eerder hebt gegenereerd.
 
-   ![Schermafbeelding van de SSH-verificatie-opties](./media/oracle-asm/setprivatekey.png)
+   ![Scherm afbeelding van de opties voor SSH-verificatie](./media/oracle-asm/setprivatekey.png)
 
-7. In de **categorie** deelvenster, Ga naar **verbinding** > **SSH** > **X11**. Selecteer de **inschakelen X11 doorsturen** selectievakje.
+7. Ga in het deel venster **categorie** naar **verbinding** > **SSH** > -**X11**. Schakel het selectie vakje **X11 door sturen inschakelen** in.
 
-   ![Schermafbeelding van de SSH-X11 opties doorsturen](./media/oracle-asm/enablex11.png)
+   ![Scherm afbeelding van de opties voor het door sturen van SSH-X11](./media/oracle-asm/enablex11.png)
 
-8. In de **categorie** deelvenster, Ga naar **sessie**. Voer uw Oracle ASM VM `<publicIPaddress>` Vul in het dialoogvenster de naam van de host in een nieuwe `Saved Session` een naam en klik vervolgens op `Save`.  Als u hebt opgeslagen, klikt u op `open` verbinding maken met uw Oracle ASM virtuele machine.  De eerste keer dat u verbinding maakt u een waarschuwing dat het externe systeem is niet in de cache opgeslagen in het register. Klik op `yes` toe te voegen en te blijven.
+8. Ga in het deel venster **categorie** naar **sessie**. Voer uw Oracle ASM VM `<publicIPaddress>` in het dialoog venster hostnaam in, vul een nieuwe `Saved Session` `Save`naam in en klik op.  Zodra de opslag is opgeslagen `open` , klikt u op om verbinding te maken met uw virtuele Oracle ASM-machine.  De eerste keer dat u verbinding maakt, wordt u gewaarschuwd het externe systeem is niet in de cache van het REGI ster opgeslagen. Klik op toevoegen om deze toe te voegen en door te gaan. `yes`
 
-   ![Schermafbeelding van de PuTTY-sessie-opties](./media/oracle-asm/puttysession.png)
+   ![Scherm afbeelding van de opties voor de PuTTy-sessie](./media/oracle-asm/puttysession.png)
 
-## <a name="install-oracle-grid-infrastructure"></a>Oracle Grid infrastructuur installeren
+## <a name="install-oracle-grid-infrastructure"></a>De Oracle-raster infrastructuur installeren
 
-Voor het installeren van Oracle Grid infrastructuur, voert u de volgende stappen uit:
+Voer de volgende stappen uit om de Oracle-raster infrastructuur te installeren:
 
-1. Meld u als **raster**. (U moet aanmelden zonder een wachtwoord wordt gevraagd.) 
+1. Meld u aan als **raster**. (U moet zich kunnen aanmelden zonder dat u wordt gevraagd om een wacht woord op te vragen.) 
 
    > [!NOTE]
-   > Als u Windows uitvoert, zorg er dan voor dat u hebt Xming gestart voordat u begint met de installatie.
+   > Als u Windows gebruikt, moet u ervoor zorgen dat u Xming hebt gestart voordat u met de installatie begint.
 
    ```bash
    cd /opt/grid
    ./runInstaller
    ```
 
-   Oracle Grid infrastructuur 12c Release 1 installatieprogramma wordt geopend. (Het duurt een paar minuten voor het installatieprogramma te starten.)
+   Het installatie programma voor de Oracle grid Infrastructure 12c release 1 wordt geopend. (Het kan enkele minuten duren voordat het installatie programma wordt gestart.)
 
-2. Op de **installatie-optie selecteren** pagina, selecteert u **installeren en configureren van Oracle Grid infrastructuur voor een zelfstandige Server**.
+2. Op de pagina **installatie optie selecteren** selecteert u de **Oracle-raster infrastructuur installeren en configureren voor een zelfstandige server**.
 
-   ![Schermafbeelding van pagina van het installatieprogramma met installatie-optie selecteren](./media/oracle-asm/install01.png)
+   ![Scherm afbeelding van de pagina installatie optie selecteren van het installatie programma](./media/oracle-asm/install01.png)
 
-3. Op de **Product talen selecteren** pagina, controleert u of **Engels** of de taal die u wilt dat is geselecteerd.  Klik op `next`.
+3. Zorg ervoor dat op de pagina **product talen selecteren de optie** **Engels** of de gewenste taal is geselecteerd.  Klik op `next`.
 
-4. Op de **ASM-schijfgroep maken** pagina:
-   - Voer een naam voor de schijfgroep.
-   - Onder **redundantie**, selecteer **externe**.
-   - Onder **clustergrootte**, selecteer **4**.
-   - Onder **schijven toevoegen**, selecteer **ORCLASMSP**.
+4. Op de pagina **ASM-schijf groep maken** :
+   - Voer een naam in voor de schijf groep.
+   - Onder **Redundantie**selecteert u **extern**.
+   - Onder **grootte van toewijzings eenheid**selecteert u **4**.
+   - Onder **schijven toevoegen**selecteert u **ORCLASMSP**.
    - Klik op `next`.
 
-5. Op de **ASM-wachtwoord opgeven** weergeeft, schakelt de **dezelfde wachtwoorden gebruiken voor deze accounts** optie en voer een wachtwoord.
+5. Selecteer op de pagina **ASM-wacht woord opgeven** de optie **zelfde wacht woorden voor deze accounts gebruiken** en voer een wacht woord in.
 
-   ![Schermafbeelding van pagina van de ASM-wachtwoord opgeven van het installatieprogramma](./media/oracle-asm/install04.png)
+   ![Scherm afbeelding van de pagina ASM-wacht woord opgeven van het installatie programma](./media/oracle-asm/install04.png)
 
-6. Op de **beheeropties opgeven** pagina, hebt u de optie voor het beheer van EM Cloud configureren. Deze optie wordt overgeslagen, klikt u `next` om door te gaan. 
+6. Op de pagina **beheer opties opgeven** kunt u de optie em-Cloud beheer configureren. Deze optie wordt overgeslagen. Klik `next` op om door te gaan. 
 
-7. Op de **bevoorrechte besturingssysteem** pagina, gebruikt u de standaardinstellingen. Klik op `next` om door te gaan.
+7. Gebruik de standaard instellingen op de pagina **geprivilegieerde besturings systeem groepen** . Klik `next` om door te gaan.
 
-8. Op de **installatielocatie opgeven** pagina, gebruikt u de standaardinstellingen. Klik op `next` om door te gaan.
+8. Gebruik de standaard instellingen op de pagina **installatie locatie opgeven** . Klik `next` om door te gaan.
 
-9. Op de **inventaris maken** pagina, wijzig de map-inventarisatie in `/u01/app/grid/oraInventory`. Klik op `next` om door te gaan.
+9. Op de pagina **inventaris maken** wijzigt u de map Inventory `/u01/app/grid/oraInventory`in. Klik `next` om door te gaan.
 
-   ![Schermafbeelding van pagina van de voorraad maken van het installatieprogramma](./media/oracle-asm/install08.png)
+   ![Scherm afbeelding van de pagina voor het maken van een inventaris van het installatie programma](./media/oracle-asm/install08.png)
 
-10. Op de **hoofdmap script uitvoering configuratie** weergeeft, schakelt de **automatisch uitgevoerd configuratiescripts** selectievakje. Selecteer vervolgens de **"root" gebruikersreferenties gebruiken** optie en voer het hoofdwachtwoord van de gebruiker.
+10. Schakel op de pagina **basis configuratie van uitvoering van script** het selectie vakje **configuratie scripts automatisch uitvoeren** in. Selecteer vervolgens de optie **basis gebruikers referenties gebruiken** en voer het wacht woord voor de hoofd gebruiker in.
 
-    ![Schermafbeelding van pagina met van het installatieprogramma hoofdmap script uitvoering configuratie](./media/oracle-asm/install09.png)
+    ![Scherm afbeelding van de configuratie pagina voor het uitvoeren van het installatie programma](./media/oracle-asm/install09.png)
 
-11. Op de **Vereistencontroles uitgevoerd** pagina, de huidige installatie mislukt met fouten. Dit is verwacht gedrag. Selecteer `Fix & Check Again`.
+11. Op de pagina **vereisten controles uitvoeren** mislukt de huidige installatie met fouten. Dit is een verwacht gedrag. Selecteer `Fix & Check Again`.
 
-12. In de **correctie Script** in het dialoogvenster, klikt u op `OK`.
+12. Klik in het dialoog venster **correctie script** op `OK`.
 
-13. Op de **samenvatting** pagina, Controleer de geselecteerde instellingen en klik vervolgens op `Install`.
+13. Controleer de geselecteerde instellingen op de pagina **samen vatting** en klik vervolgens op `Install`.
 
-    ![Schermafbeelding van overzichtspagina van het installatieprogramma](./media/oracle-asm/install12.png)
+    ![Scherm afbeelding van de pagina samen vatting van het installatie programma](./media/oracle-asm/install12.png)
 
-14. Een dialoogvenster weergegeven waarin u configuration scripts moeten worden uitgevoerd als een bevoegde gebruiker. Klik op `Yes` om door te gaan.
+14. Er wordt een waarschuwing weer gegeven waarin wordt gemeld dat configuratie scripts moeten worden uitgevoerd als een bevoegde gebruiker. Klik `Yes` om door te gaan.
 
-15. Op de **voltooien** pagina, klikt u op `Close` om de installatie te voltooien.
+15. Klik op de pagina **volt ooien** op `Close` om de installatie te volt ooien.
 
-## <a name="set-up-your-oracle-asm-installation"></a>Instellen van de installatie van de Oracle Asm installeren
+## <a name="set-up-your-oracle-asm-installation"></a>Uw Oracle ASM-installatie instellen
 
-Als u de installatie van de Oracle ASM instelt, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om uw Oracle ASM-installatie in te stellen:
 
-1. Zorg ervoor dat u nog steeds bent aangemeld als **raster**, van uw X11 sessie. U moet mogelijk bereikt `enter` naar de terminal terughalen. Start vervolgens de Oracle geautomatiseerde Storage Management-configuratie-assistent:
+1. Zorg ervoor dat u nog steeds bent aangemeld als **raster**vanuit uw X11-sessie. Mogelijk moet u de Terminal `enter` actief blijven. Start vervolgens de Oracle-configuratie-assistent voor geautomatiseerd opslag beheer:
 
    ```bash
    cd /u01/app/grid/product/12.1.0/grid/bin
    ./asmca
    ```
 
-   Oracle ASM-configuratie-assistent wordt geopend.
+   De Oracle ASM Configuration-assistent wordt geopend.
 
-2. In de **ASM configureren: Schijf groepen** in het dialoogvenster, klikt u op de `Create` knop en klik vervolgens op `Show Advanced Options`.
+2. In het **onderdeel ASM configureren: Schijf groepen** in het dialoog venster, `Create` klikt u op de knop `Show Advanced Options`en klikt u vervolgens op.
 
-3. In de **schijfgroep maken** in het dialoogvenster:
+3. In het dialoog venster **schijf groep maken** :
 
-   - Voer de naam van de schijf **gegevens**.
-   - Onder **lidschijven selecteren**, selecteer **ORCL_DATA** en **ORCL_DATA1**.
-   - Onder **clustergrootte**, selecteer **4**.
-   - Klik op `ok` om de schijfgroep te maken.
-   - Klik op `ok` om de bevestigingsvenster te sluiten.
+   - Voer de naam **gegevens**van de schijf groep in.
+   - Selecteer onder **andere schijven selecteren de**optie **ORCL_DATA** en **ORCL_DATA1**.
+   - Onder **grootte van toewijzings eenheid**selecteert u **4**.
+   - Klik `ok` om de schijf groep te maken.
+   - Klik `ok` om het bevestigings venster te sluiten.
 
-   ![Schermopname van het dialoogvenster groep maken](./media/oracle-asm/asm02.png)
+   ![Scherm afbeelding van het dialoog venster schijf groep maken](./media/oracle-asm/asm02.png)
 
-4. In de **ASM configureren: Schijf groepen** in het dialoogvenster, klikt u op de `Create` knop en klik vervolgens op `Show Advanced Options`.
+4. In het **onderdeel ASM configureren: Schijf groepen** in het dialoog venster, `Create` klikt u op de knop `Show Advanced Options`en klikt u vervolgens op.
 
-5. In de **schijfgroep maken** in het dialoogvenster:
+5. In het dialoog venster **schijf groep maken** :
 
-   - Voer de naam van de schijf **FRA**.
-   - Onder **redundantie**, selecteer **extern (geen)** .
-   - Onder **lidschijven selecteren**, selecteer **ORCL_FRA**.
-   - Onder **clustergrootte**, selecteer **4**.
-   - Klik op `ok` om de schijfgroep te maken.
-   - Klik op `ok` om de bevestigingsvenster te sluiten.
+   - Voer de naam van de schijf groep **fra**in.
+   - Onder **Redundantie**selecteert u **extern (geen)** .
+   - Selecteer onder **andere schijven selecteren de**optie **ORCL_FRA**.
+   - Onder **grootte van toewijzings eenheid**selecteert u **4**.
+   - Klik `ok` om de schijf groep te maken.
+   - Klik `ok` om het bevestigings venster te sluiten.
 
-   ![Schermopname van het dialoogvenster groep maken](./media/oracle-asm/asm04.png)
+   ![Scherm afbeelding van het dialoog venster schijf groep maken](./media/oracle-asm/asm04.png)
 
-6. Selecteer **afsluiten** sluiten ASM-configuratie-assistent.
+6. Selecteer **Exit** om de ASM-configuratie-assistent te sluiten.
 
-   ![Schermafbeelding van de ASM configureren: In het dialoogvenster van schijf-groepen met knop Afsluiten](./media/oracle-asm/asm05.png)
+   ![Scherm afbeelding van het onderdeel ASM configureren: Het dialoog venster schijf groepen met de knop Afsluiten](./media/oracle-asm/asm05.png)
 
-## <a name="create-the-database"></a>De database maken
+## <a name="create-the-database"></a>De data base maken
 
-Het Oracle database-software is al geïnstalleerd op de Azure Marketplace-installatiekopie. Voor het maken van een database, voert u de volgende stappen uit:
+De Oracle data base-software is al geïnstalleerd op de Azure Marketplace-installatie kopie. Voer de volgende stappen uit om een Data Base te maken:
 
-1. Schakelen tussen gebruikers op de Oracle-beheerder, en deze vervolgens initialiseren van de listener voor logboekregistratie:
+1. Schakel gebruikers over naar de Oracle-super gebruiker en Initialiseer vervolgens de listener voor logboek registratie:
 
    ```bash
    su - oracle
    cd /u01/app/oracle/product/12.1.0/dbhome_1/bin
    ./dbca
    ```
-   Configuratie-assistent database wordt geopend.
+   Data base configuratie-assistent wordt geopend.
 
-2. Op de **databasebewerking** pagina, klikt u op `Create Database`.
+2. Klik op de pagina **database bewerking** op `Create Database`.
 
-3. Op de **aanmaakmodus** pagina:
+3. Op de pagina **aanmaak modus** :
 
-   - Voer een naam voor de database.
-   - Voor **opslagtype**, zorg ervoor dat **automatische Storage Management (ASM)** is geselecteerd.
-   - Voor **locatie van databasebestanden**, gebruikt u de standaard ASM voorgesteld locatie.
-   - Voor **snel herstel gebied**, gebruikt u de standaard ASM voorgesteld locatie.
-   - Typ in een **beheerderswachtwoord** en **wachtwoord bevestigen**.
-   - Zorg ervoor dat `create as container database` is geselecteerd.
-   - Typ in een `pluggable database name` waarde.
+   - Voer een naam in voor de data base.
+   - Zorg ervoor dat voor **opslag type** **automatische opslag beheer (ASM)** is geselecteerd.
+   - Voor de **locatie van database bestanden**gebruikt u de standaard voorgestelde ASM-locatie.
+   - Voor een **snel herstel gebied**gebruikt u de standaard voorgestelde ASM-locatie.
+   - Typ een **beheerders wachtwoord** en **Bevestig het wacht woord**.
+   - Zorg `create as container database` ervoor dat is geselecteerd.
+   - Typ een `pluggable database name` waarde.
 
-4. Op de **samenvatting** pagina, Controleer de geselecteerde instellingen en klik vervolgens op `Finish` om de database te maken.
+4. Controleer de geselecteerde instellingen op de pagina **samen vatting** en klik vervolgens op `Finish` om de data base te maken.
 
-   ![Schermafbeelding van de pagina overzicht](./media/oracle-asm/createdb03.png)
+   ![Scherm afbeelding van de pagina samen vatting](./media/oracle-asm/createdb03.png)
 
-5. De Database is gemaakt. Op de **voltooien** pagina, hebt u de optie voor het ontgrendelen van extra accounts voor het gebruik van deze database en de wachtwoorden wijzigen. Als u doen wilt, selecteert u **wachtwoordbeheer** -anders klikt u op `close`.
+5. De data base is gemaakt. Op de pagina **volt ooien** hebt u de mogelijkheid om extra accounts te ontgrendelen voor het gebruik van deze data base en de wacht woorden te wijzigen. Als u dit wilt doen, selecteert u **wachtwoord beheer** `close`. Klik anders op.
 
 ## <a name="delete-the-vm"></a>De VM verwijderen
 
-U hebt Oracle geautomatiseerd beheer van opslag geconfigureerd op de installatiekopie van het Oracle DB van de Azure Marketplace.  Wanneer u deze virtuele machine niet meer nodig hebt, kunt u de volgende opdracht uit de resourcegroep, VM en alle gerelateerde resources te verwijderen:
+U hebt geautomatiseerd beheer van Oracle automatisch geconfigureerd op de Oracle DB installatie kopie van de Azure Marketplace.  Wanneer u deze virtuele machine niet meer nodig hebt, kunt u de volgende opdracht gebruiken om de resource groep, de VM en alle gerelateerde resources te verwijderen:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -583,8 +582,8 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelfstudie: Configure Oracle DataGuard](configure-oracle-dataguard.md)
+[Zelfstudie: Oracle-Dataguard configureren configureren](configure-oracle-dataguard.md)
 
-[Zelfstudie: Oracle GoldenGate configureren](Configure-oracle-golden-gate.md)
+[Zelfstudie: Oracle-Golden Gate configureren](Configure-oracle-golden-gate.md)
 
-Beoordeling [een Oracle-database ontwerpen](oracle-design.md)
+[Architect een Oracle DB](oracle-design.md) evalueren

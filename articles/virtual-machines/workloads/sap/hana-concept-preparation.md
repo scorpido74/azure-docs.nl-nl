@@ -1,110 +1,109 @@
 ---
-title: Disaster recovery beginselen en de voorbereiding op SAP HANA op Azure (grote instanties) | Microsoft Docs
-description: Disaster recovery beginselen en de voorbereiding op SAP HANA op Azure (grote instanties)
+title: Principes van herstel na nood gevallen en voor bereiding op SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Principes van herstel na nood gevallen en voor bereiding op SAP HANA op Azure (grote exemplaren)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb1ed063cb11a82d786badd3f63b2d4b6932ce13
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709732"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101264"
 ---
-# <a name="disaster-recovery-principles"></a>Principes van herstel na noodgevallen
+# <a name="disaster-recovery-principles"></a>Principes voor herstel na nood gevallen
 
-HANA grote instanties bieden een herstel na noodgevallen tussen HANA grote instantie stempels in verschillende Azure-regio's. Bijvoorbeeld, als u de eenheden HANA grote instantie in de regio VS West van Azure implementeert, kunt u de eenheden HANA grote instantie in de regio VS-Oost als disaster recovery-eenheden. Zoals eerder vermeld, herstel na noodgevallen niet automatisch geconfigureerd, omdat het vereist dat u betaalt voor een andere HANA grote instantie eenheid in de DR-regio. De installatie van noodhersteladapter werkt voor zowel opschalen als scale-out-instellingen. 
+HANA grote instanties bieden een functionaliteit voor herstel na nood gevallen tussen HANA grote instantie tempels in verschillende Azure-regio's. Als u bijvoorbeeld HANA grote instantie-eenheden implementeert in de regio vs West van Azure, kunt u de HANA grote instantie-eenheden in de regio VS Oost gebruiken als eenheden voor nood herstel. Zoals eerder vermeld, wordt herstel na nood gevallen niet automatisch geconfigureerd, omdat u moet betalen voor een andere HANA grote instantie-eenheid in de DR-regio. De installatie van nood herstel kan worden uitgebreid en kan worden uitgebreid met scale-out Setup. 
 
-In de scenario's tot nu toe is geïmplementeerd, wordt met klanten de eenheid in de DR-regio gebruiken om uit te voeren niet-productiesystemen die gebruikmaken van een geïnstalleerde HANA-exemplaar. De eenheid HANA grote instantie moet van dezelfde SKU hebben als de SKU die wordt gebruikt voor productiedoeleinden. De volgende afbeelding ziet u wat de schijfconfiguratie tussen de server-eenheid in de-Azure-productieregio en de Dr-regio ziet eruit als:
+In de scenario's die tot nu toe zijn geïmplementeerd, gebruiken klanten de eenheid in de DR-regio voor het uitvoeren van niet-productie systemen die gebruikmaken van een geïnstalleerd HANA-exemplaar. De HANA-eenheid voor grote instanties moet van dezelfde SKU zijn als de SKU die voor productie doeleinden wordt gebruikt. De volgende afbeelding laat zien hoe de schijf configuratie tussen de server eenheid in de Azure-productie regio en de nood herstel regio er als volgt uitziet:
 
-![Configuratie van de DR-installatie uit oogpunt van schijf](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
+![Configuratie van DR Setup vanaf het schijf punt van de weer gave](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
 
-Zoals u in deze afbeelding overzicht, moet u vervolgens een tweede set schijfvolumes rangschikken. De doel-schijfvolumes zijn even groot is als de productievolumes voor de productie-instantie in de disaster recovery-eenheden. Deze volumes op schijven zijn gekoppeld aan de eenheid van de server HANA grote instantie in de site voor noodherstel. De volgende volumes worden gerepliceerd van de productieregio naar de DR-site:
+Zoals in deze overzichts afbeelding wordt weer gegeven, moet u vervolgens een tweede set schijf volumes best Ellen. De doel schijf volumes hebben dezelfde grootte als de productie volumes voor het productie-exemplaar in de nood herstel eenheden. Deze schijf volumes zijn gekoppeld aan de server eenheid HANA-grote instanties op de site voor nood herstel. De volgende volumes worden gerepliceerd van het productie gebied naar de DR-site:
 
 - /hana/data
-- / hana/logbackups 
+- /hana/logbackups 
 - /Hana/Shared (inclusief/usr/sap)
 
-Het volume /hana/log wordt niet gerepliceerd omdat het transactielogboek van SAP HANA is niet nodig op de manier waarop het terugzetten van die volumes wordt uitgevoerd. 
+Het/Hana/log-volume wordt niet gerepliceerd, omdat het SAP HANA transactie logboek niet nodig is om de herstel bewerking uit te voeren vanaf die volumes. 
 
-De basis van het herstel na noodgevallen aangeboden functionaliteit voor de opslag van replicatie wordt aangeboden door de infrastructuur HANA grote instantie. De functionaliteit die wordt gebruikt op de opslag is niet een constante stream met wijzigingen die worden gerepliceerd op asynchrone wijze als wijzigingen in het opslagvolume optreden. In plaats daarvan is het een mechanisme dat is afhankelijk van het feit dat momentopnamen van deze volumes regelmatig worden gemaakt. De verschillen tussen een momentopname van een al gerepliceerde en een nieuwe momentopname die nog niet is gerepliceerd wordt vervolgens overgedragen naar de site voor noodherstel in target-schijfvolumes.  Deze momentopnamen worden opgeslagen op de volumes en, als er een failover van het herstel na noodgevallen moeten worden teruggezet op deze volumes.  
+De functionaliteit van de functie voor herstel na nood gevallen is de functionaliteit voor opslag replicatie die wordt aangeboden door de HANA-infra structuur voor grote instanties. De functionaliteit die wordt gebruikt voor de opslag zijde is geen constante stroom wijzigingen die op asynchrone wijze worden gerepliceerd als er wijzigingen optreden op het opslag volume. In plaats daarvan is het een mechanisme dat afhankelijk is van het feit dat moment opnamen van deze volumes regel matig worden gemaakt. De verschillen tussen een al gerepliceerde moment opname en een nieuwe moment opname die nog niet is gerepliceerd, worden vervolgens overgebracht naar de site voor herstel na nood geval naar de doel schijf volumes.  Deze moment opnamen worden opgeslagen op de volumes en, als er een failover voor herstel na nood geval is, moet op die volumes worden hersteld.  
 
-De eerste overdracht van de volledige gegevens van het volume moet zijn voordat de hoeveelheid gegevens kleiner is dan de verschillen tussen momentopnamen wordt. Als gevolg hiervan, bevatten de volumes in de DR-site om een van de volumemomentopnamen uitgevoerd in de productiesite. Uiteindelijk, kunt u dat DR-systeem om te gaan naar een eerdere status verloren gaan om gegevens te herstellen, zonder het terugdraaien van het productiesysteem.
+De eerste overdracht van de volledige gegevens van het volume moet liggen voordat de hoeveelheid gegevens kleiner wordt dan de verschillen tussen moment opnamen. Als gevolg hiervan bevatten de volumes op de DR-site elk een van de volume momentopnamen die zijn uitgevoerd op de productie site. Uiteindelijk kunt u dat DR-systeem gebruiken om een eerdere status te verkrijgen om verloren gegevens te herstellen, zonder het productie systeem terug te draaien.
 
-Als er een MCOD-implementatie met meerdere onafhankelijke SAP HANA-instanties in één eenheid van HANA grote instantie, is het waarschijnlijk dat alle SAP HANA-instanties zijn worden gebruikt voor het ophalen van opslag gerepliceerd naar de DR-zijde.
+Als er sprake is van een MCOD-implementatie met meerdere onafhankelijke SAP HANA exemplaren op één HANA grote exemplaar-eenheid, wordt ervan uitgegaan dat alle SAP HANA exemplaren worden opgehaald die worden gerepliceerd naar de DR-zijde.
 
-In gevallen waar u HANA System Replication in uw productiesite gebruiken in plaats van de functionaliteit voor hoge beschikbaarheid en opslag op basis van replicatie voor de DR-site gebruikt, zijn de volumes van zowel de knooppunten van de primaire site naar de DR-instantie worden gerepliceerd. U moet extra opslag (dezelfde grootte vanaf primaire knooppunt) op de DR-site voor replicatie van primaire en secundaire naar de DR kopen. 
+In gevallen waarbij u HANA-systeem replicatie gebruikt als functionaliteit voor hoge Beschik baarheid in uw productie site en replicatie op basis van opslag gebruikt voor de DR-site, worden de volumes van beide knoop punten van de primaire site naar het DR-exemplaar gerepliceerd. U moet extra opslag ruimte (dezelfde grootte van het primaire knoop punt) kopen op de DR-site om de replicatie van zowel de primaire als de secundaire te kunnen uitvoeren op de DR. 
 
 
 
 >[!NOTE]
->De replicatie van HANA grote instantie opslagfunctionaliteit is spiegelen en storage-momentopnamen te repliceren. Als u geen opslagmomentopnamen uitvoert, zoals geïntroduceerd in de sectie back-up en terugzetten van dit artikel, kan dit niet een-replicatie naar de site voor noodherstel. Uitvoering van de momentopname Storage is een vereiste voor storage-replicatie naar de site voor noodherstel.
+>De replicatie functionaliteit van de HANA-opslag voor grote instanties is mirroring en replicatie van opslag momentopnamen. Als u geen opslag momentopnamen uitvoert die zijn geïntroduceerd in de sectie back-up en herstel van dit artikel, kunnen er geen replicatie naar de site voor herstel na nood geval zijn. Het uitvoeren van een opslag momentopname is een vereiste voor de opslag replicatie naar de site voor nood herstel.
 
 
 
-## <a name="preparation-of-the-disaster-recovery-scenario"></a>De voorbereiding van de noodherstelscenario
-In dit scenario hebt u een productiesysteem op HANA grote instanties in de productie van Azure-regio. Voor de stappen die volgen, gaan we ervan uit dat de SID van dat HANA-systeem "PRD" is en dat u hebt een niet-productie-systeem dat wordt uitgevoerd op HANA grote instanties in de DR-Azure-regio. Voor de laatste, gaan we wordt ervan uitgegaan dat de SID "TST." Deze configuratie wordt weergegeven in de volgende afbeelding:
+## <a name="preparation-of-the-disaster-recovery-scenario"></a>Voor bereiding van het scenario voor herstel na nood geval
+In dit scenario hebt u een productie systeem dat wordt uitgevoerd op HANA grote instanties in de Azure-regio productie. Voor de volgende stappen wordt ervan uitgegaan dat de SID van het HANA-systeem ' PRD ' is en dat er een niet-productie systeem wordt uitgevoerd op HANA grote instanties in de Azure-regio. Voor dit laatste gaan we ervan uit dat de SID ' TST ' is. In de volgende afbeelding ziet u deze configuratie:
 
-![Begin van herstel na Noodgeval instellen](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
+![Start van DR Setup](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
 
-Als de server-exemplaar is niet al besteld met de extra opslagruimte volume is ingesteld, SAP HANA op Azure Service Management wordt de aanvullende set volumes als een doel voor de productie-replica op de HANA grote instantie-eenheid waarvoor u de TST uitvoert HANA-instantie. Voor dit doel moet u de SID van uw HANA-productie-exemplaar opgeven. Nadat de SAP HANA op Azure Service Management wordt bevestigd dat de bijlage van deze volumes, moet u deze volumes aan de HANA grote instantie eenheid koppelen.
+Als het Server exemplaar nog niet is besteld met de extra opslag volumeset, SAP HANA op Azure Service Management de extra set volumes als doel voor de productie replica koppelen aan de HANA-eenheid voor grote instanties waarop u de TST uitvoert HANA-exemplaar. Hiervoor moet u de SID van uw productie HANA-exemplaar opgeven. Nadat SAP HANA op Azure Service Management de bijlage van die volumes bevestigt, moet u deze volumes koppelen aan de HANA-eenheid voor grote instanties.
 
-![Volgende stap voor herstel na Noodgeval instellen](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
+![De volgende stap van DR Setup](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
 
-De volgende stap is voor installatie van de tweede instantie van SAP HANA op de eenheid HANA grote instantie in de DR-Azure-regio, waar u de TST HANA-exemplaar uitvoeren. De nieuw geïnstalleerde SAP HANA-instantie moet de dezelfde beveiligings-id hebben. De gebruikers die zijn gemaakt, moet dezelfde gebruikers-id en groep-ID die de productie-instantie is. Lezen [back-up en herstel](hana-backup-restore.md) voor meer informatie. Als de installatie is voltooid, moet u naar:
+De volgende stap is dat u het tweede SAP HANA-exemplaar installeert op de HANA-eenheid voor grote instanties in de Azure-regio voor nood herstel, waar u de TST HANA-instantie uitvoert. Het onlangs geïnstalleerde SAP HANA-exemplaar moet dezelfde SID hebben. De gebruikers die zijn gemaakt, moeten dezelfde UID en groeps-ID hebben die het productie-exemplaar heeft. Lees [back-ups maken en herstellen](hana-backup-restore.md) voor meer informatie. Als de installatie is voltooid, moet u het volgende doen:
 
-- Stap 2 van de voorbereiding van momentopname wordt beschreven in uitvoeren [back-up en herstel](hana-backup-restore.md).
-- Maak een openbare sleutel voor de DR-eenheid van HANA grote instantie als u dat nog niet nog gedaan. Zie stap 3 van de voorbereiding van momentopname wordt beschreven in [back-up en herstel](hana-backup-restore.md).
-- Onderhouden de *HANABackupCustomerDetails.txt* met het nieuwe exemplaar van HANA en testen of verbinding naar de opslag goed werkt.  
-- Stop de nieuw geïnstalleerde SAP HANA-exemplaar op de eenheid HANA grote instantie in de DR-Azure-regio.
-- Ontkoppel deze volumes PRD en neem contact op met SAP HANA op Azure Service Management. De volumes niet kunnen blijven gekoppeld aan de eenheid omdat ze niet toegankelijk tijdens functioneert als opslag ingesteld als replicatiedoel.  
+- Voer stap 2 uit van de voor bereiding van de opslag momentopname die wordt beschreven in [back-up en herstel](hana-backup-restore.md).
+- Maak een open bare sleutel voor de DR-eenheid van HANA grote instantie-eenheid als u dit nog niet hebt gedaan. Zie stap 3 van de voor bereiding van de opslag momentopname die wordt beschreven in [back-up en herstel](hana-backup-restore.md).
+- Onderhoud *HANABackupCustomerDetails. txt* met het nieuwe Hana-exemplaar en test of connectiviteit in de opslag correct werkt.  
+- Stop de zojuist geïnstalleerde SAP HANA-instantie op de HANA-eenheid voor grote instanties in de Azure-regio.
+- Ontkoppel deze PRD-volumes en neem contact op met SAP HANA op Azure Service Management. De volumes kunnen niet worden gekoppeld aan de eenheid omdat deze niet toegankelijk zijn terwijl het doel van de opslag replicatie is.  
 
-![Herstel na Noodgevallen instellingsstap voordat het tot stand brengen van replicatie](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Installatie stap van DR voordat een replicatie wordt ingesteld](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
-Het operationele team stelt de replicatierelatie tussen de PRD volumes in de productie-Azure-regio en de volumes prd. in de DR-Azure-regio.
+Met het operations-team wordt de replicatie relatie tot stand gebracht tussen de PRD-volumes in de Azure-regio productie en de PRD-volumes in de Azure-regio.
 
 >[!IMPORTANT]
->Het volume /hana/log wordt niet gerepliceerd omdat het is niet nodig de gerepliceerde SAP HANA-database herstellen naar een consistente status in de site voor noodherstel.
+>Het/Hana/log-volume wordt niet gerepliceerd omdat het niet nodig is om de gerepliceerde SAP HANA-data base terug te zetten naar een consistente status in de nood herstel site.
 
-Vervolgens instellen of aanpassen van de back-upschema van opslag momentopname te krijgen tot uw RTO en RPO in het geval van noodherstel. Om te beperken het beoogde herstelpunt, stelt u de volgende replicatie-intervallen in de service HANA grote instantie:
-- Voor de volumes wordt gedekt door de momentopname van het gecombineerde (type momentopname **hana**), ingesteld om te repliceren om de 15 minuten aan de doelen van het volume gelijk opslag in de site voor noodherstel.
-- Voor de back-up logboekvolume van de transactie (type momentopname **logboeken**), ingesteld om te repliceren naar de doelen van het volume gelijk opslag in de site voor noodherstel om de 3 minuten.
+Vervolgens stelt u het back-upschema voor opslag momentopname in, of past u dit toe aan uw RTO en RPO in de nood geval. Als u de Recovery Point Objective wilt minimaliseren, stelt u de volgende replicatie intervallen in de HANA-service voor grote exemplaren in:
+- Voor de volumes die worden gedekt door de gecombineerde moment opname (momentopname type **Hana**), ingesteld op elke 15 minuten repliceren naar de equivalente opslag volume doelen op de site voor nood herstel.
+- Stel voor het back-upvolume van hettransactie logboek (type logboeken van moment opnamen) elke 3 minuten repliceren naar de equivalente opslag volume doelen op de site voor nood herstel.
 
-Om te beperken het beoogde herstelpunt, instellen van het volgende:
-- Voer een **hana** type opslag momentopname (Zie ' stap 7: Uitvoeren van momentopnamen') om de 30 minuten naar één uur.
-- Voer SAP HANA transactielogboekback-ups om de 5 minuten.
-- Voer een **logboeken** typt u een momentopname van elke 5 tot 15 minuten opslag. Met deze Intervalperiode, moet u een RPO van ongeveer 15-25 minuten bereiken.
+Als u de Recovery Point Objective wilt minimaliseren, stelt u het volgende in:
+- Voer een **Hana** -opslag momentopname uit (zie stap 7: Moment opnamen uitvoeren ") elke 30 minuten tot 1 uur.
+- Voer elke vijf minuten back-ups van SAP HANA transactie Logboeken uit.
+- Voer de moment opname van de opslag van een **logboek** in om de 5-15 minuten. Met deze interval periode behaalt u een RPO van ongeveer 15-25 minuten.
 
-Met deze installatie, de volgorde van de transactielogboekback-ups, opslagmomentopnamen en de replicatie van de transactie HANA Meld u back-upgegevens voor volume en hana-/ en /hana/shared (inclusief/usr/sap) kan eruitzien als de gegevens op deze afbeelding:
+Met deze instelling, de volg orde van back-ups van transactie logboeken, opslag momentopnamen en de replicatie van het HANA-transactie logboek back-upvolume en/Hana/Data, en/Hana/Shared (inclusief/usr/sap) kunnen eruitzien als de gegevens die worden weer gegeven in deze afbeelding:
 
- ![Relatie tussen een transactie logboek back-upmomentopname en een mirror module op een tijdas](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
+ ![Relatie tussen een back-upmomentopname voor een transactie logboek en een Gesnap-mirror op een tijdsas](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
 
-Voor het bereiken van een nog betere RPO in het geval van de herstel na noodgevallen, kunt u de HANA transactielogboekback-ups van SAP HANA op Azure (grote instanties) kopiëren naar de andere Azure-regio. Als u wilt deze verdere vermindering van het RPO bereiken, moet u de volgende stappen uitvoeren:
+Als u een nog betere RPO wilt maken in het geval van nood herstel, kunt u de HANA-transactie logboek back-ups kopiëren van SAP HANA op Azure (grote exemplaren) naar de andere Azure-regio. Voer de volgende stappen uit om deze verdere RPO-beperking te verfijnen:
 
-1. Meld u net zo vaak mogelijk /hana/logbackups maakt u een back-up van de HANA-transactie.
-1. Rsync gebruiken om te kopiëren van de transactielogboekback-ups naar de NFS-share gehoste virtuele machines van Azure. De virtuele machines zijn in virtuele netwerken van Azure in de-Azure-productieregio en in de DR-regio's. U moet beide virtuele netwerken van Azure verbinden met het circuit verbinding maken met de productie-HANA grote instanties van Azure. Zie de afbeeldingen in de [netwerk overwegingen voor herstel na noodgeval met HANA grote instanties](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) sectie. 
-1. Houd de transactielogboekback-ups in de regio in de virtuele machine die is gekoppeld aan de NFS geëxporteerd opslag.
-1. In geval failover na noodgevallen vormen een aanvulling op de transactielogboekback-ups die u vinden op het volume /hana/logbackups met meer recent gebruikte transactielogboekback-ups op de NFS delen in de site voor noodherstel. 
-1. Start een transactielogboekback-up te herstellen naar de meest recente back-up die via kan worden opgeslagen in de DR-regio.
+1. Maak zo vaak mogelijk een back-up van het HANA-transactie logboek naar/Hana/logbackups.
+1. Gebruik rsync om de back-ups van het transactie logboek te kopiëren naar de door NFS share gehoste Azure virtual machines. De virtuele machines bevinden zich in azure Virtual Networks in de Azure-productie regio en in de nood herstel regio's. U moet beide virtuele netwerken van Azure verbinden met het circuit waarmee de productie HANA grote instanties worden verbonden met Azure. Zie de sectie grafische oplossingen in het [netwerk voor herstel na nood gevallen met een grote hoeveelheid Hana-exemplaren](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) . 
+1. Bewaar de back-ups van het transactie logboek in de regio in de virtuele machine die is gekoppeld aan de door NFS geëxporteerde opslag.
+1. Bij een failover voor nood geval kunt u de back-ups van het transactie logboek op het/Hana/logbackups-volume aanvullen met meer recent gebruikte transactie logboek back-ups op de NFS-share op de site voor nood herstel. 
+1. Start een back-up van het transactie logboek om terug te zetten naar de meest recente back-up die kan worden opgeslagen in de DR-regio.
 
-Wanneer HANA grote instantie operations Bevestig de instellingen van de relatie replicatie en u de uitvoering van opslagmomentopnamen start, begint de replicatie van gegevens.
+Wanneer de installatie van de replicatie relatie wordt bevestigd door bewerkingen van een grote instantie van HANA en u de back-ups van de moment opname opslag start, wordt de gegevens replicatie gestart.
 
-![Herstel na Noodgevallen instellingsstap voordat het tot stand brengen van replicatie](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
+![Installatie stap van DR voordat een replicatie wordt ingesteld](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
 
-Als de replicatie vordert, de momentopnamen op de volumes prd. in de DR-Azure-regio's niet teruggezet worden. Ze worden alleen opgeslagen. Als de volumes zijn gekoppeld in een status heeft, geven ze de status waarin u de volumes ontkoppeld nadat het PRD SAP HANA-exemplaar is geïnstalleerd in de eenheid van de server in de DR-Azure-regio. Ze geven ook de opslag back-ups die nog niet zijn hersteld.
+Naarmate de replicatie vordert, worden de moment opnamen op de PRD-volumes in de DR Azure-regio's niet hersteld. Ze worden alleen opgeslagen. Als de volumes in een dergelijke status zijn gekoppeld, wordt de status weer gegeven waarin u de volumes hebt ontkoppeld nadat de PRD-SAP HANA instantie in de server eenheid in de Azure-regio is geïnstalleerd. Ze vertegenwoordigen ook de opslag back-ups die nog niet zijn hersteld.
 
-Als er een failover, kunt ook u om een momentopname van een oudere opslag in plaats van de meest recente momentopname van de opslag te herstellen.
+Als er een failover is, kunt u er ook voor kiezen om terug te zetten naar een oudere opslag momentopname in plaats van de laatste opslag momentopname.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg [failover noodherstelprocedure](hana-failover-procedure.md).
+- Raadpleeg de [procedure voor failover-herstel na nood gevallen](hana-failover-procedure.md).

@@ -1,6 +1,6 @@
 ---
-title: Implementatie van de virtuele machine van Azure met Chef | Microsoft Docs
-description: Meer informatie over het gebruik van Chef voor de implementatie geautomatiseerde virtuele machine en configuratie op Microsoft Azure
+title: Implementatie van virtuele Azure-machines met chef | Microsoft Docs
+description: Meer informatie over hoe u chef kunt gebruiken voor automatische implementatie en configuratie van virtuele machines op Microsoft Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
@@ -11,56 +11,55 @@ ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719273"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080100"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Implementatie van virtuele Azure-machine automatiseren met Chef
 
-Chef is een uitstekend hulpprogramma voor het leveren van automation en desired state-configuraties.
+Chef is een uitstekend hulp programma voor het leveren van automatisering en desired state configurations.
 
-Met de meest recente versie van de cloud-API biedt Chef naadloze integratie met Azure, zodat u de mogelijkheid om u te richten en te implementeren configuratiestatussen via één opdracht.
+Met de nieuwste Cloud API-release biedt chef naadloze integratie met Azure, waardoor u de mogelijkheid krijgt om configuratie statussen in te richten en te implementeren via één opdracht.
 
-In dit artikel, moet u uw Chef-omgeving voor het inrichten van virtuele machines van Azure en helpt bij het maken van een beleid of "Cookbook" en vervolgens implementeert deze handleiding op een virtuele machine van Azure instellen.
+In dit artikel stelt u uw chef-omgeving in voor het inrichten van virtuele Azure-machines en het maken van een beleid of ' Cookbook ' en het implementeren van deze Cookbook naar een virtuele machine van Azure.
 
-## <a name="chef-basics"></a>Chef-basisbeginselen
-Voordat u begint, [bekijken van de basisconcepten van Chef](https://www.chef.io/chef).
+## <a name="chef-basics"></a>Basis beginselen van chef
+Voordat u begint, [controleert u de basis concepten van chef](https://www.chef.io/chef).
 
-Het volgende diagram illustreert de Chef-architectuur op hoog niveau.
+In het volgende diagram ziet u de chef-architectuur op hoog niveau.
 
 ![][2]
 
-Chef heeft drie belangrijkste architectuuronderdelen: Chef-Server, Chef-Client (knooppunt) en Chef-werkstation.
+Chef heeft drie belangrijkste architectuur onderdelen: Chef-server, chef-client (node) en chef-werk station.
 
-De Chef-Server is het beheerpunt en er zijn twee opties voor de Chef-Server: een gehoste oplossing of een on-premises-oplossing.
+De chef-server is het beheer punt en er zijn twee opties voor de chef-server: een gehoste oplossing of een on-premises oplossing.
 
-De Chef-Client (node) is de agent die bevindt zich op de servers die u beheert.
+De chef-client (knoop punt) is de agent die zich bevindt op de servers die u beheert.
 
-De Chef-werkstation, wat de naam voor zowel de beheerder is werkstation waar u beleid maken en uitvoeren van opdrachten voor het beheer en de software-updatepakket van Chef-hulpprogramma's.
+Het chef-werk station, de naam van het beheer werkstation waar u beleids regels maakt en beheer opdrachten uitvoert en het software pakket van chef-hulpprogram ma's.
 
-U ziet in het algemeen _uw werkstation_ als de locatie waar u acties uitvoeren en _Chef werkstation_ voor het softwarepakket.
-Bijvoorbeeld, downloadt u de opdracht mes als onderdeel van _Chef werkstation_, maar u mes-opdrachten uit uitvoeren _uw werkstation_ om infrastructuur te beheren.
+Over het algemeen ziet u _uw werk station_ als de locatie waar u acties en _chef werk station_ voor het software pakket uitvoert.
+U kunt bijvoorbeeld de opdracht mes downloaden als onderdeel van het _chef-werk station_, maar u kunt ook mes-opdrachten uitvoeren vanaf _uw werk station om de_ infra structuur te beheren.
 
-Chef maakt ook gebruik van de concepten van "Handleidingen" en "recepten', is nagenoeg de beleidsregels die we definiëren en toepassen op de servers.
+Chef maakt ook gebruik van de concepten van ' hand leidingen ' en ' recepten ', wat in feite het beleid is dat we definiëren en Toep assen op de-servers.
 
-## <a name="preparing-your-workstation"></a>Uw werkstation voorbereiden
+## <a name="preparing-your-workstation"></a>Uw werk station voorbereiden
 
-Eerst uw werkstation voorbereiden door het maken van een map voor het opslaan van Chef-configuratiebestanden en handleidingen.
+Eerst moet u uw werk station voorbereiden door een map te maken voor het opslaan van chef-configuratie bestanden en hand leidingen.
 
-Maak een map genaamd C:\Chef.
+Maak een map met de naam C:\Chef.
 
-Download en installeer de meest recente [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) versie u aan bij uw werkstation.
+Down load en installeer de nieuwste versie van [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) op uw werk station.
 
 ## <a name="configure-azure-service-principal"></a>Azure Service Principal configureren
 
-In eenvoudigste met de bepalingen en Azure Service-Principal is een service-account.   We gebruiken een Service-Principal om ons Azure-resources te maken van onze Chef-werkstation te helpen.  Als u wilt de relevante Service-Principal maken met de vereiste machtigingen moeten we de volgende opdrachten vanuit PowerShell:
+De eenvoudigste van de termen en de Azure-Service-Principal is een service account.   We gaan gebruikmaken van een Service-Principal om ons te helpen bij het maken van Azure-resources van ons chef-werk station.  Om de relevante service-principal te maken met de vereiste machtigingen, moeten we de volgende opdrachten uitvoeren in Power shell:
  
 ```powershell
 Login-AzureRmAccount
@@ -71,46 +70,46 @@ New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
 ```
 
-Neem notitie van uw abonnements-id, de tenant-id, de ClientID en het Clientgeheim (het wachtwoord dat u hierboven hebt ingesteld), moet u dit later op. 
+Noteer uw abonnements-, TenantID-, ClientID-en client geheim (het wacht woord dat u hierboven hebt ingesteld), u hebt dit later nodig. 
 
-## <a name="setup-chef-server"></a>Chef-Server instellen
+## <a name="setup-chef-server"></a>Chef-server instellen
 
-Deze handleiding wordt ervan uitgegaan dat u zal zich registreren voor Chef die wordt gehost.
+In deze hand leiding wordt ervan uitgegaan dat u zich aanmeldt voor gehoste chef.
 
-Als u niet al een Chef-Server, kunt u het volgende doen:
+Als u nog geen chef-server gebruikt, kunt u het volgende doen:
 
-* Zich aanmelden voor [gehost Chef](https://manage.chef.io/signup), dit is de snelste manier om aan de slag met Chef.
-* Een zelfstandige Chef-Server installeren op linux gebaseerde virtuele machine, na de [installatie-instructies](https://docs.chef.io/install_server.html) van [Chef Docs](https://docs.chef.io/).
+* Meld u aan voor gehoste [chef](https://manage.chef.io/signup). Dit is de snelste manier om aan de slag te gaan met chef.
+* Installeer een zelfstandige chef-server op een Linux-computer, gevolgd door de [installatie-instructies](https://docs.chef.io/install_server.html) van [chef docs](https://docs.chef.io/).
 
-### <a name="creating-a-hosted-chef-account"></a>Het maken van een account die wordt gehost Chef
+### <a name="creating-a-hosted-chef-account"></a>Een gehoste chef-account maken
 
-Aanmelden voor een account die wordt gehost Chef [hier](https://manage.chef.io/signup).
+Meld u [hier](https://manage.chef.io/signup)aan voor een gehoste chef-account.
 
-Tijdens het registratieproces wordt u gevraagd om te maken van een nieuwe organisatie.
+Tijdens het registratie proces wordt u gevraagd om een nieuwe organisatie te maken.
 
 ![][3]
 
-Als uw organisatie is gemaakt, downloadt u de starterskit.
+Als uw organisatie eenmaal is gemaakt, downloadt u het Start pakket.
 
 ![][4]
 
 > [!NOTE]
-> Als u een waarschuwing dat uw sleutels worden opnieuw ingesteld op prompt krijgt, is het goed om door te gaan als er geen bestaande infrastructuur zo nog geconfigureerd.
+> Als er een waarschuwing wordt weer gegeven dat de sleutels opnieuw moeten worden ingesteld, is het raadzaam om door te gaan omdat er nog geen bestaande infra structuur is geconfigureerd.
 >
 
-Deze starter kit zip-bestand bevat uw organisatie-configuratiebestanden en sleutel van de gebruiker in de `.chef` directory.
+Het zip-bestand van de start Kit bevat de configuratie bestanden en gebruikers sleutels `.chef` van uw organisatie in de Directory.
 
-De `organization-validator.pem` moeten afzonderlijk worden gedownload omdat het een persoonlijke sleutel en persoonlijke sleutels moeten niet worden opgeslagen op de Chef-Server. Van [Chef beheren](https://manage.chef.io/), gaat u naar de sectie beheer en selecteer 'Opnieuw instellen van validatiesleutel', waarmee u een bestand afzonderlijk worden gedownload. Sla het bestand op c:\chef.
+De `organization-validator.pem` moet afzonderlijk worden gedownload, omdat het een persoonlijke sleutel is en persoonlijke sleutels niet op de chef-server mogen worden opgeslagen. In [chef beheren](https://manage.chef.io/), gaat u naar de sectie beheer en selecteert u validatie sleutel opnieuw instellen, die een bestand bevat dat u afzonderlijk kunt downloaden. Sla het bestand op in c:\chef.
 
-### <a name="configuring-your-chef-workstation"></a>Configureren van uw werkstation Chef
+### <a name="configuring-your-chef-workstation"></a>Uw chef-werk station configureren
 
-Pak de inhoud van de chef-starter.zip naar c:\chef.
+Pak de inhoud van de chef-starter. zip uit naar c:\chef.
 
-Kopieer alle bestanden onder starter\chef de chef-opslagplaats\.chef aan uw directory c:\chef.
+Kopieer alle bestanden onder chef-starter\chef-repo\.chef naar de map c:\chef.
 
-Kopieer de `organization-validator.pem` van het bestand in c:\chef, als deze wordt opgeslagen in c:\Downloads
+Kopieer het `organization-validator.pem` bestand naar c:\chef, als dit is opgeslagen in c:\Downloads
 
-Uw directory ziet er ongeveer als in het volgende voorbeeld.
+De map moet er nu ongeveer zo uitzien als in het volgende voor beeld.
 
 ```powershell
     Directory: C:\Users\username\chef
@@ -128,13 +127,13 @@ d-----    12/6/2018   5:38 PM           roles
 -a----    12/6/2018   5:38 PM      2341 README.md
 ```
 
-U hebt nu vijf bestanden en vier mappen (met inbegrip van de map leeg chef-opslagplaats) in de hoofdmap van c:\chef.
+U hebt nu vijf bestanden en vier mappen (met inbegrip van de lege directory chef-opslag plaats) in de hoofdmap van c:\chef.
 
-### <a name="edit-kniferb"></a>Knife.rb bewerken
+### <a name="edit-kniferb"></a>Mes bewerken. rb
 
-Het PEM-bestanden bevatten van uw organisatie en administratieve persoonlijke sleutels voor de communicatie en het bestand knife.rb bevat de configuratie van de Mes. We moeten het bestand knife.rb bewerken.
+De PEM-bestanden bevatten de persoonlijke sleutels van uw organisatie en de beheerders rechten voor communicatie en het bestand mes. rb bevat uw mes-configuratie. Het bestand mes. rb moet worden bewerkt.
 
-Open het bestand knife.rb in de editor van uw keuze. De ongewijzigde bestand ziet er ongeveer als:
+Open het bestand mes. rb in de editor van uw keuze. Het ongewijzigde bestand moet er ongeveer als volgt uitzien:
 
 ```rb
 current_dir = File.dirname(__FILE__)
@@ -146,9 +145,9 @@ chef_server_url     "https://api.chef.io/organizations/myorg"
 cookbook_path       ["#{current_dir}/cookbooks"]
 ```
 
-Voeg de volgende informatie toe aan uw knife.rb:
+Voeg de volgende gegevens toe aan uw mes. rb:
 
-validation_client_name   "myorg-validator"
+validation_client_name "myorg-validator"
 
 validation_key "#{current_dir}/myorg.pem"
 
@@ -161,9 +160,9 @@ knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
 knife[:azure_client_secret] =     "#1234p$wdchef19"
 
 
-Deze regels zorgt ervoor dat de mes verwijst naar de map handleidingen onder c:\chef\cookbooks en maakt ook gebruik van de Azure-Service-Principal die u hebt gemaakt tijdens de Azure-bewerkingen.
+Deze regels zorgen ervoor dat mes verwijst naar de hand leidingen-map onder c:\chef\cookbooks en maakt ook gebruik van de Azure-service-principal die u hebt gemaakt tijdens Azure-bewerkingen.
 
-Het bestand knife.rb moet er nu uitzien zoals in het volgende voorbeeld:
+Het bestand mes. rb moet er nu uitzien als in het volgende voor beeld:
 
 ![][14]
 
@@ -189,14 +188,14 @@ knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
 knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
-## <a name="install-chef-workstation"></a>Chef-werkstation installeren
+## <a name="install-chef-workstation"></a>Chef-werk station installeren
 
-Volgende [download en installeer](https://downloads.chef.io/chef-workstation/) Chef werkstation.
-Installeer Chef werkstation de standaardlocatie. Deze installatie kan enkele minuten duren.
+[Down load en installeer](https://downloads.chef.io/chef-workstation/) vervolgens chef-werk station.
+Installeer chef workstation op de standaard locatie. Deze installatie kan enkele minuten duren.
 
-Op het bureaublad ziet u een 'gewicht PowerShell', dit een omgeving die is geladen met het hulpprogramma die u nodig hebt is voor interactie met de Chef-producten. Het gewicht PowerShell zijn nieuwe ad-hoc opdrachten beschikbaar, zoals `chef-run` ook als traditionele Chef CLI-opdrachten, zoals `chef`. Zie de geïnstalleerde versie van Chef werkstation en de Chef-hulpprogramma's met `chef -v`. U kunt ook uw werkstation versie controleren door 'Over Chef werkstation' in de Chef-werkstation-App te selecteren.
+Op het bureau blad ziet u een ' catch Weight Power shell ', een omgeving die is geladen met het hulp programma dat u nodig hebt voor interactie met de chef-producten. Met de Power shell catch Weight worden nieuwe ad hoc-opdrachten `chef-run` beschikbaar gemaakt, zoals traditionele chef cli-opdrachten, `chef`zoals. Bekijk de geïnstalleerde versie van chef Workstation en de chef-hulpprogram `chef -v`ma's met. U kunt ook de versie van uw werk station controleren door ' about chef Workstation ' te selecteren in de chef-werk station-app.
 
-`chef --version` moeten er ongeveer als:
+`chef --version`Er moet iets als resultaat worden geretourneerd:
 
 ```
 Chef Workstation: 0.4.2
@@ -209,51 +208,51 @@ Chef Workstation: 0.4.2
 ```
 
 > [!NOTE]
-> De volgorde van het pad is belangrijk. Als uw opscode paden niet in de juiste volgorde hebt u problemen.
+> De volg orde van het pad is belang rijk. Als uw opscode-paden zich niet in de juiste volg orde bevinden, hebt u problemen.
 >
 
-Start opnieuw op uw werkstation voordat u doorgaat.
+Start uw werk station opnieuw op voordat u doorgaat.
 
 ### <a name="install-knife-azure"></a>Mes Azure installeren
 
-In deze zelfstudie wordt ervan uitgegaan dat u de Azure Resource Manager gebruikt om te communiceren met uw virtuele machine.
+In deze zelf studie wordt ervan uitgegaan dat u de Azure Resource Manager gebruikt om te communiceren met uw virtuele machine.
 
-De mes-Azure-extensie installeren. Dit biedt mes met de invoegtoepassing' Azure'.
+Installeer de mes Azure-extensie. Dit biedt mes met de Azure-invoeg toepassing.
 
 Voer de volgende opdracht uit.
 
     chef gem install knife-azure ––pre
 
 > [!NOTE]
-> Het argument – vooraf zorgt ervoor dat u de meest recente RC-versie van de Azure-invoegtoepassing voor mes waarmee u toegang hebt tot de meest recente set API's ontvangt.
+> Met het-pre-argument zorgt u ervoor dat u de nieuwste RC-versie van de mes Azure-invoeg toepassing ontvangt, waarmee u toegang hebt tot de nieuwste set Api's.
 >
 >
 
-Is het waarschijnlijk dat een aantal afhankelijkheden ook worden geïnstalleerd op hetzelfde moment.
+Waarschijnlijk worden er ook tegelijkertijd een aantal afhankelijkheden geïnstalleerd.
 
 ![][8]
 
-Om te controleren of dat alles juist is geconfigureerd, moet u de volgende opdracht uitvoeren.
+Voer de volgende opdracht uit om ervoor te zorgen dat alles correct is geconfigureerd.
 
     knife azurerm server list
 
-Als alles correct is geconfigureerd, ziet u een lijst met beschikbare installatiekopieën van Azure door te bladeren.
+Als alles goed is geconfigureerd, ziet u een lijst met beschik bare Azure-afbeeldingen die worden doorzocht.
 
-Gefeliciteerd! Uw werkstation is ingesteld.
+Gefeliciteerd! Uw werk station is ingesteld.
 
-## <a name="creating-a-cookbook"></a>Het maken van een Cookbook
+## <a name="creating-a-cookbook"></a>Een Cookbook maken
 
-Een Cookbook wordt gebruikt door Chef voor het definiëren van een reeks opdrachten die u wilt uitvoeren op uw beheerde client. Het maken van een Cookbook is vrij eenvoudig, gebruikt u de **chef genereren cookbook** opdracht voor het genereren van de sjabloon Cookbook. Deze handleiding is bedoeld voor een webserver die automatisch wordt geïmplementeerd IIS.
+Een Cookbook wordt gebruikt door chef om een set opdrachten te definiëren die u wilt uitvoeren op uw beheerde client. Het maken van een Cookbook is eenvoudig. gebruik gewoon de **chef genereren Cookbook** opdracht voor het genereren van de Cookbook-sjabloon. Deze Cookbook is voor een webserver die automatisch IIS implementeert.
 
-Voer de volgende opdracht in uw map C:\Chef.
+Voer de volgende opdracht uit in de directory C:\Chef.
 
     chef generate cookbook webserver
 
-Met deze opdracht genereert een reeks van bestanden in de map C:\Chef\cookbooks\webserver. Vervolgens definieert u de reeks opdrachten voor de Chef-client op de beheerde virtuele machine worden uitgevoerd.
+Met deze opdracht wordt een set bestanden gegenereerd in de map C:\Chef\cookbooks\webserver. Definieer vervolgens de set opdrachten die de chef-client moet uitvoeren op de beheerde virtuele machine.
 
-De opdrachten worden opgeslagen in het bestand default.rb. In dit bestand definieert u een reeks opdrachten waarmee IIS wordt geïnstalleerd, start IIS en een sjabloon voor bestanden worden gekopieerd naar de wwwroot-map.
+De opdrachten worden opgeslagen in het bestand default. rb. In dit bestand definieert u een set opdrachten waarmee IIS wordt geïnstalleerd, wordt IIS gestart en wordt een sjabloon bestand naar de map wwwroot gekopieerd.
 
-Wijzigen van het bestand C:\chef\cookbooks\webserver\recipes\default.rb en voeg de volgende regels toe.
+Wijzig het C:\chef\cookbooks\webserver\recipes\default.rb-bestand en voeg de volgende regels toe.
 
     powershell_script 'Install IIS' do
          action :run
@@ -269,30 +268,30 @@ Wijzigen van het bestand C:\chef\cookbooks\webserver\recipes\default.rb en voeg 
          rights :read, 'Everyone'
     end
 
-Sla het bestand wanneer u klaar bent.
+Sla het bestand op wanneer u klaar bent.
 
-## <a name="creating-a-template"></a>Het maken van een sjabloon
-In deze stap maakt u een sjabloonbestand gebruikt als de pagina default.html genereren.
+## <a name="creating-a-template"></a>Een sjabloon maken
+In deze stap genereert u een sjabloon bestand dat wordt gebruikt als de standaard pagina. html.
 
-Voer de volgende opdracht voor het genereren van de sjabloon:
+Voer de volgende opdracht uit om de sjabloon te genereren:
 
     chef generate template webserver Default.htm
 
-Navigeer naar de `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` bestand. Bewerk het bestand door enkele eenvoudige 'Hallo wereld"HTML-code toe te voegen en sla het bestand.
+Navigeer naar het `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` bestand. Bewerk het bestand door een eenvoudige HTML-code voor ' Hallo wereld ' toe te voegen en sla het bestand op.
 
-## <a name="upload-the-cookbook-to-the-chef-server"></a>Het Cookbook uploaden naar de Chef-Server
-In deze stap maakt u een kopie van het Cookbook die u hebt gemaakt op de lokale computer en te uploaden naar de Chef-gehoste-Server. Na het uploaden, het Cookbook wordt weergegeven onder de **beleid** tabblad.
+## <a name="upload-the-cookbook-to-the-chef-server"></a>De Cookbook naar de chef-server uploaden
+In deze stap maakt u een kopie van de Cookbook die u hebt gemaakt op de lokale computer en uploadt u deze naar de door chef gehoste server. Nadat het Cookbook is geüpload, wordt het weer gegeven op het tabblad **beleid** .
 
     knife cookbook upload webserver
 
 ![][9]
 
-## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Een virtuele machine met Mes Azure implementeren
-Implementeren van een virtuele machine van Azure en toepassen van de 'Webserver' Cookbook die de IIS web service en de standaard-webpagina wordt geïnstalleerd.
+## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Een virtuele machine implementeren met mes Azure
+Implementeer een virtuele Azure-machine en pas de Cookbook ' webserver ' toe waarmee de IIS-webservice en de standaard webpagina worden geïnstalleerd.
 
-Gebruik hiervoor de **mes azurerm-server maken** opdracht.
+Als u dit wilt doen, gebruikt u de opdracht **mes azurerm server Create** .
 
-Een voorbeeld van de opdracht verschijnt het volgende.
+Vervolgens wordt een voor beeld van de opdracht weer gegeven.
 
     knife azurerm server create `
     --azure-resource-group-name rg-chefdeployment `
@@ -310,34 +309,34 @@ Een voorbeeld van de opdracht verschijnt het volgende.
     -r "recipe[webserver]"
 
 
-Het bovenstaande voorbeeld wordt een Standard_DS2_v2 virtuele machine maken met Windows Server 2016 is geïnstalleerd in de regio VS-West. Vervangen door uw specifieke variabelen en uitgevoerd.
+Met het bovenstaande voor beeld maakt u een virtuele machine met Windows Server 2016 die is geïnstalleerd in de regio vs-West. Vervang uw specifieke variabelen door en voer uit.
 
 > [!NOTE]
-> Via de opdrachtregel, ben ik mijn filterregels voor eindpunt netwerk ook automatiseren met behulp van de parameter – tcp-eindpunten. Ik hebt poorten 80 en 3389 voor toegang tot de webpagina en de RDP-sessie geopend.
+> Via de opdracht regel Automatiseer ik ook mijn regels voor het eindpunt netwerk met behulp van de para meter – TCP-eind punten. Ik heb poorten 80 en 3389 geopend om toegang te geven tot de webpagina en de RDP-sessie.
 >
 >
 
-Nadat u de opdracht uitvoert, gaat u naar de Azure-portal om te zien van uw computer begint met het inrichten.
+Wanneer u de opdracht hebt uitgevoerd, gaat u naar de Azure Portal om te zien hoe uw machine begint met inrichten.
 
 ![][15]
 
-Er verschijnt de opdrachtprompt volgende.
+De opdracht prompt wordt vervolgens weer gegeven.
 
 ![][16]
 
-Zodra de implementatie is voltooid, wordt het openbare IP-adres van de nieuwe virtuele machine wordt weergegeven op de voltooiing van de implementatie, u kunt deze kopiëren en plak deze in een webbrowser en weergeven van de website die u hebt geïmplementeerd. Wanneer we de virtuele machine geïmplementeerd we poort 80 geopend, zodat deze extern beschikbaar moet zijn.   
+Zodra de implementatie is voltooid, wordt het open bare IP-adres van de nieuwe virtuele machine weer gegeven nadat de implementatie is voltooid, kunt u deze kopiëren en in een webbrowser plakken en de website bekijken die u hebt geïmplementeerd. Tijdens de implementatie van de virtuele machine is de poort 80 geopend, zodat deze extern beschikbaar moet zijn.   
 
 ![][11]
 
-In dit voorbeeld maakt gebruik van creative HTML-code.
+In dit voor beeld wordt gebruikgemaakt van creatieve HTML-code.
 
-U kunt ook de status van het knooppunt weergeven [Chef beheren](https://manage.chef.io/). 
+U kunt ook de status van het knoop punt weer geven [chef beheren](https://manage.chef.io/). 
 
 ![][17]
 
-Vergeet niet dat u kunt ook verbinding maken via een RDP-sessie vanuit Azure portal via poort 3389.
+Vergeet niet dat u ook via een RDP-sessie verbinding kunt maken via de Azure Portal via poort 3389.
 
-Bedankt. Ga en vandaag nog uw infrastructuur als code ontwikkelproces met Azure.
+Bedankt. Ga vandaag nog aan de slag met uw infra structuur en start de code met Azure.
 
 <!--Image references-->
 [2]: media/chef-automation/2.png

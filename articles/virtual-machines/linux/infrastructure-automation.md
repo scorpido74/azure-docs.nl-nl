@@ -1,6 +1,6 @@
 ---
-title: Infrastructuur automatiseringsprogramma's gebruiken voor virtuele Linux-machines in Azure | Microsoft Docs
-description: Informatie over het gebruik van infrastructuur automatiseringsprogramma's zoals Ansible, Chef, Puppet, Terraform en Packer maken en beheren van virtuele Linux-machines in Azure
+title: Infrastructuur Automation-hulpprogram ma's voor Linux-Vm's in azure gebruiken | Microsoft Docs
+description: Meer informatie over het gebruik van infrastructuur Automation-hulpprogram ma's zoals Ansible, chef, puppet, terraform en Packer voor het maken en beheren van virtuele Linux-machines in azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,17 +9,16 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 808f671b108fa2e06e3be919372647b391f809eb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: da476c1f0c1b64a0689f401ebb215fe8888b9921
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671431"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083073"
 ---
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

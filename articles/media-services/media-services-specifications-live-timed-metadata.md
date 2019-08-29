@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: df2a86dd1292f58511765e842ee97daddcff4e3e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019084"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102921"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Getimede meta gegevens in live streamen signalering 
 
@@ -210,7 +210,7 @@ Het schema voor de EventStream XML-nettolading van [MPEG-DASH] is gedefinieerd a
 ### <a name="built-in-supported-scheme-id-uris"></a>Ingebouwde ondersteunde combi natie van schema-id's
 | URI van schema-ID                 |  Description                                             |
 |-------------------------------|----------------------------------------------------------|
-| https://aomedia.org/emsg/ID3   | Hierin wordt beschreven hoe [ID3v2] meta gegevens kunnen worden uitgevoerd als getimede meta gegevens in een CMAF [MPEGCMAF] gefragmenteerde MP4. Zie de getimede [meta gegevens in de indeling common Media Application (CMAF)](https://aomediacodec.github.io/av1-id3/) voor meer informatie. |
+| https:\//aomedia.org/emsg/ID3   | Hierin wordt beschreven hoe [ID3v2] meta gegevens kunnen worden uitgevoerd als getimede meta gegevens in een CMAF [MPEGCMAF] gefragmenteerde MP4. Zie de getimede [meta gegevens in de indeling common Media Application (CMAF)](https://aomediacodec.github.io/av1-id3/) voor meer informatie. |
 
 ### <a name="event-processing-and-manifest-signaling"></a>Gebeurtenis verwerking en manifest signalen
 

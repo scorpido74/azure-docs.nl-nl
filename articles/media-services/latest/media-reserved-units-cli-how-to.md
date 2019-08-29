@@ -11,43 +11,43 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 08/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b1a79f2798fc98fd7361c47788c79e329e2cb827
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13fa733417558ab8be9ff1e5a9f1e484fb40f445
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65556190"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102949"
 ---
 # <a name="scaling-media-processing"></a>Mediaverwerking schalen
 
-Azure Media Services kunt u mediaverwerking schalen in uw account door het beheer van gereserveerde Media-eenheden (groepsbeleidsinstelling). De meest recent gebruikte bepaalt de snelheid waarmee uw multimedia standaardtaken voor de verwerking worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2**, of **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**). 
+Azure Media Services kunt u mediaverwerking schalen in uw account door het beheer van gereserveerde Media-eenheden (groepsbeleidsinstelling). MRUs bepalen de snelheid waarmee uw media verwerkings taken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2**, of **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**). 
 
-Naast het opgeven van de gereserveerde-eenheidstype, kunt u opgeven voor het inrichten van uw account met gereserveerde eenheden. Op basis van het aantal ingerichte, gereserveerde eenheden wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account. Bijvoorbeeld, als uw account vijf gereserveerde eenheden, heeft en vervolgens vijf mediataken gelijktijdig zo lang zal worden uitgevoerd als er zijn taken die moeten worden verwerkt. De resterende taken in de wachtrij wordt gewacht en wordt u opgehaald voor het verwerken van sequentieel worden verwerkt wanneer een actieve taak is voltooid. Als een account heeft geen alle gereserveerde eenheden worden ingericht, klikt u vervolgens taken opgehaald sequentieel worden verwerkt. In dit geval afhankelijk de wachttijd tussen één taak is voltooid en de volgende begin van de beschikbaarheid van resources in het systeem.
+Naast het opgeven van het type gereserveerde eenheid kunt u opgeven om uw account in te richten met gereserveerde eenheden. Op basis van het aantal ingerichte, gereserveerde eenheden wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account. Als uw account bijvoorbeeld vijf gereserveerde eenheden heeft, zullen vijf media taken gelijktijdig worden uitgevoerd, zolang er taken moeten worden verwerkt. De resterende taken wachten in de wachtrij en worden opgehaald voor verwerking opeenvolgend wanneer een actieve taak wordt voltooid. Als er voor een account geen gereserveerde eenheden zijn ingericht, worden de taken sequentieel opgehaald. In dit geval is de wacht tijd tussen het volt ooien van een taak en de volgende begint afhankelijk van de beschik baarheid van resources in het systeem.
 
-## <a name="choosing-between-different-reserved-unit-types"></a>Kiezen tussen verschillende gereserveerde-eenheidstypen
+## <a name="choosing-between-different-reserved-unit-types"></a>Kiezen tussen verschillende typen gereserveerde eenheden
 
-De volgende tabel kunt u een beslissing te nemen bij de keuze tussen verschillende snelheden voor codering. Het bevat ook enkele benchmark gevallen op [een video die u kunt downloaden](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) het uitvoeren van uw eigen tests:
+In de volgende tabel kunt u een beslissing nemen bij het kiezen van verschillende coderings snelheden. Het biedt ook enkele benchmark cases voor [een video die u kunt downloaden](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) om uw eigen tests uit te voeren:
 
-|RU-type|Scenario|Voorbeeld van resultaten voor de [7 min 1080 p video](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
+|RU-type|Scenario|Voorbeeld resultaten voor de [7 min 1080p-video](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
 |---|---|---|
-| **S1**|Single-bitrate codering. <br/>Bestanden op SD of onder oplossingen, tijd niet gevoelige, lage kosten.|Coderen naar single-bitrate SD resolutie MP4-bestand met behulp van 'H264 Single Bitrate SD 16 x 9' duurt ongeveer 7 minuten.|
-| **S2**|Single-bitrate en meerdere bitrate codering.<br/>Normaal gebruik voor zowel SD en HD-codering.|Codering met "H264 Single-Bitrate 720p" vooraf duurt ongeveer 6 minuten.<br/><br/>Codering met ' H264 Multiple Bitrate 720p "voorinstelling duurt ongeveer 12 minuten.|
-| **S3**|Single-bitrate en meerdere bitrate codering.<br/>Volledige HD en 4K resolutie van video's. Tijd gevoelige en snellere doorlooptijd codering.|Codering met "H264 Single-Bitrate 1080p" vooraf duurt ongeveer 3 minuten.<br/><br/>Codering met ' H264 Multiple Bitrate 1080p "voorinstelling duurt ongeveer 8 minuten.|
+| **S1**|Code ring met één bitsnelheid. <br/>Bestanden in SD of onder oplossingen, niet tijd gevoelig, lage kosten.|De code ring voor een MP4-bestand van de SD-resolutie met één bitsnelheid met ' H264 single bitrate SD 16x9 ' duurt circa 7 minuten.|
+| **S2**|Code ring met één bitrate en meerdere bitrates.<br/>Normaal gebruik voor zowel SD-als HD-code ring.|De code ring met de voor instelling ' H264 single bitrate 720p ' duurt circa 6 minuten.<br/><br/>De code ring met de voor instelling ' H264 multiple bitrate 720p ' duurt ongeveer 12 minuten.|
+| **S3**|Code ring met één bitrate en meerdere bitrates.<br/>Volledige HD-en 4.000 video-oplossingen. Tijd gevoelige, snellere aflever code.|De code ring met de voor instelling ' H264 single bitrate 1080p ' duurt ongeveer drie minuten.<br/><br/>De code ring met de voor instelling ' H264 multiple bitrate 1080p ' duurt ongeveer acht minuten.|
 
 ## <a name="considerations"></a>Overwegingen
 
-* S3-eenheidstype wordt voor de analyse van Audio en Video Analysis-taken die worden geactiveerd door Media Services v3 of Video Indexer, sterk aanbevolen.
-* Als de gedeelde groep wordt gebruikt, dat wil zeggen, zonder eventuele gereserveerde eenheden, klikt u vervolgens uw coderen taken hebben dezelfde prestaties net als bij de S1-ME. Er is geen bovengrens voor de tijd dat uw taken kunnen besteden aan de status in wachtrij echter en op elk moment maximaal slechts één taak wordt uitgevoerd.
+* Voor de taken voor audio analyse en video analyse die worden geactiveerd door Media Services v3 of Video Indexer, wordt het type S3-eenheid nadrukkelijk aanbevolen.
+* Als u de gedeelde groep gebruikt, dat wil zeggen, zonder gereserveerde eenheden, hebben uw versleutelings taken dezelfde prestaties als met S1 RUs. Er is echter geen bovengrens voor de tijd dat uw taken in de wachtrij staan en op elk gewenst moment maar één taak wordt uitgevoerd.
 
-De rest van het artikel ziet u hoe u [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) voor het schalen van de meest recent gebruikte.
+In de rest van het artikel ziet u hoe u [Media Services v3 cli](https://aka.ms/ams-v3-cli-ref) kunt gebruiken om MRUs te schalen.
 
 > [!NOTE]
 > Voor de analyse van Audio en Video Analysis-taken die worden geactiveerd door Media Services v3 of Video Indexer, is het raadzaam om in te richten van uw account met 10 S3 groepsbeleidsinstelling. Als u meer dan 10 S3 groepsbeleidsinstelling nodig hebt, opent u een ondersteuning ticket met de [Azure-portal](https://portal.azure.com/).
 >
-> U kunt de Azure-portal op dit moment niet gebruiken om andere v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
+> Op dit moment kunt u niet de Azure Portal gebruiken om andere v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -67,7 +67,7 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="billing"></a>Billing
 
-In rekening gebracht op basis van aantal minuten dat gereserveerde Media-eenheden zijn ingericht in uw account. Dit gebeurt onafhankelijk van of er zijn geen taken die worden uitgevoerd in uw account. Voor een gedetailleerde uitleg, Zie de sectie Veelgestelde vragen over van de [prijzen van Media Services](https://azure.microsoft.com/pricing/details/media-services/) pagina.   
+Er worden kosten in rekening gebracht op basis van het aantal minuten dat de gereserveerde media-eenheden in uw account zijn ingericht. Dit gebeurt onafhankelijk van het feit of er taken worden uitgevoerd in uw account. Voor een gedetailleerde uitleg, Zie de sectie Veelgestelde vragen over van de [prijzen van Media Services](https://azure.microsoft.com/pricing/details/media-services/) pagina.   
 
 ## <a name="next-step"></a>Volgende stap
 

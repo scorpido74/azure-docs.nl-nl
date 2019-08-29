@@ -1,6 +1,6 @@
 ---
-title: Controleer de D:-schijf van een virtuele machine een gegevensschijf | Microsoft Docs
-description: 'Beschrijft hoe u stationsletters wijzigt voor een Windows-VM, zodat u het station D: als gegevensstation kunt.'
+title: 'Het D: station van een virtuele machine maken een gegevens schijf | Microsoft Docs'
+description: 'Hierin wordt beschreven hoe u stationsletters wijzigt voor een Windows-VM, zodat u de D: station kunt gebruiken als gegevens station.'
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,58 +11,57 @@ ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 12986068a761b92611c557a0dfcf08905283b8bd
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719250"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079877"
 ---
-# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Het station D: als gegevensstation op een Windows-VM gebruiken
-Als uw toepassing moet de D-station wilt gebruiken voor het opslaan van gegevens, volgt u deze instructies voor het gebruik van een andere stationsletter voor de tijdelijke schijf. Gebruik nooit de tijdelijke schijf voor het opslaan van gegevens die u nodig hebt om te houden.
+# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Het D: station gebruiken als gegevens station op een Windows-VM
+Als uw toepassing het D-station moet gebruiken om gegevens op te slaan, volgt u deze instructies om een andere stationsletter voor de tijdelijke schijf te gebruiken. Gebruik nooit de tijdelijke schijf om gegevens op te slaan die u wilt bewaren.
 
-Als u het formaat of **stoppen (toewijzing ongedaan maken)** een virtuele machine, dit plaatsing van de virtuele machine naar een nieuwe hypervisor kan activeren. Een geplande of onvoorziene onderhoudsgebeurtenis kan ook deze plaatsing activeren. In dit scenario wordt de tijdelijke schijf wordt toegewezen aan de eerste beschikbare stationsletter. Als u een toepassing waarbij specifiek de D:-schijf hebt, moet u deze stappen voor het tijdelijk pagefile.sys verplaatsen, een nieuwe gegevensschijf koppelen en de letter D toewijzen en vervolgens de pagefile.sys terug verplaatsen naar het tijdelijke station. Als u klaar bent, Azure niet terug te nemen de D: als de virtuele machine wordt verplaatst naar een andere hypervisor.
+Als u het formaat van een virtuele machine wijzigt of **stopt (toewijzing opheffen)** , wordt de plaatsing van de virtuele machine naar een nieuwe Hyper Visor geactiveerd. Deze plaatsing kan ook worden geactiveerd door een geplande of niet-geplande onderhouds gebeurtenis. In dit scenario wordt de tijdelijke schijf opnieuw toegewezen aan de eerste beschik bare stationsletter. Als u een toepassing hebt die specifiek het D:-station vereist, moet u deze stappen volgen om het bestand Pagefile. sys tijdelijk te verplaatsen, een nieuwe gegevens schijf toe te voegen en de letter D toe te wijzen en vervolgens het bestand Pagefile. sys terug te zetten naar het tijdelijke station. Zodra het proces is voltooid, wordt de D niet meer teruggebracht door Azure als de VM naar een andere Hyper Visor wordt verplaatst.
 
-Zie voor meer informatie over hoe Azure gebruikt voor de tijdelijke schijf [inzicht krijgen in het tijdelijke station op Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Zie [inzicht in het tijdelijke station op Microsoft Azure virtual machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/) voor meer informatie over hoe Azure de tijdelijke schijf gebruikt.
 
-## <a name="attach-the-data-disk"></a>De gegevensschijf koppelen
-U moet eerst de gegevensschijf koppelen aan de virtuele machine. Om dit te doen met behulp van de portal, Zie [hoe u een beheerde gegevensschijf koppelen in de Azure-portal](attach-managed-disk-portal.md).
+## <a name="attach-the-data-disk"></a>De gegevens schijf koppelen
+Eerst moet u de gegevens schijf aan de virtuele machine koppelen. Zie [een beheerde gegevens schijf koppelen in de Azure Portal](attach-managed-disk-portal.md)om dit te doen met behulp van de portal.
 
-## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Tijdelijk verplaatsen pagefile.sys naar C-schijf
+## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Pagefile. sys tijdelijk verplaatsen naar station C
 1. Maak verbinding met de virtuele machine. 
-2. Met de rechtermuisknop op de **Start** menu en selecteer **System**.
-3. Selecteer in het menu links **Geavanceerde systeeminstellingen**.
-4. In de **prestaties** sectie, selecteer **instellingen**.
-5. Selecteer de **Geavanceerd** tabblad.
-6. In de **virtueel geheugen** sectie, selecteer **wijziging**.
-7. Selecteer de **C** station en klik vervolgens op **systeem beheerde grootte** en klik vervolgens op **ingesteld**.
-8. Selecteer de **D** station en klik vervolgens op **geen wisselbestand** en klik vervolgens op **ingesteld**.
-9. Klik op toepassen. U ontvangt een waarschuwing dat de computer moet opnieuw worden opgestart om de wijzigingen door te voeren.
-10. Start de virtuele machine.
+2. Klik met de rechter muisknop op het menu **Start** en selecteer **systeem**.
+3. Selecteer in het menu aan de linkerkant **geavanceerde systeem instellingen**.
+4. Selecteer in de sectie **prestaties** de optie **instellingen**.
+5. Selecteer het tabblad **Geavanceerd** .
+6. Selecteer **wijzigen**in het gedeelte **virtueel geheugen** .
+7. Selecteer station **C** en klik vervolgens op door **systeem beheerde grootte** en klik vervolgens op **instellen**.
+8. Selecteer het station **D** en klik vervolgens op **geen wissel bestand** en klik vervolgens op **instellen**.
+9. Klik op Toep assen. Er wordt een waarschuwing weer gegeven dat de computer opnieuw moet worden opgestart om de wijzigingen van kracht te laten worden.
+10. Start de virtuele machine opnieuw op.
 
 ## <a name="change-the-drive-letters"></a>De stationsletters wijzigen
-1. Zodra de virtuele machine opnieuw is opgestart, meld u terug naar de virtuele machine.
-2. Klik op de **Start** menu en voert u **diskmgmt.msc** en druk op Enter. Schijfbeheer wordt gestart.
-3. Met de rechtermuisknop op **D**, wordt het station voor tijdelijke opslag, en selecteer **wijziging stationsletter en paden**.
-4. Selecteer onder de stationsletter, een nieuw station, zoals **T** en klik vervolgens op **OK**. 
-5. Met de rechtermuisknop op de gegevensschijf en selecteer **wijziging stationsletter en paden**.
-6. Selecteer onder de stationsletter, station **D** en klik vervolgens op **OK**. 
+1. Nadat de VM opnieuw is opgestart, meldt u zich weer aan bij de VM.
+2. Klik op het menu **Start** , typ **diskmgmt. msc** en druk op ENTER. Schijf beheer wordt gestart.
+3. Klik met de rechter muisknop op **D**, het tijdelijke opslag station en selecteer **stationsletter en paden wijzigen**.
+4. Selecteer onder stationsletter een nieuw station, bijvoorbeeld **T** , en klik vervolgens op **OK**. 
+5. Klik met de rechter muisknop op de gegevens schijf en selecteer **stationsletter en paden wijzigen**.
+6. Onder stationsletter, selecteer station **D** en klik vervolgens op **OK**. 
 
-## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Pagefile.sys terug verplaatsen naar de tijdelijke opslagschijf
-1. Met de rechtermuisknop op de **Start** menu en selecteer **System**
-2. Selecteer in het menu links **Geavanceerde systeeminstellingen**.
-3. In de **prestaties** sectie, selecteer **instellingen**.
-4. Selecteer de **Geavanceerd** tabblad.
-5. In de **virtueel geheugen** sectie, selecteer **wijziging**.
-6. Selecteer het station OS **C** en klikt u op **geen wisselbestand** en klik vervolgens op **ingesteld**.
-7. Selecteer het station voor tijdelijke opslag **T** en klik vervolgens op **systeem beheerde grootte** en klik vervolgens op **ingesteld**.
-8. Klik op **Toepassen**. U ontvangt een waarschuwing dat de computer moet opnieuw worden opgestart om de wijzigingen door te voeren.
-9. Start de virtuele machine.
+## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Pagefile. sys terug naar het tijdelijke opslag station verplaatsen
+1. Klik met de rechter muisknop op het menu **Start** en selecteer **systeem**
+2. Selecteer in het menu aan de linkerkant **geavanceerde systeem instellingen**.
+3. Selecteer in de sectie **prestaties** de optie **instellingen**.
+4. Selecteer het tabblad **Geavanceerd** .
+5. Selecteer **wijzigen**in het gedeelte **virtueel geheugen** .
+6. Selecteer het OS-station **C** en klik op **geen wissel bestand** en klik vervolgens op **instellen**.
+7. Selecteer het tijdelijke opslag station **T** en klik vervolgens op door **systeem beheerde grootte** en klik vervolgens op **instellen**.
+8. Klik op **Toepassen**. Er wordt een waarschuwing weer gegeven dat de computer opnieuw moet worden opgestart om de wijzigingen van kracht te laten worden.
+9. Start de virtuele machine opnieuw op.
 
 ## <a name="next-steps"></a>Volgende stappen
-* U kunt de beschikbare opslagruimte verhogen met uw virtuele machine door [Bezig met koppelen van een extra-gegevensschijf](attach-managed-disk-portal.md).
+* U kunt de opslag ruimte die beschikbaar is voor uw virtuele machine verhogen door [een extra gegevens schijf te koppelen](attach-managed-disk-portal.md).
 

@@ -1,6 +1,6 @@
 ---
-title: MongoDB installeren op een Windows-VM in Azure | Microsoft Docs
-description: Leer hoe u MongoDB op een virtuele Azure-machine met Windows Server 2012 R2 zijn gemaakt met het implementatiemodel van Resource Manager installeert.
+title: MongoDB installeren op een Windows-VM in azure | Microsoft Docs
+description: Meer informatie over het installeren van MongoDB op een virtuele Azure-machine met Windows Server 2012 R2 die is gemaakt met het Resource Manager-implementatie model.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -10,121 +10,120 @@ ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 1436eadace2ff57bde9d67201d6b38d4aee8f523
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 3cf1e6ba574fdafd8150212688475450e4cc2379
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722663"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103133"
 ---
-# <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Installeren en configureren van MongoDB op een Windows-VM in Azure
-[MongoDB](https://www.mongodb.org) is een populaire open-source, hoogwaardige NoSQL-database. In dit artikel begeleidt u bij het installeren en configureren van MongoDB op een Windows Server 2016 virtuele machine (VM) in Azure. U kunt ook [MongoDB op een Linux-VM in Azure installeert](../linux/install-mongodb.md).
+# <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>MongoDB installeren en configureren op een Windows-VM in azure
+[MongoDb](https://www.mongodb.org) is een populaire open-source NoSQL-data base met hoge prestaties. Dit artikel helpt u bij het installeren en configureren van MongoDB op een virtuele machine met Windows Server 2016 (VM) in Azure. U kunt [MongoDb ook installeren op een virtuele Linux-machine in azure](../linux/install-mongodb.md).
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u installeren en configureren van MongoDB, moet u een virtuele machine maken en in het ideale geval een gegevensschijf toevoegen aan deze. Zie de volgende artikelen voor een virtuele machine maken en een gegevensschijf toevoegen:
+Voordat u MongoDB installeert en configureert, moet u een virtuele machine maken en een gegevens schijf in het ideale geval toevoegen. Raadpleeg de volgende artikelen om een virtuele machine te maken en een gegevens schijf toe te voegen:
 
-* Maak een Windows Server-VM met [de Azure-portal](quick-create-portal.md) of [Azure PowerShell](quick-create-powershell.md).
-* Een gegevensschijf koppelen aan een Windows Server-VM met [de Azure-portal](attach-managed-disk-portal.md) of [Azure PowerShell](attach-disk-ps.md).
+* Maak een Windows Server-VM met behulp van [de Azure Portal](quick-create-portal.md) of [Azure PowerShell](quick-create-powershell.md).
+* Een gegevens schijf koppelen aan een virtuele Windows Server-machine met behulp van [de Azure Portal](attach-managed-disk-portal.md) of [Azure PowerShell](attach-disk-ps.md).
 
-Om te beginnen met MongoDB installeren en configureren, [Meld u aan bij uw Windows Server-VM](connect-logon.md) met behulp van extern bureaublad.
+Als u MongoDB wilt installeren en configureren, [meldt u zich aan bij de Windows Server-VM](connect-logon.md) met behulp van extern bureaublad.
 
 ## <a name="install-mongodb"></a>MongoDB installeren
 > [!IMPORTANT]
-> MongoDB-beveiligingsfuncties, zoals een verificatie- en IP-adresbinding worden niet standaard ingeschakeld. Beveiligingsfuncties die moeten worden ingeschakeld voordat u MongoDB in een productieomgeving implementeert. Zie voor meer informatie, [MongoDB beveiligings- en Authenticatieservices](https://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> MongoDB-beveiligings functies, zoals verificatie en IP-adres binding, zijn standaard niet ingeschakeld. Beveiligings functies moeten worden ingeschakeld voordat u MongoDB implementeert in een productie omgeving. Zie [MongoDb-beveiliging en-verificatie](https://www.mongodb.org/display/DOCS/Security+and+Authentication)voor meer informatie.
 
 
-1. Nadat u uw virtuele machine via Extern bureaublad verbinding hebt gemaakt, opent u Internet Explorer uit vanaf de taakbalk.
-2. Selecteer **gebruik aanbevolen instellingen voor beveiliging, privacy en compatibiliteit** wanneer Internet Explorer eerst wordt geopend, en klikt u op **OK**.
-3. Verbeterde beveiliging van Internet Explorer is standaard ingeschakeld. De MongoDB-website toevoegen aan de lijst met toegestane sites:
+1. Nadat u verbinding hebt gemaakt met uw virtuele machine met behulp van Extern bureaublad, opent u Internet Explorer via de taak balk.
+2. Selecteer **aanbevolen beveiligings-, privacy-en compatibiliteits instellingen gebruiken** wanneer Internet Explorer voor het eerst wordt geopend en klik op **OK**.
+3. Verbeterde beveiliging van Internet Explorer is standaard ingeschakeld. Voeg de MongoDB-website toe aan de lijst met toegestane sites:
    
-   * Selecteer de **extra** pictogram in de rechterbovenhoek.
-   * In **Internetopties**, selecteer de **Security** tabblad, en selecteer vervolgens de **vertrouwde Sites** pictogram.
-   * Klik op de **Sites** knop. Voeg *https://\*. mongodb.com* aan de lijst met vertrouwde sites hebben en sluit het dialoogvenster.
+   * Selecteer het pictogram **extra** in de rechter bovenhoek.
+   * Selecteer in **Internet opties**het tabblad **beveiliging** en selecteer vervolgens het pictogram **vertrouwde sites** .
+   * Klik op de knop **sites** . Voeg *https://\*. MongoDb.com* toe aan de lijst met vertrouwde sites en sluit het dialoog venster.
      
-     ![Instellingen van Internet Explorer configureren](./media/install-mongodb/configure-internet-explorer-security.png)
-4. Blader naar de [MongoDB - Downloads](https://www.mongodb.com/downloads) pagina (https://www.mongodb.com/downloads).
-5. Selecteer, indien nodig de **Community Server** edition en selecteer vervolgens de meest recente huidige stabiele release voor*Windows Server 2008 R2 64-bits en hoger*. Als u wilt het installatieprogramma hebt gedownload, klikt u op **downloaden (msi)** .
+     ![Beveiligings instellingen voor Internet Explorer configureren](./media/install-mongodb/configure-internet-explorer-security.png)
+4. Blader naar de pagina met [MongoDb-down loads](https://www.mongodb.com/downloads) (https://www.mongodb.com/downloads).
+5. Als dat nodig is, selecteert u de editie van de **community-server** en selecteert u vervolgens de nieuwste stabiele release voor*Windows Server 2008 R2 64-bits en hoger*. Als u het installatie programma wilt downloaden, klikt u op **downloaden (MSI)** .
    
-    ![MongoDB-installatieprogramma downloaden](./media/install-mongodb/download-mongodb.png)
+    ![MongoDB-installatie programma downloaden](./media/install-mongodb/download-mongodb.png)
    
-    Voer het installatieprogramma nadat het downloaden voltooid is.
-6. Lees en accepteer de gebruiksrechtovereenkomst. Wanneer u wordt gevraagd, selecteert u **voltooid** installeren.
-7. Indien gewenst, kunt u ook installeren kompas, een grafische interface voor MongoDB.
-8. Klik op het laatste scherm **installeren**.
+    Voer het installatie programma uit nadat het downloaden is voltooid.
+6. Lees en accepteer de gebruiksrecht overeenkomst. Wanneer u hierom wordt gevraagd, selecteert u **volledige** installatie.
+7. Desgewenst kunt u ervoor kiezen om ook een kompas, een grafische interface voor MongoDB, te installeren.
+8. Klik in het laatste scherm op **installeren**.
 
-## <a name="configure-the-vm-and-mongodb"></a>Configureren van de virtuele machine en MongoDB
-1. De padvariabelen zijn niet bijgewerkt door de MongoDB-installatieservice. Zonder de MongoDB `bin` locatie in uw padomgevingsvariabele, moet u elke keer dat u een MongoDB-uitvoerbaar bestand gebruikt voor het volledige pad opgeven. De locatie toevoegen aan de variabele path:
+## <a name="configure-the-vm-and-mongodb"></a>De VM en MongoDB configureren
+1. De padvariabelen worden niet bijgewerkt door het MongoDB-installatie programma. Zonder de locatie `bin` MongoDb in uw padvariabele moet u het volledige pad opgeven telkens wanneer u een MongoDb-uitvoerbaar bestand gebruikt. De locatie toevoegen aan de variabele pad:
    
-   * Met de rechtermuisknop op de **Start** menu en selecteer **System**.
-   * Klik op **Geavanceerde systeeminstellingen**, en klik vervolgens op **omgevingsvariabelen**.
-   * Onder **systeemvariabelen**, selecteer **pad**, en klik vervolgens op **bewerken**.
+   * Klik met de rechter muisknop op het menu **Start** en selecteer **systeem**.
+   * Klik op **geavanceerde systeem instellingen**en klik vervolgens op **omgevings variabelen**.
+   * Selecteer **pad**onder **systeem variabelen**en klik vervolgens op **bewerken**.
      
      ![Padvariabelen configureren](./media/install-mongodb/configure-path-variables.png)
      
-     Het pad toevoegen aan uw MongoDB `bin` map. MongoDB wordt doorgaans geïnstalleerd in *C:\Program Files\MongoDB*. Controleer of het installatiepad op de virtuele machine. Het volgende voorbeeld wordt de standaard MongoDB-installatielocatie naar de `PATH` variabele:
+     Voeg het pad naar de map `bin` MongoDb toe. MongoDB wordt doorgaans geïnstalleerd in *C:\Program Files\MongoDB*. Controleer het installatiepad op de virtuele machine. In het volgende voor beeld wordt de standaard installatie locatie voor `PATH` MongoDb toegevoegd aan de variabele:
      
      ```
      ;C:\Program Files\MongoDB\Server\3.6\bin
      ```
      
      > [!NOTE]
-     > Zorg ervoor dat u de toonaangevende puntkomma toevoegen (`;`) om aan te geven dat u wilt toevoegen aan een locatie voor uw `PATH` variabele.
+     > Zorg ervoor dat u de voorloop punt komma`;`() toevoegt om aan te geven dat u een locatie `PATH` aan uw variabele toevoegt.
 
-2. MongoDB-gegevens en logboekbestanden mappen op de gegevensschijf van uw maken. Uit de **Start** in het menu **opdrachtprompt**. De volgende voorbeelden maken de mappen op station F:
+2. Maak MongoDB-gegevens en-logboek mappen op uw gegevens schijf. Selecteer in het menu **Start** de **opdracht prompt**. De volgende voor beelden maken de mappen op station F:
    
     ```
     mkdir F:\MongoData
     mkdir F:\MongoLogs
     ```
-3. Een MongoDB-exemplaar starten met de volgende opdracht, aanpassen van het pad naar uw gegevens en mappen dienovereenkomstig aan te melden:
+3. Start een MongoDB-exemplaar met de volgende opdracht, waarbij u het pad naar uw gegevens en logboek directory's dienovereenkomstig kunt aanpassen:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    Het duurt enkele minuten voor MongoDB toegewezen van de logboekbestanden en start luistert voor verbindingen. Alle berichten in het logboek worden doorgestuurd naar de *F:\MongoLogs\mongolog.log* als het bestand `mongod.exe` server wordt gestart en logboekbestanden kan worden toegewezen.
+    Het kan enkele minuten duren voordat MongoDB de logboek bestanden toe te wijzen en te Luis teren naar verbindingen. Alle logboek berichten worden omgeleid naar het *F:\MongoLogs\mongolog.log* - `mongod.exe` bestand wanneer de server logboek bestanden start en toewijst.
    
    > [!NOTE]
-   > De opdrachtprompt blijven onze aandacht richten op deze taak terwijl uw MongoDB-exemplaar dat wordt uitgevoerd. Sluit het opdrachtpromptvenster om door te gaan met MongoDB. Of installeer MongoDB als service, zoals beschreven in de volgende stap.
+   > De opdracht prompt blijft gericht op deze taak terwijl uw MongoDB-exemplaar wordt uitgevoerd. Laat het opdracht prompt venster geopend om door te gaan met het uitvoeren van MongoDB. Of installeer MongoDB als service, zoals wordt beschreven in de volgende stap.
 
-4. Voor een meer robuuste MongoDB-ervaring, installeert u de `mongod.exe` als een service. Het maken van een service betekent dat u hoeft niet te laat een opdrachtprompt uitgevoerd telkens wanneer u wilt gebruiken van MongoDB. De service maken als volgt het pad naar de mappen van uw gegevens en logboekbestanden dienovereenkomstig aanpassen:
+4. Installeer de `mongod.exe` as a service voor een krachtigere MongoDb-ervaring. Als u een service maakt, hoeft u geen opdracht prompt te laten uitvoeren telkens wanneer u MongoDB wilt gebruiken. Maak de service als volgt, waarbij u het pad naar uw gegevens en logboek directory's dienovereenkomstig kunt aanpassen:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
     ```
    
-    De voorgaande opdracht maakt u een service met de naam van MongoDB, met een beschrijving van "Mongo DB". De volgende parameters zijn ook opgegeven:
+    Met de voor gaande opdracht maakt u een service met de naam MongoDB, met een beschrijving van ' Mongo DB '. De volgende para meters zijn ook opgegeven:
    
-   * De `--dbpath` optie geeft u op de locatie van de map voor gegevens.
-   * De `--logpath` optie moet worden gebruikt om op te geven van een logboekbestand, omdat de service heeft geen een opdrachtvenster om uitvoer weer te geven.
-   * De `--logappend` optie geeft u de uitvoer toe te voegen aan het bestaande bestand zorgt ervoor dat de service opnieuw worden opgestart.
+   * Met `--dbpath` de optie geeft u de locatie van de gegevensdirectory op.
+   * De `--logpath` optie moet worden gebruikt om een logboek bestand op te geven, omdat de actieve service geen opdracht venster heeft om uitvoer weer te geven.
+   * De `--logappend` optie geeft aan dat het opnieuw opstarten van de service ertoe leidt dat uitvoer wordt toegevoegd aan het bestaande logboek bestand.
    
-   De MongoDB-service wilt starten, moet u de volgende opdracht uitvoeren:
+   Als u de MongoDB-service wilt starten, voert u de volgende opdracht uit:
    
     ```
     net start MongoDB
     ```
    
-    Zie voor meer informatie over het maken van de MongoDB-service [configureren van een Windows-Service voor MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service).
+    Zie [Configure a Windows service for MongoDb](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service)(Engelstalig) voor meer informatie over het maken van de MongoDb-service.
 
-## <a name="test-the-mongodb-instance"></a>Testen van de MongoDB-exemplaar
-MongoDB wordt uitgevoerd als één instantie of als een service is geïnstalleerd, kunt u het maken en gebruiken van uw databases nu starten. Voor het starten van de administratieve MongoDB-shell, een ander opdrachtpromptvenster openen vanuit de **Start** in het menu en voer de volgende opdracht:
+## <a name="test-the-mongodb-instance"></a>Het MongoDB-exemplaar testen
+Wanneer MongoDB wordt uitgevoerd als één exemplaar of als een service wordt geïnstalleerd, kunt u nu beginnen met het maken en gebruiken van uw data bases. Als u de MongoDB-beheer shell wilt starten, opent u een ander opdracht prompt venster vanuit het menu **Start** en voert u de volgende opdracht in:
 
 ```
 mongo  
 ```
 
-U kunt de databases met een lijst de `db` opdracht. Voer enkele gegevens als volgt in:
+U kunt de data bases weer `db` geven met de opdracht. Voeg de volgende gegevens in:
 
 ```
 db.foo.insert( { a : 1 } )
 ```
 
-Zoeken naar gegevens als volgt:
+Zoek gegevens als volgt:
 
 ```
 db.foo.find()
@@ -136,14 +135,14 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 { "_id" : "ObjectId("57f6a86cee873a6232d74842"), "a" : 1 }
 ```
 
-Sluit de `mongo` console als volgt:
+Sluit de `mongo` -console als volgt af:
 
 ```
 exit
 ```
 
-## <a name="configure-firewall-and-network-security-group-rules"></a>Firewall- en Network Security Group regels configureren
-MongoDB is geïnstalleerd en wordt uitgevoerd, opent u een poort in Windows Firewall, zodat u op afstand verbinding met MongoDB maken kunt. Voor het maken van een nieuwe regel binnenkomende verbindingen om toe te staan van TCP-poort 27017, open een beheeropdrachtprompt PowerShell en voer de volgende opdracht:
+## <a name="configure-firewall-and-network-security-group-rules"></a>Firewall-en netwerk beveiligings groeps regels configureren
+Nu MongoDB is geïnstalleerd en wordt uitgevoerd, opent u een poort in Windows Firewall zodat u extern verbinding kunt maken met MongoDB. Als u een nieuwe regel voor binnenkomende verbindingen wilt maken om TCP-poort 27017 toe te staan, opent u een Power shell-prompt voor beheer en voert u de volgende opdracht in:
 
 ```powerahell
 New-NetFirewallRule `
@@ -154,14 +153,14 @@ New-NetFirewallRule `
     -Action Allow
 ```
 
-U kunt ook de regel maken met behulp van de **Windows Firewall met geavanceerde beveiliging** grafisch beheerprogramma. Maak een nieuwe regel binnenkomende verbindingen voor TCP-poort 27017 toestaan.
+U kunt de regel ook maken met behulp van het hulp programma **Windows Firewall met geavanceerde beveiliging voor** grafische beheer. Maak een nieuwe regel voor binnenkomende verbindingen om TCP-poort 27017 toe te staan.
 
-Indien nodig, maakt u een regel voor Netwerkbeveiligingsgroep voor toegang tot MongoDB van buiten het bestaande subnet met virtuele Azure-netwerk. U kunt de regels Network Security Group maken met behulp van de [Azure-portal](nsg-quickstart-portal.md) of [Azure PowerShell](nsg-quickstart-powershell.md). Net als bij de Windows Firewall-regels, kunt u TCP-poort 27017 aan de virtuele netwerkinterface van de MongoDB-VM.
+Als dat nodig is, maakt u een regel voor de netwerk beveiligings groep om toegang tot MongoDB toe te staan van buiten het bestaande subnet van het virtuele Azure-netwerk. U kunt de regels voor de netwerk beveiligings groep maken met behulp van de [Azure Portal](nsg-quickstart-portal.md) of [Azure PowerShell](nsg-quickstart-powershell.md). Net als bij de Windows Firewall regels, staat u TCP-poort 27017 toe aan de virtuele netwerk interface van uw MongoDB-VM.
 
 > [!NOTE]
-> TCP-poort 27017 is de standaardpoort gebruikt met MongoDB. U kunt deze poort wijzigen met behulp van de `--port` parameter bij het starten van `mongod.exe` handmatig of via een service. Als u de poort wijzigt, zorg ervoor dat u het bijwerken van de Windows Firewall- en Network Security Group regels in de voorgaande stappen.
+> TCP-poort 27017 is de standaard poort die wordt gebruikt door MongoDB. U kunt deze poort wijzigen door de `--port` para meter te gebruiken wanneer u hand matig of vanuit een service begint. `mongod.exe` Als u de poort wijzigt, moet u ervoor zorgen dat u de Windows Firewall en de regels voor de netwerk beveiligings groep in de voor gaande stappen bijwerkt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u geleerd hoe u kunt installeren en configureren van MongoDB op uw Windows-VM. U kunt nu toegang tot MongoDB op de Windows-VM aan de hand van de geavanceerde onderwerpen in de [MongoDB-documentatie](https://docs.mongodb.com/manual/).
+In deze zelf studie hebt u geleerd hoe u MongoDB kunt installeren en configureren op uw Windows-VM. U hebt nu toegang tot MongoDB op uw Windows-VM door de geavanceerde onderwerpen in de [MongoDb-documentatie](https://docs.mongodb.com/manual/)te volgen.
 

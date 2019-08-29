@@ -1,35 +1,35 @@
 ---
-title: 'Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell'
-description: In deze zelfstudie leert u hoe u Azure Firewall kunt implementeren en configureren via Azure PowerShell.
+title: Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
+description: In dit artikel vindt u informatie over het implementeren en configureren van Azure Firewall met behulp van Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
+ms.topic: article
 ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 608674d6e049c71d22c7bf91f37fcb16ffccc581
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144922"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073081"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
 
 Als u het on-premises netwerk verbindt met een virtueel Azure-netwerk om een hybride netwerk te maken, is de mogelijkheid om de toegang tot uw Azure-netwerkresources te beheren een belangrijk onderdeel van een algemeen beveiligingsplan.
 
 U kunt Azure Firewall gebruiken om de netwerktoegang in een hybride netwerk te beheren met behulp van de regels die toegestaan en geweigerd netwerkverkeer definiëren.
 
-Voor deze zelfstudie maakt u drie virtuele netwerken:
+Voor dit artikel maakt u drie virtuele netwerken:
 
 - **VNet-Hub**: de firewall bevindt zich in dit virtuele netwerk.
 - **VNet-spoke**: het virtuele spoke-netwerk vertegenwoordigt de workload die zich bevindt in Azure.
-- **VNet-Onprem**: het on-premises virtuele netwerk vertegenwoordigt een on-premises netwerk. In een werkelijke implementatie, kan dit worden gekoppeld door een VPN of ExpressRoute-verbinding. Om het eenvoudig te houden wordt in deze zelfstudie een VPN-gatewayverbinding gebruikt en wordt een on-premises netwerk vertegenwoordigd door een virtueel Azure-netwerk.
+- **VNet-Onprem**: het on-premises virtuele netwerk vertegenwoordigt een on-premises netwerk. In een daad werkelijke implementatie kan het worden verbonden door een VPN-of ExpressRoute-verbinding. Ter vereenvoudiging maakt dit artikel gebruik van een VPN-gateway verbinding en wordt een virtueel netwerk met Azure-locatie gebruikt om een on-premises netwerk aan te duiden.
 
 ![Firewall in een hybride netwerk](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-In deze zelfstudie leert u het volgende:
+In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * De variabelen declareren
@@ -43,12 +43,13 @@ In deze zelfstudie leert u het volgende:
 > * De virtuele machines maken
 > * De firewall testen
 
+Zie [zelf studie als u in plaats daarvan Azure Portal wilt gebruiken om deze zelf studie te volt ooien: Implementeer en configureer Azure Firewall in een hybride netwerk met behulp](tutorial-hybrid-portal.md)van de Azure Portal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelfstudie moet u PowerShell lokaal uitvoeren. U moet de Azure PowerShell-module geïnstalleerd hebben. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
+Voor dit artikel moet u Power shell lokaal uitvoeren. U moet de module Azure PowerShell hebben geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
 
 Er zijn drie belangrijke vereisten voor de correcte werking van dit scenario:
 
@@ -58,12 +59,12 @@ Er zijn drie belangrijke vereisten voor de correcte werking van dit scenario:
    Er is geen door de gebruiker gedefinieerde route (UDR) nodig in het Azure Firewall-subnet, omdat het de routes overneemt van BGP.
 - Zorg dat u **AllowGatewayTransit** instelt voor de peering van VNet-Hub naar VNet-Spoke en **UseRemoteGateways** voor de peering van VNet-Spoke naar VNet-Hub.
 
-Zie het gedeelte [Routes maken](#create-the-routes) in deze zelfstudie voor informatie over hoe deze routes worden gemaakt.
+Zie de sectie [routes maken](#create-the-routes) in dit artikel om te zien hoe deze routes worden gemaakt.
 
 >[!NOTE]
->Firewall van Azure moet directe verbinding met Internet hebben. Als uw AzureFirewallSubnet een standaardroute naar uw on-premises netwerk via BGP achterhaalt, moet u deze overschrijven met een UDR 0.0.0.0/0 met de **NextHopType** waarde ingesteld als **Internet** direct onderhouden Verbinding met Internet. Standaard, dienen de Firewall van Azure biedt geen ondersteuning voor een geforceerde tunneling naar een on-premises netwerk.
+>Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden. Standaard biedt Azure Firewall geen ondersteuning voor geforceerde tunneling naar een on-premises netwerk.
 >
->Echter, als uw configuratie geforceerde tunneling naar een on-premises netwerk vereist, Microsoft wordt hiervoor ondersteuning bieden op basis van per geval. Neem contact op met ondersteuning voor zodat we uw aanvraag kunt controleren. Als geaccepteerd, we whitelist uw abonnement en zorg ervoor dat de internetverbinding vereist firewall wordt onderhouden.
+>Als uw configuratie echter geforceerde tunneling voor een on-premises netwerk vereist, zal micro soft deze in het geval per geval ondersteunen. Neem contact op met de ondersteuning zodat we uw aanvraag kunnen controleren. Als u dit hebt geaccepteerd, wordt uw abonnement white list en moet u ervoor zorgen dat de vereiste Firewall Internet connectiviteit wordt onderhouden.
 
 >[!NOTE]
 >Verkeer tussen rechtstreeks gepeerde VNets wordt rechtstreeks gerouteerd, zelfs als de UDR naar Azure Firewall als standaardgateway wijst. Als u in dit scenario subnet-naar-subnet-verkeer wilt verzenden, moet een UDR het voorvoegsel van het doelsubnetwerk expliciet op beide subnetten bevatten.
@@ -74,7 +75,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="declare-the-variables"></a>De variabelen declareren
 
-In het volgende voorbeeld worden de variabelen gedeclareerd met de waarden voor deze zelfstudie. In sommige gevallen moet u mogelijk bepaalde waarden vervangen door uw eigen waarden om in uw abonnement te kunnen werken. Wijzig de variabelen als dat nodig is en kopieer en plak ze vervolgens in uw PowerShell-console.
+In het volgende voor beeld worden de variabelen gedeclareerd met de waarden voor dit artikel. In sommige gevallen moet u mogelijk bepaalde waarden vervangen door uw eigen waarden om in uw abonnement te kunnen werken. Wijzig de variabelen als dat nodig is en kopieer en plak ze vervolgens in uw PowerShell-console.
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -118,7 +119,7 @@ $SNnameGW = "GatewaySubnet"
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>Het virtuele hub-netwerk voor de firewall maken
 
-Maak eerst de resourcegroep voor de resources in deze zelfstudie:
+Maak eerst de resource groep die de resources voor dit artikel bevat:
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -138,7 +139,7 @@ $VNetHub = New-AzVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
 
-Vraag een openbaar IP-adres worden toegewezen aan de VPN-gateway u voor het virtuele netwerk maakt. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw VPN-gateway.
+Vraag een openbaar IP-adres aan dat moet worden toegewezen aan de VPN-gateway die u voor uw virtuele netwerk maakt. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw VPN-gateway.
 
   ```azurepowershell
   $gwpip1 = New-AzPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
@@ -177,7 +178,7 @@ $VNetOnprem = New-AzVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
 
-Vraag een openbaar IP-adres worden toegewezen aan de gateway u voor het virtuele netwerk maakt. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw gateway.
+Vraag een openbaar IP-adres aan dat moet worden toegewezen aan de gateway die u voor het virtuele netwerk gaat maken. De *AllocationMethod* is **Dynamisch**. U kunt het IP-adres dat u wilt gebruiken niet zelf opgeven. Het wordt dynamisch toegewezen aan uw gateway.
 
   ```azurepowershell
   $gwOnprempip = New-AzPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
@@ -292,7 +293,7 @@ Maak de verbinding van het on-premises virtuele netwerk naar het virtuele hub-ne
 
 #### <a name="verify-the-connection"></a>De verbinding controleren
 
-U kunt controleren of de verbinding is geslaagd met behulp van de *Get-AzVirtualNetworkGatewayConnection* cmdlet, met of zonder *-Debug*. Gebruik het volgende cmdlet-voorbeeld om de waarden aan te passen aan uw eigen waarden. Selecteer **A** als dit wordt gevraagd om **alles** uit te voeren. In het voorbeeld verwijst *-Name* naar de naam van de verbinding die u wilt testen.
+U kunt een geslaagde verbinding controleren met behulp van de cmdlet *Get-AzVirtualNetworkGatewayConnection* , met of zonder *-debug*. Gebruik het volgende cmdlet-voorbeeld om de waarden aan te passen aan uw eigen waarden. Selecteer **A** als dit wordt gevraagd om **alles** uit te voeren. In het voorbeeld verwijst *-Name* naar de naam van de verbinding die u wilt testen.
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -471,7 +472,7 @@ Maak vanaf **VM-Onprem** met Extern bureaublad verbinding met **VM-spoke-01** op
 
 Deze verbinding moet worden gemaakt en u moet zich kunnen aanmelden met uw gekozen gebruikersnaam en wachtwoord.
 
-U hebt nu gecontroleerd of de firewall-regels zijn werken:
+Nu hebt u gecontroleerd of de firewall regels werken:
 
 <!---- You can ping the server on the spoke VNet.--->
 - U kunt de bladeren op de webserver in het virtuele spoke-netwerk.
@@ -496,5 +497,4 @@ U kunt de firewall-resources voor de volgende zelfstudie bewaren. Als u ze niet 
 
 Als volgende kunt u de Azure Firewall-logboeken bewaken.
 
-> [!div class="nextstepaction"]
-> [Zelfstudie: Azure Firewall-logboeken bewaken](./tutorial-diagnostics.md)
+[Zelfstudie: Azure Firewall-logboeken bewaken](./tutorial-diagnostics.md)

@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 ms.assetid: facb1115-2b4e-4ef3-9905-330e42beb686
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: gwallace
-ms.openlocfilehash: b36f6e2ace02324a63616f31fcdccfa666856699
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 116811a8b4d8e61a2a727cd4606344f2b169be96
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875223"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091604"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Een virtuele Linux-machine maken met behulp van de klassieke Azure-CLI
 
@@ -67,7 +66,7 @@ In het vorige voorbeeld van `quick-create` wordt alleen de vlag `-M` gebruikt om
 * VM-naam
 * locatie (`westus` of `westeurope` zijn goede standaardwaarden)
 * Linux (om in Azure aan te geven welk besturingssysteem u wilt)
-* userName
+* username
 
 In het volgende voorbeeld worden alle waarden opgegeven, zodat er geen verdere vragen worden gesteld. Als u een `~/.ssh/id_rsa.pub` als openbaar-sleutelbestand met ssh-rsa-indeling hebt, werkt alles:
 

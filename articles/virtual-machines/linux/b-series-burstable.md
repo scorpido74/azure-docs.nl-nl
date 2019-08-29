@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM-grootten uit de B-serie | Microsoft Docs
-description: Hierin wordt beschreven uit de B-serie ' burstable ' Azure VM-grootten.
+title: Azure Linux VM-grootten van de B-serie | Microsoft Docs
+description: Beschrijft de B-serie van de afbreekbaar Azure VM-grootten.
 services: virtual-machines-linux
 documentationcenter: ''
 author: ayshakeen
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 2445ad4804755fb2bdc013f7ea819ed51a2f6480
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 01da424872cdfde6c7e035cadd2b948117fb996c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671822"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084011"
 ---
-# <a name="b-series-burstable-virtual-machine-sizes"></a>B-serie ' burstable ' VM-grootten
+# <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
 
 [!INCLUDE [virtual-machines-common-b-series-burstable](../../../includes/virtual-machines-common-b-series-burstable.md)]
 
@@ -36,4 +35,4 @@ ms.locfileid: "67671822"
 - [Krachtig rekenvermogen](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over hoe u [Azure compute units (ACU)](acu.md) kunt u de prestaties van Azure-SKU's met elkaar vergelijken.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

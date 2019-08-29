@@ -1,6 +1,6 @@
 ---
-title: Oplossen van problemen met activering van Windows-virtuele machine in Azure | Microsoft Docs
-description: Biedt de stappen voor problemen oplossen voor het oplossen van problemen met de activering van de Windows virtuele machine in Azure
+title: Problemen met de activering van virtuele Windows-machines in azure oplossen | Microsoft Docs
+description: Biedt de probleemoplossings stappen voor het oplossen van problemen met de activering van Windows-virtuele machines in azure
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
@@ -10,52 +10,51 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 46f52cb0478b47f8f6b45356815bc4c74e7cc800
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: d403292a7f7ab1080f4270a420c23353eda5fd71
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724124"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090031"
 ---
-# <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Problemen met Windows Azure virtuele machine-activering
+# <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Problemen met activering van Azure Windows-virtuele machines oplossen
 
-Als u problemen ondervindt bij het activeren van Windows Azure virtuele machine (VM) die is gemaakt op basis van een aangepaste installatiekopie, kunt u de informatie in dit document om het probleem te verhelpen. 
+Als u problemen ondervindt bij het activeren van Azure Windows Virtual Machine (VM) die is gemaakt op basis van een aangepaste installatie kopie, kunt u de informatie in dit document gebruiken om het probleem op te lossen. 
 
-## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Wat is Azure KMS-eindpunten voor Windows-productactivering van Azure Virtual Machines?
+## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Informatie over Azure KMS-eind punten voor Windows-product activering van Azure Virtual Machines
 
-Azure maakt gebruik van verschillende eindpunten voor KMS-activering, afhankelijk van de cloud-regio waar de virtuele machine zich bevindt. Wanneer u deze handleiding voor probleemoplossing, gebruikt u de juiste KMS-eindpunt dat van toepassing voor uw regio is.
+Azure gebruikt verschillende eind punten voor KMS-activering, afhankelijk van de regio van de Cloud waar de virtuele machine zich bevindt. Wanneer u deze hand leiding voor probleem oplossing gebruikt, gebruikt u het juiste KMS-eind punt dat van toepassing is op uw regio.
 
-* Azure public cloud regions: kms.core.windows.net:1688
-* Azure China 21Vianet national cloud regions: kms.core.chinacloudapi.cn:1688
-* Azure Duitsland nationale cloud-regio's: kms.core.cloudapi.de:1688
-* Azure US Gov national cloud regions: kms.core.usgovcloudapi.net:1688
+* Open bare Cloud regio's van Azure: kms.core.windows.net:1688
+* Azure China 21Vianet nationale Cloud regio's: kms.core.chinacloudapi.cn:1688
+* Azure Duitsland National Cloud regio's: kms.core.cloudapi.de:1688
+* Azure US Gov nationale Cloud regio's: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>Symptoom
 
-Als u probeert te activeren van een Windows Azure VM, krijgt u een fout bericht lijkt op het volgende voorbeeld:
+Wanneer u probeert een Azure Windows-VM te activeren, wordt een fout bericht weer gegeven dat lijkt op het volgende voor beeld:
 
-**Fout: 0xC004F074 die de Software-LicensingService gerapporteerd dat de computer niet kan worden geactiveerd. Er is geen sleutel managementservice zijn (KMS) kan worden bereikt. Raadpleeg het toepassingsgebeurtenislogboek voor meer informatie.**
+**Fout: 0xC004F074 de software-LicensingService heeft gerapporteerd dat de computer niet kan worden geactiveerd. Er kan geen verbinding worden gemaakt met Key ManagementService (KMS). Raadpleeg het gebeurtenis logboek van de toepassing voor meer informatie.**
 
 ## <a name="cause"></a>Oorzaak
 
-Over het algemeen optreden activeringsproblemen virtuele Azure-machine als de Windows-VM niet is geconfigureerd met behulp van de desbetreffende Installatiecode voor KMS-client of de Windows-VM een verbindingsprobleem met de Azure-KMS-service (kms.core.windows.net, poort 1688 heeft). 
+Over het algemeen worden er problemen met de activering van Azure VM gegenereerd als de Windows-VM niet is geconfigureerd met behulp van de juiste installatie sleutel voor de KMS-client, of omdat de Windows-VM een connectiviteits probleem heeft met de Azure KMS-service (kms.core.windows.net, poort 1688). 
 
 ## <a name="solution"></a>Oplossing
 
 >[!NOTE]
->Als u een site-naar-site-VPN en geforceerde tunneling, Zie [aangepaste routes gebruiken Azure om in te schakelen van KMS-activering met geforceerde tunneling](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
+>Als u een site-naar-site-VPN en geforceerde tunneling gebruikt, raadpleegt u [aangepaste Azure-routes gebruiken om de KMS-activering met geforceerde Tunneling in te scha kelen](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
 >
->Als u ExpressRoute gebruikt en u hebt een standaard-route die zijn gepubliceerd, Zie [virtuele Azure-machine kan niet worden geactiveerd via ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
+>Als u ExpressRoute gebruikt en u een standaard route hebt gepubliceerd, gaat u naar [Azure VM kan niet worden geactiveerd via ExpressRoute](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
-### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Stap 1 configureren de desbetreffende Installatiecode voor KMS-client
+### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Stap 1 de juiste installatie sleutel voor de KMS-client configureren
 
-Voor de virtuele machine die wordt gemaakt van een aangepaste installatiekopie, moet u de desbetreffende Installatiecode voor KMS-client configureren voor de virtuele machine.
+Voor de virtuele machine die is gemaakt op basis van een aangepaste installatie kopie, moet u de juiste installatie sleutel voor de KMS-client configureren voor de virtuele machine.
 
-1. Voer **slmgr.vbs/dlv** bij een opdrachtprompt met verhoogde bevoegdheid. Controleer de waarde van de beschrijving in de uitvoer en vervolgens kunt u bepalen of deze is gemaakt van retail (detailhandel) of (VOLUME_KMSCLIENT) volume license-media:
+1. Voer **slmgr. vbs/dlv** uit vanaf een opdracht prompt met verhoogde bevoegdheden. Controleer de beschrijvings waarde in de uitvoer en bepaal vervolgens of deze is gemaakt op basis van Retail Channel (DETAILHANDELKANAAL) of volume (VOLUME_KMSCLIENT)-licentie media:
   
 
     ```
@@ -70,40 +69,40 @@ Voor de virtuele machine die wordt gemaakt van een aangepaste installatiekopie, 
     cscript c:\windows\system32\slmgr.vbs /ato
      ```
 
-    Bijvoorbeeld, voor Windows Server 2016 Datacenter, moet u de volgende opdracht uitvoeren:
+    Bijvoorbeeld, voor Windows Server 2016 Data Center, voert u de volgende opdracht uit:
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk CB7KF-BWN84-R7R2Y-793K2-8XDDG
     ```
 
-### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Stap 2 de connectiviteit tussen de virtuele machine en Azure KMS-service controleren
+### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Stap 2 de connectiviteit tussen de virtuele machine en de Azure KMS-service controleren
 
-1. Downloaden en uitpakken van de [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) hulpprogramma naar een lokale map op de virtuele machine die niet worden geactiveerd. 
+1. Down load en pak het [PSping](http:/technet.microsoft.com/sysinternals/jj729731.aspx) -hulp programma uit naar een lokale map in de virtuele machine die niet wordt geactiveerd. 
 
-2. Naar begin gaan, zoeken op Windows PowerShell, met de rechtermuisknop op Windows PowerShell en selecteer vervolgens als administrator uitvoeren.
+2. Ga naar Start, zoek op Windows Power shell, klik met de rechter muisknop op Windows Power shell en selecteer vervolgens als administrator uitvoeren.
 
-3. Zorg ervoor dat de VM is geconfigureerd om de juiste Azure KMS-server te gebruiken. U doet dit door de volgende opdracht uitvoeren:
+3. Zorg ervoor dat de VM is geconfigureerd om de juiste Azure KMS-server te gebruiken. U doet dit door de volgende opdracht uit te voeren:
   
     ```powershell
     Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
 
-    Met deze opdracht wordt dit geretourneerd: Computernaam van de Key Management Service is ingesteld op kms.core.windows.net:1688.
+    Met deze opdracht wordt dit geretourneerd: De naam van de Key Management service-computer is ingesteld op kms.core.windows.net:1688.
 
-4. Controleer of met behulp van Psping dat u verbinding met de KMS-server hebben. Ga naar de map waarin u het gedownloade bestand Pstools.zip hebt uitgepakt en voer vervolgens het volgende uit:
+4. Controleer met behulp van Psping dat u verbinding hebt met de KMS-server. Ga naar de map waarin u het gedownloade bestand Pstools.zip hebt uitgepakt en voer vervolgens het volgende uit:
   
     ```
     \psping.exe kms.core.windows.net:1688
     ```
    Controleer of u in de een-na-laatste regel van de uitvoer het volgende ziet: Verzonden = 4, ontvangen = 4, verloren = 0 (0% verlies).
 
-   Als verloren is groter dan 0 (nul), is de virtuele machine heeft geen verbinding met de KMS-server. In dit geval is als de virtuele machine zich in een virtueel netwerk en heeft een aangepaste DNS-server opgegeven, moet u ervoor zorgen dat DNS-server kunnen omzetten van kms.core.windows.net. Of de DNS-server wijzigt in een kms.core.windows.net is opgelost.
+   Als verloren is groter dan 0 (nul), is de virtuele machine niet verbonden met de KMS-server. Als de virtuele machine zich in een virtueel netwerk bevindt en een aangepaste DNS-server is opgegeven, moet u ervoor zorgen dat de DNS-server kms.core.windows.net kan omzetten. U kunt ook de DNS-server wijzigen in een die kms.core.windows.net omzetten.
 
-   U ziet dat als u alle DNS-servers van een virtueel netwerk verwijderen, VM's gebruiken de interne DNS-service van Azure. This service can resolve kms.core.windows.net.
+   Als u alle DNS-servers uit een virtueel netwerk verwijdert, gebruiken Vm's de interne DNS-service van Azure. Met deze service kunt u kms.core.windows.net omzetten.
   
-    Zorg ook dat het uitgaande netwerkverkeer naar de KMS-eindpunt met poort 1688 niet wordt geblokkeerd door de firewall op de virtuele machine.
+    Zorg er ook voor dat het uitgaande netwerk verkeer naar het KMS-eind punt met de 1688-poort niet wordt geblokkeerd door de firewall in de virtuele machine.
 
-5. Nadat u geslaagde verbinding met kms.core.windows.net verifieert, voer de volgende opdracht bij die met verhoogde bevoegdheid Windows PowerShell-prompt. Met deze opdracht wordt meerdere keren geprobeerd te activeren.
+5. Nadat u de connectiviteit met kms.core.windows.net hebt gecontroleerd, voert u de volgende opdracht uit op die verhoogde Windows Power shell-prompt. Met deze opdracht wordt meerdere keren geprobeerd te activeren.
 
     ```powershell
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
@@ -111,26 +110,26 @@ Voor de virtuele machine die wordt gemaakt van een aangepaste installatiekopie, 
 
     Na een geslaagde activering worden gegevens geretourneerd die er ongeveer als volgt uitzien:
     
-    **Windows(R), ServerDatacenter edition (12345678-1234-1234-1234-12345678) activeren...  Product is geactiveerd.**
+    **Windows (R), ServerDatacenter Edition (12345678-1234-1234-1234-12345678) activeren...  Het product is geactiveerd.**
 
 ## <a name="faq"></a>Veelgestelde vragen 
 
-### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Ik heb de Windows Server 2016 op Azure Marketplace hebt gemaakt. Heb ik nodig voor het configureren van KMS-sleutel voor het activeren van de Windows Server 2016? 
+### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Ik heb Windows Server 2016 van Azure Marketplace gemaakt. Moet ik de KMS-sleutel voor het activeren van de Windows Server 2016 configureren? 
 
  
-Nee. De installatiekopie in Azure Marketplace is de juiste KMS-clientinstallatiecode al geconfigureerd. 
+Nee. Voor de installatie kopie in azure Marketplace is de juiste installatie sleutel voor de KMS-client al geconfigureerd. 
 
-### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Windows-activering werkt hetzelfde ongeacht als de virtuele machine van Azure Hybrid Use Benefit (HUB) of niet gebruikmaakt? 
+### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Werkt Windows activeren op dezelfde manier, ongeacht of de virtuele machine gebruikmaakt van Azure Hybrid Use Benefit (HUB) of niet? 
 
  
 Ja. 
  
 
-### <a name="what-happens-if-windows-activation-period-expires"></a>Wat gebeurt er als Windows is verstreken? 
+### <a name="what-happens-if-windows-activation-period-expires"></a>Wat gebeurt er als de Windows-activerings periode verloopt? 
 
  
-Wanneer de respijtperiode is verlopen en Windows is nog niet geactiveerd, wordt Windows Server 2008 R2 en latere versies van Windows aanvullende meldingen over het activeren van weergeven. Achtergrond van het bureaublad blijft zwart en Windows Update wordt geïnstalleerd, beveiliging en alleen essentiële updates, maar niet optionele updates. Zie de sectie meldingen aan de onderkant van de [licentieverlening voorwaarden](https://technet.microsoft.com/library/ff793403.aspx) pagina.   
+Wanneer de respijt periode is verlopen en Windows nog steeds niet wordt geactiveerd, worden in Windows Server 2008 R2 en latere versies van Windows aanvullende meldingen over het activeren weer gegeven. De achtergrond van het bureau blad blijft zwart en Windows Update installeert alleen beveiligings-en essentiële updates, maar geen optionele updates. Zie de sectie meldingen onder aan de pagina [licentie voorwaarden](https://technet.microsoft.com/library/ff793403.aspx) .   
 
 ## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
 
-Als u nog steeds hulp nodig hebt, [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel worden opgelost.
+Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

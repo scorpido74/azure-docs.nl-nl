@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: f893e417420b26dcb56e0d84551fbad3577b8fdb
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874877"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083084"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale op Azure
 
@@ -41,7 +40,7 @@ Dit artikel heeft geen betrekking op verschillen en mogelijke migratie taken voo
 Om u te helpen beslissen over de beste architectuur voor de DB2-pureScale voor uw omgeving, wordt u aangeraden de grootte volledig te ramen en een hypo these te maken. Zorg er in het bron systeem voor dat u de Sysplex van de DB2-z/O'S-parallelle DDF met de architectuur voor gegevens deling, de configuratie van de koppelings faciliteit en-gebruiks statistieken (Distributed Data Facility) kunt overwegen.
 
 > [!NOTE]
-> In dit artikel wordt één benadering van de DB2-migratie beschreven, maar er zijn er andere. DB2 pureScale kan bijvoorbeeld ook worden uitgevoerd in gevirtualiseerde on-premises omgevingen. IBM ondersteunt DB2 op micro soft Hyper-V in verschillende configuraties. Zie voor meer informatie de [architectuur van DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) -virtualisatie in het IBM-kennis centrum.
+> In dit artikel wordt één benadering van de DB2-migratie beschreven, maar er zijn er andere. DB2 pureScale kan bijvoorbeeld ook worden uitgevoerd in gevirtualiseerde on-premises omgevingen. IBM ondersteunt DB2 op Microsoft Hyper-V in verschillende configuraties. Zie voor meer informatie de [architectuur van DB2 pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) -virtualisatie in het IBM-kennis centrum.
 
 ## <a name="architecture"></a>Architectuur
 

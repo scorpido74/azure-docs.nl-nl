@@ -1,102 +1,101 @@
 ---
-title: Prestaties op Lsv2-serie van Azure virtual machines - opslag te optimaliseren | Microsoft Docs
-description: Informatie over het optimaliseren van prestaties voor uw oplossing op de virtuele machines van de Lsv2-serie.
+title: Prestaties optimaliseren op virtuele machines uit de Azure Lsv2-serie-opslag | Microsoft Docs
+description: Meer informatie over het optimaliseren van de prestaties van uw oplossing op de virtuele machines uit de Lsv2-serie.
 services: virtual-machines-windows
 author: laurenhughes
 manager: gwallace
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 7e96fb6fc7b3e581d058ef0f96124959189d0f4e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709811"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101787"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Prestaties op de Lsv2-serie virtuele machines optimaliseren
+# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie
 
-Lsv2-serie virtuele machines ondersteunen verschillende workloads die hoge i/o en doorvoer voor lokale opslag voor een breed scala van toepassingen en bedrijven nodig hebben.  De Lsv2-serie is ideaal voor Big Data, SQL, NoSQL-databases, gegevensopslag en grote transactionele databases, met inbegrip van Cassandra, MongoDB, Cloudera en Redis.
+Virtuele machines uit de Lsv2-serie ondersteunen diverse werk belastingen die hoge I/O en door Voer op lokale opslag voor een breed scala aan toepassingen en branches nodig hebben.  De Lsv2-serie is ideaal voor Big Data-, SQL-, NoSQL-data bases, gegevens-en opslag databases, waaronder Cassandra, MongoDB, Cloudera en redis.
 
-Het ontwerp van de Lsv2-serie virtuele Machines (VM's) maximaliseert de processor AMD EPYC™ 7551 voor de beste prestaties tussen de processor, geheugen, NVMe-apparaten en de virtuele machines. Naast de Hardwareprestaties maximaliseren, worden de Lsv2-serie VM's ontworpen voor gebruik met de behoeften van Windows en Linux-besturingssystemen voor betere prestaties met de hardware en software.
+Het ontwerp van de Lsv2-serie Virtual Machines (Vm's) maximaliseert de AMD EPYC™ 7551-processor om de beste prestaties te bieden tussen de processor, het geheugen, de NVMe-apparaten en de Vm's. Naast het maximaliseren van de prestaties van de hardware, zijn virtuele machines uit de Lsv2-serie ontworpen om te werken met de behoeften van Windows-en Linux-besturings systemen voor betere prestaties met de hardware en de software.
 
-De geoptimaliseerde versie van de software en hardware afstemmen leidde [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), uitgebracht in begin December 2018 in de Azure Marketplace, die ondersteuning biedt voor maximale prestaties op de NVMe-apparaten in Lsv2-serie Virtuele machines.
+Het afstemmen van de software en hardware heeft geresulteerd in de geoptimaliseerde versie van [Windows Server 2019 Data Center](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), uitgebracht op begin december 2018 tot Azure Marketplace, die maximale prestaties ondersteunt op de NVMe-apparaten in virtuele machines uit de Lsv2-serie.
 
-Dit artikel vindt u tips en suggesties om te controleren of uw workloads en toepassingen maar liefst de maximale prestaties ontworpen bij de virtuele machines. De informatie op deze pagina wordt steeds bijgewerkt naarmate meer Lsv2 geoptimaliseerd kopieën zijn toegevoegd aan de Azure Marketplace.
+In dit artikel vindt u tips en suggesties om ervoor te zorgen dat uw werk belastingen en toepassingen de maximale prestaties voor de virtuele machines kunnen bewerkstelligen. De informatie op deze pagina wordt voortdurend bijgewerkt naarmate er meer Lsv2 geoptimaliseerde installatie kopieën worden toegevoegd aan de Azure Marketplace.
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™-chipset-architectuur
+## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ chipset-architectuur
 
-Lsv2-serie VM's AMD EYPC™ server processors op basis van de microarchitectuur Zen gebruiken. AMD oneindig Fabric (als) die zijn ontwikkeld voor EYPC™ als schaalbare InterConnect vereist is voor de NUMA-model dat kan worden gebruikt voor communicatie op-chip, op pakket- en meerdere pakket. Vergeleken met QPI (pad voor snelle InterConnect vereist is) en UPI (Ultra-Path Interconnect) van Intel-processors voor moderne monolithische die wordt gebruikt, AMD van veel NUMA kleine-die architectuur kan doen om beide prestatievoordelen en uitdagingen. De werkelijke impact van bandbreedte en de latentie geheugenbeperkingen kan variëren afhankelijk van het type van workloads die worden uitgevoerd.
+Vm's uit de Lsv2-serie gebruiken AMD EYPC™ server-processors op basis van de micro architectuur van Zen. AMD ontwikkelde oneindig infrastructuur (indien) voor EYPC™ als schaal bare Interconnect voor het NUMA-model dat kan worden gebruikt voor on-to-dobbel, on-package en multi-package-communicatie. Vergeleken met QPI-verbindingen (snelle paden) en UPI (Ultra-Path Interconnect) die worden gebruikt voor Intel moderne monolithische-dobbel krachtige processors, kunnen de kleine en grote NUMA-architectuur voor zowel prestaties als uitdagingen optreden. De daad werkelijke impact van de geheugen bandbreedte en latentie beperkingen kunnen variëren, afhankelijk van het type werk belastingen dat wordt uitgevoerd.
 
-## <a name="tips-for-maximizing-performance"></a>Tips voor prestaties maximaliseren
+## <a name="tips-for-maximizing-performance"></a>Tips voor het optimaliseren van prestaties
 
-* De hardware die wordt gebruikt door de Lsv2-serie VM's maakt gebruik van NVMe-apparaten met acht paren voor i/o-wachtrij (QP) s. Elke wachtrij NVMe-i/o-apparaat is eigenlijk een paar: een wachtrij voor verzending en een voltooiingswachtrij. De NVMe-stuurprogramma is ingesteld voor het optimaliseren van het gebruik van deze acht i/o-QPs door te distribueren ik / O van in een round-robin plannen. Voor maximale prestaties krijgen, moet u acht taken per apparaat zodat deze overeenkomen met uitvoeren.
+* De hardware die de virtuele machines uit de Lsv2-serie doorstuurt, maakt gebruik van NVMe-apparaten met acht I/O-wachtrij paren (QP) s. Elke rij in de I/O-wachtrij van NVMe is in feite een paar: een verzend wachtrij en een voltooiings wachtrij. Het NVMe-stuur programma is zo ingesteld dat het gebruik van deze acht I/O-QPs wordt geoptimaliseerd door I/O te distribueren in een round robin schema. Als u maximale prestaties wilt krijgen, voert u acht taken per apparaat uit.
 
-* Voorkom dan dat u NVMe-beheerder opdrachten (bijvoorbeeld NVMe slimme info query, enzovoort) met NVMe i/o-opdrachten tijdens actieve werkbelastingen. Lsv2 NVMe-apparaten worden ondersteund door Hyper-V NVMe Direct-technologie, over te schakelen in 'trage modus' wanneer alle NVMe-admin-opdrachten in behandeling zijn. Lsv2-gebruikers kunnen een aanzienlijke prestaties neerzetten in NVMe i/o-prestaties als dit gebeurt zien.
+* Vermijd het mixen van NVMe-beheer opdrachten (bijvoorbeeld NVMe SMART info query, enzovoort) met NVMe I/O-opdrachten tijdens actieve werk belastingen. Lsv2 NVMe-apparaten worden ondersteund door een Hyper-V NVMe direct-technologie, waarmee wordt overgeschakeld naar ' langzame modus ' wanneer een NVMe-beheer opdracht in behandeling is. Lsv2-gebruikers kunnen een aanzienlijke prestaties van NVMe-I/O-prestaties zien als dat wel het geval is.
 
-* Lsv2 gebruikers afhankelijk zijn niet NUMA apparaatgegevens (alle 0) doorgegeven vanuit de virtuele machine voor gegevensstations om te bepalen van de NUMA-affiniteit voor hun apps. De aanbevolen manier voor betere prestaties is Verdeel werkbelastingen indien mogelijk over CPU's. 
+* Lsv2-gebruikers moeten niet vertrouwen op de NUMA-gegevens van het apparaat (alle 0) die in de virtuele machine zijn gerapporteerd voor gegevens stations om de NUMA-affiniteit voor hun apps te bepalen. De aanbevolen manier om de prestaties te verbeteren is als dat mogelijk is om werk belastingen over Cpu's te spreiden. 
 
-* De maximale ondersteunde wachtrijdiepte per combinatie van i/o-wachtrij voor Lsv2 VM NVMe-apparaat is 1024 (vs. Amazon i3 Wachtrijdiepte 32 limiet). Lsv2-gebruikers te beperken van hun (synthetische) benchmarking werklast laten opvangen wachtrijdiepte 1024 of lager om te voorkomen dat het activeren van de wachtrij volledige voorwaarden, waardoor prestaties kunnen verminderen.
+* De Maxi maal ondersteunde wachtrij diepte per I/O-wachtrij paar voor Lsv2 VM NVMe-apparaat is 1024 (VS. I3 wachtrij diepte 32-limiet van Amazon). Lsv2 gebruikers moeten de werk belasting van hun (synthetische) benchmarking beperken tot de wachtrij diepte 1024 of lager om te voor komen dat de wachtrij vol is voor waarden, waardoor de prestaties kunnen worden verminderd.
 
-## <a name="utilizing-local-nvme-storage"></a>Gebruik van lokale NVMe-opslag
+## <a name="utilizing-local-nvme-storage"></a>Lokale NVMe-opslag gebruiken
 
-Lokale opslag op de schijf van de NVMe 1,92 TB op alle Lsv2-VM's is tijdelijk. Tijdens een geslaagde standaard opnieuw opstarten van de virtuele machine blijft de gegevens op de lokale NVMe-schijf. De gegevens blijven niet behouden in de NVMe als de virtuele machine is geïmplementeerd, toewijzing ongedaan gemaakt of verwijderd. Gegevens blijven niet behouden als een ander probleem zorgt ervoor dat de virtuele machine of de hardware die deze wordt uitgevoerd, worden niet in orde. Als dit gebeurt, wordt alle gegevens op de oude host veilig gewist.
+Lokale opslag op de NVMe-schijf van 1,92 TB op alle Lsv2-Vm's is tijdelijk. Tijdens een geslaagde standaard herstart van de VM blijven de gegevens op de lokale NVMe-schijf behouden. De gegevens blijven niet behouden op het NVMe als de virtuele machine opnieuw wordt geïmplementeerd, de toewijzing ervan wordt verwijderd of is gewist. De gegevens blijven niet behouden als een ander probleem ertoe leidt dat de virtuele machine of de hardware waarop de VM wordt uitgevoerd, een slechte status krijgt. Als dit gebeurt, worden alle gegevens op de oude host veilig gewist.
 
-Ook wordt zijn er gevallen wanneer de virtuele machine moet worden verplaatst naar een andere hostmachine, bijvoorbeeld tijdens gepland onderhoud. Gepland onderhoudsbewerkingen en sommige hardwarestoringen kunnen worden verwacht met [geplande gebeurtenissen](scheduled-events.md). Geplande gebeurtenissen moeten worden gebruikt om te worden bijgewerkt op alle voorspeld onderhoud en recovery-bewerkingen.
+Er zijn ook gevallen waarin de virtuele machine moet worden verplaatst naar een andere hostcomputer, bijvoorbeeld tijdens een geplande onderhouds bewerking. Geplande onderhouds bewerkingen en bepaalde hardwarestoringen kunnen worden verwacht met [Scheduled Events](scheduled-events.md). Scheduled Events moet worden gebruikt om te blijven werken met voorspelde onderhouds-en herstel bewerkingen.
 
-In het geval dat een geplande onderhoudsgebeurtenis is vereist voor de virtuele machine opnieuw op een nieuwe host met lege lokale schijven worden gemaakt, moet de gegevens opnieuw worden gesynchroniseerd (nogmaals, met alle gegevens op de oude host wordt een veilige manier gewist). Dit gebeurt omdat Lsv2-serie VM's momenteel geen live migratie op de lokale NVMe-schijf ondersteunen.
+In het geval dat een geplande onderhouds gebeurtenis vereist dat de VM opnieuw wordt gemaakt op een nieuwe host met lege lokale schijven, moeten de gegevens opnieuw worden gesynchroniseerd (opnieuw, waarbij alle gegevens op de oude host veilig worden gewist). Dit gebeurt omdat virtuele machines uit de Lsv2-serie momenteel geen Live migratie ondersteunen op de lokale NVMe-schijf.
 
 Er zijn twee modi voor gepland onderhoud.
 
-### <a name="standard-vm-customer-controlled-maintenance"></a>Standard VM door de klant bewaakte onderhoud
+### <a name="standard-vm-customer-controlled-maintenance"></a>Standaard virtuele machine onderhoud door de klant beheerd
 
-- De virtuele machine wordt verplaatst naar een bijgewerkte host tijdens een periode van 30 dagen.
-- Gegevens van de lokale opslag Lsv2 kunnen verloren gaan, zodat back-ups van gegevens voorafgaand aan de gebeurtenis wordt aanbevolen.
+- Tijdens een periode van 30 dagen wordt de virtuele machine verplaatst naar een bijgewerkte host.
+- Lsv2 lokale opslag gegevens kunnen verloren gaan. Daarom wordt het maken van een back-up van gegevens voorafgaand aan de gebeurtenis aanbevolen.
 
 ### <a name="automatic-maintenance"></a>Automatisch onderhoud
 
-- Treedt op als de klant niet door de klant bewaakte onderhoud wordt uitgevoerd, of in het geval van noodsituaties procedures, zoals een beveiligingsgebeurtenis nul dagen.
-- Bedoeld voor het behouden van gegevens van de klant, maar er is een klein risico van een blokkering van de virtuele machine of opnieuw opstarten.
-- Gegevens van de lokale opslag Lsv2 kunnen verloren gaan, zodat back-ups van gegevens voorafgaand aan de gebeurtenis wordt aanbevolen.
+- Deze gebeurtenis treedt op als de klant geen onderhouds werkzaamheden van de klant uitvoert, of in het geval van nood procedures, zoals een gebeurtenis met een nul-dag-beveiliging.
+- Bedoeld om klant gegevens te bewaren, maar er is een klein risico van het blok keren of opnieuw opstarten van een virtuele machine.
+- Lsv2 lokale opslag gegevens kunnen verloren gaan. Daarom wordt het maken van een back-up van gegevens voorafgaand aan de gebeurtenis aanbevolen.
 
-Gebruik het onderhoudsproces voor beheerde op een moment meest handig is dat u voor de update voor alle toekomstige servicegebeurtenissen. Voorafgaand aan de gebeurtenis, mag u back-up van uw gegevens in premium-opslag. Nadat de onderhoudsgebeurtenis is voltooid, kunt u uw gegevens kunt terugkeren naar de vernieuwd Lsv2 VMs lokale NVMe opslag.
+Voor toekomstige service gebeurtenissen gebruikt u het beheerde onderhouds proces om een tijd te selecteren die het handigst is voor de update. Vóór de gebeurtenis kunt u een back-up maken van uw gegevens in Premium Storage. Nadat de onderhouds gebeurtenis is voltooid, kunt u uw gegevens herstellen naar de vernieuwde Lsv2 Vm's lokale NVMe-opslag.
 
-Scenario's die gegevens op de lokale NVMe-schijven beheren zijn onder andere:
+Scenario's voor het onderhouden van gegevens op lokale NVMe-schijven zijn onder andere:
 
-- De virtuele machine wordt uitgevoerd en in orde.
-- De virtuele machine opnieuw wordt opgestart in plaats (door u of Azure).
-- De virtuele machine is onderbroken (gestopt zonder toewijzing ongedaan maken).
-- Het merendeel van het geplande onderhoud onderhoudsbewerkingen.
+- De virtuele machine wordt uitgevoerd en is in orde.
+- De virtuele machine wordt opnieuw opgestart (door u of Azure).
+- De virtuele machine is onderbroken (gestopt zonder de toewijzing).
+- Het meren deel van de geplande onderhouds bewerkingen.
 
-Scenario's die gegevens ter bescherming van de klant veilig wissen zijn:
+Scenario's voor het veilig wissen van gegevens om de klant te beschermen, zijn:
 
-- De virtuele machine is geïmplementeerd, gestopt (toewijzing ongedaan gemaakt), of is verwijderd (door u).
-- De virtuele machine wordt niet in orde en heeft tot de service herstel knooppuntservice naar een ander knooppunt vanwege een hardwareprobleem.
-- Een klein aantal het geplande onderhoud onderhoudsbewerkingen die vereist worden meegenomen naar een andere host voor het onderhoud van de virtuele machine.
+- De VM wordt opnieuw geïmplementeerd, gestopt (de toewijzing) of verwijderd (door u).
+- De virtuele machine wordt niet meer in orde en moet op een ander knoop punt herstellen vanwege een hardwareprobleem.
+- Een klein aantal geplande onderhouds bewerkingen voor onderhoud waarvoor de VM opnieuw moet worden toegewezen aan een andere host voor onderhoud.
 
-Zie voor meer informatie over opties voor back-ups van gegevens in de lokale opslag, [back-up en herstel na noodgevallen voor Azure IaaS-schijven](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Zie [back-up en herstel na nood gevallen voor Azure IaaS-schijven](backup-and-disaster-recovery-for-azure-iaas-disks.md)voor meer informatie over de opties voor het maken van back-ups van gegevens in lokale opslag.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-* **Hoe start ik Lsv2-serie VM's implementeren?**  
-   Veel net als andere VM's, gebruiken de [Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md), of [PowerShell](quick-create-powershell.md) om een VM te maken.
+* **Hoe kan ik de implementatie van Vm's uit de Lsv2-serie starten?**  
+   Net als bij elke andere virtuele machine kunt u de [Portal](quick-create-portal.md), [Azure cli](quick-create-cli.md)of [Power shell](quick-create-powershell.md) gebruiken om een virtuele machine te maken.
 
-* **Een enkele schijffout van NVMe, zullen alle virtuele machines op de host mislukken?**  
-   Als er een schijffout wordt gedetecteerd op de hardware-knooppunt, wordt de hardware is in een foutstatus. Wanneer dit het geval is, worden alle virtuele machines op het knooppunt automatisch toewijzing ongedaan gemaakt en naar een gezonde knooppunt verplaatst. Voor Lsv2-serie VM's betekent dit dat de gegevens van de klant op het knooppunt mislukt ook veilig worden gewist en moet opnieuw worden gemaakt door de klant op het nieuwe knooppunt. Zoals opgemerkt, live migratie is pas beschikbaar op Lsv2, worden de gegevens op het knooppunt mislukte proactief verplaatst met de virtuele machines als ze worden overgedragen naar een ander knooppunt.
+* **Leidt een enkele NVMe-schijf fout tot gevolg dat alle Vm's op de host mislukken?**  
+   Als er een schijf fout op het hardware-knoop punt wordt gedetecteerd, heeft de hardware de status mislukt. Als dit gebeurt, worden alle Vm's op het knoop punt automatisch ongedaan gemaakt en verplaatst naar een gezond knoop punt. Voor virtuele machines uit de Lsv2-serie betekent dit dat de gegevens van de klant op het knoop punt waarvoor een storing optreedt, ook veilig worden gewist en opnieuw moeten worden gemaakt door de klant op het nieuwe knoop punt. Zoals genoteerd, worden de gegevens op het knoop punt waarvoor een storing optreedt proactief met de virtuele machines verplaatst wanneer ze worden overgebracht naar een ander knoop punt voordat Livemigratie op Lsv2 beschikbaar wordt.
 
-* **Moet ik polling wijzigingen aanbrengen in Windows in Windows Server 2012 of Windows Server 2016?**  
-   NVMe polling is alleen beschikbaar op Windows Server 2019 op Azure.  
+* **Moet ik polling aanpassen in Windows in Windows Server 2012 of Windows Server 2016?**  
+   NVMe-polling is alleen beschikbaar in Windows Server 2019 op Azure.  
 
-* **Kan ik overschakelen naar een traditionele interrupt service routine (ISR)-model?**  
-   Lsv2-serie VM's zijn geoptimaliseerd voor NVMe polling. Updates vindt u continu om polling prestaties te verbeteren.
+* **Kan ik teruggaan naar een traditioneel ISR-model (Interrupt Service routine)?**  
+   Vm's uit de Lsv2-serie zijn geoptimaliseerd voor NVMe-polling. Updates worden continu verschaft om polling prestaties te verbeteren.
 
-* **Kan ik de navraaginstellingen in Windows Server 2019 aanpassen?**  
-   De poll-instellingen zijn niet aanpasbare gebruiker.
+* **Kan ik de polling-instellingen in Windows Server 2019 aanpassen?**  
+   De polling-instellingen zijn niet aanpasbaar voor gebruikers.
    
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie de specificaties voor alle [virtuele machines die zijn geoptimaliseerd voor prestaties van opslagruimte](sizes-storage.md) op Azure
+* Zie de specificaties voor alle [virtuele machines die zijn geoptimaliseerd voor opslag prestaties](sizes-storage.md) op Azure

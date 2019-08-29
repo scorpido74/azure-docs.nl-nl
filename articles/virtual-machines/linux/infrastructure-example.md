@@ -1,6 +1,6 @@
 ---
-title: Voorbeeld Azure-infrastructuur doorlopen | Microsoft Docs
-description: Meer informatie over de belangrijke ontwerp- en richtlijnen voor het implementeren van een voorbeeld van de infrastructuur in Azure.
+title: Voor beeld van een Azure-infrastructuur scenario | Microsoft Docs
+description: Meer informatie over de belangrijkste richt lijnen voor het ontwerpen en implementeren van een voorbeeld infrastructuur in Azure.
 documentationcenter: ''
 services: virtual-machines-linux
 author: cynthn
@@ -11,107 +11,106 @@ ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63bdfa6f419d97696faa6545cbb1017a66cf0e2d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 71b0dd15d183f3209c7424c537dde1e3df29d097
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667536"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083128"
 ---
-# <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Voorbeeld van de Azure-infrastructuur-overzicht voor het Linux-VM 's
-Dit artikel helpt bij het bouwen van de infrastructuur van een voorbeeld van de toepassing. We informatie over het ontwerpen van een infrastructuur voor een eenvoudige online winkel die de richtlijnen en besluiten over naamconventies, beschikbaarheidssets, virtuele netwerken en taakverdelers combineert en distribueren van uw virtuele machines (VM's).
+# <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Voor beeld van een Azure-infrastructuur scenario voor Linux-Vm's
+In dit artikel wordt uitgelegd hoe u een voorbeeld toepassings infrastructuur bouwt. We beschrijven een infra structuur voor een eenvoudige on line Store waarin alle richt lijnen en beslissingen over naam conventies, beschikbaarheids sets, virtuele netwerken en load balancers worden gecombineerd en de virtuele machines (Vm's) daad werkelijk worden geïmplementeerd.
 
-## <a name="example-workload"></a>Voorbeeld van de werkbelasting
-Adventure Works Cycles wil maken van een online store-toepassing in Azure die bestaat uit:
+## <a name="example-workload"></a>Voorbeeld workload
+Adventure Works cycli wil een on line Store-toepassing bouwen in azure die bestaat uit:
 
-* Twee nginx-servers die de front-end in een weblaag client uit te voeren
-* Twee nginx-servers voor het verwerken van gegevens en orders in de toepassingslaag van een
-* Twee servers van MongoDB-onderdeel van een shard-cluster voor het opslaan van productgegevens- en orders in een database-laag
-* Twee Active Directory-domeincontrollers voor klanten en leveranciers in een verificatie-laag
+* Twee nginx-servers waarop de client front-end wordt uitgevoerd in een weblaag
+* Twee nginx-servers die gegevens en orders in een toepassings tier verwerken
+* Twee MongoDB-servers maken deel uit van een Shard-cluster voor het opslaan van product gegevens en orders in een database laag
+* Twee Active Directory domein controllers voor klant accounts en leveranciers in een verificatie-laag
 * Alle servers bevinden zich in twee subnetten:
   * een front-end-subnet voor de webservers 
-  * een back-end-subnet voor de toepassingsservers, de MongoDB-cluster en de domeincontrollers
+  * een back-end-subnet voor de toepassings servers, het MongoDB-cluster en de domein controllers
 
-![Diagram van verschillende lagen voor toepassingsinfrastructuur](./media/infrastructure-example/example-tiers.png)
+![Diagram van verschillende lagen voor toepassings infrastructuur](./media/infrastructure-example/example-tiers.png)
 
-Veilig binnenkomend webverkeer moet worden taakverdeling tussen de webservers zoals klanten de online winkel bladeren. Orderverwerking verkeer in de vorm van HTTP-aanvragen van het web servers moeten worden verdeeld tussen de toepassingsservers. Bovendien moet de infrastructuur zijn ontworpen voor hoge beschikbaarheid.
+Inkomende beveiligde webverkeer moet worden verdeeld over de webservers als klanten door de online winkel bladeren. Het verwerken van verkeer in de vorm van HTTP-aanvragen van de webservers moet gelijkmatig zijn verdeeld over de toepassings servers. Daarnaast moet de infra structuur worden ontworpen voor hoge Beschik baarheid.
 
-Het ontwerp van de resulterende moet gebruikmaken van:
+Het ontwerp moet het volgende omvatten:
 
-* Een Azure-abonnement en -account
-* Een enkele resourcegroep
+* Een Azure-abonnement en-account
+* Één resource groep
 * Azure Managed Disks
 * Een virtueel netwerk met twee subnetten
-* Beschikbaarheidssets voor de virtuele machines met een vergelijkbare rol
+* Beschikbaarheids sets voor de virtuele machines met een vergelijk bare rol
 * Virtuele machines
 
-Alle bovenstaande voldoen aan deze naamgeving:
+Alle bovenstaande instructies volgen deze naamgevings regels:
 
-* Adventure Works Cycles gebruikt **[IT werkbelasting]-[location]-[Azure-resource]** als voorvoegsel
-  * In dit voorbeeld '**azos**"(Azure Online Store) is de naam van de workload IT en"**gebruiken**' (VS-Oost 2) is de locatie
-* Virtuele netwerken gebruiken AZOS-USE-VN<strong>[aantal]</strong>
-* Beschikbaarheidssets gebruiken azos-gebruiken-als- **[rol]**
-* Namen van virtuele machines gebruiken azos-gebruiken-vm - **[vmname]**
+* Adventure Works Cycles maakt gebruik van **[it-workload]-[locatie]-[Azure resource]** als voor voegsel
+  * Voor dit voor beeld is '**azos**' (Azure on-line Store) de naam van de IT-workload en '**use**' (VS-Oost 2) is de locatie
+* Virtuele netwerken gebruiken AZOS-VN<strong>[number]</strong>
+* Beschikbaarheids sets gebruiken azos-as- **[Role]**
+* Namen van virtuele machines gebruik azos-VM- **[vmname]**
 
-## <a name="azure-subscriptions-and-accounts"></a>Azure-abonnementen en accounts
-Adventure Works Cycles maakt gebruik van de Enterprise-abonnement, met de naam van Adventure Works Enterprise-abonnement voor facturering voor deze workload IT.
+## <a name="azure-subscriptions-and-accounts"></a>Azure-abonnementen en-accounts
+Adventure Works Cycles maakt gebruik van het Enter prise-abonnement met de naam Adventure Works Enter prise, om facturering voor deze IT-workload te bieden.
 
 ## <a name="storage"></a>Storage
-Adventure Works Cycles bepaald dat ze Azure Managed Disks te gebruiken. Bij het maken van virtuele machines, worden beide opslaglagen van de beschikbare opslagruimte gebruikt:
+Adventure Works Cycles hebben bepaald dat ze Azure Managed Disks moeten gebruiken. Bij het maken van virtuele machines worden beide opslag lagen beschikbaar gemaakt:
 
-* **Standard-opslag** voor de webservers, toepassingsservers, en domeincontrollers en hun gegevensschijven.
-* **Premium-opslag** voor de MongoDB-shard-cluster-servers en de gegevensschijven.
+* **Standaard opslag** voor de webservers, toepassings servers en domein controllers en hun gegevens schijven.
+* **Premium-opslag** voor de MongoDb Shard-cluster servers en de bijbehorende gegevens schijven.
 
 ## <a name="virtual-network-and-subnets"></a>Virtueel netwerk en subnetten
-Omdat het virtuele netwerk niet nodig heeft voor actieve verbinding met de Adventure Work Cycles on-premises netwerk, besloot ze in een virtueel netwerk alleen in de cloud.
+Omdat het virtuele netwerk niet de actieve connectiviteit met het on-premises netwerk van Adventure work nodig heeft, hebben ze besloten op een virtueel netwerk in de Cloud.
 
-Een virtueel netwerk alleen in de cloud worden ze gemaakt met de volgende instellingen met behulp van de Azure-portal:
+Ze hebben een virtueel netwerk in de Cloud gemaakt met de volgende instellingen met behulp van de Azure Portal:
 
 * Naam: AZOS-USE-VN01
 * Locatie: US - oost 2
-* Virtuele netwerkadresruimte: 10.0.0.0/8
+* Adres ruimte van virtueel netwerk: 10.0.0.0/8
 * Eerste subnet:
   * Naam: FrontEnd
-  * Adresruimte: 10.0.1.0/24
+  * Adres ruimte: 10.0.1.0/24
 * Tweede subnet:
   * Naam: BackEnd
-  * Adresruimte: 10.0.2.0/24
+  * Adres ruimte: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Beschikbaarheidssets
-Als u wilt behouden hoge beschikbaarheid van alle vier lagen van hun online winkel, besloten Adventure Works Cycles op vier beschikbaarheidssets:
+Voor het behoud van de hoge Beschik baarheid van alle vier de lagen van de on line Store, hebben Adventure Works-cycli besloten voor vier beschikbaarheids sets:
 
-* **azos gebruiken als web** voor de webservers
-* **azos gebruiken als app** voor de toepassingsservers
-* **azos gebruiken als db** voor de servers in de shard MongoDB-cluster
-* **azos gebruiken als dc** voor de domeincontrollers
+* **azos-as-Web** voor de webservers
+* **azos-use-as-app** voor de toepassings servers
+* **azos-use-as-DB** voor de servers in het MongoDb Shard-cluster
+* **azos-as-DC** voor de domein controllers
 
 ## <a name="virtual-machines"></a>Virtuele machines
-Adventure Works Cycles besloten op de volgende namen voor hun Azure-VM's:
+Adventure Works Cycles heeft besloten over de volgende namen voor hun Azure-Vm's:
 
-* **azos-use-vm-web01** voor de eerste webserver
-* **azos-use-vm-web02** voor de tweede webserver
-* **azos-use-vm-app01** voor de eerste toepassingsserver
-* **azos-use-vm-app02** voor de tweede toepassingsserver
-* **azos-use-vm-db01** voor de eerste MongoDB-server in het cluster
-* **azos-use-vm-db02** voor de tweede MongoDB-server in het cluster
-* **azos-use-vm-dc01** voor de eerste domeincontroller
-* **azos-use-vm-dc02** voor de tweede domeincontroller
+* **azos-use-VM-web01** voor de eerste webserver
+* **azos-use-VM-web02** voor de tweede webserver
+* **azos-use-VM-app01** voor de eerste toepassings server
+* **azos-use-VM-app02** voor de tweede toepassings server
+* **azos-use-VM-db01** voor de eerste MongoDb-server in het cluster
+* **azos-use-VM-db02** voor de tweede MongoDb-server in het cluster
+* **azos-use-VM-DC01** voor de eerste domein controller
+* **azos-use-VM-dc02** voor de tweede domein controller
 
-Hier is de resulterende configuratie.
+Dit is de resulterende configuratie.
 
-![Laatste toepassingsinfrastructuur geïmplementeerd in Azure](./media/infrastructure-example/example-config.png)
+![Definitieve toepassings infrastructuur geïmplementeerd in azure](./media/infrastructure-example/example-config.png)
 
-Deze configuratie omvat:
+Deze configuratie is in het algemeen:
 
-* Een virtueel netwerk met twee subnetten (front-end en back-end) alleen in de cloud
-* Azure Managed Disks met behulp van zowel Standard als Premium-schijven
-* Vier beschikbaarheidssets, één voor elke laag van de online winkel
+* Een virtueel netwerk in de Cloud met twee subnetten (front-end en back-end)
+* Azure Managed Disks het gebruik van standaard-en Premium-schijven
+* Vier beschikbaarheids sets, één voor elke laag van de online winkel
 * De virtuele machines voor de vier lagen
-* Een externe set met gelijke voor HTTPS-gebaseerde webverkeer van Internet naar de webservers
-* Een interne set met gelijke voor niet-versleuteld webverkeer van de webservers naar de toepassingsservers
-* Een enkele resourcegroep
+* Een externe set met gelijke taak verdeling voor op HTTPS gebaseerde webverkeer van Internet naar de webservers
+* Een set met interne gelijke taak verdeling voor niet-versleuteld webverkeer van de webservers naar de toepassings servers
+* Één resource groep

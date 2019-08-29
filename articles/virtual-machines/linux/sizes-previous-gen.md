@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM-grootten - vorige generaties | Microsoft Docs
-description: Geeft een lijst van de vorige methoden voor het genereren van de grootten die beschikbaar zijn voor virtuele Linux-machines in Azure. Bevat informatie over het aantal vcpu's, gegevensschijven en NIC's, evenals opslag en doorvoer netwerkbandbreedte voor grootten die in deze reeks.
+title: VM-grootten van Azure Linux-vorige generaties | Microsoft Docs
+description: Een lijst met de vorige generaties beschik bare grootten voor virtuele Linux-machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,26 +9,25 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: e20d351fa33ae432e184addcd1729b2663dbb490
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e56fb938ca8d45a148700a0a6b91e22a4f9034c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708797"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100848"
 ---
-# <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties groottes van virtuele machines
+# <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties virtuele machine grootten
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="older-generations-of-virtual-machine-sizes"></a>Oudere generaties groottes van virtuele machines
+## <a name="older-generations-of-virtual-machine-sizes"></a>Oudere generaties virtuele-machine grootten
 
 [!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
@@ -43,4 +42,4 @@ ms.locfileid: "67708797"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u [Azure compute units (ACU)](acu.md) kunt u de prestaties van Azure-SKU's met elkaar vergelijken.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

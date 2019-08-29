@@ -1,6 +1,6 @@
 ---
-title: Het Windows-VM-extensies oplossen | Microsoft Docs
-description: Meer informatie over het oplossen van Azure Windows VM-extensies oplossen
+title: Problemen met Windows VM-extensie fouten oplossen | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met Azure Windows VM-extensie fouten
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
@@ -9,24 +9,23 @@ editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.assetid: 878ab9b6-c3e6-40be-82d4-d77fecd5030f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: f2b85e9a156d0e6264ec39282b803118963cbbbb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6108b3c8d4f4c5c93bc2543042294bc8167d4dd9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706649"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084293"
 ---
-# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Oplossen van problemen met Azure Windows VM-extensies oplossen
+# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problemen met extensie fouten van Azure Windows VM oplossen
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
-## <a name="viewing-extension-status"></a>De Extensiestatus van de weergeven
-Azure Resource Manager-sjablonen kunnen worden uitgevoerd van Azure PowerShell. Nadat de sjabloon wordt uitgevoerd, kan de status van de extensie van Azure Resource Explorer of de opdrachtregelprogramma's worden weergegeven.
+## <a name="viewing-extension-status"></a>Uitbrei ding status weer geven
+Azure Resource Manager sjablonen kunnen vanuit Azure PowerShell worden uitgevoerd. Zodra de sjabloon is uitgevoerd, kunt u de status van de uitbrei ding bekijken vanuit Azure Resource Explorer of de opdracht regel Programma's.
 
 Hier volgt een voorbeeld:
 
@@ -59,13 +58,13 @@ Hier volgt een voorbeeld van uitvoer:
     }
   ]
 
-## <a name="troubleshooting-extension-failures"></a>Oplossen van problemen met extensies oplossen
-### <a name="rerun-the-extension-on-the-vm"></a>De extensie op de virtuele machine opnieuw uitvoeren
-Als u scripts op de virtuele machine met behulp van de extensie voor aangepaste scripts, kan u soms uitvoeren in een fout waarbij virtuele machine is gemaakt, maar het script is mislukt. In deze omstandigheden vindt is de aanbevolen manier om te herstellen van deze fout voor het verwijderen van de extensie en voert u de sjabloon opnieuw uit.
-Opmerking: In de toekomst zou deze functionaliteit wordt verbeterd, zodat de noodzaak voor het verwijderen van de extensie.
+## <a name="troubleshooting-extension-failures"></a>Problemen met extensies oplossen
+### <a name="rerun-the-extension-on-the-vm"></a>De uitbrei ding op de VM opnieuw uitvoeren
+Als u scripts uitvoert op de VM met behulp van aangepaste script extensie, zou u soms een fout kunnen ondervinden waarbij de VM is gemaakt, maar het script is mislukt. Onder deze omstandigheden wordt de aanbevolen manier om deze fout te herstellen, de uitbrei ding te verwijderen en de sjabloon opnieuw uit te voeren.
+Opmerking: In de toekomst zou deze functionaliteit worden uitgebreid om te voor komen dat de uitbrei ding moet worden verwijderd.
 
-#### <a name="remove-the-extension-from-azure-powershell"></a>Verwijder de extensie van Azure PowerShell
+#### <a name="remove-the-extension-from-azure-powershell"></a>De uitbrei ding verwijderen uit Azure PowerShell
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-Nadat de extensie is verwijderd, kan de sjabloon opnieuw uitgevoerd om uit te voeren van de scripts op de virtuele machine zijn.
+Zodra de extensie is verwijderd, kan de sjabloon opnieuw worden uitgevoerd om de scripts op de virtuele machine uit te voeren.
 

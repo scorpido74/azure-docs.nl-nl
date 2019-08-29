@@ -1,6 +1,6 @@
 ---
-title: Azure-seriële Console voor het WORMGATEN en de modus voor één gebruiker | Microsoft Docs
-description: Met behulp van de seriële Console van wormgaten in virtuele machines van Azure.
+title: Azure seriële console voor GRUB en de modus voor één gebruiker | Microsoft Docs
+description: Met behulp van seriële console voor grub in azure virtual machines.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -8,183 +8,182 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5ff87e761bbe5243a478a00ca90d4be03fdbc6d4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cce4e558331cad0045772f53f7fc3c78aeed2bb7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706565"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082206"
 ---
-# <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële Console gebruiken voor toegang tot WORMGATEN en de modus voor één gebruiker
-WORMGATEN is het eindtotaal Unified Bootloader. Vanaf WORMGATEN, u kunt wijzigen van de opstartconfiguratie om op te starten in de modus voor één gebruiker, onder andere.
+# <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken voor toegang tot de GRUB en de modus voor één gebruiker
+GRUB is de GRand Unified Bootloader. Vanuit GRUB kunt u de opstart configuratie wijzigen om onder andere de modus voor één gebruiker op te starten.
 
-Modus voor één gebruiker is een minimale omgeving met een minimale functionaliteit. Kan het nuttig zijn voor het onderzoeken van opstartproblemen bij, bestandssysteem problemen of netwerkproblemen. Minder services kunnen worden uitgevoerd op de achtergrond en, afhankelijk van de (uitvoeringsniveau), een bestandssysteem kan niet ook worden automatisch gekoppeld.
+De modus voor één gebruiker is een minimale omgeving met minimale functionaliteit. Dit kan handig zijn voor het onderzoeken van opstart problemen, bestandssysteem problemen of netwerk problemen. Minder services kunnen op de achtergrond worden uitgevoerd en, afhankelijk van de runlevel, kan een bestands systeem niet zelfs automatisch worden gekoppeld.
 
-Modus voor één gebruiker is ook handig in situaties waar uw virtuele machine kan alleen worden geconfigureerd om te accepteren van SSH-sleutels om aan te melden. In dit geval wordt u mogelijk modus voor één gebruiker gebruiken om te maken van een account met wachtwoordverificatie.
+De modus voor één gebruiker is ook handig in situaties waarin uw virtuele machine alleen mag worden geconfigureerd voor het accepteren van SSH-sleutels om u aan te melden. In dit geval kunt u mogelijk de modus voor één gebruiker gebruiken om een account met wachtwoord verificatie te maken.
 
-Om in te voeren modus voor één gebruiker, moet u WORMGATEN invoeren wanneer uw virtuele machine wordt opgestart, en de configuratie van de opstartinstallatiekopie in WORMGATEN wijzigen. Dit kan worden gedaan met de seriële console van de virtuele machine.
+Als u de modus voor één gebruiker wilt opgeven, moet u GRUB invoeren wanneer de virtuele machine wordt opgestart en de opstart configuratie in GRUB wijzigen. Dit kan worden gedaan met de seriële VM-console.
 
 ## <a name="general-grub-access"></a>Algemene GRUB-toegang
-Voor toegang tot WORMGATEN, moet u opnieuw opstarten van uw virtuele machine terwijl de seriële console-blade geopend. Bepaalde distributies moeten toetsenbordinvoer om weer te geven van WORMGATEN, terwijl anderen automatisch worden WORMGATEN voor een paar seconden weergeven en toetsenbord gebruikersinvoer om te annuleren de time-out toestaan. 
+Voor toegang tot GRUB moet u de virtuele machine opnieuw opstarten terwijl de Blade seriële console geopend blijven. Voor sommige distributies is een toetsenbord invoer vereist om GRUB weer te geven, terwijl andere automatisch GRUB gedurende een paar seconden worden weer gegeven en de gebruikers toetsenbord invoer de time-out kan annuleren. 
 
-U wordt om ervoor te zorgen dat WORMGATEN is ingeschakeld op de virtuele machine om te kunnen toegangsmodus voor één gebruiker. Afhankelijk van uw distributie worden sommige work instellen om ervoor te zorgen dat de GRUB is ingeschakeld. Distributie-specifieke informatie vindt u hieronder.
+U moet ervoor zorgen dat GRUB is ingeschakeld op uw virtuele machine om toegang te kunnen krijgen tot de modus voor één gebruiker. Afhankelijk van uw distributie is het mogelijk dat er een bepaalde installatie wordt uitgevoerd om ervoor te zorgen dat GRUB is ingeschakeld. Distributie-specifieke informatie is hieronder beschikbaar.
 
-### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Opnieuw opstarten van uw virtuele machine voor toegang tot WORMGATEN in seriële Console
-Opnieuw opstarten van uw virtuele machine met de seriële console-blade geopend kan worden gedaan met een SysRq `'b'` als de opdracht [SysRq](./serial-console-nmi-sysrq.md) is ingeschakeld, of door te klikken op het opstarten van de knop op de blade overzicht (open de virtuele machine in een nieuw browsertabblad te starten zonder sluiten de seriële console-blade). Volg de instructies distributie-specifieke hieronder voor meer informatie over wat u kunt verwachten van WORMGATEN wanneer u de computer opnieuw opstart.
+### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Start uw VM opnieuw op om toegang te krijgen tot GRUB in de seriële console
+Het opnieuw opstarten van uw VM met de Blade seriële console open kan worden uitgevoerd met `'b'` een SYSRQ-opdracht als [SYSRQ](./serial-console-nmi-sysrq.md) is ingeschakeld, of door te klikken op de knop opnieuw opstarten op de Blade overzicht (Open de virtuele machine in een nieuw browser tabblad om opnieuw op te starten zonder de Blade seriële console te sluiten ). Volg de distributie-specifieke instructies hieronder voor meer informatie over wat u kunt verwachten van GRUB wanneer u de computer opnieuw opstart.
 
-## <a name="general-single-user-mode-access"></a>Algemene modus voor één gebruiker toegang
-Handmatige toegang tot de modus voor één gebruiker is mogelijk in situaties waar u niet een account hebt geconfigureerd met wachtwoordverificatie nodig. U moet de WORMGATEN configuratie handmatig invoeren modus voor één gebruiker. Nadat u dit hebt gedaan, kunt u gebruikersmodus voor één gebruiker opnieuw instellen of het toevoegen van een wachtwoord op voor verdere instructies.
+## <a name="general-single-user-mode-access"></a>Algemene toegang tot de modus voor één gebruiker
+Er zijn mogelijk hand matige toegang tot de modus voor één gebruiker nodig in situaties waarin u geen account met wachtwoord verificatie hebt geconfigureerd. U moet de GRUB-configuratie wijzigen om de modus voor één gebruiker hand matig in te voeren. Als u dit hebt gedaan, raadpleegt u de modus voor één gebruiker gebruiken om een wacht woord opnieuw in te stellen of toe te voegen voor verdere instructies.
 
-In gevallen waarin de virtuele machine kan niet op te starten, worden distributies vaak automatisch verwijderen u in de modus voor één gebruiker of noodherstelmodus bevindt. Andere, nodig aanvullende instellingen echter voordat ze u in de modus voor één gebruiker of noodgevallen automatisch (zoals het instellen van een hoofdwachtwoord) kunnen verwijderen.
+In gevallen waarin de virtuele machine niet kan worden opgestart, wordt door distributies vaak automatisch naar de modus voor één gebruiker of een nood herstel modus. Andere vereisen echter aanvullende instellingen voordat ze u automatisch naar de modus met één gebruiker of nood herstel kunnen verplaatsen (zoals het instellen van een basis wachtwoord).
 
-### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Modus voor één gebruiker opnieuw instellen of het toevoegen van een wachtwoord gebruiken
-Wanneer u in de modus voor één gebruiker bent, kunt u het volgende als u wilt toevoegen van een nieuwe gebruiker met sudo-machtigingen doen:
-1. Voer `useradd <username>` een gebruiker toevoegen
-1. Voer `sudo usermod -a -G sudo <username>` aan de nieuwe gebruiker bevoegdheden op hoofdniveau
-1. Gebruik `passwd <username>` om in te stellen van het wachtwoord voor de nieuwe gebruiker. Kunt u zich vervolgens aanmelden als de nieuwe gebruiker
+### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>De modus voor één gebruiker gebruiken om een wacht woord opnieuw in te stellen of toe te voegen
+Als u zich in de modus voor één gebruiker bevindt, gaat u als volgt te werk om een nieuwe gebruiker toe te voegen met sudo-bevoegdheden:
+1. Uitvoeren `useradd <username>` om een gebruiker toe te voegen
+1. Uitvoeren `sudo usermod -a -G sudo <username>` om de nieuwe gebruikers hoofd bevoegdheden te verlenen
+1. Gebruiken `passwd <username>` om het wacht woord voor de nieuwe gebruiker in te stellen. U kunt zich vervolgens aanmelden als de nieuwe gebruiker
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Toegang voor Red Hat Enterprise Linux (RHEL)
-RHEL doorlaat u in de modus voor één gebruiker automatisch als het niet normaal mag opstarten. Als u geen toegang tot de hoofdmap voor de modus voor één gebruiker hebt ingesteld, u heeft geen een hoofdwachtwoord en geen om aan te melden. Er is een oplossing (Zie 'Handmatig invoeren van modus voor één gebruiker' hieronder), maar het voorstel is het instellen van toegang tot de hoofdmap in eerste instantie.
+RHEL gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Als u echter geen hoofd toegang hebt ingesteld voor de modus voor één gebruiker, hebt u geen hoofd wachtwoord en kunt u zich niet aanmelden. Er is een tijdelijke oplossing (Zie ' hand matig toegang tot de modus voor één gebruiker maken ' hieronder), maar u kunt het voor stel het eerst gebruiken om toegang tot de hoofdmap in te stellen.
 
-### <a name="grub-access-in-rhel"></a>Toegang tot WORMGATEN in RHEL
-RHEL wordt geleverd met WORMGATEN standaard ingeschakeld. Om in te voeren WORMGATEN, start opnieuw op uw virtuele machine met `sudo reboot` en druk op een willekeurige toets. Hier ziet u de GRUB-scherm weergegeven.
+### <a name="grub-access-in-rhel"></a>GRUB-toegang in RHEL
+RHEL wordt geleverd met GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op een wille keurige toets. Het scherm GRUB wordt weer gegeven.
 
-> Opmerking: Red Hat biedt ook de documentatie voor opstart in de modus redden, EMS-modus, foutopsporingsmodus en het root-wachtwoord opnieuw instellen. [Klik hier voor toegang tot deze](https://aka.ms/rhel7grubterminal).
+> Opmerking: Red Hat biedt ook documentatie voor opstarten in de herstel modus, de nood herstel modus, de foutopsporingsmodus en het opnieuw instellen van het hoofd wachtwoord. [Klik hier om het te openen](https://aka.ms/rhel7grubterminal).
 
-### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Toegang tot de hoofdmap voor de modus voor één gebruiker in RHEL instellen
-Modus voor één gebruiker in RHEL is vereist voor de hoofdgebruiker zijn ingeschakeld, die standaard is uitgeschakeld. Als u een noodzaak voor het inschakelen van de modus voor één gebruiker hebt, gebruikt u de volgende instructies:
+### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Hoofd toegang instellen voor de modus voor één gebruiker in RHEL
+Voor de modus voor één gebruiker in RHEL moet de hoofd gebruiker zijn ingeschakeld. deze is standaard uitgeschakeld. Als u de modus voor één gebruiker wilt inschakelen, gebruikt u de volgende instructies:
 
 1. Meld u aan bij het Red Hat-systeem via SSH
-1. Overschakelen naar de hoofdmap
-1. Wachtwoord voor de hoofdgebruiker inschakelen 
-    * `passwd root` (een sterke root-wachtwoord instellen)
-1. Controleer of hoofdgebruiker kunt alleen aanmelden via ttyS0
-    * `edit /etc/ssh/sshd_config` en zorg ervoor dat PermitRootLogIn is ingesteld op no
-    * `edit /etc/securetty file` om toe te staan alleen aanmelden via ttyS0 
+1. Overschakelen naar hoofdmap
+1. Wacht woord voor hoofd gebruiker inschakelen 
+    * `passwd root`(een sterk wacht woord instellen)
+1. Controleren of de hoofd gebruiker zich alleen kan aanmelden via ttyS0
+    * `edit /etc/ssh/sshd_config`Zorg ervoor dat PermitRootLogIn is ingesteld op Nee
+    * `edit /etc/securetty file`aanmelden via ttyS0 alleen toestaan 
 
-Nu als het systeem wordt opgestart naar de modus voor één gebruiker kunt u aanmelden via hoofdwachtwoord.
+Als het systeem wordt opgestart in de modus voor één gebruiker, kunt u zich aanmelden via het hoofd wachtwoord.
 
-U kunt ook voor RHEL 7.4 + of u kunt inschakelen voor 6,9 + modus voor één gebruiker in de GRUB wordt gevraagd, Zie instructies [hier](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/installation_guide/s1-rescuemode-booting-single)
+Als alternatief voor RHEL 7.4 + of 6,9 + kunt u in de GRUB-prompts de modus voor één gebruiker inschakelen. Raadpleeg [hier](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/installation_guide/s1-rescuemode-booting-single) de instructies
 
-### <a name="manually-enter-single-user-mode-in-rhel"></a>Modus voor één gebruiker handmatig invoeren in RHEL
-Als u hebt ingesteld WORMGATEN en root openen met de bovenstaande instructies, dan kunt u de modus voor één gebruiker met de volgende instructies:
+### <a name="manually-enter-single-user-mode-in-rhel"></a>De modus voor één gebruiker hand matig invoeren in RHEL
+Als u GRUB en toegang tot de hoofdmap hebt ingesteld met de bovenstaande instructies, kunt u de modus voor één gebruiker invoeren met de volgende instructies:
 
-1. Druk op 'Esc' tijdens het opnieuw opstarten van de virtuele machine om in te voeren van WORMGATEN
-1. In de GRUB, drukt u op 'e' om te bewerken van het geselecteerde besturingssysteem moet worden opgestart in (doorgaans de eerste regel)
-1. De regel kernel - vinden in Azure, deze begint met `linux16`
-1. Druk op Ctrl + E te gaan naar het einde van de regel
-1. Voeg het volgende toe aan het einde van de regel: `systemd.unit=rescue.target`
-    * Dit zal u start in de modus voor één gebruiker. Als u gebruiken noodherstelmodus bevindt wilt, voegt u toe `systemd.unit=emergency.target` aan het einde van de regel in plaats van `systemd.unit=rescue.target`
-1. Druk op Ctrl + X af te sluiten en opnieuw opstarten met de toegepaste instellingen
-1. U wordt gevraagd het beheerderswachtwoord modus voor één gebruiker invoeren voordat u: dit is de hetzelfde wachtwoord dat u hebt gemaakt in de bovenstaande instructies    
+1. Druk op ESC tijdens het opnieuw starten van de virtuele machine om GRUB in te voeren
+1. Druk in GRUB op ' e ' om het geselecteerde besturings systeem te bewerken waarop u wilt opstarten (doorgaans de eerste regel)
+1. Zoek de kernel-regel-in Azure. dit begint met`linux16`
+1. Druk op CTRL + E om naar het einde van de regel te gaan
+1. Voeg het volgende toe aan het einde van de regel:`systemd.unit=rescue.target`
+    * Hiermee wordt u opgestart naar de modus voor één gebruiker. Als u de nood herstel modus wilt gebruiken, `systemd.unit=emergency.target` voegt u aan het einde van de regel toe, in plaats van`systemd.unit=rescue.target`
+1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen
+1. U wordt gevraagd om het beheerders wachtwoord voordat de modus voor één gebruiker kan worden opgegeven. Dit is het wacht woord dat u hebt gemaakt in de bovenstaande instructies    
 
     ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
-### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Modus voor één gebruiker invoeren zonder root-account is ingeschakeld in RHEL
-Als u niet de stappen hierboven om in te schakelen van de hoofdgebruiker hebt doorlopen, kunt u nog steeds het root-wachtwoord opnieuw instellen. Gebruik de volgende instructies:
+### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>De modus voor één gebruiker opgeven zonder dat het hoofd account is ingeschakeld in RHEL
+Als u de bovenstaande stappen niet hebt door lopen om de hoofd gebruiker in te scha kelen, kunt u uw basis wachtwoord nog steeds opnieuw instellen. Gebruik de volgende instructies:
 
-> Opmerking: Als u SELinux gebruikt, zorg ervoor dat u de extra stappen die worden beschreven in de documentatie van Red Hat hebt ondernomen [hier](https://aka.ms/rhel7grubterminal) wanneer het root-wachtwoord opnieuw instellen.
+> Opmerking: Als u SELinux gebruikt, moet u ervoor zorgen dat u de aanvullende stappen hebt uitgevoerd die worden beschreven in [](https://aka.ms/rhel7grubterminal) de Red Hat-documentatie wanneer u het basis wachtwoord opnieuw instelt.
 
-1. Druk op 'Esc' tijdens het opnieuw opstarten van de virtuele machine om in te voeren van WORMGATEN
-1. In de GRUB, drukt u op 'e' om te bewerken van het geselecteerde besturingssysteem moet worden opgestart in (doorgaans de eerste regel)
-1. De regel kernel - vinden in Azure, deze begint met `linux16`
-1. Voeg `rd.break` aan het einde van de regel, ervoor te zorgen dat er is een spatie vóór `rd.break` (Zie het onderstaande voorbeeld)
-    - Hiermee wordt het opstartproces onderbroken voordat besturingselement wordt doorgegeven vanuit `initramfs` naar `systemd`, zoals beschreven in de documentatie van Red Hat [hier](https://aka.ms/rhel7rootpassword).
-1. Druk op Ctrl + X af te sluiten en opnieuw opstarten met de toegepaste instellingen
-1. Zodra u opstart, wordt u in de noodherstelmodus bevinden met een alleen-lezen bestandssysteem worden verwijderd. Voer `mount -o remount,rw /sysroot` in de shell te koppelen van het root-bestandssysteem met machtigingen voor lezen/schrijven
-1. Zodra u in de modus voor één gebruiker opstart, typt u in `chroot /sysroot` overschakelen naar de `sysroot` jailbroken
-1. U bent nu hoofdmap. U kunt opnieuw instellen van het root-wachtwoord met `passwd` en gebruik vervolgens de bovenstaande instructies om in te voeren van de modus voor één gebruiker. Type `reboot -f` opnieuw op te starten wanneer u klaar bent.
+1. Druk op ESC tijdens het opnieuw starten van de virtuele machine om GRUB in te voeren
+1. Druk in GRUB op ' e ' om het geselecteerde besturings systeem te bewerken waarop u wilt opstarten (doorgaans de eerste regel)
+1. Zoek de kernel-regel-in Azure. dit begint met`linux16`
+1. Voeg `rd.break` aan het einde van de regel toe, zodat er ruimte is voor `rd.break` (Zie het onderstaande voor beeld)
+    - Hiermee wordt het opstart proces onderbroken voordat het besturings element wordt `initramfs` door `systemd`gegeven van naar, zoals beschreven in de documentatie van Red Hat [hier](https://aka.ms/rhel7rootpassword).
+1. Druk op CTRL + X om af te sluiten en opnieuw op te starten met de toegepaste instellingen
+1. Zodra u de computer hebt opgestart, wordt u in de nood herstel modus met een alleen-lezen bestands systeem verwijderd. Voer `mount -o remount,rw /sysroot` in de shell in om het hoofd bestands systeem opnieuw te koppelen met de machtigingen lezen/schrijven
+1. Wanneer u de modus voor één gebruiker opstart, typt `chroot /sysroot` u in om over `sysroot` te scha kelen naar de jailbroken
+1. U bent nu het hoofd. U kunt uw basis wachtwoord opnieuw instellen `passwd` met en vervolgens de bovenstaande instructies gebruiken om de modus voor één gebruiker in te voeren. Typ `reboot -f` om opnieuw op te starten wanneer u klaar bent.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Opmerking: De bovenstaande instructies wilt doorlopen doorlaat u in noodgevallen shell, zodat u kunt ook taken zoals het bewerken van `fstab`. Het algemeen aanvaarde voorstel is echter het root-wachtwoord opnieuw instellen en gebruiken die voor het invoeren van de modus voor één gebruiker. 
+> Opmerking: Door de bovenstaande instructies uit te voeren, gaat u naar de nood-shell, zodat u ook taken zoals `fstab`bewerken kunt uitvoeren. De algemeen geaccepteerde suggestie is het opnieuw instellen van uw basis wachtwoord en gebruiken om de modus voor één gebruiker in te voeren. 
 
 
 ## <a name="access-for-centos"></a>Toegang voor CentOS
-Veel, zoals Red Hat Enterprise Linux vereist modus voor één gebruiker in CentOS WORMGATEN en de hoofdgebruiker zijn ingeschakeld. 
+Net als Red Hat Enterprise Linux vereist de modus voor één gebruiker in CentOS GRUB en moet de hoofd gebruiker worden ingeschakeld. 
 
-### <a name="grub-access-in-centos"></a>Toegang tot WORMGATEN in CentOS
-CentOS wordt geleverd met WORMGATEN standaard ingeschakeld. Om in te voeren WORMGATEN, start opnieuw op uw virtuele machine met `sudo reboot` en druk op een willekeurige toets. Hier ziet u de GRUB-scherm weergegeven.
+### <a name="grub-access-in-centos"></a>GRUB-toegang in CentOS
+CentOS wordt geleverd met GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op een wille keurige toets. Het scherm GRUB wordt weer gegeven.
 
 ### <a name="single-user-mode-in-centos"></a>Modus voor één gebruiker in CentOS
-Volg de instructies voor RHEL hierboven om in te schakelen van modus voor één gebruiker in CentOS.
+Volg de instructies voor RHEL hierboven om de modus voor één gebruiker in CentOS in te scha kelen.
 
 ## <a name="access-for-ubuntu"></a>Toegang voor Ubuntu 
-Ubuntu-installatiekopieën hebben een hoofdwachtwoord niet nodig. Als het systeem wordt opgestart in de modus voor één gebruiker, kunt u deze kunt gebruiken zonder aanvullende referenties. 
+Voor Ubuntu-installatie kopieën is geen hoofd wachtwoord vereist. Als het systeem wordt opgestart in de modus voor één gebruiker, kunt u dit zonder aanvullende referenties gebruiken. 
 
-### <a name="grub-access-in-ubuntu"></a>In Ubuntu WORMGATEN toegang
-Voor toegang tot WORMGATEN, houdt u 'Esc' ingedrukt terwijl de virtuele machine wordt opgestart. 
+### <a name="grub-access-in-ubuntu"></a>GRUB-toegang in Ubuntu
+Als u toegang wilt krijgen tot GRUB, houdt u ESC ingedrukt terwijl de virtuele machine wordt opgestart. 
 
-Standaard wordt het scherm WORMGATEN niet op de automatisch weergegeven door Ubuntu-installatiekopieën. Dit kan worden gewijzigd met de volgende instructies:
-1. Open `/etc/default/grub.d/50-cloudimg-settings.cfg` in een teksteditor van uw keuze
-1. Wijzig de `GRUB_TIMEOUT` waarde naar een andere waarde dan nul
-1. Open `/etc/default/grub` in een teksteditor van uw keuze
-1. Opmerkingen bij de `GRUB_HIDDEN_TIMEOUT=1` regel
+Standaard worden in Ubuntu-afbeeldingen niet automatisch het scherm GRUB weer gegeven. U kunt dit wijzigen met de volgende instructies:
+1. Open `/etc/default/grub.d/50-cloudimg-settings.cfg` in een tekst editor naar keuze
+1. Wijzig de `GRUB_TIMEOUT` waarde in een andere waarde dan nul
+1. Open `/etc/default/grub` in een tekst editor naar keuze
+1. Commentaar toevoegen aan `GRUB_HIDDEN_TIMEOUT=1` de regel
 1. Voer `sudo update-grub` uit.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Modus voor één gebruiker in Ubuntu
-Ubuntu doorlaat u in de modus voor één gebruiker automatisch als het niet normaal mag opstarten. Als u wilt handmatig invoeren modus voor één gebruiker, gebruik de volgende instructies:
+Ubuntu gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Gebruik de volgende instructies om de modus voor één gebruiker hand matig in te voeren:
 
-1. Van WORMGATEN, drukt u op 'e' uw opstartvermelding (de Ubuntu-vermelding) bewerken
-1. Zoek de regel die met begint `linux`, zoek naar `ro`
-1. Voeg `single` nadat `ro`, ervoor zorgen dat er is een ruimte voor en na `single`
-1. Druk op Ctrl + X op te starten met de volgende instellingen en geef de modus voor één gebruiker
+1. Druk vanuit GRUB op ' e ' om de opstart vermelding (de Ubuntu-vermelding) te bewerken.
+1. Zoek naar de regel die begint met `linux`en zoek naar`ro`
+1. `single` Erna`ro`toevoegen, zodat er ruimte is voor en na`single`
+1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en voer de modus voor één gebruiker in
 
 ## <a name="access-for-coreos"></a>Toegang voor CoreOS
-Modus voor één gebruiker in CoreOS vereist WORMGATEN moet worden ingeschakeld. 
+Voor de modus voor één gebruiker in CoreOS moet GRUB zijn ingeschakeld. 
 
-### <a name="grub-access-in-coreos"></a>Toegang tot WORMGATEN in CoreOS
-Voor toegang tot WORMGATEN, drukt u op een willekeurige toets wanneer uw virtuele machine wordt opgestart.
+### <a name="grub-access-in-coreos"></a>GRUB-toegang in CoreOS
+Om toegang te krijgen tot GRUB, drukt u op een wille keurige toets wanneer de virtuele machine wordt opgestart.
 
 ### <a name="single-user-mode-in-coreos"></a>Modus voor één gebruiker in CoreOS
-CoreOS doorlaat u in de modus voor één gebruiker automatisch als het niet normaal mag opstarten. Als u wilt handmatig invoeren modus voor één gebruiker, gebruik de volgende instructies:
-1. Van WORMGATEN, drukt u op 'e' uw opstartvermelding bewerken
-1. Zoek de regel die met begint `linux$`. Er moet 2, ingekapseld in verschillende als/anders van de EU
-1. Toevoeg- `coreos.autologin=ttyS0` aan het einde van beide `linux$` regels
-1. Druk op Ctrl + X op te starten met de volgende instellingen en geef de modus voor één gebruiker
+CoreOS gaat automatisch naar de modus voor één gebruiker als deze niet normaal kan worden opgestart. Gebruik de volgende instructies om de modus voor één gebruiker hand matig in te voeren:
+1. Druk vanuit GRUB op ' e ' om de opstart vermelding te bewerken
+1. Zoek naar de regel die begint met `linux$`. Er moet 2 zijn ingekapseld in verschillende if/else-componenten
+1. Toevoegen `coreos.autologin=ttyS0` aan het einde van beide `linux$` regels
+1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en voer de modus voor één gebruiker in
 
 ## <a name="access-for-suse-sles"></a>Toegang voor SUSE SLES
-Nieuwe afbeeldingen van SLES 12 SP3 + toestaan toegang via de seriële console als het systeem wordt opgestart in de noodherstelmodus bevindt. 
+Nieuwere installatie kopieën van SLES 12 SP3 + bieden toegang via de seriële console als het systeem wordt opgestart in de nood herstel modus. 
 
-### <a name="grub-access-in-suse-sles"></a>Toegang tot WORMGATEN in SUSE SLES
-Toegang tot WORMGATEN in SLES vereist bootloader configuratie via YaST. U doet dit door deze instructies te volgen:
+### <a name="grub-access-in-suse-sles"></a>GRUB-toegang in SUSE SLES
+GRUB-toegang in SLES vereist configuratie van bootloader via YaST. Volg hiervoor de volgende instructies:
 
-1. SSH in uw SLES VM en voer `sudo yast bootloader`. Gebruik de `tab` sleutel `enter` sleutel en de pijltoetsen om te navigeren via het menu. 
-1. Navigeer naar `Kernel Parameters`, en Controleer `Use serial console`. 
-1. Voeg `serial --unit=0 --speed=9600 --parity=no` naar de Console-argumenten
+1. SSH in uw SLES-VM en `sudo yast bootloader`Voer uit. Gebruik de `tab` sleutel- `enter` , sleutel-en PIJL toetsen om door het menu te navigeren. 
+1. Navigeer naar `Kernel Parameters`en controleer `Use serial console`. 
+1. Toevoegen `serial --unit=0 --speed=9600 --parity=no` aan de-console argumenten
 
-1. Druk op F10 om uw instellingen opslaan en sluiten
-1. Om in te voeren WORMGATEN, opnieuw opstarten van uw virtuele machine en drukt u op een willekeurige toets tijdens opstartprocedure te blijven op het scherm WORMGATEN
-    - De standaardtime-out voor WORMGATEN is 1s. U kunt dit wijzigen door het wijzigen van de `GRUB_TIMEOUT` variabele in `/etc/default/grub`
+1. Druk op F10 om uw instellingen op te slaan en af te sluiten
+1. Als u GRUB wilt invoeren, start u de virtuele machine opnieuw op en drukt u op een wille keurige toets tijdens de opstart procedure om GRUB op het scherm
+    - De standaardtime-outwaarde voor GRUB is 1S. U kunt dit wijzigen door de `GRUB_TIMEOUT` variabele in te wijzigen in`/etc/default/grub`
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Modus voor één gebruiker in SUSE SLES
-U wordt automatisch verwijderd in noodgevallen shell als SLES niet normaal mag opstarten. Als u wilt de noodgevallen shell handmatig invoeren, gebruikt u de volgende instructies:
+Als SLES niet normaal kan worden opgestart, wordt u automatisch verwijderd naar de nood situatie. Gebruik de volgende instructies om de nood-shell hand matig in te voeren:
 
-1. Van WORMGATEN, drukt u op 'e' uw opstartvermelding (de SLES-vermelding) bewerken
-1. Zoek de regel van de kernel die wordt gestart met `linux`
-1. Toevoeg- `systemd.unit=emergency.target` aan het einde van de regel
-1. Druk op Ctrl + X op te starten met de volgende instellingen en noodgevallen shell invoeren
-   > Houd er rekening mee dat u wordt verwijderd in noodgevallen shell met een _alleen-lezen_ bestandssysteem. Als u maken van alle wijzigingen aan alle bestanden wilt, moet u te koppelen van het bestandssysteem met machtigingen voor lezen / schrijven. U doet dit door Voer `mount -o remount,rw /` in shell
+1. Druk vanuit GRUB op ' e ' om de opstart vermelding (de SLES-vermelding) te bewerken.
+1. Zoek naar de kernel-regel die wordt gestart met`linux`
+1. Toevoegen `systemd.unit=emergency.target` aan het einde van de regel
+1. Druk op CTRL + X om opnieuw op te starten met deze instellingen en voer nood herstel in
+   > Houd er rekening mee dat u met een _alleen-lezen_ bestands systeem in een nood geval wordt verwijderd. Als u wijzigingen wilt aanbrengen in bestanden, moet u het bestands systeem opnieuw koppelen met de machtigingen lezen/schrijven. Als u dit wilt doen `mount -o remount,rw /` , voert u de shell in
 
 ## <a name="access-for-oracle-linux"></a>Toegang voor Oracle Linux
-Veel, zoals Red Hat Enterprise Linux vereist modus voor één gebruiker in Oracle Linux WORMGATEN en de hoofdgebruiker zijn ingeschakeld. 
+Net als Red Hat Enterprise Linux vereist de modus voor één gebruiker in Oracle Linux GRUB en de hoofd gebruiker moeten worden ingeschakeld. 
 
-### <a name="grub-access-in-oracle-linux"></a>Toegang tot WORMGATEN in Oracle Linux
-Oracle Linux wordt geleverd met WORMGATEN standaard ingeschakeld. Om in te voeren WORMGATEN, start opnieuw op uw virtuele machine met `sudo reboot` en druk op 'Esc'. Hier ziet u de GRUB-scherm weergegeven.
+### <a name="grub-access-in-oracle-linux"></a>GRUB toegang in Oracle Linux
+Oracle Linux is GRUB ingeschakeld. Als u grub wilt invoeren, start u `sudo reboot` de VM opnieuw op en drukt u op ESC. Het scherm GRUB wordt weer gegeven.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Modus voor één gebruiker in Oracle Linux
-Volg de instructies voor RHEL hierboven om in te schakelen van modus voor één gebruiker in Oracle Linux.
+Volg de instructies voor RHEL hierboven om de modus voor één gebruiker in Oracle Linux in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-* De belangrijkste seriële console van het Linux-documentatiepagina bevindt [hier](serial-console.md).
-* Gebruik voor de seriële Console [NMI en SysRq aanroepen](serial-console-nmi-sysrq.md)
-* Seriële Console van het is ook beschikbaar voor [Windows](../windows/serial-console.md) VM's
-* Meer informatie over [diagnostische gegevens over opstarten](boot-diagnostics.md)
+* De documentatie pagina voor de hoofd console Linux bevindt zich [hier](serial-console.md).
+* Seriële console gebruiken voor [NMI-en SYSRQ](serial-console-nmi-sysrq.md) -aanroepen
+* De seriële console is ook beschikbaar voor virtuele [Windows](../windows/serial-console.md) -machines
+* Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md)

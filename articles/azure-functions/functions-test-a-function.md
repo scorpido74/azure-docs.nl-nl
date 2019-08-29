@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, functies, gebeurtenisverwerking, webhooks, dynamisch berekenen, architectuur zonder server, testen
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 800c9db245007047b2dc17b3f270737254ed42d7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0bd6222a6f2a2582fb715dbaf364fe23e41630d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479723"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085148"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
@@ -29,7 +28,7 @@ De inhoud die volgt is opgesplitst in twee verschillende secties die zijn bedoel
 - [C#in Visual Studio met xUnit](#c-in-visual-studio)
 - [JavaScript in VS Code met Jest](#javascript-in-vs-code)
 
-De voorbeeld-opslagplaats is beschikbaar op [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
+De voor beeld-opslag plaats is beschikbaar op [github](https://github.com/Azure-Samples/azure-functions-tests).
 
 ## <a name="c-in-visual-studio"></a>C#in Visual Studio
 Het volgende voorbeeld wordt beschreven hoe u een C# functie-app in Visual Studio en worden uitgevoerd en getest met [xUnit](https://xunit.github.io).
@@ -43,8 +42,8 @@ Als u uw omgeving instelt, een functie maken en testen van de app. De volgende s
 1. [Maak een nieuwe Azure Functions-app](./functions-create-first-azure-function.md) en noem het *functies*
 2. [Een HTTP-functie maken vanuit de sjabloon](./functions-create-first-azure-function.md) en noem het *HttpTrigger*.
 3. [Een timerfunctie maken vanuit de sjabloon](./functions-create-scheduled-function.md) en noem het *TimerTrigger*.
-4. [Maken van een Test-app met xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio door te klikken op **bestand > Nieuw > Project > Visual C# > .NET Core > xUnit testproject** en noem het *Functions.Test*. 
-5. Nuget gebruiken om toe te voegen een verwijzingen van de app test [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in Visual Studio door te klikken op **File > New C# > Project > Visual > .net core > xUnit test project** en geef het de naam *functions. test*. 
+5. Gebruik Nuget om een verwijzing toe te voegen vanuit de test-app [micro soft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Naslaginformatie over de *functies* app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) van *Functions.Test* app.
 
 ### <a name="create-test-classes"></a>Test klassen maken
@@ -55,7 +54,7 @@ Elke functie heeft een exemplaar van [ILogger](https://docs.microsoft.com/dotnet
 
 De `ListLogger` klasse is bedoeld voor het implementeren van de `ILogger` interface en houdt in de interne lijst met berichten voor de evaluatie tijdens een test.
 
-**Met de rechtermuisknop op** op de *Functions.Test* toepassing en selecteer **toevoegen > klasse**, geef deze de naam **NullScope.cs** en voer de volgende code:
+**Klik** met de rechter muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **NullScope.cs** en voer de volgende code in:
 
 ```csharp
 using System;
@@ -73,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-Volgende **met de rechtermuisknop op** op de *Functions.Test* toepassing en selecteer **toevoegen > klasse**, geef deze de naam **ListLogger.cs** en voer de de volgende code:
+Klik vervolgens met de **rechter** muisknop op de *functies. test* toepassing en selecteer **> klasse toevoegen**, noem deze **ListLogger.cs** en voer de volgende code in:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -111,11 +110,11 @@ namespace Functions.Tests
 
 De `ListLogger` de volgende leden van de klasse wordt geïmplementeerd als aangegaan door de `ILogger` interface:
 
-- **BeginScope**: Scopes toevoegen context aan uw registratie. In dit geval de test alleen wijst naar het statische exemplaar op de `NullScope` klasse waarmee de test om te functie.
+- **BeginScope**: Bereiken voegen context toe aan uw logboek registratie. In dit geval wijst de test alleen naar het statische exemplaar op de `NullScope` klasse om de test te laten functioneren.
 
-- **IsEnabled**: Een standaardwaarde van `false` wordt geleverd.
+- **IsEnabled**: Er wordt een standaard `false` waarde van gegeven.
 
-- **Logboek**: Deze methode maakt gebruik van de opgegeven `formatter` functie voor het opmaken van het bericht en vervolgens wordt de resulterende tekst die moet worden toegevoegd de `Logs` verzameling.
+- **Logboek**: Deze methode maakt gebruik van `formatter` de geleverde functie om het bericht op te maken en vervolgens de `Logs` resulterende tekst aan de verzameling toe te voegen.
 
 De `Logs` verzameling is een exemplaar van `List<string>` en in de constructor is geïnitialiseerd.
 
@@ -196,13 +195,13 @@ namespace Functions.Tests
 ```
 De `TestFactory` klasse implementeert de volgende leden:
 
-- **Gegevens**: Deze eigenschap retourneert een [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) verzameling voorbeeldgegevens. De sleutel-waardeparen vertegenwoordigen de waarden die in een queryreeks worden doorgegeven.
+- **Gegevens**: Deze eigenschap retourneert een [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) -verzameling van voorbeeld gegevens. De sleutel-waardeparen vertegenwoordigen de waarden die in een queryreeks worden doorgegeven.
 
-- **CreateDictionary**: Deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een nieuwe `Dictionary` gebruikt voor het maken `QueryCollection` querytekenreekswaarden vertegenwoordigt.
+- **CreateDictionary**: Deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een `Dictionary` nieuwe die wordt `QueryCollection` gebruikt om query teken reeks waarden weer te geven.
 
-- **CreateHttpRequest**: Deze methode maakt u een HTTP-aanvraag met de opgegeven queryreeksparameters geïnitialiseerd.
+- **CreateHttpRequest**: Met deze methode maakt u een HTTP-aanvraag die is geïnitialiseerd met de opgegeven query reeks parameters.
 
-- **CreateLogger**: Op basis van het type logger, retourneert deze methode een logger-klasse die wordt gebruikt voor het testen. De `ListLogger` houdt van geregistreerde berichten beschikbaar voor evaluatie in tests.
+- **CreateLogger**: Op basis van het logboek type retourneert deze methode een logger-klasse die wordt gebruikt voor het testen. De `ListLogger` houdt van geregistreerde berichten beschikbaar voor evaluatie in tests.
 
 Volgende **met de rechtermuisknop op** op de *Functions.Test* toepassing en selecteer **toevoegen > klasse**, geef deze de naam **FunctionsTests.cs** en voer de de volgende code:
 
@@ -247,13 +246,13 @@ namespace Functions.Tests
 ```
 De leden die zijn geïmplementeerd in deze klasse zijn:
 
-- **Http_trigger_should_return_known_string**: Deze test maakt een aanvraag met de query tekenreekswaarden van `name=Bill` naar een HTTP-functie en controleert of de verwachte reactie is geretourneerd.
+- **Http_trigger_should_return_known_string**: Met deze test wordt een aanvraag met de query teken reeks `name=Bill` waarden van naar een http-functie gemaakt en wordt gecontroleerd of de verwachte reactie wordt geretourneerd.
 
-- **Http_trigger_should_return_string_from_member_data**: Deze test gebruikt xUnit kenmerken voor voorbeeldgegevens voor de HTTP-functie.
+- **Http_trigger_should_return_string_from_member_data**: Deze test maakt gebruik van xUnit-kenmerken om voorbeeld gegevens aan de HTTP-functie toe te voegen.
 
-- **Timer_should_log_message**: Deze test maakt een exemplaar van `ListLogger` en geeft deze door een timer-functies. Nadat de functie wordt uitgevoerd, wordt het logboek gecontroleerd om te controleren of dat de verwachte bericht aanwezig is.
+- **Timer_should_log_message**: Met deze test wordt een exemplaar `ListLogger` van gemaakt en door gegeven aan een timer-functie. Nadat de functie wordt uitgevoerd, wordt het logboek gecontroleerd om te controleren of dat de verwachte bericht aanwezig is.
 
-Als u toegang wilt tot de toepassingsinstellingen in uw tests, kunt u [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Als u toegang wilt krijgen tot toepassings instellingen in uw tests, kunt u [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)gebruiken.
 
 ### <a name="run-tests"></a>Tests uitvoeren
 
@@ -377,6 +376,6 @@ Vervolgens stelt een onderbrekingspunt in uw test en druk op **F5**.
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu dat u hebt geleerd hoe u geautomatiseerde tests uit voor uw functies schrijft, kunt u doorgaan met deze resources:
-- [Handmatig uitvoeren van een niet HTTP-geactiveerde functie](./functions-manually-run-non-http.md)
+- [Een niet met HTTP geactiveerde functie hand matig uitvoeren](./functions-manually-run-non-http.md)
 - [Azure Functions-foutafhandeling](./functions-bindings-error-pages.md)
 - [Azure-functie Event Grid Trigger lokale foutopsporing](./functions-debug-event-grid-trigger-local.md)

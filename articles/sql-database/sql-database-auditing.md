@@ -7,20 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 04/16/2019
-ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 08/22/2019
+ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569513"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066041"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
-Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure Storage-account, OMS-werk ruimte of event hubs. Controleren is ook:
+Controle voor Azure [SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) houdt database gebeurtenissen bij en schrijft deze naar een audit logboek in uw Azure storage-account, Log Analytics werk ruimte of event hubs. Controleren is ook:
 
 - Helpt u bij het onderhouden van naleving van regelgeving, het begrijpen van database activiteiten en inzicht te krijgen in verschillen en afwijkingen die kunnen wijzen op problemen met het bedrijf of vermoedelijke beveiligings schendingen.
 
@@ -121,11 +121,22 @@ Als u ervoor hebt gekozen om audit logboeken naar Azure Monitor-logboeken te sch
 
 - Gebruik de [Azure Portal](https://portal.azure.com).  Open de relevante data base. Klik boven aan de **controle** pagina van de Data Base op **audit logboeken weer geven**.
 
-    ![audit logboeken weer geven](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+    ![audit logboeken weer geven](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- Klik vervolgens op **Open in OMS** boven aan de pagina **controle records** om de weer gave Logboeken in log Analytics te openen, waar u het tijds bereik en de zoek query kunt aanpassen.
+- Vervolgens hebt u twee manieren om de logboeken weer te geven:
+    
+    Als u op **log Analytics** boven aan de pagina **controle records** klikt, wordt de weer gave Logboeken in log Analytics werk ruimte geopend, waar u het tijds bereik en de zoek query kunt aanpassen.
+    
+    ![openen in Log Analytics werk ruimte](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    ![openen in Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    Als u op het **dash board weer geven** boven aan de pagina **controle records** klikt, wordt er een dash board geopend met informatie over de audit logboeken, waar u kunt inzoomen op beveiligings inzichten, toegang tot gevoelige gegevens en meer. Dit dash board is ontworpen om u te helpen bij het verkrijgen van beveiligings inzichten voor uw gegevens.
+    U kunt ook het tijds bereik en de zoek query aanpassen. 
+    ![Log Analytics dash board weer geven](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
+
+    ![Log Analytics dash board](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
+
+    ![Log Analytics Security Insights](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard-data.png)
+ 
 
 - U kunt ook toegang krijgen tot de audit logboeken vanuit Log Analytics Blade. Open uw Log Analytics-werk ruimte en klik onder **algemene** sectie op **Logboeken**. U kunt beginnen met een eenvoudige query, bijvoorbeeld: *Zoek naar SQLSecurityAuditEvents* om de audit logboeken weer te geven.
     Hier kunt u ook [Azure monitor](../log-analytics/log-analytics-log-search.md) -Logboeken gebruiken om geavanceerde zoek opdrachten uit te voeren in uw audit logboek gegevens. Met Azure Monitor-Logboeken kunt u in realtime operationeel inzicht krijgen met behulp van geïntegreerde Zoek-en aangepaste Dash boards waarmee u miljoenen records in al uw workloads en servers eenvoudig kunt analyseren. Zie voor aanvullende nuttige informatie over Azure Monitor Zoek taal en-opdrachten in Logboeken [Azure monitor logboeken zoeken](../log-analytics/log-analytics-log-search.md).
@@ -257,7 +268,7 @@ Uitgebreid beleid met de component WHERE ondersteuning voor extra filtering:
 - [*Uitgebreide* controle beleid voor data base ophalen](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [*Uitgebreid* controle beleid voor server ophalen](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>SQL database controle beheren met ARM-sjablonen
+## <a id="subheading-10"></a>SQL database controle beheren met behulp van Azure Resource Manager sjablonen
 
 U kunt Azure SQL database auditing beheren met behulp van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sjablonen, zoals in deze voor beelden wordt weer gegeven:
 

@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035786"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103095"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelfstudie: Een door SQL Database beheerd exemplaar toevoegen aan een failovergroep
 
@@ -40,13 +40,15 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 - Een Azure-abonnement, [een gratis account maken](https://azure.microsoft.com/free/) als u er nog geen hebt. 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1-resource groep en primair beheerd exemplaar maken
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1-resource groep en primair beheerd exemplaar maken
 In deze stap maakt u de resource groep en het primaire beheerde exemplaar voor uw failover-groep met behulp van de Azure Portal. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
-1. Kies ervoor om **een resource te maken** in de linkerbovenhoek van de Azure Portal. 
-1. Typ `managed instance` in het zoekvak en selecteer de optie voor Azure SQL Managed instance. 
-1. Selecteer **maken** om de pagina **SQL Managed instance** maken te starten. 
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door details weer geven te selecteren op de tegel data bases.
+1. Selecteer **maken** in de tegel **SQL Managed instances** . 
+
+    ![Beheerd exemplaar selecteren](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Op het tabblad **basis beginselen** op de pagina **Azure SQL database beheerde instantie maken**
     1. Selecteer uw **abonnement** in de vervolg keuzelijst onder **Project Details**en kies vervolgens nieuwe resource groep **maken** . Typ een naam voor de resource groep, zoals `myResourceGroup`. 
     1. Geef onder **Details van beheerd exemplaar**de naam op van uw beheerde exemplaar en de regio waar u uw beheerde exemplaar wilt implementeren. De **berekening en opslag** op standaard waarden behouden. 
@@ -98,8 +100,12 @@ Uw tweede beheerde exemplaar moet:
 
 Voer de volgende stappen uit om uw secundaire beheerde exemplaar te maken: 
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken** en zoek naar *Azure SQL Managed instance*. 
-1. Selecteer de optie voor **Azure SQL Managed instance** die door micro soft is gepubliceerd en selecteer vervolgens **maken** op de volgende pagina.
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door details weer geven te selecteren op de tegel data bases.
+1. Selecteer **maken** in de tegel **SQL Managed instances** . 
+
+    ![Beheerd exemplaar selecteren](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Vul de vereiste velden in op het tabblad **basis principes** van de pagina **Azure SQL database beheerde instantie maken** om uw secundaire beheerde exemplaar te configureren. 
 
    In de volgende tabel ziet u de waarden die nodig zijn voor het secundaire beheerde exemplaar:
@@ -209,9 +215,8 @@ Voer de volgende stappen uit om connectiviteit te configureren:
 ## <a name="7---create-a-failover-group"></a>7-een failovergroep maken
 In deze stap maakt u de failovergroep en voegt u beide beheerde exemplaren toe aan de groep. 
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar **alle services** `managed instance` en typ in het zoekvak. 
-1. Beschrijving Selecteer de ster naast **SQL Managed instances** om beheerde instanties toe te voegen als snelkoppeling naar de linkernavigatiebalk. 
-1. Selecteer **SQL Managed instances** en selecteer uw primaire beheerde instantie, `sql-mi-primary`zoals. 
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer de primaire beheerde instantie die u in de eerste sectie hebt gemaakt, `sql-mi-primary`zoals. 
 1. Ga onder **instellingen**naar **failover-groepen voor instanties** en kies vervolgens **groep toevoegen** om de pagina **failover-groep voor instanties** te openen. 
 
    ![Een failovergroep toevoegen](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)

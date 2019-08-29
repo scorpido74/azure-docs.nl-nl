@@ -1,6 +1,6 @@
 ---
-title: Diagnostische logboekregistratie inschakelen voor apps - Azure App Service
-description: Meer informatie over hoe u Diagnostische logboekregistratie inschakelen en instrumentatie kunt toevoegen aan uw toepassing, evenals hoe u toegang tot de gegevens die zijn vastgelegd door Azure.
+title: Diagnostische logboek registratie inschakelen voor apps-Azure App Service
+description: Lees hoe u diagnostische logboek registratie kunt inschakelen en instrumentatie kunt toevoegen aan uw toepassing, en hoe u toegang hebt tot de gegevens die zijn geregistreerd door Azure.
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -10,226 +10,225 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af6d8b61c5d49ae219e90513abb93185f957222e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059646"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074061"
 ---
-# <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboekregistratie inschakelen voor apps in Azure App Service
+# <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
-Azure bevat ingebouwde diagnosefuncties voor de ondersteuning bij foutopsporing in een [App Service-app](https://go.microsoft.com/fwlink/?LinkId=529714). In dit artikel leert u hoe u Diagnostische logboekregistratie inschakelen en instrumentatie kunt toevoegen aan uw toepassing, evenals hoe u toegang tot de gegevens die zijn vastgelegd door Azure.
+Azure biedt ingebouwde diagnostische gegevens om te helpen bij het opsporen van fouten in een [app service-app](https://go.microsoft.com/fwlink/?LinkId=529714). In dit artikel leert u hoe u diagnostische logboek registratie kunt inschakelen en instrumentatie kunt toevoegen aan uw toepassing, en hoe u toegang hebt tot de gegevens die zijn geregistreerd door Azure.
 
-In dit artikel wordt de [Azure-portal](https://portal.azure.com) en Azure CLI om te werken met diagnostische logboeken. Zie voor meer informatie over het werken met diagnostische logboeken met behulp van Visual Studio [probleemoplossing voor Azure in Visual Studio](troubleshoot-dotnet-visual-studio.md).
+In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.com) en Azure CLI voor het werken met Diagnostische logboeken. Zie [problemen met Azure in Visual Studio oplossen](troubleshoot-dotnet-visual-studio.md)voor meer informatie over het werken met Diagnostische logboeken met Visual Studio.
 
-## <a name="whatisdiag"></a>Web server diagnostics en application diagnostics
-App Service biedt diagnosefunctionaliteit voor waardevolle informatie uit de webserver en de web-App. Deze logisch zijn gescheiden in **web server diagnostische** en **toepassingsdiagnose**.
+## <a name="whatisdiag"></a>Diagnostische gegevens van webservers en Application Diagnostics
+App Service biedt diagnostische functionaliteit voor het vastleggen van logboek gegevens van zowel de webserver als de webtoepassing. Deze worden logisch gescheiden in **webserver diagnostiek** en **toepassings diagnoses**.
 
-### <a name="web-server-diagnostics"></a>Web server diagnostische gegevens
-U kunt inschakelen of uitschakelen van de volgende soorten logboeken:
+### <a name="web-server-diagnostics"></a>Diagnostische gegevens van webserver
+U kunt de volgende soorten logboeken in-of uitschakelen:
 
-* **Gedetailleerde fout logboekregistratie** -gedetailleerde informatie weer voor elke aanvraag die in HTTP-statuscode 400 of hoger resulteert. Deze kan informatie om te bepalen waarom de server heeft geretourneerd met de foutcode bevatten. Een HTML-bestand is gegenereerd voor elke fout in het bestandssysteem van de app, en tot wel 50 fouten (bestanden) worden bewaard. Wanneer het aantal HTML-bestanden groter zijn dan 50, wordt de oudste 26 bestanden worden automatisch verwijderd.
-* **Kan geen aanvraag tracering** -gedetailleerde informatie over mislukte aanvragen, met inbegrip van een tracering van de IIS-componenten gebruikt voor het verwerken van de aanvraag en de tijd die in elk onderdeel. Dit is handig als u wilt verbeteren de prestaties van de site of een specifieke HTTP-fout isoleren. Een map wordt gegenereerd voor elke fout in het bestandssysteem van de app. Beleid voor het bewaren van bestand zijn hetzelfde als de gedetailleerde fout bij het aanmelden hierboven.
-* **Web Server-logboekregistratie** -informatie over HTTP-transacties met behulp van de [uitgebreide W3C-logboekbestandsindeling](/windows/desktop/Http/w3c-logging). Dit is handig bij het bepalen van de algemene metrische sitegegevens, zoals het aantal aanvragen dat is verwerkt of het aantal aanvragen afkomstig zijn van een specifiek IP-adres.
+* **Gedetailleerde fout registratie** : gedetailleerde informatie voor elke aanvraag die resulteert in de HTTP-status code 400 of hoger. Het kan informatie bevatten die kan helpen om te bepalen waarom de server de fout code heeft geretourneerd. Er wordt één HTML-bestand voor elke fout gegenereerd in het bestands systeem van de app en er zijn Maxi maal 50 fouten (bestanden) behouden. Wanneer het aantal HTML-bestanden groter is dan 50, worden de oudste 26 bestanden automatisch verwijderd.
+* **Tracering van mislukte aanvragen** -gedetailleerde informatie over mislukte aanvragen, inclusief een tracering van de IIS-onderdelen die worden gebruikt om de aanvraag te verwerken en de tijd die in elk onderdeel is gemaakt. Het is handig als u de prestaties van de site wilt verbeteren of een specifieke HTTP-fout wilt isoleren. Er wordt één map gegenereerd voor elke fout in het bestands systeem van de app. Het Bewaar beleid voor bestanden is hetzelfde als de gedetailleerde fout logboek registratie hierboven.
+* **Logboek registratie** van webserver-informatie over http-trans acties met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Het is handig bij het bepalen van de algemene metrische site gegevens, zoals het aantal verwerkte aanvragen of hoeveel aanvragen van een specifiek IP-adres.
 
 ### <a name="application-diagnostics"></a>Application diagnostics
-Application diagnostics kunt u voor het vastleggen van gegevens die worden geproduceerd door een web-App. ASP.NET-toepassingen kunnen gebruikmaken van de [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) klasse om informatie te registreren in het toepassingslogboek van diagnostische gegevens. Bijvoorbeeld:
+Met Application Diagnostics kunt u gegevens vastleggen die zijn geproduceerd door een webtoepassing. ASP.NET-toepassingen kunnen de klasse [System. Diagnostics. trace](/dotnet/api/system.diagnostics.trace) gebruiken om informatie te registreren in het logboek voor toepassings diagnose. Bijvoorbeeld:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-Tijdens runtime, kunt u deze logboeken om te helpen bij het oplossen van problemen ophalen. Zie voor meer informatie, [het oplossen van Azure App Service in Visual Studio](troubleshoot-dotnet-visual-studio.md).
+Tijdens runtime kunt u deze logboeken ophalen om u te helpen bij het oplossen van problemen. Zie [problemen met Azure app service oplossen in Visual Studio](troubleshoot-dotnet-visual-studio.md)voor meer informatie.
 
-App Service registreert ook informatie over de implementatie wanneer u inhoud naar een app publiceren. Dit gebeurt automatisch en er zijn geen configuratieinstellingen voor de implementatie van logboekregistratie. Logboekregistratie van de implementatie kunt u om te bepalen waarom een implementatie is mislukt. Als u een aangepaste implementatiescript gebruikt, kunt u bijvoorbeeld implementatie logboekregistratie gebruiken om te bepalen waarom het script is mislukt.
+App Service registreert ook implementatie gegevens wanneer u inhoud naar een app publiceert. Dit gebeurt automatisch en er zijn geen configuratie-instellingen voor de registratie van implementaties. Met de implementatie registratie kunt u bepalen waarom een implementatie is mislukt. Als u bijvoorbeeld een aangepast implementatie script gebruikt, kunt u de implementatie logboek registratie gebruiken om te bepalen waarom het script mislukt.
 
 ## <a name="enablediag"></a>Diagnostische gegevens inschakelen
-Om in te schakelen van diagnostische gegevens in de [Azure-portal](https://portal.azure.com), gaat u naar de pagina voor uw app en klikt u op **instellingen > Logboeken met diagnostische gegevens**.
+Als u Diagnostische gegevens in de [Azure Portal](https://portal.azure.com)wilt inschakelen, gaat u naar de pagina voor uw app en klikt u op **Instellingen > Diagnostische logboeken**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
-![Logboeken-onderdeel](./media/web-sites-enable-diagnostic-log/logspart.png)
+![Maakt deel uit van Logboeken](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Als u activeert **toepassingsdiagnose**, u er ook voor kiezen de **niveau**. De volgende tabel bevat de categorieën van elk niveau omvat ook Logboeken:
+Wanneer u **Application Diagnostics**inschakelt, kiest u ook het **niveau**. In de volgende tabel ziet u de logboeken met elk niveau:
 
-| Niveau| Opgenomen logboekcategorieën |
+| Niveau| Opgenomen logboek Categorieën |
 |-|-|
 |**Uitgeschakeld** | Geen |
-|**Fout** | Kritieke fout |
+|**Optreedt** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
-|**Informatie** | Info, waarschuwing, fout, kritiek|
-|**uitgebreide** | Tracering, foutopsporing, Info, waarschuwing, fout, kritiek (alle categorieën) |
+|**Gegevens** | Info, waarschuwing, fout, kritiek|
+|**Uitgebreide** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |
 |-|-|
 
-Voor **toepassingslogboeken**, kunt u de optie voor het systeem van bestand tijdelijk voor foutopsporing inschakelen. Deze optie nu schakelt automatisch in 12 uur. U kunt ook inschakelen op de optie blob storage een blobcontainer om te schrijven Logboeken om te selecteren.
+Voor **toepassings logboeken**kunt u de optie Bestands systeem tijdelijk inschakelen voor fout opsporing. Deze optie wordt in 12 uur automatisch uitgeschakeld. U kunt ook de Blob-opslag optie inschakelen om een BLOB-container te selecteren waarnaar logboeken moeten worden geschreven.
 
 > [!NOTE]
-> Momenteel wordt alleen .NET-toepassingslogboeken kunnen worden geschreven naar de blob-opslag. Java, PHP, Node.js, Python toepassingslogboeken alleen kunnen worden opgeslagen op het bestandssysteem (zonder codewijzigingen om te schrijven logboeken naar de externe opslag).
+> Momenteel kunnen alleen .NET-toepassings logboeken worden geschreven naar de Blob-opslag. Java, PHP, node. js, python-toepassings logboeken kunnen alleen worden opgeslagen op het bestands systeem (zonder code wijzigingen voor het schrijven van logboeken naar externe opslag).
 >
 >
 
-Voor **webserverlogboeken**, kunt u **opslag** of **bestandssysteem**. Selecteren **opslag** kunt u een opslagaccount en een blob-container die de logboeken worden geschreven om te selecteren. 
+Voor **logboek registratie**van webserver kunt u **opslag** of **Bestands systeem**selecteren. Als u **opslag** selecteert, kunt u een opslag account selecteren en vervolgens een BLOB-container waarnaar de logboeken worden geschreven. 
 
-Als u Logboeken op het bestandssysteem opslaat, kunnen de bestanden worden geopend door de FTP of gedownload als een Zip-archief met behulp van Azure CLI.
+Als u Logboeken opslaat op het bestands systeem, kunnen de bestanden worden geopend door FTP of worden gedownload als een zip-archief met behulp van Azure CLI.
 
-Standaard logboeken worden niet automatisch verwijderd (met uitzondering van **toepassingslogboeken (bestandssysteem)** ). Als u wilt verwijderen automatisch logboeken, instellen de **bewaarperiode (dagen)** veld.
+Logboeken worden standaard niet automatisch verwijderd (met uitzonde ring van **toepassings Logboeken (bestands systeem)** ). Als u logboeken automatisch wilt verwijderen, stelt u het veld **Bewaar periode (dagen)** in.
 
 > [!NOTE]
-> Als u [opnieuw genereren van toegangssleutels voor uw opslagaccount](../storage/common/storage-create-storage-account.md), moet u de configuratie van de respectieve logboekregistratie voor het gebruik van de bijgewerkte sleutels opnieuw instellen. Om dit te doen:
+> Als u de [toegangs sleutels van uw opslag account opnieuw genereert](../storage/common/storage-create-storage-account.md), moet u de configuratie van de betreffende logboek registratie opnieuw instellen om de bijgewerkte sleutels te gebruiken. Om dit te doen:
 >
-> 1. In de **configureren** tabblad, stelt u de functie voor de respectieve logboekregistratie op **uit**. Sla de instelling.
-> 2. Logboekregistratie naar de blob storage-account opnieuw inschakelen. Sla de instelling.
+> 1. Stel op het tabblad **configureren** de respectieve logboek registratie functie in op **uit**. Sla de instelling op.
+> 2. Schakel logboek registratie voor de blob van het opslag account opnieuw in. Sla de instelling op.
 >
 >
 
-Een combinatie van file system- of blob storage kan worden ingeschakeld op hetzelfde moment en configuraties van het afzonderlijke log niveau hebben. U wilt bijvoorbeeld aanmelden fouten en waarschuwingen naar de blobopslag als een oplossing op lange termijn logboekregistratie, tijdens het inschakelen van logboekregistratie in systeem met een niveau van uitgebreide.
+Een combi natie van bestands systeem-of Blob-opslag kan tegelijkertijd worden ingeschakeld en er zijn afzonderlijke configuraties voor het logboek niveau. U kunt bijvoorbeeld fouten en waarschuwingen in Blob Storage registreren als een lange termijn oplossing voor logboek registratie, terwijl logboek registratie van het bestands systeem met een uitgebreid niveau wordt ingeschakeld.
 
-Hoewel beide opslaglocaties de dezelfde algemene informatie voor de vastgelegde gebeurtenissen bieden **blobopslag** registreert aanvullende informatie zoals de exemplaar-ID, thread-ID en een meer gedetailleerd tijdstempel (maatstreepjes-indeling) dan logboekregistratie naar **bestandssysteem**.
+Hoewel beide opslag locaties dezelfde basis informatie bieden voor geregistreerde gebeurtenissen, registreert **Blob Storage** extra informatie, zoals de exemplaar-id, de thread-id en een gedetailleerdere tijds tempel (maat streepjes) dan logboek registratie naar **Bestands systeem**.
 
 > [!NOTE]
-> Gegevens die zijn opgeslagen **blobopslag** kunnen alleen worden geopend met behulp van een storage-client of een toepassing die u rechtstreeks met deze systemen voor opslag werken kunt. Bijvoorbeeld, Visual Studio 2013 bevat een Opslagverkenner die kan worden gebruikt voor het verkennen van blob-opslag en HDInsight toegang tot de gegevens die zijn opgeslagen in blob-opslag. U kunt ook schrijven met een toepassing die toegang heeft tot Azure Storage met behulp van een van de [Azure-SDK's](https://azure.microsoft.com/downloads/).
+> Gegevens die zijn opgeslagen in **Blob Storage** , kunnen alleen worden geopend met een Storage-client of een toepassing die rechtstreeks kan worden gebruikt met deze opslag systemen. Visual Studio 2013 bevat bijvoorbeeld een Storage Explorer dat kan worden gebruikt om Blob-opslag te verkennen en HDInsight kan toegang krijgen tot gegevens die zijn opgeslagen in Blob Storage. U kunt ook een toepassing schrijven die toegang heeft tot Azure Storage met behulp van een van de [Azure sdk's](https://azure.microsoft.com/downloads/).
 >
 
-## <a name="download"></a> Procedures: Logboeken downloaden
-Diagnostische gegevens die zijn opgeslagen in het app-bestandssysteem zijn toegankelijk via FTP. Het kan ook worden gedownload als een Zip-archief met behulp van Azure CLI.
+## <a name="download"></a>Procedures: Logboeken downloaden
+Diagnostische gegevens die zijn opgeslagen in het app-bestands systeem, kunnen rechtstreeks worden geopend via FTP. Het kan ook worden gedownload als een zip-archief met behulp van Azure CLI.
 
-De mapstructuur die de logboeken worden opgeslagen in is als volgt:
+De mapstructuur waarin de logboeken worden opgeslagen, is als volgt:
 
-* **Toepassingslogboeken** -/LogFiles/toepassing /. Deze map bevat een of meer tekstbestanden met gegevens die worden geproduceerd door logboekregistratie van toepassingen.
-* **Kan geen aanvraag traceringen** -/ logboekbestanden/W3SVC ### /. Deze map bevat een XSL-bestand en een of meer XML-bestanden. Zorg ervoor dat u de XSL-bestand in dezelfde map downloaden als het XML-bestand bestand(en) omdat het XSL-bestand functionaliteit biedt voor het formatteren en filteren van de inhoud van de XML-bestanden wanneer deze wordt bekeken in Internet Explorer.
-* **Gedetailleerde foutenlogboeken** -/LogFiles/DetailedErrors /. Deze map bevat een of meer htm-bestanden met uitgebreide informatie voor HTTP-fouten die zich hebben voorgedaan.
-* **Web Server-logboeken** -/LogFiles/http/RawLogs. Deze map bevat een of meer tekstbestanden geformatteerd met het [uitgebreide W3C-logboekbestandsindeling](/windows/desktop/Http/w3c-logging).
-* **Implementatielogboeken** -/ logboekbestanden/Git. Deze map bevat de logboeken die worden gegenereerd door de interne implementatieprocessen die worden gebruikt door Azure App Service, evenals de logboeken voor Git-implementaties. U vindt hier ook Logboeken onder D:\home\site\deployments-implementatie.
+* **Toepassings logboeken** -/logfiles/Application/. Deze map bevat een of meer tekst bestanden met informatie die is gegenereerd door toepassings Logboeken.
+* **Mislukte aanvraag traceringen** -/logfiles/W3SVC # # # # # # # # #/. Deze map bevat een XSL-bestand en een of meer XML-bestanden. Zorg ervoor dat u het XSL-bestand in dezelfde map als de XML-bestanden downloadt, omdat het XSL-bestand functionaliteit biedt voor het opmaken en filteren van de inhoud van de XML-bestanden in Internet Explorer.
+* **Gedetailleerde fouten logboeken** -/logfiles/DetailedErrors/. Deze map bevat een of meer htm-bestanden die uitgebreide informatie geven over eventuele HTTP-fouten die zijn opgetreden.
+* **Webserver logboeken** -/logfiles/http/RawLogs. Deze map bevat een of meer tekst bestanden die zijn opgemaakt met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging).
+* **Implementatie logboeken** -/logfiles/git. Deze map bevat logboeken die worden gegenereerd door de interne implementatie processen die door Azure App Service worden gebruikt, evenals logboeken voor git-implementaties. U kunt ook de implementatie logboeken vinden onder D:\home\site\deployments.
 
 ### <a name="ftp"></a>FTP
 
-Zie het openen van een FTP-verbinding met de FTP-server van uw app [uw app implementeren in Azure App Service met behulp van FTP/S](deploy-ftp.md).
+Als u een FTP-verbinding met de FTP-server van uw app wilt openen, raadpleegt u [uw app implementeren op Azure app service met behulp van FTP/s](deploy-ftp.md).
 
-Eenmaal verbinding hebben met FTP/S-server van uw app, opent u de **logboekbestanden** map waar de logbestanden worden opgeslagen.
+Zodra u verbinding hebt gemaakt met de FTP/S-server van uw app, opent u de map LogFiles waarin de logboek bestanden worden opgeslagen.
 
-### <a name="download-with-azure-cli"></a>Met Azure CLI downloaden
-De logboekbestanden met behulp van de Azure-opdrachtregelinterface downloaden, opent u een nieuwe opdrachtprompt, PowerShell, Bash of Terminal-sessie en voer de volgende opdracht:
+### <a name="download-with-azure-cli"></a>Downloaden met Azure CLI
+Als u de logboek bestanden wilt downloaden met behulp van de Azure-opdracht regel interface, opent u een nieuwe opdracht prompt, Power shell, bash of terminal sessie en voert u de volgende opdracht in:
 
     az webapp log download --resource-group resourcegroupname --name appname
 
-Deze opdracht slaat u de logboeken voor de app met de naam 'appname' naar een bestand met de naam **webapp_logs.zip** in de huidige map.
+Met deze opdracht worden de logboeken voor de app met de naam ' appName ' opgeslagen in een bestand met de naam **webapp_logs. zip** in de huidige map.
 
 > [!NOTE]
-> Als u Azure CLI nog niet hebt geïnstalleerd, of nog niet hebt geconfigureerd voor het gebruik van uw Azure-abonnement, Zie [over het gebruik van Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Zie [Azure CLI gebruiken](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)als u Azure cli nog niet hebt geïnstalleerd of niet hebt geconfigureerd voor het gebruik van uw Azure-abonnement.
 >
 >
 
-## <a name="how-to-view-logs-in-application-insights"></a>Procedure: Logboeken weergeven in Application Insights
-Visual Studio Application Insights biedt hulpprogramma's voor het filteren en zoeken in Logboeken en voor de logboeken correleren met aanvragen en andere gebeurtenissen.
+## <a name="how-to-view-logs-in-application-insights"></a>Procedure: Logboeken in Application Insights weer geven
+Visual Studio Application Insights bevat hulpprogram ma's voor het filteren en zoeken van Logboeken en voor het correleren van de logboeken met aanvragen en andere gebeurtenissen.
 
-1. De Application Insights SDK toevoegen aan uw project in Visual Studio.
-   * Klik in Solution Explorer met de rechtermuisknop op uw project en kies Application Insights toevoegen. De interface leidt u door de stappen, waaronder het maken van een Application Insights-resource. [Meer informatie](../azure-monitor/app/asp-net.md)
-2. De Trace Listener-pakket toevoegen aan uw project.
-   * Met de rechtermuisknop op uw project en kies NuGet-pakketten beheren. Selecteer `Microsoft.ApplicationInsights.TraceListener` [meer informatie](../azure-monitor/app/asp-net-trace-logs.md)
-3. Uploaden van uw project en voer dit voor het genereren van logboekgegevens.
-4. In de [Azure-portal](https://portal.azure.com/), blader naar de nieuwe Application Insights-resource en open **zoeken**. U ziet uw logboekgegevens, samen met de aanvraag, gebruik en andere telemetrie. Telemetrie ontvangen van een paar minuten kan duren: klik op vernieuwen. [Meer informatie](../azure-monitor/app/diagnostic-search.md)
+1. Voeg de Application Insights SDK toe aan uw project in Visual Studio.
+   * Klik in Solution Explorer met de rechter muisknop op het project en kies Application Insights toevoegen. De interface begeleidt u stapsgewijs door de stappen voor het maken van een Application Insights bron. [Meer informatie](../azure-monitor/app/asp-net.md)
+2. Voeg het Trace listener-pakket toe aan uw project.
+   * Klik met de rechter muisknop op het project en kies NuGet-pakketten beheren. Selecteer `Microsoft.ApplicationInsights.TraceListener` meer [informatie](../azure-monitor/app/asp-net-trace-logs.md)
+3. Upload het project en voer het uit om logboek gegevens te genereren.
+4. Blader in het [Azure Portal](https://portal.azure.com/)naar uw nieuwe Application Insights resource en open **zoeken**. U moet uw logboek gegevens weer geven, samen met de aanvraag, het gebruik en andere telemetrie. Het kan enkele minuten duren om een telemetrie te ontvangen: Klik op vernieuwen. [Meer informatie](../azure-monitor/app/diagnostic-search.md)
 
-[Meer informatie over de prestaties bijhouden met Application Insights](../azure-monitor/app/azure-web-apps.md)
+[Meer informatie over het bijhouden van prestaties met Application Insights](../azure-monitor/app/azure-web-apps.md)
 
-## <a name="streamlogs"></a> Procedures: Logboeken streamen
-Tijdens het ontwikkelen van een toepassing, is het vaak nuttig om te zien van logboekgegevens in near-real-time. U kunt de logboekinformatie voor streamen naar uw ontwikkelomgeving met behulp van Azure CLI.
+## <a name="streamlogs"></a>Procedures: Logboeken streamen
+Tijdens het ontwikkelen van een toepassing is het vaak handig om logboek gegevens in vrijwel realtime weer te geven. U kunt logboek registratie gegevens streamen naar uw ontwikkel omgeving met behulp van Azure CLI.
 
 > [!NOTE]
-> Bepaalde typen logboekregistratie buffer schrijven naar het logboekbestand, dit in niet-geordende gebeurtenissen in de stroom resulteren kan. De logboekvermelding van een toepassing die wordt uitgevoerd wanneer een gebruiker een pagina bezoeken kan bijvoorbeeld worden weergegeven in de stroom voordat de bijbehorende HTTP-vermelding voor de pagina-aanvraag.
+> Sommige typen logboek registratie buffer schrijven naar het logboek bestand, wat kan leiden tot onbestelbare gebeurtenissen in de stroom. Een toepassings logboek vermelding die zich voordoet wanneer een gebruiker een pagina bezoekt, kan bijvoorbeeld worden weer gegeven in de stroom vóór de bijbehorende HTTP-logboek vermelding voor de pagina-aanvraag.
 >
 > [!NOTE]
-> Logboekstreaming ook streams voor gegevens die worden geschreven naar een tekstbestand die zijn opgeslagen in de **D:\\home\\logboekbestanden\\**  map.
+> Logboek streaming streamt ook gegevens die zijn geschreven naar een tekst bestand dat is opgeslagen in de map **\\D:\\ basismap\\** .
 >
 >
 
-### <a name="streaming-with-azure-cli"></a>Streaming met Azure CLI
-Om te streamen van logboekgegevens, opent u een nieuwe opdrachtprompt, PowerShell, Bash of Terminal-sessie en voer de volgende opdracht:
+### <a name="streaming-with-azure-cli"></a>Streamen met Azure CLI
+Als u logboek registratie gegevens wilt streamen, opent u een nieuwe opdracht prompt, Power shell, bash of terminal sessie en voert u de volgende opdracht in:
 
     az webapp log tail --name appname --resource-group myResourceGroup
 
-Met deze opdracht maakt verbinding met de app met de naam "appname" en beginnen met streamen van gegevens naar het venster zoals gebeurtenissen op de app plaatsvinden. Alle informatie geschreven naar hebben die eindigt op .txt, .log of htm-bestanden die zijn opgeslagen in de map /LogFiles (d:/home/logboekbestanden) worden gestreamd naar de lokale console.
+Met deze opdracht maakt u verbinding met de app met de naam appName en begint u met het streamen van gegevens naar het venster als er logboek gebeurtenissen in de app plaatsvinden. Alle informatie die wordt geschreven naar bestanden die eindigen op. txt,. log of. htm, die zijn opgeslagen in de/LogFiles-map (d:/Home/logfiles), wordt gestreamd naar de lokale console.
 
-Om te filteren op specifieke gebeurtenissen, zoals fouten, gebruikt u de **--Filter** parameter. Bijvoorbeeld:
+Als u specifieke gebeurtenissen, zoals fouten, wilt filteren, gebruikt u de para meter **--filter** . Bijvoorbeeld:
 
     az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 
-Om te filteren op specifieke logboek typen, zoals HTTP, gebruikt u de **--pad** parameter. Bijvoorbeeld:
+Als u specifieke logboek typen, zoals HTTP, wilt filteren, gebruikt u de para meter **--Path** . Bijvoorbeeld:
 
     az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Als u Azure CLI nog niet hebt geïnstalleerd, of nog niet hebt geconfigureerd voor het gebruik van uw Azure-abonnement, Zie [over het gebruik van Azure CLI](../cli-install-nodejs.md).
+> Zie [Azure CLI gebruiken](../cli-install-nodejs.md)als u Azure cli nog niet hebt geïnstalleerd of niet hebt geconfigureerd voor het gebruik van uw Azure-abonnement.
 >
 >
 
-## <a name="understandlogs"></a> Procedures: Diagnostische logboeken begrijpen
-### <a name="application-diagnostics-logs"></a>Application diagnostics-Logboeken
-Application diagnostics wordt informatie opgeslagen in een specifieke indeling voor .NET-toepassingen, afhankelijk van of het opslaan van logboeken naar de file system- of blob storage. 
+## <a name="understandlogs"></a>Procedures: Diagnose logboeken begrijpen
+### <a name="application-diagnostics-logs"></a>Application Diagnostics-logboeken
+Application Diagnostics slaat gegevens op in een specifieke indeling voor .NET-toepassingen, afhankelijk van het feit of u Logboeken opslaat in het bestands systeem of Blob-opslag. 
 
-De basisset met gegevens die zijn opgeslagen is hetzelfde voor beide opslagtypen: de datum en tijd is die de gebeurtenis heeft plaatsgevonden, wordt de proces-ID die de gebeurtenis, het gebeurtenistype (informatie, waarschuwing, fout) en het bericht van de gebeurtenis heeft geproduceerd. Met behulp van het bestandssysteem voor logboekopslag is handig wanneer u directe toegang tot het oplossen van een probleem omdat de logboekbestanden worden bijgewerkt in de buurt onmiddellijk nodig hebt. BLOB-opslag wordt gebruikt voor archiveringsdoeleinden omdat de bestanden worden opgeslagen in de cache en dat vervolgens in de opslagcontainer volgens een schema wordt leeggemaakt.
+De basisset van opgeslagen gegevens is hetzelfde voor beide opslag typen: de datum en tijd waarop de gebeurtenis is opgetreden, de proces-ID die de gebeurtenis heeft geproduceerd, het gebeurtenis type (informatie, waarschuwing, fout) en het gebeurtenis bericht. Het gebruik van het bestands systeem voor logboek opslag is handig wanneer u directe toegang nodig hebt om een probleem op te lossen, omdat de logboek bestanden dicht bij de hand worden bijgewerkt. Blob-opslag wordt gebruikt voor archiverings doeleinden, omdat de bestanden in de cache worden opgeslagen en vervolgens worden verwijderd naar de opslag container volgens een schema.
 
 **Bestandssysteem**
 
-Elke regel geregistreerd in het bestandssysteem of ontvangen met behulp van streaming is in de volgende indeling:
+Elke regel die is aangemeld bij het bestands systeem of die is ontvangen met streaming heeft de volgende indeling:
 
     {Date}  PID[{process ID}] {event type/level} {message}
 
-Bijvoorbeeld, wordt een foutgebeurtenis weergegeven die vergelijkbaar is met het volgende voorbeeld:
+Bijvoorbeeld, een fout gebeurtenis lijkt op het volgende voor beeld:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
-Logboekregistratie naar het bestandssysteem bevat de meest elementaire informatie van de drie beschikbare methoden, alleen de tijd, proces-ID, gebeurtenisniveau en bericht te leveren.
+Logboek registratie in het bestands systeem biedt de meest algemene informatie over de drie beschik bare methoden, waarbij alleen de tijd, proces-ID, gebeurtenis niveau en het bericht worden verstrekt.
 
 **Blob Storage**
 
-Tijdens de registratie van BLOB storage, kunnen gegevens worden opgeslagen in de indeling met door komma's gescheiden waarden (CSV). Aanvullende velden worden geregistreerd voor gedetailleerdere informatie over de gebeurtenis. De volgende eigenschappen worden gebruikt voor elke rij in de CSV:
+Bij het vastleggen van Blob-opslag worden gegevens opgeslagen in de indeling met door komma's gescheiden waarden (CSV). Aanvullende velden worden vastgelegd om meer gedetailleerde informatie over de gebeurtenis te bieden. De volgende eigenschappen worden gebruikt voor elke rij in het CSV-bestand:
 
-| Naam van eigenschap | Waarde-indeling |
+| Naam van eigenschap | Waarde/notatie |
 | --- | --- |
 | Date |De datum en tijd waarop de gebeurtenis heeft plaatsgevonden |
-| Niveau |Gebeurtenisniveau (bijvoorbeeld fout, waarschuwing, informatie) |
-| ApplicationName |Naam van de app |
-| InstanceId |Exemplaar van de app die de gebeurtenis heeft plaatsgevonden op |
-| EventTickCount |De datum en tijd waarop de gebeurtenis heeft plaatsgevonden, in de indeling van de maatstreepjes (grotere precisie) |
-| Gebeurtenis-id |De gebeurtenis-ID van deze gebeurtenis<p><p>Standaard ingesteld op 0 als er niets opgegeven |
-| PID |Proces-ID |
+| Niveau |Gebeurtenis niveau (bijvoorbeeld fout, waarschuwing, informatie) |
+| ApplicationName |De naam van de app |
+| InstanceId |Exemplaar van de app waarop de gebeurtenis heeft plaatsgevonden |
+| EventTickCount |De datum en tijd waarop de gebeurtenis heeft plaatsgevonden, in Tick-indeling (grotere precisie) |
+| Gebeurtenis-id |De gebeurtenis-ID van deze gebeurtenis<p><p>De standaard waarde is 0 als niets is opgegeven |
+| Pincode |Proces-id |
 | TID |De thread-ID van de thread die de gebeurtenis heeft geproduceerd |
-| Message |Details van gebeurtenisbericht |
+| Message |Gebeurtenis detail bericht |
 
-De gegevens die zijn opgeslagen in een blob wordt het volgende voorbeeld als volgt uitzien:
+De gegevens die zijn opgeslagen in een blob, zien er ongeveer uit zoals in het volgende voor beeld:
 
     date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> Voor ASP.NET Core, logboekregistratie wordt gerealiseerd met behulp van de [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) provider deze provider deposito's aanvullende in de blob-container logboekbestanden. Zie voor meer informatie, [ASP.NET Core logboekregistratie in Azure](/aspnet/core/fundamentals/logging).
+> Voor ASP.NET Core wordt logboek registratie voltooid met behulp van de [micro soft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) -provider. deze provider registreert extra logboek bestanden in de BLOB-container. Zie [ASP.net core logboek registratie in azure](/aspnet/core/fundamentals/logging)voor meer informatie.
 >
 >
 
-### <a name="failed-request-traces"></a>Traceringen van de aanvraag is mislukt
-Traceringen van mislukte aanvragen worden opgeslagen in de XML-bestanden met de naam **fr ### .xml**. Als u wilt maken het gemakkelijker om de geregistreerde gegevens weer te geven, een XSL-opmaakmodel met de naam **freb.xsl** is opgegeven in dezelfde map als de XML-bestanden. Als u een van de XML-bestanden in Internet Explorer openen, Internet Explorer het XSL-opmaakmodel gebruikt voor een opgemaakte weergave van de trace-informatie, zoals in het volgende voorbeeld:
+### <a name="failed-request-traces"></a>Traceringen van mislukte aanvragen
+Traceringen van mislukte aanvragen worden opgeslagen in XML-bestanden met de naam **fr # # # # #. XML**. Om het weer geven van de geregistreerde gegevens gemakkelijker te maken, wordt een XSL-opmaak model met de naam **freb. xsl** opgegeven in dezelfde map als de XML-bestanden. Als u een van de XML-bestanden in Internet Explorer opent, gebruikt Internet Explorer het XSL-opmaak model om een opgemaakte weer gave van de tracerings informatie te bieden, zoals in het volgende voor beeld:
 
-![mislukte aanvragen die worden weergegeven in de browser](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+![mislukte aanvraag weer gegeven in de browser](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
 > [!NOTE]
-> Er is een eenvoudige manier om de traceringen opgemaakte mislukte aanvragen weer te geven om te navigeren naar de pagina van uw app in de portal. Selecteer in het menu links **vaststellen en oplossen van problemen met**, zoek vervolgens naar **mislukt aanvragen traceerlogboeken**, klik vervolgens op het pictogram om te bladeren en de trace die u wilt weergeven.
+> Een eenvoudige manier om de opgemaakte traceringen van mislukte aanvragen weer te geven, is door te navigeren naar de pagina van de app in de portal. Selecteer in het linkermenu **problemen vaststellen en oplossen**, zoek naar Logboeken voor tracering van **mislukte aanvragen**en klik vervolgens op het pictogram om de gewenste tracering weer te geven.
 >
 
-### <a name="detailed-error-logs"></a>Logboeken met details
-Logboeken met details zijn HTML-documenten die bieden meer gedetailleerde informatie over HTTP-fouten die zijn opgetreden. Omdat ze gewoon HTML-documenten, kunnen ze worden weergegeven via een webbrowser.
+### <a name="detailed-error-logs"></a>Gedetailleerde fouten logboeken
+Gedetailleerde fout logboeken zijn HTML-documenten die meer gedetailleerde informatie geven over HTTP-fouten die zijn opgetreden. Aangezien ze alleen HTML-documenten zijn, kunnen ze worden weer gegeven met een webbrowser.
 
 ### <a name="web-server-logs"></a>Webserverlogboeken
-De web server-logboeken zijn geformatteerd met het [uitgebreide W3C-logboekbestandsindeling](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met behulp van een teksteditor of met behulp van hulpprogramma's zoals geparseerd [Logboekparser](https://go.microsoft.com/fwlink/?LinkId=246619).
+De webserver logboeken worden ingedeeld met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met behulp van een tekst editor of geparseerd met behulp van hulpprogram ma's zoals [log parser](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
-> De logboeken die worden geproduceerd door Azure App Service bieden geen ondersteuning voor de **s-computername**, **s-IP-** , of **cs-version** velden.
+> De logboeken die door Azure App Service worden geproduceerd, bieden geen ondersteuning voor de velden **s-ComputerName**, **s-IP**of **CS-version** .
 >
 >
 
 ## <a name="nextsteps"></a> Volgende stappen
 * [Azure App Service bewaken](web-sites-monitor.md)
-* [Oplossen van problemen met Azure App Service in Visual Studio](troubleshoot-dotnet-visual-studio.md)
+* [Problemen met Azure App Service oplossen in Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [App-Logboeken in HDInsight analyseren](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
