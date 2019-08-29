@@ -1,6 +1,6 @@
 ---
-title: SAP-implementatie MaxDB liveCache en Server voor webinhoud op Azure Virtual machines | Microsoft Docs
-description: SAP MaxDB liveCache en implementatie van de Server voor webinhoud op Azure
+title: Implementatie van SAP MaxDB, liveCache en Content Server op virtuele Azure-machines | Microsoft Docs
+description: Implementatie van SAP MaxDB, liveCache en Content Server op Azure
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -9,21 +9,20 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6824eae4d5fed2eceaf85b9a674f980815afb260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836031"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101372"
 ---
-# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB liveCache en implementatie van de Server voor webinhoud op Azure Virtual machines
+# <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Implementatie van SAP MaxDB, liveCache en Content Server op virtuele machines van Azure
 
 [767598]: https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -310,166 +309,166 @@ ms.locfileid: "60836031"
 
 
 
-In dit document bevat informatie over de verschillende onderdelen om te overwegen bij het implementeren van MaxDB liveCache en Server voor webinhoud in Azure IaaS. Als een voorwaarde in dit document hebt lees het document [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md) evenals andere handleidingen in de [SAP-workloads op Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+In dit document worden verschillende gebieden besproken waarmee u rekening moet houden bij het implementeren van MaxDB, liveCache en inhouds server in azure IaaS. Als een voor waarde voor dit document, moet u de document [overwegingen voor Azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)lezen. 
 
-## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Details voor de SAP-MaxDB-implementaties op Windows
-### <a name="sap-maxdb-version-support-on-azure"></a>SAP MaxDB versie-ondersteuning op Azure
-SAP biedt momenteel ondersteuning voor SAP MaxDB 7,9 of hoger voor gebruik met SAP NetWeaver gebaseerde producten in Azure. Alle updates voor SAP MaxDB-server of JDBC en ODBC-stuurprogramma's voor gebruik met SAP NetWeaver gebaseerde producten vindt u uitsluitend via SAP Service Marketplace op <https://support.sap.com/swdc>.
-Algemene informatie over het uitvoeren van SAP NetWeaver op SAP MaxDB kan worden gevonden op <https://www.sap.com/community/topic/maxdb.html>.
+## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Details voor de SAP MaxDB-implementaties in Windows
+### <a name="sap-maxdb-version-support-on-azure"></a>Ondersteuning voor SAP MaxDB-versie op Azure
+SAP ondersteunt momenteel SAP MaxDB-versie 7,9 of hoger voor gebruik met SAP NetWeaver-gebaseerde producten in Azure. Alle updates voor SAP MaxDB-server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP NetWeaver-gebaseerde producten, worden uitsluitend via de <https://support.sap.com/swdc>SAP-Service Marketplace op beschreven.
+Algemene informatie over het uitvoeren van SAP NetWeaver op SAP MaxDB vindt u <https://www.sap.com/community/topic/maxdb.html>op.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Ondersteunde versies van Microsoft Windows en virtuele Azure-machine-typen voor SAP MaxDB DBMS
-Als u de ondersteunde versie van Microsoft Windows voor SAP MaxDB DBMS in Azure, bezoekt u het:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Ondersteunde micro soft Windows-versies en Azure VM-typen voor SAP MaxDB DBMS
+Zie de volgende informatie om de ondersteunde micro soft Windows-versie voor SAP MaxDB DBMS op Azure te vinden:
 
-* [SAP-Product beschikbaarheid Matrix (PAM)][sap-pam]
-* SAP-notitie [1928533]
+* [SAP-product beschikbaarheids matrix (PAM)][sap-pam]
+* SAP-opmerking [1928533]
 
-Het is raadzaam om te gebruiken van de nieuwste versie van het besturingssysteem Microsoft Windows, Microsoft Windows 2016 is.
+Het is raadzaam om de nieuwste versie van het besturings systeem micro soft Windows te gebruiken. Dit is micro soft Windows 2016.
 
-### <a name="available-sap-maxdb-documentation-for-maxdb"></a>Beschikbare SAP MaxDB documentatie voor MaxDB
-U kunt de bijgewerkte lijst van SAP MaxDB documentatie vinden in de volgende SAP-notitie [767598]
+### <a name="available-sap-maxdb-documentation-for-maxdb"></a>Beschik bare SAP MaxDB-documentatie voor MaxDB
+U kunt de bijgewerkte lijst met SAP MaxDB-documentatie vinden in de volgende SAP-notitie [767598]
 
-### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Richtlijnen voor SAP MaxDB voor SAP-installaties in Azure VM 's
-#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Opslagconfiguratie
-Aanbevolen procedures van de Azure-opslag voor SAP MaxDB gaat u als volgt de algemene aanbevelingen die worden vermeld in het hoofdstuk [opslagstructuur van een virtuele machine voor RDBMS implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
+### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-configuratie richtlijnen voor SAP-installaties in azure-Vm's
+#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Opslag configuratie
+Aanbevolen procedures voor Azure Storage voor SAP MaxDB Volg de algemene aanbevelingen die worden vermeld in de hoofd stuk [opslag structuur van een virtuele machine voor RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)-implementaties.
 
 > [!IMPORTANT]
-> Net als andere databases heeft SAP MaxDB ook gegevens en logboekbestanden. De juiste term is echter in de SAP-MaxDB terminologie "volume" (niet ' file'). Er zijn bijvoorbeeld SAP MaxDB hoeveelheden gegevens en logboekvolumes. Verwar deze OS schijfvolumes niet. 
+> Net als andere data bases bevat SAP MaxDB ook gegevens en logboek bestanden. In SAP MaxDB is de juiste term echter "volume" (niet "bestand"). Er zijn bijvoorbeeld SAP MaxDB-gegevens volumes en logboek volumes. Verwar deze niet met besturingssysteem schijf volumes. 
 > 
 > 
 
-Kort gezegd hebt tot:
+Kortom, u hebt het volgende nodig:
 
-* Als u Azure Storage-accounts gebruiken, stelt u de Azure-opslagaccount waarin de SAP-MaxDB gegevens en logboekvolumes (gegevens en logboekbestanden bestanden) op **lokaal redundante opslag (LRS)** zoals opgegeven in [overwegingen voor het virtueel Azure- Implementatie voor de werkbelasting van SAP DBMS machines](dbms_guide_general.md).
-* De i/o-pad voor SAP MaxDB gegevensvolumes (gegevensbestanden) te scheiden van de i/o-pad voor logboekvolumes (zoals logboekbestanden). Betekent dit dat SAP MaxDB gegevensvolumes (gegevensbestanden) moeten worden geïnstalleerd op één logisch station en SAP MaxDB logboekvolumes (zoals logboekbestanden) moeten worden geïnstalleerd op een andere logische schijf.
-* Stel de juiste cachingtype voor elke schijf, afhankelijk van of u deze gebruiken voor SAP MaxDB gegevensbestand of logboekbestand volumes (gegevens en logboekbestanden bestanden) en of u Azure Standard- of Azure Premium Storage gebruiken zoals wordt beschreven in [overwegingen voor Azure Virtual Machines DBMS implementatie voor de werkbelasting van SAP](dbms_guide_general.md).
-* Als het huidige quotum IOP's per schijf aan de vereisten voldoet, is het mogelijk voor het opslaan van de gegevensvolumes op één gekoppelde schijf en ook alle logboekvolumes voor database opslaan op een andere één gekoppelde schijf.
-* Als meer IOPS en/of ruimte vereist zijn, is het aanbevolen Microsoft-venster opslaggroepen (alleen beschikbaar in Microsoft Windows Server 2012 en hoger) gebruiken om te maken van een grote logisch apparaat via meerdere gekoppelde schijven. Zie voor meer informatie ook [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md). Deze aanpak vereenvoudigt het beheer-overhead voor het beheren van de schijfruimte en vermijdt u de moeite van het bestanden handmatig te verdelen over meerdere gekoppelde schijven.
-* het is raadzaam Azure Premium Storage gebruiken voor MaxDB implementaties. 
+* Als u Azure Storage accounts gebruikt, stelt u het Azure-opslag account in met de SAP MaxDB-gegevens en-logboek volumes (gegevens en logboek bestanden) naar **lokale redundante opslag (LRS)** zoals opgegeven in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP workload](dbms_guide_general.md).
+* Scheid het IO-pad voor SAP MaxDB-gegevens volumes (gegevens bestanden) van het i/o-pad voor logboek volumes (logboek bestanden). Dit betekent dat SAP MaxDB-gegevens volumes (gegevens bestanden) op één logisch station moeten worden geïnstalleerd en dat logboek volumes van SAP MaxDB (logboek bestanden) moeten worden geïnstalleerd op een andere logische schijf.
+* Stel het juiste cache type voor elke schijf in, afhankelijk van of u dit gebruikt voor SAP MaxDB-gegevens of-logboek volumes (gegevens-en logboek bestanden) en of u Azure Standard of Azure Premium Storage gebruikt, zoals beschreven in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md).
+* Zolang het huidige quotum voor IOPS per schijf voldoet aan de vereisten, is het mogelijk om alle gegevens volumes op één gekoppelde schijf op te slaan en alle database logboek volumes op een andere, enkele gekoppelde schijf op te slaan.
+* Als meer IOPS en/of ruimte vereist zijn, is het raadzaam micro soft Window-opslag groepen (alleen beschikbaar in micro soft Windows Server 2012 en hoger) te gebruiken om één groot logisch apparaat te maken voor meerdere gekoppelde schijven. Zie ook [aandachtspunten voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md)voor meer informatie. Deze aanpak vereenvoudigt de beheer overhead voor het beheren van de schijf ruimte en voor komt het hand matig distribueren van bestanden over meerdere gekoppelde schijven.
+* het is raadzaam Azure Premium Storage te gebruiken voor MaxDB-implementaties. 
 
-![Naslaginformatie over configuratie van Azure IaaS-VM voor SAP MaxDB DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
+![Referentie configuratie van Azure IaaS VM voor SAP MaxDB DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Back-up en herstel
-Wanneer u SAP MaxDB implementeert in Azure, moet u uw back-upmethode bekijken. Zelfs als het systeem niet een productieve systeem is, moet de SAP-database die wordt gehost door SAP MaxDB worden back-ups regelmatig. Omdat Azure Storage kan drie afbeeldingen voldoen, is nu een back-up minder belangrijke wat betreft het beveiligen van uw systeem op basis van de fout bij de opslag en de belangrijkste administratieve of operationele fouten. De belangrijkste reden voor het onderhouden van een goede back-up en herstellen-plan is zodat u logische of handmatige fouten compenseren kunt door recovery point-in-time-mogelijkheden te bieden. Zodat het doel is om de back-ups gebruiken voor de database herstellen naar een bepaald punt in tijd of het gebruik van de back-ups in Azure als seeding voor een ander systeem door het kopiëren van de bestaande database. 
+#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Back-ups maken en herstellen
+Wanneer u SAP MaxDB in azure implementeert, moet u uw back-upmethodologie controleren. Zelfs als het systeem geen productief systeem is, moet u regel matig een back-up maken van de SAP-data base die wordt gehost door SAP MaxDB. Omdat Azure Storage drie installatie kopieën houdt, is een back-up nu minder belang rijk voor de bescherming van uw systeem tegen opslag storingen en belang rijke operationele of administratieve storingen. De belangrijkste reden voor het onderhouden van een juiste back-up-en herstel planning is dat u logische of hand matige fouten kunt compenseren door herstel mogelijkheden op basis van een bepaald tijdstip te bieden. Het doel is dus om back-ups te maken om de data base te herstellen naar een bepaald tijdstip of om de back-ups in azure te gebruiken voor het seeden van een ander systeem door de bestaande Data Base te kopiëren. 
 
-Back-up en herstellen van een database in Azure werkt op dezelfde manier als voor on-premises systemen, zodat u kunt standaardprogramma SAP MaxDB back-up/herstel's, die worden beschreven in een van de SAP-MaxDB documentatie over documenten die worden vermeld in de SAP-notitie [767598]. 
+Het maken van een back-up en het herstellen van een data base in azure werkt op dezelfde manier als voor on-premises systemen, zodat u Standard SAP MaxDB-hulpprogram ma's voor back-up/herstel kunt gebruiken, die worden beschreven in een van de SAP MaxDB-documentatie documenten die worden vermeld in SAP Note [767598]. 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Prestatie-overwegingen voor back-up en herstel
-Zoals in de bare-metal implementaties zijn de prestaties van back-up en herstel afhankelijk van hoeveel volumes kunnen worden gelezen in parallelle instructies en de doorvoer van deze volumes. Daarom kan een aannemen:
+#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Prestatie overwegingen voor back-up en herstel
+Net als bij bare-metal implementaties zijn de prestaties van back-up en herstel afhankelijk van het aantal volumes dat parallel kan worden gelezen en de door Voer van die volumes. Daarom kan een ervan uitgaan:
 
-* Minder het nummer van de schijven die worden gebruikt voor het opslaan van de database-apparaten, des te lager de algemene lezen doorvoer
-* De back-up om naar te schrijven, des te lager de doorvoer het minder doelen (Stripe mappen, schijven)
+* Hoe minder schijven er worden gebruikt om de database apparaten op te slaan, hoe lager de algemene Lees doorvoer
+* Hoe minder doelen (Stripe-Directory's, schijven) om de back-up naar te schrijven, hoe lager de door Voer
 
-Als u wilt het aantal doelen te schrijven naar verhogen, zijn er twee opties die u, mogelijk in combinatie, afhankelijk van uw behoeften gebruiken kunt:
+Als u het aantal doelen wilt verg Roten om naar te schrijven, zijn er twee opties die u kunt gebruiken, eventueel in combi natie, afhankelijk van uw behoeften:
 
-* Afzonderlijke volumes uitsluitend voor back-up
-* Het volume back-updoel striping over meerdere gekoppelde schijven om te verbeteren van de doorvoer IOP's op het desbetreffende schijfvolume striped
-* Apparaten van afzonderlijke toegewezen logische schijf voor problemen:
-  * SAP-MaxDB back-upvolumes (dat wil zeggen-bestanden)
-  * SAP-gegevensvolumes MaxDB (dat wil zeggen-bestanden)
-  * SAP-MaxDB logboekvolumes (dat wil zeggen-bestanden)
+* Afzonderlijke volumes voor back-up reserveren
+* Het back-updoel volume over meerdere gekoppelde schijven verwijderen om de IOPS-door Voer op het gestripte schijf volume te verbeteren
+* Met afzonderlijke toegewezen logische schijf apparaten voor:
+  * SAP MaxDB-back-upvolumes (bestanden)
+  * SAP MaxDB-gegevens volumes (bijvoorbeeld bestanden)
+  * SAP MaxDB-logboek volumes (bijvoorbeeld bestanden)
 
-Een volume striping over meerdere gekoppelde schijven is beschreven in eerder [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md). 
+Het verwijderen van een volume over meerdere gekoppelde schijven is eerder besproken in [overwegingen bij de implementatie van Azure virtual machines DBMS voor SAP-workloads](dbms_guide_general.md). 
 
 #### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Andere overwegingen
-Alle andere algemene gebieden, zoals Azure-Beschikbaarheidssets of SAP controle zijn ook van toepassing zoals beschreven in [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md).  voor implementaties van virtuele machines met de SAP-MaxDB-database.
-Andere SAP MaxDB-specifieke instellingen zijn transparant voor de Azure-VM's en worden beschreven in verschillende documenten die worden vermeld in de SAP-notitie [767598] en deze SAP-opmerkingen:
+Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking, zijn ook van toepassing zoals beschreven in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md).  voor implementaties van Vm's met de SAP MaxDB-data base.
+Andere SAP MaxDB-specifieke instellingen zijn transparant voor virtuele Azure-machines en worden beschreven in verschillende documenten die worden vermeld in SAP Note [767598] en in deze SAP-opmerkingen:
 
 * [826037] 
 * [1139904]
 * [1173395]
 
-## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>Details voor SAP liveCache implementaties op Windows
-### <a name="sap-livecache-version-support"></a>SAP liveCache versie-ondersteuning
-Minimale versie van SAP-liveCache ondersteund in Azure Virtual Machines is **SAP LC/LCAPPS 10.0 SP 25** inclusief **liveCache 7.9.08.31** en **LCA-Build 25**, vrijgegeven voor **EhP 2 voor SAP SCM 7.0** en latere versies.
+## <a name="specifics-for-sap-livecache-deployments-on-windows"></a>Details voor SAP liveCache-implementaties in Windows
+### <a name="sap-livecache-version-support"></a>Ondersteuning voor SAP liveCache-versie
+Minimale versie van SAP liveCache die wordt ondersteund in azure Virtual Machines is **SAP LC/LCAPPS 10,0 SP 25** inclusief **LiveCache 7.9.08.31** en **LCA-Build 25**, uitgebracht voor **EhP 2 voor SAP SCM 7,0** en latere releases.
 
-### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Microsoft Windows-versies en Azure-VM-typen voor liveCache SAP DBMS-systemen ondersteund
-Als u de ondersteunde versie van Microsoft Windows voor liveCache SAP op Azure, bezoekt u het:
+### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-livecache-dbms"></a>Ondersteunde micro soft Windows-versies en Azure VM-typen voor SAP liveCache DBMS
+Zie voor informatie over de ondersteunde micro soft Windows-versie voor SAP liveCache op Azure:
 
-* [SAP-Product beschikbaarheid Matrix (PAM)][sap-pam]
-* SAP-notitie [1928533]
+* [SAP-product beschikbaarheids matrix (PAM)][sap-pam]
+* SAP-opmerking [1928533]
 
-Het is raadzaam de nieuwste versie van het besturingssysteem Microsoft Windows Server gebruiken. 
+Het is raadzaam om de nieuwste versie van het besturings systeem micro soft Windows Server te gebruiken. 
 
-### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP liveCache de richtlijnen voor SAP-installaties in Azure VM 's
-#### <a name="recommended-azure-vm-types-for-livecache"></a>Aanbevolen Azure-VM-typen voor liveCache
-Heeft een grote invloed hebben op de prestaties van SAP-liveCache zoals SAP liveCache is een toepassing die enorme berekeningen uitvoert, de hoeveelheid en de snelheid van het RAM-geheugen en CPU. 
+### <a name="sap-livecache-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP liveCache-configuratie richtlijnen voor SAP-installaties in azure-Vm's
+#### <a name="recommended-azure-vm-types-for-livecache"></a>Aanbevolen Azure VM-typen voor liveCache
+Als SAP-liveCache is een toepassing die enorme berekeningen uitvoert, zijn de hoeveelheid en snelheid van RAM en CPU een grote invloed op de prestaties van SAP liveCache. 
 
-Voor de virtuele machine van Azure die worden ondersteund door SAP (SAP-notitie [1928533]), alle virtuele CPU-resources toegewezen aan de virtuele machine worden ondersteund door specifieke fysieke CPU-resources van de hypervisor. Er is geen overmatige inrichting (en dus geen concurrentie voor CPU-resources) plaatsvindt.
+Voor de Azure VM-typen die worden ondersteund door SAP (SAP Note [1928533]), worden alle virtuele CPU-resources die aan de virtuele machine zijn toegewezen, ondersteund door toegewezen fysieke CPU-resources van de Hyper Visor. Er vindt geen overbelasting plaats (en daarom is er geen competitie voor CPU-Resources).
 
-Op dezelfde manier voor alle Azure-VM-exemplaar die worden ondersteund door SAP, is het geheugen van de virtuele machine 100% is toegewezen aan het fysieke geheugen - overprovisioning (te veel toezegging), bijvoorbeeld wordt niet gebruikt.
+Op dezelfde manier wordt voor alle typen Azure-VM-exemplaren die worden ondersteund door SAP, het geheugen van de virtuele machine 100% toegewezen aan de fysieke geheugen-overinrichting (meer dan vastleg ging), bijvoorbeeld niet.
 
-Van dit perspectief, is het raadzaam om de meest recente Dv2, Dv3, Ev3 en M-serie VM's te gebruiken. De keuze van de verschillende VM-typen, is afhankelijk van het geheugen die u nodig hebt voor liveCache en de CPU-resources die u nodig hebt. Als met alle andere implementaties van DBMS wordt u aangeraden gebruikmaken van Azure Premium Storage voor prestaties van essentiële volumes.
+Vanuit dit perspectief wordt het ten zeerste aanbevolen om de meest recente Vm's voor dv2, Dv3, Ev3 en M-Series te gebruiken. De keuze van de verschillende VM-typen is afhankelijk van het geheugen dat u nodig hebt voor liveCache en de CPU-bronnen die u nodig hebt. Net als bij alle andere DBMS-implementaties is het raadzaam Azure Premium Storage te gebruiken voor essentiële volumes van de prestaties.
 
-#### <a name="storage-configuration-for-livecache-in-azure"></a>De opslagconfiguratie voor liveCache in Azure
-Alle de Azure storage aanbevolen werkwijzen besproken voor SAP-MaxDB die worden beschreven in dit document vermeld, zijn ook geldig voor SAP liveCache zoals SAP liveCache is gebaseerd op SAP MaxDB technologie. 
+#### <a name="storage-configuration-for-livecache-in-azure"></a>Opslag configuratie voor liveCache in azure
+Als SAP liveCache is gebaseerd op de SAP MaxDB-technologie, zijn alle Azure Storage-best practice aanbevelingen die in dit document worden genoemd, ook geldig voor SAP liveCache. 
 
-#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>Speciale Azure-VM voor liveCache scenario
-Omdat SAP liveCache intensief gebruikmaakt van verwerkingskracht, voor productief gebruik is het raadzaam om te implementeren op een specifieke Azure-Machine. 
+#### <a name="dedicated-azure-vm-for-livecache-scenario"></a>Specifieke Azure VM voor liveCache-scenario
+Als SAP liveCache intensief gebruikmaakt van reken kracht, is het raadzaam om te implementeren op een specifieke virtuele machine van Azure. 
 
-![Virtuele Azure-machine voor liveCache voor productieve use-case toegewezen](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
+![Exclusieve Azure VM voor liveCache voor productief gebruik](./media/dbms_maxdb_deployment_guide/700-livecach-prod.PNG)
 
 
-#### <a name="backup-and-restore-for-livecache-in-azure"></a>Back-up en herstel voor liveCache in Azure
-back-up en herstel, met inbegrip van prestatie-overwegingen, worden al in de desbetreffende SAP MaxDB hoofdstukken in dit document beschreven. 
+#### <a name="backup-and-restore-for-livecache-in-azure"></a>Back-ups maken en herstellen voor liveCache in azure
+back-ups maken en herstellen, met inbegrip van prestatie overwegingen, worden in de relevante SAP MaxDB-hoofd stukken in dit document al beschreven. 
 
 #### <a name="other-considerations"></a>Andere overwegingen
-Alle andere algemene gebieden worden al in het desbetreffende SAP MaxDB hoofdstuk beschreven. 
+Alle andere algemene gebieden worden al beschreven in het relevante SAP MaxDB-hoofd stuk. 
 
-## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Gegevens voor de implementatie van de SAP-Server voor webinhoud op Windows in Azure
-De Server van de SAP-inhoud is een afzonderlijke, server-gebaseerde onderdeel voor het opslaan van inhoud, zoals elektronische documenten in verschillende indelingen. De SAP-Server voor webinhoud wordt geleverd door het gebied van technologie en moet worden gebruikt verschillende toepassingen voor SAP-toepassingen. Deze is geïnstalleerd op een afzonderlijk systeem. Typische inhoud is trainingsmateriaal en documentatie van kennis datawarehouse of technische tekeningen die afkomstig zijn van de mySAP PLM Document Management-systeem. 
+## <a name="specifics-for-the-sap-content-server-deployment-on-windows-in-azure"></a>Details voor de implementatie van de SAP-inhouds server in Windows in azure
+De SAP-inhouds server is een afzonderlijk op server gebaseerd onderdeel voor het opslaan van inhoud zoals elektronische documenten in verschillende indelingen. De SAP-inhouds server wordt ontwikkeld door ontwikkeling van technologie en moet worden gebruikt voor elke SAP-toepassing. Deze wordt geïnstalleerd op een afzonderlijk systeem. Typische inhoud is trainings materiaal en documentatie van kennis magazijn of technische tekeningen afkomstig van het mySAP PLM-document beheersysteem. 
 
-### <a name="sap-content-server-version-support-for-azure-vms"></a>Ondersteuning voor versie van SAP-Server voor webinhoud voor Azure VM 's
-SAP op dit moment ondersteunt:
+### <a name="sap-content-server-version-support-for-azure-vms"></a>Versie ondersteuning voor SAP-inhouds server voor Azure-Vm's
+SAP ondersteunt momenteel:
 
-* **SAP-Server voor webinhoud** met versie **6.50 (en hoger)**
-* **SAP MaxDB versie 7,9**
-* **Microsoft IIS (Internet Information Server) versie 8.0 (en hoger)**
+* **SAP-inhouds server** met versie **6,50 (en hoger)**
+* **SAP MaxDB-versie 7,9**
+* **Micro soft IIS (Internet Information Server) versie 8,0 (en hoger)**
 
-Het is raadzaam het gebruik van de nieuwste versie van SAP-Server voor webinhoud en de nieuwste versie van **Microsoft IIS**. 
+Het is raadzaam om de nieuwste versie van de SAP-inhouds server en de nieuwste versie van **micro soft IIS**te gebruiken. 
 
-Controleer de nieuwste ondersteunde versies van de inhoudsserver SAP en Microsoft IIS in de [SAP Product beschikbaarheid Matrix (PAM)][sap-pam].
+Controleer de meest recente ondersteunde versies van SAP-inhouds server en micro soft IIS in de [SAP-product beschikbaarheids matrix (PAM)][sap-pam].
 
-### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Microsoft Windows en virtuele Azure-machine-typen ondersteund voor SAP-Server voor webinhoud
-Ondersteunde Windows-versie voor de Server voor webinhoud SAP op Azure, Zie:
+### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>Ondersteunde typen micro soft Windows-en Azure VM voor SAP-inhouds server
+Zie voor meer informatie over de ondersteunde Windows-versie voor SAP-inhouds server op Azure:
 
-* [SAP-Product beschikbaarheid Matrix (PAM)][sap-pam]
-* SAP-notitie [1928533]
+* [SAP-product beschikbaarheids matrix (PAM)][sap-pam]
+* SAP-opmerking [1928533]
 
-Het is raadzaam de nieuwste versie van Microsoft Windows Server gebruiken.
+Het is raadzaam om de nieuwste versie van micro soft Windows Server te gebruiken.
 
-### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Richtlijnen voor Content Server SAP voor SAP-installaties in Azure VM 's
-#### <a name="storage-configuration-for-content-server-in-azure"></a>De opslagconfiguratie voor de Server voor webinhoud in Azure
-Als u inhoud SAP-Server voor het opslaan van bestanden in de database SAP MaxDB configureert, zijn alle Azure storage aanbevolen procedures voor aanbevelingen voor SAP MaxDB vermeld in dit document ook geldig voor de SAP-Server voor webinhoud-scenario. 
+### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Richt lijnen voor de configuratie van SAP-inhouds servers voor SAP-installaties in azure-Vm's
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Opslag configuratie voor de inhouds server in azure
+Als u SAP-inhouds server configureert om bestanden op te slaan in de SAP MaxDB-data base, zijn alle aanbevelingen voor de aanbevolen procedures voor Azure Storage voor SAP MaxDB in dit document ook geldig voor het SAP-inhouds Server scenario. 
 
-Als u inhoud SAP-Server voor het opslaan van bestanden in het bestandssysteem is geconfigureerd, wordt het aanbevolen een specifieke logische station wilt gebruiken. Windows Storage Spaces, kunt u zodat ook de grootte van de logische schijf en doorvoer, IOP's, zoals beschreven in [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md). 
+Als u de SAP-inhouds server configureert voor het opslaan van bestanden in het bestands systeem, wordt u aangeraden een specifiek logisch station te gebruiken. Met Windows-opslag ruimten kunt u ook de grootte van de logische schijf en IOPS-door Voer verhogen, zoals beschreven in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md). 
 
-#### <a name="sap-content-server-location"></a>Locatie van de SAP-Server voor webinhoud
-SAP-inhoudsserver moet worden geïmplementeerd in dezelfde Azure-regio en Azure VNET waar het SAP-systeem wordt geïmplementeerd. U staat op vrije om te bepalen of u wilt implementeren de inhoudsserver SAP-onderdelen op een specifieke virtuele machine van Azure of op dezelfde virtuele machine waarop het SAP-systeem wordt uitgevoerd. 
+#### <a name="sap-content-server-location"></a>Locatie van SAP-inhouds server
+SAP-inhouds server moet worden geïmplementeerd in dezelfde Azure-regio en Azure VNET waar het SAP-systeem wordt geïmplementeerd. U kunt beslissen of u onderdelen van de SAP-inhouds server wilt implementeren op een specifieke virtuele machine van Azure of op dezelfde VM waarop het SAP-systeem wordt uitgevoerd. 
 
-![Toegewezen virtuele machines van Azure voor SAP-Server voor webinhoud](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
+![Exclusieve Azure-VM voor SAP-inhouds server](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
 
 
-#### <a name="sap-cache-server-location"></a>SAP-Server cachelocatie
-De cacheserver SAP is een extra onderdeel op de server voor toegang tot documenten lokaal (in het cachegeheugen). De cacheserver SAP slaat de documenten van een SAP-Server voor webinhoud. Dit is het optimaliseren van het netwerkverkeer als documenten hebben meer dan één keer worden opgehaald van de verschillende locaties. De regel is dat de cacheserver SAP worden fysiek dicht bij de client die toegang heeft tot de cacheserver SAP. 
+#### <a name="sap-cache-server-location"></a>Locatie van SAP-cache server
+De SAP-cache server is een aanvullend Server onderdeel voor het lokaal openen van documenten (in de cache). De SAP-cache server slaat de documenten van een SAP-inhouds server op in de cache. Dit is om netwerk verkeer te optimaliseren als documenten meer dan één keer van verschillende locaties moeten worden opgehaald. De algemene regel is dat de SAP-cache server fysiek moet worden afgesloten met de client die toegang heeft tot de SAP-cache server. 
 
 Hier hebt u twee opties:
 
-1. **Client is een SAP-systeem voor back-end** als een back-end SAP-systeem is geconfigureerd voor toegang tot inhoud SAP-Server, die SAP-systeem is een client. Als zowel de SAP-systeem en de SAP-Server voor webinhoud zijn geïmplementeerd in dezelfde Azure-regio, in de dezelfde Azure-datacenter, gebruikers die zich fysiek dicht bij elkaar. Er is daarom niet nodig om een speciale Server voor de SAP-Cache. SAP-UI-clients (SAP-GUI of web browser) rechtstreeks toegang hebben tot de SAP-systeem en de SAP-systeem documenten opgehaald uit de SAP-Server voor webinhoud.
-2. **Client is een on-premises-webbrowser** de SAP-inhoudsserver kan worden geconfigureerd voor het rechtstreeks door de webbrowser worden geopend. In dit geval is een webbrowser die on-premises uitgevoerd een client van de SAP-Server voor webinhoud. On-premises datacenter en Azure-datacenter worden geplaatst op verschillende fysieke locaties (in het ideale geval dicht bij elkaar). Uw on-premises datacenter is verbonden met Azure via Azure Site-naar-Site VPN of ExpressRoute. Hoewel beide opties beveiligde VPN-netwerkverbinding naar Azure bieden, biedt site-naar-site-netwerkverbinding een SLA van netwerk bandbreedte en de latentie tussen het on-premises datacenter en de Azure-datacenter. Als u wilt versnellen toegang tot documenten, kunt u het volgende doen:
-   1. De cacheserver SAP on-premises installeert, dicht bij de on-premises web browser (optie in de afbeelding hieronder)
-   2. Configureer Azure ExpressRoute biedt een hoge en lage latentie toegewezen netwerkverbinding tussen on-premises datacenter en Azure-datacenter.
+1. **Client is een back-end SAP-systeem** Als een back-end SAP-systeem is geconfigureerd voor toegang tot de SAP-inhouds server, is dat SAP-systeem een-client. Omdat SAP systeem-en SAP-inhouds server worden geïmplementeerd in dezelfde Azure-regio, in hetzelfde Azure-Data Center, zijn ze fysiek dicht bij elkaar. Daarom is er geen speciale SAP-cache server nodig. SAP-gebruikers interface-clients (SAP-GUI of webbrowser) hebben rechtstreeks toegang tot het SAP-systeem en het SAP-systeem haalt documenten op van de SAP-inhouds server.
+2. **De client is een on-premises webbrowser** De SAP-inhouds server kan worden geconfigureerd om rechtstreeks te worden geopend door de webbrowser. In dit geval is een webbrowser die on-premises wordt uitgevoerd, een client van de SAP-inhouds server. On-premises Data Center en Azure Data Center worden op verschillende fysieke locaties geplaatst (in het ideale geval dicht bij elkaar). Uw on-premises Data Center is verbonden met Azure via Azure site-to-site VPN of ExpressRoute. Hoewel beide opties een beveiligde VPN-netwerk verbinding naar Azure bieden, biedt site-naar-site-netwerk verbinding geen netwerk bandbreedte en latentie SLA tussen het on-premises Data Center en het Azure-Data Center. Als u de toegang tot documenten wilt versnellen, kunt u een van de volgende handelingen uitvoeren:
+   1. Installeer de SAP-cache server on-premises, sluit de on-premises webbrowser (optie in afbeelding hieronder)
+   2. Configureer Azure ExpressRoute. Dit biedt een speciale netwerk verbinding met hoge snelheid en lage latentie tussen on-premises Data Center en Azure Data Center.
 
-![Optie voor het installeren van de cacheserver SAP on-premises](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
+![Optie voor het on-premises installeren van een SAP-cache server](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Back-up en herstellen
-Als u de SAP-Server voor webinhoud voor het opslaan van bestanden in de database SAP MaxDB configureert, kan de back-up/herstel procedure- en Prestatieoverwegingen al in SAP MaxDB hoofdstukken van dit document worden beschreven. 
+Als u de SAP-inhouds server configureert om bestanden op te slaan in de SAP MaxDB-data base, worden de procedures voor het maken en herstellen van back-ups en prestaties al beschreven in de hoofd stukken van SAP MaxDB van dit document. 
 
-Als u de SAP-Server voor webinhoud voor het opslaan van bestanden in het bestandssysteem is geconfigureerd, wordt een optie is voor het uitvoeren van handmatige back-up of herstellen van de structuur van het hele bestand waar de documenten moeten zich bevinden. Net als bij SAP MaxDB back-up/herstel, het is aanbevolen dat een toegewezen schijfvolume voor back-doel. 
+Als u de SAP-inhouds server configureert voor het opslaan van bestanden in het bestands systeem, moet u een hand matige back-up/herstel bewerking uitvoeren van de volledige bestands structuur waarin de documenten zich bevinden. Net als bij SAP MaxDB Backup/Restore, wordt u aangeraden een speciaal schijf volume te hebben voor back-updoeleinden. 
 
 #### <a name="other"></a>Overige
-Andere inhoud SAP-Server-instellingen zijn transparant voor de Azure-VM's en worden beschreven in verschillende documenten en SAP-opmerkingen:
+Andere instellingen voor de SAP-inhouds server zijn transparant voor virtuele Azure-machines en worden beschreven in diverse documenten en SAP-opmerkingen:
 
 * <https://service.sap.com/contentserver> 
-* SAP-notitie [1619726]  
+* SAP-opmerking [1619726]  

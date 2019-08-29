@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a872b8c34011247e68b0d459482c0599ac0426f2
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 116ffa31fb540897f9a769b73c3a6474dda45b88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228390"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101924"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Prijs informatie voor SQL Server Azure-Vm's
 
@@ -140,7 +139,7 @@ De licentie kosten van SQL Server zijn direct gerelateerd aan het aantal Vcpu's.
 
 Er zijn nieuwe machine grootten die geschikt zijn voor bepaalde soorten SQL Server werk belastingen. Deze computer grootten zorgen voor grote hoeveel heden geheugen, opslag ruimte en I/O-band breedte, maar ze hebben een lager gevirtualiseerde aantal gevirtualiseerd. Bekijk bijvoorbeeld het volgende voor beeld:
 
-| VM-grootte | Vcpu's | Geheugen | Maximum aantal schijven | Maximale I/O-door Voer | SQL-licentie kosten | Totale kosten (Compute + licentie verlening) |
+| VM-grootte | vCPU's | Geheugen | Maximum aantal schijven | Maximale I/O-door Voer | SQL-licentie kosten | Totale kosten (Compute + licentie verlening) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 IOPS of 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 IOPS of 768 MB/s | 75% lager | 57% lager |

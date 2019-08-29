@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/27/2019
 ms.author: danlep
-ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f80956ec401737766f7a85540e90be70b9d621e7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310264"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114707"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Verifiëren met Azure Container Registry van de Azure Kubernetes-service
 
@@ -21,7 +21,7 @@ Wanneer u Azure Container Registry (ACR) met Azure Kubernetes service (AKS) gebr
 
 U hoeft slechts een van deze verificatie methoden te configureren. De meest voorkomende benadering is het [verlenen van toegang met behulp van de Service-Principal AKS](#grant-aks-access-to-acr). Als u specifieke vereisten hebt, kunt u desgewenst [toegang verlenen met Kubernetes geheimen](#access-with-kubernetes-secret).
 
-In dit artikel wordt ervan uitgegaan dat u al een AKS-cluster hebt gemaakt en u toegang hebt tot het `kubectl` cluster met de opdracht regel-client.
+In dit artikel wordt ervan uitgegaan dat u al een AKS-cluster hebt gemaakt en u toegang hebt tot het `kubectl` cluster met de opdracht regel-client. Zie [zelf studie als u in plaats daarvan een cluster wilt maken en de toegang tot een container register wilt configureren tijdens het maken van het cluster. Implementeer een AKS-](../aks/tutorial-kubernetes-deploy-cluster.md) cluster of [Verifieer met Azure container Registry vanuit de Azure Kubernetes-service (preview)](../aks/cluster-container-registry-integration.md).
 
 ## <a name="grant-aks-access-to-acr"></a>AKS toegang verlenen tot ACR
 

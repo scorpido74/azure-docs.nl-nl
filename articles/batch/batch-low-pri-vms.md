@@ -6,18 +6,17 @@ author: mscurrell
 manager: gwallace
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 90c8f3779283c23a98bac9d36fde2641c15afafe
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323463"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095202"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Virtuele machines met lage prioriteit met Batch gebruiken
 
@@ -124,7 +123,7 @@ Groeps knooppunten hebben een eigenschap om aan te geven of het knoop punt een t
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Wanneer een of meer knoop punten in een groep zijn voor rang, worden deze knoop punten nog steeds door een bewerking met een lijst knooppunt in de groep geretourneerd. Het huidige aantal knoop punten met een lage prioriteit blijft ongewijzigd, maar de status van deze knoop punten  is ingesteld op de status afgebroken. Batch probeert vervangings-Vm's te vinden en, als dit is gelukt, worden de knoop punten **gemaakt** en vervolgens **gestart** voordat ze beschikbaar zijn voor taak uitvoering, net als bij nieuwe knoop punten.
+Wanneer een of meer knoop punten in een groep zijn voor rang, worden deze knoop punten nog steeds door een bewerking met een lijst knooppunt in de groep geretourneerd. Het huidige aantal knoop punten met een lage prioriteit blijft ongewijzigd, maar de status van deze knoop punten is ingesteld op de status afgebroken. Batch probeert vervangings-Vm's te vinden en, als dit is gelukt, worden de knoop punten **gemaakt** en vervolgens **gestart** voordat ze beschikbaar zijn voor taak uitvoering, net als bij nieuwe knoop punten.
 
 ## <a name="scale-a-pool-containing-low-priority-vms"></a>Een groep met virtuele machines met lage prioriteit schalen
 

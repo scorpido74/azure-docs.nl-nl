@@ -6,16 +6,15 @@ documentationcenter: na
 author: ggailey777
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: glenga
-ms.openlocfilehash: 96dbe9b15831a349afc0e68c15c39c1cb31b1032
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: b6a2347ff79268cdaf54993952d59bd700b781bc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444070"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095962"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Uw Azure Functions uitvoeren vanuit een pakket bestand
 
@@ -61,7 +60,7 @@ Hieronder ziet u een functie-app die is geconfigureerd om te worden uitgevoerd v
 
 Een [zip-implementatie][Zip deployment for Azure Functions] is een functie van Azure app service waarmee u uw functie-app-project `wwwroot` kunt implementeren in de Directory. Het project wordt verpakt als een zip-implementatie bestand. Dezelfde api's kunnen worden gebruikt voor het implementeren van uw pakket naar `d:\home\data\SitePackages` de map. Met de `WEBSITE_RUN_FROM_PACKAGE` app-instellings `1`waarde van worden de zip-implementatie-api's uw `d:\home\data\SitePackages` pakket naar de map gekopieerd in plaats van `d:\home\site\wwwroot`de bestanden uit te pakken naar. Het `packagename.txt` bestand wordt ook gemaakt. De functie-app wordt vervolgens na het opnieuw opstarten uit het pakket uitgevoerd `wwwroot` en wordt alleen-lezen. Zie voor meer informatie over de implementatie van zip-implementatie [voor Azure functions](deployment-zip-push.md).
 
-## <a name="adding-the-websiterunfrompackage-setting"></a>De instelling WEBSITE_RUN_FROM_PACKAGE toevoegen
+## <a name="adding-the-website_run_from_package-setting"></a>De instelling WEBSITE_RUN_FROM_PACKAGE toevoegen
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

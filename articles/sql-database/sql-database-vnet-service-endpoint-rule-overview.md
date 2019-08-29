@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 03/12/2019
-ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 08/27/2019
+ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840472"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098911"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 
@@ -31,44 +31,7 @@ Als u een regel voor een virtueel netwerk wilt maken, moet er eerst een [service
 
 Als u alleen een regel voor een virtueel netwerk maakt, kunt u verdergaan met de stappen en uitleg [verderop in dit artikel](#anchor-how-to-by-using-firewall-portal-59j).
 
-<a name="anch-terminology-and-description-82f" />
-
-## <a name="terminology-and-description"></a>Terminologie en beschrijving
-
-**Virtueel netwerk:** U kunt virtuele netwerken koppelen aan uw Azure-abonnement.
-
-**Subnetrouter** Een virtueel netwerk bevat **subnetten**. Alle Azure virtual machines (Vm's) die u hebt toegewezen aan subnetten. Eén subnet kan meerdere Vm's of andere reken knooppunten bevatten. Reken knooppunten die zich buiten uw virtuele netwerk bevinden, hebben geen toegang tot het virtuele netwerk tenzij u de beveiliging zo configureert dat toegang wordt toegestaan.
-
-**Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt][vm-virtual-network-service-endpoints-overview-649d] is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. In dit artikel bent u geïnteresseerd in de type naam van **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database.
-
-**Regel voor virtueel netwerk:** Een regel voor het virtuele netwerk voor uw SQL Database-Server is een subnet dat wordt vermeld in de toegangs beheer lijst (ACL) van uw SQL Database-Server. Het subnet moet de naam van het **micro soft. SQL** -type bevatten als u de toegangs beheer lijst voor uw SQL database wilt.
-
-Met een regel voor het virtuele netwerk krijgt uw SQL Database-Server de communicatie van elk knoop punt dat zich in het subnet bevindt, te accepteren.
-
-<a name="anch-benefits-of-a-vnet-rule-68b" />
-
-## <a name="benefits-of-a-virtual-network-rule"></a>Voor delen van een regel voor een virtueel netwerk
-
-Totdat u actie onderneemt, kunnen de Vm's op uw subnetten niet communiceren met uw SQL Database. Een actie die de communicatie tot stand brengt, is het maken van een regel voor een virtueel netwerk. De motivering van het kiezen van de methode voor de VNet-regel vereist een vergelijking en contrast met betrekking tot de concurrerende beveiligings opties die door de firewall worden geboden.
-
-### <a name="a-allow-access-to-azure-services"></a>A. Toegang tot Azure-services toestaan
-
-Het deel venster Firewall bevat een **aan/uit-** knop met de naam **toegang tot Azure-Services toestaan**. Met de instelling **bij** kunt u communicatie van alle Azure IP-adressen en alle Azure-subnetten toestaan. Deze IP-adressen of subnetten van Azure zijn mogelijk niet het eigendom van u. Deze **bij** instelling is waarschijnlijk meer open dan u wilt dat uw SQL database. De functie regel voor virtueel netwerk biedt veel nauw keurigere controle.
-
-### <a name="b-ip-rules"></a>B. IP-regels
-
-Met de SQL Database firewall kunt u IP-adresbereiken opgeven waarvan de communicatie in SQL Database wordt geaccepteerd. Deze aanpak is nauw keurig voor stabiele IP-adressen die zich buiten het particuliere Azure-netwerk bevinden. Maar veel knoop punten in het particuliere netwerk van Azure zijn geconfigureerd met *dynamische* IP-adressen. Dynamische IP-adressen kunnen veranderen, bijvoorbeeld wanneer de virtuele machine opnieuw is opgestart. Het is Folly om een dynamisch IP-adres op te geven in een firewall regel, in een productie omgeving.
-
-U kunt de IP-optie inwaarderen door een *statisch* IP-adres voor uw virtuele machine op te halen. Zie voor meer informatie [privé IP-adressen configureren voor een virtuele machine met behulp van de Azure Portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
-
-De aanpak van een statisch IP-adres kan echter moeilijk te beheren zijn, en het kost goed wanneer deze op schaal wordt uitgevoerd. Regels voor virtuele netwerken zijn eenvoudiger te maken en te beheren.
-
-> [!NOTE]
-> U kunt nog geen SQL Database in een subnet hebben. Als uw Azure SQL Database Server een knoop punt in een subnet in het virtuele netwerk is, kunnen alle knoop punten in het virtuele netwerk communiceren met uw SQL Database. In dit geval kunnen uw Vm's communiceren met SQL Database zonder dat er regels voor het virtuele netwerk of IP-regels nodig zijn.
-
-Vanaf september 2017 is de Azure SQL Database-service nog niet van de services die aan een subnet kunnen worden toegewezen.
-
-<a name="anch-details-about-vnet-rules-38q" />
+<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>Details over regels voor virtuele netwerken
 
@@ -141,27 +104,7 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Gevolgen van het verwijderen van ' Azure-Services toestaan voor toegang tot de server '
 
-Veel gebruikers willen Azure- **Services toestaan om toegang te krijgen** tot de server vanaf hun Azure SQL-servers en deze te vervangen door een VNet-firewall regel.
-Als dit echter wordt verwijderd, heeft dit gevolgen voor de volgende functies:
-
-### <a name="import-export-service"></a>Import export service
-
-Azure SQL Database import-export service wordt uitgevoerd op virtuele machines in Azure. Deze Vm's bevinden zich niet in uw VNet en krijgen daarom een Azure IP-adres bij het maken van verbinding met uw data base. Bij het verwijderen van **Azure-Services toegang verlenen** tot de server kunnen deze vm's geen toegang krijgen tot uw data bases.
-U kunt het probleem omzeilen. Voer de BACPAC-import-of export bewerking rechtstreeks uit in uw code met behulp van de DACFx-API. Zorg ervoor dat dit is geïmplementeerd in een virtuele machine die zich in het VNet-subnet bevindt waarvoor u de firewall regel hebt ingesteld.
-
-### <a name="sql-database-query-editor"></a>Query-Editor SQL Database
-
-De Azure SQL Database query-editor wordt geïmplementeerd op virtuele machines in Azure. Deze Vm's bevinden zich niet in uw VNet. Daarom krijgen de Vm's een Azure-IP-adres bij het maken van verbinding met uw data base. Bij het verwijderen van **Azure-Services toegang tot de server toestaan**, hebben deze vm's geen toegang tot uw data bases.
-
-### <a name="table-auditing"></a>Tabel controle
-
-Op dit moment zijn er twee manieren om controle in te scha kelen op uw SQL Database. Het controleren van de tabel mislukt wanneer u service-eind punten hebt ingeschakeld in uw Azure SQL Server. U kunt dit doen door over te stappen op de controle van de blob.
-
-### <a name="impact-on-data-sync"></a>Impact op de gegevens synchronisatie
-
-Azure SQL Database heeft de functie gegevens synchronisatie die verbinding maakt met uw data bases met behulp van Azure Ip's. Wanneer u service-eind punten gebruikt, is het waarschijnlijk dat u **Azure-Services toegang verleent** tot de server toegang tot uw SQL database-server. Hiermee wordt de functie voor gegevens synchronisatie verbroken.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Gevolgen van het gebruik van VNet-service-eind punten met Azure Storage
 
@@ -174,6 +117,7 @@ Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Ware
 #### <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
 
@@ -182,12 +126,12 @@ Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Ware
 3.  U moet **vertrouwde micro soft-Services toegang geven tot dit opslag account** ingeschakeld onder Azure Storage account **firewalls en instellingen voor virtuele netwerken** . Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) voor meer informatie.
  
 #### <a name="steps"></a>Stappen
-1. **Registreer uw SQL database server** bij Azure Active Directory (Aad) in Power shell:
+1. Registreer in Power shell **uw Azure SQL Server** die als host fungeert voor uw Azure SQL Data Warehouse-exemplaar met Azure Active Directory (Aad):
 
    ```powershell
    Connect-AzAccount
    Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
    1. Maak met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)een **v2-opslag account voor algemeen** gebruik.
@@ -196,7 +140,7 @@ Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Ware
    > - Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar v2** met behulp van deze [hand leiding](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)voor bekende problemen met Azure data Lake Storage Gen2.
     
-1. Navigeer naar **Access Control (IAM)** onder uw opslag account en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw SQL database-server.
+1. Navigeer naar **Access Control (IAM)** onder uw opslag account en klik op **roltoewijzing toevoegen**. Wijs de RBAC-rol **Storage BLOB data Inzender** toe aan uw Azure SQL Server die als host fungeert voor uw Azure SQL Data Warehouse die u hebt geregistreerd bij Azure Active DIRECOTORY (Aad), zoals in stap 1.
 
    > [!NOTE] 
    > Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)voor verschillende ingebouwde rollen voor Azure-resources.

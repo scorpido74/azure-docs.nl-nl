@@ -1,32 +1,31 @@
 ---
-title: Externe gebeurtenissen in duurzame functies - Azure verwerken
-description: Informatie over het verwerken van externe gebeurtenissen in de extensie duurzame functies voor Azure Functions.
+title: Externe gebeurtenissen in Durable Functions-Azure verwerken
+description: Meer informatie over het afhandelen van externe gebeurtenissen in de extensie Durable Functions voor Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: eb024e11b78d13d5ab4544c634acef2ade8141c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9c546064589e82cfef367978ebea98c2c202307
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730783"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087305"
 ---
-# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Externe gebeurtenissen in duurzame functies (Azure Functions) verwerken
+# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Externe gebeurtenissen in Durable Functions verwerken (Azure Functions)
 
-Orchestrator-functies hebben de mogelijkheid om te wachten en luisteren naar externe gebeurtenissen. Deze functie van [duurzame functies](durable-functions-overview.md) is vaak handig voor het verwerken van menselijke tussenkomst of andere externe triggers.
+Orchestrator-functies hebben de mogelijkheid om te wachten op externe gebeurtenissen en te Luis teren. Deze functie van [Durable functions](durable-functions-overview.md) is vaak handig voor het afhandelen van menselijke interactie of andere externe triggers.
 
 > [!NOTE]
-> Externe gebeurtenissen zijn eenzijdige asynchrone bewerkingen. Ze zijn niet geschikt voor situaties waarin de client worden verzonden van de gebeurtenis een synchrone reactie van de orchestrator-functie moet.
+> Externe gebeurtenissen zijn asynchrone bewerkingen in één richting. Deze zijn niet geschikt voor situaties waarin de client die de gebeurtenis verzendt, een synchrone reactie van de Orchestrator-functie nodig heeft.
 
 ## <a name="wait-for-events"></a>Wachten op gebeurtenissen
 
-De [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) methode kunt u een orchestrator-functie voor het asynchroon wacht en luisteren naar een externe gebeurtenis. De luisterende orchestrator-functie verklaart de *naam* van de gebeurtenis en de *vorm van de gegevens* het verwacht te ontvangen.
+Met de methode [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) kan een Orchestrator-functie asynchroon worden gewacht en geluisterd op een externe gebeurtenis. De functie voor het Luis teren van Orchestrator declareert de *naam* van de gebeurtenis en de *vorm van de gegevens* die ze verwacht te ontvangen.
 
 ### <a name="c"></a>C#
 
@@ -47,7 +46,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -62,9 +61,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Het vorige voorbeeld luistert naar een specifieke enkelvoudige gebeurtenis en actie onderneemt wanneer die wordt ontvangen.
+In het voor gaande voor beeld wordt geluisterd naar een specifieke gebeurtenis en wordt er actie ondernomen wanneer het wordt ontvangen.
 
-U kunt luisteren naar meerdere gebeurtenissen gelijktijdig, zoals in het volgende voorbeeld wordt gewacht op een van drie mogelijke gebeurtenismeldingen.
+U kunt gelijktijdig naar meerdere gebeurtenissen Luis teren, zoals in het volgende voor beeld, waarin wordt gewacht op een van de drie mogelijke gebeurtenis meldingen.
 
 #### <a name="c"></a>C#
 
@@ -93,7 +92,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+#### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -114,7 +113,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Het vorige voorbeeld luistert naar *eventuele* van meerdere gebeurtenissen. Het is ook mogelijk om te wachten op *alle* gebeurtenissen.
+In het vorige voor beeld wordt geluisterd naar *een* of meer gebeurtenissen. Het is ook mogelijk te wachten op *alle* gebeurtenissen.
 
 #### <a name="c"></a>C#
 
@@ -136,7 +135,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+#### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -155,18 +154,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) gewacht voor onbepaalde tijd op sommige invoer.  De functie-app kan worden veilig verwijderd tijdens het wachten. Als een gebeurtenis voor dit exemplaar orchestration binnenkomt, wordt automatisch geactiveerd en onmiddellijk de gebeurtenis wordt verwerkt.
+[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) wacht oneindig voor sommige invoer.  De functie-app kan tijdens het wachten veilig worden verwijderd. Als en wanneer een gebeurtenis arriveert voor dit Orchestrator-exemplaar, wordt deze automatisch geactiveerd en wordt de gebeurtenis onmiddellijk verwerkt.
 
 > [!NOTE]
-> Als uw functie-app gebruikmaakt van het verbruik van plan bent, geen kosten worden berekend terwijl een orchestrator-functie is in afwachting van een taak in de `WaitForExternalEvent` (.NET) of `waitForExternalEvent` (JavaScript), ongeacht hoe lang deze moet wachten.
+> Als uw functie-app gebruikmaakt van het verbruiks abonnement, worden er geen facturerings kosten in rekening gebracht terwijl een Orchestrator-functie wacht `WaitForExternalEvent` op een taak van `waitForExternalEvent` (.net) of (Java script), ongeacht hoe lang het wacht.
 
-In .NET, als de nettolading van de gebeurtenis kan niet worden omgezet in het verwachte type `T`, wordt er een uitzondering gegenereerd.
+Als de nettolading van de gebeurtenis in .net niet kan worden geconverteerd naar het `T`verwachte type, wordt er een uitzonde ring gegenereerd.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden
 
-De [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) -methode van de [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) klasse verzendt de gebeurtenissen die `WaitForExternalEvent` (.NET) of `waitForExternalEvent` wacht op (JavaScript).  De `RaiseEventAsync` methode duurt *eventName* en *eventData* als parameters. Gegevens van de gebeurtenis moet JSON-geserialiseerd.
+De methode [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) van de klasse [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) verzendt de gebeurtenissen die `WaitForExternalEvent` (.net) of `waitForExternalEvent` (Java script) wachten op.  Voor `RaiseEventAsync` de-methode worden *eventname* en *Event Data* als para meters gebruikt. De gebeurtenis gegevens moeten JSON-serialiseerbaar zijn.
 
-Hieronder volgt een voorbeeld van de wachtrij geactiveerde functie die een gebeurtenis 'Goedkeuring' worden verzonden naar een exemplaar van de orchestrator-functie. De orchestration-exemplaar-ID zijn afkomstig uit de hoofdtekst van bericht uit de wachtrij.
+Hieronder ziet u een voor beeld van een door de wachtrij geactiveerde functie die een ' goed keuring ' gebeurtenis naar een Orchestrator-functie exemplaar verzendt. De indelings exemplaar-ID is afkomstig van de hoofd tekst van het wachtrij bericht.
 
 ### <a name="c"></a>C#
 
@@ -180,7 +179,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -191,21 +190,21 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Intern, `RaiseEventAsync` (.NET) of `raiseEvent` (JavaScript) enqueues een bericht dat wordt opgehaald door de orchestrator-functie voor wachten. Als het exemplaar niet op de opgegeven wachten is *gebeurtenisnaam,* bericht met de gebeurtenis wordt toegevoegd aan een wachtrij in het geheugen. Als de orchestration-sessie begint later luisteren naar die *gebeurtenisnaam,* de wachtrij voor berichten voor gebeurtenissen wordt gecontroleerd.
+Intern, `RaiseEventAsync` (.net) of `raiseEvent` (Java script) in een bericht dat wordt opgehaald door de functie voor wachtende functies. Als het exemplaar niet op de opgegeven *gebeurtenis naam wacht,* wordt het gebeurtenis bericht toegevoegd aan een in-Memory wachtrij. Als het Orchestrator-exemplaar later begint met Luis teren naar die *gebeurtenis naam,* wordt de wachtrij gecontroleerd op gebeurtenis berichten.
 
 > [!NOTE]
-> Als er geen orchestration-exemplaar met de opgegeven *exemplaar-ID*, het gebeurtenisbericht wordt verwijderd. Zie voor meer informatie over dit gedrag, de [GitHub-probleem](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
+> Als er geen Orchestrator-exemplaar is met de opgegeven *exemplaar-id*, wordt het gebeurtenis bericht verwijderd. Zie het [github-probleem](https://github.com/Azure/azure-functions-durable-extension/issues/29)voor meer informatie over dit gedrag. 
 
 > [!WARNING]
-> Bij het ontwikkelen van lokaal in JavaScript, moet u de omgevingsvariabele instellen `WEBSITE_HOSTNAME` naar `localhost:<port>`, bijvoorbeeld. `localhost:7071` gebruik van methoden op `DurableOrchestrationClient`. Zie voor meer informatie over deze vereiste de [GitHub-probleem](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Bij het lokaal ontwikkelen in Java script moet u de omgevings variabele `WEBSITE_HOSTNAME` instellen op `localhost:<port>`, bijvoorbeeld. `localhost:7071`om methoden te gebruiken `DurableOrchestrationClient`in. Zie het [github-probleem](https://github.com/Azure/azure-functions-durable-js/issues/28)voor meer informatie over deze vereiste.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het instellen van oneindige indelingen](durable-functions-eternal-orchestrations.md)
+> [Meer informatie over het instellen van eeuwige-integratie](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Een voorbeeld dat wordt gewacht externe gebeurtenissen uitvoeren](durable-functions-phone-verification.md)
+> [Een voor beeld uitvoeren dat wacht op externe gebeurtenissen](durable-functions-phone-verification.md)
 
 > [!div class="nextstepaction"]
-> [Een voorbeeld dat wordt gewacht menselijke tussenkomst uitvoeren](durable-functions-phone-verification.md)
+> [Een voor beeld uitvoeren dat wacht op menselijke interactie](durable-functions-phone-verification.md)

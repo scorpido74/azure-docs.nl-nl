@@ -331,6 +331,8 @@
           href: ./zookeeper-troubleshoot-quorum-fails.md
 - name: Naslaginformatie
   items:
+    - name: Ondersteunde knooppuntconfiguraties
+      href: ../hdinsight-supported-node-configuration.md
     - name: Codevoorbeelden
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

@@ -10,17 +10,16 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2289ef81785520b81c7d69a97cb20196015fe802
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 519cf5388b095c7ca6e0ae7d978608f0824dc3a2
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637752"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066520"
 ---
 # <a name="restore-an-app-in-azure"></a>Een app in Azure herstellen
 In dit artikel wordt beschreven hoe u een app kunt herstellen in [Azure app service](../app-service/overview.md) waarvan u eerder een back-up hebt gemaakt (zie een back-up van [uw app maken in azure](manage-backup.md)). U kunt uw app met de gekoppelde data bases op aanvraag herstellen naar een eerdere status of een nieuwe app maken op basis van een van de back-ups van de oorspronkelijke app. Azure App Service ondersteunt de volgende data bases voor back-up en herstel:

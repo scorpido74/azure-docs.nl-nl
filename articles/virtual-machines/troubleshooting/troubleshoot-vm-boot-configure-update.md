@@ -1,6 +1,6 @@
 ---
-title: Opstarten van de virtuele machine is vastgelopen op 'gereed aan Windows. Zet uw computer uit' in Azure | Microsoft Docs
-description: Introductie van de stappen voor het oplossen van het probleem waarin het opstarten van de virtuele machine is vastgelopen op 'gereed aan Windows. Schakel de computer niet uit.'
+title: Het opstarten van de VM is vastgelopen op het ophalen van Windows Ready. Uw computer niet uitschakelen in azure | Microsoft Docs
+description: Voer de stappen uit om het probleem op te lossen waarbij het opstarten van de VM vastloopt op ' Windows voorbereiden '. Schakel de computer niet uit.'
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -10,56 +10,55 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: c3592529d20680c6920e569887effee4ffe38344
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f3c18ea1887ea5b05bb89f85371139ac83dfe49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684012"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080166"
 ---
-# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Opstarten van de virtuele machine is vastgelopen op 'gereed aan Windows. Zet uw computer uit' in Azure
+# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Het opstarten van de VM is vastgelopen op het ophalen van Windows Ready. Uw computer niet uitschakelen in azure
 
-Dit artikel helpt u het probleem oplossen wanneer uw virtuele machine (VM) is vastgelopen op de 'Windows voorbereiden. Het uitschakelen van de computer niet"fase tijdens het opstarten.
+Dit artikel helpt u bij het oplossen van het probleem wanneer uw virtuele machine (VM) vastloopt op het Windows voorbereiden. De computer niet uitschakelen tijdens het opstarten.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptoms"></a>Symptomen
 
-Bij het gebruik **diagnostische gegevens over opstarten** als u de schermafbeelding van een virtuele machine, het besturingssysteem niet volledig worden opgestart. De virtuele machine wordt het bericht 'gereed aan Windows. Schakel de computer niet uit.'
+Wanneer u **Diagnostische gegevens over opstarten** gebruikt om de scherm opname van een virtuele machine op te halen, wordt het besturings systeem niet volledig opgestart. Op de VM wordt het bericht ' Windows gereed ' opgehaald weer gegeven. Schakel de computer niet uit.'
 
-![Voorbeeld van het bericht voor Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
+![Voorbeeld bericht voor Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
-![Voorbeeld van bericht](./media/troubleshoot-vm-configure-update-boot/message2.png)
+![Voorbeeld bericht](./media/troubleshoot-vm-configure-update-boot/message2.png)
 
 ## <a name="cause"></a>Oorzaak
 
-Dit probleem treedt meestal op wanneer de server met de laatste keer opnieuw opstarten gaat nadat de configuratie is gewijzigd. Wijzigen van de configuratie kan worden geïnitialiseerd door Windows-updates of door de wijzigingen op de rollen of onderdeel van de server. Als de grootte van de updates groot is, is moet het besturingssysteem voor Windows Update, meer tijd om de wijzigingen opnieuw te configureren.
+Dit probleem treedt meestal op wanneer de server de laatste keer opnieuw wordt opgestart nadat de configuratie is gewijzigd. De configuratie wijziging kan worden geïnitialiseerd door Windows-updates of door de wijzigingen in de functies/functie van de server. Als de grootte van de updates groot is, heeft het besturings systeem meer tijd nodig om de wijzigingen opnieuw te configureren. Windows Update
 
-## <a name="back-up-the-os-disk"></a>Back-up van de besturingssysteemschijf
+## <a name="back-up-the-os-disk"></a>Back-up maken van de besturingssysteem schijf
 
-Voordat u probeert om het probleem te verhelpen, back-up van de besturingssysteemschijf.
+Maak een back-up van de besturingssysteem schijf voordat u het probleem probeert op te lossen.
 
-### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>Voor virtuele machines met een versleutelde schijf, moet u eerst de schijven ontgrendelen
+### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>Voor Vm's met een versleutelde schijf moet u eerst de schijven ontgrendelen
 
-Volg deze stappen om te bepalen of de virtuele machine een versleutelde VM.
+Volg deze stappen om te bepalen of de virtuele machine een versleutelde virtuele machine is.
 
-1. Open uw virtuele machine in Azure portal, en blader vervolgens naar de schijven.
+1. Open de virtuele machine op de Azure Portal en blader vervolgens naar de schijven.
 
-2. Bekijk de **versleuteling** kolom om te zien of versleuteling is ingeschakeld.
+2. Bekijk de versleutelings kolom om te controleren of versleuteling is ingeschakeld.
 
-Als de besturingssysteemschijf is versleuteld, maak gebruik van de versleutelde schijf. Volg deze stappen voor het ontgrendelen van de schijf.
+Als de schijf met het besturings systeem is versleuteld, ontgrendelt u de versleutelde schijf. Voer de volgende stappen uit om de schijf te ontgrendelen.
 
-1. Maak een VM voor herstel die zich in dezelfde resourcegroep, Opslagaccount en locatie als de betrokken virtuele machine.
+1. Maak een herstel-VM die zich in dezelfde resource groep, opslag account en locatie bevindt als de betrokken VM.
 
-2. In de Azure-portal, de betrokken virtuele machine verwijderen en behouden van de schijf.
+2. Verwijder de betreffende VM in het Azure Portal en behoud de schijf.
 
-3. Voer PowerShell uit als beheerder.
+3. Voer Power shell uit als beheerder.
 
-4. Voer de volgende cmdlet om op te halen van de geheime naam.
+4. Voer de volgende cmdlet uit om de geheime naam op te halen.
 
     ```Powershell
     Login-AzAccount
@@ -74,7 +73,7 @@ Als de besturingssysteemschijf is versleuteld, maak gebruik van de versleutelde 
     Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
     ```
 
-5. Nadat u de naam van de geheime hebt, kunt u de volgende opdrachten uitvoeren in PowerShell.
+5. Nadat u de geheime naam hebt, voert u de volgende opdrachten uit in Power shell.
 
     ```Powershell
     $secretName = 'SecretName'
@@ -82,10 +81,10 @@ Als de besturingssysteemschijf is versleuteld, maak gebruik van de versleutelde 
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     ```
 
-6. De met Base64 gecodeerde waarde converteren naar bytes en de uitvoer naar een bestand te schrijven. 
+6. Converteer de base64-gecodeerde waarde naar bytes en schrijf de uitvoer naar een bestand. 
 
     > [!Note]
-    > Als u de USB-poort optie ontgrendelen, de naam van de BEK moet overeenkomen met de oorspronkelijke BEK GUID. Maak een map op station C met de naam 'BEK' voordat u deze stappen volgen.
+    > Als u de USB-ontgrendelings optie gebruikt, moet de bestands naam van het BEK overeenkomen met de oorspronkelijke BEK-GUID. Maak een map op uw C-station met de naam ' BEK ' voordat u deze stappen uitvoert.
     
     ```Powershell
     New-Item -ItemType directory -Path C:\BEK
@@ -94,41 +93,41 @@ Als de besturingssysteemschijf is versleuteld, maak gebruik van de versleutelde 
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7. Nadat de BEK-bestand is gemaakt op uw PC, moet u het bestand kopiëren naar de herstel-VM die u de vergrendelde besturingssysteemschijf die is gekoppeld hebt aan. Voer de volgende opdrachten met behulp van de locatie van de BEK.
+7. Nadat het BEK-bestand op uw PC is gemaakt, kopieert u het bestand naar de herstel-VM waaraan de vergrendelde besturingssysteem schijf is gekoppeld. Voer de volgende opdrachten uit met behulp van de BEK-bestands locatie.
 
     ```Powershell
     manage-bde -status F:
     manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
     ```
-    **Optioneel**: In sommige scenario's kan het nodig zijn voor het ontsleutelen van de schijf met behulp van deze opdracht.
+    **Optioneel**: In sommige gevallen kan het nodig zijn om de schijf te ontsleutelen met behulp van deze opdracht.
    
     ```Powershell
     manage-bde -off F:
     ```
 
     > [!Note]
-    > De vorige opdracht wordt ervan uitgegaan dat de schijf voor het versleutelen is op de stationsletter f kan zijn.
+    > De vorige opdracht gaat ervan uit dat de schijf die moet worden versleuteld, is op letter F.
 
-8. Als u nodig hebt om Logboeken te verzamelen, gaat u naar het pad **station stationsletter: \Windows\System32\winevt\Logs**.
+8. Als u logboeken wilt verzamelen, gaat u naar het pad **stationsletter: \ Windows\System32\winevt\Logs**.
 
-9. Ontkoppel de schijf van de machine voor herstel.
+9. Ontkoppel het station van de herstel machine.
 
 ### <a name="create-a-snapshot"></a>Een momentopname maken
 
-Volg de stappen in voor het maken van een momentopname, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
+Als u een moment opname wilt maken, volgt u de stappen in [een moment opname van een schijf](../windows/snapshot-copy-managed-disk.md).
 
-## <a name="collect-an-os-memory-dump"></a>Een OS-geheugendump verzamelen
+## <a name="collect-an-os-memory-dump"></a>Een dump van het besturings systeem verzamelen
 
-Gebruik de stappen in de [verzamelen os dump](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) sectie voor het verzamelen van een besturingssysteem dump wanneer de virtuele machine is vastgelopen bij de configuratie.
+Volg de stappen in de sectie [OS-dump verzamelen](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) om een OS-dump te verzamelen wanneer de virtuele machine op de configuratie is vastgelopen.
 
-## <a name="contact-microsoft-support"></a>Neem contact op met Microsoft ondersteuning
+## <a name="contact-microsoft-support"></a>Contact opnemen met Microsoft Ondersteuning
 
-Nadat u het dumpbestand verzameld, neem dan contact op met [Microsoft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) voor het analyseren van de hoofdoorzaak te achterhalen.
+Nadat u het dump bestand hebt verzameld, neemt u contact op met [micro soft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om de hoofd oorzaak te analyseren.
 
 
-## <a name="rebuild-the-vm-by-using-powershell"></a>Opnieuw opbouwen van de virtuele machine met behulp van PowerShell
+## <a name="rebuild-the-vm-by-using-powershell"></a>De virtuele machine opnieuw samen stellen met behulp van Power shell
 
-Nadat u het geheugendumpbestand verzameld, volg deze stappen om de virtuele machine opnieuw te maken.
+Nadat u het geheugen dump bestand hebt verzameld, volgt u deze stappen om de virtuele machine opnieuw op te bouwen.
 
 **Voor niet-beheerde schijven**
 

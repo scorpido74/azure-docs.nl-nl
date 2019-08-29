@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612531"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073889"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelfstudie: Een virtuele Windows Server-machine toevoegen aan een beheerd domein
 
@@ -153,15 +153,23 @@ Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebrac
 1. Start de VM opnieuw op om het proces te volt ooien om lid te worden van het Azure AD DS beheerde domein.
 
 > [!TIP]
-> U kunt ook een domein koppelen aan een virtuele machine met behulp van Power shell met de cmdlet [add-computer][add-computer] . In het volgende voor beeld wordt het *CONTOSO* -domein toegevoegd en wordt de virtuele machine opnieuw opgestart. Voer desgevraagd de referenties in voor een gebruiker die deel uitmaakt van de groep *Azure AD DC* -Administrators:
+> U kunt een virtuele machine met behulp van Power shell aan een domein toevoegen met de cmdlet [add-computer][add-computer] . In het volgende voor beeld wordt het *CONTOSO* -domein toegevoegd en wordt de virtuele machine opnieuw opgestart. Voer desgevraagd de referenties in voor een gebruiker die deel uitmaakt van de groep *Azure AD DC* -Administrators:
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> Als u een domein wilt toevoegen aan een virtuele machine zonder verbinding te maken en de verbinding hand matig te configureren, kunt u ook het gebruik van de cmdlet [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell verkennen.
 
 Als de virtuele machine van Windows Server opnieuw is opgestart, worden alle beleids regels die in het beheerde Azure AD DS Managed Domain worden toegepast, naar de virtuele machine gepusht. U kunt zich nu ook aanmelden bij de virtuele Windows Server-machine met behulp van de juiste domein referenties.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 In de volgende zelf studie gebruikt u deze virtuele machine van Windows Server om de beheer hulpprogramma's te installeren waarmee u het door Azure AD DS beheerde domein kunt beheren. Als u niet wilt door gaan in deze reeks zelf studies, raadpleegt u de volgende stappen voor opschonen om [RDP uit te scha kelen](#disable-rdp) of [de virtuele machine te verwijderen](#delete-the-vm). Als dat niet het geval is, [gaat u verder met de volgende zelf studie](#next-steps).
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>De virtuele machine loskoppelen van Azure AD DS beheerde domein
+
+Als u de virtuele machine uit de Azure AD DS beheerde domein wilt verwijderen, volgt u de stappen opnieuw om [de VM aan een domein toe](#join-the-vm-to-the-azure-ad-ds-managed-domain)te voegen. In plaats van aan het beheerde domein van Azure AD DS te koppelen, kiest u om lid te worden van een werk groep, zoals de *standaardwerk groep*. Nadat de VM opnieuw is opgestart, wordt het computer object verwijderd uit het door Azure AD DS beheerde domein.
+
+Als u [de virtuele machine verwijdert](#delete-the-vm) zonder lid te worden van het domein, blijft een zwevend computer object in azure AD DS.
 
 ### <a name="disable-rdp"></a>RDP uitschakelen
 
@@ -231,3 +239,4 @@ Als u uw door Azure AD DS beheerd domein wilt beheren, configureert u een beheer
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

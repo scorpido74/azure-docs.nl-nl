@@ -1,22 +1,22 @@
 ---
-title: Implementeren en configureren van de Firewall van Azure met behulp van Azure PowerShell
-description: In dit artikel leert u hoe het implementeren en configureren van de Firewall van Azure met behulp van Azure PowerShell.
+title: Azure Firewall implementeren en configureren met behulp van Azure PowerShell
+description: In dit artikel vindt u informatie over het implementeren en configureren van Azure Firewall met behulp van de Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 4c6ccce493ffb25d7a2237e0d98a2b71b35c92c1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620975"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114787"
 ---
-# <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Implementeren en configureren van de Firewall van Azure met behulp van Azure PowerShell
+# <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure Firewall implementeren en configureren met behulp van Azure PowerShell
 
-Het beheren van toegang tot uitgaande netwerken is een belangrijk onderdeel van een algemeen netwerkbeveiligingsabonnement. U wilt bijvoorbeeld de toegang tot websites beperken. Of u wilt om te beperken van de uitgaande IP-adressen en poorten die kunnen worden benaderd.
+Het beheren van toegang tot uitgaande netwerken is een belangrijk onderdeel van een algemeen netwerkbeveiligingsabonnement. U kunt bijvoorbeeld de toegang tot websites beperken. Het is ook mogelijk dat u de uitgaande IP-adressen en poorten wilt beperken waartoe toegang kan worden verkregen.
 
 Een van de manieren waarop u de toegang tot uitgaande netwerken kunt beheren vanaf een Azure-subnet is met Azure Firewall. Met Azure Firewall kunt u het volgende configureren:
 
@@ -25,7 +25,7 @@ Een van de manieren waarop u de toegang tot uitgaande netwerken kunt beheren van
 
 Netwerkverkeer is onderhevig aan de geconfigureerde firewallregels wanneer u het routeert naar de firewall als standaardgateway van het subnet.
 
-In dit artikel maakt u een vereenvoudigde één VNet met drie subnetten voor een gemakkelijke implementatie. Voor productie-implementaties, een [hub en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) wordt aanbevolen, waarbij de firewall wordt in een eigen VNet. De workload-servers zijn in gekoppelde VNets in dezelfde regio met een of meer subnetten.
+Voor dit artikel maakt u een vereenvoudigd single VNet met drie subnetten voor een eenvoudige implementatie. Voor productie-implementaties wordt een [hub-en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen, waarbij de firewall zich in een eigen VNet bevindt. De werkbelasting servers bevinden zich in een gepeerd VNets in dezelfde regio met een of meer subnetten.
 
 * **AzureFirewallSubnet** – De firewall bevindt zich in dit subnet.
 * **Workload-SN** – De workloadserver bevindt zich in dit subnet. Het netwerkverkeer van dit subnet gaat via de firewall.
@@ -39,17 +39,17 @@ In dit artikel leert u het volgende:
 > * Een testnetwerkomgeving instellen
 > * Een firewall implementeren
 > * Een standaardroute maken
-> * Een regel voor een toepassing voor toegang tot www.google.com configureren
+> * Een toepassings regel configureren om toegang tot www.google.com toe te staan
 > * Een netwerkregel configureren om toegang tot externe DNS-servers toe te staan
 > * De firewall testen
 
-Als u liever, kunt u het gebruik van deze procedure te voltooien de [Azure-portal](tutorial-firewall-deploy-portal.md).
+Als u wilt, kunt u deze procedure volt ooien met behulp van de [Azure Portal](tutorial-firewall-deploy-portal.md).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze procedure is vereist dat u PowerShell lokaal uitvoert. U moet de Azure PowerShell-module geïnstalleerd hebben. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
+Voor deze procedure moet u Power shell lokaal uitvoeren. U moet de module Azure PowerShell hebben geïnstalleerd. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-Az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
 
 ## <a name="set-up-the-network"></a>Het netwerk instellen
 
@@ -57,7 +57,7 @@ Maak eerst een resourcegroep met de resources die nodig zijn om de firewall te i
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De resourcegroep bevat alle resources voor de implementatie.
+De resource groep bevat alle resources voor de implementatie.
 
 ```azurepowershell
 New-AzResourceGroup -Name Test-FW-RG -Location "East US"
@@ -67,15 +67,14 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 
 Dit virtuele netwerk heeft drie subnetten:
 
+> [!NOTE]
+> De grootte van het AzureFirewallSubnet-subnet is/26. Zie [Azure firewall FAQ (Engelstalig](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)) voor meer informatie over de grootte van het subnet.
+
 ```azurepowershell
-$FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/24
+$FWsub = New-AzVirtualNetworkSubnetConfig -Name AzureFirewallSubnet -AddressPrefix 10.0.1.0/26
 $Worksub = New-AzVirtualNetworkSubnetConfig -Name Workload-SN -AddressPrefix 10.0.2.0/24
 $Jumpsub = New-AzVirtualNetworkSubnetConfig -Name Jump-SN -AddressPrefix 10.0.3.0/24
 ```
-
-> [!NOTE]
-> De minimale grootte van het subnet AzureFirewallSubnet is /26.
-
 Maak nu het virtuele netwerk:
 
 ```azurepowershell
@@ -88,7 +87,7 @@ $testVnet = New-AzVirtualNetwork -Name Test-FW-VN -ResourceGroupName Test-FW-RG 
 Maak nu de virtuele jump- en workloadmachines en plaats ze in de toepasselijke subnetten.
 Wanneer u daarom wordt gevraagd, typt u een gebruikersnaam en wachtwoord voor de virtuele machine.
 
-Maak de Srv-springen virtuele machine.
+Maak de SRV-Jump-virtuele machine.
 
 ```azurepowershell
 New-AzVm `
@@ -101,7 +100,7 @@ New-AzVm `
     -Size "Standard_DS2"
 ```
 
-Maak een werkbelasting van virtuele machine met geen openbaar IP-adres.
+Maak een virtuele werk belasting machine zonder openbaar IP-adres.
 Wanneer u daarom wordt gevraagd, typt u een gebruikersnaam en wachtwoord voor de virtuele machine.
 
 ```azurepowershell
@@ -121,7 +120,7 @@ New-AzVM -ResourceGroupName Test-FW-RG -Location "East US" -VM $VirtualMachine -
 
 ## <a name="deploy-the-firewall"></a>De firewall implementeren
 
-De firewall nu implementeren in het virtuele netwerk.
+Implementeer de firewall nu in het virtuele netwerk.
 
 ```azurepowershell
 # Get a Public IP for the firewall
@@ -140,7 +139,7 @@ Noteer het privé-IP-adres. U zult het later gebruiken wanneer u de standaardrou
 
 ## <a name="create-a-default-route"></a>Een standaardroute maken
 
-Maak een tabel met doorgifte van BGP-route uitgeschakeld
+Een tabel maken waarbij BGP-route doorgifte is uitgeschakeld
 
 ```azurepowershell
 $routeTableDG = New-AzRouteTable `
@@ -169,7 +168,7 @@ Set-AzVirtualNetworkSubnetConfig `
 
 ## <a name="configure-an-application-rule"></a>Een toepassingsregel configureren
 
-De toepassing-regel toestaat uitgaande toegang tot www.google.com.
+De toepassings regel staat uitgaande toegang tot www.google.com toe.
 
 ```azurepowershell
 $AppRule1 = New-AzFirewallApplicationRule -Name Allow-Google -SourceAddress 10.0.2.0/24 `
@@ -187,7 +186,7 @@ Azure Firewall bevat een ingebouwde regelverzameling voor infrastructuur-FQDN’
 
 ## <a name="configure-a-network-rule"></a>Een netwerkregel configureren
 
-De regel van het netwerk biedt uitgaande toegang tot twee IP-adressen op poort 53 (DNS).
+De netwerk regel staat uitgaande toegang tot twee IP-adressen op poort 53 (DNS) toe.
 
 ```azurepowershell
 $NetRule1 = New-AzFirewallNetworkRule -Name "Allow-DNS" -Protocol UDP -SourceAddress 10.0.2.0/24 `
@@ -203,7 +202,7 @@ Set-AzFirewall -AzureFirewall $Azfw
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Het primaire en secundaire DNS-adres voor de netwerkinterface **Srv-Work** wijzigen
 
-Voor testdoeleinden in deze procedure configureert u de van primaire en secundaire DNS-serveradressen. Dit is een algemene vereiste voor de Firewall van Azure niet.
+Voor test doeleinden in deze procedure configureert u de primaire en secundaire DNS-adressen van de server. Dit is geen algemene Azure Firewall vereiste.
 
 ```azurepowershell
 $NIC.DnsSettings.DnsServers.Add("209.244.0.3")
@@ -215,22 +214,22 @@ $NIC | Set-AzNetworkInterface
 
 Test nu de firewall om te controleren of deze werkt zoals verwacht.
 
-1. Houd er rekening mee de privé IP-adres voor de **Srv-werk** virtuele machine:
+1. Noteer het privé-IP-adres voor de virtuele machine **met SRV-werk** :
 
    ```
    $NIC.IpConfigurations.PrivateIpAddress
    ```
 
-1. Verbinding maken met een extern bureaublad **Srv-springen** virtuele machine en meld u aan. Open vanuit een extern bureaublad verbinding met de **Srv-werk** privé IP-adres en meld u aan.
+1. Verbind een extern bureau blad met **SRV-Jump** virtuele machine en meld u aan. Open vanaf daar een verbinding met een extern bureau blad met het privé-IP-adres van **SRV-werk** en meld u aan.
 
-3. Op **SRV-werk**, open een PowerShell-venster en voer de volgende opdrachten uit:
+3. Open op **SRV**een Power shell-venster en voer de volgende opdrachten uit:
 
    ```
    nslookup www.google.com
    nslookup www.microsoft.com
    ```
 
-   Beide opdrachten antwoorden, wordt weergegeven dat uw DNS-query's via de firewall krijgen moeten worden geretourneerd.
+   Beide opdrachten moeten antwoorden retour neren, zodat u kunt zien dat uw DNS-query's via de firewall worden ontvangen.
 
 1. Voer de volgende opdrachten uit:
 
@@ -242,16 +241,16 @@ Test nu de firewall om te controleren of deze werkt zoals verwacht.
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   De aanvragen www.google.com moeten slagen en mislukken wanneer de www.microsoft.com-aanvragen. Dit toont aan dat uw firewall-regels worden naar behoren werkt.
+   De www.google.com-aanvragen moeten slagen en de www.microsoft.com-aanvragen moeten mislukken. Dit laat zien dat uw firewall regels werken zoals verwacht.
 
-U hebt nu gecontroleerd of de firewall-regels zijn werken:
+Nu hebt u gecontroleerd of de firewall regels werken:
 
 * Kunt u DNS-namen omzetten met behulp van de geconfigureerde externe DNS-server.
 * Kunt u bladeren naar de enige toegestane FQDN, maar niet naar andere.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Houd uw firewall-bronnen voor de volgende zelfstudie of als u niet meer nodig hebt, verwijdert u de **Test-FW-RG** resourcegroep om alle firewall-gerelateerde resources te verwijderen:
+U kunt uw firewall bronnen voor de volgende zelf studie houden, of als u deze niet meer nodig hebt, verwijdert u de resource groep **test-FW-RG** om alle firewall-gerelateerde resources te verwijderen:
 
 ```azurepowershell
 Remove-AzResourceGroup -Name Test-FW-RG

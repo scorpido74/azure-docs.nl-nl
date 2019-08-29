@@ -60,6 +60,8 @@
         - name: Kies uw marketplace-voordelen
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: Betrokkenheid van partner bij collectieve verkoop
+              href: ./marketplace-co-sell.md
             - name: Voorkeursoplossingen
               href: ./preferred-solutions.md
             - name: Geïntegreerde oplossingen
@@ -490,6 +492,13 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Test drive uw aanbieding
           href: ./partner-center-portal/test-drive.md
+        - name: Optie voor collectieve verkoop
+          href: ./partner-center-portal/commercial-marketplace-co-sell.md
+          items:
+            - name: Land- en regiocodes
+              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+            - name: Provinciecodes
+              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
     - name: Publicatiestatus
       href: ./partner-center-portal/publishing-status.md
     - name: Bestaande aanbiedingen bijwerken

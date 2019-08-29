@@ -1,6 +1,6 @@
 ---
-title: Een virtuele Windows-machine maken vanaf een gespecialiseerde VHD in Azure | Microsoft Docs
-description: Maak een nieuwe Windows-VM door het koppelen van een gespecialiseerde beheerde schijf als de besturingssysteemschijf met behulp van de Resource Manager-implementatiemodel.
+title: Een Windows-VM maken op basis van een gespecialiseerde VHD in azure | Microsoft Docs
+description: Maak een nieuwe Windows-VM door een speciale beheerde schijf te koppelen als de besturingssysteem schijf met behulp van het Resource Manager-implementatie model.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,37 +11,36 @@ ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 8f4169e7d94a5a838ecc11b22e7988223c25e02c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5dde098277b16c7ec5339aa6b963b04dd608c8ac
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718823"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079669"
 ---
-# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een Windows-VM maken vanaf een gespecialiseerde schijf met behulp van PowerShell
+# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een Windows-VM maken op basis van een gespecialiseerde schijf met behulp van Power shell
 
-Maak een nieuwe virtuele machine door een gespecialiseerde beheerde schijf als de besturingssysteemschijf te koppelen. Een gespecialiseerde schijf is een kopie van een virtuele harde schijf (VHD) van een bestaande virtuele machine met de gebruikersaccounts, toepassingen en andere statusgegevens van de oorspronkelijke virtuele machine. 
+Maak een nieuwe virtuele machine door een speciale beheerde schijf als de besturingssysteem schijf te koppelen. Een gespecialiseerde schijf is een kopie van een virtuele harde schijf (VHD) van een bestaande VM die de gebruikers accounts, toepassingen en andere status gegevens van uw oorspronkelijke virtuele machine bevat. 
 
-Wanneer u een nieuwe virtuele machine maken met een gespecialiseerde VHD, behoudt de nieuwe virtuele machine de naam van de computer van de oorspronkelijke virtuele machine. Andere computer-specifieke informatie wordt ook opgeslagen en in sommige gevallen kan deze dubbele gegevens privacyproblemen kan veroorzaken. Bij het kopiëren van een virtuele machine, worden op de hoogte van welke typen van computer-specifieke informatie voor uw toepassingen maken gebruik van.
+Wanneer u een speciale VHD gebruikt om een nieuwe virtuele machine te maken, behoudt de nieuwe VM de computer naam van de oorspronkelijke VM. Andere computerspecifieke informatie wordt ook bewaard en, in sommige gevallen, kan deze dubbele informatie problemen veroorzaken. Wanneer u een virtuele machine kopieert, moet u zich bewust zijn van de typen computerspecifieke informatie die uw toepassingen gebruiken.
 
 U hebt verschillende mogelijkheden:
-* [Gebruik een bestaande beheerde schijf](#option-1-use-an-existing-disk). Deze optie is handig als u een virtuele machine die niet goed werkt. U kunt de virtuele machine verwijdert en vervolgens de beheerde schijf voor het maken van een nieuwe virtuele machine opnieuw te gebruiken. 
+* [Gebruik een bestaande beheerde schijf](#option-1-use-an-existing-disk). Deze optie is handig als u een VM hebt die niet goed werkt. U kunt de virtuele machine verwijderen en vervolgens de beheerde schijf opnieuw gebruiken om een nieuwe virtuele machine te maken. 
 * [Een VHD uploaden](#option-2-upload-a-specialized-vhd) 
-* [Kopiëren van een bestaande VM in Azure met behulp van momentopnamen](#option-3-copy-an-existing-azure-vm)
+* [Een bestaande Azure-VM kopiëren met behulp van moment opnamen](#option-3-copy-an-existing-azure-vm)
 
-U kunt ook de Azure portal om te gebruiken [een nieuwe virtuele machine maken vanaf een gespecialiseerde VHD](create-vm-specialized-portal.md).
+U kunt ook de Azure Portal gebruiken om [een nieuwe VM te maken op basis van een gespecialiseerde VHD](create-vm-specialized-portal.md).
 
-In dit artikel wordt beschreven hoe u beheerde schijven te gebruiken. Als u een oude implementatie hebt die moet worden met behulp van een storage-account, Zie [een virtuele machine maken vanaf een gespecialiseerde VHD in een opslagaccount](sa-create-vm-specialized.md).
+In dit artikel wordt beschreven hoe u beheerde schijven gebruikt. Zie [een virtuele machine maken op basis van een speciale VHD in een opslag account](sa-create-vm-specialized.md)als u een oudere implementatie hebt waarvoor een opslag account is vereist.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="option-1-use-an-existing-disk"></a>Optie 1: Gebruik een bestaande schijf
+## <a name="option-1-use-an-existing-disk"></a>Optie 1: Een bestaande schijf gebruiken
 
-Als u had een virtuele machine die u hebt verwijderd en u gebruiken van de besturingssysteemschijf wilt te maken van een nieuwe virtuele machine, gebruikt u [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
+Als u een virtuele machine hebt verwijderd en u de besturingssysteem schijf opnieuw wilt gebruiken om een nieuwe virtuele machine te maken, gebruikt u [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -50,40 +49,40 @@ $osDisk = Get-AzDisk `
 -ResourceGroupName $resourceGroupName `
 -DiskName $osDiskName
 ```
-Nu kunt u deze schijf koppelen als de schijf met het besturingssysteem naar een [nieuwe virtuele machine](#create-the-new-vm).
+U kunt deze schijf nu als de besturingssysteem schijf aan een [nieuwe virtuele machine](#create-the-new-vm)koppelen.
 
 ## <a name="option-2-upload-a-specialized-vhd"></a>Optie 2: Een gespecialiseerde VHD uploaden
 
-U kunt de VHD van een gespecialiseerde virtuele machine gemaakt met een on-premises virtualisatie hulpprogramma, zoals Hyper-V, of een virtuele machine die zijn geëxporteerd uit een andere cloud uploaden.
+U kunt de VHD uploaden vanaf een gespecialiseerde virtuele machine die is gemaakt met een on-premises Virtualization tool, zoals Hyper-V, of een VM die is geëxporteerd uit een andere cloud.
 
 ### <a name="prepare-the-vm"></a>De virtuele machine voorbereiden
-Gebruik de VHD als-is het maken van een nieuwe virtuele machine. 
+Gebruik de VHD als-is om een nieuwe virtuele machine te maken. 
   
-  * [Voorbereiden van een Windows-VHD te uploaden naar Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). **Geen** generaliseren van de virtuele machine met behulp van Sysprep.
-  * Verwijder alle Gast virtualisatie-hulpprogramma's en de agents die zijn geïnstalleerd op de virtuele machine (zoals VMware-hulpprogramma's).
-  * Zorg ervoor dat de virtuele machine is geconfigureerd voor het IP-adres en DNS-instellingen van DHCP. Dit zorgt ervoor dat de server een IP-adres binnen het virtuele netwerk wordt wanneer deze opgestart wordt. 
+  * [Bereid een Windows VHD voor om te uploaden naar Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Generaliseer de virtuele machine **niet** met behulp van Sysprep.
+  * Verwijder alle hulpprogram ma's voor gast-virtualisatie en de agents die zijn geïnstalleerd op de virtuele machine (zoals VMware-hulpprogram ma's).
+  * Zorg ervoor dat de virtuele machine is geconfigureerd om het IP-adres en DNS-instellingen van DHCP op te halen. Dit zorgt ervoor dat de server een IP-adres binnen het virtuele netwerk verkrijgt wanneer het wordt gestart. 
 
 
-### <a name="get-the-storage-account"></a>Het opslagaccount ophalen
-U hebt een opslagaccount in Azure voor het opslaan van de geüploade VHD. U kunt een bestaand opslagaccount gebruiken of een nieuwe maken. 
+### <a name="get-the-storage-account"></a>Het opslag account ophalen
+U hebt een opslag account in azure nodig om de geüploade VHD op te slaan. U kunt een bestaand opslag account gebruiken of een nieuwe maken. 
 
-De beschikbare opslag-accounts weergeven.
+De beschik bare opslag accounts weer geven.
 
 ```powershell
 Get-AzStorageAccount
 ```
 
-Voor het gebruik van een bestaand opslagaccount, gaat u verder met de [uploaden van de VHD](#upload-the-vhd-to-your-storage-account) sectie.
+Als u een bestaand opslag account wilt gebruiken, gaat u verder naar de sectie [de VHD uploaden](#upload-the-vhd-to-your-storage-account) .
 
 Een opslagaccount maken.
 
-1. U moet de naam van de resourcegroep waar het opslagaccount dat wordt gemaakt. Gebruik Get-AzResourceGroup Zie alle resourcegroepen in uw abonnement.
+1. U hebt de naam van de resource groep nodig waar het opslag account wordt gemaakt. Gebruik Get-AzResourceGroup om alle resource groepen in uw abonnement weer te geven.
    
     ```powershell
     Get-AzResourceGroup
     ```
 
-    Maak een resourcegroep met de naam *myResourceGroup* in de *VS-West* regio.
+    Maak een resource groep met de naam *myResourceGroup* in de regio *VS-West* .
 
     ```powershell
     New-AzResourceGroup `
@@ -91,7 +90,7 @@ Een opslagaccount maken.
        -Location "West US"
     ```
 
-2. Maak een opslagaccount met de naam *mystorageaccount* in de nieuwe resourcegroep met behulp van de [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet.
+2. Maak een opslag account met de naam *mystorageaccount* in de nieuwe resource groep met behulp van de cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) .
    
     ```powershell
     New-AzStorageAccount `
@@ -102,8 +101,8 @@ Een opslagaccount maken.
        -Kind "Storage"
     ```
 
-### <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw storage-account 
-Gebruik de [toevoegen AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) cmdlet voor het uploaden van de VHD naar een container in uw storage-account. In dit voorbeeld wordt het bestand geüpload *myVHD.vhd* van ' C:\Users\Public\Documents\Virtual hardeschijven\" naar een opslagaccount met de naam *mystorageaccount* in de  *myResourceGroup* resourcegroep. Het bestand is opgeslagen in de container met de naam *mycontainer* en de nieuwe bestandsnaam worden *myUploadedVHD.vhd*.
+### <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw opslag account 
+Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de VHD te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand *myVHD. VHD* geüpload van ' C:\Users\Public\Documents\Virtual harde\" schijven naar een opslag account met de naam *mystorageaccount* in de resource groep *myResourceGroup* . Het bestand wordt opgeslagen in de container met de naam *mycontainer* en de nieuwe bestands naam wordt *myUploadedVHD. VHD*.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -114,7 +113,7 @@ Add-AzVhd -ResourceGroupName $resourceGroupName `
 ```
 
 
-Als de opdrachten voltooid zijn, krijgt u een reactie die er ongeveer als volgt uitziet:
+Als de opdrachten zijn geslaagd, wordt een antwoord weer gegeven dat er ongeveer als volgt uitziet:
 
 ```powershell
 MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
@@ -128,13 +127,13 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-Met deze opdracht kan even duren om uit te voeren, afhankelijk van uw netwerkverbinding en de grootte van uw VHD-bestand.
+Het kan enige tijd duren voordat deze opdracht is voltooid, afhankelijk van uw netwerk verbinding en de grootte van het VHD-bestand.
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>Een beheerde schijf maken op basis van de VHD
 
-Een beheerde schijf van de gespecialiseerde VHD in uw storage-account maken met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voorbeeld wordt *myOSDisk1* voor de naam van de schijf, plaatst u de schijf in *Standard_LRS* opslag- en maakt gebruik van *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* als de URI voor de bron-VHD.
+Maak een beheerde schijf van de speciale VHD in uw opslag account met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voor beeld wordt *myOSDisk1* gebruikt voor de naam van de schijf, wordt de schijf in *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* *Standard_LRS* -opslag geplaatst en wordt gebruikt als de URI voor de bron-VHD.
 
-Maak een nieuwe resourcegroep voor de nieuwe virtuele machine.
+Maak een nieuwe resource groep voor de nieuwe virtuele machine.
 
 ```powershell
 $destinationResourceGroup = 'myDestinationResourceGroup'
@@ -142,7 +141,7 @@ New-AzResourceGroup -Location $location `
    -Name $destinationResourceGroup
 ```
 
-Nieuwe schijf met het besturingssysteem van de geüploade VHD maken. 
+Maak de nieuwe besturingssysteem schijf op basis van de geüploade VHD. 
 
 ```powershell
 $sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
@@ -154,16 +153,16 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>Optie 3: Kopiëren van een bestaande VM in Azure
+## <a name="option-3-copy-an-existing-azure-vm"></a>Optie 3: Een bestaande virtuele machine van Azure kopiëren
 
-U kunt een kopie van een virtuele machine die gebruikmaakt van beheerde schijven door het maken van een momentopname van de virtuele machine en klik vervolgens met behulp van deze momentopname te maken van een nieuwe beheerde schijf en een nieuwe virtuele machine maken.
+U kunt een kopie maken van een virtuele machine die gebruikmaakt van beheerde schijven door een moment opname van de virtuele machine uit te voeren en vervolgens met die moment opname een nieuwe beheerde schijf en een nieuwe virtuele machine te maken.
 
 
-### <a name="take-a-snapshot-of-the-os-disk"></a>Een momentopname van de besturingssysteemschijf
+### <a name="take-a-snapshot-of-the-os-disk"></a>Een moment opname maken van de besturingssysteem schijf
 
-U kunt een momentopname van een hele virtuele machine (met inbegrip van alle schijven) of van één schijf. De volgende stappen ziet u hoe u een momentopname van de besturingssysteemschijf van de virtuele machine met de [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) cmdlet. 
+U kunt een moment opname maken van een volledige virtuele machine (inclusief alle schijven) of van slechts één schijf. De volgende stappen laten zien hoe u een moment opname maakt van de besturingssysteem schijf van de virtuele machine met de cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
 
-Stel eerst enkele parameters. 
+Stel eerst een aantal para meters in. 
 
  ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -172,20 +171,20 @@ $location = 'westus'
 $snapshotName = 'mySnapshot'  
 ```
 
-Haal het VM-object.
+Haal het VM-object op.
 
 ```powershell
 $vm = Get-AzVM -Name $vmName `
    -ResourceGroupName $resourceGroupName
 ```
-De naam van de OS-schijf ophalen
+De naam van de besturingssysteem schijf ophalen.
 
  ```powershell
 $disk = Get-AzDisk -ResourceGroupName $resourceGroupName `
    -DiskName $vm.StorageProfile.OsDisk.Name
 ```
 
-Maak de momentopname-configuratie. 
+De configuratie van de moment opname maken. 
 
  ```powershell
 $snapshotConfig =  New-AzSnapshotConfig `
@@ -195,7 +194,7 @@ $snapshotConfig =  New-AzSnapshotConfig `
    -Location $location 
 ```
 
-De momentopname.
+Neem de moment opname.
 
 ```powershell
 $snapShot = New-AzSnapshot `
@@ -205,13 +204,13 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Als u deze momentopname wilt maken van een virtuele machine die moet worden hoge prestaties, de parameter toevoegen `-AccountType Premium_LRS` aan de opdracht New-AzSnapshotConfig. Deze parameter wordt de momentopname gemaakt, zodat deze wordt opgeslagen als een Premium Managed Disk. Premium Managed Disks zijn duurder dan bij Standard, dus zorg ervoor dat u moet Premium voordat u deze parameter.
+Als u deze moment opname wilt gebruiken om een virtuele machine te maken die hoog moet worden uitgevoerd, `-AccountType Premium_LRS` voegt u de para meter toe aan de opdracht New-AzSnapshotConfig. Met deze para meter wordt de moment opname gemaakt zodat deze wordt opgeslagen als Premium-beheerde schijf. Premium-Managed Disks zijn duurder dan standaard. Zorg er dus voor dat u Premium nodig hebt voordat u deze para meter gebruikt.
 
-### <a name="create-a-new-disk-from-the-snapshot"></a>Maak een nieuwe schijf van de momentopname
+### <a name="create-a-new-disk-from-the-snapshot"></a>Een nieuwe schijf maken op basis van de moment opname
 
-Een beheerde schijf maken op basis van de momentopname met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voorbeeld wordt *myOSDisk* voor naam van de schijf.
+Een beheerde schijf maken op basis van de moment opname met behulp van [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk). In dit voor beeld wordt *myOSDisk* gebruikt voor de naam van de schijf.
 
-Maak een nieuwe resourcegroep voor de nieuwe virtuele machine.
+Maak een nieuwe resource groep voor de nieuwe virtuele machine.
 
 ```powershell
 $destinationResourceGroup = 'myDestinationResourceGroup'
@@ -219,13 +218,13 @@ New-AzResourceGroup -Location $location `
    -Name $destinationResourceGroup
 ```
 
-Stel de naam van de OS-schijf. 
+Stel de naam van de besturingssysteem schijf in. 
 
 ```powershell
 $osDiskName = 'myOsDisk'
 ```
 
-De beheerde schijf maken.
+Maak de beheerde schijf.
 
 ```powershell
 $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
@@ -235,15 +234,15 @@ $osDisk = New-AzDisk -DiskName $osDiskName -Disk `
 ```
 
 
-## <a name="create-the-new-vm"></a>De nieuwe virtuele machine maken 
+## <a name="create-the-new-vm"></a>De nieuwe VM maken 
 
-Resources voor netwerken en andere virtuele machine moet worden gebruikt door de nieuwe virtuele machine maken.
+Maak netwerken en andere VM-resources die moeten worden gebruikt door de nieuwe virtuele machine.
 
 ### <a name="create-the-subnet-and-virtual-network"></a>Het subnet en het virtuele netwerk maken
 
-Maak de [virtueel netwerk](../../virtual-network/virtual-networks-overview.md) en het subnet voor de virtuele machine.
+Maak het [virtuele netwerk](../../virtual-network/virtual-networks-overview.md) en het subnet voor de VM.
 
-1. Maak het subnet. Dit voorbeeld maakt u een subnet met de naam *mySubNet*, in de resourcegroep *myDestinationResourceGroup*, en stelt u het adres subnetvoorvoegsel op *10.0.0.0/24*.
+1. Maak het subnet. In dit voor beeld wordt een subnet met de naam *mySubNet*gemaakt in de resource groep *myDestinationResourceGroup*en wordt het adres voorvoegsel van het subnet ingesteld op *10.0.0.0/24*.
    
     ```powershell
     $subnetName = 'mySubNet'
@@ -252,7 +251,7 @@ Maak de [virtueel netwerk](../../virtual-network/virtual-networks-overview.md) e
        -AddressPrefix 10.0.0.0/24
     ```
     
-2. Maak het virtuele netwerk. In het volgende voorbeeld wordt de naam van het virtuele netwerk op *myVnetName*, de locatie voor het *VS-West*, en het adresvoorvoegsel voor het virtuele netwerk naar *10.0.0.0/16*. 
+2. Maak het virtuele netwerk. In dit voor beeld wordt de naam van het virtuele netwerk ingesteld op *myVnetName*, de locatie van *VS-West*en het adres voorvoegsel voor het virtuele netwerk naar *10.0.0.0/16*. 
    
     ```powershell
     $vnetName = "myVnetName"
@@ -264,10 +263,10 @@ Maak de [virtueel netwerk](../../virtual-network/virtual-networks-overview.md) e
     ```    
     
 
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>De netwerkbeveiligingsgroep en een RDP-regel maken
-Als u zich aanmeldt bij uw virtuele machine met remote desktop protocol (RDP), moet u hebt een beveiligingsregel om RDP-toegang op poort 3389. In ons voorbeeld is de VHD voor de nieuwe virtuele machine gemaakt van een bestaande gespecialiseerde virtuele machine, zodat u kunt een account dat bestaat op de virtuele bronmachine gebruiken voor RDP.
+### <a name="create-the-network-security-group-and-an-rdp-rule"></a>De netwerk beveiligings groep en een RDP-regel maken
+Als u zich wilt aanmelden bij uw virtuele machine met RDP (Remote Desktop Protocol), moet u een beveiligings regel hebben waarmee RDP-toegang wordt toegestaan op poort 3389. In ons voor beeld is de VHD voor de nieuwe virtuele machine gemaakt op basis van een bestaande gespecialiseerde virtuele machine, zodat u een account kunt gebruiken dat aanwezig is op de bron-VM voor RDP.
 
-In dit voorbeeld wordt de naam van network security group (NSG) ingesteld op *myNsg* en de naam van de RDP-regel op *myRdpRule*.
+In dit voor beeld wordt de naam van de netwerk beveiligings groep (NSG) ingesteld op *mijnnbg* en de naam van de RDP-regel in *myRdpRule*.
 
 ```powershell
 $nsgName = "myNsg"
@@ -283,12 +282,12 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-Zie voor meer informatie over eindpunten en NSG-regels, [poorten openen voor een virtuele machine in Azure met behulp van PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Zie [poorten openen voor een virtuele machine in azure met behulp van Power shell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over eind punten en NSG regels.
 
-### <a name="create-a-public-ip-address-and-nic"></a>Maak een openbaar IP-adres en de NIC
-Om te communiceren met de virtuele machine in het virtuele netwerk, moet u een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) en een netwerkinterface.
+### <a name="create-a-public-ip-address-and-nic"></a>Een openbaar IP-adres en een NIC maken
+Als u communicatie met de virtuele machine in het virtuele netwerk wilt inschakelen, hebt u een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) en een netwerk interface nodig.
 
-1. Het openbare IP-adres maken. In dit voorbeeld wordt de naam van het openbare IP-adres is ingesteld op *myIP*.
+1. Maak het open bare IP-adres. In dit voor beeld is de naam van het open bare IP-adres ingesteld op *myIP*.
    
     ```powershell
     $ipName = "myIP"
@@ -298,7 +297,7 @@ Om te communiceren met de virtuele machine in het virtuele netwerk, moet u een [
        -AllocationMethod Dynamic
     ```       
     
-2. Maken van de NIC. In dit voorbeeld wordt de naam van de NIC is ingesteld op *myNicName*.
+2. Maak de NIC. In dit voor beeld is de naam van de NIC ingesteld op *myNicName*.
    
     ```powershell
     $nicName = "myNicName"
@@ -311,9 +310,9 @@ Om te communiceren met de virtuele machine in het virtuele netwerk, moet u een [
     
 
 
-### <a name="set-the-vm-name-and-size"></a>De VM-naam en grootte instellen
+### <a name="set-the-vm-name-and-size"></a>De naam en grootte van de virtuele machine instellen
 
-In dit voorbeeld wordt de naam van de virtuele machine ingesteld op *myVM* en de grootte van de virtuele machine op *Standard_A2*.
+In dit voor beeld wordt de naam van de virtuele machine ingesteld op *myVM* en de VM-grootte op *Standard_A2*.
 
 ```powershell
 $vmName = "myVM"
@@ -327,24 +326,24 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 ```
     
 
-### <a name="add-the-os-disk"></a>De OS-schijf toevoegen 
+### <a name="add-the-os-disk"></a>De besturingssysteem schijf toevoegen 
 
-De OS-schijf toevoegen aan de configuratie met behulp van [Set AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk). In dit voorbeeld wordt de grootte van de schijf moet worden ingesteld *128 GB* en koppelt u de beheerde schijf als een *Windows* besturingssysteemschijf.
+Voeg de besturingssysteem schijf toe aan de configuratie met behulp van [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk). In dit voor beeld wordt de grootte van de schijf ingesteld op *128 GB* en wordt de beheerde schijf als een *Windows* -besturingssysteem schijf gekoppeld.
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
-### <a name="complete-the-vm"></a>De virtuele machine voltooien 
+### <a name="complete-the-vm"></a>De virtuele machine volt ooien 
 
-De virtuele machine maken met behulp van [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) met de configuraties die we zojuist hebben gemaakt.
+Maak de virtuele machine met behulp van [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) met de configuraties die we zojuist hebben gemaakt.
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
 ```
 
-Als deze opdracht geslaagd is, ziet u uitvoer zoals de volgende:
+Als deze opdracht is geslaagd, ziet u uitvoer als volgt:
 
 ```powershell
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -354,7 +353,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-U ziet de zojuist gemaakte virtuele machine ofwel in het [Azure-portal](https://portal.azure.com) onder **Bladeren** > **virtuele machines**, of met behulp van de volgende PowerShell-opdrachten.
+U ziet de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup
@@ -362,5 +361,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Aanmelden bij uw nieuwe virtuele machine. Zie voor meer informatie, [hoe u verbinding maken met en meld u aan een virtuele Azure-machine waarop Windows wordt uitgevoerd bij](connect-logon.md).
+Meld u aan bij de nieuwe virtuele machine. Zie [verbinding maken en aanmelden bij een virtuele Azure-machine met Windows](connect-logon.md)voor meer informatie.
 

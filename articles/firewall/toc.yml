@@ -10,7 +10,7 @@
     - name: Implementeren en configureren
       href: tutorial-firewall-deploy-portal.md
     - name: In hybride netwerk implementeren
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: Inkomend verkeer filteren met DNAT
       href: tutorial-firewall-dnat.md
     - name: Diagnostische logboeken bewaken
@@ -39,6 +39,8 @@
   items:
     - name: Implementeren met Azure PowerShell
       href: deploy-ps.md
+    - name: Implementeren in hybride netwerk - PowerShell
+      href: tutorial-hybrid-ps.md
     - name: Implementeren met behulp van Azure CLI
       href: deploy-cli.md
     - name: Implementeren met behulp van een sjabloon

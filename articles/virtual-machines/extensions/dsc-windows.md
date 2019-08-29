@@ -1,6 +1,6 @@
 ---
-title: Azure Desired State Configuration Extension Handler | Microsoft Docs
-description: Uploaden en een PowerShell DSC-configuratie toepassen op een Azure-VM met behulp van DSC-extensie
+title: Extensie-handler voor desired state Configuration van Azure | Microsoft Docs
+description: Een Power shell DSC-configuratie op een Azure-VM uploaden en Toep assen met behulp van DSC-extensie
 services: virtual-machines-windows
 documentationcenter: ''
 author: bobbytreed
@@ -8,40 +8,39 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 89d652f440e97650b7e7ac63cccc7fde75d7204a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ee5a6c732bcb48cd347b8d87b95d2896d7230a08
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798272"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092380"
 ---
-# <a name="powershell-dsc-extension"></a>PowerShell DSC-extensie
+# <a name="powershell-dsc-extension"></a>Power shell DSC-extensie
 
 ## <a name="overview"></a>Overzicht
 
-De PowerShell DSC-extensie voor Windows is gepubliceerd en ondersteund door Microsoft. De extensie wordt geüpload en een PowerShell DSC-configuratie is van toepassing op een Azure-VM. De DSC-extensie aanroepen naar PowerShell DSC op te nemen van de ontvangen DSC-configuratie op de virtuele machine. In dit document worden de ondersteunde platforms, configuraties en implementatie-opties voor de extensie van de DSC-virtuele machine voor Windows.
+De Power shell DSC-extensie voor Windows wordt gepubliceerd en ondersteund door micro soft. De uitbrei ding uploadt en past een Power shell DSC-configuratie op een virtuele machine van Azure toe. De DSC-extensie roept Power shell DSC aan om de ontvangen DSC-configuratie op de virtuele machine te regelen. Dit document bevat een overzicht van de ondersteunde platforms, configuraties en implementatie opties voor de DSC-extensie van de virtuele machine voor Windows.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De DSC-extensie biedt ondersteuning voor het volgende besturingssysteem
+De DSC-extensie ondersteunt de volgende besturings systemen
 
-Windows Server 2019, Windows Server 2016, Windows Server 2012R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows Client 7/8.1/10
+Windows Server 2019, Windows Server 2016, Windows Server 2012R2, Windows Server 2012, Windows Server 2008 R2 SP1, Windows-client 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De DSC-extensie voor Windows is vereist dat de virtuele doelmachine communiceren met Azure en de locatie van de configuratiepakket (.zip-bestand) als deze is opgeslagen op een locatie buiten Azure. 
+De DSC-extensie voor Windows vereist dat de virtuele doel machine kan communiceren met Azure en de locatie van het configuratie pakket (zip-bestand) als deze wordt opgeslagen op een locatie buiten Azure. 
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON ziet u het schema voor het gedeelte instellingen van de DSC-extensie in een Azure Resource Manager-sjabloon. 
+De volgende JSON toont het schema voor het gedeelte instellingen van de DSC-uitbrei ding in een Azure Resource Manager sjabloon. 
 
 ```json
 {
@@ -102,37 +101,37 @@ De volgende JSON ziet u het schema voor het gedeelte instellingen van de DSC-ext
 | ---- | ---- | ---- |
 | apiVersion | 10-01-2018 | date |
 | publisher | Microsoft.Powershell.DSC | string |
-| type | DSC | string |
-| typeHandlerVersion | 2.77 | int |
+| Type | DSC | string |
+| typeHandlerVersion | 2,77 | int |
 
-### <a name="settings-property-values"></a>Waarden voor de eigenschap instellingen
-
-| Name | Gegevenstype | Description
-| ---- | ---- | ---- |
-| settings.wmfVersion | string | Hiermee geeft u de versie van Windows Management Framework die moet worden geïnstalleerd op de virtuele machine. Als deze eigenschap ingesteld op 'nieuwste', wordt de meest recente versie van WMF installeren. De alleen huidige mogelijke waarden voor deze eigenschap zijn 4.0, '5.0' en 'nieuwste'. Deze mogelijke waarden zijn afhankelijk van updates. De standaardwaarde is 'nieuwste'. |
-| settings.configuration.url | string | Hiermee geeft u de URL-locatie van waaruit het zip-bestand van uw DSC-configuratie gedownload. Als de opgegeven URL is een SAS-token om toegang te krijgen vereist, moet u de eigenschap protectedSettings.configurationUrlSasToken instellen op de waarde van uw SAS-token. Deze eigenschap is vereist als settings.configuration.script en/of settings.configuration.function zijn gedefinieerd.
-| settings.configuration.script | string | Hiermee geeft u de bestandsnaam van het script dat de definitie van de DSC-configuratie bevat. Met dit script moet zich in de hoofdmap van het zip-bestand van de URL die is opgegeven door de eigenschap configuration.url gedownload. Deze eigenschap is vereist als settings.configuration.url en/of settings.configuration.script zijn gedefinieerd.
-| settings.configuration.function | string | Hiermee geeft u de naam van de DSC-configuratie. De configuratie met de naam moet worden opgenomen in het script dat is gedefinieerd door configuration.script. Deze eigenschap is vereist als settings.configuration.url en/of settings.configuration.function zijn gedefinieerd.
-| settings.configurationArguments | Collection | Hiermee definieert u de parameters die u wilt doorgeven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
-| settings.configurationData.url | string | Geeft de URL waaruit u uw gegevens (.pds1)-configuratiebestand te downloaden om te gebruiken als invoer voor uw DSC-configuratie. Als de opgegeven URL is een SAS-token om toegang te krijgen vereist, moet u de eigenschap protectedSettings.configurationDataUrlSasToken instellen op de waarde van uw SAS-token.
-| settings.privacy.dataEnabled | string | Hiermee of verzamelen van telemetriegegevens uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn 'Inschakelen', 'Uitschakelen', ', of $null. Deze eigenschap verlaten leeg of null wordt telemetrie inschakelen
-| settings.advancedOptions.forcePullAndApply | Bool | Deze instelling is ontworpen voor het verbeteren van de ervaring van het werken met de extensie voor het registreren van knooppunten met Azure Automation DSC.  Als de waarde `$true`, de uitbreiding wordt gewacht op de eerste uitvoering van de configuratie die is opgehaald uit de service alvorens geslaagde/mislukte.  Als de waarde is ingesteld op $false, de status die wordt geretourneerd door de extensie wordt alleen verwijzen naar of het knooppunt is geregistreerd met de configuratie van Azure Automation-status en de configuratie van de knooppunten wordt niet uitgevoerd tijdens de registratie.
-| settings.advancedOptions.downloadMappings | Collection | Definieert de alternatieve locaties voor het downloaden van afhankelijkheden, zoals WMF en .NET
-
-### <a name="protected-settings-property-values"></a>Beveiligde instellingen eigenschapswaarden
+### <a name="settings-property-values"></a>Eigenschaps waarden van instellingen
 
 | Name | Gegevenstype | Description
 | ---- | ---- | ---- |
-| protectedSettings.configurationArguments | string | Hiermee definieert u de parameters die u wilt doorgeven aan uw DSC-configuratie. Deze eigenschap worden, versleuteld. |
-| protectedSettings.configurationUrlSasToken | string | Hiermee geeft u de SAS-token voor toegang tot de URL die is gedefinieerd door configuration.url. Deze eigenschap worden, versleuteld. |
-| protectedSettings.configurationDataUrlSasToken | string | Hiermee geeft u de SAS-token voor toegang tot de URL die is gedefinieerd door configurationData.url. Deze eigenschap worden, versleuteld. |
+| settings.wmfVersion | string | Hiermee geeft u de versie op van het Windows Management Framework dat op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op ' meest recente ', wordt de meest recente versie van WMF geïnstalleerd. De enige huidige mogelijke waarden voor deze eigenschap zijn ' 4,0 ', ' 5,0 ' en ' meest recent '. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is ' meest recent '. |
+| settings.configuration.url | string | Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie-zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationUrlSasToken instellen op de waarde van uw SAS-token. Deze eigenschap is vereist als instellingen. Configuration. script en/of settings. Configuration. functie zijn gedefinieerd.
+| settings.configuration.script | string | Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven door de eigenschap Configuration. URL. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. script zijn gedefinieerd.
+| settings.configuration.function | string | Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet zijn opgenomen in het script dat is gedefinieerd door Configuration. script. Deze eigenschap is vereist als instellingen. Configuration. URL en/of settings. Configuration. functie zijn gedefinieerd.
+| settings.configurationArguments | Collection | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt niet versleuteld.
+| settings.configurationData.url | string | Hiermee geeft u de URL op waaruit uw pds1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang is vereist, moet u de eigenschap protectedSettings. configurationDataUrlSasToken instellen op de waarde van uw SAS-token.
+| Settings. privacy. dataEnabled | string | Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn ' Enable ', ' Disable ', ' of ' $null. Als u deze eigenschap leeg of null laat, wordt telemetrie ingeschakeld
+| settings.advancedOptions.forcePullAndApply | Bool | Deze instelling is ontworpen om de ervaring van het werken met de uitbrei ding voor het registreren van knoop punten met Azure Automation DSC te verbeteren.  Als de waarde is `$true`, wacht de uitbrei ding op de eerste uitvoering van de configuratie die wordt opgehaald uit de service voordat het succes/de fout wordt geretourneerd.  Als de waarde is ingesteld op $false, verwijst de status die door de uitbrei ding wordt geretourneerd alleen naar of het knoop punt is geregistreerd met Azure Automation status configuratie is geslaagd en de knooppunt configuratie niet wordt uitgevoerd tijdens de registratie.
+| settings.advancedOptions.downloadMappings | Collection | Definieert alternatieve locaties voor het downloaden van afhankelijkheden, zoals WMF en .NET
+
+### <a name="protected-settings-property-values"></a>Eigenschaps waarden voor beveiligde instellingen
+
+| Name | Gegevenstype | Description
+| ---- | ---- | ---- |
+| protectedSettings.configurationArguments | string | Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationUrlSasToken | string | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door Configuration. URL. Deze eigenschap wordt versleuteld. |
+| protectedSettings.configurationDataUrlSasToken | string | Hiermee geeft u het SAS-token voor toegang tot de URL die is gedefinieerd door configurationData. URL. Deze eigenschap wordt versleuteld. |
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen.
-Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor de post-implementatieconfiguratie.
-Een voorbeeld van Resource Manager-sjabloon, met inbegrip van de DSC-extensie voor Windows kunt u vinden op de [Azure Quick Start-galerie](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
+Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor na de implementatie configuratie een vereiste is.
+Een voor beeld van een resource manager-sjabloon die de DSC-extensie voor Windows bevat, kunt u vinden in de [Galerie van Azure Quick Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
@@ -144,17 +143,17 @@ Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit 
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
--Uitbreidingspakket is gedownload en naar deze locatie op de Azure VM is geïmplementeerd
+Het uitbreidings pakket wordt gedownload en geïmplementeerd op deze locatie op de Azure VM
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-Status van extensiebestand bevat de substatus en geslaagde of mislukte statuscodes samen met de gedetailleerde fout en een beschrijving op voor elke uitvoering van extensies.
+Extensie status bestand bevat de substatussen en statussen geslaagd/fout, samen met de gedetailleerde fout en beschrijving voor elke uitbrei ding.
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}\Status\{0}.Status  -> {0} being the sequence number
 ```
 
-Logboeken met uitvoergegevens extensie worden geregistreerd in de volgende map:
+Uitvoer logboeken voor extensies worden vastgelegd in de volgende map:
 
 ```
 C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
@@ -164,11 +163,11 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 | Foutcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 1000 | Algemene fout | Het bericht voor deze fout wordt geleverd door de specifieke uitzondering opgetreden in de logboeken van de extensie |
-| 52 | Fout bij het installeren van extensie | Het bericht voor deze fout wordt geleverd door de specifieke uitzondering |
-| 1002 | Fout van WMF installeren | Fout bij het installeren van WMF. |
-| 1004 | Ongeldige Zip-pakket | Ongeldige zip; Fout bij het uitpakken van het ZIP-bestand |
-| 1100 | Argument Error | Geeft een probleem in de invoer die is opgegeven door de gebruiker. Het bericht voor de fout die wordt geleverd door de specifieke uitzondering|
+| 1000 | Algemene fout | Het bericht voor deze fout wordt gegeven door de specifieke uitzonde ring in extensie logboeken |
+| 52 | Fout bij installatie van extensie | Het bericht voor deze fout wordt gegeven door de specifieke uitzonde ring |
+| 1002 | WMF-installatie fout | Fout bij het installeren van WMF. |
+| 1004 | Ongeldig zip-pakket | Ongeldige zip; Fout bij het uitpakken van de zip |
+| 1100 | Argument fout | Geeft een probleem aan met de invoer van de gebruiker. Het bericht voor de fout wordt gegeven door de specifieke uitzonde ring|
 
 
 ### <a name="support"></a>Ondersteuning

@@ -1,6 +1,6 @@
 ---
-title: Azure API management-beleid voorbeeld - toegang op basis van JWT-claims verlenen | Microsoft Docs
-description: Azure API management-beleid-voorbeeld - ziet u hoe u verleent toegang tot specifieke HTTP-methoden voor een API op basis van JWT-claims.
+title: Voor beeld van Azure API management-beleid-toegang verlenen op basis van JWT-claims | Microsoft Docs
+description: 'Voor beeld van Azure API management-beleid: demonstreert hoe u toegang kunt verlenen tot specifieke HTTP-methoden voor een API op basis van JWT-claims.'
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,31 +9,30 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: d656cf7c7bed1d40bbde654f9c2484efcc5df25d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd99d9ed3eebe6ada60511b3f16c53b0d57a65d6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61062149"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067812"
 ---
-# <a name="authorize-access-based-on-jwt-claims"></a>Toegang op basis van JWT-claims verlenen
+# <a name="authorize-access-based-on-jwt-claims"></a>Toegang op basis van JWT-claims autoriseren
 
-In dit artikel wordt een Azure API management-beleid voorbeeld die laat zien hoe u toegang verlenen aan specifieke HTTP-methoden voor een API op basis van JWT-claims. Als u wilt instellen of bewerken van een beleid voor code, volg de stappen [instellen of bewerken van een beleid](../set-edit-policies.md). Zie voor meer voorbeelden [beleid voorbeelden](../policy-samples.md).
+Dit artikel bevat een voor beeld van een Azure API management-beleid dat laat zien hoe u toegang tot specifieke HTTP-methoden voor een API op basis van JWT-claims kunt autoriseren. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
 
 ## <a name="policy"></a>Beleid
 
-Plak de code in de **inkomende** blokkeren.
+Plak de code in het **binnenkomende** blok.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Pre-authorize requests based on HTTP method with validate-jwt.policy.xml)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de APIM-beleid:
+Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voorbeelden van beleid](../policy-samples.md)
++ [Voor beelden van beleid](../policy-samples.md)
 

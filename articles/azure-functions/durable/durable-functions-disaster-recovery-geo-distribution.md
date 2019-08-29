@@ -1,93 +1,92 @@
 ---
-title: Herstel na noodgevallen en geo-distributie in duurzame functies - Azure
-description: Meer informatie over herstel na noodgevallen en geo-distributie in duurzame functies.
+title: Herstel na nood gevallen en geo-distributie in Durable Functions-Azure
+description: Meer informatie over herstel na nood gevallen en geo-distributie in Durable Functions.
 services: functions
 author: MS-Santi
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f242a16bc89e6b229efa42b88ebd20ca174e2516
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741337"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098074"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Herstel bij noodgeval en geodistributie
 
 ## <a name="overview"></a>Overzicht
 
-Alle status is opgeslagen in duurzame functies in Azure Storage. Een [taak hub](durable-functions-task-hubs.md) is een logische container voor Azure Storage-resources die worden gebruikt voor indelingen. Orchestrator en activiteit functies kunnen alleen met elkaar communiceren wanneer ze deel uitmaken van dezelfde taak hub.
-De beschreven scenario's voorstellen implementatieopties voor betere beschikbaarheid en uitvaltijd tijdens de disaster recovery activiteiten.
+In Durable Functions wordt alle status persistent gemaakt in Azure Storage. Een [Task hub](durable-functions-task-hubs.md) is een logische container voor Azure storage resources die worden gebruikt voor Orchestrations. Orchestrator-en activiteit functies kunnen alleen communiceren wanneer ze tot dezelfde taak hub behoren.
+In de beschreven scenario's worden implementatie opties Voorst Ellen om de beschik baarheid te verhogen en uitval tijd te minimaliseren tijdens nood herstel activiteiten.
 
-Het is belangrijk dat u ziet dat deze scenario's zijn gebaseerd op actief-passief-configuraties, omdat ze worden geleid door het gebruik van Azure Storage. Dit patroon bestaat uit een back-up (passieve) functie-app implementeren naar een andere regio. Traffic Manager bewaakt de primaire (actieve) functie-app voor beschikbaarheid. Het wordt failover naar de back-functie-app als de primaire mislukt. Zie voor meer informatie, [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)van [prioriteit Verkeersrouteringsmethode.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+Het is belang rijk om te zien dat deze scenario's zijn gebaseerd op actieve, passieve configuraties, omdat ze worden begeleid door het gebruik van Azure Storage. Dit patroon bestaat uit het implementeren van een back-uptoepassing (passieve) functie naar een andere regio. Traffic Manager kunt de primaire (actieve) functie-app bewaken voor Beschik baarheid. Er wordt een failover naar de back-upfunctie-app uitgevoerd als de primaire fout is opgetreden. Zie de methode voor de [route ring](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method) van [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)van prioriteit voor meer informatie.
 
 >[!NOTE]
 >
-> - De voorgestelde actief-passieve configuratie zorgt ervoor dat een client altijd kunnen voor het activeren van nieuwe indelingen via HTTP. Als met twee functie-apps delen dezelfde opslag, wordt verwerking op de achtergrond worden verdeeld tussen beide providers, en dingen om de berichten op de dezelfde wachtrijen. Deze configuratie worden in rekening gebracht op de kosten voor de secundaire functie-app toegevoegd uitgaand verkeer.
-> - De onderliggende opslag account en de taak hub in de primaire regio worden gemaakt en worden gedeeld door beide functie-apps.
-> - Alle functie-apps die toch toe worden geïmplementeerd, moeten delen dezelfde functie toegang tot sleutels in het geval van via HTTP wordt geactiveerd. De Functions-Runtime wordt aangegeven dat een [management API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) waarmee consumenten programmatisch toevoegen, verwijderen en bijwerken van de functietoetsen.
+> - De voorgestelde Active-passieve configuratie zorgt ervoor dat een client altijd nieuwe integraties via HTTP kan activeren. Als er echter twee functie-apps zijn die dezelfde opslag delen, wordt de achtergrond verwerking tussen beide functies gedistribueerd, zodat er berichten in dezelfde wacht rijen worden geplaatst. Deze configuratie maakt de extra kosten voor de secundaire functie-app toe.
+> - Het onderliggende opslag account en de taak-hub worden gemaakt in de primaire regio en worden gedeeld door beide functie-apps.
+> - Alle functie-apps die redundant worden geïmplementeerd, moeten dezelfde functie toegangs sleutels delen in het geval van activering via HTTP. Met de functions-runtime wordt een [beheer-API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) beschikbaar gemaakt waarmee gebruikers functie sleutels programmatisch kunnen toevoegen, verwijderen en bijwerken.
 
-## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scenario 1: met gelijke taakverdeling Computing met gedeelde opslag
+## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scenario 1: berekening met gelijke taak verdeling met gedeelde opslag
 
-Als de beheerinfrastructuur in Azure is mislukt, wordt de functie-app beschikbaar. In dit scenario gebruikt u de mogelijkheid van dergelijke downtime minimaliseren, twee functie-apps geïmplementeerd naar verschillende regio's.
-Traffic Manager is geconfigureerd voor detectie van problemen op de primaire functie-app en automatisch verkeer omleiden naar de functie-app in de secundaire regio. Deze functie-app deelt de dezelfde Azure-opslagaccount en de taak Hub. De status van de functie-apps niet verloren en daarom werken normaal kan worden hervat. Zodra de status is hersteld naar de primaire regio, wordt Azure Traffic Manager Routeringsaanvragen voor die functie-app automatisch gestart.
+Als de reken infrastructuur in azure mislukt, is de functie-app mogelijk niet meer beschikbaar. Dit scenario maakt gebruik van twee functie-apps die zijn geïmplementeerd in verschillende regio's om de kans op een dergelijke downtime tot een minimum te beperken.
+Traffic Manager is geconfigureerd om problemen in de primaire functie-app op te sporen en verkeer automatisch om te leiden naar de functie-app in de secundaire regio. Deze functie-app deelt dezelfde Azure Storage account en taak hub. Daarom is de status van de functie-apps niet verloren gegaan en kan het werk gewoon worden hervat. Zodra de status is hersteld naar de primaire regio, wordt door Azure Traffic Manager automatisch routerings aanvragen naar die functie-app gestart.
 
-![Diagram waarin scenario 1.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
+![Diagram waarin scenario 1 wordt weer gegeven.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
 
-Er zijn verschillende voordelen bij het gebruik van dit implementatiescenario:
+Er zijn verschillende voor delen bij het gebruik van dit implementatie scenario:
 
-- Als de rekeninfrastructuur mislukt, kunt werken via regio zonder verlies van de status in de failover hervatten.
-- Traffic Manager zorgt dat de automatische failover wordt uitgevoerd aan de orde functie-app automatisch.
-- Traffic Manager automatisch opnieuw wordt ingesteld door het verkeer naar de primaire functie-app nadat de onderbreking is verholpen.
+- Als de berekenings infrastructuur mislukt, kan de werk stroom in de failover-regio zonder verlies van de status worden hervat.
+- Traffic Manager zorgt ervoor dat automatisch een failover wordt uitgevoerd naar de functie-app in orde.
+- Traffic Manager wordt automatisch het verkeer naar de primaire functie-app hersteld nadat de storing is opgelost.
 
-Met behulp van dit scenario echter overwegen:
+Het gebruik van dit scenario kan echter overwegen:
 
-- Als de functie-app wordt geïmplementeerd met behulp van een toegewezen App Service-plan, verhoogt de rekeninfrastructuur in de failover via datacenter repliceren kosten.
-- In dit scenario bevat informatie over storingen op de compute-infrastructuur, maar het opslagaccount blijft de single point of failure voor de functie-App. Als er een storing in de opslag, heeft de toepassing een uitvaltijd.
-- Als de failover van de functie-app wordt uitgevoerd, wordt er verhoogde latentie omdat deze toegang krijgen de storage-account in regio's tot.
-- Toegang tot de storage-service in een andere regio waar deze zich bevinden in hogere kosten vanwege uitgaande netwerkverkeer worden in rekening gebracht.
-- In dit scenario is afhankelijk van de op Traffic Manager. U overweegt [hoe Traffic Manager werkt](../../traffic-manager/traffic-manager-how-it-works.md), kan het enige tijd totdat een clienttoepassing die gebruikmaakt van een duurzame functie moet het adres in de functie-app vanuit Traffic Manager opnieuw een query zijn.
+- Als de functie-app wordt geïmplementeerd met behulp van een toegewezen App Service-abonnement, verhoogt u de kosten voor het repliceren van de reken infrastructuur in het failover-Data Center.
+- Dit scenario heeft betrekking op storingen in de reken infrastructuur, maar het opslag account blijft de Single Point of Failure voor de functie-app. Als er een opslag storing optreedt, heeft de toepassing een downtime.
+- Als er een failover wordt uitgevoerd voor de functie-app, wordt er een hogere latentie gebruikt omdat het opslag account voor de verschillende regio's wordt geopend.
+- Toegang tot de opslag service vanuit een andere regio waar deze zich bevindt in hogere kosten als gevolg van netwerk uitgaand verkeer.
+- Dit scenario is afhankelijk van Traffic Manager. Het kan enige tijd duren voordat een client toepassing die gebruikmaakt van een duurzame functie, het functie-app-adres van Traffic Manager opnieuw moet opvragen. [Traffic Manager](../../traffic-manager/traffic-manager-how-it-works.md)
 
-## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scenario 2: met gelijke taakverdeling Computing met regionale opslag
+## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scenario 2: berekening met gelijke taak verdeling met regionale opslag
 
-Het voorgaande scenario omvat alleen het geval van storing in de rekeninfrastructuur. Als de storage-service is mislukt, wordt er een storing optreedt van de functie-app leiden.
-In dit scenario gebruikt om ervoor te zorgen, ononderbroken werking van de duurzame functies, een lokale storage-account op elke regio waarop de functie-apps zijn geïmplementeerd.
+In het voor gaande scenario wordt alleen het geval van storing in de reken infrastructuur behandeld. Als de opslag service uitvalt, resulteert dit in een onderbreking van de functie-app.
+Dit scenario maakt gebruik van een lokaal opslag account voor elke regio waarop de functie-apps zijn geïmplementeerd, om een continue werking van de duurzame functies te garanderen.
 
-![Diagram waarin scenario 2.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
+![Diagram waarin scenario 2 wordt weer gegeven.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
 
-Deze aanpak voegt verbeteringen toe op het voorgaande scenario:
+Met deze benadering worden verbeteringen toegevoegd aan het vorige scenario:
 
-- Als de functie-app is mislukt, zorgt Traffic Manager van failover wordt uitgevoerd naar de secundaire regio. Omdat de functie-app, is afhankelijk van zijn eigen storage-account, moet de duurzame functies blijven echter werken.
-- Tijdens een failover wordt uitgevoerd is geen extra latentie in de failover via regio, omdat de functie-app en het opslagaccount geplaatst worden.
-- Fout van de storage-laag zorgt ervoor dat van fouten in de duurzame functies die op zijn beurt een omleiding naar de failover wordt geactiveerd via de regio. Nogmaals, omdat de functie-app en de opslag, geïsoleerd per regio zijn, de duurzame functies blijven werken.
+- Als de functie-app mislukt, neemt Traffic Manager de failover naar de secundaire regio. Omdat de functie-app echter gebruikmaakt van een eigen opslag account, blijven de duurzame functies werken.
+- Tijdens een failover wordt er geen extra latentie in het failover-gebied gevonden, aangezien de functie-app en het opslag account zich in de co-locatie bevinden.
+- Uitval van de opslaglaag veroorzaakt storingen in de duurzame functies, waardoor een omleiding wordt geactiveerd naar het failovergebied. Omdat de functie-app en opslag per regio zijn geïsoleerd, blijven de duurzame functies werken.
 
-Belangrijke overwegingen voor dit scenario:
+Belang rijke overwegingen voor dit scenario:
 
-- Als de functie-app wordt geïmplementeerd met behulp van een toegewezen App service-plan, verhoogt de rekeninfrastructuur in de failover via datacenter repliceren kosten.
-- Huidige status is niet een failover, die aangeeft dat wordt uitgevoerd en controlepunt functies mislukken. Het is aan de clienttoepassing opnieuw proberen/restart het werk.
+- Als de functie-app wordt geïmplementeerd met behulp van een speciaal AppService-plan, verhoogt de kosten voor het repliceren van de reken infrastructuur in het Data Center failover.
+- Er is geen failover uitgevoerd voor de huidige status, wat impliceert dat het uitvoeren van functies en taken in de controle punten mislukt. Het is de client toepassing om het werk opnieuw te proberen of opnieuw te starten.
 
-## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scenario 3: gelijke Computing met gedeelde GRS-opslag
+## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scenario 3: berekening met gelijke taak verdeling met GRS gedeelde opslag
 
-Dit scenario is een wijziging in het eerste scenario implementeren van een gedeelde storage-account. Het belangrijkste verschil dat het opslagaccount is gemaakt met geo-replicatie is ingeschakeld.
-Functioneel, in dit scenario biedt dezelfde voordelen als Scenario 1, maar kunnen aanvullende gegevens recovery voordelen:
+Dit scenario is een wijziging in het eerste scenario, waarbij een gedeeld opslag account wordt geïmplementeerd. Het belangrijkste verschil dat het opslag account is gemaakt terwijl geo-replicatie is ingeschakeld.
+Dit scenario biedt functioneel dezelfde voor delen als scenario 1, maar maakt bijkomende voor delen van gegevens herstel mogelijk:
 
-- Geografisch redundante opslag (GRS) en Read-access GRS (RA-GRS) maximale beschikbaarheid voor uw opslagaccount.
-- Als er een storing in de regio van de storage-service, is een van de mogelijkheden die de datacenterbewerkingen te bepalen dat opslag moet worden failover naar de secundaire regio. In dit geval wordt toegang tot opslagaccount transparant worden omgeleid naar de kopie geo-replicatie van de storage-account, zonder tussenkomst van de gebruiker.
-- In dit geval worden de status van de duurzame functies tot de laatste replicatie van de storage-account, deze wordt weergegeven om de paar minuten bewaard.
+- Geo-redundante opslag (GRS) en GRS met lees toegang (RA-GRS) maximaliseren de beschik baarheid voor uw opslag account.
+- Als er sprake is van een onderbreking van de opslag service, is een van de mogelijkheden dat de Data Center-bewerkingen bepalen dat er een failover naar de secundaire regio moet worden uitgevoerd voor de opslag. In dit geval wordt de toegang tot opslag accounts transparant omgeleid naar de geo-gerepliceerde kopie van het opslag account, zonder tussen komst van de gebruiker.
+- In dit geval wordt de status van de duurzame functies bewaard tot de laatste replicatie van het opslag account, die om de paar minuten plaatsvindt.
 
-Net als bij de andere scenario's, zijn er enkele belangrijke overwegingen:
+Net als bij de andere scenario's zijn er belang rijke overwegingen:
 
-- Een failover uitvoeren naar de replica wordt uitgevoerd door de datacenter-operators en het kan enige tijd duren. Tot die tijd, de functie-app heeft nadelige gevolgen voor een storing.
-- Er is een hogere kosten voor het gebruik van accounts voor opslag met geo-replicatie.
-- GRS optreedt asynchroon. Enkele van de meest recente transacties verloren zijn gegaan vanwege de latentie van het replicatieproces.
+- Een failover naar de replica wordt uitgevoerd door Data Center-Opera tors en kan enige tijd duren. Tot die tijd duurt de functie-app een storing.
+- Er zijn meer kosten verbonden aan het gebruik van geo-gerepliceerde opslag accounts.
+- GRS vindt asynchroon plaats. Enkele van de meest recente trans acties zijn mogelijk verloren gegaan vanwege de latentie van het replicatie proces.
 
-![Diagram waarin scenario 3.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
+![Diagram waarin scenario 3 wordt weer gegeven.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt meer lezen over [het ontwerpen van maximaal beschikbare toepassingen met RA-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+Meer informatie over het [ontwerpen van Maxi maal beschik bare toepassingen met Ra-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md)

@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f97cce2d1a8b2de5634215629ddb997dc8f7196a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 02dcb7174dd9cb2926ef2fafda4b521b939ae68a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235195"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077988"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure-nabijheidplaatsingsgroepen voor optimale netwerklatentie met SAP-toepassingen
 SAP-toepassingen die zijn gebaseerd op de architectuur van SAP NetWeaver of SAP S/4HANA, zijn gevoelig voor netwerk latentie tussen de SAP-toepassingslaag en de SAP-gegevenslaag. De reden voor deze gevoeligheid van deze architecturen wordt geroot in het feit dat het meren deel van de bedrijfs logica wordt uitgevoerd in de toepassingslaag. Als gevolg van het uitvoeren van de bedrijfs logica, verzendt de SAP-toepassings laag query's naar de database laag in hoge frequentie van duizenden en tien duizenden per seconde. In de meeste gevallen is de aard van deze query's eenvoudig. En kunnen vaak worden uitgevoerd op de database laag in minder dan 500 micro seconden of zelfs minder. De tijd die wordt besteed aan het netwerk om een dergelijke query vanuit de toepassingslaag naar de databaserol te verzenden en de resultatenset terug te halen uit de databaserol, heeft aanzienlijke invloed op de tijd die nodig is om bedrijfs processen uit te voeren. Deze gevoeligheid voor netwerk latentie is de reden waarom de tijd moet worden besteed aan SAP-implementatie projecten om een optimale netwerk latentie te krijgen. In [SAP-notitie #1100926-Veelgestelde vragen: Netwerk prestaties](https://launchpad.support.sap.com/#/notes/1100926/E), SAP heeft enkele richt lijnen gepubliceerd voor het classificeren van de netwerk latentie.

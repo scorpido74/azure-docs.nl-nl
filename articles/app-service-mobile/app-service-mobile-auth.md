@@ -1,6 +1,6 @@
 ---
 title: Verificatie en autorisatie in Azure App Service voor mobiele apps | Microsoft Docs
-description: Voor conceptuele verwijzing in en overzicht van de verificatie / autorisatie functie voor Azure App Service, speciaal voor mobiele apps
+description: Conceptuele Naslag informatie en overzicht van de functie voor verificatie/autorisatie voor Azure App Service, met name voor mobiele apps
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -9,79 +9,78 @@ editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d40f1992a5c68872de6e0fa2fc04a1a25abe674
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859121"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098593"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Verificatie en autorisatie in Azure App Service voor mobiele apps
 
-Dit artikel wordt beschreven hoe verificatie en autorisatie werkt bij het ontwikkelen van systeemeigen mobiele apps met een back-end van App Service. App Service biedt geïntegreerde verificatie en autorisatie, zodat uw mobiele apps kunnen gebruikers zich aanmelden zonder een code in App Service te wijzigen. Het biedt een eenvoudige manier voor het beveiligen van uw toepassing en werken met gegevens per gebruiker. 
+In dit artikel wordt beschreven hoe verificatie en autorisatie werkt bij het ontwikkelen van systeem eigen mobiele apps met een App Service back-end. App Service biedt geïntegreerde verificatie en autorisatie, zodat uw mobiele apps gebruikers kunnen ondertekenen zonder code in App Service te wijzigen. Het biedt een eenvoudige manier om uw toepassing te beveiligen en te werken met gegevens per gebruiker. 
 
-In dit artikel richt zich op de ontwikkeling van mobiele Apps. Als u wilt snel aan de slag met App Service-verificatie en autorisatie voor uw mobiele app, ziet u een van de volgende zelfstudies [verificatie toevoegen aan uw iOS-app] [ iOS] (of [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms], of [Cordova]). 
+Dit artikel is gericht op de ontwikkeling van mobiele apps. Als u snel aan de slag wilt gaan met App Service verificatie en autorisatie voor uw mobiele app, raadpleegt u een van de volgende zelf studies [verificatie toevoegen aan uw IOS-app][iOS] (of [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms]of [Cordova]). 
 
-Zie voor meer informatie over de werking verificatie en autorisatie in App Service [verificatie en autorisatie in Azure App Service](../app-service/overview-authentication-authorization.md).
+Zie [verificatie en autorisatie in azure app service](../app-service/overview-authentication-authorization.md)voor meer informatie over de werking van verificatie en autorisatie in app service.
 
-## <a name="authentication-with-provider-sdk"></a>Verificatie met de SDK-provider
+## <a name="authentication-with-provider-sdk"></a>Verificatie met provider-SDK
 
-Nadat u alles in App Service is geconfigureerd, kunt u mobiele clients zich aanmelden met App Service kunt wijzigen. Er zijn hier twee methoden:
+Nadat alles in App Service is geconfigureerd, kunt u mobiele clients wijzigen om zich aan te melden met App Service. Er zijn twee benaderingen:
 
-* Gebruik een SDK die een bepaalde id-provider voor identiteit en vervolgens toegang krijgen tot App Service publiceert.
-* Gebruik één regel code zodat de client-SDK van de Mobile Apps van gebruikers aanmelden kunt.
+* Gebruik een SDK die een bepaalde id-provider publiceert om identiteit in te richten en vervolgens toegang te krijgen tot App Service.
+* Gebruik één regel code zodat de Mobile Apps client-SDK gebruikers kan aanmelden.
 
 > [!TIP]
-> De meeste toepassingen moeten een provider SDK gebruiken om een consistente gebruikerservaring wanneer gebruikers zich aanmelden, tokenvernieuwing-ondersteuning gebruiken en om op te halen van andere voordelen die de provider.
+> De meeste toepassingen moeten een provider-SDK gebruiken om een consistenter ervaring te krijgen wanneer gebruikers zich aanmelden, ondersteuning voor het vernieuwen van tokens gebruiken en andere voor delen ontvangen die de provider heeft opgegeven.
 > 
 > 
 
-Wanneer u een SDK-provider gebruikt, kunnen gebruikers zich aanmelden bij een ervaring die meer nauw is geïntegreerd met het besturingssysteem waarop de app wordt uitgevoerd. Deze methode biedt u ook een token van de provider en enkele gebruikersgegevens op de client, waardoor het veel eenvoudiger te gebruiken, grafiek-API's en aanpassen van de gebruikerservaring. Af en toe op blogs en forums, wordt deze aangeduid als de 'clientstroom' of 'client omgeleid stroom' omdat de code op de client zich in gebruikers en de clientcode toegang tot de token van een provider heeft.
+Wanneer u een provider-SDK gebruikt, kunnen gebruikers zich aanmelden bij een ervaring die nauw keuriger kan worden geïntegreerd met het besturings systeem waarop de app wordt uitgevoerd. Deze methode geeft u ook een provider token en bepaalde gebruikers gegevens op de client, waardoor het veel eenvoudiger is om grafiek-Api's te gebruiken en de gebruikers ervaring aan te passen. Af en toe op blogs en forums wordt de ' client-stroom ' of ' client-gerichte stroom ' genoemd, omdat code op de client zich aanmeldt bij gebruikers, en de client code toegang heeft tot een provider token.
 
-Nadat een token van de provider wordt verkregen, moet deze worden verzonden naar App Service voor validatie. Nadat de App Service valideert het token, maakt App Service een nieuw App Service-token dat wordt geretourneerd naar de client. De SDK voor Mobile Apps-client heeft helpermethoden voor het beheren van deze exchange en koppelt het token automatisch op alle aanvragen naar de back-end van de toepassing. Ontwikkelaars kunnen ook een verwijzing naar het token provider houden.
+Nadat een provider token is verkregen, moet het worden verzonden naar App Service voor validatie. Nadat App Service het token hebt gevalideerd, maakt App Service een nieuw App Service token dat wordt geretourneerd naar de client. De Mobile Apps client-SDK bevat hulp methoden voor het beheren van deze uitwisseling en het token automatisch aan alle aanvragen voor de back-end van de toepassing te koppelen. Ontwikkel aars kunnen ook een verwijzing naar het provider token opslaan.
 
-Zie voor meer informatie over de verificatiestroom [App Service-verificatiestroom](../app-service/overview-authentication-authorization.md#authentication-flow). 
+Zie [app service-verificatie stroom](../app-service/overview-authentication-authorization.md#authentication-flow)voor meer informatie over de verificatie stroom. 
 
-## <a name="authentication-without-provider-sdk"></a>Verificatie zonder SDK-provider
+## <a name="authentication-without-provider-sdk"></a>Verificatie zonder provider-SDK
 
-Als u niet instellen van een SDK-provider wilt, kunt u de functie Mobile Apps van Azure App Service aan te melden voor u. De client-SDK van de Mobile Apps opent u een weergave webpagina met de provider van uw keuze en meld u aan de gebruiker. Af en toe op blogs en forums, wordt deze aangeroepen de 'server stroom' of 'server gerichte stroom' omdat de server beheert het proces dat gebruikers worden aangemeld en de client-SDK nooit een token van de provider ontvangt.
+Als u geen provider-SDK wilt instellen, kunt u de Mobile Apps-functie van Azure App Service toestaan om u aan te melden. De Mobile Apps client-SDK opent een webweergave voor de provider van de gebruiker die u kiest en zich aanmeldt. In afwille van blogs en forums wordt het de ' server stroom ' of ' server-gerichte stroom ' genoemd, omdat de server het proces beheert dat zich aanmeldt bij de gebruikers en de client-SDK nooit het provider token ontvangt.
 
-Code voor het starten van deze stroom is opgenomen in de verificatie-zelfstudie voor elk platform. De client-SDK heeft de token van een App Service aan het einde van de stroom, en het token is automatisch gekoppeld aan alle aanvragen naar de back-end van toepassing.
+De code voor het starten van deze stroom is opgenomen in de verificatie-zelf studie voor elk platform. Aan het einde van de stroom heeft de client-SDK een App Service token en wordt het token automatisch gekoppeld aan alle aanvragen voor de back-end van de toepassing.
 
-Zie voor meer informatie over de verificatiestroom [App Service-verificatiestroom](../app-service/overview-authentication-authorization.md#authentication-flow). 
+Zie [app service-verificatie stroom](../app-service/overview-authentication-authorization.md#authentication-flow)voor meer informatie over de verificatie stroom. 
 ## <a name="more-resources"></a>Meer bronnen
 
-De volgende zelfstudies laten zien hoe u verificatie toevoegen aan uw mobiele clients met behulp van de [server gerichte stroom](../app-service/overview-authentication-authorization.md#authentication-flow):
+In de volgende zelf studies ziet u hoe u verificatie kunt toevoegen aan uw mobiele clients met behulp van de [Server-gerichte stroom](../app-service/overview-authentication-authorization.md#authentication-flow):
 
 * [Verificatie toevoegen aan uw iOS-app][iOS]
 * [Verificatie toevoegen aan uw Android-app][Android]
 * [Verificatie toevoegen aan uw Windows-app][Windows]
-* [Verificatie toevoegen aan uw Xamarin.iOS-app][Xamarin.iOS]
-* [Verificatie toevoegen aan uw Xamarin.Android-app][Xamarin.Android]
-* [Verificatie toevoegen aan uw app Xamarin.Forms][Xamarin.Forms]
+* [Verificatie toevoegen aan uw Xamarin. iOS-app][Xamarin.iOS]
+* [Verificatie toevoegen aan uw Xamarin. Android-app][Xamarin.Android]
+* [Verificatie toevoegen aan uw Xamarin. Forms-app][Xamarin.Forms]
 * [Verificatie toevoegen aan uw Cordova-app][Cordova]
 
-Gebruik de volgende bronnen als u wilt gebruiken de [client omgeleid stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Azure Active Directory:
+Gebruik de volgende bronnen als u de op de [client gerichte stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Azure Active Directory wilt gebruiken:
 
-* [Gebruik de Active Directory-Verificatiebibliotheek voor iOS][ADAL-iOS]
-* [Gebruik de Active Directory-Verificatiebibliotheek voor Android][ADAL-Android]
-* [Gebruik de Active Directory Authentication Library voor Windows en Xamarin][ADAL-dotnet]
+* [De Active Directory Authentication Library voor iOS gebruiken][ADAL-iOS]
+* [De Active Directory Authentication Library voor Android gebruiken][ADAL-Android]
+* [De Active Directory Authentication Library voor Windows en Xamarin gebruiken][ADAL-dotnet]
 
-Gebruik de volgende bronnen als u wilt gebruiken de [client omgeleid stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Facebook:
+Gebruik de volgende resources als u de op de [client gerichte stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Facebook wilt gebruiken:
 
-* [Gebruik de Facebook-SDK voor iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
+* [De Facebook-SDK voor iOS gebruiken](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Gebruik de volgende bronnen als u wilt gebruiken de [client omgeleid stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Twitter:
+Gebruik de volgende resources als u de op de [client gerichte stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Twitter wilt gebruiken:
 
-* [Twitter-infrastructuur voor iOS gebruiken](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
+* [Twitter-infra structuur voor iOS gebruiken](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Gebruik de volgende bronnen als u wilt gebruiken de [client omgeleid stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Google:
+Gebruik de volgende bronnen als u de op de [client gerichte stroom](../app-service/overview-authentication-authorization.md#authentication-flow) voor Google wilt gebruiken:
 
-* [Gebruik de Google-In SDK voor iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
+* [De Google-aanmeldings-SDK voor iOS gebruiken](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md

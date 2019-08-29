@@ -1,124 +1,123 @@
 ---
-title: Aanbevolen procedures voor Azure Functions | Microsoft Docs
-description: Informatie over aanbevolen procedures en patronen voor Azure Functions.
+title: Aanbevolen procedures voor het Azure Functions | Microsoft Docs
+description: Lees de aanbevolen procedures en patronen voor Azure Functions.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: jeconnoc
-keywords: Azure functions, patronen, best practices, functies, gebeurtenisverwerking, webhooks, dynamisch berekenen, architectuur zonder server
+keywords: Azure functions, patronen, best practice, functies, gebeurtenis verwerking, webhooks, dynamische compute, serverloze architectuur
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104662"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097541"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouwbaarheid van Azure Functions
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
-Dit artikel bevat richtlijnen voor het verbeteren van de prestaties en betrouwbaarheid van uw [serverloze](https://azure.microsoft.com/solutions/serverless/) functie-apps. 
+Dit artikel bevat richt lijnen voor het verbeteren van de prestaties en [](https://azure.microsoft.com/solutions/serverless/) betrouw baarheid van uw serverloze functie-apps. 
 
 ## <a name="general-best-practices"></a>Algemene aanbevolen procedures
 
-Hieronder vindt u aanbevolen procedures voor het samenstellen en ontwerpen van uw serverloze oplossingen met behulp van Azure Functions.
+Hieronder vindt u de aanbevolen procedures voor het bouwen en ontwerpen van uw serverloze oplossingen met behulp van Azure Functions.
 
-### <a name="avoid-long-running-functions"></a>Voorkomen dat de uitvoering lang duurt functies
+### <a name="avoid-long-running-functions"></a>Langdurige functies voor komen
 
-Grote en langdurige functies kunnen leiden tot onverwachte time-outproblemen. Een functie kan worden grote vanwege veel Node.js-afhankelijkheden. Importeren van afhankelijkheden kan ook leiden tot betere laadtijden die leiden tot onverwachte time-outs. Afhankelijkheden worden beide expliciet en impliciet geladen. Een enkele module geladen door uw code kan een eigen aanvullende modules worden geladen.  
+Grote, langlopende functies kunnen onverwachte time-outproblemen veroorzaken. Een functie kan groot worden omdat er veel node. js-afhankelijkheden zijn. Het importeren van afhankelijkheden kan ook leiden tot grotere laad tijden die leiden tot onverwachte time-outs. Afhankelijkheden worden zowel expliciet als impliciet geladen. Eén module die door uw code is geladen, kan zijn eigen extra modules laden.  
 
-Indien mogelijk wordt herstructureren grote functies in kleinere functie ingesteld dat werk samen en snel antwoorden retourneren. Bijvoorbeeld, een webhook of HTTP-triggerfunctie mogelijk een reactie bevestiging binnen een bepaalde tijdslimiet; het is gebruikelijk voor webhooks voor een onmiddellijke actie nodig is. U kunt de nettolading van de HTTP-trigger in een wachtrij om te worden verwerkt door een activeringsfunctie doorgeven. Deze aanpak kunt u het echte werk uitstellen en een onmiddellijke reactie retourneren.
-
-
-### <a name="cross-function-communication"></a>Cross-functie-communicatie
-
-[Duurzame functies](durable/durable-functions-concepts.md) en [Azure Logic Apps](../logic-apps/logic-apps-overview.md) zijn gemaakt voor het beheren van statusovergangen en de communicatie tussen meerdere functies.
-
-Als geen duurzame functies of Logic Apps om te integreren met meerdere functies, maar het is doorgaans een aanbevolen procedure voor het gebruik van storage-wachtrijen voor cross-communicatie van de functie.  De belangrijkste reden is storage-wachtrijen zijn goedkoper en eenvoudiger om in te richten. 
-
-Afzonderlijke berichten in een storage-wachtrij worden in grootte beperkt tot 64 KB. Als u nodig hebt om door te geven van grotere berichten tussen functies, een Azure Service Bus-wachtrij kan worden gebruikt ter ondersteuning van bericht in de laag standaard 256 KB-grootten en maximaal 1 MB in de Premium-laag.
-
-Service Bus-onderwerpen zijn handig als u berichten effectief te filteren voorafgaand aan de verwerking is vereist.
-
-Eventhubs zijn handig om ondersteuning voor communicatie met hoog volume.
+Als dat mogelijk is, kunnen er in kleinere functie sets grote functies worden gebruikt die samen werken en snel antwoorden retour neren. Zo kan een webhook of HTTP-activerings functie een bevestigings antwoord vereisen binnen een bepaalde tijds limiet; het is gebruikelijk dat webhooks een onmiddellijke reactie vereisen. U kunt de nettolading van de HTTP-trigger door geven aan een wachtrij die moet worden verwerkt door een functie voor wachtrij activering. Met deze aanpak kunt u de werkelijke hoeveelheid werk uitstellen en een onmiddellijke reactie retour neren.
 
 
-### <a name="write-functions-to-be-stateless"></a>Functies staatloos schrijven 
+### <a name="cross-function-communication"></a>Communicatie tussen meerdere functies
 
-Functies moet stateless en indien mogelijk idempotent zijn. Alle informatie over de vereiste status koppelen aan uw gegevens. Bijvoorbeeld, een bestelling wordt verwerkt waarschijnlijk moet een bijbehorende `state` lid. Een functie kan een volgorde op basis van die staat terwijl de functie zelf staatloze blijven verwerken. 
+[Durable functions](durable/durable-functions-concepts.md) en [Azure Logic apps](../logic-apps/logic-apps-overview.md) zijn gebouwd om status overgangen en communicatie tussen meerdere functies te beheren.
 
-Idempotent-functies zijn met name aanbevolen met timer-triggers. Bijvoorbeeld, als er iets dat absoluut moet één keer per dag worden uitgevoerd, schrijven, zodat het kan elk gewenst moment gedurende de dag worden uitgevoerd met de dezelfde resultaten. De functie kunt afsluiten wanneer er geen werk voor een specifieke dag. Als een eerdere waarvoor niet is voltooid uitvoeren, moet ook de volgende keer wordt uitgevoerd wanneer deze was gebleven kiezen.
+Als u Durable Functions of Logic Apps niet gebruikt om te integreren met meerdere functies, is het meestal een best practice om opslag wachtrijen te gebruiken voor communicatie tussen meerdere delen.  De belangrijkste reden hiervoor is dat opslag wachtrijen goed koper zijn en veel gemakkelijker te inrichten zijn. 
+
+Afzonderlijke berichten in een opslag wachtrij zijn beperkt tot 64 KB. Als u grotere berichten tussen functies wilt door geven, kan een Azure Service Bus wachtrij worden gebruikt ter ondersteuning van bericht grootten van Maxi maal 256 KB in de laag standaard en Maxi maal 1 MB in de Premium-laag.
+
+Service Bus onderwerpen zijn nuttig als u berichten filtering nodig hebt vóór de verwerking.
+
+Event hubs zijn handig voor het ondersteunen van de communicatie van grote volumes.
 
 
-### <a name="write-defensive-functions"></a>Defensieve functies schrijven
+### <a name="write-functions-to-be-stateless"></a>Schrijf functies die stateless zijn 
 
-Wordt ervan uitgegaan dat de functie kan er een uitzondering op elk gewenst moment. Ontwerp uw functies met de mogelijkheid om door te gaan van een eerder punt van mislukken tijdens het volgende uitvoeren. U hebt een scenario waarbij de volgende acties:
+Functies moeten stateless en idempotent, indien mogelijk, zijn. Koppel de vereiste status informatie aan uw gegevens. Een order die wordt verwerkt, zou waarschijnlijk een gekoppeld `state` lid hebben. Een functie kan een volg orde op basis van die status verwerken terwijl de functie zelf staat. 
 
-1. Query voor 10.000 rijen in een database.
-2. Een wachtrijbericht te maken voor elk van deze rijen verdere verwerking van de regel omlaag.
+Idempotent-functies worden met name aanbevolen met timer-triggers. Als u bijvoorbeeld iets hebt dat absoluut één keer per dag moet worden uitgevoerd, kunt u dit schrijven zodat het op elke dag kan worden uitgevoerd met dezelfde resultaten. De functie kan worden afgesloten wanneer er geen werk voor een bepaalde dag is. Ook als een vorige uitvoering niet kon worden voltooid, moet de volgende uitvoering worden opgehaald waar deze is gebleven.
+
+
+### <a name="write-defensive-functions"></a>Verdedigings functies schrijven
+
+Stel dat uw functie op elk moment een uitzonde ring kan ondervinden. Ontwerp uw functies met de mogelijkheid om vanaf een eerder uitgaand fout punt te blijven tijdens de volgende uitvoering. Overweeg een scenario dat de volgende acties vereist:
+
+1. Query voor 10.000 rijen in een Data Base.
+2. Maak een wachtrij bericht voor elk van deze rijen om de regel verder omlaag te verwerken.
  
-Afhankelijk van hoe complex uw systeem is, moet u wellicht: downstream betrokken services naar behoren werkt, netwerken storingen of quotum limieten bereikt, enzovoort. Al deze waarden kunnen invloed hebben op uw functie op elk gewenst moment. U moet uw functies worden voorbereid voor het ontwerpen.
+Afhankelijk van hoe complex uw systeem is, hebt u mogelijk de volgende mogelijkheden: de betrokken downstream-services functioneren niet goed, netwerk storingen of quotum limieten, enzovoort. Al deze kunnen van invloed zijn op uw functie op elk gewenst moment. U moet uw functies ontwerpen om hiervoor voor te bereiden.
 
-Hoe de code reageren als er een fout optreedt nadat 5000 van de items in een wachtrij voor verwerking invoegen? Bijhouden van items in een verzameling die u hebt voltooid. Anders kan u deze volgende keer opnieuw. Dit kan een ernstige gevolgen hebben voor uw werkstroom. 
+Hoe reageert uw code als er een fout optreedt nadat u 5.000 van deze items in een wachtrij voor verwerking hebt ingevoegd? Items bijhouden in een set die u hebt voltooid. Als dat niet het geval is, kunt u ze de volgende keer opnieuw invoegen. Dit kan een ernstige invloed hebben op uw werk stroom. 
 
-Als u een wachtrij-item al is verwerkt, kunt u uw functie moet een niet-op.
+Als een wachtrij-item al is verwerkt, mag de functie niet worden uitgevoerd.
 
-Profiteer van beschermingsmaatregelen reeds wordt geboden voor onderdelen die u in het platform, Azure Functions gebruiken. Zie bijvoorbeeld **Onverwerkbare berichten afhandelen** in de documentatie voor [Azure Storage-wachtrij triggers en bindingen](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Profiteer van de beschik bare verdedigings maatregelen voor onderdelen die u in het Azure Functions platform gebruikt. Zie bijvoorbeeld het **verwerken van verontreinigde wachtrij berichten** in de documentatie voor [Azure Storage wachtrij Triggers en bindingen](functions-bindings-storage-queue.md#trigger---poison-messages). 
 
-## <a name="scalability-best-practices"></a>Aanbevolen procedures voor schaalbaarheid
+## <a name="scalability-best-practices"></a>Best practices voor schaal baarheid
 
-Er zijn een aantal factoren die van invloed zijn op hoe de exemplaren van uw functie-app schalen. De details zijn opgegeven in de documentatie voor [functie schalen](functions-scale.md).  Hier volgen enkele aanbevolen procedures om ervoor te zorgen optimale schaalbaarheid van een functie-app.
+Er zijn een aantal factoren die invloed hebben op de schaal van exemplaren van uw functie-app. De details vindt u in de documentatie over [functie schalen](functions-scale.md).  Hier volgen enkele aanbevolen procedures voor een optimale schaal baarheid van een functie-app.
 
-### <a name="share-and-manage-connections"></a>Delen en beheren van verbindingen
+### <a name="share-and-manage-connections"></a>Verbindingen delen en beheren
 
-Verbindingen met externe resources waar mogelijk opnieuw gebruiken.  Zie [over het beheren van verbindingen in Azure Functions](./manage-connections.md).
+Gebruik waar mogelijk verbindingen met externe bronnen opnieuw.  Zie [verbindingen beheren in azure functions](./manage-connections.md).
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Combineer geen testen en productie-code in dezelfde functie-app
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Test-en productie code niet combi neren in dezelfde functie-app
 
-Functies in een functie-app resources delen. Bijvoorbeeld, wordt het geheugen gedeeld. Als u een functie-app in productie, geen test-functies en resources toevoegen aan. Tijdens het uitvoeren van productie-code kan dit leiden tot onverwachte overhead.
+Functies binnen een functie-app delen resources. Zo wordt geheugen gedeeld. Als u een functie-app in productie gebruikt, voegt u geen aan de test gerelateerde functies en resources toe. Dit kan leiden tot onverwachte overhead tijdens de uitvoering van productie code.
 
-Zorg ervoor dat u in uw productie-functie-apps laden. Geheugen is een gemiddelde van elke functie in de app.
+Wees voorzichtig met wat u laadt in uw productie functie-apps. Het geheugen wordt gemiddeld verdeeld over elke functie in de app.
 
-Als u een gedeelde assembly waarnaar wordt verwezen in meerdere .NET-functies hebt, kunt u deze in een algemene gedeelde map geplaatst. Verwijzen naar de assembly met een instructie die vergelijkbaar is met het volgende voorbeeld als met behulp van C#-Scripts (.csx): 
+Als u een gedeelde assembly hebt waarnaar in meerdere .NET-functies wordt verwezen, plaatst u deze in een gemeen schappelijke gedeelde map. Raadpleeg de assembly met een instructie die vergelijkbaar is met het volgende C# voor beeld als u scripts (. CSX) gebruikt: 
 
     #r "..\Shared\MyAssembly.dll". 
 
-Anders is het eenvoudig te implementeren per ongeluk meerdere testversies van dezelfde binaire die zich anders tussen functies gedragen.
+Anders is het eenvoudig om per ongeluk meerdere test versies van dezelfde binaire elementen te implementeren die zich op verschillende manieren gedragen.
 
-Gebruik geen uitgebreide logboekregistratie in productiecode. Er is een negatief prestatieresultaat.
+Gebruik geen uitgebreide logboek registratie in productie code. Het heeft een negatieve invloed op de prestaties.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Async-code gebruiken, maar geen aanroepen blokkeren
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Gebruik async code, maar voorkom het blok keren van aanroepen
 
-Asynchrone programmering is een aanbevolen procedure. Echter altijd voorkomen die verwijst naar de `Result` eigenschap of aanroepen `Wait` methode op een `Task` exemplaar. Deze aanpak kan leiden tot uitputting van de thread.
+Asynchrone programmering is een aanbevolen best practice. Vermijd echter altijd het verwijzen naar de `Result` eigenschap of het `Wait` aanroepen van `Task` de methode voor een exemplaar. Deze benadering kan leiden tot uitputting van de thread.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Berichten ontvangen in batch indien mogelijk
+### <a name="receive-messages-in-batch-whenever-possible"></a>Indien mogelijk berichten in batch ontvangen
 
-Sommige triggers, zoals Event Hub inschakelen ontvangen van een batch van berichten op een enkele aanroep.  Batchverwerking berichten heeft veel betere prestaties.  U kunt de maximale batchgrootte in configureren de `host.json` zoals beschreven in het bestand de [naslaginformatie voor host.json](functions-host-json.md)
+Sommige triggers, zoals Event hub, kunnen een batch berichten ontvangen met één aanroep.  Batch berichten hebben veel betere prestaties.  U kunt de maximale Batch grootte in het `host.json` bestand configureren zoals beschreven in de [host. json-referentie documentatie](functions-host-json.md)
 
-U kunt het type wijzigen naar een matrix sterk getypeerde voor C#-functies.  Bijvoorbeeld, in plaats van `EventData sensorEvent` handtekening van de methode kan worden `EventData[] sensorEvent`.  Voor andere talen moet u expliciet in te stellen de eigenschap cardinality in uw `function.json` naar `many` om in te schakelen batchverwerking [zoals hieronder](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+Voor C# functions kunt u het type wijzigen in een sterk getypeerde matrix.  In plaats van de hand `EventData sensorEvent` tekening van de methode kan `EventData[] sensorEvent`bijvoorbeeld niet worden gebruikt.  Voor andere talen moet u de eigenschap kardinaliteit expliciet instellen in uw `function.json` to om `many` batch verwerking in te scha kelen [, zoals hier wordt weer gegeven](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Host-gedrag voor het afhandelen van beter gelijktijdigheid configureren
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Gedrag van hosts configureren voor betere verwerking van gelijktijdigheid
 
-De `host.json` -bestand in de functie-app zijn toegestaan voor de configuratie van de gedrag van de runtime en trigger van de host.  Naast het gedrag van batches, kunt u de waarde voor concurrency voor een aantal triggers beheren.  De waarden in deze opties vaak aanpassen, kunt de schaal van elk exemplaar op de juiste wijze voor de eisen van de aangeroepen functies.
+Met `host.json` het bestand in de functie-app kunt u de runtime van de host en trigger gedrag configureren.  Naast het uitvoeren van batch verwerking, kunt u gelijktijdigheid voor een aantal triggers beheren.  Het aanpassen van de waarden in deze opties kan er vaak toe leiden dat elke instantie op de juiste wijze wordt geschaald voor de vereisten van de aangeroepen functies.
 
-Instellingen in het hosts-bestand toepassen voor alle functies in de app binnen een *één exemplaar* van de functie. Als u een functie-app met 2 HTTP-functies en gelijktijdige aanvragen is ingesteld op 25, wordt door een aanvraag om een HTTP-trigger te tellen naar de gedeelde 25 gelijktijdige aanvragen.  Als deze functie-app geschaald naar 10 exemplaren, de 2 functies effectief 250 gelijktijdige aanvragen toestaan (10 exemplaren * 25 gelijktijdige aanvragen per exemplaar).
+Instellingen in het bestand hosts zijn van toepassing op alle functies in de app, binnen *één exemplaar* van de functie. Als u bijvoorbeeld een functie-app met 2 HTTP-functies en gelijktijdige aanvragen hebt ingesteld op 25, telt een aanvraag voor een HTTP-trigger naar de gedeelde 25 gelijktijdige aanvragen.  Als deze functie-app is geschaald naar 10 instanties, zouden de twee functies effectief aanvragen van 250 toestaan (10 instanties * 25 gelijktijdige aanvragen per instantie).
 
-**Opties voor HTTP-gelijktijdigheid van host**
+**Opties voor HTTP-gelijktijdigheids host**
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-Andere configuratieopties host vindt [in het configuratiebestand voor host](functions-host-json.md).
+Andere configuratie opties voor de host vindt u [in het configuratie document voor de host](functions-host-json.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de volgende bronnen voor meer informatie:
 
-* [Over het beheren van verbindingen in Azure Functions](manage-connections.md)
-* [Aanbevolen procedures van Azure App Service](../app-service/app-service-best-practices.md)
+* [Verbindingen beheren in Azure Functions](manage-connections.md)
+* [Aanbevolen procedures Azure App Service](../app-service/app-service-best-practices.md)

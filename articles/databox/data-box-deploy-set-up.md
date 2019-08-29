@@ -1,21 +1,33 @@
 ---
-title: Zelfstudie voor het instellen van Azure Data Box | Microsoft Docs
+title: Zelf studie voor het instellen van Azure Data Box | Microsoft Docs
 description: Leer hoe u de Azure Data Box bekabelt en aansluit
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 6a725784c419b67f7738b70ad867d2d6ef8b0785
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4e997998c345e1cbd6ff784aaf84bc9f605f691c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795963"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098645"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Zelfstudie: De Azure Data Box bekabelen en aansluiten
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="cable-and-connect-to-your-device"></a>Kabel en verbinding maken met uw apparaat
+
+::: zone-end
+
+::: zone target="docs"
 
 In deze zelfstudie wordt beschreven hoe u de Azure Data Box bekabelt, aansluit en inschakelt.
 
@@ -40,7 +52,7 @@ Zorg voordat u begint voor het volgende:
     - Een verbinding bestaan met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10-GbE-verbinding beschikbaar is, kan een 1-GbE-gegevensverbinding worden gebruikt. Dit heeft echter wel invloed op de kopieersnelheid. 
 6. U moet de beschikking hebben over een plat oppervlak waarop u de Data Box kunt plaatsen. Als u het apparaat op een plank van een standaardrek wilt plaatsen, moet het datacenterrek beschikken over een 7U-sleuf. U kunt het apparaat plat of rechtop in het rek plaatsen.
 7. U hebt de volgende kabels aangeschaft om de Data Box aan te sluiten op de hostcomputer.
-    - Een of meer koperen 10-GbE-kabels van het type SFP+ Twinax of glasvezelkabels van het type SFP+ (te gebruiken met de netwerkinterfaces DATA 1 en DATA 2). Data Box heeft de Mellanox ConnectX®-3 Pro EN Dual Port 10GBASE-T Adapters met PCI Express 3.0 netwerkinterface. Kabels die compatibel zijn met deze interface moeten dus werken. Bijvoorbeeld, een CISCO SFP-H10GB-CU3M 10GBASE CU TWINMAX SFP + 3 M is kabel voor interne testdoeleinden gebruikt. Zie voor meer informatie de [lijst met ondersteunde kabels en switches van Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Een of meer koperen 10-GbE-kabels van het type SFP+ Twinax of glasvezelkabels van het type SFP+ (te gebruiken met de netwerkinterfaces DATA 1 en DATA 2). Data Box heeft de Mellanox ConnectX®-3 Pro EN Dual Port 10GBASE-T Adapters met PCI Express 3.0 netwerkinterface. Kabels die compatibel zijn met deze interface moeten dus werken. Bijvoorbeeld, een CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP + 3 meter kabel werd gebruikt voor interne tests. Zie de [lijst met ondersteunde kabels en switches van Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)voor meer informatie.
     - Eén RJ-45-netwerkkabel van het type CAT 6 (gebruiken met de MGMT-netwerkinterface)
     - Eén RJ-45-netwerkkabel van het type CAT 6A OF CAT 6 (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
 
@@ -63,6 +75,38 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 4. Zoek de aan/uit-knop op het bedieningspaneel aan de voorzijde van het apparaat. Schakel het apparaat in.
 
     ![Aan-/uit-knop Data Box](media/data-box-deploy-set-up/data-box-powered-door-open.png)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+Nadat u het apparaat hebt ontvangen, moet u uw apparaat aansluiten en er verbinding mee maken. 
+
+## <a name="cable-your-device"></a>Uw apparaat bekabelen
+
+1. Ga niet verder als u vermoedt dat er met het apparaat is geknoeid of dat het is beschadigd. Neem contact op met Microsoft Ondersteuning om een vervangend apparaat naar u te laten verzenden.
+2. Controleer of u de volgende kabels hebt, voordat u het apparaat gaat aansluiten:
+    
+    - (Meegeleverd) geaard netsnoer met een vermogen van 10 A of hoger met een IEC60320 C-13-connector aan één eind om het apparaat te koppelen.
+    - Eén RJ-45-netwerkkabel van het type CAT 6 (gebruiken met de MGMT-netwerkinterface)
+    - Twee koperen 10 GbE-kabels van het type SFP+ Twinax (gebruiken met 10 Gbps DATA 1-, DATA 2-netwerkinterfaces)
+    - Eén RJ-45-netwerkkabel van het type CAT 6A OF CAT 6 (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
+
+3. Haal het apparaat uit de doos en plaats het op een plat oppervlak. 
+    
+4. Sluit de kabels aan zoals hieronder wordt weergegeven.  
+
+    ![Bekabelde achterzijde van Data Box-apparaat](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
+
+    1. Sluit de voedingskabel aan op het apparaat.
+    2. Gebruik de RJ-45-netwerkkabel van het type CAT-6 om de hostcomputer te koppelen aan de MGMT-poort (Managementpoort) op het apparaat. 
+    3. Gebruik de koperen kabel van het type SFP+ Twinax om verbinding te maken met minstens één 10 Gbps-netwerkinterface (liever dan 1 Gbps), DATA 1 of DATA 2 voor gegevens. 
+    4. Schakel het apparaat in. De Aan/uit-knop bevindt zich op het voorpaneel van het apparaat.
+
+::: zone-end
+
+::: zone target="docs"
+
 
 ## <a name="connect-to-your-device"></a>Verbinding maken met uw apparaat
 
@@ -92,6 +136,22 @@ Zodra de gegevensnetwerkinterfaces zijn geconfigureerd, kunt u ook het IP-adres 
 
 Zodra de installatie van het apparaat is voltooid, kunt u verbinding maken met de apparaatshares en de gegevens van uw computer naar het apparaat kopiëren. 
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="connect-your-device"></a>Uw apparaat verbinden
+
+1. Als u het wachtwoord van het apparaat wilt ophalen, gaat u naar **Algemeen > Apparaatdetails** in de [Azure-portal](https://portal.azure.com).
+2. Wijs een statisch IP-adres 192.168.100.5 en subnet 255.255.255.0 toe aan de Ethernet-adapter op de computer die u gebruikt om verbinding te maken met Data Box. U hebt op `https://192.168.100.10` toegang tot de webgebruikersinterface van het apparaat. Nadat u het apparaat hebt ingeschakeld, duurt het maximaal 5 minuten om de verbinding tot stand te brengen. 
+3. Meld u aan met het wachtwoord uit de Azure-portal. U ziet nu een foutmelding over een probleem met het beveiligingscertificaat van de website. Volg de browserinstructies om naar de webpagina te gaan.
+4. De netwerkinstellingen voor de 10 Gbps-gegevensinterface (of 1 Gbps) zijn standaard geconfigureerd als DHCP. Indien nodig kunt u deze interface configureren als statisch en een IP-adres opgeven. 
+
+::: zone-end
+
+
+::: zone target="docs"
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Data Box, zoals:
@@ -104,4 +164,6 @@ Ga naar de volgende zelfstudie om te lezen hoe u gegevens kopieert naar uw Data 
 
 > [!div class="nextstepaction"]
 > [Uw gegevens naar Azure Data Box kopiëren](./data-box-deploy-copy-data.md)
+
+::: zone-end
 

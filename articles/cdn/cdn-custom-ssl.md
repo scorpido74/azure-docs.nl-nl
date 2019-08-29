@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 0ad01d76e93c731ed5faed268a0537cada787952
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996816"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114496"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast domein van Azure CDN configureren
 
@@ -312,6 +312,9 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 
     Uw bestaande domeinen worden de komende maanden geleidelijk gemigreerd naar één certificaat, als Microsoft analyseert dat alleen SNI-clientaanvragen aan uw toepassing worden gericht. Als Microsoft detecteert dat er nog niet-SNI client-aanvragen aan uw toepassing worden gericht, behouden uw domeinen het SAN-certificaat met TLS/SSL op basis van IP. In elk geval is er geen onderbreking van uw service of ondersteuning van uw clientaanvragen, ongeacht of het SNI- of niet-SNI-aanvragen zijn.
 
+7. *Hoe werkt het vernieuwen van certificaten met uw eigen certificaat?*
+
+    Als u er zeker van wilt zijn dat een nieuwere certificaat wordt geïmplementeerd op de PoP-infra structuur, uploadt u uw nieuwe certificaat naar Azure-sleutel kluis en kiest u vervolgens in uw SSL-instellingen op Azure CDN de nieuwste certificaat versie en klikt u op opslaan. Azure CDN wordt vervolgens uw nieuwe bijgewerkte certificaat propogate. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

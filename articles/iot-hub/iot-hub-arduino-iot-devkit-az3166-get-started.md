@@ -1,6 +1,6 @@
 ---
-title: IoT DevKit naar de cloud--IoT DevKit AZ3166 verbindt met Azure IoT Hub | Microsoft Docs
-description: In deze zelfstudie leert u hoe u instelt en verbindt IoT DevKit AZ3166 met Azure IoT Hub, zodat het verzenden van gegevens naar de Azure-cloud-platform.
+title: 'IoT DevKit to Cloud: Connect IoT DevKit AZ3166 to Azure IoT Hub | Microsoft Docs'
+description: In deze zelf studie leert u hoe u IoT DevKit AZ3166 kunt instellen en verbinden met Azure IoT Hub zodat het gegevens kan verzenden naar het Azure-Cloud platform.
 author: wesmc7777
 manager: philmea
 ms.service: iot-hub
@@ -9,60 +9,60 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 4017a3be5e03e1a9b85b4002b8069a1adc3a6b83
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: d23d1881bb2d07d6287d648bb8ceb3e7930d547e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551571"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074477"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 verbinden met Azure IoT Hub
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-U kunt de [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) te ontwikkelen en prototype Internet of Things (IoT)-oplossingen die van Microsoft Azure-services profiteren. Het bevat een bord Arduino-compatibel met uitgebreide randapparatuur en sensoren, een open-source-bord-pakket en een uitgebreide [Voorbeeldgalerie](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/).
+U kunt de [MXChip IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) gebruiken om IOT-oplossingen (prototype Internet of Things) te ontwikkelen die profiteren van Microsoft Azure Services. Het bevat een Arduino-compatibel bord met uitgebreide rand apparatuur en Sens oren, een open-source kaart pakket en een rijke [voorbeeld galerie](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/).
 
 ## <a name="what-you-learn"></a>Wat u leert
 
-* Over het maken van een IoT-hub en een apparaat registreren voor de MXChip IoT DevKit.
-* Hoe u de IoT DevKit verbinden met Wi-Fi en de IoT Hub-verbindingsreeks configureren.
-* Over het verzenden van de DevKit sensor-telemetriegegevens naar uw IoT-hub.
-* Hoe u de ontwikkelomgeving voorbereiden en ontwikkelen van toepassingen voor de IoT DevKit.
+* Hoe u een IoT hub maakt en een apparaat registreert voor de MXChip IoT DevKit.
+* De IoT-DevKit verbinden met Wi-Fi en de IoT Hub connection string configureren.
+* Hoe u de telemetrie-gegevens van de DevKit-sensor verzendt naar uw IoT-hub.
+* De ontwikkel omgeving voorbereiden en de toepassing ontwikkelen voor de IoT-DevKit.
 
-Heb je nog een DevKit? Probeer de [DevKit simulator](https://azure-samples.github.io/iot-devkit-web-simulator/) of [aanschaffen van een DevKit](https://aka.ms/iot-devkit-purchase).
+Hebt u nog geen DevKit? Probeer de [DevKit Simulator](https://azure-samples.github.io/iot-devkit-web-simulator/) of [Koop een DevKit](https://aka.ms/iot-devkit-purchase).
 
-U vindt de broncode voor alle DevKit zelfstudies op de [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) opslagplaats.
+U kunt de bron code voor alle DevKit-zelf studies vinden in de [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) -opslag plaats.
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-* Een bord MXChip IoT DevKit met een Micro-USB-kabel. [Nu downloaden](https://aka.ms/iot-devkit-purchase).
+* Een MXChip IoT DevKit-bord met een micro USB-kabel. [Nu downloaden](https://aka.ms/iot-devkit-purchase).
 * Een computer met Windows 10, macOS 10.10 + of Ubuntu 18.04 +.
-* Een actief Azure-abonnement. [Activeren van een gratis 30-daagse proefversie Microsoft Azure-account](https://azureinfo.microsoft.com/us-freetrial.html).
+* Een actief Azure-abonnement. [Activeer een gratis Microsoft Azure-abonnement van 30 dagen](https://azureinfo.microsoft.com/us-freetrial.html).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
   
-## <a name="prepare-your-hardware"></a>Bereid uw hardware
+## <a name="prepare-your-hardware"></a>Uw hardware voorbereiden
 
-De volgende hardware op de computer koppelen:
+De volgende hardware aansluiten op uw computer:
 
-* DevKit bord
-* Micro-USB-kabel
+* DevKit Board
+* Micro USB-kabel
 
 ![Vereiste hardware](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/hardware.jpg)
 
-Als u wilt de DevKit verbinden met uw computer, de volgende stappen uit:
+Voer de volgende stappen uit om de DevKit te verbinden met uw computer:
 
-1. Het einde van de USB-verbinding naar uw computer.
+1. Sluit de USB-end op uw computer aan.
 
-2. Het einde Micro-USB verbinden met de DevKit.
+2. Verbind het micro USB-einde met de DevKit.
 
-3. De groene LED voor energiebeheer wordt bevestigd dat de verbinding.
+3. Met de groene LED voor Power wordt de verbinding bevestigd.
 
-   ![Hardwareverbindingen](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connect.jpg)
+   ![Hardware-verbindingen](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connect.jpg)
 
-## <a name="quickstart-send-telemetry-from-devkit-to-an-iot-hub"></a>Quickstart: Verzenden van telemetrie uit DevKit naar een IoT-Hub
+## <a name="quickstart-send-telemetry-from-devkit-to-an-iot-hub"></a>Quickstart: Telemetrie verzenden van DevKit naar een IoT Hub
 
-De Snelstartgids wordt vooraf gecompileerde DevKit firmware gebruikt voor het verzenden van de telemetrie naar de IoT Hub. Voordat u deze uitvoert, moet u een IoT-hub maken en registreren van een apparaat met de hub.
+De Snelstartgids maakt gebruik van vooraf gecompileerde DevKit-firmware om de telemetrie naar de IoT Hub te verzenden. Voordat u het uitvoert, maakt u een IoT-hub en registreert u een apparaat bij de hub.
 
 ### <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -72,7 +72,7 @@ De Snelstartgids wordt vooraf gecompileerde DevKit firmware gebruikt voor het ve
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze snelstart gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 
-1. Voer de volgende opdracht in Azure Cloud Shell te maken van de apparaat-id.
+1. Voer de volgende opdracht uit in Azure Cloud Shell om de apparaat-id te maken.
 
    **YourIoTHubName**: vervang deze tijdelijke aanduiding door een door u gekozen naam voor de IoT-hub.
 
@@ -81,8 +81,9 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
+
    > [!NOTE]
-   > Als er een fout optreedt bij het uitvoeren van `device-identity`, installeert de [Azure IOT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) voor meer informatie.
+   > Als er een fout optreedt `device-identity`, installeert u de [Azure IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) voor meer informatie.
   
 1. Voer de volgende opdrachten uit in Azure Cloud Shell om de _apparaatverbindingsreeks_ op te halen voor het apparaat dat u zojuist hebt geregistreerd:
 
@@ -98,83 +99,94 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
 
     U gebruikt deze waarde verderop in de snelstartgids.
 
-### <a name="send-devkit-telemetry"></a>DevKit telemetrie verzenden
+### <a name="send-devkit-telemetry"></a>DevKit-telemetrie verzenden
 
-De DevKit maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub en temperatuur en vochtigheid telemetrie verzendt.
+De DevKit maakt verbinding met een apparaat-specifiek eind punt op uw IoT-hub en verzendt een telemetrie van de Tempe ratuur en vochtigheid.
 
-1. Download de nieuwste versie van [GetStarted firmware](https://aka.ms/devkit/prod/getstarted/latest) voor IoT DevKit.
+1. Down load de nieuwste versie van de [GetStarted-firmware](https://aka.ms/devkit/prod/getstarted/latest) voor IOT DevKit.
 
-1. Zorg ervoor dat IoT DevKit verbinden met uw computer via USB. Open File Explorer er een USB-massaopslag-apparaat met de naam is **AZ3166**.
-    ![Open Windows Explorer](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/az3166-usb.png)
+1. Zorg ervoor dat IoT DevKit verbinding maakt met uw computer via USB. Verkenner openen er is een USB-apparaat voor massa opslag met de naam **AZ3166**.
 
-1. Slepen en neerzetten de firmware zojuist hebt gedownload naar het apparaat voor massaopslag en deze wordt automatisch flash.
+    ![Windows Verkenner openen](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/az3166-usb.png)
+
+1. Slepen en neerzetten van de firmware die zojuist is gedownload naar het apparaat voor massa opslag. deze wordt automatisch Flash.
+
     ![Firmware kopiëren](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/copy-firmware.png)
 
-1. Op de DevKit, houdt u ingedrukt **B**, push en laat de **opnieuw** knoppen, en vervolgens release **B**. Uw DevKit in de Azië en Stille Oceaan modus geplaatst. Het scherm weergegeven om te bevestigen, de serviceset-id (SSID) van de DevKit en de IP-adres van de configuratie-portal.
-    ![Knop, knop B en SSID opnieuw instellen](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ap.jpg)
+1. Houd op de DevKit knop **b**, druk op de knop **Reset** en laat deze los en laat vervolgens de knop **b**los. Uw DevKit voert de AP-modus in. Ter bevestiging: in het scherm wordt de SSID (Service Set Identifier) van de DevKit en het IP-adres van de configuratie portal weer gegeven.
 
-    ![Modus instellen voor Azië en Stille Oceaan](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/set-ap-mode.gif)
+    ![Knop opnieuw instellen, knop B en SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ap.jpg)
 
-1. Gebruik een webbrowser op een andere Wi-Fi ingeschakeld apparaat (computer of mobiele telefoon) verbinding maken met de IoT DevKit SSID weergegeven in de vorige stap. Als het om een wachtwoord wordt gevraagd, laat deze leeg.
-    ![Verbinding maken met de SSID](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
+    ![De modus AP instellen](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/set-ap-mode.gif)
 
-1. Open **192.168.0.1** in de browser. Selecteer het Wi-Fi die u wilt dat de IoT DevKit verbinden als u wilt, typt u het Wi-Fi-wachtwoord en plak de verbindingsreeks die u hebt aangebracht, houd er rekening mee van eerder. Klik vervolgens op Save.
+1. Gebruik een webbrowser op een ander Wi-Fi-apparaat (computer of mobiel nummer) om verbinding te maken met de IoT DevKit SSID die in de vorige stap wordt weer gegeven. Als u wordt gevraagd om een wacht woord, laat dit leeg.
+
+    ![SSID verbinden](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/connect-ssid.png)
+
+1. Open **192.168.0.1** in de browser. Selecteer de Wi-Fi waarmee u wilt dat de IoT DevKit verbinding maakt, typ het Wi-Fi-wacht woord en plak het apparaat connection string u eerder een notitie hebt gemaakt. Klik vervolgens op Save.
+
     ![Configuratie-UI](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui.png)
 
     > [!NOTE]
-    > De IoT DevKit biedt alleen ondersteuning voor network 2,4 GHz. Controleer [Veelgestelde vragen over](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration) voor meer informatie.
+    > IoT DevKit biedt alleen ondersteuning voor een 2,4 GHz-netwerk. Raadpleeg de [Veelgestelde vragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration) voor meer informatie.
 
-1. De verbindingsreeks van Wi-Fi informatie en het apparaat worden opgeslagen in de IoT DevKit wanneer u de pagina ziet.
-    ![Resultaat van de configuratie](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui-result.png)
+1. De WiFi-informatie en de connection string van het apparaat worden opgeslagen in de IoT-DevKit wanneer u de pagina met resultaten ziet.
+
+    ![Configuratie resultaat](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/configuration-ui-result.png)
 
     > [!NOTE]
-    > Nadat Wi-Fi is geconfigureerd, wordt uw referenties op het apparaat voor die verbinding behouden, zelfs als het apparaat losgekoppeld wordt.
+    > Nadat Wi-Fi is geconfigureerd, blijven uw referenties voor die verbinding op het apparaat behouden, zelfs als het apparaat is ontkoppeld.
 
-1. De IoT DevKit opnieuw wordt opgestart in een paar seconden. Op het scherm DevKit ziet u het IP-adres voor de DevKit wordt gevolgd door de telemetriegegevens met inbegrip van temperatuur en vochtigheid-waarde met het aantal berichten verzenden naar Azure IoT Hub.
-    ![WiFi IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
+1. IoT DevKit wordt binnen een paar seconden opnieuw opgestart. Op het scherm DevKit ziet u het IP-adres voor de DevKit dat wordt gevolgd door de telemetriegegevens, inclusief de waarde voor Tempe ratuur en vochtigheid met aantal berichten verzenden naar Azure IoT Hub.
+
+    ![Wi-Fi-IP](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
     ![Verzenden van gegevens](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
 
-1. Om te controleren of de telemetriegegevens die zijn verzonden naar Azure, voert u de volgende opdracht uit in Azure Cloud Shell:
+1. Als u de telemetriegegevens wilt verifiëren die naar Azure worden verzonden, voert u de volgende opdracht uit in Azure Cloud Shell:
+
     ```bash
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
 
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden
 
-Volg deze stappen voor de ontwikkelomgeving voorbereiden voor de DevKit:
+Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
 
-### <a name="install-visual-studio-code-with-azure-iot-tools-extension-package"></a>Visual Studio Code installeren met hulpprogramma's voor Azure IoT-uitbreidingspakket
+### <a name="install-visual-studio-code-with-azure-iot-tools-extension-package"></a>Visual Studio code installeren met Azure IoT tools extension-pakket
 
-1. Installeer [Arduino IDE](https://www.arduino.cc/en/Main/Software). Het biedt de benodigde hulpprogrammaketen voor compileren en Arduino code uploaden.
-    * **Windows**: Gebruik Windows Installer-versie. Niet installeert vanuit de App Store.
-    * **macOS**: Sleep en zet de uitgepakte **Arduino.app** in `/Applications` map.
-    * **Ubuntu**: Zoals in de map uitpakken `$HOME/Downloads/arduino-1.8.8`
+1. Installeer [ARDUINO IDE](https://www.arduino.cc/en/Main/Software). Het biedt de benodigde hulpprogramma keten voor het compileren en uploaden van Arduino-code.
+    * **Windows**: Windows Installer versie gebruiken. Installeer niet vanuit de App Store.
+    * **macOS**: Sleep de geëxtraheerde **Arduino. app** naar `/Applications` de map.
+    * **Ubuntu**: Pak het bestand uit in een map, zoals`$HOME/Downloads/arduino-1.8.8`
 
-2. Installeer [Visual Studio Code](https://code.visualstudio.com/), een platformoverschrijdende code-editor met krachtige intellisense source code is voltooid en ondersteuning, evenals een uitgebreide extensies foutopsporing kan worden geïnstalleerd vanaf marketplace.
+2. Installeer [Visual Studio code](https://code.visualstudio.com/), een bron code-editor op meerdere platformen met krachtige IntelliSense, de ondersteuning voor het volt ooien van code en het opsporen van fouten, evenals uitgebreide uitbrei dingen die kunnen worden geïnstalleerd vanuit Marketplace.
 
-3. VS Code starten, gaat u naar **Arduino** in de marketplace extensie en installeer deze. Deze uitbreiding biedt verbeterde ervaring voor het ontwikkelen van op Arduino-platform.
+3. Start VS code, zoek naar **Arduino** in de uitbreidings Marketplace en installeer deze. Deze uitbrei ding biedt verbeterde ervaring voor het ontwikkelen op het Arduino-platform.
+
     ![Arduino installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-arduino.png)
 
-4. Zoek naar [hulpprogramma's voor Azure IoT](https://aka.ms/azure-iot-tools) in de marketplace extensie en installeer deze.
-    ![Azure IoT-hulpprogramma's installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
+4. Zoek naar [Azure IOT-Hulpprogram ma's](https://aka.ms/azure-iot-tools) op de uitbreidings Marketplace en installeer deze.
+
+    ![Azure IoT-Hulpprogram Ma's installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
     Of gebruik deze directe koppeling:
     > [!div class="nextstepaction"]
-    > [Hulpprogramma's voor Azure IoT-extensie pack installeren](vscode:extension/vsciot-vscode.azure-iot-tools)
+    > [Azure IoT Tools Extension Pack installeren](vscode:extension/vsciot-vscode.azure-iot-tools)
 
     > [!NOTE]
-    > De hulpprogramma's voor Azure IoT-extensie-pack bevat de [Azure IoT-apparaat Workbench](https://aka.ms/iot-workbench) die wordt gebruikt om te ontwikkelen en fouten opsporen op verschillende IoT devkit-apparaten. De [Azure IoT Hub Toolkit](https://aka.ms/iot-toolkit), ook worden opgenomen met het hulpprogramma's voor Azure IoT-extensie-pack, wordt gebruikt voor het beheren van en interactie met Azure IoT Hubs.
+    > Het extensie pakket voor Azure IoT-Hulpprogram Ma's bevat de [Azure IOT-Device Workbench](https://aka.ms/iot-workbench) die wordt gebruikt voor het ontwikkelen en opsporen van fouten op verschillende IOT Devkit-apparaten. De [azure IOT hub Toolkit](https://aka.ms/iot-toolkit), die ook is opgenomen in het uitbreidings pakket voor Azure IOT-hulpprogram ma's, wordt gebruikt voor het beheren en gebruiken van Azure IOT hubs.
 
-5. VS Code met Arduino-instellingen configureren.
+5. VS-code configureren met Arduino-instellingen.
 
-    Klik in Visual Studio Code, op **bestand > Voorkeuren > instellingen**. Klik vervolgens op de **...**  en **settings.json Open**.
-    ![Azure IoT-hulpprogramma's installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
-    
-    Voeg de volgende regels configureren Arduino afhankelijk van uw platform: 
+    Klik in Visual Studio code op **File > Preference > Settings**. Klik vervolgens op de instellingen. **.** . en **open. json**.
+
+    ![Azure IoT-Hulpprogram Ma's installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/user-settings-arduino.png)
+
+    Voeg de volgende regels toe om Arduino te configureren, afhankelijk van uw platform: 
 
     * **Windows**:
-      
+
         ```json
         "arduino.path": "C:\\Program Files (x86)\\Arduino",
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
@@ -188,24 +200,26 @@ Volg deze stappen voor de ontwikkelomgeving voorbereiden voor de DevKit:
         ```
 
     * **Ubuntu**:
-    
-        Vervang de **{username}** tijdelijke aanduiding voor hieronder door uw gebruikersnaam.
+
+        Vervang de tijdelijke aanduiding **{username}** hieronder door de gebruikers naam.
 
         ```json
         "arduino.path": "/home/{username}/Downloads/arduino-1.8.8",
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-6. Klik op `F1` om te openen de command palette, typ en selecteer **Arduino: Bord Manager**. Zoeken naar **AZ3166** en installeer de nieuwste versie.
+6. Klik `F1` om het opdracht palet te openen, typ en **Selecteer Arduino: Board Manager**. Zoek naar **AZ3166** en installeer de meest recente versie.
+
     ![DevKit SDK installeren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-az3166-sdk.png)
 
-### <a name="install-st-link-drivers"></a>ST-koppeling stuurprogramma's installeren
+### <a name="install-st-link-drivers"></a>ST-link Stuur Programma's installeren
 
-[ST-koppeling/V2](https://www.st.com/en/development-tools/st-link-v2.html) is de USB-interface die IoT DevKit gebruikt om te communiceren met uw ontwikkelcomputer. U moet ze deze willen installeren op Windows naar de apparaatcode gecompileerde naar de DevKit flash. De specifieke stappen voor de machine toegang tot uw apparaat.
+[St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) is de USB-interface die door IOT DevKit wordt gebruikt om te communiceren met uw ontwikkel machine. U moet deze in Windows installeren om de gecompileerde apparaatcode te flashen naar het DevKit. Volg de specifieke stappen voor het besturings systeem om de computer toegang te geven tot uw apparaat.
 
-* **Windows**: Download en installeer USB-stuurprogramma van [STMicroelectronics website](https://www.st.com/en/development-tools/stsw-link009.html) of [directe koppeling](https://aka.ms/stlink-v2-windows).
-* **macOS**: Er zijn geen stuurprogramma is vereist voor macOS.
-* **Ubuntu**: Voer de opdrachten in de terminal en meld u af en meld u aan voor de groepswijziging door te voeren:
+* **Windows**: Down load en installeer USB-stuur programma vanaf de [STMicroelectronics-website](https://www.st.com/en/development-tools/stsw-link009.html).
+* **macOS**: Er is geen stuur programma vereist voor macOS.
+* **Ubuntu**: Voer de opdrachten in Terminal uit en meld u af en meld u aan om de groeps wijziging door te voeren:
+
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
     sudo cp ~/.arduino15/packages/AZ3166/tools/openocd/0.10.0/linux/contrib/60-openocd.rules /etc/udev/rules.d/
@@ -216,120 +230,139 @@ Volg deze stappen voor de ontwikkelomgeving voorbereiden voor de DevKit:
     sudo usermod -a -G plugdev $(whoami)
     ```
 
-Nu zijn u klaar met het voorbereiden en configureren uw ontwikkelomgeving. Laat het ons bouw het GetStarted-voorbeeld dat u zojuist hebt uitgevoerd.
+Nu bent u allemaal ingesteld voor het voorbereiden en configureren van uw ontwikkel omgeving. Laat ons het GetStarted-voor beeld dat u zojuist hebt uitgevoerd, bouwen.
 
-## <a name="build-your-first-project"></a>Bouw uw eerste project
+## <a name="build-your-first-project"></a>Uw eerste project bouwen
 
-### <a name="open-sample-code-from-sample-gallery"></a>Open voorbeeldcode van de galerie met voorbeelden
+### <a name="open-sample-code-from-sample-gallery"></a>Voorbeeld code uit voorbeeld galerie openen
 
-De IoT DevKit bevat een uitgebreide galerie met voorbeelden die u gebruiken kunt voor meer informatie over verbinding maken met de DevKit tot verschillende Azure-services.
+De IoT-DevKit bevat een uitgebreide galerie met voor beelden die u kunt gebruiken om verbinding te maken tussen de DevKit en verschillende Azure-Services.
 
-1. Zorg ervoor dat uw IoT DevKit is **niet verbonden** op uw computer. VS Code eerst start, en vervolgens de DevKit verbinden met uw computer.
+1. Zorg ervoor dat uw IoT-DevKit **niet is verbonden** met uw computer. Start VS code eerst en sluit de DevKit aan op uw computer.
 
-1. Klik op `F1` om te openen de command palette, typ en selecteer **Azure IoT-apparaat Workbench: Voorbeelden openen...** . Selecteer vervolgens **IoT DevKit** als bord.
+1. Klik `F1` om het opdracht palet te openen, typ en **Selecteer Azure IOT Device Workbench: Voor beelden openen...** . Selecteer vervolgens **IOT DevKit** as Board.
 
-1. Zoek in de pagina IoT Workbench voorbeelden **aan de slag** en klikt u op **Open voorbeeld**. Vervolgens selecteert het standaardpad voor het downloaden van de voorbeeldcode.
-    ![Open voorbeeld](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
+1. Ga op de pagina met IoT Workbench-voor beelden naar **aan de slag** en klik op voor **Beeld openen**. Selecteert vervolgens het standaardpad voor het downloaden van de voorbeeld code.
 
-### <a name="provision-azure-iot-hub-and-device"></a>Richt Azure IoT Hub en apparaat
+    ![Voor beeld openen](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
 
-In plaats van de inrichting van Azure IoT Hub en apparaat vanuit de Azure-portal, kunt u dit doen in de VS Code zonder de ontwikkelomgeving.
+### <a name="provision-azure-iot-hub-and-device"></a>IoT Hub en apparaat van Azure inrichten
 
-1. Klik in het nieuwe venster geopende project op `F1` om te openen de command palette, typ en selecteer **Azure IoT-apparaat Workbench: Azure-Services inrichten...** . Volg de stapsgewijze handleiding voor het voltooien van uw Azure-IoT-Hub inrichten en het maken van de IoT Hub-apparaat.
+In plaats van Azure IoT Hub en het apparaat vanuit de Azure Portal in te richten, kunt u dit doen in de VS code zonder de ontwikkel omgeving te verlaten.
+
+1. Klik `F1` in het venster Nieuw geopend project om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: Azure-Services inrichten...** . Volg de stapsgewijze hand leiding om het inrichten van uw Azure IoT Hub te volt ooien en het IoT Hub apparaat te maken.
+
     ![Opdracht inrichten](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)
 
     > [!NOTE]
-    > Als u geen Azure bent aangemeld. Volg de pop-upmelding voor het aanmelden.
+    > Als u zich niet hebt aangemeld bij Azure. Volg de pop-upmelding voor het aanmelden.
 
 1. Selecteer het abonnement dat u wilt gebruiken.
+
     ![Sub selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-subscription.png)
 
-1. Selecteer of maak een nieuwe [resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology).
+1. Selecteer of maak vervolgens een nieuwe [resource groep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#terminology).
+
     ![Resourcegroep selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-resource-group.png)
 
-1. In de resourcegroep die u hebt opgegeven, volgt u de handleiding om te selecteren of een nieuwe Azure-IoT-Hub maken.
-    ![Stappen voor IoT-Hub selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provision.png)
+1. In de resource groep die u hebt opgegeven, volgt u de hand leiding voor het selecteren of maken van een nieuwe Azure-IoT Hub.
 
-    ![IoT-Hub selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-hub.png)
+    ![IoT Hub stappen selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provision.png)
+
+    ![IoT Hub selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-hub.png)
 
     ![Geselecteerde IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-selected.png)
 
-1. In het uitvoervenster weergegeven, ziet u de Azure IoT-Hub ingericht ![ingericht voor IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provisioned.png)
+1. In het venster uitvoer ziet u dat Azure IoT Hub ingericht.
 
-1. Selecteer of maak een nieuw apparaat in Azure IoT Hub die u hebt ingericht.
-    ![Selecteer stappen van de IoT-apparaat](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-device-provision.png)
+    ![IoT Hub ingericht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-provisioned.png)
 
-    ![Selecteer de IoT-apparaat is ingericht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-device.png)
+1. Selecteer of maak een nieuw apparaat in azure IoT Hub u hebt ingericht.
 
-1. U hebt nu Azure IoT Hub is ingericht en het apparaat is gemaakt in het. De verbindingsreeks van het apparaat wordt ook in VS Code voor het configureren van de IoT DevKit later worden opgeslagen.
-    ![Inrichten is voltooid](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision-done.png)
+    ![IoT-apparaat tappen selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-device-provision.png)
 
-### <a name="configure-and-compile-device-code"></a>Configureren en apparaatcode compileren
+    ![Selecteer IoT-apparaat ingericht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-device.png)
 
-1. Schakel in de statusbalk rechtsonder, de **MXCHIP AZ3166** wordt weergegeven als de geselecteerde bord en seriële poort met **STMicroelectronics** wordt gebruikt.
-    ![Bord- en COM selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
+1. U hebt nu Azure IoT Hub ingericht en er is een apparaat gemaakt. De connection string van het apparaat wordt ook opgeslagen in VS code voor het configureren van de IoT DevKit later.
 
-1. Klik op `F1` om te openen de command palette, typ en selecteer **Azure IoT-apparaat Workbench: Apparaatinstellingen configureren...** en selecteer vervolgens **Config Apparaatverbindingsreeks > Selecteer IoT Hub apparaat Connection String**.
+    ![Gereed voor inrichting](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision-done.png)
 
-1. Op DevKit, houdt u **een knop**, push en laat de **opnieuw** knop en loslaten **een knop**. Uw DevKit krijgt de configuratiemodus en slaat de verbindingsreeks.
+### <a name="configure-and-compile-device-code"></a>Apparaatcode configureren en compileren
+
+1. Controleer in de status balk rechtsonder de **MXCHIP AZ3166** wordt weer gegeven als geselecteerd bord en seriële poort met **STMicroelectronics** wordt gebruikt.
+
+    ![Bord en COM selecteren](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
+
+1. Klik `F1` om het opdracht palet te openen, typ en **Selecteer Azure IOT Device Workbench: Apparaatinstellingen configureren... en selecteer vervolgens **configuratie apparaat verbindings reeks > Selecteer IOT hub apparaat verbindings reeks.****
+
+1. Houd op DevKit de **knop** **opnieuw instellen** in de vervolg keuzelijst en laat deze knop los en laat vervolgens **knop a**los. Uw DevKit voert de configuratie modus in en slaat de connection string op.
+
     ![Verbindingsreeks](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
 
-1. Klik op `F1` Typ wederom en selecteer **Azure IoT-apparaat Workbench: Uploaden apparaatcode**. Het compileren wordt gestart en de code uploaden naar DevKit.
+1. Klik `F1` opnieuw, typ en selecteer **Azure IOT Device Workbench: De code**van het apparaat uploaden. De code wordt nu gecompileerd en geüpload naar DevKit.
+
     ![Arduino uploaden](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
-De DevKit opnieuw wordt opgestart en de code wordt gestart.
+De DevKit wordt opnieuw opgestart en de code wordt gestart.
 
 > [!NOTE]
-> Als er fouten of onderbrekingen, kunt u altijd herstellen door de opdracht nogmaals uit te voeren.
+> Als er fouten of onderbrekingen zijn, kunt u deze altijd herstellen door de opdracht opnieuw uit te voeren.
 
 ## <a name="test-the-project"></a>Het project testen
 
-### <a name="view-the-telemetry-sent-to-azure-iot-hub"></a>De telemetrie die verzonden naar Azure IoT Hub bekijken
+### <a name="view-the-telemetry-sent-to-azure-iot-hub"></a>De telemetrie weer geven die is verzonden naar Azure IoT Hub
 
-Klik op het pictogram voor energiebeheer plug op de statusbalk te openen van de seriële Monitor: ![Seriële monitor](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/serial-monitor.png)
+Klik op het pictogram netstroom op de status balk om de seriële monitor te openen:
 
-De voorbeeldtoepassing wordt uitgevoerd wanneer u de volgende resultaten ziet:
+![Seriële monitor](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/serial-monitor.png)
 
-* De seriële Monitor geeft het bericht verzonden naar de IoT-Hub.
-* De LED op de MXChip IoT DevKit knippert.
+De voorbeeld toepassing wordt uitgevoerd wanneer u de volgende resultaten ziet:
 
-![Seriële monitor-uitvoer](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+* Op de seriële monitor wordt het bericht weer gegeven dat naar de IoT Hub is verzonden.
+* De LED van de MXChip IoT DevKit knippert.
 
-### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>De telemetrie ontvangen via Azure IoT Hub bekijken
+![Uitvoer van seriële monitor](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
 
-U kunt [hulpprogramma's voor Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) voor het bewaken van apparaat-naar-cloud (D2C) berichten in IoT Hub.
+### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>De telemetrie weer geven die is ontvangen door Azure IoT Hub
 
-1. Meld u aan [Azure-portal](https://portal.azure.com/), vinden de IoT-Hub die u hebt gemaakt.
+U kunt [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) gebruiken voor het bewaken van D2C-berichten (Device-to-Cloud) in IOT hub.
+
+1. Meld u aan [Azure Portal](https://portal.azure.com/), zoek de IOT hub die u hebt gemaakt.
+
     ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
-1. In de **beleid voor gedeelde toegang** deelvenster, klikt u op de **iothubowner beleid**, en noteer de verbindingsreeks van uw IoT-hub.
-    ![Azure IoT Hub-verbindingsreeks](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
+1. Klik in het deel venster **beleid voor gedeelde toegang** op het **iothubowner-beleid**en noteer de verbindings reeks van uw IOT-hub.
 
-1. In VS Code, klikt u op `F1`, typt en selecteer **Azure IoT Hub: IoT Hub-verbindingsreeks instellen**. Kopieer de verbindingsreeks naar het.
-    ![Azure IoT Hub-verbindingsreeks instellen](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
+    ![Azure IoT Hub connection string](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 
-1. Vouw de **AZURE IOT HUB-apparaten** deelvenster aan de rechterkant, klik met de rechtermuisknop op de naam van het apparaat u hebt gemaakt en selecteer **Start Monitoring ingebouwde gebeurtenis eindpunt**.
-    ![Monitor D2C Message](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
+1. In VS code, klikt `F1`u op, typt **en selecteert u Azure IOT hub: IoT Hub verbindings reeks**instellen. Kopieer de connection string ernaar.
 
-1. In **uitvoer** deelvenster ziet u de binnenkomende D2C-berichten naar de IoT Hub.
-    ![D2C message](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
+    ![Azure IoT Hub connection string instellen](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
+
+1. Vouw het deel venster **apparaten van Azure IOT hub** aan de rechter kant uit, klik met de rechter muisknop op de apparaatnaam die u hebt gemaakt en selecteer controle van het **ingebouwde gebeurtenis starten**.
+
+    ![D2C-bericht bewaken](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/monitor-d2c.png)
+
+1. In het deel venster **uitvoer** ziet u de binnenkomende D2C-berichten voor de IOT hub.
+
+    ![D2C-bericht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/d2c-output.png)
 
 ## <a name="review-the-code"></a>De code bekijken
 
-De `GetStarted.ino` is het belangrijkste Arduino schets-bestand.
+Het `GetStarted.ino` is het belangrijkste Arduino-schets bestand.
 
-![D2C message](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/code.png)
+![D2C-bericht](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/code.png)
 
-Als u wilt zien hoe de telemetrie van apparaten naar de Azure IoT Hub wordt verzonden, opent u de `utility.cpp` bestand in dezelfde map. Weergave [API-verwijzing](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) voor meer informatie over het gebruik van sensoren en randapparatuur op IoT DevKit.
+Als u wilt zien hoe telemetrie van het apparaat wordt verzonden naar de `utility.cpp` Azure IOT hub, opent u het bestand in dezelfde map. Bekijk [API-verwijzing](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) voor meer informatie over het gebruik van Sens oren en rand apparatuur op IOT DevKit.
 
-De `DevKitMQTTClient` gebruikt, is een wrapper van de **iothub_client** uit de [Microsoft Azure IoT SDK's en bibliotheken voor C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) om te communiceren met Azure IoT Hub.
+De `DevKitMQTTClient` gebruikte is een wrapper van de **iothub_client** van de [Microsoft Azure IOT sdk's en bibliotheken voor C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) om te communiceren met Azure IOT hub.
 
 ## <a name="problems-and-feedback"></a>Problemen en feedback
 
-Als u problemen ondervindt, kunt u controleren voor een oplossing in de [IoT DevKit Veelgestelde vragen over](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) of contact opnemen met ons [Gitter](https://gitter.im/Microsoft/azure-iot-developer-kit). U kunt ons ook feedback geven door een opmerking op deze pagina verlaten.
+Als u problemen ondervindt, kunt u controleren op een oplossing in de [Veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) of contact opnemen met ons van [Gitter](https://gitter.im/Microsoft/azure-iot-developer-kit). U kunt ook feedback geven door een opmerking op deze pagina te laten staan.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een MXChip IoT DevKit is verbonden met uw IoT-hub en u hebt de vastgelegde gegevens verzonden naar uw IoT-hub.
+U hebt een MXChip IoT-DevKit verbonden met uw IoT-hub en u hebt de vastgelegde sensor gegevens verzonden naar uw IoT-hub.
 
 [!INCLUDE [iot-hub-get-started-az3166-next-steps](../../includes/iot-hub-get-started-az3166-next-steps.md)]

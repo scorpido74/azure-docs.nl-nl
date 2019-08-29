@@ -1,5 +1,5 @@
 ---
-title: SAP ASE Azure virtuele Machines DBMS-implementatie voor de werkbelasting van SAP | Microsoft Docs
+title: Implementatie van SAP ASE Azure Virtual Machines DBMS voor SAP-workload | Microsoft Docs
 description: DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e97089b1de88ccf9f45b1a0f429abc0cfac9f3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835274"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101329"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
 
@@ -309,75 +308,75 @@ ms.locfileid: "60835274"
 
 
 
-In dit document bevat informatie over de verschillende onderdelen om te overwegen bij het implementeren van SAP ASE in Azure IaaS. Als een voorwaarde in dit document hebt lees het document [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md) en andere handleidingen in de [SAP-workloads op Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+In dit document worden verschillende gebieden besproken waarmee u rekening moet houden wanneer u SAP ASE implementeert in azure IaaS. Als een voor waarde voor dit document, moet u de document [overwegingen voor azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)lezen. 
 
-## <a name="specifics-to-sap-ase-on-windows"></a>Specifieke informatie naar SAP ASE op Windows
-Beginnen met Microsoft Azure, kunt u uw bestaande SAP ASE-toepassingen naar Azure Virtual Machines te migreren. SAP ASE in een Azure Virtual machines kunt u de totale eigendomskosten van implementatie, beheer en onderhoud van de breedte van bedrijfstoepassingen verminderen door eenvoudig deze toepassingen met Microsoft Azure te migreren. Met SAP ASE in een Azure Virtual machines, beheerders en ontwikkelaars kunnen nog steeds gebruiken de dezelfde ontwikkelings- en beheerhulpprogramma's die on-premises beschikbaar zijn.
+## <a name="specifics-to-sap-ase-on-windows"></a>Details van SAP-ASE in Windows
+Vanaf Microsoft Azure kunt u uw bestaande SAP ASE-toepassingen migreren naar Azure Virtual Machines. Met SAP ASE in een virtuele machine van Azure kunt u de total cost of ownership van de implementatie, het beheer en het onderhoud van toepassingen op bedrijfs niveau verminderen door deze toepassingen eenvoudig te migreren naar Microsoft Azure. Met SAP ASE in een virtuele machine van Azure kunnen beheerders en ontwikkel aars nog steeds gebruikmaken van dezelfde hulpprogram ma's voor ontwikkeling en beheer die on-premises beschikbaar zijn.
 
-Sla's voor Azure Virtual Machines, vindt u hier: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
+De Sla's voor Azure Virtual Machines vindt u hier:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
-Microsoft Azure biedt talrijke andere virtuele machine-typen die u voor het uitvoeren van de kleinste SAP-systemen en landschappen tot grote SAP-systemen en landschappen met duizenden gebruikers toestaan. SAP formaat SAP's nummers van de verschillende SAP gecertificeerde VM-SKU's vindt u in de SAP-notitie [1928533].
+Microsoft Azure biedt talrijke verschillende typen virtuele machines waarmee u kleinste SAP-systemen en-landschappen kunt uitvoeren tot grote SAP-systemen en landschappen met duizenden gebruikers. SAP-beschik bare SAP'S-nummers van de verschillende SAP gecertificeerde VM Sku's vindt u in SAP-notitie [1928533].
 
-Instructies en aanbevelingen met betrekking tot het gebruik van Azure Storage, implementatie van SAP VM's of SAP bewaking aangebracht in [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md) te zijn van toepassing op implementaties van SAP ASE.
+Instructies en aanbevelingen met betrekking tot het gebruik van Azure Storage, implementatie van SAP-Vm's of SAP-bewaking die zijn aangebracht in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) is ook van toepassing op implementaties van SAP ASE.
 
-### <a name="sap-ase-version-support"></a>Ondersteuning voor SAP-versie van de as-omgeving
-SAP op dit moment ondersteunt SAP ASE versie 16,0 voor gebruik met SAP Business Suite producten. Alle updates voor SAP ASE-server of JDBC en ODBC-stuurprogramma's voor gebruik met SAP Business Suite producten vindt u uitsluitend via SAP Service Marketplace op: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>Ondersteuning voor SAP ASE-versie
+SAP ondersteunt momenteel SAP ASE versie 16,0 voor gebruik met SAP Business Suite-producten. Alle updates voor SAP ASE server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP Business Suite-producten, worden uitsluitend via de SAP <https://support.sap.com/swdc>-Service Marketplace op: beschreven.
 
-Download updates voor de SAP ASE-server, of de JDBC en ODBC-stuurprogramma's niet rechtstreeks vanuit Sybase-websites. Voor gedetailleerde informatie over patches, die worden ondersteund voor gebruik met SAP-producten on-premises en in Azure Virtual Machines, Zie de volgende SAP-opmerkingen:
+Down load geen updates voor de SAP ASE-server of voor de JDBC-en ODBC-stuur Programma's rechtstreeks van Sybase websites. Voor gedetailleerde informatie over patches die worden ondersteund voor gebruik met SAP-producten on-premises en in azure Virtual Machines raadpleegt u de volgende SAP-opmerkingen:
 
 * [1590719]
 * [1973241]
 
-Algemene informatie over het uitvoeren van SAP Business Suite op SAP ASE vindt u de [SCN](https://www.sap.com/community/topic/ase.html)
+Algemene informatie over het uitvoeren van SAP Business Suite op SAP ASE vindt u in het [SCN](https://www.sap.com/community/topic/ase.html)
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Richtlijnen voor SAP ASE voor SAP-gerelateerde SAP ASE installaties in Azure VM 's
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP ASE-configuratie richtlijnen voor SAP ASE-installaties op het gebied van Azure-Vm's
 #### <a name="structure-of-the-sap-ase-deployment"></a>Structuur van de SAP ASE-implementatie
-SAP ASE uitvoerbare bestanden moet zich bevinden of in het systeemstation van de besturingssysteemschijf van de virtuele machine is geïnstalleerd (station c:\). De meeste van de SAP ASE-systeem en hulpprogramma's voor databases zijn normaal gesproken niet ondervindt hoge werkbelasting. Daarom kunnen het systeem en hulpprogramma's voor databases (master, model, saptools, sybmgmtdb, sybsystemdb) blijven op het station C:\. 
+SAP ASE uitvoer bare bestanden moeten worden gevonden of geïnstalleerd in het systeem station van de besturingssysteem schijf van de VM (\)station c:. Normaal gesp roken hebben de meeste data bases van het SAP ASE-systeem en hulpprogram ma's geen hoge werk belasting. Daarom kunnen de systeem-en hulpprogram ma's (Master, model, saptools, sybmgmtdb, sybsystemdb) op de C:\ blijven stationsletter. 
 
-Een uitzondering kan de tijdelijke database, die in het geval van sommige SAP ERP- en alle BW werkbelastingen hogere gegevensvolume of i/o-bewerkingen volume mogelijk vereist zijn. Volumes of IOP's die door de besturingssysteemschijf van de virtuele machine kan niet worden opgegeven (station C:\).
+Een uitzonde ring kan de tijdelijke data base zijn. in het geval van sommige SAP ERP en alle BW-workloads is mogelijk een hoger gegevens volume of een I/O-bewerkingen vereist. Volumes of IOPS die niet kunnen worden weer gegeven door de besturingssysteem schijf van de VM (\)station C:.
 
-Afhankelijk van de versie van SAPInst/SWPM gebruikt om te installeren, de configuratie van de SAP ASE-exemplaar kan er als volgt uitzien:
+Afhankelijk van de versie van SAPInst/SWPM die wordt gebruikt om te installeren, kan de configuratie van het SAP ASE-exemplaar er als volgt uitzien:
 
-* Een enkele SAP ASE tempdb, die wordt gemaakt bij het installeren van SAP ASE
-* Een SAP ASE tempdb die zijn gemaakt door SAP ASE en een extra saptempdb die zijn gemaakt door de SAP-installatieprogramma installeren
-* Een SAP ASE tempdb die zijn gemaakt door het installeren van SAP ASE en een aanvullende tempdb die handmatig is gemaakt (bijvoorbeeld volgende SAP-notitie [1752266]) om te voldoen aan specifieke tempdb ERP/BW
+* Eén SAP ASE TempDB, die wordt gemaakt bij het installeren van SAP ASE
+* Een SAP ASE TempDB gemaakt door SAP ASE te installeren en een extra saptempdb gemaakt door de SAP-installatie routine
+* Een SAP ASE TempDB gemaakt door het installeren van SAP ASE en een extra TempDB die hand matig is gemaakt (bijvoorbeeld SAP Note [1752266]) om te voldoen aan de vereisten van de ERP/BW-specifieke tempdb
 
-Uit prestatieoverwegingen voor specifieke ERP of alle BW werkbelastingen, kan het zinvol zijn voor het opslaan van de tempdb-apparaten van de Daarnaast gemaakte tempdb op een ander station dan C:\. Als er geen aanvullende tempdb bestaat, is het raadzaam een te maken (SAP-notitie [1752266]).
+Vanwege de prestaties van specifieke ERP of alle BW-workloads, kan het zinvol zijn om de tempdb-apparaten van de verder gemaakte TempDB op te slaan op een andere schijf dan C:\. Als er geen extra TempDB bestaat, is het raadzaam om er een te maken (SAP-notitie [1752266]).
 
-Voor dergelijke systemen moeten de volgende stappen worden uitgevoerd voor de tempdb Daarnaast gemaakt:
+Voor dergelijke systemen moeten de volgende stappen worden uitgevoerd voor de verder gemaakte TempDB:
 
-* Het eerste tempdb-apparaat naar het eerste apparaat van de SAP-database verplaatsen
-* Tempdb-apparaten toevoegen aan elk van de VHD's met een apparaat van de SAP-database
+* Het eerste TempDB-apparaat verplaatsen naar het eerste apparaat van de SAP-data base
+* TempDB-apparaten toevoegen aan elk van de Vhd's die een apparaat van de SAP-data base bevatten
 
-Deze configuratie kunnen tempdb verbruikt meer ruimte dan mogelijk is het systeemstation. Als uitgangspunt kunt een controleren of de tempdb-apparaat-grootten op bestaande systemen, die on-premises uitvoert. Of een dergelijke configuratie kiest, IOPS-nummers op basis van tempdb die kan niet worden voorzien van het systeemstation. Systemen die on-premises worden uitgevoerd, kunnen worden gebruikt voor het bewaken van i/o-werkbelasting op basis van tempdb.
+Met deze configuratie kan TempDB meer ruimte gebruiken dan het systeem station kan bieden. Als referentie één kan de omvang van het TempDB-apparaat controleren op bestaande systemen, die on-premises worden uitgevoerd. Of een dergelijke configuratie maakt IOPS-nummers mogelijk voor TempDB, wat niet kan worden meegeleverd met het systeem station. Systemen die on-premises worden uitgevoerd, kunnen worden gebruikt om de I/O-werk belasting te controleren op Tempdb.
 
-Nooit plaats alle SAP ASE-apparaten op de schijf D:\ van de virtuele machine. Voor SAP ASE geldt dit advies ook voor de tempdb, zelfs als de objecten die zijn opgeslagen in de tempdb alleen tijdelijk zijn.
+Geen SAP ASE-apparaten op de D:\ plaatsen station van de virtuele machine. Voor SAP-ASE geldt dit advies ook voor TempDB, zelfs als de objecten die in de tempdb worden bewaard, alleen tijdelijk zijn.
 
-Voor gegevens en implementaties van transaction log-bestand, de instructies en suggesties [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md). In geval van Windows-implementaties op basis van, het gebruik van Windows Storage Spaces verdient gebruiken voor het bouwen van stripesets met voldoende IOPS, doorvoer en volume.  
+Voor implementaties van gegevens en transactie logboek bestanden zijn de instructies en suggesties die zijn aangebracht in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). In het geval van op Windows gebaseerde implementaties wordt het gebruik van Windows-opslag ruimten aanbevolen om stripesets te maken met voldoende IOPS, door Voer en volume.  
 
-#### <a name="impact-of-database-compression"></a>Gevolgen van het Database-compressie
-In configuraties waar i/o-bandbreedte een beperkende factor kan worden, kan elke meting, waardoor IOP's helpen om te vergroten van de werkbelasting een kan worden uitgevoerd in een IaaS-scenario, zoals Azure. Daarom is het raadzaam om ervoor te zorgen dat SAP ASE-compressie wordt gebruikt voor het uploaden van een bestaande SAP-database naar Azure.
+#### <a name="impact-of-database-compression"></a>Impact van database compressie
+Bij configuraties waarbij de I/O-band breedte een beperkende factor kan worden, kan elke meting, die het aantal IOPS reduceert, de werk belasting die in een IaaS-scenario zoals Azure kan worden uitgevoerd, worden uitgerekt. Daarom is het raadzaam om ervoor te zorgen dat SAP ASE-compressie wordt gebruikt voordat u een bestaande SAP-data base uploadt naar Azure.
 
-De aanbeveling om toe te passen compressie voordat u uploadt naar Azure wordt verkregen uit verschillende redenen:
+De aanbeveling om compressie toe te passen voordat uploadt naar Azure, heeft verschillende oorzaken:
 
-* De hoeveelheid gegevens worden geüpload naar Azure is lager
-* De duur van de compressie-uitvoering is korter, ervan uitgaande dat een sterkere hardware met meer CPU's of hogere i/o-bandbreedte of minder i/o latentie on-premises gebruiken kunt
-* Kleinere database kunnen leiden tot minder kosten voor schijftoewijzing
+* De hoeveelheid gegevens die naar Azure moet worden geüpload, is lager
+* De duur van het uitvoeren van de compressie is korter, ervan uitgaande dat een grotere hardware kan gebruiken met meer Cpu's of een hogere I/O-band breedte of minder I/o-latentie on-premises.
+* Kleinere database grootten kunnen leiden tot minder kosten voor schijf toewijzing
 
-Compressie van gegevens en LOB werken in een virtuele machine die wordt gehost in Azure Virtual Machines, als er een on-premises. Voor meer informatie over hoe u om te controleren als compressie is al in gebruik in een bestaande SAP ASE-database, controleert u SAP-notitie [1750510].
+Gegevens-en LOB-compressie werken in een virtuele machine die wordt gehost in azure Virtual Machines als deze on-premises wordt uitgevoerd. Voor meer informatie over het controleren of compressie al in gebruik is in een bestaande SAP ASE-data base, raadpleegt u SAP-opmerking [1750510].
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>DBACockpit gebruikt voor het bewaken van Database-exemplaren
-Voor SAP-systemen, die SAP ASE zijn als databaseplatform worden gebruikt, is de DBACockpit toegankelijk als ingesloten browservensters in transactie DBACockpit of Webdynpro. De volledige functionaliteit voor bewaking en beheer van de database is echter beschikbaar in de implementatie Webdynpro van alleen de DBACockpit.
+#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Data base-exemplaren bewaken met behulp van DBACockpit
+Voor SAP-systemen, die gebruikmaken van SAP ASE als database platform, is de DBACockpit toegankelijk als Inge sloten browser vensters in trans actie DBACockpit of als Webdynpro. De volledige functionaliteit voor het bewaken en beheren van de data base is echter alleen beschikbaar in de Webdynpro-implementatie van de DBACockpit.
 
-Als met on-premises systemen zijn verschillende stappen vereist om alle SAP NetWeaver-functionaliteit die worden gebruikt door de Webdynpro uitvoering van de DBACockpit te schakelen. Ga als volgt de SAP-notitie [1245200] voor het gebruik van webdynpros inschakelen en het genereren van de vereiste velden. Wanneer u de instructies in de notities van de bovenstaande configureren u ook de Internet-Communicatiemanager (icm), samen met de poorten die worden gebruikt voor http en https-verbindingen. De standaardinstelling voor HTTP-lijkt:
+Net als bij on-premises systemen zijn er verschillende stappen vereist om alle SAP NetWeaver-functionaliteit in te scha kelen die wordt gebruikt door de Webdynpro-implementatie van de DBACockpit. Volg SAP-opmerking [1245200] om het gebruik van webdynpros in te scha kelen en de vereiste items te genereren. Wanneer u de instructies in de bovenstaande opmerkingen volgt, moet u ook de Internet Communication Manager (ICM) configureren, samen met de poorten die moeten worden gebruikt voor http-en HTTPS-verbindingen. De standaard instelling voor http ziet er als volgt uit:
 
-> icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
+> ICM/server_port_0 = PROCTIMEOUT = HTTP, poort = 8000, = 600, TIMEOUT = 600
 > 
-> icm/server_port_1 = PROT=HTTPS,PORT=443$$,PROCTIMEOUT=600,TIMEOUT=600
+> ICM/server_port_1 = door Voer = HTTPS, poort = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
 > 
 
-en de koppelingen die zijn gegenereerd in transactie die dbacockpit bijna net zo uitziet:
+en de koppelingen die zijn gegenereerd in trans actie DBACockpit zien er ongeveer als volgt uit:
 
 > https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -385,34 +384,34 @@ en de koppelingen die zijn gegenereerd in transactie die dbacockpit bijna net zo
 > 
 > 
 
-Afhankelijk van hoe de Azure-virtuele Machine die als host fungeert voor de SAP-systeem is verbonden met uw AD en DNS, moet u om ervoor te zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de machine waar het openen van de DBACockpit uit. Zie SAP-notitie [773830] om te begrijpen hoe ICM bepaalt de volledig gekwalificeerde hostnaam op basis van profiel parameters en parameter icm/host_name_full expliciet instellen indien nodig.
+Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie SAP Note [773830] om te begrijpen hoe ICM de volledige gekwalificeerde hostnaam bepaalt op basis van de profiel parameters en stel para meter ICM/host_name_full expliciet in als dat nodig is.
 
-Als u de virtuele machine in een scenario alleen in de Cloud zonder cross-premises-connectiviteit tussen on-premises en Azure hebt geïmplementeerd, moet u een openbaar IP-adres en een domainlabel definiëren. De indeling van de openbare DNS-naam van de virtuele machine lijkt:
+Als u de virtuele machine hebt geïmplementeerd in een alleen-Cloud scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP-adres en een domainlabel definiëren. De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
 > 
 
-Meer informatie met betrekking tot de DNS-naam vindt [hier][virtual-machines-azurerm-versus-azuresm].
+Meer informatie over de DNS-naam kunt u [hier][virtual-machines-azurerm-versus-azuresm]vinden.
 
-Als u de SAP-profiel parameter icm/host_name_full op de DNS-naam van de koppeling van de Azure-VM kan er ongeveer als volgt:
+De SAP-profiel parameter ICM/host_name_full instellen op de DNS-naam van de virtuele machine van Azure de koppeling kan er ongeveer als volgt uitzien:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
-In dit geval moet u ervoor zorgen dat:
+In dat geval moet u het volgende doen:
 
-* Regels voor binnenkomende verbindingen toevoegen aan de Netwerkbeveiligingsgroep in de Azure-portal voor de TCP/IP-poorten die worden gebruikt om te communiceren met ICM
-* Regels voor binnenkomende verbindingen toevoegen aan de Windows Firewall-configuratie voor de TCP/IP-poorten die worden gebruikt om te communiceren met de ICM
+* Regels voor binnenkomend verkeer toevoegen aan de netwerk beveiligings groep in de Azure Portal voor de TCP/IP-poorten die worden gebruikt voor communicatie met ICM
+* Voeg regels voor binnenkomend verkeer toe aan de Windows Firewall configuratie voor de TCP/IP-poorten die worden gebruikt voor communicatie met de ICM
 
-Voor een geautomatiseerde beschikbaar voor alle correcties geïmporteerd, wordt aanbevolen om toe te passen periodiek de correctie verzameling SAP-notitie die van toepassing zijn op uw SAP-versie:
+Voor een geautomatiseerde import van alle beschik bare correcties is het raadzaam om regel matig de correctie verzameling SAP-opmerking toe te passen die van toepassing is op uw SAP-versie:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Meer informatie over de DBA Cockpit voor SAP ASE vindt u in de volgende SAP-opmerkingen:
+Meer informatie over DBA cockpit voor SAP ASE vindt u in de volgende SAP-opmerkingen:
 
 * [1605680]
 * [1757924]
@@ -424,113 +423,113 @@ Meer informatie over de DBA Cockpit voor SAP ASE vindt u in de volgende SAP-opme
 * [1956005]
 
 #### <a name="backuprecovery-considerations-for-sap-ase"></a>Overwegingen voor back-up/herstel voor SAP ASE
-Wanneer u SAP ASE implementeert in Azure, moet worden gecontroleerd op uw back-upmethode. Zelfs voor niet-productiesystemen, de SAP-database (s) moet een back-up periodiek. Omdat Azure Storage kan drie afbeeldingen voldoen, is het mogelijk dat een back-up minder belangrijke met betrekking tot het vastlopen van een storage compenserende. De belangrijkste reden voor het onderhouden van een juiste back-up en herstel plan nog meer dingen die u logische/handmatige fouten compenseren kunt door punt in tijd herstel mogelijkheden te bieden. Zodat het doel om een van beide gebruik back-ups van de database herstellen naar een bepaald punt in tijd of is het gebruik van de back-ups in Azure als seeding voor een ander systeem door het kopiëren van de bestaande database. 
+Wanneer u SAP ASE implementeert in azure, moet uw back-upmethodologie worden gecontroleerd. Zelfs voor niet-productie systemen moet u regel matig een back-up van de SAP-data base (s) maken. Omdat Azure Storage drie installatie kopieën houdt, is een back-up mogelijk minder belang rijk voor het compenseren van een storing in de opslag. De belangrijkste reden voor het onderhouden van een juiste back-up-en herstel planning is meer dat u kunt compenseren voor logische/hand matige fouten door herstel mogelijkheden voor het punt op te geven. Het doel is dus back-ups te gebruiken om de data base terug te zetten naar een bepaald tijdstip of om de back-ups in azure te gebruiken om een ander systeem te seeden door de bestaande Data Base te kopiëren. 
 
-Back-up en herstellen van een database in Azure werkt op dezelfde manier als on-premises. Zie Opmerkingen bij de SAP:
+Het maken van een back-up en het herstellen van een data base in azure werkt op dezelfde manier als op locatie. Zie SAP-opmerkingen:
 
 * [1588316]
 * [1585981]
 
-voor informatie over het maken van het dump configuraties en planning back-ups. Afhankelijk van uw strategie en behoeften kunt u database en logboekbestanden geheugendumps naar schijf naar een van de bestaande schijven of Voeg een extra schijf voor de back-up. Het risico van gegevensverlies in geval van een fout, verminderen het verdient aanbeveling een schijf gebruiken waar geen databasebestanden zich bevinden.
+voor meer informatie over het maken van dump configuraties en het plannen van back-ups. Afhankelijk van de strategie en de behoeften, kunt u de data base-en logboek dumps configureren op schijf op een van de bestaande schijven of een extra schijf toevoegen voor de back-up. Om het risico van gegevens verlies in het geval van een fout te verminderen, is het raadzaam om een schijf te gebruiken waarop geen database bestanden zijn opgeslagen.
 
-Naast gegevens- en LOB-compressie biedt SAP ASE ook back-compressie. Minder ruimte met de database en logboekbestanden dumpbestanden voor foutopsporing te gebruiken is het aanbevolen gebruik van back-compressie. Zie voor meer informatie, SAP-notitie [1588316]. Comprimeren van de back-up is ook essentieel om te kunnen verminderen de hoeveelheid gegevens die moet worden overgezet als u van plan bent om back-ups of VHD's met back-up dumpbestanden voor foutopsporing van de virtuele Machine van Azure naar on-premises te downloaden.
+Naast gegevens-en LOB-compressie biedt SAP ASE ook back-upcompressie. Als u minder ruimte wilt gebruiken voor de data base en de logboek dump, wordt u aangeraden back-upcompressie. Zie SAP Note [1588316]voor meer informatie. Het comprimeren van de back-up is ook cruciaal om de hoeveelheid gegevens die moet worden overgedragen te verminderen als u van plan bent om back-ups of Vhd's met back-updumps van de virtuele machine van Azure naar on-premises te downloaden.
 
-Gebruik geen station D:\ als bestemming voor database- of logboekpad dump.
+Gebruik geen station D:\ Als de data base-of logboek dump bestemming.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Prestatie-overwegingen voor back-ups/herstellen
-Prestaties van back-up/herstel is als in de bare-metal implementaties, afhankelijk van hoeveel volumes parallel kunnen worden gelezen en wat de doorvoer van deze volumes mogelijk. Houd er rekening mee dat back-upcompressie CPU-resources verbruikt. Deze CPU-verbruik van back-compressie kan een belangrijke rol spelen op virtuele machines met een klein aantal CPU-threads. Daarom kunt u ervan uitgaan:
+#### <a name="performance-considerations-for-backupsrestores"></a>Prestatie overwegingen voor back-ups/herstel bewerkingen
+Net als bij bare-metal implementaties is de prestaties van back-up/herstel afhankelijk van het aantal volumes dat parallel kan worden gelezen en de door Voer van die volumes. Houd er wel van uit dat de compressie van back-ups CPU-Resources verbruikt. Dit CPU-verbruik van back-upcompressie kan een belang rijke rol spelen op Vm's met een klein aantal CPU-threads. Daarom kunt u aannemen:
 
-* Minder het nummer van de schijven die worden gebruikt voor het opslaan van de database-apparaten, de kleinere totale doorvoer bij het lezen
-* Hoe kleiner dat het aantal CPU-threads in de VM, de strengere de gevolgen van het back-compressie
-* De minder doelen (Stripe mappen, schijven) schrijven van de back-up naar de laagste de doorvoer
+* Hoe minder schijven er worden gebruikt voor het opslaan van de database apparaten, hoe kleiner de totale door Voer bij het lezen
+* Het kleinere aantal CPU-threads in de virtuele machine, des te groter is de impact van back-upcompressie
+* Hoe minder doelen (Stripe-Directory's, schijven) om de back-up naar te schrijven, hoe lager de door Voer
 
-Vergroten van het aantal doelen te schrijven naar er zijn twee opties die gebruikt/gecombineerd afhankelijk van uw behoeften worden kunnen:
+Als u het aantal doelen wilt verg Roten om naar te schrijven, zijn er twee opties, die kunnen worden gebruikt/gecombineerd, afhankelijk van uw behoeften:
 
-* Het volume back-updoel striping over meerdere gekoppelde schijven voor het verbeteren van de doorvoer IOP's op het desbetreffende striped volume
-* Het maken van een dump-configuratie op het niveau van SAP ASE, die meer dan één doeldirectory gebruikt voor de dump in te schrijven
+* Het back-updoel volume over meerdere gekoppelde schijven verwijderen om de IOPS-door Voer voor dat striped volume te verbeteren
+* Er wordt een dump configuratie op SAP ASE-niveau gemaakt, die gebruikmaakt van meer dan één doel directory om de dump te schrijven naar
 
-Een schijfvolume striping over meerdere gekoppelde schijven is beschreven in [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md). Voor meer informatie over het gebruik van meerdere mappen in de configuratie van de dump SAP ASE, Raadpleeg de documentatie van de opgeslagen Procedure sp_config_dump, die wordt gebruikt voor het maken van de configuratie van de dump op de [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp).
+Het verwijderen van een schijf volume over meerdere gekoppelde schijven is besproken in [overwegingen bij de implementatie van Azure virtual machines DBMS voor SAP-workloads](dbms_guide_general.md). Raadpleeg de documentatie over de opgeslagen procedure sp_config_dump, die wordt gebruikt om de dump configuratie te maken op de [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp)voor meer informatie over het gebruik van meerdere mappen in de SAP ASE dump configuratie.
 
-### <a name="disaster-recovery-with-azure-vms"></a>Herstel na noodgeval met Azure-VM 's
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replicatie van gegevens met SAP Sybase replicatie-Server
-Met de SAP Sybase replicatie Server (SRS), biedt SAP ASE een warme stand-by-oplossing om over te dragen van de databasetransacties asynchroon naar een externe locatie. 
+### <a name="disaster-recovery-with-azure-vms"></a>Herstel na nood geval met Azure-Vm's
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Gegevens replicatie met SAP Sybase-replicatie server
+Met de SAP Sybase Replication server (SRS) biedt SAP ASE een warme stand-by-oplossing om database transacties asynchroon over te dragen naar een locatie op afstand. 
 
-De installatie en het gebruik van SRS werkt ook functioneel in een virtuele machine die wordt gehost in Azure-Services voor virtuele Machine als er een on-premises.
+De installatie en werking van SRS werkt goed in een VM die wordt gehost in azure virtual machine-Services, zoals on-premises.
 
-SAP ASE HADR is niet vereist voor een interne Azure Load Balancer en heeft geen afhankelijkheden op OS niveau clustering. Het werkt op Windows Azure en Linux-machines. Voor meer informatie over SAP ASE HADR leest de [SAP ASE HADR gebruikershandleiding](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html).
+Voor SAP ASE HADR is geen interne Load Balancer van Azure vereist en er zijn geen afhankelijkheden op besturingssysteem niveau clustering. Het werkt op Azure Windows-en Linux-Vm's. Lees de [hand leiding voor SAP ASE HADR-gebruikers](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)voor meer informatie over SAP ASE HADR.
 
-## <a name="specifics-to-sap-ase-on-linux"></a>Specifieke informatie naar SAP ASE op Linux
-Beginnen met Microsoft Azure, kunt u eenvoudig uw bestaande SAP ASE toepassingen migreren naar Azure Virtual Machines. SAP ASE in een virtuele Machine kunt u de totale eigendomskosten van implementatie, beheer en onderhoud van de breedte van bedrijfstoepassingen verminderen door eenvoudig deze toepassingen met Microsoft Azure te migreren. Met SAP ASE in een Azure Virtual machines, beheerders en ontwikkelaars kunnen nog steeds gebruiken de dezelfde ontwikkelings- en beheerhulpprogramma's die on-premises beschikbaar zijn.
+## <a name="specifics-to-sap-ase-on-linux"></a>Details van SAP ASE in Linux
+Vanaf Microsoft Azure kunt u eenvoudig uw bestaande SAP ASE-toepassingen migreren naar Azure Virtual Machines. Met SAP ASE in een virtuele machine kunt u de total cost of ownership van de implementatie, het beheer en het onderhoud van toepassingen op bedrijfs niveau verminderen door deze toepassingen eenvoudig te migreren naar Microsoft Azure. Met SAP ASE in een virtuele machine van Azure kunnen beheerders en ontwikkel aars nog steeds gebruikmaken van dezelfde hulpprogram ma's voor ontwikkeling en beheer die on-premises beschikbaar zijn.
 
-Voor het implementeren van virtuele Azure-machines is het belangrijk te weten de officiële Sla's, kunnen u hier vinden: <https://azure.microsoft.com/support/legal/sla>
+Voor het implementeren van Azure-Vm's is het belang rijk dat u de officiële Sla's kent, die u hier kunt vinden:<https://azure.microsoft.com/support/legal/sla>
 
-SAP sizinginformatie en een lijst met SAP gecertificeerde VM-SKU's vindt u in de SAP-notitie [1928533]. Aanvullende SAP formaat documenten voor Azure Virtual machines u hier vindt <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> en hier <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+SAP-grootte gegevens en een lijst met SAP-gecertificeerde VM-Sku's vindt u in SAP Note [1928533]. Meer sap-formaat documenten voor virtuele machines van Azure vindt u <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> hier en hier<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
-Instructies en aanbevelingen met betrekking tot het gebruik van Azure Storage, implementatie van SAP VM's of SAP bewaking van toepassing op implementaties van SAP ASE in combinatie met SAP-toepassingen zoals vermeld in de eerste vier hoofdstukken van dit document.
+Instructies en aanbevelingen met betrekking tot het gebruik van Azure Storage, de implementatie van SAP-Vm's of SAP-bewaking zijn van toepassing op implementaties van SAP ASE in combi natie met SAP-toepassingen, zoals vermeld in de eerste vier hoofd stukken van dit document.
 
-De volgende twee SAP-opmerkingen bevatten algemene informatie over het as-omgeving op Linux- en as-omgeving in de Cloud:
+De volgende twee SAP-opmerkingen bevatten algemene informatie over ASE in Linux en ASE in de Cloud:
 
 * [2134316]
 * [1941500]
 
-### <a name="sap-ase-version-support"></a>Ondersteuning voor SAP-versie van de as-omgeving
-SAP op dit moment ondersteunt SAP ASE versie 16,0 voor gebruik met SAP Business Suite producten. Alle updates voor SAP ASE-server of JDBC en ODBC-stuurprogramma's voor gebruik met SAP Business Suite producten vindt u uitsluitend via SAP Service Marketplace op: <https://support.sap.com/swdc>.
+### <a name="sap-ase-version-support"></a>Ondersteuning voor SAP ASE-versie
+SAP ondersteunt momenteel SAP ASE versie 16,0 voor gebruik met SAP Business Suite-producten. Alle updates voor SAP ASE server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP Business Suite-producten, worden uitsluitend via de SAP <https://support.sap.com/swdc>-Service Marketplace op: beschreven.
 
-Als voor installaties downloaden on-premises updates voor de SAP ASE-server, of de JDBC en ODBC-stuurprogramma's rechtstreeks vanuit Sybase websites niet. Voor gedetailleerde informatie over patches, die worden ondersteund voor gebruik met SAP Business Suite producten on-premises en in Azure Virtual Machines, Zie de volgende SAP-opmerkingen:
+Als voor on-premises installaties, moet u geen updates voor de SAP ASE-server of voor de JDBC-en ODBC-stuur Programma's rechtstreeks van Sybase websites downloaden. Voor gedetailleerde informatie over patches die worden ondersteund voor gebruik met SAP Business Suite-producten on-premises en in azure Virtual Machines raadpleegt u de volgende SAP-opmerkingen:
 
 * [1590719]
 * [1973241]
 
-Algemene informatie over het uitvoeren van SAP Business Suite op SAP ASE vindt u de [SCN](https://www.sap.com/community/topic/ase.html)
+Algemene informatie over het uitvoeren van SAP Business Suite op SAP ASE vindt u in het [SCN](https://www.sap.com/community/topic/ase.html)
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>Richtlijnen voor SAP ASE voor SAP-gerelateerde SAP ASE installaties in Azure VM 's
+### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP ASE-configuratie richtlijnen voor SAP ASE-installaties op het gebied van Azure-Vm's
 #### <a name="structure-of-the-sap-ase-deployment"></a>Structuur van de SAP ASE-implementatie
-SAP ASE uitvoerbare bestanden moeten zich bevindt of in het bestandssysteem van de hoofdmap van de virtuele machine (/sybase) geïnstalleerd. De meeste van de SAP ASE-systeem en hulpprogramma's voor databases zijn normaal gesproken niet ondervindt hoge werkbelasting. Daarom kunnen de systeem- en hulpprogramma's voor databases (master, model, saptools, sybmgmtdb, sybsystemdb) worden opgeslagen op het root-bestandssysteem. 
+SAP ASE uitvoer bare bestanden moeten worden gevonden of geïnstalleerd in het hoofd bestandssysteem van de virtuele machine (/Sybase). Normaal gesp roken hebben de meeste data bases van het SAP ASE-systeem en hulpprogram ma's geen hoge werk belasting. Daarom kunnen de systeem-en hulpprogram ma's (Master, model, saptools, sybmgmtdb, sybsystemdb) worden opgeslagen op het hoofd bestands systeem. 
 
-Een uitzondering kan de tijdelijke database, die in het geval van sommige SAP ERP- en alle BW werkbelastingen hogere gegevensvolume of i/o-bewerkingen volume mogelijk vereist zijn. Volumes of IOP's die door de besturingssysteemschijf van de virtuele machine kan niet worden opgegeven 
+Een uitzonde ring kan de tijdelijke data base zijn. in het geval van sommige SAP ERP en alle BW-workloads is mogelijk een hoger gegevens volume of een I/O-bewerkingen vereist. Volumes of IOPS die niet kunnen worden weer gegeven door de besturingssysteem schijf van de VM 
 
-Afhankelijk van de versie van SAPInst/SWPM gebruikt voor het installeren van het systeem, kan de database bevatten:
+Afhankelijk van de versie van SAPInst/SWPM die is gebruikt om het systeem te installeren, kan de data base het volgende bevatten:
 
-* Een enkele SAP ASE tempdb gemaakt bij het installeren van SAP ASE
-* Een SAP ASE tempdb die zijn gemaakt door SAP ASE en een extra saptempdb die zijn gemaakt door de SAP-installatieprogramma installeren
-* Een SAP ASE tempdb die zijn gemaakt door het installeren van SAP ASE en een aanvullende tempdb die handmatig is gemaakt (bijvoorbeeld volgende SAP-notitie [1752266]) om te voldoen aan specifieke tempdb ERP/BW
+* Er is één SAP ASE TempDB gemaakt tijdens de installatie van SAP ASE
+* Een SAP ASE TempDB gemaakt door SAP ASE te installeren en een extra saptempdb gemaakt door de SAP-installatie routine
+* Een SAP ASE TempDB gemaakt door het installeren van SAP ASE en een extra TempDB die hand matig is gemaakt (bijvoorbeeld SAP Note [1752266]) om te voldoen aan de vereisten van de ERP/BW-specifieke tempdb
 
-Uit prestatieoverwegingen voor specifieke ERP of alle BW werkbelastingen, kan het zinvol om op te slaan van de tempdb-apparaten van de Daarnaast gemaakte tempdb (door SWPM of handmatig) op een afzonderlijk bestand-systeem, die kan worden gerepresenteerd door een enkele Azure-gegevensschijf of een Linux-RAID spanning min. meerdere Azure-gegevensschijven. Als er geen aanvullende tempdb bestaat, is het raadzaam een te maken (SAP-notitie [1752266]).
+Vanwege de prestaties van specifieke ERP-of alle BW-workloads, kan het zinvol zijn om de tempdb-apparaten van de verder gemaakte TempDB (door SWPM of hand matig) op te slaan op een afzonderlijk bestands systeem, dat kan worden vertegenwoordigd door één Azure-gegevens schijf of een Linux RAID-spanning m ultiple Azure-gegevens schijven. Als er geen extra TempDB bestaat, is het raadzaam om er een te maken (SAP-notitie [1752266]).
 
-Voor dergelijke systemen moeten de volgende stappen worden uitgevoerd voor de tempdb Daarnaast gemaakt:
+Voor dergelijke systemen moeten de volgende stappen worden uitgevoerd voor de verder gemaakte TempDB:
 
-* De eerste tempdb-map verplaatsen naar het eerste bestandssysteem van de SAP-database
-* Tempdb-mappen toevoegen aan elk van de schijven met een bestandssysteem van de SAP-database
+* De eerste TempDB-directory verplaatsen naar het eerste bestands systeem van de SAP-data base
+* TempDB-mappen toevoegen aan alle schijven met een bestands systeem van de SAP-data base
 
-Deze configuratie kunnen tempdb verbruikt meer ruimte dan mogelijk is het systeemstation. Als uitgangspunt kunt een controleren of de tempdb-apparaat-grootten op bestaande systemen, die on-premises uitvoert. Of een dergelijke configuratie kiest, IOPS-nummers op basis van tempdb die kan niet worden voorzien van het systeemstation. Systemen die on-premises worden uitgevoerd, kunnen worden gebruikt voor het bewaken van i/o-werkbelasting op basis van tempdb.
+Met deze configuratie kan TempDB meer ruimte gebruiken dan het systeem station kan bieden. Als referentie één kan de omvang van het TempDB-apparaat controleren op bestaande systemen, die on-premises worden uitgevoerd. Of een dergelijke configuratie maakt IOPS-nummers mogelijk voor TempDB, wat niet kan worden meegeleverd met het systeem station. Systemen die on-premises worden uitgevoerd, kunnen worden gebruikt om de I/O-werk belasting te controleren op Tempdb.
 
-Plaats alle mappen SAP ASE nooit naar mnt of /mnt/resource van de virtuele machine. Voor SAP ASE geldt dit advies ook voor de tempdb, zelfs als de objecten die zijn opgeslagen in de tempdb alleen tijdelijk zijn. Omdat het is een standaard Azure-VM tijdelijke ruimte, dit geen permanente is mnt of /mnt/resource. Meer informatie over de tijdelijke ruimte van de virtuele machine van Azure kunnen u vinden in [in dit artikel][virtual-machines-linux-how-to-attach-disk]
+Plaats nooit SAP ASE-directory's op/mnt of/mnt/resource van de virtuele machine. Voor SAP-ASE geldt dit advies ook voor TempDB, zelfs als de objecten die in de tempdb worden bewaard, alleen tijdelijk zijn. Omdat/mnt of/mnt/resource een standaard tijdelijke Azure-VM-ruimte is, die niet permanent is. Meer informatie over de tijdelijke Azure VM-ruimte vindt u in [dit artikel][virtual-machines-linux-how-to-attach-disk]
 
-Voor gegevens en implementaties van transaction log-bestand, de instructies en suggesties [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md). Het gebruik van LVM of MDADM verdient gebruiken voor het bouwen van stripesets met voldoende IOPS, doorvoer en volume in het geval van implementaties op basis van Linux. 
+Voor implementaties van gegevens en transactie logboek bestanden zijn de instructies en suggesties die zijn aangebracht in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). In het geval van op Linux gebaseerde implementaties wordt het gebruik van LVM of MDADM aanbevolen voor het maken van stripesets met voldoende IOPS, door Voer en volume. 
 
-#### <a name="impact-of-database-compression"></a>Gevolgen van het Database-compressie
-In configuraties waar i/o-bandbreedte een beperkende factor kan worden, kan elke meting, waardoor IOP's helpen om te vergroten van de werkbelasting een kan worden uitgevoerd in een IaaS-scenario, zoals Azure. Daarom is het raadzaam om ervoor te zorgen dat SAP ASE-compressie wordt gebruikt voor het uploaden van een bestaande SAP-database naar Azure.
+#### <a name="impact-of-database-compression"></a>Impact van database compressie
+Bij configuraties waarbij de I/O-band breedte een beperkende factor kan worden, kan elke meting, die het aantal IOPS reduceert, de werk belasting die in een IaaS-scenario zoals Azure kan worden uitgevoerd, worden uitgerekt. Daarom is het raadzaam om ervoor te zorgen dat SAP ASE-compressie wordt gebruikt voordat u een bestaande SAP-data base uploadt naar Azure.
 
-De aanbeveling om toe te passen compressie voordat u uploadt naar Azure wordt verkregen uit verschillende redenen:
+De aanbeveling om compressie toe te passen voordat uploadt naar Azure, heeft verschillende oorzaken:
 
-* De hoeveelheid gegevens worden geüpload naar Azure is lager
-* De duur van de compressie-uitvoering is korter, ervan uitgaande dat een sterkere hardware met meer CPU's of hogere i/o-bandbreedte of minder i/o latentie on-premises gebruiken kunt
-* Kleinere database kunnen leiden tot minder kosten voor schijftoewijzing
+* De hoeveelheid gegevens die naar Azure moet worden geüpload, is lager
+* De duur van het uitvoeren van de compressie is korter, ervan uitgaande dat een grotere hardware kan gebruiken met meer Cpu's of een hogere I/O-band breedte of minder I/o-latentie on-premises.
+* Kleinere database grootten kunnen leiden tot minder kosten voor schijf toewijzing
 
-Compressie van gegevens en LOB werken in een virtuele machine die wordt gehost in Azure Virtual Machines, als er een on-premises. Voor meer informatie over hoe u om te controleren als compressie is al in gebruik in een bestaande SAP ASE-database, controleert u SAP-notitie [1750510]. Zie voor meer informatie over database-compressie, SAP-notitie [2121797].
+Gegevens-en LOB-compressie werken in een virtuele machine die wordt gehost in azure Virtual Machines als deze on-premises wordt uitgevoerd. Voor meer informatie over het controleren of compressie al in gebruik is in een bestaande SAP ASE-data base, raadpleegt u SAP-opmerking [1750510]. Zie SAP Note [2121797]voor meer informatie over database compressie.
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>DBACockpit gebruikt voor het bewaken van Database-exemplaren
-Voor SAP-systemen, die SAP ASE zijn als databaseplatform worden gebruikt, is de DBACockpit toegankelijk als ingesloten browservensters in transactie DBACockpit of Webdynpro. De volledige functionaliteit voor bewaking en beheer van de database is echter beschikbaar in de implementatie Webdynpro van alleen de DBACockpit.
+#### <a name="using-dbacockpit-to-monitor-database-instances"></a>Data base-exemplaren bewaken met behulp van DBACockpit
+Voor SAP-systemen, die gebruikmaken van SAP ASE als database platform, is de DBACockpit toegankelijk als Inge sloten browser vensters in trans actie DBACockpit of als Webdynpro. De volledige functionaliteit voor het bewaken en beheren van de data base is echter alleen beschikbaar in de Webdynpro-implementatie van de DBACockpit.
 
-Als met on-premises systemen zijn verschillende stappen vereist om alle SAP NetWeaver-functionaliteit die worden gebruikt door de Webdynpro uitvoering van de DBACockpit te schakelen. Ga als volgt de SAP-notitie [1245200] voor het gebruik van webdynpros inschakelen en het genereren van de vereiste velden. Wanneer u de instructies in de notities van de bovenstaande configureren u ook de Internet-Communicatiemanager (icm), samen met de poorten die worden gebruikt voor http en https-verbindingen. De standaardinstelling voor HTTP-ziet er zo uit:
+Net als bij on-premises systemen zijn er verschillende stappen vereist om alle SAP NetWeaver-functionaliteit in te scha kelen die wordt gebruikt door de Webdynpro-implementatie van de DBACockpit. Volg SAP-opmerking [1245200] om het gebruik van webdynpros in te scha kelen en de vereiste items te genereren. Wanneer u de instructies in de bovenstaande opmerkingen volgt, moet u ook de Internet Communication Manager (ICM) configureren, samen met de poorten die moeten worden gebruikt voor http-en HTTPS-verbindingen. De standaard instelling voor http ziet er als volgt uit:
 
-> icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
+> ICM/server_port_0 = PROCTIMEOUT = HTTP, poort = 8000, = 600, TIMEOUT = 600
 > 
-> icm/server_port_1 = PROT=HTTPS,PORT=443$$,PROCTIMEOUT=600,TIMEOUT=600
+> ICM/server_port_1 = door Voer = HTTPS, poort = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
 > 
 
-en de koppelingen die zijn gegenereerd in transactie DBACockpit zal er ongeveer als volgt:
+en de koppelingen die zijn gegenereerd in trans actie DBACockpit zien er ongeveer als volgt uit:
 
 > https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -538,34 +537,34 @@ en de koppelingen die zijn gegenereerd in transactie DBACockpit zal er ongeveer 
 > 
 > 
 
-Afhankelijk van hoe de Azure-virtuele Machine die als host fungeert voor de SAP-systeem is verbonden met uw AD en DNS, moet u om ervoor te zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de machine waar het openen van de DBACockpit uit. Zie SAP-notitie [773830] om te begrijpen hoe ICM bepaalt de volledig gekwalificeerde hostnaam, afhankelijk van het profiel parameters en set parameter icm/host_name_full expliciet indien nodig.
+Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie SAP Note [773830] om te begrijpen hoe ICM de volledig gekwalificeerde hostnaam bepaalt, afhankelijk van de profiel parameters en stel para meter ICM/host_name_full expliciet in als dat nodig is.
 
-Als u de virtuele machine in een scenario alleen in de Cloud zonder cross-premises-connectiviteit tussen on-premises en Azure hebt geïmplementeerd, moet u een openbaar IP-adres en een domainlabel definiëren. De indeling van de openbare DNS-naam van de virtuele machine lijkt:
+Als u de virtuele machine hebt geïmplementeerd in een alleen-Cloud scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP-adres en een domainlabel definiëren. De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
 > 
 
-Meer informatie met betrekking tot de DNS-naam vindt [hier][virtual-machines-azurerm-versus-azuresm].
+Meer informatie over de DNS-naam kunt u [hier][virtual-machines-azurerm-versus-azuresm]vinden.
 
-Als u de SAP-profiel parameter icm/host_name_full op de DNS-naam van de koppeling van de Azure-VM kan er ongeveer als volgt:
+De SAP-profiel parameter ICM/host_name_full instellen op de DNS-naam van de virtuele machine van Azure de koppeling kan er ongeveer als volgt uitzien:
 
 > https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
-In dit geval moet u ervoor zorgen dat:
+In dat geval moet u het volgende doen:
 
-* Regels voor binnenkomende verbindingen toevoegen aan de Netwerkbeveiligingsgroep in de Azure-portal voor de TCP/IP-poorten die worden gebruikt om te communiceren met ICM
-* Regels voor binnenkomende verbindingen toevoegen aan de Windows Firewall-configuratie voor de TCP/IP-poorten die worden gebruikt om te communiceren met de ICM
+* Regels voor binnenkomend verkeer toevoegen aan de netwerk beveiligings groep in de Azure Portal voor de TCP/IP-poorten die worden gebruikt voor communicatie met ICM
+* Voeg regels voor binnenkomend verkeer toe aan de Windows Firewall configuratie voor de TCP/IP-poorten die worden gebruikt voor communicatie met de ICM
 
-Voor een geautomatiseerde beschikbaar voor alle correcties geïmporteerd, wordt aanbevolen om toe te passen periodiek de correctie verzameling SAP-notitie die van toepassing zijn op uw SAP-versie:
+Voor een geautomatiseerde import van alle beschik bare correcties is het raadzaam om regel matig de correctie verzameling SAP-opmerking toe te passen die van toepassing is op uw SAP-versie:
 
 * [1558958]
 * [1619967]
 * [1882376]
 
-Meer informatie over de DBA Cockpit voor SAP ASE vindt u in de volgende SAP-opmerkingen:
+Meer informatie over DBA cockpit voor SAP ASE vindt u in de volgende SAP-opmerkingen:
 
 * [1605680]
 * [1757924]
@@ -577,37 +576,37 @@ Meer informatie over de DBA Cockpit voor SAP ASE vindt u in de volgende SAP-opme
 * [1956005]
 
 #### <a name="backuprecovery-considerations-for-sap-ase"></a>Overwegingen voor back-up/herstel voor SAP ASE
-Wanneer u SAP ASE implementeert in Azure, moet worden gecontroleerd op uw back-upmethode. Zelfs voor niet-productiesystemen, de SAP-database (s) moet een back-up periodiek. Omdat Azure Storage kan drie afbeeldingen voldoen, is het mogelijk dat een back-up minder belangrijke met betrekking tot het vastlopen van een storage compenserende. De belangrijkste reden voor het onderhouden van een juiste back-up en herstel plan nog meer dingen die u logische/handmatige fouten compenseren kunt door punt in tijd herstel mogelijkheden te bieden. Zodat het doel om een van beide gebruik back-ups van de database herstellen naar een bepaald punt in tijd of is het gebruik van de back-ups in Azure als seeding voor een ander systeem door het kopiëren van de bestaande database. 
+Wanneer u SAP ASE implementeert in azure, moet uw back-upmethodologie worden gecontroleerd. Zelfs voor niet-productie systemen moet u regel matig een back-up van de SAP-data base (s) maken. Omdat Azure Storage drie installatie kopieën houdt, is een back-up mogelijk minder belang rijk voor het compenseren van een storing in de opslag. De belangrijkste reden voor het onderhouden van een juiste back-up-en herstel planning is meer dat u kunt compenseren voor logische/hand matige fouten door herstel mogelijkheden voor het punt op te geven. Het doel is dus back-ups te gebruiken om de data base terug te zetten naar een bepaald tijdstip of om de back-ups in azure te gebruiken om een ander systeem te seeden door de bestaande Data Base te kopiëren. 
 
-Back-up en herstellen van een database in Azure werkt op dezelfde manier als on-premises. Zie Opmerkingen bij de SAP:
+Het maken van een back-up en het herstellen van een data base in azure werkt op dezelfde manier als op locatie. Zie SAP-opmerkingen:
 
 * [1588316]
 * [1585981]
 
-voor informatie over het maken van het dump configuraties en planning back-ups. Afhankelijk van uw strategie en behoeften, kunt u de database en logboekbestanden dumpbestanden voor foutopsporing schijf bij een van de bestaande schijven of toevoegen van een extra schijf voor de back-up configureren. Het risico van gegevensverlies in geval van een fout, verminderen het verdient aanbeveling een schijf gebruiken waarop geen database map/bestand zich bevindt.
+voor meer informatie over het maken van dump configuraties en het plannen van back-ups. Afhankelijk van uw strategie en behoeften kunt u data base-en logboek dumps configureren op schijf op een van de bestaande schijven of een extra schijf toevoegen voor de back-up. Om het risico van gegevens verlies in het geval van een fout te verminderen, is het raadzaam om een schijf te gebruiken waarop geen data base-map of-bestand is opgeslagen.
 
-Naast gegevens- en LOB-compressie biedt SAP ASE ook back-compressie. Minder ruimte met de database en logboekbestanden dumpbestanden voor foutopsporing te gebruiken is het aanbevolen gebruik van back-compressie. Zie voor meer informatie, SAP-notitie [1588316]. Comprimeren van de back-up is ook essentieel om te kunnen verminderen de hoeveelheid gegevens die moet worden overgezet als u van plan bent om back-ups of VHD's met back-up dumpbestanden voor foutopsporing van de virtuele Machine van Azure naar on-premises te downloaden.
+Naast gegevens-en LOB-compressie biedt SAP ASE ook back-upcompressie. Als u minder ruimte wilt gebruiken voor de data base en de logboek dump, wordt u aangeraden back-upcompressie. Zie SAP Note [1588316]voor meer informatie. Het comprimeren van de back-up is ook cruciaal om de hoeveelheid gegevens die moet worden overgedragen te verminderen als u van plan bent om back-ups of Vhd's met back-updumps van de virtuele machine van Azure naar on-premises te downloaden.
 
-Gebruik de Azure-VM tijdelijke ruimte mnt of /mnt/resource niet als doel voor database- of logboekpad dump.
+Gebruik niet de tijdelijke ruimte/mnt of/mnt/resource van de Azure VM als de data base-of logboek dump bestemming.
 
-#### <a name="performance-considerations-for-backupsrestores"></a>Prestatie-overwegingen voor back-ups/herstellen
-Prestaties van back-up/herstel is als in de bare-metal implementaties, afhankelijk van hoeveel volumes parallel kunnen worden gelezen en wat de doorvoer van deze volumes mogelijk. Houd er rekening mee dat back-upcompressie CPU-resources verbruikt. Deze CPU-verbruik van back-compressie kan een belangrijke rol spelen op virtuele machines met een klein aantal CPU-threads.  Daarom kunt u ervan uitgaan:
+#### <a name="performance-considerations-for-backupsrestores"></a>Prestatie overwegingen voor back-ups/herstel bewerkingen
+Net als bij bare-metal implementaties is de prestaties van back-up/herstel afhankelijk van het aantal volumes dat parallel kan worden gelezen en de door Voer van die volumes. Houd er wel van uit dat de compressie van back-ups CPU-Resources verbruikt. Dit CPU-verbruik van back-upcompressie kan een belang rijke rol spelen op Vm's met een klein aantal CPU-threads.  Daarom kunt u aannemen:
 
-* Minder het nummer van de schijven die worden gebruikt voor het opslaan van de database-apparaten, de kleinere totale doorvoer bij het lezen
-* Hoe kleiner dat het aantal CPU-threads in de VM, de strengere de gevolgen van het back-compressie
-* De minder doelen (Linux software-RAID, schijven) schrijven van de back-up naar de laagste de doorvoer
+* Hoe minder schijven er worden gebruikt voor het opslaan van de database apparaten, hoe kleiner de totale door Voer bij het lezen
+* Het kleinere aantal CPU-threads in de virtuele machine, des te groter is de impact van back-upcompressie
+* De minder doelen (Linux software RAID, schijven) voor het schrijven van de back-up naar, de lagere door Voer
 
-Vergroten van het aantal doelen te schrijven naar er zijn twee opties die gebruikt/gecombineerd afhankelijk van uw behoeften worden kunnen:
+Als u het aantal doelen wilt verg Roten om naar te schrijven, zijn er twee opties, die kunnen worden gebruikt/gecombineerd, afhankelijk van uw behoeften:
 
-* Het volume back-updoel striping over meerdere gekoppelde schijven voor het verbeteren van de doorvoer IOP's op het desbetreffende striped volume
-* Het maken van een dump-configuratie op het niveau van SAP ASE, die meer dan één doeldirectory gebruikt voor de dump in te schrijven
+* Het back-updoel volume over meerdere gekoppelde schijven verwijderen om de IOPS-door Voer voor dat striped volume te verbeteren
+* Er wordt een dump configuratie op SAP ASE-niveau gemaakt, die gebruikmaakt van meer dan één doel directory om de dump te schrijven naar
 
-Een schijfvolume striping over meerdere gekoppelde schijven is beschreven in [overwegingen voor Azure Virtual Machines DBMS-implementatie voor de werkbelasting van SAP](dbms_guide_general.md). Voor meer informatie over het gebruik van meerdere mappen in de configuratie van de dump SAP ASE, Raadpleeg de documentatie van de opgeslagen Procedure sp_config_dump, die wordt gebruikt voor het maken van de configuratie van de dump op de [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp).
+Het verwijderen van een schijf volume over meerdere gekoppelde schijven is besproken in [overwegingen bij de implementatie van Azure virtual machines DBMS voor SAP-workloads](dbms_guide_general.md). Raadpleeg de documentatie over de opgeslagen procedure sp_config_dump, die wordt gebruikt om de dump configuratie te maken op de [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp)voor meer informatie over het gebruik van meerdere mappen in de SAP ASE dump configuratie.
 
-### <a name="disaster-recovery-with-azure-vms"></a>Herstel na noodgeval met Azure-VM 's
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>Replicatie van gegevens met SAP Sybase replicatie-Server
-Met de SAP Sybase replicatie Server (SRS), biedt SAP ASE een warme stand-by-oplossing om over te dragen van de databasetransacties asynchroon naar een externe locatie. 
+### <a name="disaster-recovery-with-azure-vms"></a>Herstel na nood geval met Azure-Vm's
+#### <a name="data-replication-with-sap-sybase-replication-server"></a>Gegevens replicatie met SAP Sybase-replicatie server
+Met de SAP Sybase Replication server (SRS) biedt SAP ASE een warme stand-by-oplossing om database transacties asynchroon over te dragen naar een locatie op afstand. 
 
-De installatie en het gebruik van SRS werkt ook functioneel in een virtuele machine die wordt gehost in Azure-Services voor virtuele Machine als er een on-premises.
+De installatie en werking van SRS werkt goed in een VM die wordt gehost in azure virtual machine-Services, zoals on-premises.
 
-As-omgeving HADR via SAP-Server voor replicatie wordt ondersteund. Het is raadzaam SAP ASE 16.03 gebruiken om een dergelijke configuratie. Meer gedetailleerde instructies voor het installeren van deze configuraties vindt u in dit [blog](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/).
+ASE HADR via SAP-replicatie server wordt ondersteund. Het is raadzaam om SAP ASE 16,03 te gebruiken om een dergelijke configuratie te proberen. Meer gedetailleerde instructies voor het installeren van dergelijke configuraties vindt u in dit [blog](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/).

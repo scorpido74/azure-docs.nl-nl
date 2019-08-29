@@ -1,6 +1,6 @@
 ---
-title: Sjablonen voor Azure API Management Ontwikkelaarsportals | Microsoft Docs
-description: Informatie over het aanpassen van de inhoud van ontwikkelaarsportalpagina's met behulp van een set van sjablonen in Azure API Management.
+title: Sjablonen voor Azure API Management-ontwikkelaars Portal | Microsoft Docs
+description: Meer informatie over het aanpassen van de inhoud van de pagina's van de ontwikkelaars Portal met behulp van een set sjablonen in azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,26 +10,25 @@ ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb06c1c5db20f3216c5c8e81580e445f9c0ba804
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657642"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072606"
 ---
-# <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaarsportals
+# <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal
 
-Met Azure API Management biedt u de mogelijkheid om aan te passen van de inhoud van ontwikkelaarsportalpagina's met behulp van een set van sjablonen die hun inhoud hebt geconfigureerd. Met behulp van [DotLiquid](http://dotliquidmarkup.org/) syntaxis en de editor van uw keuze, zoals [DotLiquid voor ontwerpers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [tekenreeks resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), en [pagina besturingselementen](api-management-page-controls.md), hebt u geweldige flexibiliteit voor het configureren van de inhoud van de pagina's naar eigen inzicht met behulp van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, [zoals DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), glyph- [resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
   
-Zie voor meer informatie over het werken met sjablonen [over het aanpassen van de API Management-ontwikkelaarsportal met behulp van sjablonen](api-management-developer-portal-templates.md).  
+Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> Sjablonen voor ontwikkelaarsportals  
+##  <a name="DeveloperPortalTemplates"></a>Sjablonen voor ontwikkelaars Portal  
   
 -   [API's](api-management-api-templates.md)  
     -   [API-lijst](api-management-api-templates.md#APIList)  
@@ -39,23 +38,23 @@ Zie voor meer informatie over het werken met sjablonen [over het aanpassen van d
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [Objective-C](api-management-api-templates.md#ObjectiveC)  
+        -   [Doel stelling C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Producten](api-management-product-templates.md)  
-    -   [Lijst met producten](api-management-product-templates.md#ProductList)  
-    -   [Product](api-management-product-templates.md#Product)  
+    -   [Product lijst](api-management-product-templates.md#ProductList)  
+    -   [Voortplant](api-management-product-templates.md#Product)  
 -   [Toepassingen](api-management-application-templates.md)  
     -   [Lijst met toepassingen](api-management-application-templates.md#ProductList)  
     -   [Toepassing](api-management-application-templates.md#Application)  
 -   [Problemen](api-management-issue-templates.md)  
-    -   [Lijst met probleem](api-management-issue-templates.md#IssueList)  
--   [Gebruikersprofiel](api-management-user-profile-templates.md)  
+    -   [Lijst met problemen](api-management-issue-templates.md#IssueList)  
+-   [Gebruikers profiel](api-management-user-profile-templates.md)  
     -   [Profiel](api-management-user-profile-templates.md#Profile)  
     -   [Abonnementen](api-management-user-profile-templates.md#Subscriptions)  
     -   [Toepassingen](api-management-user-profile-templates.md#Applications)  
-    -   [Accountgegevens bijwerken](api-management-user-profile-templates.md#UpdateAccountInfo)  
+    -   [Account gegevens bijwerken](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [Pagina's](api-management-page-templates.md)  
     -   [Aanmelden](api-management-page-templates.md#SignIn)  
     -   [Aanmelden](api-management-page-templates.md#SignUp)  

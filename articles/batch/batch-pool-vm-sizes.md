@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: fd88f8e9b32b3fe5a0d7ab0caf233098ea19fde0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323091"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094670"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -39,7 +38,7 @@ Batch-Pools in de virtuele-machine configuratie ondersteunen bijna alle VM-groot
 
 Alle promotie-of preview-VM-grootten die niet worden vermeld, zijn niet gegarandeerd voor ondersteuning.
 
-| VM-serie  | Ondersteunde grootten | Groeps toewijzings modus Batch-account<sup>1</sup> |
+| VM-reeks  | Ondersteunde grootten | Groeps toewijzings modus Batch-account<sup>1</sup> |
 |------------|---------|-----------------|
 | Basic A-serie | Alle grootten *behalve* Basic_A0 (a0) | Any |
 | A-serie | Alle grootten *behalve* Standard_A0 | Any |
@@ -72,7 +71,7 @@ Alle promotie-of preview-VM-grootten die niet worden vermeld, zijn niet gegarand
 
 Batch-Pools in de Cloud service configuratie ondersteunen alle [VM-grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **, met uitzonde ring** van de volgende opties:
 
-| VM-serie  | Niet-ondersteunde grootten |
+| VM-reeks  | Niet-ondersteunde grootten |
 |------------|-------------------|
 | A-serie   | Extra klein       |
 | Av2-serie | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |

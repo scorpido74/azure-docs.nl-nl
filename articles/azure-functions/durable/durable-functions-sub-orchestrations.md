@@ -1,33 +1,32 @@
 ---
-title: Onderliggende indelingen voor duurzame functies - Azure
-description: Over het aanroepen van de indelingen van indelingen in de extensie duurzame functies voor Azure Functions.
+title: Sub-Orchestrations voor Durable Functions-Azure
+description: Het aanroepen van indelingen van Orchestrations in de Durable Functions-extensie voor Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab9a5714a7ef24b51957bd48b1b67240cf13adb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 868efad58e14fd817729f0aa9ac785bc0f960867
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730239"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087022"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Onderliggende indelingen in duurzame functies (Azure Functions)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Sub-indelingen in Durable Functions (Azure Functions)
 
-Naast het aanroepen van activiteitsfuncties, kunnen orchestrator-functies aanroepen van andere orchestrator-functies. U kunt bijvoorbeeld een grotere orchestration uit een bibliotheek van orchestrator-functies bouwen. Of u kunt meerdere exemplaren van een orchestrator-functie parallel uitvoeren.
+Naast het aanroepen van activiteit functies kunnen Orchestrator-functies andere Orchestrator-functies aanroepen. U kunt bijvoorbeeld een grotere indeling van een bibliotheek van Orchestrator-functies bouwen. U kunt ook meerdere exemplaren van een Orchestrator-functie parallel uitvoeren.
 
-Een orchestrator-functie kan een andere orchestrator-functie aanroepen door het aanroepen van de [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) of de [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) methoden in .NET of de `callSubOrchestrator` of `callSubOrchestratorWithRetry` methoden in JavaScript. De [vorm van foutafhandeling & compensatie](durable-functions-error-handling.md#automatic-retry-on-failure) artikel vindt u meer informatie over automatische nieuwe pogingen.
+Een Orchestrator-functie kan een andere Orchestrator-functie aanroepen door de [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) of de [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) -methoden in .net of `callSubOrchestrator` de `callSubOrchestratorWithRetry` methoden of in Java script aan te roepen. De [fout afhandeling & compensatie](durable-functions-error-handling.md#automatic-retry-on-failure) artikel bevat meer informatie over automatische opnieuw proberen.
 
-Onderliggende orchestrator-functies werken net als bij activiteitsfuncties vanuit het perspectief van de oproepende functie. Ze kunnen een waarde retourneren een uitzondering en door de bovenliggende orchestrator-functie kan worden gestopt.
+Suborchestrator-functies gedragen zich op dezelfde manier als de activiteit functies van het perspectief van de aanroeper. Ze kunnen een waarde Retour neren, een uitzonde ring genereren en kunnen wachten door de bovenliggende Orchestrator-functie.
 
 ## <a name="example"></a>Voorbeeld
 
-Het volgende voorbeeld wordt een IoT ('Internet of Things")-scenario waarbij er meerdere apparaten die moeten worden ingericht. Er is een bepaalde indeling die moet worden opgestart voor elk van de apparaten, ziet er ongeveer als volgt uit:
+In het volgende voor beeld ziet u een IoT-scenario (' Internet of Things ') waarin meerdere apparaten moeten worden ingericht. Er is een specifieke indeling die moet worden uitgevoerd voor elk van de apparaten. Dit kan er ongeveer als volgt uitzien:
 
 ### <a name="c"></a>C#
 
@@ -50,7 +49,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -71,9 +70,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Deze functie orchestrator kan worden gebruikt als-is voor eenmalige apparaatinrichting of deel van een grotere orchestration uitmaken kunnen. In dat laatste geval, de bovenliggende orchestrator-functie kunt plannen dat exemplaren van `DeviceProvisioningOrchestration` met behulp van de `CallSubOrchestratorAsync` (C#) of `callSubOrchestrator` (JavaScript) API.
+Deze Orchestrator-functie kan worden gebruikt als-is voor eenmalige inrichting van apparaten of kan deel uitmaken van een grotere indeling. In het laatste geval kan de bovenliggende Orchestrator-functie instanties plannen van het `DeviceProvisioningOrchestration` gebruik van `CallSubOrchestratorAsync` deC#API ( `callSubOrchestrator` ) of (Java script).
 
-Hier volgt een voorbeeld waarin wordt uitgelegd hoe u meerdere orchestrator-functies parallel worden uitgevoerd.
+Hier volgt een voor beeld waarin wordt getoond hoe u meerdere Orchestrator-functies parallel kunt uitvoeren.
 
 ### <a name="c"></a>C#
 
@@ -98,7 +97,7 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (werkt alleen 2.x)
+### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -122,4 +121,4 @@ module.exports = df.orchestrator(function*(context) {
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Leer wat taakhubs zijn en hoe u ze configureren](durable-functions-task-hubs.md)
+> [Meer informatie over taak hubs en hoe u deze kunt configureren](durable-functions-task-hubs.md)

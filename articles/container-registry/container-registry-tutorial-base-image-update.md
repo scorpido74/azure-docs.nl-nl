@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7cd278143ffe482cb51f76b1019413e97a777a3a
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 23b0990be7f215d9cc443c5549ae38de86826d17
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981816"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114622"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Zelfstudie: Builds van containerinstallatiekopieën automatiseren wanneer een basisinstallatiekopie wordt bijgewerkt in een Azure-containerregister 
 
@@ -72,7 +72,16 @@ Wanneer een basisinstallatiekopie wordt bijgewerkt, is het noodzakelijk dat u op
 
 ### <a name="tasks-triggered-by-a-base-image-update"></a>Taken die worden geactiveerd door een basis installatie kopie-update
 
-* Op dit moment worden met een ACR-taak afhankelijkheden van basis installatie kopieën in hetzelfde Azure container Registry, een open bare docker hub opslag plaats of een open bare opslag plaats in micro soft Container Registry gedetecteerd. Als de basis installatie kopie die in `FROM` de instructie is opgegeven, zich op een van deze locaties bevindt, voegt de ACR-taak een hook toe om ervoor te zorgen dat de installatie kopie telkens opnieuw wordt opgebouwd wanneer de basis wordt bijgewerkt.
+* Voor installatie kopieën die zijn gebaseerd op een Dockerfile, detecteert een ACR-taak afhankelijkheden op basis installatie kopieën op de volgende locaties:
+
+  * Hetzelfde Azure container Registry waarin de taak wordt uitgevoerd
+  * Een ander Azure container registry in dezelfde regio 
+  * Een open bare opslag plaats in docker hub 
+  * Een open bare opslag plaats in micro soft Container Registry
+
+   Als de basis installatie kopie die in `FROM` de instructie is opgegeven, zich op een van deze locaties bevindt, voegt de ACR-taak een hook toe om ervoor te zorgen dat de installatie kopie telkens opnieuw wordt opgebouwd wanneer de basis wordt bijgewerkt.
+
+* Op dit moment worden met een ACR-taak alleen basis installatie kopieën van updates voor de toepassing (*runtime*) bijgehouden. Updates voor tussenliggende installatie kopieën (*buildtime*) die worden gebruikt in de multi-fase Dockerfiles, worden niet bijgehouden.  
 
 * Wanneer u een ACR-taak maakt met de opdracht [AZ ACR Task Create][az-acr-task-create] , wordt de taak standaard *ingeschakeld* voor trigger door een update van de basis installatie kopie. Dat wil zeggen, `base-image-trigger-enabled` de eigenschap is ingesteld op True. Als u dit gedrag in een taak wilt uitschakelen, werkt u de eigenschap bij op ONWAAR. Voer bijvoorbeeld de volgende opdracht [AZ ACR Task update][az-acr-task-update] uit:
 

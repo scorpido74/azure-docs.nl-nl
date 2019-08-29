@@ -1,6 +1,6 @@
 ---
-title: Trend Micro Deep Security installeren op een virtuele machine | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u installeren en configureren van Trend Micro beveiliging op een virtuele machine gemaakt met het klassieke implementatiemodel in Azure.
+title: Trend Micro diepe beveiliging op een VM installeren | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u Trend Micro beveiliging kunt installeren en configureren op een virtuele machine die is gemaakt met het klassieke implementatie model in Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
@@ -11,81 +11,80 @@ ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 0e70bc692357e9db9fa02a2f210320507b1b5824
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ffbae90d60cb2dbc7a62b9e9745ed1c4020386ff
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705908"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092210"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro Deep Security installeren en configureren als een service op een Windows VM
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
-Dit artikel leest u hoe om te installeren en configureren van Trend Micro Deep Security als een Service op een nieuwe of bestaande virtuele machine (VM) met Windows Server. Deep Security als een Service bevat anti-malwarebeveiliging, een firewall, een inbraakpreventiesysteem en bestandsintegriteit controleren.
+In dit artikel wordt beschreven hoe u een trend micro diepe beveiliging installeert en configureert als een service op een nieuwe of bestaande virtuele machine (VM) waarop Windows Server wordt uitgevoerd. Uitgebreide beveiliging als een service omvat anti-malware-beveiliging, een firewall, een indringings systeem en integriteits bewaking.
 
-De client is geïnstalleerd als een beveiligingsuitbreiding van via de VM-Agent. Op een nieuwe virtuele machine maakt installeren u de Deep Security-Agent als de VM-Agent automatisch door de Azure-portal gemaakt wordt.
+De-client wordt geïnstalleerd als een beveiligings extensie via de VM-agent. Op een nieuwe virtuele machine installeert u de grondige beveiligings agent, omdat de VM-agent automatisch wordt gemaakt door de Azure Portal.
 
-Een bestaande virtuele machine gemaakt met behulp van Azure portal, de Azure CLI of PowerShell wellicht een VM-agent. Voor een bestaande virtuele machine waarop de VM-Agent niet is, moet u download en installeer deze eerst. In dit artikel bevat informatie over beide situaties.
+Een bestaande virtuele machine die is gemaakt met behulp van de Azure Portal, de Azure CLI of Power Shell heeft mogelijk geen VM-agent. Voor een bestaande virtuele machine die niet over de VM-agent beschikt, moet u deze eerst downloaden en installeren. In dit artikel worden beide situaties besproken.
 
-Als u een abonnement van Trend Micro voor een on-premises oplossing hebt, kunt u het beveiligen van uw Azure virtual machines. Als u nog niet een klant bent, kunt u zich aanmelden voor een proefabonnement. Zie voor meer informatie over deze oplossing, de Trend Micro blogbericht [Microsoft Azure VM Agent-extensie voor Deep Security](https://go.microsoft.com/fwlink/p/?LinkId=403945).
+Als u een huidig abonnement hebt van Trend Micro voor een on-premises oplossing, kunt u dit gebruiken om uw Azure virtual machines te beveiligen. Als u nog geen klant bent, kunt u zich aanmelden voor een proef abonnement. Voor meer informatie over deze oplossing raadpleegt u het trend micro blog post [Microsoft Azure VM-agent extensie voor diepe beveiliging](https://go.microsoft.com/fwlink/p/?LinkId=403945).
 
-## <a name="install-the-deep-security-agent-on-a-new-vm"></a>De Deep Security-Agent installeren op een nieuwe virtuele machine
+## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Installeer de grondige beveiligings agent op een nieuwe virtuele machine
 
-De [Azure-portal](https://portal.azure.com) kunt u de Trend Micro-security-extensie installeren wanneer u een installatiekopie van het **Marketplace** te maken van de virtuele machine. Als u één virtuele machine maakt, is met behulp van de portal een eenvoudige manier om de beveiliging van Trend Micro toevoegen.
+Met de [Azure Portal](https://portal.azure.com) kunt u de trend micro Security-extensie installeren wanneer u een installatie kopie van de **Marketplace** gebruikt om de virtuele machine te maken. Als u één virtuele machine maakt, is het gebruik van de portal een eenvoudige manier om beveiliging van Trend Micro toe te voegen.
 
-Met behulp van een item in de **Marketplace** een wizard waarmee u bij het helpt van de virtuele machine instellen wordt geopend. U gebruikt de **instellingen** blade, het derde venster van de wizard voor het installeren van de beveiligingsuitbreiding Trend Micro.  Raadpleeg voor algemene instructies [maken van een virtuele machine waarop Windows wordt uitgevoerd in Azure portal](../windows/classic/tutorial.md).
+Als u een item uit de **Marketplace** gebruikt, wordt er een wizard geopend die u helpt bij het instellen van de virtuele machine. U gebruikt de Blade **instellingen** , het derde paneel van de wizard, om de trend micro Security-extensie te installeren.  Zie [een virtuele machine met Windows maken in de Azure Portal](../windows/classic/tutorial.md)voor algemene instructies.
 
-Wanneer de **instellingen** blade van de wizard, voer de volgende stappen uit:
+Wanneer u de Blade **instellingen** van de wizard krijgt, voert u de volgende stappen uit:
 
-1. Klik op **extensies**, klikt u vervolgens op **-extensie toevoegen** in het volgende deelvenster.
+1. Klik op **uitbrei dingen**en klik vervolgens in het volgende deel venster op **uitbrei ding toevoegen** .
 
-   ![Beginnen met het toevoegen van de extensie][1]
+   ![Toevoegen van de uitbrei ding starten][1]
 
-2. Selecteer **Deep Security Agent** in de **nieuwe resource** deelvenster. Klik in het deelvenster Deep Security Agent **maken**.
+2. Selecteer **diepe beveiligings agent** in het deel venster **nieuwe resource** . Klik in het deel venster diepe beveiligings agent op **maken**.
 
-   ![Identificeren van Deep Security-Agent][2]
+   ![Grondige beveiligings agent identificeren][2]
 
-3. Voer de **Tenant-id** en **activeringswachtwoord voor de Tenant** voor de extensie. Desgewenst kunt u een **Security beleids-id**. Klik vervolgens op **OK** om toe te voegen van de client.
+3. Voer de **Tenant-id** en het **wacht woord voor Tenant activering** in voor de extensie. U kunt desgewenst een **beveiligings beleid-id**invoeren. Klik vervolgens op **OK** om de client toe te voegen.
 
-   ![Geef details van de extensie][3]
+   ![Details van de extensie opgeven][3]
 
-## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>De Deep Security-Agent installeren op een bestaande virtuele machine
-Voor het installeren van de agent op een bestaande virtuele machine, moet u de volgende items:
+## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Installeer de grondige beveiligings agent op een bestaande virtuele machine
+Als u de agent wilt installeren op een bestaande virtuele machine, hebt u de volgende items nodig:
 
-* De Azure PowerShell-module, versie 0.8.2 of nieuwer, is geïnstalleerd op uw lokale computer. U kunt controleren welke versie van Azure PowerShell die u hebt geïnstalleerd met behulp van de **Get-Module-azure | format-table versie** opdracht. Zie voor instructies en een koppeling naar de nieuwste versie [hoe u Azure PowerShell installeren en configureren](/powershell/azure/overview). Meld u aan bij uw Azure-abonnement met `Add-AzureAccount`.
-* De VM-Agent geïnstalleerd op de virtuele doelmachine.
+* De Azure PowerShell module versie 0.8.2 of nieuwer, geïnstalleerd op uw lokale computer. U kunt de versie van Azure PowerShell die u hebt geïnstalleerd controleren met behulp van de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure- `Add-AzureAccount`abonnement met.
+* De VM-agent die is geïnstalleerd op de virtuele doel machine.
 
-Controleer eerst of dat de VM-Agent al is geïnstalleerd. Vul in de cloud service-naam en de naam van de virtuele machine en voer de volgende opdrachten in een beheerder op serverniveau Azure PowerShell-opdrachtprompt. Vervang alles binnen de aanhalingstekens in, met inbegrip van de < en > tekens.
+Controleer eerst of de VM-agent al is geïnstalleerd. Vul de naam van de Cloud service en de virtuele machine in en voer de volgende opdrachten uit op de opdracht prompt op beheerders niveau Azure PowerShell. Vervang alles binnen de aanhalings tekens, met inbegrip van de <-en > teken.
 
     $CSName = "<cloud service name>"
     $VMName = "<virtual machine name>"
     $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
     write-host $vm.VM.ProvisionGuestAgent
 
-Als u niet weet de service in de cloud en de naam van de virtuele machine wat, voert u **Get-AzureVM** om die gegevens voor alle virtuele machines in uw huidige abonnement weer te geven.
+Als u de naam van de Cloud service en de virtuele machine niet weet, voert u **Get-AzureVM** uit om die informatie weer te geven voor alle virtuele machines in uw huidige abonnement.
 
-Als de **write-host** opdracht retourneert **waar**, de VM-Agent is geïnstalleerd. Als het resultaat **False**, Zie de instructies en een koppeling naar de download in het Azure-blog-bericht [VM-Agent en -extensies - deel 2](https://go.microsoft.com/fwlink/p/?LinkId=403947).
+Als de **Write-host-** opdracht **True**retourneert, wordt de VM-agent geïnstalleerd. Als de waarde **False**retourneert, raadpleegt u de instructies en een koppeling naar de down load in de Azure blog post [VM-agent en-extensies-deel 2](https://go.microsoft.com/fwlink/p/?LinkId=403947).
 
-Als de VM-Agent is geïnstalleerd, moet u deze opdrachten uitvoeren.
+Als de VM-agent is geïnstalleerd, voert u deze opdrachten uit.
 
     $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
 ## <a name="next-steps"></a>Volgende stappen
-Het duurt enkele minuten om de agent te starten met het uitvoeren als deze is geïnstalleerd. Hierna moet u Deep Security activeren op de virtuele machine, zodat deze kan worden beheerd door een Deep Security Manager. Zie de volgende artikelen voor aanvullende instructies:
+Het duurt enkele minuten voordat de agent wordt gestart wanneer deze is geïnstalleerd. Daarna moet u de grondige beveiliging op de virtuele machine activeren zodat deze kan worden beheerd door een grondige beveiligings beheerder. Raadpleeg de volgende artikelen voor aanvullende instructies:
 
-* Trend van artikel over deze oplossing [Instant-On Cloud Security for Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
-* Een [Windows PowerShell-script voorbeeld](https://go.microsoft.com/fwlink/?LinkId=404100) aan de virtuele machine configureren
-* [Instructies](https://go.microsoft.com/fwlink/?LinkId=404099) voor het voorbeeld
+* Artikel over de trend over deze oplossing, [directe beveiliging van de Cloud voor Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
+* Een voor beeld van een [Windows Power shell-script](https://go.microsoft.com/fwlink/?LinkId=404100) voor het configureren van de virtuele machine
+* [Instructies](https://go.microsoft.com/fwlink/?LinkId=404099) voor het voor beeld
 
 ## <a name="additional-resources"></a>Aanvullende resources
-[Hoe u aan te melden met een virtuele machine met Windows Server]
+[Aanmelden bij een virtuele machine met Windows Server]
 
-[Azure VM-extensies en functies]
+[Azure VM-extensies en-functies]
 
 <!-- Image references -->
 [1]: ./media/trend/new_vm_Blade3.png
@@ -93,5 +92,5 @@ Het duurt enkele minuten om de agent te starten met het uitvoeren als deze is ge
 [3]: ./media/trend/SecurityAgentDetails.png
 
 <!-- Link references -->
-[Hoe u aan te melden met een virtuele machine met Windows Server]:../windows/classic/connect-logon.md
-[Azure VM-extensies en functies]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Aanmelden bij een virtuele machine met Windows Server]:../windows/classic/connect-logon.md
+[Azure VM-extensies en-functies]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

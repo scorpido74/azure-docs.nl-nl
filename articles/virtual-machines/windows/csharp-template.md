@@ -1,6 +1,6 @@
 ---
-title: Een virtuele machine met behulp van C# en Resource Manager-sjabloon implementeren | Microsoft Docs
-description: Meer informatie over het gebruik van C# en Resource Manager-sjabloon om een Azure-VM te implementeren.
+title: Een virtuele machine implementeren C# met en een resource manager-sjabloon | Microsoft Docs
+description: Meer informatie over het gebruik C# van en een resource manager-sjabloon voor het implementeren van een Azure-VM.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,39 +11,38 @@ ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: a798f4b90057cd4220467cec4756ddda10fe456e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 65ce7711786e15a5455d91ce829a3bc0bdf4317d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718720"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103234"
 ---
-# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Een Azure-Machine met behulp van C# en Resource Manager-sjabloon implementeren
+# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Een virtuele machine van Azure implementeren C# met behulp van een resource manager-sjabloon
 
-Dit artikel ziet u hoe u een Azure Resource Manager-sjabloon met C# implementeren. De sjabloon die u maakt implementeert een enkele virtuele machine met Windows Server in een nieuw virtueel netwerk met één subnet.
+In dit artikel wordt beschreven hoe u een Azure Resource Manager sjabloon implementeert met behulp van C#. Met de sjabloon die u maakt, wordt één virtuele machine met Windows Server geïmplementeerd in een nieuw virtueel netwerk met één subnet.
 
-Zie voor een gedetailleerde beschrijving van de bron van de virtuele machine, [virtuele machines in een Azure Resource Manager-sjabloon](template-description.md). Zie voor meer informatie over alle resources in een sjabloon, [overzicht Azure Resource Manager-sjabloon](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Zie [virtuele machines in een Azure Resource Manager sjabloon](template-description.md)voor een gedetailleerde beschrijving van de bron van de virtuele machine. Zie [Azure Resource Manager-sjabloon scenario](../../azure-resource-manager/resource-manager-template-walkthrough.md)voor meer informatie over alle resources in een sjabloon.
 
-Het duurt ongeveer 10 minuten deze stappen uitvoeren.
+Het duurt ongeveer 10 minuten om deze stappen uit te voeren.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
-In deze stap maakt ervoor u zorgen dat Visual Studio is geïnstalleerd en maakt u een consoletoepassing die wordt gebruikt om de sjabloon te implementeren.
+In deze stap zorgt u ervoor dat Visual Studio is geïnstalleerd en dat u een console toepassing maakt die wordt gebruikt voor het implementeren van de sjabloon.
 
-1. Als u niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.NET-desktopontwikkeling** op de pagina van de werkbelasting, en klik vervolgens op **installeren**. In de samenvatting, kunt u zien dat **.NET Framework 4-4.6 ontwikkelprogramma's** automatisch voor u is geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-werkbelasting via Visual Studio starten toevoegen.
+1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.net desktop Development** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **.NET Framework 4-4,6-ontwikkel Programma's** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-workload toevoegen met behulp van de Visual Studio Launcher.
 2. Klik in Visual Studio op **File** > **New** > **Project**.
-3. In **sjablonen** > **Visual C#** , selecteer **Console-App (.NET Framework)** , voer *myDotnetProject* voor de naam van de Project, selecteer de locatie van het project en klik vervolgens op **OK**.
+3. In **sjablonen** > **Visual C#** selecteert u **console-app (.NET Framework)** , voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
 
 ## <a name="install-the-packages"></a>De pakketten installeren
 
-NuGet-pakketten zijn de eenvoudigste manier voor het installeren van de bibliotheken die u moet deze stappen voltooien. Als u de bibliotheken die u nodig hebt in Visual Studio, voert u deze stappen uit:
+NuGet-pakketten zijn de eenvoudigste manier om de bibliotheken te installeren die u nodig hebt om deze stappen te volt ooien. Ga als volgt te werk om de bibliotheken te verkrijgen die u nodig hebt in Visual Studio:
 
-1. Klik op **extra** > **Nuget Package Manager**, en klik vervolgens op **Package Manager Console**.
-2. Typ deze opdrachten in de console:
+1. Klik op **extra** > **Nuget package manager**en klik vervolgens op **Package Manager-console**.
+2. Typ deze opdrachten in de-console:
 
     ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
@@ -52,12 +51,12 @@ NuGet-pakketten zijn de eenvoudigste manier voor het installeren van de biblioth
 
 ## <a name="create-the-files"></a>De bestanden maken
 
-In deze stap maakt u een sjabloon voor bestanden die worden geïmplementeerd en een parameterbestand waarmee de parameterwaarden voor de sjabloon. U maakt ook een bestand met autorisatieregels die wordt gebruikt voor het Azure Resource Manager-bewerkingen uitvoeren.
+In deze stap maakt u een sjabloon bestand dat de resources en een parameter bestand implementeert dat parameter waarden levert aan de sjabloon. U maakt ook een autorisatie bestand dat wordt gebruikt om Azure Resource Manager bewerkingen uit te voeren.
 
-### <a name="create-the-template-file"></a>Het sjabloonbestand maken
+### <a name="create-the-template-file"></a>Het sjabloon bestand maken
 
-1. Klik in Solution Explorer met de rechtermuisknop op *myDotnetProject* > **toevoegen** > **Nieuw Item**, en selecteer vervolgens **tekstbestand** in *Visual C#-Items*. Noem het bestand *CreateVMTemplate.json*, en klik vervolgens op **toevoegen**.
-2. Deze JSON-code toevoegen aan het bestand dat u hebt gemaakt:
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Nieuw item** **toevoegen** > en selecteer vervolgens **tekst bestand** in *visuele C# items*. Geef het bestand de naam *CreateVMTemplate. json*en klik vervolgens op **toevoegen**.
+2. Voeg deze JSON-code toe aan het bestand dat u hebt gemaakt:
 
     ```json
     {
@@ -162,14 +161,14 @@ In deze stap maakt u een sjabloon voor bestanden die worden geïmplementeerd en 
     }
     ```
 
-3. Sla het bestand CreateVMTemplate.json.
+3. Sla het bestand CreateVMTemplate. json op.
 
-### <a name="create-the-parameters-file"></a>Het parameterbestand maken
+### <a name="create-the-parameters-file"></a>Het parameter bestand maken
 
-Waarden wilt opgeven voor de resourceparameters in de sjabloon, maakt u een parameterbestand die de waarden bevat.
+Als u waarden wilt opgeven voor de resource parameters in de sjabloon, maakt u een bestand met para meters dat de waarden bevat.
 
-1. Klik in Solution Explorer met de rechtermuisknop op *myDotnetProject* > **toevoegen** > **Nieuw Item**, en selecteer vervolgens **tekstbestand** in *Visual C#-Items*. Noem het bestand *Parameters.json*, en klik vervolgens op **toevoegen**.
-2. Deze JSON-code toevoegen aan het bestand dat u hebt gemaakt:
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Nieuw item** **toevoegen** > en selecteer vervolgens **tekst bestand** in *visuele C# items*. Noem de file- *para meters. json*en klik vervolgens op **toevoegen**.
+2. Voeg deze JSON-code toe aan het bestand dat u hebt gemaakt:
 
     ```json
     {
@@ -182,14 +181,14 @@ Waarden wilt opgeven voor de resourceparameters in de sjabloon, maakt u een para
     }
     ```
 
-4. Sla het bestand Parameters.json.
+4. Sla het bestand para meters. json op.
 
-### <a name="create-the-authorization-file"></a>Het bestand met autorisatieregels maken
+### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
 
-Voordat u een sjabloon implementeren kunt, moet u ervoor dat u toegang tot hebt een [Active Directory service-principal](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). U ophalen een token voor het verifiëren van aanvragen naar Azure Resource Manager uit de service-principal. U moet ook de toepassings-ID, de verificatiesleutel en de tenant-ID die u nodig hebt in het bestand met autorisatieregels vastleggen.
+Voordat u een sjabloon kunt implementeren, moet u ervoor zorgen dat u toegang hebt tot een [Active Directory Service-Principal](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Vanuit de Service-Principal krijgt u een token voor het verifiëren van aanvragen voor het Azure Resource Manager. Noteer ook de toepassings-ID, de verificatie sleutel en de Tenant-ID die u nodig hebt in het autorisatie bestand.
 
-1. Klik in Solution Explorer met de rechtermuisknop op *myDotnetProject* > **toevoegen** > **Nieuw Item**, en selecteer vervolgens **tekstbestand** in *Visual C#-Items*. Noem het bestand *azureauth.properties*, en klik vervolgens op **toevoegen**.
-2. Voeg deze eigenschappen autorisatie:
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Nieuw item** **toevoegen** > en selecteer vervolgens **tekst bestand** in *visuele C# items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
+2. Voeg deze autorisatie-eigenschappen toe:
 
     ```
     subscription=<subscription-id>
@@ -202,10 +201,10 @@ Voordat u een sjabloon implementeren kunt, moet u ervoor dat u toegang tot hebt 
     graphURL=https://graph.windows.net/
     ```
 
-    Vervang **&lt;abonnement-id&gt;** met uw abonnements-id, **&lt;toepassing-id&gt;** met de Active Directory-toepassing id **&lt;verificatiesleutel&gt;** met de sleutel van de toepassing en **&lt;tenant-id&gt;** met de tenant-id.
+    De **&lt;abonnements-id&gt;** vervangen door de id van **&lt;&gt;** uw abonnement, de toepassings-id met de Active Directory toepassings-id, **&lt;verificatie sleutel met&gt;** de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
 
-3. Sla het bestand azureauth.properties.
-4. Stel die een omgevingsvariabele in Windows met de naam AZURE_AUTH_LOCATION met het volledige pad naar bestand met autorisatieregels die u hebt gemaakt, bijvoorbeeld kunt u de volgende PowerShell-opdracht:
+3. Sla het bestand azureauth. Properties op.
+4. Stel een omgevings variabele in Windows met de naam AZURE_AUTH_LOCATION met het volledige pad naar het autorisatie bestand dat u hebt gemaakt, bijvoorbeeld met de volgende Power shell-opdracht:
 
     ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -213,9 +212,9 @@ Voordat u een sjabloon implementeren kunt, moet u ervoor dat u toegang tot hebt 
 
     
 
-## <a name="create-the-management-client"></a>De management-client maken
+## <a name="create-the-management-client"></a>De Management-client maken
 
-1. Open het bestand Program.cs van het project dat u hebt gemaakt. Vervolgens voegt u deze met behulp van instructies toe aan de bestaande instructies aan de bovenkant van het bestand:
+1. Open het Program.cs-bestand voor het project dat u hebt gemaakt. Voeg deze instructies vervolgens toe aan de bestaande instructies boven aan het bestand:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -227,7 +226,7 @@ Voordat u een sjabloon implementeren kunt, moet u ervoor dat u toegang tot hebt 
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
 
-2. Voor het maken van de management-client, voeg deze code toe aan de methode Main om:
+2. Voeg deze code toe aan de methode Main om de Management-client te maken:
 
     ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
@@ -242,7 +241,7 @@ Voordat u een sjabloon implementeren kunt, moet u ervoor dat u toegang tot hebt 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Waarden voor de toepassing wilt opgeven, voeg code toe aan de methode Main om:
+Als u waarden voor de toepassing wilt opgeven, voegt u code toe aan de methode Main:
 
 ```csharp
 var groupName = "myResourceGroup";
@@ -255,9 +254,9 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-De sjabloon en parameters worden van een opslagaccount in Azure geïmplementeerd. In deze stap maakt u het account maken en de bestanden uploaden. 
+De sjabloon en de para meters worden geïmplementeerd vanuit een opslag account in Azure. In deze stap maakt u het account en uploadt u de bestanden. 
 
-Voor het maken van het account, voeg deze code toe aan de methode Main om:
+Als u het account wilt maken, voegt u deze code toe aan de methode Main:
 
 ```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
@@ -295,9 +294,9 @@ paramblob.UploadFromFileAsync("..\\..\\Parameters.json").Result();
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Implementeer de sjabloon en parameters van het opslagaccount dat is gemaakt. 
+Implementeer de sjabloon en de para meters uit het opslag account dat is gemaakt. 
 
-Als u wilt implementeren de sjabloon, voeg deze code toe aan de methode Main om:
+Als u de sjabloon wilt implementeren, voegt u deze code toe aan de methode Main:
 
 ```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
@@ -314,9 +313,9 @@ Console.ReadLine();
 
 ## <a name="delete-the-resources"></a>De resources verwijderen
 
-Omdat u voor resources die worden gebruikt in Azure betaalt, is het altijd verstandig resources verwijderen die niet langer nodig zijn. U hoeft niet te verwijderen van elke resource afzonderlijk van een resourcegroep. Verwijder de resourcegroep en alle bijbehorende resources automatisch worden verwijderd. 
+Omdat er in rekening worden gebracht voor resources die worden gebruikt in azure, is het altijd verstandig om resources te verwijderen die niet meer nodig zijn. U hoeft niet elke resource afzonderlijk van een resource groep te verwijderen. Verwijder de resource groep en alle bijbehorende resources worden automatisch verwijderd. 
 
-Als u wilt verwijderen van de resourcegroep, voeg deze code toe aan de methode Main om:
+Als u de resource groep wilt verwijderen, voegt u deze code toe aan de methode Main:
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -324,13 +323,13 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Het duurt ongeveer vijf minuten voor deze consoletoepassing volledig uitvoeren vanaf het begin te voltooien. 
+Het duurt ongeveer vijf minuten voordat deze console toepassing volledig van begin tot eind kan worden uitgevoerd. 
 
-1. Als u wilt de consoletoepassing uitvoeren, klikt u op **Start**.
+1. Klik op **Start**om de console toepassing uit te voeren.
 
-2. Voordat u druk op **Enter** om te beginnen met verwijderen van resources, kunt u een paar minuten om te controleren of het maken van de resources in Azure portal kunt nemen. Klik op de status van de implementatie als u wilt weergeven over de implementatie.
+2. Voordat u op **Enter** drukt om resources te verwijderen, kan het enkele minuten duren voordat het maken van de resources in de Azure Portal is gecontroleerd. Klik op de implementatie status om informatie over de implementatie weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Als er problemen met de implementatie zijn, een volgende stap zou zijn om te kijken naar [veelvoorkomende problemen oplossen Azure-implementatie met Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
-* Informatie over het implementeren van een virtuele machine en de ondersteunende resources aan de hand [implementeren van een Azure virtuele Machine met behulp van C#](csharp.md).
+* Als er problemen zijn met de implementatie, moet u een volgende stap bekijken bij het [oplossen van veelvoorkomende problemen met Azure-implementaties met Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+* Meer informatie over het implementeren van een virtuele machine en de bijbehorende ondersteunende bronnen door de [implementatie van een C#virtuele Azure-machine met behulp ](csharp.md)van te controleren.

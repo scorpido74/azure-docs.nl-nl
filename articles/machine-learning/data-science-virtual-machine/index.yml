@@ -3,7 +3,7 @@ documentType: LandingData
 title: Documentatie over Azure Data Science Virtual Machine
 metadata:
   title: Documentatie over Data Science Virtual Machine - Azure
-  description: 'Informatie over hoe u Data Science Virtual Machine gebruikt, een experimentele omgeving in de Azure-cloud die voor gegevenswetenschap is gebouwd. Populaire gegevenswetenschap- en andere hulpprogramma''s zijn vooraf geïnstalleerd en geconfigureerd voor het snel ontwikkelen van intelligente toepassingen voor geavanceerde analyses.'
+  description: 'Informatie over hoe u Data Science Virtual Machine gebruikt, een experimentele omgeving in de Azure-cloud die voor gegevenswetenschap is gebouwd. Populaire hulpprogramma''s voor gegevenswetenschap en machine learning zijn vooraf geïnstalleerd en vooraf geconfigureerd. Dit ontwerp geeft u een voorsprong bij het bouwen van intelligente toepassingen voor geavanceerde analyse.'
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -14,12 +14,12 @@ metadata:
   ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: 'Azure Data Science Virtual Machine (DSVM) is een aangepaste VM-installatiekopie met gegevenswetenschap en machine learning-hulpprogramma''s. Gebruik deze VM om intelligente, geavanceerde analytische toepassingen te bouwen. <a href="overview.md">Meer informatie...</a>'
+  description: Azure Data Science Virtual Machine (DSVM) is een aangepaste VM-installatiekopie met gegevenswetenschap en machine learning-hulpprogramma's. U kunt deze VM gebruiken om intelligente toepassingen te bouwen voor geavanceerde analyse. <a href="overview.md">Meer informatie</a>.
 sections:
   - title: QuickStarts van vijf minuten
     items:
       - type: paragraph
-        text: 'Informatie over het instellen van een op Windows of Linux gebaseerde Data Science-VM:'
+        text: 'Informatie over het instellen van een op Windows of Linux gebaseerde Data Science Virtual Machine:'
       - type: paragraph
         text: <b>Windows DSVM</b>
       - type: list

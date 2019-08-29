@@ -1,6 +1,6 @@
 ---
-title: SQL Server FCI - virtuele Machines van Azure | Microsoft Docs
-description: In dit artikel wordt uitgelegd hoe u SQL Server Failover Cluster Instance maken op Azure Virtual Machines.
+title: SQL Server FCI-Azure Virtual Machines | Microsoft Docs
+description: In dit artikel wordt uitgelegd hoe u SQL Server failover-cluster exemplaar maakt in azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -9,427 +9,426 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 39f38af601888f847cd1a82da9e2e03e6893c28e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607286"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100644"
 ---
-# <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Configureren van SQL Server-failovercluster-exemplaar op Azure Virtual Machines
+# <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server failover-cluster exemplaar configureren op Azure Virtual Machines
 
-In dit artikel wordt uitgelegd hoe u een SQL Server Failover Cluster exemplaar (FCI) maken op Azure virtual machines in Resource Manager-model. Deze oplossing maakt gebruik van [Windows Server 2016 Datacenter edition Storage Spaces Direct \(S2D\) ](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) als een op software gebaseerde virtuele SAN waarmee de opslag (gegevensschijven) worden gesynchroniseerd tussen de knooppunten (virtuele Azure-machines) in een Windows-Cluster. S2D is er nieuw in Windows Server 2016.
+In dit artikel wordt uitgelegd hoe u een SQL Server failovercluster (FCI) maakt op virtuele Azure-machines in het Resource Manager-model. Deze oplossing maakt gebruik van [Windows Server 2016 data \(Center\) Edition opslagruimten direct S2D](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) als een op software gebaseerd virtueel San waarmee de opslag (gegevens schijven) tussen de knoop punten (virtuele machines van Azure) in een Windows-cluster wordt gesynchroniseerd. S2D is nieuw in Windows Server 2016.
 
-Het volgende diagram toont de volledige oplossing op Azure virtual machines:
+In het volgende diagram ziet u de volledige oplossing op virtuele machines van Azure:
 
 ![Beschikbaarheidsgroep](./media/virtual-machines-windows-portal-sql-create-failover-cluster/00-sql-fci-s2d-complete-solution.png)
 
-Het vorige diagram toont:
+In het voor gaande diagram ziet u:
 
-- Twee virtuele machines van Azure in een Windows-failovercluster. Wanneer een virtuele machine in een failovercluster wordt ook wel een *clusterknooppunt*, of *knooppunten*.
-- Elke virtuele machine heeft twee of meer gegevensschijven.
-- S2D synchroniseert de gegevens op de gegevensschijf en geeft de gesynchroniseerde opslag als een opslaggroep.
-- De opslaggroep geeft een gedeeld clustervolume (CSV) aan het failovercluster.
-- De rol van FCI van SQL Server-cluster maakt gebruik van de CSV voor de gegevensstations.
-- Een Azure load balancer voor het opslaan van het IP-adres voor de SQL Server-FCI.
-- Een Azure-beschikbaarheidsset bevat alle resources.
+- Twee virtuele machines van Azure in een Windows-failovercluster. Wanneer een virtuele machine zich in een failovercluster bevindt, wordt deze ook wel een *cluster knooppunt*of *knoop punten*genoemd.
+- Elke virtuele machine heeft twee of meer gegevens schijven.
+- S2D synchroniseert de gegevens op de gegevens schijf en geeft de gesynchroniseerde opslag weer als een opslag groep.
+- De opslag groep biedt een CSV (cluster Shared volume) aan het failovercluster.
+- De SQL Server cluster functie FCI gebruikt het CSV voor de gegevens stations.
+- Een Azure-load balancer om het IP-adres voor de SQL Server FCI te bewaren.
+- Een Azure Availability set bevat alle resources.
 
    >[!NOTE]
-   >Alle Azure-resources worden in het diagram worden in dezelfde resourcegroep bevinden.
+   >Alle Azure-resources bevinden zich in het diagram en bevinden zich in dezelfde resource groep.
 
-Zie voor meer informatie over S2D [Windows Server 2016 Datacenter edition Storage Spaces Direct \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
+Zie [Windows Server 2016 Data Center Edition \(opslagruimten direct S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)voor meer informatie over s2d.
 
-S2D ondersteunt twee soorten architecturen - geconvergeerde en hyper-geconvergeerd. De architectuur in dit document is hyper-geconvergeerd. Een hyper-geconvergeerde infrastructuur plaatst de opslag op de dezelfde servers die als host van de geclusterde toepassing. In deze architectuur is de opslag op elk knooppunt FCI van SQL Server.
+S2D ondersteunt twee typen architecturen, geconvergeerd en Hyper-geconvergeerd. De architectuur in dit document is Hyper-geconvergeerd. Een Hyper-geconvergeerde infra structuur plaatst de opslag op de servers die als host fungeren voor de geclusterde toepassing. In deze architectuur bevindt de opslag zich op elk SQL Server FCI-knoop punt.
 
-## <a name="licensing-and-pricing"></a>Licenties en prijzen
+## <a name="licensing-and-pricing"></a>Licentie verlening en prijzen
 
-Op Azure Virtual Machines die u kunt SQL Server betalen (betalen per gebruik) met behulp van licentie of hun eigen licentie mee (BYOL) VM-installatiekopieën. Het type van de afbeelding die u kiest is van invloed op hoe u in rekening worden gebracht.
+In azure Virtual Machines kunt u een licentie SQL Server met betalen per gebruik (PAYG) of uw eigen licentie-VM-installatie kopieën (BYOL) meenemen. Welk type installatie kopie u kiest, is van invloed op de manier waarop u in rekening wordt gebracht.
 
-Met betalen per gebruik-licentieverlening is een failover clusterexemplaar (FCI) van SQL Server op Azure Virtual Machines leidt tot kosten in rekening gebracht voor alle knooppunten van FCI, met inbegrip van de passieve knooppunten. Zie voor meer informatie, [prijzen van SQL Server Enterprise Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+Met PAYG-licenties, een FCI (failover cluster instance) van SQL Server op Azure Virtual Machines kosten voor alle knoop punten van FCI, met inbegrip van de passieve knoop punten. Zie [SQL Server Enterprise virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)voor meer informatie. 
 
-Klanten met Enterprise-overeenkomst met Software Assurance heeft het recht op het gebruik van één gratis passieve FCI-knooppunt voor elke actieve knooppunt. BYOL-VM-installatiekopieën gebruiken om te profiteren van dit voordeel In Azure, en gebruik vervolgens de licentie op de actieve en passieve knooppunten van de FCI. Zie voor meer informatie, [Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
+Klanten met Enterprise Agreement met Software Assurance hebben het recht om één gratis passief FCI-knoop punt voor elk actief knoop punt te gebruiken. Als u gebruik wilt maken van dit voor deel in azure, gebruikt u BYOL VM-installatie kopieën en gebruikt u dezelfde licentie op de actieve en passieve knoop punten van de FCI. Zie [Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx)voor meer informatie.
 
-Betalen per gebruik en BYOL vergelijken licentiëring voor SQL Server op Azure Virtual Machines Zie [aan de slag met SQL-VM's](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
+Zie aan de [slag met SQL-vm's](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)om payg-en BYOL-licenties te vergelijken voor SQL Server op Azure virtual machines.
 
-Zie voor meer informatie over licentieverlening SQL Server [prijzen](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
+Zie [prijzen](https://www.microsoft.com/sql-server/sql-server-2017-pricing)voor volledige informatie over licentie SQL Server.
 
-### <a name="example-azure-template"></a>Voorbeeld van de Azure-sjabloon
+### <a name="example-azure-template"></a>Voor beeld van Azure-sjabloon
 
-U kunt de gehele oplossing in Azure maken met een sjabloon. Een voorbeeld van een sjabloon is beschikbaar in de GitHub [Azure-Snelstartsjablonen](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad). In dit voorbeeld is niet ontworpen of getest voor een specifieke werkbelasting. U kunt de sjabloon voor het maken van een SQL Server-FCI met S2D-opslag is verbonden met uw domein uitvoeren. U kunt evalueren van de sjabloon en deze te wijzigen voor uw doeleinden.
+U kunt de volledige oplossing in azure maken op basis van een sjabloon. Een voor beeld van een sjabloon is beschikbaar in de GitHub [Azure Quick](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad)start-sjablonen. Dit voor beeld is niet ontworpen of getest voor een specifieke werk belasting. U kunt de sjabloon uitvoeren om een SQL Server FCI te maken met S2D-opslag die is verbonden met uw domein. U kunt de sjabloon evalueren en aanpassen voor uw doel einden.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Er zijn enkele dingen die u nodig hebt en een aantal dingen die u nodig hebt voldaan voordat u doorgaat.
+Er zijn enkele dingen die u moet weten en een aantal dingen die u nodig hebt voordat u verdergaat.
 
 ### <a name="what-to-know"></a>Wat u moet weten
-U hebt een operationeel inzicht in de volgende technologieën:
+U moet een operationeel memorandum hebben van de volgende technologieën:
 
-- [Windows-clustertechnologieën](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server-failovercluster-exemplaren](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
+- [Windows-cluster technologieën](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server failover-cluster exemplaren](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Een belangrijk verschil is dat op een failovercluster voor Azure IaaS VM-Gast wordt aangeraden één NIC per server (clusterknooppunt) en één subnet. Een Azure-netwerk maakt gebruikt van fysieke redundantie, waardoor extra NIC's en subnetten overbodig zijn voor een gastcluster voor een Azure IaaS-VM. Hoewel het clustervalidatierapport een waarschuwing zal bevatten dat de knooppunten alleen bereikbaar zijn in één netwerk, kan deze waarschuwing zonder problemen worden genegeerd in het geval van failover-gastclusters voor een Azure IaaS-VM. 
+Een belang rijk verschil is dat in een Azure IaaS VM-gast-failovercluster wordt aangeraden één NIC per server (cluster knooppunt) en één subnet. Een Azure-netwerk maakt gebruikt van fysieke redundantie, waardoor extra NIC's en subnetten overbodig zijn voor een gastcluster voor een Azure IaaS-VM. Hoewel het clustervalidatierapport een waarschuwing zal bevatten dat de knooppunten alleen bereikbaar zijn in één netwerk, kan deze waarschuwing zonder problemen worden genegeerd in het geval van failover-gastclusters voor een Azure IaaS-VM. 
 
-Bovendien hebt u een algemeen begrip van de volgende technologieën:
+Daarnaast moet u een algemene uitleg hebben van de volgende technologieën:
 
-- [Hypergeconvergeerde oplossing met opslagruimten Direct in Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
-- [Azure-resourcegroepen](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Hyper-geconvergeerde oplossing met behulp van Opslagruimten Direct in Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+- [Azure-resource groepen](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Op dit moment de [SQL Server IaaS Agent-extensie](virtual-machines-windows-sql-server-agent-extension.md) wordt niet ondersteund voor FCI van SQL Server op Azure. Het is raadzaam dat u de extensie van virtuele machines die deel uitmaken van de FCI verwijderen. Deze uitbreiding biedt ondersteuning voor functies, zoals geautomatiseerde back-ups en Patching en sommige portal functies voor SQL. Deze functies werken niet voor SQL-VM's nadat de agent is verwijderd.
+> Op dit moment wordt de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md) niet ondersteund voor SQL Server FCI op Azure. We raden u aan de uitbrei ding te verwijderen van Vm's die deel uitmaken van de FCI. Deze uitbrei ding ondersteunt functies, zoals automatische back-ups en patches en bepaalde portal functies voor SQL. Deze functies werken niet voor SQL-Vm's nadat de agent is verwijderd.
 
-### <a name="what-to-have"></a>Wat hebben
+### <a name="what-to-have"></a>Wat u moet hebben
 
-Voordat u de instructies in dit artikel, hebt u al:
+Voordat u de instructies in dit artikel volgt, hebt u het volgende nodig:
 
 - Een Microsoft Azure-abonnement.
-- Een Windows-domein op Azure virtual machines.
-- Een account met machtigingen voor het maken van objecten in de virtuele machine van Azure.
-- Een Azure-netwerk en subnet met voldoende IP-adresruimte voor de volgende onderdelen:
-   - Beide virtuele machines.
-   - De failover-cluster IP-adres.
+- Een Windows-domein op virtuele machines van Azure.
+- Een account met machtigingen voor het maken van objecten in de virtuele Azure-machine.
+- Een virtueel Azure-netwerk en subnet met voldoende IP-adres ruimte voor de volgende onderdelen:
+   - Zowel virtuele machines.
+   - Het IP-adres van het failovercluster.
    - Een IP-adres voor elke FCI.
-- DNS is geconfigureerd op het Azure-netwerk, die verwijst naar de domeincontrollers.
+- DNS geconfigureerd op het Azure-netwerk, die verwijst naar de domein controllers.
 
-Met deze voorwaarden is voldaan, kunt u doorgaan met het ontwikkelen van uw failover-cluster. De eerste stap is het maken van de virtuele machines.
+Als aan deze vereisten is voldaan, kunt u door gaan met het bouwen van uw failovercluster. De eerste stap is het maken van de virtuele machines.
 
 ## <a name="step-1-create-virtual-machines"></a>Stap 1: Virtuele machines maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met uw abonnement.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw abonnement.
 
-1. [Maken van een Azure-beschikbaarheidsset](../tutorial-availability-sets.md).
+1. [Maak een Azure](../tutorial-availability-sets.md)-beschikbaarheidsset.
 
-   De beschikbaarheid van groepen virtuele machines instellen over foutdomeinen en updatedomeinen. De beschikbaarheidsset zorgt ervoor dat uw toepassing wordt niet beïnvloed door een single point of failure, zoals de netwerkswitch of de voedingseenheid van een rek met servers.
+   Met de beschikbaarheidsset worden virtuele machines gegroepeerd op fout domeinen en update domeinen. De beschikbaarheidsset zorgt ervoor dat uw toepassing niet wordt beïnvloed door afzonderlijke storings punten, zoals de netwerk switch of de energie-eenheid van een rek van servers.
 
-   Als u hebt niet de resourcegroep voor uw virtuele machines gemaakt, moet u het doet wanneer u een Azure-beschikbaarheidsset. Als u de Azure-portal gebruikt om te maken van de beschikbaarheidsset, voert u de volgende stappen uit:
+   Als u de resource groep voor uw virtuele machines niet hebt gemaakt, doet u dit wanneer u een Azure-beschikbaarheidsset maakt. Als u de Azure Portal gebruikt voor het maken van de beschikbaarheidsset, voert u de volgende stappen uit:
 
-   - Klik in de Azure-portal op **+** openen van de Azure Marketplace. Zoeken naar **beschikbaarheidsset**.
-   - Klik op **beschikbaarheidsset**.
+   - Klik in de Azure Portal op **+** de Azure Marketplace om deze te openen. Zoeken naar **beschikbaarheidsset**.
+   - Klikop beschikbaarheidsset.
    - Klik op **Create**.
-   - Op de **beschikbaarheidsset maken** blade, stel de volgende waarden:
+   - Stel op de Blade **beschikbaarheidsset maken** de volgende waarden in:
       - **Naam**: Een naam voor de beschikbaarheidsset.
       - **Abonnement**: Uw Azure-abonnement.
-      - **Resourcegroep**: Als u gebruiken van een bestaande groep wilt, klikt u op **gebruik bestaande** en selecteer de groep in de vervolgkeuzelijst. Kies anders **nieuw** en typ een naam voor de groep.
-      - **Locatie**: Stel de locatie waar u van plan bent om uw virtuele machines te maken.
-      - **Foutdomeinen**: Gebruik de standaardwaarde (3).
-      - **Updatedomeinen**: Gebruik de standaardwaarde (5).
-   - Klik op **maken** om te maken van de beschikbaarheid.
+      - **Resourcegroep**: Als u een bestaande groep wilt gebruiken, klikt u op **bestaande gebruiken** en selecteert u de groep in de vervolg keuzelijst. Kies anders **nieuwe maken** en typ een naam voor de groep.
+      - **Locatie**: Stel de locatie in waar u uw virtuele machines wilt maken.
+      - **Fout domeinen**: Gebruik de standaard waarde (3).
+      - **Update domeinen**: Gebruik de standaard waarde (5).
+   - Klik op **maken** om de beschikbaarheidsset te maken.
 
 1. Maak de virtuele machines in de beschikbaarheidsset.
 
-   Twee virtuele machines met SQL Server in de Azure-beschikbaarheidsset inrichten. Zie voor instructies [een SQL Server-machine inrichten in Azure portal](virtual-machines-windows-portal-sql-server-provision.md).
+   Voorziet in twee SQL Server virtuele machines in de beschikbaarheidsset van Azure. Zie [een SQL Server virtuele machine inrichten in de Azure Portal](virtual-machines-windows-portal-sql-server-provision.md)voor instructies.
 
    Plaats beide virtuele machines:
 
-   - In dezelfde Azure is resourcegroep die uw beschikbaarheidsset.
-   - Op hetzelfde netwerk bevinden als uw domeincontroller.
-   - In een subnet met voldoende IP-adresruimte voor zowel virtuele machines en alle Failoverclusterinstanties die u uiteindelijk kunt gebruiken voor dit cluster.
-   - In de Azure-beschikbaarheidsset.   
+   - In dezelfde Azure-resource groep waarin uw beschikbaarheidsset zich bevindt.
+   - Op hetzelfde netwerk als uw domein controller.
+   - Op een subnet met voldoende IP-adres ruimte voor zowel virtuele machines als alle Failoverclusterinstanties die u uiteindelijk kunt gebruiken op dit cluster.
+   - In de beschikbaarheidsset van Azure.   
 
       >[!IMPORTANT]
-      >U kunt geen instellen of wijzigen van de beschikbaarheidsset nadat een virtuele machine is gemaakt.
+      >U kunt de beschikbaarheidsset niet instellen of wijzigen nadat een virtuele machine is gemaakt.
 
-   Kies een installatiekopie in de Azure Marketplace. U kunt een Marketplace-installatiekopie met die Windows Server en SQL Server of de Windows-Server bevat. Zie voor meer informatie, [overzicht van SQL Server op Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md)
+   Kies een installatie kopie in de Azure Marketplace. U kunt een Marketplace-installatie kopie gebruiken die Windows Server en SQL Server, of alleen de Windows-Server bevat. Zie [overzicht van SQL Server op Azure](virtual-machines-windows-sql-server-iaas-overview.md) voor meer informatie virtual machines
 
-   De officiële SQL Server-installatiekopieën in de Azure-galerie omvatten een geïnstalleerde SQL Server-exemplaar, plus de software van de installatie van SQL Server en de benodigde sleutel is.
+   De officiële SQL Server installatie kopieën in de Azure-galerie bevatten een geïnstalleerd SQL Server exemplaar, plus de SQL Server installatie software en de vereiste sleutel.
 
-   Kies de juiste installatiekopie op basis van hoe u wilt betalen voor de SQL Server-licentie:
+   Kies de juiste installatie kopie op basis van de manier waarop u wilt betalen voor de SQL Server licentie:
 
-   - **Betalen per gebruik-licentieverlening**: De kosten per seconde van deze installatiekopieën bevat de SQL Server-licentie:
-      - **SQL Server 2016 Enterprise op Windows Server Datacenter 2016**
-      - **SQL Server 2016 Standard op Windows Server Datacenter 2016**
-      - **SQL Server 2016 Developer op Windows Server Datacenter 2016**
+   - **Betalen per gebruiks licentie**: De kosten per seconde van deze installatie kopieën omvatten de SQL Server licenties:
+      - **SQL Server 2016 Enter prise op Windows Server Data Center 2016**
+      - **SQL Server 2016 Standard op Windows Server Data Center 2016**
+      - **SQL Server 2016-ontwikkelaar op Windows Server Data Center 2016**
 
-   - **Bring-your-own-license (BYOL)**
+   - **Neem uw eigen licentie mee (BYOL)**
 
-      - **{BYOL} SQL Server 2016 Enterprise op Windows Server Datacenter 2016**
-      - **{BYOL} SQL Server 2016 Standard op Windows Server Datacenter 2016**
+      - **BYOL SQL Server 2016 Enter prise op Windows Server Data Center 2016**
+      - **BYOL SQL Server 2016 Standard op Windows Server Data Center 2016**
 
    >[!IMPORTANT]
-   >Nadat u de virtuele machine hebt gemaakt, verwijdert u de vooraf geïnstalleerde zelfstandige SQL Server-exemplaar. U gebruikt de vooraf geïnstalleerde SQL Server-media te maken van de SQL Server-FCI nadat u de failover-cluster en S2D configureren.
+   >Nadat u de virtuele machine hebt gemaakt, verwijdert u het vooraf geïnstalleerde zelfstandige SQL Server exemplaar. U gebruikt het vooraf geïnstalleerde SQL Server medium om de SQL Server FCI te maken nadat u het failovercluster en S2D hebt geconfigureerd.
 
-   U kunt ook kunt u Azure Marketplace-installatiekopieën met alleen het besturingssysteem. Kies een **Windows Server 2016 Datacenter** installatiekopie en het installeren van de SQL Server-FCI nadat u de failover-cluster en S2D configureren. Deze installatiekopie bevat geen SQL Server-installatiemedium. Plaats het installatiemedium in een locatie waar u de installatie van SQL Server voor elke server kunt uitvoeren.
+   U kunt ook Azure Marketplace-installatie kopieën gebruiken met alleen het besturings systeem. Kies een installatie kopie van **Windows Server 2016 Data Center** en installeer de SQL Server FCI nadat u het FAILOVERCLUSTER en S2D hebt geconfigureerd. Deze installatie kopie bevat geen SQL Server-installatie media. Plaats de installatie media op een locatie waar u de SQL Server-installatie voor elke server kunt uitvoeren.
 
-1. Nadat Azure uw virtuele machines maakt, moet u een verbinding maken met elke virtuele machine met RDP.
+1. Nadat Azure uw virtuele machines heeft gemaakt, maakt u verbinding met elke virtuele machine met RDP.
 
-   Als u eerst verbinding met een virtuele machine met RDP, vraagt de computer als u wilt toestaan dat deze PC om te worden gedetecteerd op het netwerk. Klik op **Ja**.
+   Wanneer u voor het eerst verbinding maakt met een virtuele machine met RDP, wordt u gevraagd of u wilt toestaan dat deze PC kan worden gedetecteerd in het netwerk. Klik op **Ja**.
 
-1. Als u van een van de virtuele machine op basis van SQL Server-installatiekopieën gebruikmaakt, verwijdert u de SQL Server-exemplaar.
+1. Als u een van de op SQL Server gebaseerde installatie kopieën voor virtuele machines gebruikt, verwijdert u het SQL Server exemplaar.
 
-   - In **programma's en onderdelen**, met de rechtermuisknop op **Microsoft SQL Server 2016 (64-bits)** en klikt u op **verwijderen/wijzigen**.
+   - Klik in **Program ma's en onderdelen**met de rechter muisknop op **Microsoft SQL Server 2016 (64-bits)** en klik vervolgens op **verwijderen/wijzigen**.
    - Klik op **Verwijderen**.
-   - Selecteer het standaardexemplaar plaatst.
-   - Verwijder alle onderdelen onder **Database-Engineservices**. Verwijder niet **gedeelde onderdelen**. Zie de volgende afbeelding:
+   - Selecteer het standaard exemplaar.
+   - Verwijder alle functies onder **Data Base Engine-Services**. Geen **gedeelde onderdelen**verwijderen. Zie de volgende afbeelding:
 
       ![Onderdelen verwijderen](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
-   - Klik op **volgende**, en klik vervolgens op **verwijderen**.
+   - Klik op **volgende**en klik vervolgens op **verwijderen**.
 
-1. <a name="ports"></a>De firewallpoorten openen.
+1. <a name="ports"></a>Open de firewall poorten.
 
-   Op elke virtuele machine, de volgende poorten op de Windows Firewall te openen.
+   Open op elke virtuele machine de volgende poorten op het Windows Firewall.
 
    | Doel | TCP-poort | Opmerkingen
    | ------ | ------ | ------
-   | SQL Server | 1433 | Normale poort voor het standaardexemplaren van SQL Server. Als u een installatiekopie uit de galerie gebruikt, worden deze poort wordt automatisch geopend.
-   | Statustest | 59999 | Alle open TCP-poort. Configureer de load balancer in een latere stap [statustest](#probe) en het cluster moet deze poort gebruiken.  
+   | SQL Server | 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend.
+   | Test | 59999 | Een open TCP-poort. Configureer in een latere stap de load balancer [Health probe](#probe) en het cluster om deze poort te gebruiken.  
 
-1. Opslag toevoegen aan de virtuele machine. Zie voor gedetailleerde informatie [opslag toevoegen](../disks-types.md).
+1. Voeg opslag toe aan de virtuele machine. Zie [opslag toevoegen](../disks-types.md)voor gedetailleerde informatie.
 
-   Beide virtuele machines moet ten minste twee schijven.
+   Beide virtuele machines hebben ten minste twee gegevens schijven nodig.
 
-   Koppel onbewerkte schijven - geen NTFS-geformatteerde schijven.
+   Onbewerkte schijven koppelen: schijven die geen NTFS-indeling hebben.
       >[!NOTE]
-      >Als u NTFS-geformatteerde schijven koppelt, kunt u alleen S2D inschakelen met geen schijf in aanmerking te komen controleren.  
+      >Als u schijven met NTFS-indeling koppelt, kunt u alleen S2D inschakelen zonder geschiktheids controle voor de schijf.  
 
-   Minimaal twee premium SSD's koppelen aan elke virtuele machine. Het is raadzaam ten minste P30 (1 TB)-schijven.
+   Koppel mini maal twee Premium-Ssd's aan elke virtuele machine. We raden ten minste P30-schijven (1 TB) aan.
 
-   Set hostcache in op **alleen-lezen**.
+   Stel host-caching in op **alleen-lezen**.
 
-   De opslagcapaciteit die u in productieomgevingen gebruikt, is afhankelijk van uw workload. De waarden die in dit artikel wordt beschreven, zijn voor demonstratie- en testdoeleinden.
+   De opslag capaciteit die u gebruikt in productie omgevingen is afhankelijk van uw werk belasting. De waarden die in dit artikel worden beschreven, zijn voor demonstratie-en test doeleinden.
 
-1. [De virtuele machines toevoegen aan uw bestaande domein](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
+1. [Voeg de virtuele machines toe aan uw vooraf bestaande domein](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
 
-Nadat de virtuele machines worden gemaakt en geconfigureerd, kunt u het failovercluster configureren.
+Nadat de virtuele machines zijn gemaakt en geconfigureerd, kunt u het failovercluster configureren.
 
 ## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>Stap 2: Het Windows-failovercluster configureren met S2D
 
-De volgende stap is het configureren van het failover-cluster met S2D. In deze stap maakt doet u de volgende substappen:
+De volgende stap is het configureren van het failovercluster met S2D. In deze stap gaat u de volgende substaps uitvoeren:
 
-1. Windows Failover Clustering-functie toevoegen
+1. Functie Windows Failover Clustering toevoegen
 1. Het cluster valideren
-1. De failover-cluster maken
-1. Maken van de cloud-witness
+1. Het failovercluster maken
+1. De cloudwitness maken
 1. Opslag toevoegen
 
-### <a name="add-windows-failover-clustering-feature"></a>Windows Failover Clustering-functie toevoegen
+### <a name="add-windows-failover-clustering-feature"></a>Functie Windows Failover Clustering toevoegen
 
-1. Als u wilt beginnen, verbinden met de eerste virtuele machine met RDP met behulp van een domeinaccount dat lid is van de lokale groep administrators en machtigingen heeft voor het maken van objecten in Active Directory. Dit account gebruiken voor de rest van de configuratie.
+1. Als u wilt beginnen, maakt u verbinding met de eerste virtuele machine met RDP met behulp van een domein account dat lid is van lokale beheerders en beschikt over machtigingen voor het maken van objecten in Active Directory. Gebruik dit account voor de rest van de configuratie.
 
-1. [Functie Failover Clustering toevoegen aan elke virtuele machine](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
+1. [Voeg de functie Failover Clustering toe aan elke virtuele machine](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 
-   Voor het onderdeel Failover Clustering installeren vanuit de gebruikersinterface, moet u de volgende stappen uit op beide virtuele machines.
-   - In **Serverbeheer**, klikt u op **beheren**, en klik vervolgens op **functies en onderdelen toevoegen**.
-   - In **functies Wizard Functies toevoegen en**, klikt u op **volgende** totdat u **onderdelen selecteren**.
-   - In **onderdelen selecteren**, klikt u op **Failover Clustering**. Alle vereiste onderdelen en de beheerprogramma's opnemen. Klik op **functies toevoegen**.
-   - Klik op **volgende** en klik vervolgens op **voltooien** om de functies te installeren.
+   Als u de functie Failover Clustering wilt installeren vanuit de gebruikers interface, voert u de volgende stappen uit op beide virtuele machines.
+   - Klik in **Serverbeheer**op **beheren**en klik vervolgens op **functies en onderdelen toevoegen**.
+   - Klik in de **wizard functies en onderdelen toevoegen**op **volgende** totdat u **onderdelen selecteert**.
+   - Klik in **functies selecteren**op **failover clustering**. Neem alle vereiste functies en de beheer hulpprogramma's op. Klik op **onderdelen toevoegen**.
+   - Klik op **volgende** en klik vervolgens op **volt ooien** om de onderdelen te installeren.
 
-   Als u wilt de functie Failover Clustering installeren met PowerShell, voer het volgende script uit een PowerShell-sessie op een van de virtuele machines.
+   Als u de functie Failover Clustering wilt installeren met Power shell, voert u het volgende script uit vanuit een Power shell-beheer sessie op een van de virtuele machines.
 
    ```powershell
    $nodes = ("<node1>","<node2>")
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Voor een verwijzing naar de volgende stappen volgt u de instructies onder de stap 3 van [hypergeconvergeerde oplossing met opslagruimten Direct in Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Volg voor de volgende stappen de instructies onder stap 3 van de [Hyper-geconvergeerde oplossing met behulp van opslagruimten direct in Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 ### <a name="validate-the-cluster"></a>Het cluster valideren
 
-Deze handleiding verwijst naar de instructies onder [cluster valideren](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
+Deze hand leiding verwijst naar instructies onder [cluster valideren](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
 
-Valideren van het cluster in de gebruikersinterface of met PowerShell.
+Valideer het cluster in de gebruikers interface of met Power shell.
 
-Voor het valideren van het cluster met de gebruikersinterface, moet u de volgende stappen uitvoeren vanaf een van de virtuele machines.
+Voer de volgende stappen uit op een van de virtuele machines om het cluster te valideren met de gebruikers interface.
 
-1. In **Serverbeheer**, klikt u op **extra**, klikt u vervolgens op **Failoverclusterbeheer**.
-1. In **Failoverclusterbeheer**, klikt u op **actie**, klikt u vervolgens op **configuratie valideren...** .
+1. Klik in **Serverbeheer**op **extra**en klik vervolgens op **Failoverclusterbeheer**.
+1. Klik in **Failoverclusterbeheer**op **actie**en klik vervolgens op **configuratie valideren...** .
 1. Klik op **Volgende**.
-1. Op **Servers selecteren of een Cluster**, typ de naam van beide virtuele machines.
-1. Op **testopties**, kiest u **alleen mij geselecteerde tests uitvoeren**. Klik op **Volgende**.
-1. Op **testen selectie**, bevatten alle tests uit behalve **opslag**. Zie de volgende afbeelding:
+1. Typ de naam van beide virtuele machines op **servers of een cluster selecteren**.
+1. Kies op **test opties** **alleen tests uitvoeren die ik selecteer**. Klik op **Volgende**.
+1. Neem bij **selectie testen**alle tests behalve **opslag**op. Zie de volgende afbeelding:
 
-   ![Valideren van Tests](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
+   ![Tests valideren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
 1. Klik op **Volgende**.
-1. Op **bevestiging**, klikt u op **volgende**.
+1. Klik op de **bevestiging**op **volgende**.
 
-De **Wizard een configuratie valideren** de validatietests wordt uitgevoerd.
+Met de **wizard een configuratie valideren** worden de validatie tests uitgevoerd.
 
-Voor het valideren van het cluster met PowerShell, voer het volgende script uit een PowerShell-sessie op een van de virtuele machines.
+Als u het cluster met Power shell wilt valideren, voert u het volgende script uit vanuit een Power shell-beheer sessie op een van de virtuele machines.
 
    ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
-Nadat u het cluster valideren, moet u het failovercluster maakt.
+Nadat u het cluster hebt gevalideerd, maakt u het failovercluster.
 
-### <a name="create-the-failover-cluster"></a>De failover-cluster maken
+### <a name="create-the-failover-cluster"></a>Het failovercluster maken
 
-Deze handleiding verwijst naar [het failovercluster maakt](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
+Deze hand leiding verwijst naar [het maken van het failovercluster](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
 
-Als u wilt het failovercluster maakt, hebt u het volgende nodig:
-- De namen van de virtuele machines die de clusterknooppunten.
-- Een naam voor de failovercluster
-- Een IP-adres voor de failover-cluster. U kunt een IP-adres dat niet wordt gebruikt op de dezelfde Azure-netwerk en subnet als de clusterknooppunten.
+Als u het failovercluster wilt maken, hebt u het volgende nodig:
+- De namen van de virtuele machines die de cluster knooppunten worden.
+- Een naam voor het failovercluster
+- Een IP-adres voor het failovercluster. U kunt een IP-adres gebruiken dat niet wordt gebruikt in hetzelfde virtuele Azure-netwerk en subnet als de cluster knooppunten.
 
-De volgende PowerShell maakt u een failover-cluster. Het script met de namen van de knooppunten (de namen van de virtuele machine) en een beschikbaar IP-adres van de Azure-VNET-update:
+Met de volgende Power Shell maakt u een failovercluster. Werk het script bij met de namen van de knoop punten (de namen van de virtuele machines) en een beschikbaar IP-adres uit het Azure-VNET:
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
-### <a name="create-a-cloud-witness"></a>Maken van een cloud-witness
+### <a name="create-a-cloud-witness"></a>Een cloudwitness maken
 
-Cloud-Witness is een nieuw type clusterquorum-witness die zijn opgeslagen in een Azure Storage-Blob. Hiermee verwijdert u de noodzaak van een afzonderlijke virtuele machine die als host fungeert voor een witness-share.
+Cloudwitness is een nieuw type cluster quorum-Witness dat is opgeslagen in een Azure Storage Blob. Hierdoor is er geen afzonderlijke virtuele machine nodig die als host fungeert voor een Witness-share.
 
-1. [Maken van een cloud-witness voor het failovercluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
+1. [Maak een cloudwitness voor het failovercluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
-1. Een blob-container maken.
+1. Maak een BLOB-container.
 
-1. Sla de toegangssleutel en de URL van de container.
+1. Sla de toegangs sleutels en de container-URL op.
 
-1. De failover clusterquorum-witness configureren. Zie, [de quorum-witness configureren in de gebruikersinterface](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) in de gebruikersinterface.
+1. Configureer de quorum-Witness van het failovercluster. Zie [de quorum-Witness configureren in de gebruikers interface](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) van de UI.
 
 ### <a name="add-storage"></a>Opslag toevoegen
 
-De schijven voor S2D moeten worden leeggemaakt en alle partities of andere gegevens. Om op te schonen schijven Volg [de stappen in deze handleiding](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
+De schijven voor S2D moeten leeg zijn en zonder partities of andere gegevens. Volg [de stappen in deze hand leiding](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks)om schijven op te schonen.
 
-1. [Schakel Store opslagruimten Direct \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Sla direct \(S2D\)op in Store Spaces](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
-   Met behulp van de volgende PowerShell kunt opslagruimten direct.  
+   Met de volgende Power shell wordt opslag ruimten direct ingeschakeld.  
 
    ```powershell
    Enable-ClusterS2D
    ```
 
-   In **Failoverclusterbeheer**, ziet u nu de opslaggroep.
+   In **Failoverclusterbeheer**kunt u nu de opslag groep zien.
 
 1. [Maak een volume](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
 
-   Een van de functies van S2D is dat deze automatisch wordt een opslaggroep gemaakt wanneer u deze inschakelt. U bent nu klaar om te maken van een volume. De PowerShell-commandlet `New-Volume` automatiseert het aanmaakproces volume, met inbegrip van opmaak, toe te voegen aan het cluster en het maken van een gedeeld clustervolume (CSV). Het volgende voorbeeld wordt een 800 GB (Gigabyte) CSV.
+   Een van de functies van S2D is dat er automatisch een opslag groep wordt gemaakt wanneer u deze inschakelt. U bent nu klaar om een volume te maken. De Power shell `New-Volume` -commandlet automatiseert het proces voor het maken van een volume, met inbegrip van de opmaak, het toevoegen van het cluster en het maken van een gedeeld cluster volume (CSV). In het volgende voor beeld wordt een CSV-bestand van 800 GB gemaakt.
 
    ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
    ```   
 
-   Nadat u deze opdracht is voltooid, wordt een 800 GB-volume is gekoppeld als een cluster-bron. Het volume is op `C:\ClusterStorage\Volume1\`.
+   Nadat deze opdracht is voltooid, wordt een volume van 800 GB gekoppeld als een cluster bron. Het volume bevindt zich op `C:\ClusterStorage\Volume1\`.
 
-   Het volgende diagram toont een gedeeld clustervolume met S2D:
+   In het volgende diagram ziet u een gedeeld cluster volume met S2D:
 
    ![ClusterSharedVolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
-## <a name="step-3-test-failover-cluster-failover"></a>Stap 3: Failover clusterfailover testen
+## <a name="step-3-test-failover-cluster-failover"></a>Stap 3: Failover van failovercluster testen
 
-In Failoverclusterbeheer, Controleer of dat u de storage-resource naar het andere clusterknooppunt verplaatsen kunt. Als u verbinding met het failover-cluster met maken kunt **Failoverclusterbeheer** en de opslag verplaatsen van het ene knooppunt naar het andere, u bent klaar om te configureren van de FCI.
+Controleer in Failoverclusterbeheer of u de opslag resource naar het andere cluster knooppunt kunt verplaatsen. Als u verbinding kunt maken met het failovercluster met **Failoverclusterbeheer** en de opslag van het ene naar het andere knoop punt wilt verplaatsen, bent u klaar om de FCI te configureren.
 
-## <a name="step-4-create-sql-server-fci"></a>Stap 4: Maken van SQL Server FCI
+## <a name="step-4-create-sql-server-fci"></a>Stap 4: SQL Server FCI maken
 
-Nadat u de failover-cluster en alle clusteronderdelen van de, inclusief opslag hebt geconfigureerd, kunt u de SQL Server-FCI maken.
+Nadat u het failovercluster en alle cluster onderdelen, inclusief opslag, hebt geconfigureerd, kunt u de SQL Server-FCI maken.
 
-1. Verbinding maken met de eerste virtuele machine met RDP.
+1. Maak verbinding met de eerste virtuele machine met RDP.
 
-1. In **Failoverclusterbeheer**, zorg ervoor dat alle clusterkernresources zijn op de eerste virtuele machine. Indien nodig, moet u alle resources verplaatsen naar deze virtuele machine.
+1. Controleer in **Failoverclusterbeheer**of alle kern bronnen van het cluster op de eerste virtuele machine staan. Verplaats, indien nodig, alle resources naar deze virtuele machine.
 
-1. Ga naar de installatiemedia. Als de virtuele machine gebruikmaakt van een van de Azure Marketplace-installatiekopieën, de media bevindt zich in `C:\SQLServer_<version number>_Full`. Klik op **Setup**.
+1. Zoek het installatie medium. Als de virtuele machine een van de installatie kopieën van Azure Marketplace gebruikt, bevindt `C:\SQLServer_<version number>_Full`de media zich op. Klik op **instellen**.
 
-1. In de **Installatiecentrum van SQL Server**, klikt u op **installatie**.
+1. Klik in het **SQL Server-installatie centrum**op **installeren**.
 
-1. Klik op **New SQL Server failover cluster installation**. Volg de instructies in de wizard voor het installeren van de SQL Server-FCI.
+1. Klik op **nieuw SQL Server failover-cluster installatie**. Volg de instructies in de wizard om de SQL Server FCI te installeren.
 
-   De gegevensmappen FCI moeten op geclusterde opslag. Met S2D is het niet een gedeelde schijf, maar een koppelpunt op een volume op elke server. S2D synchroniseert het volume tussen beide knooppunten. Het volume wordt gepresenteerd aan het cluster een cluster shared volume. Gebruik het CSV-koppelpunt voor de gegevensmappen.
+   De FCI-gegevens directory's moeten zich op geclusterde opslag beslaan. Met S2D is het geen gedeelde schijf, maar een koppel punt naar een volume op elke server. S2D synchroniseert het volume tussen beide knoop punten. Het volume wordt door gegeven aan het cluster als een gedeeld cluster volume. Gebruik het CSV-koppel punt voor de gegevens directory's.
 
    ![DataDirectories](./media/virtual-machines-windows-portal-sql-create-failover-cluster/20-data-dicrectories.png)
 
-1. Nadat u de wizard hebt voltooid, zal Setup de FCI van een SQL-Server installeren op het eerste knooppunt.
+1. Nadat u de wizard hebt voltooid, installeert Setup een SQL Server FCI op het eerste knoop punt.
 
-1. Nadat Setup is de FCI is geïnstalleerd op het eerste knooppunt, moet u een verbinding maken met het tweede knooppunt met RDP.
+1. Nadat de installatie van de FCI op het eerste knoop punt is geïnstalleerd, maakt u verbinding met het tweede knoop punt met RDP.
 
-1. Open de **Installatiecentrum van SQL Server**. Klik op **installatie**.
+1. Open het **SQL Server-installatie centrum**. Klik op **installatie**.
 
-1. Klik op **knooppunt toevoegen aan een SQL Server-failovercluster**. Volg de instructies in de wizard installatie van SQL server en deze server toevoegen aan de FCI.
+1. Klik op **knoop punt toevoegen aan een SQL Server-failovercluster**. Volg de instructies in de wizard om SQL Server te installeren en deze server toe te voegen aan de FCI.
 
    >[!NOTE]
-   >Als u de installatiekopie van een Azure Marketplace-galerie met SQL Server gebruikt, is SQL Server-hulpprogramma's zijn opgenomen in de afbeelding. Als u deze installatiekopie niet hebt gebruikt, installeert u de SQL Server-hulpprogramma's afzonderlijk. Zie [downloaden van SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
+   >Als u een installatie kopie van een Azure Marketplace-galerie hebt gebruikt met SQL Server, zijn er SQL Server-hulpprogram ma's in de installatie kopie opgenomen. Als u deze installatie kopie niet hebt gebruikt, installeert u de SQL Server-hulpprogram ma's afzonderlijk. Zie [down load SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="step-5-create-azure-load-balancer"></a>Stap 5: Azure-load balancer maken
 
-Op Azure virtual machines, clusters een load balancer gebruiken voor het opslaan van een IP-adres dat moet worden op één clusterknooppunt tegelijk. In deze oplossing bevat de load balancer het IP-adres voor de SQL Server-FCI.
+Op virtuele machines van Azure gebruiken clusters een load balancer voor het opslaan van een IP-adres dat op één cluster knooppunt tegelijk moet zijn. In deze oplossing bevat de load balancer het IP-adres voor de SQL Server FCI.
 
-[Maken en configureren van een Azure load balancer](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
+[Een Azure-Load Balancer maken en configureren](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
 
-### <a name="create-the-load-balancer-in-the-azure-portal"></a>De load balancer maken in Azure portal
+### <a name="create-the-load-balancer-in-the-azure-portal"></a>Maak de load balancer in het Azure Portal
 
 De load balancer maken:
 
-1. In de Azure-portal, gaat u naar de resourcegroep met de virtuele machines.
+1. Ga in het Azure Portal naar de resource groep met de virtuele machines.
 
-1. Klik op **+ Toevoegen**. Zoek in Marketplace naar **Load Balancer**. Klik op **Load Balancer**.
+1. Klik op **+ Toevoegen**. Zoek op de Marketplace naar **Load Balancer**. Klik op **Load Balancer**.
 
 1. Klik op **Create**.
 
 1. Configureer de load balancer met:
 
-   - **Naam**: Een naam ter identificatie van de load balancer.
-   - **Type**: De load balancer kan worden openbaar of privé zijn. Een privéadres voor de load balancer kunt toegankelijk vanaf binnen hetzelfde VNET. De meeste Azure-toepassingen gebruiken een privéadres voor de load balancer. Als uw toepassing toegang tot SQL Server rechtstreeks via Internet moet, gebruikt u een openbare load balancer.
-   - **Virtueel netwerk**: Hetzelfde netwerk bevinden als de virtuele machines.
-   - **Subnet**: Hetzelfde subnet bevindt als de virtuele machines.
-   - **Privé IP-adres**: Hetzelfde IP-adres dat u hebt toegewezen aan de netwerkbron van FCI van SQL Server-cluster.
-   - **Abonnement**: Uw Azure-abonnement.
-   - **Resourcegroep**: Gebruik dezelfde resourcegroep bevinden als uw virtuele machines.
+   - **Naam**: Een naam die de load balancer aanduidt.
+   - **Type**: Het load balancer kan openbaar of privé zijn. Een persoonlijke load balancer kan vanuit hetzelfde VNET worden geopend. De meeste Azure-toepassingen kunnen een privé-load balancer gebruiken. Als uw toepassing rechtstreeks via internet toegang moet hebben tot SQL Server, gebruik dan een open bare load balancer.
+   - **Virtual Network**: Hetzelfde netwerk als de virtuele machines.
+   - **Subnet**: Hetzelfde subnet als de virtuele machines.
+   - **Privé IP-adres**: Hetzelfde IP-adres dat u hebt toegewezen aan de resource van het SQL Server FCI-cluster netwerk.
+   - **abonnement**: Uw Azure-abonnement.
+   - **Resourcegroep**: Gebruik dezelfde resource groep als uw virtuele machines.
    - **Locatie**: Gebruik dezelfde Azure-locatie als uw virtuele machines.
    Zie de volgende afbeelding:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
 
-### <a name="configure-the-load-balancer-backend-pool"></a>De back-endpool van de load balancer configureren
+### <a name="configure-the-load-balancer-backend-pool"></a>De load balancer back-end-groep configureren
 
-1. Ga terug naar de Azure-resourcegroep met de virtuele machines en zoek de nieuwe load balancer. U moet Vernieuw de weergave voor de resourcegroep. Klik op de load balancer.
+1. Ga terug naar de Azure-resource groep met de virtuele machines en zoek de nieuwe load balancer. Mogelijk moet u de weer gave van de resource groep vernieuwen. Klik op het load balancer.
 
-1. Klik op **back-endpools** en klikt u op **+ toevoegen** om toe te voegen een back-endpool.
+1. Klik op **back-end-Pools** en klik op **+ toevoegen** om een back-end-groep toe te voegen.
 
-1. Back-end-pool koppelen aan de beschikbaarheidsset met de virtuele machines.
+1. Koppel de back-end-pool met de beschikbaarheidsset die de virtuele machines bevat.
 
-1. Onder **doel-IP-configuraties van**, Controleer **virtuele MACHINE** en kiest u de virtuele machines die wordt opgenomen als clusterknooppunten. Moet u alle virtuele machines die als voor de FCI host opnemen. 
+1. Onder **IP-configuraties**voor het doelnet werk controleert u de **virtuele machine** en kiest u de virtuele machines die als cluster knooppunten zullen worden beschouwd. Zorg ervoor dat u alle virtuele machines opneemt die als host moeten fungeren voor de FCI. 
 
-1. Klik op **OK** om de back endpool te maken.
+1. Klik op **OK** om de back-end-pool te maken.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer-statustest configureren
+### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer Health probe configureren
 
-1. Klik op de blade van de load balancer **statuscontroles**.
+1. Klik op de Blade load balancer op **status controles**.
 
 1. Klik op **+ Toevoegen**.
 
-1. Op de **test toevoegen** blade <a name="probe"> </a>de status test parameters instellen:
+1. <a name="probe"> </a>Stel op de Blade **status test toevoegen** de para meters voor de status test in:
 
-   - **Naam**: Een naam voor de statustest.
+   - **Naam**: Een naam voor de status test.
    - **Protocol**: TCP.
-   - **Poort**: Instellen op de poort die u hebt gemaakt in de firewall voor de statustest in [in deze stap](#ports). In dit artikel wordt het voorbeeld maakt gebruik van TCP-poort `59999`.
+   - **Poort**: Stel in [deze stap](#ports)in op de poort die u in de firewall hebt gemaakt voor de status test. In dit artikel gebruikt het voor beeld TCP- `59999`poort.
    - **Interval**: 5 seconden.
-   - **Drempelwaarde voor onjuiste status**: 2 achtereenvolgende mislukte pogingen.
+   - **Drempelwaarde voor onjuiste status**: 2 opeenvolgende fouten.
 
 1. Klik op OK.
 
-### <a name="set-load-balancing-rules"></a>Instellen van de load balancer-regels
+### <a name="set-load-balancing-rules"></a>Taakverdelings regels instellen
 
-1. Klik op de blade van de load balancer **Taakverdelingsregels**.
+1. Klik op de Blade load balancer op taakverdelings **regels**.
 
 1. Klik op **+ Toevoegen**.
 
-1. De load balancer-regels parameters instellen:
+1. De para meters voor de taakverdelings regels instellen:
 
-   - **Naam**: Een naam voor de load balancer-regels.
-   - **Frontend-IP-adres**: Gebruik het IP-adres voor de netwerkbron van FCI van SQL Server-cluster.
-   - **Poort**: Voor de SQL Server FCI TCP-poort ingesteld. De exemplaar-standaardpoort is 1433.
-   - **Back-endpoort**: Deze waarde gebruikt dezelfde poort als de **poort** wanneer u de waarde **zwevend IP (direct server return)** .
-   - **Back-end-pool**: Gebruik de naam van de back-end-toepassingen die u eerder hebt geconfigureerd.
-   - **Statustest**: Gebruik de statustest die u eerder hebt geconfigureerd.
-   - **Sessiepersistentie**: Geen.
-   - **Time-out (minuten)** : 4.
+   - **Naam**: Een naam voor de taakverdelings regels.
+   - **Frontend-IP-adres**: Gebruik het IP-adres voor de SQL Server cluster netwerk resource FCI.
+   - **Poort**: Stel in voor de SQL Server FCI TCP-poort. De standaard instantie poort is 1433.
+   - **Back-endpoort**: Deze waarde gebruikt dezelfde poort als de **poort** waarde wanneer u zwevende **IP (direct server return)** inschakelt.
+   - **Back-end-pool**: Gebruik de naam van de back-end-groep die u eerder hebt geconfigureerd.
+   - **Statustest**: Gebruik de status test die u eerder hebt geconfigureerd.
+   - **Sessie persistentie**: Geen.
+   - **Time-out voor inactiviteit (minuten)** : 4.
    - **Zwevend IP (direct server return)** : Enabled
 
 1. Klik op **OK**.
 
-## <a name="step-6-configure-cluster-for-probe"></a>Stap 6: Voor test-cluster configureren
+## <a name="step-6-configure-cluster-for-probe"></a>Stap 6: Cluster voor test configureren
 
-Stel de parameter van cluster test poort in PowerShell.
+Stel de para meter cluster probe Port in Power shell in.
 
-Update variabelen in het volgende script met waarden van uw omgeving om in te stellen de parameter cluster test poort. Verwijder de punthaken `<>` van het script. 
+Als u de para meter voor de cluster test poort wilt instellen, moet u de variabelen in het volgende script bijwerken met waarden uit uw omgeving. Verwijder de punt haken `<>` uit het script. 
 
    ```powershell
    $ClusterNetworkName = "<Cluster Network Name>"
@@ -442,61 +441,61 @@ Update variabelen in het volgende script met waarden van uw omgeving om in te st
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-In het vorige script, stel de waarden voor uw omgeving. De volgende lijst beschrijft de waarden:
+In het voor gaande script stelt u de waarden in voor uw omgeving. In de volgende lijst worden de waarden beschreven:
 
-   - `<Cluster Network Name>`: Windows Server Failover Cluster-naam voor het netwerk. In **Failoverclusterbeheer** > **netwerken**, met de rechtermuisknop op het netwerk en klikt u op **eigenschappen**. De juiste waarde ligt onder de **naam** op de **algemene** tabblad. 
+   - `<Cluster Network Name>`: Windows Server-failover-cluster naam voor het netwerk. In **Failoverclusterbeheer** > **netwerken**met de rechter muisknop op het netwerk en klik op **Eigenschappen**. U vindt de juiste waarde onder **naam** op het tabblad **Algemeen** . 
 
-   - `<SQL Server FCI IP Address Resource Name>`: Naam voor de resource van SQL Server FCI IP-adres. In **Failoverclusterbeheer** > **rollen**, onder de functie SQL Server FCI onder **servernaam**, klik met de rechtermuisknop op de resource van het IP-adres en klikt u op **Eigenschappen**. De juiste waarde ligt onder de **naam** op de **algemene** tabblad. 
+   - `<SQL Server FCI IP Address Resource Name>`: SQL Server naam van FCI-IP-adres resource. Klik in **Failoverclusterbeheer** > **rollen**onder de rol SQL Server FCI onder **Server naam**met de rechter muisknop op de IP-adres bron en klik op **Eigenschappen**. U vindt de juiste waarde onder **naam** op het tabblad **Algemeen** . 
 
-   - `<ILBIP>`: Het ILB IP-adres. Dit adres is geconfigureerd in Azure portal als de front-end-ILB-adres. Dit is ook het SQL Server FCI IP-adres. U vindt deze in **Failoverclusterbeheer** op dezelfde Eigenschappenpagina waar u zich de `<SQL Server FCI IP Address Resource Name>`.  
+   - `<ILBIP>`: Het IP-adres van de ILB. Dit adres wordt geconfigureerd in de Azure Portal als het front-end-adres van de ILB. Dit is ook het SQL Server IP-adres van FCI. U kunt deze in **Failoverclusterbeheer** vinden op dezelfde eigenschappen pagina waar u de `<SQL Server FCI IP Address Resource Name>`hebt opgeslagen.  
 
-   - `<nnnnn>`: Is de testpoort die u hebt geconfigureerd in de load balancer-statustest. Een niet-gebruikte TCP-poort is ongeldig. 
+   - `<nnnnn>`: Is de test poort die u hebt geconfigureerd in de load balancer Health probe. Alle ongebruikte TCP-poort is geldig. 
 
 >[!IMPORTANT]
->Het subnetmasker voor de cluster-parameter moet het TCP IP broadcast-adres: `255.255.255.255`.
+>Het subnetmasker voor de cluster parameter moet het TCP IP-broadcast adres zijn `255.255.255.255`:.
 
-Na het instellen van de cluster-test ziet u alle van de clusterparameters in PowerShell. Voer het volgende script uit:
+Nadat u de cluster test hebt ingesteld, kunt u alle cluster parameters in Power shell zien. Voer het volgende script uit:
 
    ```powershell
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 
-## <a name="step-7-test-fci-failover"></a>Stap 7: Testfailover FCI
+## <a name="step-7-test-fci-failover"></a>Stap 7: FCI-failover testen
 
-Test-failover van de FCI clusterfunctionaliteit valideren. Voer de volgende stappen uit:
+Test de failover van de FCI om de functionaliteit van het cluster te valideren. Voer de volgende stappen uit:
 
-1. Verbinding maken met een van de SQL Server FCI-clusterknooppunten met RDP.
+1. Maak verbinding met een van de SQL Server FCI-cluster knooppunten met RDP.
 
-1. Open **Failoverclusterbeheer**. Klik op **rollen**. U ziet het welk knooppunt eigenaar is van de SQL Server FCI-rol.
+1. Open **Failoverclusterbeheer**. Klik op **rollen**. U ziet welk knoop punt eigenaar is van de SQL Server rol FCI.
 
-1. Met de rechtermuisknop op de SQL Server FCI-rol.
+1. Klik met de rechter muisknop op de SQL Server FCI rol.
 
-1. Klik op **verplaatsen** en klikt u op **Best mogelijke knooppunt**.
+1. Klik op **verplaatsen** en klik vervolgens op **best mogelijke knoop punt**.
 
-**Failover-clusterbeheer** ziet u de functie en de daarbij behorende bronnen offline gaan. Verplaats vervolgens de resources en deze op het andere knooppunt online is gekomen.
+**Failoverclusterbeheer** toont de functie en de bijbehorende resources worden offline gezet. De resources worden vervolgens verplaatst en online gezet op het andere knoop punt.
 
 ### <a name="test-connectivity"></a>Connectiviteit testen
 
-Connectiviteit wilt testen, moet u zich aanmelden bij een andere virtuele machine in hetzelfde virtuele netwerk. Open **SQL Server Management Studio** en maak verbinding met de naam van de SQL Server FCI.
+Als u de connectiviteit wilt testen, meldt u zich aan bij een andere virtuele machine in hetzelfde virtuele netwerk. Open **SQL Server Management Studio** en maak verbinding met de naam van de SQL Server FCI.
 
 >[!NOTE]
->Zo nodig u kunt [SQL Server Management Studio downloaden](https://msdn.microsoft.com/library/mt238290.aspx).
+>Als dat nodig is, kunt u [SQL Server Management Studio downloaden](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Beperkingen
 
-Azure virtuele Machines ondersteunen Microsoft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en een [standaardversie van load balancer](../../../load-balancer/load-balancer-standard-overview.md).
+Azure Virtual Machines ondersteunt micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en een [standaard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
 
-Op Azure virtual machines, wordt MSDTC niet ondersteund op Windows Server 2016 en eerdere versies omdat:
+Op virtuele machines van Azure wordt MSDTC niet ondersteund in Windows Server 2016 en lager omdat:
 
-- De geclusterde MSDTC-bron kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Met Windows Server 2016 als u een MSDTC-resource, maakt weergegeven deze niet gedeelde opslag beschikbaar voor gebruik, zelfs als de opslag er is. Dit probleem is verholpen in Windows Server 2019.
-- De basisversie van load balancer verwerkt RPC-poorten niet.
+- De geclusterde MSDTC-bron kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u met Windows Server 2016 een MSDTC-bron maakt, wordt er geen gedeelde opslag weer gegeven die beschikbaar is voor gebruik, zelfs niet als de opslag ruimte is. Dit probleem is opgelost in Windows Server 2019.
+- De Basic-load balancer verwerkt geen RPC-poorten.
 
 ## <a name="see-also"></a>Zie ook
 
-[S2D instellen met extern bureaublad (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
+[Instellen S2D met extern bureau blad (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
-[Hypergeconvergeerde oplossing met opslagruimten direct](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
+[Hyper-geconvergeerde oplossing met opslag ruimten direct](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
 
-[Directe overzicht](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
+[Overzicht van opslag ruimte direct](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
-[SQL Server-ondersteuning voor S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)
+[SQL Server ondersteuning voor S2D](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)

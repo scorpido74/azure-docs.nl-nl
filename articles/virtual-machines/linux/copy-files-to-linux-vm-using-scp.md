@@ -1,6 +1,6 @@
 ---
-title: Verplaats bestanden naar en van Azure Linux VM's met SCP | Microsoft Docs
-description: Veilig verplaatsen bestanden naar en van een Linux-VM in Azure met behulp van de SCP en een SSH-sleutelpaar.
+title: Bestanden verplaatsen naar en van virtuele machines van Azure Linux met SCP | Microsoft Docs
+description: Bestanden veilig verplaatsen van en naar een virtuele Linux-machine in azure met behulp van SCP en een SSH-sleutel paar.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -11,33 +11,32 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: danlep
 ms.subservice: disks
-ms.openlocfilehash: 13a2c889ac648e2847d1cc58a60a7b1c0f1fc1e2
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 594ce696245cdd688583f8565487844197cd0b2a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671660"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083761"
 ---
-# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Verplaatsen van bestanden en naar een Linux-VM met SCP
+# <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Bestanden verplaatsen van en naar een virtuele Linux-machine met behulp van SCP
 
-Dit artikel leest hoe u bestanden verplaatst vanuit uw werkstation tot een virtuele Azure Linux-machine of vanuit een Azure Linux-VM naar uw werkstation met behulp van Secure Copy (SCP). Verplaatsen van bestanden tussen uw werkstation en een Linux-VM, snel en veilig, is van essentieel belang voor het beheren van uw Azure-infrastructuur. 
+In dit artikel wordt beschreven hoe u bestanden van uw werk station kunt verplaatsen naar een virtuele Azure Linux-machine of van een Azure Linux-VM naar uw werk station met behulp van Secure Copy (SCP). Het verplaatsen van bestanden tussen uw werk station en een virtuele Linux-machine, is essentieel voor het beheren van uw Azure-infra structuur. 
 
-Voor dit artikel, moet u een Linux VM die is geïmplementeerd in Azure met [SSH openbare en persoonlijke sleutelbestanden](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). U moet ook een SCP-client voor de lokale computer. Het is gebaseerd op SSH en opgenomen in de standaard-Bash-shell met de meeste Linux en Mac-computers en sommige shells Windows.
+Voor dit artikel hebt u een Linux-VM in azure geïmplementeerd met [open bare en persoonlijke SSH-sleutel bestanden](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). U hebt ook een SCP-client nodig voor uw lokale computer. Het is gebouwd op SSH en is opgenomen in de standaard bash-shell van de meeste Linux-en Mac-computers en enkele Windows-shells.
 
 ## <a name="quick-commands"></a>Snelle opdrachten
 
-Een bestand naar de Linux-VM kopiëren
+Een bestand kopiëren naar de virtuele Linux-machine
 
 ```bash
 scp file azureuser@azurehost:directory/targetfile
 ```
 
-Een bestand af van de Linux-VM kopiëren
+Een bestand vanuit de virtuele Linux-machine kopiëren
 
 ```bash
 scp azureuser@azurehost:directory/file targetfile
@@ -45,36 +44,36 @@ scp azureuser@azurehost:directory/file targetfile
 
 ## <a name="detailed-walkthrough"></a>Gedetailleerd overzicht
 
-Als voorbeelden, gaan we een Azure-configuratiebestand maximaal een Linux-VM en de vervolgkeuzelijst een logboekmap, die beide gebruikmaken SCP en SSH-sleutels.   
+Als voor beeld wordt een Azure-configuratie bestand naar een virtuele Linux-machine verplaatst en wordt er een map voor het logboek bestand opgehaald met behulp van SCP en SSH-sleutels.   
 
-## <a name="ssh-key-pair-authentication"></a>SSH-sleutelpaar-verificatie
+## <a name="ssh-key-pair-authentication"></a>Verificatie van SSH-sleutel paar
 
-SCP wordt SSH gebruikt voor de transportlaag is opgehaald. SSH verwerkt de verificatie op de doelhost en wordt het bestand in een gecodeerde tunnel geboden door standaard met SSH verplaatst. Voor de SSH-verificatie, de gebruikersnamen en wachtwoorden kunnen worden gebruikt. SSH openbare en persoonlijke sleutel verificatie worden echter wel aanbevolen als aanbevolen beveiligingsprocedure. Als SSH heeft de verbinding geverifieerd, begint SCP vervolgens kopiëren van het bestand. Met behulp van een correct geconfigureerde `~/.ssh/config` en SSH-openbare en persoonlijke sleutels, de SCP-verbinding kunnen worden gemaakt met behulp van alleen een servernaam (of IP-adres). Als u slechts één SSH-sleutel hebt, SCP zoekt in de `~/.ssh/` directory, en gebruikt voor het standaard aanmelden bij de virtuele machine.
+SCP gebruikt SSH voor de transportlaag. SSH verwerkt de verificatie op de doelhost en verplaatst het bestand in een versleutelde tunnel die standaard wordt meegeleverd met SSH. Voor SSH-verificatie kunnen gebruikers namen en wacht woorden worden gebruikt. De open bare en persoonlijke sleutel verificatie van SSH wordt echter aanbevolen als een beveiligings best practice. Nadat de verbinding is geverifieerd door de SSH, begint SCP het bestand te kopiëren. Door gebruik te maken `~/.ssh/config` van een juist geconfigureerde en open bare en persoonlijke SSH-sleutel, kan de SCP-verbinding tot stand worden gebracht door alleen een server naam (of IP-adres) te gebruiken. Als u slechts één SSH-sleutel hebt, wordt deze in de `~/.ssh/` directory gezocht en wordt deze standaard gebruikt om u aan te melden bij de virtuele machine.
 
-Voor meer informatie over het configureren van uw `~/.ssh/config` en SSH-openbare en persoonlijke sleutels, Zie [SSH-sleutels maken](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Zie [SSH-sleutels maken](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor `~/.ssh/config` meer informatie over het configureren van open bare en persoonlijke sleutels voor SSH.
 
-## <a name="scp-a-file-to-a-linux-vm"></a>SCP een bestand met een Linux VM
+## <a name="scp-a-file-to-a-linux-vm"></a>Een bestand aan een virtuele Linux-machine SCP
 
-Voor het eerste voorbeeld kopieert u een Azure-configuratie-bestand naar een Linux-VM die wordt gebruikt voor het implementeren van automation. Beveiliging is belangrijk, omdat dit bestand bevat API van Azure-referenties, waaronder geheimen. De gecodeerde geleverd door de SSH-tunnel beveiligt de inhoud van het bestand.
+In het eerste voor beeld kopiëren we een Azure-configuratie bestand naar een virtuele Linux-machine die wordt gebruikt voor het implementeren van Automation. Omdat dit bestand Azure API-referenties bevat die geheimen bevatten, is de beveiliging belang rijk. De versleutelde tunnel die door SSH wordt verschaft, beveiligt de inhoud van het bestand.
 
-Met de volgende opdracht wordt de lokale *.azure/config* bestand met een Azure-VM met FQDN-naam *myserver.eastus.cloudapp.azure.com*. De gebruikersnaam van beheerder op de Azure VM is *azureuser*. Het bestand is gericht op de */home/azureuser/* directory. Vervangen door uw eigen waarden in deze opdracht.
+Met de volgende opdracht kopieert u het bestand Local *. Azure/config* naar een Azure VM met FQDN- *MyServer.eastus.cloudapp.Azure.com*. De gebruikers naam van de beheerder op de Azure-VM is *azureuser*. Het bestand is gericht op de */Home/azureuser/* -map. Vervang uw eigen waarden door in deze opdracht.
 
 ```bash
 scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/config
 ```
 
-## <a name="scp-a-directory-from-a-linux-vm"></a>SCP een directory vanaf een Linux-VM
+## <a name="scp-a-directory-from-a-linux-vm"></a>Een directory van een virtuele Linux-machine SCP
 
-In dit voorbeeld wordt een map met logboekbestanden van de Linux-VM naar uw werkstation kopiëren. Een logboekbestand kan of kan geen vertrouwelijke of geheime gegevens bevatten. Echter met behulp van SCP zorgt ervoor dat de inhoud van de logboekbestanden worden versleuteld. SCP gebruik voor het overbrengen van de bestanden is de eenvoudigste manier om op te halen van de logboekmap en bestanden op uw werkstation terwijl u ook beveiligd.
+In dit voor beeld kopiëren we een map met logboek bestanden van de Linux-VM naar het werk station. Een logboek bestand kan gevoelige of geheime gegevens bevatten. Het gebruik van SCP zorgt er echter voor dat de inhoud van de logboek bestanden wordt versleuteld. Het gebruik van SCP voor het overdragen van de bestanden is de eenvoudigste manier om de logboekmap en bestanden naar uw werk station te halen en ook te beveiligen.
 
-De volgende opdracht kopieert bestanden in de */home/azureuser/logboeken/* map op de Azure-VM naar de lokale map/TMP-map:
+Met de volgende opdracht kopieert u bestanden in de map */Home/azureuser/logs/* op de virtuele machine van Azure naar de lokale map/tmp-map:
 
 ```bash
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-De `-r` cli-vlag opdracht SCP recursief Kopieer de bestanden en mappen vanaf het moment van de directory die worden vermeld in de opdracht.  Ook ziet u dat de syntaxis van de opdrachtregel vergelijkbaar met is een `cp` -opdracht kopiëren.
+De `-r` cli-vlag geeft SCP de opdracht om de bestanden en mappen recursief te kopiëren van het punt van de map die wordt vermeld in de Command.  U ziet ook dat de syntaxis van de opdracht regel op een `cp` Kopieer opdracht lijkt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Beheren van gebruikers, SSH en controleer of het herstellen van schijven op virtuele Azure Linux-machines met behulp van de VMAccess-extensie](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Beheer van de VMAccess-extensie voor het beheren van gebruikers, SSH en het controleren of herstellen van schijven op virtuele machines met Azure Linux](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -1,6 +1,6 @@
 ---
-title: Azure API management-beleid-voorbeeld - OAuth2 gebruiken voor verificatie tussen de gateway en een back-end | Microsoft Docs
-description: Azure API management-beleid-voorbeeld - ziet u hoe u OAuth2 gebruiken voor verificatie tussen de gateway en een back-end. Er wordt weergegeven hoe u een toegangstoken van AAD kunt verkrijgen en dit door kunt sturen naar de back-end.
+title: Voor beeld van Azure API management-beleid-OAuth2 gebruiken voor autorisatie tussen de gateway en een back-end | Microsoft Docs
+description: 'Voor beeld van Azure API management-beleid: demonstreert hoe u OAuth2 kunt gebruiken voor autorisatie tussen de gateway en een back-end. Er wordt weergegeven hoe u een toegangstoken van AAD kunt verkrijgen en dit door kunt sturen naar de back-end.'
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,35 +9,34 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 519233cb9e77bf48f67d869a54af771c17c7827e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fac10b728e4b7f09ec1019c3257f7c9e5d6e7714
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859087"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071862"
 ---
-# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 gebruiken voor verificatie tussen de gateway en een back-end
+# <a name="use-oauth2-for-authorization-between-the-gateway-and-a-backend"></a>OAuth2 gebruiken voor autorisatie tussen de gateway en een back-end
 
-In dit artikel wordt een Azure API management-beleid voorbeeld over het gebruiken van OAuth2 voor verificatie tussen de gateway en een back-end. Er wordt weergegeven hoe u een toegangstoken van AAD kunt verkrijgen en dit door kunt sturen naar de back-end. 
+In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u OAuth2 kunt gebruiken voor autorisatie tussen de gateway en een back-end. Er wordt weergegeven hoe u een toegangstoken van AAD kunt verkrijgen en dit door kunt sturen naar de back-end. 
 
-Als u wilt instellen of bewerken van een beleid voor code, volg de stappen [instellen of bewerken van een beleid](../set-edit-policies.md). Zie voor meer voorbeelden [beleid voorbeelden](../policy-samples.md).
+Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
 
-Het volgende script maakt gebruik van eigenschappen die worden weergegeven in {{de eigenschap}}. Zie voor meer informatie over eigenschappen en het gebruik ervan in API Management-beleidsregels, [dit](../api-management-howto-properties.md) onderwerp.
+Het volgende script maakt gebruik van eigenschappen die in {{Property}} worden weer gegeven. Zie [Dit](../api-management-howto-properties.md) onderwerp voor meer informatie over eigenschappen en hoe u deze in API management-beleid kunt gebruiken.
  
 ## <a name="policy"></a>Beleid
 
-Plak de code in de **inkomende** blokkeren.
+Plak de code in het **binnenkomende** blok.
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Get OAuth2 access token from AAD and forward it to the backend.policy.xml)]
   
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de APIM-beleid:
+Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voorbeelden van beleid](../policy-samples.md)
++ [Voor beelden van beleid](../policy-samples.md)
 

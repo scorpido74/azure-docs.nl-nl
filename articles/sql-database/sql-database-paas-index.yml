@@ -1,0 +1,57 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure SQL Database - Platform as a Service
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database - Platform as a Service
+  meta.description: Learn about the PaaS capabilities of Azure SQL Database.
+  services: sql-database
+  ms.subservice: service
+  author: jovanpop-msft
+  ms.reviewer: carlrab
+  manager: craigg
+  requires-business-manager-approval: false
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: null
+  ms.topic: overview
+  ms.date: 11/11/2018
+  ms.author: jovanpop-msft
+sections:
+  - items:
+      - type: paragraph
+        text: 'Azure SQL Database is een volledig beheerde PaaS-database-engine (Platform as a Service) waarmee de meeste databasebeheerfuncties, zoals upgrades, patches, back-ups en bewaking, zonder tussenkomst van de gebruiker worden verwerkt. Azure SQL Database wordt altijd uitgevoerd met de nieuwste stabiele versie van SQL Server Database Engine en een bijgewerkt besturingssysteem met 99,99% beschikbaarheid. Met de PaaS-mogelijkheden die zijn ingebouwd in Azure SQL Database kunt u zich richten op de domeinspecifieke databasebeheer- en optimalisatieactiviteiten die essentieel zijn voor uw bedrijf.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Bedrijfscontinuïteit
+            href: /azure/sql-database/sql-database-business-continuity
+            html: '<p>Met Azure SQL Database kan uw bedrijf blijven werken in het geval van storingen, met name van de rekeninfrastructuur.</p>'
+          - title: Hoge beschikbaarheid
+            href: /azure/sql-database/sql-database-high-availability
+            html: '<p>Azure SQL Database garandeert dat uw databases 99,99% van de tijd actief zijn, zonder dat u zich zorgen hoeft te maken over onderhoud en downtime.</p>'
+          - title: Automatische back-ups
+            href: /azure/sql-database/sql-database-automated-backups
+            html: <p>Azure SQL Database maakt automatisch back-ups van databases en maakt gebruik van geografisch redundante opslag met leestoegang (RA-GRS) om geo-redundantie te kunnen bieden.</p>
+          - title: Back-ups met een langetermijnbewaarperiode
+            href: /azure/sql-database/sql-database-long-term-retention
+            html: <p>Met Azure SQL Database kunt u volledige back-ups van de SQL-database maximaal tien jaar opslaan.</p>
+          - title: Geo-replicatie
+            href: /azure/sql-database/sql-database-geo-replication-overview
+            html: <p>Met Azure SQL Database kunt u leesbare replica's van uw database maken in hetzelfde of een ander datacenter (regio).</p>
+          - title: Resources omhoog/omlaag schalen
+            href: /azure/sql-database/sql-database-scale-resources
+            html: '<p>Met Azure SQL Database kunt u eenvoudig meer resources (CPU, geheugen, opslag) toevoegen zonder dat u deze langdurig hoeft in te richten.</p>'
+  - title: Meer bronnen
+    items:
+      - type: paragraph
+        text: Azure SQL Database biedt een aantal aanvullende ingebouwde PaaS-functies waarmee u de databases makkelijker kunt beheren.
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/sql-database/sql-database-security-index">Geavanceerde beveiliging</a> detecteert bedreigingen en beveiligingsproblemen in uw databases en biedt de mogelijkheid uw gegevens te beveiligen.
+          - html: 'Met <a href="/azure/sql-database/sql-database-automatic-tuning">Automatisch afstemmen</a> kunt u uw workload analyseren en krijgt u aanbevelingen waarmee u de prestaties van uw toepassingen kunt optimaliseren door indexen toe te voegen, ongebruikte indexen te verwijderen en de problemen met het queryplan automatisch op te lossen.'
+          - html: 'Dankzij <a href="/azure/log-analytics/log-analytics-azure-sql"> de ingebouwde bewakingsmogelijkheden</a> krijgt u inzicht in de prestaties van uw databases en workload, en kunt u de prestatieproblemen oplossen.'
+          - html: <a href="/azure/sql-database/sql-database-intelligent-insights">Ingebouwde intelligentie</a> identificeert automatisch de potentiële problemen in uw workload en krijgt u aanbevelingen die u kunnen helpen bij het oplossen van de problemen.

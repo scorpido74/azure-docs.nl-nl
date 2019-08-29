@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f95d3487adecb17e0f4b79e81a08e16bafe4594f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2b44b51da11bc1c51fcbc60992a9b5b870daf02e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855257"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100584"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Gebruik sjablonen van Azure Quick start voor het configureren van een AlwaysOn-beschikbaarheids groep voor SQL Server op een virtuele machine van Azure
 In dit artikel wordt beschreven hoe u de Azure Quick Start-sjablonen gebruikt voor het gedeeltelijk automatiseren van de implementatie van een AlwaysOn-beschikbaarheids groep configuratie voor SQL Server virtuele machines in Azure. In dit proces worden twee Azure Quick Start-sjablonen gebruikt: 
@@ -58,7 +57,7 @@ Het toevoegen van SQL Server Vm's aan de resource groep *SqlVirtualMachineGroups
 
    De volgende tabel bevat de vereiste waarden voor de sjabloon: 
 
-   | **Veld** | Waarde |
+   | **Veld** | Value |
    | --- | --- |
    | **Abonnement** |  Het abonnement waar uw SQL Server Vm's bestaan. |
    |**Resourcegroep** | De resource groep waar uw SQL Server Vm's zich bevinden. | 

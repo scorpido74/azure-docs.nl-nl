@@ -1,90 +1,89 @@
 ---
-title: Hoge beschikbaarheid en herstel na noodgevallen van SAP HANA op Azure (grote instanties) | Microsoft Docs
-description: Tot stand brengen voor hoge beschikbaarheid en plan voor herstel na noodgevallen van SAP HANA op Azure (grote instanties)
+title: Hoge Beschik baarheid en herstel na nood gevallen van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Hoge Beschik baarheid tot stand brengen en nood herstel plannen voor SAP HANA op Azure (grote exemplaren)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 078ce7e2acd93ecab6b37407f460672d4acb1853
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d0150aeace3960d075bbf61c1dd0bba4865aaf2b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707331"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099708"
 ---
-# <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>SAP HANA grote instanties hoge beschikbaarheid en herstel na noodgeval op Azure 
+# <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>SAP HANA Large Instances hoge Beschik baarheid en herstel na nood geval op Azure 
 
 >[!IMPORTANT]
->Deze documentatie is geen vervanging van de documentatie bij het beheer van SAP HANA of SAP-opmerkingen. Er wordt verwacht dat de lezer een goed begrip van en deskundigheid in SAP HANA-beheer en bewerkingen, vooral bij de onderwerpen van back-up, herstel, hoge beschikbaarheid en herstel na noodgevallen is.
+>Deze documentatie is geen vervanging van de documentatie voor SAP HANA beheer of SAP-opmerkingen. Het is van groot belang dat de lezer een solide kennis heeft van en ervaring heeft met SAP HANA beheer en-bewerkingen, met name met de onderwerpen over back-ups maken, herstellen, hoge Beschik baarheid en herstel na nood gevallen.
 
-Het is belangrijk dat u stappen en processen in uw omgeving en met uw HANA-versies en versies uitoefenen. Bepaalde processen die worden beschreven in deze documentatie voor een beter begrip van de algemene zijn vereenvoudigd en zijn niet bedoeld als gedetailleerde stappen voor uiteindelijke bewerking handboeken worden gebruikt. Als u maken van de bewerking handboeken voor uw configuraties wilt, moet u om te testen en uitoefening van uw processen en documenteren van de processen die betrekking hebben op uw specifieke configuraties. 
+Het is belang rijk dat u de stappen en processen die in uw omgeving worden uitgevoerd en met uw HANA-versies en-releases uitoefent. Sommige processen die in deze documentatie worden beschreven, zijn vereenvoudigd voor een beter inzicht en zijn niet bedoeld om te worden gebruikt als gedetailleerde stappen voor de uiteindelijke bewerkings handleidingen. Als u bewerkings handleidingen wilt maken voor uw configuraties, moet u uw processen testen en uitoefenen en de processen vastleggen die betrekking hebben op uw specifieke configuraties. 
 
 
-Hoge beschikbaarheid en herstel na noodgeval (DR) zijn belangrijke aspecten van het uitvoeren van uw essentiële SAP HANA op de server van Azure (grote instanties). Het is belangrijk om te werken met SAP, uw systeemintegrator of Microsoft om correct te ontwerpen en implementeren van de juiste hoge beschikbaarheid en strategieën voor noodherstel. Het is ook belangrijk dat u rekening houden met het beoogde herstelpunt (RPO) en de beoogde hersteltijd, die specifiek voor uw omgeving zijn.
+Hoge Beschik baarheid en herstel na nood gevallen (DR) zijn belang rijke aspecten van het uitvoeren van uw essentiële SAP HANA op de Azure-server (grote exemplaren). Het is belang rijk om te werken met SAP, uw systeem integrator of micro soft om de juiste strategieën voor hoge Beschik baarheid en herstel na nood gevallen te ontwikkelen en implementeren. Het is ook belang rijk om rekening te houden met de Recovery Point Objective (RPO) en de beoogde herstel tijd, die specifiek zijn voor uw omgeving.
 
-Microsoft biedt ondersteuning voor bepaalde functies van SAP HANA hoge beschikbaarheid met HANA grote instanties. Deze mogelijkheden omvatten:
+Micro soft ondersteunt enkele SAP HANA mogelijkheden voor hoge Beschik baarheid met HANA grote instanties. Deze mogelijkheden zijn onder andere:
 
-- **Storage-replicatie**: Het opslagsysteem de mogelijkheid voor het repliceren van alle gegevens naar een andere HANA grote instantie stempel in een andere Azure-regio. SAP HANA werkt onafhankelijk van deze methode. Deze functionaliteit is de disaster recovery standaardmechanisme voor HANA grote instanties aangeboden.
-- **HANA-systeemreplicatie**: De [replicatie van alle gegevens in SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) op een afzonderlijk SAP HANA-systeem. De beoogde hersteltijd wordt geminimaliseerd tot en met replicatie van gegevens met regelmatige intervallen. Asynchrone, synchrone in het geheugen en synchrone modus biedt ondersteuning voor SAP HANA. Synchrone modus wordt alleen gebruikt voor SAP HANA-systemen die zich binnen hetzelfde datacenter of minder dan 100 km van elkaar. Met het huidige ontwerp van HANA grote instantie stempels, kan de HANA-systeemreplicatie voor hoge beschikbaarheid binnen één regio alleen worden gebruikt. HANA-systeemreplicatie vereist een omgekeerde proxy van derden of routing onderdeel voor configuratie van herstel na noodgevallen in een andere Azure-regio. 
-- **Automatische failover hosten**: Een oplossing voor SAP HANA die is een alternatief voor HANA-systeemreplicatie voor lokale foutherstel. Als het hoofdknooppunt niet beschikbaar is, configureert u een of meer stand-by-SAP HANA-knooppunten in scale-out-modus, en SAP HANA automatisch failover optreedt naar een stand-by-knooppunt.
+- **Opslag replicatie**: De mogelijkheid van het opslag systeem om alle gegevens te repliceren naar een andere HANA grote instantie stempel in een andere Azure-regio. SAP HANA werkt onafhankelijk van deze methode. Deze functionaliteit is het standaard mechanisme voor herstel na nood gevallen dat wordt aangeboden voor HANA grote instanties.
+- **Hana-systeem replicatie**: De [replicatie van alle gegevens in SAP Hana](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) naar een afzonderlijk SAP Hana systeem. De doel stelling voor herstel tijd wordt met regel matige tussen pozen geminimaliseerd door gegevens replicatie. SAP HANA ondersteunt asynchrone, synchrone in-Memory en synchrone modi. De synchrone modus wordt alleen gebruikt voor SAP HANA systemen die zich binnen hetzelfde Data Center bevinden of kleiner zijn dan 100 km. Met het huidige ontwerp van HANA grote instantie-stem pels kan HANA-systeem replicatie alleen worden gebruikt voor hoge Beschik baarheid binnen één regio. Voor HANA-systeem replicatie is een reverse proxy-of routerings onderdeel van een derde partij vereist voor nood herstel configuraties in een andere Azure-regio. 
+- **Automatische failover van host**: Een lokale oplossing voor fout herstel voor SAP HANA die een alternatief is voor HANA-systeem replicatie. Als het hoofd knooppunt niet beschikbaar is, configureert u een of meer stand-by SAP HANA knoop punten in de Scale-outmodus en wordt SAP HANA automatisch een failover naar een knoop punt voor stand-by.
 
-SAP HANA op Azure (grote instanties) wordt aangeboden in twee Azure-regio's in vier geopolitieke gebieden (VS, Australië, Europa en Japan). Twee regio's binnen een geopolitieke gebied die als host HANA grote instantie stempels fungeren zijn verbonden met afzonderlijke speciaal netwerk circuits. Deze worden gebruikt voor het repliceren van opslagmomentopnamen voor disaster recovery-methoden. De replicatie is standaard niet ingesteld, maar is ingesteld voor klanten die de volgorde van herstel na noodgevallen. Storage-replicatie is afhankelijk van het gebruik van storage-momentopnamen voor HANA grote instanties. Het is niet mogelijk om te kiezen van een Azure-regio als een DR-regio die zich in een ander geopolitieke gebied. 
+SAP HANA op Azure (grote instanties) wordt aangeboden in twee Azure-regio's in vier geopolitieke gebieden (VS, Australië, Europa en Japan). Twee regio's binnen een geopolitieke regio die als host van HANA grote instantie stempels zijn verbonden met afzonderlijke toegewezen netwerk circuits. Deze worden gebruikt voor het repliceren van opslag momentopnamen om nood herstel methoden te bieden. De replicatie is standaard niet ingesteld voor klanten die de functionaliteit voor herstel na nood gevallen best Ellen. Opslag replicatie is afhankelijk van het gebruik van moment opnamen van opslag voor HANA grote instanties. Het is niet mogelijk om een Azure-regio te kiezen als een DR-regio die zich in een ander geopolitieke gebied bevindt. 
 
-De volgende tabel ziet u de momenteel ondersteunde hoge beschikbaarheid en noodherstel herstelmethoden en combinaties:
+De volgende tabel bevat de momenteel ondersteunde methoden en combi Naties voor hoge Beschik baarheid en nood herstel:
 
-| Scenario worden ondersteund in HANA grote instanties | Optie voor hoge beschikbaarheid | Optie voor herstel na noodgevallen | Opmerkingen |
+| Het scenario dat wordt ondersteund in HANA grote instanties | Optie hoge Beschik baarheid | Optie voor nood herstel | Opmerkingen |
 | --- | --- | --- | --- |
-| Eén knooppunt | Niet beschikbaar. | Toegewezen DR-instellingen.<br /> De installatie van de Multipurpose DR. | |
-| Host automatische failover: Scale-out (met of zonder stand-by)<br /> met inbegrip van 1 + 1 | Mogelijk is met de stand-by houdend met de actieve rol.<br /> HANA Hiermee bepaalt u de rol-switch. | Toegewezen DR-instellingen.<br /> De installatie van de Multipurpose DR.<br /> DR-synchronisatie met behulp van storage-replicatie. | HANA volumesets zijn gekoppeld aan alle knooppunten.<br /> DR-site moet hetzelfde aantal knooppunten hebben. |
-| HANA-systeemreplicatie | Mogelijk is met de primaire of secundaire setup.<br /> Secundaire verplaatst naar de primaire rol in het geval van een failover.<br /> HANA-systeemreplicatie en OS beheren failover. | Toegewezen DR-instellingen.<br /> De installatie van de Multipurpose DR.<br /> DR-synchronisatie met behulp van storage-replicatie.<br /> Herstel na Noodgevallen via HANA system replication is nog niet mogelijk zonder onderdelen van derden. | Afzonderlijke set van volumes op schijven zijn gekoppeld aan elk knooppunt.<br /> Alleen volumes op schijven van de secundaire replica in de productiesite worden gerepliceerd naar de locatie voor herstel na Noodgevallen.<br /> Een verzameling van volumes is vereist op de DR-site. | 
+| Eén knooppunt | Niet beschikbaar. | Specifieke DR-installatie.<br /> DR-installatie voor meerdere doel einden. | |
+| Automatische failover van host: Uitschalen (met of zonder stand-by)<br /> inclusief 1 + 1 | Mogelijk met de stand-by maken van de actieve rol.<br /> HANA bepaalt de functie-Switch. | Specifieke DR-installatie.<br /> DR-installatie voor meerdere doel einden.<br /> DR-synchronisatie met behulp van opslag replicatie. | HANA-volume sets zijn gekoppeld aan alle knoop punten.<br /> De DR-site moet hetzelfde aantal knoop punten hebben. |
+| HANA-systeem replicatie | Mogelijk met een primaire of secundaire installatie.<br /> Secundair wordt verplaatst naar de primaire rol in een failover-case.<br /> HANA-systeem replicatie en failover van besturings systeem beheer. | Specifieke DR-installatie.<br /> DR-installatie voor meerdere doel einden.<br /> DR-synchronisatie met behulp van opslag replicatie.<br /> DR met behulp van HANA-systeem replicatie is nog niet mogelijk zonder onderdelen van derden. | Er wordt een afzonderlijke set schijf volumes aan elk knoop punt gekoppeld.<br /> Alleen schijf volumes van de secundaire replica in de productie site worden gerepliceerd naar de nood herstel locatie.<br /> Er is één set volumes vereist op de DR-site. | 
 
-Een toegewezen DR-configuratie is waar de eenheid HANA grote instantie in de DR-site niet wordt gebruikt voor het uitvoeren van een andere werkbelasting of niet-productieomgeving. De eenheid is een passieve en is geïmplementeerd alleen als er een ramp-failover wordt uitgevoerd. Deze instelling is echter niet een uitstekende keuze is voor veel klanten.
+Een specifieke DR-installatie is waar de HANA-eenheid voor grote instanties in de DR-site niet wordt gebruikt voor het uitvoeren van een andere werk belasting of een niet-productie systeem. De eenheid is passief en wordt alleen geïmplementeerd als een nood failover wordt uitgevoerd. Deze installatie is echter geen voorkeurs keuze voor veel klanten.
 
-Raadpleeg [HLI scenario's ondersteund](hana-supported-scenario.md) voor meer informatie over storage lay-out en Ethernet-details voor uw architectuur.
+Raadpleeg [HLI ondersteunde scenario's](hana-supported-scenario.md) voor meer informatie over de opslag indeling en Ethernet-gegevens voor uw architectuur.
 
 > [!NOTE]
-> [SAP HANA MCOD implementaties](https://launchpad.support.sap.com/#/notes/1681092) (meerdere HANA instanties in één eenheid) teken met scenario's werken met de HA en DR methoden die worden beschreven in de tabel. Een uitzondering is het gebruik van HANA-Systeemreplicatie met een automatische failover-cluster op basis van Pacemaker. Een dergelijk geval ondersteunt slechts één HANA-exemplaar per eenheid. Voor [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) implementaties, alleen niet-opslag-methoden op basis van HA en DR werken als meer dan één tenant wordt geïmplementeerd. Alle methoden die worden vermeld, met één tenant geïmplementeerd, zijn geldig.  
+> [SAP Hana MCOD](https://launchpad.support.sap.com/#/notes/1681092) -implementaties (meerdere HANA-instanties op één eenheid) als bedekkings scenario's werken met de methoden HA en DR die in de tabel worden weer gegeven. Een uitzonde ring is het gebruik van HANA-systeem replicatie met een automatische failover-cluster op basis van pacemaker. Een dergelijk geval ondersteunt slechts één HANA-exemplaar per eenheid. Voor [SAP Hana MDC](https://launchpad.support.sap.com/#/notes/2096000) -implementaties werkt alleen op niet-opslag gebaseerde ha en Dr-methoden als er meerdere tenants worden geïmplementeerd. Als er één Tenant is geïmplementeerd, zijn alle vermelde methoden geldig.  
 
-Een configuratie voor meerdere doeleinden DR is waarop een niet-productie-werkbelasting in de eenheid HANA grote instantie op de DR-site wordt uitgevoerd. Koppel het storage-replicatie (Extra) volume wordt in geval van nood, de niet-productie-systeem afsluiten en start de productie-HANA-instantie. De meeste klanten die gebruikmaken van de functie voor herstel na noodgevallen HANA grote instantie deze configuratie gebruiken. 
-
-
-U vindt meer informatie over SAP HANA met hoge beschikbaarheid in de volgende artikelen voor SAP: 
-
-- [Technisch document hoge beschikbaarheid van SAP HANA](https://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
-- [Gebruikershandleiding voor SAP HANA](https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
-- [SAP HANA Academy Video op SAP HANA-Systeemreplicatie](https://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
-- [SAP-ondersteuning Opmerking #1999880: veelgestelde vragen over SAP HANA-Systeemreplicatie](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
-- [SAP-ondersteuning Opmerking #2165547: SAP HANA Back up en herstel binnen de omgeving van SAP HANA System Replication](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
-- [SAP-ondersteuning Opmerking #1984882 – met behulp van SAP HANA System Replication voor Hardware-uitwisseling met minimale/nul Downtime](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
-
-## <a name="network-considerations-for-disaster-recovery-with-hana-large-instances"></a>Aandachtspunten voor netwerken voor herstel na noodgeval met HANA grote instanties
-
-Om te profiteren van het herstel na noodgevallen van HANA grote instanties, moet u de netwerkverbinding met de twee Azure-regio's te ontwerpen. Moet u een Azure ExpressRoute-circuit-verbinding van on-premises in uw Azure-regio en een andere circuitverbinding van on-premises naar de Dr-regio. Deze meting bevat informatie over een situatie waarin er een probleem in een Azure-regio is, met inbegrip van de locatie van een Microsoft Enterprise Edge Router (MSEE).
-
-Als een tweede maat, kunt u alle Azure-netwerken die verbinding met SAP HANA op Azure (grote instanties maken) in één regio aan een ExpressRoute-circuit dat is verbonden HANA grote instanties in de andere regio. Met deze *cross-verbinding maken met*, die worden uitgevoerd op een Azure-services virtueel netwerk in de regio 1 verbinding kan maken met HANA grote instantie eenheden in de regio 2 en andersom. Deze meting wordt een aanvraag waarin slechts één van de MSEE-locaties die verbinding met uw on-premises locatie met Azure maakt offline gaat.
-
-De volgende afbeelding ziet u de configuratie van een robuuste voor disaster recovery gevallen:
-
-![Optimale configuratie voor herstel na noodgevallen](./media/hana-overview-high-availability-disaster-recovery/image1-optimal-configuration.png)
+Een DR-installatie voor meerdere doel einden is waar de HANA-eenheid voor grote instanties op de DR-site een niet-productiewerk belasting uitvoert. Als nood geval is, sluit u het niet-productie systeem af, koppelt u de volume sets met opslag-gerepliceerd (extra) en start u vervolgens het exemplaar van de productie HANA. De meeste klanten die de functie voor nood herstel in de HANA-situatie gebruiken, gebruiken deze configuratie. 
 
 
+Meer informatie over SAP HANA hoge Beschik baarheid vindt u in de volgende SAP-artikelen: 
 
-## <a name="other-requirements-with-hana-large-instances-storage-replication-for-disaster-recovery"></a>Andere vereisten met HANA grote instanties storage-replicatie voor herstel na noodgevallen
+- [White Paper SAP HANA hoge Beschik baarheid](https://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
+- [SAP HANA-beheer handleiding](https://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
+- [Academy video op SAP HANA systeem replicatie SAP HANA](https://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
+- [SAP-ondersteunings Opmerking #1999880: veelgestelde vragen over SAP HANA systeem replicatie](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
+- [SAP-ondersteunings Opmerking #2165547: SAP HANA back-ups maken en herstellen binnen SAP HANA systeem replicatie omgeving](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
+- [SAP-ondersteunings Opmerking #1984882: SAP HANA systeem replicatie gebruiken voor hardware Exchange met minimale/nul downtime](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
 
-Naast de voorgaande vereisten voor een installatie van noodhersteladapter met HANA grote instanties moet u:
+## <a name="network-considerations-for-disaster-recovery-with-hana-large-instances"></a>Netwerk overwegingen voor herstel na nood gevallen met HANA grote instanties
 
-- Volgorde van SAP HANA op Azure (grote instanties)-SKU's van de even groot is als uw productie-SKU's en implementeer deze in de Dr-regio. In de huidige implementaties van klanten, zijn deze instanties worden gebruikt om uit te voeren niet-productie HANA-instanties. Deze configuraties worden aangeduid als *multipurpose DR-instellingen*.   
-- Volgorde van extra opslagruimte op de DR-site voor elk van uw SAP HANA op Azure (grote instanties)-SKU's die u wilt herstellen in de site voor noodherstel. Extra opslag kopen, kunt u de opslagvolumes toewijzen. U kunt de volumes die het doel van de storage-replicatie van de productie van Azure-regio in de Azure-regio voor noodherstel kunt toewijzen.
-- In het geval is, waarbij u HSR setup op de primaire hebt en u op basis van opslagreplicatie naar de DR-site instellen, moet u extra opslagruimte in de DR-site zodat zowel de primaire aanschaffen en gegevens van secundaire knooppunten worden gerepliceerd naar de DR-site.
+Als u wilt profiteren van de functionaliteit voor herstel na nood gevallen van HANA grote instanties, moet u de netwerk verbinding met de twee Azure-regio's ontwerpen. U hebt een Azure ExpressRoute-circuit verbinding nodig van on-premises in uw belangrijkste Azure-regio en een ander circuit verbinding van on-premises naar uw regio voor nood herstel. Deze maat regel behandelt een situatie waarin een probleem is opgetreden in een Azure-regio, waaronder een MSEE-locatie (micro soft Enter prise edge router).
+
+Als tweede meting kunt u alle Azure Virtual Networks verbinden die verbinding maken met SAP HANA op Azure (grote exemplaren) in een regio in een ExpressRoute-circuit dat in de andere regio HANA grote instanties verbindt. Met deze *Cross Connect*-services die worden uitgevoerd op een virtueel Azure-netwerk in regio 1 kunnen verbinding maken met Hana grote instantie-eenheden in regio 2 en de andere manier. Deze meting verhelpt een geval waarbij slechts één van de MSEE locaties die verbinding maken met uw on-premises locatie met Azure offline gaat.
+
+In de volgende afbeelding ziet u een flexibele configuratie voor nood herstel cases:
+
+![Optimale configuratie voor herstel na nood gevallen](./media/hana-overview-high-availability-disaster-recovery/image1-optimal-configuration.png)
+
+
+
+## <a name="other-requirements-with-hana-large-instances-storage-replication-for-disaster-recovery"></a>Andere vereisten met HANA grote exemplaren opslag replicatie voor nood herstel
+
+Naast de voor gaande vereisten voor een nood herstel installatie met HANA grote instanties moet u het volgende doen:
+
+- Bestel SAP HANA op Azure (grote instanties) Sku's van dezelfde grootte als uw productie-Sku's en implementeer deze in de nood herstel regio. In de huidige klant implementaties worden deze instanties gebruikt om niet-productie HANA-instanties uit te voeren. Deze configuraties worden ' DR- *Setup*van meerdere doel einden ' genoemd.   
+- Bestel extra opslag ruimte op de DR-site voor elk van uw SAP HANA op Azure (grote instanties) Sku's die u wilt herstellen op de site voor nood herstel. Als u extra opslag aanschaft, kunt u de opslag volumes toewijzen. U kunt de volumes die het doel zijn van de opslag replicatie, toewijzen vanuit de Azure-regio van uw productie in de Azure-regio voor herstel na nood gevallen.
+- In het geval waar u de HSR-configuratie hebt ingesteld en u de replicatie op basis van opslag naar de DR-site hebt ingesteld, moet u extra opslag ruimte kopen op de DR-site, zodat de gegevens van de primaire en secundaire knoop punten worden gerepliceerd naar de DR-site.
 
   **Volgende stappen**
 - Raadpleeg [back-up en herstel](hana-backup-restore.md).

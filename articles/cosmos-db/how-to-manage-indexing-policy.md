@@ -3,22 +3,22 @@ title: Indexerings beleid in Azure Cosmos DB beheren
 description: Meer informatie over het beheren van indexerings beleid in Azure Cosmos DB
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 0100be7eeacdcda5b123356e95e2510a365d0f22
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6e935b88c474d28c06b8cdd76d36f5ba64c942f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356441"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093197"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexerings beleid in Azure Cosmos DB beheren
 
 In Azure Cosmos DB worden gegevens geïndexeerd na het [indexerings beleid](index-policy.md) dat voor elke container is gedefinieerd. Het standaard indexerings beleid voor nieuw gemaakte containers dwingt bereik indexen af voor wille keurige teken reeksen of getallen en ruimtelijke indexen voor een geojson-object van het type punt. Dit beleid kan worden overschreven:
 
 - van de Azure Portal
-- De Azure CLI gebruiken
+- de Azure CLI gebruiken
 - een van de Sdk's gebruiken
 
 Met een [indexerings beleid-update](index-policy.md#modifying-the-indexing-policy) wordt een index transformatie gegenereerd. De voortgang van deze trans formatie kan ook worden bijgehouden van de Sdk's.

@@ -1,39 +1,38 @@
 ---
-title: Gegevens in lagen en extensie knooppunten voor SAP HANA op Azure (grote instanties) | Microsoft Docs
-description: Gegevens in lagen en extensie-knooppunten voor SAP HANA op Azure (grote instanties).
+title: Gegevens lagen en uitbrei dingen voor het SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Gegevenslaagingen en extensie knooppunten voor SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a292efc3e660379325ccb6870e540e38c6cdd5e9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 261009edc20f946fa86f0482d8ab5045f4b4f84b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709651"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099841"
 ---
-# <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA-gegevens in lagen en extensie-knooppunten gebruiken
+# <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>SAP HANA gegevenslaagings-en uitbrei ding knooppunten gebruiken
 
-SAP biedt ondersteuning voor een gegevensmodel warmtemeting voor SAP BW van verschillende versies van SAP NetWeaver en SAP BW/4HANA. Raadpleeg het document SAP voor meer informatie over het gegevensmodel voor cloudlagen [SAP BW/4HANA en SAP BW op HANA met SAP HANA-extensie knooppunten](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-Met HANA grote instantie kunt u de optie-1-configuratie van SAP HANA-extensie knooppunten, zoals wordt beschreven in de veelgestelde vragen en SAP blog-documenten. Optie 2-configuraties kunnen worden ingesteld met de volgende HANA grote instantie SKU's: S72m, S192, S192m, S384 en S384m. 
+SAP ondersteunt een gegevenslaag model voor SAP BW van verschillende versies van SAP NetWeaver en SAP BW/4HANA. Zie voor meer informatie over het gegevenslaag model het SAP [-document SAP BW/4HANA en SAP BW op Hana met SAP Hana extensie knooppunten](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
+Met HANA grote instanties kunt u de optie-1 configuratie van SAP HANA extensie knooppunten gebruiken, zoals wordt uitgelegd in de veelgestelde vragen en SAP-Blog documenten. U kunt de optie-2 configuraties instellen met de volgende HANA-Sku's voor grote instanties: S72m, S192, S192m, S384 en S384m. 
 
-Wanneer u de documentatie bekijkt, het voordeel mogelijk niet meer zichtbaar onmiddellijk. Maar wanneer u de richtlijnen van de grootte SAP bekijkt, ziet u een voordeel met behulp van de optie-1 en de optie-2 SAP HANA-extensie-knooppunten. Hier volgen enkele voorbeelden:
+Wanneer u de documentatie bekijkt, is het voor deel mogelijk niet direct zichtbaar. Maar wanneer u de SAP-formaat richtlijnen bekijkt, kunt u een voor deel zien met behulp van optie-1 en optie-2 SAP HANA extensie knooppunten. Hier volgen enkele voor beelden:
 
-- Richtlijnen voor SAP HANA-grootte is meestal de dubbele hoeveelheid gegevensvolume als geheugen vereist. Wanneer u uw SAP HANA-instantie met de dynamische gegevens uitvoert, hebt u slechts 50% of minder van het geheugen gevuld met gegevens. De rest van het geheugen worden in het ideale geval bewaard voor SAP HANA zijn werk doet.
-- Dat betekent dat in een HANA grote instantie S192-eenheid met 2 TB aan geheugen, met een SAP BW-database, hoeft u slechts 1 TB als gegevensvolume.
-- Als u een extra knooppunt van SAP HANA-extensie van de optie-1, ook een S192 HANA grote instantie SKU, dit biedt u een extra capaciteit van 2 TB voor gegevensvolume. In de optie-2-configuratie krijgt u een extra 4 TB voor warme gegevensvolume. Vergeleken met het knooppunt ' hot ', kan de volledige geheugencapaciteit van het knooppunt 'warme' extensie worden gebruikt voor het opslaan van gegevens voor de optie-1. Dubbele het geheugen kan worden gebruikt voor gegevensvolume in optie 2 SAP HANA-extensieconfiguratie in het knooppunt.
-- U uiteindelijk een capaciteit van 3 TB voor uw gegevens en een ' hot ' naar warm-verhouding van 1:2 voor optie 1. U hebt 5 TB aan gegevens en een 1:4-verhouding met de configuratie voor de uitbreiding van de optie-2-knooppunt.
+- Voor SAP HANA aanpassings richtlijnen is doorgaans dubbele hoeveelheid gegevens volume als geheugen vereist. Wanneer u uw SAP HANA-exemplaar met de warme gegevens uitvoert, hebt u slechts 50 procent of minder geheugen gevuld met gegevens. De rest van het geheugen wordt in het ideale geval opgeslagen SAP HANA de werkzaamheden uit te voeren.
+- Dit betekent dat in een HANA grote instantie S192-eenheid met 2 TB geheugen, een SAP BW-data base wordt uitgevoerd, u slechts 1 TB als gegevens volume hebt.
+- Als u een extra SAP HANA extensie knooppunt van optie-1 gebruikt, ook een S192 HANA-SKU voor grote instanties, hebt u een extra capaciteit van 2 TB voor gegevens volume. In de optie-2-configuratie krijgt u een extra 4 TB voor het warme gegevens volume. Vergeleken met het hete knoop punt, kan de volledige geheugen capaciteit van het ' warme ' uitbreidings knooppunt worden gebruikt voor het opslaan van gegevens voor optie-1. Dubbel het geheugen kan worden gebruikt voor gegevens volume in optie-2 SAP HANA extensie knooppunt configuratie.
+- U hebt een capaciteit van 3 TB voor uw gegevens en een hot-to-warme verhouding van 1:2 voor optie-1. U hebt 5 TB aan gegevens en een verhouding van 1:4 met de optie-2 extensie knooppunt configuratie.
 
-Hoe hoger het gegevensvolume in vergelijking met het geheugen, hoe hoger de kans op zijn dat de warme gegevens die u daarvoor is opgeslagen op de schijfopslag.
+Hoe hoger het gegevens volume ten opzichte van het geheugen is, hoe hoger de kans is dat de warme gegevens die u vraagt, worden opgeslagen op schijf opslag.
 
 **Volgende stappen**
-- Raadpleeg [SAP HANA (grote instanties)-architectuur op Azure](hana-architecture.md)
+- Raadpleeg de [architectuur van SAP Hana (grote instanties) op Azure](hana-architecture.md)

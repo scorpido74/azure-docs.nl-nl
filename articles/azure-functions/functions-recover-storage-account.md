@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met Azure Functions-Runtime is niet bereikbaar.
-description: Informatie over het oplossen van een ongeldige storage-account.
+title: Het oplossen van problemen met Azure Functions-runtime is onbereikbaar.
+description: Meer informatie over het oplossen van problemen met een ongeldig opslag account.
 services: functions
 documentationcenter: ''
 author: alexkarcher-msft
@@ -8,89 +8,88 @@ manager: cfowler
 editor: ''
 ms.service: azure-functions
 ms.workload: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 6057fa52cd2f1e9b9fd525723f96ab66983fb5d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d5959acc7719e2b02d529bca8261bc09d5b93634
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61020295"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085331"
 ---
-# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problemen oplossen met "functions-runtime is niet bereikbaar"
+# <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problemen oplossen met functions runtime is onbereikbaar
 
 
-## <a name="error-text"></a>Fouttekst
-Dit document is bedoeld om problemen met de volgende fout weergegeven in de Functions-portal.
+## <a name="error-text"></a>Fout tekst
+Dit document is bedoeld om de volgende fout op te lossen wanneer het wordt weer gegeven in de functions-Portal.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>Samenvatting
-Dit probleem treedt op wanneer de Azure Functions-Runtime kan niet worden gestart. De meest voorkomende reden voor deze fout kan optreden, is de functie-app toegang verliezen tot het opslagaccount. [Meer informatie over de vereisten voor een opslagaccount hier](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Dit probleem treedt op wanneer de Azure Functions-runtime niet kan worden gestart. De meest voorkomende reden voor deze fout is dat de functie-app de toegang tot het opslag account kwijtraakt. [Lees hier meer over de vereisten voor het opslag account](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Problemen oplossen
-We behandelen de vier meest voorkomende foutgevallen, identificeren en over het oplossen van elke aanvraag.
+We behandelen de vier meest voorkomende fout gevallen, het identificeren en het oplossen van elke case.
 
-1. Storage-Account is verwijderd
-1. Toepassingsinstellingen voor Storage-Account verwijderd
-1. Opslagaccountreferenties is ongeldig
-1. Storage-Account is niet toegankelijk
-1. Uitvoering van het quotum voor dagelijkse volledige
+1. Opslag account verwijderd
+1. De toepassings instellingen voor het opslag account zijn verwijderd
+1. De referenties van het opslag account zijn ongeldig
+1. Het opslag account is niet toegankelijk
+1. Het dagelijkse uitvoerings quotum is vol
 
-## <a name="storage-account-deleted"></a>Storage-account is verwijderd
+## <a name="storage-account-deleted"></a>Opslag account verwijderd
 
-Elke functie-app is vereist voor een opslagaccount om te werken. Als dit account wordt verwijderd. de functie werkt niet.
+Voor elke functie-app moet een opslag account worden gebruikt. Als dat account wordt verwijderd, werkt de functie niet.
 
-### <a name="how-to-find-your-storage-account"></a>Over het vinden van uw storage-account
+### <a name="how-to-find-your-storage-account"></a>Uw opslag account zoeken
 
-Gestart door het opzoeken van de naam van uw opslagaccount in de instellingen van uw toepassing. De `AzureWebJobsStorage` of `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bevat de naam van uw storage-account dat is opgenomen in een verbindingsreeks. Lees meer informatie op de [instellingenverwijzing hier toepassing](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+Zoek eerst de naam van uw opslag account op in de instellingen van uw toepassing. `AzureWebJobsStorage` Of`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bevat de naam van uw opslag account in een Connection String. Lees hier meer details over het [instellen van de toepassings instelling](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
 
-Zoeken naar uw opslagaccount in Azure portal om te zien als deze nog steeds bestaat. Als deze is verwijderd, moet u opnieuw een storage-account maken en deze vervangen door uw storage-verbindingsreeksen. Uw functiecode verloren en moet u het opnieuw implementeren.
+Zoek uw opslag account in de Azure Portal om te zien of het nog bestaat. Als deze is verwijderd, moet u een opslag account opnieuw maken en de verbindings reeksen voor de opslag vervangen. De functie code gaat verloren en moet opnieuw worden geïmplementeerd.
 
-## <a name="storage-account-application-settings-deleted"></a>Toepassingsinstellingen voor Storage-account verwijderd
+## <a name="storage-account-application-settings-deleted"></a>De toepassings instellingen voor het opslag account zijn verwijderd
 
-In de vorige stap, als u geen verbindingsreeks voor opslag account zijn ze waarschijnlijk verwijderd of overschreven. Verwijderen van app-instellingen wordt meestal gedaan bij het gebruik van implementatiesites of Azure Resource Manager-scripts om in te stellen toepassingsinstellingen.
+Als u in de vorige stap geen opslag account hebt connection string, zijn deze waarschijnlijk verwijderd of overschreven. Het verwijderen van app-instellingen wordt meestal uitgevoerd wanneer u implementatie sleuven of Azure Resource Manager scripts gebruikt om toepassings instellingen in te stellen.
 
-### <a name="required-application-settings"></a>Instellingen van de vereiste toepassing
+### <a name="required-application-settings"></a>Vereiste toepassings instellingen
 
 * Vereist
     * [`AzureWebJobsStorage`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
-* Vereist voor verbruik Plan functies
+* Vereist voor de functies van het verbruiks abonnement
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Meer informatie over instellingen voor deze toepassing hier](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Lees hier meer over deze toepassings instellingen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
 ### <a name="guidance"></a>Richtlijnen
 
-* 'Site-instelling' niet controleren voor een van deze instellingen. Wanneer u sleuven implementatie van de functie wordt verbroken.
-* Deze instellingen als onderdeel van geautomatiseerde implementaties mag niet worden gewijzigd.
-* Deze instellingen moeten zijn opgegeven en geldig tijdens de aanmaak. Een geautomatiseerde implementatie die deze instellingen niet bevat resulteert in een niet-functionele App, zelfs als de instellingen worden toegevoegd na de gebeurtenis.
+* Schakel ' sleuf instelling ' niet in voor een van deze instellingen. Wanneer u implementatie sleuven verwisselt, wordt de functie onderbroken.
+* Wijzig deze instellingen niet als onderdeel van automatische implementaties.
+* Deze instellingen moeten worden ingevoerd en geldig zijn tijdens het maken. Een geautomatiseerde implementatie die deze instellingen niet bevat, resulteert in een niet-functionele app, zelfs als de instellingen worden toegevoegd na het feit.
 
-## <a name="storage-account-credentials-invalid"></a>Opslagaccountreferenties is ongeldig
+## <a name="storage-account-credentials-invalid"></a>De referenties van het opslag account zijn ongeldig
 
-De bovenstaande verbindingsreeksen voor Storage-Account moeten worden bijgewerkt als u opslagsleutels opnieuw genereert. [Meer informatie over storage Sleutelbeheer hier](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+De bovenstaande verbindings reeksen voor het opslag account moeten worden bijgewerkt als u opslag sleutels opnieuw genereert. [Lees hier meer over opslag sleutel beheer](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
-## <a name="storage-account-inaccessible"></a>Storage-account is niet toegankelijk
+## <a name="storage-account-inaccessible"></a>Het opslag account is niet toegankelijk
 
-Uw functie-App moet toegang hebben tot het opslagaccount. Veelvoorkomende problemen dat blok een functies toegang tot een opslagaccount zijn:
+Uw functie-app moet toegang hebben tot het opslag account. Veelvoorkomende problemen met het blok keren van een functie toegang tot een opslag account zijn:
 
-* Functie-Apps geïmplementeerd naar App Service-omgevingen zonder de juiste netwerk-regels waarmee verkeer van en naar het storage-account
-* De storage-account firewall is ingeschakeld en niet worden geconfigureerd zodat verkeer naar en van functies. [Lees meer over de storage-account firewall-configuratie hier](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+* Functie-apps die zijn geïmplementeerd in App Service omgevingen zonder de juiste netwerk regels voor het toestaan van verkeer naar en van het opslag account
+* De firewall voor het opslag account is ingeschakeld en is niet geconfigureerd om verkeer van en naar functies toe te staan. [Lees hier meer over Firewall configuratie voor opslag accounts](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
-## <a name="daily-execution-quota-full"></a>Uitvoering van het quotum voor dagelijkse volledige
+## <a name="daily-execution-quota-full"></a>Het dagelijkse uitvoerings quotum is vol
 
-Als u het quotum voor een dagelijkse uitvoering geconfigureerd hebt, uw functie-App tijdelijk uitgeschakeld en veel van de portal besturingselementen wordt niet beschikbaar. 
+Als u een dagelijks uitvoerings quotum hebt geconfigureerd, wordt uw functie-app tijdelijk uitgeschakeld en zijn veel van de besturings elementen van de portal niet meer beschikbaar. 
 
-* Als u wilt controleren, controle platformfuncties openen > functie-App-instellingen in de portal. U ziet het volgende bericht weergegeven als u overschreden
+* Als u dit wilt controleren, controleert u de open platform functies > functie-app instellingen in de portal. Het volgende bericht wordt weer gegeven als u het quotum overschrijdt
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
-* Het quotum verwijderen en opnieuw starten van uw app om het probleem te verhelpen.
+* Verwijder het quotum en start de app opnieuw om het probleem op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat uw functie-App terug en operationele is Bekijk onze snelstartgidsen en developer-verwijzingen aan de slag kunt en nogmaals uit te voeren!
+Nu uw functie-app terug en operationeel is, Bekijk onze Quick starts en naslag informatie voor ontwikkel aars om weer aan de slag te gaan.
 
 * [Uw eerste Azure-functie maken](functions-create-first-azure-function.md)  
   Ga meteen aan de slag en maak uw eerste functie met de Azure Functions-snelstartgids. 

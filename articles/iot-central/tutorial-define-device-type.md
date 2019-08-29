@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875783"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099613"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Zelfstudie: Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing
 
@@ -49,7 +49,7 @@ In deze zelfstudie leert u het volgende:
 
 U hebt een Azure IoT Central-toepassing nodig om deze zelfstudie te voltooien. Als u de snelstart [Een Azure IoT Central-toepassing maken](quick-deploy-iot-central.md) hebt voltooid, kunt u de toepassing die u in de snelstart hebt gemaakt, weer gebruiken. Voer anders de volgende stappen uit om een lege Azure IoT Central-toepassing te maken:
 
-1. Navigeer naar de pagina [​​Toepassingsbeheer ](https://aka.ms/iotcentral) van Azure IoT Central.
+1. Ga naar de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) .
 
 2. Voer het e-mailadres en wachtwoord in dat u gebruikt om toegang te krijgen tot uw Azure-abonnement:
 
@@ -57,7 +57,7 @@ U hebt een Azure IoT Central-toepassing nodig om deze zelfstudie te voltooien. A
 
 3. Selecteer **nieuwe toepassing**om te beginnen met het maken van een nieuwe Azure IOT Central-toepassing:
 
-    ![Pagina Toepassingsbeheer van Azure IoT Central](./media/tutorial-define-device-type/iotcentralhome.png)
+    ![Pagina Azure IoT Central-toepassings beheer](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. Een nieuwe Azure IoT Central-toepassing maken:
     

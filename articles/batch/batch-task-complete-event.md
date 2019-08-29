@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 60e5e6cc6fdd839c8bbe44d8e1d2e794e7afb34d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5909bf2a41745162902911aa31a9bce07d36135b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323044"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094580"
 ---
 # <a name="task-complete-event"></a>Gebeurtenis taak voltooid
 
@@ -54,7 +53,7 @@ ms.locfileid: "68323044"
 
 |De naam van element|type|Opmerkingen|
 |------------------|----------|-----------|
-|jobId|Reeks|De id van de taak die de taak bevat.|
+|jobId|Tekenreeks|De id van de taak die de taak bevat.|
 |id|Tekenreeks|De id van de taak.|
 |taskType|Tekenreeks|Het type taak. Dit kan ' JobManager ' zijn. Dit geeft aan dat het een taak beheerder of ' gebruiker ' is die aangeeft dat het geen taak manager taak is. Deze gebeurtenis wordt niet verzonden voor taak voorbereidings taken, taak release taken of start taken.|
 |systemTaskVersion|Int32|Dit is de interne teller voor een nieuwe poging van een taak. Intern kan de batch-service een taak opnieuw uitvoeren om tijdelijke problemen op te lossen. Deze problemen kunnen interne plannings fouten bevatten of proberen te herstellen van reken knooppunten met een onjuiste status.|
@@ -67,7 +66,7 @@ ms.locfileid: "68323044"
 
 |De naam van element|type|Opmerkingen|
 |------------------|----------|-----------|
-|poolId|Reeks|De id van de pool waarvoor de taak is uitgevoerd.|
+|poolId|Tekenreeks|De id van de pool waarvoor de taak is uitgevoerd.|
 |nodeId|Tekenreeks|De id van het knoop punt waarop de taak is uitgevoerd.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
@@ -86,8 +85,8 @@ ms.locfileid: "68323044"
 
 |De naam van element|type|Opmerkingen|
 |------------------|----------|-----------|
-|startTime|Datetime|Het tijdstip waarop de uitvoering van de taak is gestart. ' Running ' komt overeen met de **actieve** status. als de taak bron bestanden of toepassings pakketten opgeeft, wordt de begin tijd weer gegeven voor het tijdstip waarop de taak is gestart of geïmplementeerd.  Als de taak opnieuw is gestart of opnieuw is uitgevoerd, is dit het meest recente tijdstip waarop de taak is gestart.|
-|endTime|Datetime|Het tijdstip waarop de taak is voltooid.|
+|startTime|DateTime|Het tijdstip waarop de uitvoering van de taak is gestart. ' Running ' komt overeen met de **actieve** status. als de taak bron bestanden of toepassings pakketten opgeeft, wordt de begin tijd weer gegeven voor het tijdstip waarop de taak is gestart of geïmplementeerd.  Als de taak opnieuw is gestart of opnieuw is uitgevoerd, is dit het meest recente tijdstip waarop de taak is gestart.|
+|endTime|DateTime|Het tijdstip waarop de taak is voltooid.|
 |exitCode|Int32|De afsluit code van de taak.|
 |retryCount|Int32|Het aantal keren dat de batch-service opnieuw is geprobeerd om de taak uit te proberen. De taak wordt opnieuw uitgevoerd als deze wordt afgesloten met een afsluit code die niet gelijk is aan nul, tot aan de opgegeven MaxTaskRetryCount.|
 |requeueCount|Int32|Het aantal keren dat de taak door de batch-service opnieuw in de wachtrij is geplaatst als gevolg van een gebruikers aanvraag.<br /><br /> Wanneer de gebruiker knoop punten uit een pool verwijdert (door het formaat of de groep te verkleinen) of wanneer de taak wordt uitgeschakeld, kan de gebruiker opgeven dat actieve taken op de knoop punten opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd. Dit aantal houdt in hoe vaak de taak opnieuw in de wachtrij is geplaatst om deze redenen.|

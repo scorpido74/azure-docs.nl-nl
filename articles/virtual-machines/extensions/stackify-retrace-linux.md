@@ -1,6 +1,6 @@
 ---
-title: Azure Linux Agent-extensie keren stackify | Microsoft Docs
-description: De Stackify keren Linux-agent op een Linux-machine implementeren.
+title: Stackify-extensie voor Azure Linux-agent opnieuw traceren | Microsoft Docs
+description: Implementeer de Stackify-Linux-agent op een virtuele Linux-machine.
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
@@ -8,61 +8,60 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: ca3232dc3862cffb67d396b3ec2333fdc28dbb65
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6db152394a8e57689b34436b48dbcb4ecdc58b5a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706643"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084315"
 ---
-# <a name="stackify-retrace-linux-agent-extension"></a>Stackify keren Linux-Agent-extensie
+# <a name="stackify-retrace-linux-agent-extension"></a>Stackify-extensie voor Linux-agent opnieuw traceren
 
 ## <a name="overview"></a>Overzicht
 
-Stackify biedt producten die meer informatie over uw toepassing om te zoeken en oplossen van problemen snel bijhouden. Voor teams van ontwikkelaars, keren dat is een volledig geïntegreerde, meerdere omgevingen app prestaties Supergebruikers. Het combineert verschillende programma's die elke ontwikkelteam nodig heeft.
+Stackify biedt producten die gegevens over uw toepassing volgen om snel problemen op te sporen en op te lossen. Voor ontwikkel teams is het opnieuw traceren van een volledig geïntegreerde app-prestatie toepassing met meerdere omgevingen. Het combineert diverse hulp middelen die elk ontwikkel team nodig heeft.
 
-Keren is de alleen-hulpprogramma dat voorziet in alle van de volgende mogelijkheden in alle omgevingen in één platform.
+Retrace is het enige hulp programma dat alle van de volgende mogelijkheden in alle omgevingen in één platform levert.
 
-* Beheer van prestaties van toepassingen (APM)
-* Toepassings- en server-logboekregistratie
-* Fout volgen en controleren
-* Server-, toepassings- en aangepaste metrische gegevens
+* Beheer van toepassings prestaties (APM)
+* Logboek registratie van toepassingen en server
+* Fout opsporing en-bewaking
+* Server-, toepassings-en aangepaste metrische gegevens
 
-**Stackify over Linux-Agent-extensie**
+**Over de Stackify Linux agent-extensie**
 
-Deze uitbreiding biedt een installatiepad voor de Linux-Agent voor keren. 
+Deze uitbrei ding biedt een installatiepad voor de Linux-agent voor opnieuw traceren. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem 
 
-De agent keren kan worden uitgevoerd voor deze Linux-distributies
+De retrace-agent kan worden uitgevoerd met deze Linux-distributies
 
 | Distributie | Version |
 |---|---|
-| Ubuntu | 16.04 LTS, 14.04 LTS, 16,10 en 17.04 |
+| Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 en 17,04 |
 | Debian | 7,9 + en 8.2 +, 9 |
 | Red Hat | 6.7+, 7.1+ |
 | CentOS | 6.3+, 7.0+ |
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De Stackify Agent-extensie voor Linux is vereist dat de virtuele doelmachine is verbonden met internet. 
+De Stackify-agent extensie voor Linux vereist dat de virtuele doel machine is verbonden met internet. 
 
-Mogelijk moet u uw netwerkconfiguratie Stackify verbindingen worden toegestaan, raadpleeg dan aanpassen https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Mogelijk moet u uw netwerk configuratie aanpassen om verbindingen met Stackify toe te staan. https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall Zie voor meer informatie. 
 
 
 ## <a name="extension-schema"></a>Extensieschema
 
 ---
 
-De volgende JSON ziet u het schema voor de Stackify keren Agent-extensie. De extensie is vereist de `environment` en `activationKey`.
+In de volgende JSON wordt het schema voor de uitbrei ding Stackify retrace agent weer gegeven. Voor de uitbrei `environment` ding `activationKey`is de and vereist.
 
 ```json
     {
@@ -90,13 +89,13 @@ De volgende JSON ziet u het schema voor de Stackify keren Agent-extensie. De ext
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie 
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. De JSON-schema in de vorige sectie worden beschreven, kan de Stackify keren Linux Agent-extensie uitgevoerd tijdens de sjabloonimplementatie van een Azure Resource Manager-in een Azure Resource Manager-sjabloon worden gebruikt.  
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de Stackify-extensie voor het opnieuw traceren van de Linux-agent tijdens de implementatie van een Azure Resource Manager sjabloon.  
 
-De JSON voor de extensie van een virtuele machine kan worden genest in de bron van de virtuele machine of geplaatst op de hoofdmap of het hoogste niveau van een Resource Manager JSON-sjabloon. De plaatsing van de JSON is van invloed op de waarde van de resourcenaam en het type. Zie voor meer informatie, de naam en het type voor de onderliggende resources.
+De JSON voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie naam en type voor onderliggende resources instellen.
 
-Het volgende voorbeeld wordt ervan uitgegaan dat de Stackify keren Linux-extensie is genest in de bron van de virtuele machine. Wanneer het nesten van de extensie-resource, de JSON wordt geplaatst in de 'resources': []-object van de virtuele machine.
+In het volgende voor beeld wordt ervan uitgegaan dat de Linux-uitbrei ding Stackify retrace is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het object ' resources ': [] van de virtuele machine geplaatst.
 
-De extensie is vereist de `environment` en `activationKey`.
+Voor de uitbrei `environment` ding `activationKey`is de and vereist.
 
 ```json
     {
@@ -149,11 +148,11 @@ Bij het plaatsen van de JSON-extensie in de hoofdmap van de sjabloon, naam van d
 ```
 
 
-## <a name="powershell-deployment"></a>PowerShell-implementatie
+## <a name="powershell-deployment"></a>Power shell-implementatie
 
-De `Set-AzVMExtension` opdracht kan worden gebruikt om de extensie van de virtuele machine Stackify keren Linux Agent implementeren op een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de openbare en privé-configuraties worden opgeslagen in een PowerShell-hash-tabel.
+De `Set-AzVMExtension` opdracht kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine. Voordat u de opdracht uitvoert, moeten de open bare en persoonlijke configuraties worden opgeslagen in een Power shell-Hash-tabel.
 
-De extensie is vereist de `environment` en `activationKey`.
+Voor de uitbrei `environment` ding `activationKey`is de and vereist.
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -172,9 +171,9 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie 
 
-De Azure CLI-hulpprogramma kan worden gebruikt voor de extensie van de virtuele machine Stackify keren Linux Agent implementeren op een bestaande virtuele machine.  
+Het Azure CLI-hulp programma kan worden gebruikt voor het implementeren van de extensie van de virtuele machine van de Linux-agent Stackify naar een bestaande virtuele machine.  
 
-De extensie is vereist de `environment` en `activationKey`.
+Voor de uitbrei `environment` ding `activationKey`is de and vereist.
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -186,17 +185,17 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 
 | Foutcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 10 | Fout bij installeren | wget is vereist |
-| 20 | Fout bij installeren | Python is vereist |
-| 30 | Fout bij installeren | sudo is vereist |
-| 40 | Fout bij installeren | Kluisbestand is vereist |
-| 51 | Fout bij installeren | Distributie van besturingssysteem niet ondersteund |
-| 60 | Fout bij installeren | omgeving is vereist |
-| 70 | Fout bij installeren | Onbekend |
-| 80 | Fout bij inschakelen | Service-instellingen is mislukt |
-| 90 | Fout bij inschakelen | Starten van de service is mislukt |
-| 100 | Fout bij uitschakelen | Service stoppen is mislukt |
-| 110 | Fout bij uitschakelen | Service verwijderen is mislukt |
-| 120 | Fout bij verwijderen | Service stoppen is mislukt |
+| 10 | Installatie fout | wget is vereist |
+| 20 | Installatie fout | python is vereist |
+| 30 | Installatie fout | sudo is vereist |
+| 40 | Installatie fout | activationKey is vereist |
+| 51 | Installatie fout | OS distributie wordt niet ondersteund |
+| 60 | Installatie fout | omgeving is vereist |
+| 70 | Installatie fout | Onbekend |
+| 80 | Fout inschakelen | Installatie van de service is mislukt |
+| 90 | Fout inschakelen | Het starten van de service is mislukt |
+| 100 | Fout uitschakelen | Stoppen van service mislukt |
+| 110 | Fout uitschakelen | Service verwijderen is mislukt |
+| 120 | Fout bij verwijderen | Stoppen van service mislukt |
 
-Als u meer hulp nodig kunt u contact met ondersteuning van Stackify op https://support.stackify.com.
+Als u meer hulp nodig hebt, kunt u contact opnemen https://support.stackify.com met de Stackify-ondersteuning in.

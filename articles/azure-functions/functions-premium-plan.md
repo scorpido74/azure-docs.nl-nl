@@ -6,16 +6,15 @@ author: jeffhollan
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: 8ad09550e572c98931346b44a6c6f84da29a85e4
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443965"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096229"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions Premium-abonnement (preview-versie)
 
@@ -46,7 +45,7 @@ Als er vandaag geen gebeurtenissen en uitvoeringen in het verbruiks abonnement w
 
 In het Premium-abonnement kunt u uw app vooraf laten opwarmen op een opgegeven aantal exemplaren, tot aan de minimale plan grootte.  Met vooraf gewarmde instanties kunt u een app vooraf schalen voor een hoge belasting. Wanneer de app wordt geschaald, wordt deze voor het eerst geschaald naar de vooraf gewarmde instanties. Aanvullende instanties blijven in de voor bereiding van de volgende schaal bewerking direct in de buffer worden geplaatst en warme. Door een buffer van vooraf gewarmde instanties te hebben, kunt u de latentie van koude start effectief vermijden.  Voor bereide instanties is een functie van het Premium-abonnement en u moet ten minste één instantie actief houden en op elk moment dat het abonnement actief is.
 
-U kunt het aantal vooraf gewarmde instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties  voor uitschalen te selecteren. In het venster functie-app bewerken zijn vooraf gewarmde exemplaren specifiek voor die app, maar de minimum-en maximum exemplaren zijn van toepassing op uw hele abonnement.
+U kunt het aantal vooraf gewarmde instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties voor uitschalen te selecteren. In het venster functie-app bewerken zijn vooraf gewarmde exemplaren specifiek voor die app, maar de minimum-en maximum exemplaren zijn van toepassing op uw hele abonnement.
 
 ![Instellingen voor Elastic Scale](./media/functions-premium-plan/scale-out.png)
 
@@ -83,7 +82,7 @@ Wanneer u het plan maakt, configureert u twee instellingen: het minimum aantal e
 
 Als uw app exemplaren vereist die groter zijn dan de grootte van uw abonnement, kan deze worden uitgeschaald totdat het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden gehuurd.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet, terwijl de minimale plan exemplaren gegarandeerd zijn voor uw app.
 
-U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties  voor uitschalen te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
+U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor uitschalen te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
 
 U kunt ook de maximale burst-limiet van de Azure CLI verhogen:
 

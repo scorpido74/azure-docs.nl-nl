@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127426"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072345"
 ---
 # <a name="monitor-published-apis"></a>Gepubliceerde API's bewaken
 
@@ -62,10 +61,11 @@ Metrische gegevens openen:
 
 1. Selecteer **Metrische gegevens** in het menu onder aan de pagina.
 
-    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    ![metrische gegevens](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. Selecteer in de vervolgkeuzelijst de gewenste metrische gegevens. Bijvoorbeeld: **Succesvolle gateway-aanvragen**. U kunt ook meer metrische gegevens aan de grafiek toevoegen.
-3. De grafiek toont het totale aantal geslaagde API-aanroepen.
+1. Selecteer in de vervolgkeuzelijst de gewenste metrische gegevens. Bijvoorbeeld **aanvragen**. 
+1. De grafiek toont het totale aantal API-aanroepen.
+1. De grafiek kan worden gefilterd met de afmetingen van de metrische **aanvragen** . Klik bijvoorbeeld op **filter toevoegen**, kies back- **End-respons Code**en voer 500 in als waarde. De grafiek toont nu het aantal aanvragen dat is mislukt in de API-back-end.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Een waarschuwingsregel instellen voor een niet-gemachtigde aanvraag
 
@@ -77,28 +77,28 @@ U kunt instellen dat u waarschuwingen ontvangt op basis van metrische gegevens e
 
 Waarschuwingen configureren:
 
-1. Selecteer **waarschuwingen** in de menubalk aan de onderkant van de pagina.
+1. Selecteer **waarschuwingen** in de menu balk aan de onderkant van de pagina.
 
     ![waarschuwingen](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. Klik op een **nieuwe waarschuwingsregel** voor deze waarschuwing.
-3. Klik op **voorwaarde toevoegen**.
-4. Selecteer **metrische gegevens** vervolgkeuzelijst in het signaal-type.
-5. Selecteer **niet-gemachtigde Gateway-aanvragen** als het signaal om te controleren.
+2. Klik op een **nieuwe waarschuwings regel** voor deze waarschuwing.
+3. Klik op **voor waarde toevoegen**.
+4. Selecteer **metrische gegevens** in de vervolg keuzelijst signalerings type.
+5. Selecteer een niet- **geautoriseerde gateway aanvraag** als het signaal dat moet worden bewaakt.
 
     ![waarschuwingen](./media/api-management-azure-monitor/signal-type.png)
 
-6. In de **signaallogica configureren** weergeven, geeft u een drempelwaarde, waarna de waarschuwing moet worden geactiveerd en op **gedaan**.
+6. Geef in de weer gave **signaal logica configureren** een drempel waarde op waarna de waarschuwing moet worden geactiveerd en klik op **gereed**.
 
     ![waarschuwingen](./media/api-management-azure-monitor/threshold.png)
 
-7. Selecteer een bestaande actiegroep of een nieuwe maken. In het onderstaande voorbeeld wordt een e-mailbericht worden verzonden naar de beheerders. 
+7. Selecteer een bestaande actie groep of maak een nieuwe. In het onderstaande voor beeld wordt een e-mail bericht verzonden naar de beheerders. 
 
     ![waarschuwingen](./media/api-management-azure-monitor/action-details.png)
 
-8. Geef een naam en beschrijving van de waarschuwingsregel en kiest u de ernst op. 
-9. Druk op **waarschuwingsregel maken**.
-10. Probeer nu de Conferentie-API zonder API-sleutel aan te roepen. De waarschuwing wordt geactiveerd en e-mailberichten worden verzonden naar de beheerders. 
+8. Geef een naam en beschrijving van de waarschuwings regel op en kies het Ernst niveau. 
+9. Druk op **waarschuwings regel maken**.
+10. Probeer nu de conferentie-API aan te roepen zonder een API-sleutel. De waarschuwing wordt geactiveerd en er wordt een e-mail bericht naar de beheerders verzonden. 
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
 
@@ -120,7 +120,7 @@ Activiteitenlogboeken weergeven:
 
 3. Selecteer het gewenste filterbereik en klik op **Toepassen**.
 
-## <a name="diagnostic-logs"></a>Diagnostische logboeken
+## <a name="diagnostic-logs"></a>Logboeken met diagnostische gegevens
 
 Diagnoselogboeken bieden uitgebreide informatie over bewerkingen en fouten die belangrijk zijn voor zowel controles als het oplossen van problemen. Diagnoselogboeken verschillen van activiteitenlogboeken. Activiteitenlogboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op uw Azure-resources. Diagnoselogboeken bieden inzicht in bewerkingen die door de resources zelf zijn uitgevoerd.
 
@@ -182,31 +182,31 @@ API Management biedt momenteel diagnostische logboeken (ingedeeld in batches per
 
 | Eigenschap  | Type | Description |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | booleaans | Waar als de HTTP-aanvraag is voltooid met een antwoordstatuscode binnen 2xx tot 3xx |
+| isRequestSuccess | boolean | Waar als de HTTP-aanvraag is voltooid met een antwoordstatuscode binnen 2xx tot 3xx |
 | time | date-time | Tijdstempel van ontvangst van de HTTP-aanvraag door de gateway |
 | operationName | string | Constante waarde 'Microsoft.ApiManagement/GatewayLogs' |
 | category | string | Constante waarde 'GatewayLogs' |
-| durationMs | geheel getal | Aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig werd verzonden |
+| durationMs | integer | Aantal milliseconden vanaf het moment dat de gateway de aanvraag ontving tot het moment dat het antwoord volledig werd verzonden |
 | callerIpAddress | string | IP-adres van de onmiddellijke gatewayaanroeper (kan een tussenschakel zijn) |
 | correlationId | string | Unieke HTTP-aanvraag-ID die is toegewezen door API Management |
 | location | string | Naam van de Azure-regio waar de gateway die de aanvraag heeft verwerkt zicht bevond |
 | httpStatusCodeCategory | string | Categorie van HTTP-antwoordstatuscode: Geslaagd (301 of minder of 304 of 307), niet geautoriseerd (401, 403, 429), fout (400, tussen 500 en 600), anders |
-| resourceId | string | ID van de API Management-resource /SUBSCRIPTIONS/\<abonnement > /RESOURCEGROUPS/\<resource-group >/PROVIDERS/MICROSOFT. APIMANAGEMENT/SERVICE/\<naam > |
+| resourceId | string | ID van het/SUBSCRIPTIONS/\<-abonnement van de API Management Resource >/RESOURCEGROUPS/\<resource-group >/providers/Microsoft. APIMANAGEMENT/service/\<naam > |
 | properties | object | Eigenschappen van de huidige aanvraag |
-| method | string | HTTP-methode van de inkomende aanvraag |
+| methode | string | HTTP-methode van de inkomende aanvraag |
 | url | string | URL van de binnenkomende aanvraag |
 | clientProtocol | string | HTTP-protocolversie van de inkomende aanvraag |
 | responseCode | geheel getal | Statuscode van het HTTP-antwoord dat is verzonden naar een client |
 | backendMethod | string | HTTP-methode van de aanvraag die is verzonden naar een back-end |
 | backendUrl | string | URL van de aanvraag die is verzonden naar een back-end |
-| backendResponseCode | geheel getal | Code van het HTTP-antwoord dat is ontvangen van een back-end |
+| backendResponseCode | integer | Code van het HTTP-antwoord dat is ontvangen van een back-end |
 | backendProtocol | string | HTTP-protocolversie van de aanvraag die is verzonden naar een back-end | 
 | requestSize | geheel getal | Aantal bytes dat van een client is ontvangen tijdens de verwerking van aanvragen | 
 | responseSize | geheel getal | Aantal bytes dat naar een client is verzonden tijdens de verwerking van aanvragen | 
 | cache | string | Status van de betrokkenheid van de API Management-cache bij het verwerken van aanvragen (dat wil zeggen, treffer, misser, geen) | 
-| cacheTime | geheel getal | Aantal milliseconden dat in totaal is besteed aan IO van de API Management-cache (verbinding maken, bytes verzenden en ontvangen) | 
-| backendTime | geheel getal | Aantal milliseconden dat in totaal is besteed aan IO van de back-end (verbinding maken, bytes verzenden en ontvangen) | 
-| clientTime | geheel getal | Aantal milliseconden dat in totaal is besteed aan IO van de client (verbinding maken, bytes verzenden en ontvangen) | 
+| cacheTime | integer | Aantal milliseconden dat in totaal is besteed aan IO van de API Management-cache (verbinding maken, bytes verzenden en ontvangen) | 
+| backendTime | integer | Aantal milliseconden dat in totaal is besteed aan IO van de back-end (verbinding maken, bytes verzenden en ontvangen) | 
+| clientTime | integer | Aantal milliseconden dat in totaal is besteed aan IO van de client (verbinding maken, bytes verzenden en ontvangen) | 
 | apiId | string | ID van de API-entiteit voor de huidige aanvraag | 
 | operationId | string | ID van de bewerkingsentiteit voor de huidige aanvraag | 
 | productId | string | ID van de productentiteit voor de huidige aanvraag | 
@@ -214,9 +214,9 @@ API Management biedt momenteel diagnostische logboeken (ingedeeld in batches per
 | apimSubscriptionId | string | ID van de abonnemententiteit voor de huidige aanvraag | 
 | backendId | string | ID van de back-end-entiteit voor de huidige aanvraag | 
 | LastError | object | Laatste fout bij de aanvraagverwerking | 
-| elapsed | geheel getal | Het aantal milliseconden tussen het moment dat de gateway de aanvraag ontving tot het moment dat de fout optrad | 
+| elapsed | integer | Het aantal milliseconden tussen het moment dat de gateway de aanvraag ontving tot het moment dat de fout optrad | 
 | source | string | Naam van de interne handler voor beleid of verwerking die de fout heeft veroorzaakt | 
-| scope | string | Bereik van het beleidsdocument met het beleid dat de fout heeft veroorzaakt | 
+| bereik | string | Bereik van het beleidsdocument met het beleid dat de fout heeft veroorzaakt | 
 | section | string | Gedeelte van het beleidsdocument met het beleid dat de fout heeft veroorzaakt | 
 | reason | string | Reden voor de fout | 
 | message | string | Foutbericht | 

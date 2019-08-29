@@ -1,86 +1,85 @@
 ---
-title: Verwijzingen naar Key Vault - Azure App Service | Microsoft Docs
-description: Conceptuele verwijzing en setup-handleiding voor Azure Key Vault-verwijzingen in Azure App Service en Azure Functions
+title: Key Vault verwijzingen-Azure App Service | Microsoft Docs
+description: Conceptuele Naslag informatie en installatie handleiding voor Azure Key Vault verwijzingen in Azure App Service en Azure Functions
 services: app-service
 author: mattchenderson
 manager: jeconnoc
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705700"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088190"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Verwijzingen van de Key Vault gebruiken voor App Service en Azure Functions (preview)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault verwijzingen gebruiken voor App Service en Azure Functions (preview-versie)
 
 > [!NOTE] 
-> Key Vault verwijzingen zijn momenteel in preview.
+> Key Vault verwijzingen zijn momenteel beschikbaar als preview-versie.
 
-Dit onderwerp ziet u hoe u werkt met geheimen in Azure Key Vault in uw App Service of Azure Functions-toepassing zonder codewijzigingen. [Azure Key Vault](../key-vault/key-vault-overview.md) is een service die voorziet in gecentraliseerde geheimen, met volledig beheer over de geschiedenis voor het beleid en de controle van toegang.
+In dit onderwerp wordt beschreven hoe u kunt werken met geheimen van Azure Key Vault in uw App Service of Azure Functions toepassing zonder dat u code wijzigingen hoeft aan te brengen. [Azure Key Vault](../key-vault/key-vault-overview.md) is een service die gecentraliseerd geheimen beheer biedt, met volledige controle over het toegangs beleid en de controle geschiedenis.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Uw apptoegang verlenen tot Key Vault
+## <a name="granting-your-app-access-to-key-vault"></a>Toegang tot Key Vault verlenen aan uw app
 
-Om te kunnen lezen geheimen uit Key Vault, moet u een kluis hebt gemaakt en uw app machtigt om deze te openen.
+Als u geheimen van Key Vault wilt lezen, moet er een kluis zijn gemaakt en moet u uw app toegang geven tot het bestand.
 
-1. Een sleutelkluis maken door de volgende de [Key Vault-snelstartgids](../key-vault/quick-create-cli.md).
+1. Maak een sleutel kluis door de [Key Vault Snelstartgids](../key-vault/quick-create-cli.md)te volgen.
 
-1. Maak een [systeem toegewezen identiteit beheerd](overview-managed-identity.md) voor uw toepassing.
+1. Maak een door het [systeem toegewezen beheerde identiteit](overview-managed-identity.md) voor uw toepassing.
 
    > [!NOTE] 
-   > Key Vault verwijst momenteel naar beheerde identiteiten alleen ondersteuning door het systeem toegewezen. Gebruiker toegewezen identiteiten kunnen niet worden gebruikt.
+   > Key Vault verwijzingen worden momenteel alleen door het systeem toegewezen beheerde identiteiten ondersteund. Door de gebruiker toegewezen identiteiten kunnen niet worden gebruikt.
 
-1. Maak een [toegangsbeleid in Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) voor de toepassingsidentiteit die u eerder hebt gemaakt. De geheime 'Get'-machtiging voor dit beleid inschakelen. De 'geautoriseerd toepassing' niet configureert of `applicationId` instellingen, als dit is niet compatibel met een beheerde identiteit.
+1. Maak een [toegangs beleid in Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) voor de toepassings-id die u eerder hebt gemaakt. Schakel de geheime machtiging ' Get ' in voor dit beleid. Configureer de "geautoriseerde toepassing" of `applicationId` instellingen niet, omdat deze niet compatibel is met een beheerde identiteit.
 
-    Toegang verlenen tot een toepassing identiteit in key vault is een eenmalige bewerking en blijft hetzelfde voor alle Azure-abonnementen. U kunt deze zo veel certificaten als u wilt implementeren. 
+    Het verlenen van toegang tot een toepassings-id in de sleutel kluis is een eenmalige-bewerking. deze blijft hetzelfde voor alle Azure-abonnementen. U kunt deze gebruiken om zoveel certificaten te implementeren als u wilt. 
 
-## <a name="reference-syntax"></a>De syntaxis
+## <a name="reference-syntax"></a>Verwijzings syntaxis
 
-De verwijzing naar een Key Vault heeft de vorm `@Microsoft.KeyVault({referenceString})`, waarbij `{referenceString}` wordt vervangen door een van de volgende opties:
+Een Key Vault verwijzing is van het formulier `@Microsoft.KeyVault({referenceString})`, waarbij `{referenceString}` wordt vervangen door een van de volgende opties:
 
 > [!div class="mx-tdBreakAll"]
-> | Referentie-tekenreeks                                                            | Description                                                                                                                                                                                 |
+> | Verwijzings reeks                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | De **SecretUri** moet de volledige data plane-URI van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeld https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_vaultName_; SecretName =_secretName_; SecretVersion =_secretVersion_ | De **VaultName** moet de naam van uw Key Vault-resource. De **SecretName** moet de naam van het geheim van het doel. De **SecretVersion** moet de versie van het geheim te gebruiken. |
+> | SecretUri=_secretUri_                                                       | De **SecretUri** moet de volledige gegevenslaag URI zijn van een geheim in Key Vault, met inbegrip van een versie, bijvoorbeeld https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | Kluisnaam =_kluis_; Geheim =_geheim_; SecretVersion =_SecretVersion_ | De **kluisnaam** moet de naam van uw Key Vault-resource zijn. De naam van het doel geheim is. De **SecretVersion** moet de versie zijn van het geheim dat moet worden gebruikt. |
 
 > [!NOTE] 
-> In de huidige preview zijn-versies vereist. Wanneer u geheimen, moet u de versie in de configuratie van uw toepassing bij te werken.
+> In de huidige preview zijn versies vereist. Bij het draaien van geheimen moet u de versie in de configuratie van de toepassing bijwerken.
 
-Bijvoorbeeld, een volledig overzicht zou de volgende notatie:
+Een volledige verwijzing ziet er bijvoorbeeld als volgt uit:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
 
-U kunt ook:
+U kunt ook
 
 ```
 @Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
 ```
 
 
-## <a name="source-application-settings-from-key-vault"></a>Instellingen voor gegevensbron toepassing vanuit Key Vault
+## <a name="source-application-settings-from-key-vault"></a>Instellingen van de bron toepassing van Key Vault
 
-Verwijzingen naar de Key Vault kunnen worden gebruikt als waarden voor [toepassingsinstellingen](configure-common.md#configure-app-settings), zodat u kunt het bewaren van geheimen in Key Vault in plaats van de site-configuratie. Toepassingsinstellingen veilig in rust worden versleuteld, maar als u geheime beheermogelijkheden moet, moeten ze worden geplaatst in Key Vault.
+Key Vault verwijzingen kunnen worden gebruikt als waarden voor [Toepassings instellingen](configure-common.md#configure-app-settings), zodat u geheimen in Key Vault in plaats van de site configuratie kunt blijven gebruiken. Toepassings instellingen worden op rest versleuteld, maar als u de mogelijkheden van een geheim beheer nodig hebt, moeten ze in Key Vault gaan.
 
-Voor het gebruik van een Key Vault-verwijzing voor de toepassingsinstelling van een, moet u de verwijzing instellen als de waarde van de instelling. Uw app kunt verwijzen naar het geheim via de sleutel als normaal. Er zijn geen codewijzigingen vereist.
+Als u een Key Vault referentie voor een toepassings instelling wilt gebruiken, stelt u de verwijzing in als de waarde van de instelling. Uw app kan naar het geheim verwijzen via de sleutel normaal. Er zijn geen code wijzigingen vereist.
 
 > [!TIP]
-> De meeste toepassingsinstellingen in met Key Vault-verwijzingen moeten worden gemarkeerd als site-instellingen, als u moet beschikken over afzonderlijke kluizen voor elke omgeving.
+> De meeste toepassings instellingen die gebruikmaken van Key Vault verwijzingen moeten worden gemarkeerd als sleuf instellingen, omdat u voor elke omgeving afzonderlijke kluizen moet hebben.
 
 ### <a name="azure-resource-manager-deployment"></a>Implementatie van Azure Resource Manager
 
-Bij het automatiseren van implementaties van resource via Azure Resource Manager-sjablonen, moet u mogelijk uw afhankelijkheden in een bepaalde volgorde om deze functie werkt sequentiëren. Van de opmerking, hoeft u uw om toepassingsinstellingen te definiëren als hun eigen resource, in plaats van een `siteConfig` eigenschap in het sitedefinitie van de. Dit is omdat de site eerst worden gedefinieerd moet, zodat het systeem toegewezen identiteit met deze is gemaakt en kan worden gebruikt in het toegangsbeleid.
+Wanneer u de implementatie van resources via Azure Resource Manager sjablonen automatiseert, moet u mogelijk uw afhankelijkheden in een bepaalde volg orde rangschikken om deze functie te kunnen gebruiken. Houd er rekening mee dat u de toepassings instellingen moet definiëren als hun eigen resource, in plaats van een `siteConfig` eigenschap in de site definitie te gebruiken. Dit komt doordat de site eerst moet worden gedefinieerd, zodat de door het systeem toegewezen identiteit wordt gemaakt en kan worden gebruikt in het toegangs beleid.
 
-Een voorbeeld-psuedo-sjabloon voor een functie-app kan er als volgt uitzien:
+Een voor beeld van een psuedo-sjabloon voor een functie-app kan er als volgt uitzien:
 
 ```json
 {
@@ -184,4 +183,4 @@ Een voorbeeld-psuedo-sjabloon voor een functie-app kan er als volgt uitzien:
 ```
 
 > [!NOTE] 
-> In dit voorbeeld is de implementatie van bron afhankelijk van instellingen voor de toepassing. Dit is normaal gesproken onveilige gedrag, zoals het bijwerken van de app-instelling asynchroon zich gedraagt. Echter, omdat we hebben opgenomen de `WEBSITE_ENABLE_SYNC_UPDATE_SITE` toepassingsinstelling, de update is synchroon. Dit betekent dat de implementatie van bron alleen wordt gestart zodra de toepassingsinstellingen volledig zijn bijgewerkt.
+> In dit voor beeld is de bron beheer implementatie afhankelijk van de toepassings instellingen. Dit is normaal gesp roken onveilig gedrag, omdat het bijwerken van de app-instelling asynchroon werkt. Omdat we echter de `WEBSITE_ENABLE_SYNC_UPDATE_SITE` toepassings instelling hebben opgenomen, is de update synchroon. Dit betekent dat de implementatie van broncode beheer alleen begint zodra de instellingen van de toepassing volledig zijn bijgewerkt.

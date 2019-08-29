@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 831eacf8197e90d7ae6b752ee11898c9667b5b6a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036542"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073466"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Azure API Management migreren over regio's
 Als u API Management exemplaren van de ene Azure-regio naar de andere wilt migreren, kunt u de functie [back-up en herstellen](api-management-howto-disaster-recovery-backup-restore.md) gebruiken. U moet dezelfde API Management Prijs categorie in de bron-en doel regio's kiezen. 

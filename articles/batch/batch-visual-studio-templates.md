@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bb4c71f2c7f42ef599796bc380bb7a9f35b8c64e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 60662e723a55c969fdd4b70e732303c90bbf9e8b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322778"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094344"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio-project sjablonen gebruiken om batch-oplossingen te starten
 
@@ -385,7 +384,7 @@ Alle informatie die wordt geretourneerd door uitzonde ringen, wordt geschreven n
 ### <a name="client-considerations"></a>Overwegingen voor de client
 **Opslag referenties**
 
-Als uw taak processor gebruikmaakt van Azure Blob-opslag om uitvoer te behouden, bijvoorbeeld met behulp van de bestands conventies helper-bibliotheek, moet u toegang hebben *tot de referenties* van het Cloud Storage-account *of* een BLOB-container-URL die een gedeelde toegang bevat hand tekening (SAS). De sjabloon bevat ondersteuning voor het opgeven van referenties via algemene omgevings variabelen. De client kan de opslag referenties als volgt door geven:
+Als uw taak processor gebruikmaakt van Azure Blob-opslag om uitvoer te behouden, bijvoorbeeld met behulp van de bestands conventies helper-bibliotheek , moet u toegang hebben tot de referenties van het Cloud Storage-account *of* een BLOB-container-URL die een gedeelde toegang bevat hand tekening (SAS). De sjabloon bevat ondersteuning voor het opgeven van referenties via algemene omgevings variabelen. De client kan de opslag referenties als volgt door geven:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {

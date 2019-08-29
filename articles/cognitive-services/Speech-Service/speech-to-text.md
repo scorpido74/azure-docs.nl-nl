@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa80ebea93ae897ba01ff54bdb797ed4194665cd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558849"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068864"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak naar tekst?
 
@@ -63,13 +63,7 @@ Voorbeeld code voor de Speech SDK is beschikbaar op GitHub. Deze voor beelden he
 
 ## <a name="customization"></a>Aanpassing
 
-Naast het universele model dat wordt gebruikt door de spraak Services, kunt u aangepaste geluids-, taal-en uitspraak modellen maken die specifiek zijn voor uw ervaring. Hier volgt een lijst met aanpassings opties:
-
-| Model | Description |
-|-------|-------------|
-| [Akoestisch model](how-to-customize-acoustic-models.md) | Het maken van een aangepast akoestisch model is handig als uw toepassing, hulpprogram ma's of apparaten in een bepaalde omgeving worden gebruikt, zoals in een auto of fabriek met specifieke registratie voorwaarden. Voorbeelden zijn spraak met een accent, specifieke achtergrondgeluiden of het gebruik van een specifieke microfoon voor opname. |
-| [Taalmodel](how-to-customize-language-model.md) | Maak een aangepast taal model om transcriptie te verbeteren van de branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. |
-| [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraak model kunt u het fonetische formulier en de weer gave van een woord of term definiëren. Dit is handig voor het verwerken van aangepaste voorwaarden, zoals productnamen of afkortingen. Alles wat u nodig hebt om te beginnen is een uitspraak van bestand--een eenvoudige txt-bestand. |
+Naast het standaard basislijn model dat wordt gebruikt door de spraak Services, kunt u modellen aanpassen aan uw behoeften met beschik bare gegevens, om de obstakels voor spraak herkenning te overwinnen, zoals spreek stijl, vocabulaire en achtergrond ruis, Zie [Custom speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).

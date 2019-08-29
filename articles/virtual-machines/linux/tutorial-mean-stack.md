@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6d870e5eedf362a6c929216735c8b5e9240aaa4f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 856e3e41e624844f1d7cbf5bf4cd1611bc10ecbb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708487"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081520"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een MongoDB-, Express-, AngularJS- en Node.js- (MEAN-)stack maken op een virtuele Linux-machine in Azure
 
@@ -324,7 +323,7 @@ Met [MongoDB](https://www.mongodb.com) worden gegevens opgeslagen in flexibele J
     nodejs server.js
     ```
 
-2. Open in een webbrowser het adres dat u voor de VM hebt opgenomen. Bijvoorbeeld, *http:\//13.72.77.9:3300*. Er verschijnt een pagina die er ongeveer als volgt uitziet:
+2. Open in een webbrowser het adres dat u voor de VM hebt opgenomen. Bijvoorbeeld *http:\//13.72.77.9:3300*. Er verschijnt een pagina die er ongeveer als volgt uitziet:
 
     ![Boekrecord](media/tutorial-mean/meanstack-init.png)
 

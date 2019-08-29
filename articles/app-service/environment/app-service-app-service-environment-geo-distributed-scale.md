@@ -1,6 +1,6 @@
 ---
-title: Geografisch gedistribueerde schaal met App Service-omgevingen - Azure
-description: Leer hoe u apps met behulp van geo-distributie met Traffic Manager en App Service-omgevingen horizontaal te schalen.
+title: Geografisch gedistribueerde schaal met App Service omgevingen-Azure
+description: Meer informatie over het Horizon taal schalen van apps met behulp van geo-distributie met Traffic Manager en App Service omgevingen.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,66 +10,65 @@ ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 769e6b9936ad6d3cb963e208cec4c49813f2b6d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eaefebc569f5bf5461ff7c4407fa77a0c62d4fe8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130718"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070224"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geografisch gedistribueerde schaal met App Service-omgevingen
 ## <a name="overview"></a>Overzicht
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Toepassingsscenario's waarvoor zeer grote schaal kunnen groter zijn dan de capaciteit van compute resource beschikbaar is voor een implementatie van een app.  Uw stem toepassingen, zijn sportevenementen en televisie entertainment gebeurtenissen alle voorbeelden van scenario's waarin zeer grote schaal. Grote schaalvereisten kan worden voldaan door apps, horizontaal uitschalen met meerdere app-implementaties binnen één regio, evenals in regio's worden ingediend bij het verwerken van de vereisten voor het extreme laden.
+Toepassings scenario's die een zeer hoge schaal vereisen, kunnen de beschik bare capaciteit van de reken resource voor één implementatie van een app overschrijden.  Stem toepassingen, sport evenementen en televised entertainment-gebeurtenissen zijn alle voor beelden van scenario's waarvoor een zeer hoge schaal nodig is. Aan hoge schaal vereisten kan worden voldaan door apps horizon taal te schalen, waarbij meerdere app-implementaties worden uitgevoerd binnen één regio, evenals in verschillende regio's, om extreme belasting vereisten af te handelen.
 
-App Service-omgevingen zijn een ideaal platform voor horizontaal uitschalen.  Zodra een App Service Environment configuration is geselecteerd die ondersteuning voor een bekende aanvraagsnelheid bieden, ontwikkelaars kunnen implementeren extra App Service-omgevingen in "cookie snijden" gestart voor het bereiken van een gewenste piek load-capaciteit.
+App Service omgevingen zijn een ideaal platform voor Horizon taal schalen.  Als er een App Service Environment configuratie is geselecteerd die een bekende aanvraag snelheid kan ondersteunen, kunnen ontwikkel aars extra App Service omgevingen in de mode ' cookie-snij punt ' implementeren om een gewenste piek belasting capaciteit te bereiken.
 
-Stel bijvoorbeeld dat een app die wordt uitgevoerd op de configuratie van een App Service-omgeving is getest voor het afhandelen van 20K aanvragen per seconde (RPS).  Als de gewenste piek load-capaciteit 100K RPS is, worden klikt u vervolgens vijf (5) App Service-omgevingen gemaakt en geconfigureerd om te controleren of dat de toepassing de verwachte maximumbelasting kan verwerken.
+Stel bijvoorbeeld dat een app die wordt uitgevoerd op een App Service Environment configuratie is getest op het afhandelen van 20.000-aanvragen per seconde (RPS).  Als de gewenste piek laad capaciteit 100.000 RPS is, kunnen er vijf (5) App Service omgevingen worden gemaakt en geconfigureerd om ervoor te zorgen dat de toepassing de maximale geschatte belasting kan afhandelen.
 
-Aangezien klanten hebben doorgaans toegang apps met behulp van een aangepaste (of vanity)-domein tot, moeten ontwikkelaars een manier voor het distribueren van app-aanvragen voor alle de App Service-omgeving.  Een uitstekende manier om dit te doen is om op te lossen de aangepast domein met behulp van een [Azure Traffic Manager-profiel][AzureTrafficManagerProfile].  Traffic Manager-profiel kan worden geconfigureerd om te verwijzen naar alle van de afzonderlijke App Service-omgevingen.  Traffic Manager verwerkt automatisch naar klanten op alle van de App Service-omgevingen op basis van de load balancer-instellingen in het Traffic Manager-profiel.  Deze benadering werkt onafhankelijk van of alle van de App Service-omgevingen zijn geïmplementeerd in één Azure-regio of wereldwijd geïmplementeerd in meerdere Azure-regio's.
+Omdat klanten doorgaans toegang hebben tot apps met behulp van een aangepast (of Vanity) domein, hebben ontwikkel aars een manier nodig om app-aanvragen te distribueren over alle exemplaren van de App Service Environment.  Een goede manier om dit te bereiken is het oplossen van het aangepaste domein met behulp van een [Azure Traffic Manager-profiel][AzureTrafficManagerProfile].  Het Traffic Manager profiel kan worden geconfigureerd om te verwijzen naar alle afzonderlijke App Service omgevingen.  Traffic Manager wordt het distribueren van klanten in alle App Service omgevingen automatisch verwerkt op basis van de taakverdelings instellingen in het Traffic Manager profiel.  Deze aanpak werkt ongeacht of alle App Service omgevingen in één Azure-regio worden geïmplementeerd of wereld wijd worden geïmplementeerd in meerdere Azure-regio's.
 
-Klanten zijn niet op de hoogte van het aantal App Service-omgevingen met een app, zelfs nadat klanten toegang apps via het aangepaste domein tot.  Als gevolg hiervan kunnen ontwikkelaars snel en eenvoudig toevoegen en verwijderen, App Service-omgevingen op basis van waargenomen te verdelen.
+Bovendien zijn klanten niet op de hoogte van het aantal App Service omgevingen dat een app uitvoert, omdat klanten toegang hebben tot apps via het domein Vanity.  Als gevolg hiervan kunnen ontwikkel aars snel en eenvoudig App Service omgevingen toevoegen en verwijderen op basis van de geobserveerde belasting van het verkeer.
 
-Het conceptuele diagram hieronder ziet u een app horizontaal uitgeschaald over drie App Service-omgevingen binnen één regio.
+In het conceptuele diagram hieronder ziet u een app die horizon taal is geschaald over drie App Service omgevingen binnen één regio.
 
 ![Conceptuele architectuur][ConceptualArchitecture] 
 
-De rest van dit onderwerp worden de stappen beschreven die betrokken zijn bij het instellen van een gedistribueerde topologie voor de voorbeeld-app met behulp van meerdere App Service-omgevingen.
+In de rest van dit onderwerp worden de stappen beschreven die worden uitgevoerd bij het instellen van een gedistribueerde topologie voor de voor beeld-app met meerdere App Service omgevingen.
 
-## <a name="planning-the-topology"></a>Planning van de topologie
-Voordat u het opzetten van een distributed app footprint kunt zo u een aantal onderdelen gestroomlijnder wanneer u gegevens hebt.
+## <a name="planning-the-topology"></a>De topologie plannen
+Voordat u een gedistribueerde app-footprint maakt, is het handig om een paar stukjes informatie te hebben.
 
-* **Het aangepaste domein voor de app:**  Wat is de aangepaste domeinnaam dat klanten toegang tot de app wordt gebruikt?  Voor de voorbeeld-app is de aangepaste domeinnaam `www.scalableasedemo.com`
-* **Traffic Manager-domein:**  De naam van een domein moet worden gekozen bij het maken van een [Azure Traffic Manager-profiel][AzureTrafficManagerProfile].  Deze naam wordt gecombineerd met de *trafficmanager.net* achtervoegsel voor het registreren van een domein-item dat wordt beheerd door Traffic Manager.  Voor de voorbeeld-app, is het de naam van de gekozen *schaalbare-as-omgeving-demo*.  De volledige domeinnaam die wordt beheerd door Traffic Manager is daardoor *schaalbare-as-omgeving-demo.trafficmanager.net*.
-* **Strategie voor het schalen van de app-voetafdruk:**  De footprint van de toepassing worden verdeeld over meerdere App Service-omgevingen in één regio?  Meerdere regio's?  Een en-combineren van beide methoden?  De beslissing moet worden gebaseerd op de verwachtingen van waaruit klantenverkeer wordt uitgevoerd, evenals hoe goed de rest van de back-endinfrastructuur voor ondersteuning van van een app kunt schalen.  Bijvoorbeeld, met een 100% staatloze toepassingen, kan een app worden zeer geschaald met behulp van een combinatie van meerdere App Service-omgevingen per Azure-regio, vermenigvuldigd met App Service-omgevingen in meerdere Azure-regio's.  Klanten met 15 + openbare Azure-regio's beschikbaar om de verkeersbelasting, kunnen echt een footprint wereldwijd grootschalige toepassingen bouwen.  Voor de voorbeeldapp die wordt gebruikt voor dit artikel, zijn drie App Service-omgevingen gemaakt in één Azure-regio (Zuid-centraal VS).
-* **De naamconventie voor de App Service-omgevingen:**  Elke App Service-omgeving moet een unieke naam.  Meer dan één of twee App Service-omgevingen is het handig om een naamconventie gebruikt voor het identificeren van elke App Service-omgeving.  Een eenvoudige naamconventie is voor de voorbeeld-app gebruikt.  De namen van de drie App Service-omgevingen zijn *fe1ase*, *fe2ase*, en *fe3ase*.
-* **De naamconventie voor de apps:**  Omdat meerdere exemplaren van de app worden geïmplementeerd, wordt een naam vereist voor elk exemplaar van de geïmplementeerde app.  Een beetje bekende maar zeer handige functie van App Service-omgevingen is dat de naam van de dezelfde app kan worden gebruikt voor meerdere App Service-omgevingen.  Omdat elke App Service-omgeving een unieke domeinachtervoegsel heeft, kunnen ontwikkelaars kiezen om exact dezelfde naam van de app opnieuw te gebruiken in elke omgeving.  Bijvoorbeeld een ontwikkelaar van apps met de naam als volgt kan hebben: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*, enzovoort.  Voor de voorbeeld-app echter elk exemplaar van de app heeft ook een unieke naam.  De namen van de app-exemplaar gebruikt *webfrontend1*, *webfrontend2*, en *webfrontend3*.
+* **Aangepast domein voor de app:**  Wat is de aangepaste domein naam die klanten gebruiken om toegang te krijgen tot de app?  Voor de voor beeld-app is de aangepaste domein naam`www.scalableasedemo.com`
+* **Traffic Manager domein:**  Er moet een domein naam worden gekozen bij het maken van een [Azure Traffic Manager-profiel][AzureTrafficManagerProfile].  Deze naam wordt gecombineerd met het achtervoegsel *trafficmanager.net* om een domein vermelding te registreren die wordt beheerd door Traffic Manager.  Voor de voor beeld-app is de gekozen naam *schaalbaar-ASE-demo*.  Als gevolg hiervan is de volledige domein naam die wordt beheerd door Traffic Manager *Scalable-ASE-demo.trafficmanager.net*.
+* **Strategie voor het schalen van de app-footprint:**  Wordt het Opper vlak van de toepassing verdeeld over meerdere App Service omgevingen in één regio?  Meerdere regio's?  Een combi natie van beide benaderingen?  De beslissing moet worden gebaseerd op de verwachtingen van waar klant verkeer van toepassing is, en hoe goed de rest van de ondersteuning van een back-end-infra structuur van een app kan worden geschaald.  Een app kan bijvoorbeeld met een stateless toepassing van 100% worden geschaald met behulp van een combi natie van meerdere App Service omgevingen per Azure-regio, vermenigvuldigd met App Service omgevingen die zijn geïmplementeerd in meerdere Azure-regio's.  Met 15 + open bare Azure-regio's die beschikbaar zijn om te kiezen, kunnen klanten echt een grootschalige grootte voor het maken van een Hyper-endtoepassing bouwen.  Voor de voor beeld-app die wordt gebruikt voor dit artikel, zijn er drie App Service omgevingen gemaakt in één Azure-regio (Zuid-Centraal).
+* **Naam Conventie voor de App Service omgevingen:**  Elk App Service Environment vereist een unieke naam.  Naast een of twee App Service omgevingen is het handig om een naam Conventie te hebben om elke App Service Environment te identificeren.  Voor de voor beeld-app is een eenvoudige naam conventie gebruikt.  De namen van de drie App Service omgevingen zijn *fe1ase*, *fe2ase*en *fe3ase*.
+* **Naam Conventie voor de apps:**  Omdat er meerdere exemplaren van de app worden geïmplementeerd, is een naam vereist voor elk exemplaar van de geïmplementeerde app.  Een weinig bekende maar zeer handige functie van App Service omgevingen is dat dezelfde app-naam kan worden gebruikt in meerdere App Service omgevingen.  Omdat elke App Service Environment een uniek domein achtervoegsel heeft, kunnen ontwikkel aars kiezen om in elke omgeving precies dezelfde app-naam opnieuw te gebruiken.  Een ontwikkelaar kan bijvoorbeeld apps als volgt hebben met de naam: *MyApp.foo1.p.azurewebsites.net*, *MyApp.foo2.p.azurewebsites.net*, *MyApp.foo3.p.azurewebsites.net*, etc.  Voor de voor beeld-app, hoewel elk app-exemplaar ook een unieke naam heeft.  De namen van de app-exemplaren die worden gebruikt, zijn *webfrontend1*, *webfrontend2*en *webfrontend3*.
 
-## <a name="setting-up-the-traffic-manager-profile"></a>Instellen van Traffic Manager-profiel
-Als meerdere exemplaren van een app worden geïmplementeerd op meerdere App Service-omgevingen, kunnen de afzonderlijke app-exemplaren met Traffic Manager worden geregistreerd.  Voor de voorbeeld-app een Traffic Manager-profiel is nodig voor *schaalbare-as-omgeving-demo.trafficmanager.net* die klanten kunnen routeren naar een van de volgende exemplaren van de door u geïmplementeerde app:
+## <a name="setting-up-the-traffic-manager-profile"></a>Het Traffic Manager profiel instellen
+Zodra meerdere exemplaren van een app op meerdere App Service omgevingen zijn geïmplementeerd, kunnen de afzonderlijke app-exemplaren worden geregistreerd met Traffic Manager.  Voor de voor beeld-app is een Traffic Manager-profiel nodig voor *Scalable-ASE-demo.trafficmanager.net* dat klanten kan omleiden naar een van de volgende geïmplementeerde app-exemplaren:
 
-* **webfrontend1.fe1ase.p.azurewebsites.net:**  Een exemplaar van de voorbeeld-app geïmplementeerd op de eerste App Service-omgeving.
-* **webfrontend2.fe2ase.p.azurewebsites.net:**  Een exemplaar van de voorbeeld-app geïmplementeerd op de tweede App Service-omgeving.
-* **webfrontend3.fe3ase.p.azurewebsites.net:**  Een exemplaar van de voorbeeld-app geïmplementeerd op de derde App Service-omgeving.
+* **webfrontend1.fe1ase.p.azurewebsites.net:**  Een exemplaar van de voor beeld-app die is geïmplementeerd op de eerste App Service Environment.
+* **webfrontend2.fe2ase.p.azurewebsites.net:**  Een exemplaar van de voor beeld-app die is geïmplementeerd op de tweede App Service Environment.
+* **webfrontend3.fe3ase.p.azurewebsites.net:**  Een exemplaar van de voor beeld-app die is geïmplementeerd op de derde App Service Environment.
 
-De eenvoudigste manier om het registreren van meerdere Azure App Service-eindpunten, alle actieve in de **dezelfde** Azure-regio, is met de Powershell [ondersteuning voor Azure Resource Manager Traffic Manager] [ ARMTrafficManager].  
+De eenvoudigste manier om meerdere Azure App Service-eind punten te registreren, die allemaal in **dezelfde** Azure-regio worden uitgevoerd, is met de Power shell- [Azure Resource Manager Traffic Manager ondersteuning][ARMTrafficManager].  
 
-De eerste stap is het maken van een Azure Traffic Manager-profiel.  De code hieronder laat zien hoe het profiel is gemaakt voor de voorbeeld-app:
+De eerste stap is het maken van een Azure Traffic Manager-profiel.  De volgende code laat zien hoe het profiel is gemaakt voor de voor beeld-app:
 
     $profile = New-AzureTrafficManagerProfile –Name scalableasedemo -ResourceGroupName yourRGNameHere -TrafficRoutingMethod Weighted -RelativeDnsName scalable-ase-demo -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 
-U ziet hoe de *RelativeDnsName* parameter is ingesteld op *schaalbare-as-omgeving-demo*.  Dit is hoe de domeinnaam *schaalbare-as-omgeving-demo.trafficmanager.net* wordt gemaakt en die zijn gekoppeld aan een Traffic Manager-profiel.
+U ziet hoe de para meter *RelativeDnsName* is ingesteld op *Scalable-ASE-demo*.  Zo wordt de domein naam *Scalable-ASE-demo.trafficmanager.net* gemaakt en gekoppeld aan een Traffic Manager profiel.
 
-De *TrafficRoutingMethod* parameter bepaalt de load balancer-beleid voor Traffic Manager wordt gebruikt om te bepalen hoe de beschikbare eindpunten worden verdeeld aan belasting van klanten.  In dit voorbeeld de *gewogen* methode hebt gekozen.  Hierdoor wordt de aanvragen van klanten wordt verdeeld over alle van de geregistreerde toepassingseindpunten op basis van het relatieve gewicht dat is gekoppeld aan elk eindpunt. 
+De para meter *TrafficRoutingMethod* definieert het taakverdelings beleid dat Traffic Manager gebruikt om te bepalen hoe de belasting van klanten wordt verdeeld over alle beschik bare eind punten.  In dit voor beeld is de *gewogen* methode gekozen.  Dit leidt ertoe dat klant aanvragen worden verspreid over alle geregistreerde toepassings eindpunten op basis van de relatieve gewichten die zijn gekoppeld aan elk eind punt. 
 
-Elke app-instantie wordt het profiel is gemaakt, als een systeemeigen Azure-eindpunt toegevoegd aan het profiel.  De onderstaande code een verwijzing naar elke front-end web-app kan worden opgehaald en worden vervolgens elke app toegevoegd als een Traffic Manager-eindpunt van de *TargetResourceId* parameter.
+Als het profiel is gemaakt, wordt elk exemplaar van de app toegevoegd aan het profiel als een systeem eigen Azure-eind punt.  Met de onderstaande code wordt een verwijzing naar elke front-end-web-app opgehaald en wordt elke app vervolgens als Traffic Manager-eind punt toegevoegd via de para meter *TargetResourceId* .
 
     $webapp1 = Get-AzWebApp -Name webfrontend1
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
@@ -82,42 +81,42 @@ Elke app-instantie wordt het profiel is gemaakt, als een systeemeigen Azure-eind
 
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
 
-U ziet hoe er wordt één aanroep naar *toevoegen AzureTrafficManagerEndpointConfig* voor elke afzonderlijke app-instantie.  De *TargetResourceId* parameter in elke Powershell-opdracht verwijst naar een van de drie exemplaren van de door u geïmplementeerde app.  Traffic Manager-profiel wordt geladen verdeeld over alle drie eindpunten die zijn geregistreerd in het profiel.
+U ziet dat er één aanroep van *add-AzureTrafficManagerEndpointConfig* is voor elke afzonderlijke app-instantie.  De *TargetResourceId* -para meter in elke Power shell-opdracht verwijst naar een van de drie geïmplementeerde app-exemplaren.  Het Traffic Manager profiel verspreidt de belasting over alle drie de eind punten die in het profiel zijn geregistreerd.
 
-Alle van de drie eindpunten gebruik dezelfde waarde (10) voor de *gewicht* parameter.  Dit resulteert in Traffic Manager het spreiden van klantaanvragen voor alle drie app-instanties relatief gelijk. 
+Alle drie eind punten gebruiken dezelfde waarde (10) voor de *Weight* -para meter.  Dit resulteert in Traffic Manager klant aanvragen relatief gelijkmatig over alle drie app-exemplaren te verspreiden. 
 
-## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Aangepast domein in het Traffic Manager-domein van de App aan te wijzen
-De laatste stap nodig is zodat het aangepaste domein van de app op het Traffic Manager-domein.  Voor de voorbeeld-app betekent dit dat wijzen `www.scalableasedemo.com` op `scalable-ase-demo.trafficmanager.net`.  Deze stap moet worden voltooid met de domeinregistrar waarmee het aangepaste domein wordt beheerd.  
+## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Het aangepaste domein van de app op het Traffic Manager domein aanwijzen
+De laatste stap is nodig om het aangepaste domein van de app te laten verwijzen naar het Traffic Manager domein.  Voor de voor beeld-app wordt `www.scalableasedemo.com` verwezen `scalable-ase-demo.trafficmanager.net`naar.  Deze stap moet worden voltooid met de domein registratie-instantie die het aangepaste domein beheert.  
 
-Met behulp van beheerhulpprogramma's van uw registrar domein, registreert een CNAME moet worden gemaakt die het aangepaste domein in het Traffic Manager-domein verwijst.  De volgende afbeelding toont een voorbeeld van hoe deze configuratie CNAME uitziet:
+Met de domein beheer hulpprogramma's van uw registratie service moet u een CNAME-record maken die verwijst naar het aangepaste domein op het Traffic Manager domein.  In de onderstaande afbeelding ziet u een voor beeld van hoe deze CNAME-configuratie er als volgt uitziet:
 
 ![CNAME voor aangepast domein][CNAMEforCustomDomain] 
 
-Hoewel in dit onderwerp niet wordt gedekt, houd er rekening mee dat elke afzonderlijke app-instantie moet het aangepaste domein dat is geregistreerd bij deze ook zijn.  Anders als een aanvraag het om een app-exemplaar is en de toepassing heeft geen het aangepaste domein dat is geregistreerd bij de app, wordt de aanvraag mislukt.  
+Hoewel dit niet in dit onderwerp wordt behandeld, moet u er rekening mee houden dat voor elk afzonderlijk app-exemplaar ook het aangepaste domein moet worden geregistreerd.  Anders mislukt de aanvraag als een aanvraag wordt gedaan voor een app-exemplaar en de toepassing heeft niet het aangepaste domein dat is geregistreerd bij de app.  
 
-In dit voorbeeld het aangepaste domein is `www.scalableasedemo.com`, en elk exemplaar heeft het aangepaste domein is gekoppeld.
+In dit voor beeld is `www.scalableasedemo.com`het aangepaste domein, en aan elk toepassings exemplaar is het aangepaste domein gekoppeld.
 
 ![Aangepast domein][CustomDomain] 
 
-Zie het volgende artikel voor een samenvatting van het registreren van een aangepast domein met Azure App Service-apps, op [registreren van aangepaste domeinen][RegisterCustomDomain].
+Raadpleeg het volgende artikel over het [registreren van aangepaste domeinen][RegisterCustomDomain]voor een samen vatting van het registreren van een aangepast domein met Azure app service-apps.
 
-## <a name="trying-out-the-distributed-topology"></a>Proberen van de gedistribueerde topologie
-Het eindresultaat van de Traffic Manager- en DNS-configuratie is dat aanvragen voor `www.scalableasedemo.com` worden overgebracht via de volgende volgorde:
+## <a name="trying-out-the-distributed-topology"></a>De gedistribueerde topologie wordt uitgeprobeerd
+Het eind resultaat van de Traffic Manager-en DNS-configuratie is dat `www.scalableasedemo.com` aanvragen voor doorlopend worden door de volgende volg orde:
 
-1. Een browser of apparaat wordt een DNS-zoekopdracht maken voor `www.scalableasedemo.com`
-2. De CNAME-vermelding op de domeinregistrar zorgt ervoor dat de DNS-zoekactie worden omgeleid naar Azure Traffic Manager.
-3. Een DNS-zoekopdracht wordt gemaakt voor *schaalbare-as-omgeving-demo.trafficmanager.net* op basis van een van de Azure Traffic Manager-DNS-servers.
-4. Op basis van de load balancer-beleid (de *TrafficRoutingMethod* parameter eerder hebt gebruikt bij het maken van Traffic Manager-profiel), Traffic Manager Selecteer een van de geconfigureerde eindpunten en de FQDN-naam van dat eindpunt om te retourneren de browser of apparaat.
-5. Omdat de FQDN-naam van het eindpunt de Url van een app-exemplaar waarop een App Service-omgeving is, vraagt de browser of het apparaat een Microsoft Azure DNS-server de FQDN-naam omzetten in een IP-adres. 
-6. De browser of apparaat stuurt de aanvraag HTTP/S naar het IP-adres.  
-7. De aanvraag wordt ontvangen op een van de app-exemplaren die worden uitgevoerd op een van de App Service-omgevingen.
+1. Een browser of apparaat maakt een DNS-zoek opdracht voor`www.scalableasedemo.com`
+2. De CNAME-vermelding in het domein registratie proces zorgt ervoor dat de DNS-zoek opdracht wordt omgeleid naar Azure Traffic Manager.
+3. Er wordt een DNS-zoek opdracht uitgevoerd voor *Scalable-ASE-demo.trafficmanager.net* op een van de Azure Traffic Manager DNS-servers.
+4. Op basis van het taakverdelings beleid (de para meter *TrafficRoutingMethod* die eerder is gebruikt bij het maken van het Traffic Manager profiel), selecteert Traffic Manager een van de geconfigureerde eind punten en wordt de FQDN-naam van dat eind punt naar de browser of het apparaat geretourneerd.
+5. Omdat de FQDN-naam van het eind punt de URL is van een app-exemplaar dat wordt uitgevoerd op een App Service Environment, vraagt de browser of het apparaat een Microsoft Azure DNS-server om de FQDN naar een IP-adres op te lossen. 
+6. De browser of het apparaat verzendt de HTTP/S-aanvraag naar het IP-adres.  
+7. De aanvraag ontvangt een van de app-exemplaren die worden uitgevoerd op een van de App Service omgevingen.
 
-De console van de volgende afbeelding ziet u een DNS-zoekactie voor de voorbeeld-app aangepaste domein is omgezet naar een app-exemplaar die wordt uitgevoerd op een van de drie voorbeeld-App Service-omgevingen (in dit geval de seconde van de drie App Service-omgevingen):
+In de onderstaande console afbeelding wordt een DNS-zoek opdracht weer gegeven voor het aangepaste domein van de voor beeld-app, omgezet naar een app-exemplaar dat wordt uitgevoerd op een van de drie steek proef App Service omgevingen (in dit geval de tweede van de drie App Service omgevingen):
 
-![DNS-zoekactie][DNSLookup] 
+![DNS-zoek opdracht][DNSLookup] 
 
 ## <a name="additional-links-and-information"></a>Aanvullende koppelingen en informatie
-Documentatie over de Powershell [ondersteuning voor Azure Resource Manager Traffic Manager][ARMTrafficManager].  
+Documentatie over de ondersteuning van de Power shell- [Azure Resource Manager Traffic Manager][ARMTrafficManager].  
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

@@ -1,7 +1,7 @@
 ---
-title: Web App for Containers met behulp van Azure CLI - Azure App Service beheren | Microsoft Docs
-description: Web App for Containers met behulp van Azure CLI beheren.
-keywords: Azure appservice, web-app, cli, linux, oss
+title: Web App for Containers beheren met Azure CLI-Azure App Service | Microsoft Docs
+description: Web App for Containers beheren met Azure CLI.
+keywords: Azure app service, Web-app, CLI, Linux, oss
 services: app-service
 documentationCenter: ''
 author: ahmedelnably
@@ -11,93 +11,92 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 21f6963fbaada4524f27602454d38e7252a5e8b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5481e9f28d8fc47936ad62bd8d974beb5ca85fcd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60850081"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071314"
 ---
-# <a name="manage-web-app-for-containers-using-azure-cli"></a>Web App for Containers met behulp van Azure CLI beheren
+# <a name="manage-web-app-for-containers-using-azure-cli"></a>Web App for Containers beheren met Azure CLI
 
-Met behulp van de opdrachten in dit artikel kunt maken en beheren van een Web-App voor Containers met de Azure CLI.
-U kunt starten met de nieuwe versie van de CLI op twee manieren:
+Met de opdrachten in dit artikel kunt u een Web App for Containers maken en beheren met behulp van de Azure CLI.
+U kunt op twee manieren beginnen met het gebruik van de nieuwe versie van de CLI:
 
-* [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) op uw computer.
-* Met behulp van [Azure Cloudshell (Preview)](../../cloud-shell/overview.md)
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) op uw computer installeren.
+* [Azure Cloud shell gebruiken (preview-versie)](../../cloud-shell/overview.md)
 
-## <a name="create-a-linux-app-service-plan"></a>Een Linux App Service-Plan maken
+## <a name="create-a-linux-app-service-plan"></a>Een Linux-App Service plan maken
 
-Voor het maken van een Linux App Service-Plan, kunt u de volgende opdracht uit:
+Als u een Linux App Service-abonnement wilt maken, kunt u de volgende opdracht gebruiken:
 
 ```azurecli-interactive
 az appservice plan create -n appname -g rgname --is-linux -l "South Central US" --sku S1 --number-of-workers 1
 ```
 
-## <a name="create-a-custom-docker-container-web-app"></a>Een aangepaste Docker-container Web-App maken
+## <a name="create-a-custom-docker-container-web-app"></a>Een aangepaste docker-container-web-app maken
 
-Voor het maken van een web-app en te configureren voor het uitvoeren van een aangepaste Docker-container, kunt u de volgende opdracht uit:
+Als u een web-app wilt maken en deze wilt configureren om een aangepaste docker-container uit te voeren, kunt u de volgende opdracht gebruiken:
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -i elnably/dockerimagetest
 ```
 
-## <a name="activate-the-docker-container-logging"></a>Activeer de logboekregistratie voor Docker-container
+## <a name="activate-the-docker-container-logging"></a>De logboek registratie van de docker-container activeren
 
-Activeer de logboekregistratie voor Docker-container, kunt u de volgende opdracht uit:
+Als u de logboek registratie van de docker-container wilt activeren, kunt u de volgende opdracht gebruiken:
 
 ```azurecli-interactive
 az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
 
-## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>De aangepaste Docker-container voor een bestaande Web-App voor Containers App wijzigen
+## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>De aangepaste docker-container voor een bestaande Web App for Containers-app wijzigen
 
-Als u wilt een eerder gemaakte app uit de huidige Docker-installatiekopie naar een nieuwe afbeelding wijzigen, kunt u de volgende opdracht uit:
+Als u een eerder gemaakte app wilt wijzigen van de huidige docker-installatie kopie naar een nieuwe installatie kopie, kunt u de volgende opdracht gebruiken:
 
 ```azurecli-interactive
 az webapp config container set -n sname -g rgname -c apurvajo/mariohtml5
 ```
 
-## <a name="using-docker-images-from-a-private-registry"></a>Met behulp van Docker-installatiekopieën uit een persoonlijk register
+## <a name="using-docker-images-from-a-private-registry"></a>Docker-installatie kopieën uit een persoonlijk REGI ster gebruiken
 
-U kunt uw app voor het gebruik van afbeeldingen uit een persoonlijk register configureren. U moet de url voor uw register, gebruikersnaam en wachtwoord opgeven. Dit kan worden bereikt met behulp van de volgende opdracht uit:
+U kunt uw app configureren voor het gebruik van installatie kopieën uit een persoonlijk REGI ster. U moet de URL voor het REGI ster, de gebruikers naam en het wacht woord opgeven. Dit kan worden bereikt met de volgende opdracht:
 
 ```azurecli-interactive
 az webapp config container set -n sname1 -g rgname -c <container name> -r <server url> -u <username> -p <password>
 ```
 
-## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Inschakelen van continue implementaties voor aangepaste Docker-installatiekopieën
+## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Continue implementaties inschakelen voor aangepaste docker-installatie kopieën
 
-U kunt met de volgende opdracht inschakelen van de CD-functionaliteit en ophalen van de webhook-url. Deze url kan worden gebruikt om te configureren dat u DockerHub of Azure Container Registry-opslagplaatsen.
+Met de volgende opdracht kunt u de CD-functionaliteit inschakelen en de webhook-URL ophalen. Deze URL kan worden gebruikt om u DockerHub of Azure Container Registry opslag plaatsen te configureren.
 
 ```azurecli-interactive
 az webapp deployment container config -n sname -g rgname -e true
 ```
 
-## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Maak een Web-App voor Containers-App met behulp van een van onze ingebouwde runtime-frameworks
+## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Een Web App for Containers-app maken met behulp van een van onze ingebouwde runtime Frameworks
 
-Voor het maken van een PHP-5.6-Web-App voor Containers-App die, kunt u de volgende opdracht uit.
+Als u een PHP 5,6 Web App for Containers-app wilt maken, kunt u de volgende opdracht gebruiken.
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -r "php|5.6"
 ```
 
-## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>Framework-versie voor een bestaande Web-App voor Containers App wijzigen
+## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>Framework-versie wijzigen voor een bestaande Web App for Containers-app
 
-Als u wilt een eerder gemaakte app wijzigen van de huidige framework-versie naar Node.js 6.11, kunt u de volgende opdracht uit:
+Als u een eerder gemaakte app wilt wijzigen van de huidige Framework-versie in node. js 6,11, kunt u de volgende opdracht gebruiken:
 
 ```azurecli-interactive
 az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 ```
 
-## <a name="set-up-git-deployments-for-your-web-app"></a>Git-implementaties voor uw Web-App instellen
+## <a name="set-up-git-deployments-for-your-web-app"></a>Git-implementaties instellen voor uw web-app
 
-Als u Git-implementaties voor uw app instelt, kunt u de volgende opdracht uit:
+Als u Git-implementaties voor uw app wilt instellen, kunt u de volgende opdracht gebruiken:
 
 ```azurecli-interactive
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>
@@ -105,8 +104,8 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Wat is Azure App Service on Linux?](app-service-linux-intro.md)
+* [Wat is Azure App Service op Linux?](app-service-linux-intro.md)
 * [Azure-CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [Azure Cloudshell (Preview)](../../cloud-shell/overview.md)
+* [Azure Cloud Shell (preview-versie)](../../cloud-shell/overview.md)
 * [Faseringsomgevingen in Azure App Service instellen](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Doorlopende implementatie met WebApp for Containers](app-service-linux-ci-cd.md)
+* [Doorlopende implementatie met Web App for Containers](app-service-linux-ci-cd.md)

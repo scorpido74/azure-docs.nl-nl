@@ -7,24 +7,23 @@ manager: cfowler
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a2b8a4e496094c6275710328e70a09376ce0e5fc
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563027"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098473"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
 > [!Important] 
 > Beheerde identiteiten voor App Service en Azure Functions werken niet zoals verwacht als uw app wordt gemigreerd tussen abonnementen/tenants. De app moet een nieuwe identiteit verkrijgen. Dit kan worden gedaan door de functie uit te scha kelen en opnieuw in te scha kelen. Zie hieronder [een identiteit verwijderen](#remove) . Downstream-resources moeten ook toegangs beleid hebben bijgewerkt voor het gebruik van de nieuwe identiteit.
 
-In dit onderwerp wordt beschreven hoe u een beheerde identiteit kunt maken voor App Service en Azure Functions toepassingen en hoe u deze kunt gebruiken om toegang te krijgen tot andere resources. Met een beheerde identiteit van Azure Active Directory kan uw app eenvoudig toegang krijgen tot andere met AAD beveiligde resources zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten in Aad.
+In dit onderwerp wordt beschreven hoe u een beheerde identiteit kunt maken voor App Service en Azure Functions toepassingen en hoe u deze kunt gebruiken om toegang te krijgen tot andere resources. Met een beheerde identiteit van Azure Active Directory kunt u via uw app eenvoudig toegang krijgen tot andere door AAD beveiligde resources, zoals Azure Key Vault. De identiteit wordt beheerd door het Azure-platform en u hoeft geen geheimen in te richten of te draaien. Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten in Aad.
 
 Aan uw toepassing kunnen twee typen identiteiten worden verleend: 
 - Een door het **systeem toegewezen identiteit** is gekoppeld aan uw toepassing en wordt verwijderd als uw app wordt verwijderd. Een app kan slechts één door het systeem toegewezen identiteit hebben.

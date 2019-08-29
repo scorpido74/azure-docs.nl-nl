@@ -7,16 +7,16 @@ ms.date: 07/16/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879602"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114254"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>Algemene interfaces Plug en Play de preview-versie van IoT
 
-Alle IoT Plug en Play-apparaten worden verwacht een aantal algemene interfaces te implementeren. Algemene interfaces profiteren van IoT-oplossingen omdat ze consistente functionaliteit bieden. Voor [certificering](tutorial-build-device-certification.md) is het apparaat vereist dat er verschillende algemene interfaces worden geïmplementeerd. U kunt algemene interface definities ophalen uit de globale model opslagplaats.
+Alle IoT Plug en Play-apparaten worden verwacht een aantal algemene interfaces te implementeren. Algemene interfaces profiteren van IoT-oplossingen omdat ze consistente functionaliteit bieden. Voor [certificering](tutorial-build-device-certification.md) is het apparaat vereist dat er verschillende algemene interfaces worden geïmplementeerd. U kunt algemene interface definities ophalen uit de open bare model opslagplaats.
 
 ## <a name="summary-of-common-interfaces"></a>Samen vatting van algemene interfaces
 
@@ -35,7 +35,7 @@ Alle IoT Plug en Play-apparaten worden verwacht een aantal algemene interfaces t
 
 ### <a name="cli"></a>CLI
 
-U kunt de Azure IoT-extensie voor Azure CLI gebruiken om de gemeen schappelijke interfaces van de globale model opslagplaats op te halen.
+U kunt de Azure IoT-extensie voor Azure CLI gebruiken om de gemeen schappelijke interfaces uit de open bare model opslagplaats op te halen.
 
 ```cmd/sh
 az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
@@ -49,9 +49,9 @@ az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionStri
 
 1. Gebruik **CTRL + SHIFT + P** om het opdracht palet te openen.
 
-1. Voer **Plug en Play** in en selecteer vervolgens **de IOT-Plug en Play: Open de opdracht** model opslagplaats. **Globale model opslagplaats**kiezen. De globale model opslagplaats wordt geopend in VS code.
+1. Voer **Plug en Play** in en selecteer vervolgens **de IOT-Plug en Play: Open de opdracht** model opslagplaats. Kies een **open bare opslag plaats**. De open bare model opslagplaats wordt geopend in VS code.
 
-1. Voer in de opslag plaats globaal model de naam van de interface in het zoek veld in.
+1. Voer in de open bare model opslagplaats de naam van de interface in het zoek veld in.
 
 1. Als u een lokale kopie van de interface wilt maken, selecteert u deze in de zoek resultaten en selecteert u **downloaden**.
 
