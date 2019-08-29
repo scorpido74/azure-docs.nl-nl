@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b1093c75e5552fea875f81d2860deb0d61405022
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0c60cd335e9d280d59fd872d1d0724f2eabd3afb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707963"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101579"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Zelfstudie: Windows-VM's maken en beheren met Azure PowerShell
 
@@ -181,7 +180,7 @@ De grootte van een VM bepaalt de hoeveelheid rekenresources, zoals CPU, GPU en g
 
 In de volgende tabel zijn grootten gecategoriseerd in use-cases.  
 
-| Type                     | Veelgebruikte grootten           |    Description       |
+| type                     | Veelgebruikte grootten           |    Description       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Algemeen doel](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
 | [Geoptimaliseerde rekenkracht](sizes-compute.md)   | Fsv2          | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |
@@ -245,10 +244,10 @@ Een Azure VM kan op een van de vele energiestatussen worden ingesteld.
 | Energiestatus | Description
 |----|----|
 | Starten | De virtuele machine die wordt gestart. |
-| In uitvoering | De virtuele machine die wordt uitgevoerd. |
+| Wordt uitgevoerd | De virtuele machine die wordt uitgevoerd. |
 | Stoppen | De virtuele machine die wordt gestopt. |
 | Gestopt | De virtuele machine is gestopt. Virtuele machines met de status Gestopt genereren nog steeds rekenkosten.  |
-| Vrijgeven | De VM waarvan de toewijzing ongedaan wordt gemaakt. |
+| De toewijzing wordt ongedaan gemaakt | De VM waarvan de toewijzing ongedaan wordt gemaakt. |
 | Toewijzing ongedaan gemaakt | Geeft aan dat de VM is verwijderd uit de hypervisor, maar nog steeds beschikbaar is in het besturingsvenster. Virtuele machines met de status `Deallocated` genereren geen rekenkosten. |
 | - | De energiestatus van de VM is onbekend. |
 

@@ -1,6 +1,6 @@
 ---
-title: Voorbereiden van een Debian VHD met Linux in Azure | Microsoft Docs
-description: Informatie over het maken van Debian VHD-installatiekopieën voor implementatie in Azure.
+title: Een Debian Linux-VHD voorbereiden in azure | Microsoft Docs
+description: Meer informatie over het maken van Debian-VHD-installatie kopieën voor implementatie in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -11,30 +11,29 @@ ms.assetid: a6de7a7c-cc70-44e7-aed0-2ae6884d401a
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: szark
-ms.openlocfilehash: bdeaf4ec4a276e7cdd94402159f6adac474b3af8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 009918a95ca1ff6189553d502fd06773fcd0d402
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671534"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083456"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Een Debian VHD voor Azure voorbereiden
 ## <a name="prerequisites"></a>Vereisten
-Deze sectie wordt ervan uitgegaan dat u hebt een Debian Linux-besturingssysteem geïnstalleerd vanaf een .iso-bestand gedownload van de [Debian website](https://www.debian.org/distrib/) op een virtuele harde schijf. Bestaan meerdere hulpprogramma's voor het maken van VHD-bestanden. Hyper-V is slechts één voorbeeld. Zie voor instructies over het gebruik van Hyper-V [de Hyper-V-rol installeren en configureren van een virtuele Machine](https://technet.microsoft.com/library/hh846766.aspx).
+In deze sectie wordt ervan uitgegaan dat u al een Debian Linux-besturings systeem hebt geïnstalleerd vanuit een ISO-bestand dat is gedownload van de [Debian-website](https://www.debian.org/distrib/) naar een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden. Hyper-V is maar een voor beeld. Zie [de hyper-v-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies voor het gebruik van Hyper-v.
 
-## <a name="installation-notes"></a>Opmerkingen bij de installatie
-* Zie ook [algemene opmerkingen bij de installatie van Linux](create-upload-generic.md#general-linux-installation-notes) voor meer tips voor Linux voorbereiden voor Azure.
-* De nieuwe VHDX-indeling wordt niet ondersteund in Azure. U kunt de schijf converteren naar VHD-indeling met behulp van Hyper-V-beheer of de **convert-vhd** cmdlet.
-* Bij het installeren van de Linux-systeem, is het raadzaam dat u standaard partities in plaats van LVM (vaak de standaardinstelling voor vele installaties gebruikt). Dit zal LVM naam conflicteert met de gekloonde virtuele machines, voorkomen dat met name als een besturingssysteemschijf ooit worden gekoppeld aan een andere virtuele machine moet voor probleemoplossing. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) op gegevensschijven kunnen worden gebruikt als de voorkeur.
-* Stel een swap-partitie niet op de besturingssysteemschijf. De Azure Linux-agent kan worden geconfigureerd voor het maken van een wisselbestand op de tijdelijke schijf. Meer informatie kunt vinden in de onderstaande stappen.
-* Alle VHD's op Azure beschikken over een virtuele grootte die is afgestemd op 1MB. Bij het converteren van een onbewerkte schijf naar VHD, moet u ervoor zorgen dat de onbewerkte schijfgrootte een veelvoud van 1MB vóór de conversie is. Zie voor meer informatie, [opmerkingen bij de installatie van Linux](create-upload-generic.md#general-linux-installation-notes).
+## <a name="installation-notes"></a>Installatie notities
+* Zie ook [algemene Linux-installatie notities](create-upload-generic.md#general-linux-installation-notes) voor meer tips over het voorbereiden van Linux voor Azure.
+* De nieuwere VHDX-indeling wordt niet ondersteund in Azure. U kunt de schijf converteren naar VHD-indeling met behulp van Hyper-V-beheer of de cmdlet **Convert-VHD** .
+* Bij de installatie van het Linux-systeem wordt aanbevolen om standaard partities te gebruiken in plaats van LVM (vaak de standaard instelling voor veel installaties). Hiermee wordt voor komen dat LVM naam strijdig is met gekloonde Vm's, met name als een besturingssysteem schijf ooit moet worden gekoppeld aan een andere virtuele machine voor het oplossen van problemen. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan worden gebruikt op gegevens schijven als dit de voor keur heeft.
+* Configureer geen swap partitie op de besturingssysteem schijf. De Azure Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf. Meer informatie vindt u in de volgende stappen.
+* Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Zie [installatie notities voor Linux](create-upload-generic.md#general-linux-installation-notes)voor meer informatie.
 
-## <a name="use-azure-manage-to-create-debian-vhds"></a>Gebruik Azure beheren om te maken van Debian VHD 's
-Er zijn hulpprogramma's beschikbaar voor het genereren van Debian VHD's voor Azure, zoals de [azure-beheren](https://github.com/credativ/azure-manage) scripts via [Credativ](https://www.credativ.com/). Dit is de aanbevolen aanpak ten opzichte van het maken van een installatiekopie van een nieuwe. Bijvoorbeeld, het uitvoeren van een VHD voor Debian 8 de volgende maken-opdrachten voor het downloaden van de `azure-manage` hulpprogramma (en afhankelijkheden) en voer de `azure_build_image` script:
+## <a name="use-azure-manage-to-create-debian-vhds"></a>Azure-Manage gebruiken om Debian-Vhd's te maken
+Er zijn hulpprogram ma's beschikbaar voor het genereren van Debian-Vhd's voor Azure, zoals de [Azure-beheer](https://github.com/credativ/azure-manage) scripts van [Credativ](https://www.credativ.com/). Dit is de aanbevolen benadering en een volledig nieuwe installatie kopie maken. Als u bijvoorbeeld een Debian 8-VHD wilt maken, voert u de volgende opdrachten `azure-manage` uit om het hulp programma (en de `azure_build_image` afhankelijkheden) te downloaden en het script uit te voeren:
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap
@@ -48,22 +47,22 @@ Er zijn hulpprogramma's beschikbaar voor het genereren van Debian VHD's voor Azu
     # sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
 
 
-## <a name="manually-prepare-a-debian-vhd"></a>Handmatig een Debian VHD voorbereiden
+## <a name="manually-prepare-a-debian-vhd"></a>Een Debian-VHD hand matig voorbereiden
 1. Selecteer de virtuele machine in Hyper-V-beheer.
-2. Klik op **Connect** om een consolevenster voor de virtuele machine te openen.
-3. Als u het besturingssysteem met behulp van een ISO die is geïnstalleerd, klikt u vervolgens als commentaar voor een regel met betrekking tot '`deb cdrom`"in `/etc/apt/source.list`.
+2. Klik op **verbinding maken** om een console venster voor de virtuele machine te openen.
+3. Als u het besturings systeem hebt geïnstalleerd met behulp van een ISO, kunt u een`deb cdrom`wille `/etc/apt/source.list`keurige regel met betrekking tot "" in een opmerking plaatsen.
 
-4. Bewerk de `/etc/default/grub` -bestand en wijzig de **GRUB_CMDLINE_LINUX** parameter als volgt om op te nemen van aanvullende kernel-parameters voor Azure.
+4. Bewerk het `/etc/default/grub` bestand en wijzig de para meter **GRUB_CMDLINE_LINUX** als volgt om extra kernel-para meters voor Azure te gebruiken.
    
         GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
 
-5. De grub bouwen en uitvoeren:
+5. Bouw de grub opnieuw op en voer de volgende handelingen uit:
 
         # sudo update-grub
 
-6. Toevoegen van Debian Azure opslagplaatsen aan /etc/apt/sources.list voor Debian 8 en 9:
+6. Voeg Azure-opslag plaatsen van Debian toe aan/etc/apt/sources.List voor Debian 8 of 9:
 
-    **Debian 8.x "Jessie"**
+    **Debian 8. x "Jessie"**
 
         deb http://debian-archive.trafficmanager.net/debian jessie main
         deb-src http://debian-archive.trafficmanager.net/debian jessie main
@@ -74,7 +73,7 @@ Er zijn hulpprogramma's beschikbaar voor het genereren van Debian VHD's voor Azu
         deb http://debian-archive.trafficmanager.net/debian jessie-backports main
         deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
 
-    **Debian 9.x "Stretch"**
+    **Debian 9. x "stretch"**
 
         deb http://debian-archive.trafficmanager.net/debian stretch main
         deb-src http://debian-archive.trafficmanager.net/debian stretch main
@@ -86,27 +85,27 @@ Er zijn hulpprogramma's beschikbaar voor het genereren van Debian VHD's voor Azu
         deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
 
 
-7. De Azure Linux-Agent installeren:
+7. De Azure Linux-agent installeren:
    
         # sudo apt-get update
         # sudo apt-get install waagent
 
-8. Voor Debian 9 +, is het aanbevolen gebruik van de nieuwe Debian Cloud-kernel voor gebruik met virtuele machines in Azure. Voor het installeren van deze nieuwe kernel, maakt u eerst een bestand met de naam /etc/apt/preferences.d/linux.pref met de volgende inhoud:
+8. Voor Debian 9 + is het raadzaam om de nieuwe Debian-Cloud kernel te gebruiken voor gebruik met virtuele machines in Azure. Als u deze nieuwe kernel wilt installeren, maakt u eerst een bestand met de naam/etc/apt/preferences.d/Linux.pref met de volgende inhoud:
    
         Package: linux-* initramfs-tools
         Pin: release n=stretch-backports
         Pin-Priority: 500
    
-    Voer 'sudo apt-get install linux-installatiekopie-cloud-amd64' voor het installeren van de nieuwe Debian Cloud-kernel.
+    Voer vervolgens ' sudo apt-down load linux-image-Cloud-amd64 ' uit om de nieuwe Debian Cloud kernel te installeren.
 
-9. Inrichting van de virtuele machine ongedaan maken en voorbereiden voor het inrichten op Azure en uitvoeren:
+9. Maak de inrichting van de virtuele machine ongedaan en bereid deze voor op het inrichten van Azure en voer de volgende handelingen uit:
    
         # sudo waagent –force -deprovision
         # export HISTSIZE=0
         # logout
 
-10. Klik op **actie** afsluiten omlaag -> in Hyper-V-beheer. De VHD met Linux is nu klaar om te worden geüpload naar Azure.
+10. Klik op **actie** -> afgesloten in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden geüpload naar Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt nu uw Debian virtuele harde schijf gebruiken om te maken van nieuwe virtuele machines in Azure. Als dit de eerste keer dat u de VHD-bestand naar Azure uploadt, Zie [een Linux-VM maken van een aangepaste schijf](upload-vhd.md#option-1-upload-a-vhd).
+U kunt nu de virtuele harde schijf van Debian gebruiken om nieuwe virtuele machines te maken in Azure. Zie [een virtuele Linux-machine maken op basis van een aangepaste schijf](upload-vhd.md#option-1-upload-a-vhd)als dit de eerste keer is dat u het VHD-bestand naar Azure uploadt.
 

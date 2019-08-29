@@ -1,45 +1,44 @@
 ---
-title: Certificering van SAP HANA op Azure (grote instanties) | Microsoft Docs
-description: Certificering van SAP HANA op Azure (grote instanties).
+title: Certificering van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Certificering van SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d623a189da5c5eccd73018e1ae0b7e5564fe09ab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3c2c919d6e85a2b708dc247b1642e7e8987df81b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709689"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099885"
 ---
 # <a name="certification"></a>Certificering
 
-SAP vereist naast de NetWeaver-certificering, een speciale certificering voor SAP HANA voor de ondersteuning van SAP HANA op bepaalde infrastructuur, zoals Azure IaaS.
+Naast de certificering voor het geweven, vereist SAP een speciale certificering voor SAP Hana om SAP Hana te ondersteunen op bepaalde infra structuren, zoals Azure IaaS.
 
-De core SAP-notitie op NetWeaver en een certificaat van de SAP HANA mate is [SAP Opmerking #1928533-SAP-toepassingen op Azure: Ondersteunde producten en typen Azure VM's](https://launchpad.support.sap.com/#/notes/1928533).
+De belangrijkste SAP-opmerking op NetWeaver en een diploma SAP Hana certificering is [SAP Note #1928533 – SAP-toepassingen op Azure: Ondersteunde producten en typen](https://launchpad.support.sap.com/#/notes/1928533)Azure VM.
 
-De CA-records voor SAP HANA op Azure (grote instanties)-eenheden kunnen u vinden in de [SAP HANA-gecertificeerde IaaS-platformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) site. 
+De certificerings records voor SAP HANA op Azure-eenheden (grote exemplaren) zijn te vinden op de [SAP Hana Certified IaaS platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) -site. 
 
-De SAP HANA op Azure (grote instanties)-typen, waarnaar in de SAP HANA-gecertificeerde site IaaS-platformen, biedt Microsoft en SAP-klanten de mogelijkheid tot het implementeren van grote SAP Business Suite, SAP BW, BW/4HANA, s/4 HANA of andere SAP HANA-workloads in Azure. De oplossing is gebaseerd op het stempel SAP HANA-gecertificeerde toegewezen hardware ([SAP HANA op maat center gegevensintegratie – TDI](https://scn.sap.com/docs/DOC-63140)). Als u een oplossing voor SAP HANA TDI-geconfigureerde uitvoert, worden alle SAP HANA-toepassingen (zoals SAP Business Suite op SAP HANA, SAP BW op HANA SAP S4/HANA en BW4/HANA) werkt op de hardware-infrastructuur.
+De SAP HANA van de typen Azure (grote instanties), waarnaar wordt verwezen in de site SAP HANA Certified IaaS platforms, biedt micro soft-en SAP-klanten de mogelijkheid om grote SAP Business Suite, SAP BW, S/4 HANA, BW/4HANA of andere SAP HANA workloads in azure te implementeren. De oplossing is gebaseerd op de SAP-HANA-gecertificeerde specifieke hardware-stempel ([SAP Hana aangepaste datacenter integratie – TDI](https://scn.sap.com/docs/DOC-63140)). Als u een SAP HANA TDI-geconfigureerde oplossing uitvoert, werken alle op SAP HANA gebaseerde toepassingen (zoals SAP Business Suite op SAP HANA, SAP BW op SAP HANA, S4/HANA en BW4/HANA) in de hardware-infra structuur.
 
-Vergeleken met het uitvoeren van SAP HANA in virtuele machines, is deze oplossing een voordeel. Het biedt voor veel grotere volumes voor geheugen. Als u wilt deze oplossing inschakelt, moet u inzicht in de volgende belangrijke aspecten:
+Vergeleken met het uitvoeren van SAP HANA in Vm's heeft deze oplossing een voor deel. Het biedt veel grotere geheugen volumes. Als u deze oplossing wilt inschakelen, moet u bekend zijn met de volgende belang rijke aspecten:
 
-- De SAP-toepassing-laag en niet-SAP-toepassingen uitvoeren in virtuele machines die worden gehost in de gebruikelijke Azure hardware stempels.
-- Klanten on-premises datacenters, infrastructuur en implementaties van toepassingen zijn verbonden met het cloud-platform via ExpressRoute (aanbevolen) of een virtueel particulier netwerk (VPN). Active Directory en DNS worden ook uitgebreid naar Azure.
-- De SAP HANA-database-instantie voor HANA-werkbelasting wordt uitgevoerd op SAP HANA op Azure (grote instanties). De stempel grote instantie is verbonden met het Azure-netwerken, zodat de software die wordt uitgevoerd in virtuele machines kan communiceren met de HANA-instantie die wordt uitgevoerd in HANA grote instantie.
-- De hardware van SAP HANA op Azure (grote instanties) is specifieke hardware die zijn opgegeven in een IaaS met SUSE Linux Enterprise Server of Red Hat Enterprise Linux vooraf is geïnstalleerd. Net als bij virtuele machines, verdere is updates en onderhoud van het besturingssysteem uw verantwoordelijkheid.
-- Installatie van HANA of eventuele extra onderdelen die nodig zijn voor het uitvoeren van SAP HANA op eenheden van HANA grote instantie is uw verantwoordelijkheid. Alle betreffende lopende bewerkingen en het beheer van SAP HANA op Azure zijn ook uw eigen verantwoordelijkheid.
-- Naast de oplossingen die hier worden beschreven, kunt u andere onderdelen installeren op uw Azure-abonnement dat verbinding met SAP HANA op Azure (grote instanties maakt). Voorbeelden zijn onderdelen waarmee communicatie met of rechtstreeks naar de SAP HANA-database, zoals Vliegende servers, RDP-servers, SAP HANA Studio, SAP-gegevensservices voor SAP BI-scenario's, of een bewakingsoplossingen.
-- Als in Azure biedt HANA grote instantie ondersteuning voor hoge beschikbaarheid en herstel na noodgevallen.
+- De SAP-toepassingslaag en niet-SAP-toepassingen worden uitgevoerd op Vm's die worden gehost in de gebruikelijke Azure-hardware-tempels.
+- De on-premises infra structuur van de klant, data centers en toepassings implementaties zijn verbonden met het Cloud platform via ExpressRoute (aanbevolen) of een virtueel particulier netwerk (VPN). Active Directory en DNS worden ook uitgebreid naar Azure.
+- Het SAP HANA data base-exemplaar voor HANA-werk belasting wordt uitgevoerd op SAP HANA op Azure (grote exemplaren). De stempel van een grote instantie is verbonden met Azure-netwerken, zodat software die in Vm's wordt uitgevoerd, kan communiceren met het HANA-exemplaar dat wordt uitgevoerd in HANA grote instantie.
+- Hardware van SAP HANA op Azure (grote exemplaren) is specifieke hardware die is opgenomen in een IaaS met SUSE Linux Enterprise Server of Red Hat Enterprise Linux vooraf geïnstalleerd. Net als bij virtuele machines zijn verdere updates en onderhoud van het besturings systeem uw verantwoordelijkheid.
+- De installatie van HANA of extra onderdelen die nodig zijn voor het uitvoeren van SAP HANA op eenheden van HANA grote instanties is uw verantwoordelijkheid. Alle respectieve operationele activiteiten en het beheer van SAP HANA op Azure zijn ook uw verantwoordelijkheid.
+- Naast de oplossingen die hier worden beschreven, kunt u andere onderdelen in uw Azure-abonnement installeren die verbinding maken met SAP HANA op Azure (grote exemplaren). Voor beelden hiervan zijn onderdelen die communicatie mogelijk maken met of rechtstreeks naar de SAP HANA-data base, zoals Jump servers, RDP-servers, SAP HANA Studio, SAP Data Services voor SAP BI-scenario's of oplossingen voor netwerk bewaking.
+- Net als in Azure biedt HANA grote instanties ondersteuning voor hoge Beschik baarheid en herstel na een nood geval.
 
 **Volgende stappen**
-- Raadpleeg [beschikbare SKU's voor HLI](hana-available-skus.md) 
+- [Beschik bare sku's voor HLI](hana-available-skus.md) 

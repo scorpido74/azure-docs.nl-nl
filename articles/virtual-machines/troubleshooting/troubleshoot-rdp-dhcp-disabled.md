@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d16c5b6304f598440fe4d70648dd652f0dcf06ec
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362285"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089937"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Niet van RDP-verbinding naar Azure Virtual Machines, omdat de DHCP Client-service is uitgeschakeld
 
@@ -29,16 +28,16 @@ In dit artikel beschrijft een probleem waarbij u kunt geen extern bureaublad naa
 ## <a name="symptoms"></a>Symptomen
 U maken niet een RDP-verbinding een virtuele machine in Azure omdat de DHCP Client-service is uitgeschakeld in de virtuele machine. Wanneer u de schermafbeelding controleren in de [diagnostische gegevens over opstarten](../troubleshooting/boot-diagnostics.md) in Azure portal, ziet u de virtuele machine normaal worden opgestart en wacht tot de referenties in het aanmeldingsscherm. U weergeven op afstand de gebeurtenislogboeken op de virtuele machine met behulp van Logboeken. U ziet dat de DHCP Client-Service is niet gestart of niet kan worden gestart. De volgende logboek voor een voorbeeld:
 
-**Meld u de naam**: Systeem </br>
-**Bron**: Service Control Manager </br>
-**Datum**: 16-12-2015 11:19:36 UUR </br>
-**Gebeurtenis-ID**: 7022 </br>
+**Logboek naam**: Systeem </br>
+**Bron**: Service besturings beheer </br>
+**Datum**: 12/16/2015 11:19:36 UUR </br>
+**Gebeurtenis-id**: 7022 </br>
 **Taak categorie**: Geen </br>
 **Niveau**: Fout </br>
-**Trefwoorden**: Klassiek</br>
+**Tref woorden**: Klassiek</br>
 **Gebruiker**: N/A </br>
 **Computer**: myvm.cosotos.com</br>
-**Beschrijving**: De DHCP Client-service is bij het starten vastgelopen.</br>
+**Beschrijving**: De DHCP client-service is bij het starten vastgelopen.</br>
 
 Voor Resource Manager-VM's, kunt u toegang tot de seriële Console-functie aan query gebruiken voor de gebeurtenis-logboeken 7022 met de volgende opdracht:
 

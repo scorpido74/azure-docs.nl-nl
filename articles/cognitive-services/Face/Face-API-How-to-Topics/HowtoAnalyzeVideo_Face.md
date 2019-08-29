@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: b175e68277ab456bea7eaa7b82619d61e45bf722
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442749"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114350"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Voorbeeld: Handleiding voor realtime video-analyse
 
@@ -36,7 +36,7 @@ Er zijn meerdere manieren om het probleem op te lossen voor het bijna in realtim
 
 Het eenvoudigste ontwerp voor een systeem voor bijna in realtime analyseren is een oneindige lus, waarbij bij elke iteratie een frame wordt genomen, dit frame wordt geanalyseerd en vervolgens het resultaat wordt gebruikt:
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -54,7 +54,7 @@ Als onze analyse bestaat uit een lichtgewicht algoritme op de client, is dit een
 
 Waar een eenvoudige lus met één thread nog wel kan worden gebruikt voor een lichtgewicht algoritme aan de clientzijde, is deze minder geschikt voor de latentie waarmee u in API-aanroepen via de cloud te maken hebt. Als u dit probleem wilt oplossen, staat u toe dat de langlopende API-aanroepen tegelijkertijd worden uitgevoerd met het ophalen van de frames. In C# kan dit worden bereikt met behulp van op taken gebaseerd parallelisme, bijvoorbeeld:
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -75,7 +75,7 @@ Met deze code wordt elke analyse in een afzonderlijke taak gestart, die op de ac
 
 In ons uiteindelijke systeem met producers en consumers hebben we een producer-thread die lijkt op onze vorige oneindige lus. Echter in plaats van analyseresultaten direct te verbruiken zodra deze beschikbaar zijn, plaatst de producer de taken in een wachtrij om ze te volgen.
 
-```CSharp
+```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
      
@@ -112,7 +112,7 @@ while (true)
 
 We hebben ook een consumer-thread, die taken uit de wachtrij haalt, wacht tot ze zijn voltooid, en vervolgens het resultaat of de uitzondering die is gegenereerd, weergeeft. Met behulp van de wachtrij kunnen we garanderen dat resultaten één voor één worden verbruikt, in de juiste volgorde, zonder dat er een limiet wordt afgedwongen voor de maximale framesnelheid van het systeem.
 
-```CSharp
+```csharp
 // Consumer thread. 
 while (true)
 {
@@ -144,7 +144,7 @@ De bibliotheek bevat de klasse FrameGrabber, waarmee het hierboven beschreven sy
 
 Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. De app legt frames van de standaardwebcam vast en verzendt deze naar de Face-API voor gezichtsherkenning.
 
-```CSharp
+```csharp
 using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;

@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b303a18d481ae1a682d81d87e7c14060ffdfaf14
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869184"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099645"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Opslag architectuur van SAP HANA (grote exemplaren)
 
@@ -79,7 +78,7 @@ Het is mogelijk om meer dan één Active SAP HANA-exemplaar te hosten op HANA gr
 
 Enkele voor beelden van het uitvoeren van meerdere SAP HANA-exemplaren kunnen er als volgt uitzien.
 
-| SKU | Geheugengrootte | Opslag grootte | Grootten met meerdere data bases |
+| SKU | Geheugengrootte | Opslaggrootte | Grootten met meerdere data bases |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768-GB HANA-instantie<br /> of 1x512-GB instance + 1x256-GB instantie<br /> of 3x256-GB exemplaren | 
 | S72m | 1,5 TB | 6 TB | 3x512GB HANA-instanties<br />of 1x512-GB instance + 1x1-TB instantie<br />of 6x256-GB exemplaren<br />of 1x 1,5-TB instantie | 

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: fasttrack-edit
+ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b935f8bb15357e0ca79665b5620be5778ad3c554
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512503"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074312"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -105,7 +105,7 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 | `roles` | Matrix van teken reeksen, een lijst met machtigingen | De set machtigingen die door uw toepassing worden weer gegeven en waarvoor de aanvraag of gebruiker toestemming heeft gegeven om deze aan te roepen. Voor [toepassings tokens](#user-and-application-tokens)wordt dit gebruikt tijdens de [client-referentie](v1-oauth2-client-creds-grant-flow.md) stroom in plaats van de gebruikers scopes.  Voor [gebruikers tokens](#user-and-application-tokens) wordt dit ingevuld met de rollen waaraan de gebruiker is toegewezen in de doel toepassing. |
 | `wids` | Matrix van [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) -guid's | Hiermee worden de rollen voor de Tenant opgegeven die aan deze gebruiker zijn toegewezen, in het gedeelte van de rollen die aanwezig zijn op [de pagina beheer rollen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids).  Deze claim wordt per toepassing geconfigureerd op basis van de `groupMembershipClaims` eigenschap van het [toepassings manifest](reference-app-manifest.md).  Het instellen op ' all ' of ' DirectoryRole ' is vereist.  Mag niet aanwezig zijn in tokens die zijn verkregen via de impliciete stroom vanwege problemen met de token lengte. |
 | `groups` | JSON-matrix met GUID'S | Bevat object-Id's die de groepslid maatschappen van het onderwerp vertegenwoordigen. Deze waarden zijn uniek (zie object-ID) en kunnen veilig worden gebruikt voor het beheren van toegang, zoals het afdwingen van autorisatie voor toegang tot een bron. De groepen die zijn opgenomen in de claim groepen, worden per toepassing geconfigureerd via de `groupMembershipClaims` eigenschap van het [toepassings manifest](reference-app-manifest.md). Met een waarde van Null worden alle groepen uitgesloten, de waarde ' beveiligings groep ' bevat alleen Active Directory beveiligings groepslid maatschappen en de waarde ' all ' bevat zowel beveiligings groepen als Office 365-distributie lijsten. <br><br>Zie onderstaande `groups` claim voor meer informatie over het gebruik van de claim met de impliciete toekenning. `hasgroups` <br>Voor andere stromen geldt dat als het aantal groepen dat de gebruiker in een overschrijding een limiet heeft (150 voor SAML, 200 voor JWT), een overschrijding-claim wordt toegevoegd aan de claim bronnen die naar het AAD Graph-eind punt met de lijst met groepen voor de gebruiker verwijzen. |
-| `hasgroups` | Boolean | Indien aanwezig, wordt `true`het identificeren van de gebruiker altijd in ten minste één groep. Wordt gebruikt in plaats van `groups` de claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de grafiek moet gebruiken om de groepen`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`van de gebruiker te bepalen. |
+| `hasgroups` | Boolean-waarde | Indien aanwezig, wordt `true`het identificeren van de gebruiker altijd in ten minste één groep. Wordt gebruikt in plaats van `groups` de claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de grafiek moet gebruiken om de groepen`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`van de gebruiker te bepalen. |
 | `groups:src1` | JSON-object | Voor token aanvragen die geen beperkte lengte hebben (Zie `hasgroups` hierboven), maar nog steeds te groot zijn voor het token, wordt een koppeling naar de lijst met volledige groepen voor de gebruiker opgenomen. Voor JWTs als een gedistribueerde claim voor SAML als een nieuwe claim in plaats van `groups` de claim. <br><br>**Voor beeld-JWT-waarde**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `sub` | Teken reeks, een GUID | De principal over welke het token informatie bedient, zoals de gebruiker van een app. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt om toegang te krijgen tot een resource, en kan worden gebruikt als sleutel in database tabellen. Omdat het onderwerp altijd aanwezig is in de tokens die door Azure AD worden uitgegeven, raden we u aan deze waarde te gebruiken in een autorisatie systeem voor algemeen gebruik. Het onderwerp is echter een Pairwise-id en is uniek voor een bepaalde toepassings-ID. Als één gebruiker zich bij twee verschillende apps aanmeldt met twee verschillende client-Id's, ontvangen die apps daarom twee verschillende waarden voor de claim van de certificaat houder. Dit kan al dan niet gewenst zijn, afhankelijk van de vereisten van uw architectuur en privacy. Zie ook de `oid` claim (die hetzelfde blijft voor apps binnen een Tenant). |
 | `oid` | Teken reeks, een GUID | De onveranderbare id voor een object in het micro soft Identity-platform, in dit geval een gebruikers account. Het kan ook worden gebruikt om autorisatie controles veilig en als sleutel in database tabellen uit te voeren. Met deze id wordt de gebruiker op unieke wijze in verschillende toepassingen geïdentificeerd: twee verschillende toepassingen die in dezelfde gebruiker worden ondertekend, ontvangen `oid` dezelfde waarde in de claim. `oid` Kan dus worden gebruikt bij het uitvoeren van query's naar micro soft onlineservices, zoals de Microsoft Graph. De Microsoft Graph retourneert deze id als de `id` eigenschap voor een bepaald gebruikers account. Omdat meerdere apps `profile` toestaangebruikerstecorreleren,isdescopevereistomdeze`oid` claim te ontvangen. Houd er rekening mee dat als één gebruiker bestaat in meerdere tenants, de gebruiker een andere object-ID in elke Tenant bevat. deze worden beschouwd als verschillende accounts, zelfs als de gebruiker zich aanmeldt bij elke account met dezelfde referenties. |
@@ -170,7 +170,7 @@ Tokens die zijn uitgegeven door Azure AD, worden ondertekend met behulp van stan
 }
 ```
 
-De `alg` claim geeft het algoritme aan dat is gebruikt voor het ondertekenen van het token `kid` , terwijl de claim de specifieke open bare sleutel aangeeft die is gebruikt om het token te ondertekenen.
+De `alg` claim geeft het algoritme aan dat is gebruikt voor het ondertekenen van het token `kid` , terwijl de claim de specifieke open bare sleutel aangeeft die is gebruikt om het token te valideren.
 
 Azure AD kan op elk gewenst moment een id_token ondertekenen met behulp van een van een of meer combi Naties van open bare en persoonlijke sleutels. Azure AD roteert de mogelijke set sleutels periodiek. Daarom moet uw app worden geschreven om deze sleutel wijzigingen automatisch af te handelen. Een redelijke frequentie om te controleren op updates voor de open bare sleutels die door Azure AD worden gebruikt, is om de 24 uur.
 

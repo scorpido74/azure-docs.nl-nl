@@ -1,6 +1,6 @@
 ---
-title: Pakketfilter van FreeBSD gebruiken om te maken van een firewall in Azure | Microsoft Docs
-description: Meer informatie over het implementeren van een NAT-firewall met behulp van FreeBSD PF in Azure.
+title: Pakket filter van FreeBSD gebruiken om een firewall te maken in azure | Microsoft Docs
+description: Meer informatie over het implementeren van een NAT-firewall met de PF van FreeBSD in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: KylieLiang
@@ -9,39 +9,38 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 03ef1ad3f81cfe7b11f74ace9ff2992535d5aad6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8f06762fd84767ac4c6dfce67d547a1f311afcba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667646"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083242"
 ---
-# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Pakketfilter van FreeBSD gebruiken om u te maken van een beveiligde firewall in Azure
-In dit artikel maakt u kennis over het implementeren van een NAT-firewall met behulp van FreeBSD Packer Filter via Azure Resource Manager-sjabloon voor algemene web server-scenario.
+# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Het pakket filter van FreeBSD gebruiken om een beveiligde firewall te maken in azure
+In dit artikel wordt beschreven hoe u een NAT-firewall implementeert met behulp van het pakket filter van FreeBSD via Azure Resource Manager sjabloon voor een algemeen webserver scenario.
 
 ## <a name="what-is-pf"></a>Wat is PF?
-PF (pakketfilter, pf ook geschreven) is een BSD gelicentieerde stateful pakketfilter, een centraal onderdeel van de software voor het gebruik. PF rechtenbeheer aangezien snel en nu heeft diverse voordelen ten opzichte van andere beschikbare firewalls. NAT (Network Address Translation) wordt PF technologiekosten, klikt u vervolgens pakketplanner en actieve wachtrijbeheer zijn geïntegreerd in PF, door de ALTQ integreren en het worden geconfigureerd via PF van configuratie maken. Functies zoals pfsync en CARP voor failover en redundantie, authpf voor sessieverificatie en ftp-proxy om de netwerkfunctie het moeilijk FTP-protocol, hebben ook uitgebreide PF. Kort gezegd, is PF een krachtige en uitgebreide firewall. 
+PF (pakket filter, geschreven, ook wel PF) is een stateful BSD-pakket filter met licentie, een centraal onderdeel van software voor firewalling. PF is sinds snelle ontwikkeling en heeft nu verschillende voor delen ten opzichte van andere beschik bare firewalls. Network Address Translation (NAT) bevindt zich op de eerste dag, waarna pakket planner en actieve wachtrij beheer zijn geïntegreerd in PF, door de ALTQ te integreren en te configureren via de configuratie van PF. Functies zoals pfsync en KARPER voor failover en redundantie, authpf voor sessie verificatie en FTP-proxy om de firewall van het FTP-protocol te vereenvoudigen, hebben ook uitgebreide PF. Kortom, PF is een krachtige en boordevol firewall. 
 
 ## <a name="get-started"></a>Aan de slag
-Als u geïnteresseerd bent in het instellen van een beveiligde firewall in de cloud voor uw webservers en vervolgens aan de slag. U kunt ook de scripts die in deze Azure Resource Manager-sjabloon voor het instellen van uw netwerktopologie.
-De Azure Resource Manager-sjabloon instellen van een FreeBSD virtuele machine die wordt uitgevoerd NAT /redirection gebruik van PF en twee FreeBSD virtuele machines met de Nginx-webserver geïnstalleerd en geconfigureerd. Naast het uitvoeren van NAT voor het uitgaande verkeer van twee web-servers, de NAT/omleiding van virtuele machine worden onderschept HTTP-aanvragen en hen omleidt naar de twee webservers in round robin besturingsaanvraag. Het VNet maakt gebruik van de persoonlijke niet-routeerbare IP-adresruimte 10.0.0.2/24 en u kunt de parameters van de sjabloon wijzigen. De Azure Resource Manager-sjabloon worden ook een routetabel voor de hele VNet dat is een verzameling van afzonderlijke routes hebben prioriteit boven Azure standaardroutes op basis van de IP-doeladres waarmee wordt gedefinieerd. 
+Als u geïnteresseerd bent in het instellen van een beveiligde firewall in de Cloud voor uw webservers, kunt u aan de slag gaan. U kunt de scripts die worden gebruikt in deze Azure Resource Manager sjabloon ook Toep assen om uw netwerk topologie in te stellen.
+Met de Azure Resource Manager sjabloon wordt een virtuele FreeBSD-machine ingesteld waarmee NAT/Redirection wordt uitgevoerd met behulp van PF en twee FreeBSD virtuele machines met de nginx-webserver geïnstalleerd en geconfigureerd. Naast het uitvoeren van NAT voor het uitgaande verkeer van twee webservers, onderschept de virtuele machine voor NAT/omleiding HTTP-aanvragen en stuurt deze door naar de twee webservers op Round-Robin. Het VNet maakt gebruik van de persoonlijke niet-Routeer bare IP-adres ruimte 10.0.0.2/24, en u kunt de para meters van de sjabloon wijzigen. De sjabloon Azure Resource Manager definieert ook een route tabel voor het hele VNet. Dit is een verzameling afzonderlijke routes die wordt gebruikt om Azure-standaard routes te overschrijven op basis van het doel-IP-adres. 
 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Implementeren via Azure CLI
-U moet de meest recente [Azure CLI](/cli/azure/install-az-cli2) geïnstalleerd en aangemeld bij een Azure-account met [az login](/cli/azure/reference-index). Maak een resourcegroep maken met [az group create](/cli/azure/group). Het volgende voorbeeld wordt een Resourcegroepnaam `myResourceGroup` in de `West US` locatie.
+U hebt de nieuwste [Azure cli](/cli/azure/install-az-cli2) geïnstalleerd en u moet zijn aangemeld bij een Azure-account met behulp van [AZ login](/cli/azure/reference-index). Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt de naam `myResourceGroup` van een `West US` resource groep gemaakt op de locatie.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Vervolgens implementeert u de sjabloon [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) met [az group deployment maken](/cli/azure/group/deployment). Download [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) onder hetzelfde pad en definieer uw eigen waarden resource, zoals `adminPassword`, `networkPrefix`, en `domainNamePrefix`. 
+Implementeer vervolgens de sjabloon [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) met [AZ Group Deployment Create](/cli/azure/group/deployment). Down load [azuredeploy. para meters. json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) onder hetzelfde pad en Definieer uw eigen resource waarden, `adminPassword`zoals `networkPrefix`, en `domainNamePrefix`. 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -49,15 +48,15 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Na ongeveer vijf minuten, krijgt u de gegevens van `"provisioningState": "Succeeded"`. Vervolgens kunt u ssh naar het front-end VM (NAT) of de toegang tot Nginx-webserver in een browser met behulp van de openbare IP-adres of FQDN-naam van de front-end VM (NAT). Het volgende voorbeeld worden FQDN-naam en openbare IP-adres aan de front-end VM (NAT toegewezen) in de `myResourceGroup` resourcegroep. 
+Na ongeveer vijf minuten krijgt u de gegevens van `"provisioningState": "Succeeded"`. Vervolgens kunt u met behulp van het open bare IP-adres of de FQDN-naam van de frontend-VM (NAT) naar de front-end-VM (NAT) of toegang tot nginx-webserver in een browser. In het volgende voor beeld worden de FQDN en het open bare IP-adres weer gegeven die zijn toegewezen `myResourceGroup` aan de frontend-VM (NAT) in de resource groep. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>Volgende stappen
-Wilt u uw eigen NAT in Azure instellen? Open Source, gratis, maar krachtige? PF is een goede keuze. Met behulp van de sjabloon [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup), hoeft u alleen de vijf minuten het instellen van een NAT-firewall met round robin van taakverdeling met behulp van FreeBSD PF in Azure voor veelvoorkomende web server-scenario. 
+Wilt u uw eigen NAT instellen in azure? Open source, gratis maar krachtig? Vervolgens is PF een goede keuze. Als u de sjabloon [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)gebruikt, hebt u slechts vijf minuten nodig voor het instellen van een NAT-firewall met Round Robin-taak verdeling met behulp van de PF van FreeBSD in azure voor een gemeen schappelijke webserver scenario. 
 
-Als u weten van de aanbieding van FreeBSD in Azure wilt, raadpleegt u [Inleiding tot FreeBSD op Azure](freebsd-intro-on-azure.md).
+Als u meer wilt weten over de aanbieding van FreeBSD in azure, raadpleegt u [Inleiding tot FreeBSD op Azure](freebsd-intro-on-azure.md).
 
-Als u meer weten over PF wilt, raadpleegt u [FreeBSD handboek voor](https://www.freebsd.org/doc/handbook/firewalls-pf.html) of [PF-gebruikershandleiding](https://www.freebsd.org/doc/handbook/firewalls-pf.html).
+Raadpleeg [FreeBSD Handbook](https://www.freebsd.org/doc/handbook/firewalls-pf.html) of [PF-gebruikers handleiding](https://www.freebsd.org/doc/handbook/firewalls-pf.html)als u meer wilt weten over PF.

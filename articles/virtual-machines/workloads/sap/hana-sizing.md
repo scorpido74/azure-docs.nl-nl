@@ -1,39 +1,38 @@
 ---
-title: Grootte van SAP HANA op Azure (grote instanties) | Microsoft Docs
-description: Grootte van SAP HANA op Azure (grote instanties).
+title: Grootte van SAP HANA op Azure (grote exemplaren) | Microsoft Docs
+description: Grootte van SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7a81468fd19d3bd5d6eee79bb8a75396e3021f1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f2540a0f9ea702ff620ccd4b68208cbb2e70aafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707269"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101149"
 ---
 # <a name="sizing"></a>Grootte aanpassen
 
-Groottes voor HANA grote instantie is niet anders dan in het algemeen voor HANA formaat. Voor bestaande en systemen die u verplaatsen van andere RDBMS met HANA wilt, SAP biedt een aantal rapporten die worden uitgevoerd op uw bestaande SAP-systemen geïmplementeerd. Als de database is verplaatst naar HANA, worden deze rapporten Controleer de gegevens en berekenen geheugenvereisten voor de HANA-instantie. Lees de volgende SAP-opmerkingen voor meer informatie over het uitvoeren van deze rapporten en hun meest recente patches of versies te verkrijgen:
+De grootte van HANA grote instanties wijkt niet af van de grootte van HANA in het algemeen. Voor bestaande en geïmplementeerde systemen die u wilt verplaatsen van andere RDBMS naar HANA, biedt SAP een aantal rapporten die worden uitgevoerd op uw bestaande SAP-systemen. Als de data base wordt verplaatst naar HANA, controleren deze rapporten de gegevens en berekenen we de geheugen vereisten voor het HANA-exemplaar. Lees de volgende SAP-opmerkingen voor meer informatie over het uitvoeren van deze rapporten en het verkrijgen van de meest recente patches of versies:
 
-- [SAP-notitie #1793345 - grootte voor SAP-Suite op HANA](https://launchpad.support.sap.com/#/notes/1793345)
-- [SAP-notitie #1872170 - Suite op HANA en s/4 HANA sizing-rapport](https://launchpad.support.sap.com/#/notes/1872170)
-- [SAP-notitie #2121330 - Veelgestelde vragen over: SAP BW op HANA formaat van rapport](https://launchpad.support.sap.com/#/notes/2121330)
-- [SAP-notitie #1736976 - rapport van de grootte voor BW op HANA](https://launchpad.support.sap.com/#/notes/1736976)
-- [SAP-notitie #2296290 - rapport nieuwe grootte voor BW op HANA](https://launchpad.support.sap.com/#/notes/2296290)
+- [SAP-notitie #1793345-grootte voor SAP Suite op HANA](https://launchpad.support.sap.com/#/notes/1793345)
+- [SAP-notitie #1872170-Suite op HANA en S/4 HANA-formaat rapport](https://launchpad.support.sap.com/#/notes/1872170)
+- [SAP-Opmerking #2121330-Veelgestelde vragen: SAP BW in HANA-formaat rapport](https://launchpad.support.sap.com/#/notes/2121330)
+- [SAP-notitie #1736976-formaat rapport voor BW op HANA](https://launchpad.support.sap.com/#/notes/1736976)
+- [SAP-notitie #2296290: nieuw formaat rapport voor BW op HANA](https://launchpad.support.sap.com/#/notes/2296290)
 
-Snel SAP-Sizer is voor implementaties van de voorafgaande beperkingen, beschikbaar voor het berekenen van geheugenvereisten van de implementatie van SAP-software boven op HANA.
+Voor de implementaties van een groen veld is de snelle grootte van SAP beschikbaar voor het berekenen van de geheugen vereisten van de implementatie van SAP-software bovenop HANA.
 
-Geheugenvereisten voor HANA verhogen naarmate het gegevensvolume toeneemt. Houd rekening met uw huidige geheugengebruik om te voorspellen wat er gebeurt in de toekomst zijn. Op basis van geheugenvereisten, kunt klikt u vervolgens u toewijzen uw vraag in een van de HANA grote instantie-SKU's.
+Geheugenvereisten voor HANA verhogen naarmate het gegevensvolume toeneemt. Houd rekening met het huidige geheugen gebruik om u te helpen te voors pellen wat het in de toekomst zal zijn. Op basis van de geheugen vereisten kunt u uw vraag vervolgens toewijzen aan een van de HANA-Sku's voor grote instanties.
 
 **Volgende stappen**
-- Raadpleeg [Onboarding-vereisten](hana-onboarding-requirements.md)
+- Raadpleeg de [vereisten voor](hana-onboarding-requirements.md) onboarding

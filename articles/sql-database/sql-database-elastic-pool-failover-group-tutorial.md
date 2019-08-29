@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 5dd241fed757669cf8bccd96a1de948e8d73a021
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 2d46e6f1d5c7079ab5bbfea39a85ea0a7592afc8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033259"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099320"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Zelfstudie: Een Azure SQL Database elastische pool toevoegen aan een failovergroep
 
@@ -41,10 +41,11 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 ## <a name="2---add-single-database-to-elastic-pool"></a>2-Eén data base toevoegen aan elastische pool
 
-1. Kies **een resource maken** in de linkerbovenhoek van de [Azure Portal](https://portal.azure.com).
-1. Typ `elastic pool` in het zoekvak, druk op ENTER, selecteer het pictogram **SQL elastische data base pool** en selecteer vervolgens **maken**. 
+1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door details weer geven te selecteren op de tegel data bases.
+1. Selecteer **elastische groep** in de vervolg keuzelijst **resource type** in de tegel **SQL-data bases** . Selecteer **maken** om uw elastische pool te maken. 
 
-    ![Elastische pool kiezen vanuit Marketplace](media/sql-database-elastic-pool-create-failover-group-tutorial/elastic-pool-market-place.png)
+    ![Elastische pool selecteren](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Configureer uw elastische pool met de volgende waarden:
    - **Naam**: Geef een unieke naam op voor de elastische pool, `myElasticPool`zoals. 
@@ -52,13 +53,13 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
    - **ResourceGroup**: Selecteer `myResourceGroup` in de vervolg keuzelijst de resource groep die u in sectie 1 hebt gemaakt. 
    - **Server**: Selecteer de server die u hebt gemaakt in sectie 1 in de vervolg keuzelijst.  
 
-       ![Nieuwe server voor elastische pool maken](media/sql-database-elastic-pool-create-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
+       ![Nieuwe server voor elastische pool maken](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
 
    - **Reken-en opslag**: Selecteer **elastische pool configureren** om uw reken-, opslag-en de afzonderlijke data base aan uw elastische pool toe te voegen. Accepteer op het tabblad **pool instellingen** de standaard waarde van GEN5, met 2 vCores en 32 GB. 
 
 1. Selecteer op de pagina **configureren** het tabblad **data bases** en kies vervolgens **Data Base toevoegen**. Kies de data base die u hebt gemaakt in sectie 1 en selecteer vervolgens **Toep assen** om deze toe te voegen aan uw elastische pool. Selecteer opnieuw **Toep assen** om de instellingen voor de elastische groep toe te passen en sluit de pagina **configureren** . 
 
-    ![SQL-data base toevoegen aan elastische pool](media/sql-database-elastic-pool-create-failover-group-tutorial/add-database-to-elastic-pool.png)
+    ![SQL-data base toevoegen aan elastische pool](media/sql-database-elastic-pool-failover-group-tutorial/add-database-to-elastic-pool.png)
 
 1. Selecteer **controleren + maken** om de instellingen voor de elastische groep te controleren en selecteer vervolgens **maken** om uw elastische pool te maken. 
 
@@ -66,17 +67,15 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 ## <a name="3---create-the-failover-group"></a>3-de groep failover maken 
 In deze stap maakt u een failovergroep [](sql-database-auto-failover-group.md) tussen een bestaande Azure SQL-Server en een nieuwe Azure SQL-Server in een andere regio. Voeg vervolgens de elastische pool toe aan de failovergroep. 
 
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer de elastische pool die u in de vorige sectie hebt `myElasticPool`gemaakt, zoals. 
+1. Selecteer in het deel venster **overzicht** de naam van de server onder **Server naam** om de instellingen voor de server te openen.
+  
+    ![Server openen voor elastische pool](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. Selecteer **alle services** in de linkerbovenhoek van de [Azure Portal](https://portal.azure.com). 
-1. Typ `sql servers` in het zoekvak. 
-1. Beschrijving Selecteer het ster pictogram naast SQL-servers naar favoriete **SQL-servers** en voeg deze toe aan het navigatie deel venster aan de linkerkant. 
-    
-    ![SQL-servers zoeken](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
-
-1. Selecteer **SQL-servers** en kies de server die u hebt gemaakt in sectie 1.
 1. Selecteer **failover-groepen** in het deel venster **instellingen** en selecteer vervolgens **groep toevoegen** om een nieuwe failovergroep te maken. 
 
-    ![Nieuwe failovergroep toevoegen](media/sql-database-single-database-create-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![Nieuwe failovergroep toevoegen](media/sql-database-elastic-pool-failover-group-tutorial/elastic-pool-failover-group.png)
 
 1. Voer op de pagina **failover-groep** de volgende waarden in of Selecteer deze en selecteer vervolgens **maken**:
     - **Naam**van failovergroep: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`. 
@@ -84,16 +83,16 @@ In deze stap maakt u een failovergroep [](sql-database-auto-failover-group.md) t
         - **Servernaam**: Typ een unieke naam voor de secundaire server, zoals `mysqlsecondary`. 
         - **Aanmeldgegevens van serverbeheerder**: Voert`azureuser`
         - **Wachtwoord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
-        - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals VS-Oost 2. Deze locatie mag niet dezelfde locatie zijn als de primaire server.
+        - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `East US`. Deze locatie mag niet dezelfde locatie zijn als de primaire server.
 
        > [!NOTE]
        > De aanmeldings-en Firewall instellingen van de server moeten overeenkomen met die van de primaire server. 
     
-       ![Een secundaire server maken voor de failovergroep](media/sql-database-single-database-create-failover-group-tutorial/create-secondary-failover-server.png)
+       ![Een secundaire server maken voor de failovergroep](media/sql-database-elastic-pool-failover-group-tutorial/create-secondary-failover-server.png)
 
 1. Selecteer **data bases in de groep** en selecteer vervolgens de elastische pool die u hebt gemaakt in sectie 2. Er wordt een waarschuwing weer gegeven waarin u wordt gevraagd om een elastische pool te maken op de secundaire server. Selecteer de waarschuwing en selecteer **OK** om de elastische pool te maken op de secundaire server. 
         
-    ![Elastische pool toevoegen aan failovergroep](media/sql-database-elastic-pool-create-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![Elastische pool toevoegen aan failovergroep](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
 1. Selecteer **selecteren** om de instellingen voor de elastische groep toe te passen op de failovergroep en selecteer vervolgens **maken** om uw failovergroep te maken. Door de elastische pool toe te voegen aan de groep failover, wordt het proces voor geo-replicatie automatisch gestart. 
 
@@ -101,16 +100,21 @@ In deze stap maakt u een failovergroep [](sql-database-auto-failover-group.md) t
 ## <a name="4---test-failover"></a>4-failover testen 
 In deze stap wordt uw failover-groep overschreven naar de secundaire server en wordt er een failback uitgevoerd met behulp van de Azure Portal. 
 
-1. Navigeer naar uw **SQL** server-server binnen het [Azure Portal](https://portal.azure.com). 
+1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
+1. Selecteer de elastische pool die u in de vorige sectie hebt `myElasticPool`gemaakt, zoals. 
+1. Selecteer de naam van de server onder **Server naam** om de instellingen voor de server te openen.
+
+    ![Server openen voor elastische pool](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+
 1. Selecteer **failover-groepen** in het deel venster **instellingen** en kies vervolgens de failovergroep die u hebt gemaakt in sectie 2. 
   
-   ![De groep failover selecteren in de portal](media/sql-database-single-database-create-failover-group-tutorial/select-failover-group.png)
+   ![De groep failover selecteren in de portal](media/sql-database-elastic-pool-failover-group-tutorial/select-failover-group.png)
 
 1. Controleer welke server primair is en welke server secundair is. 
 1. Selecteer **failover** in het taak venster voor het uitvoeren van een failover van uw groep met elastische groepen. 
 1. Selecteer **Ja** in de waarschuwing waarmee u wordt gewaarschuwd dat TDS-sessies worden losgekoppeld. 
 
-   ![Failover van de failovergroep met uw SQL database](media/sql-database-single-database-create-failover-group-tutorial/failover-sql-db.png)
+   ![Failover van de failovergroep met uw SQL database](media/sql-database-elastic-pool-failover-group-tutorial/failover-sql-db.png)
 
 1. Controleer welke server primair is, welke server secundair is. Als de failover is geslaagd, moeten de twee servers wisselende rollen hebben. 
 1. Selecteer **failover** opnieuw om de failback-groep weer in te stellen op de oorspronkelijke instellingen. 

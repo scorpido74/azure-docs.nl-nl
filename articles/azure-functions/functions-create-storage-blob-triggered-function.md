@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: cc730650f7bd570f237c06b074afb3678b54448f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: b8855fa061e07ec77482ca960971db8252608b51
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107201"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096881"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Een door Azure Blob Storage geactiveerde functie maken
 
@@ -62,7 +61,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
     | Instelling | Voorgestelde waarde | Description |
     |---|---|---|
-    | **Naam** | Uniek in uw functie-app | Naam van deze door Blob geactiveerde functie. |
+    | **Name** | Uniek in uw functie-app | Naam van deze door Blob geactiveerde functie. |
     | **Pad**   | samples-workitems/{name}    | Locatie in Blob Storage die wordt bewaakt. De bestandsnaam van de blob wordt doorgegeven in de binding als de _naam_-parameter.  |
     | **Opslagaccountverbinding** | AzureWebJobsStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |
 
@@ -94,7 +93,7 @@ U hebt nu een blob-container en u kunt de functie testen door een bestand naar d
 
 1. Blader in Azure Portal naar de functie, vouw de **Logboeken** onderaan de pagina uit en zorg ervoor dat logboekstreaming niet wordt onderbroken.
 
-1. Vouw in Storage Explorer uw opslagaccount, **Blob-containers** en **voorbeeldwerkitems** uit. Klik op **Uploaden** en klik vervolgens op **Bestanden uploaden...**.
+1. Vouw in Storage Explorer uw opslagaccount, **Blob-containers** en **voorbeeldwerkitems** uit. Klik op **Uploaden** en klik vervolgens op **Bestanden uploaden...** .
 
     ![Upload een bestand naar de blob-container.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 

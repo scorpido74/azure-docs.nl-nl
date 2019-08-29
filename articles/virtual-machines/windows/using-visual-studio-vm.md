@@ -1,6 +1,6 @@
 ---
-title: Met behulp van Visual Studio op een Azure-machine | Microsoft Docs
-description: Met behulp van Visual Studio op een Azure-machine.
+title: Visual Studio gebruiken op een virtuele Azure-machine | Microsoft Docs
+description: Visual Studio gebruiken op een virtuele machine van Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -10,50 +10,49 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.date: 06/24/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 31b856b4f6937b57f0a2b82d94fc0fb02936f83f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b62e7e993ba4b5784e28dd9a36979640e2e37da6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449360"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101540"
 ---
-# <a name="visual-studio-images-on-azure"></a>Visual Studio-installatiekopieën in Azure
-Met behulp van Visual Studio in een vooraf geconfigureerde Azure-machine (VM) is een snelle en eenvoudige manier naar een up-en-die wordt uitgevoerd development environment van nul. Installatiekopieën met verschillende configuraties van Visual Studio zijn beschikbaar in de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
+# <a name="visual-studio-images-on-azure"></a>Visual Studio-installatie kopieën op Azure
+Het gebruik van Visual Studio in een vooraf geconfigureerde Azure virtual machine (VM) is een snelle en eenvoudige manier om van niets naar een ontwikkel omgeving te gaan. Systeem kopieën met verschillende Visual Studio-configuraties zijn beschikbaar op de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
 
 Bent u nog niet bekend met Azure? [Maak een gratis Azure-account](https://azure.microsoft.com/free).
 
-## <a name="what-configurations-and-versions-are-available"></a>Welke configuraties en -versies zijn beschikbaar?
-Installatiekopieën voor de meest recente primaire versies, 2019 van Visual Studio, Visual Studio 2017 en Visual Studio 2015, vindt u in de Azure Marketplace.  Voor elke primaire versie uitgebracht, ziet u de oorspronkelijk 'die zijn uitgebracht voor web' (RTW) versie en de meest recente bijgewerkte versies.  Elk van deze versies biedt de Visual Studio Enterprise en de Visual Studio Community-edities.  Deze installatiekopieën zijn ten minste maandelijks bijgewerkt met de meest recente updates voor Visual Studio en Windows.  Terwijl de namen van de installatiekopieën hetzelfde zijn, wordt de beschrijving van elke afbeelding bevat de versie van het geïnstalleerde product en 'op' datum van de installatiekopie.
+## <a name="what-configurations-and-versions-are-available"></a>Welke configuraties en versies zijn er beschikbaar?
+Installatie kopieën voor de meest recente primaire versies, Visual Studio 2019, Visual Studio 2017 en Visual Studio 2015, vindt u op de Azure Marketplace.  Voor elke uitgebrachte primaire versie ziet u de oorspronkelijke versie van ' release to Web ' (RTW) en de meest recente bijgewerkte versies.  Elk van deze versies biedt Visual Studio Enter prise en de edities van de Visual Studio-community.  Deze installatie kopieën worden minstens elke maand bijgewerkt met de nieuwste Visual Studio-en Windows-updates.  Hoewel de namen van de afbeeldingen hetzelfde blijven, bevat de beschrijving van de installatie kopie de geïnstalleerde product versie en de datum van de installatie kopie.
 
-| Release-versie                                                                                                                                                | Edities              | Versie van het product   |
+| Release versie                                                                                                                                                | Edities              | Productversie   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Meest recente (versie 16,1)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | Versie 16.1.3    |
-| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise, Community | Versie 16.0.5    |
-| [Visual Studio 2017: Meest recente (versie 15,9 inch)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise, Community | Versie 15.9.13   |
-| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise, Community | Versie 15.0.24   |
-| [Visual Studio 2015: Meest recente (Update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise, Community | Versie 14.0.25431.01 |
+| [Visual Studio 2019: Nieuwste (versie 16,1)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enter prise, Community | Versie 16.1.3    |
+| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enter prise, Community | Versie 16.0.5    |
+| [Visual Studio 2017: Nieuwste (versie 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enter prise, Community | Versie 15.9.13   |
+| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enter prise, Community | Versie 15.0.24   |
+| [Visual Studio 2015: Nieuwste (update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enter prise, Community | Versie 14.0.25431.01 |
 
 > [!NOTE]
-> De oorspronkelijk (RTW) versie van Visual Studio 2015 is in overeenstemming met de Microsoft servicebeleid, verlopen voor onderhoud. Visual Studio 2015 Update 3 is de enige resterende versie aangeboden voor de regel voor het product van Visual Studio 2015.
+> In overeenstemming met het micro soft-onderhouds beleid is de oorspronkelijk vrijgegeven (RTW) versie van Visual Studio 2015 verlopen voor onderhoud. Visual Studio 2015 update 3 is de enige resterende versie die wordt aangeboden voor de product lijn van Visual Studio 2015.
 
-Zie voor meer informatie de [Visual Studio onderhoud beleid](https://www.visualstudio.com/productinfo/vs-servicing-vs).
+Zie voor meer informatie het [Visual Studio](https://www.visualstudio.com/productinfo/vs-servicing-vs)-onderhouds beleid.
 
 ## <a name="what-features-are-installed"></a>Welke functies zijn geïnstalleerd?
-Elke afbeelding bevat de aanbevolen functieset voor deze versie van Visual Studio. Over het algemeen omvat de-installatie:
+Elke installatie kopie bevat de aanbevolen functieset voor die Visual Studio Edition. Over het algemeen geldt de volgende installatie:
 
-* Alle beschikbare werklasten, met inbegrip van de workload aanbevolen optionele onderdelen
-* .NET 4.6.2 en .NET 4.7 SDK's, doelitems Packs en hulpprogramma's voor ontwikkelaars
-* VisualF#
+* Alle beschik bare werk belastingen, inclusief de aanbevolen optionele onderdelen van elke werk belasting
+* .NET 4.6.2-en .NET 4,7-Sdk's, doel pakketten en Ontwikkelhulpprogramma's
+* VBAF#
 * GitHub-extensie voor Visual Studio
-* LINQ to SQL-hulpprogramma 's
+* LINQ to SQL-Hulpprogram Ma's
 
-De opdrachtregel gebruikt voor het installeren van Visual Studio bij het bouwen van de afbeeldingen is als volgt:
+De opdracht regel die wordt gebruikt om Visual Studio te installeren tijdens het maken van de installatie kopieën is als volgt:
 
 ```
     vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
@@ -67,10 +66,10 @@ De opdrachtregel gebruikt voor het installeren van Visual Studio bij het bouwen 
        add Microsoft.VisualStudio.Component.LinqToSql
 ```
 
-Als de afbeeldingen niet over een Visual Studio-functie die u nodig hebt beschikken, feedback via het hulpprogramma feedback in de rechterbovenhoek van de pagina.
+Als de installatie kopieën geen Visual Studio-functie bevatten die u nodig hebt, kunt u feedback geven via het hulp programma feedback in de rechter bovenhoek van de pagina.
 
-## <a name="what-size-vm-should-i-choose"></a>Hoe groot de virtuele machine moet ik kiezen?
-Azure biedt een uitgebreid scala aan VM-groottes. Omdat Visual Studio een krachtige, dankzij de multi-threaded toepassing is, wilt u een VM-grootte die bestaat uit ten minste twee processoren en 7 GB geheugen. U wordt aangeraden de volgende VM-grootten voor de Visual Studio-installatiekopieën:
+## <a name="what-size-vm-should-i-choose"></a>Welke VM moet ik kiezen?
+Azure biedt een breed scala aan grootten voor virtuele machines. Omdat Visual Studio een krachtige, multi thread-toepassing is, wilt u een VM-grootte hebben die ten minste twee processors en 7 GB aan geheugen bevat. De volgende VM-grootten worden aanbevolen voor de Visual Studio-installatie kopieën:
 
    * Standard_D2_v3
    * Standard_D2s_v3
@@ -80,37 +79,37 @@ Azure biedt een uitgebreid scala aan VM-groottes. Omdat Visual Studio een kracht
    * Standard_D2S_v2
    * Standard_D3_v2
     
-Zie voor meer informatie over de meest recente machinegrootten [grootten voor Windows virtuele machines in Azure](/azure/virtual-machines/windows/sizes).
+Zie [grootten voor virtuele Windows-machines in azure](/azure/virtual-machines/windows/sizes)voor meer informatie over de meest recente computer grootten.
 
-Met Azure, kunt u uw eerste keuze door het formaat van de virtuele machine te herverdelen. U kunt een nieuwe virtuele machine met een geschiktere grootte inrichten of grootte van uw bestaande virtuele machine naar andere onderliggende hardware. Zie voor meer informatie, [vergroten of verkleinen van een Windows-VM](/azure/virtual-machines/windows/resize-vm).
+Met Azure kunt u uw oorspronkelijke keuze herverdelen door de grootte van de virtuele machine te wijzigen. U kunt een nieuwe VM inrichten met een meer geschikte grootte of het formaat van uw bestaande virtuele machine aanpassen aan andere onderliggende hardware. Zie [het formaat van een Windows-VM wijzigen](/azure/virtual-machines/windows/resize-vm)voor meer informatie.
 
-## <a name="after-the-vm-is-running-whats-next"></a>Nadat de virtuele machine wordt uitgevoerd, is hoe nu verder?
-Visual Studio, volgt het model 'bring your own license' in Azure. Net als bij een installatie op de eigen hardware, is een van de eerste stappen licentieverlening voor uw installatie van Visual Studio. Voor het ontgrendelen van een Visual Studio:
-- Meld u aan met een Microsoft-account dat is gekoppeld aan een abonnement op Visual Studio 
-- Visual Studio met de productcode die is meegeleverd bij uw oorspronkelijke aankoop ontgrendelen
+## <a name="after-the-vm-is-running-whats-next"></a>Wat gebeurt er als de VM actief is?
+Visual Studio volgt het model ' uw eigen licentie meenemen ' in Azure. Net als bij een installatie op eigen hardware is een van de eerste stappen een licentie voor uw Visual Studio-installatie. Als u Visual Studio wilt ontgrendelen, gaat u als volgt te:
+- Meld u aan met een Microsoft-account dat is gekoppeld aan een Visual Studio-abonnement 
+- Ontgrendel Visual Studio met de product code die bij uw eerste aankoop werd geleverd
 
-Zie voor meer informatie, [aanmelden bij Visual Studio](/visualstudio/ide/signing-in-to-visual-studio) en [hoe u voor het ontgrendelen van Visual Studio](/visualstudio/ide/how-to-unlock-visual-studio).
+Zie voor meer informatie [Aanmelden bij Visual Studio](/visualstudio/ide/signing-in-to-visual-studio) en [hoe u Visual Studio](/visualstudio/ide/how-to-unlock-visual-studio)kunt ontgrendelen.
 
-## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>Hoe kan ik opslaan de toekomstige ontwikkeling VM of het team dat gebruiken?
+## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>Hoe kan ik de ontwikkelings-VM opslaan voor toekomstig gebruik of voor een team?
 
-Het spectrum van ontwikkelomgevingen is enorm er is echt kosten die gepaard gaan met het bouwen van de meer complexe omgevingen. U kunt ongeacht de configuratie van uw omgeving, opslaan of vastleggen, uw geconfigureerde virtuele machine als een 'basisinstallatiekopie' voor toekomstig gebruik of andere leden van uw team. Vervolgens, wanneer een nieuwe virtuele machine wordt opgestart, richt u deze uit de basisinstallatiekopie in plaats van de Azure Marketplace-installatiekopie.
+Het spectrum van ontwikkel omgevingen is enorm en er zijn echte kosten verbonden aan het bouwen van de complexere omgevingen. Ongeacht de configuratie van uw omgeving kunt u uw geconfigureerde virtuele machine opslaan of vastleggen als basis installatie kopie voor toekomstig gebruik of voor andere leden van uw team. Wanneer u vervolgens een nieuwe virtuele machine opstart, moet u deze van de basis installatie kopie inrichten in plaats van de Azure Marketplace-installatie kopie.
 
-Een snel overzicht: Gebruik het hulpprogramma voor systeemvoorbereiding (Sysprep) en de actieve virtuele machine af en vervolgens vast te leggen *(afbeelding 1)* de virtuele machine als een installatiekopie via de gebruikersinterface in Azure portal. Azure slaat de `.vhd` bestand met de installatiekopie in de storage-account van uw keuze. De nieuwe installatiekopie wordt vervolgens weergegeven als een installatiekopie-resource in de lijst met resources van uw abonnement.
+Een snelle samen vatting: Gebruik het hulp programma voor systeem voorbereiding (Sysprep) en sluit de actieve VM af en leg vervolgens *(afbeelding 1)* de virtuele machine vast als een installatie kopie via de gebruikers interface in de Azure Portal. In azure wordt `.vhd` het bestand met de installatie kopie opgeslagen in het opslag account van uw keuze. De nieuwe installatie kopie wordt vervolgens weer gegeven als een afbeeldings resource in de lijst met resources van uw abonnement.
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(Afbeelding 1) Een installatiekopie maken via de gebruikersinterface van Azure portal.* </center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(Afbeelding 1) Leg een installatie kopie vast via de Azure Portal-gebruikers interface.* </center>
 
-Zie voor meer informatie, [maken van een beheerde installatiekopie van een gegeneraliseerde VM in Azure](/azure/virtual-machines/windows/capture-image-resource).
+Zie [een beheerde installatie kopie maken van een gegeneraliseerde vm in azure](/azure/virtual-machines/windows/capture-image-resource)voor meer informatie.
 
 > [!IMPORTANT]
-> Vergeet niet het gebruik van Sysprep de virtuele machine voorbereiden. Als u deze stap hebt gemist, inrichten niet een VM op basis van de installatiekopie van het in Azure.
+> Vergeet niet om Sysprep te gebruiken om de virtuele machine voor te bereiden. Als u deze stap mist, kan Azure geen virtuele machine inrichten van de installatie kopie.
 
 > [!NOTE]
-> Worden er nog enige kosten voor opslag van de installatiekopieën, maar dat meerprijs extra kan worden vergeleken met de overheadkosten opnieuw opbouwen van de virtuele machine maken voor elk teamlid dat één nodig heeft. Het kost bijvoorbeeld een paar euro maken en opslaan van een installatiekopie 127 GB die opnieuw kan worden gebruikt door uw hele team een maand. Deze kosten zijn echter extra ten opzichte van elke werknemer investeert om te bouwen en valideren van een DEV-machine juist is geconfigureerd voor het gebruik ervan afzonderlijke uur.
+> Er worden nog steeds kosten in rekening gebracht voor de opslag van de installatie kopieën, maar deze incrementele kosten kunnen niet significant zijn vergeleken met de overhead kosten om de virtuele machine opnieuw te bouwen voor elk teamlid dat er een nodig heeft. Het kost bijvoorbeeld een paar dollar om een installatie kopie van 127 GB te maken en op te slaan voor een maand die door uw hele team kan worden gebruikt. Deze kosten zijn echter niet significant in vergelijking met uren die elke werk nemer investeren om een correct geconfigureerde dev box te maken en te valideren voor hun eigen gebruik.
 
-Bovendien uw ontwikkelingstaken of technologieën mogelijk meer schaal, zoals varianten van de ontwikkeling van configuraties en configuraties met meerdere machines. U kunt Azure DevTest Labs maken _recepten_ die automatiseren constructie van de 'gouden installatiekopie'. U kunt ook DevTest Labs gebruiken voor het beheren van beleid voor actieve virtuele machines van uw team. [Met Azure DevTest Labs voor ontwikkelaars](/azure/devtest-lab/devtest-lab-developer-lab) is de beste bron voor meer informatie over DevTest Labs.
+Daarnaast hebben uw ontwikkel taken of technologieën mogelijk meer schaal, zoals de variëteiten van ontwikkel configuraties en configuraties met meerdere computers. U kunt Azure DevTest Labs gebruiken om _recepten_ te maken die de bouw van uw ' gouden installatie kopie ' automatiseren. U kunt ook DevTest Labs gebruiken om beleid te beheren voor de actieve Vm's van uw team. Het [gebruik van Azure DevTest Labs voor ontwikkel aars](/azure/devtest-lab/devtest-lab-developer-lab) is de beste bron voor meer informatie over DevTest Labs.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu dat u over de vooraf geconfigureerde installatiekopieën voor Visual Studio weet, wordt de volgende stap is het maken van een nieuwe virtuele machine:
+Nu u bekend bent met de vooraf geconfigureerde Visual Studio-installatie kopieën, is de volgende stap het maken van een nieuwe VM:
 
-* [Een virtuele machine via de Azure-portal maken](quick-create-portal.md)
-* [Overzicht van Windows-Machines](overview.md)
+* [Een virtuele machine maken via de Azure Portal](quick-create-portal.md)
+* [Overzicht van Windows Virtual Machines](overview.md)

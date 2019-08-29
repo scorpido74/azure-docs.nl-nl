@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 05b761dbf9f58f6afca6459e28d2fecca9aa7b06
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0ae82f8980b995edab3419374e27a2cb905935d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878304"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099503"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Een Azure IoT Central-toepassing maken (preview-functies)
 
@@ -27,7 +27,7 @@ In deze Quick start ziet u hoe u een Azure IoT Central-toepassing maakt die gebr
 
 ## <a name="create-an-application"></a>Een app maken
 
-Navigeer naar de pagina [​​Toepassingsbeheer ](https://aka.ms/iotcentral) van Azure IoT Central. Meld u vervolgens aan met een persoonlijk of werk-of school account van micro soft.
+Ga naar de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) . Meld u vervolgens aan met een persoonlijk of werk-of school account van micro soft.
 
 Als u wilt beginnen met het maken van een nieuwe Azure IoT Central-toepassing, selecteert u **Nieuwe toepassing**. Met deze koppeling gaat u naar de pagina **een toepassing maken** .
 
@@ -55,4 +55,4 @@ Voor het maken van een nieuwe Azure IoT Central-toepassing die preview-functies 
 In deze Quick Start hebt u een IoT Central-toepassing gemaakt die gebruikmaakt van de preview-functies. De voorgestelde volgende stap is:
 
 > [!div class="nextstepaction"]
-> [Volg een rondleiding door IoT Central](overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Een nieuw apparaattype definiëren in uw Azure IoT Central-toepassing](./tutorial-define-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

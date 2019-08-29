@@ -7,20 +7,21 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 03/22/2019
-ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.date: 08/22/2019
+ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073028"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
 Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL database voor het **detecteren**, classificeren & , labelen van het**beveiligen** van gevoelige gegevens in uw data bases.
+
 Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, financiële, gezondheids zorg, persoonlijke Identificeer bare gegevens (PII), enzovoort.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
 
 - Helpt te voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving.

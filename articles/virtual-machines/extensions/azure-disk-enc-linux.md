@@ -1,6 +1,6 @@
 ---
 title: Azure Disk Encryption voor Linux | Microsoft Docs
-description: Azure Disk Encryption implementeert voor Linux op een virtuele machine met behulp van een VM-extensie.
+description: Implementeert Azure Disk Encryption voor Linux naar een virtuele machine met behulp van een extensie van een virtuele machine.
 services: virtual-machines-linux
 documentationcenter: ''
 author: ejarvi
@@ -8,44 +8,43 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: d544aae33faf60be00a2b4ea0a45f405efcedb39
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6a81f105f9632a7ca7e2bf7188e358274020c78f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706147"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084771"
 ---
-# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption for Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
+# <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption voor Linux (micro soft. Azure. Security. AzureDiskEncryptionForLinux)
 
 ## <a name="overview"></a>Overzicht
 
-Azure Disk Encryption maakt gebruik van het subsysteem dm-crypt in Linux voor volledige schijfversleuteling op [Selecteer Azure Linux-distributies](https://aka.ms/adelinux).  Deze oplossing is geïntegreerd met Azure Key Vault om sleutels en geheimen te beheren.
+Azure Disk Encryption maakt gebruik van het subsysteem DM-cryptografie in Linux om versleuteling van de volledige schijf te bieden voor het [selecteren van Azure Linux](https://aka.ms/adelinux)-distributies.  Deze oplossing is geïntegreerd met Azure Key Vault voor het beheren van schijf versleutelings sleutels en geheimen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zie voor een volledige lijst met vereisten, [vereisten voor Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Zie [AzureDiskEncryption](
+../../security/azure-security-disk-encryption-prerequisites.md)vereisten voor een volledige lijst met vereisten.
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Azure Disk Encryption wordt momenteel ondersteund in select-distributies en versies.  Zie de [Azure Disk Encryption ondersteunde besturingssystemen: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) voor een lijst van Linux-distributies die worden ondersteund.
+Azure Disk Encryption wordt momenteel ondersteund voor geselecteerde distributies en versies.  Zie de [Azure Disk Encryption ondersteunde besturings systemen: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) voor de lijst met Linux-distributies die worden ondersteund.
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-Azure Disk Encryption voor Linux is verbinding met Internet vereist voor toegang tot Active Directory, Key Vault, opslag- en eindpunten voor het beheer van pakket.  Zie voor meer informatie, [vereisten voor Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
+Voor Azure Disk Encryption voor Linux is Internet connectiviteit vereist voor toegang tot Active Directory-, Key Vault-, opslag-en Package Management-eind punten.  Zie [Azure Disk Encryption vereisten](../../security/azure-security-disk-encryption-prerequisites.md)voor meer informatie.
 
-## <a name="extension-schemata"></a>Extensie-schema 's
+## <a name="extension-schemata"></a>Extensie schema's
 
-Er zijn twee schema's voor Azure Disk Encryption: v1.1, een nieuwere, aanbevolen schema die geen van Azure Active Directory (AAD)-eigenschappen en v0.1 gebruikmaakt, een oudere schema waarvoor AAD-eigenschappen. Moet u de schemaversie die overeenkomt met de extensie die u gebruikt: schema v1.1 voor de AzureDiskEncryptionForLinux-extensieversie 1.1, v0.1 schema voor de AzureDiskEncryptionForLinux-versie van de extensie 0.1.
-### <a name="schema-v11-no-aad-recommended"></a>Schema v1.1: Er is geen AAD (aanbevolen)
+Er zijn twee schema's voor Azure Disk Encryption: v 1.1, een nieuwer, aanbevolen schema dat geen gebruik maakt van Azure Active Directory (AAD)-eigenschappen en v 0.1, een ouder schema dat AAD-eigenschappen vereist. U moet de schema versie gebruiken die overeenkomt met de extensie die u gebruikt: schema v 1.1 voor de AzureDiskEncryptionForLinux-extensie versie 1,1, schema v 0.1 voor de AzureDiskEncryptionForLinux-extensie versie 0,1.
+### <a name="schema-v11-no-aad-recommended"></a>Schema v 1.1: Geen AAD (aanbevolen)
 
-Het schema v1.1 wordt aanbevolen en vereist geen Azure Active Directory-eigenschappen.
+Het v 1.1-schema wordt aanbevolen en vereist geen Azure Active Directory eigenschappen.
 
 ```json
 {
@@ -71,11 +70,11 @@ Het schema v1.1 wordt aanbevolen en vereist geen Azure Active Directory-eigensch
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schema v0.1: met AAD 
+### <a name="schema-v01-with-aad"></a>Schema v 0,1: met AAD 
 
-De 0,1 schema vereist `aadClientID` en ofwel `aadClientSecret` of `AADClientCertificate`.
+Het 0,1-schema `aadClientID` vereist en `aadClientSecret` ofwel `AADClientCertificate`of.
 
-Met behulp van `aadClientSecret`:
+Gebruiken `aadClientSecret`:
 
 ```json
 {
@@ -105,7 +104,7 @@ Met behulp van `aadClientSecret`:
 }
 ```
 
-Met behulp van `AADClientCertificate`:
+Gebruiken `AADClientCertificate`:
 
 ```json
 {
@@ -142,33 +141,33 @@ Met behulp van `AADClientCertificate`:
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1, 1.1 | int |
-| (0,1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0,1 schema) AADClientSecret | password | string |
-| (0,1 schema) AADClientCertificate | vingerafdruk | string |
-| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-woordenlijst |
+| Type | AzureDiskEncryptionForLinux | string |
+| typeHandlerVersion | 0,1, 1,1 | int |
+| (0,1-schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (0,1-schema) AADClientSecret | password | string |
+| (0,1-schema) AADClientCertificate | thumbprint | string |
+| DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-woorden lijst |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
-| (optional) KeyVaultURL | url | string |
+| Beschrijving KeyVaultURL | url | string |
 | Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
-| VolumeType | OS-, gegevens, alle | string |
+| VolumeType | Besturings systeem, gegevens, alle | string |
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Zie voor een voorbeeld van sjabloonimplementatie [versleuteling inschakelen op een actieve Linux-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
+Zie voor een voor beeld van een sjabloon implementatie [versleuteling inschakelen op een actieve Linux-machine](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm).
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
-Instructies vindt u in de meest recente [documentatie van Azure CLI](/cli/azure/vm/encryption?view=azure-cli-latest). 
+Instructies vindt u in de meest recente [documentatie van Azure cli](/cli/azure/vm/encryption?view=azure-cli-latest). 
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Voor het oplossen van problemen, raadpleegt u de [probleemoplossingsgids voor Azure Disk Encryption](../../security/azure-security-disk-encryption-tsg.md).
+Raadpleeg de [Azure Disk Encryption Troubleshooting Guide (Engelstalig](../../security/azure-security-disk-encryption-tsg.md)) voor het oplossen van problemen.
 
 ### <a name="support"></a>Ondersteuning
 
@@ -176,4 +175,4 @@ Als u hulp nodig hebt op elk gewenst moment in dit artikel, u kunt contact opnem
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over VM-extensies, [extensies en functies voor Linux virtuele machines](features-linux.md).
+Zie [extensies en functies van virtuele machines voor Linux](features-linux.md)voor meer informatie over VM-extensies.

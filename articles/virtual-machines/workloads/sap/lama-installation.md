@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68607974"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099545"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-connector voor Azure
 
@@ -100,11 +99,11 @@ De Service-Principal heeft geen machtigingen voor toegang tot uw Azure-resources
 Open de SAP LaMa-website en navigeer naar infra structuur. Ga naar tabblad Cloud managers en klik op toevoegen. Selecteer de Microsoft Azure Cloud Adapter en klik op volgende. Voer de volgende informatie in:
 
 * Label: Kies een naam voor het connector exemplaar
-* Gebruikersnaam: Toepassings-id van de service-principal
-* Wachtwoord: Sleutel/wacht woord voor Service-Principal
+* Gebruikers naam: Toepassings-id van de service-principal
+* Wacht woord Sleutel/wacht woord voor Service-Principal
 * URL: Standaard waarde blijven https://management.azure.com/
 * Bewakings interval (seconden): Moet ten minste 300
-* Abonnements-id: Azure-abonnements-ID
+* Abonnements-ID: Azure-abonnements-ID
 * Azure Active Directory Tenant-ID: ID van de Active Directory Tenant
 * Proxy-host: De hostnaam van de proxy als SAP LaMa een proxy nodig heeft om verbinding te maken met Internet
 * Proxy poort: TCP-poort van de proxy
@@ -504,12 +503,12 @@ Gebruik *AS1-di-0* voor de *pas-host-naam* in het dialoog venster *primaire Appl
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Fouten en waarschuwingen tijdens de installatie van de toepassings server
 
 * Fout bij het uitvoeren van SAPinst stap: getProfileDir
-  * FOUT: (Laatste fout gemeld door de stap: Gevangen ESAPinstException in module aanroep: Validatie van de stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir ' heeft een fout gerapporteerd: De \\\as1-ascs\sapmnt\AS1\SYS\profile van het knoop punt bestaat niet. SAPinst in de interactieve modus starten om dit probleem op te lossen)
+  * OPTREEDT (Laatste fout gemeld door de stap: Gevangen ESAPinstException in module aanroep: Validatie van de stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_readProfileDir | ind | ind | ind | ind | readProfile | 0 | getProfileDir ' heeft een fout gerapporteerd: De \\\as1-ascs\sapmnt\AS1\SYS\profile van het knoop punt bestaat niet. SAPinst in de interactieve modus starten om dit probleem op te lossen)
   * Oplossing  
     Zorg ervoor dat SWPM wordt uitgevoerd met een gebruiker die toegang heeft tot het profiel. Deze gebruiker kan worden geconfigureerd in de installatie wizard voor de toepassings server
 
 * Fout bij het uitvoeren van SAPinst stap: askUnicode
-  * FOUT: (Laatste fout gemeld door de stap: Gevangen ESAPinstException in module aanroep: Validatie van de stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_getUnicode | ind | ind | ind | ind | Unicode | 0 | askUnicode ' heeft een fout gerapporteerd: SAPinst in de interactieve modus starten om dit probleem op te lossen)
+  * OPTREEDT (Laatste fout gemeld door de stap: Gevangen ESAPinstException in module aanroep: Validatie van de stap | NW_DI | ind | ind | ind | ind | 0 | 0 | NW_GetSidFromProfiles | ind | ind | ind | ind | getSid | 0 | NW_getUnicode | ind | ind | ind | ind | Unicode | 0 | askUnicode ' heeft een fout gerapporteerd: SAPinst in de interactieve modus starten om dit probleem op te lossen)
   * Oplossing  
     Als u een recente SAP-kernel gebruikt, kan SWPM niet bepalen of het systeem meer dan een Unicode-systeem is met behulp van de bericht server van de ASCS. Zie SAP Note [2445033] voor meer informatie.  
     Dit probleem wordt opgelost in een nieuw ondersteunings pakket/patch van SAP LaMa.  
