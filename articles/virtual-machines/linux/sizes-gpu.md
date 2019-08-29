@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM-grootten - versnelde compute | Microsoft Docs
-description: Een lijst met de verschillende GPU geoptimaliseerd grootten beschikbaar voor virtuele Linux-machines in Azure. Bevat informatie over het aantal vcpu's, gegevensschijven en NIC's, evenals opslag en doorvoer netwerkbandbreedte voor grootten die in deze reeks.
+title: VM-grootten van Azure Linux-versnelde compute | Microsoft Docs
+description: Geeft een lijst van de verschillende geoptimaliseerde GPU-grootten die beschikbaar zijn voor virtuele Linux-machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 64cbcd375840d78916810abf9ccb8478ef9a1359
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ed8af91701a5ed77636bb86e8798981f37546f23
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708835"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082139"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-geoptimaliseerde VM-grootten
+# <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
@@ -31,14 +30,14 @@ ms.locfileid: "67708835"
 
 ## <a name="supported-distributions-and-drivers"></a>Ondersteunde distributies en stuurprogramma 's
 
-Als u wilt profiteren van de GPU-mogelijkheden van Azure VM's voor N-serie waarop Linux wordt uitgevoerd, moeten de NVIDIA GPU-stuurprogramma's worden geïnstalleerd. De [NVIDIA GPU-stuurprogramma extensie](../extensions/hpccompute-gpu-linux.md) juiste NVIDIA CUDA- of GRID stuurprogramma's worden geïnstalleerd op een VM uit de N-serie. Installeren of beheren van de extensie met de Azure portal of hulpprogramma's, zoals de Azure CLI of Azure Resource Manager-sjablonen. Zie de [NVIDIA GPU-stuurprogramma extensie documentatie](../extensions/hpccompute-gpu-linux.md) voor ondersteunde distributies en de implementatiestappen. Raadpleeg voor algemene informatie over VM-extensies [virtuele machine van Azure-extensies en functies](../extensions/overview.md).
+Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines uit de Azure N-serie waarop Linux wordt uitgevoerd, moeten de NVIDIA GPU-Stuur Programma's zijn geïnstalleerd. Met de [uitbrei ding NVIDIA GPU-stuur programma](../extensions/hpccompute-gpu-linux.md) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals de Azure CLI-of Azure Resource Manager-sjablonen. Zie de [documentatie voor NVIDIA GPU-Stuur Programma's](../extensions/hpccompute-gpu-linux.md) voor ondersteunde distributies en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](../extensions/overview.md)voor algemene informatie over VM-extensies.
 
-Als u kiest voor het handmatig installeren van NVIDIA GPU-stuurprogramma's, Zie [setup van de N-serie GPU-stuurprogramma voor Linux](n-series-driver-setup.md) voor ondersteunde distributies en stuurprogramma's voor de installatie-en verificatiestappen.
+Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, raadpleegt u [het stuur programma voor de installatie van de N-Series GPU voor Linux](n-series-driver-setup.md) voor ondersteunde distributies, stuur Programma's en installatie-en verificatie stappen.
 
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* U mag niet X installeren-server of andere systemen die gebruikmaken van de `Nouveau` stuurprogramma op Ubuntu Netwerkcontroller-VM's. Voordat u NVIDIA GPU-stuurprogramma's installeert, moet u om uit te schakelen de `Nouveau` stuurprogramma.  
+* U mag geen X-server of andere systemen installeren die `Nouveau` gebruikmaken van het stuur programma op Ubuntu NC-vm's. Voordat u NVIDIA GPU-Stuur Programma's installeert, moet u `Nouveau` het stuur programma uitschakelen.  
 
 ## <a name="other-sizes"></a>Andere grootten
 - [Algemeen doel](sizes-general.md)
@@ -49,4 +48,4 @@ Als u kiest voor het handmatig installeren van NVIDIA GPU-stuurprogramma's, Zie 
 - [Vorige generaties](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over hoe u [Azure compute units (ACU)](acu.md) kunt u de prestaties van Azure-SKU's met elkaar vergelijken.
+Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.

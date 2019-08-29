@@ -1,6 +1,6 @@
 ---
-title: Een virtuele Linux-machine maken met de Azure REST API | Microsoft Docs
-description: Informatie over het maken van een virtuele Linux-machine in Azure die gebruikmaakt van Managed Disks en SSH-verificatie met Azure REST-API.
+title: Een virtuele Linux-machine maken met de Azure-REST API | Microsoft Docs
+description: Meer informatie over het maken van een virtuele Linux-machine in azure die gebruikmaakt van Managed Disks-en SSH-verificatie met Azure REST API.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,70 +9,69 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667952"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083476"
 ---
-# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Een Linux-machine die gebruikmaakt van SSH-verificatie met de REST-API maken
+# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Maak een virtuele Linux-machine die gebruikmaakt van SSH-verificatie met de REST API
 
-Een Linux virtuele machine (VM) in Azure bestaat uit verschillende bronnen, zoals schijven en netwerk-interfaces en definieert parameters, zoals locatie, grootte en operating system image en verificatie-instellingen.
+Een virtuele Linux-machine (VM) in azure bestaat uit verschillende bronnen, zoals schijven en netwerk interfaces en definieert para meters zoals locatie, grootte en installatie kopie van het besturings systeem en verificatie-instellingen.
 
-U kunt een Linux-VM via de Azure portal, Azure CLI 2.0, veel Azure-SDK's, Azure Resource Manager-sjablonen en veel hulpprogramma's van derden, zoals Ansible of Terraform maken. Deze hulpprogramma's uiteindelijk de REST-API gebruiken om de Linux-VM te maken.
+U kunt een virtuele Linux-machine maken via de Azure Portal, Azure CLI 2,0, veel Azure Sdk's, Azure Resource Manager sjablonen en veel hulpprogram ma's van derden, zoals Ansible of terraform. Al deze hulpprogram ma's gebruiken uiteindelijk de REST API voor het maken van de virtuele Linux-machine.
 
-Dit artikel leest u hoe de REST-API gebruiken om te maken van een Linux-VM waarop Ubuntu 18.04-LTS met beheerde schijven en SSH-verificatie wordt uitgevoerd.
+In dit artikel wordt beschreven hoe u de REST API gebruikt om een virtuele Linux-machine met Ubuntu 18,04-LTS te maken met beheerde schijven en SSH-verificatie.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Voordat u maken en de aanvraag indienen, gaat u te werk:
+Voordat u de aanvraag maakt en indient, hebt u het volgende nodig:
 
 * De `{subscription-id}` voor uw abonnement
-  * Als u meerdere abonnementen hebt, raadpleegt u [met meerdere abonnementen werken](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
-* Een `{resourceGroupName}` u vooraf hebt gemaakt
-* Een [virtuele netwerkinterface](../../virtual-network/virtual-network-network-interface.md) in dezelfde resourcegroep bevinden
-* Een SSH-sleutelpaar (u kunt [een nieuw token genereren](mac-create-ssh-keys.md) als u geen een hebt)
+  * Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
+* Een `{resourceGroupName}` die u eerder hebt gemaakt
+* Een [virtuele netwerk interface](../../virtual-network/virtual-network-network-interface.md) in dezelfde resource groep
+* Een SSH-sleutel paar (u kunt [een nieuw abonnement genereren](mac-create-ssh-keys.md) als u er geen hebt)
 
-## <a name="request-basics"></a>Grondbeginselen van aanvraag
+## <a name="request-basics"></a>Basis informatie over aanvragen
 
-Als u wilt maken of bijwerken van een virtuele machine, gebruikt u de volgende *plaatsen* bewerking:
+Als u een virtuele machine wilt maken of bijwerken, gebruikt u de volgende *put* -bewerking:
 
 ``` http
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-Naast de `{subscription-id}` en `{resourceGroupName}` parameters, moet u om op te geven de `{vmName}` (`api-version` is optioneel, maar in dit artikel is getest met `api-version=2017-12-01`)
+`{subscription-id}` Naast de para meters `{resourceGroupName}` en moet u het `{vmName}` (`api-version` optioneel) opgeven, maar dit artikel is getest met `api-version=2017-12-01`.
 
 De volgende headers zijn vereist:
 
-| Aanvraagheader   | Description |
+| Aanvraag header   | Description |
 |------------------|-----------------|
-| *Content-Type:*  | Vereist. Ingesteld op `application/json`. |
-| *Authorization:* | Vereist. Ingesteld op een geldige `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Inhouds type:*  | Vereist. Ingesteld op `application/json`. |
+| *Authorization:* | Vereist. Ingesteld op een geldig `Bearer` [toegangs token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-Raadpleeg voor algemene informatie over het werken met REST API-aanvragen [onderdelen van een REST-API-aanvraag/antwoord](/rest/api/azure/#components-of-a-rest-api-requestresponse).
+Voor algemene informatie over het werken met REST API-aanvragen raadpleegt u [onderdelen van een rest API aanvraag/antwoord](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
-## <a name="create-the-request-body"></a>Hoofdtekst van de aanvraag maken
+## <a name="create-the-request-body"></a>De aanvraag tekst maken
 
-De volgende algemene definities worden gebruikt voor het bouwen van een aanvraagtekst:
+De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag tekst:
 
-| Name                       | Verplicht | Type                                                                                | Description  |
+| Name                       | Vereist | Type                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | Waar     | string                                                                              | Resourcelocatie. |
 | name                       |          | string                                                                              | Naam voor de virtuele machine. |
-| properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Hiermee geeft u de hardware-instellingen voor de virtuele machine. |
-| properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Hiermee geeft u de opslaginstellingen voor de virtuele-machineschijven. |
-| properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Hiermee geeft u de instellingen van het besturingssysteem voor de virtuele machine. |
-| properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Hiermee geeft u de netwerkinterfaces van de virtuele machine. |
+| properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Hiermee geeft u de hardware-instellingen voor de virtuele machine op. |
+| properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Hiermee geeft u de opslag instellingen voor de schijven van de virtuele machine. |
+| properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Hiermee geeft u de instellingen van het besturings systeem voor de virtuele machine. |
+| properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Hiermee geeft u de netwerk interfaces van de virtuele machine. |
 
-Een voorbeeld van de aanvraagtekst is lager dan. Zorg ervoor dat u de naam van de virtuele machine in de `{computerName}` en `{name}` parameters, de naam van de netwerkinterface die u hebt gemaakt onder `networkInterfaces`, uw gebruikersnaam in `adminUsername` en `path`, en de *openbare*gedeelte van uw SSH-sleutelpaar (zich in, bijvoorbeeld `~/.ssh/id_rsa.pub`) in `keyData`. Andere parameters die u wilt wijzigen bevatten `location` en `vmSize`.  
+Hieronder ziet u een voor beeld van een aanvraag tekst. Zorg ervoor dat u de naam van de virtuele `{computerName}` machine `{name}` opgeeft in de para meters en de naam van de netwerk `networkInterfaces`interface die u hebt gemaakt `path`onder, uw gebruikers naam in `adminUsername` en en het *open bare* gedeelte van uw SSH sleutel paar (in bijvoorbeeld `~/.ssh/id_rsa.pub`) in. `keyData` Andere para meters die u mogelijk wilt `location` wijzigen `vmSize`, zijn en.  
 
 ```json
 {
@@ -127,22 +126,22 @@ Een voorbeeld van de aanvraagtekst is lager dan. Zorg ervoor dat u de naam van d
 }
 ```
 
-Zie voor een volledige lijst van de beschikbare definities in de aanvraagtekst [virtuele machines maken of bijwerken van definities van de aanvraag hoofdtekst](/rest/api/compute/virtualmachines/createorupdate#definitions).
+Zie voor een volledige lijst van de beschik bare definities in de hoofd tekst van de aanvraag de definities voor het [maken of bijwerken van aanvraag teksten voor virtuele machines](/rest/api/compute/virtualmachines/createorupdate#definitions).
 
-## <a name="sending-the-request"></a>De aanvraag wordt verzonden
+## <a name="sending-the-request"></a>De aanvraag verzenden
 
-U kunt de client van uw voorkeur voor het verzenden van deze HTTP-aanvraag. U kunt ook een [in de browser hulpprogramma](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) door te klikken op de **uitproberen** knop.
+U kunt de client van uw voor keur gebruiken voor het verzenden van deze HTTP-aanvraag. U kunt ook een [hulp programma in de browser](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) gebruiken door te klikken op de knop **Probeer het opnieuw** .
 
 ### <a name="responses"></a>Responses
 
-Er zijn twee gelukt-antwoorden voor de bewerking voor het maken of bijwerken van een virtuele machine:
+Er zijn twee geslaagde reacties voor de bewerking om een virtuele machine te maken of bij te werken:
 
 | Name        | Type                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201-gemaakt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Gemaakt     |
+| 201 gemaakt | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Gemaakt     |
 
-Een verkorte *201-gemaakt* antwoord van het vorige voorbeeld van de hoofdtekst van de aanvraag die wordt gemaakt van een virtuele machine blijkt een *vmId* is toegewezen en de *provisioningState* is*Maken*:
+Een versmalded *201* -antwoord dat is gemaakt op basis van de aanvraag tekst van het vorige voor beeld waarmee een VM wordt gemaakt, ziet u dat er een *vmId* is toegewezen en dat de *provisioningState* wordt *gemaakt*:
 
 ```json
 {
@@ -151,13 +150,13 @@ Een verkorte *201-gemaakt* antwoord van het vorige voorbeeld van de hoofdtekst v
 }
 ```
 
-Zie voor meer informatie over de REST-API-reacties [verwerken van het antwoordbericht](/rest/api/azure/#process-the-response-message).
+Zie voor meer informatie over REST API reacties [het antwoord bericht verwerken](/rest/api/azure/#process-the-response-message).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende onderwerpen voor meer informatie over de Azure REST API's of andere beheerprogramma's zoals Azure CLI of Azure PowerShell:
+Zie het volgende voor meer informatie over de Azure REST Api's of andere beheer Programma's, zoals Azure CLI of Azure PowerShell:
 
-- [Azure Compute-provider REST-API](/rest/api/compute/)
-- [Aan de slag met REST API van Azure](/rest/api/azure/)
+- [REST API Azure Compute-provider](/rest/api/compute/)
+- [Aan de slag met Azure REST API](/rest/api/azure/)
 - [Azure-CLI](/cli/azure/)
-- [Azure PowerShell-module](/powershell/azure/overview)
+- [Module Azure PowerShell](/powershell/azure/overview)
