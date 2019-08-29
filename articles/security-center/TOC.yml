@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: Beoordeling van beveiligingslekken is niet geïnstalleerd
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Netwerkbeveiligingsgroepen inschakelen
-          href: security-center-enable-network-security-groups.md
         - name: Bedreigingsrapporten
           href: security-center-threat-report.md
         - name: Aangepaste waarschuwingen
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: Logic Apps-playbooks
           href: security-center-playbooks.md
-        - name: Gebeurtenissen weergeven
-          href: security-center-events-dashboard.md
         - name: Search
           href: security-center-search.md
         - name: Planning en bewerkingen

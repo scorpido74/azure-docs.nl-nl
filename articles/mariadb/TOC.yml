@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: Handleidingen
   items:
+    - name: Een server beheren
+      items:
+        - name: Azure Portal
+          href: howto-create-manage-server-portal.md
     - name: Firewall-regels
       items:
         - name: Azure Portal
@@ -123,6 +127,8 @@
       items:
         - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
+        - name: Azure-CLI
+          href: howto-auto-grow-storage-cli.md
     - name: Serverlogboeken openen
       items:
         - name: Logboeken voor langzame query's

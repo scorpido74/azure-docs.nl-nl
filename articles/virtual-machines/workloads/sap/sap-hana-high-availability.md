@@ -7,18 +7,17 @@ author: MSSedusch
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 7b9d3791d44e9541df7fc95c34b5e8c83a4295b3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "67709099"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078390"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server
 
@@ -343,7 +342,7 @@ Als u SAP HANA systeem replicatie wilt installeren, volgt u hoofd stuk 4 van de 
    * Voer het wacht woord voor de database gebruiker (systeem) in: Voer het wacht woord voor de database gebruiker in.
    * Wacht woord van database gebruiker (systeem) bevestigen: Voer het wacht woord van de database gebruiker opnieuw in om dit te bevestigen.
    * Systeem opnieuw opstarten nadat de computer opnieuw is opgestart? [n]: Selecteer ENTER.
-   * Wilt u doorgaan? (j/n): Valideer de samen vatting. Voer **y** in om door te gaan.
+   * Wilt u door gaan? (j/n): Valideer de samen vatting. Voer **y** in om door te gaan.
 
 1. **[A]** de SAP Hosta Gent bijwerken.
 

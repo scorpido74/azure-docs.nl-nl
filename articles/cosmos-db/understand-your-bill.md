@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f800560aa4ddef52c2274fa8b3f5c98d68189f0f
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717525"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614159"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB factuur
 
@@ -90,7 +90,7 @@ Als u de ingerichte door Voer voor een container of een set containers op 9:30 u
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Facturerings voorbeelden met geo-replicatie en multi-master  
 
-U kunt op elk gewenst moment Azure-regio's aan uw Azure Cosmos DB-database account toevoegen of eruit verwijderen. De door u geconfigureerde door Voer voor diverse Azure Cosmos DB-data bases en containers wordt gereserveerd in elk van de Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-database account. Als de som van de ingerichte door Voer (RU/sec) die is geconfigureerd voor alle data bases en containers in uw Azure Cosmos-database account (ingericht per uur), T is en het aantal Azure-regio's dat aan uw database account is gekoppeld, N is, wordt het totaal de ingerichte door Voer voor een bepaald uur, voor uw Azure Cosmos-database account, (a) die is geconfigureerd met één schrijf regio, is gelijk aan T x N RU/sec. en (b) geconfigureerd met alle regio's die kunnen worden verwerkt, is gelijk aan T x (N + 1) RU/sec. respectievelijk. Ingerichte door Voer (enkele schrijf regio) kosten $0.008/uur per 100 RU/SEC en ingerichte door Voer met meerdere Beschrijf bare regio's (configuratie van meerdere masters) $0,016/per uur per 100 RU/sec. (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)). Met Azure Cosmos DB kunt u de gegevens uit een wille keurige regio lezen, ongeacht of er een enkele schrijf regio of meerdere schrijf regio's zijn.
+U kunt Azure-regio's overal ter wereld toevoegen aan of verwijderen uit uw Azure Cosmos-database account. De door u geconfigureerde doorvoer voor de verschillende Azure Cosmos-data bases en containers wordt gereserveerd in elk van de Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-database account. Als de som van de ingerichte door Voer (RU/sec) die is geconfigureerd voor alle data bases en containers in uw Azure Cosmos-database account (ingericht per uur), T is en het aantal Azure-regio's dat aan uw database account is gekoppeld, N is, wordt het totaal de ingerichte door Voer voor een bepaald uur, voor uw Azure Cosmos-database account, (a) die is geconfigureerd met één schrijf regio, is gelijk aan T x N RU/sec. en (b) geconfigureerd met alle regio's die kunnen worden verwerkt, is gelijk aan T x (N + 1) RU/sec. respectievelijk. Ingerichte door Voer (enkele schrijf regio) kosten $0.008/uur per 100 RU/SEC en ingerichte door Voer met meerdere Beschrijf bare regio's (configuratie van meerdere masters) $0,016/per uur per 100 RU/sec. (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)). Met Azure Cosmos DB kunt u de gegevens uit een wille keurige regio lezen, ongeacht of er een enkele schrijf regio of meerdere schrijf regio's zijn.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Voor beeld van facturering: meerdere regio's Azure Cosmos-account, schrijf bewerkingen in één regio
 
@@ -228,7 +228,7 @@ Totale maandelijkse kosten = maandelijkse kosten voor opslag en maandelijkse kos
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Facturering met Azure Cosmos DB gereserveerde capaciteit
 
-Azure Cosmos DB gereserveerde capaciteit biedt u de mogelijkheid om vooraf ingerichte door voer te kopen (een gereserveerde capaciteit of een reserve ring) die kan worden toegepast op alle Azure Cosmos DB data bases en containers (voor elke API of elk gegevens model) in alle Azure-regio's. Omdat de ingerichte doorvoer prijs per regio verschilt, is het handiger om gereserveerde capaciteit te beschouwen als een monetair tegoed dat u bij een korting hebt aangeschaft en dat kan worden opgehaald uit de ingerichte door Voer voor de desbetreffende prijs in elke regio. Stel bijvoorbeeld dat u een Azure Cosmos-account hebt met één container die is ingericht met 50-K RU/SEC en wereld wijd gerepliceerde twee regio's, VS-Oost en Japan-Oost. Als u kiest voor de optie betalen naar gebruik, betaalt u het volgende:  
+Azure Cosmos DB gereserveerde capaciteit biedt u de mogelijkheid om vooraf ingerichte door voer te kopen (een gereserveerde capaciteit of een reserve ring) die kan worden toegepast op alle Azure Cosmos-data bases en-containers (voor elke API of elk gegevens model) in alle Azure-regio's. Omdat de ingerichte doorvoer prijs per regio verschilt, is het handiger om gereserveerde capaciteit te beschouwen als een monetair tegoed dat u bij een korting hebt aangeschaft en dat kan worden opgehaald uit de ingerichte door Voer voor de desbetreffende prijs in elke regio. Stel bijvoorbeeld dat u een Azure Cosmos-account hebt met één container die is ingericht met 50-K RU/SEC en wereld wijd gerepliceerde twee regio's, VS-Oost en Japan-Oost. Als u kiest voor de optie betalen naar gebruik, betaalt u het volgende:  
 
 * in VS-Oost: voor 50-K RU/seconde tegen $0,008 per 100 RU/sec in die regio 
 
@@ -254,7 +254,7 @@ Wat u effectief hebt aangeschaft, is een tegoed van $8 per uur, voor 100 K RU pe
 |----|----|----|----|----|
 |East US|$0,008 |50 K|$4|$2.880 |
 |Japan - oost|$0,009 |50 K| $4,50 |$3.240 |
-|||Betalen per gebruik|$8,50|$6120|
+|||Betalen naar gebruik|$8,50|$6120|
 |Aangeschafte gereserveerde capaciteit|$0,0064 (20% korting) |100 RU/sec of $8 capaciteit vooraf aangeschaft |-$8|-$5.760 |
 |Nettofactuur|||$0,50 |$360 |
 

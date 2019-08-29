@@ -171,6 +171,8 @@
       items:
         - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
+        - name: Azure-CLI
+          href: howto-auto-grow-storage-cli.md
     - name: Serverlogboeken openen
       items:
         - name: Logboeken voor langzame query's

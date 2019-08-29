@@ -259,6 +259,8 @@
               href: sql-data-warehouse-install-visual-studio.md
             - name: Integratie van bronbeheer
               href: sql-data-warehouse-source-control-integration.md
+            - name: Continue integratie en implementatie
+              href: sql-data-warehouse-continuous-integration-and-deployment.md
         - name: Verbinding maken en query's uitvoeren
           items:
             - name: Visual Studio SSDT
