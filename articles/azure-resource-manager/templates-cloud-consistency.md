@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388138"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164770"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Azure Resource Manager-sjablonen voor de consistentie van de cloud ontwikkelen
 
@@ -47,7 +47,7 @@ De rest van deze handleiding beschrijft de gebieden te overwegen bij het plannen
 * Zorg ervoor dat de sjabloonparameters die u gebruiken in de doel-clouds werken.
 * Controleren of de resource-specifieke eigenschappen beschikbaar zijn de doel-clouds.
 
-Zie voor een inleiding tot Azure Resource Manager-sjablonen, [sjabloonimplementatie](resource-group-overview.md#template-deployment).
+Zie voor een inleiding tot Azure Resource Manager-sjablonen, [sjabloonimplementatie](template-deployment-overview.md).
 
 ## <a name="ensure-template-functions-work"></a>Zorg ervoor dat sjabloonfuncties werken
 
@@ -61,7 +61,7 @@ Mogelijkheden van Azure Resource Manager zullen altijd eerst naar globale Azure 
 
 1. Zodra u een lokale kloon van de opslagplaats hebt, maak verbinding naar de bestemming van Azure Resource Manager met PowerShell.
 
-1. Importeer de module psm1 en voer de cmdlet Test-AzureRmureRmTemplateFunctions:
+1. Importeer de psm1-module en voer de cmdlet test-AzureRmureRmTemplateFunctions uit:
 
    ```powershell
    # Import the module
@@ -154,7 +154,7 @@ In de sjabloon koppelingen worden gegenereerd door een combinatie van de basis-U
 
 Met behulp van deze benadering, de standaardwaarde voor de `_artifactsLocation` parameter wordt gebruikt. Als de gekoppelde sjablonen worden opgehaald uit een andere locatie moeten, de parameter invoer kan worden gebruikt tijdens de implementatie voor de onderdrukking van de standaardwaarde, geen wijziging in de sjabloon zelf nodig is.
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation gebruiken in plaats van hardcoderen koppelingen
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation gebruiken in plaats van hardcoderen koppelingen
 
 Naast het wordt gebruikt voor geneste sjablonen, de URL in de `_artifactsLocation` parameter wordt gebruikt als basis voor alle artefacten van een sjabloon voor de implementatie gerelateerde. Aantal VM-extensies bevatten een koppeling naar een script die buiten de sjabloon is opgeslagen. U moet niet hardcoderen we de koppelingen voor deze uitbreidingen. De Custom Script en PowerShell DSC-uitbreidingen kunnen bijvoorbeeld een koppeling naar een externe scripts op GitHub, zoals wordt weergegeven: 
 
@@ -211,7 +211,7 @@ Kan de absolute URI zijn die van een artefact, is de voorkeursmethode voor het g
 }
 ```
 
-Met deze methode kunnen alle implementatie-artefacten, met inbegrip van configuratiescripts, worden opgeslagen op dezelfde locatie met de sjabloon zelf. Als u wilt wijzigen van de locatie van alle bijbehorende koppelingen, hoeft u alleen te geven van een andere basis-URL voor de _artifactsLocation parameters_.
+Met deze methode kunnen alle implementatie-artefacten, met inbegrip van configuratiescripts, worden opgeslagen op dezelfde locatie met de sjabloon zelf. Als u de locatie van alle koppelingen wilt wijzigen, hoeft u alleen een andere basis-URL voor de _artifactsLocation-para meters_op te geven.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Rekening houden verschillende regionale mogelijkheden
 

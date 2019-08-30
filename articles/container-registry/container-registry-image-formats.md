@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/18/2019
+ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: c804dd7b73ea4a51c02c8b342a4ac60d992ec7c5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310679"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164524"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Inhouds indelingen die worden ondersteund in Azure Container Registry
 
@@ -29,11 +29,17 @@ De volgende indelingen van de docker-container installatie kopieën worden onder
 
 ## <a name="oci-images"></a>OCI-afbeeldingen
 
-Azure Container Registry biedt ook ondersteuning voor installatie kopieën die voldoen aan de indeling van het [opening container Initiative (OCI)-afbeelding](https://github.com/opencontainers/image-spec/blob/master/spec.md). Pakket indelingen zijn onder andere de indeling van de [enkelvouds afbeelding](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
+Azure Container Registry ondersteunt installatie kopieën die voldoen aan de indeling van het [opening container Initiative (OCI)-afbeelding](https://github.com/opencontainers/image-spec/blob/master/spec.md). Pakket indelingen zijn onder andere de indeling van de [enkelvouds afbeelding](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
+
+## <a name="oci-artifacts"></a>OCI-artefacten
+
+Azure Container Registry ondersteunt de [OCI-distributie specificatie](https://github.com/opencontainers/distribution-spec), een leverancier-neutraal, Cloud-neutraal specificatie voor het opslaan, delen, beveiligen en implementeren van container installatie kopieën en andere inhouds typen (artefacten). Met de specificatie kan een REGI ster een breed scala aan artefacten opslaan naast container installatie kopieën. U gebruikt hulp middelen die geschikt zijn voor het artefacten om artefacten te pushen en te pullen. Zie [een OCI-artefact pushen en trekken met behulp van een Azure container Registry](container-registry-oci-artifacts.md)voor een voor beeld.
+
+Zie voor meer informatie over OCI-artefacten het [OCI-REGI ster als Storage (Oras)](https://github.com/deislabs/oras) opslag plaats en de [OCI](https://github.com/opencontainers/artifacts) -artefacten opslag plaats op github.
 
 ## <a name="helm-charts"></a>Helm grafieken
 
-Azure Container Registry kunt opslag plaatsen hosten voor [helm-grafieken](https://helm.sh/), een verpakkings indeling die wordt gebruikt voor het snel beheren en implementeren van toepassingen voor Kubernetes. [Helm-client](https://docs.helm.sh/using_helm/#installing-helm) versie 2.11.0 of hoger wordt ondersteund.
+Azure Container Registry kunt opslag plaatsen hosten voor [helm-grafieken](https://helm.sh/), een verpakkings indeling die wordt gebruikt voor het snel beheren en implementeren van toepassingen voor Kubernetes. [Helm-client](https://docs.helm.sh/using_helm/#installing-helm) versie 2 (2.11.0 of hoger) wordt ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 

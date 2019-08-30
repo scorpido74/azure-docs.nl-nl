@@ -4,19 +4,19 @@ description: Meer informatie over het publiceren van een Managed Service-aanbod 
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011866"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165250"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
 
-In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde services publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com) met behulp van de [Cloud Partner-Portal](https://cloudpartner.azure.com/), waardoor een klant die het aanbod heeft gekocht voor het beheer van gedelegeerde resources van Azure.
+In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde services publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com) met behulp van de [Cloud Partner-Portal](https://cloudpartner.azure.com/), waardoor een klant die de aanbieding heeft gekocht, resources kan kopen voor Azure-gedelegeerde resources CRM.
 
 > [!NOTE]
 > U hebt een geldig [account in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) nodig om deze aanbiedingen te maken en te publiceren. Als u nog geen account hebt, wordt u door het [aanmeldings proces](https://aka.ms/joinmarketplace) geleid door de stappen voor het maken van een account in partner centrum en het inschrijven van het commerciële Marketplace-programma. Uw Microsoft Partner Network-ID (MPN) wordt [automatisch gekoppeld](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) aan de aanbiedingen die u publiceert voor het bijhouden van invloed op de klant afspraken.
@@ -127,6 +127,65 @@ Nadat u deze gegevens hebt toegevoegd, selecteert u **opslaan.**
 ## <a name="publish-your-offer"></a>Uw aanbieding publiceren
 
 Zodra u tevreden bent over alle gegevens die u hebt ingevoerd, is de volgende stap het publiceren van de aanbieding naar Azure Marketplace. Selecteer de knop **publiceren** om het proces van het live-aanbod te initiëren. Zie voor meer informatie over dit proces [Azure Marketplace publiceren en AppSource-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+
+## <a name="the-customer-onboarding-process"></a>Het onboarding-proces van de klant
+
+Wanneer een klant uw aanbieding toevoegt, kunnen ze [een of meer specifieke abonnementen of resource groepen](view-manage-service-providers.md#delegate-resources) delegeren die vervolgens voor het beheer van gedelegeerde resources van Azure worden uitgevoerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** .
+
+Voordat een abonnement (of resource groepen binnen een abonnement) kan worden opvolgd, moet het abonnement worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren. Een gebruiker in de Tenant van de klant met de rol Inzender of eigenaar kan dit doen door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md).
+
+De klant kan vervolgens controleren of het abonnement gereed is voor onboarding op een van de volgende manieren.
+
+### <a name="azure-portal"></a>Azure Portal
+
+1. Selecteer in de Azure Portal het abonnement.
+1. Selecteer **Resourceproviders**.
+1. Controleer of **micro soft. ManagedServices** als **geregistreerd**wordt weer gegeven.
+
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+Set-AzContext -Subscription <subscriptionId>
+Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
+```
+
+De resultaten moeten er als volgt uitzien:
+
+```output
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationDefinitions}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {registrationAssignments}
+Locations         : {}
+
+ProviderNamespace : Microsoft.ManagedServices
+RegistrationState : Registered
+ResourceTypes     : {operations}
+Locations         : {}
+```
+
+### <a name="azure-cli"></a>Azure-CLI
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+az account set –subscription <subscriptionId>
+az provider show --namespace "Microsoft.ManagedServices" --output table
+```
+
+De resultaten moeten er als volgt uitzien:
+
+```output
+Namespace                  RegistrationState
+-------------------------  -------------------
+Microsoft.ManagedServices  Registered
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/16/2019
-ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/29/2019
+ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035776"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173075"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
-Groepen voor automatische failover is een SQL Database functie waarmee u replicatie en failover kunt beheren van een groep data bases op een SQL Database-Server of voor alle data bases in een beheerd exemplaar naar een andere regio. Het is een declaratieve abstractie boven op de bestaande [actieve geo-replicatie](sql-database-active-geo-replication.md) functie, ontworpen om de implementatie en het beheer van geo-gerepliceerde data bases op schaal te vereenvoudigen. U kunt failover hand matig initiëren of u kunt deze overdragen aan de SQL Database-service op basis van een door de gebruiker gedefinieerd beleid. Met deze laatste optie kunt u automatisch meerdere gerelateerde data bases in een secundaire regio herstellen na een onherstelbare fout of een andere niet-geplande gebeurtenis waardoor het volledige of gedeeltelijke verlies van de beschik baarheid van de SQL Database-Service in de primaire regio wordt veroorzaakt. Een failover-groep kan een of meer data bases bevatten, die meestal worden gebruikt door dezelfde toepassing. Daarnaast kunt u de Lees bare secundaire data bases gebruiken om werk belastingen met alleen-lezen query's te offloaden. Omdat voor groepen voor automatische failover meerdere data bases zijn vereist, moeten deze data bases worden geconfigureerd op de primaire server. De primaire en secundaire servers voor de data bases in de failovergroep moeten zich in hetzelfde abonnement bevinden. Automatische failover-groepen ondersteunen replicatie van alle data bases in de groep naar slechts één secundaire server in een andere regio.
+Groepen voor automatische failover is een SQL Database functie waarmee u replicatie en failover kunt beheren van een groep data bases op een SQL Database-Server of voor alle data bases in een beheerd exemplaar naar een andere regio. Het is een declaratieve abstractie boven op de bestaande [actieve geo-replicatie](sql-database-active-geo-replication.md) functie, ontworpen om de implementatie en het beheer van geo-gerepliceerde data bases op schaal te vereenvoudigen. U kunt failover hand matig initiëren of u kunt deze overdragen aan de SQL Database-service op basis van een door de gebruiker gedefinieerd beleid. Met deze laatste optie kunt u automatisch meerdere gerelateerde data bases in een secundaire regio herstellen na een onherstelbare fout of een andere niet-geplande gebeurtenis waardoor het volledige of gedeeltelijke verlies van de beschik baarheid van de SQL Database-Service in de primaire regio wordt veroorzaakt. Een failover-groep kan een of meer data bases bevatten, die meestal worden gebruikt door dezelfde toepassing. Daarnaast kunt u de Lees bare secundaire data bases gebruiken om werk belastingen met alleen-lezen query's te offloaden. Omdat voor groepen voor automatische failover meerdere data bases zijn vereist, moeten deze data bases worden geconfigureerd op de primaire server. Automatische failover-groepen ondersteunen replicatie van alle data bases in de groep naar slechts één secundaire server in een andere regio.
 
 > [!NOTE]
 > Wanneer u werkt met één of gegroepeerde Data bases op een SQL Database Server en u meerdere secundaire zones in dezelfde of verschillende regio's wilt, gebruikt u [actieve geo-replicatie](sql-database-active-geo-replication.md). 
@@ -191,12 +191,20 @@ Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt
 
   Om ervoor te zorgen dat een niet-onderbroken connectiviteit met het primaire exemplaar na een failover wordt gegarandeerd, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire exemplaar. U kunt dit doen door een `DNS Zone Partner` optionele para meter op te geven met behulp van de Azure Portal, Power shell of de rest API. 
 
-  Zie voor meer informatie over het maken van het secundaire exemplaar in dezelfde DNS-zone als de primaire instantie [failover-groepen beheren met beheerde instanties (preview-versie)](#powershell-managing-failover-groups-with-managed-instances-preview).
+  Zie [een secundaire beheerde instantie maken](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire exemplaar in dezelfde DNS-zone als het primaire exemplaar.
 
 - **Replicatie verkeer tussen twee instanties inschakelen**
 
   Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkeer tussen deze VNets worden toegestaan. Zie [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
+- **Een failover-groep maken tussen beheerde instanties in verschillende abonnementen**
+
+  U kunt in twee verschillende abonnementen een failover-groep maken tussen beheerde exemplaren. Wanneer u Power shell API gebruikt, kunt u dit doen `PartnerSubscriptionId` door de para meter voor de secundaire instantie op te geven. Wanneer u rest API gebruikt, kan elke exemplaar-id `properties.managedInstancePairs` die is opgenomen in de para meter een eigen subscriptionID hebben. 
+  
+  > [!IMPORTANT]
+  > Azure Portal biedt geen ondersteuning voor failover-groepen in verschillende abonnementen.
+
+  
 - **Een failovergroep configureren voor het beheren van de failover van het hele exemplaar**
 
   De failovergroep beheert de failover van alle data bases in het exemplaar. Wanneer een groep wordt gemaakt, wordt elke data base in het exemplaar automatisch geo-gerepliceerd naar het secundaire exemplaar. U kunt geen failover-groepen gebruiken om een gedeeltelijke failover van een subset van de data bases te initiëren.
@@ -326,34 +334,16 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 > Zie [een failover-groep configureren en failover voor één data base](scripts/sql-database-add-single-db-to-failover-group-powershell.md)voor een voorbeeld script.
 >
 
-### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell: Failover-groepen beheren met beheerde instanties (preview-versie)
+### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>PowerShell: SQL database failover-groepen beheren met beheerde exemplaren 
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>Installeer de nieuwste voorlopige versie van Power shell
-
-1. Werk de module PowerShellGet bij naar 1.6.5 (of nieuwste preview-versie). Zie [Power shell preview-site](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview).
-
-   ```powershell
-      install-module PowerShellGet -MinimumVersion 1.6.5 -force
-   ```
-
-2. Voer de volgende opdrachten uit in een nieuw Power shell-venster:
-
-   ```powershell
-      import-module PowerShellGet
-      get-module PowerShellGet #verify version is 1.6.5 (or newer)
-      install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
-      import-module azurerm.sql
-   ```
-
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>Power shell-Commandlets voor het maken van een failover-groep voor een exemplaar
-
-| API | Description |
+| Cmdlet | Description |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Hiermee wijzigt u de configuratie van de failovergroep|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |Hiermee wordt de configuratie van de failovergroep opgehaald|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |De failover van de failovergroep naar de secundaire server wordt geactiveerd|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Hiermee verwijdert u een failovergroep|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Hiermee wijzigt u de configuratie van de failovergroep|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Hiermee wordt de configuratie van de failovergroep opgehaald|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |De failover van de failovergroep naar de secundaire server wordt geactiveerd|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
+|  | |
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: SQL database failover-groepen beheren met één en gepoolde data bases
 

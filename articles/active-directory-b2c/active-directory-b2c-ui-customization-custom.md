@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927300"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171920"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -65,17 +65,16 @@ Ga als volgt te werk om deze HTML-inhoud in Blob Storage te hosten:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer in het **hub** -menu de optie **Nieuw** > **opslag** > **opslag account**.
-3. Voer een unieke **naam** in voor uw opslag account.
-4. **Implementatie model** kan **Resource Manager**blijven.
-5. Wijzig het **type account** in **Blob Storage**.
-6. **Prestaties** kunnen **standaard**blijven.
-7. **Replicatie** kan **Ra-GRS**blijven.
-8. De **toegangs laag** kan **Hot**blijven.
-9. **Versleuteling van de opslag service** kan **uitgeschakeld**blijven.
-10. Selecteer een **abonnement** voor uw opslag account.
-11. Maak een **resource groep** of selecteer een bestaande.
-12. Selecteer de **geografische locatie** voor uw opslag account.
-13. Klik op **Maken** om het opslagaccount te maken.  
+3. Selecteer een **abonnement** voor uw opslag account.
+4. Maak een **resource groep** of selecteer een bestaande.
+5. Voer een unieke **naam** in voor uw opslag account.
+6. Selecteer de **geografische locatie** voor uw opslag account. 
+7. **Implementatie model** kan **Resource Manager**blijven.
+8. **Prestaties** kunnen **standaard**blijven.
+9. Wijzig het **type account** in **Blob Storage**.
+10. **Replicatie** kan **Ra-GRS**blijven.
+11. De **toegangs laag** kan **Hot**blijven. 
+12. Klik op **beoordeling + maken** om het opslag account te maken.  
     Nadat de implementatie is voltooid, wordt de Blade **opslag account** automatisch geopend.
 
 ## <a name="create-a-container"></a>Een container maken

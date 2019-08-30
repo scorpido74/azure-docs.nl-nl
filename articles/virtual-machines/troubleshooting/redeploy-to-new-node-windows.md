@@ -1,6 +1,6 @@
 ---
-title: Windows virtuele machines in Azure implementeren | Microsoft Docs
-description: Klik hier voor meer informatie over het implementeren van Windows virtuele machines in Azure voor het oplossen van problemen met RDP-verbinding.
+title: Virtuele Windows-machines opnieuw implementeren in azure | Microsoft Docs
+description: Windows virtual machines opnieuw implementeren in azure om problemen met de RDP-verbinding te verhelpen.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
@@ -8,30 +8,29 @@ manager: gwallace
 tags: azure-resource-manager,top-support-issue
 ms.assetid: 0ee456ee-4595-4a14-8916-72c9110fc8bd
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 48b10b6fd854cc6da1f2ea2d48852d162e995946
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 12488033448c7798690b3d6d68782baf2f76adf9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710255"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090301"
 ---
-# <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Windows virtuele machine naar de nieuwe Azure-knooppunt opnieuw implementeren
-Als u problemen is aangesloten kan het oplossen van Remote Desktop (RDP)-verbinding of de toepassing toegang en op basis van Windows Azure-machine (VM), de virtuele machine opnieuw te implementeren helpen. Wanneer u een virtuele machine opnieuw implementeren, wordt Azure de virtuele machine af, de virtuele machine verplaatsen naar een nieuw knooppunt in de Azure-infrastructuur en vervolgens inschakelen om opnieuw op, behoud van alle configuratie-opties en bijbehorende resources. Dit artikel ziet u hoe u een virtuele machine met behulp van Azure PowerShell of Azure portal opnieuw implementeren.
+# <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Windows-virtuele machine opnieuw implementeren naar nieuw Azure-knoop punt
+Als u problemen ondervindt met het oplossen van problemen met de probleem oplossing voor Extern bureaublad (RDP) of toegang tot een toepassing op een virtuele Windows-machine (VM), is het mogelijk dat u de VM opnieuw implementeert. Wanneer u een virtuele machine opnieuw implementeert, wordt de VM door Azure afgesloten, wordt de virtuele machine verplaatst naar een nieuw knoop punt in de Azure-infra structuur en wordt deze weer ingeschakeld en worden alle configuratie opties en bijbehorende resources bewaard. In dit artikel wordt beschreven hoe u een virtuele machine opnieuw implementeert met behulp van Azure PowerShell of de Azure Portal.
 
 > [!NOTE]
-> Nadat u een virtuele machine opnieuw implementeren, is de tijdelijke schijf verloren en dynamische IP-adressen die zijn gekoppeld aan virtuele netwerkinterface worden bijgewerkt. 
+> Nadat u een virtuele machine opnieuw hebt geïmplementeerd, gaat de tijdelijke schijf verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele netwerk interface, bijgewerkt. 
 
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
-Zorg ervoor dat u hebt de nieuwste Azure PowerShell 1.x op uw computer geïnstalleerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
+Zorg ervoor dat u de nieuwste Azure PowerShell 1. x op uw computer hebt geïnstalleerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
 
-Het volgende voorbeeld wordt geïmplementeerd voor de virtuele machine met de naam `myVM` in de resourcegroep met de naam `myResourceGroup`:
+In het volgende voor beeld wordt de VM `myVM` geïmplementeerd met de naam in `myResourceGroup`de resource groep met de naam:
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -40,5 +39,5 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u hebt met het maken van een verbinding met uw virtuele machine problemen, kunt u specifieke hulp vinden op [problemen met RDP-verbindingen oplossen](troubleshoot-rdp-connection.md) of [gedetailleerde stappen voor probleemoplossing RDP](detailed-troubleshoot-rdp.md). Als geen u toegang een toepassing die wordt uitgevoerd op de virtuele machine tot, u kunt ook lezen [toepassing oplossen van problemen met](../windows/troubleshoot-app-connection.md).
+Als u problemen ondervindt met het verbinding maken met uw virtuele machine, vindt u specifieke hulp bij het [oplossen van problemen met RDP-verbindingen](troubleshoot-rdp-connection.md) of [gedetailleerde probleemoplossings stappen voor RDP](detailed-troubleshoot-rdp.md). Als u geen toegang krijgt tot een toepassing die wordt uitgevoerd op uw virtuele machine, kunt u ook [problemen met het oplossen van toepassingen](../windows/troubleshoot-app-connection.md)lezen.
 

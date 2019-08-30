@@ -1,70 +1,70 @@
 ---
-title: Beveiligingsfilters waaruit resultaten met behulp van Active Directory - Azure Search
-description: Toegangsbeheer voor Azure Search-inhoud met beveiligingsfilters en identiteiten van Azure Active Directory (AAD).
+title: Beveiligings filters voor het afkappen van resultaten met behulp van Active Directory-Azure Search
+description: Toegangs beheer voor Azure Search inhoud met behulp van beveiligings filters en de identiteit van Azure Active Directory (AAD).
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bcc1dcd1d86c0ca18ed03dc60834884a42a39c9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61282204"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186529"
 ---
-# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Beveiligingsfilters voor Azure Search-resultaten met behulp van Active Directory-identiteiten bijsnijden
+# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Beveiligings filters voor het verkleinen van Azure Search resultaten met behulp van Active Directory-identiteiten
 
-In dit artikel laat zien hoe u Azure Active Directory (AAD) om beveiligingsidentiteiten te gebruiken, samen met de filters in Azure Search zoekresultaten op basis van groepslidmaatschap van de gebruiker knippen.
+In dit artikel wordt beschreven hoe u met behulp van Azure Active Directory (AAD)-beveiligings identiteiten samen met filters in Azure Search Zoek resultaten kunt knippen op basis van lidmaatschap van de gebruikers groep.
 
 Dit artikel behandelt de volgende taken:
 > [!div class="checklist"]
-> - AAD-groepen en gebruikers maken
+> - AAD-groepen en-gebruikers maken
 > - De gebruiker koppelen aan de groep die u hebt gemaakt
-> - De nieuwe groep in de cache
-> - Documenten van de index met de bijbehorende groepen
-> - Een zoekaanvraag probleem met het filter voor groep-id 's
+> - De nieuwe groepen in de cache opslaan
+> - Documenten indexeren met gekoppelde groepen
+> - Een zoek opdracht met groeps-id's filteren
 > 
 > [!NOTE]
-> De codefragmenten voorbeeld in dit artikel worden geschreven in C#. U vindt de volledige broncode [op GitHub](https://aka.ms/search-dotnet-howto). 
+> Voorbeeld code fragmenten in dit artikel zijn geschreven in C#. U vindt de volledige broncode [op GitHub](https://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Uw Azure Search-index moet hebben een [gebied van beveiliging](search-security-trimming-for-azure-search.md) voor het opslaan van de lijst van groep-id's met leestoegang tot het document. Deze use case wordt ervan uitgegaan dat een-op-eencorrespondentie tussen een beveiligbaar item (zoals een persoon college toepassing) en een gebied van beveiliging op te geven wie toegang heeft tot dat item (Admission personeel).
+De index in Azure Search moet een [beveiligings veld](search-security-trimming-for-azure-search.md) bevatten voor het opslaan van de lijst met groeps-id's met lees toegang tot het document. In dit voor beeld wordt uitgegaan van een een-op-een-correspondentie tussen een beveiligbaar item (zoals een college van een persoon) en een beveiligings veld dat bepaalt wie toegang heeft tot dat item (Admissions).
 
-AAD-beheerdersmachtigingen vereist in dit scenario voor het maken van gebruikers, groepen en koppelingen in AAD, moet u hebben.
+U moet beschikken over AAD-beheerders machtigingen die zijn vereist in dit overzicht voor het maken van gebruikers, groepen en koppelingen in AAD.
 
-Uw toepassing moet ook worden geregistreerd bij AAD, zoals beschreven in de volgende procedure.
+Uw toepassing moet ook zijn geregistreerd bij AAD, zoals beschreven in de volgende procedure.
 
 ### <a name="register-your-application-with-aad"></a>Uw toepassing registreren bij AAD
 
-Deze stap kan uw toepassing met AAD ten behoeve van accepteer aanmeldingen van gebruikers- en groepsaccounts worden geïntegreerd. Als u geen een AAD-beheerder in uw organisatie bent, moet u mogelijk [een nieuwe tenant maken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) om uit te voeren van de volgende stappen uit.
+Deze stap integreert uw toepassing met AAD voor het accepteren van aanmeldingen van gebruikers-en groeps accounts. Als u geen AAD-beheerder bent in uw organisatie, moet u mogelijk [een nieuwe Tenant maken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) om de volgende stappen uit te voeren.
 
-1. Ga naar de [ **Portal voor Appregistratie**](https://apps.dev.microsoft.com) >  **geconvergeerde app** > **een app toevoegen**.
+1. Ga naar de >  app > voor het registreren van de [**toepassings registratie Portal**](https://apps.dev.microsoft.com)**een app toevoegen**.
 2. Voer een naam in voor uw toepassing en klik vervolgens op **maken**. 
-3. Selecteer de zojuist geregistreerde toepassing in de pagina Mijn toepassingen.
-4. Op de pagina van de registratie van toepassingen > **Platforms** > **Platform toevoegen**, kiest u **Web-API**.
-5. Nog steeds op de registratiepagina van de toepassing, gaat u naar > **machtigingen voor Microsoft Graph** > **toevoegen**.
-6. Selecteer machtigingen toevoegen de volgende overgedragen machtigingen en klik vervolgens op **OK**:
+3. Selecteer de zojuist geregistreerde toepassing op de pagina mijn toepassingen.
+4. Kies op de pagina Toepassings registratie > **platforms** > **platform toevoegen**de optie **Web-API**.
+5. Ga nog steeds op de pagina Toepassings registratie naar > **Microsoft Graph machtigingen** > **toevoegen**.
+6. Voeg in machtigingen selecteren de volgende gedelegeerde machtigingen toe en klik vervolgens op **OK**:
 
    + **Directory.ReadWrite.All**
-   + **Group.ReadWrite.All**
-   + **User.ReadWrite.All**
+   + **Group. ReadWrite. all**
+   + **User. ReadWrite. all**
 
-Microsoft Graph biedt een API die programmatische toegang tot de AAD via een REST-API. De voorbeeldcode voor dit scenario gebruikt de machtigingen voor het aanroepen van de Microsoft Graph-API voor het maken van groepen, gebruikers en koppelingen. De API's worden ook gebruikt om de cache groeps-id's voor het filteren van sneller.
+Microsoft Graph biedt een API die programmatische toegang tot AAD via een REST API mogelijk maakt. In het code voorbeeld voor deze walkthrough worden de machtigingen gebruikt voor het aanroepen van de Microsoft Graph-API voor het maken van groepen, gebruikers en koppelingen. De Api's worden ook gebruikt om groeps-id's in de cache op te slaan voor snellere filtering.
 
 ## <a name="create-users-and-groups"></a>Gebruikers en groepen maken
 
-Als u zoeken naar een bestaande toepassing toevoegt, wellicht u bestaande gebruikers- en groeps-id's in AAD. In dit geval kunt u de volgende drie stappen overslaan. 
+Als u een zoek opdracht toevoegt aan een vastgelegde toepassing, hebt u mogelijk bestaande gebruikers-en groeps-id's in AAD. In dit geval kunt u de volgende drie stappen overs Laan. 
 
-Als u geen bestaande gebruikers hebt, kunt u echter Microsoft Graph-API's gebruiken de beveiligings-principals maken. De volgende codefragmenten laten zien hoe u id's die waarden voor het gebied van beveiliging in uw Azure Search-index worden te genereren. In onze hypothetische college Admission toepassing, zou dit de beveiligings-id's voor Admission personeel.
+Als u echter geen bestaande gebruikers hebt, kunt u Microsoft Graph-Api's gebruiken om de beveiligings-principals te maken. De volgende code fragmenten laten zien hoe u id's genereert. dit worden gegevens waarden voor het beveiligings veld in uw Azure Search-index. In onze hypothetische toepassing voor colleges is dit de beveiligings-id's voor admission medewerkers.
 
-Het is mogelijk dat gebruiker en groepslidmaatschap zeer vloeiende, met name in grote organisaties. Code die gebruiker en groep-id's moet vaak genoeg om op te halen wijzigingen in het lidmaatschap van de organisatie worden uitgevoerd. Uw Azure Search-index moet ook een vergelijkbare bijwerken van de planning in overeenstemming met de huidige status van de toegestane gebruikers en bronnen.
+Gebruikers-en groepslid maatschappen kunnen zeer onvoorzichtig zijn, met name voor grote organisaties. Code die gebruikers-en groeps-id's bouwt, moet vaak genoeg worden uitgevoerd om wijzigingen in het lidmaatschap van de organisatie op te halen. Op dezelfde manier moet uw Azure Search-index een vergelijk bare update planning hebben om de huidige status van toegestane gebruikers en resources weer te geven.
 
-### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>Stap 1: Maak [AAD-groep](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
+### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>Stap 1: [Aad-groep](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) maken 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -78,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>Stap 2: Maak [AAD-gebruiker](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>Stap 2: [Aad-gebruiker](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0) maken
 ```csharp
 User user = new User()
 {
@@ -93,25 +93,25 @@ User user = new User()
 User newUser = await graph.Users.Request().AddAsync(user);
 ```
 
-### <a name="step-3-associate-user-and-group"></a>Stap 3: Koppelen van gebruikers en groepen
+### <a name="step-3-associate-user-and-group"></a>Stap 3: Gebruiker en groep koppelen
 ```csharp
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>Stap 4: De groepen-id's in de cache
-(Optioneel) als u wilt de netwerklatentie beperken, kunt u de cache de gebruikersgroep koppelingen zodat wanneer u een zoekaanvraag verzendt, groepen worden geretourneerd uit de cache opslaan van een retour naar AAD. U kunt [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) voor het verzenden van een afzonderlijke Http-aanvraag met meerdere gebruikers en het bouwen van de cache.
+### <a name="step-4-cache-the-groups-identifiers"></a>Stap 4: De groeps-id's in de cache opslaan
+Als u de netwerk latentie wilt beperken, kunt u de groeps beleidsobjecten van de gebruiker in de cache opslaan zodat er groepen worden geretourneerd uit de cache, waarbij een retour naar AAD wordt opgeslagen. U kunt [Aad batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) gebruiken om één HTTP-aanvraag met meerdere gebruikers te verzenden en de cache te bouwen.
 
-Microsoft Graph is ontworpen voor het verwerken van een groot aantal aanvragen. Als een groot aantal aanvragen optreedt, wordt in Microsoft Graph de aanvraag met de statuscode HTTP 429 mislukt. Zie voor meer informatie, [Microsoft Graph beperking](https://developer.microsoft.com/graph/docs/concepts/throttling).
+Microsoft Graph is ontworpen om een groot aantal aanvragen af te handelen. Als er sprake is van een overweldigend aantal aanvragen, mislukt de aanvraag met de HTTP-status code 429 van Microsoft Graph. Zie [Microsoft Graph beperking](https://developer.microsoft.com/graph/docs/concepts/throttling)voor meer informatie.
 
-## <a name="index-document-with-their-permitted-groups"></a>Index-document met hun toegestane groepen
+## <a name="index-document-with-their-permitted-groups"></a>Document indexeren met de toegestane groepen
 
-Querybewerkingen in Azure Search worden uitgevoerd via een Azure Search-index. In deze stap maakt importeert een indexeringsbewerking doorzoekbare gegevens in een index, met inbegrip van de id's die worden gebruikt als beveiligingsfilters voor. 
+Query bewerkingen in Azure Search worden uitgevoerd via een Azure Search index. In deze stap importeert een indexerings bewerking Doorzoek bare gegevens in een index, inclusief de id's die als beveiligings filters worden gebruikt. 
 
-Azure Search niet verifiëren van gebruikers-id's, of geef logica voor het vaststellen van welke inhoud van een gebruiker is gemachtigd om weer te geven. De use-case voor security trimming wordt geregeld wordt ervan uitgegaan dat u de koppeling tussen een vertrouwelijk document en de toegang tot het document, intact geïmporteerd in een search-index-id opgeven. 
+Azure Search verifieert geen gebruikers identiteiten of biedt logica om te bepalen welke inhoud een gebruiker mag weer geven. Bij het gebruik van beveiligings beperking wordt ervan uitgegaan dat u de koppeling tussen een gevoelig document en de groeps-id die toegang heeft tot het document, hebt geïmporteerd in een zoek index. 
 
-In het voorbeeld hypothetische omvat de hoofdtekst van de PUT-aanvraag voor een Azure Search-index van een aanvrager college Open of transcript samen met de groeps-id dat de machtiging om deze inhoud weer te geven. 
+In het hypothetische voor beeld bevat de hoofd tekst van de PUT-aanvraag voor een Azure Search index het College of transcript van een sollicitant, samen met de groeps-id die gemachtigd is om die inhoud weer te geven. 
 
-In het algemene voorbeeld in het codevoorbeeld gebruikt voor dit scenario wordt de index-actie kan er als volgt uitzien:
+In het algemene voor beeld dat in het code voorbeeld voor dit scenario wordt gebruikt, kan de index actie er als volgt uitzien:
 
 ```csharp
 var actions = new IndexAction<SecuredFiles>[]
@@ -131,15 +131,15 @@ var batch = IndexBatch.New(actions);
 _indexClient.Documents.Index(batch);  
 ```
 
-## <a name="issue-a-search-request"></a>Een aanvraag zoeken
+## <a name="issue-a-search-request"></a>Een zoek opdracht uitgeven
 
-Om veiligheidsredenen inkorten zijn de waarden in het gebied van beveiliging in de index statische waarden gebruikt voor het opnemen of uitsluiten van documenten in de zoekresultaten. Bijvoorbeeld, als de groeps-id voor Admission "A11B22C33D44 E55F66G77 H88I99JKK" is, zijn alle documenten in een Azure Search-index met deze id in de beveiliging opgeslagen opgenomen (of uitgesloten) in de lijst met zoekresultaten verzonden terug naar de aanvrager.
+Voor beveiligings beperking zijn de waarden in uw beveiligings veld in de index statische waarden die worden gebruikt voor het opnemen of uitsluiten van documenten in Zoek resultaten. Als de groeps-id voor Admissions bijvoorbeeld "A11B22C33D44-E55F66G77-H88I99JKK" is, worden alle documenten in een Azure Search index met die id in het beveiligings document opgenomen (of uitgesloten) in de zoek resultaten die worden teruggestuurd naar de aanvrager.
 
-Als u wilt filteren geretourneerde documenten in de zoekresultaten op basis van groepen van de gebruiker de aanvraag uitgeven, bekijk de volgende stappen.
+Als u documenten wilt filteren die zijn geretourneerd in de zoek resultaten op basis van groepen van de gebruiker die de aanvraag heeft verzonden, raadpleegt u de volgende stappen.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>Stap 1: Ophalen van de gebruiker groeps-id 's
+### <a name="step-1-retrieve-users-group-identifiers"></a>Stap 1: Groeps-id's van gebruiker ophalen
 
-Als de gebruikersgroepen zijn niet al in de cache of de cache is verlopen, geven de [groepen](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) aanvraag
+Als de gebruikers groepen nog niet in de cache zijn opgeslagen of de cache is verlopen, geeft u de aanvraag voor de [groep](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) op
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -165,9 +165,9 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>Stap 2: Opstellen van de zoekaanvraag
+### <a name="step-2-compose-the-search-request"></a>Stap 2: De zoek aanvraag opstellen
 
-Ervan uitgaande dat u het lidmaatschap van groepen van de gebruiker hebt, kunt u de zoekopdracht met de juiste filterwaarden uitgeven.
+Ervan uitgaande dat u het lidmaatschap van de groep van de gebruiker hebt, kunt u de zoek opdracht uitgeven met de juiste filter waarden.
 
 ```csharp
 string filter = String.Format("groupIds/any(p:search.in(p, '{0}'))", string.Join(",", groups.Select(g => g.ToString())));
@@ -179,16 +179,16 @@ SearchParameters parameters = new SearchParameters()
 
 DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<SecuredFiles>("*", parameters);
 ```
-### <a name="step-3-handle-the-results"></a>Stap 3: De resultaten worden gestuurd
+### <a name="step-3-handle-the-results"></a>Stap 3: De resultaten verwerken
 
-Het antwoord bevat een gefilterde lijst van documenten, die bestaan uit die de gebruiker is gemachtigd om weer te geven. Afhankelijk van hoe u de pagina met zoekresultaten samenstelt, is het raadzaam om op te nemen van visuele aanwijzingen om de gefilterde resultatenset weer te geven.
+Het antwoord bevat een gefilterde lijst met documenten, die bestaan uit degene die de gebruiker mag bekijken. Afhankelijk van hoe u de pagina met zoek resultaten bouwt, wilt u mogelijk visuele aanwijzingen toevoegen aan de gefilterde resultatenset.
 
 ## <a name="conclusion"></a>Conclusie
 
-In dit scenario, hebt u geleerd technieken voor het gebruik van AAD-aanmeldingen om documenten in Azure Search-resultaten te filteren bijsnijden van de resultaten van de documenten die niet overeenkomen met het filter dat is opgegeven in de aanvraag.
+In dit scenario hebt u technieken geleerd voor het gebruik van AAD-aanmeldingen om documenten te filteren in Azure Search resultaten, waardoor de resultaten van documenten die niet overeenkomen met het filter dat is opgegeven in de aanvraag, worden afgekapt.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Identiteit gebaseerd toegangsbeheer met Azure Search-filters](search-security-trimming-for-azure-search.md)
++ [Toegangs beheer op basis van een id met behulp van Azure Search filters](search-security-trimming-for-azure-search.md)
 + [Filters in Azure Search](search-filters.md)
-+ [Beveiligings- en toegangsbeheer in Azure Search-bewerkingen](search-security-overview.md)
++ [Gegevens beveiliging en toegangs beheer in Azure Search bewerkingen](search-security-overview.md)

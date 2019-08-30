@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24716a9b9fa5174d899cf0678b83b2da0c59957c
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358666"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183540"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Troubleshooting Azure Machine Learning service Azure Kubernetes service and Azure Container Instances Deployment
 
@@ -204,6 +204,9 @@ print(prediction)
 
 Tijdens lokale tests moet u het `score.py` bestand mogelijk bijwerken om logboek registratie toe te voegen of om problemen op te lossen die u hebt gedetecteerd. Als u wijzigingen in het `score.py` bestand wilt laden `reload()`, gebruikt u. Met de volgende code wordt bijvoorbeeld het script voor de service opnieuw geladen en vervolgens worden er gegevens naar verzonden. De gegevens worden beoordeeld aan de hand `score.py` van het bijgewerkte bestand:
 
+> [!IMPORTANT]
+> De `reload` methode is alleen beschikbaar voor lokale implementaties. Zie de sectie Update van [modellen implementeren](how-to-deploy-and-where.md#update)voor meer informatie over het bijwerken van een implementatie naar een ander reken doel.
+
 ```python
 service.reload()
 print(service.run(input_data=test_sample))
@@ -240,7 +243,7 @@ Nadat de installatie kopie is gemaakt, probeert het systeem een container te sta
 
 Gebruik de informatie in de sectie [het docker-logbestand controleren](#dockerlog) om de logboeken te controleren.
 
-## <a name="function-fails-getmodelpath"></a>Functie mislukt: get_model_path()
+## <a name="function-fails-get_model_path"></a>Functie mislukt: get_model_path()
 
 De functie `init()` [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) wordt vaak aangeroepen voor het vinden van een model bestand of een map met model bestanden in de container. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om op te sporen van deze fout is om uit te voeren de volgende Python-code in de Container-shell:
 
@@ -255,7 +258,7 @@ In dit voor beeld wordt het lokale pad (ten `/var/azureml-app`opzichte van) afge
 
 Als het logboek registratie niveau wordt ingesteld op DEBUG, kan er extra informatie worden vastgelegd, wat nuttig kan zijn bij het identificeren van de fout.
 
-## <a name="function-fails-runinputdata"></a>Functie mislukt: run(input_data)
+## <a name="function-fails-runinput_data"></a>Functie mislukt: run(input_data)
 
 Als de service is geïmplementeerd, maar deze loopt vast bij het plaatsen van gegevens naar het scoring-eindpunt, kunt u fout-instructie in afvangen toevoegen uw `run(input_data)` functie zodat het gedetailleerde foutbericht wordt weergegeven in plaats daarvan retourneert. Bijvoorbeeld:
 
@@ -285,7 +288,7 @@ Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
     Het doel gebruik voor automatisch schalen is standaard ingesteld op 70%, wat betekent dat de service pieken kan verwerken in aanvragen per seconde (RPS) van Maxi maal 30%. U kunt het doel van het gebruik aanpassen door de `autoscale_target_utilization` in te stellen op een lagere waarde.
 
     > [!IMPORTANT]
-    > Met deze wijziging worden er geen replica's *meer gemaakt.* In plaats daarvan worden ze gemaakt met een lagere drempel waarde voor het gebruik. In plaats van te wachten totdat de service 70% wordt gebruikt, kan het wijzigen van de waarde in 30% ertoe leiden dat er replica's worden gemaakt wanneer er sprake is van 30%.
+    > Met deze wijziging worden er geen replica's meer gemaakt. In plaats daarvan worden ze gemaakt met een lagere drempel waarde voor het gebruik. In plaats van te wachten totdat de service 70% wordt gebruikt, kan het wijzigen van de waarde in 30% ertoe leiden dat er replica's worden gemaakt wanneer er sprake is van 30%.
     
     Als de webservice de huidige maximum replica's al gebruikt en u nog steeds 503 status codes ziet, verhoogt u de `autoscale_max_replicas` waarde om het maximale aantal replica's te verhogen.
 

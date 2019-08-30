@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 05/08/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 732192e481f88c0cd3c78e9dac43970eb5be72e6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3843a03b3b6d41520b121e5088fb13eac956e6fa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840513"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163597"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Zelfstudie: Een hostpool voor het valideren van service-updates maken
 
@@ -25,7 +25,11 @@ U kunt problemen met de validatie hostgroep oplossen met behulp van [de diagnost
 >[!NOTE]
 > U wordt aangeraden de groep validatie-host te verlaten om alle toekomstige updates te testen.
 
-Voordat u begint, moet u [de Power shell-module van Windows virtueel bureau blad downloaden en importeren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), als u dat nog niet hebt gedaan.
+Voordat u begint, moet u [de Power shell-module van Windows virtueel bureau blad downloaden en importeren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="create-your-host-pool"></a>Uw hostgroep maken
 

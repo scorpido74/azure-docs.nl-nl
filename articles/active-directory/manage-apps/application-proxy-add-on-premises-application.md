@@ -12,12 +12,12 @@ ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e13ab3378857bd0254d7cb2fb98249ccc24b1cb7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fd5b1ffa2d66135e0068ef9f459843d616351c19
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125630"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162601"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelfstudie: Een on-premises toepassing voor externe toegang toevoegen via Application Proxy in Azure Active Directory
 
@@ -94,7 +94,7 @@ Sta toegang tot de volgende URL's toe:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Communicatie tussen de connector en de Application Proxy-cloudservice |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure gebruikt deze Url's om certificaten te verifiëren. |
-| login.windows.net<br>login.microsoftonline.com<br>secure.aadcdn.microsoftonline-p.com  | De connector gebruikt deze URL's tijdens het registratieproces. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | De connector gebruikt deze URL's tijdens het registratieproces. |
 
 U kunt verbindingen met. \*msappproxy.net en \*. servicebus.Windows.net toestaan als uw firewall of proxy u in staat stelt om DNS-acceptatie lijsten te configureren. Als dat niet het geval is, moet u toegang tot de [Azure IP-bereiken en de service Tags-open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519)toestaan. die overigens elke week worden bijgewerkt.
 

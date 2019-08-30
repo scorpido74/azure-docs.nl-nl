@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaa169714006ec948a5790ed5841f9dcf52c2a23
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d3e22df76124185c1e23f04f59145e12a1fec023
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846647"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164249"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -33,7 +33,7 @@ Time Series Insights ondersteunt de volgende bronnen:
 
 Een resource manager-sjabloon is een JSON-bestand dat de infra structuur en configuratie van resources in een resource groep definieert. De volgende documenten beschrijven sjabloon bestanden in meer detail:
 
-- [Overzicht van Azure Resource Manager-Sjabloonimlementatie](../azure-resource-manager/resource-group-overview.md#template-deployment)
+- [Implementatie van Azure Resource Manager-sjabloon](../azure-resource-manager/template-deployment-overview.md)
 - [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 - [Resource typen van micro soft. TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 

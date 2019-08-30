@@ -7,20 +7,20 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
-ms.translationtype: HT
+ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146128"
+ms.locfileid: "70164926"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
-Gast configuratie maakt gebruik van een resource module voor [desired state Configuration](/powershell/dsc) (DSC) om de configuratie voor de controle van de virtuele Azure-machines te maken. De DSC-configuratie definieert de voor waarde dat de virtuele machine moet zijn. Als de evaluatie van de configuratie mislukt, wordt de **controle** van het beleids effect geactiveerd en wordt de virtuele machine beschouwd als **niet-compatibel**.
+Gast configuratie maakt gebruik van een resource module voor [desired state Configuration](/powershell/dsc) (DSC) om de configuratie voor de controle van de Azure-machines te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevindt. Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
 
-[Azure Policy-gast configuratie](/azure/governance/policy/concepts/guest-configuration) kan alleen worden gebruikt voor het controleren van instellingen in virtuele machines. Herstel van instellingen binnen virtuele machines is nog niet beschikbaar.
+[Azure Policy-gast configuratie](/azure/governance/policy/concepts/guest-configuration) kan alleen worden gebruikt voor het controleren van instellingen binnen machines. Herstel van instellingen binnen computers is nog niet beschikbaar.
 
-Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een virtuele machine van Azure.
+Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een Azure-machine.
 
 > [!IMPORTANT]
 > Aangepaste beleids regels met gast configuratie is een preview-functie.
@@ -133,18 +133,18 @@ Para meters `New-GuestConfigurationPackage` van de cmdlet:
 - **Pad**: Pad naar uitvoermap. Deze para meter is optioneel. Als u niets opgeeft, wordt het pakket gemaakt in de huidige map.
 - **ChefProfilePath**: Volledig pad naar het INSPEC-profiel. Deze para meter wordt alleen ondersteund bij het maken van inhoud om Linux te controleren.
 
-Het voltooide pakket moet worden opgeslagen op een locatie die toegankelijk is voor de beheerde virtuele machines. Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in de URL toevoegen. U kunt ook [service-eind punten](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) voor virtuele machines in een particulier netwerk implementeren, hoewel deze configuratie alleen van toepassing is op toegang tot het pakket en niet communiceert met de service.
+Het voltooide pakket moet worden opgeslagen op een locatie die toegankelijk is voor de beheerde virtuele machines. Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in de URL toevoegen. U kunt ook [service-eind punten](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) implementeren voor computers in een particulier netwerk, hoewel deze configuratie alleen van toepassing is op toegang tot het pakket en niet communiceert met de service.
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>Werken met geheimen in gast configuratie pakketten
 
 In Azure Policy gast configuratie is de optimale manier om geheimen te beheren die tijdens runtime worden gebruikt, om ze op te slaan in Azure Key Vault. Dit ontwerp wordt geïmplementeerd in aangepaste DSC-resources.
 
-Maak eerst een door de gebruiker toegewezen beheerde identiteit in Azure. De identiteit wordt door virtuele machines gebruikt om toegang te krijgen tot geheimen die zijn opgeslagen in Key Vault. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor gedetailleerde stappen.
+Maak eerst een door de gebruiker toegewezen beheerde identiteit in Azure. De identiteit wordt door machines gebruikt om toegang te krijgen tot geheimen die zijn opgeslagen in Key Vault. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor gedetailleerde stappen.
 
 Maak vervolgens een Key Vault-exemplaar. Zie voor gedetailleerde stappen [een geheim-Power shell instellen en ophalen](../../../key-vault/quick-create-powershell.md).
 Wijs machtigingen toe aan het exemplaar om de door de gebruiker toegewezen identiteit toegang te geven tot geheimen die zijn opgeslagen in Key Vault. Zie voor gedetailleerde stappen [een geheim instellen en ophalen-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Wijs vervolgens de door de gebruiker toegewezen identiteit aan uw virtuele machine toe. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
+Wijs vervolgens de door de gebruiker toegewezen identiteit toe aan uw computer. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
 Wijs op schaal deze identiteit toe met behulp van Azure Resource Manager via Azure Policy. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)voor gedetailleerde stappen.
 
 Ten slotte gebruiken de eerder gegenereerde client-ID in uw aangepaste resource om toegang te krijgen tot Key Vault met behulp van het token dat beschikbaar is op de computer. De `client_id` en URL naar het Key Vault-exemplaar kan worden door gegeven aan de resource als [Eigenschappen](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) , zodat de resource niet hoeft te worden bijgewerkt voor meerdere omgevingen of als de waarden moeten worden gewijzigd.
@@ -165,7 +165,7 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>Een gast configuratie pakket testen
 
-Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u de functionaliteit van het pakket testen vanaf uw werk station of CI/CD-omgeving. De GuestConfiguration-module bevat een `Test-GuestConfigurationPackage` cmdlet waarmee dezelfde agent in uw ontwikkel omgeving wordt geladen als wordt gebruikt in azure virtual machines. Met deze oplossing kunt u integratie testen lokaal uitvoeren voordat u overbrengt naar gefactureerde test/QA/productie omgevingen.
+Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u de functionaliteit van het pakket testen vanaf uw werk station of CI/CD-omgeving. De GuestConfiguration-module bevat een `Test-GuestConfigurationPackage` cmdlet waarmee dezelfde agent in uw ontwikkel omgeving wordt geladen als wordt gebruikt binnen Azure-machines. Met deze oplossing kunt u integratie testen lokaal uitvoeren voordat u overbrengt naar gefactureerde test/QA/productie omgevingen.
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
@@ -187,7 +187,7 @@ Voor meer informatie over het testen met para meters, zie de sectie hieronder [p
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>De implementatie bestanden voor Azure Policy definitie en initiatief maken
 
-Zodra een aangepast beleids pakket voor de gast configuratie is gemaakt en geüpload naar een locatie die toegankelijk is voor de virtuele machines, maakt u de beleids definitie voor gast configuratie voor Azure Policy. De `New-GuestConfigurationPolicy` cmdlet neemt een aangepast beleids pakket voor een openbaar toegankelijke gast configuratie en maakt een **auditIfNotExists** -en **deployIfNotExists** -beleids definitie. Er wordt ook een beleids initiatief definitie gemaakt die beide beleids definities bevat.
+Wanneer een aangepast beleids pakket voor de gast configuratie is gemaakt en geüpload naar een locatie die toegankelijk is voor de machines, maakt u de beleids definitie voor gast configuratie voor Azure Policy. De `New-GuestConfigurationPolicy` cmdlet neemt een aangepast beleids pakket voor een openbaar toegankelijke gast configuratie en maakt een **auditIfNotExists** -en **deployIfNotExists** -beleids definitie. Er wordt ook een beleids initiatief definitie gemaakt die beide beleids definities bevat.
 
 In het volgende voor beeld worden het beleid en initiatief definities in een opgegeven pad vanuit een gast configuratie aangepast beleids pakket voor Windows gemaakt, met een naam, beschrijving en versie:
 
@@ -220,7 +220,7 @@ De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy`:
 
 De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
 
-Als u deze opdracht wilt gebruiken om een aangepast beleids project te maken, kunt u wijzigingen aanbrengen in deze bestanden. Een voor beeld is het wijzigen van de sectie ' If ' om te evalueren of een specifieke tag aanwezig is voor virtuele machines. Zie [programmatisch beleids regels maken](./programmatically-create.md)voor meer informatie over het maken van beleid.
+Als u deze opdracht wilt gebruiken om een aangepast beleids project te maken, kunt u wijzigingen aanbrengen in deze bestanden. Een voor beeld is het wijzigen van de sectie ' If ' om te evalueren of een specifieke tag aanwezig is voor machines. Zie [programmatisch beleids regels maken](./programmatically-create.md)voor meer informatie over het maken van beleid.
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Para meters gebruiken in aangepaste gast configuratie beleidsregels
 
@@ -337,7 +337,7 @@ Nadat de inhoud is geconverteerd, zijn de bovenstaande stappen voor het maken va
 Aangepaste beleids regels voor gast configuratie gebruik SHA256 hash om te controleren of het beleids pakket niet is gewijzigd van wanneer het is gepubliceerd op het moment dat het wordt gelezen door de server die wordt gecontroleerd.
 Klanten kunnen eventueel ook een certificaat gebruiken om pakketten te ondertekenen en de gast configuratie-extensie dwingen alleen ondertekende inhoud toe te staan.
 
-Om dit scenario in te scha kelen, zijn er twee stappen die u moet volt ooien. Voer de cmdlet uit om het inhouds pakket te ondertekenen en voeg een label toe aan de virtuele machines waarvoor code moet worden ondertekend.
+Om dit scenario in te scha kelen, zijn er twee stappen die u moet volt ooien. Voer de cmdlet uit om het inhouds pakket te ondertekenen en voeg een tag toe aan de machines waarvoor code moet worden ondertekend.
 
 Als u de functie voor handtekening validatie wilt gebruiken `Protect-GuestConfigurationPackage` , voert u de cmdlet uit om het pakket te ondertekenen voordat het wordt gepubliceerd. Voor deze cmdlet is het certificaat voor ondertekening van programma code vereist.
 
@@ -353,17 +353,17 @@ Para meters `Protect-GuestConfigurationPackage` van de cmdlet:
 - **PrivateGpgKeyPath**: Pad naar de persoonlijke GPG-sleutel. Deze para meter wordt alleen ondersteund bij het ondertekenen van inhoud voor Linux.
 - **PublicGpgKeyPath**: Pad naar de open bare GPG-sleutel. Deze para meter wordt alleen ondersteund bij het ondertekenen van inhoud voor Linux.
 
-GuestConfiguration-agent verwacht dat de open bare sleutel van het certificaat aanwezig is in ' vertrouwde basis certificerings instanties ' op Windows `/usr/local/share/ca-certificates/extra` -computers en in het pad op Linux-machines. Installeer de open bare sleutel van het certificaat op de virtuele machine voordat u het aangepaste beleid toepast, zodat het knoop punt ondertekende inhoud verifieert. Dit proces kan worden uitgevoerd met behulp van een wille keurige techniek binnen de virtuele machine of met behulp van Azure Policy. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)vindt u een voorbeeld sjabloon.
+GuestConfiguration-agent verwacht dat de open bare sleutel van het certificaat aanwezig is in ' vertrouwde basis certificerings instanties ' op Windows `/usr/local/share/ca-certificates/extra` -computers en in het pad op Linux-machines. Installeer de open bare sleutel van het certificaat op de computer voordat u het aangepaste beleid toepast, zodat het knoop punt ondertekende inhoud verifieert. Dit proces kan worden uitgevoerd met behulp van een wille keurige techniek binnen de virtuele machine of met behulp van Azure Policy. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)vindt u een voorbeeld sjabloon.
 Het Key Vault toegangs beleid moet de compute-resource provider toegang geven tot certificaten tijdens implementaties. Zie [Key Vault instellen voor virtuele machines in azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)voor gedetailleerde stappen.
 
-Hieronder volgt een voor beeld van het exporteren van de open bare sleutel van een handtekening certificaat om te importeren naar de virtuele machine.
+Hieronder volgt een voor beeld van het exporteren van de open bare sleutel van een handtekening certificaat om te importeren naar de machine.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Een goede referentie voor het maken van GPG-sleutels voor gebruik met virtuele Linux-machines wordt verschaft door een artikel op GitHub, waardoor [een nieuwe GPG-sleutel wordt gegenereerd](https://help.github.com/en/articles/generating-a-new-gpg-key).
+Een goede referentie voor het maken van GPG-sleutels voor gebruik met Linux-machines wordt verschaft door een artikel op GitHub, waardoor [een nieuwe GPG-sleutel wordt gegenereerd](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
 Nadat de inhoud is gepubliceerd, voegt u een tag met `GuestConfigPolicyCertificateValidation` de naam `enabled` en waarde toe aan alle virtuele machines waarvoor ondertekening van programma code vereist is. Deze tag kan op schaal worden geleverd met behulp van Azure Policy. Zie de [Tags Toep assen en het voor beeld van de standaard waarde](../samples/apply-tag-default-value.md) .
 Zodra deze tag is geïmplementeerd, maakt de beleids definitie die is gegenereerd `New-GuestConfigurationPolicy` met de cmdlet, de vereiste via de gast configuratie-extensie.

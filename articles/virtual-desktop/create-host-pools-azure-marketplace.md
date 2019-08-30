@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 32628296c5d43a11371b486abc426da2e243d0a7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: HT
+ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138231"
+ms.locfileid: "70163733"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelfstudie: Een hostpool maken met behulp van Azure Marketplace
 
@@ -26,7 +26,11 @@ In deze zelf studie wordt beschreven hoe u een hostgroep maakt in een virtuele W
 > * Voeg de virtuele machines toe aan het Active Directory domein.
 > * Registreer de Vm's met het virtuele bureau blad van Windows.
 
-Voordat u begint, moet u [de Power shell-module voor virtueel bureau blad van Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie downloaden en importeren als u dat nog niet hebt gedaan.
+Voordat u begint, moet u [de Power shell-module voor virtueel bureau blad van Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie downloaden en importeren als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

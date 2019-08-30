@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 3f0355ae14ed1a6157c8d3b7fccb5fb8a225ee80
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
-ms.translationtype: HT
+ms.openlocfilehash: 4f9f4661a2c6c78438414029e803abc624a773ca
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147493"
+ms.locfileid: "70161981"
 ---
 # <a name="get-started-with-device-twins-java"></a>Aan de slag met Device apparaatdubbels (Java)
 
@@ -30,9 +30,9 @@ In deze zelf studie maakt u twee Java Console-apps:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De meest recente [Java SE Development Kit 8](https://aka.ms/azure-jdks)
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
 
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 

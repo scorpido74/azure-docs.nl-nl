@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061343"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186224"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Problemen met Updatebeheer oplossen
 
@@ -113,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>Omstandigheden Installatie van updates zonder implementatie
+
+### <a name="issue"></a>Probleem
+
+Wanneer u een Windows-computer registreert in Updatebeheer, kan de installatie van updates zonder een implementatie worden weer geven.
+
+### <a name="cause"></a>Oorzaak
+
+In Windows worden updates automatisch geïnstalleerd zodra ze beschikbaar zijn. Dit kan leiden tot Verwar ring als u geen update hebt gepland die op de machine moet worden geïmplementeerd.
+
+### <a name="resolution"></a>Oplossing
+
+De Windows-register sleutel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` , wordt standaard ingesteld op "4"- **automatisch downloaden en installeren**.
+
+Voor Updatebeheer-clients wordt aangeraden om deze sleutel in te stellen op 3- **automatisch downloaden, maar niet automatisch te installeren**.
+
+Zie [Automatische updates configureren](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates)voor meer informatie.
 
 ### <a name="nologs"></a>Omstandigheden Computers worden niet weer gegeven in de portal onder Updatebeheer
 

@@ -1,7 +1,7 @@
 ---
 title: C#Zelf studie voor het aanroepen van Cognitive Services-API's in een indexerings pijplijn-Azure Search
 description: In deze zelfstudie ziet u een voorbeeld van gegevensextractie, natuurlijke taal en AI-beeldverwerking in Azure Search indexeren voor gegevensextractie en transformatie.
-manager: eladz
+manager: nitinme
 author: MarkHeff
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: 58252bdbad8e7775add3805c28b2da076c07d9aa
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ad0710a3492eeecd56989e627211da5d4a5e0e0a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636066"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186253"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Vind Cognitive Services-API's aanroepen in een Azure Search Indexing-pijp lijn
 

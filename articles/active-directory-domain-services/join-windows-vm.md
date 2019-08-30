@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073889"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172030"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelfstudie: Een virtuele Windows Server-machine toevoegen aan een beheerd domein
 
@@ -214,7 +214,7 @@ Na het uitvoeren van elk van deze probleemoplossings stappen probeert u de Windo
 * Zorg ervoor dat het gebruikers account dat u opgeeft, deel uitmaakt van de groep *Aad DC Administrators* .
 * Gebruik de UPN-indeling om referenties op te geven, `contosoadmin@contoso.onmicrosoft.com`zoals. Als er veel gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang, kan de *SAMAccountName* voor uw account automatisch worden gegenereerd. In dergelijke gevallen kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
 * Controleer of u [wachtwoord synchronisatie hebt ingeschakeld][password-sync] voor uw beheerde domein. Zonder deze configuratie stap zijn de vereiste wacht woord-hashes niet aanwezig in de Azure AD DS beheerde domein om uw aanmeldings poging correct te verifiëren.
-* Wacht tot de wachtwoord synchronisatie is voltooid. Wanneer het wacht woord van een gebruikers account wordt gewijzigd, kan het 15-20 minuten duren voordat het wacht woord beschikbaar is voor het gebruik van domein lidmaatschap.
+* Wacht tot de wachtwoord synchronisatie is voltooid. Wanneer het wacht woord van een gebruikers account wordt gewijzigd, wordt met een automatische achtergrond synchronisatie vanuit Azure AD het wacht woord in azure AD DS bijgewerkt. Het duurt enige tijd voordat het wacht woord beschikbaar is voor gebruik door een domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 

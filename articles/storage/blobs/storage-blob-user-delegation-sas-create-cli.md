@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896969"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164329"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met Azure CLI (preview)
 
@@ -61,7 +61,7 @@ Wanneer u een SAS voor gebruikers overdracht maakt `--auth-mode login` , `--as-u
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Een SAS voor gebruikers overdracht maken voor een container
 
-Als u een gebruikers delegering SAS wilt maken voor een container met Azure CLI, roept u de opdracht [AZ storage container generate-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) aan.
+Als u een gebruikers delegering SAS wilt maken voor een container met de Azure CLI, roept u de opdracht [AZ storage container generate-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) aan.
 
 Ondersteunde machtigingen voor een gebruikers delegering SA'S voor een container zijn: toevoegen, maken, verwijderen, lijst, lezen en schrijven. Machtigingen kunnen afzonderlijk of gecombineerd worden opgegeven. Zie [een gebruiker delegering Sa's maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over deze machtigingen.
 
@@ -85,7 +85,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>Een SAS voor gebruikers overdracht maken voor een BLOB
 
-Als u een gebruikers delegering SA'S wilt maken voor een blob met Azure CLI, roept u de opdracht [AZ Storage BLOB generate-SAS](/cli/azure/storage/blob#az-storage-blob-generate-sas) aan.
+Als u een gebruikers delegering SA'S wilt maken voor een blob met de Azure CLI, roept u de opdracht [AZ Storage BLOB generate-SAS](/cli/azure/storage/blob#az-storage-blob-generate-sas) aan.
 
 Ondersteunde machtigingen voor een gebruikers delegering SA'S voor een BLOB zijn: toevoegen, maken, verwijderen, lezen en schrijven. Machtigingen kunnen afzonderlijk of gecombineerd worden opgegeven. Zie [een gebruiker delegering Sa's maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over deze machtigingen.
 
@@ -112,6 +112,21 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 > [!NOTE]
 > Een door de gebruiker overgedragen SA'S biedt geen ondersteuning voor het definiëren van machtigingen met een opgeslagen toegangs beleid.
+
+## <a name="revoke-a-user-delegation-sas"></a>Een SAS voor gebruikers overdracht intrekken
+
+Als u een gebruikers delegering SA'S wilt intrekken vanuit Azure CLI, roept u de opdracht [AZ Storage account REVOKE-Delegation-Keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) aan. Met deze opdracht worden alle sleutels voor gebruikers overdracht die zijn gekoppeld aan het opgegeven opslag account ingetrokken. Shared Access signatures die zijn gekoppeld aan deze sleutels, worden ongeldig gemaakt.
+
+Vergeet niet om de waarden van de tijdelijke aanduidingen tussen punt haken te vervangen door uw eigen waarden:
+
+```azurecli-interactive
+az storage account revoke-delegation-keys \
+    --name <storage-account> \
+    --resource-group <resource-group>
+```
+
+> [!IMPORTANT]
+> Zowel de toewijzing van de sleutel voor gebruikers overdracht als de RBAC-rollen worden in de cache opgeslagen door Azure Storage. er kan dus een vertraging optreden wanneer u het proces van het intrekken initieert en wanneer een bestaande SA'S van de gebruikers overdracht ongeldig wordt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

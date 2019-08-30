@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: bf8959abcf591acd902793e9247cd15e2cfdada9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: aa36051f65936f25e4f2cc3bf03619b0f66ce5a6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089228"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165310"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 Hoewel Azure Resource Manager veel fantastische functies biedt, is het van essentieel belang om uw migratie traject te plannen om ervoor te zorgen dat alles goed gaat. Bij het plannen van de tijd zorgt u ervoor dat er geen problemen optreden tijdens het uitvoeren van migratie activiteiten.
@@ -203,7 +203,7 @@ Aandachtspunten:
 Wees doel gericht op welke services u nu wilt inschakelen in Azure Resource Manager.  Veel klanten vinden het onderstaande aantrekkelijk voor hun Azure-omgevingen:
 
 - [Access Control op basis van rollen](../../role-based-access-control/overview.md).
-- [Azure Resource Manager sjablonen voor een eenvoudiger en meer bewaakte implementatie](../../azure-resource-manager/resource-group-overview.md#template-deployment).
+- [Azure Resource Manager sjablonen voor een eenvoudiger en meer bewaakte implementatie](../../azure-resource-manager/template-deployment-overview.md).
 - [Tags](../../azure-resource-manager/resource-group-using-tags.md).
 - [Besturings element voor activiteit](../../azure-resource-manager/resource-group-audit.md)
 - [Azure-beleid](../../governance/policy/overview.md)

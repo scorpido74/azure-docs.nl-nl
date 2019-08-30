@@ -5,20 +5,20 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d500f6c74bb62322a5e14ce3c489e8dba11dc2f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555769"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162400"
 ---
-# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Gebruikers instellingen beheren met Azure multi-factor Authentication in de Cloud
+# <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Gebruikers instellingen beheren met Azure Multi-Factor Authentication in de Cloud
 
 Als beheerder kunt u de volgende gebruikers-en apparaatinstellingen beheren:
 
@@ -32,9 +32,12 @@ Als beheerder die de rol authenticatie beheerder toegewezen, kunt u vereisen dat
 
 ![Verificatie methoden beheren vanuit de Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
 
-1. Wacht woord opnieuw instellen stelt het wacht woord van de gebruiker opnieuw in en wijst een tijdelijk wacht woord toe dat moet worden gewijzigd bij de volgende aanmelding.
-2. Vereisen dat het opnieuw registreren van MFA vereist is zodat wanneer de gebruiker de volgende keer aanmeldt, wordt gevraagd om een nieuwe MFA-verificatie methode in te stellen.
-3. Met MFA-sessies intrekken worden de MFA-sessies van de gebruiker gewist en moeten ze MFA de volgende keer worden uitgevoerd door het beleid op het apparaat.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer aan de linkerkant **Azure Active Directory** > **gebruikers** > **alle gebruikers**.
+1. Kies de gebruiker waarvoor u een actie wilt uitvoeren en selecteer **verificatie methoden**.
+   - **Wacht woord opnieuw instellen** stelt het wacht woord van de gebruiker opnieuw in en wijst een tijdelijk wacht woord toe dat moet worden gewijzigd bij de volgende aanmelding.
+   - **Vereisen dat het opnieuw registreren van MFA vereist** is zodat wanneer de gebruiker de volgende keer aanmeldt, wordt gevraagd om een nieuwe MFA-verificatie methode in te stellen.
+   - Met **MFA-sessies intrekken** worden de MFA-sessies van de gebruiker gewist en moeten ze MFA de volgende keer worden uitgevoerd door het beleid op het apparaat.
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Gebruikers moeten opnieuw contact methoden opgeven
 
@@ -78,7 +81,7 @@ Met deze instelling worden alle app-wacht woorden verwijderd die een gebruiker h
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>MFA herstellen op alle onthouden apparaten voor een gebruiker
 
-Een van de Configureer bare functies van Azure multi-factor Authentication geeft uw gebruikers de mogelijkheid om apparaten als vertrouwd te markeren. Zie [Azure multi-factor Authentication-instellingen configureren](howto-mfa-mfasettings.md#remember-multi-factor-authentication)voor meer informatie.
+Een van de Configureer bare functies van Azure Multi-Factor Authentication geeft uw gebruikers de mogelijkheid om apparaten als vertrouwd te markeren. Zie [Azure multi-factor Authentication-instellingen configureren](howto-mfa-mfasettings.md#remember-multi-factor-authentication)voor meer informatie.
 
 Gebruikers kunnen zich afmelden voor verificatie in twee stappen voor een configureerbaar aantal dagen op hun normale apparaten. Als een account is aangetast of een vertrouwd apparaat verloren is gegaan, moet u de vertrouwde status kunnen verwijderen en opnieuw verificatie in twee stappen vereisen.
 

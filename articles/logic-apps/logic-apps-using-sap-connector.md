@@ -8,16 +8,21 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 59263f74086f789e46e854ca320455e84dcb42c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907610"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164995"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen via Azure Logic Apps
+
+> [!IMPORTANT]
+> De eerdere SAP-toepassings server en SAP Message server-connectors zijn gepland voor afschaffing. De huidige SAP-connector consolideert deze vorige SAP-connectors zodat u het verbindings type niet hoeft te wijzigen, is volledig compatibel met eerdere connectors, biedt veel extra mogelijkheden en blijft de SAP .net-connector bibliotheek gebruiken ( SAP NCo).
+>
+> Voor Logic apps die gebruikmaken van de oudere connectors, [migreert u naar de nieuwste connector](#migrate) vóór de datum van afschaffing. Als dat niet het geval is, kunnen deze Logic apps uitvoerings fouten ondervinden en kan er geen berichten naar uw SAP-systeem worden verzonden.
 
 In dit artikel wordt beschreven hoe u met de SAP-connector toegang kunt krijgen tot uw on-premises SAP-resources vanuit een logische app. De connector werkt met de klassieke versies van SAP, zoals R/3-en ECC-systemen on-premises. De connector biedt ook integratie met de nieuwere, op HANA gebaseerde SAP-systemen van SAP, zoals S/4 HANA, of deze nu on-premises of in de cloud worden gehost. De SAP-connector ondersteunt de integratie van berichten of gegevens van en naar SAP netweave-systemen via tussenliggende documenten (IDoc), Business Application Programming Interface (BAPI) of externe functie aanroep (RFC).
 
@@ -31,7 +36,7 @@ Voor deze bewerkingen ondersteunt de SAP-connector basis verificatie via gebruik
 
 De SAP-connector integreert met on-premises SAP-systemen via de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-connection.md). Bij het verzenden van scenario's, bijvoorbeeld wanneer een bericht wordt verzonden vanuit een logische app naar een SAP-systeem, fungeert de gegevens gateway als een RFC-client en worden de aanvragen doorgestuurd van de logische app naar SAP. In ontvangst scenario's fungeert de gegevens gateway ook als een RFC-server die aanvragen van SAP ontvangt en deze doorstuurt naar de logische app.
 
-In dit artikel wordt uitgelegd hoe u logische apps maakt die met SAP worden geïntegreerd, terwijl u de eerder beschreven integratie scenario's bestrijkt.
+In dit artikel wordt uitgelegd hoe u logische apps maakt die met SAP worden geïntegreerd, terwijl u de eerder beschreven integratie scenario's bestrijkt. In dit artikel wordt beschreven hoe u logische apps kunt migreren naar de meest recente SAP-connector voor Logic apps die gebruikmaken van de oudere SAP-connectors.
 
 <a name="pre-reqs"></a>
 
@@ -63,11 +68,23 @@ Als u dit artikel wilt volgen, hebt u de volgende items nodig:
 
 * Bericht inhoud die u kunt verzenden naar uw SAP-server, zoals een voor beeld van een IDoc-bestand, moet de XML-indeling hebben en de naam ruimte bevatten voor de SAP-actie die u wilt gebruiken.
 
+<a name="migrate"></a>
+
+## <a name="migrate-to-current-connector"></a>Migreren naar de huidige connector
+
+1. Als u dit nog niet hebt gedaan, werkt u de [on-premises gegevens gateway](https://www.microsoft.com/download/details.aspx?id=53127) bij, zodat u over de meest recente versie beschikt. Zie [een on-premises gegevens gateway installeren voor Azure Logic apps](../logic-apps/logic-apps-gateway-install.md)voor meer informatie.
+
+1. Verwijder de actie **verzenden naar SAP** in de logische app die gebruikmaakt van de oudere sap-connector.
+
+1. Voeg vanuit de meest recente SAP-connector de actie **Send to SAP** toe. Voordat u deze actie kunt gebruiken, maakt u de verbinding met uw SAP-systeem opnieuw.
+
+1. Wanneer u klaar bent, slaat u de logische app op.
+
 <a name="add-trigger"></a>
 
 ## <a name="send-to-sap"></a>Verzenden naar SAP
 
-In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een HTTP-aanvraag. De logische app verzendt een IDoc naar een SAP-server en retourneert een antwoord naar de aanvrager die de logische app wordt genoemd. 
+In dit voor beeld wordt een logische app gebruikt die u kunt activeren met een HTTP-aanvraag. De logische app verzendt een IDoc naar een SAP-server en retourneert een antwoord naar de aanvrager die de logische app wordt genoemd.
 
 ### <a name="add-an-http-request-trigger"></a>Een HTTP-aanvraag trigger toevoegen
 
@@ -235,7 +252,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
    U kunt ook hand matig een actie opgeven:
 
-   ![SAP-actie hand matig invoeren](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png) 
+   ![SAP-actie hand matig invoeren](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Hier volgt een voor beeld waarin wordt getoond hoe de actie wordt weer gegeven wanneer u de trigger zo instelt dat er meer dan één bericht wordt ontvangen.
 
@@ -259,13 +276,13 @@ Uw logische app is nu klaar om berichten te ontvangen van uw SAP-systeem.
 
 1. Open de meest recente uitvoering, waarin het bericht wordt weer gegeven dat vanuit uw SAP-systeem is verzonden in de sectie trigger uitvoer.
 
-## <a name="receive-idocs-packets-from-sap"></a>IDOCs pakketten ontvangen van SAP
+## <a name="receive-idoc-packets-from-sap"></a>IDOC pakketten ontvangen van SAP
 
 U kunt SAP instellen voor het [verzenden van IDOCs in pakketten](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), die batches of groepen van IDOCs zijn. Voor het ontvangen van IDOC-pakketten, de SAP-connector en de specifiek de trigger, hebt u geen extra configuratie nodig. Als u elk item in een IDOC-pakket echter wilt verwerken nadat de trigger het pakket heeft ontvangen, zijn er aanvullende stappen vereist om het pakket te splitsen in afzonderlijke IDOCs.
 
-Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDOCs uit een pakket kunt ophalen met behulp van de [ `xpath()` functie](./workflow-definition-language-functions-reference.md#xpath): 
+Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDOCs uit een pakket kunt ophalen met behulp van de [ `xpath()` functie](./workflow-definition-language-functions-reference.md#xpath):
 
-1. Voordat u begint, hebt u een logische app met een SAP-trigger nodig. Als u deze logische app nog niet hebt, volgt u de vorige stappen in dit onderwerp om een logische app in te stellen [met een SAP-trigger](#receive-from-sap). 
+1. Voordat u begint, hebt u een logische app met een SAP-trigger nodig. Als u deze logische app nog niet hebt, volgt u de vorige stappen in dit onderwerp om een logische app in te stellen [met een SAP-trigger](#receive-from-sap).
 
    Bijvoorbeeld:
 
@@ -279,7 +296,7 @@ Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDOCs uit e
 
 1. Als u een afzonderlijke IDOC wilt extra heren, voegt u een stap toe waarmee een matrix variabele wordt gemaakt en wordt `xpath()` de IDOC-verzameling opgeslagen met behulp van een andere expressie:
 
-   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')` 
+   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
    ![Matrix van items ophalen](./media/logic-apps-using-sap-connector/get-array.png)
 
@@ -333,18 +350,18 @@ Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
    1. Geef de verbindings gegevens voor uw SAP-server op. Selecteer voor de **gegevens gateway** -eigenschap de gegevens gateway die u hebt gemaakt in de Azure portal voor de installatie van de gateway.
 
-      - Als de eigenschap **aanmeldings type** is ingesteld op **toepassings server**, zijn deze eigenschappen, die meestal optioneel worden weer gegeven, vereist:
+      * Als de eigenschap **aanmeldings type** is ingesteld op **toepassings server**, zijn deze eigenschappen, die meestal optioneel worden weer gegeven, vereist:
 
         ![Een SAP-toepassings server verbinding maken](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - Als de eigenschap **aanmeldings type** is ingesteld op **groep**, zijn deze eigenschappen, die meestal optioneel worden weer gegeven, vereist:
+      * Als de eigenschap **aanmeldings type** is ingesteld op **groep**, zijn deze eigenschappen, die meestal optioneel worden weer gegeven, vereist:
 
         ![SAP Message server-verbinding maken](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
       Standaard wordt met sterk typen gecontroleerd op ongeldige waarden door XML-validatie uit te voeren op basis van het schema. Dit gedrag kan u helpen bij het detecteren van eerder gemaakte problemen. De optie voor **veilig typen** is beschikbaar voor achterwaartse compatibiliteit en controleert alleen de lengte van de teken reeks. Meer informatie over de [optie voor veilig typen](#safe-typing).
 
-   1. Wanneer u klaar bent, selecteert u **maken**. 
-   
+   1. Wanneer u klaar bent, selecteert u **maken**.
+
       Logic Apps stelt uw verbinding in en test deze om te controleren of de verbinding goed werkt.
 
 1. Geef het pad op naar het artefact waarvoor u het schema wilt genereren.
@@ -484,6 +501,30 @@ Wanneer berichten worden verzonden met een **veilig type** ingeschakeld, ziet he
 <DATE>99991231</DATE>
 <TIME>235959</TIME>
 ```
+
+## <a name="advanced-scenarios"></a>Geavanceerde scenario's
+
+### <a name="confirm-transaction-explicitly"></a>Trans actie expliciet bevestigen
+
+Wanneer u trans acties verzendt naar SAP vanuit Logic Apps, vindt deze uitwisseling plaats in twee stappen zoals beschreven in het SAP-document, transactionele [RFC server-Program ma's](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). De actie **verzenden naar SAP** verwerkt standaard zowel de stappen voor de functie overdracht als voor de transactie bevestiging in één aanroep. De SAP-connector biedt u de mogelijkheid om deze stappen uit te voeren. U kunt een IDOC verzenden en in plaats van de trans actie automatisch te bevestigen, kunt u de actie voor de expliciete **trans actie-id bevestigen** gebruiken.
+
+Deze mogelijkheid om de trans actie-ID-bevestiging te ontkoppelen is handig wanneer u trans acties niet wilt dupliceren in SAP, bijvoorbeeld in scenario's waarin storingen optreden vanwege oorzaken van problemen met het netwerk. Door de trans actie-ID afzonderlijk te bevestigen, wordt de trans actie slechts één keer in uw SAP-systeem uitgevoerd.
+
+Hier volgt een voor beeld waarin dit patroon wordt weer gegeven:
+
+1. Maak een lege logische app en voeg een HTTP-trigger toe.
+
+1. Voeg de actie **IDOC verzenden** toe vanuit de SAP-connector. Geef de details op voor de IDOC die u naar uw SAP-systeem verzendt.
+
+1. Als u de trans actie-ID expliciet wilt bevestigen in een afzonderlijke stap, selecteert u in de eigenschap **TID bevestigen** de optie **Nee**. Voor de optionele **trans actie-ID GUID-** eigenschap kunt u de waarde hand matig opgeven of de connector automatisch genereren en deze GUID retour neren in de reactie van de actie IDOC verzenden.
+
+   ![Eigenschappen van IDOC-actie verzenden](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
+
+1. Als u de trans actie-ID expliciet wilt bevestigen, voegt u de actie **trans actie-id bevestigen** toe. Klik in het vak **trans actie-id** zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst de waarde voor de **trans actie-id** die wordt geretourneerd door de actie **IDOC verzenden** .
+
+   ![Bewerking trans actie-ID bevestigen](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
+
+   Nadat deze stap is uitgevoerd, wordt de huidige trans actie als voltooid aan beide uiteinden, aan de zijde van de SAP-connector en aan SAP-systeem zijde gemarkeerd.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 

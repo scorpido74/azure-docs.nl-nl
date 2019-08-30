@@ -1,5 +1,5 @@
 ---
-title: Een Stream Analytics-taak maken met behulp van de Azure Stream Analytics-tools voor Visual Studio
+title: Een Azure Stream Analytics-taak maken met behulp van Visual Studio
 description: In deze snelstart wordt getoond hoe u aan de slag kunt door een Stream Analytics-taak te maken, invoer en uitvoer te configureren en een query te definiëren met Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: bd27495266918063c65bf4648b3453e25767e293
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb3b25387df33f8d366a088f9fa63e0dc96290bf
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076209"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173259"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-stream-analytics-tools-for-visual-studio"></a>Quickstart: Een Stream Analytics-taak maken met behulp van de Azure Stream Analytics-tools voor Visual Studio
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Quickstart: Een Azure Stream Analytics-taak maken met behulp van Visual Studio
 
 Deze snelstart laat zien hoe u een Stream Analytics-taak kunt maken en uitvoeren met Azure Stream Analytics-tools voor Visual Studio. De voorbeeldtaak leest streaminggegevens vanaf een IoT Hub-apparaat. U definieert een taak die de gemiddelde temperatuur bij meer dan 27° berekent en de resulterende uitvoergebeurtenissen naar een nieuw bestand in blobopslag schrijft.
 
@@ -24,7 +24,7 @@ Deze snelstart laat zien hoe u een Stream Analytics-taak kunt maken en uitvoeren
 
 * Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-* 2019 van Visual Studio, Visual Studio 2015 of Visual Studio 2013 Update 4 installeren. Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. De Express-editie wordt niet ondersteund.
+* Installeer Visual Studio 2019, Visual Studio 2015 of Visual Studio 2013 update 4. Enterprise- (Ultimate/Premium), Professional- en Community-edities worden ondersteund. De Express-editie wordt niet ondersteund.
 
 * Volg de [installatie-instructies](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) om Stream Analytics-tools voor Visual Studio te installeren.
 
@@ -40,8 +40,8 @@ Voordat u de Stream Analytics-taak definieert, moet u de gegevens voorbereiden d
    
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**  |
    |---------|---------|---------|
-   |Abonnement  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
-   |Resourcegroep   |   asaquickstart-resourcegroup  |   Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. |
+   |Subscription  | \<Uw abonnement\> |  Selecteer het Azure-abonnement dat u wilt gebruiken. |
+   |Resource group   |   asaquickstart-resourcegroup  |   Selecteer **Nieuwe maken** en voer een naam voor de nieuwe resourcegroep voor uw account in. |
    |Regio  |  \<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\> | Selecteer een geografische locatie waar u de IoT-hub kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is. |
    |Naam van de IoT-hub  | MyASAIoTHub  |   Selecteer een naam voor de IoT-hub.   |
 
@@ -112,9 +112,9 @@ Let op de elementen die zijn opgenomen in een Azure Stream Analytics-project.
    |---------|---------|---------|
    |Invoeralias  |  Invoer   |  Voer een unieke naam in voor de invoer van de taak.   |
    |Brontype   |  Gegevensstroom |  Kies de juiste invoerbron: Gegevensstroom of Verwijzingsgegevens.   |
-   |source  |  IoT Hub |  Kies de juiste invoerbron.   |
+   |Source  |  IoT Hub |  Kies de juiste invoerbron.   |
    |Resource  | Kies gegevensbron van het huidige account | Kies ervoor om gegevens handmatig in te voeren of selecteer een bestaand account.   |
-   |Abonnement  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met de IoT-hub die u hebt gemaakt.   |
+   |Subscription  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met de IoT-hub die u hebt gemaakt.   |
    |IoT Hub  |  MyASAIoTHub   |  Kies uw IoT-hub, of voer de naam ervan in. Namen van IoT-hubs worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.   |
    
 3. De andere opties kunnen de standaardwaarden behouden. Selecteer **Opslaan** om de instellingen op te slaan.  
@@ -129,10 +129,10 @@ Let op de elementen die zijn opgenomen in een Azure Stream Analytics-project.
 
    |**Instelling**  |**Voorgestelde waarde**  |**Beschrijving**   |
    |---------|---------|---------|
-   |Uitvoeralias  |  Uitvoer   |  Voer een unieke naam in voor de uitvoer van de taak.   |
-   |Sink   |  Blob Storage |  Kies de juiste sink.    |
+   |Uitvoeralias  |  Output   |  Voer een unieke naam in voor de uitvoer van de taak.   |
+   |Sink   |  Blob-opslag |  Kies de juiste sink.    |
    |Resource  |  Gegevensbroninstellingen handmatig opgeven |  Kies ervoor om gegevens handmatig in te voeren of selecteer een bestaand account.   |
-   |Abonnement  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt.   |
+   |Subscription  |  \<Uw abonnement\>   | Selecteer het Azure-abonnement met het opslagaccount dat u hebt gemaakt. Het opslagaccount kan voor hetzelfde of een ander abonnement gelden. Voor dit voorbeeld wordt aangenomen dat u een opslagaccount voor hetzelfde abonnement hebt gemaakt.   |
    |Opslagaccount  |  asaquickstartstorage   |  Kies of typ de naam van het opslagaccount. Namen van opslagaccounts worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.   |
    |Container  |  container1   |  Selecteer de bestaande container die u in uw opslagaccount hebt gemaakt.   |
    |Padpatroon  |  uitvoer   |  Voer de naam in van een bestandspad dat in de container moet worden gemaakt.   |

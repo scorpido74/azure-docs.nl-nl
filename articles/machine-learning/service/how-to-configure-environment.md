@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
-ms.translationtype: HT
+ms.openlocfilehash: 33ee006a704cec1fb0d75a953629aec68461a4f4
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128343"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165194"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 
@@ -76,7 +76,7 @@ De VM van het notebook is:
 
 + **Aanpasbaar**. Tijdens een beheerde en beveiligde VM-aanbieding behoudt u volledige toegang tot de hardware-mogelijkheden en past u deze aan op de wensen van uw hart. Zo kunt u snel de nieuwste NVidia V100-VM maken om stapsgewijze fout opsporing van nieuwe Neural-netwerk architectuur uit te voeren.
 
-[Stop de VM van het notitie](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm)blok om de VM-kosten van de notebook te stoppen. 
+[Stop de VM van het notitie](tutorial-1st-experiment-sdk-train.md#clean-up-resources)blok om de VM-kosten van de notebook te stoppen. 
 
 ## <a id="dsvm"></a>Virtuele Machine voor Datatechnologie
 

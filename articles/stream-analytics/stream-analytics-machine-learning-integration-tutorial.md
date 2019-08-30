@@ -9,15 +9,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d74488f60f21e3644a7a04579bfab7e70882b01
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ab510f7ee2f95a2c3373c0514c31554598451b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621544"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173319"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Uitvoeren van sentimentanalyses met behulp van Azure Stream Analytics en Azure Machine Learning Studio (Preview)
-In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak die is geïntegreerd Azure Machine Learning Studio instellen. Kunt u een Machine Learning sentiment analytics-model van de Cortana Intelligence Gallery streaming gegevens analyseren en te bepalen van de gevoelsscore in realtime. Met behulp van de Cortana Intelligence Suite kunt u deze taak wordt uitgevoerd zonder dat u de complexiteit van het bouwen van een gevoel analytics-model.
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Sentiment-analyse uitvoeren met Azure Stream Analytics en Azure Machine Learning Studio (preview-versie)
+In dit artikel wordt beschreven hoe u snel een eenvoudige Azure Stream Analytics-taak kunt instellen waarmee Azure Machine Learning Studio worden geïntegreerd. Kunt u een Machine Learning sentiment analytics-model van de Cortana Intelligence Gallery streaming gegevens analyseren en te bepalen van de gevoelsscore in realtime. Met behulp van de Cortana Intelligence Suite kunt u deze taak wordt uitgevoerd zonder dat u de complexiteit van het bouwen van een gevoel analytics-model.
 
 U kunt het geleerde toepast in dit artikel voor dergelijke scenario's:
 
@@ -45,7 +45,7 @@ Zorg ervoor dat u het volgende hebt voordat u begint:
 Op een hoog niveau voor het voltooien van de taken in dit artikel wordt gedemonstreerd doen u het volgende:
 
 1. Maak een Azure storage-account en een blob storage-container en een CSV-indeling invoerbestand uploaden naar de container.
-3. Een analytics-model van het gevoel van de Cortana Intelligence Gallery toevoegen aan uw Azure Machine Learning Studio-werkruimte en dit model implementeren als een webservice in Machine Learning-werkruimte.
+3. Voeg een sentiment Analytics-model van de Cortana Intelligence Gallery toe aan uw Azure Machine Learning Studio-werk ruimte en implementeer dit model als een webservice in de Machine Learning-werk ruimte.
 5. Maak een Stream Analytics-taak die deze webservice als een functie aanroept om te bepalen van de tekstinvoer sentiment.
 6. Start de Stream Analytics-taak en controleer de uitvoer.
 

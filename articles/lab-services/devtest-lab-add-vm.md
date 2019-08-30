@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine toevoegen aan een lab in Azure DevTest Labs | Microsoft Docs
+title: Een VM toevoegen aan een lab in Azure DevTest Labs | Microsoft Docs
 description: Meer informatie over het toevoegen van een virtuele machine aan een lab in Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,112 +14,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: be5ff2c59878cc966e73d89c18343b0a6ea3d89c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64a5892226b90019f175308b5984dc0a0108e226
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311579"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162257"
 ---
-# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Een virtuele machine toevoegen aan een lab in Azure DevTest Labs
-Als u al hebt [maken van uw eerste virtuele machine](tutorial-create-custom-lab.md#add-a-vm-to-the-lab), waarschijnlijk werd een vooraf geladen [marketplace-installatiekopie](devtest-lab-configure-marketplace-images.md). Nu, als u wilt de volgende virtuele machines toevoegen aan uw lab, u kunt ook een *basis* dat ofwel een [aangepaste installatiekopie](devtest-lab-create-template.md) of een [formule](devtest-lab-manage-formulas.md). In deze zelfstudie begeleidt u stapsgewijs door de Azure portal een virtuele machine toevoegen aan een lab in DevTest Labs.
+# <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Een VM toevoegen aan een lab in Azure DevTest Labs
+Als u [uw eerste virtuele machine](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)al hebt gemaakt, hebt u waarschijnlijk een vooraf geladen [installatie kopie](devtest-lab-configure-marketplace-images.md)van de Marketplace. Als u nu de volgende Vm's wilt toevoegen aan uw Lab, kunt u ook een *basis* kiezen die een [aangepaste installatie kopie](devtest-lab-create-template.md) of een [formule](devtest-lab-manage-formulas.md)is. In deze zelf studie wordt u begeleid bij het gebruik van de Azure Portal om een virtuele machine toe te voegen aan een lab in DevTest Labs.
 
-In dit artikel leest u ook hoe voor het beheren van de artefacten voor een virtuele machine in uw testomgeving.
+In dit artikel leest u ook hoe u de artefacten voor een virtuele machine in uw Lab beheert.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Stappen voor het toevoegen van een virtuele machine aan een lab in Azure DevTest Labs
 1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer **alle Services**, en selecteer vervolgens **DevTest Labs** in de **DEVOPS** sectie. Als u * (star) naast **DevTest Labs** in de **DEVOPS** sectie. Deze actie worden toegevoegd **DevTest Labs** naar het menu aan de linkerkant navigatie zodat u toegang hebben tot deze eenvoudig de volgende keer. Vervolgens kunt u **DevTest Labs** in het linkermenu van de navigatie.
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de sectie **DEVOPS** . Als u * (Star) selecteert naast **DevTest Labs** in de sectie **DEVOPS** . Met deze actie worden **DevTest Labs** toegevoegd aan het navigatie menu aan de linkerkant, zodat u de volgende keer snel toegang kunt krijgen. Vervolgens kunt u **DevTest Labs** selecteren in het navigatie menu aan de linkerkant.
 
     ![Alle services: Selecteer DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
-1. Selecteer in de lijst met labs, in het lab waarin u wilt maken van de virtuele machine.
-2. Op van het lab **overzicht** weergeeft, schakelt **+ toevoegen**.
+1. Selecteer in de lijst met Labs het lab waarin u de virtuele machine wilt maken.
+2. Op de overzichts pagina van het lab selecteert u **+ toevoegen**.
 
-    ![VM-knop toevoegen](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
-1. Op de **kiest u een base** pagina, selecteert u een marketplace-installatiekopie voor de virtuele machine.
-1. Op de **basisinstellingen** tabblad van de **virtuele machine** pagina, de volgende acties uitvoeren:
-    1. Voer een naam voor de virtuele machine in de **virtuele-machinenaam** in het tekstvak. In het tekstvak is voor u door een unieke naam voor het automatisch gegenereerde vooraf ingevuld. De naam overeenkomt met de gebruikersnaam van de in uw e-mailadres gevolgd door een unieke nummer 3 cijfers. Deze functie bespaart u de tijd te denken van een computernaam en typt u dit telkens wanneer u een virtuele machine. Als u wilt, kunt u dit veld automatisch gevuld met een naam van uw keuze overschrijven. Als u wilt overschrijven de automatisch ingevulde naam voor de virtuele machine, voer een naam in de **virtuele-machinenaam** in het tekstvak.
-    2. Voer een **gebruikersnaam** die administrator-bevoegdheden op de virtuele machine wordt verleend. De **gebruikersnaam** voor de machine vooraf ingevuld met een unieke naam voor het automatisch gegenereerde is. De naam overeenkomt met de gebruikersnaam van de in uw e-mailadres. Deze functie bespaart u tijd om te beslissen over een gebruikersnaam, telkens wanneer u een nieuwe virtuele machine. Nogmaals, kunt u dit veld automatisch gevuld met een gebruikersnaam van uw keuze als u wilt onderdrukken. Als u wilt overschrijven de automatisch ingevulde waarde voor de gebruikersnaam van de, typt u een waarde in de **gebruikersnaam** in het tekstvak. Deze gebruiker is verleend **beheerder** bevoegdheden op de virtuele machine.
-    3. Als u de eerste virtuele machine in het lab maakt, voert u een **wachtwoord** voor de gebruiker. Sla dit wachtwoord als een standaardwachtwoord in de Azure-sleutelkluis die is gekoppeld aan het lab, selecteer **opslaan als standaardwachtwoord**. Het standaardwachtwoord wordt opgeslagen in de key vault met de naam: **VmPassword**. Wanneer u probeert te maken van latere virtuele machines in het lab **VmPassword** wordt automatisch geselecteerd voor de **wachtwoord**. Als u wilt overschrijven de waarde, schakelt u de **een geheim opgeslagen** selectievakje en voer een wachtwoord.
+    ![Knop virtuele machine toevoegen](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
+1. Selecteer op de pagina **een basis kiezen** een Marketplace-installatie kopie voor de virtuele machine.
+1. Voer op het tabblad **basis instellingen** van de pagina **virtuele machine** de volgende acties uit:
+    1. Voer in het tekstvak **naam van virtuele machine** een naam in voor de VM. Het tekstvak wordt vooraf ingevuld met een unieke, automatisch gegenereerde naam. De naam komt overeen met de gebruikers naam in uw e-mail adres gevolgd door een uniek nummer van drie cijfers. Met deze functie slaat u de computer naam op en typt u deze telkens wanneer u een computer maakt. Als u wilt, kunt u deze automatisch ingevulde veld overschrijven met de gewenste naam. Als u de automatisch ingevulde naam voor de virtuele machine wilt overschrijven, voert u een naam in het tekstvak **naam** van de VM in.
+    2. Voer een **gebruikers naam** in die Administrator bevoegdheden voor de virtuele machine heeft. De **gebruikers naam** voor de machine is vooraf ingevuld met een unieke automatisch gegenereerde naam. De naam komt overeen met de gebruikers naam in uw e-mail adres. Met deze functie bespaart u de tijd om elke keer dat u een nieuwe machine maakt een gebruikers naam te kiezen. U kunt dit automatisch gevulde veld vervangen door een gebruikers naam van uw keuze als u dat wilt. Als u de automatisch ingevulde waarde voor de gebruikers naam wilt overschrijven, voert u een waarde in het tekstvak **gebruikers naam** in. Aan deze gebruiker zijn **beheerders** bevoegdheden voor de virtuele machine verleend.
+    3. Als u de eerste virtuele machine in het Lab maakt, voert u een **wacht woord** voor de gebruiker in. Als u dit wacht woord wilt opslaan als een standaard wachtwoord in de Azure-sleutel kluis die is gekoppeld aan het lab, selecteert u **Opslaan als standaard wachtwoord**. Het standaard wachtwoord wordt opgeslagen in de sleutel kluis met de naam: **VmPassword**. Wanneer u een volgende virtuele machine in het lab probeert te maken, wordt **VmPassword** automatisch geselecteerd voor het **wacht woord**. Als u de waarde wilt overschrijven, schakelt u het selectie vakje **een opgeslagen geheim gebruiken** uit en voert u een wacht woord in.
 
         ![Een basis kiezen](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 
-        U kunt ook geheimen eerst in de key vault opslaan en vervolgens worden gebruikt tijdens het maken van een virtuele machine in het lab. Zie voor meer informatie, [Store geheimen in een key vault](devtest-lab-store-secrets-in-key-vault.md). Selecteer voor het gebruik van het wachtwoord die zijn opgeslagen in de key vault, **een geheim opgeslagen**, en geeft u de waarde van een sleutel die overeenkomt met uw geheim (wachtwoord).
-    4. In de **meer opties** sectie, selecteer **grootte wijzigen**. Selecteer een van de vooraf gedefinieerde items die u opgeeft de processor-cores, RAM-geheugen en de grootte van de vaste schijf van de virtuele machine te maken.
-    5. Selecteer **toevoegen of verwijderen van artefacten**. Selecteert en configureert u de artefacten die u wilt toevoegen aan de basisinstallatiekopie.
-    **Opmerking:** Als u geen ervaring hebt met DevTest Labs of configureren van artefacten, raadpleegt u de [een bestaande artefact toevoegen aan een virtuele machine](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) uit en keer vervolgens hier terug wanneer u klaar bent.
-2. Schakel over naar de **geavanceerde instellingen** tabblad aan de bovenkant en de volgende acties uitvoeren:
-    1. Als u wilt wijzigen van het virtuele netwerk waarin de virtuele machine zich bevindt, selecteert u **wijzigen VNet**.
-    2. Als het subnet wijzigen, selecteert u **wijzigen van subnet**.
-    3. Geef op of het IP-adres van de virtuele machine is **openbare, persoonlijke of gedeelde**.
-    4. Als de virtuele machine automatisch verwijderen, geef de **datum en tijd**.
-    5. Als u de virtuele machine claimbare door een lab-gebruiker, schakelt u **Ja** voor **maken deze machine claimbare** optie.
-    6. Geef het aantal van de **exemplaren van virtuele machine** dat u wilt deze beschikbaar maakt voor uw labgebruikers.
+        U kunt ook geheimen opslaan in de sleutel kluis en deze vervolgens gebruiken tijdens het maken van een virtuele machine in het lab. Zie [geheimen opslaan in een sleutel kluis](devtest-lab-store-secrets-in-key-vault.md)voor meer informatie. Als u het wacht woord wilt gebruiken dat is opgeslagen in de sleutel kluis, selecteert u **een opgeslagen geheim gebruiken**en geeft u een sleutel waarde op die overeenkomt met uw geheim (wacht woord).
+    4. Selecteer in het gedeelte **meer opties** de optie **grootte wijzigen**. Selecteer een van de vooraf gedefinieerde items waarmee de processor kernen, de RAM-grootte en de grootte van de harde schijf van de virtuele machine worden opgegeven die u wilt maken.
+    5. Selecteer **artefacten toevoegen of verwijderen**. Selecteer en configureer de artefacten die u wilt toevoegen aan de basis installatie kopie.
+    **Opmerking:** Als u geen ervaring hebt met DevTest Labs of als u artefacten configureert, raadpleegt u de sectie [een bestaand artefact toevoegen aan een VM](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) en vervolgens keert u terug wanneer u klaar bent.
+2. Ga bovenaan naar het tabblad **Geavanceerde instellingen** en voer de volgende acties uit:
+    1. Als u het virtuele netwerk wilt wijzigen waarin de VM zich bevindt, selecteert u **VNet wijzigen**.
+    2. Als u het subnet wilt wijzigen, selecteert u **subnet wijzigen**.
+    3. Geef op of het IP-adres van de virtuele machine **openbaar, privé of gedeeld**is.
+    4. Als u de virtuele machine automatisch wilt verwijderen, geeft u de **verval datum en-tijd**op.
+    5. Als u de VM wilt claimen door een test gebruiker, selecteert u **Ja** om **deze computer claimbaar te maken** .
+    6. Geef het aantal **exemplaren van de virtuele machine** op dat u beschikbaar wilt maken voor uw Lab-gebruikers.
 
         ![Een basis kiezen](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
-1. Selecteer **maken** opgegeven virtuele machine toevoegen aan het lab.
+1. Selecteer **maken** om de opgegeven virtuele machine toe te voegen aan het lab.
 
-   De pagina lab geeft de status van het maken van de VM - eerst als **maken**, klikt u vervolgens als **met** als de virtuele machine al is gestart.
+   Op de pagina Lab wordt de status van het maken van de virtuele machine weer gegeven: eerst als **Er wordt gemaakt**en vervolgens **uitgevoerd** nadat de virtuele machine is gestart.
 
     ![Status van het maken van de virtuele machine](./media/tutorial-create-custom-lab/vm-creation-status.png)
 
-## <a name="add-an-existing-artifact-to-a-vm"></a>Een bestaande artefact toevoegen aan een virtuele machine
-Tijdens het maken van een virtuele machine, kunt u bestaande artefacten toevoegen. Elk lab bevat artefacten uit de openbare DevTest Labs-Artefactopslagplaats, evenals de artefacten die u hebt gemaakt en toegevoegd aan uw eigen Artefactopslagplaats.
+## <a name="add-an-existing-artifact-to-a-vm"></a>Een bestaand artefact toevoegen aan een VM
+Tijdens het maken van een virtuele machine kunt u bestaande artefacten toevoegen. Elk lab bevat artefacten uit de open bare DevTest Labs-artefact opslagplaats en artefacten die u hebt gemaakt en toegevoegd aan uw eigen artefact opslagplaats.
 
-* Azure DevTest Labs *artefacten* kunt u opgeven *acties* die worden uitgevoerd wanneer de virtuele machine is ingericht, zoals het uitvoeren van Windows PowerShell-scripts, Bash-opdrachten uitvoeren en installeren van software.
-* Artefact *parameters* kunt u het artefact voor uw specifieke scenario aanpassen
+* Met Azure DevTest Labs artefacten kunt u *acties* opgeven die worden uitgevoerd wanneer de virtuele machine wordt ingericht, zoals het uitvoeren van Windows Power shell-scripts, het uitvoeren van bash-opdrachten en het installeren van software.
+* Met artefact *parameters* kunt u het artefact voor uw specifieke scenario aanpassen
 
-Om te ontdekken hoe u artefacten maken, Zie het artikel [informatie over het ontwerpen van uw eigen artefacten voor gebruik met DevTest Labs](devtest-lab-artifact-author.md).
+Zie het artikel, [informatie over het maken van uw eigen artefacten voor gebruik met DevTest Labs](devtest-lab-artifact-author.md), om te ontdekken hoe u artefacten maakt.
 
 1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer **alle Services**, en selecteer vervolgens **DevTest Labs** in de lijst.
-1. Selecteer in de lijst met labs, in het lab met de virtuele machine die u wilt werken.
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
+1. Selecteer in de lijst met Labs het lab met de virtuele machine waarmee u wilt werken.
 1. Selecteer **mijn virtuele machines**.
-1. Selecteer de gewenste virtuele machine.
+1. Selecteer de gewenste VM.
 1. Selecteer **artefacten beheren**.
-1. Selecteer **toepassen artefacten**.
-1. Op de **toepassen artefacten** deelvenster, selecteert u het artefact dat u wilt toevoegen aan de virtuele machine.
-1. Op de **toevoegen artefact** deelvenster, voert u de vereiste parameterwaarden en eventuele optionele parameters die u nodig hebt.
-1. Selecteer **toevoegen** het artefact toevoegen en terugkeren naar de **toepassen artefacten** deelvenster.
-1. Doorgaan met het toevoegen van artefacten, zoals die nodig zijn voor uw virtuele machine.
-1. Als u uw artefacten hebt toegevoegd, kunt u [wijzigt de volgorde waarin de artefacten zijn uitgevoerd](#change-the-order-in-which-artifacts-are-run). U kunt ook teruggaan naar [weergeven of wijzigen van een artefact](#view-or-modify-an-artifact).
-1. Wanneer u klaar bent met het artefacten toe te voegen, selecteert u **toepassen**
+1. Selecteer **artefacten Toep assen**.
+1. Selecteer in het deel venster **artefacten Toep assen** het artefact dat u aan de virtuele machine wilt toevoegen.
+1. Voer in het deel venster **artefact toevoegen** de vereiste parameter waarden in en eventuele optionele para meters die u nodig hebt.
+1. Selecteer **toevoegen** om het artefact toe te voegen en terug te keren naar het deel venster **artefacten Toep assen** .
+1. Ga door met het toevoegen van artefacten die nodig zijn voor uw VM.
+1. Wanneer u uw artefacten hebt toegevoegd, kunt u [de volg orde wijzigen waarin de artefacten worden uitgevoerd](#change-the-order-in-which-artifacts-are-run). U kunt ook terugkeren om [een artefact weer te geven of te wijzigen](#view-or-modify-an-artifact).
+1. Wanneer u klaar bent met het toevoegen van artefacten, selecteert u **Toep assen**
 
-## <a name="change-the-order-in-which-artifacts-are-run"></a>Wijzig de volgorde waarin artefacten worden uitgevoerd
-De acties van de artefacten worden standaard uitgevoerd in de volgorde waarin ze worden toegevoegd aan de virtuele machine.
-De volgende stappen laten zien hoe u de volgorde waarin de artefacten worden uitgevoerd.
+## <a name="change-the-order-in-which-artifacts-are-run"></a>De volg orde wijzigen waarin artefacten worden uitgevoerd
+De acties van de artefacten worden standaard uitgevoerd in de volg orde waarin ze worden toegevoegd aan de virtuele machine.
+De volgende stappen laten zien hoe u de volg orde wijzigt waarin de artefacten worden uitgevoerd.
 
-1. Aan de bovenkant van de **toepassen artefacten** deelvenster, selecteert u de koppeling met het nummer van de artefacten die zijn toegevoegd aan de virtuele machine.
+1. Selecteer boven in het deel venster **artefacten Toep assen** de koppeling waarmee het aantal artefacten wordt aangegeven dat aan de virtuele machine is toegevoegd.
 
-    ![Aantal artefacten toegevoegd aan de virtuele machine](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Op de **geselecteerd artefacten** deelvenster slepen en neerzetten van de artefacten in de gewenste volgorde. **Opmerking:** Als u problemen ondervindt met het slepen van het artefact, zorg ervoor dat u vanaf de linkerkant van het artefact sleept.
+    ![Aantal artefacten dat aan de virtuele machine is toegevoegd](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. Sleep in het deel venster **geselecteerde artefacten** de artefacten naar de gewenste volg orde. **Opmerking:** Als u het artefact niet kunt slepen, moet u ervoor zorgen dat u vanaf de linkerkant van het artefact sleept.
 1. Selecteer **OK** wanneer u gereed bent.
 
-## <a name="view-or-modify-an-artifact"></a>Weergeven of wijzigen van een artefact
-De volgende stappen laten zien hoe u weergeven of wijzigen van de parameters van een artefact:
+## <a name="view-or-modify-an-artifact"></a>Een artefact weer geven of wijzigen
+De volgende stappen laten zien hoe u de para meters van een artefact kunt weer geven of wijzigen:
 
-1. Aan de bovenkant van de **toepassen artefacten** deelvenster, selecteert u de koppeling met het nummer van de artefacten die zijn toegevoegd aan de virtuele machine.
+1. Selecteer boven in het deel venster **artefacten Toep assen** de koppeling waarmee het aantal artefacten wordt aangegeven dat aan de virtuele machine is toegevoegd.
 
-    ![Aantal artefacten toegevoegd aan de virtuele machine](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
-1. Op de **geselecteerd artefacten** deelvenster, selecteert u de artefacten die u wilt weergeven of bewerken.
-1. Op de **toevoegen artefact** deelvenster, controleert alle wijzigingen die nodig zijn, en selecteer **OK** sluiten de **toevoegen artefact** deelvenster.
-1. Selecteer **OK** sluiten de **geselecteerd artefacten** deelvenster.
+    ![Aantal artefacten dat aan de virtuele machine is toegevoegd](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
+1. Selecteer in het deel venster **geselecteerde artefacten** het artefact dat u wilt weer geven of bewerken.
+1. Breng de gewenste wijzigingen aan in het deel venster **artefact toevoegen** en selecteer **OK** om het deel venster **artefact toevoegen** te sluiten.
+1. Selecteer **OK** om het **geselecteerde artefacten** venster te sluiten.
 
-## <a name="save-azure-resource-manager-template"></a>Azure Resource Manager-sjabloon opslaan
-Een Azure Resource Manager-sjabloon biedt een declaratieve manier om een herhaalbare implementatie te definiëren.
-De volgende stappen wordt uitgelegd hoe u om op te slaan van de Azure Resource Manager-sjabloon voor de virtuele machine wordt gemaakt.
-Nadat het is opgeslagen, kunt u de Azure Resource Manager-sjabloon [implementeren van nieuwe virtuele machines met Azure PowerShell](../azure-resource-manager/resource-group-overview.md#template-deployment).
+## <a name="save-azure-resource-manager-template"></a>Azure Resource Manager sjabloon opslaan
+Een Azure Resource Manager sjabloon biedt een declaratieve manier om een Herhaal bare implementatie te definiëren.
+In de volgende stappen wordt uitgelegd hoe u de Azure Resource Manager sjabloon opslaat voor de virtuele machine die wordt gemaakt.
+Nadat het is opgeslagen, kunt u de Azure Resource Manager-sjabloon gebruiken om [nieuwe vm's te implementeren met Azure PowerShell](../azure-resource-manager/template-deployment-overview.md).
 
-1. Op de **virtuele machine** venster **weergave Azure Resource Manager-sjabloon**.
-2. Op de **weergave Azure Resource Manager-sjabloon** deelvenster, selecteert u de sjabloontekst.
-3. De geselecteerde tekst naar het Klembord kopiëren.
-4. Selecteer **OK** sluiten de **Azure Resource Manager-sjabloon weergeven deelvenster**.
+1. Selecteer in het deel venster **virtuele machine** **Azure Resource Manager sjabloon weer geven**.
+2. Selecteer in het deel venster **Azure Resource Manager sjabloon weer geven** de sjabloon tekst.
+3. De geselecteerde tekst naar het klem bord kopiëren.
+4. Selecteer **OK** om het **deel venster weer gave Azure Resource Manager sjabloon**te sluiten.
 5. Open een teksteditor.
-6. Plak de sjabloontekst van het Klembord.
-7. Sla het bestand voor later gebruik.
+6. Plak de sjabloon tekst op het klem bord.
+7. Sla het bestand op voor later gebruik.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-* Nadat de virtuele machine is gemaakt, kunt u verbinding met de virtuele machine met selecteren **Connect** in het deelvenster van de virtuele machine.
-* Meer informatie over het [aangepaste artefacten maken voor uw VM van DevTest Labs](devtest-lab-artifact-author.md).
-* Verken de [DevTest Labs Azure Resource Manager QuickStart-sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* Zodra de VM is gemaakt, kunt u verbinding maken met de virtuele machine door **verbinding maken** te selecteren in het deel venster van de virtuele machine.
+* Meer informatie over het [maken van aangepaste artefacten voor uw DevTest Labs-VM](devtest-lab-artifact-author.md).
+* Verken de [DevTest Labs Azure Resource Manager-sjabloon galerie voor Quick](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)start.

@@ -1,8 +1,8 @@
 ---
-title: Het model complexe gegevenstypen - Azure Search
-description: Geneste of hiërarchische gegevensstructuren kunnen worden gemodelleerd in een Azure Search-index met behulp van gegevenstypen ComplexType en verzamelingen.
+title: Complexe gegevens typen model leren-Azure Search
+description: Geneste of hiërarchische gegevens structuren kunnen worden gemodelleerd in een Azure Search index met behulp van de gegevens typen complex type en verzameling.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 services: search
@@ -10,31 +10,31 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: e7e6ddefd13d669c949389bc4fad85fb6cff4d3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b9c9b35adc0dde032723c3c60adedf5b2e7b4cb6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621363"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183208"
 ---
-# <a name="how-to-model-complex-data-types-in-azure-search"></a>Hoe u complexe gegevenstypen modelleren in Azure Search
+# <a name="how-to-model-complex-data-types-in-azure-search"></a>Complexe gegevens typen model leren in Azure Search
 
-Externe gegevenssets die worden gebruikt om een Azure Search-index te vullen kunnen worden geleverd in vele vormen. Ze bevatten soms hiërarchische of geneste substructuren. Voorbeelden mogelijk meerdere adressen bevatten voor één klant, meerdere kleuren en formaten voor een enkele SKU, meerdere auteurs van een enkel rapport, enzovoort. Voorwaarden modelleren, ziet u deze structuren aangeduid als *complexe*, *samengestelde*, *samengestelde*, of *cumulatieve* gegevenstypen. De term Azure Search voor dit concept gebruikt is **complexe type**. In Azure Search, complexe typen worden gemodelleerd met behulp van **complexe velden**. Een complexe veld is een veld dat onderliggende objecten (onderliggende velden) die van elk gegevenstype zijn kunnen, met inbegrip van andere complexe typen bevat. Dit werkt op dezelfde manier als de typen gestructureerde gegevens in een programmeertaal.
+Externe gegevens sets die worden gebruikt voor het vullen van een Azure Search index kunnen in veel vormen worden geleverd. Soms bevatten deze hiërarchische of geneste substructuren. Voor beelden zijn bijvoorbeeld meerdere adressen voor één klant, meerdere kleuren en grootten voor één SKU, meerdere auteurs van één boek, enzovoort. In het kader van model lering kunnen deze structuren worden aangeduid als *complexe*, *samengestelde*, *samengestelde*of *statistische* gegevens typen. De term Azure Search gebruikt voor dit concept is een **complex type**. In Azure Search worden complexe typen gemodelleerd met behulp van **complexe velden**. Een complex veld is een veld met onderliggende elementen (subvelden) die van elk gegevens type kunnen zijn, met inbegrip van andere complexe typen. Dit werkt op een vergelijk bare manier als gestructureerde gegevens typen in een programmeer taal.
 
-Complexe velden vertegenwoordigen een enkel object in het document of een matrix met objecten, afhankelijk van het gegevenstype. Velden van het type `Edm.ComplexType` vertegenwoordigen één objecten, terwijl de velden van het type `Collection(Edm.ComplexType)` matrices van objecten te vertegenwoordigen.
+Complexe velden vertegenwoordigen ofwel één object in het document of een matrix van objecten, afhankelijk van het gegevens type. Velden van het `Edm.ComplexType` type vertegenwoordigen afzonderlijke objecten, terwijl velden van `Collection(Edm.ComplexType)` het type matrices van objecten vertegenwoordigen.
 
-Azure Search biedt systeemeigen ondersteuning voor complexe typen en verzamelingen. Deze typen kunnen u als model voor bijna elk JSON-structuur in een Azure Search-index. In eerdere versies van Azure Search API's alleen afgevlakt rij sets kunnen worden geïmporteerd. In de nieuwste versie, de index kan nu beter aansluiten komen overeen met brongegevens. Met andere woorden, als de brongegevens complexe typen bevat, uw index kunt complexe typen hebben ook.
+Azure Search biedt systeem eigen ondersteuning voor complexe typen en verzamelingen. Met deze typen kunt u nagenoeg elke JSON-structuur in een Azure Search index model leren. In eerdere versies van Azure Search-Api's kunnen alleen samengevoegde Rijg sets worden geïmporteerd. In de nieuwste versie kan uw index nu nauw keuriger overeenkomen met de bron gegevens. Met andere woorden, als uw bron gegevens complexe typen hebben, kan uw index ook complexe typen hebben.
 
-Als u wilt beginnen, wordt aangeraden de [Hotels gegevensset](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md), die u kunt laden de **gegevens importeren** wizard in de Azure-portal. De wizard detecteert complexe typen in de bron en stelt een indexschema op basis van de gedetecteerde structuren.
+Om aan de slag te gaan, raden we de [gegevensverzameling Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)aan, die u in de wizard **gegevens importeren** in de Azure Portal kunt laden. De wizard detecteert complexe typen in de bron en suggereert een index schema op basis van de gedetecteerde structuren.
 
 > [!Note]
 > Ondersteuning voor complexe typen is algemeen beschikbaar in `api-version=2019-05-06`. 
 >
-> Als uw search-oplossing is gebouwd op eerdere oplossingen van platte gegevenssets in een verzameling, moet u uw index om op te nemen van complexe typen zoals ondersteund in de nieuwste versie van de API wijzigen. Zie voor meer informatie over het upgraden van API-versies [upgraden naar de nieuwste versie van de REST-API](search-api-migration.md) of [upgraden naar de nieuwste versie van .NET SDK](search-dotnet-sdk-migration-version-9.md).
+> Als uw zoek oplossing is gebaseerd op eerdere tijdelijke oplossingen van platte gegevens sets in een verzameling, moet u de index zodanig wijzigen dat deze complexe typen bevat zoals wordt ondersteund in de nieuwste API-versie. Zie voor meer informatie over het upgraden van API-versies [upgraden naar de nieuwste versie van rest API](search-api-migration.md) of voer een [upgrade uit naar de nieuwste versie van de .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
-## <a name="example-of-a-complex-structure"></a>Voorbeeld van een complexe structuur
+## <a name="example-of-a-complex-structure"></a>Voor beeld van een complexe structuur
 
-De volgende JSON-document bestaat uit een eenvoudige en complexe velden. Complexe velden, zoals `Address` en `Rooms`, onderliggende velden hebben. `Address` heeft één set met waarden voor deze onderliggende velden, omdat het een enkel object in het document. Daarentegen `Rooms` heeft meerdere sets met waarden voor de onderliggende velden, één voor elk object in de verzameling.
+Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Complexe velden, zoals `Address` en `Rooms`, hebben subvelden. `Address`heeft één set waarden voor die subvelden, omdat het een enkel object in het document is. Daarentegen `Rooms` heeft meerdere waarden sets voor de subvelden, één voor elk object in de verzameling.
 
 ```json
 {
@@ -61,11 +61,11 @@ De volgende JSON-document bestaat uit een eenvoudige en complexe velden. Complex
 }
 ```
 
-## <a name="creating-complex-fields"></a>Het maken van complexe velden
+## <a name="creating-complex-fields"></a>Complexe velden maken
 
-Als met een definitie van de index, kunt u de portal [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-index), of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) om een schema met complexe typen te maken. 
+Net als bij elke index definitie kunt u de portal, [rest API](https://docs.microsoft.com/rest/api/searchservice/create-index)of [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) gebruiken om een schema te maken dat complexe typen bevat. 
 
-Het volgende voorbeeld ziet een JSON-schema-index met eenvoudige velden, verzamelingen en complexe typen. U ziet dat binnen een complex type elk veld heeft een type en kan kenmerken hebben, net als op het hoogste niveau velden. Het schema komt overeen met het bovenstaande voorbeeldgegevens. `Address` is een complexe veld die niet van een verzameling (een hotel heeft één adres). `Rooms` is een verzameling complexe veld (een hotel heeft veel ruimten).
+In het volgende voor beeld ziet u een JSON-index schema met eenvoudige velden, verzamelingen en complexe typen. U ziet dat in een complex type elk subveld een type heeft en kan kenmerken hebben, net als velden op het hoogste niveau. Het schema komt overeen met de bovenstaande voorbeeld gegevens. `Address`is een complex veld dat geen verzameling is (een hotel heeft één adres). `Rooms`is een complex verzamelings veld (een hotel heeft veel kamers).
 
 <!---
 For indexes used in a [push-model data import](search-what-is-data-import.md) strategy, where you are pushing a JSON data set to an Azure Search index, you can only have the basic syntax shown here: single complex types like `Address`, or a `Collection(Edm.ComplexType)` like `Rooms`. You cannot have complex types nested inside other complex types in an index used for push-model data ingestion.
@@ -100,69 +100,69 @@ Indexers are a different story. When defining an indexer, in particular one used
 
 ## <a name="updating-complex-fields"></a>Complexe velden bijwerken
 
-Alle van de [opnieuw indexeren regels](search-howto-reindex.md) die gelden voor velden in het algemeen nog steeds van toepassing op complexe velden. Anders formuleren van enkele van de belangrijkste regels hier toevoegen van een veld een index opnieuw opbouwen niet nodig, maar de meeste wijzigingen doen.
+Alle regels voor opnieuw [indexeren](search-howto-reindex.md) die van toepassing zijn op velden in het algemeen blijven van toepassing op complexe velden. Als u hier enkele van de hoofd regels opnieuw opgeeft, hoeft u voor het toevoegen van een veld geen index opnieuw samen te stellen, maar de meeste wijzigingen doen wel.
 
 ### <a name="structural-updates-to-the-definition"></a>Structurele updates voor de definitie
 
-U kunt nieuwe onderliggende velden toevoegen aan een complexe veld op elk gewenst moment zonder de noodzaak voor het opnieuw opbouwen van een index. Bijvoorbeeld, "Postcode" toe te voegen aan `Address` of 'Faciliteiten' naar `Rooms` is toegestaan, net zoals het toevoegen van een veld op het hoogste niveau naar een index. Bestaande documenten hebben een null-waarde voor de nieuwe velden totdat u deze velden expliciet vullen met het bijwerken van uw gegevens.
+U kunt op elk gewenst moment nieuwe subvelden toevoegen aan een complex veld zonder dat een index opnieuw moet worden samengesteld. U kunt bijvoorbeeld ' ZipCode ' toevoegen aan `Address` of ' voorzieningen ' in `Rooms` is toegestaan, net zoals het toevoegen van een veld op het hoogste niveau aan een index. Bestaande documenten hebben een null-waarde voor nieuwe velden totdat u deze velden expliciet vult door uw gegevens bij te werken.
 
-U ziet dat binnen een complex type elk veld heeft een type en kan kenmerken hebben, net als op het hoogste niveau velden
+U ziet dat in een complex type elk subveld een type heeft en kan kenmerken hebben, net zoals velden op het hoogste niveau
 
-### <a name="data-updates"></a>Gegevensupdates
+### <a name="data-updates"></a>Gegevens updates
 
-Bijwerken van bestaande documenten in een index met de `upload` actie werkt op dezelfde manier voor complexe en eenvoudige velden--alle velden zijn vervangen. Echter, `merge` (of `mergeOrUpload` wanneer toegepast op een bestaand document) werkt niet hetzelfde voor alle velden. Met name `merge` biedt geen ondersteuning voor samenvoegen elementen in een verzameling. Deze beperking bestaat voor verzamelingen van primitieve typen en complexe verzamelingen. Voor het bijwerken van een verzameling, nodig hebt u om op te halen van de waarde van de volledige verzameling, wijzigingen aanbrengen, en vervolgens de nieuwe verzameling kunt opnemen in de Index API-aanvraag.
+Het bijwerken van bestaande documenten in een index `upload` met de actie werkt op dezelfde manier voor complexe en eenvoudige velden. alle velden worden vervangen. `merge` ( Of`mergeOrUpload` wanneer toegepast op een bestaand document) werkt echter niet in alle velden. Met name biedt geen ondersteuning voor het samen voegen van elementen binnen een verzameling. `merge` Deze beperking bestaat voor verzamelingen van primitieve typen en complexe verzamelingen. Als u een verzameling wilt bijwerken, moet u de volledige verzamelings waarde ophalen, wijzigingen aanbrengen en de nieuwe verzameling vervolgens toevoegen aan de API-aanvraag van de index.
 
-## <a name="searching-complex-fields"></a>Zoeken naar complexe velden
+## <a name="searching-complex-fields"></a>Complexe velden zoeken
 
-Uitdrukkingen zoeken met vrije vorm werkt zoals verwacht met complexe typen. Als overeenkomt met elke doorzoekbaar veld of de onderliggende veld overal in een document, is het document zelf een overeenkomst.
+Zoek expressies met een vrije vorm werken zoals verwacht met complexe typen. Als een doorzoekbaar veld of subveld ergens in een document overeenkomt, is het document zelf een overeenkomst.
 
-Query's krijgen meer genuanceerde wanneer u meerdere voorwaarden en operators, en enkele termen veldnamen die zijn opgegeven hebben, als er mogelijk is met de [Lucene syntaxis](query-lucene-syntax.md). Bijvoorbeeld: deze query probeert twee termen, 'Rotterdam' en 'Of', op basis van twee onderliggende velden van het veld adres:
+Query's krijgen meer nuances wanneer u meerdere voor waarden en Opera tors hebt, en voor sommige termen zijn veld namen opgegeven, evenals de [syntaxis](query-lucene-syntax.md)van de lucene. Met deze query wordt bijvoorbeeld geprobeerd twee voor waarden, "Port land" en "of" te vergelijken met twee subvelden van het veld adres:
 
     search=Address/City:Portland AND Address/State:OR
 
-Query's, zoals deze zijn *niet-gerelateerde* voor zoeken in volledige tekst, in tegenstelling tot filters. In de filters, query's van de onderliggende velden van een complexe verzameling worden gecorreleerd met het gebruik van variabelen in bereik [ `any` of `all` ](search-query-odata-collection-operators.md). De bovenstaande Lucene-query retourneert documenten met zowel 'Portland, Groningen ' gemarkeerd als "Portland, Oregon", samen met andere plaatsen in Oregon. Dit gebeurt omdat elke-component is van toepassing op alle waarden van het veld in het hele document, zodat er geen concept van een document"huidige subregio'. Zie voor meer informatie over dit [Understanding OData verzameling filters in Azure Search](search-query-understand-collection-filters.md).
+Query's zoals dit zijn niet- *gecorreleerd* voor Zoek opdrachten in volledige tekst, in tegens telling tot filters. In filters worden query's via subvelden van een complexe verzameling gecorreleerd met behulp van bereik variabelen [ `any` in `all`of ](search-query-odata-collection-operators.md). De Maine-query hierboven retourneert documenten die zowel "Port land," als "Port land, Oregon" bevatten, samen met andere steden in Oregon. Dit gebeurt omdat elke component van toepassing is op alle waarden van het veld in het hele document, waardoor er geen ' Huidig subdocument ' is. Zie informatie over OData-verzamelings [filters in azure Search](search-query-understand-collection-filters.md)voor meer informatie.
 
 ## <a name="selecting-complex-fields"></a>Complexe velden selecteren
 
-De `$select` parameter wordt gebruikt om te kiezen welke velden worden weergegeven in de lijst met zoekresultaten. Voor het gebruik van deze parameter om bepaalde onderliggende velden van een complexe veld te selecteren, zijn onder andere de veld van de bovenliggende en onderliggende veld gescheiden door een schuine streep (`/`).
+De `$select` para meter wordt gebruikt om te kiezen welke velden worden geretourneerd in de zoek resultaten. Als u deze para meter wilt gebruiken om specifieke subvelden van een complex veld te selecteren, neemt u het bovenliggende veld en subveld op`/`, gescheiden door een schuine streep ().
 
     $select=HotelName, Address/City, Rooms/BaseRate
 
-Velden moet worden gemarkeerd als ophalen mogelijk in de index, als u wilt dat ze in de zoekresultaten. Alleen de velden die zijn gemarkeerd als ophalen mogelijk kunnen worden gebruikt in een `$select` instructie.
+Velden moeten worden gemarkeerd als ophalen in de index als u deze wilt in de zoek resultaten. Alleen velden die als ophalen zijn gemarkeerd, kunnen worden gebruikt `$select` in een-instructie.
 
-## <a name="filter-facet-and-sort-complex-fields"></a>Filter, facet en complexe velden sorteren
+## <a name="filter-facet-and-sort-complex-fields"></a>Complexe velden filteren, facetten en sorteren
 
-Dezelfde [syntaxis voor OData-pad](query-odata-filter-orderby-syntax.md) gebruikt om te filteren en fielded zoekopdrachten kunnen ook worden gebruikt voor facetten, sorteren en velden te selecteren in een zoekaanvraag. Voor complexe typen toepassing regels die bepalen welke onderliggende velden worden gemarkeerd als sorteerbaar of geschikt voor facetten. Zie voor meer informatie over deze regels de [maken Index API-verwijzing](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+De syntaxis van het [OData-pad](query-odata-filter-orderby-syntax.md) dat wordt gebruikt voor filteren en zoek opdrachten in een veld, kan ook worden gebruikt voor het befacetnen, sorteren en selecteren van velden in een zoek opdracht. Voor complexe typen gelden de regels die bepalen welke subvelden kunnen worden gemarkeerd als sorteerbaar of facetbaar. Zie voor meer informatie over deze regels de [Create Index-API-verwijzing](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
 
-### <a name="faceting-sub-fields"></a>De onderliggende velden op meerdere niveaus
+### <a name="faceting-sub-fields"></a>Facet Subvelden
 
-Een veld kan worden gemarkeerd als geschikt voor facetten, tenzij deze van het type is `Edm.GeographyPoint` of `Collection(Edm.GeographyPoint)`.
+Elk subveld kan worden gemarkeerd als facetbaar tenzij het van het type `Edm.GeographyPoint` of `Collection(Edm.GeographyPoint)`is.
 
-Het aantal documenten die worden geretourneerd in de resultaten facet worden berekend voor de bovenliggende document (een hotel), niet de onderliggende documenten in een complexe verzameling (ruimten). Stel bijvoorbeeld dat een hotel is 20 ruimten van het type 'suite'. Deze facetparameter gegeven `facet=Rooms/Type`, het aantal facet worden één voor het hotel, niet 20 voor de ruimten.
+Het aantal documenten dat wordt geretourneerd in de facet resultaten worden berekend voor het bovenliggende document (een hotel), niet de subdocumenten in een complexe verzameling (kamers). Stel bijvoorbeeld dat een hotel 20 kamers van het type ' Suite ' bevat. Op basis van deze `facet=Rooms/Type`facet parameter is het aantal facetten één voor het Hotel, niet 20 voor de kamers.
 
 ### <a name="sorting-complex-fields"></a>Complexe velden sorteren
 
-Bewerkingen sorteren van toepassing op (Hotels) en geen onderliggende documenten (ruimten). Wanneer u een verzameling complexe type, zoals ruimten hebt, is het Houd er rekening mee dat u kan niet worden gesorteerd op ruimten helemaal. U kunt niet in feite sorteren op een verzameling.
+Sorteer bewerkingen zijn van toepassing op documenten (hotels) en geen subdocumenten (kamers). Wanneer u een verzameling complexe typen hebt, zoals kamers, is het belang rijk om te realiseren dat u niet op kamers kunt sorteren. U kunt op geen enkele verzameling sorteren.
 
-Sorteren operations werken wanneer u velden hebben één waarde per document of het veld een eenvoudig veld of een veld in een complex type is. Bijvoorbeeld, `Address/City` mag worden gesorteerd, omdat er slechts één adres per hotel, dus `$orderby=Address/City` hotels per plaats te sorteren.
+Sorteer bewerkingen werken als velden één waarde per document hebben, ongeacht of het veld een eenvoudig veld is of een subveld in een complex type. Het `Address/City` is bijvoorbeeld toegestaan om sorteerbaar te maken, omdat er maar één adres per hotel is `$orderby=Address/City` , zodat hotels per plaats worden gesorteerd.
 
 ### <a name="filtering-on-complex-fields"></a>Filteren op complexe velden
 
-U kunt verwijzen naar de onderliggende velden van een complexe veld in een filterexpressie. Gebruikt u dezelfde [syntaxis voor OData-pad](query-odata-filter-orderby-syntax.md) die wordt gebruikt voor facetten, sorteren en velden te selecteren. Het volgende filter retourneert bijvoorbeeld alle hotels in Canada:
+U kunt verwijzen naar subvelden van een complex veld in een filter expressie. Gebruik alleen de syntaxis van het [OData-pad](query-odata-filter-orderby-syntax.md) dat wordt gebruikt voor facetten, sorteren en selecteren van velden. Met het volgende filter worden bijvoorbeeld alle hotels in Canada geretourneerd:
 
     $filter=Address/Country eq 'Canada'
 
-Als u wilt filteren op een verzameling complexe-veld, kunt u een **lambda-expressie** met de [ `any` en `all` operators](search-query-odata-collection-operators.md). In dat geval de **bereik variabele** van de lambda-expressie is een object met onderliggende velden. U kunt verwijzen naar de onderliggende velden met de standaard OData-syntaxis. Bijvoorbeeld, retourneert het volgende filter alle niet-soorten ruimten en alle hotels met ten minste één deluxe ruimte:
+Als u wilt filteren op een complex verzamelings veld, kunt u een **lambda-expressie** gebruiken met de [ `any` Opera tors en `all` ](search-query-odata-collection-operators.md). In dat geval is de **variabele Range** van de lambda-expressie een object met subvelden. U kunt naar deze subvelden verwijzen met de standaard syntaxis van het OData-pad. Het volgende filter retourneert bijvoorbeeld alle hotels met ten minste één luxe kamer en alle niet-roken ruimten:
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Als met eenvoudige velden op het hoogste niveau, eenvoudige onderliggende velden van complexe velden kunnen alleen worden opgenomen in de filters voor als ze beschikken over de **Filterbaar** kenmerk ingesteld op `true` in het definitie van de index. Zie voor meer informatie de [maken Index API-verwijzing](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Net als bij eenvoudige velden van het hoogste niveau kunnen eenvoudige subvelden van complexe velden alleen in filters worden opgenomen als het kenmerk **filterbaar** `true` in de index definitie is ingesteld. Zie [Create Index-API Reference](https://docs.microsoft.com/rest/api/searchservice/create-index#request)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de [Hotels gegevensset](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) in de **gegevens importeren** wizard. U moet de Cosmos DB-verbindingsgegevens opgegeven in het Leesmij-bestand voor toegang tot de gegevens.
+Probeer de gegevensset voor [Hotels](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) in de wizard **gegevens importeren** . U hebt de Cosmos DB verbindings gegevens die in het Leesmij-bestand zijn opgenomen, nodig om toegang te krijgen tot de gegevens.
 
-Met die informatie beschikt is de eerste stap in de wizard het maken van een nieuwe Azure Cosmos DB-gegevensbron. Verder ziet op in de wizard, wanneer u op de doel-index-pagina, u een index met complexe typen. Maken en deze index laden en uitvoeren van query's voor meer informatie over de nieuwe structuur.
+Met deze informatie is de eerste stap in de wizard het maken van een nieuwe Azure Cosmos DB-gegevens bron. Wanneer u in de wizard naar de doel index pagina gaat, ziet u een index met complexe typen. Maak en laad deze index en voer vervolgens query's uit om inzicht te krijgen in de nieuwe structuur.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: portal-wizard voor het importeren, indexeren en query 's](search-get-started-portal.md)
+> [Snelstartgids: de wizard portal voor importeren, indexeren en query's](search-get-started-portal.md)

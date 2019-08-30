@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e15f704fc9604bd18a1f4848e84065fc507314
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563104"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171435"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met toegestane vertraging
 
@@ -47,6 +47,9 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 * Slack ondersteunt eenmalige aanmelding die wordt gestart vanuit **SP**
 * Slack biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
 * Slack biedt ondersteuning voor het [**geautomatiseerd**](https://docs.microsoft.com/en-gb/azure/active-directory/saas-apps/slack-provisioning-tutorial) inrichten van gebruikers
+
+> [!NOTE]
+> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
 
 ## <a name="adding-slack-from-the-gallery"></a>Slack toevoegen vanuit de galerie
 
@@ -90,36 +93,6 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     > [!NOTE]
     > De waarde van de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [Slack-clientondersteuningsteam](https://slack.com/help/contact) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
-
-1. Slack-toepassing verwacht de SAML-asserties in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Klik op de pagina **eenmalige aanmelding met SAML instellen** op de knop **bewerken** om het dialoog venster **gebruikers kenmerken** te openen.
-
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > Als gebruikers aan wie een **e-mail adres** is toegewezen, zich niet op een Office365-licentie bevindt, wordt de **gebruiker. e-mail** claim niet weer gegeven in het SAML-token. In dergelijke gevallen adviseren we **user.userprincipalname** te gebruiken als waarde van het kenmerk **User.Email** en dit toe te wijzen als **unieke id**.
-
-1. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** configureert u het kenmerk van het SAML-token zoals wordt weergegeven in de bovenstaande afbeelding en voert u de volgende stappen uit:
-
-    | Name | Bronkenmerk |
-    | --- | --- |
-    | first_name | user.givenname |
-    | last_name | user.surname |
-    | User.Email | user.mail |
-    | User.Username | user.userprincipalname |
-
-    a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
-
-    b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
-
-    c. Laat **Naamruimte** leeg.
-
-    d. Selecteer Bron bij **Kenmerk**.
-
-    e. Typ de kenmerkwaarde voor die rij in de lijst met **bronkenmerken**.
-
-    f. Klik op **OK**.
-
-    g. Klik op **Opslaan**.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -187,7 +160,7 @@ In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te ge
 
 ### <a name="create-slack-test-user"></a>Slack-testgebruiker maken
 
-Het doel van dit gedeelte is het maken van een gebruiker met de naam van Britta Simon in Slack. Slack ondersteunt Just-In-Time inrichting, dit is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Tijdens een poging Slack te openen, wordt er een nieuwe gebruiker gemaakt als deze nog niet bestaat. Slack ondersteunt ook automatische inrichting van gebruikers. Meer details over het configureren van automatische inrichting van gebruikers vindt u [hier](slack-provisioning-tutorial.md).
+Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in toegestane vertraging. Slack ondersteunt Just-In-Time inrichting, dit is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Tijdens een poging Slack te openen, wordt er een nieuwe gebruiker gemaakt als deze nog niet bestaat. Slack ondersteunt ook automatische inrichting van gebruikers. Meer details over het configureren van automatische inrichting van gebruikers vindt u [hier](slack-provisioning-tutorial.md).
 
 > [!NOTE]
 > Als u een gebruiker handmatig moet maken, neem dan contact op met het [Slack-ondersteuningsteam](https://slack.com/help/contact).

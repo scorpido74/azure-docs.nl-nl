@@ -3,21 +3,31 @@ title: Azure Functions in python maken en implementeren met Visual Studio code
 description: De Visual Studio code extension for Azure Functions gebruiken om serverloze functies te maken in Python en deze te implementeren in Azure.
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639089"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170715"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Python implementeren voor Azure Functions met Visual Studio code
 
 In deze zelf studie gebruikt u Visual Studio code en de uitbrei ding Azure Functions voor het maken van een serverloze HTTP-eind punt met python en om ook een verbinding (of ' binding ') toe te voegen aan de opslag. Azure Functions voert uw code in een serverloze omgeving uit zonder een virtuele machine in te richten of een web-app te publiceren. Met de extensie Azure Functions voor Visual Studio code wordt het proces van het gebruik van functies aanzienlijk vereenvoudigd door automatisch veel configuratie problemen te verwerken.
+
+In deze zelfstudie leert u het volgende:
+
+> [!div class="checklist"]
+> * De Azure Functions-extensie installeren
+> * Een door HTTP geactiveerde functie maken
+> * Lokaal fouten opsporen
+> * Toepassings instellingen synchroniseren
+> * Streaming-logboeken weer geven
+> * Verbinding maken met Azure Storage
 
 Als u problemen ondervindt met een van de stappen in deze zelf studie, horen we graag over de details. Gebruik de knop voor **een probleem** aan het einde van elke sectie om gedetailleerde feedback in te dienen.
 
@@ -100,29 +110,26 @@ Als de `func` opdracht niet wordt herkend, controleert u of de map waar u de Azu
     | Selecteer een taal voor uw functie-app-project | **Python** | De taal die moet worden gebruikt voor de functie. deze bepaalt de sjabloon die wordt gebruikt voor de code. |
     | Selecteer een sjabloon voor de eerste functie van uw project | **HTTP-trigger** | Een functie die gebruikmaakt van een HTTP-trigger wordt uitgevoerd wanneer er een HTTP-aanvraag wordt gedaan aan het eind punt van de functie. (Er zijn diverse andere triggers voor Azure Functions. Zie [Wat kan ik doen met functions?](functions-overview.md#what-can-i-do-with-functions)voor meer informatie.) |
     | Een functie naam opgeven | HttpExample | De naam wordt gebruikt voor een submap die de code van de functie bevat samen met de configuratie gegevens, en definieert ook de naam van het HTTP-eind punt. Gebruik "HttpExample" in plaats van de standaard HTTP trigger te accepteren om de functie zelf te onderscheiden van de trigger. |
-    | Verificatieniveau | **Toegang** | Anonieme autorisatie maakt de functie openbaar toegankelijk voor iedereen. |
+    | Verificatieniveau | **Functieassembly** | Aanroepen van het functie-eind punt vereisen een [functie toets](functions-bindings-http-webhook.md#authorization-keys). |
     | Selecteer hoe u uw project wilt openen | **In het huidige venster openen** | Hiermee opent u het project in het huidige venster van Visual Studio code. |
 
-1. Na korte tijd wordt een bericht aangegeven dat het nieuwe project is gemaakt. In de **Explorer**wordt de submap gemaakt voor de functie en Visual Studio code opent het  *\_ \_bestand\_init\_. py* dat de standaard functie code bevat:
+1. Na korte tijd wordt een bericht aangegeven dat het nieuwe project is gemaakt. In de **Explorer**wordt de submap gemaakt voor de functie. 
+
+1. Als deze nog niet is geopend, opent u  *\_het\_ \_bestand\_init. py* dat de standaard functie code bevat:
 
     [![Resultaat van het maken van een nieuw python-functie project](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
     > [!NOTE]
-    > Als Visual Studio code aangeeft dat er geen Python-interpreter is geselecteerd wanneer  *\_\_init\_. py \_* wordt geopend, opent u het opdracht palet (F1), selecteert u **de python: Selecteer de** opdracht interpreter en selecteer vervolgens de virtuele omgeving in de lokale `.env` map (die is gemaakt als onderdeel van het project). De omgeving moet zijn gebaseerd op python 3.6 x, zoals eerder is vermeld onder [vereisten](#prerequisites).
+    > Wanneer Visual Studio code aangeeft dat er geen Python-interpreter is geselecteerd wanneer u  *\_\_init\_. py \_* opent, opent u het opdracht palet (F1), selecteert u **de python: Selecteer de** opdracht interpreter en selecteer vervolgens de virtuele omgeving in de lokale `.env` map (die is gemaakt als onderdeel van het project). De omgeving moet zijn gebaseerd op python 3.6 x, zoals eerder is vermeld onder [vereisten](#prerequisites).
     >
     > ![De virtuele omgeving selecteren die is gemaakt met het project](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
-
-> [!TIP]
-> Wanneer u een andere functie in hetzelfde project wilt maken, gebruikt u de opdracht **functie maken** in **Azure: Functie** Verkenner of open het opdracht palet (F1) en selecteer de **Azure functions: Functie maken**. Beide opdrachten vragen u om een functie naam (de naam van het eind punt) en vervolgens maakt u een submap met de standaard bestanden.
->
-> ![Nieuwe functie opdracht in Azure: Functie Verkenner](media/tutorial-vs-code-serverless-python/function-create-new.png)
 
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>De code bestanden controleren
 
-In de zojuist gemaakte functie submap zijn drie bestanden:  *\_ \_\_init\_. py* bevat de code van de functie, *Function. json* beschrijft de functie voor Azure functions en *voorbeeld. dat* is een voor beeld van een gegevens bestand. U kunt *voorbeeld. dat* desgewenst verwijderen, omdat deze alleen bestaat om aan te geven dat u andere bestanden kunt toevoegen aan de submap.
+In de zojuist gemaakte submap van de functie _HttpExample_ zijn drie bestanden  *\_:\_ \_\_init. py* bevat de code van de functie, *Function. json* beschrijft de functie in azure Functions en *sample. dat* is een voorbeeld gegevensbestand. U kunt *voorbeeld. dat* desgewenst verwijderen, omdat deze alleen bestaat om aan te geven dat u andere bestanden kunt toevoegen aan de submap.
 
 We bekijken eerst de *functie. json* , vervolgens de code in  *\_ \_init\_\_. py*.
 
@@ -135,7 +142,7 @@ Het bestand function. json bevat de benodigde configuratie-informatie voor het A
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,9 +162,9 @@ Het bestand function. json bevat de benodigde configuratie-informatie voor het A
 
 De `scriptFile` eigenschap geeft het opstart bestand voor de code aan en die code moet een python-functie met `main`de naam bevatten. U kunt de code in meerdere bestanden indelen, zolang het bestand dat hier wordt opgegeven `main` , een functie bevat.
 
-Het `bindings` element bevat twee objecten: een om binnenkomende aanvragen te beschrijven en de andere om het HTTP-antwoord te beschrijven. Voor binnenkomende aanvragen (`"direction": "in"`) reageert de functie op http Get-of post-aanvragen en is geen verificatie vereist. De reactie (`"direction": "out"`) is een HTTP-antwoord dat elke waarde retourneert die wordt geretourneerd `main` door de python-functie.
+Het `bindings` element bevat twee objecten: een om binnenkomende aanvragen te beschrijven en de andere om het HTTP-antwoord te beschrijven. Voor binnenkomende aanvragen (`"direction": "in"`) reageert de functie op http Get-of post-aanvragen en vereist dat u de functie sleutel opgeeft. De reactie (`"direction": "out"`) is een HTTP-antwoord dat elke waarde retourneert die wordt geretourneerd `main` door de python-functie.
 
-### <a name="initpy"></a>\_\_init.py\_\_
+### <a name="__initpy__"></a>\_\_init.py\_\_
 
 Wanneer u een nieuwe functie maakt, bevat Azure functions standaard Python-code  *\_in\_ \_\_init. py*:
 
@@ -233,7 +240,7 @@ De belangrijkste onderdelen van de code zijn als volgt:
 
     U kunt ook een bestand maken zoals *Data. json* dat de `{"name":"Visual Studio Code"}` opdracht `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`bevat en gebruikt.
 
-1. Als u de functie fout opsporing wilt uitvoeren, stelt u een onderbrekings `name = req.params.get('name')` punt in op de regel die de URL leest en er opnieuw een aanvraag voor doet. Het fout opsporingsprogramma voor Visual Studio-code moet op die regel worden gestopt, zodat u variabelen kunt onderzoeken en de code door lopen. (Zie [de zelf studie over Visual Studio code-de debugger configureren en uitvoeren](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)(Engelstalig) voor een kort overzicht van de basis fout opsporing.)
+1. Als u fouten wilt opsporen in de functie, stelt u een `name = req.params.get('name')` onderbrekings punt in op de regel die het lezen en maken van een aanvraag naar de URL opnieuw uitvoert. Het fout opsporingsprogramma voor Visual Studio-code moet op die regel worden gestopt, zodat u variabelen kunt onderzoeken en de code door lopen. (Zie [de zelf studie over Visual Studio code-de debugger configureren en uitvoeren](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)(Engelstalig) voor een kort overzicht van de basis fout opsporing.)
 
 1. Als u er zeker van bent dat u de functie lokaal hebt getest, stopt u de debugger (met de opdracht **debug** > **Stop debuggen** menu of de opdracht **Disconnect** op de werk balk voor fout opsporing).
 
@@ -423,7 +430,7 @@ In deze sectie voegt u een opslag binding toe aan de functie HttpExample die eer
     | --- | --- |
     | Bindings richting instellen | af |
     | Binding selecteren met richting uit | Azure Queue Storage |
-    | De naam die wordt gebruikt om de binding in uw code aan te geven | msg |
+    | De naam die wordt gebruikt om deze binding in uw code aan te duiden | msg |
     | De wachtrij waarnaar het bericht wordt verzonden | outqueue |
     | Selecteer de instelling van *Local. settings. json* (voor de opslag verbinding wordt gevraagd) | AzureWebJobsStorage |
 

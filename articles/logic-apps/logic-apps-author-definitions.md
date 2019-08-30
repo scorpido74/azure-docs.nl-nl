@@ -10,16 +10,16 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a96cc56c85db6726bf2cdaff72904e76ecbaf087
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385588"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164654"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>JSON maken, bewerken of uitbreiden voor definities van logische apps in Azure Logic Apps
 
-Wanneer u oplossingen voor bedrijfs integratie met automatische werk stromen in [Azure Logic apps](../logic-apps/logic-apps-overview.md)maakt, gebruiken de onderliggende definities van logische apps eenvoudige en declaratieve JavaScript object NOTATION (JSON) samen met de [werk stroom definitie taal (WDL) schema](../logic-apps/logic-apps-workflow-definition-language.md) voor de beschrijving en validatie. Met deze indelingen kunnen definities van logische apps eenvoudiger worden gelezen en begrepen zonder dat u iets hoeft te weten over code. Als u het maken en implementeren van Logic Apps wilt automatiseren, kunt u logische app-definities als [Azure-resources](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager sjablonen](../azure-resource-manager/resource-group-overview.md#template-deployment)toevoegen. Als u logische Apps wilt maken, beheren en implementeren, kunt u vervolgens [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)of de [Azure Logic apps rest-api's](https://docs.microsoft.com/rest/api/logic/)gebruiken.
+Wanneer u oplossingen voor bedrijfs integratie met automatische werk stromen in [Azure Logic apps](../logic-apps/logic-apps-overview.md)maakt, gebruiken de onderliggende definities van logische apps eenvoudige en declaratieve JavaScript object NOTATION (JSON) samen met de [werk stroom definitie taal (WDL) schema](../logic-apps/logic-apps-workflow-definition-language.md) voor de beschrijving en validatie. Met deze indelingen kunnen definities van logische apps eenvoudiger worden gelezen en begrepen zonder dat u iets hoeft te weten over code. Als u het maken en implementeren van Logic Apps wilt automatiseren, kunt u logische app-definities als [Azure-resources](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager sjablonen](../azure-resource-manager/template-deployment-overview.md)toevoegen. Als u logische Apps wilt maken, beheren en implementeren, kunt u vervolgens [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)of de [Azure Logic apps rest-api's](https://docs.microsoft.com/rest/api/logic/)gebruiken.
 
 Als u de definities van logische apps in JSON wilt gebruiken, opent u de code weergave-editor bij het werken in de Azure Portal of in Visual Studio of kopieert u de definitie naar een gewenste editor. Als u geen ervaring hebt met Logic apps, lees dan [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -45,7 +45,7 @@ In Visual Studio kunt u logische apps openen die zijn gemaakt en geïmplementeer
 
 1. Open de Visual Studio-oplossing of het project van de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) die uw logische app bevat.
 
-2. Zoek en open de definitie van uw logische app, die standaard wordt weer gegeven in een [Resource Manager-sjabloon](../azure-resource-manager/resource-group-overview.md#template-deployment)met de naam **LogicApp. json**. U kunt deze sjabloon gebruiken en aanpassen voor implementatie naar andere omgevingen.
+2. Zoek en open de definitie van uw logische app, die standaard wordt weer gegeven in een [Resource Manager-sjabloon](../azure-resource-manager/template-deployment-overview.md)met de naam **LogicApp. json**. U kunt deze sjabloon gebruiken en aanpassen voor implementatie naar andere omgevingen.
 
 3. Open het snelmenu voor de definitie en sjabloon van uw logische app. Selecteer **Openen met Logic App-ontwerpfunctie**.
 

@@ -2,7 +2,7 @@
 title: Sleutel woordgroep extractie functie voor cognitieve Zoek vaardigheid-Azure Search
 description: Evalueert ongestructureerde tekst en retourneert voor elke record een lijst met sleutel zinnen in een Azure Search verrijkings pijplijn.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 1c6b6455176001c752eb99d04deb3fe63a9d4006
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 0c591bb72ba859be2c5b52d8d8cc5040deffda7d
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639081"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183367"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Sleuteltermextractie cognitieve vaardigheid
 

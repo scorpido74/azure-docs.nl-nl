@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f974b3564857a439f1ac1c40ddd572633b761862
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6d24a4ab74f7957c068fc664fc4e8898c525afcb
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879867"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162544"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Een Azure Active Directory rapportage en bewakings implementatie plannen
 
@@ -164,8 +164,6 @@ Afhankelijk van de beslissingen die u eerder hebt gemaakt met behulp van de bove
 ### <a name="consume-and-archive-azure-ad-logs"></a>Azure AD-Logboeken gebruiken en archiveren
 
 [Activiteitenrapporten zoeken in de Azure-portal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-find-activity-reports)
-
-[Power BI-inhouds pakket voor Azure AD gebruiken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-power-bi-content-pack)
 
 [Azure AD-logboeken archiveren in een Azure Storage-account](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account)
 

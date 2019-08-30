@@ -1,36 +1,36 @@
 ---
-title: Naslaginformatie over Java-ontwikkelaars voor Azure Functions | Microsoft Docs
-description: Lees hoe u voor het ontwikkelen van functies met behulp van Java.
+title: Naslag informatie voor Java-Ontwikkel aars voor Azure Functions | Microsoft Docs
+description: Meer informatie over het ontwikkelen van functies met Java.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: Azure functions, functies, gebeurtenisverwerking, webhooks, dynamisch berekenen, architectuur zonder server, java
+keywords: Azure functions, functies, gebeurtenis verwerking, webhooks, dynamische compute, serverloze architectuur, java
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: acd873cd19cafb785f968fd3d8671640bcfafed8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163708"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170548"
 ---
-# <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-handleiding voor ontwikkelaars
+# <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
-Biedt ondersteuning voor de Azure Functions-runtime [Java SE 8 LTS (zulu8.31.0.2 jre8.0.181 win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Deze handleiding bevat informatie over de complexiteit van het schrijven van Azure Functions met behulp van Java.
+De Azure Functions-runtime ondersteunt [Java SE 8 LTS (Zulu 8.31.0.2-jre 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Deze hand leiding bevat informatie over de complexiteit voor het schrijven van Azure Functions met Java.
 
-Een Java-functie is een `public` methode, voorzien van de aantekening `@FunctionName`. Deze methode de vermelding voor een Java-functie definieert en moet uniek zijn in een bepaald pakket. 
+Een Java-functie is `public` een methode die is gedecoreerd `@FunctionName`met de aantekening. Deze methode definieert de vermelding voor een Java-functie en moet uniek zijn in een bepaald pakket. 
 
-In dit artikel wordt ervan uitgegaan dat u al hebt gelezen de [referentie voor ontwikkelaars van Azure Functions](functions-reference.md). U moet ook uitvoeren met de Snelstartgids voor Functions voor het maken van uw eerste functie met behulp van [Visual Studio Code](functions-create-first-function-vs-code.md) of [Maven](functions-create-first-java-maven.md).
+In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. U moet ook de Snelstartgids van functions volt ooien om uw eerste functie te maken met behulp van [Visual Studio code](functions-create-first-function-vs-code.md) of [maven](functions-create-first-java-maven.md).
 
 ## <a name="programming-model"></a>Programmeermodel 
 
-De concepten van [triggers en bindingen](functions-triggers-bindings.md) zijn essentieel voor Azure Functions. Triggers start de uitvoering van code. Bindingen kunnen u een manier om gegevens aan doorgeven en als resultaat de gegevens van een functie zonder te hoeven schrijven van aangepaste code voor gegevenstoegang.
+De concepten van [Triggers en bindingen](functions-triggers-bindings.md) zijn fundamenteel voor Azure functions. Triggers starten de uitvoering van uw code. Bindingen bieden een manier om gegevens door te geven aan en gegevens van een functie te retour neren zonder dat u aangepaste gegevens toegangs code hoeft te schrijven.
 
-## <a name="folder-structure"></a>mapstructuur
+## <a name="folder-structure"></a>Mapstructuur
 
 Hier volgt de mapstructuur van een Azure Functions Java-project:
 
@@ -56,18 +56,18 @@ FunctionsProject
  | - pom.xml
 ```
 
-U kunt een gedeelde [host.json](functions-host-json.md) -bestand naar de functie-app configureren. Elke functie heeft een eigen codebestand (startactiviteit) en de binding-configuratiebestand (function.json).
+U kunt een gedeeld [host. json](functions-host-json.md) -bestand gebruiken om de functie-app te configureren. Elke functie heeft een eigen code bestand (. java) en een bindings configuratie bestand (function. json).
 
-U kunt meer dan één functie plaatsen in een project. Plaats uw functies in afzonderlijke JAR-bestanden. De `FunctionApp` in de doel-directory is wat wordt geïmplementeerd naar uw functie-app in Azure.
+U kunt meer dan één functie in een project opnemen. Vermijd het plaatsen van uw functies in afzonderlijke potten. De `FunctionApp` in de doelmap is wat wordt geïmplementeerd in uw functie-app in Azure.
 
 ## <a name="triggers-and-annotations"></a>Triggers en aantekeningen
 
- Functies worden aangeroepen door een trigger, zoals een HTTP-aanvraag, een timer of een update van gegevens. Uw functie heeft nodig om deze trigger en alle andere invoer voor het produceren van een of meer uitvoerwaarden te verwerken.
+ Functies worden aangeroepen door een trigger, zoals een HTTP-aanvraag, een timer of een update van gegevens. De functie moet deze trigger en alle andere invoer bewerkingen uitvoeren om een of meer uitvoer te maken.
 
-Gebruik de Java-aantekeningen opgenomen in de [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) pakket invoer en uitvoer binden aan uw methoden. Zie voor meer informatie de [Java-referentiedocumenten](/java/api/com.microsoft.azure.functions.annotation).
+Gebruik de Java-aantekeningen die zijn opgenomen in het pakket [com. micro soft. Azure. functions. annotatie. *](/java/api/com.microsoft.azure.functions.annotation) om invoer en uitvoer aan uw methoden te binden. Zie [Java Reference docs](/java/api/com.microsoft.azure.functions.annotation)(Engelstalig) voor meer informatie.
 
 > [!IMPORTANT] 
-> Moet u een Azure Storage-account in uw [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) Azure Blob storage, Azure Queue storage of Azure Table storage triggers lokaal uitvoeren.
+> U moet een Azure Storage-account configureren in uw [lokale. settings. json](/azure/azure-functions/functions-run-local#local-settings-file) om Azure Blob-opslag, Azure Queue-opslag of Azure Table Storage lokaal uit te voeren.
 
 Voorbeeld:
 
@@ -81,7 +81,7 @@ public class Function {
 }
 ```
 
-Dit is de gegenereerde bijbehorende `function.json` door de [azure-functions-maven-invoegtoepassing](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
+Dit is de gegenereerde `function.json` corresponderende met de [Azure-functions-maven-invoeg toepassing](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
 
 ```json
 {
@@ -105,15 +105,15 @@ Dit is de gegenereerde bijbehorende `function.json` door de [azure-functions-mav
 
 ```
 
-## <a name="jdk-runtime-availability-and-support"></a>JDK runtime-beschikbaarheid en ondersteuning 
+## <a name="jdk-runtime-availability-and-support"></a>Beschik baarheid en ondersteuning van JDK-runtime 
 
-Voor lokale ontwikkeling van Java-functie-apps downloaden en gebruiken van de [Azul Zulu Enterprise voor Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8-JDK van [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/). Azure Functions maakt gebruik van de runtime Azul Java 8-JDK wanneer u uw functie-apps implementeren in de cloud.
+Voor lokale ontwikkeling van Java-functie-apps downloadt en gebruikt u de [Azul Zulu Enter prise voor Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 JDKs van [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/). Azure Functions maakt gebruik van de Azul Java 8 JDK wanneer u uw functie-apps in de Cloud implementeert.
 
-[Ondersteuning van Azure](https://azure.microsoft.com/support/) voor problemen met de functie JDK en apps is beschikbaar met een [gekwalificeerde ondersteuningsplan](https://azure.microsoft.com/support/plans/).
+[Ondersteuning voor Azure](https://azure.microsoft.com/support/) voor problemen met de JDKs-en functie-apps is beschikbaar in een ondersteunings [abonnement](https://azure.microsoft.com/support/plans/).
 
 ## <a name="customize-jvm"></a>JVM aanpassen
 
-Functions kunt u de Java virtual machine (JVM) gebruikt voor het uitvoeren van uw Java-functies aanpassen. De [volgende JVM-opties](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) worden standaard gebruikt:
+Met functies kunt u de Java Virtual Machine (JVM) aanpassen die wordt gebruikt om uw Java-functies uit te voeren. De [volgende JVM-opties](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) worden standaard gebruikt:
 
 * `-XX:+TieredCompilation`
 * `-XX:TieredStopAtLevel=1`
@@ -121,44 +121,44 @@ Functions kunt u de Java virtual machine (JVM) gebruikt voor het uitvoeren van u
 * `-Djava.net.preferIPv4Stack=true`
 * `-jar`
 
-U krijgt u een extra argumenten in een app-instelling met de naam `JAVA_OPTS`. U kunt app-instellingen toevoegen aan uw functie-app in Azure worden geïmplementeerd in Azure portal of Azure CLI.
+U kunt aanvullende argumenten opgeven in een app-instelling `JAVA_OPTS`met de naam. U kunt app-instellingen toevoegen aan de functie-app die is geïmplementeerd in Azure in de Azure Portal of de Azure CLI.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-In de [Azure-portal](https://portal.azure.com), gebruikt u de [toepassingsinstellingen tabblad](functions-how-to-use-azure-function-app-settings.md#settings) om toe te voegen de `JAVA_OPTS` instelling.
+Gebruik het [tabblad toepassings instellingen](functions-how-to-use-azure-function-app-settings.md#settings) in het `JAVA_OPTS` [Azure Portal](https://portal.azure.com)om de instelling toe te voegen.
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-U kunt de [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) -opdracht uit om `JAVA_OPTS`, zoals in het volgende voorbeeld:
+U kunt de opdracht [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) gebruiken om in `JAVA_OPTS`te stellen, zoals in het volgende voor beeld:
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <APP_NAME> \
 --resource-group <RESOURCE_GROUP> \
 --settings "JAVA_OPTS=-Djava.awt.headless=true"
 ```
-In dit voorbeeld wordt een ' headless '-modus. Vervang `<APP_NAME>` met de naam van uw functie-app en `<RESOURCE_GROUP>` met de resourcegroep.
+In dit voor beeld wordt de modus headless ingeschakeld. Vervang `<APP_NAME>` door de naam van uw functie-app en `<RESOURCE_GROUP>` met de resource groep.
 
 > [!WARNING]  
-> In de [verbruiksabonnement](functions-scale.md#consumption-plan), u moet toevoegen de `WEBSITE_USE_PLACEHOLDER` instellen met een waarde van `0`.  
-Deze instelling neemt de tijden koude start voor Java-functies.
+> In het [verbruiks plan](functions-scale.md#consumption-plan)moet u de instelling `WEBSITE_USE_PLACEHOLDER` toevoegen `0`met de waarde.  
+Met deze instelling worden de koude start tijden voor Java-functies verhoogd.
 
 ## <a name="third-party-libraries"></a>Bibliotheken van derden 
 
-Azure Functions ondersteunt het gebruik van bibliotheken van derden. Standaard alle afhankelijkheden die zijn opgegeven in uw project `pom.xml` bestand automatisch worden gebundeld tijdens de [ `mvn package` ](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) doel. Voor bibliotheken niet is opgegeven als afhankelijkheden in de `pom.xml` bestand, plaats deze in een `lib` map in de hoofdmap van de functie. Afhankelijkheden worden geplaatst de `lib` directory worden toegevoegd aan het laadprogramma van de klasse system tijdens runtime.
+Azure Functions ondersteunt het gebruik van bibliotheken van derden. Standaard worden alle afhankelijkheden die zijn opgegeven in `pom.xml` het project bestand, automatisch gebundeld tijdens het [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) doel. Voor bibliotheken die niet als afhankelijkheden in `pom.xml` het bestand zijn opgegeven, plaatst `lib` u deze in een map in de hoofdmap van de functie. Afhankelijkheden die in `lib` de map worden geplaatst, worden tijdens runtime toegevoegd aan het laad programma systeem klasse.
 
-De `com.microsoft.azure.functions:azure-functions-java-library` afhankelijkheid wordt standaard in het klassepad verstrekt en hoeft niet te worden opgenomen in de `lib` directory. Bovendien [azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) toegevoegd, worden alle afhankelijkheden [hier](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) aan het klassepad.
+De `com.microsoft.azure.functions:azure-functions-java-library` afhankelijkheid wordt standaard opgegeven in het klassenpad en hoeft niet te worden opgenomen in de `lib` map. [Azure-functions-Java-worker](https://github.com/Azure/azure-functions-java-worker) voegt ook afhankelijkheden toe die [hier](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) worden vermeld voor het klassenpad.
 
-## <a name="data-type-support"></a>Ondersteuning voor gegevenstype
+## <a name="data-type-support"></a>Ondersteuning voor gegevens typen
 
-U kunt gewoon oude Java-objecten (pojo's), typen die zijn gedefinieerd in `azure-functions-java-library`, of primitieve typen zoals tekenreeks en geheel getal te binden aan invoer- of uitvoerbindingen.
+U kunt onbewerkte oude Java-objecten (pojo's), typen `azure-functions-java-library`die zijn gedefinieerd in, of primitieve gegevens typen, zoals teken reeks en geheel getal, gebruiken om te binden aan invoer-of uitvoer bindingen.
 
-### <a name="pojos"></a>Pojo 's
+### <a name="pojos"></a>Pojo's
 
-Voor het converteren van invoergegevens naar POJO, [azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) maakt gebruik van de [gson](https://github.com/google/gson) bibliotheek. POJO typen gebruikt als invoer voor de functies moet `public`.
+Voor het converteren van invoer gegevens naar POJO maakt [Azure-functions-Java-worker](https://github.com/Azure/azure-functions-java-worker) gebruik van de [gson](https://github.com/google/gson) -bibliotheek. POJO-typen die worden gebruikt als invoer voor `public`functions, moeten zijn.
 
 ### <a name="binary-data"></a>Binaire gegevens
 
-Binden binaire invoer of uitvoer naar `byte[]`, door in te stellen de `dataType` veld in de function.json naar `binary`:
+BIND binaire invoer of uitvoer naar `byte[]`, door het `dataType` veld in uw function. json in te stellen `binary`op:
 
 ```java
    @FunctionName("BlobTrigger")
@@ -172,13 +172,13 @@ Binden binaire invoer of uitvoer naar `byte[]`, door in te stellen de `dataType`
     }
 ```
 
-Als u verwacht null-waarden dat, gebruikt u `Optional<T>`.
+Als u null-waarden verwacht, `Optional<T>`gebruikt u.
 
 ## <a name="bindings"></a>Bindingen
 
-Invoer- en uitvoerbindingen bevatten een verklarende manier om verbinding maken met gegevens vanuit uw code. Een functie verschillende invoer beschikken en uitvoerbindingen.
+Invoer-en uitvoer bindingen bieden een declaratieve manier om verbinding te maken met gegevens vanuit uw code. Een functie kan meerdere invoer-en uitvoer bindingen hebben.
 
-### <a name="input-binding-example"></a>Voorbeeld van de Invoerbinding
+### <a name="input-binding-example"></a>Voor beeld van invoer binding
 
 ```java
 package com.example;
@@ -214,11 +214,11 @@ public class Function {
 }
 ```
 
-U deze functie aanroepen met een HTTP-aanvraag. 
-- De nettolading van de HTTP-aanvraag wordt doorgegeven als een `String` voor het argument `inputReq`.
-- Een vermelding wordt opgehaald uit Table storage en wordt doorgegeven als `TestInputData` aan het argument `inputData`.
+U kunt deze functie aanroepen met een HTTP-aanvraag. 
+- Payload van HTTP-aanvraag is door `String` gegeven als een `inputReq`voor het argument.
+- Er wordt één vermelding opgehaald uit de tabel opslag en wordt door gegeven `TestInputData` aan het argument `inputData`.
 
-Voor het ontvangen van een batch van de invoer, kunt u binden aan `String[]`, `POJO[]`, `List<String>`, of `List<POJO>`.
+Als u een batch invoer wilt ontvangen, kunt u een `String[]`binding `POJO[]`maken `List<String>`met, `List<POJO>`, of.
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -235,11 +235,11 @@ Voor het ontvangen van een batch van de invoer, kunt u binden aan `String[]`, `P
 
 ```
 
-Deze functie wordt geactiveerd wanneer er sprake is van nieuwe gegevens in de geconfigureerde event hub. Omdat de `cardinality` is ingesteld op `MANY`, de functie een batch van berichten ontvangt van de event hub. `EventData` uit de event hub worden geconverteerd naar `TestEventData` voor de functie wordt uitgevoerd.
+Deze functie wordt geactiveerd wanneer er nieuwe gegevens in de geconfigureerde Event Hub zijn. Omdat de `cardinality` is ingesteld op `MANY`, ontvangt de functie een batch berichten van de Event hub. `EventData`van Event hub wordt geconverteerd naar `TestEventData` voor het uitvoeren van de functie.
 
-### <a name="output-binding-example"></a>Voorbeeld van uitvoer-binding
+### <a name="output-binding-example"></a>Voor beeld van uitvoer binding
 
-U kunt een Uitvoerbinding aan de geretourneerde waarde koppelen met behulp van `$return`. 
+U kunt een uitvoer binding binden aan de retour waarde met behulp `$return`van. 
 
 ```java
 package com.example;
@@ -256,9 +256,9 @@ public class Function {
 }
 ```
 
-Als er meerdere uitvoerbindingen, gebruikt u de geretourneerde waarde voor slechts één provider.
+Als er meerdere uitvoer bindingen zijn, gebruikt u de retour waarde voor slechts één van beide.
 
-Gebruiken voor het verzenden van meerdere uitvoerwaarden `OutputBinding<T>` gedefinieerd in de `azure-functions-java-library` pakket. 
+Als u meerdere uitvoer waarden wilt verzenden `OutputBinding<T>` , gebruikt u `azure-functions-java-library` gedefinieerd in het pakket. 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -292,20 +292,20 @@ Gebruiken voor het verzenden van meerdere uitvoerwaarden `OutputBinding<T>` gede
     }
 ```
 
-U aanroepen deze functie op een HttpRequest. Deze schrijft meerdere waarden naar Queue storage.
+U kunt deze functie aanroepen op een HttpRequest. Er worden meerdere waarden naar de wachtrij opslag geschreven.
 
-## <a name="httprequestmessage-and-httpresponsemessage"></a>Het HttpRequestMessage en HttpResponseMessage
+## <a name="httprequestmessage-and-httpresponsemessage"></a>HttpRequestMessage en HttpResponseMessage
 
- Deze worden gedefinieerd in `azure-functions-java-library`. Ze zijn helper typen om te werken met HttpTrigger-functies.
+ Deze zijn gedefinieerd in `azure-functions-java-library`. Dit zijn de typen hulp voor het werken met http trigger-functies.
 
-| Gespecialiseerde type      |       Doel        | Normaal gebruik                  |
+| Gespecialiseerd type      |       Doel        | Typisch gebruik                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage<T>`  |    HTTP-trigger     | Methode, koptekst of query's opgehaald |
-| `HttpResponseMessage` | HTTP Output Binding | Opgevraagd dan 200   |
+| `HttpRequestMessage<T>`  |    HTTP-trigger     | Hiermee wordt een methode, koptekst of query opgehaald |
+| `HttpResponseMessage` | HTTP-uitvoer binding | Retourneert een andere status dan 200   |
 
 ## <a name="metadata"></a>Metagegevens
 
-Enkele triggers verzenden [activeren metagegevens](/azure/azure-functions/functions-triggers-bindings) samen met invoergegevens. U kunt aantekening `@BindingName` binden aan het activeren van metagegevens.
+Met weinig triggers worden [meta gegevens van triggers](/azure/azure-functions/functions-triggers-bindings) samen met invoer gegevens verzonden. U kunt aantekening `@BindingName` gebruiken om de meta gegevens van de trigger te binden.
 
 
 ```Java
@@ -325,7 +325,7 @@ public class Function {
     }
 }
 ```
-In het voorgaande voorbeeld wordt de `queryValue` is gebonden aan de queryreeks-parameter `name` in de HTTP-aanvraag-URL `http://{example.host}/api/metadata?name=test`. Hier volgt een voorbeeld, waarin wordt beschreven hoe u verbinding maken met `Id` van metagegevens in de wachtrij trigger.
+In het vorige voor beeld is `queryValue` de is gebonden aan de query teken `name` reeks parameter in `http://{example.host}/api/metadata?name=test`de URL van de HTTP-aanvraag. Hier volgt nog een voor beeld, waarin wordt weer `Id` gegeven hoe u kunt binden aan de meta gegevens van de wachtrij trigger.
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -342,15 +342,15 @@ In het voorgaande voorbeeld wordt de `queryValue` is gebonden aan de queryreeks-
 ```
 
 > [!NOTE]
-> De naam die is opgegeven in de aantekening moet overeenkomen met de metagegevenseigenschap.
+> De naam die in de aantekening wordt opgegeven, moet overeenkomen met de meta gegevens eigenschap.
 
 ## <a name="execution-context"></a>Context voor uitvoering
 
-`ExecutionContext`, gedefinieerd in de `azure-functions-java-library`, bevat de methoden om te communiceren met de functions-runtime.
+`ExecutionContext`, gedefinieerd in de `azure-functions-java-library`, bevat helper-methoden om te communiceren met de functions-runtime.
 
 ### <a name="logger"></a>Logger
 
-Gebruik `getLogger`, die is gedefinieerd in `ExecutionContext`, om te schrijven logboeken van functiecode aan te geven.
+Gebruik `getLogger`, gedefinieerd in `ExecutionContext`, om logboeken van de functie code te schrijven.
 
 Voorbeeld:
 
@@ -369,42 +369,42 @@ public class Function {
 }
 ```
 
-## <a name="view-logs-and-trace"></a>Logboeken weergeven en tracering
+## <a name="view-logs-and-trace"></a>Logboeken en traceringen weer geven
 
-U kunt de Azure CLI voor stream Java stdout en stderr-logboekregistratie, evenals de logboekregistratie van andere toepassingen. 
+U kunt de Azure CLI gebruiken voor het streamen van Java stdout-en stderr-logboek registratie en andere toepassings Logboeken. 
 
-Dit is het configureren van uw functie-app voor het schrijven van logboekregistratie van toepassingen met behulp van de Azure CLI:
+U kunt als volgt uw functie-app configureren om toepassings logboeken te schrijven met behulp van Azure CLI:
 
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
-Aan de uitvoer van de logboekregistratie voor uw functie-app streamen met behulp van de Azure CLI, een nieuwe opdrachtprompt, Bash of Terminal-sessie openen en voer de volgende opdracht:
+Als u de uitvoer van logboek registratie voor uw functie-app wilt streamen met behulp van de Azure CLI, opent u een nieuwe opdracht prompt, bash of terminal sessie en voert u de volgende opdracht in:
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
-De [az webapp log tail](/cli/azure/webapp/log) opdracht bevat opties voor het filteren van uitvoer met behulp van de `--provider` optie. 
+De opdracht [AZ webapp log staart](/cli/azure/webapp/log) bevat opties voor het filteren van uitvoer met `--provider` behulp van de optie. 
 
-Voor het downloaden van de logboekbestanden als een ZIP-bestand met behulp van de Azure CLI, een nieuwe opdrachtprompt, Bash of Terminal-sessie openen en voer de volgende opdracht:
+Als u de logboek bestanden wilt downloaden als één ZIP-bestand met behulp van de Azure CLI, opent u een nieuwe opdracht prompt, bash of terminal sessie en voert u de volgende opdracht in:
 
 ```azurecli-interactive
 az webapp log download --resource-group resourcegroupname --name functionappname
 ```
 
-U moet bestandssysteem logboekregistratie in Azure portal of Azure CLI voor het uitvoeren van deze opdracht hebt ingeschakeld.
+U moet logboek registratie van het bestands systeem inschakelen in de Azure Portal of Azure CLI voordat u deze opdracht uitvoert.
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-In de functies, [app-instellingen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings), zoals serviceverbinding tekenreeksen, worden weergegeven als omgevingsvariabelen tijdens de uitvoering. U hebt toegang tot deze instellingen via, `System.getenv("AzureWebJobsStorage")`.
+In functions worden [app-instellingen](functions-app-settings.md), zoals teken reeksen voor service verbindingen, weer gegeven als omgevings variabelen tijdens de uitvoering. U kunt deze instellingen openen met behulp `System.getenv("AzureWebJobsStorage")`van.
 
-Bijvoorbeeld, u kunt toevoegen [AppSetting](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings), met de naam van de `testAppSetting` en de waarde `testAppSettingValue`:
+In het volgende voor beeld wordt de [toepassings instelling](functions-how-to-use-azure-function-app-settings.md#settings)opgehaald met de `myAppSetting`sleutel met de naam:
 
 ```java
 
 public class Function {
     public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
-        context.getLogger().info("testAppSetting "+ System.getenv("testAppSettingValue"));
+        context.getLogger().info("My app setting value: "+ System.getenv("myAppSetting"));
         return String.format(req);
     }
 }
@@ -413,12 +413,12 @@ public class Function {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende bronnen voor meer informatie over Azure Functions Java-ontwikkeling:
+Raadpleeg de volgende bronnen voor meer informatie over het ontwikkelen van Java Azure Functions:
 
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
-* [Azure Functions-triggers en bindingen](functions-triggers-bindings.md)
-* Lokale ontwikkeling en foutopsporing met [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), en [Eclipse](functions-create-maven-eclipse.md)
-* [Externe foutopsporing voor Java Azure Functions met Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
-* [Maven-invoegtoepassing voor Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
-* Functie maken via stroomlijnen de `azure-functions:add` doel, en een staging-map voor te bereiden [ZIP-bestandsimplementatie](deployment-zip-push.md).
+* [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
+* Lokale ontwikkeling en fout opsporing met [Visual Studio code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)en [eclips](functions-create-maven-eclipse.md)
+* [Java-Azure Functions voor fout opsporing op afstand met Visual Studio code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Maven-invoeg toepassing voor Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
+* Het maken van functies stroom lijnen `azure-functions:add` met behulp van het doel en voorbereiden van een staging-directory voor de [implementatie van zip-bestanden](deployment-zip-push.md).

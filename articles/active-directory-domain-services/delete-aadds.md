@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory Domain Services uitschakelen | Microsoft Docs
-description: Azure Active Directory Domain Services met behulp van de Azure-portal uitschakelen
+description: Azure Active Directory Domain Services uitschakelen met behulp van de Azure Portal
 services: active-directory-ds
 documentationcenter: ''
 author: iainfoulds
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 2f9b7f5342753c27bd8159056c8f162a5a4b78d3
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d5917ad94212c8b18d4362528bdfbafb02aec808
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473551"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171971"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Active Directory Domain Services met behulp van de Azure-portal uitschakelen
-Dit artikel leest u hoe de Azure-portal gebruiken om te schakelen van Azure Active Directory (AD) Domain Services voor uw Azure AD-directory.
+# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Active Directory Domain Services uitschakelen met behulp van de Azure Portal
+In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om Azure Active Directory (AD) Domain Services uit te scha kelen voor uw Azure AD-adres lijst.
 
 > [!WARNING]
-> **Verwijdering is permanent en kan niet ongedaan worden gemaakt.**
-> Ga zorgvuldig te werk! Wanneer u het beheerde domein verwijdert:
->   * Domeincontrollers voor het beheerde domein zijn niet ingericht en verwijderd uit het virtuele netwerk.
->   * Gegevens in het beheerde domein wordt permanent verwijderd. Dit omvat aangepaste organisatie-eenheden, GPO's, aangepaste DNS-records, service-principals, gmsa's enzovoort die u hebt gemaakt in het beheerde domein.
->   * Machines toegevoegd aan het beheerde domein verloren gaan van de vertrouwensrelatie met het domein en moeten worden verwijderd uit het domein.
->   * U kunt zich niet op deze machines met behulp van zakelijke AD-referenties. Gebruik in plaats daarvan de lokale administrator-referenties voor de machine.
-> Verwijderen van het beheerde domein niet verwijderen van uw Azure AD-directory of anders negatieve invloed hebben op de map.
+> **Verwijdering is permanent en kan niet worden omgekeerd.**
+> Ga voorzichtig te werk! Wanneer u het beheerde domein verwijdert:
+>   * Domein controllers voor het beheerde domein worden ongedaan gemaakt en uit het virtuele netwerk verwijderd.
+>   * Gegevens op het beheerde domein worden permanent verwijderd. Dit omvat aangepaste organisatie-eenheden, Gpo's, aangepaste DNS-records, service-principals, Gmsa's enzovoort die u hebt gemaakt in het beheerde domein.
+>   * Computers die zijn gekoppeld aan het beheerde domein, verliezen hun vertrouwens relatie met het domein en moeten uit het domein worden verwijderd.
+>   * U kunt zich niet aanmelden bij deze computers met behulp van zakelijke AD-referenties. Gebruik in plaats daarvan de lokale beheerders referenties voor de computer.
+> Als u het beheerde domein verwijdert, wordt de Azure AD-map niet verwijderd of wordt de map anders beïnvloed.
 
-Voer de volgende stappen uit als u wilt verwijderen van uw Azure AD Domain Services beheerde domein:
-1. Navigeer naar de [Azure AD Domain Services-extensie](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) in Azure portal.
+Voer de volgende stappen uit om uw Azure AD Domain Services beheerde domein te verwijderen:
+1. Ga naar de [Azure AD Domain Services extensie](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) in de Azure Portal.
 2. Klik op de naam van uw beheerde domein.
 
-    ![Selecteer domein verwijderen](./media/getting-started/domain-services-delete-select-domain.png)
+    ![Te verwijderen domein selecteren](./media/getting-started/domain-services-delete-select-domain.png)
 
-3. Op de **overzicht** pagina, klikt u op de **verwijderen** knop.
+3. Klik op de pagina **overzicht** op de knop **verwijderen** .
 
     ![Domein verwijderen](./media/getting-started/domain-services-delete-domain.png)
 
-4. Als u wilt bevestigen, typt u de DNS-domeinnaam van het beheerde domein. Klik op de **verwijderen** wanneer u klaar bent.
+4. Om het verwijderen te bevestigen, typt u de DNS-domein naam van het beheerde domein. Klik op de knop **verwijderen** wanneer u klaar bent.
 
-    ![Domein-bevestiging van verwijderen](./media/getting-started/domain-services-delete-domain-confirm.png)
+    ![Bevestiging van domein verwijderen](./media/getting-started/domain-services-delete-domain-confirm.png)
 
-Het beheerde domein wordt verwijderd in ongeveer 15-20 minuten.
+Het kan 15-20 minuten of langer duren voordat het beheerde domein is verwijderd.
 
-Houd rekening met [feedback delen](contact-us.md) aan ons beter te begrijpen wat functies wilt helpen u Azure AD Domain Services in de toekomst hebt gekozen. Deze feedback helpt ons de service beter aan de behoeften van uw implementatiebehoeften en use cases ontwikkelen.
+Overweeg [feedback](contact-us.md) te geven om ons te helpen begrijpen welke functies u in de toekomst helpt bij het kiezen van Azure AD Domain Services. Deze feedback helpt ons de service te laten werken om beter te voldoen aan de vereisten en gebruiks voorbeelden van uw implementatie.

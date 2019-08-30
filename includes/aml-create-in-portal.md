@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3955995ed1a7a48cfe323db5bf0e767446d89534
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534390"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164065"
 ---
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor het Azure-abonnement dat u gebruikt. 
 
@@ -37,7 +37,10 @@ ms.locfileid: "69534390"
 
 1. Nadat u klaar bent met het configureren van de werk ruimte, selecteert u **maken**. 
 
-   Het kan even duren voordat de werk ruimte is gemaakt.
+   > [!Warning] 
+   > Het kan een paar minuten duren om uw werk ruimte in de cloud te maken.
 
-   Wanneer het proces is voltooid, wordt een bericht over een geslaagde implementatie weer gegeven. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
+   Wanneer het proces is voltooid, wordt een bericht over een geslaagde implementatie weer gegeven. 
+ 
+ 1. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
 

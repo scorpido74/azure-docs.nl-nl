@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e2e161c22ee87d11156c4818bd689c316799e87
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 372c65f1ac9a08d066f26e637f3af86807b35f11
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305621"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182808"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Door Azure beheerde toepassingen in Marketplace
 
@@ -177,5 +177,6 @@ Als u alle secties hebt ingevuld, selecteert u **Publish** om het proces te star
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* Voor informatie over wat er gebeurt nadat u op **publiceren**hebt geklikt, raadpleegt u [Azure-toepassings aanbieding publiceren](../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 * Zie [Overzicht van beheerde toepassingen](overview.md) voor een inleiding tot beheerde toepassingen.
 * Zie [Een beheerde toepassing voor intern verbruik publiceren](publish-service-catalog-app.md) voor meer informatie over het publiceren van een beheerde toepassing in een servicecatalogus.

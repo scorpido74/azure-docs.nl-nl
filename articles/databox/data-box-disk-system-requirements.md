@@ -1,40 +1,54 @@
 ---
-title: Systeemvereisten voor Microsoft Azure Data Box-schijf | Microsoft Docs
-description: Meer informatie over de software en netwerkvereisten voor uw Azure Data Box-schijf
+title: Systeem vereisten voor Microsoft Azure Data Box Disk | Microsoft Docs
+description: Meer informatie over de software-en netwerk vereisten voor uw Azure Data Box Disk
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 10ddf4c42ac5aa2d1cffd7cbca6930896103d2c5
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: e17fbcebc128a7169953ed05de617efa25fc25f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147785"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172719"
 ---
-# <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box-schijf-systeemvereisten
+::: zone target="docs"
 
-Dit artikel beschrijft de belangrijke systeemvereisten voor uw oplossing Microsoft Azure Data Box-schijf en de clients die verbinding maken met de Data Box-schijf. Het is raadzaam dat u de informatie voordat u uw Data Box-schijf implementeert, en vervolgens terug naar deze zo nodig tijdens de implementatie en het volgende gebruik verwijzen zorgvuldig te controleren.
+# <a name="azure-data-box-disk-system-requirements"></a>Systeem vereisten voor Azure Data Box Disk
 
-De systeemvereisten zijn de ondersteunde platforms voor clients verbinding maken met schijven, ondersteunde opslagaccounts en opslagtypen.
+In dit artikel worden de belangrijkste systeem vereisten beschreven voor uw Microsoft Azure Data Box Disk oplossing en voor de clients die verbinding maken met de Data Box Disk. We raden u aan de informatie zorgvuldig te bekijken voordat u uw Data Box Disk implementeert en vervolgens naar de gewenste gegevens te verwijzen tijdens de implementatie en de volgende bewerking.
 
+De systeem vereisten omvatten de ondersteunde platforms voor clients die verbinding maken met schijven, ondersteunde opslag accounts en opslag typen.
 
-## <a name="supported-operating-systems-for-clients"></a>Ondersteunde besturingssystemen voor clients
+::: zone-end
 
-Hier volgt een lijst van de ondersteunde besturingssystemen voor het ontgrendelen van de schijf en de kopieerbewerking gegevens via de clients die zijn verbonden met de Data Box-schijf.
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Vereisten
+
+U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
+
+- Een ondersteund besturings systeem uitvoeren.
+- Andere vereiste software is geïnstalleerd.
+
+::: zone-end
+
+## <a name="supported-operating-systems-for-clients"></a>Ondersteunde besturings systemen voor clients
+
+Hier volgt een lijst met de ondersteunde besturings systemen voor het ontgrendelen van de schijf en het kopiëren van gegevens via de clients die zijn verbonden met de Data Box Disk.
 
 | **Besturingssysteem** | **Geteste versies** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
-| Windows (64-bits) |7, 8, 10 |
-|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
+| Windows (64 bits) |7, 8, 10 |
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8,11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
 
 ## <a name="other-required-software-for-windows-clients"></a>Andere vereiste software voor Windows-clients
 
-Volgende moeten ook worden geïnstalleerd voor Windows-client.
+Voor Windows-clients moet de volgende ook worden geïnstalleerd.
 
 | **Software**| **Versie** |
 | --- | --- |
@@ -45,42 +59,46 @@ Volgende moeten ook worden geïnstalleerd voor Windows-client.
 
 ## <a name="other-required-software-for-linux-clients"></a>Andere vereiste software voor Linux-clients
 
-Voor Linux-client installeert de Data Box-schijf-toolset van de volgende vereiste software:
+Voor Linux-client installeert de Data Box Disk toolset de volgende vereiste software:
 
-- dislocker
+- vergren deling
 - OpenSSL
+
+::: zone target="docs"
 
 ## <a name="supported-connection"></a>Ondersteunde verbinding
 
-De clientcomputer met de gegevens moet hebben een USB-3.0 of hoger poort. De schijven verbinding worden gemaakt met deze met behulp van de opgegeven kabel.
+De client computer met de gegevens moet een USB 3,0-poort of hoger hebben. De schijven maken verbinding met deze client met behulp van de meegeleverde kabel.
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 
-Hier volgt een lijst van de typen ondersteunde opslag voor de Data Box-schijf.
+Hier volgt een lijst met de ondersteunde opslag typen voor de Data Box Disk.
 
 | **Opslagaccount** | **Opmerkingen** |
 | --- | --- |
 | Klassiek | Standard |
-| Algemeen doel  |Standaard; zowel V1 als V2 worden ondersteund. Warme en koude lagen worden ondersteund. |
-| BLOB storage-account | |
+| Algemeen doel  |Standaard zowel v1 als v2 worden ondersteund. Zowel warme als coole lagen worden ondersteund. |
+| Blob-opslag account | |
 
 >[!NOTE]
-> Azure Data Lake Storage Gen 2-accounts worden niet ondersteund.
+> Azure Data Lake Storage gen 2-accounts worden niet ondersteund.
 
 
-## <a name="supported-storage-types-for-upload"></a>Ondersteunde opslagtypen voor uploaden
+## <a name="supported-storage-types-for-upload"></a>Ondersteunde opslag typen voor uploaden
 
-Hier volgt een lijst van de opslag die worden ondersteund voor geüpload naar Azure met behulp van Data Box-schijf.
+Hier volgt een lijst met de opslag typen die worden ondersteund voor geüpload naar Azure met behulp van Data Box Disk.
 
-| **Bestandsindeling** | **Opmerkingen** |
+| **Bestands indeling** | **Opmerkingen** |
 | --- | --- |
-| Azure blok-blob | |
-| Azure-pagina-blobs  | |
+| Azure-blok-BLOB | |
+| Azure-pagina-BLOB  | |
 | Azure Files  | |
 | Beheerde schijven | |
 
 
 ## <a name="next-step"></a>Volgende stap
 
-* [Implementeren van uw Azure Data Box-schijf](data-box-disk-deploy-ordered.md)
+* [Uw Azure Data Box Disk implementeren](data-box-disk-deploy-ordered.md)
+
+::: zone-end
 

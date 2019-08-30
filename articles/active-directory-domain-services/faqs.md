@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b079d311e357f4dfb94e55fbca3cafdec198ade9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124666"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171891"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Veelgestelde vragen
 Op deze pagina vindt u antwoorden op veelgestelde vragen over de Azure Active Directory Domain Services. Blijf op de hoogte met het controleren op updates.
@@ -79,7 +79,7 @@ Nee. U hebt geen beheerders bevoegdheden voor het beheerde domein. De bevoegdhed
 Nee. Groepslid maatschappen kunnen niet worden gewijzigd in domeinen die worden onderhouden door Azure AD Domain Services. Hetzelfde geldt voor gebruikers kenmerken. U kunt echter groepslid maatschappen of gebruikers kenmerken in azure AD of op uw on-premises domein wijzigen. Dergelijke wijzigingen worden automatisch gesynchroniseerd naar Azure AD Domain Services.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Hoe lang duurt het voor de wijzigingen die ik in mijn Azure AD-adres lijst aanbrengt, worden weer gegeven in mijn beheerde domein?
-Wijzigingen die zijn aangebracht in uw Azure AD-adres lijst met behulp van de Azure AD-gebruikers interface of Power shell, worden gesynchroniseerd met uw beheerde domein. Dit synchronisatie proces wordt op de achtergrond uitgevoerd. Zodra de initiële synchronisatie is voltooid, duurt het ongeveer 20 minuten voordat wijzigingen die zijn aangebracht in azure AD, worden weer gegeven in uw beheerde domein.
+Wijzigingen die zijn aangebracht in uw Azure AD-adres lijst met behulp van de Azure AD-gebruikers interface of Power shell, worden automatisch gesynchroniseerd met uw beheerde domein. Dit synchronisatie proces wordt op de achtergrond uitgevoerd. Er is geen gedefinieerde tijds periode voor deze synchronisatie om alle object wijzigingen te volt ooien.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Kan ik het schema uitbreiden van het beheerde domein dat wordt meegeleverd met Azure AD Domain Services?
 Nee. Het schema wordt door micro soft beheerd voor het beheerde domein. Schema-uitbrei dingen worden niet ondersteund door Azure AD Domain Services.

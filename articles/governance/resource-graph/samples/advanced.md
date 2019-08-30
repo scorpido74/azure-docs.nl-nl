@@ -1,19 +1,19 @@
 ---
 title: Voorbeelden van geavanceerde query's
-description: Gebruik Azure Resource Graph voor het uitvoeren van enkele geavanceerde query's, met inbegrip van VMSS-capaciteit. Hiermee wordt een lijst van alle gebruikte tags en overeenkomende virtuele machines weergegeven met behulp van reguliere expressies.
+description: Gebruik Azure resource Graph om geavanceerde query's uit te voeren, waaronder capaciteit van de schaalset voor virtuele machines, waarbij alle gebruikte labels worden weer gegeven en overeenkomende virtuele machines met reguliere expressies.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5742d4c14d2599b3efa73e427a5d418e5ef1c1e
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691995"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164904"
 ---
 # <a name="advanced-resource-graph-queries"></a>Geavanceerde query's van Resource Graph
 
@@ -22,7 +22,7 @@ Om inzicht te krijgen in query's met Azure Resource Graph moet u eerst enige bas
 We nemen de volgende geavanceerde query's door:
 
 > [!div class="checklist"]
-> - [Schaal de capaciteit van virtuele machine en grootte](#vmss-capacity)
+> - [De capaciteit en grootte van schaal sets voor virtuele machines ophalen](#vmss-capacity)
 > - [Een lijst weergeven van alle tagnamen](#list-all-tags)
 > - [Virtuele machines zoeken met reguliere expressies](#vm-regex)
 
@@ -72,8 +72,8 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Virtuele machines zoeken met reguliere expressies
 
-Deze query zoekt virtuele machines die overeenkomen met een [reguliere expressie](/dotnet/standard/base-types/regular-expression-language-quick-reference) (ook wel _regex_ genoemd).
-De **komt overeen met reguliere expressie \@**  kunnen we voor het definiëren van de reguliere expressie overeenkomt met wat `^Contoso(.*)[0-9]+$`. De definitie van deze reguliere expressie wordt als volgt uitgelegd:
+Deze query zoekt virtuele machines die overeenkomen met een [reguliere expressie](/dotnet/standard/base-types/regular-expression-language-quick-reference) (ook wel _regex_ genoemd). **Met\@** de matching matching is `^Contoso(.*)[0-9]+$`het mogelijk om de regex te definiëren die overeenkomt met.
+De definitie van deze reguliere expressie wordt als volgt uitgelegd:
 
 - `^`: Overeenkomst moet beginnen aan het begin van de tekenreeks.
 - `Contoso`: De hoofdlettergevoelige reeks.
@@ -99,6 +99,22 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 ```azurepowershell-interactive
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
+
+## <a name="displaynames"></a>De namen van de Tenant en het abonnement toevoegen met DisplayName
+
+Deze query gebruikt de nieuwe para meter include met de optie _DisplayName_ om **subscriptionDisplayName** en **tenantDisplayName** toe te voegen aan de resultaten. Deze para meter is alleen beschikbaar voor Azure CLI en Azure PowerShell.
+
+```azurecli-interactive
+az graph query -q "limit 1" --include displayNames
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "limit 1" -Include DisplayNames
+```
+
+> [!NOTE]
+> Als de query geen gebruik maakt van **project** om de geretourneerde eigenschappen op te geven, worden **subscriptionDisplayName** en **tenantDisplayName** automatisch opgenomen in de resultaten.
+> Als de query gebruikmaakt van **project**, moeten alle _DisplayName_ -velden expliciet worden opgenomen in het **project** of worden ze niet geretourneerd in de resultaten, zelfs niet wanneer de para meter include wordt gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

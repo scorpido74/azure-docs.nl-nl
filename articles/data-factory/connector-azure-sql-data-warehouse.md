@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 49a0c7597e8d44e3f60e2d3b6bd4c14cad1524b5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996680"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172630"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren naar of van Azure SQL Data Warehouse met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -536,6 +536,10 @@ Wanneer de brongegevens rijen die groter is dan 1 MB bevat, is het raadzaam om t
 
 Voor gegevens met een brede kolom kunt u ook gebruikmaken van niet-poly Base om de gegevens te laden met behulp van ADF, door de instelling ' poly base toestaan ' uit te scha kelen.
 
+### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse resourceklasse
+
+Voor het bereiken van de best mogelijke doorvoer, een grotere resourceklasse aan de gebruiker die gegevens in SQL Data Warehouse met PolyBase laadt te toewijzen.
+
 ### <a name="polybase-troubleshooting"></a>Poly base-probleem oplossing
 
 **Laden naar decimale kolom**
@@ -549,13 +553,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 De oplossing bestaat uit het opheffen van de selectie van de optie**type standaard gebruiken**(als onwaar) in Sink voor kopieer activiteit-> poly base-instellingen. '[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )' is een poly base-systeem eigen configuratie die aangeeft hoe ontbrekende waarden in tekst bestanden met scheidings tekens moeten worden verwerkt wanneer poly base gegevens ophaalt uit het tekst bestand. 
 
-**Andere**
-
-### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse resourceklasse
-
-Voor het bereiken van de best mogelijke doorvoer, een grotere resourceklasse aan de gebruiker die gegevens in SQL Data Warehouse met PolyBase laadt te toewijzen.
-
-### <a name="tablename-in-azure-sql-data-warehouse"></a>**tableName** in Azure SQL Data Warehouse
+**`tableName`in Azure SQL Data Warehouse**
 
 De volgende tabel bevat voorbeelden van hoe u de **tableName** eigenschap in de JSON-gegevensset. Hier ziet u verschillende combinaties van schema- en tabelnamen.
 
@@ -572,7 +570,7 @@ Als u de volgende fout ziet, is het probleem mogelijk de waarde die u hebt opgeg
 Type=System.Data.SqlClient.SqlException,Message=Invalid object name 'stg.Account_test'.,Source=.Net SqlClient Data Provider
 ```
 
-### <a name="columns-with-default-values"></a>Kolommen met standaardwaarden
+**Kolommen met standaard waarden**
 
 Op dit moment accepteert de PolyBase-functie in Data Factory alleen een hetzelfde aantal kolommen in de doeltabel. Een voorbeeld is een tabel met vier kolommen waarin een van deze met de standaardwaarde is gedefinieerd. De ingevoerde gegevens moet nog steeds vier kolommen hebben. Een invoergegevensset drie kolommen levert een fout die vergelijkbaar is met het volgende bericht:
 

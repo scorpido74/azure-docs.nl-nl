@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: 21da8dce7a77a086381bd21dc0129b614fa65ad3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: HT
+ms.date: 08/28/2019
+ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138415"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182613"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment
 
@@ -51,10 +51,11 @@ Vanuit uw werk ruimte maakt u een Cloud resource om aan de slag te gaan met Jupy
 
      ![Nieuwe VM selecteren](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
-1. Geef een naam op voor de virtuele machine. Selecteer vervolgens **Maken**.
+1. Geef een naam op voor de virtuele machine. 
+   + De naam van de VM van uw notebook moet tussen 2 en 16 tekens lang zijn. Geldige tekens zijn letters, cijfers en het teken.  
+   + De naam moet ook uniek zijn binnen uw Azure-abonnement.
 
-    > [!NOTE]
-    > De naam van de VM van uw notebook moet tussen 2 en 16 tekens lang zijn. Geldige tekens zijn letters, cijfers en het teken.  De naam moet ook uniek zijn binnen uw Azure-abonnement.
+1. Selecteer vervolgens **Maken**. Het kan even duren voordat u uw VM hebt ingesteld.
 
 1. Wacht totdat de status wordt gewijzigd in **wordt uitgevoerd**.
 
@@ -66,43 +67,16 @@ Nadat de virtuele machine is uitgevoerd, gebruikt u de sectie voor **laptop-vm's
 
     ![De Jupyter-notebook server starten](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-    Met de koppeling wordt uw notebook server gestart en wordt de Jupyter-notebook-webpagina geopend in een nieuw browser tabblad.  Deze koppeling werkt alleen voor de persoon die de virtuele machine heeft gemaakt. Elke gebruiker van de werk ruimte moet een eigen VM maken.
+   Met de koppeling wordt uw notebook server gestart en wordt de Jupyter-notebook-webpagina geopend in een nieuw browser tabblad.  Deze koppeling werkt alleen voor de persoon die de virtuele machine heeft gemaakt. Elke gebruiker van de werk ruimte moet een eigen VM maken.
 
-1. Op de Jupyter-notebook-webpagina is de mapnaam de naam van de hoofdmap.  Selecteer deze map.
+1. Selecteer op de webpagina van de Jupyter-notebook de naam van de hoofdmap.  
 
-    > [!TIP]
-    > Deze map bevindt zich op het [opslag account](concept-workspace.md#resources) in uw werk ruimte, in plaats van op de VM van de notebook zelf.  U kunt de VM van het notitie blok verwijderen en toch al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
+   Deze map bevindt zich in het [opslag account](concept-workspace.md#resources) van de werk ruimte, in plaats van op de VM van de notebook zelf.  Als u de VM van de notebook verwijdert, blijft u al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
 
-1. Open de `samples-*` submap en open vervolgens`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+1. Open de `samples-*` submap en open vervolgens de Jupyter-notebook`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
 
-> [!Warning]
-> Zorg ervoor dat u `tutorial-1st-experiment-sdk-train.ipynb` het bestand opent, `.yml` **niet** het bestand met de > dezelfde naam. 
-
-In **deel twee** van de zelf studie voert u de code `tutorial-1st-experiment-sdk-train.ipynb` in om een machine learning model te trainen.
-
-## <a name="end"></a>Resources opschonen
-
-Vul deze sectie niet in als u van plan bent om **deel 2** van de zelf studie te hervatten.
-
-### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
-
-Als u een Cloud notebook server hebt gebruikt, stopt u de virtuele machine wanneer u deze niet gebruikt om de kosten te verlagen.
-
-1. Selecteer in uw werk ruimte de optie **laptop vm's**.
-
-   ![De VM-server stoppen](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. Selecteer de VM in de lijst.
-
-1. Selecteer **stoppen**.
-
-1. Wanneer u klaar bent om de server opnieuw te gebruiken, selecteert u **starten**.
-
-### <a name="delete-everything"></a>Alles verwijderen
-
-[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
-
-U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Bekijk de eigenschappen van de werkruimte en selecteer **Verwijderen**.
+   > [!Warning]
+   > Zorg ervoor dat u `tutorial-1st-experiment-sdk-train.ipynb` het bestand opent, `.yml` **niet** het bestand met de > dezelfde naam. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -111,7 +85,10 @@ In deze zelf studie hebt u de volgende taken uitgevoerd:
 * Er is een Azure Machine Learning service-werk ruimte gemaakt.
 * Een Cloud notebook server in uw werk ruimte gemaakt en geconfigureerd.
 
-Ga verder met **deel 2** van deze zelf studie om een eenvoudig machine learning model te trainen.
+In **deel twee** van de zelf studie voert u de code `tutorial-1st-experiment-sdk-train.ipynb` in om een machine learning model te trainen. 
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Uw eerste model trainen](tutorial-1st-experiment-sdk-train.md)
+
+> [!IMPORTANT]
+> Als u niet van plan bent om deel 2 van deze zelf studie of andere zelf studies te plannen, moet u [de VM van de Cloud notebook server stoppen](tutorial-1st-experiment-sdk-train.md#clean-up-resources) wanneer u deze niet gebruikt om de kosten te verlagen.

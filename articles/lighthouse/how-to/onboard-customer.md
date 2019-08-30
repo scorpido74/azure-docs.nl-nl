@@ -4,15 +4,15 @@ description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012065"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165032"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>Zorg ervoor dat het abonnement van de klant is geregistreerd voor onboarding
-
-Elk abonnement moet worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren. De klant kan een abonnement registreren door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md).
-
-De klant kan bevestigen dat het abonnement gereed is voor onboarding op een van de volgende manieren.
-
-### <a name="azure-portal"></a>Azure Portal
-
-1. Selecteer in de Azure Portal het abonnement.
-1. Selecteer **Resourceproviders**.
-1. Controleer of **micro soft. ManagedServices** als **geregistreerd**wordt weer gegeven.
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-De resultaten moeten er als volgt uitzien:
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure-CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-De resultaten moeten er als volgt uitzien:
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> Wanneer u een abonnement (of een of meer resource groepen binnen een abonnement) gebruikt met behulp van het proces dat hier wordt beschreven, wordt de resource provider **micro soft. ManagedServices** geregistreerd voor dat abonnement.
 
 ## <a name="define-roles-and-permissions"></a>Rollen en machtigingen definiëren
 
@@ -129,8 +74,6 @@ Om het beheer te vereenvoudigen, raden we u aan Azure AD-gebruikers groepen te g
 > Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar en ingebouwde rollen met [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) -machtiging. De ingebouwde rol gebruikers toegangs beheerder wordt ondersteund voor beperkt gebruik, zoals hieronder wordt beschreven. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) worden ook niet ondersteund.
 
 Als u autorisaties wilt definiëren, moet u de ID-waarden weten voor elke gebruiker, gebruikers groep of service-principal waaraan u toegang wilt verlenen. U hebt ook de roldefinitie-ID nodig voor elke ingebouwde rol die u wilt toewijzen. Als u deze niet al hebt, kunt u ze op een van de volgende manieren ophalen.
-
-
 
 ### <a name="powershell"></a>PowerShell
 

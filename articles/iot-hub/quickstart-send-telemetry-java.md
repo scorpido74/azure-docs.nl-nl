@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 15d9447d7078fd4858a7957448dd30d07049d6e9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4ef5c8c9defd0a5da4bc0579d457113f8f4c5e4d
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958624"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172961"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-java"></a>Quickstart: telemetrie vanaf een apparaat verzenden naar een IoT-hub en lezen met een back-endtoepassing (Java)
+# <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Quickstart: Telemetrie verzenden naar een Azure IoT hub en deze lezen met een Java-toepassing
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -31,9 +31,9 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Java. Java SE 8 of hoger moet zijn geïnstalleerd op uw ontwikkelcomputer.
+De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Java. U hebt Java SE 8 nodig op uw ontwikkel computer.
 
-U kunt Java voor meerdere platforms downloaden van [Oracle](https://aka.ms/azure-jdks).
+U kunt Java SE Development Kit 8 voor meerdere platforms downloaden van [ondersteuning voor lange termijn voor Azure en Azure stack](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
 
 Gebruik de volgende opdracht om de huidige versie van Java op uw ontwikkelcomputer te controleren:
 

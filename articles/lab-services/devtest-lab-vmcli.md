@@ -1,6 +1,6 @@
 ---
-title: Maken en beheren van virtuele machines in DevTest Labs met Azure CLI | Microsoft Docs
-description: Informatie over het gebruik van Azure DevTest Labs maken en beheren van virtuele machines met Azure CLI
+title: Virtuele machines in DevTest Labs maken en beheren met Azure CLI | Microsoft Docs
+description: Meer informatie over het gebruik van Azure DevTest Labs voor het maken en beheren van virtuele machines met Azure CLI
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 48a30ef86cdb10b540ffe1231294542ccff87255
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11ac4e10cbd116ed204a8a11274408f5a5a9b4d9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622317"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183128"
 ---
-# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Maken en beheren van virtuele machines met DevTest Labs met de Azure CLI
-In deze quickstart begeleidt u bij het maken, starten, verbinding te maken, bijwerken en opschonen van een ontwikkelcomputer in uw testomgeving. 
+# <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Virtuele machines maken en beheren met DevTest Labs met behulp van Azure CLI
+Deze Snelstartgids helpt u bij het maken, starten, aansluiten, bijwerken en opschonen van een ontwikkel machine in uw Lab. 
 
 Voordat u begint:
 
-* Als u een lab niet is gemaakt, instructies hiervoor vindt [hier](devtest-lab-create-lab.md).
+* Als een Lab niet is gemaakt, kunt u [hier](devtest-lab-create-lab.md)instructies vinden.
 
-* [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u wilt starten, az login voor het maken van een verbinding met Azure worden uitgevoerd. 
+* [Installeer de Azure cli](/cli/azure/install-azure-cli). Als u wilt starten, voert u AZ login uit om een verbinding te maken met Azure. 
 
-## <a name="create-and-verify-the-virtual-machine"></a>Maken en controleer of de virtuele machine 
-Voordat u DevTest Labs-gerelateerde opdrachten hebt uitgevoerd, stelt u de juiste Azure context met behulp van de `az account set` opdracht:
+## <a name="create-and-verify-the-virtual-machine"></a>De virtuele machine maken en verifiëren 
+Voordat u DevTest Labs-gerelateerde opdrachten uitvoert, stelt u de juiste Azure-context `az account set` in met behulp van de opdracht:
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
 ```
 
-De opdracht voor het maken van een virtuele machine is: `az lab vm create`. De resourcegroep voor de labnaam van de testomgeving, en de naam van de virtuele machine zijn alle vereiste. De rest van de argumenten veranderen, afhankelijk van het type van de virtuele machine.
+De opdracht voor het maken van een virtuele machine `az lab vm create`is:. De resource groep voor het lab, de naam van het lab en de naam van de virtuele machine zijn allemaal verplicht. De overige argumenten veranderen, afhankelijk van het type virtuele machine.
 
-De volgende opdracht maakt een Windows-installatiekopie uit Azure Marketplace. De naam van de installatiekopie is hetzelfde als zou u bij het maken van een virtuele machine met behulp van de Azure portal. 
+Met de volgende opdracht maakt u een Windows-installatie kopie op basis van de Azure-markt plaats. De naam van de installatie kopie is hetzelfde als die u ziet bij het maken van een virtuele machine met behulp van de Azure Portal. 
 
 ```azurecli
-az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3’ --admin-username 'AdminUser' --admin-password 'Password1!'
+az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-De volgende opdracht maakt u een virtuele machine op basis van een aangepaste installatiekopie die beschikbaar zijn in de testomgeving:
+Met de volgende opdracht maakt u een virtuele machine op basis van een aangepaste installatie kopie die beschikbaar is in het Lab:
 
 ```azurecli
 az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "My Custom Image" --image-type custom --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
 ```
 
-De **afbeeldingstype** argument is gewijzigd van **galerie** naar **aangepaste**. De naam van de afbeelding overeenkomt met wat u ziet als u de virtuele machine maakt in Azure portal.
+Het argument **Image-Type** is gewijzigd van de **Galerie** in **aangepast**. De naam van de afbeelding komt overeen met wat u ziet als u de virtuele machine in de Azure Portal hebt gemaakt.
 
-De volgende opdracht maakt u een virtuele machine vanuit een marketplace-installatiekopie met ssh verificatie:
+Met de volgende opdracht maakt u een virtuele machine op basis van een Marketplace-installatie kopie met SSH-verificatie:
 
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-U kunt ook maken met virtuele machines op basis van formules door in te stellen de **afbeeldingstype** parameter **formule**. Als u nodig hebt om een specifieke virtuele netwerk voor uw virtuele machine te kiezen, gebruikt u de **vnet-naam** en **subnet** parameters. Zie voor meer informatie, [az lab vm maken](/cli/azure/lab/vm#az-lab-vm-create).
+U kunt ook virtuele machines maken op basis van formules door de para meter **Image-Type** in te stellen op **Formula**. Als u voor uw virtuele machine een specifiek virtueel netwerk wilt kiezen, gebruikt u de para meters **vnet-naam** en **subnet** . Zie [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create)voor meer informatie.
 
 ## <a name="verify-that-the-vm-is-available"></a>Controleer of de virtuele machine beschikbaar is.
-Gebruik de `az lab vm show` opdracht uit om te controleren of de virtuele machine beschikbaar is, voordat u begint en er verbinding mee maken. 
+Gebruik de `az lab vm show` opdracht om te controleren of de virtuele machine beschikbaar is voordat u begint en er verbinding mee maakt. 
 
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
@@ -74,8 +74,8 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="start-and-connect-to-the-virtual-machine"></a>Start en verbinding maken met de virtuele machine
-De volgende opdracht wordt een virtuele machine gestart:
+## <a name="start-and-connect-to-the-virtual-machine"></a>Start en maak verbinding met de virtuele machine
+Met de volgende voorbeeld opdracht wordt een virtuele machine gestart:
 
 ```azurecli
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
@@ -87,7 +87,7 @@ ssh userName@ipAddressOrfqdn
 ```
 
 ## <a name="update-the-virtual-machine"></a>De virtuele machine bijwerken
-De volgende voorbeeldopdracht van artefacten toepassing aan een virtuele machine:
+Met de volgende voorbeeld opdracht worden artefacten op een VM toegepast:
 
 ```azurecli
 az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resource-group sampleResourceGroup  --artifacts @/artifacts.json
@@ -123,7 +123,7 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-De artefacten van de lijst is beschikbaar in het lab.
+Lijst artefacten die beschikbaar zijn in het lab.
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
 ```
@@ -134,8 +134,8 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 }
 ```
 
-## <a name="stop-and-delete-the-virtual-machine"></a>Stoppen en verwijderen van de virtuele machine    
-De volgende voorbeeldopdracht wordt een virtuele machine gestopt.
+## <a name="stop-and-delete-the-virtual-machine"></a>De virtuele machine stoppen en verwijderen    
+Met de volgende voorbeeld opdracht wordt een virtuele machine gestopt.
 
 ```azurecli
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
@@ -147,4 +147,4 @@ az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group s
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende inhoud: [Azure CLI-documentatie voor Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 
+Zie de volgende inhoud: [Azure cli-documentatie voor Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 

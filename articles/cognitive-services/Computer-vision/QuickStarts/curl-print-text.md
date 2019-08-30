@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 10cab0a1b5bfea603de56a366473a68ca2fcb009
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6862c48493c2fdf3cbc4e4a9da70d6da70c723de
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604408"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141455"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-curl"></a>Quickstart: Haal de gedrukte tekst (OCR) met behulp van de Computer Vision REST-API en cURL
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-curl"></a>Quickstart: Gedrukte tekst (OCR) extra heren met behulp van de Computer Vision REST API en krul
 
 In deze snelstart gebruikt u OCR (optical character recognition) om tekst uit een afbeelding te extraheren met behulp van de REST API van Computer Vision. Met de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren.
 
@@ -27,7 +27,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 ## <a name="prerequisites"></a>Vereisten
 
 - U moet [cURL](https://curl.haxx.se/windows) hebben.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U krijgt een gratis proefversie sleutel van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of, volg de instructies in [een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abonneren op de Computer Vision en haal uw sleutel.
+- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen.
 
 ## <a name="create-and-run-the-sample-command"></a>Een voorbeeldopdracht maken en uitvoeren
 
@@ -36,7 +36,8 @@ U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 1. Kopieer de volgende opdracht naar een teksteditor.
 1. Breng waar nodig de volgende wijzigingen in de opdracht aan:
     1. Vervang de waarde van `<subscriptionKey>` door uw abonnementssleutel.
-    1. Vervang de aanvraag-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr`) door de eindpunt-URL voor de [OCR-methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) uit de Azure-regio waar u uw abonnementssleutels hebt verkregen (indien nodig).
+    1. Vervang het eerste deel van de aanvraag-URL`westcentralus`() door de tekst in uw eigen eind punt-URL.
+        [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Wijzig eventueel de afbeeldings-URL in de aanvraagtekst (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`) naar de URL van een andere afbeelding die u wilt analyseren.
 1. Open een opdrachtpromptvenster.
 1. Plak de opdracht van de teksteditor in het opdrachtpromptvenster en voer de opdracht uit.

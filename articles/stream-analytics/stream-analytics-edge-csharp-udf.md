@@ -1,5 +1,5 @@
 ---
-title: Een door de gebruiker gedefinieerde C#-functie schrijven voor een Azure Stream Analytics Edge-taak in Visual Studio (preview)
+title: Door C# de gebruiker gedefinieerde functies schrijven voor Azure stream Analytics Edge-taken in Visual Studio (preview)
 description: Informatie over het schrijven van door de gebruiker gedefinieerde C#-functies voor Stream Analytics Edge-taken in Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204158"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173315"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Zelfstudie: Een door de gebruiker gedefinieerde C#-functie schrijven voor een Azure Stream Analytics Edge-taak (preview)
 

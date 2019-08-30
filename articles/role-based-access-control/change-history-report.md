@@ -1,6 +1,6 @@
 ---
-title: Activiteitenlogboeken bekijken voor RBAC voor Azure-resources | Microsoft Docs
-description: Weergave activiteitenlogboeken voor op rollen gebaseerd toegangsbeheer (RBAC) wijzigingen voor Azure-resources voor de afgelopen 90 dagen.
+title: Activiteiten logboeken voor RBAC-wijzigingen in azure-resources weer geven | Microsoft Docs
+description: Bekijk activiteiten logboeken voor op rollen gebaseerd toegangs beheer (RBAC) wijzigingen in azure-resources gedurende de afgelopen 90 dagen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,61 +15,61 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 842d3146bf1927871e29eb750cde09e9029b7c12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242104"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172404"
 ---
-# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Activiteitenlogboeken bekijken voor RBAC-wijzigingen in de Azure-resources
+# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Activiteiten logboeken voor RBAC-wijzigingen in azure-resources weer geven
 
-Soms moet u informatie over toegang op rollen gebaseerd beheer (RBAC) wijzigingen in de Azure-resources, zoals voor controle of het oplossen van problemen. Telkens wanneer iemand anders wijzigingen in roltoewijzingen of roldefinities binnen uw abonnementen aanbrengt, de wijzigingen geregistreerd [Azure Activity Log](../azure-monitor/platform/activity-logs-overview.md). U kunt de activiteitenlogboeken als u wilt zien van alle RBAC-wijzigingen voor de afgelopen 90 dagen kunt bekijken.
+Soms hebt u informatie nodig over de wijzigingen op basis van op rollen gebaseerde toegangs beheer (RBAC) voor Azure-resources, zoals voor het controleren of oplossen van problemen. Telkens wanneer iemand wijzigingen aanbrengt in roltoewijzingen of roldefinities binnen uw abonnementen, worden de wijzigingen vastgelegd in het [Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md). U kunt de activiteiten logboeken weer geven om alle RBAC-wijzigingen voor de afgelopen 90 dagen te bekijken.
 
-## <a name="operations-that-are-logged"></a>Bewerkingen die worden geregistreerd
+## <a name="operations-that-are-logged"></a>Bewerkingen die zijn geregistreerd
 
-Hier volgen de RBAC-gerelateerde bewerkingen die zijn vastgelegd in het activiteitenlogboek:
+Dit zijn de RBAC-gerelateerde bewerkingen die zijn vastgelegd in het activiteiten logboek:
 
 - Roltoewijzing maken
 - Roltoewijzing verwijderen
-- Maken of bijwerken van de aangepaste roldefinitie
-- Aangepaste roldefinitie verwijderen
+- Aangepaste roldefinitie maken of bijwerken
+- De aangepaste roldefinitie verwijderen
 
 ## <a name="azure-portal"></a>Azure Portal
 
-De eenvoudigste manier om te beginnen is om de activiteitenlogboeken met de Azure-portal weer te geven. De volgende Schermafbeelding toont een voorbeeld van een activiteitenlogboek waarin een filter is toegepast om roltoewijzing en rol definitie bewerkingen weer te geven. Dit omvat ook een koppeling voor het downloaden van de logboeken als een CSV-bestand.
+De eenvoudigste manier om aan de slag te gaan is door de activiteiten logboeken weer te geven met de Azure Portal. De volgende scherm afbeelding toont een voor beeld van een activiteiten logboek dat is gefilterd voor het weer geven van roltoewijzing en functie definitie bewerkingen. Het bevat ook een koppeling voor het downloaden van de logboeken als een CSV-bestand.
 
-![Activiteitenlogboeken via de portal - schermafbeelding](./media/change-history-report/activity-log-portal.png)
+![Activiteiten logboeken met behulp van de portal-scherm opname](./media/change-history-report/activity-log-portal.png)
 
-Het activiteitenlogboek in de portal heeft verschillende filters. Hier volgen de RBAC-gerelateerde filters:
+Het activiteiten logboek in de portal heeft verschillende filters. Dit zijn de RBAC-gerelateerde filters:
 
 |Filteren  |Value  |
 |---------|---------|
-|Gebeurteniscategorie     | <ul><li>Administratief</li></ul>         |
-|Bewerking     | <ul><li>Roltoewijzing maken</li> <li>Roltoewijzing verwijderen</li> <li>Maken of bijwerken van de aangepaste roldefinitie</li> <li>Aangepaste roldefinitie verwijderen</li></ul>      |
+|Gebeurteniscategorie     | <ul><li>Beheer</li></ul>         |
+|Bewerking     | <ul><li>Roltoewijzing maken</li> <li>Roltoewijzing verwijderen</li> <li>Aangepaste roldefinitie maken of bijwerken</li> <li>De aangepaste roldefinitie verwijderen</li></ul>      |
 
 
-Zie voor meer informatie over activiteitenlogboeken [gebeurtenissen weergeven in het activiteitenlogboek](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Zie [gebeurtenissen weer geven in activiteiten logboek](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)voor meer informatie over activiteiten Logboeken.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-Als u wilt weergeven van activiteitenlogboeken met Azure PowerShell, gebruikt u de [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) opdracht.
+Als u activiteiten logboeken met Azure PowerShell wilt weer geven, gebruikt u de opdracht [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog) .
 
-Met deze opdracht worden de wijzigingen aan toewijzingen van alle rollen in een abonnement voor de afgelopen zeven dagen:
+Met deze opdracht worden alle roltoewijzings wijzigingen in een abonnement voor de afgelopen zeven dagen weer gegeven:
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleAssignments/*'}
 ```
 
-Met deze opdracht worden alle rollen de definitie van wijzigingen in een resourcegroep voor de afgelopen zeven dagen:
+Met deze opdracht worden alle roldefinitie wijzigingen in een resource groep voor de afgelopen zeven dagen weer gegeven:
 
 ```azurepowershell
 Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-Met deze opdracht geeft een lijst van alle roltoewijzing en wijzigingen in het definitie rol in een abonnement voor de afgelopen zeven dagen en de resultaten in een lijst weergegeven:
+Met deze opdracht worden alle roltoewijzings-en roldefinitie wijzigingen in een abonnement voor de afgelopen zeven dagen weer gegeven en worden de resultaten in een lijst getoond:
 
 ```azurepowershell
 Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
@@ -94,15 +94,15 @@ Properties              :
 
 ## <a name="azure-cli"></a>Azure-CLI
 
-Als u wilt weergeven van activiteitenlogboeken met de Azure CLI, gebruikt u de [az monitor activiteitenlogboek lijst](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) opdracht.
+Als u activiteiten logboeken wilt weer geven met de Azure CLI, gebruikt u de opdracht [AZ monitor Activity-Log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) .
 
-Met deze opdracht worden de activiteitenlogboeken in een resourcegroep gemaakt sinds de begintijd:
+Met deze opdracht worden de activiteiten Logboeken in een resource groep sinds de begin tijd weer gegeven:
 
 ```azurecli
 az monitor activity-log list --resource-group pharma-sales --start-time 2018-04-20T00:00:00Z
 ```
 
-Met deze opdracht worden de activiteitenlogboeken voor de autorisatie-resourceprovider sinds de begintijd:
+Met deze opdracht worden de activiteiten logboeken voor de provider van de autorisatie resource sinds de begin tijd weer gegeven:
 
 ```azurecli
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
@@ -110,44 +110,44 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
-[Logboeken in Azure Monitor](../log-analytics/log-analytics-overview.md) is een ander hulpprogramma, kunt u het verzamelen en analyseren van RBAC-wijzigingen voor al uw Azure-resources. Logboeken in Azure Monitor biedt de volgende voordelen:
+[Azure monitor](../log-analytics/log-analytics-overview.md) -Logboeken is een ander hulp programma dat u kunt gebruiken om RBAC-wijzigingen voor al uw Azure-resources te verzamelen en te analyseren. Azure Monitor logboeken heeft de volgende voor delen:
 
-- Schrijven van complexe query's en logica
-- Integreren met waarschuwingen, Power BI en andere hulpprogramma 's
-- Gegevens worden opgeslagen voor langere bewaarperioden
-- Met andere logboeken zoals beveiliging, de virtuele machine en de aangepaste kruisverwijzing
+- Complexe query's en logica schrijven
+- Integreren met waarschuwingen, Power BI en andere hulpprogram ma's
+- Gegevens opslaan voor langere Bewaar perioden
+- Kruis verwijzing met andere logboeken, zoals beveiliging, virtuele machine en aangepast
 
-Hier volgen de basisstappen om te beginnen:
+Hier volgen de basis stappen om aan de slag te gaan:
 
-1. [Een Log Analytics-werkruimte maken](../azure-monitor/learn/quick-create-workspace.md).
+1. [Maak een log Analytics-werk ruimte](../azure-monitor/learn/quick-create-workspace.md).
 
-1. [De oplossing Activity Log Analytics configureren](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) voor uw werkruimte.
+1. [Configureer de analyse van activiteitenlogboek-oplossing](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) voor uw werk ruimte.
 
-1. [Bekijk de activiteitenlogboeken](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Een snelle manier om te navigeren naar de pagina overzicht van Activity Log Analytics-oplossing is om op de **Log Analytics** optie.
+1. [Bekijk de activiteiten logboeken](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Een snelle manier om naar de overzichts pagina van de Analyse van activiteitenlogboek oplossing te gaan, is door te klikken op de optie **log Analytics** .
 
-   ![Azure Monitor beschikbaar optie zijn in portal](./media/change-history-report/azure-log-analytics-option.png)
+   ![Optie Azure Monitor Logboeken in Portal](./media/change-history-report/azure-log-analytics-option.png)
 
-1. (Optioneel) gebruik van de [zoeken in logboeken](../log-analytics/log-analytics-log-search.md) pagina of het [portal Advanced Analytics](../azure-monitor/log-query/get-started-portal.md) query's uitvoeren en bekijk de logboeken. Zie voor meer informatie over deze twee opties [pagina voor zoeken in Logboeken of de portal Advanced Analytics](../azure-monitor/log-query/portals.md).
+1. Gebruik eventueel de pagina [zoeken](../log-analytics/log-analytics-log-search.md) in Logboeken of de [Portal voor geavanceerde analyse](../azure-monitor/log-query/get-started-portal.md) om de logboeken te zoeken en weer te geven. Voor meer informatie over deze twee opties raadpleegt u [de pagina zoeken in Logboeken of de portal Advanced Analytics](../azure-monitor/log-query/portals.md).
 
-Hier volgt een query waarmee nieuwe roltoewijzingen ingedeeld door de doel-resourceprovider geretourneerd:
+Hier volgt een query waarmee nieuwe roltoewijzingen worden geretourneerd die zijn ingedeeld op de doel resource provider:
 
 ```
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
+| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
 | parse ResourceId with * "/providers/" TargetResourceAuthProvider "/" *
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
 
-Hier volgt een query die wordt geretourneerd van wijzigingen aan toewijzingen van rol in een diagram weergegeven:
+Hier volgt een query die de gewijzigde roltoewijzingen in een grafiek retourneert:
 
 ```
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments"
-| summarize count() by bin(TimeGenerated, 1d), OperationName
+| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments"
+| summarize count() by bin(TimeGenerated, 1d), OperationNameValue
 | render timechart
 ```
 
-![Activiteitenlogboeken via de portal Advanced Analytics - schermafbeelding](./media/change-history-report/azure-log-analytics.png)
+![Activiteiten logboeken met behulp van de geavanceerde analyse portal-scherm opname](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Gebeurtenissen in het activiteitenlogboek bekijken](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)

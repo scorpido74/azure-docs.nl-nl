@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 08/29/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: a0c34e30e52bd2a6d57e2cf8299f231f7f2960d9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e883e231988e63d22cb990224d240b1c13fb04b6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147946"
+ms.locfileid: "70164437"
 ---
 ::: zone target="docs"
 
@@ -335,6 +335,6 @@ Voer de volgende stappen uit om uw gegevens te verifiëren.
 1. Voer `DataBoxDiskValidation.cmd` uit in de map *DataBoxDiskImport* van het station om de controlesom te controleren.
 2. Gebruik optie 2 om uw bestanden te valideren en controle sommen te genereren. Afhankelijk van de gegevensgrootte kan deze stap enige tijd in beslag nemen. Als er fouten optreden tijdens de validatie en het genereren van de controlesom, krijgt u hiervan een melding en ziet u ook een koppeling naar de foutenlogboeken.
 
-    Zie [gegevens valideren](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)voor meer informatie over gegevens validatie. Zie [problemen oplossen met validatie fouten](https://docs.microsoft.com/en-us/azure/databox/data-box-disk-troubleshoot){: target = "_blank"} als u tijdens de validatie fouten ondervindt.
+    Zie [gegevens valideren](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)voor meer informatie over gegevens validatie. Zie [problemen met validatie fouten oplossen](data-box-disk-troubleshoot.md)als u problemen ondervindt tijdens de validatie.
 
 ::: zone-end

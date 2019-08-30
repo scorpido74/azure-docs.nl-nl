@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d3128144a06f4faa46d18650c3dd2c21f72afc1c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707367"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164789"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Quickstart: Face client-bibliotheek voor python
 
@@ -135,7 +135,7 @@ Met de volgende code wordt een **PersonGroup** gemaakt met drie verschillende **
 
 ### <a name="create-persongroup"></a>PersonGroup maken
 
-Als u dit scenario wilt uitvoeren, moet u de volgende installatie kopieën opslaan in de hoofd directory van uw https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images project:.
+Als u dit scenario wilt door lopen, moet u de volgende installatie kopieën opslaan in de hoofd directory van uw https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images project:.
 
 Deze groep met installatie kopieën bevat drie sets gezichts afbeeldingen die overeenkomen met drie verschillende personen. Met de code worden drie **persoons** objecten gedefinieerd en gekoppeld aan afbeeldings bestanden die `woman`beginnen `man`met, `child`en.
 
@@ -161,7 +161,7 @@ Zodra u gezichten hebt toegewezen, moet u de **PersonGroup** trainen zodat deze 
 
 ## <a name="identify-a-face"></a>Een gezicht identificeren
 
-De volgende code neemt een afbeelding met meerdere gezichten en zoekt naar de identiteit van elke persoon in de installatie kopie. Elk gedetecteerd gezicht wordt vergeleken met een **PersonGroup**, een Data Base van verschillende **personen** -objecten waaraan elk aantal gezichten is gekoppeld. 
+De volgende code neemt een afbeelding met meerdere gezichten en zoekt naar de identiteit van elke persoon in de installatie kopie. Elk gedetecteerd gezicht wordt vergeleken met een **PersonGroup**, een Data Base van verschillende **personen** -objecten waarvan de gezichts kenmerken bekend zijn.
 
 > [!IMPORTANT]
 > Als u dit voor beeld wilt uitvoeren, moet u eerst de code uitvoeren in [een persoons groep maken en trainen](#create-and-train-a-person-group).
@@ -188,7 +188,7 @@ In dit voor beeld migreert u de **PersonGroup** die u hebt gemaakt in [een perso
 
 Eerst moet u een tweede Azure-abonnement hebben met een face-resource. u kunt dit doen door de stappen in de sectie [instellen](#setting-up) te volgen. 
 
-Maak vervolgens de volgende variabelen aan de bovenkant van uw script. U moet ook nieuwe omgevings variabelen maken voor de abonnements-ID van uw Azure-account, evenals de sleutel en de abonnements-ID van uw nieuwe (doel) account. 
+Maak vervolgens de volgende variabelen aan de bovenkant van uw script. U moet ook nieuwe omgevings variabelen maken voor de abonnements-ID van uw Azure-account, evenals de sleutel, het eind punt en de abonnements-ID van uw nieuwe (doel) account. 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 

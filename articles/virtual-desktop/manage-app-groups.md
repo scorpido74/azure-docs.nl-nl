@@ -1,71 +1,75 @@
 ---
-title: App-groepen beheren voor Windows Virtual Desktop Preview - Azure
-description: Beschrijft hoe u voor het instellen van Windows Virtual Desktop Preview tenants in Azure Active Directory.
+title: App-groepen beheren voor Windows virtueel bureau blad-preview-Azure
+description: Hierin wordt beschreven hoe u Windows Virtual Desktop-Preview-tenants instelt in Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 73425df1f0cfedd2a681650fc2b536a652b621d5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206678"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163260"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Zelfstudie: App-groepen beheren voor Windows Virtual Desktop Preview
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Zelfstudie: App-groepen beheren voor Windows virtueel bureau blad-preview
 
-De standaard-app-groep gemaakt voor een nieuwe groep van de host Windows Virtual Desktop Preview publiceert ook het volledige bureaublad. Bovendien kunt u een of meer RemoteApp-toepassingsgroepen voor de host-groep maken. Volg deze zelfstudie voor een RemoteApp-app-groep maken en publiceren van afzonderlijke **Start** menu apps.
+De standaard-app-groep die is gemaakt voor een nieuwe Windows-hostgroep voor virtuele bureau blad-voor beeld publiceert ook het volledige bureau blad. Daarnaast kunt u een of meer RemoteApp-toepassings groepen maken voor de hostgroep. Volg deze zelf studie voor het maken van een RemoteApp-app-groep en het publiceren van afzonderlijke apps in het **Start** menu.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een RemoteApp-groep maken.
-> * Toegang verlenen tot RemoteApp-programma's.
+> * Toegang verlenen aan RemoteApp-program ma's.
 
-Voordat u begint, [downloaden en importeren van de Windows virtuele bureaublad PowerShell-module](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) te gebruiken in uw PowerShell-sessie als u dat nog niet gedaan hebt.
+Voordat u begint, moet u [de Power shell-module voor virtueel bureau blad van Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) voor gebruik in uw Power shell-sessie downloaden en importeren als u dat nog niet hebt gedaan. Daarna voert u de volgende cmdlet uit om u aan te melden bij uw account:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="create-a-remoteapp-group"></a>Een RemoteApp-groep maken
 
-1. Voer de volgende PowerShell-cmdlet voor het maken van een nieuwe lege RemoteApp-app-groep.
+1. Voer de volgende Power shell-cmdlet uit om een nieuwe lege RemoteApp-toepassings groep te maken.
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
    ```
 
-2. (Optioneel) Als u wilt controleren of de app-groep is gemaakt, kunt u de volgende cmdlet als u wilt zien van een lijst van alle app-groepen voor de groep host uitvoeren.
+2. Beschrijving Als u wilt controleren of de app-groep is gemaakt, kunt u de volgende cmdlet uitvoeren om een lijst met alle app-groepen voor de hostgroep weer te geven.
 
    ```powershell
    Get-RdsAppGroup <tenantname> <hostpoolname>
    ```
 
-3. Voer de volgende cmdlet om een lijst **Start** menu apps op de installatiekopie van de virtuele machine van de host-pool. Noteer de waarden voor **FilePath**, **IconPath**, **IconIndex**, en andere belangrijke informatie voor de toepassing die u wilt publiceren.
+3. Voer de volgende cmdlet uit om een lijst met apps in het menu **Start** op te halen voor de installatie kopie van de virtuele machine van de hostgroep. Noteer de waarden voor **filepath**, **IconPath**, **Icon index**en andere belang rijke informatie voor de toepassing die u wilt publiceren.
 
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Voer de volgende cmdlet voor het installeren van de toepassing op basis van `AppAlias`. `AppAlias` Wanneer u de uitvoer uit stap 3 uitvoert, wordt weergegeven.
+4. Voer de volgende cmdlet uit om de toepassing te installeren `AppAlias`op basis van. `AppAlias`wordt weer gegeven wanneer u de uitvoer uit stap 3 uitvoert.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. (Optioneel) Voer de volgende cmdlet voor het publiceren van een nieuwe RemoteApp-programma aan de groep van toepassingen in stap 1 hebt gemaakt.
+5. Beschrijving Voer de volgende cmdlet uit om een nieuw RemoteApp-programma te publiceren naar de toepassings groep die u in stap 1 hebt gemaakt.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
-6. Om te controleren dat de app is gepubliceerd, moet u de volgende cmdlet uitvoeren.
+6. Voer de volgende cmdlet uit om te controleren of de app is gepubliceerd.
 
    ```powershell
    Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
    ```
 
-7. Herhaal stappen 1-5 voor elke toepassing die u wilt publiceren voor deze app-groep.
-8. Voer de volgende cmdlet om gebruikers toegang tot de RemoteApp-programma's in de app-groep.
+7. Herhaal de stappen 1 tot en met 5 voor elke toepassing die u voor deze app-groep wilt publiceren.
+8. Voer de volgende cmdlet uit om gebruikers toegang te verlenen tot de RemoteApp-program ma's in de app-groep.
 
    ```powershell
    Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
@@ -73,7 +77,7 @@ Voordat u begint, [downloaden en importeren van de Windows virtuele bureaublad P
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u een app-groep maken, deze vullen met RemoteApp-programma's en gebruikers toewijzen aan de app-groep. Zie de volgende zelfstudie voor meer informatie over het maken van een pool van de host validatie. U kunt een pool van de host validatie gebruiken voor het bewaken van service-updates voordat uitrollen naar uw productieomgeving.
+In deze zelf studie hebt u geleerd hoe u een app-groep kunt maken, deze kunt vullen met RemoteApp-program ma's en gebruikers kunt toewijzen aan de app-groep. Zie de volgende zelf studie voor meer informatie over het maken van een groep met validatie-hosts. U kunt een groep validatie-host gebruiken om service-updates te controleren voordat u deze naar uw productie omgeving doorvoert.
 
 > [!div class="nextstepaction"]
-> [Maken van een groep host voor het valideren van service-updates](./create-validation-host-pool.md)
+> [Een hostgroep maken om service-updates te valideren](./create-validation-host-pool.md)

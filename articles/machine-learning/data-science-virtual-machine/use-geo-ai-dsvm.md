@@ -16,38 +16,38 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: vijetaj
-ms.openlocfilehash: 9bca7089e6137b3780e3d22f50887e880be29d8e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22c0d7d604ca41044d2d969d4ddbd2ae1a4d23d5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565073"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170485"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Met behulp van de Geo kunstmatige intelligentie Data Science Virtual Machine
 
-De Geo AI Data Science VM gebruiken voor het ophalen van gegevens voor analyse, het uitvoeren van data wrangling en bouw modellen voor AI-toepassingen die georuimtelijke gegevens gebruiken. Nadat u hebt uw Geo AI Data Science VM ingericht en ArcGIS Pro aangemeld met uw ArcGIS-account, kunt u de interactie met ArcGIS-desktop- en ArcGis online kunt starten. U kunt ook toegang tot ArcGIS van Python-interfaces en een R-taal bridge vooraf is geconfigureerd op de Geo-Data Science VM. Voor het bouwen van uitgebreide AI-toepassingen, kunt u het combineren met de machine learning- en deep learning-frameworks en andere gegevens wetenschappelijke software die beschikbaar is op de Data Science VM.  
+De Geo AI Data Science VM gebruiken voor het ophalen van gegevens voor analyse, het uitvoeren van data wrangling en bouw modellen voor AI-toepassingen die georuimtelijke gegevens gebruiken. Nadat u uw Geo AI Data Science VM hebt ingericht en u bent aangemeld bij ArcGIS Pro via uw ArcGIS-account, kunt u beginnen met ArcGIS Desktop en ArcGIs online. U kunt ook toegang krijgen tot ArcGIS van python-interfaces en een R-taal brug die vooraf is geconfigureerd op de geo-Data Science VM. Als u uitgebreide AI-toepassingen wilt bouwen, combineert u de geo-Data Science VM met de machine learning-en learning frameworks en andere data Science-software die erop beschikbaar zijn.  
 
 
 ## <a name="configuration-details"></a>Configuratiegegevens
 
-De Python-clientbibliotheek [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), die wordt gebruikt voor interactie met ArcGIS is geïnstalleerd in de algemene root conda-omgeving van de Data Science VM die is gevonden op ```c:\anaconda```. 
+De python-bibliotheek, [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), die wordt gebruikt voor de interface met ArcGIS, wordt geïnstalleerd in de globale hoofd Conda-omgeving van de data Science VM die ```c:\anaconda```is gevonden op.
 
-- Als u Python in een opdrachtprompt uitvoert, voert u ```activate``` activeren in de conda basis Python-omgeving. 
-- Als u een IDE- of Jupyter-notebook gebruikt, kunt u de omgeving of de kernel om te controleren of dat u zich in de juiste conda-omgeving selecteren. 
+- Als u python uitvoert vanaf een opdracht prompt, voert u ```activate``` uit om in te scha kelen in de Conda-hoofd-python-omgeving.
+- Als u een IDE-of Jupyter-notebook gebruikt, kunt u de omgeving of kernel selecteren om er zeker van te zijn dat u zich in de juiste Conda-omgeving bevindt.
 
-De R-brug en ArcGIS wordt geïnstalleerd als een R-bibliotheek met de naam [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) in de belangrijkste Microsoft R server zelfstandige-exemplaar dat zich bevindt in ```C:\Program Files\Microsoft\ML Server\R_SERVER```. Visual Studio, RStudio en Jupyter zijn al vooraf geconfigureerd voor het gebruik van deze R-omgeving en hebben toegang tot de ```arcgisbinding``` R-bibliotheek. 
+De R-brug naar ArcGIS is geïnstalleerd als R-bibliotheek met de naam [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) in het hoofd Microsoft machine learning server zelfstandige instantie dat ```C:\Program Files\Microsoft\ML Server\R_SERVER```zich bevindt. Visual Studio, RStudio en Jupyter zijn al vooraf geconfigureerd voor het gebruik van deze r-omgeving en hebben toegang tot de ```arcgisbinding``` r-bibliotheek. 
 
 
 ## <a name="geo-ai-data-science-vm-samples"></a>Voorbeelden van de geo AI Data Science VM
 
-Naast de ML en deep learning framework op basis van voorbeelden van de basis Data Science VM, is ook een reeks georuimtelijke voorbeelden beschikbaar als onderdeel van de Geo AI Data Science VM. Aan de hand van deze voorbeelden kunnen u snel het ontwikkelen van AI-toepassingen met behulp van georuimtelijke gegevens en de ArcGIS-software. 
+Naast de voor beelden op het gebied van machine learning en diep gaande Framework uit het basis Data Science VM, wordt er ook een reeks georuimtelijke steek proeven gegeven als onderdeel van de geo AI-Data Science VM. Deze voor beelden kunnen u helpen bij het starten van de ontwikkeling van AI-toepassingen met behulp van georuimtelijke gegevens en de ArcGIS-software:
 
 
-1. [Krijg de voor bereiding van georuimtelijke analyse met python](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Een inleidend voor beeld waarin wordt getoond hoe u met georuimtelijke gegevens werkt met behulp van de Python-interface, die wordt ArcGIS door de [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) -bibliotheek. U ziet ook hoe u traditionele machine learning met georuimtelijke gegevens combineren en het resultaat op een kaart in ArcGIS visualiseren. 
+1. [Aan de slag met georuimtelijke analyse met python](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Een inleidend voor beeld waarin wordt getoond hoe u met georuimtelijke gegevens kunt werken via de Python-interface naar ArcGIS, wordt gegeven door de [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) -bibliotheek. Ook wordt uitgelegd hoe u traditionele machine learning combineert met georuimtelijke gegevens en vervolgens het resultaat kunt visualiseren op een kaart in ArcGIS.
 
-2. De [voor bereiding van georuimtelijke analyse met R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Een voor beeld van een inleidende informatie over hoe u met georuimtelijke gegevens kunt werken met behulp van de R-interface voor ArcGIS van de [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) -bibliotheek. 
+2. [Aan de slag met een georuimtelijke analyse met R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Een voor beeld van een inleidende informatie over hoe u met georuimtelijke gegevens kunt werken met behulp van de R-interface voor ArcGIS die wordt weer gegeven door de [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) -bibliotheek. 
 
-3. [Classificatie voor land gebruik op pixel niveau](https://github.com/Azure/pixel_level_land_classification): Een zelf studie waarin wordt getoond hoe u een diepe Neural-netwerk model maakt dat een lucht afbeelding als invoer accepteert en een omslag label retourneert. Voorbeelden van land-cover labels zijn "forested" of "water". Het model geretourneerd die een label voor elke pixel in de afbeelding. Het model is gebouwd met behulp van Microsoft open source [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) deep learning-frameworks. 
+3. [Classificatie voor land gebruik op pixel niveau](https://github.com/Azure/pixel_level_land_classification): Een zelf studie waarin wordt getoond hoe u een diepe Neural-netwerk model maakt dat een lucht afbeelding als invoer accepteert en een omslag label retourneert. Voor beelden van landings etiketten zijn in een *forest* en *water*. Het model geretourneerd die een label voor elke pixel in de afbeelding. Het model wordt gemaakt met behulp van het micro soft open-source [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) diepe Learning-Framework.
 
 
 ## <a name="next-steps"></a>Volgende stappen

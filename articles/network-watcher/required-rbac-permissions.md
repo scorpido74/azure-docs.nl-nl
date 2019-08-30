@@ -1,6 +1,6 @@
 ---
-title: Vereiste machtigingen voor het gebruik van de mogelijkheden van Azure Network Watcher | Microsoft Docs
-description: Meer informatie over welke machtigingen voor het beheer van toegang van Azure op basis van rollen zijn vereist om te werken met Network Watcher-mogelijkheden.
+title: Benodigde machtigingen voor het gebruik van Azure Network Watcher mogelijkheden | Microsoft Docs
+description: Meer informatie over op rollen gebaseerde toegangs beheer machtigingen van Azure zijn vereist om met Network Watcher mogelijkheden te werken.
 services: network-watcher
 documentationcenter: ''
 author: KumudD
@@ -14,108 +14,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
-ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bd7e30a6a95d60bda4b7c3da44be1b8046bb71f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685701"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163802"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Machtigingen voor beheer op basis van de rol vereist voor het gebruik van Network Watcher-mogelijkheden
+# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Op rollen gebaseerde toegangs beheer machtigingen die zijn vereist voor het gebruik van Network Watcher mogelijkheden
 
-Op rollen gebaseerd toegangsbeheer in Azure (RBAC) kunt u alleen de specifieke acties toewijzen aan leden van uw organisatie die zij nodig hebben om hun toegewezen taken te voltooien. Voor het gebruik van Network Watcher-mogelijkheden, het account dat u zich aanmeldt bij Azure, moeten worden toegewezen aan de [eigenaar](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [Inzender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor), of [Inzender voor netwerken](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) ingebouwde rollen, of toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) die de acties die worden weergegeven voor elke functie Network Watcher in de volgende secties is toegewezen. Zie voor meer informatie over de mogelijkheden van Network Watcher [wat is Network Watcher?](network-watcher-monitoring-overview.md).
+Met op rollen gebaseerd toegangs beheer (RBAC) van Azure kunt u alleen de specifieke acties toewijzen aan leden van uw organisatie die ze nodig hebben om hun toegewezen verantwoordelijkheden te volt ooien. Als u Network Watcher mogelijkheden wilt gebruiken, moet het account waarmee u zich bij Azure aanmeldt, worden toegewezen aan de rol van [eigenaar](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)of [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) of worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) waaraan de vermelde acties zijn toegewezen voor elke Network Watcher mogelijkheid in de volgende secties. Zie [Wat is Network Watcher?](network-watcher-monitoring-overview.md)voor meer informatie over de mogelijkheden van Network Watcher.
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/read                              | Een network watcher ophalen                                          |
-| Microsoft.Network/networkWatchers/write                             | Maken of bijwerken van een network watcher                             |
-| Microsoft.Network/networkWatchers/delete                            | Een netwerk-watcher verwijderen                                       |
+| Microsoft.Network/networkWatchers/read                              | Een netwerk-Watcher ophalen                                          |
+| Microsoft.Network/networkWatchers/write                             | Een netwerk-Watcher maken of bijwerken                             |
+| Microsoft.Network/networkWatchers/delete                            | Een netwerk-Watcher verwijderen                                       |
 
 ## <a name="nsg-flow-logs"></a>NSG-stroomlogboeken
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | Een stroom logboek configureren                                           |
-| Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Querystatus van de voor een stroomlogboek                                    |
+| Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Query status voor een stroom logboek                                    |
 
-## <a name="connection-troubleshoot"></a>Probleemoplossing voor verbindingen
+## <a name="connection-troubleshoot"></a>Problemen met de verbinding oplossen
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/connectivityCheck/action          | Een verbinding initiëren test oplossen
-| Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | De resultaten van de query van een verbinding oplossen testen                |
-| Microsoft.Network/networkWatchers/troubleshoot/action               | Voer een verbinding testen oplossen                             |
+| Microsoft.Network/networkWatchers/connectivityCheck/action          | Problemen met testen van verbinding starten
+| Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Query resultaten van de test verbinding oplossen                |
+| Microsoft.Network/networkWatchers/troubleshoot/action               | Een test voor verbinding oplossen uitvoeren                             |
 
 ## <a name="connection-monitor"></a>Verbindingsmonitor
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Start een nieuwe Verbindingscontrole                                     |
-| Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Een nieuwe Verbindingscontrole te stoppen                                      |
-| Microsoft.Network/networkWatchers/connectionMonitors/query/action   | Query uitvoeren op een nieuwe Verbindingscontrole                                     |
-| Microsoft.Network/networkWatchers/connectionMonitors/read           | Een nieuwe Verbindingscontrole ophalen                                       |
+| Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Verbindings monitor starten                                     |
+| Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Verbindings monitor stoppen                                      |
+| Microsoft.Network/networkWatchers/connectionMonitors/query/action   | Query's uitvoeren op een verbindings monitor                                     |
+| Microsoft.Network/networkWatchers/connectionMonitors/read           | Een verbindings monitor ophalen                                       |
 | Microsoft.Network/networkWatchers/connectionMonitors/write          | Een verbindingsmonitor maken                                    |
-| Microsoft.Network/networkWatchers/connectionMonitors/delete         | Een verbindingsmonitor verwijderen                                    |
+| Microsoft.Network/networkWatchers/connectionMonitors/delete         | Een verbindings monitor verwijderen                                    |
 
 ## <a name="packet-capture"></a>Pakketopname
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | De status van een pakketopname opvragen                           |
-| Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Een pakketopname stoppen                                          |
-| Microsoft.Network/networkWatchers/packetCaptures/read               | Een pakketopname ophalen                                           |
-| Microsoft.Network/networkWatchers/packetCaptures/write              | een pakketopname maken                                        |
-| Microsoft.Network/networkWatchers/packetCaptures/delete             | Een pakketopname verwijderen                                        |
+| Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | De status van een pakket opname opvragen                           |
+| Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Een pakket opname stoppen                                          |
+| Microsoft.Network/networkWatchers/packetCaptures/read               | Pakket opname ophalen                                           |
+| Microsoft.Network/networkWatchers/packetCaptures/write              | Een pakket opname maken                                        |
+| Microsoft.Network/networkWatchers/packetCaptures/delete             | Een pakket opname verwijderen                                        |
 
-## <a name="ip-flow-verify"></a>IP-stroomverificatie
+## <a name="ip-flow-verify"></a>IP-stroom controleren
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/ipFlowVerify/action               | Een IP-stroom controleren                                              |
 
 ## <a name="next-hop"></a>Volgende hop
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/nextHop/action                    | De volgende hop van een virtuele machine ophalen                                     |
 
 ## <a name="network-security-group-view"></a>Netwerkbeveiligingsgroep weergeven
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/securityGroupView/action          | Weergave-beveiligingsgroepen                                           |
+| Microsoft.Network/networkWatchers/securityGroupView/action          | Beveiligings groepen weer geven                                           |
 
 ## <a name="topology"></a>Topologie
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | Topologie ophalen                                                   |
 
-## <a name="reachability-report"></a>Bereikbaarheid rapport
+## <a name="reachability-report"></a>Bereik baarheids rapport
 
-| Bewerking                                                              | Name                                                           |
+| Action                                                              | Description                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Een Azure bereikbaarheid rapport ophalen                               |
+| Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Een Azure-bereik baarheids rapport ophalen                               |
+
 
 ## <a name="additional-actions"></a>Aanvullende acties
 
-Functionaliteit van Network Watcher is ook vereist voor de volgende acties:
+Voor Network Watcher mogelijkheden zijn ook de volgende acties vereist:
 
-- Microsoft.Authorization/\*/Read
-- Microsoft.Resources/subscriptions/resourceGroups/Read
-- Microsoft.Storage/storageAccounts/Read
-- Microsoft.Storage/storageAccounts/listServiceSas/Action
-- Microsoft.Storage/storageAccounts/listAccountSas/Action
-- Microsoft.Storage/storageAccounts/listKeys/Action
-- Microsoft.Compute/virtualMachines/Read
-- Microsoft.Compute/virtualMachines/Write
-- Microsoft.Compute/virtualMachines/extensions/Read
-- Microsoft.Compute/virtualMachines/extensions/Write
-- Microsoft.Compute/virtualMachineScaleSets/Read
-- Microsoft.Compute/virtualMachineScaleSets/Write
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Read
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Write
-- Microsoft.Insights/alertRules/*
-- Microsoft.Support/*
+| Actie (s)                                                           | Description                                                    |
+| ---------                                                           | -------------                                                  |
+| Micro soft. Authorization/\*/Read                                     | Wordt gebruikt voor het ophalen van RBAC-Roltoewijzingen en beleids definities          |
+| Microsoft.Resources/subscriptions/resourceGroups/Read               | Gebruikt voor het inventariseren van alle resource groepen in een abonnement    |
+| Microsoft.Storage/storageAccounts/Read                              | Wordt gebruikt om de eigenschappen van het opgegeven opslag account op te halen   |
+| Micro soft. Storage/Storage accounts/listServiceSas/Action, </br> Micro soft. Storage/Storage accounts/listAccountSas/Action, <br> Microsoft.Storage/storageAccounts/listKeys/Action| Gebruikt voor het ophalen van Shared Access signatures (SAS) om [beveiligde toegang tot het opslag account](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) in te scha kelen en te schrijven naar het opslag account |
+| Micro soft. Compute/informatie/lezen, </br> Microsoft.Compute/virtualMachines/Write| Wordt gebruikt om u aan te melden bij de VM, een pakket vast te leggen en dit te uploaden naar een opslag account|
+| Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| Wordt gebruikt om te controleren of Network Watcher extensie aanwezig is en zo nodig installeren |
+| Micro soft. Compute/virtualMachineScaleSets/lezen, </br> Microsoft.Compute/virtualMachineScaleSets/Write| Wordt gebruikt om toegang te krijgen tot de schaal sets van virtuele machines, pakketten vastleggen en uploaden naar het opslag account|
+| Micro soft. Compute/virtualMachineScaleSets/uitbrei dingen/lezen, </br> Microsoft.Compute/virtualMachineScaleSets/extensions/Write| Wordt gebruikt om te controleren of Network Watcher extensie aanwezig is en zo nodig installeren |
+| Microsoft.Insights/alertRules/*                                     | Gebruikt voor het instellen van metrische waarschuwingen                                     |
+| Microsoft.Support/*                                                 | Wordt gebruikt om ondersteunings tickets te maken en bij te werken van Network Watcher |

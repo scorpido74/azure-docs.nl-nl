@@ -3,16 +3,16 @@ title: Ondersteunings matrix voor de Microsoft Azure Recovery Services-agent (MA
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 599d3f97ea30b096999d754a995af2ba660c0bc3
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951985"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186167"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -72,20 +72,22 @@ Netwerk beperking | Niet beschikbaar voor back-ups van computers waarop Windows 
 
 U kunt de MARS-agent gebruiken om rechtstreeks een back-up naar Azure te maken op bepaalde besturings systemen die worden uitgevoerd op on-premises machines en Azure-Vm's. De besturings systemen moeten 64 bits zijn en moeten de nieuwste service packs en updates uitvoeren. De volgende tabel bevat een overzicht van deze besturings systemen:
 
-**Besturingssysteem** | **Bestanden/mappen** | **Systeem status** 
---- | --- | --- 
-Windows 10 (Enterprise, Pro, Home) | Ja | Nee
-Windows 8,1 (Enter prise, Pro)| Ja |Nee
-Windows 8 (Enterprise, Pro) | Ja | Nee
-Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja | Nee
-Windows Server 2016 (Standard, Data Center, Essentials) | Ja | Ja
-Windows Server 2012 R2 (Standard, Data Center, Foundation, Essentials) | Ja | Ja
-Windows Server 2012 (Standard, Data Center, Foundation) | Ja | Ja
-Windows Server 2008 R2 (Standard, Enter prise, Data Center, Foundation) | Ja | Ja
-Windows Server 2008 SP2 (Standard, Data Center, Foundation) | Ja | Nee
-Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Ja | Nee
+**Besturingssysteem** | **Bestanden/mappen** | **Systeem status** | **Vereisten voor software/modules**
+--- | --- | --- | ---
+Windows 10 (Enterprise, Pro, Home) | Ja | Nee |  Controleer de bijbehorende server versie voor vereisten voor software/modules
+Windows 8,1 (Enter prise, Pro)| Ja |Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
+Windows 8 (Enterprise, Pro) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
+Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
+Windows Server 2016 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
+Windows Server 2012 R2 (Standard, Data Center, Foundation, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
+Windows Server 2012 (Standard, Data Center, Foundation) | Ja | Ja |-.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe)
+Windows Server 2008 R2 (Standard, Enter prise, Data Center, Foundation) | Ja | Ja | -.NET 3,5, .net 4,5 <br> -Windows Power shell <br> -Compatibel micro soft VC + + Redistributable <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe)
+Windows Server 2008 SP2 (Standard, Data Center, Foundation) | Ja | Nee | -.NET 3,5, .net 4,5 <br> -Windows Power shell <br> -Compatibel micro soft VC + + Redistributable <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM. exe) <br> -Virtual Server 2005 base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Ja | Nee | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
+Windows Server 2019 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 
 Zie [supported MABS and DPM Operating Systems](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)(Engelstalig) voor meer informatie.
+
 
 ## <a name="backup-limits"></a>Back-uplimieten
 

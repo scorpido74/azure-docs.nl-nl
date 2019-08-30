@@ -1,33 +1,44 @@
 ---
-title: Zelfstudie voor Azure Data Box zware terugsturen | Microsoft Docs
-description: Leer hoe u uw Azure Data Box zware naar Microsoft verzenden
+title: Zelf studie voor het verzenden van Azure Data Box Heavy | Microsoft Docs
+description: Meer informatie over het verzenden van uw Azure Data Box Heavy naar micro soft
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 84db33e4c7ac612353c590ac9d2904ac3bc48d38
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d8d9478441ffe3962f450bed7bfddf2776386617
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592395"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164398"
 ---
-# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Zelfstudie: Azure Data Box zware retourneren en controleer of het uploaden van gegevens naar Azure
+::: zone target = "docs"
 
+# <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Zelfstudie: Retour Azure Data Box Heavy en controleer het uploaden van gegevens naar Azure
 
-In deze zelfstudie wordt beschreven hoe u Azure Data Box zware retourneren en controleer of de gegevens geüpload naar Azure.
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Retour Azure Data Box Heavy en controleer het uploaden van gegevens naar Azure
+
+::: zone-end
+
+::: zone target = "docs"
+
+In deze zelf studie wordt beschreven hoe u Azure Data Box Heavy retourneert en controleert u de gegevens die zijn geüpload naar Azure.
 
 In deze zelfstudie vindt u informatie over onderwerpen als:
 
 > [!div class="checklist"]
 > * Vereisten
 > * Voorbereiding voor verzending
-> * Data Box-zwaar naar Microsoft verzenden
+> * Data Box Heavy verzenden naar micro soft
 > * De gegevensupload naar Azure controleren
-> * Verwijdering van gegevens van Data Box-zwaar
+> * Verwijdering van gegevens uit Data Box Heavy
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,53 +47,86 @@ Zorg voordat u begint voor het volgende:
 - U hebt de zelfstudie [ Gegevens kopiëren naar Azure Data Box en deze gegevens controleren](data-box-heavy-deploy-copy-data.md).
 - Kopieertaken zijn voltooid. Voorbereiding voor verzending kan niet worden uitgevoerd als er nog kopieertaken worden uitgevoerd.
 
+
 ## <a name="prepare-to-ship"></a>Voorbereiding voor verzending
 
 [!INCLUDE [data-box-heavy-prepare-to-ship](../../includes/data-box-heavy-prepare-to-ship.md)]
 
-## <a name="ship-data-box-heavy-back"></a>Verzend gegevens in het zware terug
+::: zone-end
 
-1. Zorg ervoor dat het apparaat is uitgeschakeld en alle kabels zijn verwijderd. In de wachtrij en de 4 stroomkabels veilig plaatsen in de lade die toegankelijk is vanaf de achterkant van het apparaat.
-2. Het apparaat wordt geleverd LTL vrachtkosten via FedEx in de Verenigde Staten en DHL in de EU
+::: zone target = "chromeless"
 
-    1. Contact opnemen met [vak gegevensbewerkingen](mailto:DataBoxOps@microsoft.com) om u te informeren over het ophalen en aan het retourlabel.
-    2. Aanroepen van het lokale nummer voor de vervoerder voor het plannen van het ophalen.
-    3. Zorg ervoor dat het verzendlabel duidelijk zichtbaar op de buitenkant van de verzending wordt weergegeven.
-    4. Zorg ervoor dat de oude verzending labels van de eerdere verzending van het apparaat worden verwijderd.
-3. Zodra de gegevens in het zware opgehaald en gecontroleerd door uw provider, de status van de in de portal voor updates **opgehaald**. Er wordt ook een tracerings-id weergegeven.
+## <a name="prepare-to-ship"></a>Voorbereiding voor verzending
+
+Voordat u het verzenden voorbereidt, moet u ervoor zorgen dat de Kopieer taken zijn voltooid.
+
+1. Ga naar voorbereiding voor verzending pagina in de lokale web-UI en start de voor bereiding voor de verzen ding.
+2. Schakel het apparaat uit in de lokale webgebruikersinterface. Verwijder de kabels uit het apparaat.
+
+U bent nu klaar om uw apparaat terug te leveren.
+
+::: zone-end
+
+## <a name="ship-data-box-heavy-back"></a>Data Box Heavy back verzenden
+
+1. Zorg ervoor dat het apparaat is uitgeschakeld en dat alle kabels worden verwijderd. U kunt de 4 stroom kabels in de lade van de wachtrij plaatsen en deze veilig vanaf de achtergrond van het apparaat gebruiken.
+2. Het apparaat verzendt LTL vracht via FedEx in de VS en DHL in de EU
+
+    1. Neem contact op met [Data Box bewerkingen](mailto:DataBoxOps@microsoft.com) om te informeren over de ophaling en om het verzend label voor de retour zending op te halen.
+    2. Bel het lokale nummer voor uw vervoerders om het ophalen te plannen.
+    3. Zorg ervoor dat het verzend label prominent op de buiten kant van de verzen ding wordt weer gegeven.
+    4. Zorg ervoor dat de oude verzendlabels van de vorige verzen ding worden verwijderd van het apparaat.
+3. Zodra de Data Box Heavy wordt opgehaald en gescand door uw provider, wordt de status van de bestelling in de portal bijgewerkt om te worden **opgehaald**. Er wordt ook een tracerings-id weergegeven.
+
+::: zone target = "docs"
 
 ## <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
 
 Wanneer Microsoft het apparaat heeft ontvangen en gescand, wordt de orderstatus bijgewerkt naar **Ontvangen**. Het apparaat wordt vervolgens fysiek gecontroleerd op schade of op tekenen dat ermee is geknoeid.
 
-Nadat de verificatie voltooid is, is de Data Box-zwaar verbonden met het netwerk in het Azure-datacenter. Het kopiëren van de gegevens start automatisch. Afhankelijk van de gegevensgrootte kan de kopieerbewerking enkele uren tot enkele dagen duren. U kunt de voortgang van de kopieertaak bewaken via de portal.
+Nadat de verificatie is voltooid, is de Data Box Heavy verbonden met het netwerk in het Azure-Data Center. Het kopiëren van de gegevens start automatisch. Afhankelijk van de gegevensgrootte kan de kopieerbewerking enkele uren tot enkele dagen duren. U kunt de voortgang van de kopieertaak bewaken via de portal.
 
 Nadat de kopie is voltooid, wordt de orderstatus bijgewerkt naar **Voltooid**.
 
-Controleer of uw gegevens is geüpload naar Azure voordat u het verwijderen van de bron. Uw gegevens, kunnen zich in:
+Controleer of uw gegevens zijn geüpload naar Azure voordat u deze verwijdert uit de bron. Uw gegevens kunnen de volgende zijn:
 
-- Uw Azure-Opslagaccount (s). Als u de gegevens naar Data Box kopieert, worden de gegevens naar een van de volgende paden in uw Azure Storage-account geüpload, afhankelijk van het gegevenstype.
+- Uw Azure Storage-account (s). Als u de gegevens naar Data Box kopieert, worden de gegevens naar een van de volgende paden in uw Azure Storage-account geüpload, afhankelijk van het gegevenstype.
 
   - Voor blok-blobs en pagina-blobs: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
   - Voor Azure Files: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     U kunt ook naar uw Azure-opslagaccount in de Azure-portal gaan en van daaruit navigeren.
 
-- Uw beheerde schijf resourcegroepen bevinden. Bij het maken van beheerde schijven, wordt de VHD's worden geüpload als pagina-blobs, en vervolgens geconverteerd naar beheerde schijven. De beheerde schijven zijn gekoppeld aan de opgegeven op het moment van het maken van resourcegroepen. 
+- De resource groep (en) van de beheerde schijf. Bij het maken van beheerde schijven worden de Vhd's geüpload als pagina-blobs en vervolgens geconverteerd naar Managed disks. De beheerde schijven worden gekoppeld aan de resource groepen die zijn opgegeven op het moment dat de order wordt gemaakt. 
 
-    - Als uw kopiëren naar beheerde schijven in Azure voltooid is, gaat u naar de **detailgegevens Order** in Azure portal en maak een notitie van de resourcegroepen die is opgegeven voor beheerde schijven.
+    - Als uw kopie naar beheerde schijven in Azure is geslaagd, gaat u naar de details van de **order** in het Azure Portal en noteert u de resource groepen die zijn opgegeven voor beheerde schijven.
 
-        ![Beheerde schijf resourcegroepen identificeren](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
+        ![Resource groepen voor beheerde schijven identificeren](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
 
-        Ga naar de resourcegroep hebt genoteerd en zoek uw beheerde schijven.
+        Ga naar de genoteerde resource groep en zoek uw beheerde schijven.
 
-        ![Beheerde schijf die is gekoppeld aan resourcegroepen](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
+        ![Beheerde schijf die is gekoppeld aan resource groepen](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
-    - Als u een VHDX- of een dynamische/differentiërende VHD hebt gekopieerd, klikt u vervolgens de VHDX/VHD geüpload naar het tijdelijke opslagaccount dat als een pagina-blob, maar de conversie van VHD naar een beheerde schijf mislukt. Ga naar uw fasering **Storage-account > Blobs** en selecteer vervolgens de juiste container - Standard-SSD, harde schijf van Standard of Premium SSD. De VHD's worden geüpload als pagina-blobs in uw faseringsopslagaccount.
+    - Als u een VHDX of een dynamische/differentiërende VHD hebt gekopieerd, wordt de VHDX/VHD geüpload naar het staging Storage-account als een pagina-blob, maar wordt de conversie van de VHD naar een beheerde schijf mislukt. Ga naar uw staging- **opslag account > blobs** en selecteer vervolgens de juiste container-Standard-SSD, Standard-HDD of Premium-SSD. De Vhd's worden geüpload als pagina-blobs in uw staging Storage-account.
+    
+::: zone-end
 
-## <a name="erasure-of-data-from-data-box-heavy"></a>Verwijdering van gegevens van Data Box-zwaar
+::: zone target = "chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>De gegevensupload naar Azure controleren
+
+Wanneer het Data Box Heavy apparaat is verbonden met het Azure Data Center-netwerk, wordt het uploaden van gegevens naar Azure automatisch gestart. Data Box-Service meldt u dat het kopiëren van de gegevens is voltooid via de Azure Portal.
+
+- Controleer foutenlogboeken op eventuele fouten en onderneem toepasselijke acties.
+- Controleer of uw gegevens zich in de opslagaccount(s) bevinden voordat u deze uit de bron verwijdert.
+
+::: zone-end
+
+## <a name="erasure-of-data-from-data-box-heavy"></a>Verwijdering van gegevens uit Data Box Heavy
  
-Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box van de schijven gewist volgens de [richtlijnen van NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi). Nadat de verwijdering voltooid is, kunt u [downloaden van de ordergeschiedenis](data-box-portal-admin.md#download-order-history).
+Nadat de gegevens naar Azure zijn geüpload, worden de gegevens door de Data Box van de schijven gewist volgens de [richtlijnen van NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi). Nadat de verwijdering is voltooid, kunt u [de order geschiedenis downloaden](data-box-portal-admin.md#download-order-history).
+
+::: zone target = "docs"
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -91,13 +135,15 @@ In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen m
 > [!div class="checklist"]
 > * Vereisten
 > * Voorbereiding voor verzending
-> * Data Box-zwaar naar Microsoft verzenden
+> * Data Box Heavy verzenden naar micro soft
 > * De gegevensupload naar Azure controleren
-> * Verwijdering van gegevens van Data Box-zwaar
+> * Verwijdering van gegevens uit Data Box Heavy
 
-Ga naar het volgende artikel voor meer informatie over het beheren van gegevens in het zware via de lokale webgebruikersinterface.
+Ga naar het volgende artikel voor meer informatie over het beheren van Data Box Heavy via de lokale web-UI.
 
 > [!div class="nextstepaction"]
 > [De lokale webgebruikersinterface gebruiken voor het beheren van de Azure Data Box](./data-box-local-web-ui-admin.md)
+
+::: zone-end
 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626321"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174609"
 ---
 Voor geheugen geoptimaliseerde VM-grootten bieden een hoge geheugen-naar-CPU-verhouding die ideaal is voor relationele database servers, gemiddeld tot grote caches en analyse in het geheugen. In dit artikel vindt u informatie over het aantal Vcpu's, gegevens schijven en Nic's, evenals opslag doorvoer en netwerk bandbreedte voor elke grootte in deze groep.
 
@@ -147,7 +147,7 @@ Mv2-serie VM-functie Intel® Hyper-Threading-technologie
 
 <sup>1</sup> voor deze grote vm's is een van de volgende ondersteunde gast systemen vereist: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
-<sup>2</sup> vm's uit de Mv2-serie zijn alleen voor de generatie 2. Als u Linux gebruikt, raadpleegt u de volgende sectie voor het zoeken en selecteren van een SUSE Linux-installatie kopie.
+<sup>2</sup> vm's uit de Mv2-serie zijn alleen voor de [generatie 2](/azure/virtual-machines/linux/generation-2) . Als u Linux gebruikt, raadpleegt u de volgende sectie voor het zoeken en selecteren van een SUSE Linux-installatie kopie.
 
 #### <a name="find-a-suse-image"></a>Een SUSE-installatie kopie zoeken
 

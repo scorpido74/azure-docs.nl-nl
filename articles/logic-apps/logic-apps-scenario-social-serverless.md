@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 6f0176253d0f1953e9c779a317cfe7bf453acb8f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385445"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164867"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Het streaming-dash board voor klanten inzichten maken met Azure Logic Apps en Azure Functions
 
@@ -106,7 +106,7 @@ U kunt als volgt eerdere run-runs bekijken in Visual Studio of de Azure Portal:
 
 ## <a name="create-automated-deployment-templates"></a>Sjablonen voor automatische implementatie maken
 
-Nadat u een logische app-oplossing hebt gemaakt, kunt u uw app vastleggen en implementeren als [Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-overview.md#template-deployment) voor elke Azure-regio in de wereld. U kunt deze mogelijkheid gebruiken om para meters te wijzigen voor het maken van verschillende versies van uw app en voor het integreren van uw oplossing in azure-pijp lijnen. U kunt ook Azure Functions in uw implementatie sjabloon toevoegen, zodat u de volledige oplossing met alle afhankelijkheden als één sjabloon kunt beheren. Meer informatie over het automatiseren van de [implementatie van logische apps](logic-apps-azure-resource-manager-templates-overview.md).
+Nadat u een logische app-oplossing hebt gemaakt, kunt u uw app vastleggen en implementeren als [Azure Resource Manager sjabloon](../azure-resource-manager/template-deployment-overview.md) voor elke Azure-regio in de wereld. U kunt deze mogelijkheid gebruiken om para meters te wijzigen voor het maken van verschillende versies van uw app en voor het integreren van uw oplossing in azure-pijp lijnen. U kunt ook Azure Functions in uw implementatie sjabloon toevoegen, zodat u de volledige oplossing met alle afhankelijkheden als één sjabloon kunt beheren. Meer informatie over het automatiseren van de [implementatie van logische apps](logic-apps-azure-resource-manager-templates-overview.md).
 
 Voor een voorbeeld implementatie sjabloon met een Azure-functie raadpleegt u de [opslag plaats van de Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)start-sjabloon.
 

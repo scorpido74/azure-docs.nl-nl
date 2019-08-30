@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850986"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183573"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-end-status, Diagnostische logboeken en metrische gegevens voor Application Gateway
 
@@ -105,7 +105,7 @@ U kunt verschillende typen logboeken in azure gebruiken om toepassings gateways 
 U hebt drie opties voor het opslaan van uw logboeken:
 
 * **Opslagaccount**: Opslag accounts worden het beste gebruikt voor Logboeken wanneer logboeken worden opgeslagen voor een langere duur en worden gecontroleerd wanneer dit nodig is.
-* **Event hubs**: Event hubs zijn een uitstekende optie om te integreren met andere hulpprogram ma's voor SEIM (Security Information and Event Management) om waarschuwingen over uw resources te krijgen.
+* **Event hubs**: Event hubs zijn een uitstekende optie om te integreren met andere hulpprogram ma's voor SIEM (Security Information and Event Management) om waarschuwingen over uw resources te krijgen.
 * **Azure monitor logboeken**: Azure Monitor logboeken worden het beste gebruikt voor algemene realtime-bewaking van uw toepassing of voor het bekijken van trends.
 
 ### <a name="enable-logging-through-powershell"></a>Logboek registratie via Power shell inschakelen
@@ -157,7 +157,7 @@ Azure genereert standaard het activiteiten logboek. De logboeken blijven 90 dage
 
 Het toegangs logboek wordt alleen gegenereerd als u het hebt ingeschakeld op elk Application Gateway-exemplaar, zoals in de voor gaande stappen wordt beschreven. De gegevens worden opgeslagen in het opslag account dat u hebt opgegeven tijdens het inschakelen van de logboek registratie. Elke toegang van Application Gateway wordt geregistreerd in JSON-indeling, zoals wordt weer gegeven in het volgende voor beeld voor v1:
 
-|Waarde  |Description  |
+|Value  |Description  |
 |---------|---------|
 |instanceId     | Application Gateway exemplaar dat de aanvraag heeft verzonden.        |
 |clientIP     | Oorspronkelijk IP-adres voor de aanvraag.        |

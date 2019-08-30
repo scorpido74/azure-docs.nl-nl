@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: Accounts en machtigingen | Microsoft Docs'
-description: Dit onderwerp beschrijft de accounts gebruikt en die zijn gemaakt en de machtigingen die vereist zijn.
+description: In dit onderwerp wordt beschreven welke accounts worden gebruikt en gemaakt en welke machtigingen vereist zijn.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,244 +17,249 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919173"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186299"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Accounts en machtigingen
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Accounts die worden gebruikt voor Azure AD Connect
 
-![overzicht van serviceaccounts](media/reference-connect-accounts-permissions/account5.png)
+![overzicht van accounts](media/reference-connect-accounts-permissions/account5.png)
 
-Azure AD Connect maakt gebruik van 3-accounts om te synchroniseren van gegevens van on-premises of Windows Server Active Directory naar Azure Active Directory.  Deze accounts zijn:
+Azure AD Connect maakt gebruik van 3 accounts om gegevens van on-premises of Windows Server-Active Directory te synchroniseren met Azure Active Directory.  Deze accounts zijn:
 
-- **AD DS-Connector-account**: gebruikt voor het lezen/schrijven gegevens naar Windows Server Active Directory
+- **AD DS-Connector account**: wordt gebruikt voor het lezen/schrijven van informatie naar Windows Server Active Directory
 
-- **Account van de service ADSync**: gebruikt voor het uitvoeren van de synchronisatieservice en toegang tot de SQL-database
+- **ADSync-service account**: wordt gebruikt om de synchronisatie service uit te voeren en toegang te krijgen tot de SQL database
 
-- **Azure AD-Connector-account**: gebruikt voor het schrijven van gegevens in Azure AD
+- **Azure AD-Connector account**: wordt gebruikt voor het schrijven van gegevens naar Azure AD
 
-Naast deze drie accounts gebruikt voor het uitvoeren van Azure AD Connect, moet u ook de volgende extra accounts aan Azure AD Connect installeert.  Dit zijn:
+Naast deze drie accounts die worden gebruikt om Azure AD Connect uit te voeren, hebt u ook de volgende extra accounts nodig om Azure AD Connect te installeren.  Dit zijn:
 
-- **Lokale Administrator-account**: De beheerder die Azure AD Connect wordt geïnstalleerd en die lokale beheerdersmachtigingen heeft op de machine.
+- **Lokaal Administrator-account**: De beheerder die Azure AD Connect installeert en die lokale beheerders machtigingen heeft op de computer.
 
-- **AD DS Enterprise-beheerdersaccount**: (Optioneel) gebruikt voor het maken van de "AD DS-Connector-account" hierboven.
+- **AD DS Enter prise-beheerders account**: Wordt optioneel gebruikt voor het maken van het account voor de AD DS-connector.
 
-- **Account van Azure AD-hoofdbeheerder**: gebruikt voor het maken van de Azure AD-Connector-account en Azure AD configureren.
+- **Azure AD Global Administrator-account**: wordt gebruikt voor het maken van het Azure AD-Connector account en het configureren van Azure AD.
 
-- **SQL-SA-account (optioneel)** : gebruikt voor het maken van de ADSync-database bij het gebruik van de volledige versie van SQL Server.  Deze SQL-Server kan lokaal of extern zijn aan de Azure AD Connect-installatie zijn.  Dit account is mogelijk niet hetzelfde account als de Enterprise-beheerder.  Inrichten van de database kan nu worden uitgevoerd buiten-band door de SQL-beheerder en vervolgens worden geïnstalleerd door de Azure AD Connect-beheerder met eigendomsrechten van de database.  Voor meer informatie over deze Zie [Installeer Azure AD Connect met behulp van SQL delegated administrator-machtigingen](how-to-connect-install-sql-delegation.md)
+- **SQL-SA-account (optioneel)** : wordt gebruikt voor het maken van de ADSync-data base wanneer de volledige versie van SQL Server wordt gebruikt.  Deze SQL Server kan lokaal of extern zijn voor de Azure AD Connect installatie.  Dit account kan hetzelfde account zijn als de ondernemings beheerder.  Het inrichten van de data base kan nu buiten de band worden uitgevoerd door de SQL-beheerder en vervolgens worden geïnstalleerd door de beheerder van de Azure AD Connect met de rechten van de data base-eigenaar.  Zie voor meer informatie [installeren Azure AD Connect met behulp van SQL delegated Administrator Permissions](how-to-connect-install-sql-delegation.md)
+
+> [!NOTE]
+> Het wordt ondersteund voor het beheren van de beheer accounts die worden gebruikt in Azure AD Connect vanuit een ESAE-beheer forest (ook wel bekend als ' rode forest ').
+> Met specifieke administratieve forests kunnen organisaties beheerders accounts, werk stations en groepen hosten in een omgeving met betere beveiligings controles dan de productie omgeving.
+> Raadpleeg voor meer informatie over specifieke administratieve forests de [ontwerp benadering ESAE administratieve forests](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect installeren
-De installatiewizard van Azure AD Connect biedt twee verschillende paden:
+De installatie wizard van Azure AD Connect biedt twee verschillende paden:
 
-* In de Express-instellingen, worden in de wizard meer bevoegdheden vereist.  Dit is zodat deze van uw configuratie eenvoudig, instellen kunt zonder dat u gebruikers maken of configureren van machtigingen.
-* In de aangepaste instellingen biedt de wizard u meer keuzemogelijkheden en opties. Er zijn echter situaties waarin u nodig hebt om ervoor te zorgen dat u over de juiste machtigingen beschikt.
+* In Express-instellingen vereist de wizard meer bevoegdheden.  Dit betekent dat de configuratie eenvoudig kan worden ingesteld, zonder dat u gebruikers hoeft te maken of machtigingen hoeft te configureren.
+* In aangepaste instellingen biedt de wizard u meer keuzen en opties. Er zijn echter enkele situaties waarin u moet controleren of u zelf de juiste machtigingen hebt.
 
 
 
-## <a name="express-settings-installation"></a>Snelle installatie van de instellingen
-In de Express-instellingen vraagt de installatiewizard voor het volgende:
+## <a name="express-settings-installation"></a>Installatie van snelle instellingen
+In snelle instellingen vraagt de installatie wizard om het volgende:
 
-  - Enterprise-beheerder van AD DS-referenties
-  - Azure AD-hoofdbeheerder referenties
+  - Beheerders referenties van de onderneming AD DS
+  - Globale beheerders referenties voor Azure AD
 
-### <a name="ad-ds-enterprise-admin-credentials"></a>AD DS ondernemingsadministratorreferenties
-De AD DS-ondernemingsadministrator-account wordt gebruikt voor het configureren van uw on-premises Active Directory. Deze referenties worden alleen gebruikt tijdens de installatie en niet worden gebruikt nadat de installatie is voltooid. De Enterprise-beheerder, niet de domeinbeheerder moet ervoor zorgen dat de machtigingen in Active Directory kunnen worden ingesteld in alle domeinen zijn.
+### <a name="ad-ds-enterprise-admin-credentials"></a>AD DS referenties voor ondernemings Administrator
+Het AD DS Enter prise-beheerders account wordt gebruikt voor het configureren van uw on-premises Active Directory. Deze referenties worden alleen gebruikt tijdens de installatie en worden niet gebruikt nadat de installatie is voltooid. De ondernemings beheerder en niet de domein beheerder moeten controleren of de machtigingen in Active Directory in alle domeinen kunnen worden ingesteld.
 
-Als u een van DirSync upgrade, wordt de Ondernemingsadministrators van AD DS-referenties worden gebruikt om het opnieuw instellen van het wachtwoord voor het account wordt gebruikt door DirSync. Ook moet u Azure AD-hoofdbeheerder referenties.
+Als u een upgrade uitvoert van DirSync, worden de AD DS beheerders referenties voor ondernemingen gebruikt om het wacht woord opnieuw in te stellen voor het account dat wordt gebruikt door DirSync. U hebt ook globale beheerders referenties voor Azure AD nodig.
 
-### <a name="azure-ad-global-admin-credentials"></a>Azure AD-hoofdbeheerder referenties
-Deze referenties worden alleen gebruikt tijdens de installatie en niet worden gebruikt nadat de installatie is voltooid. Wordt gebruikt om de Azure AD-Connector-account gebruikt voor het synchroniseren van wijzigingen naar Azure AD te maken. Het account kunt synchronisatie ook als een functie in Azure AD.
+### <a name="azure-ad-global-admin-credentials"></a>Globale beheerders referenties voor Azure AD
+Deze referenties worden alleen gebruikt tijdens de installatie en worden niet gebruikt nadat de installatie is voltooid. Het wordt gebruikt voor het maken van het Azure AD-Connector account dat wordt gebruikt voor het synchroniseren van wijzigingen in azure AD. Het account maakt ook synchronisatie mogelijk als een functie in azure AD.
 
-### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS-Connector-account vereist machtigingen voor de express-instellingen
-De AD DS-Connector-account is gemaakt voor het lezen en schrijven naar Windows Server AD en heeft de volgende machtigingen als die zijn gemaakt door de express-instellingen:
+### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS Connector account vereiste machtigingen voor snelle instellingen
+Het account voor de AD DS-connector is gemaakt voor het lezen van en schrijven naar Windows Server AD en heeft de volgende machtigingen wanneer deze worden gemaakt door snelle instellingen:
 
 | Machtiging | Gebruikt voor |
 | --- | --- |
-| <li>Directorywijzigingen repliceren</li><li>Alle repliceren Directory gewijzigd |Synchronisatie van wachtwoordhashes |
-| Lezen/schrijven alle eigenschappen van gebruiker |Import- en Exchange hybrid |
-| Lezen/schrijven alle eigenschappen iNetOrgPerson |Import- en Exchange hybrid |
-| Groep van alle eigenschappen voor lezen/schrijven |Import- en Exchange hybrid |
-| Neem contact op met lezen/schrijven alle eigenschappen |Import- en Exchange hybrid |
-| Wachtwoord opnieuw instellen |Voorbereiding voor het inschakelen van wachtwoord terugschrijven |
+| <li>Directory wijzigingen repliceren</li><li>Wijzigingen in Directory repliceren |Wachtwoord-hash-synchronisatie |
+| Alle eigenschappen van lezen/schrijven gebruiker |Hybride importeren en uitwisselen |
+| Alle eigenschappen lezen/schrijven iNetOrgPerson |Hybride importeren en uitwisselen |
+| Alle eigenschappen groep lezen/schrijven |Hybride importeren en uitwisselen |
+| Contact persoon voor alle eigenschappen lezen/schrijven |Hybride importeren en uitwisselen |
+| Wachtwoord opnieuw instellen |Voor bereiding voor het inschakelen van wacht woord terugschrijven |
 
-### <a name="express-installation-wizard-summary"></a>Snelle installatiewizard-overzicht
+### <a name="express-installation-wizard-summary"></a>Samen vatting van de wizard Snelle installatie
 
 ![Snelle installatie](./media/reference-connect-accounts-permissions/express.png)
 
-Hier volgt een samenvatting van de snelle installatie wizardpagina's, de referenties die worden verzameld, en waarvoor ze worden gebruikt.
+Hier volgt een samen vatting van de pagina's van de wizard Snelle installatie, de referenties die zijn verzameld en waarvoor ze worden gebruikt.
 
-| Wizardpagina | Referenties die worden verzameld | Machtigingen die vereist zijn | Gebruikt voor |
+| Wizard pagina | Verzamelde referenties | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- | --- |
-| N/A |Gebruiker met de installatiewizard |Beheerder van de lokale server |<li>De ADSync-service-account dat wordt gebruikt over het uitvoeren van de synchronisatieservice maakt. |
-| Verbinding maken met Azure AD |Azure AD-directory-referenties |De rol globale beheerder in Azure AD |<li>Inschakelen van synchronisatie in de Azure AD-directory.</li>  <li>Het maken van het Azure AD-Connector-account dat wordt gebruikt voor continue synchronisatiebewerkingen in Azure AD.</li> |
-| Verbinding maken met AD DS |On-premises Active Directory-referenties |Lid van de groep Ondernemingsadministrators (EA) in Active Directory |<li>Het AD DS-Connector-account wordt gemaakt in Active Directory en machtigingen verleend voor deze. Dit account hebt gemaakt wordt om te lezen en schrijven van directory-informatie tijdens de synchronisatie gebruikt.</li> |
+| N/A |Gebruiker die de installatie wizard uitvoert |Beheerder van de lokale server |<li>Hiermee maakt u het ADSync-service account dat wordt gebruikt om de synchronisatie service uit te voeren. |
+| Verbinding maken met Azure AD |Referenties voor Azure AD-Directory |Rol van globale beheerder in azure AD |<li>Synchronisatie inschakelen in de Azure AD-adres lijst.</li>  <li>Het maken van het Azure AD-Connector account dat wordt gebruikt voor voortdurende synchronisatie bewerkingen in azure AD.</li> |
+| Verbinden met AD DS |Referenties voor on-premises Active Directory |Lid van de groep Ondernemings Administrators (EA) in Active Directory |<li>Hiermee maakt u het AD DS Connector-account in Active Directory en verleent u er machtigingen voor. Dit gemaakte account wordt gebruikt voor het lezen en schrijven van Directory gegevens tijdens de synchronisatie.</li> |
 
 
 ## <a name="custom-installation-settings"></a>Aangepaste installatie-instellingen
 
-Met de installatie van de aangepaste instellingen, de wizard biedt u meer keuzemogelijkheden en opties. 
+Met de installatie van aangepaste instellingen biedt de wizard u meer keuzen en opties. 
 
-### <a name="custom-installation-wizard-summary"></a>Overzicht van de wizard Aangepaste installatie
+### <a name="custom-installation-wizard-summary"></a>Samen vatting van aangepaste installatie wizard
 
-Hier volgt een samenvatting van de aangepaste installatie wizardpagina's, de referenties die worden verzameld, en waarvoor ze worden gebruikt.
+Hier volgt een samen vatting van de pagina's van de wizard Aangepaste installatie, de referenties die zijn verzameld en waarvoor ze worden gebruikt.
 
 ![Snelle installatie](./media/reference-connect-accounts-permissions/customize.png)
 
-| Wizardpagina | Referenties die worden verzameld | Machtigingen die vereist zijn | Gebruikt voor |
+| Wizard pagina | Verzamelde referenties | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- | --- |
-| N/A |Gebruiker met de installatiewizard |<li>Beheerder van de lokale server</li><li>Als u een volledige SQL Server gebruikt, moet de gebruiker System Administrator (SA) in SQL</li> |Maakt standaard het lokale account dat wordt gebruikt als het serviceaccount voor synchronisatie-engine. Het account wordt alleen gemaakt wanneer de beheerder geen een bepaald account geeft. |
-| Synchronisatieservices, Service-account-optie installeren |AD of lokale gebruikersaccountreferenties |Gebruiker machtigingen zijn verleend door de installatiewizard |Als de beheerder een account is opgegeven, wordt dit account gebruikt als het serviceaccount voor de synchronisatieservice. |
-| Verbinding maken met Azure AD |Azure AD-directory-referenties |De rol globale beheerder in Azure AD |<li>Inschakelen van synchronisatie in de Azure AD-directory.</li>  <li>Het maken van het Azure AD-Connector-account dat wordt gebruikt voor continue synchronisatiebewerkingen in Azure AD.</li> |
-| Verbinding maken met uw directory’s |On-premises Active Directory-referenties voor elk forest dat is verbonden met Azure AD |De machtigingen zijn afhankelijk van welke functies u inschakelen en kunt u vinden in maken het AD DS-Connector-account |Dit account wordt gebruikt om te lezen en schrijven van directory-informatie tijdens de synchronisatie. |
-| AD FS-Servers |Voor elke server in de lijst verzamelt met de wizard referenties wanneer de aanmeldingsreferenties van de gebruiker die de wizard zijn niet voldoende om verbinding te maken |Domeinbeheerder |Installatie en configuratie van de AD FS-serverfunctie. |
-| WAP-servers |Voor elke server in de lijst verzamelt met de wizard referenties wanneer de aanmeldingsreferenties van de gebruiker die de wizard zijn niet voldoende om verbinding te maken |Lokale beheerder op de doel-VM |Installatie en configuratie van WAP-server-rol. |
-| Vertrouwde proxyreferenties |Federation-service vertrouwen referenties (de referenties van de proxy wordt gebruikt om in te schrijven voor een vertrouwensrelatie certificaat van de FS |Domeinaccount dat een lokale beheerder van de AD FS-server |Initiële inschrijving van FS WAP-vertrouwensrelatie certificaat. |
-| Pagina voor AD FS-serviceaccount, "De accountoptie van een domein-gebruiker gebruiken" |Accountreferenties van de AD-gebruiker |Domeingebruiker |Het account van de Azure AD-gebruiker waarvan de referenties zijn opgegeven, wordt gebruikt als de aanmeldingsaccount van de AD FS-service. |
+| N/A |Gebruiker die de installatie wizard uitvoert |<li>Beheerder van de lokale server</li><li>Als u een volledige SQL Server gebruikt, moet de gebruiker systeem beheerder (SA) in SQL zijn</li> |Maakt standaard het lokale account dat wordt gebruikt als service account voor de synchronisatie-engine. Het account wordt alleen gemaakt wanneer de beheerder geen bepaald account opgeeft. |
+| Synchronisatie Services installeren, Service account optie |Referenties voor het AD-of lokale gebruikers account |Gebruiker, machtigingen worden verleend door de installatie wizard |Als de beheerder een account opgeeft, wordt dit account gebruikt als service account voor de synchronisatie service. |
+| Verbinding maken met Azure AD |Referenties voor Azure AD-Directory |Rol van globale beheerder in azure AD |<li>Synchronisatie inschakelen in de Azure AD-adres lijst.</li>  <li>Het maken van het Azure AD-Connector account dat wordt gebruikt voor voortdurende synchronisatie bewerkingen in azure AD.</li> |
+| Verbinding maken met uw mappen |On-premises Active Directory referenties voor elk forest dat is verbonden met Azure AD |De machtigingen zijn afhankelijk van de functies die u inschakelt en vindt u in het AD DS Connector-account maken |Dit account wordt gebruikt voor het lezen en schrijven van Directory gegevens tijdens de synchronisatie. |
+| AD FS-Servers |Voor elke server in de lijst worden referenties door de wizard verzameld wanneer de aanmeldings referenties van de gebruiker die de wizard uitvoert, onvoldoende zijn om verbinding te maken |Domein beheerder |Installatie en configuratie van de AD FS serverrol. |
+| Web Application proxy-servers |Voor elke server in de lijst worden referenties door de wizard verzameld wanneer de aanmeldings referenties van de gebruiker die de wizard uitvoert, onvoldoende zijn om verbinding te maken |Lokale beheerder op de doel computer |Installatie en configuratie van de WAP-server functie. |
+| Vertrouwde proxyreferenties |Vertrouwens referenties van de Federation service (de referenties die de proxy gebruikt voor inschrijving van een vertrouwens certificaat van de FS |Domein account dat een lokale beheerder is van de AD FS server |Initiële inschrijving van het certificaat voor FS-WAP-vertrouwens relatie. |
+| AD FS-pagina Service account, de optie een domein gebruikers account gebruiken |Referenties van AD-gebruikers account |Domein gebruiker |Het Azure AD-gebruikers account waarvan de referenties zijn geleverd, wordt gebruikt als aanmeldings account van de AD FS-service. |
 
-### <a name="create-the-ad-ds-connector-account"></a>Het AD DS-Connector-account maken
+### <a name="create-the-ad-ds-connector-account"></a>Het AD DS Connector-account maken
 
 >[!IMPORTANT]
->Een nieuwe PowerShell-Module met de naam ADSyncConfig.psm1 geïntroduceerd met build **1.1.880.0** (uitgebracht in augustus 2018) die bestaat uit een verzameling van cmdlets kunt u de juiste Active Directory-machtigingen voor de Azure AD DS configureren Connector-account.
+>Er is een nieuwe Power shell-module met de naam ADSyncConfig. psm1 geïntroduceerd met build **1.1.880.0** (uitgebracht in augustus 2018) die een verzameling cmdlets bevat waarmee u de juiste Active Directory machtigingen voor het account van de Azure AD DS-connector kunt configureren.
 >
->Zie voor meer informatie [Azure AD Connect: Machtiging voor AD DS-Connector-Account configureren](how-to-connect-configure-ad-ds-connector-account.md)
+>Zie [Azure AD Connect voor meer informatie: Machtigingen voor AD DS Connector-account configureren](how-to-connect-configure-ad-ds-connector-account.md)
 
-Het account dat u opgeeft op de **verbinding maken met uw mappen** pagina moet aanwezig zijn in Active Directory voorafgaand aan de installatie.  Azure AD Connect versie 1.1.524.0 en hoger en later is de optie voor de Azure AD Connect-wizard maken gebruiken om de **Connector voor AD DS-account** gebruikt voor verbinding met Active Directory.  
+Het account dat u opgeeft op de pagina **verbinding maken met uw adres lijsten** moet aanwezig zijn in Active Directory vóór de installatie.  Azure AD Connect versie 1.1.524.0 en hoger beschikt over de mogelijkheid om de Azure AD Connect wizard te laten maken van het **AD DS Connector-account** dat wordt gebruikt om verbinding met Active Directory te maken.  
 
-Ook moet de vereiste machtigingen hebben. De installatiewizard controleert niet of dat de machtigingen en eventuele problemen zijn alleen tijdens de synchronisatie te vinden.
+Ook moet de vereiste machtigingen zijn toegekend. De machtigingen worden niet door de installatie wizard gecontroleerd en er zijn geen problemen gevonden tijdens de synchronisatie.
 
-Welke machtigingen die u nodig hebt, is afhankelijk van de optionele functies inschakelen. Als u meerdere domeinen hebt, moeten de machtigingen worden verleend voor alle domeinen in het forest. Als u niet inschakelt dat een van deze functies, de standaard **domeingebruiker** machtigingen zijn voldoende.
+Welke machtigingen u nodig hebt, is afhankelijk van de optionele functies die u inschakelt. Als u meerdere domeinen hebt, moeten de machtigingen worden verleend voor alle domeinen in het forest. Als u geen van deze functies inschakelt, zijn de standaard **domein gebruikers** machtigingen voldoende.
 
 | Functie | Machtigingen |
 | --- | --- |
-| MS-DS-ConsistencyGuid functie |Schrijfmachtigingen heeft voor het kenmerk ms-DS-ConsistencyGuid is beschreven in [ontwerpconcepten - ms-DS-ConsistencyGuid gebruiken als sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
-| Synchronisatie van wachtwoordhashes |<li>Directorywijzigingen repliceren</li>  <li>Alle repliceren Directory gewijzigd |
-| Hybride implementatie voor Exchange |Schrijfmachtigingen heeft voor de kenmerken beschreven in [Exchange hybrid terugschrijven](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) voor gebruikers, groepen en contactpersonen. |
-| Openbare map voor Exchange-e-Mail |Leesmachtigingen voor de kenmerken beschreven in [Exchange Mail openbare map](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor openbare mappen. | 
-| Wachtwoord terugschrijven |Schrijfmachtigingen heeft voor de kenmerken beschreven in [aan de slag met wachtwoordbeheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
-| Apparaat terugschrijven |Machtigingen met een PowerShell-script, zoals beschreven in [Write-back van apparaat](how-to-connect-device-writeback.md). |
-| Groep terugschrijven |Hiermee kunt u Write-back van **Office 365-groepen** naar een forest met Exchange geïnstalleerd.  Zie voor meer informatie [Write-back van groep](how-to-connect-preview.md#group-writeback).|
+| functie MS-DS-ConsistencyGuid |Schrijf machtigingen voor het kenmerk MS-DS-ConsistencyGuid dat wordt beschreven in [ontwerp concepten-MS-DS-ConsistencyGuid gebruiken als source Anchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
+| Wachtwoord-hash-synchronisatie |<li>Directory wijzigingen repliceren</li>  <li>Wijzigingen in Directory repliceren |
+| Hybride implementatie voor Exchange |Schrijf machtigingen voor de kenmerken die worden beschreven in [hybride write-back van Exchange](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) voor gebruikers, groepen en contact personen. |
+| Open bare map voor Exchange-e-mail |Lees machtigingen voor de kenmerken die in de [open bare map voor Exchange mail](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) voor open bare mappen worden beschreven. | 
+| Write-back van wachtwoord |Schrijf machtigingen voor de kenmerken die worden beschreven in [aan de slag met wachtwoord beheer](../authentication/howto-sspr-writeback.md) voor gebruikers. |
+| Write-back van apparaat |Machtigingen die worden verleend met een Power shell-script, zoals beschreven in [write-back van apparaat](how-to-connect-device-writeback.md). |
+| Write-back van groep |Hiermee kunt u **Office 365-groepen** terugschrijven naar een forest waarop Exchange is geïnstalleerd.  Zie voor meer informatie [groep terugschrijven](how-to-connect-preview.md#group-writeback).|
 
-## <a name="upgrade"></a>Upgraden
-Wanneer u een upgrade van één versie van Azure AD Connect naar een nieuwe versie uitvoeren, moet u de volgende machtigingen:
+## <a name="upgrade"></a>Upgrade
+Wanneer u een upgrade uitvoert van de ene versie van Azure AD Connect naar een nieuwe versie, hebt u de volgende machtigingen nodig:
 
 >[!IMPORTANT]
->Beginnen met bouwen 1.1.484, Azure AD Connect een bug regressie waarvoor sysadmin-machtigingen voor het bijwerken van de SQL-database ingevoerd.  Deze fout is verholpen in build 1.1.647.  Als u een naar deze versie upgrade, moet u sysadmin-bevoegdheden.  Dbo-machtigingen zijn niet voldoende.  Als u probeert te Azure AD Connect upgraden zonder sysadmin-bevoegdheden, mislukt de upgrade en Azure AD Connect wordt niet meer correct werkt daarna.  Microsoft is hiervan op de hoogte en werkt om dit te corrigeren.
+>Vanaf build 1.1.484 heeft Azure AD Connect een regressie fout geïntroduceerd waarvoor sysadmin-machtigingen zijn vereist om de SQL database bij te werken.  Deze fout is gecorrigeerd in Build 1.1.647.  Als u een upgrade naar deze versie uitvoert, hebt u sysadmin-machtigingen nodig.  Dbo-machtigingen zijn niet voldoende.  Als u probeert een upgrade uit te voeren van Azure AD Connect zonder sysadmin-machtigingen, mislukt de upgrade en wordt Azure AD Connect niet meer correct uitgevoerd.  Micro soft is hiervan op de hoogte en werkt ermee om dit te corrigeren.
 
 
-| Principal | Machtigingen die vereist zijn | Gebruikt voor |
+| Hoofd | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- |
-| Gebruiker met de installatiewizard |Beheerder van de lokale server |Binaire bestanden worden bijgewerkt. |
-| Gebruiker met de installatiewizard |Lid van de ADSyncAdmins |Breng wijzigingen in synchronisatieregels en andere configuratie. |
-| Gebruiker met de installatiewizard |Als u een volledige SQL server gebruiken: DBO (of vergelijkbaar) van de synchronisatie-engine-database |Controleer op wijzigingen in de database, zoals het bijwerken van tabellen met nieuwe kolommen. |
+| Gebruiker die de installatie wizard uitvoert |Beheerder van de lokale server |Binaire bestanden bijwerken. |
+| Gebruiker die de installatie wizard uitvoert |Lid van ADSyncAdmins |Wijzigingen aanbrengen in synchronisatie regels en andere configuratie. |
+| Gebruiker die de installatie wizard uitvoert |Als u een volledige SQL Server gebruikt: DBO (of vergelijkbaar) van de data base van de synchronisatie-engine |Wijzigingen op database niveau aanbrengen, zoals het bijwerken van tabellen met nieuwe kolommen. |
 
 ## <a name="more-about-the-created-accounts"></a>Meer informatie over de gemaakte accounts
-### <a name="ad-ds-connector-account"></a>AD DS-Connector-account
-Als u express-instellingen, wordt klikt u vervolgens een account gemaakt in Active Directory die wordt gebruikt voor synchronisatie. Het account bevindt zich in het foresthoofddomein in de container gebruikers en heeft de naam ervan voorafgegaan door **MSOL_** . Het account is gemaakt met een lange complex wachtwoord in dat niet verloopt. Als u een wachtwoordbeleid in uw domein hebt, zorg ervoor dat lange en complexe wachtwoorden is toegestaan voor dit account.
+### <a name="ad-ds-connector-account"></a>AD DS Connector-account
+Als u snelle instellingen gebruikt, wordt er een account gemaakt in Active Directory dat wordt gebruikt voor synchronisatie. Het account dat u hebt gemaakt, bevindt zich in het forest-hoofd domein in de gebruikers container en heeft de naam die wordt voorafgegaan door **MSOL_** . Het account wordt gemaakt met een lang complex wacht woord dat niet verloopt. Als u een wachtwoord beleid in uw domein hebt, moet u ervoor zorgen dat lange en complexe wacht woorden zijn toegestaan voor dit account.
 
 ![AD-account](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
-Als u aangepaste instellingen, klikt bent u verantwoordelijk voor het account te maken voordat u begint met de installatie.  Zie de AD DS-Connector-account maken.
+Als u aangepaste instellingen gebruikt, bent u zelf verantwoordelijk voor het maken van het account voordat u begint met de installatie.  Zie het AD DS Connector-account maken.
 
-### <a name="adsync-service-account"></a>ADSync-serviceaccount
-De synchronisatieservice kan uitvoeren onder verschillende accounts. Het kan worden uitgevoerd onder een **Virtual Service Account** (leverancierspecifiek Kenmerk), een **groep beheerd serviceaccount** (gMSA/sMSA), of een normaal gebruikersaccount. De ondersteunde opties zijn gewijzigd met de 2017 April versie van Connect wanneer u een nieuwe installatie uitvoeren. Als u een upgrade vanaf een eerdere versie van Azure AD Connect uitvoert, zijn deze extra opties niet beschikbaar.
+### <a name="adsync-service-account"></a>ADSync-service account
+De synchronisatie service kan worden uitgevoerd onder verschillende accounts. Het kan worden uitgevoerd onder een **virtueel service account** (leverancierspecifieke naam), een **beheerd service account voor groepen** (gMSA/sMSA) of een gewoon gebruikers account. De ondersteunde opties zijn gewijzigd met de release van 2017 april wanneer u een nieuwe installatie maakt. Als u een upgrade uitvoert van een eerdere versie van Azure AD Connect, zijn deze extra opties niet beschikbaar.
 
-| Type account | Installatie-optie | Description |
+| Type account | Installatie optie | Description |
 | --- | --- | --- |
-| [Virtual serviceaccount](#virtual-service-account) | Express en aangepast, 2017 April en hoger | Dit is de optie gebruikt voor alle installaties van snelle, met uitzondering van installaties op een domeincontroller. Voor aangepaste, is er op de standaardoptie, tenzij een andere optie wordt gebruikt. |
-| [Groep beheerd serviceaccount](#group-managed-service-account) | Aangepaste, 2017 April en hoger | Als u een externe SQL server gebruikt, klikt u vervolgens het beste aan een groep beheerd serviceaccount gebruiken. |
-| [Gebruikersaccount](#user-account) | Express en aangepast, 2017 April en hoger | Een gebruikersaccount voorafgegaan door AAD_ wordt alleen gemaakt tijdens de installatie, indien geïnstalleerd op Windows Server 2008 en wanneer geïnstalleerd op een domeincontroller. |
-| [Gebruikersaccount](#user-account) | Express en aangepast, 2017 maart en oudere versies | Een lokaal account voorafgegaan door AAD_ is gemaakt tijdens de installatie. Wanneer u aangepaste installatie gebruikt, kan een ander account kan worden opgegeven. |
+| [Virtueel service-account](#virtual-service-account) | Express en aangepast, 2017 april en hoger | Dit is de optie die wordt gebruikt voor alle snelle installaties, met uitzonde ring van installaties op een domein controller. Voor aangepast is dit de standaard optie, tenzij een andere optie wordt gebruikt. |
+| [Door groep beheerd service account](#group-managed-service-account) | Aangepast, 2017 april en hoger | Als u een externe SQL Server gebruikt, raden we u aan een beheerd service account voor een groep te gebruiken. |
+| [Gebruikers account](#user-account) | Express en aangepast, 2017 april en hoger | Een gebruikers account met AAD_ wordt alleen tijdens de installatie gemaakt wanneer het is geïnstalleerd op Windows Server 2008 en wanneer het is geïnstalleerd op een domein controller. |
+| [Gebruikers account](#user-account) | Express en aangepast, 2017 maart en ouder | Een lokaal account dat wordt voorafgegaan door AAD_ wordt gemaakt tijdens de installatie. Wanneer u een aangepaste installatie gebruikt, kan er een ander account worden opgegeven. |
 
-Als u verbinding maken met een build van 2017 maart of eerder, klikt u vervolgens u moet niet het wachtwoord opnieuw op het serviceaccount instellen sinds Windows de versleutelingssleutels voor opmaaktalen wordt om beveiligingsredenen vernietigt. U kunt het account niet wijzigen naar een ander account zonder Azure AD Connect opnieuw te installeren. Als u naar een build 2017 April upgraden of later, het wordt wijzigen ondersteund als u wilt wijzigen van het wachtwoord voor het serviceaccount, maar u niet het account dat wordt gebruikt.
+Als u verbinding maken met een build van 2017 maart of eerder gebruikt, moet u het wacht woord niet opnieuw instellen voor het service account, omdat Windows de versleutelings sleutels om veiligheids redenen heeft vernietigd. U kunt het account niet wijzigen in een ander account zonder Azure AD Connect opnieuw te installeren. Als u een upgrade uitvoert naar een build van 2017 april of hoger, wordt het wacht woord voor het service account gewijzigd, maar u kunt het gebruikte account niet wijzigen.
 
 > [!Important]
-> U kunt alleen het serviceaccount instellen op de eerste installatie. Het serviceaccount te wijzigen nadat de installatie is voltooid wordt niet ondersteund.
+> U kunt het service account alleen instellen bij de eerste installatie. Het is niet mogelijk om het service account te wijzigen nadat de installatie is voltooid.
 
-Dit is een tabel van de standaard, aanbevolen en ondersteunde opties voor het serviceaccount voor synchronisatie.
+Dit is een tabel met de standaard, aanbevolen en ondersteunde opties voor het synchronisatie service account.
 
-Legenda:
+Labels
 
-- **Vet** geeft aan dat de standaardoptie en in de meeste gevallen de aanbevolen optie.
-- *Cursief* geeft aan dat de aanbevolen optie wanneer het is niet standaard ingeschakeld.
-- 2008 - optie standaard geïnstalleerd op Windows Server 2008
-- Niet-vet: ondersteunde optie
-- Lokaal account - lokale gebruikersaccount op de server
-- Domeinaccount - domeingebruikersaccount
-- sMSA - [zelfstandig beheerd serviceaccount](https://technet.microsoft.com/library/dd548356.aspx)
-- gMSA - [groep beheerd serviceaccount](https://technet.microsoft.com/library/hh831782.aspx)
+- Met **vet** wordt de standaard optie aangeduid en in de meeste gevallen de aanbevolen optie.
+- *Italic* geeft de aanbevolen optie aan wanneer dit niet de standaard optie is.
+- 2008-standaard optie wanneer geïnstalleerd op Windows Server 2008
+- Optie niet-vet: ondersteund
+- Lokaal account: lokale gebruikers account op de server
+- Domein account-domein gebruikers account
+- sMSA- [zelfstandig beheerd service account](https://technet.microsoft.com/library/dd548356.aspx)
+- gMSA: door [groep beheerd service account](https://technet.microsoft.com/library/hh831782.aspx)
 
-| | LocalDB</br>Express | LocalDB/LocalSQL</br>Aangepast telefoonnummer | Externe SQL</br>Aangepast telefoonnummer |
+| | LocalDB</br>Express | LocalDB/LocalSQL</br>Aanpassen | Externe SQL</br>Aanpassen |
 | --- | --- | --- | --- |
-| **zelfstandige/werkgroep-machine** | Niet ondersteund | **VSA**</br>Lokaal account (2008)</br>Lokaal account |  Niet ondersteund |
-| **domein machine** | **VSA**</br>Lokaal account (2008) | **VSA**</br>Lokaal account (2008)</br>Lokaal account</br>Domeinaccount</br>sMSA,gMSA | **gMSA**</br>Domeinaccount |
-| **Domeincontroller** | **Domeinaccount** | *gMSA*</br>**Domeinaccount**</br>sMSA| *gMSA*</br>**Domeinaccount**|
+| **zelfstandige computer/werk groep** | Niet ondersteund | **VSA**</br>Lokaal account (2008)</br>Lokaal account |  Niet ondersteund |
+| **computer die lid is van een domein** | **VSA**</br>Lokaal account (2008) | **VSA**</br>Lokaal account (2008)</br>Lokaal account</br>Domeinaccount</br>sMSA, gMSA | **gMSA**</br>Domeinaccount |
+| **Domein controller** | **Domein account** | *gMSA*</br>**Domein account**</br>sMSA| *gMSA*</br>**Domein account**|
 
-#### <a name="virtual-service-account"></a>Virtuele-serviceaccount
-Een virtueel serviceaccount is een speciaal type account dat geen een wachtwoord en wordt beheerd door Windows.
+#### <a name="virtual-service-account"></a>Virtueel service-account
+Een virtueel service account is een speciaal type account dat geen wacht woord heeft en wordt beheerd door Windows.
 
 ![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
-De leverancierspecifiek Kenmerk is bedoeld om te worden gebruikt met scenario's waarbij de synchronisatie-engine en SQL zijn op dezelfde server. Als u externe SQL gebruikt, klikt u vervolgens het beste in plaats daarvan een op groep beheerd serviceaccount gebruiken.
+Het leveranciersspecifieke kenmerk is bedoeld om te worden gebruikt met scenario's waarbij de synchronisatie-engine en SQL zich op dezelfde server bevinden. Als u externe SQL gebruikt, raden we u aan om in plaats daarvan een beheerd service account voor een groep te gebruiken.
 
-Deze functie moet Windows Server 2008 R2 of hoger. Als u Azure AD Connect op Windows Server 2008 installeren, wordt de installatie van de terugvalt op het met behulp van een [gebruikersaccount](#user-account) in plaats daarvan.
+Voor deze functie is Windows Server 2008 R2 of later vereist. Als u Azure AD Connect installeert op Windows Server 2008, wordt de installatie in plaats daarvan terugvallen op het gebruik van een [gebruikers account](#user-account) .
 
-#### <a name="group-managed-service-account"></a>Groep beheerd serviceaccount
-Als u een externe SQL server gebruikt, wordt aangeraden voor het gebruik van een **groep beheerd serviceaccount**. Zie voor meer informatie over het voorbereiden van uw Active Directory voor een groep beheerd serviceaccount [Group Managed Service Accounts Overview](https://technet.microsoft.com/library/hh831782.aspx).
+#### <a name="group-managed-service-account"></a>Door groep beheerd service account
+Als u een externe SQL Server gebruikt, raden we u aan een **beheerd service account**voor een groep te gebruiken. Zie overzicht van door een groep [beheerde service accounts](https://technet.microsoft.com/library/hh831782.aspx)voor meer informatie over het voorbereiden van uw Active Directory voor door een groep beheerd service account.
 
-Deze optie wilt gebruiken, op de [vereiste onderdelen installeren](how-to-connect-install-custom.md#install-required-components) weergeeft, schakelt **een bestaand serviceaccount gebruiken**, en selecteer **beheerd serviceaccount**.  
+Als u deze optie wilt gebruiken, selecteert u op de pagina [vereiste onderdelen installeren](how-to-connect-install-custom.md#install-required-components) de optie **een bestaand service account gebruiken**en selecteert u een **beheerd service account**.  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-Deze functie wordt ook ondersteund voor het gebruik van een [zelfstandig beheerd serviceaccount](https://technet.microsoft.com/library/dd548356.aspx). Maar deze kunnen alleen worden gebruikt op de lokale computer en er is geen voordeel om ze te gebruiken via de standaard virtuele-serviceaccount.
+Het wordt ook ondersteund voor het gebruik van een [zelfstandig beheerd service account](https://technet.microsoft.com/library/dd548356.aspx). Deze kunnen echter alleen worden gebruikt op de lokale computer en er is geen voor deel voor het gebruik van de standaard virtuele-service account.
 
-Deze functie moet WindowsServer 2012 of hoger. Als u wilt gebruiken van een ouder besturingssysteem en gebruiken van externe SQL, dan moet u een [gebruikersaccount](#user-account).
+Voor deze functie is Windows Server 2012 of hoger vereist. Als u een ouder besturings systeem moet gebruiken en externe SQL wilt gebruiken, moet u een [gebruikers account](#user-account)gebruiken.
 
 #### <a name="user-account"></a>Gebruikersaccount
-Een lokale service-account wordt gemaakt door de installatiewizard (tenzij u het account moet worden gebruikt in de aangepaste instellingen opgeven). Het account wordt voorafgegaan **AAD_** en gebruikt voor de werkelijke sync-service uit te voeren als. Als u Azure AD Connect op een domeincontroller installeert, moet het account wordt gemaakt in het domein. De **AAD_** -serviceaccount moet zich bevinden in het domein als:
-   - u een externe server met SQL server gebruiken
-   - gebruik van een proxy die verificatie vereist
+Er wordt een lokaal service account gemaakt door de installatie wizard (tenzij u het account opgeeft dat moet worden gebruikt in aangepaste instellingen). Het account is een vaste **AAD_** en wordt gebruikt voor het uitvoeren van de huidige synchronisatie service. Als u Azure AD Connect op een domein controller installeert, wordt het account in het domein gemaakt. Het **AAD_** -service account moet zich in het domein bevinden als:
+   - u gebruikt een externe server waarop SQL Server wordt uitgevoerd
+   - u gebruikt een proxy waarvoor verificatie is vereist
 
-![Serviceaccount voor synchronisatie](./media/reference-connect-accounts-permissions/syncserviceaccount.png)
+![Service account synchroniseren](./media/reference-connect-accounts-permissions/syncserviceaccount.png)
 
-Het account is gemaakt met een lange complex wachtwoord in dat niet verloopt.
+Het account wordt gemaakt met een lang complex wacht woord dat niet verloopt.
 
-Dit account wordt gebruikt voor het opslaan van de wachtwoorden voor de andere accounts op een veilige manier. Deze andere accounts wachtwoorden worden versleuteld opgeslagen in de database. De persoonlijke sleutels voor de versleutelingssleutels zijn beveiligd met de cryptografische services geheime sleutel versleuteling met behulp van Windows Data Protection API (DPAPI).
+Dit account wordt gebruikt om de wacht woorden voor de andere accounts op een veilige manier op te slaan. Deze andere account wachtwoorden worden in de-data base opgeslagen als versleuteld. De persoonlijke sleutels voor de versleutelings sleutels worden beveiligd met de geheime sleutel versleuteling van cryptografische Services met behulp van Windows Data Protection API (DPAPI).
 
-Als u een volledige SQL Server gebruikt, is de serviceaccount de DBO van de database is gemaakt voor de synchronisatie-engine. De service werkt niet zoals bedoeld met andere machtigingen. Een SQL-aanmelding wordt ook gemaakt.
+Als u een volledige SQL Server gebruikt, is het service account de DBO van de gemaakte Data Base voor de synchronisatie-engine. De service werkt niet zoals bedoeld met andere machtigingen. Er wordt ook een SQL-aanmelding gemaakt.
 
-Het account ook krijgt de machtigingen voor bestanden, registersleutels en andere objecten met betrekking tot de synchronisatie-Engine.
+Aan het account worden ook machtigingen verleend voor bestanden, register sleutels en andere objecten die betrekking hebben op de synchronisatie-engine.
 
-### <a name="azure-ad-connector-account"></a>Azure AD-Connector-account
-Een account in Azure AD is bedoeld voor gebruik van de sync-service. Dit account kan worden geïdentificeerd door de naam weergegeven.
+### <a name="azure-ad-connector-account"></a>Azure AD Connector-account
+Een account in azure AD is gemaakt voor het gebruik van de synchronisatie service. Dit account kan worden geïdentificeerd aan de hand van de weergave naam.
 
 ![AD-account](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
-De naam van het account wordt gebruikt op de-server kan worden geïdentificeerd in het tweede gedeelte van de naam van de gebruiker. In de gaten is de naam van de server DC1. Als u de staging-servers hebt, heeft elke server een eigen account.
+De naam van de server waarop het account wordt gebruikt, kan worden geïdentificeerd in het tweede deel van de gebruikers naam. In de afbeelding is de server naam DC1. Als u servers voor fase ring hebt, heeft elke server een eigen account.
 
-Het account is gemaakt met een lange complex wachtwoord in dat niet verloopt. Een speciale rol zijn toegekend **Directory-Accounts voor synchronisatie** waarvoor alleen machtigingen voor het uitvoeren van taken voor directory-synchronisatie. Deze speciale ingebouwde rol kan niet worden toegekend buiten de Azure AD Connect-wizard. De Azure-portal ziet u dit account met de rol **gebruiker**.
+Het account wordt gemaakt met een lang complex wacht woord dat niet verloopt. Er wordt een speciale **Directory synchronisatie-accounts** met rollen verleend die alleen machtigingen hebben voor het uitvoeren van Directory synchronisatie taken. Deze speciale ingebouwde rol kan niet worden verleend buiten de Azure AD Connect wizard. De Azure Portal geeft dit account weer met de rol **gebruiker**.
 
-Er is een limiet van 20 sync-service-accounts in Azure AD. Als u de lijst met bestaande Azure AD-service-accounts in uw Azure AD, moet u de volgende Azure AD PowerShell-cmdlet uitvoeren: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Er is een limiet van 20 synchronisatie service-accounts in azure AD. Als u de lijst met bestaande Azure AD-service accounts in uw Azure AD wilt ophalen, voert u de volgende Azure AD Power shell-cmdlet uit:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-Verwijderen van niet-gebruikte Azure AD-serviceaccounts, voer de volgende Azure AD PowerShell-cmdlet uit: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+Als u ongebruikte Azure AD-service accounts wilt verwijderen, voert u de volgende Azure AD Power shell-cmdlet uit:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->Voordat u de bovenstaande PowerShell-opdrachten kunt u moet voor het installeren van de [Azure Active Directory PowerShell voor Graph module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) en maak verbinding met uw exemplaar van het gebruik van Azure AD [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
+>Voordat u de bovenstaande Power shell-opdrachten kunt gebruiken, moet u de [Azure Active Directory Power shell for Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installeren en verbinding maken met uw exemplaar van Azure AD via [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0)
 
-Zie voor meer informatie over het beheren of opnieuw instellen van het wachtwoord voor de Azure AD-Connector-account [de Azure AD Connect-account beheren](how-to-connect-azureadaccount.md)
+Zie [het Azure AD Connect account beheren](how-to-connect-azureadaccount.md) voor meer informatie over het beheren of opnieuw instellen van het wacht woord voor het account van de Azure AD-connector.
 
 ## <a name="related-documentation"></a>Verwante documentatie
-Als u hebt niet de documentatie lezen op [uw on-premises identiteiten integreren met Azure Active Directory](whatis-hybrid-identity.md), de volgende tabel vindt u koppelingen naar verwante onderwerpen.
+Als u de documentatie over het integreren van [uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md)niet hebt gelezen, vindt u in de volgende tabel koppelingen naar verwante onderwerpen.
 
-|Onderwerp |Koppeling|  
+|Onderwerp |Koppelen|  
 | --- | --- |
 |Azure AD Connect downloaden | [Azure AD Connect downloaden](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Installeren met behulp van snelle instellingen | [Snelle installatie van Azure AD Connect](how-to-connect-install-express.md)|
 |Installeren met behulp van aangepaste instellingen | [Aangepaste installatie van Azure AD Connect](./how-to-connect-install-custom.md)|
 |Upgraden van DirSync | [Upgraden van Azure AD-synchronisatiehulpprogramma (DirSync)](how-to-dirsync-upgrade-get-started.md)|
-|Na installatie | [Controleer of de installatie en licenties toewijzen](how-to-connect-post-installation.md)|
+|Na installatie | [De installatie controleren en licenties toewijzen](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

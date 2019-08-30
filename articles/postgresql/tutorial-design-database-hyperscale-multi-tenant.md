@@ -1,6 +1,6 @@
 ---
-title: Een multitenant-database ontwerpen met Azure Database voor PostgreSQL – grootschalige (Citus) (preview) zelfstudie
-description: Deze zelfstudie laat zien hoe u kunt maken, vullen en het opvragen van gedistribueerde tabellen op de Azure Database voor PostgreSQL Hyperscale (Citus) (preview).
+title: Een multi tenant-data base ontwerpen met de zelf studie Azure Database for PostgreSQL – grootschalige (Citus) (preview)
+description: In deze zelf studie ziet u hoe u gedistribueerde tabellen maakt, vult en doorzoekt op Azure Database for PostgreSQL grootschalige (Citus) (preview).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,35 +9,35 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792273"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163987"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Zelfstudie: een multitenant-database ontwerpen met behulp van Azure Database voor PostgreSQL – grootschalige (Citus) (preview)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Zelf studie: een Data Base met meerdere tenants ontwerpen met behulp van Azure Database for PostgreSQL – grootschalige (Citus) (preview)
 
-In deze zelfstudie gebruikt u Azure Database voor PostgreSQL - grootschalige (Citus) (preview) voor meer informatie over het:
+In deze zelf studie gebruikt u Azure Database for PostgreSQL-grootschalige (Citus) (preview) voor meer informatie over:
 
 > [!div class="checklist"]
-> * Maak een servergroep grootschalige (Citus)
-> * Psql gebruiken om een schema te maken
-> * Shard-tabellen op knooppunten
+> * Een Hyperscale (Citus)-servergroep maken
+> * Het hulp programma psql gebruiken om een schema te maken
+> * Shard-tabellen tussen knoop punten
 > * Voorbeeldgegevens opnemen
-> * Gegevens van de query-tenant
-> * Delen van gegevens tussen tenants
-> * Het schema per tenant aanpassen
+> * Query's uitvoeren op Tenant gegevens
+> * Gegevens delen tussen tenants
+> * Het schema per Tenant aanpassen
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="use-psql-utility-to-create-a-schema"></a>Psql gebruiken om een schema te maken
+## <a name="use-psql-utility-to-create-a-schema"></a>Het hulp programma psql gebruiken om een schema te maken
 
-Eenmaal verbinding hebben met de Azure Database voor PostgreSQL - grootschalige (Citus) (preview) met behulp van psql, u kunt enkele eenvoudige taken uit te. In deze zelfstudie wordt beschreven hoe u een web-app waarmee adverteerders om bij te houden van hun campagnes.
+Nadat u verbinding hebt gemaakt met de Azure Database for PostgreSQL-grootschalige (Citus) (preview) met behulp van psql, kunt u een aantal basis taken volt ooien. In deze zelf studie wordt u begeleid bij het maken van een web-app waarmee adverteerders hun campagnes kunnen volgen.
 
-Meerdere bedrijven kan de app gebruiken, laten we een tabel voor het opslaan van bedrijven en andere voor hun campagnes maken. Voer deze opdrachten uit in de psql-console:
+Meerdere bedrijven kunnen de app gebruiken, dus we maken een tabel om bedrijven en een andere voor hun campagnes te bewaren. Voer de volgende opdrachten uit in de psql-console:
 
 ```sql
 CREATE TABLE companies (
@@ -63,7 +63,7 @@ CREATE TABLE campaigns (
 );
 ```
 
-Elke campagne wordt betaalt voor het uitvoeren van advertenties. Een tabel voor advertenties, door het uitvoeren van de volgende code in psql na de bovenstaande code toevoegen:
+Elke campagne betaalt voor het uitvoeren van advertenties. Voeg ook een tabel toe voor advertenties door de volgende code uit te voeren in psql na de bovenstaande code:
 
 ```sql
 CREATE TABLE ads (
@@ -84,7 +84,7 @@ CREATE TABLE ads (
 );
 ```
 
-Ten slotte, houden we statistieken die aangeven klikken en hits voor elke ad:
+Ten slotte volgen we statistieken over klikken en hits voor elke advertentie:
 
 ```sql
 CREATE TABLE clicks (
@@ -118,19 +118,19 @@ CREATE TABLE impressions (
 );
 ```
 
-U kunt de zojuist gemaakte tabellen in de lijst met tabellen nu beschikbaar in de psql zien door te voeren:
+U kunt de zojuist gemaakte tabellen in de lijst met tabellen nu in psql zien door de volgende handelingen uit te voeren:
 
 ```postgres
 \dt
 ```
 
-Toepassingen met meerdere tenants kunnen afdwingen uniekheid per tenant, die daarom alle primaire en refererende sleutels bevatten de id van het bedrijf.
+Toepassingen met meerdere tenants kunnen alleen uniekheid afdwingen per Tenant. dat is de reden waarom alle primaire en refererende sleutels de bedrijfs-ID bevatten.
 
-## <a name="shard-tables-across-nodes"></a>Shard-tabellen op knooppunten
+## <a name="shard-tables-across-nodes"></a>Shard-tabellen tussen knoop punten
 
-Een grootschalige implementatie slaat tabelrijen op verschillende knooppunten op basis van de waarde van een door de gebruiker opgegeven kolom. Deze "distributiekolom"-markeringen die tenant is eigenaar van welke rijen.
+In een grootschalige-implementatie worden tabel rijen op verschillende knoop punten opgeslagen op basis van de waarde van een door de gebruiker opgegeven kolom. Deze distributie kolom markeert welke Tenant eigenaar is van welke rijen.
 
-Stel de distributiekolom moet bedrijf\_-id, de tenant-id. Voer in de psql, deze functies:
+Laten we de distributie kolom instellen op bedrijfs\_-id, de Tenant-id. Voer in psql de volgende functies uit:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -142,7 +142,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 ## <a name="ingest-sample-data"></a>Voorbeeldgegevens opnemen
 
-Buitenkant van psql nu downloaden voorbeelden van gegevenssets in de normale opdrachtregel:
+Down load psql nu in de normale opdracht regel het volgende:
 
 ```bash
 for dataset in companies campaigns ads clicks impressions geo_ips; do
@@ -150,9 +150,11 @@ for dataset in companies campaigns ads clicks impressions geo_ips; do
 done
 ```
 
-Terug in psql, bulksgewijs laden van de gegevens. Zorg dat voor het uitvoeren van psql in dezelfde map waar u de bestanden gedownload.
+In psql kunt u de gegevens bulksgewijs laden. Zorg ervoor dat u psql uitvoert in dezelfde map waar u de gegevens bestanden hebt gedownload.
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy companies from 'companies.csv' with csv
 \copy campaigns from 'campaigns.csv' with csv
 \copy ads from 'ads.csv' with csv
@@ -160,11 +162,11 @@ Terug in psql, bulksgewijs laden van de gegevens. Zorg dat voor het uitvoeren va
 \copy impressions from 'impressions.csv' with csv
 ```
 
-Deze gegevens worden nu worden verdeeld over de worker-knooppunten.
+Deze gegevens worden nu verdeeld over werk knooppunten.
 
-## <a name="query-tenant-data"></a>Gegevens van de query-tenant
+## <a name="query-tenant-data"></a>Query's uitvoeren op Tenant gegevens
 
-Wanneer de toepassing gegevens voor één tenant aanvraagt, kan de database de query uitvoeren op een enkele worker-knooppunt. Query's voor één tenant filteren op een enkele tenant-ID. Bijvoorbeeld, de volgende filters query `company_id = 5` voor advertenties en indruk. Voer het uit in de psql om de resultaten te bekijken.
+Wanneer de toepassing gegevens aanvraagt voor één Tenant, kan de data base de query uitvoeren op één worker-knoop punt. Query's met één Tenant filteren op één Tenant-ID. Bijvoorbeeld, de volgende query filters `company_id = 5` voor advertenties en hits. Probeer het programma uit te voeren in psql om de resultaten te bekijken.
 
 ```sql
 SELECT a.campaign_id,
@@ -181,11 +183,11 @@ GROUP BY a.campaign_id, a.id
 ORDER BY a.campaign_id, n_impressions desc;
 ```
 
-## <a name="share-data-between-tenants"></a>Delen van gegevens tussen tenants
+## <a name="share-data-between-tenants"></a>Gegevens delen tussen tenants
 
-Tot nu alle tabellen zijn gedistribueerd door `company_id`, maar sommige gegevens op natuurlijke wijze "behoort niet' tot een tenant in het bijzonder, en kan worden gedeeld. Alle bedrijven in het voorbeeld van de ad-platform wilt bijvoorbeeld geografische informatie voor de doelgroep op basis van IP-adressen.
+Tot nu toe zijn alle tabellen gedistribueerd door `company_id`, maar sommige gegevens zijn niet natuurlijk ' horen ' bij een Tenant met name en kunnen worden gedeeld. Zo kan het voor komen dat alle bedrijven in het voor beeld-ad-platform geografische gegevens voor hun doel groep willen ophalen op basis van IP-adressen.
 
-Maak een tabel voor het opslaan van gedeelde geografische informatie. Voer de volgende opdrachten in psql:
+Een tabel maken voor het opslaan van gedeelde geografische informatie. Voer de volgende opdrachten uit in psql:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -197,21 +199,21 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Vervolgens maken `geo_ips` een verwijzingstabel' ' voor het opslaan van een kopie van de tabel op elke worker-knooppunt.
+Maak `geo_ips` vervolgens een ' verwijzings tabel ' om een kopie van de tabel op elk worker-knoop punt op te slaan.
 
 ```sql
 SELECT create_reference_table('geo_ips');
 ```
 
-Laden met voorbeeldgegevens. Vergeet niet om uit te voeren met deze opdracht in psql uit in de map waar u de gegevensset hebt gedownload.
+Laad deze met voorbeeld gegevens. Vergeet niet om deze opdracht in psql uit te voeren vanuit de map waar u de gegevensset hebt gedownload.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Lid worden van de tabel klikken met geografisch\_IP-adressen is efficiënt op alle knooppunten.
-Hier volgt een join te vinden van de locaties waar iedereen die op ad geklikt
-290. Probeer de query wordt uitgevoerd in psql.
+Het toevoegen van de klikkens\_tabel met geo ip's is efficiënt op alle knoop punten.
+Hier volgt een koppeling om de locaties te vinden van iedereen die op ad heeft geklikt
+290. Probeer de query uit te voeren in psql.
 
 ```sql
 SELECT c.id, clicked_at, latlon
@@ -221,14 +223,14 @@ SELECT c.id, clicked_at, latlon
    AND c.ad_id = 290;
 ```
 
-## <a name="customize-the-schema-per-tenant"></a>Het schema per tenant aanpassen
+## <a name="customize-the-schema-per-tenant"></a>Het schema per Tenant aanpassen
 
-Elke tenant wellicht speciale gegevens niet nodig voor andere gebruikers op te slaan. Echter, delen alle tenants een gemeenschappelijke infrastructuur met een identieke databaseschema. Waar kan de extra gegevens gaan?
+Elke Tenant moet mogelijk speciale gegevens opslaan die niet nodig zijn voor anderen. Alle tenants delen echter een gemeen schappelijke infra structuur met een identiek database schema. Waar kunnen de extra gegevens worden geplaatst?
 
-Een truc is het gebruik van een type met een kolom, zoals PostgreSQL JSONB.  Onze schema heeft een veld JSONB in `clicks` met de naam `user_data`.
-Een onderneming (bijvoorbeeld 5), kunt u de kolom gebruiken om te controleren of de gebruiker zich op een mobiel apparaat.
+Een slag is het gebruik van een open-beëindigd kolom Type, zoals PostgreSQL van JSONB.  Ons schema bevat een JSONB-veld `clicks` met `user_data`de naam.
+Een bedrijf (bedrijf 5), kan de kolom gebruiken om bij te houden of de gebruiker zich op een mobiel apparaat bevindt.
 
-Hier volgt een query te vinden die meer klikt: mobiele of traditionele bezoekers.
+Hier volgt een query om te ontdekken wie er meer te weten komt: mobiele of traditionele bezoekers.
 
 ```sql
 SELECT
@@ -240,7 +242,7 @@ GROUP BY user_data->>'is_mobile'
 ORDER BY count DESC;
 ```
 
-We kunnen deze query voor een enkel bedrijf optimaliseren door het maken van een [gedeeltelijke index](https://www.postgresql.org/docs/current/static/indexes-partial.html).
+We kunnen deze query voor één bedrijf optimaliseren door een [gedeeltelijke index](https://www.postgresql.org/docs/current/static/indexes-partial.html)te maken.
 
 ```sql
 CREATE INDEX click_user_data_is_mobile
@@ -248,7 +250,7 @@ ON clicks ((user_data->>'is_mobile'))
 WHERE company_id = 5;
 ```
 
-Meer over het algemeen kunnen we maken een [GIN indexen](https://www.postgresql.org/docs/current/static/gin-intro.html) op elke sleutel en waarde in de kolom.
+Meer in het algemeen kunnen we een [eginnen-indexen](https://www.postgresql.org/docs/current/static/gin-intro.html) maken voor elke sleutel en waarde in de kolom.
 
 ```sql
 CREATE INDEX click_user_data
@@ -265,12 +267,12 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-In de voorgaande stappen hebt u Azure-resources in een servergroep gemaakt. Als u niet verwacht deze resources in de toekomst nodig hebt dat, verwijdert u de server-groep. Druk op de *verwijderen* knop in de *overzicht* pagina voor de servergroep. Wanneer u hierom wordt gevraagd op een pop-pagina, Controleer de naam van de server-groep en klikt u op de laatste *verwijderen* knop.
+In de voor gaande stappen hebt u Azure-resources in een server groep gemaakt. Als u deze resources in de toekomst niet meer nodig hebt, verwijdert u de Server groep. Druk op de knop *verwijderen* op de pagina *overzicht* voor uw server groep. Wanneer u hierom wordt gevraagd, bevestigt u de naam van de Server groep en klikt u op de laatste knop *verwijderen* .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd over het inrichten van een grootschalige (Citus) server-groep. U verbonden met psql, een schema gemaakt en gedistribueerde gegevens. Hebt u geleerd om gegevens te doorzoeken binnen en tussen tenants en het aanpassen van het schema per tenant.
+In deze zelf studie hebt u geleerd hoe u een grootschalige (Citus)-Server groep inricht. U hebt verbinding gemaakt met het psql, een schema en gedistribueerde gegevens. U hebt geleerd hoe u gegevens in en tussen tenants kunt opvragen en het schema kunt aanpassen per Tenant.
 
-Hierna leert over de concepten van grootschalige.
+Vervolgens leert u meer over de concepten van grootschalige.
 > [!div class="nextstepaction"]
-> [Zeer grootschalige knooppunttypen](https://aka.ms/hyperscale-concepts)
+> [Grootschalige-knooppunt typen](https://aka.ms/hyperscale-concepts)

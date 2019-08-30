@@ -1,6 +1,6 @@
 ---
-title: Logische apps beheren met behulp van Visual Studio - Azure Logic Apps
-description: Logic apps en andere Azure-assets met Visual Studio Cloud Explorer beheren
+title: Logische apps beheren met Visual Studio-Azure Logic Apps
+description: Logische apps en andere Azure-assets beheren met Visual Studio Cloud Explorer
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,19 +10,19 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447904"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164881"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logische apps beheren met Visual Studio
 
-Hoewel u maken kunt, bewerken, beheren en implementeren van logische apps in de [Azure-portal](https://portal.azure.com), u kunt ook Visual Studio gebruiken als u toevoegen van uw logische apps wilt voor het besturingselement voor de gegevensbron, verschillende versies publiceren en maken [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sjablonen voor verschillende implementatieomgevingen. U kunt met Visual Studio Cloud Explorer, zoeken en beheren van uw logische apps, samen met andere Azure-resources. Bijvoorbeeld, kunt u openen, downloaden, bewerken, uitvoeren, uitvoeringsgeschiedenis, uitschakelen en inschakelen logische apps die al zijn geïmplementeerd in Azure portal weergeven. Als u geen ervaring met het werken met Azure Logic Apps in Visual Studio, ontdek [over het maken van logische apps met Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Hoewel u in de [Azure Portal](https://portal.azure.com)logische apps kunt maken, bewerken, beheren en implementeren, kunt u Visual Studio ook gebruiken als u uw Logic Apps wilt toevoegen aan broncode beheer, verschillende versies wilt publiceren en [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sjablonen wilt maken voor verschillende implementatie omgevingen. Met Visual Studio Cloud Explorer kunt u uw logische apps samen met andere Azure-resources vinden en beheren. U kunt bijvoorbeeld openen, downloaden, bewerken, uitvoeren, uitvoerings geschiedenis bekijken, uitschakelen en logische apps inschakelen die al in de Azure Portal zijn geïmplementeerd. Als u geen ervaring hebt met het werken met Azure Logic Apps in Visual Studio, kunt u leren [hoe u logische apps maakt met Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 > [!IMPORTANT]
-> Implementeren of een logische app vanuit Visual Studio publiceren overschrijft de versie van de app in Azure portal. Dus als u wijzigingen in de Azure-portal die u wilt behouden aanbrengt, zorg ervoor dat u [vernieuwen van de logische app in Visual Studio](#refresh) vanuit de Azure-portal voordat u de volgende keer dat u implementeert of publiceren vanuit Visual Studio.
+> Als u een logische app implementeert of publiceert vanuit Visual Studio, wordt de versie van die app in de Azure Portal overschreven. Als u wijzigingen aanbrengt in de Azure Portal die u wilt blijven gebruiken, moet u er dus voor zorgen dat u [de logische app in Visual Studio](#refresh) vernieuwt vanuit de Azure Portal voordat u de volgende keer van Visual Studio implementeert of publiceert.
 
 <a name="requirements"></a>
 
@@ -32,21 +32,21 @@ Hoewel u maken kunt, bewerken, beheren en implementeren van logische apps in de 
 
 * Download en installeer deze hulpprogramma's als u ze nog niet hebt: 
 
-  * [Met Visual Studio 2019, 2017 of 2015 - Community edition of hoger](https://aka.ms/download-visual-studio). 
+  * [Visual Studio 2019, 2017 of 2015-Community Edition of hoger](https://aka.ms/download-visual-studio). 
   Deze snelstart maakt gebruik van Visual Studio Community 2017, dit is gratis.
 
     > [!IMPORTANT]
-    > Wanneer u Visual Studio 2019 of 2017 installeert, zorg ervoor dat u selecteert de **Azure-ontwikkeling** werkbelasting.
-    > Zie voor meer informatie, [beheren van resources die zijn gekoppeld aan uw Azure-accounts in Visual Studio Cloud Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    > Wanneer u Visual Studio 2019 of 2017 installeert, moet u ervoor zorgen dat u de **Azure Development** -werk belasting selecteert.
+    > Zie [resources die zijn gekoppeld aan uw Azure-accounts beheren in Visual Studio Cloud Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)voor meer informatie.
 
-    Cloud Explorer voor Visual Studio 2015 installeren [Cloud Explorer van Visual Studio Marketplace downloaden](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
-    Zie voor meer informatie, [beheren van resources die zijn gekoppeld aan uw Azure-Accounts in de Cloud Explorer van Visual Studio (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    Als u Cloud Explorer voor Visual Studio 2015 wilt installeren, [downloadt u Cloud Explorer van Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
+    Zie [resources beheren die zijn gekoppeld aan uw Azure-accounts in Visual Studio Cloud Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)voor meer informatie.
 
   * [Azure SDK (2.9.1 of hoger)](https://azure.microsoft.com/downloads/) 
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * Azure Logic Apps-hulpprogramma's voor de versie van Visual Studio die u wilt:
+  * Azure Logic Apps Hulpprogram Ma's voor de versie van Visual Studio die u wilt:
 
     * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
@@ -57,136 +57,136 @@ Hoewel u maken kunt, bewerken, beheren en implementeren van logische apps in de 
     U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Zorg ervoor dat u Visual Studio opnieuw opstart na de installatie.
 
-* Toegang tot het web tijdens het gebruik van de ingesloten ontwerper van logische Apps
+* Toegang tot het web terwijl u de Inge sloten Logic Apps Designer gebruikt
 
   De ontwerpfunctie moet over een internetverbinding beschikken om resources te maken in Azure en de eigenschappen en gegevens van connectoren in uw logische app te lezen. 
   Als u bijvoorbeeld de Dynamics CRM Online-connector gebruikt, controleert de ontwerpfunctie uw CRM-exemplaar voor de beschikbare standaardregels en aangepaste eigenschappen.
 
 <a name="find-logic-apps-vs"></a>
 
-## <a name="find-your-logic-apps"></a>Uw logische apps zoeken
+## <a name="find-your-logic-apps"></a>Uw Logic apps zoeken
 
-In Visual Studio vindt u alle logic-apps die zijn gekoppeld aan uw Azure-abonnement en worden geïmplementeerd in Azure portal met behulp van Cloud Explorer.
+In Visual Studio vindt u alle Logic apps die zijn gekoppeld aan uw Azure-abonnement en die worden geïmplementeerd in de Azure Portal met behulp van Cloud Explorer.
 
-1. Open Visual Studio. Op de **weergave** in het menu **Cloud Explorer**.
+1. Open Visual Studio. Selecteer in het menu **weer gave** de optie **Cloud Explorer**.
 
-1. Kies in de Cloud Explorer, **accountbeheer**. Selecteer het Azure-abonnement dat is gekoppeld aan uw logische apps, en kies vervolgens **toepassen**. Bijvoorbeeld:
+1. Kies **account beheer**in Cloud Explorer. Selecteer het Azure-abonnement dat is gekoppeld aan uw Logic apps en kies vervolgens **Toep assen**. Bijvoorbeeld:
 
-   ![Kies "Accountbeheer"](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
+   ![Kies account beheer](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
-1. Op basis van of u nu zoekt door **resourcegroepen** of **resourcetypen**, als volgt te werk:
+1. Voer de volgende stappen uit op basis van het feit of u zoekt op **resource groepen** of **resource typen**:
 
-   * **Resourcegroepen**: Uw Azure-abonnement ziet u Cloud Explorer alle resourcegroepen die gekoppeld aan dat abonnement zijn. 
-   Vouw de resourcegroep die uw logische app bevat, en selecteer vervolgens uw logische app.
+   * **Resource groepen**: Onder uw Azure-abonnement worden in Cloud Explorer alle resource groepen weer gegeven die zijn gekoppeld aan het abonnement. 
+   Vouw de resource groep uit die uw logische app bevat en selecteer vervolgens uw logische app.
 
-   * **Resourcetypen**: Vouw onder uw Azure-abonnement, **Logic Apps**. Nadat u Cloud Explorer ziet alle geïmplementeerde logic-apps die gekoppeld aan uw abonnement zijn, selecteert u uw logische app.
+   * **Resource typen**: Vouw **Logic apps**uit onder uw Azure-abonnement. Nadat Cloud Explorer alle geïmplementeerde Logic apps bevat die aan uw abonnement zijn gekoppeld, selecteert u uw logische app.
 
 <a name="open-designer"></a>
 
 ## <a name="open-in-visual-studio"></a>Openen in Visual Studio
 
-U kunt logische apps eerder hebt gemaakt en geïmplementeerd via Azure portal of Azure Resource Manager-projecten met Visual Studio openen in Visual Studio.
+In Visual Studio kunt u logische apps openen die eerder zijn gemaakt en geïmplementeerd, rechtstreeks via de Azure Portal of als Azure Resource Manager projecten met Visual Studio.
 
-1. Cloud Explorer openen en zoeken van uw logische app. 
+1. Open Cloud Explorer en zoek uw logische app. 
 
-1. Selecteer in het snelmenu van de logische app, **openen met Logic App-Editor**.
+1. Selecteer in het snelmenu van de logische app de optie **openen met Logic app-editor**.
 
    > [!TIP]
-   > Als u deze opdracht geen in Visual Studio 2019, Controleer of de meest recente updates voor Visual Studio.
+   > Als u deze opdracht niet in Visual Studio 2019 hebt, controleert u of u de meest recente updates voor Visual Studio hebt.
 
-   In dit voorbeeld ziet u logische apps per resourcetype, zodat uw logische apps worden weergegeven onder de **Logic Apps** sectie.
+   Dit voor beeld toont Logic apps op resource type, zodat uw logische apps worden weer gegeven in de sectie **Logic apps** .
 
-   ![Open geïmplementeerde logische app in Azure portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
+   ![Geïmplementeerde logische app openen vanuit Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Nadat de logische app wordt geopend in de ontwerper van logische Apps, aan de onderkant van het ontwerpprogramma, kunt u kiezen **codeweergave** zodat u de onderliggende definitie structuur van de logische app kunt controleren. 
-   Als u maken van een sjabloon voor de implementatie voor de logische app wilt, krijgt u informatie [het downloaden van een Azure Resource Manager-sjabloon](#download-logic-app) voor deze logische app. Meer informatie over [Resource Manager-sjablonen](../azure-resource-manager/resource-group-overview.md#template-deployment).
+   Nadat de logische app in Logic Apps Designer is geopend, kunt u onder aan de ontwerp functie de **code weergave** kiezen zodat u de onderliggende logische app-definitie structuur kunt bekijken. 
+   Als u een implementatie sjabloon wilt maken voor de logische app, leert u [hoe u een Azure Resource Manager sjabloon](#download-logic-app) voor die logische app kunt downloaden. Meer informatie over [Resource Manager-sjablonen](../azure-resource-manager/template-deployment-overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Downloaden van Azure
 
-U kunt logische apps downloaden de [Azure-portal](https://portal.azure.com) en slaat u ze als [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sjablonen. U kunt vervolgens lokaal bewerken de sjablonen met Visual Studio en aanpassen van logische apps voor verschillende implementatieomgevingen. Automatisch downloaden van logische apps *parameterizes* hun definities in [Resource Manager-sjablonen](../azure-resource-manager/resource-group-overview.md#template-deployment), die ook JavaScript Object Notation (JSON) gebruiken.
+U kunt Logic apps downloaden van de [Azure Portal](https://portal.azure.com) en deze opslaan als [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) sjablonen. U kunt de sjablonen vervolgens lokaal bewerken met Visual Studio en Logic apps aanpassen voor verschillende implementatie omgevingen. Bij het downloaden van Logic apps worden de definities in [Resource Manager-sjablonen](../azure-resource-manager/template-deployment-overview.md)automatisch *parameterizes* , die ook JavaScript object Notation (JSON) gebruiken.
 
-1. In Visual Studio Cloud Explorer openen en zoek en selecteer de logische app die u wilt downloaden van Azure.
+1. Open in Visual Studio Cloud Explorer, zoek en selecteer de logische app die u wilt downloaden van Azure.
 
-2. Selecteer in het snelmenu van die app, **openen met Logic App-Editor**.
+2. Selecteer in het snelmenu van de app **openen met Logic app-editor**.
 
    > [!TIP]
-   > Als u deze opdracht geen in Visual Studio 2019, Controleer of de meest recente updates voor Visual Studio.
+   > Als u deze opdracht niet in Visual Studio 2019 hebt, controleert u of u de meest recente updates voor Visual Studio hebt.
 
-   Logic App Designer wordt geopend en ziet u de logische app. 
-   Als u wilt controleren van de onderliggende definitie van logische app en de structuur, aan de onderkant van het ontwerpprogramma, kies **codeweergave**. 
+   De Logic app-ontwerp functie wordt geopend en toont de logische app. 
+   Als u de onderliggende definitie en structuur van de logische app wilt bekijken, kiest u de **code weergave**onder aan de ontwerp functie. 
 
-3. Kies op de werkbalk van de ontwerper **downloaden**.
+3. Kies **downloaden**op de werk balk van de ontwerp functie.
 
-   ![Kies 'Downloaden'](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
+   ![Kies downloaden](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
 
-4. Wanneer u wordt gevraagd een locatie, blader naar die locatie en het Resource Manager-sjabloon voor de definitie van de logische app opslaan in JSON (.json)-bestandsindeling. 
+4. Wanneer u wordt gevraagd om een locatie, bladert u naar die locatie en slaat u de Resource Manager-sjabloon voor de definitie van de logische app op in de JSON-bestands indeling (. json). 
 
-De definitie van uw logische app wordt weergegeven in de `resources` subsectie in het Resource Manager-sjabloon. U kunt nu de definitie van de logische app en Resource Manager-sjabloon met Visual Studio bewerken. U kunt ook de sjabloon als een Azure Resource Manager-project toevoegen aan een Visual Studio-oplossing. Meer informatie over [Resource Manager voor logische apps in Visual Studio-projecten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+De definitie van de logische app wordt `resources` weer gegeven in de Subsectie in de Resource Manager-sjabloon. U kunt nu de definitie van de logische app en de Resource Manager-sjabloon bewerken met Visual Studio. U kunt de sjabloon ook als een Azure Resource Manager project toevoegen aan een Visual Studio-oplossing. Meer informatie over [Resource Manager-projecten voor Logic apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
 
 <a name="refresh"></a>
 
-## <a name="refresh-from-azure"></a>Vernieuwen van Azure
+## <a name="refresh-from-azure"></a>Vernieuwen vanuit Azure
 
-Als u uw logische app in Azure portal bewerken en deze wijzigingen wilt behouden, zorg ervoor dat de versie van de app in Visual Studio met deze wijzigingen wordt vernieuwd. 
+Als u de logische app in de Azure Portal bewerkt en u deze wijzigingen wilt hand haven, moet u ervoor zorgen dat u de versie van de app in Visual Studio vernieuwt met die wijzigingen. 
 
-* In Visual Studio op de werkbalk Logic App Designer kiezen **vernieuwen**.
+* Klik in Visual Studio op de werk balk van de Logic app-ontwerp functie op **vernieuwen**.
 
   -of-
 
-* Open het snelmenu van uw logische app in Visual Studio Cloud Explorer en selecteer **vernieuwen**.
+* Open in Visual Studio Cloud Explorer het snelmenu van de logische app en selecteer **vernieuwen**.
 
-![Vernieuwen van de logische app met updates](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
+![Logische app met updates vernieuwen](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
 
-## <a name="publish-logic-app-updates"></a>Logic app-updates publiceren
+## <a name="publish-logic-app-updates"></a>Updates voor logische apps publiceren
 
-Wanneer u klaar bent voor uw logische app-updates implementeren vanuit Visual Studio naar Azure, op de werkbalk Logic App Designer Kies **publiceren**.
+Wanneer u klaar bent om uw Logic app-updates te implementeren vanuit Visual Studio naar Azure, klikt u op de werk balk van de Logic app-ontwerp functie op **publiceren**.
 
 ![Bijgewerkte logische app publiceren](./media/manage-logic-apps-with-visual-studio/publish-logic-app.png)
 
-## <a name="manually-run-your-logic-app"></a>Uw logische app uitvoeren handmatig
+## <a name="manually-run-your-logic-app"></a>Uw logische app hand matig uitvoeren
 
-U kunt een logische app geïmplementeerd in Azure vanuit Visual Studio handmatig activeren. Kies op de werkbalk Logic App Designer **Trigger uitvoeren**.
+U kunt een logische app die is geïmplementeerd in azure, hand matig activeren vanuit Visual Studio. Kies **trigger uitvoeren**op de werk balk van de Logic app-ontwerp functie.
 
-![Logische app handmatig uitvoeren](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
+![Een logische app hand matig uitvoeren](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
 
 ## <a name="review-run-history"></a>Uitvoeringsgeschiedenis controleren
 
-Als u wilt de status controleren en diagnosticeren van problemen met runs voor logic Apps, kunt u de details bekijken, zoals invoer en uitvoer voor degenen die wordt uitgevoerd in Visual Studio.
+Als u de status wilt controleren en problemen wilt vaststellen met uitvoeringen van logische apps, kunt u de Details voor deze uitvoeringen bekijken in Visual Studio, zoals invoer en uitvoer.
 
-1. In Cloud Explorer het snelmenu van uw logische app openen en selecteer **Open uitvoeringsgeschiedenis**.
+1. Open in Cloud Explorer het snelmenu van de logische app en selecteer **Open run-geschiedenis**.
 
-   ![Open de geschiedenis uitvoeren](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
+   ![Uitvoerings geschiedenis openen](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
 
-1. Als u wilt weergeven van de details voor een specifieke uitvoering, dubbelklikt u op een uitvoering. Bijvoorbeeld:
+1. Dubbel klik op een uitvoering om de details van een specifieke uitvoering weer te geven. Bijvoorbeeld:
 
-   ![Gedetailleerde uitvoeringsgeschiedenis](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
+   ![Gedetailleerde uitvoerings geschiedenis](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
-   > Als u wilt sorteren in de tabel door de eigenschap, kiest u de kolomkop voor die eigenschap. 
+   > Als u de tabel wilt sorteren op eigenschap, kiest u de kolomkop voor die eigenschap. 
 
-1. Vouw de stappen die invoer en uitvoer die u wilt bekijken. Bijvoorbeeld:
+1. Vouw de stappen uit waarvan u de invoer en uitvoer wilt controleren. Bijvoorbeeld:
 
-   ![Bekijk invoer en uitvoer voor elke stap](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
+   ![Invoer en uitvoer voor elke stap weer geven](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
 
-## <a name="disable-or-enable-logic-app"></a>Logische app in- of uitschakelen
+## <a name="disable-or-enable-logic-app"></a>Logische app in-of uitschakelen
 
-Zonder uw logische app te verwijderen, kunt u de trigger uit het activeren van de volgende keer wanneer de triggervoorwaarde wordt voldaan stoppen. Uw logische app uitschakelen wordt voorkomen dat de Logic Apps-engine van het maken en toekomstige werkstroomexemplaren voor uw logische app uitvoeren.
-In Cloud Explorer het snelmenu van uw logische app openen en selecteer **uitschakelen**.
+Zonder uw logische app te verwijderen, kunt u voor komen dat de trigger de volgende keer wordt geactiveerd wanneer aan de voor waarde voor de trigger wordt voldaan. Door uw logische app uit te scha kelen, voor komt u dat de Logic Apps-Engine toekomstige werk stroom exemplaren voor uw logische app maakt en uitvoert.
+Open in Cloud Explorer het snelmenu van de logische app en selecteer **uitschakelen**.
 
 ![Uw logische app uitschakelen](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
 > [!NOTE]
-> Wanneer u een logische app uitschakelt, wordt geen nieuwe uitvoeringen worden geïnstantieerd. Alle wordt uitgevoerd en actieve uitvoeringen wordt voortgezet totdat ze zijn voltooid, wat tijd in beslag kan duren. 
+> Wanneer u een logische app uitschakelt, worden er geen nieuwe uitvoeringen geïnstantieerd. Alle uitvoeringen en in behandeling zijnde uitvoeringen gaan door totdat ze zijn voltooid. Dit kan enige tijd in beslag nemen. 
 
-Wanneer u gereed voor de logische app hervatten bent, kunt u uw logische app opnieuw activeren. In Cloud Explorer het snelmenu van uw logische app openen en selecteer **inschakelen**.
+Wanneer u klaar bent voor de logische app om de bewerking te hervatten, kunt u de logische app opnieuw activeren. Open in Cloud Explorer het snelmenu van de logische app en selecteer **inschakelen**.
 
 ![Uw logische app inschakelen](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
 
 ## <a name="delete-your-logic-app"></a>Uw logische app verwijderen
 
-Als u wilt uw logische app verwijderen uit de Azure portal, in Cloud Explorer het snelmenu van uw logische app openen en selecteer **verwijderen**.
+Als u uw logische app uit de Azure Portal wilt verwijderen, opent u in Cloud Explorer het snelmenu van de logische app en selecteert u **verwijderen**.
 
 ![Uw logische app verwijderen](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
 
@@ -195,15 +195,15 @@ Als u wilt uw logische app verwijderen uit de Azure portal, in Cloud Explorer he
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u uw logische app-project in de ontwerper van logische Apps opent, krijgt u mogelijk niet de optie voor het selecteren van uw Azure-abonnement. In plaats daarvan uw logische app wordt geopend met een Azure-abonnement dat is niet de versie die u wilt gebruiken. Dit probleem treedt op omdat nadat u een logische app .json-bestand hebt geopend, Visual Studio de eerste geselecteerde abonnement voor toekomstig gebruik in de cache opgeslagen. U lost dit probleem, probeert u een van deze stappen:
+Wanneer u uw Logic app-project in de Logic Apps Designer opent, krijgt u mogelijk niet de optie om uw Azure-abonnement te selecteren. In plaats daarvan wordt uw logische App geopend met een Azure-abonnement dat niet het enige is dat u wilt gebruiken. Dit probleem treedt op omdat Visual Studio, nadat u een JSON-bestand van een logische app hebt geopend, het eerste geselecteerde abonnement in de cache opslaat voor toekomstig gebruik. Voer een van de volgende stappen uit om dit probleem op te lossen:
 
-* Wijzig de naam van de logische app .json-bestand. De abonnement-cache, is afhankelijk van de bestandsnaam.
+* Wijzig de naam van het JSON-bestand van de logische app. De abonnements cache is afhankelijk van de bestands naam.
 
-* Verwijderen van de eerder geselecteerde abonnementen voor *alle* logische apps in uw oplossing, verwijdert u de verborgen Visual Studio-instellingenmap (.vs) in de directory van uw oplossing. Deze locatie opgeslagen gegevens van uw abonnement.
+* Als u eerder geselecteerde abonnementen voor *alle* Logic apps in uw oplossing wilt verwijderen, verwijdert u de verborgen map Visual Studio Settings (. VS) in de map van uw oplossing. Op deze locatie worden de abonnements gegevens opgeslagen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u voor het beheren van geïmplementeerde logische apps met Visual Studio. Vervolgens kunt u meer over het aanpassen van definities voor logische Apps voor implementatie:
+In dit artikel hebt u geleerd hoe u geïmplementeerde logische apps kunt beheren met Visual Studio. Meer informatie over het aanpassen van Logic app-definities voor implementatie:
 
 > [!div class="nextstepaction"]
-> [Definities voor logische Apps maken in JSON](../logic-apps/logic-apps-author-definitions.md)
+> [Definities van logische apps in JSON maken](../logic-apps/logic-apps-author-definitions.md)

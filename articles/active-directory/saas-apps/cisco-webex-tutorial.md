@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050010"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162668"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Cisco WebEx-vergaderingen
 
@@ -78,24 +78,24 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **Cisco WebEx** -toepassings integratie, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
-
-   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-1. Upload het **META gegevensbestand** van de gedownloade service provider in de sectie **basis configuratie van SAML** en configureer de toepassing in de gestarte modus **IDP** door de volgende stappen uit te voeren:
-
-    >[!Note]
-    >U krijgt het meta gegevensbestand van de service provider. dit wordt verderop beschreven in het gedeelte **Cisco WebEx-vergaderingen configureren** van de zelf studie. 
+1. Op de pagina **eenmalige aanmelding met SAML instellen** kunt u de toepassing in de gestarte modus **IDP** configureren door het **META gegevensbestand van de service provider** als volgt te uploaden:
 
     a. Klik op **metagegevensbestand uploaden**.
 
     b. Klik op **map logo** voor het selecteren van het bestand met metagegevens en klikt u op **uploaden**.
 
-    c. Als het uploaden van het metagegevensbestand van de serviceprovider is geslaagd, worden de waarden voor de **id** en **Antwoord-URL** automatisch ingevuld in de sectie **Standaard SAML-configuratie**:
+    c. Nadat de upload van het meta gegevensbestand van de service provider is voltooid, worden de waarden voor de **id** en de **antwoord-URL** automatisch ingevuld in de basis- **SAML-configuratie** sectie.
 
-5. Als u de toepassing in de modus door **SP** gestart wilt configureren, voert u de volgende stap uit:
+    >[!Note]
+    >U ontvangt het meta gegevensbestand van de service provider in het gedeelte **Cisco WebEx-vergaderingen configureren** . dit wordt verderop in de zelf studie beschreven. 
+
+1. Als u de toepassing in de modus door **SP** gestart wilt configureren, voert u de volgende stappen uit:  
+
+    a. Klik in de sectie **basis configuratie van SAML** op het pictogram bewerken/pen.
+
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
     
-    Typ in het tekstvak **aanmeldings-URL** de URL met het volgende patroon:`https://<customername>.webex.com`
+    b. Typ in het tekstvak **aanmeldings-URL** de URL met het volgende patroon:` https://<customername>.my.webex.com`
 
 5. Cisco Web-vergaderingen verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster Gebruikerskenmerken te openen.
 

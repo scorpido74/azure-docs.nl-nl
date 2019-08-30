@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061373"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183185"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Veelgestelde vragen
 
@@ -143,7 +143,7 @@ Voer de volgende stappen uit om uw Azure AD B2C-Tenant te verwijderen:
 1. Selecteer **alle toepassingen weer geven**
 1. Selecteer de toepassing met de naam **B2C-Extensions-app**, selecteer **verwijderen**en selecteer vervolgens **Ja** wanneer u hierom wordt gevraagd.
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
-1. Selecteer bij **LinkedIn-account verbindingen**de optie **Nee**en selecteer vervolgens **Opslaan**.
+1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
 1. Selecteer onder **toegangs beheer voor Azure-resources**de optie **Ja**en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.

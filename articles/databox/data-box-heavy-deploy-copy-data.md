@@ -1,59 +1,83 @@
 ---
-title: Zelfstudie voor het kopiëren van gegevens via SMB op Azure Data Box zware | Microsoft Docs
-description: Meer informatie over het kopiëren van gegevens naar uw Azure Data Box zware via SMB
+title: Zelf studie voor het kopiëren van gegevens via SMB op Azure Data Box Heavy | Microsoft Docs
+description: Meer informatie over het kopiëren van gegevens naar uw Azure Data Box Heavy via SMB
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c45e06159e4c2850efa2d3ab3290647961fb7e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8cb763766ebb151ad1c59b63a33a63493a4f0069
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592421"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164377"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box zware via SMB
+::: zone target = "docs"
+
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box Heavy via SMB
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="copy-data-to-azure-data-box-heavy"></a>Gegevens kopiëren naar Azure Data Box Heavy
+
+::: zone-end
+
+::: zone target = "docs"
 
 Deze zelfstudie beschrijft hoe u verbinding kunt maken en gegevens kunt kopiëren vanaf uw hostcomputer via de lokale gebruikersinterface.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Verbinding maken met Data Box-zwaar
-> * Gegevens kopiëren naar Data Box-zwaar
+> * Verbinding maken met Data Box Heavy
+> * Gegevens kopiëren naar Data Box Heavy
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+U kunt gegevens van de bron server naar uw Data Box kopiëren via SMB, NFS, REST, Data Copy service of naar Managed disks.
+
+Controleer in elk geval of de namen van de shares en mappen en de gegevens grootte voldoen aan de richt lijnen die zijn beschreven in de [Azure Storage-en data Box Heavy-service limieten](data-box-heavy-limits.md).
+
+::: zone-end
+
+::: zone target = "docs"
 
 ## <a name="prerequisites"></a>Vereisten
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de zelfstudie [ Instellen van Azure Data Box zware](data-box-deploy-set-up.md).
-2. U hebt uw Data Box-zwaar ontvangen en de status van de volgorde in de portal **geleverd**.
-3. U hebt een hostcomputer waarmee de gegevens die u kopiëren wilt via Data Box zware heeft. Op uw hostcomputer moet
+1. U hebt de zelfstudie [ Azure Data Box Heavy](data-box-deploy-set-up.md)instellen.
+2. U hebt uw Data Box Heavy ontvangen en de status van de bestelling in dePortal is afgeleverd.
+3. U hebt een hostcomputer met de gegevens die u wilt kopiëren naar Data Box Heavy. Op uw hostcomputer moet
     - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
-    - Verbonden zijn met een netwerk met hoge snelheid. Voor de snelste kopie snelheden worden bereikt, kunnen twee 40-GbE-verbindingen (één per knooppunt) gelijktijdig worden gebruikt. Als u geen 40-GbE-verbinding beschikbaar hebt, wordt u aangeraden dat u ten minste twee 10 GbE-verbindingen (één per knooppunt hebt).
+    - Verbonden zijn met een netwerk met hoge snelheid. Voor de snelste Kopieer snelheden kunnen 2 40-GbE-verbindingen (één per knoop punt) parallel worden gebruikt. Als u niet beschikt over 40-GbE-verbinding, kunt u het beste ten minste 2 10 GbE-verbindingen (één per knoop punt) hebben.
+   
 
-## <a name="connect-to-data-box-heavy-shares"></a>Verbinding maken met gegevens in het zware shares
+## <a name="connect-to-data-box-heavy-shares"></a>Verbinding maken met Data Box Heavy-shares
 
-Op basis van het opslagaccount dat is geselecteerd, gegevens in het zware wordt gemaakt tot:
+Op basis van het geselecteerde opslag account, maakt Data Box Heavy het volgende:
 - Drie shares voor elk gekoppeld opslagaccount voor GPv1 en GPv2.
-- Een share voor een premium-opslag.
-- Een share voor blob storage-account.
+- Eén share voor Premium-opslag.
+- Eén share voor het Blob Storage-account.
 
-Deze shares worden gemaakt op beide knooppunten van het apparaat.
+Deze shares worden gemaakt op beide knoop punten van het apparaat.
 
-Onder shares voor block blob en pagina-blob:
-- Eerste niveau entiteiten zijn containers.
-- Op het tweede niveau entiteiten zijn-blobs.
+Onder blok-Blob en shares voor pagina-blobs:
+- Entiteiten van het hoogste niveau zijn containers.
+- Entiteiten van het tweede niveau zijn Blobs.
 
-Onder de shares voor Azure Files:
-- Eerste niveau entiteiten zijn shares.
-- Op het tweede niveau entiteiten zijn bestanden.
+Onder shares voor Azure Files:
+- Entiteiten van het hoogste niveau zijn shares.
+- Entiteiten van het tweede niveau zijn bestanden.
 
-De volgende tabel ziet u het UNC-pad naar de shares op uw gegevens in het zware en Azure Storage pad naar de URL waar de gegevens is geüpload. De uiteindelijke URL van het Azure Storage-pad kan worden afgeleid van het UNC-pad naar de shares.
+De volgende tabel bevat het UNC-pad naar de shares op uw Data Box Heavy en Azure Storage pad-URL waarnaar de gegevens worden geüpload. De uiteindelijke URL van het Azure Storage-pad kan worden afgeleid van het UNC-pad naar de shares.
  
 |                   |                                                            |
 |-------------------|--------------------------------------------------------------------------------|
@@ -61,14 +85,14 @@ De volgende tabel ziet u het UNC-pad naar de shares op uw gegevens in het zware 
 | Azure-pagina-blobs  | <li>UNC-pad naar shares: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
 | Azure Files       |<li>UNC-pad naar shares: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
-De stappen voor het verbinding maken met behulp van een Windows- of een client voor Linux zijn verschillend.
+De stappen om verbinding te maken met behulp van een Windows-of Linux-client verschillen.
 
 > [!NOTE]
-> Volg dezelfde stappen om te verbinden met beide knooppunten van het apparaat parallel.
+> Volg dezelfde stappen om gelijktijdig verbinding te maken met de knoop punten van het apparaat.
 
 ### <a name="connect-on-a-windows-system"></a>Verbinding maken op een Windows-systeem
 
-Als een computer met Windows Server-host, volgt u deze stappen voor het verbinding maken met de Data Box-zwaar.
+Als u een Windows Server-hostcomputer gebruikt, voert u de volgende stappen uit om verbinding te maken met de Data Box Heavy.
 
 1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Klik op **Referenties ophalen** om de toegangsreferenties te krijgen voor de shares die aan uw opslagaccount zijn gekoppeld.
 
@@ -78,7 +102,7 @@ Als een computer met Windows Server-host, volgt u deze stappen voor het verbindi
     
     ![Sharereferenties 1 ophalen](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
-3. Voor toegang tot de shares die zijn gekoppeld aan uw storage-account (*databoxe2etest* in het volgende voorbeeld) vanaf uw hostcomputer, open een opdrachtvenster. Typ in de opdrachtprompt:
+3. Als u toegang wilt krijgen tot de shares die zijn gekoppeld aan uw opslag account (*databoxe2etest* in het volgende voor beeld), opent u een opdracht venster. Typ in de opdrachtprompt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -113,23 +137,23 @@ Als u een Linux-client gebruikt, gebruikt u de volgende opdracht om de SMB-share
 sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/databoxubuntuhost/databox
 ```
 
-De `vers` parameter is de versie van SMB die ondersteuning biedt voor uw Linux-host. Sluit de juiste versie in de bovenstaande opdracht.
+De `vers` para meter is de versie van SMB die uw Linux-host ondersteunt. Sluit de juiste versie in de bovenstaande opdracht.
 
-Zie voor versies van SMB die ondersteuning biedt voor de Data Box-zwaar [bestandssystemen ondersteund voor clients met Linux](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients).
+Zie [ondersteunde bestands systemen voor Linux-clients](data-box-heavy-system-requirements.md#supported-file-systems-for-linux-clients)voor versies van SMB die door de data Box Heavy worden ondersteund.
 
-## <a name="copy-data-to-data-box-heavy"></a>Gegevens kopiëren naar Data Box-zwaar
+## <a name="copy-data-to-data-box-heavy"></a>Gegevens kopiëren naar Data Box Heavy
 
-Als u met de gegevens in het zware shares verbonden bent, wordt de volgende stap is om gegevens te kopiëren.
+Zodra u verbonden bent met de Data Box Heavy shares, is de volgende stap het kopiëren van gegevens.
 
-### <a name="copy-considerations"></a>Overwegingen met betrekking tot kopiëren
+### <a name="copy-considerations"></a>Aandachtspunten voor kopiëren
 
 Neem de volgende punten door voordat u gegevens gaat kopiëren:
 
 - Zorg dat u de gegevens kopieert naar shares die overeenkomen met de juiste gegevensindeling. U moet bijvoorbeeld de blok-blobgegevens naar de share voor blok-blobs kopiëren. Kopieer de VHD's naar pagina-blob.
 
     Als de gegevensindeling niet overeenkomt met het betreffende sharetype, zal het uploaden van gegevens naar Azure op een later tijdstip mislukken.
--  Tijdens het kopiëren van gegevens, zorg ervoor dat de grootte van de voldoet aan de maximale grootte wordt beschreven in de [Azure-opslag en gegevens in het zware limieten](data-box-heavy-limits.md).
-- Als gegevens die door Data Box-zwaar wordt geüpload, gelijktijdig door andere toepassingen buiten de gegevens in het zware is geüpload, kan dit uploaden taak fouten en beschadigde gegevens leiden.
+-  Zorg er bij het kopiëren van gegevens voor dat de gegevens grootte voldoet aan de grootte limieten die zijn beschreven in de [Azure Storage-en data Box Heavy](data-box-heavy-limits.md)-limieten.
+- Als gegevens, die door Data Box Heavy worden geüpload, gelijktijdig worden geüpload door andere toepassingen buiten Data Box Heavy, kan dit leiden tot fouten bij het uploaden van taken en gegevens beschadiging.
 - We raden aan dat:
     - U niet zowel SMB als NFS tegelijkertijd gebruikt.
     - Dezelfde gegevens naar dezelfde eindbestemming kopieert in Azure.
@@ -161,10 +185,10 @@ Begin met het kopiëren van gegevens nadat u verbinding met de SMB-share hebt ge
     |/z      | Kopieert bestanden in de modus voor opnieuw opstarten; gebruik deze optie als de omgeving instabiel is. Deze optie beperkt doorvoer vanwege de aanvullende logboekregistratie.      |
     | /zb    | Gebruikt de modus voor opnieuw opstarten. Deze optie gebruikt de back-upmodus als de toegang is geweigerd. Deze optie beperkt doorvoer vanwege controlepunten.         |
     |/efsraw | Kopieert alle versleutelde bestanden in de onbewerkte EFS-modus. Alleen gebruiken met versleutelde bestanden.         |
-    |log+:\<LogFile>| Voegt de uitvoer toe aan het bestaande logboekbestand.|
+    |logboek +:\<logfile >| Voegt de uitvoer toe aan het bestaande logboekbestand.|
     
  
-    Het volgende voorbeeld wordt de uitvoer van de robocopy-opdracht bestanden naar de Data Box-zwaar te kopiëren.
+    In het volgende voor beeld ziet u de uitvoer van de Robocopy-opdracht om bestanden te kopiëren naar de Data Box Heavy.
 
     ```   
     C:\Users>Robocopy C:\Git\azure-docs-pr\contributor-guide \\10.100.10.100\devicemanagertest1_AzFile\templates /MT:24
@@ -204,9 +228,9 @@ Begin met het kopiëren van gegevens nadat u verbinding met de SMB-share hebt ge
     C:\Users>
     ```       
 
-2. Gebruik de volgende parameters in Robocopy om de prestaties te optimaliseren als u de gegevens kopieert. (De onderstaande getallen vertegenwoordigen de beste use-casescenario's.)
+2. Gebruik de volgende parameters in Robocopy om de prestaties te optimaliseren als u de gegevens kopieert. (De getallen hieronder vertegenwoordigen de aanbevolen scenario's.)
 
-    | Platform    | Voornamelijk kleine bestanden van < 512 KB    | Voornamelijk middelgrote bestanden 512 KB - 1 MB  | Voornamelijk grote bestanden van > 1 MB                             |
+    | Platform    | Voornamelijk kleine bestanden van < 512 KB    | Voornamelijk middel grote bestanden 512 KB-1 MB  | Voornamelijk grote bestanden van > 1 MB                             |
     |-------------|--------------------------------|----------------------------|----------------------------|
     | Data Box Heavy | 6 Robocopy-sessies <br> 24 threads per sessie | 6 Robocopy-sessies <br> 16 threads per sessie | 6 Robocopy-sessies <br> 16 threads per sessie |
 
@@ -215,45 +239,101 @@ Begin met het kopiëren van gegevens nadat u verbinding met de SMB-share hebt ge
 
 3. Open de doelmap om de gekopieerde bestanden weer te geven en te controleren.
 
-    ![Gekopieerde bestanden weergeven](media/data-box-heavy-deploy-copy-data/view-copied-files-1.png)
+    ![Gekopieerde bestanden weer geven](media/data-box-heavy-deploy-copy-data/view-copied-files-1.png)
 
 
-4. Als de gegevens worden gekopieerd:
+4. Wanneer de gegevens worden gekopieerd:
 
-    - De namen van bestanden, grootten en -indeling worden gevalideerd om ervoor te zorgen die voldoen aan de limieten voor Azure-object en de opslag, evenals de Azure-bestand en de container naamconventies.
-    - Controlesom is om te controleren of de integriteit van gegevens, ook berekende inline.
+    - De bestands namen, grootten en indelingen worden gevalideerd om ervoor te zorgen dat ze voldoen aan de Azure-object-en opslag limieten, evenals de naamgevings conventies voor Azure-bestanden en-containers.
+    - Om de gegevens integriteit te waarborgen, wordt de controlesom ook berekend op inline.
 
-    Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Selecteer het pijlpictogram om de foutbestanden te downloaden.
+    Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Selecteer het pijl pictogram om de fout bestanden te downloaden.
 
-    ![Foutbestanden downloaden](media/data-box-heavy-deploy-copy-data/download-error-files.png)
+    ![Fout bestanden downloaden](media/data-box-heavy-deploy-copy-data/download-error-files.png)
 
-    Zie voor meer informatie, [foutenlogboeken weergeven tijdens het kopiëren van gegevens naar Data Box zware](data-box-logs.md#view-error-log-during-data-copy). Zie voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens, [Data Box zware oplossen van problemen met](data-box-troubleshoot.md).
+    Zie voor meer informatie [fouten logboeken weer geven tijdens het kopiëren van gegevens naar Data Box Heavy](data-box-logs.md#view-error-log-during-data-copy). Zie [problemen met data Box Heavy oplossen](data-box-troubleshoot.md)voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 
-5. Open het foutbestand in Kladblok. De volgende fout bij het bestand geeft aan dat de gegevens niet goed wordt uitgelijnd.
+5. Open het fout bestand in Klad blok. Het volgende fout bestand geeft aan dat de gegevens niet correct zijn uitgelijnd.
 
-    ![Fout bij openen bestand](media/data-box-heavy-deploy-copy-data/open-error-file.png)
+    ![Fout bestand openen](media/data-box-heavy-deploy-copy-data/open-error-file.png)
     
-    Voor een pagina-blob moet de gegevens 512 bytes uitgelijnd. Nadat u deze gegevens worden verwijderd, wordt de fout omgezet zoals wordt weergegeven in de volgende schermafbeelding.
+    Voor een pagina-BLOB moeten de gegevens 512 bytes zijn uitgelijnd. Nadat deze gegevens zijn verwijderd, wordt de fout opgelost zoals wordt weer gegeven in de volgende scherm afbeelding.
 
     ![Fout opgelost](media/data-box-heavy-deploy-copy-data/error-resolved.png)
 
-6. Nadat de kopie voltooid is, gaat u naar **Dashboard weergeven** pagina. Controleer of de gebruikte ruimte en de vrije ruimte op uw apparaat.
+6. Nadat de kopie is voltooid, gaat u naar de pagina **dash board weer geven** . Controleer de gebruikte ruimte en de beschik bare ruimte op het apparaat.
     
     ![Vrije en ongebruikte ruimte verifiëren op het dashboard](media/data-box-heavy-deploy-copy-data/verify-used-space-dashboard.png)
 
-Herhaal de bovenstaande stappen voor het kopiëren van gegevens naar het tweede knooppunt van het apparaat.
+Herhaal de bovenstaande stappen om gegevens te kopiëren naar het tweede knoop punt van het apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd over Azure Data Box zware onderwerpen, zoals:
+In deze zelf studie hebt u geleerd over Azure Data Box Heavy-onderwerpen, zoals:
 
 > [!div class="checklist"]
-> * Verbinding maken met Data Box-zwaar
-> * Gegevens kopiëren naar Data Box-zwaar
+> * Verbinding maken met Data Box Heavy
+> * Gegevens kopiëren naar Data Box Heavy
 
 
-Ga naar de volgende zelfstudie voor meer informatie over uw gegevens in het zware naar Microsoft verzenden.
+Ga naar de volgende zelf studie voor meer informatie over het verzenden van Data Box Heavy terug naar micro soft.
 
 > [!div class="nextstepaction"]
-> [Uw Azure Data Box-zwaar naar Microsoft verzenden](./data-box-heavy-deploy-picked-up.md)
+> [Uw Azure Data Box Heavy naar micro soft verzenden](./data-box-heavy-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+### <a name="copy-data-via-smb"></a>Gegevens kopiëren via SMB
+
+1. Als u een Windows-host gebruikt, gebruikt u de volgende opdracht om verbinding te maken met de SMB-shares:
+
+    `\\<IP address of your device>\ShareName`
+
+2. Als u de toegangsreferenties voor de shares wilt ophalen, gaat u naar de pagina **Verbinding maken en kopiëren** in de lokale webgebruikersinterface van de Data Box.
+
+3. Gebruik een met SMB compatibel hulp programma voor het kopiëren van bestanden zoals Robocopy voor het kopiëren van gegevens naar shares.
+
+Ga naar de volgende [zelf studie voor stapsgewijze instructies: Gegevens kopiëren naar Azure Data Box via SMB](data-box-heavy-deploy-copy-data.md).
+
+### <a name="copy-data-via-nfs"></a>Gegevens kopiëren via NFS
+
+1. Als u een NFS-host gebruikt, gebruikt u de volgende opdracht om de NFS-shares te koppelen:
+
+    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
+
+2. Als u de toegangs referenties voor de share wilt ophalen, gaat u naar de **pagina verbinding maken & kopiëren** in de lokale webgebruikersinterface van de data Box Heavy.
+3. Gebruik `cp` of`rsync` opdracht om uw gegevens te kopiëren. 
+4. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knoop punt van uw Data Box Heavy.
+
+Ga naar de volgende [zelf studie voor stapsgewijze instructies: Gegevens kopiëren naar Azure Data Box via NFS](data-box-heavy-deploy-copy-data-via-nfs.md).
+
+### <a name="copy-data-via-rest"></a>Gegevens kopiëren via REST
+
+1. Als u gegevens wilt kopiëren met behulp van Data Box Blob-opslag via REST Api's, kunt u verbinding maken via *http* of *https*.
+2. Als u gegevens wilt kopiëren naar Data Box Blob-opslag, kunt u AzCopy gebruiken.
+3. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knoop punt van uw Data Box Heavy.
+
+Ga naar de volgende [zelf studie voor stapsgewijze instructies: Gegevens kopiëren naar Azure Data Box Blob-opslag via REST](data-box-heavy-deploy-copy-data-via-rest.md)api's.
+
+### <a name="copy-data-via-data-copy-service"></a>Gegevens kopiëren via de Data Copy-service
+
+1. Als u gegevens wilt kopiëren met behulp van de Data Copy-service, moet u een taak maken. Ga in de lokale web-UI van uw Data Box Heavy naar **beheer > gegevens kopiëren > maken**.
+2. Vul de para meters in en maak een taak.
+3. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knoop punt van uw Data Box Heavy.
+
+Ga naar de volgende [zelf studie voor stapsgewijze instructies: Gebruik de Data Copy-service om gegevens te kopiëren](data-box-heavy-deploy-copy-data-via-copy-service.md)naar Azure data Box Heavy.
+
+### <a name="copy-data-to-managed-disks"></a>Gegevens kopiëren naar Managed disks
+
+1. Wanneer u het Data Box Heavy apparaat bestelt, moet u beheerde schijven als uw opslag bestemming hebben geselecteerd.
+2. U kunt verbinding maken met Data Box Heavy via SMB-of NFS-shares.
+3. U kunt vervolgens gegevens kopiëren via SMB-of NFS-hulpprogram ma's.
+4. Herhaal deze stappen om verbinding te maken en gegevens te kopiëren naar het tweede knoop punt van uw Data Box Heavy.
+
+Ga naar de volgende [zelf studie voor stapsgewijze instructies: Gebruik Data Box om gegevens te importeren als beheerde schijven in azure](data-box-heavy-deploy-copy-data-from-vhds.md).
+
+::: zone-end
+
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/29/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 5d6f1fcba5d93cbd4efb63cd080848258eb2a262
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014431"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172891"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -236,6 +236,8 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |UserMaxStandByReplicaCount |Int, standaard waarde is 1 |Dynamisch|Het maximum aantal stand-by replica's dat door het systeem voor gebruikers Services wordt bewaard. |
 |UserReplicaRestartWaitDuration |Tijd in seconden, de standaard waarde \* is 60,0 30 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica uitvalt. Windows Fabric wacht totdat de replica een back-up maakt voordat nieuwe vervangende replica's (waarvoor een kopie van de status nodig is) worden gemaakt. |
 |UserStandByReplicaKeepDuration |Tijd in seconden, de standaard waarde \* is \* 3600,0 24 7 |Dynamisch|Geef een tijds duur in seconden op. Wanneer een persistente replica van de status omlaag wordt weer gegeven; mogelijk is deze al vervangen. Deze timer bepaalt hoe lang de FM de stand-by replica houdt voordat deze wordt genegeerd. |
+|WaitForInBuildReplicaSafetyCheckTimeout|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60 * 10)|Dynamisch|Geef een tijds duur in seconden op. Configuratie-item voor de optionele time-out voor de WaitForInBuildReplica-veiligheids controle. Deze configuratie definieert de time-out voor de WaitForInBuildReplica-veiligheids controle voor het deactiveren van knoop punten en upgrades. Deze veiligheids controle mislukt als aan een van de volgende voor waarden wordt voldaan:-er wordt een primaire gemaakt en de ft-doel replica is ingesteld op de grootte > 1-als de huidige replica in Build is en persistent is gemaakt. als dit de huidige primaire is en er een nieuwe replica wordt gebouwd, wordt deze controle overs Laan PED als de time-out verloopt, zelfs als een van de vorige voor waarden nog steeds waar is. |
+|WaitForReconfigurationSafetyCheckTimeout|Time span, standaard waarde is gebruikelijk:: time span:: FromSeconds (60,0 * 10)|Dynamisch|Geef een tijds duur in seconden op. Configuratie-item voor de optionele time-out voor de WaitForReconfiguration-veiligheids controle. Deze configuratie definieert de time-out van de WaitForReconfiguration-veiligheids controle voor het deactiveren van knoop punten en upgrades. Deze veiligheids controle mislukt als de replica die wordt gecontroleerd deel uitmaakt van een partitie die wordt opnieuw geconfigureerd. De veiligheids controle wordt overgeslagen nadat deze time-out is verlopen, zelfs als de partitie nog steeds wordt opnieuw geconfigureerd.|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 

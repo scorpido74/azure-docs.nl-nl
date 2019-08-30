@@ -1,8 +1,6 @@
 ---
 title: Een door HTTP geactiveerde functie maken in azure
 description: Informatie over hoe u met de Azure Functions Core Tools en de Azure CLI uw eerste Python-functie maakt in Azure.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 04/24/2019
@@ -10,13 +8,13 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+manager: gwallace
+ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575437"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170885"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Een door HTTP geactiveerde functie maken in azure
 
@@ -28,7 +26,7 @@ Dit artikel is de eerste van twee Quick starts voor Azure Functions. Nadat u dit
 
 Voordat u begint, moet u het volgende hebben:
 
-+ Installeer [Python 3.6](https://www.python.org/downloads/).
++ Installeer [python 3.6. x](https://www.python.org/downloads/).
 
 + Installeer [Azure functions core tools](./functions-run-local.md#v2) versie 2.7.1575 of een latere versie.
 
@@ -104,7 +102,7 @@ Er wordt een submap met de naam _http trigger_ gemaakt die de volgende bestanden
 
 Met de volgende opdracht wordt de functie-app gestart, die lokaal wordt uitgevoerd met dezelfde Azure Functions runtime die zich in azure bevindt.
 
-```bash
+```console
 func host start
 ```
 
@@ -134,7 +132,7 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/MyHttpTrigger
+        HttpTrigger: http://localhost:7071/api/HttpTrigger
 
 [8/27/2018 10:38:27 PM] Host started (29486ms)
 [8/27/2018 10:38:27 PM] Job host started
@@ -168,7 +166,33 @@ Met deze opdracht wordt ook een gekoppeld Azure-toepassing Insights-exemplaar in
 
 U bent nu klaar om uw lokale functions-project te publiceren naar de functie-app in Azure.
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+## <a name="deploy-the-function-app-project-to-azure"></a>Het functie-appproject implementeren in Azure
+
+Nadat de functie-app is gemaakt in azure, kunt u de [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) opdracht kern hulpprogramma's gebruiken om uw project code te implementeren in Azure. In deze voor beelden vervangt `<APP_NAME>` u door de naam van uw app uit de vorige stap.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
+
+Met `--build remote` de optie bouwt u uw python-project op afstand in azure van de bestanden in het implementatie pakket. 
+
+De uitvoer ziet er ongeveer als volgt uit, die is afgekapt voor de Lees baarheid:
+
+```output
+Getting site publishing info...
+...
+
+Preparing archive...
+Uploading content...
+Upload completed successfully.
+Deployment completed successfully.
+Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
+```
+
+Kopieer de `Invoke url` waarde voor uw `HttpTrigger`, die u nu kunt gebruiken om uw functie in azure te testen. De URL bevat een `code` query teken reeks waarde die uw functie sleutel is. Met deze sleutel kunnen anderen moeilijk uw HTTP trigger-eind punt aanroepen in Azure.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

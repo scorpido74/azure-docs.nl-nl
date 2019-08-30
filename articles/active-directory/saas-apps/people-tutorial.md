@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory integratie met personen | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met personen | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en personen.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 334241683f95496ce9ea0629247bb8fd53364ee9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3a9b8f08a54c978d81a8d33c61ab3d5f5fc7271f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826122"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164221"
 ---
-# <a name="tutorial-integrate-people-with-azure-active-directory"></a>Zelfstudie: Mensen integreren met Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met personen
 
 In deze zelf studie leert u hoe u mensen kunt integreren met Azure Active Directory (Azure AD). Wanneer u mensen integreert met Azure AD, kunt u het volgende doen:
 
@@ -47,6 +47,9 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 * Mensen ondersteunen door **SP** GEÏNITIEERDe SSO
 * Mobiele toepassing van personen kan nu worden geconfigureerd met Azure AD voor het inschakelen van SSO. In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
+>[!NOTE]
+>De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+
 ## <a name="adding-people-from-the-gallery"></a>Personen toevoegen uit de galerie
 
 Als u de integratie van personen in azure AD wilt configureren, moet u personen uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
@@ -58,21 +61,20 @@ Als u de integratie van personen in azure AD wilt configureren, moet u personen 
 1. Typ in de sectie **toevoegen vanuit de galerie** de tekst **personen** in het zoekvak.
 1. Selecteer **personen** in het deel venster resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configureren en Azure AD eenmalige aanmelding testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-people"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor personen
 
 Azure AD SSO configureren en testen met gebruikers van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in personen.
 
 Als u Azure AD SSO met mensen wilt configureren en testen, voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
 2. **[Personen configureren SSO](#configure-people-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-5. **[Gebruikers test gebruiker maken](#create-people-test-user)** : als u een equivalent van B. Simon wilt hebben in mensen die zijn gekoppeld aan de Azure AD-representatie van de gebruiker.
+    1. **[Gebruikers test gebruiker maken](#create-people-test-user)** : als u een equivalent van B. Simon wilt hebben in mensen die zijn gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
 Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
@@ -100,22 +102,6 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 6. Op de sectie **personen instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
-
-### <a name="configure-people-sso"></a>SSO van mensen configureren
-
-1. Als u SSO wilt ophalen die voor uw toepassing is geconfigureerd, moet u zich als beheerder aanmelden bij de Tenant van uw personen.
-   
-2. Klik in het menu aan de linkerkant op **instellingen**.
-
-    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_001.png)
-
-3. Klik op **Company** (Bedrijf).
-
-    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_002.png)
-
-4. Klik op **Bladeren** om het bestand met de gedownloade meta gegevens te uploaden met het **SAML-meta gegevensbestand**.
-
-    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_003.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
@@ -147,11 +133,35 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
+## <a name="configure-people-sso"></a>SSO van mensen configureren
+
+1. Als u de configuratie binnen gebruikers wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
+
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+
+2. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op de **instelling personen** worden u naar de toepassing personen geleid. Geef de beheerders referenties op om u aan te melden bij personen. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-6 geautomatiseerd.
+
+    ![Configuratie van Setup](common/setup-sso.png)
+
+3. Als u gebruikers hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij de bedrijfs site van uw bedrijf als beheerder en voert u de volgende stappen uit:
+   
+4. Klik in het menu aan de linkerkant op **instellingen**.
+
+    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_001.png)
+
+5. Klik op **Company** (Bedrijf).
+
+    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_002.png)
+
+6. Klik op **Bladeren** om het bestand met de gedownloade meta gegevens te uploaden met het **SAML-meta gegevensbestand**.
+
+    ![Eenmalige aanmelding configureren](./media/people-tutorial/tutorial_people_003.png)
+
 ### <a name="create-people-test-user"></a>Gebruikers test gebruiker maken
 
 In deze sectie maakt u een gebruiker met de naam B. Simon in mensen. Werk samen met het [team van client ondersteuning](mailto:customerservices@peoplehr.com) om de gebruikers toe te voegen in het personen platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
 
-### <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
 
@@ -179,3 +189,4 @@ Wanneer u op de tegel personen in het toegangs venster klikt, moet u automatisch
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Probeer mensen met Azure AD](https://aad.portal.azure.com)

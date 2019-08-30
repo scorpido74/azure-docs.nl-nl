@@ -1,7 +1,7 @@
 ---
 title: 'Voorbeeld: Een aangepaste cognitieve vaardigheid maken met de Bing Entiteiten zoeken-API-Azure Search'
 description: Demonstreert het gebruik van de Bing Entity Search-service in een aangepaste vaardigheid die is toegewezen aan een cognitieve zoek index pijplijn in Azure Search.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 58f98f3807955db0b32cbcd1ed0d409814e35a76
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d77b4e3a002757bcf6c91b6611876e732273fcf9
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639906"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183518"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Voorbeeld: Een aangepaste vaardigheid maken met behulp van de Bing Entiteiten zoeken-API
 

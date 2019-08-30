@@ -1,105 +1,107 @@
 ---
-title: API's van Azure van digitale dubbels navigeren | Microsoft Docs
-description: Leer hoe u algemene patronen van query's op de beheer-API's van de digitale dubbels van Azure.
+title: Navigeren door Azure Digital Apparaatdubbels-Api's | Microsoft Docs
+description: Meer informatie over algemene patronen voor het uitvoeren van query's in de Azure Digital Apparaatdubbels Management-Api's.
 author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/29/2019
 ms.author: v-adgera
-ms.openlocfilehash: da1493d2d52f2c8a964df3b72c1622a9c6b66abf
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 8472a86800d13cedd228ca881a7c095ff748350a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719852"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172819"
 ---
-# <a name="how-to-use-azure-digital-twins-management-apis"></a>Het gebruik van Azure digitale dubbels beheer-API 's
+# <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Apparaatdubbels Management-Api's gebruiken
 
-De beheer-API's van de digitale dubbels van Azure bieden een krachtige functies voor uw IoT-apps. Dit artikel leest u hoe om te navigeren door de API-structuur.  
+De Azure Digital Apparaatdubbels Management-Api's bieden krachtige functionaliteit voor uw IoT-apps. In dit artikel wordt beschreven hoe u door de API-structuur navigeert.  
 
 ## <a name="api-summary"></a>API-overzicht
 
-De volgende lijst bevat de onderdelen van de digitale Twins-API's.
+De volgende lijst bevat de onderdelen van de Digital Apparaatdubbels-Api's.
 
-* [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Deze API's communiceren met de fysieke locaties in uw instellingen. Deze om te maken, verwijderen en beheren van de digitale toewijzingen van uw fysieke locaties in de vorm van een [ruimtelijke graph](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
+* [/spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Deze Api's communiceren met de fysieke locaties in uw installatie. Deze helpen u bij het maken, verwijderen en beheren van de digitale toewijzingen van uw fysieke locaties in de vorm van een [ruimtelijke grafiek](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
 
-* [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Deze API's communiceren met de apparaten in uw instellingen. Deze apparaten kunnen een of meer sensoren beheren. Bijvoorbeeld, kan een apparaat worden uw telefoon of een Raspberry Pi sensor schil of een Lora-gateway, enzovoort.
+* [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Deze Api's communiceren met de apparaten in uw installatie. Deze apparaten kunnen een of meer Sens oren beheren. Een apparaat kan bijvoorbeeld uw telefoon zijn of een Raspberry Pi-sensor Pod of een Lora-gateway, enzovoort.
 
-* [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Deze API's kunnen u communiceren met de sensoren die zijn gekoppeld aan uw apparaten en uw fysieke locaties. De sensoren registreren en de waarden die vervolgens kunnen worden gebruikt voor het bewerken van uw omgeving ruimtelijke verzenden.  
+* [/sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Deze Api's helpen u te communiceren met de Sens oren die zijn gekoppeld aan uw apparaten en uw fysieke locaties. De Sens oren record en verzenden Ambient waarden die vervolgens kunnen worden gebruikt om uw ruimtelijke omgeving te manipuleren.  
 
-* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Deze API's waarmee u kunt resources, zoals een IoT-hub voor uw exemplaar van digitale dubbels instellen.
+* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Deze Api's helpen u bij het instellen van resources, zoals een IoT-hub, voor uw digitale Apparaatdubbels-instantie.
 
-* [/ typen](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Deze API's kunnen u uitgebreide typen koppelen aan uw digitale Twins-objecten, specifieke kenmerken toevoegen aan deze objecten. Deze typen kunnen eenvoudig filteren en groeperen van objecten in de gebruikersinterface en de aangepaste functies die uw telemetriegegevens verwerken. Voorbeelden van uitgebreide zijn *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType* , *SpaceBlobType*, *SpaceResourceType*, enzovoort.
+* [/types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Met deze Api's kunt u uitgebreide typen koppelen aan uw digitale Apparaatdubbels-objecten om specifieke kenmerken toe te voegen aan deze objecten. Met deze typen kunt u objecten eenvoudig filteren en groeperen in de gebruikers interface en de aangepaste functies die uw telemetriegegevens verwerken. Voor beelden van uitgebreide typen zijn *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType*, *SpaceBlobType*, *SpaceResourceType*, enzovoort.
 
-* [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Deze API's kunnen u voor het beheren van anthologieën, oftewel verzamelingen van uitgebreide typen. Anthologieën bieden namen voor objecttypen die aan de hand van de fysieke ruimte die wordt weergegeven. Bijvoorbeeld, de *BACnet* ontologie bevat specifieke namen voor *sensor typen*, *gegevenstypen*, *datasubtypes*, en *dataunittypes*. Anthologieën worden beheerd en die zijn gemaakt door de service. Gebruikers kunnen laden en anthologieën verwijderen. Wanneer een ontologie wordt geladen, worden alle van de bijbehorende typenamen zijn ingeschakeld en gereed om te worden ingericht in de grafiek ruimtelijke. 
+* [/Ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Deze Api's helpen u bij het beheren van Ontologies, die verzamelingen van uitgebreide typen zijn. Ontologies geven namen voor object typen aan volgens de fysieke ruimte die ze vertegenwoordigen. De *BACnet* -Ontology biedt bijvoorbeeld specifieke namen voor *sensor types*, *data types*, *datasubtypes*en *dataunittypes*. Ontologies worden beheerd en gemaakt door de service. Gebruikers kunnen Ontologies laden en verwijderen. Wanneer een Ontology wordt geladen, zijn alle bijbehorende type namen ingeschakeld en klaar om te worden ingericht in uw ruimtelijke grafiek. 
 
-* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): U kunt deze API's gebruiken om te maken van aangepaste eigenschappen voor uw *spaties*, *apparaten*, *gebruikers*, en *sensoren*. Deze eigenschappen worden gemaakt als sleutel/waarde-paren. U kunt het gegevenstype voor deze eigenschappen definiëren door in te stellen hun *PrimitiveDataType*. Bijvoorbeeld, kunt u een eigenschap met de naam *BasicTemperatureDeltaProcessingRefreshTime* van het type *uint* voor uw sensoren, en vervolgens wijst u een waarde voor deze eigenschap voor elk van de sensoren. U kunt ook beperkingen voor deze waarden toevoegen tijdens het maken van de eigenschap, zoals *Min* en *Max* bereiken, en de toegestane waarden als *ValidationData*.
+* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): U kunt deze Api's gebruiken om aangepaste eigenschappen te maken vooruw Spaces, *apparaten*, *gebruikers*en *Sens oren*. Deze eigenschappen worden gemaakt als sleutel/waarde-paren. U kunt het gegevens type voor deze eigenschappen definiëren door hun *PrimitiveDataType*in te stellen. U kunt bijvoorbeeld een eigenschap met de naam *BasicTemperatureDeltaProcessingRefreshTime* van het type *uint* definiëren voor uw Sens oren en vervolgens voor elk van uw Sens oren een waarde voor deze eigenschap toewijzen. U kunt ook beperkingen voor deze waarden toevoegen tijdens het maken van de eigenschap, zoals *min* -en *maximum aantal* bereiken, en toegestane waarden als *ValidationData*.
 
-* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Deze API's kunnen u de voorwaarden die u wilt evalueren uit uw inkomende apparaatgegevens opgeven. Zie [in dit artikel](concepts-user-defined-functions.md#matchers) voor meer informatie. 
+* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Met deze Api's kunt u de voor waarden opgeven die u wilt evalueren op basis van de gegevens van uw binnenkomende apparaten. Raadpleeg [dit artikel](concepts-user-defined-functions.md#matchers) voor meer informatie. 
 
-* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Deze API's kunnen u maken, delete of update een aangepaste functie die wordt uitgevoerd wanneer voorwaarden die zijn gedefinieerd door de *vergelijkingsprogramma voor* optreden, om gegevens te verwerken die afkomstig zijn van uw installatie. Zie [in dit artikel](concepts-user-defined-functions.md#user-defined-functions) voor meer informatie over deze aangepaste functies, ook wel de *door gebruiker gedefinieerde functies*. 
+* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Met deze Api's kunt u een aangepaste functie maken, verwijderen of bijwerken die wordt uitgevoerd wanneer de voor waarden die worden gedefinieerd door de matchers optreden, om gegevens te verwerken die afkomstig zijn van uw installatie. Raadpleeg [dit artikel](concepts-user-defined-functions.md#user-defined-functions) voor meer informatie over deze aangepaste functies, ook wel de door de *gebruiker gedefinieerde functies*genoemd. 
 
-* [/endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints): Deze API's kunnen u eindpunten maken, zodat uw oplossing digitale dubbels met andere Azure-services voor gegevensopslag en analyses communiceren kan. Lezen [in dit artikel](concepts-events-routing.md) voor meer informatie. 
+* [/endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints): Met deze Api's kunt u eind punten maken zodat uw digitale Apparaatdubbels-oplossing kan communiceren met andere Azure-Services voor gegevens opslag en-analyse. Lees [dit artikel](concepts-events-routing.md) voor meer informatie. 
 
-* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): Deze API's kunnen u belangrijke archieven van de beveiliging voor uw opslagruimten beheren. Deze archieven kunnen houdt een verzameling van beveiligingssleutels en kunt u eenvoudig de meest recente geldige toegangssleutels ophalen.
+* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): Met deze Api's kunt u beveiligings sleutel archieven voor uw Spaces beheren. Deze archieven kunnen een verzameling beveiligings sleutels bevatten en u kunt eenvoudig de meest recente geldige sleutels ophalen.
 
-* [/ gebruikers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Deze API's kunnen u gebruikers koppelen aan uw opslagruimten, om te zoeken van deze personen indien nodig. 
+* [/Users](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Met deze Api's kunt u gebruikers aan uw Space koppelen om deze personen te vinden wanneer dat nodig is. 
 
-* [/ System](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Deze API's kunnen u voor het beheren van systeeminstellingen, zoals de standaardtypen van opslagruimten en sensoren. 
+* [/systeemstatus](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Met deze Api's kunt u de instellingen voor het hele systeem beheren, zoals de standaard typen spaties en Sens oren. 
 
-* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Deze API kunt u rollen om entiteiten, zoals gebruikers-ID, de gebruiker gedefinieerde functie-ID, enzovoort te koppelen. De toewijzing van elke rol bevat de ID van de entiteit wilt koppelen, het entiteitstype, de ID van de rol wilt koppelen, de tenant-ID en een pad dat de bovengrens van de resource die de entiteit met deze koppeling openen kunt definieert. Lezen [in dit artikel](security-role-based-access-control.md) voor meer informatie.
+* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Met deze Api's kunt u rollen koppelen aan entiteiten zoals een gebruikers-ID, een door de gebruiker gedefinieerde functie-ID, enzovoort. Elke roltoewijzing bevat de ID van de entiteit die moet worden gekoppeld, het entiteits type, de ID van de te koppelen rol, de Tenant-ID en een pad waarmee de bovengrens van de resource wordt gedefinieerd die de entiteit kan gebruiken met die koppeling. Lees [dit artikel](security-role-based-access-control.md) voor meer informatie.
 
 
 ## <a name="api-navigation"></a>API-navigatie
 
-De digitale Twins-API's bieden ondersteuning voor filteren en navigatie in de hele uw ruimtelijke graaf met behulp van de volgende parameters:
+De Digital Apparaatdubbels-Api's bieden ondersteuning voor filteren en navigatie in uw ruimtelijke grafiek met behulp van de volgende para meters:
 
-- **spaceId**: De API wordt filter de resultaten van de beschikbare ruimte-ID. Bovendien de Booleaanse vlag **useParentSpace** is van toepassing op de [/opslagruimten](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) API's, waarmee wordt aangegeven dat de beschikbare ruimte-ID naar de bovenliggende ruimte in plaats van de huidige ruimte verwijst. 
+- **spaceId**: De-API filtert de resultaten op basis van de opgegeven ruimte-ID. Daarnaast is de Booleaanse vlag **useParentSpace** van toepassing op de [/Spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) -api's, wat aangeeft dat de opgegeven ruimte-id verwijst naar de bovenliggende ruimte in plaats van de huidige ruimte. 
 
-- **minLevel** en **maxLevel**: Hoofdmap spaties worden beschouwd als op het niveau van 1. Opslagruimten met bovenliggende ruimte op het niveau van *n* zijn op het niveau van *n + 1*. Deze waarden is ingesteld, kunt u de resultaten op specifieke niveaus filteren. Dit zijn inclusief waarden als de waarde. Apparaten, sensoren en andere objecten worden beschouwd als op hetzelfde niveau als hun dichtstbijzijnde ruimte. Als u alle objecten op een bepaald niveau, stel zowel **minLevel** en **maxLevel** op dezelfde waarde.
+- **minLevel** en **maxLevel**: Hoofd ruimten worden geacht op niveau 1 te zijn. Ruimten met bovenliggende ruimte op niveau *n* zijn op niveau *n + 1*. Als deze waarden zijn ingesteld, kunt u de resultaten filteren op specifieke niveaus. Deze zijn inclusieve waarden wanneer deze zijn ingesteld. Apparaten, Sens oren en andere objecten worden geacht hetzelfde niveau te hebben als de dichtstbijzijnde ruimte. Als u alle objecten op een bepaald niveau wilt ophalen, stelt u zowel **minLevel** als **maxLevel** in op dezelfde waarde.
 
-- **minRelative** en **maxRelative**: Wanneer u deze filters zijn opgegeven, wordt het niveau van de bijbehorende is ten opzichte van het niveau van de ID van de beschikbare ruimte:
-   - Relatieve niveau *0* als hetzelfde niveau als de id van de beschikbare ruimte.
-   - Relatieve niveau *1* vertegenwoordigt spaties op hetzelfde niveau als de onderliggende objecten van de beschikbare ruimte-ID. Relatieve niveau *n* lager is dan de opgegeven ruimte door opslagruimten vertegenwoordigt *n* niveaus.
-   - Relatieve niveau *-1* spaties op hetzelfde niveau als het bovenliggende ruimte van de opgegeven ruimte vertegenwoordigt.
+- **minRelative** en **maxRelative**: Wanneer deze filters zijn opgegeven, is het overeenkomende niveau relatief ten opzichte van het niveau van de opgegeven ruimte-ID:
+   - Het relatieve niveau *0* is hetzelfde niveau als de opgegeven ruimte-id.
+   - Het relatieve niveau *1* staat voor spaties op hetzelfde niveau als de onderliggende items van de opgegeven ruimte-id. Het relatieve niveau *n* staat voor spaties die kleiner zijn dan de opgegeven ruimte op het niveau van de *n* .
+   - Relatief niveau *-1* staat voor spaties op hetzelfde niveau als de bovenliggende ruimte van de opgegeven ruimte.
 
-- **passeren**: Hiermee kunt u bladeren in beide richtingen van een bepaalde ruimte-ID, zoals opgegeven door de volgende waarden.
-   - **Geen**: Deze standaardwaarde filters in de id van de beschikbare ruimte.
-   - **Omlaag**: Hiermee worden gefilterd door de beschikbare ruimte-ID en bijbehorende descendants. 
-   - **Van**: Hiermee worden gefilterd door de ID van de beschikbare ruimte en de bovenliggende elementen. 
-   - **Reeks**: Hiermee worden gefilterd met een horizontale deel van de grafiek ruimtelijke op hetzelfde niveau als de id van de beschikbare ruimte. Dit moet ofwel de **minRelative** of de **maxRelative** true zijn ingesteld. 
+- **Bladeren**: Hiermee kunt u in een van de richtingen van een bepaalde ruimte-ID door bladeren, zoals opgegeven door de volgende waarden.
+   - **Geen**: Deze standaard waarde filtert op de opgegeven ruimte-ID.
+   - **Omlaag**: Dit filtert op basis van de opgegeven ruimte-ID en de bijbehorende descendanten. 
+   - **Omhoog**: Dit filtert op basis van de opgegeven ruimte-ID en de bijbehorende voor gaande items. 
+   - **Span**: Hiermee wordt een horizon taal deel van de ruimtelijke grafiek gefilterd op hetzelfde niveau als de opgegeven ruimte-ID. Hiervoor moet de **minRelative** of de **maxRelative** worden ingesteld op True. 
 
 
 ### <a name="examples"></a>Voorbeelden
 
-De volgende lijst bevat enkele voorbeelden van navigatie door de [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) API's. Houd er rekening mee dat de tijdelijke aanduiding `YOUR_MANAGEMENT_API_URL` verwijst naar de URI van de digitale Twins-API's in de indeling `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`, waarbij `YOUR_INSTANCE_NAME` is de naam van uw exemplaar Azure digitale dubbels en `YOUR_LOCATION` is de regio waar uw exemplaar wordt gehost.
+De volgende lijst bevat enkele voor beelden van navigatie via de [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) -api's. Houd er rekening mee `YOUR_MANAGEMENT_API_URL` dat de tijdelijke aanduiding verwijst naar de URI van de Digital apparaatdubbels `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`-api's `YOUR_INSTANCE_NAME` in de indeling, waarbij de naam is van uw Azure `YOUR_LOCATION` Digital apparaatdubbels-instantie en de regio is waar uw exemplaar wordt gehost.
 
-- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1` retourneert alle apparaten die zijn gekoppeld aan basis-ruimten.
-- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4` retourneert alle apparaten die zijn gekoppeld aan de adresruimte van niveau 2, 3 of 4.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId` alle apparaten die rechtstreeks zijn gekoppeld aan mySpaceId retourneert.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` retourneert alle apparaten die zijn gekoppeld aan mySpaceId of een van de afgeleiden ervan.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true` alle apparaten die zijn gekoppeld aan de descendanten van mySpaceId, met uitzondering van mySpaceId retourneert.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true` alle apparaten die zijn gekoppeld aan de direct onderliggende objecten van mySpaceId retourneert.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true` alle apparaten die zijn gekoppeld aan een van de bovenliggende leden van mySpaceId retourneert.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5` retourneert alle apparaten die zijn gekoppeld aan de descendanten van mySpaceId die op het niveau van kleiner zijn dan of gelijk is aan 5.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true` retourneert alle apparaten die zijn gekoppeld aan die op hetzelfde niveau als mySpaceId zijn.
+- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1`Hiermee worden alle apparaten weer gegeven die zijn gekoppeld aan hoofd ruimten.
+- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4`Hiermee worden alle apparaten weer gegeven die zijn gekoppeld aan ruimten van niveau 2, 3 of 4.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId`retourneert alle apparaten die rechtstreeks zijn gekoppeld aan mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down`retourneert alle apparaten die zijn gekoppeld aan mySpaceId of een van de onderliggende objecten.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true`retourneert alle apparaten die zijn gekoppeld aan descendanten van mySpaceId, met uitzonde ring van mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true`Hiermee worden alle apparaten weer gegeven die zijn gekoppeld aan directe onderliggende items van mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true`Hiermee worden alle apparaten geretourneerd die zijn gekoppeld aan een van de bovenliggende items van mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5`Hiermee worden alle apparaten geretourneerd die zijn gekoppeld aan descendanten van mySpaceId die kleiner zijn dan of gelijk zijn aan 5.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true`retourneert alle apparaten die zijn gekoppeld aan ruimten die zich op hetzelfde niveau bevinden als mySpaceId.
 
 
 ## <a name="odata-support"></a>OData-ondersteuning
-De meeste van de API's die resulteren in verzamelingen, zoals een GET-aanroep op /spaces, ondersteunen de volgende subset van de algemene [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) queryopties system:  
+
+De meeste Api's die verzamelingen retour neren, zoals een GET-aanroep op/Spaces, ondersteunen de volgende subset van de algemene [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) -systeem query opties:  
 
 * **$filter**
 * **$orderby** 
 * **$top**
-* **$skip** -als u van plan bent om de volledige verzameling weer te geven, moet u deze als een volledige set in één aanroep aanvragen, en voer paginering in uw toepassing. 
+* **$Skip** : als u van plan bent om de hele verzameling weer te geven, moet u deze als een volledige set aanvragen in één aanroep en vervolgens paginering in uw toepassing uitvoeren. 
 
-Houd er rekening mee dat andere queryopties, zoals $count, $ wilt uitbreiden, $search, worden niet ondersteund.
+> [!NOTE]
+> Sommige OData-opties (zoals query opties **$Count**, **$expand**en **$Search**) worden momenteel niet ondersteund.
 
 ### <a name="examples"></a>Voorbeelden
 
-De volgende lijst bevat enkele voorbeelden van query's met behulp van de OData-queryopties voor systeem:
+In de volgende lijst ziet u verschillende query's met geldige OData-syntaxis:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
 - `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
@@ -108,9 +110,10 @@ De volgende lijst bevat enkele voorbeelden van query's met behulp van de OData-q
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
  
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Sommige algemene patronen van de API-query's vindt u meer [query's uitvoeren Azure digitale Twins-API's voor algemene taken](how-to-query-common-apis.md).
+Meer informatie over enkele veelvoorkomende API-query patronen vindt u in [het opvragen van Azure Digital apparaatdubbels-api's voor algemene taken](./how-to-query-common-apis.md).
 
-Lees voor meer informatie over uw API-eindpunten [het gebruik van digitale dubbele Swagger](./how-to-use-swagger.md).
+Lees [hoe u Digital Apparaatdubbels Swagger kunt gebruiken](./how-to-use-swagger.md)voor meer informatie over uw API-eind punten.
+
+Als u de OData-syntaxis en beschik bare vergelijkings operatoren wilt bekijken, leest u Odata-vergelijkings [operatoren in azure Search](../search/search-query-odata-comparison-operators.md)

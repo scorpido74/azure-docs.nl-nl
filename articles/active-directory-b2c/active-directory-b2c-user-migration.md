@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08ace7170a982fbaa186b77b27e342f16349aadd
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613306"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183159"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Gebruikers migratie
 
@@ -139,7 +139,9 @@ Wijzig de `$AppId` waarde met de id van uw Azure AD **-toepassing**.
 
 ## <a name="step-2-pre-migration-application-sample"></a>Stap 2: Voor beeld van toepassingen vóór de migratie
 
-[Down load de voorbeeld code en voer deze uit][UserMigrationSample]. U kunt deze downloaden als een zip-bestand.
+U vindt het voor beeld van de vooraf-migratie code in de door `azure-ad-b2c/user-migration` de Community beheerde github-opslag plaats:
+
+[Azure-AD-B2C/gebruiker-migratie/premigratie][UserMigrationSample-code] GitHub
 
 ### <a name="step-21-edit-the-migration-data-file"></a>Stap 2.1: Het bestand met migratie gegevens bewerken
 
@@ -364,7 +366,7 @@ U kunt logboek gegevens in vrijwel real time bekijken en bewaken.
 
 ## <a name="optional-download-the-complete-policy-files"></a>Beschrijving De volledige beleids bestanden downloaden
 
-Nadat u de hand leiding aan de [slag met aangepast beleid][B2C-GetStartedCustom] hebt voltooid, wordt u aangeraden om uw scenario te bouwen met behulp van uw eigen aangepaste beleids bestanden. Voor uw referentie hebben we [voorbeeld beleids bestanden][UserMigrationSample]gegeven.
+Nadat u de hand leiding aan de [slag met aangepast beleid][B2C-GetStartedCustom] hebt voltooid, wordt u aangeraden om uw scenario te bouwen met behulp van uw eigen aangepaste beleids bestanden. Voor uw referentie hebben we [voorbeeld beleids bestanden][UserMigrationSample-policy]gegeven.
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
 [AD-Powershell]: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2
@@ -375,4 +377,5 @@ Nadat u de hand leiding aan de [slag met aangepast beleid][B2C-GetStartedCustom]
 [B2C-GraphQuickStart]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet
 [B2C-NavContext]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-navigate-to-b2c-context
 [Portal]: https://portal.azure.com/
-[UserMigrationSample]: https://github.com/azure-ad-b2c/user-migration
+[UserMigrationSample-code]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/source-code
+[UserMigrationSample-policy]: https://github.com/azure-ad-b2c/user-migration/tree/master/pre-migration/policy

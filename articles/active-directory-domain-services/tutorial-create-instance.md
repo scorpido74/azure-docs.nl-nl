@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125220"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172057"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelfstudie: Een Azure Active Directory Domain Services-exemplaar maken en configureren
 
@@ -202,7 +202,7 @@ Als u het wacht woord voor een alleen-Cloud gebruiker wilt wijzigen, moet de geb
 1. Voer uw bestaande (oude) wacht woord in op de pagina **wacht woord wijzigen** , voer een nieuw wacht woord in en bevestig dit.
 1. Selecteer **indienen**.
 
-Het duurt enkele minuten voordat u uw wacht woord voor het nieuwe wacht woord hebt gewijzigd zodat het kan worden gebruikt in azure AD DS. Na ongeveer 20 minuten kunt u het nieuwe wacht woord gebruiken om u aan te melden bij computers die zijn gekoppeld aan het beheerde domein.
+Het duurt enkele minuten voordat u uw wacht woord voor het nieuwe wacht woord hebt gewijzigd zodat het kan worden gebruikt in azure AD DS en u kunt zich aanmelden bij computers die zijn gekoppeld aan het beheerde domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 

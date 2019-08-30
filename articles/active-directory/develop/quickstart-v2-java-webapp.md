@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 549b4457ee38504001e83c4b831cd321e1542068
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fa3ad71dcc7738169f78f4dab94bd9bdf4d4cc89
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125464"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182964"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Aanmelden met micro soft toevoegen aan een Java-Web-app
 
@@ -39,9 +39,7 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
-> U hebt twee opties voor het starten van de snelstarttoepassing:
-> * ExpressCard [Optie 1: Registreer en configureer uw app automatisch en down load vervolgens het code voorbeeld.](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * Handmatig: [Optie 2: Registreer en configureer uw voor beeld van de toepassing en code hand matig.](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) of hand matig (optie 2)
 > 
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
 >
@@ -123,7 +121,7 @@ Wanneer u de hand leiding hebt voltooid, accepteert uw toepassing aanmeldingen v
 ### <a name="getting-msal"></a>MSAL ophalen
 MSAL4J is de bibliotheek die wordt gebruikt voor het aanmelden van gebruikers en het aanvragen van tokens die worden gebruikt voor toegang tot een API die wordt beveiligd door het micro soft Identity-platform. U kunt MSAL4J toevoegen aan uw toepassing met behulp van Maven of Gradle voor het beheren van uw afhankelijkheden door de volgende wijzigingen aan te brengen in het bestand pom. XML of build. Gradle in uw toepassing. 
 
-```
+```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
@@ -139,7 +137,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ### <a name="msal-initialization"></a>Msal-initialisatie
 U kunt de verwijzing naar MSAL4J toevoegen door de volgende code toe te voegen aan de bovenkant van het bestand waarin u MSAL4J gaat gebruiken: 
 
-```
+```Java
 import com.microsoft.aad.msal4j.*;
 ```
 

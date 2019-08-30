@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b555ecdf8bbd3d29e440675599041f40ac3c9d0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 62ea1761cef48ab7808a352789963ab55129d2f8
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125034"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162393"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
@@ -172,6 +172,8 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Gebruikers converteren van MFA per gebruiker naar MFA op basis van voorwaardelijke toegang
 
 Als uw gebruikers zijn ingeschakeld met behulp van gebruikers die per gebruiker zijn ingeschakeld en Azure Multi-Factor Authentication afgedwongen, kan de volgende Power shell u helpen bij het converteren van de conversie naar voorwaardelijke toegang op basis van Azure Multi-Factor Authentication.
+
+Voer deze Power shell uit in een ISE-venster of sla het bestand op als een. Het PS1-bestand dat lokaal moet worden uitgevoerd.
 
 ```PowerShell
 # Disable MFA for all users, keeping their MFA methods intact

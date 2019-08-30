@@ -2,7 +2,7 @@
 title: Tekst uit afbeeldingen verwerken en extra heren in cognitieve zoek opdracht-Azure Search
 description: Verwerken en extra heren tekst en andere informatie uit afbeeldingen in cognitieve Zoek pijplijnen in Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 216be226f3ce6d1a288462d1a1b79f2bb0d3efe5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 65b6eb07a866db405af3e5bc609a540c36f148a8
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639914"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186443"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in cognitieve Zoek scenario's
 

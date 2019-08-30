@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics-taken weergeven in Visual Studio
-description: In dit artikel wordt beschreven hoe u Stream Analytics-taken weergeven in Visual Studio.
+title: Azure Stream Analytics taken weer geven in Visual Studio
+description: In dit artikel wordt beschreven hoe u Azure Stream Analytics taken in Visual Studio kunt weer geven en beheren.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,84 +9,84 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477826"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173016"
 ---
-# <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio gebruiken om Azure Stream Analytics-taken weer te geven
+# <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio gebruiken om Azure Stream Analytics taken weer te geven
 
-Azure Stream Analytics-hulpprogramma's voor Visual Studio maakt het eenvoudig voor ontwikkelaars voor het beheren van de Stream Analytics-taken rechtstreeks vanuit de IDE. Met Azure Stream Analytics-hulpprogramma's, kunt u het volgende doen:
+Met Azure Stream Analytics-hulpprogram ma's voor Visual Studio kunnen ontwikkel aars gemakkelijk hun Stream Analytics taken rechtstreeks vanuit de IDE beheren. Met Azure Stream Analytics-hulpprogram ma's kunt u het volgende doen:
 - [Nieuwe taken maken](stream-analytics-quick-create-vs.md)
-- Starten, stoppen, en [taken controleren](stream-analytics-monitor-jobs-use-vs.md)
-- De resultaten van de taak
-- Bestaande taken exporteren naar een project
-- Invoer- en -verbindingen testen
-- [Lokaal uitvoeren van query 's](stream-analytics-vs-tools-local-run.md)
+- Taken starten, stoppen en [bewaken](stream-analytics-monitor-jobs-use-vs.md)
+- Taak resultaten controleren
+- Bestaande taken naar een project exporteren
+- Invoer-en uitvoer verbindingen testen
+- [Query's lokaal uitvoeren](stream-analytics-vs-tools-local-run.md)
 
-Meer informatie over het [Azure Stream Analytics-hulpprogramma's voor Visual Studio installeren](stream-analytics-tools-for-visual-studio-install.md).
+Meer informatie over het [installeren van Azure stream Analytics-hulpprogram ma's voor Visual Studio](stream-analytics-tools-for-visual-studio-install.md).
 
-## <a name="explore-the-job-view"></a>Verken de taakweergave
+## <a name="explore-the-job-view"></a>De taak weergave verkennen
 
-U kunt de Project-weergave gebruiken om te communiceren met Azure Stream Analytics-taken vanuit Visual Studio.
+U kunt de taak weergave gebruiken om te communiceren met Azure Stream Analytics taken van Visual Studio.
 
-### <a name="open-the-job-view"></a>De taakweergave openen
+### <a name="open-the-job-view"></a>De taak weergave openen
 
-1. In **Server Explorer**, selecteer **Stream Analytics-taken** en selecteer vervolgens **vernieuwen**. Uw taak moet worden weergegeven onder **Stream Analytics-taken**.
+1. Selecteer in **Server Explorer** **Stream Analytics taken** en selecteer vervolgens **vernieuwen**. Uw taak moet worden weer gegeven onder **Stream Analytics taken**.
 
-    ![Lijst met Stream Analytics server explorer](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
+    ![Stream Analytics server Verkenner-lijst](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
 
 
-2. Vouw het taakknooppunt van uw uit en dubbelklik op de **taakweergave** knooppunt om de taakweergave van een te openen.
+2. Vouw uw taak knooppunt uit en dubbel klik op het **taak weergave** knooppunt om een taak weergave te openen.
     
-   ![Uitgebreide taakknooppunt](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
+   ![Uitgevouwen taak knooppunt](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
 
-### <a name="start-and-stop-jobs"></a>Starten en stoppen van taken
+### <a name="start-and-stop-jobs"></a>Taken starten en stoppen
 
-Azure Stream Analytics-taken kunnen volledig worden beheerd vanuit de taakweergave in Visual Studio. Gebruik de besturingselementen om te starten, stoppen of verwijderen van een taak.
+Azure Stream Analytics taken kunnen volledig worden beheerd vanuit de taak weergave in Visual Studio. Gebruik de besturings elementen om een taak te starten, te stoppen of te verwijderen.
     
-   ![Stream Analytics-taak besturingselementen](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
+   ![Stream Analytics taak besturings elementen](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
 
-## <a name="check-job-results"></a>De resultaten van de taak
+## <a name="check-job-results"></a>Taak resultaten controleren
 
-Stream Analytics-hulpprogramma's voor Visual Studio ondersteunt momenteel Uitvoervoorbeeld voor Azure Data Lake Storage en blob-opslag. Als u wilt weergeven resultaat, eenvoudigweg dubbelklikt u op het knooppunt van de uitvoer van het taakdiagram in **taakweergave** en voer de juiste referenties.
+Stream Analytics-hulpprogram ma's voor Visual Studio ondersteunen momenteel uitvoer voorbeelden voor Azure Data Lake Storage en Blob-opslag. Als u resultaat wilt weer geven, dubbelklikt u op het knoop punt uitvoer van het taak diagram in de **taak weergave** en voert u de juiste referenties in.
 
-   ![Stream Analytics-taakuitvoer blob](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
+   ![Taak BLOB-uitvoer Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
 
 
 ## <a name="export-jobs-to-a-project"></a>Taken exporteren naar een project
 
-Er zijn twee manieren kunt u een bestaande taak exporteren naar een project.
+Er zijn twee manieren waarop u een bestaande taak kunt exporteren naar een project.
 
-1. In **Server Explorer**, onder het knooppunt Stream Analytics-taken met de rechtermuisknop op het taakknooppunt. Selecteer **exporteren naar nieuwe Stream Analytics-Project**.
+1. Klik in **Server Explorer**onder het knoop punt stream Analytics taken met de rechter muisknop op het knoop punt taak. Selecteer **exporteren naar nieuw stream Analytics project**.
     
    ![Taak exporteren naar project](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    Het gegenereerde project wordt weergegeven in **Solution Explorer**.
+    Het gegenereerde project wordt weer gegeven in **Solution Explorer**.
     
-   ![Solution explorer](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
+   ![Solution Explorer](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
-2. Selecteer in de taakweergave **Project genereren**.
+2. Selecteer in de taak weergave **project genereren**.
     
-   ![Project genereren van de taak weergeven](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
+   ![Project genereren vanuit de taak weergave](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-03.png)
 
 ## <a name="test-connections"></a>Verbindingen testen
 
-Invoer- en -verbindingen kunnen worden getest in de **taakweergave** door een optie van de **testverbinding** vervolgkeuzelijst.
+Invoer-en uitvoer verbindingen kunnen worden getest vanuit de **taak weergave** door een optie te selecteren in de vervolg keuzelijst **Test verbinding** .
 
-   ![Vervolgkeuzelijst van de verbinding testen](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
+   ![Vervolg keuzelijst voor verbinding testen](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 
-De **testverbinding** resultaten worden weergegeven in de **uitvoer** venster.
+De resultaten van de **Test verbinding** worden weer gegeven in het **uitvoer** venster.
 
-   ![De resultaten van verbinding](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
+   ![Verbindings resultaten testen](./media/stream-analytics-vs-tools/stream-analytics-test-connection-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Controleren en beheren van Azure Stream Analytics-taken met behulp van Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
-* [Snelstart: Een Stream Analytics-taak met behulp van Visual Studio maken](stream-analytics-quick-create-vs.md)
-* [Zelfstudie: Een Azure Stream Analytics-taak kunt implementeren met CI/CD met behulp van Azure-pijplijnen](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Azure Stream Analytics taken bewaken en beheren met Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
+* [Snelstart: Een Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
+* [Zelfstudie: Een Azure Stream Analytics-taak met CI/CD implementeren met behulp van Azure-pijp lijnen](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Continue integratie en ontwikkeling met Stream Analytics-hulpprogramma’s](stream-analytics-tools-for-visual-studio-cicd.md)

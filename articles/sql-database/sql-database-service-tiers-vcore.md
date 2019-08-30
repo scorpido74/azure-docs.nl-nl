@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 06/26/2019
-ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.date: 08/29/2019
+ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147859"
+ms.locfileid: "70164346"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Kies uit de vCore-service lagen en migreer vanuit de DTU-service lagen
 
 Met het virtuele kern (vCore) gebaseerde aankoop model kunt u de reken-en opslag resources onafhankelijk van elkaar schalen, de on-premises prestaties afstemmen en de prijs optimaliseren. U kunt er ook voor kiezen om het apparaat te genereren:
 
-- **Gen4**: Maxi maal 24 logische Cpu's op basis van Intel E5-2673 v3 (Haswell) 2,4-GHz processors, vCore = 1 PP (fysieke kern), 7 GB per kern, gekoppelde SSD
-- **GEN5**: Maxi maal 80 logische Cpu's op basis van Intel E5-2673 v4 (Broadwell) 2,3-GHz processors, vCore = 1 LP (Hyper-Thread), 5,1 GB per kern, Fast eNVM SSD
+- **Gen4**: Maxi maal 24 logische Cpu's op basis van Intel E5-2673 v3 (Haswell) 2,4-GHz processors, vCore = 1 PP (fysieke kern), 7 GB per vCore, gekoppelde SSD
+- **GEN5**: Maxi maal 80 logische Cpu's op basis van Intel E5-2673 v4 (Broadwell) 2,3-GHz processors, vCore = 1 LP (Hyper-Thread), 5,1 GB per vCore voor ingerichte Compute en Maxi maal 24 GB per vCore voor serverloze compute, snelle eNVM SSD
 
 Gen4 hardware biedt aanzienlijk meer geheugen per vCore. Met GEN5-hardware kunt u echter reken resources veel meer schalen.
 
@@ -44,9 +44,9 @@ In de volgende tabel worden de verschillen tussen de drie lagen beschreven:
 |---|---|---|---|
 |Het best voor|De meeste zakelijke workloads. Biedt budget gerichte, evenwichtige en schaal bare reken-en opslag opties.|Zakelijke toepassingen met hoge I/O-vereisten. Biedt de hoogste flexibiliteit voor storingen door gebruik te maken van verschillende geïsoleerde replica's.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.|
 |Compute|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores<br/>**Serverloze Compute**:<br/>GEN5 0,5-16 vCores|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores|**Ingerichte Compute**:<br/>Gen4 1 tot 24 vCores<br/>GEN5 2 tot 80 vCores|
-|Geheugen|**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore<br/>**Serverloze Compute**:<br/>GEN5 3 GB per vCore|**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore |**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore|
-|Storage|Maakt gebruik van externe opslag.<br/>**Berekenings reken single data base**:<br/>5 GB – 4 TB<br/>**Eén reken database zonder server**:<br/>5 GB - 1 TB<br/>**Beheerd exemplaar**: 32 GB - 8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Berekenings reken single data base**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
-|I/O-door Voer (ongeveer)|**Eén data base**: 500 IOPS per vCore met 7000 maximum aantal IOPS.<br/>**Beheerd exemplaar**: Is afhankelijk van de [grootte van het bestand](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per kern met 200.000 maximum aantal IOPS|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPs is afhankelijk van de werk belasting.|
+|Geheugen|**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore<br/>**Serverloze Compute**:<br/>GEN5 Maxi maal 24 GB per vCore|**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore |**Ingerichte Compute**:<br/>Gen4 7 GB per vCore<br/>GEN5 5,1 GB per vCore|
+|Storage|Maakt gebruik van externe opslag.<br/>**Reken kracht voor één data base en elastische pool**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**Beheerd exemplaar**: 32 GB - 8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Reken kracht voor één data base en elastische pool**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
+|I/O-door Voer (ongeveer)|**Eén data base en elastische pool**: 500 IOPS per vCore tot 40000 maximum aantal IOPS.<br/>**Beheerd exemplaar**: Is afhankelijk van de [grootte van het bestand](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per kern tot Maxi maal 200.000 maximum aantal IOPS|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPs is afhankelijk van de werk belasting.|
 |Beschikbaarheid|1 replica, geen replica's met lees schaal|3 replica's, 1 [replica met lees grootte](sql-database-read-scale-out.md),<br/>zone-redundante hoge Beschik baarheid (HA)|1 replica met lees-en schrijf bewerkingen, plus 0-4 [replica's met lees grootte](sql-database-read-scale-out.md)|
 |Back-ups|[Geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|Back-ups op basis van moment opnamen in azure externe opslag. Herstelt het gebruik van deze moment opnamen voor snel herstel. Back-ups zijn onmiddellijk en zijn niet van invloed op de I/O-prestaties van compute. Herstel bewerkingen zijn snel en zijn geen omvang van de gegevens bewerking (minuten in plaats van uren of dagen).|
 |In het geheugen|Niet ondersteund|Ondersteund|Niet ondersteund|

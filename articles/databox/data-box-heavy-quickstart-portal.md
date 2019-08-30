@@ -1,59 +1,62 @@
 ---
-title: Snelstartgids voor Microsoft Azure Data Box-zwaar | Microsoft Docs
-description: Leer hoe u snel uw Azure Data Box zware in Azure portal
+title: Quick start voor Microsoft Azure Data Box Heavy | Microsoft Docs
+description: Meer informatie over hoe u uw Azure Data Box Heavy snel kunt implementeren in Azure Portal
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 433c3ac08d8d7d8158d4cc958979782e3b3192e1
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446740"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164426"
 ---
-# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Quickstart: Azure Data Box zware met behulp van de Azure portal implementeren
+::: zone target = "docs"
 
-Deze snelstartgids wordt beschreven hoe u de Azure Data Box zware met behulp van de Azure portal implementeert. De stappen bevatten informatie over het bekabelen, configureren en gegevens kopiëren naar Data Box zware zodat deze wordt geüpload naar Azure. De quickstart wordt uitgevoerd in de Azure-portal en op de lokale webgebruikersinterface van het apparaat.
+# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Quickstart: Azure Data Box Heavy implementeren met behulp van de Azure Portal
 
-Ga voor gedetailleerde stapsgewijze instructies voor implementatie en tracering naar [Zelfstudie: Volgorde Azure Data Box-zwaar](data-box-heavy-deploy-ordered.md)
+In deze Quick Start wordt beschreven hoe u de Azure Data Box Heavy implementeert met behulp van de Azure Portal. De stappen bevatten informatie over het bekabelen, configureren en kopiëren van gegevens naar Data Box Heavy zodat deze naar Azure worden geüpload. De quickstart wordt uitgevoerd in de Azure-portal en op de lokale webgebruikersinterface van het apparaat.
+
+Ga voor gedetailleerde stapsgewijze instructies voor implementatie en tracering naar [Zelfstudie: Azure Data Box Heavy volgorde](data-box-heavy-deploy-ordered.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de volgende configuratievereisten voor de van installatiesite, de Data Box-service en het apparaat voordat u het apparaat implementeert.
+Voltooi de volgende configuratie vereisten voor de installatie site, Data Box-Service en apparaat voordat u het apparaat implementeert.
 
-### <a name="for-installation-site"></a>Voor de van installatiesite
+### <a name="for-installation-site"></a>Voor installatie site
 
 Zorg voordat u begint voor het volgende:
 
-- Het apparaat past via alle uw entryways. Apparaat-dimensies zijn: breedte: 26" lengte: 48" hoogte: 28”.
-- U hebt toegang tot het apparaat via een lift of een ramp als u van plan bent om te installeren op een verdieping dan de begane grond.
-- U hebt twee personen voor het afhandelen van het apparaat. Het apparaat weegt ongeveer ~ 500 lbs. en op wheels is.
-- U hebt een platte site in het datacenter met de nabijheid van een beschikbare netwerkverbinding die een apparaat met deze voetafdruk aankan.
+- Het apparaat kan worden aangepast door al uw entryways. De afmetingen van het apparaat zijn: breedte: 26 "lengte: 48 hoogte: 28 '.
+- U hebt toegang tot het apparaat via een lift of een helling als u van plan bent om te installeren op een andere vloer dan de grond vloer.
+- U hebt twee personen die het apparaat kunnen afhandelen. Het apparaat weegt ongeveer ~ 500 lbs. en wordt geleverd op wielen.
+- U hebt een platte site in het Data Center met nabij een beschik bare netwerk verbinding die een apparaat met deze footprint kan ondersteunen.
 
 ### <a name="for-service"></a>Voor de service
 
 Zorg voordat u begint voor het volgende:
 
 - U hebt een Microsoft Azure Storage-account met toegangsreferenties.
-- Het abonnement dat u voor de Data Box-service is [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview), of [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- U hebben eigenaar of bijdrager toegang tot het abonnement te maken van een Data Box zware volgorde.
+- Het abonnement dat u gebruikt voor Data Box Service is [micro soft Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)of [Microsoft Azure sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
+- U hebt eigenaar of Inzender toegang tot het abonnement om een Data Box Heavy order te maken.
 
 ### <a name="for-device"></a>Voor het apparaat
 
 Zorg voordat u begint voor het volgende:
 
-- U hebt bekeken de [veiligheid richtlijnen voor uw Data Box-zwaar](data-box-safety.md).
-- U hebt een hostcomputer die is verbonden met het netwerk van datacenters. Gegevens in het zware kopieert u de gegevens van deze computer. De hostcomputer moet worden uitgevoerd een [ondersteund besturingssysteem](data-box-heavy-system-requirements.md).
-- U hebt een laptop met RJ-45-kabel verbinding maken met de gebruikersinterface van lokale en het apparaat configureren. Gebruik de laptop op elk knooppunt van het apparaat eenmaal configureren.
-- Uw datacenter heeft dankzij het netwerk en u moet ten minste één 10 GbE-verbinding.
-- U moet een 40 Gbps-kabel of 10 Gbps-kabel per apparaatknooppunt. Kabels die compatibel zijn met de Mellanox MCX314A-BCCT netwerkinterface kiezen:
-    - Voor de kabel 40 Gbps moet apparaat einde van de kabel QSFP +.
-    - Voor de kabel 10 Gbps moet u een SFP +-kabel die in een switch 10 G aan het ene uiteinde, met een QSFP + SFP + adapter (of de adapter QSA) voor het end die wordt aangesloten op het apparaat.
-- De power-kabels zijn opgenomen in een lade aan het einde van het apparaat.
+- U hebt de [veiligheids richtlijnen voor uw data Box Heavy](data-box-safety.md)gecontroleerd.
+- U hebt een hostcomputer verbonden met het datacenter netwerk. Data Box Heavy worden de gegevens van deze computer gekopieerd. Op de hostcomputer moet een [ondersteund besturings systeem](data-box-heavy-system-requirements.md)worden uitgevoerd.
+- U hebt een laptop met RJ-45-kabel om verbinding te maken met de lokale gebruikers interface en het apparaat te configureren. Gebruik de laptop om elk knoop punt van het apparaat één keer te configureren.
+- Uw Data Center heeft een netwerk met hoge snelheid en u hebt ten minste 1 10 GbE-verbinding.
+- U hebt een 1 40-Gbps-kabel of een 10 Gbps-kabel per apparaatapparaat nodig. Kies de kabels die compatibel zijn met de Mellanox MCX314A-BCCT-netwerk interface:
+    - Voor de 40-Gbps-kabel moet het apparaat uiteinde van de kabel QSFP + zijn.
+    - Voor de kabel van 10 Gbps hebt u een SFP +-kabel nodig die aan een van de twee uiteinden wordt aangesloten op een 10-G-switch, met een QSFP + tot SFP +-adapter (of de QSA-adapter) voor het einde dat op het apparaat wordt aangesloten.
+- De stroom kabels zijn opgenomen in een lade aan de achterkant van het apparaat.
+
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -65,80 +68,93 @@ Deze stap neemt ongeveer 5 minuten in beslag.
 
 1. Maak een nieuwe Azure Data Box-resource in de Azure-portal.
 2. Selecteer een bestaand abonnement dat is ingeschakeld voor deze service, en kies **Importeren** als overdrachtstype. Geef het **Bronland** op waar de gegevens zijn opgeslagen, en geef de **Azure-doelregio** voor de gegevensoverdracht op.
-3. Selecteer **Data Box-zwaar**. De maximale aan bruikbare capaciteit 770 TB is en u kunt meerdere orders voor grotere gegevens maken.
+3. Selecteer **Data Box Heavy**. De Maxi maal bruikbare capaciteit is 770 TB en u kunt meerdere orders maken voor grotere gegevens grootten.
 4. Voer de order- en verzendgegevens in. Als de service beschikbaar is in uw regio, geeft u e-mailadressen voor meldingen op, controleert u de samenvatting en maakt u vervolgens de order.
 
 Zodra de order is gemaakt, wordt het apparaat voorbereid voor verzending.
 
-## <a name="cable-for-power"></a>Kabel voor energiebeheer
+::: zone-end
 
-Deze stap duurt ongeveer 5 minuten.
+::: zone target = "chromeless"
 
-Wanneer u de Data Box-zwaar ontvangt, moet u de volgende stappen voor het apparaat voor power bekabelen en schakel het apparaat.
+# <a name="cable-and-connect-to-your-device"></a>Kabel en verbinding maken met uw apparaat
+
+Nadat u de vereisten hebt gecontroleerd, kunt u uw apparaat aansluiten en er verbinding mee maken.
+
+::: zone-end
+
+## <a name="cable-for-power"></a>Kabel voor energie
+
+Deze stap duurt ongeveer vijf minuten.
+
+Wanneer u de Data Box Heavy ontvangt, voert u de volgende stappen uit om het apparaat op de stroom te aansluiten en het apparaat in te scha kelen.
 
 1. Ga niet verder als u vermoedt dat er met het apparaat is geknoeid of dat het is beschadigd. Neem contact op met Microsoft Ondersteuning om een vervangend apparaat naar u te laten verzenden.
-2. Verplaatsen van het apparaat naar installatiesite en de achterzijde wheels vergrendelen.
-3. Alle vier power-kabels verbinden met de voedingen aan het einde van het apparaat.
-4. Gebruik de knoppen power in het vlak van front om in te schakelen op de knooppunten van het apparaat.
+2. Verplaats het apparaat naar de installatie site en vergrendel de achterwielpen.
+3. Sluit alle vier de stroom kabels aan op de achterkant van het apparaat.
+4. Gebruik de aan/uit-knoppen in het voorste vlak om de knoop punten van het apparaat in te scha kelen.
 
-## <a name="cable-first-node-for-network"></a>Eerste knooppunt van de kabel voor netwerk
+## <a name="cable-first-node-for-network"></a>Kabel eerste knoop punt voor netwerk
 
-Deze stap duurt ongeveer 10-15 minuten om te voltooien.
+Het duurt ongeveer 10-15 minuten om deze stap te volt ooien.
 
 1. Gebruik de RJ-45-netwerkkabel van het type CAT-6 om de hostcomputer te koppelen aan de MGMT-poort (Managementpoort) op het apparaat.
-2. De Twinax QSFP + koperen kabel gebruiken om ten minste één 40 Gbps verbinding te maken (bij voorkeur meer dan 1 Gbps) netwerkinterface, gegevens-1 of 2 voor gegevens. Als een 10 Gbps-switch, gebruikt u een Twinax SFP + koperen kabel met een QSFP + SFP + adapter (de adapter QSA) om de 40 Gbps-netwerkinterface voor gegevens verbinding te maken.
+2. Gebruik de kabel van Twinax QSFP + koper om ten minste 1 40 Gbps te verbinden met een netwerk interface met een voor keur van meer dan 1 Gbps, gegevens 1 of gegevens 2 of DATA. Als u een 10-Gbps-switch gebruikt, gebruikt u een Twinax SFP + koper kabel met een QSFP +-naar-SFP +-adapter (de QSA-adapter) om de 40-Gbps-netwerk interface voor gegevens te verbinden.
 3. Sluit de kabels aan zoals hieronder wordt weergegeven.  
 
-    ![Gegevens in het zware bekabelde](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
+    ![Data Box Heavy gekabeld](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
 
-## <a name="configure-first-node"></a>Eerste knooppunt configureren
+## <a name="configure-first-node"></a>Eerste knoop punt configureren
 
 Deze stap neemt ongeveer 5 tot 7 minuten in beslag.
 
-1. Als u het wachtwoord van het apparaat wilt ophalen, gaat u naar **Algemeen > Apparaatdetails** in de [Azure-portal](https://portal.azure.com). Hetzelfde wachtwoord wordt gebruikt voor beide knooppunten van het apparaat.
-2. Een statisch IP-adres 192.168.100.5 en subnet 255.255.255.0 toewijzen aan de Ethernet-adapter op de computer die u gebruikt voor het verbinding maken met gegevens in het zware. U hebt op `https://192.168.100.10` toegang tot de webgebruikersinterface van het apparaat. Nadat u het apparaat hebt ingeschakeld, duurt het maximaal 5 minuten om de verbinding tot stand te brengen.
+1. Als u het wachtwoord van het apparaat wilt ophalen, gaat u naar **Algemeen > Apparaatdetails** in de [Azure-portal](https://portal.azure.com). Voor beide knoop punten van het apparaat wordt hetzelfde wacht woord gebruikt.
+2. Wijs een statisch IP-adres van 192.168.100.5 en subnet 255.255.255.0 toe aan de Ethernet-adapter op de computer die u gebruikt om verbinding te maken met Data Box Heavy. U hebt op `https://192.168.100.10` toegang tot de webgebruikersinterface van het apparaat. Nadat u het apparaat hebt ingeschakeld, duurt het maximaal 5 minuten om de verbinding tot stand te brengen.
 3. Meld u aan met het wachtwoord uit de Azure-portal. U ziet nu een foutmelding over een probleem met het beveiligingscertificaat van de website. Volg de browserinstructies om naar de webpagina te gaan.
-4. De instellingen voor de interfaces (met uitzondering van de MGMT) zijn standaard geconfigureerd als DHCP. Indien nodig, kunt u deze interfaces configureren als statisch en een IP-adres opgeven.
+4. De netwerk instellingen voor de interfaces (met uitzonde ring van het beheer) zijn standaard geconfigureerd als DHCP. Als dat nodig is, kunt u deze interfaces configureren als statisch en een IP-adres opgeven.
 
-## <a name="cable-and-configure-the-second-node"></a>Bekabelen en configureren van het tweede knooppunt
+## <a name="cable-and-configure-the-second-node"></a>Kabel en configureer het tweede knoop punt
 
-Deze stap duurt ongeveer 15-20 minuten om te voltooien.
+Het duurt ongeveer 15-20 minuten om deze stap te volt ooien.
 
-Volg de stappen die worden gebruikt voor het eerste knooppunt te bekabelen en configureren van het tweede knooppunt op het apparaat.  
+Volg de stappen die voor het eerste knoop punt worden gebruikt voor het bekabelen en configureren van het tweede knoop punt op het apparaat.  
+
+
+::: zone target = "docs"
 
 ## <a name="copy-data"></a>Gegevens kopiëren
 
-De tijd om deze bewerking te voltooien, is afhankelijk van de gegevensgrootte van uw en de snelheid van het netwerk op waarover de gegevens worden gekopieerd.
+De tijd voor het volt ooien van deze bewerking is afhankelijk van de grootte van uw gegevens en de snelheid van het netwerk waarover de gegevens worden gekopieerd.
  
-1. Gegevens kopiëren naar zowel de apparaat-knooppunten met behulp van zowel de 40 Gbps gegevensinterfaces parallel.
+1. Gegevens kopiëren naar de knoop punten van de apparaten met behulp van de gegevens interfaces van 40-Gbps parallel.
 
-    - Als een hulpprogramma voor SMB-compatibel bestand kopiëren met behulp van een Windows-host, gebruiken, zoals [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - Als u een Windows-host gebruikt, gebruikt u een met SMB compatibel hulp programma voor het kopiëren van bestanden zoals [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
     - Voor een NFS-host gebruikt u de opdracht `cp` of `rsync` om de gegevens te kopiëren.
-2. Verbinding maken met de shares op het apparaat via het pad:`\\<IP address of your device>\ShareName`. Als u de referenties voor de toegang delen, gaat u naar de **Connect & kopiëren** pagina in de lokale webgebruikersinterface van de Data Box-zwaar.
-3. Zorg ervoor dat de share en mapnamen en de gegevens richtlijnen die worden beschreven volgen in de [Servicelimieten van Azure Storage en gegevens in het zware](data-box-heavy-limits.md).
+2. Maak verbinding met de shares op het apparaat met behulp van het pad:`\\<IP address of your device>\ShareName`. Als u de toegangs referenties voor de share wilt ophalen, gaat u naar de pagina **verbinding maken & kopiëren** in de lokale webgebruikersinterface van de data Box Heavy.
+3. Zorg ervoor dat de namen van shares en mappen en de gegevens voldoen aan de richt lijnen die worden beschreven in de [Azure Storage-en data Box Heavy-service limieten](data-box-heavy-limits.md).
 
 ## <a name="prepare-to-ship"></a>Voorbereiding voor verzending
 
 De duur van deze bewerking hangt af van de hoeveelheid gegevens.
 
-1. Nadat het kopiëren van gegevens voltooid zonder fouten is, gaat u naar **voorbereiding voor verzending** pagina in de lokale web-UI en de voorbereiding voor verzending te starten.
-2. Na de **voorbereiding voor verzending** is voltooid op beide knooppunten, uitschakelen van het apparaat via de lokale webgebruikersinterface.
+1. Nadat het kopiëren van de gegevens zonder fouten is voltooid, gaat u naar **voorbereiding voor verzending** pagina in de lokale webgebruikersinterface en start u de voor bereiding voor de verzen ding.
+2. Nadat de **voorbereiding voor verzending** op beide knoop punten is voltooid, schakelt u het apparaat uit via de lokale webgebruikersinterface.
 
 ## <a name="ship-to-azure"></a>Verzenden naar Azure
 
-Met deze bewerking duurt ongeveer 15-20 minuten om te voltooien.
+Het volt ooien van deze bewerking duurt ongeveer 15-20 minuten.
 
-1. Verwijderen van de kabels en retourneren ze in de lade aan het einde van het apparaat.
-2. Een ophalen met de regionale provider plannen.
-3. Contact opnemen met [vak gegevensbewerkingen](mailto:DataBoxOps@microsoft.com) om u te informeren over het ophalen en aan het retourlabel.
-4. Het retourlabel moet zichtbaar zijn op het voorpaneel wissen van het apparaat zijn.
+1. Verwijder de kabels en stuur deze terug naar de lade op de achterkant van het apparaat.
+2. Een ophaling plannen met uw regionale luchtvaart maatschappij.
+3. Neem contact op met [Data Box bewerkingen](mailto:DataBoxOps@microsoft.com) om te informeren over de ophaling en om het verzend label voor de retour zending op te halen.
+4. Het label voor de retour verzending moet zichtbaar zijn in het paneel front-leeg van het apparaat.
 
 ## <a name="verify-data"></a>Gegevens controleren
 
 De duur van deze bewerking hangt af van de hoeveelheid gegevens.
 
-1. Wanneer de gegevens in het zware apparaat is verbonden met het netwerk van Azure-datacenter, worden de gegevens automatisch geüpload naar Azure.
-2. Data Box-service ontvangt u een melding dat het kopiëren van gegevens voltooid via Azure portal is.
+1. Wanneer het Data Box Heavy apparaat is verbonden met het Azure Data Center-netwerk, worden de gegevens automatisch geüpload naar Azure.
+2. Data Box-Service meldt u dat het kopiëren van de gegevens is voltooid via de Azure Portal.
 
     1. Controleer foutenlogboeken op eventuele fouten en onderneem toepasselijke acties.
     2. Controleer of uw gegevens zich in de opslagaccount(s) bevinden voordat u deze uit de bron verwijdert.
@@ -147,13 +163,15 @@ De duur van deze bewerking hangt af van de hoeveelheid gegevens.
 
 Deze stap neemt 2 tot 3 minuten in beslag.
 
-- U kunt de volgorde van de gegevens in het zware in Azure portal annuleert voordat de bestelling is verwerkt. Zodra de order is verwerkt, kan deze niet meer worden geannuleerd. De order doorloopt verwerkingsfasen totdat deze is voltooid. Als u de order wilt annuleren, gaat u naar **Overzicht** en klikt u in de opdrachtbalk op **Annuleren**.
+- U kunt de Data Box Heavy volgorde annuleren in de Azure Portal voordat de order wordt verwerkt. Zodra de order is verwerkt, kan deze niet meer worden geannuleerd. De order doorloopt verwerkingsfasen totdat deze is voltooid. Als u de order wilt annuleren, gaat u naar **Overzicht** en klikt u in de opdrachtbalk op **Annuleren**.
 
 - U kunt de order verwijderen zodra de status als **Voltooid** of **Geannuleerd** wordt weergegeven in de Azure-portal. Als u de order wilt verwijderen, gaat u naar **Overzicht** en klikt u in de opdrachtbalk op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u een Data Box-zwaar om u te helpen uw gegevens importeren in Azure geïmplementeerd. Ga naar de volgende zelfstudie voor meer informatie over het beheer van Azure Data Box zware:
+In deze Quick Start hebt u een Data Box Heavy geïmplementeerd om uw gegevens te importeren in Azure. Ga verder met de volgende zelf studie voor meer informatie over Azure Data Box Heavy beheer:
 
 > [!div class="nextstepaction"]
-> [De Azure portal gebruiken voor het beheren van gegevens in het zware](data-box-portal-admin.md)
+> [De Azure Portal gebruiken om Data Box Heavy te beheren](data-box-portal-admin.md)
+
+::: zone-end

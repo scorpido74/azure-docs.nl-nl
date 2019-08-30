@@ -13,38 +13,37 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8420142e67fe4af12045a2b6fe7f7461ef384f81
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666462"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164475"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
 Met service-eindpunten van Virtual Network (VNet) kunt u de privé-adresruimte van uw virtuele netwerk en de identiteit van uw VNet uitbreiden naar Azure-services, via een directe verbinding. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Verkeer van uw VNet naar de Azure-service blijft altijd in het Microsoft Azure-backbonenetwerk.
 
-Deze functie is beschikbaar voor de volgende Azure-services en regio's:
+Deze functie is beschikbaar voor de volgende Azure-Services en regio's, en u vindt ook de resource Microsoft. * tussen haakjes die moet worden ingeschakeld vanaf de subnetten tijdens het configureren van service-eind punten voor uw service:
 
 **Algemeen verkrijgbaar**
 
-- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** : Algemeen verkrijgbaar in alle Azure-regio's.
-- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in alle Azure-regio's.
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in alle Azure-regio's.
-- **[Azure Database for PostgreSQL-server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in preview in Azure-regio's waar de databaseservice beschikbaar is.
-- **[Azure Database for MySQL-server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in preview in Azure-regio's waar de databaseservice beschikbaar is.
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** : Algemeen verkrijgbaar in preview in Azure-regio's waar de databaseservice beschikbaar is.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in alle Azure-regio's.
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** : Algemeen verkrijgbaar in alle Azure-regio's.
-- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in alle Azure-regio's.
-- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in alle Azure-regio's.
-- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : Algemeen verkrijgbaar in alle Azure-regio's waar ADLS Gen1 beschikbaar is.
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Algemeen beschikbaar in alle Azure-regio's waar de appservice beschikbaar is
+- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Micro soft. Storage): Algemeen verkrijgbaar in alle Azure-regio's.
+- **[Azure SQL database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. SQL): Algemeen verkrijgbaar in alle Azure-regio's.
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. SQL): Algemeen verkrijgbaar in alle Azure-regio's.
+- **[Azure database for postgresql server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. SQL): Algemeen verkrijgbaar in preview in Azure-regio's waar de databaseservice beschikbaar is.
+- **[Azure database for mysql server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. SQL): Algemeen verkrijgbaar in preview in Azure-regio's waar de databaseservice beschikbaar is.
+- **[Azure database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (Micro soft. SQL): Algemeen verkrijgbaar in preview in Azure-regio's waar de databaseservice beschikbaar is.
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. AzureCosmosDB): Algemeen verkrijgbaar in alle Azure-regio's.
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** (Micro soft.-sleutel kluis): Algemeen verkrijgbaar in alle Azure-regio's.
+- **[Azure service bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. ServiceBus): Algemeen verkrijgbaar in alle Azure-regio's.
+- **[Azure Event hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. EventHub): Algemeen verkrijgbaar in alle Azure-regio's.
+- **[Azure data Lake Store gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Micro soft. AzureActiveDirectory): Algemeen verkrijgbaar in alle Azure-regio's waar ADLS Gen1 beschikbaar is.
+- **[Azure app service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Algemeen beschikbaar in alle Azure-regio's waar app service beschikbaar is
 
 **Openbare preview**
 
-- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** : Preview-versie beschikbaar in alle Azure-regio's waar Azure Container Registry beschikbaar is.
-.
+- **[Azure container Registry](../container-registry/container-registry-vnet.md)** (Micro soft. ContainerRegistry): Preview beschikbaar in alle Azure-regio's waar Azure Container Registry beschikbaar is.
 
 Voor recente updates kijkt u op de pagina [Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network) (Updates voor Azure Virtual Network).
 
@@ -63,7 +62,7 @@ Service-eindpunten bieden de volgende voordelen:
 - De functie is alleen beschikbaar voor virtuele netwerken die zijn geïmplementeerd met behulp van het Azure Resource Manager-implementatiemodel.
 - Eindpunten worden ingeschakeld in subnetten die zijn geconfigureerd in virtuele Azure-netwerken. Eindpunten kunnen niet worden gebruikt voor verkeer vanaf uw on-premises netwerk naar Azure-services. Zie [Toegang tot Azure-service vanaf on-premises beveiligen](#securing-azure-services-to-virtual-networks) voor meer informatie
 - Voor Azure SQL geldt een service-eindpunt alleen voor Azure-serviceverkeer binnen de regio van een virtueel netwerk. Voor Azure Storage worden eindpunten ter ondersteuning van RA-GRS- en GRS-verkeer ook uitgebreid voor opname van gekoppelde regio's waar het virtuele netwerk is geïmplementeerd. Meer informatie over [gekoppelde regio's in Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-- Voor ADLS Gen 1 is de mogelijkheid van VNet-integratie alleen beschikbaar voor virtuele netwerken binnen dezelfde regio. Ook Let op: integratie van virtuele netwerken voor Azure Data Lake Storage Gen1 maakt gebruik van het virtuele netwerk eindpunt Servicebeveiliging tussen uw virtuele netwerk en Azure Active Directory (Azure AD) voor het genereren van extra beveiligingsclaims in het toegangstoken. Deze claims worden vervolgens gebruikt om het virtuele netwerk te verifiëren bij het Data Lake Storage Gen1-account en toegang toe te staan. 'Microsoft.AzureActiveDirectory'-tag vermeld in de service-eindpunten van ondersteunende services wordt alleen gebruikt voor service-eindpunten naar ADLS Gen 1 ondersteunen. Azure Active Directory (Azure AD) biedt geen ondersteuning voor service-eindpunten systeemeigen. Meer informatie over [Azure Data Lake Store Gen 1 VNet-integratie](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Voor ADLS Gen 1 is de mogelijkheid van VNet-integratie alleen beschikbaar voor virtuele netwerken binnen dezelfde regio. Houd er ook rekening mee dat de integratie van virtuele netwerken voor Azure Data Lake Storage Gen1 gebruikmaakt van de eindpunt beveiliging van het virtuele netwerk tussen uw virtuele netwerk en Azure Active Directory (Azure AD) voor het genereren van extra beveiligings claims in het toegangs token. Deze claims worden vervolgens gebruikt om het virtuele netwerk te verifiëren bij het Data Lake Storage Gen1-account en toegang toe te staan. De tag micro soft. AzureActiveDirectory die wordt vermeld onder Services die service-eind punten ondersteunen, wordt alleen gebruikt voor de ondersteuning van service-eind punten voor ADLS gen 1. Azure Active Directory (Azure AD) biedt geen ondersteuning voor service-eind punten systeem eigen. Meer informatie over de [integratie van Azure data Lake Store gen 1-VNet](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Azure-services aan virtuele netwerken koppelen
 
@@ -122,7 +121,7 @@ Wanneer service-eindpunten zijn geconfigureerd voor een bepaalde service, contro
 
 ## <a name="provisioning"></a>Inrichten
 
-Service-eindpunten kunnen afzonderlijk op virtuele netwerken worden geconfigureerd door een gebruiker met schrijftoegang tot een virtueel netwerk. Als u wilt beveiligen in Azure-serviceresources naar een VNet, moet de gebruiker de machtiging voor hebben *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* voor de subnetten die worden toegevoegd. Deze machtiging is standaard opgenomen in de ingebouwde service-beheerdersrollen en kan worden gewijzigd door aangepaste rollen te maken.
+Service-eindpunten kunnen afzonderlijk op virtuele netwerken worden geconfigureerd door een gebruiker met schrijftoegang tot een virtueel netwerk. Als u Azure-service resources wilt beveiligen met een VNet, moet de gebruiker gemachtigd zijn voor *micro soft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/Action* voor de subnetten die worden toegevoegd. Deze machtiging is standaard opgenomen in de ingebouwde service-beheerdersrollen en kan worden gewijzigd door aangepaste rollen te maken.
 
 Meer informatie over [ingebouwde rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en het toewijzen van specifieke machtigingen voor [aangepaste rollen](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -134,7 +133,7 @@ Er worden geen extra kosten berekend voor het gebruik van de service-eindpunten.
 
 Er geldt geen limiet voor het totale aantal service-eindpunten in een virtueel netwerk.
 
-Bepaalde Azure-services, zoals Azure Storage-Accounts, kunnen beperkingen met betrekking tot het aantal subnetten die worden gebruikt voor het beveiligen van de resource afdwingen. Raadpleeg de documentatie voor de verschillende services in [Volgende stappen](#next-steps) voor meer informatie.
+Bepaalde Azure-Services, zoals Azure Storage accounts, kunnen Limieten afdwingen voor het aantal subnetten dat wordt gebruikt voor het beveiligen van de bron. Raadpleeg de documentatie voor de verschillende services in [Volgende stappen](#next-steps) voor meer informatie.
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Beleid voor service-eindpunten voor virtueel netwerk 
 

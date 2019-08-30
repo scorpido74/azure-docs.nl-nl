@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087578"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186770"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -61,7 +61,7 @@ U kunt ook [InlineScript](automation-powershell-workflow.md#inlinescript)gebruik
 
 ### <a name="runas-account"></a>Runas-account
 
-Standaard gebruikt de Hybrid Runbook worker lokaal systeem voor Windows en een speciaal gebruikers account `nxautomation` voor Linux om runbooks uit te voeren. In plaats van dat runbooks hun eigen verificatie bieden voor lokale resources, kunt u een **runas** -account opgeven voor een Hybrid worker-groep. U geeft een [referentie-element](automation-credentials.md) op dat toegang heeft tot lokale bronnen en alle runbooks worden uitgevoerd onder deze referenties wanneer ze worden uitgevoerd op een Hybrid Runbook worker in de groep.
+Standaard gebruikt de Hybrid Runbook worker lokaal systeem voor Windows en een speciaal gebruikers account `nxautomation` voor Linux om runbooks uit te voeren. In plaats van dat runbooks hun eigen verificatie bieden voor lokale resources, kunt u een **runas** -account opgeven voor een Hybrid worker-groep. U geeft een [referentie-element](automation-credentials.md) op dat toegang heeft tot lokale bronnen, met inbegrip van certificaat archieven en alle runbooks die worden uitgevoerd onder deze referenties wanneer ze worden uitgevoerd op een Hybrid Runbook worker in de groep.
 
 De gebruikers naam voor de referentie moet een van de volgende indelingen hebben:
 

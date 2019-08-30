@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779278"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170660"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions-netwerk opties
 
@@ -52,8 +52,10 @@ Zie [Azure app service beperkingen voor statische toegang](../app-service/app-se
 ## <a name="private-site-access"></a>Toegang tot privésite
 
 Toegang via een persoonlijke site verwijst naar het toegankelijk maken van uw app vanaf een particulier netwerk, zoals vanuit een virtueel Azure-netwerk. 
-* Toegang tot de persoonlijke site is beschikbaar in het [Premium](./functions-premium-plan.md) -en [app service-abonnement](functions-scale.md#app-service-plan) wanneer **service-eind punten** zijn geconfigureerd. Zie [service-eind punten voor virtueel netwerk](../virtual-network/virtual-network-service-endpoints-overview.md) voor meer informatie.
-    * Houd er bij service-eind punten voor dat uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs als de virtuele netwerk integratie is geconfigureerd.
+* Toegang tot de persoonlijke site is beschikbaar in het [Premium](./functions-premium-plan.md)-, verbruiks-en [app service plan](functions-scale.md#app-service-plan) wanneer **service-eind punten** zijn geconfigureerd. [](functions-scale.md#consumption-plan) 
+    * Service-eind punten kunnen per app worden geconfigureerd onder platform functies > netwerk > toegangs beperkingen configureren > regel toevoegen. Virtuele netwerken kunnen nu worden geselecteerd als het type van een regel.
+    * Zie [service-eind punten voor virtueel netwerk](../virtual-network/virtual-network-service-endpoints-overview.md) voor meer informatie.
+        * Houd er bij service-eind punten voor dat uw functie nog steeds volledige uitgaande toegang tot het internet heeft, zelfs als de virtuele netwerk integratie is geconfigureerd.
 * Toegang tot privé-sites is ook beschikbaar met een App Service Environment dat is geconfigureerd met een interne load balancer (ILB). Zie [een interne Load Balancer met een app service Environment maken en gebruiken](../app-service/environment/create-ilb-ase.md)voor meer informatie.
 
 ## <a name="virtual-network-integration"></a>Integratie van virtueel netwerk
@@ -99,6 +101,13 @@ Virtuele netwerk integratie in functions maakt gebruik van een gedeelde infra st
 * [Vereiste VNet-integratie voor gateway](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 Zie voor meer informatie over het gebruik van virtuele netwerk integratie [een functie-app integreren met een virtueel Azure-netwerk](functions-create-vnet.md).
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Uw opslag account beperken tot een virtueel netwerk
+
+> [!note] 
+> Het kan tot 12 uur duren voordat uw opslag account beschikbaar is voor uw functie-app nadat u de toegangs beperkingen voor dat opslag account hebt geconfigureerd. Gedurende deze periode is uw toepassing volledig offline.
+
+Als u een hoger beveiligings niveau wilt bieden, kunt u het opslag account van uw toepassing beperken tot een virtueel netwerk. Vervolgens moet u uw site met dat virtuele netwerk integreren om toegang te krijgen tot uw opslag account. Deze configuratie wordt ondersteund op alle abonnementen die ondersteuning bieden voor de integratie van virtuele netwerken.
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuele netwerk triggers (niet-HTTP)
 

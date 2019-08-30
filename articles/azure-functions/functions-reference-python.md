@@ -13,30 +13,22 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 637205bd4ad438d7efbee6fb304b0a934aefdfdf
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 16cf6704096f8c1534777ffb1958d2fa858374db
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615889"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170537"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
-Dit artikel is een inleiding tot het ontwikkelen van Azure Functions met behulp van python. De onderstaande inhoud veronderstelt dat u de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md)al hebt gelezen.
+Dit artikel is een inleiding tot het ontwikkelen van Azure Functions met behulp van python. De onderstaande inhoud veronderstelt dat u de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md)al hebt gelezen. 
+
+Zie de voor [beelden van python-functies](/samples/browse/?products=azure-functions&languages=python)voor voorbeeld projecten van een zelfstandige functie in python. 
 
 ## <a name="programming-model"></a>Programmeermodel
 
-Een Azure-functie moet een staatloze methode in uw python-script zijn dat invoer verwerkt en uitvoer produceert. Standaard verwacht de runtime dat de methode wordt geïmplementeerd als globale methode met de naam `main()` in het `__init__.py` bestand.
-
-U kunt de standaard configuratie wijzigen door de `scriptFile` eigenschappen en `entryPoint` in het bestand *Function. json* op te geven. Met de _functie. json_ hieronder wordt bijvoorbeeld aangegeven dat de runtime de `customentry()` methode in het _Main.py_ -bestand moet gebruiken als het invoer punt voor uw Azure-functie.
-
-```json
-{
-  "scriptFile": "main.py",
-  "entryPoint": "customentry",
-  ...
-}
-```
+Azure Functions verwacht dat een functie een stateless methode is in uw python-script dat invoer verwerkt en uitvoer produceert. Standaard verwacht de runtime dat de methode wordt geïmplementeerd als globale methode met de naam `main()` in het `__init__.py` bestand. U kunt ook [een alternatief invoer punt opgeven](#alternate-entry-point).
 
 Gegevens van triggers en bindingen zijn gekoppeld aan de functie via methoden Attributes met `name` behulp van de eigenschap die in het bestand *Function. json* is gedefinieerd. Met de _functie. json_ hieronder wordt bijvoorbeeld een eenvoudige functie beschreven die wordt geactiveerd door een http- `req`aanvraag met de naam:
 
@@ -66,7 +58,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-Als u de functies van de IntelliSense en automatisch aanvullen van de code-editor wilt benutten, kunt u ook de kenmerk typen en het retour type in de functie met behulp van python-type aantekeningen declareren. 
+u kunt ook expliciet de kenmerk typen en het retour type declareren in de functie met behulp van python-type aantekeningen. Dit helpt u bij het gebruik van de functies IntelliSense en automatisch aanvullen van vele Python-code-editors.
 
 ```python
 import azure.functions
@@ -79,9 +71,23 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 Gebruik de python-aantekeningen in het pakket [Azure. functions. *](/python/api/azure-functions/azure.functions?view=azure-python) om invoer en uitvoer aan uw methoden te koppelen.
 
+## <a name="alternate-entry-point"></a>Alternatief invoer punt
+
+U kunt het standaard gedrag van een functie wijzigen door optioneel de `scriptFile` eigenschappen en `entryPoint` in het bestand *Function. json* op te geven. Met de _functie. json_ hieronder wordt bijvoorbeeld aangegeven dat de runtime de `customentry()` methode in het _Main.py_ -bestand moet gebruiken als het invoer punt voor uw Azure-functie.
+
+```json
+{
+  "scriptFile": "main.py",
+  "entryPoint": "customentry",
+  "bindings": [
+      ...
+  ]
+}
+```
+
 ## <a name="folder-structure"></a>Mapstructuur
 
-De mapstructuur voor een python functions-project ziet er als volgt uit:
+De mapstructuur voor een python functions-project ziet eruit als in het volgende voor beeld:
 
 ```
  FunctionApp
@@ -227,12 +233,48 @@ Er zijn aanvullende logboek registratie methoden beschikbaar waarmee u naar de-c
 
 | Methode                 | Description                                |
 | ---------------------- | ------------------------------------------ |
-| Userenv. **kritiek (_bericht_)**   | Schrijft een bericht met niveau kritiek op de hoofd logboek registratie.  |
-| Userenv. **fout (_bericht_)**   | Schrijft een bericht met een niveau fout in de hoofd logboek registratie.    |
-| Userenv. **waarschuwing (_bericht_)**    | Schrijft een bericht met niveau waarschuwing in de hoofd logboek registratie.  |
-| Userenv. **info (_bericht_)**    | Schrijft een bericht met niveau-informatie in de hoofd logboek registratie.  |
-| Userenv. **debug (_bericht_)** | Schrijft een bericht met niveau DEBUG op de hoofd logboek registratie.  |
+| **`critical(_message_)`**   | Schrijft een bericht met niveau kritiek op de hoofd logboek registratie.  |
+| **`error(_message_)`**   | Schrijft een bericht met een niveau fout in de hoofd logboek registratie.    |
+| **`warning(_message_)`**    | Schrijft een bericht met niveau waarschuwing in de hoofd logboek registratie.  |
+| **`info(_message_)`**    | Schrijft een bericht met niveau-informatie in de hoofd logboek registratie.  |
+| **`debug(_message_)`** | Schrijft een bericht met niveau DEBUG op de hoofd logboek registratie.  |
 
+Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie over logboek registratie.
+
+## <a name="http-trigger-and-bindings"></a>HTTP-trigger en bindingen
+
+De HTTP-trigger wordt gedefinieerd in het bestand function. Jon. De `name` van de binding moet overeenkomen met de benoemde para meter in de functie. In de vorige voor beelden wordt een bindings naam `req` gebruikt. Deze para meter is een [HttpRequest] -object en er wordt een [HttpResponse] -object geretourneerd.
+
+Vanuit het object [HttpRequest] kunt u aanvraag headers, query parameters, route parameters en de bericht tekst ophalen. 
+
+Het volgende voor beeld is afkomstig uit de [sjabloon voor http-triggers voor python](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python). 
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    headers = {"my-http-header": "some-value"}
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+            
+    if name:
+        return func.HttpResponse(f"Hello {name}!", headers=headers)
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             headers=headers, status_code=400
+        )
+```
+
+In deze functie wordt de waarde van de `name` query parameter opgehaald uit de `params` para meter van het [HttpRequest] -object. De hoofd tekst van de JSON-code ring wordt `get_json` gelezen met behulp van de methode. 
+
+U kunt ook de `status_code` en `headers` voor het antwoord bericht instellen in het geretourneerde [HttpResponse] -object.
+                                                              
 ## <a name="async"></a>Asynchroon
 
 We raden u aan om uw Azure-functie te schrijven als asynchrone coroutine `async def` met behulp van de-instructie.
@@ -245,7 +287,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Als de Main ()-functie synchroon is ( `async` geen kwalificatie), wordt de functie automatisch uitgevoerd `asyncio` in een thread groep.
+Als de Main ()-functie synchroon is (geen kwalificatie), wordt de functie automatisch uitgevoerd in `asyncio` een thread groep.
 
 ```python
 # Would be run in an asyncio thread-pool
@@ -297,6 +339,26 @@ def main(req):
     # ... use CACHED_DATA in code
 ```
 
+## <a name="environment-variables"></a>Omgevingsvariabelen
+
+In functions worden [Toepassings instellingen](functions-app-settings.md), zoals teken reeksen voor service verbindingen, weer gegeven als omgevings variabelen tijdens de uitvoering. U kunt deze instellingen openen door te declareren `import os` en vervolgens te `setting = os.environ["setting-name"]`gebruiken.
+
+In het volgende voor beeld wordt de [toepassings instelling](functions-how-to-use-azure-function-app-settings.md#settings)opgehaald met de `myAppSetting`sleutel met de naam:
+
+```python
+import logging
+import os
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Get the setting named 'myAppSetting'
+    my_app_setting_value = os.environ["myAppSetting"]
+    logging.info(f'My app setting value:{my_app_setting_value}')
+```
+
+Voor lokale ontwikkeling worden toepassings instellingen [onderhouden in het bestand local. settings. json](functions-run-local.md#local-settings-file).  
+
 ## <a name="python-version-and-package-management"></a>Python-versie en pakket beheer
 
 Momenteel ondersteunt Azure Functions alleen python 3.6. x (officiële CPython-distributie).
@@ -336,9 +398,9 @@ Als u lokaal wilt maken en de vereiste binaire bestanden wilt configureren, [ins
 func azure functionapp publish <app name> --build-native-deps
 ```
 
-Onder de kaften gebruiken basis Hulpprogramma's docker om de [MCR.Microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) -installatie kopie uit te voeren als een container op uw lokale machine. Als u deze omgeving gebruikt, bouwt en installeert u de vereiste modules van de bron distributie, voordat u ze oppakt voor de uiteindelijke implementatie naar Azure.
+Onder de kaften gebruiken basis Hulpprogramma's docker om de [MCR.Microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) -installatie kopie uit te voeren als een container op uw lokale machine. Als u deze omgeving gebruikt, bouwt en installeert u de vereiste modules van de bron distributie, voordat u ze oppakt voor definitieve implementatie naar Azure.
 
-Als u uw afhankelijkheden wilt maken en publiceren met behulp van een systeem voor continue levering (CD), [gebruikt u Azure DevOps-pijp lijnen](functions-how-to-azure-devops.md). 
+Als u uw afhankelijkheden wilt maken en publiceren met behulp van een systeem voor continue levering (CD), [gebruikt u Azure-pijp lijnen](functions-how-to-azure-devops.md). 
 
 ## <a name="unit-testing"></a>Eenheids tests
 
@@ -462,6 +524,39 @@ class TestFunction(unittest.TestCase):
 
 Alle bekende problemen en functie aanvragen worden bijgehouden met de lijst met [github-problemen](https://github.com/Azure/azure-functions-python-worker/issues) . Als u een probleem ondervindt en u het probleem niet kunt vinden in GitHub, opent u een nieuw probleem en voegt u een gedetailleerde beschrijving van het probleem toe.
 
+### <a name="cross-origin-resource-sharing"></a>Cross-origin-resources delen
+
+Azure Functions ondersteunt cross-Origin Resource Sharing (CORS). CORS wordt geconfigureerd [in de portal](functions-how-to-use-azure-function-app-settings.md#cors) en via de [Azure cli](/cli/azure/functionapp/cors). De lijst van toegestane CORS-oorsprong is van toepassing op het niveau van de functie-app. Als CORS is ingeschakeld, bevatten de `Access-Control-Allow-Origin` antwoorden de koptekst. Zie voor meer informatie [Cross-origin-resources delen](functions-how-to-use-azure-function-app-settings.md#cors).
+
+De lijst met toegestane oorsprongen [wordt momenteel niet ondersteund](https://github.com/Azure/azure-functions-python-worker/issues/444) voor python-functie-apps. Vanwege deze beperking moet u de `Access-Control-Allow-Origin` header expliciet instellen in uw HTTP-functies, zoals wordt weer gegeven in het volgende voor beeld:
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Define the allow origin headers.
+    headers = {"Access-Control-Allow-Origin": "https://contoso.com"}
+
+    # Set the headers in the response.
+    return func.HttpResponse(
+            f"Allowed origin '{headers}'.",
+            headers=headers, status_code=200
+    )
+``` 
+
+Zorg ervoor dat u ook uw functie. json bijwerkt voor de ondersteuning van de OPTIONS HTTP-methode:
+
+```json
+    ...
+      "methods": [
+        "get",
+        "post",
+        "options"
+      ]
+    ...
+```
+
+Deze methode wordt gebruikt door de Chrome-browser om te onderhandelen over de lijst met toegestane oorsprongen. 
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de volgende bronnen voor meer informatie:
@@ -473,3 +568,7 @@ Zie de volgende bronnen voor meer informatie:
 * [HTTP-en webhook-bindingen](functions-bindings-http-webhook.md)
 * [Wachtrij opslag bindingen](functions-bindings-storage-queue.md)
 * [Timertrigger](functions-bindings-timer.md)
+
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

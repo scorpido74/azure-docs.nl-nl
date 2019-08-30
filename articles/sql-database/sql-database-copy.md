@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/29/2019
+ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569007"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173435"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Een transactioneel consistente kopie van een Azure-SQL database kopiëren
 
@@ -24,7 +24,7 @@ Azure SQL Database biedt verschillende methoden voor het maken van een transacti
 
 ## <a name="overview"></a>Overzicht
 
-Een database kopie is een moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gekopieerd. U kunt dezelfde server of een andere server selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte te hand haven of een andere reken grootte te gebruiken binnen dezelfde servicelaag (Edition). Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. Op dit moment kunt u de upgrade uitvoeren naar een wille keurige versie of deze Down graden. De aanmeldingen, gebruikers en machtigingen kunnen onafhankelijk worden beheerd.  
+Een database kopie is een moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gekopieerd. U kunt dezelfde server of een andere server selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte te hand haven of een andere reken grootte te gebruiken binnen dezelfde servicelaag (Edition). Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. Op dit moment kunt u de upgrade uitvoeren naar een wille keurige versie of deze Down graden. De aanmeldingen, gebruikers en machtigingen kunnen onafhankelijk worden beheerd. De kopie wordt gemaakt met de geo-replicatie technologie en zodra de seeding is voltooid, wordt de koppeling naar geo-replicatie automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de Kopieer bewerking van de data base. Zie [overzicht van actieve geo-replicatie](sql-database-active-geo-replication.md) voor meer informatie.
 
 > [!NOTE]
 > [Automatische database back-ups](sql-database-automated-backups.md) worden gebruikt wanneer u een kopie van een Data Base maakt.
@@ -61,6 +61,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 Zie [een Data Base naar een nieuwe server kopiëren](scripts/sql-database-copy-database-to-new-server-powershell.md)voor een volledig voorbeeld script.
+
+Het kopiëren van de data base is een asynchrone bewerking, maar de doel database wordt gemaakt onmiddellijk nadat de aanvraag is geaccepteerd. Als u de Kopieer bewerking wilt annuleren terwijl deze nog wordt uitgevoerd, verwijdert u de doel database met behulp van de cmdlet [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>RBAC-rollen voor het beheren van de database kopie
+
+Als u een database kopie wilt maken, moet u de volgende rollen hebben
+
+- Abonnements eigenaar of
+- SQL Server rol Inzender of
+- Aangepaste rol op de bron-en doel database met de volgende machtiging:
+
+   Micro soft. SQL/servers/data bases/Lees micro soft. SQL/servers/data bases/write
+
+Als u een kopie van een Data Base wilt annuleren, moet u de volgende rollen hebben
+
+- Abonnements eigenaar of
+- SQL Server rol Inzender of
+- Aangepaste rol op de bron-en doel database met de volgende machtiging:
+
+   Micro soft. SQL/servers/data bases/Lees micro soft. SQL/servers/data bases/write
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Een Data Base kopiëren met behulp van Transact-SQL
 
@@ -107,6 +127,10 @@ Bewaak het kopieer proces door een query uit te geven op de weer gaven sys. data
 
 > [!NOTE]
 > Als u besluit het kopiëren te annuleren terwijl deze wordt uitgevoerd, voert u de instructie [Drop data base](https://msdn.microsoft.com/library/ms178613.aspx) uit op de nieuwe data base. U kunt ook het kopieer proces annuleren door de instructie DROP data base uit te voeren op de bron database.
+
+> [!IMPORTANT]
+> Als u een kopie met een aanzienlijk kleinere SLO moet maken dan de bron, heeft de doel database mogelijk niet voldoende bronnen om het seeding proces te volt ooien en kan dit ertoe leiden dat het kopiëren mislukt. In dit scenario gebruikt u een geo-Restore-aanvraag om een kopie te maken op een andere server en/of een andere regio. Zie [een Azure SQL database herstellen met behulp van database back-ups](sql-database-recovery-using-backups.md#geo-restore) voor meer informaing.
+
 
 ## <a name="resolve-logins"></a>Aanmeldingen oplossen
 

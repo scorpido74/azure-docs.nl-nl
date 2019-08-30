@@ -7,25 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb81c73f7946a10bae0470a55dcf1c0d55c2b847
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 093ada2b2751540b986154be3a2f333784c1259f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330052"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173292"
 ---
-# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Beëindigt of verwijdert u uw Azure Stream Analytics-taak
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Uw Azure Stream Analytics-taak stoppen of verwijderen
 
-Azure Stream Analytics-taken kunnen eenvoudig worden gestopt of verwijderd met de Azure portal, Azure PowerShell of Azure SDK voor .net of REST-API. Een Stream Analytics-taak kan niet worden hersteld nadat deze is verwijderd.
+Azure Stream Analytics-taken kunnen eenvoudig worden gestopt of verwijderd via de Azure Portal, Azure PowerShell, Azure SDK voor .net of REST API. Een Stream Analytics taak kan niet worden hersteld als deze eenmaal is verwijderd.
 
 >[!NOTE] 
 >Wanneer u de Stream Analytics-taak stopt, de gegevens zich blijft voordoen alleen in de invoer- en opslag, zoals Event Hubs of Azure SQL Database. Als u gegevens uit Azure verwijdert moet, moet u de verwijdering processen voor de invoer- en bronnen van uw Stream Analytics-taak volgen.
 
 ## <a name="stop-a-job-in-azure-portal"></a>Een taak in Azure portal stoppen
 
-Wanneer u een taak stopt, de resources zijn deprovisionned en stopt het verwerken van gebeurtenissen. Kosten met betrekking tot deze taak worden ook gestopt. Maar alle uw configuratie worden gehouden en u kunt de taak later opnieuw 
+Wanneer u een taak stopt, wordt de inrichting van de resources ongedaan gemaakt en stopt het verwerken van gebeurtenissen. Kosten die betrekking hebben op deze taak worden ook gestopt. Al uw configuratie wordt echter opgeslagen en u kunt de taak later opnieuw starten 
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
@@ -39,7 +39,7 @@ Wanneer u een taak stopt, de resources zijn deprovisionned en stopt het verwerke
 ## <a name="delete-a-job-in-azure-portal"></a>Een taak in Azure portal verwijderen
 
 >[!WARNING] 
->Een Stream Analytics-taak kan niet worden hersteld nadat deze is verwijderd.
+>Een Stream Analytics taak kan niet worden hersteld als deze eenmaal is verwijderd.
 
 1. Meld u aan bij Azure Portal. 
 
@@ -54,7 +54,7 @@ Wanneer u een taak stopt, de resources zijn deprovisionned en stopt het verwerke
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u wilt stoppen van een taak met behulp van PowerShell, gebruikt u de [Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) cmdlet. Als u wilt verwijderen van een taak met behulp van PowerShell, gebruikt u de [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) cmdlet.
+Als u een taak wilt stoppen met behulp van Power shell, gebruikt u de cmdlet [Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) . Als u een taak wilt verwijderen met behulp van Power shell, gebruikt u de cmdlet [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) .
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Beëindigt of verwijdert u een taak met Azure SDK voor .NET
 

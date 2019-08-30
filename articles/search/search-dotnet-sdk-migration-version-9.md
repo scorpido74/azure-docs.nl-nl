@@ -1,8 +1,8 @@
 ---
-title: Een upgrade uitvoert naar de Azure Search .NET SDK versie 9 - Azure Search
-description: Code migreren naar Azure Search .NET SDK-versie 9 van oudere versies. Ontdek wat er nieuw is en welke wijzigingen in de code zijn vereist.
+title: Voer een upgrade uit naar de Azure Search .NET SDK versie 9-Azure Search
+description: Code migreren naar de Azure Search .NET SDK versie 9 van oudere versies. Meer informatie over wat er nieuw is en welke code wijzigingen vereist zijn.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
@@ -10,69 +10,69 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: a59deed4ac0cec669ddc5e0335f7274586c702e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32908ab209cbe05a0acf9da896e1e1fb11e6f5dd
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65541767"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183236"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Een upgrade uitvoert naar de Azure Search .NET SDK versie 9
+# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Upgrade uitvoeren naar de Azure Search .NET SDK versie 9
 
-Als u versie 7.0-preview of ouder bent van de [Azure Search .NET SDK](https://aka.ms/search-sdk), in dit artikel ziet u een upgrade van uw toepassing versie 9 te gebruiken.
-
-> [!NOTE]
-> Als u gebruiken versie 8.0 preview wilt-functies die nog niet algemeen beschikbaar moeten worden geëvalueerd, kunt u ook de instructies in dit artikel om te upgraden naar 8.0-Preview-versie van eerdere versies te volgen.
-
-Zie voor een meer algemeen overzicht van de SDK, inclusief voorbeelden [over het gebruik van Azure Search via een .NET-toepassing](search-howto-dotnet-sdk.md).
-
-Versie 9 van de Azure Search .NET SDK bevat veel wijzigingen van eerdere versies. Sommige hiervan zijn belangrijke wijzigingen, maar ze moeten alleen relatief kleine wijzigingen in uw code nodig. Zie [stappen voor het upgraden](#UpgradeSteps) voor instructies over het wijzigen van uw code voor het gebruik van de nieuwe SDK-versie.
+Als u versie 7,0-Preview of ouder van de [Azure Search .NET SDK](https://aka.ms/search-sdk)gebruikt, helpt dit artikel u bij het upgraden van uw toepassing tot het gebruik van versie 9.
 
 > [!NOTE]
-> Als u versie 4.0-preview of ouder bent, moet u eerst upgraden naar versie 5, en vervolgens een upgrade naar versie 9. Zie [upgraden naar de Azure Search .NET SDK versie 5](search-dotnet-sdk-migration-version-5.md) voor instructies.
+> Als u versie 8,0-Preview wilt gebruiken om functies te evalueren die nog niet algemeen beschikbaar zijn, kunt u ook de instructies in dit artikel volgen om een upgrade uit te voeren naar 8,0-Preview van eerdere versies.
+
+Zie [Azure Search van een .NET-toepassing gebruiken](search-howto-dotnet-sdk.md)voor een meer algemeen overzicht van de SDK, inclusief voor beelden.
+
+Versie 9 van de Azure Search .NET SDK bevat veel wijzigingen ten opzichte van eerdere versies. Sommige hiervan zijn belang rijke wijzigingen, maar er mogen alleen relatief kleine wijzigingen in uw code nodig zijn. Zie de stappen voor het uitvoeren van een [upgrade](#UpgradeSteps) voor instructies over het wijzigen van de code voor het gebruik van de nieuwe SDK-versie.
+
+> [!NOTE]
+> Als u versie 4,0-Preview of ouder gebruikt, moet u eerst een upgrade uitvoeren naar versie 5 en vervolgens een upgrade uitvoeren naar versie 9. Zie [upgraden naar de Azure Search .NET SDK versie 5](search-dotnet-sdk-migration-version-5.md) voor instructies.
 >
-> Het exemplaar van uw Azure Search-service ondersteunt verschillende versies van de REST-API, met inbegrip van de meest recente versie. U kunt echter ook doorgaan met een versie wanneer het is niet meer de meest recente versie, maar het is raadzaam dat u uw code voor het gebruik van de nieuwste versie migreren. Wanneer u de REST-API gebruikt, moet u de API-versie opgeven in elke aanvraag via de api-versie-parameter. Wanneer u de .NET SDK gebruikt, bepaalt de versie van de SDK die u gebruikt de corresponderende versie van de REST-API. Als u een oudere SDK gebruikt, kunt u blijven om uit te voeren die code zonder wijzigingen, zelfs als de service wordt bijgewerkt ter ondersteuning van een nieuwere API-versie.
+> Uw Azure Search service-exemplaar ondersteunt verschillende REST API versies, met inbegrip van de meest recente versie. U kunt een versie blijven gebruiken wanneer deze niet langer het meest recent is, maar we raden u aan uw code te migreren om de nieuwste versie te gebruiken. Wanneer u de REST API gebruikt, moet u in elke aanvraag de API-versie opgeven via de para meter API-Version. Wanneer u de .NET SDK gebruikt, bepaalt de versie van de SDK die u gebruikt, de corresponderende versie van de REST API. Als u een oudere SDK gebruikt, kunt u deze code zonder wijzigingen blijven uitvoeren, zelfs niet als de service wordt bijgewerkt voor ondersteuning van een nieuwere API-versie.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-9"></a>Wat is er nieuw in versie 9
-Versie 9 van de Azure Search .NET SDK is gericht op de meest recente algemeen beschikbare versie van de Azure Search REST API, specifiek 2019-05-06. Dit maakt het mogelijk het gebruik van nieuwe functies van Azure Search via een .NET-toepassing, met inbegrip van het volgende:
+Versie 9 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API, met name 2019-05-06. Dit maakt het mogelijk om nieuwe functies van Azure Search van een .NET-toepassing te gebruiken, met inbegrip van het volgende:
 
-* [Cognitieve zoekopdrachten](cognitive-search-concept-intro.md) is een functie van AI in Azure Search gebruikt om tekst te extraheren uit afbeeldingen, blobs en andere ongestructureerde gegevensbronnen - verrijken van de inhoud naar meer doorzoekbaar maken in een Azure Search-index worden gebruikt.
-* Ondersteuning voor [complexe typen](search-howto-complex-data-types.md) kunt u vrijwel alle geneste JSON-structuur in een Azure Search-index te modelleren.
-* [Automatisch aanvullen](search-autocomplete-tutorial.md) biedt een alternatief voor de **voorstellen** API voor het implementeren van de search-as-u-type gedrag. Automatisch aanvullen 'is voltooid"het woord of woordgroep die een gebruiker is momenteel te typen.
-* [Parseermodus JsonLines](search-howto-index-json-blobs.md), onderdeel van Azure Blob indexeren, maakt u een search-document per JSON-entiteit die is gescheiden door een nieuwe regel.
+* [Cognitieve zoek opdracht](cognitive-search-concept-intro.md) is een AI-functie in azure Search die wordt gebruikt om tekst op te halen uit afbeeldingen, blobs en andere ongestructureerde gegevens bronnen: de inhoud verrijken zodat deze meer doorzoekbaar is in een Azure search index.
+* Dankzij ondersteuning voor [complexe typen](search-howto-complex-data-types.md) kunt u nagenoeg elke geneste JSON-structuur in een Azure search index model leren.
+* [Automatisch aanvullen](search-autocomplete-tutorial.md) biedt een alternatief voor de API Voorst **Ellen** voor het implementeren van zoek gedrag op type. Met automatisch aanvullen wordt het woord of de woord groep voltooid die een gebruiker momenteel typt.
+* Met de [JsonLines-parserings modus](search-howto-index-json-blobs.md), onderdeel van Azure Blob-indexering, wordt één Zoek document per JSON-entiteit gemaakt dat wordt gescheiden door een nieuwe regel.
 
-### <a name="new-preview-features-in-version-80-preview"></a>Nieuwe preview-functies in versie 8.0-preview
-API-versie 2017-11-11-Preview is bedoeld voor versie 8.0-Preview-versie van de Azure Search .NET SDK. Deze versie bevat dezelfde functies van versie 9, plus:
+### <a name="new-preview-features-in-version-80-preview"></a>Nieuwe preview-functies in versie 8,0-Preview
+Versie 8,0-Preview van de Azure Search .NET SDK doelen API-versie 2017-11-11-preview. Deze versie bevat alle dezelfde functies van versie 9, plus:
 
-* [Door de klant beheerde versleutelingssleutels](search-security-manage-encryption-keys.md) voor servicezijde versleuteling-at-rest een nieuwe preview-functie is. Naast de ingebouwde versleuteling-at-rest beheerd door Microsoft, kunt u een extra versleutelingslaag waar u de exclusieve eigenaar van de sleutels zijn toepassen.
+* Door de [klant beheerde versleutelings sleutels](search-security-manage-encryption-keys.md) voor versleuteling aan de service zijde is een nieuwe preview-functie. Naast de ingebouwde versleutelings-op-rest die door micro soft wordt beheerd, kunt u een extra laag versleuteling Toep assen waarbij u de enige eigenaar van de sleutels bent.
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Stappen voor het bijwerken
-Update eerst uw NuGet-verwijzing voor `Microsoft.Azure.Search` met behulp van de NuGet Package Manager-Console of door met de rechtermuisknop op uw projectverwijzingen en 'Beheren NuGet-pakketten...' selecteren in Visual Studio.
+## <a name="steps-to-upgrade"></a>Stappen voor het uitvoeren van een upgrade
+Werk eerst uw NuGet-verwijzing bij `Microsoft.Azure.Search` voor het gebruik van de NuGet Package Manager-console of door met de rechter muisknop te klikken op uw project verwijzingen en vervolgens NuGet-pakketten beheren te selecteren... in Visual Studio.
 
-Nadat NuGet heeft de nieuwe pakketten en de bijbehorende afhankelijkheden gedownload, bouwt u uw project opnieuw. Afhankelijk van hoe uw code is opgebouwd, kan deze opnieuw is. Als dit het geval is, bent u klaar om te beginnen.
+Nadat NuGet de nieuwe pakketten en hun afhankelijkheden heeft gedownload, bouwt u het project opnieuw op. Afhankelijk van hoe uw code is gestructureerd, kan deze opnieuw worden opgebouwd. Als dat het geval is, bent u klaar om aan de slag te gaan.
 
-Als uw build mislukt, moet u om elke build-fout te herstellen. Zie [belangrijke wijzigingen in versie 9](#ListOfChanges) voor meer informatie over het oplossen van elke mogelijke fout bouwen.
+Als uw build is mislukt, moet u elke compilatie fout herstellen. Zie belang rijke [wijzigingen in versie 9](#ListOfChanges) voor meer informatie over het oplossen van elke mogelijke build-fout.
 
-Mogelijk ziet u aanvullende build waarschuwingen met betrekking tot verouderde methoden of eigenschappen. De waarschuwingen bevat instructies over wat u moet gebruiken in plaats van de afgeschafte functies. Als uw toepassing gebruikt bijvoorbeeld de `DataSourceType.DocumentDb` eigenschap, moet u ontvangt een waarschuwing met de tekst 'dit lid is afgeschaft. Gebruik cosmos DB in plaats daarvan'.
+Mogelijk worden er aanvullende build-waarschuwingen met betrekking tot verouderde methoden of eigenschappen weer gegeven. De waarschuwingen bevatten instructies over wat u moet gebruiken in plaats van de afgeschafte functie. Als uw toepassing bijvoorbeeld gebruikmaakt van de eigenschap `DataSourceType.DocumentDb` , wordt een waarschuwing weer gegeven met de tekst ' dit lid is afgeschaft. Gebruik in plaats daarvan CosmosDb.
 
-Als u een build-fouten of waarschuwingen hebt opgelost, kunt u wijzigingen aanbrengen aan uw toepassing om te profiteren van nieuwe functionaliteit als u wenst. Nieuwe functies in de SDK worden beschreven in [wat is er nieuw in versie 9](#WhatsNew).
+Wanneer u eventuele build-fouten of-waarschuwingen hebt opgelost, kunt u wijzigingen aanbrengen in uw toepassing om te profiteren van de nieuwe functionaliteit als u dat wilt. Nieuwe functies in de SDK worden beschreven in [Wat is er nieuw in versie 9](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-9"></a>Belangrijke wijzigingen in versie 9
+## <a name="breaking-changes-in-version-9"></a>Wijzigingen in versie 9 verbreken
 
-Er zijn enkele belangrijke wijzigingen in versie 9 waarvoor wijzigingen in de code naast het opnieuw opbouwen van uw toepassing.
+Er zijn verschillende belang rijke wijzigingen in versie 9 waarvoor code wijzigingen nodig zijn naast het opnieuw samen stellen van uw toepassing.
 
 > [!NOTE]
-> De lijst hieronder wijzigingen is niet volledig. Enkele wijzigingen zullen waarschijnlijk niet leiden tot fouten in de build, maar zijn technisch belangrijke omdat ze binaire compatibiliteit met assembly's die afhankelijk van eerdere versies van de Azure Search .NET SDK-assembly's zijn opsplitsen. Dergelijke wijzigingen worden hieronder niet wordt vermeld. Bouw uw toepassing bij een upgrade naar versie 9 om te voorkomen dat een binair compatibiliteitsproblemen.
+> De onderstaande lijst met wijzigingen is niet limitatief. Sommige wijzigingen leiden waarschijnlijk niet tot fouten in de build, maar worden technisch afgebroken omdat ze binaire compatibiliteit met assembly's die afhankelijk zijn van eerdere versies van de Azure Search .NET SDK-assembly's, afgebroken. Dergelijke wijzigingen worden hieronder niet weer gegeven. Bouw uw toepassing opnieuw op wanneer u een upgrade uitvoert naar versie 9 om problemen met binaire compatibiliteit te voor komen.
 
 ### <a name="immutable-properties"></a>Onveranderbare eigenschappen
 
-De openbare eigenschappen van verschillende modelklassen zijn nu onveranderbaar. Als u maken van aangepaste exemplaren van deze klassen wilt voor het testen, kunt u de nieuwe parameters constructors gebruiken:
+De open bare eigenschappen van verschillende model klassen zijn nu onveranderbaar. Als u aangepaste instanties van deze klassen wilt maken om te testen, kunt u de nieuwe geparametriseerde constructors gebruiken:
 
   - `AutocompleteItem`
   - `DocumentSearchResult`
@@ -83,9 +83,9 @@ De openbare eigenschappen van verschillende modelklassen zijn nu onveranderbaar.
 
 ### <a name="changes-to-field"></a>Wijzigingen in veld
 
-De `Field` klasse is gewijzigd nu dat deze kunnen ook complexe velden bestaan.
+De `Field` klasse is nu gewijzigd, zodat deze ook complexe velden kan vertegenwoordigen.
 
-De volgende `bool` eigenschappen nu null-waarden zijn:
+De volgende `bool` eigenschappen zijn nu null-baar:
 
   - `IsFilterable`
   - `IsFacetable`
@@ -94,33 +94,33 @@ De volgende `bool` eigenschappen nu null-waarden zijn:
   - `IsRetrievable`
   - `IsKey`
 
-Dit is omdat deze eigenschappen nu moeten `null` in het geval van complexe velden. Als u de code die deze eigenschappen lezen hebt, heeft voorbereid voor het afhandelen van `null`. Houd er rekening mee dat alle andere eigenschappen van `Field` zijn altijd en doorgaan met null-waarde, en sommige worden ook `null` in het geval van complexe velden--name de volgende:
+Dit komt doordat deze eigenschappen nu in het `null` geval van complexe velden moeten zijn. Als u code hebt die deze eigenschappen leest, moet deze worden voor bereid om te `null`worden verwerkt. Houd er rekening mee dat alle `Field` andere eigenschappen van al dan niet zijn toegestaan, en dat sommige daarvan ook in het geval `null` van complexe velden worden weer geven, met name het volgende:
 
   - `Analyzer`
   - `SearchAnalyzer`
   - `IndexAnalyzer`
   - `SynonymMaps`
 
-De constructor zonder parameters van `Field` heeft aangebracht `internal`. Vanaf nu op elke `Field` een expliciete en het gegevenstype op het moment van de bouw vereist.
+De constructor zonder para meters `Field` van is gemaakt `internal`. Vanaf nu moet elk `Field` een expliciete naam en gegevens type zijn op het moment van de bouw.
 
-### <a name="simplified-batch-and-results-types"></a>Vereenvoudigde batch en resultaten typen
+### <a name="simplified-batch-and-results-types"></a>Vereenvoudigde batch-en resultaat typen
 
-In versie 7.0-Preview-versie en eerdere versies, zijn de verschillende categorieën waarin de groepen van documenten gestructureerd in parallelle klassehiërarchieën:
+In versie 7,0-Preview en eerder zijn de verschillende klassen die groepen documenten inkapseld ingedeeld in parallelle klassen hiërarchieën:
 
-  -  `DocumentSearchResult` en `DocumentSearchResult<T>` overgenomen van `DocumentSearchResultBase`
-  -  `DocumentSuggestResult` en `DocumentSuggestResult<T>` overgenomen van `DocumentSuggestResultBase`
-  -  `IndexAction` en `IndexAction<T>` overgenomen van `IndexActionBase`
-  -  `IndexBatch` en `IndexBatch<T>` overgenomen van `IndexBatchBase`
-  -  `SearchResult` en `SearchResult<T>` overgenomen van `SearchResultBase`
-  -  `SuggestResult` en `SuggestResult<T>` overgenomen van `SuggestResultBase`
+  -  `DocumentSearchResult`en `DocumentSearchResult<T>` overgenomen van`DocumentSearchResultBase`
+  -  `DocumentSuggestResult`en `DocumentSuggestResult<T>` overgenomen van`DocumentSuggestResultBase`
+  -  `IndexAction`en `IndexAction<T>` overgenomen van`IndexActionBase`
+  -  `IndexBatch`en `IndexBatch<T>` overgenomen van`IndexBatchBase`
+  -  `SearchResult`en `SearchResult<T>` overgenomen van`SearchResultBase`
+  -  `SuggestResult`en `SuggestResult<T>` overgenomen van`SuggestResultBase`
 
-De afgeleide typen zonder een generiek typeparameter zijn bedoeld om te worden gebruikt in scenario's 'dynamisch getypeerde' en aangenomen dat het gebruik van de `Document` type.
+De afgeleide typen zonder een generieke type parameter zijn bedoeld om te worden gebruikt in ' dynamisch getypte ' scenario's `Document` en aangenomen gebruik van het type.
 
-Beginnen met de Preview-versie 8.0-versie, zijn de basisklassen en afgeleide klassen van niet-algemene alle verwijderd. Voor dynamisch getypeerde scenario's, kunt u `IndexBatch<Document>`, `DocumentSearchResult<Document>`, enzovoort.
+Vanaf versie 8,0-Preview zijn de basis klassen en niet-algemene afgeleide klassen allemaal verwijderd. Voor scenario's met dynamisch typen kunt u, `IndexBatch<Document>` `DocumentSearchResult<Document>`,, enzovoort, gebruiken.
  
-### <a name="removed-extensibleenum"></a>Verwijderde ExtensibleEnum
+### <a name="removed-extensibleenum"></a>ExtensibleEnum verwijderd
 
-De `ExtensibleEnum` basisklasse is verwijderd. Alle klassen die is afgeleid zijn, zoals nu structs, `AnalyzerName`, `DataType`, en `DataSourceType` bijvoorbeeld. Hun `Create` methoden zijn ook verwijderd. U kunt alleen aanroepen naar verwijderen `Create` omdat deze typen impliciet worden geconverteerd van tekenreeksen zijn. Als die in compilatiefouten resulteert, kunt u de conversieoperator via casten om op te heffen typen expliciet aanroepen. U kunt bijvoorbeeld code als volgt wijzigen:
+De `ExtensibleEnum` basis klasse is verwijderd. Alle klassen die hiervan zijn afgeleid, zijn nu structs, zoals `AnalyzerName`, `DataType`, en `DataSourceType` bijvoorbeeld. De `Create` methoden zijn ook verwijderd. U kunt alleen aanroepen naar `Create` verwijderen omdat deze typen impliciet zijn geconverteerd vanuit teken reeksen. Als dat resulteert in Compileer fouten, kunt u de conversie operator expliciet aanroepen via Casting naar dubbel zinnigheid types. U kunt bijvoorbeeld code als volgt wijzigen:
 
 ```csharp
 var index = new Index()
@@ -148,43 +148,43 @@ var index = new Index()
 }
 ```
 
-Eigenschappen die worden vastgehouden optionele waarden van de volgende typen zijn nu expliciet hebt getypt als null-waarden, zodat ze blijven optioneel.
+Eigenschappen die optionele waarden van deze typen behouden, worden nu expliciet getypt als null-waarde, zodat ze optioneel blijven zijn.
 
-### <a name="removed-facetresults-and-hithighlights"></a>Verwijderde FacetResults en HitHighlights
+### <a name="removed-facetresults-and-hithighlights"></a>FacetResults en HitHighlights zijn verwijderd
 
-De `FacetResults` en `HitHighlights` klassen zijn verwijderd. Facet resultaten zijn nu getypeerd als `IDictionary<string, IList<FacetResult>>` en drukt u op die zijn gemarkeerd als `IDictionary<string, IList<string>>`. Een snelle manier om het oplossen van fouten in de build geïntroduceerd door deze wijziging is het toevoegen van `using` aliassen aan de bovenkant van elk bestand dat gebruikmaakt van de verwijderde typen. Bijvoorbeeld:
+De `FacetResults` klassen `HitHighlights` en zijn verwijderd. Facet resultaten worden nu getypt `IDictionary<string, IList<FacetResult>>` als en worden gemarkeerd `IDictionary<string, IList<string>>`als. Een snelle manier om Build-fouten op te lossen die door deze `using` wijziging worden geïntroduceerd, is door aliassen toe te voegen aan het begin van elk bestand dat gebruikmaakt van het verwijderde type. Bijvoorbeeld:
 
 ```csharp
 using FacetResults = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<Models.FacetResult>>;
 using HitHighlights = System.Collections.Generic.IDictionary<string, System.Collections.Generic.IList<string>>;
 ```
 
-### <a name="change-to-synonymmap"></a>Synonymmap, die vervolgens wijzigen 
+### <a name="change-to-synonymmap"></a>Wijzigen in SynonymMap 
 
-De `SynonymMap` constructor heeft niet langer een `enum` parameter voor `SynonymMapFormat`. Deze opsomming alleen heeft één waarde, en is daarom redundante. Als er fouten als gevolg van dit bouwen, verwijdert u gewoon verwijzingen naar de `SynonymMapFormat` parameter.
+De `SynonymMap` constructor `SynonymMapFormat`heeft geen para meter meer voor. `enum` Deze enum heeft slechts één waarde en is daarom overbodig. Als er fouten in de build worden weer geven, verwijder dan de verwijzingen naar de `SynonymMapFormat` para meter.
 
-### <a name="miscellaneous-model-class-changes"></a>Diverse model klasse wijzigingen
+### <a name="miscellaneous-model-class-changes"></a>Wijzigingen in diverse model klassen
 
-De `AutocompleteMode` eigenschap van `AutocompleteParameters` is niet meer toegestaan. Als u code waarmee deze eigenschap om te worden toegewezen hebt `null`, kunt u deze gewoon verwijderen en de eigenschap wordt automatisch op de standaardwaarde is geïnitialiseerd.
+De `AutocompleteMode` eigenschap van `AutocompleteParameters` is niet meer Null-waarden. Als u code hebt waarmee deze eigenschap `null`wordt toegewezen, kunt u deze eenvoudigweg verwijderen en wordt de eigenschap automatisch geïnitialiseerd op de standaard waarde.
 
-De volgorde van de parameters voor de `IndexAction` constructor is gewijzigd voor deze constructor is automatisch gegenereerd. In plaats van de constructor, wordt u aangeraden de factorymethoden `IndexAction.Upload`, `IndexAction.Merge`, enzovoort.
+De volg orde van de para meters voor de `IndexAction` constructor is gewijzigd, nu deze constructor automatisch wordt gegenereerd. In plaats van de constructor te gebruiken, raden we u aan de `IndexAction.Upload`fabrieks methoden, `IndexAction.Merge`, enzovoort, te gebruiken.
 
-### <a name="removed-preview-features"></a>Verwijderde preview-functies
+### <a name="removed-preview-features"></a>De preview-functies zijn verwijderd
 
-Als u een van versie 8.0 preview-versie 9 upgrade, rekening mee dat versleuteling met de klant beheerde sleutels is verwijderd omdat deze functie nog in preview is. Met name de `EncryptionKey` eigenschappen van `Index` en `SynonymMap` zijn verwijderd.
+Als u een upgrade uitvoert van versie 8,0-Preview naar versie 9, moet u er rekening mee houden dat versleuteling met door de klant beheerde sleutels is verwijderd omdat deze functie nog in preview is. Met name de `EncryptionKey` eigenschappen van `Index` en `SynonymMap` zijn verwijderd.
 
-Als uw toepassing een vaste afhankelijkheid van deze functie heeft, wordt het niet mogelijk om bij te werken naar versie 9 van de Azure Search .NET SDK. U kunt echter ook doorgaan met versie 8.0-preview. Echter Houd er rekening mee dat **we raden niet met behulp van preview SDK's in productietoepassingen**. Preview-functies zijn voor de evaluatie alleen en kunnen worden gewijzigd.
+Als uw toepassing een vaste afhankelijkheid heeft van deze functie, kunt u geen upgrade uitvoeren naar versie 9 van de Azure Search .NET SDK. U kunt versie 8,0-Preview blijven gebruiken. Bedenk echter dat het **gebruik van preview-sdk's in productie toepassingen niet**wordt aangeraden. Preview-functies zijn alleen voor evaluatie en kunnen worden gewijzigd.
 
 > [!NOTE]
-> Als u versleutelde gemaakt indexen of synoniem kaarten met behulp van versie 8.0-preview van de SDK, kunt u nog steeds zich ze gebruiken en wijzigen van de definities die met behulp van versie 9 van de SDK zonder negatieve gevolgen voor hun status voor schijfversleuteling. Versie 9 van de SDK verzendt de `encryptionKey` eigenschap met de REST-API, en als gevolg hiervan de REST-API wordt de versleutelingsstatus van de bron niet gewijzigd. 
+> Als u versleutelde indexen of synoniemen hebt gemaakt met versie 8,0-Preview van de SDK, kunt u deze nog steeds gebruiken en de definities wijzigen met versie 9 van de SDK zonder dat dit van invloed is op de versleutelings status. In versie 9 van de SDK wordt de `encryptionKey` eigenschap niet naar de rest API verzonden en als gevolg hiervan wordt de versleutelings status van de resource niet door de rest API gewijzigd. 
 
-### <a name="behavioral-change-in-data-retrieval"></a>Gedragswijziging in het ophalen van gegevens
+### <a name="behavioral-change-in-data-retrieval"></a>Gedrags wijziging in het ophalen van gegevens
 
-Als u de 'dynamisch getypeerde" `Search`, `Suggest`, of `Get` API's die exemplaren van het type retourneren `Document`, houd er rekening mee dat ze nu lege JSON-matrices te deserialiseren `object[]` in plaats van `string[]`.
+Als u gebruikmaakt van de "dynamisch getypeerde" `Search`, `Suggest`of `Get` api's die exemplaren van het type `Document`retour neren, moet u er rekening mee houden `object[]` dat er nu lege JSON-matrices worden `string[]`gedeserialiseerd in plaats van.
 
 ## <a name="conclusion"></a>Conclusie
-Als u meer informatie over het gebruik van de Azure Search .NET SDK nodig hebt, raadpleegt u de [.NET procedures](search-howto-dotnet-sdk.md).
+Als u meer informatie wilt over het gebruik van de Azure Search .NET SDK, raadpleegt u de [.net How-to](search-howto-dotnet-sdk.md).
 
-We stellen uw feedback over de SDK. Als u problemen ondervindt, gerust ons vragen voor meer informatie over op [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Als u een bug vinden, kunt u het bestand een probleem in de [Azure .NET SDK GitHub-opslagplaats](https://github.com/Azure/azure-sdk-for-net/issues). Zorg ervoor dat u het voorvoegsel van de titel van uw probleem met '[Azure Search]'.
+We stellen uw feedback op de SDK. Als u problemen ondervindt, kunt u ons vragen om hulp over [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Als u een bug vindt, kunt u een probleem in de [Azure .NET SDK github-opslag plaats](https://github.com/Azure/azure-sdk-for-net/issues)opslaan. Zorg ervoor dat u de titel van het probleem voordoet met ' [Azure Search] '.
 
-Hartelijk dank voor het gebruik van Azure Search.
+Hartelijk dank dat u Azure Search hebt gebruikt.

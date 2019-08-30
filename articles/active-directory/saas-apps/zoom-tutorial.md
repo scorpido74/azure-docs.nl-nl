@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Zoom | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met zoomen | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Zoom.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e36d1bb91e70e21ee1940e189bfedaebafa4412
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c0d5a87d4723bcc21b75db1b31ada72823abdf02
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975953"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171411"
 ---
-# <a name="tutorial-integrate-zoom-with-azure-active-directory"></a>Zelfstudie: Zoomen integreren met Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met zoomen
 
 In deze zelf studie leert u hoe u zoomen integreert met Azure Active Directory (Azure AD). Wanneer u inzoomen integreert met Azure AD, kunt u het volgende doen:
 
@@ -89,50 +89,19 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [Zoom-ondersteuningsteam](https://support.zoom.us/hc/en-us) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Zoom toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram  **Bewerken**  om het dialoogvenster  **Gebruikerskenmerken**  te openen.
-
-    ![image](common/edit-attribute.png)
-
-6. In de zoom toepassing worden behalve hierboven nog maar weinig kenmerken door gegeven aan het SAML-antwoord. Voer in de sectie **gebruikers claims** van het dialoog venster **gebruikers kenmerken** de volgende stappen uit om het SAML-token kenmerk toe te voegen, zoals wordt weer gegeven in de onderstaande tabel: 
-
-    | Name | Naamruimte  |  Bronkenmerk|
-    | ---------------| --------------- | --------- |
-    | E-mailadres  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
-    | Voornaam  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
-    | Achternaam  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
-    | Telefoonnummer  | User.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
-    | Afdeling  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
-    | role |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
-
-    > [!NOTE]
-    > Klik [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management) als u wilt weten hoe u rollen in Azure AD moet configureren
-
-    a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
-
-    c. Selecteer Bron bij **Kenmerk**.
-
-    d. Typ de kenmerkwaarde voor die rij in de lijst met **bronkenmerken**.
-
-    e. Klik op **Ok**
-
-    f. Klik op **Opslaan**.
-
-    > [!NOTE]
-    > Zoom kan een groepsclaim in SAML-nettolading verwachten, dus als u een groep hebt aangemaakt, neemt contact op met het [Zoom-ondersteuningsteam](https://support.zoom.us/hc/en-us) en vermeldt u de groepsinformatie, zodat zij deze info ook van hun kant kunnen configureren. U moet ook de Object-id aan het [Zoom-ondersteuningsteam](https://support.zoom.us/hc/en-us) melden zodat zij van hun kant een configuratie kunnen uitvoeren. Volg het [document](https://support.zoom.us/hc/en-us/articles/115005887566) om de Object-id te verkrijgen.
-
-4. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De downloadkoppeling certificaat](common/certificatebase64.png)
 
-6. Kopieer de gewenste URL ('s) op basis van uw vereiste in het gedeelte **zoomen instellen** .
+1. Kopieer de gewenste URL ('s) op basis van uw vereiste in het gedeelte **zoomen instellen** .
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> Zie voor meer informatie over het configureren van de rol in azure AD [de claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
+
+> [!NOTE]
+> In inzoomen kan een groepclaim worden verwacht in de SAML-nettolading. Als u groepen hebt gemaakt, neemt u contact op met het ondersteunings [team voor client ondersteuning](https://support.zoom.us/hc/en-us) met de groeps informatie zodat de groeps informatie aan hun einde kan worden geconfigureerd. U moet ook de object-ID opgeven om het [client ondersteunings team](https://support.zoom.us/hc/en-us) te zoomen zodat de object-id aan hun einde kan worden geconfigureerd. Zie [zoomen met Azure configureren](https://support.zoom.us/hc/en-us/articles/115005887566)om de object-id op te halen.
 
 ### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
 
@@ -242,3 +211,4 @@ Wanneer u op de tegel Zoom in het toegangsvenster klikt, wordt u automatisch aan
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Probeer in te zoomen met Azure AD](https://aad.portal.azure.com/)

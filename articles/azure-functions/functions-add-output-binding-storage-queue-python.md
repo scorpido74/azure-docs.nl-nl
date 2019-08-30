@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639164"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171091"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
@@ -194,11 +194,11 @@ U kunt [het bericht van de opslag wachtrij bekijken](#query-the-storage-queue) o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt uw door HTTP geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van Azure Functions met python de [Azure functions python-ontwikkelaars handleiding](functions-reference-python.md) en [Azure functions triggers en bindingen](functions-triggers-bindings.md).
+U hebt uw door HTTP geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van Azure Functions met python de [Azure functions python-ontwikkelaars handleiding](functions-reference-python.md) en [Azure functions triggers en bindingen](functions-triggers-bindings.md). Zie voor voor beelden van complete functie projecten in python de [python functions](/samples/browse/?products=azure-functions&languages=python)-voor beelden. 
 
 Schakel vervolgens Application Insights bewaking in voor uw functie-app:
 
 > [!div class="nextstepaction"]
-> [Integratie van Application Insights inschakelen](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights-integratie inschakelen](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

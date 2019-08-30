@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 977bf07c8383bb1086e7878bd10f2519cc2f40ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f05e9916a87f7258dad358ac8fff91c5ba7f25e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958639"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172940"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Quickstart: Een apparaat beheren dat is verbonden met een IoT-hub (Java)
+# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Quickstart: Een apparaat beheren dat is verbonden met een Azure IoT hub met Java
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -35,9 +35,9 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Java. Java SE 8 of hoger moet zijn geïnstalleerd op uw ontwikkelcomputer.
+De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Java. U hebt Java SE 8 nodig op uw ontwikkel computer.
 
-U kunt Java voor meerdere platforms downloaden van [Oracle](https://aka.ms/azure-jdks).
+U kunt Java SE Development Kit 8 voor meerdere platforms downloaden van [ondersteuning voor lange termijn voor Azure en Azure stack](https://docs.microsoft.com/en-us/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
 
 Gebruik de volgende opdracht om de huidige versie van Java op uw ontwikkelcomputer te controleren:
 

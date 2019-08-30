@@ -1,22 +1,22 @@
 ---
-title: Aan de slag met gecombineerde registratie voor Azure AD SSPR en multi-factor Authentication (preview)-Azure Active Directory
-description: Combi natie van Azure AD multi-factor Authentication en self-service voor het opnieuw instellen van wacht woorden inschakelen (preview)
+title: Aan de slag met gecombineerde registratie voor Azure AD SSPR en Multi-Factor Authentication (preview)-Azure Active Directory
+description: Gecombineerde Azure AD Multi-Factor Authentication en self-service voor wachtwoord herstel inschakelen (preview)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fc30c3273528b8cbc08681950e0bd5f03ec7890
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561272"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162301"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Registratie van gecombineerde beveiligings gegevens inschakelen (preview-versie)
 
@@ -26,7 +26,7 @@ Voordat u de nieuwe ervaring inschakelt, raadpleegt u het artikel [registratie v
 
 |     |
 | --- |
-| Registratie van gecombineerde beveiligings gegevens voor Azure multi-factor Authentication en Azure Active Directory (Azure AD) self-service voor het opnieuw instellen van wacht woorden is een open bare preview-functie van Azure AD. Zie [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews) voor meer informatie.|
+| Registratie van gecombineerde beveiligings gegevens voor Azure Multi-Factor Authentication en Azure Active Directory (Azure AD) self-service voor het opnieuw instellen van wacht woorden is een open bare preview-functie van Azure AD. Zie [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews) voor meer informatie.|
 |     |
 
 > [!NOTE]
@@ -45,10 +45,10 @@ Voer de volgende stappen uit om gecombineerde registratie in te scha kelen:
    ![De preview-ervaring voor gecombineerde beveiligings info voor alle gebruikers inschakelen](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
-> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor multi-factor Authentication en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De opties voor telefoon oproepen blijven beschikbaar voor gebruikers in betaalde Azure AD-tenants.
+> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor Multi-Factor Authentication-en SSPR-gebruikers in gratis/proef versie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. De opties voor telefoon oproepen blijven beschikbaar voor gebruikers in betaalde Azure AD-tenants.
 
 > [!NOTE]
-> Nadat u gecombineerde registratie hebt ingeschakeld, kunnen gebruikers die hun telefoon nummer of mobiele app via de nieuwe ervaring registreren of bevestigen, deze gebruiken voor multi-factor Authentication en SSPR als deze methoden zijn ingeschakeld in de multi-factor Authentication-en SSPR restrictie. Als u deze ervaring vervolgens uitschakelt, moeten gebruikers die naar de vorige registratie pagina `https://aka.ms/ssprsetup` van de SSPR gaan, multi-factor Authentication uitvoeren voordat ze toegang kunnen krijgen tot de pagina.
+> Nadat u gecombineerde registratie hebt ingeschakeld, kunnen gebruikers die hun telefoon nummer of mobiele app via de nieuwe ervaring registreren of bevestigen, deze gebruiken voor Multi-Factor Authentication en SSPR als deze methoden zijn ingeschakeld in de Multi-Factor Authentication en SSPR restrictie. Als u deze ervaring vervolgens uitschakelt, moeten gebruikers die naar de vorige registratie pagina `https://aka.ms/ssprsetup` van de SSPR gaan, multi-factor Authentication uitvoeren voordat ze toegang kunnen krijgen tot de pagina.
 
 Als u de lijst site toewijzing met zone hebt geconfigureerd in Internet Explorer, moeten de volgende sites zich in dezelfde zone bekomen:
 
@@ -58,7 +58,7 @@ Als u de lijst site toewijzing met zone hebt geconfigureerd in Internet Explorer
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Beleid voor voorwaardelijke toegang voor gecombineerde registratie
 
-Beveiligen wanneer en hoe gebruikers zich registreren voor Azure multi-factor Authentication en self-service voor het opnieuw instellen van wacht woorden is nu mogelijk met gebruikers acties in het beleid voor voorwaardelijke toegang. Deze preview-functie is beschikbaar voor organisaties die de [gecombineerde registratie preview](../authentication/concept-registration-mfa-sspr-combined.md)hebben ingeschakeld. Deze functionaliteit kan worden ingeschakeld in organisaties waar gebruikers moeten registreren voor Azure multi-factor Authentication en SSPR vanaf een centrale locatie, zoals een vertrouwde netwerk locatie tijdens HR-onboarding. Zie het artikel [Wat is de locatie voorwaarde in azure Active Directory voorwaardelijke toegang?](../conditional-access/location-condition.md#named-locations) voor meer informatie over het maken van vertrouwde locaties in voorwaardelijke toegang.
+Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Authentication en self-service voor wacht woord opnieuw instellen is nu mogelijk met gebruikers acties in het beleid voor voorwaardelijke toegang. Deze preview-functie is beschikbaar voor organisaties die de [gecombineerde registratie preview](../authentication/concept-registration-mfa-sspr-combined.md)hebben ingeschakeld. Deze functionaliteit kan worden ingeschakeld in organisaties waar gebruikers moeten registreren voor Azure Multi-Factor Authentication en SSPR vanaf een centrale locatie, zoals een vertrouwde netwerk locatie tijdens het uitvoeren van een HR-systeem. Zie het artikel [Wat is de locatie voorwaarde in azure Active Directory voorwaardelijke toegang?](../conditional-access/location-condition.md#named-locations) voor meer informatie over het maken van vertrouwde locaties in voorwaardelijke toegang.
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Een beleid maken om registratie van een vertrouwde locatie te vereisen
 
@@ -89,11 +89,13 @@ Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Beschik bare methoden voor multi-factor Authentication en SSPR](concept-authentication-methods.md)
+[Gebruikers dwingen om verificatie methoden opnieuw te registreren](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+
+[Beschik bare methoden voor Multi-Factor Authentication en SSPR](concept-authentication-methods.md)
 
 [Self-service voor wacht woord opnieuw instellen configureren](howto-sspr-deployment.md)
 
-[Azure multi-factor Authentication configureren](howto-mfa-getstarted.md)
+[Azure Multi-Factor Authentication configureren](howto-mfa-getstarted.md)
 
 [Problemen met het registreren van gecombineerde beveiligings gegevens oplossen](howto-registration-mfa-sspr-combined-troubleshoot.md)
 

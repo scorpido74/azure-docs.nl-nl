@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847996"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182539"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Een bestaand model gebruiken met Azure Machine Learning service
 
@@ -76,23 +76,40 @@ Zie [machine learning modellen beheren, implementeren en bewaken](concept-model-
 
 ## <a name="define-inference-configuration"></a>Configuratie voor het afstellen van interferenties definiëren
 
-De configuratie voor afwijzen bepaalt de omgeving die wordt gebruikt om het geïmplementeerde model uit te voeren. De configuratie voor het afmaken van de deservering verwijst naar de volgende bestanden die worden gebruikt om het model uit te voeren wanneer het wordt geïmplementeerd:
+De configuratie voor afwijzen bepaalt de omgeving die wordt gebruikt om het geïmplementeerde model uit te voeren. De configuratie voor het afmaken van een deservering verwijst naar de volgende entiteiten die worden gebruikt om het model uit te voeren wanneer het wordt geïmplementeerd:
 
-* De runtime. De enige geldige waarde voor runtime is momenteel python.
 * Een invoer script. Dit bestand (met `score.py`de naam) laadt het model wanneer de geïmplementeerde service wordt gestart. Het is ook verantwoordelijk voor het ontvangen van gegevens, het door geven aan het model en het retour neren van een antwoord.
-* Een Conda-omgevings bestand. Dit bestand definieert de Python-pakketten die nodig zijn om het model en het vermeldings script uit te voeren. 
+* Een Azure Machine Learning-service [omgeving](how-to-use-environments.md). Een omgeving definieert de software afhankelijkheden die nodig zijn voor het uitvoeren van het model en het vermeldings script.
 
-In het volgende voor beeld ziet u een basis configuratie voor in-interferentie met behulp van de python-SDK:
+In het volgende voor beeld ziet u hoe u de SDK gebruikt om een omgeving te maken en deze vervolgens te gebruiken met een Afleidings configuratie:
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-Zie de [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -verwijzing voor meer informatie.
+Raadpleeg voor meer informatie de volgende artikelen:
+
++ [Het gebruik van omgevingen](how-to-use-environments.md).
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -verwijzing.
+
 
 De CLI laadt de configuratie van de deinterferentie van een YAML-bestand:
 
@@ -102,6 +119,20 @@ De CLI laadt de configuratie van de deinterferentie van een YAML-bestand:
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+Met de CLI wordt de Conda-omgeving gedefinieerd in het `myenv.yml` bestand waarnaar wordt verwezen door de configuratie voor afwijzen. De volgende YAML is de inhoud van dit bestand:
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
@@ -190,24 +221,6 @@ def predict(text, include_neutral=True):
 ```
 
 Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
-
-### <a name="conda-environment"></a>Conda omgeving
-
-In de volgende YAML wordt de Conda-omgeving beschreven die nodig is om het model en het vermeldings script uit te voeren:
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor meer informatie.
 
 ## <a name="define-deployment"></a>Implementatie definiëren
 

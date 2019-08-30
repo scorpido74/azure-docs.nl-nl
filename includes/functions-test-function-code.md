@@ -4,23 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: a3f75b7273164abc5318f16e9ab8d9883ff0c0aa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9381f436aaeedb31732f853a6c4765ac43c6a752
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175817"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170890"
 ---
-## <a name="test"></a>De functie testen in Azure
+## <a name="test"></a>De functie in azure testen
 
-Gebruiken we cURL om de geïmplementeerde functie te testen. Met behulp van de URL die u hebt gekopieerd uit de vorige stap, voeg de queryreeks `&name=<yourname>` naar de URL, zoals in het volgende voorbeeld:
+Gebruik krul om de geïmplementeerde functie te testen. Voeg de query reeks `&name=<yourname>` toe aan de URL met behulp van de URL, met inbegrip van de functie code die u uit de vorige stap hebt gekopieerd.
 
-```bash
-curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
-```
+![Krul gebruiken om de functie in azure aan te roepen.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-![cURL gebruiken voor het aanroepen van de functie in Azure.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
+U kunt ook de gekopieerde URL, inclusief de functie sleutel, in naar het adres van uw webbrowser plakken. Voeg de query reeks `&name=<yourname>` toe aan de URL voordat u de aanvraag uitvoert.
 
-U kunt ook de gekopieerde URL in naar het adres van uw webbrowser plakken. Nogmaals, voeg de queryreeks `&name=<yourname>` naar de URL voordat u de aanvraag hebt uitgevoerd.
-
-![Een webbrowser gebruiken voor de functie aanroepen.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  
+![Een webbrowser gebruiken om de functie aan te roepen.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011279"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171932"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Hoe objecten en referenties worden gesynchroniseerd in een Azure AD Domain Services beheerd domein
 
@@ -30,7 +30,7 @@ In het volgende diagram ziet u hoe synchronisatie werkt tussen Azure AD DS, Azur
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronisatie van Azure AD naar Azure AD DS
 
-Gebruikers accounts, groepslid maatschappen en referentie-hashes worden op één manier gesynchroniseerd vanuit Azure AD naar Azure AD DS. Dit synchronisatie proces wordt automatisch uitgevoerd. U hoeft dit synchronisatie proces niet te configureren, te controleren of te beheren. Het kan enkele uren duren voordat de initiële synchronisatie is uitgevoerd, afhankelijk van het aantal objecten in de Azure AD-adres lijst. Nadat de initiële synchronisatie is voltooid, nemen wijzigingen die zijn aangebracht in azure AD, zoals wacht woorden of kenmerk wijzigingen, ongeveer 20-30 minuten in azure AD DS.
+Gebruikers accounts, groepslid maatschappen en referentie-hashes worden op één manier gesynchroniseerd vanuit Azure AD naar Azure AD DS. Dit synchronisatie proces wordt automatisch uitgevoerd. U hoeft dit synchronisatie proces niet te configureren, te controleren of te beheren. Het kan enkele uren duren voordat de initiële synchronisatie is uitgevoerd, afhankelijk van het aantal objecten in de Azure AD-adres lijst. Wanneer de initiële synchronisatie is voltooid, worden wijzigingen die zijn aangebracht in azure AD, zoals het wijzigen van wacht woorden of kenmerken, automatisch gesynchroniseerd met Azure AD DS.
 
 Het synchronisatie proces is een manier/unidirectioneel. Er is geen omgekeerde synchronisatie van wijzigingen van Azure AD DS terug naar Azure AD. Een door Azure AD DS beheerd domein is grotendeels alleen-lezen, met uitzonde ring van aangepaste organisatie-eenheden die u kunt maken. U kunt geen wijzigingen aanbrengen in gebruikers kenmerken, gebruikers wachtwoorden of groepslid maatschappen binnen een door Azure AD DS beheerd domein.
 

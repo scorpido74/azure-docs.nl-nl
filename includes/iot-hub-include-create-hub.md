@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: dc31abaadf3f39d31a4c1b04f9911b5ce1677916
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e01bb13b904aaf8671512daa3ef3cbad182f01e3
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048593"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161936"
 ---
 In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure-portal](https://portal.azure.com).
 
@@ -50,7 +50,7 @@ In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure
 
     - **Geavanceerde instellingen** > **voor apparaat-naar-Cloud-partities**: met deze eigenschap worden de apparaat-naar-cloud-berichten gerelateerd met het aantal gelijktijdige lezers van de berichten. De meeste hubs hebben slechts vier partities nodig.
 
-1. Voor deze zelf studie accepteert u de standaard keuzes en selecteert u vervolgens **controleren + maken** om uw keuzes te controleren. U krijgt iets te zien wat lijkt op dit scherm.
+1. Voor dit artikel accepteert u de standaard keuzes en selecteert u vervolgens **controleren + maken** om uw keuzes te controleren. U krijgt iets te zien wat lijkt op dit scherm.
 
    ![Informatie over het maken van de nieuwe hub bekijken](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
 
