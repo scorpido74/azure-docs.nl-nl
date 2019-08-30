@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: da97dde43a6ef13db204f1d3be1229a0dfc30af5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668041"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147635"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (node. js)
 
@@ -44,9 +44,9 @@ Aan het einde van deze zelf studie voert u twee node. js-console-apps uit:
 > [!NOTE]
 > IoT Hub ondersteunt veel platformen en talen (waaronder C, .NET, java script, python en Java) via Azure IoT-apparaat-Sdk's. Raadpleeg het [Azure IoT-ontwikkelaars centrum] voor stapsgewijze instructies voor het verbinden van uw apparaat met Azure IoT Hub.
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+## <a name="prerequisites"></a>Vereisten
 
-* Node. js versie 10.0. x of hoger.
+* Node. js versie 10.0. x of hoger. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) hierin wordt beschreven hoe u node. js installeert voor deze zelf studie op Windows of Linux.
 
 * Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 

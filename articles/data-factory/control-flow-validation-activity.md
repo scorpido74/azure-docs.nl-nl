@@ -1,26 +1,25 @@
 ---
-title: Standaardactiviteit voor groepsvalidatie in Azure Data Factory | Microsoft Docs
-description: De activiteit voor groepsvalidatie wordt uitvoering van de pijplijn niet verder voordat valideert de gekoppelde gegevensset aan bepaalde criteria die de gebruiker opgeeft.
+title: Validatie activiteit in Azure Data Factory | Microsoft Docs
+description: De validatie activiteit blijft de uitvoering van de pijp lijn voortzetten totdat de gekoppelde gegevensset wordt gevalideerd met bepaalde criteria die de gebruiker opgeeft.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 77fdab04e03429d135875cb2ef223e8c23d312a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764319"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141611"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Standaardactiviteit voor groepsvalidatie in Azure Data Factory
-U kunt een validatie in een pijplijn gebruiken om te controleren of de pijplijn blijft alleen kan worden uitgevoerd nadat deze is gevalideerd/de bijgevoegde gegevenssetverwijzing bestaat, dat deze voldoet aan de opgegeven criteria of time-out is bereikt.
+# <a name="validation-activity-in-azure-data-factory"></a>Validatie activiteit in Azure Data Factory
+U kunt een validatie in een pijp lijn gebruiken om ervoor te zorgen dat de pijp lijn alleen de uitvoering voortzet wanneer het de gekoppelde gegevensset bevat, die aan de opgegeven criteria voldoet, of er is een time-out opgetreden.
 
 
 ## <a name="syntax"></a>Syntaxis
@@ -61,17 +60,17 @@ U kunt een validatie in een pijplijn gebruiken om te controleren of de pijplijn 
 
 Eigenschap | Description | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van de activiteit 'Validatie' | String | Ja |
-type | Moet worden ingesteld op **validatie**. | String | Ja |
-Gegevensset | Activiteit wordt de uitvoering blokkeren totdat ze deze gegevenssetverwijzing heeft gevalideerd bestaat en dat het voldoet aan de opgegeven criteria of time-out is bereikt. Gegevensset die opgegeven moet de eigenschap "MinimumSize" of "ChildItems" ondersteunen. | Gegevenssetverwijzing | Ja |
-timeout | Hiermee geeft u de time-out op voor de activiteit die moet worden uitgevoerd. Als er geen waarde is opgegeven, is de standaardwaarde 7 dagen ("7.00:00:00"). De indeling is d.hh:mm:ss | String | Nee |
-Slaapstand | Een vertraging in seconden tussen pogingen voor validatie. Als er geen waarde is opgegeven, is standaard de waarde 10 seconden. | Geheel getal | Nee |
-childItems | Controleert of de map heeft onderliggende items. U kunt instellen op true: Valideren dat de map bestaat en dat deze items heeft. Geblokkeerd tot ten minste één item aanwezig in de map is of time-outwaarde is bereikt.-de waarde false: Valideren dat de map bestaat en of deze leeg is. Geblokkeerd totdat de map is leeg of totdat de time-waarde is bereikt. Als er geen waarde is opgegeven, worden de activiteit wordt geblokkeerd totdat de map bestaat of time-out is bereikt. | Boolean | Nee |
-minimumSize | Minimale grootte van een bestand in bytes. Als er geen waarde is opgegeven, de standaardwaarde is 0 bytes | Geheel getal | Nee |
+name | Naam van de activiteit validatie | Tekenreeks | Ja |
+Type | Moet worden ingesteld op **validatie**. | Tekenreeks | Ja |
+sets | De uitvoering van de activiteit wordt geblokkeerd totdat deze de gegevensset bevat die aan de opgegeven criteria voldoet, of er is een time-out opgetreden. De gegeven gegevensset moet de eigenschap MinimumSize of ChildItems ondersteunen. | Verwijzing naar gegevensset | Ja |
+timeout | Hiermee geeft u de time-out op voor de activiteit die moet worden uitgevoerd. Als er geen waarde is opgegeven, is de standaard waarde 7 dagen ("7.00:00:00"). De notatie is d. uu: mm: SS | Tekenreeks | Nee |
+dwars | Een vertraging in seconden tussen de validatie pogingen. Als er geen waarde is opgegeven, is de standaard waarde 10 seconden. | Integer | Nee |
+childItems | Hiermee wordt gecontroleerd of de map onderliggende items heeft. Kan worden ingesteld op-True: Controleer of de map bestaat en of deze items bevat. Blokken tot ten minste één item aanwezig is in de map of de time-outwaarde is bereikt.-onwaar: Controleer of de map bestaat en of deze leeg is. Blokken totdat de map leeg is of totdat de time-outwaarde is bereikt. Als er geen waarde is opgegeven, wordt de activiteit geblokkeerd totdat de map bestaat of totdat de time-out is bereikt. | Boolean-waarde | Nee |
+minimumSize | Minimale grootte van een bestand in bytes. Als er geen waarde is opgegeven, is de standaard waarde 0 bytes | Integer | Nee |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere controlestroomactiviteiten die door Data Factory worden ondersteund:
+Zie andere controle stroom activiteiten die door Data Factory worden ondersteund:
 
 - [If Condition Activity](control-flow-if-condition-activity.md)
 - [Execute Pipeline Activity](control-flow-execute-pipeline-activity.md)

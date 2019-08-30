@@ -1,7 +1,7 @@
 ---
-title: 'Lineaire regressie: Moduleverwijzing'
+title: 'Lineaire regressie: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de lineaire regressie-module in Azure Machine Learning-service te maken van een lineair regressiemodel voor gebruik in een experiment.
+description: Meer informatie over het gebruik van de lineaire regressie module in Azure Machine Learning service om een lineair regressie model te maken voor gebruik in een experiment.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,139 +9,138 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 040f726a703d34a95bae7d5b7cdd766655c62a4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 506f37a2e01f428ccadc0368bd2efb6b58c9106c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029713"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128678"
 ---
-# <a name="linear-regression-module"></a>Lineaire regressie-module
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+# <a name="linear-regression-module"></a>Lineaire regressie module
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om een lineair regressiemodel voor gebruik in een experiment maken.  Lineaire regressie probeert een lineaire relatie tussen een of meer onafhankelijke variabelen en een numerieke resultaat of afhankelijke variabele tot stand brengen. 
+Gebruik deze module om een lineair regressie model te maken voor gebruik in een experiment.  Lineaire regressie pogingen om een lineaire relatie tot stand te brengen tussen een of meer onafhankelijke variabelen en een numeriek resultaat of een afhankelijke variabele. 
 
-U gebruik deze module om een lineaire regressiemethode definiëren en vervolgens een model met behulp van een gegevensset met gelabelde trainen. Het getrainde model kan vervolgens worden gebruikt om voorspellingen te doen.
+Met deze module kunt u een lineaire regressie methode definiëren en vervolgens een model trainen met een gegevensset met een label. Het getrainde model kan vervolgens worden gebruikt voor het maken van voor spellingen.
 
 ## <a name="about-linear-regression"></a>Over lineaire regressie
 
-Lineaire regressie is een algemene statistische methode, die is vastgesteld in machine learning en uitgebreid met veel nieuwe methoden voor het aanpassen van de regel en meten van de fout. In de meest eenvoudige zin verwijst regressie naar voorspelling van een numerieke doel. Lineaire regressie is nog steeds een goede keuze als u een eenvoudig model voor een eenvoudige predictive taak. Lineaire regressie doorgaans ook goed werkt voor high-dimensionale, sparse gegevenssets complexiteit ontbreekt.
+Lineaire regressie is een gemeen schappelijke statistische methode, die in machine learning is aangenomen en uitgebreid met veel nieuwe methoden voor het aanpassen van de lijn en het meten van de fout. In de meest eenvoudige zin verwijst regressie naar de voor spelling van een numeriek doel. Lineaire regressie is nog steeds een goede keuze als u een eenvoudig model voor een eenvoudige, voorspellende taak wilt. Lineaire regressie kan ook worden gebruikt voor zeer dimensionale, sparse gegevens sets die geen complexiteit hebben.
 
-Azure Machine Learning ondersteunt een groot aantal regressiemodellen, naast de lineaire regressie. Echter, de term 'regression' losjes kan worden geïnterpreteerd en bepaalde typen regressie opgegeven in andere hulpprogramma's worden niet ondersteund.
+Azure Machine Learning ondersteunt diverse regressie modellen, naast lineaire regressie. De term ' regressie ' kan echter soepel worden geïnterpreteerd en bepaalde typen regressies die worden geboden in andere hulpprogram ma's, worden niet ondersteund.
 
-+ De klassieke regressieprobleem omvat een enkel onafhankelijk en een variabele afhankelijk zijn. Dit heet *eenvoudige regressie*.  Deze module biedt ondersteuning voor eenvoudige regressie.
++ Het klassieke regressie probleem omvat één onafhankelijke variabele en een afhankelijke variabele. Dit heet *eenvoudige regressie*.  Deze module biedt ondersteuning voor eenvoudige regressie.
 
-+ *Meerdere lineaire regressie* bestaat uit twee of meer onafhankelijke variabelen die aan één afhankelijke variabele bijdragen. Problemen met waarin meerdere invoergegevens worden gebruikt om te voorspellen van een enkele numerieke uitkomst worden ook wel genoemd *multidimensionale lineaire regressie*.
++ *Meerdere lineaire regressie* omvat twee of meer onafhankelijke variabelen die bijdragen aan één afhankelijke variabele. Problemen waarbij meerdere invoer wordt gebruikt om een enkele numerieke uitkomst te voors pellen, ook wel *multidimensionale lineaire regressie*genoemd.
 
-    De **lineaire regressie** module deze problemen kunt oplossen, kunt u de meeste van de andere regressie-modules.
+    Deze problemen kunnen worden opgelost met de module **Linear Regression** , evenals de meeste andere regressie modules.
 
-+ *Meerdere label regressie* is de taak van het voorspellen van meerdere afhankelijke variabelen binnen één model. In meerdere label logistieke regressie, kan bijvoorbeeld een voorbeeld van een worden toegewezen aan meerdere verschillende labels. (Dit verschilt van de taak van het voorspellen van meerdere niveaus in een variabele één klasse.)
++ *Regressie met meerdere labels* is de taak voor het voors pellen van meerdere afhankelijke variabelen binnen één model. Zo kan in een logistiek-regressie met meerdere labels een voor beeld worden toegewezen aan meerdere labels. (Dit wijkt af van de taak voor het voors pellen van meerdere niveaus binnen één klassen variabele.)
 
-    Dit type regressie wordt niet ondersteund in Azure Machine Learning. Om te voorspellen meerdere variabelen, maakt u een afzonderlijke cursist voor elke uitvoer die u wilt voorspellen.
+    Dit type regressie wordt niet ondersteund in Azure Machine Learning. Als u meerdere variabelen wilt voors pellen, maakt u een afzonderlijke cursist voor elke uitvoer die u wilt voors pellen.
 
-Jarenlang hebben statistici steeds meer geavanceerde methoden voor het regressie is ontwikkelen. Dit geldt ook voor lineaire regressie. Deze module biedt ondersteuning voor twee methoden voor het meten van de fout en past de regel regressie: methode gewone kleinste kwadraten en leren met stochastische gradiëntdaling.
+Voor jaren statistici zijn steeds meer geavanceerde methoden ontwikkeld voor regressie. Dit geldt ook voor lineaire regressie. Deze module ondersteunt twee methoden om een fout te meten en te voldoen aan de regressie regel: normale, minimale kwadraten methode en daal van kleur overgang.
 
-- **Leren met stochastische gradiëntdaling** is een methode die zo weinig mogelijk fout bij elke stap van het model training-proces. Er zijn veel variaties op leren met stochastische gradiëntdaling en de optimalisatie voor verschillende learning problemen uitgebreid zijn bestudeerd. Als u deze optie voor **oplossing methode**, u kunt verschillende parameters voor het beheren van de Stapgrootte learning snelheid, en enzovoorts bedekt. Deze optie ondersteunt ook gebruik van een geïntegreerde parameteropschoning.
+- **Gradient Daal** is een methode die de fout waarde bij elke stap van het model trainings proces minimaliseert. Er zijn veel variaties in Daal en de optimalisatie voor verschillende leer problemen is uitgebreid bestudeerd. Als u deze optie voor de **oplossings methode**kiest, kunt u een aantal para meters instellen om de stap grootte, het leer tempo, enzovoort te bepalen. Deze optie biedt ook ondersteuning voor het gebruik van een geïntegreerde parameter opruiming.
 
-- **Gewone kleinste kwadraten** is een van de meest gebruikte technieken in lineaire regressie. Bijvoorbeeld, is de kleinste kwadraten de methode die wordt gebruikt in de invoegtoepassing voor Microsoft Excel.
+- **Normale minimale kwadraten** is een van de meest gebruikte technieken in lineaire regressie. Bijvoorbeeld, minste kwadraten is de methode die wordt gebruikt in Analysis ToolPak voor micro soft Excel.
 
-    Gewone kleinste kwadraten verwijst naar de functie verlies, die past het model door het minimaliseren van de kwadraten fout en fout als de som van het kwadraat van de afstand tussen de werkelijke waarde en de voorspelde regel berekent. Deze methode wordt ervan uitgegaan dat een sterke lineaire relatie tussen de invoer en de afhankelijke variabele.
+    Normale minimale kwadraten verwijzen naar de functie verlies, waarbij fout wordt berekend als de som van het kwadraat van de afstand van de werkelijke waarde tot de voorspelde regel, en past het model aan door de gekwadrateerde fout te minimaliseren. Bij deze methode wordt uitgegaan van een sterke lineaire relatie tussen de invoer en de afhankelijke variabele.
 
 ## <a name="configure-linear-regression"></a>Lineaire regressie configureren
 
-Deze module ondersteunt twee methoden voor het aanpassen van een regressiemodel met verschillende opties:
+Deze module ondersteunt twee methoden voor het aanpassen van een regressie model met verschillende opties:
 
-+ [Een regressiemodel met behulp van online leren met stochastische gradiëntdaling maken](#bkmk_GradientDescent)
++ [Een regressie model maken met online verloop Daal](#bkmk_GradientDescent)
 
-    Leren met stochastische gradiëntdaling is een betere verlies-functie voor modellen die zijn meer complexe, of die te weinig trainingsgegevens gezien het aantal variabelen.
-
-
-
-+ [Past een regressiemodel met behulp van gewone kleinste kwadraten](#bkmk_OrdinaryLeastSquares)
-
-    Voor kleine gegevenssets is het raadzaam om te selecteren van gewone kleinste kwadraten. Dit geeft vergelijkbare resultaten naar Excel.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a> Een regressiemodel met behulp van gewone kleinste kwadraten maken
-
-1. Voeg de **lineair regressiemodel** module aan uw experiment in de interface.
-
-    U vindt deze module in de **Machine Learning** categorie. Vouw **Initialize Model**, vouw **regressie**, en sleep de **lineair regressiemodel** module naar het experimentcanvas.
-
-2. In de **eigenschappen** deelvenster in de **oplossing methode** vervolgkeuzelijst **gewone kleinste kwadraten**. Deze optie geeft u de berekeningsmethode gebruikt om te vinden van de regressie-regel.
-
-3. In **L2 regularisatie gewicht**, typt u de waarde moet worden gebruikt als het gewicht voor L2 regularisatie. U wordt aangeraden dat u een andere waarde dan nul om te voorkomen dat te gebruiken.
-
-     Raadpleeg dit artikel voor meer informatie over de invloed van regularisatie op model aanpassing van labels: [L1 en L2 Regularisatiegraad voor Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
-
-4. Selecteer de optie **opnemen intercept term**, als u wilt weergeven van de term voor het snijpunt.
-
-    Schakel deze optie als u niet nodig hebt om te controleren van de regressieformule.
-
-5. Voor **willekeurig getal seed**, u kunt desgewenst een waarde op voor het seeden van de generator van willekeurige getallen die worden gebruikt door het model typen.
-
-    Met behulp van een seed-waarde is handig als u wilt behouden dezelfde resultaten voor verschillende runs van het hetzelfde experiment. Anders is de standaardwaarde een waarde van de systeemklok te gebruiken.
+    Gradient Daal is een betere verlies functie voor modellen die ingewik kelder zijn of die te weinig trainings gegevens hebben, gezien het aantal variabelen.
 
 
-7. Voeg de [Train Model](./train-model.md) module naar het experimentcanvas en verbinding maken met een gegevensset met gelabelde.
+
++ [Een regressie model passend maken met behulp van normale, minimale kwadraten](#bkmk_OrdinaryLeastSquares)
+
+    Voor kleine gegevens sets kunt u het beste normale minimale kwadraten selecteren. Dit moet vergelijk bare resultaten opleveren voor Excel.
+
+## <a name="bkmk_OrdinaryLeastSquares"></a>Een regressie model maken met behulp van normale, minimale kwadraten
+
+1. Voeg de module **Linear regressie model** toe aan uw experiment in de-interface.
+
+    U kunt deze module vinden in de categorie **machine learning** . Vouw **Initialiseer model**uit, vouw **regressie**uit en sleep de module **Linear regressie model** naar uw experiment.
+
+2. Selecteer in het deel venster **Eigenschappen** in de vervolg keuzelijst **oplossings methode** de optie **normale kleinste kwadraten**. Met deze optie geeft u de reken methode op die wordt gebruikt om de regressie regel te vinden.
+
+3. In **L2-regularisatie gewicht**typt u de waarde die moet worden gebruikt als gewicht voor de L2-regularisatie. U kunt het beste een andere waarde dan nul gebruiken om te voor komen dat deze wordt overpast.
+
+     Raadpleeg dit artikel voor meer informatie over hoe regularisatie van invloed is op model fitting: [L1 en L2-regularisatie voor Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
+
+4. Selecteer de optie, **Voeg interceptie term**toe als u de term voor het snij punt wilt weer geven.
+
+    Schakel deze optie uit als u de regressie formule niet hoeft te controleren.
+
+5. Voor **wille keurig getal Seed**kunt u optioneel een waarde typen om de wille keurige generator te seeden die door het model wordt gebruikt.
+
+    Het gebruik van een Seed-waarde is handig als u dezelfde resultaten wilt behouden in verschillende uitvoeringen van hetzelfde experiment. Anders wordt de standaard instelling gebruikt voor het gebruik van een waarde uit de systeem klok.
+
+
+7. Voeg de module [Train model](./train-model.md) toe aan uw experiment en Verbind een gegevensset met een label.
 
 8. Voer het experiment uit.
 
-## <a name="results-for-ordinary-least-squares-model"></a>Resultaten voor normale kleinste kwadraten model
+## <a name="results-for-ordinary-least-squares-model"></a>Resultaten voor model met de normale kleinste kwadraten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ Als u de parameters van het model, met de rechtermuisknop op de uitvoer trainer en selecteer **Visualize**.
++ Als u de para meters van het model wilt weer geven, klikt umet de rechter muisknop op de leider uitvoer en selecteert u visualiseren.
 
-+ Om voorspellingen te maken, verbinding maken met het getrainde model op de [Score Model](./score-model.md) -module, samen met een gegevensset met de nieuwe waarden. 
++ Als u voor spellingen wilt doen, verbindt u het getrainde model met de module [score model](./score-model.md) , samen met een gegevensset met nieuwe waarden. 
 
 
-## <a name="bkmk_GradientDescent"></a> Een regressiemodel met behulp van online leren met stochastische gradiëntdaling maken
+## <a name="bkmk_GradientDescent"></a>Een regressie model maken met online verloop Daal
 
-1. Voeg de **lineair regressiemodel** module aan uw experiment in de interface.
+1. Voeg de module **Linear regressie model** toe aan uw experiment in de-interface.
 
-    U vindt deze module in de **Machine Learning** categorie. Vouw **Initialize Model**, vouw **regressie**, en sleep de **lineair regressiemodel** module naar het experimentcanvas
+    U kunt deze module vinden in de categorie **machine learning** . Vouw **initialiseren model**uit, vouw **regressie**uit en sleep de module **Linear regressie model** naar uw experiment
 
-2. In de **eigenschappen** deelvenster in de **oplossing methode** vervolgkeuzelijst Kies **Online leren met stochastische Gradiëntdaling** als de berekeningsmethode gebruikt om te vinden van de regressie-regel.
+2. Kies in het deel venster **Eigenschappen** in de vervolg keuzelijst **oplossings methode** de optie **online verloop Daal** als de reken methode die wordt gebruikt om de regressie lijn te vinden.
 
-3. Voor **trainer aanmaakmodus**, aangeven of u wilt het model met een vooraf gedefinieerde set parameters te trainen of als u wilt het model met behulp van een parameteropschoning optimaliseren.
+3. Voor de **modus trainer maken**geeft u aan of u het model wilt trainen met een vooraf gedefinieerde set para meters of als u het model wilt optimaliseren met behulp van een parameter sweep.
 
-    + **Eén Parameter**: Als u hoe u wilt dat het netwerk lineaire regressie te configureren weet, kunt u een specifieke set waarden opgeven als argumenten.
+    + **Eén para meter**: Als u weet hoe u het lineaire regressie netwerk wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
 
    
-4. Voor **Learning tarief**, de initiële leertempo opgeven voor de functie stochastische leren met stochastische gradiëntdaling te optimaliseren.
+4. Voor het **leer tempo**geeft u het eerste leer tempo op voor de stochastische Daal Optimizer van een kleur overgang.
 
-5. Voor **aantal training epoches**, typ een waarde die aangeeft hoe vaak het algoritme moet doorlopen van de voorbeelden. Dit aantal moet altijd grote bijeenkomst bereiken voor gegevenssets met een klein aantal voorbeelden.
+5. Voor het **aantal trainings**-epochen typt u een waarde die aangeeft hoe vaak de algoritme voor beelden moet herhalen. Voor gegevens sets met een klein aantal voor beelden moet dit aantal groot zijn om convergentie te bereiken.
 
-6. **Functies normaliseren**: Als u hebt al de numerieke gegevens gebruikt voor het model te trainen genormaliseerd, kunt u deze optie uitschakelen. De module normaliseert standaard alle numerieke invoer voor een bereik tussen 0 en 1.
+6. **Functies normaliseren**: Als u de numerieke gegevens die worden gebruikt om het model te trainen al hebt genormaliseerd, kunt u deze optie deselecteren. Standaard normaleert de module alle numerieke invoer naar een bereik tussen 0 en 1.
 
     > [!NOTE]
     > 
-    > Vergeet niet om dezelfde methode normalisering van toepassing op nieuwe gegevens die worden gebruikt voor het scoren.
+    > Vergeet niet om dezelfde normalisatie methode toe te passen op nieuwe gegevens die worden gebruikt voor een score.
 
-7. In **L2 regularisatie gewicht**, typt u de waarde moet worden gebruikt als het gewicht voor L2 regularisatie. U wordt aangeraden dat u een andere waarde dan nul om te voorkomen dat te gebruiken.
+7. In **L2-regularisatie gewicht**typt u de waarde die moet worden gebruikt als gewicht voor de L2-regularisatie. U kunt het beste een andere waarde dan nul gebruiken om te voor komen dat deze wordt overpast.
 
-    Raadpleeg dit artikel voor meer informatie over de invloed van regularisatie op model aanpassing van labels: [L1 en L2 Regularisatiegraad voor Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
-
-
-9. Selecteer de optie **afname leertempo**, als u wilt dat het leertempo te verlagen als de herhalingen wordt uitgevoerd.  
-
-10. Voor **willekeurig getal seed**, u kunt desgewenst een waarde op voor het seeden van de generator van willekeurige getallen die worden gebruikt door het model typen. Met behulp van een seed-waarde is handig als u wilt behouden dezelfde resultaten voor verschillende runs van het hetzelfde experiment.
+    Raadpleeg dit artikel voor meer informatie over hoe regularisatie van invloed is op model fitting: [L1 en L2-regularisatie voor Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
 
 
-12. Een gegevensset met gelabelde en een van de trainingsmodules toevoegen.
+9. Selecteer de optie, **Verminder het leer**tempo als u wilt dat het leer tempo afneemt als de voortgang van herhalingen.  
 
-    Als u geen van een parameteropschoning gebruikmaakt, gebruikt u de [Train Model](train-model.md) module.
+10. Voor **wille keurig getal Seed**kunt u optioneel een waarde typen om de wille keurige generator te seeden die door het model wordt gebruikt. Het gebruik van een Seed-waarde is handig als u dezelfde resultaten wilt behouden in verschillende uitvoeringen van hetzelfde experiment.
+
+
+12. Voeg een gegevensset met een label en een van de trainings modules toe.
+
+    Als u geen parameter sweep gebruikt, gebruikt u de module [Train model](train-model.md) .
 
 13. Voer het experiment uit.
 
-## <a name="results-for-online-gradient-descent"></a>Resultaten voor online leren met stochastische gradiëntdaling
+## <a name="results-for-online-gradient-descent"></a>Resultaten voor online verloop Daal
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ Om voorspellingen te maken, verbinding maken met het getrainde model op de [Score Model](./score-model.md) -module, samen met de nieuwe invoergegevens.
++ Als u voor spellingen wilt doen, verbindt u het getrainde model met de module [score model](./score-model.md) , samen met nieuwe invoer gegevens.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

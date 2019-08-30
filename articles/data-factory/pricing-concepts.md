@@ -1,174 +1,175 @@
 ---
-title: Informatie over prijzen voor Azure Data Factory met behulp van voorbeelden | Microsoft Docs
-description: In dit artikel wordt beschreven en ziet u het prijsmodel met gedetailleerde voorbeelden van Azure Data Factory
+title: Meer informatie over Azure Data Factory prijzen via voor beelden | Microsoft Docs
+description: In dit artikel wordt uitgelegd wat het Azure Data Factory-prijs model met gedetailleerde voor beelden bevat
 documentationcenter: ''
-author: shlo
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: shlo
-ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233917"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140944"
 ---
-# <a name="understanding-data-factory-pricing-through-examples"></a>Informatie over prijzen van Data Factory met behulp van voorbeelden
+# <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory prijzen door middel van voor beelden
 
-In dit artikel wordt uitgelegd en ziet u het prijsmodel met gedetailleerde voorbeelden van Azure Data Factory.
+In dit artikel wordt uitgelegd wat het Azure Data Factory-prijs model met gedetailleerde voor beelden bevat.
 
 > [!NOTE]
-> De prijzen in de volgende voorbeelden hieronder zijn hypothetische en zijn niet bedoeld als werkelijke prijzen impliceren.
+> De prijzen die in deze voor beelden worden gebruikt, zijn hypothetisch en zijn niet bedoeld als werkelijke prijzen.
 
-## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Gegevens kopiëren van AWS S3 naar Azure Blob-opslag per uur
+## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Gegevens vanaf elk uur kopiëren van AWS S3 naar Azure Blob Storage
 
-In dit scenario wilt u gegevens kopiëren van AWS S3 naar Azure Blob-opslag op een planning per uur.
+In dit scenario wilt u gegevens van AWS S3 kopiëren naar Azure Blob-opslag op basis van een schema.
 
-Om uit te voeren van het scenario, moet u een pijplijn maken met de volgende items:
+Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende items:
 
-1. Een kopieeractiviteit met een invoergegevensset voor de gegevens moeten worden gekopieerd van AWS S3.
+1. Een Kopieer activiteit met een invoer-gegevensset voor de gegevens die moeten worden gekopieerd uit AWS S3.
 
-2. Een uitvoergegevensset voor de gegevens in Azure Storage.
+2. Een uitvoer gegevensset voor de gegevens op Azure Storage.
 
-3. Een schematrigger het uitvoeren van de pijplijn elk uur.
+3. Een schema trigger om elk uur de pijp lijn uit te voeren.
 
    ![Scenario1](media/pricing-concepts/scenario1.png)
 
 | **Bewerkingen** | **Typen en eenheden** |
 | --- | --- |
-| Gekoppelde Service maken | 2 voor lezen/schrijven-entiteit  |
-| Gegevenssets maken | 4 lezen/schrijven-entiteiten (2 voor het maken van de gegevensset, 2 voor de gekoppelde service verwijst naar) |
-| Pijplijn maken | 3 voor lezen/schrijven-entiteiten (1 voor het maken van de pijplijn, 2 voor gegevensset verwijzingen) |
-| Pijplijn ophalen | 1 lezen/schrijven-entiteit |
-| Pijplijn uitvoeren | 2 uitvoeringen van activiteit (1 voor de trigger uitvoeren, 1 voor uitvoeringen van activiteit) |
-| Kopieer gegevens veronderstelling: uitvoeringstijd = 10 minuten | 10 \* 4 azure Integratieruntime (DIU standaardinstelling = 4) Zie voor meer informatie over integratie gegevenseenheden en optimaliseren kopieerprestaties [in dit artikel](copy-activity-performance.md) |
-| Monitor pijplijn veronderstelling: Alleen 1 uitvoeren opgetreden | 2 bewaking uitvoeren records opnieuw geprobeerd (1 voor pijplijn-run, 1 voor de activiteit die wordt uitgevoerd) |
+| Een gekoppelde service maken | 2 entiteit voor lezen/schrijven  |
+| Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
+| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn ophalen | 1 entiteit lezen/schrijven |
+| Pijp lijn uitvoeren | 2 uitvoeringen van activiteit (1 voor uitvoering van trigger, 1 voor uitvoeringen van activiteit) |
+| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
+| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
-**Totaal aantal Scenario prijzen: $0.16811**
+**Totaal prijs scenario: $0,16811**
 
-- Data Factory Operations = **$0,0001**
-  - Lezen/schrijven = 10\*00001 $0,0001 = [1 R/W = $ 0,50/50000 0,00001 =]
-  - Bewaking = 2\*000005 $0,00001 = [1 bewaking = $ 0,25/50000 = 0.000005]
-- Pipeline-Orchestration &amp; uitvoering = **$0.168**
-  - Uitvoeringen van activiteit = 001\*2 = 0,002 [1 uitvoeren = $1/1000 0,001 =]
-  - Activiteiten voor gegevensverplaatsing = $0.166 (tijdens 10 minuten van de uitvoeringstijd. $0,25 per uur op Azure Integration Runtime)
+- Data Factory bewerkingen = **$0,0001**
+  - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 2\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- &amp; Uitvoering van pipeline-Orchestration = **$0,168**
+  - Uitvoeringen van activiteit\*= 001 2 = 0,002 [1 run = $1/1000 = 0,001]
+  - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
 
-## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Gegevens kopiëren en transformeren met Azure Databricks per uur
+## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Gegevens en trans formatie met Azure Databricks per uur kopiëren
 
-In dit scenario, die u wilt kopiëren van gegevens van AWS S3 naar Azure Blob-opslag en de gegevens transformeren met Azure Databricks op een planning per uur.
+In dit scenario wilt u gegevens van AWS S3 kopiëren naar Azure Blob-opslag en de gegevens transformeren met Azure Databricks volgens een planning per uur.
 
-Om uit te voeren van het scenario, moet u een pijplijn maken met de volgende items:
+Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende items:
 
-1. Een kopieeractiviteit met een invoergegevensset voor de gegevens moeten worden gekopieerd van AWS S3 en een uitvoergegevensset voor de gegevens in Azure storage.
-2. Een Azure Databricks-activiteit voor de gegevenstransformatie.
-3. Het uitvoeren van de pijplijn elk uur schematrigger een.
+1. Een Kopieer activiteit met een invoer-gegevensset voor de gegevens die moeten worden gekopieerd uit AWS S3 en een uitvoer gegevensset voor de gegevens in azure Storage.
+2. Een Azure Databricks activiteit voor de gegevens transformatie.
+3. Eén schema-trigger voor het uitvoeren van de pijp lijn elk uur.
 
 ![Scenario2](media/pricing-concepts/scenario2.png)
 
 | **Bewerkingen** | **Typen en eenheden** |
 | --- | --- |
-| Gekoppelde Service maken | 3 voor lezen/schrijven-entiteit  |
-| Gegevenssets maken | 4 lezen/schrijven-entiteiten (2 voor het maken van de gegevensset, 2 voor de gekoppelde service verwijst naar) |
-| Pijplijn maken | 3 voor lezen/schrijven-entiteiten (1 voor het maken van de pijplijn, 2 voor gegevensset verwijzingen) |
-| Pijplijn ophalen | 1 lezen/schrijven-entiteit |
-| Pijplijn uitvoeren | 3 uitvoeringen van activiteit (1 voor de trigger uitvoeren, 2 voor uitvoeringen van activiteit) |
-| Kopieer gegevens veronderstelling: uitvoeringstijd = 10 minuten | 10 \* 4 azure Integratieruntime (DIU standaardinstelling = 4) Zie voor meer informatie over integratie gegevenseenheden en optimaliseren kopieerprestaties [in dit artikel](copy-activity-performance.md) |
-| Monitor pijplijn veronderstelling: Alleen 1 uitvoeren opgetreden | 3 bewaking uitvoeren records opnieuw geprobeerd (1 voor pijplijn-run, 2 voor de activiteit die wordt uitgevoerd) |
-| Databricks-activiteit veronderstelling uitvoeren: uitvoeringstijd = 10 minuten | Externe Pijplijnuitvoering activiteit 10 minuten |
+| Een gekoppelde service maken | 3 entiteit voor lezen/schrijven  |
+| Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
+| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn ophalen | 1 entiteit lezen/schrijven |
+| Pijp lijn uitvoeren | 3 uitvoeringen van activiteit (1 voor uitvoering van trigger, 2 voor uitvoeringen van activiteit) |
+| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
+| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 3 uitgevoerde uitvoerings records voor bewaking (1 voor pijplijn uitvoering, 2 voor uitvoering van activiteit) |
+| Uitvoer van Databricks-activiteit uitvoeren: uitvoerings tijd = 10 minuten | 10 min. uitvoering van externe pijplijn activiteit |
 
-**Totaal aantal Scenario prijzen: $0.16916**
+**Totaal prijs scenario: $0,16916**
 
-- Data Factory Operations = **$0.00012**
-  - Lezen/schrijven = 11\*00001 $0.00011 = [1 R/W = $ 0,50/50000 0,00001 =]
-  - Bewaking = 3\*000005 $0,00001 = [1 bewaking = $ 0,25/50000 = 0.000005]
-- Pipeline-Orchestration &amp; uitvoering = **$0.16904**
-  - Uitvoeringen van activiteit = 001\*3 = 0,003 [1 uitvoeren = $1/1000 0,001 =]
-  - Activiteiten voor gegevensverplaatsing = $0.166 (tijdens 10 minuten van de uitvoeringstijd. $0,25 per uur op Azure Integration Runtime)
-  - Externe Pipeline-activiteit = $0.000041 (tijdens 10 minuten van de uitvoeringstijd. $0.00025/uur op Azure Integration Runtime)
+- Data Factory bewerkingen = **$0,00012**
+  - Lezen/schrijven = 11\*00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 3\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- &amp; Uitvoering van pipeline-Orchestration = **$0,16904**
+  - Uitvoeringen van activiteit\*= 001 3 = 0,003 [1 run = $1/1000 = 0,001]
+  - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
+  - Externe pijplijn activiteit = $0,000041 (in verhouding tot 10 minuten van uitvoerings tijd. $0.00025/uur op Azure Integration Runtime)
 
-## <a name="copy-data-and-transform-with-dynamic-parameters-hourly"></a>Gegevens kopiëren en transformeren met dynamische parameters per uur
+## <a name="copy-data-and-transform-with-dynamic-parameters-hourly"></a>Gegevens en trans formatie met dynamische para meters per uur kopiëren
 
-In dit scenario wilt u gegevens van AWS S3 kopiëren naar Azure Blob-opslag en transformeren met Azure Databricks (met dynamische parameters in het script) op een planning per uur.
+In dit scenario wilt u gegevens van AWS S3 kopiëren naar Azure Blob-opslag en transformeren met Azure Databricks (met dynamische para meters in het script) volgens een planning per uur.
 
-Om uit te voeren van het scenario, moet u een pijplijn maken met de volgende items:
+Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende items:
 
-1. Een kopieeractiviteit met een invoergegevensset voor de gegevens van AWS S3, een uitvoergegevensset voor de gegevens in Azure storage worden gekopieerd.
-2. Een Lookup-activiteit voor het doorgeven van parameters dynamisch aan de transformatiescript.
-3. Een Azure Databricks-activiteit voor de gegevenstransformatie.
-4. Het uitvoeren van de pijplijn elk uur schematrigger een.
+1. Een Kopieer activiteit met een invoer-gegevensset voor de gegevens die moeten worden gekopieerd uit AWS S3, een uitvoer gegevensset voor de gegevens in azure Storage.
+2. Een opzoek activiteit voor het dynamisch door geven van para meters aan het transformatie script.
+3. Een Azure Databricks activiteit voor de gegevens transformatie.
+4. Eén schema-trigger voor het uitvoeren van de pijp lijn elk uur.
 
 ![Scenario3](media/pricing-concepts/scenario3.png)
 
 | **Bewerkingen** | **Typen en eenheden** |
 | --- | --- |
-| Gekoppelde Service maken | 3 voor lezen/schrijven-entiteit  |
-| Gegevenssets maken | 4 lezen/schrijven-entiteiten (2 voor het maken van de gegevensset, 2 voor de gekoppelde service verwijst naar) |
-| Pijplijn maken | 3 voor lezen/schrijven-entiteiten (1 voor het maken van de pijplijn, 2 voor gegevensset verwijzingen) |
-| Pijplijn ophalen | 1 lezen/schrijven-entiteit |
-| Pijplijn uitvoeren | 4 uitvoeringen van activiteit (1 voor de trigger uitvoeren, 3 voor uitvoeringen van activiteit) |
-| Kopieer gegevens veronderstelling: uitvoeringstijd = 10 minuten | 10 \* 4 azure Integratieruntime (DIU standaardinstelling = 4) Zie voor meer informatie over integratie gegevenseenheden en optimaliseren kopieerprestaties [in dit artikel](copy-activity-performance.md) |
-| Monitor pijplijn veronderstelling: Alleen 1 uitvoeren opgetreden | 4 bewaking uitvoeren records opnieuw geprobeerd (1 voor pijplijn-run, 3 voor de activiteit die wordt uitgevoerd) |
-| Activiteit Lookup veronderstelling uitvoeren: uitvoeringstijd = 1 minuut | 1 minuut Pipeline-activiteit uitvoeren |
-| Databricks-activiteit veronderstelling uitvoeren: uitvoeringstijd = 10 minuten | 10 minuten tot de uitvoering van externe Pipeline-activiteit |
+| Een gekoppelde service maken | 3 entiteit voor lezen/schrijven  |
+| Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
+| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn ophalen | 1 entiteit lezen/schrijven |
+| Pijp lijn uitvoeren | 4 uitvoeringen van activiteit (1 voor uitvoering van trigger, 3 voor uitvoeringen van activiteit) |
+| Gegevens kopiëren veronderstelling: uitvoerings tijd = 10 minuten | 10 \* 4 Azure Integration runtime (standaard instelling voor DIU = 4) Zie [dit artikel](copy-activity-performance.md) voor meer informatie over de gegevens integratie-eenheden en het optimaliseren van Kopieer prestaties. |
+| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 4 uitgevoerde uitvoerings records voor de controle (1 voor de pijplijn uitvoering, 3 voor de uitvoering van de activiteit) |
+| Opzoek activiteit uitvoeren hypo these: uitvoerings tijd = 1 min | 1 min uitvoering pijplijn activiteit |
+| Uitvoer van Databricks-activiteit uitvoeren: uitvoerings tijd = 10 minuten | 10 min. uitvoering van externe pijplijn activiteit |
 
-**Totaal aantal Scenario prijzen: $0.17020**
+**Totaal prijs scenario: $0,17020**
 
-- Data Factory Operations = **$0.00013**
-  - Lezen/schrijven = 11\*00001 $0.00011 = [1 R/W = $ 0,50/50000 0,00001 =]
-  - Controle 4 =\*000005 $0.00002 = [1 bewaking = $ 0,25/50000 0.000005 =]
-- Pipeline-Orchestration &amp; uitvoering = **$0.17007**
-  - Uitvoeringen van activiteit = 001\*4 = 0.004 [1 uitvoeren = $1/1000 0,001 =]
-  - Activiteiten voor gegevensverplaatsing = $0.166 (tijdens 10 minuten van de uitvoeringstijd. $0,25 per uur op Azure Integration Runtime)
-  - Pipeline-activiteit = $0,00003 (tijdens voor 1 minuut van de uitvoeringstijd. $ 0,002/uur op Azure Integration Runtime)
-  - Externe Pipeline-activiteit = $0.000041 (tijdens 10 minuten van de uitvoeringstijd. $0.00025/uur op Azure Integration Runtime)
+- Data Factory bewerkingen = **$0,00013**
+  - Lezen/schrijven = 11\*00001 = $0,00011 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 4\*000005 = $0,00002 [1 bewaking = $0,25/50.000 = 0,000005]
+- &amp; Uitvoering van pipeline-Orchestration = **$0,17007**
+  - Uitvoeringen van activiteit\*= 001 4 = 0,004 [1 run = $1/1000 = 0,001]
+  - Activiteiten voor gegevens verplaatsing = $0,166 (in verhouding tot 10 minuten voor de uitvoerings tijd). $0,25/uur op Azure Integration Runtime)
+  - Pijplijn activiteit = $0,00003 (voor 1 minuut van uitvoer tijd). $0.002/uur op Azure Integration Runtime)
+  - Externe pijplijn activiteit = $0,000041 (in verhouding tot 10 minuten van uitvoerings tijd. $0.00025/uur op Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Toewijzing van gegevens voor foutopsporing op stroom gebruiken voor een normale workday (Preview-prijs)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Fout opsporing voor het toewijzen van gegevens stromen gebruiken voor een normale werkdag (preview-prijs)
 
-Als een technicus van gegevens bent u verantwoordelijk voor het ontwerpen, bouwen en testen van toewijzing gegevens stromen elke dag. U Meld u aan bij de ADF UI in de ochtend en schakelt de foutopsporingsmodus voor gegevens stromen. De standaard-TTL voor foutopsporing sessies is 60 minuten. U werken gedurende de dag, gedurende 10 uur, zodat uw foutopsporingssessie nooit verloopt. Daarom zijn uw kosten in rekening gebracht voor de dag:
+Als data Engineer bent u verantwoordelijk voor het ontwerpen, bouwen en testen van gegevens stromen die dagelijks worden uitgevoerd. U meldt zich in de ochtend aan bij de ADF-gebruikers interface en schakelt de foutopsporingsmodus in voor gegevens stromen. De standaard-TTL voor debug-sessies is 60 minuten. U werkt gedurende tien uur gedurende de hele dag, waardoor de foutopsporingssessie nooit verloopt. Daarom zijn uw kosten voor de dag:
 
-**10 (uren) x 8 (kernen) x $0.112 $8.96 =**
+**10 (uur) x 8 (kern geheugens) x $0,112 = $8,96**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Transformeer gegevens in blob-archief met het toewijzen van gegevensstromen (Preview-prijs)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Gegevens in BLOB Store transformeren met toewijzings gegevens stromen (preview-prijzen)
 
-In dit scenario wilt u het transformeren van gegevens in Blob Store visueel in ADF toewijzing gegevens stromen op een planning per uur.
+In dit scenario wilt u gegevens in BLOB Store visueel transformeren in ADF-toewijzings gegevens stromen op schema.
 
-Om uit te voeren van het scenario, moet u een pijplijn maken met de volgende items:
+Als u het scenario wilt volt ooien, moet u een pijp lijn maken met de volgende items:
 
-1. Een activiteit gegevensstroom met de logica van de transformatie.
+1. Een gegevens stroom activiteit met de transformatie logica.
 
-2. Een invoergegevensset voor de gegevens in Azure Storage.
+2. Een invoer gegevensset voor de gegevens op Azure Storage.
 
-3. Een uitvoergegevensset voor de gegevens in Azure Storage.
+3. Een uitvoer gegevensset voor de gegevens op Azure Storage.
 
-4. Een schematrigger het uitvoeren van de pijplijn elk uur.
+4. Een schema trigger om elk uur de pijp lijn uit te voeren.
 
 | **Bewerkingen** | **Typen en eenheden** |
 | --- | --- |
-| Gekoppelde Service maken | 2 voor lezen/schrijven-entiteit  |
-| Gegevenssets maken | 4 lezen/schrijven-entiteiten (2 voor het maken van de gegevensset, 2 voor de gekoppelde service verwijst naar) |
-| Pijplijn maken | 3 voor lezen/schrijven-entiteiten (1 voor het maken van de pijplijn, 2 voor gegevensset verwijzingen) |
-| Pijplijn ophalen | 1 lezen/schrijven-entiteit |
-| Pijplijn uitvoeren | 2 uitvoeringen van activiteit (1 voor de trigger uitvoeren, 1 voor uitvoeringen van activiteit) |
-| Uitvoeringstijd gegevensstroom veronderstellingen: = 10 minuten + 10 minuten TTL | 10 \* 8 kernen van algemene Computing met TTL van 10 |
-| Monitor pijplijn veronderstelling: Alleen 1 uitvoeren opgetreden | 2 bewaking uitvoeren records opnieuw geprobeerd (1 voor pijplijn-run, 1 voor de activiteit die wordt uitgevoerd) |
+| Een gekoppelde service maken | 2 entiteit voor lezen/schrijven  |
+| Gegevens sets maken | 4 entiteiten voor lezen/schrijven (2 voor het maken van de gegevensset, 2 voor gekoppelde service verwijzingen) |
+| Pijplijn maken | 3 entiteiten voor lezen/schrijven (1 voor het maken van pijp lijnen, 2 voor verwijzingen naar gegevensset) |
+| Pijp lijn ophalen | 1 entiteit lezen/schrijven |
+| Pijp lijn uitvoeren | 2 uitvoeringen van activiteit (1 voor uitvoering van trigger, 1 voor uitvoeringen van activiteit) |
+| Veronderstellingen voor gegevens stroom: uitvoerings tijd = 10 min + 10 min TTL | 10 \* 8 kernen van algemene Compute met TTL van 10 |
+| Veronderstelling van pijp lijn bewaken: Er is slechts 1 uitvoering uitgevoerd | 2 uitgevoerde pogingen voor het controleren van records (1 voor de pijplijn uitvoering, 1 voor de uitvoering van de activiteit) |
 
-**Totaal aantal Scenario prijzen: $0.3011**
+**Totaal prijs scenario: $0,3011**
 
-- Data Factory Operations = **$0,0001**
-  - Lezen/schrijven = 10\*00001 $0,0001 = [1 R/W = $ 0,50/50000 0,00001 =]
-  - Bewaking = 2\*000005 $0,00001 = [1 bewaking = $ 0,25/50000 = 0.000005]
-- Pipeline-Orchestration &amp; uitvoering = **$0.301**
-  - Uitvoeringen van activiteit = 001\*2 = 0,002 [1 uitvoeren = $1/1000 0,001 =]
-  - Gegevens stromen werkzaamheden $0.299 tijdens = 20 minuten (10 minuten uitvoeringstijd + 10 minuten TTL). $0.112/ uur op Azure Integration Runtime met 8 kernen algemene compute
+- Data Factory bewerkingen = **$0,0001**
+  - Lezen/schrijven = 10\*00001 = $0,0001 [1 R/W = $0,50/50.000 = 0,00001]
+  - Bewaking = 2\*000005 = $0,00001 [1 bewaking = $0,25/50.000 = 0,000005]
+- &amp; Uitvoering van pipeline-Orchestration = **$0,301**
+  - Uitvoeringen van activiteit\*= 001 2 = 0,002 [1 run = $1/1000 = 0,001]
+  - Data flow-activiteiten = $0,299 naar verhouding van 20 minuten (10 minuten uitvoerings tijd + 10 minuten TTL). $0.112/uur op Azure Integration Runtime met een algemene reken kracht van 8 kernen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u begrijpt dat de prijzen voor Azure Data Factory, u kunt aan de slag!
+Nu u de prijzen voor Azure Data Factory begrijpt, kunt u aan de slag.
 
-- [Een data factory maken met behulp van de Azure Data Factory-UI](quickstart-create-data-factory-portal.md)
+- [Een data factory maken met behulp van de Azure Data Factory gebruikers interface](quickstart-create-data-factory-portal.md)
 
 - [Inleiding tot Azure Data Factory](introduction.md)
 

@@ -1,8 +1,8 @@
 ---
-title: Azure Blockchain-limieten
-description: Overzicht van de service en functionele limieten in Azure Blockchain-Service
+title: Limieten voor Azure Block Chain
+description: Overzicht van de service-en functionele limieten in azure Block Chain Service
 services: azure-blockchain
-keywords: blockchain
+keywords: Block Chain
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
@@ -10,58 +10,58 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028168"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147134"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limieten in Azure Blockchain-Service
+# <a name="limits-in-azure-blockchain-service"></a>Limieten in azure Block Chain Service
 
-Azure Blockchain-Service heeft de service en functionele limieten, zoals het aantal knooppunten dat een lid kan hebben, consortium beperkingen en opslag bedragen.
+De Azure Block Chain-service heeft service-en functionele limieten, zoals het aantal knoop punten dat een lid kan hebben, consortium beperkingen en opslag bedragen.
 
 ## <a name="pricing-tier"></a>Prijscategorie
 
-Maximale limieten voor transacties en validatie van knooppunten is afhankelijk van of u Azure Blockchain-Service op Basic of Standard-Prijscategorieën wilt inrichten.
+De maximum limieten voor trans acties en validatie knooppunten zijn afhankelijk van of u de Azure Block Chain-Service inricht op basis van de prijs categorie Basic of Standard.
 
-| Prijscategorie | Maximaal transactie knooppunten | Maximaal validator knooppunten |
+| Prijscategorie | Maximum aantal transactie knooppunten | Maxi maal aantal validatie knooppunten |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
-De prijscategorie tussen Basic en Standard wijzigen nadat het lid maken wordt niet ondersteund.
+Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
 
 ## <a name="storage-capacity"></a>Opslagcapaciteit
 
-De maximale hoeveelheid opslag die per knooppunt kan worden gebruikt voor het grootboekgegevens en Logboeken is 1 terabyte.
+De maximale hoeveelheid opslag die per knoop punt voor grootboek gegevens en logboeken kan worden gebruikt, is 1,8 terabyte.
 
-Grootboek en logboekbestanden opslaggrootte verkleinen wordt niet ondersteund.
+Het verminderen van de omvang van het groot boek en de logboek opslag wordt niet ondersteund.
 
 ## <a name="consortium-limits"></a>Consortium limieten
 
-* **Consortium en lid moet uniek** van de namen van andere consortium en lid in de Azure Blockchain-Service.
+* De **namen van consortiums en leden moeten uniek zijn** van andere consortium-en lidnamen in de Azure Block Chain-service.
 
-* **Namen van lid en consortium kunnen niet worden gewijzigd**
+* **De namen van leden en consortiums kunnen niet worden gewijzigd**
 
-* **Alle leden in een consortium moeten zich in dezelfde prijscategorie**
+* **Alle leden in een consortium moeten dezelfde prijs categorie hebben**
 
-* **Alle leden die deel uitmaken van een consortium moeten zich in dezelfde regio bevinden**
+* **Alle leden die deel uitmaken van een consortium, moeten zich in dezelfde regio bevinden**
 
-    Het eerste lid gemaakt in een consortium bepaalt de regio. Uitgenodigde leden aan de consortium moeten zich bevinden in dezelfde regio als het eerste lid. Alle leden bij dezelfde regio te beperken, zorgt ervoor dat netwerk consensus geen last hebben.
+    Het eerste lid dat is gemaakt in een consortium, bepaalt de regio. Uitgenodigde leden van het consortium moeten zich in dezelfde regio bevinden als het eerste lid. Als u alle leden beperkt tot dezelfde regio, zorgt u ervoor dat netwerk consensus geen negatieve gevolgen heeft.
 
-* **Een consortium moet ten minste één beheerder hebben.**
+* **Een consortium moet ten minste één beheerder hebben**
 
-    Als er slechts één beheerder in een consortium, kunnen ze zelf verwijderen uit het consortium of hun lid verwijderen totdat een andere beheerder wordt toegevoegd aan of in het consortium gepromoveerd.
+    Als er slechts één beheerder in een consortium is, kunnen ze zich niet van het consortium verwijderen of hun lid verwijderen totdat een andere beheerder wordt toegevoegd of bevorderd in het consortium.
 
-* **Leden verwijderd uit het consortium kunnen niet opnieuw worden toegevoegd.**
+* **Leden die uit het consortium zijn verwijderd, kunnen niet opnieuw worden toegevoegd**
 
-    In plaats daarvan deze moeten opnieuw worden uitgenodigd aan het consortium toevoegen en maak een nieuw lid. Hun bestaande lid resource worden niet verwijderd als u wilt behouden historische transacties.
+    Ze moeten daarom opnieuw worden uitgenodigd om lid te worden van het consortium en een nieuw lid te maken. De bestaande leden bron worden niet verwijderd om historische trans acties te behouden.
 
-* **Alle leden in een consortium moeten dezelfde versie van het grootboek gebruiken**
+* **Alle leden van een consortium moeten dezelfde grootboek versie gebruiken**
 
-    Zie voor meer informatie over het toepassen van patches, updates en grootboek versies die beschikbaar zijn in Azure Blockchain Service [Patching, updates en versies](ledger-versions.md).
+    Zie [patches, updates en versies](ledger-versions.md)voor meer informatie over de patches, updates en grootboek versies die beschikbaar zijn in de Azure Block Chain-service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Toepassen van patches, updates en versies](ledger-versions.md)
+* [Patches, updates en versies](ledger-versions.md)

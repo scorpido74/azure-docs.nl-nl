@@ -1,7 +1,7 @@
 ---
 title: 'Voorbeeld: Een app voor afbeeldingsverwerking ontdekken in C#'
 titleSuffix: Azure Cognitive Services
-description: Verken een eenvoudige Windows-app die gebruikmaakt van de Computer Vision-API in Azure Cognitive Services. Voer OCR uit, maak miniaturen en werk met visuele kenmerken in een afbeelding.
+description: Verken een eenvoudige Windows-app die gebruikmaakt van de Computer Vision-API in azure Cognitive Services. Voer OCR uit, maak miniaturen en werk met visuele kenmerken in een afbeelding.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
@@ -11,19 +11,19 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60408162"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141288"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Voorbeeld: Een app voor afbeeldingsverwerking ontdekken met C#
 
-Een eenvoudige Windows-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren, slim bijgesneden miniaturen maken, plus visuele kenmerken, inclusief gezichten, in een afbeelding detecteren, categoriseren, taggen en beschrijven. Met het onderstaande voorbeeld kunt u een afbeeldings-URL of een lokaal opgeslagen bestand verzenden voor analyse. U kunt dit open-sourcevoorbeeld gebruiken als een sjabloon voor het bouwen van uw eigen app voor Windows met behulp van de Computer Vision-API en Windows Presentation Foundation (WPF), een onderdeel van .NET Framework.
+Een eenvoudige Windows-toepassing verkennen die Computer Vision gebruikt om optische tekenherkenning (OCR) uit te voeren, slim bijgesneden miniaturen maken, plus visuele kenmerken, inclusief gezichten, in een afbeelding detecteren, categoriseren, labelen en beschrijven. Met het onderstaande voorbeeld kunt u een afbeeldings-URL of een lokaal opgeslagen bestand verzenden voor analyse. U kunt dit open-sourcevoorbeeld gebruiken als een sjabloon voor het bouwen van uw eigen app voor Windows met behulp van de Computer Vision-API en Windows Presentation Foundation (WPF), een onderdeel van .NET Framework.
 
 > [!div class="checklist"]
-> * De voorbeeld-app downloaden vanuit GitHub
+> * De voorbeeld-app ophalen vanuit GitHub
 > * De voorbeeld-app openen en bouwen in Visual Studio
 > * De voorbeeld-app uitvoeren en ermee werken om verschillende scenario's uit te voeren
 > * De verschillende bij de voorbeeld-app meegeleverde scenario's ontdekken
@@ -33,7 +33,7 @@ Een eenvoudige Windows-toepassing verkennen die Computer Vision gebruikt om opti
 Voordat u met de voorbeeld-app gaat werken, moet zijn voldaan aan de volgende vereisten:
 
 * U hebt [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) of hoger nodig.
-* U moet beschikken over een abonnementssleutel voor Computer Vision. U krijgt een gratis proefversie sleutel van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of, volg de instructies in [een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abonneren op de Computer Vision en haal uw sleutel.
+* U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Noteer ook de URL van het service-eind punt.
 
 ## <a name="get-the-sample-app"></a>De voorbeeld-app downloaden
 
@@ -46,9 +46,9 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Win
 ```
 
 > [!IMPORTANT]
-> Download deze opslagplaats niet als een ZIP-bestand. Als u de opslagplaats downloadt als een ZIP-bestand, worden de Git-submodules niet opgenomen.
+> Download deze opslagplaats niet als een zipbestand. Als u de opslagplaats downloadt als een zipbestand, worden de Git-submodules niet opgenomen.
 
-### <a name="get-optional-sample-images"></a>Optionele voorbeeldafbeeldingen downloaden
+### <a name="get-optional-sample-images"></a>Optionele voorbeeldafbeeldingen ophalen
 
 Desgewenst kunt u de voorbeeldafbeeldingen gebruiken die bij de voorbeeld-app [Face](../../Face/Overview.md) worden meegeleverd. U vindt deze op GitHub in de opslagplaats `Microsoft/Cognitive-Face-Windows`. Deze voorbeeld-app bevat de map `/Data`, die meerdere afbeeldingen van personen bevat. U kunt deze opslagplaats ook recursief klonen met behulp van de beschreven methoden voor de Computer Vision-voorbeeld-app.
 
@@ -69,18 +69,19 @@ Voordat u de voorbeeld-app kunt uitvoeren of verkennen, moet u eerst de voorbeel
    * VisionAPI-WPF-Samples  
 
    Als het project SampleUserControlLibrary niet beschikbaar is, controleert u of de opslagplaats `Microsoft/Cognitive-Vision-Windows` recursief gekloond is.
-1. Druk in Visual Studio op Ctrl+Shift+B of kies **Build** in het lintmenu en kies vervolgens **Build Solution** om de oplossing te bouwen.
+1. Druk in Visual Studio op Ctrl+Shift+B of kies **Bouwen** in het lintmenu en kies vervolgens **Oplossing bouwen** om de oplossing te bouwen.
 
 ## <a name="run-and-interact-with-the-sample-app"></a>De voorbeeld-app uitvoeren en ermee werken
 
 U kunt de voorbeeld-app uitvoeren om te zien hoe deze samenwerkt met u en de Computer Vision-clientbibliotheek bij het uitvoeren van verschillende taken, zoals het genereren van miniaturen of het taggen van afbeeldingen. Als u de voorbeeld-app wilt uitvoeren en ermee wilt werken, gaat u als volgt te werk:
 
-1. Druk, nadat het bouwen voltooid is, op **F5** of kies **Debug** in het lintmenu en kies vervolgens **Start debugging** om de voorbeeld-app uit te voeren.
+1. Druk, nadat het bouwen voltooid is, op **F5** of kies **Fouten opsporen** in het lintmenu en kies vervolgens **Foutopsporing starten** om de voorbeeld-app uit te voeren.
 1. Wanneer de voorbeeld-app wordt weergegeven, kiest u **Subscription Key Management** in het navigatiedeelvenster om de pagina voor het beheren van abonnementssleutels weer te geven.
    ![Pagina Subscription Key Management](../Images/Vision_UI_Subscription.PNG)  
 1. Geef uw abonnementssleutel op in **Subscription Key**.
-1. Voer de eindpunt-URL in, waarbij u `/vision/v1.0` van de Computer Vision-resource voor uw abonnementssleutel weglaat in **Endpoint**.  
-   Als u bijvoorbeeld de abonnementssleutel van de gratis proefversie van Computer Vision gebruikt, voert u de volgende eindpunt-URL in voor de Azure-regio US west-centraal: `https://westcentralus.api.cognitive.microsoft.com`
+1. Voer de eind punt-URL in het **eind punt**in.  
+   Als u bijvoorbeeld de abonnements sleutel gebruikt uit de gratis proef versie van Computer Vision, voert u de volgende eind punt-URL in:`https://westcentralus.api.cognitive.microsoft.com`
+   [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Als u uw abonnementssleutel en eindpunt-URL niet opnieuw wilt invoeren wanneer u de voorbeeld-app later nogmaals uitvoert, kiest u **Save Setting** om de abonnementssleutel en de eindpunt-URL op te slaan op uw computer. Als u de eerder opgeslagen abonnementssleutel en eindpunt-URL wilt verwijderen, kiest u **Delete Setting**.
 
    > [!NOTE]
@@ -179,7 +180,7 @@ private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePat
 
 Deze voorbeeld-app maakt gebruik van de Computer Vision-API-clientbibliotheek, een thin C#-clientwrapper voor de Computer Vision-API in Azure Cognitive Services. De clientbibliotheek is beschikbaar via het NuGet-pakket [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/). Bij het bouwen van de Visual Studio-toepassing hebt u de clientbibliotheek opgehaald uit het bijbehorende NuGet-pakket. U kunt de broncode voor de clientbibliotheek ook bekijken in de map `/ClientLibrary` van de opslagplaats `Microsoft/Cognitive-Vision-Windows`.
 
-De functionaliteit van de clientbibliotheek wordt geleverd door de klasse `ComputerVisionClient` in de naamruimte `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`. De modellen die door de klasse `ComputerVisionClient` worden gebruikt tijdens interactie met Computer Vision, vindt u in de naamruimte `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models`. In de verschillende XAML-scenariopagina's van de voorbeeld-app vindt u de volgende `using`-richtlijnen voor het gebruik van die naamruimten:
+De functionaliteit van de clientbibliotheek wordt geleverd door de klasse `ComputerVisionClient` in de naamruimte `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`. De modellen die door de klasse `ComputerVisionClient` worden gebruikt tijdens interactie met Computer Vision, vindt u in de naamruimte `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models`. In de verschillende XAML-scenariopagina's van de voorbeeld-app vindt u de volgende `using` richtlijnen voor het gebruik van die naamruimten:
 
 ```csharp
 // -----------------------------------------------------------------------

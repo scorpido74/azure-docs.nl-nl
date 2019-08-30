@@ -1,42 +1,46 @@
 ---
-title: Gegevens repliceren in Azure Database voor MariaDB.
-description: Dit artikel beschrijft de gegevens in de replicatie voor Azure Database voor MariaDB.
+title: Gegevens repliceren naar Azure Database for MariaDB.
+description: In dit artikel wordt replicatie van gegevens voor Azure Database for MariaDB beschreven.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: c19ec06ce353d653086fa693dde975a55f51f823
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839258"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136750"
 ---
-# <a name="replicate-data-into-azure-database-for-mariadb"></a>Het repliceren van gegevens in Azure Database voor MariaDB
+# <a name="replicate-data-into-azure-database-for-mariadb"></a>Gegevens repliceren naar Azure Database for MariaDB
 
-Gegevens in replicatie kunt u gegevens synchroniseren met een MariaDB-server die on-premises worden uitgevoerd in virtuele machines of database-services die worden gehost door andere cloudproviders in de Azure Database voor MariaDB-service. Gegevens in replicatie is gebaseerd op de binaire logboek (binlog) bestand positie-replicatie op basis van systeemeigen naar MariaDB. Zie voor meer informatie over binlog replicatie, de [binlog replicatie-overzicht](https://mariadb.com/kb/en/library/replication-overview/).
+Met replicatie van inkomende gegevens kunt u gegevens synchroniseren die afkomstig zijn van een MariaDB-server die wordt uitgevoerd on-premises, in virtuele machines (VM's) of in databaseservices gehost door andere cloudproviders in de Azure Database for MariaDB-service. Replicatie van binnenkomende gegevens is gebaseerd op het binaire logbestand (binlog) met replicatie op basis van positie eigen aan MariaDB. Zie het [overzicht van binlog-replicatie](https://mariadb.com/kb/en/library/replication-overview/)voor meer informatie over binlog-replicatie.
 
-## <a name="when-to-use-data-in-replication"></a>Wanneer u gegevens in replicatie
-De belangrijkste scenario's met behulp van gegevens in replicatie zijn:
+## <a name="when-to-use-data-in-replication"></a>Wanneer moet ik Replicatie van inkomende gegevens gebruiken?
+De belangrijkste scenario's voor het gebruik van Replicatie van inkomende gegevens zijn:
 
-- **Synchronisatie van hybride gegevens:** U kunt de gegevens worden gesynchroniseerd tussen uw on-premises servers en Azure Database voor MariaDB houden met gegevens in replicatie. Deze synchronisatie is handig voor het maken van hybride toepassingen. Deze methode is aantrekkelijke wanneer u een bestaande lokale database-server hebt, maar u wilt de gegevens te verplaatsen naar een regio dichter bij te stellen aan eindgebruikers.
-- **Meerdere Cloud-synchronisatie:** Voor complexe cloudoplossingen, door gegevens in replicatie te gebruiken om gegevens tussen Azure-Database voor MariaDB en andere cloud-providers, zoals virtuele machines en databaseservices die worden gehost in deze clouds te synchroniseren.
+- **Gegevens synchronisatie hybride:** Met Replicatie van inkomende gegevens kunt u gegevens gesynchroniseerd blijven tussen uw on-premises servers en Azure Database for MariaDB. Deze synchronisatie is handig voor het maken van hybride toepassingen. Deze methode is aantrekkelijker wanneer u een bestaande lokale database server hebt, maar u de gegevens wilt verplaatsen naar een regio dichter bij eind gebruikers.
+- **Synchronisatie met meerdere Clouds:** Gebruik Replicatie van inkomende gegevens voor complexe cloud oplossingen om gegevens te synchroniseren tussen Azure Database for MariaDB en verschillende cloud providers, met inbegrip van virtuele machines en database services die worden gehost in die Clouds.
 
 ## <a name="limitations-and-considerations"></a>Beperkingen en overwegingen
 
-### <a name="data-not-replicated"></a>Gegevens die niet worden gerepliceerd
-De [ *mysql systeemdatabase* ](https://mariadb.com/kb/en/library/the-mysql-database-tables/) op de hoofd-server niet is gerepliceerd. Wijzigingen in accounts en machtigingen op de hoofd-server worden niet gerepliceerd. Als u een account op de hoofd-server maken en dit account moet toegang hebben tot de replica-server, klikt u vervolgens handmatig maken hetzelfde account dat aan de serverzijde van de replica. Zie voor meer informatie over welke tabellen zijn opgenomen in de database, de [MariaDB documentatie](https://mariadb.com/kb/en/library/the-mysql-database-tables/).
+### <a name="data-not-replicated"></a>Gegevens niet gerepliceerd
+De [*MySQL-systeem database*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) op de hoofd server wordt niet gerepliceerd. Wijzigingen aan accounts en machtigingen op de hoofd server worden niet gerepliceerd. Als u een account op de master server maakt en dit account moet toegang hebben tot de replica server en vervolgens hand matig hetzelfde account maken op de replica server. Zie de [MariaDB-documentatie](https://mariadb.com/kb/en/library/the-mysql-database-tables/)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
 
 ### <a name="requirements"></a>Vereisten
-- De versie van de hoofd-server moet ten minste versie 10.2 MariaDB.
-- De hoofd- en replica-server-versies moeten hetzelfde zijn. Bijvoorbeeld, moeten beide MariaDB versie 10.2.
+- De versie van de hoofd server moet ten minste MariaDB-versie 10,2 zijn.
+- De versies van de hoofd-en replica server moeten hetzelfde zijn. Beide moeten bijvoorbeeld MariaDB versie 10,2 zijn.
 - Elke tabel moet een primaire sleutel hebben.
-- Hoofd-server moet de InnoDB-engine gebruiken.
-- Gebruiker moet machtigingen hebben voor binaire logboekregistratie configureren en maken van nieuwe gebruikers op de hoofd-server.
+- De hoofd server moet de InnoDB-engine gebruiken.
+- De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de hoofd server.
+- Als SSL is ingeschakeld op de master server, controleert u of het SSL-CA-certificaat dat is opgegeven voor `mariadb.az_replication_change_master` het domein, is opgenomen in de opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
+- Zorg ervoor dat het IP-adres van de hoofdserver is toegevoegd aan de firewallregels van de Azure Database for MariaDB-replicaserver. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) of [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
+- Zorg ervoor dat de computer waarop de hoofdserver wordt gehost zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
+- Zorg ervoor dat de hoofdserver een **openbaar IP-adres** heeft of dat de DNS openbaar toegankelijk is
 
 ### <a name="other"></a>Overige
-- Gegevens in de replicatie is alleen ondersteund in het algemeen gebruik en geoptimaliseerd voor geheugen Prijscategorieën.
+- Replicatie van gegevens wordt alleen ondersteund in de Algemeen en de prijs categorieën die zijn geoptimaliseerd voor geheugen.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [instellen van replicatie van gegevens in](howto-data-in-replication.md).
+- Meer informatie over het [instellen van replicatie van gegevens](howto-data-in-replication.md).

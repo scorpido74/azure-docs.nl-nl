@@ -1,26 +1,25 @@
 ---
-title: Execute Pipeline-activiteit in Azure Data Factory | Microsoft Docs
-description: Lees hoe u de Execute Pipeline-activiteit kunt gebruiken om aan te roepen een Data Factory-pijplijn vanaf een andere Data Factory-pijplijn.
+title: De activiteit van de pijp lijn uitvoeren in Azure Data Factory | Microsoft Docs
+description: Meer informatie over hoe u de activiteit pijp lijn uitvoeren kunt gebruiken om een Data Factory pijp lijn vanuit een andere Data Factory pijp lijn aan te roepen.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1611f740f6b55ecf9f15ecd234d63b5e95baeba1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808851"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141708"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Execute Pipeline-activiteit in Azure Data Factory
-De Execute Pipeline-activiteit kunt een Data Factory-pijplijn om aan te roepen een andere pijplijn.
+# <a name="execute-pipeline-activity-in-azure-data-factory"></a>De activiteit van de pijp lijn uitvoeren in Azure Data Factory
+Met de activiteit voor het uitvoeren van de pijp lijn kan een Data Factory pijp lijn een andere pijp lijn aanroepen.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -62,19 +61,19 @@ De Execute Pipeline-activiteit kunt een Data Factory-pijplijn om aan te roepen e
 
 Eigenschap | Description | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de execute pipeline-activiteit. | String | Ja
-type | Moet worden ingesteld op: **ExecutePipeline**. | String | Ja
-Pijplijn | Pijplijn verwijzing naar de afhankelijke pijplijn die deze pijplijn aanroept. Een pijplijn reference-object heeft twee eigenschappen: **verwijzing** en **type**. De eigenschap verwijzing geeft de naam van de referentie-pijplijn. De eigenschap type moet worden ingesteld op PipelineReference. | PipelineReference | Ja
-parameters | Parameters worden doorgegeven aan de pijplijn aangeroepen | Een JSON-object dat de namen van parameters wordt toegewezen aan de waarden van het argument | Nee
-waitOnCompletion | Bepaalt of de uitvoeringsomgeving van de activiteit moet wachten voor de uitvoering van de afhankelijke pipeline om te voltooien. De standaardinstelling is onwaar. | Boolean | Nee
+name | De naam van de activiteit voor het uitvoeren van de pijp lijn. | Tekenreeks | Ja
+Type | Moet worden ingesteld op: **ExecutePipeline**. | Tekenreeks | Ja
+pijplijn | Pijplijn verwijzing naar de afhankelijke pijp lijn die deze pijp lijn aanroept. Een pijplijn referentie object heeft twee eigenschappen: **referentie** naam en **type**. De eigenschap refernaam geeft de naam van de referentie pijplijn aan. De eigenschap type moet worden ingesteld op PipelineReference. | PipelineReference | Ja
+parameters | De para meters die moeten worden door gegeven aan de aangeroepen pijp lijn | Een JSON-object waarmee parameter namen worden toegewezen aan argument waarden | Nee
+waitOnCompletion | Hiermee definieert u of de uitvoering van de activiteit wacht totdat de afhankelijke uitvoering van de pijp lijn is voltooid. De standaardinstelling is onwaar. | Boolean-waarde | Nee
 
 ## <a name="sample"></a>Voorbeeld
-In dit scenario heeft twee pijplijnen:
+Dit scenario heeft twee pijp lijnen:
 
-- **Master pijplijn** -deze pijplijn heeft één Execute Pipeline-activiteit die de aangeroepen pijplijn aanroept. De master pijplijn heeft twee parameters: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
-- **Aangeroepen pijplijn** -deze pijplijn heeft één kopieeractiviteit waarmee gegevens worden gekopieerd van de bron van een Azure-Blob naar Azure Blob-sink. De aangeroepen pijplijn heeft twee parameters: `sourceBlobContainer`, `sinkBlobContainer`.
+- **Hoofd pijplijn** : deze pijp lijn heeft één activiteit voor het uitvoeren van een pijp lijn die de aangeroepen pijp lijn aanroept. Voor de hoofd pijplijn worden twee para meters `masterSinkBlobContainer`gebruikt: `masterSourceBlobContainer`,.
+- **Aangeroepen pijp lijn** : deze pijp lijn heeft één Kopieer activiteit die gegevens kopieert van een Azure Blob-bron naar Azure Blob-sink. De aangeroepen pijp lijn heeft twee para meters `sourceBlobContainer`: `sinkBlobContainer`,.
 
-### <a name="master-pipeline-definition"></a>Master pijplijndefinitie
+### <a name="master-pipeline-definition"></a>Model pijplijn definitie
 
 ```json
 {
@@ -116,7 +115,7 @@ In dit scenario heeft twee pijplijnen:
 
 ```
 
-### <a name="invoked-pipeline-definition"></a>Aangeroepen pijplijndefinitie
+### <a name="invoked-pipeline-definition"></a>De definitie van de pijp lijn is aangeroepen
 
 ```json
 {
@@ -178,7 +177,7 @@ In dit scenario heeft twee pijplijnen:
 }
 ```
 
-**Brongegevensset**
+**Bron gegevensset**
 ```json
 {
     "name": "SourceBlobDataset",
@@ -219,9 +218,9 @@ In dit scenario heeft twee pijplijnen:
 }
 ```
 
-### <a name="running-the-pipeline"></a>De pijplijn
+### <a name="running-the-pipeline"></a>De pijp lijn uitvoeren
 
-Als u wilt de master pijplijn in dit voorbeeld uitvoert, worden de volgende waarden voor de parameters masterSourceBlobContainer en masterSinkBlobContainer doorgegeven: 
+Als u de hoofd pijplijn in dit voor beeld wilt uitvoeren, worden de volgende waarden door gegeven voor de para meters masterSourceBlobContainer en masterSinkBlobContainer: 
 
 ```json
 {
@@ -230,7 +229,7 @@ Als u wilt de master pijplijn in dit voorbeeld uitvoert, worden de volgende waar
 }
 ```
 
-De master pijplijn verzendt deze waarden aan de pijplijn aangeroepen, zoals wordt weergegeven in het volgende voorbeeld: 
+De hoofd pijplijn stuurt deze waarden naar de aangeroepen pijp lijn, zoals wordt weer gegeven in het volgende voor beeld: 
 
 ```json
 {
@@ -256,7 +255,7 @@ De master pijplijn verzendt deze waarden aan de pijplijn aangeroepen, zoals word
 
 ```
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere controlestroomactiviteiten die door Data Factory worden ondersteund: 
+Zie andere controle stroom activiteiten die door Data Factory worden ondersteund: 
 
 - [Voor elke activiteit](control-flow-for-each-activity.md)
 - [Get Metadata Activity](control-flow-get-metadata-activity.md)

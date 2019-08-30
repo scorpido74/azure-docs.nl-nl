@@ -1,7 +1,7 @@
 ---
-title: 'Score-Model: Moduleverwijzing'
+title: 'Score model: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module Score Model in Azure Machine Learning-service voor het genereren van voorspellingen met behulp van een getraind classificatie- of regressiemodel.
+description: Meer informatie over het gebruik van de module score model in Azure Machine Learning service om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,49 +9,48 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f8f7bfcbbf013f2cf32957772086d7e44d31e310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029263"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128508"
 ---
 # <a name="score-model-module"></a>De module Score Model (Scoremodel)
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om te genereren met behulp van een getraind classificatie- of regressiemodel model voorspellingen.
+Gebruik deze module om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
 
 ## <a name="how-to-use"></a>Gebruiksinstructies
 
-1. Voeg de **Score Model** module naar het experimentcanvas.
+1. Voeg de module **score model** toe aan uw experiment.
 
-2. Een getraind model en een gegevensset met nieuwe invoergegevens koppelen. 
+2. Koppel een getraind model en een gegevensset die nieuwe invoer gegevens bevat. 
 
-    De gegevens moet zich in een indeling die compatibel zijn met het type van het getrainde model dat u gebruikt. Het schema van de invoergegevensset moet over het algemeen ook overeenkomen met het schema van de gegevens die worden gebruikt voor het model te trainen.
+    De gegevens moeten een indeling hebben die compatibel is met het type getrainde model dat u gebruikt. Het schema van de invoer gegevensset moet ook algemeen overeenkomen met het schema van de gegevens die worden gebruikt om het model te trainen.
 
 3. Voer het experiment uit.
 
 ## <a name="results"></a>Resultaten
 
-Nadat u een set met behulp van scores hebt gegenereerd [Score Model](./score-model.md):
+Nadat u een set scores hebt gegenereerd met het [score model](./score-model.md):
 
-+ Voor het genereren van een set metrische gegevens voor de evaluatie van de nauwkeurigheid van het model (prestaties).  u verbinding kunt maken met de beoordeelde gegevensset in [Evaluate Model](./evaluate-model.md), 
-+ Met de rechtermuisknop op de module en selecteer **Visualize** om te zien van een voorbeeld van de resultaten.
-+ De resultaten opslaan in een gegevensset.
++ Genereren van een set metrische gegevens die worden gebruikt voor het evalueren van de nauw keurigheid van het model (prestaties).  u kunt de gescoorde gegevensset verbinden om het [model te evalueren](./evaluate-model.md). 
++ Klik met de rechter muisknop op de module en selecteer visualiseren om een voor beeld van de resultaten weer te geven.
++ Sla de resultaten op in een gegevensset.
 
-De score, of de voorspelde waarde, kan in veel verschillende indelingen, afhankelijk van het model en de invoergegevens zijn:
+De Score of voorspelde waarde kan in veel verschillende indelingen worden opgegeven, afhankelijk van het model en uw invoer gegevens:
 
-- Voor modellen voor classificatie, [Score Model](./score-model.md) levert een voorspelde waarde voor de klasse, evenals de kans van de voorspelde waarde.
-- Voor regressiemodellen, [Score Model](./score-model.md) genereert de voorspelde numerieke waarde zijn.
-- Voor modellen voor classificatie van afbeelding mogelijk de score is de klasse van het object in de afbeelding of een Booleaanse waarde die aangeeft of een bepaalde functie is gevonden.
+- Voor classificatie modellen voert het [score model](./score-model.md) een voorspelde waarde uit voor de klasse, evenals de waarschijnlijkheid van de voorspelde waarde.
+- Voor regressie modellen genereert het [score model](./score-model.md) alleen de voorspelde numerieke waarde.
+- Voor afbeeldings classificatie modellen kan de score de klasse van het object in de afbeelding zijn of een Booleaanse waarde die aangeeft of een bepaalde functie is gevonden.
 
-## <a name="publish-scores-as-a-web-service"></a>Scores als een webservice publiceren
+## <a name="publish-scores-as-a-web-service"></a>Scores publiceren als een webservice
 
-Een algemene gebruik van de score is dat wordt geretourneerd van de uitvoer als onderdeel van een voorspellende webservice. Zie voor meer informatie in deze zelfstudie over het maken van een webservice op basis van een experiment in Azure Machine Learning:
+Een gemeen schappelijk gebruik van scores is het retour neren van de uitvoer als onderdeel van een voorspellende webservice. Zie voor meer informatie deze zelf studie over het maken van een webservice op basis van een experiment in Azure Machine Learning:
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

@@ -1,7 +1,7 @@
 ---
-title: 'Two-Class Logistic Regression: Moduleverwijzing'
+title: 'Logistiek regressie met twee klassen: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module Two-Class Logistic Regression in Azure Machine Learning-service te maken van een model voor logistieke regressie die kan worden gebruikt om te voorspellen van uitkomsten twee (en slechts twee).
+description: Meer informatie over het gebruik van de module logistiek-regressie van twee klassen in Azure Machine Learning service voor het maken van een logistiek regressie model dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,83 +9,82 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: aacaf6c64ef77d0e694f97e3675060eca33794ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029248"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128384"
 ---
-# <a name="two-class-logistic-regression-module"></a>Two-Class Logistic Regression-module
+# <a name="two-class-logistic-regression-module"></a>Logistiek regressie module met twee klassen
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Deze module gebruiken voor het maken van een model voor logistieke regressie die kan worden gebruikt om te voorspellen van uitkomsten twee (en slechts twee). 
+Met deze module kunt u een logistiek regressie model maken dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen. 
 
-Logistieke regressie is een bekende statistische techniek die wordt gebruikt voor het modelleren van vele soorten problemen. Deze algoritme is een *onder supervisie learning* methode.  Daarom moet u een gegevensset die al de resultaten bevat voor het model te trainen.  
+Logistiek regressie is een goed bekende statistische techniek die wordt gebruikt voor het model leren van veel problemen. Dit algoritme is een *gesupere leer* methode;  Daarom moet u een gegevensset opgeven die al de resultaten bevat om het model te trainen.  
 
 ### <a name="about-logistic-regression"></a>Over logistieke regressie  
 
-Logistieke regressie is een bekende methode in statistieken die wordt gebruikt voor het voorspellen van de kans op een resultaat en met name populaire voor classificatie taken. Het algoritme voorspelt de kans op een gebeurtenis door gegevens naar een logistieke functie.
+Logistiek regressie is een bekende methode in statistieken die wordt gebruikt om de kans op een resultaat te voors pellen en is met name populair bij classificatie taken. Het algoritme voor spelt de kans op een gebeurtenis door gegevens aan een logistiek functie toe te passen.
   
-In deze module worden de classificatiealgoritme is geoptimaliseerd voor dichotomous of binaire variabelen. Als u nodig hebt voor het classificeren van meerdere resultaten, gebruikt u de [Multiklasse Logistic Regression](./multiclass-logistic-regression.md) module.
+In deze module is het classificatie algoritme geoptimaliseerd voor dichotomous of binaire variabelen. Als u meerdere resultaten wilt classificeren, gebruikt u de module [logistiek-regressie](./multiclass-logistic-regression.md) (multi klasse).
 
 ##  <a name="how-to-configure"></a>Configureren  
 
-Als u wilt dit model te trainen, moet u een gegevensset die een label of klasse kolom bevat. Omdat deze module is bedoeld voor problemen met twee klassen, moet de kolom label of klasse precies twee waarden bevatten. 
+Als u dit model wilt trainen, moet u een gegevensset opgeven die een kolom van het type label of klasse bevat. Omdat deze module is bedoeld voor problemen met twee klassen, moet de kolom Label of klasse precies twee waarden bevatten. 
 
-Bijvoorbeeld, de labelkolom mogelijk [gestemd] met de mogelijke waarden van "Ja" of "Nee". Of [kredietrisico], kan het zijn met de mogelijke waarden voor 'Hoog' of 'Laag'. 
+De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of ' no '. Het kan ook [Credit Risk] zijn, met mogelijke waarden van ' hoog ' of ' laag '. 
   
-1.  Voeg de **Two-Class Logistic Regression** module naar het experimentcanvas.  
+1.  Voeg de module **logistiek-regressie met twee klassen** toe aan uw experiment.  
   
-2.  Geef op hoe u het model te trainen, door in te stellen de **trainer aanmaakmodus** optie.  
+2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén Parameter**: Als u hoe u wilt configureren van het model weet, kunt u een specifieke set waarden opgeven als argumenten.  
+    -   **Eén para meter**: Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
   
-3.  Voor **optimalisatie tolerantie**, Geef een waarde voor drempel te gebruiken bij het optimaliseren van het model. Als de verbetering tussen iteraties onder de opgegeven drempelwaarde valt, het algoritme wordt beschouwd als aan een oplossing hebben geconvergeerde en training stopt.  
+3.  Geef bij **optimalisatie tolerantie**een drempel waarde op die moet worden gebruikt bij het optimaliseren van het model. Als de verbetering tussen herhalingen onder de opgegeven drempel waarde valt, wordt het algoritme gezien als geconvergeerd op een oplossing en stopt de training.  
   
-4.  Voor **L1 regularisatie gewicht** en **L2 regularisatie gewicht**, typt u een waarde moet worden gebruikt voor de parameters regularisatie L1 en L2. Een andere waarde dan nul wordt aanbevolen voor beide.  
+4.  Typ voor **L1 regularisatie Weight** en **L2 regularisatie Weight**een waarde om te gebruiken voor de regularisatie-para meters L1 en L2. Een andere waarde dan nul wordt aanbevolen voor beide.  
   
-     *Regularisatie* is een methode om te voorkomen door het penalizing modellen met extreme coëfficiënt waarden. Regularisatie werkt door de boete die is gekoppeld aan de fout van de hypothese coëfficiënt waarden toe te voegen. Zo zou een nauwkeurige model met extreme coëfficiënt waarden meer worden bestraft, maar een minder nauwkeurig model met meer conservatieve waarden minder zou worden bestraft.  
+     *Regularisatie* is een methode voor het voor komen van overmontage door het bestraffen van modellen met extreme coëfficiënt waarden. Regularisatie werkt door de sanctie toe te voegen die is gekoppeld aan coëfficiënt waarden voor de fout van de hypo these. Een nauw keurig model met extreme coëfficiënt waarden zou dus meer worden bestraft, maar een minder nauw keurig model met meer conservatieve waarden zou minder worden bestraft.  
   
-     L1 en L2 regularisatiegraad hebben verschillende effecten en gebruikt.  
+     L1 en L2-regularisatie hebben verschillende effecten en worden gebruikt.  
   
-    -   L1 kan worden toegepast op sparse modellen, dit is handig als u werkt met high-dimensionale gegevens.  
+    -   L1 kan worden toegepast op sparse modellen, wat handig is bij het werken met zeer dimensionale gegevens.  
   
-    -   L2-regularisatie is daarentegen beter voor gegevens die geen sparse.  
+    -   In tegens telling tot L2-regularisatie is de voor keur voor gegevens die niet sparse zijn.  
   
-     Dit algoritme biedt ondersteuning voor een lineair kombinaci hodnot L1 en L2 regularisatie: dat wil zeggen, als <code>x = L1</code> en <code>y = L2</code>, klikt u vervolgens <code>ax + by = c</code> definieert het lineair bereik van de voorwaarden regularisatie.  
+     Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: <code>x = L1</code> dat <code>y = L2</code>wil zeggen <code>ax + by = c</code> , als en en vervolgens de lineaire lijn van de regularisatie-voor waarden definieert.  
   
     > [!NOTE]
-    >  Wilt u meer informatie over L1 en L2 regularisatie? Het volgende artikel vindt u een beschrijving van hoe L1 en L2 regularisatie verschillen en hoe ze van invloed op model aanpassing van labels, met codevoorbeelden voor logistieke regressie en modellen neurale netwerk:  [L1 en L2 Regularisatiegraad voor Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
+    >  Wilt u meer informatie over L1 en L2-regularisatie? In het volgende artikel wordt uitgelegd hoe L1 en L2 regularisatie verschillend zijn en hoe deze van invloed zijn op model fitting, met code voorbeelden voor logistiek-regressie en Neural-netwerk modellen:  [L1 en L2-regularisatie voor Machine Learning](https://msdn.microsoft.com/magazine/dn904675.aspx)  
     >
-    > Verschillende lineair combinaties van L1 en L2 termen hebben is ontworpen voor logistieke regressiemodellen: bijvoorbeeld [elastische net regularisatie](https://wikipedia.org/wiki/Elastic_net_regularization). Het is raadzaam dat u verwijzen naar deze combinaties voor het definiëren van een combinatie van lineair die in uw model van kracht is.
+    > Er zijn verschillende lineaire combi Naties van L1-en L2-termen ontwikkeld voor logistieke regressie modellen: bijvoorbeeld [elastische net regularisatie](https://wikipedia.org/wiki/Elastic_net_regularization). U wordt aangeraden om te verwijzen naar deze combi Naties om een lineaire combi natie te definiëren die effectief is in uw model.
       
-5.  Voor **geheugengrootte voor L BFGS**, geef de hoeveelheid geheugen te gebruiken voor *L BFGS* optimalisatie.  
+5.  Geef voor de **geheugen grootte voor l-BFGS**de hoeveelheid geheugen op die moet worden gebruikt voor de optimalisatie van *l-BFGS* .  
   
-     L-BFGS staat voor 'beperkt geheugen Broyden Fletcher-Goldfarb Shanno'. Het is een optimalisatie-algoritme dat wordt gebruikt voor schatting van de parameter. Deze parameter geeft het aantal afgelopen posities en verlopen om op te slaan voor de berekening van de volgende stap.  
+     L-BFGS staat voor ' Limited Memory Broyden-Fletcher-Goldfarb-Shanno '. Het is een optimalisatie algoritme dat populair is voor de schatting van de para meters. Met deze para meter wordt het aantal vroegere posities en verlopen aangegeven dat moet worden opgeslagen voor de berekening van de volgende stap.  
   
-     Deze parameter optimalisatie beperkt de hoeveelheid geheugen die wordt gebruikt voor het berekenen van de volgende stap en de richting. Wanneer u minder geheugen opgeeft, wordt training is sneller, maar minder nauwkeurig.  
+     Deze optimalisatie parameter beperkt de hoeveelheid geheugen die wordt gebruikt voor het berekenen van de volgende stap en richting. Wanneer u minder geheugen opgeeft, is de training sneller, maar minder nauw keurig.  
   
-6.  Voor **willekeurig getal seed**, typt u een geheel getal. Definieert een seed-waarde is van belang als u de resultaten worden gereproduceerd via meerdere uitvoeringen van het hetzelfde experiment wilt.  
+6.  Voor **wille keurig getal zaad**typt u een geheel getal. Het definiëren van een Seed-waarde is belang rijk als u wilt dat de resultaten worden gereproduceerd over meerdere uitvoeringen van hetzelfde experiment.  
   
   
-8. Een gegevensset met tags toevoegen aan het experiment en verbinding maken met een van de [trainingsmodules](module-reference.md).  
+8. Voeg een gecodeerde gegevensset toe aan het experiment en Verbind een van de [trainings modules](module-reference.md).  
   
-    -   Als u instelt **trainer aanmaakmodus** naar **één Parameter**, gebruikt u de [Train Model](./train-model.md) module.  
+    -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](./train-model.md) .  
   
 9. Voer het experiment uit.  
   
 ## <a name="results"></a>Resultaten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ U ziet een overzicht van de parameters van het model, samen met de functie gewichten geleerd van training, met de rechtermuisknop op de uitvoer van [Train Model](./train-model.md) en selecteer **Visualize**.   
++ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd van training,klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) en selecteert u visualiseren.   
   
-+ Gebruiken om voorspellingen te maken van nieuwe gegevens, het getrainde model en de nieuwe gegevens als invoer voor de [Score Model](./score-model.md) module. 
++ Als u voor spellingen wilt doen op nieuwe gegevens, gebruikt u het getrainde model en de nieuwe gegevens als invoer voor de module [score model](./score-model.md) . 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

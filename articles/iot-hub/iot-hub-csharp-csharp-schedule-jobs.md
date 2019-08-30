@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 4847a69e7ffaefca8e0c738aee6e1077f421ec62
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: db4824203f63fa2fe0d4256a475d18a501b17e0e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049051"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147742"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Taken plannen en uitzenden (.NET)
 
@@ -50,8 +50,6 @@ Aan het einde van deze zelf studie hebt u twee .NET (C#)-console-apps:
 * **ScheduleJob**. Deze app maakt gebruik van taken om de **LockDoor** direct-methode aan te roepen en de dubbele gewenste eigenschappen van het apparaat op meerdere apparaten bij te werken.
 
 ## <a name="prerequisites"></a>Vereisten
-
-Voor deze zelfstudie hebt u het volgende nodig:
 
 * Visual Studio.
 

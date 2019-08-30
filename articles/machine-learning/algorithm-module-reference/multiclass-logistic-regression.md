@@ -1,7 +1,7 @@
 ---
-title: 'Multiklassen Logistic Regression: Moduleverwijzing'
+title: 'Geocategorie logistiek regressie: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module Multiklasse Logistic Regression in Azure Machine Learning-service te maken van een model voor logistieke regressie die kan worden gebruikt om meerdere waarden te voorspellen.
+description: Meer informatie over het gebruik van de module logistiek-regressie voor meerdere klassen in Azure Machine Learning service voor het maken van een logistiek regressie model dat kan worden gebruikt voor het voors pellen van verschillende waarden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,63 +9,62 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ac4310e851808d6e6d89d1a2b506975eea3b1d69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d51bc48944204b4c7c50790949927849869f26fc
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029323"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128639"
 ---
-# <a name="multiclass-logistic-regression-module"></a>Multiklassen Logistic Regression-module
+# <a name="multiclass-logistic-regression-module"></a>Module logistiek-regressie voor multi klasse
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Deze module gebruiken voor het maken van een model voor logistieke regressie die kan worden gebruikt om meerdere waarden te voorspellen.
+Met deze module kunt u een logistiek regressie model maken dat kan worden gebruikt om meerdere waarden te voors pellen.
 
-Classificatie met logistieke regressie is een methode voor het leren met supervisie, en daarom vereist een gelabelde gegevensset. Het model te trainen, zoals het model en de gelabelde gegevensset als invoer voor een module bieden [Train Model](./train-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden voor nieuwe invoer voorbeelden te voorspellen.
+Classificatie met behulp van logistiek regressie is een geclassificeerde leer methode en vereist daarom een gegevensset met een label. U traint het model door het model en de gelabelde gegevensset op te geven als invoer voor een module, zoals [Train model](./train-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden voor nieuwe invoer voorbeelden te voors pellen.
 
-Azure Machine Learning biedt ook een [Two-Class Logistic Regression](./two-class-logistic-regression.md) -module, die voor de classificatie van binaire of dichotomous variabelen geschikt is.
+Azure Machine Learning biedt ook een [logistiek regressie module van twee klassen](./two-class-logistic-regression.md) , die geschikt is voor de classificatie van binaire of dichotomous variabelen.
 
-## <a name="about-multiclass-logistic-regression"></a>Over multiklassen logistieke regressie
+## <a name="about-multiclass-logistic-regression"></a>Over een logistiek regressie voor multi klasse
 
-Logistieke regressie is een bekende methode in statistieken die wordt gebruikt voor het voorspellen van de kans op een resultaat en wordt vaak gebruikt voor taken voor bestandsclassificatie. Het algoritme voorspelt de kans op een gebeurtenis door gegevens naar een logistieke functie. 
+Logistiek regressie is een bekende methode in statistieken die wordt gebruikt om de kans op een resultaat te voors pellen en populair is voor classificatie taken. Het algoritme voor spelt de kans op een gebeurtenis door gegevens aan een logistiek functie toe te passen. 
 
-In multiklassen logistieke regressie, kan de classificatie die worden gebruikt om meerdere resultaten te voorspellen.
+In een logistiek-regressie met meerdere klassen kan de classificatie worden gebruikt voor het voors pellen van meervoudige resultaten.
 
-## <a name="configure-a-multiclass-logistic-regression"></a>Een multiklassen logistic regression configureren
+## <a name="configure-a-multiclass-logistic-regression"></a>Een logistiek-regressie met meer klasse configureren
 
-1. Voeg de **Multiklasse Logistic Regression** module naar het experimentcanvas.
+1. Voeg de module **logistiek-regressie** voor multi klasse toe aan het experiment.
 
-2. Geef op hoe u het model te trainen, door in te stellen de **trainer aanmaakmodus** optie.
+2. Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
 
-    + **Eén Parameter**: Gebruik deze optie als u hoe u wilt configureren van het model weet, en een specifieke set waarden als argumenten.
+    + **Eén para meter**: Gebruik deze optie als u weet hoe u het model wilt configureren en een specifieke set waarden als argumenten kunt opgeven.
 
-    + **Bereik van de parameter**: Gebruik deze optie als u niet zeker van de beste parameters bent en wilt gebruiken van een parameteropschoning.
+    + **Parameter bereik**: Gebruik deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt gebruiken.
 
-3. **Optimalisatie van tolerantie**, geef de drempelwaarde voor convergentie optimaliseren. Als de verbetering tussen iteraties lager dan de drempelwaarde is, wordt het algoritme afgebroken en retourneert het huidige model.
+3. **Optimalisatie tolerantie**, geeft u de drempel waarde voor optimalisatie convergentie op. Als de verbetering tussen herhalingen kleiner is dan de drempel waarde, wordt het algoritme gestopt en wordt het huidige model geretourneerd.
 
-4. **L1 regularisatie gewicht**, **L2 regularisatie gewicht**: Typ een waarde moet worden gebruikt voor de parameters regularisatie L1 en L2. Een andere waarde dan nul wordt aanbevolen voor beide.
+4. **L1 regularisatie Weight**, **L2-regularisatie gewicht**: Typ een waarde die moet worden gebruikt voor de regularisatie-para meters L1 en L2. Een andere waarde dan nul wordt aanbevolen voor beide.
 
-    Regularisatie is een methode om te voorkomen door penalizing modellen met extreme coëfficiënt waarden. Regularisatie werkt door de boete die is gekoppeld aan de fout van de hypothese coëfficiënt waarden toe te voegen. Een nauwkeurige model met extreme coëfficiënt waarden meer zou worden bestraft, maar een minder nauwkeurig model met meer conservatieve waarden minder zou worden bestraft.
+    Regularisatie is een methode voor het voor komen van overmontage door het bestraffen van modellen met extreme coëfficiënt waarden. Regularisatie werkt door de sanctie toe te voegen die is gekoppeld aan coëfficiënt waarden voor de fout van de hypo these. Een nauw keurig model met extreme coëfficiënt waarden wordt meer bestraft, maar een minder nauw keurig model met meer conservatieve waarden zou minder worden bestraft.
 
-     L1 en L2 regularisatiegraad hebben verschillende effecten en gebruikt. L1 kan worden toegepast op sparse modellen, dit is handig als u werkt met high-dimensionale gegevens. L2-regularisatie is daarentegen beter voor gegevens die geen sparse.  Dit algoritme biedt ondersteuning voor een lineair kombinaci hodnot L1 en L2 regularisatie: dat wil zeggen, als `x = L1` en `y = L2`, `ax + by = c` het lineair bereik van de voorwaarden regularisatie definieert.
+     L1 en L2-regularisatie hebben verschillende effecten en worden gebruikt. L1 kan worden toegepast op sparse modellen, wat handig is bij het werken met zeer dimensionale gegevens. In tegens telling tot L2-regularisatie is de voor keur voor gegevens die niet sparse zijn.  Dit algoritme ondersteunt een lineaire combi natie van L1-en L2-regularisatie-waarden: `x = L1` dat `y = L2`wil `ax + by = c` zeggen, als en, de lineaire reeks van de regularisatie-voor waarden definieert.
 
-     Verschillende lineair combinaties van L1 en L2 termen hebben is ontworpen voor logistieke regressiemodellen, zoals [elastische net regularisatie](https://wikipedia.org/wiki/Elastic_net_regularization).
+     Er zijn verschillende lineaire combi Naties van L1-en L2-termen ontwikkeld voor logistieke regressie modellen, zoals [elastische net regularisatie](https://wikipedia.org/wiki/Elastic_net_regularization).
 
-6. **Willekeurig getal seed**: Typ een geheel getal te gebruiken als basis voor de algoritme als u wilt dat de resultaten om te worden herhaald op wordt uitgevoerd. Anders wordt de waarde van een system clock gebruikt als de seed, hetgeen leiden iets anders resulteert in uitvoeringen van het hetzelfde experiment tot kan.
+6. **Wille keurig aantal Seed**: Typ een geheel getal dat moet worden gebruikt als seed voor het algoritme als u wilt dat de resultaten herhaaldelijk worden uitgevoerd. Anders wordt een waarde van de systeem klok gebruikt als seed, waardoor er iets andere resultaten kunnen worden geproduceerd in uitvoeringen van hetzelfde experiment.
 
-8. Verbinding maken met een gegevensset met gelabelde en een van de trein-modules:
+8. Verbind een gegevensset met een label en een van de trein modules:
 
-    + Als u instelt **trainer aanmaakmodus** naar **één Parameter**, gebruikt u de [Train Model](./train-model.md) module.
+    + Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](./train-model.md) .
 
 9. Voer het experiment uit.
 
 ## <a name="results"></a>Resultaten
 
-Nadat de training is voltooid, kunt u een overzicht van de parameters van het model, samen met de functie gewichten geleerd van training, met de rechtermuisknop op de uitvoer van de [Train Model](./train-model.md) -module en selecteer **Visualize**.
+Nadat de training is voltooid, ziet u een samen vatting van de para meters van het model, samen met de functie gewichten die zijn geleerd van training, klikt u met de rechter muisknopop de uitvoer van de module [Train model](./train-model.md) en selecteert u visualiseren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

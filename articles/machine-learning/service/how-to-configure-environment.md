@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848206"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128343"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 
@@ -30,7 +30,7 @@ In de volgende tabel ziet u elke ontwikkel omgeving die in dit artikel wordt beh
 | [Lokale omgeving](#local) | Volledig beheer van uw ontwikkel omgeving en afhankelijkheden. Voer uit met een hulp programma, omgeving of IDE van uw keuze. | Duurt langer om aan de slag te gaan. De benodigde SDK-pakketten moeten worden geïnstalleerd en er moet ook een omgeving worden geïnstalleerd als u er nog geen hebt. |
 | [Azure Databricks](#aml-databricks) | Ideaal voor het uitvoeren van grootschalige intensieve machine learning werk stromen op het schaal bare Apache Spark platform. | Overbodig voor experimentele machine learning, of kleinschalige experimenten en werk stromen. Er zijn extra kosten gemaakt voor Azure Databricks. Zie de [prijs informatie](https://azure.microsoft.com/pricing/details/databricks/). |
 | [De Data Science Virtual Machine (DSVM)](#dsvm) | Net als bij de cloud-gebaseerde Notebook-VM (python en de SDK zijn vooraf geïnstalleerd), maar met extra populaire gegevens wetenschap en machine learning-hulpprogram ma's vooraf geïnstalleerd. Eenvoudig te schalen en combi neren met andere aangepaste hulp middelen en werk stromen. | Een langzamere aan de slag-ervaring vergeleken met de virtuele machine op de Cloud-notebook. |
-| [Azure Notebooks](#aznotebooks) | De aan de slag-ervaring voor gratis en licht gewicht, met python en de SDK vooraf geïnstalleerd. | Minder krachtige VM'S beschikbaar vergeleken met virtuele machines in de Cloud. Geïsoleerd van werk ruimte en andere resources. |
+| [Azure Notebooks](#aznotebooks) | De gratis en lichte aan de slag-ervaring, met python en de SDK vooraf geïnstalleerd. | Minder krachtige Vm's die beschikbaar zijn in vergelijking met VM op basis van een virtuele machine. Geïsoleerd van werk ruimte en andere resources. |
 
 Dit artikel bevat ook extra tips voor het gebruik van de volgende hulpprogram ma's:
 
@@ -187,16 +187,21 @@ Wanneer u een lokale computer gebruikt (dit kan ook een externe virtuele machine
 
     Met deze opdracht wordt de basis-Azure Machine Learning SDK met notebook-en automl-extra's geïnstalleerd. De `automl` extra is een grote installatie. u kunt de vier Kante haken verwijderen als u niet van plan bent om automatische machine learning experimenten uit te voeren. De `automl` extra bevat ook de Azure machine learning data prep SDK standaard als een afhankelijkheid.
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > Als u een bericht krijgt dat PyYAML niet kan worden verwijderd, gebruikt u in plaats daarvan de volgende opdracht:
+   > * Als u een bericht krijgt dat PyYAML niet kan worden verwijderd, gebruikt u in plaats daarvan de volgende opdracht:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * Vanaf macOS Catalina is zsh (Z Shell) de standaard aanmeldings shell en de interactieve shell. Gebruik in zsh de volgende opdracht waarmee haakjes worden voorafgegaan door "\\" (back slash):
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Het duurt enkele minuten voordat de SDK is geïnstalleerd. Raadpleeg de [installatie handleiding](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) voor meer informatie over de installatie opties.
+
+   Het duurt enkele minuten voordat de SDK is geïnstalleerd. Zie de [installatie handleiding](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)voor meer informatie over installatie opties.
 
 1. Installeer andere pakketten voor uw machine learning experimenten.
 
@@ -280,7 +285,7 @@ Ga als volgt te werk om Visual Studio code te gebruiken voor ontwikkeling:
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
-Azure Databricks is een op Apache Spark gebaseerde omgeving in de Azure-Cloud. Het biedt een samen werkende notebook omgeving met een CPU of gebaseerd reken cluster op basis van GPU.
+Azure Databricks is een op Apache Spark gebaseerde omgeving in de Azure-Cloud. Het biedt een samen werkende notebook omgeving met een CPU of een reken cluster op basis van GPU.
 
 Hoe Azure Databricks werkt met Azure Machine Learning-service:
 + U kunt een model trainen met Spark MLlib en het model implementeren naar ACI/AKS in Azure Databricks.
@@ -294,7 +299,7 @@ Maak een [Databricks-cluster](https://docs.microsoft.com/azure/azure-databricks/
 
 Gebruik deze instellingen:
 
-| Instelling |Van toepassing op| Waarde |
+| Instelling |Van toepassing op| Value |
 |----|---|---|
 | Clusternaam |altijd| yourclustername |
 | Databricks Runtime |altijd| Een niet-ML-runtime (niet ML 4. x, 5. x) |
@@ -329,10 +334,10 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
    1. Selecteer **opnieuw opstarten**op het tabblad **tape wisselaars** .
 
    Houd ook rekening met het volgende:
-   + Voeg in Automl config de volgende para meters toe wanneer u Azure Databricks gebruikt:
+   + Bij het gebruik van Azure Databricks de volgende para meters toevoegen in AutoML config:
        1. ```max_concurrent_iterations```is gebaseerd op het aantal worker-knoop punten in uw cluster.
         2. ```spark_context=sc```is gebaseerd op de standaard Spark-context.
-   + Als u een oude SDK-versie hebt, kunt u deze opheffen door de geïnstalleerde bibliotheken van het cluster te verwijderen en naar de Prullenbak te gaan. Installeer de nieuwe SDK-versie en start het cluster opnieuw op. Als er een probleem is, koppelt u het cluster en koppelt u het opnieuw.
+   + Als u een oude SDK-versie hebt, kunt u deze opheffen door de geïnstalleerde bibliotheken van het cluster te verwijderen en naar de Prullenbak te gaan. Installeer de nieuwe SDK-versie en start het cluster opnieuw op. Als er een probleem is nadat de computer opnieuw is opgestart, ontkoppelt u het cluster en koppelt u het opnieuw.
 
 Als de installatie is voltooid, moet de geïmporteerde bibliotheek er ongeveer als volgt uitzien:
 

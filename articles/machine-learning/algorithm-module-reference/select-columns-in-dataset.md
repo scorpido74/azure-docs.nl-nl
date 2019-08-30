@@ -1,7 +1,7 @@
 ---
-title: 'Kolommen in gegevensset selecteren: Moduleverwijzing'
+title: 'Kolommen selecteren in gegevensset: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de Select-Columns in Dataset module in Azure Machine Learning-service om te kiezen van een subset van kolommen die worden gebruikt in downstream-bewerkingen.
+description: Meer informatie over het gebruik van de module select columns in dataset in Azure Machine Learning service om een subset van kolommen te kiezen die moeten worden gebruikt in downstream-bewerkingen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,103 +9,102 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: e7407f62bd3401411d56076b298bd8cd134ece62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028093"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128496"
 ---
-# <a name="select-columns-in-dataset-module"></a>Selecteer kolommen in gegevensset-module
+# <a name="select-columns-in-dataset-module"></a>Kolommen in de module gegevensset selecteren
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om een subset van kolommen die worden gebruikt in downstream-bewerkingen. De module verwijderen de kolommen niet fysiek van de brongegevensset; in plaats daarvan wordt een subset van kolommen, net als een database gemaakt *weergave* of *projectie*.
+Gebruik deze module om een subset van kolommen te kiezen die moeten worden gebruikt in downstream-bewerkingen. De-module verwijdert de kolommen niet fysiek uit de gegevensset van de bron. in plaats daarvan wordt er een subset met kolommen gemaakt, zoals een database *weergave* of *projectie*.
 
-Deze module is handig wanneer u nodig hebt om te beperken van de kolommen die beschikbaar zijn voor een downstream-bewerking, of als u wilt de grootte van de gegevensset beperken door het verwijderen van overbodige kolommen.
+Deze module is handig als u de beschik bare kolommen voor een stroomafwaartse bewerking wilt beperken of als u de grootte van de gegevensset wilt beperken door overbodige kolommen te verwijderen.
 
-De kolommen in de gegevensset worden uitgevoerd in dezelfde volgorde als in de oorspronkelijke gegevens, zelfs als u ze in een andere volgorde opgeeft.
+De kolommen in de gegevensset worden uitgevoerd in dezelfde volg orde als in de oorspronkelijke gegevens, zelfs als u deze in een andere volg orde opgeeft.
 
 ## <a name="how-to-use"></a>Gebruiksinstructies
 
-Deze module heeft geen parameters. De kolomkiezer kunt u de kolommen wilt opnemen of uitsluiten kiezen.
+Deze module heeft geen para meters. U gebruikt de kolom kiezer om de kolommen te kiezen die u wilt opnemen of uitsluiten.
 
-### <a name="choose-columns-by-name"></a>Kolommen kiezen met de naam
+### <a name="choose-columns-by-name"></a>Kolommen op naam kiezen
 
-Er zijn meerdere opties in de module voor het kiezen van kolommen met de naam: 
+De module bevat meerdere opties voor het kiezen van kolommen op naam: 
 
 + Filteren en zoeken
 
-    Klik op de **op naam** optie.
+    Klik op de optie **op naam** .
 
-    Als u een gegevensset die al is gevuld hebt verbonden, wordt een lijst met beschikbare kolommen moet worden weergegeven. Als er geen kolommen worden weergegeven, moet u mogelijk uitvoeren upstream modules om de lijst met kolommen weer te geven.
+    Als u een gegevensset hebt verbonden die al is gevuld, wordt een lijst met beschik bare kolommen weer gegeven. Als er geen kolommen worden weer gegeven, moet u mogelijk upstream-modules uitvoeren om de kolom lijst weer te geven.
 
-    Filter de lijst, typ in het zoekvak in. Bijvoorbeeld, als u de letter typt `w` in het zoekvak in de lijst is gefilterd om weer te geven van de namen van de kolommen die de letter bevatten `w`.
+    Als u de lijst wilt filteren, typt u in het zoekvak. Als u bijvoorbeeld de letter `w` in het zoekvak typt, wordt de lijst gefilterd om de kolom namen weer te geven die de letter `w`bevatten.
 
-    Kolommen selecteren en klik op de knop pijl-rechts om de geselecteerde kolommen verplaatsen naar de lijst in het rechter deelvenster.
+    Selecteer kolommen en klik op de pijl naar rechts om de geselecteerde kolommen te verplaatsen naar de lijst in het rechterdeel venster.
 
-    + Als u wilt een continue reeks kolomnamen selecteren, drukt u op **Shift + klik**.
-    + Afzonderlijke kolommen toevoegen aan de selectie, drukt u op **Ctrl + klikken**.
+    + Als u een doorlopend bereik van kolom namen wilt selecteren, drukt u op **Shift + Klik**.
+    + Als u afzonderlijke kolommen wilt toevoegen aan de selectie, drukt u op **CTRL + klik**.
 
-    Klik op de knop met het vinkje als u wilt opslaan en sluiten.
+    Klik op de knop voor het selectie vakje om op te slaan en te sluiten.
 
-+ De namen gebruiken in combinatie met andere regels
++ Namen gebruiken in combi natie met andere regels
 
-    Klik op de **met regels** optie.
+    Klik op de optie **with Rules** .
     
-    Kies een regel, zoals het weergeven van de kolommen van een specifieke gegevens.
+    Kies een regel, bijvoorbeeld om kolommen van een specifiek gegevens type weer te geven.
 
-    Klik vervolgens op afzonderlijke kolommen van dat type met de naam, aan de selectielijst.
+    Klik vervolgens op afzonderlijke kolommen van het type op naam om ze toe te voegen aan de selectie lijst.
 
-+ Typ of plak een door komma's gescheiden lijst met kolomnamen
++ Typ of plak een door komma's gescheiden lijst met kolom namen
 
-    Als uw gegevensset breed is, is mogelijk eenvoudiger te gebruiken van indexen of afzonderlijk gegenereerd van lijsten met namen, in plaats van kolommen te selecteren. Ervan uitgaande dat u hebt de lijst van tevoren voorbereid:
+    Als uw gegevensset breed is, is het eenvoudiger om indexen of gegenereerde lijsten met namen te gebruiken in plaats van de kolommen afzonderlijk te selecteren. Ervan uitgaande dat u de lijst van tevoren hebt voor bereid:
 
-    1. Klik op de **met regels** optie. 
-    2. Selecteer **geen kolommen**, selecteer **opnemen**, en klik vervolgens in het tekstvak met het rode uitroepteken. 
-    3. Plak of typ een door komma's gescheiden lijst met eerder gevalideerde kolomnamen. U kan niet opslaan in de module als elke kolom een ongeldige naam heeft, dus moet u om te controleren op de namen van de vooraf.
+    1. Klik op de optie **with Rules** . 
+    2. Selecteer **geen kolommen**, selecteer **insluiten**en klik in het tekstvak met het rode uitroep teken. 
+    3. Plak of typ een door komma's gescheiden lijst met eerder gevalideerde kolom namen. U kunt de module niet opslaan als een kolom een ongeldige naam heeft. Zorg er dus voor dat u de namen van tevoren controleert.
     
-    U kunt deze methode ook gebruiken om op te geven van een lijst met kolommen met behulp van de indexwaarden. 
+    U kunt deze methode ook gebruiken om een lijst met kolommen op te geven met behulp van de index waarden. 
 
-### <a name="choose-by-type"></a>Kies per type
+### <a name="choose-by-type"></a>Kiezen op type
 
-Als u de **met regels** optie, kunt u meerdere voorwaarden toepassen op de kolomselecties die. Bijvoorbeeld, moet u mogelijk alleen functie kolommen van een numeriek gegevenstype worden opgehaald.
+Als u de optie **with Rules** gebruikt, kunt u meerdere voor waarden Toep assen op de kolom selecties. Zo moet u mogelijk alleen functie kolommen van een numeriek gegevens type ophalen.
 
-De **BEGIN WITH** optie bepaalt het beginpunt en is het belangrijk om te begrijpen van de resultaten. 
+MET de optie **begin met** wordt het begin punt bepaald en is het belang rijk om de resultaten te weten. 
 
-+ Als u selecteert de **alle kolommen** optie, alle kolommen worden toegevoegd aan de lijst. Vervolgens moet u de **uitsluiten** optie naar *verwijderen* kolommen die voldoen aan bepaalde voorwaarden. 
++ Als u de optie **alle kolommen** selecteert, worden alle kolommen toegevoegd aan de lijst. Vervolgens moet u de optie **uitsluiten** gebruiken om kolommen te *verwijderen* die voldoen aan bepaalde voor waarden. 
 
-    U kunt bijvoorbeeld starten met alle kolommen en verwijder vervolgens de kolommen op naam of type.
+    U kunt bijvoorbeeld beginnen met alle kolommen en vervolgens kolommen op naam of op type verwijderen.
 
-+ Als u selecteert de **geen kolommen** optie, de lijst met kolommen aanvankelijk leeg. Vervolgens geeft u voorwaarden *toevoegen* kolommen aan de lijst. 
++ Als u de optie **geen kolommen** selecteert, wordt de lijst met kolommen leeg gelaten. Vervolgens geeft u voor waarden op om kolommen toe te voegen aan de lijst. 
 
-    Als u meerdere regels toepast, elke voorwaarde is **additieve**. Stel bijvoorbeeld dat u begint met geen kolommen en voeg een regel voor het ophalen van alle numerieke kolommen. In de prijs gegevensset voor auto's, waardoor de resultaten in 16 kolommen. Klik vervolgens u op de **+** Meld u aan een nieuwe voorwaarde toevoegen en selecteer **bevatten alle functies**. De resulterende gegevensset bevat de numerieke kolommen, plus alle functie kolommen, met inbegrip van sommige kolommen van de functie tekenreeks.
+    Als u meerdere regels toepast, is elke voorwaarde additief. Stel bijvoorbeeld dat u begint met geen kolommen en voeg vervolgens een regel toe om alle numerieke kolommen op te halen. In de gegevensset voor auto Mobile-prijzen resulteert dat in 16 kolommen. Vervolgens klikt u op het **+** -teken om een nieuwe voor waarde toe te voegen en selecteert u **alle functies**toevoegen. De resulterende gegevensset bevat alle numerieke kolommen, plus alle functie kolommen, met inbegrip van sommige kolommen met teken reeks functies.
 
-### <a name="choose-by-column-index"></a>Kies met de kolomindex
+### <a name="choose-by-column-index"></a>Kiezen op kolom index
 
-De kolomindex verwijst de volgorde van de kolom in de oorspronkelijke gegevensset.
+De kolom index verwijst naar de volg orde van de kolom in de oorspronkelijke gegevensset.
 
-+ Kolommen worden genummerd achter elkaar te beginnen bij 1.  
-+ Als u een bereik van de kolommen, gebruikt u een afbreekstreepje. 
-+ Open specificaties zoals `1-` of `-3` zijn niet toegestaan.
-+ Dubbele index waarden (of kolomnamen) zijn niet toegestaan en kunnen leiden tot een fout.
++ Kolommen worden opeenvolgend genummerd vanaf 1.  
++ Als u een bereik van kolommen wilt ophalen, gebruikt u een koppel teken. 
++ Open-end specificaties zoals `1-` of `-3` zijn niet toegestaan.
++ Dubbele index waarden (of kolom namen) zijn niet toegestaan en kunnen resulteren in een fout.
 
-Bijvoorbeeld, kan ervan uitgaande dat uw gegevensset ten minste acht kolommen bevat, plakken in een van de volgende voorbeelden om terug te keren meerdere niet-aaneengesloten kolommen: 
+Als uw gegevensset bijvoorbeeld ten minste acht kolommen bevat, kunt u in een van de volgende voor beelden plakken om meerdere niet-aaneengesloten kolommen te retour neren: 
 
 + `8,1-4,6`
 + `1,3-8`
 + `1,3-6,4` 
 
-het laatste voorbeeld resulteert niet in een fout. echter, wordt één exemplaar van de kolom `4`.
+het laatste voor beeld resulteert niet in een fout. Er wordt echter slechts één exemplaar van de kolom `4`geretourneerd.
 
 
 
-### <a name="change-order-of-columns"></a>Volgorde van kolommen wijzigen
+### <a name="change-order-of-columns"></a>Volg orde van kolommen wijzigen
 
-De optie **dubbele vermeldingen toestaat en sla deze op volgorde van kolommen in de selectie** begint met een lege lijst en kolommen die u door de naam of index opgeeft toegevoegd. In tegenstelling tot andere opties, die kolommen in de 'natuurlijke volgorde"altijd worden geretourneerd, is deze optie levert de kolommen in de volgorde die u de naam, of ze. 
+De optie **dubbele waarden toestaan en kolom volgorde in selectie behouden** begint met een lege lijst en voegt kolommen toe die u opgeeft op naam of index. In tegens telling tot andere opties, waarmee altijd kolommen worden geretourneerd in hun ' natuurlijke volg orde ', wordt met deze optie de kolommen in de volg orde weer gegeven waarin u de naam van de kolom maakt of vermeldt. 
 
-U kunt in een gegevensset met de kolommen Col1, Col2 Col3 en Kol4, bijvoorbeeld de volgorde van de kolommen en laat u uit kolom 2, door op te geven van de volgende lijsten:
+In een gegevensset met de kolommen Kol1, col2, Col3 en Col4 kunt u bijvoorbeeld de volg orde van de kolommen ongedaan maken en kolom 2 verlaten door een van de volgende lijsten op te geven:
 
 + `Col4, Col3, Col1`
 + `4,3,1`
@@ -113,4 +112,4 @@ U kunt in een gegevensset met de kolommen Col1, Col2 Col3 en Kol4, bijvoorbeeld 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

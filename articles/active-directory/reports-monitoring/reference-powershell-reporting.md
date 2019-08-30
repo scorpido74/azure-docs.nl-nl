@@ -17,14 +17,17 @@ ms.date: 07/12/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 372041dc24db4ed66977364e2a2997c7195cca9c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4d34204b936a608158a0ca3e8af2264059ffc6aa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988039"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136558"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-cmdlets voor rapportage
+
+> [!NOTE] 
+> Deze Power shell-cmdlets werken momenteel alleen met de [Azure ad-preview](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) -module. Houd er rekening mee dat de preview-module niet wordt voorgesteld voor productie gebruik. 
 
 Met Azure Active Directory-rapporten (Azure AD) kunt u Details opvragen over activiteiten rond alle schrijf bewerkingen in uw richting (audit Logboeken) en verificatie gegevens (aanmeld Logboeken). Hoewel de informatie beschikbaar is via de MS Graph API, kunt u nu dezelfde gegevens ophalen met behulp van de Azure AD Power shell-cmdlets voor rapportage.
 

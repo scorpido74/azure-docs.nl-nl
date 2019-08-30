@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884912"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138351"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Een virtuele Azure-machineschaalset maken van een aangepaste Packer-installatiekopie met behulp van Terraform
 
@@ -44,7 +44,7 @@ Maak drie nieuwe bestanden in een lege map met de volgende namen:
 
 - ```variables.tf```: dit bestand bevat de waarden van de variabelen die worden gebruikt in de sjabloon.
 - ```output.tf```: dit bestand beschrijft de instellingen die worden weergegeven na implementatie.
-- ```vmss.tf```: dit bestand bevat de code van de infrastructuur die u implementeert.
+- ```vmss.tf```Dit bestand bevat de code van de infra structuur die u implementeert.
 
 ##  <a name="create-the-variables"></a>De variabelen maken 
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,12 +175,12 @@ Volg de zelfstudie voor het maken van een Ubuntu-installatiekopie met NGINX geï
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>De infrastructuur bewerken om de virtuele-machineschaalset toe te voegen
 
 In deze stap maakt u de volgende resources in het netwerk dat eerder is geïmplementeerd:
-- Azure load balancer voor het leveren van de toepassing en om deze te koppelen aan het openbare IP-adres dat is geïmplementeerd in stap 4
+- Azure load balancer om de toepassing te leveren en te koppelen aan het open bare IP-adres dat u eerder hebt geïmplementeerd.
 - Eén Azure load balancer en regels voor het leveren van de toepassing en deze koppelen aan het eerder geconfigureerde openbare IP-adres.
-- Azure backend-adresgroep en deze toewijzen aan de load balancer 
-- Een statustestpoort die door de toepassing wordt gebruikt en wordt geconfigureerd op de load balancer 
-- Een virtuele machineschaalset die zich achter de load balancer bevindt die wordt uitgevoerd op het eerder geïmplementeerde VNET
-- [Nginx](https://nginx.org/) op de knooppunten van de virtuele-machineschaalset die is geïnstalleerd op basis van de aangepaste installatiekopie
+- Azure back-mailadres groep en wijs deze toe aan de load balancer.
+- Een status test poort die door de toepassing wordt gebruikt en die is geconfigureerd op de load balancer.
+- Een schaalset voor virtuele machines zit achter de load balancer, die wordt uitgevoerd op het VNET dat eerder is geïmplementeerd.
+- [Nginx](https://nginx.org/) op de knoop punten van de schaal van de virtuele machine die is geïnstalleerd vanuit een aangepaste installatie kopie.
 
 
 Voeg de volgende code aan het einde van het bestand `vmss.tf` toe.
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

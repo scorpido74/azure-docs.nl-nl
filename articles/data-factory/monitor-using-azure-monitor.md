@@ -3,21 +3,20 @@ title: Gegevens fabrieken bewaken met behulp van Azure Monitor | Microsoft Docs
 description: Meer informatie over het gebruik van Azure Monitor om Data Factory pijp lijnen te bewaken door Diagnostische logboeken in te scha kelen met informatie van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: shlo
-ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326849"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141133"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Gegevens fabrieken melden en bewaken met behulp van Azure Monitor
 Cloud toepassingen zijn complex met veel bewegende onderdelen. Bewaking biedt gegevens om ervoor te zorgen dat uw toepassing in een goede staat actief blijft. Het helpt u ook om mogelijke problemen op te lossen of om Stave te oplossen. Daarnaast kunt u bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
@@ -108,7 +107,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | storageAccountId |Tekenreeks | De resource-ID van het opslag account waarnaar u Diagnostische logboeken wilt verzenden |
 | serviceBusRuleId |String | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de volgende indeling: {Service Bus Resource ID}/authorizationrules/{key name}.|
 | workspaceId | Complex type | Matrix van metrische tijd korrels en het Bewaar beleid. Deze eigenschap is momenteel leeg. |
-|metrics| Parameter waarden van de pijplijn uitvoering worden door gegeven aan de aangeroepen pijp lijn| Een JSON-object parameter namen toewijzen aan argument waarden |
+|metrische gegevens| Parameter waarden van de pijplijn uitvoering worden door gegeven aan de aangeroepen pijp lijn| Een JSON-object parameter namen toewijzen aan argument waarden |
 | logs| Complex type| Naam van een diagnostische logboek categorie voor een resource type. Als u de lijst met diagnostische logboek categorieën voor een resource wilt ophalen, moet u eerst een bewerking Diagnostische instellingen ophalen uitvoeren. |
 | category| String| Matrix met logboek categorieën en het Bewaar beleid |
 | timeGrain | String | De granulatie van metrische gegevens die zijn vastgelegd in de ISO 8601-duur notatie. Moet PT1M (één minuut)|
@@ -283,9 +282,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |activityRunId| Tekenreeks| ID van de uitvoering van de activiteit | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| Tekenreeks| ID van de pijplijn uitvoering | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| Tekenreeks | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Reeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' ActivityRuns ' | `ActivityRuns` |
-|level| Reeks | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
-|operationName| Reeks |De naam van de activiteit met de status. Als de status de heartbeat start is, is `MyActivity -`dit. Als de status end heartbeat is, is `MyActivity - Succeeded` dit de laatste status | `MyActivity - Succeeded` |
+|category| Tekenreeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' ActivityRuns ' | `ActivityRuns` |
+|level| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
+|operationName| Tekenreeks |De naam van de activiteit met de status. Als de status de heartbeat start is, is `MyActivity -`dit. Als de status end heartbeat is, is `MyActivity - Succeeded` dit de laatste status | `MyActivity - Succeeded` |
 |pipelineName| Tekenreeks | Naam van de pijp lijn | `MyPipeline` |
 |activityName| Tekenreeks | Naam van de activiteit | `MyActivity` |
 |start| Tekenreeks | Begin van de uitvoering van de activiteit in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
@@ -328,11 +327,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | time | Tekenreeks | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| Tekenreeks| ID van de pijplijn uitvoering | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |resourceId| Tekenreeks | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Reeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' PipelineRuns ' | `PipelineRuns` |
+|category| Tekenreeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' PipelineRuns ' | `PipelineRuns` |
 |level| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
 |operationName| Tekenreeks |De naam van de pijp lijn met de status. "Pijp lijn-geslaagd" met eind status wanneer de pijplijn uitvoering is voltooid| `MyPipeline - Succeeded` |
-|pipelineName| Reeks | Naam van de pijp lijn | `MyPipeline` |
-|start| Reeks | Begin van de uitvoering van de activiteit in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
+|pipelineName| Tekenreeks | Naam van de pijp lijn | `MyPipeline` |
+|start| Tekenreeks | Begin van de uitvoering van de activiteit in time span, UTC-indeling | `2017-06-26T20:55:29.5007959Z`|
 |end| Tekenreeks | Het einde van de activiteit wordt uitgevoerd in time span, UTC-indeling. Als de activiteit nog niet is beëindigd (diagnostisch logboek voor het starten van een activiteit), is de `1601-01-01T00:00:00Z` standaard waarde van is ingesteld.  | `2017-06-26T20:55:29.5007959Z` |
 |status| Tekenreeks | De uiteindelijke status van de pijplijn uitvoering (geslaagd of mislukt) | `Succeeded`|
 
@@ -370,9 +369,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Niveau |Tekenreeks | Het niveau van de diagnostische Logboeken. Ingesteld op niveau 4 voor het uitvoeren van activiteiten Logboeken. | `4`  |
 | correlationId |Tekenreeks | Unieke ID voor het bijhouden van end-to-end van een bepaalde aanvraag | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | Tekenreeks | Tijd van de gebeurtenis in time span, UTC-notatie`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|triggerId| Reeks| ID van de trigger uitvoering | `08587023010602533858661257311` |
+|triggerId| Tekenreeks| ID van de trigger uitvoering | `08587023010602533858661257311` |
 |resourceId| Tekenreeks | De bijbehorende resource-ID voor de data factory resource | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|category| Reeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' PipelineRuns ' | `PipelineRuns` |
+|category| Tekenreeks | De categorie van Diagnostische logboeken. Stel deze eigenschap in op ' PipelineRuns ' | `PipelineRuns` |
 |level| Tekenreeks | Het niveau van de diagnostische Logboeken. Stel deze eigenschap in op ' informatief ' | `Informational` |
 |operationName| Tekenreeks |De naam van de trigger met de definitieve status of deze is gestart. "MyTrigger-geslaagd" als de heartbeat is geslaagd| `MyTrigger - Succeeded` |
 |triggerName| Tekenreeks | De naam van de trigger | `MyTrigger` |
@@ -509,7 +508,7 @@ Meld u aan bij de Azure Portal en klik op**waarschuwingen** **controleren** > om
 
 1.  Klik op **+ nieuwe waarschuwings regel** om een nieuwe waarschuwing te maken.
 
-    ![Nieuwe waarschuwings regel](media/monitor-using-azure-monitor/alerts_image4.png)
+    ![Nieuwe waarschuwingsregel](media/monitor-using-azure-monitor/alerts_image4.png)
 
 2.  Definieer de **waarschuwings voorwaarde**.
 
@@ -524,7 +523,7 @@ Meld u aan bij de Azure Portal en klik op**waarschuwingen** **controleren** > om
 
 3.  Definieer de **Details**van de waarschuwing.
 
-    ![Meldingsdetails](media/monitor-using-azure-monitor/alerts_image8.png)
+    ![Waarschuwingsdetails](media/monitor-using-azure-monitor/alerts_image8.png)
 
 4.  Definieer de **actie groep**.
 

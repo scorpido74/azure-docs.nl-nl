@@ -1,5 +1,5 @@
 ---
-title: Webservices met API Management beheren
+title: Webservices beheren met API Management
 titleSuffix: Azure Machine Learning Studio
 description: Een handleiding waarin wordt getoond hoe voor het beheren van AzureML-webservices met API Management. De REST API-eindpunten beheren met het definiëren van gebruikerstoegang, beperking en dashboard bewaking.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b424696c3350ff2592df9a97189dde3df57845f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347082"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138563"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Azure Machine Learning Studio-webservices met API Management beheren
 ## <a name="overview"></a>Overzicht
@@ -182,11 +182,11 @@ Wijzig de naam **SimpleFeatureHashingExperiment**. Vouw **opgeslagen gegevensset
 
 Vouw **gegevenstransformatie** en **manipulatie** en sleep **Select Columns in Dataset** naar uw experiment. Verbinding maken met **boek beoordelingen van Amazon** naar **kolommen in gegevensset selecteren**.
 
-![Koppel het boek beoordelingen gegevensset aan een Projectkolommen module](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![De module boek beoordelingen gegevensset verbinden met een module Project kolommen](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Klik op **Select Columns in Dataset** en klik vervolgens op **kolomkiezer lancering** en selecteer **Col2**. Klik op het vinkje om deze wijzigingen te laten.
 
-![Kolommen selecteren met behulp van de namen van kolommen](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Kolommen selecteren met kolom namen](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Vouw **Tekstanalyse** en sleep **hash-functies** naar het experimentcanvas. Verbinding maken met **kolommen in gegevensset selecteren** naar **hash-functies**.
 
@@ -214,7 +214,7 @@ Klik op **Ja** voor het publiceren van het experiment.
 ![Ja om te publiceren](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>De webservice testen
-Een web-service van AzureML bestaat uit RSS (aanvraag/antwoord-service) en BES (batchuitvoeringsservice)-eindpunten. RSS is voor synchrone uitvoering. BES is voor het uitvoeren van asynchrone taak. Als u wilt testen van uw web-service met het onderstaande voorbeeld Python bron, u moet mogelijk te downloaden en installeren van de Azure SDK voor Python (Zie: [Het installeren van Python](../../python-how-to-install.md)).
+Een web-service van AzureML bestaat uit RSS (aanvraag/antwoord-service) en BES (batchuitvoeringsservice)-eindpunten. RSS is voor synchrone uitvoering. BES is voor het uitvoeren van asynchrone taak. Als u uw webservice wilt testen met de onderstaande python-bron, moet u mogelijk de Azure SDK voor python downloaden en installeren (zie: [Python installeren](/azure/python/python-sdk-azure-install).
 
 U moet ook de **werkruimte**, **service**, en **api_key** van uw experiment voor het onderstaande voorbeeld-bron. U kunt de werkruimte en de service vinden door te klikken op **aanvraag/antwoord** of **Batchuitvoering** voor uw experiment in het dashboard van de webservice.
 

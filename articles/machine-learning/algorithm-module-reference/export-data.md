@@ -1,7 +1,7 @@
 ---
-title: 'Gegevens exporteren: Moduleverwijzing'
+title: 'Gegevens exporteren: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module gegevens exporteren in Azure Machine Learning-service op te slaan van resultaten, tussenliggende gegevens en werken vanuit uw experimenten in de cloud opslagdoelen buiten Azure Machine Learning.
+description: Meer informatie over het gebruik van de module gegevens exporteren in Azure Machine Learning-service voor het opslaan van resultaten, tussenliggende gegevens en werk gegevens van uw experimenten in Cloud opslag doelen buiten Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,75 +9,74 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: c3744803f172edf9fbf2556a12677e8faef370c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4fb539f4c86d27813b60964794fc1f398d3f2a4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028318"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128765"
 ---
-# <a name="export-data-module"></a>De module gegevens exporteren
+# <a name="export-data-module"></a>Gegevens module exporteren
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Deze module gebruiken voor het opslaan van resultaten, tussenliggende gegevens en werken vanuit uw experimenten in de cloud opslagdoelen buiten Azure Machine Learning.
+Gebruik deze module om resultaten, tussenliggende gegevens en werk gegevens van uw experimenten op te slaan in Cloud opslag buiten Azure Machine Learning.
 
-Deze module biedt ondersteuning voor exporteren of uw gegevens opslaan in de volgende cloudservices voor gegevens:
+Deze module ondersteunt het exporteren of opslaan van uw gegevens naar de volgende Cloud gegevens Services:
 
 
-- **Exporteren naar Azure Blob-opslag**: Slaat gegevens op in de Blob-service in Azure. Gegevens in de Blob-service kan worden gedeeld openbaar of opgeslagen in de gegevensopslag van beveiligde toepassing.
+- **Exporteren naar Azure Blob Storage**: Hiermee worden gegevens opgeslagen in de Blob service in Azure. Gegevens in de Blob service kunnen openbaar worden gedeeld of worden opgeslagen in beveiligde gegevens opslag voor toepassingen.
 
   
-## <a name="how-to-configure-export-data"></a>Het configureren van de gegevens exporteren
+## <a name="how-to-configure-export-data"></a>Export gegevens configureren
 
-1. Voeg de **gegevens exporteren** module aan uw experiment in de interface. U vindt deze module in de **invoer en uitvoer** categorie.
+1. Voeg de module **gegevens exporteren** toe aan uw experiment in de-interface. U kunt deze module vinden in de categorie **invoer en uitvoer** .
 
-2. Verbinding maken met **gegevens exporteren** naar de module met de gegevens die u wilt exporteren.
+2. Verbind gegevens met het **exporteren** naar de module die de gegevens bevat die u wilt exporteren.
 
-3. Dubbelklik op **gegevens exporteren** openen de **eigenschappen** deelvenster.
+3. Dubbel klik op **gegevens exporteren** om het deel venster **Eigenschappen** te openen.
 
-4. Voor **bestemming**, selecteer het type opslag in de cloud waar u uw gegevens kunt opslaan. Als u wijzigingen aanbrengt aan deze optie, worden alle andere eigenschappen worden opnieuw ingesteld. Dus zorg ervoor dat deze optie eerst kiezen.
+4. Selecteer bij **gegevens bestemming**het type Cloud opslag waar u uw gegevens wilt opslaan. Als u wijzigingen aanbrengt in deze optie, worden alle andere eigenschappen opnieuw ingesteld. Zorg er eerst voor dat u deze optie selecteert.
 
-5. Geef een account-servernaam en verificatiegegevens methode zijn vereist voor toegang tot het opgegeven opslagaccount.
+5. Geef een account naam en verificatie methode op die nodig zijn voor toegang tot het opgegeven opslag account.
 
-    **Exporteren naar Azure Blob Storage** is de enige optie in de beperkte Preview-versie. Hieronder ziet u hoe het instellen van de module.
-    1. De Azure blob-service is voor het opslaan van grote hoeveelheden gegevens, inclusief binaire gegevens. Er zijn twee soorten blob-opslag: blobs waarvoor aanmeldingsreferenties en openbare blobs.
+    **Exporteren naar Azure Blob Storage** is de enige optie in een persoonlijke preview. Hieronder ziet u hoe u de module kunt instellen.
+    1. De Azure Blob-service is voor het opslaan van grote hoeveel heden gegevens, inclusief binaire gegevens. Er zijn twee typen Blob-opslag: open bare blobs en blobs waarvoor aanmeldings referenties zijn vereist.
 
-    2. Voor **verificatietype**, kiest u **openbare (SAS)** als u weet dat de opslag biedt ondersteuning voor toegang via een SAS-URL.
+    2. Kies voor **verificatie type** **openbaar (SAS)** als u weet dat de opslag toegang ondersteunt via een SAS-URL.
 
-          Een SAS-URL is een speciaal type URL die kan worden gegenereerd met behulp van een hulpprogramma voor Azure storage en is beschikbaar voor slechts een beperkte periode.  Deze bevat alle informatie die nodig voor verificatie en downloaden is.
+          Een SAS-URL is een speciaal type URL dat kan worden gegenereerd met behulp van een Azure-opslag programma. Dit is alleen beschikbaar voor een beperkte periode.  Het bevat alle informatie die nodig is voor verificatie en downloaden.
 
-        Voor **URI**typt of plakt u de volledige URI die het account en de openbare blob worden gedefinieerd.
+        Voor **URI**, typt of plakt u de volledige URI waarmee het account en de open bare BLOB worden gedefinieerd.
 
-        Voor de bestandsindeling van worden CSV en TSV ondersteund.
+        Voor de bestands indeling CSV en TSV worden ondersteund.
 
-    3. Kies voor persoonlijke accounts **Account**, en geef de accountnaam en -sleutel, zodat het experiment naar het opslagaccount schrijven kunt.
+    3. Voor particuliere accounts kiest u **account**en geeft u de account naam en de account sleutel op, zodat het experiment naar het opslag account kan schrijven.
 
-         - **Accountnaam**: Typ of plak de naam van het account waar u de gegevens op te slaan. Bijvoorbeeld, als de volledige URL van het opslagaccount dat is `http://myshared.blob.core.windows.net`, typt u `myshared`.
+         - **Accountnaam**: Typ of plak de naam van het account waar u de gegevens wilt opslaan. Als de volledige URL van het opslag account bijvoorbeeld is `http://myshared.blob.core.windows.net`, typt `myshared`u.
 
-        - **Accountsleutel**: Plak de toegangssleutel voor opslag die is gekoppeld aan het account.
+        - **Account sleutel**: Plak de toegangs sleutel voor opslag die is gekoppeld aan het account.
 
-        -  **Pad naar de container, map of blob**: Typ de naam van de blob waarin de geëxporteerde gegevens worden opgeslagen. Bijvoorbeeld, om op te slaan van de resultaten van uw experiment naar een nieuwe blob met de naam **results01.csv** in de container **voorspellingen** in een account met de naam **mymldata**, de volledige URL voor de BLOB zou worden `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
+        -  **Pad naar container, map of BLOB**: Typ de naam van de BLOB waar de geëxporteerde gegevens worden opgeslagen. Als u bijvoorbeeld de resultaten van uw experiment wilt opslaan in een nieuwe blob met de naam **results01. CSV** in de container voorspellingen in een account met de naam **MYMLDATA**, is `http://mymldata.blob.core.windows.net/predictions/results01.csv`de volledige URL voor de blob.
 
-            Daarom in het veld **pad naar de container, map of blob**, geeft u de container en de naam van de blob als volgt: `predictions/results01.csv`
+            Daarom geeft u in het veld **pad naar container, map of BLOB**de naam van de container en de BLOB als volgt op:`predictions/results01.csv`
 
-        - Als u de naam van een blob die nog niet bestaat, wordt de blob in Azure gemaakt voor u.
+        - Als u de naam opgeeft van een blob die nog niet bestaat, maakt Azure de BLOB voor u.
 
-       -  Bij het schrijven naar een bestaande blob, kunt u opgeven dat de huidige inhoud van de blob worden overschreven door de eigenschap **Azure-blobopslag schrijven modus**. Deze eigenschap is standaard ingesteld op **fout**, wat betekent dat er een foutmelding wordt gegenereerd wanneer er wordt een bestaand blobbestand met dezelfde naam gevonden.
+       -  Wanneer u naar een bestaande BLOB schrijft, kunt u opgeven dat de huidige inhoud van de BLOB moet worden overschreven door de eigenschap in te stellen op de **schrijf modus voor Azure Blob Storage**. Deze eigenschap is standaard ingesteld op **fout**, wat betekent dat er een fout optreedt wanneer een bestaand blob-bestand met dezelfde naam wordt gevonden.
 
 
-    4. Voor **bestandsindeling voor blob-bestand**, selecteert u de indeling waarin de gegevens moeten worden opgeslagen.
+    4. Selecteer de indeling waarin de gegevens moeten worden opgeslagen voor de **bestands indeling voor het BLOB-bestand**.
 
-        - **CSV**: Door komma's gescheiden waarden (CSV) zijn de standaardindeling voor opslag. Als u wilt exporteren kolomkoppen samen met de gegevens, selecteert u de optie **schrijven blob veldnamenrij**.  Zie voor meer informatie over de door komma's gescheiden indeling die wordt gebruikt in Azure Machine Learning, [converteren naar CSV](./convert-to-csv.md).
+        - **CSV**: Door komma's gescheiden waarden (CSV) zijn de standaard indeling voor opslag. Als u kolom koppen samen met de gegevens wilt exporteren, selecteert u de optie voor het schrijven van de **rij-BLOB-header**.  Zie [converteren naar CSV](./convert-to-csv.md)voor meer informatie over de door komma's gescheiden indeling die in azure machine learning wordt gebruikt.
 
-        - **TSV**: Door tabs gescheiden waarden (TSV)-indeling is compatibel met veel machine learning-hulpprogramma's. Als u wilt exporteren kolomkoppen samen met de gegevens, selecteert u de optie **schrijven blob veldnamenrij**.  
+        - **TSV**: TSV-indeling (door tabs gescheiden waarden) is compatibel met veel machine learning-hulpprogram ma's. Als u kolom koppen samen met de gegevens wilt exporteren, selecteert u de optie voor het schrijven van de **rij-BLOB-header**.  
 
  
-    5. **Resultaten in de cache gebruiken**: Selecteer deze optie als u wilt voorkomen dat de resultaten naar de blobbestand voor het herschrijven telkens wanneer die u het experiment uitvoert. Als er geen andere wijzigingen aangebracht in de moduleparameters, het experiment schrijft de resultaten alleen de eerste keer dat de module wordt uitgevoerd, of wanneer er wijzigingen in de gegevens.
+    5. **In cache opgeslagen resultaten gebruiken**: Selecteer deze optie als u wilt voor komen dat de resultaten naar het blobbestand worden herschreven telkens wanneer u het experiment uitvoert. Als er geen andere wijzigingen zijn in de module parameters, schrijft het experiment de resultaten alleen de eerste keer dat de module wordt uitgevoerd of wanneer er wijzigingen in de gegevens zijn.
 
     6. Voer het experiment uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

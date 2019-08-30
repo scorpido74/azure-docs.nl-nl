@@ -1,7 +1,7 @@
 ---
-title: 'Importeren van Web-URL via HTTP: Moduleverwijzing'
+title: 'Importeren vanuit de web-URL via HTTP: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van het importeren van Web-URL via HTTP-module in Azure Machine Learning-service gegevens lezen uit een openbare webpagina voor gebruik in een machine learning-experiment.
+description: Informatie over het gebruik van de web-URL importeren via de HTTP-module in Azure Machine Learning-service om gegevens te lezen van een open bare webpagina voor gebruik in een machine learning experiment.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,73 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411446"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128757"
 ---
-# <a name="import-from-web-url-via-http-module"></a>Importeren vanuit de Web-URL via HTTP-module
+# <a name="import-from-web-url-via-http-module"></a>Importeren uit web-URL via HTTP-module
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module gegevens lezen uit een openbare webpagina voor gebruik in een machine learning-experiment.
+Gebruik deze module om gegevens te lezen van een open bare webpagina voor gebruik in een machine learning experiment.
 
-De volgende beperkingen gelden voor gegevens die zijn gepubliceerd op een webpagina:
+De volgende beperkingen zijn van toepassing op de gegevens die op een webpagina worden gepubliceerd:
 
-- Gegevens moeten in een van de ondersteunde indelingen zijn: CSV, TSV, ARFF of SvmLight. Andere gegevens leiden tot fouten.
-- Geen verificatie is vereist of ondersteund. Gegevens moeten openbaar beschikbaar zijn. 
+- De gegevens moeten een van de ondersteunde indelingen hebben: CSV, TSV, ARFF of SvmLight. Andere gegevens zullen fouten veroorzaken.
+- Er is geen verificatie vereist of ondersteund. Gegevens moeten openbaar beschikbaar zijn. 
 
-Er zijn twee manieren om gegevens te verkrijgen: Gebruik de wizard voor het instellen van de gegevensbron, of handmatig configureren.
+Er zijn twee manieren om gegevens op te halen: gebruik de wizard om de gegevens bron in te stellen of configureer deze hand matig.
 
-## <a name="use-the-data-import-wizard"></a>Gebruik de Wizard gegevens importeren
+## <a name="use-the-data-import-wizard"></a>De wizard gegevens importeren gebruiken
 
-1. Voeg de **importgegevens** module naar het experimentcanvas. U kunt de module vinden in de interface, in de **gegevensinvoer en uitvoer** categorie.
+1. Voeg de module **gegevens importeren** toe aan uw experiment. U kunt de module vinden in de-interface, in de categorie **gegevens invoer en uitvoer** .
 
-2. Klik op **Wizard importeren starten** en selecteer de Web-URL via HTTP.
+2. Klik op **wizard import data starten** en selecteer Web-URL via http.
 
-3. Plak de URL en selecteer een gegevensindeling.
+3. Plak de URL en selecteer een gegevens indeling.
 
 4. Wanneer de configuratie is voltooid.
 
-Als u wilt bewerken van een bestaande gegevensverbinding, moet u de wizard opnieuw starten. De wizard laadt alle vorige configuratiedetails, zodat u helemaal opnieuw hoeft
+Als u een bestaande gegevens verbinding wilt bewerken, start u de wizard opnieuw. De wizard laadt alle vorige configuratie details zodat u niet opnieuw hoeft te beginnen
 
-## <a name="manually-set-properties-in-the-import-data-module"></a>Handmatig de eigenschappen instellen in de module gegevens importeren
+## <a name="manually-set-properties-in-the-import-data-module"></a>Eigenschappen hand matig instellen in de module gegevens importeren
 
-De volgende stappen wordt beschreven hoe u het handmatig configureren van de bron voor het importeren.
+In de volgende stappen wordt beschreven hoe u de import bron hand matig configureert.
 
-1. Voeg de [importgegevens](import-data.md) module naar het experimentcanvas. U kunt de module vinden in de interface, in de **gegevensinvoer en uitvoer** categorie.
+1. Voeg de module [gegevens importeren](import-data.md) toe aan uw experiment. U kunt de module vinden in de-interface, in de categorie **gegevens invoer en uitvoer** .
 
-2. Voor **gegevensbron**, selecteer **Web-URL via HTTP**.
+2. Voor **gegevens bron**selecteert u **Web-URL via http**.
 
-3. Voor **URL**typt of plakt u de volledige URL van de pagina met de gegevens die u wilt laden.
+3. Voor **URL**, typt of plakt u de volledige URL van de pagina die de gegevens bevat die u wilt laden.
 
-    De URL moet bevatten de site-URL en het volledige pad, met de naam en extensie hebben, naar de pagina met de gegevens te laden.
+    De URL moet de site-URL en het volledige pad, met de bestands naam en de extensie, bevatten naar de pagina die de gegevens bevat die moeten worden geladen.
 
-    Zo bevat de volgende pagina de Iris-gegevensset van de machine learning-opslagplaats van de universiteit van Californië, Irvine:
+    De volgende pagina bevat bijvoorbeeld de Iris gegevensset uit de machine learning opslag plaats van de University of Californië, Irvine:
 
     `https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
 
-4. Voor **gegevensindeling**, selecteer een van de ondersteunde gegevens in de lijst met indelingen.
+4. Selecteer bij **gegevens indeling**een van de ondersteunde gegevens indelingen uit de lijst.
 
-    Het is raadzaam dat u vooraf de gegevens altijd controleren om te bepalen van de indeling. De pagina UC Irvine maakt gebruik van de CSV-indeling. Andere van ondersteunde gegevensindelingen zijn TSV, ARFF en SvmLight.
+    U wordt aangeraden de gegevens altijd vooraf te controleren om de indeling te bepalen. Op de pagina UC-Irvine wordt de CSV-indeling gebruikt. Andere ondersteunde gegevens indelingen zijn TSV, ARFF en SvmLight.
 
-5. Als de gegevens zich bevinden in CSV- of TSV-indeling, gebruikt u de **bestand heeft de rij met koppen** optie om aan te geven of de brongegevens een rij met koppen bevat. De rij met koppen wordt gebruikt voor het toewijzen van de namen van kolommen.
+5. Als de gegevens zich in CSV-of TSV-indeling bevindt, gebruikt u de optie **bestand heeft koprij** om aan te geven of de bron gegevens een koprij bevatten. De rij met koppen wordt gebruikt om kolom namen toe te wijzen.
 
-6. Selecteer de **gebruiken in de cache opgeslagen resultaten** opties als u niet verwacht de gegevens dat te veel wijzigen, of als u wilt voorkomen dat opnieuw laden van de gegevens van elke keer dat u het experiment uit te voeren.
+6. Selecteer de opties **in cache opgeslagen resultaten** als u niet verwacht dat de gegevens veel worden gewijzigd of als u wilt voor komen dat u de gegevens opnieuw laadt telkens wanneer u het experiment uitvoert.
 
-    Wanneer deze optie is geselecteerd, worden de gegevens de eerste keer de module wordt uitgevoerd, en daarna een in cache opgeslagen versie van de gegevensset wordt gebruikt door het experiment geladen.
+    Als deze optie is geselecteerd, laadt het experiment de gegevens op het moment dat de module voor het eerst wordt uitgevoerd en wordt vervolgens een versie van de gegevensset in de cache gebruikt.
 
-    Als u laden van de gegevensset op elke herhaling van de gegevensset experiment wilt, schakelt u de **gebruiken in de cache opgeslagen resultaten** optie. Resultaten worden ook opnieuw geladen als er wijzigingen in de parameters van [importgegevens](import-data.md).
+    Als u de gegevensset voor elke herhaling van de gegevensset van de experiment opnieuw wilt laden, schakelt u de optie **resultaten in cache gebruiken** uit. De resultaten worden ook opnieuw geladen als er wijzigingen zijn aangebracht in de para meters van [gegevens importeren](import-data.md).
 
 7. Voer het experiment uit.
 
 ## <a name="results"></a>Resultaten
 
-Als u klaar bent, klikt u op de uitvoergegevensset en selecteer **Visualize** om te zien als de gegevens is geïmporteerd.
+Wanneer u klaar bent, klikt u op de uitvoer gegevensset en selecteert u visualiseren om te zien of de gegevens zijn geïmporteerd.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

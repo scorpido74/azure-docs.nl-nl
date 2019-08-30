@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
-ms.translationtype: MT
+ms.openlocfilehash: 21da8dce7a77a086381bd21dc0129b614fa65ad3
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051660"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138415"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment
 
@@ -71,7 +71,7 @@ Nadat de virtuele machine is uitgevoerd, gebruikt u de sectie voor **laptop-vm's
 1. Op de Jupyter-notebook-webpagina is de mapnaam de naam van de hoofdmap.  Selecteer deze map.
 
     > [!TIP]
-    > Deze map bevindt zich in de [opslag container](concept-workspace.md#resources) in uw werk ruimte, in plaats van op de VM van de notebook zelf.  U kunt de VM van het notitie blok verwijderen en toch al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
+    > Deze map bevindt zich op het [opslag account](concept-workspace.md#resources) in uw werk ruimte, in plaats van op de VM van de notebook zelf.  U kunt de VM van het notitie blok verwijderen en toch al uw werk behouden.  Wanneer u later een nieuwe VM voor een notitie blok maakt, wordt dezelfde map geladen. Als u uw werk ruimte deelt met anderen, wordt uw map weer geven en ziet u de mappen.
 
 1. Open de `samples-*` submap en open vervolgens`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
 

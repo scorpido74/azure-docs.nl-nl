@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982700"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147227"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in azure Kubernetes service (AKS)
 
@@ -49,13 +49,13 @@ AKS ondersteunt vier secundaire versies van Kubernetes:
 
 Dit staat bekend als ' N-3 '-(N (meest recente versie)-3 (secundaire versies)).
 
-Als AKS bijvoorbeeld in de inleiding *1.13. x* vandaag introduceert, wordt ondersteuning geboden voor de volgende versies:
+Als AKS bijvoorbeeld de inleiding *1.13. a* vandaag, wordt er ondersteuning geboden voor de volgende versies:
 
 Nieuwe secundaire versie    |    Lijst met ondersteunde versies
 -----------------    |    ----------------------
-1.13. x               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1,10. a, 1,10. b
+1.13. a               |    1.12. a, 1.12. b, 1.11. a, 1.11. b, 1,10. a, 1,10. b
 
-Waarbij "x" en ". a" en ". b" representatieve patch versies zijn.
+Waarbij '. a ' en '. b ' representatieve patch versies zijn. ' een ' van 1.13. a ' kan verschillen van 1.12. a. Bijvoorbeeld 1.13.9 en 1.12.8.
 
 Zie ' communicatie ' hieronder voor meer informatie over de communicatie met versie wijzigingen en verwachtingen.
 
@@ -72,7 +72,7 @@ Wanneer een nieuwe secundaire versie wordt geïntroduceerd, worden de oudste sec
 1.9.b
 ```
 
-En AKS Releases 1.13. x. Dit betekent dat de versie van 1,9. x (alle versies van 1,9) wordt verwijderd en niet meer wordt ondersteund.
+En AKS Releases 1,13. *Dit betekent dat de 1,9.* versies (alle 1,9 versies) worden verwijderd en worden niet meer ondersteund.
 
 > [!NOTE]
 > Houd er rekening mee dat als klanten een niet-ondersteunde Kubernetes-versie uitvoeren, wordt gevraagd om een upgrade uit te voeren bij het aanvragen van ondersteuning voor het cluster. Clusters met niet-ondersteunde Kubernetes-releases vallen niet onder het [beleid voor AKS-ondersteuning](https://docs.microsoft.com/azure/aks/support-policies).
@@ -126,7 +126,7 @@ Specifieke patch releases kunnen worden overgeslagen of de implementatie wordt v
 
 ### <a name="azure-portal-and-cli-default-versions"></a>Standaard versies van Azure Portal en CLI
 
-Wanneer u een AKS-cluster implementeert in de portal of met de Azure CLI, wordt het cluster altijd ingesteld op de N-1 secundaire versie en de meest recente patch. Als AKS bijvoorbeeld *1.13. x*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1,10. a* + *1,10 b*ondersteunt, is de standaard versie voor nieuwe clusters *1.12. b* .
+Wanneer u een AKS-cluster implementeert in de portal of met de Azure CLI, wordt het cluster altijd ingesteld op de N-1 secundaire versie en de meest recente patch. Als AKS bijvoorbeeld *1.13. a*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1,10. a* + *1,10 b*ondersteunt, is de standaard versie voor nieuwe clusters *1.12. b* .
 
 AKS standaard ingesteld op N-1 (minor. latestPatch, bijvoorbeeld 1.12. b) om klanten standaard een bekende, stabiele en patched versie te bieden.
 
@@ -161,8 +161,8 @@ KubernetesVersion    Upgrades
 
 Als u een *n-4-* versie hebt, bent u buiten ondersteuning en wordt u gevraagd om te upgraden. Als uw upgrade van versie n-4 naar n-3 slaagt, bent u nu in ons ondersteunings beleid. Bijvoorbeeld:
 
-- Als de ondersteunde AKS-versies *1.13. x*, *1.12. a* + *1.12. b*, *1.11. c* + *1.11 d*en *1,10. e* zijn + *1,10 f* en u bent op *1,9. g* of *1,9. h*, u valt buiten de ondersteuning.
-- Als de upgrade van *1,9. g* of *1,9. h* tot *1,10. e* of *1,10. f* slaagt, u bent weer terug in het kader van ons ondersteunings beleid.
+- Als de ondersteunde AKS-versies *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*en *1,10. f* + *1,10. g* zijn en u op *1,9. h* of *1,9. i* , hebt u geen ondersteuning meer.
+- Als de upgrade van *1,9. h* of *1,9. i* tot *1,10. f* of *1,10. g* slaagt, gaat u terug naar het binnen onze ondersteunings beleid.
 
 Upgrades naar oudere versies dan *n-4* worden niet ondersteund. In dergelijke gevallen raden klanten aan nieuwe AKS-clusters te maken en hun werk belastingen opnieuw te implementeren.
 

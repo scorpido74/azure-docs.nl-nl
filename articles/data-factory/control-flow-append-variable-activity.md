@@ -1,38 +1,38 @@
 ---
-title: Activiteit in Azure Data Factory-variabele toevoegen | Microsoft Docs
-description: Informatie over het instellen van de activiteit toevoeg-variabele een waarde toevoegen aan een bestaande matrixvariabele gedefinieerd in een Data Factory-pijplijn
+title: Variabele activity toevoegen in Azure Data Factory | Microsoft Docs
+description: Meer informatie over het instellen van de activiteit variabele toevoegen om een waarde toe te voegen aan een bestaande matrix variabele die in een Data Factory pijp lijn is gedefinieerd
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.date: 10/09/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24808c9ed4bda5e8d3b0ce23ab93bc59eb260374
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557219"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141729"
 ---
-# <a name="append-variable-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory-variabele toevoegen
+# <a name="append-variable-activity-in-azure-data-factory"></a>Variabele activity toevoegen in Azure Data Factory
 
-Gebruik de variabele toevoegen-activiteit om een waarde toevoegen aan een bestaande matrixvariabele gedefinieerd in een Data Factory-pijplijn.
+Gebruik de activiteit variabele toevoegen om een waarde toe te voegen aan een bestaande matrix variabele die in een Data Factory pijp lijn is gedefinieerd.
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
 Eigenschap | Description | Vereist
 -------- | ----------- | --------
-name | Naam van de activiteit in de pijplijn | Ja
-description | Een beschrijving van de werking van de activiteit | nee
-type | Activiteitstype is AppendVariable | ja
-value | Tekenreeks van letterlijke waarde of expressie object-waarde die wordt gebruikt om toe te voegen in de opgegeven variabele | ja
-variableName | Naam van de variabele die wordt gewijzigd door de activiteit, de variabele moet van het type 'Array' | ja
+name | De naam van de activiteit in de pijp lijn | Ja
+description | Tekst die beschrijft wat de activiteit doet | nee
+Type | Type activiteit is AppendVariable | ja
+value | Letterlijke teken reeks of expressie object waarde die wordt gebruikt om toe te voegen aan de opgegeven variabele | ja
+variableName | Naam van de variabele die wordt gewijzigd door activiteit, de variabele moet van het type matrix zijn | ja
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over een gerelateerde controlestroomactiviteit ondersteund door Data Factory: 
+Meer informatie over een gerelateerde controle stroom activiteit die wordt ondersteund door Data Factory: 
 
-- [Activiteit-variabele instellen](control-flow-set-variable-activity.md)
+- [Variabele activiteit instellen](control-flow-set-variable-activity.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Dubbele rijen verwijderen: Moduleverwijzing'
+title: 'Dubbele rijen verwijderen: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module dubbele rijen verwijderen in Azure Machine Learning-service op mogelijke dubbele waarden verwijderen uit een gegevensset.
+description: Meer informatie over het gebruik van de module dubbele rijen verwijderen in Azure Machine Learning-service om mogelijke dubbele items uit een gegevensset te verwijderen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,73 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: dce90d911085c1f7330a2e0952bb9576c1d765fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029293"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128525"
 ---
-# <a name="remove-duplicate-rows-module"></a>Dubbele rijen module verwijderen
+# <a name="remove-duplicate-rows-module"></a>Module dubbele rijen verwijderen
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om mogelijke dubbele waarden verwijderen uit een gegevensset.
+Gebruik deze module om potentiële duplicaten uit een gegevensset te verwijderen.
 
-Bijvoorbeeld, wordt ervan uitgegaan dat uw gegevens uitziet en meerdere records voor patiënten vertegenwoordigt. 
+Stel dat uw gegevens er als volgt uitzien en dat er meerdere records worden aangeduid voor patiënten. 
 
-| PatientID | Initialen| Geslacht|Leeftijd|Toegelaten|
+| PatientID | Initialen| Geslacht|Leeftijd|Stoffen|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Jan|
-|2| F.A.M.| M| 53| Jan|
-|3| F.A.M.| M| 24| Jan|
-|3| F.M.| M| 24| Feb|
-|4| F.M.| M| 23| Feb|
+|1|F.M.| M| 53| jan|
+|2| F.A.M.| M| 53| jan|
+|3| F.A.M.| M| 24| jan|
+|3| F.M.| M| 24| feb|
+|4| F.M.| M| 23| feb|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
 |6| F.A.M.| M| NaN| |
 |7| F.A.M.| M| NaN| |
 
-In dit voorbeeld is duidelijk, meerdere kolommen met mogelijk dubbele gegevens. Of ze daadwerkelijk dubbele waarden zijn, is afhankelijk van uw kennis van de gegevens. 
+Het is duidelijk dat dit voor beeld meerdere kolommen bevat met mogelijk dubbele gegevens. Of ze daad werkelijk worden gedupliceerd, is afhankelijk van uw kennis van de gegevens. 
 
-+ Bijvoorbeeld, kent u mogelijk dat veel patiënten dezelfde naam hebben. U wouldn't voorkomen dat dubbele waarden met behulp van een naamkolom, alleen de **ID** kolom. Op die manier kunnen alleen de rijen met dubbele id-waarden eruit worden gefilterd, ongeacht of de patiënt dezelfde naam hebben.
++ U kunt bijvoorbeeld weten dat veel patiënten dezelfde naam hebben. U kunt dubbele waarden niet elimineren met behulp van naam kolommen, alleen de kolom **id** . Op die manier worden alleen de rijen met dubbele ID-waarden gefilterd, ongeacht of de patiënten dezelfde naam hebben of niet.
 
-+ U kunt ook besluiten u dubbele vermeldingen in het veld ID toestaat en een andere combinatie van bestanden gebruiken om unieke records, zoals de naam van de eerste, laatste naam, leeftijd en geslacht te zoeken.  
++ U kunt er ook voor kiezen om dubbele waarden toe te staan in het veld ID en een andere combi natie van bestanden te gebruiken om unieke records te zoeken, zoals de voor naam, achternaam, leeftijd en geslacht.  
 
-Om in te stellen de criteria voor of een rij dubbel of niet is, geeft u één kolom of een set kolommen die worden gebruikt als **sleutels**. Twee rijen worden beschouwd als dubbele records alleen wanneer de waarden in **alle** sleutelkolommen gelijk zijn. Als een rij heeft een ontbrekende waarde voor **sleutels**, ze komen niet in aanmerking dubbele rijen. Bijvoorbeeld, als geslacht en leeftijd zijn ingesteld als de sleutels in bovenstaande tabel rij 6 en 7 zijn niet dubbele rijen gegeven hebben ze ontbrekende waarde in leeftijd.
+Als u de criteria wilt instellen voor of een rij dubbel of niet is, geeft u één kolom of een set kolommen op die moet worden gebruikt als **sleutel**. Twee rijen worden alleen als dubbele waarden beschouwd als **alle** sleutel kolommen gelijk zijn. Als een rij de waarde voor **sleutels**mist, worden deze niet als dubbele rijen beschouwd. Als geslacht en leeftijd bijvoorbeeld zijn ingesteld als sleutels in de bovenstaande tabel, zijn rij 6 en 7 geen dubbele rijen, aangezien de waarde voor de leeftijd ontbreekt.
 
-Wanneer u de module uitvoert, maakt u een gegevensset candidate en retourneert een set van rijen die u hebt geen dubbele waarden in de set kolommen die u hebt opgegeven.
+Wanneer u de module uitvoert, wordt er een gegevensset voor kandidaten gemaakt en wordt een set rijen geretourneerd die geen duplicaten bevat in de opgegeven set kolommen.
 
 > [!IMPORTANT]
-> De brongegevensset is niet gewijzigd; Deze module maakt een nieuwe gegevensset die is gefilterd, als u wilt uitsluiten van duplicaten, op basis van de criteria die u opgeeft.
+> De bron-gegevensset is niet gewijzigd. in deze module wordt een nieuwe gegevensset gemaakt die wordt gefilterd om dubbele waarden uit te sluiten, op basis van de criteria die u opgeeft.
 
-## <a name="how-to-use-remove-duplicate-rows"></a>Het gebruik van dubbele rijen verwijderen
+## <a name="how-to-use-remove-duplicate-rows"></a>Dubbele rijen verwijderen gebruiken
 
-1. De module toevoegen aan uw experiment. U vindt de **dubbele rijen verwijderen** module onder **gegevenstransformatie**, **manipulatie**.  
+1. Voeg de module toe aan uw experiment. U kunt de module **dubbele rijen verwijderen** vinden onder **gegevens transformatie**, **bewerken**.  
 
-2. Verbinding maken met de gegevensset die u wilt controleren op dubbele rijen.
+2. Verbind de gegevensset die u wilt controleren op dubbele rijen.
 
-3. In de **eigenschappen** deelvenster onder **sleutel kolom selectie filterexpressie**, klikt u op **kolomkiezer lancering**, kiest u kolommen die worden gebruikt bij het identificeren van duplicaten.
+3. Klik in het deel venster **Eigenschappen** onder **filter expressie voor sleutel kolommen** **selecteren op kolom kiezer starten**om kolommen te kiezen die u wilt gebruiken bij het identificeren van duplicaten.
 
-    In deze context **sleutel** betekent niet dat een unieke id. Alle kolommen die u hebt geselecteerd met behulp van de kolomkiezer zijn aangewezen als **sleutelkolommen**. Alle niet-geselecteerde kolommen worden beschouwd als niet-sleutelkolommen. De combinatie van kolommen die u als sleutels selecteert bepaalt de uniekheid van de records. (Het zien als een SQL-instructie die gebruikmaakt van meerdere equalities joins.)
+    In deze context betekent de **sleutel** geen unieke id. Alle kolommen die u selecteert met behulp van de kolom kiezer, worden aangeduid als **sleutel kolommen**. Alle niet-geselecteerde kolommen worden beschouwd als niet-sleutel kolommen. De combi natie van kolommen die u als sleutels selecteert, bepaalt de unieke aanduiding van de records. (Dit kan worden beschouwd als een SQL-instructie die gebruikmaakt van meerdere equals-samen voegingen.)
 
     Voorbeelden:
 
-    + 'Ik wil ervoor zorgen dat de id's uniek zijn': Kies alleen de kolom-ID.
-    + 'Ik wil ervoor zorgen dat de combinatie van de voornaam, achternaam en ID uniek is': Selecteer alle drie kolommen.
+    + "Ik wil ervoor zorgen dat de Id's uniek zijn": Kies alleen de ID-kolom.
+    + "Ik wil ervoor zorgen dat de combi natie van voor naam, achternaam en ID uniek is": Selecteer alle drie de kolommen.
 
-4. Gebruik de **behouden van de eerste dubbele rij** selectievakje om aan te geven welke rij moet worden geretourneerd wanneer er dubbele waarden zijn gevonden:
+4. Gebruik het selectie vakje **eerste dubbele rij bewaren** om aan te geven welke rij moet worden geretourneerd wanneer dubbele waarden worden gevonden:
 
-    + Indien geselecteerd, de eerste rij wordt geretourneerd en anderen verwijderd. 
-    + Als u deze optie uitschakelt, wordt de laatste rij van de dubbele wordt opgeslagen in de resultaten en anderen worden genegeerd. 
+    + Als deze is geselecteerd, wordt de eerste rij geretourneerd en anderen verwijderd. 
+    + Als u deze optie uitschakelt, wordt de laatste dubbele rij in de resultaten bewaard en anderen verwijderd. 
 
 5. Voer het experiment uit.
 
-6. Om de resultaten bekijken, met de rechtermuisknop op de module, selecteert u **resultaten gegevensset**, en klikt u op **Visualize**. 
+6. Als u de resultaten wilt bekijken, klikt u met de rechter muisknop op de module,selecteert u **resultaten gegevensset**en klikt u op visualiseren. 
 
 > [!TIP]
-> Als de resultaten moeilijk zijn te begrijpen of als u uitsluiten van sommige kolommen in aanmerking wilt, u kolommen verwijderen met behulp van kunt de [Select Columns in Dataset](./select-columns-in-dataset.md) module.
+> Als de resultaten moeilijk te begrijpen zijn, of als u wilt voor komen dat sommige kolommen van overweging worden genomen, kunt u kolommen verwijderen met de module [kolommen in gegevensset selecteren](./select-columns-in-dataset.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

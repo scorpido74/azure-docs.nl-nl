@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562533"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136566"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Beheerd opslag account Azure Key Vault-Power shell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562533"
 > - Verifieer uw client toepassing met behulp van een toepassings-of gebruikers-id in plaats van de referenties van het opslag account. 
 > - Gebruik een door [Azure AD beheerde identiteit](/azure/active-directory/managed-identities-azure-resources/) als deze wordt uitgevoerd op Azure. Beheerde identiteiten verwijderen de nood zaak voor client verificatie helemaal en het opslaan van referenties in of met uw toepassing.
 > - Gebruik op rollen gebaseerd Access Control (RBAC) voor het beheren van autorisatie, die ook door Key Vault wordt ondersteund.
+> - AAD-toegang tot het opslag account werkt niet voor toegang tot tabellen vanaf nog.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Sleutel opnieuw genereren inschakelen
 
-Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u een periode voor opnieuw genereren instellen. In het volgende voor beeld wordt een periode voor het opnieuw genereren van drie dagen ingesteld. Na drie dagen wordt ' Key1 ' opnieuw gegenereerd door Key Vault en wordt de actieve sleutel van Key2 naar Key1 gewisseld.
+Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u een periode voor opnieuw genereren instellen. In het volgende voor beeld wordt een periode voor het opnieuw genereren van drie dagen ingesteld. Na drie dagen genereert Key Vault Key2 opnieuw en wordt de actieve sleutel van Key2 naar Key1 gewisseld.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

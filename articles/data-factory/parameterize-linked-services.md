@@ -1,6 +1,6 @@
 ---
-title: Gekoppelde services in Azure Data Factory parameteriseren | Microsoft Docs
-description: Leer hoe u voorzien van gekoppelde services in Azure Data Factory en dynamische waarden doorgeven tijdens runtime.
+title: Para meters gekoppelde services in Azure Data Factory | Microsoft Docs
+description: Meer informatie over het para meters van gekoppelde services in Azure Data Factory en het door geven van dynamische waarden tijdens runtime.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,32 +8,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/18/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 0239c53f98fba201b6d70e1e2212eea36134e30d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 285b7c182fc218a590b7a3980e43175c76555106
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635525"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140960"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Gekoppelde services in Azure Data Factory parameteriseren
+# <a name="parameterize-linked-services-in-azure-data-factory"></a>Para meters gekoppelde services in Azure Data Factory
 
-U kunt nu voorzien van een gekoppelde service en dynamische waarden doorgeven tijdens runtime. Bijvoorbeeld, als u wilt verbinding maken met verschillende databases op dezelfde Azure SQL Database-server, kunt u nu parameter van de naam van de database in het definitie van de gekoppelde service. Dit voorkomt u dat niet hoeft te maken van een gekoppelde service voor elke database op de Azure SQL database-server. U kunt bijvoorbeeld andere eigenschappen in de definitie van de gekoppelde service ook - parameteriseren *gebruikersnaam.*
+U kunt nu een gekoppelde service para meters en dynamische waarden door geven tijdens runtime. Als u bijvoorbeeld verbinding wilt maken met verschillende data bases op dezelfde Azure SQL Database Server, kunt u de naam van de data base nu para meters in de definitie van de gekoppelde service. Zo voor komt u dat u een gekoppelde service voor elke Data Base op de Azure SQL database-server hoeft te maken. U kunt ook andere eigenschappen in de definitie van de gekoppelde service para meters, bijvoorbeeld *gebruikers naam.*
 
-U kunt de gebruikersinterface van Data Factory in Azure Portal of een programmeerinterface gebruiken om te voorzien van gekoppelde services.
+U kunt de Data Factory-gebruikers interface in azure portal of een programmeer interface gebruiken om gekoppelde services te para meters.
 
 > [!TIP]
-> We raden niet om te voorzien van wachtwoorden of geheimen. Alle verbindingsreeksen in plaats daarvan Store in Azure Key Vault en parameteriseren de *geheime naam*.
+> We raden u aan om wacht woorden of geheimen niet para meters. Sla alle verbindings reeksen op in Azure Key Vault in plaats daarvan en para meters de naam van het *geheim*.
 
-Bekijk de volgende video voor een inleiding van 7 minuten en demonstratie van deze functie:
+Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten voor deze functie:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
+## <a name="supported-data-stores"></a>Ondersteunde gegevens archieven
 
-Parameterisering van de gekoppelde service wordt op dit moment ondersteund in de gebruikersinterface van Data Factory in Azure portal voor de volgende gegevensarchieven. Voor alle andere gegevensarchieven, kunt u de gekoppelde service voorzien door het selecteren van de **Code** pictogram op de **verbindingen** tabblad en met behulp van de JSON-editor.
+Op dit moment wordt de gekoppelde service parameterisering ondersteund in de Data Factory-gebruikers interface in de Azure Portal voor de volgende gegevens archieven. Voor alle andere gegevens archieven kunt u de gekoppelde service para meters door het pictogram **code** te selecteren op het tabblad **verbindingen** en de JSON-editor te gebruiken.
 - Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server
@@ -45,7 +45,7 @@ Parameterisering van de gekoppelde service wordt op dit moment ondersteund in de
 
 ## <a name="data-factory-ui"></a>Gebruikersinterface van Data Factory
 
-![Dynamische inhoud toevoegen aan de definitie van de gekoppelde Service](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+![Dynamische inhoud toevoegen aan de definitie van de gekoppelde service](media/parameterize-linked-services/parameterize-linked-services-image1.png)
 
 ![Een nieuwe parameter maken](media/parameterize-linked-services/parameterize-linked-services-image2.png)
 

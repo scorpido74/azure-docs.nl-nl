@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67616007"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147189"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes core-concepten voor Azure Kubernetes service (AKS)
 
@@ -100,6 +100,9 @@ Zie [Best Practices for Basic scheduler-functies in AKS][operator-best-practices
 ### <a name="node-pools"></a>Knooppuntgroepen
 
 Knoop punten van dezelfde configuratie worden samen in *knooppunt groepen*gegroepeerd. Een Kubernetes-cluster bevat een of meer knooppunt groepen. Het eerste aantal knoop punten en grootte worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaard knooppunt groep*wordt gemaakt. Deze standaard knooppunt groep in AKS bevat de onderliggende virtuele machines waarop de agent knooppunten worden uitgevoerd. Ondersteuning voor meerdere knooppunt groepen is momenteel beschikbaar als preview-versie in AKS.
+
+> [!NOTE]
+> Om ervoor te zorgen dat uw cluster betrouwbaar functioneert, moet u ten minste twee knoop punten in de standaard knooppunt groep uitvoeren.
 
 Wanneer u een AKS-cluster schaalt of bijwerkt, wordt de actie uitgevoerd op basis van de standaard knooppunt groep. U kunt er ook voor kiezen om een specifieke knooppunt groep te schalen of bij te werken. Voor upgrade bewerkingen worden actieve containers gepland op andere knoop punten in de knooppunt groep totdat alle knoop punten zijn bijgewerkt.
 

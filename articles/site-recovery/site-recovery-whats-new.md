@@ -5,25 +5,36 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 3dc20036ead29c62d47b4a628d7ce8101b9d31f4
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 5cd4b86c9c70f713a207f7feea9fa8efc06b6247
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972525"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146901"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
 De [Azure site Recovery](site-recovery-overview.md) -service wordt voortdurend bijgewerkt en verbeterd. Om u te helpen up-to-date te blijven, geeft u in dit artikel informatie over de nieuwste releases, nieuwe functies en nieuwe inhoud. Deze pagina wordt regel matig bijgewerkt.
 
-Als u suggesties hebt voor Site Recovery-functies, horen we graag [uw feedback](https://feedback.azure.com/forums/256299-site-recovery).
+U kunt volgen en u abonneren op Site Recovery update meldingen in het [Azure-updates](https://azure.microsoft.com/updates/?product=site-recovery) kanaal.
 
+## <a name="supported-updates"></a>Ondersteunde updates
 
-## <a name="installing-updates"></a>Updates installeren
+Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest recente versie is van de release. Deze worden in de volgende tabel samenvatten.
 
-[Lees dit artikel](service-updates-how-to.md) voor ondersteuning en instructies van site Recovery update.
+**Update** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent** 
+--- | --- | --- | --- | ---
+[Pakket 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
+[Pakket 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+[Pakket 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
+[Pakket 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
+[Pakket 35](https://support.microsoft.com/help/4494485/) | 9.23.5163.1 | 5.1.4000.0 | 9.23.5163.1 | 5.1.4000.0 | 2.0.9156.0 
+        
+
+Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning van de update.
+
 
 ## <a name="updates-august-2019"></a>Updates (augustus 2019)
 

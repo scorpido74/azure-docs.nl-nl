@@ -1,7 +1,7 @@
 ---
-title: 'K-Means Clustering: Moduleverwijzing'
+title: 'K-betekent clusteren: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module K-Means clusters in de Azure Machine Learning-service clustering modellen kunt trainen.
+description: Meer informatie over het gebruik van de module K-betekent clustering in de Azure Machine Learning-service om cluster modellen te trainen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,137 +9,136 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 7e9b7c8f2cf86245322679198b84b50d2c5edce8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464673"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128705"
 ---
-# <a name="module-k-means-clustering"></a>Module: K-means-clustering
+# <a name="module-k-means-clustering"></a>Programma K-means-clustering
 
-In dit artikel wordt beschreven hoe u de *K-Means Clustering* module in Azure Machine Learning Studio om een ongetrainde K-means clustering-model te maken. 
+In dit artikel wordt beschreven hoe u de module *K-betekent clustering* in azure machine learning Studio kunt gebruiken om een niet-getraind k-means clustering model te maken. 
  
-K-means is een van de eenvoudigste en meest bekende *zonder supervisie* learning-algoritmen. U kunt het algoritme gebruiken voor een verscheidenheid aan machine learning-taken, zoals: 
+K: is een van de eenvoudigste en meest bekende algoritmen voor leren. U kunt het algoritme gebruiken voor een aantal machine learning taken, zoals: 
 
-* [Detecteren van abnormaal gegevens](https://msdn.microsoft.com/magazine/jj891054.aspx).
-* Clustering tekstdocumenten.
-* Gegevenssets analyseren voordat u andere methoden classificatie- of regressiemodel. 
+* [Abnormale gegevens detecteren](https://msdn.microsoft.com/magazine/jj891054.aspx).
+* Clustering van tekst documenten.
+* Gegevens sets analyseren voordat u andere classificatie-of regressie methoden gebruikt. 
 
-Clustering-model, maakt u:
+U kunt als volgt een cluster model maken:
 
-* Deze module toevoegen aan uw experiment.
-* Verbinding maken met een gegevensset.
-* Stel parameters, zoals het aantal clusters die u verwacht, de metriek afstand te gebruiken bij het maken van de clusters, enzovoort. 
+* Voeg deze module toe aan uw experiment.
+* Verbind een gegevensset.
+* Stel para meters in, zoals het aantal clusters dat u verwacht, de afstands metriek die moet worden gebruikt voor het maken van de clusters, enzovoort. 
   
-Nadat u de module hyperparameters hebt geconfigureerd, u verbinding maken met het ongetrainde model aan de [Clustering Train-Model](train-clustering-model.md). Omdat de K-means-algoritme een methode zonder supervisie learning is, is een labelkolom is optioneel. 
+Nadat u de module Hyper parameters hebt geconfigureerd, verbindt u het niet-trainde model met het [cluster Model Train](train-clustering-model.md). Omdat het algoritme van K-betekent een niet-gecontroleerde leer methode is, is een label kolom optioneel. 
 
-+ Als uw gegevens een label bevat, kunt u de labelwaarden te begeleiden selectie van de clusters en het model te optimaliseren. 
++ Als uw gegevens een label bevatten, kunt u de label waarden gebruiken om de selectie van de clusters te begeleiden en het model te optimaliseren. 
 
-+ Als uw gegevens geen label heeft, maakt de algoritme die mogelijk categorieën, die uitsluitend zijn gebaseerd op de gegevens vertegenwoordigt die clusters.  
++ Als uw gegevens geen label hebben, worden met de algoritme clusters gemaakt die mogelijke categorieën vertegenwoordigen, op basis van uitsluitend op de gegevens.  
 
 ##  <a name="understand-k-means-clustering"></a>K-means clustering begrijpen
  
-In het algemeen clustering maakt gebruik van herhalende technieken groep gevallen in een gegevensset in clusters met vergelijkbare kenmerken hebben. Deze groeperingen zijn handig voor gegevens, het identificeren van afwijkingen in de gegevens verkennen en uiteindelijk voor het maken van voorspellingen. Clustering modellen ook kunt u relaties in een gegevensset die u mogelijk niet logisch afgeleid door te bladeren door of anderszins waarneming identificeren. Daarom wordt clustering vaak gebruikt in de eerste fasen van machine learning-taken, de gegevens verkennen en detectie van onverwachte correlaties.  
+Over het algemeen gebruikt clustering iteratieve technieken om cases in een gegevensset te groeperen in clusters met vergelijk bare kenmerken. Deze groeperingen zijn handig voor het verkennen van gegevens, het identificeren van afwijkingen in de gegevens en uiteindelijk voor het maken van voor spellingen. Clustering modellen kunnen u ook helpen bij het identificeren van relaties in een gegevensset die u mogelijk niet logisch hebt afgeleid door te bladeren of een eenvoudige waarneming. Om die reden wordt clustering vaak gebruikt in de vroege fasen van machine learning taken, om de gegevens te verkennen en onverwachte correlaties te ontdekken.  
   
- Wanneer u een clustering-model met behulp van de methode K-means configureert, moet u een doelgetal *k* die aangeeft dat het aantal *centroids* die in het model. De massamiddelpunt is een punt die representatief is voor elk cluster. Het algoritme K-means wordt elke binnenkomende gegevenspunt toegewezen aan een van de clusters door het minimaliseren van de som binnen het cluster van de kwadraten. 
+ Wanneer u een cluster model configureert met behulp van de K-betekent-methode, moet u een doel nummer *K* opgeven dat het aantal *centroids* aangeeft dat u wilt gebruiken in het model. De massa middelpunt is een punt dat representatief is voor elk cluster. Het algoritme K-houdt elk binnenkomend gegevens punt toe aan een van de clusters door de binnenste cluster som van de kwadraten te minimaliseren. 
  
-Wanneer deze de trainingsgegevens verwerkt, wordt het algoritme K-means begint met een eerste set met willekeurig gekozen centroids. Centroids fungeren als startpunt voor de clusters en ze toepassen van Lloyd algoritme iteratief verfijnen hun locaties. Het algoritme K-means stopt met het bouwen en verfijnen van clusters als deze voldoet aan een of meer van deze voorwaarden:  
+Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met een initiële set wille keurig gekozen centroids. Centroids fungeren als start punt voor de clusters en past het-algoritme van Lloyd's toe om hun locaties iteratief te verfijnen. Het-algoritme voor K: stopt met het maken en verfijnen van clusters wanneer deze aan een of meer van de volgende voor waarden voldoen:  
   
--   De centroids stabiliseren, wat betekent dat de cluster-toewijzingen voor afzonderlijke punten niet meer wijzigen en de algoritme is geconvergeerd aan een oplossing.  
+-   De centroids stabiliseren, wat inhoudt dat de cluster toewijzingen voor afzonderlijke punten niet meer veranderen en dat het algoritme is geconvergeerd op een oplossing.  
   
--   De algoritme voltooid met het opgegeven aantal iteraties.  
+-   Het algoritme heeft het opgegeven aantal herhalingen voltooid.  
   
- Nadat u de fase training hebt voltooid, gebruikt u de [gegevens toewijzen aan Clusters](assign-data-to-clusters.md) module nieuwe aanvragen toewijzen aan een van de clusters die u met behulp van de algoritme K-means gevonden. U uitvoeren de toewijzing van het cluster door de afstand tussen de nieuwe aanvraag en de massamiddelpunt van elk cluster computing. Elke nieuwe aanvraag is toegewezen aan het cluster met de dichtstbijzijnde massamiddelpunt.  
+ Nadat u de trainings fase hebt voltooid, gebruikt u de module [gegevens toewijzen aan clusters](assign-data-to-clusters.md) om nieuwe cases toe te wijzen aan een van de clusters die u hebt gevonden met behulp van het K-betekent-algoritme. U voert cluster toewijzing uit door de afstand tussen de nieuwe case en de massa middelpunt van elk cluster te berekenen. Elke nieuwe case wordt toegewezen aan het cluster met de dichtstbijzijnde massa middelpunt.  
 
-## <a name="configure-the-k-means-clustering-module"></a>De module K-Means Clustering configureren
+## <a name="configure-the-k-means-clustering-module"></a>De K-betekent-cluster module configureren
   
-1.  Voeg de **K-Means Clustering** module naar het experimentcanvas.  
+1.  Voeg de **cluster module K-betekent** toe aan uw experiment.  
   
-2.  Selecteer om te bepalen hoe u wilt dat het model te trainen, de **trainer aanmaakmodus** optie.  
+2.  Selecteer de optie **trainer maken** om op te geven hoe het model moet worden getraind.  
   
-    -   **Eén Parameter**: Als u bekend bent met de exacte parameters die u wilt gebruiken in de clustering-model, kunt u een specifieke set waarden opgeven als argumenten.  
+    -   **Eén para meter**: Als u weet welke para meters u wilt gebruiken in het cluster model, kunt u een specifieke set waarden als argumenten opgeven.  
   
-3.  Voor **nummer van Centroids**, typt u het aantal clusters die u wilt dat de algoritme om te beginnen met.  
+3.  Voor het **aantal Centroids**typt u het aantal clusters waarmee u het algoritme wilt beginnen.  
   
-     Het model wordt niet gegarandeerd voor het produceren van exact dit aantal clusters. Het algoritme begint met dit aantal gegevenspunten en gegevensbrontabellen loopt, om de optimale configuratie.  
+     Het model is niet gegarandeerd om precies dit aantal clusters te produceren. Het algoritme begint met dit aantal gegevens punten en wordt herhaald om de optimale configuratie te vinden.  
   
-4.  De eigenschappen **initialisatie** wordt gebruikt om op te geven van de algoritme die wordt gebruikt voor het definiëren van de eerste clusterconfiguratie.  
+4.  De **initialisatie van** eigenschappen wordt gebruikt om het algoritme op te geven dat wordt gebruikt voor het definiëren van de eerste cluster configuratie.  
   
-    -   **Eerste N**: Een eerste aantal gegevenspunten zijn gekozen uit de gegevensset en gebruikt als de eerste manier. 
+    -   **Eerste N**: Een initieel aantal gegevens punten wordt gekozen uit de gegevensset en wordt gebruikt als de eerste methode. 
     
-         Deze methode wordt ook aangeroepen de *Forgy methode*.  
+         Deze methode wordt ook wel de *smeden-methode*genoemd.  
   
-    -   **Willekeurige**: Het algoritme willekeurig plaatst een gegevenspunt in een cluster en vervolgens het eerste gemiddelde moet de massamiddelpunt van van het cluster willekeurig toegewezen punten worden berekend. 
+    -   **Wille keurig**: Met het algoritme wordt wille keurig een gegevens punt in een cluster geplaatst en wordt het eerste gemiddelde berekend als de massa middelpunt van de wille keurig toegewezen punten van het cluster. 
 
-         Deze methode wordt ook aangeroepen de *willekeurige partitie* methode.  
+         Deze methode wordt ook wel de *wille keurige partitie* methode genoemd.  
   
-    -   **K-middelen ++** : Dit is de standaardmethode voor het initialiseren van clusters.  
+    -   **K-betekent + +** : Dit is de standaard methode voor het initialiseren van clusters.  
   
-         De **K-middelen ++** algoritme is voorgesteld in 2007 door David Arthur en Sergei Vassilvitskii om te voorkomen dat slecht clustering door de norm K-means-algoritme. **K-middelen ++** norm K-means verbeterd met behulp van een andere methode voor het kiezen van de eerste cluster datacenters.  
+         De **K-houdt + +-** algoritme is voorgesteld in 2007 door David Arthur en Sergei Vassilvitskii om te voor komen dat er geclusterd wordt door het standaard-K-algoritme. **K-betekent + +** verbetert de standaard K-betekent dat u een andere methode gebruikt voor het kiezen van de eerste cluster centrums.  
   
     
-5.  Voor **willekeurig getal seed**, (optioneel) Typ een waarde moet worden gebruikt als basis voor de initialisatie van het cluster. Deze waarde kan een aanzienlijke invloed op de selectie van het cluster hebben.  
+5.  Voor **wille keurig getal zaad**typt u optioneel een waarde die moet worden gebruikt als seed voor de initialisatie van het cluster. Deze waarde kan een aanzienlijk effect hebben op de selectie van een cluster.  
   
-6.  Voor **Metric**, kiest u de functie te gebruiken voor het meten van de afstand tussen vectoren cluster of tussen nieuwe gegevenspunten en het willekeurig gekozen massamiddelpunt. Azure Machine Learning ondersteunt de volgende metrische gegevens voor cluster-afstand:  
+6.  Kies voor **metriek**de functie die u wilt gebruiken voor het meten van de afstand tussen cluster vectoren of tussen nieuwe gegevens punten en de wille keurig gekozen massa middelpunt. Azure Machine Learning ondersteunt de volgende waarden voor de cluster afstand:  
   
-    -   **Euclidean**: De Euclidean afstand wordt doorgaans gebruikt als een meting van cluster spreiding voor K-means clustering. Met deze metriek verdient de voorkeur omdat deze de gemiddelde afstand tussen punten en de centroids wordt geminimaliseerd.
+    -   **Euclidean**: De Euclidean-afstand wordt vaak gebruikt als een meting van de sprei ding van het cluster voor k-means clustering. Deze metrische gegevens hebben de voor keur omdat hiermee de gemiddelde afstand tussen punten en de centroids wordt geminimaliseerd.
   
-7.  Voor **iteraties**, typt u het aantal keren dat het algoritme de trainingsgegevens herhalen moet voordat deze de selectie van centroids wordt.  
+7.  Voor **herhalingen**typt u het aantal keren dat het algoritme moet worden herhaald om de trainings gegevens te herhalen voordat de selectie van centroids wordt voltooid.  
   
-     U kunt deze parameter saldo nauwkeurigheid van de trainingstijd aanpassen.  
+     U kunt deze para meter aanpassen om de nauw keurigheid van de trainings tijd af te stemmen.  
   
-8.  Voor **toewijzen label modus**, kies een optie die hoe een labelkolom aangeeft als deze aanwezig in de gegevensset is moet worden verwerkt.  
+8.  Voor de **modus label toewijzen**kiest u een optie die aangeeft hoe een label kolom, als deze aanwezig is in de gegevensset, moet worden afgehandeld.  
   
-     Labels zijn optioneel, omdat het K-means clustering een zonder supervisie machine learning-methode. Echter als uw gegevensset al een labelkolom heeft, kunt u deze waarden voor de selectie van de clusters, of u kunt opgeven dat de waarden worden genegeerd.  
+     Omdat k-means clustering een onbewaakte machine learning methode is, zijn labels optioneel. Als uw gegevensset echter al een kolom label heeft, kunt u deze waarden gebruiken om de selectie van de clusters te begeleiden, of u kunt opgeven dat de waarden moeten worden genegeerd.  
   
-    -   **Labelkolom negeren**: De waarden in de labelkolom worden genegeerd en worden niet gebruikt bij het bouwen van het model.
+    -   **Kolom Label negeren**: De waarden in de kolom Label worden genegeerd en worden niet gebruikt bij het maken van het model.
   
-    -   **Vul de ontbrekende waarden**: De kolomwaarden label worden gebruikt als functies kunt opbouwen van de clusters. Als alle rijen een label ontbreekt, wordt de waarde toegerekende met behulp van andere functies.  
+    -   **Ontbrekende waarden vullen**: De label kolom waarden worden gebruikt als functies om de clusters te bouwen. Als er rijen ontbreken in een label, wordt de waarde toegerekend met behulp van andere functies.  
   
-    -   **Overschrijven uit die het dichtst bij center**: De kolomwaarden label vervangen door labelwaarden van de voorspelde, met behulp van het label van het punt die zich het dichtst bij de huidige massamiddelpunt.  
+    -   **Overschrijven van het dichtstbijzijnde naar het midden**: De label kolom waarden worden vervangen door voorspelde label waarden met behulp van het label van het punt dat zich het dichtst bij de huidige massa middelpunt bevindt.  
 
-8.  Selecteer de **normaliseren functies** optie als u wilt normaliseren functies voordat een training.
+8.  Selecteer de optie **kenmerken normaliseren** als u functies wilt normaliseren vóór de training.
   
-     Als u van toepassing is normalisering, training, de gegevenspunten zijn genormaliseerd voor `[0,1]` door MinMaxNormalizer.
+     Als u normalisatie toepast vóór de training, worden de gegevens punten genormaliseerd naar `[0,1]` MinMaxNormalizer.
 
-10. Het model te trainen.  
+10. Train het model.  
   
-    -   Als u instelt **trainer aanmaakmodus** naar **één Parameter**, een label gegevensset toe te voegen en het model te trainen met behulp van de [Clustering-Model trainen](train-clustering-model.md) module.  
+    -   Als u de **modus trainer maken** instelt op **één para meter**, voegt u een gecodeerde gegevensset toe en traint u het model met behulp van de module [clustering model trainen](train-clustering-model.md) .  
   
 ### <a name="results"></a>Resultaten
 
-Als u klaar bent met het configureren en het model te trainen, hebt u een model dat u gebruiken kunt voor het genereren van scores. Er zijn echter meerdere manieren om het model te trainen en meerdere manieren om te bekijken en gebruiken van de resultaten: 
+Nadat u klaar bent met het configureren en trainen van het model, hebt u een model dat u kunt gebruiken voor het genereren van scores. Er zijn echter meerdere manieren om het model te trainen en meerdere manieren om de resultaten weer te geven en te gebruiken: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Vastleggen van een momentopname van het model in uw werkruimte
+#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Een moment opname van het model vastleggen in uw werk ruimte
 
-Als u gebruikt de [Clustering Train-Model](train-clustering-model.md) module:
+Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebruikt:
 
-1. Met de rechtermuisknop op de **Clustering Train-Model** module.
+1. Klik met de rechter muisknop op de module **clustering model trainen** .
 
-2. Selecteer **Trained model**, en selecteer vervolgens **opslaan als het getrainde Model**.
+2. Selecteer **getraind model**en selecteer vervolgens **Opslaan als getraind model**.
 
-De opgeslagen model vertegenwoordigt de trainingsgegevens op het moment dat u het model hebt opgeslagen. Als u later de trainingsgegevens gebruikt in het experiment bijwerkt, bijwerken niet het het opgeslagen model. 
+Het opgeslagen model vertegenwoordigt de trainings gegevens op het moment dat u het model hebt opgeslagen. Als u later de trainings gegevens die in het experiment worden gebruikt, bijwerkt, wordt het opgeslagen model niet bijgewerkt. 
 
-#### <a name="see-the-clustering-result-dataset"></a>Zie de clustering resultaat-gegevensset 
+#### <a name="see-the-clustering-result-dataset"></a>De gegevensset van het cluster resultaat bekijken 
 
-Als u gebruikt de [Clustering Train-Model](train-clustering-model.md) module:
+Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebruikt:
 
-1. Met de rechtermuisknop op de **Clustering Train-Model** module.
+1. Klik met de rechter muisknop op de module **clustering model trainen** .
 
-2. Selecteer **resultaten gegevensset**, en selecteer vervolgens **Visualize**.
+2. Selecteer **resultaten gegevensset**en selecteer vervolgens **visualiseren**.
 
-### <a name="tips-for-generating-the-best-clustering-model"></a>Tips voor het genereren van het beste model clustering  
+### <a name="tips-for-generating-the-best-clustering-model"></a>Tips voor het genereren van het beste cluster model  
 
-Het is bekend dat de *seeding* proces dat wordt gebruikt tijdens de clustering kan aanzienlijke invloed hebben op het model. Seeding betekent dat de eerste positie van punten in mogelijke centroids.
+Het is bekend dat het *seeding* proces dat wordt gebruikt tijdens clusteren, het model aanzienlijk kan beïnvloeden. Seeding betekent dat de eerste plaatsing van punten in mogelijke centroids.
  
-Als de gegevensset veel uitschieters bevat, en een uitschieter wordt gekozen bij de seeding van de clusters, geen andere gegevenspunten zouden passen goed met het cluster en het cluster wordt mogelijk een singleton. Dat wil zeggen er dat slechts één punt.  
+Als de gegevensset bijvoorbeeld veel uitbijters bevat en er een uitschieter wordt gekozen voor het seeden van de clusters, zijn er geen andere gegevens punten goed in het cluster en kan het cluster een singleton zijn. Dat wil zeggen dat het slechts één punt kan hebben.  
   
-U kunt dit probleem op een aantal manieren voorkomen:  
+U kunt dit probleem op een aantal manieren voor komen:  
   
--   Het aantal centroids wijzigen en probeer het meerdere seed-waarden.  
+-   Wijzig het aantal centroids en voer meerdere seed-waarden uit.  
   
--   Maak meerdere modellen, variëren de metrische gegevens of meer doorlopen.  
+-   Maak meerdere modellen, variërend van metrische gegevens of meer.  
   
-In het algemeen met clustering modellen, is het mogelijk dat een bepaalde configuratie in een lokaal geoptimaliseerde set van clusters resulteren zal. Met andere woorden, de set van clusters die wordt geretourneerd door het model past bij de huidige gegevenspunten en is niet generaliseerbaar met andere gegevens. Als u een andere initiële configuratie gebruikt, kan het K-means-methode een configuratie met verschillende en misschien superieure vinden. 
+Over het algemeen is het mogelijk dat een wille keurige configuratie een lokaal geoptimaliseerde set clusters oplevert voor het clusteren van modellen. Met andere woorden, de set clusters die door het model wordt geretourneerd, is alleen geschikt voor de huidige gegevens punten en kan niet worden gegeneraliseerd met andere gegevens. Als u een andere initiële configuratie gebruikt, kan de K-houdt-methode een andere, mogelijk superieure configuratie, vinden. 

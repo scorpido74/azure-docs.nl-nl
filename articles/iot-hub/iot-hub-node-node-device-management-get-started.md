@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 049fc534c6bf3d777268363968ac2a8b92ca8d1c
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904439"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147446"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>Aan de slag met Apparaatbeheer (node. js)
 
@@ -34,8 +34,6 @@ Aan het einde van deze zelf studie hebt u twee node. js-console-apps:
 * **dmpatterns_getstarted_service. js**, waarmee een directe methode wordt aangeroepen in de gesimuleerde apparaat-app, het antwoord wordt weer gegeven en de bijgewerkte gerapporteerde eigenschappen worden weer gegeven.
 
 ## <a name="prerequisites"></a>Vereisten
-
-Voor deze zelfstudie hebt u het volgende nodig:
 
 * Node. js versie 10.0. x of hoger. [Uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) hierin wordt beschreven hoe u node. js installeert voor deze zelf studie op Windows of Linux.
 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: ed90c22fa8c5b94567a9886ca71c9b35fbb103f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624628"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137343"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python-SDK voor SQL-API: Release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -145,7 +145,12 @@ Nieuwe functies en functionaliteiten en optimalisaties worden alleen toegevoegd 
 Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
 
 > [!WARNING]
-> Alle versies van de Azure SQL SDK voor python vóór versie **1.0.0** zijn ingetrokken op **29 februari 2016**. 
+> Alle versies van de python-SDK voor SQL API vóór versie **1.0.0** zijn buiten gebruik gesteld op **29 februari 2016**. 
+> 
+> 
+
+> [!WARNING]
+> Alle versies 1. x en 2. x van de python-SDK voor SQL-API zullen worden ingetrokken op **30 augustus 2020**. 
 > 
 > 
 
@@ -155,27 +160,27 @@ Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |15 november 2018 |--- |
 | [3.0.1](#3.0.1) |Okt 04, 2018 |--- |
-| [2.3.3](#2.3.3) |Sept 08, 2018 |--- |
-| [2.3.2](#2.3.2) |08 mei 2018 |--- |
-| [2.3.1](#2.3.1) |21 december 2017 |--- |
-| [2.3.0](#2.3.0) |10 november 2017 |--- |
-| [2.2.1](#2.2.1) |29 sep, 2017 |--- |
-| [2.2.0](#2.2.0) |10 mei 2017 |--- |
-| [2.1.0](#2.1.0) |01 mei 2017 |--- |
-| [2.0.1](#2.0.1) |30 oktober 2016 |--- |
-| [2.0.0](#2.0.0) |29 september 2016 |--- |
-| [1.9.0](#1.9.0) |Juli 07, 2016 |--- |
-| [1.8.0](#1.8.0) |14 juni 2016 |--- |
-| [1.7.0](#1.7.0) |26 april 2016 |--- |
-| [1.6.1](#1.6.1) |08 april 2016 |--- |
-| [1.6.0](#1.6.0) |29 maart 2016 |--- |
-| [1.5.0](#1.5.0) |03 januari 2016 |--- |
-| [1.4.2](#1.4.2) |06 oktober 2015 |--- |
-| 1.4.1 |06 oktober 2015 |--- |
-| [1.2.0](#1.2.0) |06 van 6 augustus 2015 |--- |
-| [1.1.0](#1.1.0) |09 juli 2015 |--- |
-| [1.0.1](#1.0.1) |25 mei 2015 |--- |
-| [1.0.0](#1.0.0) |07 april 2015 |--- |
+| [2.3.3](#2.3.3) |Sept 08, 2018 |30 augustus 2020 |
+| [2.3.2](#2.3.2) |08 mei 2018 |30 augustus 2020 |
+| [2.3.1](#2.3.1) |21 december 2017 |30 augustus 2020 |
+| [2.3.0](#2.3.0) |10 november 2017 |30 augustus 2020 |
+| [2.2.1](#2.2.1) |29 sep, 2017 |30 augustus 2020 |
+| [2.2.0](#2.2.0) |10 mei 2017 |30 augustus 2020 |
+| [2.1.0](#2.1.0) |01 mei 2017 |30 augustus 2020 |
+| [2.0.1](#2.0.1) |30 oktober 2016 |30 augustus 2020 |
+| [2.0.0](#2.0.0) |29 september 2016 |30 augustus 2020 |
+| [1.9.0](#1.9.0) |Juli 07, 2016 |30 augustus 2020 |
+| [1.8.0](#1.8.0) |14 juni 2016 |30 augustus 2020 |
+| [1.7.0](#1.7.0) |26 april 2016 |30 augustus 2020 |
+| [1.6.1](#1.6.1) |08 april 2016 |30 augustus 2020 |
+| [1.6.0](#1.6.0) |29 maart 2016 |30 augustus 2020 |
+| [1.5.0](#1.5.0) |03 januari 2016 |30 augustus 2020 |
+| [1.4.2](#1.4.2) |06 oktober 2015 |30 augustus 2020 |
+| 1.4.1 |06 oktober 2015 |30 augustus 2020 |
+| [1.2.0](#1.2.0) |06 van 6 augustus 2015 |30 augustus 2020 |
+| [1.1.0](#1.1.0) |09 juli 2015 |30 augustus 2020 |
+| [1.0.1](#1.0.1) |25 mei 2015 |30 augustus 2020 |
+| [1.0.0](#1.0.0) |07 april 2015 |30 augustus 2020 |
 | 0.9.4-prelease |14 januari 2015 |En met 29 februari 2016 |
 | 0.9.3-prelease |09 december 2014 |En met 29 februari 2016 |
 | 0.9.2-prelease |25 november 2014 |En met 29 februari 2016 |

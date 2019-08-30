@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abaf8c910710000930f4e0ab6200d0ebd75b8d46
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835191"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135860"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -68,9 +68,6 @@ U kunt aanvragen indienen bij de autorisatie-of Token-eind punten van Azure AD m
   - Token common-eind `https://login.microsoftonline.de/common/oauth2/token`punt is.
 
 Vervang voor toepassingen met één Tenant "common" in de vorige Url's door uw Tenant-ID of-naam. Een voorbeeld is `https://login.microsoftonline.de/contoso.com`.
-
-> [!NOTE]
-> De autorisatie-en Token-eind punten van [Azure AD v 2.0]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) zijn alleen beschikbaar voor de algemene service. Ze worden niet ondersteund voor nationale Cloud implementaties.
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2954f0bfcfe78243c2df12182f45034f46c8391d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 68e1bcfeaa998b0698554fd93fd7ed2e88a29739
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991899"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70143001"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Azure Data Lake Storage Gen2 gebruiken voor big data vereisten
 
@@ -39,10 +39,10 @@ Hier volgt een lijst met hulpprogram ma's die u kunt gebruiken om een container 
 
 |Hulpprogramma | Richtlijnen |
 |---|--|
-|Azure Opslagverkenner | [Een container maken met behulp van Storage Explorer](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-explorer#create-a-file-system) |
+|Azure Opslagverkenner | [Een container maken met behulp van Storage Explorer](data-lake-storage-explorer.md#create-a-container) |
 |AzCopy | [Een BLOB-container of-bestands share maken met behulp van AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Hadoop-container (HDFS) opdracht regel interface (CLI) met HDInsight |[Een container maken met behulp van HDFS met HDInsight](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-hdfs-data-lake-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system) |
-|Code in een Azure Databricks notitie blok|[Een opslag account container maken (scala)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-storage-account-file-system) <br><br> [Een container maken en koppelen (python)](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-databricks-spark?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-file-system-and-mount-it)|
+|Hadoop-container (HDFS) opdracht regel interface (CLI) met HDInsight |[Een container maken met behulp van HDFS met HDInsight](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
+|Code in een Azure Databricks notitie blok|[Een opslag account container maken (scala)](data-lake-storage-quickstart-create-databricks-account.md#create-storage-account-container) <br><br> [Een container maken en koppelen (python)](data-lake-storage-use-databricks-spark.md#create-a-container-and-mount-it)|
 
 Het is eenvoudig om bestands systemen te maken met behulp van Storage Explorer of AzCopy. Het is wat meer werk om bestands systemen te maken met behulp van HDInsight en Databricks. Als u echter van plan bent HDInsight-of Databricks-clusters te gebruiken om uw gegevens toch te verwerken, kunt u eerst uw clusters maken en de HDFS CLI gebruiken voor het maken van bestands systemen.  
 

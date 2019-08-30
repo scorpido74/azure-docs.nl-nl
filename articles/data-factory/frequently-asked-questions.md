@@ -1,146 +1,145 @@
 ---
 title: 'Azure Data Factory: Veelgestelde vragen | Microsoft Docs'
-description: Vind antwoorden op veelgestelde vragen over Azure Data Factory.
+description: Krijg antwoorden op veelgestelde vragen over Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: shlo
-ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4836d519556e5a031f81279fef4891ba8d47c05
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345751"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141572"
 ---
-# <a name="azure-data-factory-faq"></a>Azure Data Factory Veelgestelde vragen
+# <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
 
 ## <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory? 
-Data Factory is een volledig beheerde, cloud-gebaseerde, gegevensintegratie-service waarmee de verplaatsing en transformatie van gegevens worden geautomatiseerd. Zoals een factory die wordt uitgevoerd apparatuur wordt gebruikt om grondstoffen te transformeren in eindproducten, beheert Azure Data Factory bestaande services die onbewerkte gegevens verzamelen en transformeren in kant-en-klare informatie. 
+Data Factory is een volledig beheerde, op de cloud gebaseerde service voor gegevens integratie waarmee de verplaatsing en trans formatie van gegevens wordt geautomatiseerd. Net als een fabriek die apparatuur uitvoert om onbewerkte materialen te transformeren in gerede producten, Azure Data Factory de bestaande services die onbewerkte gegevens verzamelen en transformeren naar gebruiks klare informatie. 
 
-Met behulp van Azure Data Factory, kunt u gegevensgestuurde werkstromen voor het verplaatsen van gegevens tussen on-premises en cloud gegevensarchieven. En u kunt verwerken en transformeren van gegevens met behulp van rekenservices zoals Azure HDInsight, Azure Data Lake Analytics en de SQL Server Integration Services (SSIS) integratieruntime. 
+Met behulp van Azure Data Factory kunt u gegevensgestuurde werk stromen maken om gegevens te verplaatsen tussen on-premises en gegevens opslag in de Cloud. En u kunt gegevens verwerken en transformeren met behulp van reken services zoals Azure HDInsight, Azure Data Lake Analytics en de Integration runtime van SQL Server Integration Services (SSIS). 
 
-U kunt uw gegevensverwerking met Data Factory kunt uitvoeren op een Azure-gebaseerde cloudservice of in uw eigen zelf-hostend compute-omgeving, zoals SSIS, SQL Server of Oracle. Nadat u een pijplijn die de actie die u nodig hebt maken, kunt u plannen dat het periodiek (per uur, dagelijks of wekelijks, bijvoorbeeld), tijdvenster planning wordt uitgevoerd of de pijplijn van het exemplaar van een gebeurtenis activeren. Zie voor meer informatie [Inleiding tot Azure Data Factory](introduction.md).
+Met Data Factory kunt u uw gegevens verwerking uitvoeren op een Azure-Cloud service of in uw eigen gehoste Compute-omgeving, zoals SSIS, SQL Server of Oracle. Nadat u een pijp lijn hebt gemaakt die de actie uitvoert die u nodig hebt, kunt u plannen dat deze regel matig wordt uitgevoerd (bijvoorbeeld elk uur, dagelijks of wekelijks), tijd venster planning of de pijp lijn activeren vanuit een gebeurtenis voorval. Zie voor meer informatie [Inleiding tot Azure Data Factory](introduction.md).
 
-### <a name="control-flows-and-scale"></a>Besturingselement stromen en schaal 
-Ter ondersteuning van de diverse integratiestromen en -patronen in het moderne datawarehouse, Data Factory maakt flexibele data pipeline-modellen. Dit houdt in dat volledige Controlestroom paradigma's, waaronder conditionele uitvoering programmeren, vertakkingen maken in de gegevens-pipelines en de mogelijkheid om expliciet parameters doorgeven binnen en tussen deze stromen. Controlestroom omvat ook het transformeren van gegevens via verzending van de activiteit voor uitvoering van externe-engines en gegevens flow-mogelijkheden, met inbegrip van de verplaatsing van gegevens op schaal, via de Copy-activiteit.
+### <a name="control-flows-and-scale"></a>Stroom beheer en schalen 
+Ter ondersteuning van de diverse integratie stromen en-patronen in het moderne Data Warehouse biedt Data Factory flexibele gegevens pijplijn modellen. Dit houdt in de volledige controle stroom programmerings modellen, waaronder voorwaardelijke uitvoering, vertakking in gegevens pijplijnen en de mogelijkheid om expliciet para meters te geven binnen en tussen deze stromen. Beheer stroom omvat ook het transformeren van gegevens via activiteiten verzending naar externe uitvoerings engines en gegevens stroom mogelijkheden, inclusief gegevens verplaatsing op schaal, via de Kopieer activiteit.
 
-Data Factory biedt vrijheid om modellen te alle stroomstijlen die is vereist voor de integratie van gegevens en die kunnen worden verzonden op aanvraag of herhaaldelijk op basis van een schema. Er zijn enkele veelvoorkomende stromen die dit model kunt:   
+Data Factory biedt vrijheid om alle stroom stijlen te model leren die vereist zijn voor gegevens integratie en die op aanvraag of herhaaldelijk op basis van een planning kunnen worden verzonden. Enkele veelvoorkomende stromen die dit model mogelijk maakt:   
 
-- Besturingselement stromen:
-    - Activiteiten kunnen een keten worden samengevoegd in een volgorde binnen een pijplijn koppelen.
-    - Activiteiten kunnen worden vertakt binnen een pijplijn koppelen.
+- Controle stromen:
+    - Activiteiten kunnen samen worden gekoppeld in een volg orde binnen een pijp lijn.
+    - Activiteiten kunnen in een pijp lijn worden vertakking.
     - Parameters:
-        - Parameters kunnen worden gedefinieerd op pijplijnniveau en argumenten kunnen worden doorgegeven tijdens het starten van de pijplijn op aanvraag of vanuit een trigger.
+        - Para meters kunnen worden gedefinieerd op pijplijn niveau en de argumenten kunnen worden door gegeven terwijl u de pijp lijn op aanvraag of vanuit een trigger aanroept.
         - Activiteiten kunnen de argumenten die zijn doorgegeven aan de pijplijn gebruiken.
-    - Aangepaste status doorgeven:
-        - Uitvoer voor activiteiten, zoals de status, kunnen worden gebruikt door een volgende activiteit in de pijplijn.
-    - Herhalende containers:
-        - De foreach-activiteit wordt herhaald voor een opgegeven verzameling van activiteiten in een lus. 
-- Op triggers gebaseerde stromen:
-    - Pijplijnen kunnen worden geactiveerd op aanvraag of door de kloktijd.
-- Deltastromen:
-    - Parameters kunnen worden gebruikt voor het definiëren van de bovengrens op voor deltakopieerbewerkingen tijdens het verplaatsen van dimensie of verwijzingstabellen in een relationele opslagplaats, on-premises of in de cloud, met de gegevens in de lake laden. 
+    - Aangepaste status door geven:
+        - Uitvoer van activiteiten, inclusief status, kunnen worden gebruikt door een volgende activiteit in de pijp lijn.
+    - Herhalings containers:
+        - Met de foreach-activiteit wordt een opgegeven verzameling activiteiten in een lus herhaald. 
+- Op Triggers gebaseerde stromen:
+    - Pijp lijnen kunnen op aanvraag worden geactiveerd of op basis van de klok tijd.
+- Delta stromen:
+    - Para meters kunnen worden gebruikt voor het definiëren van uw bovengrens voor Delta kopieën terwijl dimensie-of verwijzings tabellen uit een relationele archief worden verplaatst, hetzij on-premises als in de Cloud, om de gegevens in het Lake te laden. 
 
-Zie [Zelfstudie: Stromen beheren](tutorial-control-flow.md).
+Zie [Zelfstudie: Controle stromen](tutorial-control-flow.md).
 
-### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Gegevens getransformeerd op schaal met pijplijnen zonder code
-De nieuwe ervaring voor de browser gebaseerde hulpprogramma's biedt zonder code pijplijn ontwerpen en implementeren met een moderne, interactieve webgebaseerde ervaring bieden.
+### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Gegevens die zijn getransformeerd op schaal met gratis pijp lijnen van code
+De nieuwe, op de browser gebaseerde ervaring biedt gratis pijplijn ontwerpen en implementaties met een moderne, interactieve webervaring.
 
-Voor visuele gegevens ontwikkelaars en data-engineers is de web-UI van Data Factory de ontwerpomgeving zonder code die u gebruiken wilt voor het bouwen van pijplijnen. Het volledig geïntegreerd met Visual Studio Online Git en zorgt voor integratie voor CI/CD en iteratieve ontwikkeling met opties voor foutopsporing.
+Voor ontwikkel aars en gegevens technici van Visual Data is de Data Factory-webinterface de ontwerp omgeving zonder code die u gaat gebruiken om pijp lijnen te bouwen. Het is volledig geïntegreerd met Visual Studio online Git en biedt integratie voor CI/CD en iteratieve ontwikkeling met opties voor fout opsporing.
 
-### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Uitgebreide cross-platform-SDK's voor ervaren gebruikers
-Data Factory V2 biedt een uitgebreide set SDK's die kunnen worden gebruikt voor het ontwerpen, beheren en controleren van pijplijnen met behulp van uw favoriete IDE, met inbegrip van:
+### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Uitgebreide platformoverschrijdende Sdk's voor geavanceerde gebruikers
+Data Factory v2 biedt een uitgebreide set Sdk's die kan worden gebruikt voor het ontwerpen, beheren en bewaken van pijp lijnen met behulp van uw favoriete IDE, waaronder:
 * Python-SDK
-* PowerShell CLI
+* Power shell CLI
 * C# SDK
 
-Gebruikers kunnen ook de gedocumenteerde REST-API's gebruiken voor interactie met Data Factory V2.
+Gebruikers kunnen ook de gedocumenteerde REST-Api's gebruiken voor de interface met Data Factory v2.
 
-### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>Iteratieve ontwikkeling en foutopsporing met behulp van visuele hulpmiddelen
-Azure Data Factory visuele hulpprogramma's inschakelen iteratieve ontwikkeling en foutopsporing. U kunt uw pijplijnen maken en ik wil deze test wordt uitgevoerd met behulp van de **Debug** mogelijkheden op het pijplijncanvas zonder één regel code te schrijven. Vindt u de resultaten van de test wordt uitgevoerd in de **uitvoer** venster van de pijplijncanvas. Nadat uw Testuitvoering is voltooid, kunt u meer activiteiten toevoegen aan uw pijplijn en doorgaan foutopsporing in een iteratief manier. U kunt ook uw testuitvoeringen annuleren nadat ze uitgevoerd zijn. 
+### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>Iteratieve ontwikkeling en fout opsporing met behulp van visuele hulp middelen
+Azure Data Factory visuele hulp middelen kunnen iteratieve ontwikkeling en fout opsporing. U kunt uw pijp lijnen maken en test uitvoeringen uitvoeren met behulp van de functie voor **fout opsporing** in het pijplijn doek zonder dat u maar één regel code hoeft te schrijven. U kunt de resultaten van uw test uitvoeringen weer geven in het **uitvoer** venster van uw pijplijn doek. Nadat de test uitvoering is voltooid, kunt u meer activiteiten aan uw pijp lijn toevoegen en de fout opsporing op een iteratieve manier voortzetten. U kunt uw test uitvoeringen ook annuleren nadat deze worden uitgevoerd. 
 
-U bent niet verplicht om uw wijzigingen publiceren naar de data factory-service voordat u selecteert **Debug**. Dit is handig in situaties waar u om ervoor te zorgen dat de nieuwe toevoegingen of wijzigingen werkt zoals verwacht voordat u uw data factory-werkstromen in ontwikkeling, tests of productie-omgevingen worden bijgewerkt. 
+U bent niet verplicht uw wijzigingen te publiceren naar de data factory-service voordat u **debug**selecteert. Dit is handig in scenario's waarin u er zeker van wilt zijn dat de nieuwe toevoegingen of wijzigingen werken zoals verwacht voordat u uw data factory-werk stromen bijwerkt in ontwikkel-, test-of productie omgevingen. 
 
-### <a name="ability-to-deploy-ssis-packages-to-azure"></a>Mogelijkheid tot het implementeren van SSIS-pakketten naar Azure 
-Als u uw SSIS-werkbelastingen verplaatsen wilt, kunt u een Data Factory maken en een Azure-SSIS-integratieruntime inrichten. Een Azure-SSIS integratieruntime is een volledig beheerd cluster met virtuele Azure-machines (knooppunten) die zijn toegewezen voor het uitvoeren van uw SSIS-pakketten in de cloud. Zie voor stapsgewijze instructies, de [implementeren van SSIS-pakketten naar Azure](tutorial-create-azure-ssis-runtime-portal.md) zelfstudie. 
+### <a name="ability-to-deploy-ssis-packages-to-azure"></a>Mogelijkheid om SSIS-pakketten te implementeren in azure 
+Als u uw SSIS-workloads wilt verplaatsen, kunt u een Data Factory maken en een Azure SSIS Integration runtime inrichten. Een Azure SSIS Integration runtime is een volledig beheerd cluster met virtuele Azure-machines (knoop punten) die zijn toegewezen om uw SSIS-pakketten uit te voeren in de Cloud. Zie voor stapsgewijze instructies de zelf studie [SSIS-pakketten implementeren in azure](tutorial-create-azure-ssis-runtime-portal.md) . 
  
 ### <a name="sdks"></a>SDK's
-Als u een ervaren gebruiker bent en op zoek naar een programma-interface, Data Factory een uitgebreide set SDK's die u gebruiken kunt om te ontwerpen biedt, beheren of bewaken van pijplijnen met behulp van uw favoriete IDE. Taalondersteuning bevat .NET, PowerShell, Python en REST.
+Als u een ervaren gebruiker bent en op zoek bent naar een programmatische interface, biedt Data Factory een uitgebreide set Sdk's die u kunt gebruiken om pijp lijnen te ontwerpen, beheren of bewaken met behulp van uw favoriete IDE. Taal ondersteuning omvat .NET, Power shell, python en REST.
 
 ### <a name="monitoring"></a>Bewaking
-U kunt uw Data Factory's via PowerShell, SDK of de Visual controlehulpprogramma's in de gebruikersinterface van de browser controleren. U kunt controleren en op aanvraag, op basis van een trigger en klok gebaseerde aangepaste stromen op een efficiënte en effectieve manier beheren. Bestaande taken annuleren, Zie fouten in een oogopslag zich gedetailleerde foutberichten en fouten opsporen in de problemen, allemaal met een enkel glazen zonder context overschakelt of heen en tussen schermen navigeren Zoom. 
+U kunt uw gegevens fabrieken bewaken via Power shell, SDK of de visuele controle Hulpprogramma's in de gebruikers interface van de browser. U kunt op aanvraag, op basis van triggers en op tijd gebaseerde aangepaste stromen op een efficiënte en efficiënte manier bewaken en beheren. Annuleer bestaande taken, Bekijk fouten in een oogopslag, zoom op om gedetailleerde fout berichten op te halen en los de problemen op, in één venster van glas zonder tussen komst te scha kelen of te navigeren tussen schermen. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nieuwe functies voor SSIS in Data Factory
-Omdat de eerste openbare preview-versie in 2017, is de volgende functies in Data Factory toegevoegd voor SSIS:
+Sinds de eerste open bare preview-versie in 2017, heeft Data Factory de volgende functies voor SSIS toegevoegd:
 
--   Ondersteuning voor drie meer configuraties/varianten van Azure SQL Database voor het hosten van de SSIS-database (SSISDB) van projecten /-pakketten:
--   SQL-Database met virtual network-service-eindpunten
+-   Ondersteuning voor drie meer configuraties/varianten van Azure SQL Database voor het hosten van de SSIS-data base (SSISDB) van projecten/pakketten:
+-   SQL Database met Service-eind punten voor virtueel netwerk
 -   Beheerd exemplaar
 -   Elastische pool
--   Ondersteuning voor een Azure Resource Manager-netwerk boven op een klassiek virtueel netwerk om te worden in de toekomst afgeschaft waarmee u invoeren/join uw Azure-SSIS integratieruntime met een virtueel netwerk dat is geconfigureerd voor SQL-Database met virtual network-service toegang tot eindpunten/MI/on-premises gegevens. Zie voor meer informatie ook [een Azure-SSIS integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md).
--   Ondersteuning voor verificatie van Azure Active Directory (Azure AD) en SQL-verificatie verbinding maken met de SSISDB, zodat Azure AD-verificatie met uw Data Factory beheerde identiteit voor Azure-resources
--   Ondersteuning om uw eigen on-premises SQL Server-licentie om te winnen aanzienlijke kostenbesparingen uit de optie Azure Hybrid Benefit
--   Ondersteuning voor Enterprise-editie van de Azure-SSIS integratieruntime waarmee u gebruik geavanceerde/premium-functies, een aangepaste installatie-interface voor het installeren van extra onderdelen/extensies en een partnerecosysteem. Zie voor meer informatie ook [Enterprise Edition, aangepaste installatie en 3e partij uitbreidbaarheid voor SSIS in ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
--   Diepere integratie van SSIS in Data Factory waarmee u eersteklas SSIS-pakket uitvoeren-activiteiten in Data Factory-pijplijnen aanroepen/trigger en ze via SSMS te plannen. Zie voor meer informatie ook [Modernize en uitbreiden van uw ETL/ELT-werkstromen met SSIS-activiteiten in ADF pijplijnen](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/).
+-   Ondersteuning voor een Azure Resource Manager virtueel netwerk boven op een klassiek virtueel netwerk dat in de toekomst moet worden afgeschaft, waarmee u uw Azure SSIS Integration runtime kunt injecteren/samen voegen met een virtueel netwerk dat is geconfigureerd voor SQL Database met Virtual Network-Service eind punten/MI/on-premises gegevens toegang. Zie ook [een Azure SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie.
+-   Ondersteuning voor Azure Active Directory (Azure AD)-verificatie en SQL-verificatie om verbinding te maken met de SSISDB, zodat Azure AD-verificatie mogelijk is met uw Data Factory beheerde identiteit voor Azure-resources
+-   Ondersteuning voor het inbrengen van uw eigen on-premises SQL Server licentie om aanzienlijke kosten besparingen te verdienen via de Azure Hybrid Benefit optie
+-   Ondersteuning voor Enter prise Edition van de Azure-SSIS Integration runtime waarmee u geavanceerde/Premium-functies, een aangepaste installatie-interface kunt gebruiken om extra onderdelen/uitbrei dingen en een partner ecosysteem te installeren. Zie ook [Enter prise Edition, Custom Setup en uitbreid baarheid van derden voor SSIS in ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)voor meer informatie. 
+-   Een diep gaande integratie van SSIS in Data Factory waarmee u eersteklas pakket activiteiten voor het uitvoeren van de eerste klasse kunt aanroepen/activeren in Data Factory pijp lijnen en deze plannen via SSMS. Zie ook [uw ETL/ELT-werk stromen moderniseren en uitbreiden met SSIS-activiteiten in ADF-pijp lijnen](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)voor meer informatie.
 
 
-## <a name="what-is-the-integration-runtime"></a>Wat is de integratieruntime?
-De integratieruntime is de rekeninfrastructuur die Azure Data Factory gebruikt voor de volgende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen:
+## <a name="what-is-the-integration-runtime"></a>Wat is de Integration runtime?
+Integration runtime is de reken infrastructuur die Azure Data Factory gebruikt om de volgende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden:
 
-- **Gegevensverplaatsing**: Voor gegevensverplaatsing verplaatst integratieruntime de gegevens tussen de bron- en doelserver, terwijl er ondersteuning wordt geboden voor ingebouwde connectors, Indelingsconversie, kolomtoewijzing en goed presterende en schaalbare gegevensoverdracht.
-- **Verzending van activiteiten**: Voor transformatie biedt integratieruntime mogelijkheid voor het uitvoeren van systeemeigen SSIS-pakketten.
-- **Uitvoeren van SSIS-pakketten**: De integratieruntime voert systeemeigen SSIS-pakketten in een beheerde Azure compute-omgeving. De integratieruntime biedt ook ondersteuning voor transformatieactiviteiten voor verzending en bewaking die worden uitgevoerd op diverse compute-services, zoals Azure HDInsight, Azure Machine Learning, SQL-Database en SQL Server.
+- **Gegevens verplaatsing**: Voor gegevens verplaatsing verplaatst de Integration runtime de gegevens tussen de bron-en doel gegevens archieven, terwijl er ondersteuning wordt geboden voor ingebouwde connectors, indelings conversie, kolom toewijzing en het uitvoeren van en schaal bare gegevens overdracht.
+- **Verzend activiteiten**: Voor trans formatie biedt Integration runtime de mogelijkheid om met systeem eigen SSIS-pakketten uit te voeren.
+- **SSIS-pakketten uitvoeren**: De Integration runtime voert systeem eigen SSIS-pakketten uit in een beheerde Azure Compute-omgeving. De Integration runtime biedt ook ondersteuning voor het verzenden en bewaken van transformatie activiteiten die worden uitgevoerd op diverse Compute-Services, zoals Azure HDInsight, Azure Machine Learning, SQL Database en SQL Server.
 
-U kunt een of meer instanties van de integratieruntime implementeren die nodig is om de verplaatsing en transformatie van gegevens. De integratieruntime kan worden uitgevoerd op een openbare Azure-netwerk of in een particulier netwerk (on-premises, Azure Virtual Network of Amazon Web Services virtual private cloud [VPC]). 
+U kunt een of meer exemplaren van de Integration runtime zo nodig implementeren om gegevens te verplaatsen en te transformeren. De Integration runtime kan worden uitgevoerd op een openbaar netwerk van Azure of op een particulier netwerk (on-premises, Azure Virtual Network, of Amazon Web Services Virtual Private Cloud [VPC]). 
 
 Zie voor meer informatie [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md).
 
-## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Wat is de limiet voor het aantal integratieruntimes?
-Er is geen vaste limiet voor het aantal instanties van integration runtime die kan er in een data factory. Er is echter een limiet voor het aantal VM-kernen dat de integratieruntime per abonnement voor de uitvoering van SSIS-pakket gebruiken kunt. Zie voor meer informatie, [Data Factory-limieten](../azure-subscription-service-limits.md#data-factory-limits).
+## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Wat is de limiet voor het aantal Integration Runtimes?
+Er is geen vaste limiet voor het aantal instanties van Integration runtime dat u kunt hebben in een data factory. Er is echter een limiet voor het aantal VM-kernen dat door de Integration runtime per abonnement kan worden gebruikt voor de uitvoering van SSIS-pakketten. Zie [Data Factory limieten](../azure-subscription-service-limits.md#data-factory-limits)voor meer informatie.
 
-## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Wat zijn de op het hoogste niveau concepten van Azure Data Factory?
-Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (oftewel 'data factory's') hebben. Azure Data Factory bevat vier hoofdonderdelen die samenwerken als een platform waarop u gegevensgestuurde werkstromen met stappen voor het verplaatsen en transformeren van gegevens kunt maken.
+## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Wat zijn de belangrijkste concepten van Azure Data Factory?
+Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (oftewel 'data factory's') hebben. Azure Data Factory bevat vier belang rijke onderdelen die samen werken als een platform waarop u gegevensgestuurde werk stromen kunt samen stellen met de stappen voor het verplaatsen en transformeren van gegevens.
 
 ### <a name="pipelines"></a>Pijplijnen
-Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een logische groepering van activiteiten uit te voeren een werkeenheid. De activiteiten in een pijplijn voeren samen een taak uit. Een pijplijn kan bijvoorbeeld een groep activiteiten die gegevens uit een Azure-blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster voor het partitioneren van de gegevens bevatten. Het voordeel is dat u een pijplijn gebruiken kunt voor het beheren van de activiteiten als een set in plaats van dat elke activiteit afzonderlijk beheren. U kunt keten van de activiteiten in een pijplijn worden na elkaar worden gebruikt, of u ze onafhankelijk van elkaar, parallel kan werken.
+Een gegevensfactory kan één of meer pijplijnen hebben. Een pijp lijn is een logische groepering van activiteiten om een werk eenheid uit te voeren. De activiteiten in een pijplijn voeren samen een taak uit. Een pijp lijn kan bijvoorbeeld een groep activiteiten bevatten die gegevens uit een Azure-Blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster om de gegevens te partitioneren. Het voor deel is dat u een pijp lijn kunt gebruiken om de activiteiten te beheren als een set, in plaats van elke activiteit afzonderlijk te beheren. U kunt de activiteiten in een pijp lijn koppelen om ze opeenvolgend te laten werken of u kunt ze onafhankelijk van elkaar uitvoeren.
 
 ### <a name="activities"></a>Activiteiten
-Activiteiten vertegenwoordigen een verwerkingsstap in een pijplijn. Bijvoorbeeld, kunt u een kopieeractiviteit om gegevens te kopiëren van één gegevensarchief naar een ander gegevensarchief. Op deze manier kunt u een Hive-activiteit, waarmee een Hive-query wordt uitgevoerd op een Azure HDInsight-cluster om te transformeren of analyseren van uw gegevens. Data Factory ondersteunt drie soorten activiteiten: activiteiten voor gegevensverplaatsing, activiteiten voor gegevenstransformatie en controleactiviteiten.
+Activiteiten vertegenwoordigen een verwerkingsstap in een pijplijn. U kunt bijvoorbeeld een Kopieer activiteit gebruiken om gegevens te kopiëren van het ene gegevens archief naar een ander gegevens archief. Op dezelfde manier kunt u een Hive-activiteit gebruiken, waarmee een Hive-query wordt uitgevoerd op een Azure HDInsight-cluster om uw gegevens te transformeren of te analyseren. Data Factory ondersteunt drie soorten activiteiten: activiteiten voor gegevensverplaatsing, activiteiten voor gegevenstransformatie en controleactiviteiten.
 
 ### <a name="datasets"></a>Gegevenssets
 Gegevenssets vertegenwoordigen gegevensstructuren in de gegevensarchieven die simpelweg verwijzen naar de gegevens die u in uw activiteiten als in- of uitvoer wilt gebruiken. 
 
 ### <a name="linked-services"></a>Gekoppelde services
-Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. Het op deze manier bekijkt: Een gekoppelde service definieert de verbinding met de gegevensbron en een gegevensset vertegenwoordigt de structuur van de gegevens. Een gekoppelde Azure Storage-service geeft bijvoorbeeld de verbindingsreeks aan om verbinding maken met de Azure Storage-account. En een Azure blob-gegevensset specificeert de blobcontainer en de map die de gegevens bevat.
+Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. U kunt het op deze manier nadenken: Een gekoppelde service definieert de verbinding met de gegevens bron en een gegevensset vertegenwoordigt de structuur van de gegevens. Een Azure Storage gekoppelde service specificeert bijvoorbeeld de connection string om verbinding te maken met het Azure Storage-account. En een Azure Blob-gegevensset bevat de BLOB-container en de map die de gegevens bevat.
 
-Gekoppelde services beschikken over twee doeleinden in Data Factory:
+Gekoppelde services hebben twee doelen in Data Factory:
 
-- Vertegenwoordigt een *gegevensarchief* die bevat, maar is niet beperkt tot een on-premises SQL Server-exemplaar, een Oracle database-exemplaar, een bestandsshare of een Azure Blob storage-account. Zie voor een lijst met ondersteunde gegevensarchieven, [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md).
-- Ter vertegenwoordiging van een *rekenresource* die de uitvoering van een activiteit kan hosten. Bijvoorbeeld, de HDInsight Hive-activiteit wordt uitgevoerd op een HDInsight Hadoop-cluster. Zie voor een lijst met transformatieactiviteiten en ondersteunde rekenomgevingen, [transformeren van gegevens in Azure Data Factory](transform-data.md).
+- Voor het vertegenwoordigen van een *gegevens archief* met, maar niet beperkt tot, een on-premises SQL Server exemplaar, een Oracle data base-exemplaar, een bestands share of een Azure Blob Storage-account. Zie [activiteit kopiëren in azure Data Factory](copy-activity-overview.md)voor een lijst met ondersteunde gegevens archieven.
+- Ter vertegenwoordiging van een *rekenresource* die de uitvoering van een activiteit kan hosten. De HDInsight Hive-activiteit wordt bijvoorbeeld uitgevoerd op een HDInsight Hadoop-cluster. Zie [gegevens transformeren in azure Data Factory](transform-data.md)voor een lijst met transformatie activiteiten en ondersteunde reken omgevingen.
 
 ### <a name="triggers"></a>Triggers
-Triggers vertegenwoordigen eenheden van de verwerking die bepalen wanneer een pijplijnuitvoering wordt gestart. Er zijn verschillende soorten triggers voor verschillende soorten gebeurtenissen. 
+Triggers vertegenwoordigen de verwerkings eenheden die bepalen wanneer een pijplijn uitvoering is gestart. Er zijn verschillende soorten triggers voor verschillende soorten gebeurtenissen. 
 
 ### <a name="pipeline-runs"></a>Pijplijnuitvoeringen
-De uitvoering van een pijplijn is een exemplaar van een pijplijnuitvoering. U instantiëren meestal een pijplijnuitvoering doordat argumenten worden doorgegeven aan de parameters die zijn gedefinieerd in de pijplijn. U kunt de argumenten doorgeven handmatig of in de definitie van de trigger.
+Een pijplijn uitvoering is een instantie van een pijp lijn. Normaal gesp roken maakt u een pijp lijn-uitvoering door argumenten door te geven aan de para meters die zijn gedefinieerd in de pijp lijn. U kunt de argumenten hand matig of binnen de trigger definitie door geven.
 
 ### <a name="parameters"></a>Parameters
-Parameters zijn sleutel-waardeparen in een alleen-lezen-configuratie. U parameters definiëren in een pijplijn en u de argumenten voor de gedefinieerde parameters doorgeven tijdens het uitvoeren van een context uitvoeren. De uitvoeringscontext wordt gemaakt door een trigger of van een pijplijn die u handmatig uitvoeren. Activiteiten binnen de pijplijn gebruiken de parameterwaarden.
+Para meters zijn sleutel-waardeparen in een alleen-lezen configuratie. U definieert para meters in een pijp lijn en geeft de argumenten voor de gedefinieerde para meters tijdens de uitvoering door vanuit een uitvoerings context. De uitvoerings context wordt gemaakt door een trigger of vanuit een pijp lijn die u hand matig uitvoert. Activiteiten binnen de pijplijn gebruiken de parameterwaarden.
 
-Een gegevensset is een algemeen type parameter en een entiteit die u kunt gebruiken of verwijzen naar. Een activiteit kan verwijzen naar gegevenssets en kan deze de eigenschappen die zijn gedefinieerd in het definitie van de gegevensset gebruiken.
+Een gegevensset is een sterk getypeerde para meter en een entiteit die u opnieuw kunt gebruiken of waarnaar u moet verwijzen. Een activiteit kan verwijzen naar gegevens sets en kan de eigenschappen gebruiken die zijn gedefinieerd in de definitie van de gegevensset.
 
-Een gekoppelde service is ook een algemeen type parameter met de verbindingsgegevens voor een gegevensarchief of een compute-omgeving. Het is ook een entiteit die u kunt gebruiken of verwijzen naar.
+Een gekoppelde service is ook een sterk getypeerde para meter die verbindings informatie bevat voor een gegevens archief of een reken omgeving. Het is ook een entiteit die u kunt hergebruiken of ernaar verwijzen.
 
 ### <a name="control-flows"></a>Stromen controleren
-Besturingselement stromen pipeline-activiteiten met koppelen van activiteiten in een reeks, vertakkingen, parameters die u op het pijplijnniveau van de definieert, indelen en argumenten die u als u doorgeeft de pijplijn op aanvraag of vanuit een trigger aanroepen. Besturingselement stromen ook aangepaste status doorgeven en luscontainers (dat wil zeggen, foreach iterators).
+Met controle stromen worden pijplijn activiteiten gestroomd, waaronder het koppelen van activiteiten in een reeks, vertakkingen, para meters die u definieert op pijplijn niveau en de argumenten die u doorgeeft als u de pijp lijn op aanvraag of vanuit een trigger aanroept. Controle stromen omvatten ook aangepaste status door geven en herhalen van containers (dat wil zeggen, foreach-iterators).
 
 
 Zie de volgende artikelen voor meer informatie over Data Factory-concepten:
@@ -149,67 +148,67 @@ Zie de volgende artikelen voor meer informatie over Data Factory-concepten:
 - [Pijplijnen en activiteiten](concepts-pipelines-activities.md)
 - [Integration Runtime](concepts-integration-runtime.md)
 
-## <a name="what-is-the-pricing-model-for-data-factory"></a>Wat is het prijsmodel voor Data Factory?
-Zie voor Azure Data Factory prijsinformatie [Data Factory prijsinformatie](https://azure.microsoft.com/pricing/details/data-factory/).
+## <a name="what-is-the-pricing-model-for-data-factory"></a>Wat is het prijs model voor Data Factory?
+Zie [Data Factory prijs informatie](https://azure.microsoft.com/pricing/details/data-factory/)voor Azure Data Factory prijs informatie.
 
-## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Hoe kan ik op de hoogte blijven met informatie over Data Factory?
-Voor de meest actuele informatie over Azure Data Factory, gaat u naar de volgende sites:
+## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Hoe kan ik up-to-date blijven met informatie over Data Factory?
+Ga voor de meest recente informatie over Azure Data Factory naar de volgende sites:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [Startpagina voor documentatie](/azure/data-factory)
-- [Product-startpagina](https://azure.microsoft.com/services/data-factory/)
+- [Start pagina van de documentatie](/azure/data-factory)
+- [Start pagina van het product](https://azure.microsoft.com/services/data-factory/)
 
-## <a name="technical-deep-dive"></a>Technische details 
+## <a name="technical-deep-dive"></a>Technisch diep gaande 
 
-### <a name="how-can-i-schedule-a-pipeline"></a>Hoe kan ik een pijplijn plannen? 
-U kunt de scheduler-trigger of tijd venster trigger gebruiken voor het plannen van een pijplijn. De trigger gebruikt een agenda wandklokschema, waarmee pijplijnen kan worden gepland periodiek of in de kalender op basis van periodieke patronen bijvoorbeeld op (maandag om 6:00 uur) en donderdag om 21:00 uur. Zie [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md) voor meer informatie.
+### <a name="how-can-i-schedule-a-pipeline"></a>Hoe kan ik een pijp lijn plannen? 
+U kunt de trigger trigger voor scheduler of tijd venster gebruiken om een pijp lijn te plannen. De trigger maakt gebruik van een agenda schema met een muur klok, waarmee u de pijp lijnen periodiek of in op een kalender gebaseerde periodieke patronen kunt plannen (bijvoorbeeld op maandag om 6:00 uur en donderdag om 9:00 uur). Zie [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md) voor meer informatie.
 
-### <a name="can-i-pass-parameters-to-a-pipeline-run"></a>Kan ik parameters doorgeven aan een pijplijnuitvoering te starten?
-Ja, parameters zijn een concept eersteklas, op het hoogste niveau in Data Factory. U kunt parameters definiëren op pijplijnniveau en de argumenten doorgeven bij het uitvoeren van de pijplijn op aanvraag of met behulp van een trigger.  
+### <a name="can-i-pass-parameters-to-a-pipeline-run"></a>Kan ik para meters door geven aan de uitvoering van een pijp lijn?
+Ja, para meters zijn een concept op het hoogste niveau in Data Factory. U kunt para meters definiëren op het niveau van de pijp lijn en argumenten door geven wanneer u de pijplijn uitvoering op aanvraag uitvoert of een trigger gebruikt.  
 
-### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Kan ik de standaardwaarden voor de pijplijnparameters definiëren? 
-Ja. U kunt de standaardwaarden voor de parameters definiëren in de pijplijnen. 
+### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Kan ik standaard waarden voor de pijplijn parameters definiëren? 
+Ja. U kunt standaard waarden definiëren voor de para meters in de pijp lijnen. 
 
-### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Kan een activiteit in een pijplijn argumenten die worden doorgegeven aan de uitvoering van een pijplijn gebruiken? 
-Ja. Elke activiteit in de pijplijn kan de waarde van de parameter die is doorgegeven aan de pijplijn en uitvoeren met gebruiken de `@parameter` maken. 
+### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Kan een activiteit in een pijp lijn argumenten gebruiken die worden door gegeven aan een pijplijn uitvoering? 
+Ja. Elke activiteit in de pijp lijn kan de parameter waarde gebruiken die wordt door gegeven aan de pijp lijn en wordt uitgevoerd `@parameter` met de construct. 
 
-### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Kan de eigenschap van een activiteit uitvoer worden gebruikt in een andere activiteit? 
-Ja. De uitvoer van een activiteit kan worden gebruikt in een volgende activiteit met de `@activity` maken.
+### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Kan een uitvoer eigenschap van een activiteit worden gebruikt in een andere activiteit? 
+Ja. De uitvoer van een activiteit kan worden gebruikt in een volgende activiteit met `@activity` de construct.
  
-### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hoe ga ik null-waarden in de uitvoer van een activiteit zonder problemen om? 
-U kunt de `@coalesce` maken in de expressies voor het afhandelen van null-waarden zonder problemen. 
+### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hoe kan ik worden Null-waarden in een uitvoer van een activiteit zonder problemen verwerkt? 
+U kunt de `@coalesce` construct in de expressies gebruiken om null-waarden correct te verwerken. 
 
-## <a name="mapping-data-flows"></a>Gegevensoverdrachten van toewijzing
+## <a name="mapping-data-flows"></a>Gegevens stromen toewijzen
 
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Welke versie van Data Factory moet ik gebruiken om te gegevensstromen maken?
-De Data Factory V2-versie gebruiken om gegevensstromen te maken.
+### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Welke Data Factory versie moet ik gebruiken om gegevens stromen te maken?
+Gebruik de versie van Data Factory v2 om gegevens stromen te maken.
   
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Ik was vorige privépreview klant die gegevensstromen en kan ik de Data Factory V2 preview-versie voor gegevensoverdrachten gebruikt.
-Deze versie is nu verouderd. Gebruik Data Factory V2 voor gegevensoverdrachten.
+### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Ik was een vorige klant van een persoonlijk voor beeld die gegevens stromen gebruikt en ik heb de preview-versie van Data Factory v2 voor gegevens stromen gebruikt.
+Deze versie is nu verouderd. Gebruik Data Factory v2 voor gegevens stromen.
   
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Wat is gewijzigd van beperkte Preview-versie voor beperkte openbare preview voor gegevensoverdrachten?
-U hebt niet meer om uw eigen Azure Databricks-clusters. Data Factory beheert het maken van clusters en tear omlaag. BLOB-gegevenssets en Azure Data Lake Storage Gen2 gegevenssets worden verdeeld in tekst met scheidingstekens en Apache Parquet-gegevenssets. U kunt nog steeds Data Lake Storage Gen2 en Blob-opslag gebruiken voor het opslaan van deze bestanden. Gebruik de juiste gekoppelde service voor de opslag-engines.
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Wat is er veranderd van de persoonlijke preview-versie naar een beperkte open bare Preview voor gegevens stromen?
+U hoeft niet langer uw eigen Azure Databricks-clusters te maken. Data Factory beheert het maken van clusters en het afscheuren ervan. BLOB-gegevens sets en Azure Data Lake Storage Gen2 gegevens sets worden onderverdeeld in gescheiden tekst en Apache Parquet-gegevens sets. U kunt nog steeds Data Lake Storage Gen2-en Blob-opslag gebruiken om deze bestanden op te slaan. Gebruik de juiste gekoppelde service voor deze opslag engines.
 
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Kan ik mijn privépreview factory's migreren naar Data Factory V2?
+### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Kan ik mijn persoonlijke preview-fabrieken migreren naar Data Factory v2?
 
 Ja. [Volg de instructies](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
 
-### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Ik moet informatie over het oplossen van mijn gegevensstroom logica. Welke gegevens heb ik nodig voor hulp bij?
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Ik heb hulp nodig bij het oplossen van problemen met de gegevens stroom logica. Welke informatie heb ik nodig om hulp te krijgen?
 
-Wanneer Microsoft biedt hulp of oplossen van problemen met gegevensstromen, geeft u het plan DSL-code. Voer de volgende stappen uit om dit te doen:
+Wanneer micro soft Help of probleem oplossing biedt voor gegevens stromen, kunt u het DSL-code plan opgeven. Voer de volgende stappen uit om dit te doen:
 
-1. Selecteer in de Flow-ontwerper, **Code** in de rechterbovenhoek. Hiermee wordt de bewerkbare JSON-code voor de gegevensstroom weergegeven.
-2. Selecteer in de codeweergave **plannen** in de rechterbovenhoek. Deze in-/ uitschakelen wordt overgeschakeld van JSON naar het kenmerk alleen-lezen opgemaakte DSL-script-abonnement.
-3. Kopieer en plak dit script of opslaan in een tekstbestand.
+1. Selecteer in de ontwerp functie voor gegevens stromen **code** in de rechter bovenhoek. Hiermee wordt de bewerkte JSON-code voor de gegevens stroom weer gegeven.
+2. Selecteer in de code weergave de optie **plan** in de rechter bovenhoek. Met deze wissel knop wordt overgeschakeld van JSON naar het bestand met de indeling alleen-lezen van DSL.
+3. Kopieer en plak dit script of sla het op in een tekst bestand.
 
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Hoe krijg ik toegang tot gegevens met behulp van de andere 80 gegevenssettypen in Data Factory?
+### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Hoe kan ik toegang tot gegevens met behulp van de andere typen van 80-gegevensset in Data Factory?
 
-De functie voor toewijzing gegevensstroom kan momenteel dat Azure SQL Database, Azure SQL Data Warehouse gescheiden tekstbestanden uit Azure Blob storage of Azure Data Lake Storage Gen2 en Parquet-bestanden uit Blob storage of Data Lake Storage Gen2 systeemeigen voor de bron en sink. 
+Met de functie voor het toewijzen van gegevens stroom kunnen op dit moment Azure SQL Database, Azure SQL Data Warehouse, tekst bestanden met scheidings tekens worden gescheiden van Azure Blob-opslag of Azure Data Lake Storage Gen2, en Parquet bestanden van Blob Storage of Data Lake Storage Gen2 systeem eigen voor bron en Sink. 
 
-Met de kopieeractiviteit gegevens te Faseren van een van de andere connectors en uitvoeren van een gegevensstroom activiteit voor het transformeren van gegevens nadat deze is tijdelijk worden opgeslagen. Bijvoorbeeld, de pijplijn wordt eerst naar Blob-opslag kopiëren en vervolgens een gegevensstroom activiteit een gegevensset wordt gebruikt in de bron om die gegevens te transformeren.
+Gebruik de Kopieer activiteit om gegevens te stage van een van de andere connectors en voer vervolgens een gegevens stroom activiteit uit om gegevens te transformeren nadat deze is klaargezet. Uw pijp lijn wordt bijvoorbeeld eerst gekopieerd naar de Blob-opslag en vervolgens gebruikt een gegevens stroom activiteit een gegevensset in de bron om die gegevens te transformeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende zelfstudies voor stapsgewijze instructies voor het maken van een data factory:
+Zie de volgende zelf studies voor stapsgewijze instructies voor het maken van een data factory:
 
 - [Snelstart: Een data factory maken](quickstart-create-data-factory-dot-net.md)
-- [Zelfstudie: Kopiëren van gegevens in de cloud](tutorial-copy-data-dot-net.md)
+- [Zelfstudie: Gegevens in de Cloud kopiëren](tutorial-copy-data-dot-net.md)

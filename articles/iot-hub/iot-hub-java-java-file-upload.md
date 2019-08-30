@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: 3d1f82c5eadde52edb721185a497d9b187eebb7b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
-ms.translationtype: MT
+ms.openlocfilehash: 3ef727c4d1f1af13b66c7de02b8e67cc5e45f065
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668070"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147484"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (Java)
 
@@ -44,7 +44,7 @@ Aan het einde van deze zelf studie voert u twee Java Console-apps uit:
 > [!NOTE]
 > IoT Hub ondersteunt veel platformen en talen (waaronder C, .NET en Java script) via Azure IoT-apparaat-Sdk's. Raadpleeg het [Azure IOT-ontwikkelaars centrum](https://azure.microsoft.com/develop/iot) voor stapsgewijze instructies voor het verbinden van uw apparaat met Azure IOT hub.
 
-Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
+## <a name="prerequisites"></a>Vereisten
 
 * De meest recente [Java SE Development Kit 8](https://aka.ms/azure-jdks)
 

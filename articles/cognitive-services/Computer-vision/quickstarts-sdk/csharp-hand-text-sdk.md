@@ -11,20 +11,20 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ba72fdce42a8313903a26aead4a1c1922a9bb586
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 315e35535c29771fb12a97f26e6e2c294e888d07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603463"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137427"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Quickstart: Extraheer handgeschreven tekst met behulp van de Computer Vision C# SDK
+# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>Quickstart: Handgeschreven tekst extra heren met C# behulp van de computer vision SDK
 
 In deze quickstart extraheert u handgeschreven of gedrukte tekst uit een afbeelding met behulp van de Computer Vision SDK voor C#. U kunt eventueel de code in deze handleiding downloaden als een volledige voorbeeld-app uit de [Cognitive Services Csharp Vision](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision)-opslagplaats op GitHub.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een sleutel van de Computer Vision-abonnement. U krijgt een gratis proefversie sleutel van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of, volg de instructies in [een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abonneren op de Computer Vision en haal uw sleutel.
+* Een Computer Vision-abonnements sleutel. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service- `COMPUTER_VISION_SUBSCRIPTION_KEY` eindpunt teken reeks, respectievelijk met de naam en. `COMPUTER_VISION_ENDPOINT`
 * Een versie van [Visual Studio 2015 of 2017](https://www.visualstudio.com/downloads/).
 * Het NuGet-pakket van de [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision)-clientbibliotheek. U hoeft het pakket niet te downloaden. Hieronder vindt u de installatie-instructies.
 
@@ -37,7 +37,7 @@ U kunt het voorbeeld uitvoeren aan de hand van de volgende stappen:
     1. Klik in het menu op **Extra**, selecteer **NuGet Package Manager** en vervolgens **NuGet-pakketten voor oplossing beheren**.
     1. Klik op het tabblad **Bladeren** en typ 'Microsoft.Azure.CognitiveServices.Vision.ComputerVision' in het vak **Zoeken**.
     1. Selecteer **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** wanneer dit wordt weergegeven, klik op het selectievakje naast uw projectnaam en klik op **Installeren**.
-1. Vervang `Program.cs` door de volgende code. De `BatchReadFileAsync` en `BatchReadFileInStreamAsync` methoden verpakken de [Batch lezen API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) voor lokale en externe afbeeldingen, respectievelijk. De `GetReadOperationResultAsync` methode wordt de [ophalen lezen bewerking resultaat API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d).
+1. Vervang `Program.cs` door de volgende code. De `BatchReadFileAsync` methoden `BatchReadFileInStreamAsync` en verpakken de [batch-Lees-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) voor respectievelijk externe en lokale installatie kopieën. Met `GetReadOperationResultAsync` de methode wordt de [API Lees bewerking ophalen geretourneerd](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d).
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;

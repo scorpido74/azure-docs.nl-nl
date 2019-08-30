@@ -3,21 +3,20 @@ title: Gegevens sets in Azure Data Factory | Microsoft Docs
 description: Meer informatie over gegevens sets in Data Factory. Gegevens sets vertegenwoordigen invoer/uitvoer-data.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: bbf7159abf88ce70cc62d202a8375aad302a0552
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019977"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137305"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Gegevens sets in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -147,9 +146,7 @@ Houd rekening met de volgende punten:
 - linkedServiceName verwijst naar een gekoppelde service van het type AzureSqlDatabase, die wordt gedefinieerd in het volgende JSON-code fragment.
 
 ## <a name="dataset-type"></a>Type gegevensset
-Er zijn veel verschillende typen gegevens sets, afhankelijk van de gegevensopslag die u gebruikt. Zie de volgende tabel voor een lijst met gegevens archieven die door Data Factory worden ondersteund. Klik op een gegevens Archief voor informatie over het maken van een gekoppelde service en een gegevensset voor het gegevens archief.
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/connector-activity-support-matrix.md)]
+Er zijn veel verschillende typen gegevens sets, afhankelijk van de gegevensopslag die u gebruikt. U kunt de lijst met opgeslagen gegevens die worden ondersteund door Data Factory, vinden in het overzichts artikel van de [connector](connector-overview.md) . Klik op een gegevens Archief voor informatie over het maken van een gekoppelde service en een gegevensset voor het gegevens archief.
 
 In het voor beeld in de vorige sectie is het type gegevensset ingesteld op **AzureSqlTable**. Op dezelfde manier wordt voor een Azure Blob-gegevensset het type gegevensset ingesteld op **AzureBlob**, zoals wordt weer gegeven in de volgende JSON:
 

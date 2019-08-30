@@ -1,55 +1,54 @@
 ---
-title: Systeemvariabelen in Azure Data Factory | Microsoft Docs
-description: Dit artikel beschrijft de systeemvariabelen ondersteund door Azure Data Factory. U kunt deze variabelen gebruiken in expressies voor bij het definiëren van Data Factory-entiteiten.
+title: Systeem variabelen in Azure Data Factory | Microsoft Docs
+description: In dit artikel worden de systeem variabelen beschreven die door Azure Data Factory worden ondersteund. U kunt deze variabelen gebruiken in expressies bij het definiëren van Data Factory entiteiten.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.author: shlo
-ms.openlocfilehash: 93a83545699e3536eb0045d538225d01cd1a96a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d932164f972169c93e368a41c09df039196341b5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235638"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141639"
 ---
-# <a name="system-variables-supported-by-azure-data-factory"></a>Systeemvariabelen ondersteund door Azure Data Factory
-Dit artikel beschrijft de systeemvariabelen ondersteund door Azure Data Factory. U kunt deze variabelen gebruiken in expressies voor bij het definiëren van Data Factory-entiteiten.
+# <a name="system-variables-supported-by-azure-data-factory"></a>Systeem variabelen die door Azure Data Factory worden ondersteund
+In dit artikel worden de systeem variabelen beschreven die door Azure Data Factory worden ondersteund. U kunt deze variabelen gebruiken in expressies bij het definiëren van Data Factory entiteiten.
 
-## <a name="pipeline-scope"></a>Bereik van de pijplijn
-Deze systeemvariabelen kunnen overal worden verwezen in de pijplijn-JSON.
+## <a name="pipeline-scope"></a>Pijplijn bereik
+Naar deze systeem variabelen kan ergens worden verwezen in de JSON van de pijp lijn.
 
-| De naam van variabele | Description |
+| Naam variabele | Description |
 | --- | --- |
-| @pipeline().DataFactory |Naam van de data factory de pijplijnuitvoering wordt uitgevoerd binnen |
-| @pipeline().Pipeline |Naam van de pijplijn |
-| @pipeline().RunId | ID van de specifieke pijplijnuitvoering |
-| @pipeline().TriggerType | Type van de trigger die de pijplijn (handmatige, Scheduler) aangeroepen |
-| @pipeline().TriggerId| ID van de trigger die de pijplijn aanroept |
-| @pipeline().TriggerName| Naam van de trigger die de pijplijn aanroept |
-| @pipeline().TriggerTime| Tijdstip waarop de trigger die de pijplijn wordt aangeroepen. De trigger is de daadwerkelijke geactiveerde tijd, niet op het geplande tijdstip. Bijvoorbeeld, `13:20:08.0149599Z` wordt geretourneerd in plaats van `13:20:00.00Z` |
+| @pipeline().DataFactory |De naam van de data factory de pijplijn uitvoering wordt uitgevoerd in |
+| @pipeline().Pipeline |Naam van de pijp lijn |
+| @pipeline().RunId | ID van de specifieke pijplijn uitvoering |
+| @pipeline().TriggerType | Type trigger waarmee de pijp lijn is aangeroepen (hand matig, Scheduler) |
+| @pipeline().TriggerId| ID van de trigger die de pijp lijn aanroept |
+| @pipeline().TriggerName| De naam van de trigger die de pijp lijn aanroept |
+| @pipeline().TriggerTime| Tijd waarop de trigger de pijp lijn heeft aangeroepen. De trigger tijd is de werkelijke tijd die wordt geactiveerd, niet de geplande tijd. Bijvoorbeeld, `13:20:08.0149599Z` wordt geretourneerd in plaats van`13:20:00.00Z` |
 
-## <a name="schedule-trigger-scope"></a>Bereik van de Trigger plannen
-Deze systeemvariabelen kunnen overal worden verwezen in de trigger JSON als de trigger van het type is: "ScheduleTrigger."
+## <a name="schedule-trigger-scope"></a>Trigger bereik plannen
+Naar deze systeem variabelen kan overal in de JSON van de trigger worden verwezen als de trigger van het volgende type is: "ScheduleTrigger."
 
-| De naam van variabele | Description |
+| Naam variabele | Description |
 | --- | --- |
-| @trigger().scheduledTime |Tijd wanneer de trigger is gepland voor het aanroepen van de pijplijn-run. Bijvoorbeeld, voor een trigger die elke 5 minuten wordt geactiveerd, deze variabele retourneerde `2017-06-01T22:20:00Z`, `2017-06-01T22:25:00Z`, `2017-06-01T22:29:00Z` respectievelijk.|
-| @trigger().startTime |Tijdstip waarop de trigger **daadwerkelijk** geactiveerd voor het aanroepen van de pijplijn-run. Bijvoorbeeld voor een trigger die elke 5 minuten wordt geactiveerd, deze variabele kan retourneren er ongeveer als volgt `2017-06-01T22:20:00.4061448Z`, `2017-06-01T22:25:00.7958577Z`, `2017-06-01T22:29:00.9935483Z` respectievelijk. (Opmerking: De tijdstempel is standaard ingeschakeld in ISO 8601-notatie)|
+| @trigger().scheduledTime |Tijdstip waarop de trigger is gepland voor het aanroepen van de pijplijn uitvoering. Bijvoorbeeld, voor een trigger die elke vijf minuten wordt geactiveerd, retourneert `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:29:00Z` deze variabele respectievelijk.|
+| @trigger().startTime |Tijdstip waarop de trigger **daad werkelijk** is gestart om de pijplijn uitvoering aan te roepen. Voor een trigger die elke vijf minuten wordt geactiveerd, kan deze variabele bijvoorbeeld als volgt `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:29:00.9935483Z` worden `2017-06-01T22:25:00.7958577Z`geretourneerd. (Opmerking: De tijds tempel is standaard in ISO 8601-indeling)|
 
-## <a name="tumbling-window-trigger-scope"></a>Tumblingvenstertrigger venster Trigger bereik
-Deze systeemvariabelen kunnen overal worden verwezen in de trigger JSON als de trigger van het type is: "TumblingWindowTrigger."
-(Opmerking: De tijdstempel is standaard ingeschakeld in ISO 8601-notatie)
+## <a name="tumbling-window-trigger-scope"></a>Tumblingvenstertriggers-venster trigger bereik
+Naar deze systeem variabelen kan overal in de JSON van de trigger worden verwezen als de trigger van het volgende type is: "TumblingWindowTrigger."
+(Opmerking: De tijds tempel is standaard in ISO 8601-indeling)
 
-| De naam van variabele | Description |
+| Naam variabele | Description |
 | --- | --- |
-| @trigger().outputs.windowStartTime |Begin van het venster wanneer de trigger is gepland om aan te roepen van de pijplijnuitvoering. Als tumblingvenstertriggers een frequentie van 'uur heeft' zou dit de tijd aan het begin van het uur.|
-| @trigger().outputs.windowEndTime |Einde van het venster wanneer de trigger is gepland om aan te roepen van de pijplijn-run. Als tumblingvenstertriggers een frequentie van 'uur heeft' zou dit de tijd aan het einde van het uur.|
+| @trigger(). outputs. windowStartTime |Begin van het venster wanneer de trigger is gepland voor het aanroepen van de pijplijn uitvoering. Als de trigger van het tumblingvenstertriggers-venster een frequentie van elk uur heeft, is dit de tijd aan het begin van het uur.|
+| @trigger().outputs.windowEndTime |Het einde van het venster wanneer de trigger is gepland voor het aanroepen van de pijplijn uitvoering. Als de trigger van het tumblingvenstertriggers-venster een frequentie van elk uur heeft, is dit de tijd aan het einde van het uur.|
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over hoe deze variabelen worden gebruikt in expressies voor [expressietaal & functies](control-flow-expression-language-functions.md).
+Zie [expressie language & functions (Engelstalig](control-flow-expression-language-functions.md)) voor meer informatie over hoe deze variabelen worden gebruikt in expressies.

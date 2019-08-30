@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 160be4224e31793b5bb172f5b913c364ae2c8a59
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 7d7333a9316e4d39fd550872c3df04024a75d21d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013043"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128334"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Wat zijn ML-pijp lijnen in Azure Machine Learning service?
 
@@ -47,13 +47,14 @@ De Azure-Cloud biedt verschillende andere pijp lijnen, elk met een ander doel. D
 
 Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik zodat u zich kunt concentreren op uw expertise, machine learning in plaats van op de infra structuur en automatisering.
 
-Pijp lijnen worden samengesteld uit meerdere **stappen**, die afzonderlijke reken kundige eenheden in de pijp lijn zijn. Elke stap kan onafhankelijk worden uitgevoerd en geïsoleerde reken bronnen gebruiken. Op deze manier kunnen meerdere gegevens wetenschappers tegelijkertijd op dezelfde pijp lijn werken zonder dat er meer belasting bronnen hoeft te worden gebruikt, en kunt u voor elke stap eenvoudig verschillende reken typen of-grootten gebruiken.
+Pijp lijnen worden samengesteld uit meerdere **stappen**, die afzonderlijke reken kundige eenheden in de pijp lijn zijn. Elke stap kan onafhankelijk worden uitgevoerd en geïsoleerde reken bronnen gebruiken.
+Met de onafhankelijke stappen kunnen meerdere gegevens wetenschappers tegelijkertijd op dezelfde pijp lijn werken zonder dat er meer belasting bronnen hoeft te worden gebruikt, en kunt u voor elke stap eenvoudig verschillende reken typen of-grootten gebruiken.
 
-Nadat de pijp lijn is ontworpen, is er vaak meer nauw keuriger om de training van de pijp lijn te verfijnen. Wanneer u een pijp lijn opnieuw uitvoert, springt de uitvoering naar de afzonderlijke stappen die opnieuw moeten worden uitgevoerd, zoals een bijgewerkt trainings script, en wordt wat er niet is gewijzigd, overgeslagen. De dezelfde paradigma is van toepassing op ongewijzigd scripts die worden gebruikt voor het uitvoeren van de stap. Deze functionaliteit helpt te voor komen dat er dure en tijdrovende stappen zoals gegevens opname en trans formatie worden uitgevoerd als de onderliggende gegevens niet zijn gewijzigd.
+Nadat de pijp lijn is ontworpen, is er vaak meer nauw keuriger om de training van de pijp lijn te verfijnen. Wanneer u een pijp lijn opnieuw uitvoert, springt de uitvoering naar de afzonderlijke stappen die opnieuw moeten worden uitgevoerd, zoals een bijgewerkt trainings script, en wordt wat er niet is gewijzigd, overgeslagen. De dezelfde paradigma is van toepassing op ongewijzigd scripts die worden gebruikt voor het uitvoeren van de stap. Deze functionaliteit voor hergebruik helpt te voor komen dat kost bare en tijdrovende stappen zoals gegevens opname en trans formatie worden uitgevoerd als de onderliggende gegevens niet zijn gewijzigd.
 
 Met Azure Machine Learning kunt u verschillende tool kits en frameworks, zoals PyTorch of tensor flow, gebruiken voor elke stap in de pijp lijn. Azure-coördinaten tussen de verschillende [reken doelen](concept-azure-machine-learning-architecture.md) die u gebruikt, zodat uw tussenliggende gegevens eenvoudig kunnen worden gedeeld met de downstream-reken doelen.
 
-U kunt [bijhouden van de metrische gegevens voor uw experimenten pijplijn](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) rechtstreeks in Azure portal. Nadat een pijp lijn is gepubliceerd, kunt u een REST-eind punt configureren waarmee u de pijp lijn vanaf elk platform of elke stack kunt uitvoeren.
+U kunt [bijhouden van de metrische gegevens voor uw experimenten pijplijn](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) rechtstreeks in Azure portal. Nadat een pijp lijn is gepubliceerd, kunt u een REST-eind punt configureren. Hiermee kunt u de pijp lijn opnieuw uitvoeren vanaf elk platform of elke stack.
 
 ## <a name="key-advantages"></a>Belangrijkste voordelen
 
@@ -62,7 +63,7 @@ De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine lear
 |Groot voordeel|Description|
 |:-------:|-----------|
 |**Zonder toezicht&nbsp;wordt uitgevoerd**|Stappen plannen om parallel of op een betrouw bare en zonder toezicht te worden uitgevoerd. De voor bereiding en het model leren van gegevens kunnen de afgelopen dagen of weken zijn en met pijp lijnen kunt u zich richten op andere taken terwijl het proces wordt uitgevoerd. |
-|**Heterogene compute**|Gebruik meerdere pijp lijnen die betrouwbaar zijn afgestemd op heterogene en schaal bare reken resources en opslag locaties. Voer afzonderlijke pijplijn stappen uit op verschillende reken doelen, zoals HDInsight, GPU data Science Vm's en Databricks. Dit maakt efficiënt gebruik van beschik bare reken opties.|
+|**Heterogene compute**|Gebruik meerdere pijp lijnen die betrouwbaar zijn afgestemd op heterogene en schaal bare reken resources en opslag locaties. Maak efficiënt gebruik van beschik bare reken resources door afzonderlijke pijplijn stappen uit te voeren op verschillende reken doelen, zoals HDInsight, GPU data Science Vm's en Databricks.|
 |**Herbruikbaarheid**|Maak pijplijn sjablonen voor specifieke scenario's, zoals retraining en batch-scores. Activeer gepubliceerde pijp lijnen van externe systemen via eenvoudige REST-aanroepen.|
 |**Wijzigingen bijhouden en versiebeheer**|In plaats van gegevens en resultaat paden hand matig te traceren tijdens het herhalen, gebruikt u de SDK van de pijp lijnen om uw gegevens bronnen, invoer en uitvoer expliciet een naam en versie te gegeven. U kunt ook scripts en gegevens afzonderlijk beheren voor een verhoogde productiviteit.|
 |**Werking**|Met pijp lijnen kunnen gegevens wetenschappers samen werken aan alle gebieden van het machine learning-ontwerp proces, terwijl ze gelijktijdig kunnen werken aan pijplijn stappen.|
@@ -75,7 +76,11 @@ Met behulp van declaratieve gegevensafhankelijkheden, kunt u uw taken optimalise
 
 Sla uw pijp lijnen op als sjablonen en implementeer deze in een REST-eind punt voor batch Score-of trainings taken.
 
-Er zijn twee Python-pakketten voor pijp lijnen met Azure Machine Learning: [azureml-pijp lijnen-kern](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) en [azureml-pijp lijn-stappen](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/?view=azure-ml-py).
+Er zijn twee Python-pakketten voor pijp lijnen met Azure Machine Learning: [azureml-pijp lijnen-kern](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) en [azureml-pijp lijn-stappen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py). Als u snel aan de slag wilt gaan, gebruikt u een van de vooraf ontwikkelde modules, zoals:
+
+* Python-script uitvoeren in een stap met [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep)
+* Gegevens overbrengen tussen opslag opties met [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep)
+* Een AutoML-pijplijn stap maken met [AutoMLStep](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlstep)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -83,6 +88,6 @@ Er zijn twee Python-pakketten voor pijp lijnen met Azure Machine Learning: [azur
 
 + Meer informatie over het [uitvoeren van batch voorspellingen voor grote gegevens](how-to-run-batch-predictions.md).
 
-+ De [SDK-referentie documenten voor pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) lezen
++ Zie de [SDK-documentatie voor pijp lijnen](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py).
 
 + Probeer een voor beeld van Jupyter-notitie blokken [Azure machine learning-pijp lijnen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines). Meer informatie over het [uitvoeren van notitie blokken om deze service te verkennen](samples-notebooks.md).

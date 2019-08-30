@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667161"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147111"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
@@ -62,7 +62,7 @@ De inrichtings controle logboeken registreren alle bewerkingen die worden uitgev
 Voor meer informatie over het lezen van de audit Logboeken in de Azure Portal, raadpleegt u de [hand leiding](check-status-user-account-provisioning.md)voor het inrichten van het inrichtings rapport.
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Hoe lang duurt het om gebruikers in te richten?
-Wanneer u automatische gebruikers inrichting met een toepassing gebruikt, wordt door Azure AD automatisch gebruikers accounts in een app ingericht en bijgewerkt op basis van dingen zoals [gebruikers-en groeps toewijzing](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) met een regel matig gepland tijds interval, meestal elke 10 minuten.
+Wanneer u automatische gebruikers inrichting met een toepassing gebruikt, worden gebruikers accounts in een app automatisch door Azure AD ingericht en bijgewerkt op basis van dingen zoals [gebruikers-en groeps toewijzing](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) met een regel matig gepland tijds interval, meestal elke 40 minuten.
 
 Hoe lang het duurt voordat een bepaalde gebruiker is ingericht, hangt voornamelijk af van de vraag of uw inrichtings taak een initiële synchronisatie of een incrementele synchronisatie uitvoert.
 

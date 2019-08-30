@@ -7,17 +7,16 @@ author: nabhishek
 manager: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: fad8045ac8bddb236f0f80ad223ebafc7aa7e93a
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: b6426017b7608742866cedb08b5ac9298400d433
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002856"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140895"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>De Databricks Notebook-activiteit uitvoeren in Azure Data Factory op een Databricks-notebook
 
@@ -43,7 +42,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van deze functie van
 
   - **Azure Databricks-werkruimte**. [Maak een Databricks-werkruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) of gebruik een bestaande werkruimte. U maakt een Python-notebook in uw Azure Databricks-werkruimte. Vervolgens voert u de notebook uit en geeft u er parameters aan door met behulp van Azure Data Factory.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Data factory maken
 
 1.  Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
 
@@ -111,7 +110,7 @@ In deze sectie maakt u een aan Databricks gekoppelde service. Deze gekoppelde se
 
     1.  Selecteer bij **Clusterversie** de optie **4.2** (met Apache Spark 2.3.1, Scala 2.11)
 
-    1.  Selecteer voor deze zelfstudie bij **Clusterknooppunttype** **Standard\_D3\_v2** onder de categorie **Algemeen gebruik (HDD)**. 
+    1.  Selecteer voor deze zelfstudie bij **Clusterknooppunttype** **Standard\_D3\_v2** onder de categorie **Algemeen gebruik (HDD)** . 
     
     1.  Voer bij **Werkrollen** **2** in.
     
@@ -151,7 +150,7 @@ In deze sectie maakt u een aan Databricks gekoppelde service. Deze gekoppelde se
 
           ![Een nieuwe map maken](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Maak een nieuwe notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), noemen we deze **mynotebook** onder **adftutorial** map, klikt u op **maken.**
+       1. [Een nieuw notitie blok maken](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python), laten we het **mynotebook** bellen onder **adftutorial** -map en klikt u op **maken.**
 
           ![Een nieuwe notebook maken](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -179,7 +178,7 @@ In deze sectie maakt u een aan Databricks gekoppelde service. Deze gekoppelde se
 
        ![Een parameter toevoegen](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Naam van de parameter als **invoer** en geef de waarde als expressie  **\@pipeline ()-.parameters.name**.
+    b.  Noem de para meter als **invoer** en geef de waarde op als expressie  **\@pijplijn (). para meters. name**.
 
 1.  Selecteer op de werkbalk de knop **Valideren** om de pijplijn te valideren. Selecteer de **\>\>** (pijl-rechts) om het validatievenster te sluiten.
 

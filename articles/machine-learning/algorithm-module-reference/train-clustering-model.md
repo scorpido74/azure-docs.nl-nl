@@ -1,7 +1,7 @@
 ---
-title: 'Train Model Clustering: Moduleverwijzing'
+title: 'Cluster model trainen: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module Train Model voor clusters in Azure Machine Learning-service clustering modellen kunt trainen.
+description: Meer informatie over het gebruik van de module clustering model leren in Azure Machine Learning service om cluster modellen te trainen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,56 +9,55 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 41cdec1d7f1c3932b17da6f9b1de518071f3f542
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4883b1420913eb4e5f3bd5f13a95e410370d9184
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028078"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128477"
 ---
 # <a name="train-clustering-model"></a>Clustermodel trainen
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om een clustering-model te trainen.
+Gebruik deze module om een cluster model te trainen.
 
-De module heeft een ongetrainde clustering-model dat u al hebt geconfigureerd met behulp van de [K-Means Clustering](k-means-clustering.md) -module, en traint het model met behulp van een set met het label of niet-gelabelde gegevens. De module maakt zowel een getraind model die u voor voorspelling en een set van de cluster-toewijzingen voor elke aanvraag in de trainingsgegevens gebruiken kunt.
+De module heeft een niet-getraind cluster model dat u al hebt geconfigureerd met de [K-betekent clustering](k-means-clustering.md) module en traint het model met behulp van een gelabelde of niet-gelabelde gegevensset. De module maakt zowel een getraind model dat u voor de voor spelling kunt gebruiken als voor elk geval een set cluster toewijzingen in de trainings gegevens.
 
 > [!NOTE]
-> Een clustering model grootteprofiel worden getraind met behulp van de [Train Model](train-model.md) module waarmee de algemene module voor het trainen van machine learning-modellen. Dat komt doordat [Train Model](train-model.md) werkt alleen met algoritmen voor leren met supervisie. K-means en andere clusters algoritmen kunnen zonder supervisie learning, wat betekent dat het algoritme van niet-gelabelde gegevens leren kunt.  
+> Een cluster model kan niet wordt getraind met behulp van de [Train model](train-model.md) module, de algemene module voor het trainen van machine learning modellen. Dat komt omdat [Train model](train-model.md) alleen werkt met Super visie-algoritmen. Met K-betekent dat en andere cluster algoritmen onbewaakt leren toestaan, wat inhoudt dat het algoritme kan leren van niet-gelabelde gegevens.  
   
-## <a name="how-to-use-train-clustering-model"></a>Het gebruik van de trein Clustering-Model  
+## <a name="how-to-use-train-clustering-model"></a>Het gebruik van Train clustering model  
   
-1.  Voeg de **Clustering Train-Model** module aan uw experiment in Studio. U vindt de module onder **Machine Learning-Modules**, in de **Train** categorie.  
+1.  Voeg de module **clustering model trainen** toe aan uw experiment in Studio. U kunt de module vinden onder **machine learning-modules**in de categorie **trein** .  
   
-2. Voeg de [K-Means Clustering](k-means-clustering.md) module of een andere aangepaste module die u maakt een compatibel clustering model en stel de parameters van de clustering-model.  
+2. Voeg de [cluster module K-betekent](k-means-clustering.md) toe, of een andere aangepaste module die een compatibel cluster model maakt en stel de para meters van het cluster model in.  
     
-3.  Een gegevensset training koppelen aan de rechter invoerpoort van **Clustering Train-Model**.
+3.  Een trainings gegevensset koppelen aan de rechter invoer van het **cluster model voor Train**.
   
-5.  In **kolomset**, selecteert u de kolommen uit de gegevensset te gebruiken bij het bouwen van clusters. Zorg ervoor dat u de kolommen selecteren die functies van een goede: bijvoorbeeld Vermijd het gebruik van id's of andere kolommen met unieke waarden of de kolommen die dezelfde waarden hebben.
+5.  Selecteer in **kolom set**de kolommen uit de gegevensset die u wilt gebruiken voor het maken van clusters. Zorg ervoor dat u kolommen selecteert die goede functies maken: Vermijd het gebruik van Id's of andere kolommen met unieke waarden of kolommen met dezelfde waarden.
 
-    Als een label beschikbaar is, kunt u gebruiken als een functie of laat u deze uit.  
+    Als er een label beschikbaar is, kunt u het gebruiken als een functie of dit laten.  
   
-6. Selecteer de optie **controleren toevoegen of schakel het selectievakje voor alleen resultaat**, als u wilt uitvoeren van de trainingsgegevens samen met het nieuwe cluster label.
+6. Selecteer de optie, **Schakel het selectie vakje toevoegen of alleen uitschakelen voor resultaat**in als u de trainings gegevens samen met het nieuwe cluster label wilt uitvoeren.
 
-    Als u deze optie uitschakelt, worden alleen de toewijzingen van het cluster uitgevoerd. 
+    Als u deze optie uitschakelt, worden alleen de cluster toewijzingen uitgevoerd. 
 
-7. Voer het experiment uit en klikt u op de **Clustering Train-Model** -module en selecteer **geselecteerde uitvoeren**.  
+7. Voer het experiment uit of klik op de module **clustering model trainen** en selecteer **geselecteerde uitvoeren**.  
   
 ### <a name="results"></a>Resultaten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
 
-+  Als u wilt weergeven van de waarden in de gegevensset, met de rechtermuisknop op de module, selecteert u **leiden tot gegevenssets**, en klikt u op **Visualize**.
++  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **resultaat gegevens sets**en klikt u op visualiseren.
 
-+ Als u wilt opslaan van het getrainde model later opnieuw kunt gebruiken, met de rechtermuisknop op de module, selecteert u **Trained model**, en klikt u op **opslaan als getrainde Model**.
++ Als u het getrainde model wilt opslaan voor later hergebruik, klikt u met de rechter muisknop op de module, selecteert u getraind **model**en klikt u op **Opslaan als getraind model**.
 
-+ Gebruiken voor het genereren van scores uit het model, [gegevens toewijzen aan Clusters](assign-data-to-clusters.md).
++ Als u scores wilt genereren op basis van het model, gebruikt u [gegevens toewijzen aan clusters](assign-data-to-clusters.md).
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

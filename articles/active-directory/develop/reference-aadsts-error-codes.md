@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874238"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135761"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Codes van verificatie- en autorisatiefouten
 
@@ -194,6 +194,7 @@ Zoeken naar informatie over de AADSTS-fout codes die worden geretourneerd door d
 | AADSTS90019 | MissingTenantRealm-Azure AD kan de Tenant-id niet bepalen op basis van de aanvraag. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat: de indeling van de principal-naam is ongeldig of voldoet niet aan `name[/host][@realm]` de verwachte indeling. De principal-naam is vereist, host en realm zijn optioneel en kunnen worden ingesteld op null. |
 | AADSTS90023 | InvalidRequest-de aanvraag voor de verificatie service is niet geldig. |
+| AADSTS9002313 | InvalidRequest-aanvraag heeft een onjuiste indeling of is ongeldig. -Het probleem doet zich voor omdat er iets mis is met de aanvraag voor een bepaald eind punt. De suggestie voor dit probleem is het verkrijgen van een Fiddler tracering van de fout die zich voordoet en om te zien of de aanvraag daad werkelijk op de juiste wijze is ingedeeld of niet. |
 | AADSTS90024 | RequestBudgetExceededError: er is een tijdelijke fout opgetreden. Probeer het opnieuw. |
 | AADSTS90033 | MsodsServiceUnavailable: de micro soft online directory service (MSODS) is niet beschikbaar. |
 | AADSTS90036 | MsodsServiceUnretryableFailure: er is een onverwachte, niet-herstel bare fout opgetreden in de WCF-service die door MSODS wordt gehost. [Open een ondersteuningsticket](../fundamentals/active-directory-troubleshooting-support-howto.md) om meer informatie te krijgen over de fout. |

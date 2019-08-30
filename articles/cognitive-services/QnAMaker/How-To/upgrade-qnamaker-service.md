@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/26/2019
 ms.author: diberry
-ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ba9c2cd5a85e02a7dd4b1091a050d76e94861964
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640484"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147093"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Uw QnA Maker-service delen of bijwerken
 Deel of werk uw QnA Maker Services bij om de resources beter te kunnen beheren. 
@@ -26,13 +26,14 @@ U kunt ervoor kiezen om de afzonderlijke onderdelen van de QnA Maker stack bij t
 
 QnA Maker maakt verschillende Azure-resources. Gebruik de volgende tabel om te begrijpen wat u wel en niet kunt delen om het beheer te beperken en te profiteren van het delen van kosten:
 
-|Service|Delen|
-|--|--|
-|Cognitive Services|X|
-|App Service-abonnement|✔|
-|App Service|X|
-|Application Insights|✔|
-|Zoekservice|✔|
+|Service|Delen|Reason|
+|--|--|--|
+|Cognitive Services|X|Niet mogelijk door het ontwerp|
+|App Service-abonnement|✔|Vaste schijf ruimte toegewezen aan een app service-plan. Als andere apps, het delen van hetzelfde App Service-abonnement, een aanzienlijke hoeveelheid schijf ruimte gebruiken, QnAMaker App Service worden uitgevoerd in problemen.|
+|App Service|X|Niet mogelijk door het ontwerp|
+|Application Insights|✔|Kan worden gedeeld|
+|Zoekservice|✔|1. `testkb` is een gereserveerde naam voor de QnAMaker-service en kan niet worden gebruikt door anderen.<br>2. Synoniem map met de naam `synonym-map` is gereserveerd voor de QnAMaker-service.<br>3. Het aantal gepubliceerde Kb's wordt beperkt door de zoek service laag. Als er gratis indexen beschikbaar zijn, kunnen andere services deze gebruiken.|
+
 
 ## <a name="upgrade-qna-maker-management-sku"></a>QnA Maker Management SKU upgraden
 

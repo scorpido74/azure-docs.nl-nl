@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354871"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141186"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure Machine Learning workloads met geautomatiseerde machine learning (AutoML) uitvoeren op Apache Spark in azure HDInsight
 
@@ -34,7 +34,7 @@ U kunt ook Zeppelin-notebooks gebruiken voor het gebruik van AutoML.
 
 ## <a name="authentication-for-workspace"></a>Verificatie voor werk ruimte
 
-Voor het maken en experimenteren van de werk ruimte is een verificatie token vereist. Dit token kan worden gegenereerd met een [Azure AD-toepassing](../../active-directory/develop/app-objects-and-service-principals.md). Een [Azure AD-gebruiker](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python) kan ook worden gebruikt voor het genereren van het vereiste verificatie token als multi-factor Authentication niet is ingeschakeld voor het account.  
+Voor het maken en experimenteren van de werk ruimte is een verificatie token vereist. Dit token kan worden gegenereerd met een [Azure AD-toepassing](../../active-directory/develop/app-objects-and-service-principals.md). Een [Azure AD-gebruiker](/azure/python/python-sdk-azure-authenticate) kan ook worden gebruikt voor het genereren van het vereiste verificatie token als multi-factor Authentication niet is ingeschakeld voor het account.  
 
 Met het volgende code fragment wordt een verificatie token gemaakt met behulp van een **Azure AD-toepassing**.
 

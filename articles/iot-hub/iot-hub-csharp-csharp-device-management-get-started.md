@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 0ab714efc3e9eb0de9d6753854031110e09fe06b
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904466"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147840"
 ---
 # <a name="get-started-with-device-management-net"></a>Aan de slag met Apparaatbeheer (.NET)
 
@@ -35,8 +35,6 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 * **TriggerReboot**. Met deze app wordt een directe methode aangeroepen in de gesimuleerde apparaat-app, wordt het antwoord weer gegeven en worden de bijgewerkte gerapporteerde eigenschappen weer gegeven.
 
 ## <a name="prerequisites"></a>Vereisten
-
-Voor deze zelfstudie hebt u het volgende nodig:
 
 * Visual Studio.
 

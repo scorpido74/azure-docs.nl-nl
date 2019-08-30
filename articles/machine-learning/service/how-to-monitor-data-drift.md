@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623985"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128281"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 
@@ -178,16 +178,7 @@ Om aangepaste waarschuwingen en acties in te stellen, worden alle metrische gege
 
 ## <a name="retrain-your-model-after-drift"></a>Uw model na drift opnieuw trainen
 
-Wanneer gegevens drift een negatieve invloed heeft op de prestaties van uw geïmplementeerde model, is het tijd om het model opnieuw te trainen. De volgende [ `diff()` methodegeeftueeneersteideevanwaterisgewijzigdtussendeoudeennieuwetrainingsgegevenssets.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-) 
-
-```python
-from azureml.core import Dataset
-
-old_training_dataset.diff(new_training_dataset)
-```
-
-Op basis van de uitvoer van de vorige code kunt u het model het beste opnieuw trainen. Als u dit wilt doen, gaat u verder met de volgende stappen.
+Wanneer gegevens drift een negatieve invloed heeft op de prestaties van uw geïmplementeerde model, is het tijd om het model opnieuw te trainen. Als u dit wilt doen, gaat u verder met de volgende stappen.
 
 * Onderzoek de verzamelde gegevens en bereid gegevens voor om het nieuwe model te trainen.
 * Splits deze in de gegevens voor Train/test.

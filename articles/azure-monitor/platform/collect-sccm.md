@@ -1,6 +1,6 @@
 ---
-title: Configuration Manager verbinden met Azure Monitor | Microsoft Docs
-description: Dit artikel laat de stappen voor het verbinden met Configuration Manager-werkruimte in Azure Monitor en analyseren van gegevens.
+title: Configuration Manager verbinding maken met Azure Monitor | Microsoft Docs
+description: In dit artikel worden de stappen beschreven om Configuration Manager te verbinden met de werk ruimte in Azure Monitor en om gegevens te analyseren.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,107 +11,149 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 08/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b4e6cc32b1d4392c63b7b236ab0df297849224c8
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64922886"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141115"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager verbinden met Azure Monitor
-U kunt verbinding maken met uw System Center Configuration Manager-omgeving naar Azure Monitor apparaat verzameling om gegevens te synchroniseren en verwijzen naar deze verzamelingen in Azure Monitor en Azure Automation.  
+U kunt uw System Center Configuration Manager-omgeving verbinden met Azure Monitor om gegevens over de verzameling van apparaten te synchroniseren en naar deze verzamelingen te verwijzen in Azure Monitor en Azure Automation.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Monitor biedt ondersteuning voor System Center Configuration Manager current branch versie 1606 en hoger.  
+Azure Monitor ondersteunt System Center Configuration Manager huidige vertakking versie 1606 en hoger.
 
-## <a name="configuration-overview"></a>Configuratieoverzicht
-De volgende stappen geven een overzicht van de stappen voor het configureren van Configuration Manager-integratie met Azure Monitor.  
+>[!NOTE]
+>De functie voor het verbinden van Configuration Manager met een Log Analytics-werk ruimte is optioneel en is niet standaard ingeschakeld. U moet deze functie inschakelen voordat u deze kunt gebruiken. Zie [optionele functies van updates inschakelen](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options)voor meer informatie.
 
-1. Configuration Manager registreert als een webtoepassing en/of Web-API-app in Azure portal, en zorg ervoor dat u de client-ID en de geheime sleutel van de client van de registratie van Azure Active Directory hebt. Zie [portal gebruiken voor het maken van Active Directory toepassing en service-principal die toegang hebben tot resources](../../active-directory/develop/howto-create-service-principal-portal.md) voor gedetailleerde informatie over het uitvoeren van deze stap.
-2. In de Azure-portal [verlenen van Configuration Manager (de geregistreerde web-app) met een machtiging voor toegang tot Azure Monitor](#grant-configuration-manager-with-permissions-to-log-analytics).
-3. Een verbinding met de Wizard OMS-verbinding toevoegen in Configuration Manager toevoegen
-4. In Configuration Manager bijwerken de eigenschappen van de verbinding als de geheime sleutel van het wachtwoord of de client ooit is verlopen of verloren gegaan is.
-5. [Download en installeer de Microsoft Monitoring Agent](#download-and-install-the-agent) op de computer waarop de Configuration Manager service connection point sitesysteemrol. De agent verzendt de Configuration Manager-gegevens naar de Log Analytics-werkruimte in Azure Monitor.
-6. In Azure Monitor, [verzamelingen importeren uit Configuration Manager](#import-collections) als computergroepen.
-7. Weergeven in Azure Monitor, gegevens uit Configuration Manager als [computergroepen](computer-groups.md).
+## <a name="configuration-overview"></a>Configuratie-overzicht
 
-U kunt meer lezen over het verbinden van Configuration Manager met Azure Monitor op [synchroniseren van gegevens uit Configuration Manager met Microsoft Log Analytics-werkruimte](https://technet.microsoft.com/library/mt757374.aspx).
+In de volgende stappen vindt u een overzicht van de stappen voor het configureren van Configuration Manager integratie met Azure Monitor.  
+
+1. Registreer Configuration Manager in Azure Active Directory als webtoepassing en/of Web-API-app en zorg ervoor dat u beschikt over de client-ID en de geheime sleutel van de client van de registratie van Azure Active Directory. Zie [portal gebruiken voor het maken van Active Directory toepassing en service-principal die toegang hebben tot resources](../../active-directory/develop/howto-create-service-principal-portal.md) voor gedetailleerde informatie over het uitvoeren van deze stap.
+
+2. Ken in Azure Active Directory [Configuration Manager toe (de geregistreerde Web-app) met machtigingen voor toegang tot Azure monitor](#grant-configuration-manager-with-permissions-to-log-analytics).
+
+3. Voeg in Configuration Manager een verbinding toe met behulp van de wizard **Azure-Services** .
+
+4. [Down load en installeer de log Analytics-agent voor Windows](#download-and-install-the-agent) op de computer met de site systeemrol Configuration Manager service aansluitpunt. De agent verzendt Configuration Manager gegevens naar de werk ruimte Log Analytics in Azure Monitor.
+
+5. Importeer in Azure Monitor [verzamelingen uit Configuration Manager](#import-collections) als computer groepen.
+
+6. In Azure Monitor gegevens weer geven van Configuration Manager als [computer groepen](computer-groups.md).
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Verleen Configuration Manager met machtigingen voor Log Analytics
-In de volgende procedure, verleent u de *Inzender* rol in uw Log Analytics-werkruimte aan de Active Directory-toepassing en service-principal die u eerder hebt gemaakt voor Configuration Manager.  Als u een werkruimte niet al hebt, raadpleegt u [een werkruimte maken in Azure Monitor](../../azure-monitor/learn/quick-create-workspace.md) voordat u doorgaat.  Hiermee kunt Configuration Manager om te verifiëren en verbinding maken met uw Log Analytics-werkruimte.  
+
+In de volgende procedure, verleent u de *Inzender* rol in uw Log Analytics-werkruimte aan de Active Directory-toepassing en service-principal die u eerder hebt gemaakt voor Configuration Manager. Als u nog geen werk ruimte hebt, raadpleegt u [een werk ruimte maken in azure monitor](../../azure-monitor/learn/quick-create-workspace.md) voordat u doorgaat. Hiermee kunt Configuration Manager om te verifiëren en verbinding maken met uw Log Analytics-werkruimte.  
 
 > [!NOTE]
-> U moet machtigingen opgeven in de werkruimte voor logboekanalyse voor Configuration Manager. Anders ontvangt u een foutbericht weergegeven wanneer u de configuratiewizard in Configuration Manager gebruiken.
+> U moet machtigingen opgeven in de werk ruimte Log Analytics voor Configuration Manager. Anders ontvangt u een foutbericht weergegeven wanneer u de configuratiewizard in Configuration Manager gebruiken.
 >
 
 1. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics**.
+
 2. In de lijst met Log Analytics-werkruimten, selecteer de werkruimte te wijzigen.
+
 3. Selecteer in het linkerdeelvenster **toegangsbeheer (IAM)** .
+
 4. Klik in de Access control (IAM)-pagina op **roltoewijzing toevoegen** en de **roltoewijzing toevoegen** deelvenster wordt weergegeven.
+
 5. In de **roltoewijzing toevoegen** deelvenster onder de **rol** vervolgkeuzelijst, selecteer de **Inzender** rol.  
+
 6. Onder de **toegang toewijzen aan** vervolgkeuzelijst, selecteer de Configuration Manager-toepassing eerder hebt gemaakt in AD, en klik vervolgens op **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>De agent downloaden en installeren
-Lees het artikel [verbinding maken met Windows-computers naar Azure Monitor in Azure](agent-windows.md) om te begrijpen van de methoden die beschikbaar zijn voor het installeren van de Microsoft Monitoring Agent op de computer die als host fungeert voor de Configuration Manager service connection point sitesysteemrol.  
 
-## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>Een verbinding met Log Analytics toevoegen aan Configuration Manager
-Als u wilt toevoegen van Log Analytics-verbinding, uw Configuration Manager-omgeving moet hebben een [serviceaansluitpunt](https://technet.microsoft.com/library/mt627781.aspx) geconfigureerd voor de onlinemodus bevindt.
+Raadpleeg het artikel [Windows-computers verbinden met Azure monitor in azure](agent-windows.md) om inzicht te krijgen in de methoden die beschikbaar zijn voor het installeren van de log Analytics agent voor Windows op de computer die als host fungeert voor de site systeemrol Configuration Manager service aansluitpunt.  
 
-1. In de **beheer** werkruimte van Configuration Manager, selecteer **OMS-Connector**. Hiermee opent u de **Log Analytics Verbindingswizard toevoegen**. Selecteer **Next**.
+## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager verbinden met Log Analytics werk ruimte
 
-   >[!NOTE]
-   >OMS wordt nu aangeduid als Log Analytics is een functie van Azure Monitor.
-   
-2. Op de **algemene** scherm, bevestigt u dat u de volgende acties hebt uitgevoerd en dat u details voor elk item hebben, en selecteer vervolgens **volgende**.
-
-   1. In Azure portal kunt u Configuration Manager als een webtoepassing en/of Web-API-app hebt geregistreerd, en dat u hebt de [client-ID van de registratie](../../active-directory/develop/quickstart-register-app.md).
-   2. U kunt een geheime sleutel van de app voor de geregistreerde app in Azure Active Directory hebt gemaakt in de Azure-portal.  
-   3. In de Azure-portal, kunt u de geregistreerde web-app hebt opgegeven met een machtiging voor toegang tot de Log Analytics-werkruimte in Azure Monitor.  
-      ![Verbinding met Log Analytics Wizard algemene pagina](./media/collect-sccm/sccm-console-general01.png)
-3. Op de **Azure Active Directory** scherm, configureren van instellingen voor de verbinding met de Log Analytics-werkruimte door op te geven uw **Tenant**, **Client-ID**, en **Geheime sleutel van de client**en selecteer vervolgens **volgende**.  
-   ![Verbinding met Log Analytics Wizard Azure Active Directory-pagina](./media/collect-sccm/sccm-wizard-tenant-filled03.png)
-4. Als u bereikt de procedures is, klikt u vervolgens de informatie op de **OMS verbindingsconfiguratie** scherm wordt automatisch weergegeven op deze pagina. Informatie over de instellingen van de verbinding moet worden weergegeven voor uw **Azure-abonnement**, **Azure-resourcegroep**, en **Operations Management Suite-werkruimte**.  
-   ![Verbinding met de verbinding van Log Analytics Wizard Log Analytics-pagina](./media/collect-sccm/sccm-wizard-configure04.png)
-5. De wizard maakt verbinding met de Log Analytics-werkruimte met behulp van de gegevens die u hebt ingevoerd. Selecteer de apparaatverzamelingen die u wilt synchroniseren met de service en klik vervolgens op **toevoegen**.  
-   ![Verzamelingen selecteren](./media/collect-sccm/sccm-wizard-add-collections05.png)
-6. Controleer de verbindingsinstellingen op de **samenvatting** scherm en selecteer vervolgens **volgende**. De **voortgang** scherm ziet u de status van de verbinding en vervolgens moet **voltooid**.
+>[!NOTE]
+> Om een Log Analytics verbinding toe te voegen, moet uw Configuration Manager omgeving een [service verbindings punt](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point) hebben dat is geconfigureerd voor de online modus.
 
 > [!NOTE]
-> U moet de verbinding van de site op hoogste niveau in uw hiërarchie naar Azure Monitor te maken. Als u een zelfstandige primaire site verbinden met Azure Monitor en klikt u vervolgens een centrale beheersite aan uw omgeving toevoegen, die u moet verwijderen en opnieuw maken van de verbinding in de nieuwe hiërarchie.
->
->
+> U moet de site op het hoogste niveau in uw hiërarchie verbinden met Azure Monitor. Als u een zelfstandige primaire site verbindt met Azure Monitor en vervolgens een centrale beheer site toevoegt aan uw omgeving, moet u de verbinding in de nieuwe hiërarchie verwijderen en opnieuw maken.
 
-Nadat u de Configuration Manager aan Azure Monitor hebt gekoppeld, kunt u toevoegen of verwijderen van verzamelingen en bekijk de eigenschappen van de verbinding.
+1. Selecteer **Cloud Services** in de werk ruimte **beheer** van Configuration Manager en selecteer vervolgens **Azure-Services**. 
 
-## <a name="update-log-analytics-workspace-connection-properties"></a>Verbindingseigenschappen voor Log Analytics-werkruimte bijwerken
-Als een wachtwoord of de client geheime sleutel ooit is verlopen of verloren gaat, moet u handmatig bijwerken van de eigenschappen van de Log Analytics.
+2. Klik met de rechter muisknop op **Azure-Services** en selecteer vervolgens **Azure-Services configureren**. De pagina **Azure-Services configureren** wordt weer gegeven. 
+   
+3. Op de **algemene** scherm, bevestigt u dat u de volgende acties hebt uitgevoerd en dat u details voor elk item hebben, en selecteer vervolgens **volgende**.
 
-1. In Configuration Manager, gaat u naar **Cloudservices**en selecteer vervolgens **OMS-Connector** openen de **OMS verbindingseigenschappen** pagina.
+4. Op de pagina Azure-Services van de wizard Azure-Services:
+
+    1. Geef een **naam** op voor het object in Configuration Manager.
+    2. Geef een optionele **Beschrijving** op die u kan helpen bij het identificeren van de service.
+    3. Selecteer de Azure service **OMS-connector**.
+
+    >[!NOTE]
+    >OMS wordt nu Log Analytics genoemd. Dit is een functie van Azure Monitor.
+
+5. Selecteer **volgende** om door te gaan naar de pagina met eigenschappen van Azure app van de wizard Azure-Services.
+
+6. Selecteer op de pagina **app** van de wizard Azure-Services eerst de Azure-omgeving in de lijst en klik vervolgens op **importeren**.
+
+7. Geef op de pagina **apps importeren** de volgende informatie op:
+
+    1. Geef de **Azure AD-Tenant naam** voor de app op.
+
+    2. Geef een **Azure AD-Tenant-id** op voor de Azure AD-Tenant. U kunt deze informatie vinden op de pagina met Azure Active Directory **Eigenschappen** . 
+
+    3. Geef de naam van de toepassing op voor de **toepassings** naam.
+
+    4. Geef voor **client-id**de toepassings-id op van de gemaakte Azure AD-app die u eerder hebt gemaakt.
+
+    5. Geef voor **geheime sleutel**de geheime sleutel van de client op van de Azure AD-app die u hebt gemaakt.
+
+    6. Geef de verval datum van de sleutel op voor het verlopen van een **geheime sleutel**.
+
+    7. Geef de App-ID-URI op van de **URI**van de app die u eerder hebt gemaakt.
+
+    8. Selecteer **controleren** en rechts de resultaten moeten **zijn geverifieerd**.
+
+8. Controleer op de pagina **configuratie** de informatie voor het controleren van de velden **Azure-abonnementen**, **Azure-resource groep**en **Operations Management Suite-werk ruimte** die aangeven dat de Azure AD-toepassing voldoende machtigingen in de resource groep. Als de velden leeg zijn, duidt dit erop dat uw toepassing niet over de vereiste rechten beschikt. Selecteer de apparaat-verzamelingen die u wilt verzamelen en door sturen naar de werk ruimte en selecteer vervolgens **toevoegen**.
+
+9. Bekijk de opties op de pagina **Bevestig de instellingen** en selecteer **volgende** om te beginnen met het maken en configureren van de verbinding.
+
+10. Wanneer de configuratie is voltooid, wordt de pagina **voltooiing** weer gegeven. Selecteer **Sluiten**. 
+
+Nadat u Configuration Manager aan Azure Monitor hebt gekoppeld, kunt u verzamelingen toevoegen of verwijderen en de eigenschappen van de verbinding weer geven.
+
+## <a name="update-log-analytics-workspace-connection-properties"></a>Eigenschappen van de verbinding voor Log Analytics werk ruimte bijwerken
+
+Als een wacht woord of geheime sleutel van de client verloopt of verloren is gegaan, moet u de Log Analytics verbindings eigenschappen hand matig bijwerken.
+
+1. Selecteer in de werk ruimte **beheer** van Configuration Manager **Cloud Services** en selecteer vervolgens **OMS-connector** om de **Eigenschappen** pagina van OMS-verbinding te openen.
 2. Op deze pagina, klikt u op de **Azure Active Directory** tabblad om uw **Tenant**, **Client-ID**, **Client geheime sleutel verloopt**. **Controleer of** uw **geheime sleutel van de Client** als deze is verlopen.
 
 ## <a name="import-collections"></a>Verzamelingen importeren
-Nadat u hebt toegevoegd een Log Analytics-verbinding naar Configuration Manager en de agent hebt geïnstalleerd op de computer met de verbinding met de Configuration Manager punt sitesysteemrol, de volgende stap is het verzamelingen importeren uit Configuration Manager in Azure Monitor als computergroepen.
 
-Nadat u de eerste configuratie voor het apparaatverzamelingen importeren uit uw hiërarchie hebt voltooid, wordt het lidmaatschap Verzamelingsgegevens elke drie uur om het lidmaatschap van de huidige opgehaald. U kunt dit op elk moment uitschakelen.
+Nadat u een Log Analytics verbinding hebt toegevoegd met Configuration Manager en de agent hebt geïnstalleerd op de computer met de site systeemrol Configuration Manager service aansluitpunt, is de volgende stap het importeren van verzamelingen uit Configuration Manager in azure Bewaken als computer groepen.
 
-1. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**.
+Nadat u de initiële configuratie voor het importeren van Apparaatsets vanuit uw hiërarchie hebt voltooid, worden de verzamelings gegevens om de drie uur opgehaald om het lidmaatschap actueel te laten blijven. U kunt dit op elk moment uitschakelen.
+
+1. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
 2. Selecteer in de lijst met Log Analytics-werkruimten, de Configuration Manager is geregistreerd bij de werkruimte.  
 3. Selecteer **Geavanceerde instellingen**.
 4. Selecteer **computergroepen** en selecteer vervolgens **SCCM**.  
 5. Selecteer **Import Configuration Manager-verzamelingslidmaatschappen** en klik vervolgens op **opslaan**.  
-   ![Computergroepen - SCCM-tabblad](./media/collect-sccm/sccm-computer-groups01.png)
+   
+    ![Computergroepen - SCCM-tabblad](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Gegevens weergeven uit Configuration Manager
-Nadat u hebt toegevoegd een Log Analytics-verbinding naar Configuration Manager en de agent op de computer met de Configuration Manager service connection point sitesysteemrol hebt geïnstalleerd, worden gegevens van de agent wordt verzonden naar de Log Analytics-werkruimte in Azure Monitor. In Azure Monitor, uw Configuration Manager-verzamelingen worden weergegeven als [computergroepen](../../azure-monitor/platform/computer-groups.md). U vindt de groepen van de **Configuration Manager** pagina onder **Settings\Computer groepen**.
+
+Nadat u een Log Analytics verbinding hebt toegevoegd aan Configuration Manager en de agent hebt geïnstalleerd op de computer met de site systeemrol Configuration Manager service aansluitpunt, worden de gegevens van de agent verzonden naar de werk ruimte Log Analytics in Azure Monitor. In Azure Monitor worden uw Configuration Manager verzamelingen weer gegeven als [computer groepen](../../azure-monitor/platform/computer-groups.md). U vindt de groepen van de **Configuration Manager** pagina onder **Settings\Computer groepen**.
 
 Nadat de verzamelingen die zijn geïmporteerd, kunt u zien hoeveel computers met verzamelingslidmaatschappen gedetecteerd. U ziet ook het aantal verzamelingen die zijn geïmporteerd.
 
 ![Computergroepen - SCCM-tabblad](./media/collect-sccm/sccm-computer-groups02.png)
 
-Wanneer u op een klikt, zoeken wordt geopend, ofwel alle van de geïmporteerde groepen of alle computers die deel uitmaken van elke groep. Met behulp van [zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md), kun u gedetailleerde analyse van Configuration Manager-gegevens.
+Wanneer u op een van beide klikt, worden alle geïmporteerde groepen of alle computers die deel uitmaken van elke groep weer gegeven. Met [zoeken](../../azure-monitor/log-query/log-query-overview.md)in Logboeken kunt u verdere uitgebreide analyse van de gegevens van het lidmaatschap van de verzameling uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Gebruik [zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde informatie over uw Configuration Manager-gegevens weer te geven.
+
+Gebruik [zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde informatie over uw Configuration Manager-gegevens weer te geven.

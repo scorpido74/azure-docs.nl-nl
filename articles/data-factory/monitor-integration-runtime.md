@@ -1,6 +1,6 @@
 ---
-title: Bewaken van integratieruntime in Azure Data Factory | Microsoft Docs
-description: Informatie over het bewaken van verschillende typen integratieruntime in Azure Data Factory.
+title: Integration runtime in Azure Data Factory controleren | Microsoft Docs
+description: Meer informatie over het bewaken van verschillende typen Integration runtime in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,18 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: b62cbe75730da8c5764839d41887deb7e6cd0e90
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b84ea0b9859e69eaf45cd9a89b2443cf42949f79
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66122624"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141084"
 ---
-# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een integratieruntime in Azure Data Factory controleren  
-**Integratieruntime** is de rekeninfrastructuur die door Azure Data Factory wordt gebruikt voor verschillende mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen. Er zijn drie typen integration runtime die worden aangeboden door Data Factory:
+# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een Integration runtime in Azure Data Factory bewaken  
+**Integration runtime** is de reken infrastructuur die wordt gebruikt door Azure Data Factory om verschillende mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Er zijn drie typen Integration runtimes die worden aangeboden door Data Factory:
 
 - Azure Integration Runtime
 - Zelf-hostende Integration Runtime
@@ -27,98 +27,98 @@ ms.locfileid: "66122624"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u de status van een instantie van integratieruntime (IR), moet u de volgende PowerShell-opdracht uitvoeren: 
+Als u de status van een exemplaar van Integration runtime (IR) wilt ophalen, voert u de volgende Power shell-opdracht uit: 
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
-De cmdlet retourneert verschillende gegevens voor verschillende typen integratieruntime. In dit artikel wordt uitgelegd voor de eigenschappen en -statussen voor elk type van integratieruntime.  
+De cmdlet retourneert verschillende informatie voor verschillende typen Integration runtime. In dit artikel worden de eigenschappen en statussen van elk type Integration runtime beschreven.  
 
 ## <a name="azure-integration-runtime"></a>Azure Integration Runtime
-De compute-resource voor een Azure integratieruntime is volledig beheerde, Elastisch in Azure. De volgende tabel bevat beschrijvingen van eigenschappen die zijn geretourneerd door de **Get-AzDataFactoryV2IntegrationRuntime** opdracht:
+De reken resource voor een Azure Integration runtime wordt volledig beheerd in Azure. De volgende tabel bevat beschrijvingen voor eigenschappen die worden geretourneerd door de opdracht **Get-AzDataFactoryV2IntegrationRuntime** :
 
-### <a name="properties"></a>Properties
-De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourneerd door de cmdlet voor een Azure integratieruntime:
+### <a name="properties"></a>properties
+De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourneerd door de cmdlet voor een Azure Integration runtime:
 
 | Eigenschap | Description |
 -------- | ------------- | 
-| Name | De naam van de Azure integratieruntime. |  
-| State | De status van de Azure integratieruntime. | 
-| Location | Locatie van de Azure integratieruntime. Zie voor meer informatie over de locatie van een Azure integratieruntime [Inleiding tot integratieruntime](concepts-integration-runtime.md). |
-| DataFactoryName | De naam van de data factory die deel uitmaakt van de Azure integratieruntime op. | 
-| ResourceGroupName | De naam van de resourcegroep die de data factory behoort.  |
-| Description | Beschrijving van de integratieruntime.  |
+| Name | De naam van de Azure Integration runtime. |  
+| State | Status van de Azure Integration runtime. | 
+| Location | Locatie van de Azure Integration runtime. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure Integration runtime. |
+| DataFactoryName | De naam van de data factory waarvan de Azure Integration runtime deel uitmaakt. | 
+| ResourceGroupName | De naam van de resource groep waartoe de data factory behoort.  |
+| Description | Beschrijving van de Integration runtime.  |
 
 ### <a name="status"></a>State
-De volgende tabel bevat de mogelijke statussen van een Azure integratieruntime:
+De volgende tabel bevat mogelijke statussen van een Azure Integration runtime:
 
-| State | Opmerkingen /-scenario 's | 
+| State | Opmerkingen/Scenario's | 
 | ------ | ------------------ |
-| Online | De Azure integratieruntime is online en klaar om te worden gebruikt. | 
-| Offline | De Azure integratieruntime is offline vanwege een interne fout. |
+| Online | Azure Integration runtime is online en klaar om te worden gebruikt. | 
+| Offline | De Azure Integration runtime is offline vanwege een interne fout. |
 
 ## <a name="self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime
-In deze sectie bevat beschrijvingen van eigenschappen die door de cmdlet Get-AzDataFactoryV2IntegrationRuntime geretourneerd. 
+Deze sectie bevat beschrijvingen voor eigenschappen die door de cmdlet Get-AzDataFactoryV2IntegrationRuntime worden geretourneerd. 
 
 > [!NOTE] 
-> De geretourneerde eigenschappen en de status bevatten informatie over de algehele zelf-hostende integratieruntime en op elk knooppunt in de runtime.  
+> De geretourneerde eigenschappen en status bevatten informatie over de algehele zelf-hostende Integration runtime en elk knoop punt in de runtime.  
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
-De volgende tabel bevat beschrijvingen van de eigenschappen voor bewaking **elk knooppunt**:
+De volgende tabel bevat beschrijvingen van de bewakings eigenschappen voor **elk knoop punt**:
 
 | Eigenschap | Description | 
 | -------- | ----------- | 
-| Name | De naam van de zelf-hostende integratieruntime en de knooppunten die zijn gekoppeld. Knooppunt is een on-premises Windows-computer met de zelf-hostende integratieruntime is geïnstalleerd. |  
-| State | De status van de algehele zelf-hostende integratieruntime en elk knooppunt. Voorbeeld: Online/Offline/Limited/etc. Zie voor meer informatie over deze statussen van de volgende sectie. | 
-| Versie | De versie van de zelf-hostende integratieruntime en elk knooppunt. De versie van de zelf-hostende integratieruntime wordt bepaald op basis van de versie van het merendeel van de knooppunten in de groep. Als er knooppunten met verschillende versies in de installatie van de zelf-hostende integration runtime zijn, alleen de knooppunten met het versienummer hetzelfde als de logische zelf-hostende integratie-runtime-functie goed. Anderen in de beperkte modus zijn en moeten handmatig worden bijgewerkt (alleen als automatisch bijwerken is mislukt). | 
-| Beschikbaar geheugen | Beschikbaar geheugen op een zelf-hostende integration runtime-knooppunt. Deze waarde is een momentopname van een bijna realtime. | 
-| CPU-gebruik | CPU-gebruik van een zelf-hostende integration runtime-knooppunt. Deze waarde is een momentopname van een bijna realtime. |
-| Netwerken (In/uit) | Het netwerkgebruik van een zelf-hostende integration runtime-knooppunt. Deze waarde is een momentopname van een bijna realtime. | 
-| Gelijktijdige taken (actief / beperken) | **Met**. Het aantal taken of taken die worden uitgevoerd op elk knooppunt. Deze waarde is een momentopname van een bijna realtime. <br/><br/>**Limiet**. Limiet geeft aan dat het maximum aantal gelijktijdige taken voor elk knooppunt. Deze waarde is gedefinieerd op basis van de machinegrootte. U kunt de limiet voor het opschalen van gelijktijdige taakuitvoering in geavanceerde scenario's wanneer activiteiten zijn time-outs, zelfs wanneer CPU, geheugen of netwerk benut wordt verhogen. Deze mogelijkheid is ook beschikbaar met een zelf-hostende integratieruntime met één knooppunt. |
-| Rol | Er zijn twee soorten rollen in een meerdere knooppunten zelf-hostende integratieruntime-functie voor berichtverzending en -werkrollen. Alle knooppunten zijn werknemers, wat betekent dat ze kunnen allemaal worden gebruikt voor het uitvoeren van taken. Er is slechts één functie voor berichtverzending knooppunt, die wordt gebruikt voor het ophalen van taken/taken uit cloudservices en ze verzenden naar verschillende worker-knooppunten. Het knooppunt verzender is ook een worker-knooppunt. |
+| Name | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
+| State | De status van de algemene zelf-hostende Integration runtime en elk knoop punt. Voorbeeld: Online/offline/beperkt/etc. Zie de volgende sectie voor meer informatie over deze statussen. | 
+| Version | De versie van de zelf-hostende Integration runtime en elk knoop punt. De versie van de zelf-hostende Integration runtime wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de zelf-hostende Integration runtime-installatie zijn, worden alleen de knoop punten met hetzelfde versie nummer als de logische zelf-hostende Integration runtime-functie correct uitgevoerd. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt). | 
+| Beschikbaar geheugen | Beschikbaar geheugen op een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. | 
+| CPU-gebruik | CPU-gebruik van een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. |
+| Netwerken (in/uit) | Netwerk gebruik van een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. | 
+| Gelijktijdige taken (uitvoeren/beperken) | **Wordt uitgevoerd**. Aantal taken of taken dat op elk knoop punt wordt uitgevoerd. Deze waarde is een bijna realtime moment opname. <br/><br/>**Limiet**. De limiet is het maximale aantal gelijktijdige taken voor elk knoop punt. Deze waarde wordt gedefinieerd op basis van de grootte van de machine. U kunt de limiet verhogen voor het opschalen van gelijktijdige taak uitvoering in geavanceerde scenario's, wanneer activiteiten een time-out hebben, zelfs wanneer de CPU, het geheugen of het netwerk wordt gebruikt. Deze mogelijkheid is ook beschikbaar met een zelf-hostende Integration runtime met één knoop punt. |
+| Role | Er zijn twee soorten rollen in een zelf-hostende Integration runtime met meerdere knoop punten: dispatcher en worker. Alle knoop punten zijn werk nemers, wat betekent dat ze allemaal kunnen worden gebruikt om taken uit te voeren. Er is slechts één dispatcher-knoop punt, dat wordt gebruikt om taken/taken uit te geven vanuit Cloud Services en deze te verzenden naar verschillende worker-knoop punten. Het dispatcher-knoop punt is ook een worker-knoop punt. |
 
-Sommige instellingen van de eigenschappen ook beter wanneer er twee of meer knooppunten in de zelf-hostende integratieruntime (dat wil zeggen, in een scale-out scenario).
+Sommige instellingen van de eigenschappen maken meer indruk wanneer er twee of meer knoop punten aanwezig zijn in de zelf-hostende Integration runtime (dat wil zeggen, in een scenario voor schalen).
 
 #### <a name="concurrent-jobs-limit"></a>Limiet voor gelijktijdige taken
 
-De standaardwaarde van de gelijktijdige taken limiet is ingesteld, is afhankelijk van de grootte van de machine. De factoren die wordt gebruikt om deze waarde te berekenen, is afhankelijk van de hoeveelheid RAM-geheugen en het aantal CPU-kernen van de machine. Dus meer kernen en meer geheugen, de hogere beperken de standaardwaarde van gelijktijdige taken.
+De standaard waarde van de limiet voor gelijktijdige taken wordt ingesteld op basis van de grootte van de machine. De factoren die worden gebruikt om deze waarde te berekenen, zijn afhankelijk van de hoeveelheid RAM-geheugen en het aantal CPU-kernen van de machine. Hoe meer kernen en meer geheugen, des te hoger de standaard limiet van gelijktijdige taken.
 
-U schalen opwaarts door het aantal knooppunten te verhogen. Als u het aantal knooppunten verhoogt, is de limiet voor gelijktijdige taken de som van de waarden van de limiet voor gelijktijdige taak van alle beschikbare knooppunten.  Bijvoorbeeld, als één knooppunt u maximaal twaalf gelijktijdige taken uitvoeren kunt, kunt vervolgens drie meer lijken knooppunten toe te voegen u maximaal 48 gelijktijdige taken (dat wil zeggen, 4 x 12) worden uitgevoerd. Het is raadzaam om de limiet voor gelijktijdige taken te verhogen, alleen wanneer er brongebruik laag met de standaardwaarden op elk knooppunt.
+U kunt uitschalen door het aantal knoop punten te verhogen. Wanneer u het aantal knoop punten verhoogt, is de limiet voor gelijktijdige taken de som van de gelijktijdige taak limiet waarden van alle beschik bare knoop punten.  Als u bijvoorbeeld met één knoop punt Maxi maal twaalf gelijktijdige taken uitvoert, kunt u met drie meer soort gelijke knoop punten Maxi maal 48 gelijktijdige taken uitvoeren (dat wil zeggen 4 x 12). Het is raadzaam om de limiet voor gelijktijdige taken alleen te verhogen wanneer u weinig resource gebruik ziet met de standaard waarden voor elk knoop punt.
 
-U kunt de waarde in de Azure-portal berekende standaard overschrijven. Selecteer Auteur > verbindingen > Integratieruntimes > Bewerken > knooppunten > gelijktijdige taak waarde per knooppunt wijzigen. U kunt ook de PowerShell [update Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) opdracht.
+U kunt de berekende standaard waarde in het Azure Portal overschrijven. Selecteer Auteur > verbindingen > Integration Runtimes > > knooppunten te bewerken > gelijktijdige taak waarde per knoop punt te wijzigen. U kunt ook de opdracht Power shell [Update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) gebruiken.
   
-### <a name="status-per-node"></a>Status (per knooppunt)
-De volgende tabel bevat de mogelijke statussen van een zelf-hostende integration runtime-knooppunt:
+### <a name="status-per-node"></a>Status (per knoop punt)
+De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration runtime-knoop punt:
 
 | State | Description |
 | ------ | ------------------ | 
-| Online | Knooppunt is verbonden met de Data Factory-service. |
-| Offline | Knooppunt is offline. |
-| Upgraden | Het knooppunt wordt automatisch bijgewerkt. |
-| Beperkt | Vanwege een probleem met de netwerkverbinding. Kan worden veroorzaakt door HTTP-poort 8050 probleem, service bus-connectiviteitsprobleem of een synchronisatieprobleem in de referentie. |
-| Inactief | Er is een knooppunt in een van de configuratie van andere knooppunten van de meeste andere configuratie. |
+| Online | Het knoop punt is verbonden met de Data Factory-service. |
+| Offline | Het knoop punt is offline. |
+| Upgraden | Het knoop punt wordt automatisch bijgewerkt. |
+| Beperkt | Vanwege een probleem met de verbinding. Wordt mogelijk veroorzaakt door een probleem met de HTTP-poort 8050, een probleem met de Service Bus-verbinding of een probleem met de synchronisatie van referenties. |
+| Inactief | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten. |
 
-Een knooppunt mag inactief zijn als er geen verbinding met andere knooppunten.
+Een knoop punt kan inactief zijn wanneer er geen verbinding kan worden gemaakt met andere knoop punten.
 
-### <a name="status-overall-self-hosted-integration-runtime"></a>Status (algemene zelf-hostende integratieruntime)
-De volgende tabel bevat de mogelijke statussen van een zelf-hostende integratieruntime. Deze status is afhankelijk van de status van alle knooppunten die deel uitmaken van de runtime. 
+### <a name="status-overall-self-hosted-integration-runtime"></a>Status (algemene zelf-hostende Integration runtime)
+De volgende tabel bevat mogelijke statussen van een zelf-hostende Integration runtime. Deze status is afhankelijk van de status van alle knoop punten die deel uitmaken van de runtime. 
 
 | State | Description |
 | ------ | ----------- | 
-| Registratie moet | Kan geen knooppunt voor is geregistreerd bij deze zelf-hostende integratieruntime nog. |
-| Online | Alle knooppunten zijn online. |
-| Offline | Kan geen knooppunt is online. |
-| Beperkt | Niet alle knooppunten in deze zelf-hostende integratieruntime zijn in een foutloze toestand bevindt. Deze status is een waarschuwing weergegeven dat sommige knooppunten is mogelijk niet beschikbaar. Deze status kan worden veroorzaakt door een synchronisatieprobleem in de referentie op knooppunt verzender/werknemer. |
+| Registratie vereist | Er is nog geen knoop punt geregistreerd bij deze zelf-hostende Integration runtime. |
+| Online | Alle knoop punten zijn online. |
+| Offline | Er is geen knoop punt online. |
+| Beperkt | Niet alle knoop punten in deze zelf-hostende Integration runtime hebben de status in orde. Deze status is een waarschuwing dat bepaalde knoop punten mogelijk niet actief zijn. Deze status kan worden veroorzaakt door een probleem met de synchronisatie van referenties op de verzender/het worker-knoop punt. |
 
-Gebruik de **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet voor het ophalen van de JSON-nettolading met de gedetailleerde zelf-hostende integration runtime-eigenschappen en hun momentopname waarden tijdens het ophalen van de uitvoering van de cmdlet.
+Gebruik de cmdlet **Get-AzDataFactoryV2IntegrationRuntimeMetric** om de JSON-nettolading op te halen met de gedetailleerde runtime-eigenschappen voor zelf-hostende Integration en de bijbehorende momentopname waarden tijdens de uitvoering van de cmdlet.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
 ```
 
-Voorbeeld van uitvoer (wordt ervan uitgegaan dat er twee knooppunten die zijn gekoppeld aan deze zelf-hostende integratieruntime):
+Voorbeeld uitvoer (er wordt van uitgegaan dat er twee knoop punten zijn gekoppeld aan deze zelf-hostende Integration runtime):
 
 ```json
 {
@@ -153,82 +153,82 @@ Voorbeeld van uitvoer (wordt ervan uitgegaan dat er twee knooppunten die zijn ge
 
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS-integratie-runtime
-Azure-SSIS integratieruntime is een volledig beheerd cluster van Azure virtuele machines (of knooppunten) toegewezen voor het uitvoeren van uw SSIS-pakketten. Alle andere activiteiten van Azure Data Factory kan niet worden uitgevoerd. Eenmaal ingericht, kunt u query uitvoeren op de eigenschappen en de algehele/knooppunt-specifieke statussen bewaken.
+Azure-SSIS Integration runtime is een volledig beheerd cluster van virtuele Azure-machines (of knoop punten) die zijn toegewezen om uw SSIS-pakketten uit te voeren. Er worden geen andere activiteiten van Azure Data Factory uitgevoerd. Zodra u het hebt ingericht, kunt u de eigenschappen opvragen en de totale/knooppunt specifieke statussen controleren.
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
-| De eigenschap/Status | Description |
+| Eigenschap/status | Description |
 | --------------- | ----------- |
-| CreateTime | De UTC-tijd waarop uw Azure-SSIS integratieruntime is gemaakt. |
-| Knooppunten | De toegewezen/beschikbare knooppunten van uw Azure-SSIS integratieruntime met knooppunt-specifieke statussen (begin/beschikbaar/recycling/niet beschikbaar) en bruikbare fouten. |
-| OtherErrors | De niet-knooppunt-specifieke bruikbare fouten in uw Azure-SSIS integratieruntime. |
-| LastOperation | Het resultaat van de laatste starten/stoppen-bewerking op uw Azure-SSIS integratieruntime met bruikbare fouten als deze is mislukt. |
-| State | De algemene status (eerste/starten/gestart/stoppen/gestopt) van uw Azure-SSIS integratieruntime. |
-| Location | De locatie van uw Azure-SSIS integratieruntime. |
-| NodeSize | De grootte van elk knooppunt van uw Azure-SSIS integratieruntime. |
-| NodeCount | Het aantal knooppunten in uw Azure-SSIS integratieruntime. |
-| MaxParallelExecutionsPerNode | Het aantal parallelle uitvoeringen per knooppunt in uw Azure-SSIS integratieruntime. |
-| CatalogServerEndpoint | Het eindpunt van uw bestaande Azure SQL Database/MI-server host SSISDB. |
-| CatalogAdminUserName | De beheerdersgebruikersnaam van uw bestaande Azure SQL Database/MI-server. Data Factory-service gebruikt deze informatie voor het voorbereiden en SSISDB beheren namens. |
-| CatalogAdminPassword | Het beheerderswachtwoord van uw bestaande Azure SQL Database/MI-server. |
-| CatalogPricingTier | De prijscategorie voor de SSISDB wordt gehost door uw bestaande Azure SQL Database-server.  Niet van toepassing op Azure SQL Database Managed Instance SSISDB wordt gehost. |
-| VNetId | Het virtuele netwerk resource-ID voor uw Azure-SSIS integratieruntime om toe te voegen. |
-| Subnet | De naam van het subnet voor uw Azure-SSIS integratieruntime om toe te voegen. |
-| Id | De resource-ID van uw Azure-SSIS integratieruntime. |
-| Type | Het type (beheerde/zelf-Hosted) van uw Azure-SSIS integratieruntime. |
-| ResourceGroupName | De naam van uw Azure-resourcegroep, waarin uw data factory en Azure-SSIS integratieruntime zijn gemaakt. |
-| DataFactoryName | De naam van uw Azure-gegevensfactory. |
-| Name | De naam van uw Azure-SSIS integratieruntime. |
-| Description | De beschrijving van uw Azure-SSIS integratieruntime. |
+| CreateTime | De UTC-tijd waarop uw Azure SSIS Integration runtime is gemaakt. |
+| Knooppunten | De toegewezen/beschik bare knoop punten van uw Azure-SSIS-integratie-runtime met knooppunt statussen (gestart/beschikbaar/recycling/niet beschikbaar) en bruikbare fouten. |
+| OtherErrors | De niet-knooppunt specifieke actie fouten op uw Azure SSIS Integration runtime. |
+| LastOperation | Het resultaat van de laatste start-en stop bewerking voor uw Azure SSIS Integration runtime met een actie bare fout (en) als deze is mislukt. |
+| State | De algehele status van uw Azure SSIS Integration runtime (begin/start/gestart/gestopt). |
+| Location | De locatie van uw Azure SSIS Integration runtime. |
+| NodeSize | De grootte van elk knoop punt van uw Azure SSIS Integration runtime. |
+| NodeCount | Het aantal knoop punten in uw Azure SSIS Integration runtime. |
+| MaxParallelExecutionsPerNode | Het aantal parallelle uitvoeringen per knoop punt in uw Azure SSIS Integration runtime. |
+| CatalogServerEndpoint | Het eind punt van uw bestaande Azure SQL Database/beheerde exemplaar server voor het hosten van SSISDB. |
+| CatalogAdminUserName | De gebruikers naam van de beheerder van uw bestaande Azure SQL Database/beheerde exemplaar server. Data Factory-service gebruikt deze informatie om namens u SSISDB voor te bereiden en te beheren. |
+| CatalogAdminPassword | Het beheerders wachtwoord van uw bestaande Azure SQL Database/beheerde exemplaar server. |
+| CatalogPricingTier | De prijs categorie voor SSISDB die wordt gehost door uw bestaande Azure SQL Database-Server.  Niet van toepassing op Azure SQL Database beheerde instantie die als host fungeert voor SSISDB. |
+| VNetId | De resource-ID van het virtuele netwerk voor uw Azure-SSIS Integration runtime om samen te voegen. |
+| Subnet | De naam van het subnet voor uw Azure-SSIS Integration runtime om samen te voegen. |
+| id | De resource-ID van uw Azure SSIS Integration runtime. |
+| type | Het type (beheerd/zelf-Hostend) van uw Azure SSIS Integration runtime. |
+| ResourceGroupName | De naam van uw Azure-resource groep waarin uw data factory en Azure-SSIS Integration runtime zijn gemaakt. |
+| DataFactoryName | De naam van uw Azure-data factory. |
+| Name | De naam van uw Azure SSIS Integration runtime. |
+| Description | De beschrijving van uw Azure SSIS Integration runtime. |
 
   
-### <a name="status-per-node"></a>Status (per knooppunt)
+### <a name="status-per-node"></a>Status (per knoop punt)
 
 | State | Description |
 | ------ | ----------- | 
-| Starten | Dit knooppunt wordt voorbereid. |
-| Beschikbaar | Dit knooppunt is gereed voor u SSIS-pakketten implementeren/uitvoeren. |
-| Recyclen | Dit knooppunt is wordt hersteld/opnieuw te starten. |
-| Niet beschikbaar | Dit knooppunt is niet gereed voor u SSIS-pakketten implementeren/uitvoeren en heeft praktische fouten/problemen die kunnen worden opgelost. |
+| Starten | Dit knoop punt wordt voor bereid. |
+| Beschikbaar | Met dit knoop punt kunt u SSIS-pakketten implementeren en uitvoeren. |
+| Recycl | Dit knoop punt wordt hersteld/opnieuw gestart. |
+| Niet beschikbaar | Dit knoop punt is niet gereed voor het implementeren/uitvoeren van SSIS-pakketten en heeft actie fouten/problemen die kunnen worden opgelost. |
 
-### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (algemene Azure-SSIS integratieruntime)
+### <a name="status-overall-azure-ssis-integration-runtime"></a>Status (algehele Azure-SSIS Integration runtime)
 
 | Algemene status | Description | 
 | -------------- | ----------- | 
-| Oorspronkelijk | De knooppunten van uw Azure-SSIS integratieruntime zijn niet toegewezen/voorbereid. | 
-| Starten | De knooppunten van uw Azure-SSIS integratieruntime worden toegewezen/voorbereid en facturering is gestart. |
-| Gestart | De knooppunten van uw Azure-SSIS integratieruntime zijn toegewezen/voorbereid en ze gereed zijn voor u SSIS-pakketten implementeren/uitvoeren. |
-| Stoppen  | De knooppunten van uw Azure-SSIS integratieruntime zijn gepubliceerd. |
-| Gestopt | De knooppunten van uw Azure-SSIS integratieruntime zijn vrijgegeven en facturering is gestopt. |
+| Oorspronkelijk | De knoop punten van uw Azure SSIS Integration runtime zijn niet toegewezen/voor bereid. | 
+| Starten | De knoop punten van uw Azure SSIS Integration runtime worden toegewezen/voor bereid en de facturering is gestart. |
+| Gestart | De knoop punten van uw Azure SSIS Integration runtime zijn toegewezen/voor bereid en ze zijn klaar om SSIS-pakketten te implementeren en uit te voeren. |
+| Stoppen  | De knoop punten van uw Azure SSIS Integration runtime worden vrijgegeven. |
+| Gestopt | De knoop punten van uw Azure SSIS Integration runtime zijn vrijgegeven en de facturering is gestopt. |
 
-### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Monitor voor de Azure-SSIS integratieruntime in Azure portal
+### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>De Azure SSIS Integration runtime bewaken in de Azure Portal
 
-De volgende schermafbeeldingen laten zien hoe om te selecteren van de Azure-SSIS IR om te controleren, en geef een voorbeeld van de informatie die wordt weergegeven.
+In de volgende scherm afbeeldingen ziet u hoe u de Azure-SSIS IR selecteert die u wilt bewaken en een voor beeld krijgt van de informatie die wordt weer gegeven.
 
-![Selecteer de Azure-SSIS integratieruntime bewaken](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
+![Selecteer de Azure SSIS Integration runtime die u wilt bewaken](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
 
-![Informatie weergeven over de Azure-SSIS integratieruntime](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
+![Informatie weer geven over de Azure-SSIS Integration runtime](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
 
-### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>Monitor voor de Azure-SSIS integratieruntime met PowerShell
+### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>De Azure SSIS Integration runtime controleren met Power shell
 
-Gebruik van een script, zoals in het volgende voorbeeld om te controleren of de status van de Azure-SSIS-IR.
+Gebruik een script zoals het volgende voor beeld om de status van de Azure-SSIS IR te controleren.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
 
-### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Meer informatie over de Azure-SSIS integratieruntime
+### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Meer informatie over de Azure-SSIS Integration runtime
 
-Zie de volgende artikelen voor meer informatie over Azure-SSIS integratieruntime:
+Raadpleeg de volgende artikelen voor meer informatie over Azure-SSIS Integration runtime:
 
-- [Azure-SSIS Integratieruntime](concepts-integration-runtime.md#azure-ssis-integration-runtime). In dit artikel bevat algemene informatie over integratieruntimes in het algemeen met inbegrip van de Azure-SSIS-IR. 
+- [Azure-SSIS Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dit artikel bevat conceptuele informatie over integratie-Runtimes in het algemeen, met inbegrip van de Azure-SSIS IR. 
 - [Zelfstudie: SSIS-pakketten implementeren in Azure](tutorial-create-azure-ssis-runtime-portal.md). Dit artikel biedt stapsgewijze instructies voor het maken van een Azure-SSIS IR en maakt gebruik van een Azure SQL-database voor het hosten van de SSIS-catalogus. 
-- [Procedure: Een Azure-SSIS integratieruntime maken](create-azure-ssis-integration-runtime.md). In dit artikel gaat verder in op de zelfstudie en bevat instructies over het gebruik van Azure SQL Database Managed Instance en toevoegen van de IR aan een virtueel netwerk. 
+- [Procedure: Maak een Azure SSIS Integration runtime](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van Azure SQL Database beheerde instantie en het toevoegen van de IR aan een virtueel netwerk. 
 - [Een Azure-SSIS IR beheren](manage-azure-ssis-integration-runtime.md). In dit artikel leest u hoe u een Azure-SSIS IR stopt, start of verwijdert. Er wordt ook uitgelegd hoe u een Azure-SSIS IR kunt uitschalen door meer knooppunten toe te voegen aan de IR. 
-- [Een Azure-SSIS-integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md). Dit artikel bevat algemene informatie over het toevoegen van een Azure-SSIS IR aan een virtueel netwerk van Azure. Het bevat ook stappen voor het gebruik van Azure portal het virtuele netwerk zodanig configureren dat de Azure-SSIS IR kunt deelnemen aan het virtuele netwerk. 
+- [Een Azure-SSIS-integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md). Dit artikel bevat algemene informatie over het toevoegen van een Azure-SSIS IR aan een virtueel netwerk van Azure. Het bevat ook stappen om Azure Portal te gebruiken voor het configureren van het virtuele netwerk, zodat de Azure-SSIS IR kan worden toegevoegd aan het virtuele netwerk. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor het bewaken van pijplijnen op verschillende manieren: 
+Raadpleeg de volgende artikelen voor het bewaken van pijp lijnen op verschillende manieren: 
 
-- [Snelstartgids: een data factory maken](quickstart-create-data-factory-dot-net.md).
-- [Azure Monitor gebruiken om Data Factory-pijplijnen te bewaken](monitor-using-azure-monitor.md)
+- [Snelstartgids: een Data Factory maken](quickstart-create-data-factory-dot-net.md).
+- [Azure Monitor gebruiken om Data Factory pijp lijnen te bewaken](monitor-using-azure-monitor.md)

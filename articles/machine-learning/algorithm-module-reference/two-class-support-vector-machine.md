@@ -1,7 +1,7 @@
 ---
-title: 'Two-Class Support Vector Machine: Moduleverwijzing'
+title: 'Vector computer met twee klassen ondersteuning: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de **Tweeklasse ondersteunende Vectormachine** module in Azure Machine Learning-service voor het maken van een model dat is gebaseerd op de vectormachine-algoritme.
+description: Meer informatie over het gebruik van de computer module voor **ondersteuning van twee klassen** in azure machine learning service om een model te maken dat is gebaseerd op het algoritme van de ondersteunings vector machine.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,76 +9,75 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 2f076dd3a5b1ceb9e24548652a71fda5b9aa48b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027928"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128310"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Two-Class Support Vector Machine-module
+# <a name="two-class-support-vector-machine-module"></a>Machine module voor de ondersteuning van twee klassen
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Gebruik deze module om een model dat is gebaseerd op de vectormachine-algoritme te maken. 
+Gebruik deze module om een model te maken dat is gebaseerd op de computer algoritme van de ondersteunings vector. 
 
-Support vector machines (SVMs) vormen een goed onderzocht klasse van leren met supervisie methoden. Deze specifieke implementatie is geschikt voor de voorspelling van twee mogelijke resultaten, op basis van doorlopend of categorisch variabelen.
+Support Vector machines (SVMs) zijn een goed te doorzoeken klasse van leer methoden met toezicht. Deze specifieke implementatie is geschikt voor het voors pellen van twee mogelijke resultaten, op basis van doorlopende of Categorische variabelen.
 
-Na het definiëren van de Modelparameters, het model te trainen met behulp van de trainingsmodules en bieden een *gelabeld gegevensset* die een kolom met het label of het resultaat bevat.
+Nadat u de para meters van het model hebt gedefinieerd, traint u het model met behulp van de trainings modules en geeft u een *gecodeerde gegevensset* op die een kolom Label of resultaat bevat.
 
-## <a name="about-support-vector-machines"></a>Over support vector machines
+## <a name="about-support-vector-machines"></a>Vector machines ondersteunen
 
-Support vector machines zijn een van de vroegste van machine learning-algoritmen en SVM modellen zijn gebruikt in veel toepassingen, van het ophalen van gegevens naar tekst en afbeeldingen classificatie. SVMs kan worden gebruikt voor de classificatie- en regressiemodellen taken.
+Ondersteuning voor vector machines is een van de eerste machine learning-algoritmen en SVM modellen zijn gebruikt in veel toepassingen, van gegevens die worden opgehaald tot tekst-en afbeeldings classificatie. SVMs kan worden gebruikt voor zowel classificatie-als regressie taken.
 
-Dit model SVM is een model voor leren met supervisie waarvoor gelabelde gegevens. In het trainingsproces het algoritme invoergegevens analyseert en patronen in een multi-dimensionale functie ruimte, het zogenaamde herkent de *hyperplane*.  Alle invoer voorbeelden worden weergegeven als punten in deze ruimte, en zo categorieën zodanig dat categorieën worden gedeeld door als en schakelt u een gat mogelijk zijn toegewezen.
+Dit SVM-model is een trainings model met Super visie waarvoor gelabelde gegevens zijn vereist. In het trainings proces analyseert het algoritme invoer gegevens en herkent patronen in een multi-dimensionale functie ruimte die de *hyperplane*wordt genoemd.  Alle invoer voorbeelden worden weer gegeven als punten in deze ruimte en worden toegewezen aan uitvoer Categorieën op een zodanige manier dat categorieën worden gedeeld door de brede en duidelijke onderbreking.
 
-Voor de voorspelling wijst de algoritme SVM nieuwe voorbeelden in één categorie of de andere, ze in die dezelfde ruimte toe te wijzen. 
+Voor de voor spelling wijst het SVM-algoritme nieuwe voor beelden toe aan één categorie of aan de andere, en wijs deze toe aan dezelfde ruimte. 
 
 ## <a name="how-to-configure"></a>Configureren 
 
-Het is raadzaam dat u de gegevensset normaliseren om het trainen van de classificatie die u voor dit modeltype.
+Voor dit model type wordt aanbevolen dat u de gegevensset normaliseert voordat u deze gebruikt om de classificatie te trainen.
   
-1.  Voeg de **Two-Class Support Vector Machine** module naar het experimentcanvas.  
+1.  Voeg de **machine module met twee klasse-** ondersteunings vectoren toe aan uw experiment.  
   
-2.  Geef op hoe u het model te trainen, door in te stellen de **trainer aanmaakmodus** optie.  
+2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
-    -   **Eén Parameter**: Als u hoe u wilt configureren van het model weet, kunt u een specifieke set waarden opgeven als argumenten.  
+    -   **Eén para meter**: Als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.  
 
-3.  Voor **aantal iteraties**, typ een getal dat het aantal iteraties gebruikt bij het bouwen van het model wordt aangeduid.  
+3.  Voor **aantal herhalingen**typt u een getal dat het aantal iteraties aanduidt dat wordt gebruikt bij het bouwen van het model.  
   
-     Deze parameter kan worden gebruikt voor het beheren van balans tussen training snelheid en nauwkeurigheid.  
+     Deze para meter kan worden gebruikt om de verhouding tussen de snelheid en nauw keurigheid van de training te bepalen.  
   
-4.  Voor **Lambda**, typt u een waarde wilt gebruiken als het gewicht voor L1 regularisatie.  
+4.  Typ voor **Lambda**een waarde die moet worden gebruikt als gewicht voor de N1-regularisatie.  
   
-     Deze coëfficiënt regularisatie kan worden gebruikt om het model afstemmen. Hogere waarden sancties meer complexe modellen.  
+     Deze regularisatie-coëfficiënt kan worden gebruikt om het model af te stemmen. Grotere waarden bestraffen complexere modellen.  
   
-5.  Selecteer de optie **normaliseren functies**, als u wilt normaliseren functies voordat een training.
+5.  Selecteer de optie voor het normaliseren van **functies**als u functies vóór de training wilt normaliseren.
   
-     Als u van toepassing is normalisering, training, zijn de gegevenspunten gecentreerd op het gemiddelde en geschaald als één eenheid van de standaarddeviatie.
+     Als u normalisatie toepast voordat de training wordt toegepast, worden gegevens punten gecentreerd op het gemiddelde en geschaald om één eenheid van standaard afwijking te hebben.
   
-6.  Selecteer de optie **Project aan de eenheid sphere**, normaliseren coëfficiënten.
+6.  Selecteer de optie **project naar de eenheids bol**om coëfficiënten te normaliseren.
   
-     Projectie van waarden die moeten worden eenheid ruimte betekent dat training gegevenspunten zijn gecentreerd op 0 en geschaald als één eenheid van de standaarddeviatie.
+     Projecteren van waarden naar eenheids ruimte betekent dat voordat een training wordt gegeven, gegevens punten worden gecentreerd op 0 en geschaald om één eenheid van standaard afwijking te hebben.
   
-7.  In **willekeurig getal seed**, typt u een geheel getal en als een seed gebruiken als u ervoor wilt zorgen reproduceerbaarheid voor uitvoert.  Anders wordt wordt de waarde van een system clock gebruikt als een seed, wat enigszins verschillende resultaten voor uitvoert leiden kan.
+7.  Typ bij **wille keurig aantal Seed**een geheel getal dat moet worden gebruikt als seeding als u de reproduceer baarheid van alle uitvoeringen wilt garanderen.  Anders wordt een waarde van een systeem klok gebruikt als seed, wat kan leiden tot enigszins verschillende resultaten voor uitvoeringen.
   
-9. Verbinding maken met een gegevensset met gelabelde en een van de [trainingsmodules](module-reference.md):
+9. Verbind een gegevensset met een label en een van de [trainings modules](module-reference.md):
   
-    -   Als u instelt **trainer aanmaakmodus** naar **één Parameter**, gebruikt u de [Train Model](train-model.md) module.
+    -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .
   
 
 10. Voer het experiment uit.
 
 ## <a name="results"></a>Resultaten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ U ziet een overzicht van de parameters van het model, samen met de functie gewichten geleerd van training, met de rechtermuisknop op de uitvoer van [Train Model](./train-model.md), en selecteer **Visualize**.
++ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd van training, kliktu met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u visualiseren.
 
-+ Voor het gebruik van het getrainde modellen om voorspellingen te doen, verbinding maken met het getrainde model op de [Score Model](score-model.md) module.
++ Als u de getrainde modellen wilt gebruiken om voor spellingen te doen, verbindt u het getrainde model met de module [score model](score-model.md) .
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

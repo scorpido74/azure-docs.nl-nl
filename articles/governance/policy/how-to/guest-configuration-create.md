@@ -7,18 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543511"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146128"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
 Gast configuratie maakt gebruik van een resource module voor [desired state Configuration](/powershell/dsc) (DSC) om de configuratie voor de controle van de virtuele Azure-machines te maken. De DSC-configuratie definieert de voor waarde dat de virtuele machine moet zijn. Als de evaluatie van de configuratie mislukt, wordt de **controle** van het beleids effect geactiveerd en wordt de virtuele machine beschouwd als **niet-compatibel**.
 
-[Azure Policy-gast configuratie](/azure/governance/policy/concepts/guest-configuration) kan alleen worden gebruikt voor het controleren van instellingen in virtuele machines. Het herstellen van de instellingen binnen de virtuele machines is nog niet beschikbaar.
+[Azure Policy-gast configuratie](/azure/governance/policy/concepts/guest-configuration) kan alleen worden gebruikt voor het controleren van instellingen in virtuele machines. Herstel van instellingen binnen virtuele machines is nog niet beschikbaar.
 
 Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een virtuele machine van Azure.
 
@@ -142,7 +142,7 @@ In Azure Policy gast configuratie is de optimale manier om geheimen te beheren d
 Maak eerst een door de gebruiker toegewezen beheerde identiteit in Azure. De identiteit wordt door virtuele machines gebruikt om toegang te krijgen tot geheimen die zijn opgeslagen in Key Vault. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor gedetailleerde stappen.
 
 Maak vervolgens een Key Vault-exemplaar. Zie voor gedetailleerde stappen [een geheim-Power shell instellen en ophalen](../../../key-vault/quick-create-powershell.md).
-Wijs machtigingen toe aan het exemplaar om de door de gebruiker toegewezen identiteit toegang te geven tot geheimen die zijn opgeslagen in Key Vault. Zie voor gedetailleerde stappen [een geheim instellen en ophalen-.net](../../../key-vault/quick-create-net.md#assign-permissions-to-your-application-to-read-secrets-from-key-vault).
+Wijs machtigingen toe aan het exemplaar om de door de gebruiker toegewezen identiteit toegang te geven tot geheimen die zijn opgeslagen in Key Vault. Zie voor gedetailleerde stappen [een geheim instellen en ophalen-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
 Wijs vervolgens de door de gebruiker toegewezen identiteit aan uw virtuele machine toe. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
 Wijs op schaal deze identiteit toe met behulp van Azure Resource Manager via Azure Policy. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)voor gedetailleerde stappen.
@@ -318,11 +318,11 @@ Met het beleid en de initiatief definities die zijn gemaakt in azure, is de laat
 
 Nadat u een aangepaste Azure Policy hebt gepubliceerd met behulp van uw aangepaste inhouds pakket, zijn er twee velden die moeten worden bijgewerkt als u een nieuwe release wilt publiceren.
 
-- **Version**: Wanneer u de cmdlet `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd.  Hiermee wordt de versie van de toewijzing van de gast configuratie in het nieuwe beleids bestand bijgewerkt zodat de extensie herkent dat het pakket is bijgewerkt.
-- **contentHash**: Dit wordt automatisch bijgewerkt door de `New-GuestConfigurationPolicy` cmdlet.  Het is een hash-waarde van het pakket dat `New-GuestConfigurationPackage`is gemaakt door.  Dit moet juist zijn voor het `.zip` bestand dat u publiceert.  Als alleen de `contentUri` eigenschap wordt bijgewerkt, bijvoorbeeld in het geval dat iemand een hand matige wijziging van de beleids definitie kan aanbrengen vanuit de portal, wordt het inhouds pakket niet geaccepteerd door de extensie.
+- **Version**: Wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd.  Met de eigenschap wordt de versie van de toewijzing van de gast configuratie in het nieuwe beleids bestand bijgewerkt zodat de extensie herkent dat het pakket is bijgewerkt.
+- **contentHash**: Deze eigenschap wordt automatisch bijgewerkt door de `New-GuestConfigurationPolicy` cmdlet.  Het is een hash-waarde van het pakket dat `New-GuestConfigurationPackage`is gemaakt door.  De eigenschap moet correct zijn voor het `.zip` bestand dat u publiceert.  Als alleen de `contentUri` eigenschap wordt bijgewerkt, bijvoorbeeld in het geval dat iemand een hand matige wijziging van de beleids definitie kan aanbrengen vanuit de portal, wordt het inhouds pakket niet geaccepteerd door de extensie.
 
 De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat wordt beschreven in dit artikel herhalen en een bijgewerkt versie nummer opgeven.
-Zo wordt gegarandeerd dat alle eigenschappen correct zijn bijgewerkt.
+Dit proces garandeert dat alle eigenschappen correct zijn bijgewerkt.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows-groepsbeleid inhoud converteren naar Azure Policy-gast configuratie
 
@@ -330,7 +330,7 @@ Gast configuratie, bij het controleren van Windows-computers, is een implementat
 De DSC-Community heeft hulp middelen gepubliceerd voor het converteren van geëxporteerde groepsbeleid sjablonen naar de DSC-indeling.
 Als u dit hulp programma gebruikt in combi natie met de hierboven beschreven gast configuratie-cmdlets, kunt u Windows-groepsbeleid inhoud en-pakket converteren en publiceren voor Azure Policy naar controle.
 Voor meer informatie over het gebruik van het hulp programma [raadpleegt u het artikel Snelstartgids: Groepsbeleid converteren naar DSC](/powershell/dsc/quickstarts/gpo-quickstart).
-Zodra de inhoud is geconverteerd, zijn de bovenstaande stappen om een pakcage te maken en deze te publiceren als Azure Policy hetzelfde zijn als voor alle DSC-inhoud.
+Nadat de inhoud is geconverteerd, zijn de bovenstaande stappen voor het maken van een pakket en het publiceren ervan als Azure Policy hetzelfde als voor elke DSC-inhoud.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>BESCHRIJVING Gast configuratie pakketten ondertekenen
 

@@ -1,7 +1,7 @@
 ---
-title: 'Beslissingsforest met multiklasse: Moduleverwijzing'
+title: 'Forest voor de beslissing van de branche: Module verwijzing'
 titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module Beslissingsforest met Multiklasse in Azure Machine Learning-service te maken van een machine learning-model op basis van de *forest besluit* algoritme.
+description: Meer informatie over het gebruik van de module voor de beslissings structuur voor het maken van een machine learning model in Azure Machine Learning-service om op basis van het algoritme van het *beslissings forest* een gemodelleerde
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,84 +9,83 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 10364d014431a500e7c38a02d47f432cd464feb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b56f08dfd1a14ffedffb612bb8974086ee08ede7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411456"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128622"
 ---
-# <a name="multiclass-decision-forest-module"></a>Beslissingsforest met multiklasse-module
+# <a name="multiclass-decision-forest-module"></a>Module voor de beslissings forest voor multi klassen
 
-Dit artikel beschrijft een module van de visuele interface (preview) voor Azure Machine Learning-service.
+In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
 
-Deze module gebruiken voor het maken van een machine learning-model op basis van de *forest besluit* algoritme. Een beslissingsforest is een model ensembles die snel een reeks beslisbomen tijdens het leren van gecodeerde gegevens.
+Gebruik deze module om een machine learning model te maken op basis van het algoritme van het *beslissings forest* . Een besluitvormings forest is een ensemble model dat snel een reeks beslissings structuren bouwt, terwijl u leert van gelabelde gegevens.
 
-## <a name="more-about-decision-forests"></a>Meer informatie over de beslissing forests
+## <a name="more-about-decision-forests"></a>Meer informatie over besluitvormings forests
 
-De beslissing forest-algoritme is een ensembles learning-methode voor classificatie. Het algoritme werkt volgens het bouwen van meerdere beslisbomen en vervolgens *stemmende* over de meest populaire uitvoer-klasse. Uw stem is een vorm van aggregatie hebben, in welke elke boomstructuur van een beslissing classificatie forest een histogram van de niet-genormaliseerde frequentie van labels levert. Het aggregatieproces voor van de som van deze histogrammen en Normaliseert het resultaat voor de 'kansen' voor elk label. De vertakkingen die erop vertrouwen dat hoge voorspelling hebben een hoger gewicht in de definitieve beslissing van de ensembles.
+Het algoritme van het beslissings forest is een ensemble leer methode voor classificatie. Het algoritme werkt door meerdere beslissings structuren te bouwen en vervolgens te *stemmen* op de meest populaire uitvoer klasse. Stemmen is een vorm van aggregatie, waarbij elke structuur in een forest met classificatie beslissingen een niet-genormaliseerd frequentie histogram van labels uitvoert. Het aggregatie proces berekent deze histogrammen en normaliseert het resultaat om de ' kansen ' voor elk label op te halen. De structuren met een hoog Voorspellings betrouwbaarheids niveau hebben een groter gewicht in de definitieve beslissing van de ensemble.
 
-Beslisbomen zijn in het algemeen niet parametrische modellen, wat betekent dat ze ondersteuning voor gegevens met verschillende distributies. In de structuur van wordt een reeks eenvoudige tests uitgevoerd voor elke klasse, de niveaus van een boomstructuur verhogen tot een leafknooppunt (besluit) is bereikt.
+Beslissings structuren in het algemeen zijn niet-parametrische modellen, wat betekent dat ze gegevens ondersteunen met verschillende distributies. In elke structuur wordt een reeks eenvoudige tests uitgevoerd voor elke klasse, waardoor de niveaus van een boom structuur worden verhoogd totdat een Leaf-knoop punt (beslissing) is bereikt.
 
-Beslisbomen hebben veel voordelen:
+Beslissings structuren hebben veel voor delen:
 
-+ Ze kunnen niet-lineaire besluit grenzen vertegenwoordigen.
-+ Ze zijn efficiënt in de berekening- en geheugengebruik tijdens trainen en voorspellen.
-+ Ze uitvoeren geïntegreerde functieselectie en -classificatie.
-+ Ze zijn flexibel met ruis functies.
++ Ze kunnen niet-lineaire beslissings grenzen vertegenwoordigen.
++ Ze zijn efficiënt in reken-en geheugen gebruik tijdens de training en voor spellingen.
++ Ze voeren geïntegreerde functie selectie en-classificatie uit.
++ Ze zijn robuust in de aanwezigheid van ruis functies.
 
-De classificatie van de beslissing forest in Azure Machine Learning bestaat uit een ensembles van beslissingsstructuren. Over het algemeen bieden ensembles modellen betere dekking en de nauwkeurigheid van dan één beslisbomen. Zie voor meer informatie, [Decision trees](https://go.microsoft.com/fwlink/?LinkId=403677).
+De classificatie van het beslissings forest in Azure Machine Learning bestaat uit een ensemble van beslissings structuren. In het algemeen bieden ensemble-modellen betere dekking en nauw keurigheid dan enkelvoudige beslissings structuren. Zie [beslissings structuren](https://go.microsoft.com/fwlink/?LinkId=403677)voor meer informatie.
 
-## <a name="how-to-configure-multiclass-decision-forest"></a>Beslissingsforest met Multiklasse configureren
+## <a name="how-to-configure-multiclass-decision-forest"></a>Het configureren van een forest met een klassen beslissing
 
 
 
-1. Toevoegen de **Beslissingsforest met Multiklasse** module aan uw experiment in de interface. U vindt deze module onder **Machine Learning**, **Initialize Model**, en **classificatie**.
+1. Voeg de module voor de **beslissings forest** met een klassemodule toe aan uw experiment in de-interface. U kunt deze module vinden onder **machine learning**, **model initialiseren**en **classificatie**.
 
-2. Dubbelklik op de module te openen de **eigenschappen** deelvenster.
+2. Dubbel klik op de module om het deel venster **Eigenschappen** te openen.
 
-3. Voor **pixels methode**, kiest u de methode die wordt gebruikt voor het maken van de afzonderlijke structuren.  U kunt kiezen uit gezakt of replicatie.
+3. Kies voor **resampling methode**de methode die is gebruikt voor het maken van de afzonderlijke structuren.  U kunt kiezen uit overbagging of replicatie.
 
-    + **Gezakt**: Ook gezakt heet *bootstrap aggregeren*. Bij deze methode wordt elke structuur geworden van een nieuwe steekproef, die zijn gemaakt door de oorspronkelijke gegevensset met vervanging willekeurig steekproeven totdat u de grootte van de oorspronkelijke een gegevensset hebt. De uitvoer van de modellen gecombineerd met *stemmende*, dit is een vorm van aggregatie. Zie voor meer informatie de Wikipedia-vermelding voor het verzamelen van Bootstrap.
+    + Overbaggen: De functie voor het verzamelen van de functie wordt ook *Boots trap aggregatie*genoemd. In deze methode wordt elke structuur op een nieuw voor beeld gekweekt, gemaakt door de oorspronkelijke gegevensset wille keurig te bemonsteren, totdat u een gegevensset hebt die de oorspronkelijke grootte heeft. De uitvoer van de modellen worden gecombineerd door middel van *stemmen*. Dit is een vorm van aggregatie. Zie de Wikipedia-vermelding voor Boots trap aggregatie voor meer informatie.
 
-    + **Repliceren**: Bij replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. Het bepalen van welke splitsing predicaat wordt gebruikt voor elk knooppunt blijft willekeurige, het maken van verschillende structuren.
+    + **Repliceren**: In replicatie wordt elke structuur getraind op exact dezelfde invoer gegevens. De bepaling van welk gesplitst predicaat voor elk structuur knooppunt wordt gebruikt, blijft wille keurig en maakt diverse structuren.
 
    
 
-4. Geef op hoe u het model te trainen, door in te stellen de **trainer aanmaakmodus** optie.
+4. Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
 
-    + **Eén Parameter**: Selecteer deze optie als u hoe u wilt configureren van het model weet, en een set waarden als argumenten.
-
-
-5. **Aantal beslisbomen**: Typ het maximum aantal beslisbomen dat kan worden gemaakt in de ensembles. Als u meer beslisbomen maakt, krijgt u mogelijk betere dekking, maar training moment verhogen.
-
-    Deze waarde bepaalt ook het aantal structuren weergegeven in de resultaten bij het visualiseren van het getrainde model. Als u wilt bekijken of afdrukken van één tree, kunt u de waarde instelt op 1. Dit betekent echter dat slechts één structuur kan worden gemaakt (de structuur met de eerste set parameters), en er is geen verdere pogingen worden uitgevoerd.
-
-6. **Maximale diepte van de beslisbomen**: Typ een getal in om te beperken van de maximale diepte van een beslissingsstructuur. De diepte van de structuur van de vergroot, mogelijk precisie, indien even training overfitting en meer.
-
-7. **Het aantal willekeurige splitsingen per knooppunt**: Typ het aantal splitsingen moet worden gebruikt bij het bouwen van elk knooppunt van de structuur. Een *splitsen* betekent dat de functies in elk niveau van de structuur (node) willekeurig worden verdeeld.
-
-8. **Minimum aantal voorbeelden per leaf-knooppunt**: Het minimumaantal cases die nodig zijn voor het maken van een terminal (leaf) van de knooppunten in een boomstructuur aangeven. Door deze waarde, verhoogt u de drempelwaarde voor het maken van nieuwe regels.
-
-    Bijvoorbeeld, met de standaardwaarde van 1, zelfs op een enkel geval kan leiden tot een nieuwe regel moet worden gemaakt. Als u de waarde 5 verhoogt, wordt de trainingsgegevens hoeft te bevatten ten minste vijf aanvragen die voldoen aan de dezelfde voorwaarden.
+    + **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een reeks waarden als argumenten op.
 
 
+5. **Aantal beslissings structuren**: Typ het maximum aantal beslissings structuren dat in de ensemble kan worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar kan de tijd van de training toenemen.
 
-10. Verbinding maken met een gegevensset met gelabelde en een van de trainingsmodules:
+    Deze waarde bepaalt ook het aantal structuren dat wordt weer gegeven in de resultaten, wanneer het getrainde model wordt gevisualiseerd. Als u één boom structuur wilt zien of afdrukken, kunt u de waarde instellen op 1. Dit betekent echter wel dat er slechts één structuur kan worden geproduceerd (de boom structuur met de initiële set para meters), en er geen verdere herhalingen worden uitgevoerd.
 
-    + Als u instelt **trainer aanmaakmodus** naar **één Parameter**, gebruikt u de [Train Model](./train-model.md) module.
+6. **Maximale diepte van de beslissings structuren**: Typ een getal om de maximale diepte van een beslissings structuur te beperken. Het verg Roten van de diepte van de structuur kan nauw keuriger zijn, met het risico van een aantal verdeelde en verhoogde opleidings tijd.
+
+7. **Aantal wille keurige splitsingen per knoop punt**: Typ het aantal splitpen dat moet worden gebruikt bij het maken van elk knoop punt van de structuur. Een *splitsing* houdt in dat onderdelen in elk niveau van de structuur (knoop punt) wille keurig worden gedeeld.
+
+8. **Minimum aantal steek proeven per blad knooppunt**: Geef het minimum aantal cases op dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken. Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels.
+
+    Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.
+
+
+
+10. Verbind een gegevensset met een label en een van de trainings modules:
+
+    + Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](./train-model.md) .
 
 11. Voer het experiment uit.
 
 ## <a name="results"></a>Resultaten
 
-Na de training is voltooid:
+Nadat de training is voltooid:
 
-+ Als u wilt zien van de structuur die is gemaakt op elke herhaling, met de rechtermuisknop op de uitvoer van de [Train Model](./train-model.md) -module en selecteer **Visualize**.
-+ Voor de regels voor elk knooppunt, klikt u op elke structuur Inzoomen op de splitsingen.
++ Klik met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteer visualiseren om de structuur weer te geven dieop elke iteratie is gemaakt.
++ Als u de regels voor elk knoop punt wilt bekijken, klikt u op elke structuur om in te zoomen op de splitsingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [set met beschikbare modules](module-reference.md) met Azure Machine Learning-service. 
+Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 

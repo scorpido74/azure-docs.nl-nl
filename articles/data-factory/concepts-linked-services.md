@@ -3,21 +3,20 @@ title: Gekoppelde services in Azure Data Factory | Microsoft Docs
 description: Meer informatie over gekoppelde services in Data Factory. Gekoppelde services koppelen reken-en gegevens archieven aan data factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: 904e063ae64a971de7f34fbfac63b7679f3bc363
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019958"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137122"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Gekoppelde services in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -92,14 +91,11 @@ De volgende gekoppelde service is een Azure Storage gekoppelde service. U ziet d
 ```
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
+
 U kunt gekoppelde services maken met behulp van een van deze hulpprogram ma's of Sdk's: [.net API](quickstart-create-data-factory-dot-net.md), [power shell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager sjabloon en Azure Portal
 
 ## <a name="data-store-linked-services"></a>Gekoppelde services voor gegevens opslag
-Het maken van verbinding met gegevens archieven vindt u in onze [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats). Raadpleeg de lijst voor specifieke verbindings eigenschappen die nodig zijn voor verschillende winkels.
-
-## <a name="data-store-supported-activities"></a>Ondersteunde activiteiten voor gegevens opslag
-
-[!INCLUDE [Connector-activity support matrix](../../includes/connector-activity-support-matrix.md)]
+U kunt de lijst met opgeslagen gegevens die worden ondersteund door Data Factory, vinden in het overzichts artikel van de [connector](copy-activity-overview.md#supported-data-stores-and-formats) . Klik op een gegevens Archief voor meer informatie over de ondersteunde verbindings eigenschappen.
 
 ## <a name="compute-linked-services"></a>Gekoppelde services berekenen
 Referentie [berekenings omgevingen](compute-linked-services.md) die worden ondersteund voor meer informatie over de verschillende reken omgevingen waarmee u verbinding kunt maken vanuit uw Data Factory en van de verschillende configuraties.

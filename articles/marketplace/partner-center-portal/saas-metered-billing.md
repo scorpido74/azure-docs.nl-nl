@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4b24805cd59d1eb9d28591749d5169486e54d506
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250120"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141779"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Facturering met data limieten met behulp van Marketplace-meet service
 
@@ -74,7 +74,7 @@ De kenmerken die de dimensie zelf definiëren, worden verdeeld over alle abonnem
 
 * ID
 * Name
-* Meeteenheid
+* Maateenheid
 
 De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het abonnement publiceert, kunt u deze waarden bewerken. Dit geldt alleen voor dit abonnement.  Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt.  Deze kenmerken zijn:
 
@@ -84,7 +84,7 @@ De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen vers
 
 Dimensies hebben ook twee speciale concepten: ' enabled ' en ' infinite '.
 
-* **Ingeschakeld** geeft aan dat dit plan deelneemt aan deze dimensie.  U kunt dit selectie vakje uitschakelen als u een nieuw plan maakt dat geen gebruiks gebeurtenissen op basis van deze dimensie verzendt.  Daarnaast worden nieuwe dimensies die zijn toegevoegd nadat een plan voor het eerst werd gepubliceerd, weer gegeven als ' niet ingeschakeld ' in het al gepubliceerde abonnement.  Een uitgeschakelde dimensie wordt nu weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt weer gegeven.
+* **Ingeschakeld** geeft aan dat dit plan deelneemt aan deze dimensie.  U kunt dit selectie vakje uitschakelen als u een nieuw plan maakt dat geen gebruiks gebeurtenissen op basis van deze dimensie verzendt.  Daarnaast worden nieuwe dimensies die zijn toegevoegd nadat een plan voor het eerst werd gepubliceerd, weer gegeven als ' niet ingeschakeld ' in het al gepubliceerde abonnement.  Een uitgeschakelde dimensie wordt niet weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt gezien.
 * **Oneindig**, vertegenwoordigd door het oneindigheids teken "∞", geeft aan dat dit plan deelneemt aan deze dimensie, maar geen gebruik te maken van deze dimensie.  Als u aan uw klanten wilt aangeven dat de functionaliteit die wordt vertegenwoordigd door deze dimensie, in het plan is opgenomen, maar zonder limiet voor gebruik.  Een dimensie met oneindig gebruik wordt weer gegeven in een lijst met dimensies voor een plan dat door klanten wordt gezien, met een indicatie dat er nooit kosten in rekening worden gebracht voor dit abonnement.
 
 >[!Note] 
@@ -104,7 +104,7 @@ Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het
 
 * ID
 * Name
-* Meeteenheid
+* Maateenheid
 
 Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
 

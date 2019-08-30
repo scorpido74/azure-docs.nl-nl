@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640612"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141155"
 ---
 # <a name="service-limits-in-azure-search"></a>Service limieten in Azure Search
 De maximum limieten voor opslag, werk belastingen en hoeveel heden indexen, documenten en andere objecten zijn afhankelijk van het feit of u [Azure Search hebt ingericht](search-create-service-portal.md) , **basis**, **standaard**of voor **opslag geoptimaliseerde** prijs categorieën.
@@ -124,6 +124,15 @@ Er zijn maximale uitvoerings tijden beschikbaar om het saldo en de stabiliteit v
 <sup>4</sup> Maxi maal 30 vaardig heden per vaardig heden.
 
 <sup>5</sup> cognitieve werk belastingen en afbeeldings analyse in Azure Blob-indexering hebben minder uitvoerings tijden dan gewone tekst indexering. De verwerking van afbeeldings-en natuurlijke taal wordt reken intensief uitgevoerd en verbruikt onevenredige hoeveel heden beschik bare verwerkings kracht. De uitvoerings tijd is gereduceerd om andere taken in de wachtrij te geven die een kans om te worden uitgevoerd.  
+
+## <a name="synonym-limits"></a>Synoniemen limieten
+
+Het Maxi maal toegestane aantal synoniemen is afhankelijk van de prijs categorie. Elke regel kan Maxi maal 20 uitbrei dingen hebben, waarbij een uitbrei ding een equivalvent term is. Als bijvoorbeeld ' kat ', ' Association ' met ' Kitty ', ' Feline ' en ' Felis ' (het genus voor katten) als drie uitbrei dingen worden beschouwd.
+
+| Resource | Free | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| -------- | -----|------ |----|----|----|-------|---|----|
+| Maximum aantal synoniemen |3 |3|5 |10 |20 |20 | 10 | 10 |
+| Maximum aantal regels per kaart |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>Query's per seconde (QPS)
 

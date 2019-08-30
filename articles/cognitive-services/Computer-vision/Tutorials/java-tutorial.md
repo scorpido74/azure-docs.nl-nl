@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: fc3a4bb1fad836d8f3dadd5a06169b705ef4d4fc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4fdafee622a67582787829bb63331a8d0225506f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881258"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137495"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Computer Vision functies gebruiken met de REST API en Java
 
@@ -44,7 +44,7 @@ Deze zelfstudie is ontwikkeld met de NetBeans-IDE. Hierbij gaat het om precies t
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Abonneren op Computer Vision-API en een abonnementssleutel ophalen
 
-Voordat u het voor beeld maakt, moet u zich abonneren op Computer Vision-API die deel uitmaakt van Azure Cognitive Services. Zie [Abonnementen](https://azure.microsoft.com/try/cognitive-services/) voor gedetailleerde informatie over het abonnement en sleutelbeheer. In deze zelfstudie kan zowel de primaire als de secundaire sleutel worden gebruikt.
+Voordat u het voor beeld maakt, moet u een abonnements sleutel voor Computer Vision hebben. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Noteer ook de URL van het service-eind punt.
 
 ## <a name="acquire-incomplete-tutorial-project"></a>Onvolledige zelfstudie project ophalen
 
