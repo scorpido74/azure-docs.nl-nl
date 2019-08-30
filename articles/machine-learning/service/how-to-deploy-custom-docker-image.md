@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 753f0bece5b8b52ebb50ab2a6e93056ce209cfbc
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971522"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183555"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 
@@ -23,7 +23,7 @@ Meer informatie over het gebruik van een aangepaste docker-basis installatie kop
 
 Wanneer u een getraind model implementeert voor een webservice of IoT Edge apparaat, wordt er een pakket gemaakt met een webserver voor het verwerken van binnenkomende aanvragen.
 
-Azure Machine Learning-service biedt een standaard installatie kopie van docker, zodat u zich geen zorgen hoeft te maken dat u er een maakt. U kunt ook een aangepaste basis installatie kopie gebruiken die u als _basis installatie kopie_maakt. 
+Azure Machine Learning-service biedt een standaard installatie kopie van docker, zodat u zich geen zorgen hoeft te maken dat u er een maakt. U kunt ook Azure Machine Learning-service __omgevingen__ gebruiken om een specifieke basis installatie kopie te selecteren of een aangepaste versie gebruiken die u opgeeft.
 
 Een basis installatie kopie wordt gebruikt als uitgangs punt wanneer er een installatie kopie voor een implementatie wordt gemaakt. Het biedt het onderliggende besturings systeem en onderdelen. Het implementatie proces voegt vervolgens extra onderdelen, zoals uw model, Conda-omgeving en andere assets, toe aan de installatie kopie voordat u deze implementeert.
 
@@ -193,6 +193,8 @@ Micro soft biedt verschillende docker-installatie kopieën op een openbaar toega
 > [!IMPORTANT]
 > Micro soft-installatie kopieën die gebruikmaken van CUDA of TensorRT, moeten alleen worden gebruikt op Microsoft Azure Services.
 
+Zie [Azure machine learning service containers](https://github.com/Azure/AzureML-Containers)voor meer informatie.
+
 > [!TIP]
 >__Als uw model is getraind op Azure machine learning Compute__met __versie 1.0.22 of hoger__ van de Azure machine learning SDK, wordt er tijdens de training een installatie kopie gemaakt. Als u de naam van deze installatie kopie wilt `run.properties["AzureML.DerivedImageName"]`detecteren, gebruikt u. In het volgende voor beeld ziet u hoe u deze installatie kopie gebruikt:
 >
@@ -203,29 +205,50 @@ Micro soft biedt verschillende docker-installatie kopieën op een openbaar toega
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Een installatie kopie gebruiken met de Azure Machine Learning SDK
 
-Als u een aangepaste installatie kopie wilt gebruiken `base_image` , stelt u de eigenschap van het uitstel [configuratie object](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) in op het adres van de installatie kopie:
+Als u een installatie kopie wilt gebruiken die is opgeslagen in de **Azure container Registry voor uw werk ruimte**of een **container register dat openbaar toegankelijk is**, stelt u de volgende [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) kenmerken in:
+
++ `docker.enabled=True`
++ `docker.base_image`: Stel in op het REGI ster en het pad naar de installatie kopie.
 
 ```python
-# use an image from a registry named 'myregistry'
-inference_config.base_image = "myregistry.azurecr.io/myimage:v1"
+from azureml.core import Environment
+# Create the environment
+myenv = Environment(name="myenv")
+# Enable Docker and reference an image
+myenv.docker.enabled = True
+myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-Deze indeling werkt zowel voor installatie kopieën die zijn opgeslagen in de Azure Container Registry voor uw werk ruimte als voor container registers die openbaar toegankelijk zijn. De volgende code maakt bijvoorbeeld gebruik van een standaard installatie kopie van micro soft:
+Als u een installatie kopie wilt gebruiken uit een __persoonlijk container register__ dat zich niet in uw werk ruimte `docker.base_image_registry` bevindt, moet u gebruiken om het adres van de opslag plaats en een gebruikers naam en wacht woord op te geven:
 
 ```python
-# use an image available in public Container Registry without authentication
-inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+# Set the container registry information
+myenv.docker.base_image_repository.address = "myregistry.azurecr.io"
+myenv.docker.base_image_repository.username = "username"
+myenv.docker.base_image_repository.password = "password"
 ```
 
-Als u een installatie kopie wilt gebruiken uit een __persoonlijk container register__ dat zich niet in uw werk ruimte bevindt, moet u het adres van de opslag plaats en een gebruikers naam en wacht woord opgeven:
+Nadat u de omgeving hebt gedefinieerd, kunt u deze gebruiken met een [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -object om de Afleidings omgeving te definiëren waarin het model en de webservice worden uitgevoerd.
 
 ```python
-# Use an image available in a private Container Registry
-inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-inference_config.base_image_registry.address = "myregistry.azurecr.io"
-inference_config.base_image_registry.username = "username"
-inference_config.base_image_registry.password = "password"
+from azureml.core.model import InferenceConfig
+# Use environment in InferenceConfig
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
+
+U kunt nu door gaan met de implementatie. Met het volgende code fragment wordt bijvoorbeeld lokaal een webservice geïmplementeerd met behulp van de configuratie voor inactiviteit en aangepaste installatie kopie:
+
+```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+Zie [modellen implementeren met Azure machine learning service](how-to-deploy-and-where.md)voor meer informatie over de implementatie.
 
 ### <a name="use-an-image-with-the-machine-learning-cli"></a>Een installatie kopie gebruiken met de Machine Learning CLI
 
