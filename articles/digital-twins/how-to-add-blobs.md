@@ -54,13 +54,13 @@ Meta gegevens van JSON-BLOB voldoen aan het volgende model:
 | Kenmerk | type | Description |
 | --- | --- | --- |
 | **parentId** | Tekenreeks | De bovenliggende entiteit waaraan de BLOB moet worden gekoppeld (spaties, apparaten of gebruikers) |
-| **name** |Tekenreeks | Een mensen vriendelijke naam voor de BLOB |
-| **type** | Tekenreeks | Het type Blob-kan *type* en *typeId* niet gebruiken  |
-| **typeId** | Geheel getal | De ID van het BLOB-type: *type* en *typeId* kunnen niet worden gebruikt |
-| **subtype** | Tekenreeks | Het subtype van de blob: kan subtype en *subtypeId* niet gebruiken |
-| **subtypeId** | Geheel getal | De subtype-ID voor de blob: kan *subtype* en *subtypeId* niet gebruiken |
-| **description** | Tekenreeks | Aangepaste beschrijving van de BLOB |
-| **sharing** | Tekenreeks | Hiermee wordt aangegeven of de BLOB gedeeld kan worden`None`: `Tree`Enum `Global`[,,] |
+| **name** |String | Een mensen vriendelijke naam voor de BLOB |
+| **type** | String | Het type Blob-kan *type* en *typeId* niet gebruiken  |
+| **typeId** | Integer | De ID van het BLOB-type: *type* en *typeId* kunnen niet worden gebruikt |
+| **subtype** | String | Het subtype van de blob: kan subtype en *subtypeId* niet gebruiken |
+| **subtypeId** | Integer | De subtype-ID voor de blob: kan *subtype* en *subtypeId* niet gebruiken |
+| **description** | String | Aangepaste beschrijving van de BLOB |
+| **sharing** | String | Hiermee wordt aangegeven of de BLOB gedeeld kan worden`None`: `Tree`Enum `Global`[,,] |
 
 BLOB-meta gegevens worden altijd opgegeven als het eerste segment met het **inhouds type** `application/json` of `.json` als een bestand. Bestands gegevens worden opgegeven in het tweede segment en kunnen van elk ondersteund MIME-type zijn.
 
