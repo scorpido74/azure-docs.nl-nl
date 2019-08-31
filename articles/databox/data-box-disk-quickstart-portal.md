@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/28/2019
+ms.date: 08/30/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126018"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186692"
 ---
 ::: zone target="docs"
 
@@ -40,7 +41,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ::: zone target="chromeless"
 
-In deze hand leiding wordt beschreven hoe u de Azure Data Box Disk implementeert in de Azure Portal. De stappen omvatten het controleren van vereisten, het ontgrendelen van de schijven en het koppelen en kopiëren van gegevens naar de schijven, zodat deze naar Azure worden geüpload.
+In deze hand leiding worden de stappen beschreven voor het gebruik van de Azure Data Box Disk in de Azure Portal. Deze hand leiding helpt u bij het beantwoorden van de volgende vragen.
 
 ::: zone-end
 
@@ -60,17 +61,16 @@ Meld u aan bij de Azure Portal op [https://aka.ms/azuredataboxfromdiskdocs](http
 
 ::: zone target="chromeless"
 
-### <a name="prerequisites"></a>Vereisten
-
-- U hebt uw bestelling voor data Box disk geplaatst met behulp van de [zelf studie: Azure Data Box Disk bestellen](data-box-disk-deploy-ordered.md).
-- U hebt uw schijven ontvangen en de taakstatus in de portal is bijgewerkt naar **Geleverd**.
-- U hebt het aantal schijven dat u hebt ontvangen gecontroleerd en u hebt één verbindings kabel per schijf.
-- U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
-
-    - Een [ondersteund besturings systeem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)uitvoeren.
-    - [Andere vereiste software](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) is geïnstalleerd als dit een Windows-client is.
+> [!div class="checklist"]
+>
+> - **Vereisten controleren**: Controleer het aantal schijven en kabels, het besturings systeem en andere software.
+> - **Verbinding maken en ontgrendelen**: Verbind het apparaat en Ontgrendel de schijf om de gegevens te kopiëren.
+> - **Gegevens kopiëren naar de schijf en valideren**: Gegevens kopiëren naar de schijven in de voorgemaakte mappen.
+> - **De schijven retour neren**: Ga terug naar Azure Data Center waar gegevens worden geüpload naar uw opslag account.
+> - **Controleer de gegevens in azure**: Controleer of uw gegevens zijn geüpload naar uw opslag account voordat u deze verwijdert van de bron datum server.
 
 ::: zone-end
+
 
 ::: zone target="docs"
 

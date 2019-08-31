@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
-ms.translationtype: MT
+ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423451"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165027"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker kennisdatabase limieten en grenzen
 
@@ -44,19 +44,31 @@ Het maximum aantal diep gaande koppelingen dat kan worden verkend voor het uitpa
 
 ## <a name="metadata-limits"></a>Limieten voor metagegevens
 
+### <a name="by-azure-search-pricing-tier"></a>Per Azure Search prijs categorie
+
 Het maximum aantal meta gegevens velden per Knowledge Base is gebaseerd op de limieten van uw **[Azure Search-laag](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
 
 |**Azure Search tier** | **Gratis** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximale metagegevensvelden per QnA Maker-service (voor alle kB's)|1000|100 *|1000|1000|1000|1000|
 
+### <a name="by-name-and-value"></a>Op naam en waarde
+
+De lengte en de acceptabele tekens voor de naam en waarde van de meta gegevens worden weer gegeven in de volgende tabel.
+
+|Item|Toegestane tekens|Overeenkomst met regex-patroon|Maximum aantal tekens|
+|--|--|--|--|
+|Name|Hulp<br>alfanumeriek (letters en cijfers)<br>`_`weigeren|`^[a-zA-Z0-9_]+$`|100|
+|Value|Maakt alles mogelijk behalve<br>`:`punt<br>`|`(verticale pijp)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>Limieten voor Knowledge Base-inhoud
 Algemene beperkingen met betrekking tot de inhoud in het knowledge base:
 * Lengte van antwoord tekst: 25,000
 * Lengte van de vraag tekst: 1000
 * Lengte van meta gegevens sleutel/waarde: 100
-* Ondersteunde tekens voor naam van meta gegevens: Letters, cijfers en _  
-* Ondersteunde tekens voor de meta gegevens waarde: Alle behalve: en | 
+* Ondersteunde tekens voor naam van meta gegevens: Letters, cijfers en`_`  
+* Ondersteunde tekens voor de meta gegevens waarde: Alle behalve `:` en`|` 
 * Lengte van bestands naam: 200
 * Ondersteunde bestandsindelingen: ".tsv", '.pdf', '.txt', ".docx", '.xlsx'.
 * Maximum aantal alternatieve vragen: 300

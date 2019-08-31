@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051206"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164539"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Containers voor formulier herkenning installeren en uitvoeren
 
@@ -58,28 +58,25 @@ De minimale en aanbevolen CPU-kernen en het geheugen die moeten worden toegeweze
 
 | Container | Minimum | Aanbevolen |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 Core, 4 GB geheugen | 4 kern geheugen van 8 GB |
+| Form Recognizer | 2 Core, 4 GB geheugen | 4 kern geheugen van 8 GB |
+| Tekst herkennen | 1 kern geheugen van 8 GB | 2 kernen, 8 GB geheugen |
 
 * Elke kern moet ten minste 2,6 gigahertz (GHz) of sneller zijn.
-* TPS-trans acties per seconde
 * Core en geheugen komen overeen met `--cpus` de `--memory` instellingen en, die worden gebruikt als onderdeel van `docker run` de opdracht.
 
 > [!Note]
 > De minimale en aanbevolen waarden zijn gebaseerd op docker-limieten en *niet* op de hostcomputer bronnen.
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>De container installatie kopie ophalen met de opdracht docker pull
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>De container installatie kopieën ophalen met de opdracht docker pull
 
-Container installatie kopieën voor de formulier herkenner zijn beschikbaar in de volgende opslag plaats:
+Container installatie kopieën voor de **formulieren Recognizer** en **tekst herkennen** -aanbiedingen zijn beschikbaar in het volgende container register:
 
-| Container | Opslagplaats |
+| Container | Volledig gekwalificeerde installatie kopie naam |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Tekst herkennen | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Als u de `cognitive-services-recognize-text` [container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)wilt gebruiken in plaats van de formulier Recognizer-service, moet u de `docker pull` opdracht gebruiken met de juiste container naam: 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+U hebt beide containers nodig, maar u moet er rekening mee houden dat de tekst container voor de **herkenning** [in dit artikel wordt beschreven.](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ Gebruik de volgende opdracht om de formulier Recognizer-container op te halen:
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-pull voor de Tekst herkennen container
+
+#### <a name="recognize-text"></a>Tekst herkennen
+
+Als u de container Tekst herkennen wilt ophalen, gebruikt u de volgende opdracht:
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>De container gebruiken

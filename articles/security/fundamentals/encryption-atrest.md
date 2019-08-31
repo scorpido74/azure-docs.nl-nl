@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: barclayn
-ms.openlocfilehash: 910057e0e81219a68608441530d03ca1a2411b02
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9721f22eb73c68f729ced13480370f6593c58510
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875102"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182789"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
@@ -254,14 +254,16 @@ Ondersteuning voor Server versleuteling wordt momenteel geboden via de SQL-funct
 
 Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund via de [Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx) -functie. Always Encrypted gebruikt een sleutel die door de client is gemaakt en opgeslagen. Klanten kunnen de hoofd sleutel opslaan in een Windows-certificaat archief, Azure Key Vault of een lokale hardware Security module. Met behulp van SQL Server Management Studio kiezen SQL-gebruikers welke sleutel ze willen gebruiken om de kolom te versleutelen.
 
-#### <a name="encryption-model-and-key-management"></a>Versleutelings model en sleutel beheer
+#### <a name="encryption-model-and-key-management-table"></a>Versleutelings model en sleutel beheer tabel
 
-| **Server-side met door service beheerde sleutel** |**Server-zijde met door de klant beheerde sleutel**| **Client-side met client-beheerd** | **AI en Machine Learning**   |
-|--------------------|-------------------|----------------------|--------------------|
+|                                  |                    | **Versleutelings model en sleutel beheer** |                    |
+|----------------------------------|--------------------|-----------------------------------------|--------------------|
+|                                  | **Server-side met door service beheerde sleutel**     | **Server-zijde met door de klant beheerde sleutel**             | **Client-side met client-beheerd**      |
+| **AI en Machine Learning**      |                    |                    |                    |
 | Azure Search                     | Ja                | -                  | -                  |
 | Azure Machine Learning-service   | Ja                | -                  | -                  |
 | Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
-| Power BI                         | Ja                | Preview, RSA 2048-bits | -               |
+| Power BI                         | Ja                | Preview, RSA 2048-bits | -                  |
 | **Analytische gegevens**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | -                  | -                  |
 | Event Hubs                       | Ja                | -                  | -                  |
@@ -282,7 +284,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Azure SQL Database               | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Azure SQL Database voor MariaDB   | Ja                | -                  | -                  |
 | Azure SQL Database voor MySQL     | Ja                | -                  | -                  |
-| Azure SQL Database voor PostgreSQL | Ja                | -                  | -                 |
+| Azure SQL Database voor PostgreSQL | Ja                | -                  | -                  |
 | Azure SQL Data Warehouse         | Ja                | Ja, RSA 2048-bits  | Ja                |
 | SQL Server Stretch Database      | Ja                | Ja, RSA 2048-bits  | Ja                |
 | Table Storage                    | Ja                | -                  | Ja                |
