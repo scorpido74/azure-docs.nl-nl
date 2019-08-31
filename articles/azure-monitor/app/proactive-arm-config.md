@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights-instellingen voor slimme detectie regel configureren met Azure Resource Manager-sjablonen | Microsoft Docs
-description: Geautomatiseerd beheer en de configuratie van Azure Application Insights-regels voor slimme detectie met Azure Resource Manager-sjablonen
+title: Instellingen voor detectie van Azure-toepassing Insights-regel configureren met Azure Resource Manager sjablonen | Microsoft Docs
+description: Beheer en configuratie automatiseren van Azure-toepassing Insights-regels voor slimme detectie met Azure Resource Manager sjablonen
 services: application-insights
 documentationcenter: ''
 author: harelbr
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477865"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193717"
 ---
-# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Regels voor slimme detectie van Application Insights met behulp van Azure Resource Manager-sjablonen beheren
+# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights Slimme detectie regels beheren met Azure Resource Manager sjablonen
 
-Regels voor slimme detectie in Application Insights kunnen worden beheerd en geconfigureerd met behulp van [Azure Resource Manager-sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
-Deze methode kan worden gebruikt bij het implementeren van nieuwe Application Insights-resources met Azure Resource Manager-automatisering, of voor het wijzigen van de instellingen van bestaande resources.
+Slimme detectie regels in Application Insights kunnen worden beheerd en geconfigureerd met behulp van [Azure Resource Manager sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
+Deze methode kan worden gebruikt bij het implementeren van nieuwe Application Insights resources met Azure Resource Manager Automation of voor het wijzigen van de instellingen van bestaande resources.
 
-## <a name="smart-detection-rule-configuration"></a>Configuratie van de regel voor slimme detectie
+## <a name="smart-detection-rule-configuration"></a>Configuratie van de detectie regel voor Smart
 
-U kunt de volgende instellingen voor een regel voor slimme detectie configureren:
-- Als de regel is ingeschakeld (de standaardwaarde is **waar**.)
-- Als e-mailberichten naar gebruikers die zijn gekoppeld aan van het abonnement moeten worden verzonden [Monitoring Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) en [bewaking Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rollen wanneer er een detectie is gevonden (de standaardwaarde is **waar**.)
-- Eventuele aanvullende e-mailontvangers die een melding krijgen moeten wanneer er een detectie is gevonden.
-    -  E-mailconfiguratie is niet beschikbaar voor regels voor slimme detectie gemarkeerd als _preview_.
+U kunt de volgende instellingen configureren voor een regel voor Slimme detectie:
+- Als de regel is ingeschakeld (de standaard waarde is **waar**.)
+- Als er e-mail berichten moeten worden verzonden naar gebruikers die zijn gekoppeld aan de [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) van het abonnement en bij het bewaken van [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rollen wanneer een detectie wordt gevonden (de standaard waarde is **waar**.)
+- Aanvullende e-mail ontvangers die een melding moeten ontvangen wanneer een detectie wordt gevonden.
+    -  De e-mail configuratie is niet beschikbaar voor slimme detectie regels die als _Preview_zijn gemarkeerd.
 
-Als u wilt toestaan dat de regelinstellingen via Azure Resource Manager configureren, de configuratie van de regel voor slimme detectie is nu beschikbaar als een binnenste bron binnen de Application Insights-resource met de naam **ProactiveDetectionConfigs**.
-Elke regel voor slimme detectie kan worden geconfigureerd met unieke meldingsinstellingen, voor maximale flexibiliteit.
+Om het configureren van de regel instellingen via Azure Resource Manager toe te staan, is de configuratie van de detectie regel nu beschikbaar als binnenste resource binnen de Application Insights resource met de naam **ProactiveDetectionConfigs**.
+Voor een maximale flexibiliteit kan elke Slimme detectie regel worden geconfigureerd met unieke meldings instellingen.
 
 ## 
 
 ## <a name="examples"></a>Voorbeelden
 
-Hieronder vindt u enkele voorbeelden die laten zien hoe u configureert de instellingen van regels voor slimme detectie met behulp van Azure Resource Manager-sjablonen.
-Alle voorbeelden verwijzen naar een Application Insights-resource met de naam _"myApplication"_ , en aan de 'afhankelijkheid lange duur van de regel voor slimme detectie", die intern heet _"longdependencyduration"_ .
-Zorg ervoor dat ter vervanging van de naam van de Application Insights-resource, en om op te geven van de interne naam van de relevante Slimme detectie. Controleer de onderstaande tabel voor een lijst van de bijbehorende interne Azure Resource Manager-namen voor elke regel voor slimme detectie.
+Hieronder ziet u enkele voor beelden van het configureren van de instellingen van Slimme detectie regels met Azure Resource Manager sjablonen.
+Alle voor beelden verwijzen naar een Application Insights resource met de naam _' mijn toepassing '_ en de detectie regel voor lange afhankelijkheids duur, die intern de naam _' longdependencyduration '_ heeft.
+Zorg ervoor dat u de naam van de Application Insights resource vervangt en de relevante interne naam voor de Slimme detectie regel opgeeft. Controleer de onderstaande tabel voor een lijst met de corresponderende interne Azure Resource Manager namen voor elke Slimme detectie regel.
 
 ### <a name="disable-a-smart-detection-rule"></a>Een regel voor slimme detectie uitschakelen
 
@@ -75,7 +75,7 @@ Zorg ervoor dat ter vervanging van de naam van de Application Insights-resource,
     }
 ```
 
-### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>E-mailmeldingen verzenden voor een regel voor slimme detectie uitschakelen
+### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>Het verzenden van e-mail meldingen voor een slimme detectie regel uitschakelen
 
 ```json
 {
@@ -106,7 +106,7 @@ Zorg ervoor dat ter vervanging van de naam van de Application Insights-resource,
     }
 ```
 
-### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>Toevoegen van aanvullende e-mailontvangers voor een regel voor slimme detectie
+### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>Aanvullende e-mail ontvangers voor een slimme detectie regel toevoegen
 
 ```json
 {
@@ -138,9 +138,9 @@ Zorg ervoor dat ter vervanging van de naam van de Application Insights-resource,
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Fout bij afwijkingen v2 (niet klassiek) waarschuwingsregel
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Waarschuwings regel voor fout afwijkingen v2 (niet-klassiek)
 
-Deze Azure Resource Manager-sjabloon ziet u een afwijkende fouten v2-waarschuwingsregel configureren met een prioriteit 2. Deze nieuwe versie van de waarschuwingsregel afwijkende fouten maakt deel uit van de nieuwe Azure platform waarschuwingen en vervangt de klassieke versie die wordt buiten gebruik gesteld als onderdeel van de [klassieke waarschuwingen buitengebruikstellingsproces](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Deze Azure Resource Manager sjabloon demonstreert het configureren van een waarschuwings regel voor fout afwijkingen v2 met de ernst 2. Deze nieuwe versie van de waarschuwings regel voor afwijkingen van de fout maakt deel uit van het nieuwe Azure Alerting platform en vervangt de klassieke versie die buiten gebruik wordt gesteld als onderdeel van het buiten gebruik stellen van [klassieke waarschuwingen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ```json
 {
@@ -151,6 +151,7 @@ Deze Azure Resource Manager-sjabloon ziet u een afwijkende fouten v2-waarschuwin
             "type": "microsoft.alertsmanagement/smartdetectoralertrules",
             "apiVersion": "2019-03-01",
             "name": "Failure Anomalies - my-app",
+            "location": "global", 
             "properties": {
                   "description": "Detects a spike in the failure rate of requests or dependencies",
                   "state": "Enabled",
@@ -170,32 +171,32 @@ Deze Azure Resource Manager-sjabloon ziet u een afwijkende fouten v2-waarschuwin
 ```
 
 > [!NOTE]
-> Deze Azure Resource Manager-sjabloon is uniek is voor de waarschuwingsregel voor afwijkende fouten-v2 en is anders dan de andere klassieke regels voor slimme detectie beschreven in dit artikel.   
+> Deze Azure Resource Manager sjabloon is uniek voor de waarschuwings regel voor fout afwijkingen v2 en wijkt af van de andere klassieke regels voor slimme detectie die in dit artikel worden beschreven.   
 
-## <a name="smart-detection-rule-names"></a>Namen van de regel voor slimme detectie
+## <a name="smart-detection-rule-names"></a>Namen van Slimme detectie regels
 
-Hieronder ziet u een tabel met de namen van Slimme detectie zoals ze worden weergegeven in de portal, samen met hun interne namen, die moet worden gebruikt in de Azure Resource Manager-sjabloon.
+Hieronder ziet u een tabel met namen van Slimme detectie regels zoals ze worden weer gegeven in de portal, samen met hun interne namen, die moeten worden gebruikt in de sjabloon Azure Resource Manager.
 
 > [!NOTE]
-> Regels voor slimme detectie gemarkeerd als _preview_ bieden geen ondersteuning voor e-mailmeldingen. Daarom kunt u alleen instellen de _ingeschakeld_ eigenschap voor deze regels. 
+> Slimme detectie regels die als _Preview_ zijn gemarkeerd, bieden geen ondersteuning voor e-mail meldingen. Daarom kunt u de ingeschakelde eigenschap alleen instellen voor deze regels. 
 
-| Azure portal regelnaam | Interne naam
+| Naam van Azure Portal regel | Interne naam
 |:---|:---|
 | Langzame paginalaadtijd | slowpageloadtime |
-| Trage reactietijd | slowserverresponsetime |
-| Lange afhankelijkheidsduur | longdependencyduration |
-| Vermindering in responstijd van de server | degradationinserverresponsetime |
+| Langzame reactietijd voor de server | slowserverresponsetime |
+| Lange duur van de afhankelijkheid | longdependencyduration |
+| Degradatie van de serverreactietijd | degradationinserverresponsetime |
 | Degradatie van afhankelijkheidsduur | degradationindependencyduration |
-| Degradatie traceren ernst breedteverhouding (preview) | extension_traceseveritydetector |
-| Abnormale toename van uitzonderingen (preview) | extension_exceptionchangeextension |
-| Mogelijk geheugenlek gedetecteerd (preview) | extension_memoryleakextension |
-| Potentiële beveiligingsproblemen gedetecteerd (preview) | extension_securityextensionspackage |
-| Ongebruikelijke stijging in het dagelijkse gegevensvolume (preview) | extension_billingdatavolumedailyspikeextension |
+| Degradatie van de verhouding van de ernst van de tracering (preview-versie) | extension_traceseveritydetector |
+| Uitzonderings volume met een abnormale toename (preview-versie) | extension_exceptionchangeextension |
+| Mogelijke geheugenlek gedetecteerd (preview-versie) | extension_memoryleakextension |
+| Mogelijk beveiligings probleem gedetecteerd (preview-versie) | extension_securityextensionspackage |
+| Een abnormale toename in het dagelijks gegevens volume (preview-versie) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het automatisch detecteren:
+Meer informatie over het automatisch detecteren van:
 
 - [Foutafwijkingen](../../azure-monitor/app/proactive-failure-diagnostics.md)
-- [Geheugenlekken](../../azure-monitor/app/proactive-potential-memory-leak.md)
+- [Geheugen lekken](../../azure-monitor/app/proactive-potential-memory-leak.md)
 - [Prestatieafwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md)

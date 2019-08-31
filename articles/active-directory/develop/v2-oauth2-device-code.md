@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297665"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192716"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Micro soft Identity platform en de code stroom van het OAuth 2,0-apparaat
 
@@ -35,7 +35,7 @@ Het micro soft-identiteits platform biedt ondersteuning voor de [toekenning](htt
 >
 > Persoonlijke accounts die worden uitgenodigd voor een Azure AD-Tenant, kunnen gebruikmaken van de subsidie toekenning, maar alleen in de context van de Tenant.
 >
-> Als aanvullende opmerking wordt het `verification_uri_complete` veld antwoord op dit moment niet opgenomen of ondersteund.  
+> Als aanvullende opmerking wordt het `verification_uri_complete` veld antwoord op dit moment niet opgenomen of ondersteund.  Dit wordt vermeld omdat u de standaard ziet die `verification_uri_complete` wordt weer gegeven als een optioneel onderdeel van de apparaatcode flow-standaard.
 
 > [!NOTE]
 > Het micro soft Identity platform-eind punt biedt geen ondersteuning voor alle Azure Active Directory-scenario's en-functies. Lees over [micro soft Identity platform-beperkingen](active-directory-v2-limitations.md)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken.
@@ -44,7 +44,7 @@ Het micro soft-identiteits platform biedt ondersteuning voor de [toekenning](htt
 
 De gehele apparaatcode stroom ziet er ongeveer uit als in het volgende diagram. Verderop in dit artikel worden de stappen beschreven.
 
-![Toestel code stroom](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
+![Stroom voor apparaatcode](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>Autorisatie aanvraag voor apparaat
 
@@ -67,8 +67,8 @@ scope=user.read%20openid%20profile
 
 | Parameter | Voorwaarde | Description |
 | --- | --- | --- |
-| `tenant` | Verplicht |De Directory-Tenant waarvan u toestemming wilt aanvragen. Dit kan een GUID of beschrijvende naam zijn.  |
-| `client_id` | Verplicht | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
+| `tenant` | Vereist |De Directory-Tenant waarvan u toestemming wilt aanvragen. Dit kan een GUID of beschrijvende naam zijn.  |
+| `client_id` | Vereist | De **client-id** van de toepassing die de [Azure Portal – app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) ervaring die aan uw app is toegewezen. |
 | `scope` | Aanbevolen | Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md) waarvan u wilt dat de gebruiker toestemming geeft.  |
 
 ### <a name="device-authorization-response"></a>Reactie van het apparaat autorisatie
@@ -77,8 +77,8 @@ Een geslaagde reactie is een JSON-object met de vereiste gegevens om de gebruike
 
 | Parameter | Indeling | Description |
 | ---              | --- | --- |
-|`device_code`     | Reeks | Een lange teken reeks die wordt gebruikt om de sessie tussen de client en de autorisatie server te controleren. De client gebruikt deze para meter om het toegangs token van de autorisatie server aan te vragen. |
-|`user_code`       | Reeks | Een korte teken reeks die wordt weer gegeven aan de gebruiker die wordt gebruikt om de sessie op een secundair apparaat te identificeren.|
+|`device_code`     | Tekenreeks | Een lange teken reeks die wordt gebruikt om de sessie tussen de client en de autorisatie server te controleren. De client gebruikt deze para meter om het toegangs token van de autorisatie server aan te vragen. |
+|`user_code`       | Tekenreeks | Een korte teken reeks die wordt weer gegeven aan de gebruiker die wordt gebruikt om de sessie op een secundair apparaat te identificeren.|
 |`verification_uri`| URI | De URI waarnaar de gebruiker moet gaan met de `user_code` om zich aan te melden. |
 |`expires_in`      | int | Het aantal seconden voor de en `device_code` `user_code` de verval datum. |
 |`interval`        | int | Het aantal seconden dat de client moet wachten tussen polling aanvragen. |
@@ -99,11 +99,11 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 ```
 
-| Parameter | Verplicht | Description|
+| Parameter | Vereist | Description|
 | -------- | -------- | ---------- |
-| `grant_type` | Verplicht | Moet`urn:ietf:params:oauth:grant-type:device_code`|
-| `client_id`  | Verplicht | Moet overeenkomen `client_id` met het gebruik in de eerste aanvraag. |
-| `device_code`| Verplicht | De `device_code` geretourneerde in de autorisatie aanvraag voor het apparaat.  |
+| `grant_type` | Vereist | Moet`urn:ietf:params:oauth:grant-type:device_code`|
+| `client_id`  | Vereist | Moet overeenkomen `client_id` met het gebruik in de eerste aanvraag. |
+| `device_code`| Vereist | De `device_code` geretourneerde in de autorisatie aanvraag voor het apparaat.  |
 
 ### <a name="expected-errors"></a>Verwachte fouten
 

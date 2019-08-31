@@ -1,57 +1,57 @@
 ---
-title: Bedrijf-werkaccounts en Partner Center
-description: Hoe om te controleren of uw bedrijf een werkaccount heeft instellen met Microsoft, maak een nieuw werkaccount of instellen van meerdere werkaccounts gebruiken met de Partner Center.
-author: mattwojo
+title: Werk accounts van het bedrijf en het partner centrum
+description: Controleren of uw bedrijf beschikt over een werk account dat is ingesteld met micro soft, een nieuw werk account maken of meerdere werk accounts instellen voor gebruik met partner centrum.
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: d9326cab6cb5ed4ca76c9a84654697f9f90bcfcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619551"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194275"
 ---
-# <a name="company-work-accounts-and-partner-center"></a>Bedrijf-werkaccounts en Partner Center
+# <a name="company-work-accounts-and-partner-center"></a>Werk accounts van het bedrijf en het partner centrum
 
-Partner Center maakt gebruik van werkaccounts bedrijf, ook wel bekend als Azure Active Directory (AD)-tenants, accounttoegang voor meerdere gebruikers, machtigingen voor beheer, hostgroepen en toepassingen beheren en onderhouden van de profielgegevens. Domein account werk-e-mailadres van uw bedrijf koppelt aan uw Partner Center-account, kunnen werknemers van uw bedrijf aanmelden bij Partner Center voor het beheren van marketplace-aanbiedingen met behulp van hun eigen werk gebruikersnamen en wachtwoorden.
+Het partner centrum gebruikt bedrijfs accounts, ook wel bekend als Azure Active Directory (AD)-tenants, voor het beheren van toegang tot accounts voor meerdere gebruikers, het beheer van machtigingen, hostgroepen en toepassingen en het onderhouden van profiel gegevens. Als u het e-mail account domein van uw bedrijf koppelt aan uw partner centrum-account, kunnen werk nemers van uw bedrijf zich aanmelden bij het partner centrum om Marketplace-aanbiedingen te beheren met hun eigen gebruikers namen en wacht woorden.
 
-## <a name="check-whether-your-company-already-has-a-work-account"></a>Controleer of uw bedrijf al een werkaccount heeft
+## <a name="check-whether-your-company-already-has-a-work-account"></a>Controleren of uw bedrijf al een werk account heeft
 
-Als uw bedrijf is geabonneerd op een Microsoft-cloudservice zoals Azure, Microsoft Intune of Office 365, hebt u al een e-mailbericht account werkdomein (ook wel een Azure Active Directory-tenant genoemd) die kan worden gebruikt met de Partner Center.
+Als uw bedrijf zich heeft geabonneerd op een micro soft-Cloud service, zoals Azure, Microsoft Intune of Office 365, hebt u al een account domein van het werk (ook wel een Azure Active Directory-Tenant genoemd) die kan worden gebruikt met partner centrum.
 
-Volg deze stappen om te controleren:
-1. Aanmelden bij de Azure-beheerportal bij https://portal.azure.com.
-2. Selecteer **Azure Active Directory** vanuit het menu van de navigatie aan de linkerkant en selecteer vervolgens **aangepaste-domeinnamen**.
-3. Als u al een werkaccount hebt, kunt u de domeinnaam van uw wordt weergegeven.
+Voer de volgende stappen uit om te controleren:
+1. Meld u aan bij de Azure-beheer https://portal.azure.com Portal op.
+2. Selecteer **Azure Active Directory** in het navigatie menu aan de linkerkant en selecteer vervolgens **aangepaste domein namen**.
+3. Als u al een werk account hebt, wordt uw domein naam weer gegeven.
 
-Als uw bedrijf niet al een werkaccount, wordt een voor u gemaakt tijdens het inschrijvingsproces Partner Center.
+Als uw bedrijf nog geen werk account heeft, wordt er een voor u gemaakt tijdens het inschrijvings proces van het partner centrum.
 
-## <a name="set-up-multiple-work-accounts"></a>Instellen van meerdere werkaccounts
+## <a name="set-up-multiple-work-accounts"></a>Meerdere werk accounts instellen
 
-Voordat u besluit om een bestaande werkaccount te gebruiken, houd rekening met het aantal gebruikers in het werkaccount moet toegang tot Partner Center. Als u gebruikers in het werkaccount dat die hoeft niet te krijgen tot Partner Center hebt, kunt u rekening houden met het maken van meerdere werkaccounts, zodat alleen gebruikers die toegang tot Partner Center moet worden weergegeven op een bepaald account.
+Voordat u besluit om een bestaand werk account te gebruiken, moet u rekening houden met het aantal gebruikers in het werk account dat nodig heeft om toegang te krijgen tot het partner centrum. Als u gebruikers hebt in het werk account dat geen toegang nodig heeft tot het partner centrum, kunt u overwegen om meerdere werk accounts te maken, zodat alleen de gebruikers die toegang hebben tot het partner centrum, worden weer gegeven op een bepaald account.
 
-## <a name="create-a-new-work-account"></a>Een nieuw werkaccount maken
+## <a name="create-a-new-work-account"></a>Een nieuw werk account maken
 
-Als u wilt een nieuw werkaccount maken voor uw bedrijf, de volgende stappen uit te voeren. Mogelijk moet u om hulp vragen van degene die beheerdersmachtigingen op de Microsoft Azure-account van uw bedrijf heeft.
+Volg de onderstaande stappen om een nieuw werk account voor uw bedrijf te maken. Mogelijk moet u hulp vragen aan iemand die beheerders rechten heeft voor het Microsoft Azure account van uw bedrijf.
 
 1. Meld u aan bij de [Microsoft Azure Portal](https://portal.azure.com).
-2. Selecteer in het navigatiemenu links de **Azure Active Directory** -> **gebruikers**.
-3. Selecteer **nieuwe gebruiker** en maak een nieuwe Azure-werkaccount door in te voeren van een naam en e-mailadres. Zorg ervoor dat de **maprol** is ingesteld op **gebruiker** en selecteer de **wachtwoord weergeven** selectievakje onderaan om te bekijken en noteer het wachtwoord van de automatisch gegenereerde.
-4. Selecteer **maken** om op te slaan van de nieuwe gebruiker.
+2. Selecteer de **Azure Active Directory** -> **gebruikers**in het navigatie menu aan de linkerkant.
+3. Selecteer **nieuwe gebruiker** en maak een nieuw Azure-werk account door een naam en e-mail adres op te geven. Zorg ervoor dat de **Directory-rol** is ingesteld op **gebruiker** en schakel het selectie vakje **wacht woord weer geven** onderaan in om het automatisch gegenereerde wacht woord te bekijken en te noteren.
+4. Selecteer **maken** om de nieuwe gebruiker op te slaan.
 
-Het e-mailadres voor het gebruikersaccount moet een geverifieerde domeinnaam op in uw directory. U kunt alle geverifieerde domeinen in uw directory weergeven door te selecteren **Azure Active Directory** -> **aangepaste-domeinnamen** in het menu van de navigatie aan de linkerkant.
+Het e-mail adres voor het gebruikers account moet een geverifieerde domein naam in uw Directory zijn. U kunt alle geverifieerde domeinen in uw directory weer geven door **Azure Active Directory** -> **aangepaste domein namen** te selecteren in het navigatie menu aan de linkerkant.
 
-Zie voor meer informatie over het toevoegen van aangepaste domeinen in Azure Active Directory, [toevoegen of koppelen aan een domein in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
+Zie [een domein toevoegen of koppelen in azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain)voor meer informatie over het toevoegen van aangepaste domeinen in azure Active Directory.
 
-## <a name="troubleshoot-work-email-sign-in"></a>Werk e-mailadres aanmelden oplossen
+## <a name="troubleshoot-work-email-sign-in"></a>Problemen met aanmelding bij werk-e-mail oplossen
 
-Als u problemen ondervindt bij het aanmelden bij uw werkaccount (ook wel bekend als uw Azure AD-tenant), zoek het scenario in het diagram hieronder die het meest overeenkomt met uw situatie en volg de aanbevolen stappen.
+Als u problemen ondervindt met het aanmelden bij uw werk account (ook wel bekend als uw Azure AD-Tenant), zoekt u het scenario in het onderstaande diagram dat het beste overeenkomt met uw situatie en voert u de aanbevolen stappen uit.
 
-![Diagram voor het oplossen van aanmelding voor work-account](./media/onboarding-aad-flow.png)
+![Diagram voor het oplossen van problemen met het aanmelden van een werk account](./media/onboarding-aad-flow.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw commerciële Marketplace-account in de Partner Center beheren](./manage-account.md) 
+- [Uw commerciële Marketplace-account beheren in het partner centrum](./manage-account.md) 

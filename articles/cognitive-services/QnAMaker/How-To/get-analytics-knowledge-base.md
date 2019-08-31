@@ -9,14 +9,14 @@ displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 961bb7d5f64fa6d6cafa4730a5849abb4b82478f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 58bd765b5f240f56cad0eafc4952918c9cd52c36
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967706"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193582"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Analytische gegevens verkrijgen voor uw knowledge base
 
@@ -104,4 +104,4 @@ QnA Maker alle chat logboeken en andere telemetrie opslaat, als u app Insights h
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Sleutels beheren](./key-management.md)
+> [Capactiy kiezen](../tutorials/choosing-capacity-qnamaker-deployment.md)

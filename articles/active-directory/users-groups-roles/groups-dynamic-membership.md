@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650229"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194608"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -27,30 +27,32 @@ In Azure Active Directory (Azure AD) kunt u complexe op kenmerken gebaseerde reg
 
 Wanneer een van de kenmerken van een gebruiker of apparaat wordt gewijzigd, evalueert het systeem alle dynamische groeps regels in een map om te zien of de wijziging een groep toevoegt of verwijdert. Als een gebruiker of apparaat voldoet aan een regel voor een groep, worden deze toegevoegd als lid van die groep. Als ze niet meer voldoen aan de regel, worden ze verwijderd. U kunt een lid van een dynamische groep niet hand matig toevoegen of verwijderen.
 
-* U kunt een dynamische groep maken voor apparaten of voor gebruikers, maar u kunt geen regel maken die zowel gebruikers als apparaten bevat.
-* U kunt geen apparaatgroep maken op basis van de kenmerken van de apparaat-eigen aren. Regels voor lidmaatschap van apparaten kunnen alleen verwijzen naar kenmerken van het apparaat.
+- U kunt een dynamische groep maken voor apparaten of voor gebruikers, maar u kunt geen regel maken die zowel gebruikers als apparaten bevat.
+- U kunt geen apparaatgroep maken op basis van de kenmerken van de apparaat-eigen aren. Regels voor lidmaatschap van apparaten kunnen alleen verwijzen naar kenmerken van het apparaat.
 
 > [!NOTE]
 > Voor deze functie is een Azure AD Premium P1-licentie vereist voor elke unieke gebruiker die lid is van een of meer dynamische groepen. U hoeft geen licenties toe te wijzen aan gebruikers, zodat ze lid zijn van dynamische groepen, maar u moet het minimum aantal licenties in de Tenant hebben om al deze gebruikers te kunnen behandelen. Als u bijvoorbeeld in totaal 1.000 unieke gebruikers in alle dynamische groepen in uw Tenant hebt, moet u ten minste 1.000 licenties voor Azure AD Premium P1 hebben om te voldoen aan de licentie vereisten.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>De hoofd tekst van een lidmaatschaps regel samen stellen
+## <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
 
-Een lidmaatschaps regel die automatisch een groep met gebruikers of apparaten vult, is een binaire expressie die resulteert in het resultaat True of false. De drie delen van een eenvoudige regel zijn:
+Azure AD biedt een regel bouwer om uw belang rijke regels sneller te maken en bij te werken. De opbouw functie voor regels ondersteunt de bouw Maxi maal vijf expressies. Met de opbouw functie voor regels kunt u eenvoudig een regel maken met enkele eenvoudige expressies, maar deze kan niet worden gebruikt om elke regel te reproduceren. Als de regel functie geen ondersteuning biedt voor de regel die u wilt maken, kunt u het tekstvak gebruiken.
 
-* Eigenschap
-* Operator
-* Value
+Hier volgen enkele voor beelden van geavanceerde regels of syntaxis voor het maken van het gebruik van het tekstvak:
 
-De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis fouten te voor komen.
+- Regel met meer dan vijf expressies
+- De regel voor directe rapporten
+- De [prioriteit van Opera tors](groups-dynamic-membership.md#operator-precedence) instellen
+- [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld`(user.proxyAddresses -any (_ -contains "contoso"))`
 
-### <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
+> [!NOTE]
+> De opbouw functie voor regels kan mogelijk geen regels weer geven die zijn gemaakt in het tekstvak. Mogelijk wordt er een bericht weer gegeven wanneer de regel functie de regel niet kan weer geven. De opbouw functie voor regels wijzigt niet de ondersteunde syntaxis, validatie of verwerking van dynamische groeps regels op enigerlei wijze.
 
-Azure AD biedt een regel bouwer om uw belang rijke regels sneller te maken en bij te werken. De regel functie biedt ondersteuning voor Maxi maal vijf regels. Als u een zesde en eventuele latere regel voorwaarden wilt toevoegen, moet u het tekstvak gebruiken. Zie [een dynamische groep bijwerken](groups-update-rule.md)voor meer stapsgewijze instructies.
+Zie [een dynamische groep bijwerken](groups-update-rule.md)voor meer stapsgewijze instructies.
 
-   ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-### <a name="rules-with-a-single-expression"></a>Regels met één expressie
+### <a name="rule-syntax-for-a-single-expression"></a>Syntaxis van regels voor één expressie
 
 Eén expressie is de eenvoudigste vorm van een lidmaatschaps regel en heeft alleen de drie onderdelen die hierboven worden genoemd. Een regel met één expressie ziet er ongeveer als volgt uit `Property Operator Value`:, waarbij de syntaxis voor de eigenschap de naam van object. Property is.
 
@@ -62,13 +64,23 @@ user.department -eq "Sales"
 
 Haakjes zijn optioneel voor één expressie. De totale lengte van de hoofd tekst van de lidmaatschaps regel mag niet langer zijn dan 2048 tekens.
 
+# <a name="constructing-the-body-of-a-membership-rule"></a>De hoofd tekst van een lidmaatschaps regel samen stellen
+
+Een lidmaatschaps regel die automatisch een groep met gebruikers of apparaten vult, is een binaire expressie die resulteert in het resultaat True of false. De drie delen van een eenvoudige regel zijn:
+
+- Eigenschap
+- Operator
+- Value
+
+De volg orde van de onderdelen binnen een expressie is belang rijk om syntaxis fouten te voor komen.
+
 ## <a name="supported-properties"></a>Ondersteunde eigenschappen
 
 Er zijn drie soorten eigenschappen die kunnen worden gebruikt om een lidmaatschaps regel samen te stellen.
 
-* Boolean-waarde
-* Tekenreeks
-* Teken reeks verzameling
+- Boolean-waarde
+- Tekenreeks
+- Teken reeks verzameling
 
 Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie te maken.
 
@@ -119,7 +131,7 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 
 Zie [regels voor apparaten](#rules-for-devices)voor de eigenschappen die worden gebruikt voor apparaat regels.
 
-## <a name="supported-operators"></a>Ondersteunde Opera tors
+## <a name="supported-expression-operators"></a>Ondersteunde expressie operators
 
 De volgende tabel geeft een lijst van alle ondersteunde Opera tors en hun syntaxis voor één expressie. Opera tors kunnen worden gebruikt met of zonder het afbreek streepje (-).
 
@@ -297,10 +309,10 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Aan de hand van de volgende tips kunt u de regel op de juiste manier gebruiken.
 
-* De **manager-id** is de object-id van de Manager. Dit kan worden gevonden in het **profiel**van de Manager.
-* Zorg ervoor dat de eigenschap **Manager** correct is ingesteld voor gebruikers in uw Tenant om de regel te laten werken. U kunt de huidige waarde in het **profiel**van de gebruiker controleren.
-* Deze regel ondersteunt alleen de directe ondergeschikten van de Manager. Met andere woorden, u kunt geen groep maken met de directe rapporten van de Manager *en* de bijbehorende rapporten.
-* Deze regel kan niet worden gecombineerd met andere lidmaatschaps regels.
+- De **manager-id** is de object-id van de Manager. Dit kan worden gevonden in het **profiel**van de Manager.
+- Zorg ervoor dat de eigenschap **Manager** correct is ingesteld voor gebruikers in uw Tenant om de regel te laten werken. U kunt de huidige waarde in het **profiel**van de gebruiker controleren.
+- Deze regel ondersteunt alleen de directe ondergeschikten van de Manager. Met andere woorden, u kunt geen groep maken met de directe rapporten van de Manager *en* de bijbehorende rapporten.
+- Deze regel kan niet worden gecombineerd met andere lidmaatschaps regels.
 
 ### <a name="create-an-all-users-rule"></a>Een regel voor ' alle gebruikers ' maken
 
@@ -373,8 +385,8 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
 
 In deze artikelen vindt u aanvullende informatie over groepen in Azure Active Directory.
 
-* [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Instellingen van een groep beheren](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Lidmaatschappen van een groep beheren](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Dynamische regels voor gebruikers in een groep beheren](groups-create-rule.md)
+- [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Instellingen van een groep beheren](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Lidmaatschappen van een groep beheren](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Dynamische regels voor gebruikers in een groep beheren](groups-create-rule.md)

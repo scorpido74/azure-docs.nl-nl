@@ -1,94 +1,94 @@
 ---
-title: Profiteer van commerciële Marketplace in de portal via Partner Center
-description: Meer informatie over de ondersteuningsopties in Partner Center, inclusief hoe u een ondersteuningsaanvraag indienen.
-author: mattwojo
+title: Ontvang ondersteuning voor de portal voor commerciële Marketplace in het partner centrum
+description: Meer informatie over uw ondersteunings opties in Partner Center, inclusief het indienen van een ondersteunings aanvraag.
+author: ChJenk
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: 355694f7f1d5fe0588c6f93bcbdb47f3086aec79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0f3fba389f9cb6f55ac5bf7bb81475fa8244cbf
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65958073"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195248"
 ---
-# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Ondersteuning voor het programma commerciële Marketplace in de Partner Center
+# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Ondersteuning voor het Commercial Marketplace-programma in Partner Center
 
-Microsoft biedt ondersteuning voor een groot aantal producten en services. Zoeken naar het ondersteuningsteam van het juiste is belangrijk dat u een juiste en tijdig worden beantwoord. Houd rekening met de volgende scenario's waarmee u uw query te routeren naar het juiste team moeten: 
+Micro soft biedt ondersteuning voor een groot aantal producten en services. Het vinden van het juiste ondersteunings team is belang rijk om te zorgen voor een passend en tijdig antwoord. Houd rekening met de volgende scenario's, waarmee u uw query naar het juiste team kunt routeren: 
 
-- Als u de uitgever en hebt u een vraag van een klant, vraagt u uw klant het aanvragen van ondersteuning via de ondersteuning van koppelingen in de [Azure-portal](https://portal.azure.com/). 
+- Als u een uitgever bent en een vraag hebt van een klant, vraagt u uw klant om ondersteuning te vragen met behulp van de ondersteunings koppelingen in de [Azure Portal](https://portal.azure.com/). 
 
-- Als u de uitgever en hebt u een vraag met betrekking tot uw app of service, raadpleegt u de volgende opties voor ondersteuning.
+- Als u een uitgever bent en een vraag hebt met betrekking tot uw app of service, raadpleegt u de volgende ondersteunings opties.
 
-## <a name="support-options-for-publishers"></a>Ondersteuningsopties voor uitgevers
+## <a name="support-options-for-publishers"></a>Ondersteunings opties voor uitgevers
 
-1. Aanmelden bij de [commerciële Marketplace-programma op Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) met uw werkaccount. (Als u dit nog niet nog gedaan, moet u [maken van een account Partner Center](./create-account.md).)
+1. Meld u met uw werk account aan bij het [commerciële Marketplace-programma op partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) . (Als u dit nog niet hebt gedaan, moet u [een partner centrum-account maken](./create-account.md).)
 
-1. Selecteer in het bovenste menu aan de rechterkant van de pagina, de **ondersteuning** pictogram. 
+1. Selecteer in het bovenste menu aan de rechter kant van de pagina het ondersteunings pictogram. 
  
-   ![Ondersteuning voor pictogram](./media/commercial-marketplace-support.png)
+   ![Ondersteunings pictogram](./media/commercial-marketplace-support.png)
 
-1. De **Help en ondersteuning** deelvenster aan de rechterkant van de pagina wordt weergegeven. Er is een vervolgkeuzelijst voor elk programma dat in de Partner Center die voor uw account is geregistreerd. Selecteer de **commerciële Marketplace** in het vervolgkeuzemenu. 
+1. Het deel venster **Help en ondersteuning** wordt weer gegeven aan de rechter kant van de pagina. Er wordt een vervolg keuzelijst weer voor elk programma in het partner centrum waarvoor uw account is geregistreerd. Selecteer het vervolg keuzemenu **commerciële Marketplace** . 
  
-   ![Vervolgkeuzelijst voor ondersteuning](./media/commercial-marketplace-support-pane.png)
+   ![Vervolg keuzemenu ondersteuning](./media/commercial-marketplace-support-pane.png)
 
-1. Selecteer **[documentatie](../index.md)** uitgebreide antwoorden op vragen en resources te bekijken. 
+1. Selecteer **[documentatie](../index.md)** om uitgebreide antwoorden op vragen en resources te bekijken. 
 
-1. Selecteer **[Marketplace-Partner-communityforum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** op uw vragen beantwoorden door gebruik te maken van de kennis van andere Microsoft-uitgevers. 
+1. Selecteer **[Community-Forum voor Marketplace-partners](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** om uw vragen te beantwoorden door gebruik te maken van de kennis van andere micro soft-Publishers. 
 
-1. Selecteer **[extra hulp](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** openen een **nieuwe ondersteuningsaanvraag** ticket. 
+1. Selecteer **[extra Help](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)** om een nieuw ticket voor een ondersteunings **aanvraag** te openen. 
 
-## <a name="how-to-open-a-support-ticket"></a>Hoe u een ondersteuningsticket openen
+## <a name="how-to-open-a-support-ticket"></a>Een ondersteunings ticket openen
 
-Selecteren **extra hulp** van de commerciële Marketplace-ondersteuning in het menu in de Partner Center wordt u doorgeleid naar de Microsoft Support voor bedrijven-pagina. Hier ziet u enkele vervolgkeuzemenu's. De eerste paar vervolgkeuzemenu's worden automatisch ingevuld voor u. Voor ondersteuning voor Marketplace, identificeert u de productfamilie als **Cloud en Online Services**, het product als **Marketplace-uitgever**, en de versie van het product als **Marketplace-publicatie**. Deze selecties vooraf gevulde vervolgkeuzelijst in het menu niet wijzigen. 
+Als u **extra hulp** selecteert in het menu commerciële Marketplace-ondersteuning in het partner centrum, wordt u doorgestuurd naar de pagina Microsoft ondersteuning voor bedrijven. Er worden verschillende vervolg keuzemenu's weer geven. De eerste paar vervolg keuzemenu's worden automatisch ingevuld. Voor Marketplace-ondersteuning identificeert u de product familie als **Cloud en Online Services**, het product als **Marketplace-Uitgever**en de product versie als **Marketplace-publicatie**. Wijzig deze vooraf gevulde vervolg menu selecties niet. 
 
-- **Selecteer een categorie die het beste het probleem beschrijft**: Kies de categorie die het best met uw vraag of probleem overeenstemt. Een categorie te selecteren zorgt ervoor dat een extra vervolgkeuzelijst worden weergegeven, waarin u om te selecteren van het probleem die het beste uw probleem beschrijft wordt gevraagd.
+- **Selecteer een categorie die het probleem het beste beschrijft**: Kies de categorie die het beste kan worden uitgelijnd met uw vraag of probleem. Als u een categorie selecteert, wordt er een extra vervolg keuzemenu weer gegeven waarin u wordt gevraagd het probleem op te lossen dat het beste uw probleem beschrijft.
 
-- **Selecteer een probleem opgetreden die het beste het probleem beschrijft**: Kies het probleem van opties in de lijst dat best bij uw probleem aansluit. Afhankelijk van uw probleem, een nieuwe sectie mogelijk weergegeven waarin wordt vermeld 'Hier volgt informatie die u kan helpen' met koppelingen die relevant zijn voor uw probleem. Bekijk deze koppelingen voordat u selecteert de **volgende** knop om te zien of uw vraag of probleem is opgelost.
+- **Selecteer een probleem dat het beste het probleem beschrijft**: Kies het probleem in de weer gegeven opties die het beste overeenkomt met uw probleem. Afhankelijk van het probleem kan een nieuwe sectie worden weer gegeven met de melding ' Hier vindt u informatie die u kan helpen ' met koppelingen die relevant zijn voor uw probleem. Bekijk deze koppelingen voordat u de knop **volgende** selecteert om te zien of uw vraag of probleem is opgelost.
 
-Door het selecteren van de **volgende** knop klikt, wordt u doorgestuurd naar de **informatie over het probleem** pagina. 
+Als u de knop **volgende** selecteert, wordt u omgeleid naar de pagina met details van het **probleem** . 
 
 #### <a name="tell-us-more-about-your-issue"></a>Geef ons meer informatie over uw probleem
 
-In de **informatie over het probleem** sectie, wordt uitgelegd wat u hulp nodig.
+In de sectie **probleem Details** wordt uitgelegd wat u hulp nodig hebt bij.
 
-- Selecteer uw land/regio.
-- Selecteer de taal waarin u wilt ontvangen van ondersteuning.
+- Selecteer uw land.
+- Selecteer de taal waarin u ondersteuning wilt ontvangen.
 - Voer een titel in voor uw probleem (van 3 tot 200 tekens).  
-- Geef een korte beschrijving van uw probleem (maximaal 2000 tekens).
-- Selecteer **Next**.
+- Geef een korte beschrijving van uw probleem op (Maxi maal 2000 tekens).
+- Selecteer **Volgende**.
 
 #### <a name="select-a-support-plan"></a>Een ondersteuningsplan selecteren
 
-Er is geen informatie is vereist in de **ondersteuningsplan** sectie. Selecteer **Next**. 
+In het gedeelte ondersteunings **plan** is geen informatie vereist. Selecteer **Volgende**. 
 
-#### <a name="select-the-severity-of-your-issue"></a>Selecteer de ernst van uw probleem
+#### <a name="select-the-severity-of-your-issue"></a>Selecteer de ernst van het probleem
 
-Er is geen informatie is vereist in de **ernst** sectie. Selecteer **Next**. 
+In het gedeelte **Ernst** is geen informatie vereist. Selecteer **Volgende**. 
 
-#### <a name="who-should-we-contact"></a>Wie moet er contact opnemen
+#### <a name="who-should-we-contact"></a>Wie moet contact opnemen met
 
-In de **contactgegevens** sectie, zorgt u ervoor dat de naam, telefoonnummer en e-mailadres van uw primaire contactpersoon juist is. 
-- Deze informatie bijwerken als er iets is onjuist
-- U kunt andere contactpersonen toevoegen van uw bedrijf aan deze ondersteuningsaanvraag indien gewenst
+Controleer in de sectie **contact gegevens** of de naam, het telefoon nummer en het e-mail adres van uw primaire contact persoon juist zijn. 
+- Deze informatie bijwerken als u iets ziet dat onjuist is
+- U kunt indien gewenst andere contact personen van uw bedrijf toevoegen aan deze ondersteunings aanvraag
 - Selecteer **Volgende**
 
-#### <a name="review-and-submit-your-support-request"></a>Controleren en verzenden van uw ondersteuningsaanvraag
+#### <a name="review-and-submit-your-support-request"></a>Uw ondersteunings aanvraag controleren en verzenden
 
-Controleer uw aanvraag ondersteuningsinformatie op de **revisie** sectie. 
-- Als alle informatie juist is, selecteert u **indienen**. 
-- Als alle gegevens worden bijgewerkt moet, selecteert u de **wijziging** knop naast de sectie die moeten worden updates.
+Controleer de informatie over de ondersteunings aanvraag in het gedeelte **beoordeling** . 
+- Selecteer **verzenden**als alle informatie juist is. 
+- Als er informatie moet worden bijgewerkt, selecteert u de knop **wijzigen** naast de sectie in nood zaak van updates.
 
-## <a name="track-your-existing-support-requests"></a>Uw bestaande ondersteuningsaanvragen bijhouden 
+## <a name="track-your-existing-support-requests"></a>Uw bestaande ondersteunings aanvragen bijhouden 
 
-Als u wilt uw ondersteuningsaanvraag bijhouden, gaat u naar de [commerciële Marketplace ondersteuningspagina](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). 
+Ga naar de ondersteunings pagina voor [commerciële Marketplace](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)om uw ondersteunings aanvraag bij te houden. 
 
-Op de bovenste menubalk blauw, naast 'Support for business', selecteert u de **ondersteuningsaanvragen** koppeling. 
+Selecteer op de bovenste blauwe menu balk naast ' ondersteuning voor bedrijven ' de koppeling ondersteunings **aanvragen** . 
 
-Bekijk al uw openstaande en gesloten ondersteuningsaanvragen in de **Microsoft Professional Support** sectie. 
+Bekijk alle open en gesloten ondersteunings aanvragen in de sectie **micro soft Professional Support** . 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een bestaande aanbieding op Marketplace commercieel bijwerken](./update-existing-offer.md)
+- [Een bestaande aanbieding bijwerken in de commerciële Marketplace](./update-existing-offer.md)

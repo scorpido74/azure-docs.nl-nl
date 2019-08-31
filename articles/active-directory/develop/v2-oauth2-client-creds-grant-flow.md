@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3a097c164628e6d4e4b7886a195901207d83a3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d3bb18f11de92680d296d747fc34e16c3264c369
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852212"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193279"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Micro soft Identity platform en de OAuth 2,0-client referenties stroom
 
@@ -66,7 +66,7 @@ Dit type autorisatie is gebruikelijk voor daemons en service accounts die toegan
 In plaats van Acl's te gebruiken, kunt u Api's gebruiken om een set toepassings machtigingen beschikbaar te maken. Een toepassings machtiging wordt verleend aan een toepassing door de beheerder van een organisatie en kan alleen worden gebruikt om toegang te krijgen tot gegevens die eigendom zijn van die organisatie en haar mede werkers. Microsoft Graph biedt bijvoorbeeld verschillende toepassings machtigingen om het volgende te doen:
 
 * E-mail in alle postvakken lezen
-* E-mail in alle postvakken lezen en schrijven
+* E-mail in alle post vakken lezen en schrijven
 * E-mail met elke willekeurige gebruiker als afzender verzenden
 * Adreslijstgegevens lezen
 
@@ -81,7 +81,7 @@ Als u toepassings machtigingen wilt gebruiken in uw app, volgt u de stappen die 
 3. Ga naar de sectie **API-machtigingen** en voeg de **toepassings machtigingen** toe die voor uw app zijn vereist.
 4. **Sla** de app-registratie op.
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>Aanbevelingen De gebruiker aan uw app melden
+#### <a name="recommended-sign-the-user-into-your-app"></a>Aanbevolen: De gebruiker aan uw app melden
 
 Wanneer u een toepassing bouwt die gebruikmaakt van toepassings machtigingen, moet de app doorgaans een pagina of weer gave hebben waarop de beheerder de machtigingen van de app goedkeurt. Deze pagina kan deel uitmaken van de aanmeldings stroom van de app, een deel van de instellingen van de app of een specifieke stroom ' Connect ' zijn. In veel gevallen is het zinvol voor de app om deze weer gave ' verbinding maken ' alleen weer te geven nadat een gebruiker zich heeft aangemeld met een werk-of school Microsoft-account.
 
@@ -170,7 +170,8 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+// Replace {tenant} with your tenant! 
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
 | Parameter | Voorwaarde | Description |
@@ -250,10 +251,6 @@ Een fout bericht ziet er als volgt uit:
 | `trace_id` | Een unieke id voor de aanvraag om te helpen met diagnostische gegevens. |
 | `correlation_id` | Een unieke id voor de aanvraag om te helpen met diagnostische gegevens over onderdelen. |
 
-> [!NOTE]
-> Om ervoor te zorgen dat uw toepassing het v2-token kan ontvangen, kunt u het manifest bestand van de toepassing bijwerken vanuit Azure Portal. U kunt het kenmerk `accessTokenAcceptedVersion` toevoegen en de waarde instellen op 2 als. `"accessTokenAcceptedVersion": 2` Raadpleeg het [toepassings manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference) van het artikel voor meer informatie over hetzelfde. De toepassing recieves momenteel standaard een v1-token. Als dit niet is gedefinieerd in het API-manifest van de toepassing/Web, wordt de waarde voor dit kenmerk in het manifest standaard ingesteld op 1. Daarom ontvangt de toepassing v1-token.  
-
-
 ## <a name="use-a-token"></a>Een token gebruiken
 
 Nu u een token hebt verkregen, gebruikt u het token om aanvragen voor de resource te maken. Wanneer het token verloopt, herhaalt u de aanvraag `/token` voor het eind punt om een nieuw toegangs token op te halen.
@@ -269,7 +266,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ```
-curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
+curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
 ## <a name="code-samples-and-other-documentation"></a>Code voorbeelden en andere documentatie

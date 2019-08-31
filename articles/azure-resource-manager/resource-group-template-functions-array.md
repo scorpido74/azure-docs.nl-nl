@@ -3,15 +3,15 @@ title: 'Azure Resource Manager-sjabloon functies: matrices en objecten | Microso
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon voor het werken met matrices en objecten.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: ec671c8698676b237021352e963ba08e0ddfe47e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cd4a74a9e9e9bb1c91a0a7a103a1cfb861fa7770
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698211"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194425"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Matrix-en object functies voor Azure Resource Manager sjablonen
 
@@ -474,7 +474,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | Array | [1, 2, 3] |
@@ -771,7 +771,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | jsonOutput | Object | {"a": "b"} |
 | nullOutput | Boolean-waarde | Waar |
@@ -837,7 +837,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Tekenreeks | drie |
 | stringOutput | Tekenreeks | & |
@@ -925,7 +925,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -1130,7 +1130,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | rangeOutput | Array | [5, 6, 7] |
 
@@ -1210,7 +1210,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["drie"] |
 | stringOutput | Tekenreeks | 2 3 |

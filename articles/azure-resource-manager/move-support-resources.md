@@ -3,15 +3,15 @@ title: Ondersteuning voor het verplaatsen van bewerkingen door Azure-resource ty
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: a588d4e4b1978b572488dcd5d53698cbb8f7d311
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997295"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194845"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.

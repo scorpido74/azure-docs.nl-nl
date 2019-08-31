@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: daf2781113016b20c19a6b8f5365033f1ff1479b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966716"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195263"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Actief leren gebruiken om uw Knowledge Base te verbeteren
 
@@ -56,7 +56,7 @@ Het is belang rijk dat QnA Maker expliciete feedback krijgt over de antwoorden d
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgrade uw runtime versie om actief leren te gebruiken
 
-Actief leren wordt ondersteund in runtime versie 4.4.0 en hoger. Als uw Knowledge Base is gemaakt in een eerdere versie, moet u [de runtime upgraden](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) om deze functie te gebruiken. 
+Actief leren wordt ondersteund in runtime versie 4.4.0 en hoger. Als uw Knowledge Base is gemaakt in een eerdere versie, moet u [de runtime upgraden](set-up-qnamaker-service-azure.md#get-latest-runtime-updates) om deze functie te gebruiken. 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>Actief leren inschakelen om suggesties te bekijken
 
@@ -185,7 +185,7 @@ Content-Type: application/json
 |--|--|--|--|
 |URL-route parameter|Knowledge Base-ID|string|De GUID voor uw Knowledge Base.|
 |Host-subdomein|Resource naam QnAMaker|string|De hostnaam voor uw QnA Maker in uw Azure-abonnement. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. |
-|Header|Inhoudstype|string|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is:`application/json`|
+|Header|Content-Type|string|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is:`application/json`|
 |Header|Authorization|string|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Bericht tekst|JSON-object|JSON|De trainings feedback|
 

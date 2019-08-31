@@ -1,103 +1,103 @@
 ---
 title: Een bestaande commerciële Marketplace-aanbieding bijwerken
-description: Hoe u updates aanbrengen in een bestaande commerciële Marketplace-aanbieding, zoals bewerken, verwijderen van een concept, een aanvraag publiceren wordt geannuleerd, stopt u een aanbieding of van plan zijn verkopen en synchronisatie van persoonlijke doelgroepen.
-author: mattwojo
+description: Updates voor een bestaande commerciële Marketplace-aanbieding maken, waaronder bewerkingen, het verwijderen van een concept, het annuleren van een publicatie aanvraag, het verkopen van een aanbieding of het plannen stoppen en het synchroniseren van persoonlijke doel groepen.
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: f591df0fe93336da09e9c441292c97be09f25a2e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442096"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191761"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding op Marketplace commercieel bijwerken
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Een bestaande aanbieding bijwerken in de commerciële Marketplace
 
-U kunt uw bestaande aanbiedingen bekijken op de **overzicht** tabblad van de [commerciële Marketplace portal](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in Partnercentrum.
+U kunt uw bestaande aanbiedingen weer geven op het tabblad **overzicht** van de [Portal voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) in het partner centrum.
 
-Voor het bijwerken van een bestaande aanbieding die momenteel is bevinden zich in de marketplace: 
+Een bestaande aanbieding die momenteel in de Marketplace aanwezig is, bijwerken: 
 
-1. Selecteer de naam van de aanbieding die u wilt bijwerken. De status van de aanbieding wordt mogelijk weergegeven als **Live**, **publiceren Bezig**, **Draft**, **aandacht nodig**, of **niet in de markt verkocht** (als u eerder hebt gekozen om te stoppen met het verkopen van de aanbieding). Eenmaal geselecteerd, de **overzicht bieden** pagina voor deze aanbieding wordt geopend.
-2. Selecteer **bijwerken** van de kaart overzicht of het menu-item in de navigatiebalk aan voor de gebieden die u wilt bijwerken. U wilt mogelijk bijwerken de **bieden setup**, **eigenschappen**, **bieden aanbieding**, **Preview**, **technische configuratie** , **Overzicht van het plan**, of **uitproberen**. 
-3. Breng uw wijzigingen en selecteer vervolgens **opslaan**. Herhaal dit proces totdat alle wijzigingen voltooid zijn.
+1. Selecteer de naam van de aanbieding die u wilt bijwerken. De status van de aanbieding kan worden vermeld als **Live**, **publiceren in voortgang**, **concept**, **aandacht vereist**of **niet worden verkocht op Marketplace** (als u eerder hebt gekozen om te stoppen met het verkopen van de aanbieding). Zodra deze aanbieding is geselecteerd, wordt de overzichts pagina van de **aanbieding** geopend.
+2. Selecteer **bijwerken** in de kaart overzicht of de menu opdracht van de linkernavigatiebalk, voor het gebied dat u wilt bijwerken. U kunt de **aanbiedings instellingen**, de **Eigenschappen**, deaanbieding, de **Preview**, **de technische configuratie**, het overzicht van het **abonnement**of het **test station**bijwerken. 
+3. Breng uw wijzigingen aan en selecteer vervolgens **Opslaan**. Herhaal dit proces totdat alle wijzigingen zijn voltooid.
 
-## <a name="review-and-publish-an-updated-offer"></a>Controleren en een bijgewerkte aanbieding publiceren
+## <a name="review-and-publish-an-updated-offer"></a>Een bijgewerkte aanbieding bekijken en publiceren
 
-Wanneer u klaar bent om uw bijgewerkte aanbieding publiceren, selecteert u **publiceren** van een willekeurige pagina. De **controleren en te publiceren** pagina te openen. Op deze pagina kunt u het volgende doen:
+Wanneer u klaar bent om uw bijgewerkte aanbieding te publiceren, selecteert u vanuit een wille keurige pagina **publiceren** . De pagina **controleren en publiceren** wordt geopend. Op deze pagina kunt u het volgende doen:
 
 
-- Zie de voltooiingsstatus van de secties van de aanbieding die u hebt bijgewerkt: 
-    - **Niet-gepubliceerde wijzigingen**: De sectie is bijgewerkt en is voltooid. Alle vereiste gegevens is opgegeven en er geen fouten zijn geïntroduceerd in de updates.
-    - **Onvolledige**: De updates die zijn aangebracht in de sectie geïntroduceerd fouten die moeten worden hersteld of moet u meer gegevens worden opgegeven.
-- Geef aanvullende informatie voor de certificering testteam om ervoor te zorgen dat testen vlot.
-- De bijgewerkte aanbieding voor publicatie verzenden door te selecteren **indienen**.  We sturen u een e-mail wanneer een preview-versie van de bijgewerkte aanbieding beschikbaar voor u om te controleren en is goedkeuring.
+- Bekijk de voltooiings status voor de secties van de aanbieding die u hebt bijgewerkt: 
+    - Niet- **gepubliceerde wijzigingen**: De sectie is bijgewerkt en is voltooid. Alle vereiste gegevens zijn opgegeven en er zijn geen fouten geïntroduceerd in de updates.
+    - **Onvolledig**: De updates die in de sectie zijn aangebracht, hebben fouten geïntroduceerd die moeten worden opgelost of waarvoor meer informatie moet worden verstrekt.
+- Geef aanvullende informatie op voor het test team voor certificering om ervoor te zorgen dat testen probleemloos verloopt.
+- Verzend de bijgewerkte aanbieding voor publicatie door **verzenden**te selecteren.  We sturen u een e-mail wanneer een preview-versie van de bijgewerkte aanbieding beschikbaar is om te controleren en af te melden.
 
-**BELANGRIJK**: U moet het voorbeeld van uw aanbieding, bekijken nadat deze beschikbaar, en selecteer is **Go live** uw bijgewerkte aanbieding publiceren naar uw doelgroep (openbaar of privé).
+**BELANGRIJK**: U moet de preview-versie van uw aanbieding bekijken, zodra deze beschikbaar is, en **Go-Live** selecteren om uw bijgewerkte aanbieding te publiceren naar uw doel groep (openbaar of privé).
 
-## <a name="update-a-plan-within-an-existing-offer"></a>Een plan binnen een bestaande aanbieding bijwerken
+## <a name="update-a-plan-within-an-existing-offer"></a>Een abonnement binnen een bestaande aanbieding bijwerken
 
-Wijzigingen aanbrengen in een plan binnen een bestaande aanbieding die u al hebt gepubliceerd:
+Wijzigingen aanbrengen in een abonnement binnen een bestaande aanbieding die u al hebt gepubliceerd:
 
-- Met de **overzicht bieden** pagina geopend voor uw bestaande aanbieding, kies het abonnement dat u wilt wijzigen. Als het abonnement niet toegankelijk is vanaf is de **Plan overzicht** in de lijst met **alle abonnementen bekijken**.
-- U kunt kiezen om het abonnement selecteren **naam**, **prijzen model**, of **beschikbaarheid**. *Abonnementen zijn momenteel alleen beschikbaar in het Engels (Verenigde Staten)* .
-- Selecteer **opslaan** na de benodigde wijzigingen aanbrengen in de naam, beschrijving, prijzen of beschikbaarheid van de doelgroep. 
-- Selecteer **publiceren** wanneer u bent klaar om uw updates te publiceren. De **[controleren en te publiceren](#review-and-publish-an-updated-offer)** pagina openen en een voltooiingsstatus bieden voor de updates. 
+- Open de pagina **overzicht van aanbieding** voor uw bestaande aanbieding en kies het abonnement dat u wilt wijzigen. Als het plan niet toegankelijk is vanuit de lijst **plan overzicht** , selecteert u **alle abonnementen weer geven**.
+- U kunt kiezen om de **naam**van het abonnement, het **prijs model**of de beschik **baarheid**te selecteren. *Momenteel zijn abonnementen alleen beschikbaar in het Engels (Verenigde Staten)* .
+- Selecteer **Opslaan** nadat u de vereiste wijzigingen hebt aangebracht in de naam van het abonnement, de beschrijving, de prijzen of de beschik baarheid van de doel groep. 
+- Selecteer **publiceren** zodra u klaar bent om uw updates te publiceren. De pagina **[controleren en publiceren](#review-and-publish-an-updated-offer)** wordt geopend en geeft een voltooiings status voor uw updates. 
 
-## <a name="delete-a-draft-offer"></a>Verwijderen van een concept-aanbieding
+## <a name="delete-a-draft-offer"></a>Een concept aanbieding verwijderen
 
-U kunt een concept-aanbieding (één die nog niet zijn gepubliceerd) verwijderen door het selecteren van **concept verwijderen** uit de **overzicht bieden** pagina. Deze optie niet beschikbaar voor u, als u eerder de aanbieding hebt gepubliceerd.
+U kunt een concept aanbieding verwijderen (een die nog niet is gepubliceerd) door **concept verwijderen** te selecteren op de overzichts pagina van de **aanbieding** . Deze optie is niet beschikbaar als u de aanbieding eerder hebt gepubliceerd.
 
-Nadat u bevestigen dat u wilt verwijderen van de aanbieding voor ontwerp, de aanbieding niet langer zichtbaar of toegankelijk in de Partner Center en de **alle biedt** pagina te openen.
+Nadat u hebt bevestigd dat u de concept aanbieding wilt verwijderen, is de aanbieding niet meer zichtbaar of toegankelijk in partner centrum en wordt de pagina **alle aanbiedingen** geopend.
 
-## <a name="delete-a-draft-plan"></a>Een concept-plan verwijderen
+## <a name="delete-a-draft-plan"></a>Een concept abonnement verwijderen
 
-Selecteer wilt verwijderen van een plan dat nog niet is gepubliceerd **concept verwijderen** uit de **Plan overzicht** pagina. Deze optie wordt niet meer beschikbaar voor u als u eerder de aanbieding hebt gepubliceerd.
+Als u een plan wilt verwijderen dat niet is gepubliceerd, selecteert u **concept verwijderen** op de overzichts pagina van het **abonnement** . Deze optie is niet beschikbaar als u de aanbieding eerder hebt gepubliceerd.
 
-Nadat u bevestigen dat u wilt verwijderen van het concept-abonnement, langer het plan niet zichtbaar of toegankelijk in de Partner Center.
+Nadat u hebt bevestigd dat u het concept abonnement wilt verwijderen, is het plan niet langer zichtbaar of toegankelijk in partner centrum.
 
-## <a name="cancel-publishing"></a>Publiceren annuleren
+## <a name="cancel-publishing"></a>Publicatie annuleren
 
-Annuleren van een aanbieding met de **publiceren Bezig** status:
+Een aanbieding annuleren met de status **publiceren in voortgang** :
 
-- Selecteer de aanbiedingsnaam te openen de **overzicht bieden** pagina. 
-- Selecteer **publiceren annuleren** in de rechterbovenhoek van de pagina.
-- Bevestig dat u wilt stoppen van de aanbieding worden gepubliceerd. 
+- Selecteer de naam van de aanbieding om de overzichts pagina van de **aanbieding** te openen. 
+- Selecteer **Publiceren annuleren** in de rechter bovenhoek van de pagina.
+- Bevestig dat u wilt stoppen met het publiceren van de aanbieding. 
 
-Als u publiceren van de aanbieding op een later tijdstip wilt, moet u het publicatieproces beginnen.
+Als u de aanbieding op een later tijdstip wilt publiceren, moet u eerst het publicatie proces starten.
 
 > [!NOTE]
-> U kunt een aanbieding worden gepubliceerd alleen als de aanbieding is niet nog vooruitgang met de uitgever uitgespreid voor accordering stap geboekt stoppen. Na het selecteren van **live gaan** u hebt niet de mogelijkheid om te annuleren meer publiceren.
+> U kunt voor komen dat een aanbieding alleen wordt gepubliceerd als de aanbieding nog niet is uitgevoerd voor de afmeldings stap van Publisher. Nadat u **live-verbinding** maken hebt geselecteerd, hebt u geen optie om de publicatie langer te annuleren.
 
-## <a name="stop-selling-an-offer-or-plan"></a>Verkopen van een aanbieding of de planning stoppen
+## <a name="stop-selling-an-offer-or-plan"></a>Stoppen met verkopen van een aanbieding of abonnement
 
-Als u wilt stoppen met het verkopen van een aanbieding nadat u al hebt gepubliceerd, selecteert u **stoppen verkopen** uit de **overzicht bieden** pagina. Als u wilt stoppen met het verkopen van een plan, selecteer **stoppen verkopen** uit de **Plan overzicht** pagina. (De optie om te stoppen met het verkopen van een plan is alleen beschikbaar als u meer dan één abonnement in de aanbieding hebt. U kunt kiezen om te stoppen met het verkopen van één plan zonder gevolgen voor andere abonnementen binnen uw aanbieding.)
+Als u wilt stoppen met het verkopen van een aanbieding nadat u deze al hebt gepubliceerd, selecteert u **niet meer verkopen** op de overzichts pagina van de **aanbieding** . Als u wilt stoppen met het verkopen van een abonnement, selecteert u **stoppen met verkopen** op de overzichts pagina van het **abonnement** . (De optie om te stoppen met het verkopen van een abonnement is alleen beschikbaar als u meer dan één abonnement hebt in de aanbieding. U kunt ervoor kiezen om niet meer dan één abonnement te verkopen zonder dat dit van invloed is op andere abonnementen binnen uw aanbieding.)
 
-Zodra u hebt geverifieerd dat u wilt stoppen met het verkopen van de aanbieding of de planning, binnen een paar uur wordt niet langer zichtbaar in de marketplace en geen nieuwe klanten deze kunnen downloaden. 
+Zodra u bevestigt dat u de aanbieding of het abonnement niet meer wilt verkopen, is het niet meer zichtbaar in de Marketplace en kunnen er geen nieuwe klanten worden gedownload. 
 
-Klanten die u eerder hebt verkregen van de aanbieding of de planning kunnen deze nog steeds gebruiken. Ze kunnen het opnieuw downloaden, maar u krijgt geen updates als u bijwerken en opnieuw publiceren van de aanbieding of van plan op een later tijdstip bent. 
+Klanten die de aanbieding of het plan eerder hebben aangeschaft, kunnen deze nog steeds gebruiken. Ze kunnen de app opnieuw downloaden, maar er worden geen updates opgehaald als u de aanbieding bijwerkt en opnieuw publiceert of op een later tijdstip. 
 
-Nadat uw aanvraag voor het stoppen van de verkopen van het abonnement is voltooid, nog steeds ziet u deze in de portal voor commerciële Marketplace op Partner Center. Selecteer wilt verwijderen van het concept **concept verwijderen** uit de **overzicht bieden** of **overzicht van het Plan** pagina. 
+Nadat uw aanvraag voor het stoppen van de aanbieding/het abonnement is voltooid, wordt deze nog steeds weer geven in de portal voor commerciële Marketplace in het partner centrum. Als u het concept wilt verwijderen, selecteert u **concept verwijderen** in het overzicht van de **aanbieding** of de overzichts pagina van het **abonnement** . 
 
-Als u wilt weergeven of verkoop van deze aanbieding of opnieuw plannen, volgt u de instructies voor het [een bestaande aanbieding bijwerken](#update-an-existing-offer-in-the-commercial-marketplace). Vergeet niet dat u **publiceren** de aanbieding of de planning opnieuw nadat u wijzigingen aanbrengt.
+Volg de instructies voor het [bijwerken van een bestaande aanbieding](#update-an-existing-offer-in-the-commercial-marketplace)als u besluit om deze aanbieding te vermelden of te verkopen. Vergeet niet dat u de aanbieding of het plan opnieuw moet **publiceren** nadat u de wijzigingen hebt aangebracht.
 
 ## <a name="remove-offers-from-existing-customers"></a>Aanbiedingen van bestaande klanten verwijderen
 
-Verwijderen van aanbiedingen van bestaande klanten [een ondersteuningsaanvraag registreren](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Selecteer het specifieke aanbiedings-type van de **probleemtype** lijst en selecteer vervolgens **verwijderen van een gepubliceerde aanbieding** in de **categorie** lijst. De aanvraag indienen. Het ondersteuningsteam leidt u door het proces van de aanbieding.
+Als u aanbiedingen van bestaande klanten wilt verwijderen, moet u [een ondersteunings aanvraag registreren](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Selecteer het type van uw specifieke aanbieding in de lijst **probleem type** en selecteer vervolgens **een gepubliceerde aanbieding verwijderen** in de **categorie** lijst. Dien de aanvraag in. Het ondersteunings team leidt u door het proces voor het verwijderen van de aanbieding.
 
-## <a name="sync-private-plan-audiences"></a>Synchronisatie van persoonlijke plan doelgroepen
+## <a name="sync-private-plan-audiences"></a>Privé plan publiek synchroniseren
 
-Als uw aanbieding een of meer abonnementen die zijn geconfigureerd bevat voor het alleen worden gebruikt voor een persoonlijke beperkt publiek, is het mogelijk om bij te werken alleen de doelgroep wie toegang heeft tot het privé-plan zonder andere wijzigingen publiceren naar de aanbieding. 
+Als uw aanbieding een of meer abonnementen bevat die zijn geconfigureerd om alleen beschikbaar te zijn voor een privé beperkt publiek, is het mogelijk om alleen de doel groep bij te werken die toegang heeft tot het privé-abonnement zonder dat er andere wijzigingen in de aanbieding worden gepubliceerd. 
 
-Om te werken en de particuliere doelgroep voor uw plan(s) synchroniseren:
+De persoonlijke doel groep voor uw abonnement (en) bijwerken en synchroniseren:
 
-- De doelgroep wijzigen in een of meer persoonlijke plannen met behulp van de + **ID toevoegen** of **klanten (csv) importeren** knop en sla de wijzigingen op.
-- Selecteer **particuliere doelgroep synchroniseren** uit de **overzicht van het Plan** pagina.
+- Wijzig de doel groep in een of meer privé plannen met behulp van de knop + **toevoegen** of **klanten importeren (CSV)** en sla de wijzigingen op.
+- Selecteer **persoonlijke doel groep synchroniseren** op de pagina overzicht van het **abonnement** .
 
-**Synchroniseren van particuliere doelgroep** alleen de wijzigingen publiceert naar uw persoonlijke publiek, zonder dat er andere updates die u hebt aangebracht in de ontwerp-aanbieding publiceert.
+Met een **persoonlijke doel groep** worden alleen de wijzigingen in uw persoonlijke doel groepen gepubliceerd, zonder dat u andere updates publiceert die u hebt aangebracht in de concept aanbieding.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Controleer de publicatiestatus van uw commerciële Marketplace-aanbieding](./publishing-status.md)
+- [Controleer de publicatie status van uw aanbieding voor commerciële Marketplace](./publishing-status.md)

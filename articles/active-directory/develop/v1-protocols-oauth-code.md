@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135730"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193225"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Azure Active Directory-webtoepassingen toegang verlenen met de stroom voor het verlenen van de OAuth 2.0-code
 
@@ -179,7 +179,7 @@ Een geslaagde reactie kan er als volgt uitzien:
 
 | Parameter | Description |
 | --- | --- |
-| access_token |Het aangevraagde [toegangs token](access-tokens.md) als een ondertekende JSON Web token (JWT). De app kan dit token gebruiken om te verifiëren bij de beveiligde bron, zoals een web-API. |
+| access_token |Het aangevraagde toegangs token.  Dit is een ondoorzichtige teken reeks: deze is afhankelijk van wat de resource verwacht te ontvangen en is niet bedoeld voor de client om te kijken. De app kan dit token gebruiken om te verifiëren bij de beveiligde bron, zoals een web-API. |
 | token_type |Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is Bearer. Zie [voor meer informatie over Bearer-tokens OAuth 2.0-autorisatie raamwerk: Token gebruik van Bearer (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Hoe lang het toegangs token geldig is (in seconden). |
 | expires_on |Het tijdstip waarop het toegangs token verloopt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de verloop tijd. Deze waarde wordt gebruikt om de levens duur van tokens in de cache te bepalen. |
@@ -283,8 +283,6 @@ Toegangs tokens zijn korte duur en moeten worden vernieuwd nadat ze hebben geduu
 
 Voor vernieuwings tokens is geen levens duur opgegeven. De levens duur van vernieuwings tokens is doorgaans relatief lang. In sommige gevallen verloopt het vernieuwen van tokens, worden deze ingetrokken of beschikt over onvoldoende machtigingen voor de gewenste actie. Uw toepassing moet verwachten en fouten afhandelen die door het eind punt voor token uitgifte zijn geretourneerd.
 
-[!NOTE] De levens duur van toegangs tokens kunt u hier vinden: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties De standaard waarde voor toegangs tokens is 1 uur en de standaard waarde voor vernieuwings tokens is 90 dagen. Deze levens duur kan worden gewijzigd door de levens duur van het token dienovereenkomstig te configureren. 
-
 Wanneer u een reactie met een vernieuwings token fout ontvangt, moet u het huidige vernieuwings token verwijderen en een nieuwe autorisatie code of toegangs token aanvragen. Bij het gebruik van een vernieuwings token in de machtigings stroom van de autorisatie code wordt `interaction_required` `invalid_grant` met name het vernieuwings token verwijderd en een nieuwe autorisatie code aangevraagd.
 
 Een voorbeeld aanvraag aan het **Tenant-specifieke** eind punt (u kunt ook het **gemeen schappelijke** eind punt gebruiken) om een nieuw toegangs token op te halen met behulp van een vernieuwings token ziet er als volgt uit:
@@ -352,3 +350,6 @@ Een voor beeld van een fout bericht kan er als volgt uitzien:
 | correlation_id |Een unieke id voor de aanvraag die kan helpen bij het diagnosticeren van verschillende onderdelen. |
 
 Zie voor een beschrijving van de fout codes en de aanbevolen client actie [fout codes voor token eindpunt fouten](#error-codes-for-token-endpoint-errors).
+
+## <a name="next-steps"></a>Volgende stappen
+Zie [voorbeeld toepassingen](sample-v1-code.md)voor meer informatie over het Azure AD v 1.0-eind punt en het toevoegen van verificatie en autorisatie aan uw webtoepassingen en Web-api's.

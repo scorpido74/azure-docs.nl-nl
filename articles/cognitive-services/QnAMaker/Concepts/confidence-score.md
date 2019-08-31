@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: afc50a5adb591550f6e988a572d1ac9a8c4439cb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48b38e88ea6d0d99a0734aa36716020ced6e3d78
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955187"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193618"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Betrouwbaarheidsscore van een kennisdatabase QnA Maker
 Wanneer de aanvraag voor een gebruiker wordt vergeleken met een knowledge base, retourneert de QnA Maker relevante antwoorden, samen met een betrouwbaarheidsscore. Deze score geeft aan dat het vertrouwen dat het antwoord de juiste overeenkomst voor de opgegeven gebruiker-query is. 
@@ -55,7 +55,7 @@ Bij het kiezen van de drempelwaarde, houd rekening met de balans tussen nauwkeur
 - Als **dekking** (of intrekken) is meer belangrijke - en u wilt beantwoorden als veel vragen mogelijk, zelfs als er slechts een gedeeltelijke relatie van de gebruiker vragen-vervolgens VERLAAGT de drempel. Dit betekent dat er mogelijk meer situaties waarbij het antwoord niet de werkelijke query van de gebruiker beantwoordt, maar sommige andere enigszins gerelateerde antwoord krijgt. *Bijvoorbeeld:* als u de drempel waarde **30**maakt, kunt u antwoorden geven op query's zoals ' waar kan ik mijn KB bewerken? '
 
 > [!NOTE]
-> Nieuwere versies van QnA Maker zijn verbeteringen aangebracht aan scoring logica en invloed kunnen zijn op de drempelwaarde. Elk gewenst moment bijwerken van de service, zorg ervoor dat voor het testen en aanpassen van de drempelwaarde, indien nodig. U kunt uw versie van de QnA-Service controleren [hier](https://www.qnamaker.ai/UserSettings), en zien hoe u de meest recente updates [hier](../How-To/troubleshooting-runtime.md).
+> Nieuwere versies van QnA Maker zijn verbeteringen aangebracht aan scoring logica en invloed kunnen zijn op de drempelwaarde. Elk gewenst moment bijwerken van de service, zorg ervoor dat voor het testen en aanpassen van de drempelwaarde, indien nodig. U kunt uw versie van de QnA-Service controleren [hier](https://www.qnamaker.ai/UserSettings), en zien hoe u de meest recente updates [hier](../How-To/set-up-qnamaker-service-azure.md#get-latest-runtime-updates).
 
 ## <a name="set-threshold"></a>Drempel waarde instellen 
 

@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164926"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194622"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
@@ -367,6 +367,13 @@ Een goede referentie voor het maken van GPG-sleutels voor gebruik met Linux-mach
 
 Nadat de inhoud is gepubliceerd, voegt u een tag met `GuestConfigPolicyCertificateValidation` de naam `enabled` en waarde toe aan alle virtuele machines waarvoor ondertekening van programma code vereist is. Deze tag kan op schaal worden geleverd met behulp van Azure Policy. Zie de [Tags Toep assen en het voor beeld van de standaard waarde](../samples/apply-tag-default-value.md) .
 Zodra deze tag is geïmplementeerd, maakt de beleids definitie die is gegenereerd `New-GuestConfigurationPolicy` met de cmdlet, de vereiste via de gast configuratie-extensie.
+
+## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>EVALUATIE Problemen met toewijzingen van gast configuratie beleid oplossen
+
+Er is een hulp programma beschikbaar in de preview-versie om te helpen bij het oplossen van problemen Azure Policy toewijzing van gast configuraties.
+Het hulp programma is in Preview en gepubliceerd op de PowerShell Gallery als module naam [gast configuratie probleem Oplosser](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
+
+Voor meer informatie over de cmdlets in dit hulp programma gebruikt u de opdracht Get-Help in Power shell om de ingebouwde richt lijnen weer te geven.  Wanneer het hulp programma veelvuldige updates ontvangt, is dat de beste manier om de meest recente informatie te verkrijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

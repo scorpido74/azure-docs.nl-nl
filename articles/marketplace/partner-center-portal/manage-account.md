@@ -1,18 +1,18 @@
 ---
 title: Een commerciële Marketplace-account beheren in het partner centrum
 description: Meer informatie over het beheren van een commerciële Marketplace-account in Partner Center.
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f0557f21e791dd22df16451003d5efcfc72c56b4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 08/30/2019
+ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164736"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194260"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum 
 
@@ -305,9 +305,15 @@ Als uw Azure AD-toepassing gegevens in Microsoft Azure AD leest en schrijft, is 
 De gebruikers van uw bedrijf kunnen de volgende rollen en machtigingen toewijzen voor het commerciële Marketplace-programma in het partner centrum. 
 
 |**Rol**|**Machtigingen**|
-|----------------------------------|:---------------------------------|
-
-| Manager | • heeft toegang tot alle Microsoft-account functies behalve de instellingen voor belasting en betaling |      | • Kan gebruikers, rollen en werk accounts (tenants) beheren | | Ontwikkelaar | • kan aanbiedingen beheren en publiceren |      | • Kan sommige Publisher-rapporten weer geven | | Globale beheerder | • niet relevant voor commerciële Marketplace | | Zakelijke Inzender | • niet relevant voor commerciële Marketplace | | Financiële bijdrager | • niet relevant voor commerciële Marketplace | | Marketer | • niet relevant voor commerciële Marketplace |
+|----------------------------------|---------------------------------|
+|Manager|-Heeft toegang tot alle Microsoft-account functies behalve de instellingen voor belasting en betaling|
+|      |-Kan gebruikers, rollen en werk accounts (tenants) beheren|
+|Ontwikkelaar|-Kan aanbiedingen beheren en publiceren|
+|      |-Kan sommige uitgevers rapporten weer geven|
+|Globale beheerder|-Niet relevant voor commerciële Marketplace|
+|Zakelijke Inzender|-Niet relevant voor commerciële Marketplace|
+|Financiële bijdrager|-Niet relevant voor commerciële Marketplace|
+|Verkoper|-Niet relevant voor commerciële Marketplace|
 
 Zie gebruikers rollen toewijzen voor meer informatie over het beheren van rollen en machtigingen in andere gebieden van partner Center, zoals Azure Active Directory (AD), Cloud Solution Provider (CSP), de leverancier van het configuratie scherm (CPV), gast gebruikers of Microsoft Partner Network (MPN). [ en machtigingen in het partner centrum](https://docs.microsoft.com/partner-center/permissions-overview).
 

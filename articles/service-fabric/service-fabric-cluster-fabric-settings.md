@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5d6f1fcba5d93cbd4efb63cd080848258eb2a262
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172891"
+ms.locfileid: "70191748"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -649,6 +649,7 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |AADClusterApplication|teken reeks, standaard instelling is|Statisch|Web-API-toepassings naam of-ID die het cluster vertegenwoordigt |
 |AADLoginEndpoint|teken reeks, standaard instelling is|Statisch|Aad-aanmeldings eindpunt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen, zoals Azure Government\/' https:/Login.microsoftonline.us ' |
 |AADTenantId|teken reeks, standaard instelling is|Statisch|Tenant-ID (GUID) |
+|AcceptExpiredPinnedClusterCertificate|BOOL, default is FALSE|Dynamisch|Vlag waarmee wordt aangegeven of verlopen cluster certificaten moeten worden geaccepteerd die zijn gedeclareerd door de vinger afdruk, alleen van toepassing is op cluster certificaten. zodat het cluster actief blijft. |
 |AdminClientCertThumbprints|teken reeks, standaard instelling is|Dynamisch|Vinger afdrukken van certificaten die worden gebruikt door clients in de rol Admin. Dit is een lijst met door komma's gescheiden namen. |
 |AADTokenEndpointFormat|teken reeks, standaard instelling is|Statisch|Aad-token-eind punt, standaard-Azure-Commercial, opgegeven voor niet-standaard omgevingen,\/zoals Azure Government{0}' https:/Login.microsoftonline.us/' |
 |AdminClientClaims|teken reeks, standaard instelling is|Dynamisch|Alle mogelijke claims die worden verwacht door beheerclients; dezelfde indeling als ClientClaims; deze lijst wordt intern toegevoegd aan ClientClaims. u hoeft ook niet dezelfde vermeldingen aan ClientClaims toe te voegen. |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab74b37fa8adc58f8641893b4168f71c453b0fdd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972707"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194120"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple Private Cloud permission model van VMware vCenter
 
@@ -24,7 +24,7 @@ CloudSimple behoudt volledige beheerders toegang tot de Privécloud. Elke CloudS
 Wanneer u een Privécloud maakt, wordt er een **CloudOwner** -gebruiker gemaakt in het vCenter-domein voor eenmalige aanmelding, met toegang tot de **rol van Cloud-eigenaar** om objecten in de privécloud te beheren. Deze gebruiker kan ook extra vCenter- [identiteits bronnen](set-vcenter-identity.md)instellen en andere gebruikers naar de privécloud van de Cloud.
 
 > [!NOTE]
-> De standaard gebruiker van uw CloudSimple Private Cloud vCenter `cloudowner@cloudsimple.local` is wanneer een privécloud wordt gemaakt zonder deze te koppelen aan uw on-premises vCenter.
+> De standaard gebruiker voor uw CloudSimple Private Cloud vCenter cloudowner@cloudsimple.local is wanneer er een privécloud wordt gemaakt.
 
 ## <a name="user-groups"></a>Gebruikersgroepen
 

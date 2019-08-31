@@ -6,14 +6,14 @@ author: tfitzmac
 keywords: implementatie fout, Azure-implementatie, implementeren naar Azure
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 07/28/2019
+ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 639f6b3b29b7effa12de79335d44b0193f3f9932
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638543"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194371"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten bij Azure-implementatie met Azure Resource Manager oplossen
 
@@ -41,7 +41,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | ImageNotFound | Controleer de instellingen van de VM-installatie kopie. |  |
 | InUseSubnetCannotBeDeleted | Deze fout kan optreden wanneer u een resource probeert bij te werken en de aanvraag wordt verwerkt door de resource te verwijderen en te maken. Zorg ervoor dat u alle ongewijzigde waarden opgeeft. | [Bron bijwerken](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Haal het toegangs token voor de juiste Tenant op. U kunt het token alleen ophalen van de Tenant waarvan uw account deel uitmaakt. | |
-| InvalidContentLink | U hebt waarschijnlijk geprobeerd een koppeling te maken met een geneste sjabloon die niet beschikbaar is. Controleer de URI die u hebt ingevoerd voor de geneste sjabloon dubbel. Als de sjabloon zich in een opslag account bevindt, controleert u of de URI toegankelijk is. Mogelijk moet u een SAS-token door geven. | [Gekoppelde sjablonen](resource-group-linked-templates.md) |
+| InvalidContentLink | U hebt waarschijnlijk geprobeerd een koppeling te maken met een geneste sjabloon die niet beschikbaar is. Controleer de URI die u hebt ingevoerd voor de geneste sjabloon dubbel. Als de sjabloon zich in een opslag account bevindt, controleert u of de URI toegankelijk is. Mogelijk moet u een SAS-token door geven. Op dit moment kunt u geen koppeling maken met een sjabloon die zich in een opslag account bevindt achter een [Azure Storage firewall](../storage/common/storage-network-security.md). Overweeg om uw sjabloon te verplaatsen naar een andere opslag plaats, zoals GitHub. | [Gekoppelde sjablonen](resource-group-linked-templates.md) |
 | InvalidParameter | Een van de waarden die u voor een resource hebt opgegeven, komt niet overeen met de verwachte waarde. Deze fout kan worden veroorzaakt door verschillende voor waarden. Zo kan een wacht woord ontoereikend zijn of kan de naam van een BLOB onjuist zijn. In het fout bericht moet worden aangegeven welke waarde moet worden gecorrigeerd. | |
 | InvalidRequestContent | De implementatie waarden bevatten waarden die niet worden herkend of de vereiste waarden ontbreken. Bevestig de waarden voor het bron type. | [Sjabloonverwijzing](/azure/templates/) |
 | InvalidRequestFormat | Schakel logboek registratie voor fout opsporing in bij het uitvoeren van de implementatie en controleer de inhoud van de aanvraag. | [Logboek registratie van fouten](#enable-debug-logging) |

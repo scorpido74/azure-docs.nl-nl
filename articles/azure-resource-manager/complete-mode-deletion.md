@@ -3,15 +3,15 @@ title: Verwijdering van de modus complete Azure Resource Manager per resource ty
 description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azure Resource Manager sjablonen verwerken.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7f804e61f77b745aa654852f4c1413a8f4bf53b4
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d783ab9c12952393f0a74b245109dda58bff3927
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779953"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194394"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -204,7 +204,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | aadsupportcases | Nee |
 > | addsservices | Nee |
-> | agents | Nee |
+> | middelen | Nee |
 > | anonymousapiusers | Nee |
 > | configuratie | Nee |
 > | logs | Nee |

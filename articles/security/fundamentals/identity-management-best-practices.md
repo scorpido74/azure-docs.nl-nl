@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934692"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195087"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control
 In dit artikel bespreken we een verzameling van de aanbevolen procedures voor het beheren van Azure-identiteits beheer en-toegangs beheer. Deze aanbevolen procedures zijn afgeleid van onze ervaring met [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) en de ervaringen van klanten, zoals uzelf.
@@ -93,7 +93,7 @@ Organisaties die hun on-premises identiteit niet integreren met hun Cloud identi
 > U moet kiezen in welke mappen essentiële accounts zich bevinden en of het beheer werkstation dat wordt gebruikt, wordt beheerd door nieuwe Cloud Services of bestaande processen. Het gebruik van bestaande beheer-en identiteits Provisioning-processen kan een aantal Risico's verminderen, maar kan ook het risico vormen dat een aanvaller een on-premises account in gevaar brengt en draait naar de Cloud. U kunt een andere strategie voor verschillende rollen gebruiken (bijvoorbeeld IT-beheerders en beheerders van bedrijfs eenheden). U hebt twee opties. De eerste optie is het maken van Azure AD-accounts die niet zijn gesynchroniseerd met uw on-premises Active Directory-exemplaar. Voeg uw beheer werkstation toe aan Azure AD, dat u kunt beheren en gebruiken met behulp van Microsoft Intune. Tweede optie is het gebruik van bestaande beheerders accounts door te synchroniseren met uw on-premises Active Directory-exemplaar. Gebruik bestaande werk stations in uw Active Directory domein voor beheer en beveiliging.
 
 ## <a name="manage-connected-tenants"></a>Verbonden tenants beheren
-Uw beveiligings organisatie heeft inzicht nodig om Risico's te beoordelen en te bepalen of het beleid van uw organisatie en eventuele wettelijke vereisten wordt gevolgd. Zorg ervoor dat uw beveiligings organisatie inzicht heeft in alle abonnementen die zijn verbonden met uw productie omgeving en netwerk (via [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) of [site-naar-site-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). Een [globale beheerder/bedrijfs beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) in azure AD kan hun toegang tot de rol [beheerder van gebruikers toegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) verhogen en alle abonnementen en beheerde groepen zien die zijn verbonden met uw omgeving.
+Uw beveiligings organisatie heeft inzicht nodig om Risico's te beoordelen en te bepalen of het beleid van uw organisatie en eventuele wettelijke vereisten wordt gevolgd. Zorg ervoor dat uw beveiligings organisatie inzicht heeft in alle abonnementen die zijn verbonden met uw productie omgeving en netwerk (via [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) of [site-naar-site-VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). Een [globale beheerder/bedrijfs beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) in azure AD kan hun toegang tot de rol [beheerder van gebruikers toegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) verhogen en alle abonnementen en beheerde groepen zien die zijn verbonden met uw omgeving.
 
 Zie [toegang verhogen voor het beheer van alle Azure-abonnementen en-beheer groepen](../../role-based-access-control/elevate-access-global-admin.md) om ervoor te zorgen dat u en uw beveiligings groep alle abonnementen of beheer groepen kunnen weer geven die zijn verbonden met uw omgeving. U moet deze verhoogde toegang verwijderen nadat u de Risico's hebt beoordeeld.
 
@@ -144,16 +144,16 @@ Er zijn meerdere opties voor het vereisen van verificatie in twee stappen. De be
 Hieronder vindt u opties en voor delen voor het inschakelen van verificatie in twee stappen:
 
 **Optie 1**: [Schakel multi-factor Authentication in door de gebruikers status te wijzigen](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Voor deel**: Dit is de traditionele methode voor het vereisen van verificatie in twee stappen. Het werkt met [Azure multi-factor Authentication in de Cloud en Azure multi-factor Authentication-Server](/azure/active-directory/authentication/concept-mfa-whichversion). Wanneer u deze methode gebruikt, moeten gebruikers elke keer dat ze zich aanmelden een verificatie in twee stappen uitvoeren en het beleid voor voorwaardelijke toegang negeren.
+**Voor deel**: Dit is de traditionele methode voor het vereisen van verificatie in twee stappen. Het werkt met [azure multi-factor Authentication in de Cloud en azure multi-factor Authentication-Server](/azure/active-directory/authentication/concept-mfa-whichversion). Wanneer u deze methode gebruikt, moeten gebruikers elke keer dat ze zich aanmelden een verificatie in twee stappen uitvoeren en het beleid voor voorwaardelijke toegang negeren.
 
-Als u wilt weten waar multi-factor Authentication moet worden ingeschakeld, raadpleegt u [welke versie van Azure MFA het meest geschikt is voor mijn organisatie?](/azure/active-directory/authentication/concept-mfa-whichversion).
+Als u wilt weten waar Multi-Factor Authentication moet worden ingeschakeld, raadpleegt u [welke versie van Azure MFA het meest geschikt is voor mijn organisatie?](/azure/active-directory/authentication/concept-mfa-whichversion).
 
 **Optie 2**: [Schakel multi-factor Authentication in met het beleid voor voorwaardelijke toegang](/azure/active-directory/authentication/howto-mfa-getstarted).
 **Voor deel**: Met deze optie kunt u een verificatie met twee stappen onder specifieke voor waarden vragen door gebruik te maken van [voorwaardelijke toegang](/azure/active-directory/active-directory-conditional-access-azure-portal). Specifieke voor waarden kunnen gebruikers zich aanmelden vanaf verschillende locaties, niet-vertrouwde apparaten of toepassingen die u als riskant beschouwt. Als u specifieke voor waarden definieert waarvoor u verificatie in twee stappen nodig hebt, kunt u voor uw gebruikers geen constante vragen stellen, wat een onaangename gebruikers ervaring kan zijn.
 
-Dit is de meest flexibele manier om verificatie in twee stappen voor uw gebruikers in te scha kelen. Het inschakelen van een beleid voor voorwaardelijke toegang werkt alleen voor Azure multi-factor Authentication in de Cloud en is een Premium-functie van Azure AD. Meer informatie over deze methode vindt u in [Azure multi-factor Authentication implementeren op basis](/azure/active-directory/authentication/howto-mfa-getstarted)van de Cloud.
+Dit is de meest flexibele manier om verificatie in twee stappen voor uw gebruikers in te scha kelen. Het inschakelen van een beleid voor voorwaardelijke toegang werkt alleen voor Azure-Multi-Factor Authentication in de Cloud en is een Premium-functie van Azure AD. Meer informatie over deze methode vindt u in [Azure multi-factor Authentication op basis van de Cloud implementeren](/azure/active-directory/authentication/howto-mfa-getstarted).
 
-**Optie 3**: Schakel multi-factor Authentication in met beleids regels voor voorwaardelijke toegang door de gebruikers-en aanmeldings Risico's van [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)te evalueren.   
+**Optie 3**: Schakel Multi-Factor Authentication in met beleids regels voor voorwaardelijke toegang door de gebruikers-en aanmeldings Risico's van [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)te evalueren.   
 **Voor deel**: Met deze optie kunt u het volgende doen:
 
 - Detecteer mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie.
@@ -163,7 +163,7 @@ Dit is de meest flexibele manier om verificatie in twee stappen voor uw gebruike
 Deze methode maakt gebruik van de Azure AD Identity Protection risico evaluatie om te bepalen of verificatie in twee stappen is vereist op basis van gebruikers-en aanmeldings Risico's voor alle Cloud toepassingen. Voor deze methode is Azure Active Directory P2-licentie vereist. Meer informatie over deze methode vindt u in [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview).
 
 > [!Note]
-> Optie 1, waarbij multi-factor Authentication wordt ingeschakeld door de gebruikers status te wijzigen, overschrijft het beleid voor voorwaardelijke toegang. Omdat opties 2 en 3 gebruikmaken van het beleid voor voorwaardelijke toegang, kunt u de optie 1 niet gebruiken.
+> Optie 1, waardoor Multi-Factor Authentication wordt ingeschakeld door de gebruikers status te wijzigen, overschrijft het beleid voor voorwaardelijke toegang. Omdat opties 2 en 3 gebruikmaken van het beleid voor voorwaardelijke toegang, kunt u de optie 1 niet gebruiken.
 
 Organisaties die geen extra lagen van identiteits beveiliging toevoegen, zoals verificatie in twee stappen, zijn gevoeliger voor aanvallen met referentie diefstal. Een aanval met een referentie diefstal kan leiden tot inbreuk op gegevens.
 
@@ -174,13 +174,13 @@ Het aanwijzen van groepen of afzonderlijke rollen die verantwoordelijk zijn voor
 
 Uw beveiligings team moet inzicht hebben in uw Azure-resources om Risico's te kunnen beoordelen en oplossen. Als het beveiligings team operationele verantwoordelijkheden heeft, hebben ze extra machtigingen nodig om hun taken uit te voeren.
 
-U kunt [RBAC](/azure/role-based-access-control/overview) gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik. Het bereik van een roltoewijzing kan een abonnement, een resource groep of een enkele resource zijn.
+U kunt [RBAC](/azure/role-based-access-control/overview) gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik. Het bereik van een roltoewijzing kan een abonnement, een resourcegroep of een enkele resource zijn.
 
 **Aanbevolen procedure**: Verdeel taken binnen uw team en ken alleen de hoeveelheid toegang toe aan gebruikers die ze nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen te geven in uw Azure-abonnement of-resources, mag u alleen bepaalde acties in een bepaald bereik toestaan.
 **Details**: Gebruik [Ingebouwde RBAC-rollen](/azure/role-based-access-control/built-in-roles) in azure om machtigingen toe te wijzen aan gebruikers.
 
 > [!Note]
-> Specifieke machtigingen maken overbodige complexiteit en verwar ring en kunnen worden gecumuleerd in een ' legacy ' configuratie die moeilijk te herstellen is zonder dat u iets hoeft te verbreken. Vermijd resource-specifieke machtigingen. Gebruik in plaats daarvan beheer groepen voor machtigingen voor het hele onderneming en resource groepen voor de bevoegdheden binnen abonnementen. Vermijd gebruikersspecifieke machtigingen. Wijs in plaats daarvan toegang toe aan groepen in azure AD.
+> Specifieke machtigingen maken overbodige complexiteit en verwar ring en kunnen worden gecumuleerd in een ' legacy ' configuratie die moeilijk te herstellen is zonder dat u iets hoeft te verbreken. Vermijd resourcespecifieke bevoegdheden. Gebruik in plaats daarvan beheer groepen voor machtigingen voor het hele onderneming en resource groepen voor de bevoegdheden binnen abonnementen. Vermijd gebruikersspecifieke machtigingen. Wijs in plaats daarvan toegang toe aan groepen in azure AD.
 
 **Aanbevolen procedure**: Verleen beveiligings teams met Azure-verantwoordelijkheden toegang om Azure-resources te bekijken zodat ze Risico's kunnen beoordelen en oplossen.
 **Details**: Verleen beveiligings teams de rol RBAC- [beveiligings lezer](/azure/role-based-access-control/built-in-roles#security-reader) . U kunt de hoofd beheer groep of de segment beheer groep gebruiken, afhankelijk van het bereik van verantwoordelijkheden:
@@ -239,10 +239,10 @@ Evalueer de accounts die zijn toegewezen of die in aanmerking komen voor de rol 
 **Aanbevolen procedure**: Een "sche glasproces" in het geval van nood gevallen hebben.
 **Details**: Volg de stappen in het [beveiligen van bevoegde toegang voor hybride en Cloud implementaties in azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
 
-**Aanbevolen procedure**: Vereisen dat alle essentiële beheerders accounts een wacht woord hebben (voor keur) of multi-factor Authentication vereisen.
+**Aanbevolen procedure**: Vereisen dat alle essentiële beheerders accounts een wacht woord hebben (voor keur) of Multi-Factor Authentication vereisen.
 **Details**: Gebruik de [Microsoft Authenticator-app](/azure/active-directory/authentication/howto-authentication-phone-sign-in) om u aan te melden bij een Azure ad-account zonder een wacht woord te gebruiken. Net als [Windows hello voor bedrijven](/windows/security/identity-protection/hello-for-business/hello-identity-verification)gebruikt de Microsoft Authenticator verificatie op basis van een sleutel om een gebruikers referentie in te scha kelen die is gekoppeld aan een apparaat en gebruikmaakt van biometrische verificatie of een pincode.
 
-Azure multi-factor Authentication vereisen bij aanmelding voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: Globale beheerder, beheerder van geprivilegieerde rol, Exchange Online beheerder en share point online-beheerder. Schakel [multi-factor Authentication in voor uw beheerders accounts](/azure/active-directory/authentication/howto-mfa-userstates) en zorg ervoor dat de gebruikers van het beheerders account zijn geregistreerd.
+Azure Multi-Factor Authentication vereisen bij aanmelding voor alle afzonderlijke gebruikers die permanent zijn toegewezen aan een of meer van de Azure AD-beheerders rollen: Globale beheerder, beheerder van geprivilegieerde rol, Exchange Online beheerder en share point online-beheerder. Schakel [multi-factor Authentication in voor uw beheerders accounts](/azure/active-directory/authentication/howto-mfa-userstates) en zorg ervoor dat het beheerders account van de gebruiker is geregistreerd.
 
 **Aanbevolen procedure**: Voor kritieke beheerders accounts beschikt u over een beheer werkstation waar productie taken niet zijn toegestaan (bijvoorbeeld bladeren en e-mail). Hiermee worden uw beheerders accounts beschermd tegen aanvals vectoren die Browse en e-mail gebruiken en het risico van een belang rijk incident aanzienlijk verminderen.
 **Details**: Gebruik een beheer werkstation. Kies een niveau voor beveiliging van werk station:
@@ -265,7 +265,7 @@ Azure multi-factor Authentication vereisen bij aanmelding voor alle afzonderlijk
 
 [Wachtwoord hash synchronisatie inschakelen](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
 
-[Multi-factor Authentication vereisen voor gebruikers in alle geprivilegieerde rollen en gebruikers die ze kunnen belichten](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Multi-Factor Authentication vereisen voor gebruikers in alle geprivilegieerde rollen en gebruikers die ze kunnen belichten](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [Uw Office 365 Secure score verkrijgen (als u Office 365 gebruikt)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 

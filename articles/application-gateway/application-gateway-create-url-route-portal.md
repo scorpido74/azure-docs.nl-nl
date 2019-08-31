@@ -1,34 +1,31 @@
 ---
-title: Een toepassingsgateway maken met URL-pad gebaseerde regels voor doorsturen - Azure portal
-description: Informatie over het maken van URL-pad op basis van routeringsregels voor een application gateway en de virtuele-machineschaalset met behulp van de Azure-portal.
+title: Maak een toepassings gateway met behulp van op URL-pad gebaseerde routerings regels-Azure Portal
+description: Meer informatie over het maken van op URL-pad gebaseerde routerings regels voor een toepassings gateway en een schaalset voor virtuele machines met behulp van de Azure Portal.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 3/26/2018
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 10bc4e4c440e5495afd820f588270b7990108b68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9809846a8029d819dd847b78dc3c11605ddfc46
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135366"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194552"
 ---
-# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Een toepassingsgateway maken met pad gebaseerde routering regels met behulp van de Azure portal
+# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Een toepassings gateway met op pad gebaseerde routerings regels maken met behulp van de Azure Portal
 
-U kunt de Azure-portal gebruiken om te configureren [routeringsregels voor URL-pad gebaseerde](application-gateway-url-route-overview.md) bij het maken van een [toepassingsgateway](application-gateway-introduction.md). In deze zelfstudie maakt u back endpools met behulp van virtuele machines. Vervolgens maakt u regels voor doorsturen die zorg ervoor dat webverkeer aankomt op de juiste servers in de groepen.
+U kunt de Azure Portal gebruiken om op [URL-pad gebaseerde routerings regels](application-gateway-url-route-overview.md) te configureren wanneer u een [toepassings gateway](application-gateway-introduction.md)maakt. In deze zelf studie maakt u back-endservers met virtuele machines. Vervolgens maakt u routerings regels die ervoor zorgen dat webverkeer binnenkomt op de juiste servers in de groepen.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Een toepassingsgateway maken
-> * Virtuele machines voor back-endservers maken
-> * Back-endpools maken met de back-endservers
-> * Maak een back-end-listener
-> * Een regel op pad gebaseerde routering maken
+> * Virtuele machines maken voor back-endservers
+> * Back-endservers maken met de back-endservers
+> * Een backend-listener maken
+> * Een op pad gebaseerde routerings regel maken
 
 ![Voorbeeld van URL-routering](./media/application-gateway-create-url-route-portal/scenario.png)
 
@@ -36,147 +33,178 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
+## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Aanmelden bij Azure Portal op [https://portal.azure.com](https://portal.azure.com)
-
-## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
-
-U hebt een virtueel netwerk nodig voor communicatie tussen de resources die u maakt. In dit voorbeeld worden twee subnetten gemaakt: één voor de toepassingsgateway en de andere voor de back-endservers. U kunt een virtueel netwerk maken op hetzelfde moment dat u de toepassingsgateway maakt.
-
-1. Klik op **nieuw** gevonden in de linkerbovenhoek van Azure portal.
-2. Selecteer **Netwerken** en vervolgens **Application Gateway** in de lijst Aanbevolen.
-3. Voer deze waarden in voor de toepassingsgateway:
-
-   - *myAppGateway* als de naam van de toepassingsgateway.
-   - *myResourceGroupAG* als de nieuwe resourcegroep.
-
-     ![Nieuwe toepassingsgateway maken](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
-
-4. Accepteer de standaardwaarden voor de overige instellingen en klik op **OK**.
-5. Klik op **Een virtueel netwerk kiezen**, klik op **Nieuw maken** en voer deze waarden in voor het virtuele netwerk:
-
-   - *myVnet* als de naam van het virtuele netwerk.
-   - *10.0.0.0/16* als de adresruimte van het virtuele netwerk.
-   - *myAGSubnet* als de naam van het subnet.
-   - *10.0.0.0/24* als de adresruimte van het subnet.
-
-     ![Virtueel netwerk maken](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
-
-6. Klik op **OK** om het virtuele netwerk en subnet te maken.
-7. Klik op **een openbaar IP-adres kiezen**, klikt u op **nieuw**, en voer de naam van het openbare IP-adres. In dit voorbeeld is de naam van het openbare IP-adres *myAGPublicIPAddress*. Accepteer de standaardwaarden voor de overige instellingen en klik op **OK**.
-8. Accepteer de standaardwaarden voor de configuratie van de Listener, laat u de Web application firewall is uitgeschakeld en klik vervolgens op **OK**.
-9. Controleer de instellingen op de pagina Samenvatting en klik vervolgens op **OK** om de netwerkbronnen en de application gateway te maken. Het duurt enkele minuten voor de toepassingsgateway worden gemaakt, wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
-
-### <a name="add-a-subnet"></a>Een subnet toevoegen
-
-1. Klik in het menu links op **Alle resources** en vervolgens in de lijst met resources op **myVNet**.
-2. Klik op **subnetten**, en klik vervolgens op **Subnet**.
-
-    ![Subnet maken](./media/application-gateway-create-url-route-portal/application-gateway-subnet.png)
-
-3. Voer *myBackendSubnet* in als naam van het subnet en klik op **OK**.
+Meld u aan bij Azure Portal op [https://portal.azure.com](https://portal.azure.com)
 
 ## <a name="create-virtual-machines"></a>Virtuele machines maken
 
-In dit voorbeeld maakt u drie virtuele machines die worden gebruikt als back-endservers voor application gateway. U installeert ook IIS op de virtuele machines om te controleren of de toepassingsgateway is gemaakt.
+In dit voor beeld maakt u drie virtuele machines die worden gebruikt als back-endservers voor de toepassings gateway. U installeert ook IIS op de virtuele machines om te controleren of de toepassings gateway werkt zoals verwacht.
 
-1. Klik op **Nieuw**.
-2. Klik op **Compute** en selecteer vervolgens **Windows Server 2016 Datacenter** in de lijst Aanbevolen.
+1. Selecteer **Een resource maken** in de Azure-portal.
+2. Selecteer **Windows Server 2016 Data Center** in de lijst populair.
 3. Voer deze waarden in voor de virtuele machine:
 
-    - *myVM1* als naam van de virtuele machine.
-    - *azureuser* als gebruikersnaam van de beheerder.
-    - *Azure123456!* als het wachtwoord.
-    - Selecteer **Bestaande gebruiken** en selecteer *myResourceGroupAG*.
+    - **Resource groep**, selecteer **nieuwe maken**en typ vervolgens *myResourceGroupAG*.
+    - **Naam van de virtuele machine**: *myVM1*
+    - **Regio**: *VS VS-Oost*
+    - **Gebruikers naam**: *azureuser*
+    - **Wachtwoord**: *Azure123456!*
 
-4. Klik op **OK**.
-5. Selecteer **DS1_V2** als grootte van de virtuele machine en klik op **Selecteren**.
-6. Zorg ervoor dat **myVNet** is geselecteerd voor het virtuele netwerk en dat het subnet **myBackendSubnet** is. 
-7. Klik op **Uitgeschakeld** om diagnostische gegevens over opstarten uit te schakelen.
-8. Klik op **OK**, controleer de instellingen op de overzichtspagina en klik op **Maken**.
+
+4. Selecteer **Volgende: schijven**.
+5. Selecteer **volgende: netwerken**
+6. Voor **virtueel netwerk**selecteert u **nieuwe maken** en typt u deze waarden voor het virtuele netwerk:
+
+   - *myVnet* als de naam van het virtuele netwerk.
+   - *10.0.0.0/16* als de adresruimte van het virtuele netwerk.
+   - *myBackendSubnet* voor de eerste subnetnaam
+   - *10.0.1.0/24* : voor het subnet een adresruimte.
+   - *myAGSubnet* : de naam van het tweede subnet.
+   - *10.0.0.0/24* als de adresruimte van het subnet.
+7. Selecteer **OK**.
+
+8. Zorg ervoor dat onder **netwerk interface** **myBackendSubnet** is geselecteerd voor het subnet en selecteer **volgende: Beheer**.
+9. Selecteer **uitschakelen** om diagnostische gegevens over opstarten uit te scha kelen.
+10. Klik op **beoordeling + maken**, Controleer de instellingen op de pagina samen vatting en selecteer vervolgens **maken**.
+11. Maak twee meer virtuele machines, *myVM2* en *myVM3* en plaats deze in het virtuele *MyVNet* -netwerk en het *myBackendSubnet* -subnet.
 
 ### <a name="install-iis"></a>IIS installeren
 
-1. Open de interactieve shell en zorg ervoor dat deze is ingesteld op **PowerShell**.
+1. Open de interactieve shell en controleer of deze is ingesteld op **PowerShell**.
 
     ![Aangepaste extensie installeren](./media/application-gateway-create-url-route-portal/application-gateway-extension.png)
 
 2. Voer de volgende opdracht uit om IIS op de virtuele machine te installeren: 
 
-    ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzVMExtension `
-      -ResourceGroupName myResourceGroupAG `
-      -Location eastus `
-      -ExtensionName IIS `
-      -VMName myVM1 `
-      -Publisher Microsoft.Compute `
-      -ExtensionType CustomScriptExtension `
-      -TypeHandlerVersion 1.4 `
-      -Settings $publicSettings
+    ```azurepowershell
+         $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+
+        Set-AzVMExtension `
+         -ResourceGroupName myResourceGroupAG `
+         -Location eastus `
+         -ExtensionName IIS `
+         -VMName myVM1 `
+         -Publisher Microsoft.Compute `
+         -ExtensionType CustomScriptExtension `
+         -TypeHandlerVersion 1.4 `
+         -Settings $publicSettings
     ```
 
-3. Maak twee meer virtuele machines en IIS installeren met behulp van de stappen die u zojuist hebt voltooid. Typ de namen van *myVM2* en *myVM3* voor de namen en de waarden van VMName in Set-AzVMExtension.
+3. Maak twee meer virtuele machines en Installeer IIS met behulp van de stappen die u zojuist hebt voltooid. Voer de namen van *myVM2* en *myVM3* in voor de namen en voor de waarden van VMName in set-AzVMExtension.
 
-## <a name="create-backend-pools-with-the-virtual-machines"></a>Back-endpools maken met de virtuele machines
+## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-1. Klik op **alle resources** en klik vervolgens op **myAppGateway**.
-2. Klik op **Back-endpools**. Er is automatisch een standaardpool gemaakt met de toepassingsgateway. Klik op **appGatewayBackendPool**.
-3. Klik op **toevoegen doel** om toe te voegen *myVM1* naar appGatewayBackendPool.
+1. Selecteer **Een resource maken** in het linkermenu van de Azure-portal. Het venster **Nieuw** wordt weergegeven.
 
-    ![Back-endservers toevoegen](./media/application-gateway-create-url-route-portal/application-gateway-backend.png)
+2. Selecteer **Netwerken** en vervolgens **Application Gateway** in de lijst **Aanbevolen**.
 
-4. Klik op **Opslaan**.
-5. Klik op **back-endpools** en klik vervolgens op **toevoegen**.
-6. Voer een naam in van *imagesBackendPool* en toe te voegen *myVM2* met behulp van **toevoegen doel**.
-7. Klik op **OK**.
-8. Klik op **toevoegen** opnieuw toe te voegen een andere back-endpool met de naam *videoBackendPool* en toe te voegen *myVM3* toe.
+### <a name="basics-tab"></a>Tabblad basis beginselen
 
-## <a name="create-a-backend-listener"></a>Maak een back-end-listener
+1. Voer op het tabblad **basis beginselen** deze waarden in voor de volgende instellingen voor de toepassings gateway:
 
-1. Klik op **Listeners** en klik op **Basic**.
-2. Voer *myBackendListener* voor de naam van de *myFrontendPort* voor de naam van de front-endpoort, en vervolgens *8080* als de poort voor de listener.
-3. Klik op **OK**.
+   - **Resourcegroep**: Selecteer **myResourceGroupAG** als de resourcegroep.
+   - **Naam van de toepassings gateway**: Typ *myAppGateway* als naam voor de toepassingsgateway.
+   - **Regio** -Selecteer **(VS) vs-Oost**.
 
-## <a name="create-a-path-based-routing-rule"></a>Een regel op pad gebaseerde routering maken
+        ![Nieuwe toepassings gateway maken: Basics](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-1. Klik op **regels** en klik vervolgens op **op pad gebaseerde**.
-2. Voer *regel 2* voor de naam.
-3. Voer *installatiekopieën* voor de naam van het eerste pad. Voer */images/* \* voor het pad. Selecteer **imagesBackendPool** voor de back-endpool.
-4. Voer *Video* voor de naam van het tweede pad. Voer */video/* \* voor het pad. Selecteer **videoBackendPool** voor de back-endpool.
+2.  Onder **virtueel netwerk configureren**selecteert u **myVNet** voor de naam van het virtuele netwerk.
+3. Selecteer **myAGSubnet** voor het subnet.
+3. Accepteer de standaard waarden voor de overige instellingen en selecteer **volgende: Front-end.**
 
-    ![Een pad gebaseerde regel maken](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
+### <a name="frontends-tab"></a>Tabblad front-ends
 
-5. Klik op **OK**.
+1. Controleer op het tabblad frontends of het **frontend-IP-adres type** is ingesteld op **openbaar**.
+
+   > [!NOTE]
+   > Voor de SKU van Application Gateway v2 kunt u alleen de **open bare** frontend-IP-configuratie kiezen. De persoonlijke frontend-IP-configuratie is op dit moment niet ingeschakeld voor deze v2-SKU.
+
+2. Kies **Nieuw maken** voor het **open bare IP-adres** en voer *myAGPublicIPAddress* in als naam voor het open bare IP-adres en selecteer vervolgens **OK**. 
+3. Selecteer **Volgende: Back-end.**
+
+### <a name="backends-tab"></a>Tabblad back-ends
+
+De back-end-groep wordt gebruikt voor het routeren van aanvragen naar de back-endservers die de aanvraag behandelen. Back-endservers kunnen bestaan uit Nic's, virtuele-machine schaal sets, open bare Ip's, interne Ip's, FQDN-namen (Fully Qualified Domain names) en back-ends met meerdere tenants, zoals Azure App Service.
+
+1. Selecteer op het tabblad **back** -end **+ een back-end-groep toevoegen**.
+
+2. In het venster **een back-Endadresgroep toevoegen** dat wordt geopend, voert u de volgende waarden in om een lege back-end-groep te maken:
+
+    - **Naam**: Voer *myBackendPool* in als de naam van de back-end-groep.
+3. Selecteer **virtuele machine** in de vervolg keuzelijst onder **back-end doelen**, **doel type**.
+
+5. Onder **doel** selecteert u de netwerk interface voor **myVM1**.
+6. Selecteer **Toevoegen**.
+7. Herhaal de stappen voor het toevoegen van een *installatie kopie* back-end met *myVM2* als doel en een *video* back-end-pool met *myVM3* als doel.
+8. Selecteer **toevoegen** om de configuratie van de back-endserver op te slaan en terug te keren naar het tabblad **back-end** .
+
+4. Op het tabblad **back-end** selecteert **u volgende: Configuratie**.
+
+### <a name="configuration-tab"></a>Tabblad Configuratie
+
+Op het tabblad **configuratie** verbindt u de front-end-en back-end-groep die u hebt gemaakt met behulp van een routerings regel.
+
+1. Selecteer **een regel toevoegen** in de kolom **routerings regels** .
+
+2. Voer in het venster **een regel voor de route ring toevoegen** die wordt geopend, *myRoutingRule* in als naam van de **regel**.
+
+3. Een routerings regel vereist een listener. Voer op het tabblad **listener** in het venster **een regel voor de route ring toevoegen** de volgende waarden in voor de listener:
+
+    - **Naam van listener**: Voer *myListener* in als de naam van de listener.
+    - **Frontend-IP**: Selecteer **openbaar** om het open bare IP-adres te kiezen dat u hebt gemaakt voor de front-end.
+    - **Poort**: Type *8080*
+  
+        Accepteer de standaard waarden voor de overige instellingen op het tabblad **listener** en selecteer vervolgens het tabblad **backend-doelen** om de rest van de routerings regel te configureren.
+
+4. Op het tabblad **backend-doelen** selecteert u **MyBackendPool** voor het back- **end-doel**.
+
+5. Voor de **http-instelling**selecteert u **Nieuw maken** om een nieuwe http-instelling te maken. De HTTP-instelling bepaalt het gedrag van de routerings regel. 
+
+6. In het venster **een HTTP-instelling toevoegen** dat wordt geopend, voert u *myHTTPSetting* in voor de naam van de **http-instelling**. Accepteer de standaard waarden voor de overige instellingen in het venster **een HTTP-instelling toevoegen** en selecteer vervolgens **toevoegen** om terug te gaan naar het venster een regel voor het routeren van **een route ring toevoegen** .
+7. Onder **route ring op basis van paden**selecteert **u meerdere doelen toevoegen om een op pad gebaseerde regel te maken**.
+8. Typ */images/* \*bij **pad**.
+9. Typ *installatie kopieën*voor de naam van de **padregel**.
+10. Selecteer voor **http-instelling** **myHTTPSetting**
+11. Selecteer **installatie kopieën**voor het **back-end-doel**.
+12. Selecteer **toevoegen** om de padregel op te slaan en terug te keren naar het tabblad **een regel voor de route ring toevoegen** .
+13. Herhaal deze stap om een andere regel voor video toe te voegen.
+14. Selecteer **toevoegen** om de regel voor door sturen toe te voegen en terug te keren naar het tabblad **configuratie** .
+15. Selecteer **Volgende: Tags** en vervolgens **volgende: Bekijk + maken**.
+
+> [!NOTE]
+> U hoeft geen aangepaste */* regel * padregel toe te voegen om standaard cases af te handelen. Dit wordt automatisch afgehandeld door de standaard back-end-groep.
+
+### <a name="review--create-tab"></a>Tabblad controleren en maken
+
+Controleer de instellingen op het tabblad **beoordelen en maken** en selecteer vervolgens **maken** om het virtuele netwerk, het open bare IP-adres en de toepassings gateway te maken. Het kan enkele minuten duren om de toepassingsgateway te maken in Azure. Wacht totdat de implementatie is voltooid voordat u doorgaat met de volgende sectie.
+
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-1. Klik op **alle resources**, en klik vervolgens op **myAGPublicIPAddress**.
+1. Selecteer **Alle resources** en vervolgens **myAppGateway**.
 
     ![Registreer het openbare IP-adres van de toepassingsgateway](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals http:\//40.121.222.19.
+2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser. Zoals http:\//52.188.72.175:8080.
 
     ![Basis-URL testen in de toepassingsgateway](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-3. Wijzig de URL naar http://&lt;ip-adres&gt;: 8080/images/test.htm, vervangen door &lt;ip-adres&gt; met uw IP-adres, en u ziet er ongeveer als volgt:
+   De listener op poort 8080 stuurt deze aanvraag naar de standaard back-end-groep.
+
+3. Wijzig de URL in *http://&lt;IP-adres&gt;: 8080/images/test.htm*, vervang &lt;het IP-&gt; adres door uw IP-adres en u ziet iets als in het volgende voor beeld:
 
     ![Afbeeldingen-URL in toepassingsgateway testen](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
-4. Wijzig de URL naar http://&lt;ip-adres&gt;: 8080/video/test.htm, vervangen door &lt;ip-adres&gt; met uw IP-adres, en u ziet er ongeveer als volgt:
+   De listener op poort 8080 routeert deze aanvraag naar de back-end- *installatie kopie* .
+
+4. Wijzig de URL in *http://&lt;IP-adres&gt;: 8080/video/test.htm*, vervang &lt;het IP-&gt; adres door uw IP-adres en u ziet iets als in het volgende voor beeld:
 
     ![Video-URL testen in de toepassingsgateway](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
+   De listener op poort 8080 stuurt deze aanvraag naar de back-end van de *video* .
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u
-
-> [!div class="checklist"]
-> * Een toepassingsgateway maken
-> * Virtuele machines voor back-endservers maken
-> * Back-endpools maken met de back-endservers
-> * Maak een back-end-listener
-> * Een regel op pad gebaseerde routering maken
-
-Voor meer informatie over Toepassingsgateways en de bijbehorende resources, gaat u naar de artikelen met procedures.
+- [End-to-end SSL inschakelen op Azure-toepassing gateway](application-gateway-backend-ssl.md)

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/25/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: bc5216fccd5beab0e655776c0ccda3c53332da6f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b558384fe6bc86cd7b0ebd640407557e23f68ddd
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478610"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194573"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Zelfstudie: Een toepassings gateway met SSL-beëindiging configureren met behulp van de Azure Portal
 
@@ -58,6 +58,9 @@ E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 
 Gebruik [export-pfx](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) met de vinger afdruk die is geretourneerd voor het exporteren van een pfx-bestand uit het certificaat:
 
+> [!NOTE]
+> Gebruik geen speciale tekens in het wacht woord voor het pfx-bestand. Alleen alfanumerieke tekens worden ondersteund.
+
 ```powershell
 $pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
 Export-PfxCertificate `
@@ -87,11 +90,11 @@ Export-PfxCertificate `
 
     - **Naam**: Typ *myVnet* als naam voor het virtuele netwerk.
 
-    - **Subnetnaam** (Application Gateway subnet): In  het raster subnetten wordt een subnet met de naam *standaard*weer gegeven. Wijzig de naam van dit subnet in *myAGSubnet*.<br>Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.
+    - **Subnetnaam** (Application Gateway subnet): In het raster subnetten wordt een subnet met de naam *standaard*weer gegeven. Wijzig de naam van dit subnet in *myAGSubnet*.<br>Het subnet van de toepassingsgateway kan alleen bestaan uit toepassingsgateways. Andere resources zijn niet toegestaan.
 
-    - **Subnetnaam** (subnet van back-endserver): Voer in de tweede rij van  het raster subnetten *myBackendSubnet* in de kolom **subnet name** in.
+    - **Subnetnaam** (subnet van back-endserver): Voer in de tweede rij van het raster subnetten *myBackendSubnet* in de kolom **subnet name** in.
 
-    - **Adres bereik** (subnet van back-endserver): Voer in de tweede rij van  het raster subnetten een adres bereik in dat niet overlapt met het adres bereik van *myAGSubnet*. Als het adres bereik van *myAGSubnet* bijvoorbeeld 10.0.0.0/24 is, voert u *10.0.1.0/24* in voor het adres bereik van *myBackendSubnet*.
+    - **Adres bereik** (subnet van back-endserver): Voer in de tweede rij van het raster subnetten een adres bereik in dat niet overlapt met het adres bereik van *myAGSubnet*. Als het adres bereik van *myAGSubnet* bijvoorbeeld 10.0.0.0/24 is, voert u *10.0.1.0/24* in voor het adres bereik van *myBackendSubnet*.
 
     Selecteer **OK** om het venster **virtueel netwerk maken** te sluiten en de instellingen voor het virtuele netwerk op te slaan.
 
@@ -101,7 +104,7 @@ Export-PfxCertificate `
 
 ### <a name="frontends-tab"></a>Tabblad front-ends
 
-1. Controleer op  het tabblad frontends of het **frontend-IP-adres type** is ingesteld op **openbaar**. <br>U kunt de frontend-IP zo configureren dat deze openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP.
+1. Controleer op het tabblad frontends of het **frontend-IP-adres type** is ingesteld op **openbaar**. <br>U kunt de frontend-IP zo configureren dat deze openbaar of privé is volgens uw use-case. In dit voor beeld kiest u een openbaar frontend-IP.
    > [!NOTE]
    > Voor de SKU van Application Gateway v2 kunt u alleen de **open bare** frontend-IP-configuratie kiezen. De persoonlijke frontend-IP-configuratie is op dit moment niet ingeschakeld voor deze v2-SKU.
 

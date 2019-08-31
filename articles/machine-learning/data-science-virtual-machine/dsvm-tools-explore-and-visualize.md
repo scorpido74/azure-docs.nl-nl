@@ -1,28 +1,23 @@
 ---
-title: Hulp middelen voor het verkennen en visualisatie van gegevens-Azure | Microsoft Docs
+title: Hulpprogramma's voor exploratie en visualisatie van gegevens
+titleSuffix: Azure Data Science Virtual Machine
 description: Hulp middelen voor het verkennen en visualisatie van gegevens voor de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: d60acdf483d418e458f51ef6cf31b17c43b7379f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70065907"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191974"
 ---
-# <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Hulp middelen voor gegevens exploratie en visualisaties op het Data Science Virtual Machine
+# <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Hulp middelen voor het verkennen en visualisatie van gegevens op de Azure-Data Science Virtual Machine
 
 In data wetenschappen is de sleutel het begrijpen van de gegevens. Met hulpprogram ma's voor visualisatie en gegevens exploratie kunt u de gegevens beter leren gebruiken. De volgende hulpprogram ma's, die zijn opgenomen in de Data Science Virtual Machine (DSVM), maken deze sleutel stap eenvoudiger.
 

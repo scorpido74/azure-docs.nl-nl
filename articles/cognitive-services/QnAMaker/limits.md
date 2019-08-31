@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
-ms.translationtype: HT
+ms.openlocfilehash: c7b0dc39d2da403383f245b9ff3227734c58cbbe
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165027"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193483"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker kennisdatabase limieten en grenzen
 
@@ -90,8 +90,4 @@ Dit zijn de limieten voor elke update-actie. dat wil zeggen, te klikken op *opsl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het wijzigen van service lagen:
-
-* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Als u meer bron bestanden of grotere documenten in uw Knowledge Base nodig hebt, moet u de prijs categorie van QnA Maker service upgraden naar uw huidige laag.
-* [App service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Als uw Knowledge Base meer aanvragen van uw client-app nodig heeft, moet u de prijs categorie van uw app service bijwerken.
-* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Als u van plan bent een groot aantal Knowledge bases te hebben, moet u uw Azure Search service prijs categorie bijwerken.
+Meer informatie over wanneer en hoe u de [service prijs categorieën](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)wijzigt.

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062133"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192067"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Automatische machine learning resultaten begrijpen
 
@@ -102,7 +102,7 @@ weighted_accuracy|Gewogen nauw keurigheid is nauw keurig wanneer het gewicht dat
 
 Een verwarringsmatrix wordt gebruikt om te beschrijven van de prestaties van een model voor classificatie. Elke rij geeft de exemplaren van de klasse ' True ', en elke kolom vertegenwoordigt de instanties van de voorspelde klasse. De verwarringsmatrix ziet u de labels correct ingedeeld en de onjuist ingedeeld labels voor een bepaald model.
 
-Voor problemen met de classificatie biedt Azure Machine Learning automatisch een verwarringsmatrix voor elk model dat is gebouwd. Voor elke verwarringsmatrix ziet geautomatiseerde ML u de labels correct ingedeeld als groen en onjuist ingedeeld labels als rood. De grootte van de cirkel geeft het aantal steekproeven in die bin. Bovendien vindt u de frequentie-telling van elk label voorspelde en elk label waar in de aangrenzende staafdiagrammen. 
+Voor problemen met de classificatie biedt Azure Machine Learning automatisch een verwarringsmatrix voor elk model dat is gebouwd. Voor elke Verwar ring wordt de frequentie weer gegeven van elk voorspeld label en elk label dat op het punt staat. Hoe donkerder de kleur, hoe hoger het aantal in het betreffende deel van de matrix. In het ideale geval zijn de donkerste kleuren langs de diagonaal van de matrix. 
 
 Voorbeeld 1: Een classificatie model met een slechte ![nauw keurigheid van een classificatie model met een slechte nauw keurigheid](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b6c9e50334a25b505655a49a02cd98165d04740b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 269d13e0b64d2da7a21316b16c88acde46ba1722
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164952"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194638"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
@@ -130,6 +130,11 @@ Alle ingebouwde beleidsregels voor de configuratie van de Gast zijn opgenomen in
 ### <a name="multiple-assignments"></a>Meerdere toewijzingen
 
 Gast configuratie beleid biedt momenteel alleen ondersteuning voor het toewijzen van dezelfde gast toewijzing per computer, zelfs als de beleids toewijzing gebruikmaakt van verschillende para meters.
+
+## <a name="built-in-resource-modules"></a>Ingebouwde resource modules
+
+Wanneer de uitbrei ding gast configuratie is geïnstalleerd, wordt de Power shell-module ' GuestConfiguration ' opgenomen in de meest recente versie van DSC-resource modules. Deze module kan vanuit de PowerShell Gallery worden gedownload met behulp van de koppeling hand matig downloaden van de module pagina [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/).
+De bestands indeling '. nupkg ' kan worden gewijzigd in '. zip ' om deze te decomprimeren en te controleren.
 
 ## <a name="client-log-files"></a>Client logboek bestanden
 

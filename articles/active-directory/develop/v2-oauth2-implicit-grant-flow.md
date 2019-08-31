@@ -1,6 +1,6 @@
 ---
-title: Beveiligde toepassingen met één pagina met behulp van de impliciete stroom voor Microsoft identity-platform | Azure
-description: Building webtoepassingen die gebruikmaken van Microsoft identity-platform-implementatie van de impliciete stroom voor apps van één pagina.
+title: Beveiligde toepassingen met één pagina met behulp van de micro soft Identity platform impliciete stroom | Azure
+description: Het bouwen van webtoepassingen met behulp van de micro soft Identity platform-implementatie van de impliciete stroom voor apps met één pagina.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -18,44 +18,44 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ac72a91ae14b6f9c513c84da6f1f06508caef
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ab5ba4fde7469854954ed19d2e643f2b8a23f34f
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482209"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193253"
 ---
-# <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft identity-platform en impliciet verlenen stroom
+# <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Micro soft Identity-platform en impliciete toekennings stroom
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Met het eindpunt van Microsoft identity-platform, kunt u gebruikers zich in uw apps met één pagina met zowel persoonlijke en werk of school-accounts van Microsoft. Één pagina en andere JavaScript-apps die worden uitgevoerd in een browser gezicht voornamelijk enkele interessante uitdagingen bij het verificatie:
+Met het micro soft Identity platform-eind punt kunt u gebruikers aan uw apps met één pagina ondertekenen met zowel privé-als werk-of school accounts van micro soft. Eén pagina en andere Java script-apps die voornamelijk worden uitgevoerd in een browser, hebben een paar interessante uitdagingen wanneer de verificatie is:
 
-* De beveiligingskenmerken van de van deze apps zijn aanzienlijk verschillen van traditionele server-gebaseerde webtoepassingen.
-* Veel autorisatieservers en id-providers bieden geen ondersteuning voor CORS-aanvragen.
-* Volledige pagina browser wordt omgeleid weg van de app worden met name Invasief tot de gebruikerservaring.
+* De beveiligings kenmerken van deze apps zijn aanzienlijk anders dan traditionele webtoepassingen op de server.
+* Veel autorisatie servers en id-providers bieden geen ondersteuning voor CORS-aanvragen.
+* De volledige pagina browser omleidingen van de app worden met name invasief voor de gebruikers ervaring.
 
-Voor deze toepassingen (AngularJS, Ember.js, React.js, enzovoort) ondersteunt identiteitsplatform van Microsoft de impliciete toekenning van OAuth 2.0-stroom. De impliciete stroom wordt beschreven in de [OAuth 2.0-specificatie](https://tools.ietf.org/html/rfc6749#section-4.2). Het belangrijkste voordeel is dat de app ophalen van tokens uit de Microsoft identity-platform zonder uit te voeren van een back-endserver uitwisseling van verificatiegegevens. Hiermee wordt de app te melden bij de gebruiker, sessie en het verkrijgen van tokens, voor andere web-API's in de client JavaScript-code. Er zijn enkele belangrijke beveiligingsoverwegingen rekening moet houden bij het gebruik van de impliciete stroom specifiek ongeveer [client](https://tools.ietf.org/html/rfc6749#section-10.3) en [gebruikersimitatie](https://tools.ietf.org/html/rfc6749#section-10.3).
+Voor deze toepassingen (AngularJS, wordt. js, reageren. js, enzovoort) ondersteunt het micro soft Identity-platform de OAuth 2,0 impliciete toekennings stroom. De impliciete stroom wordt beschreven in de [OAuth 2,0-specificatie](https://tools.ietf.org/html/rfc6749#section-4.2). Het belangrijkste voor deel is dat de app tokens van het micro soft Identity-platform kan ophalen zonder een back-end-server referentie-uitwisseling uit te voeren. Hiermee kan de app zich aanmelden bij de gebruiker, de sessie beheren en tokens ophalen voor andere web-Api's in de Java script-code van de client. Er zijn enkele belang rijke beveiligings overwegingen waarbij rekening moet worden gehouden bij het gebruik van de impliciete stroom om de [client](https://tools.ietf.org/html/rfc6749#section-10.3) -en [gebruikers imitatie](https://tools.ietf.org/html/rfc6749#section-10.3)te gebruiken.
 
-Als u de impliciete stroom en de Microsoft identity-platform gebruiken wilt voor verificatie toevoegen aan uw JavaScript-app, raden we u de JavaScript-bibliotheek van open-source [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js).
+Als u de impliciete stroom en het micro soft-identiteits platform wilt gebruiken om verificatie toe te voegen aan uw Java script-app, raden we u aan om de open-source java script-bibliotheek [msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)te gebruiken.
 
-Als u liever niet te gebruiken van een bibliotheek in uw app met één pagina en protocolberichten uzelf te sturen, volgt u de algemene stappen hieronder.
+Als u echter liever geen bibliotheek gebruikt in een app met één pagina en zelf protocol berichten verzendt, volgt u de algemene stappen hieronder.
 
 > [!NOTE]
-> Niet alle Azure Active Directory (Azure AD)-scenario's en functies worden ondersteund door het eindpunt van de Microsoft identity-platform. Meer informatie over om te bepalen als u het eindpunt van de Microsoft identity-platform moet gebruiken, [beperkingen van het Microsoft identity platform](active-directory-v2-limitations.md).
+> Niet alle Azure Active Directory-scenario's en-functies (Azure AD) worden ondersteund door het micro soft Identity platform-eind punt. Lees over [micro soft Identity platform-beperkingen](active-directory-v2-limitations.md)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken.
 
-## <a name="protocol-diagram"></a>Protocol-diagram
+## <a name="protocol-diagram"></a>Protocol diagram
 
-Het volgende diagram toont hoe het gehele impliciete-aanmeldingsstroom uitziet en de volgende secties wordt elke stap in meer detail beschreven.
+In het volgende diagram ziet u hoe de volledige impliciete aanmeldings stroom eruit ziet en de secties die volgen elke stap in meer detail beschrijven.
 
-![Diagram van de impliciete stroom aanmelden](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
+![Diagram waarin de impliciete aanmeldings stroom wordt weer gegeven](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
 
-## <a name="send-the-sign-in-request"></a>De aanvraag voor aanmelding bij verzenden
+## <a name="send-the-sign-in-request"></a>De aanmeldings aanvraag verzenden
 
-In eerste instantie het tekenen van de gebruiker in uw app, kunt u sturen een [OpenID Connect](v2-protocols-oidc.md) verificatieaanvraag aan en ontvang een `id_token` van het eindpunt van Microsoft identity-platform.
+Als u de gebruiker in de app wilt ondertekenen, kunt u een [OpenID Connect Connect](v2-protocols-oidc.md) -verificatie aanvraag verzenden en `id_token` een van het micro soft Identity platform-eind punt ophalen.
 
 > [!IMPORTANT]
-> Om aan te vragen is een ID-token, dat de app-registratie in de [Azure portal - App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina moet de impliciete stroom correct ingeschakeld door het selecteren van **toegangstokens** en **ID-tokens** onder de **impliciete** sectie. Als deze niet is ingeschakeld, een `unsupported_response` fout geretourneerd: **De opgegeven waarde voor de invoerparameter 'response_type' is niet toegestaan voor deze client. Verwachte waarde is 'code'**
+> Als u een ID-token wilt aanvragen, moet de app-registratie op de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina de impliciete toekennings stroom hebben ingeschakeld, door **toegangs tokens** en **id-tokens** te selecteren onder de **impliciete toekenning** Section. Als de functie niet is ingeschakeld, `unsupported_response` wordt er een fout geretourneerd: **De opgegeven waarde voor de invoer parameter ' response_type ' is niet toegestaan voor deze client. De verwachte waarde is ' code '**
 
 ```
 // Line breaks for legibility only
@@ -71,30 +71,30 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> Als u wilt testen met behulp van de impliciete flow aanmelden, klikt u op <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank"> https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> Na het aanmelden, moet uw browser worden omgeleid naar `https://localhost/myapp/` met een `id_token` in de adresbalk.
+> Als u het aanmelden wilt testen met behulp van de impliciete stroom, klikt u op <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank"> https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> Nadat u zich hebt aangemeld, moet uw browser worden omgeleid `https://localhost/myapp/` naar met `id_token` een in de adres balk.
 >
 
 | Parameter |  | Description |
 | --- | --- | --- |
-| `tenant` | Vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich bij de toepassing aanmelden kan. De toegestane waarden zijn `common`, `organizations`, `consumers`, en tenant-id's. Zie voor meer details [protocol basisbeginselen](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | Vereist | De toepassing (client)-ID die de [Azure portal - App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina toegewezen aan uw app. |
-| `response_type` | Vereist |Moet bevatten `id_token` voor aanmelding OpenID Connect. Het kan ook het response_type bevatten `token`. Met behulp van `token` hier kunnen uw app ontvangt een toegangstoken onmiddellijk uit het geautoriseerde eindpunt zonder te hoeven maken van een tweede aanvraag naar het geautoriseerde eindpunt. Als u de `token` response_type, de `scope` parameter moet een scope die aangeeft welke resource voor het uitgeven van het token voor bevatten. |
-| `redirect_uri` | Aanbevolen |De redirect_uri van uw app, waarbij verificatiereacties kunnen worden verzonden en ontvangen door uw app. Het moet een van de redirect_uris die u in de portal hebt geregistreerd, behalve het url-codering moet exact overeenkomen. |
-| `scope` | Vereist |Een door spaties gescheiden lijst van [scopes](v2-permissions-and-consent.md). Voor de OpenID Connect, moet deze het bereik bevatten `openid`, die wordt omgezet in de machtiging 'Aanmelden' in de gebruikersinterface voor toestemming. (Optioneel) u kunt ook om op te nemen de `email` of `profile` bereiken voor het verkrijgen van toegang tot aanvullende gegevens. U kunt ook andere bereiken in deze aanvraag voor het aanvragen van toestemming aan verschillende resources opnemen. |
-| `response_mode` | Optioneel |Hiermee geeft u de methode die moet worden gebruikt voor het verzenden van het resulterende token terug naar uw app. De standaardwaarde als de aanvraag een id_token bevat te vragen voor een toegangstoken, maar het fragment. |
-| `state` | Aanbevolen |Een waarde die is opgenomen in de aanvraag die wordt ook in het token antwoord geretourneerd. Een tekenreeks van de inhoud die u wenst dat kan zijn. Een willekeurig gegenereerde unieke waarde wordt meestal gebruikt voor [cross-site-aanvraag kunnen worden vervalst aanvallen](https://tools.ietf.org/html/rfc6749#section-10.12). De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatieaanvraag heeft plaatsgevonden, zoals de pagina of de weergave die ze al had geopend. |
-| `nonce` | Vereist |Een waarde die is opgenomen in de aanvraag, die worden gegenereerd door de app, die wordt opgenomen in de resulterende id_token als een claim. De app kunt vervolgens controleren of deze waarde token opnieuw afspelen aanvallen te verkleinen. De waarde is doorgaans een willekeurige, unieke tekenreeks die kan worden gebruikt voor het identificeren van de oorsprong van de aanvraag. Alleen vereist wanneer een id_token wordt aangevraagd. |
-| `prompt` | Optioneel |Geeft het type tussenkomst van de gebruiker die is vereist. De enige geldige waarden op dit moment zijn 'aanmelding', 'none', 'select_account', ' toestemming geven '. `prompt=login` wordt de gebruiker te dwingen zijn referenties invoeren voor deze aanvraag, zodat eenmalige aanmelding. `prompt=none` is het tegenovergestelde - dit zorgt ervoor dat de gebruiker niet wordt weergegeven met een interactieve prompt dan ook. Als de aanvraag kan niet op de achtergrond via eenmalige aanmelding worden voltooid, wordt het eindpunt van de Microsoft identity-platform een fout geretourneerd. `prompt=select_account` Hiermee verzendt de gebruiker naar een accountkiezer waarin alle accounts die zijn opgeslagen in de sessie wordt weergegeven. `prompt=consent` het dialoogvenster OAuth wordt worden geactiveerd nadat de gebruiker zich heeft aangemeld, waarin de gebruiker wordt om de app-machtigingen te verlenen. |
-| `login_hint`  |Optioneel |Kan worden gebruikt om te vooraf vullen van het veld gebruikersnaam, e-mailadres van de aanmeldingspagina voor de gebruiker, als u bekend bent met hun gebruikersnaam vooraf. Vaak apps Gebruik deze parameter tijdens hernieuwde verificatie de gebruikersnaam die al worden geëxtraheerd uit een vorige aanmelden met behulp van de `preferred_username` claim.|
-| `domain_hint` | Optioneel |Een van `consumers` of `organizations`. Als opgenomen, wordt overgeslagen tijdens de detectie op basis van een e-mailadres van die gebruiker doorloopt op de aanmeldingspagina, leidt tot een iets meer gestroomlijnde gebruikerservaring. Vaak apps wordt deze parameter gebruikt tijdens hernieuwde verificatie door te extraheren de `tid` claim uit de id_token. Als de `tid` claim waarde `9188040d-6c67-4c5b-b112-36a304b66dad` (de Microsoft-Account consument tenant), moet u `domain_hint=consumers`. Anders kunt u `domain_hint=organizations` tijdens de verificatie opnieuw. |
+| `tenant` | vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn `common`, `organizations`, `consumers`en Tenant-id's. Zie [basis beginselen van protocollen](active-directory-v2-protocols.md#endpoints)voor meer informatie. |
+| `client_id` | vereist | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. |
+| `response_type` | vereist |Moet zijn `id_token` inbegrepen voor OpenID Connect Connect-aanmelding. Het kan ook de response_type `token`omvatten. Met `token` deze machtiging kan uw app direct een toegangs token ontvangen van het eind punt voor autorisatie zonder dat hiervoor een tweede aanvraag moet worden verzonden naar het toestemming-eind punt. Als u de `token` response_type gebruikt, moet `scope` de para meter een bereik bevatten dat aangeeft voor welke resource het token moet worden uitgegeven. |
+| `redirect_uri` | aanbevelingen |De redirect_uri van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de redirect_uris die u in de portal hebt geregistreerd, behalve het moet een URL-code ring zijn. |
+| `scope` | vereist |Een lijst met door spaties gescheiden [bereiken](v2-permissions-and-consent.md). Voor OpenID Connect Connect moet het bereik `openid`zijn opgenomen, dat wordt omgezet in de machtiging ' Meld u aan ' in de gebruikers interface van de toestemming. U kunt eventueel ook de of `email` `profile` bereiken voor het verkrijgen van toegang tot aanvullende gebruikers gegevens toevoegen. U kunt ook andere bereiken in deze aanvraag toevoegen om toestemming te vragen aan verschillende bronnen. |
+| `response_mode` | optioneel |Hiermee geeft u de methode op die moet worden gebruikt om het resulterende token terug naar uw app te verzenden. De standaard instelling is een query voor een toegangs token, maar fragment als de aanvraag een id_token bevat. |
+| `state` | aanbevelingen |Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Dit kan een teken reeks zijn van alle inhoud die u wilt. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
+| `nonce` | vereist |Een waarde die is opgenomen in de aanvraag, gegenereerd door de app, die wordt opgenomen in de resulterende id_token als een claim. De app kan vervolgens deze waarde verifiëren om token replay-aanvallen te verhelpen. De waarde is doorgaans een wille keurige, unieke teken reeks die kan worden gebruikt om de oorsprong van de aanvraag te identificeren. Alleen vereist wanneer een id_token is aangevraagd. |
+| `prompt` | optioneel |Hiermee wordt het type gebruikers interactie aangegeven dat vereist is. De enige geldige waarden op dit moment zijn ' aanmelding, ' none ', ' select_account ' en ' instemming '. `prompt=login`dwingt de gebruiker de referenties op die aanvraag in te voeren, waarbij eenmalige aanmelding wordt genegeerd. `prompt=none`is het tegenovergestelde: Hiermee zorgt u ervoor dat de gebruiker niet in een interactieve prompt wordt weer gegeven. Als de aanvraag niet op de achtergrond kan worden voltooid via eenmalige aanmelding, wordt door het micro soft Identity platform-eind punt een fout geretourneerd. `prompt=select_account`Hiermee wordt de gebruiker naar een account kiezer verzonden waarbij alle accounts die in de sessie zijn onthouden, worden weer gegeven. `prompt=consent`het dialoog venster OAuth-toestemming wordt geactiveerd nadat de gebruiker zich heeft aangemeld, waarbij de gebruiker wordt gevraagd om machtigingen te verlenen aan de app. |
+| `login_hint`  |optioneel |Kan worden gebruikt om het veld gebruikers naam/e-mail adres vooraf in te vullen op de aanmeldings pagina voor de gebruiker als u de gebruikers naam van tevoren kent. Vaak gebruiken apps deze para meter tijdens het opnieuw verifiëren, waarbij de gebruikers naam al is geëxtraheerd van een eerdere aanmelding met de `preferred_username` claim.|
+| `domain_hint` | optioneel |Dit kan een van `consumers` of `organizations`zijn. Indien opgenomen, wordt het op e-mail gebaseerde detectie proces overs Laan dat de gebruiker op de aanmeldings pagina doorloopt, waardoor er iets meer gestroomlijnde gebruikers ervaring is. Vaak gebruiken apps deze para meter tijdens de herauthenticatie door de `tid` claim te extra heren uit de id_token. Als de `tid` claim waarde is `9188040d-6c67-4c5b-b112-36a304b66dad` (de Tenant van het micro soft-account van de `domain_hint=consumers`consument), moet u gebruiken. Anders kunt u gebruiken `domain_hint=organizations` tijdens het opnieuw verifiëren. |
 
-Op dit moment is de gebruiker gevraagd zijn referenties invoeren en de verificatie voltooien. Het eindpunt van de Microsoft identity-platform wordt er ook voor zorgen dat de gebruiker heeft ingestemd met de machtigingen die zijn aangegeven in de `scope` queryparameter. Als de gebruiker heeft ingestemd met de **geen** van deze machtigingen de gebruiker akkoord gaan met de vereiste machtigingen wordt u gevraagd. Zie voor meer informatie, [machtigingen en toestemming apps met meerdere tenants](v2-permissions-and-consent.md).
+Op dit moment wordt de gebruiker gevraagd om hun referenties in te voeren en de verificatie te volt ooien. Het micro soft Identity platform-eind punt zorgt er ook voor dat de gebruiker heeft ingestemd met de `scope` machtigingen die in de query parameter worden aangegeven. Als de gebruiker heeft ingestemd met **geen** van deze machtigingen, wordt de gebruiker gevraagd om toestemming te geven voor de vereiste machtigingen. Zie [machtigingen, toestemming en multi tenant-apps](v2-permissions-and-consent.md)voor meer informatie.
 
-Zodra de gebruiker verifieert en toestemming verleent, het eindpunt van de Microsoft identity-platform wordt een antwoord naar uw app op de aangegeven `redirect_uri`, met behulp van de methode die is opgegeven de `response_mode` parameter.
+Zodra de gebruiker zich heeft geverifieerd en toestemming verleent, stuurt het micro soft Identity platform-eind punt een reactie op uw app `redirect_uri`op de aangegeven wijze, met behulp van de methode die is opgegeven in de `response_mode` para meter.
 
 #### <a name="successful-response"></a>Geslaagde reactie
 
-Een geslaagde respons met `response_mode=fragment` en `response_type=id_token+token` er als volgt (met regeleinden voor een betere leesbaarheid):
+Een geslaagde reactie `response_mode=fragment` in `response_type=id_token+token` en lijkt op het volgende (met regel einden voor de Lees baarheid):
 
 ```
 GET https://localhost/myapp/#
@@ -108,16 +108,16 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Parameter | Description |
 | --- | --- |
-| `access_token` |Opgenomen als `response_type` bevat `token`. Het toegangstoken dat de app is aangevraagd, in dit geval voor de Microsoft Graph. Het toegangstoken mag niet worden gedecodeerd of anders is gecontroleerd, moet dit worden beschouwd als een ondoorzichtige tekenreeks. |
-| `token_type` |Opgenomen als `response_type` bevat `token`. Altijd `Bearer`. |
-| `expires_in`|Opgenomen als `response_type` bevat `token`. Geeft het aantal seconden dat het token geldig is voor cachedoeleinden. |
-| `scope` |Opgenomen als `response_type` bevat `token`. Geeft aan dat de bereik(en) waarvoor de access_token geldig zijn. Omvat mogelijk niet alle van de bereiken die is aangevraagd, als ze niet van toepassing op de gebruiker (in het geval van Azure AD-alleen bereiken worden aangevraagd zijn als een persoonlijk account wordt gebruikt om aan te melden). |
-| `id_token` | Een ondertekende JSON Web Token (JWT). De app kan worden gedecodeerd de segmenten van dit token informatie opvragen over de gebruiker die zijn aangemeld. De app kan de waarden in de cache en deze weer te geven, maar deze moet niet afhankelijk zijn op deze voor elk autorisatie of grenzen voor netwerkbeveiliging. Zie voor meer informatie over id_tokens, de [ `id_token reference` ](id-tokens.md). <br> **Opmerking:** Alleen opgegeven als `openid` bereik is aangevraagd. |
-| `state` |Als een parameter state is opgenomen in de aanvraag, dezelfde waarde moet worden weergegeven in het antwoord. De app moet controleren of dat de provincie-waarden in de aanvraag en respons identiek zijn. |
+| `access_token` |Inbegrepen bij `response_type` includes `token`. Het toegangs token dat de app heeft aangevraagd, in dit geval voor de Microsoft Graph. Het toegangs token mag niet worden gedecodeerd of anderszins worden geïnspecteerd, maar moet worden beschouwd als een ondoorzichtige teken reeks. |
+| `token_type` |Inbegrepen bij `response_type` includes `token`. Is altijd `Bearer`. |
+| `expires_in`|Inbegrepen bij `response_type` includes `token`. Hiermee wordt het aantal seconden aangegeven dat het token geldig is, voor caching-doel einden. |
+| `scope` |Inbegrepen bij `response_type` includes `token`. Hiermee worden de scope (s) aangegeven waarvoor de access_token geldig is. Mag niet alle aangevraagde bereiken omvatten als deze niet van toepassing zijn op de gebruiker (in het geval van alleen Azure AD-scopes die worden aangevraagd wanneer een persoonlijk account wordt gebruikt om zich aan te melden). |
+| `id_token` | Een ondertekende JSON Web Token (JWT). De app kan de segmenten van deze token decoderen om informatie aan te vragen over de gebruiker die zich heeft aangemeld. De app kan de waarden in de cache opslaan en weer geven, maar deze hoeft niet te worden gebaseerd op autorisatie-of beveiligings grenzen. Zie voor meer informatie over id_tokens [`id_token reference`](id-tokens.md). <br> **Opmerking:** Alleen opgegeven als `openid` het bereik is aangevraagd. |
+| `state` |Als een para meter State is opgenomen in de aanvraag, moet dezelfde waarde in het antwoord worden weer gegeven. De app moet controleren of de status waarden in de aanvraag en het antwoord identiek zijn. |
 
-#### <a name="error-response"></a>Foutbericht
+#### <a name="error-response"></a>Fout bericht
 
-Foutberichten kunnen ook worden verzonden naar de `redirect_uri` zodat de app deze op de juiste wijze kan verwerken:
+Fout reacties kunnen ook worden verzonden naar de `redirect_uri` zodat de app deze op de juiste wijze kan afhandelen:
 
 ```
 GET https://localhost/myapp/#
@@ -127,28 +127,28 @@ error=access_denied
 
 | Parameter | Description |
 | --- | --- |
-| `error` |Een tekenreeks voor de foutcode die kan worden gebruikt voor het classificeren van typen fouten die optreden en kan worden gebruikt om te reageren op fouten. |
-| `error_description` |Een specifieke foutbericht dat een ontwikkelaar kan helpen de hoofdoorzaak van een verificatiefout identificeren. |
+| `error` |Een teken reeks voor fout codes die kan worden gebruikt voor het classificeren van typen fouten die optreden en kunnen worden gebruikt om te reageren op fouten. |
+| `error_description` |Een specifiek fout bericht dat een ontwikkelaar kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |
 
-## <a name="validate-the-idtoken"></a>De id_token valideren
+## <a name="validate-the-id_token"></a>De id_token valideren
 
-Alleen een id_token ontvangen is niet voldoende zijn voor het verifiëren van de gebruiker. u moet ook de handtekening van het id_token valideren en controleer of de claims in het token op basis van de vereisten van uw app. Maakt gebruik van het eindpunt van de Microsoft identity-platform [JSON Web Tokens (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) en cryptografie met openbare sleutels voor het ondertekenen van tokens en controleren ze geldig zijn.
+Alleen het ontvangen van een id_token is voldoende om de gebruiker te verifiëren. u moet ook de id_token's-hand tekening valideren en de claims in het token controleren op basis van de vereisten van uw app. Het micro soft Identity platform-eind punt maakt gebruik van [JSON Web tokens (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) en open bare-sleutel cryptografie om tokens te ondertekenen en te controleren of ze geldig zijn.
 
-U kunt kiezen om te valideren de `id_token` in client-code, maar een gebruikelijk is voor het verzenden van de `id_token` naar een back-endserver en er de validatie uit te voeren. Nadat u de handtekening van het id_token hebt gevalideerd, zijn er enkele claims die u gevraagd om te controleren. Zie de [ `id_token` verwijzing](id-tokens.md) voor meer informatie, met inbegrip van [valideren van tokens](id-tokens.md#validating-an-id_token) en [belangrijke informatie over de rollover van ondertekeningssleutel gebruiken](active-directory-signing-key-rollover.md). Het is raadzaam om gebruik van een bibliotheek voor het parseren en valideren van tokens: Er is ten minste één beschikbaar voor de meeste talen en platforms.
+U kunt ervoor kiezen om de `id_token` in-client code te valideren, maar een veelvoorkomende procedure `id_token` is het verzenden van het naar een back-endserver en de validatie daar uit te voeren. Nadat u de hand tekening van de id_token hebt gevalideerd, zijn er enkele claims vereist om te verifiëren. Zie de [ `id_token` referentie](id-tokens.md) voor meer informatie, met inbegrip [van het valideren](id-tokens.md#validating-an-id_token) van tokens en [belang rijke informatie over de rollover van de handtekening sleutel](active-directory-signing-key-rollover.md). We raden u aan om een bibliotheek te gebruiken voor het parseren en valideren van tokens. er is ten minste één beschikbaar voor de meeste talen en platformen.
 
-U kunt ook om aanvullende claims, afhankelijk van uw scenario te valideren. Sommige algemene validaties zijn onder andere:
+Het is ook mogelijk dat u aanvullende claims wilt valideren, afhankelijk van uw scenario. Enkele veelvoorkomende validaties zijn:
 
-* Ervoor te zorgen dat de gebruiker/organisatie is geregistreerd voor de app.
-* Ervoor te zorgen dat de gebruiker heeft juiste autorisatie/bevoegdheden.
-* Ervoor te zorgen dat een bepaalde sterkte van de verificatie is opgetreden, zoals meervoudige verificatie.
+* Controleren of de gebruiker/organisatie zich heeft geregistreerd voor de app.
+* Ervoor zorgen dat de gebruiker over de juiste autorisatie/bevoegdheden beschikt.
+* Er is een zekere mate van verificatie uitgevoerd, zoals multi-factor Authentication.
 
-Nadat u de id_token hebt gevalideerd, kunt u beginnen met een sessie met de gebruiker en de claims in de id_token gebruiken om informatie over de gebruiker in uw app te verkrijgen. Deze informatie kan worden gebruikt voor het weergeven, records en persoonlijke instellingen.
+Zodra u de id_token hebt gevalideerd, kunt u een sessie met de gebruiker starten en de claims in de id_token gebruiken voor het verkrijgen van informatie over de gebruiker in uw app. Deze informatie kan worden gebruikt voor weer gave, registratie, persoonlijke instellingen en meer.
 
-## <a name="get-access-tokens"></a>Toegangstokens ophalen
+## <a name="get-access-tokens"></a>Toegangs tokens ophalen
 
-Nu dat u hebt de gebruiker aangemeld bij uw app met één pagina, kunt u toegangstokens krijgen voor het aanroepen van web API's die zijn beveiligd door Microsoft identity-platform, zoals de [Microsoft Graph](https://developer.microsoft.com/graph). Zelfs als u al een token met ontvangen de `token` response_type, kunt u deze methode gebruiken om te verkrijgen van tokens, voor aanvullende bronnen zonder te hoeven omleiden van de gebruiker zich opnieuw aanmelden.
+Nu u de gebruiker hebt ondertekend in een app met één pagina, kunt u toegangs tokens krijgen voor het aanroepen van web-Api's die zijn beveiligd door het micro soft Identity-platform, zoals de [Microsoft Graph](https://developer.microsoft.com/graph). Zelfs als u al een token hebt ontvangen met `token` behulp van de response_type, kunt u deze methode gebruiken om tokens te verkrijgen aan aanvullende bronnen zonder dat u de gebruiker opnieuw hoeft aan te melden.
 
-In de normale OpenID Connect/OAuth-stroom, zou u dit doen door die een aanvraag verzendt naar de Microsoft identity-platform `/token` eindpunt. Het eindpunt van de Microsoft identity-platform biedt echter geen CORS-aanvragen, ondersteuning, zodat de AJAX-aanroepen voor het ophalen en vernieuwingstokens valt buiten de vraag. U kunt in plaats daarvan de impliciete stroom in een verborgen iframe gebruiken om op te halen van nieuwe-tokens voor andere web-API's: 
+In de normale OpenID connect verbinding maken/OAuth-stroom kunt u dit doen door een aanvraag in te stellen voor het `/token` micro soft Identity platform-eind punt. Het micro soft Identity platform-eind punt biedt echter geen ondersteuning voor CORS-aanvragen, dus het maken van AJAX-aanroepen voor het verkrijgen en vernieuwen van tokens is niet in de vraag. In plaats daarvan kunt u de impliciete stroom in een verborgen iframe gebruiken om nieuwe tokens voor andere web-Api's op te halen: 
 
 ```
 // Line breaks for legibility only
@@ -165,19 +165,19 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &login_hint=myuser@mycompany.com
 ```
 
-Zie voor meer informatie over de queryparameters in de URL, [het teken in de aanvraag verzenden](#send-the-sign-in-request).
+Zie [de aanmeldings aanvraag verzenden](#send-the-sign-in-request)voor meer informatie over de query parameters in de URL.
 
 > [!TIP]
-> Probeer te kopiëren en plakken van de onderstaande aanvraag in een browsertabblad! (Vergeet niet om te vervangen de `login_hint` waarden met de juiste waarde voor de gebruiker)
+> Kopieer & de onderstaande aanvraag op een browser tabblad te plakken. (Vergeet niet om de `login_hint` waarden te vervangen door de juiste waarde voor uw gebruiker)
 >
 >`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2user.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&login_hint=your-username`
 >
 
-Dankzij de `prompt=none` parameter, dit verzoek op slagen of mislukken onmiddellijk en Ga terug naar uw toepassing. Een geslaagde reactie wordt verzonden naar uw app op de aangegeven `redirect_uri`, met behulp van de methode die is opgegeven de `response_mode` parameter.
+Dankzij de `prompt=none` para meter kan deze aanvraag onmiddellijk slagen of mislukken en terugkeren naar uw toepassing. Er wordt een geslaagde reactie verzonden naar uw app op de `redirect_uri`aangegeven wijze, met behulp van `response_mode` de methode die is opgegeven in de para meter.
 
 #### <a name="successful-response"></a>Geslaagde reactie
 
-Een geslaagde respons met `response_mode=fragment` ziet eruit als:
+Een geslaagde reactie `response_mode=fragment` met ziet eruit als:
 
 ```
 GET https://localhost/myapp/#
@@ -190,16 +190,16 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 | Parameter | Description |
 | --- | --- |
-| `access_token` |Opgenomen als `response_type` bevat `token`. Het toegangstoken dat de app is aangevraagd, in dit geval voor de Microsoft Graph. Het toegangstoken mag niet worden gedecodeerd of anders is gecontroleerd, moet dit worden beschouwd als een ondoorzichtige tekenreeks. |
-| `token_type` | Altijd `Bearer`. |
-| `expires_in` | Geeft het aantal seconden dat het token geldig is voor cachedoeleinden. |
-| `scope` | Geeft aan dat de bereik(en) waarvoor de access_token geldig zijn. Omvat mogelijk niet alle van de bereiken die is aangevraagd, als ze niet van toepassing op de gebruiker (in het geval van Azure AD-alleen bereiken worden aangevraagd zijn als een persoonlijk account wordt gebruikt om aan te melden). |
-| `id_token` | Een ondertekende JSON Web Token (JWT). Opgenomen als `response_type` bevat `id_token`. De app kan worden gedecodeerd de segmenten van dit token informatie opvragen over de gebruiker die zijn aangemeld. De app kan de waarden in de cache en deze weer te geven, maar deze moet niet afhankelijk zijn op deze voor elk autorisatie of grenzen voor netwerkbeveiliging. Zie voor meer informatie over id_tokens, de [ `id_token` verwijzing](id-tokens.md). <br> **Opmerking:** Alleen opgegeven als `openid` bereik is aangevraagd. |
-| `state` |Als een parameter state is opgenomen in de aanvraag, dezelfde waarde moet worden weergegeven in het antwoord. De app moet controleren of dat de provincie-waarden in de aanvraag en respons identiek zijn. |
+| `access_token` |Inbegrepen bij `response_type` includes `token`. Het toegangs token dat de app heeft aangevraagd, in dit geval voor de Microsoft Graph. Het toegangs token mag niet worden gedecodeerd of anderszins worden geïnspecteerd, maar moet worden beschouwd als een ondoorzichtige teken reeks. |
+| `token_type` | Is altijd `Bearer`. |
+| `expires_in` | Hiermee wordt het aantal seconden aangegeven dat het token geldig is, voor caching-doel einden. |
+| `scope` | Hiermee worden de scope (s) aangegeven waarvoor de access_token geldig is. Mag niet alle aangevraagde bereiken omvatten als deze niet van toepassing zijn op de gebruiker (in het geval van alleen Azure AD-scopes die worden aangevraagd wanneer een persoonlijk account wordt gebruikt om zich aan te melden). |
+| `id_token` | Een ondertekende JSON Web Token (JWT). Inbegrepen bij `response_type` includes `id_token`. De app kan de segmenten van deze token decoderen om informatie aan te vragen over de gebruiker die zich heeft aangemeld. De app kan de waarden in de cache opslaan en weer geven, maar deze hoeft niet te worden gebaseerd op autorisatie-of beveiligings grenzen. Zie de [ `id_token` verwijzing](id-tokens.md)voor meer informatie over id_tokens. <br> **Opmerking:** Alleen opgegeven als `openid` het bereik is aangevraagd. |
+| `state` |Als een para meter State is opgenomen in de aanvraag, moet dezelfde waarde in het antwoord worden weer gegeven. De app moet controleren of de status waarden in de aanvraag en het antwoord identiek zijn. |
 
-#### <a name="error-response"></a>Foutbericht
+#### <a name="error-response"></a>Fout bericht
 
-Foutberichten kunnen ook worden verzonden naar de `redirect_uri` zodat de app deze op de juiste wijze kan verwerken. In het geval van `prompt=none`, een verwachte fout is:
+Fout reacties kunnen ook worden verzonden naar de `redirect_uri` zodat de app deze op de juiste wijze kan afhandelen. In het geval van `prompt=none`is een verwachte fout:
 
 ```
 GET https://localhost/myapp/#
@@ -209,28 +209,18 @@ error=user_authentication_required
 
 | Parameter | Description |
 | --- | --- |
-| `error` |Een tekenreeks voor de foutcode die kan worden gebruikt voor het classificeren van typen fouten die optreden en kan worden gebruikt om te reageren op fouten. |
-| `error_description` |Een specifieke foutbericht dat een ontwikkelaar kan helpen de hoofdoorzaak van een verificatiefout identificeren. |
+| `error` |Een teken reeks voor fout codes die kan worden gebruikt voor het classificeren van typen fouten die optreden en kunnen worden gebruikt om te reageren op fouten. |
+| `error_description` |Een specifiek fout bericht dat een ontwikkelaar kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |
 
-Als u deze fout in de iframe-aanvraag ontvangt, moet de gebruiker interactief aanmelden weer naar een nieuw token opgehaald. U kunt in dit geval in een manier die zinvol is voor uw toepassing.
+Als u deze fout in de iframe-aanvraag ontvangt, moet de gebruiker zich opnieuw aanmelden om een nieuw token op te halen. U kunt ervoor kiezen om deze kwestie op een wille keurige manier af te handelen voor uw toepassing.
 
-## <a name="validating-access-tokens"></a>Toegangstokens valideren
+## <a name="refreshing-tokens"></a>Tokens vernieuwen
 
-Wanneer u een access_token ontvangt, zorg er dan voor dat valideert de handtekening van het token, evenals de volgende claims. U kunt er ook voor kiezen om aanvullende claims op basis van uw scenario te valideren.
+De impliciete toekenning biedt geen vernieuwings tokens. De s en `access_token`s verlopen na een korte periode. Daarom moet uw app worden voor bereid om deze tokens regel matig te vernieuwen. `id_token` Als u een van beide typen tokens wilt vernieuwen, kunt u dezelfde verborgen iframe-aanvraag van `prompt=none` boven uitvoeren met behulp van de para meter om het gedrag van het identiteits platform te bepalen. Als `id_token`u een nieuw bericht wilt ontvangen, moet u, en `response_type=id_token` `scope=openid`ook een `nonce` para meter gebruiken.
 
-* **doelgroep** claim, om ervoor te zorgen dat het token is bedoeld om u te krijgen tot uw app
-* **verlener** claim, om te controleren of het token aan uw app is uitgegeven door het eindpunt van Microsoft identity-platform
-* **niet voor** en **verlooptijd** claims, om te verifiëren dat het token niet is verlopen
+## <a name="send-a-sign-out-request"></a>Een aanvraag voor een afmelding verzenden
 
-Zie voor meer informatie over de claims aanwezig zijn in het toegangstoken, de [toegang tot tokenverwijzing](access-tokens.md)
-
-## <a name="refreshing-tokens"></a>Vernieuwen van tokens
-
-De impliciete toekenning biedt geen vernieuwingstokens. Beide `id_token`s en `access_token`s verloopt na een korte periode, zodat uw app moet worden voorbereid voor het vernieuwen van deze tokens periodiek. Beide typen token vernieuwen, kunt u uitvoeren de dezelfde verborgen iframe-aanvraag in het navolgende met behulp van de `prompt=none` parameter voor het beheren van het identity-platform-gedrag. Als u wilt ontvangen van een nieuwe `id_token`, zorg ervoor dat u `response_type=id_token` en `scope=openid`, evenals een `nonce` parameter.
-
-## <a name="send-a-sign-out-request"></a>Een afmelden aanvraag verzenden
-
-De OpenID Connect `end_session_endpoint` kan uw app een aanvraag te verzenden naar het eindpunt van Microsoft identity-platform een gebruikerssessie beëindigen en het wissen van cookies instellen door het eindpunt van Microsoft identity-platform. Volledig het tekenen van een gebruiker uit een web-App, moet uw app een eigen sessie met de gebruiker beëindigen (meestal met een token cache wissen of verwijderen van cookies) en leid de browser:
+Met de OpenID Connect `end_session_endpoint` Connect kan uw app een aanvraag verzenden naar het micro soft Identity platform-eind punt om de sessie van een gebruiker te beëindigen en cookies te wissen die zijn ingesteld door het micro soft Identity platform-eind punt. Als u een gebruiker volledig wilt ondertekenen vanuit een webtoepassing, moet uw app een eigen sessie met de gebruiker beëindigen (meestal door het wissen van een token cache of het verwijderen van cookies), en vervolgens de browser om te leiden naar:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
@@ -238,9 +228,9 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 | Parameter |  | Description |
 | --- | --- | --- |
-| `tenant` |Vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich bij de toepassing aanmelden kan. De toegestane waarden zijn `common`, `organizations`, `consumers`, en tenant-id's. Zie voor meer details [protocol basisbeginselen](active-directory-v2-protocols.md#endpoints). |
-| `post_logout_redirect_uri` | Aanbevolen | De URL die de gebruiker moet worden geretourneerd aan na het afmelden is voltooid. Deze waarde moet overeenkomen met een van de omleidings-URI's die zijn geregistreerd voor de toepassing. Als niet is opgenomen, kan de gebruiker wordt een algemeen bericht door het eindpunt van Microsoft identity-platform worden weergegeven. |
+| `tenant` |vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn `common`, `organizations`, `consumers`en Tenant-id's. Zie [basis beginselen van protocollen](active-directory-v2-protocols.md#endpoints)voor meer informatie. |
+| `post_logout_redirect_uri` | aanbevelingen | De URL waarnaar de gebruiker moet worden geretourneerd nadat de afmelding is voltooid. Deze waarde moet overeenkomen met een van de omleidings-Uri's die voor de toepassing zijn geregistreerd. Als dat niet het geval is, wordt de gebruiker een algemeen bericht weer gegeven door het micro soft Identity platform-eind punt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ga via de [MSAL JS voorbeelden](sample-v2-code.md) aan de slag coderen.
+* Ga naar de [MSAL js](sample-v2-code.md) -voor beelden om te beginnen met de code ring.

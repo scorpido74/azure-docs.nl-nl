@@ -1,27 +1,21 @@
 ---
-title: Gegevensplatforms voor de Data Science Virtual Machine - Azure | Microsoft Docs
-description: Meer informatie over de gegevens platformen en hulpprogramma's die worden ondersteund op de Data Science Virtual Machine.
+title: Ondersteunde gegevens platforms
+titleSuffix: Azure Data Science Virtual Machine
+description: Meer informatie over de ondersteunde gegevens platforms en hulpprogram ma's voor Azure Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: a0fe4ee33769a6d8cf14f60dcc0c4615bb00c5e8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e0ba013f7739e7ade717136cb5507af630263a18
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565293"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192207"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Gegevensplatforms die worden ondersteund op de Data Science Virtual Machine
 

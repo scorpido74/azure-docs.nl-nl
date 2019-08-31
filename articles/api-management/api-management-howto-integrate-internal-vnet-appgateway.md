@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: f7617348a98899251dcd3b8f1645c40bd297ffdb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073558"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193952"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
 
@@ -84,6 +84,9 @@ In deze hand leiding wordt de **ontwikkelaars Portal** ook beschikbaar voor exte
 
 > [!WARNING]
 > Als u Azure AD of authenticatie van derden gebruikt, schakelt u de [cookie-functie voor sessie affiniteit op basis van cookies](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) in Application Gateway.
+
+> [!WARNING]
+> Als u wilt voor komen dat Application Gateway WAF het downloaden van de OpenAPI-specificatie in de ontwikkelaars Portal verbreekt, moet `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`u de firewall regel uitschakelen.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Een resourcegroep maken voor Resource Manager
 

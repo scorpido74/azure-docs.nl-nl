@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 7/01/2019
+ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883584"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194309"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Zoek query's naar de Bing Visual Search-API verzenden
 
@@ -242,7 +242,7 @@ Het veld `tags` bevat een weergavenaam en een lijst met acties (inzichten). Een 
 
 Zie [standaard Insights-tag](../default-insights-tag.md)voor een lijst met standaard inzichten.
 
-De overige tags bevatten andere inzichten die van belang kunnen zijn voor de gebruiker. Als de afbeelding bijvoorbeeld tekst bevat, kan een van de tags het inzicht TextResults bevatten, dat de herkende tekst bevat. Als Bing een entiteit (dat wil zeggen, een persoon, plaats of ding) in de afbeelding herkent, kan de entiteit door een van de tags worden geïdentificeerd. Visual Search retourneert ook een diverse reeks termen (tags) die zijn afgeleid van de ingevoerde afbeelding. Met deze tags kunnen gebruikers concepten verkennen die in de installatie kopie worden gevonden. Als de invoerafbeelding bijvoorbeeld een beroemde atleet bevat, kan een van de tags Sport zijn, die koppelingen naar afbeeldingen van sport bevat.
+De overige tags bevatten andere inzichten die van belang kunnen zijn voor de gebruiker. Als de afbeelding bijvoorbeeld tekst bevat, kan een van de tags het inzicht TextResults bevatten, dat de herkende tekst bevat. Als Bing een entiteit (dat wil zeggen, een in de praktijk bekende/populaire persoon, plaats of ding) in de afbeelding herkent, kan een van de tags de entiteit identificeren. Visual Search retourneert ook een diverse reeks termen (tags) die zijn afgeleid van de ingevoerde afbeelding. Met deze tags kunnen gebruikers concepten verkennen die in de installatie kopie worden gevonden. Als de invoerafbeelding bijvoorbeeld een beroemde atleet bevat, kan een van de tags Sport zijn, die koppelingen naar afbeeldingen van sport bevat.
 
 Elke tag bevat een weergavenaam die u kunt gebruiken om het inzicht te categoriseren, heen begrenzingsvak dat het interessegebied identificeert waarop het inzicht van toepassing is, de inzichten zelf, en een miniatuur van de afbeelding. Als de afbeelding bijvoorbeeld van een persoon is die een sporttrui draagt, kan een van de tags een begrenzingsvak bevatten dat de trui begrenst en VisualSearch- en ProductVisualSearch-inzichten bevatten. En een andere tag kan een ImageResults-inzicht bevatten met een URL voor een /images/search-API-aanvraag om afbeeldingen te krijgen die gerelateerd zijn aan het onderwerp of een zoek-URL van Bing.com die de gebruiker naar de Bing.com-zoekresultaten voor afbeeldingen brengt.
 
@@ -368,7 +368,7 @@ Tekstherkenning kan ook de contactgegevens op visitekaartjes herkennen, zoals te
     }
 ```
 
-Als de afbeelding een herkende entiteit bevat zoals een persoon, plaats of ding, kan een van de tags een entiteitsinzicht bevatten.
+Als de installatie kopie een herkende entiteit bevat, zoals een cultuur bekende/populaire persoon, plaats of ding, kan een van de Tags een entiteit inzicht bevatten.
 
 ```json
     {

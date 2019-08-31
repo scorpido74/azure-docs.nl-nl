@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011352"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193326"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een beveiligd LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
 
@@ -63,7 +63,7 @@ Het certificaat dat u wilt aanvragen of maken, moet voldoen aan de volgende vere
 
 * **Vertrouwde uitgever** : het certificaat moet worden uitgegeven door een certificerings instantie die wordt vertrouwd door computers die verbinding maken met het beheerde domein met behulp van secure LDAP. Deze instantie kan een open bare CERTIFICERINGs instantie of een bedrijfs certificerings instantie zijn die door deze computers wordt vertrouwd.
 * **Levens duur** : het certificaat moet ten minste de volgende 3-6 maanden geldig zijn. Secure LDAP toegang tot uw beheerde domein wordt verstoord wanneer het certificaat is verlopen.
-* **Onderwerpnaam** : de onderwerpnaam van het certificaat moet uw beheerde domein zijn. Als uw domein bijvoorbeeld de naam *contoso.com*heeft, moet de onderwerpnaam van het certificaat *contoso.com*zijn.
+* **Onderwerpnaam** : de onderwerpnaam van het certificaat moet uw beheerde domein zijn. Als uw domein bijvoorbeeld de naam *contoso.com*heeft, moet de onderwerpnaam van het certificaat * *. contoso.com*zijn.
     * De alternatieve naam van de DNS-naam of het onderwerp van het certificaat moet een Joker certificaat zijn om ervoor te zorgen dat de beveiligde LDAP goed werkt met de Azure AD Domain Services. Domein controllers gebruiken wille keurige namen en kunnen worden verwijderd of toegevoegd om ervoor te zorgen dat de service beschikbaar blijft.
 * **Sleutel gebruik** : het certificaat moet worden geconfigureerd voor *digitale hand tekeningen* en *sleutel codering*.
 * **Certificaat doeleinde** -het certificaat moet geldig zijn voor SSL-server authenticatie.
@@ -78,7 +78,7 @@ $dnsName="contoso.com"
 $lifetime=Get-Date
 
 # Create a self-signed certificate for use with Azure AD DS
-New-SelfSignedCertificate -Subject $dnsName `
+New-SelfSignedCertificate -Subject *.$dnsName `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName
 ```
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject $dnsName `
 In de volgende voorbeeld uitvoer ziet u dat het certificaat is gegenereerd en is opgeslagen in het lokale certificaat archief (*LocalMachine\MY*):
 
 ```output
-PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject $dnsName `
+PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 >>   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
 >>   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName.com
 

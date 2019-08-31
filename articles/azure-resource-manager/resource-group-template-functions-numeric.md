@@ -1,19 +1,19 @@
 ---
-title: Azure Resource Manager-sjabloonfuncties - numerieke | Microsoft Docs
-description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebruiken om te werken met getallen.
+title: Azure Resource Manager sjabloon functies-numeriek | Microsoft Docs
+description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om te werken met getallen.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: f63ce16369fd1ff58d5368b43c3c730008e63d9a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3ec5477ca6ea1731f18b09d6393bdde6261e0c32
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206422"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194329"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerieke functies voor Azure Resource Manager-sjablonen
+# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerieke functies voor Azure Resource Manager sjablonen
 
 Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 
@@ -24,7 +24,7 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 * [int](#int)
 * [max](#max)
 * [min](#min)
-* [Mod](#mod)
+* [mod](#mod)
 * [mul](#mul)
 * [sub](#sub)
 
@@ -32,25 +32,25 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>add
+## <a name="add"></a>toevoegen
 `add(operand1, operand2)`
 
-Retourneert de som van de twee opgegeven gehele getallen.
+Retourneert de som van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Ja |int |Nummer van de eerste om toe te voegen. |
-|operand2 |Ja |int |Tweede getal om toe te voegen. |
+|operand1 |Ja |int |Het eerste nummer dat moet worden toegevoegd. |
+|operand2 |Ja |int |Het tweede nummer dat moet worden toegevoegd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal dat de som van de parameters bevat.
+Een geheel getal dat de som van de para meters bevat.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) voegt twee parameters.
+Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) worden twee para meters toegevoegd.
 
 ```json
 {
@@ -106,28 +106,28 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Retourneert de index van een lus iteratie. 
+Retourneert de index van een herhalings lus. 
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| loopName | Nee | string | De naam van de lus voor het ophalen van de iteratie. |
-| offset |Nee |int |Het aantal om toe te voegen aan de waarde op nul gebaseerde iteratie. |
+| lusinstructie | Nee | string | De naam van de lus voor het ophalen van de iteratie. |
+| offset |Nee |int |Het getal dat moet worden toegevoegd aan de op nul gebaseerde iteratie waarde. |
 
 ### <a name="remarks"></a>Opmerkingen
 
-Deze functie wordt altijd gebruikt met een **kopie** object. Als er geen waarde is opgegeven voor **offset**, de huidige iteratie-waarde wordt geretourneerd. De waarde van de herhaling start bij nul. U kunt iteratie lussen gebruiken bij het definiëren van resources of variabelen.
+Deze functie wordt altijd gebruikt met een **Kopieer** object. Als er geen waarde wordt opgegeven voor **Offset**, wordt de huidige iteratie waarde geretourneerd. De iteratie waarde begint bij nul. U kunt herhalings lussen gebruiken wanneer u resources of variabelen definieert.
 
-De **loopName** eigenschap kunt u opgeven of copyIndex wordt verwezen naar een iteratie van de resource of de eigenschap iteratie. Als er geen waarde is opgegeven voor **loopName**, de huidige iteratie van de resource-type wordt gebruikt. Geef een waarde voor **loopName** wanneer op een eigenschap. 
+Met de eigenschap **lusinstructie** kunt u opgeven of functie copyindex verwijst naar een resource herhaling of eigenschaps herhaling. Als er geen waarde wordt gegeven voor de **lusinstructie**, wordt het huidige bron type herhaling gebruikt. Geef een waarde voor de **lusinstructie** op wanneer u een eigenschap wilt herhalen. 
  
-Voor een volledige beschrijving van hoe u **copyIndex**, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](resource-group-create-multiple.md).
+Zie [meerdere exemplaren van resources maken in azure Resource Manager](resource-group-create-multiple.md)voor een volledige beschrijving van de manier waarop u **functie copyindex**gebruikt.
 
-Voor een voorbeeld van het gebruik van **copyIndex** bij het definiëren van een variabele, Zie [variabelen](resource-group-authoring-templates.md#variables).
+Zie [variabelen](resource-group-authoring-templates.md#variables)voor een voor beeld van het gebruik van **functie copyindex** bij het definiëren van een variabele.
 
 ### <a name="example"></a>Voorbeeld
 
-Het volgende voorbeeld ziet een lus kopiëren en de indexwaarde die is opgenomen in de naam. 
+In het volgende voor beeld ziet u een lus Copy en de index waarde die is opgenomen in de naam. 
 
 ```json
 "resources": [ 
@@ -145,29 +145,29 @@ Het volgende voorbeeld ziet een lus kopiëren en de indexwaarde die is opgenomen
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal die de huidige index van de iteratie vertegenwoordigt.
+Een geheel getal dat de huidige index van de herhaling vertegenwoordigt.
 
 <a id="div" />
 
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Retourneert de afdeling geheel getal van de twee opgegeven gehele getallen.
+Retourneert de deling van het gehele getal van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Het getal wordt gedeeld. |
-| operand2 |Ja |int |Het nummer dat wordt gebruikt om te delen. Mag niet 0 zijn. |
+| operand1 |Ja |int |Het getal dat wordt verdeeld. |
+| operand2 |Ja |int |Het getal dat wordt gebruikt om te delen. Mag niet 0 zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal dat aangeeft van de afdeling.
+Een geheel getal dat de deling vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) wordt één parameter door een andere parameter verdeeld.
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) deelt één para meter door een andere para meter.
 
 ```json
 {
@@ -223,20 +223,20 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="float"></a>float
 `float(arg1)`
 
-De waarde omgezet in een drijvende-kommagetal zijn. U deze functie alleen gebruiken als aangepaste parameters doorgeven aan een toepassing, zoals een logische App.
+Zet de waarde om in een getal met drijvende komma. U kunt deze functie alleen gebruiken bij het door geven van aangepaste para meters aan een toepassing, zoals een logische app.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |tekenreeks of int |De waarde moet worden geconverteerd naar een drijvende-kommagetal zijn. |
+| arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een getal met een drijvende komma. |
 
 ### <a name="return-value"></a>Retourwaarde
-Een drijvende-kommagetal zijn.
+Een drijvende-komma waarde.
 
 ### <a name="example"></a>Voorbeeld
 
-Het volgende voorbeeld ziet u hoe u parameters kunt toevoegen aan een logische App met drijvende komma:
+In het volgende voor beeld ziet u hoe float wordt gebruikt om para meters door te geven aan een logische app:
 
 ```json
 {
@@ -257,13 +257,13 @@ Het volgende voorbeeld ziet u hoe u parameters kunt toevoegen aan een logische A
 ## <a name="int"></a>int
 `int(valueToConvert)`
 
-De opgegeven waarde omgezet in een geheel getal zijn.
+Hiermee wordt de opgegeven waarde geconverteerd naar een geheel getal.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ja |tekenreeks of int |De waarde moet worden geconverteerd naar een geheel getal zijn. |
+| valueToConvert |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een geheel getal. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -271,7 +271,7 @@ Een geheel getal van de geconverteerde waarde.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) waarde van de gebruiker opgegeven parameter converteert naar geheel getal zijn.
+Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) de door de gebruiker ingevoerde parameter waarde geconverteerd naar een geheel getal.
 
 ```json
 {
@@ -317,21 +317,21 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="max"></a>max
 `max (arg1)`
 
-Retourneert de maximumwaarde van een matrix met gehele getallen of een door komma's gescheiden lijst met gehele getallen.
+Retourneert de maximum waarde van een matrix met gehele getallen of een door komma's gescheiden lijst met gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matrix van gehele getallen of een door komma's gescheiden lijst met gehele getallen |De verzameling die de maximale waarde te halen. |
+| arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de maximum waarde op te halen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal voor de maximale waarde uit de verzameling.
+Een geheel getal dat de maximum waarde uit de verzameling voor stelt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) ziet u hoe u max met een matrix en een lijst met gehele getallen:
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) ziet u hoe u Max kunt gebruiken met een matrix en een lijst met gehele getallen:
 
 ```json
 {
@@ -378,24 +378,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 `min (arg1)`
 
-Retourneert de minimumwaarde van een matrix met gehele getallen of een door komma's gescheiden lijst met gehele getallen.
+Retourneert de minimum waarde van een matrix met gehele getallen of een door komma's gescheiden lijst met gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matrix van gehele getallen of een door komma's gescheiden lijst met gehele getallen |De verzameling om de minimale waarde. |
+| arg1 |Ja |matrix van gehele getallen of door komma's gescheiden lijst met gehele getallen |De verzameling om de minimum waarde op te halen. |
 
 ### <a name="return-value"></a>Retourwaarde
 
-Een geheel getal voor de minimale waarde uit de verzameling.
+Een geheel getal dat de minimum waarde uit de verzameling voor stelt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) ziet u hoe u min met een matrix en een lijst met gehele getallen:
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) ziet u hoe min met een matrix en een lijst met gehele getallen moet worden gebruikt:
 
 ```json
 {
@@ -442,24 +442,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mod" />
 
-## <a name="mod"></a>Mod
+## <a name="mod"></a>mod
 `mod(operand1, operand2)`
 
-Retourneert de rest van de delen door geheel getal met behulp van de twee opgegeven gehele getallen.
+Retourneert de rest van de deling van het gehele getal met behulp van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Het getal wordt gedeeld. |
-| operand2 |Ja |int |Het getal dat wordt gebruikt voor het delen, mag niet 0 zijn. |
+| operand1 |Ja |int |Het getal dat wordt verdeeld. |
+| operand2 |Ja |int |Het getal dat wordt gebruikt om te delen, mag niet 0 zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
-Een geheel getal dat aangeeft van de rest.
+Een geheel getal dat het restant voor stelt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) retourneert de rest van het delen van één parameter door een andere parameter.
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) retourneert het restant van het delen van één para meter door een andere para meter.
 
 ```json
 {
@@ -515,14 +515,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="mul"></a>mul
 `mul(operand1, operand2)`
 
-Retourneert de vermenigvuldiging van de twee opgegeven gehele getallen.
+Retourneert de vermenigvuldiging van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Het eerste dat moet worden vermenigvuldigd. |
-| operand2 |Ja |int |Tweede getal waarmee moet worden vermenigvuldigd. |
+| operand1 |Ja |int |Het eerste getal dat moet worden vermenigvuldigd. |
+| operand2 |Ja |int |Het tweede getal dat moet worden vermenigvuldigd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -530,7 +530,7 @@ Een geheel getal dat de vermenigvuldiging vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) wordt één parameter door een andere parameter vermenigvuldigd.
+De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) vermenigvuldigt één para meter met een andere para meter.
 
 ```json
 {
@@ -586,21 +586,21 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="sub"></a>sub
 `sub(operand1, operand2)`
 
-Retourneert de aftrekken van de twee opgegeven gehele getallen.
+Retourneert de aftrekking van de twee door gegeven gehele getallen.
 
 ### <a name="parameters"></a>Parameters
 
 | Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Het nummer dat wordt afgetrokken van de. |
-| operand2 |Ja |int |Het nummer dat wordt afgetrokken. |
+| operand1 |Ja |int |Het getal dat wordt afgetrokken van. |
+| operand2 |Ja |int |Het getal dat wordt afgetrokken. |
 
 ### <a name="return-value"></a>Retourwaarde
 Een geheel getal dat de aftrekking vertegenwoordigt.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) wordt één parameter van een andere parameter afgetrokken.
+Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) een para meter van een andere para meter afgetrokken.
 
 ```json
 {
@@ -637,7 +637,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| subResult | Int | 4 |
+| subresultaat | Int | 4 |
 
 In dit als voorbeeldsjabloon wilt implementeren met Azure CLI, gebruikt u:
 
@@ -655,5 +655,5 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 * Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](resource-group-authoring-templates.md).
 * U kunt meerdere sjablonen samenvoegen, Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](resource-group-linked-templates.md).
 * Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](resource-group-create-multiple.md).
-* Zie voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt, [een toepassing implementeren met Azure Resource Manager-sjabloon](resource-group-template-deploy.md).
+* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](resource-group-template-deploy.md)voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
 

@@ -1,31 +1,25 @@
 ---
-title: Data Science Virtual Machine-pools - Azure | Microsoft Docs
+title: Gedeelde Pools
+titleSuffix: Azure Data Science Virtual Machine
 description: Groepen van Dsvm implementeren als een gedeelde resource voor een team
 keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses, team data science process
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/10/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 76a715838fa5eb4f806fccc98675ea5acdbe1822
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: conceptual
+ms.date: 12/10/2018
+ms.openlocfilehash: 929040b5dc8650a757fb9c0da58cb82a76a72b5b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992034"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195624"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Maken van een gedeelde groep van virtuele Machines voor Datatechnologie
 
-In dit artikel wordt beschreven hoe u een gedeelde pool van data Science Virtual Machines (Dsvm) maakt voor een team. De voor delen van het gebruik van een gedeelde groep zijn het verbeteren van het resource gebruik, het eenvoudig delen en samen werken en een efficiëntere beheer van DSVM-resources.
+In dit artikel leert u hoe u een gedeelde pool van data Science Virtual Machines (Dsvm) kunt maken voor een team. De voor delen van het gebruik van een gedeelde groep zijn het verbeteren van het resource gebruik, het eenvoudig delen en samen werken en een efficiëntere beheer van DSVM-resources.
 
 U kunt vele methoden en -technologieën gebruiken om een pool van Dsvm te maken. Dit artikel richt zich op Pools voor interactieve virtuele machines (Vm's). Een alternatieve beheerde Compute-infra structuur is Azure Machine Learning Reken kracht. Zie [reken doelen instellen](../service/how-to-set-up-training-targets.md#amlcompute)voor meer informatie.
 

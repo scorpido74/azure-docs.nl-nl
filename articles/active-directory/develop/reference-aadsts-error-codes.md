@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135761"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193179"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Codes van verificatie- en autorisatiefouten
 
@@ -31,7 +31,12 @@ Zoeken naar informatie over de AADSTS-fout codes die worden geretourneerd door d
 > [!NOTE]
 > Deze informatie is voorlopig en kan worden gewijzigd. Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de ondersteunings- [en Help-opties voor ontwikkel aars](active-directory-develop-help-support.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.
 >
-> Deze documentatie wordt verstrekt voor ontwikkel aars-en beheer richtlijnen, maar mag niet worden gebruikt door de client zelf. Fout codes kunnen op elk gewenst moment worden gewijzigd, zodat er meer gedetailleerde fout berichten worden weer geven die zijn bedoeld om de ontwikkelaar te helpen bij het bouwen van de toepassing. Apps die afhankelijk zijn van tekst of fout code nummers, worden na verloop van tijd gesplitst.  
+> Deze documentatie wordt verstrekt voor ontwikkel aars-en beheer richtlijnen, maar mag niet worden gebruikt door de client zelf. Fout codes kunnen op elk gewenst moment worden gewijzigd, zodat er meer gedetailleerde fout berichten worden weer geven die zijn bedoeld om de ontwikkelaar te helpen bij het bouwen van de toepassing. Apps die afhankelijk zijn van tekst of fout code nummers, worden na verloop van tijd gesplitst.
+
+## <a name="lookup-current-error-code-information"></a>Informatie over actuele fout code opzoeken
+Fout codes en berichten zijn onderhevig aan wijzigingen.  Voor de meest recente informatie raadpleegt u de [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) pagina om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.  
+
+Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeeld de fout code ' AADSTS16000 ' hebt ontvangen, voert u een zoek opdracht [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) uit voor ' 16000 '.  U kunt ook rechtstreeks een koppeling naar een specifieke fout maken door het fout code nummer toe te voegen aan de URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-fout codes
 

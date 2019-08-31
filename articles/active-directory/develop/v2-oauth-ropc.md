@@ -1,6 +1,6 @@
 ---
-title: Gebruik Microsoft identity-platform aan te melden bij de gebruikers met behulp van resource-eigenaar wachtwoord (ROPC)-referentietoekenning | Azure
-description: Ondersteuning voor browser zonder verificatie van stromen met behulp van de resource-eigenaar wachtwoord-referentietoekenning.
+title: Micro soft Identity-platform gebruiken om gebruikers aan te melden met behulp van de ROPC-toekenning (resource owner password Credential) | Azure
+description: Ondersteuning voor browser-minder verificatie stromen met behulp van het wacht woord voor de toewijzing van de resource-eigenaar.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,46 +12,46 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482386"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193218"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft identity-platform en de wachtwoordreferenties van OAuth 2.0-resource-eigenaar
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Referentie voor het micro soft Identity-platform en de OAuth 2,0 Resource owner-wacht woord
 
-Microsoft identity-platform ondersteunt de [wachtwoordreferenties van resource-eigenaar (ROPC) verlenen](https://tools.ietf.org/html/rfc6749#section-4.3), waarmee een toepassing aan te melden bij de gebruikers hun wachtwoord direct kan verwerken. De stroom ROPC een hoge mate van blootstelling van vertrouwen en de gebruiker is vereist en moet u deze stroom alleen gebruiken wanneer andere, beter te beveiligen, stromen kunnen niet worden gebruikt.
+Het micro soft Identity-platform biedt ondersteuning voor de toekenning van de [ROPC-machtiging (Password owner Credential)](https://tools.ietf.org/html/rfc6749#section-4.3), waarmee een toepassing zich kan aanmelden bij de gebruiker door rechtstreeks hun wacht woord te verwerken. Voor de ROPC-stroom is een hoge mate van vertrouwen en gebruikers belichting vereist. u moet deze stroom alleen gebruiken wanneer andere, veiligere stromen niet kunnen worden gebruikt.
 
 > [!IMPORTANT]
 >
-> * Het eindpunt van de Microsoft identity-platform ondersteunt alleen ROPC voor Azure AD-tenants, geen persoonlijke accounts. Dit betekent dat u een tenant-specifieke eindpunt moet gebruiken (`https://login.microsoftonline.com/{TenantId_or_Name}`) of de `organizations` eindpunt.
-> * Persoonlijke accounts die worden uitgenodigd voor een Azure AD-tenant niet ROPC gebruiken.
-> * Accounts waarvoor geen wachtwoorden kunnen niet aanmelden via ROPC. Voor dit scenario raden wij aan dat u een andere stroom voor uw app in plaats daarvan.
-> * Als gebruikers multi-factor authentication (MFA) gebruiken moeten voor aanmelding bij de toepassing, wordt deze in plaats daarvan geblokkeerd.
+> * Het micro soft Identity platform-eind punt ondersteunt alleen ROPC voor Azure AD-tenants, niet voor persoonlijke accounts. Dit betekent dat u een Tenant-specifiek eind punt (`https://login.microsoftonline.com/{TenantId_or_Name}`) of het `organizations` eind punt moet gebruiken.
+> * Persoonlijke accounts die worden uitgenodigd voor een Azure AD-Tenant, kunnen ROPC niet gebruiken.
+> * Accounts die geen wacht woorden hebben, kunnen zich niet aanmelden via ROPC. Voor dit scenario raden we u aan om in plaats daarvan een andere stroom te gebruiken voor uw app.
+> * Als gebruikers multi-factor Authentication (MFA) moeten gebruiken om zich aan te melden bij de toepassing, zullen ze in plaats daarvan worden geblokkeerd.
 
-## <a name="protocol-diagram"></a>Protocol-diagram
+## <a name="protocol-diagram"></a>Protocol diagram
 
-Het volgende diagram toont de ROPC-stroom.
+In het volgende diagram ziet u de ROPC-stroom.
 
-![Diagram van de resource-eigenaar wachtwoord referentie-gegevensstroom](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
+![Diagram van de referentie stroom van het wacht woord voor de resource-eigenaar](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>Autorisatie-aanvraag
 
-De stroom ROPC is één aanvraag&mdash;deze stuurt de client-id en de referenties van gebruiker aan de id-provider en ontvangt u vervolgens de tokens in. De client moet het e-mailadres (UPN) van de gebruiker en het wachtwoord voordat u aanvragen. De client moet direct na de aanvraag is gelukt, veilig vrijgeven van de referenties van de gebruiker uit het geheugen. Het moet nooit opslaan.
+De ROPC-stroom is een enkele aanvraag: de client-id en de referenties van de gebruiker worden verzonden naar de IDP, waarna de tokens in retour worden ontvangen. De client moet het e-mail adres (UPN) en het wacht woord van de gebruiker aanvragen voordat dit wordt gedaan. Direct na een geslaagde aanvraag moet de client de referenties van de gebruiker veilig vrijgeven uit het geheugen. Ze mogen ze nooit opslaan.
 
 > [!TIP]
-> Probeer deze aanvraag wordt uitgevoerd in Postman.
-> [![Probeer uit te voeren van deze aanvraag in Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Probeer deze aanvraag uit te voeren in postman!
+> [![Probeer deze aanvraag uit te voeren in postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
-// Line breaks and spaces are for legibility only.
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -66,15 +66,18 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter | Voorwaarde | Description |
 | --- | --- | --- |
-| `tenant` | Vereist | De directory-tenant die u wilt vastleggen van de gebruiker in. Dit kan zijn in de beschrijvende naamindeling of GUID. Deze parameter kan niet worden ingesteld op `common` of `consumers`, maar kan worden ingesteld op `organizations`. |
+| `tenant` | Vereist | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden `common` ingesteld `consumers`op of, maar kan worden `organizations`ingesteld op. |
+| `client_id` | Vereist | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. | 
 | `grant_type` | Vereist | Moet worden ingesteld op `password`. |
-| `username` | Vereist | E-mailadres van de gebruiker. |
-| `password` | Vereist | Wachtwoord van de gebruiker. |
-| `scope` | Aanbevolen | Een door spaties gescheiden lijst van [scopes](v2-permissions-and-consent.md), of de machtigingen die de app nodig heeft. In een interactieve stroom, de beheerder of de gebruiker moet toestemming geven tot deze bereiken tevoren. |
+| `username` | Vereist | Het e-mail adres van de gebruiker. |
+| `password` | Vereist | Het wacht woord van de gebruiker. |
+| `scope` | Aanbevolen | Een door spaties gescheiden lijst met [bereiken](v2-permissions-and-consent.md)of machtigingen die voor de app zijn vereist. In een interactieve stroom moet de beheerder of de gebruiker vóór de tijd toestemming geven aan deze bereiken. |
+| `client_secret`| Soms vereist | Als uw app een open bare client is, dan `client_secret` kan `client_assertion` de of niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. | 
+| `client_assertion` | Soms vereist | Een andere vorm van `client_secret`, gegenereerd met een certificaat.  Zie [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie. | 
 
-### <a name="successful-authentication-response"></a>Verificatie is geslaagd antwoord
+### <a name="successful-authentication-response"></a>Geslaagde verificatie reactie
 
-Het volgende voorbeeld ziet u een geslaagde respons token:
+In het volgende voor beeld ziet u een geslaagd token antwoord:
 
 ```json
 {
@@ -89,26 +92,25 @@ Het volgende voorbeeld ziet u een geslaagde respons token:
 
 | Parameter | Indeling | Description |
 | --------- | ------ | ----------- |
-| `token_type` | String | Altijd ingesteld op `Bearer`. |
-| `scope` | Tekenreeksen gescheiden door spaties | Als een toegangstoken is geretourneerd, zijn deze parameter de scopes die het toegangstoken is ongeldig voor. |
-| `expires_in`| int | Het aantal seconden dat de opgenomen toegangstoken is ongeldig voor. |
-| `access_token`| Ondoorzichtige tekenreeks | Uitgegeven voor de [scopes](v2-permissions-and-consent.md) die zijn aangevraagd. |
-| `id_token` | JWT | Uitgegeven als de oorspronkelijke `scope` parameter opgenomen de `openid` bereik. |
-| `refresh_token` | Ondoorzichtige tekenreeks | Uitgegeven als de oorspronkelijke `scope` parameter opgenomen `offline_access`. |
+| `token_type` | Tekenreeks | Altijd ingesteld op `Bearer`. |
+| `scope` | Door spaties gescheiden teken reeksen | Als er een toegangs token is geretourneerd, worden in deze para meter de scopes vermeld waarvoor het toegangs token geldig is. |
+| `expires_in`| int | Aantal seconden dat het opgenomen toegangs token geldig is voor. |
+| `access_token`| Dekkende teken reeks | Uitgegeven voor de aangevraagde [bereiken](v2-permissions-and-consent.md) . |
+| `id_token` | JWT | Uitgegeven als de oorspronkelijke `scope` para meter het `openid` bereik bevat. |
+| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke `scope` para meter `offline_access`is opgenomen. |
 
-U kunt het vernieuwingstoken dat nieuwe toegangstokens verkrijgen en vernieuwen met behulp van dezelfde stroom wordt beschreven in de [OAuth Code flow-documentatie](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
+U kunt het vernieuwings token gebruiken om nieuwe toegangs tokens te verkrijgen en tokens te vernieuwen met behulp van dezelfde stroom die wordt beschreven in de [documentatie over de OAuth-code stroom](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
 
-### <a name="error-response"></a>Foutbericht
+### <a name="error-response"></a>Fout bericht
 
-Als de gebruiker de juiste gebruikersnaam of wachtwoord is niet opgegeven of de client nog niet de aangevraagde toestemming verkregen, mislukt de verificatie.
+Als de gebruiker geen juiste gebruikers naam of wacht woord heeft opgegeven, of als de client niet de aangevraagde toestemming heeft ontvangen, zal de verificatie mislukken.
 
-| Fout | Description | Clientactie |
+| Fout | Description | Client actie |
 |------ | ----------- | -------------|
-| `invalid_grant` | De verificatie is mislukt | De referenties zijn onjuist of de client geen toestemming voor de aangevraagde bereiken. Als de scopes niet zijn verleend, een `consent_required` fout wordt geretourneerd. Als dit het geval is, moet de client de gebruiker doorsturen naar een interactieve prompt met behulp van een webweergave of in de browser. |
-| `invalid_request` | De aanvraag is niet goed samengesteld. | Het machtigingstype wordt niet ondersteund op de `/common` of `/consumers` verificatie contexten.  Gebruik `/organizations` in plaats daarvan. |
-| `invalid_client` | De app is niet goed ingesteld | Dit kan gebeuren als de `allowPublicClient` eigenschap niet is ingesteld op ' True ' in de [toepassingsmanifest](reference-app-manifest.md). De `allowPublicClient` eigenschap is nodig omdat de toekenning ROPC beschikt niet over een omleidings-URI. Azure AD kan niet vaststellen of de app een openbare client-toepassing of een vertrouwelijke client-toepassing, tenzij de eigenschap is ingesteld. ROPC wordt alleen ondersteund voor openbare client-apps. |
+| `invalid_grant` | De verificatie is mislukt | De referenties zijn onjuist of de client heeft geen toestemming voor de aangevraagde bereiken. Als de bereiken niet worden verleend, wordt `consent_required` een fout geretourneerd. Als dit het geval is, moet de client de gebruiker naar een interactieve prompt verzenden met een webweergave of browser. |
+| `invalid_request` | De aanvraag is onjuist samengesteld | Het toekennings type wordt niet ondersteund `/common` voor `/consumers` de or-verificatie contexten.  Gebruik `/organizations` in plaats daarvan een Tenant-id. |
 
 ## <a name="learn-more"></a>Meer informatie
 
-* ROPC uitproberen voor zelf met behulp van de [console voorbeeldtoepassing](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Om te bepalen of het v2.0-eindpunt moet worden gebruikt, lees meer over [beperkingen van het Microsoft identity platform](active-directory-v2-limitations.md).
+* Probeer ROPC voor uzelf uit met behulp van de [voorbeeld console toepassing](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
+* Lees over de [beperkingen van micro soft Identity-platform](active-directory-v2-limitations.md)om te bepalen of u het v 2.0-eind punt moet gebruiken.

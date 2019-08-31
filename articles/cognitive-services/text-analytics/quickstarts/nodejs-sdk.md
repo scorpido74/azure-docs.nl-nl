@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: shthowse
-ms.openlocfilehash: 5b18ba4e06e8a44d7bd59b12a69a14ae15506234
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c3cd64d0a683a60132808bca6a7ceb4aa84db4f1
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134986"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195205"
 ---
 # <a name="quickstart-text-analytics-client-library-for-nodejs"></a>Quickstart: Tekst analyse-client bibliotheek voor node. js
 <a name="HOLTop"></a>
@@ -34,7 +34,7 @@ Gebruik de Text Analytics-client bibliotheek voor node. js om de volgende handel
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* De huidige versie van de [.net core SDK](https://dotnet.microsoft.com/download/dotnet-core).
+* De huidige versie van [node. js](https://nodejs.org/).
 
 ## <a name="setting-up"></a>Instellen
 

@@ -1,27 +1,21 @@
 ---
-title: Met behulp van de Geo kunstmatige intelligentie Data Science Virtual Machine - Azure | Microsoft Docs
+title: De geo AI gebruiken
+titleSuffix: Azure Data Science Virtual Machine
 description: Informatie over het gebruik van de Geo AI Data Science Virtual Machine voor het analyseren van gegevens en bouw modellen op basis van georuimtelijke gegevens.
 keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 22c0d7d604ca41044d2d969d4ddbd2ae1a4d23d5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 01238885e68a39ff713bd346a9206668e16e7ee4
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170485"
+ms.locfileid: "70195279"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Met behulp van de Geo kunstmatige intelligentie Data Science Virtual Machine
 
@@ -47,7 +41,7 @@ Naast de voor beelden op het gebied van machine learning en diep gaande Framewor
 
 2. [Aan de slag met een georuimtelijke analyse met R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Een voor beeld van een inleidende informatie over hoe u met georuimtelijke gegevens kunt werken met behulp van de R-interface voor ArcGIS die wordt weer gegeven door de [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) -bibliotheek. 
 
-3. [Classificatie voor land gebruik op pixel niveau](https://github.com/Azure/pixel_level_land_classification): Een zelf studie waarin wordt getoond hoe u een diepe Neural-netwerk model maakt dat een lucht afbeelding als invoer accepteert en een omslag label retourneert. Voor beelden van landings etiketten zijn in een *forest* en *water*. Het model geretourneerd die een label voor elke pixel in de afbeelding. Het model wordt gemaakt met behulp van het micro soft open-source [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) diepe Learning-Framework.
+3. [Classificatie voor land gebruik op pixel niveau](https://github.com/Azure/pixel_level_land_classification): Een zelf studie waarin wordt getoond hoe u een diepe Neural-netwerk model maakt dat een lucht afbeelding als invoer accepteert en een omslag label retourneert. Voor beelden van landings etiketten zijn in een *forest* en *water*. Het model geretourneerd die een label voor elke pixel in de afbeelding. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

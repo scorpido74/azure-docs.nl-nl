@@ -3,15 +3,15 @@ title: Azure Resource Manager-sjabloon functies-teken reeks | Microsoft Docs
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om te werken met teken reeksen.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698183"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194771"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Teken reeks functies voor Azure Resource Manager sjablonen
 
@@ -175,10 +175,10 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
-| base64Output | Reeks | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Reeks | Een twee drie |
+| base64Output | Tekenreeks | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Tekenreeks | Een twee drie |
 | toJsonOutput | Object | {"een": "a", "twee": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
@@ -288,7 +288,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | concatOutput | Tekenreeks | prefix-5yj4yjf5mbg72 |
 
@@ -467,7 +467,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | Name | Type | Value |
 | ---- | ---- | ----- |
 | dataUriOutput | Tekenreeks | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | Reeks | Hallo mensen! |
+| toStringOutput | Tekenreeks | Hallo mensen! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -519,7 +519,7 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | dataUriOutput | Tekenreeks | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | Tekenreeks | Hallo mensen! |
@@ -704,7 +704,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Reeks | één |
+| arrayOutput | Tekenreeks | één |
 | stringOutput | Tekenreeks | O |
 
 ## <a name="format"></a>format
@@ -760,7 +760,7 @@ In de volgende voorbeeld sjabloon ziet u hoe u de functie Format gebruikt.
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | Indelings meest | Tekenreeks | Hallo, gebruiker. Opgemaakt aantal: 8.175.133 |
 
@@ -946,7 +946,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | Name | Type | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Tekenreeks | drie |
-| stringOutput | Reeks | & |
+| stringOutput | Tekenreeks | & |
 
 ## <a name="lastindexof"></a>lastIndexOf
 
@@ -1280,10 +1280,10 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
-| firstOutput | Reeks | 1231231234 |
-| secondOutput | Reeks | 123-123-xxxx |
+| firstOutput | Tekenreeks | 1231231234 |
+| secondOutput | Tekenreeks | 123-123-xxxx |
 
 ## <a name="skip"></a>overslaan
 
@@ -1469,7 +1469,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | Waar |
 | startsCapTrue | Bool | Waar |
@@ -1543,9 +1543,9 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
-| objectOutput | Reeks | {"waardea": 10, "valueB": "voorbeeld tekst"} |
+| objectOutput | Tekenreeks | {"waardea": 10, "valueB": "voorbeeld tekst"} |
 | arrayOutput | Tekenreeks | ["a", "b", "c"] |
 | intOutput | Tekenreeks | 5 |
 
@@ -1726,7 +1726,7 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | Reeks | Een twee drie |
+| toLowerOutput | Tekenreeks | Een twee drie |
 | toUpperOutput | Tekenreeks | EEN TWEE DRIE |
 
 ## <a name="toupper"></a>toUpper
@@ -1777,8 +1777,8 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| toLowerOutput | Reeks | Een twee drie |
-| toUpperOutput | Reeks | EEN TWEE DRIE |
+| toLowerOutput | Tekenreeks | Een twee drie |
+| toUpperOutput | Tekenreeks | EEN TWEE DRIE |
 
 ## <a name="trim"></a>interne
 
@@ -1962,11 +1962,11 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | uriOutput | Tekenreeks | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | Tekenreeks | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | Reeks | http://contoso.com/resources/nested/azuredeploy.json |
+| toStringOutput | Tekenreeks | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponent"></a>uriComponent
 
@@ -2017,7 +2017,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Waarde |
+| Name | Type | Value |
 | ---- | ---- | ----- |
 | uriOutput | Tekenreeks | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | Tekenreeks | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2074,9 +2074,9 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
 | Name | Type | Value |
 | ---- | ---- | ----- |
-| uriOutput | Reeks | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Tekenreeks | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | Tekenreeks | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | Reeks | http://contoso.com/resources/nested/azuredeploy.json |
+| toStringOutput | Tekenreeks | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="utcnow"></a>utcNow
 

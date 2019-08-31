@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706319"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193189"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Veelgestelde vragen over het beheer van apparaten Azure Active Directory
 
@@ -194,14 +194,14 @@ Verwijderde of uitgeschakelde gebruikers die zich niet eerder hebben aangemeld, 
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>V: Waarom krijgen sommige van mijn gebruikers geen vragen over Azure multi-factor Authentication op apparaten die zijn toegevoegd aan Azure AD?
+### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>V: Waarom krijgen sommige van mijn gebruikers Azure-Multi-Factor Authentication prompts op apparaten die zijn toegevoegd aan Azure AD?
 
-**A:** Een gebruiker kan een apparaat toevoegen aan of registreren bij Azure AD met behulp van multi-factor Authentication. Het apparaat wordt dan zelf een betrouw bare tweede factor voor die gebruiker. Wanneer dezelfde gebruiker zich aanmeldt bij het apparaat en een toepassing opent, beschouwt Azure AD het apparaat als een tweede factor. Hiermee kan die gebruiker naadloos toegang krijgen tot toepassingen zonder aanvullende multi-factor Authentication-prompts. 
+**A:** Een gebruiker kan een apparaat toevoegen aan of registreren bij Azure AD met behulp van Multi-Factor Authentication. Het apparaat wordt dan zelf een betrouw bare tweede factor voor die gebruiker. Wanneer dezelfde gebruiker zich aanmeldt bij het apparaat en een toepassing opent, beschouwt Azure AD het apparaat als een tweede factor. Hiermee kan die gebruiker naadloos toegang krijgen tot toepassingen zonder extra Multi-Factor Authentication prompts. 
 
 Dit gedrag:
 
 - Is van toepassing op aan Azure AD gekoppelde en Azure AD geregistreerde apparaten, maar niet voor hybride Azure AD-apparaten die zijn toegevoegd.
-- Is niet van toepassing op een andere gebruiker die zich aanmeldt bij dat apparaat. Alle andere gebruikers die toegang hebben tot dat apparaat, krijgen dus een multi-factor Authentication-uitdaging. Vervolgens hebben ze toegang tot toepassingen waarvoor multi-factor Authentication is vereist.
+- Is niet van toepassing op een andere gebruiker die zich aanmeldt bij dat apparaat. Zodat alle andere gebruikers die toegang hebben tot dat apparaat, een Multi-Factor Authentication uitdaging krijgen. Vervolgens hebben ze toegang tot toepassingen waarvoor Multi-Factor Authentication nodig is.
 
 ---
 
@@ -281,12 +281,19 @@ Hybride Azure AD-deelname heeft voor rang op de geregistreerde status van Azure 
 
 ## <a name="azure-ad-register-faq"></a>Veelgestelde vragen over Azure AD-REGI ster
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>V: Hoe kan ik een geregistreerd Azure AD-apparaat lokaal op het apparaat verwijderen?
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>V: Hoe kan ik een Azure AD-status geregistreerd voor een lokaal apparaat verwijderen?
 
 **A:** 
 - Voor Windows 10 geregistreerde Azure ad-apparaten gaat u naar **instellingen** > **accounts** > **toegang tot werk of school**. Selecteer uw account en selecteer **verbinding verbreken**. Apparaatregistratie is per gebruikers profiel in Windows 10.
 - Voor IOS en Android kunt u het**apparaat** voor de Microsoft Authenticator toepassings **instellingen** > gebruiken en de registratie **van apparaat**opheffen selecteren.
 - Voor macOS kunt u de Microsoft Intune Bedrijfsportal toepassing gebruiken om de registratie van het apparaat ongedaan te maken bij het beheer en om eventuele gegevens te verwijderen. 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>V: Hoe kan ik voor komen dat gebruikers extra werk accounts toevoegen (geregistreerd voor Azure AD) op mijn bedrijfs Windows 10-apparaten?
+
+**A:** Schakel het volgende REGI ster in om ervoor te zorgen dat uw gebruikers geen extra werk accounts meer kunnen toevoegen aan uw bedrijfs domein, lid zijn van Azure AD of hybride Azure AD toegevoegd aan Windows 10-apparaten. Dit beleid kan ook worden gebruikt om computers die lid zijn van een domein te blok keren om per ongeluk Azure AD te ontvangen die is geregistreerd met hetzelfde gebruikers account. 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>V: Kan ik Android-of iOS BYOD-apparaten registreren?

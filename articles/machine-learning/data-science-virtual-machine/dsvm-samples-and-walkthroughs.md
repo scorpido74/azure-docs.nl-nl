@@ -1,35 +1,29 @@
 ---
-title: Voorbeelden en procedures voor virtuele Machines voor Datatechnologie - Azure | Microsoft Docs
+title: Voor beelden &-instructies
+titleSuffix: Azure Data Science Virtual Machine
 description: In deze voor beelden en instructies leert u hoe u veelvoorkomende taken en scenario's kunt verwerken met de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: vijetaj
-ms.openlocfilehash: 628c516553c2304739229c53d725645c799d06ce
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047831"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195678"
 ---
-# <a name="samples-on-data-science-virtual-machines"></a>Voorbeelden van virtuele Machines voor Datatechnologie
+# <a name="samples-on-azure-data-science-virtual-machines"></a>Voor beelden van Azure data Science Virtual Machines
 
 Azure data Science Virtual Machines (Dsvm) bevat een uitgebreide set voorbeeld code. Dit zijn voor beelden van Jupyter-notebooks en-scripts in talen als python en R.
 > [!NOTE]
 > Zie de sectie [toegangs Jupyter](#access-jupyter) voor meer informatie over het uitvoeren van Jupyter-notebooks op uw virtuele machines voor data technologie.
 
-## <a name="quick-reference-of-samples"></a>Naslaggids van voorbeelden
+## <a name="available-samples"></a>Beschik bare voor beelden
 | Voorbeelden van categorie | Description | Locaties |
 | ------------- | ------------- | ------------- |
 | R-taal  | Voor beelden illustreren scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het vergelijken van open source R en Microsoft Machine Learning Server. Er wordt ook uitgelegd hoe u operationeel maken modellen op Microsoft Machine Learning Server en SQL Server. <br/> [R-taal](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|

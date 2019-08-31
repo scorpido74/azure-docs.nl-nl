@@ -1,27 +1,21 @@
 ---
-title: Inleiding tot het team Data Science Virtual Machine gebaseerde omgevingen - Azure | Microsoft Docs
+title: Team analyse en AI-omgeving
+titleSuffix: Azure Data Science Virtual Machine
 description: Patronen voor het implementeren van de Data Science VM in een bedrijfsomgeving team.
 keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses, team data science process
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 5f34498fbdacf7fc6e62788913c795ab70ceef23
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: overview
+ms.date: 05/08/2018
+ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991613"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195665"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Op basis van een virtuele Machine voor Datatechnologie team gegevensanalyse en AI-omgeving 
 De [Data Science virtual machine](overview.md) (DSVM) biedt een uitgebreide omgeving op het Azure-platform, met vooraf ontwikkelde software voor kunst matige intelligentie (AI) en gegevens analyse.

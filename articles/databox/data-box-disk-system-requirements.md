@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: e17fbcebc128a7169953ed05de617efa25fc25f8
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.localizationpriority: high
+ms.openlocfilehash: 20c27a3e4e9a96a19b347e5ef57ab9fb3c047140
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172719"
+ms.locfileid: "70194431"
 ---
 ::: zone target="docs"
 
@@ -27,12 +28,13 @@ De systeem vereisten omvatten de ondersteunde platforms voor clients die verbind
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Vereisten
+# <a name="review-prerequisites"></a>Vereisten controleren
 
-U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
+1. U moet uw Data Box Disk hebben besteld met behulp van de zelf studie: Bestel uw Azure Data Box Disk. U hebt uw schijven en één verbindings kabel per schijf ontvangen.
+2. U hebt een clientcomputer beschikbaar van waaruit u de gegevens kunt kopiëren. De clientcomputer moet voldoen aan deze vereisten:
 
-- Een ondersteund besturings systeem uitvoeren.
-- Andere vereiste software is geïnstalleerd.
+    - Een ondersteund besturings systeem uitvoeren.
+    - Andere vereiste software is geïnstalleerd.
 
 ::: zone-end
 

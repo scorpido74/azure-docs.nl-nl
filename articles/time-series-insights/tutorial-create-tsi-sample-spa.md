@@ -4,16 +4,16 @@ description: Meer informatie over het maken van een webtoepassing met één pagi
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/29/2019
+ms.date: 08/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 031e8074585426584d7ef63a103c9c2b4d90e6c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720871"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194218"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Zelfstudie: Een web-app van Azure Time Series Insights met één pagina maken
 
@@ -127,6 +127,10 @@ In deze zelf studie wordt ook gebruikgemaakt van gegevens uit de Time Series Ins
 
       [![Visual Studio: het deel venster voor het publicatie profiel](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
+   1. Selecteer deze optie om een nieuw exemplaar van Azure App Service te publiceren of een bestaande te gebruiken.
+
+      [![Een Azure App Service exemplaar selecteren](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png#lightbox)
+
    1. Selecteer het abonnement dat u wilt gebruiken om de toepassing te publiceren. Selecteer het **TsiSpaApp** -project. Selecteer vervolgens **OK**.
 
       [![Visual Studio: het App Service venster voor het publicatie profiel](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
@@ -137,12 +141,16 @@ In deze zelf studie wordt ook gebruikgemaakt van gegevens uit de Time Series Ins
 
    1. Er wordt een geslaagd publicatie logboek weer gegeven in het deel venster Visual Studio- **uitvoer** . Wanneer de implementatie is voltooid, opent Visual Studio de webtoepassing in een browser tabblad en wordt u gevraagd zich aan te melden. Nadat het aanmelden is geslaagd, worden de Time Series Insights besturings elementen gevuld met gegevens.
 
+   1. Navigeer naar uw web-app en meld u aan om de gerenderde Time Series Insights visuele gegevens weer te geven.
+
+      [![De gehoste web-app controleren](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png)](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png#lightbox)
+
 ## <a name="troubleshoot"></a>Problemen oplossen  
 
 Foutcode/-conditie | Description
 ---------------------| -----------
-*AADSTS50011: No reply address is registered for the application.* | In de Azure AD-registratie ontbreekt de **antwoord-URL** -eigenschap. Ga naar **instellingen** > **antwoord-url's** voor de registratie van uw Azure AD-toepassing. Controleer of de omleidings- **URI** die u in **stap 2** of **stap 4** hebt opgegeven bij het registreren van [de toepassing voor gebruik van Azure AD](#register-with-azure-ad) aanwezig is.
-*AADSTS50011: De antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: '\<Toepassings-id-GUID > '.* | Het `postLogoutRedirectUri` opgegeven in **stap 6. b** bij [het bouwen en publiceren van de webtoepassing](#build-and-publish) moet overeenkomen met de waarde die is opgegeven onder **instellingen** > **antwoord-url's** in uw Azure AD-toepassings registratie. |
+*AADSTS50011: No reply address is registered for the application.* | Er ontbreekt een omleidings- **URI** -eigenschap in de Azure AD-registratie. Ga naar de omleidings-**uri's** voor **verificatie** > voor uw Azure AD-toepassings registratie. Controleer of de omleidings- **URI** die u in **stap 2** of **stap 4** hebt opgegeven bij het registreren van [de toepassing voor gebruik van Azure AD](#register-with-azure-ad) aanwezig is.
+*AADSTS50011: De antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: '\<Toepassings-id-GUID > '.* | Het `postLogoutRedirectUri` opgegeven in **stap 6. b** bij [het bouwen en publiceren van de webtoepassing](#build-and-publish) moet overeenkomen met de waarde die is opgegeven onder **Authentication** > omleidings-**uri's** in de registratie van uw Azure AD-toepassing. |
 De webtoepassing wordt geladen, maar heeft een onopgemaakte, alleen tekst-aanmeld pagina met een witte achtergrond. | Controleer of de paden die in **stap 6** zijn beschreven in [de webtoepassing bouwen en publiceren](#build-and-publish) juist zijn. Als de webtoepassing de CSS-bestanden niet kan vinden, wordt de pagina niet goed opgemaakt.
 
 ## <a name="clean-up-resources"></a>Resources opschonen

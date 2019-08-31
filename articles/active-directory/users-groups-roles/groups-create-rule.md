@@ -9,44 +9,60 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb4f9d2f78857231d0ecd81a2538a75b4b8a2f74
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650314"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193947"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Een dynamische groep maken en de status controleren
 
 In Azure Active Directory (Azure AD) kunt u regels gebruiken om het groepslid maatschap te bepalen op basis van eigenschappen van gebruikers of apparaten. In dit artikel leest u hoe u een regel instelt voor een dynamische groep in de Azure Portal.
 Dynamische lidmaatschappen worden ondersteund voor beveiligings groepen of Office 365-groepen. Wanneer een regel voor groepslid maatschap wordt toegepast, worden de kenmerken van gebruikers en apparaten geëvalueerd voor overeenkomsten met de lidmaatschaps regel. Wanneer een kenmerk wordt gewijzigd voor een gebruiker of apparaat, worden alle regels voor de dynamische groep in de organisatie verwerkt voor wijzigingen in het lidmaatschap. Gebruikers en apparaten worden toegevoegd of verwijderd als ze voldoen aan de voor waarden voor een groep. Beveiligings groepen kunnen worden gebruikt voor apparaten of gebruikers, maar de Office 365-groepen kunnen alleen gebruikers groepen zijn.
 
+## <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
+
+Azure AD biedt een regel bouwer om uw belang rijke regels sneller te maken en bij te werken. De opbouw functie voor regels ondersteunt de bouw Maxi maal vijf expressies. Met de opbouw functie voor regels kunt u eenvoudig een regel maken met enkele eenvoudige expressies, maar deze kan niet worden gebruikt om elke regel te reproduceren. Als de regel functie geen ondersteuning biedt voor de regel die u wilt maken, kunt u het tekstvak gebruiken.
+
+Hier volgen enkele voor beelden van geavanceerde regels of syntaxis voor het maken van het gebruik van het tekstvak:
+
+- Regel met meer dan vijf expressies
+- De regel voor directe rapporten
+- De [prioriteit van Opera tors](groups-dynamic-membership.md#operator-precedence) instellen
+- [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld`(user.proxyAddresses -any (_ -contains "contoso"))`
+
+> [!NOTE]
+> De opbouw functie voor regels kan mogelijk geen regels weer geven die zijn gemaakt in het tekstvak. Mogelijk wordt er een bericht weer gegeven wanneer de regel functie de regel niet kan weer geven. De opbouw functie voor regels wijzigt niet de ondersteunde syntaxis, validatie of verwerking van dynamische groeps regels op enigerlei wijze.
+
+![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
+
 Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en waarden voor een lidmaatschaps regel, [dynamische lidmaatschaps regels voor groepen in azure Active Directory](groups-dynamic-membership.md).
 
 ## <a name="to-create-a-group-membership-rule"></a>Een regel voor groepslid maatschap maken
 
 1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat zich in de rol globale beheerder, intune-beheerder of gebruikers beheerder in de Tenant bevindt.
-2. Selecteer **groepen**.
-3. Selecteer **alle groepen**en selecteer **nieuwe groep**.
+1. Selecteer **groepen**.
+1. Selecteer **alle groepen**en selecteer **nieuwe groep**.
 
    ![Selecteer de opdracht voor het toevoegen van een nieuwe groep](./media/groups-create-rule/new-group-creation.png)
 
-4. Voer op de pagina **groep** een naam en een beschrijving in voor de nieuwe groep. Selecteer een **lidmaatschaps type** voor gebruikers of apparaten, en selecteer vervolgens **dynamische query toevoegen**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u een zesde of volgende expressies wilt toevoegen, moet u het tekstvak gebruiken.
+1. Voer op de pagina **groep** een naam en een beschrijving in voor de nieuwe groep. Selecteer een **lidmaatschaps type** voor gebruikers of apparaten, en selecteer vervolgens **dynamische query toevoegen**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
 
    ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. De aangepaste extensie-eigenschappen weer geven die beschikbaar zijn voor uw lidmaatschaps query
+1. Voor een overzicht van de aangepaste extensie-eigenschappen die beschikbaar zijn voor uw lidmaatschaps query:
    1. **Eigenschappen van aangepaste uitbrei ding ophalen** selecteren
-   2. Voer de toepassings-ID in en selecteer vervolgens **Eigenschappen vernieuwen**.
-6. Nadat u de regel hebt gemaakt, selecteert u **Opslaan**.
-7. Selecteer **maken** op de pagina **nieuwe groep** om de groep te maken.
+   1. Voer de toepassings-ID in en selecteer vervolgens **Eigenschappen vernieuwen**.
+1. Nadat u de regel hebt gemaakt, selecteert u **Opslaan**.
+1. Selecteer **maken** op de pagina **nieuwe groep** om de groep te maken.
 
-Als de regel die u hebt ingevoerd ongeldig is, wordt er een uitleg weer gegeven waarom de regel niet kan worden verwerkt in de Azure-melding in de portal. Lees het zorgvuldig om te begrijpen hoe u de regel kunt herstellen.
+Als de regel die u hebt ingevoerd niet geldig is, wordt uitgelegd waarom de regel niet kan worden verwerkt, wordt weer gegeven in een Azure-melding in de portal. Lees het zorgvuldig om te begrijpen hoe u de regel kunt herstellen.
 
 ## <a name="turn-on-or-off-welcome-email"></a>Welkomst bericht in-of uitschakelen
 
@@ -60,17 +76,17 @@ U kunt de verwerkings status van lidmaatschap en de datum van laatste update voo
 
 De volgende status berichten kunnen worden weer gegeven voor de verwerkings status van lidmaatschappen:
 
-* **Evalueren**:  De groeps wijziging is ontvangen en de updates worden geëvalueerd.
-* **Verwerken**: De updates worden verwerkt.
-* **Update voltooid**: De verwerking is voltooid en alle toepasselijke updates zijn uitgevoerd.
-* **Verwerkings fout**:  De verwerking kan niet worden voltooid vanwege een fout bij het evalueren van de lidmaatschaps regel.
-* **Update onderbroken**: Updates voor dynamische lidmaatschaps regel zijn onderbroken door de beheerder. MembershipRuleProcessingState is ingesteld op ' paused '.
+- **Evalueren**:  De groeps wijziging is ontvangen en de updates worden geëvalueerd.
+- **Verwerken**: De updates worden verwerkt.
+- **Update voltooid**: De verwerking is voltooid en alle toepasselijke updates zijn uitgevoerd.
+- **Verwerkings fout**:  De verwerking kan niet worden voltooid vanwege een fout bij het evalueren van de lidmaatschaps regel.
+- **Update onderbroken**: Updates voor dynamische lidmaatschaps regel zijn onderbroken door de beheerder. MembershipRuleProcessingState is ingesteld op ' paused '.
 
 De volgende status berichten kunnen worden weer gegeven voor het lidmaatschap van de **laatste bijgewerkte** status:
 
-* &lt;**Datum en tijd**&gt;: De laatste keer dat het lidmaatschap is bijgewerkt.
-* Wordt **uitgevoerd**: Updates worden momenteel uitgevoerd.
-* **Onbekend**: De tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
+- &lt;**Datum en tijd**&gt;: De laatste keer dat het lidmaatschap is bijgewerkt.
+- Wordt **uitgevoerd**: Updates worden momenteel uitgevoerd.
+- **Onbekend**: De tijd van de laatste update kan niet worden opgehaald. De groep is mogelijk nieuw.
 
 Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor een specifieke groep, wordt er een waarschuwing weer gegeven boven aan de **pagina overzicht** voor de groep. Als er in behandeling zijnde dynamische lidmaatschaps updates voor alle groepen in de Tenant meer dan 24 uur kunnen worden verwerkt, wordt een waarschuwing weer gegeven aan de bovenkant van **alle groepen**.
 
@@ -78,8 +94,8 @@ Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor e
 
 In deze artikelen vindt u aanvullende informatie over groepen in Azure Active Directory.
 
-* [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Instellingen van een groep beheren](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Lidmaatschappen van een groep beheren](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Dynamische regels voor gebruikers in een groep beheren](groups-dynamic-membership.md)
+- [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Instellingen van een groep beheren](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Lidmaatschappen van een groep beheren](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Dynamische regels voor gebruikers in een groep beheren](groups-dynamic-membership.md)

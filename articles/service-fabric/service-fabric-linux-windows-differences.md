@@ -14,23 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 829a3ea6e8fafa24831f1731e402a3991c0258c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a7ff2d7e02b557676d2ba569f7baa216d07221b9
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719988"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192546"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Verschillen tussen Service Fabric in Linux en Windows
 
-Er zijn enkele functies die wel worden ondersteund in Windows, maar nog niet in Linux. Uiteindelijk zullen de functiesets gelijk zijn en met elke versie wordt het functiegat kleiner. De volgende verschillen bestaan tussen de meest recente versies.
+Er zijn enkele functies die wel worden ondersteund in Windows, maar nog niet in Linux. Uiteindelijk zullen de functiesets gelijk zijn en met elke versie wordt het functiegat kleiner. De volgende verschillen bestaan tussen de nieuwste beschik bare releases.
 
-* Envoy (omgekeerde Proxy) is in preview in Linux
+* Envoy (reverse proxy) is beschikbaar in de preview-versie van Linux
 * Het zelfstandige installatieprogramma voor Linux is nog niet beschikbaar in Linux
 * Console-omleiding (niet ondersteund in Linux- en Windows-productieclusters)
 * De FAS (Fault Analysis Service) in Linux
 * DNS-service voor Service Fabric-services (DNS-service wordt ondersteund voor containers in Linux)
 * Equivalenten van CLI-opdrachten voor bepaalde Powershell-opdrachten (zie de onderstaande lijst, waarvan de meeste opdrachten alleen van toepassing zijn op zelfstandige clusters)
+* [Verschillen in de implementatie van het logboek die van invloed kunnen zijn op de schaal baarheid](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>PowerShell-cmdlets die niet werken voor een Service Fabric-cluster in Linux
 

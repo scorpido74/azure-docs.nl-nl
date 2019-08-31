@@ -1,29 +1,23 @@
 ---
-title: Store veilig toegang tot referenties op de Data Science Virtual Machine - Azure | Microsoft Docs
+title: Toegangs referenties veilig opslaan
+titleSuffix: Azure Data Science Virtual Machine
 description: Leer hoe u voor het veilig opslaan van referenties voor toegang op de Data Science Virtual Machine. U leert hoe u beheerde service-identiteiten en Azure Key Vault kunt gebruiken om toegangs referenties op te slaan.
 keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses, team data science process
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 1374cbef41f40ea270f3c4d84c68d08e7db095bc
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.topic: conceptual
+ms.date: 05/08/2018
+ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051614"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195614"
 ---
-# <a name="store-access-credentials-securely-on-a-data-science-virtual-machine"></a>Toegangs referenties veilig opslaan op een Data Science Virtual Machine
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Toegangs referenties veilig opslaan op een Azure-Data Science Virtual Machine
 
 Het is gebruikelijk dat de code in Cloud toepassingen referenties bevat voor de verificatie van Cloud Services. Het beheren en beveiligen van deze referenties is een goed bekende uitdaging bij het bouwen van Cloud toepassingen. In het ideale geval moeten referenties nooit worden weer gegeven op werk stations voor ontwikkel aars of worden ingecheckt bij broncode beheer.
 

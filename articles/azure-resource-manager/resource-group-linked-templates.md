@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311707"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194379"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Met behulp van gekoppelde en geneste sjablonen bij het implementeren van Azure-resources
 
@@ -479,6 +479,8 @@ done
 Hoewel de gekoppelde sjabloon extern beschikbaar zijn moet, hoeft niet te worden in het algemeen beschikbaar is voor het publiek. U kunt uw sjabloon toevoegen aan een persoonlijke storage-account die toegankelijk is voor alleen de eigenaar van het opslagaccount. Vervolgens maakt u een token shared access signature (SAS) waarmee toegang tijdens de implementatie. U toevoegen deze SAS-token aan de URI voor de gekoppelde sjabloon. Hoewel het token is doorgegeven als een beveiligde tekenreeks, wordt de URI van de gekoppelde sjabloon, met inbegrip van de SAS-token in de implementatiebewerkingen vastgelegd. Als u wilt beperken van blootstelling, instellen dat een verlopen voor het token.
 
 De parameter-bestand kan ook worden beperkt tot toegang tot en met een SAS-token.
+
+Op dit moment kunt u geen koppeling maken met een sjabloon in een opslag account dat zich achter een [Azure Storage firewall](../storage/common/storage-network-security.md)bevindt.
 
 Het volgende voorbeeld laat zien hoe om door te geven van een SAS-token bij het koppelen aan een sjabloon:
 
