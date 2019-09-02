@@ -156,6 +156,9 @@
     - name: Bestaande toewijzingen bijwerken vanuit de portal
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: Uw omgeving configureren voor een Blueprint Operator
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: Blauwdrukken beheren als Code (community)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: Problemen oplossen

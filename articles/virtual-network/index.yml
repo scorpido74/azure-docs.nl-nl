@@ -1,105 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Virtual Network
+summary: Leer hoe u Azure Virtual Network gebruikt. Aan de hand van stelstarts, zelfstudies, voorbeelden en meer ontdekt u hoe u een virtueel netwerk implementeert, verkeersfilters en -routering beheert en een virtueel netwerk aan andere virtuele netwerken koppelt.
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: 'Documentatie voor Virtual Network - zelfstudies, snelstarts, API-verwijzing | Microsoft Docs'
-  meta.description: 'Learn how to use Azure Virtual Network. Quickstarts, tutorials, samples, and more, show you how to deploy a virtual network, control traffic filtering and routing, and connect a virtual network to other virtual networks.'
+  title: Documentatie voor Azure Virtual Network - zelfstudies, quickstarts, API-verwijzing
+  description: Leer hoe u Azure Virtual Network gebruikt. Aan de hand van stelstarts, zelfstudies, voorbeelden en meer ontdekt u hoe u een virtueel netwerk implementeert, verkeersfilters en -routering beheert en een virtueel netwerk aan andere virtuele netwerken koppelt.
   services: virtual-network
-  author: KumudD
-  manager: twooley
   ms.service: virtual-network
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/23/2018
+  ms.collection: collection
+  author: KumudD
   ms.author: kumud
-abstract:
-  description: 'Leer hoe u Azure Virtual Network gebruikt. Aan de hand van stelstarts, zelfstudies, voorbeelden en meer ontdekt u hoe u een virtueel netwerk implementeert, verkeersfilters en -routering beheert en een virtueel netwerk aan andere virtuele netwerken koppelt.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Leer hoe u een virtueel netwerk maakt, daarin virtuele machines implementeert en vervolgens de communicatie tussen de virtuele machines en het internet instelt.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/portal.svg'
-            text: Azure Portal
-            href: /azure/virtual-network/quick-create-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/powershell.svg'
-            text: Azure PowerShell
-            href: /azure/virtual-network/quick-create-powershell
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-network/media/index/cli.svg'
-            text: Azure-CLI
-            href: /azure/virtual-network/quick-create-cli
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Leer hoe u virtuele netwerken maakt en verbindt, en hoe u routering en filters beheert.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-network/tutorial-filter-network-traffic">Netwerkverkeer filteren</a>
-          - html: <a href="/azure/virtual-network/tutorial-create-route-table-portal">Netwerkverkeer routeren</a>
-          - html: <a href="/azure/virtual-network/tutorial-restrict-network-access-to-resources">Netwerktoegang tot resources beperken</a>
-          - html: <a href="/azure/virtual-network/tutorial-connect-virtual-networks-portal">Virtuele netwerken verbinden</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: "\_Inleiding tot Azure-netwerken"
-            href: /learn/modules/intro-to-azure-networking/
-            image:
-              src: /learn/achievements/intro-to-azure-networking.svg
-              href: /learn/modules/intro-to-azure-networking/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">Meer interactief leren...</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure-beheerder
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure-oplossingsarchitect
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: Azure-beheer voor AWS-beheerders
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Scriptvoorbeelden voor veelvoorkomende taken.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/virtual-network/cli-samples">Azure-CLI</a>
-          - html: <a href="/azure/virtual-network/powershell-samples">PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/network">Azure-CLI</a></p>'
-          - title: Talen
-            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/virtual-network/">Naslaginformatie over REST-API</a></p>
+  ms.date: 08/28/2019
+  ms.openlocfilehash: f96f011eedc297b3f48d8b8dda177198809bb564
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70142941"
+landingContent:
+- title: Over Virtual Network
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Virtual Network?
+      url: virtual-networks-overview.md
+  - linkListType: concept
+    links:
+    - text: Veelgestelde vragen over Virtual Network
+      url: virtual-networks-overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Virtueel netwerk maken
+      url: quick-create-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een virtueel netwerk maken, wijzigen of verwijderen
+      url: manage-virtual-network.md
+    - text: Een subnet toevoegen, wijzigen of verwijderen
+      url: virtual-network-manage-subnet.md
+- title: Netwerkverkeer beveiligen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Netwerkbeveiligingsgroepen
+      url: security-overview.md
+    - text: Toepassingsbeveiligingsgroepen
+      url: security-overview.md#application-security-groups
+    - text: Service-eindpunten voor virtueel netwerk
+      url: virtual-network-service-endpoints-overview.md
+    - text: Veelgestelde vragen over de beveiliging van virtuele netwerken
+      url: virtual-networks-faq.md#security
+  - linkListType: tutorial
+    links:
+    - text: Netwerkverkeer filteren met netwerkbeveiligingsgroepen
+      url: tutorial-filter-network-traffic.md
+    - text: Netwerktoegang beperken met service-eindpunten
+      url: tutorial-restrict-network-access-to-resources.md
+    - text: Werken met toepassingsbeveiligingsgroepen
+      url: manage-network-security-group.md#work-with-application-security-groups
+  - linkListType: learn
+    links:
+    - text: Toegang tot Azure-resources beveiligen en isoleren
+      url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+- title: Virtuele netwerken verbinden
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Peering op virtueel netwerk
+      url: virtual-network-peering-overview.md
+    - text: Veelgestelde vragen over peering op een virtueel netwerk
+      url: virtual-networks-faq.md#vnet-peering
+  - linkListType: tutorial
+    links:
+    - text: VNets verbinden met peering op een virtueel netwerk
+      url: tutorial-connect-virtual-networks-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hetzelfde implementatiemodel - hetzelfde abonnement
+      url: tutorial-connect-virtual-networks-powershell.md
+    - text: Hetzelfde implementatiemodel - verschillende abonnementen
+      url: create-peering-different-subscriptions.md
+    - text: Verschillende implementatiemodellen - hetzelfde abonnement
+      url: create-peering-different-deployment-models.md
+    - text: Verschillende implementatiemodellen - verschillende abonnementen
+      url: create-peering-different-deployment-models-subscriptions.md
+  - linkListType: learn
+    links:
+    - text: Communiceren met peering op een virtueel netwerk
+      url: https://docs.microsoft.com/learn/modules/integrate-vnets-with-vnet-peering
+- title: Netwerkverkeer routeren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Netwerkverkeer routeren met routetabellen
+      url: virtual-networks-udr-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Netwerkverkeer routeren - Portal
+      url: tutorial-create-route-table-portal.md
+- title: IP-adressen maken
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IP-adrestypen en toewijzingsmethoden
+      url: virtual-network-ip-addresses-overview-arm.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een openbaar IP-adres maken, wijzigen of verwijderen
+      url: virtual-network-public-ip-address.md
+    - text: Een openbaar IP-adres toevoegen aan een VM
+      url: associate-public-ip-address-vm.md
+    - text: Een VM met statisch IP-adres maken
+      url: virtual-network-deploy-static-pip-arm-portal.md
+    - text: Een statisch privé-IP-adres configureren voor een VM
+      url: virtual-networks-static-private-ip-arm-pportal.md
+    - text: Meerdere IP-adressen toewijzen aan een VM
+      url: virtual-network-multiple-ip-addresses-powershell.md
+- title: IPv6 maken voor virtuele netwerken
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Wat is IPv6 voor Azure Virtual Network?
+      url: ipv6-overview.md
+  - linkListType: deploy
+    links:
+    - text: Een IPv6-toepassing met dubbele stack implementeren - Standard Load Balancer
+      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+    - text: Een IPv6-toepassing met dubbele stack implementeren - Basic Load Balancer
+      url: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+- title: Virtuele netwerken bewaken
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Virtual Network Terminal Access Point (TAP)
+      url: virtual-network-tap-overview.md
+    - text: Veelgestelde vragen over Virtual Network TAP
+      url: virtual-networks-faq.md#virtual-network-tap
+  - linkListType: how-to-guide
+    links:
+    - text: Een Virtual Network TAP maken
+      url: tutorial-tap-virtual-network-cli.md
+- title: IP-services beheren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IP-adrestypen en toewijzingsmethoden
+      url: virtual-network-ip-addresses-overview-arm.md
+    - text: Wat is IPv6 voor Azure Virtual Network?
+      url: ipv6-overview.md
+    - text: Voorvoegsel van openbaar IP-adres
+      url: public-ip-address-prefix.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een openbaar IP-adres maken, wijzigen of verwijderen
+      url: virtual-network-public-ip-address.md
+    - text: Een IPv6-toepassing met dubbele stack implementeren
+      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+    - text: Een voorvoegsel van een openbaar IP-adres maken, wijzigen of verwijderen
+      url: manage-public-ip-address-prefix.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure-CLI
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtual-network

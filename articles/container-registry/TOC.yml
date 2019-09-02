@@ -59,6 +59,8 @@
       items:
         - name: Een installatiekopie pushen en ophalen
           href: container-registry-get-started-docker-cli.md
+        - name: Een OCI-certificaat pushen en ophalen
+          href: container-registry-oci-artifacts.md
         - name: Opslagplaatsen weergeven
           href: container-registry-repositories.md
         - name: Containerinstallatiekopieën importeren

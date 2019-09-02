@@ -1,18 +1,841 @@
-- name: Documentatie voor HDInsight
-  href: index.yml
-- name: Apache Hadoop
-  href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+- name: HDInsight-service
+  expanded: true
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Azure HDInsight?
+          href: ./hdinsight-overview.md
+    - name: Zelfstudies
+      items:
+        - name: HDInsight-clusters maken
+          href: ./hdinsight-hadoop-provision-linux-clusters.md
+        - name: HDInsight-clusters beheren - Portal
+          href: ./hdinsight-administer-use-portal-linux.md
+        - name: HDInsight-clusters beheren - CLI
+          href: ./hdinsight-administer-use-command-line.md
+        - name: HDInsight-clusters beheren - .NET SDK
+          href: ./hdinsight-administer-use-dotnet-sdk.md
+        - name: HDInsight-clusters beheren - PowerShell
+          href: ./hdinsight-administer-use-powershell.md
+    - name: Voorbeelden
+      items:
+        - name: .NET-voorbeelden
+          href: ./hdinsight-sdk-dotnet-samples.md
+        - name: Java-voorbeelden
+          href: ./hdinsight-sdk-java-samples.md
+        - name: Python-voorbeelden
+          href: ./hdinsight-sdk-python-samples.md
+        - name: Azure-voorbeeldenbrowser
+          href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
+    - name: Concepten
+      items:
+        - name: Apache Hadoop-onderdelen in HDInsight
+          href: ./hdinsight-component-versioning.md
+        - name: Machine learning in HDInsight
+          href: ./hdinsight-machine-learning-overview.md
+        - name: Schaalbaar streamen in HDInsight
+          href: ./hdinsight-streaming-at-scale-overview.md
+        - name: Apache Hadoop-architectuur in HDInsight
+          href: ./hdinsight-hadoop-architecture.md
+        - name: Planning clustercapaciteit
+          href: ./hdinsight-capacity-planning.md
+        - name: Beschikbaarheid en betrouwbaarheid
+          href: ./hdinsight-high-availability-linux.md
+        - name: Opslagopties vergelijken
+          href: ./hdinsight-hadoop-compare-storage-options.md
+        - name: Inzicht in beheerde identiteiten
+          href: ./hdinsight-managed-identities.md
+    - name: Procedures
+      items:
+        - name: Clusters maken
+          items:
+            - name: Clusters maken in de portal
+              href: ./hdinsight-hadoop-create-linux-clusters-portal.md
+            - name: Clusters maken met sjablonen
+              href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
+            - name: Clusters maken met de opdrachtregel
+              href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
+            - name: Clusters maken met PowerShell
+              href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+            - name: Clusters maken met REST API
+              href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
+            - name: Clusters maken met .NET
+              href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
+        - name: Clusteropslag gebruiken
+          items:
+            - name: Met behulp van Azure Storage
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: Azure Data Lake Storage Gen2 gebruiken
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1 gebruiken
+              href: hdinsight-hadoop-use-data-lake-store.md
+        - name: Clusters uitbreiden
+          items:
+            - name: HDInsight-apps installeren
+              href: hdinsight-apps-install-applications.md
+            - name: Clusters aanpassen met Bootstrap
+              href: hdinsight-hadoop-customize-cluster-bootstrap.md
+            - name: Clusters aanpassen met Script Action
+              href: hdinsight-hadoop-customize-cluster-linux.md
+            - name: Scriptacties ontwikkelen
+              href: hdinsight-hadoop-script-actions-linux.md
+            - name: Apache Hive-bibliotheken toevoegen
+              href: hdinsight-hadoop-add-hive-libraries.md
+            - name: Apache Giraph gebruiken
+              href: hdinsight-hadoop-giraph-install-linux.md
+            - name: Hue gebruiken
+              href: hdinsight-hadoop-hue-linux.md
+            - name: HDInsight-toepassingen bouwen
+              items:
+                - name: Aangepaste apps installeren
+                  href: hdinsight-apps-install-custom-applications.md
+                - name: Apps installeren met REST
+                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                - name: HDInsight-apps publiceren in Azure Marketplace
+                  href: hdinsight-apps-publish-applications.md
+        - name: Beveiligen
+          items:
+            - name: SSH gebruiken met HDInsight
+              href: hdinsight-hadoop-linux-use-ssh-unix.md
+            - name: SSH-tunneling gebruiken
+              href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: Toegang tot gegevens beperken
+              href: hdinsight-storage-sharedaccesssignature-permissions.md
+            - name: Gebruikers machtigen voor Apache Ambari-weergaven
+              href: hdinsight-authorize-users-to-ambari.md
+        - name: Migreren
+          items:
+            - name: Motivatie en voordelen
+              href: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
+            - name: Best practices - architectuur
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-architecture.md
+            - name: Best practices - infrastructuur
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-infrastructure.md
+            - name: Best practices - opslag
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-storage.md
+            - name: Best practices - gegevensmigratie
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-data-migration.md
+            - name: Best practices - beveiliging en DevOps
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-security-devops.md
+        - name: Beheren
+          items:
+            - name: Clusters beheren met de Apache Ambari-webinterface
+              href: ./hdinsight-hadoop-manage-ambari.md
+            - name: Clusters optimaliseren met de Apache Ambari-webinterface
+              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: Apache Ambari REST API gebruiken
+              href: ./hdinsight-hadoop-manage-ambari-rest-api.md
+            - name: Een cluster verwijderen
+              href: ./hdinsight-delete-cluster.md
+            - name: Schaal van een cluster handmatig aanpassen
+              href: ./hdinsight-scaling-best-practices.md
+            - name: Schaal van clusters automatisch aanpassen
+              href: ./hdinsight-autoscale-clusters.md
+            - name: Externe metagegevensopslag gebruiken
+              href: ./hdinsight-use-external-metadata-stores.md
+            - name: Logboeken beheren voor een HDInsight-cluster
+              href: ./hdinsight-log-management.md
+            - name: Opslagaccounts toevoegen
+              href: ./hdinsight-hadoop-add-storage.md
+            - name: Gegevens uploaden voor Apache Hadoop-taken
+              href: ./hdinsight-upload-data.md
+            - name: Meerdere HDInsight-clusters met Data Lake Storage
+              href: ./hdinsight-multiple-clusters-data-lake-store.md
+            - name: .NET migreren naar Linux
+              href: ./hdinsight-hadoop-migrate-dotnet-to-linux.md
+            - name: Gegevens importeren en exporteren met Apache Sqoop
+              items:
+                - name: 'Overzicht: Apache Sqoop gebruiken'
+                  href: ./hadoop/hdinsight-use-sqoop.md
+                - name: Verbinding maken met SSH
+                  href: ./hadoop/apache-hadoop-use-sqoop-mac-linux.md
+                - name: Uitvoeren met cURL
+                  href: ./hadoop/apache-hadoop-use-sqoop-curl.md
+                - name: Uitvoeren met de SDK voor .NET
+                  href: ./hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
+                - name: Uitvoeren met Azure PowerShell
+                  href: ./hadoop/apache-hadoop-use-sqoop-powershell.md
+            - name: Een pijplijn voor gegevensanalyse operationeel maken
+              href: ./hdinsight-operationalize-data-pipeline.md
+            - name: Apache Oozie gebruiken voor werkstromen
+              href: ./hdinsight-use-oozie-linux-mac.md
+            - name: Cluster en servicepoorten en URI's
+              href: ./hdinsight-hadoop-port-settings-for-services.md
+            - name: Migreren naar ontwikkelingsprogramma's van Resource Manager
+              href: ./hdinsight-hadoop-development-using-azure-resource-manager.md
+            - name: HDInsight-cluster upgraden naar nieuwere versie
+              href: ./hdinsight-upgrade-cluster.md
+            - name: OS-patches voor HDInsight-cluster
+              href: ./hdinsight-os-patching.md
+        - name: HDInsight-hulpprogramma's gebruiken
+          items:
+            - name: Hulpprogramma's voor Visual Studio
+              href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
+            - name: Spark- en Hive-hulpprogramma's voor VSCode
+              href: ./hdinsight-for-vscode.md
+            - name: HDInsight-hulpprogramma's voor IntelliJ met Hortonworks Sandbox
+              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
+            - name: Data Lake-hulpprogramma's met Hortonworks Sandbox
+              href: ./hdinsight-hadoop-emulator-visual-studio.md
+        - name: Bewaking
+          items:
+            - name: Azure Monitor-logboeken gebruiken
+              href: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+            - name: Query's gebruiken met Azure Monitor-logboeken
+              href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
+            - name: Cluster-prestaties bewaken
+              href: ./hdinsight-key-scenarios-to-monitor.md
+            - name: Beschikbaarheid van het cluster bewaken met Ambari en Azure Monitor-logboeken
+              href: ./hdinsight-cluster-availability.md
+    - name: Naslaginformatie
+      items:
+        - name: Azure PowerShell
+          href: /powershell/module/az.hdinsight
+        - name: SDK voor .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet'
+        - name: SDK voor Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
+        - name: SDK voor Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
+        - name: SDK voor Go
+          href: ./hdinsight-go-sdk-overview.md
+        - name: .NET (Apache HBase)
+          href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+        - name: REST-API
+          href: /rest/api/hdinsight/
+        - name: REST API (Apache Spark)
+          href: /rest/api/hdinsightspark/
+        - name: Resource Manager-sjabloon
+          href: /azure/templates/microsoft.hdinsight/allversions
+    - name: Resources
+      items:
+        - name: Releases
+          items:
+            - name: Nieuw in HDInsight 4.0
+              href: ./hdinsight-version-release.md
+            - name: Alle opmerkingen bij de release van HDInsight 4.0
+              href: ./hdinsight-release-notes.md
+            - name: Alle opmerkingen bij de release van HDInsight 3.6
+              href: ./hdinsight-release-notes-archive.md
+        - name: 'Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties'
+          href: ./hdinsight-migrate-granular-access-cluster-configurations.md
+        - name: Informatie over het gebruik van HDInsight in Linux
+          href: ./hdinsight-hadoop-linux-information.md
+        - name: Apache Hadoop-geheugen en -prestaties
+          href: ./hdinsight-hadoop-stack-trace-error-messages.md
+        - name: Toegang tot Apache Hadoop YARN-toepassingslogboeken in Linux
+          href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
+        - name: Heapdumps voor Apache Hadoop-services inschakelen
+          href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
+        - name: Inzicht in problemen met WebHCat en deze oplossen
+          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
+        - name: Azure-roadmap
+          href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+        - name: Hulp op het forum
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: Leertraject
+          href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+        - name: Microsoft Professional-programma voor Big Data
+          href: 'https://academy.microsoft.com/en-us/professional-program/tracks/big-data/'
+        - name: Prijscalculator
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: Windows-hulpprogramma's voor HDInsight
+          href: ./hdinsight-hadoop-windows-tools.md
 - name: Apache Spark
-  href: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
-- name: Apache HBase
-  href: ./hbase/query-hbase-with-hbase-shell.md
-- name: Interactive Query
-  href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Apache Spark in HDInsight?
+          href: ./spark/apache-spark-overview.md
+    - name: Snelstartgidsen
+      items:
+        - name: Een Apache Spark-cluster maken - portal
+          href: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+        - name: Een Apache Spark-cluster maken - PowerShell
+          href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
+        - name: Een Apache Spark-cluster maken - Azure CLI
+          href: ./spark/apache-spark-create-cluster-cli.md
+        - name: Een Apache Spark-cluster maken - sjabloon
+          href: ./spark/apache-spark-jupyter-spark-sql.md
+    - name: Zelfstudies
+      items:
+        - name: Query's uitvoeren op een Apache Spark-cluster
+          href: ./spark/apache-spark-load-data-run-query.md
+        - name: Fout bij foutopsporing in Spark-taak in IntelliJ (preview)
+          href: ./spark/apache-spark-intellij-tool-failure-debug.md
+        - name: Gegevens analyseren met BI-tools
+          href: ./spark/apache-spark-use-bi-tools.md
+        - name: Streamingtaak uitvoeren
+          href: ./spark/apache-spark-eventhub-streaming.md
+        - name: Een machine learning-app maken
+          href: ./spark/apache-spark-ipython-notebook-machine-learning.md
+        - name: Een Apache Spark-app maken in IntelliJ
+          href: ./spark/apache-spark-create-standalone-application.md
+    - name: Procedures
+      items:
+        - name: Hulpprogramma's gebruiken
+          items:
+            - name: Hulpprogramma's voor IntelliJ
+              href: ./spark/apache-spark-intellij-tool-plugin.md
+            - name: Hulpprogramma's voor Eclipse
+              href: ./spark/apache-spark-eclipse-tool-plugin.md
+            - name: PySpark voor VSCode
+              href: ./set-up-pyspark-interactive-environment.md
+        - name: Ontwikkelen
+          items:
+            - name: Een interactieve Apache Spark-shell gebruiken
+              href: ./spark/apache-spark-shell.md
+            - name: Externe taken met Apache Livy
+              href: ./spark/apache-spark-livy-rest-interface.md
+            - name: Externe foutenopsporing voor Apache Spark-taken met IntelliJ via VPN
+              href: ./spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
+            - name: Apache Spark-streaming
+              items:
+                - name: Overzicht van streaming
+                  href: ./spark/apache-spark-streaming-overview.md
+                - name: Overzicht van gestructureerd streamen
+                  href: ./spark/apache-spark-structured-streaming-overview.md
+                - name: Maximaal beschikbare Apache Spark-streamingtaken in Apache Hadoop YARN maken
+                  href: ./spark/apache-spark-streaming-high-availability.md
+                - name: Apache Spark-streamingtaken maken met exactly-once-gebeurtenisverwerking
+                  href: ./spark/apache-spark-streaming-exactly-once.md
+            - name: Apache Spark en Machine Learning
+              items:
+                - name: Resultaten van voedingsinspectie voorspellen
+                  href: ./spark/apache-spark-machine-learning-mllib-ipython.md
+                - name: Websitelogboeken analyseren
+                  href: ./spark/apache-spark-custom-library-website-log-analysis.md
+                - name: Caffe gebruiken voor deep learning
+                  href: ./spark/apache-spark-deep-learning-caffe.md
+                - name: Met Microsoft Cognitive Toolkit gebruiken
+                  href: ./spark/apache-spark-microsoft-cognitive-toolkit.md
+                - name: Een machine learning-pijplijn in Apache Spark maken
+                  href: ./spark/apache-spark-creating-ml-pipelines.md
+            - name: Big data analyseren
+              items:
+                - name: Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven
+                  href: ./hdinsight-using-spark-query-hbase.md
+                - name: Application Insights-logboeken met telemetrie analyseren
+                  href: ./spark/apache-spark-analyze-application-insight-logs.md
+        - name: Beheren
+          items:
+            - name: Clusterresources beheren
+              href: ./spark/apache-spark-resource-manager.md
+            - name: Apache Spark-toepassingen beheren met behulp van een uitgebreide History Server
+              href: ./spark/apache-azure-spark-history-server.md
+            - name: Apache Spark-instellingen configureren
+              href: ./spark/apache-spark-settings.md
+            - name: Apache Spark-taken optimaliseren
+              href: ./spark/apache-spark-perf.md
+            - name: In cache opslaan met IO Cache inschakelen
+              href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Notitieblokken gebruiken met Apache Spark
+              items:
+                - name: Een lokaal Jupyter-notitieblok gebruiken
+                  href: ./spark/apache-spark-jupyter-notebook-install-locally.md
+                - name: Jupyter-notitieblokkernels
+                  href: ./spark/apache-spark-jupyter-notebook-kernels.md
+                - name: Externe pakketten gebruiken met Jupyter met behulp van magic-pakket voor cellen
+                  href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
+                - name: Externe pakketten gebruiken met Jupyter met behulp van scriptacties
+                  href: ./spark/apache-spark-python-package-installation.md
+                - name: Apache Zeppelin-notitieblokken gebruiken
+                  href: ./spark/apache-spark-zeppelin-notebook.md
+            - name: Gebruiken met andere Azure-services
+              items:
+                - name: Gebruiken met Data Lake Storage
+                  href: ./spark/apache-spark-use-with-data-lake-store.md
+                - name: Verbinding maken met Azure SQL-database
+                  href: ./spark/apache-spark-connect-to-sql-database.md
+                - name: Een lambda-architectuur implementeren met Apache Spark en Cosmos DB
+                  href: ../cosmos-db/lambda-architecture.md
+                - name: Azure ML-werkbelastingen uitvoeren met AutoML
+                  href: ./spark/apache-spark-run-machine-learning-automl.md
+        - name: Problemen oplossen
+          items:
+            - name: OutOfMemoryError-uitzondering
+              href: ./spark/apache-spark-troubleshoot-outofmemory.md
+            - name: Apache Spark-taak mislukt - NoClassDefFoundError
+              href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+            - name: Apache Spark-taak mislukt - InvalidClassException
+              href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
+            - name: Langzame Apache Spark-taken - listStatus
+              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
+            - name: Langzame Apache Spark-taken - opslagcontainer
+              href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
+            - name: IllegalArgumentException-uitzondering
+              href: ./spark/apache-spark-troubleshoot-illegalargumentexception.md
+            - name: Apache Spark-streamingtoepassing stopt
+              href: ./spark/apache-spark-troubleshoot-application-stops.md
+            - name: RpcTimeoutException-uitzondering
+              href: ./spark/apache-spark-troubleshoot-rpctimeoutexception.md
+            - name: API's uit andere oorsprong blokkeren
+              href: ./spark/apache-spark-troubleshoot-blocking-cross-origin.md
+            - name: Kryo-serialisatie mislukt
+              href: ./spark/apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+            - name: Apache Spark-gebeurtenislogboek - RequestBodyTooLarge
+              href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
+            - name: Fouten in Apache Spark-taken opsporen
+              href: ./spark/apache-spark-job-debugging.md
+            - name: IntelliJ gebruiken om fouten in Apache Spark-taken op te sporen
+              href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
+            - name: Problemen met Apache Spark oplossen
+              href: ./spark/apache-troubleshoot-spark.md
+            - name: Bekende problemen
+              href: ./spark/apache-spark-known-issues.md
+- name: Apache Hadoop
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Apache Hadoop in HDInsight?
+          href: ./hadoop/apache-hadoop-introduction.md
+    - name: Snelstartgidsen
+      items:
+        - name: Een Apache Hadoop-cluster maken - Portal
+          href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+        - name: Een Apache Hadoop-cluster maken - sjabloon
+          displayName: 'resource manager template, arm template, resource manager group'
+          href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
+    - name: Zelfstudies
+      items:
+        - name: On-demand clusters maken
+          href: ./hdinsight-hadoop-create-linux-clusters-adf.md
+        - name: Apache Hadoop-taken verzenden
+          href: ./hadoop/submit-apache-hadoop-jobs-programmatically.md
+    - name: Procedures
+      items:
+        - name: Hulpprogramma's gebruiken
+          items:
+            - name: Apache Hadoop-sandbox gebruiken
+              href: ./hadoop/apache-hadoop-emulator-get-started.md
+        - name: Ontwikkelen
+          items:
+            - name: MapReduce gebruiken met Apache Hadoop
+              items:
+                - name: Overzicht van MapReduce
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: SSH gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: cURL gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: Azure PowerShell gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: SDK voor .NET gebruiken
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: De MapReduce-voorbeelden uitvoeren
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: Aangepaste Apache Hadoop MapReduce-programma's uitvoeren
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: 'Streaming C# MapReduce-programma''s ontwikkelen'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: Java MapReduce-programma's ontwikkelen
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 'Apache Hive gebruiken als hulpprogramma voor uitpakken, transformeren en laden (ETL)'
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 'Uitpakken, transformeren en laden op de juiste schaal'
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: Toepassingen zonder interactieve verificatie voor .NET HDInsight maken
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: Big data analyseren
+              items:
+                - name: Analyseren met Power Query
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: Power BI verbinden met Interactive Query
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: Power BI verbinden met Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: Excel verbinden met Apache Hadoop
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: Verbinding maken met het Apache Hive JDBC-stuurprogramma
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: Opgeslagen tweets analyseren
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: Aanbevelingen genereren met Apache Mahout
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: Geavanceerde analyse voor HDInsight
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+        - name: Beheren
+          items:
+            - name: Lege edge-knooppunten gebruiken
+              href: ./hdinsight-apps-use-edge-node.md
+        - name: Problemen oplossen
+          items:
+            - name: Algemene problemen
+              href: ./hdinsight-troubleshoot-guide.md
+            - name: Fouten bij het maken van een cluster
+              href: ./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md
+            - name: Onvoldoende schijfruimte
+              href: ./hadoop/hdinsight-troubleshoot-out-disk-space.md
+            - name: Zacht vergrendeling - CPU
+              href: ./hadoop/hdinsight-troubleshoot-soft-lockup-cpu.md
+            - name: 'InvalidNetworkConfigurationErrorCode: maken van cluster mislukt'
+              href: ./hadoop/troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+            - name: 'InvalidNetworkSecurityGroupSecurityRules: het maken van een cluster mislukt'
+              href: ./hadoop/hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+            - name: Aanmelden bij het HDInsight-cluster is niet mogelijk
+              href: ./hadoop/hdinsight-troubleshoot-unable-log-in-cluster.md
+            - name: Kan geen knooppunten toevoegen aan het HDInsight-cluster
+              href: ./hadoop/hdinsight-troubleshoot-unable-add-nodes.md
+            - name: Certificaat van service-principal converteren
+              href: ./hadoop/hdinsight-troubleshoot-converting-service-principal-certificate.md
+            - name: Lokale HDFS vastgelopen in veilige modus
+              href: ./hadoop/hdinsight-hdfs-troubleshoot-safe-mode.md
+            - name: Problemen met de Apache Ambari-heartbeat
+              href: ./hadoop/apache-ambari-troubleshoot-heartbeat-issues.md
+            - name: 502-fout in de Apache Ambari-gebruikersinterface
+              href: ./hadoop/apache-ambari-troubleshoot-fivezerotwo-error.md
+            - name: Apache Ambari-hosts en -services zijn buiten werking
+              href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
+            - name: Problemen met een traag of niet werkend HDInsight-cluster oplossen
+              href: ./hdinsight-troubleshoot-failed-cluster.md
+            - name: Problemen met Apache Hadoop HDFS oplossen
+              href: ./hdinsight-troubleshoot-hdfs.md
+            - name: Problemen met Apache Hadoop YARN oplossen
+              href: ./hdinsight-troubleshoot-yarn.md
+            - name: Apache Hadoop-logboeken analyseren
+              href: ./hadoop/apache-hadoop-debug-jobs.md
+            - name: Problemen met Data Lake Store-bestanden oplossen
+              href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
 - name: Apache Kafka
-  href: ./kafka/apache-kafka-get-started.md
-- name: Apache Storm
-  href: ./storm/apache-storm-quickstart.md
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Apache Kafka in HDInsight?
+          href: ./kafka/apache-kafka-introduction.md
+    - name: Snelstartgidsen
+      items:
+        - name: Een Apache Kafka-cluster maken - portal
+          href: ./kafka/apache-kafka-get-started.md
+        - name: Een Apache Kafka-cluster maken - PowerShell
+          href: ./kafka/apache-kafka-quickstart-powershell.md
+        - name: Een Apache Kafka-cluster maken - sjabloon
+          displayName: 'resource manager template, arm template, resource manager group'
+          href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
+    - name: Zelfstudies
+      items:
+        - name: Apache Kafka Producer- en Consumer-API gebruiken
+          href: ./kafka/apache-kafka-producer-consumer-api.md
+        - name: Apps ontwikkelen met de Apache Kafka Streams-API
+          href: ./kafka/apache-kafka-streams-api.md
+        - name: Gestructureerd streamen van Apache Spark gebruiken
+          href: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - name: Concepten
+      items:
+        - name: Opslag en schaalbaarheid
+          href: ./kafka/apache-kafka-scalability.md
+        - name: Hoge beschikbaarheid van gegevens
+          href: ./kafka/apache-kafka-high-availability.md
+        - name: Prestaties afstemmen
+          href: ./kafka/apache-kafka-performance-tuning.md
+        - name: Veelgestelde vragen over Kafka
+          href: ./kafka/kafka-faq.md
+    - name: Procedures
+      items:
+        - name: Ontwikkelen
+          items:
+            - name: Automatisch onderwerp maken inschakelen
+              href: ./kafka/apache-kafka-auto-create-topics.md
+            - name: Apache Kafka gebruiken met IoT Hub
+              href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: Streaming-pijplijnen maken
+              items:
+                - name: 'Apache Spark, Apache Kafka en Azure Cosmos DB'
+                  href: ./apache-kafka-spark-structured-streaming-cosmosdb.md
+                - name: Apache Kafka en Apache Spark (DStream)
+                  href: ./hdinsight-apache-spark-with-kafka.md
+                - name: Apache Kafka gebruiken met Azure Container Service
+                  href: ./kafka/apache-kafka-azure-container-services.md
+        - name: Beheren
+          items:
+            - name: Apache Kafka gebruiken in een virtueel netwerk
+              href: ./kafka/apache-kafka-connect-vpn-gateway.md
+            - name: Apache Kafka-gegevens repliceren
+              href: ./kafka/apache-kafka-mirroring.md
+            - name: Apache Kafka-logboeken analyseren
+              href: ./kafka/apache-kafka-log-analytics-operations-management.md
+            - name: BYOK (Bring Your Own Key)
+              href: ./kafka/apache-kafka-byok.md
+            - name: SSL-versleuteling en -verificatie
+              href: ./kafka/apache-kafka-ssl-encryption-authentication.md
+        - name: Problemen oplossen
+          items:
+            - name: Onvoldoende foutdomeinen
+              href: ./kafka/kafka-troubleshoot-insufficient-domains.md
+- name: Apache HBase
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Apache HBase in HDInsight?
+          href: ./hbase/apache-hbase-overview.md
+    - name: Snelstartgidsen
+      items:
+        - name: Query uitvoeren op Apache HBase - Apache Phoenix
+          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+        - name: Query uitvoeren op Apache HBase - HBase-Shell
+          href: ./hbase/query-hbase-with-hbase-shell.md
+    - name: Zelfstudies
+      items:
+        - name: Apache HBase in HDInsight gebruiken
+          href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: Procedures
+      items:
+        - name: Ontwikkelen
+          items:
+            - name: De Apache HBase-SDK voor .NET gebruiken
+              href: ./hbase/apache-hbase-rest-sdk.md
+            - name: Java-toepassingen ontwikkelen
+              href: ./hbase/apache-hbase-build-java-maven-linux.md
+            - name: Apache Phoenix in HDInsight
+              href: ./hdinsight-phoenix-in-hdinsight.md
+            - name: De Apache Phoenix Query Server REST SDK gebruiken
+              href: ./hbase/apache-hbase-using-phoenix-query-server-rest-sdk.md
+            - name: Bulksgewijs gegevens laden in Apache Phoenix met psql
+              href: ./hbase/apache-hbase-phoenix-psql.md
+        - name: Beheren
+          items:
+            - name: Versnelde schrijfbewerkingen
+              href: ./hbase/apache-hbase-accelerated-writes.md
+            - name: Replicatie van een Apache HBase-cluster in Azure VNet
+              href: ./hbase/apache-hbase-replication.md
+            - name: Back-up en replicatie instellen voor Apache HBase en Apache Phoenix
+              href: ./hbase/apache-hbase-backup-replication.md
+            - name: Apache HBase-cluster migreren naar een nieuwere versie
+              href: ./hbase/apache-hbase-migrate-new-version.md
+            - name: Best practices voor Apache Phoenix-prestaties
+              href: ./hbase/apache-hbase-phoenix-performance.md
+            - name: Een Apache HBase-cluster maken in Azure VNet
+              href: ./hbase/apache-hbase-provision-vnet.md
+        - name: Problemen oplossen
+          items:
+            - name: hbase hbck retourneert inconsistenties
+              href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
+            - name: Opslaguitzondering na opnieuw instellen van verbinding
+              href: ./hbase/hbase-troubleshoot-storage-exception-reset.md
+            - name: Geen gegevens in Apache Phoenix-weergaven
+              href: ./hbase/hbase-troubleshoot-phoenix-no-data.md
+            - name: BindException - Adres in gebruik
+              href: ./hbase/hbase-troubleshoot-bindexception-address-use.md
+            - name: Apache HBase kan niet worden gestart
+              href: ./hbase/hbase-troubleshoot-start-fails.md
+            - name: Problemen met regioservers
+              href: ./hbase/hbase-troubleshoot-unassigned-regions.md
+            - name: Connectiviteitsproblemen met Apache Phoenix
+              href: ./hbase/hbase-troubleshoot-phoenix-connectivity.md
+            - name: Apache HBase REST reageert niet
+              href: ./hbase/hbase-troubleshoot-rest-not-spending.md
+            - name: Constant hoog CPU-gebruik op de regioserver
+              href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
+            - name: Time-outs bij gebruik van de opdracht 'hbase hbck'
+              href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
+            - name: Problemen met Apache HBase oplossen
+              href: ./hbase/apache-troubleshoot-hbase.md
+- name: Interactive Query
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is een interactieve query in HDInsight?
+          href: ./interactive-query/apache-interactive-query-get-started.md
+    - name: Snelstartgidsen
+      items:
+        - name: Apache Hive-query's uitvoeren - Apache Zeppelin
+          href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
+    - name: Zelfstudies
+      items:
+        - name: Gegevens analyseren met Interactive Query
+          href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: Procedures
+      items:
+        - name: Ontwikkelen
+          items:
+            - name: JSON-documenten verwerken en analyseren
+              href: ./hadoop/using-json-in-hive.md
+            - name: 'Door gebruiker gedefinieerde C#-functies gebruiken'
+              href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
+            - name: Python gebruiken met Apache Hive en Apache Pig
+              href: ./hadoop/python-udf-hdinsight.md
+            - name: Apache Hive met Apache Spark
+              href: ./interactive-query/apache-hive-warehouse-connector.md
+            - name: Apache Hive gebruiken met Hadoop
+              href: ./hadoop/hdinsight-use-hive.md
+            - name: De Apache Hive-weergave gebruiken
+              href: ./hadoop/apache-hadoop-use-hive-ambari-view.md
+            - name: Apache Hive Beeline gebruiken
+              href: ./hadoop/apache-hadoop-use-hive-beeline.md
+            - name: Grafana gebruiken
+              href: ./interactive-query/hdinsight-grafana.md
+            - name: REST API gebruiken
+              href: ./hadoop/apache-hadoop-use-hive-curl.md
+            - name: Azure PowerShell gebruiken
+              href: ./hadoop/apache-hadoop-use-hive-powershell.md
+            - name: SDK voor .NET gebruiken
+              href: ./hadoop/apache-hadoop-use-hive-dotnet-sdk.md
+            - name: HDInsight-hulpprogramma’s voor Visual Studio gebruiken
+              href: ./hadoop/apache-hadoop-use-hive-visual-studio.md
+            - name: Een Java UDF gebruiken met Apache Hive
+              href: ./hadoop/apache-hadoop-hive-java-udf.md
+            - name: Query op Hive uitvoeren met PowerShell en ODBC
+              href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
+        - name: Beheren
+          items:
+            - name: Hive-workloads migreren naar HDInsight 4.0
+              href: ./interactive-query/apache-hive-migrate-workloads.md
+            - name: Apache Hive-query's optimaliseren
+              href: ./hdinsight-hadoop-optimize-hive-query.md
+        - name: Problemen oplossen
+          items:
+            - name: Apache Hive-instellingen om fouten van het type 'onvoldoende geheugen' op te lossen
+              href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
+            - name: Apache Tez-toepassing loopt vast
+              href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Query-prestaties van Apache Hive LLAP
+              href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
+            - name: Trage reducer
+              href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Time-out van de Apache Hive-weergave
+              href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
+            - name: Machtigingsfout bij maken van tabel
+              href: ./interactive-query/interactive-query-troubleshoot-permission-error-create-table.md
+            - name: De limiet voor GC-overhead is overschreden
+              href: ./interactive-query/interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+            - name: Apache Ambari Tez-weergave wordt langzaam geladen
+              href: ./interactive-query/interactive-query-troubleshoot-tez-view-slow.md
+            - name: Foutbericht niet weergegeven in Apache Hive-weergave
+              href: ./interactive-query/interactive-query-troubleshoot-error-message-hive-view.md
+            - name: Apache Hive-weergave niet toegankelijk
+              href: ./interactive-query/interactive-query-troubleshoot-inaccessible-hive-view.md
+            - name: ZooKeeperHiveClientException - HiveServer2-configuraties
+              href: ./interactive-query/interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
+            - name: Problemen met Apache HIVE oplossen
+              href: ./hdinsight-troubleshoot-hive.md
 - name: ML Services
-  href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is ML Services in HDInsight?
+          href: ./r-server/r-server-overview.md
+    - name: Snelstartgidsen
+      items:
+        - name: Voorbeeldtaak - RStudio Server
+          href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
+        - name: Voorbeeldtaak - R-console
+          href: ./r-server/machine-learning-services-quickstart-job-rconsole.md
+    - name: Zelfstudies
+      items:
+        - name: R in een Spark-compute-context in HDInsight
+          href: ./r-server/ml-services-tutorial-spark-compute.md
+        - name: R Tools for Visual Studio gebruiken
+          href: ./r-server/r-server-submit-jobs-r-tools-vs.md
+    - name: Procedures
+      items:
+        - name: Ontwikkelen
+          items:
+            - name: Compute-context
+              href: ./r-server/r-server-compute-contexts.md
+            - name: ScaleR en SparkR
+              href: ./hdinsight-hadoop-r-scaler-sparkr.md
+        - name: Beheren
+          items:
+            - name: ML Services-cluster beheren
+              href: ./r-server/r-server-hdinsight-manage.md
+            - name: ML Services-cluster operationeel maken
+              href: ./r-server/r-server-operationalize.md
+            - name: Opslagopties
+              href: ./r-server/r-server-storage.md
+- name: Apache Storm
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Apache Storm in HDInsight?
+          href: ./storm/apache-storm-overview.md
+    - name: Snelstartgidsen
+      items:
+        - name: Een Apache Storm-topologie maken in HDInsight
+          href: ./storm/apache-storm-quickstart.md
+    - name: Zelfstudies
+      items:
+        - name: Apache Storm gebruiken om naar opslag te schrijven
+          href: ./storm/apache-storm-write-data-lake-store.md
+    - name: Procedures
+      items:
+        - name: Ontwikkelen
+          items:
+            - name: Topologieën
+              items:
+                - name: Topologieën ontwikkelen met Java
+                  href: ./storm/apache-storm-develop-java-topology.md
+                - name: Topologieën ontwikkelen met Python
+                  href: ./storm/apache-storm-develop-python-topology.md
+                - name: 'Topologieën ontwikkelen met C#'
+                  href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
+                - name: SCP.NET-programmeergids
+                  href: ./storm/apache-storm-scp-programming-guide.md
+                - name: Apache Storm-voorbeelden
+                  href: ./storm/apache-storm-example-topology.md
+            - name: Streaming-pijplijnen
+              items:
+                - name: Apache Kafka en Apache Storm (Java)
+                  href: ./hdinsight-apache-storm-with-kafka.md
+                - name: 'Event Hub, Storage en Data Lake Storage (Java)'
+                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
+                - name: 'Event Hub en Apache Storm (C# en Java)'
+                  href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
+        - name: Beheren
+          items:
+            - name: Topologieën bewaken
+              href: ./storm/apache-storm-deploy-monitor-topology-linux.md
+        - name: Problemen oplossen
+          items:
+            - name: Problemen met Apache STORM oplossen
+              href: ./storm/apache-troubleshoot-storm.md
 - name: Gereedheid voor bedrijven
-  href: ./domain-joined/apache-domain-joined-run-hbase.md
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is bedrijfsbeveiliging in HDInsight?
+          href: ./domain-joined/hdinsight-security-overview.md
+    - name: Zelfstudies
+      items:
+        - name: Firewall gebruiken om uitgaand verkeer te beperken
+          href: ./hdinsight-restrict-outbound-traffic.md
+        - name: RBAC voor Apache HBase met Apache Ranger
+          href: ./domain-joined/apache-domain-joined-run-hbase.md
+        - name: RBAC voor Apache Hive met Apache Ranger
+          href: ./domain-joined/apache-domain-joined-run-hive.md
+        - name: RBAC voor Apache Kafka met Apache Ranger
+          href: ./domain-joined/apache-domain-joined-run-kafka.md
+        - name: Apache Oozie gebruiken in ESP-clusters
+          href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
+    - name: Concepten
+      items:
+        - name: Plan voor ESP-clusters
+          href: ./domain-joined/apache-domain-joined-architecture.md
+        - name: HDInsight-architectuur voor virtueel netwerk
+          href: ./hdinsight-virtual-network-architecture.md
+        - name: VNETs plannen voor HDInsight
+          href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: Vereiste IP-adressen voor NSG's en UDR's
+          href: ./hdinsight-management-ip-addresses.md
+    - name: Procedures
+      items:
+        - name: ESP-clusters maken en synchroniseren met on-premises
+          href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
+        - name: VNETs maken voor HDInsight
+          href: ./hdinsight-create-virtual-network.md
+        - name: HDInsight verbinden met een on-premises netwerk
+          href: ./connect-on-premises-network.md
+        - name: Bedrijfsbeveiliging configureren in HDInsight
+          href: ./domain-joined/apache-domain-joined-configure.md
+        - name: ESP-clusters configureren met Azure AD DS
+          href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+        - name: Azure AD-gebruikers synchroniseren met een HDInsight-cluster
+          href: ./hdinsight-sync-aad-users-to-cluster.md
+        - name: Clusters met bedrijfsbeveiliging beheren
+          href: ./domain-joined/apache-domain-joined-manage.md
+        - name: Gegevens beveiligen
+          href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: Problemen oplossen
+          items:
+            - name: ESP-verificatieproblemen
+              href: ./domain-joined/domain-joined-authentication-issues.md
+            - name: Aanmelden bij Zeppelin met ESP mislukt
+              href: ./domain-joined/domain-joined-zeppelin-signin.md

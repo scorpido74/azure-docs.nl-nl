@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163733"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208381"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Zelfstudie: Een hostpool maken met behulp van Azure Marketplace
 
@@ -44,7 +44,7 @@ De Azure Marketplace-aanbieding uitvoeren om een nieuwe hostgroep in te richten:
 2. Voer in het venster zoeken in Marketplace het **virtuele bureau blad van Windows** in.
 3. Selecteer **virtueel bureau blad van Windows-een hostgroep inrichten**en selecteer vervolgens **maken**.
 
-Volg de instructies om de gegevens voor de juiste blades in te voeren.
+Volg daarna de instructies in de volgende sectie om de gegevens voor de juiste blades in te voeren.
 
 ### <a name="basics"></a>Basics
 
@@ -56,6 +56,9 @@ Ga als volgt te werk voor de Blade **basis beginselen** :
 4. Selecteer **nieuwe maken** en geef een naam op voor de nieuwe resource groep.
 5. Voor **locatie**selecteert u dezelfde locatie als het virtuele netwerk dat verbinding heeft met de Active Directory-server.
 6. Selecteer **OK**.
+
+>[!IMPORTANT]
+>Als u een zuivere Azure Active Directory Domain Services en Azure Active Directory oplossing gebruikt, moet u ervoor zorgen dat u uw hostgroep in dezelfde regio als uw Azure Active Directory Domain Services implementeert om domein-en referentie fouten te voor komen.
 
 ### <a name="configure-virtual-machines"></a>Virtuele machines configureren
 

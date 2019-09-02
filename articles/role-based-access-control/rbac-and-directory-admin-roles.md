@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1b7183da84b994da8694440183e367f143722002
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: be37768a5cef38ae0dc49e12f1d83ba8005ab961
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345028"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194171"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen
 
@@ -42,7 +42,7 @@ In het volgende schema diagram ziet u een algemeen overzicht van hoe de klassiek
 
 Accountbeheerder, Servicebeheerder en Medebeheerder zijn de drie klassieke abonnementsbeheerdersrollen in Azure. Klassieke abonnementsbeheerders hebben volledige toegang tot het Azure-abonnement. Ze kunnen resources beheren met behulp van Azure Portal, API's van Azure Resource Manager en API's van het klassieke implementatiemodel. Het account dat wordt gebruikt voor registratie bij Azure wordt automatisch ingesteld als de accountbeheerder en de servicebeheerder. Vervolgens kunnen er extra medebeheerders of co-beheerders worden toegevoegd. De servicebeheerder en de medebeheerders hebben dezelfde toegang als gebruikers met de rol van eigenaar (een Azure RBAC-rol) op abonnementsniveau. De volgende tabel beschrijft de verschillen tussen deze drie klassieke abonnementsbeheerdersrollen.
 
-| Klassiek abonnement beheerder | Limiet | Machtigingen | Opmerkingen |
+| Klassieke abonnementsbeheerder | Limiet | Machtigingen | Opmerkingen |
 | --- | --- | --- | --- |
 | Accountbeheerder | 1 per Azure-account | <ul><li>[Azure-accountcentrum](https://account.azure.com/Subscriptions) openen</li><li>Alle abonnementen in een account beheren</li><li>Nieuwe abonnementen maken</li><li>Abonnementen annuleren</li><li>De facturering voor een abonnement wijzigen</li><li>De servicebeheerder wijzigen</li></ul> | Conceptueel gezien de factureringseigenaar van het abonnement.<br>De accountbeheerder heeft geen toegang tot de Azure-portal. |
 | Servicebeheerder | 1 per Azure-abonnement | <ul><li>Services beheren in [Azure Portal](https://portal.azure.com)</li><li>Gebruikers de rol van medebeheerder geven</li></ul> | Voor een nieuw abonnement is het standaard zo dat de accountbeheerder ook de servicebeheerder is.<br>De servicebeheerder heeft dezelfde toegang als een gebruiker met de rol van eigenaar op abonnementsniveau.<br>De servicebeheerder heeft volledige toegang tot de Azure-portal. |
@@ -81,7 +81,7 @@ De overige ingebouwde rollen zijn bedoeld voor het beheer van specifieke Azure-r
 
 Alleen Azure Portal en de API's van Azure Resource Manager ondersteunen RBAC. Gebruikers, groepen en toepassingen met toegewezen RBAC-rollen kunnen geen gebruikmaken van de [API's van het klassieke implementatiemodel van Azure](../azure-resource-manager/resource-manager-deployment-model.md).
 
-In Azure Portal worden roltoewijzingen met RBAC weergegeven op de blade **Toegangsbeheer (IAM)**. Deze blade kunt u vinden in de portal, zoals beheergroepen, abonnementen, resourcegroepen en verschillende bronnen.
+In Azure Portal worden roltoewijzingen met RBAC weergegeven op de blade **Toegangsbeheer (IAM)** . Deze Blade kan worden gevonden in de portal, zoals beheer groepen, abonnementen, resource groepen en verschillende bronnen.
 
 ![De blade Toegangsbeheer (IAM) in Azure Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
@@ -97,7 +97,7 @@ Azure AD-beheerdersrollen worden gebruikt voor het beheren van Azure AD-resource
 
 | Azure AD-beheerdersrol | Machtigingen | Opmerkingen |
 | --- | --- | --- |
-| [Globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) | <ul><li>Toegang tot alle beheerfuncties in Azure Active Directory beheren, evenals services die federeren naar Azure Active Directory</li><li>Beheerdersrollen aan anderen toewijzen</li><li>Het wachtwoord voor gebruikers en alle andere beheerders opnieuw instellen</li></ul> | De persoon die zich registreert voor de Azure Active Directory-tenant wordt de globale beheerder. |
+| [Globale beheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Toegang tot alle beheerfuncties in Azure Active Directory beheren, evenals services die federeren naar Azure Active Directory</li><li>Beheerdersrollen aan anderen toewijzen</li><li>Het wachtwoord voor gebruikers en alle andere beheerders opnieuw instellen</li></ul> | De persoon die zich registreert voor de Azure Active Directory-tenant wordt de globale beheerder. |
 | [Gebruikersbeheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Alle aspecten van gebruikers en groepen maken en beheren</li><li>Ondersteuningstickets beheren</li><li>Servicestatus bewaken</li><li>Wachtwoorden wijzigen voor gebruikers, helpdeskbeheerders en andere gebruikersbeheerders</li></ul> |  |
 | [Factureringsbeheerder](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Aankopen doen</li><li>Abonnementen beheren</li><li>Ondersteuningstickets beheren</li><li>Servicestatus beheren</li></ul> |  |
 
@@ -114,7 +114,7 @@ In algemene zin worden Azure RBAC-rollen gebruikt voor het beheren van Azure-res
 | Toegang tot Azure-resources beheren | Toegang tot Azure Active Directory-resources beheren |
 | Ondersteuning voor aangepaste rollen | Eigen rollen maken is niet mogelijk |
 | Bereik kan worden opgegeven op meerdere niveaus (beheergroep, abonnement, resourcegroep, resource) | Bereik is op tenantniveau |
-| Gegevens van rollen zijn beschikbaar vanuit Azure Portal, Azure CLI, Azure PowerShell, Azure Resource Manager-sjablonen en de REST-API | Rolgegevens kan worden geopend in Azure portal, Microsoft 365 admin-beheercentrum, Microsoft Graph, AzureAD PowerShell |
+| Gegevens van rollen zijn beschikbaar vanuit Azure Portal, Azure CLI, Azure PowerShell, Azure Resource Manager-sjablonen en de REST-API | U kunt toegang krijgen tot de functie gegevens in de Azure-beheer Portal, Microsoft 365 beheer centrum, Microsoft Graph, AzureAD Power shell |
 
 ### <a name="do-azure-rbac-roles-and--azure-ad-administrator-roles-overlap"></a>Is er overlap tussen Azure RBAC-rollen en Azure AD-beheerdersrollen?
 

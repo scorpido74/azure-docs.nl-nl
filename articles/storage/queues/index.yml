@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Queue Storage - Azure Storage
+summary: Azure Queue Storage is een service om grote aantallen berichten op te slaan. Krijg overal in de wereld toegang tot berichten via HTTP of HTTPS.
+metadata:
+  title: Documentatie voor Azure Queue Storage - Azure Storage
+  description: Azure Queue Storage is een service om grote aantallen berichten op te slaan. Krijg overal in de wereld toegang tot berichten via HTTP of HTTPS.
+  services: storage
+  ms.service: storage
+  ms.subservice: queues
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mhopkins-msft
+  ms.author: mhopkins
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 5de22a49dcc985ca95ee97d9de77180e2c56765b
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70129411"
+landingContent:
+- title: Over Azure-wachtrijen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn Azure-wachtrijen?
+      url: storage-queues-introduction.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een wachtrij maken en een bericht toevoegen met de Azure-portal
+      url: storage-quickstart-queues-portal.md
+    - text: .NET gebruiken om een wachtrij te creëren in Azure Storage
+      url: storage-quickstart-queues-dotnet.md
+- title: Ontwerpen met wachtrijen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aan de slag met Azure Queue Storage met .NET
+      url: storage-dotnet-how-to-use-queues.md
+    - text: Queue Storage gebruiken met Java
+      url: storage-java-how-to-use-queue-storage.md
+    - text: Queue Storage gebruiken met Node.js
+      url: storage-nodejs-how-to-use-queues.md
+    - text: Queue Storage gebruiken met C++
+      url: storage-c-plus-plus-how-to-use-queues.md
+    - text: Queue Storage gebruiken met Python
+      url: storage-python-how-to-use-queue-storage.md
+- title: Wachtrijen beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
+      url: storage-powershell-how-to-use-queues.md
+- title: Zelfstudie
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Werken met Azure Storage-wachtrijen (.NET)
+      url: storage-tutorial-queues.md

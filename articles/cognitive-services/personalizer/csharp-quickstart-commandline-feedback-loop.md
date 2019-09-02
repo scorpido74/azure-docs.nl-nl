@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/5/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 3b583fa7d9c7bab89accabf68034df407cb89a9c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e9dd01a58309a6b65538b19b25df70e3d18866a9
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839930"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207351"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Quickstart: Client bibliotheek voor .NET personaliseren
 
@@ -244,7 +244,7 @@ In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, to
 
 Voer de toepassing uit met de `run` opdracht DotNet in de map van de toepassing.
 
-```dotnet
+```console
 dotnet run
 ```
 

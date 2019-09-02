@@ -1,63 +1,55 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Insluitende lezer
+### YamlMime:Landing
+title: Documentatie over Insluitende lezer
+summary: Insluitende lezer is een hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, taalverwervers en mensen met leerproblemen. U kunt de Insluitende lezer gebruiken in uw webtoepassing door de SDK voor de Insluitende lezer te gebruiken.
 metadata:
-  title: 'Documentatie voor Insluitende lezer - quickstarts, zelfstudies, API-referentiemateriaal - Azure Cognitive Services | Microsoft Docs'
-  description: Informatie over hoe u Insluitende lezer in uw toepassing gebruikt.
-  services: cognitive-services
-  author: metanMSFT
-  manager: nitinme
+  title: Documentatie over Insluitende lezer
+  description: Insluitende lezer is een hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, taalverwervers en mensen met leerproblemen. U kunt de Insluitende lezer gebruiken in uw webtoepassing door de SDK voor de Insluitende lezer te gebruiken.
+  services: service
   ms.service: cognitive-services
   ms.subservice: immersive-reader
   ms.topic: landing-page
-  ms.date: 06/20/2019
-  ms.author: metanMSFT
-abstract:
-  description: 'Insluitende lezer is een hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, taalverwervers en mensen met leerproblemen. U kunt de Insluitende lezer gebruiken in uw webtoepassing door de SDK voor de Insluitende lezer te gebruiken.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/immersive-reader/overview
-            html: <p>Meer informatie over de Insluitende lezer en hoe deze in uw toepassingen integreert</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is Insluitende lezer?
-          - href: /azure/cognitive-services/immersive-reader/reference
-            html: <p>Meer informatie over de JavaScript-SDK voor Insluitende lezer</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: De SDK voor Insluitende lezer gebruiken
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Aan de slag met Insluitende lezer:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            text: 'C&#35;'
-            alt: 'C#-logo'
-            href: quickstart
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over hoe u toepassingen ontwikkelt met Insluitende lezer:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-nodejs.md">Insluitende lezer starten met behulp van Node.js</a>
-          - html: <a href="tutorial-python.md">Insluitende lezer starten met behulp van Python</a>
-          - html: <a href="tutorial-ios-picture-immersive-reader.md">Insluitende lezer starten met behulp van Swift</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: SDK's
-            html: <p><a href="reference.md">Javascript</a></p>
+  ms.collection: collection
+  author: IEvangelist
+  ms.author: dapine
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 50185a0bbfc3a9677ebc90f326b0c43ab2a2eb13
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70164495"
+landingContent:
+- title: Over Insluitende lezer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Insluitende lezer?
+      url: overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core
+      url: quickstart.md
+    - text: Swift (iOS)
+      url: ios-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Node.js
+      url: tutorial-nodejs.md
+    - text: Python
+      url: tutorial-python.md
+    - text: Swift (iOS)
+      url: tutorial-ios-picture-immersive-reader.md
+- title: Insluitende lezer ontdekken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verifiëren bij Azure Active Directory
+      url: azure-active-directory-authentication.md
+  - linkListType: reference
+    links:
+    - text: JavaScript SDK
+      url: reference.md
+    - text: iOS SDK
+      url: ios-reference.md

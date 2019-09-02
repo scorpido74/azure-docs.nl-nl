@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 8f511eafda70fca997a08b5907e606e572b8e219
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 364da4bb5f3f76f0a8a189db5aa59cca305470ea
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175715"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70197121"
 ---
 ## <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieer uw referenties van de Azure Portal
 
 De voorbeeldtoepassing moet de toegang tot uw opslagaccount verifiëren. Om te verifiëren voegt u de referenties van uw opslagaccount als een verbindingsreeks aan de toepassing toe. U kunt de referenties van het opslagaccount weergeven door de volgende stappen te volgen:
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Zoek uw opslagaccount.
 3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels**. Hier worden de toegangssleutels van uw account weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.   
 4. Zoek de waarde van de **Verbindingsreeks** onder **key1** en selecteer de knop **Kopiëren** om de verbindingsreeks te kopiëren. U gaat in de volgende stap de waarde voor de verbinding toevoegen aan een omgevingsvariabele.

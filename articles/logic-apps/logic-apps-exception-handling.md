@@ -1,21 +1,20 @@
 ---
-title: Afhandeling van fouten en uitzonde ringen-Azure Logic Apps | Microsoft Docs
+title: Afhandeling van fouten en uitzonde ringen-Azure Logic Apps
 description: Meer informatie over patronen voor het afhandelen van fouten en uitzonde ringen in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996578"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208187"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonde ringen in Azure Logic Apps afhandelen
 
@@ -219,13 +218,15 @@ Als u uitzonde ringen in een **mislukte** scope wilt ondervangen en acties wilt 
 
 Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voor limieten voor scopes.
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>Context en resultaten ophalen voor fouten
 
-Hoewel het niet nuttig is om een bereik te bereiken, is het mogelijk dat u ook wilt weten welke acties zijn mislukt plus eventuele fouten of status codes die zijn geretourneerd. De `@result()` expressie bevat context over het resultaat van alle acties in een bereik.
+Hoewel het niet nuttig is om een bereik te bereiken, is het mogelijk dat u ook wilt weten welke acties zijn mislukt plus eventuele fouten of status codes die zijn geretourneerd.
 
-De `@result()` expressie accepteert één para meter (de naam van het bereik) en retourneert een matrix van alle actie resultaten uit binnen dat bereik. Deze actie objecten bevatten dezelfde kenmerken als het  **\@object Actions ()** , zoals de begin tijd, eind tijd, status, invoer, correlatie-id's en uitvoer van de actie. Als u context wilt verzenden voor acties die zijn mislukt binnen een bereik, kunt u eenvoudig een  **\@resultaat ()-** functie met een **runAfter** -eigenschap koppelen.
+De [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) functie biedt context over de resultaten van alle acties in een bereik. De `result()` functie accepteert één para meter, de naam van het bereik en retourneert een matrix die alle actie resultaten van binnen dat bereik bevat. Deze actie objecten bevatten dezelfde kenmerken als het `@actions()` object, zoals de begin tijd van de actie, de eind tijd, status, invoer, correlatie-id's en uitvoer. Als u context wilt verzenden voor acties die zijn mislukt binnen een bereik, kunt u eenvoudig `@result()` een expressie koppelen `runAfter` aan de eigenschap.
 
-Als u een actie wilt uitvoeren voor elke actie in een bereik met een **mislukt** resultaat en als u de matrix met resultaten wilt filteren op mislukte acties, kunt u  **\@resultaat ()** koppelen aan een **[filter matrix](../connectors/connectors-native-query.md)** actie en een [**voor elke**](../logic-apps/logic-apps-control-flow-loops.md) lus. U kunt de gefilterde resultaat matrix nemen en een actie uitvoeren voor elke fout met behulp **van de voor elke** lus. 
+Als u een actie wilt uitvoeren voor elke actie in een bereik met een **mislukt** resultaat en als u de matrix met resultaten wilt filteren op de mislukte acties, kunt u een `@result()` expressie koppelen met een [**filter matrix**](../connectors/connectors-native-query.md) actie en een [**voor elke**](../logic-apps/logic-apps-control-flow-loops.md) lus. U kunt de gefilterde resultaat matrix nemen en een actie uitvoeren voor elke fout met behulp **van de voor elke** lus.
 
 Hier volgt een voor beeld, gevolgd door een gedetailleerde uitleg die een HTTP POST-aanvraag verzendt met de antwoord tekst voor acties die zijn mislukt binnen het bereik ' My_Scope ':
 

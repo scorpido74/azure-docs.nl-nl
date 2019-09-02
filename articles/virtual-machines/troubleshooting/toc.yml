@@ -96,20 +96,27 @@
   href: reset-network-interface.md
 - name: Een virtuele machine opnieuw starten of het formaat van een virtuele machine wijzigen
   href: restart-resize-error-troubleshooting.md
-- name: Via de seriële console
+- name: Seriële console
+  href: serial-console-overview.md
   items:
-    - name: Linux-VM
+    - name: Seriële console voor Linux
       href: serial-console-linux.md
       items:
         - name: Seriële console GRUB/modus voor één gebruiker
           href: serial-console-grub-single-user-mode.md
         - name: Seriële console NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Windows-VM
+    - name: Seriële console voor Windows
       href: serial-console-windows.md
       items:
         - name: CMD- en PowerShell-opdrachten
           href: serial-console-cmd-ps-commands.md
+    - name: Seriële console in- en uitschakelen
+      href: serial-console-enable-disable.md
+    - name: Energieopties in seriële console
+      href: serial-console-power-options.md
+    - name: Veelvoorkomende fouten met de seriële console
+      href: serial-console-errors.md
 - name: Fouten bij het verwijderen van opslagresources
   href: storage-resource-deletion-errors.md
 - name: Fouten bij het verwijderen van klassieke opslagresources
@@ -153,6 +160,8 @@
 - name: Opstartfouten
   href: boot-error-troubleshoot.md
   items:
+    - name: Azure Virtual Machine-opstartfout
+      href: troubleshoot-vm-boot-error.md
     - name: Diagnostische gegevens over opstarten
       href: boot-diagnostics.md
     - name: BitLocker-fouten

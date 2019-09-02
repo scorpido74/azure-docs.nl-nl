@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69995842"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195055"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tips voor Azure SQL Data Warehouse
 Dit overzicht biedt nuttige tips en best practices voor het maken van uw Azure SQL Data Warehouse-oplossingen. Voordat u begint, kunt u gedetailleerde informatie over elke stap lezen in [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) (Patronen en anti-patronen voor workloads van Microsoft Azure SQL Data Warehouse), waarin wordt uitgelegd wat SQL Data Warehouse is.
@@ -35,7 +35,7 @@ Als u de typen bewerkingen van tevoren kent, kunt u het ontwerp van uw tabellen 
 
 ## <a name="data-migration"></a>Gegevensmigratie
 
-Laad uw gegevens eerst in [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) of Azure Blob-opslag. Gebruik vervolgens PolyBase om uw gegevens in SQL Data Warehouse in een faseringstabel te laden. Gebruik de volgende configuratie:
+Laad eerst uw gegevens in [Azure data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) of Azure Blob-opslag. Gebruik vervolgens PolyBase om uw gegevens in SQL Data Warehouse in een faseringstabel te laden. Gebruik de volgende configuratie:
 
 | Ontwerpen | Aanbeveling |
 |:--- |:--- |
@@ -161,6 +161,6 @@ Met één muisklik uw spokes van SQL Data Warehouse naar SQL databases implement
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
 [gegevensmigratie]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
-[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
 [sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

@@ -1,46 +1,83 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Enterprise-gebruikersbeheer - Azure Active Directory
+summary: In Azure AD hebt u de beschikking over services voor gebruikersbeheer, zoals groepen en toewijzing van beheerdersrollen, zodat u belangrijke taken snel kunt uitvoeren. Licenties toewijzen, toepassingstoegang toewijzen aan groepen of gebruikers of machtigingen delegeren om identiteitsbeheertaken te distribueren.
 metadata:
-  document_id: null
-  title: 'Documentatie voor gebruikers, groepen, rollen en licenties van Azure Active Directory'
-  description: 'Lees hoe u verificatie bij Azure cloudservices in uw tenant kunt beheren met behulp van gebruikers, groepen, rollen en licenties.'
+  title: Documentatie voor gebruikers, groepen, rollen en licenties van Azure Active Directory
+  description: Lees hoe u verificatie bij Azure cloudservices in uw organisatie kunt beheren met behulp van gebruikers, groepen, rollen en licenties.
   services: active-directory
-  ms.subservice: users-groups-roles
-  author: curtand
-  manager: mtillman
   ms.service: active-directory
+  ms.subservice: users-groups-roles
+  manager: mtillman
   ms.topic: landing-page
-  ms.date: 01/31/2019
+  ms.date: 08/28/2019
+  author: curtand
   ms.author: curtand
-abstract:
-  description: 'In Azure AD hebt u de beschikking over hulpprogramma''s voor gebruikersbeheer, zoals groepen en toewijzing van beheerdersrollen, zodat u belangrijke taken sneller kunt uitvoeren en kunt inspelen op een groeiende organisatie. U kunt licenties toewijzen aan groepen in plaats van personen. Dit geldt trouwens ook voor de toegang tot SaaS-apps. Bovendien kunt u machtigingen delegeren om de overhead van identiteitsbeheer in Azure AD te verdelen.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Lees hoe u hulpprogramma's voor gebruikersbeheer gebruikt in Azure Active Directory
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Gebruikers toevoegen aan Azure AD</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Licenties toewijzen aan een gebruikers</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Meld u aan voor Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">Verlooptijd instellen voor door gebruikers gemaakte groepen</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">Naamgevingsbeleid instellen voor door gebruikers gemaakte groepen</a>
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Lees hoe u groepen in Azure Active Directory dynamisch kunt vullen
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">Een dynamisch gevulde groep maken</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Naslagkoppelingen
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell-cmdlets</a></p>'
+  ms.openlocfilehash: 4689a573bf8d58aa9734af97ea66f78ab4e5707a
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126934"
+landingContent:
+- title: Over gebruikers, groepen, rollen en licenties
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Gebruikers, groepen, licentieverlening en rollen voor grote organisaties
+      url: directory-overview-user-model.md
+    - text: Overzicht van aangepaste rollen
+      url: roles-custom-overview.md
+  - linkListType: concept
+    links:
+    - text: Beheer delegeren
+      url: roles-concept-delegation.md
+    - text: Azure RBAC-rollen en Azure AD-beheerdersrollen vergelijken
+      url: https://docs.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een gebruiker toevoegen
+      url: https://review.docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: Verloopbeleid voor groepen instellen
+      url: groups-quickstart-expiration.md
+    - text: Licenties toewijzen aan gebruikers
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: Azure AD-beheerdersrollen toewijzen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rollen toewijzen met PowerShell
+      url: roles-assign-powershell.md
+    - text: Rollen toewijzen met Graph API
+      url: roles-assign-graph.md
+    - text: Rollen per taak delegeren
+      url: roles-delegate-by-task.md
+    - text: Mobiel toepassingsbeheer delegeren
+      url: roles-delegate-app-roles.md
+- title: Licenties toewijzen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een groep gebruikers een licentie verlenen
+      url: licensing-groups-assign.md
+    - text: PowerShell-voorbeelden van licentieverlening
+      url: licensing-ps-examples.md
+- title: Groepen beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een dynamische groep maken
+      url: groups-create-rule.md
+    - text: Groepsinstellingen in PowerShell
+      url: groups-settings-v2-cmdlets.md
+    - text: Een naamgevingsbeleid voor groepen instellen
+      url: groups-naming-policy.md
+- title: Domeinen toevoegen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een aangepaste domeinnaam toevoegen
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: Aangepaste domeinnamen beheren
+      url: domains-manage.md

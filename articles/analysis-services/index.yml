@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Analysis Services
+summary: Meer informatie over het instellen van gegevensmodellering met Analysis Services in de cloud. Documentatie laat zien hoe u een zakelijke BI-oplossing maakt met behulp van gegevensmodellen met tabellen.
+metadata:
+  title: Documentatie voor Azure Analysis Services - Concepten, instructiegidsen, zelfstudie, API-verwijzing
+  description: Azure Analysis Services is een volledig beheerd platform als een service (PaaS) dat gegevensmodellen van ondernemingsklasse in de cloud levert.
+  ms.service: analysis-services
+  ms.topic: landing-page
+  ms.collection: 
+  author: minewiskan
+  ms.author: owend
+  manager: mtillman
+  ms.date: 08/28/2019
+  ms.openlocfilehash: 5dfa0e502eb069a7d1a9dc4ef2310ae722ff4bb9
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70143013"
+landingContent:
+- title: Over Azure Analysis Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Analysis Services?
+      url: analysis-services-overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een server maken - portal
+      url: analysis-services-create-server.md
+    - text: Een server maken - PowerShell
+      url: analysis-services-create-powershell.md
+    - text: Een serverfirewall configureren - Portal
+      url: analysis-services-qs-firewall.md
+- title: Begrijpen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verificatie en gebruikersmachtigingen
+      url: analysis-services-manage-users.md
+    - text: Automatisering met service-principals
+      url: analysis-services-service-principal.md
+    - text: Verbinding maken met on-premises gegevensbronnen
+      url: analysis-services-gateway.md
+- title: Beheren en verbinden
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Serverbeheerder en gebruikersrollen configureren
+      url: tutorials/analysis-services-tutorial-roles.md
+    - text: Een voorbeeldmodel toevoegen via de portal
+      url: analysis-services-create-sample-model.md
+    - text: Verbinding maken met Power BI Desktop
+      url: tutorials/analysis-services-tutorial-pbid.md
+- title: Scripts en API's
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell
+      url: /azure/analysis-services/analysis-services-powershell
+    - text: REST-API
+      url: /rest/api/analysisservices/
+    - text: Tabular Model Scripting Language (TMSL)
+      url: /bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference

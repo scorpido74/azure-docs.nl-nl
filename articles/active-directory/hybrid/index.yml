@@ -1,65 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor hybride identiteit
+summary: De identiteitsoplossingen van Microsoft omvatten mogelijkheden voor zowel on-premises als in de cloud. Er wordt één gebruikersidentiteit gemaakt voor verificatie en autorisatie bij alle resources, ongeacht hun locatie. We noemen dit hybride identiteit.
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
-  title: Documentatie voor hybride identiteit
-  description: 'Azure AD Connect integreert uw on-premises directory''s met Azure Active Directory. Hiermee kunt u uw gebruikers een algemene identiteit bieden voor Office 365, Azure en SaaS toepassingen die zijn geïntegreerd met Azure AD.'
-  services: active-directory
   author: billmath
+  description: Azure AD Connect integreert uw on-premises directory's met Azure Active Directory. Hiermee kunt u uw gebruikers een algemene identiteit bieden voor Office 365, Azure en SaaS toepassingen die zijn geïntegreerd met Azure AD.
   manager: daveba
-  ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 05/18/2018
   ms.author: billmath
-abstract:
-  description: 'De identiteitsoplossingen van Microsoft omvatten mogelijkheden voor zowel on-premises als in de cloud. Er wordt één gebruikersidentiteit gemaakt voor verificatie en autorisatie bij alle resources, ongeacht hun locatie. We noemen dit hybride identiteit.</br></br></br>Azure AD Connect integreert uw on-premises directory''s met Azure Active Directory. Hiermee kunt u uw gebruikers een algemene identiteit bieden voor Office 365, Azure en SaaS toepassingen die zijn geïntegreerd met Azure AD. In dit onderwerp wordt de planning, implementatie en bewerking besproken. Het is een verzameling van koppelingen naar de onderwerpen die betrekking hebben op dit gebied.'
-  aside:
-    image:
-      alt: channel 9-video
-      height: 110
-      src: media/index/video2.png
-      width: 250
-    title: 'On-premises mappen in de cloud uitbreiden (1:11:12)'
-    href: 'https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player'
-    width: 250
-sections:
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
-            html: <p>Meer informatie over hoe u uw identiteiten uitbreidt naar de cloud met synchronisatie van wachtwoord-hashes</p>
-            image:
-              alt: wachtwoordhashsynchronisatie
-              src: media/index/azuread2.png
-            title: Een enkele AD-forest integreren met synchronisatie van wachtwoord-hashes (PHS)
-          - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
-            html: <p>Meer informatie over hoe u uw identiteiten uitbreidt naar de cloud met pass-through-verificatie.</p>
-            image:
-              alt: pass-through-verificatie
-              src: media/index/manage2.png
-            title: Een enkele AD-forest integreren met pass-through-verificatie (PTA)
-          - href: /azure/active-directory/hybrid/tutorial-federation
-            html: <p>Ontdek hoe u Azure Active Directory (Azure AD) Connect federeert met on-premises Active Directory Federation Services (AD FS) en Azure AD.</p>
-            image:
-              alt: federatie-
-              src: media/index/federate2.png
-            title: Een enkele AD-forest integreren met federatie
-  - title: Handleidingen
-    items:
-      - type: paragraph
-        text: Leer hoe u verschillende taken voor hybride identiteit uitvoert
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-custom">Azure AD Connect installeren in uw omgeving voor hybride identiteit</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sso">Naadloze eenmalige aanmelding met Azure AD Connect</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Vereisten voor Azure AD Connect</a>
-          - html: <a href="/azure/active-directory/hybrid/reference-connect-version-history">Versiegeschiedenis van Azure AD Connect</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler">De Azure AD Connect Sync-scheduler beheren</a>
+  ms.collection: na
+  ms.date: 08/15/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: fa9007d0e9ad59ee0ffb29fe1c5c74c8530d84fa
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70162200"
+landingContent:
+- title: Over hybride identiteit
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is hybride identiteit?
+      url: whatis-hybrid-identity.md
+- title: De beste oplossing bepalen om de levenscyclus van uw gebruikers en groepen te beheren
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat zijn Azure AD Connect en Connect Health?
+      url: whatis-azure-ad-connect.md
+  - linkListType: tutorial
+    links:
+    - text: Een enkele AD-forest integreren met synchronisatie van wachtwoord-hashes (PHS)
+      url: tutorial-password-hash-sync.md
+    - text: Een enkele AD-forest integreren met pass-through-verificatie (PTA)
+      url: tutorial-passthrough-authentication.md
+    - text: Een enkele AD-forest integreren met federatie
+      url: tutorial-federation.md
+- title: De verificatiemethode kiezen die het beste bij uw organisatie past
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is wachtwoord-hashsynchronisatie?
+      url: whatis-phs.md
+    - text: Wat is passthrough-verificatie?
+      url: how-to-connect-pta.md
+    - text: Wat is federtatie?
+      url: whatis-fed.md
+    - text: Wat is eenmalige aanmelding?
+      url: how-to-connect-sso.md
+  - linkListType: concept
+    links:
+    - text: Bepaal welke verificatiemethode het best bij u past
+      url: /azure/security/fundamentals/choose-ad-authn
+- title: Aan de slag met hybride identiteit
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD Connect met expressinstellingen installeren
+      url: how-to-connect-install-express.md
+    - text: Azure AD Connect met aangepaste instellingen installeren
+      url: how-to-connect-install-custom.md
+    - text: De AD DS Connector-account configureren
+      url: how-to-connect-configure-ad-ds-connector-account.md
+    - text: Het wachtwoord van het ADSync-serviceaccount wijzigen
+      url: how-to-connect-sync-change-serviceacct-pass.md
+    - text: Het wachtwoord voor het Azure AD Connector-account wijzigen
+      url: how-to-connect-azureadaccount.md
+    - text: Het wachtwoord voor het AD DS-account wijzigen
+      url: how-to-connect-sync-change-addsacct-pass.md
+  - linkListType: reference
+    links:
+    - text: Vereiste poorten en protocollen
+      url: reference-connect-ports.md
+    - text: Accounts en machtigingen
+      url: reference-connect-accounts-permissions.md
+    - text: Azure AD Connect-versiegeschiedenis
+      url: reference-connect-version-history.md

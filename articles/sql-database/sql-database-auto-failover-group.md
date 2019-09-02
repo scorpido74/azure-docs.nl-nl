@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 08/30/2019
+ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173075"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208356"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -92,7 +92,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 
 - **Alleen-lezen failoverbeleid**
 
-  De failover van de alleen-lezen listener is standaard uitgeschakeld. Het zorgt ervoor dat de prestaties van de primaire server niet worden beïnvloed wanneer de secundaire offline is. Het betekent echter ook dat de alleen-lezen sessies geen verbinding kunnen maken tot het secundaire bestand is hersteld. Als u uitval tijd niet kunt gebruiken voor de alleen-lezen sessies en u de primaire alleen-lezen-en lees-schrijf bewerkingen wilt uitvoeren tegen de kosten van de mogelijke prestatie vermindering van de primaire, kunt u failover inschakelen voor de alleen-lezen listener. In dat geval wordt het alleen-lezen verkeer automatisch omgeleid naar de primaire als de secundaire niet beschikbaar is.
+  De failover van de alleen-lezen listener is standaard uitgeschakeld. Het zorgt ervoor dat de prestaties van de primaire server niet worden beïnvloed wanneer de secundaire offline is. Het betekent echter ook dat de alleen-lezen sessies geen verbinding kunnen maken tot het secundaire bestand is hersteld. Als u uitval tijd niet kunt gebruiken voor de alleen-lezen sessies en u de primaire alleen-lezen-en lees-schrijf bewerkingen wilt uitvoeren tegen onkosten van de mogelijke prestatie vermindering van de primaire, kunt u failover inschakelen voor de alleen-lezen listener door de `AllowReadOnlyFailoverToPrimary` eigenschap te configureren. In dat geval wordt het alleen-lezen verkeer automatisch omgeleid naar de primaire als de secundaire niet beschikbaar is.
 
 - **Geplande failover**
 
@@ -112,7 +112,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 
 - **Respijt periode met gegevens verlies**
 
-  Omdat de primaire en secundaire data bases worden gesynchroniseerd met asynchrone replicatie, kan de failover leiden tot gegevens verlies. U kunt het beleid voor automatische failover aanpassen zodat de tolerantie van uw toepassing wordt aangepast aan gegevens verlies. Door **toegevoegd**te configureren, kunt u bepalen hoe lang het systeem wacht voordat de failover wordt gestart, waardoor gegevens verlies waarschijnlijk wordt veroorzaakt.
+  Omdat de primaire en secundaire data bases worden gesynchroniseerd met asynchrone replicatie, kan de failover leiden tot gegevens verlies. U kunt het beleid voor automatische failover aanpassen zodat de tolerantie van uw toepassing wordt aangepast aan gegevens verlies. Door te `GracePeriodWithDataLossHours`configureren kunt u bepalen hoe lang het systeem wacht voordat de failover wordt gestart die gegevens verlies waarschijnlijk zal veroorzaken.
 
 - **Meerdere failover-groepen**
 
@@ -155,7 +155,7 @@ Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende al
 
 - **Alleen-lezen-listener gebruiken voor alleen-lezen werk belasting**
 
-  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Gebruik `<fog-name>.secondary.database.windows.net` voor alleen-lezen-sessies als de server-URL en de verbinding wordt automatisch naar de secundaire omgeleid. Het wordt ook aangeraden om in connection string Lees intentie aan te geven met behulp van **ApplicationIntent = ReadOnly**.
+  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Gebruik `<fog-name>.secondary.database.windows.net` voor alleen-lezen-sessies als de server-URL en de verbinding wordt automatisch naar de secundaire omgeleid. U wordt ook aangeraden om in connection string Lees intentie op te geven met `ApplicationIntent=ReadOnly`behulp van. Als u er zeker van wilt zijn dat de workload alleen-lezen opnieuw verbinding kan maken na een failover of wanneer de secundaire server offline gaat, moet u `AllowReadOnlyFailoverToPrimary` de eigenschap van het failoverbeleid configureren. 
 
 - **Voor bereidingen voor prestatie vermindering**
 
@@ -166,7 +166,7 @@ Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende al
 
 - **Voorbereiden op gegevens verlies**
 
-  Als er een storing wordt gedetecteerd, wacht SQL op de periode die u hebt opgegeven door **toegevoegd**. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u **toegevoegd** instellen op een voldoende groot getal, zoals 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
+  Als er een storing wordt gedetecteerd, wacht SQL op de periode die u hebt `GracePeriodWithDataLossHours`opgegeven door. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u ervoor `GracePeriodWithDataLossHours` zorgen dat het een voldoende groot getal is, bijvoorbeeld 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
 
   > [!IMPORTANT]
   > Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
@@ -305,10 +305,10 @@ Deze volg orde wordt aangeraden om het probleem te voor komen waarbij de secunda
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Het verlies van kritieke gegevens voor komen
 
-Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën een mechanisme voor asynchrone replicatie. Asynchrone replicatie maakt enkele gegevens verlies onvermijdbaar als er een fout optreedt. Voor sommige toepassingen is het echter mogelijk dat er geen gegevens verloren gaan. Een ontwikkelaar van een toepassing kan deze essentiële updates beveiligen door de [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) -systeem procedure onmiddellijk aan te roepen nadat de trans actie is doorgevoerd. Het aanroepen van **sp_wait_for_database_copy_sync** blokkeert de aanroepende thread totdat de laatste vastgelegde trans actie is verzonden naar de secundaire data base. Er wordt echter niet gewacht tot de verzonden trans acties moeten worden herhaald en op de secundaire moeten worden doorgevoerd. **sp_wait_for_database_copy_sync** ligt binnen het bereik van een specifieke koppeling voor doorlopende kopieën. Elke gebruiker met de verbindings rechten voor de primaire data base kan deze procedure aanroepen.
+Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën een mechanisme voor asynchrone replicatie. Asynchrone replicatie maakt enkele gegevens verlies onvermijdbaar als er een fout optreedt. Voor sommige toepassingen is het echter mogelijk dat er geen gegevens verloren gaan. Een ontwikkelaar van een toepassing kan deze essentiële updates beveiligen door de [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) -systeem procedure onmiddellijk aan te roepen nadat de trans actie is doorgevoerd. Aanroepen `sp_wait_for_database_copy_sync` blokkeert de aanroepende thread totdat de laatste vastgelegde trans actie is verzonden naar de secundaire data base. Er wordt echter niet gewacht tot de verzonden trans acties moeten worden herhaald en op de secundaire moeten worden doorgevoerd. `sp_wait_for_database_copy_sync`ligt binnen het bereik van een specifieke koppeling voor doorlopende kopieën. Elke gebruiker met de verbindings rechten voor de primaire data base kan deze procedure aanroepen.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** voor komt gegevens verlies na een failover, maar biedt geen volledige synchronisatie voor lees toegang. De vertraging veroorzaakt door een **sp_wait_for_database_copy_sync** -procedure aanroep kan aanzienlijk zijn en is afhankelijk van de grootte van het transactie logboek op het moment van de aanroep.
+> `sp_wait_for_database_copy_sync`voor komt gegevens verlies na een failover, maar biedt geen volledige synchronisatie voor lees toegang. De vertraging die wordt veroorzaakt `sp_wait_for_database_copy_sync` door een procedure aanroep kan aanzienlijk zijn en is afhankelijk van de grootte van het transactie logboek op het moment van de aanroep.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Failover-groepen en herstel naar een bepaald tijdstip
 

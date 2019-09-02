@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/25/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033324"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207173"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
@@ -69,6 +69,18 @@ In het verleden werd bevoorrechte toegang door andere leveranciers als afzonderl
 ![Privileged Access Lifecycle](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 Azure AD Privileged Identity Management (PIM) biedt extra besturings elementen die zijn afgestemd op het beveiligen van toegangs rechten voor resources, in azure AD, Azure en andere online services van micro soft.  De just-in-time-toegang en functies voor het wijzigen van de waarschuwingen die worden geboden door Azure AD PIM, naast multi-factor Authentication en voorwaardelijke toegang, bieden een uitgebreide set beheer controles waarmee u de resources van uw bedrijf kunt beveiligen (Directory, Office 365 en Azure-resource rollen). Net als bij andere vormen van toegang kunnen organisaties toegangs beoordelingen gebruiken om hercertificering van terugkerende toegang te configureren voor alle gebruikers in beheerders rollen.
+
+## <a name="least-privileged-roles"></a>Minst geprivilegieerde rollen
+
+Met behulp van PIM kunnen beheerders machtigingen van een gebruiker worden beperkt voor extra beveiliging. Hieronder vindt u de minst geprivilegieerde Directory rollen voor configuratie in azure AD Identity governance-functies: 
+
+| Functie | Minst geprivilegieerde rol |
+| ------- | --------------------- |
+| Rechtenbeheer | Gebruikers beheerder (met uitzonde ring van het toevoegen van share point online-sites aan catalogi, waarvoor globale beheerder is vereist) |
+| Gebruiksvoorwaarden | Beveiligings beheerder of beheerder van voorwaardelijke toegang |
+| Toegangsbeoordelingen | Gebruikers beheerder (met uitzonde ring van toegangs beoordelingen van Azure-of Azure AD-rollen, waarvoor beheerders van een bevoegde rol zijn vereist) |
+|Privileged Identity Management | Beheerder voor bevoorrechte rollen |
+
 
 ## <a name="getting-started"></a>Aan de slag
 

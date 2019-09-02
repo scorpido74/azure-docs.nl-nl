@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114308"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207151"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -60,7 +60,7 @@ Voor een cluster met een 48-knoop punt raden we u aan 4 tot 8 opslag accounts aa
 
 ## <a name="choose-a-cluster-type"></a>Een cluster type kiezen
 
-Het cluster type bepaalt de werk belasting die uw HDInsight-cluster is geconfigureerd om te worden uitgevoerd, zoals [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)of [Apache Spark](https://spark.apache.org/). Zie [Inleiding tot Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight)voor een gedetailleerde beschrijving van de beschik bare cluster typen. Elk cluster type heeft een specifieke implementatie topologie met vereisten voor de grootte en het aantal knoop punten.
+Het cluster type bepaalt de werk belasting die uw HDInsight-cluster is geconfigureerd om te worden uitgevoerd, zoals [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)of [Apache Spark](https://spark.apache.org/). Zie [Inleiding tot Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight)voor een gedetailleerde beschrijving van de beschik bare cluster typen. Elk cluster type heeft een specifieke implementatie topologie met vereisten voor de grootte en het aantal knoop punten.
 
 ## <a name="choose-the-vm-size-and-type"></a>De grootte en het type van de virtuele machine kiezen
 

@@ -8,6 +8,9 @@
 - name: Snelstartgidsen
   expanded: true
   items:
+    - name: 'Uw eerste query uitvoeren: Azure-portal'
+      displayName: 'portal, resource, graph, explorer'
+      href: first-query-portal.md
     - name: 'Uw eerste query uitvoeren: Azure CLI'
       displayName: 'extension, docker'
       href: first-query-azurecli.md

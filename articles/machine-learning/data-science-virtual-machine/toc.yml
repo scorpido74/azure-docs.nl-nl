@@ -4,9 +4,9 @@
 - name: Overzicht
   expanded: true
   items:
-    - name: Wat is de Data Science VM?
+    - name: Wat is de Data Science Virtual Machine?
       href: overview.md
-    - name: Wat is de Geo AI Data Science VM?
+    - name: Wat is de Geo-AI-DVSM?
       href: geo-ai-dsvm-overview.md
 - name: Snelstartgidsen
   expanded: true
@@ -17,7 +17,7 @@
       href: dsvm-ubuntu-intro.md
     - name: Een CentOS-DSVM maken
       href: linux-dsvm-intro.md
-    - name: Een Geo AI Data Science VM maken
+    - name: Een Geo AI-DSVM maken
       href: provision-geo-ai-dsvm.md
 - name: Concepten
   items:
@@ -47,7 +47,7 @@
       href: linux-dsvm-walkthrough.md
     - name: Een Geo AI-DSVM gebruiken
       href: use-geo-ai-dsvm.md
-    - name: Automatisch geschaalde DSVM-pool maken
+    - name: Een automatisch geschaalde DSVM-pool maken
       href: dsvm-pools.md
     - name: Integratie met Active Directory
       href: dsvm-common-identity.md

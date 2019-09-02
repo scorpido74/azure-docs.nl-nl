@@ -1,47 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Firewall
+summary: Informatie over de implementatie van Azure Firewall, een netwerkbeveiligingsservice in de cloud.
 metadata:
-  title: 'Documentatie voor Azure Firewall - zelfstudies, API-verwijzing'
-  meta.description: 'Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Documentatie voor Azure Firewall
+  description: Informatie over de implementatie van Azure Firewall, een netwerkbeveiligingsservice in de cloud.
   services: firewall
-  author: vhorne
   ms.service: firewall
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: 'Informatie over de implementatie van Azure Firewall, een netwerkbeveiligingsservice in de cloud. Met zelfstudies, API-verwijzingen en andere documentatie leert u hoe u beleid op toepassings- en netwerkniveau instelt om uw virtuele Azure-netwerkresources te beschermen.'
-sections:
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Informatie over hoe u Azure Firewall implementeert
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">Azure Firewall implementeren en configureren met Azure Portal</a>
-          - html: <a href="/azure/firewall/tutorial-hybrid-ps">In een hybride netwerk implementeren</a>
-          - html: <a href="/azure/firewall/tutorial-firewall-dnat">Inkomend verkeer filteren met DNAT</a>
-          - html: <a href="/azure/firewall/tutorial-diagnostics">Azure Firewall-logboeken bewaken</a>
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Scriptvoorbeelden voor veelvoorkomende taken.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure-CLI</a></p>
-          - title: Talen
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/firewall/">Naslaginformatie over de Compute REST-API</a></p>'
+  ms.date: 08/30/2019
+  ms.openlocfilehash: aba20908401cba2c1b740570f62593b5afb92dc5
+  ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70147306"
+landingContent:
+- title: Meer informatie over Azure Firewall
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Firewall?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Regels voor de logicaverwerking in Azure Firewall
+      url: rule-processing.md
+    - text: Veelgestelde vragen
+      url: firewall-faq.md
+- title: Een Azure Firewall implementeren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Implementeren met de Azure-portal
+      url: tutorial-firewall-deploy-portal.md
+    - text: In een hybride netwerk implementeren
+      url: tutorial-hybrid-portal.md
+    - text: Binnenkomend verkeer filteren
+      url: tutorial-firewall-dnat.md
+- title: Integreren met Load Balancer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Firewall integreren met Azure Standard Load Balancer
+      url: integrate-lb.md
+- title: Azure Firewall bewaken
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Firewall-logboeken en metrische gegevens
+      url: logs-and-metrics.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Firewall-logboeken en metrische gegevens bewaken
+      url: tutorial-diagnostics.md

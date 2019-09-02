@@ -1,47 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over de basisprincipes van Azure Active Directory
+summary: Meer informatie over basisconcepten en -principes van Azure Active Directory (Azure AD), inclusief hoe u een basisomgeving, basisgebruikers en groepen maakt, om mee te beginnen.
 metadata:
-  document_id: null
   title: Documentatie over de basisprincipes van Azure Active Directory
-  description: Meer informatie over de basisbegrippen en processen die beschikbaar zijn terwijl u Azure Active Directory gebruikt.
-  services: active-directory
-  ms.subservice: fundamentals
-  author: msaburnley
+  description: Meer informatie over basisconcepten en -principes van Azure Active Directory (Azure AD), inclusief hoe u een basisomgeving, basisgebruikers en groepen maakt, om mee te beginnen.
   manager: daveba
-  ms.service: active-directory
-  ms.topic: landing-page
-  ms.date: 09/07/2018
   ms.author: ajburnle
-abstract:
-  description: 'Meer informatie over de basisbegrippen en processen voor Azure Active Directory (Azure AD), waaronder over het maken van basisgebruikers en -groepen, en over het maken van een basisomgeving waarmee u aan de slag kunt.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Leer hoe u aan de slag kunt gaan met de Azure Active Directory-portal.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_portal.png
-            text: Azure AD openen om een tenant te maken
-            href: active-directory-access-create-new-tenant.md
-          - image:
-              src: ./media/index/i_tasks.png
-            text: Groepen en leden bekijken
-            href: active-directory-groups-view-azure-portal.md
-  - title: Stapsgewijze handleidingen
-    items:
-      - type: paragraph
-        text: Leer hoe u basistaken uitvoert die u kunt instellen in uw Azure Active Directory-omgeving
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Meld u aan voor Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Een aangepaste domeinnaam toevoegen</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Een basisgroep maken en leden toevoegen</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">Groepseigenaren toevoegen</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Een nieuwe gebruiker toevoegen</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Rollen toewijzen aan gebruikers</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Licenties toewijzen aan gebruikers</a>
+  ms.collection: na
+  ms.date: 08/27/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: c0f85c065a4334f41c7f52a05e2b885f97dde25f
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70124901"
+landingContent:
+- title: Over Azure AD
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: What is Azure Active Directory? (Engelstalig)
+      url: active-directory-whatis.md
+    - text: Wat is er nieuw in Azure Active Directory?
+      url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: Azure AD-architectuur
+      url: active-directory-architecture.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: De portal openen en een tenant maken
+      url: active-directory-access-create-new-tenant.md
+    - text: Uw groepen met toegewezen leden bekijken
+      url: active-directory-groups-view-azure-portal.md
+- title: Maak een Azure AD-account
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Registreren voor Azure Active Directory Premium-edities
+      url: active-directory-get-started-premium.md
+    - text: Meld u als organisatie aan voor Azure AD
+      url: sign-up-organization.md
+    - text: Uw aangepaste domeinnaam toevoegen
+      url: add-custom-domain.md
+- title: Een groep maken in Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een basisgroep maken en leden toevoegen
+      url: active-directory-groups-create-azure-portal.md
+    - text: Groepseigenaren toevoegen of verwijderen
+      url: active-directory-accessmanagement-managing-group-owners.md
+- title: Gebruikers toevoegen en hun rollen en licenties toewijzen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Gebruikers toevoegen of verwijderen
+      url: add-users-azure-active-directory.md
+    - text: Licenties toewijzen aan gebruikers
+      url: license-users-groups.md

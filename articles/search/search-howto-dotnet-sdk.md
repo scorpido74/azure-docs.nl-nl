@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: brjohnst
-ms.openlocfilehash: 42d3a4a0840e7241666f66a09e7e6b11342cbfbc
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 3f167ee082b751f6bd686c0543db6a262615e486
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182264"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208243"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Azure Search van een .NET-toepassing gebruiken
 
@@ -579,7 +579,7 @@ De SDK gebruikt JSON.NET voor het serialiseren en deserialiseren van documenten.
 * Toewijzen tussen eigenschaps namen in uw code en veld namen in uw index.
 * Aangepaste kenmerken maken die kunnen worden gebruikt voor het toewijzen van eigenschappen aan document velden.
 
-U kunt voor beelden vinden van het implementeren van aangepaste serialisatie in de eenheids tests voor de Azure Search .NET SDK op GitHub. Een goed uitgangs punt is [deze map](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models). Het bevat klassen die worden gebruikt door de aangepaste serialisatie tests.
+U kunt voor beelden vinden van het implementeren van aangepaste serialisatie in de eenheids tests voor de Azure Search .NET SDK op GitHub. Een goed uitgangs punt is [deze map](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models). Het bevat klassen die worden gebruikt door de aangepaste serialisatie tests.
 
 ### <a name="searching-for-documents-in-the-index"></a>Zoeken naar documenten in de index
 De laatste stap in de voorbeeld toepassing is het zoeken naar sommige documenten in de index:

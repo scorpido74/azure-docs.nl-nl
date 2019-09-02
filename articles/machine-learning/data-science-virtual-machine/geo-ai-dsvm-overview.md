@@ -1,30 +1,23 @@
 ---
-title: Overzicht Geo kunstmatige intelligentie Data Science Virtual Machine
-titleSuffix: Azure
-description: De Geo kunstmatige intelligentie Data Science Virtual Machine biedt ArcGIS Pro voor het werken met geografische gegevens. Het biedt ook python-, R-en data Science-werkset voor het werken met machine learning en kunst matige intelligentie (AI).
+title: Wat is de geo kunst matige intelligentie
+titleSuffix: Azure Data Science Virtual Machine
+description: De geo kunst matige intelligentie Data Science Virtual Machine biedt ArcGIS Pro voor het werken met geografische gegevens, evenals Python-, R-en data Science-werkset voor het werken met ML en AI.
 keywords: deep learning, AI, hulpprogramma's voor data science, virtuele machine voor datatechnologie, georuimtelijke analyses
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 05596ea9a4456b73ec1e398e4a27ec3a49457cd9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172874"
+ms.locfileid: "70195598"
 ---
-# <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Inleiding tot de Geo kunstmatige intelligentie Data Science Virtual Machine
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Wat is de geo kunst matige intelligentie Data Science Virtual Machine?
 
 De geo kunst matige intelligentie Data Science Virtual Machine (ook wel geo AI Data Science VM of geo-DSVM) biedt georuimtelijke analyse mogelijkheden vanuit Azure Data Science Virtual Machine (DSVM). Deze VM breidt met name de AI-en data Science-toolkiten in de [DSVM](overview.md) door het toonaangevende [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) -geografische informatie systeem van ERSI toe te voegen.
 

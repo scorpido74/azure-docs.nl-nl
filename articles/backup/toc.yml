@@ -70,6 +70,8 @@
       href: backup-architecture.md
     - name: Op rollen gebaseerd toegangsbeheer
       href: backup-rbac-rs-vault.md
+    - name: Beveiliging voor cloudworkloads
+      href: backup-azure-security-feature-cloud.md
     - name: Beveiliging voor hybride back-ups
       href: backup-azure-security-feature.md
     - name: Offline back-ups configureren

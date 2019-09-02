@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: f5db715ecb7d5523f5f52a356198eb547f69d4f8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194294"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208088"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Account migratie van Cloud Partner-portal naar het partner centrum
 
@@ -26,13 +26,13 @@ Als u een gebruiker bent met de rol owner in CPP voor een bepaald account, wordt
 
 Klik op de banner om uw account migratie proces te initiëren. U wordt verwacht de volgende items in te voeren:
 
-### <a name="work-e-mail-address"></a>E-mail adres van werk
+### <a name="work-email-address"></a>E-mailadres werk
 
 In de meeste gevallen meldt u zich aan met het e-mail adres dat u gebruikt om u aan te melden bij CPP. In bepaalde gevallen moet een ander e-mail adres worden gebruikt:
 
-* Micro soft-account: Als het CPP-account een micro soft-account is, moet u een geldig zakelijk e-mail adres invoeren dat is gekoppeld aan de Tenant, voor wie de MPN-ID is geregistreerd. 
+* Microsoft-account: Als het CPP-account een Microsoft-account is, moet u een geldig werk-e-mail adres invoeren dat is gekoppeld aan de Tenant, waarvoor de MPN-ID is geregistreerd.
 
-* Niet-overeenkomende tenants: Als uw zakelijke e-mail adres niet hoort bij de Tenant die is gekoppeld aan de Microsoft Partner Network-ID die is opgegeven in uw CPP-account, wordt er een fout weer gegeven. Als u deze fout wilt verplaatsen, voert u een e-mail adres in dat is gekoppeld aan de Tenant. Er wordt een fout bericht weer gegeven met de naam van de Tenant. 
+* Niet-overeenkomende tenants: Als uw zakelijke e-mail adres niet hoort bij de Tenant die is gekoppeld aan de Microsoft Partner Network-ID die is opgegeven in uw CPP-account, wordt er een fout weer gegeven. Als u deze fout wilt verplaatsen, voert u een e-mail adres in dat is gekoppeld aan de Tenant. Er wordt een fout bericht weer gegeven met de naam van de Tenant.
 
 ### <a name="sign-up-for-microsoft-partner-network-program"></a>Registreren voor Microsoft Partner Network programma
 

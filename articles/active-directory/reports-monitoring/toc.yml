@@ -37,10 +37,12 @@
       href: concept-usage-insights-report.md
     - name: Riskante aanmeldingen
       href: concept-risky-sign-ins.md
-    - name: Risicogebeurtenissen
+    - name: Risicodetectie
       href: concept-risk-events.md
     - name: Gebruikers die risico lopen
       href: concept-user-at-risk.md
+    - name: Inrichtingslogboeken
+      href: concept-provisioning-logs.md
     - name: API's voor rapportage
       href: concept-reporting-api.md
     - name: Azure AD-logboeken in Azure Monitor

@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Files
+summary: Azure Files biedt volledig beheerde bestandsshares tussen meerdere platforms in de cloud die toegankelijk zijn via het Server Message Block-protocol (SMB).
+metadata:
+  title: Azure Files
+  description: Koppel bestandsshares in de cloud of on-premises op Windows, Linux en macOS. Azure-bestandsshares kunnen op Windows Servers worden geplaatst met Azure File Sync voor lokale toegang.
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 06764b43d46dc4fee51ac58254e2d2578257f096
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70143047"
+landingContent:
+- title: Over Azure Files
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Files-planningsgids
+      url: storage-files-planning.md
+    - text: Azure File Sync-planningsgids
+      url: storage-sync-files-planning.md
+    - text: Wat is Azure Files?
+      url: storage-files-introduction.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Bestandsshares maken/gebruiken - Windows
+      url: storage-files-quick-create-use-windows.md
+    - text: Premium bestandsshares maken
+      url: storage-how-to-create-premium-fileshare.md
+    - text: Uw server beheren met Azure File Sync
+      url: storage-sync-files-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Windows-bestandsservers uitbreiden met Azure File Sync
+      url: storage-sync-files-extend-servers.md
+- title: Problemen oplossen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Problemen met Azure Files in Windows oplossen
+      url: storage-troubleshoot-windows-file-connection-problems.md
+    - text: Problemen met Azure Files in Linux oplossen
+      url: storage-troubleshoot-linux-file-connection-problems.md
+    - text: Problemen met de prestaties van Azure Files oplossen
+      url: storage-troubleshooting-files-performance.md
+    - text: Problemen met Azure File Sync oplossen
+      url: storage-sync-files-troubleshoot.md

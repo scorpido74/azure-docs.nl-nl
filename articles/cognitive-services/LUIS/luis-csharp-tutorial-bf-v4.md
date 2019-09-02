@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560648"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207325"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Zelfstudie: Een web-app-bot gebruiken die is ingeschakeld met Language Understanding inC#
 
@@ -54,7 +54,7 @@ Gebruik C# om een chat-bot te maken die is geïntegreerd met language Standing (
     |Naam van app|Deze naam wordt gebruikt als subdomein wanneer uw bot wordt geïmplementeerd in de cloud (bijvoorbeeld humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, bijvoorbeeld, `luis-csharp-bot-johnsmith`|
     |Botsjabloon|Instellingen voor het botframework - zie de volgende tabel|
     |Locatie van LUIS-app|Moet hetzelfde zijn als de regio waarin de LUIS-resource zich bevindt|`westus`|
-    |App Service-plan/-locatie|Wijzig niet van de beschik bare standaard waarde.|
+    |App service-plan/-locatie|Wijzig niet van de beschik bare standaard waarde.|
     |Application Insights|Wijzig niet van de beschik bare standaard waarde.|
     |Micro soft App-ID en-wacht woord|Wijzig niet van de beschik bare standaard waarde.|
 
@@ -347,7 +347,7 @@ Start de bot in Visual Studio. Er wordt een browservenster geopend met de websit
 
 1. Boek in de bot-emulator een vlucht door de volgende utterance in te voeren: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 

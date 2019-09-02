@@ -32,11 +32,11 @@
           href: howto-sign-in-risk-policy.md
         - name: Het beleid voor gebruikersrisico’s configureren
           href: howto-user-risk-policy.md
-        - name: Actieve risicogebeurtenissen sluiten
+        - name: Actieve risicodetectie sluiten
           href: howto-close-active-risk-events.md
         - name: Gebruikers deblokkeren
           href: howto-unblock-user.md
-        - name: Risicogebeurtenissen simuleren
+        - name: Risicodetectie simuleren
           href: playbook.md
         - name: Veelgestelde vragen
           href: faqs.md
@@ -46,9 +46,9 @@
           href: overview-v2.md
         - name: Beveiligingsoverzicht
           href: security-overview.md
-        - name: Riskante gebruikers en aanmeldingen onderzoeken
-          href: howto-investigate-risky-users-signins.md
-        - name: Feedback geven over risicogebeurtenissen
+        - name: Risico onderzoeken
+          href: howto-investigate-risk.md
+        - name: Feedback geven over risicodetectie
           href: howto-provide-risk-event-feedback.md
         - name: Gebruikersrisicobeleid configureren
           href: howto-configure-risk-policies.md
@@ -58,7 +58,7 @@
   items:
     - name: De Microsoft Graph API gebruiken
       href: graph-get-started.md
-    - name: Risicogebeurtenissen
+    - name: Risicodetectie
       href: risk-events-reference.md
     - name: Woordenlijst
       href: glossary.md

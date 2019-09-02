@@ -1,21 +1,21 @@
 ---
 title: Blok-blobs Store op apparaten - Azure IoT Edge | Microsoft Docs
 description: Zie ondersteunde bewerkingen voor Blob-opslag en maak verbinding met uw Blob Storage-account voor meer informatie over lagen en time-to-Live-functies.
-author: kgremban
+author: arduppal
 manager: mchad
-ms.author: kgremban
-ms.reviewer: kgremban
+ms.author: arduppal
+ms.reviewer: arduppal
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 861b5c3ee6d5661339788e7a27ba70557d0ea267
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: f2b26e3418e264c2613a183570c7e27f75ab5d63
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947022"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208235"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge
 
@@ -79,24 +79,24 @@ Gebruik de gewenste eigenschappen van de module om **deviceToCloudUploadProperti
 
 De naam van deze instelling is`deviceToCloudUploadProperties`
 
-| Veld | Mogelijke waarden | Uitleg | Omgevingsvariabele |
-| ----- | ----- | ---- | ---- |
-| uploadOn | true, false | Standaard ingesteld `false` op. Als u de functie wilt inschakelen, stelt u dit veld in op `true`. | `deviceToCloudUploadProperties__uploadOn={false,true}` |
-| uploadOrder | NewestFirst, OldestFirst | Hiermee kunt u de volg orde kiezen waarin de gegevens naar Azure worden gekopieerd. Standaard ingesteld `OldestFirst` op. De volg orde wordt bepaald door het tijdstip van de laatste wijziging van de BLOB | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`is een connection string waarmee u het opslag account kunt opgeven waarnaar u uw gegevens wilt uploaden. Opgeven `Azure Storage Account Name`, `Azure Storage Account Key`, .`End point suffix` Voeg de juiste EndpointSuffix van Azure toe, waarbij gegevens worden geüpload, wat de wereld wijde Azure, overheids Azure en Microsoft Azure Stack is. <br><br> U kunt ervoor kiezen om Azure Storage SAS-connection string hier op te geven. Maar u moet deze eigenschap bijwerken wanneer deze verloopt.  | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
-| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Hiermee kunt u de namen van de containers opgeven die u wilt uploaden naar Azure. Met deze module kunt u zowel de bron-als de doel container naam opgeven. Als u de naam van de doel container niet opgeeft, wordt de naam van de container `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`automatisch toegewezen als. U kunt sjabloon teken reeksen maken voor de naam van de doel container, de kolom mogelijke waarden bekijken. <br>*% h-> IoT Hub naam (3-50 tekens). <br>*% d-> IoT Edge apparaat-ID (1 tot 129 tekens). <br>*% m-> module naam (1 tot 64 tekens). <br>*% c-> Bron container naam (3 tot 63 tekens). <br><br>De maximum grootte van de container naam is 63 tekens, terwijl de naam van de doel container automatisch wordt toegewezen als de grootte van de container groter is dan 63 tekens, wordt elke sectie (IoTHubName, IotEdgeDeviceID, module naam, SourceContainerName) op 15 geknipt aantal. | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
-| deleteAfterUpload | true, false | Standaard ingesteld `false` op. Als deze is ingesteld op `true`, worden de gegevens automatisch verwijderd wanneer het uploaden naar de Cloud opslag is voltooid | `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
+| Eigenschap | Mogelijke waarden | Uitleg |
+| ----- | ----- | ---- |
+| uploadOn | true, false | Standaard ingesteld `false` op. Als u de functie wilt inschakelen, stelt u dit veld in op `true`. <br><br> Omgevings variabele:`deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst, OldestFirst | Hiermee kunt u de volg orde kiezen waarin de gegevens naar Azure worden gekopieerd. Standaard ingesteld `OldestFirst` op. De volg orde wordt bepaald door het tijdstip van de laatste wijziging van de blob. <br><br> Omgevings variabele:`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`is een connection string waarmee u het opslag account kunt opgeven waarnaar u uw gegevens wilt uploaden. Opgeven `Azure Storage Account Name`, `Azure Storage Account Key`, .`End point suffix` Voeg de juiste EndpointSuffix van Azure toe, waarbij gegevens worden geüpload, wat de wereld wijde Azure, overheids Azure en Microsoft Azure Stack is. <br><br> U kunt ervoor kiezen om Azure Storage SAS-connection string hier op te geven. Maar u moet deze eigenschap bijwerken wanneer deze verloopt. <br><br> Omgevings variabele:`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Hiermee kunt u de namen van de containers opgeven die u wilt uploaden naar Azure. Met deze module kunt u zowel de bron-als de doel container naam opgeven. Als u de naam van de doel container niet opgeeft, wordt de naam van de container `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`automatisch toegewezen als. U kunt sjabloon teken reeksen maken voor de naam van de doel container, de kolom mogelijke waarden bekijken. <br>*% h-> IoT Hub naam (3-50 tekens). <br>*% d-> IoT Edge apparaat-ID (1 tot 129 tekens). <br>*% m-> module naam (1 tot 64 tekens). <br>*% c-> Bron container naam (3 tot 63 tekens). <br><br>De maximum grootte van de container naam is 63 tekens, terwijl de naam van de doel container automatisch wordt toegewezen als de grootte van de container groter is dan 63 tekens, wordt elke sectie (IoTHubName, IotEdgeDeviceID, module naam, SourceContainerName) op 15 geknipt aantal. <br><br> Omgevings variabele:`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
+| deleteAfterUpload | true, false | Standaard ingesteld `false` op. Als deze is ingesteld op `true`, worden de gegevens automatisch verwijderd wanneer het uploaden naar de Cloud opslag is voltooid. <br><br> Omgevings variabele:`deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
 
 
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 De naam van deze instelling is`deviceAutoDeleteProperties`
 
-| Veld | Mogelijke waarden | Uitleg | Omgevingsvariabele |
-| ----- | ----- | ---- | ---- |
-| deleteOn | true, false | Standaard ingesteld `false` op. Als u de functie wilt inschakelen, stelt u dit veld in op `true`. | `deviceAutoDeleteProperties__deleteOn={false,true}` |
-| deleteAfterMinutes | `<minutes>` | Geef de tijd in minuten op. De module verwijdert automatisch uw blobs uit de lokale opslag wanneer deze waarde verloopt | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| retainWhileUploading | true, false | De standaard instelling is ingesteld op `true`, en de BLOB wordt bewaard tijdens het uploaden naar de Cloud opslag als deleteAfterMinutes verloopt. U kunt deze instellen op `false` en de gegevens worden verwijderd zodra deleteAfterMinutes verloopt. Opmerking: Deze eigenschap werkt alleen als uploadOn is ingesteld op True| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
+| Eigenschap | Mogelijke waarden | Uitleg |
+| ----- | ----- | ---- |
+| deleteOn | true, false | Standaard ingesteld `false` op. Als u de functie wilt inschakelen, stelt u dit veld in op `true`. <br><br> Omgevings variabele:`deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | Geef de tijd in minuten op. De module verwijdert automatisch uw blobs uit de lokale opslag wanneer deze waarde verloopt. <br><br> Omgevings variabele:`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true, false | De standaard instelling is ingesteld op `true`, en de BLOB wordt bewaard tijdens het uploaden naar de Cloud opslag als deleteAfterMinutes verloopt. U kunt deze instellen op `false` en de gegevens worden verwijderd zodra deleteAfterMinutes verloopt. Opmerking: Deze eigenschap werkt alleen als uploadOn is ingesteld op True. <br><br> Omgevings variabele:`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>SMB-share gebruiken als lokale opslag
 Als u een Windows-container van deze module op Windows host implementeert, kunt u SMB-share als uw lokale opslagpad opgeven.
@@ -175,7 +175,12 @@ De volgende Quick start-voor beelden gebruiken talen die ook door IoT Edge worde
 - [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [Java](../storage/blobs/storage-quickstart-blobs-java-v10.md)
 - [Python](../storage/blobs/storage-quickstart-blobs-python.md)
+    - Er is een bekend probleem opgetreden bij het gebruik van deze SDK, omdat deze versie van de module geen blob-aanmaak tijd retourneert. Daarom werken er weinig methoden als lijst-blobs. Als tijdelijke oplossing wordt expliciete API-versie op de BLOB-client ingesteld op ' 2017-04-17 '. <br>Hierbij`block_blob_service._X_MS_VERSION = '2017-04-17'`
 - [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
+- [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
+- [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
+- [Go](../storage/blobs/storage-quickstart-blobs-go.md)
+- [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>Verbinding maken met uw lokale opslag met Azure Storage Explorer
 

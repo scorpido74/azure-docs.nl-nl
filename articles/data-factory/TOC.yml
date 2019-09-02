@@ -187,6 +187,8 @@
           href: iterative-development-debugging.md
     - name: Connectors
       items:
+        - name: Overzicht van connectors
+          href: connector-overview.md
         - name: Amazon Marketplace Web Service
           href: connector-amazon-marketplace-web-service.md
         - name: Amazon Redshift
@@ -382,40 +384,40 @@
     - name: Gegevens transformeren
       href: transform-data.md
       items:
+        - name: Azure Function-activiteit
+          href: control-flow-azure-function-activity.md
+        - name: Aangepaste activiteit
+          href: transform-data-using-dotnet-custom-activity.md
+        - name: Databricks Jar-activiteit
+          href: transform-data-databricks-jar.md
+        - name: Databricks Notebook-activiteit
+          href: transform-data-databricks-notebook.md
+        - name: Databricks Python-activiteit
+          href: transform-data-databricks-python.md
+        - name: Data Lake U-SQL-activiteit
+          href: transform-data-using-data-lake-analytics.md
         - name: HDInsight Hive-activiteit
           href: transform-data-using-hadoop-hive.md
-        - name: HDInsight Pig-activiteit
-          href: transform-data-using-hadoop-pig.md
         - name: HDInsight MapReduce-activiteit
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight-streamingactiviteit
-          href: transform-data-using-hadoop-streaming.md
+        - name: HDInsight Pig-activiteit
+          href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark-activiteit
           href: transform-data-using-spark.md
+        - name: HDInsight-streamingactiviteit
+          href: transform-data-using-hadoop-streaming.md
         - name: ML-batchuitvoeringsactiviteit
           href: transform-data-using-machine-learning.md
         - name: Resourceactiviteit voor ML bijwerken
           href: update-machine-learning-models.md
         - name: Opgeslagen procedureactiviteit
           href: transform-data-using-stored-procedure.md
-        - name: Data Lake U-SQL-activiteit
-          href: transform-data-using-data-lake-analytics.md
-        - name: Databricks Notebook-activiteit
-          href: transform-data-databricks-notebook.md
-        - name: Databricks Jar-activiteit
-          href: transform-data-databricks-jar.md
-        - name: Databricks Python-activiteit
-          href: transform-data-databricks-python.md
-        - name: Aangepaste activiteit
-          href: transform-data-using-dotnet-custom-activity.md
         - name: Gekoppelde services berekenen
           href: compute-linked-services.md
     - name: Controlestroom
       items:
         - name: Activiteit variabele toevoegen
           href: control-flow-append-variable-activity.md
-        - name: Azure Function-activiteit
-          href: control-flow-azure-function-activity.md
         - name: Gegevensstroomactiviteit uitvoeren
           href: control-flow-execute-data-flow-activity.md
         - name: Activiteit uitvoeren van pijplijn
@@ -584,6 +586,8 @@
       items:
         - name: Problemen met activiteiten oplossen
           href: data-factory-troubleshoot-guide.md
+        - name: Problemen met connector oplossen
+          href: connector-troubleshoot-guide.md
         - name: Problemen met Azure-SSIS IR-beheer oplossen
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Problemen met het uitvoeren van pakketten in Azure-SSIS IR oplossen

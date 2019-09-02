@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc6e37b088c6bcbb2de4693eb50be661db869ecd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089192"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207370"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd 
 
@@ -40,6 +40,8 @@ Zie [GPU Windows VM](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fto
 Nadat het raster stuur programma is geïnstalleerd op een VM, moet opnieuw worden opgestart. Na de installatie van het CUDA-stuur programma is het niet nodig om opnieuw op te starten.
 
 ## <a name="verify-driver-installation"></a>Installatie van stuur programma verifiëren
+
+Houd er rekening mee dat het NVIDIA-configuratie scherm alleen toegankelijk is met de installatie van het raster stuur programma. Als u CUDA-Stuur Programma's hebt geïnstalleerd, wordt het NVIDIA-configuratie scherm niet weer gegeven.
 
 U kunt de installatie van Stuur Programma's controleren in Apparaatbeheer. In het volgende voor beeld ziet u een geslaagde configuratie van de Tesla K80-kaart op een Azure NC-VM.
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 50ab3fc92fc980638547bb090c5d0d78aa20ab5f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172270"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208016"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replicatie in Azure Container Registry
 
@@ -97,8 +97,19 @@ ACR begint installatiekopieën te synchroniseren voor de geconfigureerde replica
 * Elke regio in een geo-gerepliceerd REGI ster is onafhankelijk nadat deze is ingesteld. Azure Container Registry Sla's gelden voor elke regio met geo-replicatie.
 * Wanneer u installatie kopieën vanuit een geo-gerepliceerd REGI ster pusht of pullt, verzendt Azure Traffic Manager op de achtergrond de aanvraag naar het REGI ster in de dichtstbijzijnde regio.
 * Nadat u een installatie kopie of label update naar de dichtstbijzijnde regio hebt gepusht, duurt het enige tijd voor Azure Container Registry om de manifesten en lagen te repliceren naar de overige regio's waarin u zich hebt aangemeld. Grotere afbeeldingen nemen meer tijd in beslag dan kleinere bestanden. Afbeeldingen en tags worden gesynchroniseerd over de replicatie regio's met een mogelijk consistentie model.
-* Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd REGI ster [](container-registry-webhook.md) , wordt u aangeraden webhooks zodanig te configureren dat deze reageert op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
+* Voor het beheren van werk stromen die afhankelijk zijn van push-updates naar een geo-gerepliceerd, [](container-registry-webhook.md) wordt u aangeraden webhooks te configureren om te reageren op push gebeurtenissen. U kunt regionale webhooks instellen binnen een geo-gerepliceerd REGI ster om Push gebeurtenissen bij te houden die worden uitgevoerd in de geografisch gerepliceerde regio's.
 
+## <a name="delete-a-replica"></a>Een replica verwijderen
+
+Nadat u een replica voor uw REGI ster hebt geconfigureerd, kunt u deze op elk gewenst moment verwijderen als deze niet meer nodig is. Verwijder een replica met de Azure Portal of andere hulpprogram ma's, zoals de opdracht [AZ ACR Replication delete](/cli/azure/acr/replication#az-acr-replication-delete) in de Azure cli.
+
+Een replica verwijderen in de Azure Portal:
+
+1. Navigeer naar uw Azure Container Registry en selecteer **replicaties**.
+1. Selecteer de naam van een replica en selecteer **verwijderen**. Bevestig dat u de replica wilt verwijderen.
+
+> [!NOTE]
+> U kunt de register replica niet verwijderen in de *regio thuis* van het REGI ster, dat wil zeggen, de locatie waar u het REGI ster hebt gemaakt. U kunt de start replica alleen verwijderen door het REGI ster zelf te verwijderen.
 
 ## <a name="geo-replication-pricing"></a>Prijzen van geo-replicatie
 

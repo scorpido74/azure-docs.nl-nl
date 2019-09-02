@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/11/2018
-ms.openlocfilehash: 6688fa6bc3180ef878992e1e06b0ac6e90f27ee2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 985d38b75ca99e85c8b066427ecea9eb4d3e90f2
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141541"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194446"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Inleiding tot Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -52,7 +52,7 @@ De eerste stap voor het bouwen van een informatieproductiesysteem bestaat uit he
 
 Zonder Data Factory moeten ondernemingen aangepaste onderdelen voor gegevensverplaatsing ontwikkelen of aangepaste services schrijven om deze gegevensbronnen en verwerking te integreren. Het is duur en moeilijk om dergelijke systemen te integreren en te onderhouden. Bovendien beschikken ze vaak niet over de functionaliteit voor bewaking, waarschuwing en besturingselementen op bedrijfsniveau die een volledig beheerde service kan bieden.
 
-Met Data Factory kunt u de [kopieeractiviteit](copy-activity-overview.md) in een pijplijn gebruiken om gegevens van on-premises gegevensarchieven en gegevensarchieven uit de cloud te verplaatsen naar een gecentraliseerd gegevensarchief in de cloud voor verdere analyse. Zo kunt u bijvoorbeeld gegevens in Azure Data Lake Store verzamelen en later transformeren met behulp van een Azure Data Lake Analytics-rekenservice. U kunt ook gegevens verzamelen in Azure Blob Storage en later transformeren met behulp van een Hadoop-cluster van Azure HDInsight.
+Met Data Factory kunt u de [kopieeractiviteit](copy-activity-overview.md) in een pijplijn gebruiken om gegevens van on-premises gegevensarchieven en gegevensarchieven uit de cloud te verplaatsen naar een gecentraliseerd gegevensarchief in de cloud voor verdere analyse. U kunt bijvoorbeeld gegevens verzamelen in Azure Data Lake Storage en de gegevens later transformeren met behulp van een Azure Data Lake Analytics compute-service. U kunt ook gegevens verzamelen in Azure Blob Storage en later transformeren met behulp van een Hadoop-cluster van Azure HDInsight.
 
 ### <a name="transform-and-enrich"></a>Transformeren en verrijken
 Wanneer de gegevens eenmaal aanwezig zijn in een gecentraliseerd gegevensarchief in de cloud, verwerkt of transformeert u de verzamelde gegevens met behulp van rekenservices zoals HDInsight Hadoop, Spark, Data Lake Analytics of Machine Learning. U wilt dat de gegevens op een betrouwbare manier en volgens een beheersbare en gecontroleerde planning worden geproduceerd om productieomgevingen te voorzien van vertrouwde gegevens.

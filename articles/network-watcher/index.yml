@@ -1,82 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Network Watcher
+### YamlMime:Landing
+title: Documentatie over Azure Network Watcher
+summary: Leer hoe u Azure Network Watcher gebruikt. Via snelstarts, zelfstudies en meer krijgt u inzicht in uw virtuele Azure-netwerk met hulpprogramma's als pakketvastlegging en logboeken van NSG-stromen, zodat u problemen met verkeersfilters en -routering kunt vaststellen en verbindingen kunt bewaken.
 metadata:
-  document_id: null
-  title: 'Documentatie voor Network Watcher - zelfstudies, snelstarts, API-verwijzing | Microsoft Docs'
-  meta.description: 'Learn how to use Azure Network Watcher. Quickstarts, tutorials, and more, show you how to gain insight into your Azure Virtual Network with tools like packet capture and NSG flows logs, to diagnose problems with traffic filtering and routing, and to monitor connections.'
+  title: Documentatie voor Azure Network Watcher
+  description: Leer hoe u Azure Network Watcher gebruikt. Via snelstarts, zelfstudies en meer krijgt u inzicht in uw virtuele Azure-netwerk met hulpprogramma's als pakketvastlegging en logboeken van NSG-stromen, zodat u problemen met verkeersfilters en -routering kunt vaststellen en verbindingen kunt bewaken.
   services: network-watcher
-  author: KumudD
-  manager: twolley
   ms.service: network-watcher
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/24/2018
+  ms.collection: collection
+  author: KumudD
   ms.author: kumud
-abstract:
-  description: 'Leer hoe u Azure Network Watcher gebruikt. Via snelstarts, zelfstudies en meer krijgt u inzicht in uw virtuele Azure-netwerk met hulpprogramma''s als pakketvastlegging en logboeken van NSG-stromen, zodat u problemen met verkeersfilters en -routering kunt vaststellen en verbindingen kunt bewaken.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Informatie over hoe u problemen met verkeersfilters naar en van een virtuele machine vaststelt.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/portal.svg
-            text: Azure Portal
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem
-          - image:
-              src: ./media/index/powershell.svg
-            text: Azure PowerShell
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-powershell
-          - image:
-              src: ./media/index/cli.svg
-            text: Azure-CLI
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-cli
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Informatie over hoe u problemen in uw virtuele machine vaststelt.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/network-watcher/diagnose-vm-network-routing-problem">Een routeringsprobleem in een netwerk van een virtuele machine (VM) vaststellen</a>
-          - html: <a href="/azure/network-watcher/connection-monitor">Netwerkcommunicatie tussen twee VM's bewaken</a>
-          - html: <a href="/azure/network-watcher/diagnose-communication-problem-between-networks">Een probleem vaststellen in de communicatie tussen netwerken</a>
-          - html: <a href="/azure/network-watcher/network-watcher-nsg-flow-logging-portal">Netwerkverkeer van en naar een VM in een logboek vastleggen</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure-beheerder
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure-oplossingsarchitect
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: Azure-beheer voor AWS-beheerders
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="/powershell/module/az.network/#network_watcher">PowerShell</a></p><p><a href="/cli/azure/network/watcher">Azure-CLI</a></p>'
-          - title: Talen
-            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/network-watcher/">Naslaginformatie over REST-API</a></p>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 534da1b945b4a4463406d5b5c6277833fad35984
+  ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/30/2019
+  ms.locfileid: "70195098"
+landingContent:
+- title: Over Network Watcher
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Network Watcher?
+      url: network-watcher-monitoring-overview.md
+- title: Probleem met VM-verkeersfilter vaststellen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IP-stroomverificatie
+      url: network-watcher-ip-flow-verify-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Probleem met VM-verkeersfilter vaststellen
+      url: diagnose-vm-network-traffic-filtering-problem.md
+- title: VM-routeringsprobleem vaststellen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: VM-routeringsprobleem met volgende hop vaststellen
+      url: network-watcher-next-hop-overview.md
+  - linkListType: tutorial
+    links:
+    - text: VM-routeringsprobleem vaststellen
+      url: diagnose-vm-network-routing-problem.md
+- title: VM-communicatieproblemen vaststellen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Uitgaande VM-communicatieproblemen vaststellen
+      url: network-watcher-connectivity-overview.md
+  - linkListType: tutorial
+    links:
+    - text: VM-routeringsprobleem vaststellen
+      url: network-watcher-connectivity-portal.md
+    - text: De communicatie tussen VM's bewaken
+      url: connection-monitor.md
+- title: VM-netwerkverkeer in een logboek vastleggen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: VM-netwerkverkeer in een logboek vastleggen
+      url: network-watcher-nsg-flow-logging-overview.md
+  - linkListType: tutorial
+    links:
+    - text: VM-netwerkverkeer in een logboek vastleggen
+      url: network-watcher-nsg-flow-logging-portal.md
+  - linkListType: tutorial
+    links:
+    - text: NSG-stroomlogboeken configureren
+      url: network-watcher-nsg-flow-logging-portal.md
+    - text: NSG-stroomlogboeken analyseren met behulp van Traffic Analytics
+      url: traffic-analytics.md
+    - text: VM-netwerkverkeer in een logboek vastleggen
+      url: network-watcher-nsg-flow-logging-portal.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.network/#network_watcher
+    - text: Azure-CLI
+      url: /cli/azure/network/watcher
+    - text: REST
+      url: /rest/api/network-watcher/

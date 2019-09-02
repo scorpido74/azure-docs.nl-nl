@@ -1,28 +1,22 @@
 ---
-title: Maken van een Windows Data Science Virtual Machine
-titleSuffix: Azure
+title: 'Quickstart: Een Windows maken'
+titleSuffix: Azure Data Science Virtual Machine
 description: Configureren en een Data Science Virtual Machine in Azure maken voor analyse en machine learning.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.author: vijetaj
-ms.openlocfilehash: 2b328ccf63259c7faf4debdc07313d24381313a5
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6c0abc20775e604f9ea1c6ba882e5a9ff1d89e90
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70047679"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195307"
 ---
-# <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Een Windows-Data Science Virtual Machine inrichten in azure
+# <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Quickstart: Een Windows-Data Science Virtual Machine in azure instellen
 
 Micro soft Windows Data Science Virtual Machine (DSVM) is een installatie kopie van een virtuele machine (VM) van Windows Server 2016 in Azure. Het is vooraf geïnstalleerd en geconfigureerd met hulpprogram ma's voor gegevens analyse en machine learning.
 

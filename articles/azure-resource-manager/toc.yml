@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Concepten
   items:
+    - name: Sjabloonimplementaties
+      href: template-deployment-overview.md
     - name: Sjabloonbestandstructuur
       displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
@@ -83,6 +85,8 @@
   items:
     - name: Sjablonen maken
       items:
+        - name: Hulpprogramma - VS Code
+          href: resource-manager-tools-vs-code.md
         - name: Sjabloon maken
           href: how-to-create-template.md
         - name: Naam en type van onderliggende resource

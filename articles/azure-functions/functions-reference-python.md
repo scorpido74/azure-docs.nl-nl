@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 16cf6704096f8c1534777ffb1958d2fa858374db
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 88d9ab0063b6cf2803332d7af50190c659b3e6fe
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170537"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207209"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -378,6 +378,8 @@ pip install -r requirements.txt
 ## <a name="publishing-to-azure"></a>Publiceren naar Azure
 
 Wanneer u klaar bent om te publiceren, moet u ervoor zorgen dat al uw afhankelijkheden worden weer gegeven in het bestand *Requirements. txt* , dat zich in de hoofdmap van de projectmap bevindt. Azure Functions kunt deze afhankelijkheden [op afstand bouwen](functions-deployment-technologies.md#remote-build) .
+
+Project bestanden en-mappen die zijn uitgesloten van publiceren, met inbegrip van de map virtuele omgeving, worden weer gegeven in het funcignore-bestand.  
 
 Als u wilt implementeren in Azure en een externe build wilt uitvoeren, gebruikt u de volgende opdracht:
 

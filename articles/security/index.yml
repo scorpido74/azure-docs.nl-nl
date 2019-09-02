@@ -1,0 +1,244 @@
+### YamlMime:Hub
+title: Documentatie over beveiliging in Azure
+summary: Beveiliging is geïntegreerd in elk aspect van Azure. Azure biedt u unieke beveiligingsvoordelen die voortvloeien uit wereldwijde beveiligingsstatistieken, geavanceerde klantgerichte besturingselementen en een veilige, versterkte infrastructuur. Door deze krachtige combinatie is het eenvoudiger om uw toepassingen en gegevens te beschermen, uw nalevingswerkzaamheden te ondersteunen en op kostenbewuste wijze beveiliging te bieden voor organisaties van elke omvang.
+brand: azure
+metadata:
+  title: Documentatie over beveiliging in Azure
+  description: Beveiliging is geïntegreerd in elk aspect van Azure. Azure biedt u unieke beveiligingsvoordelen die voortvloeien uit wereldwijde beveiligingsstatistieken, geavanceerde klantgerichte besturingselementen en een veilige, versterkte infrastructuur. Door deze krachtige combinatie is het eenvoudiger om uw toepassingen en gegevens te beschermen, uw nalevingswerkzaamheden te ondersteunen en op kostenbewuste wijze beveiliging te bieden voor organisaties van elke omvang.
+  services: security
+  ms.service: security
+  ms.subservice: na
+  ms.topic: hub-page
+  ms.collection: na
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 2b33bd8b2b4e2338884993ec76feb8027c8753d4
+  ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70148877"
+highlightedContent:
+  items:
+  - title: Inleiding tot Azure-beveiliging
+    itemType: overview
+    url: ./fundamentals/overview.md
+  - title: Best practices en patronen voor beveiliging
+    itemType: concept
+    url: ./fundamentals/best-practices-and-patterns.md
+  - title: Wat is Azure Security Center?
+    itemType: overview
+    url: ../security-center/security-center-intro.md
+conceptualContent:
+  items:
+  - title: Basisprincipes
+    links:
+    - url: ./fundamentals/technical-capabilities.md
+      itemType: overview
+      text: Technische mogelijkheden van Azure-beveiliging
+    - url: https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91
+      itemType: concept
+      text: Gedeelde verantwoordelijkheden voor cloud-computing
+    - url: ./fundamentals/common-security-attributes.md
+      itemType: concept
+      text: Beveiligingscontroles voor Azure-Services
+    footerLink:
+      url: ./fundamentals/index.md
+      text: Meer informatie
+  - title: Ontwikkelaars
+    links:
+    - url: ./develop/secure-dev-overview.md
+      itemType: overview
+      text: Best practices voor het ontwikkelen van beveiligde toepassingen
+    - url: ./develop/secure-web-app.md
+      itemType: tutorial
+      text: Een beveiligde web-app ontwikkelen
+    - url: ./develop/threat-modeling-tool.md
+      itemType: concept
+      text: Microsoft Threat Modeling Tool
+    footerLink:
+      url: ./develop/index.yml
+      text: Meer informatie
+  - title: Benchmarks en aanbevelingen
+    links:
+    - url: https://azure.microsoft.com/resources/azure-cloud-security-benchmark-draft/
+      itemType: download
+      text: Benchmarks voor Azure-cloudbeveiliging
+    - url: ../security-center/security-center-using-recommendations.md
+      itemType: overview
+      text: Aanbevelingen voor Azure Security Center
+  - title: Geheimen en sleutels
+    links:
+    - url: ../key-vault/key-vault-overview.md
+      itemType: overview
+      text: Wat is Azure Sleutelkluis?
+    - url: ../key-vault/quick-create-cli.md
+      itemType: quickstart
+      text: Een geheim instellen en ophalen
+    - url: ../dedicated-hsm/overview.md
+      itemType: overview
+      text: Wat is Azure Toegewezen HSM?
+    footerLink:
+      url: /azure/key-vault/
+      text: Meer informatie
+  - title: Gegevensbeveiliging
+    links:
+    - url: ./fundamentals/encryption-atrest.md
+      itemType: concept
+      text: Gegevensversleuteling in rust
+    - url: ./fundamentals/data-encryption-best-practices.md
+      itemType: concept
+      text: Best practices voor gegevensbeveiliging en -versleuteling
+    - url: ../storage/common/storage-security-guide.md
+      itemType: concept
+      text: Opslagbeveiliging
+    footerLink:
+      url: azure-security-disk-encryption-overview.md
+      text: Meer informatie
+  - title: Identiteitsbeheer
+    links:
+    - url: ./fundamentals/choose-ad-authn.md
+      itemType: concept
+      text: De juiste verificatiemethode kiezen
+    - url: ./fundamentals/steps-secure-identity.md
+      itemType: concept
+      text: Uw identiteitsinfrastructuur beveiligen
+    - url: ./fundamentals/identity-management-best-practices.md
+      itemType: concept
+      text: Aanbevolen procedures voor beveiliging
+    footerLink:
+      url: ./fundamentals/identity-management-overview.md
+      text: Meer informatie
+  - title: Beveiligingsbewaking
+    links:
+    - url: ../security-center/security-center-get-started.md
+      itemType: quickstart
+      text: Uw abonnement onboarden voor Security Center
+    - url: ../security-center/security-center-just-in-time.md
+      itemType: how-to-guide
+      text: Just-In-Time-VM-toegang
+    - url: ../security-center/tutorial-security-policy.md
+      itemType: how-to-guide
+      text: Werken met beveiligingsbeleid
+    footerLink:
+      url: /azure/security-center/
+      text: Meer informatie
+  - title: IoT-beveiligingsbewaking
+    links:
+    - url: ../asc-for-iot/overview.md
+      itemType: overview
+      text: Kennismaking met Azure Security Center for IoT
+    - url: ../asc-for-iot/architecture.md
+      itemType: how-to-guide
+      text: Azure Security Center for IoT-architectuur
+    - url: ../asc-for-iot/getting-started.md
+      itemType: how-to-guide
+      text: Aan de slag met Azure Security Center for IoT
+    footerLink:
+      url: /azure/asc-for-iot/
+      text: Meer informatie
+  - title: Beveiligingsanalyse
+    links:
+    - url: ../sentinel/overview.md
+      itemType: overview
+      text: Wat is Azure Sentinel preview?
+    - url: ../sentinel/quickstart-onboard.md
+      itemType: quickstart
+      text: Azure Sentinel preview onboarden
+    - url: ../sentinel/quickstart-get-visibility.md
+      itemType: quickstart
+      text: Aan de slag met Azure Sentinel preview
+    footerLink:
+      url: /azure/sentinel/
+      text: Meer informatie
+  - title: Bescherming tegen bedreigingen
+    links:
+    - url: ../security-center/security-center-alerts-overview.md
+      itemType: concept
+      text: Beveiligingswaarschuwingen in Azure Security Center
+    - url: ../storage/common/storage-advanced-threat-protection.md
+      itemType: concept
+      text: Advanced Threat Protection voor Azure Storage
+    - url: ../sql-database/sql-database-threat-detection-overview.md
+      itemType: concept
+      text: Advanced Threat Protection voor Azure Database
+    footerLink:
+      url: ./fundamentals/threat-detection.md
+      text: Meer informatie
+  - title: Logboekregistratie en bewaking
+    links:
+    - url: ./fundamentals/log-audit.md
+      itemType: concept
+      text: Logboekregistratie en bewaking in Azure
+    - url: ./fundamentals/management-monitoring-overview.md
+      itemType: overview
+      text: Overzicht van beheer en bewaking
+    - url: ./fundamentals/azure-log-integration-overview.md
+      itemType: overview
+      text: Inleiding tot Azure-logboekintegratie
+    footerLink:
+      url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
+      text: Meer zoeken
+  - title: Netwerkbeveiliging
+    links:
+    - url: ./fundamentals/network-overview.md
+      itemType: overview
+      text: Beveiligingsoverzicht
+    - url: ./fundamentals/network-best-practices.md
+      itemType: concept
+      text: Aanbevolen procedures voor beveiliging
+    - url: ./fundamentals/ddos-best-practices.md
+      itemType: concept
+      text: DDoS Protection
+  - title: Beveiligingsinfrastructuur
+    links:
+    - url: ./fundamentals/physical-security.md
+      itemType: concept
+      text: Azure-faciliteiten, -gebouwen en fysieke beveiliging
+    - url: ./fundamentals/infrastructure-network.md
+      itemType: concept
+      text: Netwerkarchitectuur
+    - url: ./fundamentals/protection-customer-data.md
+      itemType: concept
+      text: Beveiliging van klantgegevens
+    footerLink:
+      url: ./fundamentals/infrastructure.md
+      text: Meer informatie
+  - title: Beveiliging van virtuele machines
+    links:
+    - url: ./fundamentals/virtual-machines-overview.md
+      itemType: overview
+      text: Beveiligingsoverzicht
+    - url: ./fundamentals/iaas.md
+      itemType: concept
+      text: Aanbevolen procedures voor IaaS-workloads
+    - url: ./fundamentals/azure-marketplace-images.md
+      itemType: concept
+      text: Aanbevelingen voor beveiligingsconfiguratie
+  - title: Databasebeveiliging
+    links:
+    - url: ./fundamentals/database-security-overview.md
+      itemType: overview
+      text: Beveiligingsoverzicht
+    - url: ./fundamentals/database-best-practices.md
+      itemType: concept
+      text: Aanbevolen procedures voor beveiliging
+    - url: ./fundamentals/database-security-checklist.md
+      itemType: concept
+      text: Controlelijst voor beveiliging
+  - title: Governance en naleving
+    links:
+    - url: ./blueprints/au-protected-iaaswa-overview.md
+      itemType: tutorial
+      text: Complianceoplossingen
+    - url: ../governance/policy/overview.md
+      itemType: overview
+      text: Azure Policy-service
+    - url: ../governance/blueprints/overview.md
+      itemType: overview
+      text: Azure Blueprints-service
+    footerLink:
+      url: /azure/governance/
+      text: Meer informatie

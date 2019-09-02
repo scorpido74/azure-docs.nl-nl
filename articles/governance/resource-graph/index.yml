@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 05/06/2019
+  ms.date: 08/25/2019
   ms.author: dacoulte
 abstract:
   description: Met de documentatie voor Azure Resource Graph kunt u de querytaal voor het detecteren en verkennen van uw resources op schaal configureren en hiermee leren werken.
@@ -20,6 +20,11 @@ sections:
       - type: list
         style: icon48
         items:
+          - image:
+              alt: Azure Resource Graph Explorer
+              src: ./media/arg_explorer.svg
+            text: Resource Graph Explorer
+            href: first-query-portal.md
           - image:
               alt: Azure-CLI
               src: ./media/cli.svg

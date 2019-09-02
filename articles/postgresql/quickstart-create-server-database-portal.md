@@ -1,18 +1,18 @@
 ---
-title: 'Snelstart: een Azure Database for PostgreSQL - één Server met behulp van de Azure portal maken'
-description: Quick Start-handleiding voor het maken en beheren van een Azure Database voor PostgreSQL - één Server met behulp van de Azure portal-gebruikersinterface.
+title: 'Quick Start: een Azure Database for PostgreSQL-één-server maken met behulp van de Azure Portal'
+description: Quick Start-hand leiding voor het maken en beheren van een Azure Database for PostgreSQL-één server met behulp van de Azure Portal gebruikers interface.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.openlocfilehash: 152e93fefecaeaab3502ad5d974ba923727f919b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9a729376baeb03656b7b54fcb8e10a865d1f364
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443111"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195155"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Quickstart: Een Azure Database for PostgreSQL-server maken in Azure Portal
 
@@ -28,31 +28,31 @@ Open uw webbrowser en ga naar de [portal](https://portal.azure.com/). Voer uw re
 Een Azure Database for PostgreSQL-server wordt gemaakt met een geconfigureerde set [reken- en opslagresources](./concepts-pricing-tiers.md). De server wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md).
 
 Volg deze stappen voor het maken van een Azure Database for PostgreSQL-server:
-1. Selecteer de knop **Een resource maken** (+) in de linkerbovenhoek van de portal.
+1. Selecteer **een resource maken** (+) in de linkerbovenhoek van de portal.
 
 2. Selecteer **Databases** > **Azure Database for PostgreSQL**.
 
-    ![De 'Azure Database for PostgreSQL' in het menu](./media/quickstart-create-database-portal/1-create-database.png)
+    ![De Azure Database for PostgreSQL in menu](./media/quickstart-create-database-portal/1-create-database.png)
 
-3. Selecteer de **één server** Implementatieoptie.
+3. Selecteer de implementatie optie voor **één server** .
 
-   ![Azure Database voor PostgreSQL - optie voor implementatie van één server selecteren](./media/quickstart-create-database-portal/select-deployment-option.png)
+   ![Selecteer Azure Database for PostgreSQL-implementatie optie voor één server](./media/quickstart-create-database-portal/select-deployment-option.png)
 
-4. Vul de **basisbeginselen** formulier met de volgende informatie:
+4. Vul het formulier **basis beginselen** in met de volgende informatie:
 
     ![Een server maken](./media/quickstart-create-database-portal/create-basics.png)
 
     Instelling|Voorgestelde waarde|Description
     ---|---|---
-    Abonnement|De naam van uw abonnement|Het Azure-abonnement dat u wilt gebruiken voor uw server. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
-    Resourcegroep|*myresourcegroup*| Een nieuwe resourcegroepnaam of een bestaande naam uit uw abonnement.
+    Subscription|De naam van uw abonnement|Het Azure-abonnement dat u wilt gebruiken voor uw server. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
+    Resource group|*myresourcegroup*| Een nieuwe resourcegroepnaam of een bestaande naam uit uw abonnement.
     Servernaam |*mydemoserver*|Een unieke naam ter identificatie van uw Azure Database for PostgreSQL-server. De domeinnaam *postgres.database.azure.com* wordt toegevoegd aan de naam van de server die u opgeeft. De server mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. Hij moet ten minste 3 en mag maximaal 63 tekens bevatten.
-    Gegevensbron | *Geen* | Selecteer *geen* te maken van een nieuwe server maken. (Selecteer *Back-up* als u een server maakt op basis van een geo-back-up van een bestaande Azure Database for PostgreSQL-server).
+    Gegevensbron | *Geen* | Selecteer *geen* als u een volledig nieuwe server wilt maken. (Selecteer *Back-up* als u een server maakt op basis van een geo-back-up van een bestaande Azure Database for PostgreSQL-server).
     Gebruikersnaam van beheerder |*myadmin*| Uw eigen aanmeldingsaccount dat moet worden gebruikt om verbinding te maken met de server. De aanmeldingsnaam voor de beheerder mag niet **azure_superuser,** **azure_pg_admin,** **admin,** **administrator,** **root,** **guest** of **public** zijn. De naam mag niet met **pg_** beginnen.
     Wachtwoord |Uw wachtwoord| Een nieuw wachtwoord voor het beheerdersaccount voor de server. Dit wachtwoord moet tussen 8 en 128 tekens bevatten. Uw wachtwoord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0 t/m 9) en niet-alfanumerieke tekens (!, $, #, % enzovoort).
     Location|De regio het dichtst bij uw gebruikers| De locatie die zich het dichtst bij uw gebruikers bevindt.
     Version|De meest recente primaire versie| De nieuwste primaire versie van PostgreSQL, tenzij u specifieke andere vereisten hebt.
-    COMPUTE en opslag | **Algemeen**, **Gen 5**, **2 vCores**, **5 GB**, **7 dagen**, **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **-server configureren**. Selecteer vervolgens het tabblad **Algemeen**. *Gen 5*, *4 vCores*, *100 GB*, en *7 dagen* zijn de standaardwaarden voor **bewerking voor Compute**,  **vCore**, **opslag**, en **bewaarperiode voor back-up**. U kunt deze schuifregelaars laten zoals is of pas ze aan. Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
+    Compute + Storage | **Algemeen**, **Gen 5**, **2 vCores**, **5 GB**, **7 dagen**, **Geografisch redundant** | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **server configureren**. Selecteer vervolgens het tabblad **Algemeen**. Generatie *5*, *4 VCORES*, *100 GB*en *7 dagen* zijn de standaard waarden voor het **genereren**van de berekening, het **VCore**, de **opslag**en de **Bewaar periode voor back-ups**. U kunt deze schuif regelaars behouden als of aanpassen. Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
 
    > [!NOTE]
    > Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload. Servers die zijn gemaakt in de prijscategorie Basic kunnen later niet meer worden geschaald voor Algemeen gebruik of Geoptimaliseerd voor geheugen. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/postgresql/) voor meer informatie.
@@ -60,7 +60,7 @@ Volg deze stappen voor het maken van een Azure Database for PostgreSQL-server:
 
     ![Het deelvenster Prijscategorie](./media/quickstart-create-database-portal/2-pricing-tier.png)
 
-5. Selecteer **bekijken + maken** naar Controleer uw selecties. Selecteer **Maken** om de server in te richten. Deze bewerking kan enkele minuten duren.
+5. Selecteer **controleren + maken** om uw selecties te controleren. Selecteer **Maken** om de server in te richten. Deze bewerking kan enkele minuten duren.
 
 6. Selecteer het pictogram **Meldingen** (een klok) op de werkbalk om het implementatieproces te bewaken. Na de implementatie kunt u **Vastmaken aan dashboard** selecteren. Hiermee maakt u een tegel voor deze server op uw dashboard in Azure Portal als snelkoppeling naar de **overzichtspagina** van de server. Als u **Naar de resource gaan** selecteert, wordt de **overzichtspagina** van de server weergegeven.
 
@@ -72,7 +72,7 @@ Volg deze stappen voor het maken van een Azure Database for PostgreSQL-server:
 
 In Azure Database for PostgreSQL wordt een firewall op serverniveau gemaakt. De firewall voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server, tenzij u een firewallregel maakt om de firewall te openen voor specifieke IP-adressen. 
 
-1. Ga naar de server nadat de implementatie is voltooid. U kunt desgewenst naar de server zoeken. Selecteer bijvoorbeeld **Alle resources** in het menu aan de linkerkant. Typ de naam van de server, zoals **mydemoserver** uit het voorbeeld, om te zoeken naar de zojuist gemaakte server. Selecteer de naam van de server in de lijst met zoekresultaten. De pagina **Overzicht** wordt geopend voor uw server en biedt opties voor verdere configuratie.
+1. Ga naar de server nadat de implementatie is voltooid. U kunt desgewenst naar de server zoeken. Selecteer bijvoorbeeld **Alle resources** in het menu aan de linkerkant. Voer de naam van uw server in, zoals het voor beeld **mydemoserver**, om te zoeken naar de zojuist gemaakte server. Selecteer de naam van de server in de lijst met zoekresultaten. De pagina **Overzicht** wordt geopend voor uw server en biedt opties voor verdere configuratie.
  
     ![Zoeken naar de servernaam](./media/quickstart-create-database-portal/4-locate.png)
 
@@ -115,7 +115,7 @@ Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw
    ```
 
    > [!TIP]
-   > Als u liever een URL-pad gebruiken voor verbinding met Postgres, URL-codering het @-teken in de gebruikersnaam met `%40`. Bijvoorbeeld zou de verbindingsreeks voor de psql zijn, 
+   > Als u liever een URL-pad gebruikt om verbinding te maken met post gres, URL codeert u het @- `%40`teken in de gebruikers naam met. Bijvoorbeeld: de connection string voor psql zou zijn, 
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -136,9 +136,9 @@ Er zijn een aantal toepassingen die kunt gebruiken om verbinding te maken met uw
    > [!TIP]
    > Als de firewall niet is geconfigureerd voor het toestaan van het IP-adres van uw client, wordt het volgende foutbericht weergegeven:
    > 
-   > 'psql: Onherstelbare fout: geen pg_hba.conf vermelding voor host `<IP address>`, gebruiker "myadmin" database "postgres", SSL op onherstelbare fout: SSL connection is required. Please specify SSL options and retry.
+   > 'psql: Onherstelbare fout: geen pg_hba. conf `<IP address>`-vermelding voor host, gebruiker ' myadmin ', data base ' post gres ', SSL op onherstelbaar: SSL connection is required. Please specify SSL options and retry.
    > 
-   > Controleer of dat de client-IP is toegestaan in de bovenstaande stap voor firewall-regels.
+   > Controleer of het IP-adres van de client is toegestaan in de bovenstaande stap voor firewall regels.
 
 2. Maak een lege database met de naam 'mypgsqldb' door bij de prompt de volgende opdracht te typen:
     ```bash
@@ -173,24 +173,24 @@ pgAdmin is een open-source hulpprogramma voor PostgreSQL. U kunt pgAdmin install
     Parameter pgAdmin |Value|Description
     ---|---|---
     Host name/address | Servernaam | De servernaam die u hebt gebruikt toen u eerder de Azure Database for PostgreSQL-server hebt gemaakt. De server in ons voorbeeld is **mydemoserver.postgres.database.azure.com**. Gebruik de FQDN (Fully Qualified Domain Name) ( **\*. postgres.database.azure.com**) zoals weergegeven in het voorbeeld. Als u de servernaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. 
-    Poort | 5432 | De poort die moet worden gebruikt wanneer u verbinding maakt met de Azure Database for PostgreSQL-server. 
+    Port | 5432 | De poort die moet worden gebruikt wanneer u verbinding maakt met de Azure Database for PostgreSQL-server. 
     Onderhoudsdatabase | *postgres* | De door het systeem gegenereerde standaarddatabasenaam.
-    Gebruikersnaam | Aanmeldingsnaam van serverbeheerder | De aanmeldingsnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database for PostgreSQL-server eerder hebt gemaakt. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *gebruikersnaam\@servername*.
+    Gebruikersnaam | Aanmeldingsnaam van de serverbeheerder | De aanmeldingsnaam van de serverbeheerder die u hebt opgegeven toen u de Azure Database for PostgreSQL-server eerder hebt gemaakt. Als u de gebruikersnaam niet meer weet, volgt u de stappen in de vorige sectie om de verbindingsgegevens op te halen. De indeling is *username\@server naam*.
     Wachtwoord | Uw beheerderswachtwoord | Het wachtwoord dat u hebt gekozen toen u eerder in deze Quick Start de server maakte.
     Role | Leeg laten | U hoeft op dit moment geen rolnaam op te geven. Laat het veld leeg.
     SSL-modus | *Require* | U kunt de SSL-modus instellen op het tabblad SSL van pgAdmin. Bij het maken van een Azure Database for PostgreSQL-server wordt standaard geforceerd SSL ingeschakeld. Raadpleeg [SSL afdwingen](./concepts-ssl-connection-security.md) als u geforceerd SSL wilt uitschakelen.
     
 5. Selecteer **Opslaan**.
 
-6. Vouw in het linkerdeelvenster **Browser** het knooppunt **Server** uit. Selecteer uw server, bijvoorbeeld **mydemoserver**. Klik erop om er verbinding mee te maken.
+6. Vouw in het linkerdeelvenster **Browser** het knooppunt **Server** uit. Selecteer uw server, bijvoorbeeld **mydemoserver**, om verbinding mee te maken.
 
 7. Vouw het knooppunt Servers uit en vouw vervolgens **Databases** eronder uit. De lijst moet uw bestaande *postgres*-database bevatten, plus eventuele andere databases die u hebt gemaakt. U kunt met Azure Database for PostgreSQL meerdere databases per server maken.
 
-8. Klik met de rechtermuisknop op **Databases**, kies het menu **Create** en selecteer **Database**.
+8. Klik met de rechter muisknop op **data bases**, selecteer het menu **maken** en selecteer vervolgens **Data Base**.
 
-9. Typ een naam voor de database in het veld **Database**, bijvoorbeeld **mypgsqldb2**.
+9. Voer de gewenste database naam in het **database** veld in, zoals **mypgsqldb2**.
 
-10. Selecteer bij **Owner** de eigenaar voor de database uit de keuzelijst. Kies de aanmeldingsnaam van de serverbeheerder, zoals **my admin** uit het voorbeeld.
+10. Selecteer bij **Owner** de eigenaar voor de database uit de keuzelijst. Selecteer de aanmeldings naam van de server beheerder, zoals het voor beeld, **mijn beheerder**.
 
     ![Een database maken in pgadmin](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
@@ -208,7 +208,7 @@ De resources die u hebt gemaakt in de Quick Start kunt u op een van de volgende 
 De hele resourcegroep verwijderen, met inbegrip van de nieuwe server:
 1. Zoek de resourcegroep in de portal. Selecteer **Resourcegroepen** in het menu aan de linkerkant. Selecteer vervolgens de naam van de resourcegroep, zoals in het voorbeeld **myresourcegroup**.
 
-2. Selecteer **Verwijderen** op de pagina van de resourcegroep. Typ vervolgens de naam van de resourcegroep, zoals **myresourcegroup** uit het voorbeeld, in het tekstvak om het verwijderen te bevestigen. Selecteer **Verwijderen**.
+2. Selecteer **Verwijderen** op de pagina van de resourcegroep. Voer de naam van uw resource groep in, zoals het voor beeld **myresourcegroup**, in het tekstvak om de verwijdering te bevestigen. Selecteer **Verwijderen**.
 
 Alleen de zojuist gemaakte server verwijderen:
 1. Als de server niet is geopend, zoekt u de server in de portal. Selecteer **Alle resources** in het menu aan de linkerkant. Zoek vervolgens naar de server die u hebt gemaakt.
@@ -217,7 +217,7 @@ Alleen de zojuist gemaakte server verwijderen:
 
     ![De knop Verwijderen](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Controleer de naam van de server die u gaat verwijderen en kijk welke databases eveneens worden verwijderd. Typ de naam van uw server in het tekstvak, zoals **mydemoserver** uit het voorbeeld. Selecteer **Verwijderen**.
+3. Controleer de naam van de server die u gaat verwijderen en kijk welke databases eveneens worden verwijderd. Voer de naam van uw server in het tekstvak in, zoals in het voor beeld **mydemoserver**. Selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

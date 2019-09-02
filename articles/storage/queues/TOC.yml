@@ -1,9 +1,9 @@
-- name: Documentatie bij Azure Storage
-  href: /azure/storage/
+- name: Documentatie over Azure Queues Storage
+  href: /azure/storage/queues/
 - name: Overzicht
   expanded: true
   items:
-    - name: Wat zijn wachtrijen in Azure?
+    - name: Wat zijn Azure-wachtrijen?
       href: storage-queues-introduction.md
 - name: Snelstartgidsen
   items:

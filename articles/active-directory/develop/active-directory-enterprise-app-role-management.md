@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835535"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207189"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: De functie claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -59,7 +59,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
     ![Eigenschappen pagina](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Open [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) in een ander venster en voer de volgende stappen uit:
+6. Open [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) in een ander venster en voer de volgende stappen uit:
 
     a. Meld u aan bij de Graph Explorer-site met behulp van de referenties van de globale beheerder of cobeheerder voor uw Tenant.
 
@@ -186,7 +186,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
 Voer de volgende stappen uit om een bestaande rol bij te werken:
 
-1. Open [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
+1. Open [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 
 2. Meld u aan bij de Graph Explorer-site met behulp van de referenties van de globale beheerder of cobeheerder voor uw Tenant.
 
@@ -224,7 +224,7 @@ Voer de volgende stappen uit om een bestaande rol bij te werken:
 
 Als u een bestaande functie wilt verwijderen, voert u de volgende stappen uit:
 
-1. Open [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) in een ander venster.
+1. Open [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) in een ander venster.
 
 2. Meld u aan bij de Graph Explorer-site met behulp van de referenties van de globale beheerder of cobeheerder voor uw Tenant.
 

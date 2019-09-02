@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194260"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207967"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum 
 
@@ -151,7 +151,7 @@ Het partner centrum maakt gebruik van [Azure Active Directory](https://docs.micr
 
 ## <a name="manage-users"></a>Gebruikers beheren
 
-In het gedeelte **gebruikers** van het partner centrum (onder **account instellingen**) kunt u Azure AD gebruiken voor het beheren van de gebruikers, groepen en Azure AD-toepassingen die toegang hebben tot uw partner centrum-account. Houd er rekening mee dat u, om gebruikers te beheren, u moet zijn aangemeld met uw [werk account](./company-work-accounts.md) (de gekoppelde Azure AD-Tenant). Als u gebruikers binnen een ander werk account/Tenant wilt beheren, moet u zich afmelden en vervolgens weer aanmelden als een gebruiker met **beheerders** machtigingen voor dat werk account/Tenant. 
+In het gedeelte **gebruikers** van het partner centrum (onder **account instellingen**) kunt u Azure AD gebruiken voor het beheren van de gebruikers, groepen en Azure AD-toepassingen die toegang hebben tot uw partner centrum-account. U moet zijn aangemeld met uw [werk account](./company-work-accounts.md) (de gekoppelde Azure AD-Tenant) om gebruikers te kunnen beheren. Als u gebruikers binnen een ander werk account/Tenant wilt beheren, moet u zich afmelden en vervolgens weer aanmelden als een gebruiker met **beheerders** machtigingen voor dat werk account/Tenant. 
 
 Zodra u bent aangemeld met uw werk account (Azure AD-Tenant), kunt u het volgende doen:
 - [Gebruikers toevoegen of verwijderen](#add-or-remove-users)
@@ -300,20 +300,19 @@ Als uw Azure AD-toepassing gegevens in Microsoft Azure AD leest en schrijft, is 
 4.  Als u meer sleutels wilt maken, selecteert u **nog een sleutel toevoegen**.
 
 
-### <a name="define-user-roles-and-permissions"></a>Gebruikers rollen en-machtigingen definiëren
+## <a name="define-user-roles-and-permissions"></a>Gebruikers rollen en-machtigingen definiëren
 
-De gebruikers van uw bedrijf kunnen de volgende rollen en machtigingen toewijzen voor het commerciële Marketplace-programma in het partner centrum. 
+De gebruikers van uw bedrijf kunnen de volgende rollen en machtigingen toewijzen aan het programma voor commerciële Marketplace in het partner centrum:
 
-|**Rol**|**Machtigingen**|
-|----------------------------------|---------------------------------|
-|Manager|-Heeft toegang tot alle Microsoft-account functies behalve de instellingen voor belasting en betaling|
-|      |-Kan gebruikers, rollen en werk accounts (tenants) beheren|
-|Ontwikkelaar|-Kan aanbiedingen beheren en publiceren|
-|      |-Kan sommige uitgevers rapporten weer geven|
-|Globale beheerder|-Niet relevant voor commerciële Marketplace|
-|Zakelijke Inzender|-Niet relevant voor commerciële Marketplace|
-|Financiële bijdrager|-Niet relevant voor commerciële Marketplace|
-|Verkoper|-Niet relevant voor commerciële Marketplace|
+- **Manager**
+  - Heeft toegang tot alle Microsoft-account functies behalve de instellingen voor belasting en betaling
+  - Kan gebruikers, rollen en werk accounts (tenants) beheren
+- **Developer**
+  - Kan aanbiedingen beheren en publiceren
+  - Kan sommige uitgevers rapporten weer geven
+
+> [!NOTE]
+> De rol van globale beheerder, Inzender, financiële bijdrager en Marketer wordt niet gebruikt in het commerciële Marketplace-programma en heeft geen bijbehorende machtigingen.
 
 Zie gebruikers rollen toewijzen voor meer informatie over het beheren van rollen en machtigingen in andere gebieden van partner Center, zoals Azure Active Directory (AD), Cloud Solution Provider (CSP), de leverancier van het configuratie scherm (CPV), gast gebruikers of Microsoft Partner Network (MPN). [ en machtigingen in het partner centrum](https://docs.microsoft.com/partner-center/permissions-overview).
 

@@ -1,45 +1,45 @@
 ---
-title: Index blobs met meerdere documenten van de index van Azure Blob-indexering voor zoeken in volledige tekst - Azure Search zoeken
-description: Verken Azure-blobs voor tekstinhoud met behulp van de indexeerfunctie Azure Search Blob. Elke blob kan een of meer Azure Search-index documenten bevatten.
+title: Index-blobs die meerdere zoek index documenten bevatten van Azure Blob-indexer voor zoeken in volledige tekst-Azure Search
+description: Verken Azure-blobs voor tekst inhoud met behulp van de indexer van Azure Search blob. Elke Blob kan een of meer Azure Search index documenten bevatten.
 ms.date: 05/02/2019
 author: arv100kri
-manager: briansmi
+manager: nitinme
 ms.author: arjagann
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
-ms.openlocfilehash: 628ced069c9d32c6e874c2e36a1e3b752c476003
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c2a17d006f65854a89b9fac1818fcec420c07dc
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024647"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182303"
 ---
-# <a name="indexing-blobs-producing-multiple-search-documents"></a>Indexeren van blobs produceren van documenten met meerdere zoeken
-Standaard wordt een blob-indexeerfunctie de inhoud van een blob behandelen als een document met één zoekopdracht doorzoeken. Bepaalde **parsingMode** waarden ondersteuning van scenario's waarbij een afzonderlijke blob in meerdere documenten met zoeken resulteren kan. De verschillende typen **parsingMode** waarmee een indexeerfunctie om op te halen van meer dan één zoekopdracht documenten van een blob zijn:
+# <a name="indexing-blobs-producing-multiple-search-documents"></a>Indexering van blobs die meerdere zoek documenten genereren
+Een BLOB-Indexeer functie behandelt standaard de inhoud van een BLOB als één Zoek document. Bepaalde **parsingMode** -waarden ondersteunen scenario's waarbij een afzonderlijke Blob kan leiden tot meerdere zoek documenten. De verschillende soorten **parsingMode** waarmee een Indexeer functie meer dan één Zoek document uit een BLOB kan extra heren:
 + `delimitedText`
 + `jsonArray`
 + `jsonLines`
 
-## <a name="one-to-many-document-key"></a>Een-op-veel-documentsleutel
-Elk document dat weergegeven in een Azure Search-index wordt wordt uniek geïdentificeerd door een documentsleutel. 
+## <a name="one-to-many-document-key"></a>Een-op-veel-document sleutel
+Elk document dat in een Azure Search index wordt weer gegeven, wordt uniek geïdentificeerd door een document sleutel. 
 
-Wanneer er geen parseren modus is opgegeven en er is geen expliciete toewijzing voor een veld in de Azure Search-index met de sleutel automatisch [toegewezen](search-indexer-field-mappings.md) de `metadata_storage_path` eigenschap als de sleutel. Deze toewijzing zorgt ervoor dat elke blob wordt weergegeven als een document afzonderlijke zoeken.
+Als er geen parserings modus is opgegeven, en als er geen expliciete toewijzing is voor het sleutel veld in de [](search-indexer-field-mappings.md) index Azure Search `metadata_storage_path` wijst de eigenschap automatisch toe als de sleutel. Deze toewijzing zorgt ervoor dat elke BLOB wordt weer gegeven als een afzonderlijk Zoek document.
 
-Wanneer u een van de hierboven vermelde parseermodi, wordt een blob wordt toegewezen aan 'veel' search-documenten, waardoor de documentsleutel van een op basis van de metagegevens van de blob is niet geschikt. Azure Search is om te strijden tegen deze beperking, die geschikt is voor het genereren van een 'een-op-veel'-documentsleutel voor elke afzonderlijke entiteit opgehaald uit een blob. Deze eigenschap is met de naam `AzureSearch_DocumentKey` en wordt toegevoegd aan elke afzonderlijke entiteit opgehaald uit de blob. De waarde van deze eigenschap kan worden gegarandeerd uniek zijn voor elke afzonderlijke entiteit _voor blobs_ en de entiteiten worden weergegeven als afzonderlijke zoekopdracht documenten.
+Wanneer u een van de hierboven genoemde parserings modi gebruikt, wordt één BLOB toegewezen aan veel Zoek documenten, waardoor een document sleutel alleen op basis van BLOB-meta gegevens ongeschikt wordt gemaakt. Om deze beperking te overwinnen, kan Azure Search een ' één-op-veel ' document sleutel genereren voor elke afzonderlijke entiteit die uit een blob is geëxtraheerd. Deze eigenschap krijgt de `AzureSearch_DocumentKey` naam en wordt toegevoegd aan elke afzonderlijke entiteit die is geëxtraheerd uit de blob. De waarde van deze eigenschap is gegarandeerd uniek voor elke afzonderlijke entiteit _in blobs_ en de entiteiten worden weer gegeven als afzonderlijke Zoek documenten.
 
-Standaard, als er geen expliciete veldtoewijzingen voor het veld sleutelindex zijn opgegeven, de `AzureSearch_DocumentKey` is toegewezen, met behulp van de `base64Encode` veldtoewijzing functie.
+Standaard, wanneer er geen expliciete veld toewijzingen voor het sleutel index veld worden opgegeven, wordt `AzureSearch_DocumentKey` de toewijzing hieraan toegewezen met behulp `base64Encode` van de functie voor veld toewijzing.
 
 ## <a name="example"></a>Voorbeeld
-Wordt ervan uitgegaan dat u hebt een definitie van de index met de volgende velden:
+Stel dat u een index definitie hebt met de volgende velden:
 + `id`
 + `temperature`
 + `pressure`
 + `timestamp`
 
-En uw blob-container blobs met de volgende structuur heeft:
+En uw BLOB-container heeft blobs met de volgende structuur:
 
 _Blob1.json_
 
@@ -51,7 +51,7 @@ _Blob2.json_
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
 
-Wanneer u een indexeerfunctie maken en stel de **parsingMode** naar `jsonLines` - zonder op te geven een expliciete veld toewijzingen voor het sleutelveld, de volgende toewijzing wordt impliciet worden toegepast.
+Wanneer u een Indexeer functie maakt en de **parsingMode** instelt op `jsonLines` -zonder expliciete veld toewijzingen voor het sleutel veld op te geven, wordt de volgende toewijzing impliciet toegepast
     
     {
         "sourceFieldName" : "AzureSearch_DocumentKey",
@@ -59,18 +59,18 @@ Wanneer u een indexeerfunctie maken en stel de **parsingMode** naar `jsonLines` 
         "mappingFunction": { "name" : "base64Encode" }
     }
 
-Deze configuratie leidt tot de Azure Search-index met de volgende informatie (base64-gecodeerde id verkort voor beknoptheid)
+Deze installatie heeft tot gevolg dat de Azure Search index met de volgende informatie (met base64 versleutelde id verkort voor de boog)
 
 | id | temperatuur | pressure | timestamp |
 |----|-------------|----------|-----------|
-| aHR0... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
-| aHR0... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
-| aHR0... YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
-| aHR0... YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
+| aHR0 ... YjEuanNvbjsx | 100 | 100 | 2019-02-13T00:00:00Z |
+| aHR0 ... YjEuanNvbjsy | 33 | 30 | 2019-02-14T00:00:00Z |
+| aHR0 ... YjIuanNvbjsx | 1 | 1 | 2018-01-12T00:00:00Z |
+| aHR0 ... YjIuanNvbjsy | 120 | 3 | 2013-05-11T00:00:00Z |
 
-## <a name="custom-field-mapping-for-index-key-field"></a>Aangepast veldtoewijzing voor index sleutelveld
+## <a name="custom-field-mapping-for-index-key-field"></a>Aangepaste veld toewijzing voor index sleutel veld
 
-Ervan uitgaande dat de definitie van de dezelfde index als het vorige voorbeeld, dat u dat uw blob-container blobs met de volgende structuur heeft:
+Uitgaande van dezelfde index definitie als in het vorige voor beeld, zeggen uw BLOB-container blobs met de volgende structuur:
 
 _Blob1.json_
 
@@ -84,26 +84,26 @@ _Blob2.json_
     1, 1, 1,"2018-01-12T00:00:00Z" 
     2, 120, 3,"2013-05-11T00:00:00Z" 
 
-Bij het maken van een indexeerfunctie met `delimitedText` **parsingMode**, deze mogelijk ook natuurlijke voor het instellen van een veldtoewijzing functie voor het sleutelveld als volgt:
+Wanneer u een Indexeer functie met `delimitedText` **parsingMode**maakt, kan het natuurlijk handig zijn om een veld toewijzings functie als volgt in te stellen op het sleutel veld:
 
     {
         "sourceFieldName" : "recordid",
         "targetFieldName": "id"
     }
 
-Deze toewijzing wordt echter _niet_ leiden tot 4 documenten die worden weergegeven in de index, omdat de `recordid` veld is niet uniek _voor blobs_. Daarom raden we u om het gebruik van de impliciete veldtoewijzing toegepast van de `AzureSearch_DocumentKey` eigenschap aan het veld sleutelindex voor parseermodi "een-op-veel".
+Deze toewijzing resulteert echter _niet_ in vier documenten die in de index worden weer gegeven, omdat het `recordid` veld niet uniek isin blobs. Daarom raden wij u aan het gebruik van de impliciete veld toewijzing van de `AzureSearch_DocumentKey` eigenschap toe te passen op het sleutel index veld voor een-op-veel-parserings modus.
 
-Als u instellen van een expliciete veldtoewijzing wilt, zorg ervoor dat de _sourceField_ is niet hetzelfde als voor elke afzonderlijke entiteit **in alle blobs**.
+Als u een expliciete veld toewijzing wilt instellen, moet u ervoor zorgen dat de _sourceField_ uniek is voor elke afzonderlijke entiteit **in alle blobs**.
 
 > [!NOTE]
-> De benadering die wordt gebruikt door `AzureSearch_DocumentKey` om te garanderen uniekheid per uitgepakte entiteit kan worden gewijzigd en daarom is niet verstandig op de waarde voor de behoeften van uw toepassing.
+> De benadering die wordt `AzureSearch_DocumentKey` gebruikt door het waarborgen van uniekheid per geëxtraheerde entiteit is onderhevig aan wijzigingen en daarom moet u niet vertrouwen op de waarde voor de behoeften van uw toepassing.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Indexeerfuncties in Azure Search](search-indexer-overview.md)
-+ [Azure Blob Storage met Azure Search indexeren](search-howto-index-json-blobs.md)
-+ [Indexeren van CSV-blobs met de indexeerfunctie voor Azure Search blob](search-howto-index-csv-blobs.md)
-+ [Indexeren van JSON-blobs met de indexeerfunctie voor Azure Search blob](search-howto-index-json-blobs.md)
++ [Indexeer functies in Azure Search](search-indexer-overview.md)
++ [Azure Blob Storage indexeren met Azure Search](search-howto-index-json-blobs.md)
++ [Indexeren van CSV-blobs met Azure Search BLOB-Indexeer functie](search-howto-index-csv-blobs.md)
++ [JSON-blobs indexeren met Azure Search BLOB-Indexer](search-howto-index-json-blobs.md)
 
 ## <a name="NextSteps"></a>Volgende stappen
-* Zie voor meer informatie over Azure Search, de [pagina zoekservice](https://azure.microsoft.com/services/search/).
+* Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Search.

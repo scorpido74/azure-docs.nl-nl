@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 07/27/2019
-ms.openlocfilehash: c6fd20a2e1766a8bc9abfc92c6fc11d10dbe1bf2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/23/2019
+ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516079"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208395"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>In Azure Logic Apps vindt u een overzicht van functies voor de taal van de werk stroom definitie in Microsoft Flow
 
@@ -23,7 +23,7 @@ Voor werk stroom definities in [Azure Logic apps](../logic-apps/logic-apps-overv
 > [!NOTE]
 > Deze referentie pagina is van toepassing op zowel Azure Logic Apps als Microsoft Flow, maar wordt weer gegeven in de Azure Logic Apps documentatie. Hoewel deze pagina specifiek verwijst naar Logic apps, werken deze functies voor zowel stromen als logische apps. Zie [expressies in voor waarden gebruiken](https://docs.microsoft.com/flow/use-expressions-in-conditions)voor meer informatie over functies en expressies in Microsoft flow.
 
-U kunt bijvoorbeeld waarden berekenen met behulp van wiskundige functies, zoals de [functie add ()](../logic-apps/workflow-definition-language-functions-reference.md#add), wanneer u de som van gehele getallen of zwevende tekens wilt gebruiken. Hier volgen enkele andere voorbeeld taken die u met functies kunt uitvoeren:
+U kunt bijvoorbeeld waarden berekenen met behulp van wiskundige functies, zoals de [functie add ()](../logic-apps/workflow-definition-language-functions-reference.md#add), wanneer u de som van gehele getallen of zwevende tekens wilt gebruiken. Hier vindt u andere voorbeeld taken die u met functies kunt uitvoeren:
 
 | Taak | Syntaxis van functie | Resultaat |
 | ---- | --------------- | ------ |
@@ -252,6 +252,7 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | De hoofd tekst van een specifiek deel in de uitvoer van een actie met meerdere delen retour neren. |
 | [uitvoer](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | De uitvoer van een actie tijdens runtime retour neren. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Retourneert de waarde voor een para meter die wordt beschreven in uw werk stroom definitie. |
+| [Daardoor](../logic-apps/workflow-definition-language-functions-reference.md#result) | De invoer en uitvoer retour neren van alle acties binnen de opgegeven actie in het bereik, zoals `For_each`, `Until`en `Scope`. |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | De uitvoer van een trigger retour neren tijdens runtime of vanuit andere JSON-naam-en-waardeparen. Zie ook [triggerOutputs](#triggerOutputs) en [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Retour neer de uitvoer `body` van een trigger tijdens runtime. Zie [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Een enkele waarde Retour neren die overeenkomt met een sleutel naam in trigger uitvoer van *formulier gegevens* of *formulier codering* . |
@@ -638,7 +639,7 @@ En retourneert dit resultaat:`"2018-03-15T00:15:00.0000000Z"`
 
 ### <a name="addproperty"></a>addProperty
 
-Voeg een eigenschap en bijbehorende waarde, of naam/waarde-paar, toe aan een JSON-object en retour neer het bijgewerkte object. Als het object al bestaat tijdens runtime, genereert de functie een fout.
+Voeg een eigenschap en bijbehorende waarde, of naam/waarde-paar, toe aan een JSON-object en retour neer het bijgewerkte object. Als de eigenschap al bestaat tijdens runtime, mislukt de functie en wordt er een fout gegenereerd.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -656,13 +657,81 @@ addProperty(<object>, '<property>', <value>)
 | <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object met de opgegeven eigenschap |
 ||||
 
-*Voorbeeld*
-
-In dit voor beeld `accountNumber` wordt de eigenschap `customerProfile` toegevoegd aan het object, dat wordt geconverteerd naar JSON met de functie [JSON ()](#json) .
-De functie wijst een waarde toe die wordt gegenereerd door de functie [GUID ()](#guid) en retourneert het bijgewerkte object:
+Gebruik de volgende syntaxis om een onderliggende eigenschap toe te voegen aan een bestaande eigenschap:
 
 ```
-addProperty(json('customerProfile'), 'accountNumber', guid())
+addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+```
+
+| Parameter | Vereist | Type | Description |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Ja | Object | Het JSON-object waaraan u een eigenschap wilt toevoegen |
+| <*Parent-eigenschap*> | Ja | Tekenreeks | De naam van de bovenliggende eigenschap waaraan u de onderliggende eigenschap wilt toevoegen |
+| <*Child-eigenschap*> | Ja | Tekenreeks | De naam van de onderliggende eigenschap die moet worden toegevoegd |
+| <*Value*> | Ja | Any | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
+|||||
+
+| Retourwaarde | type | Description |
+| ------------ | ---- | ----------- |
+| <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object waarvan u de eigenschap hebt ingesteld |
+||||
+
+*Voorbeeld 1*
+
+In dit voor beeld `middleName` wordt de eigenschap toegevoegd aan een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. Het object bevat al de `firstName` eigenschappen `surName` en en. De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
+
+```
+addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
+```
+
+Hier is het huidige JSON-object:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Hier is het bijgewerkte JSON-object:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+*Voorbeeld 2*
+
+In dit voor beeld `middleName` wordt de eigenschap Child toegevoegd `customerName` aan de bestaande eigenschap in een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de nieuwe eigenschap en retourneert het bijgewerkte object:
+
+```
+addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+```
+
+Hier is het huidige JSON-object:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+Hier is het bijgewerkte JSON-object:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
 ```
 
 <a name="addSeconds"></a>
@@ -769,7 +838,7 @@ and(<expression1>, <expression2>, ...)
 
 | Retourwaarde | type | Description |
 | ------------ | -----| ----------- |
-| waar of onwaar | Boolean | Retourneert waar als alle expressies waar zijn. Retourneert onwaar wanneer ten minste één expressie onwaar is. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als alle expressies waar zijn. Retourneert onwaar wanneer ten minste één expressie onwaar is. |
 ||||
 
 *Voorbeeld 1*
@@ -1025,7 +1094,7 @@ bool(<value>)
 
 | Retourwaarde | type | Description |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Boolean | De Booleaanse versie voor de opgegeven waarde |
+| waar of onwaar | Boolean-waarde | De Booleaanse versie voor de opgegeven waarde |
 ||||
 
 *Voorbeeld*
@@ -1136,7 +1205,7 @@ Deze functie werkt met name voor deze typen verzamelingen:
 
 | Retourwaarde | type | Description |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Boolean | Retourneert waar wanneer het item is gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
+| waar of onwaar | Boolean-waarde | Retourneert waar wanneer het item is gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
 ||||
 
 *Voorbeeld 1*
@@ -1720,7 +1789,7 @@ endsWith('<text>', '<searchText>')
 
 | Retourwaarde | type | Description |
 | ------------ | ---- | ----------- |
-| waar of onwaar  | Boolean | Retourneert waar als de laatste subtekenreeks wordt gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
+| waar of onwaar  | Boolean-waarde | Retourneert waar als de laatste subtekenreeks wordt gevonden. Retourneert onwaar wanneer deze niet is gevonden. |
 ||||
 
 *Voorbeeld 1*
@@ -2149,7 +2218,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parameter | Vereist | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| <*expressie*> | Ja | Boolean | De expressie die moet worden gecontroleerd |
+| <*expressie*> | Ja | Boolean-waarde | De expressie die moet worden gecontroleerd |
 | <*valueIfTrue*> | Ja | Any | De waarde die moet worden geretourneerd wanneer de expressie waar is |
 | <*valueIfFalse*> | Ja | Any | De waarde die moet worden geretourneerd wanneer de expressie onwaar is |
 |||||
@@ -2625,7 +2694,7 @@ less('<value>', '<compareTo>')
 
 | Retourwaarde | type | Description |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Boolean | Retourneert waar als de eerste waarde lager is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of groter is dan de tweede waarde. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als de eerste waarde lager is dan de tweede waarde. Retourneert onwaar als de eerste waarde gelijk is aan of groter is dan de tweede waarde. |
 ||||
 
 *Voorbeeld*
@@ -2662,7 +2731,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Retourwaarde | type | Description |
 | ------------ | ---- | ----------- |
-| waar of onwaar  | Boolean | Retourneert waar als de eerste waarde kleiner is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde groter is dan de tweede waarde. |
+| waar of onwaar  | Boolean-waarde | Retourneert waar als de eerste waarde kleiner is dan of gelijk is aan de tweede waarde. Retourneert onwaar als de eerste waarde groter is dan de tweede waarde. |
 ||||
 
 *Voorbeeld*
@@ -2868,12 +2937,12 @@ not(<expression>)
 
 | Parameter | Vereist | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| <*expressie*> | Ja | Boolean | De expressie die moet worden gecontroleerd |
+| <*expressie*> | Ja | Boolean-waarde | De expressie die moet worden gecontroleerd |
 |||||
 
 | Retourwaarde | type | Description |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Boolean | Retourneert waar als de expressie onwaar is. Retourneert onwaar als de expressie waar is. |
+| waar of onwaar | Boolean-waarde | Retourneert waar als de expressie onwaar is. Retourneert onwaar als de expressie waar is. |
 ||||
 
 *Voorbeeld 1*
@@ -2917,7 +2986,7 @@ or(<expression1>, <expression2>, ...)
 
 | Parameter | Vereist | Type | Description |
 | --------- | -------- | ---- | ----------- |
-| <*expressie1*>, <*Expressie2*>,... | Ja | Boolean | De te controleren expressies |
+| <*expressie1*>, <*Expressie2*>,... | Ja | Boolean-waarde | De te controleren expressies |
 |||||
 
 | Retourwaarde | type | Description |
@@ -3152,7 +3221,7 @@ En retourneert dit resultaat:`"the new string"`
 
 ### <a name="removeproperty"></a>removeProperty
 
-Een eigenschap van een object verwijderen en het bijgewerkte object retour neren.
+Een eigenschap van een object verwijderen en het bijgewerkte object retour neren. Als de eigenschap die u probeert te verwijderen, niet bestaat, retourneert de functie het oorspronkelijke object.
 
 ```
 removeProperty(<object>, '<property>')
@@ -3169,20 +3238,208 @@ removeProperty(<object>, '<property>')
 | <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object zonder de opgegeven eigenschap |
 ||||
 
-*Voorbeeld*
-
-In dit voor beeld `"accountLocation"` wordt de eigenschap `"customerProfile"` verwijderd van een object, dat wordt geconverteerd naar JSON met de functie [JSON ()](#json) en het bijgewerkte object retourneert:
+Als u een onderliggende eigenschap van een bestaande eigenschap wilt verwijderen, gebruikt u de volgende syntaxis:
 
 ```
-removeProperty(json('customerProfile'), 'accountLocation')
+removeProperty(<object>['<parent-property>'], '<child-property>')
+```
+
+| Parameter | Vereist | Type | Description |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Ja | Object | Het JSON-object waarvan u de eigenschap wilt verwijderen |
+| <*Parent-eigenschap*> | Ja | Tekenreeks | De naam van de bovenliggende eigenschap met de onderliggende eigenschap die u wilt verwijderen |
+| <*Child-eigenschap*> | Ja | Tekenreeks | De naam van de onderliggende eigenschap die u wilt verwijderen |
+|||||
+
+| Retourwaarde | type | Description |
+| ------------ | ---- | ----------- |
+| <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object waarvan u de onderliggende eigenschap hebt verwijderd |
+||||
+
+*Voorbeeld 1*
+
+In dit voor beeld `middleName` wordt de eigenschap van een JSON-object, dat wordt geconverteerd van een teken reeks naar JSON, verwijderd met behulp van de functie [JSON ()](#json) en wordt het bijgewerkte object geretourneerd:
+
+```
+removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
+```
+
+Hier is het huidige JSON-object:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+Hier is het bijgewerkte JSON-object:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+*Voorbeeld 2*
+
+In dit voor beeld `middleName` wordt de onderliggende eigenschap `customerName` van een bovenliggende eigenschap in een JSON-object verwijderd, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie, en het bijgewerkte object wordt geretourneerd:
+
+```
+removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
+```
+
+Hier is het huidige JSON-object:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
+```
+
+Hier is het bijgewerkte JSON-object:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+<a name="result"></a>
+
+### <a name="result"></a>Resultaat
+
+De invoer en uitvoer retour neren van alle acties die binnen de opgegeven actie met een bereik vallen, zoals een `For_each`, `Until`of `Scope` actie. Deze functie is handig om de resultaten van een mislukte actie te retour neren, zodat u uitzonde ringen kunt vaststellen en verwerken. Zie [context en resultaten ophalen voor fouten](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)voor meer informatie.
+
+```
+result('<scopedActionName>')
+```
+
+| Parameter | Vereist | Type | Description |
+| --------- | -------- | ---- | ----------- |
+| <*scopedActionName*> | Ja | Tekenreeks | De naam van de bereik actie waaruit de invoer en uitvoer van alle binnenste acties moeten worden geretourneerd |
+||||
+
+| Retourwaarde | type | Description |
+| ------------ | ---- | ----------- |
+| <*Matrix-object*> | Matrix object | Een matrix die matrices van invoer en uitvoer bevat van elke actie die in de opgegeven actie met een bereik wordt weer gegeven |
+||||
+
+*Voorbeeld*
+
+In dit voor beeld worden de invoer en uitvoer van elke herhaling van een http-actie binnen een `For_each` lus geretourneerd met behulp van de `result()` functie `Compose` in de actie:
+
+```json
+{
+   "actions": {
+      "Compose": {
+         "inputs": "@result('For_each')",
+         "runAfter": {
+            "For_each": [
+               "Succeeded"
+            ]
+         },
+         "type": "compose"
+      },
+      "For_each": {
+         "actions": {
+            "HTTP": {
+               "inputs": {
+                  "method": "GET",
+                  "uri": "https://httpstat.us/200"
+               },
+               "runAfter": {},
+               "type": "Http"
+            }
+         },
+         "foreach": "@triggerBody()",
+         "runAfter": {},
+         "type": "Foreach"
+      }
+   }
+}
+```
+
+Hier ziet u hoe de geretourneerde matrix eruit kan zien waar `outputs` het buitenste object de invoer en uitvoer bevat van elke herhaling van de acties `For_each` binnen de actie.
+
+```json
+[
+   {
+      "name": "HTTP",
+      "outputs": [
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+               "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "6bad3015-0444-4ccd-a971-cbb0c99a7.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         },
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+            "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "9987e889-981b-41c5-aa27-f3e0e59bf69.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         }
+      ]
+   }
+]
 ```
 
 <a name="setProperty"></a>
 
 ### <a name="setproperty"></a>setProperty
 
-Stel de waarde voor de eigenschap van een object in en retour neer het bijgewerkte object.
-U kunt deze functie of de functie [addProperty ()](#addProperty) gebruiken om een nieuwe eigenschap toe te voegen.
+Stel de waarde voor de eigenschap van het JSON-object in en retour neer het bijgewerkte object. Als de eigenschap die u probeert in te stellen niet bestaat, wordt de eigenschap toegevoegd aan het object. Als u een nieuwe eigenschap wilt toevoegen, gebruikt u de functie [addProperty ()](#addProperty) .
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3195,18 +3452,79 @@ setProperty(<object>, '<property>', <value>)
 | <*Value*> | Ja | Any | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
 |||||
 
+Als u de onderliggende eigenschap in een onderliggend object wilt instellen `setProperty()` , gebruikt u in plaats daarvan een genest aanroep. Anders retourneert de functie alleen het onderliggende object als uitvoer.
+
+```
+setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
+```
+
+| Parameter | Vereist | Type | Description |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Ja | Object | Het JSON-object waarvan u de eigenschap wilt instellen |
+| <*Parent-eigenschap*> | Ja | Tekenreeks | De naam van de bovenliggende eigenschap met de onderliggende eigenschap die u wilt instellen |
+| <*Child-eigenschap*> | Ja | Tekenreeks | De naam van de onderliggende eigenschap die moet worden ingesteld |
+| <*Value*> | Ja | Any | De waarde die moet worden ingesteld voor de opgegeven eigenschap |
+|||||
+
 | Retourwaarde | type | Description |
 | ------------ | ---- | ----------- |
 | <*bijgewerkt-object*> | Object | Het bijgewerkte JSON-object waarvan u de eigenschap hebt ingesteld |
 ||||
 
-*Voorbeeld*
+*Voorbeeld 1*
 
-In dit voor beeld `"accountNumber"` wordt de eigenschap `"customerProfile"` van een object ingesteld, dat wordt geconverteerd naar JSON met de functie [JSON ()](#json) .
-De functie wijst een waarde toe die is gegenereerd door de functie [GUID ()](#guid) en retourneert het bijgewerkte JSON-object:
+In dit voor beeld `surName` wordt de eigenschap in een JSON-object ingesteld, dat wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()](#json) -functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
 
 ```
-setProperty(json('customerProfile'), 'accountNumber', guid())
+setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
+```
+
+Hier is het huidige JSON-object:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Hier is het bijgewerkte JSON-object:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Hartnett"
+}
+```
+
+*Voorbeeld 2*
+
+In dit voor beeld `surName` wordt de onderliggende eigenschap `customerName` voor de bovenliggende eigenschap in een JSON-object ingesteld, die wordt geconverteerd van een teken reeks naar JSON met behulp van de [JSON ()-](#json) functie. De functie wijst de opgegeven waarde toe aan de eigenschap en retourneert het bijgewerkte object:
+
+```
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
+```
+
+Hier is het huidige JSON-object:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Owen"
+   }
+}
+```
+
+Hier is het bijgewerkte JSON-object:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Hartnett"
+   }
+}
 ```
 
 <a name="skip"></a>

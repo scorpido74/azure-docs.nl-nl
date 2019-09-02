@@ -145,17 +145,6 @@
         - name: Gegevenssets toevoegen & registreren
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: Voorbereiden met azureml.dataprep
-          items:
-            - name: Gegevens laden
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-load-data.md
-            - name: Gegevens transformeren
-              displayName: 'data, etl, dataprep, data prep'
-              href: how-to-transform-data.md
-            - name: Gegevens schrijven
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-write-data.md
     - name: Modellen trainen
       items:
         - name: Een trainingsomgeving instellen
@@ -347,6 +336,8 @@
               href: ../algorithm-module-reference/multiclass-neural-network.md
             - name: Beslissingsforest met meerdere klassen
               href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: Versterkte beslissingsstructuur met meerdere klassen
+              href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
             - name: Gemiddeld perceptron met twee klassen
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: Beslissingsforest met twee klassen

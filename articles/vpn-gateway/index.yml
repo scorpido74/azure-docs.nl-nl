@@ -1,65 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Azure VPN Gateway
+### YamlMime:Landing
+title: VPN-gatewaydocumentatie
+summary: Leer hoe u een Azure VPN-gateway maakt, configureert en beheert. Maak vanaf on-premises locaties versleutelde cross-premises verbindingen naar uw virtuele netwerk of maak versleutelde verbindingen tussen VNets.
 metadata:
-  document_id: null
-  title: 'Documentatie voor VPN Gateway - zelfstudies, API-verwijzingen | Microsoft Docs'
-  meta.description: 'Learn how to configure, create, and manage an Azure VPN gateway. Create encrypted cross-premises connections to your virtual network from on-premises locations, or create encrypted connections between VNets.'
+  title: VPN-gatewaydocumentatie
+  description: Leer hoe u een Azure VPN-gateway maakt, configureert en beheert.
   services: vpn-gateway
-  author: cherylmc
-  manager: jeconnoc
   ms.service: vpn-gateway
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/26/2018
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: 'Leer hoe u een Azure VPN-gateway maakt, configureert en beheert. Maak vanaf on-premises locaties versleutelde cross-premises verbindingen naar uw virtuele netwerk of maak versleutelde verbindingen tussen VNets.'
-sections:
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Leer hoe u Azure VPN-gateways maakt, configureert en beheert.'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/vpn-gateway/vpn-gateway-tutorial-create-gateway-powershell">Een VPN-gateway maken en beheren</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure-beheerder
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure-oplossingsarchitect
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Scriptvoorbeelden voor veelvoorkomende taken.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/vpn-gateway/powershell-samples">PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: '<p><a href="/powershell/module/az.network#vpn">PowerShell</a></p><p><a href="/cli/azure/network/vnet-gateway">Azure-CLI</a></p>'
-          - title: Talen
-            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/network-gateway/">Naslaginformatie over REST-API</a></p>
+  ms.date: 08/28/2019
+  ms.openlocfilehash: 82d3068d3457779ac66f2f5dde277db1ccd7d070
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70124876"
+landingContent:
+- title: Informatie over VPN-gateway
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is VPN Gateway?
+      url: vpn-gateway-about-vpngateways.md
+  - linkListType: concept
+    links:
+    - text: Punt-naar-site-verbindingen
+      url: point-to-site-about.md
+    - text: BGP
+      url: vpn-gateway-bgp-overview.md
+    - text: Zone-redundante gateways
+      url: about-zone-redundant-vnet-gateways.md
+    - text: Veelgestelde vragen VPN-gateways
+      url: vpn-gateway-vpn-faq.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een VPN-gateway maken
+      url: create-routebased-vpn-gateway-portal.md
+    - text: Een site-naar-site-verbinding maken
+      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+    - text: Een punt-naar-site-verbinding maken
+      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Een VPN-gateway maken en beheren
+      url: vpn-gateway-tutorial-create-gateway-powershell.md
+    - text: Een site-naar-site-verbinding maken en beheren
+      url: vpn-gateway-tutorial-vpnconnection-powershell.md
+- title: VPN-apparaten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: VPN-apparaten voor site-naar-site-verbindingen
+      url: vpn-gateway-about-vpn-devices.md
+  - linkListType: how-to-guide
+    links:
+    - text: VPN-apparaten configureren
+      url: vpn-gateway-3rdparty-device-config-overview.md
+    - text: Configuratiescripts voor apparaten downloaden
+      url: vpn-gateway-download-vpndevicescript.md
+- title: Beheren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Configuratie-instellingen voor gateway
+      url: vpn-gateway-about-vpn-gateway-settings.md
+    - text: Point-to-site-routering
+      url: vpn-gateway-about-point-to-site-routing.md
+    - text: Gateway-SKU's
+      url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
+  - linkListType: how-to-guide
+    links:
+    - text: Een VPN-gateway verifiëren
+      url: vpn-gateway-verify-connection-resource-manager.md
+    - text: Een VPN-gateway verwijderen
+      url: vpn-gateway-delete-vnet-gateway-portal.md
+    - text: Een lokale netwerkgateway wijzigen
+      url: vpn-gateway-modify-local-network-gateway-portal.md
+- title: Beveiliging en bewaking
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Beveiligingskenmerken
+      url: vpn-gateway-security-attributes.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bewaking en waarschuwingen
+      url: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure-CLI
+      url: /cli/azure/network/vnet-gateway
+    - text: Azure PowerShell
+      url: /powershell/module/az.network#vpn
+    - text: REST
+      url: /rest/api/network-gateway

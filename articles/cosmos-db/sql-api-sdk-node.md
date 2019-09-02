@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 4292b2e83c55ce62db777d846206e5857bf81ca7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142581"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207955"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB node. js SDK voor SQL-API: Release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -414,7 +414,7 @@ Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevo
 Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
 
 > [!WARNING]
-> Alle versies **1. x** van de node SDK voor SQL API worden op **30 augustus 2020**ingetrokken.
+> Alle versies **1. x** van de node client SDK voor SQL API worden op **30 augustus 2020**ingetrokken. Dit is alleen van invloed op de client-side node SDK en heeft geen invloed op Server scripts (opgeslagen procedures, triggers en Udf's).
 > 
 >
 <br/>

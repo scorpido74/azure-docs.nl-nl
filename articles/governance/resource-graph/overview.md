@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900031"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207589"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Overzicht van de service Azure resource Graph
 
@@ -35,7 +35,7 @@ In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 Azure Resource Manager ondersteunt momenteel query's over basis resource velden, met name resource naam, ID, type, resource groep, abonnement en locatie. Resource Manager biedt ook voorzieningen voor het aanroepen van afzonderlijke resource providers voor gedetailleerde eigenschappen per resource per keer.
 
-Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Zoek voor een lijst met ondersteunde resource typen naar een **Ja** in de tabel [resources voor implementatie van volledige modus](../../azure-resource-manager/complete-mode-deletion.md) .
+Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Zoek voor een lijst met ondersteunde resource typen naar een **Ja** in de tabel [resources voor implementatie van volledige modus](../../azure-resource-manager/complete-mode-deletion.md) . Een alternatieve manier om ondersteunde resource typen te bekijken, is via de [schema browser van de Azure resource Graph Explorer](./first-query-portal.md#schema-browser).
 
 Met Azure resource Graph kunt u het volgende doen:
 
@@ -80,7 +80,13 @@ Zie de [richt lijnen voor beperkte aanvragen](./concepts/guidance-for-throttled-
 
 ## <a name="running-your-first-query"></a>Uw eerste query uitvoeren
 
-Resource grafiek ondersteunt Azure CLI, Azure PowerShell en Azure SDK voor .NET. De query is voor elke taal hetzelfde gestructureerd. Meer informatie over het inschakelen van Resource Graph in [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension) en [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
+Met Azure resource Graph Explorer, onderdeel van Azure Portal, kunt u resource Graph-query's rechtstreeks in Azure Portal uitvoeren. Maak de resultaten vast als dynamische grafieken om realtime dynamische informatie te bieden aan uw portal-werk stroom. Zie [First query with Azure resource Graph Explorer](first-query-portal.md)(Engelstalig) voor meer informatie.
+
+Resource grafiek ondersteunt Azure CLI, Azure PowerShell, Azure SDK voor .NET en meer. De query is voor elke taal hetzelfde gestructureerd. Meer informatie over het inschakelen van resource grafiek met:
+
+- [Azure Portal en resource grafiek Verkenner](first-query-portal.md) 
+- [Azure-CLI](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Volgende stappen
 

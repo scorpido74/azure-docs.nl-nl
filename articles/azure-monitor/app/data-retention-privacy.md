@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991181"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207287"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Verzameling, retentie en opslag van gegevens in Application Insights
 
@@ -100,7 +100,7 @@ Deze kan door u en uw team leden worden geëxporteerd en kunnen worden gekopieer
 Micro soft gebruikt de gegevens alleen om de service voor u te leveren.
 
 ## <a name="where-is-the-data-held"></a>Waar bevinden de gegevens zich?
-* In de Verenigde Staten, Europa en Zuidoost-Azië. U kunt de locatie selecteren wanneer u een nieuwe Application Insights resource maakt. 
+* U kunt de locatie selecteren wanneer u een nieuwe Application Insights resource maakt. Meer informatie over de beschik baarheid van Application Insights per regio [vindt u hier](https://azure.microsoft.com/global-infrastructure/services/?products=all).
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Betekent dit dat mijn app moet worden gehost in de VS, Europa of Zuidoost-Azië?
 * Nee. Uw toepassing kan overal worden uitgevoerd, hetzij in uw eigen on-premises hosts of in de Cloud.

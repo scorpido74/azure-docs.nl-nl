@@ -1,42 +1,63 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Azure Data Catalog
+### YamlMime:Landing
+title: Documentatie Azure Data Catalog
+summary: Meer informatie over hoe u een Data Catalog opzet, zodat uw organisatie gegevensbronnen vindt, begrijpt en gebruikt. Zelfstudies, REST-API-referentiemateriaal en andere documentatie laten zien hoe u uw gegevensopslagplaats kunt plannen en instellen, waar gegevensgebruikers beschikbare gegevensbronnen kunnen vinden en kennis kunnen opdoen die ter beschikking is gesteld door deskundigen.
 metadata:
-  title: 'Documentatie voor Azure Data Catalog - zelfstudies, API-verwijzing'
-  meta.description: 'Learn how to set up a data catalog where your organization can find, understand, and consume data sources. Tutorials, API reference, and other documentation.'
-  services: data-catalog
-  author: JasonWHowell
+  author: jasonwhowell
+  description: Meer informatie over het instellen van een gegevenscatalogus waar uw organisatie gegevensbronnen kan vinden, begrijpen en gebruiken. Zelfstudies, API-verwijzingen en andere documentatie.
   ms.author: jasonh
+  ms.date: 08/30/2019
   ms.service: data-catalog
   ms.topic: landing-page
-  ms.date: 07/01/2019
-abstract:
-  description: 'Meer informatie over hoe u de gegevenscatalogus kunt gebruiken om uw organisatie en team te helpen uw gegevensbronnen te vinden, begrijpen en gebruiken. Zelfstudies, REST-API-referentiemateriaal en andere documentatie laten zien hoe u uw gegevensopslagplaats kunt plannen en instellen, waar gegevensgebruikers beschikbare gegevensbronnen kunnen vinden en kennis kunnen opdoen die ter beschikking is gesteld door deskundigen.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Leer hoe u uw eerste Azure Data Catalog implementeert:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/data-catalog.svg
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Informatie over het registreren, zoeken, van aantekeningen voorzien, beheren en verwijderen van assets in Azure Data Catalog:'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="register-data-assets-tutorial">Gegevensassets registreren in Azure Data Catalog</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: <p><a href="/rest/api/datacatalog/">Naslaginformatie over REST-API</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">Naslaginformatie over zoeksyntaxis</a></p>
+  ms.openlocfilehash: eb60085cd76fa9d3857b5e284b2cdd03f35fcb13
+  ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/30/2019
+  ms.locfileid: "70172682"
+landingContent:
+- title: Over Azure Data Catalog
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Data Catalog?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Meer informatie over hoe u uw eerste Data Catalog implementeert
+      url: data-catalog-get-started.md
+  - linkListType: concept
+    links:
+    - text: Veelgestelde vragen
+      url: data-catalog-frequently-asked-questions.md
+- title: Gegevensassets registreren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Meer informatie over hoe u assets registreert, zoekt, annoteert, beheert en verwijdert
+      url: register-data-assets-tutorial.md
+  - linkListType: concept
+    links:
+    - text: Ondersteunde gegevensbronnen
+      url: data-catalog-dsr.md
+  - linkListType: how-to-guide
+    links:
+    - text: Gegevensbronnen registreren
+      url: data-catalog-how-to-register.md
+- title: Data Catalog REST API programmeren
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Een Data Catalog-app maken met REST
+      url: /rest/api/datacatalog/get-started-creating-a-data-catalog-app
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie over REST-API
+      url: /rest/api/datacatalog/
+  - linkListType: how-to-guide
+    links:
+    - text: Een Data Catalog-app maken
+      url: /rest/api/datacatalog/register-a-client-app
+  - linkListType: reference
+    links:
+    - text: Naslaginformatie over zoeksyntaxis
+      url: /rest/api/datacatalog/data-catalog-search-syntax-reference

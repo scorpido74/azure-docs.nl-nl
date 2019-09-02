@@ -1,48 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Active Directory-rapporten en -bewaking
+### YamlMime:Landing
+title: Documentatie over Azure Active Directory-rapporten en -bewaking
+summary: Meer informatie over hoe u rapporten in Azure AD gebruikt.
 metadata:
-  document_id: null
-  title: 'Documentatie voor Azure Active Directory-rapporten en -controle: zelfstudies, snelstarts, concepten | Microsoft Docs'
-  description: Meer informatie over hoe u oplossingen voor rapporten en controle van Azure Active Directory kunt configureren en testen
+  title: Documentatie over Azure Active Directory-rapporten en -bewaking
+  description: Meer informatie over hoe u rapporten en bewaking in Azure AD gebruikt.
   services: active-directory
-  ms.subservice: report-monitor
-  author: priyamohanram
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
-  ms.author: priyamo
-abstract:
-  description: 'Ontdek hoe u beveiligings- en controlerapporten voor uw omgeving kunt bekijken of houd ze gedurende een periode in de gaten voor inzicht in gebruikspatronen. Met Azure Active Directory-rapporten (Azure AD) krijgt u inzicht in de beveiliging en gebruikspatronen van uw omgeving. U kunt dan bijvoorbeeld de volgende vragen beantwoorden:<ul><li>Hoe worden de toepassingen of services gebruikt door de gebruikers?</li><li>Wat zijn de potentiële risico''s die invloed hebben op de status van de omgeving?</li><li>Hoe los ik problemen op die ertoe leiden dat gebruikers hun werk niet kunnen doen?</li>'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Meer informatie over hoe u activiteitenrapporten kunt downloaden en uw logboeken kunt doorsturen naar een Azure-opslagaccount
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">Een aanmeldrapport downloaden</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">Een controlerapport downloaden</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">Het Power BI-inhoudspakket voor rapporten installeren</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">Logboeken naar opslagaccount doorsturen</a>
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Meer informatie over hoe u toegang krijgt tot uw rapporten en activiteitenlogboeken streamt naar uw gewenste controlesysteem
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">Programmatisch toegang krijgen tot de API voor rapportage met behulp van certificaten</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">Activiteitenlogboeken streamen naar een Event Hub</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">Foutcodes voor aanmelding</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Schema voor auditlogboek van Azure AD in Azure Monitor</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Schema voor aanmeldlogboek van Azure AD in Azure Monitor</a>
+  author: MarkusVi
+  ms.author: markvi
+  ms.date: 08/29/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 2b29aaf88f0a7659fd3ceb58ddf3b762ee7646d3
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70162489"
+landingContent:
+- title: Over Azure Active Directory-rapporten en -bewaking
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is bewaking van Azure Active Directory?
+      url: overview-monitoring.md
+  - linkListType: concept
+    links:
+    - text: Auditlogboeken
+      url: concept-audit-logs.md
+    - text: Aanmeldingslogboeken
+      url: concept-sign-ins.md
+    - text: Logboeken met risicovolle aanmeldingen
+      url: concept-risky-sign-ins.md
+    - text: Logboeken met gebruikers die zijn gemarkeerd om risico
+      url: concept-user-at-risk.md
+    - text: Inrichtingslogboeken
+      url: concept-provisioning-logs.md
+- title: Rapporten gebruiken in Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Activiteitenrapporten vinden
+      url: howto-find-activity-reports.md
+    - text: Gebruikers herstellen voor wie wordt aangegeven dat ze risico lopen
+      url: howto-remediate-users-flagged-for-risk.md
+    - text: Azure AD-workbooks gebruiken
+      url: howto-use-azure-monitor-workbooks.md
+- title: Bewaking in Azure AD gebruiken
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Activiteitenlogboeken analyseren in Azure Monitor-logboeken
+      url: howto-analyze-activity-logs-log-analytics.md
+    - text: De logboekanalyseweergaven voor Azure AD installeren en gebruiken
+      url: howto-install-use-log-analytics-views.md

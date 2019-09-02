@@ -60,6 +60,8 @@
           href: access-cloudsimple-portal.md
         - name: Configuratie van de on-premises firewall
           href: on-premises-firewall-configuration.md
+        - name: Toegang tot vSphere-client
+          href: vcenter-access.md
         - name: Knooppunten beheren
           items:
             - name: Knooppunten inrichten
@@ -94,23 +96,19 @@
               href: public-ips.md
             - name: VPN-verbindingen instellen
               href: vpn-gateway.md
-            - name: Peerinformatie verkrijgen voor virtuele netwerkverbinding met CloudSimple
+            - name: Virtuele netwerkverbinding met CloudSimple
               href: virtual-network-connection.md
-            - name: Toegang tot escalatiebevoegdheden voor vSphere-client verkrijgen voor beheertaken
-              href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: CloudSimple-portalaccounts beheren
           items:
             - name: Accountsamenvatting weergeven
               href: account.md
             - name: De gebruikerslijst weergeven
               href: users.md
-            - name: Een virtuele netwerkverbinding naar de privécloud instellen
-              href: virtual-network-connection.md
-        - name: Virtuele VMware-machines instellen voor de privécloud
+        - name: Virtuele CloudSimple-machines instellen
           items:
-            - name: Een VM in Azure maken
+            - name: Een CloudSimple-VM maken in Azure
               href: azure-create-vm.md
-            - name: VM's in Azure beheren
+            - name: CloudSimple-VM's beheren in Azure
               href: azure-manage-vm.md
     - name: Handleidingen
       items:
@@ -126,12 +124,14 @@
               href: migration-layer-2-vpn.md
         - name: Privécloudnetwerken
           items:
-            - name: VPN-verbinding tussen de on-premises omgeving en de privécloud
+            - name: VPN-verbinding met privécloud
               href: set-up-vpn.md
             - name: On-premises netwerkverbinding met ExpressRoute
               href: on-premises-connection.md
             - name: Azure-netwerkverbinding met ExpressRoute
               href: azure-expressroute-connection.md
+            - name: DNS-naamomzettingen configureren
+              href: on-premises-dns-setup.md
         - name: VMware-platform
           items:
             - name: Informatie over het machtigingsmodel van de privécloud

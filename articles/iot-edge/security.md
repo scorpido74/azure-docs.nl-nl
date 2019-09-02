@@ -4,45 +4,47 @@ description: Meer informatie over de beveiliging, verificatie en autorisatie-nor
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/25/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8aadddbc9ae13a87f89db4d7e7189ea7aa8aeef5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37d5288389c7b602eb0d13a736e289010d7e0f80
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60612034"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208201"
 ---
 # <a name="security-standards-for-azure-iot-edge"></a>Beveiligingsstandaarden voor Azure IoT Edge
 
-Azure IoT Edge is ontworpen voor de risico-scenario's die inherent zijn bij het verplaatsen van uw gegevens en analyses naar de intelligente edge. De IoT Edge-beveiligingsstandaarden bieden flexibiliteit voor verschillende risicoprofielen en implementatiescenario's terwijl tegelijk de beveiliging die u kunt van alle Azure-services verwachten. 
+Azure IoT Edge worden de Risico's opgelost die inherent zijn bij het verplaatsen van uw gegevens en analyses naar de intelligente rand. Het IoT Edge Security Standards-saldo is flexibel voor verschillende implementatie scenario's met de beveiliging die u van alle Azure-Services verwacht. 
 
-Azure IoT Edge wordt uitgevoerd op verschillende hardware merken en modellen, ondersteunt verschillende besturingssystemen en van toepassing is op diverse implementatiescenario's. Beoordeling van het risico van een implementatiescenario, is afhankelijk van veel overwegingen, met inbegrip van eigendom van de oplossing, geografische implementatiegebied, vertrouwelijkheid van gegevens, privacy, verticaal en wettelijke vereisten van toepassing. In plaats van concrete oplossingen voor specifieke scenario's biedt, is IoT Edge een uitbreidbaar beveiliging op basis van goed gevestigd principes die zijn ontworpen voor schaalbaarheid. 
+IoT Edge worden uitgevoerd op verschillende mogelijkheden en modellen van hardware, ondersteunt verschillende besturings systemen en is van toepassing op verschillende implementatie scenario's. Het risico van een implementatie scenario is afhankelijk van factoren die eigendom zijn van de oplossing, geografie, gegevens gevoeligheid, privacy, toepassing verticaal en wettelijke vereisten. In plaats van concrete oplossingen voor specifieke scenario's te bieden, is IoT Edge een uitbreidbaar beveiligings raamwerk dat is gebaseerd op goed gegronde principes die zijn ontworpen voor schaal. 
  
-Dit artikel bevat een overzicht van het IoT Edge security-framework. Zie voor meer informatie, [beveiligen van de intelligente edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
+Dit artikel bevat een overzicht van het IoT Edge Security-Framework. Zie voor meer informatie, [beveiligen van de intelligente edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
 ## <a name="standards"></a>Standaarden
 
-Standaarden bevorderen gebruiksgemak controle en het gemak van implementatie, die beide hallmarks van beveiliging zijn. Een beveiligingsoplossing moet leent voor controle onder evaluatie vertrouwen te bouwen en mag niet een drempel voor implementatie. Het ontwerp van het framework voor het beveiligen van Azure IoT Edge is gebaseerd op beproefde en beproefde security protocollen voor kennis en hergebruik. 
+Standaarden bevorderen het gemak en het gemak van de implementatie, beide hallmarks van beveiliging. Een beveiligings oplossing zou zichzelf kunnen onderbouwen op basis van evaluatie om een vertrouwens relatie tot stand te brengen, en mag geen obstakel zijn voor de implementatie. Het ontwerp van het framework om Azure IoT Edge te beveiligen, is gebaseerd op tijdgeteste en door de industrie bewezen beveiligings protocollen voor vertrouwdheid en hergebruik. 
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
-Wanneer u een IoT-oplossing implementeert, moet u weten dat alleen vertrouwde actors, apparaten en -modules toegang tot uw oplossing hebben. Deze kennis biedt veilige verantwoordelijkheid van de deelnemers. Azure IoT Edge attains deze kennis door middel van verificatie. Verificatie op basis van certificaten is het primaire mechanisme voor verificatie voor de Azure IoT Edge-platform. Dit mechanisme is afgeleid van een set normen opgelegd Public Key Infrastructure (PKiX) door de Internet Engineering Task Force (IETF).     
+Wanneer u een IoT-oplossing implementeert, moet u weten dat alleen vertrouwde actors, apparaten en modules toegang hebben tot uw oplossing. Verificatie op basis van certificaten is het primaire mechanisme voor verificatie voor het Azure IoT Edge-platform. Dit mechanisme is afgeleid van een reeks standaarden die zijn gebaseerd op de open bare-sleutel infrastructuur (PKiX) door de IETF (Internet Engineering Task Force).     
 
-Alle apparaten, modules en actoren interactie met de Azure IoT Edge-apparaat, of fysiek of via een netwerkverbinding, moeten uniek certificaat-id's hebben. Echter niet elk scenario of het onderdeel kan leent voor verificatie op basis van certificaten. In deze scenario's biedt de uitbreidbaarheid van het security framework beveiligde alternatieven. 
+Alle apparaten, modules en actors die communiceren met het Azure IoT Edge apparaat, hetzij fysiek of via een netwerk verbinding, moeten unieke certificaat identiteiten hebben. Niet elk scenario of onderdeel kan zichzelf onderlenen aan verificatie op basis van certificaten, waardoor de uitbreid baarheid van het beveiligings raamwerk veilige alternatieven biedt. 
 
-## <a name="authorization"></a>Autorisatie
+Zie [Azure IOT Edge certificaat gebruik](iot-edge-certs.md)voor meer informatie.
 
-Het principe van minimale bevoegdheden zegt dat gebruikers en de onderdelen van een systeem moeten alleen toegang hebben tot de minimale set resources en gegevens die nodig zijn om uit te voeren hun rollen. Apparaten, modules en actoren moeten toegang tot alleen de resources en gegevens binnen het machtigingsbereik van hun, en alleen wanneer deze een toegestane. Sommige machtigingen kunnen worden geconfigureerd met voldoende machtigingen en anderen qua worden afgedwongen.  Bijvoorbeeld, een module mag via bevoegde configuratie opnieuw verbinding maken met Azure IoT Hub. Er is echter geen reden waarom een module in een Azure IoT Edge-apparaat toegang het dubbele van een module in een andere Azure IoT Edge-apparaat tot moet.
+## <a name="authorization"></a>Authorization
 
-Andere autorisatie schema's zijn certificaat ondertekenen rechten en op rollen gebaseerd toegangsbeheer (RBAC). 
+Het principe van minimale bevoegdheden geeft aan dat gebruikers en onderdelen van een systeem alleen toegang moeten hebben tot de minimale set resources en gegevens die nodig zijn om hun rollen uit te voeren. Apparaten, modules en actors moeten alleen toegang hebben tot de bronnen en gegevens binnen hun machtigings bereik, en alleen wanneer de architectuur is toegestaan. Sommige machtigingen kunnen worden geconfigureerd met voldoende bevoegdheden en andere worden op architectuur afgedwongen.  Sommige modules kunnen bijvoorbeeld worden gemachtigd om verbinding te maken met Azure IoT Hub. Er is echter geen reden waarom een module in één IoT Edge apparaat toegang moet hebben tot de twee modules in een ander IoT Edge apparaat.
+
+Andere autorisatie schema's zijn onder andere machtigingen voor certificaat ondertekening en op rollen gebaseerd toegangs beheer (RBAC). 
 
 ## <a name="attestation"></a>Attestation
 
-Attestation waarborgt de integriteit van software-bits.  Het is belangrijk voor de detectie en preventie van schadelijke software.  Het Azure IoT Edge security framework classificeert attestation in drie hoofdcategorieën:
+Attestation zorgt voor de integriteit van software-bits, die belang rijk is voor het detecteren en voor komen van malware.  Het Azure IoT Edge security framework classificeert attestation in drie hoofdcategorieën:
 
 * Statische attestation
 * Runtime-attestation
@@ -50,34 +52,34 @@ Attestation waarborgt de integriteit van software-bits.  Het is belangrijk voor
 
 ### <a name="static-attestation"></a>Statische attestation
 
-Statische attestation controleert de integriteit van alle software op een apparaat, met inbegrip van het besturingssysteem, alle runtimes en configuratie-informatie op opstarten van het apparaat. Dit wordt vaak aangeduid als beveiligd opstarten. De security-framework voor Azure IoT Edge-apparaten strekt zich uit tot fabrikanten en tevens beveiligde hardwaremogelijkheden om statische attestation-processen. Deze processen zijn beveiligd opstarten en veilige firmware bijwerken.  Werken in nauwe samenwerking met silicon leveranciers elimineert overbodige firmware-lagen, dus minimaliseert de bedreiging voor aanvallen. 
+Bij statische Attestation wordt de integriteit van alle software op een apparaat gecontroleerd tijdens het opstarten, met inbegrip van het besturings systeem, alle Runtimes en configuratie-informatie. Omdat er tijdens het opstarten statische attestatie plaatsvindt, wordt vaak beveiligd opstarten genoemd. Het beveiligings raamwerk voor IoT Edge-apparaten wordt uitgebreid naar fabrikanten en beschikt over veilige hardware-mogelijkheden die een statische Attestation-proces garanderen. Deze processen zijn onder andere beveiligd opstarten en beveiligde firmware-upgrade.  Als u werkt in nauwe samen werking met silicium leveranciers, elimineert u overbodige firmware lagen, waardoor het bedreigings oppervlak wordt geminimaliseerd. 
 
 ### <a name="runtime-attestation"></a>Runtime-attestation
 
-Zodra een systeem is een proces voor beveiligd opstarten is voltooid en actief is, zou goed ontworpen systemen pogingen tot het invoeren van schadelijke software en het juiste tegenmaatregelen neemt detecteert. Malware-aanvallen kunnen richten op de poorten en interfaces voor toegang tot het systeem van het systeem. Of, als kwaadwillende actoren fysieke toegang hebben tot een apparaat dat ze kunnen knoeien met het apparaat zelf of side-channel-aanvallen gebruiken om toegang te krijgen. Dergelijke ontevreden klant, die in de vorm van kwaadaardige software of niet-geautoriseerde wijzigingen worden kan, kan niet worden gedetecteerd door statische attestation omdat deze is opgenomen na het opstartproces. Tegenmaatregelen aangeboden of afgedwongen door van het apparaat hardware help buiten deze bedreigingen.  Het framework van de beveiliging voor Azure IoT Edge-expliciet aanroepen voor uitbreidingen die runtime bedreigingen Combat.  
+Wanneer een systeem een beveiligd opstart proces heeft voltooid, moeten goed ontworpen systemen pogingen voor het invoeren van malware en de juiste tegen maatregelen worden gedetecteerd. Aanvallen van schadelijke software zijn mogelijk gericht op de poorten en interfaces van het systeem. Als kwaad aardige actoren fysieke toegang tot een apparaat hebben, kunnen ze met het apparaat zelf knoeien of gebruikmaken van Side-Channel-aanvallen om toegang te krijgen. Dergelijke Malcontent, ongeacht of er malware of niet-geautoriseerde configuratie wijzigingen zijn, kunnen niet worden gedetecteerd door een statische Attestation omdat deze wordt ingevoegd na het opstart proces. Tegen maatregelen die worden geboden of afgedwongen door de hardware van het apparaat, kunnen deze bedreigingen ook buiten.  Het beveiligings raamwerk voor IoT Edge expliciete uitbrei dingen aanroept voor het bestrijden van runtime bedreigingen.  
 
 ### <a name="software-attestation"></a>Software-attestation
 
-Alle in orde systemen, met inbegrip van intelligente edge-systemen, moeten accepteren, patches en upgrades.  Beveiliging is belangrijk voor update-processen anders dat deze potentiële bedreigingen met kunnen zijn.  Het framework van de beveiliging voor Azure IoT Edge-aanroepen voor updates via gemeten en ondertekende pakketten te garanderen de integriteit van de bron van de pakketten te verifiëren.  Deze standaard is van toepassing op alle besturingssystemen en software-bits toepassing. 
+Alle gezonde systemen, waaronder intelligente systemen, hebben patches en upgrades nodig.  Beveiliging is belang rijk voor update processen, anders kunnen ze potentiële bedreigings vectoren zijn.  Het beveiligings raamwerk voor IoT Edge-aanroepen voor updates via gemeten en ondertekende pakketten om de integriteit van de pakketten te waarborgen en te verifiëren.  Deze standaard is van toepassing op alle besturings systemen en toepassings software-bits. 
 
 ## <a name="hardware-root-of-trust"></a>Hardware-vertrouwensbasis
 
-Voor veel intelligente edge-apparaten, met name voor apparaten op locaties waar potentiële kwaadwillende actoren fysieke toegang tot het apparaat hebben is hardware apparaatbeveiliging het laatste defensie voor beveiliging. Fraudebestendig hardware is essentieel voor dergelijke implementaties. Azure IoT Edge worden gebruikers aangemoedigd beveiligde silicon hardwareleveranciers verschillende versies van hardware vertrouwensbasis voor verschillende risicoprofielen en implementatiescenario's bieden. Hardware-vertrouwensrelatie kan afkomstig zijn van de algemene beveiliging protocolstandaarden, zoals Trusted Platform Module (ISO/IEC 11889) en Trusted Computing Group van apparaat-id Composition Engine (DICE). Beveilig de enclave-technologieën zoals TrustZones en Software Guard-extensies (SGX) bieden ook hardware vertrouwen. 
+Voor veel intelligente apparaten, met name apparaten die fysiek kunnen worden gebruikt door potentiële schadelijke actors, is Hardware Security de laatste verdedigings linie. Moeilijk te vervalsen hardware is van cruciaal belang voor dergelijke implementaties. Azure IoT Edge moedigt productleveranciers van siliconen aan verschillende soorten vertrouwens basis van de hardware te bieden voor verschillende risico profielen en implementatie scenario's. Het is mogelijk dat de hardware-vertrouwens relatie afkomstig is van algemene beveiligings protocol standaarden zoals Trusted Platform Module (ISO/IEC 11889) en de apparaat-id compositie-engine (dobbel stenen) van Trusted Computing Group. Beveiligde enclave-technologieën zoals TrustZones en software Guard Extensions (SGX) bieden ook een hardware-vertrouwens relatie. 
 
 ## <a name="certification"></a>Certificering
 
-Om klanten te helpen geïnformeerde beslissingen bij het aanschaffen van Azure IoT Edge-apparaten voor hun implementatie, bevat de Azure IoT Edge-framework vereisten voor certificering.  Fundamentele aan deze vereisten zijn met betrekking tot beveiligingsclaims-certificeringen en certificeringen die betrekking hebben op de validatie van de implementatie van beveiliging.  Een certificaat van de claim security zou bijvoorbeeld informeren dat de IoT Edge-apparaat maakt gebruik van beveiligde hardware die bekend zijn bij het opstarten aanvallen verzetten. Een validatie-certificering zou informeren over de veilige hardware op de juiste wijze is geïmplementeerd voor deze waarde in het apparaat.  Aan het principe van de eenvoud probeert het framework dat de werkbelasting van certificering minimale.   
+Om klanten te helpen weloverwogen beslissingen te nemen bij het inkopen van Azure IoT Edge-apparaten voor hun implementatie, bevat het IoT Edge-Framework certificerings vereisten.  Fundamentele aan deze vereisten zijn met betrekking tot beveiligingsclaims-certificeringen en certificeringen die betrekking hebben op de validatie van de implementatie van beveiliging.  Een beveiligings claim geeft bijvoorbeeld aan dat het IoT Edge apparaat gebruikmaakt van beveiligde hardware waarmee opstart aanvallen kunnen worden voors tand. Een validatie certificering betekent dat de beveiligde hardware op de juiste wijze is geïmplementeerd om deze waarde in het apparaat aan te bieden.  In overeenstemming met het beginsel van de eenvoud, probeert het Framework de belasting van de certificering mini maal te houden.   
 
 ## <a name="extensibility"></a>Uitbreidbaarheid
 
-Met IoT-technologie verschillende typen zakelijke transformaties te stimuleren, staat deze reden dat beveiliging moet veranderen parallel naar adres opkomende scenario's.  Het Azure IoT Edge security framework begint met een solide basis waarop deze wordt gemaakt in uitbreidbaarheid in verschillende dimensies om op te nemen: 
+Met IoT-technologie die verschillende soorten trans formaties verstuurt, moet beveiliging parallel worden ontwikkeld om nieuwe scenario's te verhelpen.  Het Azure IoT Edge security framework begint met een solide basis waarop deze wordt gemaakt in uitbreidbaarheid in verschillende dimensies om op te nemen: 
 
 * Eerste security services van derden, zoals de Device Provisioning Service voor Azure IoT Hub.
-* Services van derden zoals beheerde beveiligingsservices voor andere toepassing verticalen (zoals industriële of gezondheidszorg) of technologie focus (zoals bewaking van de beveiliging netwerken of silicon hardware attestation-services NET) via een uitgebreide netwerk van partners.
+* Services van derden zoals beheerde beveiligings Services voor verschillende verticale toepassingen (zoals industriële of gezondheids zorg) of technologie focus (zoals beveiligings bewaking in netnetwerken of Silicon hardware Attestation Services) via een uitgebreid netwerk van partner.
 * Verouderde systemen om op te nemen met alternatieve strategieën, aanpassing, zoals met behulp van veilige technologie dan certificaten voor verificatie en identiteitsbeheer.
-* Beveilig hardware voor acceptatie van nieuwe hardwaretechnologieën voor veilige en silicon partner bijdragen.
+* Veilige hardware voor de invoering van opkomende technologieën voor veilige hardware en bijdragen aan silicium partners.
 
-Uiteindelijk moet het hoogste succes bij het beveiligen van de intelligente edge resultaat is van een gezamenlijke bijdragen van een openen door de community onderhouden door het gemeenschappelijk belang bij het beveiligen van IoT.  Deze bijdragen mogelijk in de vorm van beveiligde technologieën of services.  Het Azure IoT Edge security framework biedt een solide basis voor beveiliging dat kan worden uitgebreid voor de maximale dekking te bieden dezelfde mate van vertrouwen en integriteit in de intelligente edge als met Azure-cloud.  
+In het eind is het beveiligen van de intelligente Edge vereist voor gezamenlijke bijdragen van een open Community door de gemeen schappelijke interesse in het beveiligen van IoT.  Deze bijdragen mogelijk in de vorm van beveiligde technologieën of services.  Het Azure IoT Edge security framework biedt een solide basis voor beveiliging dat kan worden uitgebreid voor de maximale dekking te bieden dezelfde mate van vertrouwen en integriteit in de intelligente edge als met Azure-cloud.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
